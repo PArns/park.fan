@@ -69,6 +69,21 @@ export default function Home() {
             <p className="text-sm text-gray-600 dark:text-gray-400">Teile Erfahrungen mit anderen Park-Fans</p>
           </div>
         </div>
+
+        {/* Creator Credit */}
+        <div className="pt-6 mt-8 border-t border-gray-200/50 dark:border-gray-700/50">
+          <p className="text-sm text-gray-500 dark:text-gray-500">
+            Made with ❤️ by{" "}
+            <a 
+              href="https://arns.dev" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium underline underline-offset-2 hover:underline-offset-4 transition-all"
+            >
+              Patrick Arns
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );
