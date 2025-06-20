@@ -35,7 +35,7 @@ export default function StatisticsCard({
   };
 
   return (
-    <Card variant="glass" hover="glow" className={cn('group', className)}>
+    <Card variant="glass" hover="lift" className={cn('group card-hover', className)}>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <div
