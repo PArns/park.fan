@@ -8,8 +8,8 @@ interface CountryStatsProps {
 }
 
 export default function CountryStats({ countries }: CountryStatsProps) {
-  // Sort countries by total parks and take top 10
-  const topCountries = countries.sort((a, b) => b.totalParks - a.totalParks).slice(0, 10);
+  // Sort countries by total parks and take top 5
+  const topCountries = countries.sort((a, b) => b.totalParks - a.totalParks).slice(0, 5);
 
   if (topCountries.length === 0) {
     return (
@@ -39,7 +39,7 @@ export default function CountryStats({ countries }: CountryStatsProps) {
           <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
             <MapPin className="w-5 h-5 text-green-600 dark:text-green-400" />
           </div>
-          <span>Top Countries</span>
+          <span>Top 5 Countries</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
