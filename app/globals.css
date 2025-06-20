@@ -17,7 +17,7 @@
   --secondary-foreground: #0f172a;
 
   /* Muted colors */
-  --muted: #f1f5f9;
+  --muted: #e2e8f0;
   --muted-foreground: #475569;
 
   /* Accent colors */
@@ -213,4 +213,13 @@ html {
 .focus-ring:focus-visible {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
+}
+
+/* Progress bar background */
+.progress-bg {
+  background-color: #e2e8f0; /* Light mode - slate-300 */
+}
+
+.dark .progress-bg {
+  background-color: #374151; /* Dark mode - gray-700 */
 }

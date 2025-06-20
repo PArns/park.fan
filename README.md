@@ -7,9 +7,12 @@ A modern, responsive Next.js 15 dashboard for real-time theme park statistics an
 - **Real-time Statistics** - Live data from theme parks worldwide
 - **Modern UI/UX** - Clean, responsive design with Tailwind CSS
 - **Dark/Light Mode** - Automatic theme switching with user preference
-- **Interactive Charts** - Visualize wait times and park data
+- **Wait Time Rankings** - Top 3 busiest and quietest rides globally
+- **Park Rankings** - Best performing theme parks by continent
 - **Global Coverage** - Statistics from parks across all continents
+- **Interactive Charts** - Visualize wait times and park data
 - **Mobile Optimized** - Perfect experience on all devices
+- **Localized Formatting** - Dates, times, and numbers in your local format
 
 ## 🚀 Tech Stack
 
@@ -25,8 +28,9 @@ A modern, responsive Next.js 15 dashboard for real-time theme park statistics an
 
 - **API**: [park.fan API](https://api.park.fan/statistics)
 - **Coverage**: Theme parks from all continents
-- **Update Frequency**: Real-time data updates
-- **Metrics**: Wait times, park operations, global statistics
+- **Update Frequency**: Real-time data updates every 5 minutes
+- **Metrics**: Wait times, park operations, global statistics, ride rankings
+- **Ride Data**: Individual ride wait times with longest/shortest rankings
 
 ## �️ Development
 
@@ -106,6 +110,7 @@ The project includes an automatic build information system that generates versio
 This project is optimized for Vercel deployment. The build system automatically detects Vercel environment and uses appropriate methods to generate build information even with shallow git clones.
 
 **Environment Variables (Vercel)**:
+
 - `VERCEL_GIT_COMMIT_SHA` - Used for git hash and build number generation
 - `VERCEL_ENV` - Deployment environment detection
 

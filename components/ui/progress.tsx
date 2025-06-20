@@ -13,10 +13,10 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
     const variantClasses = {
-      default: 'bg-gradient-to-r from-purple-500 to-pink-500',
-      success: 'bg-gradient-to-r from-green-500 to-emerald-500',
-      warning: 'bg-gradient-to-r from-amber-500 to-orange-500',
-      error: 'bg-gradient-to-r from-red-500 to-rose-500',
+      default: 'bg-gradient-to-r from-purple-600 to-pink-600',
+      success: 'bg-gradient-to-r from-green-600 to-emerald-600',
+      warning: 'bg-gradient-to-r from-orange-500 to-amber-600',
+      error: 'bg-gradient-to-r from-red-600 to-rose-600',
     };
 
     return (
@@ -29,7 +29,7 @@ const Progress = forwardRef<HTMLDivElement, ProgressProps>(
         )}
         <div
           ref={ref}
-          className={cn('relative h-2 w-full overflow-hidden rounded-full bg-muted', className)}
+          className={cn('relative h-2 w-full overflow-hidden rounded-full progress-bg', className)}
           {...props}
         >
           <div

@@ -2,6 +2,7 @@
 
 import { PageHeader } from '../../components/layout/page-header';
 import { Button } from '../../components/ui/button';
+import { LocalizationDemo } from '../../components/localization-demo';
 import { BarChart3, TrendingUp, Users, Globe, Calendar } from 'lucide-react';
 
 export default function Analytics() {
@@ -83,6 +84,11 @@ export default function Analytics() {
             </div>
           </div>
         </div>
+
+        {/* Localization Demo */}
+        <section className="max-w-4xl mx-auto">
+          <LocalizationDemo />
+        </section>
       </div>
     </div>
   );

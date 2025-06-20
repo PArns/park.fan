@@ -6,6 +6,10 @@ import TopParks from '../components/top-parks';
 import ContinentStats from '../components/continent-stats';
 import CountryStats from '../components/country-stats';
 import WaitTimeChart from '../components/wait-time-chart';
+import { BusiestRides } from '../components/busiest-rides';
+import { QuietestRides } from '../components/quietest-rides';
+import { RidesByCountry } from '../components/rides-by-country';
+import { RidesByContinent } from '../components/rides-by-continent';
 import { RefreshButton } from '../components/ui/refresh-button';
 import { ErrorState } from '../components/ui/error-state';
 import { fetchStatistics, transformStatisticsData } from '../lib/api';
@@ -91,6 +95,15 @@ async function DashboardContent() {
             </div>
           </section>
 
+          {/* Wait Time Rankings */}
+          <section className="space-y-6">
+            <h2 className="text-2xl font-bold text-foreground">Wait Time Rankings</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <BusiestRides rides={statistics.rideStatistics?.longestWaitTimes || []} />
+              <QuietestRides rides={statistics.rideStatistics?.shortestWaitTimes || []} />
+            </div>
+          </section>
+
           {/* Wait Times Distribution */}
           {statistics.rideStatistics?.waitTimeDistribution && (
             <section className="space-y-6">
@@ -101,8 +114,12 @@ async function DashboardContent() {
 
           {/* Geographic Statistics */}
           <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">Parks by Continent</h2>
-            <ContinentStats continents={statistics.continentsForComponent} />
+            <h2 className="text-2xl font-bold text-foreground">Global Statistics</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <ContinentStats continents={statistics.continentsForComponent} />
+              <RidesByContinent continents={statistics.rideStatistics?.ridesByContinent || []} />
+              <RidesByCountry countries={statistics.rideStatistics?.ridesByCountry || []} />
+            </div>
           </section>
 
           {/* Country Statistics */}

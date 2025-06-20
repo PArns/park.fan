@@ -55,7 +55,7 @@ export default function TopParks({ parks, type }: TopParksProps) {
               <div className="flex items-center gap-4">
                 <div
                   className={cn(
-                    'flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold shadow-lg',
+                    'flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold shadow-lg',
                     getMedalColor(index)
                   )}
                 >

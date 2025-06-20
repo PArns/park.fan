@@ -62,7 +62,7 @@ export function transformStatisticsData(data: StatisticsData) {
 }
 
 // Helper function to get country flags
-function getCountryFlag(country: string): string {
+export function getCountryFlag(country: string): string {
   const flagMap: { [key: string]: string } = {
     Germany: '🇩🇪',
     'United States': '🇺🇸',
