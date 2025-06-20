@@ -1,13 +1,52 @@
-# 🎢 park.fan
+# 🎢 Park.Fan Dashboard
 
-Die ultimative Plattform für Freizeitpark-Enthusiasten! park.fan bietet Live-Wartezeiten, Park-Bewertungen und eine lebendige Community für alle, die ihre Leidenschaft für Freizeitparks teilen.
+A modern, responsive Next.js 15 dashboard for real-time theme park statistics and analytics.
 
-## ✨ Features (Coming Soon)
+## ✨ Features
 
-- **⏱️ Live Wartezeiten** - Aktuelle Wartezeiten für alle Attraktionen in Echtzeit
-- **🎡 Park-Übersicht** - Umfassende Informationen zu beliebten Freizeitparks
-- **👥 Community** - Teile Erfahrungen und Tipps mit anderen Park-Fans
-- **📊 Bewertungen** - Detaillierte Bewertungen von Attraktionen und Parks
+- **Real-time Statistics** - Live data from theme parks worldwide
+- **Modern UI/UX** - Clean, responsive design with Tailwind CSS
+- **Dark/Light Mode** - Automatic theme switching with user preference
+- **Interactive Charts** - Visualize wait times and park data
+- **Global Coverage** - Statistics from parks across all continents
+- **Mobile Optimized** - Perfect experience on all devices
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS with custom theme system
+- **UI Components**: Custom component library with class-variance-authority
+- **Icons**: Lucide React
+- **Fonts**: Geist Sans & Geist Mono
+- **Theme**: next-themes for dark/light mode
+- **Analytics**: Vercel Analytics
+
+## 📊 Data Sources
+
+- **API**: [park.fan API](https://api.park.fan/statistics)
+- **Coverage**: Theme parks from all continents
+- **Update Frequency**: Real-time data updates
+- **Metrics**: Wait times, park operations, global statistics
+
+## �️ Development
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended package manager)
+
+### Installation
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
+
 - **📱 Mobile-First** - Optimiert für die Nutzung unterwegs
 
 ## 🚀 Development
@@ -22,17 +61,20 @@ Dieses Projekt verwendet [Next.js 15](https://nextjs.org) mit TypeScript und Tai
 ### Installation
 
 1. Repository klonen:
+
 ```bash
 git clone https://github.com/PArns/park.fan.git
 cd park.fan
 ```
 
 2. Dependencies installieren:
+
 ```bash
 pnpm install
 ```
 
 3. Development Server starten:
+
 ```bash
 pnpm dev
 ```
@@ -87,12 +129,14 @@ Dieses Projekt steht unter der [MIT License](LICENSE).
 ## 👨‍💻 Ersteller
 
 Entwickelt von **Patrick Arns**
+
 - Portfolio: [arns.dev](https://arns.dev)
 - GitHub: [@PArns](https://github.com/PArns)
 
 ## 📞 Kontakt
 
 Bei Fragen oder Anregungen erreichen Sie uns unter:
+
 - Website: [park.fan](https://park.fan)
 - Email: hello@park.fan
 

@@ -17,8 +17,8 @@
   --secondary-foreground: #0f172a;
 
   /* Muted colors */
-  --muted: #f1f5f9;
-  --muted-foreground: #475569;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
 
   /* Accent colors */
   --accent: #f1f5f9;
@@ -40,10 +40,6 @@
   --border: #e2e8f0;
   --input: #e2e8f0;
   --ring: #3b82f6;
-
-  /* Popover */
-  --popover: #ffffff;
-  --popover-foreground: #0f172a;
 
   /* Radius */
   --radius: 0.75rem;
@@ -85,9 +81,6 @@
   --border: #334155;
   --input: #334155;
   --ring: #60a5fa;
-
-  --popover: #1e293b;
-  --popover-foreground: #f8fafc;
 }
 
 /* Base styles */
