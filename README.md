@@ -51,91 +51,124 @@ Open [http://localhost:3000](http://localhost:3000) to view the dashboard.
 
 ## 🚀 Development
 
-Dieses Projekt verwendet [Next.js 15](https://nextjs.org) mit TypeScript und Tailwind CSS.
+This project uses [Next.js 15](https://nextjs.org) with TypeScript and Tailwind CSS.
 
-### Voraussetzungen
+### Prerequisites
 
-- [Node.js](https://nodejs.org) (Version 18 oder höher)
-- [pnpm](https://pnpm.io) als Package Manager
+- [Node.js](https://nodejs.org) (Version 18 or higher)
+- [pnpm](https://pnpm.io) as Package Manager
 
 ### Installation
 
-1. Repository klonen:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/PArns/park.fan.git
 cd park.fan
 ```
 
-2. Dependencies installieren:
+2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-3. Development Server starten:
+3. Start development server:
 
 ```bash
 pnpm dev
 ```
 
-Öffne [http://localhost:3000](http://localhost:3000) in deinem Browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Verfügbare Scripts
+### Available Scripts
 
 ```bash
-pnpm dev          # Development Server starten
-pnpm build        # Production Build erstellen
-pnpm start        # Production Server starten
-pnpm lint         # Code linting
-pnpm type-check   # TypeScript Type Checking
+pnpm dev          # Start development server
+pnpm prebuild     # Generate build info (automatically run before build)
+pnpm build        # Create production build
+pnpm start        # Start production server
+pnpm lint         # Run code linting
+pnpm format       # Format code with Prettier
 ```
+
+## 🔧 Build System
+
+The project includes an automatic build information system that generates version details:
+
+- **Version**: From package.json
+- **Build Number**: Git commit count (local) or timestamp-based (Vercel)
+- **Build Date**: Automatically generated
+- **Git Hash**: Commit hash from git or Vercel environment
+
+### Vercel Deployment
+
+This project is optimized for Vercel deployment. The build system automatically detects Vercel environment and uses appropriate methods to generate build information even with shallow git clones.
+
+**Environment Variables (Vercel)**:
+- `VERCEL_GIT_COMMIT_SHA` - Used for git hash and build number generation
+- `VERCEL_ENV` - Deployment environment detection
 
 ## 🛠 Tech Stack
 
 - **Framework:** Next.js 15 (App Router)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS
+- **Styling:** Tailwind CSS with CSS Variables
+- **UI Components:** Custom component library with class-variance-authority
+- **Theme:** next-themes for dark/light mode switching
 - **Package Manager:** pnpm
-- **Deployment:** Vercel (empfohlen)
+- **Deployment:** Vercel (recommended)
 
-## 📁 Projektstruktur
+## 📁 Project Structure
 
 ```
 park.fan/
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Globale Styles
-│   ├── layout.tsx         # Root Layout
-│   └── page.tsx           # Homepage
-├── public/                # Statische Assets
-├── package.json          # Projekt Dependencies
-└── README.md             # Diese Datei
+├── app/                      # Next.js App Router
+│   ├── analytics/           # Analytics page
+│   ├── api/                 # API routes
+│   ├── globals.css          # Global styles with theme variables
+│   ├── layout.tsx           # Root layout with SEO meta tags
+│   ├── page.tsx             # Homepage
+│   └── sitemap.ts           # Dynamic sitemap generation
+├── components/              # Reusable UI components
+│   ├── layout/             # Layout components (Header, Footer, etc.)
+│   └── ui/                 # UI components (Button, Card, etc.)
+├── lib/                    # Utility functions and API
+│   ├── api.ts              # API functions and data transformation
+│   ├── api-types.ts        # TypeScript types for API data
+│   └── build-info.ts       # Auto-generated build information
+├── public/                 # Static assets
+│   ├── manifest.json       # PWA manifest
+│   └── robots.txt          # SEO robots file
+├── scripts/                # Build scripts
+│   └── generate-build-info.js # Build info generation script
+└── package.json            # Project dependencies and scripts
 ```
 
 ## 🤝 Contributing
 
-Beiträge sind willkommen! Bitte beachte folgende Schritte:
+Contributions are welcome! Please follow these steps:
 
-1. Fork das Repository
-2. Erstelle einen Feature Branch (`git checkout -b feature/amazing-feature`)
-3. Committe deine Änderungen (`git commit -m 'Add amazing feature'`)
-4. Push zum Branch (`git push origin feature/amazing-feature`)
-5. Öffne einen Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ## 📄 License
 
-Dieses Projekt steht unter der [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
 
-## 👨‍💻 Ersteller
+## 👨‍💻 Creator
 
-Entwickelt von **Patrick Arns**
+Developed by **Patrick Arns**
 
 - Portfolio: [arns.dev](https://arns.dev)
 - GitHub: [@PArns](https://github.com/PArns)
 
-## 📞 Kontakt
+## 📞 Contact
 
-Bei Fragen oder Anregungen erreichen Sie uns unter:
+For questions or suggestions, reach us at:
 
 - Website: [park.fan](https://park.fan)
 - Email: hello@park.fan

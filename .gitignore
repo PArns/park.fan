@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# build info (auto-generated)
+lib/build-info.ts
+public/build-info.json

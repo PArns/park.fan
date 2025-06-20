@@ -1,3 +1,5 @@
+import { BuildInfo } from '../ui/build-info';
+
 export function Footer() {
   return (
     <footer className="bg-slate-100 dark:bg-slate-800 border-t border-border mt-auto">
@@ -42,17 +44,20 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t border-slate-300 dark:border-slate-600">
-          <p className="text-center text-sm text-slate-600 dark:text-slate-300">
-            © 2025 Park.Fan Dashboard. Coded with ❤️ by{' '}
-            <a
-              href="https://arns.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors underline"
-            >
-              arns.dev
-            </a>
-          </p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-center sm:text-left text-sm text-slate-600 dark:text-slate-300">
+              © 2025 Park.Fan Dashboard. Coded with ❤️ by{' '}
+              <a
+                href="https://arns.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors underline"
+              >
+                arns.dev
+              </a>
+            </p>
+            <BuildInfo />
+          </div>
         </div>
       </div>
     </footer>

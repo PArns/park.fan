@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Real-time theme park statistics and analytics dashboard",
   "author": {
     "name": "Park.Fan Team - Patrick Arns",
@@ -11,6 +11,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "node scripts/generate-build-info.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
