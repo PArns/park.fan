@@ -35,7 +35,13 @@ export default function StatisticsCard({
   };
 
   return (
-    <Card variant="glass" hover="lift" className={cn('group card-hover', className)}>
+    <Card
+      variant="glass"
+      hover="lift"
+      className={cn('group card-hover', className)}
+      role="region"
+      aria-labelledby={`${title.replace(/\s+/g, '-').toLowerCase()}-title`}
+    >
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <div
@@ -43,11 +49,15 @@ export default function StatisticsCard({
               'w-12 h-12 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110',
               colorClasses[color]
             )}
+            aria-hidden="true"
           >
             <Icon size={24} />
           </div>
           {trend && !isNaN(trend.value) && (
-            <Badge variant={trend.value > 0 ? 'success' : 'error'}>
+            <Badge
+              variant={trend.value > 0 ? 'success' : 'error'}
+              aria-label={`Trend: ${trend.value > 0 ? '+' : ''}${trend.value}% ${trend.label}`}
+            >
               {trend.value > 0 ? '+' : ''}
               {trend.value}% {trend.label}
             </Badge>
@@ -55,13 +65,28 @@ export default function StatisticsCard({
         </div>
 
         <div className="space-y-1">
-          <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+          <h3
+            id={`${title.replace(/\s+/g, '-').toLowerCase()}-title`}
+            className="text-sm font-medium text-muted-foreground uppercase tracking-wide"
+          >
             {title}
           </h3>
-          <p className="text-3xl font-bold text-foreground tabular-nums">
+          <p
+            className="text-3xl font-bold text-foreground tabular-nums"
+            aria-describedby={
+              subtitle ? `${title.replace(/\s+/g, '-').toLowerCase()}-subtitle` : undefined
+            }
+          >
             {typeof value === 'number' ? (isNaN(value) ? '0' : value.toLocaleString()) : value}
           </p>
-          {subtitle && <p className="text-sm text-muted-foreground">{subtitle}</p>}
+          {subtitle && (
+            <p
+              id={`${title.replace(/\s+/g, '-').toLowerCase()}-subtitle`}
+              className="text-sm text-muted-foreground"
+            >
+              {subtitle}
+            </p>
+          )}
         </div>
       </CardContent>
     </Card>
