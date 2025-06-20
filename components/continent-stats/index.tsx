@@ -1,10 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Progress } from '../ui/progress';
-import { ContinentData } from '../../lib/api-types';
+import Link from 'next/link';
+import type { ContinentStats } from '../../lib/api-types';
 import { Globe } from 'lucide-react';
+import { normalizePathSegment } from '../../lib/api';
 
 interface ContinentStatsProps {
-  continents: ContinentData;
+  continents: ContinentStats;
 }
 
 export default function ContinentStats({ continents }: ContinentStatsProps) {
@@ -20,8 +22,6 @@ export default function ContinentStats({ continents }: ContinentStatsProps) {
         return '🌎';
       case 'Africa':
         return '🌍';
-      case 'Oceania':
-        return '🇦🇺';
       default:
         return '🌍';
     }
@@ -66,23 +66,26 @@ export default function ContinentStats({ continents }: ContinentStatsProps) {
           .sort(([, a], [, b]) => b - a)
           .map(([continent, count]) => {
             const percentage = totalParks > 0 ? (count / totalParks) * 100 : 0;
+            const continentSlug = normalizePathSegment(continent);
 
             return (
-              <div key={continent} className="space-y-2">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-lg">{getContinentEmoji(continent)}</span>
-                    <span className="font-medium text-sm text-foreground">{continent}</span>
+              <Link key={continent} href={`/parks/${continentSlug}`} className="block">
+                <div className="space-y-2 p-3 rounded-lg hover:bg-muted/30 transition-colors cursor-pointer">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg">{getContinentEmoji(continent)}</span>
+                      <span className="font-medium text-sm text-foreground hover:text-primary transition-colors">{continent}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-foreground">{count}</span>
+                      <span className="text-xs text-muted-foreground">
+                        ({percentage.toFixed(1)}%)
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-semibold text-foreground">{count}</span>
-                    <span className="text-xs text-muted-foreground">
-                      ({percentage.toFixed(1)}%)
-                    </span>
-                  </div>
+                  <Progress value={percentage} className="h-2" />
                 </div>
-                <Progress value={percentage} className="h-2" />
-              </div>
+              </Link>
             );
           })}
 

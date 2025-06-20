@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Clock, TrendingDown } from 'lucide-react';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
@@ -7,6 +8,17 @@ import { ClientTime } from '../ui/client-time';
 
 interface QuietestRidesProps {
   rides: RideWaitTime[];
+}
+
+// Helper function to generate hierarchical URL for rides
+function generateRideUrl(ride: RideWaitTime): string {
+  const continent = ride.country === 'United States' ? 'north-america' : 
+                   ride.country === 'England' || ride.country === 'United Kingdom' ? 'europe' :
+                   'europe'; // Default to europe for now, would need mapping for other continents
+  const country = ride.country.toLowerCase().replace(/\s+/g, '-');
+  const parkName = ride.parkName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+  const rideName = ride.rideName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+  return `/${continent}/${country}/${parkName}/${rideName}`;
 }
 
 export function QuietestRides({ rides }: QuietestRidesProps) {
@@ -45,36 +57,42 @@ export function QuietestRides({ rides }: QuietestRidesProps) {
 
       <div className="space-y-4">
         {topRides.map((ride, index) => (
-          <div key={ride.rideId} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
-            <div className="text-4xl flex items-center justify-center w-16 h-16 bg-muted/50 rounded-full">
-              {getRankIcon(index)}
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-1">
-                <h4 className="font-medium text-foreground truncate">{ride.rideName}</h4>
-                <span className="text-lg">{getCountryFlag(ride.country)}</span>
+          <Link
+            key={ride.rideId}
+            href={generateRideUrl(ride)}
+            className="block transition-transform hover:scale-[1.02]"
+          >
+            <div className="flex items-center gap-4 p-4 bg-muted/30 hover:bg-muted/50 rounded-lg transition-all">
+              <div className="text-4xl flex items-center justify-center w-16 h-16 bg-muted/50 rounded-full">
+                {getRankIcon(index)}
               </div>
-              <p className="text-sm text-muted-foreground truncate">{ride.parkName}</p>
-              <div className="flex items-center gap-2 mt-1">
-                <Clock className="w-3 h-3 text-muted-foreground" />
-                <ClientTime
-                  timestamp={ride.lastUpdated}
-                  format="both"
-                  className="text-xs text-muted-foreground"
-                />
+
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <h4 className="font-medium text-foreground truncate hover:text-primary transition-colors">{ride.rideName}</h4>
+                  <span className="text-lg">{getCountryFlag(ride.country)}</span>
+                </div>
+                <p className="text-sm text-muted-foreground truncate">{ride.parkName}</p>
+                <div className="flex items-center gap-2 mt-1">
+                  <Clock className="w-3 h-3 text-muted-foreground" />
+                  <ClientTime
+                    timestamp={ride.lastUpdated}
+                    format="both"
+                    className="text-xs text-muted-foreground"
+                  />
+                </div>
+              </div>
+
+              <div className="text-right">
+                <Badge
+                  variant={getWaitTimeVariant(ride.waitTime)}
+                  className="text-lg font-bold px-3 py-1"
+                >
+                  {ride.waitTime === 0 ? 'Walk-On' : `${ride.waitTime} min`}
+                </Badge>
               </div>
             </div>
-
-            <div className="text-right">
-              <Badge
-                variant={getWaitTimeVariant(ride.waitTime)}
-                className="text-lg font-bold px-3 py-1"
-              >
-                {ride.waitTime === 0 ? 'Walk-On' : `${ride.waitTime} min`}
-              </Badge>
-            </div>
-          </div>
+          </Link>
         ))}
       </div>
 

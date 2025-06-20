@@ -42,20 +42,21 @@ export default function StatisticsCard({
       role="region"
       aria-labelledby={`${title.replace(/\s+/g, '-').toLowerCase()}-title`}
     >
-      <CardContent className="space-y-4">
+      <CardContent className="p-3 sm:p-4 lg:p-6 space-y-3 lg:space-y-4">
         <div className="flex items-center justify-between">
           <div
             className={cn(
-              'w-12 h-12 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110',
+              'w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110',
               colorClasses[color]
             )}
             aria-hidden="true"
           >
-            <Icon size={24} />
+            <Icon size={20} className="sm:w-6 sm:h-6" />
           </div>
           {trend && !isNaN(trend.value) && (
             <Badge
               variant={trend.value > 0 ? 'success' : 'error'}
+              className="text-xs"
               aria-label={`Trend: ${trend.value > 0 ? '+' : ''}${trend.value}% ${trend.label}`}
             >
               {trend.value > 0 ? '+' : ''}
@@ -67,12 +68,12 @@ export default function StatisticsCard({
         <div className="space-y-1">
           <h3
             id={`${title.replace(/\s+/g, '-').toLowerCase()}-title`}
-            className="text-sm font-medium text-muted-foreground uppercase tracking-wide"
+            className="text-xs sm:text-sm font-medium text-muted-foreground uppercase tracking-wide"
           >
             {title}
           </h3>
           <p
-            className="text-3xl font-bold text-foreground tabular-nums"
+            className="text-2xl sm:text-3xl font-bold text-foreground tabular-nums"
             aria-describedby={
               subtitle ? `${title.replace(/\s+/g, '-').toLowerCase()}-subtitle` : undefined
             }
@@ -82,7 +83,7 @@ export default function StatisticsCard({
           {subtitle && (
             <p
               id={`${title.replace(/\s+/g, '-').toLowerCase()}-subtitle`}
-              className="text-sm text-muted-foreground"
+              className="text-xs sm:text-sm text-muted-foreground"
             >
               {subtitle}
             </p>

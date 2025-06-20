@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { cn } from '../../lib/utils';
@@ -48,38 +49,41 @@ export default function TopParks({ parks, type }: TopParksProps) {
       <CardContent className="space-y-3">
         {parks && parks.length > 0 ? (
           parks.slice(0, 3).map((park, index) => (
-            <div
+            <Link
               key={park.parkId}
-              className="group flex items-center justify-between p-4 bg-muted/30 hover:bg-muted/50 rounded-lg transition-all"
+              href={park.hierarchicalUrl}
+              className="block transition-transform hover:scale-[1.02]"
             >
-              <div className="flex items-center gap-4">
-                <div
-                  className={cn(
-                    'flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold shadow-lg',
-                    getMedalColor(index)
-                  )}
-                >
-                  {index + 1}
+              <div className="group flex items-center justify-between p-4 bg-muted/30 hover:bg-muted/50 rounded-lg transition-all">
+                <div className="flex items-center gap-4">
+                  <div
+                    className={cn(
+                      'flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold shadow-lg',
+                      getMedalColor(index)
+                    )}
+                  >
+                    {index + 1}
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                      {park.parkName}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {park.country} • {park.continent}
+                    </p>
+                  </div>
                 </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-medium text-foreground truncate group-hover:text-primary transition-colors">
-                    {park.parkName}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {park.country} • {park.continent}
-                  </p>
-                </div>
-              </div>
 
-              <div className="text-right space-y-1">
-                <Badge variant={colorVariant} className="text-lg font-bold px-3 py-1">
-                  {park.averageWaitTime.toFixed(0)} min
-                </Badge>
-                <div className="text-xs text-muted-foreground">
-                  {park.openRideCount}/{park.totalRideCount} rides
+                <div className="text-right space-y-1">
+                  <Badge variant={colorVariant} className="text-lg font-bold px-3 py-1">
+                    {park.averageWaitTime.toFixed(0)} min
+                  </Badge>
+                  <div className="text-xs text-muted-foreground">
+                    {park.openRideCount}/{park.totalRideCount} rides
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <div className="text-center py-8 text-muted-foreground">

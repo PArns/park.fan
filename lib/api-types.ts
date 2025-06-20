@@ -26,6 +26,7 @@ export interface StatisticsData {
       openRideCount: number;
       totalRideCount: number;
       operatingPercentage: number;
+      hierarchicalUrl: string;
     }>;
     quietestParks: Array<{
       parkId: number;
@@ -36,6 +37,7 @@ export interface StatisticsData {
       openRideCount: number;
       totalRideCount: number;
       operatingPercentage: number;
+      hierarchicalUrl: string;
     }>;
     longestWaitTimes: Array<{
       rideId: number;
@@ -46,6 +48,7 @@ export interface StatisticsData {
       waitTime: number;
       isOpen: boolean;
       lastUpdated: string;
+      hierarchicalUrl: string;
     }>;
     shortestWaitTimes: Array<{
       rideId: number;
@@ -56,6 +59,7 @@ export interface StatisticsData {
       waitTime: number;
       isOpen: boolean;
       lastUpdated: string;
+      hierarchicalUrl: string;
     }>;
     ridesByCountry: Array<{
       country: string;
@@ -114,6 +118,7 @@ export interface Park {
   openRideCount: number;
   totalRideCount: number;
   operatingPercentage: number;
+  hierarchicalUrl: string;
 }
 
 export interface CountryStats {
@@ -125,7 +130,7 @@ export interface CountryStats {
   flag?: string;
 }
 
-export interface ContinentData {
+export interface ContinentStats {
   [continent: string]: number;
 }
 
@@ -143,4 +148,240 @@ export interface RideWaitTime {
   waitTime: number;
   isOpen: boolean;
   lastUpdated: string;
+  hierarchicalUrl: string;
+}
+
+// New types for hierarchical pages based on actual API responses
+export interface ContinentApiData {
+  data: Array<{
+    id: number;
+    queueTimesId: number;
+    name: string;
+    country: string;
+    continent: string;
+    latitude: string;
+    longitude: string;
+    timezone: string;
+    parkGroup: {
+      id: number;
+      queueTimesId: number;
+      name: string;
+    };
+    themeAreas: Array<{
+      id: number;
+      queueTimesId: number;
+      name: string;
+      rides: Array<{
+        id: number;
+        queueTimesId: number;
+        name: string;
+        isActive: boolean;
+        currentQueueTime: {
+          waitTime: number;
+          isOpen: boolean;
+          lastUpdated: string;
+        };
+      }>;
+    }>;
+    operatingStatus: {
+      isOpen: boolean;
+      openRideCount: number;
+      totalRideCount: number;
+      operatingPercentage: number;
+    };
+    waitTimeDistribution: {
+      [key: string]: number;
+    };
+    weather: {
+      temperature: {
+        min: number;
+        max: number;
+      };
+      precipitationProbability: number;
+      weatherCode: number;
+      status: string;
+      weatherScore: number;
+    };
+    crowdLevel: {
+      level: number;
+      label: string;
+      ridesUsed: number;
+      totalRides: number;
+      historicalBaseline: number;
+      currentAverage: number;
+      confidence: number;
+      calculatedAt: string;
+    };
+    hierarchicalUrl: string;
+  }>;
+  pagination: {
+    page: number;
+    limit: number;
+    totalCount: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrev: boolean;
+  };
+}
+
+export interface CountryApiData {
+  data: Array<{
+    id: number;
+    queueTimesId: number;
+    name: string;
+    country: string;
+    continent: string;
+    latitude: string;
+    longitude: string;
+    timezone: string;
+    parkGroup: {
+      id: number;
+      queueTimesId: number;
+      name: string;
+    };
+    themeAreas: Array<{
+      id: number;
+      queueTimesId: number;
+      name: string;
+      rides: Array<{
+        id: number;
+        queueTimesId: number;
+        name: string;
+        isActive: boolean;
+        currentQueueTime: {
+          waitTime: number;
+          isOpen: boolean;
+          lastUpdated: string;
+        };
+      }>;
+    }>;
+    operatingStatus: {
+      isOpen: boolean;
+      openRideCount: number;
+      totalRideCount: number;
+      operatingPercentage: number;
+    };
+    waitTimeDistribution: {
+      [key: string]: number;
+    };
+    weather: {
+      temperature: {
+        min: number;
+        max: number;
+      };
+      precipitationProbability: number;
+      weatherCode: number;
+      status: string;
+      weatherScore: number;
+    };
+    crowdLevel: {
+      level: number;
+      label: string;
+      ridesUsed: number;
+      totalRides: number;
+      historicalBaseline: number;
+      currentAverage: number;
+      confidence: number;
+      calculatedAt: string;
+    };
+    hierarchicalUrl: string;
+  }>;
+  pagination: {
+    page: number;
+    limit: number;
+    totalCount: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrev: boolean;
+  };
+}
+
+export interface ParkApiData {
+  id: number;
+  queueTimesId: number;
+  name: string;
+  country: string;
+  continent: string;
+  latitude: string;
+  longitude: string;
+  timezone: string;
+  parkGroup: {
+    id: number;
+    queueTimesId: number;
+    name: string;
+  };
+  themeAreas: Array<{
+    id: number;
+    queueTimesId: number;
+    name: string;
+    rides: Array<{
+      id: number;
+      queueTimesId: number;
+      name: string;
+      isActive: boolean;
+      currentQueueTime: {
+        waitTime: number;
+        isOpen: boolean;
+        lastUpdated: string;
+      };
+    }>;
+  }>;
+  operatingStatus: {
+    isOpen: boolean;
+    openRideCount: number;
+    totalRideCount: number;
+    operatingPercentage: number;
+  };
+  waitTimeDistribution: {
+    [key: string]: number;
+  };
+  weather: {
+    temperature: {
+      min: number;
+      max: number;
+    };
+    precipitationProbability: number;
+    weatherCode: number;
+    status: string;
+    weatherScore: number;
+  };
+  crowdLevel: {
+    level: number;
+    label: string;
+    ridesUsed: number;
+    totalRides: number;
+    historicalBaseline: number;
+    currentAverage: number;
+    confidence: number;
+    calculatedAt: string;
+  };
+  hierarchicalUrl: string;
+}
+
+export interface RideApiData {
+  id: number;
+  name: string;
+  isActive: boolean;
+  park: {
+    id: number;
+    queueTimesId: number;
+    name: string;
+    country: string;
+    continent: string;
+    latitude: string;
+    longitude: string;
+    timezone: string;
+    hierarchicalUrl: string;
+  };
+  themeArea: {
+    id: number;
+    queueTimesId: number;
+    name: string;
+  };
+  currentQueueTime: {
+    waitTime: number;
+    isOpen: boolean;
+    lastUpdated: string;
+  };
+  hierarchicalUrl: string;
 }

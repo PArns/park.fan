@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { CACHE_REVALIDATE_TIME } from '@/lib/config';
 
 export async function GET() {
   try {
@@ -8,7 +9,7 @@ export async function GET() {
         'Content-Type': 'application/json',
         'User-Agent': 'park.fan-website/1.0',
       },
-      next: { revalidate: 300 }, // Cache für 5 Minuten
+      next: { revalidate: CACHE_REVALIDATE_TIME },
     });
 
     if (!response.ok) {

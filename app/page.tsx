@@ -17,16 +17,16 @@ import { fetchStatistics, transformStatisticsData } from '../lib/api';
 // Loading component for suspense
 function DashboardLoading() {
   return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
       <div className="animate-fade-in">
         <PageHeader title="Dashboard" description="Loading theme park statistics..." />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="bg-card rounded-xl p-6 shadow-sm border border-border">
+            <div key={i} className="bg-card rounded-xl p-3 sm:p-4 lg:p-6 shadow-sm border border-border">
               <div className="animate-pulse">
-                <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-                <div className="h-8 bg-muted rounded w-1/2 mb-2"></div>
-                <div className="h-3 bg-muted rounded w-2/3"></div>
+                <div className="h-3 sm:h-4 bg-muted rounded w-3/4 mb-2"></div>
+                <div className="h-6 sm:h-8 bg-muted rounded w-1/2 mb-2"></div>
+                <div className="h-2 sm:h-3 bg-muted rounded w-2/3"></div>
               </div>
             </div>
           ))}
@@ -43,15 +43,15 @@ async function DashboardContent() {
     const statistics = transformStatisticsData(rawStatistics);
 
     return (
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="animate-fade-in space-y-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+        <div className="animate-fade-in space-y-6 lg:space-y-8">
           <PageHeader
             title="Theme Park Dashboard"
             description="Real-time statistics from theme parks worldwide"
           />
 
           {/* Overall Statistics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             <StatisticsCard
               title="Total Parks"
               value={statistics.totalParks}
@@ -113,9 +113,9 @@ async function DashboardContent() {
           )}
 
           {/* Geographic Statistics */}
-          <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">Global Statistics</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <section className="space-y-4 lg:space-y-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Global Statistics</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
               <ContinentStats continents={statistics.continentsForComponent} />
               <RidesByContinent continents={statistics.rideStatistics?.ridesByContinent || []} />
               <RidesByCountry countries={statistics.rideStatistics?.ridesByCountry || []} />
@@ -123,8 +123,8 @@ async function DashboardContent() {
           </section>
 
           {/* Country Statistics */}
-          <section className="space-y-6">
-            <h2 className="text-2xl font-bold text-foreground">Parks by Country</h2>
+          <section className="space-y-4 lg:space-y-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-foreground">Parks by Country</h2>
             <CountryStats countries={statistics.countriesForComponent} />
           </section>
 

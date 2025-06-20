@@ -1,8 +1,9 @@
 import { MapPin, Activity } from 'lucide-react';
+import Link from 'next/link';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
-import { getCountryFlag } from '../../lib/api';
+import { getCountryFlag, normalizePathSegment } from '../../lib/api';
 
 interface RidesByCountryProps {
   countries: Array<{
@@ -17,6 +18,35 @@ interface RidesByCountryProps {
 export function RidesByCountry({ countries }: RidesByCountryProps) {
   const topCountries = countries.slice(0, 5);
   const maxRides = Math.max(...topCountries.map((c) => c.totalRides));
+
+  // Helper function to determine continent for country
+  const getCountryContinent = (countryName: string) => {
+    const continentMap: { [key: string]: string } = {
+      'United States': 'north-america',
+      'Canada': 'north-america',
+      'Mexico': 'north-america',
+      'Germany': 'europe',
+      'France': 'europe',
+      'United Kingdom': 'europe',
+      'England': 'europe',
+      'Italy': 'europe',
+      'Spain': 'europe',
+      'Netherlands': 'europe',
+      'Belgium': 'europe',
+      'Austria': 'europe',
+      'Switzerland': 'europe',
+      'Denmark': 'europe',
+      'Sweden': 'europe',
+      'Norway': 'europe',
+      'Finland': 'europe',
+      'Japan': 'asia',
+      'China': 'asia',
+      'South Korea': 'asia',
+      'Australia': 'oceania',
+      'Brazil': 'south-america',
+    };
+    return continentMap[countryName] || 'europe'; // Default to europe if not found
+  };
 
   const getRankIcon = (index: number) => {
     switch (index) {
@@ -50,46 +80,53 @@ export function RidesByCountry({ countries }: RidesByCountryProps) {
       </div>
 
       <div className="space-y-4">
-        {topCountries.map((country, index) => (
-          <div key={country.country} className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg">
-            <div className="text-4xl flex items-center justify-center w-16 h-16 bg-muted/50 rounded-full">
-              {getRankIcon(index)}
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-2xl">{getCountryFlag(country.country)}</span>
-                <h4 className="font-medium text-foreground">{country.country}</h4>
-              </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Total Rides</span>
-                  <span className="font-medium text-foreground">
-                    {country.totalRides.toLocaleString()}
-                  </span>
+        {topCountries.map((country, index) => {
+          const continentSlug = getCountryContinent(country.country);
+          const countrySlug = normalizePathSegment(country.country);
+          
+          return (
+            <Link key={country.country} href={`/parks/${continentSlug}/${countrySlug}`}>
+              <div className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
+                <div className="text-4xl flex items-center justify-center w-16 h-16 bg-muted/50 rounded-full">
+                  {getRankIcon(index)}
                 </div>
 
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Open Now</span>
-                  <div className="flex items-center gap-2">
-                    <span className="font-medium text-foreground">
-                      {country.openRides.toLocaleString()}
-                    </span>
-                    <Badge
-                      variant={getPerformanceVariant(country.operatingPercentage)}
-                      className="text-xs"
-                    >
-                      {country.operatingPercentage}%
-                    </Badge>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">{getCountryFlag(country.country)}</span>
+                    <h4 className="font-medium text-foreground hover:text-primary transition-colors">{country.country}</h4>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Total Rides</span>
+                      <span className="font-medium text-foreground">
+                        {country.totalRides.toLocaleString()}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">Open Now</span>
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium text-foreground">
+                          {country.openRides.toLocaleString()}
+                        </span>
+                        <Badge
+                          variant={getPerformanceVariant(country.operatingPercentage)}
+                          className="text-xs"
+                        >
+                          {country.operatingPercentage}%
+                        </Badge>
+                      </div>
+                    </div>
+
+                    <Progress value={(country.totalRides / maxRides) * 100} className="h-2" />
                   </div>
                 </div>
-
-                <Progress value={(country.totalRides / maxRides) * 100} className="h-2" />
               </div>
-            </div>
-          </div>
-        ))}
+            </Link>
+          );
+        })}
       </div>
 
       {countries.length === 0 && (
