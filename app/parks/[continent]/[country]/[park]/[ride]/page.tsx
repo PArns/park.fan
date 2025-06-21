@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { WaitTimeBadge } from '@/components/wait-time-badge';
 import { fetchRideDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatDateTime } from '@/lib/date-utils';
 import { formatSlugToTitle } from '@/lib/utils';
@@ -50,20 +51,11 @@ export async function generateMetadata({ params }: RidePageProps): Promise<Metad
 }
 
 function getWaitTimeColor(waitTime: number): string {
-  if (waitTime === 0) return 'text-gray-500';
+  if (waitTime === 0) return 'text-muted-foreground';
   if (waitTime <= 15) return 'text-green-600';
   if (waitTime <= 30) return 'text-yellow-600';
   if (waitTime <= 60) return 'text-orange-600';
   return 'text-red-600';
-}
-
-function getWaitTimeBadgeVariant(
-  waitTime: number
-): 'default' | 'secondary' | 'destructive' | 'outline' {
-  if (waitTime === 0) return 'secondary';
-  if (waitTime <= 15) return 'default';
-  if (waitTime <= 30) return 'outline';
-  return 'destructive';
 }
 
 function getStatusBadge(isActive: boolean, isOpen: boolean) {
@@ -72,7 +64,7 @@ function getStatusBadge(isActive: boolean, isOpen: boolean) {
   }
   if (isOpen) {
     return (
-      <Badge variant="default" className="bg-green-500 hover:bg-green-600">
+      <Badge variant="default" className="bg-green-500 hover:bg-green-600 text-white">
         Operating
       </Badge>
     );
@@ -143,24 +135,26 @@ export default async function RidePage({ params }: RidePageProps) {
                       <div className="text-xl text-muted-foreground mb-4">
                         {data.currentQueueTime.waitTime > 0 ? 'minutes' : 'Walk On'}
                       </div>
-                      <Badge
-                        variant={getWaitTimeBadgeVariant(data.currentQueueTime.waitTime)}
+                      <WaitTimeBadge 
+                        waitTime={data.currentQueueTime.waitTime} 
                         className="text-lg px-4 py-2"
-                      >
-                        {data.currentQueueTime.waitTime > 0
-                          ? `${data.currentQueueTime.waitTime} min wait`
-                          : 'No Wait'}
-                      </Badge>
+                        showText={false}
+                      />
+                      <div className="text-sm text-muted-foreground mt-2">
+                        {data.currentQueueTime.waitTime > 0 ? 'wait time' : 'No wait'}
+                      </div>
                     </>
                   ) : (
                     <>
-                      <div className="text-6xl font-bold mb-2 text-gray-500">—</div>
+                      <div className="text-6xl font-bold mb-2 text-muted-foreground">—</div>
                       <div className="text-xl text-muted-foreground mb-4">
                         {data.isActive ? 'Temporarily Closed' : 'Inactive'}
                       </div>
-                      <Badge variant="secondary" className="text-lg px-4 py-2">
-                        Not Operating
-                      </Badge>
+                      <WaitTimeBadge 
+                        waitTime={0} 
+                        status="closed" 
+                        className="text-lg px-4 py-2"
+                      />
                     </>
                   )}
                 </div>
@@ -262,22 +256,28 @@ export default async function RidePage({ params }: RidePageProps) {
               <CardContent>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <Badge variant="default" className="bg-green-500">
-                      0-15 min
-                    </Badge>
-                    <span>Great time to ride</span>
+                    <WaitTimeBadge waitTime={0} showText={false} className="min-w-[80px] justify-center" />
+                    <span>Walk On - No wait time</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge variant="outline">16-30 min</Badge>
-                    <span>Moderate wait</span>
+                    <WaitTimeBadge waitTime={10} showText={false} className="min-w-[80px] justify-center" />
+                    <span>1-15 min - Short wait</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge variant="destructive">31+ min</Badge>
-                    <span>Long wait</span>
+                    <WaitTimeBadge waitTime={25} showText={false} className="min-w-[80px] justify-center" />
+                    <span>16-30 min - Moderate wait</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge variant="secondary">Walk On</Badge>
-                    <span>No wait time</span>
+                    <WaitTimeBadge waitTime={45} showText={false} className="min-w-[80px] justify-center" />
+                    <span>31-60 min - Long wait</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <WaitTimeBadge waitTime={90} showText={false} className="min-w-[80px] justify-center" />
+                    <span>60+ min - Very long wait</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <WaitTimeBadge waitTime={0} status="closed" showText={false} className="min-w-[80px] justify-center" />
+                    <span>Closed - Ride not operating</span>
                   </div>
                 </div>
               </CardContent>

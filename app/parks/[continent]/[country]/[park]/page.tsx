@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { WaitTimeBadge } from '@/components/wait-time-badge';
 import { fetchParkDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatPercentage } from '@/lib/date-utils';
 import { formatSlugToTitle } from '@/lib/utils';
@@ -41,23 +42,6 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       description: 'The requested theme park could not be found.',
     };
   }
-}
-
-function getWaitTimeColor(waitTime: number): string {
-  if (waitTime === 0) return 'text-gray-500';
-  if (waitTime <= 15) return 'text-green-600';
-  if (waitTime <= 30) return 'text-yellow-600';
-  if (waitTime <= 60) return 'text-orange-600';
-  return 'text-red-600';
-}
-
-function getWaitTimeBadgeVariant(
-  waitTime: number
-): 'default' | 'secondary' | 'destructive' | 'outline' {
-  if (waitTime === 0) return 'secondary';
-  if (waitTime <= 15) return 'default';
-  if (waitTime <= 30) return 'outline';
-  return 'destructive';
 }
 
 export default async function ParkPage({ params }: ParkPageProps) {
@@ -205,16 +189,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                             </div>
                             <div className="ml-3">
                               {ride.isActive && ride.currentQueueTime.isOpen ? (
-                                <Badge
-                                  variant={getWaitTimeBadgeVariant(ride.currentQueueTime.waitTime)}
-                                  className={getWaitTimeColor(ride.currentQueueTime.waitTime)}
-                                >
-                                  {ride.currentQueueTime.waitTime > 0
-                                    ? `${ride.currentQueueTime.waitTime} min`
-                                    : 'Walk On'}
-                                </Badge>
+                                <WaitTimeBadge waitTime={ride.currentQueueTime.waitTime} />
                               ) : (
-                                <Badge variant="secondary">Closed</Badge>
+                                <WaitTimeBadge waitTime={0} status="closed" />
                               )}
                             </div>
                           </div>
@@ -249,9 +226,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                             </div>
                           </div>
                           <div className="ml-3 flex items-center gap-2">
-                            <Badge variant="destructive">
-                              {ride.currentQueueTime.waitTime} min
-                            </Badge>
+                            <WaitTimeBadge waitTime={ride.currentQueueTime.waitTime} />
                             <span className="text-muted-foreground text-sm">#{index + 1}</span>
                           </div>
                         </div>
@@ -283,7 +258,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                             </div>
                           </div>
                           <div className="ml-3 flex items-center gap-2">
-                            <Badge variant="default">{ride.currentQueueTime.waitTime} min</Badge>
+                            <WaitTimeBadge waitTime={ride.currentQueueTime.waitTime} />
                             <span className="text-muted-foreground text-sm">#{index + 1}</span>
                           </div>
                         </div>

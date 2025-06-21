@@ -1,6 +1,6 @@
 import { Clock, TrendingUp } from 'lucide-react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
+import { WaitTimeBadge } from '../wait-time-badge';
 import { RideWaitTime } from '../../lib/api-types';
 import { getCountryFlag } from '../../lib/api';
 import { ClientTime } from '../ui/client-time';
@@ -24,12 +24,6 @@ export function BusiestRides({ rides }: BusiestRidesProps) {
       default:
         return '🏆';
     }
-  };
-
-  const getWaitTimeVariant = (waitTime: number): 'error' | 'warning' | 'warning' => {
-    if (waitTime >= 60) return 'error';
-    if (waitTime >= 30) return 'warning';
-    return 'warning';
   };
 
   return (
@@ -75,12 +69,10 @@ export function BusiestRides({ rides }: BusiestRidesProps) {
               </div>
 
               <div className="text-right">
-                <Badge
-                  variant={getWaitTimeVariant(ride.waitTime)}
+                <WaitTimeBadge 
+                  waitTime={ride.waitTime} 
                   className="text-lg font-bold px-3 py-1"
-                >
-                  {ride.waitTime} min
-                </Badge>
+                />
               </div>
             </div>
           </Link>

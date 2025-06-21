@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Clock, TrendingDown } from 'lucide-react';
 import { Card } from '../ui/card';
-import { Badge } from '../ui/badge';
+import { WaitTimeBadge } from '../wait-time-badge';
 import { RideWaitTime } from '../../lib/api-types';
 import { getCountryFlag } from '../../lib/api';
 import { ClientTime } from '../ui/client-time';
@@ -44,12 +44,6 @@ export function QuietestRides({ rides }: QuietestRidesProps) {
       default:
         return '🏆';
     }
-  };
-
-  const getWaitTimeVariant = (waitTime: number): 'success' | 'success' | 'info' => {
-    if (waitTime === 0) return 'success';
-    if (waitTime <= 10) return 'success';
-    return 'info';
   };
 
   return (
@@ -95,12 +89,10 @@ export function QuietestRides({ rides }: QuietestRidesProps) {
               </div>
 
               <div className="text-right">
-                <Badge
-                  variant={getWaitTimeVariant(ride.waitTime)}
+                <WaitTimeBadge 
+                  waitTime={ride.waitTime} 
                   className="text-lg font-bold px-3 py-1"
-                >
-                  {ride.waitTime === 0 ? 'Walk-On' : `${ride.waitTime} min`}
-                </Badge>
+                />
               </div>
             </div>
           </Link>
