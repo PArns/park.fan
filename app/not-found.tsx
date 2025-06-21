@@ -36,10 +36,10 @@ export default function NotFound() {
 
           <div className="text-sm text-muted-foreground">
             Or explore our{' '}
-            <Link href="/analytics" className="text-primary hover:underline">
-              Analytics
+            <Link href="/parks" className="text-primary hover:underline">
+              Parks
             </Link>{' '}
-            page
+            directory
           </div>
         </div>
       </div>

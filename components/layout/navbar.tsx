@@ -3,13 +3,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, BarChart3, TrendingUp } from 'lucide-react';
+import { Menu, X, BarChart3, MapPin } from 'lucide-react';
 import { ThemeToggle } from '../interactive/theme-toggle';
 import { Button } from '../ui/button';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: BarChart3 },
-  { name: 'Analytics', href: '/analytics', icon: TrendingUp },
+  { name: 'Parks', href: '/parks', icon: MapPin },
 ];
 
 export function Navbar() {
