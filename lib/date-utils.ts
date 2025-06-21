@@ -71,9 +71,12 @@ export function formatNumber(value: number): string {
 
 /**
  * Formats a percentage according to the user's locale
+ * @param value - The percentage value (0-100 range, e.g., 85 for 85%)
+ * @param decimals - Number of decimal places to show
  */
-export function formatPercentage(value: number, decimals: number = 1): string {
-  return value.toLocaleString(undefined, {
+export function formatPercentage(value: number, decimals: number = 0): string {
+  // Convert from 0-100 range to 0-1 range for toLocaleString
+  return (value / 100).toLocaleString(undefined, {
     style: 'percent',
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,

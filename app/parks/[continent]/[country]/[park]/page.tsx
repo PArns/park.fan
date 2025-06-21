@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { StatCard } from '@/components/display/stat-card';
+import { PageBreadcrumbs } from '@/components/layout/page-breadcrumbs';
 import { WaitTimeBadge } from '@/components/wait-time-badge';
 import { fetchParkDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatPercentage } from '@/lib/date-utils';
@@ -85,71 +87,59 @@ export default async function ParkPage({ params }: ParkPageProps) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <nav className="text-sm text-muted-foreground mb-4">
-            <Link href={`/parks/${continent}`} className="hover:text-primary">
-              {continentName}
-            </Link>
-            {' / '}
-            <Link href={`/parks/${continent}/${country}`} className="hover:text-primary">
-              {countryName}
-            </Link>
-            {' / '}
-            <span className="text-foreground">{data.name}</span>
-          </nav>
+          <PageBreadcrumbs
+            items={[
+              { href: '/parks', label: 'All Parks' },
+              { href: `/parks/${continent}`, label: continentName },
+              { href: `/parks/${continent}/${country}`, label: countryName },
+              { label: data.name },
+            ]}
+          />
 
           <div className="flex items-center gap-4 mb-6">
             <h1 className="text-4xl font-bold">{data.name}</h1>
             <Badge
-              variant={data.operatingStatus.isOpen ? 'default' : 'secondary'}
-              className={`text-lg px-3 py-1 ${data.operatingStatus.isOpen ? 'bg-green-500 hover:bg-green-600' : ''}`}
+              variant={data.operatingStatus.isOpen ? 'success' : 'secondary'}
+              className="text-lg px-3 py-1"
             >
               {data.operatingStatus.isOpen ? 'Open' : 'Closed'}
             </Badge>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
-            <Card>
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-primary">
-                  {data.operatingStatus.totalRideCount}
-                </div>
-                <div className="text-sm text-muted-foreground">Total Rides</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-green-600">
-                  {data.operatingStatus.openRideCount}
-                </div>
-                <div className="text-sm text-muted-foreground">Open Rides</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-blue-600">{data.crowdLevel.label}</div>
-                <div className="text-sm text-muted-foreground">Crowd Level</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-orange-600 capitalize">
-                  {data.weather?.current?.status || 'Unknown'}
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {data.weather?.current?.temperature?.max
-                    ? `${data.weather.current.temperature.max}°C`
-                    : 'Temperature N/A'}
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <div className="text-2xl font-bold text-purple-600">
-                  {formatPercentage(data.operatingStatus.operatingPercentage / 100, 0)}
-                </div>
-                <div className="text-sm text-muted-foreground">Operating</div>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+            <StatCard
+              value={data.operatingStatus.totalRideCount.toString()}
+              label="Total Rides"
+              color="text-primary"
+            />
+            <StatCard
+              value={data.operatingStatus.openRideCount.toString()}
+              label="Open Rides"
+              color="text-green-600"
+            />
+            <StatCard
+              value={data.crowdLevel?.label || 'Unknown'}
+              label="Crowd Level"
+              color="text-blue-600"
+            />
+            <StatCard
+              value={
+                data.weather?.current?.status
+                  ? `${data.weather.current.status.charAt(0).toUpperCase() + data.weather.current.status.slice(1)}`
+                  : 'Unknown'
+              }
+              label={
+                data.weather?.current?.temperature?.max
+                  ? `Weather (${data.weather.current.temperature.max}°C)`
+                  : 'Weather'
+              }
+              color="text-orange-600"
+            />
+            <StatCard
+              value={formatPercentage(data.operatingStatus.operatingPercentage)}
+              label="Operating"
+              color="text-purple-600"
+            />
           </div>
         </div>
 
@@ -283,7 +273,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Operator:</span>
-                    <span className="font-medium">{data.parkGroup.name}</span>
+                    <span className="font-medium">{data.parkGroup?.name || 'Unknown'}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Theme Areas:</span>
@@ -291,7 +281,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Weather Score:</span>
-                    <span className="font-medium">{data.weather.current.weatherScore}/100</span>
+                    <span className="font-medium">
+                      {data.weather?.current?.weatherScore
+                        ? `${data.weather.current.weatherScore}/100`
+                        : 'N/A'}
+                    </span>
                   </div>
                 </div>
               </CardContent>

@@ -2,7 +2,14 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { fetchStatistics, getCountryFlag, normalizePathSegment } from '@/lib/api';
+import { StatCard } from '@/components/display/stat-card';
+import { SectionHeader } from '@/components/layout/section-header';
+import {
+  fetchStatistics,
+  getCountryFlag,
+  normalizePathSegment,
+  getWaitTimeBadgeVariant,
+} from '@/lib/api';
 import { formatNumber, formatPercentage } from '@/lib/date-utils';
 
 export const metadata: Metadata = {
@@ -48,38 +55,26 @@ export default async function ParksPage() {
           </p>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-6 lg:mb-8">
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-primary">
-                  {formatNumber(stats.totalParks)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Parks</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-green-600">
-                  {formatNumber(stats.parkOperatingStatus?.openParks || 0)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Open Parks</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-blue-600">
-                  {formatNumber(stats.totalRides)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Rides</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-orange-600">
-                  {formatNumber(stats.rideStatistics?.activeRides || 0)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Active Rides</div>
-              </CardContent>
-            </Card>
+            <StatCard
+              value={formatNumber(stats.totalParks)}
+              label="Total Parks"
+              color="text-primary"
+            />
+            <StatCard
+              value={formatNumber(stats.parkOperatingStatus?.openParks || 0)}
+              label="Open Parks"
+              color="text-green-600"
+            />
+            <StatCard
+              value={formatNumber(stats.totalRides)}
+              label="Total Rides"
+              color="text-blue-600"
+            />
+            <StatCard
+              value={formatNumber(stats.rideStatistics?.activeRides || 0)}
+              label="Active Rides"
+              color="text-orange-600"
+            />
           </div>
         </div>
 
@@ -122,134 +117,118 @@ export default async function ParksPage() {
           </div>
 
           <div className="space-y-6 lg:space-y-8">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 lg:mb-6">
-                Busiest Parks Right Now
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
-                {stats.rideStatistics.busiestParks.slice(0, 8).map((park, index) => (
-                  <Link
-                    key={park.parkId}
-                    href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
-                    className="block transition-transform hover:scale-[1.01]"
-                  >
-                    <Card className="hover:shadow-md transition-shadow cursor-pointer">
-                      <CardContent className="p-3 sm:p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                            <Badge variant="outline" className="text-xs flex-shrink-0">
-                              #{index + 1}
-                            </Badge>
-                            <div className="min-w-0">
-                              <div className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
-                                {park.parkName}
-                              </div>
-                              <div className="text-xs sm:text-sm text-muted-foreground truncate">
-                                {getCountryFlag(park.country)} {park.country}
-                              </div>
+            <SectionHeader title="Busiest Parks Right Now" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
+              {stats.rideStatistics.busiestParks.slice(0, 8).map((park, index) => (
+                <Link
+                  key={park.parkId}
+                  href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
+                  className="block transition-transform hover:scale-[1.01]"
+                >
+                  <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                    <CardContent className="p-3 sm:p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                          <Badge variant="outline" className="text-xs flex-shrink-0">
+                            #{index + 1}
+                          </Badge>
+                          <div className="min-w-0">
+                            <div className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
+                              {park.parkName}
                             </div>
-                          </div>
-                          <div className="text-right ml-2">
-                            <div className="text-lg sm:text-xl font-bold text-primary">
-                              {park.averageWaitTime.toFixed(0)} min
+                            <div className="text-xs sm:text-sm text-muted-foreground truncate">
+                              {getCountryFlag(park.country)} {park.country}
                             </div>
-                            <div className="text-xs text-muted-foreground">avg. wait</div>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+                        <div className="text-right ml-2">
+                          <Badge
+                            variant={getWaitTimeBadgeVariant(park.averageWaitTime)}
+                            className="text-xs px-2 py-1"
+                          >
+                            {park.averageWaitTime.toFixed(0)} min
+                          </Badge>
+                          <div className="text-xs text-muted-foreground mt-1">avg. wait</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
 
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 lg:mb-6">
-                Quietest Parks Right Now
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
-                {stats.rideStatistics.quietestParks.slice(0, 8).map((park, index) => (
-                  <Link
-                    key={park.parkId}
-                    href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
-                    className="block transition-transform hover:scale-[1.01]"
-                  >
-                    <Card className="hover:shadow-md transition-shadow cursor-pointer">
-                      <CardContent className="p-3 sm:p-4">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-                            <Badge
-                              variant="outline"
-                              className="text-xs flex-shrink-0 bg-green-50 text-green-700 border-green-200"
-                            >
-                              #{index + 1}
-                            </Badge>
-                            <div className="min-w-0">
-                              <div className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
-                                {park.parkName}
-                              </div>
-                              <div className="text-xs sm:text-sm text-muted-foreground truncate">
-                                {getCountryFlag(park.country)} {park.country}
-                              </div>
+            <SectionHeader title="Quietest Parks Right Now" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4">
+              {stats.rideStatistics.quietestParks.slice(0, 8).map((park, index) => (
+                <Link
+                  key={park.parkId}
+                  href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
+                  className="block transition-transform hover:scale-[1.01]"
+                >
+                  <Card className="hover:shadow-md transition-shadow cursor-pointer">
+                    <CardContent className="p-3 sm:p-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                          <Badge variant="outline" className="text-xs flex-shrink-0">
+                            #{index + 1}
+                          </Badge>
+                          <div className="min-w-0">
+                            <div className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
+                              {park.parkName}
                             </div>
-                          </div>
-                          <div className="text-right ml-2">
-                            <div className="text-lg sm:text-xl font-bold text-green-600">
-                              {park.averageWaitTime.toFixed(0)} min
+                            <div className="text-xs sm:text-sm text-muted-foreground truncate">
+                              {getCountryFlag(park.country)} {park.country}
                             </div>
-                            <div className="text-xs text-muted-foreground">avg. wait</div>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+                        <div className="text-right ml-2">
+                          <Badge variant="success" className="text-xs px-2 py-1">
+                            {park.averageWaitTime.toFixed(0)} min
+                          </Badge>
+                          <div className="text-xs text-muted-foreground mt-1">avg. wait</div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
 
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 lg:mb-6">Featured Parks</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                {stats.rideStatistics.busiestParks.slice(0, 6).map((park) => (
-                  <Link
-                    key={park.parkId}
-                    href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
-                    className="block transition-transform hover:scale-[1.02]"
-                  >
-                    <Card className="hover:shadow-lg transition-all cursor-pointer h-full">
-                      <CardContent className="p-4 sm:p-6">
-                        <div className="space-y-3">
-                          <div className="flex items-start justify-between">
-                            <div className="min-w-0 flex-1">
-                              <h3 className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
-                                {park.parkName}
-                              </h3>
-                              <div className="text-xs sm:text-sm text-muted-foreground mt-1">
-                                {getCountryFlag(park.country)} {park.country}
-                              </div>
+            <SectionHeader title="Featured Parks" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+              {stats.rideStatistics.busiestParks.slice(0, 6).map((park) => (
+                <Link
+                  key={park.parkId}
+                  href={`/parks/${normalizePathSegment(park.continent)}/${normalizePathSegment(park.country)}/${normalizePathSegment(park.parkName)}`}
+                  className="block transition-transform hover:scale-[1.02]"
+                >
+                  <Card className="hover:shadow-lg transition-all cursor-pointer h-full">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="space-y-3">
+                        <div className="flex items-start justify-between">
+                          <div className="min-w-0 flex-1">
+                            <h3 className="font-semibold hover:text-primary transition-colors text-sm sm:text-base truncate">
+                              {park.parkName}
+                            </h3>
+                            <div className="text-xs sm:text-sm text-muted-foreground mt-1">
+                              {getCountryFlag(park.country)} {park.country}
                             </div>
-                            <Badge
-                              variant={
-                                park.averageWaitTime > 30
-                                  ? 'destructive'
-                                  : park.averageWaitTime > 15
-                                    ? 'warning'
-                                    : 'success'
-                              }
-                              className="text-xs"
-                            >
-                              {park.averageWaitTime.toFixed(0)} min
-                            </Badge>
                           </div>
-                          <div className="text-xs text-muted-foreground">
-                            Average wait time across all rides
-                          </div>
+                          <Badge
+                            variant={getWaitTimeBadgeVariant(park.averageWaitTime)}
+                            className="text-xs"
+                          >
+                            {park.averageWaitTime.toFixed(0)} min
+                          </Badge>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
+                        <div className="text-xs text-muted-foreground">
+                          Average wait time across all rides
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>{' '}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

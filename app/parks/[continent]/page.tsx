@@ -3,7 +3,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { fetchContinentDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
+import { StatCard } from '@/components/display/stat-card';
+import { PageBreadcrumbs } from '@/components/layout/page-breadcrumbs';
+import {
+  fetchContinentDetails,
+  getCountryFlag,
+  isStaticFileRequest,
+  normalizePathSegment,
+} from '@/lib/api';
 import { formatNumber, formatPercentage } from '@/lib/date-utils';
 import { formatSlugToTitle } from '@/lib/utils';
 
@@ -70,38 +77,21 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
         <div className="mb-6 lg:mb-8">
+          <PageBreadcrumbs
+            items={[
+              { href: '/parks', label: 'All Parks' },
+              { label: continentName, isActive: true },
+            ]}
+          />
+
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">
             {continentName} Theme Parks
           </h1>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-4 lg:mb-6">
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-primary">{totalParks}</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Parks</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-green-600">{openParks}</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Open Today</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-blue-600">
-                  {formatNumber(totalRides)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Rides</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-orange-600">
-                  {formatNumber(openRides)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Open Rides</div>
-              </CardContent>
-            </Card>
+            <StatCard value={totalParks.toString()} label="Total Parks" color="text-primary" />
+            <StatCard value={openParks.toString()} label="Open Today" color="text-green-600" />
+            <StatCard value={formatNumber(totalRides)} label="Total Rides" color="text-blue-600" />
+            <StatCard value={formatNumber(openRides)} label="Open Rides" color="text-orange-600" />
           </div>
         </div>
 
@@ -109,9 +99,14 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
           {Object.entries(parksByCountry).map(([country, parks]) => (
             <div key={country}>
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2 mb-4">
-                <h2 className="text-xl sm:text-2xl font-semibold">
-                  {getCountryFlag(country)} {country}
-                </h2>
+                <Link
+                  href={`/parks/${continent}/${normalizePathSegment(country)}`}
+                  className="hover:text-primary transition-colors"
+                >
+                  <h2 className="text-xl sm:text-2xl font-semibold">
+                    {getCountryFlag(country)} {country}
+                  </h2>
+                </Link>
                 <Badge variant="outline" className="text-xs w-fit">
                   {parks.length} park{parks.length !== 1 ? 's' : ''}
                 </Badge>
@@ -131,8 +126,8 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
                             {park.name}
                           </CardTitle>
                           <Badge
-                            variant={park.operatingStatus.isOpen ? 'default' : 'secondary'}
-                            className={`text-xs ${park.operatingStatus.isOpen ? 'bg-green-500 hover:bg-green-600' : ''}`}
+                            variant={park.operatingStatus.isOpen ? 'success' : 'secondary'}
+                            className="text-xs"
                           >
                             {park.operatingStatus.isOpen ? 'Open' : 'Closed'}
                           </Badge>
@@ -148,12 +143,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
                               {park.operatingStatus.totalRideCount}
                               {park.operatingStatus.totalRideCount > 0 && (
                                 <span className="text-muted-foreground ml-1">
-                                  (
-                                  {formatPercentage(
-                                    park.operatingStatus.operatingPercentage / 100,
-                                    0
-                                  )}
-                                  )
+                                  ({formatPercentage(park.operatingStatus.operatingPercentage, 0)})
                                 </span>
                               )}
                             </span>
@@ -163,14 +153,18 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
                             <>
                               <div className="flex justify-between text-xs sm:text-sm">
                                 <span className="text-muted-foreground">Crowd Level:</span>
-                                <span className="font-medium">{park.crowdLevel.label}</span>
+                                <span className="font-medium">
+                                  {park.crowdLevel?.label || 'Unknown'}
+                                </span>
                               </div>
 
                               <div className="flex justify-between text-xs sm:text-sm">
                                 <span className="text-muted-foreground">Weather:</span>
                                 <span className="font-medium capitalize">
-                                  {park.weather.current.status}{' '}
-                                  {park.weather.current.temperature.max}°C
+                                  {park.weather?.current?.status || 'Unknown'}{' '}
+                                  {park.weather?.current?.temperature?.max
+                                    ? `${park.weather.current.temperature.max}°C`
+                                    : 'N/A'}
                                 </span>
                               </div>
                             </>

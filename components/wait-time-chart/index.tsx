@@ -11,11 +11,11 @@ export default function WaitTimeChart({ distribution }: WaitTimeChartProps) {
   const totalRides = Object.values(distribution || {}).reduce((sum, count) => sum + count, 0);
 
   const categories = [
-    { key: '0-10', label: '0-10 min', color: 'success', bgColor: 'bg-green-500' },
-    { key: '11-30', label: '11-30 min', color: 'warning', bgColor: 'bg-yellow-500' },
-    { key: '31-60', label: '31-60 min', color: 'warning', bgColor: 'bg-orange-500' },
-    { key: '61-120', label: '61-120 min', color: 'error', bgColor: 'bg-red-500' },
-    { key: '120+', label: '120+ min', color: 'error', bgColor: 'bg-red-700' },
+    { key: '0-10', label: '0-15 min', color: 'success', bgColor: 'bg-green-500' },
+    { key: '11-30', label: '16-30 min', color: 'warning', bgColor: 'bg-orange-500' },
+    { key: '31-60', label: '31-60 min', color: 'error', bgColor: 'bg-red-500' },
+    { key: '61-120', label: '61-120 min', color: 'error', bgColor: 'bg-red-700' },
+    { key: '120+', label: '121+ min', color: 'error', bgColor: 'bg-purple-600' },
   ] as const;
 
   return (

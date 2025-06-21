@@ -3,7 +3,7 @@ import { Badge } from '../ui/badge';
 import Link from 'next/link';
 import { CountryStats as CountryStatsType } from '../../lib/api-types';
 import { MapPin } from 'lucide-react';
-import { normalizePathSegment } from '../../lib/api';
+import { normalizePathSegment, getCountryContinent } from '../../lib/api';
 
 interface CountryStatsProps {
   countries: CountryStatsType[];
@@ -47,36 +47,6 @@ export default function CountryStats({ countries }: CountryStatsProps) {
       <CardContent>
         <div className="space-y-3">
           {topCountries.map((country) => {
-            // We need to determine the continent for the country
-            // For now, we'll use a simple mapping for major countries
-            const getCountryContinent = (countryName: string) => {
-              const continentMap: { [key: string]: string } = {
-                'United States': 'north-america',
-                Canada: 'north-america',
-                Mexico: 'north-america',
-                Germany: 'europe',
-                France: 'europe',
-                'United Kingdom': 'europe',
-                England: 'europe',
-                Italy: 'europe',
-                Spain: 'europe',
-                Netherlands: 'europe',
-                Belgium: 'europe',
-                Austria: 'europe',
-                Switzerland: 'europe',
-                Denmark: 'europe',
-                Sweden: 'europe',
-                Norway: 'europe',
-                Finland: 'europe',
-                Japan: 'asia',
-                China: 'asia',
-                'South Korea': 'asia',
-                Australia: 'oceania',
-                Brazil: 'south-america',
-              };
-              return continentMap[countryName] || 'europe'; // Default to europe if not found
-            };
-
             const continentSlug = getCountryContinent(country.country);
             const countrySlug = normalizePathSegment(country.country);
 

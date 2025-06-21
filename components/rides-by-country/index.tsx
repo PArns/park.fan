@@ -3,7 +3,12 @@ import Link from 'next/link';
 import { Card } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Progress } from '../ui/progress';
-import { getCountryFlag, normalizePathSegment } from '../../lib/api';
+import {
+  getCountryFlag,
+  normalizePathSegment,
+  getRankIcon,
+  getCountryContinent,
+} from '../../lib/api';
 
 interface RidesByCountryProps {
   countries: Array<{
@@ -18,48 +23,6 @@ interface RidesByCountryProps {
 export function RidesByCountry({ countries }: RidesByCountryProps) {
   const topCountries = countries.slice(0, 5);
   const maxRides = Math.max(...topCountries.map((c) => c.totalRides));
-
-  // Helper function to determine continent for country
-  const getCountryContinent = (countryName: string) => {
-    const continentMap: { [key: string]: string } = {
-      'United States': 'north-america',
-      Canada: 'north-america',
-      Mexico: 'north-america',
-      Germany: 'europe',
-      France: 'europe',
-      'United Kingdom': 'europe',
-      England: 'europe',
-      Italy: 'europe',
-      Spain: 'europe',
-      Netherlands: 'europe',
-      Belgium: 'europe',
-      Austria: 'europe',
-      Switzerland: 'europe',
-      Denmark: 'europe',
-      Sweden: 'europe',
-      Norway: 'europe',
-      Finland: 'europe',
-      Japan: 'asia',
-      China: 'asia',
-      'South Korea': 'asia',
-      Australia: 'oceania',
-      Brazil: 'south-america',
-    };
-    return continentMap[countryName] || 'europe'; // Default to europe if not found
-  };
-
-  const getRankIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return '🥇';
-      case 1:
-        return '🥈';
-      case 2:
-        return '🥉';
-      default:
-        return '🏆';
-    }
-  };
 
   const getPerformanceVariant = (percentage: number): 'success' | 'warning' | 'error' => {
     if (percentage >= 80) return 'success';

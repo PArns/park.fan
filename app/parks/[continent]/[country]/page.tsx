@@ -3,7 +3,14 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { fetchCountryDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
+import { StatCard } from '@/components/display/stat-card';
+import { PageBreadcrumbs } from '@/components/layout/page-breadcrumbs';
+import {
+  fetchCountryDetails,
+  getCountryFlag,
+  getWaitTimeBadgeVariant,
+  isStaticFileRequest,
+} from '@/lib/api';
 import { formatNumber, formatPercentage } from '@/lib/date-utils';
 import { formatSlugToTitle } from '@/lib/utils';
 
@@ -84,47 +91,23 @@ export default async function CountryPage({ params }: CountryPageProps) {
     return (
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
         <div className="mb-6 lg:mb-8">
-          <nav className="text-sm text-muted-foreground mb-4">
-            <Link href={`/parks/${continent}`} className="hover:text-primary">
-              {continentName}
-            </Link>
-            {' / '}
-            <span className="text-foreground">{countryName}</span>
-          </nav>
+          <PageBreadcrumbs
+            items={[
+              { href: '/parks', label: 'All Parks' },
+              { href: `/parks/${continent}`, label: continentName },
+              { label: countryName },
+            ]}
+          />
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 lg:mb-4">
             {getCountryFlag(countryName)} {countryName} Theme Parks
           </h1>
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-4 lg:mb-6">
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-primary">{totalParks}</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Parks</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-green-600">{openParks}</div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Open Today</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-blue-600">
-                  {formatNumber(totalRides)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Total Rides</div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-3 sm:p-4">
-                <div className="text-xl sm:text-2xl font-bold text-orange-600">
-                  {formatNumber(openRides)}
-                </div>
-                <div className="text-xs sm:text-sm text-muted-foreground">Open Rides</div>
-              </CardContent>
-            </Card>
+            <StatCard value={totalParks.toString()} label="Total Parks" color="text-primary" />
+            <StatCard value={openParks.toString()} label="Open Today" color="text-green-600" />
+            <StatCard value={formatNumber(totalRides)} label="Total Rides" color="text-blue-600" />
+            <StatCard value={formatNumber(openRides)} label="Open Rides" color="text-orange-600" />
           </div>
         </div>
 
@@ -142,12 +125,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-lg">{park.name}</CardTitle>
-                        <Badge
-                          variant={park.operatingStatus.isOpen ? 'default' : 'secondary'}
-                          className={
-                            park.operatingStatus.isOpen ? 'bg-green-500 hover:bg-green-600' : ''
-                          }
-                        >
+                        <Badge variant={park.operatingStatus.isOpen ? 'success' : 'secondary'}>
                           {park.operatingStatus.isOpen ? 'Open' : 'Closed'}
                         </Badge>
                       </div>
@@ -162,12 +140,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                             {park.operatingStatus.totalRideCount}
                             {park.operatingStatus.totalRideCount > 0 && (
                               <span className="text-muted-foreground ml-1">
-                                (
-                                {formatPercentage(
-                                  park.operatingStatus.operatingPercentage / 100,
-                                  0
-                                )}
-                                )
+                                ( {formatPercentage(park.operatingStatus.operatingPercentage)})
                               </span>
                             )}
                           </span>
@@ -177,14 +150,18 @@ export default async function CountryPage({ params }: CountryPageProps) {
                           <>
                             <div className="flex justify-between text-sm">
                               <span className="text-muted-foreground">Crowd Level:</span>
-                              <span className="font-medium">{park.crowdLevel.label}</span>
+                              <span className="font-medium">
+                                {park.crowdLevel?.label || 'Unknown'}
+                              </span>
                             </div>
 
                             <div className="flex justify-between text-sm">
                               <span className="text-muted-foreground">Weather:</span>
                               <span className="font-medium capitalize">
-                                {park.weather.current.status} {park.weather.current.temperature.max}
-                                °C
+                                {park.weather?.current?.status || 'Unknown'}{' '}
+                                {park.weather?.current?.temperature?.max
+                                  ? `${park.weather.current.temperature.max}°C`
+                                  : 'N/A'}
                               </span>
                             </div>
                           </>
@@ -215,7 +192,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                         </div>
                       </div>
                       <div className="ml-3 flex items-center gap-2">
-                        <Badge variant="outline" className="text-orange-600 border-orange-600">
+                        <Badge variant={getWaitTimeBadgeVariant(ride.currentQueueTime.waitTime)}>
                           {ride.currentQueueTime.waitTime} min
                         </Badge>
                         <span className="text-muted-foreground text-sm">#{index + 1}</span>

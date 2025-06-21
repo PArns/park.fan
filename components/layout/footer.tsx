@@ -1,4 +1,4 @@
-import { BuildInfo } from '../ui/build-info';
+import { BuildInfo } from '../display/build-info';
 
 export function Footer() {
   return (

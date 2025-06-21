@@ -3,8 +3,8 @@ import { Clock, TrendingDown } from 'lucide-react';
 import { Card } from '../ui/card';
 import { WaitTimeBadge } from '../wait-time-badge';
 import { RideWaitTime } from '../../lib/api-types';
-import { getCountryFlag } from '../../lib/api';
-import { ClientTime } from '../ui/client-time';
+import { getCountryFlag, getRankIcon } from '../../lib/api';
+import { ClientTime } from '../display/client-time';
 
 interface QuietestRidesProps {
   rides: RideWaitTime[];
@@ -32,19 +32,6 @@ function generateRideUrl(ride: RideWaitTime): string {
 
 export function QuietestRides({ rides }: QuietestRidesProps) {
   const topRides = rides.slice(0, 3);
-
-  const getRankIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return '🥇';
-      case 1:
-        return '🥈';
-      case 2:
-        return '🥉';
-      default:
-        return '🏆';
-    }
-  };
 
   return (
     <Card className="p-6" hover="lift">
@@ -89,10 +76,7 @@ export function QuietestRides({ rides }: QuietestRidesProps) {
               </div>
 
               <div className="text-right">
-                <WaitTimeBadge 
-                  waitTime={ride.waitTime} 
-                  className="text-lg font-bold px-3 py-1"
-                />
+                <WaitTimeBadge waitTime={ride.waitTime} className="text-lg font-bold px-3 py-1" />
               </div>
             </div>
           </Link>

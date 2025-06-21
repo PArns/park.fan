@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Badge } from '../ui/badge';
+import { EmptyState } from '../feedback/empty-state';
 import { cn } from '../../lib/utils';
+import { getWaitTimeBadgeVariant } from '../../lib/api';
 import { Park } from '../../lib/api-types';
 import { Flame, Smile } from 'lucide-react';
 
@@ -13,7 +15,6 @@ interface TopParksProps {
 export default function TopParks({ parks, type }: TopParksProps) {
   const title = type === 'busiest' ? 'Busiest Parks' : 'Quietest Parks';
   const Icon = type === 'busiest' ? Flame : Smile;
-  const colorVariant = type === 'busiest' ? 'error' : 'success';
 
   const getMedalColor = (index: number) => {
     switch (index) {
@@ -75,7 +76,10 @@ export default function TopParks({ parks, type }: TopParksProps) {
                 </div>
 
                 <div className="text-right space-y-1">
-                  <Badge variant={colorVariant} className="text-lg font-bold px-3 py-1">
+                  <Badge
+                    variant={getWaitTimeBadgeVariant(park.averageWaitTime)}
+                    className="text-lg font-bold px-3 py-1"
+                  >
                     {park.averageWaitTime.toFixed(0)} min
                   </Badge>
                   <div className="text-xs text-muted-foreground">
@@ -86,12 +90,11 @@ export default function TopParks({ parks, type }: TopParksProps) {
             </Link>
           ))
         ) : (
-          <div className="text-center py-8 text-muted-foreground">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted flex items-center justify-center">
-              <Icon size={24} className="text-muted-foreground" />
-            </div>
-            <p>No data available</p>
-          </div>
+          <EmptyState
+            icon={Icon}
+            title="No data available"
+            description={`No ${type === 'busiest' ? 'busy' : 'quiet'} parks data at the moment`}
+          />
         )}
       </CardContent>
     </Card>

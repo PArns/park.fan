@@ -74,6 +74,7 @@ export function getCountryFlag(country: string): string {
     'United Kingdom': '🇬🇧',
     England: '🇬🇧',
     China: '🇨🇳',
+    'Hong Kong': '🇭🇰',
     Spain: '🇪🇸',
     Italy: '🇮🇹',
     Netherlands: '🇳🇱',
@@ -92,6 +93,45 @@ export function getCountryFlag(country: string): string {
   };
 
   return flagMap[country] || '🏁';
+}
+
+// Helper function to get wait time badge variant based on wait time
+export function getWaitTimeBadgeVariant(
+  waitTime: number
+): 'success' | 'warning' | 'error' | 'critical' | 'extreme' {
+  if (waitTime <= 15) return 'success'; // 0-15 min: Green
+  if (waitTime <= 30) return 'warning'; // 16-30 min: Orange
+  if (waitTime <= 60) return 'error'; // 31-60 min: Red
+  if (waitTime <= 120) return 'critical'; // 61-120 min: Dark Red
+  return 'extreme'; // 121+ min: Purple
+}
+
+/**
+ * Get color class for wait time display
+ */
+export function getWaitTimeColor(waitTime: number): string {
+  if (waitTime === 0) return 'text-muted-foreground';
+  if (waitTime <= 15) return 'text-green-600';
+  if (waitTime <= 30) return 'text-orange-500';
+  if (waitTime <= 60) return 'text-red-600';
+  if (waitTime <= 120) return 'text-red-700';
+  return 'text-purple-600';
+}
+
+/**
+ * Get ranking icon/emoji for position
+ */
+export function getRankIcon(index: number): string {
+  switch (index) {
+    case 0:
+      return '🥇';
+    case 1:
+      return '🥈';
+    case 2:
+      return '🥉';
+    default:
+      return '🏆';
+  }
 }
 
 // New API functions for hierarchical pages
@@ -320,4 +360,39 @@ export function isStaticFileRequest(segment: string): boolean {
   const staticFiles = ['favicon.ico', 'robots.txt', 'manifest.json', 'sitemap.xml'];
 
   return staticExtensions.test(segment) || staticFiles.includes(segment.toLowerCase());
+}
+
+/**
+ * Get continent for a country name (fallback mapping)
+ */
+export function getCountryContinent(countryName: string): string {
+  const continentMap: { [key: string]: string } = {
+    'United States': 'north-america',
+    Canada: 'north-america',
+    Mexico: 'north-america',
+    'United Kingdom': 'europe',
+    France: 'europe',
+    Germany: 'europe',
+    Spain: 'europe',
+    Italy: 'europe',
+    Netherlands: 'europe',
+    Belgium: 'europe',
+    Denmark: 'europe',
+    Sweden: 'europe',
+    Norway: 'europe',
+    Finland: 'europe',
+    Japan: 'asia',
+    China: 'asia',
+    'South Korea': 'asia',
+    'Hong Kong': 'asia',
+    Singapore: 'asia',
+    Australia: 'oceania',
+    'New Zealand': 'oceania',
+    Brazil: 'south-america',
+    Argentina: 'south-america',
+    Chile: 'south-america',
+    'South Africa': 'africa',
+    Egypt: 'africa',
+  };
+  return continentMap[countryName] || 'europe'; // Default to europe if not found
 }

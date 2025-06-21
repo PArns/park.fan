@@ -10,8 +10,8 @@ import { BusiestRides } from '../components/busiest-rides';
 import { QuietestRides } from '../components/quietest-rides';
 import { RidesByCountry } from '../components/rides-by-country';
 import { RidesByContinent } from '../components/rides-by-continent';
-import { RefreshButton } from '../components/ui/refresh-button';
-import { ErrorState } from '../components/ui/error-state';
+import { RefreshButton } from '../components/interactive/refresh-button';
+import { ErrorState } from '../components/feedback/error-state';
 import { fetchStatistics, transformStatisticsData } from '../lib/api';
 
 // Loading component for suspense

@@ -1,9 +1,10 @@
 import { Clock, TrendingUp } from 'lucide-react';
 import { Card } from '../ui/card';
+import { EmptyState } from '../feedback/empty-state';
 import { WaitTimeBadge } from '../wait-time-badge';
 import { RideWaitTime } from '../../lib/api-types';
-import { getCountryFlag } from '../../lib/api';
-import { ClientTime } from '../ui/client-time';
+import { getCountryFlag, getRankIcon } from '../../lib/api';
+import { ClientTime } from '../display/client-time';
 import Link from 'next/link';
 
 interface BusiestRidesProps {
@@ -12,19 +13,6 @@ interface BusiestRidesProps {
 
 export function BusiestRides({ rides }: BusiestRidesProps) {
   const topRides = rides.slice(0, 3);
-
-  const getRankIcon = (index: number) => {
-    switch (index) {
-      case 0:
-        return '🥇';
-      case 1:
-        return '🥈';
-      case 2:
-        return '🥉';
-      default:
-        return '🏆';
-    }
-  };
 
   return (
     <Card className="p-6" hover="lift">
@@ -69,10 +57,7 @@ export function BusiestRides({ rides }: BusiestRidesProps) {
               </div>
 
               <div className="text-right">
-                <WaitTimeBadge 
-                  waitTime={ride.waitTime} 
-                  className="text-lg font-bold px-3 py-1"
-                />
+                <WaitTimeBadge waitTime={ride.waitTime} className="text-lg font-bold px-3 py-1" />
               </div>
             </div>
           </Link>
@@ -80,10 +65,10 @@ export function BusiestRides({ rides }: BusiestRidesProps) {
       </div>
 
       {rides.length === 0 && (
-        <div className="text-center py-8 text-muted-foreground">
-          <TrendingUp className="w-12 h-12 mx-auto mb-3 opacity-50" />
-          <p>No ride data available</p>
-        </div>
+        <EmptyState
+          title="No ride data available"
+          description="Currently no rides with wait time data"
+        />
       )}
     </Card>
   );
