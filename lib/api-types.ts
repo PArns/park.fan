@@ -193,14 +193,27 @@ export interface ContinentApiData {
       [key: string]: number;
     };
     weather: {
-      temperature: {
-        min: number;
-        max: number;
+      current: {
+        temperature: {
+          min: number;
+          max: number;
+        };
+        precipitationProbability: number;
+        weatherCode: number;
+        status: string;
+        weatherScore: number;
       };
-      precipitationProbability: number;
-      weatherCode: number;
-      status: string;
-      weatherScore: number;
+      forecast: Array<{
+        temperature: {
+          min: number;
+          max: number;
+        };
+        precipitationProbability: number;
+        weatherCode: number;
+        status: string;
+        weatherScore: number;
+        date: string;
+      }>;
     };
     crowdLevel: {
       level: number;
@@ -265,14 +278,27 @@ export interface CountryApiData {
       [key: string]: number;
     };
     weather: {
-      temperature: {
-        min: number;
-        max: number;
+      current: {
+        temperature: {
+          min: number;
+          max: number;
+        };
+        precipitationProbability: number;
+        weatherCode: number;
+        status: string;
+        weatherScore: number;
       };
-      precipitationProbability: number;
-      weatherCode: number;
-      status: string;
-      weatherScore: number;
+      forecast: Array<{
+        temperature: {
+          min: number;
+          max: number;
+        };
+        precipitationProbability: number;
+        weatherCode: number;
+        status: string;
+        weatherScore: number;
+        date: string;
+      }>;
     };
     crowdLevel: {
       level: number;
@@ -336,14 +362,27 @@ export interface ParkApiData {
     [key: string]: number;
   };
   weather: {
-    temperature: {
-      min: number;
-      max: number;
+    current: {
+      temperature: {
+        min: number;
+        max: number;
+      };
+      precipitationProbability: number;
+      weatherCode: number;
+      status: string;
+      weatherScore: number;
     };
-    precipitationProbability: number;
-    weatherCode: number;
-    status: string;
-    weatherScore: number;
+    forecast: Array<{
+      temperature: {
+        min: number;
+        max: number;
+      };
+      precipitationProbability: number;
+      weatherCode: number;
+      status: string;
+      weatherScore: number;
+      date: string;
+    }>;
   };
   crowdLevel: {
     level: number;

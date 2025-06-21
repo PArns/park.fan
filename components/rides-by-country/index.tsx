@@ -23,27 +23,27 @@ export function RidesByCountry({ countries }: RidesByCountryProps) {
   const getCountryContinent = (countryName: string) => {
     const continentMap: { [key: string]: string } = {
       'United States': 'north-america',
-      'Canada': 'north-america',
-      'Mexico': 'north-america',
-      'Germany': 'europe',
-      'France': 'europe',
+      Canada: 'north-america',
+      Mexico: 'north-america',
+      Germany: 'europe',
+      France: 'europe',
       'United Kingdom': 'europe',
-      'England': 'europe',
-      'Italy': 'europe',
-      'Spain': 'europe',
-      'Netherlands': 'europe',
-      'Belgium': 'europe',
-      'Austria': 'europe',
-      'Switzerland': 'europe',
-      'Denmark': 'europe',
-      'Sweden': 'europe',
-      'Norway': 'europe',
-      'Finland': 'europe',
-      'Japan': 'asia',
-      'China': 'asia',
+      England: 'europe',
+      Italy: 'europe',
+      Spain: 'europe',
+      Netherlands: 'europe',
+      Belgium: 'europe',
+      Austria: 'europe',
+      Switzerland: 'europe',
+      Denmark: 'europe',
+      Sweden: 'europe',
+      Norway: 'europe',
+      Finland: 'europe',
+      Japan: 'asia',
+      China: 'asia',
       'South Korea': 'asia',
-      'Australia': 'oceania',
-      'Brazil': 'south-america',
+      Australia: 'oceania',
+      Brazil: 'south-america',
     };
     return continentMap[countryName] || 'europe'; // Default to europe if not found
   };
@@ -83,7 +83,7 @@ export function RidesByCountry({ countries }: RidesByCountryProps) {
         {topCountries.map((country, index) => {
           const continentSlug = getCountryContinent(country.country);
           const countrySlug = normalizePathSegment(country.country);
-          
+
           return (
             <Link key={country.country} href={`/parks/${continentSlug}/${countrySlug}`}>
               <div className="flex items-center gap-4 p-4 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
@@ -94,7 +94,9 @@ export function RidesByCountry({ countries }: RidesByCountryProps) {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-2xl">{getCountryFlag(country.country)}</span>
-                    <h4 className="font-medium text-foreground hover:text-primary transition-colors">{country.country}</h4>
+                    <h4 className="font-medium text-foreground hover:text-primary transition-colors">
+                      {country.country}
+                    </h4>
                   </div>
 
                   <div className="space-y-2">

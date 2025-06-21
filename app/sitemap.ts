@@ -3,11 +3,11 @@ import { fetchStatistics, fetchContinentDetails, normalizePathSegment } from '@/
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://park.fan';
-  
+
   try {
     // Get all data from statistics
     const stats = await fetchStatistics();
-    
+
     const urls: MetadataRoute.Sitemap = [
       {
         url: baseUrl,
@@ -30,8 +30,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     // Add continent pages (/parks/[continent])
-    const continents = [...new Set(stats.parksByContinent?.map(c => normalizePathSegment(c.continent)) || [])];
-    
+    const continents = [
+      ...new Set(stats.parksByContinent?.map((c) => normalizePathSegment(c.continent)) || []),
+    ];
+
     for (const continent of continents) {
       urls.push({
         url: `${baseUrl}/parks/${continent}`,
@@ -43,20 +45,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       try {
         // Get detailed data for this continent
         const continentDetails = await fetchContinentDetails(continent);
-        
+
         // Group parks by country
-        const parksByCountry = continentDetails.data.reduce((acc, park) => {
-          if (!acc[park.country]) {
-            acc[park.country] = [];
-          }
-          acc[park.country].push(park);
-          return acc;
-        }, {} as Record<string, typeof continentDetails.data>);
+        const parksByCountry = continentDetails.data.reduce(
+          (acc, park) => {
+            if (!acc[park.country]) {
+              acc[park.country] = [];
+            }
+            acc[park.country].push(park);
+            return acc;
+          },
+          {} as Record<string, typeof continentDetails.data>
+        );
 
         // Add country pages (/parks/[continent]/[country])
         for (const [country, parks] of Object.entries(parksByCountry)) {
           const countrySlug = normalizePathSegment(country);
-          
+
           urls.push({
             url: `${baseUrl}/parks/${continent}/${countrySlug}`,
             lastModified: new Date(),
@@ -65,9 +70,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           });
 
           // Add park pages (/parks/[continent]/[country]/[park])
-          for (const park of parks.slice(0, 50)) { // Limit to prevent too many URLs
+          for (const park of parks.slice(0, 50)) {
+            // Limit to prevent too many URLs
             const parkSlug = normalizePathSegment(park.name);
-            
+
             urls.push({
               url: `${baseUrl}/parks/${continent}/${countrySlug}/${parkSlug}`,
               lastModified: new Date(),
@@ -77,10 +83,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
             // Add some popular ride pages (/parks/[continent]/[country]/[park]/[ride])
             for (const themeArea of park.themeAreas || []) {
-              for (const ride of themeArea.rides.slice(0, 5)) { // Limit rides per park
+              for (const ride of themeArea.rides.slice(0, 5)) {
+                // Limit rides per park
                 if (ride.isActive) {
                   const rideSlug = normalizePathSegment(ride.name);
-                  
+
                   urls.push({
                     url: `${baseUrl}/parks/${continent}/${countrySlug}/${parkSlug}/${rideSlug}`,
                     lastModified: new Date(),
@@ -100,7 +107,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return urls;
   } catch (error) {
     console.error('Error generating sitemap:', error);
-    
+
     // Return minimal sitemap on error
     return [
       {

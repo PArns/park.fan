@@ -74,7 +74,9 @@ export default function ContinentStats({ continents }: ContinentStatsProps) {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <span className="text-lg">{getContinentEmoji(continent)}</span>
-                      <span className="font-medium text-sm text-foreground hover:text-primary transition-colors">{continent}</span>
+                      <span className="font-medium text-sm text-foreground hover:text-primary transition-colors">
+                        {continent}
+                      </span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-semibold text-foreground">{count}</span>

@@ -58,7 +58,9 @@ export function BusiestRides({ rides }: BusiestRidesProps) {
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h4 className="font-medium text-foreground truncate hover:text-primary transition-colors">{ride.rideName}</h4>
+                  <h4 className="font-medium text-foreground truncate hover:text-primary transition-colors">
+                    {ride.rideName}
+                  </h4>
                   <span className="text-lg">{getCountryFlag(ride.country)}</span>
                 </div>
                 <p className="text-sm text-muted-foreground truncate">{ride.parkName}</p>

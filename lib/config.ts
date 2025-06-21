@@ -7,14 +7,9 @@ export const CACHE_REVALIDATE_TIME = 300;
 
 // List of possible continents for static params generation
 // This list is based on the actual continents available in the API
-export const POSSIBLE_CONTINENTS = [
-  'europe',
-  'north-america',
-  'asia',
-  'south-america'
-] as const;
+export const POSSIBLE_CONTINENTS = ['europe', 'north-america', 'asia', 'south-america'] as const;
 
-export type PossibleContinent = typeof POSSIBLE_CONTINENTS[number];
+export type PossibleContinent = (typeof POSSIBLE_CONTINENTS)[number];
 
 // API base URL
 export const API_BASE_URL = 'https://api.park.fan';

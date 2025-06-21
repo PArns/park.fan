@@ -12,12 +12,21 @@ interface QuietestRidesProps {
 
 // Helper function to generate hierarchical URL for rides
 function generateRideUrl(ride: RideWaitTime): string {
-  const continent = ride.country === 'United States' ? 'north-america' : 
-                   ride.country === 'England' || ride.country === 'United Kingdom' ? 'europe' :
-                   'europe'; // Default to europe for now, would need mapping for other continents
+  const continent =
+    ride.country === 'United States'
+      ? 'north-america'
+      : ride.country === 'England' || ride.country === 'United Kingdom'
+        ? 'europe'
+        : 'europe'; // Default to europe for now, would need mapping for other continents
   const country = ride.country.toLowerCase().replace(/\s+/g, '-');
-  const parkName = ride.parkName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
-  const rideName = ride.rideName.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+  const parkName = ride.parkName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-');
+  const rideName = ride.rideName
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-');
   return `/${continent}/${country}/${parkName}/${rideName}`;
 }
 
@@ -69,7 +78,9 @@ export function QuietestRides({ rides }: QuietestRidesProps) {
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <h4 className="font-medium text-foreground truncate hover:text-primary transition-colors">{ride.rideName}</h4>
+                  <h4 className="font-medium text-foreground truncate hover:text-primary transition-colors">
+                    {ride.rideName}
+                  </h4>
                   <span className="text-lg">{getCountryFlag(ride.country)}</span>
                 </div>
                 <p className="text-sm text-muted-foreground truncate">{ride.parkName}</p>

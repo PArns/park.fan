@@ -22,7 +22,10 @@ function DashboardLoading() {
         <PageHeader title="Dashboard" description="Loading theme park statistics..." />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="bg-card rounded-xl p-3 sm:p-4 lg:p-6 shadow-sm border border-border">
+            <div
+              key={i}
+              className="bg-card rounded-xl p-3 sm:p-4 lg:p-6 shadow-sm border border-border"
+            >
               <div className="animate-pulse">
                 <div className="h-3 sm:h-4 bg-muted rounded w-3/4 mb-2"></div>
                 <div className="h-6 sm:h-8 bg-muted rounded w-1/2 mb-2"></div>

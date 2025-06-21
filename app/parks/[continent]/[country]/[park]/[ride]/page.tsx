@@ -3,8 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { fetchRideDetails, fetchContinentDetails, getCountryFlag, isStaticFileRequest, normalizePathSegment } from '@/lib/api';
-import { POSSIBLE_CONTINENTS } from '@/lib/config';
+import { fetchRideDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatDateTime } from '@/lib/date-utils';
 import { formatSlugToTitle } from '@/lib/utils';
 
@@ -19,71 +18,25 @@ interface RidePageProps {
 
 export const revalidate = 300; // CACHE_REVALIDATE_TIME from config
 
-export async function generateStaticParams() {
-  try {
-    const params: Array<{ continent: string; country: string; park: string; ride: string }> = [];
-    
-    for (const continent of POSSIBLE_CONTINENTS.slice(0, 4)) { // Limiting to first 4 continents for rides
-      try {
-        // Fetch continent details to get all parks in this continent
-        const continentData = await fetchContinentDetails(continent);
-        
-        if (continentData.data && continentData.data.length > 0) {
-          // Group parks by country
-          const parksByCountry = continentData.data.reduce((acc, park) => {
-            const country = normalizePathSegment(park.country);
-            if (!acc[country]) {
-              acc[country] = [];
-            }
-            acc[country].push(park);
-            return acc;
-          }, {} as Record<string, typeof continentData.data>);
-
-          // Generate params for top rides in each park
-          for (const [country, parks] of Object.entries(parksByCountry)) {
-            for (const park of parks.slice(0, 5)) { // Limit parks per country
-              const parkSlug = normalizePathSegment(park.name);
-              
-              // Get top rides from this park
-              const allRides = park.themeAreas?.flatMap(area => area.rides || []) || [];
-              const topRides = allRides
-                .filter(ride => ride.isActive)
-                .slice(0, 3); // Top 3 rides per park
-              
-              for (const ride of topRides) {
-                const rideSlug = normalizePathSegment(ride.name);
-                params.push({ continent, country, park: parkSlug, ride: rideSlug });
-              }
-            }
-          }
-        }
-      } catch {
-        // Continent doesn't exist or error fetching, skip it
-        continue;
-      }
-    }
-    
-    return params.slice(0, 100); // Limit total static generations
-  } catch (error) {
-    console.error('Error generating static params for rides:', error);
-    return [];
-  }
-}
-
 export async function generateMetadata({ params }: RidePageProps): Promise<Metadata> {
   const { continent, country, park, ride } = await params;
-  
+
   // Check if this is a static file request
-  if (isStaticFileRequest(continent) || isStaticFileRequest(country) || isStaticFileRequest(park) || isStaticFileRequest(ride)) {
+  if (
+    isStaticFileRequest(continent) ||
+    isStaticFileRequest(country) ||
+    isStaticFileRequest(park) ||
+    isStaticFileRequest(ride)
+  ) {
     return {
       title: 'Not Found | park.fan',
       description: 'The requested page could not be found.',
     };
   }
-  
+
   try {
     const data = await fetchRideDetails(continent, country, park, ride);
-    
+
     return {
       title: `${data.name} at ${data.park.name} - Real-time Wait Times | park.fan`,
       description: `Current wait time for ${data.name} at ${data.park.name}. Live queue information and ride details.`,
@@ -104,7 +57,9 @@ function getWaitTimeColor(waitTime: number): string {
   return 'text-red-600';
 }
 
-function getWaitTimeBadgeVariant(waitTime: number): 'default' | 'secondary' | 'destructive' | 'outline' {
+function getWaitTimeBadgeVariant(
+  waitTime: number
+): 'default' | 'secondary' | 'destructive' | 'outline' {
   if (waitTime === 0) return 'secondary';
   if (waitTime <= 15) return 'default';
   if (waitTime <= 30) return 'outline';
@@ -116,24 +71,33 @@ function getStatusBadge(isActive: boolean, isOpen: boolean) {
     return <Badge variant="secondary">Inactive</Badge>;
   }
   if (isOpen) {
-    return <Badge variant="default" className="bg-green-500 hover:bg-green-600">Operating</Badge>;
+    return (
+      <Badge variant="default" className="bg-green-500 hover:bg-green-600">
+        Operating
+      </Badge>
+    );
   }
   return <Badge variant="destructive">Temporarily Closed</Badge>;
 }
 
 export default async function RidePage({ params }: RidePageProps) {
   const { continent, country, park, ride } = await params;
-  
+
   // Check if this is a static file request
-  if (isStaticFileRequest(continent) || isStaticFileRequest(country) || isStaticFileRequest(park) || isStaticFileRequest(ride)) {
+  if (
+    isStaticFileRequest(continent) ||
+    isStaticFileRequest(country) ||
+    isStaticFileRequest(park) ||
+    isStaticFileRequest(ride)
+  ) {
     notFound();
   }
-  
+
   try {
     const data = await fetchRideDetails(continent, country, park, ride);
     const countryName = formatSlugToTitle(country);
     const continentName = formatSlugToTitle(continent);
-    
+
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
@@ -152,7 +116,7 @@ export default async function RidePage({ params }: RidePageProps) {
             {' / '}
             <span className="text-foreground">{data.name}</span>
           </nav>
-          
+
           <div className="flex items-center gap-4 mb-6">
             <h1 className="text-4xl font-bold">{data.name}</h1>
             {getStatusBadge(data.isActive, data.currentQueueTime.isOpen)}
@@ -169,23 +133,23 @@ export default async function RidePage({ params }: RidePageProps) {
                 <div className="text-center py-8">
                   {data.isActive && data.currentQueueTime.isOpen ? (
                     <>
-                      <div className={`text-6xl font-bold mb-2 ${getWaitTimeColor(data.currentQueueTime.waitTime)}`}>
-                        {data.currentQueueTime.waitTime > 0 
-                          ? `${data.currentQueueTime.waitTime}` 
-                          : '0'
-                        }
+                      <div
+                        className={`text-6xl font-bold mb-2 ${getWaitTimeColor(data.currentQueueTime.waitTime)}`}
+                      >
+                        {data.currentQueueTime.waitTime > 0
+                          ? `${data.currentQueueTime.waitTime}`
+                          : '0'}
                       </div>
                       <div className="text-xl text-muted-foreground mb-4">
                         {data.currentQueueTime.waitTime > 0 ? 'minutes' : 'Walk On'}
                       </div>
-                      <Badge 
+                      <Badge
                         variant={getWaitTimeBadgeVariant(data.currentQueueTime.waitTime)}
                         className="text-lg px-4 py-2"
                       >
-                        {data.currentQueueTime.waitTime > 0 
-                          ? `${data.currentQueueTime.waitTime} min wait` 
-                          : 'No Wait'
-                        }
+                        {data.currentQueueTime.waitTime > 0
+                          ? `${data.currentQueueTime.waitTime} min wait`
+                          : 'No Wait'}
                       </Badge>
                     </>
                   ) : (
@@ -215,7 +179,7 @@ export default async function RidePage({ params }: RidePageProps) {
                       <div className="space-y-1">
                         <div className="flex justify-between">
                           <span className="text-muted-foreground">Park:</span>
-                          <Link 
+                          <Link
                             href={data.park.hierarchicalUrl}
                             className="font-medium hover:text-primary"
                           >
@@ -234,7 +198,7 @@ export default async function RidePage({ params }: RidePageProps) {
                         </div>
                       </div>
                     </div>
-                    
+
                     <div>
                       <h3 className="font-semibold mb-2">Status</h3>
                       <div className="space-y-1">
@@ -298,7 +262,9 @@ export default async function RidePage({ params }: RidePageProps) {
               <CardContent>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
-                    <Badge variant="default" className="bg-green-500">0-15 min</Badge>
+                    <Badge variant="default" className="bg-green-500">
+                      0-15 min
+                    </Badge>
                     <span>Great time to ride</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -323,8 +289,9 @@ export default async function RidePage({ params }: RidePageProps) {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Wait times are updated in real-time and represent the estimated time from joining the queue to boarding the ride. 
-                  Times may vary based on operational factors and crowd levels.
+                  Wait times are updated in real-time and represent the estimated time from joining
+                  the queue to boarding the ride. Times may vary based on operational factors and
+                  crowd levels.
                 </p>
               </CardContent>
             </Card>
