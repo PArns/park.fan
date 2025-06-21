@@ -99,11 +99,11 @@ export function getCountryFlag(country: string): string {
 export function getWaitTimeBadgeVariant(
   waitTime: number
 ): 'success' | 'warning' | 'error' | 'critical' | 'extreme' {
-  if (waitTime <= 15) return 'success'; // 0-15 min: Green
-  if (waitTime <= 30) return 'warning'; // 16-30 min: Orange
-  if (waitTime <= 60) return 'error'; // 31-60 min: Red
-  if (waitTime <= 120) return 'critical'; // 61-120 min: Dark Red
-  return 'extreme'; // 121+ min: Purple
+  if (waitTime <= 20) return 'success';
+  if (waitTime <= 45) return 'warning';
+  if (waitTime <= 90) return 'error';
+  if (waitTime <= 120) return 'critical';
+  return 'extreme';
 }
 
 /**
