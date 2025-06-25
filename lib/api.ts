@@ -300,6 +300,15 @@ export async function fetchRideDetails(
   }
 }
 
+interface SearchParksApiResponse {
+  data: Array<{
+    id: number;
+    name: string;
+    country: string;
+    hierarchicalUrl: string;
+  }>;
+}
+
 export async function searchParks(query: string, limit = 5): Promise<SearchParkResult[]> {
   try {
     const response = await fetch(
@@ -313,8 +322,8 @@ export async function searchParks(query: string, limit = 5): Promise<SearchParkR
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    return (data.data || []).map((park: any) => ({
+    const data = (await response.json()) as SearchParksApiResponse;
+    return (data.data || []).map((park) => ({
       id: park.id,
       name: park.name,
       country: park.country,
@@ -324,6 +333,15 @@ export async function searchParks(query: string, limit = 5): Promise<SearchParkR
     console.error('Failed to search parks:', error);
     return [];
   }
+}
+
+interface SearchRidesApiResponse {
+  data: Array<{
+    id: number;
+    name: string;
+    park: { name: string } | null;
+    hierarchicalUrl: string;
+  }>;
 }
 
 export async function searchRides(query: string, limit = 5): Promise<SearchRideResult[]> {
@@ -339,11 +357,11 @@ export async function searchRides(query: string, limit = 5): Promise<SearchRideR
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    return (data.data || []).map((ride: any) => ({
+    const data = (await response.json()) as SearchRidesApiResponse;
+    return (data.data || []).map((ride) => ({
       id: ride.id,
       name: ride.name,
-      parkName: ride.park?.name,
+      parkName: ride.park?.name ?? '',
       hierarchicalUrl: ride.hierarchicalUrl,
     }));
   } catch (error) {
