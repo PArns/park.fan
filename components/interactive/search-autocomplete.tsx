@@ -17,6 +17,7 @@ export function SearchAutocomplete() {
   const timer = useRef<NodeJS.Timeout | null>(null);
   const listRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -51,8 +52,20 @@ export function SearchAutocomplete() {
     }
   }, [activeIndex]);
 
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+        setActiveIndex(-1);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
     <div
+      ref={containerRef}
       className={cn(
         'relative transition-all duration-300 focus-within:w-60 sm:focus-within:w-72',
         query.length === 0 ? 'w-32 sm:w-48' : 'w-40 sm:w-64'
@@ -66,12 +79,14 @@ export function SearchAutocomplete() {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.length >= 2 && setOpen(true)}
-          onBlur={() => setTimeout(() => setOpen(false), 100)}
           onKeyDown={(e) => {
             if (e.key === 'ArrowDown') {
               e.preventDefault();
               if (!open) setOpen(true);
               setActiveIndex(0);
+            } else if (e.key === 'Escape') {
+              setOpen(false);
+              setActiveIndex(-1);
             }
           }}
           className="w-full pl-7 pr-3 py-2 text-sm rounded-md bg-muted/40 focus:outline-none focus:ring-2 focus:ring-primary"
@@ -122,6 +137,7 @@ export function SearchAutocomplete() {
                     activeIndex === idx && 'bg-accent text-accent-foreground'
                   )}
                   onMouseEnter={() => setActiveIndex(idx)}
+                  onClick={() => setOpen(false)}
                 >
                   {park.name}
                 </Link>
@@ -143,6 +159,7 @@ export function SearchAutocomplete() {
                       activeIndex === globalIndex && 'bg-accent text-accent-foreground'
                     )}
                     onMouseEnter={() => setActiveIndex(globalIndex)}
+                    onClick={() => setOpen(false)}
                   >
                     {ride.name}{' '}
                     <span className="text-muted-foreground text-xs">({ride.parkName})</span>
