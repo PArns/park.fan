@@ -7,6 +7,7 @@ import {
   ContinentStats,
 } from './api-types';
 import { API_BASE_URL, API_HEADERS, API_REVALIDATE_CONFIG } from './config';
+import { SearchParkResult, SearchRideResult } from './park-types';
 import { toSlug } from './utils';
 
 export async function fetchStatistics(): Promise<StatisticsData> {
@@ -296,6 +297,58 @@ export async function fetchRideDetails(
   } catch (error) {
     console.error(`Failed to fetch ride details for ${ride}:`, error);
     throw error;
+  }
+}
+
+export async function searchParks(query: string, limit = 5): Promise<SearchParkResult[]> {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/parks?search=${encodeURIComponent(query)}&limit=${limit}`,
+      {
+        headers: API_HEADERS,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return (data.data || []).map((park: any) => ({
+      id: park.id,
+      name: park.name,
+      country: park.country,
+      hierarchicalUrl: park.hierarchicalUrl,
+    }));
+  } catch (error) {
+    console.error('Failed to search parks:', error);
+    return [];
+  }
+}
+
+export async function searchRides(query: string, limit = 5): Promise<SearchRideResult[]> {
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}`,
+      {
+        headers: API_HEADERS,
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return (data.data || []).map((ride: any) => ({
+      id: ride.id,
+      name: ride.name,
+      parkName: ride.park?.name,
+      hierarchicalUrl: ride.hierarchicalUrl,
+    }));
+  } catch (error) {
+    console.error('Failed to search rides:', error);
+    return [];
   }
 }
 

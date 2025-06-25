@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, BarChart3, MapPin } from 'lucide-react';
 import { ThemeToggle } from '../interactive/theme-toggle';
 import { Button } from '../ui/button';
+import { SearchAutocomplete } from '../interactive/search-autocomplete';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: BarChart3 },
@@ -59,6 +60,7 @@ export function Navbar() {
           </div>
 
           <div className="hidden sm:ml-6 sm:flex sm:items-center sm:space-x-4">
+            <SearchAutocomplete />
             <ThemeToggle />
           </div>
 
@@ -86,6 +88,9 @@ export function Navbar() {
       {isOpen && (
         <div className="sm:hidden" id="mobile-menu">
           <div className="pt-2 pb-3 space-y-1 bg-background border-t border-border" role="menu">
+            <div className="px-4 pb-3">
+              <SearchAutocomplete />
+            </div>
             {navigation.map((item) => {
               const Icon = item.icon;
               const isActive = pathname === item.href;

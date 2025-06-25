@@ -13,6 +13,7 @@ A modern, responsive Next.js 15 dashboard for real-time theme park statistics an
 - **Interactive Charts** - Visualize wait times and park data
 - **Mobile Optimized** - Perfect experience on all devices
 - **Localized Formatting** - Dates, times, and numbers in your local format
+- **Search with Autocomplete** - Quickly find parks and rides
 
 ## 🚀 Tech Stack
 

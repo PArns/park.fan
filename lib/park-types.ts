@@ -26,3 +26,18 @@ export interface ParkStatsProps {
   totalRides: number;
   openRides: number;
 }
+
+// Simplified results for search/autocomplete
+export interface SearchParkResult {
+  id: number;
+  name: string;
+  country: string;
+  hierarchicalUrl: string;
+}
+
+export interface SearchRideResult {
+  id: number;
+  name: string;
+  parkName: string;
+  hierarchicalUrl: string;
+}
