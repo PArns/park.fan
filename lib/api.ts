@@ -311,10 +311,11 @@ interface SearchParksApiResponse {
 
 export async function searchParks(query: string, limit = 5): Promise<SearchParkResult[]> {
   try {
+    const fields = 'id,name,country,hierarchicalUrl';
     const url =
       typeof window === 'undefined'
-        ? `${API_BASE_URL}/parks?search=${encodeURIComponent(query)}&limit=${limit}`
-        : `/api/search/parks?search=${encodeURIComponent(query)}&limit=${limit}`;
+        ? `${API_BASE_URL}/parks?search=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`
+        : `/api/search/parks?search=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`;
 
     const response = await fetch(url, {
       headers: API_HEADERS,
@@ -341,17 +342,18 @@ interface SearchRidesApiResponse {
   data: Array<{
     id: number;
     name: string;
-    park: { name: string } | null;
+    park: { name: string; country: string } | null;
     hierarchicalUrl: string;
   }>;
 }
 
 export async function searchRides(query: string, limit = 5): Promise<SearchRideResult[]> {
   try {
+    const fields = 'id,name,hierarchicalUrl,park.name,park.country';
     const url =
       typeof window === 'undefined'
-        ? `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}`
-        : `/api/search/rides?search=${encodeURIComponent(query)}&limit=${limit}`;
+        ? `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`
+        : `/api/search/rides?search=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`;
 
     const response = await fetch(url, {
       headers: API_HEADERS,
@@ -366,6 +368,7 @@ export async function searchRides(query: string, limit = 5): Promise<SearchRideR
       id: ride.id,
       name: ride.name,
       parkName: ride.park?.name ?? '',
+      country: ride.park?.country ?? '',
       hierarchicalUrl: ride.hierarchicalUrl,
     }));
   } catch (error) {

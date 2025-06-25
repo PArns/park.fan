@@ -39,5 +39,6 @@ export interface SearchRideResult {
   id: number;
   name: string;
   parkName: string;
+  country: string;
   hierarchicalUrl: string;
 }

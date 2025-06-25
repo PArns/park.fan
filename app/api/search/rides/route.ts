@@ -11,8 +11,9 @@ export async function GET(request: Request) {
   }
 
   try {
+    const fields = 'id,name,hierarchicalUrl,park.name,park.country';
     const resp = await fetch(
-      `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}`,
+      `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}&fields=${fields}`,
       {
         headers: API_HEADERS,
       }

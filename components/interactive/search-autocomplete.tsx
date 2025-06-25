@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
-import { searchParks, searchRides } from '../../lib/api';
+import { searchParks, searchRides, getCountryFlag } from '../../lib/api';
 import { SearchParkResult, SearchRideResult } from '../../lib/park-types';
 import { cn } from '../../lib/utils';
 
@@ -133,13 +133,14 @@ export function SearchAutocomplete() {
                   href={park.hierarchicalUrl}
                   tabIndex={-1}
                   className={cn(
-                    'block px-2 py-1 rounded-md hover:bg-muted',
+                    'block px-2 py-1 rounded-md hover:bg-muted flex items-center gap-2',
                     activeIndex === idx && 'bg-accent text-accent-foreground'
                   )}
                   onMouseEnter={() => setActiveIndex(idx)}
                   onClick={() => setOpen(false)}
                 >
-                  {park.name}
+                  <span className="text-lg">{getCountryFlag(park.country)}</span>
+                  <span className="truncate">{park.name}</span>
                 </Link>
               ))}
             </div>
@@ -155,14 +156,17 @@ export function SearchAutocomplete() {
                     href={ride.hierarchicalUrl}
                     tabIndex={-1}
                     className={cn(
-                      'block px-2 py-1 rounded-md hover:bg-muted',
+                      'block px-2 py-1 rounded-md hover:bg-muted flex items-center gap-2',
                       activeIndex === globalIndex && 'bg-accent text-accent-foreground'
                     )}
                     onMouseEnter={() => setActiveIndex(globalIndex)}
                     onClick={() => setOpen(false)}
                   >
-                    {ride.name}{' '}
-                    <span className="text-muted-foreground text-xs">({ride.parkName})</span>
+                    <span className="text-lg">{getCountryFlag(ride.country)}</span>
+                    <span className="truncate">
+                      {ride.name}{' '}
+                      <span className="text-muted-foreground text-xs">({ride.parkName})</span>
+                    </span>
                   </Link>
                 );
               })}
