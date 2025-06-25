@@ -107,7 +107,7 @@ export function SearchAutocomplete() {
               }
             }
           }}
-          className="absolute z-50 mt-1 w-full bg-popover border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down"
+          className="absolute z-50 mt-1 w-full bg-background border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down"
         >
           {parks.length > 0 && (
             <div className="p-2">
