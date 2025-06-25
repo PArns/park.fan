@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Search } from 'lucide-react';
 import { searchParks, searchRides } from '../../lib/api';
 import { SearchParkResult, SearchRideResult } from '../../lib/park-types';
+import { cn } from '../../lib/utils';
 
 export function SearchAutocomplete() {
   const [query, setQuery] = useState('');
@@ -36,7 +37,12 @@ export function SearchAutocomplete() {
   }, [query]);
 
   return (
-    <div className="relative w-40 sm:w-64 transition-all duration-300 focus-within:w-60 sm:focus-within:w-72">
+    <div
+      className={cn(
+        'relative transition-all duration-300 focus-within:w-60 sm:focus-within:w-72',
+        query.length === 0 ? 'w-32 sm:w-48' : 'w-40 sm:w-64'
+      )}
+    >
       <div className="relative">
         <Search className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <input
@@ -50,7 +56,7 @@ export function SearchAutocomplete() {
         />
       </div>
       {open && (parks.length > 0 || rides.length > 0) && (
-        <div className="absolute z-50 mt-1 w-full bg-card border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down">
+        <div className="absolute z-50 mt-1 w-full bg-background border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down">
           {parks.length > 0 && (
             <div className="p-2">
               <p className="text-xs font-semibold text-muted-foreground mb-1">Parks</p>
