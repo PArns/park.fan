@@ -82,7 +82,7 @@ export function SearchAutocomplete() {
     <div
       ref={containerRef}
       className={cn(
-        'relative transition-all duration-300 focus-within:w-60 sm:focus-within:w-72',
+        'relative transition-all duration-300 focus-within:w-72 sm:focus-within:w-96',
         query.length === 0 ? 'w-32 sm:w-48' : 'w-40 sm:w-64'
       )}
     >
@@ -92,8 +92,20 @@ export function SearchAutocomplete() {
           ref={inputRef}
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => query.length >= 3 && setOpen(true)}
+          onChange={(e) => {
+            const val = e.target.value;
+            setQuery(val);
+            if (val.length < 3) {
+              setOpen(val.length > 0);
+            } else {
+              setOpen(true);
+            }
+          }}
+          onFocus={() => {
+            if (query.length > 0) {
+              setOpen(true);
+            }
+          }}
           onKeyDown={(e) => {
             if (e.key === 'ArrowDown') {
               e.preventDefault();
@@ -107,11 +119,8 @@ export function SearchAutocomplete() {
           className="w-full pl-7 pr-3 py-2 text-sm rounded-md border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
           placeholder="Search parks or rides (press /, min. 3 chars)"
         />
-        {query.length > 0 && query.length < 3 && (
-          <p className="mt-1 text-xs text-muted-foreground">Enter at least 3 characters</p>
-        )}
       </div>
-      {open && (parks.length > 0 || rides.length > 0) && (
+      {open && (parks.length > 0 || rides.length > 0 || query.length < 3) && (
         <div
           ref={listRef}
           onKeyDown={(e) => {
@@ -140,8 +149,11 @@ export function SearchAutocomplete() {
               }
             }
           }}
-          className="absolute z-50 mt-1 w-full bg-popover/90 border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto animate-slide-down"
+          className="absolute z-50 mt-1 w-full bg-popover border border-border rounded-lg shadow-lg max-h-60 overflow-y-auto animate-slide-down"
         >
+          {query.length > 0 && query.length < 3 && (
+            <p className="p-2 text-xs text-muted-foreground">Enter at least 3 characters</p>
+          )}
           {parks.length > 0 && (
             <div className="p-2">
               <p className="text-xs font-semibold text-muted-foreground mb-1">Parks</p>
