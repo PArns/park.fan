@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
 import { searchParks, searchRides } from '../../lib/api';
 import { SearchParkResult, SearchRideResult } from '../../lib/park-types';
@@ -12,7 +13,11 @@ export function SearchAutocomplete() {
   const [parks, setParks] = useState<SearchParkResult[]>([]);
   const [rides, setRides] = useState<SearchRideResult[]>([]);
   const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const timer = useRef<NodeJS.Timeout | null>(null);
+  const listRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (query.length < 2) {
@@ -36,6 +41,16 @@ export function SearchAutocomplete() {
     };
   }, [query]);
 
+  useEffect(() => {
+    if (activeIndex < 0 || !listRef.current) return;
+    const links = listRef.current.querySelectorAll('a');
+    const el = links[activeIndex] as HTMLElement | undefined;
+    if (el) {
+      el.focus();
+      el.scrollIntoView({ block: 'nearest' });
+    }
+  }, [activeIndex]);
+
   return (
     <div
       className={cn(
@@ -46,25 +61,67 @@ export function SearchAutocomplete() {
       <div className="relative">
         <Search className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground" />
         <input
+          ref={inputRef}
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => query.length >= 2 && setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 100)}
+          onKeyDown={(e) => {
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              if (!open) setOpen(true);
+              setActiveIndex(0);
+            }
+          }}
           className="w-full pl-7 pr-3 py-2 text-sm rounded-md bg-muted/40 focus:outline-none focus:ring-2 focus:ring-primary"
           placeholder="Search parks or rides"
         />
       </div>
       {open && (parks.length > 0 || rides.length > 0) && (
-        <div className="absolute z-50 mt-1 w-full bg-background border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down">
+        <div
+          ref={listRef}
+          onKeyDown={(e) => {
+            const total = parks.length + rides.length;
+            if (e.key === 'ArrowDown') {
+              e.preventDefault();
+              setActiveIndex((idx) => Math.min(idx + 1, total - 1));
+            } else if (e.key === 'ArrowUp') {
+              e.preventDefault();
+              setActiveIndex((idx) => {
+                if (idx <= 0) {
+                  inputRef.current?.focus();
+                  return -1;
+                }
+                return idx - 1;
+              });
+            } else if (e.key === 'Enter') {
+              e.preventDefault();
+              const index = activeIndex;
+              if (index >= 0) {
+                const item = index < parks.length ? parks[index] : rides[index - parks.length];
+                router.push(item.hierarchicalUrl);
+                setOpen(false);
+                setActiveIndex(-1);
+                setQuery('');
+              }
+            }
+          }}
+          className="absolute z-50 mt-1 w-full bg-popover border border-border rounded-md shadow-md max-h-60 overflow-y-auto animate-slide-down"
+        >
           {parks.length > 0 && (
             <div className="p-2">
               <p className="text-xs font-semibold text-muted-foreground mb-1">Parks</p>
-              {parks.map((park) => (
+              {parks.map((park, idx) => (
                 <Link
                   key={`park-${park.id}`}
                   href={park.hierarchicalUrl}
-                  className="block px-2 py-1 rounded-md hover:bg-muted"
+                  tabIndex={-1}
+                  className={cn(
+                    'block px-2 py-1 rounded-md hover:bg-muted',
+                    activeIndex === idx && 'bg-accent text-accent-foreground'
+                  )}
+                  onMouseEnter={() => setActiveIndex(idx)}
                 >
                   {park.name}
                 </Link>
@@ -74,16 +131,24 @@ export function SearchAutocomplete() {
           {rides.length > 0 && (
             <div className="p-2 border-t border-border">
               <p className="text-xs font-semibold text-muted-foreground mb-1">Rides</p>
-              {rides.map((ride) => (
-                <Link
-                  key={`ride-${ride.id}`}
-                  href={ride.hierarchicalUrl}
-                  className="block px-2 py-1 rounded-md hover:bg-muted"
-                >
-                  {ride.name}{' '}
-                  <span className="text-muted-foreground text-xs">({ride.parkName})</span>
-                </Link>
-              ))}
+              {rides.map((ride, idx) => {
+                const globalIndex = parks.length + idx;
+                return (
+                  <Link
+                    key={`ride-${ride.id}`}
+                    href={ride.hierarchicalUrl}
+                    tabIndex={-1}
+                    className={cn(
+                      'block px-2 py-1 rounded-md hover:bg-muted',
+                      activeIndex === globalIndex && 'bg-accent text-accent-foreground'
+                    )}
+                    onMouseEnter={() => setActiveIndex(globalIndex)}
+                  >
+                    {ride.name}{' '}
+                    <span className="text-muted-foreground text-xs">({ride.parkName})</span>
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
