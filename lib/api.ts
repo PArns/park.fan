@@ -311,12 +311,14 @@ interface SearchParksApiResponse {
 
 export async function searchParks(query: string, limit = 5): Promise<SearchParkResult[]> {
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/parks?search=${encodeURIComponent(query)}&limit=${limit}`,
-      {
-        headers: API_HEADERS,
-      }
-    );
+    const url =
+      typeof window === 'undefined'
+        ? `${API_BASE_URL}/parks?search=${encodeURIComponent(query)}&limit=${limit}`
+        : `/api/search/parks?search=${encodeURIComponent(query)}&limit=${limit}`;
+
+    const response = await fetch(url, {
+      headers: API_HEADERS,
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -346,12 +348,14 @@ interface SearchRidesApiResponse {
 
 export async function searchRides(query: string, limit = 5): Promise<SearchRideResult[]> {
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}`,
-      {
-        headers: API_HEADERS,
-      }
-    );
+    const url =
+      typeof window === 'undefined'
+        ? `${API_BASE_URL}/rides?search=${encodeURIComponent(query)}&limit=${limit}`
+        : `/api/search/rides?search=${encodeURIComponent(query)}&limit=${limit}`;
+
+    const response = await fetch(url, {
+      headers: API_HEADERS,
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}: ${response.statusText}`);
