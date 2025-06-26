@@ -64,10 +64,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
       area.rides.map((ride) => ({
         ...ride,
         themeAreaName: area.name,
-        hierarchicalUrl: `${data.hierarchicalUrl}/${ride.name
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, '')
-          .replace(/\s+/g, '-')}`,
+        hierarchicalUrl: ride.hierarchicalUrl,
       }))
     );
 
@@ -160,10 +157,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       {area.rides.map((ride) => (
                         <Link
                           key={ride.id}
-                          href={`${data.hierarchicalUrl}/${ride.name
-                            .toLowerCase()
-                            .replace(/[^a-z0-9\s-]/g, '')
-                            .replace(/\s+/g, '-')}`}
+                          href={ride.hierarchicalUrl}
                           className="block transition-colors hover:bg-muted rounded-lg p-3"
                         >
                           <div className="flex items-center justify-between">
