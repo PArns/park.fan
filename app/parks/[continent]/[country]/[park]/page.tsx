@@ -8,7 +8,7 @@ import { PageBreadcrumbs } from '@/components/layout/page-breadcrumbs';
 import { WaitTimeBadge } from '@/components/wait-time-badge';
 import { fetchParkDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatPercentage } from '@/lib/date-utils';
-import { formatSlugToTitle } from '@/lib/utils';
+import { formatSlugToTitle, toSlug } from '@/lib/utils';
 
 interface ParkPageProps {
   params: Promise<{
@@ -64,10 +64,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
       area.rides.map((ride) => ({
         ...ride,
         themeAreaName: area.name,
-        hierarchicalUrl: `${data.hierarchicalUrl}/${ride.name
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, '')
-          .replace(/\s+/g, '-')}`,
+        hierarchicalUrl: ride.hierarchicalUrl || `${data.hierarchicalUrl}/${toSlug(ride.name)}`,
       }))
     );
 
@@ -160,10 +157,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       {area.rides.map((ride) => (
                         <Link
                           key={ride.id}
-                          href={`${data.hierarchicalUrl}/${ride.name
-                            .toLowerCase()
-                            .replace(/[^a-z0-9\s-]/g, '')
-                            .replace(/\s+/g, '-')}`}
+                          href={
+                            ride.hierarchicalUrl || `${data.hierarchicalUrl}/${toSlug(ride.name)}`
+                          }
                           className="block transition-colors hover:bg-muted rounded-lg p-3"
                         >
                           <div className="flex items-center justify-between">
