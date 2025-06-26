@@ -181,6 +181,7 @@ export interface ContinentApiData {
           isOpen: boolean;
           lastUpdated: string;
         };
+        hierarchicalUrl: string;
       }>;
     }>;
     operatingStatus: {
@@ -266,6 +267,7 @@ export interface CountryApiData {
           isOpen: boolean;
           lastUpdated: string;
         };
+        hierarchicalUrl: string;
       }>;
     }>;
     operatingStatus: {
@@ -350,6 +352,7 @@ export interface ParkApiData {
         isOpen: boolean;
         lastUpdated: string;
       };
+      hierarchicalUrl: string;
     }>;
   }>;
   operatingStatus: {
