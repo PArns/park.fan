@@ -243,11 +243,11 @@ export async function fetchParkDetails(
   country: string,
   park: string
 ): Promise<ParkApiData> {
-  try {
-    const normalizedContinent = normalizePathSegment(continent);
-    const normalizedCountry = normalizePathSegment(country);
-    const normalizedPark = normalizePathSegment(park);
+  const normalizedContinent = normalizePathSegment(continent);
+  const normalizedCountry = normalizePathSegment(country);
+  const normalizedPark = normalizePathSegment(park);
 
+  try {
     const response = await fetch(
       `${API_BASE_URL}/parks/${normalizedContinent}/${normalizedCountry}/${normalizedPark}`,
       {
@@ -256,12 +256,28 @@ export async function fetchParkDetails(
       }
     );
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    if (response.ok) {
+      return (await response.json()) as ParkApiData;
     }
 
-    const data = await response.json();
-    return data;
+    // Fallback: search for the park and fetch by ID
+    const results = await searchParks(normalizedPark, 1);
+    const parkEntry = results.find(
+      (p) => normalizePathSegment(p.hierarchicalUrl.split('/').pop() || p.name) === normalizedPark
+    );
+
+    if (parkEntry) {
+      const byIdRes = await fetch(`${API_BASE_URL}/parks/${parkEntry.id}`, {
+        headers: API_HEADERS,
+        ...API_REVALIDATE_CONFIG,
+      });
+
+      if (byIdRes.ok) {
+        return (await byIdRes.json()) as ParkApiData;
+      }
+    }
+
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
   } catch (error) {
     console.error(`Failed to fetch park details for ${park}:`, error);
     throw error;
@@ -274,12 +290,12 @@ export async function fetchRideDetails(
   park: string,
   ride: string
 ): Promise<RideApiData> {
-  try {
-    const normalizedContinent = normalizePathSegment(continent);
-    const normalizedCountry = normalizePathSegment(country);
-    const normalizedPark = normalizePathSegment(park);
-    const normalizedRide = normalizePathSegment(ride);
+  const normalizedContinent = normalizePathSegment(continent);
+  const normalizedCountry = normalizePathSegment(country);
+  const normalizedPark = normalizePathSegment(park);
+  const normalizedRide = normalizePathSegment(ride);
 
+  try {
     const response = await fetch(
       `${API_BASE_URL}/parks/${normalizedContinent}/${normalizedCountry}/${normalizedPark}/${normalizedRide}`,
       {
@@ -288,12 +304,30 @@ export async function fetchRideDetails(
       }
     );
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+    if (response.ok) {
+      return (await response.json()) as RideApiData;
     }
 
-    const data = await response.json();
-    return data;
+    // Fallback: find ride ID from park details and fetch by ID
+    const parkData = await fetchParkDetails(continent, country, park);
+    const rideEntry = parkData.themeAreas
+      .flatMap((area) => area.rides)
+      .find(
+        (r) => normalizePathSegment(r.hierarchicalUrl.split('/').pop() || r.name) === normalizedRide
+      );
+
+    if (rideEntry) {
+      const rideRes = await fetch(`${API_BASE_URL}/rides/${rideEntry.id}`, {
+        headers: API_HEADERS,
+        ...API_REVALIDATE_CONFIG,
+      });
+
+      if (rideRes.ok) {
+        return (await rideRes.json()) as RideApiData;
+      }
+    }
+
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
   } catch (error) {
     console.error(`Failed to fetch ride details for ${ride}:`, error);
     throw error;

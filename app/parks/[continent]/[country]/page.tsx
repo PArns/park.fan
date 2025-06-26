@@ -72,10 +72,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           ...ride,
           parkName: park.name,
           parkId: park.id,
-          hierarchicalUrl: `${park.hierarchicalUrl}/${ride.name
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, '')
-            .replace(/\s+/g, '-')}`,
+          hierarchicalUrl: ride.hierarchicalUrl,
         }))
       )
     );
