@@ -8,7 +8,7 @@ import { PageBreadcrumbs } from '@/components/layout/page-breadcrumbs';
 import { WaitTimeBadge } from '@/components/wait-time-badge';
 import { fetchParkDetails, getCountryFlag, isStaticFileRequest } from '@/lib/api';
 import { formatPercentage } from '@/lib/date-utils';
-import { formatSlugToTitle, toSlug } from '@/lib/utils';
+import { formatSlugToTitle } from '@/lib/utils';
 
 interface ParkPageProps {
   params: Promise<{
@@ -64,7 +64,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
       area.rides.map((ride) => ({
         ...ride,
         themeAreaName: area.name,
-        hierarchicalUrl: ride.hierarchicalUrl || `${data.hierarchicalUrl}/${toSlug(ride.name)}`,
+        hierarchicalUrl: ride.hierarchicalUrl,
       }))
     );
 
@@ -157,9 +157,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       {area.rides.map((ride) => (
                         <Link
                           key={ride.id}
-                          href={
-                            ride.hierarchicalUrl || `${data.hierarchicalUrl}/${toSlug(ride.name)}`
-                          }
+                          href={ride.hierarchicalUrl}
                           className="block transition-colors hover:bg-muted rounded-lg p-3"
                         >
                           <div className="flex items-center justify-between">

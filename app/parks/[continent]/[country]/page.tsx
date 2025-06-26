@@ -12,7 +12,7 @@ import {
   isStaticFileRequest,
 } from '@/lib/api';
 import { formatNumber, formatPercentage } from '@/lib/date-utils';
-import { formatSlugToTitle, toSlug } from '@/lib/utils';
+import { formatSlugToTitle } from '@/lib/utils';
 
 interface CountryPageProps {
   params: Promise<{
@@ -72,7 +72,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
           ...ride,
           parkName: park.name,
           parkId: park.id,
-          hierarchicalUrl: ride.hierarchicalUrl || `${park.hierarchicalUrl}/${toSlug(ride.name)}`,
+          hierarchicalUrl: ride.hierarchicalUrl,
         }))
       )
     );
