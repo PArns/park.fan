@@ -1,0 +1,45 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { routing, type Locale } from '@/i18n/routing';
+import { Providers } from '@/lib/providers';
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({ children, params }: LocaleLayoutProps) {
+  const { locale } = await params;
+
+  // Validate locale
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
+
+  // Enable static rendering
+  setRequestLocale(locale);
+
+  // Get messages for the current locale
+  const messages = await getMessages();
+
+  // Locale layout doesn't render html/body - that's done in root layout
+  // We provide the locale context and app shell here
+  return (
+    <Providers>
+      <NextIntlClientProvider messages={messages} locale={locale}>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </NextIntlClientProvider>
+    </Providers>
+  );
+}

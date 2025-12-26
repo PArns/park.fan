@@ -1,0 +1,322 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "trend": "Trend",
+    "vsTypical": "vs Typisch",
+    "higher": "Höher",
+    "lower": "Niedriger",
+    "typical": "Typisch",
+    "up": "Steigend",
+    "down": "Fallend",
+    "increasing": "Steigend",
+    "decreasing": "Fallend",
+    "stable": "Stabil",
+    "crowd": {
+      "very_low": "Sehr Niedrig",
+      "low": "Niedrig",
+      "normal": "Normal",
+      "moderate": "Mittel",
+      "higher": "Erhöht",
+      "high": "Hoch",
+      "very_high": "Sehr Hoch",
+      "extreme": "Extrem"
+    },
+    "error": "Ein Fehler ist aufgetreten",
+    "retry": "Erneut versuchen",
+    "search": "Suchen",
+    "searchPlaceholderShort": "Suchen",
+    "searchPlaceholderLong": "Parks, Attraktionen, Shows & Restaurants suchen...",
+    "noResults": "Keine Ergebnisse gefunden",
+    "viewAll": "Alle anzeigen",
+    "moreInfo": "Mehr Infos",
+    "minutes": "Minuten",
+    "noShowtimesToday": "Keine Vorstellungen heute",
+    "hours": "Std",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "closed": "Geschlossen",
+    "open": "Geöffnet",
+    "seeMore": "Mehr sehen",
+    "avgWait": "Ø",
+    "of": "von",
+    "total": "gesamt",
+    "operating": "in Betrieb",
+    "parks": "Parks",
+    "countries": "Länder",
+    "rides": "Attraktionen",
+    "home": "Startseite",
+    "status": "Status"
+  },
+  "home": {
+    "hero": {
+      "badge": "ML-gestützte Vorhersagen",
+      "cta": "Parks entdecken"
+    },
+    "sections": {
+      "explore": "Nach Region entdecken",
+      "plan": "Plane deinen perfekten Besuch",
+      "liveNow": "Parks jetzt geöffnet"
+    },
+    "features": {
+      "realtime": {
+        "title": "Echtzeit-Wartezeiten",
+        "description": "Wartezeiten im Minutentakt aus Parks weltweit aktualisiert."
+      },
+      "ml": {
+        "title": "ML-Vorhersagen",
+        "description": "Maschinelles Lernen zur Vorhersage von Besucherandrang und Wartezeiten."
+      },
+      "calendar": {
+        "title": "Bester Tag Finder",
+        "description": "Kalenderansicht mit Wetter, Feiertagen und Andrangsprognosen."
+      }
+    }
+  },
+  "footer": {
+    "description": "Echtzeit-Freizeitpark-Wartezeiten und Andrangsprognosen, unterstützt durch maschinelles Lernen.",
+    "sections": {
+      "explore": "Entdecken",
+      "resources": "Ressourcen",
+      "legal": "Rechtliches"
+    },
+    "regions": {
+      "europe": "Europa",
+      "northAmerica": "Nordamerika",
+      "asia": "Asien"
+    },
+    "api": "API",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "contact": "Kontakt",
+    "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
+    "poweredBy": "Powered by Vercel"
+  },
+  "explore": {
+    "title": "Parks in {location}",
+    "description": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Andrangsprognosen.",
+    "breadcrumbs": {
+      "home": "Startseite"
+    },
+    "stats": {
+      "park": "{count, plural, =1 {Park} other {Parks}}",
+      "country": "{count, plural, =1 {Land} other {Länder}}",
+      "city": "{count, plural, =1 {Stadt} other {Städte}}",
+      "more": "+{count} weitere"
+    }
+  },
+  "navigation": {
+    "home": "Startseite",
+    "parks": "Parks",
+    "explore": "Entdecken",
+    "search": "Suchen",
+    "admin": "Admin"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "system": "System",
+    "toggle": "Design wechseln"
+  },
+  "parks": {
+    "title": "Freizeitparks",
+    "subtitle": "Entdecke Wartezeiten und Auslastung weltweit",
+    "operatingStatus": "Betriebsstatus",
+    "operating": "Geöffnet",
+    "closed": "Geschlossen",
+    "refurbishment": "In Renovierung",
+    "status": {
+      "OPERATING": "Geöffnet",
+      "CLOSED": "Geschlossen",
+      "REFURBISHMENT": "In Renovierung",
+      "DOWN": "Störung"
+    },
+    "weather": {
+      "clear": "Klarer Himmel",
+      "mainlyClear": "Meist klar",
+      "partlyCloudy": "Teilweise bewölkt",
+      "overcast": "Bedeckt",
+      "fog": "Nebel",
+      "drizzle": "Nieselregen",
+      "freezingDrizzle": "Gefrierender Nieselregen",
+      "rain": "Regen",
+      "freezingRain": "Gefrierender Regen",
+      "snow": "Schnee",
+      "snowGrains": "Schneegriesel",
+      "rainShowers": "Regenschauer",
+      "snowShowers": "Schneeschauer",
+      "thunderstorm": "Gewitter",
+      "cloudy": "Bewölkt",
+      "mist": "Nebel"
+    },
+    "crowdLevel": "Auslastung",
+    "crowdLevels": {
+      "very_low": "Sehr niedrig",
+      "low": "Niedrig",
+      "normal": "Normal",
+      "moderate": "Moderat",
+      "higher": "Erhöht",
+      "high": "Hoch",
+      "very_high": "Sehr hoch",
+      "extreme": "Extrem",
+      "full": "Voll",
+      "closed": "Geschlossen"
+    },
+    "avgWaitTime": "Ø Wartezeit",
+    "openAttractions": "Offene Attraktionen",
+    "closedAttractions": "Geschlossene Attraktionen",
+    "schedule": "Öffnungszeiten",
+    "weatherLabel": "Wetter",
+    "todaySchedule": "Heutige Öffnungszeiten",
+    "forecast": "Vorhersage",
+    "attractions": "Attraktionen",
+    "shows": "Shows",
+    "predictions": "Wartezeit-Prognose",
+    "nextPredicted": "Nächste: {time} Min prognostiziert",
+    "otherAttractions": "Weitere Attraktionen",
+    "operatingCount": "{count}/{total} in Betrieb",
+    "restaurants": "Restaurants",
+    "viewPark": "Park ansehen",
+    "planYourVisit": "Besuch planen",
+    "bestDaysToVisit": "Beste Besuchstage",
+    "daysToAvoid": "Tage zum Vermeiden"
+  },
+  "attractions": {
+    "title": "Attraktionen",
+    "waitTime": "Wartezeit",
+    "status": {
+      "operating": "In Betrieb",
+      "down": "Vorübergehend geschlossen",
+      "closed": "Geschlossen",
+      "refurbishment": "In Wartung"
+    },
+    "label": {
+      "OPERATING": "Geöffnet",
+      "DOWN": "Störung",
+      "CLOSED": "Geschlossen",
+      "REFURBISHMENT": "Wartung"
+    },
+    "predictions": "Wartezeit-Vorhersage",
+    "todaySchedule": "Heutige Öffnungszeiten",
+    "history": "Wartezeit-Verlauf",
+    "statistics": "Statistiken",
+    "noWaitTime": "Keine Wartezeit-Daten",
+    "predictionAccuracy": "Vorhersage-Genauigkeit",
+    "otherQueues": "Weitere Warteschlangen",
+    "returnTime": "Rückkehr"
+  },
+  "calendar": {
+    "legend": "Legende",
+    "holiday": "Feiertag",
+    "bridgeDay": "Brückentag",
+    "recommended": "Empfohlen",
+    "notRecommended": "Nicht empfohlen",
+    "parkClosed": "Park geschlossen",
+    "prevMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat"
+  },
+  "geo": {
+    "continent": "Kontinent",
+    "country": "Land",
+    "city": "Stadt",
+    "open": "Geöffnet",
+    "continents": {
+      "europe": "Europa",
+      "north-america": "Nordamerika",
+      "south-america": "Südamerika",
+      "asia": "Asien",
+      "oceania": "Ozeanien",
+      "africa": "Afrika"
+    },
+    "countries": {
+      "germany": "Deutschland",
+      "france": "Frankreich",
+      "spain": "Spanien",
+      "netherlands": "Niederlande",
+      "austria": "Österreich",
+      "belgium": "Belgien",
+      "denmark": "Dänemark",
+      "italy": "Italien",
+      "poland": "Polen",
+      "sweden": "Schweden",
+      "united-kingdom": "Vereinigtes Königreich",
+      "united-states": "USA",
+      "japan": "Japan",
+      "china": "China",
+      "canada": "Kanada",
+      "hong-kong": "Hongkong",
+      "south-korea": "Südkorea",
+      "australia": "Australien",
+      "brazil": "Brasilien",
+      "south-korea": "Südkorea"
+    },
+    "parksIn": "Parks in {location}",
+    "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
+    "exploreByRegion": "Nach Region entdecken"
+  },
+  "stats": {
+    "globalStats": "Globale Statistiken",
+    "openParks": "Offene Parks",
+    "totalAttractions": "Attraktionen gesamt",
+    "mostCrowded": "Am vollsten",
+    "leastCrowded": "Am leersten",
+    "longestWait": "Längste Wartezeit",
+    "shortestWait": "Kürzeste Wartezeit"
+  },
+  "homepage": {
+    "hero": {
+      "badge": "KI-gestützte Vorhersagen",
+      "exploreParks": "Parks entdecken"
+    },
+    "features": {
+      "title": "Plane deinen perfekten Besuch",
+      "realtime": {
+        "title": "Echtzeit-Wartezeiten",
+        "description": "Live-Wartezeiten werden jede Minute von Parks weltweit aktualisiert."
+      },
+      "predictions": {
+        "title": "ML-Vorhersagen",
+        "description": "Machine-Learning-Prognosen für Auslastung und Wartezeiten."
+      },
+      "calendar": {
+        "title": "Bester-Tag-Finder",
+        "description": "Kalenderansicht mit Wetter, Feiertagen und Auslastungs-Vorhersagen."
+      }
+    }
+  },
+  "search": {
+    "typeToSearch": "Mindestens 3 Zeichen eingeben...",
+    "viewAllResults": "Alle Ergebnisse für \"{query}\" anzeigen"
+  },
+  "admin": {
+    "title": "Admin-Dashboard",
+    "ml": {
+      "title": "ML-Dashboard",
+      "modelVersion": "Modellversion",
+      "accuracy": "Genauigkeit",
+      "trainedAt": "Trainiert am",
+      "nextTraining": "Nächstes Training",
+      "triggerTraining": "Training starten"
+    },
+    "system": {
+      "title": "Systemstatus",
+      "database": "Datenbank",
+      "redis": "Redis",
+      "mlService": "ML-Service",
+      "healthy": "Gesund",
+      "unhealthy": "Ungesund",
+      "flushCache": "Cache leeren",
+      "syncHolidays": "Feiertage synchronisieren"
+    }
+  },
+
+  "seo": {
+    "home": {
+      "title": "park.fan - Freizeitpark Wartezeiten & Vorhersagen",
+      "description": "Echtzeit-Wartezeiten, Auslastungs-Vorhersagen und Öffnungszeiten für Freizeitparks weltweit. Plane deinen perfekten Besuch mit KI-gestützten Prognosen."
+    },
+    "parks": {
+      "title": "Freizeitparks - park.fan",
+      "description": "Entdecke alle Freizeitparks weltweit mit Live-Wartezeiten und Auslastung."
+    }
+  }
+}

@@ -1,63 +1,107 @@
-import { BuildInfo } from '../display/build-info';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { Sparkles, ExternalLink } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 export function Footer() {
+  const t = useTranslations('footer');
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-slate-100 dark:bg-slate-800 border-t border-border mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="text-lg font-semibold gradient-text mb-4">🎢 Park.Fan</h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm">
-              Real-time theme park statistics and analytics platform. Get insights into wait times,
-              park operations, and visitor patterns.
-            </p>
+    <footer className="bg-muted/30 border-t">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid gap-8 md:grid-cols-4">
+          {/* Brand */}
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
+                <Sparkles className="text-park-primary-foreground h-5 w-5" />
+              </div>
+              <span className="text-xl font-bold">park.fan</span>
+            </Link>
+            <p className="text-muted-foreground text-sm">{t('description')}</p>
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3">
-              Features
-            </h4>
-            <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-300">
-              <li>Live Wait Times</li>
-              <li>Park Statistics</li>
-              <li>Global Analytics</li>
-              <li>Historical Data</li>
-            </ul>
+          {/* Explore */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">{t('sections.explore')}</h3>
+            <nav className="flex flex-col gap-2 text-sm">
+              <Link href="/parks/europe" className="text-muted-foreground hover:text-foreground">
+                {t('regions.europe')}
+              </Link>
+              <Link
+                href="/parks/north-america"
+                className="text-muted-foreground hover:text-foreground"
+              >
+                {t('regions.northAmerica')}
+              </Link>
+              <Link href="/parks/asia" className="text-muted-foreground hover:text-foreground">
+                {t('regions.asia')}
+              </Link>
+            </nav>
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3">
-              Data Source
-            </h4>
-            <p className="text-sm text-slate-600 dark:text-slate-300 mb-2">
-              Powered by Park.Fan API
-            </p>
-            <a
-              href="https://api.park.fan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors underline"
-            >
-              api.park.fan
-            </a>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-6 border-t border-slate-300 dark:border-slate-600">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-center sm:text-left text-sm text-slate-600 dark:text-slate-300">
-              © 2025 Park.Fan Dashboard. Coded with ❤️ by{' '}
+          {/* Resources */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">{t('sections.resources')}</h3>
+            <nav className="flex flex-col gap-2 text-sm">
+              <a
+                href="https://api.park.fan/api"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+              >
+                {t('api')}
+                <ExternalLink className="h-3 w-3" />
+              </a>
+              <a
+                href="https://github.com/PArns"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+              >
+                GitHub
+                <ExternalLink className="h-3 w-3" />
+              </a>
               <a
                 href="https://arns.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 transition-colors underline"
+                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
               >
-                arns.dev
+                Arns.dev
+                <ExternalLink className="h-3 w-3" />
               </a>
-            </p>
-            <BuildInfo />
+            </nav>
           </div>
+
+          {/* Legal */}
+          <div className="space-y-4">
+            <h3 className="font-semibold">{t('sections.legal')}</h3>
+            <nav className="flex flex-col gap-2 text-sm">
+              <Link href="/privacy" className="text-muted-foreground hover:text-foreground">
+                {t('privacy')}
+              </Link>
+              <Link href="/terms" className="text-muted-foreground hover:text-foreground">
+                {t('terms')}
+              </Link>
+              <Link href="/contact" className="text-muted-foreground hover:text-foreground">
+                {t('contact')}
+              </Link>
+            </nav>
+          </div>
+        </div>
+
+        <Separator className="my-8" />
+
+        <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
+          <p>{t('copyright', { year: currentYear })}</p>
+          <p>
+            Powered by{' '}
+            <a href="https://arns.dev" target="_blank" rel="noopener noreferrer">
+              Arns.dev
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -1,54 +1,17 @@
 import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  // Optimize bundle splitting and tree shaking + Accessibility
-  experimental: {
-    optimizePackageImports: [
-      'lucide-react',
-      'tailwindcss',
-      '@tailwindcss/postcss',
-      'class-variance-authority',
-      'clsx',
-      'tailwind-merge',
-    ],
-    // typedRoutes: true, // Disabled for now due to TypeScript conflicts
-  },
-
-  // Compress and optimize output
-  compress: true,
-
-  // Image optimization
   images: {
-    formats: ['image/webp', 'image/avif'],
-  },
-
-  // Headers for better accessibility and security
-  async headers() {
-    return [
+    remotePatterns: [
       {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
-          // Accessibility headers
-          {
-            key: 'Cross-Origin-Opener-Policy',
-            value: 'same-origin',
-          },
-        ],
+        protocol: 'https',
+        hostname: '**.park.fan',
       },
-    ];
+    ],
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

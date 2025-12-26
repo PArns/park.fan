@@ -1,0 +1,321 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "search": "Search",
+    "searchPlaceholderShort": "Search",
+    "searchPlaceholderLong": "Search parks, attractions, shows & restaurants...",
+    "noResults": "No results found",
+    "viewAll": "View all",
+    "moreInfo": "More info",
+    "minutes": "min",
+    "noShowtimesToday": "No showtimes today",
+    "hours": "h",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "closed": "Closed",
+    "open": "Open",
+    "seeMore": "See more",
+    "avgWait": "avg",
+    "of": "of",
+    "total": "total",
+    "operating": "operating",
+    "parks": "parks",
+    "countries": "countries",
+    "rides": "rides",
+    "status": "Status",
+    "home": "Home",
+    "trend": "Trend",
+    "vsTypical": "vs Typical",
+    "higher": "Higher",
+    "lower": "Lower",
+    "typical": "Typical",
+    "crowd": {
+      "very_low": "Very Low",
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "very_high": "Very High",
+      "full": "Full",
+      "closed": "Closed"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "ML-Powered Predictions",
+      "cta": "Explore Parks"
+    },
+    "sections": {
+      "explore": "Explore by Region",
+      "plan": "Plan Your Perfect Visit",
+      "liveNow": "Parks Open Right Now"
+    },
+    "features": {
+      "realtime": {
+        "title": "Real-Time Wait Times",
+        "description": "Live wait times updated every minute from parks worldwide."
+      },
+      "ml": {
+        "title": "ML Predictions",
+        "description": "Machine learning forecasts to predict crowd levels and wait times."
+      },
+      "calendar": {
+        "title": "Best Day Finder",
+        "description": "Calendar view with weather, holidays, and crowd predictions."
+      }
+    }
+  },
+  "footer": {
+    "description": "Real-time theme park wait times and crowd predictions powered by machine learning.",
+    "sections": {
+      "explore": "Explore",
+      "resources": "Resources",
+      "legal": "Legal"
+    },
+    "regions": {
+      "europe": "Europe",
+      "northAmerica": "North America",
+      "asia": "Asia"
+    },
+    "api": "API",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "copyright": "© {year} park.fan. All rights reserved.",
+    "poweredBy": "Powered by Vercel"
+  },
+  "explore": {
+    "title": "Parks in {location}",
+    "description": "Explore theme parks in {location} with real-time wait times and crowd predictions.",
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "stats": {
+      "park": "{count, plural, =1 {park} other {parks}}",
+      "country": "{count, plural, =1 {country} other {countries}}",
+      "city": "{count, plural, =1 {city} other {cities}}",
+      "more": "+{count} more"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "parks": "Parks",
+    "explore": "Explore",
+    "search": "Search",
+    "admin": "Admin"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "parks": {
+    "title": "Theme Parks",
+    "subtitle": "Explore wait times and crowd levels worldwide",
+    "operatingStatus": "Operating Status",
+    "operating": "Operating",
+    "closed": "Closed",
+    "crowdLevel": "Crowd Level",
+    "crowdLevels": {
+      "very_low": "Very Low",
+      "low": "Low",
+      "normal": "Normal",
+      "moderate": "Moderate",
+      "higher": "Higher",
+      "high": "High",
+      "very_high": "Very High",
+      "extreme": "Extreme",
+      "full": "Full",
+      "closed": "Closed"
+    },
+    "avgWaitTime": "Avg. Wait Time",
+    "openAttractions": "Open Attractions",
+    "closedAttractions": "Closed Attractions",
+    "schedule": "Schedule",
+    "weatherLabel": "Weather",
+    "forecast": "Forecast",
+    "attractions": "Attractions",
+    "shows": "Shows",
+    "predictions": "Wait Time Forecast",
+    "nextPredicted": "Next: {time} min predicted",
+    "otherAttractions": "Other Attractions",
+    "operatingCount": "{count}/{total} operating",
+    "restaurants": "Restaurants",
+    "viewPark": "View Park",
+    "planYourVisit": "Plan Your Visit",
+    "bestDaysToVisit": "Best Days to Visit",
+    "daysToAvoid": "Days to Avoid",
+    "todaySchedule": "Today's Schedule",
+    "open": "open",
+    "up": "Up",
+    "down": "Down",
+    "increasing": "Increasing",
+    "decreasing": "Decreasing",
+    "stable": "Stable",
+    "status": {
+      "OPERATING": "Open",
+      "CLOSED": "Closed",
+      "REFURBISHMENT": "Refurbishment",
+      "DOWN": "Down"
+    },
+    "weather": {
+      "clear": "Clear sky",
+      "mainlyClear": "Mainly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Drizzle",
+      "freezingDrizzle": "Freezing Drizzle",
+      "rain": "Rain",
+      "freezingRain": "Freezing Rain",
+      "snow": "Snow",
+      "snowGrains": "Snow Grains",
+      "rainShowers": "Rain Showers",
+      "snowShowers": "Snow Showers",
+      "thunderstorm": "Thunderstorm",
+      "cloudy": "Cloudy",
+      "mist": "Mist"
+    }
+  },
+  "attractions": {
+    "title": "Attractions",
+    "waitTime": "Wait Time",
+    "status": {
+      "operating": "Operating",
+      "down": "Temporarily Down",
+      "closed": "Closed",
+      "refurbishment": "Under Refurbishment"
+    },
+    "label": {
+      "OPERATING": "Open",
+      "DOWN": "Down",
+      "CLOSED": "Closed",
+      "REFURBISHMENT": "Refurb"
+    },
+    "predictions": "Wait Time Predictions",
+    "todaySchedule": "Today's Hours",
+    "history": "Wait Time History",
+    "statistics": "Statistics",
+    "noWaitTime": "No wait time data",
+    "predictionAccuracy": "Prediction Accuracy",
+    "otherQueues": "Other Queue Options",
+    "returnTime": "Return"
+  },
+  "calendar": {
+    "legend": "Legend",
+    "holiday": "Holiday",
+    "bridgeDay": "Bridge Day",
+    "recommended": "Recommended",
+    "notRecommended": "Not Recommended",
+    "parkClosed": "Park Closed",
+    "prevMonth": "Previous Month",
+    "nextMonth": "Next Month"
+  },
+  "geo": {
+    "continent": "Continent",
+    "country": "Country",
+    "city": "City",
+    "open": "Open",
+    "continents": {
+      "europe": "Europe",
+      "north-america": "North America",
+      "south-america": "South America",
+      "asia": "Asia",
+      "oceania": "Oceania",
+      "africa": "Africa"
+    },
+    "countries": {
+      "germany": "Germany",
+      "france": "France",
+      "spain": "Spain",
+      "netherlands": "Netherlands",
+      "austria": "Austria",
+      "belgium": "Belgium",
+      "denmark": "Denmark",
+      "italy": "Italy",
+      "poland": "Poland",
+      "sweden": "Sweden",
+      "united-kingdom": "United Kingdom",
+      "united-states": "USA",
+      "japan": "Japan",
+      "china": "China",
+      "canada": "Canada",
+      "hong-kong": "Hong Kong",
+      "south-korea": "South Korea",
+      "australia": "Australia",
+      "brazil": "Brazil",
+      "south-korea": "South Korea"
+    },
+    "parksIn": "Parks in {location}",
+    "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
+    "exploreByRegion": "Explore by Region"
+  },
+  "stats": {
+    "globalStats": "Global Statistics",
+    "openParks": "Open Parks",
+    "totalAttractions": "Total Attractions",
+    "mostCrowded": "Most Crowded",
+    "leastCrowded": "Least Crowded",
+    "longestWait": "Longest Wait",
+    "shortestWait": "Shortest Wait"
+  },
+  "homepage": {
+    "hero": {
+      "badge": "ML-Powered Predictions",
+      "exploreParks": "Explore Parks"
+    },
+    "features": {
+      "title": "Plan Your Perfect Visit",
+      "realtime": {
+        "title": "Real-Time Wait Times",
+        "description": "Live wait times updated every minute from parks worldwide."
+      },
+      "predictions": {
+        "title": "ML Predictions",
+        "description": "Machine learning forecasts to predict crowd levels and wait times."
+      },
+      "calendar": {
+        "title": "Best Day Finder",
+        "description": "Calendar view with weather, holidays, and crowd predictions."
+      }
+    }
+  },
+  "search": {
+    "typeToSearch": "Type at least 3 characters to search...",
+    "viewAllResults": "View all results for \"{query}\""
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "ml": {
+      "title": "ML Dashboard",
+      "modelVersion": "Model Version",
+      "accuracy": "Accuracy",
+      "trainedAt": "Trained At",
+      "nextTraining": "Next Training",
+      "triggerTraining": "Trigger Training"
+    },
+    "system": {
+      "title": "System Health",
+      "database": "Database",
+      "redis": "Redis",
+      "mlService": "ML Service",
+      "healthy": "Healthy",
+      "unhealthy": "Unhealthy",
+      "flushCache": "Flush Cache",
+      "syncHolidays": "Sync Holidays"
+    }
+  },
+
+  "seo": {
+    "home": {
+      "title": "park.fan - Theme Park Wait Times & Crowd Predictions",
+      "description": "Real-time wait times, crowd predictions, and park schedules for theme parks worldwide. Plan your perfect visit with ML-powered forecasts."
+    },
+    "parks": {
+      "title": "Theme Parks - park.fan",
+      "description": "Browse all theme parks worldwide with live wait times and crowd levels."
+    }
+  }
+}
