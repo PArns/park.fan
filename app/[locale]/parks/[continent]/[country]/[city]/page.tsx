@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { TreePalm, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 1800; // 30 minutes (matches API cache)
+export const revalidate = 300; // 5 minutes (matches live stats cache)
 
 export default async function CityPage({ params }: CityPageProps) {
   const { locale, continent, country, city: citySlug } = await params;
@@ -47,6 +49,10 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const { parks } = city;
   const { breadcrumbs } = response;
+
+  const countryName = t.has(`countries.${country}`)
+    ? t(`countries.${country}`)
+    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -75,23 +81,44 @@ export default async function CityPage({ params }: CityPageProps) {
                   <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
                     <TreePalm className="text-primary h-6 w-6" />
                   </div>
+                  {park.status && <ParkStatusBadge status={park.status} />}
                 </div>
-
-                <h2 className="group-hover:text-primary mb-2 text-xl font-semibold transition-colors">
+                <h3 className="group-hover:text-primary mb-2 text-lg font-semibold transition-colors">
                   {park.name}
-                </h2>
+                </h3>
+                <p className="text-muted-foreground mb-3 text-sm">
+                  {city.name}, {countryName}
+                </p>
 
-                {/* Stats Row */}
-                <div className="mt-4 grid grid-cols-2 gap-4">
-                  {park.attractionCount > 0 && (
-                    <div className="flex items-center gap-2 text-sm">
-                      <Users className="text-muted-foreground h-4 w-4" />
-                      <span>
+                {/* Stats */}
+                {park.analytics?.statistics && park.status === 'OPERATING' ? (
+                  <div className="mt-3 flex items-center gap-4 text-sm">
+                    <span className="text-muted-foreground hover:text-foreground transition-colors">
+                      {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
+                      {tCommon('avgWait')}
+                    </span>
+                    <span className="text-muted-foreground hover:text-foreground transition-colors">
+                      {park.analytics.statistics.operatingAttractions}/
+                      {park.analytics.statistics.totalAttractions} {tCommon('open')}
+                    </span>
+                  </div>
+                ) : (
+                  park.attractionCount > 0 && (
+                    <div className="mt-3 flex items-center gap-4 text-sm">
+                      <span className="text-muted-foreground flex items-center gap-1">
+                        <Users className="h-4 w-4" />
                         {park.attractionCount} {tCommon('rides')}
                       </span>
                     </div>
-                  )}
-                </div>
+                  )
+                )}
+
+                {/* Crowd Level */}
+                {park.currentLoad && park.status === 'OPERATING' && (
+                  <div className="mt-3">
+                    <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
+                  </div>
+                )}
               </CardContent>
             </Card>
           </Link>

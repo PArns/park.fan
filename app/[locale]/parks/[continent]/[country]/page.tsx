@@ -4,6 +4,8 @@ import { Link } from '@/i18n/navigation';
 import { MapPin, TreePalm, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -22,7 +24,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   };
 }
 
-export const revalidate = 1800; // 30 minutes (matches API cache)
+export const revalidate = 300; // 5 minutes (matches live stats cache)
 
 export default async function CountryPage({ params }: CountryPageProps) {
   const { locale, continent, country } = await params;
@@ -87,6 +89,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
                         <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
                           <TreePalm className="text-primary h-6 w-6" />
                         </div>
+                        {park.status && <ParkStatusBadge status={park.status} />}
                       </div>
                       <h3 className="group-hover:text-primary mb-2 text-lg font-semibold transition-colors">
                         {park.name}
@@ -96,12 +99,32 @@ export default async function CountryPage({ params }: CountryPageProps) {
                       </p>
 
                       {/* Stats */}
-                      {park.attractionCount > 0 && (
+                      {park.analytics?.statistics && park.status === 'OPERATING' ? (
                         <div className="mt-3 flex items-center gap-4 text-sm">
-                          <span className="text-muted-foreground flex items-center gap-1">
-                            <Users className="h-4 w-4" />
-                            {park.attractionCount} {tCommon('rides')}
+                          <span className="text-muted-foreground hover:text-foreground transition-colors">
+                            {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
+                            {tCommon('avgWait')}
                           </span>
+                          <span className="text-muted-foreground hover:text-foreground transition-colors">
+                            {park.analytics.statistics.operatingAttractions}/
+                            {park.analytics.statistics.totalAttractions} {tCommon('open')}
+                          </span>
+                        </div>
+                      ) : (
+                        park.attractionCount > 0 && (
+                          <div className="mt-3 flex items-center gap-4 text-sm">
+                            <span className="text-muted-foreground flex items-center gap-1">
+                              <Users className="h-4 w-4" />
+                              {park.attractionCount} {tCommon('rides')}
+                            </span>
+                          </div>
+                        )
+                      )}
+
+                      {/* Crowd Level */}
+                      {park.currentLoad && park.status === 'OPERATING' && (
+                        <div className="mt-3">
+                          <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
                         </div>
                       )}
                     </CardContent>

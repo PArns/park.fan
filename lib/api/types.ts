@@ -379,9 +379,20 @@ export interface ParkReference {
   id: string;
   name: string;
   slug: string;
-  url: string;
+  country: string;
   attractions: AttractionReference[];
   attractionCount: number;
+  // New backend fields (optional as backend might not always populate them?)
+  // Actually, for discovery endpoints they ARE populated now.
+  status?: ParkStatus;
+  currentLoad?: {
+    crowdLevel: CrowdLevel; // or string if purely from backend
+    value: number;
+    trend: Trend;
+    percentage: number;
+    queueSize: number;
+  };
+  analytics?: ParkAnalytics;
 }
 
 export interface City {
