@@ -300,7 +300,20 @@
   "search": {
     "typeToSearch": "Mindestens 3 Zeichen eingeben...",
     "viewAllResults": "Alle Ergebnisse für \"{query}\" anzeigen",
-    "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen..."
+    "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
+    "at": "in {park}",
+    "types": {
+      "park": "Park",
+      "attraction": "Attraktion",
+      "show": "Show",
+      "restaurant": "Restaurant"
+    },
+    "headings": {
+      "park": "Parks ({count})",
+      "attraction": "Attraktionen ({count})",
+      "show": "Shows ({count})",
+      "restaurant": "Restaurants ({count})"
+    }
   },
   "admin": {
     "title": "Admin-Dashboard",

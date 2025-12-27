@@ -23,13 +23,6 @@ const typeIcons = {
   restaurant: Utensils,
 };
 
-const typeLabels = {
-  park: 'Park',
-  attraction: 'Attraction',
-  show: 'Show',
-  restaurant: 'Restaurant',
-};
-
 interface SearchCommandProps {
   trigger?: 'button' | 'input' | 'hero';
   label?: string;
@@ -39,6 +32,7 @@ interface SearchCommandProps {
 export function SearchCommand({ trigger = 'button', label, placeholder }: SearchCommandProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
+  const tGeo = useTranslations('geo');
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -134,11 +128,10 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${
-                  result.status === 'OPERATING'
-                    ? 'border-status-operating text-status-operating'
-                    : 'border-status-closed text-status-closed'
-                }`}
+                className={`text-xs ${result.status === 'OPERATING'
+                    ? 'border-green-600 text-green-600'
+                    : 'border-red-500 text-red-500'
+                  }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}
               </Badge>
@@ -148,19 +141,28 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
           <div className="text-muted-foreground flex flex-wrap items-center gap-2 text-xs">
             {/* Type Badge */}
             <Badge variant="secondary" className="text-xs">
-              {typeLabels[result.type]}
+              {tSearch(`types.${result.type}`)}
             </Badge>
 
             {/* Location */}
             {(result.city || result.country) && (
               <span className="flex items-center gap-1">
                 <MapPin className="h-3 w-3" />
-                {[result.city, result.country].filter(Boolean).join(', ')}
+                {[
+                  result.city,
+                  result.country
+                    ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`)
+                    : null,
+                ]
+                  .filter(Boolean)
+                  .join(', ')}
               </span>
             )}
 
             {/* Parent Park for attractions */}
-            {result.parentPark && <span className="truncate">at {result.parentPark.name}</span>}
+            {result.parentPark && (
+              <span className="truncate">{tSearch('at', { park: result.parentPark.name })}</span>
+            )}
 
             {/* Wait Time */}
             {result.type === 'attraction' &&
@@ -173,17 +175,16 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
               )}
 
             {/* Crowd Level */}
-            {result.type === 'park' && result.load && (
+            {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
               <Badge
-                className={`text-xs ${
-                  result.load === 'very_low' || result.load === 'low'
+                className={`text-xs ${result.load === 'very_low' || result.load === 'low'
                     ? 'bg-crowd-low'
                     : result.load === 'normal'
                       ? 'bg-crowd-moderate'
                       : 'bg-crowd-high'
-                } text-white`}
+                  } text-white`}
               >
-                {result.load.replace('_', ' ')}
+                {t(`crowd.${result.load}`)}
               </Badge>
             )}
           </div>
@@ -256,7 +257,10 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
                 if (items.length === 0) return null;
 
                 return (
-                  <CommandGroup key={type} heading={`${typeLabels[type]}s (${items.length})`}>
+                  <CommandGroup
+                    key={type}
+                    heading={tSearch(`headings.${type}`, { count: items.length })}
+                  >
                     {items.slice(0, 5).map(renderResultItem)}
                   </CommandGroup>
                 );

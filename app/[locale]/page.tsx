@@ -337,7 +337,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     href={`/parks/${continent.slug}`}
                     className="group block"
                   >
-                    <Card className="hover:border-primary/50 h-full bg-slate-950 transition-all hover:shadow-lg dark:bg-slate-950">
+                    <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg dark:bg-slate-950">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-lg font-medium">{continentName}</CardTitle>
