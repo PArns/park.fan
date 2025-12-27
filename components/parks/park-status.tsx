@@ -9,10 +9,11 @@ import {
   ActivitySquare,
 } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { CrowdLevelBadge } from './crowd-level-badge';
+import { PeakHourBadge } from './peak-hour-badge';
 import { ParkStatusBadge } from './park-status-badge';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions, ParkResponse, Trend } from '@/lib/api/types';
@@ -113,47 +114,45 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
             {/* Status & Crowd Card */}
             {crowdLevel && status && (
               <Card>
-                <CardContent className="p-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                        {t('crowdLevel')}
-                      </span>
-                      <ActivitySquare className="text-muted-foreground/50 h-4 w-4" />
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <CrowdLevelBadge level={crowdLevel} className="scale-110" />
-                    </div>
-                    {occupancy && (
-                      <div className="space-y-2">
-                        <div className="flex items-baseline justify-between">
-                          <span className="text-muted-foreground text-xs">{t('occupancy')}</span>
-                          <span className="text-foreground text-xl font-bold">
-                            {Math.round(occupancy.current)}%
-                          </span>
-                        </div>
-                        <Progress value={occupancy.current} className="h-2" />
-                        {occupancy.comparisonStatus !== 'typical' && (
-                          <p className="text-xs">
-                            <span
-                              className={cn(
-                                'font-semibold',
-                                occupancy.comparisonStatus === 'higher'
-                                  ? 'text-red-600 dark:text-red-400'
-                                  : 'text-green-600 dark:text-green-400'
-                              )}
-                            >
-                              {Math.abs(occupancy.comparedToTypical)}%{' '}
-                              {tCommon(occupancy.comparisonStatus)}
-                            </span>
-                            <span className="text-muted-foreground ml-1">
-                              {tCommon('vsTypical').toLowerCase()}
-                            </span>
-                          </p>
-                        )}
-                      </div>
-                    )}
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <ActivitySquare className="h-4 w-4" />
+                    {t('crowdLevel')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center justify-center py-2">
+                    <CrowdLevelBadge level={crowdLevel} className="scale-110" />
                   </div>
+                  {occupancy && (
+                    <div className="space-y-2">
+                      <div className="flex items-baseline justify-between">
+                        <span className="text-muted-foreground text-xs">{t('occupancy')}</span>
+                        <span className="text-foreground text-xl font-bold">
+                          {Math.round(occupancy.current)}%
+                        </span>
+                      </div>
+                      <Progress value={occupancy.current} className="h-2" />
+                      {occupancy.comparisonStatus !== 'typical' && (
+                        <p className="text-xs">
+                          <span
+                            className={cn(
+                              'font-semibold',
+                              occupancy.comparisonStatus === 'higher'
+                                ? 'text-red-600 dark:text-red-400'
+                                : 'text-green-600 dark:text-green-400'
+                            )}
+                          >
+                            {Math.abs(occupancy.comparedToTypical)}%{' '}
+                            {tCommon(occupancy.comparisonStatus)}
+                          </span>
+                          <span className="text-muted-foreground ml-1">
+                            {tCommon('vsTypical').toLowerCase()}
+                          </span>
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             )}
@@ -161,24 +160,31 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
             {/* Wait Times Card */}
             {stats && (
               <Card>
-                <CardContent className="p-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                        {t('avgWaitTime')}
-                      </span>
-                      <Clock className="text-muted-foreground/50 h-4 w-4" />
-                    </div>
-                    <div className="flex items-baseline justify-center gap-2">
-                      <span className="text-foreground text-4xl font-bold tabular-nums">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <Clock className="h-4 w-4" />
+                    {t('avgWaitTime')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-baseline justify-between pt-1">
+                    <span className="text-muted-foreground text-sm font-medium">Aktuell</span>
+                    <div className="flex items-baseline gap-1.5">
+                      <span className="text-foreground text-3xl font-bold tabular-nums">
                         {stats.avgWaitTime}
                       </span>
                       <span className="text-muted-foreground text-sm font-medium">
                         {tCommon('minutes')}
                       </span>
                     </div>
-                    {occupancy?.trend && (
-                      <div className="flex items-center justify-center gap-2">
+                  </div>
+
+                  {occupancy?.trend && (
+                    <div className="flex items-center justify-between border-t pt-3">
+                      <span className="text-muted-foreground text-sm font-medium">
+                        {tCommon('trend')}
+                      </span>
+                      <div className="flex items-center gap-2">
                         {(() => {
                           const Icon = trendIcons[occupancy.trend];
                           return (
@@ -186,9 +192,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               className={cn(
                                 'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
                                 occupancy.trend === 'up' &&
-                                'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
+                                  'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
                                 occupancy.trend === 'down' &&
-                                'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
+                                  'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
                                 occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
                               )}
                             >
@@ -198,13 +204,33 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                           );
                         })()}
                       </div>
-                    )}
-                    {stats.peakHour && (
-                      <p className="text-muted-foreground text-center text-xs">
-                        {t('peakHour')}: <LocalTime time={stats.peakHour} timeZone={park.timezone} />
-                      </p>
-                    )}
-                  </div>
+                    </div>
+                  )}
+                  {stats.peakHour && (
+                    <div className="flex items-center justify-between border-t pt-3">
+                      <span className="text-muted-foreground text-sm font-medium">
+                        {t('peakHour')}
+                      </span>
+                      <div className="flex items-center">
+                        <span className="text-foreground text-sm font-bold tabular-nums">
+                          <LocalTime
+                            time={
+                              stats.peakHour.includes('T')
+                                ? stats.peakHour
+                                : (() => {
+                                    const now = new Date();
+                                    const [h, m] = stats.peakHour.split(':').map(Number);
+                                    now.setUTCHours(h, m, 0, 0);
+                                    return now.toISOString();
+                                  })()
+                            }
+                            timeZone={park.timezone}
+                          />
+                        </span>
+                        <PeakHourBadge peakHour={stats.peakHour} />
+                      </div>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             )}
@@ -212,15 +238,15 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
             {/* Attractions Status Card */}
             {stats && (
               <Card>
-                <CardContent className="p-6">
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                        {t('attractions')}
-                      </span>
-                      <Users className="text-muted-foreground/50 h-4 w-4" />
-                    </div>
-                    <div className="flex items-baseline justify-center gap-2">
+                <CardHeader className="pb-3">
+                  <CardTitle className="flex items-center gap-2 text-base">
+                    <Users className="h-4 w-4" />
+                    {t('attractions')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center justify-center py-2">
+                    <div className="flex items-baseline gap-2">
                       <span className="text-foreground text-4xl font-bold tabular-nums">
                         {stats.operatingAttractions}
                       </span>
@@ -228,19 +254,19 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                         / {stats.totalAttractions}
                       </span>
                     </div>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div className="rounded-md bg-green-50 px-2 py-1.5 text-center dark:bg-green-950/30">
-                        <div className="font-semibold text-green-700 dark:text-green-400">
-                          {stats.operatingAttractions}
-                        </div>
-                        <div className="text-muted-foreground">{t('operating')}</div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
+                    <div className="rounded-md bg-green-50 px-2 py-1.5 text-center dark:bg-green-950/30">
+                      <div className="font-semibold text-green-700 dark:text-green-400">
+                        {stats.operatingAttractions}
                       </div>
-                      <div className="rounded-md bg-red-50 px-2 py-1.5 text-center dark:bg-red-950/30">
-                        <div className="font-semibold text-red-700 dark:text-red-400">
-                          {stats.closedAttractions}
-                        </div>
-                        <div className="text-muted-foreground">{tCommon('closed')}</div>
+                      <div className="text-muted-foreground">{t('operating')}</div>
+                    </div>
+                    <div className="rounded-md bg-red-50 px-2 py-1.5 text-center dark:bg-red-950/30">
+                      <div className="font-semibold text-red-700 dark:text-red-400">
+                        {stats.closedAttractions}
                       </div>
+                      <div className="text-muted-foreground">{tCommon('closed')}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -334,9 +360,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                 variant="outline"
                 className={cn(
                   analytics.occupancy.comparisonStatus === 'lower' &&
-                  'border-crowd-low text-crowd-low',
+                    'border-crowd-low text-crowd-low',
                   analytics.occupancy.comparisonStatus === 'higher' &&
-                  'border-crowd-high text-crowd-high',
+                    'border-crowd-high text-crowd-high',
                   analytics.occupancy.comparisonStatus === 'typical' && 'border-muted-foreground'
                 )}
               >

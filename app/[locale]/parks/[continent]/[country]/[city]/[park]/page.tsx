@@ -137,7 +137,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           <div>
             <div className="mb-2 flex flex-wrap items-center gap-3">
               <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
-              <ParkStatusBadge status={park.status} className="scale-110" />
+              {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
             </div>
             <div className="text-muted-foreground flex flex-wrap items-center gap-3">
               <span className="flex items-center gap-1">
@@ -243,8 +243,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                               <Badge
                                 key={i}
                                 variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                  }`}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
+                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                }`}
                               >
                                 <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                               </Badge>
