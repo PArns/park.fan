@@ -9,7 +9,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate:translations": "node scripts/validate-translations.js",
+    "crawl:translations": "node scripts/crawl-translations.js",
+    "crawl:translations:live": "node scripts/crawl-translations.js --live",
+    "test:translations": "npm run validate:translations && npm run build && npm run crawl:translations"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.11",

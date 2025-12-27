@@ -1,12 +1,13 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ArrowRight, MapPin, Clock, TrendingUp, Sparkles, ChevronRight, Activity } from 'lucide-react';
+import { ArrowRight, Clock, TrendingUp, Sparkles, ChevronRight, Activity } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchButton } from '@/components/search/hero-search-button';
+
 import type { Metadata } from 'next';
 
 interface HomePageProps {
@@ -140,7 +141,7 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
                         {stats.mostCrowdedPark.city},{' '}
-                        {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as any)}
+                        {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
                       </p>
                       {/* Wait Time */}
                       <div className="mb-2 flex items-center gap-2">
@@ -193,7 +194,7 @@ export default async function HomePage({ params }: HomePageProps) {
                         {stats.leastCrowdedPark.name}
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.leastCrowdedPark.city}, {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as any)}
+                        {stats.leastCrowdedPark.city}, {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
                       </p>
                       {/* Wait Time */}
                       <div className="mb-2 flex items-center gap-2">
@@ -252,7 +253,7 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
                         {stats.longestWaitRide.parkName} · {stats.longestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as any) || stats.longestWaitRide.parkCountry}
+                        {tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) || stats.longestWaitRide.parkCountry}
                       </p>
                       <div className="flex items-center gap-2">
                         <Clock className="text-muted-foreground h-4 w-4" />
@@ -288,7 +289,7 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
                         {stats.shortestWaitRide.parkName} · {stats.shortestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as any) || stats.shortestWaitRide.parkCountry}
+                        {tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) || stats.shortestWaitRide.parkCountry}
                       </p>
                       <div className="flex items-center gap-2">
                         <Clock className="text-muted-foreground h-4 w-4" />
@@ -319,11 +320,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {continents.map((continent) => {
                 const continentName =
-                  tGeo(`continents.${continent.slug}` as 'continents.europe') || continent.name;
-                const percentage =
-                  continent.parkCount > 0
-                    ? (continent.openParkCount / continent.parkCount) * 100
-                    : 0;
+                  tGeo(`continents.${continent.slug}` as string) || continent.name;
 
                 return (
                   <Link

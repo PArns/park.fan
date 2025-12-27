@@ -1,5 +1,14 @@
 {
+  "parks": {
+    "status": {
+      "OPERATING": "Geöffnet",
+      "CLOSED": "Geschlossen",
+      "DOWN": "Störung",
+      "REFURBISHMENT": "Wartung"
+    }
+  },
   "common": {
+
     "loading": "Laden...",
     "trend": "Trend",
     "vsTypical": "vs Typisch",
@@ -19,7 +28,9 @@
       "higher": "Erhöht",
       "high": "Hoch",
       "very_high": "Sehr Hoch",
-      "extreme": "Extrem"
+      "extreme": "Extrem",
+      "full": "Voll",
+      "closed": "Geschlossen"
     },
     "error": "Ein Fehler ist aufgetreten",
     "retry": "Erneut versuchen",
@@ -30,6 +41,8 @@
     "viewAll": "Alle anzeigen",
     "moreInfo": "Mehr Infos",
     "minutes": "Minuten",
+    "minute": "{count, plural, =1 {Minute} other {Minuten}}",
+    "hour": "{count, plural, =1 {Stunde} other {Stunden}}",
     "noShowtimesToday": "Keine Vorstellungen heute",
     "hours": "Std",
     "today": "Heute",
@@ -45,7 +58,8 @@
     "countries": "Länder",
     "rides": "Attraktionen",
     "home": "Startseite",
-    "status": "Status"
+    "status": "Status",
+    "updated": "Aktualisiert"
   },
   "home": {
     "hero": {
@@ -123,7 +137,7 @@
     "operatingStatus": "Betriebsstatus",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
-    "refurbishment": "In Renovierung",
+    "open": "Geöffnet",
     "status": {
       "OPERATING": "Geöffnet",
       "CLOSED": "Geschlossen",
@@ -243,11 +257,11 @@
       "japan": "Japan",
       "china": "China",
       "canada": "Kanada",
+      "mexico": "Mexiko",
       "hong-kong": "Hongkong",
       "south-korea": "Südkorea",
       "australia": "Australien",
-      "brazil": "Brasilien",
-      "south-korea": "Südkorea"
+      "brazil": "Brasilien"
     },
     "parksIn": "Parks in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
@@ -285,7 +299,8 @@
   },
   "search": {
     "typeToSearch": "Mindestens 3 Zeichen eingeben...",
-    "viewAllResults": "Alle Ergebnisse für \"{query}\" anzeigen"
+    "viewAllResults": "Alle Ergebnisse für \"{query}\" anzeigen",
+    "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen..."
   },
   "admin": {
     "title": "Admin-Dashboard",

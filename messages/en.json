@@ -1,5 +1,14 @@
 {
+  "parks": {
+    "status": {
+      "OPERATING": "Open",
+      "CLOSED": "Closed",
+      "DOWN": "Down",
+      "REFURBISHMENT": "Refurbishment"
+    }
+  },
   "common": {
+
     "loading": "Loading...",
     "error": "An error occurred",
     "retry": "Retry",
@@ -10,6 +19,8 @@
     "viewAll": "View all",
     "moreInfo": "More info",
     "minutes": "min",
+    "minute": "{count, plural, =1 {minute} other {minutes}}",
+    "hour": "{count, plural, =1 {hour} other {hours}}",
     "noShowtimesToday": "No showtimes today",
     "hours": "h",
     "today": "Today",
@@ -26,17 +37,26 @@
     "rides": "rides",
     "status": "Status",
     "home": "Home",
+    "updated": "Updated",
     "trend": "Trend",
     "vsTypical": "vs Typical",
     "higher": "Higher",
     "lower": "Lower",
     "typical": "Typical",
+    "up": "Up",
+    "down": "Down",
+    "increasing": "Increasing",
+    "decreasing": "Decreasing",
+    "stable": "Stable",
     "crowd": {
       "very_low": "Very Low",
       "low": "Low",
+      "normal": "Normal",
       "moderate": "Moderate",
+      "higher": "Higher",
       "high": "High",
       "very_high": "Very High",
+      "extreme": "Extreme",
       "full": "Full",
       "closed": "Closed"
     }
@@ -149,11 +169,6 @@
     "daysToAvoid": "Days to Avoid",
     "todaySchedule": "Today's Schedule",
     "open": "open",
-    "up": "Up",
-    "down": "Down",
-    "increasing": "Increasing",
-    "decreasing": "Decreasing",
-    "stable": "Stable",
     "status": {
       "OPERATING": "Open",
       "CLOSED": "Closed",
@@ -242,11 +257,11 @@
       "japan": "Japan",
       "china": "China",
       "canada": "Canada",
+      "mexico": "Mexico",
       "hong-kong": "Hong Kong",
       "south-korea": "South Korea",
       "australia": "Australia",
-      "brazil": "Brazil",
-      "south-korea": "South Korea"
+      "brazil": "Brazil"
     },
     "parksIn": "Parks in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
@@ -284,7 +299,8 @@
   },
   "search": {
     "typeToSearch": "Type at least 3 characters to search...",
-    "viewAllResults": "View all results for \"{query}\""
+    "viewAllResults": "View all results for \"{query}\"",
+    "searchPlaceholder": "Search parks, attractions, shows & restaurants..."
   },
   "admin": {
     "title": "Admin Dashboard",

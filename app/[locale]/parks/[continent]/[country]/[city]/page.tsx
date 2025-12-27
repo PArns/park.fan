@@ -1,10 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { TreePalm, Clock, Users } from 'lucide-react';
+import { TreePalm, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -77,7 +75,6 @@ export default async function CityPage({ params }: CityPageProps) {
                   <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
                     <TreePalm className="text-primary h-6 w-6" />
                   </div>
-                  <ParkStatusBadge status={park.status} />
                 </div>
 
                 <h2 className="group-hover:text-primary mb-2 text-xl font-semibold transition-colors">
@@ -86,32 +83,15 @@ export default async function CityPage({ params }: CityPageProps) {
 
                 {/* Stats Row */}
                 <div className="mt-4 grid grid-cols-2 gap-4">
-                  {park.analytics?.statistics && park.status === 'OPERATING' && (
-                    <>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Clock className="text-muted-foreground h-4 w-4" />
-                        <span>
-                          {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
-                          {tCommon('avgWait')}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 text-sm">
-                        <Users className="text-muted-foreground h-4 w-4" />
-                        <span>
-                          {park.analytics.statistics.operatingAttractions}/
-                          {park.analytics.statistics.totalAttractions} {tCommon('open')}
-                        </span>
-                      </div>
-                    </>
+                  {park.attractionCount > 0 && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <Users className="text-muted-foreground h-4 w-4" />
+                      <span>
+                        {park.attractionCount} {tCommon('rides')}
+                      </span>
+                    </div>
                   )}
                 </div>
-
-                {/* Crowd Level */}
-                {park.currentLoad && park.status === 'OPERATING' && (
-                  <div className="mt-4">
-                    <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
-                  </div>
-                )}
               </CardContent>
             </Card>
           </Link>

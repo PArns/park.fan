@@ -536,7 +536,7 @@ export interface HolidayResponse {
 export interface DiscoveryCity {
   name: string;
   slug: string;
-  parks: ParkResponse[];
+  parks: ParkReference[];
   parkCount: number;
 }
 
