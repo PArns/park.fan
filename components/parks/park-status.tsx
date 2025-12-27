@@ -107,25 +107,11 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
 
     return (
       <div className={cn('space-y-4', className)}>
-        {/* Top Status Bar */}
-        <div className="bg-card flex flex-wrap items-center justify-between gap-3 rounded-lg border p-4">
-          <div className="flex items-center gap-3">
-            {status && <ParkStatusBadge status={status} />}
-            {status === 'OPERATING' && stats && (
-              <Badge variant="outline" className="gap-1.5">
-                <Users className="h-3.5 w-3.5" />
-                <span className="font-semibold">{stats.operatingAttractions}</span>
-                <span className="text-muted-foreground">/ {stats.totalAttractions}</span>
-              </Badge>
-            )}
-          </div>
-        </div>
-
         {/* Main Stats Grid */}
         {status === 'OPERATING' && (stats || occupancy) && (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Crowd & Occupancy Card */}
-            {crowdLevel && (
+            {/* Status & Crowd Card */}
+            {crowdLevel && status && (
               <Card>
                 <CardContent className="p-6">
                   <div className="space-y-3">
@@ -200,9 +186,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               className={cn(
                                 'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
                                 occupancy.trend === 'up' &&
-                                  'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
+                                'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
                                 occupancy.trend === 'down' &&
-                                  'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
+                                'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
                                 occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
                               )}
                             >
@@ -215,7 +201,7 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                     )}
                     {stats.peakHour && (
                       <p className="text-muted-foreground text-center text-xs">
-                        {t('peakHour')}: {stats.peakHour.split(':')[0]}:00
+                        {t('peakHour')}: <LocalTime time={stats.peakHour} timeZone={park.timezone} />
                       </p>
                     )}
                   </div>
@@ -348,9 +334,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                 variant="outline"
                 className={cn(
                   analytics.occupancy.comparisonStatus === 'lower' &&
-                    'border-crowd-low text-crowd-low',
+                  'border-crowd-low text-crowd-low',
                   analytics.occupancy.comparisonStatus === 'higher' &&
-                    'border-crowd-high text-crowd-high',
+                  'border-crowd-high text-crowd-high',
                   analytics.occupancy.comparisonStatus === 'typical' && 'border-muted-foreground'
                 )}
               >

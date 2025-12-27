@@ -13,6 +13,7 @@ import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { ShowCountdown } from '@/components/shows/show-countdown';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
 
@@ -134,7 +135,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
       <div className="mb-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <h1 className="mb-2 text-3xl font-bold md:text-4xl">{park.name}</h1>
+            <div className="mb-2 flex flex-wrap items-center gap-3">
+              <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
+              <ParkStatusBadge status={park.status} className="scale-110" />
+            </div>
             <div className="text-muted-foreground flex flex-wrap items-center gap-3">
               <span className="flex items-center gap-1">
                 <MapPin className="h-4 w-4" />
@@ -151,9 +155,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
         </div>
       </div>
 
-      {/* Park Status Component */}
-      <ParkStatus park={park} variant="detailed" className="mb-8" />
-
       {/* Schedule & Weather Row */}
       <div className="mb-8 grid gap-4 md:grid-cols-2">
         {/* Today's Schedule with Current Time */}
@@ -162,6 +163,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
         {/* Weather */}
         {park.weather?.current && <WeatherCard weather={park.weather} />}
       </div>
+
+      {/* Park Status Component */}
+      <ParkStatus park={park} variant="detailed" />
 
       <Separator className="my-8" />
 
@@ -239,9 +243,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
                               <Badge
                                 key={i}
                                 variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
-                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                }`}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                  }`}
                               >
                                 <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                               </Badge>
