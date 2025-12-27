@@ -6,7 +6,7 @@ import type { GlobalStats, GeoLiveStatsDto } from './types';
  */
 export async function getGlobalStats(): Promise<GlobalStats> {
   return api.get<GlobalStats>('/v1/analytics/realtime', {
-    next: { revalidate: 60 },
+    next: { revalidate: 300 },
   });
 }
 

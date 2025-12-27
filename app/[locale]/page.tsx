@@ -1,12 +1,13 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ArrowRight, Clock, TrendingUp, Sparkles, ChevronRight, Activity } from 'lucide-react';
+import { ArrowRight, Clock, TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchButton } from '@/components/search/hero-search-button';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 
 import type { Metadata } from 'next';
 
@@ -149,14 +150,10 @@ export default async function HomePage({ params }: HomePageProps) {
                         <span className="text-sm font-medium">
                           {stats.mostCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
                         </span>
-                        <div className="flex items-center gap-1">
-                          {stats.mostCrowdedPark.comparedToTypical && (
-                            <Badge variant="outline" className="h-5 gap-1 px-1 text-xs">
-                              <Activity className="h-3 w-3" />
-                              {tCommon(stats.mostCrowdedPark.comparedToTypical)}
-                            </Badge>
-                          )}
-                        </div>
+                        <CrowdLevelBadge
+                          level={stats.mostCrowdedPark.crowdLevel}
+                          className="h-5 px-1.5 text-[10px]"
+                        />
                       </div>
 
                       {/* Operating Attractions */}
@@ -206,14 +203,10 @@ export default async function HomePage({ params }: HomePageProps) {
                         <span className="text-sm font-medium">
                           {stats.leastCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
                         </span>
-                        <div className="flex items-center gap-1">
-                          {stats.leastCrowdedPark.comparedToTypical && (
-                            <Badge variant="outline" className="h-5 gap-1 px-1 text-xs">
-                              <Activity className="h-3 w-3" />
-                              {tCommon(stats.leastCrowdedPark.comparedToTypical)}
-                            </Badge>
-                          )}
-                        </div>
+                        <CrowdLevelBadge
+                          level={stats.leastCrowdedPark.crowdLevel}
+                          className="h-5 px-1.5 text-[10px]"
+                        />
                       </div>
 
                       {/* Operating Attractions */}
@@ -268,6 +261,10 @@ export default async function HomePage({ params }: HomePageProps) {
                         <Badge variant="secondary" className="bg-status-down/20 text-status-down">
                           {stats.longestWaitRide.waitTime} {tCommon('minutes')}
                         </Badge>
+                        <CrowdLevelBadge
+                          level={stats.longestWaitRide.crowdLevel}
+                          className="h-5 px-1.5 text-[10px]"
+                        />
                       </div>
                     </CardContent>
                   </Card>
@@ -308,6 +305,10 @@ export default async function HomePage({ params }: HomePageProps) {
                         >
                           {stats.shortestWaitRide.waitTime} {tCommon('minutes')}
                         </Badge>
+                        <CrowdLevelBadge
+                          level={stats.shortestWaitRide.crowdLevel}
+                          className="h-5 px-1.5 text-[10px]"
+                        />
                       </div>
                     </CardContent>
                   </Card>
