@@ -42,7 +42,7 @@ export function Header() {
 
         {/* Search - Desktop (shows as input-like button) */}
         <div className="hidden lg:block lg:w-64">
-          <SearchCommand trigger="input" placeholder={tCommon('searchPlaceholderShort')} />
+          <SearchCommand trigger="input" placeholder={tCommon('searchPlaceholderShort')} isGlobal />
         </div>
 
         {/* Actions */}

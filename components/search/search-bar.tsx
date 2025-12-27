@@ -27,9 +27,15 @@ interface SearchCommandProps {
   trigger?: 'button' | 'input' | 'hero';
   label?: string;
   placeholder?: string;
+  isGlobal?: boolean;
 }
 
-export function SearchCommand({ trigger = 'button', label, placeholder }: SearchCommandProps) {
+export function SearchCommand({
+  trigger = 'button',
+  label,
+  placeholder,
+  isGlobal = false,
+}: SearchCommandProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
   const tGeo = useTranslations('geo');
@@ -41,6 +47,8 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
 
   // Keyboard shortcut to open search (Cmd+K / Ctrl+K)
   useEffect(() => {
+    if (!isGlobal) return;
+
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -50,7 +58,7 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
 
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, []);
+  }, [isGlobal]);
 
   // Debounced search
   const performSearch = useCallback(async (searchQuery: string) => {
@@ -128,10 +136,11 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${result.status === 'OPERATING'
+                className={`text-xs ${
+                  result.status === 'OPERATING'
                     ? 'border-green-600 text-green-600'
                     : 'border-red-500 text-red-500'
-                  }`}
+                }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}
               </Badge>
@@ -177,12 +186,13 @@ export function SearchCommand({ trigger = 'button', label, placeholder }: Search
             {/* Crowd Level */}
             {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
               <Badge
-                className={`text-xs ${result.load === 'very_low' || result.load === 'low'
+                className={`text-xs ${
+                  result.load === 'very_low' || result.load === 'low'
                     ? 'bg-crowd-low'
                     : result.load === 'normal'
                       ? 'bg-crowd-moderate'
                       : 'bg-crowd-high'
-                  } text-white`}
+                } text-white`}
               >
                 {t(`crowd.${result.load}`)}
               </Badge>
