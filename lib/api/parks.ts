@@ -33,7 +33,7 @@ export async function getParks(): Promise<PaginatedResponse<ParkResponse>> {
  */
 export async function getPark(slug: string): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${slug}`, {
-    next: { revalidate: 300, tags: [PARK_CACHE_TAGS.detail(slug)] },
+    next: { revalidate: 60, tags: [PARK_CACHE_TAGS.detail(slug)] },
   });
 }
 
@@ -47,7 +47,7 @@ export async function getParkByGeoPath(
   parkSlug: string
 ): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-    next: { revalidate: 300 },
+    next: { revalidate: 60 },
   });
 }
 
