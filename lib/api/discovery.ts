@@ -14,7 +14,7 @@ import type {
  */
 export async function getGeoStructure(): Promise<GeoStructure> {
   return api.get<GeoStructure>('/v1/discovery/geo', {
-    next: { revalidate: 86400 },
+    next: { revalidate: 300 },
   });
 }
 
@@ -23,7 +23,7 @@ export async function getGeoStructure(): Promise<GeoStructure> {
  */
 export async function getContinents(): Promise<Continent[]> {
   return api.get<Continent[]>('/v1/discovery/continents', {
-    next: { revalidate: 86400 },
+    next: { revalidate: 300 },
   });
 }
 
@@ -35,7 +35,7 @@ export async function getCountriesWithParks(
   continentSlug: string
 ): Promise<DiscoveryCountryResponse> {
   return api.get<DiscoveryCountryResponse>(`/v1/discovery/continents/${continentSlug}`, {
-    next: { revalidate: 1800 }, // 30 minutes for live data
+    next: { revalidate: 300 }, // 5 minutes for live data
   });
 }
 
@@ -50,7 +50,7 @@ export async function getCitiesWithParks(
   return api.get<DiscoveryCityResponse>(
     `/v1/discovery/continents/${continentSlug}/${countrySlug}`,
     {
-      next: { revalidate: 1800 }, // 30 minutes for live data
+      next: { revalidate: 300 }, // 5 minutes for live data
     }
   );
 }
@@ -62,7 +62,7 @@ export async function getCitiesWithParks(
 export async function getCountriesInContinent(continentSlug: string): Promise<Country[]> {
   const response = await api.get<{ data?: Country[]; countries?: Country[] }>(
     `/v1/discovery/continents/${continentSlug}`,
-    { next: { revalidate: 3600 } }
+    { next: { revalidate: 300 } }
   );
   // Handle both old array format and new {data} format
   if (Array.isArray(response)) {
@@ -81,7 +81,7 @@ export async function getCitiesInCountry(
 ): Promise<City[]> {
   const response = await api.get<{ data?: City[]; cities?: City[] }>(
     `/v1/discovery/continents/${continentSlug}/${countrySlug}`,
-    { next: { revalidate: 3600 } }
+    { next: { revalidate: 300 } }
   );
   // Handle both old array format and new {data} format
   if (Array.isArray(response)) {
