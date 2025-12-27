@@ -1,14 +1,5 @@
 {
-  "parks": {
-    "status": {
-      "OPERATING": "Open",
-      "CLOSED": "Closed",
-      "DOWN": "Down",
-      "REFURBISHMENT": "Refurbishment"
-    }
-  },
   "common": {
-
     "loading": "Loading...",
     "error": "An error occurred",
     "retry": "Retry",
@@ -168,6 +159,12 @@
     "bestDaysToVisit": "Best Days to Visit",
     "daysToAvoid": "Days to Avoid",
     "todaySchedule": "Today's Schedule",
+    "currentTime": "Current Time",
+    "openingHours": "Opening Hours",
+    "opensIn": "Opens in",
+    "closesIn": "Closes in",
+    "nextShowIn": "Next show in",
+    "showStartingSoon": "Show starting soon",
     "open": "open",
     "status": {
       "OPERATING": "Open",

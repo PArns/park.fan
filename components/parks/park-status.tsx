@@ -296,14 +296,15 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                 variant="outline"
                 className={cn(
                   analytics.occupancy.comparisonStatus === 'lower' &&
-                  'border-crowd-low text-crowd-low',
+                    'border-crowd-low text-crowd-low',
                   analytics.occupancy.comparisonStatus === 'higher' &&
-                  'border-crowd-high text-crowd-high',
+                    'border-crowd-high text-crowd-high',
                   analytics.occupancy.comparisonStatus === 'typical' && 'border-muted-foreground'
                 )}
               >
                 {analytics.occupancy.comparedToTypical > 0 ? '+' : ''}
-                {analytics.occupancy.comparedToTypical}% {tCommon(analytics.occupancy.comparisonStatus)}
+                {analytics.occupancy.comparedToTypical}%{' '}
+                {tCommon(analytics.occupancy.comparisonStatus)}
               </Badge>
             </div>
           )}

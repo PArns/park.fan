@@ -62,17 +62,17 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     }
   });
 
-  const countries = Array.from(uniqueCountries.values()).map(country => {
+  const countries = Array.from(uniqueCountries.values()).map((country) => {
     // Find live stats for this country
-    // Note: we might need to find by slug. 
-    // The liveStats structure is: continents -> countries. 
+    // Note: we might need to find by slug.
+    // The liveStats structure is: continents -> countries.
     // We need to find the current continent in liveStats, then find the country.
-    const continentStats = liveStats?.continents.find(c => c.slug === continent);
-    const countryStats = continentStats?.countries.find(c => c.slug === country.slug);
+    const continentStats = liveStats?.continents.find((c) => c.slug === continent);
+    const countryStats = continentStats?.countries.find((c) => c.slug === country.slug);
 
     return {
       ...country,
-      openParkCount: countryStats?.openParkCount ?? country.openParkCount ?? 0
+      openParkCount: countryStats?.openParkCount ?? country.openParkCount ?? 0,
     };
   });
 
@@ -101,7 +101,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
           {tExplore('title', { location: continentName })}
         </h1>
         <p className="text-muted-foreground">
-          <span className="text-park-primary font-medium">{totalOpenParks} {t('open')}</span> / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
+          <span className="text-park-primary font-medium">
+            {totalOpenParks} {t('open')}
+          </span>{' '}
+          / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
           {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
           {tExplore('stats.city', { count: totalCities })}
         </p>
@@ -133,7 +136,8 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
                             {country.openParkCount} {t('open')}
                           </span>
                           <span className="text-muted-foreground">
-                            / {country.parkCount} {tExplore('stats.park', { count: country.parkCount })}
+                            / {country.parkCount}{' '}
+                            {tExplore('stats.park', { count: country.parkCount })}
                           </span>
                         </div>
                       </div>
@@ -156,6 +160,6 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
           );
         })}
       </div>
-    </div >
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Clock, Calendar, MapPin } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Clock, MapPin } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -11,6 +11,8 @@ import { LandSection } from '@/components/parks/land-section';
 import { ParkStatus } from '@/components/parks/park-status';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
+import { ParkTimeInfo } from '@/components/parks/park-time-info';
+import { ShowCountdown } from '@/components/shows/show-countdown';
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
 
@@ -138,7 +140,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 <MapPin className="h-4 w-4" />
                 {cityName}, {tGeo(`countries.${country}` as 'countries.germany') || countryName}
               </span>
-              {park.timezone && <span className="text-sm">({park.timezone})</span>}
+              {park.timezone && (
+                <Badge variant="outline" className="gap-1 font-mono text-xs">
+                  <Clock className="h-3 w-3" />
+                  {park.timezone}
+                </Badge>
+              )}
             </div>
           </div>
         </div>
@@ -149,41 +156,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
       {/* Schedule & Weather Row */}
       <div className="mb-8 grid gap-4 md:grid-cols-2">
-        {/* Today's Schedule */}
-        {todaySchedule && (
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Calendar className="h-4 w-4" />
-                {t('todaySchedule')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {todaySchedule.scheduleType === 'OPERATING' ? (
-                <div className="flex items-center gap-2">
-                  <Clock className="text-status-operating h-5 w-5" />
-                  <span className="text-lg font-semibold">
-                    <LocalTime time={todaySchedule.openingTime || ''} timeZone={park.timezone} />
-                    {' - '}
-                    <LocalTime time={todaySchedule.closingTime || ''} timeZone={park.timezone} />
-                  </span>
-                </div>
-              ) : (
-                <span className="text-status-closed font-medium">{tCommon('closed')}</span>
-              )}
-              {todaySchedule.isHoliday && todaySchedule.holidayName && (
-                <Badge variant="outline" className="mt-2">
-                  🎄 {todaySchedule.holidayName}
-                </Badge>
-              )}
-              {todaySchedule.isBridgeDay && (
-                <Badge variant="outline" className="mt-2">
-                  🌉 Bridge Day
-                </Badge>
-              )}
-            </CardContent>
-          </Card>
-        )}
+        {/* Today's Schedule with Current Time */}
+        <ParkTimeInfo timezone={park.timezone} todaySchedule={todaySchedule} />
 
         {/* Weather */}
         {park.weather?.current && <WeatherCard weather={park.weather} />}
@@ -238,17 +212,42 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     );
                   }) || [];
 
+                // Find next showtime
+                const nextShowtime = todayShowtimes.find((showtime) => {
+                  const showtimeDate = new Date(showtime.startTime);
+                  return showtimeDate > today;
+                });
+
                 return (
                   <Card key={show.id}>
                     <CardContent className="p-4">
                       <h3 className="font-semibold">{show.name}</h3>
+
+                      {/* Next show countdown */}
+                      {nextShowtime && (
+                        <ShowCountdown nextShowtime={nextShowtime.startTime} />
+                      )}
+
+                      {/* All showtimes */}
                       {todayShowtimes.length > 0 && (
                         <div className="mt-2 flex flex-wrap gap-1">
-                          {todayShowtimes.map((showtime, i) => (
-                            <Badge key={i} variant="outline" className="text-xs">
-                              <LocalTime time={showtime.startTime} timeZone={park.timezone} />
-                            </Badge>
-                          ))}
+                          {todayShowtimes.map((showtime, i) => {
+                            const showtimeDate = new Date(showtime.startTime);
+                            const isPast = showtimeDate < today;
+                            const isNext =
+                              nextShowtime && showtime.startTime === nextShowtime.startTime;
+
+                            return (
+                              <Badge
+                                key={i}
+                                variant={isNext ? 'default' : 'outline'}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                  }`}
+                              >
+                                <LocalTime time={showtime.startTime} timeZone={park.timezone} />
+                              </Badge>
+                            );
+                          })}
                         </div>
                       )}
                       {todayShowtimes.length === 0 &&

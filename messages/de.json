@@ -1,14 +1,5 @@
 {
-  "parks": {
-    "status": {
-      "OPERATING": "Geöffnet",
-      "CLOSED": "Geschlossen",
-      "DOWN": "Störung",
-      "REFURBISHMENT": "Wartung"
-    }
-  },
   "common": {
-
     "loading": "Laden...",
     "trend": "Trend",
     "vsTypical": "vs Typisch",
@@ -181,6 +172,12 @@
     "schedule": "Öffnungszeiten",
     "weatherLabel": "Wetter",
     "todaySchedule": "Heutige Öffnungszeiten",
+    "currentTime": "Aktuelle Uhrzeit",
+    "openingHours": "Öffnungszeiten",
+    "opensIn": "Öffnet in",
+    "closesIn": "Schließt in",
+    "nextShowIn": "Nächste Show in",
+    "showStartingSoon": "Show beginnt gleich",
     "forecast": "Vorhersage",
     "attractions": "Attraktionen",
     "shows": "Shows",

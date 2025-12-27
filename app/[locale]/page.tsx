@@ -151,7 +151,7 @@ export default async function HomePage({ params }: HomePageProps) {
                         </span>
                         <div className="flex items-center gap-1">
                           {stats.mostCrowdedPark.comparedToTypical && (
-                            <Badge variant="outline" className="text-xs h-5 px-1 gap-1">
+                            <Badge variant="outline" className="h-5 gap-1 px-1 text-xs">
                               <Activity className="h-3 w-3" />
                               {tCommon(stats.mostCrowdedPark.comparedToTypical)}
                             </Badge>
@@ -164,9 +164,12 @@ export default async function HomePage({ params }: HomePageProps) {
                         <div className="flex items-center gap-2">
                           <TrendingUp className="text-muted-foreground h-4 w-4" />
                           <span className="text-sm font-medium">
-                            {stats.mostCrowdedPark.operatingAttractions}/{stats.mostCrowdedPark.totalAttractions}
+                            {stats.mostCrowdedPark.operatingAttractions}/
+                            {stats.mostCrowdedPark.totalAttractions}
                           </span>
-                          <span className="text-muted-foreground text-xs">{tCommon('operating')}</span>
+                          <span className="text-muted-foreground text-xs">
+                            {tCommon('operating')}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -194,7 +197,8 @@ export default async function HomePage({ params }: HomePageProps) {
                         {stats.leastCrowdedPark.name}
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.leastCrowdedPark.city}, {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
+                        {stats.leastCrowdedPark.city},{' '}
+                        {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
                       </p>
                       {/* Wait Time */}
                       <div className="mb-2 flex items-center gap-2">
@@ -204,7 +208,7 @@ export default async function HomePage({ params }: HomePageProps) {
                         </span>
                         <div className="flex items-center gap-1">
                           {stats.leastCrowdedPark.comparedToTypical && (
-                            <Badge variant="outline" className="text-xs h-5 px-1 gap-1">
+                            <Badge variant="outline" className="h-5 gap-1 px-1 text-xs">
                               <Activity className="h-3 w-3" />
                               {tCommon(stats.leastCrowdedPark.comparedToTypical)}
                             </Badge>
@@ -217,9 +221,12 @@ export default async function HomePage({ params }: HomePageProps) {
                         <div className="flex items-center gap-2">
                           <TrendingUp className="text-muted-foreground h-4 w-4" />
                           <span className="text-sm font-medium">
-                            {stats.leastCrowdedPark.operatingAttractions}/{stats.leastCrowdedPark.totalAttractions}
+                            {stats.leastCrowdedPark.operatingAttractions}/
+                            {stats.leastCrowdedPark.totalAttractions}
                           </span>
-                          <span className="text-muted-foreground text-xs">{tCommon('operating')}</span>
+                          <span className="text-muted-foreground text-xs">
+                            {tCommon('operating')}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -253,7 +260,8 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
                         {stats.longestWaitRide.parkName} · {stats.longestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) || stats.longestWaitRide.parkCountry}
+                        {tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) ||
+                          stats.longestWaitRide.parkCountry}
                       </p>
                       <div className="flex items-center gap-2">
                         <Clock className="text-muted-foreground h-4 w-4" />
@@ -289,7 +297,8 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                       <p className="text-muted-foreground mb-2 truncate text-xs">
                         {stats.shortestWaitRide.parkName} · {stats.shortestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) || stats.shortestWaitRide.parkCountry}
+                        {tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) ||
+                          stats.shortestWaitRide.parkCountry}
                       </p>
                       <div className="flex items-center gap-2">
                         <Clock className="text-muted-foreground h-4 w-4" />
@@ -331,11 +340,12 @@ export default async function HomePage({ params }: HomePageProps) {
                     <Card className="hover:border-primary/50 h-full bg-slate-950 transition-all hover:shadow-lg dark:bg-slate-950">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
-                          <CardTitle className=" text-lg font-medium">{continentName}</CardTitle>
+                          <CardTitle className="text-lg font-medium">{continentName}</CardTitle>
                           <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                         </div>
                         <div className="text-muted-foreground text-xs">
-                          {continent.countryCount} {tExplore('stats.country', { count: continent.countryCount })}
+                          {continent.countryCount}{' '}
+                          {tExplore('stats.country', { count: continent.countryCount })}
                         </div>
                       </CardHeader>
                       <CardContent>
@@ -365,7 +375,6 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
       )}
-
 
       {/* Features Section */}
       <section className="bg-muted/30 border-t px-4 py-16">
