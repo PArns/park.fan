@@ -58,7 +58,7 @@ export function Header() {
           {/* Mobile Menu */}
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden" suppressHydrationWarning>
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Menu</span>
               </Button>
