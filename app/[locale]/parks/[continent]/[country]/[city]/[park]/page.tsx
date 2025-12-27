@@ -224,9 +224,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <h3 className="font-semibold">{show.name}</h3>
 
                       {/* Next show countdown */}
-                      {nextShowtime && (
-                        <ShowCountdown nextShowtime={nextShowtime.startTime} />
-                      )}
+                      {nextShowtime && <ShowCountdown nextShowtime={nextShowtime.startTime} />}
 
                       {/* All showtimes */}
                       {todayShowtimes.length > 0 && (
@@ -241,8 +239,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                               <Badge
                                 key={i}
                                 variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                  }`}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
+                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                }`}
                               >
                                 <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                               </Badge>

@@ -1,8 +1,17 @@
 import { useTranslations } from 'next-intl';
-import { Clock, Users, TrendingUp, TrendingDown, Minus, Calendar } from 'lucide-react';
+import {
+  Clock,
+  Users,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Calendar,
+  ActivitySquare,
+} from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Progress } from '@/components/ui/progress';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkStatusBadge } from './park-status-badge';
 import { cn } from '@/lib/utils';
@@ -90,131 +99,174 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
     );
   }
 
-  // Detailed variant - for park page
+  // Detailed variant - for park page (NEW DESIGN)
   if (variant === 'detailed') {
     const crowdLevel = analytics?.statistics?.crowdLevel || currentLoad?.crowdLevel;
+    const occupancy = analytics?.occupancy;
+    const stats = analytics?.statistics;
 
     return (
-      <Card className={cn('overflow-hidden', className)}>
-        <CardContent className="p-0">
-          <div className="divide-border border-border grid grid-cols-2 divide-x border-b md:grid-cols-4">
-            {/* Status */}
-            <div className="bg-muted/10 flex flex-col items-center justify-center gap-2 p-6 text-center">
-              <span className="text-muted-foreground text-xs font-bold tracking-wider uppercase">
-                {tCommon('status')}
-              </span>
-              {status && (
-                <div className="origin-center scale-125">
-                  <ParkStatusBadge status={status} />
-                </div>
-              )}
-            </div>
-
-            {/* Crowd Level */}
-            <div className="bg-muted/10 flex flex-col items-center justify-center gap-2 p-6 text-center">
-              <span className="text-muted-foreground text-xs font-bold tracking-wider uppercase">
-                {t('crowdLevel')}
-              </span>
-              {crowdLevel && status === 'OPERATING' ? (
-                <div className="origin-center scale-125">
-                  <CrowdLevelBadge level={crowdLevel} />
-                </div>
-              ) : (
-                <div className="text-muted-foreground text-sm">-</div>
-              )}
-            </div>
-
-            {/* Avg Wait Time */}
-            <div className="flex flex-col items-center justify-center gap-1 p-6 text-center">
-              <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                {t('avgWaitTime')}
-              </span>
-              <div className="text-foreground mt-1 flex items-center gap-2 text-3xl font-black">
-                <Clock className="text-muted-foreground/50 h-6 w-6" />
-                <span>
-                  {analytics?.statistics?.avgWaitTime || 0}
-                  <span className="text-muted-foreground ml-1 text-sm font-medium">
-                    {tCommon('minutes')}
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            {/* Operating Attractions */}
-            <div className="flex flex-col items-center justify-center gap-1 p-6 text-center">
-              <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
-                {t('attractions')}
-              </span>
-              <div className="text-foreground mt-1 flex items-center gap-2 text-3xl font-black">
-                <Users className="text-muted-foreground/50 h-6 w-6" />
-                <span>
-                  {analytics?.statistics?.operatingAttractions || 0}
-                  <span className="text-muted-foreground ml-1 text-lg font-medium">
-                    / {analytics?.statistics?.totalAttractions || 0}
-                  </span>
-                </span>
-              </div>
-            </div>
+      <div className={cn('space-y-4', className)}>
+        {/* Top Status Bar */}
+        <div className="bg-card flex flex-wrap items-center justify-between gap-3 rounded-lg border p-4">
+          <div className="flex items-center gap-3">
+            {status && <ParkStatusBadge status={status} />}
+            {status === 'OPERATING' && stats && (
+              <Badge variant="outline" className="gap-1.5">
+                <Users className="h-3.5 w-3.5" />
+                <span className="font-semibold">{stats.operatingAttractions}</span>
+                <span className="text-muted-foreground">/ {stats.totalAttractions}</span>
+              </Badge>
+            )}
           </div>
+        </div>
 
-          {/* Trend & Occupancy */}
-          {analytics?.occupancy && (
-            <div className="divide-border bg-muted/30 grid grid-cols-2 divide-x">
-              <div className="flex items-center justify-center gap-3 p-3">
-                <span className="text-muted-foreground text-xs font-medium uppercase">
-                  {tCommon('trend')}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  {analytics.occupancy.trend && trendIcons[analytics.occupancy.trend] && (
-                    <div
-                      className={cn(
-                        'rounded-full p-1',
-                        analytics.occupancy.trend === 'up'
-                          ? 'bg-red-100 text-red-600 dark:bg-red-900/30'
-                          : analytics.occupancy.trend === 'down'
-                            ? 'bg-green-100 text-green-600 dark:bg-green-900/30'
-                            : 'bg-gray-100 text-gray-600 dark:bg-gray-800'
-                      )}
-                    >
-                      {(() => {
-                        const Icon = trendIcons[analytics.occupancy.trend];
-                        return <Icon className="h-3.5 w-3.5" />;
-                      })()}
+        {/* Main Stats Grid */}
+        {status === 'OPERATING' && (stats || occupancy) && (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Crowd & Occupancy Card */}
+            {crowdLevel && (
+              <Card>
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                        {t('crowdLevel')}
+                      </span>
+                      <ActivitySquare className="text-muted-foreground/50 h-4 w-4" />
                     </div>
-                  )}
-                  <span className="text-sm font-medium">{tCommon(analytics.occupancy.trend)}</span>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-center gap-3 p-3">
-                <span className="text-muted-foreground text-xs font-medium uppercase">
-                  {tCommon('vsTypical')}
-                </span>
-                <div className="flex items-center gap-1.5">
-                  <span
-                    className={cn(
-                      'text-sm font-medium',
-                      analytics.occupancy.comparisonStatus === 'higher'
-                        ? 'text-red-500'
-                        : analytics.occupancy.comparisonStatus === 'lower'
-                          ? 'text-green-500'
-                          : 'text-muted-foreground'
+                    <div className="flex items-center justify-center">
+                      <CrowdLevelBadge level={crowdLevel} className="scale-110" />
+                    </div>
+                    {occupancy && (
+                      <div className="space-y-2">
+                        <div className="flex items-baseline justify-between">
+                          <span className="text-muted-foreground text-xs">{t('occupancy')}</span>
+                          <span className="text-foreground text-xl font-bold">
+                            {Math.round(occupancy.current)}%
+                          </span>
+                        </div>
+                        <Progress value={occupancy.current} className="h-2" />
+                        {occupancy.comparisonStatus !== 'typical' && (
+                          <p className="text-xs">
+                            <span
+                              className={cn(
+                                'font-semibold',
+                                occupancy.comparisonStatus === 'higher'
+                                  ? 'text-red-600 dark:text-red-400'
+                                  : 'text-green-600 dark:text-green-400'
+                              )}
+                            >
+                              {Math.abs(occupancy.comparedToTypical)}%{' '}
+                              {tCommon(occupancy.comparisonStatus)}
+                            </span>
+                            <span className="text-muted-foreground ml-1">
+                              {tCommon('vsTypical').toLowerCase()}
+                            </span>
+                          </p>
+                        )}
+                      </div>
                     )}
-                  >
-                    {analytics.occupancy.comparisonStatus === 'typical'
-                      ? tCommon('typical')
-                      : `${Math.abs(analytics.occupancy.comparedToTypical)}% ${tCommon(analytics.occupancy.comparisonStatus)}`}
-                  </span>
-                </div>
-              </div>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Wait Times Card */}
+            {stats && (
+              <Card>
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                        {t('avgWaitTime')}
+                      </span>
+                      <Clock className="text-muted-foreground/50 h-4 w-4" />
+                    </div>
+                    <div className="flex items-baseline justify-center gap-2">
+                      <span className="text-foreground text-4xl font-bold tabular-nums">
+                        {stats.avgWaitTime}
+                      </span>
+                      <span className="text-muted-foreground text-sm font-medium">
+                        {tCommon('minutes')}
+                      </span>
+                    </div>
+                    {occupancy?.trend && (
+                      <div className="flex items-center justify-center gap-2">
+                        {(() => {
+                          const Icon = trendIcons[occupancy.trend];
+                          return (
+                            <div
+                              className={cn(
+                                'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
+                                occupancy.trend === 'up' &&
+                                  'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
+                                occupancy.trend === 'down' &&
+                                  'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
+                                occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
+                              )}
+                            >
+                              <Icon className="h-3 w-3" />
+                              <span className="capitalize">{tCommon(occupancy.trend)}</span>
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    )}
+                    {stats.peakHour && (
+                      <p className="text-muted-foreground text-center text-xs">
+                        {t('peakHour')}: {stats.peakHour.split(':')[0]}:00
+                      </p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Attractions Status Card */}
+            {stats && (
+              <Card>
+                <CardContent className="p-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                        {t('attractions')}
+                      </span>
+                      <Users className="text-muted-foreground/50 h-4 w-4" />
+                    </div>
+                    <div className="flex items-baseline justify-center gap-2">
+                      <span className="text-foreground text-4xl font-bold tabular-nums">
+                        {stats.operatingAttractions}
+                      </span>
+                      <span className="text-muted-foreground text-xl font-medium">
+                        / {stats.totalAttractions}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div className="rounded-md bg-green-50 px-2 py-1.5 text-center dark:bg-green-950/30">
+                        <div className="font-semibold text-green-700 dark:text-green-400">
+                          {stats.operatingAttractions}
+                        </div>
+                        <div className="text-muted-foreground">{t('operating')}</div>
+                      </div>
+                      <div className="rounded-md bg-red-50 px-2 py-1.5 text-center dark:bg-red-950/30">
+                        <div className="font-semibold text-red-700 dark:text-red-400">
+                          {stats.closedAttractions}
+                        </div>
+                        <div className="text-muted-foreground">{tCommon('closed')}</div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+        )}
+      </div>
     );
   }
 
-  // Default variant (previously 'detailed') - full stats grid
+  // Default variant (full stats grid) - kept for backwards compatibility
   return (
     <Card className={className}>
       <CardContent className="p-6">
