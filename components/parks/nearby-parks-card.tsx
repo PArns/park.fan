@@ -317,9 +317,9 @@ export function NearbyParksCard() {
                                                     )}
                                                     {park.analytics.crowdLevel && (
                                                         <Badge
-                                                            className={`text-xs ${(park.analytics.crowdLevel as string) === 'very_low' || (park.analytics.crowdLevel as string) === 'low'
+                                                            className={`text-xs ${(park.analytics.crowdLevel as ParkCrowdLevel | CrowdLevel) === 'very_low' || (park.analytics.crowdLevel as ParkCrowdLevel | CrowdLevel) === 'low'
                                                                 ? 'bg-crowd-low'
-                                                                : (park.analytics.crowdLevel as string) === 'normal' || (park.analytics.crowdLevel as string) === 'moderate'
+                                                                : (park.analytics.crowdLevel as ParkCrowdLevel | CrowdLevel) === 'normal' || (park.analytics.crowdLevel as ParkCrowdLevel | CrowdLevel) === 'moderate'
                                                                     ? 'bg-crowd-moderate'
                                                                     : 'bg-crowd-high'
                                                                 } text-white border-0`}
