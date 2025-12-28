@@ -23,6 +23,14 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: '/',
+      languages: {
+        'en': '/en',
+        'de': '/de',
+        'x-default': '/',
+      },
+    },
   };
 }
 

@@ -138,7 +138,7 @@ export function NearbyParksCard() {
   // Prompt state - show enable button
   if (permissionState === 'prompt') {
     return (
-      <Card className="border-dashed">
+      <section className="bg-card text-card-foreground border-dashed rounded-xl border shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-muted-foreground h-5 w-5" />
@@ -152,7 +152,7 @@ export function NearbyParksCard() {
             {t('enable')}
           </Button>
         </CardContent>
-      </Card>
+      </section>
     );
   }
 
@@ -207,7 +207,7 @@ export function NearbyParksCard() {
     const rides = data.rides.slice(0, 5); // Show max 5 rides
 
     return (
-      <Card className="border-park-primary/30 bg-park-primary/5">
+      <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border shadow-sm">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -216,7 +216,7 @@ export function NearbyParksCard() {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Park Info */}
-          <div className="flex items-start justify-between">
+          <article className="flex items-start justify-between">
             <div>
               <h3 className="text-lg font-semibold">{park.name}</h3>
               <p className="text-muted-foreground text-sm">
@@ -226,7 +226,7 @@ export function NearbyParksCard() {
             {park.analytics?.crowdLevel && (
               <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
             )}
-          </div>
+          </article>
 
           {/* Park Analytics */}
           {park.analytics && (
@@ -256,41 +256,42 @@ export function NearbyParksCard() {
               <h4 className="text-muted-foreground mb-2 text-sm font-medium">
                 {t('nearestAttractions')}
               </h4>
-              <div className="space-y-2">
+              <ul className="space-y-2">
                 {rides.map((ride) => (
-                  <Link
-                    key={ride.id}
-                    href={ride.url.replace('/v1/parks/', '/parks/')}
-                    className="group block"
-                  >
-                    <div className="bg-background hover:border-primary/50 flex items-center justify-between rounded-lg border p-3 transition-all hover:shadow-sm">
-                      <div className="min-w-0 flex-1">
-                        <p className="group-hover:text-primary truncate font-medium transition-colors">
-                          {ride.name}
-                        </p>
-                        <p className="text-muted-foreground text-xs">
-                          {formatDistance(ride.distance)} {t('awayFrom')}
-                        </p>
+                  <li key={ride.id}>
+                    <Link
+                      href={ride.url.replace('/v1/parks/', '/parks/')}
+                      className="group block"
+                    >
+                      <div className="bg-background hover:border-primary/50 flex items-center justify-between rounded-lg border p-3 transition-all hover:shadow-sm">
+                        <div className="min-w-0 flex-1">
+                          <p className="group-hover:text-primary truncate font-medium transition-colors">
+                            {ride.name}
+                          </p>
+                          <p className="text-muted-foreground text-xs">
+                            {formatDistance(ride.distance)} {t('awayFrom')}
+                          </p>
+                        </div>
+                        <div className="ml-3 flex items-center gap-2">
+                          {ride.waitTime !== null && (
+                            <Badge
+                              variant="secondary"
+                              className="bg-status-operating/20 text-status-operating"
+                            >
+                              {ride.waitTime} {tCommon('minutes')}
+                            </Badge>
+                          )}
+                          <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                        </div>
                       </div>
-                      <div className="ml-3 flex items-center gap-2">
-                        {ride.waitTime !== null && (
-                          <Badge
-                            variant="secondary"
-                            className="bg-status-operating/20 text-status-operating"
-                          >
-                            {ride.waitTime} {tCommon('minutes')}
-                          </Badge>
-                        )}
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
-                      </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           )}
         </CardContent>
-      </Card>
+      </section>
     );
   }
 
@@ -316,7 +317,7 @@ export function NearbyParksCard() {
     }
 
     return (
-      <Card>
+      <section className="bg-card text-card-foreground rounded-xl border shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -324,120 +325,119 @@ export function NearbyParksCard() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {parks.map((park) => {
               const isOpen = park.status === 'OPERATING';
 
               return (
-                <Link
-                  key={park.id}
-                  href={park.url.replace('/v1/parks/', '/parks/')}
-                  className="group"
-                >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-md">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <CardTitle className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
-                          {park.name}
-                        </CardTitle>
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary mt-0.5 h-4 w-4 flex-shrink-0 transition-colors" />
-                      </div>
-                      <p className="text-muted-foreground mt-1 truncate text-xs">
-                        {park.city},{' '}
-                        {tGeo(`countries.${park.country.toLowerCase()}` as string) || park.country}
-                      </p>
-                    </CardHeader>
-                    <CardContent className="space-y-3 pt-0">
-                      {/* Distance + Status */}
-                      <div className="flex items-center justify-between text-sm">
-                        <div className="text-muted-foreground flex items-center gap-1.5">
-                          <Navigation className="h-4 w-4" />
-                          <span className="font-medium">{formatDistance(park.distance)}</span>
+                <li key={park.id}>
+                  <Link
+                    href={park.url.replace('/v1/parks/', '/parks/')}
+                    className="group h-full"
+                  >
+                    <article className="hover:border-primary/50 bg-card h-full rounded-xl border transition-all hover:shadow-md">
+                      <CardHeader className="pb-3">
+                        <div className="flex items-start justify-between gap-2">
+                          <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
+                            {park.name}
+                          </h3>
+                          <ChevronRight className="text-muted-foreground group-hover:text-primary mt-0.5 h-4 w-4 flex-shrink-0 transition-colors" />
                         </div>
-                        <Badge
-                          variant="outline"
-                          className={`text-xs ${
-                            isOpen
+                        <p className="text-muted-foreground mt-1 truncate text-xs">
+                          {park.city},{' '}
+                          {tGeo(`countries.${park.country.toLowerCase()}` as string) || park.country}
+                        </p>
+                      </CardHeader>
+                      <CardContent className="space-y-3 pt-0">
+                        {/* Distance + Status */}
+                        <div className="flex items-center justify-between text-sm">
+                          <div className="text-muted-foreground flex items-center gap-1.5">
+                            <Navigation className="h-4 w-4" />
+                            <span className="font-medium">{formatDistance(park.distance)}</span>
+                          </div>
+                          <Badge
+                            variant="outline"
+                            className={`text-xs ${isOpen
                               ? 'border-green-600 text-green-600'
                               : 'border-red-500 text-red-500'
-                          }`}
-                        >
-                          {isOpen ? tCommon('open') : tCommon('closed')}
-                        </Badge>
-                      </div>
+                              }`}
+                          >
+                            {isOpen ? tCommon('open') : tCommon('closed')}
+                          </Badge>
+                        </div>
 
-                      {/* Wait Time + Crowd Level (only for open parks) */}
-                      {isOpen && park.analytics && (
-                        <div className="flex items-center gap-2.5 text-sm">
-                          {park.analytics.avgWaitTime !== undefined &&
-                            park.analytics.avgWaitTime > 0 && (
-                              <div className="text-muted-foreground flex items-center gap-1">
-                                <Clock className="h-4 w-4" />
-                                <span className="text-xs font-medium">
-                                  {park.analytics.avgWaitTime}
-                                  {tCommon('minute', { count: park.analytics.avgWaitTime })}
-                                </span>
-                              </div>
-                            )}
-                          {park.analytics.crowdLevel && (
-                            <Badge
-                              className={`text-xs ${
-                                (park.analytics.crowdLevel as CrowdLevel) === 'very_low' ||
-                                (park.analytics.crowdLevel as CrowdLevel) === 'low'
+                        {/* Wait Time + Crowd Level (only for open parks) */}
+                        {isOpen && park.analytics && (
+                          <div className="flex items-center gap-2.5 text-sm">
+                            {park.analytics.avgWaitTime !== undefined &&
+                              park.analytics.avgWaitTime > 0 && (
+                                <div className="text-muted-foreground flex items-center gap-1">
+                                  <Clock className="h-4 w-4" />
+                                  <span className="text-xs font-medium">
+                                    {park.analytics.avgWaitTime}
+                                    {tCommon('minute', { count: park.analytics.avgWaitTime })}
+                                  </span>
+                                </div>
+                              )}
+                            {park.analytics.crowdLevel && (
+                              <Badge
+                                className={`text-xs ${(park.analytics.crowdLevel as CrowdLevel) === 'very_low' ||
+                                  (park.analytics.crowdLevel as CrowdLevel) === 'low'
                                   ? 'bg-crowd-low'
                                   : (park.analytics.crowdLevel as CrowdLevel) === 'moderate'
                                     ? 'bg-crowd-moderate'
                                     : 'bg-crowd-high'
-                              } border-0 text-white`}
-                            >
-                              {tCommon(`crowd.${park.analytics.crowdLevel}`)}
-                            </Badge>
-                          )}
-                        </div>
-                      )}
+                                  } border-0 text-white`}
+                              >
+                                {tCommon(`crowd.${park.analytics.crowdLevel}`)}
+                              </Badge>
+                            )}
+                          </div>
+                        )}
 
-                      {/* Attractions */}
-                      <div className="flex items-center justify-between pt-0.5 text-sm">
-                        <div className="text-muted-foreground flex items-center gap-1.5">
-                          <TrendingUp className="h-4 w-4" />
-                          <span className="font-medium">
-                            {park.operatingAttractions}/{park.totalAttractions}
+                        {/* Attractions */}
+                        <div className="flex items-center justify-between pt-0.5 text-sm">
+                          <div className="text-muted-foreground flex items-center gap-1.5">
+                            <TrendingUp className="h-4 w-4" />
+                            <span className="font-medium">
+                              {park.operatingAttractions}/{park.totalAttractions}
+                            </span>
+                          </div>
+                          <span className="text-muted-foreground text-xs">
+                            {tCommon('operating')}
                           </span>
                         </div>
-                        <span className="text-muted-foreground text-xs">
-                          {tCommon('operating')}
-                        </span>
-                      </div>
 
-                      {/* Park Schedule */}
-                      {(() => {
-                        const isInMaintenance =
-                          park.status !== 'OPERATING' && park.status !== 'CLOSED';
-                        const scheduleInfo = getScheduleMessage(
-                          park.todaySchedule,
-                          park.timezone,
-                          park.status,
-                          isInMaintenance
-                        );
-
-                        if (scheduleInfo) {
-                          return (
-                            <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-1 pt-2 text-xs">
-                              <Clock className="h-3.5 w-3.5" />
-                              <span>{scheduleInfo.message}</span>
-                            </div>
+                        {/* Park Schedule */}
+                        {(() => {
+                          const isInMaintenance =
+                            park.status !== 'OPERATING' && park.status !== 'CLOSED';
+                          const scheduleInfo = getScheduleMessage(
+                            park.todaySchedule,
+                            park.timezone,
+                            park.status,
+                            isInMaintenance
                           );
-                        }
-                        return null;
-                      })()}
-                    </CardContent>
-                  </Card>
-                </Link>
+
+                          if (scheduleInfo) {
+                            return (
+                              <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-1 pt-2 text-xs">
+                                <Clock className="h-3.5 w-3.5" />
+                                <span>{scheduleInfo.message}</span>
+                              </div>
+                            );
+                          }
+                          return null;
+                        })()}
+                      </CardContent>
+                    </article>
+                  </Link>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </CardContent>
-      </Card>
+      </section>
     );
   }
 

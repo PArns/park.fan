@@ -14,6 +14,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { ShowCountdown } from '@/components/shows/show-countdown';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
 
@@ -28,7 +29,8 @@ interface ParkPageProps {
 }
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
-  const { continent, country, city, park: parkSlug } = await params;
+  const { continent, country, city, park: parkSlug, locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo.parks' });
 
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
@@ -38,11 +40,18 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
   return {
     title: park.name,
-    description: `Live wait times, crowd predictions, and schedules for ${park.name}. Plan your visit with real-time data.`,
+    description: t('metaDescriptionTemplate', { park: park.name }),
     openGraph: {
       title: park.name,
-      description: `Live wait times and crowd levels for ${park.name}`,
+      description: t('metaDescriptionTemplate', { park: park.name }),
     },
+    alternates: {
+      canonical: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+      languages: {
+        'en': `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
+        'de': `/de/parks/${continent}/${country}/${city}/${parkSlug}`,
+      },
+    }
   };
 }
 
@@ -128,6 +137,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <ParkStructuredData
+        park={park}
+        url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
+      />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+
       {/* Breadcrumb */}
       <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={park.name} />
 
@@ -243,9 +258,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
                               <Badge
                                 key={i}
                                 variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
-                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                }`}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                  }`}
                               >
                                 <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                               </Badge>

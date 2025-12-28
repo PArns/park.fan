@@ -36,16 +36,17 @@ export function LandSection({ landName, attractions, parkPath, parkStatus }: Lan
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {attractions.map((attraction) => (
-          <AttractionCard
-            key={attraction.id}
-            attraction={attraction}
-            parkPath={parkPath}
-            parkStatus={parkStatus}
-          />
+          <li key={attraction.id}>
+            <AttractionCard
+              attraction={attraction}
+              parkPath={parkPath}
+              parkStatus={parkStatus}
+            />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

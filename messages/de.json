@@ -70,7 +70,7 @@
       },
       "ml": {
         "title": "ML-Vorhersagen",
-        "description": "Maschinelles Lernen zur Vorhersage von Besucherandrang und Wartezeiten."
+        "description": "Smarte Prognosen für Besucherandrang und Wartezeiten durch maschinelles Lernen."
       },
       "calendar": {
         "title": "Bester Tag Finder",
@@ -354,12 +354,13 @@
 
   "seo": {
     "home": {
-      "title": "park.fan - Freizeitpark Wartezeiten & Vorhersagen",
-      "description": "Echtzeit-Wartezeiten, Auslastungs-Vorhersagen und Öffnungszeiten für Freizeitparks weltweit. Plane deinen perfekten Besuch mit KI-gestützten Prognosen."
+      "title": "park.fan - Freizeitpark Wartezeiten & Andrangskalender",
+      "description": "Maximiere deinen Parkbesuch mit Echtzeit-Wartezeiten, KI-gestützten Andrangsprognosen und smarter Planung. Für Disney, Universal, Europa-Park und mehr."
     },
     "parks": {
-      "title": "Freizeitparks - park.fan",
-      "description": "Entdecke alle Freizeitparks weltweit mit Live-Wartezeiten und Auslastung."
+      "title": "Freizeitparks Weltweit - park.fan",
+      "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten, Besucherandrang und Öffnungszeiten für {park}. Plane deinen perfekten Besuch mit Echtzeit-Daten und Prognosen."
     }
   }
 }

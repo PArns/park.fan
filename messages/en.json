@@ -70,7 +70,7 @@
       },
       "ml": {
         "title": "ML Predictions",
-        "description": "Machine learning forecasts to predict crowd levels and wait times."
+        "description": "Smart forecasts for crowd levels and wait times using advanced machine learning."
       },
       "calendar": {
         "title": "Best Day Finder",
@@ -339,12 +339,13 @@
 
   "seo": {
     "home": {
-      "title": "park.fan - Theme Park Wait Times & Crowd Predictions",
-      "description": "Real-time wait times, crowd predictions, and park schedules for theme parks worldwide. Plan your perfect visit with ML-powered forecasts."
+      "title": "park.fan - Global Theme Park Wait Times & Crowd Calendars",
+      "description": "Maximize your park visit with real-time wait times, ML-powered crowd predictions, and smart itineraries. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
-      "title": "Theme Parks - park.fan",
-      "description": "Browse all theme parks worldwide with live wait times and crowd levels."
+      "title": "Theme Parks Worldwde - park.fan",
+      "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
+      "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data and forecasts."
     }
   },
   "nearby": {
