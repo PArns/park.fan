@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getNearbyParks } from '@/lib/api/discovery';
 import type { NearbyResponse, NearbyRidesData, NearbyParksData } from '@/types/nearby';
-import type { ParkCrowdLevel } from '@/lib/api/types';
+import type { ParkCrowdLevel, CrowdLevel } from '@/lib/api/types';
 
 const COOKIE_NAME = 'nearby-parks-enabled';
 
@@ -317,11 +317,11 @@ export function NearbyParksCard() {
                                                     )}
                                                     {park.analytics.crowdLevel && (
                                                         <Badge
-                                                            className={`text-xs ${(park.analytics.crowdLevel as ParkCrowdLevel) === 'very_low' || (park.analytics.crowdLevel as ParkCrowdLevel) === 'low'
-                                                                    ? 'bg-crowd-low'
-                                                                    : (park.analytics.crowdLevel as ParkCrowdLevel) === 'normal' || (park.analytics.crowdLevel as ParkCrowdLevel) === 'moderate'
-                                                                        ? 'bg-crowd-moderate'
-                                                                        : 'bg-crowd-high'
+                                                            className={`text-xs ${(park.analytics.crowdLevel as string) === 'very_low' || (park.analytics.crowdLevel as string) === 'low'
+                                                                ? 'bg-crowd-low'
+                                                                : (park.analytics.crowdLevel as string) === 'normal' || (park.analytics.crowdLevel as string) === 'moderate'
+                                                                    ? 'bg-crowd-moderate'
+                                                                    : 'bg-crowd-high'
                                                                 } text-white border-0`}
                                                         >
                                                             {tCommon(`crowd.${park.analytics.crowdLevel}`)}

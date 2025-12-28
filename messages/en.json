@@ -333,5 +333,18 @@
       "title": "Theme Parks - park.fan",
       "description": "Browse all theme parks worldwide with live wait times and crowd levels."
     }
+  },
+  "nearby": {
+    "title": "Nearby Parks",
+    "enableDescription": "Enable location access to see parks and wait times near you.",
+    "enable": "Enable Location",
+    "loadingLocation": "Locating...",
+    "permissionDenied": "Location Access Denied",
+    "permissionDeniedDescription": "Please enable location access in your browser settings to use this feature.",
+    "youAreIn": "You are in",
+    "awayFrom": "away from",
+    "nearestAttractions": "Nearest Attractions",
+    "noParksNearby": "No parks found nearby.",
+    "nearbyParks": "Nearby Parks"
   }
 }
