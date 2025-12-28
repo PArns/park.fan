@@ -7,6 +7,7 @@ import type {
   DiscoveryCountryResponse,
   DiscoveryCityResponse,
 } from './types';
+import type { NearbyResponse } from '@/types/nearby';
 
 /**
  * Get complete geographic structure
@@ -88,4 +89,31 @@ export async function getCitiesInCountry(
     return response;
   }
   return response.data || response.cities || [];
+}
+
+/**
+ * Get nearby parks or rides based on user location
+ * Client-side only - requires user coordinates
+ * Uses Next.js API route to avoid CORS issues
+ */
+export async function getNearbyParks(
+  latitude: number,
+  longitude: number,
+  radiusInMeters: number = 500
+): Promise<NearbyResponse> {
+  // Use Next.js API route as proxy to avoid CORS
+  const url = new URL('/api/nearby', window.location.origin);
+  url.searchParams.set('lat', latitude.toString());
+  url.searchParams.set('lng', longitude.toString());
+  url.searchParams.set('radius', radiusInMeters.toString());
+
+  const response = await fetch(url.toString(), {
+    cache: 'no-store',
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch nearby parks: ${response.statusText}`);
+  }
+
+  return response.json();
 }

@@ -336,6 +336,19 @@
       "syncHolidays": "Feiertage synchronisieren"
     }
   },
+  "nearby": {
+    "title": "In meiner Nähe",
+    "enable": "Standort aktivieren",
+    "enableDescription": "Zeige Parks in meiner Umgebung",
+    "permissionDenied": "Standortzugriff verweigert",
+    "permissionDeniedDescription": "Bitte aktiviere den Standortzugriff in deinen Browser-Einstellungen",
+    "loadingLocation": "Standort wird ermittelt...",
+    "noParksNearby": "Keine Parks in der Nähe",
+    "youAreIn": "Du bist in",
+    "nearbyParks": "Parks in der Nähe",
+    "nearestAttractions": "Nächste Attraktionen",
+    "awayFrom": "entfernt"
+  },
 
   "seo": {
     "home": {

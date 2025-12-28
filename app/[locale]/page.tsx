@@ -8,6 +8,7 @@ import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchButton } from '@/components/search/hero-search-button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 
 import type { Metadata } from 'next';
 
@@ -75,6 +76,13 @@ export default async function HomePage({ params }: HomePageProps) {
             </Button>
             <HeroSearchButton label={tCommon('search')} />
           </div>
+        </div>
+      </section>
+
+      {/* Nearby Parks - First section after hero */}
+      <section className="border-b px-4 py-8">
+        <div className="container mx-auto">
+          <NearbyParksCard />
         </div>
       </section>
 
