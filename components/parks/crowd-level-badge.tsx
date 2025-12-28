@@ -1,22 +1,19 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import type { ParkCrowdLevel, CrowdLevel } from '@/lib/api/types';
+import type { CrowdLevel } from '@/lib/api/types';
 
 const crowdLevelConfig: Record<string, { colorClass: string }> = {
   very_low: { colorClass: 'bg-emerald-500 text-white' },
   low: { colorClass: 'bg-emerald-400 text-white' },
-  normal: { colorClass: 'bg-blue-500 text-white' },
   moderate: { colorClass: 'bg-blue-500 text-white' },
-  higher: { colorClass: 'bg-orange-400 text-white' },
   high: { colorClass: 'bg-orange-500 text-white' },
   very_high: { colorClass: 'bg-rose-500 text-white' },
-  extreme: { colorClass: 'bg-rose-700 text-white' },
   closed: { colorClass: 'bg-slate-200 text-slate-600' },
 };
 
 interface CrowdLevelBadgeProps {
-  level: ParkCrowdLevel | CrowdLevel | null | undefined;
+  level: CrowdLevel | null | undefined;
   showLabel?: boolean;
   className?: string;
 }

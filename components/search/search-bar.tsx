@@ -189,7 +189,7 @@ export function SearchCommand({
                 className={`text-xs ${
                   result.load === 'very_low' || result.load === 'low'
                     ? 'bg-crowd-low'
-                    : result.load === 'normal'
+                    : result.load === 'moderate'
                       ? 'bg-crowd-moderate'
                       : 'bg-crowd-high'
                 } text-white`}

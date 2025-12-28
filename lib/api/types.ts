@@ -11,8 +11,7 @@ export type QueueType =
   | 'BOARDING_GROUP'
   | 'PAID_RETURN_TIME'
   | 'PAID_STANDBY';
-export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
-export type ParkCrowdLevel = 'very_low' | 'low' | 'normal' | 'higher' | 'high' | 'extreme';
+export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
 export type Recommendation =
   | 'highly_recommended'
@@ -22,7 +21,7 @@ export type Recommendation =
   | 'strongly_avoid'
   | 'closed';
 export type ScheduleType = 'OPERATING' | 'CLOSED';
-export type Trend = 'up' | 'stable' | 'down';
+export type TrendDirection = 'up' | 'stable' | 'down';
 export type ComparisonStatus = 'lower' | 'typical' | 'higher' | 'closed';
 export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 
@@ -112,7 +111,7 @@ export interface QueueDataItem {
   currentGroupEnd: number | null;
   estimatedWait: number | null;
   lastUpdated: string;
-  trend?: Trend;
+  trend?: TrendDirection;
 }
 
 // ============================================================================
@@ -124,7 +123,7 @@ export interface ForecastItem {
   predictedWaitTime: number;
   confidencePercentage: number | null;
   source: string;
-  trend?: Trend;
+  trend?: TrendDirection;
 }
 
 export interface ParkDailyPrediction {
@@ -140,16 +139,16 @@ export interface ParkDailyPrediction {
 // ============================================================================
 
 export interface ParkLoad {
-  crowdLevel: ParkCrowdLevel;
+  crowdLevel: CrowdLevel;
   baseline: number;
   currentWaitTime: number;
-  trend?: Trend;
+  trend?: TrendDirection;
   comparisonStatus?: ComparisonStatus;
 }
 
 export interface ParkOccupancy {
   current: number;
-  trend: Trend;
+  trend: TrendDirection;
   comparedToTypical: number;
   comparisonStatus: ComparisonStatus;
   baseline90thPercentile: number;
@@ -351,7 +350,7 @@ export interface SearchResultItem {
   city?: string;
   resort?: string;
   status?: ParkStatus | AttractionStatus;
-  load?: ParkCrowdLevel;
+  load?: CrowdLevel;
   parkHours?: { open: string; close: string; type: string };
   waitTime?: number;
   showTimes?: string[];
@@ -388,7 +387,7 @@ export interface ParkReference {
   currentLoad?: {
     crowdLevel: CrowdLevel; // or string if purely from backend
     value: number;
-    trend: Trend;
+    trend: TrendDirection;
     percentage: number;
     queueSize: number;
   };

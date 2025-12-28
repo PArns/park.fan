@@ -16,7 +16,7 @@ import { CrowdLevelBadge } from './crowd-level-badge';
 import { PeakHourBadge } from './peak-hour-badge';
 import { ParkStatusBadge } from './park-status-badge';
 import { cn } from '@/lib/utils';
-import type { ParkWithAttractions, ParkResponse, Trend } from '@/lib/api/types';
+import type { ParkWithAttractions, ParkResponse, TrendDirection } from '@/lib/api/types';
 
 type ParkData = ParkWithAttractions | ParkResponse;
 
@@ -28,7 +28,7 @@ interface ParkStatusProps {
   className?: string;
 }
 
-const trendIcons: Record<Trend, typeof TrendingUp> = {
+const trendIconMap: Record<TrendDirection, typeof TrendingUp> = {
   up: TrendingUp,
   stable: Minus,
   down: TrendingDown,
@@ -186,7 +186,7 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                       </span>
                       <div className="flex items-center gap-2">
                         {(() => {
-                          const Icon = trendIcons[occupancy.trend];
+                          const Icon = trendIconMap[occupancy.trend];
                           return (
                             <div
                               className={cn(
@@ -333,7 +333,7 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
               <p className="text-muted-foreground text-sm font-medium">{tCommon('trend')}</p>
               <div className="flex items-center gap-2">
                 {(() => {
-                  const TrendIcon = trendIcons[analytics.occupancy.trend];
+                  const TrendIcon = trendIconMap[analytics.occupancy.trend];
                   return (
                     <>
                       <TrendIcon

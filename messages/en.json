@@ -300,7 +300,20 @@
   "search": {
     "typeToSearch": "Type at least 3 characters to search...",
     "viewAllResults": "View all results for \"{query}\"",
-    "searchPlaceholder": "Search parks, attractions, shows & restaurants..."
+    "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
+    "at": "at {park}",
+    "types": {
+      "park": "Park",
+      "attraction": "Attraction",
+      "show": "Show",
+      "restaurant": "Restaurant"
+    },
+    "headings": {
+      "park": "Parks ({count})",
+      "attraction": "Attractions ({count})",
+      "show": "Shows ({count})",
+      "restaurant": "Restaurants ({count})"
+    }
   },
   "admin": {
     "title": "Admin Dashboard",
@@ -345,6 +358,8 @@
     "awayFrom": "away from",
     "nearestAttractions": "Nearest Attractions",
     "noParksNearby": "No parks found nearby.",
-    "nearbyParks": "Nearby Parks"
+    "nearbyParks": "Nearby Parks",
+    "opensIn": "Opens in",
+    "closesIn": "Closes in"
   }
 }

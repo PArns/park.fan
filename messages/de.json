@@ -347,7 +347,9 @@
     "youAreIn": "Du bist in",
     "nearbyParks": "Parks in der Nähe",
     "nearestAttractions": "Nächste Attraktionen",
-    "awayFrom": "entfernt"
+    "awayFrom": "entfernt",
+    "opensIn": "Öffnet in",
+    "closesIn": "Schließt in"
   },
 
   "seo": {
