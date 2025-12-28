@@ -138,7 +138,7 @@ export function NearbyParksCard() {
   // Prompt state - show enable button
   if (permissionState === 'prompt') {
     return (
-      <section className="bg-card text-card-foreground border-dashed rounded-xl border shadow-sm">
+      <section className="bg-card text-card-foreground rounded-xl border border-dashed shadow-sm py-6">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-muted-foreground h-5 w-5" />
@@ -207,7 +207,7 @@ export function NearbyParksCard() {
     const rides = data.rides.slice(0, 5); // Show max 5 rides
 
     return (
-      <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border shadow-sm">
+      <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border shadow-sm py-6">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -259,10 +259,7 @@ export function NearbyParksCard() {
               <ul className="space-y-2">
                 {rides.map((ride) => (
                   <li key={ride.id}>
-                    <Link
-                      href={ride.url.replace('/v1/parks/', '/parks/')}
-                      className="group block"
-                    >
+                    <Link href={ride.url.replace('/v1/parks/', '/parks/')} className="group block">
                       <div className="bg-background hover:border-primary/50 flex items-center justify-between rounded-lg border p-3 transition-all hover:shadow-sm">
                         <div className="min-w-0 flex-1">
                           <p className="group-hover:text-primary truncate font-medium transition-colors">
@@ -317,7 +314,7 @@ export function NearbyParksCard() {
     }
 
     return (
-      <section className="bg-card text-card-foreground rounded-xl border shadow-sm">
+      <section className="bg-card text-card-foreground rounded-xl border shadow-sm gap-6 py-6">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -331,11 +328,8 @@ export function NearbyParksCard() {
 
               return (
                 <li key={park.id}>
-                  <Link
-                    href={park.url.replace('/v1/parks/', '/parks/')}
-                    className="group h-full"
-                  >
-                    <article className="hover:border-primary/50 bg-card h-full rounded-xl border transition-all hover:shadow-md">
+                  <Link href={park.url.replace('/v1/parks/', '/parks/')} className="group h-full">
+                    <article className="hover:border-primary/50 bg-card h-full rounded-xl border transition-all hover:shadow-md py-6">
                       <CardHeader className="pb-3">
                         <div className="flex items-start justify-between gap-2">
                           <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
@@ -345,7 +339,8 @@ export function NearbyParksCard() {
                         </div>
                         <p className="text-muted-foreground mt-1 truncate text-xs">
                           {park.city},{' '}
-                          {tGeo(`countries.${park.country.toLowerCase()}` as string) || park.country}
+                          {tGeo(`countries.${park.country.toLowerCase()}` as string) ||
+                            park.country}
                         </p>
                       </CardHeader>
                       <CardContent className="space-y-3 pt-0">
@@ -357,10 +352,11 @@ export function NearbyParksCard() {
                           </div>
                           <Badge
                             variant="outline"
-                            className={`text-xs ${isOpen
-                              ? 'border-green-600 text-green-600'
-                              : 'border-red-500 text-red-500'
-                              }`}
+                            className={`text-xs ${
+                              isOpen
+                                ? 'border-green-600 text-green-600'
+                                : 'border-red-500 text-red-500'
+                            }`}
                           >
                             {isOpen ? tCommon('open') : tCommon('closed')}
                           </Badge>
@@ -381,13 +377,14 @@ export function NearbyParksCard() {
                               )}
                             {park.analytics.crowdLevel && (
                               <Badge
-                                className={`text-xs ${(park.analytics.crowdLevel as CrowdLevel) === 'very_low' ||
+                                className={`text-xs ${
+                                  (park.analytics.crowdLevel as CrowdLevel) === 'very_low' ||
                                   (park.analytics.crowdLevel as CrowdLevel) === 'low'
-                                  ? 'bg-crowd-low'
-                                  : (park.analytics.crowdLevel as CrowdLevel) === 'moderate'
-                                    ? 'bg-crowd-moderate'
-                                    : 'bg-crowd-high'
-                                  } border-0 text-white`}
+                                    ? 'bg-crowd-low'
+                                    : (park.analytics.crowdLevel as CrowdLevel) === 'moderate'
+                                      ? 'bg-crowd-moderate'
+                                      : 'bg-crowd-high'
+                                } border-0 text-white`}
                               >
                                 {tCommon(`crowd.${park.analytics.crowdLevel}`)}
                               </Badge>
