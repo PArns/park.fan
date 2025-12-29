@@ -350,7 +350,7 @@ export function ParkMap({ park }: ParkMapProps) {
   }
 
   return (
-    <div className="relative h-[800px] w-full overflow-hidden rounded-lg border">
+    <div className="relative h-[65vh] w-full overflow-hidden rounded-lg border md:h-[800px]">
       <MapContainer
         center={center}
         zoom={17}

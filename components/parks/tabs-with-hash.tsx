@@ -177,7 +177,7 @@ export function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <TabsList className="mb-6">
+        <TabsList className="mb-6 h-auto w-full flex-wrap justify-start">
           <TabsTrigger value="attractions">
             {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
@@ -198,7 +198,7 @@ export function TabsWithHash({
         <TabsContent value="attractions" id="attractions">
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
-            <div className="absolute top-0 right-0 z-10">
+            <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
               <div className="relative w-full sm:w-auto">
                 <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
                 <Input
