@@ -60,22 +60,50 @@ export function TabsWithHash({
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  // Avoid hydration mismatch by only rendering after mount
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
+  }, []);
+
+  const tabsRef = useRef<HTMLDivElement>(null);
+
   // Sync with URL hash on mount and on hash change
   useEffect(() => {
+    if (!isMounted) return;
+
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
       const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map'];
       if (validTabs.includes(hash)) {
         setActiveTab(hash);
+
+        // Scroll with a manual offset calculation for better reliability
+        setTimeout(() => {
+          const tabsContainer = tabsRef.current;
+
+          if (tabsContainer) {
+            // Prefer scrolling to the tabs container to show the navigation
+            const headerOffset = 100; // Account for sticky header
+            const elementPosition = tabsContainer.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth',
+            });
+          }
+        }, 500);
       }
     };
 
-    // Check hash on mount
+    // Check hash on mount/update
     handleHashChange();
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [isMounted]);
 
   // Clear search on Escape key
   useEffect(() => {
@@ -142,169 +170,177 @@ export function TabsWithHash({
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
+  if (!isMounted) {
+    return null; // Or a skeleton/placeholder
+  }
+
   return (
-    <Tabs value={activeTab} onValueChange={handleTabChange}>
-      <TabsList className="mb-6">
-        <TabsTrigger value="attractions">
-          {t('attractions')} ({park.attractions?.length || 0})
-        </TabsTrigger>
-        {showsAvailable && (
-          <TabsTrigger value="shows">
-            {t('shows')} ({park.shows?.length || 0})
+    <div ref={tabsRef} className="scroll-mt-20">
+      <Tabs value={activeTab} onValueChange={handleTabChange}>
+        <TabsList className="mb-6">
+          <TabsTrigger value="attractions">
+            {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
-        )}
-        {restaurantsAvailable && (
-          <TabsTrigger value="restaurants">
-            {t('restaurants')} ({park.restaurants?.length || 0})
-          </TabsTrigger>
-        )}
-        <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
-        <TabsTrigger value="map">{t('map')}</TabsTrigger>
-      </TabsList>
-
-      <TabsContent value="attractions">
-        {/* Attractions grouped by Land */}
-        <div className="relative space-y-8">
-          <div className="absolute top-0 right-0 z-10">
-            <div className="relative w-full sm:w-auto">
-              <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
-              <Input
-                ref={inputRef}
-                placeholder={t('searchAttractions')}
-                className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
-                  isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                }`}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-              />
-              {isFocused && searchQuery && (
-                <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
-                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
-                    ESC
-                  </kbd>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {hasSearchResults ? (
-            landNames.map((landName) => {
-              const attractions = filteredAttractionsByLand[landName];
-              if (!attractions) return null;
-
-              return (
-                <LandSection
-                  key={landName}
-                  landName={landName}
-                  attractions={attractions}
-                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                  parkStatus={park.status}
-                />
-              );
-            })
-          ) : (
-            <div className="py-12 text-center">
-              <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-              <button
-                className="text-primary mt-2 text-sm underline hover:no-underline"
-                onClick={() => setSearchQuery('')}
-              >
-                {t('clearSearch')}
-              </button>
-            </div>
+          {showsAvailable && (
+            <TabsTrigger value="shows">
+              {t('shows')} ({park.shows?.length || 0})
+            </TabsTrigger>
           )}
-        </div>
-      </TabsContent>
+          {restaurantsAvailable && (
+            <TabsTrigger value="restaurants">
+              {t('restaurants')} ({park.restaurants?.length || 0})
+            </TabsTrigger>
+          )}
+          <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
+          <TabsTrigger value="map">{t('map')}</TabsTrigger>
+        </TabsList>
 
-      {showsAvailable && (
-        <TabsContent value="shows">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {park.shows?.map((show) => {
-              // Filter showtimes for today or future dates
-              const today = new Date();
-              const todayShowtimes =
-                show.showtimes?.filter((showtime) => {
+        <TabsContent value="attractions" id="attractions">
+          {/* Attractions grouped by Land */}
+          <div className="relative space-y-8">
+            <div className="absolute top-0 right-0 z-10">
+              <div className="relative w-full sm:w-auto">
+                <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
+                <Input
+                  ref={inputRef}
+                  placeholder={t('searchAttractions')}
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
+                    isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                  }`}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => setIsFocused(true)}
+                  onBlur={() => setIsFocused(false)}
+                />
+                {isFocused && searchQuery && (
+                  <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
+                    <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+                      ESC
+                    </kbd>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            {hasSearchResults ? (
+              landNames.map((landName) => {
+                const attractions = filteredAttractionsByLand[landName];
+                if (!attractions) return null;
+
+                return (
+                  <LandSection
+                    key={landName}
+                    landName={landName}
+                    attractions={attractions}
+                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                    parkStatus={park.status}
+                  />
+                );
+              })
+            ) : (
+              <div className="py-12 text-center">
+                <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+                <button
+                  className="text-primary mt-2 text-sm underline hover:no-underline"
+                  onClick={() => setSearchQuery('')}
+                >
+                  {t('clearSearch')}
+                </button>
+              </div>
+            )}
+          </div>
+        </TabsContent>
+
+        {showsAvailable && (
+          <TabsContent value="shows" id="shows">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {park.shows?.map((show) => {
+                // Filter showtimes for today or future dates
+                const today = new Date();
+                const todayShowtimes =
+                  show.showtimes?.filter((showtime) => {
+                    const showtimeDate = new Date(showtime.startTime);
+                    return (
+                      showtimeDate >= today || showtimeDate.toDateString() === today.toDateString()
+                    );
+                  }) || [];
+
+                // Find next showtime
+                const nextShowtime = todayShowtimes.find((showtime) => {
                   const showtimeDate = new Date(showtime.startTime);
-                  return (
-                    showtimeDate >= today || showtimeDate.toDateString() === today.toDateString()
-                  );
-                }) || [];
+                  return showtimeDate > today;
+                });
 
-              // Find next showtime
-              const nextShowtime = todayShowtimes.find((showtime) => {
-                const showtimeDate = new Date(showtime.startTime);
-                return showtimeDate > today;
-              });
+                return (
+                  <Card key={show.id}>
+                    <CardContent className="p-4">
+                      <h3 className="font-semibold">{show.name}</h3>
 
-              return (
-                <Card key={show.id}>
+                      {/* All showtimes */}
+                      {todayShowtimes.length > 0 && (
+                        <div className="mt-2 flex flex-wrap gap-1">
+                          {todayShowtimes.map((showtime, i) => {
+                            const showtimeDate = new Date(showtime.startTime);
+                            const isPast = showtimeDate < today;
+                            const isNext =
+                              nextShowtime && showtime.startTime === nextShowtime.startTime;
+
+                            return (
+                              <Badge
+                                key={i}
+                                variant={isNext ? 'default' : 'outline'}
+                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
+                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                }`}
+                              >
+                                <LocalTime time={showtime.startTime} timeZone={park.timezone} />
+                              </Badge>
+                            );
+                          })}
+                        </div>
+                      )}
+                      {todayShowtimes.length === 0 &&
+                        show.showtimes &&
+                        show.showtimes.length > 0 && (
+                          <p className="text-muted-foreground mt-2 text-sm">
+                            {tCommon('noShowtimesToday')}
+                          </p>
+                        )}
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          </TabsContent>
+        )}
+
+        {restaurantsAvailable && (
+          <TabsContent value="restaurants" id="restaurants">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {park.restaurants?.map((restaurant) => (
+                <Card key={restaurant.id}>
                   <CardContent className="p-4">
-                    <h3 className="font-semibold">{show.name}</h3>
-
-                    {/* All showtimes */}
-                    {todayShowtimes.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-1">
-                        {todayShowtimes.map((showtime, i) => {
-                          const showtimeDate = new Date(showtime.startTime);
-                          const isPast = showtimeDate < today;
-                          const isNext =
-                            nextShowtime && showtime.startTime === nextShowtime.startTime;
-
-                          return (
-                            <Badge
-                              key={i}
-                              variant={isNext ? 'default' : 'outline'}
-                              className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
-                                isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                              }`}
-                            >
-                              <LocalTime time={showtime.startTime} timeZone={park.timezone} />
-                            </Badge>
-                          );
-                        })}
-                      </div>
-                    )}
-                    {todayShowtimes.length === 0 && show.showtimes && show.showtimes.length > 0 && (
-                      <p className="text-muted-foreground mt-2 text-sm">
-                        {tCommon('noShowtimesToday')}
-                      </p>
+                    <h3 className="font-semibold">{restaurant.name}</h3>
+                    {restaurant.cuisineType && (
+                      <Badge variant="secondary" className="mt-2 text-xs">
+                        {restaurant.cuisineType}
+                      </Badge>
                     )}
                   </CardContent>
                 </Card>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          </TabsContent>
+        )}
+
+        <TabsContent value="calendar" id="calendar">
+          <ParkCalendar park={park} calendarData={calendarData} />
         </TabsContent>
-      )}
 
-      {restaurantsAvailable && (
-        <TabsContent value="restaurants">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {park.restaurants?.map((restaurant) => (
-              <Card key={restaurant.id}>
-                <CardContent className="p-4">
-                  <h3 className="font-semibold">{restaurant.name}</h3>
-                  {restaurant.cuisineType && (
-                    <Badge variant="secondary" className="mt-2 text-xs">
-                      {restaurant.cuisineType}
-                    </Badge>
-                  )}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <TabsContent value="map" id="map">
+          <ParkMap park={park} />
         </TabsContent>
-      )}
-
-      <TabsContent value="calendar">
-        <ParkCalendar park={park} calendarData={calendarData} />
-      </TabsContent>
-
-      <TabsContent value="map">
-        <ParkMap park={park} />
-      </TabsContent>
-    </Tabs>
+      </Tabs>
+    </div>
   );
 }

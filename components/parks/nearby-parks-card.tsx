@@ -206,6 +206,12 @@ export function NearbyParksCard() {
     const park = data.park;
     const rides = data.rides.slice(0, 5); // Show max 5 rides
 
+    // Extract park URL from first ride if available
+    const parkMapUrl =
+      rides.length > 0
+        ? `${rides[0].url.split('/attractions/')[0].replace('/v1/parks/', '/parks/')}#map`
+        : null;
+
     return (
       <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border py-6 shadow-sm">
         <CardHeader className="pb-3">
@@ -216,38 +222,81 @@ export function NearbyParksCard() {
         </CardHeader>
         <CardContent className="space-y-4">
           {/* Park Info */}
-          <article className="flex items-start justify-between">
-            <div>
-              <h3 className="text-lg font-semibold">{park.name}</h3>
-              <p className="text-muted-foreground text-sm">
-                {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
-              </p>
-            </div>
-            {park.analytics?.crowdLevel && (
-              <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
-            )}
-          </article>
+          {parkMapUrl ? (
+            <Link href={parkMapUrl} className="group block transition-opacity hover:opacity-80">
+              <article className="flex items-start justify-between">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="text-lg font-semibold">{park.name}</h3>
+                    <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                  </div>
+                  <p className="text-muted-foreground text-sm">
+                    {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
+                  </p>
+                </div>
+                {park.analytics?.crowdLevel && (
+                  <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                )}
+              </article>
 
-          {/* Park Analytics */}
-          {park.analytics && (
-            <div className="flex items-center gap-4 text-sm">
-              {park.analytics.avgWaitTime !== undefined && (
-                <div className="flex items-center gap-1">
-                  <Clock className="text-muted-foreground h-4 w-4" />
-                  <span>
-                    {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
-                  </span>
+              {/* Park Analytics - Inside Link */}
+              {park.analytics && (
+                <div className="mt-4 flex items-center gap-4 text-sm">
+                  {park.analytics.avgWaitTime !== undefined && (
+                    <div className="flex items-center gap-1">
+                      <Clock className="text-muted-foreground h-4 w-4" />
+                      <span>
+                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
+                      </span>
+                    </div>
+                  )}
+                  {park.analytics.operatingAttractions !== undefined && (
+                    <div className="flex items-center gap-1">
+                      <TrendingUp className="text-muted-foreground h-4 w-4" />
+                      <span>
+                        {park.analytics.operatingAttractions} {tCommon('operating')}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
-              {park.analytics.operatingAttractions !== undefined && (
-                <div className="flex items-center gap-1">
-                  <TrendingUp className="text-muted-foreground h-4 w-4" />
-                  <span>
-                    {park.analytics.operatingAttractions} {tCommon('operating')}
-                  </span>
+            </Link>
+          ) : (
+            <>
+              <article className="flex items-start justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold">{park.name}</h3>
+                  <p className="text-muted-foreground text-sm">
+                    {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
+                  </p>
+                </div>
+                {park.analytics?.crowdLevel && (
+                  <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                )}
+              </article>
+
+              {/* Park Analytics */}
+              {park.analytics && (
+                <div className="flex items-center gap-4 text-sm">
+                  {park.analytics.avgWaitTime !== undefined && (
+                    <div className="flex items-center gap-1">
+                      <Clock className="text-muted-foreground h-4 w-4" />
+                      <span>
+                        {park.analytics.avgWaitTime} {tCommon('minutes')} Ø
+                      </span>
+                    </div>
+                  )}
+                  {park.analytics.operatingAttractions !== undefined && (
+                    <div className="flex items-center gap-1">
+                      <TrendingUp className="text-muted-foreground h-4 w-4" />
+                      <span>
+                        {park.analytics.operatingAttractions} {tCommon('operating')}
+                      </span>
+                    </div>
+                  )}
                 </div>
               )}
-            </div>
+            </>
           )}
 
           {/* Nearest Rides */}
@@ -270,12 +319,13 @@ export function NearbyParksCard() {
                           </p>
                         </div>
                         <div className="ml-3 flex items-center gap-2">
-                          {ride.waitTime !== null && (
+                          {ride.status === 'OPERATING' && typeof ride.waitTime === 'number' && (
                             <Badge
                               variant="secondary"
-                              className="bg-status-operating/20 text-status-operating"
+                              className="bg-status-operating/20 text-status-operating gap-1"
                             >
-                              {ride.waitTime} {tCommon('minutes')}
+                              <span>⏱️</span>
+                              {ride.waitTime} min
                             </Badge>
                           )}
                           <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
