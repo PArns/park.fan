@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search } from 'lucide-react';
@@ -52,6 +52,7 @@ export function TabsWithHash({
   const [activeTab, setActiveTab] = useState(defaultValue);
   const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // Sync with URL hash on mount and on hash change
   useEffect(() => {
@@ -82,6 +83,35 @@ export function TabsWithHash({
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [searchQuery]);
+
+  // Auto-focus on typing
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Only trigger if attractions tab is active
+      if (activeTab !== 'attractions') return;
+
+      // Ignore if user is already typing in an input
+      if (
+        document.activeElement?.tagName === 'INPUT' ||
+        document.activeElement?.tagName === 'TEXTAREA' ||
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
+
+      // Ignore modifiers
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      // Only trigger on single character keys (letters, numbers, etc.)
+      if (e.key.length === 1) {
+        inputRef.current?.focus();
+      }
+    };
+
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [activeTab]);
 
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
@@ -127,11 +157,12 @@ export function TabsWithHash({
 
       <TabsContent value="attractions">
         {/* Attractions grouped by Land */}
-        <div className="space-y-8">
-          <div className="mb-6 flex justify-end">
+        <div className="relative space-y-8">
+          <div className="absolute top-0 right-0 z-10">
             <div className="relative w-full sm:w-auto">
               <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
               <Input
+                ref={inputRef}
                 placeholder={t('searchAttractions')}
                 className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
                   isFocused && searchQuery ? 'pr-16' : 'pr-4'
