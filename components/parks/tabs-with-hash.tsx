@@ -46,17 +46,25 @@ export function TabsWithHash({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
 
-  // Get initial tab from URL hash or use default
-  const getInitialTab = () => {
-    if (typeof window !== 'undefined') {
-      const hash = window.location.hash.slice(1); // Remove #
-      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar'];
-      return validTabs.includes(hash) ? hash : defaultValue;
-    }
-    return defaultValue;
-  };
+  // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
+  const [activeTab, setActiveTab] = useState(defaultValue);
 
-  const [activeTab, setActiveTab] = useState(getInitialTab);
+  // Sync with URL hash on mount and on hash change
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar'];
+      if (validTabs.includes(hash)) {
+        setActiveTab(hash);
+      }
+    };
+
+    // Check hash on mount
+    handleHashChange();
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
@@ -65,18 +73,7 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${value}`);
   };
 
-  // Listen for hash changes (e.g., browser back/forward)
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-      if (hash && hash !== activeTab) {
-        setActiveTab(hash);
-      }
-    };
 
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [activeTab]);
 
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange}>
@@ -150,9 +147,8 @@ export function TabsWithHash({
                             <Badge
                               key={i}
                               variant={isNext ? 'default' : 'outline'}
-                              className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
-                                isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                              }`}
+                              className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                                }`}
                             >
                               <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                             </Badge>
