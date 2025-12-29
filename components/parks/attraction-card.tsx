@@ -1,10 +1,11 @@
 import { Link } from '@/i18n/navigation';
-import { Clock, AlertTriangle, Wrench, XCircle } from 'lucide-react';
+import { Clock, AlertTriangle, Wrench, XCircle, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
+import type { ParkAttraction, AttractionStatus, ParkStatus, TrendDirection } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { CrowdLevelBadge } from './crowd-level-badge';
 
 interface AttractionCardProps {
   attraction: ParkAttraction;
@@ -42,6 +43,16 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
   const config = statusConfig[status];
   const StatusIcon = config.icon;
 
+  const trendIcon = {
+    up: TrendingUp,
+    down: TrendingDown,
+    stable: Minus,
+    increasing: TrendingUp,
+    decreasing: TrendingDown,
+  };
+
+  const TrendIcon = attraction.trend ? trendIcon[attraction.trend] : null;
+
   return (
     <Link
       href={`${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire'}
@@ -55,6 +66,15 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
               <div className="flex items-center gap-1.5 text-sm font-bold">
                 <Clock className="h-4 w-4" />
                 {waitTime} min
+                {TrendIcon && (
+                  <span className={cn('ml-1', {
+                    'text-rose-500': attraction.trend === 'up' || attraction.trend === 'increasing',
+                    'text-emerald-500': attraction.trend === 'down' || attraction.trend === 'decreasing',
+                    'text-muted-foreground': attraction.trend === 'stable'
+                  })}>
+                    <TrendIcon className="h-4 w-4" />
+                  </span>
+                )}
               </div>
             )}
           </div>
@@ -71,33 +91,17 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
           </Badge>
         </CardContent>
         {/* Current Load / Crowd Level Badge */}
-        {status === 'OPERATING' && attraction.currentLoad && (
+        {status === 'OPERATING' && attraction.crowdLevel && (
+          <div className="mt-2 flex justify-end px-4 pb-4">
+            <CrowdLevelBadge level={attraction.crowdLevel} className="h-5 px-1.5 text-[10px]" />
+          </div>
+        )}
+        {/* Legacy fallback - remove if no longer needed, keeping for safety if backend doesn't send crowdLevel yet */}
+        {status === 'OPERATING' && !attraction.crowdLevel && attraction.currentLoad && (
           <div className="mt-2 flex justify-end px-4 pb-4">
             {(() => {
               const level = attraction.currentLoad.crowdLevel;
-              const crowdConfig: Record<string, string> = {
-                very_low: 'bg-emerald-500 hover:bg-emerald-600',
-                low: 'bg-emerald-400 hover:bg-emerald-500',
-                normal: 'bg-blue-500 hover:bg-blue-600',
-                moderate: 'bg-blue-500 hover:bg-blue-600',
-                higher: 'bg-orange-400 hover:bg-orange-500',
-                high: 'bg-orange-500 hover:bg-orange-600',
-                very_high: 'bg-rose-500 hover:bg-rose-600',
-                extreme: 'bg-rose-700 hover:bg-rose-800',
-              };
-
-              const colorClass = crowdConfig[level] || 'bg-slate-500';
-
-              return (
-                <Badge
-                  className={cn(
-                    'h-5 border-0 px-1.5 text-[10px] font-bold text-white uppercase',
-                    colorClass
-                  )}
-                >
-                  {t(`crowdLevels.${level}`)}
-                </Badge>
-              );
+              return <CrowdLevelBadge level={level} className="h-5 px-1.5 text-[10px]" />;
             })()}
           </div>
         )}

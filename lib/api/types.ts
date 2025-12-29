@@ -21,7 +21,7 @@ export type Recommendation =
   | 'strongly_avoid'
   | 'closed';
 export type ScheduleType = 'OPERATING' | 'CLOSED';
-export type TrendDirection = 'up' | 'stable' | 'down';
+export type TrendDirection = 'up' | 'stable' | 'down' | 'increasing' | 'decreasing';
 export type ComparisonStatus = 'lower' | 'typical' | 'higher' | 'closed';
 export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 
@@ -205,6 +205,9 @@ export interface ParkAttraction {
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
   currentLoad?: ParkLoad | null;
+  // added fields
+  crowdLevel?: CrowdLevel;
+  trend?: TrendDirection;
 }
 
 export interface ShowtimeEntry {
