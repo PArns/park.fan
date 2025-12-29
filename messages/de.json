@@ -182,6 +182,79 @@
     "occupancy": "Auslastung",
     "peakHour": "Stoßzeit",
     "forecast": "Vorhersage",
+    "calendar": "Kalender",
+    "calendarLegend": "Legende",
+    "eventTypesLabel": "Event-Typen",
+    "crowdLevelsLabel": "Auslastungsstufen",
+    "crowdLevelsNote": "(Siehe unten)",
+    "specialDaysLabel": "Besondere Tage",
+    "schoolVacation": "Schulferien",
+    "bridgeDay": "Brückentag",
+    "holiday": "Feiertag",
+    "eventTypes": {
+      "schedule": "Öffnungszeiten",
+      "weather": "Wetter",
+      "holiday": "Feiertag",
+      "crowd": "Besucherprognose",
+      "recommendation": "Empfehlung",
+      "specialEvent": "Besonderes Event",
+      "show": "Show"
+    },
+    "calendarView": {
+      "month": "Monat",
+      "week": "Woche",
+      "day": "Tag",
+      "agenda": "Agenda",
+      "next": "Weiter",
+      "previous": "Zurück",
+      "today": "Heute",
+      "details": {
+        "schedule": {
+          "title": "Öffnungszeiten",
+          "closed": "Park geschlossen",
+          "open": "Geöffnet",
+          "openingHours": "Betriebszeiten",
+          "ticketPrice": "Ticketpreis: {price}",
+          "holiday": "Feiertag: {name}",
+          "bridgeDay": "Voraussichtlicher Brückentag"
+        },
+        "weather": {
+          "title": "Wettervorhersage",
+          "temp": "Temperatur",
+          "rainChance": "Regenwahrscheinlichkeit"
+        },
+        "crowd": {
+          "title": "Besucherprognose",
+          "level": "Besucherandrang",
+          "score": "Andrangs-Score",
+          "confidence": "ML Konfidenz"
+        },
+        "show": {
+          "title": "Show-Zeit",
+          "startsAt": "Beginn",
+          "duration": "Dauer"
+        },
+        "holiday": {
+          "title": "Feiertag",
+          "nationwide": "Bundesweiter Feiertag",
+          "regional": "Regionaler Feiertag"
+        },
+        "recommendation": {
+          "title": "Empfehlung"
+        }
+      }
+    },
+    "recommendations": {
+      "lowCrowds": "Wenig Andrang erwartet - perfekter Tag für einen Besuch",
+      "highCrowds": "Hoher Andrang erwartet - früh anreisen",
+      "visitWeekday": "Erwäge einen Besuch unter der Woche",
+      "moderateCrowds": "Moderater Andrang erwartet",
+      "goodCrowds": "Gute Besucherzahlen für die meisten Attraktionen",
+      "rainLikely": "Regen wahrscheinlich - Indoor-Attraktionen empfohlen",
+      "hotDay": "Heißer Tag - viel trinken",
+      "coldDay": "Kaltes Wetter - warm anziehen",
+      "goodDay": "Guter Tag für einen Parkbesuch"
+    },
     "attractions": "Attraktionen",
     "shows": "Shows",
     "predictions": "Wartezeit-Prognose",
@@ -227,6 +300,21 @@
     "parkClosed": "Park geschlossen",
     "prevMonth": "Vorheriger Monat",
     "nextMonth": "Nächster Monat"
+  },
+  "nearby": {
+    "title": "Parks in der Nähe",
+    "enableDescription": "Aktiviere den Standortzugriff, um Parks und Attraktionen in deiner Nähe zu finden.",
+    "enable": "Standort aktivieren",
+    "loadingLocation": "Standort wird ermittelt...",
+    "permissionDenied": "Standortzugriff verweigert",
+    "permissionDeniedDescription": "Bitte aktiviere den Standortzugriff in deinen Browsereinstellungen, um diese Funktion zu nutzen.",
+    "youAreIn": "Du bist hier",
+    "awayFrom": "entfernt",
+    "nearestAttractions": "Nächste Attraktionen",
+    "noParksNearby": "Keine Parks in der Nähe gefunden.",
+    "nearbyParks": "Parks in der Nähe",
+    "opensIn": "Öffnet in",
+    "closesIn": "Schließt in"
   },
   "geo": {
     "continent": "Kontinent",
@@ -336,22 +424,6 @@
       "syncHolidays": "Feiertage synchronisieren"
     }
   },
-  "nearby": {
-    "title": "In meiner Nähe",
-    "enable": "Standort aktivieren",
-    "enableDescription": "Zeige Parks in meiner Umgebung",
-    "permissionDenied": "Standortzugriff verweigert",
-    "permissionDeniedDescription": "Bitte aktiviere den Standortzugriff in deinen Browser-Einstellungen",
-    "loadingLocation": "Standort wird ermittelt...",
-    "noParksNearby": "Keine Parks in der Nähe",
-    "youAreIn": "Du bist in",
-    "nearbyParks": "Parks in der Nähe",
-    "nearestAttractions": "Nächste Attraktionen",
-    "awayFrom": "entfernt",
-    "opensIn": "Öffnet in",
-    "closesIn": "Schließt in"
-  },
-
   "seo": {
     "home": {
       "title": "park.fan - Freizeitpark Wartezeiten & Andrangskalender",

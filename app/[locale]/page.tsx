@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     alternates: {
       canonical: '/',
       languages: {
-        'en': '/en',
-        'de': '/de',
+        en: '/en',
+        de: '/de',
         'x-default': '/',
       },
     },

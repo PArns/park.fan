@@ -169,6 +169,79 @@
     "occupancy": "Occupancy",
     "peakHour": "Peak Hour",
     "open": "open",
+    "calendar": "Calendar",
+    "calendarLegend": "Legend",
+    "eventTypesLabel": "Event Types",
+    "crowdLevelsLabel": "Crowd Levels",
+    "crowdLevelsNote": "(See below)",
+    "specialDaysLabel": "Special Days",
+    "schoolVacation": "School Vacation",
+    "bridgeDay": "Bridge Day",
+    "holiday": "Holiday",
+    "eventTypes": {
+      "schedule": "Opening Hours",
+      "weather": "Weather",
+      "holiday": "Holiday",
+      "crowd": "Crowd Prediction",
+      "recommendation": "Recommendation",
+      "specialEvent": "Special Event",
+      "show": "Show"
+    },
+    "calendarView": {
+      "month": "Month",
+      "week": "Week",
+      "day": "Day",
+      "agenda": "Agenda",
+      "next": "Next",
+      "previous": "Previous",
+      "today": "Today",
+      "details": {
+        "schedule": {
+          "title": "Park Schedule",
+          "closed": "Park is Closed",
+          "open": "Open",
+          "openingHours": "Operating Hours",
+          "ticketPrice": "Ticket Price: {price}",
+          "holiday": "Holiday: {name}",
+          "bridgeDay": "Likely Bridge Day"
+        },
+        "weather": {
+          "title": "Weather Forecast",
+          "temp": "Temperature",
+          "rainChance": "Chance of Rain"
+        },
+        "crowd": {
+          "title": "Crowd Prediction",
+          "level": "Crowd Level",
+          "score": "Crowd Score",
+          "confidence": "ML Confidence"
+        },
+        "show": {
+          "title": "Show Time",
+          "startsAt": "Starts at",
+          "duration": "Duration"
+        },
+        "holiday": {
+          "title": "Public Holiday",
+          "nationwide": "Nationwide Holiday",
+          "regional": "Regional Holiday"
+        },
+        "recommendation": {
+          "title": "Recommendation"
+        }
+      }
+    },
+    "recommendations": {
+      "lowCrowds": "Low crowds expected - excellent day to visit",
+      "highCrowds": "High crowds expected - arrive early",
+      "visitWeekday": "Consider visiting on a weekday instead",
+      "moderateCrowds": "Moderate crowds expected",
+      "goodCrowds": "Good crowd levels for most attractions",
+      "rainLikely": "Rain likely - indoor attractions recommended",
+      "hotDay": "Hot day - stay hydrated",
+      "coldDay": "Cold weather - dress warmly",
+      "goodDay": "Good day for a park visit"
+    },
     "status": {
       "OPERATING": "Open",
       "CLOSED": "Closed",
@@ -227,6 +300,21 @@
     "parkClosed": "Park Closed",
     "prevMonth": "Previous Month",
     "nextMonth": "Next Month"
+  },
+  "nearby": {
+    "title": "Nearby Parks",
+    "enableDescription": "Enable location access to find parks and attractions near you.",
+    "enable": "Enable Location",
+    "loadingLocation": "Locating...",
+    "permissionDenied": "Location Access Denied",
+    "permissionDeniedDescription": "Please enable location access in your browser settings to use this feature.",
+    "youAreIn": "You are here",
+    "awayFrom": "away",
+    "nearestAttractions": "Nearest Attractions",
+    "noParksNearby": "No parks found nearby.",
+    "nearbyParks": "Nearby Parks",
+    "opensIn": "Opens in",
+    "closesIn": "Closes in"
   },
   "geo": {
     "continent": "Continent",
@@ -347,20 +435,5 @@
       "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
       "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data and forecasts."
     }
-  },
-  "nearby": {
-    "title": "Nearby Parks",
-    "enableDescription": "Enable location access to see parks and wait times near you.",
-    "enable": "Enable Location",
-    "loadingLocation": "Locating...",
-    "permissionDenied": "Location Access Denied",
-    "permissionDeniedDescription": "Please enable location access in your browser settings to use this feature.",
-    "youAreIn": "You are in",
-    "awayFrom": "away from",
-    "nearestAttractions": "Nearest Attractions",
-    "noParksNearby": "No parks found nearby.",
-    "nearbyParks": "Nearby Parks",
-    "opensIn": "Opens in",
-    "closesIn": "Closes in"
   }
 }

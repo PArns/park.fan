@@ -138,7 +138,7 @@ export function NearbyParksCard() {
   // Prompt state - show enable button
   if (permissionState === 'prompt') {
     return (
-      <section className="bg-card text-card-foreground rounded-xl border border-dashed shadow-sm py-6">
+      <section className="bg-card text-card-foreground rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-muted-foreground h-5 w-5" />
@@ -207,7 +207,7 @@ export function NearbyParksCard() {
     const rides = data.rides.slice(0, 5); // Show max 5 rides
 
     return (
-      <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border shadow-sm py-6">
+      <section className="bg-park-primary/5 border-park-primary/30 rounded-xl border py-6 shadow-sm">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -314,7 +314,7 @@ export function NearbyParksCard() {
     }
 
     return (
-      <section className="bg-card text-card-foreground rounded-xl border shadow-sm gap-6 py-6">
+      <section className="bg-card text-card-foreground rounded-xl border py-6 shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -329,7 +329,7 @@ export function NearbyParksCard() {
               return (
                 <li key={park.id}>
                   <Link href={park.url.replace('/v1/parks/', '/parks/')} className="group h-full">
-                    <article className="hover:border-primary/50 bg-card h-full rounded-xl border transition-all hover:shadow-md py-6">
+                    <article className="hover:border-primary/50 bg-card h-full rounded-xl border py-6 transition-all hover:shadow-md">
                       <CardHeader className="pb-3">
                         <div className="flex items-start justify-between gap-2">
                           <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">

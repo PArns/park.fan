@@ -25,6 +25,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/v1/:path*',
+        destination: 'https://api.park.fan/v1/:path*',
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

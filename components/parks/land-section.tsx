@@ -39,11 +39,7 @@ export function LandSection({ landName, attractions, parkPath, parkStatus }: Lan
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {attractions.map((attraction) => (
           <li key={attraction.id}>
-            <AttractionCard
-              attraction={attraction}
-              parkPath={parkPath}
-              parkStatus={parkStatus}
-            />
+            <AttractionCard attraction={attraction} parkPath={parkPath} parkStatus={parkStatus} />
           </li>
         ))}
       </ul>

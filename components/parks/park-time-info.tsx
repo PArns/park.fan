@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Clock, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { ScheduleItem } from '@/lib/api/types';
+import type { ScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 
 interface ParkTimeInfoProps {
   timezone: string;
@@ -175,19 +175,36 @@ export function ParkTimeInfo({ timezone, todaySchedule }: ParkTimeInfoProps) {
           </div>
         </div>
 
-        {/* Holiday/Bridge Day Badges */}
-        {(todaySchedule.isHoliday || todaySchedule.isBridgeDay) && (
+        {/* Holiday/Bridge Day/School Vacation Badges */}
+        {(todaySchedule.isHoliday ||
+          todaySchedule.isBridgeDay ||
+          todaySchedule.isSchoolVacation ||
+          todaySchedule.influencingHolidays) && (
           <div className="flex flex-wrap gap-2">
             {todaySchedule.isHoliday && todaySchedule.holidayName && (
-              <Badge variant="outline" className="text-xs">
-                🎄 {todaySchedule.holidayName}
+              <Badge variant="outline" className="border-orange-300 bg-orange-50 text-xs">
+                🎉 {todaySchedule.holidayName}
               </Badge>
             )}
             {todaySchedule.isBridgeDay && (
-              <Badge variant="outline" className="text-xs">
-                🌉 Bridge Day
+              <Badge variant="outline" className="border-blue-300 bg-blue-50 text-xs">
+                🌉 {t('bridgeDay')}
               </Badge>
             )}
+            {todaySchedule.isSchoolVacation && (
+              <Badge variant="outline" className="border-yellow-300 bg-yellow-50 text-xs">
+                🎒 {t('schoolVacation')}
+              </Badge>
+            )}
+            {todaySchedule.influencingHolidays &&
+              todaySchedule.influencingHolidays.length > 0 &&
+              todaySchedule.influencingHolidays
+                .slice(0, 2)
+                .map((holiday: InfluencingHoliday, i: number) => (
+                  <Badge key={i} variant="outline" className="border-amber-300 bg-amber-50 text-xs">
+                    🎄 {holiday.name}
+                  </Badge>
+                ))}
           </div>
         )}
       </CardContent>

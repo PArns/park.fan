@@ -1,5 +1,12 @@
 // API base configuration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
+const getApiBaseUrl = () => {
+  // Server-side: go directly to the API to save round-trip/overhead
+  if (typeof window === 'undefined') {
+    return process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
+  }
+  // Client-side: use relative path to trigger Next.js proxy (avoids CORS)
+  return '';
+};
 
 export interface FetchOptions extends RequestInit {
   params?: Record<string, string | number | boolean | undefined>;
@@ -19,7 +26,12 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
   const { params, ...fetchOptions } = options;
 
   // Build URL with query params
-  const url = new URL(`${API_BASE_URL}${endpoint}`);
+  const baseUrl = getApiBaseUrl();
+  const url = new URL(
+    `${baseUrl}${endpoint}`,
+    typeof window === 'undefined' ? baseUrl : window.location.origin
+  );
+
   if (params) {
     Object.entries(params).forEach(([key, value]) => {
       if (value !== undefined) {

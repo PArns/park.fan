@@ -1,0 +1,41 @@
+/* Dark Mode Toolbar Buttons - Force White Text */
+.dark .rbc-toolbar button {
+  color: #ffffff !important;
+  border-color: #374151 !important; /* gray-700 */
+}
+
+.dark .rbc-toolbar button:hover,
+.dark .rbc-toolbar button:active,
+.dark .rbc-toolbar button.rbc-active {
+  background-color: #374151 !important; /* gray-700 */
+  color: #ffffff !important;
+}
+
+.dark .rbc-toolbar button:focus {
+  background-color: #4b5563 !important; /* gray-600 */
+  color: #ffffff !important;
+}
+
+.dark .rbc-off-range-bg {
+  background-color: #1f2937 !important; /* gray-800 */
+}
+
+/* Dark Mode Grid Lines - Make them much softer (10% opacity) */
+.dark .rbc-month-view,
+.dark .rbc-time-view,
+.dark .rbc-header,
+.dark .rbc-month-row,
+.dark .rbc-day-bg,
+.dark .rbc-time-header-content,
+.dark .rbc-time-content,
+.dark .rbc-timeslot-group,
+.dark .rbc-day-slot .rbc-time-slot,
+.dark .rbc-agenda-view table.rbc-agenda-table,
+.dark .rbc-agenda-view table.rbc-agenda-table tbody > tr > td,
+.dark .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .rbc-today {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
