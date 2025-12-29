@@ -39,6 +39,7 @@ export interface NearbyParkInfo {
     closingTime: string;
     scheduleType: string;
   };
+  backgroundImage?: string | null;
 }
 
 export interface NearbyRidesData {
@@ -68,6 +69,7 @@ export interface ParkWithDistance {
     closingTime: string;
     scheduleType: string;
   };
+  backgroundImage?: string | null;
 }
 
 export interface NearbyParksData {

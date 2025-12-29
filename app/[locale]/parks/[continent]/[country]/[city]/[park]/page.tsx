@@ -16,6 +16,8 @@ import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
+import { ParkBackground } from '@/components/parks/park-background';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 interface ParkPageProps {
   params: Promise<{
@@ -163,68 +165,87 @@ export default async function ParkPage({ params }: ParkPageProps) {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <ParkStructuredData
-        park={park}
-        url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
-      />
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+    <>
+      <ParkBackground imageSrc={getParkBackgroundImage(parkSlug)} alt={park.name} />
 
-      {/* Breadcrumb */}
-      <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={park.name} />
+      <div className="container mx-auto px-4 py-8">
+        <ParkStructuredData
+          park={park}
+          url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
+        />
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 
-      {/* Park Header */}
-      <div className="mb-8">
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div>
-            <div className="mb-2 flex flex-wrap items-center gap-3">
-              <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
-              {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
-            </div>
-            <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-              <span className="flex items-center gap-1">
-                <MapPin className="h-4 w-4" />
-                {cityName}, {tGeo(`countries.${country}` as 'countries.germany') || countryName}
-              </span>
-              {park.timezone && (
-                <Badge variant="outline" className="gap-1 font-mono text-xs">
-                  <Clock className="h-3 w-3" />
-                  {park.timezone}
-                </Badge>
-              )}
+        {/* Breadcrumb */}
+        <BreadcrumbNav
+          breadcrumbs={breadcrumbs}
+          currentPage={park.name}
+          className="bg-background/60 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
+        />
+
+        {/* Park Header */}
+        <div className="mb-8">
+          <div className="bg-background/60 rounded-xl border p-6 shadow-sm backdrop-blur-md">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <div className="mb-2 flex flex-wrap items-center gap-3">
+                  <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
+                  {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
+                </div>
+                <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="h-4 w-4" />
+                    {cityName}, {tGeo(`countries.${country}` as 'countries.germany') || countryName}
+                  </span>
+                  {park.timezone && (
+                    <Badge variant="outline" className="gap-1 font-mono text-xs">
+                      <Clock className="h-3 w-3" />
+                      {park.timezone}
+                    </Badge>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Schedule & Weather Row */}
+        <div className="mb-8 grid gap-4 md:grid-cols-2">
+          {/* Today's Schedule with Current Time */}
+          <ParkTimeInfo
+            timezone={park.timezone}
+            todaySchedule={todaySchedule}
+            className="bg-background/60 border-primary/10 backdrop-blur-md"
+          />
+
+          {/* Weather */}
+          {park.weather?.current && (
+            <WeatherCard
+              weather={park.weather}
+              className="bg-background/60 border-primary/10 backdrop-blur-md"
+            />
+          )}
+        </div>
+
+        {/* Park Status Component */}
+        <ParkStatus park={park} variant="detailed" />
+
+        <Separator className="my-8" />
+
+        {/* Tabs for Attractions, Shows, Restaurants */}
+        <TabsWithHash
+          defaultValue="attractions"
+          showsAvailable={park.shows && park.shows.length > 0}
+          restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
+          park={park}
+          calendarData={calendarData}
+          continent={continent}
+          country={country}
+          city={city}
+          parkSlug={parkSlug}
+          landNames={landNames}
+          attractionsByLand={attractionsByLand}
+        />
       </div>
-
-      {/* Schedule & Weather Row */}
-      <div className="mb-8 grid gap-4 md:grid-cols-2">
-        {/* Today's Schedule with Current Time */}
-        <ParkTimeInfo timezone={park.timezone} todaySchedule={todaySchedule} />
-
-        {/* Weather */}
-        {park.weather?.current && <WeatherCard weather={park.weather} />}
-      </div>
-
-      {/* Park Status Component */}
-      <ParkStatus park={park} variant="detailed" />
-
-      <Separator className="my-8" />
-
-      {/* Tabs for Attractions, Shows, Restaurants */}
-      <TabsWithHash
-        defaultValue="attractions"
-        showsAvailable={park.shows && park.shows.length > 0}
-        restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
-        park={park}
-        calendarData={calendarData}
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        landNames={landNames}
-        attractionsByLand={attractionsByLand}
-      />
-    </div>
+    </>
   );
 }

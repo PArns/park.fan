@@ -10,6 +10,7 @@ import type { ScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 interface ParkTimeInfoProps {
   timezone: string;
   todaySchedule?: ScheduleItem | null;
+  className?: string;
 }
 
 /**
@@ -18,7 +19,7 @@ interface ParkTimeInfoProps {
  * 2. Opening hours for today
  * 3. "Opens in" / "Closes in" messages
  */
-export function ParkTimeInfo({ timezone, todaySchedule }: ParkTimeInfoProps) {
+export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInfoProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const [currentTime, setCurrentTime] = useState<Date>(() => new Date());
@@ -134,7 +135,7 @@ export function ParkTimeInfo({ timezone, todaySchedule }: ParkTimeInfoProps) {
   }
 
   return (
-    <Card>
+    <Card className={className}>
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />

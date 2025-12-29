@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 export const dynamic = 'force-dynamic'; // Don't cache this API route
 
@@ -57,6 +58,20 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await response.json();
+
+    // Enrich with background images
+    if (data.type === 'nearby_parks' && data.data?.parks) {
+      data.data.parks = data.data.parks.map((park: { slug: string }) => ({
+        ...park,
+        backgroundImage: getParkBackgroundImage(park.slug),
+      }));
+    } else if (data.type === 'in_park' && data.data?.park) {
+      data.data.park = {
+        ...data.data.park,
+        backgroundImage: getParkBackgroundImage(data.data.park.slug),
+      };
+    }
+
     return NextResponse.json(data);
   } catch (error) {
     console.error('[Nearby Proxy] Error:', error);

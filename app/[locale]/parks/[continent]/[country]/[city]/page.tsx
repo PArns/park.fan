@@ -2,10 +2,12 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { TreePalm, Users } from 'lucide-react';
+import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getCitiesWithParks } from '@/lib/api/discovery';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 
@@ -75,50 +77,68 @@ export default async function CityPage({ params }: CityPageProps) {
             }
             className="group"
           >
-            <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
-              <CardContent className="p-6">
+            <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-lg">
+              {/* Background Image */}
+              {getParkBackgroundImage(park.slug) && (
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={getParkBackgroundImage(park.slug)!}
+                    alt={park.name}
+                    fill
+                    className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
+                </div>
+              )}
+              <CardContent className="relative z-10 flex h-full flex-col justify-between p-6">
                 <div className="mb-4 flex items-start justify-between">
                   <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
                     <TreePalm className="text-primary h-6 w-6" />
                   </div>
                   {park.status && <ParkStatusBadge status={park.status} />}
                 </div>
-                <h3 className="group-hover:text-primary mb-2 text-lg font-semibold transition-colors">
-                  {park.name}
-                </h3>
-                <p className="text-muted-foreground mb-3 text-sm">
-                  {city.name}, {countryName}
-                </p>
 
-                {/* Stats */}
-                {park.analytics?.statistics && park.status === 'OPERATING' ? (
-                  <div className="mt-3 flex items-center gap-4 text-sm">
-                    <span className="text-muted-foreground hover:text-foreground transition-colors">
-                      {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
-                      {tCommon('avgWait')}
-                    </span>
-                    <span className="text-muted-foreground hover:text-foreground transition-colors">
-                      {park.analytics.statistics.operatingAttractions}/
-                      {park.analytics.statistics.totalAttractions} {tCommon('open')}
-                    </span>
+                <div className="bg-background/40 space-y-2 rounded-xl p-4 shadow-sm backdrop-blur-md">
+                  <div>
+                    <h3 className="group-hover:text-primary text-lg font-semibold transition-colors">
+                      {park.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm">
+                      {city.name}, {countryName}
+                    </p>
                   </div>
-                ) : (
-                  park.attractionCount > 0 && (
-                    <div className="mt-3 flex items-center gap-4 text-sm">
-                      <span className="text-muted-foreground flex items-center gap-1">
-                        <Users className="h-4 w-4" />
-                        {park.attractionCount} {tCommon('rides')}
+
+                  {/* Stats */}
+                  {park.analytics?.statistics && park.status === 'OPERATING' ? (
+                    <div className="flex items-center gap-4 text-sm">
+                      <span className="text-muted-foreground hover:text-foreground transition-colors">
+                        {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
+                        {tCommon('avgWait')}
+                      </span>
+                      <span className="text-muted-foreground hover:text-foreground transition-colors">
+                        {park.analytics.statistics.operatingAttractions}/
+                        {park.analytics.statistics.totalAttractions} {tCommon('open')}
                       </span>
                     </div>
-                  )
-                )}
+                  ) : (
+                    park.attractionCount > 0 && (
+                      <div className="flex items-center gap-4 text-sm">
+                        <span className="text-muted-foreground flex items-center gap-1">
+                          <Users className="h-4 w-4" />
+                          {park.attractionCount} {tCommon('rides')}
+                        </span>
+                      </div>
+                    )
+                  )}
 
-                {/* Crowd Level */}
-                {park.currentLoad && park.status === 'OPERATING' && (
-                  <div className="mt-3">
-                    <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
-                  </div>
-                )}
+                  {/* Crowd Level */}
+                  {park.currentLoad && park.status === 'OPERATING' && (
+                    <div>
+                      <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
+                    </div>
+                  )}
+                </div>
               </CardContent>
             </Card>
           </Link>

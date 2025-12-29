@@ -9,6 +9,8 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchButton } from '@/components/search/hero-search-button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import Image from 'next/image';
 
 import type { Metadata } from 'next';
 
@@ -137,111 +139,145 @@ export default async function HomePage({ params }: HomePageProps) {
 
             {/* Grid Layout: Second row - Parks */}
             <div className="mb-4 grid gap-4 sm:grid-cols-2">
-              {/* Most Crowded Park */}
-              {stats.mostCrowdedPark && (
-                <Link
-                  href={stats.mostCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                  className="group"
-                >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-muted-foreground text-sm font-medium">
-                          {t('mostCrowded')}
-                        </CardTitle>
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.mostCrowdedPark.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.mostCrowdedPark.city},{' '}
-                        {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
-                      </p>
-                      {/* Wait Time */}
-                      <div className="mb-2 flex items-center gap-2">
-                        <Clock className="text-muted-foreground h-4 w-4" />
-                        <span className="text-sm font-medium">
-                          {stats.mostCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
-                        </span>
-                        <CrowdLevelBadge
-                          level={stats.mostCrowdedPark.crowdLevel}
-                          className="h-5 px-1.5 text-[10px]"
-                        />
-                      </div>
-
-                      {/* Operating Attractions */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <TrendingUp className="text-muted-foreground h-4 w-4" />
-                          <span className="text-sm font-medium">
-                            {stats.mostCrowdedPark.operatingAttractions}/
-                            {stats.mostCrowdedPark.totalAttractions}
-                          </span>
-                          <span className="text-muted-foreground text-xs">
-                            {tCommon('operating')}
-                          </span>
+              {
+                /* Most Crowded Park */
+                stats.mostCrowdedPark && (
+                  <Link
+                    href={stats.mostCrowdedPark.url.replace('/v1/parks/', '/parks/')}
+                    className="group"
+                  >
+                    <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-lg">
+                      {/* Background Image */}
+                      {getParkBackgroundImage(stats.mostCrowdedPark.slug) && (
+                        <div className="absolute inset-0 z-0">
+                          <Image
+                            src={getParkBackgroundImage(stats.mostCrowdedPark.slug)!}
+                            alt={stats.mostCrowdedPark.name}
+                            fill
+                            className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                          <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              )}
+                      )}
+                      <div className="relative z-10">
+                        <CardHeader className="pb-2">
+                          <div className="flex items-center justify-between">
+                            <CardTitle className="text-muted-foreground text-sm font-medium">
+                              {t('mostCrowded')}
+                            </CardTitle>
+                            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
+                            {stats.mostCrowdedPark.name}
+                          </div>
+                          <p className="text-muted-foreground mb-2 truncate text-xs">
+                            {stats.mostCrowdedPark.city},{' '}
+                            {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
+                          </p>
+                          {/* Wait Time */}
+                          <div className="mb-2 flex items-center gap-2">
+                            <Clock className="text-muted-foreground h-4 w-4" />
+                            <span className="text-sm font-medium">
+                              {stats.mostCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
+                            </span>
+                            <CrowdLevelBadge
+                              level={stats.mostCrowdedPark.crowdLevel}
+                              className="h-5 px-1.5 text-[10px]"
+                            />
+                          </div>
 
-              {/* Least Crowded Park */}
-              {stats.leastCrowdedPark && (
-                <Link
-                  href={stats.leastCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                  className="group"
-                >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
-                    <CardHeader className="pb-2">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-muted-foreground text-sm font-medium">
-                          {t('leastCrowded')}
-                        </CardTitle>
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                          {/* Operating Attractions */}
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <TrendingUp className="text-muted-foreground h-4 w-4" />
+                              <span className="text-sm font-medium">
+                                {stats.mostCrowdedPark.operatingAttractions}/
+                                {stats.mostCrowdedPark.totalAttractions}
+                              </span>
+                              <span className="text-muted-foreground text-xs">
+                                {tCommon('operating')}
+                              </span>
+                            </div>
+                          </div>
+                        </CardContent>
                       </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.leastCrowdedPark.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.leastCrowdedPark.city},{' '}
-                        {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
-                      </p>
-                      {/* Wait Time */}
-                      <div className="mb-2 flex items-center gap-2">
-                        <Clock className="text-muted-foreground h-4 w-4" />
-                        <span className="text-sm font-medium">
-                          {stats.leastCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
-                        </span>
-                        <CrowdLevelBadge
-                          level={stats.leastCrowdedPark.crowdLevel}
-                          className="h-5 px-1.5 text-[10px]"
-                        />
-                      </div>
+                    </Card>
+                  </Link>
+                )
+              }
 
-                      {/* Operating Attractions */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <TrendingUp className="text-muted-foreground h-4 w-4" />
-                          <span className="text-sm font-medium">
-                            {stats.leastCrowdedPark.operatingAttractions}/
-                            {stats.leastCrowdedPark.totalAttractions}
-                          </span>
-                          <span className="text-muted-foreground text-xs">
-                            {tCommon('operating')}
-                          </span>
+              {
+                /* Least Crowded Park */
+                stats.leastCrowdedPark && (
+                  <Link
+                    href={stats.leastCrowdedPark.url.replace('/v1/parks/', '/parks/')}
+                    className="group"
+                  >
+                    <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-lg">
+                      {/* Background Image */}
+                      {getParkBackgroundImage(stats.leastCrowdedPark.slug) && (
+                        <div className="absolute inset-0 z-0">
+                          <Image
+                            src={getParkBackgroundImage(stats.leastCrowdedPark.slug)!}
+                            alt={stats.leastCrowdedPark.name}
+                            fill
+                            className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                          />
+                          <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
                         </div>
+                      )}
+                      <div className="relative z-10">
+                        <CardHeader className="pb-2">
+                          <div className="flex items-center justify-between">
+                            <CardTitle className="text-muted-foreground text-sm font-medium">
+                              {t('leastCrowded')}
+                            </CardTitle>
+                            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
+                            {stats.leastCrowdedPark.name}
+                          </div>
+                          <p className="text-muted-foreground mb-2 truncate text-xs">
+                            {stats.leastCrowdedPark.city},{' '}
+                            {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
+                          </p>
+                          {/* Wait Time */}
+                          <div className="mb-2 flex items-center gap-2">
+                            <Clock className="text-muted-foreground h-4 w-4" />
+                            <span className="text-sm font-medium">
+                              {stats.leastCrowdedPark.averageWaitTime} {tCommon('minutes')} Ø
+                            </span>
+                            <CrowdLevelBadge
+                              level={stats.leastCrowdedPark.crowdLevel}
+                              className="h-5 px-1.5 text-[10px]"
+                            />
+                          </div>
+
+                          {/* Operating Attractions */}
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <TrendingUp className="text-muted-foreground h-4 w-4" />
+                              <span className="text-sm font-medium">
+                                {stats.leastCrowdedPark.operatingAttractions}/
+                                {stats.leastCrowdedPark.totalAttractions}
+                              </span>
+                              <span className="text-muted-foreground text-xs">
+                                {tCommon('operating')}
+                              </span>
+                            </div>
+                          </div>
+                        </CardContent>
                       </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              )}
+                    </Card>
+                  </Link>
+                )
+              }
             </div>
 
             {/* Grid Layout: Third row - Attractions */}
