@@ -1,19 +1,18 @@
+import { format } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
-import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { getParkByGeoPath } from '@/lib/api/parks';
-import { LandSection } from '@/components/parks/land-section';
+import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { ParkStatus } from '@/components/parks/park-status';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
-import { ShowCountdown } from '@/components/shows/show-countdown';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
@@ -48,10 +47,10 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     alternates: {
       canonical: `/parks/${continent}/${country}/${city}/${parkSlug}`,
       languages: {
-        'en': `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
-        'de': `/de/parks/${continent}/${country}/${city}/${parkSlug}`,
+        en: `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
+        de: `/de/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
-    }
+    },
   };
 }
 
@@ -88,11 +87,39 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
 
-  // Fetch park data
+  // Fetch park data and holidays (holidays are optional)
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
   if (!park) {
     notFound();
+  }
+
+  // Fetch integrated calendar data (replaces separate holiday/schedule calls)
+  let calendarData: IntegratedCalendarResponse | null = null;
+  try {
+    calendarData = await getIntegratedCalendar(
+      continent,
+      country,
+      city,
+      parkSlug,
+      { includeHourly: 'today+tomorrow' } // Include hourly for today and tomorrow
+    );
+  } catch (error) {
+    console.error('[Calendar] Failed to fetch calendar data:', error);
+    // Provide fallback empty calendar
+    calendarData = {
+      meta: {
+        parkId: park.id,
+        slug: parkSlug,
+        timezone: park.timezone,
+        generatedAt: new Date().toISOString(),
+        requestRange: {
+          from: format(new Date(), 'yyyy-MM-dd'),
+          to: format(new Date(), 'yyyy-MM-dd'),
+        },
+      },
+      days: [],
+    };
   }
 
   // Group attractions by land
@@ -185,122 +212,20 @@ export default async function ParkPage({ params }: ParkPageProps) {
       <Separator className="my-8" />
 
       {/* Tabs for Attractions, Shows, Restaurants */}
-      <Tabs defaultValue="attractions">
-        <TabsList className="mb-6">
-          <TabsTrigger value="attractions">
-            {t('attractions')} ({park.attractions?.length || 0})
-          </TabsTrigger>
-          {park.shows && park.shows.length > 0 && (
-            <TabsTrigger value="shows">
-              {t('shows')} ({park.shows.length})
-            </TabsTrigger>
-          )}
-          {park.restaurants && park.restaurants.length > 0 && (
-            <TabsTrigger value="restaurants">
-              {t('restaurants')} ({park.restaurants.length})
-            </TabsTrigger>
-          )}
-        </TabsList>
-
-        <TabsContent value="attractions">
-          {/* Attractions grouped by Land */}
-          <div className="space-y-8">
-            {landNames.map((landName) => (
-              <LandSection
-                key={landName}
-                landName={landName}
-                attractions={attractionsByLand[landName]}
-                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                parkStatus={park.status}
-              />
-            ))}
-          </div>
-        </TabsContent>
-
-        {park.shows && park.shows.length > 0 && (
-          <TabsContent value="shows">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {park.shows.map((show) => {
-                // Filter showtimes for today or future dates
-                const today = new Date();
-                const todayShowtimes =
-                  show.showtimes?.filter((showtime) => {
-                    const showtimeDate = new Date(showtime.startTime);
-                    return (
-                      showtimeDate >= today || showtimeDate.toDateString() === today.toDateString()
-                    );
-                  }) || [];
-
-                // Find next showtime
-                const nextShowtime = todayShowtimes.find((showtime) => {
-                  const showtimeDate = new Date(showtime.startTime);
-                  return showtimeDate > today;
-                });
-
-                return (
-                  <Card key={show.id}>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold">{show.name}</h3>
-
-                      {/* Next show countdown */}
-                      {nextShowtime && <ShowCountdown nextShowtime={nextShowtime.startTime} />}
-
-                      {/* All showtimes */}
-                      {todayShowtimes.length > 0 && (
-                        <div className="mt-2 flex flex-wrap gap-1">
-                          {todayShowtimes.map((showtime, i) => {
-                            const showtimeDate = new Date(showtime.startTime);
-                            const isPast = showtimeDate < today;
-                            const isNext =
-                              nextShowtime && showtime.startTime === nextShowtime.startTime;
-
-                            return (
-                              <Badge
-                                key={i}
-                                variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                  }`}
-                              >
-                                <LocalTime time={showtime.startTime} timeZone={park.timezone} />
-                              </Badge>
-                            );
-                          })}
-                        </div>
-                      )}
-                      {todayShowtimes.length === 0 &&
-                        show.showtimes &&
-                        show.showtimes.length > 0 && (
-                          <p className="text-muted-foreground mt-2 text-sm">
-                            {tCommon('noShowtimesToday')}
-                          </p>
-                        )}
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
-          </TabsContent>
-        )}
-
-        {park.restaurants && park.restaurants.length > 0 && (
-          <TabsContent value="restaurants">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {park.restaurants.map((restaurant) => (
-                <Card key={restaurant.id}>
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold">{restaurant.name}</h3>
-                    {restaurant.cuisineType && (
-                      <Badge variant="secondary" className="mt-2 text-xs">
-                        {restaurant.cuisineType}
-                      </Badge>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-        )}
-      </Tabs>
+      <TabsWithHash
+        defaultValue="attractions"
+        showsAvailable={park.shows && park.shows.length > 0}
+        restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
+        park={park}
+        calendarData={calendarData}
+        continent={continent}
+        country={country}
+        city={city}
+        parkSlug={parkSlug}
+        landNames={landNames}
+        attractionsByLand={attractionsByLand}
+        otherAttractionsLabel={otherAttractionsLabel}
+      />
     </div>
   );
 }

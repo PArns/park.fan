@@ -70,6 +70,8 @@ export interface ScheduleItem {
   isHoliday?: boolean;
   holidayName: string | null;
   isBridgeDay?: boolean;
+  isSchoolVacation?: boolean;
+  influencingHolidays?: InfluencingHoliday[];
 }
 
 // ============================================================================
@@ -539,6 +541,18 @@ export interface HolidayResponse {
   holidays: HolidayItem[];
 }
 
+/**
+ * Structured holiday information from a neighbor/influencing region
+ */
+export interface InfluencingHoliday {
+  name: string;
+  source: {
+    countryCode: string;
+    regionCode?: string | null;
+  };
+  holidayType: string;
+}
+
 // ============================================================================
 // Discovery API Types
 // ============================================================================
@@ -578,4 +592,119 @@ export interface HealthStatus {
   uptime: number;
   services: Record<string, unknown>;
   data: Record<string, unknown>;
+}
+
+// ============================================================================
+// Calendar Types
+// ============================================================================
+
+export interface CalendarEventData {
+  type: 'schedule' | 'weather' | 'holiday' | 'crowd' | 'recommendation' | 'special_event' | 'show';
+  icon?: string;
+  // Legacy support
+  data?: ScheduleItem | WeatherDay | HolidayItem | ParkDailyPrediction;
+  timezone?: string;
+  details?: string;
+  // New integrated calendar properties
+  schedule?: ScheduleItem;
+  weather?: WeatherSummary;
+  holiday?: HolidayItem;
+  crowd?: {
+    date: string;
+    crowdLevel: CrowdLevel | 'closed';
+    confidencePercentage: number;
+    recommendation: string;
+    source: string;
+  };
+  recommendation?: string;
+  advisoryKeys?: string[];
+  show?: { name: string; time: string; endTime?: string };
+}
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  allDay: boolean;
+  resource: CalendarEventData;
+}
+
+// ============================================================================
+// Integrated Calendar Types (New API)
+// ============================================================================
+
+export interface CalendarMeta {
+  parkId: string;
+  slug: string;
+  timezone: string;
+  generatedAt: string;
+  requestRange: { from: string; to: string };
+}
+
+export interface OperatingHours {
+  openingTime: string;
+  closingTime: string;
+  type: 'OPERATING' | 'CLOSED';
+  isInferred: boolean;
+}
+
+export interface WeatherSummary {
+  condition: string;
+  icon: number;
+  tempMin: number;
+  tempMax: number;
+  rainChance: number;
+}
+
+export interface CalendarEventItem {
+  name: string;
+  type: string;
+  isNationwide?: boolean;
+}
+
+export interface HourlyPrediction {
+  hour: number;
+  crowdLevel: CrowdLevel;
+  predictedWaitTime: number;
+  probability?: number;
+}
+
+export interface TicketInfo {
+  price?: { amount: number; currency: string };
+  tier?: 'budget' | 'standard' | 'peak';
+  status?: 'available' | 'sold_out';
+}
+
+export interface ShowTime {
+  name: string;
+  time: string;
+  endTime?: string;
+}
+
+export interface CalendarDay {
+  date: string;
+  status: ParkStatus;
+  isToday: boolean;
+  isTomorrow: boolean;
+  hours?: OperatingHours;
+  crowdLevel: CrowdLevel | 'closed';
+  crowdScore?: number;
+  weather?: WeatherSummary;
+  events?: CalendarEventItem[];
+  isHoliday: boolean;
+  isBridgeDay: boolean;
+  isSchoolVacation: boolean;
+  influencingHolidays?: InfluencingHoliday[];
+  hourly?: HourlyPrediction[];
+  refurbishments?: string[];
+  ticket?: TicketInfo;
+  recommendation?: string;
+  advisoryKeys?: string[];
+  showTimes?: ShowTime[];
+}
+
+export interface IntegratedCalendarResponse {
+  meta: CalendarMeta;
+  days: CalendarDay[];
 }
