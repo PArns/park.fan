@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import dynamic from 'next/dynamic';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -16,6 +17,11 @@ import type {
   IntegratedCalendarResponse,
   ParkAttraction,
 } from '@/lib/api/types';
+
+// Dynamic import to avoid SSR issues with Leaflet
+const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
+  ssr: false,
+});
 
 interface TabsWithHashProps {
   defaultValue: string;
@@ -58,7 +64,7 @@ export function TabsWithHash({
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
-      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar'];
+      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map'];
       if (validTabs.includes(hash)) {
         setActiveTab(hash);
       }
@@ -153,6 +159,7 @@ export function TabsWithHash({
           </TabsTrigger>
         )}
         <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
+        <TabsTrigger value="map">{t('map')}</TabsTrigger>
       </TabsList>
 
       <TabsContent value="attractions">
@@ -293,6 +300,10 @@ export function TabsWithHash({
 
       <TabsContent value="calendar">
         <ParkCalendar park={park} calendarData={calendarData} />
+      </TabsContent>
+
+      <TabsContent value="map">
+        <ParkMap park={park} />
       </TabsContent>
     </Tabs>
   );

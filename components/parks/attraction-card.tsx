@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import type { ParkAttraction, AttractionStatus, ParkStatus, TrendDirection } from '@/lib/api/types';
+import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -42,7 +42,6 @@ function getStatus(attraction: ParkAttraction, parkStatus?: ParkStatus): Attract
 }
 
 export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionCardProps) {
-  const t = useTranslations('parks');
   const tStatus = useTranslations('attractions.label');
 
   const status = getStatus(attraction, parkStatus);

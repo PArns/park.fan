@@ -183,6 +183,7 @@
     "peakHour": "Stoßzeit",
     "forecast": "Vorhersage",
     "calendar": "Kalender",
+    "map": "Karte",
     "calendarLegend": "Legende",
     "eventTypesLabel": "Event-Typen",
     "crowdLevelsLabel": "Auslastungsstufen",
@@ -268,7 +269,24 @@
     "daysToAvoid": "Tage zum Vermeiden",
     "searchAttractions": "Attraktionen filtern...",
     "noAttractionsFound": "Keine Attraktionen gefunden",
-    "clearSearch": "Suche zurücksetzen"
+    "clearSearch": "Suche zurücksetzen",
+    "mapMarkers": {
+      "noMapData": "Keine Kartendaten für diesen Park verfügbar.",
+      "parkCenter": "Park Zentrum",
+      "status": "Status",
+      "waitTime": "Wartezeit",
+      "crowdLevel": "Auslastung",
+      "show": "Show",
+      "nextShowtime": "Nächste Vorstellung",
+      "restaurant": "Restaurant",
+      "cuisine": "Küche",
+      "yourLocation": "Dein Standort",
+      "enableLocation": "Standort aktivieren",
+      "inPark": "Du bist im Park",
+      "distanceToPark": "Entfernung zum Park",
+      "nearest": "In deiner Nähe",
+      "away": "entfernt"
+    }
   },
   "attractions": {
     "title": "Attraktionen",

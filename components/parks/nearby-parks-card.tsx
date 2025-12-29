@@ -13,7 +13,7 @@ import { getNearbyParks } from '@/lib/api/discovery';
 import type { NearbyResponse, NearbyRidesData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 
-const COOKIE_NAME = 'nearby-parks-enabled';
+const COOKIE_NAME = 'location-services';
 
 type PermissionState = 'prompt' | 'granted' | 'denied' | 'loading' | 'error';
 
