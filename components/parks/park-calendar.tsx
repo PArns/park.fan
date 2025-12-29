@@ -160,7 +160,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
             type: 'weather',
             timezone: park.timezone,
             weather: weatherSummary,
-            icon: day.weather.icon as string | number,
+            icon: String(day.weather.icon),
             details: `${translatedCondition} | ${day.weather.tempMin}°C-${day.weather.tempMax}°C`,
           },
         });
@@ -331,7 +331,6 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
             className += '!bg-orange-50/50 dark:!bg-orange-950/20 ';
             break;
           case 'very_high':
-          case 'extreme':
             className += '!bg-red-50/50 dark:!bg-red-950/20 ';
             break;
         }

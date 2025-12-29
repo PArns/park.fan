@@ -224,7 +224,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
         parkSlug={parkSlug}
         landNames={landNames}
         attractionsByLand={attractionsByLand}
-        otherAttractionsLabel={otherAttractionsLabel}
       />
     </div>
   );
