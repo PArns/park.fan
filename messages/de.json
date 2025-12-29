@@ -265,7 +265,10 @@
     "viewPark": "Park ansehen",
     "planYourVisit": "Besuch planen",
     "bestDaysToVisit": "Beste Besuchstage",
-    "daysToAvoid": "Tage zum Vermeiden"
+    "daysToAvoid": "Tage zum Vermeiden",
+    "searchAttractions": "Attraktionen filtern...",
+    "noAttractionsFound": "Keine Attraktionen gefunden",
+    "clearSearch": "Suche zurücksetzen"
   },
   "attractions": {
     "title": "Attraktionen",

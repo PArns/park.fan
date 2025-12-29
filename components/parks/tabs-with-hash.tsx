@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -48,6 +50,8 @@ export function TabsWithHash({
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
 
   // Sync with URL hash on mount and on hash change
   useEffect(() => {
@@ -66,6 +70,19 @@ export function TabsWithHash({
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  // Clear search on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && searchQuery) {
+        setSearchQuery('');
+        // Optional: blur input if desired, but keeping focus is usually better for UX
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [searchQuery]);
+
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
@@ -73,7 +90,21 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${value}`);
   };
 
+  // Filter attractions based on search query
+  const filteredAttractionsByLand = Object.entries(attractionsByLand).reduce(
+    (acc, [land, attractions]) => {
+      const filtered = attractions.filter((attraction) =>
+        attraction.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      if (filtered.length > 0) {
+        acc[land] = filtered;
+      }
+      return acc;
+    },
+    {} as Record<string, ParkAttraction[]>
+  );
 
+  const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
   return (
     <Tabs value={activeTab} onValueChange={handleTabChange}>
@@ -97,15 +128,55 @@ export function TabsWithHash({
       <TabsContent value="attractions">
         {/* Attractions grouped by Land */}
         <div className="space-y-8">
-          {landNames.map((landName) => (
-            <LandSection
-              key={landName}
-              landName={landName}
-              attractions={attractionsByLand[landName]}
-              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-              parkStatus={park.status}
-            />
-          ))}
+          <div className="mb-6 flex justify-end">
+            <div className="relative w-full sm:w-auto">
+              <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
+              <Input
+                placeholder={t('searchAttractions')}
+                className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
+                  isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                }`}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setIsFocused(true)}
+                onBlur={() => setIsFocused(false)}
+              />
+              {isFocused && searchQuery && (
+                <div className="animate-in fade-in zoom-in pointer-events-none absolute top-1/2 right-3 -translate-y-[0.85rem] duration-200">
+                  <kbd className="bg-muted text-muted-foreground pointer-events-none inline-flex h-5 items-center gap-1 rounded border px-1.5 font-mono text-[10px] font-medium opacity-100 select-none">
+                    ESC
+                  </kbd>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {hasSearchResults ? (
+            landNames.map((landName) => {
+              const attractions = filteredAttractionsByLand[landName];
+              if (!attractions) return null;
+
+              return (
+                <LandSection
+                  key={landName}
+                  landName={landName}
+                  attractions={attractions}
+                  parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                  parkStatus={park.status}
+                />
+              );
+            })
+          ) : (
+            <div className="py-12 text-center">
+              <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+              <button
+                className="text-primary mt-2 text-sm underline hover:no-underline"
+                onClick={() => setSearchQuery('')}
+              >
+                {t('clearSearch')}
+              </button>
+            </div>
+          )}
         </div>
       </TabsContent>
 
@@ -147,8 +218,9 @@ export function TabsWithHash({
                             <Badge
                               key={i}
                               variant={isNext ? 'default' : 'outline'}
-                              className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                }`}
+                              className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
+                                isNext ? 'bg-green-600 hover:bg-green-700' : ''
+                              }`}
                             >
                               <LocalTime time={showtime.startTime} timeZone={park.timezone} />
                             </Badge>

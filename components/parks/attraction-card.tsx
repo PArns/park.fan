@@ -1,5 +1,13 @@
 import { Link } from '@/i18n/navigation';
-import { Clock, AlertTriangle, Wrench, XCircle, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import {
+  Clock,
+  AlertTriangle,
+  Wrench,
+  XCircle,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+} from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { ParkAttraction, AttractionStatus, ParkStatus, TrendDirection } from '@/lib/api/types';
@@ -67,11 +75,15 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
                 <Clock className="h-4 w-4" />
                 {waitTime} min
                 {TrendIcon && (
-                  <span className={cn('ml-1', {
-                    'text-rose-500': attraction.trend === 'up' || attraction.trend === 'increasing',
-                    'text-emerald-500': attraction.trend === 'down' || attraction.trend === 'decreasing',
-                    'text-muted-foreground': attraction.trend === 'stable'
-                  })}>
+                  <span
+                    className={cn('ml-1', {
+                      'text-rose-500':
+                        attraction.trend === 'up' || attraction.trend === 'increasing',
+                      'text-emerald-500':
+                        attraction.trend === 'down' || attraction.trend === 'decreasing',
+                      'text-muted-foreground': attraction.trend === 'stable',
+                    })}
+                  >
                     <TrendIcon className="h-4 w-4" />
                   </span>
                 )}
