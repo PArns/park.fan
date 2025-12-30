@@ -10,6 +10,7 @@ import { HeroSearchButton } from '@/components/search/hero-search-button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { HeroBackground } from '@/components/layout/hero-background';
 import Image from 'next/image';
 
 import type { Metadata } from 'next';
@@ -66,8 +67,8 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="from-background via-background to-muted/50 relative overflow-hidden bg-gradient-to-br px-4 py-20 md:py-32">
-        <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+      <section className="relative overflow-hidden px-4 py-20 md:py-32">
+        <HeroBackground />
         <div className="relative container mx-auto text-center">
           <Badge variant="secondary" className="mb-4">
             <Sparkles className="mr-1 h-3 w-3" />
