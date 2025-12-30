@@ -22,7 +22,13 @@ export type Recommendation =
   | 'closed';
 export type ScheduleType = 'OPERATING' | 'CLOSED';
 export type TrendDirection = 'up' | 'stable' | 'down' | 'increasing' | 'decreasing';
-export type ComparisonStatus = 'lower' | 'typical' | 'higher' | 'closed';
+export type ComparisonStatus =
+  | 'much_lower'
+  | 'lower'
+  | 'typical'
+  | 'higher'
+  | 'much_higher'
+  | 'closed';
 export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 
 // ============================================================================
@@ -396,7 +402,15 @@ export interface ParkReference {
     percentage: number;
     queueSize: number;
   };
-  analytics?: ParkAnalytics;
+  analytics?: {
+    occupancy?: ParkOccupancy;
+    statistics?: {
+      avgWaitTime: number;
+      operatingAttractions: number;
+      closedAttractions: number;
+      totalAttractions: number;
+    };
+  };
 }
 
 export interface City {
@@ -457,6 +471,7 @@ export interface GlobalCounts {
   restaurantLiveDataRecords: number;
   showLiveDataRecords: number;
   waitTimePredictions: number;
+  totalWaitTime?: number;
 }
 
 export interface ParkStatsItem {

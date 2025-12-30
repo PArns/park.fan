@@ -372,6 +372,76 @@ export default async function HomePage({ params }: HomePageProps) {
         </section>
       )}
 
+
+      {/* Platform Statistics */}
+      {stats && (
+        <section className="border-b px-4 py-12">
+          <div className="container mx-auto">
+            <h2 className="mb-2 text-center text-2xl font-semibold">{t('platformStats')}</h2>
+            <p className="text-muted-foreground mb-8 text-center text-sm">
+              {t('platformStatsDescription')}
+            </p>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {/* Total Wait Time */}
+              {stats.counts.totalWaitTime != null && (
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-muted-foreground text-sm font-medium">
+                      {t('totalWaitTime')}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-3xl font-bold">
+                      {stats.counts.totalWaitTime.toLocaleString()}
+                    </div>
+                    <p className="text-muted-foreground text-xs">
+                      {tCommon('minutes')} · ~{Math.round(stats.counts.totalWaitTime / 60)}{' '}
+                      {tCommon('hours')}
+                    </p>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Queue Data Records */}
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-muted-foreground text-sm font-medium">
+                    {t('dataPoints')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">
+                    {(stats.counts.queueDataRecords / 1000).toFixed(1)}k
+                  </div>
+                  <p className="text-muted-foreground text-xs">{t('queueDataRecords')}</p>
+                </CardContent>
+              </Card>
+
+              {/* Shows & Restaurants */}
+              <Card>
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-muted-foreground text-sm font-medium">
+                    {t('alsoTracking')}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-1 flex items-baseline gap-2">
+                    <span className="text-2xl font-bold">{stats.counts.shows}</span>
+                    <span className="text-muted-foreground text-sm">{tCommon('shows')}</span>
+                  </div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-bold">{stats.counts.restaurants}</span>
+                    <span className="text-muted-foreground text-sm">
+                      {tCommon('restaurants')}
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      )}
       {/* Live Activity - Parks Open Now */}
       {continents.length > 0 && (
         <section className="border-b px-4 py-12">

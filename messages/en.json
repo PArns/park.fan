@@ -26,14 +26,18 @@
     "parks": "parks",
     "countries": "countries",
     "rides": "rides",
+    "shows": "shows",
+    "restaurants": "restaurants",
     "status": "Status",
     "home": "Home",
     "updated": "Updated",
     "trend": "Trend",
     "in": "in",
     "vsTypical": "vs Typical",
+    "much_higher": "Much Higher",
     "higher": "Higher",
     "lower": "Lower",
+    "much_lower": "Much Lower",
     "typical": "Typical",
     "up": "Up",
     "down": "Down",
@@ -383,7 +387,13 @@
     "mostCrowded": "Most Crowded",
     "leastCrowded": "Least Crowded",
     "longestWait": "Longest Wait",
-    "shortestWait": "Shortest Wait"
+    "shortestWait": "Shortest Wait",
+    "platformStats": "Platform Statistics",
+    "platformStatsDescription": "Real-time data insights across the platform",
+    "totalWaitTime": "Total Wait Time",
+    "dataPoints": "Data Points",
+    "queueDataRecords": "queue data records",
+    "alsoTracking": "Also Tracking"
   },
   "homepage": {
     "hero": {

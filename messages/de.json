@@ -4,8 +4,10 @@
     "trend": "Trend",
     "in": "in",
     "vsTypical": "vs Typisch",
+    "much_higher": "Viel Höher",
     "higher": "Höher",
     "lower": "Niedriger",
+    "much_lower": "Viel Niedriger",
     "typical": "Typisch",
     "up": "Steigend",
     "down": "Fallend",
@@ -49,6 +51,8 @@
     "parks": "Parks",
     "countries": "Länder",
     "rides": "Attraktionen",
+    "shows": "Shows",
+    "restaurants": "Restaurants",
     "home": "Startseite",
     "status": "Status",
     "updated": "Aktualisiert"
@@ -383,7 +387,13 @@
     "mostCrowded": "Am vollsten",
     "leastCrowded": "Am leersten",
     "longestWait": "Längste Wartezeit",
-    "shortestWait": "Kürzeste Wartezeit"
+    "shortestWait": "Kürzeste Wartezeit",
+    "platformStats": "Plattform-Statistiken",
+    "platformStatsDescription": "Echtzeit-Dateneinblicke über die gesamte Plattform",
+    "totalWaitTime": "Gesamte Wartezeit",
+    "dataPoints": "Datenpunkte",
+    "queueDataRecords": "Warteschlangen-Datensätze",
+    "alsoTracking": "Außerdem erfasst"
   },
   "homepage": {
     "hero": {
