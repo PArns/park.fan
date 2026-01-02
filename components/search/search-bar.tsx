@@ -167,11 +167,10 @@ export function SearchCommand({
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${
-                  result.status === 'OPERATING'
+                className={`text-xs ${result.status === 'OPERATING'
                     ? 'border-green-600 text-green-600'
                     : 'border-red-500 text-red-500'
-                }`}
+                  }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}
               </Badge>
@@ -217,13 +216,12 @@ export function SearchCommand({
             {/* Crowd Level */}
             {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
               <Badge
-                className={`text-xs ${
-                  result.load === 'very_low' || result.load === 'low'
+                className={`text-xs ${result.load === 'very_low' || result.load === 'low'
                     ? 'bg-crowd-low'
                     : result.load === 'moderate'
                       ? 'bg-crowd-moderate'
                       : 'bg-crowd-high'
-                } text-white`}
+                  } text-white`}
               >
                 {t(`crowd.${result.load}`)}
               </Badge>
@@ -255,7 +253,7 @@ export function SearchCommand({
 
       {trigger === 'input' && (
         <div className="group relative w-full cursor-pointer" onClick={() => setOpen(true)}>
-          <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transition-colors" />
+          <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-4 z-10 h-5 w-5 -translate-y-1/2 transition-colors" />
           <div className="border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex h-14 w-full items-center justify-between rounded-xl border px-4 py-3 pr-14 pl-12 text-base shadow-sm backdrop-blur-md transition-all hover:shadow-md">
             {placeholder || t('searchPlaceholderLong')}
           </div>

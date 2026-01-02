@@ -179,7 +179,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
           currentPage={park.name}
-          className="bg-background/80 backdrop-blur-md w-fit rounded-lg border px-3 py-1 shadow-sm"
+          className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
         {/* Park Header */}
