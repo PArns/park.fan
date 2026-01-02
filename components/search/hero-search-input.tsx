@@ -38,7 +38,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
   useEffect(() => {
     const timeout = setTimeout(() => {
       setHasStarted(true);
-    }, 1500);
+    }, 3000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -93,7 +93,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
         timeout = setTimeout(() => {
           setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
           setPhase('typing');
-        }, 1000); // 1s pause after delete
+        }, 2000); // 2s pause after delete
         break;
     }
 
