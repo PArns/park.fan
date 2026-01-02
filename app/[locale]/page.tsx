@@ -1,12 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ArrowRight, Clock, TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Clock, TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
-import { HeroSearchButton } from '@/components/search/hero-search-button';
+import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -78,15 +77,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg md:text-xl">
             {tParks('subtitle')}
           </p>
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg">
-              <Link href="/parks/europe">
-                {tHome('hero.cta')}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-            <HeroSearchButton label={tCommon('search')} />
-          </div>
+          <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
         </div>
       </section>
 
@@ -372,7 +363,6 @@ export default async function HomePage({ params }: HomePageProps) {
         </section>
       )}
 
-
       {/* Platform Statistics */}
       {stats && (
         <section className="border-b px-4 py-12">
@@ -432,9 +422,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   </div>
                   <div className="flex items-baseline gap-2">
                     <span className="text-2xl font-bold">{stats.counts.restaurants}</span>
-                    <span className="text-muted-foreground text-sm">
-                      {tCommon('restaurants')}
-                    </span>
+                    <span className="text-muted-foreground text-sm">{tCommon('restaurants')}</span>
                   </div>
                 </CardContent>
               </Card>

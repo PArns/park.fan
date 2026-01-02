@@ -60,7 +60,8 @@
   "home": {
     "hero": {
       "badge": "ML-gestützte Vorhersagen",
-      "cta": "Parks entdecken"
+      "cta": "Parks entdecken",
+      "searchPlaceholder": "Parks, Attraktionen, Shows suchen..."
     },
     "sections": {
       "explore": "Nach Region entdecken",

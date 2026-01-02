@@ -60,7 +60,8 @@
   "home": {
     "hero": {
       "badge": "ML-Powered Predictions",
-      "cta": "Explore Parks"
+      "cta": "Explore Parks",
+      "searchPlaceholder": "Search parks, attractions, shows..."
     },
     "sections": {
       "explore": "Explore by Region",
