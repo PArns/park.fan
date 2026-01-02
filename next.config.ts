@@ -33,6 +33,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        // Redirect legacy routes (missing locale) to default locale (en)
+        // Matches checks for paths that do NOT start with en|de|api|_next or contain a dot (file extension)
+        // The .+ ensures we don't match the root path '/'
+        source: '/:slug((?!en|de|api|_next|.*\\..*).+)',
+        destination: '/en/:slug',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
