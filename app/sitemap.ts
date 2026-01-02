@@ -3,64 +3,78 @@ import { getContinents, getCountriesWithParks } from '@/lib/api/discovery';
 
 const BASE_URL = 'https://park.fan';
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const routes: MetadataRoute.Sitemap = [
-    {
-      url: BASE_URL,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-    {
-      url: `${BASE_URL}/de`,
-      lastModified: new Date(),
-      changeFrequency: 'daily',
-      priority: 1,
-    },
-  ];
+const locales = ['de', 'en'];
 
-  // Fetch all geo data structure to build routes
-  // We'll traverse the hierarchy: Continents -> Countries -> Cities -> Parks
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const routes: MetadataRoute.Sitemap = [];
+
+  // 1. Static Routes (Home)
+  locales.forEach((locale) => {
+    routes.push({
+      url: `${BASE_URL}/${locale}`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1,
+    });
+  });
+
+  // Add root as x-default (if needed, or just rely on the above)
+  routes.push({
+    url: BASE_URL,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority: 1,
+  });
+
+  // 2. Dynamic Routes (Parks hierarchy)
   try {
     const continents = await getContinents();
 
     for (const continent of continents) {
-      // Continent Page
-      routes.push({
-        url: `${BASE_URL}/parks/${continent.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.8,
+      // Continent Page (Localized)
+      locales.forEach((locale) => {
+        routes.push({
+          url: `${BASE_URL}/${locale}/parks/${continent.slug}`,
+          lastModified: new Date(),
+          changeFrequency: 'weekly',
+          priority: 0.8,
+        });
       });
 
       // Fetch countries for this continent to get deeper links
       const countryData = await getCountriesWithParks(continent.slug);
 
       for (const country of countryData.data) {
-        // Country Page
-        routes.push({
-          url: `${BASE_URL}/parks/${continent.slug}/${country.slug}`,
-          lastModified: new Date(),
-          changeFrequency: 'weekly',
-          priority: 0.7,
+        // Country Page (Localized)
+        locales.forEach((locale) => {
+          routes.push({
+            url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+          });
         });
 
         for (const city of country.cities) {
-          // City Page
-          routes.push({
-            url: `${BASE_URL}/parks/${continent.slug}/${country.slug}/${city.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.6,
+          // City Page (Localized)
+          locales.forEach((locale) => {
+            routes.push({
+              url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}`,
+              lastModified: new Date(),
+              changeFrequency: 'weekly',
+              priority: 0.6,
+            });
           });
 
-          // Parks in this city
+          // Parks in this city (Localized)
           for (const park of city.parks) {
-            routes.push({
-              url: `${BASE_URL}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-              lastModified: new Date(),
-              changeFrequency: 'daily',
-              priority: 0.9,
+            locales.forEach((locale) => {
+              routes.push({
+                url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+                lastModified: new Date(),
+                changeFrequency: 'daily',
+                priority: 0.9,
+              });
             });
           }
         }

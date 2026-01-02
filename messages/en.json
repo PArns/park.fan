@@ -75,11 +75,11 @@
       },
       "ml": {
         "title": "AI Predictions",
-        "description": "Smart forecasts for crowd levels and wait times using advanced artificial intelligence."
+        "description": "Smart predictions for crowd levels and wait times using advanced artificial intelligence."
       },
       "calendar": {
-        "title": "Best Day Finder",
-        "description": "Calendar view with weather, holidays, and crowd predictions."
+        "title": "Planning & In-Park Navigation",
+        "description": "Find the best days with our crowd calendar and navigate the park live."
       }
     }
   },
@@ -129,7 +129,7 @@
     "toggle": "Toggle theme"
   },
   "parks": {
-    "title": "Live Wait Times & Trip Planner",
+    "title": "Wait Times, Predictions & Navigation",
     "subtitle": "Real-time wait times, AI predictions, and crowd calendars for {parks} parks with {attractions} attractions, {shows} shows & {restaurants} restaurants worldwide",
     "operating": "Operating",
     "closed": "Closed",
@@ -458,13 +458,18 @@
 
   "seo": {
     "home": {
-      "title": "park.fan - Global Theme Park Wait Times & Crowd Calendars",
-      "description": "Maximize your park visit with real-time wait times, AI-powered crowd predictions, and smart itineraries. Covers Disney, Universal, Europa-Park, and more."
+      "title": "park.fan - Theme Park Wait Times, Predictions & Navigation",
+      "description": "Maximize your visit with real-time wait times, AI predictions, and in-park navigation. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
       "title": "Theme Parks Worldwde - park.fan",
       "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
-      "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data and forecasts."
+      "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data, forecasts, and in-park navigation.",
+      "titleTemplate": "{park} Wait Times & Predictions"
+    },
+    "attraction": {
+      "titleTemplate": "{attraction} Wait Time - {park}",
+      "metaDescriptionTemplate": "Current wait times and predictions for {attraction} at {park}. Check live queue data and crowd levels."
     }
   }
 }

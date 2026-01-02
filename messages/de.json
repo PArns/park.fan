@@ -74,12 +74,12 @@
         "description": "Wartezeiten im Minutentakt aus Parks weltweit aktualisiert."
       },
       "ml": {
-        "title": "KI-Vorhersagen",
-        "description": "Smarte Prognosen für Besucherandrang und Wartezeiten durch künstliche Intelligenz."
+        "title": "KI-Prognosen",
+        "description": "Smarte Vorhersagen für Besucherandrang und Wartezeiten durch künstliche Intelligenz."
       },
       "calendar": {
-        "title": "Bester Tag Finder",
-        "description": "Kalenderansicht mit Wetter, Feiertagen und Andrangsprognosen."
+        "title": "Planung & In-Park Navigation",
+        "description": "Finde den besten Tag mit unserem Crowd-Kalender und navigiere live durch den Park."
       }
     }
   },
@@ -129,7 +129,7 @@
     "toggle": "Design wechseln"
   },
   "parks": {
-    "title": "Freizeitpark Wartezeiten & Planer",
+    "title": "Wartezeiten, Prognosen & Navigation",
     "subtitle": "Live-Wartezeiten, KI-Prognosen und Crowd-Kalender für {parks} Parks mit {attractions} Attraktionen, {shows} Shows & {restaurants} Restaurants weltweit",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
@@ -327,7 +327,7 @@
     "nextMonth": "Nächster Monat"
   },
   "nearby": {
-    "title": "Parks in der Nähe",
+    "title": "Parks in deiner Nähe",
     "enableDescription": "Aktiviere den Standortzugriff, um Parks und Attraktionen in deiner Nähe zu finden.",
     "enable": "Standort aktivieren",
     "loadingLocation": "Standort wird ermittelt...",
@@ -335,9 +335,9 @@
     "permissionDeniedDescription": "Bitte aktiviere den Standortzugriff in deinen Browsereinstellungen, um diese Funktion zu nutzen.",
     "youAreIn": "Du bist hier",
     "awayFrom": "entfernt",
-    "nearestAttractions": "Nächste Attraktionen",
-    "noParksNearby": "Keine Parks in der Nähe gefunden.",
-    "nearbyParks": "Parks in der Nähe",
+    "nearestAttractions": "Attraktionen in deiner Nähe",
+    "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
+    "nearbyParks": "Parks in deiner Nähe",
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in"
   },
@@ -457,13 +457,18 @@
   },
   "seo": {
     "home": {
-      "title": "park.fan - Freizeitpark Wartezeiten & Andrangskalender",
-      "description": "Maximiere deinen Parkbesuch mit Echtzeit-Wartezeiten, KI-gestützten Andrangsprognosen und smarter Planung. Für Disney, Universal, Europa-Park und mehr."
+      "title": "park.fan - Freizeitpark Wartezeiten, Prognosen & Navigation",
+      "description": "Dein Begleiter für Freizeitparks: Live-Wartezeiten, KI-Prognosen und präzise In-Park Navigation. Für Disney, Universal, Europa-Park und mehr."
     },
     "parks": {
       "title": "Freizeitparks Weltweit - park.fan",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Aktuelle Wartezeiten, Besucherandrang und Öffnungszeiten für {park}. Plane deinen perfekten Besuch mit Echtzeit-Daten und Prognosen."
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten, Besucherandrang und Öffnungszeiten für {park}. Plane deinen perfekten Besuch mit Echtzeit-Daten, Prognosen und In-Park Navigation.",
+      "titleTemplate": "{park} Wartezeiten & Prognosen"
+    },
+    "attraction": {
+      "titleTemplate": "{attraction} Wartezeit - {park}",
+      "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     }
   }
 }

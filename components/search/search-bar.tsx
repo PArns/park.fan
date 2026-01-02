@@ -169,10 +169,11 @@ export function SearchCommand({
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${result.status === 'OPERATING'
-                  ? 'border-green-600 text-green-600'
-                  : 'border-red-500 text-red-500'
-                  }`}
+                className={`text-xs ${
+                  result.status === 'OPERATING'
+                    ? 'border-green-600 text-green-600'
+                    : 'border-red-500 text-red-500'
+                }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}
               </Badge>
@@ -218,12 +219,13 @@ export function SearchCommand({
             {/* Crowd Level */}
             {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
               <Badge
-                className={`text-xs ${result.load === 'very_low' || result.load === 'low'
-                  ? 'bg-crowd-low'
-                  : result.load === 'moderate'
-                    ? 'bg-crowd-moderate'
-                    : 'bg-crowd-high'
-                  } text-white`}
+                className={`text-xs ${
+                  result.load === 'very_low' || result.load === 'low'
+                    ? 'bg-crowd-low'
+                    : result.load === 'moderate'
+                      ? 'bg-crowd-moderate'
+                      : 'bg-crowd-high'
+                } text-white`}
               >
                 {t(`crowd.${result.load}`)}
               </Badge>

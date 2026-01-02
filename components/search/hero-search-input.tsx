@@ -22,12 +22,17 @@ const PLACEHOLDERS = [
   'Taron',
   'Blue Fire',
   'FoodLoop',
-  'Rutmor\'s Taverne',
+  "Rutmor's Taverne",
 ];
 
 type TypewriterPhase = 'typing' | 'pausing_typed' | 'deleting' | 'pausing_deleted';
 
-function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50, pauseDuration = 2000) {
+function useTypewriter(
+  phrases: string[],
+  typingSpeed = 150,
+  deletingSpeed = 50,
+  pauseDuration = 2000
+) {
   const [displayText, setDisplayText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [phase, setPhase] = useState<TypewriterPhase>('typing');
@@ -65,7 +70,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
           }, typingSpeed);
         } else {
           // Finished typing, switch to pause
-          setPhase('pausing_typed');
+          setTimeout(() => setPhase('pausing_typed'), 0);
         }
         break;
 
@@ -84,7 +89,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
           }, deletingSpeed);
         } else {
           // Finished deleting, switch to pause
-          setPhase('pausing_deleted');
+          setTimeout(() => setPhase('pausing_deleted'), 0);
         }
         break;
 
@@ -117,7 +122,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
 
   // If pausing after delete (waiting for next word), don't show blinking cursor if requested
   // "between searches... text should not blink" -> Hide cursor during long pause
-  const finalCursor = phase === 'pausing_deleted' ? '' : (cursorVisible ? '|' : '');
+  const finalCursor = phase === 'pausing_deleted' ? '' : cursorVisible ? '|' : '';
 
   // If we are in pausing_deleted (empty text), we return empty string + no cursor = empty string
   // This causes fallback to defaultPlaceholder which is NOT what we want if we want "pause between searches"

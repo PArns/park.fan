@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
+import { Clock, TrendingUp, Sparkles, ChevronRight, Map as MapIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
@@ -11,6 +11,7 @@ import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { HeroBackground } from '@/components/layout/hero-background';
 import Image from 'next/image';
+import { OrganizationStructuredData } from '@/components/seo/structured-data';
 
 import type { Metadata } from 'next';
 
@@ -65,6 +66,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col">
+      <OrganizationStructuredData />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-20 md:py-32">
         <HeroBackground />
@@ -516,7 +518,7 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
             <div className="text-center">
               <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
-                <Sparkles className="text-crowd-moderate h-8 w-8" />
+                <MapIcon className="text-crowd-moderate h-8 w-8" />
               </div>
               <h3 className="mb-2 text-lg font-semibold">{tHome('features.calendar.title')}</h3>
               <p className="text-muted-foreground text-sm">

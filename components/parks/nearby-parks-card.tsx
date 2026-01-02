@@ -106,9 +106,9 @@ export function NearbyParksCard() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
         if (hours > 0) {
-          return { message: `${t('closesIn')} ${hours}h ${minutes}m`, icon: 'closing' };
+          return { message: `${t('closesIn')} ${hours} Std. ${minutes} Min.`, icon: 'closing' };
         }
-        return { message: `${t('closesIn')} ${minutes}m`, icon: 'closing' };
+        return { message: `${t('closesIn')} ${minutes} Min.`, icon: 'closing' };
       } else if (status === 'CLOSED') {
         // Park is closed - show opening time
         const diff = opening.getTime() - now.getTime();
@@ -118,9 +118,9 @@ export function NearbyParksCard() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
         if (hours > 0) {
-          return { message: `${t('opensIn')} ${hours}h ${minutes}m`, icon: 'opening' };
+          return { message: `${t('opensIn')} ${hours} Std. ${minutes} Min.`, icon: 'opening' };
         }
-        return { message: `${t('opensIn')} ${minutes}m`, icon: 'opening' };
+        return { message: `${t('opensIn')} ${minutes} Min.`, icon: 'opening' };
       }
 
       return null;
@@ -424,7 +424,7 @@ export function NearbyParksCard() {
                             </p>
                           </div>
 
-                          <div className="mt-3 space-y-3">
+                          <div className="mt-3 flex flex-1 flex-col justify-end space-y-3">
                             {/* Distance + Status */}
                             <div className="flex items-center justify-between text-sm">
                               <div className="text-muted-foreground flex items-center gap-1.5">
@@ -443,47 +443,47 @@ export function NearbyParksCard() {
                               </Badge>
                             </div>
 
-                            {/* Wait Time + Crowd Level (only for open parks) */}
-                            {isOpen && park.analytics && (
-                              <div className="flex items-center gap-2.5 text-sm">
-                                {park.analytics.avgWaitTime !== undefined &&
-                                  park.analytics.avgWaitTime > 0 && (
-                                    <div className="text-muted-foreground flex items-center gap-1">
-                                      <Clock className="h-4 w-4" />
-                                      <span className="text-xs font-medium">
-                                        {park.analytics.avgWaitTime}{' '}
-                                        {tCommon('minute', { count: park.analytics.avgWaitTime })}
-                                      </span>
-                                    </div>
+                            <div className="min-h-[4.5rem] space-y-3">
+                              {/* Wait Time + Crowd Level (only for open parks) */}
+                              {isOpen && park.analytics ? (
+                                <div className="flex items-center gap-2.5 text-sm">
+                                  {park.analytics.avgWaitTime !== undefined &&
+                                    park.analytics.avgWaitTime > 0 && (
+                                      <div className="text-muted-foreground flex items-center gap-1">
+                                        <Clock className="h-4 w-4" />
+                                        <span className="text-xs font-medium">
+                                          {park.analytics.avgWaitTime}{' '}
+                                          {tCommon('minute', { count: park.analytics.avgWaitTime })}
+                                        </span>
+                                      </div>
+                                    )}
+                                  {park.analytics.crowdLevel && (
+                                    <CrowdLevelBadge
+                                      level={park.analytics.crowdLevel as CrowdLevel}
+                                      className="text-xs"
+                                    />
                                   )}
-                                {park.analytics.crowdLevel && (
-                                  <Badge
-                                    className={`text-xs ${
-                                      (park.analytics.crowdLevel as CrowdLevel) === 'very_low' ||
-                                      (park.analytics.crowdLevel as CrowdLevel) === 'low'
-                                        ? 'bg-crowd-low'
-                                        : (park.analytics.crowdLevel as CrowdLevel) === 'moderate'
-                                          ? 'bg-crowd-moderate'
-                                          : 'bg-crowd-high'
-                                    } border-0 text-white`}
-                                  >
-                                    {tCommon(`crowd.${park.analytics.crowdLevel}`)}
-                                  </Badge>
-                                )}
-                              </div>
-                            )}
+                                </div>
+                              ) : (
+                                <div className="h-5" /> /* Spacer for closed parks */
+                              )}
 
-                            {/* Attractions */}
-                            <div className="flex items-center justify-between pt-0.5 text-sm">
-                              <div className="text-muted-foreground flex items-center gap-1.5">
-                                <TrendingUp className="h-4 w-4" />
-                                <span className="font-medium">
-                                  {park.operatingAttractions}/{park.totalAttractions}
-                                </span>
-                              </div>
-                              <span className="text-muted-foreground text-xs">
-                                {tCommon('operating')}
-                              </span>
+                              {/* Attractions (only for open parks) */}
+                              {isOpen ? (
+                                <div className="flex items-center justify-between pt-0.5 text-sm">
+                                  <div className="text-muted-foreground flex items-center gap-1.5">
+                                    <TrendingUp className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {park.operatingAttractions}/{park.totalAttractions}
+                                    </span>
+                                  </div>
+                                  <span className="text-muted-foreground text-xs">
+                                    {tCommon('operating')}
+                                  </span>
+                                </div>
+                              ) : (
+                                <div className="h-5" /> /* Spacer for closed parks */
+                              )}
                             </div>
 
                             {/* Park Schedule */}
@@ -505,7 +505,9 @@ export function NearbyParksCard() {
                                   </div>
                                 );
                               }
-                              return null;
+                              return (
+                                <div className="mt-2 h-[25px] border-t border-transparent pt-1 pt-2" />
+                              );
                             })()}
                           </div>
                         </div>

@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   }
 
   return {
-    title: park.name,
+    title: t('titleTemplate', { park: park.name }),
     description: t('metaDescriptionTemplate', { park: park.name }),
     openGraph: {
       title: park.name,
@@ -172,6 +172,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <ParkStructuredData
           park={park}
           url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
+          description={t('metaDescriptionTemplate', { park: park.name })}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 

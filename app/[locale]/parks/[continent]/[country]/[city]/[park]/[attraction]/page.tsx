@@ -25,7 +25,14 @@ interface AttractionPageProps {
 }
 
 export async function generateMetadata({ params }: AttractionPageProps): Promise<Metadata> {
-  const { continent, country, city, park: parkSlug, attraction: attractionSlug } = await params;
+  const {
+    continent,
+    country,
+    city,
+    park: parkSlug,
+    attraction: attractionSlug,
+    locale,
+  } = await params;
 
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
@@ -34,9 +41,14 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     return { title: 'Attraction Not Found' };
   }
 
+  const t = await getTranslations({ locale, namespace: 'seo.attraction' });
+
   return {
-    title: `${attraction.name} - ${park?.name}`,
-    description: `Live wait times and predictions for ${attraction.name} at ${park?.name}. Plan your visit with real-time data.`,
+    title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
+    description: t('metaDescriptionTemplate', {
+      attraction: attraction.name,
+      park: park?.name || '',
+    }),
   };
 }
 

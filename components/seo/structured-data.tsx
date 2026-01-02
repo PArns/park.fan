@@ -27,16 +27,18 @@ export function OrganizationStructuredData() {
 export function ParkStructuredData({
   park,
   url,
+  description,
 }: {
   park: ParkResponse | ParkWithAttractions;
   url: string;
+  description?: string;
 }) {
   const data: WithContext<ThemePark> = {
     '@context': 'https://schema.org',
     '@type': 'ThemePark',
     name: park.name,
     url: url,
-    description: `Real-time wait times and crowd levels for ${park.name}.`,
+    description: description || `Real-time wait times and crowd levels for ${park.name}.`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: park.city || undefined,
