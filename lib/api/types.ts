@@ -11,7 +11,7 @@ export type QueueType =
   | 'BOARDING_GROUP'
   | 'PAID_RETURN_TIME'
   | 'PAID_STANDBY';
-export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high';
+export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
 export type Recommendation =
   | 'highly_recommended'

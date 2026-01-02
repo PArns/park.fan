@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, createElement } from 'react';
 import { Calendar, dateFnsLocalizer, View } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay, parseISO, addMinutes } from 'date-fns';
 import { enUS, de } from 'date-fns/locale';
@@ -13,7 +13,7 @@ import type {
   WeatherSummary,
   CrowdLevel,
 } from '@/lib/api/types';
-import { getParkTime, getWeatherTranslationKey, getWeatherEmoji } from '@/lib/utils/calendar-utils';
+import { getParkTime, getWeatherTranslationKey, getEventIcon } from '@/lib/utils/calendar-utils';
 import { Card } from '@/components/ui/card';
 import { CalendarEventTooltip } from './calendar-event-tooltip';
 import { CalendarLegend } from './calendar-legend';
@@ -24,6 +24,17 @@ interface ParkCalendarProps {
   park: ParkWithAttractions;
   calendarData: IntegratedCalendarResponse;
 }
+
+// Custom Event Component
+const CustomEventComponent = ({ event }: { event: CalendarEvent }) => {
+  const Icon = getEventIcon(event.resource.icon || '');
+  return (
+    <div className="flex items-center gap-1 overflow-hidden">
+      {createElement(Icon, { size: 14, className: 'shrink-0' })}
+      <span className="truncate">{event.title}</span>
+    </div>
+  );
+};
 
 export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
   const locale = useLocale();
@@ -59,7 +70,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
         events.push({
           id: `1-schedule-${day.date}`,
           title: day.hours.isInferred
-            ? `🔮 ${format(getParkTime(day.hours.openingTime, park.timezone), 'HH:mm')} - ${format(getParkTime(day.hours.closingTime, park.timezone), 'HH:mm')}`
+            ? `${format(getParkTime(day.hours.openingTime, park.timezone), 'HH:mm')} - ${format(getParkTime(day.hours.closingTime, park.timezone), 'HH:mm')} (Est.)`
             : `${format(getParkTime(day.hours.openingTime, park.timezone), 'HH:mm')} - ${format(getParkTime(day.hours.closingTime, park.timezone), 'HH:mm')}`,
           start: dayDate,
           end: dayDate,
@@ -109,7 +120,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
       if (day.crowdLevel && day.crowdLevel !== 'closed') {
         events.push({
           id: `2-crowd-${day.date}`,
-          title: `👥 ${t(`crowdLevels.${day.crowdLevel}`)}`,
+          title: `${t(`crowdLevels.${day.crowdLevel}`)}`,
           start: dayDate,
           end: dayDate,
           allDay: true,
@@ -142,9 +153,6 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
         // Type assertion to satisfy next-intl strict typing without any
         const translatedCondition = t(`weather.${weatherKey}` as Parameters<typeof t>[0]);
 
-        // Get weather icon emoji
-        const weatherEmoji = getWeatherEmoji(day.weather.icon);
-
         // Format temperature range more clearly
         const tempMin = Math.round(day.weather.tempMin);
         const tempMax = Math.round(day.weather.tempMax);
@@ -152,7 +160,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
 
         events.push({
           id: `3-weather-${day.date}`,
-          title: `${weatherEmoji} ${translatedCondition} | ${tempDisplay}`,
+          title: `${translatedCondition} | ${tempDisplay}`,
           start: dayDate,
           end: dayDate,
           allDay: true,
@@ -171,7 +179,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
         if (event.type === 'holiday') {
           events.push({
             id: `4-holiday-${day.date}-${event.name}`,
-            title: `🎉 ${event.name}`,
+            title: `${event.name}`,
             start: dayDate,
             end: dayDate,
             allDay: true,
@@ -212,7 +220,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
 
           events.push({
             id: `5-show-${day.date}-${idx}`,
-            title: `🎭 ${cleanName}`,
+            title: `${cleanName}`,
             start: showStart,
             end: showEnd,
             allDay: false, // Show as block in time grid
@@ -292,6 +300,9 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
           case 'very_high':
             className += '!bg-red-100 !text-red-800 dark:!bg-red-600 dark:!text-white ';
             break;
+          case 'extreme':
+            className += '!bg-red-200 !text-red-900 dark:!bg-red-800 dark:!text-white ';
+            break;
         }
       }
     } else if (event.resource.type === 'holiday') {
@@ -332,6 +343,9 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
             break;
           case 'very_high':
             className += '!bg-red-50/50 dark:!bg-red-950/20 ';
+            break;
+          case 'extreme':
+            className += '!bg-red-100/50 dark:!bg-red-900/30 ';
             break;
         }
       }
@@ -391,6 +405,9 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               week: t('calendarView.week'),
               day: t('calendarView.day'),
               agenda: t('calendarView.agenda'),
+            }}
+            components={{
+              event: CustomEventComponent,
             }}
           />
         </div>

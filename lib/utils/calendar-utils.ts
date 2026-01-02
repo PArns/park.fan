@@ -24,6 +24,10 @@ import {
   CloudSnow,
   CloudFog,
   Wind,
+  Clock,
+  Ban,
+  Ticket,
+  Clapperboard,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -63,7 +67,7 @@ export function transformScheduleToEvents(
     let startTime = zonedDate;
     let endTime = zonedDate;
     let isAllDay = false;
-    let icon = 'CalendarDays';
+    let icon = 'Clock';
 
     if (item.scheduleType === 'OPERATING' && item.openingTime && item.closingTime) {
       const openTime = parseISO(`${item.date}T${item.openingTime}`);
@@ -73,14 +77,14 @@ export function transformScheduleToEvents(
       endTime = toZonedTime(closeTime, timezone);
 
       // Format hours to be more readable
-      title = `🕒 ${item.openingTime}-${item.closingTime}`;
+      title = `${item.openingTime}-${item.closingTime}`;
       isAllDay = false; // Show as timed event
     } else {
-      title = '🚫 Closed';
+      title = 'Closed';
       startTime = startOfDay(zonedDate);
       endTime = endOfDay(zonedDate);
       isAllDay = true;
-      icon = 'AlertCircle';
+      icon = 'Ban';
     }
 
     return {
@@ -114,7 +118,6 @@ export function transformWeatherToEvents(weather: WeatherDay[], timezone: string
 
     // Add weather emoji and description
     const weatherIcon = getWeatherIcon(day.weatherCode);
-    const emoji = getWeatherEmoji(day.weatherCode);
 
     // Add precipitation if present
     const precipitation = parseFloat(day.precipitationSum);
@@ -122,7 +125,7 @@ export function transformWeatherToEvents(weather: WeatherDay[], timezone: string
 
     return {
       id: `weather-${index}-${day.date}`,
-      title: `${emoji} ${avgTemp}°C${precipInfo}`,
+      title: `${avgTemp}°C${precipInfo}`,
       start: startOfDay(zonedDate),
       end: endOfDay(zonedDate),
       allDay: true,
@@ -147,7 +150,7 @@ export function transformHolidaysToEvents(
 
     return {
       id: `holiday-${index}-${holiday.date}`,
-      title: `🎉 ${holiday.localName || holiday.name}`,
+      title: `${holiday.localName || holiday.name}`,
       start: startOfDay(zonedDate),
       end: endOfDay(zonedDate),
       allDay: true,
@@ -171,12 +174,11 @@ export function transformCrowdPredictionsToEvents(
     const zonedDate = toZonedTime(date, timezone);
 
     const crowdLabel = getCrowdLevelLabel(prediction.crowdLevel);
-    const crowdEmoji = getCrowdLevelEmoji(prediction.crowdLevel);
     const confidence = Math.round(prediction.confidencePercentage);
 
     return {
       id: `crowd-${index}-${prediction.date}`,
-      title: `${crowdEmoji} ${crowdLabel} (${confidence}%)`,
+      title: `${crowdLabel} (${confidence}%)`,
       start: startOfDay(zonedDate),
       end: endOfDay(zonedDate),
       allDay: true,
@@ -208,7 +210,7 @@ export function extractHolidaysFromSchedule(
 
       return {
         id: `holiday-schedule-${index}-${item.date}`,
-        title: `🎉 ${item.holidayName}`,
+        title: `${item.holidayName}`,
         start: startOfDay(zonedDate),
         end: endOfDay(zonedDate),
         allDay: true,
@@ -312,6 +314,10 @@ export function getEventIcon(eventType: string): LucideIcon {
     Star,
     PartyPopper,
     AlertCircle,
+    Clock,
+    Ban,
+    Ticket,
+    Clapperboard,
   };
 
   return iconMap[eventType] || CalendarDays;
@@ -350,6 +356,7 @@ export function getCrowdLevelEmoji(crowdLevel: CrowdLevel | 'closed'): string {
     moderate: '🟠',
     high: '🔴',
     very_high: '🔴🔴',
+    extreme: '🔴🔴🔴',
     closed: '🚫',
   };
 
@@ -366,6 +373,7 @@ export function getCrowdLevelLabel(crowdLevel: CrowdLevel | 'closed'): string {
     moderate: 'Moderate',
     high: 'High',
     very_high: 'Very High',
+    extreme: 'Extreme',
     closed: 'Closed',
   };
 
@@ -398,6 +406,7 @@ export function getCrowdLevelColor(crowdLevel: CrowdLevel | 'closed'): string {
     moderate: 'bg-yellow-50 dark:bg-yellow-950 border-yellow-200 dark:border-yellow-800',
     high: 'bg-orange-50 dark:bg-orange-950 border-orange-200 dark:border-orange-800',
     very_high: 'bg-red-100 dark:bg-red-900 border-red-300 dark:border-red-700',
+    extreme: 'bg-red-200 dark:bg-red-950 border-red-400 dark:border-red-800',
     closed: 'bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-700',
   };
 

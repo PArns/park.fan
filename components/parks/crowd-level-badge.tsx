@@ -9,6 +9,7 @@ const crowdLevelConfig: Record<string, { colorClass: string }> = {
   moderate: { colorClass: 'bg-blue-500 text-white' },
   high: { colorClass: 'bg-orange-500 text-white' },
   very_high: { colorClass: 'bg-rose-500 text-white' },
+  extreme: { colorClass: 'bg-red-700 text-white' },
   closed: { colorClass: 'bg-slate-200 text-slate-600' },
 };
 
