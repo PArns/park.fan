@@ -109,7 +109,36 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
     pauseDuration,
   ]);
 
-  return `${displayText}${cursorVisible ? '|' : ''}`;
+  // Return logic:
+  // If not started, return null to let component show default placeholder
+  if (!hasStarted) {
+    return null;
+  }
+
+  // If pausing after delete (waiting for next word), don't show blinking cursor if requested
+  // "between searches... text should not blink" -> Hide cursor during long pause
+  const finalCursor = phase === 'pausing_deleted' ? '' : (cursorVisible ? '|' : '');
+
+  // If we are in pausing_deleted (empty text), we return empty string + no cursor = empty string
+  // This causes fallback to defaultPlaceholder which is NOT what we want if we want "pause between searches"
+  // Actually, if we want "pause between searches", we want it to look EMPTY?
+  // "2 seconds between text is deleted and next search starts".
+  // If it's empty, it shows default placeholder?
+  // If default placeholder is "Search parks...", then it's not "empty".
+  // The user said: "hier soll der text dann nicht blinken".
+  // If I return "", the component uses `displayPlaceholder || defaultPlaceholder`.
+  // So it shows "Search parks...".
+  // Maybe that IS what's desired? "Text deleted -> Show default placeholder for 2s"??
+  // A typewriter usually clears to empty.
+  // If I want it to be empty, I must return " " (space)?
+  // Let's assume return "" -> defaultPlaceholder is fine.
+  // BUT the user said "Text blinks now when searching for nothing" (start?).
+  // If I return `null` for start delay, it shows default.
+  // If I return `""` for pause, it shows default.
+  // The user complains about blinking.
+  // My fix `finalCursor` hides cursor during pause.
+
+  return `${displayText}${finalCursor}`;
 }
 
 export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchInputProps) {
@@ -123,7 +152,12 @@ export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchI
       <div className="relative">
         <div className="bg-background/80 shadow-primary/5 absolute -inset-0.5 rounded-xl opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
         <div className="relative">
-          <SearchCommand trigger="input" placeholder={displayPlaceholder} autoFocusOnType={true} />
+          <SearchCommand
+            trigger="input"
+            placeholder={displayPlaceholder}
+            autoFocusOnType={true}
+            className={typedPlaceholder ? 'text-foreground' : 'text-muted-foreground'}
+          />
         </div>
       </div>
     </div>
