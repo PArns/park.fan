@@ -28,11 +28,30 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100
   const [displayText, setDisplayText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isWaiting, setIsWaiting] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [cursorVisible, setCursorVisible] = useState(true);
+
+  // Initial start delay
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setHasStarted(true);
+    }, 1500); // 1.5s start delay
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Cursor blinking effect
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 530);
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   useEffect(() => {
-    const currentPhrase = phrases[currentPhraseIndex];
+    if (!hasStarted || isWaiting) return;
 
-    // Determine timeout logic
+    const currentPhrase = phrases[currentPhraseIndex];
     let timeout: NodeJS.Timeout;
 
     if (isDeleting) {
@@ -41,7 +60,12 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100
         setDisplayText(currentPhrase.substring(0, displayText.length - 1));
         if (displayText.length <= 1) {
           setIsDeleting(false);
-          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+          // Pause before starting the next word
+          setIsWaiting(true);
+          setTimeout(() => {
+            setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+            setIsWaiting(false);
+          }, 500);
         }
       }, deletingSpeed);
     } else {
@@ -50,7 +74,9 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100
         setDisplayText(currentPhrase.substring(0, displayText.length + 1));
         if (displayText.length === currentPhrase.length) {
           // Pause before deleting
+          setIsWaiting(true);
           timeout = setTimeout(() => {
+            setIsWaiting(false);
             setIsDeleting(true);
           }, pauseDuration);
         }
@@ -58,9 +84,19 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100
     }
 
     return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentPhraseIndex, phrases, typingSpeed, deletingSpeed, pauseDuration]);
+  }, [
+    displayText,
+    isDeleting,
+    isWaiting,
+    hasStarted,
+    currentPhraseIndex,
+    phrases,
+    typingSpeed,
+    deletingSpeed,
+    pauseDuration,
+  ]);
 
-  return displayText;
+  return `${displayText}${cursorVisible ? '|' : ''}`;
 }
 
 export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchInputProps) {
