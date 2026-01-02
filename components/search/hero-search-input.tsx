@@ -24,7 +24,7 @@ const PLACEHOLDERS = [
   'Rutmor\'s Taverne',
 ];
 
-function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100, pauseDuration = 2000) {
+function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50, pauseDuration = 2000) {
   const [displayText, setDisplayText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -65,7 +65,7 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 100
           setTimeout(() => {
             setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
             setIsWaiting(false);
-          }, 500);
+          }, 1000);
         }
       }, deletingSpeed);
     } else {
