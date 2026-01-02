@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getNearbyParks } from '@/lib/api/discovery';
+import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyResponse, NearbyRidesData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 
@@ -79,13 +80,6 @@ export function NearbyParksCard() {
       return () => clearTimeout(timer);
     }
   }, []);
-
-  const formatDistance = (meters: number): string => {
-    if (meters < 1000) {
-      return `${Math.round(meters)}m`;
-    }
-    return `${(meters / 1000).toFixed(1)}km`;
-  };
 
   const getScheduleMessage = (
     todaySchedule: { openingTime: string; closingTime: string; scheduleType: string } | undefined,
@@ -457,7 +451,7 @@ export function NearbyParksCard() {
                                     <div className="text-muted-foreground flex items-center gap-1">
                                       <Clock className="h-4 w-4" />
                                       <span className="text-xs font-medium">
-                                        {park.analytics.avgWaitTime}
+                                        {park.analytics.avgWaitTime}{' '}
                                         {tCommon('minute', { count: park.analytics.avgWaitTime })}
                                       </span>
                                     </div>

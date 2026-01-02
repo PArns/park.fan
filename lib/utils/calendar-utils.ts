@@ -260,6 +260,32 @@ export function getWeatherIcon(weatherCode: number): string {
 }
 
 /**
+ * Get icon name for weather string code or number
+ */
+export function getWeatherIconFromCode(iconCode: string | number): string {
+  if (typeof iconCode === 'number') {
+    return getWeatherIcon(iconCode);
+  }
+
+  const iconMap: Record<string, string> = {
+    'clear-day': 'Sun',
+    'clear-night': 'Star',
+    cloudy: 'Cloud',
+    'partly-cloudy-day': 'Cloud',
+    'partly-cloudy-night': 'Cloud',
+    rain: 'CloudRain',
+    drizzle: 'CloudDrizzle',
+    snow: 'Snowflake',
+    sleet: 'CloudSnow',
+    wind: 'Wind',
+    fog: 'CloudFog',
+    thunderstorm: 'CloudRain',
+  };
+
+  return iconMap[iconCode] || 'Cloud';
+}
+
+/**
  * Get weather emoji for calendar display
  */
 export function getWeatherEmoji(iconCode: string | number): string {

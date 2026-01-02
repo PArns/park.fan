@@ -13,7 +13,12 @@ import type {
   WeatherSummary,
   CrowdLevel,
 } from '@/lib/api/types';
-import { getParkTime, getWeatherTranslationKey, getEventIcon } from '@/lib/utils/calendar-utils';
+import {
+  getParkTime,
+  getWeatherTranslationKey,
+  getEventIcon,
+  getWeatherIconFromCode,
+} from '@/lib/utils/calendar-utils';
 import { Card } from '@/components/ui/card';
 import { CalendarEventTooltip } from './calendar-event-tooltip';
 import { CalendarLegend } from './calendar-legend';
@@ -89,6 +94,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               holidayName: day.events?.find((e) => e.type === 'holiday')?.name || null,
               isBridgeDay: day.isBridgeDay,
             },
+            icon: 'Clock',
           },
         });
       } else if (day.status === 'CLOSED') {
@@ -112,6 +118,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               holidayName: null,
               isBridgeDay: false,
             },
+            icon: 'Ban',
           },
         });
       }
@@ -134,6 +141,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               recommendation: '',
               source: 'prediction',
             },
+            icon: 'Users',
           },
         });
       }
@@ -168,7 +176,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
             type: 'weather',
             timezone: park.timezone,
             weather: weatherSummary,
-            icon: String(day.weather.icon),
+            icon: getWeatherIconFromCode(day.weather.icon),
             details: `${translatedCondition} | ${day.weather.tempMin}°C-${day.weather.tempMax}°C`,
           },
         });
@@ -195,6 +203,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
                 holidayType: 'public' as HolidayType, // Fallback type
                 isNationwide: event.isNationwide || false,
               },
+              icon: 'PartyPopper',
             },
           });
         }
@@ -232,6 +241,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
                 time: show.time,
                 endTime: show.endTime,
               },
+              icon: 'Clapperboard',
             },
           });
         } catch (e) {

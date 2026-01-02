@@ -28,6 +28,7 @@ interface SearchCommandProps {
   label?: string;
   placeholder?: string;
   isGlobal?: boolean;
+  autoFocusOnType?: boolean;
 }
 
 export function SearchCommand({
@@ -35,6 +36,7 @@ export function SearchCommand({
   label,
   placeholder,
   isGlobal = false,
+  autoFocusOnType = false,
 }: SearchCommandProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -59,6 +61,35 @@ export function SearchCommand({
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
   }, [isGlobal]);
+
+  // Auto-focus on type
+  useEffect(() => {
+    if (!autoFocusOnType) return;
+
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is already typing in an input
+      if (
+        document.activeElement?.tagName === 'INPUT' ||
+        document.activeElement?.tagName === 'TEXTAREA' ||
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
+
+      // Ignore modifiers
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      // Only trigger on single character keys (letters, numbers, etc.)
+      if (e.key.length === 1) {
+        setOpen(true);
+        setQuery((prev) => (open ? prev : e.key));
+      }
+    };
+
+    document.addEventListener('keydown', handleGlobalKeyDown);
+    return () => document.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [autoFocusOnType, open]);
 
   // Debounced search
   const performSearch = useCallback(async (searchQuery: string) => {
@@ -223,12 +254,12 @@ export function SearchCommand({
       )}
 
       {trigger === 'input' && (
-        <div className="relative w-full cursor-pointer" onClick={() => setOpen(true)}>
-          <Search className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2" />
-          <div className="border-input bg-background/50 text-muted-foreground flex h-10 w-full items-center justify-between rounded-md border px-3 py-2 pr-12 pl-10 text-sm backdrop-blur-sm">
+        <div className="group relative w-full cursor-pointer" onClick={() => setOpen(true)}>
+          <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 transition-colors" />
+          <div className="border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex h-14 w-full items-center justify-between rounded-xl border px-4 py-3 pr-14 pl-12 text-base shadow-sm backdrop-blur-md transition-all hover:shadow-md">
             {placeholder || t('searchPlaceholderLong')}
           </div>
-          <kbd className="bg-muted/80 text-muted-foreground pointer-events-none absolute top-1/2 right-2 flex h-6 -translate-y-1/2 items-center gap-0.5 rounded border px-1.5 font-mono text-xs font-medium">
+          <kbd className="bg-muted/80 text-muted-foreground pointer-events-none absolute top-1/2 right-3 flex h-7 -translate-y-1/2 items-center gap-1 rounded border px-2 font-mono text-xs font-medium">
             <span>⌘</span>K
           </kbd>
         </div>
