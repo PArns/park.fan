@@ -75,7 +75,12 @@ export default async function HomePage({ params }: HomePageProps) {
           </Badge>
           <h1 className="mb-6 text-4xl font-bold tracking-tight md:text-6xl">{tParks('title')}</h1>
           <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg md:text-xl">
-            {tParks('subtitle')}
+            {tParks('subtitle', {
+              parks: stats?.counts.parks ?? 50,
+              attractions: stats?.counts.attractions ?? 2000,
+              shows: stats?.counts.shows ?? 500,
+              restaurants: stats?.counts.restaurants ?? 800,
+            })}
           </p>
           <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
         </div>

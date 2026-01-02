@@ -130,7 +130,7 @@
   },
   "parks": {
     "title": "Freizeitpark Wartezeiten & Planer",
-    "subtitle": "Live-Wartezeiten, KI-Prognosen und Crowd-Kalender für Parks weltweit",
+    "subtitle": "Live-Wartezeiten, KI-Prognosen und Crowd-Kalender für {parks} Parks mit {attractions} Attraktionen, {shows} Shows & {restaurants} Restaurants weltweit",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
     "open": "Geöffnet",

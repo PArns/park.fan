@@ -130,7 +130,7 @@
   },
   "parks": {
     "title": "Live Wait Times & Trip Planner",
-    "subtitle": "Real-time wait times, AI predictions, and crowd calendars for parks worldwide",
+    "subtitle": "Real-time wait times, AI predictions, and crowd calendars for {parks} parks with {attractions} attractions, {shows} shows & {restaurants} restaurants worldwide",
     "operating": "Operating",
     "closed": "Closed",
     "crowdLevel": "Crowd Level",
