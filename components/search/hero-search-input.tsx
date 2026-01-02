@@ -14,21 +14,23 @@ interface HeroSearchInputProps {
 const PLACEHOLDERS = [
   'Europa-Park',
   'Phantasialand',
+  'Universal Studios Japan',
+  'Magic Kingdom',
+  'Tokyo DisneySea',
+  'Efteling',
+  'Cedar Point',
   'Taron',
-  'F.L.Y.',
-  'Silver Star',
-  'Winjas Fear',
   'Blue Fire',
-  'Chiapas',
   'FoodLoop',
   'Rutmor\'s Taverne',
 ];
 
+type TypewriterPhase = 'typing' | 'pausing_typed' | 'deleting' | 'pausing_deleted';
+
 function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50, pauseDuration = 2000) {
   const [displayText, setDisplayText] = useState('');
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isWaiting, setIsWaiting] = useState(false);
+  const [phase, setPhase] = useState<TypewriterPhase>('typing');
   const [hasStarted, setHasStarted] = useState(false);
   const [cursorVisible, setCursorVisible] = useState(true);
 
@@ -36,11 +38,11 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
   useEffect(() => {
     const timeout = setTimeout(() => {
       setHasStarted(true);
-    }, 1500); // 1.5s start delay
+    }, 1500);
     return () => clearTimeout(timeout);
   }, []);
 
-  // Cursor blinking effect
+  // Cursor blinking
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setCursorVisible((prev) => !prev);
@@ -49,45 +51,56 @@ function useTypewriter(phrases: string[], typingSpeed = 150, deletingSpeed = 50,
   }, []);
 
   useEffect(() => {
-    if (!hasStarted || isWaiting) return;
+    if (!hasStarted) return;
 
     const currentPhrase = phrases[currentPhraseIndex];
     let timeout: NodeJS.Timeout;
 
-    if (isDeleting) {
-      // Deleting text
-      timeout = setTimeout(() => {
-        setDisplayText(currentPhrase.substring(0, displayText.length - 1));
-        if (displayText.length <= 1) {
-          setIsDeleting(false);
-          // Pause before starting the next word
-          setIsWaiting(true);
-          setTimeout(() => {
-            setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
-            setIsWaiting(false);
-          }, 1000);
-        }
-      }, deletingSpeed);
-    } else {
-      // Typing text
-      timeout = setTimeout(() => {
-        setDisplayText(currentPhrase.substring(0, displayText.length + 1));
-        if (displayText.length === currentPhrase.length) {
-          // Pause before deleting
-          setIsWaiting(true);
+    switch (phase) {
+      case 'typing':
+        // Type one character
+        if (displayText.length < currentPhrase.length) {
           timeout = setTimeout(() => {
-            setIsWaiting(false);
-            setIsDeleting(true);
-          }, pauseDuration);
+            setDisplayText(currentPhrase.substring(0, displayText.length + 1));
+          }, typingSpeed);
+        } else {
+          // Finished typing, switch to pause
+          setPhase('pausing_typed');
         }
-      }, typingSpeed);
+        break;
+
+      case 'pausing_typed':
+        // Wait before deleting
+        timeout = setTimeout(() => {
+          setPhase('deleting');
+        }, pauseDuration);
+        break;
+
+      case 'deleting':
+        // Delete one character
+        if (displayText.length > 0) {
+          timeout = setTimeout(() => {
+            setDisplayText(currentPhrase.substring(0, displayText.length - 1));
+          }, deletingSpeed);
+        } else {
+          // Finished deleting, switch to pause
+          setPhase('pausing_deleted');
+        }
+        break;
+
+      case 'pausing_deleted':
+        // Wait before typing next word
+        timeout = setTimeout(() => {
+          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
+          setPhase('typing');
+        }, 1000); // 1s pause after delete
+        break;
     }
 
     return () => clearTimeout(timeout);
   }, [
     displayText,
-    isDeleting,
-    isWaiting,
+    phase,
     hasStarted,
     currentPhraseIndex,
     phrases,
