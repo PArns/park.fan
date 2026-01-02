@@ -59,7 +59,7 @@
   },
   "home": {
     "hero": {
-      "badge": "ML-gestützte Vorhersagen",
+      "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows suchen..."
     },
@@ -74,8 +74,8 @@
         "description": "Wartezeiten im Minutentakt aus Parks weltweit aktualisiert."
       },
       "ml": {
-        "title": "ML-Vorhersagen",
-        "description": "Smarte Prognosen für Besucherandrang und Wartezeiten durch maschinelles Lernen."
+        "title": "KI-Vorhersagen",
+        "description": "Smarte Prognosen für Besucherandrang und Wartezeiten durch künstliche Intelligenz."
       },
       "calendar": {
         "title": "Bester Tag Finder",
@@ -84,7 +84,7 @@
     }
   },
   "footer": {
-    "description": "Echtzeit-Freizeitpark-Wartezeiten und Andrangsprognosen, unterstützt durch maschinelles Lernen.",
+    "description": "Echtzeit-Freizeitpark-Wartezeiten und Andrangsprognosen, unterstützt durch künstliche Intelligenz.",
     "sections": {
       "explore": "Entdecken",
       "resources": "Ressourcen",
@@ -129,9 +129,8 @@
     "toggle": "Design wechseln"
   },
   "parks": {
-    "title": "Freizeitparks",
-    "subtitle": "Entdecke Wartezeiten und Auslastung weltweit",
-    "operatingStatus": "Betriebsstatus",
+    "title": "Freizeitpark Wartezeiten & Planer",
+    "subtitle": "Live-Wartezeiten, KI-Prognosen und Crowd-Kalender für Parks weltweit",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
     "open": "Geöffnet",
@@ -438,7 +437,7 @@
   "admin": {
     "title": "Admin-Dashboard",
     "ml": {
-      "title": "ML-Dashboard",
+      "title": "KI-Dashboard",
       "modelVersion": "Modellversion",
       "accuracy": "Genauigkeit",
       "trainedAt": "Trainiert am",
@@ -449,7 +448,7 @@
       "title": "Systemstatus",
       "database": "Datenbank",
       "redis": "Redis",
-      "mlService": "ML-Service",
+      "mlService": "KI-Service",
       "healthy": "Gesund",
       "unhealthy": "Ungesund",
       "flushCache": "Cache leeren",

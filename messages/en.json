@@ -59,7 +59,7 @@
   },
   "home": {
     "hero": {
-      "badge": "ML-Powered Predictions",
+      "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows..."
     },
@@ -74,8 +74,8 @@
         "description": "Live wait times updated every minute from parks worldwide."
       },
       "ml": {
-        "title": "ML Predictions",
-        "description": "Smart forecasts for crowd levels and wait times using advanced machine learning."
+        "title": "AI Predictions",
+        "description": "Smart forecasts for crowd levels and wait times using advanced artificial intelligence."
       },
       "calendar": {
         "title": "Best Day Finder",
@@ -84,7 +84,7 @@
     }
   },
   "footer": {
-    "description": "Real-time theme park wait times and crowd predictions powered by machine learning.",
+    "description": "Real-time theme park wait times and crowd predictions powered by artificial intelligence.",
     "sections": {
       "explore": "Explore",
       "resources": "Resources",
@@ -129,9 +129,8 @@
     "toggle": "Toggle theme"
   },
   "parks": {
-    "title": "Theme Parks",
-    "subtitle": "Explore wait times and crowd levels worldwide",
-    "operatingStatus": "Operating Status",
+    "title": "Live Wait Times & Trip Planner",
+    "subtitle": "Real-time wait times, AI predictions, and crowd calendars for parks worldwide",
     "operating": "Operating",
     "closed": "Closed",
     "crowdLevel": "Crowd Level",
@@ -438,7 +437,7 @@
   "admin": {
     "title": "Admin Dashboard",
     "ml": {
-      "title": "ML Dashboard",
+      "title": "AI Dashboard",
       "modelVersion": "Model Version",
       "accuracy": "Accuracy",
       "trainedAt": "Trained At",
@@ -449,7 +448,7 @@
       "title": "System Health",
       "database": "Database",
       "redis": "Redis",
-      "mlService": "ML Service",
+      "mlService": "AI Service",
       "healthy": "Healthy",
       "unhealthy": "Unhealthy",
       "flushCache": "Flush Cache",
@@ -460,7 +459,7 @@
   "seo": {
     "home": {
       "title": "park.fan - Global Theme Park Wait Times & Crowd Calendars",
-      "description": "Maximize your park visit with real-time wait times, ML-powered crowd predictions, and smart itineraries. Covers Disney, Universal, Europa-Park, and more."
+      "description": "Maximize your park visit with real-time wait times, AI-powered crowd predictions, and smart itineraries. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
       "title": "Theme Parks Worldwde - park.fan",
