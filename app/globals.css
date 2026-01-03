@@ -1,6 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Custom Tailwind variant for group */
+@variant group (&:where(.group) *);
+
 @variant dark (&:where(.dark, .dark *));
 
 @theme inline {
@@ -143,6 +146,19 @@
   /* Accent - Theme Park Purple/Blue */
   --park-primary: oklch(0.623 0.214 275);
   --park-primary-foreground: oklch(0.985 0 0);
+
+  /* Semantic Colors */
+  --success: oklch(0.723 0.219 142.136); /* Green - same as status-operating */
+  --success-foreground: oklch(0.145 0 0);
+  --error: oklch(0.577 0.245 27.325); /* Red - same as destructive */
+  --error-foreground: oklch(1 0 0);
+  --warning: oklch(0.795 0.184 86.047); /* Yellow - same as crowd-moderate */
+  --warning-foreground: oklch(0.145 0 0);
+
+  /* Trend Colors */
+  --trend-up: oklch(0.577 0.245 27.325); /* Red for increasing */
+  --trend-down: oklch(0.723 0.219 142.136); /* Green for decreasing */
+  --trend-stable: oklch(0.556 0 0); /* Muted for stable */
 }
 
 .dark {
@@ -163,24 +179,81 @@
   /* Accent */
   --park-primary: oklch(0.707 0.165 275);
   --park-primary-foreground: oklch(0.145 0 0);
+
+  /* Semantic Colors - Brighter for dark mode */
+  --success: oklch(0.792 0.209 151.711); /* Brighter green */
+  --success-foreground: oklch(0.145 0 0);
+  --error: oklch(0.704 0.191 22.216); /* Brighter red */
+  --error-foreground: oklch(0.145 0 0);
+  --warning: oklch(0.852 0.199 91.936); /* Brighter yellow */
+  --warning-foreground: oklch(0.145 0 0);
+
+  /* Trend Colors - Brighter for dark mode */
+  --trend-up: oklch(0.712 0.194 29.234); /* Brighter red */
+  --trend-down: oklch(0.792 0.209 151.711); /* Brighter green */
+  --trend-stable: oklch(0.708 0 0); /* Lighter muted */
 }
 
-/* Glassmorphism Utilities */
+/* Utilities */
 @layer utilities {
+  /* Glassmorphism Utilities - Standardized opacity levels */
+  .glass-light {
+    @apply bg-background/40 border-border/30 border backdrop-blur-sm;
+  }
+
   .glass {
-    @apply bg-background/80 border-border/50 border backdrop-blur-md;
+    @apply bg-background/60 border-border/40 border backdrop-blur-md;
+  }
+
+  .glass-strong {
+    @apply bg-background/80 border-border/50 border shadow-lg backdrop-blur-lg;
+  }
+
+  .glass-heavy {
+    @apply bg-background/90 border-border/60 border shadow-xl backdrop-blur-xl;
+  }
+
+  /* Glass Card Variants */
+  .glass-card-light {
+    @apply bg-card/40 border-border/30 border backdrop-blur-sm;
   }
 
   .glass-card {
-    @apply bg-card/80 border-border/50 border shadow-lg backdrop-blur-md;
+    @apply bg-card/60 border-border/40 border shadow-lg backdrop-blur-md;
   }
 
+  .glass-card-strong {
+    @apply bg-card/80 border-border/50 border shadow-xl backdrop-blur-lg;
+  }
+
+  /* Glass Header (kept for backwards compatibility) */
   .glass-header {
     @apply bg-background/80 border-border/50 border-b backdrop-blur-md;
   }
 
-  .glass-strong {
-    @apply bg-background/90 border-border/50 border shadow-xl backdrop-blur-xl;
+  /* Interactive Card Utilities - Hover effects */
+  .interactive-card {
+    @apply hover:border-primary/50 transition-all hover:shadow-lg;
+  }
+
+  .interactive-link {
+    @apply block transition-colors;
+  }
+
+  .group-interactive-text {
+    @apply transition-colors;
+  }
+
+  .group:hover .group-interactive-text {
+    color: hsl(var(--primary));
+  }
+
+  .group-interactive-icon {
+    @apply text-muted-foreground transition-colors;
+  }
+
+  .group:hover .group-interactive-icon {
+    color: hsl(var(--primary));
   }
 
   /* Mobile-first touch targets */
@@ -231,5 +304,47 @@
   }
   .bg-crowd-extreme {
     background-color: var(--crowd-extreme);
+  }
+
+  /* Semantic Colors */
+  .bg-success {
+    background-color: var(--success);
+  }
+  .text-success {
+    color: var(--success);
+  }
+  .border-success {
+    border-color: var(--success);
+  }
+
+  .bg-error {
+    background-color: var(--error);
+  }
+  .text-error {
+    color: var(--error);
+  }
+  .border-error {
+    border-color: var(--error);
+  }
+
+  .bg-warning {
+    background-color: var(--warning);
+  }
+  .text-warning {
+    color: var(--warning);
+  }
+  .border-warning {
+    border-color: var(--warning);
+  }
+
+  /* Trend Colors */
+  .text-trend-up {
+    color: var(--trend-up);
+  }
+  .text-trend-down {
+    color: var(--trend-down);
+  }
+  .text-trend-stable {
+    color: var(--trend-stable);
   }
 }

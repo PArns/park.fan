@@ -1,10 +1,10 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { ChevronRight, Building2 } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { ChevronRight } from 'lucide-react';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
+import { GeoLocationCard } from '@/components/common/geo-location-card';
 import type { Metadata } from 'next';
 
 interface ContinentPageProps {
@@ -115,48 +115,16 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
           const countryName = t(`countries.${country.slug}` as 'countries.germany') || country.name;
 
           return (
-            <Link
+            <GeoLocationCard
               key={country.slug}
+              name={countryName}
+              slug={country.slug}
               href={`/parks/${continent}/${country.slug}`}
-              className="group block"
-            >
-              <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="bg-muted flex h-12 w-12 items-center justify-center rounded-lg">
-                        <Building2 className="text-muted-foreground h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="group-hover:text-primary font-semibold transition-colors">
-                          {countryName}
-                        </h3>
-                        <div className="flex items-center gap-2 text-sm">
-                          <span className="text-park-primary font-medium">
-                            {country.openParkCount} {t('open')}
-                          </span>
-                          <span className="text-muted-foreground">
-                            / {country.parkCount}{' '}
-                            {tExplore('stats.park', { count: country.parkCount })}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <ChevronRight className="text-muted-foreground group-hover:text-primary h-5 w-5 transition-colors" />
-                  </div>
-
-                  {/* Progress bar */}
-                  <div className="bg-muted mt-4 h-1.5 w-full overflow-hidden rounded-full">
-                    <div
-                      className="bg-park-primary h-full rounded-full transition-all duration-500"
-                      style={{
-                        width: `${(country.openParkCount / country.parkCount) * 100}%`,
-                      }}
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+              openParkCount={country.openParkCount}
+              totalParkCount={country.parkCount}
+              subtitle={`${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`}
+              variant="country"
+            />
           );
         })}
       </div>

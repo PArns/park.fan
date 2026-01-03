@@ -1,11 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
-import { MapPin, TreePalm, Users } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -76,60 +73,21 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {city.parks.map((park) => (
-                <Link
+                <ParkCard
                   key={park.id}
-                  href={
-                    `/parks/${continent}/${country}/${city.slug}/${park.slug}` as '/parks/europe/germany/rust/europa-park'
-                  }
-                  className="group"
-                >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
-                    <CardContent className="p-6">
-                      <div className="mb-4 flex items-start justify-between">
-                        <div className="bg-primary/10 flex h-12 w-12 items-center justify-center rounded-xl">
-                          <TreePalm className="text-primary h-6 w-6" />
-                        </div>
-                        {park.status && <ParkStatusBadge status={park.status} />}
-                      </div>
-                      <h3 className="group-hover:text-primary mb-2 text-lg font-semibold transition-colors">
-                        {park.name}
-                      </h3>
-                      <p className="text-muted-foreground mb-3 text-sm">
-                        {city.name}, {countryName}
-                      </p>
-
-                      {/* Stats */}
-                      {park.analytics?.statistics && park.status === 'OPERATING' ? (
-                        <div className="mt-3 flex items-center gap-4 text-sm">
-                          <span className="text-muted-foreground hover:text-foreground transition-colors">
-                            {park.analytics.statistics.avgWaitTime} {tCommon('minutes')}{' '}
-                            {tCommon('avgWait')}
-                          </span>
-                          <span className="text-muted-foreground hover:text-foreground transition-colors">
-                            {park.analytics.statistics.operatingAttractions}/
-                            {park.analytics.statistics.totalAttractions} {tCommon('open')}
-                          </span>
-                        </div>
-                      ) : (
-                        park.attractionCount > 0 && (
-                          <div className="mt-3 flex items-center gap-4 text-sm">
-                            <span className="text-muted-foreground flex items-center gap-1">
-                              <Users className="h-4 w-4" />
-                              {park.attractionCount} {tCommon('rides')}
-                            </span>
-                          </div>
-                        )
-                      )}
-
-                      {/* Crowd Level */}
-                      {park.currentLoad && park.status === 'OPERATING' && (
-                        <div className="mt-3">
-                          <CrowdLevelBadge level={park.currentLoad.crowdLevel} />
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </Link>
+                  name={park.name}
+                  slug={park.slug}
+                  city={city.name}
+                  country={countryName}
+                  href={`/parks/${continent}/${country}/${city.slug}/${park.slug}`}
+                  status={park.status}
+                  crowdLevel={park.currentLoad?.crowdLevel}
+                  averageWaitTime={park.analytics?.statistics?.avgWaitTime}
+                  operatingAttractions={park.analytics?.statistics?.operatingAttractions}
+                  totalAttractions={park.analytics?.statistics?.totalAttractions}
+                  showBackground={true}
+                  variant="detailed"
+                />
               ))}
             </div>
           </div>
