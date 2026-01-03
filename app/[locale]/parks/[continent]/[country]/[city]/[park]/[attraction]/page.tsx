@@ -9,7 +9,7 @@ import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
-import type { AttractionStatus, QueueDataItem, Breadcrumb } from '@/lib/api/types';
+import type { AttractionStatus, QueueDataItem, Breadcrumb, StandbyQueue } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 
@@ -168,9 +168,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              {status === 'OPERATING' && !isParkClosed && mainQueue?.waitTime !== null ? (
+              {status === 'OPERATING' &&
+              !isParkClosed &&
+              mainQueue &&
+              'waitTime' in mainQueue &&
+              mainQueue.waitTime !== null ? (
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">{mainQueue?.waitTime}</span>
+                  <span className="text-4xl font-bold">{(mainQueue as StandbyQueue).waitTime}</span>
                   <span className="text-muted-foreground text-xl">{tCommon('minutes')}</span>
                 </div>
               ) : (
@@ -179,10 +183,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   <span className="text-lg font-medium">{config.label}</span>
                 </div>
               )}
-              {mainQueue?.trend && (
+              {attraction.trend && (
                 <div className="text-muted-foreground mt-2 flex items-center gap-1 text-sm">
                   <TrendingUp className="h-4 w-4" />
-                  <span className="capitalize">{mainQueue.trend}</span>
+                  <span className="capitalize">{attraction.trend}</span>
                 </div>
               )}
             </CardContent>
@@ -292,19 +296,22 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         </span>
                         <Badge variant="outline">{queue.status}</Badge>
                       </div>
-                      {queue.waitTime !== null && (
+                      {'waitTime' in queue && queue.waitTime !== null && (
                         <p className="text-2xl font-bold">
                           {queue.waitTime}{' '}
                           <span className="text-muted-foreground text-sm">min</span>
                         </p>
                       )}
-                      {queue.returnStart && queue.returnEnd && (
-                        <p className="text-muted-foreground text-sm">
-                          {t('returnTime')}:{' '}
-                          <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} /> -{' '}
-                          <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
-                        </p>
-                      )}
+                      {'returnStart' in queue &&
+                        queue.returnStart &&
+                        'returnEnd' in queue &&
+                        queue.returnEnd && (
+                          <p className="text-muted-foreground text-sm">
+                            {t('returnTime')}:{' '}
+                            <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} /> -{' '}
+                            <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
+                          </p>
+                        )}
                     </CardContent>
                   </Card>
                 ))}

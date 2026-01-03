@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Search } from 'lucide-react';
+import Fuse from 'fuse.js';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
@@ -154,19 +155,41 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${value}`);
   };
 
+  // Flatten attractions for Fuse.js
+  const allAttractions = Object.values(attractionsByLand).flat();
+
+  // Initialize Fuse instance
+  const fuse = new Fuse(allAttractions, {
+    keys: [
+      { name: 'name', weight: 0.8 },
+      { name: 'slug', weight: 0.8 },
+      { name: 'land', weight: 0.5 },
+      { name: 'queues.queueType', weight: 0.3 },
+    ],
+    threshold: 0.3,
+    distance: 100,
+    ignoreLocation: true,
+    minMatchCharLength: 2,
+  });
+
   // Filter attractions based on search query
-  const filteredAttractionsByLand = Object.entries(attractionsByLand).reduce(
-    (acc, [land, attractions]) => {
-      const filtered = attractions.filter((attraction) =>
-        attraction.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      if (filtered.length > 0) {
-        acc[land] = filtered;
-      }
-      return acc;
-    },
-    {} as Record<string, ParkAttraction[]>
-  );
+  const filteredAttractionsByLand =
+    searchQuery.trim() === ''
+      ? attractionsByLand
+      : fuse
+          .search(searchQuery)
+          .map((result) => result.item)
+          .reduce(
+            (acc, attraction) => {
+              const land = attraction.land || 'Other';
+              if (!acc[land]) {
+                acc[land] = [];
+              }
+              acc[land].push(attraction);
+              return acc;
+            },
+            {} as Record<string, ParkAttraction[]>
+          );
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 

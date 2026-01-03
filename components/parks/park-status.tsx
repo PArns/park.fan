@@ -201,9 +201,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               className={cn(
                                 'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
                                 (occupancy.trend === 'up' || occupancy.trend === 'increasing') &&
-                                'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
+                                  'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
                                 (occupancy.trend === 'down' || occupancy.trend === 'decreasing') &&
-                                'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
+                                  'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
                                 occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
                               )}
                             >
@@ -242,11 +242,11 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               stats.peakHour.includes('T')
                                 ? stats.peakHour
                                 : (() => {
-                                  const now = new Date();
-                                  const [h, m] = stats.peakHour.split(':').map(Number);
-                                  now.setUTCHours(h, m, 0, 0);
-                                  return now.toISOString();
-                                })()
+                                    const now = new Date();
+                                    const [h, m] = stats.peakHour.split(':').map(Number);
+                                    now.setUTCHours(h, m, 0, 0);
+                                    return now.toISOString();
+                                  })()
                             }
                             timeZone={park.timezone}
                           />
@@ -365,10 +365,10 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                           'h-5 w-5',
                           (analytics.occupancy.trend === 'up' ||
                             analytics.occupancy.trend === 'increasing') &&
-                          'text-crowd-high',
+                            'text-crowd-high',
                           (analytics.occupancy.trend === 'down' ||
                             analytics.occupancy.trend === 'decreasing') &&
-                          'text-crowd-low',
+                            'text-crowd-low',
                           analytics.occupancy.trend === 'stable' && 'text-muted-foreground'
                         )}
                       />
@@ -389,10 +389,10 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                 className={cn(
                   (analytics.occupancy.comparisonStatus === 'lower' ||
                     analytics.occupancy.comparisonStatus === 'much_lower') &&
-                  'border-crowd-low text-crowd-low',
+                    'border-crowd-low text-crowd-low',
                   (analytics.occupancy.comparisonStatus === 'higher' ||
                     analytics.occupancy.comparisonStatus === 'much_higher') &&
-                  'border-crowd-high text-crowd-high',
+                    'border-crowd-high text-crowd-high',
                   analytics.occupancy.comparisonStatus === 'typical' && 'border-muted-foreground'
                 )}
               >

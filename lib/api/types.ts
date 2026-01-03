@@ -4,13 +4,7 @@
 
 export type ParkStatus = 'OPERATING' | 'CLOSED';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
-export type QueueType =
-  | 'STANDBY'
-  | 'SINGLE_RIDER'
-  | 'RETURN_TIME'
-  | 'BOARDING_GROUP'
-  | 'PAID_RETURN_TIME'
-  | 'PAID_STANDBY';
+// Queue types moved to QueueDataItem definition area
 export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
 export type Recommendation =
@@ -106,21 +100,75 @@ export interface WeatherData {
 // Queue Data
 // ============================================================================
 
-export interface QueueDataItem {
+export type QueueType =
+  | 'STANDBY'
+  | 'SINGLE_RIDER'
+  | 'RETURN_TIME'
+  | 'PAID_RETURN_TIME'
+  | 'BOARDING_GROUP'
+  | 'PAID_STANDBY';
+
+export type QueueStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
+
+export interface BaseQueue {
   queueType: QueueType;
-  status: AttractionStatus;
+  status: QueueStatus;
+  lastUpdated: string;
+}
+
+export interface StandbyQueue extends BaseQueue {
+  queueType: 'STANDBY';
   waitTime: number | null;
+}
+
+export interface SingleRiderQueue extends BaseQueue {
+  queueType: 'SINGLE_RIDER';
+  waitTime: number | null;
+}
+
+export interface ReturnTimeQueue extends BaseQueue {
+  queueType: 'RETURN_TIME';
   state: string | null;
   returnStart: string | null;
   returnEnd: string | null;
-  price: unknown | null;
+}
+
+export interface PaidReturnTimeQueue extends BaseQueue {
+  queueType: 'PAID_RETURN_TIME';
+  returnStart: string | null;
+  returnEnd: string | null;
+  price: {
+    amount: number;
+    currency: string;
+    formatted: string;
+  } | null;
+}
+
+export interface BoardingGroupQueue extends BaseQueue {
+  queueType: 'BOARDING_GROUP';
   allocationStatus: string | null;
   currentGroupStart: number | null;
   currentGroupEnd: number | null;
   estimatedWait: number | null;
-  lastUpdated: string;
-  trend?: TrendDirection;
 }
+
+export interface PaidStandbyQueue extends BaseQueue {
+  queueType: 'PAID_STANDBY';
+  waitTime: number | null;
+  price: {
+    amount: number;
+    currency: string;
+    formatted: string;
+  } | null;
+}
+
+export type QueueDataItem =
+  | StandbyQueue
+  | SingleRiderQueue
+  | ReturnTimeQueue
+  | PaidReturnTimeQueue
+  | BoardingGroupQueue
+  | PaidStandbyQueue;
 
 // ============================================================================
 // Forecast / Predictions
