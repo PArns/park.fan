@@ -138,7 +138,9 @@ export function SearchCommand({
         .replace(/^\/v1\/attractions\//, '/parks/')
         .replace(/^\/v1\/shows\//, '/parks/')
         .replace(/^\/v1\/restaurants\//, '/parks/')
-        .replace(/\/attractions\//, '/'); // Remove /attractions/ segment
+        .replace(/\/attractions\//, '/') // Remove /attractions/ segment
+        .replace(/\/shows\//, '/')
+        .replace(/\/restaurants\//, '/');
       router.push(cleanUrl as '/parks/europe');
     } else if (result.type === 'park' && result.continent && result.country) {
       // Build URL from available data
@@ -146,6 +148,10 @@ export function SearchCommand({
       router.push(
         `/parks/${result.continent.toLowerCase()}/${result.country.toLowerCase()}/${citySlug}/${result.slug}` as '/parks/europe/germany/rust/europa-park'
       );
+    } else if (result.parentPark && result.parentPark.url) {
+      // Fallback for attractions/shows/restaurants without explicit URL
+      const parkUrl = result.parentPark.url.replace(/^\/v1\/parks\//, '/parks/');
+      router.push(`${parkUrl}/${result.slug}` as '/parks/europe');
     }
   };
 

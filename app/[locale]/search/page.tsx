@@ -67,6 +67,11 @@ function SearchResultCard({ result, locale }: { result: SearchResultItem; locale
     } else {
       href = `/search?q=${result.name}`;
     }
+  } else if (result.parentPark && result.parentPark.url) {
+    // Fallback for attractions/shows/restaurants without explicit URL
+    // Construct from parent park URL + slug
+    const parkUrl = result.parentPark.url.replace(/^\/v1\/parks\//, '/parks/');
+    href = `${parkUrl}/${result.slug}`;
   }
 
   const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result.slug) : null;
