@@ -151,7 +151,14 @@ export function SearchCommand({
     } else if (result.parentPark && result.parentPark.url) {
       // Fallback for attractions/shows/restaurants without explicit URL
       const parkUrl = result.parentPark.url.replace(/^\/v1\/parks\//, '/parks/');
-      router.push(`${parkUrl}/${result.slug}` as '/parks/europe');
+
+      if (result.type === 'restaurant') {
+        router.push(`${parkUrl}#restaurants` as '/parks/europe');
+      } else if (result.type === 'show') {
+        router.push(`${parkUrl}#shows` as '/parks/europe');
+      } else {
+        router.push(`${parkUrl}/${result.slug}` as '/parks/europe');
+      }
     }
   };
 
