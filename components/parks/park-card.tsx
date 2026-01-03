@@ -1,6 +1,6 @@
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, ChevronRight, Navigation } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { BackgroundOverlay } from '@/components/common/background-overlay';

@@ -28,7 +28,6 @@ export default async function CountryPage({ params }: CountryPageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');
-  const tCommon = await getTranslations('common');
 
   // Fetch cities with full park data and breadcrumbs in a single call
   const response = await getCitiesWithParks(continent, country).catch(() => null);

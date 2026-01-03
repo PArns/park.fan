@@ -18,12 +18,10 @@ interface GeoLocationCardProps {
 
 export function GeoLocationCard({
   name,
-  slug,
   href,
   openParkCount,
   totalParkCount,
   subtitle,
-  variant = 'country',
   className,
 }: GeoLocationCardProps) {
   return (
