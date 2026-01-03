@@ -158,7 +158,7 @@ export function SearchCommand({
         key={result.id}
         value={`${result.name} ${result.type}`}
         onSelect={() => handleSelect(result)}
-        className="flex items-start gap-3 py-3"
+        className="flex items-start gap-3 py-4 md:py-3"
       >
         <div className="bg-primary/10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
           <Icon className="text-primary h-4 w-4" />
@@ -236,6 +236,18 @@ export function SearchCommand({
     );
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <>
       {/* Trigger */}
@@ -261,9 +273,11 @@ export function SearchCommand({
           <div
             className={`border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex h-14 w-full items-center justify-between rounded-xl border px-4 py-3 pr-14 pl-12 text-base shadow-sm backdrop-blur-md transition-all hover:shadow-md ${className}`}
           >
-            {placeholder || t('searchPlaceholderLong')}
+            <span className="w-full truncate text-left">
+              {placeholder || t('searchPlaceholderLong')}
+            </span>
           </div>
-          <kbd className="bg-muted/80 text-muted-foreground pointer-events-none absolute top-1/2 right-3 flex h-7 -translate-y-1/2 items-center gap-1 rounded border px-2 font-mono text-xs font-medium">
+          <kbd className="bg-muted/80 text-muted-foreground pointer-events-none absolute top-1/2 right-3 hidden h-7 -translate-y-1/2 items-center gap-1 rounded border px-2 font-mono text-xs font-medium md:flex">
             <span>⌘</span>K
           </kbd>
         </div>
@@ -279,7 +293,7 @@ export function SearchCommand({
       {/* Search Dialog */}
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput
-          placeholder={t('searchPlaceholderLong')}
+          placeholder={isMobile ? 'Parks, Attraktionen...' : t('searchPlaceholderLong')}
           value={query}
           onValueChange={setQuery}
         />

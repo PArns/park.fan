@@ -88,6 +88,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const t = await getTranslations('parks');
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
+  const tSeo = await getTranslations('seo.parks');
 
   // Fetch park data and holidays (holidays are optional)
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
@@ -172,7 +173,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <ParkStructuredData
           park={park}
           url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
-          description={t('metaDescriptionTemplate', { park: park.name })}
+          description={tSeo('metaDescriptionTemplate', { park: park.name })}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
 

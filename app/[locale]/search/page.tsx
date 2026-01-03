@@ -38,40 +38,75 @@ const typeLabels = {
   restaurant: 'Restaurant',
 };
 
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+
 function SearchResultCard({ result, locale }: { result: SearchResultItem; locale: string }) {
+  const t = useTranslations('common');
+  const tGeo = useTranslations('geo');
   const Icon = typeIcons[result.type];
 
   // Build the link URL
   let href = '/';
   if (result.url) {
     href = result.url;
+    // Fix backend URLs to match frontend structure
+    href = href
+      .replace(/^\/v1\/parks\//, '/parks/')
+      .replace(/^\/v1\/attractions\//, '/parks/')
+      .replace(/^\/v1\/shows\//, '/parks/')
+      .replace(/^\/v1\/restaurants\//, '/parks/')
+      .replace(/\/attractions\//, '/')
+      .replace(/\/shows\//, '/')
+      .replace(/\/restaurants\//, '/');
   } else if (result.type === 'park') {
-    href = `/search`; // Fallback if no URL
+    // Fallback URL construction for parks
+    if (result.slug && result.city && result.country) {
+      href = `/parks/${result.continent?.toLowerCase() || 'europe'}/${result.country.toLowerCase()}/${result.city.toLowerCase().replace(/\s+/g, '-')}/${result.slug}`;
+    } else {
+      href = `/search?q=${result.name}`;
+    }
   }
 
+  const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result.slug) : null;
+  const isOpen = result.status === 'OPERATING';
+
   return (
-    <Link href={href as '/europe'} className="group">
-      <Card className="hover:border-primary/50 h-full transition-all hover:shadow-md">
-        <CardContent className="p-4">
+    <Link href={href as '/europe'} className="group block h-full">
+      <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">
+        {/* Background Image for Parks */}
+        {backgroundImage && (
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={backgroundImage}
+              alt={result.name}
+              fill
+              className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
+          </div>
+        )}
+
+        <CardContent className="relative z-10 p-4">
           <div className="mb-3 flex items-start justify-between gap-2">
             <div className="flex items-center gap-2">
-              <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg">
+              <div className="bg-primary/10 flex h-8 w-8 items-center justify-center rounded-lg backdrop-blur-sm">
                 <Icon className="text-primary h-4 w-4" />
               </div>
-              <Badge variant="secondary" className="text-xs">
+              <Badge variant="secondary" className="bg-background/50 text-xs backdrop-blur-sm">
                 {typeLabels[result.type]}
               </Badge>
             </div>
             {result.status && (
               <Badge
                 variant="outline"
-                className={
-                  result.status === 'OPERATING'
-                    ? 'border-status-operating text-status-operating'
-                    : 'border-status-closed text-status-closed'
-                }
+                className={`text-xs ${
+                  isOpen ? 'border-green-600 text-green-600' : 'border-red-500 text-red-500'
+                }`}
               >
-                {result.status === 'OPERATING' ? 'Open' : 'Closed'}
+                {isOpen ? t('open') : t('closed')}
               </Badge>
             )}
           </div>
@@ -84,20 +119,32 @@ function SearchResultCard({ result, locale }: { result: SearchResultItem; locale
           {(result.city || result.country) && (
             <p className="text-muted-foreground mb-2 flex items-center gap-1 text-sm">
               <MapPin className="h-3 w-3" />
-              {[result.city, result.country].filter(Boolean).join(', ')}
+              {[
+                result.city,
+                result.country
+                  ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
+                    result.country
+                  : null,
+              ]
+                .filter(Boolean)
+                .join(', ')}
             </p>
           )}
 
           {/* Parent Park (for attractions) */}
           {result.parentPark && (
-            <p className="text-muted-foreground mb-2 text-sm">at {result.parentPark.name}</p>
+            <p className="text-muted-foreground mb-2 text-sm">
+              {t('at', { park: result.parentPark.name })}
+            </p>
           )}
 
           {/* Wait Time (for attractions) */}
           {result.type === 'attraction' && result.waitTime !== undefined && (
             <div className="flex items-center gap-1 text-sm">
               <Clock className="h-3 w-3" />
-              <span className="font-medium">{result.waitTime} min</span>
+              <span className="font-medium">
+                {result.waitTime} {t('minutes')}
+              </span>
             </div>
           )}
 

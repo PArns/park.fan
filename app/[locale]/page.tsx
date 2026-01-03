@@ -143,7 +143,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 stats.mostCrowdedPark && (
                   <Link
                     href={stats.mostCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                    className="group"
+                    className="group block min-w-0"
                   >
                     <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-lg">
                       {/* Background Image */}
@@ -213,7 +213,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 stats.leastCrowdedPark && (
                   <Link
                     href={stats.leastCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                    className="group"
+                    className="group block min-w-0"
                   >
                     <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-lg">
                       {/* Background Image */}
@@ -287,7 +287,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   href={stats.longestWaitRide.url
                     .replace('/v1/parks/', '/parks/')
                     .replace('/attractions/', '/')}
-                  className="group"
+                  className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
                     <CardHeader className="pb-2">
@@ -328,7 +328,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   href={stats.shortestWaitRide.url
                     .replace('/v1/parks/', '/parks/')
                     .replace('/attractions/', '/')}
-                  className="group"
+                  className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
                     <CardHeader className="pb-2">

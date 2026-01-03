@@ -27,6 +27,7 @@ export function NearbyParksCard() {
   const [permissionState, setPermissionState] = useState<PermissionState>('prompt');
   const [nearbyData, setNearbyData] = useState<NearbyResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const requestLocation = () => {
     setPermissionState('loading');
@@ -356,7 +357,6 @@ export function NearbyParksCard() {
     );
   }
 
-  // User is OUTSIDE parks - show nearby parks list
   if (nearbyData.type === 'nearby_parks') {
     const data = nearbyData.data as NearbyParksData;
     const parks = data.parks;
@@ -378,22 +378,24 @@ export function NearbyParksCard() {
     }
 
     return (
-      <section className="bg-card text-card-foreground rounded-xl border py-6 shadow-sm">
-        <CardHeader className="pb-4">
+      <section className="bg-card text-card-foreground rounded-xl border py-4 shadow-sm md:py-6">
+        <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
             {t('nearbyParks')} ({parks.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {parks.map((park) => {
+          <ul className="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
+            {parks.map((park, index) => {
               const isOpen = park.status === 'OPERATING';
+              // Hide items > 1 (index 2+) on mobile if not expanded
+              const hiddenClass = !isExpanded && index >= 2 ? 'hidden md:block' : '';
 
               return (
-                <li key={park.id}>
+                <li key={park.id} className={hiddenClass}>
                   <Link href={park.url.replace('/v1/parks/', '/parks/')} className="group h-full">
-                    <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-6 transition-all hover:shadow-md">
+                    <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
                       {/* Background Image */}
                       {park.backgroundImage && (
                         <div className="absolute inset-0 z-0">
@@ -408,8 +410,8 @@ export function NearbyParksCard() {
                         </div>
                       )}
 
-                      <div className="relative z-10 flex h-full flex-col p-4">
-                        <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-4 shadow-sm backdrop-blur-md">
+                      <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
+                        <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
                           <div>
                             <div className="flex items-start justify-between gap-2">
                               <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
@@ -424,7 +426,7 @@ export function NearbyParksCard() {
                             </p>
                           </div>
 
-                          <div className="mt-3 flex flex-1 flex-col justify-end space-y-3">
+                          <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
                             {/* Distance + Status */}
                             <div className="flex items-center justify-between text-sm">
                               <div className="text-muted-foreground flex items-center gap-1.5">
@@ -443,7 +445,7 @@ export function NearbyParksCard() {
                               </Badge>
                             </div>
 
-                            <div className="min-h-[4.5rem] space-y-3">
+                            <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
                               {/* Wait Time + Crowd Level (only for open parks) */}
                               {isOpen && park.analytics ? (
                                 <div className="flex items-center gap-2.5 text-sm">
@@ -518,6 +520,20 @@ export function NearbyParksCard() {
               );
             })}
           </ul>
+
+          {/* Show More Button (Mobile Only) */}
+          {!isExpanded && parks.length > 2 && (
+            <div className="mt-4 flex justify-center md:hidden">
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => setIsExpanded(true)}
+                className="w-full"
+              >
+                {tCommon('showMore')}
+              </Button>
+            </div>
+          )}
         </CardContent>
       </section>
     );
