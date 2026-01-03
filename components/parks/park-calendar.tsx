@@ -125,9 +125,12 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
 
       // 2. Crowd Prediction Event (MOVED UP FROM POSITION 3)
       if (day.crowdLevel && day.crowdLevel !== 'closed') {
+        const crowdTitle = t(`crowdLevels.${day.crowdLevel}`);
+        const avgWait = day.avgWaitTime ? ` (~${day.avgWaitTime} min)` : '';
+
         events.push({
           id: `2-crowd-${day.date}`,
-          title: `${t(`crowdLevels.${day.crowdLevel}`)}`,
+          title: `${crowdTitle}${avgWait}`,
           start: dayDate,
           end: dayDate,
           allDay: true,
@@ -140,6 +143,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               confidencePercentage: 0,
               recommendation: '',
               source: 'prediction',
+              avgWaitTime: day.avgWaitTime,
             },
             icon: 'Users',
           },

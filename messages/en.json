@@ -195,6 +195,8 @@
     "showStartingSoon": "Show starting soon",
     "occupancy": "Occupancy",
     "peakHour": "Peak Hour",
+    "parkPeak": "Park Peak",
+    "peak": "Peak",
     "open": "open",
     "calendar": "Calendar",
     "map": "Map",
@@ -317,7 +319,9 @@
     "noWaitTime": "No wait time data",
     "predictionAccuracy": "Prediction Accuracy",
     "otherQueues": "Other Queue Options",
-    "returnTime": "Return"
+    "returnTime": "Return",
+    "peak": "Today's Peak: {time} min",
+    "return": "Return: {start} - {end}"
   },
   "calendar": {
     "legend": "Legend",

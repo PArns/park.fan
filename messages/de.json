@@ -188,6 +188,8 @@
     "showStartingSoon": "Show beginnt gleich",
     "occupancy": "Auslastung",
     "peakHour": "Stoßzeit",
+    "parkPeak": "Park-Höchststand",
+    "peak": "Max.",
     "forecast": "Vorhersage",
     "calendar": "Kalender",
     "map": "Karte",
@@ -317,7 +319,9 @@
     "noWaitTime": "Keine Wartezeit-Daten",
     "predictionAccuracy": "Vorhersage-Genauigkeit",
     "otherQueues": "Weitere Warteschlangen",
-    "returnTime": "Rückkehr"
+    "returnTime": "Rückkehr",
+    "peak": "Tageshoch: {time} min",
+    "return": "Rückkehr: {start} - {end}"
   },
   "calendar": {
     "legend": "Legende",

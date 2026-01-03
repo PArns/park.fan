@@ -140,6 +140,7 @@ export interface ParkDailyPrediction {
   confidencePercentage: number;
   recommendation?: Recommendation;
   source: string;
+  avgWaitTime?: number;
 }
 
 // ============================================================================
@@ -173,6 +174,7 @@ export interface ParkStatistics {
   operatingAttractions: number;
   closedAttractions: number;
   timestamp: string;
+  peakWaitToday: number;
 }
 
 export interface ParkAnalytics {
@@ -214,6 +216,7 @@ export interface ParkAttraction {
   // added fields
   crowdLevel?: CrowdLevel;
   trend?: TrendDirection;
+  statistics?: AttractionStatistics;
 }
 
 export interface ShowtimeEntry {
@@ -308,8 +311,20 @@ export interface AttractionResponse {
     name: string;
     slug: string;
   } | null;
-  statistics?: Record<string, unknown>;
+  statistics?: AttractionStatistics;
   predictionAccuracy?: PredictionAccuracy | null;
+}
+
+export interface AttractionStatistics {
+  avgWaitToday: number | null;
+  minWaitToday: number | null;
+  maxWaitToday: number | null;
+  peakWaitToday: number | null;
+  peakWaitTimestamp: string | null;
+  history: {
+    timestamp: string;
+    waitTime: number;
+  }[];
 }
 
 // ============================================================================
@@ -633,6 +648,7 @@ export interface CalendarEventData {
     confidencePercentage: number;
     recommendation: string;
     source: string;
+    avgWaitTime?: number;
   };
   recommendation?: string;
   advisoryKeys?: string[];
@@ -707,6 +723,7 @@ export interface CalendarDay {
   isTomorrow: boolean;
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
+  avgWaitTime?: number;
   crowdScore?: number;
   weather?: WeatherSummary;
   events?: CalendarEventItem[];
