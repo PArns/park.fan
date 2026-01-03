@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import type { SearchResult } from '@/lib/api/types';
 
 export async function GET(request: Request) {
@@ -11,7 +12,7 @@ export async function GET(request: Request) {
 
   try {
     const response = await fetch(`https://api.park.fan/v1/search?q=${encodeURIComponent(query)}`, {
-      next: { revalidate: 60 },
+      next: { revalidate: CACHE_TTL.search },
     });
 
     if (!response.ok) {

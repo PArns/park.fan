@@ -1,4 +1,5 @@
 import { api } from './client';
+import { CACHE_TTL } from './cache-config';
 import type {
   ParkResponse,
   ParkWithAttractions,
@@ -24,7 +25,7 @@ export const PARK_CACHE_TAGS = {
  */
 export async function getParks(): Promise<PaginatedResponse<ParkResponse>> {
   return api.get<PaginatedResponse<ParkResponse>>('/v1/parks', {
-    next: { revalidate: 60, tags: [PARK_CACHE_TAGS.list] },
+    next: { revalidate: CACHE_TTL.parks, tags: [PARK_CACHE_TAGS.list] },
   });
 }
 
@@ -33,7 +34,7 @@ export async function getParks(): Promise<PaginatedResponse<ParkResponse>> {
  */
 export async function getPark(slug: string): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${slug}`, {
-    next: { revalidate: 60, tags: [PARK_CACHE_TAGS.detail(slug)] },
+    next: { revalidate: CACHE_TTL.parkDetail, tags: [PARK_CACHE_TAGS.detail(slug)] },
   });
 }
 
@@ -47,7 +48,7 @@ export async function getParkByGeoPath(
   parkSlug: string
 ): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-    next: { revalidate: 60 },
+    next: { revalidate: CACHE_TTL.parkDetail },
   });
 }
 
@@ -58,7 +59,7 @@ export async function getParksByContinent(
   continent: string
 ): Promise<ParkWithAttractions | ParkResponse[]> {
   return api.get<ParkWithAttractions | ParkResponse[]>(`/v1/parks/${continent}`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: CACHE_TTL.continents },
   });
 }
 
@@ -70,7 +71,7 @@ export async function getParksByCountry(
   country: string
 ): Promise<ParkResponse[]> {
   return api.get<ParkResponse[]>(`/v1/parks/${continent}/${country}`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: CACHE_TTL.continents },
   });
 }
 
@@ -83,7 +84,7 @@ export async function getParksByCity(
   city: string
 ): Promise<ParkResponse[]> {
   return api.get<ParkResponse[]>(`/v1/parks/${continent}/${country}/${city}`, {
-    next: { revalidate: 1800 },
+    next: { revalidate: CACHE_TTL.parks },
   });
 }
 
@@ -97,7 +98,7 @@ export async function getParkSchedule(
 ): Promise<{ schedule: ScheduleItem[] }> {
   return api.get<{ schedule: ScheduleItem[] }>(`/v1/parks/${slug}/schedule`, {
     params: { from, to },
-    next: { revalidate: 3600, tags: [PARK_CACHE_TAGS.schedule(slug)] },
+    next: { revalidate: CACHE_TTL.calendar, tags: [PARK_CACHE_TAGS.schedule(slug)] },
   });
 }
 
@@ -106,7 +107,7 @@ export async function getParkSchedule(
  */
 export async function getParkWeather(slug: string): Promise<WeatherData> {
   return api.get<WeatherData>(`/v1/parks/${slug}/weather/forecast`, {
-    next: { revalidate: 1800, tags: [PARK_CACHE_TAGS.weather(slug)] },
+    next: { revalidate: CACHE_TTL.weather, tags: [PARK_CACHE_TAGS.weather(slug)] },
   });
 }
 
@@ -119,7 +120,7 @@ export async function getParkYearlyPredictions(slug: string): Promise<{
   generatedAt: string;
 }> {
   return api.get(`/v1/parks/${slug}/predictions/yearly`, {
-    next: { revalidate: 3600, tags: [PARK_CACHE_TAGS.predictions(slug)] },
+    next: { revalidate: CACHE_TTL.predictions, tags: [PARK_CACHE_TAGS.predictions(slug)] },
   });
 }
 
@@ -129,6 +130,6 @@ export async function getParkYearlyPredictions(slug: string): Promise<{
 export async function getParkHolidays(slug: string, year: number): Promise<HolidayResponse> {
   return api.get<HolidayResponse>(`/v1/parks/${slug}/holidays`, {
     params: { year },
-    next: { revalidate: 86400 }, // 24 hours
+    next: { revalidate: CACHE_TTL.holidays },
   });
 }

@@ -1,4 +1,5 @@
 import { api } from './client';
+import { CACHE_TTL } from './cache-config';
 import type { GlobalStats, GeoLiveStatsDto } from './types';
 
 /**
@@ -6,7 +7,7 @@ import type { GlobalStats, GeoLiveStatsDto } from './types';
  */
 export async function getGlobalStats(): Promise<GlobalStats> {
   return api.get<GlobalStats>('/v1/analytics/realtime', {
-    next: { revalidate: 300 },
+    next: { revalidate: CACHE_TTL.realtime },
   });
 }
 
@@ -15,6 +16,6 @@ export async function getGlobalStats(): Promise<GlobalStats> {
  */
 export async function getGeoLiveStats(): Promise<GeoLiveStatsDto> {
   return api.get<GeoLiveStatsDto>('/v1/analytics/geo-live', {
-    next: { revalidate: 300 }, // 5 minutes cache
+    next: { revalidate: CACHE_TTL.realtime },
   });
 }

@@ -1,4 +1,5 @@
 import { api } from './client';
+import { CACHE_TTL } from './cache-config';
 import type { SearchResult } from './types';
 
 export type SearchType = 'park' | 'attraction' | 'show' | 'restaurant';
@@ -14,6 +15,6 @@ export async function search(query: string, types?: SearchType[]): Promise<Searc
 
   return api.get<SearchResult>('/v1/search', {
     params,
-    next: { revalidate: 60 },
+    next: { revalidate: CACHE_TTL.search },
   });
 }

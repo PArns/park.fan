@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
-
-export const dynamic = 'force-dynamic'; // Don't cache this API route
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -47,7 +46,7 @@ export async function GET(request: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store', // Don't cache location-based data
+      next: { revalidate: CACHE_TTL.nearby },
     });
 
     if (!response.ok) {

@@ -1,3 +1,4 @@
+import { CACHE_TTL } from './cache-config';
 import type { HolidayItem, HolidayResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -25,7 +26,7 @@ export async function getParkHolidays(
     console.log(`[Calendar] Fetching holidays from: ${url}`);
 
     const response = await fetch(url, {
-      next: { revalidate: 86400 }, // Cache for 24 hours
+      next: { revalidate: CACHE_TTL.holidays },
       headers: {
         'Content-Type': 'application/json',
       },

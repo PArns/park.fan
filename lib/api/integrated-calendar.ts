@@ -1,3 +1,4 @@
+import { CACHE_TTL } from './cache-config';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -49,7 +50,7 @@ export async function getIntegratedCalendar(
   console.log(`[Calendar] Fetching integrated calendar from: ${url}`);
 
   const response = await fetch(url, {
-    next: { revalidate: 3600 }, // Cache for 1 hour (matches backend cache)
+    next: { revalidate: CACHE_TTL.calendar },
     headers: {
       'Content-Type': 'application/json',
     },
