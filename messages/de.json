@@ -87,21 +87,21 @@
     }
   },
   "footer": {
-    "description": "Echtzeit-Freizeitpark-Wartezeiten und Andrangsprognosen, unterstützt durch künstliche Intelligenz.",
+    "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
     "sections": {
-      "explore": "Entdecken",
-      "resources": "Ressourcen",
-      "legal": "Rechtliches"
+      "explore": "Parks weltweit",
+      "resources": "Entwickler & Tools",
+      "legal": "Rechtliches & Kontakt"
     },
     "regions": {
-      "europe": "Europa",
-      "northAmerica": "Nordamerika",
-      "asia": "Asien"
+      "europe": "Freizeitparks in Europa",
+      "northAmerica": "Freizeitparks in Nordamerika",
+      "asia": "Freizeitparks in Asien"
     },
-    "api": "API",
-    "privacy": "Datenschutz",
-    "terms": "AGB",
-    "contact": "Kontakt",
+    "api": "API Dokumentation",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt & Support",
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by Vercel"
   },
@@ -120,9 +120,9 @@
   },
   "navigation": {
     "home": "Startseite",
-    "parks": "Parks",
-    "explore": "Entdecken",
-    "search": "Suchen",
+    "parks": "Alle Parks",
+    "explore": "Parks entdecken",
+    "search": "Parks & Attraktionen suchen",
     "admin": "Admin"
   },
   "theme": {

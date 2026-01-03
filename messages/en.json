@@ -87,21 +87,21 @@
     }
   },
   "footer": {
-    "description": "Real-time theme park wait times and crowd predictions powered by artificial intelligence.",
+    "description": "Live wait times and AI-powered crowd predictions for 142+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
     "sections": {
-      "explore": "Explore",
-      "resources": "Resources",
-      "legal": "Legal"
+      "explore": "Parks Worldwide",
+      "resources": "Developers & Tools",
+      "legal": "Legal & Contact"
     },
     "regions": {
-      "europe": "Europe",
-      "northAmerica": "North America",
-      "asia": "Asia"
+      "europe": "Theme Parks in Europe",
+      "northAmerica": "Theme Parks in North America",
+      "asia": "Theme Parks in Asia"
     },
-    "api": "API",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "contact": "Contact",
+    "api": "API Documentation",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact & Support",
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by Vercel"
   },
@@ -120,9 +120,9 @@
   },
   "navigation": {
     "home": "Home",
-    "parks": "Parks",
-    "explore": "Explore",
-    "search": "Search",
+    "parks": "All Parks",
+    "explore": "Explore Parks",
+    "search": "Search Parks & Attractions",
     "admin": "Admin"
   },
   "theme": {

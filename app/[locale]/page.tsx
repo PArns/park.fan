@@ -335,7 +335,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="container mx-auto">
             <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.liveNow')}</h2>
             <p className="text-muted-foreground mb-8 text-center text-sm">
-              Real-time park status across {continents.length} continents
+              {tCommon('parks')} weltweit - Live Status
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {continents.map((continent) => {
@@ -348,7 +348,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     href={`/parks/${continent.slug}`}
                     className="group block"
                   >
-                    <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg dark:bg-slate-950">
+                    <Card className="bg-muted/50 hover:bg-muted/70 border-border hover:border-primary/50 h-full transition-all hover:shadow-lg">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-lg font-medium">{continentName}</CardTitle>
@@ -361,11 +361,11 @@ export default async function HomePage({ params }: HomePageProps) {
                       </CardHeader>
                       <CardContent>
                         <div className="mb-2 flex items-baseline gap-2">
-                          <span className="text-park-primary text-2xl font-bold">
+                          <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">
                             {continent.openParkCount}
                           </span>
                           <span className="text-muted-foreground text-sm">
-                            / {continent.parkCount} {tCommon('open')}
+                            / {continent.parkCount}
                           </span>
                         </div>
                         {/* Progress bar */}

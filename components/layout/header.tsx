@@ -17,24 +17,29 @@ export function Header() {
     <header className="glass-header sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
+        <Link href="/" className="flex items-center gap-2" aria-label="park.fan - Home">
+          <div
+            className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg"
+            aria-hidden="true"
+          >
             <Sparkles className="text-park-primary-foreground h-5 w-5" />
           </div>
           <span className="text-xl font-bold">park.fan</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
           <Link
             href="/"
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            aria-label="Go to homepage"
           >
             {t('home')}
           </Link>
           <Link
             href="/parks/europe"
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            aria-label="Explore theme parks"
           >
             {t('explore')}
           </Link>
@@ -42,7 +47,12 @@ export function Header() {
 
         {/* Search - Desktop (shows as input-like button) */}
         <div className="hidden lg:block lg:w-64">
-          <SearchCommand trigger="input" placeholder={tCommon('searchPlaceholderShort')} isGlobal />
+          <SearchCommand
+            trigger="input"
+            size="sm"
+            placeholder={tCommon('searchPlaceholderShort')}
+            isGlobal
+          />
         </div>
 
         {/* Actions */}
@@ -64,13 +74,18 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px]">
-              <nav className="mt-8 flex flex-col gap-4">
-                <Link href="/" className="hover:text-primary text-lg font-medium transition-colors">
+              <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
+                <Link
+                  href="/"
+                  className="hover:text-primary text-lg font-medium transition-colors"
+                  aria-label="Go to homepage"
+                >
                   {t('home')}
                 </Link>
                 <Link
                   href="/parks/europe"
                   className="hover:text-primary text-lg font-medium transition-colors"
+                  aria-label="Explore theme parks"
                 >
                   {t('explore')}
                 </Link>

@@ -29,6 +29,7 @@ interface SearchCommandProps {
   placeholder?: string;
   isGlobal?: boolean;
   autoFocusOnType?: boolean;
+  size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
   className?: string;
 }
 
@@ -38,6 +39,7 @@ export function SearchCommand({
   placeholder,
   isGlobal = false,
   autoFocusOnType = false,
+  size = 'lg',
   className,
 }: SearchCommandProps) {
   const t = useTranslations('common');
@@ -250,13 +252,19 @@ export function SearchCommand({
   };
 
   const [isMobile, setIsMobile] = useState(false);
+  const [isMac, setIsMac] = useState(true); // Default to Mac for SSR
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 640);
     };
 
+    const checkPlatform = () => {
+      setIsMac(navigator.platform.toUpperCase().indexOf('MAC') >= 0);
+    };
+
     checkMobile();
+    checkPlatform();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
@@ -275,23 +283,48 @@ export function SearchCommand({
             {placeholder || t('searchPlaceholderShort')}
           </span>
           <kbd className="bg-muted pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 select-none md:flex">
-            <span className="text-xs">⌘</span>K
+            {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
           </kbd>
         </Button>
       )}
 
       {trigger === 'input' && (
         <div className="group relative w-full cursor-pointer" onClick={() => setOpen(true)}>
-          <Search className="text-muted-foreground group-hover:text-primary absolute top-1/2 left-4 z-10 h-5 w-5 -translate-y-1/2 transition-colors" />
+          <Search
+            className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
+              size === 'sm' ? 'left-3 h-4 w-4' : 'left-4 h-5 w-5'
+            }`}
+          />
           <div
-            className={`border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex h-14 w-full items-center justify-between rounded-xl border px-4 py-3 pr-14 pl-12 text-base shadow-sm backdrop-blur-md transition-all hover:shadow-md ${className}`}
+            className={`border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex w-full items-center justify-between border shadow-sm backdrop-blur-md transition-all hover:shadow-md ${
+              size === 'sm'
+                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
+                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
+            } ${className}`}
           >
             <span className="w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
-          <kbd className="bg-muted/80 text-muted-foreground pointer-events-none absolute top-1/2 right-3 hidden h-7 -translate-y-1/2 items-center gap-1 rounded border px-2 font-mono text-xs font-medium md:flex">
-            <span>⌘</span>K
+          <kbd
+            className={`bg-muted text-muted-foreground pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium md:flex ${
+              size === 'sm' ? 'right-2 h-6 px-1.5 text-[11px]' : 'right-3 h-8 gap-1 px-2.5 text-sm'
+            }`}
+          >
+            {isMac ? (
+              <>
+                <span
+                  className={
+                    size === 'sm' ? 'translate-y-[1px] text-sm' : 'translate-y-[1px] text-xl'
+                  }
+                >
+                  ⌘
+                </span>
+                <span>K</span>
+              </>
+            ) : (
+              <>Ctrl K</>
+            )}
           </kbd>
         </div>
       )}
