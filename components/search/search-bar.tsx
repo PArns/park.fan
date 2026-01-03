@@ -14,6 +14,7 @@ import {
 } from '@/components/ui/command';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 
 const typeIcons = {
@@ -233,17 +234,7 @@ export function SearchCommand({
 
             {/* Crowd Level */}
             {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
-              <Badge
-                className={`text-xs ${
-                  result.load === 'very_low' || result.load === 'low'
-                    ? 'bg-crowd-low'
-                    : result.load === 'moderate'
-                      ? 'bg-crowd-moderate'
-                      : 'bg-crowd-high'
-                } text-white`}
-              >
-                {t(`crowd.${result.load}`)}
-              </Badge>
+              <CrowdLevelBadge level={result.load} className="text-xs" />
             )}
           </div>
         </div>
