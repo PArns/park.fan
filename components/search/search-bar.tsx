@@ -184,11 +184,10 @@ export function SearchCommand({
             <span className="font-medium">{result.name}</span>
             {result.status && (
               <Badge
-                variant="outline"
-                className={`text-xs ${
+                className={`border-0 text-xs font-medium ${
                   result.status === 'OPERATING'
-                    ? 'border-green-600 text-green-600'
-                    : 'border-red-500 text-red-500'
+                    ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
+                    : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
                 }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}

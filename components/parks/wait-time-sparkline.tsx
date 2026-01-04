@@ -49,7 +49,6 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
 
     // Extend sparkline to current time if last data point is stale (>15min old)
     if (processedData.length > 0) {
-      // eslint-disable-next-line react-hooks/purity
       const now = Date.now();
       const lastDataPoint = processedData[processedData.length - 1];
       const fifteenMinutesInMs = 15 * 60 * 1000;

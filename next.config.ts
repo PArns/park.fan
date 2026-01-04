@@ -4,6 +4,10 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  compiler: {
+    // Remove React properties that are not needed in production
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
+  },
   experimental: {
     optimizePackageImports: [
       'lucide-react',
@@ -13,6 +17,8 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-tabs',
       '@radix-ui/react-tooltip',
     ],
+    // Optimize CSS to reduce render-blocking
+    optimizeCss: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

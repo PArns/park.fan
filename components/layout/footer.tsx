@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Sparkles, ExternalLink } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import { BuildInfo } from '@/components/common/build-info';
 
 export function Footer() {
   const t = useTranslations('footer');
@@ -122,7 +123,10 @@ export function Footer() {
         <Separator className="my-8" />
 
         <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
-          <p>{t('copyright', { year: currentYear })}</p>
+          <div className="flex flex-col items-center gap-1">
+            <p>{t('copyright', { year: currentYear })}</p>
+            <BuildInfo />
+          </div>
           <p>
             Powered by{' '}
             <a

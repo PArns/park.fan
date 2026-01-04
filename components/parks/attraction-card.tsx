@@ -198,10 +198,10 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
             <div className="flex flex-col items-end gap-2">
               <Badge
                 className={cn(
-                  'shrink-0 border-0 text-white',
+                  'shrink-0 border-0 text-white dark:text-slate-900',
                   status === 'OPERATING'
-                    ? 'bg-emerald-500 hover:bg-emerald-600'
-                    : 'bg-rose-500 hover:bg-rose-600'
+                    ? 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400'
+                    : 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
                 )}
               >
                 <StatusIcon className="mr-1 h-3 w-3" />

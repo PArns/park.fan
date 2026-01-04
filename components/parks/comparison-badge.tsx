@@ -22,13 +22,13 @@ export function ComparisonBadge({ comparison, className, showIcon = true }: Comp
 
   if (comparison === 'higher') {
     variant = 'secondary';
-    colorClass = 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300';
+    colorClass = 'bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900';
   } else if (comparison === 'lower') {
     variant = 'secondary';
-    colorClass = 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300';
+    colorClass = 'bg-emerald-600 text-white dark:bg-emerald-400 dark:text-slate-900';
   } else if (comparison === 'typical') {
     variant = 'secondary';
-    colorClass = 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300';
+    colorClass = 'bg-blue-600 text-white dark:bg-blue-400 dark:text-slate-900';
   }
 
   return (

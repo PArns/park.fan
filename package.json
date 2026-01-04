@@ -1,10 +1,13 @@
 {
   "name": "park.fan",
-  "version": "0.1.0",
+  "version": "2.0.5",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "prebuild": "node scripts/generate-build-info.mjs && pnpm generate:hero-images",
+    "build": "pnpm prebuild && next build --turbo",
+    "build:webpack": "pnpm prebuild && next build",
+    "generate:hero-images": "node scripts/generate-hero-images.mjs",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -48,7 +51,7 @@
     "react-leaflet": "^5.0.0",
     "recharts": "^3.6.0",
     "tailwind-merge": "^3.4.0",
-    "zod": "^4.3.4"
+    "zod": "^4.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",

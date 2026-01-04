@@ -84,10 +84,11 @@ export function ParkCard({
 
                 {status && (
                   <Badge
-                    variant="outline"
                     className={cn(
-                      'text-xs',
-                      isOpen ? 'border-green-600 text-green-600' : 'border-red-500 text-red-500'
+                      'border-0 text-xs font-medium',
+                      isOpen
+                        ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
+                        : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
                     )}
                   >
                     {isOpen ? tCommon('open') : tCommon('closed')}

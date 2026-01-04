@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { getCookie, setCookie } from 'cookies-next';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import Image from 'next/image';
+import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -212,16 +212,7 @@ export function NearbyParksCard() {
       <section className="bg-park-primary/5 border-park-primary/30 relative overflow-hidden rounded-xl border py-6 shadow-sm">
         {/* Background Image */}
         {park.backgroundImage && (
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={park.backgroundImage}
-              alt={park.name}
-              fill
-              className="object-cover opacity-40"
-              sizes="(max-width: 640px) 100vw, 50vw"
-            />
-            <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
-          </div>
+          <BackgroundOverlay imageSrc={park.backgroundImage} alt={park.name} intensity="medium" />
         )}
 
         <div className="relative z-10">
@@ -398,16 +389,12 @@ export function NearbyParksCard() {
                     <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
                       {/* Background Image */}
                       {park.backgroundImage && (
-                        <div className="absolute inset-0 z-0">
-                          <Image
-                            src={park.backgroundImage}
-                            alt={park.name}
-                            fill
-                            className="object-cover opacity-40 transition-opacity group-hover:opacity-50"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          />
-                          <div className="from-background/90 via-background/40 to-background/30 absolute inset-0 bg-gradient-to-t" />
-                        </div>
+                        <BackgroundOverlay
+                          imageSrc={park.backgroundImage}
+                          alt={park.name}
+                          intensity="medium"
+                          hoverEffect
+                        />
                       )}
 
                       <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
@@ -434,11 +421,10 @@ export function NearbyParksCard() {
                                 <span className="font-medium">{formatDistance(park.distance)}</span>
                               </div>
                               <Badge
-                                variant="outline"
-                                className={`text-xs ${
+                                className={`border-0 text-xs font-medium ${
                                   isOpen
-                                    ? 'border-green-600 text-green-600'
-                                    : 'border-red-500 text-red-500'
+                                    ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
+                                    : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
                                 }`}
                               >
                                 {isOpen ? tCommon('open') : tCommon('closed')}
