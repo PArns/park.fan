@@ -27,11 +27,11 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/',
+      canonical: `/${locale}`,
       languages: {
         en: '/en',
         de: '/de',
-        'x-default': '/',
+        'x-default': '/en',
       },
     },
   };

@@ -268,6 +268,7 @@ export function SearchCommand({
           variant="outline"
           className="relative h-10 w-10 p-0 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2"
           onClick={() => setOpen(true)}
+          aria-label={t('search')}
         >
           <Search className="h-4 w-4 md:mr-2" />
           <span className="hidden md:inline-flex">
