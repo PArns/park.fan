@@ -16,7 +16,7 @@ export function ParkBackground({ imageSrc, alt }: ParkBackgroundProps) {
           alt={alt}
           fill
           priority
-          quality={60}
+          quality={75}
           className="object-cover"
           sizes="100vw"
           fetchPriority="high"
