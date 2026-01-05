@@ -3,9 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import { Navigation } from 'lucide-react';
 import L from 'leaflet';
-import { Button } from '@/components/ui/button';
 import type {
   ParkWithAttractions,
   ParkAttraction,

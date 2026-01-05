@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LandSection } from '@/components/parks/land-section';
-import { ParkCalendar } from '@/components/parks/park-calendar';
+
 import { LocalTime } from '@/components/ui/local-time';
 import type {
   ParkWithAttractions,
@@ -19,10 +19,16 @@ import type {
   ParkAttraction,
 } from '@/lib/api/types';
 
-// Dynamic import to avoid SSR issues with Leaflet
+// Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
 });
+const ParkCalendar = dynamic(
+  () => import('@/components/parks/park-calendar').then((mod) => mod.ParkCalendar),
+  {
+    ssr: false,
+  }
+);
 
 interface TabsWithHashProps {
   defaultValue: string;
@@ -217,7 +223,7 @@ export function TabsWithHash({
           <TabsTrigger value="map">{t('map')}</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="attractions" id="attractions">
+        <TabsContent value="attractions">
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
@@ -274,7 +280,7 @@ export function TabsWithHash({
         </TabsContent>
 
         {showsAvailable && (
-          <TabsContent value="shows" id="shows">
+          <TabsContent value="shows">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.shows?.map((show) => {
                 // Filter showtimes for today or future dates
@@ -337,7 +343,7 @@ export function TabsWithHash({
         )}
 
         {restaurantsAvailable && (
-          <TabsContent value="restaurants" id="restaurants">
+          <TabsContent value="restaurants">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
                 <Card key={restaurant.id}>
@@ -355,11 +361,11 @@ export function TabsWithHash({
           </TabsContent>
         )}
 
-        <TabsContent value="calendar" id="calendar">
+        <TabsContent value="calendar">
           <ParkCalendar park={park} calendarData={calendarData} />
         </TabsContent>
 
-        <TabsContent value="map" id="map">
+        <TabsContent value="map">
           <ParkMap park={park} />
         </TabsContent>
       </Tabs>

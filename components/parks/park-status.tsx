@@ -140,7 +140,11 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                           {Math.round(occupancy.current)}%
                         </span>
                       </div>
-                      <Progress value={occupancy.current} className="h-2" />
+                      <Progress
+                        value={occupancy.current}
+                        className="h-2"
+                        aria-label={t('occupancy')}
+                      />
                       {occupancy.comparisonStatus !== 'typical' && (
                         <p className="text-xs">
                           <span

@@ -11,6 +11,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       'lucide-react',
+      'date-fns',
       '@radix-ui/react-dialog',
       '@radix-ui/react-popover',
       '@radix-ui/react-dropdown-menu',
@@ -19,6 +20,9 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,
+    // Enable React Compiler (React 19)
+    // @ts-expect-error - reactCompiler is a valid experimental option in Next.js 16 but types might be missing
+    reactCompiler: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

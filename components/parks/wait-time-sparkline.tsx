@@ -1,7 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
-import { LineChart, Line, ResponsiveContainer, YAxis, Tooltip } from 'recharts';
+import { useMemo, useState, useRef } from 'react';
 import type { AttractionStatistics } from '@/lib/api/types';
 
 interface WaitTimeSparklineProps {
@@ -9,37 +8,15 @@ interface WaitTimeSparklineProps {
   className?: string;
 }
 
-// Custom tooltip component
-function CustomTooltip({
-  active,
-  payload,
-}: {
-  active?: boolean;
-  payload?: Array<{ payload: { time: number; value: number } }>;
-}) {
-  if (!active || !payload || !payload.length) return null;
-
-  const data = payload[0].payload;
-  const time = new Date(data.time);
-  const waitTime = data.value;
-
-  return (
-    <div className="bg-popover text-popover-foreground rounded-lg border px-3 py-2 shadow-md">
-      <p className="text-xs font-medium">
-        {time.toLocaleTimeString('de-DE', {
-          hour: '2-digit',
-          minute: '2-digit',
-        })}
-      </p>
-      <p className="text-sm font-bold">{waitTime} min</p>
-    </div>
-  );
-}
-
 export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps) {
-  // Process data for charts - use useMemo to handle Date.now() safely
-  const data = useMemo(() => {
-    if (!history || history.length === 0) return [];
+  const [activePoint, setActivePoint] = useState<{ x: number; time: number; value: number } | null>(
+    null
+  );
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Process data for charts
+  const { points, maxTime, minTime, maxWait } = useMemo(() => {
+    if (!history || history.length === 0) return { points: [], maxTime: 0, minTime: 0, maxWait: 0 };
 
     // Ensure we have valid timestamps and numbers
     const processedData = history.map((point) => ({
@@ -62,34 +39,124 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
       }
     }
 
-    return processedData;
+    const maxVal = Math.max(...processedData.map((d) => d.value), 10); // Minimum 10 min scale to avoid flat lines looking huge
+    const minT = processedData[0].time;
+    const maxT = processedData[processedData.length - 1].time;
+
+    return { points: processedData, maxTime: maxT, minTime: minT, maxWait: maxVal };
   }, [history]);
 
-  if (data.length === 0) return null;
+  if (points.length === 0) return null;
+
+  // Generate Path Data for StepAfter
+  // StepAfter: Horizontal from (x_i, y_i) to (x_i+1, y_i), then vertical to (x_i+1, y_i+1)
+  // We use 0-100 coordinate space for SVG
+  const timeRange = maxTime - minTime;
+
+  const getX = (time: number) => (timeRange === 0 ? 0 : ((time - minTime) / timeRange) * 100);
+  const getY = (value: number) => 100 - (value / maxWait) * 100;
+
+  let pathD = '';
+  points.forEach((p, i) => {
+    const x = getX(p.time);
+    const y = getY(p.value);
+
+    if (i === 0) {
+      pathD += `M ${x},${y}`;
+    } else {
+      // Draw horizontal from prev point to current X
+      // The value associated with the interval [prev_time, curr_time] is the PREVIOUS value for StepAfter?
+      // Recharts "stepAfter":
+      // "The y value is constant for the interval [x[i], x[i+1])." -> This is Step (or StepBefore).
+      // "The y value is constant for the interval (x[i], x[i+1]]." -> This is StepAfter?
+      // Let's look at standard definition. "step-after" usually means: At point i, go horizontal to i+1, then go vertical to value i+1.
+      // So the line from i to i+1 represents value i.
+
+      // Wait, Recharts source code or documentation...
+      // Recharts "stepAgain" isn't a native SVG command.
+      // Usually "step-after" means the transition happens AFTER the interval.
+      // So line is horizontal at Y_i from X_i to X_i+1. Then vertical to Y_i+1.
+
+      const prevP = points[i - 1];
+      const prevY = getY(prevP.value);
+      // Horizontal move to current X with PREVIOUS Y
+      pathD += ` L ${x},${prevY}`;
+      // Vertical move to current Y
+      pathD += ` L ${x},${y}`;
+    }
+  });
+
+  // Extend to the end (implicit in the loop if the last point is maxTime)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!containerRef.current || points.length === 0) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+    const hoverTime = minTime + (x / width) * timeRange;
+
+    // Find the interval where hoverTime falls: points[i].time <= hoverTime < points[i+1].time
+    // Since it's step-after (value lasts until next point), usage of `findLast` or similar.
+    // Actually, for StepAfter: "The y value is constant for the interval [x[i], x[i+1])."
+    // So we need the point with largest time <= hoverTime.
+    let found = points[0];
+    for (let i = 0; i < points.length; i++) {
+      if (points[i].time <= hoverTime) {
+        found = points[i];
+      } else {
+        break;
+      }
+    }
+
+    setActivePoint({
+      x: getX(found.time), // or cursor position? Usually step charts highlight the interval or the cursor X.
+      // Let's stick to cursor X for the tooltip position, but snap Y to the value.
+      time: hoverTime, // Show actual mouse time or point time? Recharts shows point time usually, but for continuous axis...
+      // Let's use the exact point value
+      value: found.value,
+    });
+  };
+
+  const handleMouseLeave = () => setActivePoint(null);
+
+  const formatTime = (ms: number) =>
+    new Date(ms).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
 
   return (
-    <div className={className} style={{ width: '100%', height: '100%' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <Line
-            type="stepAfter"
-            dataKey="value"
-            stroke="currentColor"
-            strokeWidth={2}
-            dot={false}
-            isAnimationActive={false} // Disable animation for performance/instant load
-          />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={{ stroke: 'currentColor', strokeWidth: 1 }}
-          />
-          {/* 
-            Hidden YAxis to auto-scale the sparkline based on values so it uses the full height 
-            We set domain to ['auto', 'auto'] or [0, 'auto']
-          */}
-          <YAxis domain={[0, 'auto']} hide />
-        </LineChart>
-      </ResponsiveContainer>
+    <div
+      ref={containerRef}
+      className={`relative h-full w-full ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <svg
+        width="100%"
+        height="100%"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="overflow-visible"
+      >
+        <path
+          d={pathD}
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
+
+      {activePoint && (
+        <div
+          className="bg-popover text-popover-foreground pointer-events-none absolute top-0 z-10 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
+          style={{
+            left: `${((activePoint.time - minTime) / timeRange) * 100}%`,
+            transform: 'translate(-50%, -120%)',
+          }}
+        >
+          <div className="font-medium">{formatTime(activePoint.time)}</div>
+          <div className="font-bold">{activePoint.value} min</div>
+        </div>
+      )}
     </div>
   );
 }
