@@ -20,10 +20,8 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,
-    // Enable React Compiler (React 19)
-    // @ts-expect-error - reactCompiler is a valid experimental option in Next.js 16 but types might be missing
-    reactCompiler: true,
   },
+  reactCompiler: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
