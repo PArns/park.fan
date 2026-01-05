@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { getCookie, setCookie } from 'cookies-next';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
@@ -14,8 +13,6 @@ import { getNearbyParks } from '@/lib/api/discovery';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyResponse, NearbyRidesData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
-
-const COOKIE_NAME = 'location-services';
 
 type PermissionState = 'prompt' | 'granted' | 'denied' | 'loading' | 'error';
 
@@ -50,7 +47,6 @@ export function NearbyParksCard() {
 
           setNearbyData(data);
           setPermissionState('granted');
-          setCookie(COOKIE_NAME, 'true', { maxAge: 31536000 }); // 1 year
         } catch (err) {
           console.error('[NearbyParks] Failed to fetch nearby parks:', err);
           setError(err instanceof Error ? err.message : 'Failed to load nearby parks');
@@ -70,10 +66,9 @@ export function NearbyParksCard() {
     );
   };
 
-  // Check cookie on mount
+  // Automatically request location on mount (GDPR compliant - no cookie storage)
   useEffect(() => {
-    const hasPermission = getCookie(COOKIE_NAME) === 'true';
-    if (hasPermission && typeof navigator !== 'undefined' && navigator.geolocation) {
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
       // Use setTimeout to avoid synchronous state update in effect
       const timer = setTimeout(() => {
         requestLocation();
@@ -421,11 +416,10 @@ export function NearbyParksCard() {
                                 <span className="font-medium">{formatDistance(park.distance)}</span>
                               </div>
                               <Badge
-                                className={`border-0 text-xs font-medium ${
-                                  isOpen
+                                className={`border-0 text-xs font-medium ${isOpen
                                     ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
                                     : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
-                                }`}
+                                  }`}
                               >
                                 {isOpen ? tCommon('open') : tCommon('closed')}
                               </Badge>

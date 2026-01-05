@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { getCookie, setCookie } from 'cookies-next';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { Navigation } from 'lucide-react';
 import L from 'leaflet';
@@ -59,7 +58,6 @@ const userIcon = L.divIcon({
   popupAnchor: [0, -20],
 });
 
-const COOKIE_NAME = 'location-services';
 const IN_PARK_THRESHOLD = 1000; // 1km in meters
 
 interface EntityWithDistance {
@@ -186,7 +184,6 @@ export function ParkMap({ park }: ParkMapProps) {
         const { latitude, longitude } = position.coords;
         setUserLocation({ lat: latitude, lng: longitude });
         setLocationEnabled(true);
-        setCookie(COOKIE_NAME, 'true', { maxAge: 31536000 }); // 1 year
       },
       (error) => {
         console.error('Geolocation error:', error);
@@ -199,16 +196,7 @@ export function ParkMap({ park }: ParkMapProps) {
     );
   };
 
-  // Check cookie and request location on mount
-  useEffect(() => {
-    // Only run on client
-    if (typeof window === 'undefined') return;
-
-    const hasPermission = getCookie(COOKIE_NAME) === 'true';
-    if (hasPermission && navigator.geolocation) {
-      requestLocation();
-    }
-  }, []);
+  // GDPR compliant - no automatic location request, user must click button
 
   // Refresh times every 1 minute for dynamic updates
   useEffect(() => {
