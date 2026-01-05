@@ -18,6 +18,13 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   return {
     title: `Theme Parks in ${countryName}`,
     description: `Discover theme parks in ${countryName} with live wait times, crowd predictions, and schedules.`,
+    alternates: {
+      canonical: `/${(await params).locale}/parks/${(await params).continent}/${country}`,
+      languages: {
+        en: `/en/parks/${(await params).continent}/${country}`,
+        de: `/de/parks/${(await params).continent}/${country}`,
+      },
+    },
   };
 }
 

@@ -17,6 +17,13 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   return {
     title: `Theme Parks in ${cityName}, ${countryName}`,
     description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+    alternates: {
+      canonical: `/${(await params).locale}/parks/${(await params).continent}/${country}/${city}`,
+      languages: {
+        en: `/en/parks/${(await params).continent}/${country}/${city}`,
+        de: `/de/parks/${(await params).continent}/${country}/${city}`,
+      },
+    },
   };
 }
 

@@ -13,11 +13,21 @@ interface SearchPageProps {
   searchParams: Promise<{ q?: string }>;
 }
 
-export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: SearchPageProps): Promise<Metadata> {
   const { q } = await searchParams;
   return {
     title: q ? `Search: ${q}` : 'Search',
     description: 'Search theme parks, attractions, shows, and restaurants worldwide.',
+    alternates: {
+      canonical: `/${(await params).locale}/search`,
+      languages: {
+        en: '/en/search',
+        de: '/de/search',
+      },
+    },
   };
 }
 

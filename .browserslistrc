@@ -1,8 +1,0 @@
-# Modern browsers only - eliminates unnecessary polyfills
-# Targets browsers that support ES2022+ features natively
-# This aligns with Next.js 16 default targets
-
-chrome >= 111
-edge >= 111
-firefox >= 111
-safari >= 16.4

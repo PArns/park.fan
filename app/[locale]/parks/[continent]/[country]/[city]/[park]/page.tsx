@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       description: t('metaDescriptionTemplate', { park: park.name }),
     },
     alternates: {
-      canonical: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+      canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       languages: {
         en: `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
         de: `/de/parks/${continent}/${country}/${city}/${parkSlug}`,

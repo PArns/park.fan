@@ -49,6 +49,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       attraction: attraction.name,
       park: park?.name || '',
     }),
+    alternates: {
+      canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      languages: {
+        en: `/en/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+        de: `/de/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      },
+    },
   };
 }
 

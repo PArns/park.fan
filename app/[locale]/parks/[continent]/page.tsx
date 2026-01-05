@@ -24,6 +24,13 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
   return {
     title: `Parks in ${continentName}`,
     description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+    alternates: {
+      canonical: `/${(await params).locale}/parks/${continent}`,
+      languages: {
+        en: `/en/parks/${continent}`,
+        de: `/de/parks/${continent}`,
+      },
+    },
   };
 }
 
