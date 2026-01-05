@@ -6,9 +6,14 @@ type StructuredDataProps<T extends Thing> = {
 };
 
 function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
-  return (
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />
-  );
+  const json = JSON.stringify(data)
+    .replace(/</g, '\\u003c')
+    .replace(/>/g, '\\u003e')
+    .replace(/&/g, '\\u0026')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
 }
 
 export function OrganizationStructuredData() {
@@ -48,10 +53,10 @@ export function ParkStructuredData({
     geo:
       park.latitude && park.longitude
         ? {
-            '@type': 'GeoCoordinates',
-            latitude: park.latitude,
-            longitude: park.longitude,
-          }
+          '@type': 'GeoCoordinates',
+          latitude: park.latitude,
+          longitude: park.longitude,
+        }
         : undefined,
     openingHoursSpecification: park.schedule?.map((s) => ({
       '@type': 'OpeningHoursSpecification',
