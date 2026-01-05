@@ -168,10 +168,10 @@ interface ParkMapProps {
 
 export function ParkMap({ park }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
+  const tParks = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [locationEnabled, setLocationEnabled] = useState(false);
   const [userHasZoomed, setUserHasZoomed] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [timeRefreshKey, setTimeRefreshKey] = useState(0); // Force re-render for time updates
@@ -183,7 +183,6 @@ export function ParkMap({ park }: ParkMapProps) {
       (position) => {
         const { latitude, longitude } = position.coords;
         setUserLocation({ lat: latitude, lng: longitude });
-        setLocationEnabled(true);
       },
       (error) => {
         console.error('Geolocation error:', error);
@@ -196,7 +195,12 @@ export function ParkMap({ park }: ParkMapProps) {
     );
   };
 
-  // GDPR compliant - no automatic location request, user must click button
+  // Automatically request location on mount (GDPR compliant - no cookie storage)
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      requestLocation();
+    }
+  }, []);
 
   // Refresh times every 1 minute for dynamic updates
   useEffect(() => {
@@ -206,9 +210,6 @@ export function ParkMap({ park }: ParkMapProps) {
 
     return () => clearInterval(intervalId);
   }, []);
-
-  // Collect all valid coordinates - logic removed as bounds are not used anymore
-  // to prevent zoom reset conflicts with smart map behavior
 
   // Add attractions
   const validAttractions =
@@ -307,7 +308,7 @@ export function ParkMap({ park }: ParkMapProps) {
 
   // Auto-update location with dynamic interval: 5s in park, 60s outside
   useEffect(() => {
-    if (!locationEnabled || typeof navigator === 'undefined' || !navigator.geolocation) {
+    if (typeof navigator === 'undefined' || !navigator.geolocation) {
       return;
     }
 
@@ -319,7 +320,7 @@ export function ParkMap({ park }: ParkMapProps) {
     }, updateInterval);
 
     return () => clearInterval(intervalId);
-  }, [locationEnabled, isInPark]);
+  }, [isInPark]);
 
   // Fallback center (use user location if in park, otherwise park center)
   const center: L.LatLngExpression =
@@ -408,7 +409,7 @@ export function ParkMap({ park }: ParkMapProps) {
                     <div className="mt-1 text-xs">
                       {t('status')}:{' '}
                       <span className={isOperating ? 'text-green-600' : 'text-red-600'}>
-                        {attraction.status}
+                        {tParks(`status.${attraction.status}`)}
                       </span>
                     </div>
                   )}
@@ -420,7 +421,9 @@ export function ParkMap({ park }: ParkMapProps) {
                   {attraction.crowdLevel && (
                     <div className="mt-1 text-xs">
                       {t('crowdLevel')}:{' '}
-                      <span className="font-semibold">{attraction.crowdLevel}</span>
+                      <span className="font-semibold">
+                        {tParks(`crowdLevels.${attraction.crowdLevel}`)}
+                      </span>
                     </div>
                   )}
                 </div>
@@ -473,20 +476,8 @@ export function ParkMap({ park }: ParkMapProps) {
         ))}
       </MapContainer>
 
-      {/* Location Button */}
-      {!locationEnabled && (
-        <Button
-          onClick={requestLocation}
-          className="absolute top-4 right-4 z-[1000] border-2 border-rose-500 bg-white/90 px-4 py-2.5 shadow-lg backdrop-blur-md transition-all duration-200 hover:border-rose-600 hover:bg-white/95 hover:shadow-xl"
-          size="sm"
-        >
-          <Navigation className="mr-2 h-4 w-4" />
-          {t('enableLocation')}
-        </Button>
-      )}
-
       {/* Location Info Panel */}
-      {locationEnabled && userLocation && (
+      {userLocation && (
         <div className="bg-background/95 absolute bottom-4 left-4 z-[1000] w-auto min-w-[320px] rounded-lg border p-4 shadow-lg backdrop-blur-sm">
           {isInPark ? (
             <>

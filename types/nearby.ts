@@ -39,6 +39,11 @@ export interface NearbyParkInfo {
     closingTime: string;
     scheduleType: string;
   };
+  nextSchedule?: {
+    openingTime: string;
+    closingTime: string;
+    scheduleType: string;
+  };
   backgroundImage?: string | null;
 }
 
@@ -65,6 +70,11 @@ export interface ParkWithDistance {
   url: string;
   timezone: string;
   todaySchedule?: {
+    openingTime: string;
+    closingTime: string;
+    scheduleType: string;
+  };
+  nextSchedule?: {
     openingTime: string;
     closingTime: string;
     scheduleType: string;

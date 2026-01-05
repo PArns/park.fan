@@ -1,8 +1,17 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import {
+  MapPin,
+  Navigation,
+  Clock,
+  TrendingUp,
+  ChevronRight,
+  Loader2,
+  DoorOpen,
+  Snowflake,
+} from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -20,6 +29,7 @@ export function NearbyParksCard() {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
+  const locale = useLocale();
 
   const [permissionState, setPermissionState] = useState<PermissionState>('prompt');
   const [nearbyData, setNearbyData] = useState<NearbyResponse | null>(null);
@@ -79,22 +89,22 @@ export function NearbyParksCard() {
 
   const getScheduleMessage = (
     todaySchedule: { openingTime: string; closingTime: string; scheduleType: string } | undefined,
+    nextSchedule: { openingTime: string; closingTime: string; scheduleType: string } | undefined,
     timezone: string,
     status: string,
     isInMaintenance: boolean
-  ): { message: string; icon: 'opening' | 'closing' } | null => {
+  ): { message: string; icon: 'opening' | 'closing' | 'offseason' } | null => {
     // Don't show schedule for parks in maintenance
-    if (isInMaintenance || !todaySchedule) {
+    if (isInMaintenance) {
       return null;
     }
 
     try {
       const now = new Date();
-      const opening = new Date(todaySchedule.openingTime);
-      const closing = new Date(todaySchedule.closingTime);
 
-      if (status === 'OPERATING') {
-        // Park is open - show closing time
+      // If today is OPERATING, show closing time
+      if (status === 'OPERATING' && todaySchedule?.scheduleType === 'OPERATING') {
+        const closing = new Date(todaySchedule.closingTime);
         const diff = closing.getTime() - now.getTime();
         if (diff <= 0) return null;
 
@@ -102,21 +112,117 @@ export function NearbyParksCard() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
         if (hours > 0) {
-          return { message: `${t('closesIn')} ${hours} Std. ${minutes} Min.`, icon: 'closing' };
+          return {
+            message: `${t('closesIn')} ${hours} ${tCommon('hours')}. ${minutes} Min.`,
+            icon: 'closing',
+          };
         }
         return { message: `${t('closesIn')} ${minutes} Min.`, icon: 'closing' };
-      } else if (status === 'CLOSED') {
-        // Park is closed - show opening time
-        const diff = opening.getTime() - now.getTime();
-        if (diff <= 0) return null;
+      }
 
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      // If park is closed today, check if we have today's opening time or next schedule
+      if (status === 'CLOSED') {
+        // Try today's opening time first
+        if (todaySchedule?.scheduleType === 'OPERATING' && todaySchedule.openingTime) {
+          const opening = new Date(todaySchedule.openingTime);
+          const diff = opening.getTime() - now.getTime();
 
-        if (hours > 0) {
-          return { message: `${t('opensIn')} ${hours} Std. ${minutes} Min.`, icon: 'opening' };
+          if (diff > 0) {
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            // < 24 hours: Show time with hours and minutes
+            if (hours < 24) {
+              const openingTimeFormatted = opening.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZone: timezone,
+              });
+              if (hours > 0) {
+                return {
+                  message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  icon: 'opening',
+                };
+              }
+              return {
+                message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${minutes} Min.)`,
+                icon: 'opening',
+              };
+            }
+          }
         }
-        return { message: `${t('opensIn')} ${minutes} Min.`, icon: 'opening' };
+
+        // Use nextSchedule if available and OPERATING
+        if (nextSchedule?.scheduleType === 'OPERATING' && nextSchedule.openingTime) {
+          const nextOpening = new Date(nextSchedule.openingTime);
+          const diff = nextOpening.getTime() - now.getTime();
+
+          if (diff > 0) {
+            const totalHours = diff / (1000 * 60 * 60);
+            const totalDays = diff / (1000 * 60 * 60 * 24);
+            const totalWeeks = totalDays / 7;
+
+            const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
+              hour: '2-digit',
+              minute: '2-digit',
+              timeZone: timezone,
+            });
+
+            // < 24 hours: "10:00 Uhr (in 2 Std. 10 Min.)"
+            if (totalHours < 24) {
+              const hours = Math.floor(totalHours);
+              const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+              if (hours > 0) {
+                return {
+                  message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  icon: 'opening',
+                };
+              }
+              return {
+                message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${minutes} Min.)`,
+                icon: 'opening',
+              };
+            }
+            // > 24 hours but < 7 days: "Mittwoch, 11:00 Uhr (in 1 Tag, 16 Std.)"
+            else if (totalDays < 7) {
+              const weekday = nextOpening.toLocaleDateString(locale, {
+                weekday: 'long',
+                timeZone: timezone,
+              });
+              const days = Math.floor(totalDays);
+              const remainingHours = Math.floor(totalHours % 24);
+
+              return {
+                message: `${weekday}, ${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
+                icon: 'opening',
+              };
+            }
+            // > 7 days: "2. Mai - OffSeason (in 6 Wochen)"
+            else {
+              const dateFormatted = nextOpening.toLocaleDateString(locale, {
+                day: 'numeric',
+                month: 'long',
+                timeZone: timezone,
+              });
+              const weeks = Math.ceil(totalWeeks);
+              const scheduleLabel = nextSchedule.scheduleType || 'OffSeason';
+
+              return {
+                message: `${dateFormatted} - ${scheduleLabel} (in ${weeks} ${t('week', { count: weeks })})`,
+                icon: 'opening',
+              };
+            }
+          }
+        }
+
+        // If park is closed and no next schedule is available, show OffSeason
+        if (!nextSchedule || nextSchedule.scheduleType !== 'OPERATING') {
+          return {
+            message: t('offseason'),
+            icon: 'offseason',
+          };
+        }
       }
 
       return null;
@@ -416,10 +522,11 @@ export function NearbyParksCard() {
                                 <span className="font-medium">{formatDistance(park.distance)}</span>
                               </div>
                               <Badge
-                                className={`border-0 text-xs font-medium ${isOpen
+                                className={`border-0 text-xs font-medium ${
+                                  isOpen
                                     ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
                                     : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
-                                  }`}
+                                }`}
                               >
                                 {isOpen ? tCommon('open') : tCommon('closed')}
                               </Badge>
@@ -474,21 +581,34 @@ export function NearbyParksCard() {
                                 park.status !== 'OPERATING' && park.status !== 'CLOSED';
                               const scheduleInfo = getScheduleMessage(
                                 park.todaySchedule,
+                                park.nextSchedule,
                                 park.timezone,
                                 park.status,
                                 isInMaintenance
                               );
 
                               if (scheduleInfo) {
+                                const IconComponent =
+                                  scheduleInfo.icon === 'opening'
+                                    ? DoorOpen
+                                    : scheduleInfo.icon === 'offseason'
+                                      ? Snowflake
+                                      : Clock;
+                                const label =
+                                  scheduleInfo.icon === 'opening' ? `${t('opens')}: ` : '';
+
                                 return (
-                                  <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-1 pt-2 text-xs">
-                                    <Clock className="h-3.5 w-3.5" />
-                                    <span>{scheduleInfo.message}</span>
+                                  <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
+                                    <IconComponent className="h-3.5 w-3.5" />
+                                    <span>
+                                      {label}
+                                      {scheduleInfo.message}
+                                    </span>
                                   </div>
                                 );
                               }
                               return (
-                                <div className="mt-2 h-[25px] border-t border-transparent pt-1 pt-2" />
+                                <div className="mt-2 h-[25px] border-t border-transparent pt-2" />
                               );
                             })()}
                           </div>

@@ -290,7 +290,6 @@
       "restaurant": "Restaurant",
       "cuisine": "Küche",
       "yourLocation": "Dein Standort",
-      "enableLocation": "Standort aktivieren",
       "inPark": "Du bist im Park",
       "distanceToPark": "Entfernung zum Park",
       "nearest": "In deiner Nähe",
@@ -345,8 +344,12 @@
     "nearestAttractions": "Attraktionen in deiner Nähe",
     "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
     "nearbyParks": "Parks in deiner Nähe",
+    "opens": "Öffnet",
     "opensIn": "Öffnet in",
-    "closesIn": "Schließt in"
+    "closesIn": "Schließt in",
+    "day": "{count, plural, =1 {Tag} other {Tagen}}",
+    "week": "{count, plural, =1 {Woche} other {Wochen}}",
+    "offseason": "OffSeason"
   },
   "geo": {
     "continent": "Kontinent",
