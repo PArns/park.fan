@@ -17,6 +17,7 @@ import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/s
 import type { Metadata } from 'next';
 import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
+import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 interface ParkPageProps {
@@ -188,10 +189,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <div className="mb-8">
           <div className="bg-background/60 rounded-xl border p-6 shadow-sm backdrop-blur-md">
             <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
+              <div className="flex-1">
                 <div className="mb-2 flex flex-wrap items-center gap-3">
                   <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
                   {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
+                  {park.id && (
+                    <div className="ml-auto">
+                      <ParkFavoriteButton parkId={park.id} />
+                    </div>
+                  )}
                 </div>
                 <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                   <span className="flex items-center gap-1">

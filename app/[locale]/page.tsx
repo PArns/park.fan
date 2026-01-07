@@ -9,9 +9,11 @@ import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { ParkCard } from '@/components/parks/park-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
+import { FavoritesSection } from '@/components/parks/favorites-section';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { OrganizationStructuredData } from '@/components/seo/structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
+import { FavoriteStar } from '@/components/common/favorite-star';
 
 import type { Metadata } from 'next';
 
@@ -88,6 +90,9 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
 
+      {/* Favorites Section - Above Nearby Parks */}
+      <FavoritesSection />
+
       {/* Nearby Parks - First section after hero */}
       <section className="border-b px-4 py-8">
         <div className="container mx-auto">
@@ -137,7 +142,7 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
 
             {/* Grid Layout: Second row - Parks */}
-            <div className="mb-4 grid gap-4 sm:grid-cols-2">
+            <div className="mb-3 grid gap-4 sm:grid-cols-2">
               {/* Most Crowded Park */}
               {stats.mostCrowdedPark && (
                 <ParkCard
@@ -151,6 +156,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   averageWaitTime={stats.mostCrowdedPark.averageWaitTime ?? undefined}
                   operatingAttractions={stats.mostCrowdedPark.operatingAttractions}
                   totalAttractions={stats.mostCrowdedPark.totalAttractions}
+                  parkId={stats.mostCrowdedPark.id}
                 />
               )}
 
@@ -167,6 +173,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   averageWaitTime={stats.leastCrowdedPark.averageWaitTime ?? undefined}
                   operatingAttractions={stats.leastCrowdedPark.operatingAttractions}
                   totalAttractions={stats.leastCrowdedPark.totalAttractions}
+                  parkId={stats.leastCrowdedPark.id}
                 />
               )}
             </div>
@@ -181,7 +188,13 @@ export default async function HomePage({ params }: HomePageProps) {
                     .replace('/attractions/', '/')}
                   className="group block min-w-0"
                 >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
+                  <Card className="hover:border-primary/50 relative h-full transition-all hover:shadow-lg">
+                    {/* Favorite Star */}
+                    {stats.longestWaitRide.id && (
+                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                        <FavoriteStar type="attraction" id={stats.longestWaitRide.id} />
+                      </div>
+                    )}
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-muted-foreground text-sm font-medium">
@@ -222,7 +235,13 @@ export default async function HomePage({ params }: HomePageProps) {
                     .replace('/attractions/', '/')}
                   className="group block min-w-0"
                 >
-                  <Card className="hover:border-primary/50 h-full transition-all hover:shadow-lg">
+                  <Card className="hover:border-primary/50 relative h-full transition-all hover:shadow-lg">
+                    {/* Favorite Star */}
+                    {stats.shortestWaitRide.id && (
+                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                        <FavoriteStar type="attraction" id={stats.shortestWaitRide.id} />
+                      </div>
+                    )}
                     <CardHeader className="pb-2">
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-muted-foreground text-sm font-medium">

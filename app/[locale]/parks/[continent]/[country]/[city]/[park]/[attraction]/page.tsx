@@ -11,6 +11,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import type { AttractionStatus, QueueDataItem, Breadcrumb, StandbyQueue } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
+import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 
 interface AttractionPageProps {
@@ -143,7 +144,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
         {/* Header */}
         <div className="mb-8">
-          <div className="bg-background/60 rounded-xl border p-6 shadow-sm backdrop-blur-md">
+          <div className="bg-background/60 relative rounded-xl border p-6 shadow-sm backdrop-blur-md">
+            {/* Favorite Star */}
+            {attraction.id && (
+              <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
+                <FavoriteStar type="attraction" id={attraction.id} size="lg" />
+              </div>
+            )}
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attraction.name}</h1>

@@ -10,18 +10,27 @@ import {
   User,
   Zap,
   Ticket,
+  Navigation,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { FavoriteStar } from '@/components/common/favorite-star';
+import { BackgroundOverlay } from '@/components/common/background-overlay';
 import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
+import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { formatDistance } from '@/lib/utils/distance-utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
+import { WaitTimeSparkline } from './wait-time-sparkline';
 
 interface AttractionCardProps {
-  attraction: ParkAttraction;
-  parkPath: string;
+  attraction: ParkAttraction | FavoriteAttraction;
+  parkPath?: string; // Optional for favorites (uses attraction.url)
   parkStatus?: ParkStatus;
+  backgroundImage?: string | null; // Optional background image (for favorites)
+  distance?: number; // Optional distance (for favorites)
+  showParkName?: boolean; // Show park name (for favorites section on homepage)
 }
 
 const statusConfig: Record<AttractionStatus, { icon: typeof Clock; color: string }> = {
@@ -31,23 +40,100 @@ const statusConfig: Record<AttractionStatus, { icon: typeof Clock; color: string
   REFURBISHMENT: { icon: Wrench, color: 'text-status-refurbishment' },
 };
 
-function getWaitTime(attraction: ParkAttraction): number | null {
+function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
   const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standbyQueue?.waitTime ?? null;
+  if (!standbyQueue) return null;
+  // Handle both QueueDataItem and FavoriteAttraction queue types
+  if ('waitTime' in standbyQueue) {
+    return standbyQueue.waitTime ?? null;
+  }
+  return null;
 }
 
-function getStatus(attraction: ParkAttraction, parkStatus?: ParkStatus): AttractionStatus {
+function getStatus(
+  attraction: ParkAttraction | FavoriteAttraction,
+  parkStatus?: ParkStatus
+): AttractionStatus {
   if (parkStatus && parkStatus !== 'OPERATING') {
     return 'CLOSED';
   }
   const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standbyQueue?.status ?? attraction.status ?? 'CLOSED';
+  if (standbyQueue && 'status' in standbyQueue) {
+    return (
+      (standbyQueue.status as AttractionStatus) ??
+      (attraction.status as AttractionStatus) ??
+      'CLOSED'
+    );
+  }
+  return (attraction.status as AttractionStatus) ?? 'CLOSED';
 }
 
-export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionCardProps) {
+function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
+  if ('crowdLevel' in attraction) {
+    return attraction.crowdLevel;
+  }
+  if ('currentLoad' in attraction && attraction.currentLoad?.crowdLevel) {
+    return attraction.currentLoad.crowdLevel;
+  }
+  return undefined;
+}
+
+function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
+  // If it's a FavoriteAttraction with url, use that
+  // Check if attraction has url property (FavoriteAttraction)
+  if ('url' in attraction) {
+    const favoriteAttraction = attraction as FavoriteAttraction;
+    if (favoriteAttraction.url) {
+      // Convert API URL to frontend URL
+      // Backend returns: /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron
+      // Frontend needs: /parks/europe/germany/bruhl/phantasialand/taron
+      if (favoriteAttraction.url.startsWith('/v1/parks/')) {
+        // Remove /v1 prefix and /attractions/ segment
+        const url = favoriteAttraction.url
+          .replace('/v1/parks/', '/parks/')
+          .replace('/attractions/', '/');
+        // Ensure URL is complete (has all segments)
+        if (url.startsWith('/parks/') && url.split('/').length >= 6) {
+          return url;
+        }
+      }
+      // If it's already a frontend URL, validate and use it
+      if (favoriteAttraction.url.startsWith('/parks/')) {
+        // Ensure it's a complete URL (has all segments: continent/country/city/park/attraction)
+        const segments = favoriteAttraction.url.split('/').filter(Boolean);
+        if (segments.length >= 6 && segments[0] === 'parks') {
+          return favoriteAttraction.url;
+        }
+      }
+    }
+    // If no URL or incomplete URL, construct it from park data
+    if (
+      favoriteAttraction.park &&
+      favoriteAttraction.park.continent &&
+      favoriteAttraction.park.country &&
+      favoriteAttraction.park.city
+    ) {
+      return `/parks/${favoriteAttraction.park.continent}/${favoriteAttraction.park.country}/${favoriteAttraction.park.city}/${favoriteAttraction.park.slug}/${attraction.slug}`;
+    }
+  }
+  // Otherwise use parkPath (for ParkAttraction on park detail pages)
+  if (parkPath) {
+    return `${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire';
+  }
+  return '#';
+}
+
+export function AttractionCard({
+  attraction,
+  parkPath,
+  parkStatus,
+  backgroundImage: propBackgroundImage,
+  distance,
+  showParkName = false, // Default: don't show park name (for park detail pages)
+}: AttractionCardProps) {
   const tStatus = useTranslations('attractions.label');
-  const t = useTranslations('attractions'); // You might need to add keys for 'peak' etc if not exist, or use hardcoded/common for now.
-  // Using common translations or fallback
+  const t = useTranslations('attractions');
+  const tCommon = useTranslations('common');
 
   const status = getStatus(attraction, parkStatus);
   // If park is closed, force wait time to null
@@ -64,24 +150,53 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
   };
 
   const TrendIcon = attraction.trend ? trendIcon[attraction.trend] : null;
+  const crowdLevel = getCrowdLevel(attraction);
+  const href = getHref(attraction, parkPath);
+
+  // Use provided backgroundImage or try to get from attraction
+  const backgroundImage =
+    propBackgroundImage ?? ('backgroundImage' in attraction ? attraction.backgroundImage : null);
 
   return (
-    <Link
-      href={`${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire'}
-      className="group block h-full"
-    >
+    <Link href={href} className="group block h-full">
       <Card className="hover:bg-muted/50 relative h-full overflow-hidden transition-colors">
-        <CardContent className="flex h-full flex-col p-4">
+        {/* Background Image */}
+        {backgroundImage && (
+          <BackgroundOverlay
+            imageSrc={backgroundImage}
+            alt={attraction.name}
+            intensity="medium"
+            hoverEffect
+          />
+        )}
+
+        {/* Favorite Star */}
+        {attraction.id && (
+          <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+            <FavoriteStar type="attraction" id={attraction.id} />
+          </div>
+        )}
+        <CardContent className="relative z-10 flex h-full flex-col p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
               <h3 className="truncate leading-tight font-medium">{attraction.name}</h3>
+
+              {/* Park Name (only for favorites section on homepage) */}
+              {showParkName &&
+                'park' in attraction &&
+                attraction.park &&
+                'name' in attraction.park && (
+                  <p className="text-muted-foreground mt-1 truncate text-xs">
+                    {attraction.park.name}
+                  </p>
+                )}
 
               {/* Wait Time & Trend */}
               {status === 'OPERATING' && waitTime !== null && (
                 <div className="mt-1 flex items-baseline gap-2">
                   <div className="flex items-center gap-1.5 text-lg font-bold">
                     <Clock className="h-4 w-4" />
-                    {waitTime} min
+                    {waitTime} {tCommon('minute', { count: waitTime })}
                   </div>
                   {TrendIcon && (
                     <span
@@ -103,67 +218,103 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
               {status === 'OPERATING' && (
                 <div className="mt-2 flex flex-wrap gap-1">
                   {attraction.queues
-                    ?.filter((q) => q.queueType !== 'STANDBY')
+                    ?.filter((q) => {
+                      // Filter out STANDBY
+                      if (q.queueType === 'STANDBY') return false;
+                      // Filter out SINGLE_RIDER if no wait time
+                      if (q.queueType === 'SINGLE_RIDER') {
+                        if (!('waitTime' in q)) return false;
+                        const wt = q.waitTime;
+                        return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0;
+                      }
+                      return true;
+                    })
                     .map((queue, i) => {
                       let Icon = Ticket;
                       let label = '';
                       let variant: 'outline' | 'secondary' | 'default' = 'outline';
 
+                      // Helper to safely get waitTime
+                      const getWaitTime = (q: typeof queue): number | null => {
+                        if (!('waitTime' in q)) return null;
+                        const wt = q.waitTime;
+                        return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0
+                          ? wt
+                          : null;
+                      };
+
                       switch (queue.queueType) {
                         case 'SINGLE_RIDER':
                           Icon = User;
+                          const singleRiderWaitTime = getWaitTime(queue);
+                          // This should always have a wait time due to filter above, but keep check for safety
                           label =
-                            queue.waitTime !== null
-                              ? `Single Rider: ${queue.waitTime} min`
+                            singleRiderWaitTime !== null
+                              ? `Single Rider: ${singleRiderWaitTime} min`
                               : 'Single Rider';
-                          variant = 'outline'; // Or success-like style if available
+                          variant = 'outline';
                           break;
 
                         case 'PAID_RETURN_TIME':
                           Icon = Zap;
-                          label = queue.price?.formatted
-                            ? `Lightning Lane: ${queue.price.formatted}`
-                            : 'Lightning Lane';
-                          variant = 'secondary'; // Premium feel
+                          label =
+                            'price' in queue && queue.price?.formatted
+                              ? `Lightning Lane: ${queue.price.formatted}`
+                              : 'Lightning Lane';
+                          variant = 'secondary';
                           break;
 
                         case 'PAID_STANDBY':
                           Icon = Zap;
-                          label = queue.price?.formatted
-                            ? `Express: ${queue.price.formatted}`
-                            : 'Express';
+                          label =
+                            'price' in queue && queue.price?.formatted
+                              ? `Express: ${queue.price.formatted}`
+                              : 'Express';
                           variant = 'secondary';
                           break;
 
                         case 'RETURN_TIME':
                           Icon = Ticket;
-                          if (queue.state === 'AVAILABLE' && queue.returnStart) {
+                          if (
+                            'state' in queue &&
+                            queue.state === 'AVAILABLE' &&
+                            'returnStart' in queue &&
+                            queue.returnStart
+                          ) {
                             const start = new Date(queue.returnStart).toLocaleTimeString([], {
                               hour: '2-digit',
                               minute: '2-digit',
                             });
-                            const end = queue.returnEnd
-                              ? new Date(queue.returnEnd).toLocaleTimeString([], {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                })
-                              : '';
+                            const end =
+                              'returnEnd' in queue && queue.returnEnd
+                                ? new Date(queue.returnEnd).toLocaleTimeString([], {
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })
+                                : '';
                             label = `Return: ${start}${end ? ` - ${end}` : ''}`;
                           } else {
-                            label = queue.state === 'FULL' ? 'Virtual Queue Full' : 'Virtual Queue';
+                            label =
+                              'state' in queue && queue.state === 'FULL'
+                                ? 'Virtual Queue Full'
+                                : 'Virtual Queue';
                           }
                           variant = 'outline';
                           break;
 
                         case 'BOARDING_GROUP':
                           Icon = Ticket;
-                          if (queue.allocationStatus === 'AVAILABLE') {
-                            label = queue.currentGroupStart
-                              ? `Boarding Groups: ${queue.currentGroupStart}-${queue.currentGroupEnd}`
-                              : 'Boarding Groups Available';
+                          if (
+                            'allocationStatus' in queue &&
+                            queue.allocationStatus === 'AVAILABLE'
+                          ) {
+                            label =
+                              'currentGroupStart' in queue && queue.currentGroupStart
+                                ? `Boarding Groups: ${queue.currentGroupStart}-${'currentGroupEnd' in queue ? queue.currentGroupEnd : ''}`
+                                : 'Boarding Groups Available';
                           } else {
                             label =
-                              queue.allocationStatus === 'FINISHED'
+                              'allocationStatus' in queue && queue.allocationStatus === 'FINISHED'
                                 ? 'Groups Distributed'
                                 : 'Boarding Groups Paused';
                           }
@@ -209,15 +360,24 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
               </Badge>
 
               {/* Crowd Level Badge */}
-              {status === 'OPERATING' &&
-                (attraction.crowdLevel || attraction.currentLoad?.crowdLevel) && (
-                  <CrowdLevelBadge
-                    level={attraction.crowdLevel || attraction.currentLoad!.crowdLevel}
-                    className="h-5 px-1.5 text-[10px]"
-                  />
-                )}
+              {status === 'OPERATING' && crowdLevel && (
+                <CrowdLevelBadge
+                  level={
+                    crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
+                  }
+                  className="h-5 px-1.5 text-[10px]"
+                />
+              )}
             </div>
           </div>
+
+          {/* Distance (for favorites) */}
+          {distance !== undefined && distance !== null && (
+            <div className="text-muted-foreground mt-2 flex items-center gap-1.5 text-xs">
+              <Navigation className="h-3.5 w-3.5" />
+              <span className="font-medium">{formatDistance(distance)}</span>
+            </div>
+          )}
 
           {/* Sparkline */}
           {status === 'OPERATING' &&
@@ -235,6 +395,3 @@ export function AttractionCard({ attraction, parkPath, parkStatus }: AttractionC
     </Link>
   );
 }
-
-// Need to import WaitTimeSparkline
-import { WaitTimeSparkline } from './wait-time-sparkline';

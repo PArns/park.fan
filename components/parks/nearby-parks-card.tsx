@@ -13,7 +13,9 @@ import {
   Snowflake,
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
+import { FavoriteStar } from '@/components/common/favorite-star';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -64,9 +66,12 @@ export function NearbyParksCard() {
         }
       },
       (err) => {
-        console.error('Geolocation error:', err);
+        // Only log if there's actual error information
+        if (err && (err.message || err.code)) {
+          console.error('Geolocation error:', err);
+        }
         setPermissionState('denied');
-        setError(err.message || 'Location access denied');
+        setError(err?.message || 'Location access denied');
       },
       {
         enableHighAccuracy: false,
@@ -415,7 +420,13 @@ export function NearbyParksCard() {
                         href={ride.url.replace('/v1/parks/', '/parks/')}
                         className="group block"
                       >
-                        <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
+                        <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
+                          {/* Favorite Star */}
+                          {ride.id && (
+                            <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                              <FavoriteStar type="attraction" id={ride.id} />
+                            </div>
+                          )}
                           <div className="min-w-0 flex-1">
                             <p className="group-hover:text-primary truncate font-medium transition-colors">
                               {ride.name}
@@ -486,136 +497,23 @@ export function NearbyParksCard() {
 
               return (
                 <li key={park.id} className={hiddenClass}>
-                  <Link href={park.url.replace('/v1/parks/', '/parks/')} className="group h-full">
-                    <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
-                      {/* Background Image */}
-                      {park.backgroundImage && (
-                        <BackgroundOverlay
-                          imageSrc={park.backgroundImage}
-                          alt={park.name}
-                          intensity="medium"
-                          hoverEffect
-                        />
-                      )}
-
-                      <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
-                        <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
-                          <div>
-                            <div className="flex items-start justify-between gap-2">
-                              <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
-                                {park.name}
-                              </h3>
-                              <ChevronRight className="text-muted-foreground group-hover:text-primary mt-0.5 h-4 w-4 flex-shrink-0 transition-colors" />
-                            </div>
-                            <p className="text-muted-foreground mt-1 truncate text-xs">
-                              {park.city},{' '}
-                              {tGeo(`countries.${park.country.toLowerCase()}` as string) ||
-                                park.country}
-                            </p>
-                          </div>
-
-                          <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-                            {/* Distance + Status */}
-                            <div className="flex items-center justify-between text-sm">
-                              <div className="text-muted-foreground flex items-center gap-1.5">
-                                <Navigation className="h-4 w-4" />
-                                <span className="font-medium">{formatDistance(park.distance)}</span>
-                              </div>
-                              <Badge
-                                className={`border-0 text-xs font-medium ${
-                                  isOpen
-                                    ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
-                                    : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
-                                }`}
-                              >
-                                {isOpen ? tCommon('open') : tCommon('closed')}
-                              </Badge>
-                            </div>
-
-                            <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
-                              {/* Wait Time + Crowd Level (only for open parks) */}
-                              {isOpen && park.analytics ? (
-                                <div className="flex items-center gap-2.5 text-sm">
-                                  {park.analytics.avgWaitTime !== undefined &&
-                                    park.analytics.avgWaitTime > 0 && (
-                                      <div className="text-muted-foreground flex items-center gap-1">
-                                        <Clock className="h-4 w-4" />
-                                        <span className="text-xs font-medium">
-                                          {park.analytics.avgWaitTime}{' '}
-                                          {tCommon('minute', { count: park.analytics.avgWaitTime })}
-                                        </span>
-                                      </div>
-                                    )}
-                                  {park.analytics.crowdLevel && (
-                                    <CrowdLevelBadge
-                                      level={park.analytics.crowdLevel as CrowdLevel}
-                                      className="text-xs"
-                                    />
-                                  )}
-                                </div>
-                              ) : (
-                                <div className="h-5" /> /* Spacer for closed parks */
-                              )}
-
-                              {/* Attractions (only for open parks) */}
-                              {isOpen ? (
-                                <div className="flex items-center justify-between pt-0.5 text-sm">
-                                  <div className="text-muted-foreground flex items-center gap-1.5">
-                                    <TrendingUp className="h-4 w-4" />
-                                    <span className="font-medium">
-                                      {park.operatingAttractions}/{park.totalAttractions}
-                                    </span>
-                                  </div>
-                                  <span className="text-muted-foreground text-xs">
-                                    {tCommon('operating')}
-                                  </span>
-                                </div>
-                              ) : (
-                                <div className="h-5" /> /* Spacer for closed parks */
-                              )}
-                            </div>
-
-                            {/* Park Schedule */}
-                            {(() => {
-                              const isInMaintenance =
-                                park.status !== 'OPERATING' && park.status !== 'CLOSED';
-                              const scheduleInfo = getScheduleMessage(
-                                park.todaySchedule,
-                                park.nextSchedule,
-                                park.timezone,
-                                park.status,
-                                isInMaintenance
-                              );
-
-                              if (scheduleInfo) {
-                                const IconComponent =
-                                  scheduleInfo.icon === 'opening'
-                                    ? DoorOpen
-                                    : scheduleInfo.icon === 'offseason'
-                                      ? Snowflake
-                                      : Clock;
-                                const label =
-                                  scheduleInfo.icon === 'opening' ? `${t('opens')}: ` : '';
-
-                                return (
-                                  <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
-                                    <IconComponent className="h-3.5 w-3.5" />
-                                    <span>
-                                      {label}
-                                      {scheduleInfo.message}
-                                    </span>
-                                  </div>
-                                );
-                              }
-                              return (
-                                <div className="mt-2 h-[25px] border-t border-transparent pt-2" />
-                              );
-                            })()}
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                  </Link>
+                  <ParkCardNearby
+                    id={park.id}
+                    name={park.name}
+                    slug={park.slug}
+                    city={park.city}
+                    country={park.country}
+                    distance={park.distance}
+                    status={park.status}
+                    timezone={park.timezone}
+                    totalAttractions={park.totalAttractions}
+                    operatingAttractions={park.operatingAttractions}
+                    analytics={park.analytics}
+                    todaySchedule={park.todaySchedule}
+                    nextSchedule={park.nextSchedule}
+                    backgroundImage={park.backgroundImage}
+                    url={park.url}
+                  />
                 </li>
               );
             })}

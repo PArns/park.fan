@@ -42,6 +42,7 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
 
   const response = await fetch(url.toString(), {
     ...fetchOptions,
+    credentials: 'include', // Include cookies for favorites API
     headers: {
       'Content-Type': 'application/json',
       ...fetchOptions.headers,

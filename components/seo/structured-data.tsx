@@ -53,10 +53,10 @@ export function ParkStructuredData({
     geo:
       park.latitude && park.longitude
         ? {
-          '@type': 'GeoCoordinates',
-          latitude: park.latitude,
-          longitude: park.longitude,
-        }
+            '@type': 'GeoCoordinates',
+            latitude: park.latitude,
+            longitude: park.longitude,
+          }
         : undefined,
     openingHoursSpecification: park.schedule?.map((s) => ({
       '@type': 'OpeningHoursSpecification',

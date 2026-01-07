@@ -480,5 +480,15 @@
       "titleTemplate": "{attraction} Wartezeit - {park}",
       "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     }
+  },
+  "favorites": {
+    "title": "Favoriten",
+    "empty": "Noch keine Favoriten",
+    "parks": "Parks",
+    "rides": "Attraktionen",
+    "shows": "Shows",
+    "restaurants": "Restaurants",
+    "tooltip": "Zu Favoriten hinzufügen, um es auf der Startseite zu sehen",
+    "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren"
   }
 }

@@ -10,6 +10,8 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { FavoriteStar } from '@/components/common/favorite-star';
+import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
 
 import { LocalTime } from '@/components/ui/local-time';
@@ -283,59 +285,19 @@ export function TabsWithHash({
           <TabsContent value="shows">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.shows?.map((show) => {
-                // Filter showtimes for today or future dates
-                const today = new Date();
-                const todayShowtimes =
-                  show.showtimes?.filter((showtime) => {
-                    const showtimeDate = new Date(showtime.startTime);
-                    return (
-                      showtimeDate >= today || showtimeDate.toDateString() === today.toDateString()
-                    );
-                  }) || [];
-
-                // Find next showtime
-                const nextShowtime = todayShowtimes.find((showtime) => {
-                  const showtimeDate = new Date(showtime.startTime);
-                  return showtimeDate > today;
-                });
-
+                const showHref =
+                  `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
                 return (
-                  <Card key={show.id}>
-                    <CardContent className="p-4">
-                      <h3 className="font-semibold">{show.name}</h3>
-
-                      {/* All showtimes */}
-                      {todayShowtimes.length > 0 && (
-                        <div className="mt-2 flex flex-wrap gap-1">
-                          {todayShowtimes.map((showtime, i) => {
-                            const showtimeDate = new Date(showtime.startTime);
-                            const isPast = showtimeDate < today;
-                            const isNext =
-                              nextShowtime && showtime.startTime === nextShowtime.startTime;
-
-                            return (
-                              <Badge
-                                key={i}
-                                variant={isNext ? 'default' : 'outline'}
-                                className={`text-xs ${isPast ? 'line-through opacity-50' : ''} ${
-                                  isNext ? 'bg-green-600 hover:bg-green-700' : ''
-                                }`}
-                              >
-                                <LocalTime time={showtime.startTime} timeZone={park.timezone} />
-                              </Badge>
-                            );
-                          })}
-                        </div>
-                      )}
-                      {todayShowtimes.length === 0 &&
-                        show.showtimes &&
-                        show.showtimes.length > 0 && (
-                          <p className="text-muted-foreground mt-2 text-sm">
-                            {tCommon('noShowtimesToday')}
-                          </p>
-                        )}
-                    </CardContent>
-                  </Card>
+                  <ShowCard
+                    key={show.id}
+                    id={show.id}
+                    name={show.name}
+                    slug={show.slug}
+                    status={show.status || 'CLOSED'}
+                    showtimes={show.showtimes}
+                    timezone={park.timezone}
+                    href={showHref}
+                  />
                 );
               })}
             </div>
@@ -346,7 +308,13 @@ export function TabsWithHash({
           <TabsContent value="restaurants">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
-                <Card key={restaurant.id}>
+                <Card key={restaurant.id} className="relative">
+                  {/* Favorite Star */}
+                  {restaurant.id && (
+                    <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                      <FavoriteStar type="restaurant" id={restaurant.id} />
+                    </div>
+                  )}
                   <CardContent className="p-4">
                     <h3 className="font-semibold">{restaurant.name}</h3>
                     {restaurant.cuisineType && (

@@ -481,5 +481,15 @@
       "titleTemplate": "{attraction} Wait Time - {park}",
       "metaDescriptionTemplate": "Current wait times and predictions for {attraction} at {park}. Check live queue data and crowd levels."
     }
+  },
+  "favorites": {
+    "title": "Favorites",
+    "empty": "No favorites yet",
+    "parks": "Parks",
+    "rides": "Rides",
+    "shows": "Shows",
+    "restaurants": "Restaurants",
+    "tooltip": "Add to favorites to see it on the homepage",
+    "locationHint": "Enable location access to sort by distance"
   }
 }

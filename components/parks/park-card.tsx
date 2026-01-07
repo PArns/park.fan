@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { FavoriteStar } from '@/components/common/favorite-star';
 import { cn } from '@/lib/utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
@@ -24,6 +24,8 @@ interface ParkCardProps {
   showBackground?: boolean;
   distance?: string; // Optional distance
   className?: string;
+  parkId?: string; // UUID for favorites
+  backgroundImage?: string | null; // Optional background image URL (to avoid fs in client)
 }
 
 export function ParkCard({
@@ -41,9 +43,24 @@ export function ParkCard({
   showBackground = true,
   distance,
   className,
+  parkId,
+  backgroundImage: propBackgroundImage,
 }: ParkCardProps) {
   const tCommon = useTranslations('common');
-  const backgroundImage = showBackground ? getParkBackgroundImage(slug) : null;
+  // Use provided backgroundImage or fallback to getParkBackgroundImage (server-side only)
+  let backgroundImage: string | null = null;
+  if (propBackgroundImage !== undefined) {
+    // Use provided backgroundImage (from API/proxy)
+    backgroundImage = propBackgroundImage;
+  } else if (showBackground) {
+    // Only call getParkBackgroundImage on server-side to avoid fs in client bundle
+    if (typeof window === 'undefined') {
+      // Dynamic import to prevent fs from being bundled in client
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { getParkBackgroundImage } = require('@/lib/utils/park-assets');
+      backgroundImage = getParkBackgroundImage(slug);
+    }
+  }
   const isOpen = status === 'OPERATING';
 
   return (
@@ -51,6 +68,13 @@ export function ParkCard({
       <Card className={cn('interactive-card relative h-full overflow-hidden', className)}>
         {/* Background Image */}
         {backgroundImage && <BackgroundOverlay imageSrc={backgroundImage} alt={name} hoverEffect />}
+
+        {/* Favorite Star */}
+        {parkId && (
+          <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+            <FavoriteStar type="park" id={parkId} />
+          </div>
+        )}
 
         {/* Content */}
         <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
