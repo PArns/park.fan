@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 export async function GET(request: NextRequest) {
@@ -42,11 +41,12 @@ export async function GET(request: NextRequest) {
     apiUrl.searchParams.set('lng', lng);
     apiUrl.searchParams.set('radius', radius);
 
+    // Don't cache location-based requests - let Cloudflare handle caching
     const response = await fetch(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
       },
-      next: { revalidate: CACHE_TTL.nearby },
+      next: { revalidate: 0 }, // No Next.js cache for location-based requests
     });
 
     if (!response.ok) {

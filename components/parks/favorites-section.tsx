@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -40,22 +40,23 @@ export function FavoritesSection() {
   const [loading, setLoading] = useState(true);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [geolocationLoading, setGeolocationLoading] = useState(true);
+  // Use ref to always have current userLocation in event handlers
+  const userLocationRef = useRef<{ lat: number; lng: number } | null>(null);
 
-  // Get user location for distance calculation
-  useEffect(() => {
+  // Function to update user location (reusable for initial load and periodic updates)
+  const updateLocation = useCallback((onSuccess?: () => void) => {
     if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      const timeoutId = setTimeout(() => {
-        setGeolocationLoading(false);
-      }, 2000);
-
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setUserLocation({
+          const location = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
-          });
-          setGeolocationLoading(false);
-          clearTimeout(timeoutId);
+          };
+          setUserLocation(location);
+          userLocationRef.current = location;
+          if (onSuccess) {
+            onSuccess();
+          }
         },
         (err) => {
           // Silently fail - distance calculation is optional
@@ -63,15 +64,35 @@ export function FavoritesSection() {
           if (err && (err.message || err.code)) {
             console.debug('[FavoritesSection] Geolocation error (optional):', err);
           }
-          setGeolocationLoading(false);
-          clearTimeout(timeoutId);
+          if (onSuccess) {
+            onSuccess();
+          }
         },
         {
           enableHighAccuracy: false,
           timeout: 10000,
-          maximumAge: 300000, // Cache position for 5 minutes
+          maximumAge: 0, // Always get fresh location for periodic updates
         }
       );
+    } else {
+      // No geolocation support
+      if (onSuccess) {
+        onSuccess();
+      }
+    }
+  }, []);
+
+  // Get user location for distance calculation (initial load)
+  useEffect(() => {
+    if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      const timeoutId = setTimeout(() => {
+        setGeolocationLoading(false);
+      }, 2000);
+
+      updateLocation(() => {
+        setGeolocationLoading(false);
+        clearTimeout(timeoutId);
+      });
 
       return () => {
         clearTimeout(timeoutId);
@@ -80,7 +101,7 @@ export function FavoritesSection() {
       // No geolocation support, set loading to false immediately
       setGeolocationLoading(false);
     }
-  }, []);
+  }, [updateLocation]);
 
   // Load favorites from API
   const loadFavorites = useCallback(async () => {
@@ -107,13 +128,15 @@ export function FavoritesSection() {
       }
 
       // Call API with favorite IDs as query parameters
+      // Use ref to get current location (important for event handlers)
+      const currentLocation = userLocationRef.current || userLocation;
       const data = await getFavorites(
         favoriteIds.parks,
         favoriteIds.attractions,
         favoriteIds.shows,
         favoriteIds.restaurants,
-        userLocation?.lat,
-        userLocation?.lng
+        currentLocation?.lat,
+        currentLocation?.lng
       );
 
       // Sort by distance (nearest first) or alphabetically if no distance available
@@ -177,12 +200,15 @@ export function FavoritesSection() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Auto-reload favorites every 5 minutes
+  // Auto-reload favorites every 5 minutes (with location update)
   useEffect(() => {
     if (!loading && favoritesData !== null) {
       const interval = setInterval(
         () => {
-          loadFavorites();
+          // Update location first, then reload favorites with new location
+          updateLocation(() => {
+            loadFavorites();
+          });
         },
         5 * 60 * 1000
       ); // 5 minutes
@@ -190,7 +216,7 @@ export function FavoritesSection() {
       return () => clearInterval(interval);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, favoritesData]);
+  }, [loading, favoritesData, updateLocation]);
 
   // Show skeleton loaders while loading
   if (loading) {

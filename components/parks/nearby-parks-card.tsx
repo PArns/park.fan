@@ -77,7 +77,7 @@ export function NearbyParksCard() {
       {
         enableHighAccuracy: false,
         timeout: 10000,
-        maximumAge: 300000, // Cache position for 5 minutes
+        maximumAge: 0, // Always get fresh location for periodic updates
       }
     );
   }, []);

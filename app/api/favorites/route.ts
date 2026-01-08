@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { CACHE_TTL } from '@/lib/api/cache-config';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 
 export async function GET(request: NextRequest) {
@@ -45,7 +44,7 @@ export async function GET(request: NextRequest) {
         // Forward cookies from the request to the API
         ...(cookieHeader ? { Cookie: cookieHeader } : {}),
       },
-      next: { revalidate: CACHE_TTL.nearby },
+      next: { revalidate: 0 }, // No Next.js cache for location-based requests
     });
 
     if (!response.ok) {
