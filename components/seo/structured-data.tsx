@@ -5,7 +5,7 @@ import {
   ThemePark,
   BreadcrumbList,
   Organization,
-  TouristAttraction,
+  Attraction,
 } from 'schema-dts';
 
 type StructuredDataProps<T extends Thing> = {
@@ -105,7 +105,7 @@ export function AttractionStructuredData({
   url: string;
   description?: string;
 }) {
-  const data: WithContext<TouristAttraction> = {
+  const data: WithContext<Attraction> = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
     name: attraction.name,

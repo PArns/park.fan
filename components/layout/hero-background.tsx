@@ -22,7 +22,7 @@ export function RandomHeroImage() {
       fill
       priority
       fetchPriority="high"
-      quality={85}
+      quality={75}
       className={`object-cover transition-opacity duration-1000 ${
         isLoaded ? 'opacity-90' : 'opacity-0'
       }`}

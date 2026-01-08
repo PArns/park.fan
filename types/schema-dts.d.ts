@@ -6,4 +6,5 @@ declare module 'schema-dts' {
   export type BreadcrumbList = any;
   export type Organization = any;
   export type Attraction = any;
+  export type TouristAttraction = any;
 }

@@ -5,7 +5,9 @@ import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
+import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { ShowCard } from '@/components/parks/show-card';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getFavoriteIds } from '@/lib/utils/favorites';
@@ -37,16 +39,23 @@ export function FavoritesSection() {
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [geolocationLoading, setGeolocationLoading] = useState(true);
 
   // Get user location for distance calculation
   useEffect(() => {
     if (typeof navigator !== 'undefined' && navigator.geolocation) {
+      const timeoutId = setTimeout(() => {
+        setGeolocationLoading(false);
+      }, 2000);
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
           setUserLocation({
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+          setGeolocationLoading(false);
+          clearTimeout(timeoutId);
         },
         (err) => {
           // Silently fail - distance calculation is optional
@@ -54,6 +63,8 @@ export function FavoritesSection() {
           if (err && (err.message || err.code)) {
             console.debug('[FavoritesSection] Geolocation error (optional):', err);
           }
+          setGeolocationLoading(false);
+          clearTimeout(timeoutId);
         },
         {
           enableHighAccuracy: false,
@@ -61,6 +72,13 @@ export function FavoritesSection() {
           maximumAge: 300000, // Cache position for 5 minutes
         }
       );
+
+      return () => {
+        clearTimeout(timeoutId);
+      };
+    } else {
+      // No geolocation support, set loading to false immediately
+      setGeolocationLoading(false);
     }
   }, []);
 
@@ -129,10 +147,22 @@ export function FavoritesSection() {
     }
   }, [userLocation]);
 
-  // Initial load
+  // Load favorites only when geolocation is complete
   useEffect(() => {
-    loadFavorites();
-  }, [loadFavorites]);
+    if (!geolocationLoading) {
+      loadFavorites();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [geolocationLoading]);
+
+  // Reload favorites when userLocation changes (from null to a value)
+  // Only reload if we already have data (to avoid duplicate initial load)
+  useEffect(() => {
+    if (userLocation && !loading && favoritesData !== null) {
+      loadFavorites();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userLocation]);
 
   // Listen for favorites-changed events
   useEffect(() => {
@@ -144,11 +174,62 @@ export function FavoritesSection() {
     return () => {
       window.removeEventListener('favorites-changed', handleFavoritesChanged);
     };
-  }, [loadFavorites]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  // Don't render if no favorites
+  // Auto-reload favorites every 5 minutes
+  useEffect(() => {
+    if (!loading && favoritesData !== null) {
+      const interval = setInterval(
+        () => {
+          loadFavorites();
+        },
+        5 * 60 * 1000
+      ); // 5 minutes
+
+      return () => clearInterval(interval);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loading, favoritesData]);
+
+  // Show skeleton loaders while loading
   if (loading) {
-    return null;
+    return (
+      <section className="border-b px-4 py-8">
+        <div className="container mx-auto">
+          <Card className="gap-2">
+            <CardHeader className="pb-2">
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center gap-2">
+                  <Star className="text-park-primary h-5 w-5" />
+                  {t('title')}
+                </CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Parks Skeleton */}
+              <div>
+                <div className="bg-muted mb-4 h-6 w-24 rounded" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <ParkCardNearbySkeleton />
+                  <ParkCardNearbySkeleton />
+                  <ParkCardNearbySkeleton />
+                </div>
+              </div>
+              {/* Attractions Skeleton */}
+              <div>
+                <div className="bg-muted mb-4 h-6 w-24 rounded" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <AttractionCardSkeleton />
+                  <AttractionCardSkeleton />
+                  <AttractionCardSkeleton />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+    );
   }
 
   if (

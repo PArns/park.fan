@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import {
   MapPin,
@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -38,7 +39,7 @@ export function NearbyParksCard() {
   const [error, setError] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const requestLocation = () => {
+  const requestLocation = useCallback(() => {
     setPermissionState('loading');
     setError(null);
 
@@ -79,7 +80,7 @@ export function NearbyParksCard() {
         maximumAge: 300000, // Cache position for 5 minutes
       }
     );
-  };
+  }, []);
 
   // Automatically request location on mount (GDPR compliant - no cookie storage)
   useEffect(() => {
@@ -90,7 +91,21 @@ export function NearbyParksCard() {
       }, 0);
       return () => clearTimeout(timer);
     }
-  }, []);
+  }, [requestLocation]);
+
+  // Auto-reload nearby parks every 5 minutes
+  useEffect(() => {
+    if (permissionState === 'granted' && nearbyData !== null) {
+      const interval = setInterval(
+        () => {
+          requestLocation();
+        },
+        5 * 60 * 1000
+      ); // 5 minutes
+
+      return () => clearInterval(interval);
+    }
+  }, [permissionState, nearbyData, requestLocation]);
 
   const getScheduleMessage = (
     todaySchedule: { openingTime: string; closingTime: string; scheduleType: string } | undefined,
@@ -261,20 +276,27 @@ export function NearbyParksCard() {
   // Loading state
   if (permissionState === 'loading') {
     return (
-      <Card>
-        <CardHeader className="pb-4">
+      <section className="bg-card text-card-foreground rounded-xl border py-4 shadow-sm md:py-6">
+        <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <Loader2 className="text-muted-foreground h-5 w-5 animate-spin" />
             {t('loadingLocation')}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-3">
-            <div className="bg-muted h-20 animate-pulse rounded" />
-            <div className="bg-muted h-20 animate-pulse rounded" />
-          </div>
+          <ul className="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
+            <li>
+              <ParkCardNearbySkeleton />
+            </li>
+            <li>
+              <ParkCardNearbySkeleton />
+            </li>
+            <li>
+              <ParkCardNearbySkeleton />
+            </li>
+          </ul>
         </CardContent>
-      </Card>
+      </section>
     );
   }
 
