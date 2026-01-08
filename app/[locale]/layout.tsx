@@ -7,6 +7,20 @@ import { routing, type Locale } from '@/i18n/routing';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { OrganizationStructuredData } from '@/components/seo/structured-data';
+import { Geist, Geist_Mono } from 'next/font/google';
+
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 interface LocaleLayoutProps {
   children: React.ReactNode;
@@ -31,19 +45,23 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Get messages for the current locale
   const messages = await getMessages();
 
-  // Locale layout doesn't render html/body - that's done in root layout
-  // We provide the locale context and app shell here
+  // Render html/body here to have access to locale for lang attribute
   return (
-    <Providers>
-      <NextIntlClientProvider messages={messages} locale={locale}>
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-      </NextIntlClientProvider>
-      <Analytics />
-      <SpeedInsights />
-    </Providers>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+        <OrganizationStructuredData />
+        <Providers>
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer locale={locale} />
+            </div>
+          </NextIntlClientProvider>
+          <Analytics />
+          <SpeedInsights />
+        </Providers>
+      </body>
+    </html>
   );
 }

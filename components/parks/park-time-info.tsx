@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Clock, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { LocalTime, LocalTimeRange } from '@/components/ui/local-time';
 import type { ScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 
 interface ParkTimeInfoProps {
@@ -147,11 +148,17 @@ export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInf
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span className="text-muted-foreground text-sm font-medium">{t('openingHours')}</span>
-            <span className="text-lg font-semibold tabular-nums">
-              {formatScheduleTime(todaySchedule.openingTime || '')}
-              {' - '}
-              {formatScheduleTime(todaySchedule.closingTime || '')}
-            </span>
+            {todaySchedule.openingTime && todaySchedule.closingTime ? (
+              <span className="text-lg font-semibold tabular-nums">
+                <LocalTimeRange
+                  start={todaySchedule.openingTime}
+                  end={todaySchedule.closingTime}
+                  timeZone={timezone}
+                />
+              </span>
+            ) : (
+              <span className="text-lg font-semibold tabular-nums">—</span>
+            )}
           </div>
 
           {/* Inline Countdown Badge */}
@@ -172,7 +179,9 @@ export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInf
           <span className="text-muted-foreground text-sm font-medium">{t('currentTime')}</span>
           <div className="flex items-center gap-1.5">
             <Clock className="text-primary h-4 w-4" />
-            <span className="text-lg font-bold tabular-nums">{formatCurrentTime()}</span>
+            <time dateTime={currentTime.toISOString()} className="text-lg font-bold tabular-nums">
+              {formatCurrentTime()}
+            </time>
           </div>
         </div>
 

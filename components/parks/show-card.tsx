@@ -86,7 +86,7 @@ export function ShowCard({
                     className={cn(
                       'text-xs',
                       isPast && 'line-through opacity-50',
-                      isNext && 'bg-green-600 text-white hover:bg-green-700'
+                      isNext && 'bg-status-operating text-white hover:opacity-90'
                     )}
                   >
                     <LocalTime time={showtime.startTime} timeZone={timezone} />
@@ -110,9 +110,7 @@ export function ShowCard({
               <Badge
                 className={cn(
                   'border-0 text-xs font-medium',
-                  status === 'CLOSED'
-                    ? 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
-                    : 'bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900'
+                  status === 'CLOSED' ? 'bg-status-closed text-white' : 'bg-status-down text-white'
                 )}
               >
                 {tCommon(status.toLowerCase() as 'closed')}

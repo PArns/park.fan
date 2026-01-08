@@ -14,6 +14,7 @@ import { HeroBackground } from '@/components/layout/hero-background';
 import { OrganizationStructuredData } from '@/components/seo/structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { StatsCard } from '@/components/common/stats-card';
 
 import type { Metadata } from 'next';
 
@@ -109,36 +110,26 @@ export default async function HomePage({ params }: HomePageProps) {
             {/* Grid Layout: First row - 2 static cards */}
             <div className="mb-4 grid gap-4 sm:grid-cols-2">
               {/* Open Parks */}
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-muted-foreground text-sm font-medium">
-                    {t('openParks')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">{stats.counts.openParks}</div>
-                  <p className="text-muted-foreground text-xs">
+              <StatsCard
+                title={t('openParks')}
+                value={stats.counts.openParks}
+                description={
+                  <>
                     {tCommon('of')} {stats.counts.parks} {tCommon('total')}
-                  </p>
-                </CardContent>
-              </Card>
+                  </>
+                }
+              />
 
               {/* Total Attractions */}
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-muted-foreground text-sm font-medium">
-                    {t('totalAttractions')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">
-                    {stats.counts.attractions.toLocaleString()}
-                  </div>
-                  <p className="text-muted-foreground text-xs">
+              <StatsCard
+                title={t('totalAttractions')}
+                value={stats.counts.attractions.toLocaleString()}
+                description={
+                  <>
                     {stats.counts.openAttractions.toLocaleString()} {tCommon('operating')}
-                  </p>
-                </CardContent>
-              </Card>
+                  </>
+                }
+              />
             </div>
 
             {/* Grid Layout: Second row - Parks */}
@@ -293,38 +284,24 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {/* Total Wait Time */}
               {stats.counts.totalWaitTime != null && (
-                <Card>
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-muted-foreground text-sm font-medium">
-                      {t('totalWaitTime')}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-3xl font-bold">
-                      {stats.counts.totalWaitTime.toLocaleString()}
-                    </div>
-                    <p className="text-muted-foreground text-xs">
+                <StatsCard
+                  title={t('totalWaitTime')}
+                  value={stats.counts.totalWaitTime.toLocaleString()}
+                  description={
+                    <>
                       {tCommon('minutes')} · ~{Math.round(stats.counts.totalWaitTime / 60)}{' '}
                       {tCommon('hours')}
-                    </p>
-                  </CardContent>
-                </Card>
+                    </>
+                  }
+                />
               )}
 
               {/* Queue Data Records */}
-              <Card>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-muted-foreground text-sm font-medium">
-                    {t('dataPoints')}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">
-                    {(stats.counts.queueDataRecords / 1000).toFixed(1)}k
-                  </div>
-                  <p className="text-muted-foreground text-xs">{t('queueDataRecords')}</p>
-                </CardContent>
-              </Card>
+              <StatsCard
+                title={t('dataPoints')}
+                value={(stats.counts.queueDataRecords / 1000).toFixed(1) + 'k'}
+                description={t('queueDataRecords')}
+              />
 
               {/* Shows & Restaurants */}
               <Card>

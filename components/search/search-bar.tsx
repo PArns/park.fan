@@ -186,8 +186,8 @@ export function SearchCommand({
               <Badge
                 className={`border-0 text-xs font-medium ${
                   result.status === 'OPERATING'
-                    ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
-                    : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
+                    ? 'bg-status-operating text-white'
+                    : 'bg-status-closed text-white'
                 }`}
               >
                 {result.status === 'OPERATING' ? t('open') : t('closed')}

@@ -263,9 +263,7 @@ export function ParkCardNearby({
                 </div>
                 <Badge
                   className={`border-0 text-xs font-medium ${
-                    isOpen
-                      ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
-                      : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
+                    isOpen ? 'bg-status-operating text-white' : 'bg-status-closed text-white'
                   }`}
                 >
                   {isOpen ? tCommon('open') : tCommon('closed')}

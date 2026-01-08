@@ -86,9 +86,9 @@ export function ParkCard({
                 </h3>
                 <ChevronRight className="group-interactive-icon mt-0.5 h-4 w-4 flex-shrink-0" />
               </div>
-              <p className="text-muted-foreground mt-1 truncate text-xs">
-                {city}, {country}
-              </p>
+              <address className="text-muted-foreground mt-1 truncate text-xs not-italic">
+                <span>{city}</span>, <span>{country}</span>
+              </address>
             </div>
 
             {/* Stats section */}
@@ -110,9 +110,7 @@ export function ParkCard({
                   <Badge
                     className={cn(
                       'border-0 text-xs font-medium',
-                      isOpen
-                        ? 'bg-green-600 text-white dark:bg-green-400 dark:text-slate-900'
-                        : 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900'
+                      isOpen ? 'bg-status-operating text-white' : 'bg-status-closed text-white'
                     )}
                   >
                     {isOpen ? tCommon('open') : tCommon('closed')}

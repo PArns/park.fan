@@ -1,11 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Link } from '@/i18n/navigation';
-import { ChevronRight } from 'lucide-react';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
+import { PageContainer } from '@/components/common/page-container';
+import { PageHeader } from '@/components/common/page-header';
 import type { Metadata } from 'next';
+import type { Breadcrumb } from '@/lib/api/types';
 
 interface ContinentPageProps {
   params: Promise<{ locale: string; continent: string }>;
@@ -18,14 +19,36 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ContinentPageProps): Promise<Metadata> {
-  const { continent } = await params;
+  const { locale, continent } = await params;
   const continentName = continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
 
   return {
     title: `Parks in ${continentName}`,
     description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+    openGraph: {
+      title: `Theme Parks in ${continentName}`,
+      description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/parks/${continent}`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: 'https://park.fan/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `Theme Parks in ${continentName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Theme Parks in ${continentName}`,
+      description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+      images: ['https://park.fan/og-image.png'],
+    },
     alternates: {
-      canonical: `/${(await params).locale}/parks/${continent}`,
+      canonical: `/${locale}/parks/${continent}`,
       languages: {
         en: `/en/parks/${continent}`,
         de: `/de/parks/${continent}`,
@@ -93,29 +116,26 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     t(`continents.${continent}` as 'continents.europe') ||
     continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
 
+  // Create breadcrumbs for continent page
+  const breadcrumbs: Breadcrumb[] = [{ name: tExplore('breadcrumbs.home'), url: '/' }];
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Header */}
-      <div className="mb-8">
-        <nav className="text-muted-foreground mb-4 flex items-center gap-2 text-sm">
-          <Link href="/" className="hover:text-foreground">
-            {tExplore('breadcrumbs.home')}
-          </Link>
-          <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground font-medium">{continentName}</span>
-        </nav>
-        <h1 className="mb-2 text-3xl font-bold">
-          {tExplore('title', { location: continentName })}
-        </h1>
-        <p className="text-muted-foreground">
-          <span className="text-park-primary font-medium">
-            {totalOpenParks} {t('open')}
-          </span>{' '}
-          / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
-          {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
-          {tExplore('stats.city', { count: totalCities })}
-        </p>
-      </div>
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={breadcrumbs}
+        currentPage={continentName}
+        title={tExplore('title', { location: continentName })}
+        description={
+          <>
+            <span className="text-park-primary font-medium">
+              {totalOpenParks} {t('open')}
+            </span>{' '}
+            / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
+            {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
+            {tExplore('stats.city', { count: totalCities })}
+          </>
+        }
+      />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {countries.map((country) => {
@@ -135,6 +155,6 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
           );
         })}
       </div>
-    </div>
+    </PageContainer>
   );
 }

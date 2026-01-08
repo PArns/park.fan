@@ -21,6 +21,27 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
   return {
     title: t('title'),
     description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/impressum`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: 'https://park.fan/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary',
+      title: t('title'),
+      description: t('description'),
+    },
     robots: {
       index: false,
       follow: true,
@@ -66,11 +87,7 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Kontakt</h3>
               <p className="mb-4">
                 E-Mail:{' '}
-                <ObfuscatedEmail
-                  local="hello"
-                  domain="park.fan"
-                  displayText="hello[ät]park.fan"
-                />
+                <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello[ät]park.fan" />
               </p>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Redaktionell verantwortlich</h3>

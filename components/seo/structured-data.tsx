@@ -1,5 +1,12 @@
-import { ParkResponse, ParkWithAttractions, Breadcrumb } from '@/lib/api/types';
-import { Thing, WithContext, ThemePark, BreadcrumbList, Organization } from 'schema-dts';
+import { ParkResponse, ParkWithAttractions, Breadcrumb, ParkAttraction } from '@/lib/api/types';
+import {
+  Thing,
+  WithContext,
+  ThemePark,
+  BreadcrumbList,
+  Organization,
+  TouristAttraction,
+} from 'schema-dts';
 
 type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
@@ -87,7 +94,39 @@ export function BreadcrumbStructuredData({ breadcrumbs }: { breadcrumbs: Breadcr
   return <JsonLd data={data} />;
 }
 
-// Ensure you have 'schema-dts' installed or define types manually if you prefer not to add a dependency.
-// If 'schema-dts' is not available, you can use 'any' or define partial interfaces.
-// For this environment, I will assume we might need to skip strict typing if schema-dts is missing,
-// but I will write it as if standard types are available or I will define a basic fallback if it fails.
+export function AttractionStructuredData({
+  attraction,
+  park,
+  url,
+  description,
+}: {
+  attraction: ParkAttraction;
+  park: ParkResponse | ParkWithAttractions;
+  url: string;
+  description?: string;
+}) {
+  const data: WithContext<TouristAttraction> = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristAttraction',
+    name: attraction.name,
+    url: url,
+    description:
+      description || `${attraction.name} at ${park.name} - Real-time wait times and status.`,
+    containedInPlace: {
+      '@type': 'ThemePark',
+      name: park.name,
+      url: url.split('/').slice(0, -1).join('/'), // Remove attraction slug to get park URL
+    },
+    address:
+      park.city || park.country
+        ? {
+            '@type': 'PostalAddress',
+            addressLocality: park.city || undefined,
+            addressCountry: park.country || undefined,
+            addressRegion: park.region || undefined,
+          }
+        : undefined,
+  };
+
+  return <JsonLd data={data} />;
+}

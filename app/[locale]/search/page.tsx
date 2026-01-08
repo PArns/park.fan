@@ -4,7 +4,9 @@ import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-re
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { LocalTime } from '@/components/ui/local-time';
 import { search } from '@/lib/api/search';
+import { PageContainer } from '@/components/common/page-container';
 import type { Metadata } from 'next';
 import type { SearchResultItem } from '@/lib/api/types';
 
@@ -17,12 +19,13 @@ export async function generateMetadata({
   params,
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
+  const { locale } = await params;
   const { q } = await searchParams;
   return {
     title: q ? `Search: ${q}` : 'Search',
     description: 'Search theme parks, attractions, shows, and restaurants worldwide.',
     alternates: {
-      canonical: `/${(await params).locale}/search`,
+      canonical: `/${locale}/search`,
       languages: {
         en: '/en/search',
         de: '/de/search',
@@ -125,7 +128,9 @@ function SearchResultCard({ result, locale }: { result: SearchResultItem; locale
               <Badge
                 variant="outline"
                 className={`text-xs ${
-                  isOpen ? 'border-green-600 text-green-600' : 'border-red-500 text-red-500'
+                  isOpen
+                    ? 'border-status-operating text-status-operating'
+                    : 'border-status-closed text-status-closed'
                 }`}
               >
                 {isOpen ? t('open') : t('closed')}
@@ -175,15 +180,8 @@ function SearchResultCard({ result, locale }: { result: SearchResultItem; locale
             <div className="flex items-center gap-1 text-sm">
               <Clock className="h-3 w-3" />
               <span>
-                {new Date(result.parkHours.open).toLocaleTimeString(locale, {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}{' '}
-                -{' '}
-                {new Date(result.parkHours.close).toLocaleTimeString(locale, {
-                  hour: '2-digit',
-                  minute: '2-digit',
-                })}
+                <LocalTime time={result.parkHours.open} /> -{' '}
+                <LocalTime time={result.parkHours.close} />
               </span>
             </div>
           )}
@@ -193,10 +191,7 @@ function SearchResultCard({ result, locale }: { result: SearchResultItem; locale
             <div className="mt-2 flex flex-wrap gap-1">
               {result.showTimes.slice(0, 3).map((time, i) => (
                 <Badge key={i} variant="outline" className="text-xs">
-                  {new Date(time).toLocaleTimeString(locale, {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                  })}
+                  <LocalTime time={time} />
                 </Badge>
               ))}
               {result.showTimes.length > 3 && (
@@ -226,7 +221,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PageContainer>
       {/* Search Header */}
       <div className="mb-8">
         <h1 className="mb-4 text-3xl font-bold">{t('search')}</h1>
@@ -287,6 +282,6 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
           <p className="text-muted-foreground text-lg">Enter at least 2 characters to search</p>
         </div>
       )}
-    </div>
+    </PageContainer>
   );
 }

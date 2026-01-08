@@ -107,15 +107,8 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-import { OrganizationStructuredData } from '@/components/seo/structured-data';
-
+// Root layout only exports metadata and fonts
+// HTML/Body are rendered in [locale]/layout.tsx for proper lang attribute
 export default function RootLayout({ children }: RootLayoutProps) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <OrganizationStructuredData />
-        {children}
-      </body>
-    </html>
-  );
+  return children;
 }

@@ -13,6 +13,13 @@ import type { AttractionStatus, QueueDataItem, Breadcrumb, StandbyQueue } from '
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  AttractionStructuredData,
+  BreadcrumbStructuredData,
+} from '@/components/seo/structured-data';
+import { PageContainer } from '@/components/common/page-container';
+import { GlassCard } from '@/components/common/glass-card';
+import { StatusInfoCard } from '@/components/common/status-info-card';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -44,12 +51,47 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
 
+  // Get background image for OpenGraph
+  const { getAttractionBackgroundImage } = await import('@/lib/utils/park-assets');
+  const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+  const ogImage = backgroundImage
+    ? `https://park.fan${backgroundImage}`
+    : 'https://park.fan/og-image.png';
+
   return {
     title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
     description: t('metaDescriptionTemplate', {
       attraction: attraction.name,
       park: park?.name || '',
     }),
+    openGraph: {
+      title: attraction.name,
+      description: t('metaDescriptionTemplate', {
+        attraction: attraction.name,
+        park: park?.name || '',
+      }),
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${attraction.name} at ${park?.name || ''} - Wait Times`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: attraction.name,
+      description: t('metaDescriptionTemplate', {
+        attraction: attraction.name,
+        park: park?.name || '',
+      }),
+      images: [ogImage],
+    },
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       languages: {
@@ -119,22 +161,38 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
-  // Construct breadcrumbs manually
-  const breadcrumbs: Breadcrumb[] = [
-    { name: tCommon('home'), url: '/' },
-    { name: continentName, url: `/parks/${continent}` },
-    { name: countryName, url: `/parks/${continent}/${country}` },
-    { name: cityName, url: `/parks/${continent}/${country}/${city}` },
-    { name: park.name, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
-  ];
+  // Construct breadcrumbs using utility
+  const { generateAttractionBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const breadcrumbs = generateAttractionBreadcrumbs({
+    locale: locale as 'en' | 'de',
+    continent,
+    country,
+    city,
+    parkSlug,
+    continentName,
+    countryName,
+    cityName,
+    parkName: park.name,
+    homeLabel: tCommon('home'),
+  });
+
+  const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
+  const parkUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   return (
     <>
+      <AttractionStructuredData
+        attraction={attraction}
+        park={park}
+        url={attractionUrl}
+        description={`${attraction.name} at ${park.name} - Real-time wait times, status, and predictions.`}
+      />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <ParkBackground
         imageSrc={getAttractionBackgroundImage(parkSlug, attractionSlug)}
         alt={attraction.name}
       />
-      <div className="container mx-auto px-4 py-8">
+      <PageContainer>
         {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
@@ -142,46 +200,40 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           className="bg-background/60 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
-        {/* Header */}
-        <div className="mb-8">
-          <div className="bg-background/60 relative rounded-xl border p-6 shadow-sm backdrop-blur-md">
-            {/* Favorite Star */}
-            {attraction.id && (
-              <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
-                <FavoriteStar type="attraction" id={attraction.id} size="lg" />
-              </div>
-            )}
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div>
-                <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attraction.name}</h1>
-                <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-                  <Link
-                    href={
-                      `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
-                    }
-                    className="hover:text-foreground flex items-center gap-1"
-                  >
-                    <MapPin className="h-4 w-4" />
-                    {park.name}
-                  </Link>
-                  {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
+        <article itemScope itemType="https://schema.org/TouristAttraction">
+          {/* Header */}
+          <div className="mb-8">
+            <GlassCard variant="medium" className="relative">
+              {/* Favorite Star */}
+              {attraction.id && (
+                <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
+                  <FavoriteStar type="attraction" id={attraction.id} size="lg" />
+                </div>
+              )}
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attraction.name}</h1>
+                  <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                    <Link
+                      href={
+                        `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
+                      }
+                      className="hover:text-foreground flex items-center gap-1"
+                    >
+                      <MapPin className="h-4 w-4" />
+                      {park.name}
+                    </Link>
+                    {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
+                  </div>
                 </div>
               </div>
-            </div>
+            </GlassCard>
           </div>
-        </div>
 
-        {/* Status & Wait Time */}
-        <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* Current Wait Time */}
-          <Card className="bg-background/60 border-primary/10 backdrop-blur-md">
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Clock className="h-4 w-4" />
-                {t('waitTime')}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          {/* Status & Wait Time */}
+          <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Current Wait Time */}
+            <StatusInfoCard title={t('waitTime')} icon={Clock}>
               {status === 'OPERATING' &&
               !isParkClosed &&
               mainQueue &&
@@ -203,15 +255,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   <span className="capitalize">{attraction.trend}</span>
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </StatusInfoCard>
 
-          {/* Status */}
-          <Card className="bg-background/60 border-primary/10 backdrop-blur-md">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-base">Status</CardTitle>
-            </CardHeader>
-            <CardContent>
+            {/* Status */}
+            <StatusInfoCard title="Status" icon={StatusIcon}>
               <Badge
                 className={`text-base ${
                   status === 'OPERATING'
@@ -232,19 +279,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   <LocalTime time={mainQueue.lastUpdated} timeZone={park.timezone} />
                 </p>
               )}
-            </CardContent>
-          </Card>
+            </StatusInfoCard>
 
-          {/* Prediction Accuracy */}
-          {attraction.predictionAccuracy && (
-            <Card className="bg-background/60 border-primary/10 backdrop-blur-md">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center gap-2 text-base">
-                  <BarChart3 className="h-4 w-4" />
-                  Prediction Accuracy
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
+            {/* Prediction Accuracy */}
+            {attraction.predictionAccuracy && (
+              <StatusInfoCard title="Prediction Accuracy" icon={BarChart3}>
                 <Badge
                   variant="outline"
                   className={`text-base ${
@@ -262,77 +301,77 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 <p className="text-muted-foreground mt-2 text-sm">
                   {attraction.predictionAccuracy.message}
                 </p>
-              </CardContent>
-            </Card>
-          )}
-        </div>
+              </StatusInfoCard>
+            )}
+          </div>
 
-        <Separator className="my-8" />
+          <Separator className="my-8" />
 
-        {/* Hourly Forecast */}
-        {attraction.hourlyForecast && attraction.hourlyForecast.length > 0 && (
-          <section className="mb-8">
-            <h2 className="mb-4 text-xl font-semibold">{t('predictions')}</h2>
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex gap-4 overflow-x-auto pb-2">
-                  {attraction.hourlyForecast.slice(0, 12).map((forecast, i) => (
-                    <div
-                      key={i}
-                      className="bg-muted/50 flex min-w-[80px] flex-col items-center rounded-lg p-3"
-                    >
-                      <span className="text-muted-foreground text-xs">
-                        <LocalTime time={forecast.predictedTime} timeZone={park.timezone} />
-                      </span>
-                      <span className="mt-1 text-lg font-bold">{forecast.predictedWaitTime}</span>
-                      <span className="text-muted-foreground text-xs">{tCommon('minutes')}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </section>
-        )}
-
-        {/* Other Queue Types */}
-        {attraction.queues && attraction.queues.length > 1 && (
-          <section>
-            <h2 className="mb-4 text-xl font-semibold">Other Queue Options</h2>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {attraction.queues
-                .filter((q) => q.queueType !== 'STANDBY')
-                .map((queue, i) => (
-                  <Card key={i}>
-                    <CardContent className="p-4">
-                      <div className="mb-2 flex items-center justify-between">
-                        <span className="font-medium">
-                          {queue.queueType.replace(/_/g, ' ').toLowerCase()}
+          {/* Hourly Forecast */}
+          {attraction.hourlyForecast && attraction.hourlyForecast.length > 0 && (
+            <section className="mb-8">
+              <h2 className="mb-4 text-xl font-semibold">{t('predictions')}</h2>
+              <Card>
+                <CardContent className="p-4">
+                  <div className="flex gap-4 overflow-x-auto pb-2">
+                    {attraction.hourlyForecast.slice(0, 12).map((forecast, i) => (
+                      <div
+                        key={i}
+                        className="bg-muted/50 flex min-w-[80px] flex-col items-center rounded-lg p-3"
+                      >
+                        <span className="text-muted-foreground text-xs">
+                          <LocalTime time={forecast.predictedTime} timeZone={park.timezone} />
                         </span>
-                        <Badge variant="outline">{queue.status}</Badge>
+                        <span className="mt-1 text-lg font-bold">{forecast.predictedWaitTime}</span>
+                        <span className="text-muted-foreground text-xs">{tCommon('minutes')}</span>
                       </div>
-                      {'waitTime' in queue && queue.waitTime !== null && (
-                        <p className="text-2xl font-bold">
-                          {queue.waitTime}{' '}
-                          <span className="text-muted-foreground text-sm">min</span>
-                        </p>
-                      )}
-                      {'returnStart' in queue &&
-                        queue.returnStart &&
-                        'returnEnd' in queue &&
-                        queue.returnEnd && (
-                          <p className="text-muted-foreground text-sm">
-                            {t('returnTime')}:{' '}
-                            <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} /> -{' '}
-                            <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+          )}
+
+          {/* Other Queue Types */}
+          {attraction.queues && attraction.queues.length > 1 && (
+            <section>
+              <h2 className="mb-4 text-xl font-semibold">Other Queue Options</h2>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {attraction.queues
+                  .filter((q) => q.queueType !== 'STANDBY')
+                  .map((queue, i) => (
+                    <Card key={i}>
+                      <CardContent className="p-4">
+                        <div className="mb-2 flex items-center justify-between">
+                          <span className="font-medium">
+                            {queue.queueType.replace(/_/g, ' ').toLowerCase()}
+                          </span>
+                          <Badge variant="outline">{queue.status}</Badge>
+                        </div>
+                        {'waitTime' in queue && queue.waitTime !== null && (
+                          <p className="text-2xl font-bold">
+                            {queue.waitTime}{' '}
+                            <span className="text-muted-foreground text-sm">min</span>
                           </p>
                         )}
-                    </CardContent>
-                  </Card>
-                ))}
-            </div>
-          </section>
-        )}
-      </div>
+                        {'returnStart' in queue &&
+                          queue.returnStart &&
+                          'returnEnd' in queue &&
+                          queue.returnEnd && (
+                            <p className="text-muted-foreground text-sm">
+                              {t('returnTime')}:{' '}
+                              <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} />{' '}
+                              - <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
+                            </p>
+                          )}
+                      </CardContent>
+                    </Card>
+                  ))}
+              </div>
+            </section>
+          )}
+        </article>
+      </PageContainer>
     </>
   );
 }

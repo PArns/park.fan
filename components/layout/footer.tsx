@@ -1,11 +1,15 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Sparkles, ExternalLink } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
 
-export function Footer() {
-  const t = useTranslations('footer');
+interface FooterProps {
+  locale: string;
+}
+
+export async function Footer({ locale }: FooterProps) {
+  const t = await getTranslations({ locale, namespace: 'footer' });
   const currentYear = new Date().getFullYear();
 
   return (

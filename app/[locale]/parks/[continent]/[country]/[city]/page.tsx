@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
+import { PageContainer } from '@/components/common/page-container';
+import { PageHeader } from '@/components/common/page-header';
 import type { Metadata } from 'next';
 
 interface CityPageProps {
@@ -10,18 +12,40 @@ interface CityPageProps {
 }
 
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
-  const { city, country } = await params;
+  const { locale, continent, country, city } = await params;
   const cityName = city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   return {
     title: `Theme Parks in ${cityName}, ${countryName}`,
     description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+    openGraph: {
+      title: `Theme Parks in ${cityName}, ${countryName}`,
+      description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: 'https://park.fan/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: `Theme Parks in ${cityName}, ${countryName}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Theme Parks in ${cityName}, ${countryName}`,
+      description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+      images: ['https://park.fan/og-image.png'],
+    },
     alternates: {
-      canonical: `/${(await params).locale}/parks/${(await params).continent}/${country}/${city}`,
+      canonical: `/${locale}/parks/${continent}/${country}/${city}`,
       languages: {
-        en: `/en/parks/${(await params).continent}/${country}/${city}`,
-        de: `/de/parks/${(await params).continent}/${country}/${city}`,
+        en: `/en/parks/${continent}/${country}/${city}`,
+        de: `/de/parks/${continent}/${country}/${city}`,
       },
     },
   };
@@ -57,15 +81,13 @@ export default async function CityPage({ params }: CityPageProps) {
     : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb */}
-      <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={city.name} />
-
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">{t('parksIn', { location: city.name })}</h1>
-        <p className="text-muted-foreground">{t('parkCount', { count: parks.length })}</p>
-      </div>
+    <PageContainer>
+      <PageHeader
+        breadcrumbs={breadcrumbs}
+        currentPage={city.name}
+        title={t('parksIn', { location: city.name })}
+        description={t('parkCount', { count: parks.length })}
+      />
 
       {/* Parks Grid */}
       <div className="grid gap-6 md:grid-cols-2">
@@ -86,6 +108,6 @@ export default async function CityPage({ params }: CityPageProps) {
           />
         ))}
       </div>
-    </div>
+    </PageContainer>
   );
 }

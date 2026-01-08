@@ -19,6 +19,8 @@ import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { PageContainer } from '@/components/common/page-container';
+import { GlassCard } from '@/components/common/glass-card';
 
 interface ParkPageProps {
   params: Promise<{
@@ -40,12 +42,35 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     return { title: 'Park Not Found' };
   }
 
+  const backgroundImage = getParkBackgroundImage(parkSlug);
+  const ogImage = backgroundImage
+    ? `https://park.fan${backgroundImage}`
+    : 'https://park.fan/og-image.png';
+
   return {
     title: t('titleTemplate', { park: park.name }),
     description: t('metaDescriptionTemplate', { park: park.name }),
     openGraph: {
       title: park.name,
       description: t('metaDescriptionTemplate', { park: park.name }),
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `${park.name} - Theme Park Wait Times`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: park.name,
+      description: t('metaDescriptionTemplate', { park: park.name }),
+      images: [ogImage],
     },
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
@@ -158,19 +183,24 @@ export default async function ParkPage({ params }: ParkPageProps) {
   };
   const todaySchedule = getTodaySchedule();
 
-  // Construct breadcrumbs manually
-  const breadcrumbs: Breadcrumb[] = [
-    { name: tCommon('home'), url: '/' },
-    { name: continentName, url: `/parks/${continent}` },
-    { name: countryName, url: `/parks/${continent}/${country}` },
-    { name: cityName, url: `/parks/${continent}/${country}/${city}` },
-  ];
+  // Construct breadcrumbs using utility
+  const { generateParkBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const breadcrumbs = generateParkBreadcrumbs({
+    locale: locale as 'en' | 'de',
+    continent,
+    country,
+    city,
+    continentName,
+    countryName,
+    cityName,
+    homeLabel: tCommon('home'),
+  });
 
   return (
     <>
       <ParkBackground imageSrc={getParkBackgroundImage(parkSlug)} alt={park.name} />
 
-      <div className="container mx-auto px-4 py-8">
+      <PageContainer>
         <ParkStructuredData
           park={park}
           url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
@@ -185,75 +215,80 @@ export default async function ParkPage({ params }: ParkPageProps) {
           className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
-        {/* Park Header */}
-        <div className="mb-8">
-          <div className="bg-background/60 rounded-xl border p-6 shadow-sm backdrop-blur-md">
-            <div className="flex flex-wrap items-start justify-between gap-4">
-              <div className="flex-1">
-                <div className="mb-2 flex flex-wrap items-center gap-3">
-                  <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
-                  {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
-                  {park.id && (
-                    <div className="ml-auto">
-                      <ParkFavoriteButton parkId={park.id} />
-                    </div>
-                  )}
-                </div>
-                <div className="text-muted-foreground flex flex-wrap items-center gap-3">
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-4 w-4" />
-                    {cityName}, {tGeo(`countries.${country}` as 'countries.germany') || countryName}
-                  </span>
-                  {park.timezone && (
-                    <Badge variant="outline" className="gap-1 font-mono text-xs">
-                      <Clock className="h-3 w-3" />
-                      {park.timezone}
-                    </Badge>
-                  )}
+        <article itemScope itemType="https://schema.org/ThemePark">
+          {/* Park Header */}
+          <div className="mb-8">
+            <GlassCard variant="medium">
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                    <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
+                    {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
+                    {park.id && (
+                      <div className="ml-auto">
+                        <ParkFavoriteButton parkId={park.id} />
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                    <address className="flex items-center gap-1 not-italic">
+                      <MapPin className="h-4 w-4" aria-hidden="true" />
+                      <span>{cityName}</span>,{' '}
+                      <span>
+                        {tGeo(`countries.${country}` as 'countries.germany') || countryName}
+                      </span>
+                    </address>
+                    {park.timezone && (
+                      <Badge variant="outline" className="gap-1 font-mono text-xs">
+                        <Clock className="h-3 w-3" />
+                        {park.timezone}
+                      </Badge>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
+            </GlassCard>
           </div>
-        </div>
 
-        {/* Schedule & Weather Row */}
-        <div className="mb-8 grid gap-4 md:grid-cols-2">
-          {/* Today's Schedule with Current Time */}
-          <ParkTimeInfo
-            timezone={park.timezone}
-            todaySchedule={todaySchedule}
-            className="bg-background/60 border-primary/10 backdrop-blur-md"
-          />
-
-          {/* Weather */}
-          {park.weather?.current && (
-            <WeatherCard
-              weather={park.weather}
+          {/* Schedule & Weather Row */}
+          <div className="mb-8 grid gap-4 md:grid-cols-2">
+            {/* Today's Schedule with Current Time */}
+            <ParkTimeInfo
+              timezone={park.timezone}
+              todaySchedule={todaySchedule}
               className="bg-background/60 border-primary/10 backdrop-blur-md"
             />
-          )}
-        </div>
 
-        {/* Park Status Component */}
-        <ParkStatus park={park} variant="detailed" />
+            {/* Weather */}
+            {park.weather?.current && (
+              <WeatherCard
+                weather={park.weather}
+                className="bg-background/60 border-primary/10 backdrop-blur-md"
+              />
+            )}
+          </div>
 
-        <Separator className="my-8" />
+          {/* Park Status Component */}
+          <ParkStatus park={park} variant="detailed" />
 
-        {/* Tabs for Attractions, Shows, Restaurants */}
-        <TabsWithHash
-          defaultValue="attractions"
-          showsAvailable={park.shows && park.shows.length > 0}
-          restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
-          park={park}
-          calendarData={calendarData}
-          continent={continent}
-          country={country}
-          city={city}
-          parkSlug={parkSlug}
-          landNames={landNames}
-          attractionsByLand={attractionsByLand}
-        />
-      </div>
+          <Separator className="my-8" />
+
+          {/* Tabs for Attractions, Shows, Restaurants */}
+          <TabsWithHash
+            defaultValue="attractions"
+            showsAvailable={park.shows && park.shows.length > 0}
+            restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
+            park={park}
+            calendarData={calendarData}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            landNames={landNames}
+            attractionsByLand={attractionsByLand}
+          />
+        </article>
+      </PageContainer>
     </>
   );
 }

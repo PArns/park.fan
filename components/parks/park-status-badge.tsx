@@ -11,12 +11,10 @@ interface ParkStatusBadgeProps {
 export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const t = useTranslations('parks.status');
   const statusConfig = {
-    OPERATING:
-      'bg-emerald-600 hover:bg-emerald-700 text-white dark:bg-emerald-400 dark:text-slate-900',
-    DOWN: 'bg-orange-500 hover:bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900',
-    CLOSED: 'bg-rose-600 hover:bg-rose-700 text-white dark:bg-rose-400 dark:text-slate-900',
-    REFURBISHMENT:
-      'bg-slate-500 hover:bg-slate-600 text-white dark:bg-slate-400 dark:text-slate-900',
+    OPERATING: 'bg-status-operating hover:opacity-90 text-white',
+    DOWN: 'bg-status-down hover:opacity-90 text-white',
+    CLOSED: 'bg-status-closed hover:opacity-90 text-white',
+    REFURBISHMENT: 'bg-status-refurbishment hover:opacity-90 text-white',
   };
 
   const statusColor = statusConfig[status as keyof typeof statusConfig] || 'bg-slate-500';

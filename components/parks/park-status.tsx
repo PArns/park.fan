@@ -152,8 +152,8 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               'font-semibold',
                               occupancy.comparisonStatus === 'higher' ||
                                 occupancy.comparisonStatus === 'much_higher'
-                                ? 'text-red-600 dark:text-red-400'
-                                : 'text-green-600 dark:text-green-400'
+                                ? 'text-trend-up'
+                                : 'text-trend-down'
                             )}
                           >
                             {Math.abs(occupancy.comparedToTypical)}%{' '}
@@ -205,9 +205,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                               className={cn(
                                 'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
                                 (occupancy.trend === 'up' || occupancy.trend === 'increasing') &&
-                                  'bg-red-50 text-red-700 dark:bg-red-950/30 dark:text-red-400',
+                                  'bg-trend-up/10 text-trend-up',
                                 (occupancy.trend === 'down' || occupancy.trend === 'decreasing') &&
-                                  'bg-green-50 text-green-700 dark:bg-green-950/30 dark:text-green-400',
+                                  'bg-trend-down/10 text-trend-down',
                                 occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
                               )}
                             >
@@ -284,14 +284,14 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-2 pt-1 text-xs">
-                    <div className="rounded-md bg-green-50 px-2 py-1.5 text-center dark:bg-green-950/30">
-                      <div className="font-semibold text-green-700 dark:text-green-400">
+                    <div className="bg-status-operating/10 rounded-md px-2 py-1.5 text-center">
+                      <div className="text-status-operating font-semibold">
                         {stats.operatingAttractions}
                       </div>
                       <div className="text-muted-foreground">{t('operating')}</div>
                     </div>
-                    <div className="rounded-md bg-red-50 px-2 py-1.5 text-center dark:bg-red-950/30">
-                      <div className="font-semibold text-red-700 dark:text-red-400">
+                    <div className="bg-status-closed/10 rounded-md px-2 py-1.5 text-center">
+                      <div className="text-status-closed font-semibold">
                         {stats.closedAttractions}
                       </div>
                       <div className="text-muted-foreground">{tCommon('closed')}</div>

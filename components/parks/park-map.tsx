@@ -406,7 +406,9 @@ export function ParkMap({ park }: ParkMapProps) {
                   {attraction.status && (
                     <div className="mt-1 text-xs">
                       {t('status')}:{' '}
-                      <span className={isOperating ? 'text-green-600' : 'text-red-600'}>
+                      <span
+                        className={isOperating ? 'text-status-operating' : 'text-status-closed'}
+                      >
                         {tParks(`status.${attraction.status}`)}
                       </span>
                     </div>
