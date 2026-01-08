@@ -10,15 +10,20 @@ interface FooterProps {
 
 export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t">
+    <footer className="bg-muted/30 border-t" role="contentinfo">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-6">
           {/* Brand */}
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2" aria-label="park.fan - Home">
+          <section className="space-y-4 md:col-span-2">
+            <Link
+              href="/"
+              className="flex items-center gap-2"
+              aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
+            >
               <div
                 className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg"
                 aria-hidden="true"
@@ -27,114 +32,294 @@ export async function Footer({ locale }: FooterProps) {
               </div>
               <span className="text-xl font-bold">park.fan</span>
             </Link>
-            <p className="text-muted-foreground text-sm">{t('description')}</p>
-          </div>
-
-          {/* Explore */}
-          <div className="space-y-4">
-            <h3 className="font-semibold">{t('sections.explore')}</h3>
-            <nav className="flex flex-col gap-2 text-sm" aria-label="Explore parks by region">
-              <Link
-                href="/parks/europe"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Explore theme parks in Europe"
-              >
-                {t('regions.europe')}
-              </Link>
-              <Link
-                href="/parks/north-america"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Explore theme parks in North America"
-              >
-                {t('regions.northAmerica')}
-              </Link>
-              <Link
-                href="/parks/asia"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Explore theme parks in Asia"
-              >
-                {t('regions.asia')}
-              </Link>
-            </nav>
-          </div>
-
-          {/* Resources */}
-          <div className="space-y-4">
-            <h3 className="font-semibold">{t('sections.resources')}</h3>
-            <nav className="flex flex-col gap-2 text-sm" aria-label="Resources and external links">
+            <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
+            <nav
+              className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
+              aria-label="Developer resources and tools"
+            >
               <a
                 href="https://api.park.fan/api"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+                rel="noopener noreferrer nofollow"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
                 aria-label="park.fan API Documentation (opens in new tab)"
               >
                 {t('api')}
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
+              <span className="text-muted-foreground/60">•</span>
               <a
                 href="https://github.com/PArns"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+                rel="noopener noreferrer nofollow"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
                 aria-label="GitHub Profile (opens in new tab)"
               >
                 GitHub
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
+              <span className="text-muted-foreground/60">•</span>
               <a
                 href="https://arns.dev"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1"
+                rel="noopener noreferrer nofollow"
+                className="hover:text-foreground inline-flex items-center gap-1 transition-colors"
                 aria-label="Arns.dev website (opens in new tab)"
               >
                 Arns.dev
                 <ExternalLink className="h-3 w-3" aria-hidden="true" />
               </a>
             </nav>
-          </div>
+          </section>
 
-          {/* Legal */}
-          <div className="space-y-4">
-            <h3 className="font-semibold">{t('sections.legal')}</h3>
-            <nav className="flex flex-col gap-2 text-sm" aria-label="Legal information">
-              <Link
-                href="/impressum"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Impressum"
-              >
-                {t('impressum')}
-              </Link>
-              <Link
-                href="/datenschutz"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Datenschutzerklärung"
-              >
-                {t('datenschutz')}
-              </Link>
-            </nav>
-          </div>
+          {/* Popular Parks - Germany */}
+          <section className="space-y-4">
+            <h2 className="font-semibold">{t('sections.popularParks')}</h2>
+            <div className="space-y-3">
+              <div>
+                <Link
+                  href="/parks/europe/germany"
+                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
+                  aria-label={`${t('sections.germany')} - Theme Parks`}
+                >
+                  {t('sections.germany')}
+                </Link>
+                <nav
+                  className="flex flex-col gap-2 text-sm"
+                  aria-label="Popular theme parks in Germany"
+                >
+                  <Link
+                    href="/parks/europe/germany/rust/europa-park"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Europa-Park - Wait Times"
+                  >
+                    Europa-Park
+                  </Link>
+                  <Link
+                    href="/parks/europe/germany/bruhl/phantasialand"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Phantasialand - Wait Times"
+                  >
+                    Phantasialand
+                  </Link>
+                  <Link
+                    href="/parks/europe/germany/soltau/heide-park"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Heide-Park - Wait Times"
+                  >
+                    Heide-Park
+                  </Link>
+                  <Link
+                    href="/parks/europe/germany/bottrop/movie-park-germany"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Movie Park Germany - Wait Times"
+                  >
+                    Movie Park Germany
+                  </Link>
+                  <Link
+                    href="/parks/europe/netherlands/kaatsheuvel/efteling"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Efteling - Wait Times"
+                  >
+                    Efteling
+                  </Link>
+                </nav>
+              </div>
+            </div>
+          </section>
+
+          {/* Popular Parks - USA */}
+          <section className="space-y-4">
+            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="space-y-3">
+              <div>
+                <Link
+                  href="/parks/north-america/united-states"
+                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
+                  aria-label={`${t('sections.usa')} - Theme Parks`}
+                >
+                  {t('sections.usa')}
+                </Link>
+                <nav
+                  className="flex flex-col gap-2 text-sm"
+                  aria-label="Popular theme parks in USA"
+                >
+                  <Link
+                    href="/parks/north-america/united-states/orlando/walt-disney-world"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Walt Disney World - Wait Times"
+                  >
+                    Walt Disney World
+                  </Link>
+                  <Link
+                    href="/parks/north-america/united-states/orlando/universal-studios-florida"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Universal Studios - Wait Times"
+                  >
+                    Universal Studios
+                  </Link>
+                  <Link
+                    href="/parks/north-america/united-states/tampa/busch-gardens-tampa"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Busch Gardens Tampa - Wait Times"
+                  >
+                    Busch Gardens Tampa
+                  </Link>
+                  <Link
+                    href="/parks/north-america/united-states/sandusky/cedar-point"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Cedar Point - Wait Times"
+                  >
+                    Cedar Point
+                  </Link>
+                  <Link
+                    href="/parks/north-america/united-states/valencia/six-flags-magic-mountain"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Six Flags Magic Mountain - Wait Times"
+                  >
+                    Six Flags Magic Mountain
+                  </Link>
+                </nav>
+              </div>
+            </div>
+          </section>
+
+          {/* Popular Parks - France */}
+          <section className="space-y-4">
+            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="space-y-3">
+              <div>
+                <Link
+                  href="/parks/europe/france"
+                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
+                  aria-label={`${tGeo('countries.france')} - Theme Parks`}
+                >
+                  {tGeo('countries.france')}
+                </Link>
+                <nav
+                  className="flex flex-col gap-2 text-sm"
+                  aria-label={`Popular theme parks in ${tGeo('countries.france')}`}
+                >
+                  <Link
+                    href="/parks/europe/france/marne-la-vallee/disneyland-paris"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Disneyland Paris - Wait Times"
+                  >
+                    Disneyland Paris
+                  </Link>
+                  <Link
+                    href="/parks/europe/france/plailly/parc-asterix"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Parc Asterix - Wait Times"
+                  >
+                    Parc Asterix
+                  </Link>
+                  <Link
+                    href="/parks/europe/france/les-epesses/puy-du-fou"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Puy du Fou - Wait Times"
+                  >
+                    Puy du Fou
+                  </Link>
+                  <Link
+                    href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Futuroscope - Wait Times"
+                  >
+                    Futuroscope
+                  </Link>
+                  <Link
+                    href="/parks/europe/france/dolancourt/nigloland"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Nigloland - Wait Times"
+                  >
+                    Nigloland
+                  </Link>
+                </nav>
+              </div>
+            </div>
+          </section>
+
+          {/* Popular Parks - Japan */}
+          <section className="space-y-4">
+            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="space-y-3">
+              <div>
+                <Link
+                  href="/parks/asia/japan"
+                  className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
+                  aria-label={`${tGeo('countries.japan')} - Theme Parks`}
+                >
+                  {tGeo('countries.japan')}
+                </Link>
+                <nav
+                  className="flex flex-col gap-2 text-sm"
+                  aria-label={`Popular theme parks in ${tGeo('countries.japan')}`}
+                >
+                  <Link
+                    href="/parks/asia/japan/tokyo/tokyo-disneyland"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Tokyo Disneyland - Wait Times"
+                  >
+                    Tokyo Disneyland
+                  </Link>
+                  <Link
+                    href="/parks/asia/japan/tokyo/tokyo-disneysea"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Tokyo DisneySea - Wait Times"
+                  >
+                    Tokyo DisneySea
+                  </Link>
+                  <Link
+                    href="/parks/asia/japan/osaka/universal-studios-japan"
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                    aria-label="Universal Studios Japan - Wait Times"
+                  >
+                    Universal Studios Japan
+                  </Link>
+                </nav>
+              </div>
+            </div>
+          </section>
         </div>
 
         <Separator className="my-8" />
 
         <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
-          <div className="flex flex-col items-center gap-1">
+          <div className="flex flex-col items-center gap-1 text-center md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          <p>
-            Powered by{' '}
-            <a
-              href="https://arns.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit Arns.dev website (opens in new tab)"
+          <div className="flex items-center gap-4">
+            <Link
+              href="/impressum"
+              className="hover:text-foreground text-sm transition-colors"
+              aria-label={t('impressum')}
             >
-              Arns.dev
-            </a>
-          </p>
+              {t('impressum')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
+              href="/datenschutz"
+              className="hover:text-foreground text-sm transition-colors"
+              aria-label={t('datenschutz')}
+            >
+              {t('datenschutz')}
+            </Link>
+            <span className="text-muted-foreground/60 mx-2 flex items-center">•</span>
+            <p>
+              {t('poweredBy')}{' '}
+              <a
+                href="https://arns.dev"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="hover:text-foreground transition-colors"
+                aria-label="Visit Arns.dev website (opens in new tab)"
+              >
+                Arns.dev
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

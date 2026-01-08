@@ -30,7 +30,14 @@ export function OrganizationStructuredData() {
     name: 'park.fan',
     url: 'https://park.fan',
     logo: 'https://park.fan/icon.png',
+    description:
+      'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
     sameAs: ['https://x.com/arns_dev'],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'Customer Service',
+      url: 'https://park.fan',
+    },
   };
 
   return <JsonLd data={data} />;

@@ -88,8 +88,12 @@
   },
   "footer": {
     "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
+    "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt",
     "sections": {
       "explore": "Parks weltweit",
+      "popularParks": "Beliebte Parks",
+      "germany": "Deutschland",
+      "usa": "USA",
       "resources": "Entwickler & Tools",
       "legal": "Rechtliches"
     },
@@ -101,11 +105,12 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "datenschutz": "Datenschutzerklärung",
-    "privacy": "Privacy Policy",
+    "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt & Support",
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
-    "poweredBy": "Powered by Vercel"
+    "poweredBy": "Powered by",
+    "legalLinks": "Rechtliches"
   },
   "explore": {
     "title": "Parks in {location}",
@@ -481,6 +486,31 @@
     "attraction": {
       "titleTemplate": "{attraction} Wartezeit - {park}",
       "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
+    },
+    "continent": {
+      "titleTemplate": "Freizeitparks in {location}",
+      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Besucherprognosen."
+    },
+    "country": {
+      "titleTemplate": "Freizeitparks in {location}",
+      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten."
+    },
+    "city": {
+      "titleTemplate": "Freizeitparks in {city}, {country}",
+      "metaDescriptionTemplate": "Live-Wartezeiten und Besucherandrang für Freizeitparks in {city}. Plane deinen Besuch mit Echtzeit-Daten."
+    },
+    "search": {
+      "titleTemplate": "Suche: {query}",
+      "title": "Suchen",
+      "metaDescriptionTemplate": "Suche nach Freizeitparks, Attraktionen, Shows und Restaurants weltweit."
+    },
+    "notFound": {
+      "park": "Park nicht gefunden",
+      "attraction": "Attraktion nicht gefunden"
+    },
+    "imageAlt": {
+      "park": "{park} - Freizeitpark Wartezeiten",
+      "attraction": "{attraction} in {park} - Wartezeiten"
     }
   },
   "favorites": {

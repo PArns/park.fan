@@ -2,14 +2,14 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, AlertTriangle, Wrench, XCircle, MapPin, BarChart3 } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
-import type { AttractionStatus, QueueDataItem, Breadcrumb, StandbyQueue } from '@/lib/api/types';
+import type { AttractionStatus, QueueDataItem, StandbyQueue } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
@@ -46,10 +46,12 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
 
   if (!attraction) {
-    return { title: 'Attraction Not Found' };
+    const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
+    return { title: tNotFound('attraction') };
   }
 
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
+  const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
   // Get background image for OpenGraph
   const { getAttractionBackgroundImage } = await import('@/lib/utils/park-assets');
@@ -79,7 +81,10 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${attraction.name} at ${park?.name || ''} - Wait Times`,
+          alt: tImageAlt('attraction', {
+            attraction: attraction.name,
+            park: park?.name || '',
+          }),
         },
       ],
     },
@@ -104,17 +109,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
 export const revalidate = 300; // 5 minutes
 
-const statusConfig: Record<AttractionStatus, { icon: typeof Clock; color: string; label: string }> =
-  {
-    OPERATING: { icon: Clock, color: 'text-status-operating', label: 'Operating' },
-    DOWN: { icon: AlertTriangle, color: 'text-status-down', label: 'Temporarily Down' },
-    CLOSED: { icon: XCircle, color: 'text-status-closed', label: 'Closed' },
-    REFURBISHMENT: {
-      icon: Wrench,
-      color: 'text-status-refurbishment',
-      label: 'Under Refurbishment',
-    },
-  };
+// Status config will be created inside the component to use translations
 
 function getMainQueue(queues?: QueueDataItem[]): QueueDataItem | null {
   if (!queues || queues.length === 0) return null;
@@ -149,6 +144,21 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Force closed status if park is not operating
   const isParkClosed = park.status !== 'OPERATING';
   const status = isParkClosed ? 'CLOSED' : mainQueue?.status || attraction.status || 'CLOSED';
+
+  // Create status config with translations
+  const statusConfig: Record<
+    AttractionStatus,
+    { icon: typeof Clock; color: string; label: string }
+  > = {
+    OPERATING: { icon: Clock, color: 'text-status-operating', label: t('status.operating') },
+    DOWN: { icon: AlertTriangle, color: 'text-status-down', label: t('status.down') },
+    CLOSED: { icon: XCircle, color: 'text-status-closed', label: t('status.closed') },
+    REFURBISHMENT: {
+      icon: Wrench,
+      color: 'text-status-refurbishment',
+      label: t('status.refurbishment'),
+    },
+  };
   const config = statusConfig[status];
   const StatusIcon = config.icon;
 
@@ -177,7 +187,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   });
 
   const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
-  const parkUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   return (
     <>
@@ -258,7 +267,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             </StatusInfoCard>
 
             {/* Status */}
-            <StatusInfoCard title="Status" icon={StatusIcon}>
+            <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
                 className={`text-base ${
                   status === 'OPERATING'
@@ -283,7 +292,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
             {/* Prediction Accuracy */}
             {attraction.predictionAccuracy && (
-              <StatusInfoCard title="Prediction Accuracy" icon={BarChart3}>
+              <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
                 <Badge
                   variant="outline"
                   className={`text-base ${
@@ -335,7 +344,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Other Queue Types */}
           {attraction.queues && attraction.queues.length > 1 && (
             <section>
-              <h2 className="mb-4 text-xl font-semibold">Other Queue Options</h2>
+              <h2 className="mb-4 text-xl font-semibold">{t('otherQueues')}</h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {attraction.queues
                   .filter((q) => q.queueType !== 'STANDBY')

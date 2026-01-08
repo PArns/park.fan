@@ -29,6 +29,29 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   return {
     title: t('title'),
     description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}`,
+      siteName: 'park.fan',
+      type: 'website',
+      images: [
+        {
+          url: 'https://park.fan/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: t('title'),
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: ['https://park.fan/og-image.png'],
+    },
     alternates: {
       canonical: `/${locale}`,
       languages: {

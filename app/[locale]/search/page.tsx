@@ -21,11 +21,35 @@ export async function generateMetadata({
 }: SearchPageProps): Promise<Metadata> {
   const { locale } = await params;
   const { q } = await searchParams;
+  const t = await getTranslations({ locale, namespace: 'seo.search' });
+
   return {
-    title: q ? `Search: ${q}` : 'Search',
-    description: 'Search theme parks, attractions, shows, and restaurants worldwide.',
+    title: q ? t('titleTemplate', { query: q }) : t('title'),
+    description: t('metaDescriptionTemplate'),
+    openGraph: {
+      title: q ? t('titleTemplate', { query: q }) : t('title'),
+      description: t('metaDescriptionTemplate'),
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      url: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+      siteName: 'park.fan',
+      images: [
+        {
+          url: 'https://park.fan/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: q ? t('titleTemplate', { query: q }) : t('title'),
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: q ? t('titleTemplate', { query: q }) : t('title'),
+      description: t('metaDescriptionTemplate'),
+      images: ['https://park.fan/og-image.png'],
+    },
     alternates: {
-      canonical: `/${locale}/search`,
+      canonical: `/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       languages: {
         en: '/en/search',
         de: '/de/search',
@@ -55,7 +79,7 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-function SearchResultCard({ result, locale }: { result: SearchResultItem; locale: string }) {
+function SearchResultCard({ result }: { result: SearchResultItem; locale: string }) {
   const t = useTranslations('common');
   const tGeo = useTranslations('geo');
   const Icon = typeIcons[result.type];

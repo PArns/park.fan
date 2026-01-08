@@ -12,8 +12,9 @@ export function BuildInfo() {
       <span>
         Version <span className="font-mono">{buildInfo.buildNumber}</span>
       </span>
+      <span className="text-muted-foreground/60 hidden items-center md:inline-flex">•</span>
       <span className="hidden md:inline">
-        • Built{' '}
+        Built{' '}
         {buildDate.toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'short',

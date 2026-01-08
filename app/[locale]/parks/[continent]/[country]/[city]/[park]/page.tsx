@@ -15,7 +15,7 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { Metadata } from 'next';
-import type { ParkAttraction, Breadcrumb } from '@/lib/api/types';
+import type { ParkAttraction } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -35,11 +35,13 @@ interface ParkPageProps {
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
   const t = await getTranslations({ locale, namespace: 'seo.parks' });
+  const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
+  const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
   if (!park) {
-    return { title: 'Park Not Found' };
+    return { title: tNotFound('park') };
   }
 
   const backgroundImage = getParkBackgroundImage(parkSlug);
@@ -62,7 +64,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${park.name} - Theme Park Wait Times`,
+          alt: tImageAlt('park', { park: park.name }),
         },
       ],
     },

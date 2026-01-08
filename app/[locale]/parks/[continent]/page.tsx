@@ -6,7 +6,6 @@ import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import type { Metadata } from 'next';
-import type { Breadcrumb } from '@/lib/api/types';
 
 interface ContinentPageProps {
   params: Promise<{ locale: string; continent: string }>;
@@ -20,14 +19,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ContinentPageProps): Promise<Metadata> {
   const { locale, continent } = await params;
-  const continentName = continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
+  const t = await getTranslations({ locale, namespace: 'seo.continent' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
+
+  const continentName = tGeo.has(`continents.${continent}`)
+    ? tGeo(`continents.${continent}`)
+    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
 
   return {
-    title: `Parks in ${continentName}`,
-    description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+    title: t('titleTemplate', { location: continentName }),
+    description: t('metaDescriptionTemplate', { location: continentName }),
     openGraph: {
-      title: `Theme Parks in ${continentName}`,
-      description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+      title: t('titleTemplate', { location: continentName }),
+      description: t('metaDescriptionTemplate', { location: continentName }),
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}`,
@@ -37,14 +41,14 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
           url: 'https://park.fan/og-image.png',
           width: 1200,
           height: 630,
-          alt: `Theme Parks in ${continentName}`,
+          alt: t('titleTemplate', { location: continentName }),
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Theme Parks in ${continentName}`,
-      description: `Explore theme parks in ${continentName} with real-time wait times and crowd predictions.`,
+      title: t('titleTemplate', { location: continentName }),
+      description: t('metaDescriptionTemplate', { location: continentName }),
       images: ['https://park.fan/og-image.png'],
     },
     alternates: {
@@ -117,7 +121,11 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
 
   // Create breadcrumbs for continent page
-  const breadcrumbs: Breadcrumb[] = [{ name: tExplore('breadcrumbs.home'), url: '/' }];
+  const tCommon = await getTranslations('common');
+  const { generateContinentBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const breadcrumbs = generateContinentBreadcrumbs({
+    homeLabel: tCommon('home'),
+  });
 
   return (
     <PageContainer>

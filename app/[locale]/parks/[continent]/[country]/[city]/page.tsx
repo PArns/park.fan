@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
-import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import type { Metadata } from 'next';
@@ -12,40 +11,50 @@ interface CityPageProps {
 }
 
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
-  const { locale, continent, country, city } = await params;
-  const cityName = city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  const countryName = country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const { locale, continent, country, city: citySlug } = await params;
+  const t = await getTranslations({ locale, namespace: 'seo.city' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
+
+  // Try to get city name from API data, fallback to slug formatting
+  const response = await getCitiesWithParks(continent, country).catch(() => null);
+  const city = response?.data?.find((c) => c.slug === citySlug);
+  const cityName =
+    city?.name || citySlug.charAt(0).toUpperCase() + citySlug.slice(1).replace(/-/g, ' ');
+
+  const countryName = tGeo.has(`countries.${country}`)
+    ? tGeo(`countries.${country}`)
+    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   return {
-    title: `Theme Parks in ${cityName}, ${countryName}`,
-    description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+    title: t('titleTemplate', { city: cityName, country: countryName }),
+    description: t('metaDescriptionTemplate', { city: cityName }),
     openGraph: {
-      title: `Theme Parks in ${cityName}, ${countryName}`,
-      description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+      title: t('titleTemplate', { city: cityName, country: countryName }),
+      description: t('metaDescriptionTemplate', { city: cityName }),
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
-      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}`,
+      url: `https://park.fan/${locale}/parks/${continent}/${country}/${citySlug}`,
       siteName: 'park.fan',
       images: [
         {
           url: 'https://park.fan/og-image.png',
           width: 1200,
           height: 630,
-          alt: `Theme Parks in ${cityName}, ${countryName}`,
+          alt: t('titleTemplate', { city: cityName, country: countryName }),
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Theme Parks in ${cityName}, ${countryName}`,
-      description: `Live wait times and crowd levels for theme parks in ${cityName}. Plan your visit with real-time data.`,
+      title: t('titleTemplate', { city: cityName, country: countryName }),
+      description: t('metaDescriptionTemplate', { city: cityName }),
       images: ['https://park.fan/og-image.png'],
     },
     alternates: {
-      canonical: `/${locale}/parks/${continent}/${country}/${city}`,
+      canonical: `/${locale}/parks/${continent}/${country}/${citySlug}`,
       languages: {
-        en: `/en/parks/${continent}/${country}/${city}`,
-        de: `/de/parks/${continent}/${country}/${city}`,
+        en: `/en/parks/${continent}/${country}/${citySlug}`,
+        de: `/de/parks/${continent}/${country}/${citySlug}`,
       },
     },
   };
@@ -58,8 +67,9 @@ export default async function CityPage({ params }: CityPageProps) {
   setRequestLocale(locale);
 
   const t = await getTranslations('geo');
+  const tCommon = await getTranslations('common');
 
-  // Fetch cities with parks and breadcrumbs
+  // Fetch cities with parks
   const response = await getCitiesWithParks(continent, country).catch(() => null);
 
   if (!response || !response.data) {
@@ -74,11 +84,25 @@ export default async function CityPage({ params }: CityPageProps) {
   }
 
   const { parks } = city;
-  const { breadcrumbs } = response;
 
+  // Get translated names
+  const continentName = t.has(`continents.${continent}`)
+    ? t(`continents.${continent}`)
+    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
   const countryName = t.has(`countries.${country}`)
     ? t(`countries.${country}`)
     : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+
+  // Generate breadcrumbs with translations
+  const { generateCityBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const breadcrumbs = generateCityBreadcrumbs({
+    locale: locale as 'en' | 'de',
+    continent,
+    country,
+    continentName,
+    countryName,
+    homeLabel: tCommon('home'),
+  });
 
   return (
     <PageContainer>

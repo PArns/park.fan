@@ -88,8 +88,12 @@
   },
   "footer": {
     "description": "Live wait times and AI-powered crowd predictions for 142+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
+    "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit",
     "sections": {
       "explore": "Parks Worldwide",
+      "popularParks": "Popular Parks",
+      "germany": "Germany",
+      "usa": "United States",
       "resources": "Developers & Tools",
       "legal": "Legal"
     },
@@ -105,7 +109,8 @@
     "terms": "Terms of Service",
     "contact": "Contact & Support",
     "copyright": "© {year} park.fan. All rights reserved.",
-    "poweredBy": "Powered by Vercel"
+    "poweredBy": "Powered by",
+    "legalLinks": "Legal"
   },
   "explore": {
     "title": "Parks in {location}",
@@ -474,7 +479,7 @@
       "description": "Maximize your visit with real-time wait times, AI predictions, and in-park navigation. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
-      "title": "Theme Parks Worldwde - park.fan",
+      "title": "Theme Parks Worldwide - park.fan",
       "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
       "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data, forecasts, and in-park navigation.",
       "titleTemplate": "{park} Wait Times & Predictions"
@@ -482,6 +487,31 @@
     "attraction": {
       "titleTemplate": "{attraction} Wait Time - {park}",
       "metaDescriptionTemplate": "Current wait times and predictions for {attraction} at {park}. Check live queue data and crowd levels."
+    },
+    "continent": {
+      "titleTemplate": "Theme Parks in {location}",
+      "metaDescriptionTemplate": "Explore theme parks in {location} with real-time wait times and crowd predictions."
+    },
+    "country": {
+      "titleTemplate": "Theme Parks in {location}",
+      "metaDescriptionTemplate": "Discover theme parks in {location} with live wait times, crowd predictions, and schedules."
+    },
+    "city": {
+      "titleTemplate": "Theme Parks in {city}, {country}",
+      "metaDescriptionTemplate": "Live wait times and crowd levels for theme parks in {city}. Plan your visit with real-time data."
+    },
+    "search": {
+      "titleTemplate": "Search: {query}",
+      "title": "Search",
+      "metaDescriptionTemplate": "Search theme parks, attractions, shows, and restaurants worldwide."
+    },
+    "notFound": {
+      "park": "Park Not Found",
+      "attraction": "Attraction Not Found"
+    },
+    "imageAlt": {
+      "park": "{park} - Theme Park Wait Times",
+      "attraction": "{attraction} at {park} - Wait Times"
     }
   },
   "favorites": {

@@ -2,10 +2,59 @@ import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/routing';
 
 /**
+ * Generate breadcrumbs for continent pages
+ */
+export function generateContinentBreadcrumbs({ homeLabel }: { homeLabel: string }): Breadcrumb[] {
+  return [{ name: homeLabel, url: '/' }];
+}
+
+/**
+ * Generate breadcrumbs for country pages
+ */
+export function generateCountryBreadcrumbs({
+  continent,
+  continentName,
+  homeLabel,
+}: {
+  locale: Locale;
+  continent: string;
+  continentName: string;
+  homeLabel: string;
+}): Breadcrumb[] {
+  return [
+    { name: homeLabel, url: '/' },
+    { name: continentName, url: `/parks/${continent}` },
+  ];
+}
+
+/**
+ * Generate breadcrumbs for city pages
+ */
+export function generateCityBreadcrumbs({
+  continent,
+  country,
+  continentName,
+  countryName,
+  homeLabel,
+}: {
+  locale: Locale;
+  continent: string;
+  country: string;
+  continentName: string;
+  countryName: string;
+  homeLabel: string;
+}): Breadcrumb[] {
+  return [
+    { name: homeLabel, url: '/' },
+    { name: continentName, url: `/parks/${continent}` },
+    { name: countryName, url: `/parks/${continent}/${country}` },
+  ];
+}
+
+/**
  * Generate breadcrumbs for park pages
  */
 export function generateParkBreadcrumbs({
-  locale,
   continent,
   country,
   city,
@@ -35,7 +84,6 @@ export function generateParkBreadcrumbs({
  * Generate breadcrumbs for attraction pages
  */
 export function generateAttractionBreadcrumbs({
-  locale,
   continent,
   country,
   city,
