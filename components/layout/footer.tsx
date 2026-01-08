@@ -94,27 +94,20 @@ export function Footer() {
           {/* Legal */}
           <div className="space-y-4">
             <h3 className="font-semibold">{t('sections.legal')}</h3>
-            <nav className="flex flex-col gap-2 text-sm" aria-label="Legal information and contact">
+            <nav className="flex flex-col gap-2 text-sm" aria-label="Legal information">
               <Link
-                href="/privacy"
+                href="/impressum"
                 className="text-muted-foreground hover:text-foreground"
-                aria-label="Privacy Policy"
+                aria-label="Impressum"
               >
-                {t('privacy')}
+                {t('impressum')}
               </Link>
               <Link
-                href="/terms"
+                href="/datenschutz"
                 className="text-muted-foreground hover:text-foreground"
-                aria-label="Terms of Service"
+                aria-label="Datenschutzerklärung"
               >
-                {t('terms')}
-              </Link>
-              <Link
-                href="/contact"
-                className="text-muted-foreground hover:text-foreground"
-                aria-label="Contact Us"
-              >
-                {t('contact')}
+                {t('datenschutz')}
               </Link>
             </nav>
           </div>

@@ -91,7 +91,7 @@
     "sections": {
       "explore": "Parks Worldwide",
       "resources": "Developers & Tools",
-      "legal": "Legal & Contact"
+      "legal": "Legal"
     },
     "regions": {
       "europe": "Theme Parks in Europe",
@@ -99,6 +99,8 @@
       "asia": "Theme Parks in Asia"
     },
     "api": "API Documentation",
+    "impressum": "Imprint",
+    "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact & Support",
@@ -491,5 +493,13 @@
     "restaurants": "Restaurants",
     "tooltip": "Add to favorites to see it on the homepage",
     "locationHint": "Enable location access to sort by distance"
+  },
+  "impressum": {
+    "title": "Imprint - park.fan",
+    "description": "Legal information and imprint for park.fan"
+  },
+  "datenschutz": {
+    "title": "Privacy Policy - park.fan",
+    "description": "Privacy policy and data protection information for park.fan"
   }
 }

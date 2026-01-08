@@ -91,7 +91,7 @@
     "sections": {
       "explore": "Parks weltweit",
       "resources": "Entwickler & Tools",
-      "legal": "Rechtliches & Kontakt"
+      "legal": "Rechtliches"
     },
     "regions": {
       "europe": "Freizeitparks in Europa",
@@ -99,7 +99,9 @@
       "asia": "Freizeitparks in Asien"
     },
     "api": "API Dokumentation",
-    "privacy": "Datenschutzerklärung",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutzerklärung",
+    "privacy": "Privacy Policy",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt & Support",
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
@@ -490,5 +492,13 @@
     "restaurants": "Restaurants",
     "tooltip": "Zu Favoriten hinzufügen, um es auf der Startseite zu sehen",
     "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren"
+  },
+  "impressum": {
+    "title": "Impressum - park.fan",
+    "description": "Rechtliche Informationen und Impressum für park.fan"
+  },
+  "datenschutz": {
+    "title": "Datenschutzerklärung - park.fan",
+    "description": "Datenschutzerklärung und Datenschutzinformationen für park.fan"
   }
 }
