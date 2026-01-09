@@ -48,6 +48,8 @@
     "searchPlaceholder": "Suchen...",
     "at": "in {park}",
     "avgWait": "Ø",
+    "min": "Min",
+    "max": "Max",
     "of": "von",
     "total": "gesamt",
     "operating": "in Betrieb",
@@ -321,13 +323,29 @@
     "predictions": "Wartezeit-Vorhersage",
     "todaySchedule": "Heutige Öffnungszeiten",
     "history": "Wartezeit-Verlauf",
+    "historyCalendar": "Wartezeit-Verlauf",
+    "noHistoryData": "Keine historischen Daten für diese Attraktion verfügbar.",
     "statistics": "Statistiken",
     "noWaitTime": "Keine Wartezeit-Daten",
     "predictionAccuracy": "Vorhersage-Genauigkeit",
     "otherQueues": "Weitere Warteschlangen",
     "returnTime": "Rückkehr",
     "peak": "Tageshoch: {time} min",
-    "return": "Rückkehr: {start} - {end}"
+    "return": "Rückkehr: {start} - {end}",
+    "crowdLevels": {
+      "very_low": "Sehr niedrig",
+      "low": "Niedrig",
+      "moderate": "Moderat",
+      "high": "Hoch",
+      "very_high": "Sehr hoch",
+      "extreme": "Extrem"
+    },
+    "calendarView": {
+      "month": "Monat",
+      "next": "Weiter",
+      "previous": "Zurück",
+      "today": "Heute"
+    }
   },
   "calendar": {
     "legend": "Legende",

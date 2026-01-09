@@ -8,6 +8,7 @@ import type {
   WeatherData,
   ParkDailyPrediction,
   HolidayResponse,
+  AttractionResponse,
 } from './types';
 
 // Cache tags for revalidation
@@ -159,6 +160,24 @@ export async function getParkHolidays(
     {
       params: { year },
       next: { revalidate: CACHE_TTL.holidays },
+    }
+  );
+}
+
+/**
+ * Get a specific attraction by geographic path with full data including history
+ */
+export async function getAttractionByGeoPath(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<AttractionResponse> {
+  return api.get<AttractionResponse>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+    {
+      next: { revalidate: CACHE_TTL.parkDetail },
     }
   );
 }

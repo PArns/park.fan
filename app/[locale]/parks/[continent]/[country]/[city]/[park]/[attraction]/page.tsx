@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import type { AttractionStatus, QueueDataItem, StandbyQueue } from '@/lib/api/types';
@@ -20,6 +20,7 @@ import {
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
+import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -131,9 +132,22 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
 
-  // Fetch park and find attraction
-  const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
-  const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
+  // Fetch park and attraction data
+  const [park, attractionData] = await Promise.all([
+    getParkByGeoPath(continent, country, city, parkSlug).catch(() => null),
+    getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug).catch(() => null),
+  ]);
+
+  // Find attraction in park data and merge with full attraction data (including history)
+  const parkAttraction = park?.attractions?.find((a) => a.slug === attractionSlug);
+
+  // Merge history data from attractionData into parkAttraction
+  const attraction = parkAttraction
+    ? {
+        ...parkAttraction,
+        history: attractionData?.history || parkAttraction.history,
+      }
+    : null;
 
   if (!park || !attraction) {
     notFound();
@@ -343,7 +357,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           {/* Other Queue Types */}
           {attraction.queues && attraction.queues.length > 1 && (
-            <section>
+            <section className="mb-8">
               <h2 className="mb-4 text-xl font-semibold">{t('otherQueues')}</h2>
               <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {attraction.queues
@@ -379,6 +393,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </div>
             </section>
           )}
+
+          {/* History Calendar */}
+          <section className="mb-8">
+            <AttractionCalendar attraction={attraction} park={park} />
+          </section>
         </article>
       </PageContainer>
     </>

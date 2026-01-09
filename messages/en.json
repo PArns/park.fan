@@ -23,6 +23,8 @@
     "searchPlaceholder": "Search...",
     "at": "at {park}",
     "avgWait": "avg",
+    "min": "Min",
+    "max": "Max",
     "of": "of",
     "total": "total",
     "operating": "operating",
@@ -321,13 +323,29 @@
     "predictions": "Wait Time Predictions",
     "todaySchedule": "Today's Hours",
     "history": "Wait Time History",
+    "historyCalendar": "Wait Time History",
+    "noHistoryData": "No historical data available for this attraction.",
     "statistics": "Statistics",
     "noWaitTime": "No wait time data",
     "predictionAccuracy": "Prediction Accuracy",
     "otherQueues": "Other Queue Options",
     "returnTime": "Return",
     "peak": "Today's Peak: {time} min",
-    "return": "Return: {start} - {end}"
+    "return": "Return: {start} - {end}",
+    "crowdLevels": {
+      "very_low": "Very Low",
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High",
+      "very_high": "Very High",
+      "extreme": "Extreme"
+    },
+    "calendarView": {
+      "month": "Month",
+      "next": "Next",
+      "previous": "Previous",
+      "today": "Today"
+    }
   },
   "calendar": {
     "legend": "Legend",

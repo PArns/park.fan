@@ -266,6 +266,7 @@ export interface ParkAttraction {
   crowdLevel?: CrowdLevel;
   trend?: TrendDirection;
   statistics?: AttractionStatistics;
+  history?: AttractionHistoryDay[];
 }
 
 export interface ShowtimeEntry {
@@ -362,6 +363,16 @@ export interface AttractionResponse {
   } | null;
   statistics?: AttractionStatistics;
   predictionAccuracy?: PredictionAccuracy | null;
+  history?: AttractionHistoryDay[];
+}
+
+export interface AttractionHistoryDay {
+  date: string;
+  utilization: CrowdLevel;
+  hourlyP90: Array<{
+    hour: string;
+    value: number;
+  }>;
 }
 
 export interface AttractionStatistics {
