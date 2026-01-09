@@ -253,6 +253,7 @@ export interface ParkAttraction {
   id: string;
   name: string;
   slug: string;
+  url?: string; // Geographic URL from API (e.g., /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron)
   latitude: number | null;
   longitude: number | null;
   queues?: QueueDataItem[];

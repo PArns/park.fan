@@ -89,47 +89,76 @@ export async function getParksByCity(
 }
 
 /**
- * Get park schedule
+ * Get park schedule (geographic route)
  */
 export async function getParkSchedule(
-  slug: string,
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
   from: string,
   to: string
 ): Promise<{ schedule: ScheduleItem[] }> {
-  return api.get<{ schedule: ScheduleItem[] }>(`/v1/parks/${slug}/schedule`, {
-    params: { from, to },
-    next: { revalidate: CACHE_TTL.calendar, tags: [PARK_CACHE_TAGS.schedule(slug)] },
-  });
+  return api.get<{ schedule: ScheduleItem[] }>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/schedule`,
+    {
+      params: { from, to },
+      next: { revalidate: CACHE_TTL.calendar, tags: [PARK_CACHE_TAGS.schedule(parkSlug)] },
+    }
+  );
 }
 
 /**
- * Get park weather forecast (16 days)
+ * Get park weather forecast (16 days) - geographic route
  */
-export async function getParkWeather(slug: string): Promise<WeatherData> {
-  return api.get<WeatherData>(`/v1/parks/${slug}/weather/forecast`, {
-    next: { revalidate: CACHE_TTL.weather, tags: [PARK_CACHE_TAGS.weather(slug)] },
-  });
+export async function getParkWeather(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<WeatherData> {
+  return api.get<WeatherData>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/weather/forecast`,
+    {
+      next: { revalidate: CACHE_TTL.weather, tags: [PARK_CACHE_TAGS.weather(parkSlug)] },
+    }
+  );
 }
 
 /**
- * Get yearly crowd predictions
+ * Get yearly crowd predictions (geographic route)
  */
-export async function getParkYearlyPredictions(slug: string): Promise<{
+export async function getParkYearlyPredictions(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<{
   park: { id: string; name: string; slug: string };
   predictions: ParkDailyPrediction[];
   generatedAt: string;
 }> {
-  return api.get(`/v1/parks/${slug}/predictions/yearly`, {
-    next: { revalidate: CACHE_TTL.predictions, tags: [PARK_CACHE_TAGS.predictions(slug)] },
+  return api.get(`/v1/parks/${continent}/${country}/${city}/${parkSlug}/predictions/yearly`, {
+    next: { revalidate: CACHE_TTL.predictions, tags: [PARK_CACHE_TAGS.predictions(parkSlug)] },
   });
 }
 
 /**
- * Get holidays for a park's country
+ * Get holidays for a park's country (geographic route)
+ * Note: Holidays are also included in the integrated calendar endpoint
  */
-export async function getParkHolidays(slug: string, year: number): Promise<HolidayResponse> {
-  return api.get<HolidayResponse>(`/v1/parks/${slug}/holidays`, {
-    params: { year },
-    next: { revalidate: CACHE_TTL.holidays },
-  });
+export async function getParkHolidays(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  year: number
+): Promise<HolidayResponse> {
+  return api.get<HolidayResponse>(
+    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/holidays`,
+    {
+      params: { year },
+      next: { revalidate: CACHE_TTL.holidays },
+    }
+  );
 }

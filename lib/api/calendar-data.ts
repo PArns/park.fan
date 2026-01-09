@@ -12,16 +12,20 @@ const getApiBaseUrl = () => {
 };
 
 /**
- * Fetch holidays for a specific park and year
+ * Fetch holidays for a specific park and year (geographic route)
+ * Note: Holidays are also included in the integrated calendar endpoint
  */
 export async function getParkHolidays(
+  continent: string,
+  country: string,
+  city: string,
   parkSlug: string,
   year: number = new Date().getFullYear()
 ): Promise<HolidayItem[]> {
   try {
     const API_BASE_URL = getApiBaseUrl();
-    // Use the park-specific holiday endpoint found in Swagger: /v1/parks/{slug}/holidays
-    const url = `${API_BASE_URL}/v1/parks/${parkSlug}/holidays?year=${year}`;
+    // Use the geographic holiday endpoint: /v1/parks/{continent}/{country}/{city}/{parkSlug}/holidays
+    const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/holidays?year=${year}`;
 
     console.log(`[Calendar] Fetching holidays from: ${url}`);
 
@@ -50,16 +54,22 @@ export async function getParkHolidays(
 }
 
 /**
- * Fetch holidays for calendar display using park slug
+ * Fetch holidays for calendar display using geographic path
  * Returns holidays for current year and next year
+ * Note: Consider using the integrated calendar endpoint instead, which includes holidays
  */
-export async function getCalendarHolidays(parkSlug: string): Promise<HolidayItem[]> {
+export async function getCalendarHolidays(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<HolidayItem[]> {
   const currentYear = new Date().getFullYear();
 
   // Fetch current year and next year holidays
   const [currentYearHolidays, nextYearHolidays] = await Promise.all([
-    getParkHolidays(parkSlug, currentYear),
-    getParkHolidays(parkSlug, currentYear + 1),
+    getParkHolidays(continent, country, city, parkSlug, currentYear),
+    getParkHolidays(continent, country, city, parkSlug, currentYear + 1),
   ]);
 
   return [...currentYearHolidays, ...nextYearHolidays];

@@ -79,44 +79,39 @@ function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string 
 }
 
 function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
-  // If it's a FavoriteAttraction with url, use that
-  // Check if attraction has url property (FavoriteAttraction)
-  if ('url' in attraction) {
-    const favoriteAttraction = attraction as FavoriteAttraction;
-    if (favoriteAttraction.url) {
-      // Convert API URL to frontend URL
-      // Backend returns: /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron
-      // Frontend needs: /parks/europe/germany/bruhl/phantasialand/taron
-      if (favoriteAttraction.url.startsWith('/v1/parks/')) {
-        // Remove /v1 prefix and /attractions/ segment
-        const url = favoriteAttraction.url
-          .replace('/v1/parks/', '/parks/')
-          .replace('/attractions/', '/');
-        // Ensure URL is complete (has all segments)
-        if (url.startsWith('/parks/') && url.split('/').length >= 6) {
-          return url;
-        }
-      }
-      // If it's already a frontend URL, validate and use it
-      if (favoriteAttraction.url.startsWith('/parks/')) {
-        // Ensure it's a complete URL (has all segments: continent/country/city/park/attraction)
-        const segments = favoriteAttraction.url.split('/').filter(Boolean);
-        if (segments.length >= 6 && segments[0] === 'parks') {
-          return favoriteAttraction.url;
-        }
+  // Check if attraction has url property (now available in both ParkAttraction and FavoriteAttraction)
+  if ('url' in attraction && attraction.url) {
+    // Convert API URL to frontend URL
+    // Backend returns: /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron
+    // Frontend needs: /parks/europe/germany/bruhl/phantasialand/taron
+    if (attraction.url.startsWith('/v1/parks/')) {
+      // Remove /v1 prefix and /attractions/ segment
+      const url = attraction.url.replace('/v1/parks/', '/parks/').replace('/attractions/', '/');
+      // Ensure URL is complete (has all segments)
+      if (url.startsWith('/parks/') && url.split('/').length >= 6) {
+        return url;
       }
     }
-    // If no URL or incomplete URL, construct it from park data
-    if (
-      favoriteAttraction.park &&
-      favoriteAttraction.park.continent &&
-      favoriteAttraction.park.country &&
-      favoriteAttraction.park.city
-    ) {
-      return `/parks/${favoriteAttraction.park.continent}/${favoriteAttraction.park.country}/${favoriteAttraction.park.city}/${favoriteAttraction.park.slug}/${attraction.slug}`;
+    // If it's already a frontend URL, validate and use it
+    if (attraction.url.startsWith('/parks/')) {
+      // Ensure it's a complete URL (has all segments: continent/country/city/park/attraction)
+      const segments = attraction.url.split('/').filter(Boolean);
+      if (segments.length >= 6 && segments[0] === 'parks') {
+        return attraction.url;
+      }
     }
   }
-  // Otherwise use parkPath (for ParkAttraction on park detail pages)
+
+  // For FavoriteAttraction, try to construct from park data if available
+  if ('park' in attraction && attraction.park) {
+    const favoriteAttraction = attraction as FavoriteAttraction;
+    const park = favoriteAttraction.park;
+    if (park && park.continent && park.country && park.city) {
+      return `/parks/${park.continent}/${park.country}/${park.city}/${park.slug}/${attraction.slug}`;
+    }
+  }
+
+  // Fallback: use parkPath (for ParkAttraction on park detail pages)
   if (parkPath) {
     return `${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire';
   }
