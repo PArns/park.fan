@@ -334,11 +334,11 @@ export function FavoritesSection() {
               </>
             )}
 
-            {/* Attractions (Rides) */}
+            {/* Attractions */}
             {favoritesData.attractions.length > 0 && (
               <>
                 <div>
-                  <h3 className="mb-4 text-lg font-semibold">{t('rides')}</h3>
+                  <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {favoritesData.attractions.map((attraction) => (
                       <AttractionCard

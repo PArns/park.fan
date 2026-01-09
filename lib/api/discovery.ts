@@ -93,7 +93,7 @@ export async function getCitiesInCountry(
 }
 
 /**
- * Get nearby parks or rides based on user location
+ * Get nearby parks or attractions based on user location
  * Client-side only - requires user coordinates
  * Uses Next.js API route to avoid CORS issues
  */

@@ -7,7 +7,7 @@ export interface UserLocation {
   longitude: number;
 }
 
-export interface RideWithDistance {
+export interface AttractionWithDistance {
   id: string;
   name: string;
   slug: string;
@@ -47,9 +47,9 @@ export interface NearbyParkInfo {
   backgroundImage?: string | null;
 }
 
-export interface NearbyRidesData {
+export interface NearbyAttractionsData {
   park: NearbyParkInfo;
-  rides: RideWithDistance[];
+  attractions: AttractionWithDistance[];
 }
 
 export interface ParkWithDistance {
@@ -90,5 +90,5 @@ export interface NearbyParksData {
 export interface NearbyResponse {
   type: 'in_park' | 'nearby_parks';
   userLocation: UserLocation;
-  data: NearbyRidesData | NearbyParksData;
+  data: NearbyAttractionsData | NearbyParksData;
 }

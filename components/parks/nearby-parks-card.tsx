@@ -23,7 +23,7 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getNearbyParks } from '@/lib/api/discovery';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import type { NearbyResponse, NearbyRidesData, NearbyParksData } from '@/types/nearby';
+import type { NearbyResponse, NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 
 type PermissionState = 'prompt' | 'granted' | 'denied' | 'loading' | 'error';
@@ -324,16 +324,16 @@ export function NearbyParksCard() {
     return null;
   }
 
-  // User is IN a park - show park info and nearby rides
+  // User is IN a park - show park info and nearby attractions
   if (nearbyData.type === 'in_park') {
-    const data = nearbyData.data as NearbyRidesData;
+    const data = nearbyData.data as NearbyAttractionsData;
     const park = data.park;
-    const rides = data.rides.slice(0, 5); // Show max 5 rides
+    const attractions = data.attractions.slice(0, 5); // Show max 5 attractions
 
-    // Extract park URL from first ride if available
+    // Extract park URL from first attraction if available
     const parkMapUrl =
-      rides.length > 0
-        ? `${rides[0].url.split('/attractions/')[0].replace('/v1/parks/', '/parks/')}#map`
+      attractions.length > 0
+        ? `${attractions[0].url.split('/attractions/')[0].replace('/v1/parks/', '/parks/')}#map`
         : null;
 
     return (
@@ -429,44 +429,45 @@ export function NearbyParksCard() {
               </>
             )}
 
-            {/* Nearest Rides */}
-            {rides.length > 0 && (
+            {/* Nearest Attractions */}
+            {attractions.length > 0 && (
               <div>
                 <h4 className="text-muted-foreground mb-2 text-sm font-medium">
                   {t('nearestAttractions')}
                 </h4>
                 <ul className="space-y-2">
-                  {rides.map((ride) => (
-                    <li key={ride.id}>
+                  {attractions.map((attraction) => (
+                    <li key={attraction.id}>
                       <Link
-                        href={ride.url.replace('/v1/parks/', '/parks/')}
+                        href={attraction.url.replace('/v1/parks/', '/parks/')}
                         className="group block"
                       >
                         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
                           {/* Favorite Star */}
-                          {ride.id && (
+                          {attraction.id && (
                             <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                              <FavoriteStar type="attraction" id={ride.id} />
+                              <FavoriteStar type="attraction" id={attraction.id} />
                             </div>
                           )}
                           <div className="min-w-0 flex-1">
                             <p className="group-hover:text-primary truncate font-medium transition-colors">
-                              {ride.name}
+                              {attraction.name}
                             </p>
                             <p className="text-muted-foreground text-xs">
-                              {formatDistance(ride.distance)} {t('awayFrom')}
+                              {formatDistance(attraction.distance)} {t('awayFrom')}
                             </p>
                           </div>
                           <div className="ml-3 flex items-center gap-2">
-                            {ride.status === 'OPERATING' && typeof ride.waitTime === 'number' && (
-                              <Badge
-                                variant="secondary"
-                                className="bg-status-operating/20 text-status-operating gap-1"
-                              >
-                                <span>⏱️</span>
-                                {ride.waitTime} min
-                              </Badge>
-                            )}
+                            {attraction.status === 'OPERATING' &&
+                              typeof attraction.waitTime === 'number' && (
+                                <Badge
+                                  variant="secondary"
+                                  className="bg-status-operating/20 text-status-operating gap-1"
+                                >
+                                  <span>⏱️</span>
+                                  {attraction.waitTime} min
+                                </Badge>
+                              )}
                             <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                           </div>
                         </div>
