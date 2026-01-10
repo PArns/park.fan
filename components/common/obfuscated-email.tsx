@@ -50,9 +50,13 @@ export function ObfuscatedEmail({ local, domain, displayText }: ObfuscatedEmailP
   useEffect(() => {
     // Assemble email and create mailto link only after hydration
     // This ensures the plain text email is never in the initial HTML
-    const fullEmail = `${local}@${domain}`;
-    setEmail(fullEmail);
-    setHref(`mailto:${fullEmail}`);
+    // We use setTimeout to avoid synchronous state updates in effect (lint fix)
+    const timer = setTimeout(() => {
+      const fullEmail = `${local}@${domain}`;
+      setEmail(fullEmail);
+      setHref(`mailto:${fullEmail}`);
+    }, 0);
+    return () => clearTimeout(timer);
   }, [local, domain]);
 
   if (!email || !href) {

@@ -19,7 +19,10 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
 
   // Update time on mount
   useEffect(() => {
-    setNow(Date.now());
+    const timer = setTimeout(() => {
+      setNow(Date.now());
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
   // Process data for charts
   const { points, maxTime, minTime, maxWait } = useMemo(() => {

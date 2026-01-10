@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';

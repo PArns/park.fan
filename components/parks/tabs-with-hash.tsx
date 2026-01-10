@@ -14,7 +14,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
 
-import { LocalTime } from '@/components/ui/local-time';
+// import { LocalTime } from '@/components/ui/local-time';
 import type {
   ParkWithAttractions,
   IntegratedCalendarResponse,
@@ -61,7 +61,7 @@ export function TabsWithHash({
 }: TabsWithHashProps) {
   const pathname = usePathname();
   const t = useTranslations('parks');
-  const tCommon = useTranslations('common');
+  // const tCommon = useTranslations('common');
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
@@ -72,7 +72,10 @@ export function TabsWithHash({
   // Avoid hydration mismatch by only rendering after mount
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    setIsMounted(true);
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -184,19 +187,19 @@ export function TabsWithHash({
     searchQuery.trim() === ''
       ? attractionsByLand
       : fuse
-          .search(searchQuery)
-          .map((result) => result.item)
-          .reduce(
-            (acc, attraction) => {
-              const land = attraction.land || 'Other';
-              if (!acc[land]) {
-                acc[land] = [];
-              }
-              acc[land].push(attraction);
-              return acc;
-            },
-            {} as Record<string, ParkAttraction[]>
-          );
+        .search(searchQuery)
+        .map((result) => result.item)
+        .reduce(
+          (acc, attraction) => {
+            const land = attraction.land || 'Other';
+            if (!acc[land]) {
+              acc[land] = [];
+            }
+            acc[land].push(attraction);
+            return acc;
+          },
+          {} as Record<string, ParkAttraction[]>
+        );
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
@@ -234,9 +237,8 @@ export function TabsWithHash({
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
-                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
-                    isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                  }`}
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                    }`}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setIsFocused(true)}

@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -17,6 +18,12 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-dropdown-menu',
       '@radix-ui/react-tabs',
       '@radix-ui/react-tooltip',
+      '@radix-ui/react-avatar',
+      '@radix-ui/react-progress',
+      '@radix-ui/react-scroll-area',
+      '@radix-ui/react-separator',
+      '@radix-ui/react-slot',
+      'recharts',
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,
@@ -69,4 +76,8 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withNextIntl(nextConfig);
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
+export default withNextIntl(bundleAnalyzer(nextConfig));

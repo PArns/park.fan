@@ -11,8 +11,12 @@ export function RandomHeroImage() {
 
   useEffect(() => {
     // Random selection happens once on mount
-    const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
-    setRandomImage(HERO_IMAGES[randomIndex]);
+    // Use setTimeout to avoid synchronous state updates in effect
+    const timer = setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
+      setRandomImage(HERO_IMAGES[randomIndex]);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -23,9 +27,8 @@ export function RandomHeroImage() {
       priority
       fetchPriority="high"
       quality={75}
-      className={`object-cover transition-opacity duration-1000 ${
-        isLoaded ? 'opacity-90' : 'opacity-0'
-      }`}
+      className={`object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-90' : 'opacity-0'
+        }`}
       onLoad={() => setIsLoaded(true)}
       sizes="100vw"
     />
