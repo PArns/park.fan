@@ -4,15 +4,17 @@ import { useMemo } from 'react';
 import { format, eachDayOfInterval, startOfWeek, getDay } from 'date-fns';
 import { de, enUS } from 'date-fns/locale';
 import { useLocale, useTranslations } from 'next-intl';
-import type { AttractionHistoryDay } from '@/lib/api/types';
+import { PartyPopper, Calendar, Backpack, Ban } from 'lucide-react';
+import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { HourlyP90Sparkline } from './hourly-p90-sparkline';
-import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 
 interface AttractionHistoryGridProps {
   attraction: {
     name: string;
     history?: AttractionHistoryDay[];
+    schedule?: ScheduleItem[];
   };
 }
 
@@ -23,6 +25,7 @@ interface DayData {
   dayOfMonth: string;
   month: string;
   historyData?: AttractionHistoryDay;
+  scheduleData?: ScheduleItem;
   isClosed: boolean;
   isToday: boolean;
 }
@@ -53,16 +56,28 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
     return map;
   }, [attraction.history]);
 
+  // Create a map of schedule data by date for quick lookup
+  const scheduleMap = useMemo(() => {
+    const map = new Map<string, ScheduleItem>();
+    if (attraction.schedule) {
+      attraction.schedule.forEach((item) => {
+        map.set(item.date, item);
+      });
+    }
+    return map;
+  }, [attraction.schedule]);
+
   // Generate all days in the range and group into weeks
   const weeks = useMemo(() => {
     const { start, end } = dateRange;
     const allDays = eachDayOfInterval({ start, end });
 
-    // Create day data with history lookup
+    // Create day data with history and schedule lookup
     const today = dateRange.end;
     const days: DayData[] = allDays.map((date) => {
       const dateStr = format(date, 'yyyy-MM-dd');
       const historyData = historyMap.get(dateStr);
+      const scheduleData = scheduleMap.get(dateStr);
       const isClosed = !historyData || !historyData.hourlyP90 || historyData.hourlyP90.length <= 1;
       const isToday =
         date.getFullYear() === today.getFullYear() &&
@@ -76,6 +91,7 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
         dayOfMonth: format(date, 'd'),
         month: format(date, 'MMM', { locale: dateLocale }),
         historyData,
+        scheduleData,
         isClosed,
         isToday,
       };
@@ -121,7 +137,7 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
     }
 
     return weeks;
-  }, [dateRange, historyMap, dateLocale]);
+  }, [dateRange, historyMap, scheduleMap, dateLocale]);
 
   // Weekday headers (Monday to Sunday)
   const weekdayHeaders = useMemo(() => {
@@ -152,7 +168,33 @@ export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps
   return (
     <Card className="relative p-4 md:p-6">
       <div className="space-y-4">
-        <h2 className="text-2xl font-bold">{t('historyCalendar')}</h2>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <h2 className="text-2xl font-bold">{t('historyCalendar')}</h2>
+
+          {/* Legend */}
+          <div className="flex flex-wrap items-center gap-2 text-sm">
+            {/* Closed */}
+            <div className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20">
+              <Ban className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
+              <span className="text-xs">{t('historyLegend.closed') || 'Geschlossen'}</span>
+            </div>
+            {/* Holiday */}
+            <div className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+              <PartyPopper className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
+              <span className="text-xs">{t('historyLegend.holiday') || 'Feiertag'}</span>
+            </div>
+            {/* School Vacation */}
+            <div className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+              <Backpack className="h-3.5 w-3.5 text-yellow-500 dark:text-yellow-400" />
+              <span className="text-xs">{t('historyLegend.schoolVacation') || 'Schulferien'}</span>
+            </div>
+            {/* Bridge Day */}
+            <div className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+              <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
+              <span className="text-xs">{t('historyLegend.bridgeDay') || 'Brückentag'}</span>
+            </div>
+          </div>
+        </div>
 
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full">
@@ -199,6 +241,7 @@ interface DayCardProps {
 
 function DayCard({ day, t, tCommon }: DayCardProps) {
   const { historyData, isClosed } = day;
+  const tParks = useTranslations('parks');
 
   // Calculate min and max from hourlyP90 data
   const minMax =
@@ -209,32 +252,69 @@ function DayCard({ day, t, tCommon }: DayCardProps) {
         }
       : null;
 
-  // Determine border color based on utilization
+  // Get schedule icon and tooltip text
+  // Match the exact same priority logic as getBorderColor to ensure icon matches border
+  // Priority: Closed > Public Holiday (Prio 1) > School Vacation (Prio 2) > Bridge Day (Prio 3)
+  const getScheduleIcon = () => {
+    // Check if park is closed first (highest priority)
+    // closed = scheduleType != open (includes CLOSED and UNKNOWN)
+    // Only if scheduleData EXISTS. If it's missing, it falls through (Neutral).
+    const isParkClosed = day.scheduleData && day.scheduleData.scheduleType !== 'OPERATING';
+    if (isParkClosed) {
+      return {
+        Icon: Ban,
+        color: 'text-red-500 dark:text-red-400',
+        tooltip: tCommon('closed') || 'Geschlossen',
+      };
+    }
+
+    // If schedule is UNKNOWN or missing, we return null (neutral)
+
+    // Priority: Public Holiday (1) > School Vacation (2) > Bridge Day (3)
+    if (day.scheduleData?.isPublicHoliday) {
+      return {
+        Icon: PartyPopper,
+        color: 'text-orange-500 dark:text-orange-400',
+        tooltip: day.scheduleData?.holidayName || tParks('holiday') || 'Feiertag',
+      };
+    } else if (day.scheduleData?.isSchoolHoliday || day.scheduleData?.isSchoolVacation) {
+      return {
+        Icon: Backpack,
+        color: 'text-yellow-500 dark:text-yellow-400',
+        tooltip: tParks('schoolVacation') || 'Schulferien',
+      };
+    } else if (day.scheduleData?.isBridgeDay) {
+      return {
+        Icon: Calendar,
+        color: 'text-blue-500 dark:text-blue-400',
+        tooltip: tParks('bridgeDay') || 'Brückentag',
+      };
+    }
+    return null;
+  };
+
+  // Determine border color based on schedule (holidays, bridge days, school vacations)
+  // Priority: Park Closed > Public Holiday (Prio 1) > School Vacation (Prio 2) > Bridge Day (Prio 3)
   const getBorderColor = () => {
     const borderWidth = day.isToday ? 'border-4' : 'border';
 
-    if (isClosed) {
-      return `${borderWidth} border-gray-300 dark:border-gray-700`;
+    // Check if park is closed (from schedule)
+    // closed = scheduleType != open (includes CLOSED and UNKNOWN)
+    const isParkClosed = day.scheduleData && day.scheduleData.scheduleType !== 'OPERATING';
+    if (isParkClosed) {
+      return `${borderWidth} border-red-500 dark:border-red-600`;
     }
 
-    if (historyData) {
-      switch (historyData.utilization) {
-        case 'very_low':
-          return `${borderWidth} border-emerald-500 dark:border-emerald-400`;
-        case 'low':
-          return `${borderWidth} border-emerald-400 dark:border-emerald-300`;
-        case 'moderate':
-          return `${borderWidth} border-blue-500 dark:border-blue-400`;
-        case 'high':
-          return `${borderWidth} border-orange-500 dark:border-orange-400`;
-        case 'very_high':
-          return `${borderWidth} border-rose-500 dark:border-rose-400`;
-        case 'extreme':
-          return `${borderWidth} border-red-700 dark:border-red-600`;
-        default:
-          return borderWidth;
-      }
+    // Priority: Public Holiday (1) > School Vacation (2) > Bridge Day (3)
+    if (day.scheduleData?.isPublicHoliday) {
+      return `${borderWidth} border-orange-500 dark:border-orange-400`;
+    } else if (day.scheduleData?.isSchoolHoliday || day.scheduleData?.isSchoolVacation) {
+      return `${borderWidth} border-yellow-500 dark:border-yellow-400`;
+    } else if (day.scheduleData?.isBridgeDay) {
+      return `${borderWidth} border-blue-500 dark:border-blue-400`;
     }
+
+    // Default border if no schedule marking or if UNKNOWN
     return borderWidth;
   };
 
@@ -247,9 +327,28 @@ function DayCard({ day, t, tCommon }: DayCardProps) {
       {/* Header: Day of Week and Date */}
       <div className="mb-0.5 flex items-center justify-between">
         <span className="text-muted-foreground text-xs font-medium">{day.dayOfWeek}</span>
-        <span className={`text-sm ${day.isToday ? 'font-bold' : 'font-semibold'}`}>
-          {day.dayOfMonth}. {day.month}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`text-sm ${day.isToday ? 'font-bold' : 'font-semibold'}`}>
+            {day.dayOfMonth}. {day.month}
+          </span>
+          {(() => {
+            const scheduleIcon = getScheduleIcon();
+            if (scheduleIcon) {
+              const { Icon, color, tooltip } = scheduleIcon;
+              return (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Icon className={`h-3 w-3 ${color} cursor-help`} />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{tooltip}</p>
+                  </TooltipContent>
+                </Tooltip>
+              );
+            }
+            return null;
+          })()}
+        </div>
       </div>
 
       {/* Content */}
@@ -257,24 +356,23 @@ function DayCard({ day, t, tCommon }: DayCardProps) {
         <div className="flex flex-1 flex-col">
           {/* Utilization Badge */}
           {historyData && (
-            <Badge
-              variant="outline"
-              className={`mb-4 w-full justify-center text-xs ${
+            <div
+              className={`mb-4 flex w-full justify-center rounded-md border px-2.5 py-0.5 text-xs font-medium ${
                 historyData.utilization === 'very_low'
-                  ? 'border-emerald-500 text-emerald-600 dark:border-emerald-400 dark:text-emerald-400'
+                  ? 'border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/50 dark:text-green-100'
                   : historyData.utilization === 'low'
-                    ? 'border-emerald-400 text-emerald-500 dark:border-emerald-300 dark:text-emerald-300'
+                    ? 'border-lime-200 bg-lime-100 text-lime-800 dark:border-lime-800 dark:bg-lime-900/50 dark:text-lime-100'
                     : historyData.utilization === 'moderate'
-                      ? 'border-blue-500 text-blue-600 dark:border-blue-400 dark:text-blue-400'
+                      ? 'border-yellow-200 bg-yellow-100 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-100'
                       : historyData.utilization === 'high'
-                        ? 'border-orange-500 text-orange-600 dark:border-orange-400 dark:text-orange-400'
+                        ? 'border-orange-200 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-900/50 dark:text-orange-100'
                         : historyData.utilization === 'very_high'
-                          ? 'border-rose-500 text-rose-600 dark:border-rose-400 dark:text-rose-400'
-                          : 'border-red-700 text-red-700 dark:border-red-600 dark:text-red-600'
+                          ? 'border-red-200 bg-red-100 text-red-800 dark:border-red-800 dark:bg-red-900/50 dark:text-red-100'
+                          : 'border-red-300 bg-red-200 text-red-900 dark:border-red-700 dark:bg-red-800/50 dark:text-red-50'
               }`}
             >
               {t(`crowdLevels.${historyData.utilization}`)}
-            </Badge>
+            </div>
           )}
 
           {/* Sparkline */}

@@ -2,7 +2,7 @@
 // Enums and Constants
 // ============================================================================
 
-export type ParkStatus = 'OPERATING' | 'CLOSED';
+export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
 // Queue types moved to QueueDataItem definition area
 export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
@@ -14,7 +14,7 @@ export type Recommendation =
   | 'avoid'
   | 'strongly_avoid'
   | 'closed';
-export type ScheduleType = 'OPERATING' | 'CLOSED';
+export type ScheduleType = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type TrendDirection = 'up' | 'stable' | 'down' | 'increasing' | 'decreasing';
 export type ComparisonStatus =
   | 'much_lower'
@@ -71,6 +71,8 @@ export interface ScheduleItem {
   holidayName: string | null;
   isBridgeDay?: boolean;
   isSchoolVacation?: boolean;
+  isPublicHoliday?: boolean;
+  isSchoolHoliday?: boolean;
   influencingHolidays?: InfluencingHoliday[];
 }
 
@@ -364,6 +366,7 @@ export interface AttractionResponse {
   statistics?: AttractionStatistics;
   predictionAccuracy?: PredictionAccuracy | null;
   history?: AttractionHistoryDay[];
+  schedule?: ScheduleItem[];
 }
 
 export interface AttractionHistoryDay {
@@ -790,6 +793,8 @@ export interface CalendarDay {
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;
+  isPublicHoliday?: boolean;
+  isSchoolHoliday?: boolean;
   influencingHolidays?: InfluencingHoliday[];
   hourly?: HourlyPrediction[];
   refurbishments?: string[];

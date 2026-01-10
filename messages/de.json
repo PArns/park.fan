@@ -325,6 +325,14 @@
     "history": "Wartezeit-Verlauf",
     "historyCalendar": "Wartezeit-Verlauf",
     "noHistoryData": "Keine historischen Daten für diese Attraktion verfügbar.",
+    "historyLegend": {
+      "title": "Legende",
+      "holiday": "Feiertag",
+      "bridgeDay": "Brückentag",
+      "schoolVacation": "Schulferien",
+      "closed": "Geschlossen",
+      "description": "Die Rahmenfarbe zeigt Feiertage, Brückentage und Schulferien an."
+    },
     "statistics": "Statistiken",
     "noWaitTime": "Keine Wartezeit-Daten",
     "predictionAccuracy": "Vorhersage-Genauigkeit",

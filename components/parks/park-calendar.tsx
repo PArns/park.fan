@@ -93,11 +93,14 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               isHoliday: day.isHoliday,
               holidayName: day.events?.find((e) => e.type === 'holiday')?.name || null,
               isBridgeDay: day.isBridgeDay,
+              isPublicHoliday: day.isPublicHoliday,
+              isSchoolHoliday: day.isSchoolHoliday,
+              isSchoolVacation: day.isSchoolVacation,
             },
             icon: 'Clock',
           },
         });
-      } else if (day.status === 'CLOSED') {
+      } else if (day.status !== 'OPERATING') {
         events.push({
           id: `schedule-${day.date}`,
           title: t('closed'),
@@ -117,6 +120,9 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
               isHoliday: day.isHoliday,
               holidayName: null,
               isBridgeDay: false,
+              isPublicHoliday: day.isPublicHoliday,
+              isSchoolHoliday: day.isSchoolHoliday,
+              isSchoolVacation: day.isSchoolVacation,
             },
             icon: 'Ban',
           },
@@ -339,7 +345,7 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
       if (!dayData) return { className };
 
       // Background color for crowd levels
-      if (dayData.status === 'CLOSED') {
+      if (dayData.status !== 'OPERATING') {
         className += '!bg-red-50/50 dark:!bg-red-950/30 ';
       } else if (dayData.crowdLevel) {
         switch (dayData.crowdLevel) {
@@ -364,13 +370,13 @@ export function ParkCalendar({ park, calendarData }: ParkCalendarProps) {
         }
       }
 
-      // Priority: Holiday > Bridge Day > School Vacation
-      if (dayData.isHoliday) {
+      // Priority: Public Holiday > School Vacation > Bridge Day
+      if (dayData.isPublicHoliday) {
         className += '!border-t-orange-500 ';
+      } else if (dayData.isSchoolHoliday || dayData.isSchoolVacation) {
+        className += '!border-t-yellow-500 ';
       } else if (dayData.isBridgeDay) {
         className += '!border-t-blue-500 ';
-      } else if (dayData.isSchoolVacation) {
-        className += '!border-t-yellow-500 ';
       }
 
       return { className, style };

@@ -325,6 +325,14 @@
     "history": "Wait Time History",
     "historyCalendar": "Wait Time History",
     "noHistoryData": "No historical data available for this attraction.",
+    "historyLegend": {
+      "title": "Legend",
+      "holiday": "Holiday",
+      "bridgeDay": "Bridge Day",
+      "schoolVacation": "School Vacation",
+      "closed": "Closed",
+      "description": "Border colors indicate holidays, bridge days, and school vacations."
+    },
     "statistics": "Statistics",
     "noWaitTime": "No wait time data",
     "predictionAccuracy": "Prediction Accuracy",

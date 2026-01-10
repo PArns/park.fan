@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useRef, useEffect } from 'react';
 import type { AttractionStatistics } from '@/lib/api/types';
 
 interface WaitTimeSparklineProps {
@@ -14,6 +14,13 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
   );
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Use state for current time to avoid hydration mismatch and impure render
+  const [now, setNow] = useState<number>(0);
+
+  // Update time on mount
+  useEffect(() => {
+    setNow(Date.now());
+  }, []);
   // Process data for charts
   const { points, maxTime, minTime, maxWait } = useMemo(() => {
     if (!history || history.length === 0) return { points: [], maxTime: 0, minTime: 0, maxWait: 0 };
@@ -25,8 +32,8 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
     }));
 
     // Extend sparkline to current time if last data point is stale (>15min old)
-    if (processedData.length > 0) {
-      const now = Date.now();
+    // ONLY if we have a valid 'now' (client-side)
+    if (processedData.length > 0 && now > 0) {
       const lastDataPoint = processedData[processedData.length - 1];
       const fifteenMinutesInMs = 15 * 60 * 1000;
 
@@ -39,12 +46,13 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
       }
     }
 
-    const maxVal = Math.max(...processedData.map((d) => d.value), 10); // Minimum 10 min scale to avoid flat lines looking huge
+    // ... rest same
+    const maxVal = Math.max(...processedData.map((d) => d.value), 10);
     const minT = processedData[0].time;
     const maxT = processedData[processedData.length - 1].time;
 
     return { points: processedData, maxTime: maxT, minTime: minT, maxWait: maxVal };
-  }, [history]);
+  }, [history, now]); // Add now dependency
 
   if (points.length === 0) return null;
 
