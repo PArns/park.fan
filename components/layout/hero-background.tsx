@@ -6,7 +6,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 
 export function RandomHeroImage() {
   // Pick random image on client-side mount for true randomization
-  const [randomImage, setRandomImage] = useState<string>(HERO_IMAGES[0]);
+  const [randomImage, setRandomImage] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -19,13 +19,15 @@ export function RandomHeroImage() {
     return () => clearTimeout(timer);
   }, []);
 
+  if (!randomImage) {
+    return null;
+  }
+
   return (
     <Image
       src={randomImage}
       alt="Park Background"
       fill
-      priority
-      fetchPriority="high"
       quality={75}
       className={`object-cover transition-opacity duration-1000 ${
         isLoaded ? 'opacity-90' : 'opacity-0'
