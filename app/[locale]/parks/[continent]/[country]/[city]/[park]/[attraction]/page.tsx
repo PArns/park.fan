@@ -310,9 +310,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         ) : (
                           <Minus className="h-5 w-5" />
                         )}
-                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                        {}
                         <span className="capitalize">
-                          {tCommon(attraction.trend.toLowerCase() as any)}
+                          {tCommon(attraction.trend.toLowerCase() as string)}
                         </span>
                       </div>
                     )}

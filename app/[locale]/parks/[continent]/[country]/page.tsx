@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
-import { getCitiesWithParks } from '@/lib/api/discovery';
+import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
@@ -10,6 +10,27 @@ import type { Metadata } from 'next';
 
 interface CountryPageProps {
   params: Promise<{ locale: string; continent: string; country: string }>;
+}
+
+export async function generateStaticParams() {
+  const geo = await getGeoStructure().catch(() => null);
+
+  if (!geo) {
+    return [];
+  }
+
+  const params: { continent: string; country: string }[] = [];
+
+  for (const continent of geo.continents) {
+    for (const country of continent.countries) {
+      params.push({
+        continent: continent.slug,
+        country: country.slug,
+      });
+    }
+  }
+
+  return params;
 }
 
 export async function generateMetadata({ params }: CountryPageProps): Promise<Metadata> {
