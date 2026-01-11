@@ -23,7 +23,7 @@ import type { Metadata } from 'next';
 import type { AttractionStatus, QueueDataItem, StandbyQueue } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
   AttractionStructuredData,
   BreadcrumbStructuredData,
@@ -66,9 +66,11 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
-  // Get background image for OpenGraph
-  const { getAttractionBackgroundImage } = await import('@/lib/utils/park-assets');
-  const backgroundImage = getAttractionBackgroundImage(parkSlug, attractionSlug);
+  // Get background image for OpenGraph (fallback: attraction → park → default)
+  const { getAttractionBackgroundImage, getParkBackgroundImage } =
+    await import('@/lib/utils/park-assets');
+  const backgroundImage =
+    getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
   const ogImage = backgroundImage
     ? `https://park.fan${backgroundImage}`
     : 'https://park.fan/og-image.png';
@@ -215,6 +217,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
 
+  // Get background image with fallback: attraction → park → null
+  const backgroundImage =
+    getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
+
   return (
     <>
       <AttractionStructuredData
@@ -224,10 +230,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         description={`${attraction.name} at ${park.name} - Real-time wait times, status, and predictions.`}
       />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
-      <ParkBackground
-        imageSrc={getAttractionBackgroundImage(parkSlug, attractionSlug)}
-        alt={attraction.name}
-      />
+      <ParkBackground imageSrc={backgroundImage} alt={attraction.name} />
       <PageContainer>
         {/* Breadcrumb */}
         <BreadcrumbNav

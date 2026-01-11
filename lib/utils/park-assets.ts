@@ -23,9 +23,19 @@ export function getAttractionBackgroundImage(
   attractionSlug: string
 ): string | null {
   const publicDir = path.join(process.cwd(), 'public');
-  const attractionDir = `images/parks/${parkSlug}/attractions`;
 
-  // Try to find specific attraction image
+  // First, try to find attraction image in park's main directory (e.g., images/parks/phantasialand/taron.jpg)
+  const parkDir = `images/parks/${parkSlug}`;
+  for (const ext of SUPPORTED_EXTENSIONS) {
+    const relativePath = `${parkDir}/${attractionSlug}${ext}`;
+    const fullPath = path.join(publicDir, relativePath);
+    if (fs.existsSync(fullPath)) {
+      return `/${relativePath}`;
+    }
+  }
+
+  // Second, try to find in attractions subdirectory (e.g., images/parks/phantasialand/attractions/taron.jpg)
+  const attractionDir = `${parkDir}/attractions`;
   for (const ext of SUPPORTED_EXTENSIONS) {
     const relativePath = `${attractionDir}/${attractionSlug}${ext}`;
     const fullPath = path.join(publicDir, relativePath);
@@ -34,6 +44,7 @@ export function getAttractionBackgroundImage(
     }
   }
 
-  // Fallback to park background
-  return getParkBackgroundImage(parkSlug);
+  // Return null if no attraction-specific image is found
+  // Fallback to park background should be handled by the calling code
+  return null;
 }

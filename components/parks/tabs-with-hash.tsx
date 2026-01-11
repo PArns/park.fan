@@ -266,6 +266,7 @@ export function TabsWithHash({
                     landName={landName}
                     attractions={attractions}
                     parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                    parkSlug={parkSlug}
                     parkStatus={park.status}
                   />
                 );

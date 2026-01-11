@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -32,12 +33,12 @@ export function BreadcrumbNav({ breadcrumbs, currentPage, className }: Breadcrum
       aria-label="Breadcrumb"
     >
       {breadcrumbs.map((crumb, index) => (
-        <div key={crumb.url} className="flex items-center gap-2">
+        <Fragment key={crumb.url}>
           {index > 0 && <ChevronRight className="h-4 w-4" aria-hidden="true" />}
           <Link href={crumb.url} className="hover:text-foreground">
             {crumb.name}
           </Link>
-        </div>
+        </Fragment>
       ))}
       {currentPage && (
         <>
