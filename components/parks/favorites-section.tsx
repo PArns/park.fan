@@ -28,7 +28,11 @@ import { Link } from '@/i18n/navigation';
 import { ChevronRight, Navigation, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-export function FavoritesSection() {
+export interface FavoritesSectionProps {
+  initialHasFavorites?: boolean;
+}
+
+export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectionProps) {
   const t = useTranslations('favorites');
 
   const [favoritesData, setFavoritesData] = useState<{
@@ -37,7 +41,7 @@ export function FavoritesSection() {
     shows: FavoriteShow[];
     restaurants: FavoriteRestaurant[];
   } | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(initialHasFavorites);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [geolocationLoading, setGeolocationLoading] = useState(true);
   // Use ref to always have current userLocation in event handlers
