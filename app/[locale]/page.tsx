@@ -15,8 +15,11 @@ import { OrganizationStructuredData } from '@/components/seo/structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { StatsCard } from '@/components/common/stats-card';
+import { HERO_IMAGES } from '@/lib/hero-images';
 
 import type { Metadata } from 'next';
+
+export const dynamic = 'force-dynamic';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -74,6 +77,10 @@ export default async function HomePage({ params }: HomePageProps) {
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
+  // Select random hero image server-side
+  // eslint-disable-next-line react-hooks/purity
+  const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+
   // Fetch data in parallel
   const [stats, geoData, liveStats] = await Promise.all([
     getGlobalStats().catch(() => null),
@@ -95,7 +102,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <OrganizationStructuredData />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-20 md:py-32">
-        <HeroBackground />
+        <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto text-center">
           <Badge variant="secondary" className="mb-4">
             <Sparkles className="mr-1 h-3 w-3" />

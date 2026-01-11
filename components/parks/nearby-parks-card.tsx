@@ -27,15 +27,12 @@ export function NearbyParksCard() {
 
   const [permissionState, setPermissionState] = useState<PermissionState>('prompt');
   const [nearbyData, setNearbyData] = useState<NearbyResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const requestLocation = useCallback(() => {
     setPermissionState('loading');
-    setError(null);
 
     if (!navigator.geolocation) {
-      setError('Geolocation is not supported by your browser');
       setPermissionState('error');
       return;
     }
@@ -53,17 +50,21 @@ export function NearbyParksCard() {
           setPermissionState('granted');
         } catch (err) {
           console.error('[NearbyParks] Failed to fetch nearby parks:', err);
-          setError(err instanceof Error ? err.message : 'Failed to load nearby parks');
           setPermissionState('error');
         }
       },
       (err) => {
-        // Only log if there's actual error information
-        if (err && (err.message || err.code)) {
-          console.error('Geolocation error:', err);
+        // Only log if it's not a permission denied error (code 1)
+        // code 1: PERMISSION_DENIED
+        // code 2: POSITION_UNAVAILABLE
+        // code 3: TIMEOUT
+        if (err && err.code !== 1) {
+          console.warn('Geolocation error:', {
+            code: err.code,
+            message: err.message,
+          });
         }
         setPermissionState('denied');
-        setError(err?.message || 'Location access denied');
       },
       {
         enableHighAccuracy: false,
@@ -101,7 +102,7 @@ export function NearbyParksCard() {
   // Prompt state - show enable button
   if (permissionState === 'prompt') {
     return (
-      <section className="bg-card text-card-foreground rounded-xl border border-dashed py-6 shadow-sm">
+      <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-muted-foreground h-5 w-5" />
@@ -122,7 +123,7 @@ export function NearbyParksCard() {
   // Loading state
   if (permissionState === 'loading') {
     return (
-      <section className="bg-card text-card-foreground rounded-xl border py-4 shadow-sm md:py-6">
+      <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6">
         <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <Loader2 className="text-muted-foreground h-5 w-5 animate-spin" />
@@ -147,21 +148,26 @@ export function NearbyParksCard() {
   }
 
   // Error or denied state
+  // Error or denied state
   if (permissionState === 'denied' || permissionState === 'error') {
     return (
-      <Card className="border-destructive/50">
+      <section className="bg-muted/30 min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
-          <CardTitle className="text-destructive flex items-center gap-2">
-            <MapPin className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-2">
+            <MapPin className="text-park-primary h-5 w-5" />
             {t('permissionDenied')}
           </CardTitle>
         </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground text-sm">
-            {error || t('permissionDeniedDescription')}
+        <CardContent className="flex flex-col items-center space-y-4 text-center">
+          <p className="text-muted-foreground mx-auto max-w-md text-sm">
+            {t('permissionDeniedDescription')}
           </p>
+          <Button onClick={requestLocation} variant="outline">
+            <Navigation className="mr-2 h-4 w-4" />
+            {tCommon('retry')}
+          </Button>
         </CardContent>
-      </Card>
+      </section>
     );
   }
 
@@ -183,7 +189,7 @@ export function NearbyParksCard() {
         : null;
 
     return (
-      <section className="bg-park-primary/5 border-park-primary/30 relative overflow-hidden rounded-xl border py-6 shadow-sm">
+      <section className="bg-park-primary/5 border-park-primary/30 relative min-h-[200px] overflow-hidden rounded-xl border py-6 shadow-sm">
         {/* Background Image */}
         {park.backgroundImage && (
           <BackgroundOverlay imageSrc={park.backgroundImage} alt={park.name} intensity="medium" />
@@ -335,7 +341,7 @@ export function NearbyParksCard() {
 
     if (parks.length === 0) {
       return (
-        <Card>
+        <Card className="min-h-[200px]">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <MapPin className="text-muted-foreground h-5 w-5" />
@@ -350,7 +356,7 @@ export function NearbyParksCard() {
     }
 
     return (
-      <section className="bg-card text-card-foreground rounded-xl border py-4 shadow-sm md:py-6">
+      <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6">
         <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
