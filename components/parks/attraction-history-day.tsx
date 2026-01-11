@@ -199,6 +199,14 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
               </span>
             </div>
           )}
+          {day.attractionStatus === 'PARK_CLOSED' && (
+            <div className="flex flex-col items-center gap-1">
+              <Ban className="h-4 w-4 text-red-500 opacity-50" />
+              <span className="text-muted-foreground text-[10px] font-medium text-red-500/80">
+                {t('parkClosed')}
+              </span>
+            </div>
+          )}
         </div>
       )}
     </Card>

@@ -355,6 +355,7 @@
       "today": "Today"
     },
     "rideClosed": "Ride Closed",
+    "parkClosed": "Park Closed",
     "notYetOpen": "Not yet open today"
   },
   "calendar": {

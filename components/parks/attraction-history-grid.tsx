@@ -188,7 +188,7 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
 
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full">
-            {/* Weekday Headers */}
+            {/* Weekday Headers - Desktop Only */}
             <div className="mb-2 hidden grid-cols-7 gap-2 md:grid">
               {weekdayHeaders.map((header, idx) => (
                 <div key={idx} className="text-muted-foreground text-center text-sm font-medium">
@@ -197,18 +197,26 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
               ))}
             </div>
 
-            {/* Calendar Grid */}
-            <div className="space-y-2">
+            {/* Mobile View: Reversed List (Today -> Past) */}
+            <div className="grid grid-cols-2 gap-2 md:hidden">
+              {days
+                .slice()
+                .reverse()
+                .map((day) => {
+                  // Strict props passing to avoid passing Date object to client component
+                  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                  const { date: _date, ...dayProps } = day;
+                  return <HistoryDay key={day.dateStr} day={dayProps} />;
+                })}
+            </div>
+
+            {/* Desktop View: Standard Weeks */}
+            <div className="hidden space-y-2 md:block">
               {weeks.map((week, weekIdx) => (
-                <div key={weekIdx} className="grid grid-cols-2 items-stretch gap-2 md:grid-cols-7">
+                <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
                   {week.map((day, dayIdx) => {
                     if (!day) {
-                      return (
-                        <div
-                          key={`empty-${weekIdx}-${dayIdx}`}
-                          className="hidden h-full md:block"
-                        ></div>
-                      );
+                      return <div key={`empty-${weekIdx}-${dayIdx}`} className="h-full"></div>;
                     }
 
                     // Strict props passing to avoid passing Date object to client component
