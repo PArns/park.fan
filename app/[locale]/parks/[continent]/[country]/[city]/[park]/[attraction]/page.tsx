@@ -1,7 +1,18 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, AlertTriangle, Wrench, XCircle, MapPin, BarChart3 } from 'lucide-react';
+import {
+  Clock,
+  MapPin,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  AlertTriangle,
+  Wrench,
+  XCircle,
+  BarChart3,
+} from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
@@ -21,6 +32,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
+import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -144,10 +156,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Merge history and schedule data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
-        ...parkAttraction,
-        history: attractionData?.history || parkAttraction.history,
-        schedule: attractionData?.schedule,
-      }
+      ...parkAttraction,
+      history: attractionData?.history || parkAttraction.history,
+      schedule: attractionData?.schedule,
+    }
     : null;
 
   if (!park || !attraction) {
@@ -257,42 +269,84 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Status & Wait Time */}
           <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Current Wait Time */}
-            <StatusInfoCard title={t('waitTime')} icon={Clock}>
+            <StatusInfoCard
+              title={t('waitTime')}
+              icon={Clock}
+              className="relative min-h-[160px] gap-1 overflow-hidden"
+            >
+              <div className="relative z-10 pb-12">
+                {status === 'OPERATING' &&
+                  !isParkClosed &&
+                  mainQueue &&
+                  'waitTime' in mainQueue &&
+                  mainQueue.waitTime !== null ? (
+                  <div className="flex flex-row items-center gap-8">
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-5xl font-bold">
+                        {(mainQueue as StandbyQueue).waitTime}
+                      </span>
+                      <span className="text-muted-foreground text-xl">{tCommon('minutes')}</span>
+                    </div>
+                    {attraction.trend && (
+                      <div
+                        className={cn(
+                          'text-muted-foreground flex items-center gap-1.5 text-sm font-medium',
+                          {
+                            'text-emerald-500':
+                              attraction.trend.toLowerCase() === 'down' ||
+                              attraction.trend.toLowerCase() === 'decreasing',
+                            'text-rose-500':
+                              attraction.trend.toLowerCase() === 'up' ||
+                              attraction.trend.toLowerCase() === 'increasing',
+                          }
+                        )}
+                      >
+                        {attraction.trend.toLowerCase() === 'down' ||
+                          attraction.trend.toLowerCase() === 'decreasing' ? (
+                          <TrendingDown className="h-5 w-5" />
+                        ) : attraction.trend.toLowerCase() === 'up' ||
+                          attraction.trend.toLowerCase() === 'increasing' ? (
+                          <TrendingUp className="h-5 w-5" />
+                        ) : (
+                          <Minus className="h-5 w-5" />
+                        )}
+                        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                        <span className="capitalize">{tCommon(attraction.trend.toLowerCase() as any)}</span>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <StatusIcon className={`h-6 w-6 ${config.color}`} />
+                    <span className="text-lg font-medium">{config.label}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Sparkline Background */}
               {status === 'OPERATING' &&
-              !isParkClosed &&
-              mainQueue &&
-              'waitTime' in mainQueue &&
-              mainQueue.waitTime !== null ? (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-bold">{(mainQueue as StandbyQueue).waitTime}</span>
-                  <span className="text-muted-foreground text-xl">{tCommon('minutes')}</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <StatusIcon className={`h-6 w-6 ${config.color}`} />
-                  <span className="text-lg font-medium">{config.label}</span>
-                </div>
-              )}
-              {attraction.trend && (
-                <div className="text-muted-foreground mt-2 flex items-center gap-1 text-sm">
-                  <TrendingUp className="h-4 w-4" />
-                  <span className="capitalize">{attraction.trend}</span>
-                </div>
-              )}
+                attraction.statistics?.history &&
+                attraction.statistics.history.length > 0 && (
+                  <div className="mask-linear-gradient-to-t absolute right-0 bottom-0 left-0 h-16 w-full opacity-30">
+                    <WaitTimeSparkline
+                      history={attraction.statistics.history}
+                      className="text-primary"
+                    />
+                  </div>
+                )}
             </StatusInfoCard>
 
             {/* Status */}
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
-                className={`text-base ${
-                  status === 'OPERATING'
-                    ? 'bg-status-operating'
-                    : status === 'DOWN'
-                      ? 'bg-status-down'
-                      : status === 'REFURBISHMENT'
-                        ? 'bg-status-refurbishment'
-                        : 'bg-status-closed'
-                } text-white`}
+                className={`text-base ${status === 'OPERATING'
+                  ? 'bg-status-operating'
+                  : status === 'DOWN'
+                    ? 'bg-status-down'
+                    : status === 'REFURBISHMENT'
+                      ? 'bg-status-refurbishment'
+                      : 'bg-status-closed'
+                  } text-white`}
               >
                 <StatusIcon className="mr-1 h-4 w-4" />
                 {config.label}
@@ -310,15 +364,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
                 <Badge
                   variant="outline"
-                  className={`text-base ${
-                    attraction.predictionAccuracy.badge === 'excellent'
-                      ? 'border-crowd-very-low text-crowd-very-low'
-                      : attraction.predictionAccuracy.badge === 'good'
-                        ? 'border-crowd-low text-crowd-low'
-                        : attraction.predictionAccuracy.badge === 'fair'
-                          ? 'border-crowd-moderate text-crowd-moderate'
-                          : 'border-muted-foreground'
-                  }`}
+                  className={`text-base ${attraction.predictionAccuracy.badge === 'excellent'
+                    ? 'border-crowd-very-low text-crowd-very-low'
+                    : attraction.predictionAccuracy.badge === 'good'
+                      ? 'border-crowd-low text-crowd-low'
+                      : attraction.predictionAccuracy.badge === 'fair'
+                        ? 'border-crowd-moderate text-crowd-moderate'
+                        : 'border-muted-foreground'
+                    }`}
                 >
                   {attraction.predictionAccuracy.badge}
                 </Badge>
@@ -334,9 +387,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Hourly Forecast */}
           {attraction.hourlyForecast && attraction.hourlyForecast.length > 0 && (
             <section className="mb-8">
-              <h2 className="mb-4 text-xl font-semibold">{t('predictions')}</h2>
-              <Card>
-                <CardContent className="p-4">
+              <Card className="p-6">
+                <div className="space-y-4">
+                  <h2 className="text-2xl font-bold">{t('predictions')}</h2>
+
                   <div className="flex gap-4 overflow-x-auto pb-2">
                     {attraction.hourlyForecast.slice(0, 12).map((forecast, i) => (
                       <div
@@ -351,7 +405,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       </div>
                     ))}
                   </div>
-                </CardContent>
+                </div>
               </Card>
             </section>
           )}
