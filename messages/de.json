@@ -112,7 +112,8 @@
     "contact": "Kontakt & Support",
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by",
-    "legalLinks": "Rechtliches"
+    "legalLinks": "Rechtliches",
+    "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen."
   },
   "explore": {
     "title": "Parks in {location}",

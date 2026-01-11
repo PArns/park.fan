@@ -241,7 +241,7 @@ export async function Footer({ locale }: FooterProps) {
           </section>
 
           {/* Popular Parks - Japan */}
-          <section className="space-y-4">
+          <section className="space-y-3">
             <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
             <div className="space-y-3">
               <div>
@@ -285,12 +285,16 @@ export async function Footer({ locale }: FooterProps) {
 
         <Separator className="my-8" />
 
-        <div className="text-muted-foreground flex flex-col items-center justify-between gap-4 text-sm md:flex-row">
-          <div className="flex flex-col items-center gap-1 text-center md:text-left">
+        <div className="mt-4 mb-6 text-center">
+          <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
+        </div>
+
+        <div className="text-muted-foreground flex flex-col items-center justify-between text-sm md:flex-row">
+          <div className="flex flex-col items-center text-center md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <Link
               href="/impressum"
               className="hover:text-foreground text-sm transition-colors"
@@ -306,9 +310,8 @@ export async function Footer({ locale }: FooterProps) {
             >
               {t('datenschutz')}
             </Link>
-            <span className="text-muted-foreground/60 mx-2 flex items-center">•</span>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
             <p>
-              {t('poweredBy')}{' '}
               <a
                 href="https://arns.dev"
                 target="_blank"
@@ -316,7 +319,7 @@ export async function Footer({ locale }: FooterProps) {
                 className="hover:text-foreground transition-colors"
                 aria-label="Visit Arns.dev website (opens in new tab)"
               >
-                Arns.dev
+                {t('poweredBy')} Arns.dev
               </a>
             </p>
           </div>
