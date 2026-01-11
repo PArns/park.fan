@@ -1,5 +1,6 @@
 'use client';
 
+import { XCircle, AlertTriangle } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -109,10 +110,17 @@ export function ShowCard({
             <div className="mt-2">
               <Badge
                 className={cn(
-                  'border-0 text-xs font-medium',
-                  status === 'CLOSED' ? 'bg-status-closed text-white' : 'bg-status-down text-white'
+                  'border-0 text-xs font-medium text-white dark:text-slate-900',
+                  status === 'CLOSED'
+                    ? 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
+                    : 'bg-status-down hover:opacity-90'
                 )}
               >
+                {status === 'CLOSED' ? (
+                  <XCircle className="mr-1 h-3 w-3" />
+                ) : (
+                  <AlertTriangle className="mr-1 h-3 w-3" />
+                )}
                 {tCommon(status.toLowerCase() as 'closed')}
               </Badge>
             </div>

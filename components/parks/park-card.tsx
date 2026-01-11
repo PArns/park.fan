@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, ChevronRight, Navigation } from 'lucide-react';
+import { Clock, TrendingUp, ChevronRight, Navigation, XCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -109,10 +109,17 @@ export function ParkCard({
                 {status && (
                   <Badge
                     className={cn(
-                      'border-0 text-xs font-medium',
-                      isOpen ? 'bg-status-operating text-white' : 'bg-status-closed text-white'
+                      'border-0 text-xs font-medium text-white dark:text-slate-900',
+                      isOpen
+                        ? 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400'
+                        : 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
                     )}
                   >
+                    {isOpen ? (
+                      <Clock className="mr-1 h-3 w-3" />
+                    ) : (
+                      <XCircle className="mr-1 h-3 w-3" />
+                    )}
                     {isOpen ? tCommon('open') : tCommon('closed')}
                   </Badge>
                 )}

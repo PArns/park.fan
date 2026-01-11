@@ -156,10 +156,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Merge history and schedule data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
-      ...parkAttraction,
-      history: attractionData?.history || parkAttraction.history,
-      schedule: attractionData?.schedule,
-    }
+        ...parkAttraction,
+        history: attractionData?.history || parkAttraction.history,
+        schedule: attractionData?.schedule,
+      }
     : null;
 
   if (!park || !attraction) {
@@ -276,10 +276,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             >
               <div className="relative z-10 pb-12">
                 {status === 'OPERATING' &&
-                  !isParkClosed &&
-                  mainQueue &&
-                  'waitTime' in mainQueue &&
-                  mainQueue.waitTime !== null ? (
+                !isParkClosed &&
+                mainQueue &&
+                'waitTime' in mainQueue &&
+                mainQueue.waitTime !== null ? (
                   <div className="flex flex-row items-center gap-8">
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">
@@ -302,7 +302,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         )}
                       >
                         {attraction.trend.toLowerCase() === 'down' ||
-                          attraction.trend.toLowerCase() === 'decreasing' ? (
+                        attraction.trend.toLowerCase() === 'decreasing' ? (
                           <TrendingDown className="h-5 w-5" />
                         ) : attraction.trend.toLowerCase() === 'up' ||
                           attraction.trend.toLowerCase() === 'increasing' ? (
@@ -311,7 +311,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           <Minus className="h-5 w-5" />
                         )}
                         {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                        <span className="capitalize">{tCommon(attraction.trend.toLowerCase() as any)}</span>
+                        <span className="capitalize">
+                          {tCommon(attraction.trend.toLowerCase() as any)}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -339,14 +341,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Status */}
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
-                className={`text-base ${status === 'OPERATING'
-                  ? 'bg-status-operating'
-                  : status === 'DOWN'
-                    ? 'bg-status-down'
-                    : status === 'REFURBISHMENT'
-                      ? 'bg-status-refurbishment'
-                      : 'bg-status-closed'
-                  } text-white`}
+                className={`text-base ${
+                  status === 'OPERATING'
+                    ? 'bg-status-operating'
+                    : status === 'DOWN'
+                      ? 'bg-status-down'
+                      : status === 'REFURBISHMENT'
+                        ? 'bg-status-refurbishment'
+                        : 'bg-status-closed'
+                } text-white`}
               >
                 <StatusIcon className="mr-1 h-4 w-4" />
                 {config.label}
@@ -364,14 +367,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
                 <Badge
                   variant="outline"
-                  className={`text-base ${attraction.predictionAccuracy.badge === 'excellent'
-                    ? 'border-crowd-very-low text-crowd-very-low'
-                    : attraction.predictionAccuracy.badge === 'good'
-                      ? 'border-crowd-low text-crowd-low'
-                      : attraction.predictionAccuracy.badge === 'fair'
-                        ? 'border-crowd-moderate text-crowd-moderate'
-                        : 'border-muted-foreground'
-                    }`}
+                  className={`text-base ${
+                    attraction.predictionAccuracy.badge === 'excellent'
+                      ? 'border-crowd-very-low text-crowd-very-low'
+                      : attraction.predictionAccuracy.badge === 'good'
+                        ? 'border-crowd-low text-crowd-low'
+                        : attraction.predictionAccuracy.badge === 'fair'
+                          ? 'border-crowd-moderate text-crowd-moderate'
+                          : 'border-muted-foreground'
+                  }`}
                 >
                   {attraction.predictionAccuracy.badge}
                 </Badge>
