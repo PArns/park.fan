@@ -221,7 +221,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
           currentPage={attraction.name}
-          className="bg-background/60 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
+          className="bg-background/60 text-primary w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
         <article itemScope itemType="https://schema.org/TouristAttraction">
@@ -237,7 +237,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attraction.name}</h1>
-                  <div className="text-muted-foreground flex flex-wrap items-center gap-3">
+                  <div className="text-foreground flex flex-wrap items-center gap-3">
                     <Link
                       href={
                         `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'

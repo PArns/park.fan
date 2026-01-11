@@ -353,7 +353,9 @@
       "next": "Weiter",
       "previous": "Zurück",
       "today": "Heute"
-    }
+    },
+    "rideClosed": "Ganztägig geschlossen",
+    "notYetOpen": "Heute noch nicht geöffnet"
   },
   "calendar": {
     "legend": "Legende",

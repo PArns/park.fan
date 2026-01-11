@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import type { Breadcrumb } from '@/lib/api/types';
@@ -24,7 +25,10 @@ interface BreadcrumbNavProps {
 export function BreadcrumbNav({ breadcrumbs, currentPage, className }: BreadcrumbNavProps) {
   return (
     <nav
-      className={`text-muted-foreground mb-4 flex flex-wrap items-center gap-2 text-sm ${className || ''}`}
+      className={cn(
+        'text-muted-foreground mb-4 flex flex-wrap items-center gap-2 text-sm',
+        className
+      )}
       aria-label="Breadcrumb"
     >
       {breadcrumbs.map((crumb, index) => (
@@ -38,7 +42,7 @@ export function BreadcrumbNav({ breadcrumbs, currentPage, className }: Breadcrum
       {currentPage && (
         <>
           <ChevronRight className="h-4 w-4" aria-hidden="true" />
-          <span className="text-foreground font-medium" aria-current="page">
+          <span className="text-foreground font-bold" aria-current="page">
             {currentPage}
           </span>
         </>

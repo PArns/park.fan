@@ -1,5 +1,4 @@
 'use client';
-
 import { useLocale } from 'next-intl';
 import { useRouter, usePathname } from '@/i18n/navigation';
 import { Globe } from 'lucide-react';
@@ -11,15 +10,20 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { routing, type Locale } from '@/i18n/routing';
+import { FlagDE, FlagGB } from '@/components/common/icons/flags';
 
 const localeNames: Record<Locale, string> = {
   en: 'English',
   de: 'Deutsch',
 };
 
-const localeFlags: Record<Locale, string> = {
-  en: '🇬🇧',
-  de: '🇩🇪',
+const LocaleFlag = ({ locale }: { locale: Locale }) => {
+  switch (locale) {
+    case 'de':
+      return <FlagDE className="h-4 w-6" />;
+    case 'en':
+      return <FlagGB className="h-4 w-6" />;
+  }
 };
 
 export function LocaleSwitcher() {
@@ -46,7 +50,7 @@ export function LocaleSwitcher() {
             onClick={() => handleLocaleChange(loc)}
             className="flex items-center gap-2"
           >
-            <span>{localeFlags[loc]}</span>
+            <LocaleFlag locale={loc} />
             <span>{localeNames[loc]}</span>
             {locale === loc && <span className="ml-auto">✓</span>}
           </DropdownMenuItem>

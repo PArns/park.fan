@@ -1,5 +1,3 @@
-'use client';
-
 import type { ParkWithAttractions, AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { AttractionHistoryGrid } from './attraction-history-grid';
 

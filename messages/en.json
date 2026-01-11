@@ -353,7 +353,9 @@
       "next": "Next",
       "previous": "Previous",
       "today": "Today"
-    }
+    },
+    "rideClosed": "Ride Closed",
+    "notYetOpen": "Not yet open today"
   },
   "calendar": {
     "legend": "Legend",

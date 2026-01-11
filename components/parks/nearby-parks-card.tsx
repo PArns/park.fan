@@ -2,14 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import {
-  MapPin,
-  Navigation,
-  Clock,
-  TrendingUp,
-  ChevronRight,
-  Loader2,
-} from 'lucide-react';
+import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
@@ -104,8 +97,6 @@ export function NearbyParksCard() {
       return () => clearInterval(interval);
     }
   }, [permissionState, nearbyData, requestLocation]);
-
-
 
   // Prompt state - show enable button
   if (permissionState === 'prompt') {

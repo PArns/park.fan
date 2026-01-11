@@ -1,7 +1,9 @@
 {
   "name": "park.fan",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "private": true,
+  "license": "GPL-3.0-only",
+  "author": "Patrick Arns",
   "scripts": {
     "dev": "next dev --turbopack",
     "prebuild": "node scripts/generate-build-info.mjs && pnpm generate:hero-images",

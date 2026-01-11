@@ -187,19 +187,19 @@ export function TabsWithHash({
     searchQuery.trim() === ''
       ? attractionsByLand
       : fuse
-        .search(searchQuery)
-        .map((result) => result.item)
-        .reduce(
-          (acc, attraction) => {
-            const land = attraction.land || 'Other';
-            if (!acc[land]) {
-              acc[land] = [];
-            }
-            acc[land].push(attraction);
-            return acc;
-          },
-          {} as Record<string, ParkAttraction[]>
-        );
+          .search(searchQuery)
+          .map((result) => result.item)
+          .reduce(
+            (acc, attraction) => {
+              const land = attraction.land || 'Other';
+              if (!acc[land]) {
+                acc[land] = [];
+              }
+              acc[land].push(attraction);
+              return acc;
+            },
+            {} as Record<string, ParkAttraction[]>
+          );
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
@@ -237,8 +237,9 @@ export function TabsWithHash({
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
-                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${isFocused && searchQuery ? 'pr-16' : 'pr-4'
-                    }`}
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
+                    isFocused && searchQuery ? 'pr-16' : 'pr-4'
+                  }`}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   onFocus={() => setIsFocused(true)}
