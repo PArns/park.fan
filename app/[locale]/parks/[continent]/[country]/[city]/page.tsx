@@ -4,6 +4,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
 interface CityPageProps {
@@ -25,6 +26,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
     ? tGeo(`countries.${country}`)
     : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
+  const ogImageUrl = getOgImageUrl([locale, continent, country, citySlug]);
+
   return {
     title: t('titleTemplate', { city: cityName, country: countryName }),
     description: t('metaDescriptionTemplate', { city: cityName }),
@@ -35,9 +38,10 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${citySlug}`,
       siteName: 'park.fan',
+      type: 'website',
       images: [
         {
-          url: 'https://park.fan/og-image.png',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: t('titleTemplate', { city: cityName, country: countryName }),
@@ -48,7 +52,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       card: 'summary_large_image',
       title: t('titleTemplate', { city: cityName, country: countryName }),
       description: t('metaDescriptionTemplate', { city: cityName }),
-      images: ['https://park.fan/og-image.png'],
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${citySlug}`,

@@ -21,6 +21,7 @@ import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 
 interface ParkPageProps {
   params: Promise<{
@@ -44,10 +45,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     return { title: tNotFound('park') };
   }
 
-  const backgroundImage = getParkBackgroundImage(parkSlug);
-  const ogImage = backgroundImage
-    ? `https://park.fan${backgroundImage}`
-    : 'https://park.fan/og-image.png';
+  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
   return {
     title: t('titleTemplate', { park: park.name }),
@@ -59,9 +57,10 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       siteName: 'park.fan',
+      type: 'website',
       images: [
         {
-          url: ogImage,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: tImageAlt('park', { park: park.name }),
@@ -72,7 +71,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       card: 'summary_large_image',
       title: park.name,
       description: t('metaDescriptionTemplate', { park: park.name }),
-      images: [ogImage],
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,

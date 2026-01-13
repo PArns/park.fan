@@ -18,6 +18,8 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { StatsCard } from '@/components/common/stats-card';
 import { HERO_IMAGES } from '@/lib/hero-images';
 
+import { getOgImageUrl } from '@/lib/utils/og-image';
+
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -29,6 +31,7 @@ interface HomePageProps {
 export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'seo.home' });
+  const ogImageUrl = getOgImageUrl([locale]);
 
   return {
     title: t('title'),
@@ -43,7 +46,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       type: 'website',
       images: [
         {
-          url: 'https://park.fan/og-image.png',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: t('title'),
@@ -54,7 +57,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
-      images: ['https://park.fan/og-image.png'],
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `/${locale}`,

@@ -5,6 +5,7 @@ import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { LocaleContent } from '@/components/common/locale-content';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 
 interface DatenschutzPageProps {
   params: Promise<{ locale: string }>;
@@ -17,6 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: DatenschutzPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'datenschutz' });
+  const ogImageUrl = getOgImageUrl([locale]);
 
   return {
     title: t('title'),
@@ -28,9 +30,10 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/datenschutz`,
       siteName: 'park.fan',
+      type: 'website',
       images: [
         {
-          url: 'https://park.fan/og-image.png',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: t('title'),
@@ -38,9 +41,17 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       ],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: t('title'),
       description: t('description'),
+      images: [ogImageUrl],
+    },
+    alternates: {
+      canonical: `/${locale}/datenschutz`,
+      languages: {
+        en: '/en/datenschutz',
+        de: '/de/datenschutz',
+      },
     },
     robots: {
       index: false,

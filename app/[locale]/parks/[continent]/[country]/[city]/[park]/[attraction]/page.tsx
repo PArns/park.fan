@@ -33,6 +33,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -66,14 +67,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
-  // Get background image for OpenGraph (fallback: attraction → park → default)
-  const { getAttractionBackgroundImage, getParkBackgroundImage } =
-    await import('@/lib/utils/park-assets');
-  const backgroundImage =
-    getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
-  const ogImage = backgroundImage
-    ? `https://park.fan${backgroundImage}`
-    : 'https://park.fan/og-image.png';
+  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
   return {
     title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
@@ -91,9 +85,10 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       siteName: 'park.fan',
+      type: 'website',
       images: [
         {
-          url: ogImage,
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: tImageAlt('attraction', {
@@ -110,7 +105,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         attraction: attraction.name,
         park: park?.name || '',
       }),
-      images: [ogImage],
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,

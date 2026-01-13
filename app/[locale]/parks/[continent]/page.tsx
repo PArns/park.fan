@@ -5,6 +5,7 @@ import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
 interface ContinentPageProps {
@@ -26,6 +27,8 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
     ? tGeo(`continents.${continent}`)
     : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
 
+  const ogImageUrl = getOgImageUrl([locale, continent]);
+
   return {
     title: t('titleTemplate', { location: continentName }),
     description: t('metaDescriptionTemplate', { location: continentName }),
@@ -36,9 +39,10 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}`,
       siteName: 'park.fan',
+      type: 'website',
       images: [
         {
-          url: 'https://park.fan/og-image.png',
+          url: ogImageUrl,
           width: 1200,
           height: 630,
           alt: t('titleTemplate', { location: continentName }),
@@ -49,7 +53,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       card: 'summary_large_image',
       title: t('titleTemplate', { location: continentName }),
       description: t('metaDescriptionTemplate', { location: continentName }),
-      images: ['https://park.fan/og-image.png'],
+      images: [ogImageUrl],
     },
     alternates: {
       canonical: `/${locale}/parks/${continent}`,
