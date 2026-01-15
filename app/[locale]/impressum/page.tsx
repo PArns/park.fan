@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ImpressumPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'impressum' });
-  const ogImageUrl = getOgImageUrl([locale]);
+  const ogImageUrl = getOgImageUrl([locale, 'impressum']);
 
   return {
     title: t('title'),

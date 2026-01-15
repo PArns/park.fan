@@ -6,6 +6,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
+import { locales, isValidLocale } from '@/i18n/config';
 
 export const runtime = 'nodejs';
 
@@ -100,30 +101,57 @@ export async function GET(
       return new Response('Invalid path. Expected at least: locale', { status: 400 });
     }
 
-    const [localeParam, continent, country, city, parkSlug, attractionSlug] = path;
-    const locale = localeParam === 'en' || localeParam === 'de' ? localeParam : 'en';
+    // Generic pages configuration
+    const genericPages = {
+      search: { namespace: 'common', key: 'search' },
+      datenschutz: { namespace: 'datenschutz', key: 'title' },
+      privacy: { namespace: 'datenschutz', key: 'title' },
+      impressum: { namespace: 'impressum', key: 'title' },
+      imprint: { namespace: 'impressum', key: 'title' },
+      parks: { namespace: 'explore', key: 'parksTitle' },
+    };
 
-    // Determine type based on path length
+    const [localeParam, secondSegment] = path;
+    const locale = isValidLocale(localeParam) ? localeParam : 'en';
+    const isGeneric = secondSegment && Object.keys(genericPages).includes(secondSegment);
+
+    // Aliases for path segments to match existing logic
+    const continent = path[1];
+    const country = path[2];
+    const city = path[3];
+    const parkSlug = path[4];
+    const attractionSlug = path[5];
+
+    // Determine type based on path length and content
     const type =
       path.length === 1
         ? 'HOME'
-        : path.length === 2
-          ? 'CONTINENT'
-          : path.length === 3
-            ? 'COUNTRY'
-            : path.length === 4
-              ? 'CITY'
-              : path.length >= 6 && attractionSlug
-                ? 'ATTRACTION'
-                : 'PARK';
+        : isGeneric
+          ? 'GENERIC'
+          : path.length === 2
+            ? 'CONTINENT'
+            : path.length === 3
+              ? 'COUNTRY'
+              : path.length === 4
+                ? 'CITY'
+                : path.length >= 6 && path[5] // attractionSlug
+                  ? 'ATTRACTION'
+                  : 'PARK';
 
     // Fetch translations
     const tCommon = await getTranslations({ locale, namespace: 'common' });
-
     const tGeo = await getTranslations({ locale, namespace: 'geo' });
     const tParks = await getTranslations({ locale, namespace: 'parks' });
     const tAttractions = await getTranslations({ locale, namespace: 'attractions' });
     const tHomepage = await getTranslations({ locale, namespace: 'homepage' });
+
+    // Dynamic translations for generic pages
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let tGeneric: any = null;
+    if (type === 'GENERIC') {
+      const config = genericPages[secondSegment as keyof typeof genericPages];
+      tGeneric = await getTranslations({ locale, namespace: config.namespace });
+    }
 
     let name = '';
     let backgroundImagePath: string | null = null;
@@ -148,6 +176,7 @@ export async function GET(
 
     // Fetch GeoStructure for ALL types to get correct names (e.g. City Name "Brühl" vs slug "bruehl")
     const geo = await getGeoStructure();
+
     const continentNode = continent ? geo.continents.find((c) => c.slug === continent) : null;
     const countryNode = country ? continentNode?.countries.find((c) => c.slug === country) : null;
     const cityNode = city ? countryNode?.cities.find((c) => c.slug === city) : null;
@@ -164,6 +193,21 @@ export async function GET(
 
       statusLabel = `${openParksCount} ${tCommon('open')}`;
       statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
+    } else if (type === 'GENERIC') {
+      const config = genericPages[secondSegment as keyof typeof genericPages];
+      name = tGeneric(config.key);
+
+      // For 'parks' generic page, we can show stats
+      if (secondSegment === 'parks') {
+        totalParks = geo.parkCount;
+        openParksCount = geo.continents.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
+        statusLabel = `${openParksCount} ${tCommon('open')}`;
+        statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
+      }
+
+      // Use a random hero image for visuals if no specific one
+      const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
+      backgroundImagePath = HERO_IMAGES[randomIndex];
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
       // Resolve Name & Stats based on Type
       if (type === 'CONTINENT' && continentNode) {
@@ -620,8 +664,10 @@ export async function GET(
                         {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
                         {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
                       </>
+                    ) : type === 'GENERIC' ? (
+                      <>� park.fan</>
                     ) : (
-                      <>📍 {locationString}</>
+                      <>�📍 {locationString}</>
                     )}
                   </p>
                 </div>
@@ -698,8 +744,30 @@ export async function GET(
                   </div>
                 )}
 
+                {/* Status Badges Row - GENERIC */}
+                {type === 'GENERIC' && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        backgroundColor: '#3b82f6', // blue-500
+                        color: 'white',
+                        padding: '12px 28px',
+                        borderRadius: '9999px',
+                        fontSize: '32px',
+                        fontWeight: 700,
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                      }}
+                    >
+                      👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
+                    </div>
+                  </div>
+                )}
+
                 {/* Status Badges Row - PARK/ATTRACTION */}
-                {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
+                {!['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC'].includes(type) && (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                     {/* Operating Status Badge */}
                     <div

@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -35,7 +36,7 @@ export async function generateMetadata({
       siteName: 'park.fan',
       images: [
         {
-          url: 'https://park.fan/og-image.png',
+          url: getOgImageUrl([locale, 'search']),
           width: 1200,
           height: 630,
           alt: q ? t('titleTemplate', { query: q }) : t('title'),
@@ -46,7 +47,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
-      images: ['https://park.fan/og-image.png'],
+      images: [getOgImageUrl([locale, 'search'])],
     },
     alternates: {
       canonical: `/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,

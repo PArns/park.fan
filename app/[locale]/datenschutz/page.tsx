@@ -18,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: DatenschutzPageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'datenschutz' });
-  const ogImageUrl = getOgImageUrl([locale]);
+  const ogImageUrl = getOgImageUrl([locale, 'datenschutz']);
 
   return {
     title: t('title'),
