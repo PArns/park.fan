@@ -1,4 +1,4 @@
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from 'next/og';
 import { NextRequest } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
