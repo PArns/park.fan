@@ -6,7 +6,7 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
-import { locales, isValidLocale } from '@/i18n/config';
+import { isValidLocale } from '@/i18n/config';
 
 export const runtime = 'nodejs';
 
