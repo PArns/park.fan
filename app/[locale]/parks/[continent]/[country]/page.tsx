@@ -112,12 +112,14 @@ export default async function CountryPage({ params }: CountryPageProps) {
     : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   // Generate breadcrumbs with translations
+  const tNav = await getTranslations('navigation');
   const { generateCountryBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const breadcrumbs = generateCountryBreadcrumbs({
     locale: locale as 'en' | 'de',
     continent,
     continentName,
     homeLabel: tCommon('home'),
+    continentsLabel: tNav('continents'),
   });
 
   return (

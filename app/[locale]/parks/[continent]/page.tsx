@@ -127,8 +127,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   // Create breadcrumbs for continent page
   const tCommon = await getTranslations('common');
   const { generateContinentBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const tNav = await getTranslations('navigation');
   const breadcrumbs = generateContinentBreadcrumbs({
     homeLabel: tCommon('home'),
+    continentsLabel: tNav('continents'),
   });
 
   return (

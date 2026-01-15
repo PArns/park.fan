@@ -242,11 +242,10 @@ export function AttractionCard({
                         case 'SINGLE_RIDER':
                           Icon = User;
                           const singleRiderWaitTime = getWaitTime(queue);
-                          // This should always have a wait time due to filter above, but keep check for safety
                           label =
                             singleRiderWaitTime !== null
-                              ? `Single Rider: ${singleRiderWaitTime} min`
-                              : 'Single Rider';
+                              ? t('queue.details.singleRider', { time: singleRiderWaitTime })
+                              : t('queue.details.singleRiderNoTime');
                           variant = 'outline';
                           break;
 
@@ -254,8 +253,8 @@ export function AttractionCard({
                           Icon = Zap;
                           label =
                             'price' in queue && queue.price?.formatted
-                              ? `Lightning Lane: ${queue.price.formatted}`
-                              : 'Lightning Lane';
+                              ? t('queue.details.lightningLane', { price: queue.price.formatted })
+                              : t('queue.details.lightningLaneNoPrice');
                           variant = 'secondary';
                           break;
 
@@ -263,8 +262,8 @@ export function AttractionCard({
                           Icon = Zap;
                           label =
                             'price' in queue && queue.price?.formatted
-                              ? `Express: ${queue.price.formatted}`
-                              : 'Express';
+                              ? t('queue.details.express', { price: queue.price.formatted })
+                              : t('queue.details.expressNoPrice');
                           variant = 'secondary';
                           break;
 
@@ -283,16 +282,16 @@ export function AttractionCard({
                             const end =
                               'returnEnd' in queue && queue.returnEnd
                                 ? new Date(queue.returnEnd).toLocaleTimeString([], {
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                  })
+                                  hour: '2-digit',
+                                  minute: '2-digit',
+                                })
                                 : '';
-                            label = `Return: ${start}${end ? ` - ${end}` : ''}`;
+                            label = t('queue.details.return', { start, end });
                           } else {
                             label =
                               'state' in queue && queue.state === 'FULL'
-                                ? 'Virtual Queue Full'
-                                : 'Virtual Queue';
+                                ? t('queue.details.virtualQueueFull')
+                                : t('queue.details.virtualQueue');
                           }
                           variant = 'outline';
                           break;
@@ -305,13 +304,16 @@ export function AttractionCard({
                           ) {
                             label =
                               'currentGroupStart' in queue && queue.currentGroupStart
-                                ? `Boarding Groups: ${queue.currentGroupStart}-${'currentGroupEnd' in queue ? queue.currentGroupEnd : ''}`
-                                : 'Boarding Groups Available';
+                                ? t('queue.details.boardingGroups', {
+                                  start: queue.currentGroupStart,
+                                  end: 'currentGroupEnd' in queue ? queue.currentGroupEnd : '',
+                                })
+                                : t('queue.details.boardingGroupsAvailable');
                           } else {
                             label =
                               'allocationStatus' in queue && queue.allocationStatus === 'FINISHED'
-                                ? 'Groups Distributed'
-                                : 'Boarding Groups Paused';
+                                ? t('queue.details.boardingGroupsDistributed')
+                                : t('queue.details.boardingGroupsPaused');
                           }
                           variant = 'outline';
                           break;

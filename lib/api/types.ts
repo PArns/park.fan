@@ -32,6 +32,7 @@ export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 export interface Breadcrumb {
   name: string;
   url: string;
+  className?: string;
 }
 
 export interface Pagination {

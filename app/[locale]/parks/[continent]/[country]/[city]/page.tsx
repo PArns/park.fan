@@ -98,6 +98,7 @@ export default async function CityPage({ params }: CityPageProps) {
     : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   // Generate breadcrumbs with translations
+  const tNav = await getTranslations('navigation');
   const { generateCityBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const breadcrumbs = generateCityBreadcrumbs({
     locale: locale as 'en' | 'de',
@@ -106,6 +107,7 @@ export default async function CityPage({ params }: CityPageProps) {
     continentName,
     countryName,
     homeLabel: tCommon('home'),
+    continentsLabel: tNav('continents'),
   });
 
   return (

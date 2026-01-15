@@ -186,6 +186,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
   // Construct breadcrumbs using utility
   const { generateParkBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const tNav = await getTranslations('navigation');
   const breadcrumbs = generateParkBreadcrumbs({
     locale: locale as 'en' | 'de',
     continent,
@@ -195,6 +196,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
     countryName,
     cityName,
     homeLabel: tCommon('home'),
+    continentsLabel: tNav('continents'),
   });
 
   return (

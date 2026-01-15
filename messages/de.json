@@ -118,6 +118,8 @@
   },
   "explore": {
     "title": "Parks in {location}",
+    "parks": "Parks",
+    "parksTitle": "Parks weltweit",
     "description": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Andrangsprognosen.",
     "breadcrumbs": {
       "home": "Startseite"
@@ -132,6 +134,7 @@
   "navigation": {
     "home": "Startseite",
     "parks": "Alle Parks",
+    "continents": "Kontinente",
     "explore": "Parks entdecken",
     "search": "Parks & Attraktionen suchen",
     "admin": "Admin"
@@ -338,6 +341,12 @@
     "statistics": "Statistiken",
     "noWaitTime": "Keine Wartezeit-Daten",
     "predictionAccuracy": "Vorhersage-Genauigkeit",
+    "accuracy": {
+      "poor": "Schlecht",
+      "fair": "Mittel",
+      "good": "Gut",
+      "excellent": "Exzellent"
+    },
     "otherQueues": "Weitere Warteschlangen",
     "returnTime": "Rückkehr",
     "peak": "Tageshoch: {time} min",
@@ -358,7 +367,35 @@
     },
     "rideClosed": "Ganztägig geschlossen",
     "parkClosed": "Park geschlossen",
-    "notYetOpen": "Heute noch nicht geöffnet"
+    "notYetOpen": "Heute noch nicht geöffnet",
+    "queue": {
+      "SINGLE_RIDER": "Single Rider",
+      "PREMIER_ACCESS": "Premier Access",
+      "PAID_RETURN_TIME": "Kostenpflichtig",
+      "BOARDING_GROUP": "Virtuelle Warteschlange",
+      "STANDBY": "Regulär",
+      "status": {
+        "OPEN": "Geöffnet",
+        "CLOSED": "Geschlossen",
+        "FULL": "Voll",
+        "FINISHED": "Beendet"
+      },
+      "details": {
+        "singleRider": "Single Rider: {time} min",
+        "singleRiderNoTime": "Single Rider",
+        "lightningLane": "Lightning Lane: {price}",
+        "lightningLaneNoPrice": "Lightning Lane",
+        "express": "Express: {price}",
+        "expressNoPrice": "Express",
+        "virtualQueue": "Virtuelle Warteschlange",
+        "virtualQueueFull": "Virtuelle Warteschlange Voll",
+        "boardingGroups": "Boarding Gruppen: {start}-{end}",
+        "boardingGroupsAvailable": "Gruppen verfügbar",
+        "boardingGroupsDistributed": "Gruppen verteilt",
+        "boardingGroupsPaused": "Gruppen pausiert",
+        "return": "Rückkehr: {start} - {end}"
+      }
+    }
   },
   "calendar": {
     "legend": "Legende",

@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 import { ChevronRight, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
@@ -24,6 +25,9 @@ export function GeoLocationCard({
   subtitle,
   className,
 }: GeoLocationCardProps) {
+  const t = useTranslations('common');
+  const tExplore = useTranslations('explore');
+
   return (
     <Link href={href as '/parks/europe'} className="interactive-link">
       <Card className={cn('interactive-card h-full', className)}>
@@ -35,9 +39,11 @@ export function GeoLocationCard({
                 <h3 className="group-interactive-text font-semibold">{name}</h3>
                 {subtitle && <p className="text-muted-foreground text-sm">{subtitle}</p>}
                 <div className="mt-1 flex items-center gap-2 text-sm">
-                  <span className="text-park-primary font-medium">{openParkCount} open</span>
+                  <span className="text-park-primary font-medium">
+                    {openParkCount} {t('open')}
+                  </span>
                   <span className="text-muted-foreground">
-                    / {totalParkCount} {totalParkCount === 1 ? 'park' : 'parks'}
+                    / {totalParkCount} {tExplore('stats.park', { count: totalParkCount })}
                   </span>
                 </div>
               </div>

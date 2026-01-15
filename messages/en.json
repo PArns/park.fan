@@ -118,6 +118,8 @@
   },
   "explore": {
     "title": "Parks in {location}",
+    "parks": "Parks",
+    "parksTitle": "Parks Worldwide",
     "description": "Explore theme parks in {location} with real-time wait times and crowd predictions.",
     "breadcrumbs": {
       "home": "Home"
@@ -132,6 +134,7 @@
   "navigation": {
     "home": "Home",
     "parks": "All Parks",
+    "continents": "Continents",
     "explore": "Explore Parks",
     "search": "Search Parks & Attractions",
     "admin": "Admin"
@@ -338,6 +341,12 @@
     "statistics": "Statistics",
     "noWaitTime": "No wait time data",
     "predictionAccuracy": "Prediction Accuracy",
+    "accuracy": {
+      "poor": "Poor",
+      "fair": "Fair",
+      "good": "Good",
+      "excellent": "Excellent"
+    },
     "otherQueues": "Other Queue Options",
     "returnTime": "Return",
     "peak": "Today's Peak: {time} min",
@@ -358,7 +367,35 @@
     },
     "rideClosed": "Ride Closed",
     "parkClosed": "Park Closed",
-    "notYetOpen": "Not yet open today"
+    "notYetOpen": "Not yet open today",
+    "queue": {
+      "SINGLE_RIDER": "Single Rider",
+      "PREMIER_ACCESS": "Premier Access",
+      "PAID_RETURN_TIME": "Paid Return Time",
+      "BOARDING_GROUP": "Virtual Queue",
+      "STANDBY": "Standby",
+      "status": {
+        "OPEN": "Open",
+        "CLOSED": "Closed",
+        "FULL": "Full",
+        "FINISHED": "Finished"
+      },
+      "details": {
+        "singleRider": "Single Rider: {time} min",
+        "singleRiderNoTime": "Single Rider",
+        "lightningLane": "Lightning Lane: {price}",
+        "lightningLaneNoPrice": "Lightning Lane",
+        "express": "Express: {price}",
+        "expressNoPrice": "Express",
+        "virtualQueue": "Virtual Queue",
+        "virtualQueueFull": "Virtual Queue Full",
+        "boardingGroups": "Boarding Groups: {start}-{end}",
+        "boardingGroupsAvailable": "Boarding Groups Available",
+        "boardingGroupsDistributed": "Groups Distributed",
+        "boardingGroupsPaused": "Boarding Groups Paused",
+        "return": "Return: {start} - {end}"
+      }
+    }
   },
   "calendar": {
     "legend": "Legend",

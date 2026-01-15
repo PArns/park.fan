@@ -153,10 +153,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Merge history and schedule data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
-        ...parkAttraction,
-        history: attractionData?.history || parkAttraction.history,
-        schedule: attractionData?.schedule,
-      }
+      ...parkAttraction,
+      history: attractionData?.history || parkAttraction.history,
+      schedule: attractionData?.schedule,
+    }
     : null;
 
   if (!park || !attraction) {
@@ -197,6 +197,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   // Construct breadcrumbs using utility
   const { generateAttractionBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
+  const tNav = await getTranslations('navigation');
   const breadcrumbs = generateAttractionBreadcrumbs({
     locale: locale as 'en' | 'de',
     continent,
@@ -208,6 +209,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     cityName,
     parkName: park.name,
     homeLabel: tCommon('home'),
+    continentsLabel: tNav('continents'),
   });
 
   const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
@@ -274,10 +276,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             >
               <div className="relative z-10 pb-12">
                 {status === 'OPERATING' &&
-                !isParkClosed &&
-                mainQueue &&
-                'waitTime' in mainQueue &&
-                mainQueue.waitTime !== null ? (
+                  !isParkClosed &&
+                  mainQueue &&
+                  'waitTime' in mainQueue &&
+                  mainQueue.waitTime !== null ? (
                   <div className="flex flex-row items-center gap-8">
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">
@@ -300,7 +302,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         )}
                       >
                         {attraction.trend.toLowerCase() === 'down' ||
-                        attraction.trend.toLowerCase() === 'decreasing' ? (
+                          attraction.trend.toLowerCase() === 'decreasing' ? (
                           <TrendingDown className="h-5 w-5" />
                         ) : attraction.trend.toLowerCase() === 'up' ||
                           attraction.trend.toLowerCase() === 'increasing' ? (
@@ -308,7 +310,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         ) : (
                           <Minus className="h-5 w-5" />
                         )}
-                        {}
+                        { }
                         <span className="capitalize">
                           {tCommon(attraction.trend.toLowerCase() as string)}
                         </span>
@@ -339,15 +341,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Status */}
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
-                className={`text-base ${
-                  status === 'OPERATING'
-                    ? 'bg-status-operating'
-                    : status === 'DOWN'
-                      ? 'bg-status-down'
-                      : status === 'REFURBISHMENT'
-                        ? 'bg-status-refurbishment'
-                        : 'bg-status-closed'
-                } text-white`}
+                className={`text-base ${status === 'OPERATING'
+                  ? 'bg-status-operating'
+                  : status === 'DOWN'
+                    ? 'bg-status-down'
+                    : status === 'REFURBISHMENT'
+                      ? 'bg-status-refurbishment'
+                      : 'bg-status-closed'
+                  } text-white`}
               >
                 <StatusIcon className="mr-1 h-4 w-4" />
                 {config.label}
@@ -365,17 +366,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
                 <Badge
                   variant="outline"
-                  className={`text-base ${
-                    attraction.predictionAccuracy.badge === 'excellent'
-                      ? 'border-crowd-very-low text-crowd-very-low'
-                      : attraction.predictionAccuracy.badge === 'good'
-                        ? 'border-crowd-low text-crowd-low'
-                        : attraction.predictionAccuracy.badge === 'fair'
-                          ? 'border-crowd-moderate text-crowd-moderate'
-                          : 'border-muted-foreground'
-                  }`}
+                  className={cn('text-base', {
+                    'border-red-500 text-red-500 bg-red-500/10':
+                      attraction.predictionAccuracy.badge === 'poor',
+                    'border-yellow-500 text-yellow-500 bg-yellow-500/10':
+                      attraction.predictionAccuracy.badge === 'fair',
+                    'border-emerald-500 text-emerald-500 bg-emerald-500/10':
+                      attraction.predictionAccuracy.badge === 'good',
+                    'border-blue-500 text-blue-500 bg-blue-500/10':
+                      attraction.predictionAccuracy.badge === 'excellent',
+                  })}
                 >
-                  {attraction.predictionAccuracy.badge}
+                  {t(`accuracy.${attraction.predictionAccuracy.badge}` as any)} {/* eslint-disable-line @typescript-eslint/no-explicit-any */}
                 </Badge>
                 <p className="text-muted-foreground mt-2 text-sm">
                   {attraction.predictionAccuracy.message}
@@ -424,9 +426,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <CardContent className="p-4">
                         <div className="mb-2 flex items-center justify-between">
                           <span className="font-medium">
-                            {queue.queueType.replace(/_/g, ' ').toLowerCase()}
+                            {t(`queue.${queue.queueType}` as any)} {/* eslint-disable-line @typescript-eslint/no-explicit-any */}
                           </span>
-                          <Badge variant="outline">{queue.status}</Badge>
+                          <Badge variant="outline">
+                            {queue.status === 'OPEN' ||
+                              queue.status === 'CLOSED' ||
+                              queue.status === 'FULL' ||
+                              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+                              ? t(`queue.status.${queue.status}` as any)
+                              : queue.status}
+                          </Badge>
                         </div>
                         {'waitTime' in queue && queue.waitTime !== null && (
                           <p className="text-2xl font-bold">
