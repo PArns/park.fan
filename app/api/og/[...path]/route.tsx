@@ -548,6 +548,8 @@ export async function GET(
               <div
                 style={{
                   display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
                   alignItems: 'center',
                   gap: '20px',
                   // marginTop: 'auto' // Not needed if parent is flex column space-between, but explicitly handling it cleanly
