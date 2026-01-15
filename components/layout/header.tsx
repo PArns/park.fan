@@ -73,7 +73,7 @@ export function Header() {
                 <span className="sr-only">Menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px]">
+            <SheetContent side="right" className="w-[300px] p-6 pt-12">
               <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
                 <Link
                   href="/"

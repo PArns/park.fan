@@ -248,7 +248,9 @@ export async function GET(
           getAttractionBackgroundImage(parkSlug, attractionSlug) ??
           getParkBackgroundImage(parkSlug);
 
-        const standbyQueue = attraction.queues?.find((q: QueueDataItem) => q.queueType === 'STANDBY');
+        const standbyQueue = attraction.queues?.find(
+          (q: QueueDataItem) => q.queueType === 'STANDBY'
+        );
         if (standbyQueue && 'waitTime' in standbyQueue) waitTime = standbyQueue.waitTime ?? null;
 
         status =
@@ -338,10 +340,12 @@ export async function GET(
     // Since we can't easily load custom fonts here without more setup, we'll stick to system-ui but making it look good.
 
     // Pre-calculate translations to avoid lint errors with dynamic keys in JSX
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const localizedCountryName = country ? tGeo(`countries.${country.toLowerCase().replace(/\s+/g, '-')}` as any) : '';
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const localizedContinentName = continent ? tGeo(`continents.${continent}` as any) : '';
+    const localizedCountryName = country
+      ? tGeo(`countries.${country.toLowerCase().replace(/\s+/g, '-')}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
+      : '';
+    const localizedContinentName = continent
+      ? tGeo(`continents.${continent}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
+      : '';
 
     return new ImageResponse(
       <div
@@ -613,9 +617,7 @@ export async function GET(
                             📍 {localizedCountryName} • {localizedContinentName}
                           </>
                         )}
-                        {type === 'COUNTRY' && (
-                          <>🌍 {localizedContinentName}</>
-                        )}
+                        {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
                         {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
                       </>
                     ) : (

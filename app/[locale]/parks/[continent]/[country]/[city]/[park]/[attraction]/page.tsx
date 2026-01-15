@@ -342,12 +342,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
                 className={`text-base ${status === 'OPERATING'
-                  ? 'bg-status-operating'
-                  : status === 'DOWN'
-                    ? 'bg-status-down'
-                    : status === 'REFURBISHMENT'
-                      ? 'bg-status-refurbishment'
-                      : 'bg-status-closed'
+                    ? 'bg-status-operating'
+                    : status === 'DOWN'
+                      ? 'bg-status-down'
+                      : status === 'REFURBISHMENT'
+                        ? 'bg-status-refurbishment'
+                        : 'bg-status-closed'
                   } text-white`}
               >
                 <StatusIcon className="mr-1 h-4 w-4" />
@@ -367,17 +367,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 <Badge
                   variant="outline"
                   className={cn('text-base', {
-                    'border-red-500 text-red-500 bg-red-500/10':
+                    'border-red-500 bg-red-500/10 text-red-500':
                       attraction.predictionAccuracy.badge === 'poor',
-                    'border-yellow-500 text-yellow-500 bg-yellow-500/10':
+                    'border-yellow-500 bg-yellow-500/10 text-yellow-500':
                       attraction.predictionAccuracy.badge === 'fair',
-                    'border-emerald-500 text-emerald-500 bg-emerald-500/10':
+                    'border-emerald-500 bg-emerald-500/10 text-emerald-500':
                       attraction.predictionAccuracy.badge === 'good',
-                    'border-blue-500 text-blue-500 bg-blue-500/10':
+                    'border-blue-500 bg-blue-500/10 text-blue-500':
                       attraction.predictionAccuracy.badge === 'excellent',
                   })}
                 >
-                  {t(`accuracy.${attraction.predictionAccuracy.badge}` as any)} {/* eslint-disable-line @typescript-eslint/no-explicit-any */}
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                  {t(`accuracy.${attraction.predictionAccuracy.badge}` as any)}{' '}
                 </Badge>
                 <p className="text-muted-foreground mt-2 text-sm">
                   {attraction.predictionAccuracy.message}
@@ -426,13 +427,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <CardContent className="p-4">
                         <div className="mb-2 flex items-center justify-between">
                           <span className="font-medium">
-                            {t(`queue.${queue.queueType}` as any)} {/* eslint-disable-line @typescript-eslint/no-explicit-any */}
+                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                            {t(`queue.${queue.queueType}` as any)}{' '}
                           </span>
                           <Badge variant="outline">
                             {queue.status === 'OPEN' ||
                               queue.status === 'CLOSED' ||
                               queue.status === 'FINISHED'
-                              ? t(`queue.status.${queue.status}` as any)
+                              ? t(`queue.status.${queue.status}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
                               : queue.status}
                           </Badge>
                         </div>

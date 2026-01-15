@@ -282,9 +282,9 @@ export function AttractionCard({
                             const end =
                               'returnEnd' in queue && queue.returnEnd
                                 ? new Date(queue.returnEnd).toLocaleTimeString([], {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                })
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                  })
                                 : '';
                             label = t('queue.details.return', { start, end });
                           } else {
@@ -305,9 +305,9 @@ export function AttractionCard({
                             label =
                               'currentGroupStart' in queue && queue.currentGroupStart
                                 ? t('queue.details.boardingGroups', {
-                                  start: queue.currentGroupStart,
-                                  end: 'currentGroupEnd' in queue ? queue.currentGroupEnd : '',
-                                })
+                                    start: queue.currentGroupStart,
+                                    end: 'currentGroupEnd' in queue ? queue.currentGroupEnd : '',
+                                  })
                                 : t('queue.details.boardingGroupsAvailable');
                           } else {
                             label =

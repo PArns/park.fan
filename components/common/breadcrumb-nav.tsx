@@ -34,7 +34,9 @@ export function BreadcrumbNav({ breadcrumbs, currentPage, className }: Breadcrum
     >
       {breadcrumbs.map((crumb, index) => (
         <Fragment key={crumb.url}>
-          {index > 0 && <ChevronRight className={cn('h-4 w-4', crumb.className)} aria-hidden="true" />}
+          {index > 0 && (
+            <ChevronRight className={cn('h-4 w-4', crumb.className)} aria-hidden="true" />
+          )}
           <Link href={crumb.url} className={cn('hover:text-foreground', crumb.className)}>
             {crumb.name}
           </Link>
