@@ -431,8 +431,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           <Badge variant="outline">
                             {queue.status === 'OPEN' ||
                               queue.status === 'CLOSED' ||
-                              queue.status === 'FULL' ||
-                              /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+                              queue.status === 'FINISHED'
                               ? t(`queue.status.${queue.status}` as any)
                               : queue.status}
                           </Badge>
