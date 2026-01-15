@@ -331,7 +331,7 @@ export function SearchCommand({
       )}
 
       {/* Search Dialog */}
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog open={open} onOpenChange={setOpen} shouldFilter={false}>
         <CommandInput
           placeholder={isMobile ? 'Parks, Attraktionen...' : t('searchPlaceholderLong')}
           value={query}

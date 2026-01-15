@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import { CACHE_TTL } from '@/lib/api/cache-config';
-import type { SearchResult } from '@/lib/api/types';
+import { search } from '@/lib/api/search';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -11,15 +10,7 @@ export async function GET(request: Request) {
   }
 
   try {
-    const response = await fetch(`https://api.park.fan/v1/search?q=${encodeURIComponent(query)}`, {
-      next: { revalidate: CACHE_TTL.search },
-    });
-
-    if (!response.ok) {
-      throw new Error(`API error: ${response.status}`);
-    }
-
-    const data = (await response.json()) as SearchResult;
+    const data = await search(query);
     return NextResponse.json(data);
   } catch (error) {
     console.error('Search API error:', error);

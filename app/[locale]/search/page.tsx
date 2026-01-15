@@ -157,10 +157,11 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${isOpen
+                className={`text-xs ${
+                  isOpen
                     ? 'border-status-operating text-status-operating'
                     : 'border-status-closed text-status-closed'
-                  }`}
+                }`}
               >
                 {isOpen ? t('open') : t('closed')}
               </Badge>
@@ -179,7 +180,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
                 result.city,
                 result.country
                   ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
-                  result.country
+                    result.country
                   : null,
               ]
                 .filter(Boolean)
