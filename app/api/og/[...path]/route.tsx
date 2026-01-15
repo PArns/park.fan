@@ -96,7 +96,13 @@ export async function GET(
   { params }: { params: Promise<{ path: string[] }> }
 ) {
   try {
-    const { path } = await params;
+    const { path: rawPath } = await params;
+
+    // Remove optional .png extension (fake extension for social media crawlers)
+    let path = rawPath;
+    if (path.length > 0 && path[path.length - 1] === 'og.png') {
+      path = path.slice(0, -1);
+    }
 
     // Parse path: locale/continent/country/city/park or locale/continent/country/city/park/attraction
     // New: Allow locale (1), locale/continent (2), ...

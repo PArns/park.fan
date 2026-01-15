@@ -37,8 +37,8 @@ export async function generateMetadata({
       images: [
         {
           url: getOgImageUrl([locale, 'search']),
-          width: 800,
-          height: 420,
+          width: 1200,
+          height: 630,
           alt: q ? t('titleTemplate', { query: q }) : t('title'),
         },
       ],

@@ -31,8 +31,8 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
       images: [
         {
           url: ogImageUrl,
-          width: 800,
-          height: 420,
+          width: 1200,
+          height: 630,
           alt: t('title'),
         },
       ],

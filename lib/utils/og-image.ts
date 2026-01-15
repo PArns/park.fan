@@ -6,5 +6,5 @@
 export function getOgImageUrl(path: (string | undefined)[]): string {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://park.fan';
   const cleanPath = path.filter((segment): segment is string => segment !== undefined);
-  return `${baseUrl}/api/og/${cleanPath.join('/')}`;
+  return `${baseUrl}/api/og/${cleanPath.join('/')}/og.png`;
 }

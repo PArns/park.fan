@@ -34,9 +34,9 @@ export const metadata: Metadata = {
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts.',
     images: [
       {
-        url: `${SITE_URL}/api/og/en`,
-        width: 800,
-        height: 420,
+        url: `${SITE_URL}/api/og/en/og.png`,
+        width: 1200,
+        height: 630,
         alt: 'park.fan - Theme Park Wait Times',
       },
     ],
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: 'park.fan - Theme Park Wait Times & Predictions',
     description:
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts.',
-    images: [`${SITE_URL}/api/og/en`],
+    images: [`${SITE_URL}/api/og/en/og.png`],
   },
   robots: {
     index: true,
