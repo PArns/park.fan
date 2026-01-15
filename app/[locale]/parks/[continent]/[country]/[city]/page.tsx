@@ -42,8 +42,8 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       images: [
         {
           url: ogImageUrl,
-          width: 1200,
-          height: 630,
+          width: 800,
+          height: 420,
           alt: t('titleTemplate', { city: cityName, country: countryName }),
         },
       ],

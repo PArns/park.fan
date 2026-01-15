@@ -35,8 +35,8 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
       images: [
         {
           url: ogImageUrl,
-          width: 1200,
-          height: 630,
+          width: 800,
+          height: 420,
           alt: t('title'),
         },
       ],
