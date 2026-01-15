@@ -48,6 +48,9 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
       languages: {
         en: `/en/parks`,
         de: `/de/parks`,
+        nl: `/nl/parks`,
+        fr: `/fr/parks`,
+        es: `/es/parks`,
       },
     },
   };

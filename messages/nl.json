@@ -1,0 +1,602 @@
+{
+  "common": {
+    "loading": "Laden...",
+    "error": "Er is een fout opgetreden",
+    "retry": "Opnieuw proberen",
+    "search": "Zoeken",
+    "searchPlaceholderShort": "Zoeken",
+    "searchPlaceholderLong": "Zoek parken, attracties, shows & restaurants...",
+    "noResults": "Geen resultaten gevonden",
+    "viewAll": "Alles bekijken",
+    "moreInfo": "Meer info",
+    "minutes": "min",
+    "minute": "{count, plural, =1 {minuut} other {minuten}}",
+    "hour": "{count, plural, =1 {uur} other {uur}}",
+    "noShowtimesToday": "Geen showtijden vandaag",
+    "hours": "u",
+    "today": "Vandaag",
+    "tomorrow": "Morgen",
+    "closed": "Gesloten",
+    "open": "Open",
+    "seeMore": "Bekijk meer",
+    "showMore": "Toon meer",
+    "searchPlaceholder": "Zoeken...",
+    "at": "in {park}",
+    "avgWait": "gem.",
+    "min": "Min",
+    "max": "Max",
+    "of": "van",
+    "total": "totaal",
+    "operating": "in bedrijf",
+    "parks": "parken",
+    "countries": "landen",
+    "rides": "attracties",
+    "shows": "shows",
+    "restaurants": "restaurants",
+    "status": "Status",
+    "home": "Home",
+    "updated": "Bijgewerkt",
+    "trend": "Trend",
+    "in": "in",
+    "vsTypical": "vs Normaal",
+    "much_higher": "Veel Hoger",
+    "higher": "Hoger",
+    "lower": "Lager",
+    "much_lower": "Veel Lager",
+    "typical": "Normaal",
+    "up": "Omhoog",
+    "down": "Omlaag",
+    "increasing": "Stijgend",
+    "decreasing": "Dalend",
+    "stable": "Stabiel",
+    "crowd": {
+      "very_low": "Zeer Laag",
+      "low": "Laag",
+      "normal": "Normaal",
+      "moderate": "Gemiddeld",
+      "higher": "Hoger",
+      "high": "Hoog",
+      "very_high": "Zeer Hoog",
+      "extreme": "Extreem",
+      "full": "Vol",
+      "closed": "Gesloten"
+    },
+    "discover": "Ontdekken"
+  },
+  "home": {
+    "hero": {
+      "badge": "AI-gestuurde voorspellingen",
+      "cta": "Ontdek Parken",
+      "searchPlaceholder": "Zoek parken, attracties, shows & restaurants..."
+    },
+    "sections": {
+      "explore": "Verkennen per Regio",
+      "plan": "Plan je perfecte bezoek",
+      "liveNow": "Parken nu open"
+    },
+    "features": {
+      "realtime": {
+        "title": "Realtime Wachttijden",
+        "description": "Live wachttijden elke minuut bijgewerkt van parken wereldwijd."
+      },
+      "ml": {
+        "title": "AI Voorspellingen",
+        "description": "Slimme voorspellingen voor drukte en wachttijden met geavanceerde AI."
+      },
+      "calendar": {
+        "title": "Planning & Navigatie",
+        "description": "Vind de beste dagen met onze drukteskalender en navigeer live in het park."
+      }
+    }
+  },
+  "footer": {
+    "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken wereldwijd. Plan je perfecte parkbezoek met realtime gegevens en navigatie in het park.",
+    "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd",
+    "sections": {
+      "explore": "Parken Wereldwijd",
+      "popularParks": "Populaire Parken",
+      "germany": "Duitsland",
+      "usa": "Verenigde Staten",
+      "resources": "Ontwikkelaars & Tools",
+      "legal": "Juridisch"
+    },
+    "regions": {
+      "europe": "Pretparken in Europa",
+      "northAmerica": "Pretparken in Noord-Amerika",
+      "asia": "Pretparken in Azië"
+    },
+    "api": "API Documentatie",
+    "impressum": "Colofon",
+    "datenschutz": "Privacybeleid",
+    "privacy": "Privacybeleid",
+    "terms": "Algemene Voorwaarden",
+    "contact": "Contact & Support",
+    "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
+    "poweredBy": "Aangedreven door",
+    "legalLinks": "Juridisch",
+    "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
+  },
+  "explore": {
+    "title": "Parken in {location}",
+    "parks": "Parken",
+    "parksTitle": "Parken Wereldwijd",
+    "description": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen.",
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "stats": {
+      "park": "{count, plural, =1 {park} other {parken}}",
+      "country": "{count, plural, =1 {land} other {landen}}",
+      "city": "{count, plural, =1 {stad} other {steden}}",
+      "more": "+{count} meer"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "parks": "Alle Parken",
+    "continents": "Continenten",
+    "explore": "Ontdek Parken",
+    "search": "Zoek Parken & Attracties",
+    "admin": "Admin"
+  },
+  "theme": {
+    "light": "Licht",
+    "dark": "Donker",
+    "system": "Systeem",
+    "toggle": "Thema wisselen"
+  },
+  "parks": {
+    "title": "Wachttijden, Voorspellingen & Navigatie",
+    "subtitle": "Realtime wachttijden, AI-voorspellingen en drukteskalenders voor {parks} parken met {attractions} attracties, {shows} shows & {restaurants} restaurants wereldwijd",
+    "operating": "Geopend",
+    "closed": "Gesloten",
+    "crowdLevel": "Drukteniveau",
+    "crowdLevels": {
+      "very_low": "Zeer Laag",
+      "low": "Laag",
+      "normal": "Normaal",
+      "moderate": "Gemiddeld",
+      "higher": "Hoger",
+      "high": "Hoog",
+      "very_high": "Zeer Hoog",
+      "extreme": "Extreem",
+      "full": "Vol",
+      "closed": "Gesloten"
+    },
+    "avgWaitTime": "Gem. Wachttijd",
+    "openAttractions": "Open Attracties",
+    "closedAttractions": "Gesloten Attracties",
+    "schedule": "Schema",
+    "weatherLabel": "Weer",
+    "forecast": "Voorspelling",
+    "attractions": "Attracties",
+    "shows": "Shows",
+    "predictions": "Wachttijd Voorspelling",
+    "nextPredicted": "Volgende: {time} min voorspeld",
+    "otherAttractions": "Andere Attracties",
+    "operatingCount": "{count}/{total} open",
+    "restaurants": "Restaurants",
+    "viewPark": "Bekijk Park",
+    "planYourVisit": "Plan je Bezoek",
+    "bestDaysToVisit": "Beste Bezoekdagen",
+    "daysToAvoid": "Te Vermijden Dagen",
+    "searchAttractions": "Filter attracties...",
+    "noAttractionsFound": "Geen attracties gevonden",
+    "clearSearch": "Zoekopdracht wissen",
+    "mapMarkers": {
+      "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
+      "parkCenter": "Park Centrum",
+      "status": "Status",
+      "waitTime": "Wachttijd",
+      "crowdLevel": "Drukteniveau",
+      "show": "Show",
+      "nextShowtime": "Volgende Showtijd",
+      "restaurant": "Restaurant",
+      "cuisine": "Keuken",
+      "yourLocation": "Jouw Locatie",
+      "inPark": "Je bent in het park",
+      "distanceToPark": "Afstand tot park",
+      "nearest": "Dichtbij",
+      "away": "weg"
+    },
+    "todaySchedule": "Programma Vandaag",
+    "currentTime": "Huidige Tijd",
+    "openingHours": "Openingstijden",
+    "opensIn": "Opent over",
+    "closesIn": "Sluit over",
+    "nextShowIn": "Volgende show over",
+    "showStartingSoon": "Show begint binnenkort",
+    "occupancy": "Bezetting",
+    "peakHour": "Piek Uur",
+    "parkPeak": "Park Piek",
+    "peak": "Piek",
+    "open": "open",
+    "calendar": "Kalender",
+    "map": "Kaart",
+    "calendarLegend": "Legenda",
+    "eventTypesLabel": "Event Types",
+    "crowdLevelsLabel": "Drukteniveaus",
+    "crowdLevelsNote": "(Zie hieronder)",
+    "specialDaysLabel": "Speciale Dagen",
+    "schoolVacation": "Schoolvakantie",
+    "bridgeDay": "Brugdag",
+    "holiday": "Feestdag",
+    "eventTypes": {
+      "schedule": "Openingstijden",
+      "weather": "Weer",
+      "holiday": "Feestdag",
+      "crowd": "Drukte Voorspelling",
+      "recommendation": "Aanbeveling",
+      "specialEvent": "Speciaal Evenement",
+      "show": "Show"
+    },
+    "calendarView": {
+      "month": "Maand",
+      "week": "Week",
+      "day": "Dag",
+      "agenda": "Agenda",
+      "next": "Volgende",
+      "previous": "Vorige",
+      "today": "Vandaag",
+      "details": {
+        "schedule": {
+          "title": "Park Schema",
+          "closed": "Park is Gesloten",
+          "open": "Open",
+          "openingHours": "Openingstijden",
+          "ticketPrice": "Ticketprijs: {price}",
+          "holiday": "Feestdag: {name}",
+          "bridgeDay": "Waarschijnlijke Brugdag"
+        },
+        "weather": {
+          "title": "Weersverwachting",
+          "temp": "Temperatuur",
+          "rainChance": "Neerslagkans"
+        },
+        "crowd": {
+          "title": "Drukte Voorspelling",
+          "level": "Drukteniveau",
+          "score": "Drukte Score",
+          "confidence": "ML Zekerheid"
+        },
+        "show": {
+          "title": "Showtijd",
+          "startsAt": "Begint om",
+          "duration": "Duur"
+        },
+        "holiday": {
+          "title": "Feestdag",
+          "nationwide": "Nationale Feestdag",
+          "regional": "Regionale Feestdag"
+        },
+        "recommendation": {
+          "title": "Aanbeveling"
+        }
+      }
+    },
+    "recommendations": {
+      "lowCrowds": "Weinig drukte verwacht - uitstekende dag voor een bezoek",
+      "highCrowds": "Veel drukte verwacht - kom vroeg",
+      "visitWeekday": "Overweeg een doordeweekse dag",
+      "moderateCrowds": "Gemiddelde drukte verwacht",
+      "goodCrowds": "Goede drukte niveaus voor de meeste attracties",
+      "rainLikely": "Regen waarschijnlijk - overdekte attracties aanbevolen",
+      "hotDay": "Warme dag - blijf gehydrateerd",
+      "coldDay": "Koud weer - kleed je warm aan",
+      "goodDay": "Goede dag voor een parkbezoek"
+    },
+    "status": {
+      "OPERATING": "Open",
+      "CLOSED": "Gesloten",
+      "REFURBISHMENT": "Onderhoud",
+      "DOWN": "Storing"
+    },
+    "weather": {
+      "clear": "Helder",
+      "mainlyClear": "Overwegend helder",
+      "partlyCloudy": "Gedeeltelijk bewolkt",
+      "overcast": "Bewolkt",
+      "fog": "Mist",
+      "drizzle": "Motregen",
+      "freezingDrizzle": "IJzel",
+      "rain": "Regen",
+      "freezingRain": "Bevriezende regen",
+      "snow": "Sneeuw",
+      "snowGrains": "Sneeuwkorrels",
+      "rainShowers": "Regenbuien",
+      "snowShowers": "Sneeuwbuien",
+      "thunderstorm": "Onweer",
+      "cloudy": "Bewolkt",
+      "mist": "Nevel"
+    }
+  },
+  "attractions": {
+    "title": "Attracties",
+    "waitTime": "Wachttijd",
+    "status": {
+      "operating": "In Bedrijf",
+      "down": "Tijdelijke Storing",
+      "closed": "Gesloten",
+      "refurbishment": "In Onderhoud"
+    },
+    "label": {
+      "OPERATING": "Open",
+      "DOWN": "Storing",
+      "CLOSED": "Gesloten",
+      "REFURBISHMENT": "Onderhoud"
+    },
+    "predictions": "Wachttijd Voorspellingen",
+    "todaySchedule": "Uren Vandaag",
+    "history": "Wachttijd Verloop",
+    "historyCalendar": "Wachttijd Historie",
+    "noHistoryData": "Geen historische gegevens beschikbaar voor deze attractie.",
+    "historyLegend": {
+      "title": "Legenda",
+      "holiday": "Feestdag",
+      "bridgeDay": "Brugdag",
+      "schoolVacation": "Schoolvakantie",
+      "closed": "Gesloten",
+      "description": "Randkleuren geven feestdagen, brugdagen en schoolvakanties aan."
+    },
+    "statistics": "Statistieken",
+    "noWaitTime": "Geen wachttijd data",
+    "predictionAccuracy": "Voorspelling Nauwkeurigheid",
+    "accuracy": {
+      "poor": "Slecht",
+      "fair": "Redelijk",
+      "good": "Goed",
+      "excellent": "Uitstekend"
+    },
+    "otherQueues": "Andere Wachtrij Opties",
+    "returnTime": "Terug",
+    "peak": "Piek Vandaag: {time} min",
+    "return": "Terug: {start} - {end}",
+    "crowdLevels": {
+      "very_low": "Zeer Laag",
+      "low": "Laag",
+      "moderate": "Gemiddeld",
+      "high": "Hoog",
+      "very_high": "Zeer Hoog",
+      "extreme": "Extreem"
+    },
+    "calendarView": {
+      "month": "Maand",
+      "next": "Volgende",
+      "previous": "Vorige",
+      "today": "Vandaag"
+    },
+    "rideClosed": "Attractie Gesloten",
+    "parkClosed": "Park Gesloten",
+    "notYetOpen": "Nog niet open vandaag",
+    "queue": {
+      "SINGLE_RIDER": "Single Rider",
+      "PREMIER_ACCESS": "Premier Access",
+      "PAID_RETURN_TIME": "Betaalde Tijdslot",
+      "BOARDING_GROUP": "Virtuele Wachtrij",
+      "STANDBY": "Standaard",
+      "status": {
+        "OPEN": "Open",
+        "CLOSED": "Gesloten",
+        "FULL": "Vol",
+        "FINISHED": "Afgelopen"
+      },
+      "details": {
+        "singleRider": "Single Rider: {time} min",
+        "singleRiderNoTime": "Single Rider",
+        "lightningLane": "Lightning Lane: {price}",
+        "lightningLaneNoPrice": "Lightning Lane",
+        "express": "Express: {price}",
+        "expressNoPrice": "Express",
+        "virtualQueue": "Virtuele Wachtrij",
+        "virtualQueueFull": "Virtuele Wachtrij Vol",
+        "boardingGroups": "Boarding Groups: {start}-{end}",
+        "boardingGroupsAvailable": "Groups Beschikbaar",
+        "boardingGroupsDistributed": "Groups Uitgedeeld",
+        "boardingGroupsPaused": "Boarding Groups Gepauzeerd",
+        "return": "Terug: {start} - {end}"
+      }
+    }
+  },
+  "calendar": {
+    "legend": "Legenda",
+    "holiday": "Feestdag",
+    "bridgeDay": "Brugdag",
+    "recommended": "Aanbevolen",
+    "notRecommended": "Niet Aanbevolen",
+    "parkClosed": "Park Gesloten",
+    "prevMonth": "Vorige Maand",
+    "nextMonth": "Volgende Maand"
+  },
+  "nearby": {
+    "title": "Parken in de Buurt",
+    "enableDescription": "Schakel locatietoegang in om parken en attracties bij jou in de buurt te vinden.",
+    "enable": "Locatie Inschakelen",
+    "loadingLocation": "Locatie bepalen...",
+    "permissionDenied": "Locatie Nodig voor Beste Ervaring",
+    "permissionDeniedDescription": "park.fan werkt het beste wanneer je je locatie deelt. We gebruiken dit om pretparken in de buurt te tonen en navigatie in het park mogelijk te maken.",
+    "youAreIn": "Je bent hier",
+    "awayFrom": "van",
+    "nearestAttractions": "Dichtstbijzijnde Attracties",
+    "noParksNearby": "Geen parken in de buurt gevonden.",
+    "nearbyParks": "Parken in de Buurt",
+    "opens": "Opent",
+    "opensIn": "Opent over",
+    "closesIn": "Sluit over",
+    "day": "{count, plural, =1 {dag} other {dagen}}",
+    "week": "{count, plural, =1 {week} other {weken}}",
+    "offseason": "Buiten Seizoen"
+  },
+  "geo": {
+    "continent": "Continent",
+    "country": "Land",
+    "city": "Stad",
+    "open": "Open",
+    "continents": {
+      "europe": "Europa",
+      "north-america": "Noord-Amerika",
+      "south-america": "Zuid-Amerika",
+      "asia": "Azië",
+      "oceania": "Oceanië",
+      "africa": "Afrika"
+    },
+    "countries": {
+      "germany": "Duitsland",
+      "france": "Frankrijk",
+      "spain": "Spanje",
+      "netherlands": "Nederland",
+      "austria": "Oostenrijk",
+      "belgium": "België",
+      "denmark": "Denemarken",
+      "italy": "Italië",
+      "poland": "Polen",
+      "sweden": "Zweden",
+      "united-kingdom": "Verenigd Koninkrijk",
+      "united-states": "Verenigde Staten",
+      "japan": "Japan",
+      "china": "China",
+      "canada": "Canada",
+      "mexico": "Mexico",
+      "hong-kong": "Hong Kong",
+      "south-korea": "Zuid-Korea",
+      "australia": "Australië",
+      "brazil": "Brazilië"
+    },
+    "parksIn": "Parken in {location}",
+    "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
+    "exploreByRegion": "Verkennen per Regio"
+  },
+  "stats": {
+    "globalStats": "Wereldwijde Statistieken",
+    "openParks": "Open Parken",
+    "totalAttractions": "Totaal Attracties",
+    "mostCrowded": "Drukste",
+    "leastCrowded": "Rustigste",
+    "longestWait": "Langste Wachtrij",
+    "shortestWait": "Kortste Wachtrij",
+    "platformStats": "Platform Statistieken",
+    "platformStatsDescription": "Realtime gegevensinzichten over het platform",
+    "totalWaitTime": "Totale Wachttijd",
+    "dataPoints": "Datapunten",
+    "queueDataRecords": "wachtrij records",
+    "alsoTracking": "Ook Tracking"
+  },
+  "homepage": {
+    "hero": {
+      "badge": "ML-Gestuurde Voorspellingen",
+      "exploreParks": "Ontdek Parken"
+    },
+    "features": {
+      "title": "Plan je Perfecte Bezoek",
+      "realtime": {
+        "title": "Realtime Wachttijden",
+        "description": "Live wachttijden elke minuut bijgewerkt van parken wereldwijd."
+      },
+      "predictions": {
+        "title": "ML Voorspellingen",
+        "description": "Machine learning voorspellingen voor drukte en wachttijden."
+      },
+      "calendar": {
+        "title": "Beste Dag Vinder",
+        "description": "Kalenderweergave met weer, feestdagen en druktevoorspellingen."
+      }
+    }
+  },
+  "search": {
+    "typeToSearch": "Typ minstens 3 tekens om te zoeken...",
+    "viewAllResults": "Bekijk alle resultaten voor \"{query}\"",
+    "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
+    "at": "in {park}",
+    "types": {
+      "park": "Park",
+      "attraction": "Attractie",
+      "show": "Show",
+      "restaurant": "Restaurant"
+    },
+    "headings": {
+      "park": "Parken ({count})",
+      "attraction": "Attracties ({count})",
+      "show": "Shows ({count})",
+      "restaurant": "Restaurants ({count})"
+    }
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "ml": {
+      "title": "AI Dashboard",
+      "modelVersion": "Model Versie",
+      "accuracy": "Nauwkeurigheid",
+      "trainedAt": "Getraind Op",
+      "nextTraining": "Volgende Training",
+      "triggerTraining": "Start Training"
+    },
+    "system": {
+      "title": "Systeem Gezondheid",
+      "database": "Database",
+      "redis": "Redis",
+      "mlService": "AI Service",
+      "healthy": "Gezond",
+      "unhealthy": "Ongezond",
+      "flushCache": "Cache Legen",
+      "syncHolidays": "Feestdagen Syncen"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "park.fan - Pretpark Wachttijden, Voorspellingen & Navigatie",
+      "description": "Maximaliseer je bezoek met realtime wachttijden, AI-voorspellingen en navigatie in het park. Omvat Disney, Universal, Europa-Park en meer."
+    },
+    "parks": {
+      "title": "Pretparken Wereldwijd - park.fan",
+      "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
+      "metaDescriptionTemplate": "Live wachttijden, druktevoorspellingen en openingstijden voor {park}. Plan je perfecte bezoek met realtime gegevens en navigatie.",
+      "titleTemplate": "{park} Wachttijden & Voorspellingen"
+    },
+    "attraction": {
+      "titleTemplate": "{attraction} Wachttijd - {park}",
+      "metaDescriptionTemplate": "Actuele wachttijden en voorspellingen voor {attraction} in {park}. Check live wachtrij data en drukte."
+    },
+    "continent": {
+      "titleTemplate": "Pretparken in {location}",
+      "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen."
+    },
+    "country": {
+      "titleTemplate": "Pretparken in {location}",
+      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en schema's."
+    },
+    "city": {
+      "titleTemplate": "Pretparken in {city}, {country}",
+      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Plan je bezoek met realtime data."
+    },
+    "search": {
+      "titleTemplate": "Zoeken: {query}",
+      "title": "Zoeken",
+      "metaDescriptionTemplate": "Zoek pretparken, attracties, shows en restaurants wereldwijd."
+    },
+    "notFound": {
+      "park": "Park Niet Gevonden",
+      "attraction": "Attractie Niet Gevonden"
+    },
+    "imageAlt": {
+      "park": "{park} - Pretpark Wachttijden",
+      "attraction": "{attraction} in {park} - Wachttijden"
+    }
+  },
+  "favorites": {
+    "title": "Favorieten",
+    "empty": "Nog geen favorieten",
+    "parks": "Parken",
+    "attractions": "Attracties",
+    "shows": "Shows",
+    "restaurants": "Restaurants",
+    "tooltip": "Voeg toe aan favorieten om het op de homepage te zien",
+    "locationHint": "Schakel locatie in om op afstand te sorteren"
+  },
+  "impressum": {
+    "title": "Colofon - park.fan",
+    "description": "Juridische informatie en colofon voor park.fan"
+  },
+  "datenschutz": {
+    "title": "Privacybeleid - park.fan",
+    "description": "Privacybeleid en gegevensbescherming informatie voor park.fan"
+  }
+}

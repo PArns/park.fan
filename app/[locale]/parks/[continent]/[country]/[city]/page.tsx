@@ -59,6 +59,9 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       languages: {
         en: `/en/parks/${continent}/${country}/${citySlug}`,
         de: `/de/parks/${continent}/${country}/${citySlug}`,
+        nl: `/nl/parks/${continent}/${country}/${citySlug}`,
+        fr: `/fr/parks/${continent}/${country}/${citySlug}`,
+        es: `/es/parks/${continent}/${country}/${citySlug}`,
       },
     },
   };

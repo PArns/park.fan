@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import { getTranslations } from 'next-intl/server';
 import { setRequestLocale } from 'next-intl/server';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { LocaleContent } from '@/components/common/locale-content';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
@@ -51,6 +51,9 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       languages: {
         en: '/en/datenschutz',
         de: '/de/datenschutz',
+        nl: '/nl/datenschutz',
+        fr: '/fr/datenschutz',
+        es: '/es/datenschutz',
       },
     },
     robots: {
@@ -64,7 +67,7 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
   const { locale } = await params;
 
   // Validate locale
-  if (!routing.locales.includes(locale as 'en' | 'de')) {
+  if (!routing.locales.includes(locale as Locale)) {
     return null;
   }
 

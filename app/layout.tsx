@@ -1,54 +1,34 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
+
+const SITE_NAME = 'park.fan';
+const SITE_URL = 'https://park.fan';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'park.fan - Theme Park Wait Times & Predictions',
     template: '%s | park.fan',
+    default: 'park.fan - Theme Park Wait Times & Predictions',
   },
   description:
-    'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts.',
-  keywords: [
-    'theme park',
-    'wait times',
-    'queue times',
-    'crowd predictions',
-    'crowd calendar',
-    'best time to visit',
-    'amusement park',
-    'roller coaster',
-    'ride availability',
-    'opening hours',
-    'freizeitpark',
-    'wartezeiten',
-    'andrang',
-    'prognose',
-    'disney',
-    'universal studios',
-    'europa park',
-    'phantasialand',
-    'six flags',
-    'cedar fair',
-    'seaworld',
-    'efteling',
-  ],
-  authors: [{ name: 'Patrick Arns', url: 'https://arns.dev' }],
-  creator: 'park.fan',
-  metadataBase: new URL('https://park.fan'),
+    'Real-time wait times and AI-powered crowd predictions for theme parks worldwide. Plan your perfect visit with live data and navigation.',
+  keywords:
+    'theme park, wait times, queue times, crowd predictions, Disney, Universal, Europa-Park',
   alternates: {
-    canonical: '/',
+    canonical: SITE_URL,
     languages: {
-      en: '/en',
-      de: '/de',
+      ...generateAlternateLanguages((locale) => `/${locale}`),
       'x-default': '/',
     },
   },
   openGraph: {
     type: 'website',
+    siteName: SITE_NAME,
+    url: SITE_URL,
     locale: 'en_US',
-    alternateLocale: 'de_DE',
-    url: 'https://park.fan',
-    siteName: 'park.fan',
+    // Generate alternate locale tags for all supported languages
+    alternateLocale: locales.filter((l) => l !== 'en').map((l) => `${l}_${l.toUpperCase()}`),
     title: 'park.fan - Theme Park Wait Times & Predictions',
     description:
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts.',

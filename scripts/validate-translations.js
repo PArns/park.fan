@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-require-imports, @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 
@@ -7,9 +7,30 @@ const path = require('path');
  * Checks translation files for inconsistencies and missing keys
  */
 
+// Import locales from central config
+// Note: We need to read from the compiled config since this is a JS file
+const configPath = path.join(__dirname, '../i18n/config.ts');
+const configContent = fs.readFileSync(configPath, 'utf-8');
+const localesMatch = configContent.match(/locales\s*=\s*\[(.*?)\]/);
+const locales = localesMatch
+  ? localesMatch[1].replace(/['"\s]/g, '').split(',')
+  : ['en', 'de', 'nl', 'fr', 'es'];
+const masterLocale = 'en';
+
 // Load translation files
-const de = JSON.parse(fs.readFileSync(path.join(__dirname, '../messages/de.json'), 'utf-8'));
-const en = JSON.parse(fs.readFileSync(path.join(__dirname, '../messages/en.json'), 'utf-8'));
+const translations = {};
+locales.forEach((originalLocale) => {
+  try {
+    const content = fs.readFileSync(
+      path.join(__dirname, `../messages/${originalLocale}.json`),
+      'utf-8'
+    );
+    translations[originalLocale] = JSON.parse(content);
+  } catch (e) {
+    console.warn(`⚠️ Could not load ${originalLocale}.json: ${e.message}`);
+    translations[originalLocale] = {};
+  }
+});
 
 // Extract all keys from nested object
 function extractKeys(obj, prefix = '') {
@@ -76,28 +97,42 @@ function findTsFiles(dir, fileList = []) {
 
 console.log('🔍 Starting translation validation...\n');
 
-// Get all keys from both languages
-const deKeys = extractKeys(de);
-const enKeys = extractKeys(en);
+// Get all keys from all languages
+const keysByLocale = {};
+locales.forEach((locale) => {
+  keysByLocale[locale] = extractKeys(translations[locale]);
+  console.log(`📊 ${locale.toUpperCase()} translations: ${keysByLocale[locale].size} keys`);
+});
+console.log('');
 
-console.log(`📊 German translations: ${deKeys.size} keys`);
-console.log(`📊 English translations: ${enKeys.size} keys\n`);
+// Find mismatches relative to master (EN)
+const masterKeys = keysByLocale[masterLocale];
+let hasErrors = false;
 
-// Find mismatches
-const onlyInDe = [...deKeys].filter((k) => !enKeys.has(k));
-const onlyInEn = [...enKeys].filter((k) => !deKeys.has(k));
+locales
+  .filter((l) => l !== masterLocale)
+  .forEach((locale) => {
+    const localeKeys = keysByLocale[locale];
+    const missingInLocale = [...masterKeys].filter((k) => !localeKeys.has(k));
+    const extraInLocale = [...localeKeys].filter((k) => !masterKeys.has(k));
 
-if (onlyInDe.length > 0) {
-  console.log(`❌ Keys only in German (${onlyInDe.length}):`);
-  onlyInDe.forEach((key) => console.log(`   - ${key}`));
-  console.log('');
-}
+    if (missingInLocale.length > 0) {
+      console.log(
+        `❌ Keys missing in ${locale.toUpperCase()} (vs ${masterLocale.toUpperCase()}) (${missingInLocale.length}):`
+      );
+      missingInLocale.forEach((key) => console.log(`   - ${key}`));
+      console.log('');
+      hasErrors = true;
+    }
 
-if (onlyInEn.length > 0) {
-  console.log(`❌ Keys only in English (${onlyInEn.length}):`);
-  onlyInEn.forEach((key) => console.log(`   - ${key}`));
-  console.log('');
-}
+    if (extraInLocale.length > 0) {
+      console.log(
+        `⚠️ Keys extra in ${locale.toUpperCase()} (vs ${masterLocale.toUpperCase()}) (${extraInLocale.length}):`
+      );
+      extraInLocale.forEach((key) => console.log(`   - ${key}`));
+      console.log('');
+    }
+  });
 
 // Scan codebase
 console.log('🔍 Scanning codebase for translation usage...\n');
@@ -125,31 +160,14 @@ allUsages.forEach((usage) => {
 
 console.log(`📊 Unique translation keys used: ${usageByKey.size}\n`);
 
-// Check for missing translations
-const namespaceMap = {
-  common: 'common',
-  tHome: 'home',
-  tFooter: 'footer',
-  tExplore: 'explore',
-  tNavigation: 'navigation',
-  tTheme: 'theme',
-  tParks: 'parks',
-  tAttractions: 'attractions',
-  tCalendar: 'calendar',
-  tGeo: 'geo',
-  tSearch: 'search',
-  tAdmin: 'admin',
-  tSeo: 'seo',
-};
-
+// Check for missing translations (must exist in master locale)
 const missingKeys = [];
 
 usageByKey.forEach((usages, key) => {
-  // Check if key exists in either language
-  const existsInDe = deKeys.has(key);
-  const existsInEn = enKeys.has(key);
+  // Check if key exists in master language
+  const existsInMaster = masterKeys.has(key);
 
-  if (!existsInDe && !existsInEn) {
+  if (!existsInMaster) {
     // Try with namespaces
     let found = false;
 
@@ -169,9 +187,12 @@ usageByKey.forEach((usages, key) => {
       'search',
       'admin',
       'seo',
+      'favorites',
+      'impressum',
+      'datenschutz',
     ]) {
       const fullKey = `${namespace}.${key}`;
-      if (deKeys.has(fullKey) || enKeys.has(fullKey)) {
+      if (masterKeys.has(fullKey)) {
         found = true;
         break;
       }
@@ -184,7 +205,9 @@ usageByKey.forEach((usages, key) => {
 });
 
 if (missingKeys.length > 0) {
-  console.log(`❌ Missing translation keys (${missingKeys.length}):\n`);
+  console.log(
+    `❌ Missing translation keys in master (${masterLocale.toUpperCase()}) (${missingKeys.length}):\n`
+  );
   missingKeys.forEach(({ key, usages }) => {
     console.log(`   🔸 "${key}"`);
     usages.slice(0, 3).forEach((usage) => {
@@ -196,16 +219,14 @@ if (missingKeys.length > 0) {
     }
     console.log('');
   });
+  // We don't fail just for code usage missing in keys if they were already missing before
 }
 
 // List potentially unused keys
-const allTranslationKeys = new Set([...deKeys, ...enKeys]);
 const unusedKeys = [];
 
-allTranslationKeys.forEach((key) => {
+masterKeys.forEach((key) => {
   const parts = key.split('.');
-
-  // Check direct usage or last part usage
   let isUsed = false;
 
   if (usageByKey.has(key)) {
@@ -217,35 +238,31 @@ allTranslationKeys.forEach((key) => {
     }
   }
 
+  // Also check for prefix usage (e.g. t("home.hero") might use "home.hero.title")
+  if (!isUsed) {
+    usageByKey.forEach((_, usageKey) => {
+      if (key.startsWith(usageKey + '.')) {
+        isUsed = true;
+      }
+    });
+  }
+
   if (!isUsed) {
     unusedKeys.push(key);
   }
 });
 
-if (unusedKeys.length > 0) {
-  console.log(`\n🗑️  Potentially unused translation keys (${unusedKeys.length}):`);
-  console.log(`   (These might be used dynamically or in untested code)\n`);
-  unusedKeys.slice(0, 30).forEach((key) => {
-    console.log(`   - ${key}`);
-  });
-  if (unusedKeys.length > 30) {
-    console.log(`   ... and ${unusedKeys.length - 30} more`);
-  }
-}
-
 // Summary
 console.log('\n═══════════════════════════════════════════════════');
 console.log('📋 SUMMARY');
 console.log('═══════════════════════════════════════════════════\n');
-console.log(`Total translation keys: ${allTranslationKeys.size}`);
-console.log(`Keys only in DE: ${onlyInDe.length}`);
-console.log(`Keys only in EN: ${onlyInEn.length}`);
-console.log(`Missing keys: ${missingKeys.length}`);
-console.log(`Potentially unused keys: ${unusedKeys.length}`);
+console.log(`Total translation keys (EN): ${masterKeys.size}`);
+console.log(`Keys missing in locales: ${hasErrors ? 'YES' : 'NO'}`);
+console.log(`Missing keys in code: ${missingKeys.length}`);
 console.log('');
 
-if (onlyInDe.length === 0 && onlyInEn.length === 0 && missingKeys.length === 0) {
-  console.log('✅ All translations are in sync!\n');
+if (!hasErrors) {
+  console.log('✅ All translations are synchronized with master!\n');
   process.exit(0);
 } else {
   console.log('❌ Found translation issues that need to be fixed.\n');

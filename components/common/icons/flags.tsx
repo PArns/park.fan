@@ -39,3 +39,47 @@ export function FlagGB({ className }: { className?: string }) {
     </svg>
   );
 }
+
+export function FlagNL({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 9 6"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="9" height="6" fill="#FFF" />
+      <rect width="9" height="2" fill="#21468B" y="4" />
+      <rect width="9" height="2" fill="#AE1C28" y="0" />
+    </svg>
+  );
+}
+
+export function FlagFR({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 3 2"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="3" height="2" fill="#ED2939" />
+      <rect width="2" height="2" fill="#FFF" />
+      <rect width="1" height="2" fill="#002395" />
+    </svg>
+  );
+}
+
+export function FlagES({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 750 500"
+      className={className}
+      aria-hidden="true"
+    >
+      <rect width="750" height="500" fill="#c60b1e" />
+      <rect width="750" height="250" y="125" fill="#ffc400" />
+    </svg>
+  );
+}

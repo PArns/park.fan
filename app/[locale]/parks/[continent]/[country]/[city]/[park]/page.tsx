@@ -78,6 +78,9 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       languages: {
         en: `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
         de: `/de/parks/${continent}/${country}/${city}/${parkSlug}`,
+        nl: `/nl/parks/${continent}/${country}/${city}/${parkSlug}`,
+        fr: `/fr/parks/${continent}/${country}/${city}/${parkSlug}`,
+        es: `/es/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
     },
   };

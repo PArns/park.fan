@@ -60,6 +60,9 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       languages: {
         en: `/en/parks/${continent}`,
         de: `/de/parks/${continent}`,
+        nl: `/nl/parks/${continent}`,
+        fr: `/fr/parks/${continent}`,
+        es: `/es/parks/${continent}`,
       },
     },
   };

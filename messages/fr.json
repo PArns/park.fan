@@ -1,0 +1,602 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "retry": "Réessayer",
+    "search": "Rechercher",
+    "searchPlaceholderShort": "Rechercher",
+    "searchPlaceholderLong": "Rechercher parcs, attractions, spectacles & restaurants...",
+    "noResults": "Aucun résultat trouvé",
+    "viewAll": "Tout voir",
+    "moreInfo": "Plus d'infos",
+    "minutes": "min",
+    "minute": "{count, plural, =1 {minute} other {minutes}}",
+    "hour": "{count, plural, =1 {heure} other {heures}}",
+    "noShowtimesToday": "Pas de spectacles aujourd'hui",
+    "hours": "h",
+    "today": "Aujourd'hui",
+    "tomorrow": "Demain",
+    "closed": "Fermé",
+    "open": "Ouvert",
+    "seeMore": "Voir plus",
+    "showMore": "Afficher plus",
+    "searchPlaceholder": "Rechercher...",
+    "at": "à {park}",
+    "avgWait": "moy.",
+    "min": "Min",
+    "max": "Max",
+    "of": "de",
+    "total": "total",
+    "operating": "ouvert",
+    "parks": "parcs",
+    "countries": "pays",
+    "rides": "attractions",
+    "shows": "spectacles",
+    "restaurants": "restaurants",
+    "status": "Statut",
+    "home": "Accueil",
+    "updated": "Mis à jour",
+    "trend": "Tendance",
+    "in": "dans",
+    "vsTypical": "vs Habituel",
+    "much_higher": "Beaucoup plus élevé",
+    "higher": "Plus élevé",
+    "lower": "Plus bas",
+    "much_lower": "Beaucoup plus bas",
+    "typical": "Habituel",
+    "up": "En hausse",
+    "down": "En baisse",
+    "increasing": "Augmente",
+    "decreasing": "Diminue",
+    "stable": "Stable",
+    "crowd": {
+      "very_low": "Très Faible",
+      "low": "Faible",
+      "normal": "Normale",
+      "moderate": "Modérée",
+      "higher": "Plus Élevée",
+      "high": "Élevée",
+      "very_high": "Très Élevée",
+      "extreme": "Extrême",
+      "full": "Complet",
+      "closed": "Fermé"
+    },
+    "discover": "Découvrir"
+  },
+  "home": {
+    "hero": {
+      "badge": "Prédictions par IA",
+      "cta": "Explorer les Parcs",
+      "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants..."
+    },
+    "sections": {
+      "explore": "Explorer par Région",
+      "plan": "Planifier votre visite",
+      "liveNow": "Parcs ouverts maintenant"
+    },
+    "features": {
+      "realtime": {
+        "title": "Temps d'Attente en Temps Réel",
+        "description": "Temps d'attente mis à jour chaque minute pour les parcs du monde entier."
+      },
+      "ml": {
+        "title": "Prédictions IA",
+        "description": "Prédictions intelligentes de l'affluence et des temps d'attente grâce à l'IA avancée."
+      },
+      "calendar": {
+        "title": "Planification & Navigation",
+        "description": "Trouvez les meilleurs jours avec notre calendrier d'affluence et naviguez dans le parc."
+      }
+    }
+  },
+  "footer": {
+    "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
+    "keywords": "temps d'attente parc attraction, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, calendrier parc, meilleur moment visite",
+    "sections": {
+      "explore": "Parcs Internationaux",
+      "popularParks": "Parcs Populaires",
+      "germany": "Allemagne",
+      "usa": "États-Unis",
+      "resources": "Développeurs & Outils",
+      "legal": "Légal"
+    },
+    "regions": {
+      "europe": "Parcs en Europe",
+      "northAmerica": "Parcs en Amérique du Nord",
+      "asia": "Parcs en Asie"
+    },
+    "api": "Documentation API",
+    "impressum": "Mentions Légales",
+    "datenschutz": "Confidentialité",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "contact": "Contact & Support",
+    "copyright": "© {year} park.fan. Tous droits réservés.",
+    "poweredBy": "Propulsé par",
+    "legalLinks": "Légal",
+    "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d'attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
+  },
+  "explore": {
+    "title": "Parcs à {location}",
+    "parks": "Parcs",
+    "parksTitle": "Parcs dans le Monde",
+    "description": "Explorez les parcs d'attractions à {location} avec temps d'attente et prédictions d'affluence en temps réel.",
+    "breadcrumbs": {
+      "home": "Accueil"
+    },
+    "stats": {
+      "park": "{count, plural, =1 {parc} other {parcs}}",
+      "country": "{count, plural, =1 {pays} other {pays}}",
+      "city": "{count, plural, =1 {ville} other {villes}}",
+      "more": "+{count} plus"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "parks": "Tous les Parcs",
+    "continents": "Continents",
+    "explore": "Explorer les Parcs",
+    "search": "Recherche Parcs & Attractions",
+    "admin": "Admin"
+  },
+  "theme": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système",
+    "toggle": "Changer de thème"
+  },
+  "parks": {
+    "title": "Temps d'Attente, Prédictions & Navigation",
+    "subtitle": "Temps d'attente en direct, prédictions IA et calendriers d'affluence pour {parks} parcs avec {attractions} attractions, {shows} spectacles & {restaurants} restaurants dans le monde",
+    "operating": "Ouvert",
+    "closed": "Fermé",
+    "crowdLevel": "Niveau d'Affluence",
+    "crowdLevels": {
+      "very_low": "Très Faible",
+      "low": "Faible",
+      "normal": "Normale",
+      "moderate": "Modérée",
+      "higher": "Plus Élevée",
+      "high": "Élevée",
+      "very_high": "Très Élevée",
+      "extreme": "Extrême",
+      "full": "Complet",
+      "closed": "Fermé"
+    },
+    "avgWaitTime": "Attente Moy.",
+    "openAttractions": "Attractions Ouvertes",
+    "closedAttractions": "Attractions Fermées",
+    "schedule": "Horaires",
+    "weatherLabel": "Météo",
+    "forecast": "Prévisions",
+    "attractions": "Attractions",
+    "shows": "Spectacles",
+    "predictions": "Prévisions d'Attente",
+    "nextPredicted": "Suivant: {time} min prévu",
+    "otherAttractions": "Autres Attractions",
+    "operatingCount": "{count}/{total} ouverts",
+    "restaurants": "Restaurants",
+    "viewPark": "Voir le Parc",
+    "planYourVisit": "Planifier votre Visite",
+    "bestDaysToVisit": "Meilleurs Jours",
+    "daysToAvoid": "Jours à Éviter",
+    "searchAttractions": "Filtrer attractions...",
+    "noAttractionsFound": "Aucune attraction trouvée",
+    "clearSearch": "Effacer recherche",
+    "mapMarkers": {
+      "noMapData": "Aucune donnée de carte disponible pour ce parc.",
+      "parkCenter": "Centre du Parc",
+      "status": "Statut",
+      "waitTime": "Attente",
+      "crowdLevel": "Affluence",
+      "show": "Spectacle",
+      "nextShowtime": "Prochain Spectacle",
+      "restaurant": "Restaurant",
+      "cuisine": "Cuisine",
+      "yourLocation": "Votre Position",
+      "inPark": "Vous êtes dans le parc",
+      "distanceToPark": "Distance au parc",
+      "nearest": "À proximité",
+      "away": "d'ici"
+    },
+    "todaySchedule": "Programme du Jour",
+    "currentTime": "Heure Actuelle",
+    "openingHours": "Heures d'Ouverture",
+    "opensIn": "Ouvre dans",
+    "closesIn": "Ferme dans",
+    "nextShowIn": "Prochain show dans",
+    "showStartingSoon": "Commence bientôt",
+    "occupancy": "Occupation",
+    "peakHour": "Heure de Pointe",
+    "parkPeak": "Pic du Parc",
+    "peak": "Pic",
+    "open": "ouvert",
+    "calendar": "Calendrier",
+    "map": "Carte",
+    "calendarLegend": "Légende",
+    "eventTypesLabel": "Types d'Événements",
+    "crowdLevelsLabel": "Niveaux d'Affluence",
+    "crowdLevelsNote": "(Voir ci-dessous)",
+    "specialDaysLabel": "Jours Spéciaux",
+    "schoolVacation": "Vacances Scolaires",
+    "bridgeDay": "Pont",
+    "holiday": "Jours Fériés",
+    "eventTypes": {
+      "schedule": "Horaires",
+      "weather": "Météo",
+      "holiday": "Jours Fériés",
+      "crowd": "Prévisions Affluence",
+      "recommendation": "Recommandation",
+      "specialEvent": "Événement Spécial",
+      "show": "Spectacle"
+    },
+    "calendarView": {
+      "month": "Mois",
+      "week": "Semaine",
+      "day": "Jour",
+      "agenda": "Agenda",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "today": "Aujourd'hui",
+      "details": {
+        "schedule": {
+          "title": "Horaires du Parc",
+          "closed": "Parc Fermé",
+          "open": "Ouvert",
+          "openingHours": "Heures d'Ouverture",
+          "ticketPrice": "Prix du Billet: {price}",
+          "holiday": "Jour Férié: {name}",
+          "bridgeDay": "Pont Probable"
+        },
+        "weather": {
+          "title": "Météo",
+          "temp": "Température",
+          "rainChance": "Risque de Pluie"
+        },
+        "crowd": {
+          "title": "Prévision Affluence",
+          "level": "Niveau",
+          "score": "Score",
+          "confidence": "Confiance IA"
+        },
+        "show": {
+          "title": "Horaire Spectacle",
+          "startsAt": "Commence à",
+          "duration": "Durée"
+        },
+        "holiday": {
+          "title": "Jour Férié",
+          "nationwide": "Férié National",
+          "regional": "Férié Régional"
+        },
+        "recommendation": {
+          "title": "Recommandation"
+        }
+      }
+    },
+    "recommendations": {
+      "lowCrowds": "Faible affluence prévue - excellente journée",
+      "highCrowds": "Forte affluence prévue - arrivez tôt",
+      "visitWeekday": "Préférez une visite en semaine",
+      "moderateCrowds": "Affluence modérée prévue",
+      "goodCrowds": "Niveaux d'affluence corrects",
+      "rainLikely": "Pluie probable - privilégiez les attractions couvertes",
+      "hotDay": "Journée chaude - restez hydraté",
+      "coldDay": "Froid - habillez-vous chaudement",
+      "goodDay": "Bonne journée pour visiter"
+    },
+    "status": {
+      "OPERATING": "Ouvert",
+      "CLOSED": "Fermé",
+      "REFURBISHMENT": "Rénovation",
+      "DOWN": "Panne"
+    },
+    "weather": {
+      "clear": "Dégagé",
+      "mainlyClear": "Peu nuageux",
+      "partlyCloudy": "Partiellement nuageux",
+      "overcast": "Couvert",
+      "fog": "Brouillard",
+      "drizzle": "Bruine",
+      "freezingDrizzle": "Bruine verglaçante",
+      "rain": "Pluie",
+      "freezingRain": "Pluie verglaçante",
+      "snow": "Neige",
+      "snowGrains": "Neige en grains",
+      "rainShowers": "Averses de pluie",
+      "snowShowers": "Averses de neige",
+      "thunderstorm": "Orage",
+      "cloudy": "Nuageux",
+      "mist": "Brume"
+    }
+  },
+  "attractions": {
+    "title": "Attractions",
+    "waitTime": "Attente",
+    "status": {
+      "operating": "Ouvert",
+      "down": "Panne Temporaire",
+      "closed": "Fermé",
+      "refurbishment": "En Rénovation"
+    },
+    "label": {
+      "OPERATING": "Ouvert",
+      "DOWN": "Panne",
+      "CLOSED": "Fermé",
+      "REFURBISHMENT": "Rénov"
+    },
+    "predictions": "Prédictions d'Attente",
+    "todaySchedule": "Horaires Aujourd'hui",
+    "history": "Historique d'Attente",
+    "historyCalendar": "Historique d'Attente",
+    "noHistoryData": "Pas de données historiques pour cette attraction.",
+    "historyLegend": {
+      "title": "Légende",
+      "holiday": "Férié",
+      "bridgeDay": "Pont",
+      "schoolVacation": "Vacances",
+      "closed": "Fermé",
+      "description": "Les couleurs indiquent les jours fériés, ponts et vacances."
+    },
+    "statistics": "Statistiques",
+    "noWaitTime": "Pas de données d'attente",
+    "predictionAccuracy": "Précision Prédiction",
+    "accuracy": {
+      "poor": "Faible",
+      "fair": "Moyenne",
+      "good": "Bonne",
+      "excellent": "Excellente"
+    },
+    "otherQueues": "Autres Options de File",
+    "returnTime": "Retour",
+    "peak": "Pic Aujourd'hui: {time} min",
+    "return": "Retour: {start} - {end}",
+    "crowdLevels": {
+      "very_low": "Très Faible",
+      "low": "Faible",
+      "moderate": "Modérée",
+      "high": "Élevée",
+      "very_high": "Très Élevée",
+      "extreme": "Extrême"
+    },
+    "calendarView": {
+      "month": "Mois",
+      "next": "Suivant",
+      "previous": "Précédent",
+      "today": "Aujourd'hui"
+    },
+    "rideClosed": "Attraction Fermée",
+    "parkClosed": "Parc Fermé",
+    "notYetOpen": "Pas encore ouvert",
+    "queue": {
+      "SINGLE_RIDER": "Single Rider",
+      "PREMIER_ACCESS": "Premier Access",
+      "PAID_RETURN_TIME": "Créneau Payant",
+      "BOARDING_GROUP": "File Virtuelle",
+      "STANDBY": "Standard",
+      "status": {
+        "OPEN": "Ouvert",
+        "CLOSED": "Fermé",
+        "FULL": "Complet",
+        "FINISHED": "Terminé"
+      },
+      "details": {
+        "singleRider": "Single Rider: {time} min",
+        "singleRiderNoTime": "Single Rider",
+        "lightningLane": "Lightning Lane: {price}",
+        "lightningLaneNoPrice": "Lightning Lane",
+        "express": "Express: {price}",
+        "expressNoPrice": "Express",
+        "virtualQueue": "File Virtuelle",
+        "virtualQueueFull": "File Virtuelle Complète",
+        "boardingGroups": "Groupes: {start}-{end}",
+        "boardingGroupsAvailable": "Groupes Disponibles",
+        "boardingGroupsDistributed": "Groupes Distribués",
+        "boardingGroupsPaused": "Groupes Suspendus",
+        "return": "Retour: {start} - {end}"
+      }
+    }
+  },
+  "calendar": {
+    "legend": "Légende",
+    "holiday": "Jour Férié",
+    "bridgeDay": "Pont",
+    "recommended": "Recommandé",
+    "notRecommended": "Déconseillé",
+    "parkClosed": "Parc Fermé",
+    "prevMonth": "Mois Précédent",
+    "nextMonth": "Mois Suivant"
+  },
+  "nearby": {
+    "title": "Parcs à Proximité",
+    "enableDescription": "Activez la localisation pour trouver des parcs et attractions près de chez vous.",
+    "enable": "Activer Localisation",
+    "loadingLocation": "Localisation...",
+    "permissionDenied": "Localisation Requise",
+    "permissionDeniedDescription": "park.fan fonctionne mieux avec votre localisation. Nous l'utilisons pour montrer les parcs proches et pour la navigation.",
+    "youAreIn": "Vous êtes ici",
+    "awayFrom": "d'ici",
+    "nearestAttractions": "Attractions les plus proches",
+    "noParksNearby": "Aucun parc trouvé à proximité.",
+    "nearbyParks": "Parcs à Proximité",
+    "opens": "Ouvre",
+    "opensIn": "Ouvre dans",
+    "closesIn": "Ferme dans",
+    "day": "{count, plural, =1 {jour} other {jours}}",
+    "week": "{count, plural, =1 {semaine} other {semaines}}",
+    "offseason": "Hors Saison"
+  },
+  "geo": {
+    "continent": "Continent",
+    "country": "Pays",
+    "city": "Ville",
+    "open": "Ouvert",
+    "continents": {
+      "europe": "Europe",
+      "north-america": "Amérique du Nord",
+      "south-america": "Amérique du Sud",
+      "asia": "Asie",
+      "oceania": "Océanie",
+      "africa": "Afrique"
+    },
+    "countries": {
+      "germany": "Allemagne",
+      "france": "France",
+      "spain": "Espagne",
+      "netherlands": "Pays-Bas",
+      "austria": "Autriche",
+      "belgium": "Belgique",
+      "denmark": "Danemark",
+      "italy": "Italie",
+      "poland": "Pologne",
+      "sweden": "Suède",
+      "united-kingdom": "Royaume-Uni",
+      "united-states": "États-Unis",
+      "japan": "Japon",
+      "china": "Chine",
+      "canada": "Canada",
+      "mexico": "Mexique",
+      "hong-kong": "Hong Kong",
+      "south-korea": "Corée du Sud",
+      "australia": "Australie",
+      "brazil": "Brésil"
+    },
+    "parksIn": "Parcs à {location}",
+    "parkCount": "{count, plural, =1 {1 parc} other {# parcs}}",
+    "exploreByRegion": "Explorer par Région"
+  },
+  "stats": {
+    "globalStats": "Statistiques Mondiales",
+    "openParks": "Parcs Ouverts",
+    "totalAttractions": "Total Attractions",
+    "mostCrowded": "Le Plus Fréquenté",
+    "leastCrowded": "Le Moins Fréquenté",
+    "longestWait": "Attente la Plus Longue",
+    "shortestWait": "Attente la Plus Courte",
+    "platformStats": "Statistiques Plateforme",
+    "platformStatsDescription": "Aperçu des données en temps réel sur la plateforme",
+    "totalWaitTime": "Temps d'Attente Total",
+    "dataPoints": "Points de Données",
+    "queueDataRecords": "enregistrements files",
+    "alsoTracking": "Suit aussi"
+  },
+  "homepage": {
+    "hero": {
+      "badge": "Prédictions par ML",
+      "exploreParks": "Explorer les Parcs"
+    },
+    "features": {
+      "title": "Planifiez votre Visite Parfaite",
+      "realtime": {
+        "title": "Temps d'Attente Temps Réel",
+        "description": "Données en direct mises à jour chaque minute."
+      },
+      "predictions": {
+        "title": "Prédictions machine learning",
+        "description": "Prévisions d'affluence et de temps d'attente par IA."
+      },
+      "calendar": {
+        "title": "Calendrier d'Affluence",
+        "description": "Calendrier avec météo, jours fériés et prédictions."
+      }
+    }
+  },
+  "search": {
+    "typeToSearch": "Tapez au moins 3 caractères...",
+    "viewAllResults": "Voir tous les résultats pour \"{query}\"",
+    "searchPlaceholder": "Rechercher parcs, attractions, spectacles...",
+    "at": "à {park}",
+    "types": {
+      "park": "Parc",
+      "attraction": "Attraction",
+      "show": "Spectacle",
+      "restaurant": "Restaurant"
+    },
+    "headings": {
+      "park": "Parcs ({count})",
+      "attraction": "Attractions ({count})",
+      "show": "Spectacles ({count})",
+      "restaurant": "Restaurants ({count})"
+    }
+  },
+  "admin": {
+    "title": "Tableau de Bord Admin",
+    "ml": {
+      "title": "Tableau de Bord IA",
+      "modelVersion": "Version Modèle",
+      "accuracy": "Précision",
+      "trainedAt": "Entraîné le",
+      "nextTraining": "Prochain Entraînement",
+      "triggerTraining": "Lancer Entraînement"
+    },
+    "system": {
+      "title": "Santé Système",
+      "database": "Base de Données",
+      "redis": "Redis",
+      "mlService": "Service IA",
+      "healthy": "Sain",
+      "unhealthy": "Non sain",
+      "flushCache": "Vider Cache",
+      "syncHolidays": "Sync Jours Fériés"
+    }
+  },
+  "seo": {
+    "home": {
+      "title": "park.fan - Temps d'Attente, Prédictions & Navigation",
+      "description": "Optimisez votre visite avec les temps d'attente en direct et les prédictions IA. Couvre Disney, Universal, Europa-Park et plus."
+    },
+    "parks": {
+      "title": "Parcs d'Attractions Monde - park.fan",
+      "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
+      "metaDescriptionTemplate": "Temps d'attente en direct, prédictions et horaires pour {park}. Planifiez votre visite avec des données en temps réel.",
+      "titleTemplate": "{park} Temps d'Attente & Prédictions"
+    },
+    "attraction": {
+      "titleTemplate": "{attraction} Attente - {park}",
+      "metaDescriptionTemplate": "Temps d'attente actuels et prédictions pour {attraction} à {park}. Vérifiez la file en direct."
+    },
+    "continent": {
+      "titleTemplate": "Parcs d'Attractions en {location}",
+      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente et prédictions."
+    },
+    "country": {
+      "titleTemplate": "Parcs d'Attractions en {location}",
+      "metaDescriptionTemplate": "Tous les parcs en {location} avec temps d'attente en direct et prévisions."
+    },
+    "city": {
+      "titleTemplate": "Parcs d'Attractions à {city}, {country}",
+      "metaDescriptionTemplate": "Temps d'attente et affluence pour les parcs à {city}. Planifiez avec des données réelles."
+    },
+    "search": {
+      "titleTemplate": "Recherche: {query}",
+      "title": "Recherche",
+      "metaDescriptionTemplate": "Recherchez des parcs, attractions, spectacles et restaurants dans le monde entier."
+    },
+    "notFound": {
+      "park": "Parc Non Trouvé",
+      "attraction": "Attraction Non Trouvée"
+    },
+    "imageAlt": {
+      "park": "{park} - Temps d'Attente",
+      "attraction": "{attraction} à {park} - Temps d'Attente"
+    }
+  },
+  "favorites": {
+    "title": "Favoris",
+    "empty": "Aucun favori",
+    "parks": "Parcs",
+    "attractions": "Attractions",
+    "shows": "Spectacles",
+    "restaurants": "Restaurants",
+    "tooltip": "Ajouter aux favoris pour voir sur l'accueil",
+    "locationHint": "Activez la localisation pour trier par distance"
+  },
+  "impressum": {
+    "title": "Mentions Légales - park.fan",
+    "description": "Informations légales et mentions pour park.fan"
+  },
+  "datenschutz": {
+    "title": "Confidentialité - park.fan",
+    "description": "Politique de confidentialité et protection des données pour park.fan"
+  }
+}

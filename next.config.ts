@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { getLocalePattern } from './i18n/config';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
@@ -63,12 +64,14 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
+    const localePattern = getLocalePattern();
+
     return [
       {
         // Redirect legacy routes (missing locale) to default locale (en)
-        // Matches checks for paths that do NOT start with en|de|api|_next or contain a dot (file extension)
+        // Matches checks for paths that do NOT start with locales|api|_next or contain a dot (file extension)
         // The .+ ensures we don't match the root path '/'
-        source: '/:slug((?!en|de|api|_next|.*\\..*).+)',
+        source: `/:slug((?!${localePattern.slice(1, -1)}|api|_next|.*\\..*).+)`,
         destination: '/en/:slug',
         permanent: true,
       },

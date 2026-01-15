@@ -76,6 +76,9 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
       languages: {
         en: `/en/parks/${continent}/${country}`,
         de: `/de/parks/${continent}/${country}`,
+        nl: `/nl/parks/${continent}/${country}`,
+        fr: `/fr/parks/${continent}/${country}`,
+        es: `/es/parks/${continent}/${country}`,
       },
     },
   };

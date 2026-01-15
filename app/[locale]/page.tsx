@@ -64,6 +64,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       languages: {
         en: '/en',
         de: '/de',
+        nl: '/nl',
+        fr: '/fr',
+        es: '/es',
         'x-default': '/en',
       },
     },

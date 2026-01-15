@@ -306,7 +306,10 @@ export function AttractionCard({
                               'currentGroupStart' in queue && queue.currentGroupStart
                                 ? t('queue.details.boardingGroups', {
                                     start: queue.currentGroupStart,
-                                    end: 'currentGroupEnd' in queue ? queue.currentGroupEnd : '',
+                                    end:
+                                      'currentGroupEnd' in queue
+                                        ? (queue.currentGroupEnd ?? '')
+                                        : '',
                                   })
                                 : t('queue.details.boardingGroupsAvailable');
                           } else {

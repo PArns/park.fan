@@ -53,6 +53,9 @@ export async function generateMetadata({
       languages: {
         en: '/en/search',
         de: '/de/search',
+        nl: '/nl/search',
+        fr: '/fr/search',
+        es: '/es/search',
       },
     },
   };

@@ -9,12 +9,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { routing, type Locale } from '@/i18n/routing';
-import { FlagDE, FlagGB } from '@/components/common/icons/flags';
-
-const localeNames: Record<Locale, string> = {
-  en: 'English',
-  de: 'Deutsch',
-};
+import { localeNames } from '@/i18n/config';
+import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES } from '@/components/common/icons/flags';
 
 const LocaleFlag = ({ locale }: { locale: Locale }) => {
   switch (locale) {
@@ -22,6 +18,12 @@ const LocaleFlag = ({ locale }: { locale: Locale }) => {
       return <FlagDE className="h-4 w-6" />;
     case 'en':
       return <FlagGB className="h-4 w-6" />;
+    case 'nl':
+      return <FlagNL className="h-4 w-6" />;
+    case 'fr':
+      return <FlagFR className="h-4 w-6" />;
+    case 'es':
+      return <FlagES className="h-4 w-6" />;
   }
 };
 

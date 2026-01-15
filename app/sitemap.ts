@@ -1,9 +1,8 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import { getContinents, getCountriesWithParks } from '@/lib/api/discovery';
+import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
-
-const locales = ['de', 'en'];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [];
