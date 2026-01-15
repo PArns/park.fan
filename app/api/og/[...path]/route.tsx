@@ -11,11 +11,8 @@ import { locales, isValidLocale } from '@/i18n/config';
 export const runtime = 'nodejs';
 
 // OG Image dimensions
-const WIDTH = 800;
-const HEIGHT = 420;
-const DESIGN_WIDTH = 1200;
-const DESIGN_HEIGHT = 630;
-const SCALE = WIDTH / DESIGN_WIDTH;
+const WIDTH = 1200;
+const HEIGHT = 630;
 
 // Helper to generate sparkline path (StepAfter algorithm matching WaitTimeSparkline)
 function generateSparklinePath(
@@ -403,341 +400,345 @@ export async function GET(
     return new ImageResponse(
       <div
         style={{
-          width: '100%',
-          height: '100%',
           display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
-          backgroundColor: '#0f172a',
+          height: '100%',
+          width: '100%',
+          flexDirection: 'column',
+          backgroundColor: '#0f172a', // Slate 900 base
+          color: 'white',
+          fontFamily: '"Inter"',
+          position: 'relative',
           overflow: 'hidden',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            height: `${DESIGN_HEIGHT}px`,
-            width: `${DESIGN_WIDTH}px`,
-            transform: `scale(${SCALE})`,
-            transformOrigin: '0 0',
-            flexDirection: 'column',
-            backgroundColor: '#0f172a', // Slate 900 base
-            color: 'white',
-            fontFamily: '"Inter"',
-            position: 'relative',
-          }}
-        >
-          {/* Background Layer */}
-          {geoSvg ? (
-            <div
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: 0.3, // Increased opacity for better visibility
-              }}
-            >
-              <svg
-                viewBox={geoSvg.viewBox}
-                width="1200" // Scale to fill roughly
-                height="630"
-                preserveAspectRatio="xMaxYMid meet" // Align Right, Fit Height
-                style={{
-                  // We don't strictly set width/height here to allow aspect ratio preservation via viewBox
-                  // But satori needs some hints.
-                  width: '100%',
-                  height: '100%',
-                }}
-              >
-                <defs>
-                  <linearGradient id="mapGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#38bdf8" />
-                    <stop offset="100%" stopColor="#0ea5e9" />
-                  </linearGradient>
-                </defs>
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                {geoSvg.paths.map((p: any) => (
-                  <path
-                    key={p.id}
-                    d={p.d}
-                    fill="url(#mapGradient)"
-                    stroke="#7dd3fc"
-                    strokeWidth="1.5"
-                  />
-                ))}
-              </svg>
-            </div>
-          ) : (
-            backgroundUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={backgroundUrl}
-                alt="Background"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  opacity: 0.4,
-                }}
-              />
-            )
-          )}
-
-          {/* Gradient Overlay for Readability */}
+        {/* Background Layer */}
+        {geoSvg ? (
           <div
             style={{
               position: 'absolute',
               top: 0,
               left: 0,
-              width: '100%',
-              height: '100%',
-              background:
-                'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
-            }}
-          />
-
-          {/* Content Container */}
-          <div
-            style={{
-              position: 'relative',
+              right: 0,
+              bottom: 0,
               display: 'flex',
-              flexDirection: 'column',
-              width: '100%',
-              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: 0.3, // Increased opacity for better visibility
             }}
           >
-            {type === 'HOME' ? (
-              // HOME LAYOUT: Explicit Wrapper for Centering
+            <svg
+              viewBox={geoSvg.viewBox}
+              width="1200" // Scale to fill roughly
+              height="630"
+              preserveAspectRatio="xMaxYMid meet" // Align Right, Fit Height
+              style={{
+                // We don't strictly set width/height here to allow aspect ratio preservation via viewBox
+                // But satori needs some hints.
+                width: '100%',
+                height: '100%',
+              }}
+            >
+              <defs>
+                <linearGradient id="mapGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#38bdf8" />
+                  <stop offset="100%" stopColor="#0ea5e9" />
+                </linearGradient>
+              </defs>
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {geoSvg.paths.map((p: any) => (
+                <path
+                  key={p.id}
+                  d={p.d}
+                  fill="url(#mapGradient)"
+                  stroke="#7dd3fc"
+                  strokeWidth="1.5"
+                />
+              ))}
+            </svg>
+          </div>
+        ) : (
+          backgroundUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={backgroundUrl}
+              alt="Background"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                opacity: 0.4,
+              }}
+            />
+          )
+        )}
+
+        {/* Gradient Overlay for Readability */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.9))',
+          }}
+        />
+
+        {/* Content Container */}
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            width: '100%',
+            height: '100%',
+          }}
+        >
+          {type === 'HOME' ? (
+            // HOME LAYOUT: Explicit Wrapper for Centering
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '48px', // Gap between Title Group and Badges
+                padding: '56px',
+              }}
+            >
+              {/* Centered Main Content Group */}
               <div
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  width: '100%',
-                  height: '100%',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '48px', // Gap between Title Group and Badges
-                  padding: '56px',
+                  gap: '24px',
                 }}
               >
-                {/* Centered Main Content Group */}
+                <h1
+                  style={{
+                    fontSize: '140px',
+                    fontWeight: 900,
+                    color: 'white',
+                    margin: 0,
+                    lineHeight: 1,
+                    letterSpacing: '-0.04em',
+                    textShadow: '0 8px 30px rgba(0,0,0,0.5)',
+                    textAlign: 'center',
+                  }}
+                >
+                  park.fan
+                </h1>
+
+                <h2
+                  style={{
+                    fontSize: '48px',
+                    fontWeight: 600,
+                    color: 'rgba(255,255,255,0.9)',
+                    margin: 0,
+                    maxWidth: '900px',
+                    textAlign: 'center',
+                    textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  {tHomepage('features.title')}
+                </h2>
+              </div>
+
+              {/* Footer Badges Row */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  gap: '20px',
+                  // marginTop: 'auto' // Not needed if parent is flex column space-between, but explicitly handling it cleanly
+                }}
+              >
                 <div
                   style={{
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
-                    gap: '24px',
+                    gap: '12px',
+                    backgroundColor: 'rgba(59, 130, 246, 0.8)', // blue
+                    color: 'white',
+                    padding: '12px 28px',
+                    borderRadius: '9999px',
+                    fontSize: '28px',
+                    fontWeight: 600,
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
                   }}
                 >
-                  <h1
+                  ⏱️ {tHomepage('features.realtime.title')}
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    backgroundColor: 'rgba(168, 85, 247, 0.8)', // purple
+                    color: 'white',
+                    padding: '12px 28px',
+                    borderRadius: '9999px',
+                    fontSize: '28px',
+                    fontWeight: 600,
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                  }}
+                >
+                  🧠 {tHomepage('features.predictions.title')}
+                </div>
+
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    backgroundColor: 'rgba(15, 23, 42, 0.6)',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    color: 'white',
+                    padding: '12px 28px',
+                    borderRadius: '9999px',
+                    fontSize: '28px',
+                    fontWeight: 600,
+                  }}
+                >
+                  🌍 {totalParks} Parks
+                </div>
+
+                {openParksCount > 0 && (
+                  <div
                     style={{
-                      fontSize: '140px',
-                      fontWeight: 900,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      backgroundColor: 'rgba(5, 150, 105, 0.8)', // emerald
                       color: 'white',
-                      margin: 0,
-                      lineHeight: 1,
-                      letterSpacing: '-0.04em',
-                      textShadow: '0 8px 30px rgba(0,0,0,0.5)',
-                      textAlign: 'center',
+                      padding: '12px 28px',
+                      borderRadius: '9999px',
+                      fontSize: '28px',
+                      fontWeight: 600,
                     }}
                   >
-                    park.fan
-                  </h1>
-
-                  <h2
+                    ✅ {openParksCount} {tCommon('open')}
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            // STANDARD LAYOUT (Regional & Parks)
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                width: '100%',
+                height: '100%',
+                justifyContent: 'space-between',
+                textAlign: 'left', // Ensure standard layout overrides root centering
+                position: 'relative', // Context for absolute sparkline
+                padding: '56px',
+              }}
+            >
+              {/* Top Bar: Location & park.fan branding */}
+              <div
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <p
                     style={{
-                      fontSize: '48px',
+                      fontSize: '32px',
                       fontWeight: 600,
                       color: 'rgba(255,255,255,0.9)',
                       margin: 0,
-                      maxWidth: '900px',
-                      textAlign: 'center',
-                      textShadow: '0 2px 10px rgba(0,0,0,0.5)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
                     }}
                   >
-                    {tHomepage('features.title')}
-                  </h2>
+                    {/* Location Iconish text */}
+                    {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
+                      <>
+                        {type === 'CITY' && (
+                          <>
+                            📍 {localizedCountryName} • {localizedContinentName}
+                          </>
+                        )}
+                        {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
+                        {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
+                      </>
+                    ) : type === 'GENERIC' ? (
+                      <>� park.fan</>
+                    ) : (
+                      <>�📍 {locationString}</>
+                    )}
+                  </p>
                 </div>
 
-                {/* Footer Badges Row */}
                 <div
                   style={{
                     display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    gap: '20px',
-                    // marginTop: 'auto' // Not needed if parent is flex column space-between, but explicitly handling it cleanly
+                    fontSize: '48px',
+                    fontWeight: 800,
+                    color: '#3b82f6', // blue-500
+                    letterSpacing: '-0.02em',
                   }}
                 >
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      backgroundColor: 'rgba(59, 130, 246, 0.8)', // blue
-                      color: 'white',
-                      padding: '12px 28px',
-                      borderRadius: '9999px',
-                      fontSize: '28px',
-                      fontWeight: 600,
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    }}
-                  >
-                    ⏱️ {tHomepage('features.realtime.title')}
-                  </div>
+                  park.fan
+                </div>
+              </div>
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      backgroundColor: 'rgba(168, 85, 247, 0.8)', // purple
-                      color: 'white',
-                      padding: '12px 28px',
-                      borderRadius: '9999px',
-                      fontSize: '28px',
-                      fontWeight: 600,
-                      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                    }}
-                  >
-                    🧠 {tHomepage('features.predictions.title')}
-                  </div>
+              {/* Main Content Area */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                {/* Title */}
+                <h1
+                  style={{
+                    display: 'flex',
+                    fontSize: '72px',
+                    fontWeight: 800,
+                    color: 'white',
+                    margin: 0,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em',
+                    textShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                    maxWidth: '90%',
+                  }}
+                >
+                  {name}
+                </h1>
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      backgroundColor: 'rgba(15, 23, 42, 0.6)',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      color: 'white',
-                      padding: '12px 28px',
-                      borderRadius: '9999px',
-                      fontSize: '28px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    🌍 {totalParks} Parks
-                  </div>
-
-                  {openParksCount > 0 && (
+                {/* Status Badges Row - REGIONAL */}
+                {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                     <div
                       style={{
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        backgroundColor: 'rgba(5, 150, 105, 0.8)', // emerald
+                        backgroundColor: '#0f172a', // slate-900
+                        border: '2px solid rgba(255,255,255,0.2)',
                         color: 'white',
                         padding: '12px 28px',
                         borderRadius: '9999px',
-                        fontSize: '28px',
-                        fontWeight: 600,
-                      }}
-                    >
-                      ✅ {openParksCount} {tCommon('open')}
-                    </div>
-                  )}
-                </div>
-              </div>
-            ) : (
-              // STANDARD LAYOUT (Regional & Parks)
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  width: '100%',
-                  height: '100%',
-                  justifyContent: 'space-between',
-                  textAlign: 'left', // Ensure standard layout overrides root centering
-                  position: 'relative', // Context for absolute sparkline
-                  padding: '56px',
-                }}
-              >
-                {/* Top Bar: Location & park.fan branding */}
-                <div
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-                >
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <p
-                      style={{
                         fontSize: '32px',
-                        fontWeight: 600,
-                        color: 'rgba(255,255,255,0.9)',
-                        margin: 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
+                        fontWeight: 700,
                       }}
                     >
-                      {/* Location Iconish text */}
-                      {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                        <>
-                          {type === 'CITY' && (
-                            <>
-                              📍 {localizedCountryName} • {localizedContinentName}
-                            </>
-                          )}
-                          {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
-                          {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
-                        </>
-                      ) : type === 'GENERIC' ? (
-                        <>� park.fan</>
-                      ) : (
-                        <>�📍 {locationString}</>
-                      )}
-                    </p>
-                  </div>
+                      🎢 {totalParks} {tCommon('parks')}
+                    </div>
 
-                  <div
-                    style={{
-                      display: 'flex',
-                      fontSize: '48px',
-                      fontWeight: 800,
-                      color: '#3b82f6', // blue-500
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    park.fan
-                  </div>
-                </div>
-
-                {/* Main Content Area */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  {/* Title */}
-                  <h1
-                    style={{
-                      display: 'flex',
-                      fontSize: '72px',
-                      fontWeight: 800,
-                      color: 'white',
-                      margin: 0,
-                      lineHeight: 1.1,
-                      letterSpacing: '-0.02em',
-                      textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                      maxWidth: '90%',
-                    }}
-                  >
-                    {name}
-                  </h1>
-
-                  {/* Status Badges Row - REGIONAL */}
-                  {['CONTINENT', 'COUNTRY', 'CITY'].includes(type) && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                    {openParksCount > 0 && (
                       <div
                         style={{
                           display: 'flex',
                           alignItems: 'center',
                           gap: '12px',
-                          backgroundColor: '#0f172a', // slate-900
-                          border: '2px solid rgba(255,255,255,0.2)',
+                          backgroundColor: '#059669', // emerald-600
                           color: 'white',
                           padding: '12px 28px',
                           borderRadius: '9999px',
@@ -745,326 +746,305 @@ export async function GET(
                           fontWeight: 700,
                         }}
                       >
-                        🎢 {totalParks} {tCommon('parks')}
+                        🕒 {openParksCount} {tCommon('open')}
                       </div>
+                    )}
+                  </div>
+                )}
 
-                      {openParksCount > 0 && (
+                {/* Status Badges Row - GENERIC */}
+                {type === 'GENERIC' && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        backgroundColor: '#3b82f6', // blue-500
+                        color: 'white',
+                        padding: '12px 28px',
+                        borderRadius: '9999px',
+                        fontSize: '32px',
+                        fontWeight: 700,
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                      }}
+                    >
+                      👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
+                    </div>
+                  </div>
+                )}
+
+                {/* Status Badges Row - PARK/ATTRACTION */}
+                {!['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC'].includes(type) && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+                    {/* Operating Status Badge */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        backgroundColor: statusColor,
+                        color: 'white',
+                        padding: '12px 28px',
+                        borderRadius: '9999px',
+                        fontSize: '32px',
+                        fontWeight: 700,
+                        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                      }}
+                    >
+                      {/* Icon based on status */}
+                      {status === 'OPERATING' ? (
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                      ) : status === 'CLOSED' ? (
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <circle cx="12" cy="12" r="10" />
+                          <line x1="15" y1="9" x2="9" y2="15" />
+                          <line x1="9" y1="9" x2="15" y2="15" />
+                        </svg>
+                      ) : (
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                          <path d="M12 9v4" />
+                          <path d="M12 17h.01" />
+                        </svg>
+                      )}
+                      {statusLabel}
+                    </div>
+
+                    {/* Crowd Level Badge - Hide if Closed to avoid redundancy */}
+                    {crowdLabel && crowdColor && status !== 'CLOSED' && crowdLevel !== 'closed' && (
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          backgroundColor: crowdColor,
+                          color: 'white',
+                          padding: '12px 28px',
+                          borderRadius: '9999px',
+                          fontSize: '32px',
+                          fontWeight: 700,
+                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                        }}
+                      >
+                        {crowdLabel}
+                      </div>
+                    )}
+
+                    {/* Operating Attractions (Park only) */}
+                    {type !== 'ATTRACTION' &&
+                      status !== 'CLOSED' &&
+                      operatingAttractionsCount > 0 && (
                         <div
                           style={{
                             display: 'flex',
                             alignItems: 'center',
                             gap: '12px',
-                            backgroundColor: '#059669', // emerald-600
+                            backgroundColor: 'rgba(255,255,255,0.1)',
+                            backdropFilter: 'blur(10px)',
+                            border: '2px solid rgba(255,255,255,0.2)',
                             color: 'white',
-                            padding: '12px 28px',
+                            padding: '10px 28px',
                             borderRadius: '9999px',
                             fontSize: '32px',
-                            fontWeight: 700,
+                            fontWeight: 600,
                           }}
                         >
-                          🕒 {openParksCount} {tCommon('open')}
+                          <svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d="M6 19v-3" />
+                            <path d="M10 19v-3" />
+                            <path d="M14 19v-3" />
+                            <path d="M18 19v-3" />
+                            <path d="M8 11V9" />
+                            <path d="M16 11V9" />
+                            <path d="M12 11V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2v2" />
+                            <path d="M4 16c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3" />
+                          </svg>
+                          {operatingAttractionsCount} {tCommon('operating')}
                         </div>
                       )}
-                    </div>
-                  )}
+                  </div>
+                )}
+              </div>
 
-                  {/* Status Badges Row - GENERIC */}
-                  {type === 'GENERIC' && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          backgroundColor: '#3b82f6', // blue-500
-                          color: 'white',
-                          padding: '12px 28px',
-                          borderRadius: '9999px',
-                          fontSize: '32px',
-                          fontWeight: 700,
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                        }}
-                      >
-                        👉 {tHomepage('hero.searchPlaceholder') || 'Discover more'}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Status Badges Row - PARK/ATTRACTION */}
-                  {!['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC'].includes(type) && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
-                      {/* Operating Status Badge */}
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          backgroundColor: statusColor,
-                          color: 'white',
-                          padding: '12px 28px',
-                          borderRadius: '9999px',
-                          fontSize: '32px',
-                          fontWeight: 700,
-                          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                        }}
-                      >
-                        {/* Icon based on status */}
-                        {status === 'OPERATING' ? (
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <polyline points="12 6 12 12 16 14" />
-                          </svg>
-                        ) : status === 'CLOSED' ? (
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="15" y1="9" x2="9" y2="15" />
-                            <line x1="9" y1="9" x2="15" y2="15" />
-                          </svg>
-                        ) : (
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-                            <path d="M12 9v4" />
-                            <path d="M12 17h.01" />
-                          </svg>
-                        )}
-                        {statusLabel}
-                      </div>
-
-                      {/* Crowd Level Badge - Hide if Closed to avoid redundancy */}
-                      {crowdLabel &&
-                        crowdColor &&
-                        status !== 'CLOSED' &&
-                        crowdLevel !== 'closed' && (
-                          <div
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              backgroundColor: crowdColor,
-                              color: 'white',
-                              padding: '12px 28px',
-                              borderRadius: '9999px',
-                              fontSize: '32px',
-                              fontWeight: 700,
-                              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                            }}
-                          >
-                            {crowdLabel}
-                          </div>
-                        )}
-
-                      {/* Operating Attractions (Park only) */}
-                      {type !== 'ATTRACTION' &&
-                        status !== 'CLOSED' &&
-                        operatingAttractionsCount > 0 && (
-                          <div
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: '12px',
-                              backgroundColor: 'rgba(255,255,255,0.1)',
-                              backdropFilter: 'blur(10px)',
-                              border: '2px solid rgba(255,255,255,0.2)',
-                              color: 'white',
-                              padding: '10px 28px',
-                              borderRadius: '9999px',
-                              fontSize: '32px',
-                              fontWeight: 600,
-                            }}
-                          >
-                            <svg
-                              width="32"
-                              height="32"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
+              {/* Bottom Section: Wait Time, Peak, Sparkline */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  justifyContent: 'space-between',
+                  marginTop: '24px',
+                  borderTop: '2px solid rgba(255,255,255,0.15)',
+                  paddingTop: '24px',
+                }}
+              >
+                {/* Left: Wait Time Info / Regional Info */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
+                    <>
+                      {status === 'OPERATING' && waitTime !== null ? (
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                          <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
+                            <span style={{ fontSize: '96px', fontWeight: 800, lineHeight: 1 }}>
+                              {waitTime}
+                            </span>
+                            <span
+                              style={{
+                                fontSize: '48px',
+                                fontWeight: 500,
+                                color: 'rgba(255,255,255,0.8)',
+                              }}
                             >
-                              <path d="M6 19v-3" />
-                              <path d="M10 19v-3" />
-                              <path d="M14 19v-3" />
-                              <path d="M18 19v-3" />
-                              <path d="M8 11V9" />
-                              <path d="M16 11V9" />
-                              <path d="M12 11V6a2 2 0 0 1 2-2 2 2 0 0 1 2 2v2" />
-                              <path d="M4 16c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3" />
-                            </svg>
-                            {operatingAttractionsCount} {tCommon('operating')}
+                              {tCommon('minutes')}
+                            </span>
                           </div>
-                        )}
+                          {peakWaitToday !== undefined && peakWaitToday !== null && (
+                            <div
+                              style={{
+                                fontSize: '32px',
+                                color: 'rgba(255,255,255,0.6)',
+                                fontWeight: 500,
+                              }}
+                            >
+                              {tAttractions('peak', { time: peakWaitToday })}
+                            </div>
+                          )}
+                        </div>
+                      ) : (
+                        <span
+                          style={{
+                            fontSize: '48px',
+                            fontWeight: 500,
+                            color: 'rgba(255,255,255,0.6)',
+                          }}
+                        >
+                          {type === 'ATTRACTION'
+                            ? tAttractions('status.closed')
+                            : tParks('status.CLOSED')}
+                        </span>
+                      )}
+
+                      {type !== 'ATTRACTION' && status === 'OPERATING' && waitTime !== null && (
+                        <div
+                          style={{
+                            display: 'flex',
+                            fontSize: '32px',
+                            color: 'rgba(255,255,255,0.6)',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {tParks('avgWaitTime')}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    // Regional Footer Info
+                    <div
+                      style={{
+                        display: 'flex',
+                        fontSize: '32px',
+                        color: 'rgba(255,255,255,0.6)',
+                        fontWeight: 500,
+                      }}
+                    >
+                      <>
+                        {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
+                      </>
                     </div>
                   )}
                 </div>
 
-                {/* Bottom Section: Wait Time, Peak, Sparkline */}
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-end',
-                    justifyContent: 'space-between',
-                    marginTop: '24px',
-                    borderTop: '2px solid rgba(255,255,255,0.15)',
-                    paddingTop: '24px',
-                  }}
-                >
-                  {/* Left: Wait Time Info / Regional Info */}
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                      <>
-                        {status === 'OPERATING' && waitTime !== null ? (
-                          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
-                              <span style={{ fontSize: '96px', fontWeight: 800, lineHeight: 1 }}>
-                                {waitTime}
-                              </span>
-                              <span
-                                style={{
-                                  fontSize: '48px',
-                                  fontWeight: 500,
-                                  color: 'rgba(255,255,255,0.8)',
-                                }}
-                              >
-                                {tCommon('minutes')}
-                              </span>
-                            </div>
-                            {peakWaitToday !== undefined && peakWaitToday !== null && (
-                              <div
-                                style={{
-                                  fontSize: '32px',
-                                  color: 'rgba(255,255,255,0.6)',
-                                  fontWeight: 500,
-                                }}
-                              >
-                                {tAttractions('peak', { time: peakWaitToday })}
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <span
-                            style={{
-                              fontSize: '48px',
-                              fontWeight: 500,
-                              color: 'rgba(255,255,255,0.6)',
-                            }}
-                          >
-                            {type === 'ATTRACTION'
-                              ? tAttractions('status.closed')
-                              : tParks('status.CLOSED')}
-                          </span>
-                        )}
-
-                        {type !== 'ATTRACTION' && status === 'OPERATING' && waitTime !== null && (
-                          <div
-                            style={{
-                              display: 'flex',
-                              fontSize: '32px',
-                              color: 'rgba(255,255,255,0.6)',
-                              fontWeight: 500,
-                            }}
-                          >
-                            {tParks('avgWaitTime')}
-                          </div>
-                        )}
-                      </>
-                    ) : (
-                      // Regional Footer Info
-                      <div
-                        style={{
-                          display: 'flex',
-                          fontSize: '32px',
-                          color: 'rgba(255,255,255,0.6)',
-                          fontWeight: 500,
-                        }}
-                      >
-                        <>
-                          {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
-                        </>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Right: park.fan branding only (if no sparkline or just always?)
+                {/* Right: park.fan branding only (if no sparkline or just always?)
                       User removed duplicate branding previously.
                       So this Right column effectively becomes empty or just for branding if desired?
                       If Sparkline is absolute, we don't need this right column unless we want park.fan fallback.
                       User wanted duplicate removed.
                    */}
-                  {/* Empty right side effectively, or maybe we don't need justify-between anymore?
+                {/* Empty right side effectively, or maybe we don't need justify-between anymore?
                        Let's keep structure for safety, but empty. */}
-                </div>
               </div>
-            )}
-          </div>
-
-          {/* Full Width Sparkline Overlay - Positioned Absolute at Bottom of Root Container */}
-          {sparklineHistory && sparklineHistory.length > 0 && (
-            <div
-              style={{
-                position: 'absolute',
-                left: 0,
-                bottom: 0,
-                width: '100%',
-                height: '150px',
-                display: 'flex',
-                alignItems: 'flex-end',
-                zIndex: 0,
-                opacity: 0.4,
-              }}
-            >
-              <svg
-                width={WIDTH}
-                height="150"
-                viewBox={`0 0 ${WIDTH} 150`}
-                preserveAspectRatio="none"
-                style={{ width: '100%', height: '100%' }}
-              >
-                <path
-                  d={generateSparklinePath(
-                    // Add current wait time as the last point if available
-                    waitTime !== null
-                      ? [...sparklineHistory, { timestamp: new Date().toISOString(), waitTime }]
-                      : sparklineHistory,
-                    WIDTH,
-                    150
-                  )}
-                  fill="none"
-                  stroke="rgba(255,255,255,0.5)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
             </div>
           )}
         </div>
+
+        {/* Full Width Sparkline Overlay - Positioned Absolute at Bottom of Root Container */}
+        {sparklineHistory && sparklineHistory.length > 0 && (
+          <div
+            style={{
+              position: 'absolute',
+              left: 0,
+              bottom: 0,
+              width: '100%',
+              height: '150px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              zIndex: 0,
+              opacity: 0.4,
+            }}
+          >
+            <svg
+              width={WIDTH}
+              height="150"
+              viewBox={`0 0 ${WIDTH} 150`}
+              preserveAspectRatio="none"
+              style={{ width: '100%', height: '100%' }}
+            >
+              <path
+                d={generateSparklinePath(
+                  // Add current wait time as the last point if available
+                  waitTime !== null
+                    ? [...sparklineHistory, { timestamp: new Date().toISOString(), waitTime }]
+                    : sparklineHistory,
+                  WIDTH,
+                  150
+                )}
+                fill="none"
+                stroke="rgba(255,255,255,0.5)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
+        )}
       </div>,
       {
         width: WIDTH,
