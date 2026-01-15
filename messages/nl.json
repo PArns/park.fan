@@ -502,21 +502,23 @@
     }
   },
   "search": {
-    "typeToSearch": "Typ minstens 3 tekens om te zoeken...",
+    "typeToSearch": "Typ minstens 3 tekens...",
     "viewAllResults": "Bekijk alle resultaten voor \"{query}\"",
-    "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
+    "searchPlaceholder": "Zoek parken, attracties, shows...",
     "at": "in {park}",
     "types": {
       "park": "Park",
       "attraction": "Attractie",
       "show": "Show",
-      "restaurant": "Restaurant"
+      "restaurant": "Restaurant",
+      "location": "Locatie"
     },
     "headings": {
       "park": "Parken ({count})",
       "attraction": "Attracties ({count})",
       "show": "Shows ({count})",
-      "restaurant": "Restaurants ({count})"
+      "restaurant": "Restaurants ({count})",
+      "location": "Locaties ({count})"
     }
   },
   "admin": {

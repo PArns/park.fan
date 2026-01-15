@@ -69,6 +69,7 @@ const typeIcons = {
   attraction: Cog,
   show: Music,
   restaurant: Utensils,
+  location: MapPin,
 };
 
 const typeLabels = {
@@ -76,6 +77,7 @@ const typeLabels = {
   attraction: 'Attraction',
   show: 'Show',
   restaurant: 'Restaurant',
+  location: 'Location',
 };
 
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -90,9 +92,10 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
   // Build the link URL
   let href = '/';
   if (result.url) {
-    href = result.url;
-    // Fix backend URLs to match frontend structure
-    href = href
+    // Convert all URLs to /parks/ structure
+    href = result.url
+      .replace(/^\/v1\/discovery\//, '/parks/') // Location results: /v1/discovery/ -> /parks/
+      .replace(/^\/discovery\//, '/parks/') // Location results: /discovery/ -> /parks/
       .replace(/^\/v1\/parks\//, '/parks/')
       .replace(/^\/v1\/attractions\//, '/parks/')
       .replace(/^\/v1\/shows\//, '/parks/')
@@ -154,11 +157,10 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${
-                  isOpen
+                className={`text-xs ${isOpen
                     ? 'border-status-operating text-status-operating'
                     : 'border-status-closed text-status-closed'
-                }`}
+                  }`}
               >
                 {isOpen ? t('open') : t('closed')}
               </Badge>
@@ -177,7 +179,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
                 result.city,
                 result.country
                   ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
-                    result.country
+                  result.country
                   : null,
               ]
                 .filter(Boolean)

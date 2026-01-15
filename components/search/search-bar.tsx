@@ -22,6 +22,7 @@ const typeIcons = {
   attraction: Cog,
   show: Music,
   restaurant: Utensils,
+  location: MapPin,
 };
 
 interface SearchCommandProps {
@@ -134,9 +135,10 @@ export function SearchCommand({
     setQuery('');
 
     if (result.url) {
-      // Strip /v1 prefix but keep /parks structure for future content (news, blog)
-      // Also remove the /attractions/ segment that comes after park URLs
+      // Convert all URLs to /parks/ structure
       const cleanUrl = result.url
+        .replace(/^\/v1\/discovery\//, '/parks/') // Location results: /v1/discovery/ -> /parks/
+        .replace(/^\/discovery\//, '/parks/') // Location results: /discovery/ -> /parks/
         .replace(/^\/v1\/parks\//, '/parks/')
         .replace(/^\/v1\/attractions\//, '/parks/')
         .replace(/^\/v1\/shows\//, '/parks/')
@@ -144,6 +146,7 @@ export function SearchCommand({
         .replace(/\/attractions\//, '/') // Remove /attractions/ segment
         .replace(/\/shows\//, '/')
         .replace(/\/restaurants\//, '/');
+
       router.push(cleanUrl as '/parks/europe');
     } else if (result.type === 'park' && result.continent && result.country) {
       // Build URL from available data
@@ -348,7 +351,7 @@ export function SearchCommand({
           {!loading && results && results.results.length > 0 && (
             <>
               {/* Group by type */}
-              {(['park', 'attraction', 'show', 'restaurant'] as const).map((type) => {
+              {(['park', 'attraction', 'show', 'restaurant', 'location'] as const).map((type) => {
                 const items = results.results.filter((r) => r.type === type);
                 if (items.length === 0) return null;
 

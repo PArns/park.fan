@@ -427,17 +427,18 @@ export interface RestaurantResponse {
 // ============================================================================
 
 export interface SearchResultItem {
-  type: 'park' | 'attraction' | 'show' | 'restaurant';
-  id: string;
+  type: 'park' | 'attraction' | 'show' | 'restaurant' | 'location';
+  id: string; // Format: "city:slug" or "country:slug" for locations
   name: string;
   slug: string;
   url?: string;
   latitude?: number;
   longitude?: number;
+  // Location fields (populated for all types as applicable)
   continent?: string;
   country?: string;
-  countryCode?: string;
-  city?: string;
+  countryCode?: string; // ISO code, e.g., "FR"
+  city?: string; // Present if type is a city location
   resort?: string;
   status?: ParkStatus | AttractionStatus;
   load?: CrowdLevel;

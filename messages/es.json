@@ -510,13 +510,15 @@
       "park": "Parque",
       "attraction": "Atracción",
       "show": "Espectáculo",
-      "restaurant": "Restaurante"
+      "restaurant": "Restaurante",
+      "location": "Ubicación"
     },
     "headings": {
       "park": "Parques ({count})",
       "attraction": "Atracciones ({count})",
       "show": "Espectáculos ({count})",
-      "restaurant": "Restaurantes ({count})"
+      "restaurant": "Restaurantes ({count})",
+      "location": "Ubicaciones ({count})"
     }
   },
   "admin": {
