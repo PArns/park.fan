@@ -18,6 +18,7 @@ import {
   BreadcrumbStructuredData,
   ShowsStructuredData,
 } from '@/components/seo/structured-data';
+import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import type { Metadata } from 'next';
 import type { ParkAttraction } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -225,6 +226,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             date={format(new Date(), 'yyyy-MM-dd')}
           />
         )}
+        <FAQStructuredData park={park} locale={locale} />
 
         {/* Breadcrumb */}
         <BreadcrumbNav

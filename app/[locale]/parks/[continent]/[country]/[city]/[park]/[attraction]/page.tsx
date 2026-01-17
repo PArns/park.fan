@@ -28,6 +28,7 @@ import {
   AttractionStructuredData,
   BreadcrumbStructuredData,
 } from '@/components/seo/structured-data';
+import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
@@ -230,6 +231,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         url={attractionUrl}
         description={`${attraction.name} at ${park.name} - Real-time wait times, status, and predictions.`}
       />
+      <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <ParkBackground imageSrc={backgroundImage} alt={attraction.name} />
       <PageContainer>

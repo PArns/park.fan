@@ -551,7 +551,7 @@
       "title": "Pretparken Wereldwijd - park.fan",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
       "metaDescriptionTemplate": "Live wachttijden, druktevoorspellingen en openingstijden voor {park}. Plan je perfecte bezoek met realtime gegevens en navigatie.",
-      "titleTemplate": "{park} Wachttijden & Voorspellingen"
+      "titleTemplate": "{park} Wachttijden, Openingstijden & Voorspellingen"
     },
     "attraction": {
       "titleTemplate": "{attraction} Wachttijd - {park}",
@@ -581,6 +581,32 @@
     "imageAlt": {
       "park": "{park} - Pretpark Wachttijden",
       "attraction": "{attraction} in {park} - Wachttijden"
+    },
+    "faq": {
+      "openingHoursQ": "Wat zijn de openingstijden van {park} vandaag?",
+      "openingHoursA": "Vandaag, {date}, is {park} open van {open} tot {close}.",
+      "openingHoursClosed": "Vandaag, {date}, is {park} gesloten.",
+      "locationQ": "Waar ligt {park}?",
+      "locationA": "{park} bevindt zich in {city}, {country}.",
+      "attractionCountQ": "Hoeveel attracties zijn er in {park}?",
+      "attractionCountA": "Er zijn {count} attracties in {park}.",
+      "themedAreasQ": "Welke themagebieden zijn er in {park}?",
+      "themedAreasA": "{park} heeft de volgende themagebieden: {areas}.",
+      "showsQ": "Zijn er shows in {park}?",
+      "showsA": "Ja, {park} biedt {count} shows, waaronder {examples}.",
+      "diningQ": "Welke eetgelegenheden zijn er in {park}?",
+      "diningA": "{park} heeft {count} restaurants en eetkraampjes.",
+      "attraction": {
+        "locationQ": "Waar bevindt {attraction} zich?",
+        "locationA": "{attraction} bevindt zich in {park}{land}.",
+        "inLand": " in het themagebied {land}",
+        "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
+        "waitTimeA": "De wachttijden voor {attraction} variëren per dag en seizoen. Bekijk de actuele wachttijden op park.fan.",
+        "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
+        "singleRiderA": "Ja, {attraction} heeft een Single Rider rij voor individuele gasten.",
+        "paidQueueQ": "Is er een snelle toegang voor {attraction}?",
+        "paidQueueA": "Ja, snelle toegang is beschikbaar via {type}."
+      }
     }
   },
   "favorites": {

@@ -551,7 +551,7 @@
       "title": "Freizeitparks Weltweit - park.fan",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Aktuelle Wartezeiten, Besucherandrang und Öffnungszeiten für {park}. Plane deinen perfekten Besuch mit Echtzeit-Daten, Prognosen und In-Park Navigation.",
-      "titleTemplate": "{park} Wartezeiten & Prognosen"
+      "titleTemplate": "{park} Wartezeiten, Öffnungszeiten & Prognosen"
     },
     "attraction": {
       "titleTemplate": "{attraction} Wartezeit - {park}",
@@ -581,6 +581,32 @@
     "imageAlt": {
       "park": "{park} - Freizeitpark Wartezeiten",
       "attraction": "{attraction} in {park} - Wartezeiten"
+    },
+    "faq": {
+      "openingHoursQ": "Wann hat der {park} heute geöffnet?",
+      "openingHoursA": "Heute, am {date}, hat der {park} von {open} bis {close} Uhr geöffnet.",
+      "openingHoursClosed": "Heute, am {date}, ist der {park} geschlossen.",
+      "locationQ": "Wo liegt der {park}?",
+      "locationA": "Der {park} befindet sich in {city}, {country}.",
+      "attractionCountQ": "Wie viele Attraktionen gibt es im {park}?",
+      "attractionCountA": "Im {park} gibt es aktuell {count} Attraktionen.",
+      "themedAreasQ": "Welche Themenbereiche gibt es im {park}?",
+      "themedAreasA": "Der {park} bietet folgende Themenbereiche: {areas}.",
+      "showsQ": "Gibt es Shows im {park}?",
+      "showsA": "Ja, der {park} bietet {count} Shows, darunter {examples}.",
+      "diningQ": "Welche Restaurants gibt es im {park}?",
+      "diningA": "Im {park} gibt es {count} Restaurants und Imbisse.",
+      "attraction": {
+        "locationQ": "Wo befindet sich {attraction}?",
+        "locationA": "{attraction} befindet sich im {park}{land}.",
+        "inLand": " im Themenbereich {land}",
+        "waitTimeQ": "Wie lange muss man bei {attraction} warten?",
+        "waitTimeA": "Die Wartezeiten für {attraction} variieren je nach Tag und Saison. Aktuelle Wartezeiten findest du auf park.fan.",
+        "singleRiderQ": "Gibt es bei {attraction} eine Single Rider Line?",
+        "singleRiderA": "Ja, {attraction} bietet eine Single Rider Line für Einzelpersonen an.",
+        "paidQueueQ": "Gibt es einen Fast Pass für {attraction}?",
+        "paidQueueA": "Ja, schnellerer Zugang ist über {type} verfügbar."
+      }
     }
   },
   "favorites": {

@@ -551,7 +551,7 @@
       "title": "Parques Temáticos Mundial - park.fan",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
       "metaDescriptionTemplate": "Tiempos de espera en vivo, predicciones y horarios para {park}. Planifica tu visita perfecta con datos en tiempo real.",
-      "titleTemplate": "{park} Tiempos de Espera y Predicciones"
+      "titleTemplate": "{park} Tiempos de Espera, Horarios y Predicciones"
     },
     "attraction": {
       "titleTemplate": "{attraction} Espera - {park}",
@@ -581,6 +581,32 @@
     "imageAlt": {
       "park": "{park} - Tiempos de Espera",
       "attraction": "{attraction} en {park} - Tiempos de Espera"
+    },
+    "faq": {
+      "openingHoursQ": "¿Cuál es el horario de apertura de {park} hoy?",
+      "openingHoursA": "Hoy, {date}, {park} está abierto de {open} a {close}.",
+      "openingHoursClosed": "Hoy, {date}, {park} está cerrado.",
+      "locationQ": "¿Dónde se encuentra {park}?",
+      "locationA": "{park} está situado en {city}, {country}.",
+      "attractionCountQ": "¿Cuántas atracciones hay en {park}?",
+      "attractionCountA": "Hay {count} atracciones en {park}.",
+      "themedAreasQ": "¿Qué áreas temáticas hay en {park}?",
+      "themedAreasA": "{park} cuenta con las siguientes áreas temáticas: {areas}.",
+      "showsQ": "¿Hay espectáculos en {park}?",
+      "showsA": "Sí, {park} ofrece {count} espectáculos, incluyendo {examples}.",
+      "diningQ": "¿Qué opciones de comida hay en {park}?",
+      "diningA": "{park} cuenta con {count} restaurantes y puestos de comida.",
+      "attraction": {
+        "locationQ": "¿Dónde se encuentra {attraction}?",
+        "locationA": "{attraction} está ubicada en {park}{land}.",
+        "inLand": " en el área temática {land}",
+        "waitTimeQ": "¿Cuánto tiempo de espera tiene {attraction}?",
+        "waitTimeA": "Los tiempos de espera para {attraction} varían según el día y la temporada. Consulta los tiempos en vivo en park.fan.",
+        "singleRiderQ": "¿{attraction} tiene fila de Single Rider?",
+        "singleRiderA": "Sí, {attraction} tiene una fila de Single Rider para llenar asientos vacíos.",
+        "paidQueueQ": "¿Hay pase rápido para {attraction}?",
+        "paidQueueA": "Sí, acceso rápido disponible a través de {type}."
+      }
     }
   },
   "favorites": {
