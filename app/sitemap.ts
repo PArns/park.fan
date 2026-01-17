@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { getContinents, getCountriesWithParks } from '@/lib/api/discovery';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getGeoStructure } from '@/lib/api/discovery';
 import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
+
+export const revalidate = 86400; // 24 hours
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [];
@@ -18,7 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   });
 
-  // Add root as x-default (if needed, or just rely on the above)
+  // Add root as x-default
   routes.push({
     url: BASE_URL,
     lastModified: new Date(),
@@ -36,12 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   });
 
-  // 2. Dynamic Routes (Parks hierarchy)
+  // 2. Dynamic Routes (Parks hierarchy) from single API call
   try {
-    const continents = await getContinents();
+    const geo = await getGeoStructure();
 
-    for (const continent of continents) {
-      // Continent Page (Localized)
+    for (const continent of geo.continents) {
+      // Continent Page
       locales.forEach((locale) => {
         routes.push({
           url: `${BASE_URL}/${locale}/parks/${continent.slug}`,
@@ -51,11 +52,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
       });
 
-      // Fetch countries for this continent to get deeper links
-      const countryData = await getCountriesWithParks(continent.slug);
-
-      for (const country of countryData.data) {
-        // Country Page (Localized)
+      for (const country of continent.countries) {
+        // Country Page
         locales.forEach((locale) => {
           routes.push({
             url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}`,
@@ -66,7 +64,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
 
         for (const city of country.cities) {
-          // City Page (Localized)
+          // City Page
           locales.forEach((locale) => {
             routes.push({
               url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}`,
@@ -76,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             });
           });
 
-          // Parks in this city (Localized)
+          // Parks in this city
           for (const park of city.parks) {
             locales.forEach((locale) => {
               routes.push({
@@ -87,30 +85,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               });
             });
 
-            // Fetch park details to get attractions
-            try {
-              const parkData = await getParkByGeoPath(
-                continent.slug,
-                country.slug,
-                city.slug,
-                park.slug
-              );
-
-              // Add attraction pages
-              if (parkData.attractions && parkData.attractions.length > 0) {
-                for (const attraction of parkData.attractions) {
-                  locales.forEach((locale) => {
-                    routes.push({
-                      url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}/${attraction.slug}`,
-                      lastModified: new Date(),
-                      changeFrequency: 'daily',
-                      priority: 0.7,
-                    });
+            // Attractions
+            if (park.attractions && park.attractions.length > 0) {
+              for (const attraction of park.attractions) {
+                locales.forEach((locale) => {
+                  routes.push({
+                    url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}/${attraction.slug}`,
+                    lastModified: new Date(),
+                    changeFrequency: 'daily',
+                    priority: 0.7,
                   });
-                }
+                });
               }
-            } catch (error) {
-              console.error(`Failed to fetch attractions for ${park.slug}:`, error);
             }
           }
         }
