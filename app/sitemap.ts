@@ -26,6 +26,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1,
   });
 
+  // 1.1 Parks Overview
+  locales.forEach((locale) => {
+    routes.push({
+      url: `${BASE_URL}/${locale}/parks`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.9,
+    });
+  });
+
   // 2. Dynamic Routes (Parks hierarchy)
   try {
     const continents = await getContinents();
