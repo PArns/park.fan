@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
         nl: '/nl/impressum',
         fr: '/fr/impressum',
         es: '/es/impressum',
+        'x-default': '/en/impressum',
       },
     },
     robots: {

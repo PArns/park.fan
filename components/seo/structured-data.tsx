@@ -1,4 +1,10 @@
-import { ParkResponse, ParkWithAttractions, Breadcrumb, ParkAttraction } from '@/lib/api/types';
+import {
+  ParkResponse,
+  ParkWithAttractions,
+  Breadcrumb,
+  ParkAttraction,
+  ParkShow,
+} from '@/lib/api/types';
 import {
   Thing,
   WithContext,
@@ -136,4 +142,52 @@ export function AttractionStructuredData({
   };
 
   return <JsonLd data={data} />;
+}
+
+export function ShowsStructuredData({
+  shows,
+  park,
+  date,
+}: {
+  shows: ParkShow[];
+  park: ParkResponse | ParkWithAttractions;
+  date: string;
+}) {
+  if (!shows || shows.length === 0) return null;
+
+  // Filter shows that have showtimes for today
+  const showsWithTimes = shows.filter(
+    (show) => show.showtimes && show.showtimes.length > 0 && show.status === 'OPERATING'
+  );
+
+  if (showsWithTimes.length === 0) return null;
+
+  // Generate Event schema for each show time
+  const events = showsWithTimes.flatMap((show) =>
+    (show.showtimes || []).map((showtime) => ({
+      '@context': 'https://schema.org' as const,
+      '@type': 'Event' as const,
+      name: show.name,
+      startDate: `${date}T${showtime.startTime}`,
+      location: {
+        '@type': 'ThemePark' as const,
+        name: park.name,
+        address: {
+          '@type': 'PostalAddress' as const,
+          addressLocality: park.city || undefined,
+          addressCountry: park.country || undefined,
+        },
+      },
+      eventStatus: 'https://schema.org/EventScheduled' as const,
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' as const,
+    }))
+  );
+
+  return (
+    <>
+      {events.map((event, index) => (
+        <JsonLd key={index} data={event} />
+      ))}
+    </>
+  );
 }

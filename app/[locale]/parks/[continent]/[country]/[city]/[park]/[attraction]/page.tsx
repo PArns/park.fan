@@ -115,6 +115,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         nl: `/nl/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
         fr: `/fr/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
         es: `/es/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       },
     },
   };

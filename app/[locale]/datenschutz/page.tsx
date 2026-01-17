@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
         nl: '/nl/datenschutz',
         fr: '/fr/datenschutz',
         es: '/es/datenschutz',
+        'x-default': '/en/datenschutz',
       },
     },
     robots: {

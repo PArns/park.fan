@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getContinents, getCountriesWithParks } from '@/lib/api/discovery';
+import { getParkByGeoPath } from '@/lib/api/parks';
 import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
@@ -75,6 +76,32 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: 0.9,
               });
             });
+
+            // Fetch park details to get attractions
+            try {
+              const parkData = await getParkByGeoPath(
+                continent.slug,
+                country.slug,
+                city.slug,
+                park.slug
+              );
+
+              // Add attraction pages
+              if (parkData.attractions && parkData.attractions.length > 0) {
+                for (const attraction of parkData.attractions) {
+                  locales.forEach((locale) => {
+                    routes.push({
+                      url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}/${attraction.slug}`,
+                      lastModified: new Date(),
+                      changeFrequency: 'daily',
+                      priority: 0.7,
+                    });
+                  });
+                }
+              }
+            } catch (error) {
+              console.error(`Failed to fetch attractions for ${park.slug}:`, error);
+            }
           }
         }
       }

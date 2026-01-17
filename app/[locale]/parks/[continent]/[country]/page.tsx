@@ -6,6 +6,7 @@ import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
@@ -79,6 +80,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
         nl: `/nl/parks/${continent}/${country}`,
         fr: `/fr/parks/${continent}/${country}`,
         es: `/es/parks/${continent}/${country}`,
+        'x-default': `/en/parks/${continent}/${country}`,
       },
     },
   };
@@ -127,6 +129,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
   return (
     <PageContainer>
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={countryName}

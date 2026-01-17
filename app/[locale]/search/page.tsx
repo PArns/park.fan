@@ -57,6 +57,7 @@ export async function generateMetadata({
         nl: '/nl/search',
         fr: '/fr/search',
         es: '/es/search',
+        'x-default': '/en/search',
       },
     },
   };

@@ -5,6 +5,7 @@ import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
@@ -63,6 +64,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
         nl: `/nl/parks/${continent}`,
         fr: `/fr/parks/${continent}`,
         es: `/es/parks/${continent}`,
+        'x-default': `/en/parks/${continent}`,
       },
     },
   };
@@ -138,6 +140,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
   return (
     <PageContainer>
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={continentName}

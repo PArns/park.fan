@@ -4,6 +4,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
@@ -62,6 +63,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
         nl: `/nl/parks/${continent}/${country}/${citySlug}`,
         fr: `/fr/parks/${continent}/${country}/${citySlug}`,
         es: `/es/parks/${continent}/${country}/${citySlug}`,
+        'x-default': `/en/parks/${continent}/${country}/${citySlug}`,
       },
     },
   };
@@ -115,6 +117,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   return (
     <PageContainer>
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={city.name}

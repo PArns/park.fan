@@ -13,7 +13,11 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TabsWithHash } from '@/components/parks/tabs-with-hash';
-import { ParkStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import {
+  ParkStructuredData,
+  BreadcrumbStructuredData,
+  ShowsStructuredData,
+} from '@/components/seo/structured-data';
 import type { Metadata } from 'next';
 import type { ParkAttraction } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -81,6 +85,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
         nl: `/nl/parks/${continent}/${country}/${city}/${parkSlug}`,
         fr: `/fr/parks/${continent}/${country}/${city}/${parkSlug}`,
         es: `/es/parks/${continent}/${country}/${city}/${parkSlug}`,
+        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
     },
   };
@@ -213,6 +218,13 @@ export default async function ParkPage({ params }: ParkPageProps) {
           description={tSeo('metaDescriptionTemplate', { park: park.name })}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+        {park.shows && park.shows.length > 0 && (
+          <ShowsStructuredData
+            shows={park.shows}
+            park={park}
+            date={format(new Date(), 'yyyy-MM-dd')}
+          />
+        )}
 
         {/* Breadcrumb */}
         <BreadcrumbNav
