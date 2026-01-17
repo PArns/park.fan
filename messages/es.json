@@ -378,7 +378,10 @@
         "OPEN": "Abierto",
         "CLOSED": "Cerrado",
         "FULL": "Lleno",
-        "FINISHED": "Finalizado"
+        "FINISHED": "Finalizado",
+        "OPERATING": "Abierto",
+        "DOWN": "Caído",
+        "REFURBISHMENT": "Mant."
       },
       "details": {
         "singleRider": "Single Rider: {time} min",

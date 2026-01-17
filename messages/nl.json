@@ -378,7 +378,10 @@
         "OPEN": "Open",
         "CLOSED": "Gesloten",
         "FULL": "Vol",
-        "FINISHED": "Afgelopen"
+        "FINISHED": "Afgelopen",
+        "OPERATING": "Open",
+        "DOWN": "Storing",
+        "REFURBISHMENT": "Onderhoud"
       },
       "details": {
         "singleRider": "Single Rider: {time} min",

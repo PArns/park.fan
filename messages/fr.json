@@ -378,7 +378,10 @@
         "OPEN": "Ouvert",
         "CLOSED": "Fermé",
         "FULL": "Complet",
-        "FINISHED": "Terminé"
+        "FINISHED": "Terminé",
+        "OPERATING": "Ouvert",
+        "DOWN": "Panne",
+        "REFURBISHMENT": "Rénov"
       },
       "details": {
         "singleRider": "Single Rider: {time} min",

@@ -378,7 +378,10 @@
         "OPEN": "Geöffnet",
         "CLOSED": "Geschlossen",
         "FULL": "Voll",
-        "FINISHED": "Beendet"
+        "FINISHED": "Beendet",
+        "OPERATING": "Geöffnet",
+        "DOWN": "Störung",
+        "REFURBISHMENT": "Wartung"
       },
       "details": {
         "singleRider": "Single Rider: {time} min",
