@@ -14,9 +14,9 @@ import type { NearbyResponse } from '@/types/nearby';
  * Get complete geographic structure
  * Cached for 24 hours - used for static generation
  */
-export async function getGeoStructure(): Promise<GeoStructure> {
+export async function getGeoStructure(revalidate: number = CACHE_TTL.geo): Promise<GeoStructure> {
   return api.get<GeoStructure>('/v1/discovery/geo', {
-    next: { revalidate: CACHE_TTL.geo },
+    next: { revalidate },
   });
 }
 

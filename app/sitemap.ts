@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // 2. Dynamic Routes (Parks hierarchy) from single API call
   try {
-    const geo = await getGeoStructure();
+    const geo = await getGeoStructure(86400);
 
     for (const continent of geo.continents) {
       // Continent Page
