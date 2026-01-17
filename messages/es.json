@@ -583,29 +583,49 @@
       "attraction": "{attraction} en {park} - Tiempos de Espera"
     },
     "faq": {
+      "title": "Preguntas Frecuentes",
       "openingHoursQ": "¿Cuál es el horario de apertura de {park} hoy?",
       "openingHoursA": "Hoy, {date}, {park} está abierto de {open} a {close}.",
       "openingHoursClosed": "Hoy, {date}, {park} está cerrado.",
       "locationQ": "¿Dónde se encuentra {park}?",
-      "locationA": "{park} está situado en {city}, {country}.",
+      "locationA": "{park} se encuentra en {city}, {country}.",
       "attractionCountQ": "¿Cuántas atracciones hay en {park}?",
       "attractionCountA": "Hay {count} atracciones en {park}.",
       "themedAreasQ": "¿Qué áreas temáticas hay en {park}?",
-      "themedAreasA": "{park} cuenta con las siguientes áreas temáticas: {areas}.",
+      "themedAreasA": "{park} cuenta con {count} áreas temáticas:",
       "showsQ": "¿Hay espectáculos en {park}?",
-      "showsA": "Sí, {park} ofrece {count} espectáculos, incluyendo {examples}.",
-      "diningQ": "¿Qué opciones de comida hay en {park}?",
-      "diningA": "{park} cuenta con {count} restaurantes y puestos de comida.",
+      "showsA": "Sí, {park} ofrece {count} espectáculos:",
+      "diningQ": "¿Qué opciones gastronómicas hay en {park}?",
+      "diningA": "{park} ofrece {count} restaurantes y puestos de comida:",
       "attraction": {
+        "title": "Preguntas Frecuentes",
         "locationQ": "¿Dónde se encuentra {attraction}?",
-        "locationA": "{attraction} está ubicada en {park}{land}.",
+        "locationA": "{attraction} se encuentra en {park}{land}.",
         "inLand": " en el área temática {land}",
-        "waitTimeQ": "¿Cuánto tiempo de espera tiene {attraction}?",
-        "waitTimeA": "Los tiempos de espera para {attraction} varían según el día y la temporada. Consulta los tiempos en vivo en park.fan.",
-        "singleRiderQ": "¿{attraction} tiene fila de Single Rider?",
-        "singleRiderA": "Sí, {attraction} tiene una fila de Single Rider para llenar asientos vacíos.",
-        "paidQueueQ": "¿Hay pase rápido para {attraction}?",
-        "paidQueueA": "Sí, acceso rápido disponible a través de {type}."
+        "waitTimeQ": "¿Cuánto tiempo de espera hay para {attraction}?",
+        "waitTimeA": "Los tiempos de espera para {attraction} varían según el día y la temporada. Consulta los tiempos de espera en vivo en park.fan.",
+        "singleRiderQ": "¿Tiene {attraction} una fila Single Rider?",
+        "singleRiderA": "Sí, {attraction} tiene una fila Single Rider para huéspedes individuales que llenan asientos vacíos.",
+        "paidQueueQ": "¿Hay opciones de pase rápido para {attraction}?",
+        "paidQueueA": "Sí, el acceso acelerado está disponible a través de {type}."
+      }
+    },
+    "homepage": {
+      "faq": {
+        "whatIsQ": "¿Qué es park.fan?",
+        "whatIsA": "park.fan es tu plataforma central para tiempos de espera en vivo e información actual de más de 30 parques temáticos en Europa, Asia y América del Norte. Te mostramos en tiempo real cuánto tiempo de espera hay en tus atracciones favoritas, qué espectáculos están en curso y cuándo están abiertos los parques.",
+        "whichParksQ": "¿Qué parques temáticos son compatibles con park.fan?",
+        "whichParksA": "park.fan es compatible con más de 30 parques temáticos en todo el mundo, incluidos Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland y muchos más. Puedes encontrar la lista completa de todos los parques con tiempos de espera en vivo en nuestra página de descripción general de parques. Estamos ampliando continuamente nuestra oferta con parques temáticos adicionales.",
+        "liveDataQ": "¿Los tiempos de espera en park.fan son en vivo y en tiempo real?",
+        "liveDataA": "¡Sí! park.fan actualiza continuamente todos los tiempos de espera durante el horario de operación del parque. Los datos provienen directamente de las APIs oficiales del parque y se sincronizan en tiempo real. Siempre ves los tiempos de espera más actuales disponibles y puedes planificar óptimamente tu visita al parque.",
+        "freeQ": "¿Es gratis usar park.fan?",
+        "freeA": "Sí, park.fan es completamente gratuito. Puedes ver todos los tiempos de espera en vivo, horarios de apertura, espectáculos y restaurantes sin registro ni pago. Nuestro objetivo es proporcionar el mejor servicio posible a cada visitante del parque temático.",
+        "favoritesQ": "¿Puedo guardar mis parques y atracciones favoritas en park.fan?",
+        "favoritesA": "¡Sí! Con la función de favoritos de park.fan, puedes marcar tus parques favoritos y atracciones favoritas. Luego se mostrarán en tu página de inicio personalizada, para que puedas ver inmediatamente los tiempos de espera actuales de tus favoritos.",
+        "featuresQ": "¿Qué información ofrece park.fan además de los tiempos de espera en vivo?",
+        "featuresA": "Además de los tiempos de espera en vivo para atracciones, park.fan también proporciona horarios de apertura del parque, horarios de espectáculos, información de restaurantes, pronósticos del tiempo, estadísticas históricas de tiempos de espera y pronósticos de multitudes. De esta manera, puedes planificar óptimamente tu visita al parque temático y encontrar los mejores momentos para tus atracciones favoritas.",
+        "mobileQ": "¿Funciona park.fan en teléfonos inteligentes?",
+        "mobileA": "¡Absolutamente! park.fan es totalmente responsive y funciona perfectamente en teléfonos inteligentes y tabletas. Puedes consultar los tiempos de espera en vivo directamente en el parque temático para decidir espontáneamente qué atracción visitar a continuación. La versión móvil ofrece todas las funciones de la versión de escritorio."
       }
     }
   },

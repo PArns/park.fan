@@ -2,6 +2,7 @@ import { ParkWithAttractions } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { WithContext, Thing } from 'schema-dts';
 import { formatInTimeZone } from 'date-fns-tz';
+import { translateCountry } from '@/lib/i18n/helpers';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
@@ -10,6 +11,12 @@ interface FAQStructuredDataProps {
 
 export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   const t = useTranslations('seo.faq');
+  const tGeo = useTranslations('geo');
+
+  // Helper function to remove "NEW:", "NEU:", etc. prefixes
+  const cleanName = (name: string): string => {
+    return name.replace(/^(NEW|NEU|NOUVEAU|NIEUW|NUEVO):\s*/i, '').trim();
+  };
 
   // Get current date in park's timezone
   const timeZone = park.timezone || 'UTC';
@@ -62,6 +69,9 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
 
   // Question 2: Location
   if (park.city && park.country) {
+    const countrySlug = park.country.toLowerCase().replace(/\s+/g, '-');
+    const translatedCountry = translateCountry(tGeo, countrySlug, locale, park.country);
+
     mainEntity.push({
       '@type': 'Question',
       name: t('locationQ', { park: park.name }),
@@ -70,7 +80,7 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
         text: t('locationA', {
           park: park.name,
           city: park.city,
-          country: park.country,
+          country: translatedCountry,
         }),
       },
     });
@@ -96,50 +106,42 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   // Question 4: Themed Areas
   const themedAreas = Array.from(new Set(park.attractions?.map((a) => a.land).filter(Boolean)));
   if (themedAreas.length > 0) {
+    const intro = t('themedAreasA', { park: park.name, count: themedAreas.length });
+    const list = themedAreas.join(', ');
     mainEntity.push({
       '@type': 'Question',
       name: t('themedAreasQ', { park: park.name }),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: t('themedAreasA', {
-          park: park.name,
-          areas: themedAreas.join(', '),
-        }),
+        text: `${intro} ${list}`,
       },
     });
   }
 
   // Question 5: Shows
   if (park.shows && park.shows.length > 0) {
-    const showNames = park.shows
-      .slice(0, 3)
-      .map((s) => s.name)
-      .join(', ');
+    const showNames = park.shows.map((s) => cleanName(s.name)).join(', ');
+    const intro = t('showsA', { park: park.name, count: park.shows.length });
     mainEntity.push({
       '@type': 'Question',
       name: t('showsQ', { park: park.name }),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: t('showsA', {
-          park: park.name,
-          count: park.shows.length,
-          examples: showNames,
-        }),
+        text: `${intro} ${showNames}`,
       },
     });
   }
 
   // Question 6: Dining
   if (park.restaurants && park.restaurants.length > 0) {
+    const restaurantNames = park.restaurants.map((r) => cleanName(r.name)).join(', ');
+    const intro = t('diningA', { park: park.name, count: park.restaurants.length });
     mainEntity.push({
       '@type': 'Question',
       name: t('diningQ', { park: park.name }),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: t('diningA', {
-          park: park.name,
-          count: park.restaurants.length,
-        }),
+        text: `${intro} ${restaurantNames}`,
       },
     });
   }

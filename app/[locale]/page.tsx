@@ -13,6 +13,7 @@ import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { FavoritesSection } from '@/components/parks/favorites-section';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { OrganizationStructuredData } from '@/components/seo/structured-data';
+import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { StatsCard } from '@/components/common/stats-card';
@@ -123,6 +124,7 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <div className="flex flex-col">
       <OrganizationStructuredData />
+      <HomepageFAQStructuredData />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-20 md:py-32">
         <HeroBackground imageSrc={randomHeroImage} />

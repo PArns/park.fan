@@ -19,6 +19,7 @@ import {
   ShowsStructuredData,
 } from '@/components/seo/structured-data';
 import { FAQStructuredData } from '@/components/seo/faq-structured-data';
+import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
 import type { ParkAttraction } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -307,6 +308,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
             landNames={landNames}
             attractionsByLand={attractionsByLand}
           />
+
+          {/* FAQ Section */}
+          <Separator className="my-8" />
+          <ParkFAQSection park={park} locale={locale} />
         </article>
       </PageContainer>
     </>

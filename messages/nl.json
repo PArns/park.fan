@@ -583,29 +583,49 @@
       "attraction": "{attraction} in {park} - Wachttijden"
     },
     "faq": {
+      "title": "Veelgestelde Vragen",
       "openingHoursQ": "Wat zijn de openingstijden van {park} vandaag?",
       "openingHoursA": "Vandaag, {date}, is {park} open van {open} tot {close}.",
       "openingHoursClosed": "Vandaag, {date}, is {park} gesloten.",
-      "locationQ": "Waar ligt {park}?",
+      "locationQ": "Waar bevindt {park} zich?",
       "locationA": "{park} bevindt zich in {city}, {country}.",
       "attractionCountQ": "Hoeveel attracties zijn er in {park}?",
       "attractionCountA": "Er zijn {count} attracties in {park}.",
       "themedAreasQ": "Welke themagebieden zijn er in {park}?",
-      "themedAreasA": "{park} heeft de volgende themagebieden: {areas}.",
+      "themedAreasA": "{park} biedt {count} themagebieden:",
       "showsQ": "Zijn er shows in {park}?",
-      "showsA": "Ja, {park} biedt {count} shows, waaronder {examples}.",
+      "showsA": "Ja, {park} biedt {count} shows:",
       "diningQ": "Welke eetgelegenheden zijn er in {park}?",
-      "diningA": "{park} heeft {count} restaurants en eetkraampjes.",
+      "diningA": "{park} biedt {count} restaurants en snackbars:",
       "attraction": {
+        "title": "Veelgestelde Vragen",
         "locationQ": "Waar bevindt {attraction} zich?",
         "locationA": "{attraction} bevindt zich in {park}{land}.",
         "inLand": " in het themagebied {land}",
         "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
-        "waitTimeA": "De wachttijden voor {attraction} variëren per dag en seizoen. Bekijk de actuele wachttijden op park.fan.",
+        "waitTimeA": "Wachttijden voor {attraction} variëren per dag en seizoen. Bekijk live wachttijden op park.fan.",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
-        "singleRiderA": "Ja, {attraction} heeft een Single Rider rij voor individuele gasten.",
-        "paidQueueQ": "Is er een snelle toegang voor {attraction}?",
-        "paidQueueA": "Ja, snelle toegang is beschikbaar via {type}."
+        "singleRiderA": "Ja, {attraction} heeft een Single Rider rij voor individuele gasten om lege stoelen te vullen.",
+        "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
+        "paidQueueA": "Ja, versnelde toegang is beschikbaar via {type}."
+      }
+    },
+    "homepage": {
+      "faq": {
+        "whatIsQ": "Wat is park.fan?",
+        "whatIsA": "park.fan is jouw centrale platform voor live wachttijden en actuele informatie van meer dan 30 pretparken in Europa, Azië en Noord-Amerika. We tonen je in realtime hoe lang de wachttijden zijn bij je favoriete attracties, welke shows er momenteel lopen en wanneer de parken open zijn.",
+        "whichParksQ": "Welke pretparken worden ondersteund door park.fan?",
+        "whichParksA": "park.fan ondersteunt meer dan 30 pretparken wereldwijd, waaronder Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland en vele anderen. Je kunt de volledige lijst van alle parken met live wachttijden vinden op onze parken overzichtspagina. We breiden ons aanbod continu uit met extra pretparken.",
+        "liveDataQ": "Zijn de wachttijden op park.fan live en in realtime?",
+        "liveDataA": "Ja! park.fan werkt alle wachttijden continu bij tijdens de openingstijden van het park. De gegevens komen rechtstreeks van de officiële park-API's en worden in realtime gesynchroniseerd. Je ziet altijd de meest actuele beschikbare wachttijden en kunt je parkbezoek optimaal plannen.",
+        "freeQ": "Is het gebruik van park.fan gratis?",
+        "freeA": "Ja, park.fan is volledig gratis te gebruiken. Je kunt alle live wachttijden, openingstijden, shows en restaurants bekijken zonder registratie of betaling. Ons doel is om elke pretparkbezoeker de best mogelijke service te bieden.",
+        "favoritesQ": "Kan ik mijn favoriete parken en attracties opslaan op park.fan?",
+        "favoritesA": "Ja! Met de favorietenfunctie van park.fan kun je je favoriete parken en favoriete attracties markeren. Deze worden dan weergegeven op je gepersonaliseerde startpagina, zodat je direct de huidige wachttijden van je favorieten kunt zien.",
+        "featuresQ": "Welke informatie biedt park.fan naast live wachttijden?",
+        "featuresA": "Naast live wachttijden voor attracties biedt park.fan ook parkopeningstijden, showtijden, restaurant-informatie, weersvoorspellingen, historische wachttijdstatistieken en drukte-voorspellingen. Zo kun je je pretparkbezoek optimaal plannen en de beste tijden vinden voor je favoriete attracties.",
+        "mobileQ": "Werkt park.fan ook op smartphones?",
+        "mobileA": "Absoluut! park.fan is volledig responsive en werkt perfect op smartphones en tablets. Je kunt de live wachttijden ook direct in het pretpark raadplegen om spontaan te besluiten welke attractie je als volgende bezoekt. De mobiele versie biedt alle functies van de desktopversie."
       }
     }
   },

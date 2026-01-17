@@ -584,6 +584,7 @@
       "attraction": "{attraction} at {park} - Wait Times"
     },
     "faq": {
+      "title": "Frequently Asked Questions",
       "openingHoursQ": "What are the opening hours for {park} today?",
       "openingHoursA": "Today, {date}, {park} is open from {open} to {close}.",
       "openingHoursClosed": "Today, {date}, {park} is closed.",
@@ -592,12 +593,13 @@
       "attractionCountQ": "How many attractions are at {park}?",
       "attractionCountA": "There are {count} attractions at {park}.",
       "themedAreasQ": "Which themed areas are at {park}?",
-      "themedAreasA": "{park} features the following themed areas: {areas}.",
+      "themedAreasA": "{park} features {count} themed areas:",
       "showsQ": "Are there shows at {park}?",
-      "showsA": "Yes, {park} offers {count} shows including {examples}.",
+      "showsA": "Yes, {park} offers {count} shows:",
       "diningQ": "What dining options are available at {park}?",
-      "diningA": "{park} offers {count} restaurants and snack stands.",
+      "diningA": "{park} offers {count} restaurants and snack stands:",
       "attraction": {
+        "title": "Frequently Asked Questions",
         "locationQ": "Where is {attraction} located?",
         "locationA": "{attraction} is located in {park}{land}.",
         "inLand": " in the {land} themed area",
@@ -607,6 +609,24 @@
         "singleRiderA": "Yes, {attraction} has a Single Rider line for individual guests to fill empty seats.",
         "paidQueueQ": "Is there a fast pass options for {attraction}?",
         "paidQueueA": "Yes, expedited access is available via {type}."
+      }
+    },
+    "homepage": {
+      "faq": {
+        "whatIsQ": "What is park.fan?",
+        "whatIsA": "park.fan is your central platform for live wait times and current information from over 30 theme parks in Europe, Asia, and North America. We show you in real-time how long the wait times are at your favorite attractions, which shows are currently running, and when the parks are open.",
+        "whichParksQ": "Which theme parks are supported by park.fan?",
+        "whichParksA": "park.fan supports over 30 theme parks worldwide, including Phantasialand, Europa-Park, Disneyland Paris, Efteling, Walibi Belgium, Toverland, Bobbejaanland, and many more. You can find the complete list of all parks with live wait times on our parks overview page. We are continuously expanding our offering with additional theme parks.",
+        "liveDataQ": "Are the wait times on park.fan live and in real-time?",
+        "liveDataA": "Yes! park.fan continuously updates all wait times during park operating hours. The data comes directly from the official park APIs and is synchronized in real-time. You always see the most current available wait times and can optimally plan your park visit.",
+        "freeQ": "Is using park.fan free?",
+        "freeA": "Yes, park.fan is completely free to use. You can view all live wait times, opening hours, shows, and restaurants without registration or payment. Our goal is to provide the best possible service to every theme park visitor.",
+        "favoritesQ": "Can I save my favorite parks and attractions on park.fan?",
+        "favoritesA": "Yes! With park.fan's favorites feature, you can mark your favorite parks and favorite attractions. These will then be displayed on your personalized homepage, so you can immediately see the current wait times for your favorites.",
+        "featuresQ": "What information does park.fan offer besides live wait times?",
+        "featuresA": "In addition to live wait times for attractions, park.fan also provides park opening hours, show times, restaurant information, weather forecasts, historical wait time statistics, and crowd forecasts. This way, you can optimally plan your theme park visit and find the best times for your favorite attractions.",
+        "mobileQ": "Does park.fan work on smartphones?",
+        "mobileA": "Absolutely! park.fan is fully responsive and works perfectly on smartphones and tablets. You can check live wait times directly in the theme park to spontaneously decide which attraction to visit next. The mobile version offers all features of the desktop version."
       }
     }
   },
