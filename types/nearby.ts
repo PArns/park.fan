@@ -49,7 +49,7 @@ export interface NearbyParkInfo {
 
 export interface NearbyAttractionsData {
   park: NearbyParkInfo;
-  attractions: AttractionWithDistance[];
+  rides: AttractionWithDistance[]; // Backend sends 'rides', not 'attractions'
 }
 
 export interface ParkWithDistance {

@@ -212,6 +212,7 @@
     "peak": "Pico",
     "open": "abierto",
     "calendar": "Calendario",
+    "crowdCalendar": "Calendario de Afluencia y Mejores Días",
     "map": "Mapa",
     "calendarLegend": "Leyenda",
     "eventTypesLabel": "Tipos de Eventos",
@@ -547,14 +548,14 @@
   },
   "seo": {
     "home": {
-      "title": "park.fan - Tiempos de Espera, Predicciones y Navegación",
+      "title": "Tiempos de Espera, Predicciones y Navegación",
       "description": "Maximiza tu visita con tiempos de espera en vivo y predicciones IA. Cubre Disney, Universal, Europa-Park y más."
     },
     "parks": {
       "title": "Parques Temáticos Mundial - park.fan",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo, predicciones y horarios para {park}. Planifica tu visita perfecta con datos en tiempo real.",
-      "titleTemplate": "{park} Tiempos de Espera, Horarios y Predicciones"
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario de afluencia para {park}. Consulta pronóstico de hoy, mejores días para visitar y horarios. Planifica tu visita perfecta.",
+      "titleTemplate": "{park} Calendario de Afluencia, Tiempos de Espera y Mejores Días"
     },
     "attraction": {
       "titleTemplate": "{attraction} Espera - {park}",
@@ -600,6 +601,8 @@
       "showsA": "Sí, {park} ofrece {count} espectáculos:",
       "diningQ": "¿Qué opciones gastronómicas hay en {park}?",
       "diningA": "{park} ofrece {count} restaurantes y puestos de comida:",
+      "crowdCalendarQ": "¿Tiene {park} un calendario de afluencia?",
+      "crowdCalendarA": "¡Sí! park.fan proporciona un calendario de afluencia detallado para {park} mostrando niveles de afluencia previstos para los próximos 30 días, ayudándote a elegir los mejores días para visitar con tiempos de espera más cortos.",
       "attraction": {
         "title": "Preguntas Frecuentes",
         "locationQ": "¿Dónde se encuentra {attraction}?",

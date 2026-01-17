@@ -212,6 +212,7 @@
     "peak": "Pic",
     "open": "ouvert",
     "calendar": "Calendrier",
+    "crowdCalendar": "Calendrier d'Affluence et Meilleurs Jours",
     "map": "Carte",
     "calendarLegend": "Légende",
     "eventTypesLabel": "Types d'Événements",
@@ -547,14 +548,14 @@
   },
   "seo": {
     "home": {
-      "title": "park.fan - Temps d'Attente, Prédictions & Navigation",
+      "title": "Temps d'Attente, Prédictions & Navigation",
       "description": "Optimisez votre visite avec les temps d'attente en direct et les prédictions IA. Couvre Disney, Universal, Europa-Park et plus."
     },
     "parks": {
       "title": "Parcs d'Attractions Monde - park.fan",
       "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
-      "metaDescriptionTemplate": "Temps d'attente en direct, prédictions et horaires pour {park}. Planifiez votre visite avec des données en temps réel.",
-      "titleTemplate": "{park} Temps d'Attente, Horaires & Prédictions"
+      "metaDescriptionTemplate": "Temps d'attente en direct et calendrier d'affluence pour {park}. Vérifiez les prévisions du jour, meilleurs jours de visite et horaires. Planifiez votre visite.",
+      "titleTemplate": "{park} Calendrier d'Affluence, Temps d'Attente et Meilleurs Jours"
     },
     "attraction": {
       "titleTemplate": "{attraction} Attente - {park}",
@@ -600,6 +601,8 @@
       "showsA": "Oui, {park} propose {count} spectacles:",
       "diningQ": "Quelles options de restauration sont disponibles à {park}?",
       "diningA": "{park} propose {count} restaurants et stands de restauration:",
+      "crowdCalendarQ": "Est-ce que {park} a un calendrier d'affluence?",
+      "crowdCalendarA": "Oui! park.fan fournit un calendrier d'affluence détaillé pour {park} montrant les niveaux d'affluence prévus pour les 30 prochains jours, vous aidant à choisir les meilleurs jours de visite avec des temps d'attente plus courts.",
       "attraction": {
         "title": "Questions Fréquentes",
         "locationQ": "Où se trouve {attraction}?",

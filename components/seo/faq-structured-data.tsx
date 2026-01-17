@@ -146,6 +146,16 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
     });
   }
 
+  // Question 7: Crowd Calendar
+  mainEntity.push({
+    '@type': 'Question',
+    name: t('crowdCalendarQ', { park: park.name }),
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: t('crowdCalendarA', { park: park.name }),
+    },
+  });
+
   const jsonLd: WithContext<Thing> = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',

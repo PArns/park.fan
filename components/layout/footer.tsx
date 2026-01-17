@@ -74,7 +74,9 @@ export async function Footer({ locale }: FooterProps) {
 
           {/* Popular Parks - Germany */}
           <section className="hidden space-y-4 md:block">
-            <h2 className="font-semibold">{t('sections.popularParks')}</h2>
+            <div className="mb-3 text-sm font-semibold tracking-wide uppercase">
+              {t('sections.popularParks')}
+            </div>
             <div className="space-y-3">
               <div>
                 <Link
@@ -130,7 +132,9 @@ export async function Footer({ locale }: FooterProps) {
 
           {/* Popular Parks - USA */}
           <section className="hidden space-y-4 md:block">
-            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
+              {t('sections.popularParks')}
+            </div>
             <div className="space-y-3">
               <div>
                 <Link
@@ -186,7 +190,9 @@ export async function Footer({ locale }: FooterProps) {
 
           {/* Popular Parks - France */}
           <section className="hidden space-y-4 md:block">
-            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
+              {t('sections.popularParks')}
+            </div>
             <div className="space-y-3">
               <div>
                 <Link
@@ -242,7 +248,9 @@ export async function Footer({ locale }: FooterProps) {
 
           {/* Popular Parks - Japan */}
           <section className="hidden space-y-3 md:block">
-            <h2 className="font-semibold opacity-0">{t('sections.popularParks')}</h2>
+            <div className="mb-3 text-sm font-semibold tracking-wide uppercase opacity-0">
+              {t('sections.popularParks')}
+            </div>
             <div className="space-y-3">
               <div>
                 <Link

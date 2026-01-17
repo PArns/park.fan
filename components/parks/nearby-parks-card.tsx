@@ -179,8 +179,26 @@ export function NearbyParksCard() {
   // User is IN a park - show park info and nearby attractions
   if (nearbyData.type === 'in_park') {
     const data = nearbyData.data as NearbyAttractionsData;
+
+    // Debug logging
+    console.log('[NearbyParks] in_park data:', {
+      hasData: !!data,
+      hasPark: !!data?.park,
+      parkName: data?.park?.name,
+      ridesCount: data?.rides?.length,
+      firstFewRides: data?.rides?.slice(0, 3),
+    });
+
+    // Safety check: if data is null/undefined, skip rendering
+    if (!data || !data.park) {
+      console.log('[NearbyParks] Skipping render - missing data or park');
+      return null;
+    }
+
     const park = data.park;
-    const attractions = data.attractions.slice(0, 5); // Show max 5 attractions
+    const attractions = (data.rides || []).slice(0, 5); // Show max 5 attractions (backend calls them 'rides')
+
+    console.log('[NearbyParks] Will render', attractions.length, 'attractions');
 
     // Extract park URL from first attraction if available
     const parkMapUrl =
@@ -216,7 +234,7 @@ export function NearbyParksCard() {
                       {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
                     </p>
                   </div>
-                  {park.analytics?.crowdLevel && (
+                  {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
                     <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
                   )}
                 </article>
@@ -252,7 +270,7 @@ export function NearbyParksCard() {
                       {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
                     </p>
                   </div>
-                  {park.analytics?.crowdLevel && (
+                  {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
                     <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
                   )}
                 </article>
@@ -301,7 +319,7 @@ export function NearbyParksCard() {
                               <FavoriteStar type="attraction" id={attraction.id} />
                             </div>
                           )}
-                          <div className="min-w-0 flex-1">
+                          <div className="min-w-0 flex-1 pr-2">
                             <p className="group-hover:text-primary truncate font-medium transition-colors">
                               {attraction.name}
                             </p>
@@ -309,7 +327,7 @@ export function NearbyParksCard() {
                               {formatDistance(attraction.distance)} {t('awayFrom')}
                             </p>
                           </div>
-                          <div className="ml-3 flex items-center gap-2">
+                          <div className="flex items-center gap-2">
                             {attraction.status === 'OPERATING' &&
                               typeof attraction.waitTime === 'number' && (
                                 <Badge
@@ -320,7 +338,7 @@ export function NearbyParksCard() {
                                   {attraction.waitTime} min
                                 </Badge>
                               )}
-                            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
+                            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
                           </div>
                         </div>
                       </Link>

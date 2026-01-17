@@ -212,6 +212,7 @@
     "peak": "Peak",
     "open": "open",
     "calendar": "Calendar",
+    "crowdCalendar": "Crowd Calendar & Best Days to Visit",
     "map": "Map",
     "calendarLegend": "Legend",
     "eventTypesLabel": "Event Types",
@@ -548,14 +549,14 @@
 
   "seo": {
     "home": {
-      "title": "park.fan - Theme Park Wait Times, Predictions & Navigation",
+      "title": "Theme Park Wait Times, Predictions & Navigation",
       "description": "Maximize your visit with real-time wait times, AI predictions, and in-park navigation. Covers Disney, Universal, Europa-Park, and more."
     },
     "parks": {
       "title": "Theme Parks Worldwide - park.fan",
       "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
-      "metaDescriptionTemplate": "Live wait times, crowd predictions, and opening hours for {park}. Plan your perfect visit with real-time data, forecasts, and in-park navigation.",
-      "titleTemplate": "{park} Wait Times, Opening Hours & Predictions"
+      "metaDescriptionTemplate": "Live wait times and crowd calendar for {park}. Check today's crowd forecast, best days to visit, and opening hours. Plan your visit with real-time predictions.",
+      "titleTemplate": "{park} Crowd Calendar, Wait Times & Best Days to Visit"
     },
     "attraction": {
       "titleTemplate": "{attraction} Wait Time - {park}",
@@ -601,6 +602,8 @@
       "showsA": "Yes, {park} offers {count} shows:",
       "diningQ": "What dining options are available at {park}?",
       "diningA": "{park} offers {count} restaurants and snack stands:",
+      "crowdCalendarQ": "Does {park} have a crowd calendar?",
+      "crowdCalendarA": "Yes! park.fan provides a detailed crowd calendar for {park} showing predicted crowd levels for the next 30 days, helping you choose the best days to visit with shorter wait times.",
       "attraction": {
         "title": "Frequently Asked Questions",
         "locationQ": "Where is {attraction} located?",

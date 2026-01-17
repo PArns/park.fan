@@ -212,6 +212,7 @@
     "peak": "Piek",
     "open": "open",
     "calendar": "Kalender",
+    "crowdCalendar": "Druktekalender & Beste Bezoekdagen",
     "map": "Kaart",
     "calendarLegend": "Legenda",
     "eventTypesLabel": "Event Types",
@@ -547,14 +548,14 @@
   },
   "seo": {
     "home": {
-      "title": "park.fan - Pretpark Wachttijden, Voorspellingen & Navigatie",
+      "title": "Pretpark Wachttijden, Voorspellingen & Navigatie",
       "description": "Maximaliseer je bezoek met realtime wachttijden, AI-voorspellingen en navigatie in het park. Omvat Disney, Universal, Europa-Park en meer."
     },
     "parks": {
       "title": "Pretparken Wereldwijd - park.fan",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
-      "metaDescriptionTemplate": "Live wachttijden, druktevoorspellingen en openingstijden voor {park}. Plan je perfecte bezoek met realtime gegevens en navigatie.",
-      "titleTemplate": "{park} Wachttijden, Openingstijden & Voorspellingen"
+      "metaDescriptionTemplate": "Live wachttijden en druktekalender voor {park}. Bekijk vandaag's druktevoorspelling, beste bezoekdagen en openingstijden. Plan je bezoek optimaal.",
+      "titleTemplate": "{park} Druktekalender, Wachttijden & Beste Bezoekdagen"
     },
     "attraction": {
       "titleTemplate": "{attraction} Wachttijd - {park}",
@@ -600,6 +601,8 @@
       "showsA": "Ja, {park} biedt {count} shows:",
       "diningQ": "Welke eetgelegenheden zijn er in {park}?",
       "diningA": "{park} biedt {count} restaurants en snackbars:",
+      "crowdCalendarQ": "Heeft {park} een druktekalender?",
+      "crowdCalendarA": "Ja! park.fan biedt een gedetailleerde druktekalender voor {park} met voorspelde drukte-niveaus voor de komende 30 dagen, zodat je de beste bezoekdagen kunt kiezen met kortere wachttijden.",
       "attraction": {
         "title": "Veelgestelde Vragen",
         "locationQ": "Waar bevindt {attraction} zich?",
