@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
-import { ParkCard } from '@/components/parks/park-card';
+
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { FavoritesSection } from '@/components/parks/favorites-section';
@@ -191,36 +191,122 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="mb-3 grid gap-4 sm:grid-cols-2">
               {/* Most Crowded Park */}
               {stats.mostCrowdedPark && (
-                <ParkCard
-                  name={stats.mostCrowdedPark.name}
-                  slug={stats.mostCrowdedPark.slug}
-                  city={stats.mostCrowdedPark.city}
-                  country={tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
+                <Link
                   href={stats.mostCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                  status="OPERATING"
-                  crowdLevel={stats.mostCrowdedPark.crowdLevel ?? undefined}
-                  averageWaitTime={stats.mostCrowdedPark.averageWaitTime ?? undefined}
-                  operatingAttractions={stats.mostCrowdedPark.operatingAttractions}
-                  totalAttractions={stats.mostCrowdedPark.totalAttractions}
-                  parkId={stats.mostCrowdedPark.id}
-                />
+                  className="group block min-w-0"
+                >
+                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
+                    {/* Favorite Star */}
+                    {stats.mostCrowdedPark.id && (
+                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                        <FavoriteStar type="park" id={stats.mostCrowdedPark.id} />
+                      </div>
+                    )}
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-muted-foreground text-sm font-medium">
+                        {t('mostCrowded')}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
+                        {stats.mostCrowdedPark.name}
+                      </div>
+                      <p className="text-muted-foreground mb-2 truncate text-xs">
+                        {stats.mostCrowdedPark.city},{' '}
+                        {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
+                      </p>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          {stats.mostCrowdedPark.averageWaitTime != null &&
+                            stats.mostCrowdedPark.averageWaitTime > 0 && (
+                              <>
+                                <Clock className="text-muted-foreground h-4 w-4" />
+                                <Badge variant="secondary">
+                                  {stats.mostCrowdedPark.averageWaitTime} {tCommon('minutes')}
+                                </Badge>
+                              </>
+                            )}
+                          {stats.mostCrowdedPark.crowdLevel && (
+                            <CrowdLevelBadge
+                              level={stats.mostCrowdedPark.crowdLevel}
+                              className="h-5 px-1.5 text-[10px]"
+                            />
+                          )}
+                        </div>
+                        {stats.mostCrowdedPark.operatingAttractions != null &&
+                          stats.mostCrowdedPark.totalAttractions != null && (
+                            <div className="text-muted-foreground flex items-center gap-1 text-xs">
+                              <TrendingUp className="h-3 w-3" />
+                              <span>
+                                {stats.mostCrowdedPark.operatingAttractions}/
+                                {stats.mostCrowdedPark.totalAttractions} {tCommon('operating')}
+                              </span>
+                            </div>
+                          )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               )}
 
               {/* Least Crowded Park */}
               {stats.leastCrowdedPark && (
-                <ParkCard
-                  name={stats.leastCrowdedPark.name}
-                  slug={stats.leastCrowdedPark.slug}
-                  city={stats.leastCrowdedPark.city}
-                  country={tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
+                <Link
                   href={stats.leastCrowdedPark.url.replace('/v1/parks/', '/parks/')}
-                  status="OPERATING"
-                  crowdLevel={stats.leastCrowdedPark.crowdLevel ?? undefined}
-                  averageWaitTime={stats.leastCrowdedPark.averageWaitTime ?? undefined}
-                  operatingAttractions={stats.leastCrowdedPark.operatingAttractions}
-                  totalAttractions={stats.leastCrowdedPark.totalAttractions}
-                  parkId={stats.leastCrowdedPark.id}
-                />
+                  className="group block min-w-0"
+                >
+                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
+                    {/* Favorite Star */}
+                    {stats.leastCrowdedPark.id && (
+                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+                        <FavoriteStar type="park" id={stats.leastCrowdedPark.id} />
+                      </div>
+                    )}
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-muted-foreground text-sm font-medium">
+                        {t('leastCrowded')}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
+                        {stats.leastCrowdedPark.name}
+                      </div>
+                      <p className="text-muted-foreground mb-2 truncate text-xs">
+                        {stats.leastCrowdedPark.city},{' '}
+                        {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
+                      </p>
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2">
+                          {stats.leastCrowdedPark.averageWaitTime != null &&
+                            stats.leastCrowdedPark.averageWaitTime > 0 && (
+                              <>
+                                <Clock className="text-muted-foreground h-4 w-4" />
+                                <Badge variant="secondary">
+                                  {stats.leastCrowdedPark.averageWaitTime} {tCommon('minutes')}
+                                </Badge>
+                              </>
+                            )}
+                          {stats.leastCrowdedPark.crowdLevel && (
+                            <CrowdLevelBadge
+                              level={stats.leastCrowdedPark.crowdLevel}
+                              className="h-5 px-1.5 text-[10px]"
+                            />
+                          )}
+                        </div>
+                        {stats.leastCrowdedPark.operatingAttractions != null &&
+                          stats.leastCrowdedPark.totalAttractions != null && (
+                            <div className="text-muted-foreground flex items-center gap-1 text-xs">
+                              <TrendingUp className="h-3 w-3" />
+                              <span>
+                                {stats.leastCrowdedPark.operatingAttractions}/
+                                {stats.leastCrowdedPark.totalAttractions} {tCommon('operating')}
+                              </span>
+                            </div>
+                          )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               )}
             </div>
 
@@ -234,7 +320,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     .replace('/attractions/', '/')}
                   className="group block min-w-0"
                 >
-                  <Card className="hover:border-primary/50 relative h-full transition-all hover:shadow-lg">
+                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
                     {/* Favorite Star */}
                     {stats.longestWaitRide.id && (
                       <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
@@ -242,12 +328,9 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                     )}
                     <CardHeader className="pb-2">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-muted-foreground text-sm font-medium">
-                          {t('longestWait')}
-                        </CardTitle>
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
-                      </div>
+                      <CardTitle className="text-muted-foreground text-sm font-medium">
+                        {t('longestWait')}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
@@ -281,7 +364,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     .replace('/attractions/', '/')}
                   className="group block min-w-0"
                 >
-                  <Card className="hover:border-primary/50 relative h-full transition-all hover:shadow-lg">
+                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
                     {/* Favorite Star */}
                     {stats.shortestWaitRide.id && (
                       <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
@@ -289,12 +372,9 @@ export default async function HomePage({ params }: HomePageProps) {
                       </div>
                     )}
                     <CardHeader className="pb-2">
-                      <div className="flex items-center justify-between">
-                        <CardTitle className="text-muted-foreground text-sm font-medium">
-                          {t('shortestWait')}
-                        </CardTitle>
-                        <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
-                      </div>
+                      <CardTitle className="text-muted-foreground text-sm font-medium">
+                        {t('shortestWait')}
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
