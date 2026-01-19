@@ -6,10 +6,12 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { isFavorite, toggleFavorite, type FavoriteType } from '@/lib/utils/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { trackFavoriteAdd, trackFavoriteRemove, trackEvent } from '@/lib/analytics/umami';
 
 interface FavoriteStarProps {
   type: FavoriteType;
   id: string;
+  name?: string; // Optional: Name of the entity for analytics
   className?: string;
   onToggle?: (isFavorite: boolean) => void;
   size?: 'sm' | 'md' | 'lg'; // Size variant
@@ -19,6 +21,7 @@ interface FavoriteStarProps {
 export function FavoriteStar({
   type,
   id,
+  name,
   className,
   onToggle,
   size = 'md',
@@ -51,6 +54,21 @@ export function FavoriteStar({
     const newState = await toggleFavorite(type, id);
     setIsFav(newState);
     onToggle?.(newState);
+
+    // Track event in Umami with optional name
+    if (newState) {
+      trackFavoriteAdd(type, id);
+      // Track additional event with name for analytics
+      if (name) {
+        trackEvent('favorite_item_added', { type, name });
+      }
+    } else {
+      trackFavoriteRemove(type, id);
+      // Track additional event with name for analytics
+      if (name) {
+        trackEvent('favorite_item_removed', { type, name });
+      }
+    }
   };
 
   // Size variants

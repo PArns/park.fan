@@ -346,7 +346,8 @@
       "poor": "Faible",
       "fair": "Moyenne",
       "good": "Bonne",
-      "excellent": "Excellente"
+      "excellent": "Excellente",
+      "insufficient_data": "Données Insuffisantes"
     },
     "otherQueues": "Autres Options de File",
     "returnTime": "Retour",
@@ -358,7 +359,8 @@
       "moderate": "Modérée",
       "high": "Élevée",
       "very_high": "Très Élevée",
-      "extreme": "Extrême"
+      "extreme": "Extrême",
+      "closed": "Fermé"
     },
     "calendarView": {
       "month": "Mois",
@@ -372,6 +374,7 @@
     "queue": {
       "SINGLE_RIDER": "Single Rider",
       "PREMIER_ACCESS": "Premier Access",
+      "RETURN_TIME": "Horaire de Retour",
       "PAID_RETURN_TIME": "Créneau Payant",
       "BOARDING_GROUP": "File Virtuelle",
       "STANDBY": "Standard",

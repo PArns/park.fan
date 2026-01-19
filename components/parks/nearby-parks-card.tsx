@@ -16,6 +16,12 @@ import { getNearbyParks } from '@/lib/api/discovery';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { NearbyResponse, NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
+import {
+  trackNearbyPermissionGranted,
+  trackNearbyPermissionDenied,
+  trackNearbyParksLoaded,
+  trackNearbyInParkDetected,
+} from '@/lib/analytics/umami';
 
 type PermissionState = 'prompt' | 'granted' | 'denied' | 'loading' | 'error';
 
@@ -48,6 +54,24 @@ export function NearbyParksCard() {
 
           setNearbyData(data);
           setPermissionState('granted');
+
+          // Track successful permission grant
+          trackNearbyPermissionGranted();
+
+          // Track loaded data
+          if (data.type === 'nearby_parks') {
+            trackNearbyParksLoaded({
+              count: (data.data as NearbyParksData).parks.length,
+              type: 'nearby_parks',
+            });
+          } else if (data.type === 'in_park') {
+            const parkData = data.data as NearbyAttractionsData;
+            trackNearbyParksLoaded({ count: 1, type: 'in_park' });
+            trackNearbyInParkDetected({
+              parkId: parkData.park.id,
+              parkName: parkData.park.name,
+            });
+          }
         } catch (err) {
           console.error('[NearbyParks] Failed to fetch nearby parks:', err);
           setPermissionState('error');
@@ -65,6 +89,9 @@ export function NearbyParksCard() {
           });
         }
         setPermissionState('denied');
+
+        // Track permission denial
+        trackNearbyPermissionDenied();
       },
       {
         enableHighAccuracy: false,

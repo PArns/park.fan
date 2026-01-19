@@ -168,7 +168,7 @@ export function AttractionCard({
         {/* Favorite Star */}
         {attraction.id && (
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-            <FavoriteStar type="attraction" id={attraction.id} />
+            <FavoriteStar type="attraction" id={attraction.id} name={attraction.name} />
           </div>
         )}
         <CardContent className="relative z-10 flex h-full flex-col p-4">

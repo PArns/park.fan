@@ -346,7 +346,8 @@
       "poor": "Poor",
       "fair": "Fair",
       "good": "Good",
-      "excellent": "Excellent"
+      "excellent": "Excellent",
+      "insufficient_data": "Insufficient Data"
     },
     "otherQueues": "Other Queue Options",
     "returnTime": "Return",

@@ -598,17 +598,17 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Umami Analytics</h3>
               <p className="mb-4">
-                Wir nutzen den Webanalysedienst Umami, um die Nutzung unserer Website zu
-                analysieren und regelmäßig zu verbessern. Über die gewonnenen Statistiken können
-                wir unser Angebot verbessern und für Sie als Nutzer interessanter ausgestalten.
+                Wir nutzen den Webanalysedienst Umami, um die Nutzung unserer Website zu analysieren
+                und regelmäßig zu verbessern. Über die gewonnenen Statistiken können wir unser
+                Angebot verbessern und für Sie als Nutzer interessanter ausgestalten.
               </p>
               <p className="mb-4">
                 Umami ist ein datenschutzfreundlicher Webanalysedienst, der ohne Cookies arbeitet
-                und alle erfassten Daten vollständig anonymisiert. Es werden keine
-                personenbezogenen Daten gespeichert oder verarbeitet, die eine Identifikation
-                einzelner Nutzer ermöglichen würden. Die erfassten Daten umfassen lediglich
-                technische Informationen wie Browsertyp, Betriebssystem, besuchte Seiten und
-                Verweisquelle, jedoch werden IP-Adressen nicht gespeichert.
+                und alle erfassten Daten vollständig anonymisiert. Es werden keine personenbezogenen
+                Daten gespeichert oder verarbeitet, die eine Identifikation einzelner Nutzer
+                ermöglichen würden. Die erfassten Daten umfassen lediglich technische Informationen
+                wie Browsertyp, Betriebssystem, besuchte Seiten und Verweisquelle, jedoch werden
+                IP-Adressen nicht gespeichert.
               </p>
               <p className="mb-4">
                 Der Dienst wird in einem Rechenzentrum innerhalb der Europäischen Union gehostet,
@@ -1116,8 +1116,8 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Umami Analytics</h3>
               <p className="mb-4">
                 We use the web analytics service Umami to analyze the use of our website and
-                regularly improve it. The statistics we obtain enable us to improve our offering
-                and make it more interesting for you as a user.
+                regularly improve it. The statistics we obtain enable us to improve our offering and
+                make it more interesting for you as a user.
               </p>
               <p className="mb-4">
                 Umami is a privacy-friendly web analytics service that works without cookies and

@@ -346,7 +346,8 @@
       "poor": "Slecht",
       "fair": "Redelijk",
       "good": "Goed",
-      "excellent": "Uitstekend"
+      "excellent": "Uitstekend",
+      "insufficient_data": "Onvoldoende Gegevens"
     },
     "otherQueues": "Andere Wachtrij Opties",
     "returnTime": "Terug",
@@ -358,7 +359,8 @@
       "moderate": "Gemiddeld",
       "high": "Hoog",
       "very_high": "Zeer Hoog",
-      "extreme": "Extreem"
+      "extreme": "Extreem",
+      "closed": "Gesloten"
     },
     "calendarView": {
       "month": "Maand",
@@ -372,6 +374,7 @@
     "queue": {
       "SINGLE_RIDER": "Single Rider",
       "PREMIER_ACCESS": "Premier Access",
+      "RETURN_TIME": "Terugkeertijd",
       "PAID_RETURN_TIME": "Betaalde Tijdslot",
       "BOARDING_GROUP": "Virtuele Wachtrij",
       "STANDBY": "Standaard",

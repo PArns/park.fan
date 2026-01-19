@@ -11,6 +11,7 @@ import {
 import { routing, type Locale } from '@/i18n/routing';
 import { localeNames } from '@/i18n/config';
 import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES } from '@/components/common/icons/flags';
+import { trackLanguageSwitched } from '@/lib/analytics/umami';
 
 const LocaleFlag = ({ locale }: { locale: Locale }) => {
   switch (locale) {
@@ -33,6 +34,9 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: Locale) => {
+    // Track language switch
+    trackLanguageSwitched(locale, newLocale);
+
     router.replace(pathname, { locale: newLocale });
   };
 

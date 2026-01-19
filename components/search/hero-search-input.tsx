@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
+import { trackEvent } from '@/lib/analytics/umami';
 
 interface HeroSearchInputProps {
   placeholder: string;
@@ -152,8 +153,18 @@ export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchI
   // Use the typed placeholder, or fallback to default if something goes wrong (though hook ensures string)
   const displayPlaceholder = typedPlaceholder || defaultPlaceholder;
 
+  // Track hero search clicks
+  const handleClick = () => {
+    trackEvent('hero_search_clicked', {
+      placeholderShown: typedPlaceholder || 'default',
+    });
+  };
+
   return (
-    <div className="mx-auto w-full max-w-2xl transform transition-all hover:scale-[1.01]">
+    <div
+      className="mx-auto w-full max-w-2xl transform transition-all hover:scale-[1.01]"
+      onClick={handleClick}
+    >
       <div className="relative">
         <div className="bg-background/80 shadow-primary/5 absolute -inset-0.5 rounded-xl opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
         <div className="relative">

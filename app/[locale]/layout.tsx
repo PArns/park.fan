@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { routing, type Locale } from '@/i18n/routing';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
@@ -46,6 +47,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
+      {/* Umami Analytics - Privacy-friendly, cookie-free tracking */}
+      {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
+        <Script
+          defer
+          src={process.env.NEXT_PUBLIC_UMAMI_URL}
+          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+          data-domains="park.fan"
+          data-do-not-track="true"
+        />
+      )}
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <OrganizationStructuredData />
         <Providers>

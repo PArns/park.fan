@@ -346,7 +346,8 @@
       "poor": "Schlecht",
       "fair": "Mittel",
       "good": "Gut",
-      "excellent": "Exzellent"
+      "excellent": "Exzellent",
+      "insufficient_data": "Unzureichende Daten"
     },
     "otherQueues": "Weitere Warteschlangen",
     "returnTime": "Rückkehr",
@@ -358,7 +359,8 @@
       "moderate": "Moderat",
       "high": "Hoch",
       "very_high": "Sehr hoch",
-      "extreme": "Extrem"
+      "extreme": "Extrem",
+      "closed": "Geschlossen"
     },
     "calendarView": {
       "month": "Monat",

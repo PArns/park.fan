@@ -16,6 +16,11 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
+import {
+  trackSearchOpened,
+  trackSearchResultClicked,
+  trackSearchViewAll,
+} from '@/lib/analytics/umami';
 
 const typeIcons = {
   park: TreePalm,
@@ -60,13 +65,18 @@ export function SearchCommand({
     const down = (e: KeyboardEvent) => {
       if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
+        const wasOpen = open;
         setOpen((open) => !open);
+        // Track search opened via keyboard shortcut
+        if (!wasOpen) {
+          trackSearchOpened('keyboard');
+        }
       }
     };
 
     document.addEventListener('keydown', down);
     return () => document.removeEventListener('keydown', down);
-  }, [isGlobal]);
+  }, [isGlobal, open]);
 
   // Auto-focus on type
   useEffect(() => {
@@ -88,8 +98,13 @@ export function SearchCommand({
 
       // Only trigger on single character keys (letters, numbers, etc.)
       if (e.key.length === 1) {
+        const wasOpen = open;
         setOpen(true);
         setQuery((prev) => (open ? prev : e.key));
+        // Track search opened via auto-focus
+        if (!wasOpen) {
+          trackSearchOpened('keyboard');
+        }
       }
     };
 
@@ -130,9 +145,15 @@ export function SearchCommand({
   }, [query, performSearch]);
 
   // Handle selecting a result
-  const handleSelect = (result: SearchResultItem) => {
+  const handleSelect = (result: SearchResultItem, position?: number) => {
     setOpen(false);
     setQuery('');
+
+    // Track the result click (NOT the search query content)
+    trackSearchResultClicked({
+      resultType: result.type,
+      position,
+    });
 
     if (result.url) {
       // Convert all URLs to /parks/ structure
@@ -169,14 +190,14 @@ export function SearchCommand({
   };
 
   // Render a search result item
-  const renderResultItem = (result: SearchResultItem) => {
+  const renderResultItem = (result: SearchResultItem, position?: number) => {
     const Icon = typeIcons[result.type];
 
     return (
       <CommandItem
         key={result.id}
         value={`${result.name} ${result.type}`}
-        onSelect={() => handleSelect(result)}
+        onSelect={() => handleSelect(result, position)}
         className="flex items-start gap-3 py-4 md:py-3"
       >
         <div className="bg-primary/10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
@@ -269,7 +290,10 @@ export function SearchCommand({
         <Button
           variant="outline"
           className="relative h-10 w-10 p-0 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            setOpen(true);
+            trackSearchOpened('header');
+          }}
           aria-label={t('search')}
         >
           <Search className="h-4 w-4 md:mr-2" />
@@ -283,7 +307,13 @@ export function SearchCommand({
       )}
 
       {trigger === 'input' && (
-        <div className="group relative w-full cursor-pointer" onClick={() => setOpen(true)}>
+        <div
+          className="group relative w-full cursor-pointer"
+          onClick={() => {
+            setOpen(true);
+            trackSearchOpened('header');
+          }}
+        >
           <Search
             className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
               size === 'sm' ? 'left-3 h-4 w-4' : 'left-4 h-5 w-5'
@@ -324,7 +354,15 @@ export function SearchCommand({
       )}
 
       {trigger === 'hero' && (
-        <Button variant="outline" size="lg" className="gap-2" onClick={() => setOpen(true)}>
+        <Button
+          variant="outline"
+          size="lg"
+          className="gap-2"
+          onClick={() => {
+            setOpen(true);
+            trackSearchOpened('hero');
+          }}
+        >
           <Search className="h-4 w-4" />
           {label || t('search')}
         </Button>
@@ -360,7 +398,7 @@ export function SearchCommand({
                     key={type}
                     heading={tSearch(`headings.${type}`, { count: items.length })}
                   >
-                    {items.slice(0, 5).map(renderResultItem)}
+                    {items.slice(0, 5).map((item, index) => renderResultItem(item, index))}
                   </CommandGroup>
                 );
               })}
@@ -372,6 +410,7 @@ export function SearchCommand({
                   className="w-full justify-center text-sm"
                   onClick={() => {
                     setOpen(false);
+                    trackSearchViewAll(); // Track viewing all results
                     router.push(`/search?q=${encodeURIComponent(query)}`);
                   }}
                 >
