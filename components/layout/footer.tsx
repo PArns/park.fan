@@ -327,7 +327,7 @@ export async function Footer({ locale }: FooterProps) {
                 className="hover:text-foreground transition-colors"
                 aria-label="Visit Arns.dev website (opens in new tab)"
               >
-                {t('poweredBy')} Arns.dev
+                <span className="hidden md:inline">{t('poweredBy')}</span> Arns.dev
               </a>
             </p>
           </div>

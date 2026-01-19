@@ -596,6 +596,31 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                 Sinne des TDDDG umfasst. Die Einwilligung ist jederzeit widerrufbar.
               </p>
 
+              <h3 className="mt-8 mb-4 text-2xl font-semibold">Umami Analytics</h3>
+              <p className="mb-4">
+                Wir nutzen den Webanalysedienst Umami, um die Nutzung unserer Website zu
+                analysieren und regelmäßig zu verbessern. Über die gewonnenen Statistiken können
+                wir unser Angebot verbessern und für Sie als Nutzer interessanter ausgestalten.
+              </p>
+              <p className="mb-4">
+                Umami ist ein datenschutzfreundlicher Webanalysedienst, der ohne Cookies arbeitet
+                und alle erfassten Daten vollständig anonymisiert. Es werden keine
+                personenbezogenen Daten gespeichert oder verarbeitet, die eine Identifikation
+                einzelner Nutzer ermöglichen würden. Die erfassten Daten umfassen lediglich
+                technische Informationen wie Browsertyp, Betriebssystem, besuchte Seiten und
+                Verweisquelle, jedoch werden IP-Adressen nicht gespeichert.
+              </p>
+              <p className="mb-4">
+                Der Dienst wird in einem Rechenzentrum innerhalb der Europäischen Union gehostet,
+                sodass Ihre Daten die EU nicht verlassen. Eine Weitergabe an Dritte erfolgt nicht.
+              </p>
+              <p className="mb-4">
+                Die Rechtsgrundlage für die Nutzung von Umami ist Art. 6 Abs. 1 lit. f DSGVO. Unser
+                berechtigtes Interesse liegt in der Optimierung und dem wirtschaftlichen Betrieb
+                unserer Website. Da Umami ohne Cookies arbeitet und keine personenbezogenen Daten
+                erhebt, ist keine Einwilligung gemäß TDDDG erforderlich.
+              </p>
+
               <p className="text-muted-foreground mt-8 text-sm">
                 Quelle:{' '}
                 <a
@@ -1086,6 +1111,30 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                 insofar as the consent includes the storage of cookies or access to information on
                 the user's device (e.g., device fingerprinting) within the meaning of the TTDSG.
                 Consent can be revoked at any time.
+              </p>
+
+              <h3 className="mt-8 mb-4 text-2xl font-semibold">Umami Analytics</h3>
+              <p className="mb-4">
+                We use the web analytics service Umami to analyze the use of our website and
+                regularly improve it. The statistics we obtain enable us to improve our offering
+                and make it more interesting for you as a user.
+              </p>
+              <p className="mb-4">
+                Umami is a privacy-friendly web analytics service that works without cookies and
+                completely anonymizes all collected data. No personal data is stored or processed
+                that would enable the identification of individual users. The collected data
+                includes only technical information such as browser type, operating system, pages
+                visited, and referral source, but IP addresses are not stored.
+              </p>
+              <p className="mb-4">
+                The service is hosted in a data center within the European Union, so your data does
+                not leave the EU. No data is shared with third parties.
+              </p>
+              <p className="mb-4">
+                The legal basis for the use of Umami is Art. 6 para. 1 lit. f GDPR. Our legitimate
+                interest lies in the optimization and economical operation of our website. Since
+                Umami works without cookies and does not collect personal data, no consent pursuant
+                to TTDSG is required.
               </p>
 
               <p className="text-muted-foreground mt-8 text-sm">
