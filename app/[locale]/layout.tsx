@@ -1,8 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { routing, type Locale } from '@/i18n/routing';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
@@ -58,8 +56,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <Footer locale={locale} />
             </div>
           </NextIntlClientProvider>
-          <Analytics />
-          <SpeedInsights />
         </Providers>
       </body>
     </html>
