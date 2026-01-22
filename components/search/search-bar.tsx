@@ -15,6 +15,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import {
   trackSearchOpened,
@@ -156,18 +157,8 @@ export function SearchCommand({
     });
 
     if (result.url) {
-      // Convert all URLs to /parks/ structure
-      const cleanUrl = result.url
-        .replace(/^\/v1\/discovery\//, '/parks/') // Location results: /v1/discovery/ -> /parks/
-        .replace(/^\/discovery\//, '/parks/') // Location results: /discovery/ -> /parks/
-        .replace(/^\/v1\/parks\//, '/parks/')
-        .replace(/^\/v1\/attractions\//, '/parks/')
-        .replace(/^\/v1\/shows\//, '/parks/')
-        .replace(/^\/v1\/restaurants\//, '/parks/')
-        .replace(/\/attractions\//, '/') // Remove /attractions/ segment
-        .replace(/\/shows\//, '/')
-        .replace(/\/restaurants\//, '/');
-
+      // Use centralized utility for URL conversion
+      const cleanUrl = convertApiUrlToFrontendUrl(result.url);
       router.push(cleanUrl as '/parks/europe');
     } else if (result.type === 'park' && result.continent && result.country) {
       // Build URL from available data
@@ -177,7 +168,7 @@ export function SearchCommand({
       );
     } else if (result.parentPark && result.parentPark.url) {
       // Fallback for attractions/shows/restaurants without explicit URL
-      const parkUrl = result.parentPark.url.replace(/^\/v1\/parks\//, '/parks/');
+      const parkUrl = convertApiUrlToFrontendUrl(result.parentPark.url);
 
       if (result.type === 'restaurant') {
         router.push(`${parkUrl}#restaurants` as '/parks/europe');

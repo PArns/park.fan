@@ -14,6 +14,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { useTranslations, useLocale } from 'next-intl';
 import type { CrowdLevel } from '@/lib/api/types';
 
@@ -230,7 +231,7 @@ export function ParkCardNearby({
   );
 
   return (
-    <Link href={url.replace('/v1/parks/', '/parks/')} className="group h-full">
+    <Link href={convertApiUrlToFrontendUrl(url)} className="group h-full">
       <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
         {/* Background Image */}
         {backgroundImage && (

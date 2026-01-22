@@ -18,6 +18,7 @@ import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { StatsCard } from '@/components/common/stats-card';
 import { HERO_IMAGES } from '@/lib/hero-images';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -192,7 +193,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Most Crowded Park */}
               {stats.mostCrowdedPark && (
                 <Link
-                  href={stats.mostCrowdedPark.url.replace('/v1/parks/', '/parks/')}
+                  href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url)}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -252,7 +253,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Least Crowded Park */}
               {stats.leastCrowdedPark && (
                 <Link
-                  href={stats.leastCrowdedPark.url.replace('/v1/parks/', '/parks/')}
+                  href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url)}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -315,9 +316,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Longest Wait Ride */}
               {stats.longestWaitRide && (
                 <Link
-                  href={stats.longestWaitRide.url
-                    .replace('/v1/parks/', '/parks/')
-                    .replace('/attractions/', '/')}
+                  href={convertApiUrlToFrontendUrl(stats.longestWaitRide.url)}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -359,9 +358,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Shortest Wait Ride */}
               {stats.shortestWaitRide && (
                 <Link
-                  href={stats.shortestWaitRide.url
-                    .replace('/v1/parks/', '/parks/')
-                    .replace('/attractions/', '/')}
+                  href={convertApiUrlToFrontendUrl(stats.shortestWaitRide.url)}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">

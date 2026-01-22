@@ -14,6 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { getNearbyParks } from '@/lib/api/discovery';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { NearbyResponse, NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 import {
@@ -230,7 +231,7 @@ export function NearbyParksCard() {
     // Extract park URL from first attraction if available
     const parkMapUrl =
       attractions.length > 0
-        ? `${attractions[0].url.split('/attractions/')[0].replace('/v1/parks/', '/parks/')}#map`
+        ? `${convertApiUrlToFrontendUrl(attractions[0].url.split('/attractions/')[0])}#map`
         : null;
 
     return (
@@ -336,7 +337,7 @@ export function NearbyParksCard() {
                   {attractions.map((attraction) => (
                     <li key={attraction.id}>
                       <Link
-                        href={attraction.url.replace('/v1/parks/', '/parks/')}
+                        href={convertApiUrlToFrontendUrl(attraction.url)}
                         className="group block"
                       >
                         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">

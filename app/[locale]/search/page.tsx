@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { LocalTime } from '@/components/ui/local-time';
 import { search } from '@/lib/api/search';
 import { PageContainer } from '@/components/common/page-container';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { Metadata } from 'next';
 import type { SearchResultItem } from '@/lib/api/types';
 
@@ -94,17 +95,8 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
   // Build the link URL
   let href = '/';
   if (result.url) {
-    // Convert all URLs to /parks/ structure
-    href = result.url
-      .replace(/^\/v1\/discovery\//, '/parks/') // Location results: /v1/discovery/ -> /parks/
-      .replace(/^\/discovery\//, '/parks/') // Location results: /discovery/ -> /parks/
-      .replace(/^\/v1\/parks\//, '/parks/')
-      .replace(/^\/v1\/attractions\//, '/parks/')
-      .replace(/^\/v1\/shows\//, '/parks/')
-      .replace(/^\/v1\/restaurants\//, '/parks/')
-      .replace(/\/attractions\//, '/')
-      .replace(/\/shows\//, '/')
-      .replace(/\/restaurants\//, '/');
+    // Use centralized utility for URL conversion
+    href = convertApiUrlToFrontendUrl(result.url);
   } else if (result.type === 'park') {
     // Fallback URL construction for parks
     if (result.slug && result.city && result.country) {
@@ -114,8 +106,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
     }
   } else if (result.parentPark && result.parentPark.url) {
     // Fallback for attractions/shows/restaurants without explicit URL
-    // Construct from parent park URL + slug or hash
-    const parkUrl = result.parentPark.url.replace(/^\/v1\/parks\//, '/parks/');
+    const parkUrl = convertApiUrlToFrontendUrl(result.parentPark.url);
 
     if (result.type === 'restaurant') {
       href = `${parkUrl}#restaurants`;

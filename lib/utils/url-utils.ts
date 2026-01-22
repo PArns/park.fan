@@ -1,16 +1,26 @@
 /**
  * URL conversion utilities
  * Converts backend API URLs to frontend routes
+ *
+ * IMPORTANT: Always use these utilities when working with URLs from the API.
+ * Never manually construct URLs with string manipulation like `.replace('/v1/parks/', '/parks/')`.
  */
 
 /**
  * Convert backend API URL to frontend route
+ *
+ * This is the primary utility for converting API URLs to frontend routes.
+ * Use this whenever you receive a URL from the API response.
  *
  * Examples:
  * - /v1/parks/europe/germany/bruhl/phantasialand → /parks/europe/germany/bruhl/phantasialand
  * - /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron → /parks/europe/germany/bruhl/phantasialand/taron
  * - /v1/shows/... → /parks/...#shows
  * - /v1/restaurants/... → /parks/...#restaurants
+ * - /v1/discovery/... → /parks/...
+ *
+ * @param apiUrl - The API URL to convert (e.g., from attraction.url, park.url, etc.)
+ * @returns The converted frontend URL, or '#' if conversion fails
  */
 export function convertApiUrlToFrontendUrl(apiUrl: string): string {
   if (!apiUrl) return '#';

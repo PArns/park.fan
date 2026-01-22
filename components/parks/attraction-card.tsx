@@ -21,6 +21,7 @@ import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { WaitTimeSparkline } from './wait-time-sparkline';
 
@@ -81,24 +82,10 @@ function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string 
 function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
   // Check if attraction has url property (now available in both ParkAttraction and FavoriteAttraction)
   if ('url' in attraction && attraction.url) {
-    // Convert API URL to frontend URL
-    // Backend returns: /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron
-    // Frontend needs: /parks/europe/germany/bruhl/phantasialand/taron
-    if (attraction.url.startsWith('/v1/parks/')) {
-      // Remove /v1 prefix and /attractions/ segment
-      const url = attraction.url.replace('/v1/parks/', '/parks/').replace('/attractions/', '/');
-      // Ensure URL is complete (has all segments)
-      if (url.startsWith('/parks/') && url.split('/').length >= 6) {
-        return url;
-      }
-    }
-    // If it's already a frontend URL, validate and use it
-    if (attraction.url.startsWith('/parks/')) {
-      // Ensure it's a complete URL (has all segments: continent/country/city/park/attraction)
-      const segments = attraction.url.split('/').filter(Boolean);
-      if (segments.length >= 6 && segments[0] === 'parks') {
-        return attraction.url;
-      }
+    // Use centralized utility for URL conversion
+    const convertedUrl = convertApiUrlToFrontendUrl(attraction.url);
+    if (convertedUrl && convertedUrl !== '#') {
+      return convertedUrl;
     }
   }
 
