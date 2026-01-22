@@ -359,7 +359,8 @@
       "moderate": "Moderate",
       "high": "High",
       "very_high": "Very High",
-      "extreme": "Extreme"
+      "extreme": "Extreme",
+      "closed": "Closed"
     },
     "calendarView": {
       "month": "Month",
@@ -374,6 +375,8 @@
       "SINGLE_RIDER": "Single Rider",
       "PREMIER_ACCESS": "Premier Access",
       "PAID_RETURN_TIME": "Paid Return Time",
+      "RETURN_TIME": "Return Time",
+      "PAID_STANDBY": "Paid Standby",
       "BOARDING_GROUP": "Virtual Queue",
       "STANDBY": "Standby",
       "status": {

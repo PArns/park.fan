@@ -376,6 +376,7 @@
       "PREMIER_ACCESS": "Premier Access",
       "RETURN_TIME": "Horario de Retorno",
       "PAID_RETURN_TIME": "Tiempo de Retorno Pagado",
+      "PAID_STANDBY": "Cola Pagada",
       "BOARDING_GROUP": "Cola Virtual",
       "STANDBY": "Estándar",
       "status": {

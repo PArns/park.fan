@@ -376,6 +376,7 @@
       "PREMIER_ACCESS": "Premier Access",
       "RETURN_TIME": "Horaire de Retour",
       "PAID_RETURN_TIME": "Créneau Payant",
+      "PAID_STANDBY": "File Payante",
       "BOARDING_GROUP": "File Virtuelle",
       "STANDBY": "Standard",
       "status": {

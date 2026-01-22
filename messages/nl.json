@@ -376,6 +376,7 @@
       "PREMIER_ACCESS": "Premier Access",
       "RETURN_TIME": "Terugkeertijd",
       "PAID_RETURN_TIME": "Betaalde Tijdslot",
+      "PAID_STANDBY": "Betaalde Wachtrij",
       "BOARDING_GROUP": "Virtuele Wachtrij",
       "STANDBY": "Standaard",
       "status": {

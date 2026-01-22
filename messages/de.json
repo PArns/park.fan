@@ -375,6 +375,8 @@
       "SINGLE_RIDER": "Single Rider",
       "PREMIER_ACCESS": "Premier Access",
       "PAID_RETURN_TIME": "Kostenpflichtig",
+      "RETURN_TIME": "Rückkehrzeit",
+      "PAID_STANDBY": "Bezahlte Warteschlange",
       "BOARDING_GROUP": "Virtuelle Warteschlange",
       "STANDBY": "Regulär",
       "status": {
