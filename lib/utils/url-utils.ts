@@ -115,3 +115,115 @@ export function buildAttractionUrl(parkUrl: string, attractionSlug: string): str
   const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
   return `${cleanParkUrl}/${attractionSlug}`;
 }
+
+// ============================================================================
+// Robust Geo Route Builders
+// ============================================================================
+
+/**
+ * Geographic data required to build park URLs
+ */
+export interface ParkGeoData {
+  continent?: string | null;
+  country?: string | null;
+  city?: string | null;
+  slug: string;
+  url?: string | null; // Fallback if geo data is incomplete
+}
+
+/**
+ * Geographic data required to build attraction URLs
+ */
+export interface AttractionGeoData {
+  slug: string;
+  url?: string | null;
+  park?: ParkGeoData;
+}
+
+/**
+ * Build a park URL from geographic data
+ *
+ * This is the PREFERRED method for building park URLs as it:
+ * 1. Builds clean URLs from geographic data (most robust)
+ * 2. Falls back to URL conversion if geographic data is incomplete
+ * 3. Returns '#' only if both methods fail
+ *
+ * @param data - Park geographic data
+ * @returns Clean frontend park URL
+ *
+ * @example
+ * ```ts
+ * buildParkUrl({
+ *   continent: 'europe',
+ *   country: 'germany',
+ *   city: 'bruhl',
+ *   slug: 'phantasialand'
+ * })
+ * // Returns: '/parks/europe/germany/bruhl/phantasialand'
+ * ```
+ */
+export function buildParkUrl(data: ParkGeoData): string {
+  // Method 1: Build from geographic data (PREFERRED)
+  if (data.continent && data.country && data.city && data.slug) {
+    return `/parks/${data.continent}/${data.country}/${data.city}/${data.slug}`;
+  }
+
+  // Method 2: Fallback to URL conversion if we have a URL
+  if (data.url) {
+    const converted = convertApiUrlToFrontendUrl(data.url);
+    if (converted !== '#') {
+      return converted;
+    }
+  }
+
+  // Method 3: Failed - return fallback
+  console.warn('[buildParkUrl] Incomplete geographic data and no valid URL:', data);
+  return '#';
+}
+
+/**
+ * Build an attraction URL from geographic data
+ *
+ * This is the PREFERRED method for building attraction URLs as it:
+ * 1. Builds from park geographic data + attraction slug (most robust)
+ * 2. Falls back to URL conversion if geographic data is incomplete
+ * 3. Returns '#' only if both methods fail
+ *
+ * @param data - Attraction geographic data
+ * @returns Clean frontend attraction URL
+ *
+ * @example
+ * ```ts
+ * buildAttractionUrlFromGeo({
+ *   slug: 'taron',
+ *   park: {
+ *     continent: 'europe',
+ *     country: 'germany',
+ *     city: 'bruhl',
+ *     slug: 'phantasialand'
+ *   }
+ * })
+ * // Returns: '/parks/europe/germany/bruhl/phantasialand/taron'
+ * ```
+ */
+export function buildAttractionUrlFromGeo(data: AttractionGeoData): string {
+  // Method 1: Build from park geographic data (PREFERRED)
+  if (data.park) {
+    const parkUrl = buildParkUrl(data.park);
+    if (parkUrl !== '#') {
+      return `${parkUrl}/${data.slug}`;
+    }
+  }
+
+  // Method 2: Fallback to URL conversion if we have a URL
+  if (data.url) {
+    const converted = convertApiUrlToFrontendUrl(data.url);
+    if (converted !== '#') {
+      return converted;
+    }
+  }
+
+  // Method 3: Failed - return fallback
+  console.warn('[buildAttractionUrlFromGeo] Incomplete geographic data and no valid URL:', data);
+  return '#';
+}

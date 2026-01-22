@@ -59,6 +59,7 @@ export interface ParkWithDistance {
   distance: number;
   city: string;
   country: string;
+  continent?: string; // Added for robust URL construction
   status: string;
   totalAttractions: number;
   operatingAttractions: number;

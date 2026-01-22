@@ -415,6 +415,9 @@ export function NearbyParksCard() {
               // Hide items > 1 (index 2+) on mobile if not expanded
               const hiddenClass = !isExpanded && index >= 2 ? 'hidden md:block' : '';
 
+              // Extract continent from URL if available for robust URL building
+              const continent = park.url?.split('/')?.[3]; // /v1/parks/[continent]/...
+
               return (
                 <li key={park.id} className={hiddenClass}>
                   <ParkCardNearby
@@ -423,6 +426,7 @@ export function NearbyParksCard() {
                     slug={park.slug}
                     city={park.city}
                     country={park.country}
+                    continent={continent}
                     distance={park.distance}
                     status={park.status}
                     timezone={park.timezone}

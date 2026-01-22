@@ -14,7 +14,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { buildParkUrl } from '@/lib/utils/url-utils';
 import { useTranslations, useLocale } from 'next-intl';
 import type { CrowdLevel } from '@/lib/api/types';
 
@@ -24,6 +24,7 @@ interface ParkCardNearbyProps {
   slug: string;
   city: string;
   country: string;
+  continent?: string; // For robust URL building
   distance: number;
   status: string;
   timezone: string;
@@ -199,8 +200,10 @@ function getScheduleMessage(
 export function ParkCardNearby({
   id,
   name,
+  slug,
   city,
   country,
+  continent,
   distance,
   status,
   timezone,
@@ -231,7 +234,16 @@ export function ParkCardNearby({
   );
 
   return (
-    <Link href={convertApiUrlToFrontendUrl(url)} className="group h-full">
+    <Link
+      href={buildParkUrl({
+        continent,
+        country,
+        city,
+        slug,
+        url, // Fallback if geo data incomplete
+      })}
+      className="group h-full"
+    >
       <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
         {/* Background Image */}
         {backgroundImage && (
