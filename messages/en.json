@@ -563,19 +563,19 @@
       "titleTemplate": "{park} Crowd Calendar, Wait Times & Best Days to Visit"
     },
     "attraction": {
-      "titleTemplate": "{attraction} Wait Time - {park}",
+      "titleTemplate": "{attraction}: Wait Times, Status & Forecast - {park}",
       "metaDescriptionTemplate": "Current wait times and predictions for {attraction} at {park}. Check live queue data and crowd levels."
     },
     "continent": {
-      "titleTemplate": "Theme Parks in {location}",
+      "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
       "metaDescriptionTemplate": "Explore theme parks in {location} with real-time wait times and crowd predictions."
     },
     "country": {
-      "titleTemplate": "Theme Parks in {location}",
+      "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
       "metaDescriptionTemplate": "Discover theme parks in {location} with live wait times, crowd predictions, and schedules."
     },
     "city": {
-      "titleTemplate": "Theme Parks in {city}, {country}",
+      "titleTemplate": "Theme Parks in {city}, {country}: Wait Times & Hours",
       "metaDescriptionTemplate": "Live wait times and crowd levels for theme parks in {city}. Plan your visit with real-time data."
     },
     "search": {

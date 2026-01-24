@@ -562,20 +562,20 @@
       "titleTemplate": "{park} Calendario de Afluencia, Tiempos de Espera y Mejores Días"
     },
     "attraction": {
-      "titleTemplate": "{attraction} Espera - {park}",
+      "titleTemplate": "{attraction}: Tiempos de Espera, Estado y Previsión - {park}",
       "metaDescriptionTemplate": "Tiempos de espera actuales y predicciones para {attraction} en {park}. Revisa la cola en vivo."
     },
     "continent": {
-      "titleTemplate": "Parques Temáticos en {location}",
-      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera y predicciones."
+      "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
+      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en tiempo real y predicciones de afluencia."
     },
     "country": {
-      "titleTemplate": "Parques Temáticos en {location}",
-      "metaDescriptionTemplate": "Todos los parques en {location} con tiempos de espera en vivo y pronósticos."
+      "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
+      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en vivo, predicciones de afluencia y horarios."
     },
     "city": {
-      "titleTemplate": "Parques Temáticos en {city}, {country}",
-      "metaDescriptionTemplate": "Tiempos de espera y afluencia para parques en {city}. Planifica con datos reales."
+      "titleTemplate": "Parques Temáticos en {city}, {country}: Espera y Horarios",
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y niveles de afluencia para parques temáticos en {city}. Planifica tu visita con datos en tiempo real."
     },
     "search": {
       "titleTemplate": "Búsqueda: {query}",

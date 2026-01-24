@@ -562,19 +562,19 @@
       "titleTemplate": "{park} Druktekalender, Wachttijden & Beste Bezoekdagen"
     },
     "attraction": {
-      "titleTemplate": "{attraction} Wachttijd - {park}",
+      "titleTemplate": "{attraction}: Wachttijden, Status & Verwachting - {park}",
       "metaDescriptionTemplate": "Actuele wachttijden en voorspellingen voor {attraction} in {park}. Check live wachtrij data en drukte."
     },
     "continent": {
-      "titleTemplate": "Pretparken in {location}",
+      "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
       "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen."
     },
     "country": {
-      "titleTemplate": "Pretparken in {location}",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en schema's."
+      "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
+      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden."
     },
     "city": {
-      "titleTemplate": "Pretparken in {city}, {country}",
+      "titleTemplate": "Pretparken in {city}, {country}: Wachttijden & Openingstijden",
       "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Plan je bezoek met realtime data."
     },
     "search": {

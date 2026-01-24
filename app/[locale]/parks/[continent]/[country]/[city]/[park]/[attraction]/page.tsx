@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import {
   Clock,
@@ -36,6 +36,7 @@ import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { findAttractionPageRedirect } from '@/lib/utils/redirect-utils';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -78,7 +79,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       park: park?.name || '',
     }),
     openGraph: {
-      title: attraction.name,
+      title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
       description: t('metaDescriptionTemplate', {
         attraction: attraction.name,
         park: park?.name || '',
@@ -102,7 +103,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     },
     twitter: {
       card: 'summary_large_image',
-      title: attraction.name,
+      title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
       description: t('metaDescriptionTemplate', {
         attraction: attraction.name,
         park: park?.name || '',
@@ -166,6 +167,18 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     : null;
 
   if (!park || !attraction) {
+    // Before returning 404, check if the URL structure is malformed
+    // This handles cases where the city/park/attraction path is shifted
+    const redirectUrl = await findAttractionPageRedirect(
+      continent,
+      country,
+      city,
+      parkSlug,
+      attractionSlug
+    );
+    if (redirectUrl) {
+      redirect(`/${locale}${redirectUrl}`);
+    }
     notFound();
   }
 

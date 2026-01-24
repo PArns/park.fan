@@ -1,11 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import type { Metadata } from 'next';
 
 interface CityPageProps {
@@ -89,6 +90,13 @@ export default async function CityPage({ params }: CityPageProps) {
   const city = response.data.find((c) => c.slug === citySlug);
 
   if (!city || city.parks.length === 0) {
+    // Before returning 404, check if the "city" slug is actually a park
+    // This handles malformed URLs like /parks/europe/germany/phantasialand
+    // which should be /parks/europe/germany/bruhl/phantasialand
+    const redirectUrl = await findCityPageRedirect(continent, country, citySlug);
+    if (redirectUrl) {
+      redirect(`/${locale}${redirectUrl}`);
+    }
     notFound();
   }
 

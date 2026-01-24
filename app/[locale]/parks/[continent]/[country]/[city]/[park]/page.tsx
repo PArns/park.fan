@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -28,6 +28,7 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 
 interface ParkPageProps {
   params: Promise<{
@@ -57,7 +58,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     title: t('titleTemplate', { park: park.name }),
     description: t('metaDescriptionTemplate', { park: park.name }),
     openGraph: {
-      title: park.name,
+      title: t('titleTemplate', { park: park.name }),
       description: t('metaDescriptionTemplate', { park: park.name }),
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
@@ -75,7 +76,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     },
     twitter: {
       card: 'summary_large_image',
-      title: park.name,
+      title: t('titleTemplate', { park: park.name }),
       description: t('metaDescriptionTemplate', { park: park.name }),
       images: [ogImageUrl],
     },
@@ -131,6 +132,13 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
   if (!park) {
+    // Before returning 404, check if the "city" slug is actually a park
+    // This handles malformed URLs like /parks/europe/netherlands/toverland/some-attraction
+    // where "toverland" is actually the park and "some-attraction" might be an attraction
+    const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
+    if (redirectUrl) {
+      redirect(`/${locale}${redirectUrl}`);
+    }
     notFound();
   }
 

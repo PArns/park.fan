@@ -562,20 +562,20 @@
       "titleTemplate": "{park} Calendrier d'Affluence, Temps d'Attente et Meilleurs Jours"
     },
     "attraction": {
-      "titleTemplate": "{attraction} Attente - {park}",
+      "titleTemplate": "{attraction} : Temps d'attente, Statut & Prévisions - {park}",
       "metaDescriptionTemplate": "Temps d'attente actuels et prédictions pour {attraction} à {park}. Vérifiez la file en direct."
     },
     "continent": {
-      "titleTemplate": "Parcs d'Attractions en {location}",
-      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente et prédictions."
+      "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
+      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en temps réel et prévisions d'affluence."
     },
     "country": {
-      "titleTemplate": "Parcs d'Attractions en {location}",
-      "metaDescriptionTemplate": "Tous les parcs en {location} avec temps d'attente en direct et prévisions."
+      "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
+      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en direct, prévisions d'affluence et horaires d'ouverture."
     },
     "city": {
-      "titleTemplate": "Parcs d'Attractions à {city}, {country}",
-      "metaDescriptionTemplate": "Temps d'attente et affluence pour les parcs à {city}. Planifiez avec des données réelles."
+      "titleTemplate": "Parcs d'Attractions à {city}, {country} : Attente & Horaires",
+      "metaDescriptionTemplate": "Temps d'attente en direct et affluence pour les parcs à {city}. Planifiez votre visite avec des données en temps réel."
     },
     "search": {
       "titleTemplate": "Recherche: {query}",
