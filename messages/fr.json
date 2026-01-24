@@ -550,6 +550,11 @@
       "syncHolidays": "Sync Jours Fériés"
     }
   },
+  "languageBanner": {
+    "message": "Ce site est également disponible en {language}",
+    "switchButton": "Passer au {language}",
+    "dismiss": "Fermer"
+  },
   "seo": {
     "home": {
       "title": "Temps d'Attente, Prédictions & Navigation",

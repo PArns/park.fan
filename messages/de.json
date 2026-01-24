@@ -550,6 +550,11 @@
       "syncHolidays": "Feiertage synchronisieren"
     }
   },
+  "languageBanner": {
+    "message": "Diese Seite gibt's auch auf {language}",
+    "switchButton": "Zu {language} wechseln",
+    "dismiss": "Schließen"
+  },
   "seo": {
     "home": {
       "title": "Freizeitpark Wartezeiten, Prognosen & Navigation",

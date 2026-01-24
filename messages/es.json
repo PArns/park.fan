@@ -550,6 +550,11 @@
       "syncHolidays": "Sync Festivos"
     }
   },
+  "languageBanner": {
+    "message": "Este sitio también está disponible en {language}",
+    "switchButton": "Cambiar a {language}",
+    "dismiss": "Cerrar"
+  },
   "seo": {
     "home": {
       "title": "Tiempos de Espera, Predicciones y Navegación",

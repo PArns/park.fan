@@ -550,6 +550,11 @@
       "syncHolidays": "Feestdagen Syncen"
     }
   },
+  "languageBanner": {
+    "message": "Deze site is ook beschikbaar in {language}",
+    "switchButton": "Schakel naar {language}",
+    "dismiss": "Sluiten"
+  },
   "seo": {
     "home": {
       "title": "Pretpark Wachttijden, Voorspellingen & Navigatie",

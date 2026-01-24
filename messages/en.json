@@ -551,6 +551,11 @@
     }
   },
 
+  "languageBanner": {
+    "message": "This site is also available in {language}",
+    "switchButton": "Switch to {language}",
+    "dismiss": "Dismiss"
+  },
   "seo": {
     "home": {
       "title": "Theme Park Wait Times, Predictions & Navigation",
