@@ -200,10 +200,8 @@ function getScheduleMessage(
 export function ParkCardNearby({
   id,
   name,
-  slug,
   city,
   country,
-  continent,
   distance,
   status,
   timezone,
