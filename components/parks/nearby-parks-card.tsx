@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -12,10 +12,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { getNearbyParks } from '@/lib/api/discovery';
+import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import type { NearbyResponse, NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
+import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 import {
   trackNearbyPermissionGranted,
@@ -24,111 +25,65 @@ import {
   trackNearbyInParkDetected,
 } from '@/lib/analytics/umami';
 
-type PermissionState = 'prompt' | 'granted' | 'denied' | 'loading' | 'error';
-
 export function NearbyParksCard() {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  // const tGeo = useTranslations('geo');
-  // const locale = useLocale();
 
-  const [permissionState, setPermissionState] = useState<PermissionState>('prompt');
-  const [nearbyData, setNearbyData] = useState<NearbyResponse | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const requestLocation = useCallback(() => {
-    setPermissionState('loading');
+  // Use centralized geolocation context
+  const {
+    position,
+    loading: geoLoading,
+    error: geoError,
+    permissionDenied,
+    refresh,
+    setIsInPark,
+  } = useGeolocation();
 
-    if (!navigator.geolocation) {
-      setPermissionState('error');
-      return;
-    }
+  // Use React Query hook for nearby parks data
+  const { data: nearbyData, isLoading: dataLoading, error: dataError } = useNearbyParks();
 
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        try {
-          const { latitude, longitude } = position.coords;
-          console.log('[NearbyParks] Fetching data for:', { latitude, longitude });
-
-          const data = await getNearbyParks(latitude, longitude);
-          console.log('[NearbyParks] Data received:', data);
-
-          setNearbyData(data);
-          setPermissionState('granted');
-
-          // Track successful permission grant
-          trackNearbyPermissionGranted();
-
-          // Track loaded data
-          if (data.type === 'nearby_parks') {
-            trackNearbyParksLoaded({
-              count: (data.data as NearbyParksData).parks.length,
-              type: 'nearby_parks',
-            });
-          } else if (data.type === 'in_park') {
-            const parkData = data.data as NearbyAttractionsData;
-            trackNearbyParksLoaded({ count: 1, type: 'in_park' });
-            trackNearbyInParkDetected({
-              parkId: parkData.park.id,
-              parkName: parkData.park.name,
-            });
-          }
-        } catch (err) {
-          console.error('[NearbyParks] Failed to fetch nearby parks:', err);
-          setPermissionState('error');
-        }
-      },
-      (err) => {
-        // Only log if it's not a permission denied error (code 1)
-        // code 1: PERMISSION_DENIED
-        // code 2: POSITION_UNAVAILABLE
-        // code 3: TIMEOUT
-        if (err && err.code !== 1) {
-          console.warn('Geolocation error:', {
-            code: err.code,
-            message: err.message,
-          });
-        }
-        setPermissionState('denied');
-
-        // Track permission denial
-        trackNearbyPermissionDenied();
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 0, // Always get fresh location for periodic updates
-      }
-    );
-  }, []);
-
-  // Automatically request location on mount (GDPR compliant - no cookie storage)
+  // Track analytics when data changes
   useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      // Use setTimeout to avoid synchronous state update in effect
-      const timer = setTimeout(() => {
-        requestLocation();
-      }, 0);
-      return () => clearTimeout(timer);
-    }
-  }, [requestLocation]);
+    if (!nearbyData) return;
 
-  // Auto-reload nearby parks every 5 minutes
+    if (nearbyData.type === 'nearby_parks') {
+      trackNearbyParksLoaded({
+        count: (nearbyData.data as NearbyParksData).parks.length,
+        type: 'nearby_parks',
+      });
+      // User is not in a park, use 5-minute refresh interval
+      setIsInPark(false);
+    } else if (nearbyData.type === 'in_park') {
+      const parkData = nearbyData.data as NearbyAttractionsData;
+      trackNearbyParksLoaded({ count: 1, type: 'in_park' });
+      trackNearbyInParkDetected({
+        parkId: parkData.park.id,
+        parkName: parkData.park.name,
+      });
+      // User is in a park, use 1-minute refresh interval
+      setIsInPark(true);
+    }
+  }, [nearbyData, setIsInPark]);
+
+  // Track permission granted/denied
   useEffect(() => {
-    if (permissionState === 'granted' && nearbyData !== null) {
-      const interval = setInterval(
-        () => {
-          requestLocation();
-        },
-        5 * 60 * 1000
-      ); // 5 minutes
-
-      return () => clearInterval(interval);
+    if (position && !permissionDenied) {
+      trackNearbyPermissionGranted();
     }
-  }, [permissionState, nearbyData, requestLocation]);
+  }, [position, permissionDenied]);
 
-  // Prompt state - show enable button
-  if (permissionState === 'prompt') {
+  useEffect(() => {
+    if (permissionDenied) {
+      trackNearbyPermissionDenied();
+    }
+  }, [permissionDenied]);
+
+  const isLoading = geoLoading || dataLoading;
+
+  // Prompt state - show enable button (no position and no error and not loading)
+  if (!position && !geoError && !permissionDenied && !geoLoading) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
@@ -139,7 +94,7 @@ export function NearbyParksCard() {
         </CardHeader>
         <CardContent className="flex flex-col items-center space-y-4 text-center">
           <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
-          <Button onClick={requestLocation}>
+          <Button onClick={refresh}>
             <Navigation className="mr-2 h-4 w-4" />
             {t('enable')}
           </Button>
@@ -149,7 +104,7 @@ export function NearbyParksCard() {
   }
 
   // Loading state
-  if (permissionState === 'loading') {
+  if (isLoading) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6">
         <CardHeader className="pb-2 md:pb-4">
@@ -176,8 +131,7 @@ export function NearbyParksCard() {
   }
 
   // Error or denied state
-  // Error or denied state
-  if (permissionState === 'denied' || permissionState === 'error') {
+  if (geoError || permissionDenied || dataError) {
     return (
       <section className="bg-muted/30 min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
@@ -190,7 +144,7 @@ export function NearbyParksCard() {
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
             {t('permissionDeniedDescription')}
           </p>
-          <Button onClick={requestLocation} variant="outline">
+          <Button onClick={refresh} variant="outline">
             <Navigation className="mr-2 h-4 w-4" />
             {tCommon('retry')}
           </Button>

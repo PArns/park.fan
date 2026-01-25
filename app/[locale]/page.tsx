@@ -1,5 +1,4 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { cookies } from 'next/headers';
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, Sparkles, ChevronRight, Map as MapIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -90,22 +89,6 @@ export default async function HomePage({ params }: HomePageProps) {
   // eslint-disable-next-line react-hooks/purity
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 
-  const cookieStore = await cookies();
-  const favoritesCookie = cookieStore.get('favorites');
-  let initialHasFavorites = false;
-  if (favoritesCookie) {
-    try {
-      const parsed = JSON.parse(favoritesCookie.value);
-      initialHasFavorites =
-        (Array.isArray(parsed.parks) && parsed.parks.length > 0) ||
-        (Array.isArray(parsed.attractions) && parsed.attractions.length > 0) ||
-        (Array.isArray(parsed.shows) && parsed.shows.length > 0) ||
-        (Array.isArray(parsed.restaurants) && parsed.restaurants.length > 0);
-    } catch {
-      // Ignore parsing errors
-    }
-  }
-
   // Fetch data in parallel
   const [stats, geoData, liveStats] = await Promise.all([
     getGlobalStats().catch(() => null),
@@ -148,7 +131,7 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       {/* Favorites Section - Above Nearby Parks */}
-      <FavoritesSection initialHasFavorites={initialHasFavorites} />
+      <FavoritesSection />
 
       {/* Nearby Parks - First section after hero */}
       <section className="border-b px-4 py-8">

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,14 +10,9 @@ import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
 import { ShowCard } from '@/components/parks/show-card';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { getFavoriteIds } from '@/lib/utils/favorites';
-import {
-  getFavorites,
-  type FavoritePark,
-  type FavoriteAttraction,
-  type FavoriteShow,
-  type FavoriteRestaurant,
-} from '@/lib/api/favorites';
+import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { useFavorites } from '@/lib/hooks/use-favorites';
+import { useQueryClient } from '@tanstack/react-query';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import {
   buildShowUrl,
@@ -28,199 +23,58 @@ import { Link } from '@/i18n/navigation';
 import { ChevronRight, Navigation, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
-export interface FavoritesSectionProps {
-  initialHasFavorites?: boolean;
-}
-
-export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectionProps) {
+export function FavoritesSection() {
   const t = useTranslations('favorites');
 
-  const [favoritesData, setFavoritesData] = useState<{
-    parks: FavoritePark[];
-    attractions: FavoriteAttraction[];
-    shows: FavoriteShow[];
-    restaurants: FavoriteRestaurant[];
-  } | null>(null);
-  const [loading, setLoading] = useState(initialHasFavorites);
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [geolocationLoading, setGeolocationLoading] = useState(true);
-  // Use ref to always have current userLocation in event handlers
-  const userLocationRef = useRef<{ lat: number; lng: number } | null>(null);
+  // Use centralized geolocation (though not required for favorites)
+  const { position } = useGeolocation();
 
-  // Function to update user location (reusable for initial load and periodic updates)
-  const updateLocation = useCallback((onSuccess?: () => void) => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const location = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          setUserLocation(location);
-          userLocationRef.current = location;
-          if (onSuccess) {
-            onSuccess();
-          }
-        },
-        (err) => {
-          // Silently fail - distance calculation is optional
-          // Only log if there's actual error information
-          if (err && (err.message || err.code)) {
-            console.debug('[FavoritesSection] Geolocation error (optional):', err);
-          }
-          if (onSuccess) {
-            onSuccess();
-          }
-        },
-        {
-          enableHighAccuracy: false,
-          timeout: 10000,
-          maximumAge: 0, // Always get fresh location for periodic updates
+  // Use React Query hook for favorites
+  const { data: favoritesData, isLoading: loading, refetch } = useFavorites();
+
+  const queryClient = useQueryClient();
+
+  // Sort by distance (nearest first) or alphabetically if no distance available
+  const sortByDistanceOrName = useCallback(
+    <T extends { distance?: number; name: string }>(items: T[]): T[] => {
+      return [...items].sort((a, b) => {
+        // If both have distance, sort by distance
+        if (a.distance !== undefined && b.distance !== undefined) {
+          return a.distance - b.distance;
         }
-      );
-    } else {
-      // No geolocation support
-      if (onSuccess) {
-        onSuccess();
-      }
-    }
-  }, []);
-
-  // Get user location for distance calculation (initial load)
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      const timeoutId = setTimeout(() => {
-        setGeolocationLoading(false);
-      }, 2000);
-
-      updateLocation(() => {
-        setGeolocationLoading(false);
-        clearTimeout(timeoutId);
+        // If only one has distance, prioritize it
+        if (a.distance !== undefined) return -1;
+        if (b.distance !== undefined) return 1;
+        // If neither has distance, sort alphabetically by name
+        return a.name.localeCompare(b.name);
       });
+    },
+    []
+  );
 
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    } else {
-      // No geolocation support, set loading to false immediately
-      setGeolocationLoading(false);
-    }
-  }, [updateLocation]);
-
-  // Load favorites from API
-  const loadFavorites = useCallback(async () => {
-    try {
-      // Get favorite IDs from cookies
-      const favoriteIds = {
-        parks: getFavoriteIds('park'),
-        attractions: getFavoriteIds('attraction'),
-        shows: getFavoriteIds('show'),
-        restaurants: getFavoriteIds('restaurant'),
-      };
-
-      // Check if we have any favorites before calling API
-      const hasFavorites =
-        favoriteIds.parks.length > 0 ||
-        favoriteIds.attractions.length > 0 ||
-        favoriteIds.shows.length > 0 ||
-        favoriteIds.restaurants.length > 0;
-
-      if (!hasFavorites) {
-        setFavoritesData({ parks: [], attractions: [], shows: [], restaurants: [] });
-        setLoading(false);
-        return;
+  // Sort favorites when data changes
+  const sortedFavorites = favoritesData
+    ? {
+        parks: sortByDistanceOrName(favoritesData.parks),
+        attractions: sortByDistanceOrName(favoritesData.attractions),
+        shows: sortByDistanceOrName(favoritesData.shows),
+        restaurants: sortByDistanceOrName(favoritesData.restaurants),
       }
+    : null;
 
-      // Call API with favorite IDs as query parameters
-      // Use ref to get current location (important for event handlers)
-      const currentLocation = userLocationRef.current || userLocation;
-      const data = await getFavorites(
-        favoriteIds.parks,
-        favoriteIds.attractions,
-        favoriteIds.shows,
-        favoriteIds.restaurants,
-        currentLocation?.lat,
-        currentLocation?.lng
-      );
-
-      // Sort by distance (nearest first) or alphabetically if no distance available
-      const sortByDistanceOrName = <T extends { distance?: number; name: string }>(
-        items: T[]
-      ): T[] => {
-        return [...items].sort((a, b) => {
-          // If both have distance, sort by distance
-          if (a.distance !== undefined && b.distance !== undefined) {
-            return a.distance - b.distance;
-          }
-          // If only one has distance, prioritize it
-          if (a.distance !== undefined) return -1;
-          if (b.distance !== undefined) return 1;
-          // If neither has distance, sort alphabetically by name
-          return a.name.localeCompare(b.name);
-        });
-      };
-
-      setFavoritesData({
-        parks: sortByDistanceOrName(data.parks),
-        attractions: sortByDistanceOrName(data.attractions),
-        shows: sortByDistanceOrName(data.shows),
-        restaurants: sortByDistanceOrName(data.restaurants),
-      });
-    } catch (error) {
-      console.error('[FavoritesSection] Error loading favorites:', error);
-      setFavoritesData({ parks: [], attractions: [], shows: [], restaurants: [] });
-    } finally {
-      setLoading(false);
-    }
-  }, [userLocation]);
-
-  // Load favorites only when geolocation is complete
-  useEffect(() => {
-    if (!geolocationLoading) {
-      loadFavorites();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [geolocationLoading]);
-
-  // Reload favorites when userLocation changes (from null to a value)
-  // Only reload if we already have data (to avoid duplicate initial load)
-  useEffect(() => {
-    if (userLocation && !loading && favoritesData !== null) {
-      loadFavorites();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userLocation]);
-
-  // Listen for favorites-changed events
+  // Listen for favorites-changed events and invalidate query
   useEffect(() => {
     const handleFavoritesChanged = () => {
-      loadFavorites();
+      // Invalidate and refetch the favorites query
+      queryClient.invalidateQueries({ queryKey: ['favorites'] });
+      refetch();
     };
 
     window.addEventListener('favorites-changed', handleFavoritesChanged);
     return () => {
       window.removeEventListener('favorites-changed', handleFavoritesChanged);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // Auto-reload favorites every 5 minutes (with location update)
-  useEffect(() => {
-    if (!loading && favoritesData !== null) {
-      const interval = setInterval(
-        () => {
-          // Update location first, then reload favorites with new location
-          updateLocation(() => {
-            loadFavorites();
-          });
-        },
-        5 * 60 * 1000
-      ); // 5 minutes
-
-      return () => clearInterval(interval);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [loading, favoritesData, updateLocation]);
+  }, [queryClient, refetch]);
 
   // Show skeleton loaders while loading
   if (loading) {
@@ -263,30 +117,30 @@ export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectio
   }
 
   if (
-    !favoritesData ||
-    (favoritesData.parks.length === 0 &&
-      favoritesData.attractions.length === 0 &&
-      favoritesData.shows.length === 0 &&
-      favoritesData.restaurants.length === 0)
+    !sortedFavorites ||
+    (sortedFavorites.parks.length === 0 &&
+      sortedFavorites.attractions.length === 0 &&
+      sortedFavorites.shows.length === 0 &&
+      sortedFavorites.restaurants.length === 0)
   ) {
     return null;
   }
 
   const hasAnyFavorites =
-    favoritesData.parks.length > 0 ||
-    favoritesData.attractions.length > 0 ||
-    favoritesData.shows.length > 0 ||
-    favoritesData.restaurants.length > 0;
+    sortedFavorites.parks.length > 0 ||
+    sortedFavorites.attractions.length > 0 ||
+    sortedFavorites.shows.length > 0 ||
+    sortedFavorites.restaurants.length > 0;
 
   if (!hasAnyFavorites) {
     return null;
   }
 
   const totalFavorites =
-    (favoritesData?.parks.length || 0) +
-    (favoritesData?.attractions.length || 0) +
-    (favoritesData?.shows.length || 0) +
-    (favoritesData?.restaurants.length || 0);
+    (sortedFavorites?.parks.length || 0) +
+    (sortedFavorites?.attractions.length || 0) +
+    (sortedFavorites?.shows.length || 0) +
+    (sortedFavorites?.restaurants.length || 0);
 
   return (
     <section className="border-b px-4 py-8">
@@ -298,19 +152,17 @@ export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectio
                 <Star className="text-park-primary h-5 w-5" />
                 {t('title')} ({totalFavorites})
               </CardTitle>
-              {!userLocation && (
-                <p className="text-muted-foreground text-xs">{t('locationHint')}</p>
-              )}
+              {!position && <p className="text-muted-foreground text-xs">{t('locationHint')}</p>}
             </div>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Parks */}
-            {favoritesData.parks.length > 0 && (
+            {sortedFavorites.parks.length > 0 && (
               <>
                 <div>
                   <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {favoritesData.parks.map((park) => (
+                    {sortedFavorites.parks.map((park) => (
                       <ParkCardNearby
                         key={park.id}
                         id={park.id}
@@ -332,19 +184,19 @@ export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectio
                     ))}
                   </div>
                 </div>
-                {(favoritesData.attractions.length > 0 ||
-                  favoritesData.shows.length > 0 ||
-                  favoritesData.restaurants.length > 0) && <Separator />}
+                {(sortedFavorites.attractions.length > 0 ||
+                  sortedFavorites.shows.length > 0 ||
+                  sortedFavorites.restaurants.length > 0) && <Separator />}
               </>
             )}
 
             {/* Attractions */}
-            {favoritesData.attractions.length > 0 && (
+            {sortedFavorites.attractions.length > 0 && (
               <>
                 <div>
                   <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {favoritesData.attractions.map((attraction) => (
+                    {sortedFavorites.attractions.map((attraction) => (
                       <AttractionCard
                         key={attraction.id}
                         attraction={attraction}
@@ -355,19 +207,19 @@ export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectio
                     ))}
                   </div>
                 </div>
-                {(favoritesData.shows.length > 0 || favoritesData.restaurants.length > 0) && (
+                {(sortedFavorites.shows.length > 0 || sortedFavorites.restaurants.length > 0) && (
                   <Separator />
                 )}
               </>
             )}
 
             {/* Shows */}
-            {favoritesData.shows.length > 0 && (
+            {sortedFavorites.shows.length > 0 && (
               <>
                 <div>
                   <h3 className="mb-4 text-lg font-semibold">{t('shows')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {favoritesData.shows.map((show) => {
+                    {sortedFavorites.shows.map((show) => {
                       // Build show URL: always use park URL with #shows hash
                       let showHref = '#';
 
@@ -418,16 +270,16 @@ export function FavoritesSection({ initialHasFavorites = true }: FavoritesSectio
                     })}
                   </div>
                 </div>
-                {favoritesData.restaurants.length > 0 && <Separator />}
+                {sortedFavorites.restaurants.length > 0 && <Separator />}
               </>
             )}
 
             {/* Restaurants */}
-            {favoritesData.restaurants.length > 0 && (
+            {sortedFavorites.restaurants.length > 0 && (
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('restaurants')}</h3>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {favoritesData.restaurants.map((restaurant) => {
+                  {sortedFavorites.restaurants.map((restaurant) => {
                     // Build restaurant URL: always use park URL with #restaurants hash
                     let restaurantHref = '#';
 
