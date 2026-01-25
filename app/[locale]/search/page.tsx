@@ -121,7 +121,11 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
   const isOpen = result.status === 'OPERATING';
 
   return (
-    <Link href={href as '/europe'} className="group block h-full">
+    <Link
+      href={href as '/europe'}
+      prefetch={result.type === 'location' ? false : result.status === 'OPERATING'}
+      className="group block h-full"
+    >
       <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">
         {/* Background Image for Parks */}
         {backgroundImage && (

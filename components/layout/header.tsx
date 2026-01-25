@@ -17,7 +17,12 @@ export function Header() {
     <header className="glass-header sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2" aria-label="park.fan - Home">
+        <Link
+          href="/"
+          prefetch={false}
+          className="flex items-center gap-2"
+          aria-label="park.fan - Home"
+        >
           <div
             className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg"
             aria-hidden="true"
@@ -31,6 +36,7 @@ export function Header() {
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
           <Link
             href="/"
+            prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             aria-label="Go to homepage"
           >
@@ -38,6 +44,7 @@ export function Header() {
           </Link>
           <Link
             href="/parks/europe"
+            prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             aria-label="Explore theme parks"
           >
@@ -77,6 +84,7 @@ export function Header() {
               <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
                 <Link
                   href="/"
+                  prefetch={false}
                   className="hover:text-primary text-lg font-medium transition-colors"
                   aria-label="Go to homepage"
                 >
@@ -84,6 +92,7 @@ export function Header() {
                 </Link>
                 <Link
                   href="/parks/europe"
+                  prefetch={false}
                   className="hover:text-primary text-lg font-medium transition-colors"
                   aria-label="Explore theme parks"
                 >

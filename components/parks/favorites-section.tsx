@@ -324,6 +324,7 @@ export function FavoritesSection() {
                       <Link
                         key={restaurant.id}
                         href={restaurantHref}
+                        prefetch={restaurant.status === 'OPERATING'} // Only prefetch operating restaurants
                         className="group block h-full"
                       >
                         <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">

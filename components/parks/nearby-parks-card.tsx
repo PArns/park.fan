@@ -205,7 +205,11 @@ export function NearbyParksCard() {
           <CardContent className="space-y-4">
             {/* Park Info */}
             {parkMapUrl ? (
-              <Link href={parkMapUrl} className="group block transition-opacity hover:opacity-80">
+              <Link
+                href={parkMapUrl}
+                prefetch={false}
+                className="group block transition-opacity hover:opacity-80"
+              >
                 <article className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
@@ -292,6 +296,7 @@ export function NearbyParksCard() {
                     <li key={attraction.id}>
                       <Link
                         href={convertApiUrlToFrontendUrl(attraction.url)}
+                        prefetch={attraction.status === 'OPERATING'}
                         className="group block"
                       >
                         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">

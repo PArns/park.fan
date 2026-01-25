@@ -64,7 +64,11 @@ export function ParkCard({
   const isOpen = status === 'OPERATING';
 
   return (
-    <Link href={href as '/europe/germany/rust/europa-park'} className="group h-full">
+    <Link
+      href={href as '/europe/germany/rust/europa-park'}
+      prefetch={status === 'OPERATING'} // Only prefetch open parks
+      className="group h-full"
+    >
       <Card className={cn('interactive-card relative h-full overflow-hidden', className)}>
         {/* Background Image */}
         {backgroundImage && <BackgroundOverlay imageSrc={backgroundImage} alt={name} hoverEffect />}

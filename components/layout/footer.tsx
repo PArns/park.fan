@@ -81,6 +81,7 @@ export async function Footer({ locale }: FooterProps) {
               <div>
                 <Link
                   href="/parks/europe/germany"
+                  prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
                   aria-label={`${t('sections.germany')} - Theme Parks`}
                 >
@@ -92,6 +93,7 @@ export async function Footer({ locale }: FooterProps) {
                 >
                   <Link
                     href="/parks/europe/germany/rust/europa-park"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Europa-Park - Wait Times"
                   >
@@ -99,6 +101,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/germany/bruhl/phantasialand"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Phantasialand - Wait Times"
                   >
@@ -106,6 +109,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/germany/soltau/heide-park"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Heide-Park - Wait Times"
                   >
@@ -113,6 +117,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/germany/bottrop/movie-park-germany"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Movie Park Germany - Wait Times"
                   >
@@ -120,6 +125,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/netherlands/kaatsheuvel/efteling"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Efteling - Wait Times"
                   >
@@ -139,6 +145,7 @@ export async function Footer({ locale }: FooterProps) {
               <div>
                 <Link
                   href="/parks/north-america/united-states"
+                  prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
                   aria-label={`${t('sections.usa')} - Theme Parks`}
                 >
@@ -150,6 +157,7 @@ export async function Footer({ locale }: FooterProps) {
                 >
                   <Link
                     href="/parks/north-america/united-states/orlando/walt-disney-world"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Walt Disney World - Wait Times"
                   >
@@ -157,6 +165,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/north-america/united-states/orlando/universal-studios-florida"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Universal Studios - Wait Times"
                   >
@@ -164,6 +173,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/north-america/united-states/tampa/busch-gardens-tampa"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Busch Gardens Tampa - Wait Times"
                   >
@@ -171,6 +181,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/north-america/united-states/sandusky/cedar-point"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Cedar Point - Wait Times"
                   >
@@ -178,6 +189,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/north-america/united-states/valencia/six-flags-magic-mountain"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Six Flags Magic Mountain - Wait Times"
                   >
@@ -197,6 +209,7 @@ export async function Footer({ locale }: FooterProps) {
               <div>
                 <Link
                   href="/parks/europe/france"
+                  prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
                   aria-label={`${tGeo('countries.france')} - Theme Parks`}
                 >
@@ -208,6 +221,7 @@ export async function Footer({ locale }: FooterProps) {
                 >
                   <Link
                     href="/parks/europe/france/marne-la-vallee/disneyland-paris"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Disneyland Paris - Wait Times"
                   >
@@ -215,6 +229,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/france/plailly/parc-asterix"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Parc Asterix - Wait Times"
                   >
@@ -222,6 +237,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/france/les-epesses/puy-du-fou"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Puy du Fou - Wait Times"
                   >
@@ -229,6 +245,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Futuroscope - Wait Times"
                   >
@@ -236,6 +253,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/europe/france/dolancourt/nigloland"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Nigloland - Wait Times"
                   >
@@ -255,6 +273,7 @@ export async function Footer({ locale }: FooterProps) {
               <div>
                 <Link
                   href="/parks/asia/japan"
+                  prefetch={false}
                   className="text-muted-foreground hover:text-foreground mb-2 block text-xs font-medium uppercase transition-colors"
                   aria-label={`${tGeo('countries.japan')} - Theme Parks`}
                 >
@@ -266,6 +285,7 @@ export async function Footer({ locale }: FooterProps) {
                 >
                   <Link
                     href="/parks/asia/japan/tokyo/tokyo-disneyland"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Tokyo Disneyland - Wait Times"
                   >
@@ -273,6 +293,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/asia/japan/tokyo/tokyo-disneysea"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Tokyo DisneySea - Wait Times"
                   >
@@ -280,6 +301,7 @@ export async function Footer({ locale }: FooterProps) {
                   </Link>
                   <Link
                     href="/parks/asia/japan/osaka/universal-studios-japan"
+                    prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Universal Studios Japan - Wait Times"
                   >
@@ -305,6 +327,7 @@ export async function Footer({ locale }: FooterProps) {
           <div className="flex items-center gap-2">
             <Link
               href="/impressum"
+              prefetch={false}
               className="hover:text-foreground text-sm transition-colors"
               aria-label={t('impressum')}
             >
@@ -313,6 +336,7 @@ export async function Footer({ locale }: FooterProps) {
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
               href="/datenschutz"
+              prefetch={false}
               className="hover:text-foreground text-sm transition-colors"
               aria-label={t('datenschutz')}
             >

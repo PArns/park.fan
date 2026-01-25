@@ -140,7 +140,11 @@ export function AttractionCard({
     propBackgroundImage ?? ('backgroundImage' in attraction ? attraction.backgroundImage : null);
 
   return (
-    <Link href={href} className="group block h-full">
+    <Link
+      href={href}
+      prefetch={status === 'OPERATING'} // Only prefetch operating attractions
+      className="group block h-full"
+    >
       <Card className="hover:bg-muted/50 relative h-full overflow-hidden transition-colors">
         {/* Background Image */}
         {backgroundImage && (

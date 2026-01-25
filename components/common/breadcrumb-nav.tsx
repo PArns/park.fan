@@ -37,7 +37,11 @@ export function BreadcrumbNav({ breadcrumbs, currentPage, className }: Breadcrum
           {index > 0 && (
             <ChevronRight className={cn('h-4 w-4', crumb.className)} aria-hidden="true" />
           )}
-          <Link href={crumb.url} className={cn('hover:text-foreground', crumb.className)}>
+          <Link
+            href={crumb.url}
+            prefetch={false}
+            className={cn('hover:text-foreground', crumb.className)}
+          >
             {crumb.name}
           </Link>
         </Fragment>

@@ -29,7 +29,7 @@ export function GeoLocationCard({
   const tExplore = useTranslations('explore');
 
   return (
-    <Link href={href as '/parks/europe'} className="interactive-link">
+    <Link href={href as '/parks/europe'} prefetch={false} className="interactive-link">
       <Card className={cn('interactive-card h-full', className)}>
         <CardContent className="p-6">
           <div className="flex items-start justify-between">

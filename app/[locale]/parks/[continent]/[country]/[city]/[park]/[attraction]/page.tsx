@@ -274,6 +274,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       href={
                         `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
                       }
+                      prefetch={park.status === 'OPERATING'}
                       className="hover:text-foreground flex items-center gap-1"
                     >
                       <MapPin className="h-4 w-4" />

@@ -177,6 +177,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {stats.mostCrowdedPark && (
                 <Link
                   href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url)}
+                  prefetch={false}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -237,6 +238,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {stats.leastCrowdedPark && (
                 <Link
                   href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url)}
+                  prefetch={false}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -300,6 +302,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {stats.longestWaitRide && (
                 <Link
                   href={convertApiUrlToFrontendUrl(stats.longestWaitRide.url)}
+                  prefetch={false}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -342,6 +345,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {stats.shortestWaitRide && (
                 <Link
                   href={convertApiUrlToFrontendUrl(stats.shortestWaitRide.url)}
+                  prefetch={false}
                   className="group block min-w-0"
                 >
                   <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
@@ -457,6 +461,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   <Link
                     key={continent.slug}
                     href={`/parks/${continent.slug}`}
+                    prefetch={false}
                     className="group block"
                   >
                     <Card className="bg-muted/50 hover:bg-muted/70 border-border hover:border-primary/50 h-full transition-all hover:shadow-lg">

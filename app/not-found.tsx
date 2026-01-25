@@ -25,6 +25,7 @@ export default function NotFound() {
           </p>
           <Link
             href="/"
+            prefetch={false}
             style={{
               marginTop: '2rem',
               padding: '0.75rem 1.5rem',

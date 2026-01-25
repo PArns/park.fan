@@ -232,7 +232,11 @@ export function ParkCardNearby({
   );
 
   return (
-    <Link href={convertApiUrlToFrontendUrl(url)} className="group h-full">
+    <Link
+      href={convertApiUrlToFrontendUrl(url)}
+      prefetch={status === 'OPERATING'} // Only prefetch open parks
+      className="group h-full"
+    >
       <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all hover:shadow-md md:py-6">
         {/* Background Image */}
         {backgroundImage && (

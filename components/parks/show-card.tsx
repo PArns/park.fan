@@ -53,7 +53,11 @@ export function ShowCard({
   });
 
   return (
-    <Link href={href} className="group block h-full">
+    <Link
+      href={href}
+      prefetch={status === 'OPERATING'} // Only prefetch operating shows
+      className="group block h-full"
+    >
       <Card className="hover:border-primary/50 relative h-full transition-all hover:shadow-md">
         {/* Favorite Star */}
         <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
