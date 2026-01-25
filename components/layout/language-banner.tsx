@@ -4,18 +4,19 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
+import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
   currentLocale: Locale;
 }
 
-// Flag emojis for each locale
-const localeFlags: Record<Locale, string> = {
-  en: '🇬🇧',
-  de: '🇩🇪',
-  nl: '🇳🇱',
-  fr: '🇫🇷',
-  es: '🇪🇸',
+// Flag components for each locale
+const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>> = {
+  en: FlagGB,
+  de: FlagDE,
+  nl: FlagNL,
+  fr: FlagFR,
+  es: FlagES,
 };
 
 interface BannerTranslations {
@@ -113,10 +114,20 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
           <div className="relative flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-3">
               {/* Flag display */}
-              <div className="flex shrink-0 items-center gap-1.5 text-xl sm:gap-2 sm:text-2xl">
-                <span>{localeFlags[currentLocale]}</span>
-                <span className="text-muted-foreground">→</span>
-                <span>{localeFlags[browserLocale]}</span>
+              <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+                {(() => {
+                  const CurrentFlag = FlagComponents[currentLocale];
+                  return (
+                    <CurrentFlag className="border-border/50 h-4 w-6 rounded-sm border sm:h-5 sm:w-8" />
+                  );
+                })()}
+                <span className="text-muted-foreground text-sm sm:text-base">→</span>
+                {(() => {
+                  const BrowserFlag = FlagComponents[browserLocale];
+                  return (
+                    <BrowserFlag className="border-border/50 h-4 w-6 rounded-sm border sm:h-5 sm:w-8" />
+                  );
+                })()}
               </div>
 
               {/* Message */}
