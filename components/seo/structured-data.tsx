@@ -13,6 +13,8 @@ import {
   Organization,
   Attraction,
 } from 'schema-dts';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getAttractionImage } from '@/lib/attraction-images';
 
 type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
@@ -64,6 +66,9 @@ export function ParkStructuredData({
     name: park.name,
     url: url,
     description: description || `Real-time wait times and crowd levels for ${park.name}.`,
+    image: getParkBackgroundImage(park.slug)
+      ? `https://park.fan${getParkBackgroundImage(park.slug)}`
+      : undefined,
     address: {
       '@type': 'PostalAddress',
       addressLocality: park.city || undefined,
@@ -73,10 +78,10 @@ export function ParkStructuredData({
     geo:
       park.latitude && park.longitude
         ? {
-            '@type': 'GeoCoordinates',
-            latitude: park.latitude,
-            longitude: park.longitude,
-          }
+          '@type': 'GeoCoordinates',
+          latitude: park.latitude,
+          longitude: park.longitude,
+        }
         : undefined,
     openingHoursSpecification: park.schedule?.map((s) => ({
       '@type': 'OpeningHoursSpecification',
@@ -125,6 +130,9 @@ export function AttractionStructuredData({
     url: url,
     description:
       description || `${attraction.name} at ${park.name} - Real-time wait times and status.`,
+    image: getAttractionImage(park.slug, attraction.slug)
+      ? `https://park.fan${getAttractionImage(park.slug, attraction.slug)}`
+      : undefined,
     containedInPlace: {
       '@type': 'ThemePark',
       name: park.name,
@@ -133,11 +141,11 @@ export function AttractionStructuredData({
     address:
       park.city || park.country
         ? {
-            '@type': 'PostalAddress',
-            addressLocality: park.city || undefined,
-            addressCountry: park.country || undefined,
-            addressRegion: park.region || undefined,
-          }
+          '@type': 'PostalAddress',
+          addressLocality: park.city || undefined,
+          addressCountry: park.country || undefined,
+          addressRegion: park.region || undefined,
+        }
         : undefined,
   };
 
@@ -169,13 +177,17 @@ export function ShowsStructuredData({
       '@type': 'Event' as const,
       name: show.name,
       startDate: `${date}T${showtime.startTime}`,
+      image: getParkBackgroundImage(park.slug)
+        ? `https://park.fan${getParkBackgroundImage(park.slug)}`
+        : undefined, // Fallback to park image if no show image
       location: {
-        '@type': 'ThemePark' as const,
+        '@type': 'Place' as const,
         name: park.name,
         address: {
           '@type': 'PostalAddress' as const,
           addressLocality: park.city || undefined,
           addressCountry: park.country || undefined,
+          addressRegion: park.region || undefined,
         },
       },
       eventStatus: 'https://schema.org/EventScheduled' as const,
