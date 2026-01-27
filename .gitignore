@@ -49,3 +49,5 @@ lib/hero-images.ts
 *.md
 *.txt
 *.log
+
+!content/home/*.md
