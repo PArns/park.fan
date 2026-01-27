@@ -61,7 +61,13 @@
       "full": "Vol",
       "closed": "Gesloten"
     },
-    "discover": "Ontdekken"
+    "discover": "Ontdekken",
+    "time": {
+      "days": "Dagen",
+      "hours": "Uren",
+      "minutes": "Minuten",
+      "seconds": "Seconden"
+    }
   },
   "home": {
     "hero": {

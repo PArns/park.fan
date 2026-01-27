@@ -78,10 +78,10 @@ export function ParkStructuredData({
     geo:
       park.latitude && park.longitude
         ? {
-          '@type': 'GeoCoordinates',
-          latitude: park.latitude,
-          longitude: park.longitude,
-        }
+            '@type': 'GeoCoordinates',
+            latitude: park.latitude,
+            longitude: park.longitude,
+          }
         : undefined,
     openingHoursSpecification: park.schedule?.map((s) => ({
       '@type': 'OpeningHoursSpecification',
@@ -141,11 +141,11 @@ export function AttractionStructuredData({
     address:
       park.city || park.country
         ? {
-          '@type': 'PostalAddress',
-          addressLocality: park.city || undefined,
-          addressCountry: park.country || undefined,
-          addressRegion: park.region || undefined,
-        }
+            '@type': 'PostalAddress',
+            addressLocality: park.city || undefined,
+            addressCountry: park.country || undefined,
+            addressRegion: park.region || undefined,
+          }
         : undefined,
   };
 

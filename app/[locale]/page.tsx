@@ -18,6 +18,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { StatsCard } from '@/components/common/stats-card';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { AnnounceSection } from '@/components/home/announce-section';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -129,6 +130,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
         </div>
       </section>
+
+      {/* Announcement Section */}
+      <AnnounceSection locale={locale} />
 
       {/* Favorites Section - Above Nearby Parks */}
       <FavoritesSection />

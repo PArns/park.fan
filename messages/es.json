@@ -61,7 +61,13 @@
       "full": "Lleno",
       "closed": "Cerrado"
     },
-    "discover": "Descubrir"
+    "discover": "Descubrir",
+    "time": {
+      "days": "Días",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "seconds": "Segundos"
+    }
   },
   "home": {
     "hero": {

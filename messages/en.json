@@ -61,7 +61,13 @@
       "full": "Full",
       "closed": "Closed"
     },
-    "discover": "Discover"
+    "discover": "Discover",
+    "time": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    }
   },
   "home": {
     "hero": {

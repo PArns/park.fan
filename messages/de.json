@@ -61,7 +61,13 @@
     "home": "Startseite",
     "status": "Status",
     "updated": "Aktualisiert",
-    "discover": "Entdecken"
+    "discover": "Entdecken",
+    "time": {
+      "days": "Tage",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "seconds": "Sekunden"
+    }
   },
   "home": {
     "hero": {
