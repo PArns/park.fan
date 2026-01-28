@@ -96,8 +96,8 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('titleTemplate', { park: park.name }),
-      description: t('metaDescriptionTemplate', { park: park.name }),
+      title: t('titleTemplate', { park: park.name, city: cityName }),
+      description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
       images: [ogImageUrl],
     },
     alternates: {
