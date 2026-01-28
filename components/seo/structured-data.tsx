@@ -90,6 +90,25 @@ export function ParkStructuredData({
       validFrom: s.date,
       validThrough: s.date,
     })),
+    containsPlace: [
+      ...('attractions' in park && park.attractions
+        ? park.attractions.map((attraction) => ({
+            '@type': 'TouristAttraction' as const,
+            name: attraction.name,
+            url: `${url}/${attraction.slug}`,
+            image: getAttractionImage(park.slug, attraction.slug)
+              ? `https://park.fan${getAttractionImage(park.slug, attraction.slug)}`
+              : undefined,
+          }))
+        : []),
+      ...('restaurants' in park && park.restaurants
+        ? park.restaurants.map((restaurant) => ({
+            '@type': 'FoodEstablishment' as const,
+            name: restaurant.name,
+            servesCuisine: restaurant.cuisineType || undefined,
+          }))
+        : []),
+    ],
   };
 
   return <JsonLd data={data} />;
