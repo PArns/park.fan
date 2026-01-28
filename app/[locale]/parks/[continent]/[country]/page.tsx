@@ -54,9 +54,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
       title: t('titleTemplate', { location: countryName }),
       description: t('metaDescriptionTemplate', { location: countryName }),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => localeToOpenGraphLocale[l]),
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}`,
       siteName: 'park.fan',
       type: 'website',

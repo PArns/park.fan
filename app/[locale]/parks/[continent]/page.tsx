@@ -38,9 +38,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       title: t('titleTemplate', { location: continentName }),
       description: t('metaDescriptionTemplate', { location: continentName }),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => localeToOpenGraphLocale[l]),
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}`,
       siteName: 'park.fan',
       type: 'website',

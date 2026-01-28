@@ -33,9 +33,7 @@ export async function generateMetadata({
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => localeToOpenGraphLocale[l]),
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       siteName: 'park.fan',
       images: [
@@ -155,10 +153,11 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${isOpen
-                  ? 'border-status-operating text-status-operating'
-                  : 'border-status-closed text-status-closed'
-                  }`}
+                className={`text-xs ${
+                  isOpen
+                    ? 'border-status-operating text-status-operating'
+                    : 'border-status-closed text-status-closed'
+                }`}
               >
                 {isOpen ? t('open') : t('closed')}
               </Badge>
@@ -177,7 +176,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
                 result.city,
                 result.country
                   ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
-                  result.country
+                    result.country
                   : null,
               ]
                 .filter(Boolean)

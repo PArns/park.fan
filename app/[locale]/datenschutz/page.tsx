@@ -28,9 +28,7 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       title: t('title'),
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => localeToOpenGraphLocale[l]),
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/datenschutz`,
       siteName: 'park.fan',
       type: 'website',

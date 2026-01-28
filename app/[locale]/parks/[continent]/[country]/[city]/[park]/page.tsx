@@ -64,9 +64,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       title: t('titleTemplate', { park: park.name, city: cityName }),
       description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales
-        .filter((l) => l !== locale)
-        .map((l) => localeToOpenGraphLocale[l]),
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       siteName: 'park.fan',
       type: 'website',
