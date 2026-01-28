@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages } from '@/i18n/config';
+import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
@@ -37,10 +37,10 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
     openGraph: {
       title: t('titleTemplate', { location: continentName }),
       description: t('metaDescriptionTemplate', { location: continentName }),
-      locale: `${locale}_${locale.toUpperCase()}`,
+      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales
         .filter((l) => l !== locale)
-        .map((l) => `${l}_${l.toUpperCase()}`),
+        .map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}`,
       siteName: 'park.fan',
       type: 'website',

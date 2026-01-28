@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages } from '@/i18n/config';
+import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { notFound, redirect } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -63,10 +63,10 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     openGraph: {
       title: t('titleTemplate', { park: park.name, city: cityName }),
       description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
-      locale: `${locale}_${locale.toUpperCase()}`,
+      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales
         .filter((l) => l !== locale)
-        .map((l) => `${l}_${l.toUpperCase()}`),
+        .map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       siteName: 'park.fan',
       type: 'website',

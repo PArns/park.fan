@@ -57,3 +57,14 @@ export function getLocalePattern(): string {
 export function isValidLocale(locale: string): locale is Locale {
   return (locales as readonly string[]).includes(locale);
 }
+
+/**
+ * Mapping of app locales to Open Graph locales (underscore format)
+ */
+export const localeToOpenGraphLocale: Record<Locale, string> = {
+  en: 'en_US',
+  de: 'de_DE',
+  nl: 'nl_NL',
+  fr: 'fr_FR',
+  es: 'es_ES',
+};

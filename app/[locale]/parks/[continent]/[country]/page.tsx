@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages } from '@/i18n/config';
+import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
@@ -53,10 +53,10 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
     openGraph: {
       title: t('titleTemplate', { location: countryName }),
       description: t('metaDescriptionTemplate', { location: countryName }),
-      locale: `${locale}_${locale.toUpperCase()}`,
+      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales
         .filter((l) => l !== locale)
-        .map((l) => `${l}_${l.toUpperCase()}`),
+        .map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}`,
       siteName: 'park.fan',
       type: 'website',
