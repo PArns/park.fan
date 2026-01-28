@@ -69,11 +69,23 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   }
 
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
+  const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
   const cityName = park?.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+
+  const keywords = [
+    attraction.name,
+    `${attraction.name} wait times`,
+    park?.name || '',
+    `${park?.name || ''} ${cityName}`,
+    cityName,
+    tGlobal('keywords'),
+  ]
+    .filter(Boolean)
+    .join(', ');
 
   return {
     title: t('titleTemplate', {
@@ -86,6 +98,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       park: park?.name || '',
       city: cityName,
     }),
+    keywords,
     openGraph: {
       title: t('titleTemplate', {
         attraction: attraction.name,
@@ -163,6 +176,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const t = await getTranslations('attractions');
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
+  const tSeo = await getTranslations('seo.attraction');
 
   // Fetch park and attraction data
   const [park, attractionData] = await Promise.all([
@@ -259,7 +273,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         attraction={attraction}
         park={park}
         url={attractionUrl}
-        description={`${attraction.name} at ${park.name} - Real-time wait times, status, and predictions.`}
+        description={tSeo('metaDescriptionTemplate', {
+          attraction: attraction.name,
+          park: park.name,
+          city: cityName,
+        })}
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />

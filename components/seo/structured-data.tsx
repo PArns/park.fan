@@ -31,7 +31,7 @@ function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
 }
 
-export function OrganizationStructuredData() {
+export function OrganizationStructuredData({ description }: { description?: string }) {
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -39,6 +39,7 @@ export function OrganizationStructuredData() {
     url: 'https://park.fan',
     logo: 'https://park.fan/icon.png',
     description:
+      description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
     sameAs: ['https://x.com/arns_dev'],
     contactPoint: {

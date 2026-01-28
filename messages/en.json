@@ -563,6 +563,11 @@
     "dismiss": "Dismiss"
   },
   "seo": {
+    "global": {
+      "title": "park.fan - Theme Park Wait Times & Predictions",
+      "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.",
+      "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit"
+    },
     "home": {
       "title": "Theme Park Wait Times, Predictions & Navigation",
       "description": "Maximize your visit with real-time wait times, AI predictions, and in-park navigation. Covers Disney, Universal, Europa-Park, and more."

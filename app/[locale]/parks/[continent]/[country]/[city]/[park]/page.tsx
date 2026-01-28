@@ -44,6 +44,8 @@ interface ParkPageProps {
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
   const t = await getTranslations({ locale, namespace: 'seo.parks' });
+  const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
@@ -56,10 +58,25 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const countryName = tGeo.has(`countries.${country}`)
+    ? tGeo(`countries.${country}`)
+    : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+
+  const keywords = [
+    park.name,
+    `${park.name} ${cityName}`,
+    `${park.name} ${countryName}`,
+    `${park.name} wait times`,
+    `${park.name} crowd calendar`,
+    cityName,
+    countryName,
+    tGlobal('keywords'),
+  ].join(', ');
 
   return {
     title: t('titleTemplate', { park: park.name, city: cityName }),
     description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
+    keywords,
     openGraph: {
       title: t('titleTemplate', { park: park.name, city: cityName }),
       description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
@@ -226,7 +243,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <ParkStructuredData
           park={park}
           url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
-          description={tSeo('metaDescriptionTemplate', { park: park.name })}
+          description={tSeo('metaDescriptionTemplate', { park: park.name, city: cityName })}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
         {park.shows && park.shows.length > 0 && (

@@ -562,6 +562,11 @@
     "dismiss": "Fermer"
   },
   "seo": {
+    "global": {
+      "title": "park.fan - Temps d'Attente Parcs d'Attractions & Prédictions",
+      "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
+      "keywords": "temps d'attente parc attraction, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, calendrier parc, meilleur moment visite"
+    },
     "home": {
       "title": "Temps d'Attente, Prédictions & Navigation",
       "description": "Optimisez votre visite avec les temps d'attente en direct et les prédictions IA. Couvre Disney, Universal, Europa-Park et plus."

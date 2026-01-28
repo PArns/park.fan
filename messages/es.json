@@ -562,6 +562,11 @@
     "dismiss": "Cerrar"
   },
   "seo": {
+    "global": {
+      "title": "park.fan - Tiempos de Espera Parques Temáticos & Predicciones",
+      "description": "Tiempos de espera en vivo y predicciones de afluencia para más de 142 parques temáticos. Planifica tu visita perfecta con datos en tiempo real y navegación.",
+      "keywords": "tiempos de espera parques temáticos, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, calendario parque, mejor momento visita"
+    },
     "home": {
       "title": "Tiempos de Espera, Predicciones y Navegación",
       "description": "Maximiza tu visita con tiempos de espera en vivo y predicciones IA. Cubre Disney, Universal, Europa-Park y más."

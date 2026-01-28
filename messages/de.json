@@ -562,6 +562,11 @@
     "dismiss": "Schließen"
   },
   "seo": {
+    "global": {
+      "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
+      "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
+      "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
+    },
     "home": {
       "title": "Freizeitpark Wartezeiten, Prognosen & Navigation",
       "description": "Dein Begleiter für Freizeitparks: Live-Wartezeiten, KI-Prognosen und präzise In-Park Navigation. Für Disney, Universal, Europa-Park und mehr."

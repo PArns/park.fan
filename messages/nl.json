@@ -562,6 +562,11 @@
     "dismiss": "Sluiten"
   },
   "seo": {
+    "global": {
+      "title": "park.fan - Pretpark Wachttijden & Voorspellingen",
+      "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken wereldwijd. Plan je perfecte parkbezoek met realtime gegevens en navigatie in het park.",
+      "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd"
+    },
     "home": {
       "title": "Pretpark Wachttijden, Voorspellingen & Navigatie",
       "description": "Maximaliseer je bezoek met realtime wachttijden, AI-voorspellingen en navigatie in het park. Omvat Disney, Universal, Europa-Park en meer."

@@ -82,6 +82,7 @@ export default async function HomePage({ params }: HomePageProps) {
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
+  const tSeo = await getTranslations('seo.home');
 
   // Select random hero image server-side
   // eslint-disable-next-line react-hooks/purity
@@ -105,7 +106,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col">
-      <OrganizationStructuredData />
+      <OrganizationStructuredData description={tSeo('description')} />
       <HomepageFAQStructuredData />
       {/* Hero Section */}
       <section className="relative overflow-hidden px-4 py-20 md:py-32">
