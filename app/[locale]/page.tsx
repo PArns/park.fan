@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, Sparkles, ChevronRight, Map as MapIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,8 +42,10 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     openGraph: {
       title: t('title'),
       description: t('description'),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}`,
       siteName: 'park.fan',
       type: 'website',
@@ -64,11 +67,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     alternates: {
       canonical: `/${locale}`,
       languages: {
-        en: '/en',
-        de: '/de',
-        nl: '/nl',
-        fr: '/fr',
-        es: '/es',
+        ...generateAlternateLanguages((l) => `/${l}`),
         'x-default': '/en',
       },
     },

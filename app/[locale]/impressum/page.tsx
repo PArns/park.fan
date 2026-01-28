@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import { getTranslations } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
@@ -27,8 +28,10 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
     openGraph: {
       title: t('title'),
       description: t('description'),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/impressum`,
       siteName: 'park.fan',
       type: 'website',
@@ -50,11 +53,7 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
     alternates: {
       canonical: `/${locale}/impressum`,
       languages: {
-        en: '/en/impressum',
-        de: '/de/impressum',
-        nl: '/nl/impressum',
-        fr: '/fr/impressum',
-        es: '/es/impressum',
+        ...generateAlternateLanguages((l) => `/${l}/impressum`),
         'x-default': '/en/impressum',
       },
     },

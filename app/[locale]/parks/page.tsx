@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
@@ -23,8 +24,10 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
     openGraph: {
       title: t('title'),
       description: t('description'),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/parks`,
       siteName: 'park.fan',
       type: 'website',
@@ -46,11 +49,7 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
     alternates: {
       canonical: `/${locale}/parks`,
       languages: {
-        en: `/en/parks`,
-        de: `/de/parks`,
-        nl: `/nl/parks`,
-        fr: `/fr/parks`,
-        es: `/es/parks`,
+        ...generateAlternateLanguages((l) => `/${l}/parks`),
         'x-default': '/en/parks',
       },
     },

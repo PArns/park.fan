@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { notFound, redirect } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -62,8 +63,10 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     openGraph: {
       title: t('titleTemplate', { park: park.name, city: cityName }),
       description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       siteName: 'park.fan',
       type: 'website',
@@ -85,11 +88,9 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       languages: {
-        en: `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
-        de: `/de/parks/${continent}/${country}/${city}/${parkSlug}`,
-        nl: `/nl/parks/${continent}/${country}/${city}/${parkSlug}`,
-        fr: `/fr/parks/${continent}/${country}/${city}/${parkSlug}`,
-        es: `/es/parks/${continent}/${country}/${city}/${parkSlug}`,
+        ...generateAlternateLanguages(
+          (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}`
+        ),
         'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
     },

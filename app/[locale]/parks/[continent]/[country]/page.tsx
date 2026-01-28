@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
@@ -52,8 +53,10 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
     openGraph: {
       title: t('titleTemplate', { location: countryName }),
       description: t('metaDescriptionTemplate', { location: countryName }),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/parks/${continent}/${country}`,
       siteName: 'park.fan',
       type: 'website',
@@ -75,11 +78,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}`,
       languages: {
-        en: `/en/parks/${continent}/${country}`,
-        de: `/de/parks/${continent}/${country}`,
-        nl: `/nl/parks/${continent}/${country}`,
-        fr: `/fr/parks/${continent}/${country}`,
-        es: `/es/parks/${continent}/${country}`,
+        ...generateAlternateLanguages((l) => `/${l}/parks/${continent}/${country}`),
         'x-default': `/en/parks/${continent}/${country}`,
       },
     },

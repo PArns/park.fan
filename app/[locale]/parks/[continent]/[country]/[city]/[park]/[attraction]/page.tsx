@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { notFound, redirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import {
@@ -96,8 +97,10 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         park: park?.name || '',
         city: cityName,
       }),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       siteName: 'park.fan',
       type: 'website',
@@ -130,11 +133,9 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     alternates: {
       canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       languages: {
-        en: `/en/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-        de: `/de/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-        nl: `/nl/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-        fr: `/fr/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-        es: `/es/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+        ...generateAlternateLanguages(
+          (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`
+        ),
         'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       },
     },
@@ -177,10 +178,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Merge history and schedule data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
-        ...parkAttraction,
-        history: attractionData?.history || parkAttraction.history,
-        schedule: attractionData?.schedule,
-      }
+      ...parkAttraction,
+      history: attractionData?.history || parkAttraction.history,
+      schedule: attractionData?.schedule,
+    }
     : null;
 
   if (!park || !attraction) {
@@ -314,10 +315,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             >
               <div className="relative z-10 pb-12">
                 {status === 'OPERATING' &&
-                !isParkClosed &&
-                mainQueue &&
-                'waitTime' in mainQueue &&
-                mainQueue.waitTime !== null ? (
+                  !isParkClosed &&
+                  mainQueue &&
+                  'waitTime' in mainQueue &&
+                  mainQueue.waitTime !== null ? (
                   <div className="flex flex-row items-center gap-8">
                     <div className="flex items-baseline gap-2">
                       <span className="text-5xl font-bold">
@@ -340,7 +341,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         )}
                       >
                         {attraction.trend.toLowerCase() === 'down' ||
-                        attraction.trend.toLowerCase() === 'decreasing' ? (
+                          attraction.trend.toLowerCase() === 'decreasing' ? (
                           <TrendingDown className="h-5 w-5" />
                         ) : attraction.trend.toLowerCase() === 'up' ||
                           attraction.trend.toLowerCase() === 'increasing' ? (
@@ -348,7 +349,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         ) : (
                           <Minus className="h-5 w-5" />
                         )}
-                        {}
+                        { }
                         <span className="capitalize">
                           {tCommon(attraction.trend.toLowerCase() as string)}
                         </span>
@@ -379,15 +380,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {/* Status */}
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
               <Badge
-                className={`text-base ${
-                  status === 'OPERATING'
-                    ? 'bg-status-operating'
-                    : status === 'DOWN'
-                      ? 'bg-status-down'
-                      : status === 'REFURBISHMENT'
-                        ? 'bg-status-refurbishment'
-                        : 'bg-status-closed'
-                } text-white`}
+                className={`text-base ${status === 'OPERATING'
+                  ? 'bg-status-operating'
+                  : status === 'DOWN'
+                    ? 'bg-status-down'
+                    : status === 'REFURBISHMENT'
+                      ? 'bg-status-refurbishment'
+                      : 'bg-status-closed'
+                  } text-white`}
               >
                 <StatusIcon className="mr-1 h-4 w-4" />
                 {config.label}

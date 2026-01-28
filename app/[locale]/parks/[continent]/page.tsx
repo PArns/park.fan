@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
@@ -36,8 +37,10 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
     openGraph: {
       title: t('titleTemplate', { location: continentName }),
       description: t('metaDescriptionTemplate', { location: continentName }),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/parks/${continent}`,
       siteName: 'park.fan',
       type: 'website',
@@ -59,11 +62,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
     alternates: {
       canonical: `/${locale}/parks/${continent}`,
       languages: {
-        en: `/en/parks/${continent}`,
-        de: `/de/parks/${continent}`,
-        nl: `/nl/parks/${continent}`,
-        fr: `/fr/parks/${continent}`,
-        es: `/es/parks/${continent}`,
+        ...generateAlternateLanguages((l) => `/${l}/parks/${continent}`),
         'x-default': `/en/parks/${continent}`,
       },
     },

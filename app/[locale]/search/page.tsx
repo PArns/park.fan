@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { locales, generateAlternateLanguages } from '@/i18n/config';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
@@ -31,8 +32,10 @@ export async function generateMetadata({
     openGraph: {
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
-      locale: locale === 'de' ? 'de_DE' : 'en_US',
-      alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
+      locale: `${locale}_${locale.toUpperCase()}`,
+      alternateLocale: locales
+        .filter((l) => l !== locale)
+        .map((l) => `${l}_${l.toUpperCase()}`),
       url: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       siteName: 'park.fan',
       images: [
@@ -53,12 +56,10 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       languages: {
-        en: '/en/search',
-        de: '/de/search',
-        nl: '/nl/search',
-        fr: '/fr/search',
-        es: '/es/search',
-        'x-default': '/en/search',
+        ...generateAlternateLanguages(
+          (l) => `/${l}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`
+        ),
+        'x-default': `/en/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       },
     },
   };
@@ -154,11 +155,10 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
             {result.status && (
               <Badge
                 variant="outline"
-                className={`text-xs ${
-                  isOpen
-                    ? 'border-status-operating text-status-operating'
-                    : 'border-status-closed text-status-closed'
-                }`}
+                className={`text-xs ${isOpen
+                  ? 'border-status-operating text-status-operating'
+                  : 'border-status-closed text-status-closed'
+                  }`}
               >
                 {isOpen ? t('open') : t('closed')}
               </Badge>
@@ -177,7 +177,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
                 result.city,
                 result.country
                   ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
-                    result.country
+                  result.country
                   : null,
               ]
                 .filter(Boolean)
