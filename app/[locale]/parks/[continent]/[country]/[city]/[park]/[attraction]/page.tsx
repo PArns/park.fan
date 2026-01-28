@@ -72,17 +72,29 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
+  const cityName = park?.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+
   return {
-    title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
+    title: t('titleTemplate', {
+      attraction: attraction.name,
+      park: park?.name || '',
+      city: cityName,
+    }),
     description: t('metaDescriptionTemplate', {
       attraction: attraction.name,
       park: park?.name || '',
+      city: cityName,
     }),
     openGraph: {
-      title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
+      title: t('titleTemplate', {
+        attraction: attraction.name,
+        park: park?.name || '',
+        city: cityName,
+      }),
       description: t('metaDescriptionTemplate', {
         attraction: attraction.name,
         park: park?.name || '',
+        city: cityName,
       }),
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
@@ -103,10 +115,15 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('titleTemplate', { attraction: attraction.name, park: park?.name || '' }),
+      title: t('titleTemplate', {
+        attraction: attraction.name,
+        park: park?.name || '',
+        city: cityName,
+      }),
       description: t('metaDescriptionTemplate', {
         attraction: attraction.name,
         park: park?.name || '',
+        city: cityName,
       }),
       images: [ogImageUrl],
     },

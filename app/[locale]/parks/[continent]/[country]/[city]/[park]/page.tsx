@@ -54,12 +54,14 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
+  const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+
   return {
-    title: t('titleTemplate', { park: park.name }),
-    description: t('metaDescriptionTemplate', { park: park.name }),
+    title: t('titleTemplate', { park: park.name, city: cityName }),
+    description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
     openGraph: {
-      title: t('titleTemplate', { park: park.name }),
-      description: t('metaDescriptionTemplate', { park: park.name }),
+      title: t('titleTemplate', { park: park.name, city: cityName }),
+      description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
       locale: locale === 'de' ? 'de_DE' : 'en_US',
       alternateLocale: locale === 'de' ? 'en_US' : 'de_DE',
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
