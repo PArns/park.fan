@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+import { format, startOfMonth, endOfMonth } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { notFound, redirect } from 'next/navigation';
@@ -7,7 +7,6 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
-import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { ParkStatus } from '@/components/parks/park-status';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -160,33 +159,21 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Fetch integrated calendar data (replaces separate holiday/schedule calls)
-  let calendarData: IntegratedCalendarResponse | null = null;
-  try {
-    calendarData = await getIntegratedCalendar(
-      continent,
-      country,
-      city,
-      parkSlug,
-      { includeHourly: 'today+tomorrow' } // Include hourly for today and tomorrow
-    );
-  } catch (error) {
-    console.error('[Calendar] Failed to fetch calendar data:', error);
-    // Provide fallback empty calendar
-    calendarData = {
-      meta: {
-        parkId: park.id,
-        slug: parkSlug,
-        timezone: park.timezone,
-        generatedAt: new Date().toISOString(),
-        requestRange: {
-          from: format(new Date(), 'yyyy-MM-dd'),
-          to: format(new Date(), 'yyyy-MM-dd'),
-        },
+  // Calendar data will be loaded client-side when tab is activated
+  // Provide minimal initial data structure
+  const calendarData: IntegratedCalendarResponse = {
+    meta: {
+      parkId: park.id,
+      slug: parkSlug,
+      timezone: park.timezone,
+      generatedAt: new Date().toISOString(),
+      requestRange: {
+        from: format(startOfMonth(new Date()), 'yyyy-MM-dd'),
+        to: format(endOfMonth(new Date()), 'yyyy-MM-dd'),
       },
-      days: [],
-    };
-  }
+    },
+    days: [],
+  };
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');

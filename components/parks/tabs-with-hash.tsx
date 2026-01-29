@@ -25,8 +25,8 @@ import type {
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
 });
-const ParkCalendar = dynamic(
-  () => import('@/components/parks/park-calendar').then((mod) => mod.ParkCalendar),
+const ParkCalendarGrid = dynamic(
+  () => import('@/components/parks/park-calendar-grid').then((mod) => mod.ParkCalendarGrid),
   {
     ssr: false,
   }
@@ -86,9 +86,16 @@ export function TabsWithHash({
 
     const handleHashChange = () => {
       const hash = window.location.hash.slice(1);
+
+      // Check if hash starts with 'calendar' (e.g., 'calendar' or 'calendar-2026-04')
+      let tabToActivate = hash;
+      if (hash.startsWith('calendar-')) {
+        tabToActivate = 'calendar';
+      }
+
       const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map'];
-      if (validTabs.includes(hash)) {
-        setActiveTab(hash);
+      if (validTabs.includes(tabToActivate)) {
+        setActiveTab(tabToActivate);
 
         // Scroll with a manual offset calculation for better reliability
         setTimeout(() => {
@@ -161,8 +168,19 @@ export function TabsWithHash({
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
+
+    // Preserve calendar month hash if switching to calendar tab
+    let newHash = value;
+    if (value === 'calendar') {
+      const currentHash = window.location.hash.slice(1);
+      // If current hash is calendar-YYYY-MM, keep it
+      if (currentHash.match(/^calendar-\d{4}-\d{2}$/)) {
+        newHash = currentHash;
+      }
+    }
+
     // Update URL hash without triggering navigation
-    window.history.replaceState(null, '', `${pathname}#${value}`);
+    window.history.replaceState(null, '', `${pathname}#${newHash}`);
   };
 
   // Flatten attractions for Fuse.js
@@ -203,8 +221,44 @@ export function TabsWithHash({
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
+  // Render skeleton while mounting to prevent layout shift
   if (!isMounted) {
-    return null; // Or a skeleton/placeholder
+    return (
+      <div ref={tabsRef} className="scroll-mt-20">
+        <Tabs value={defaultValue}>
+          <TabsList className="mb-6 h-auto w-full flex-wrap justify-start">
+            <TabsTrigger value="attractions">
+              {t('attractions')} ({park.attractions?.length || 0})
+            </TabsTrigger>
+            <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
+            <TabsTrigger value="map">{t('map')}</TabsTrigger>
+            {showsAvailable && (
+              <TabsTrigger value="shows">
+                {t('shows')} ({park.shows?.length || 0})
+              </TabsTrigger>
+            )}
+            {restaurantsAvailable && (
+              <TabsTrigger value="restaurants">
+                {t('restaurants')} ({park.restaurants?.length || 0})
+              </TabsTrigger>
+            )}
+          </TabsList>
+          <TabsContent value={defaultValue} className="space-y-6">
+            {/* Skeleton matching actual attraction cards layout */}
+            {landNames.slice(0, 2).map((_, idx) => (
+              <div key={idx} className="space-y-4">
+                <div className="bg-muted/50 h-8 w-48 animate-pulse rounded" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {[...Array(3)].map((_, i) => (
+                    <div key={i} className="bg-muted/50 h-64 animate-pulse rounded-lg" />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </TabsContent>
+        </Tabs>
+      </div>
+    );
   }
 
   return (
@@ -214,6 +268,8 @@ export function TabsWithHash({
           <TabsTrigger value="attractions">
             {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
+          <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
+          <TabsTrigger value="map">{t('map')}</TabsTrigger>
           {showsAvailable && (
             <TabsTrigger value="shows">
               {t('shows')} ({park.shows?.length || 0})
@@ -224,8 +280,6 @@ export function TabsWithHash({
               {t('restaurants')} ({park.restaurants?.length || 0})
             </TabsTrigger>
           )}
-          <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
-          <TabsTrigger value="map">{t('map')}</TabsTrigger>
         </TabsList>
 
         <TabsContent value="attractions">
@@ -334,7 +388,14 @@ export function TabsWithHash({
         )}
 
         <TabsContent value="calendar">
-          <ParkCalendar park={park} calendarData={calendarData} />
+          <ParkCalendarGrid
+            park={park}
+            initialCalendarData={calendarData}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+          />
         </TabsContent>
 
         <TabsContent value="map">

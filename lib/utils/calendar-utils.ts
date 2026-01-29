@@ -488,7 +488,7 @@ export function formatEventDescription(event: CalendarEvent): string {
     }
 
     case 'crowd': {
-      // Handle formatted crowd object from park-calendar.tsx
+      // Handle formatted crowd object from park calendar components
       if (resource.crowd) {
         const crowd = resource.crowd;
         const level = getCrowdLevelLabel(crowd.crowdLevel);

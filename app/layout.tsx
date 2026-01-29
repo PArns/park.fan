@@ -1,9 +1,6 @@
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import './globals.css';
 import './globals.css';
-
-const SITE_NAME = 'park.fan';
-const SITE_URL = 'https://park.fan';
 
 // Metadata is now handled in [locale]/layout.tsx for i18n support
 

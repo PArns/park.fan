@@ -5,7 +5,6 @@ import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
-import { cn } from '@/lib/utils'; // Assuming you have a cn utility
 
 interface AnnounceSectionProps {
   locale: string;
