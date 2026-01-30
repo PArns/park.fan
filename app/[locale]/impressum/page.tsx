@@ -98,7 +98,7 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               </address>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Kontakt</h3>
-              <p className="mb-4">
+              <p className="mb-2">
                 E-Mail:{' '}
                 <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello[ät]park.fan" />
               </p>
@@ -222,7 +222,7 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               </address>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Contact</h3>
-              <p className="mb-4">
+              <p className="mb-2">
                 Email:{' '}
                 <ObfuscatedEmail
                   local="hello"
