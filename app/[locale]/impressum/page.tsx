@@ -6,6 +6,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { LocaleContent } from '@/components/common/locale-content';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
+import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -104,8 +105,7 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               </p>
 
               <p className="mb-4">
-                Tel:{' '}
-                +49 2451 611 00 68
+                Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
               </p>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Redaktionell verantwortlich</h3>
@@ -232,8 +232,7 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               </p>
 
               <p className="mb-4">
-                Tel:{' '}
-                +49 2451 611 00 68
+                Tel: <ObfuscatedPhone number="+49 2451 611 00 68" />
               </p>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Editorially responsible</h3>

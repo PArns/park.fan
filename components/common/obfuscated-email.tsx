@@ -12,7 +12,7 @@ interface ObfuscatedEmailProps {
  * ROT13-like encryption for email obfuscation
  * Shifts characters by 13 positions in the ASCII range
  */
-function rot13(text: string): string {
+export function rot13(text: string): string {
   return text
     .split('')
     .map((char) => {
