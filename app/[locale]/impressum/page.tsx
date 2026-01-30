@@ -103,6 +103,11 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                 <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello[ät]park.fan" />
               </p>
 
+              <p className="mb-4">
+                Tel:{' '}
+                +49 2451 611 00 68
+              </p>
+
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Redaktionell verantwortlich</h3>
               <address className="my-4 not-italic">
                 <strong>Patrick Arns</strong>
@@ -224,6 +229,11 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                   domain="park.fan"
                   displayText="hello [at] park.fan"
                 />
+              </p>
+
+              <p className="mb-4">
+                Tel:{' '}
+                +49 2451 611 00 68
               </p>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Editorially responsible</h3>
