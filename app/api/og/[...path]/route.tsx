@@ -17,6 +17,17 @@ import {
   FlagUS,
   FlagJP,
   FlagCN,
+  FlagAT,
+  FlagBE,
+  FlagDK,
+  FlagIT,
+  FlagPL,
+  FlagSE,
+  FlagCA,
+  FlagMX,
+  FlagKR,
+  FlagAU,
+  FlagBR,
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
 
 export const runtime = 'nodejs';
@@ -36,6 +47,17 @@ const FLAGS: Record<string, React.ComponentType<{ className?: string }>> = {
   'united-states': FlagUS,
   japan: FlagJP,
   china: FlagCN,
+  austria: FlagAT,
+  belgium: FlagBE,
+  denmark: FlagDK,
+  italy: FlagIT,
+  poland: FlagPL,
+  sweden: FlagSE,
+  canada: FlagCA,
+  mexico: FlagMX,
+  'south-korea': FlagKR,
+  australia: FlagAU,
+  brazil: FlagBR,
 };
 
 // Helper to generate sparkline path (StepAfter algorithm matching WaitTimeSparkline)

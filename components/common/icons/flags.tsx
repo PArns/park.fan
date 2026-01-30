@@ -129,3 +129,131 @@ export function FlagCN(props: React.ComponentProps<'svg'>) {
     </svg>
   );
 }
+
+export function FlagAT(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" aria-hidden="true" {...props}>
+      <rect width="900" height="600" fill="#ED2939" />
+      <rect width="900" height="200" y="200" fill="#fff" />
+    </svg>
+  );
+}
+
+export function FlagBE(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2.6" aria-hidden="true" {...props}>
+      <rect width="1" height="2.6" fill="#000" />
+      <rect width="1" height="2.6" x="1" fill="#FDDA24" />
+      <rect width="1" height="2.6" x="2" fill="#EF3340" />
+    </svg>
+  );
+}
+
+export function FlagDK(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 370 280" aria-hidden="true" {...props}>
+      <rect width="370" height="280" fill="#C60C30" />
+      <rect width="40" height="280" x="100" fill="#fff" />
+      <rect width="370" height="40" y="120" fill="#fff" />
+    </svg>
+  );
+}
+
+export function FlagIT(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3 2" aria-hidden="true" {...props}>
+      <rect width="1" height="2" fill="#009246" />
+      <rect width="1" height="2" x="1" fill="#fff" />
+      <rect width="1" height="2" x="2" fill="#CE2B37" />
+    </svg>
+  );
+}
+
+export function FlagPL(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 5" aria-hidden="true" {...props}>
+      <rect width="8" height="2.5" fill="#fff" />
+      <rect width="8" height="2.5" y="2.5" fill="#DC143C" />
+    </svg>
+  );
+}
+
+export function FlagSE(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 10" aria-hidden="true" {...props}>
+      <rect width="16" height="10" fill="#006AA7" />
+      <rect width="2" height="10" x="5" fill="#FECC00" />
+      <rect width="16" height="2" y="4" fill="#FECC00" />
+    </svg>
+  );
+}
+
+export function FlagCA(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" aria-hidden="true" {...props}>
+      <rect width="2" height="1" fill="#d80621" />
+      <rect width="1" height="1" x="0.5" fill="#fff" />
+      <path
+        d="M1.906 0.22l-0.123 0.165-0.123-0.165 0.047 0.283-0.207 0.165 0.254 0.046 0.029 0.287 0.123-0.223 0.123 0.223 0.029-0.287 0.254-0.046-0.207-0.165 0.047-0.283z"
+        transform="matrix(0.4 0 0 0.4 0.6 0.25)"
+        fill="#d80621"
+      />
+    </svg>
+  );
+}
+
+export function FlagMX(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 4" aria-hidden="true" {...props}>
+      <rect width="2.33" height="4" fill="#006847" />
+      <rect width="2.34" height="4" x="2.33" fill="#fff" />
+      <rect width="2.33" height="4" x="4.67" fill="#CE1126" />
+      <circle cx="3.5" cy="2" r="0.7" fill="#8B4513" />
+    </svg>
+  );
+}
+
+export function FlagKR(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 48" aria-hidden="true" {...props}>
+      <rect width="72" height="48" fill="#fff" />
+      <g transform="translate(36, 24) rotate(-33.69)">
+        <path d="M0 -12 A12 12 0 0 0 0 12 A12 12 0 0 0 0 -12" fill="#CD2E3A" />
+        <path d="M0 -12 A12 12 0 0 1 0 12" fill="#0047A0" />
+      </g>
+      <g stroke="#000" strokeWidth="4" strokeLinecap="butt">
+        <path d="M10 10 L22 4 M11 12 L23 6 M12 14 L24 8" />
+        <path d="M50 44 L62 38 M49 42 L61 36 M48 40 L60 34" />
+      </g>
+    </svg>
+  );
+}
+
+export function FlagAU(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" aria-hidden="true" {...props}>
+      <rect width="1280" height="640" fill="#012169" />
+      <path d="M0,0 h640 v320 h-640 z" fill="#012169" />
+      <path d="M0 0 L640 320 M640 0 L0 320" stroke="#fff" strokeWidth="60" />
+      <path d="M320 0 V320 M0 160 H640" stroke="#fff" strokeWidth="60" />
+      <path d="M320 0 V320 M0 160 H640" stroke="#C8102E" strokeWidth="40" />
+      <circle cx="320" cy="480" r="40" fill="#fff" />
+      <circle cx="960" cy="160" r="40" fill="#fff" />
+      <circle cx="1120" cy="300" r="40" fill="#fff" />
+      <circle cx="1120" cy="90" r="40" fill="#fff" />
+      <circle cx="960" cy="480" r="40" fill="#fff" />
+      <circle cx="850" cy="380" r="25" fill="#fff" />
+    </svg>
+  );
+}
+
+export function FlagBR(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" aria-hidden="true" {...props}>
+      <rect width="1000" height="700" fill="#009c3b" />
+      <path d="M100,350 L500,70 L900,350 L500,630 z" fill="#ffdf00" />
+      <circle cx="500" cy="350" r="175" fill="#002776" />
+      <path d="M350,350 A200,200 0 0,0 650,350" fill="none" stroke="#fff" strokeWidth="15" />
+    </svg>
+  );
+}
