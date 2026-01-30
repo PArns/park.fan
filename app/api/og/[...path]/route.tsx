@@ -7,12 +7,36 @@ import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/util
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale } from '@/i18n/config';
+import {
+  FlagDE,
+  FlagGB,
+  FlagNL,
+  FlagFR,
+  FlagES,
+  FlagHK,
+  FlagUS,
+  FlagJP,
+  FlagCN,
+} from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
 
 export const runtime = 'nodejs';
 
 // OG Image dimensions
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+// Flag mapping
+const FLAGS: Record<string, React.ComponentType<{ className?: string }>> = {
+  germany: FlagDE,
+  'united-kingdom': FlagGB,
+  netherlands: FlagNL,
+  france: FlagFR,
+  spain: FlagES,
+  'hong-kong': FlagHK,
+  'united-states': FlagUS,
+  japan: FlagJP,
+  china: FlagCN,
+};
 
 // Helper to generate sparkline path (StepAfter algorithm matching WaitTimeSparkline)
 function generateSparklinePath(
@@ -675,7 +699,27 @@ export async function GET(
                     ) : type === 'GENERIC' ? (
                       <>� park.fan</>
                     ) : (
-                      <>�📍 {locationString}</>
+                      <>
+                        {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
+                          (() => {
+                            const Flag = FLAGS[country.toLowerCase().replace(/\s+/g, '-')];
+                            return (
+                              <Flag
+                                width="56"
+                                height="40"
+                                style={{
+                                  marginRight: '12px',
+                                  borderRadius: '4px',
+                                  objectFit: 'cover',
+                                }}
+                              />
+                            );
+                          })()
+                        ) : (
+                          <span style={{ marginRight: '12px' }}>📍</span>
+                        )}
+                        {locationString}
+                      </>
                     )}
                   </p>
                 </div>
