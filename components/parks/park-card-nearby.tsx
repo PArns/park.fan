@@ -163,7 +163,7 @@ function getScheduleMessage(
               icon: 'opening',
             };
           }
-          // > 7 days: "2. Mai - OffSeason (in 6 Wochen)"
+          // > 7 days: "OffSeason (Öffnet am 2. Mai - in 6 Wochen)"
           else {
             const dateFormatted = nextOpening.toLocaleDateString(locale, {
               day: 'numeric',
@@ -171,11 +171,10 @@ function getScheduleMessage(
               timeZone: timezone,
             });
             const weeks = Math.ceil(totalWeeks);
-            const scheduleLabel = nextSchedule.scheduleType || 'OffSeason';
 
             return {
-              message: `${dateFormatted} - ${scheduleLabel} (in ${weeks} ${t('week', { count: weeks })})`,
-              icon: 'opening',
+              message: `${t('offseason')} (${t('opensOn')} ${dateFormatted} - ${tCommon('in')} ${weeks} ${t('week', { count: weeks })})`,
+              icon: 'offseason',
             };
           }
         }

@@ -3,14 +3,37 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { CrowdLevel } from '@/lib/api/types';
 
-const crowdLevelConfig: Record<string, { colorClass: string }> = {
-  very_low: { colorClass: 'bg-emerald-600 text-white dark:bg-emerald-400 dark:text-slate-900' },
-  low: { colorClass: 'bg-emerald-500 text-white dark:bg-emerald-300 dark:text-slate-900' },
-  moderate: { colorClass: 'bg-blue-600 text-white dark:bg-blue-400 dark:text-slate-900' },
-  high: { colorClass: 'bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900' },
-  very_high: { colorClass: 'bg-rose-600 text-white dark:bg-rose-400 dark:text-slate-900' },
-  extreme: { colorClass: 'bg-red-700 text-white dark:bg-red-400 dark:text-slate-900' },
-  closed: { colorClass: 'bg-slate-300 text-slate-800 dark:bg-slate-400 dark:text-slate-900' },
+import { User, Users, AlertCircle, Ban } from 'lucide-react';
+
+const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }> = {
+  very_low: {
+    colorClass: 'bg-emerald-600 text-white dark:bg-emerald-500/20 dark:text-emerald-200',
+    Icon: User,
+  },
+  low: {
+    colorClass: 'bg-emerald-500 text-white dark:bg-emerald-500/20 dark:text-emerald-200',
+    Icon: User,
+  },
+  moderate: {
+    colorClass: 'bg-blue-600 text-white dark:bg-blue-500/20 dark:text-blue-200',
+    Icon: Users,
+  },
+  high: {
+    colorClass: 'bg-orange-600 text-white dark:bg-orange-500/20 dark:text-orange-200',
+    Icon: Users,
+  },
+  very_high: {
+    colorClass: 'bg-rose-600 text-white dark:bg-rose-500/20 dark:text-rose-200',
+    Icon: Users,
+  },
+  extreme: {
+    colorClass: 'bg-red-700 text-white dark:bg-red-500/20 dark:text-red-200',
+    Icon: AlertCircle,
+  },
+  closed: {
+    colorClass: 'bg-slate-300 text-slate-800 dark:bg-slate-800 dark:text-slate-400',
+    Icon: Ban,
+  },
 };
 
 interface CrowdLevelBadgeProps {
@@ -34,6 +57,7 @@ export function CrowdLevelBadge({ level, showLabel = true, className }: CrowdLev
         className
       )}
     >
+      {config.Icon && <config.Icon className="mr-1.5 h-3 w-3" />}
       {showLabel ? t(level) : null}
     </Badge>
   );

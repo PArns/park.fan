@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Clock, Calendar } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -11,6 +11,7 @@ import type { ScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 interface ParkTimeInfoProps {
   timezone: string;
   todaySchedule?: ScheduleItem | null;
+  nextSchedule?: ScheduleItem | null;
   className?: string;
 }
 
@@ -20,9 +21,15 @@ interface ParkTimeInfoProps {
  * 2. Opening hours for today
  * 3. "Opens in" / "Closes in" messages
  */
-export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInfoProps) {
+export function ParkTimeInfo({
+  timezone,
+  todaySchedule,
+  nextSchedule,
+  className,
+}: ParkTimeInfoProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
   // Update current time every minute
@@ -46,7 +53,7 @@ export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInf
   const formatCurrentTime = () => {
     if (!currentTime) return '—';
     try {
-      return currentTime.toLocaleTimeString('de-DE', {
+      return currentTime.toLocaleTimeString(locale, {
         timeZone: timezone,
         hour: '2-digit',
         minute: '2-digit',
@@ -127,9 +134,86 @@ export function ParkTimeInfo({ timezone, todaySchedule, className }: ParkTimeInf
 
   // Format opening/closing times
 
-  // Don't show the card if park is not operating today or no schedule data
-  if (!todaySchedule || todaySchedule.scheduleType !== 'OPERATING') {
-    return null;
+  // Don't show the card if park is not operating today or no schedule data,
+  // UNLESS we have a nextSchedule to show (OffSeason case)
+  const isOperatingToday = todaySchedule && todaySchedule.scheduleType === 'OPERATING';
+
+  if (!isOperatingToday) {
+    if (!nextSchedule) return null;
+
+    // OffSeason Logic
+    const nextOpening = new Date(nextSchedule.date);
+    const now = new Date(); // This should ideally be timezone aware or strictly relative, but for days diff native Date is often used in this app context.
+    // However, the previous logic in park-card-nearby used specific math.
+    // Let's use a simpler heuristic or replicate logic if needed.
+    // For now, let's assume we show it if we have nextSchedule.
+
+    // We need to calculate if it is > 7 days to show the special "OffSeason (Opens...)" message
+    // Or just show "Opens [Date]" if < 7 days?
+    // The user said: "If the park opens today or tomorrow, show as is. Otherwise like in park card".
+
+    // Let's replicate the logic for > 7 days vs < 7 days from park-card-nearby
+    const dayDiff = Math.ceil((nextOpening.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+    const totalWeeks = dayDiff / 7;
+
+    const dateFormatted = nextOpening.toLocaleDateString(locale, {
+      // Use locale from context if possible, but here we might default or need hook
+      day: 'numeric',
+      month: 'long',
+      timeZone: timezone,
+    }); // Note: using de-DE here hardcoded is risky if not using proper locale.
+    // But the component uses `toLocaleTimeString` later with hardcoded de-DE in `formatCurrentTime`.
+    // We should arguably use the user's locale.
+    // `ParkTimeInfo` doesn't currently receive locale.
+    // `park-card-nearby` received `locale`.
+    // I should probably stick to `t` translation values mostly.
+
+    // Wait, `ParkTimeInfo` uses `useTranslations`.
+
+    // Let's rely on `nextSchedule` display.
+
+    // If > 7 days
+    if (totalWeeks >= 1) {
+      const weeks = Math.ceil(totalWeeks);
+      return (
+        <Card className={className}>
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Calendar className="h-4 w-4" />
+              {t('schedule')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2 text-amber-500">
+              <span className="font-medium">
+                {t('offseason')} ({t('opensOn')} {dateFormatted} - {tCommon('in')} {weeks}{' '}
+                {t('week', { count: weeks })})
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      );
+    } else {
+      // < 1 week, but not today (since isOperatingToday is false)
+      // Show "Opens [Day/Date]"
+      return (
+        <Card className={className}>
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Calendar className="h-4 w-4" />
+              {t('schedule')}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center gap-2">
+              <span className="font-medium">
+                {t('opensOn')} {dateFormatted}
+              </span>
+            </div>
+          </CardContent>
+        </Card>
+      );
+    }
   }
 
   return (

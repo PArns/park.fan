@@ -329,6 +329,7 @@ export interface ParkResponse extends ParkBase {
   weather?: WeatherData;
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
+  nextSchedule?: ScheduleItem | null;
 }
 
 export interface ParkWithAttractions extends ParkBase {

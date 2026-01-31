@@ -1,19 +1,32 @@
 'use client';
 
 import { createElement, memo } from 'react';
-import { PartyPopper, Calendar, Backpack, Ban, Ticket } from 'lucide-react';
+import { PartyPopper, Calendar, Backpack, Ban, Ticket, Clock } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useTranslations, useLocale } from 'next-intl';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, nl } from 'date-fns/locale';
-import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
+import {
+  getWeatherIconFromCode,
+  getEventIcon,
+  getWeatherTranslationKey,
+} from '@/lib/utils/calendar-utils';
 
 export interface ParkCalendarDayProps {
   day: CalendarDay;
   isToday: boolean;
 }
+
+// Map crowd level to specific styling for the badge component usage
+// (This was duplicating logic from CrowdLevelBadge, now we delegate to it)
+// But wait, the calendar day used specific border/bg styles for the badge container?
+// No, it used `getCrowdLevelStyle` which returned tailwind classes.
+// The `CrowdLevelBadge` has its own styles.
+// Let's check if we want to replacing the DIV with the Component.
+
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 
 function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
@@ -104,25 +117,7 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
     return borderWidth;
   };
 
-  // Get crowd level badge styling
-  const getCrowdLevelStyle = () => {
-    if (!day.crowdLevel || day.crowdLevel === 'closed') return null;
-
-    const styles = {
-      very_low:
-        'border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/50 dark:text-green-100',
-      low: 'border-lime-200 bg-lime-100 text-lime-800 dark:border-lime-800 dark:bg-lime-900/50 dark:text-lime-100',
-      moderate:
-        'border-yellow-200 bg-yellow-100 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-100',
-      high: 'border-orange-200 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-900/50 dark:text-orange-100',
-      very_high:
-        'border-red-200 bg-red-100 text-red-800 dark:border-red-800 dark:bg-red-900/50 dark:text-red-100',
-      extreme:
-        'border-red-300 bg-red-200 text-red-900 dark:border-red-700 dark:bg-red-800/50 dark:text-red-50',
-    };
-
-    return styles[day.crowdLevel];
-  };
+  // getCrowdLevelStyle was removed in favor of CrowdLevelBadge component
 
   return (
     <Card
@@ -166,10 +161,11 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
         <div className="flex flex-1 flex-col gap-2">
           {/* Crowd Level Badge */}
           {day.crowdLevel && day.crowdLevel !== 'closed' && (
-            <div
-              className={`flex w-full justify-center rounded-md border px-2.5 py-0.5 text-xs font-medium ${getCrowdLevelStyle()}`}
-            >
-              {t(`crowdLevels.${day.crowdLevel}`)}
+            <div className="flex w-full justify-center">
+              <CrowdLevelBadge
+                level={day.crowdLevel}
+                className="w-full justify-center py-0.5 text-[10px]"
+              />
             </div>
           )}
 
@@ -177,6 +173,7 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
           {day.hours && (
             <div className="text-muted-foreground flex flex-col items-center gap-0.5 text-[10px]">
               <div className="flex items-center gap-1">
+                <Clock className="h-3 w-3" />
                 <span className="font-medium">
                   {format(parseISO(day.hours.openingTime), 'HH:mm')} -{' '}
                   {format(parseISO(day.hours.closingTime), 'HH:mm')}
@@ -202,8 +199,12 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                <p>{day.weather.condition}</p>
-                {day.weather.rainChance > 0 && <p>{day.weather.rainChance}% Rain</p>}
+                <p>{t(`weather.${getWeatherTranslationKey(day.weather.icon)}`)}</p>
+                {day.weather.rainChance > 0 && (
+                  <p>
+                    {day.weather.rainChance}% {t('weather.rain')}
+                  </p>
+                )}
               </TooltipContent>
             </Tooltip>
           )}

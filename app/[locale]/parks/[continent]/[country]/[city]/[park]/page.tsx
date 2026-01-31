@@ -290,6 +290,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             <ParkTimeInfo
               timezone={park.timezone}
               todaySchedule={todaySchedule}
+              nextSchedule={park.nextSchedule}
               className="bg-background/60 border-primary/10 backdrop-blur-md"
             />
 
