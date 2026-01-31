@@ -37,7 +37,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 // Flag mapping
-const FLAGS: Record<string, React.ComponentType<{ className?: string }>> = {
+const FLAGS: Record<string, React.ComponentType<React.ComponentProps<'svg'>>> = {
   germany: FlagDE,
   'united-kingdom': FlagGB,
   netherlands: FlagNL,

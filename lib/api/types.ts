@@ -341,6 +341,7 @@ export interface ParkWithAttractions extends ParkBase {
   restaurants?: ParkRestaurant[];
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
+  nextSchedule?: ScheduleItem | null;
   crowdForecast?: ParkDailyPrediction[];
 }
 
