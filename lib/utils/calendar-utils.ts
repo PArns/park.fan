@@ -378,11 +378,11 @@ export function getWeatherTranslationKey(weatherCode: number): string {
 export function getCrowdLevelEmoji(crowdLevel: CrowdLevel | 'closed'): string {
   const emojis: Record<string, string> = {
     very_low: '🟢',
-    low: '🟡',
-    moderate: '🟠',
-    high: '🔴',
-    very_high: '🔴🔴',
-    extreme: '🔴🔴🔴',
+    low: '🟢',
+    moderate: '🟢',
+    high: '🟠',
+    very_high: '🔴',
+    extreme: '🔴',
     closed: '🚫',
   };
 
@@ -396,7 +396,7 @@ export function getCrowdLevelLabel(crowdLevel: CrowdLevel | 'closed'): string {
   const labels: Record<string, string> = {
     very_low: 'Very Low',
     low: 'Low',
-    moderate: 'Moderate',
+    moderate: 'Normal',
     high: 'High',
     very_high: 'Very High',
     extreme: 'Extreme',
@@ -425,15 +425,16 @@ export function getRecommendationLabel(recommendation: Recommendation): string {
 /**
  * Get crowd level color class
  */
+/* Same scale as badge/globals: teal → emerald → green; then orange → rose → red */
 export function getCrowdLevelColor(crowdLevel: CrowdLevel | 'closed'): string {
   const colors: Record<string, string> = {
-    very_low: 'bg-green-100 dark:bg-green-900 border-green-300 dark:border-green-700',
-    low: 'bg-green-50 dark:bg-green-950 border-green-200 dark:border-green-800',
-    moderate: 'bg-yellow-50 dark:bg-yellow-950 border-yellow-200 dark:border-yellow-800',
-    high: 'bg-orange-50 dark:bg-orange-950 border-orange-200 dark:border-orange-800',
-    very_high: 'bg-red-100 dark:bg-red-900 border-red-300 dark:border-red-700',
-    extreme: 'bg-red-200 dark:bg-red-950 border-red-400 dark:border-red-800',
-    closed: 'bg-gray-100 dark:bg-gray-900 border-gray-300 dark:border-gray-700',
+    very_low: 'bg-teal-100 dark:bg-teal-900/70 border-teal-400 dark:border-teal-500',
+    low: 'bg-emerald-100 dark:bg-emerald-900/50 border-emerald-300 dark:border-emerald-600',
+    moderate: 'bg-green-100 dark:bg-green-900/50 border-green-300 dark:border-green-600',
+    high: 'bg-orange-100 dark:bg-orange-900/50 border-orange-300 dark:border-orange-600',
+    very_high: 'bg-rose-100 dark:bg-rose-900/50 border-rose-300 dark:border-rose-600',
+    extreme: 'bg-red-100 dark:bg-red-900/50 border-red-400 dark:border-red-600',
+    closed: 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-600',
   };
 
   return colors[crowdLevel] || colors.moderate;

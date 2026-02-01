@@ -129,13 +129,13 @@
 
 /* Theme Park Specific Colors */
 :root {
-  /* Crowd Level Colors */
-  --crowd-very-low: oklch(0.723 0.219 142.136);
-  --crowd-low: oklch(0.768 0.233 130.85);
-  --crowd-moderate: oklch(0.795 0.184 86.047);
-  --crowd-high: oklch(0.705 0.213 47.604);
-  --crowd-very-high: oklch(0.577 0.245 27.325);
-  --crowd-extreme: oklch(0.505 0.213 27.325);
+  /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
+  --crowd-very-low: oklch(0.52 0.14 192); /* teal – "very low" */
+  --crowd-low: oklch(0.65 0.19 158); /* emerald */
+  --crowd-moderate: oklch(0.68 0.18 142); /* green (yellow-green) – "Normal" (P50) */
+  --crowd-high: oklch(0.68 0.18 55);
+  --crowd-very-high: oklch(0.58 0.22 15);
+  --crowd-extreme: oklch(0.52 0.22 27);
 
   /* Status Colors */
   --status-operating: oklch(0.723 0.219 142.136);
@@ -152,7 +152,7 @@
   --success-foreground: oklch(0.145 0 0);
   --error: oklch(0.577 0.245 27.325); /* Red - same as destructive */
   --error-foreground: oklch(1 0 0);
-  --warning: oklch(0.795 0.184 86.047); /* Yellow - same as crowd-moderate */
+  --warning: oklch(0.795 0.184 86.047); /* Yellow */
   --warning-foreground: oklch(0.145 0 0);
 
   /* Trend Colors */
@@ -162,13 +162,13 @@
 }
 
 .dark {
-  /* Crowd Level Colors - Brighter for dark mode */
-  --crowd-very-low: oklch(0.792 0.209 151.711);
-  --crowd-low: oklch(0.841 0.238 128.85);
-  --crowd-moderate: oklch(0.852 0.199 91.936);
-  --crowd-high: oklch(0.78 0.188 56.113);
-  --crowd-very-high: oklch(0.712 0.194 29.234);
-  --crowd-extreme: oklch(0.637 0.237 25.331);
+  /* Crowd Level Colors – same hues, brighter for dark backgrounds */
+  --crowd-very-low: oklch(0.76 0.16 192); /* teal */
+  --crowd-low: oklch(0.84 0.16 158); /* emerald */
+  --crowd-moderate: oklch(0.84 0.15 142); /* green */
+  --crowd-high: oklch(0.82 0.16 55);
+  --crowd-very-high: oklch(0.78 0.18 15);
+  --crowd-extreme: oklch(0.72 0.2 27);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);
@@ -286,7 +286,7 @@
     border-color: var(--park-primary);
   }
 
-  /* Crowd Backgrounds */
+  /* Crowd Backgrounds, Text & Border (light/dark via .dark variables) */
   .bg-crowd-very-low {
     background-color: var(--crowd-very-low);
   }
@@ -304,6 +304,42 @@
   }
   .bg-crowd-extreme {
     background-color: var(--crowd-extreme);
+  }
+  .text-crowd-very-low {
+    color: var(--crowd-very-low);
+  }
+  .text-crowd-low {
+    color: var(--crowd-low);
+  }
+  .text-crowd-moderate {
+    color: var(--crowd-moderate);
+  }
+  .text-crowd-high {
+    color: var(--crowd-high);
+  }
+  .text-crowd-very-high {
+    color: var(--crowd-very-high);
+  }
+  .text-crowd-extreme {
+    color: var(--crowd-extreme);
+  }
+  .border-crowd-very-low {
+    border-color: var(--crowd-very-low);
+  }
+  .border-crowd-low {
+    border-color: var(--crowd-low);
+  }
+  .border-crowd-moderate {
+    border-color: var(--crowd-moderate);
+  }
+  .border-crowd-high {
+    border-color: var(--crowd-high);
+  }
+  .border-crowd-very-high {
+    border-color: var(--crowd-very-high);
+  }
+  .border-crowd-extreme {
+    border-color: var(--crowd-extreme);
   }
 
   /* Semantic Colors */

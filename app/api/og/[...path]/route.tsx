@@ -106,17 +106,17 @@ function generateSparklinePath(
   return pathD;
 }
 
-// Helper to get crowd level color
+// Helper to get crowd level color (teal → emerald → green → orange → rose → red)
 function getCrowdLevelColor(level: string): string {
   const colors: Record<string, string> = {
-    very_low: '#059669', // emerald-600
+    very_low: '#0d9488', // teal-600
     low: '#10b981', // emerald-500
-    normal: '#2563eb', // blue-600 (modified to match moderate usually) - checking config: moderate is blue-600
-    moderate: '#2563eb', // blue-600
-    higher: '#ea580c', // orange-600 (high is orange-600)
-    high: '#ea580c', // orange-600
-    very_high: '#e11d48', // rose-600
-    extreme: '#b91c1c', // red-700
+    normal: '#22c55e', // green-500 – "Normal" (P50)
+    moderate: '#22c55e', // green-500
+    higher: '#f97316', // orange-500
+    high: '#f97316', // orange-500
+    very_high: '#f43f5e', // rose-500
+    extreme: '#dc2626', // red-600
     full: '#dc2626', // red-600
     closed: '#94a3b8', // slate-400
   };
