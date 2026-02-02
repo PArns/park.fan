@@ -674,6 +674,15 @@
   },
   "datenschutz": {
     "title": "Confidentialité - park.fan",
-    "description": "Politique de confidentialité et protection des données pour park.fan"
+    "description": "Politique de confidentialité et protection des données pour park.fan",
+    "analyticsOptOut": {
+      "description": "Vous pouvez exclure vos propres visites de nos statistiques afin qu'elles n'apparaissent pas dans nos analyses.",
+      "scope": "Ce réglage est enregistré dans votre navigateur et s'applique uniquement à ce site.",
+      "optOut": "Exclure mes visites des statistiques",
+      "optIn": "Inclure mes visites dans les statistiques",
+      "statusExcluded": "Vos visites sont actuellement exclues de nos statistiques.",
+      "statusIncluded": "Vos visites sont actuellement incluses dans nos statistiques.",
+      "loading": "…"
+    }
   }
 }

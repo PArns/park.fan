@@ -674,6 +674,15 @@
   },
   "datenschutz": {
     "title": "Privacybeleid - park.fan",
-    "description": "Privacybeleid en gegevensbescherming informatie voor park.fan"
+    "description": "Privacybeleid en gegevensbescherming informatie voor park.fan",
+    "analyticsOptOut": {
+      "description": "U kunt uw eigen bezoeken uitsluiten van onze statistieken zodat ze niet in onze analyses verschijnen.",
+      "scope": "Deze instelling wordt in uw browser opgeslagen en geldt alleen voor deze website.",
+      "optOut": "Mijn bezoeken uitsluiten van statistieken",
+      "optIn": "Mijn bezoeken opnemen in statistieken",
+      "statusExcluded": "Uw bezoeken worden momenteel niet in onze statistieken meegenomen.",
+      "statusIncluded": "Uw bezoeken worden momenteel wel in onze statistieken meegenomen.",
+      "loading": "…"
+    }
   }
 }

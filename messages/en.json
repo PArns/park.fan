@@ -675,6 +675,15 @@
   },
   "datenschutz": {
     "title": "Privacy Policy - park.fan",
-    "description": "Privacy policy and data protection information for park.fan"
+    "description": "Privacy policy and data protection information for park.fan",
+    "analyticsOptOut": {
+      "description": "You can exclude your own visits from our statistics so they do not appear in our analytics.",
+      "scope": "This setting is stored in your browser and applies only to this website.",
+      "optOut": "Exclude my visits from statistics",
+      "optIn": "Include my visits in statistics",
+      "statusExcluded": "Your visits are currently excluded from our statistics.",
+      "statusIncluded": "Your visits are currently included in our statistics.",
+      "loading": "…"
+    }
   }
 }

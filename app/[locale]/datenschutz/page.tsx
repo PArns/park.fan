@@ -4,6 +4,7 @@ import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
+import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
 import { LocaleContent } from '@/components/common/locale-content';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -629,6 +630,8 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                   https://www.e-recht24.de
                 </a>
               </p>
+
+              <AnalyticsOptOut />
             </div>
           }
           en={
@@ -1145,6 +1148,8 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                   https://www.e-recht24.de
                 </a>
               </p>
+
+              <AnalyticsOptOut />
             </div>
           }
         />

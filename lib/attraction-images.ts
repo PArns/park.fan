@@ -8,7 +8,8 @@
  */
 export const ATTRACTION_IMAGES: Record<string, string> = {
   'attractiepark-toverland/fenix': '/images/parks/attractiepark-toverland/fenix.jpg',
-  'attractiepark-toverland/maximus-blitzbahn': '/images/parks/attractiepark-toverland/maximus-blitzbahn.jpeg',
+  'attractiepark-toverland/maximus-blitzbahn':
+    '/images/parks/attractiepark-toverland/maximus-blitzbahn.jpeg',
   'attractiepark-toverland/troy': '/images/parks/attractiepark-toverland/troy.jpg',
   'attractiepark-toverland/villa-fiasko': '/images/parks/attractiepark-toverland/villa-fiasko.jpg',
   'bobbejaanland/fury': '/images/parks/bobbejaanland/fury.jpg',
