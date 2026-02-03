@@ -1,7 +1,7 @@
 'use client';
 
 import { createElement, memo } from 'react';
-import { PartyPopper, Calendar, Backpack, Ban, Ticket, Clock } from 'lucide-react';
+import { PartyPopper, Calendar, Backpack, Ban, Ticket, Clock, HelpCircle } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
@@ -49,13 +49,21 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
   const month = format(dayDate, 'MMM', { locale: dateLocale });
 
   // Get schedule icon and tooltip text
-  // Priority: Closed > Public Holiday > School Vacation > Bridge Day
+  // Priority: CLOSED / UNKNOWN (by status) > Public Holiday > School Vacation > Bridge Day
+  // UNKNOWN = no schedule data yet (e.g. month not published); CLOSED = park confirmed closed.
   const getScheduleIcon = () => {
-    if (day.status !== 'OPERATING') {
+    if (day.status === 'CLOSED') {
       return {
         Icon: Ban,
         color: 'text-red-500 dark:text-red-400',
         tooltip: tCommon('closed'),
+      };
+    }
+    if (day.status === 'UNKNOWN') {
+      return {
+        Icon: HelpCircle,
+        color: 'text-gray-500 dark:text-gray-400',
+        tooltip: t('calendarView.details.schedule.scheduleNotYetAvailable'),
       };
     }
 
@@ -91,12 +99,15 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
   };
 
   // Determine border color based on schedule
-  // Priority: Park Closed > Public Holiday > School Vacation > Bridge Day
+  // Priority: Park CLOSED > UNKNOWN (neutral) > Public Holiday > School Vacation > Bridge Day
   const getBorderColor = () => {
     const borderWidth = isToday ? 'border-4' : 'border';
 
-    if (day.status !== 'OPERATING') {
+    if (day.status === 'CLOSED') {
       return `${borderWidth} border-red-500 dark:border-red-600`;
+    }
+    if (day.status === 'UNKNOWN') {
+      return `${borderWidth} border-gray-300 dark:border-gray-600`;
     }
 
     if (day.isHoliday || day.isPublicHoliday) {
@@ -122,8 +133,8 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
   return (
     <Card
       className={`flex h-full flex-col gap-1 p-2 ${getBorderColor()} ${
-        day.status !== 'OPERATING' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''
-      }`}
+        day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''
+      } ${day.status === 'UNKNOWN' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
     >
       {/* Header: Stacked Layout */}
       <div className="mb-1 flex items-start justify-between">
@@ -226,12 +237,21 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
             </div>
           )}
         </div>
-      ) : (
+      ) : day.status === 'CLOSED' ? (
         <div className="flex flex-1 flex-col items-center justify-center p-2 text-center">
           <div className="flex flex-col items-center gap-1">
             <Ban className="h-4 w-4 text-red-500 opacity-50" />
             <span className="text-muted-foreground text-[10px] font-medium text-red-500/80">
               {tCommon('closed')}
+            </span>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-1 flex-col items-center justify-center p-2 text-center">
+          <div className="flex flex-col items-center gap-1">
+            <HelpCircle className="h-4 w-4 text-gray-500 opacity-70 dark:text-gray-400" />
+            <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400">
+              {t('calendarView.details.schedule.scheduleNotYetAvailable')}
             </span>
           </div>
         </div>

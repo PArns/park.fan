@@ -251,6 +251,7 @@
         "schedule": {
           "title": "Park Schema",
           "closed": "Park is Gesloten",
+          "scheduleNotYetAvailable": "Openingstijden nog niet beschikbaar",
           "open": "Open",
           "openingHours": "Openingstijden",
           "ticketPrice": "Ticketprijs: {price}",

@@ -1,4 +1,4 @@
-import { format, startOfMonth, endOfMonth } from 'date-fns';
+import { format, startOfMonth, endOfMonth, addMonths } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { notFound, redirect } from 'next/navigation';
@@ -6,6 +6,7 @@ import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { ParkStatus } from '@/components/parks/park-status';
 import { WeatherCard } from '@/components/parks/weather-card';
@@ -159,21 +160,33 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Calendar data will be loaded client-side when tab is activated
-  // Provide minimal initial data structure
-  const calendarData: IntegratedCalendarResponse = {
-    meta: {
-      parkId: park.id,
-      slug: parkSlug,
-      timezone: park.timezone,
-      generatedAt: new Date().toISOString(),
-      requestRange: {
-        from: format(startOfMonth(new Date()), 'yyyy-MM-dd'),
-        to: format(endOfMonth(new Date()), 'yyyy-MM-dd'),
+  // Pre-fetch calendar for current month + next 3 months so opening hours
+  // are available in advance (e.g. Efteling May)
+  const calendarMonthsAhead = 3;
+  const calendarFrom = startOfMonth(new Date());
+  const calendarTo = endOfMonth(addMonths(new Date(), calendarMonthsAhead));
+  let calendarData: IntegratedCalendarResponse;
+  try {
+    calendarData = await getIntegratedCalendar(continent, country, city, parkSlug, {
+      from: format(calendarFrom, 'yyyy-MM-dd'),
+      to: format(calendarTo, 'yyyy-MM-dd'),
+      includeHourly: 'none',
+    });
+  } catch {
+    calendarData = {
+      meta: {
+        parkId: park.id,
+        slug: parkSlug,
+        timezone: park.timezone,
+        generatedAt: new Date().toISOString(),
+        requestRange: {
+          from: format(calendarFrom, 'yyyy-MM-dd'),
+          to: format(calendarTo, 'yyyy-MM-dd'),
+        },
       },
-    },
-    days: [],
-  };
+      days: [],
+    };
+  }
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');

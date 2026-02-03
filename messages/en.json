@@ -251,6 +251,7 @@
         "schedule": {
           "title": "Park Schedule",
           "closed": "Park is Closed",
+          "scheduleNotYetAvailable": "Opening hours not yet available",
           "open": "Open",
           "openingHours": "Operating Hours",
           "ticketPrice": "Ticket Price: {price}",

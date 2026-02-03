@@ -245,6 +245,7 @@
         "schedule": {
           "title": "Öffnungszeiten",
           "closed": "Park geschlossen",
+          "scheduleNotYetAvailable": "Öffnungszeiten noch nicht verfügbar",
           "open": "Geöffnet",
           "openingHours": "Betriebszeiten",
           "ticketPrice": "Ticketpreis: {price}",

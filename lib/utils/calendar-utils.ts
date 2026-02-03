@@ -454,6 +454,9 @@ export function formatEventDescription(event: CalendarEvent): string {
       if (schedule.scheduleType === 'CLOSED') {
         return resource.details || schedule.description || 'Park is closed';
       }
+      if (schedule.scheduleType === 'UNKNOWN') {
+        return 'Opening hours not yet available';
+      }
       if (schedule.openingTime && schedule.closingTime) {
         return `Open: ${schedule.openingTime.substring(0, 5)} - ${schedule.closingTime.substring(0, 5)}`;
       }

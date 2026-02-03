@@ -251,6 +251,7 @@
         "schedule": {
           "title": "Horario del Parque",
           "closed": "Parque Cerrado",
+          "scheduleNotYetAvailable": "Horario aún no disponible",
           "open": "Abierto",
           "openingHours": "Horas de Operación",
           "ticketPrice": "Precio Entrada: {price}",
