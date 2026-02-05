@@ -102,7 +102,9 @@ export async function GET(request: NextRequest) {
     if (limit != null && limit !== '') apiUrl.searchParams.set('limit', limit);
     if (ipDebug != null && ipDebug !== '') apiUrl.searchParams.set('ip', ipDebug);
 
-    // Without lat/lng the backend needs a public client IP for GeoIP. Don't call if we have none or only local.
+    // Frontend always calls this route (/api/nearby), never api.park.fan directly → we are the proxy.
+    // Backend sees our server IP unless we forward the client IP for GeoIP (no lat/lng).
+    // Without a public client IP we skip the backend call (see useIpFallback below).
     const forwardedFromProxy =
       request.headers.get('x-forwarded-for') ?? request.headers.get('x-real-ip') ?? '';
     const raw = forwardedFromProxy ? forwardedFromProxy.trim() : getClientIpFromRequest(request);

@@ -435,6 +435,7 @@
     "locationUnavailableDescription": "We konden je locatie niet bepalen. Je kunt locatietoegang inschakelen voor nauwkeurigere resultaten of het later opnieuw proberen.",
     "loadError": "Parken in de buurt laden mislukt",
     "loadErrorDescription": "Er is iets misgegaan bij het laden van parken in de buurt. Probeer het opnieuw.",
+    "locationHint": "Parken in de buurt zijn nauwkeuriger als je locatietoegang inschakelt.",
     "youAreIn": "Je bent hier",
     "awayFrom": "van",
     "nearestAttractions": "Dichtstbijzijnde Attracties",

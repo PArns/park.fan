@@ -213,6 +213,15 @@ export function NearbyParksCard() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
+            {!position && (
+              <div className="bg-muted/50 border-border flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
+                <span className="text-muted-foreground">{t('locationHint')}</span>
+                <Button onClick={refresh} size="sm" variant="outline">
+                  <Navigation className="mr-1.5 h-3.5 w-3.5" />
+                  {t('enable')}
+                </Button>
+              </div>
+            )}
             {/* Park Info */}
             {parkMapUrl ? (
               <Link
@@ -379,6 +388,15 @@ export function NearbyParksCard() {
           </CardTitle>
         </CardHeader>
         <CardContent>
+          {!position && (
+            <div className="bg-muted/50 border-border mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
+              <span className="text-muted-foreground">{t('locationHint')}</span>
+              <Button onClick={refresh} size="sm" variant="outline">
+                <Navigation className="mr-1.5 h-3.5 w-3.5" />
+                {t('enable')}
+              </Button>
+            </div>
+          )}
           <ul className="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
             {parks.map((park, index) => {
               // Hide items > 1 (index 2+) on mobile if not expanded

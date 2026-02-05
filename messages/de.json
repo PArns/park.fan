@@ -435,6 +435,7 @@
     "locationUnavailableDescription": "Dein Standort konnte nicht ermittelt werden. Du kannst den Standortzugriff aktivieren für genauere Ergebnisse oder es später erneut versuchen.",
     "loadError": "Parks in der Nähe konnten nicht geladen werden",
     "loadErrorDescription": "Beim Laden der Parks in der Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
+    "locationHint": "Parks in der Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
     "youAreIn": "Du bist hier",
     "awayFrom": "entfernt",
     "nearestAttractions": "Attraktionen in deiner Nähe",

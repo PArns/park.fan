@@ -435,6 +435,7 @@
     "locationUnavailableDescription": "We could not determine your location. You can enable location access for more accurate results, or try again later.",
     "loadError": "Couldn't Load Nearby Parks",
     "loadErrorDescription": "Something went wrong while loading nearby parks. Please try again.",
+    "locationHint": "Nearby parks are more accurate when you enable location.",
     "youAreIn": "You are here",
     "awayFrom": "away",
     "nearestAttractions": "Nearest Attractions",

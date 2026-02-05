@@ -435,6 +435,7 @@
     "locationUnavailableDescription": "No pudimos determinar tu ubicación. Puedes activar la ubicación para resultados más precisos o intentar de nuevo más tarde.",
     "loadError": "No se pudieron cargar los parques cercanos",
     "loadErrorDescription": "Algo salió mal al cargar los parques cercanos. Por favor, inténtalo de nuevo.",
+    "locationHint": "Los parques cercanos son más precisos si activas la ubicación.",
     "youAreIn": "Estás aquí",
     "awayFrom": "de",
     "nearestAttractions": "Atracciones Más Cercanas",
