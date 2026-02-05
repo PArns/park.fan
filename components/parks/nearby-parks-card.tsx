@@ -130,19 +130,29 @@ export function NearbyParksCard() {
     );
   }
 
-  // Error or denied state
-  if (geoError || permissionDenied || dataError) {
+  // Error state: from API/backend only (browser "permission denied" is not an error here – we use IP fallback)
+  const showErrorCard = dataError && !dataLoading;
+  const isLocationUnavailable =
+    showErrorCard &&
+    typeof (dataError as Error)?.message === 'string' &&
+    ((dataError as Error).message.toLowerCase().includes('location') ||
+      (dataError as Error).message.toLowerCase().includes('geoip') ||
+      (dataError as Error).message.includes('400'));
+
+  if (showErrorCard) {
     return (
       <section className="bg-muted/30 min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
-            {t('permissionDenied')}
+            {isLocationUnavailable ? t('locationUnavailable') : t('loadError')}
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center space-y-4 text-center">
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
-            {t('permissionDeniedDescription')}
+            {isLocationUnavailable
+              ? t('locationUnavailableDescription')
+              : t('loadErrorDescription')}
           </p>
           <Button onClick={refresh} variant="outline">
             <Navigation className="mr-2 h-4 w-4" />

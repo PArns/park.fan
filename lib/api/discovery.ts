@@ -93,27 +93,31 @@ export async function getCitiesInCountry(
 }
 
 /**
- * Get nearby parks or attractions based on user location
- * Client-side only - requires user coordinates
- * Uses Next.js API route to avoid CORS issues
+ * Get nearby parks or attractions based on user coordinates.
+ * Client-side only. Uses Next.js API route (no CORS).
+ * For "no coords" (IP fallback), call /api/nearby without lat/lng or use useNearbyParks() which handles both.
  */
 export async function getNearbyParks(
   latitude: number,
   longitude: number,
-  radiusInMeters: number = 500
+  radiusInMeters: number = 1000,
+  limit: number = 6
 ): Promise<NearbyResponse> {
-  // Use Next.js API route as proxy to avoid CORS
   const url = new URL('/api/nearby', window.location.origin);
   url.searchParams.set('lat', latitude.toString());
   url.searchParams.set('lng', longitude.toString());
   url.searchParams.set('radius', radiusInMeters.toString());
+  url.searchParams.set('limit', limit.toString());
 
-  const response = await fetch(url.toString(), {
-    cache: 'no-store',
-  });
+  const response = await fetch(url.toString(), { cache: 'no-store' });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch nearby parks: ${response.statusText}`);
+    const body = await response.json().catch(() => ({}));
+    const message =
+      typeof body?.error === 'string'
+        ? body.error
+        : `Failed to fetch nearby parks: ${response.statusText}`;
+    throw new Error(message);
   }
 
   return response.json();
