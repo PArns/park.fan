@@ -52,3 +52,4 @@ lib/hero-images.ts
 *.log
 
 !content/home/*.md
+.env*.local

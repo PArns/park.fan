@@ -2,16 +2,28 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Menu, Sparkles } from 'lucide-react';
+import { Menu, MapPin, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
+import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import type { NearbyParksData } from '@/types/nearby';
+
+/** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
+const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
 
 export function Header() {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const { data: nearbyData } = useNearbyParks({ radiusInMeters: 200, limit: 6 });
+  const parks =
+    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
+  const nearestPark = parks[0];
+  const showNearbyPark =
+    nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
 
   return (
     <header className="glass-header sticky top-0 z-50">
@@ -23,17 +35,25 @@ export function Header() {
           className="flex items-center gap-2"
           aria-label="park.fan - Home"
         >
-          <div
-            className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg"
-            aria-hidden="true"
-          >
-            <Sparkles className="text-park-primary-foreground h-5 w-5" />
+          <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
+            <Sparkles className="text-park-primary-foreground h-5 w-5" aria-hidden="true" />
           </div>
           <span className="text-xl font-bold">park.fan</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
+          {showNearbyPark && (
+            <Link
+              href={convertApiUrlToFrontendUrl(nearestPark.url)}
+              prefetch={nearestPark.status === 'OPERATING'}
+              className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
+              aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+            >
+              <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <span className="truncate max-w-[140px]">{nearestPark.name}</span>
+            </Link>
+          )}
           <Link
             href="/"
             prefetch={false}
@@ -82,6 +102,17 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-6 pt-12">
               <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
+                {showNearbyPark && (
+                  <Link
+                    href={convertApiUrlToFrontendUrl(nearestPark.url)}
+                    prefetch={nearestPark.status === 'OPERATING'}
+                    className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                    aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                  >
+                    <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {t('nearbyPark', { parkName: nearestPark.name })}
+                  </Link>
+                )}
                 <Link
                   href="/"
                   prefetch={false}

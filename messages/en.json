@@ -71,6 +71,7 @@
     }
   },
   "home": {
+    "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
     "hero": {
       "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
@@ -79,7 +80,9 @@
     "sections": {
       "explore": "Explore by Region",
       "plan": "Plan Your Perfect Visit",
-      "liveNow": "Parks Open Right Now"
+      "liveNow": "Parks Open Right Now",
+      "liveNowIntro": "Theme parks and amusement parks by region with current open status and live wait times.",
+      "featuresIntro": "Use real-time wait times, crowd predictions, and park calendars to choose the best day and navigate queues at Disney, Universal, Europa-Park, and more."
     },
     "features": {
       "realtime": {
@@ -144,7 +147,8 @@
     "continents": "Continents",
     "explore": "Explore Parks",
     "search": "Search Parks & Attractions",
-    "admin": "Admin"
+    "admin": "Admin",
+    "nearbyPark": "Nearby: {parkName}"
   },
   "theme": {
     "light": "Light",
@@ -153,8 +157,11 @@
     "toggle": "Toggle theme"
   },
   "parks": {
-    "title": "Wait Times, Predictions & Navigation",
-    "subtitle": "Real-time wait times, AI predictions, and crowd calendars for {parks} parks with {attractions} attractions, {shows} shows & {restaurants} restaurants worldwide",
+    "title": "Theme Park Wait Times & AI Crowd Predictions",
+    "heroWelcome": "Welcome to {parkName}",
+    "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",
+    "heroWelcomeAttractions": "{count} attractions operating",
+    "heroParkLink": "To park",
     "operating": "Operating",
     "closed": "Closed",
     "crowdLevel": "Crowd Level",
@@ -441,10 +448,17 @@
     "bannerBody": "park.fan uses your exact position only to show you parks near you and to show you attractions and wait times around you when you're in a park.",
     "bannerPrivacy": "We don't store this data.",
     "youAreIn": "You are here",
+    "youAreInPark": "You're at {parkName}",
+    "nearParkSubtitle": "In your area: {parkName} and more",
     "awayFrom": "away",
     "nearestAttractions": "Nearest Attractions",
     "noParksNearby": "No parks found nearby.",
     "nearbyParks": "Nearby Parks",
+    "nearestOpenTitle": "Nearest open park",
+    "nearbyParksClosedTitle": "Parks near you",
+    "noOpenNearbyFocus": "No open parks nearby – here are the closest.",
+    "goToParkPage": "Go to park page",
+    "nearestOpenBadge": "Nearest open",
     "opens": "Opens",
     "opensOn": "Opens on",
     "opensIn": "Opens in",
@@ -494,6 +508,7 @@
   },
   "stats": {
     "globalStats": "Global Statistics",
+    "globalStatsIntro": "Live data from theme parks and attractions worldwide.",
     "openParks": "Open Parks",
     "totalAttractions": "Total Attractions",
     "mostCrowded": "Most Crowded",
@@ -504,6 +519,7 @@
     "platformStatsDescription": "Real-time data insights across the platform",
     "totalWaitTime": "Total Wait Time",
     "dataPoints": "Data Points",
+    "dataPointsTooltipSuffix": "data points currently",
     "queueDataRecords": "queue data records",
     "alsoTracking": "Also Tracking"
   },

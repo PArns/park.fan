@@ -71,6 +71,7 @@
     }
   },
   "home": {
+    "intro": "park.fan affiche les temps d'attente en direct et l'affluence pour plus de 150 parcs d'attractions et 5 000+ attractions dans le monde—dont Disney, Universal Studios, Europa-Park et Phantasialand. Planifiez votre visite avec les files en direct, horaires et prédictions IA.",
     "hero": {
       "badge": "Prédictions par IA",
       "cta": "Explorer les Parcs",
@@ -79,7 +80,9 @@
     "sections": {
       "explore": "Explorer par Région",
       "plan": "Planifier votre visite",
-      "liveNow": "Parcs ouverts maintenant"
+      "liveNow": "Parcs ouverts maintenant",
+      "liveNowIntro": "Parcs d'attractions par région avec statut d'ouverture actuel et temps d'attente en direct.",
+      "featuresIntro": "Utilisez les temps d'attente en direct, les prédictions d'affluence et les calendriers des parcs pour choisir le meilleur jour et planifier les files à Disney, Universal, Europa-Park et plus."
     },
     "features": {
       "realtime": {
@@ -144,7 +147,8 @@
     "continents": "Continents",
     "explore": "Explorer les Parcs",
     "search": "Recherche Parcs & Attractions",
-    "admin": "Admin"
+    "admin": "Admin",
+    "nearbyPark": "À proximité : {parkName}"
   },
   "theme": {
     "light": "Clair",
@@ -153,8 +157,11 @@
     "toggle": "Changer de thème"
   },
   "parks": {
-    "title": "Temps d'Attente, Prédictions & Navigation",
-    "subtitle": "Temps d'attente en direct, prédictions IA et calendriers d'affluence pour {parks} parcs avec {attractions} attractions, {shows} spectacles & {restaurants} restaurants dans le monde",
+    "title": "Temps d'Attente & Prédictions IA de Parcs",
+    "heroWelcome": "Bienvenue à {parkName}",
+    "heroNearPark": "{parkName} est à proximité (moins de 5 km). Consultez ci-dessous les temps d'attente en direct, horaires d'ouverture et affluence – ou recherchez un autre parc.",
+    "heroWelcomeAttractions": "{count} attractions en fonctionnement",
+    "heroParkLink": "Voir le parc",
     "operating": "Ouvert",
     "closed": "Fermé",
     "crowdLevel": "Niveau d'Affluence",
@@ -441,10 +448,17 @@
     "bannerBody": "park.fan n'utilise votre position exacte que pour afficher les parcs près de vous et pour afficher les attractions et temps d'attente autour de vous dans un parc.",
     "bannerPrivacy": "Nous ne stockons pas ces données.",
     "youAreIn": "Vous êtes ici",
+    "youAreInPark": "Vous êtes à {parkName}",
+    "nearParkSubtitle": "Près de vous : {parkName} et plus",
     "awayFrom": "d'ici",
     "nearestAttractions": "Attractions les plus proches",
     "noParksNearby": "Aucun parc trouvé à proximité.",
     "nearbyParks": "Parcs à Proximité",
+    "nearestOpenTitle": "Parc ouvert le plus proche",
+    "nearbyParksClosedTitle": "Parcs à proximité",
+    "noOpenNearbyFocus": "Aucun parc ouvert à proximité – voici les plus proches.",
+    "goToParkPage": "Aller à la page du parc",
+    "nearestOpenBadge": "Plus proche ouvert",
     "opens": "Ouvre",
     "opensOn": "Ouvre le",
     "opensIn": "Ouvre dans",
@@ -494,6 +508,7 @@
   },
   "stats": {
     "globalStats": "Statistiques Mondiales",
+    "globalStatsIntro": "Données en direct des parcs d'attractions et attractions dans le monde.",
     "openParks": "Parcs Ouverts",
     "totalAttractions": "Total Attractions",
     "mostCrowded": "Le Plus Fréquenté",
@@ -504,6 +519,7 @@
     "platformStatsDescription": "Aperçu des données en temps réel sur la plateforme",
     "totalWaitTime": "Temps d'Attente Total",
     "dataPoints": "Points de Données",
+    "dataPointsTooltipSuffix": "points actuellement",
     "queueDataRecords": "enregistrements files",
     "alsoTracking": "Suit aussi"
   },

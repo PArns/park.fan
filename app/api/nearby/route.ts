@@ -7,8 +7,10 @@ export const dynamic = 'force-dynamic';
 
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;
-/** Max radius in meters. */
+/** Max radius in meters (client may request more; we cap when forwarding to backend). */
 const MAX_RADIUS = 50000;
+/** Backend api.park.fan only accepts radius 0–10000; we cap to avoid 400. */
+const BACKEND_MAX_RADIUS = 10000;
 /** Max limit for nearby_parks (backend default when omitted: 6). */
 const MAX_LIMIT = 50;
 
@@ -61,7 +63,7 @@ export async function GET(request: NextRequest) {
       apiUrl.searchParams.set('lat', lat!);
       apiUrl.searchParams.set('lng', lng!);
     }
-    apiUrl.searchParams.set('radius', String(radiusNum));
+    apiUrl.searchParams.set('radius', String(Math.min(radiusNum, BACKEND_MAX_RADIUS)));
     if (limit != null && limit !== '') apiUrl.searchParams.set('limit', limit);
     if (ipDebug != null && ipDebug !== '') apiUrl.searchParams.set('ip', ipDebug);
 

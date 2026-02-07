@@ -1,12 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, Sparkles, ChevronRight, Map as MapIcon } from 'lucide-react';
+import { Clock, TrendingUp, ChevronRight, Map as MapIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
-import { HeroSearchInput } from '@/components/search/hero-search-input';
 
 import nextDynamic from 'next/dynamic';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -51,7 +50,9 @@ const NearbyParksCard = nextDynamic(
 import { StatsCard } from '@/components/common/stats-card';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
+import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -110,7 +111,6 @@ export default async function HomePage({ params }: HomePageProps) {
 
   const t = await getTranslations('stats');
   const tHome = await getTranslations('home');
-  const tParks = await getTranslations('parks');
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
@@ -140,24 +140,11 @@ export default async function HomePage({ params }: HomePageProps) {
     <div className="flex flex-col">
       <OrganizationStructuredData description={tSeo('description')} />
       <HomepageFAQStructuredData />
-      {/* Hero Section */}
-      <section className="relative overflow-hidden px-4 py-20 md:py-32">
+      {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
+      <section className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 lg:py-28">
         <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto text-center">
-          <Badge variant="secondary" className="mb-4">
-            <Sparkles className="mr-1 h-3 w-3" />
-            {tHome('hero.badge')}
-          </Badge>
-          <h1 className="mb-6 text-3xl font-bold tracking-tight md:text-6xl">{tParks('title')}</h1>
-          <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-lg md:text-xl">
-            {tParks('subtitle', {
-              parks: stats?.counts.parks ?? 50,
-              attractions: stats?.counts.attractions ?? 2000,
-              shows: stats?.counts.shows ?? 500,
-              restaurants: stats?.counts.restaurants ?? 800,
-            })}
-          </p>
-          <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
+          <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} />
         </div>
       </section>
 
@@ -176,21 +163,24 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
 
-      {/* Favorites Section - Above Nearby Parks */}
-      <FavoritesSection />
-
-      {/* Nearby Parks - First section after hero */}
+      {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park */}
       <section className="border-b px-4 py-8">
         <div className="container mx-auto">
           <NearbyParksCard />
         </div>
       </section>
 
+      {/* Favorites Section */}
+      <FavoritesSection />
+
       {/* Global Stats */}
       {stats && (
         <section className="bg-muted/30 border-b px-4 py-12">
           <div className="container mx-auto">
-            <h2 className="mb-8 text-center text-2xl font-semibold">{t('globalStats')}</h2>
+            <h2 className="mb-2 text-center text-2xl font-semibold">{t('globalStats')}</h2>
+            <p className="text-muted-foreground mb-8 text-center text-sm">
+              {t('globalStatsIntro')}
+            </p>
 
             {/* Grid Layout: First row - 2 static cards */}
             <div className="mb-4 grid gap-4 sm:grid-cols-2">
@@ -464,7 +454,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Queue Data Records */}
               <StatsCard
                 title={t('dataPoints')}
-                value={(stats.counts.queueDataRecords / 1000).toFixed(1) + 'k'}
+                value={<CompactNumberWithTooltip value={stats.counts.queueDataRecords} />}
                 description={t('queueDataRecords')}
               />
 
@@ -496,7 +486,7 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="container mx-auto">
             <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.liveNow')}</h2>
             <p className="text-muted-foreground mb-8 text-center text-sm">
-              {tCommon('parks')} weltweit - Live Status
+              {tHome('sections.liveNowIntro')}
             </p>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {continents.map((continent) => {
@@ -549,7 +539,10 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Features Section */}
       <section className="bg-muted/30 border-t px-4 py-16">
         <div className="container mx-auto">
-          <h2 className="mb-12 text-center text-2xl font-semibold">{tHome('sections.plan')}</h2>
+          <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.plan')}</h2>
+          <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-sm leading-relaxed">
+            {tHome('sections.featuresIntro')}
+          </p>
           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">
               <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">

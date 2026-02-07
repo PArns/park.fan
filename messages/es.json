@@ -71,6 +71,7 @@
     }
   },
   "home": {
+    "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
     "hero": {
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
@@ -79,7 +80,9 @@
     "sections": {
       "explore": "Explorar por Región",
       "plan": "Planifica tu visita",
-      "liveNow": "Parques abiertos ahora"
+      "liveNow": "Parques abiertos ahora",
+      "liveNowIntro": "Parques temáticos por región con estado de apertura actual y tiempos de espera en vivo.",
+      "featuresIntro": "Usa tiempos de espera en vivo, predicciones de afluencia y calendarios de parques para elegir el mejor día y planificar colas en Disney, Universal, Europa-Park y más."
     },
     "features": {
       "realtime": {
@@ -144,7 +147,8 @@
     "continents": "Continentes",
     "explore": "Explorar Parques",
     "search": "Buscar Parques y Atracciones",
-    "admin": "Admin"
+    "admin": "Admin",
+    "nearbyPark": "Cerca: {parkName}"
   },
   "theme": {
     "light": "Claro",
@@ -153,8 +157,11 @@
     "toggle": "Cambiar tema"
   },
   "parks": {
-    "title": "Tiempos de Espera, Predicciones y Navegación",
-    "subtitle": "Tiempos de espera en vivo, predicciones IA y calendarios de afluencia para {parks} parques con {attractions} atracciones, {shows} espectáculos y {restaurants} restaurantes en todo el mundo",
+    "title": "Tiempos de Espera & Predicciones IA de Parques",
+    "heroWelcome": "Bienvenido a {parkName}",
+    "heroNearPark": "{parkName} está cerca (a menos de 5 km). Abajo verás tiempos de espera en vivo, horarios y nivel de afluencia – o busca otro parque.",
+    "heroWelcomeAttractions": "{count} atracciones en funcionamiento",
+    "heroParkLink": "Ver parque",
     "operating": "Abierto",
     "closed": "Cerrado",
     "crowdLevel": "Nivel de Afluencia",
@@ -441,10 +448,17 @@
     "bannerBody": "park.fan usa tu posición exacta solo para mostrarte parques cercanos y para mostrarte atracciones y tiempos de espera a tu alrededor cuando estás en un parque.",
     "bannerPrivacy": "No guardamos estos datos.",
     "youAreIn": "Estás aquí",
+    "youAreInPark": "Estás en {parkName}",
+    "nearParkSubtitle": "Por tu zona: {parkName} y más",
     "awayFrom": "de",
     "nearestAttractions": "Atracciones Más Cercanas",
     "noParksNearby": "No se encontraron parques cerca.",
     "nearbyParks": "Parques Cercanos",
+    "nearestOpenTitle": "Parque abierto más cercano",
+    "nearbyParksClosedTitle": "Parques cercanos",
+    "noOpenNearbyFocus": "No hay parques abiertos cerca – aquí los más cercanos.",
+    "goToParkPage": "Ir a la página del parque",
+    "nearestOpenBadge": "Más cercano abierto",
     "opens": "Abre",
     "opensOn": "Abre el",
     "opensIn": "Abre en",
@@ -494,6 +508,7 @@
   },
   "stats": {
     "globalStats": "Estadísticas Globales",
+    "globalStatsIntro": "Datos en vivo de parques temáticos y atracciones en todo el mundo.",
     "openParks": "Parques Abiertos",
     "totalAttractions": "Total Atracciones",
     "mostCrowded": "Más Concurrido",
@@ -504,6 +519,7 @@
     "platformStatsDescription": "Información en tiempo real de la plataforma",
     "totalWaitTime": "Tiempo de Espera Total",
     "dataPoints": "Puntos de Datos",
+    "dataPointsTooltipSuffix": "puntos actualmente",
     "queueDataRecords": "registros de colas",
     "alsoTracking": "También Rastreando"
   },

@@ -1,8 +1,10 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import createWithVercelToolbar from '@vercel/toolbar/plugins/next';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+const withVercelToolbar = createWithVercelToolbar();
 
 const nextConfig: NextConfig = {
   compiler: {
@@ -32,7 +34,7 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    qualities: [75],
+    qualities: [75, 90],
     minimumCacheTTL: 31536000, // 1 year
     remotePatterns: [
       {
@@ -64,4 +66,4 @@ const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-export default withNextIntl(bundleAnalyzer(nextConfig));
+export default withVercelToolbar(withNextIntl(bundleAnalyzer(nextConfig)));

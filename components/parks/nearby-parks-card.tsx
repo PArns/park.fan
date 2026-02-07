@@ -45,7 +45,14 @@ export function NearbyParksCard() {
     setIsInPark,
   } = useGeolocation();
 
-  const { data: nearbyData, isLoading: dataLoading, error: dataError } = useNearbyParks();
+  const {
+    data: nearbyData,
+    isLoading: dataLoading,
+    error: dataError,
+  } = useNearbyParks({
+    radiusInMeters: 200,
+    limit: 6,
+  });
 
   const hasTrackedGranted = useRef(false);
   const hasTrackedDenied = useRef(false);
@@ -68,12 +75,20 @@ export function NearbyParksCard() {
       trackNearbyParksLoaded({
         count: (nearbyData.data as NearbyParksData).parks.length,
         type: 'nearby_parks',
+        in_park: false,
         source: locationSource,
       });
       setIsInPark(false);
     } else if (nearbyData.type === 'in_park') {
       const parkData = nearbyData.data as NearbyAttractionsData;
-      trackNearbyParksLoaded({ count: 1, type: 'in_park', source: locationSource });
+      trackNearbyParksLoaded({
+        count: 1,
+        type: 'in_park',
+        in_park: true,
+        source: locationSource,
+        parkId: parkData.park.id,
+        parkName: parkData.park.name,
+      });
       trackNearbyInParkDetected({
         parkId: parkData.park.id,
         parkName: parkData.park.name,
@@ -199,11 +214,13 @@ export function NearbyParksCard() {
     const park = data.park;
     const attractions = (data.rides || []).slice(0, 5);
 
-    // Extract park URL from first attraction if available
-    const parkMapUrl =
-      attractions.length > 0
-        ? `${convertApiUrlToFrontendUrl(attractions[0].url.split('/attractions/')[0])}#map`
-        : null;
+    // Park page URL (for "Go to park page" CTA); fallback from first attraction
+    const parkPageUrl =
+      (park as { url?: string })?.url ||
+      (attractions.length > 0
+        ? convertApiUrlToFrontendUrl(attractions[0].url.split('/attractions/')[0])
+        : null);
+    const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
       <section className="bg-park-primary/5 border-park-primary/30 relative min-h-[200px] overflow-hidden rounded-xl border py-6 shadow-sm">
@@ -216,7 +233,7 @@ export function NearbyParksCard() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2">
               <MapPin className="text-park-primary h-5 w-5" />
-              {t('youAreIn')}
+              {t('youAreInPark', { parkName: park.name })}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -227,6 +244,17 @@ export function NearbyParksCard() {
                   <Navigation className="mr-1.5 h-3.5 w-3.5" />
                   {t('enable')}
                 </Button>
+              </div>
+            )}
+            {/* Quick navigation: primary CTA to park page when user is in park */}
+            {parkPageUrl && (
+              <div className="mb-4">
+                <Link href={parkPageUrl} prefetch={park.status === 'OPERATING'}>
+                  <Button className="w-full sm:w-auto" size="lg">
+                    <ChevronRight className="mr-2 h-4 w-4" />
+                    {t('goToParkPage')}
+                  </Button>
+                </Link>
               </div>
             )}
             {/* Park Info */}
@@ -243,7 +271,7 @@ export function NearbyParksCard() {
                       <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                     </div>
                     <p className="text-muted-foreground text-sm">
-                      {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
+                      {t('youAreIn')} · {park.status}
                     </p>
                   </div>
                   {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
@@ -279,7 +307,7 @@ export function NearbyParksCard() {
                   <div>
                     <h3 className="text-lg font-semibold">{park.name}</h3>
                     <p className="text-muted-foreground text-sm">
-                      {formatDistance(park.distance)} {t('awayFrom')} · {park.status}
+                      {t('youAreIn')} · {park.status}
                     </p>
                   </div>
                   {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
@@ -368,7 +396,17 @@ export function NearbyParksCard() {
 
   if (nearbyData.type === 'nearby_parks') {
     const data = nearbyData.data as NearbyParksData;
-    const parks = data.parks;
+    const rawParks = data.parks;
+
+    // Sort: open (OPERATING) first, then by distance – so "nearest open" is first open
+    const parks = [...rawParks].sort((a, b) => {
+      const aOpen = a.status === 'OPERATING' ? 1 : 0;
+      const bOpen = b.status === 'OPERATING' ? 1 : 0;
+      if (bOpen !== aOpen) return bOpen - aOpen;
+      return a.distance - b.distance;
+    });
+    const nearestOpenPark = parks.find((p) => p.status === 'OPERATING') ?? null;
+    const hasNoOpenNearby = parks.length > 0 && nearestOpenPark === null;
 
     if (parks.length === 0) {
       return (
@@ -391,8 +429,21 @@ export function NearbyParksCard() {
         <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
-            {t('nearbyParks')} ({parks.length})
+            {nearestOpenPark
+              ? t('nearestOpenTitle')
+              : hasNoOpenNearby
+                ? t('nearbyParksClosedTitle')
+                : t('nearbyParks')}{' '}
+            <span className="text-muted-foreground font-normal">({parks.length})</span>
           </CardTitle>
+          {parks.length > 0 && (
+            <p className="text-muted-foreground mt-1 text-sm">
+              {t('nearParkSubtitle', { parkName: parks[0].name })}
+            </p>
+          )}
+          {hasNoOpenNearby && (
+            <p className="text-muted-foreground mt-1 text-sm">{t('noOpenNearbyFocus')}</p>
+          )}
         </CardHeader>
         <CardContent>
           {!position && (
@@ -431,6 +482,7 @@ export function NearbyParksCard() {
                     nextSchedule={park.nextSchedule}
                     backgroundImage={park.backgroundImage}
                     url={park.url}
+                    highlightAsNearestOpen={nearestOpenPark?.id === park.id}
                   />
                 </li>
               );

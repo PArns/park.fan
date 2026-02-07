@@ -24,11 +24,8 @@ export async function Footer({ locale }: FooterProps) {
               className="flex items-center gap-2"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
-              <div
-                className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg"
-                aria-hidden="true"
-              >
-                <Sparkles className="text-park-primary-foreground h-5 w-5" />
+              <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
+                <Sparkles className="text-park-primary-foreground h-5 w-5" aria-hidden="true" />
               </div>
               <span className="text-xl font-bold">park.fan</span>
             </Link>

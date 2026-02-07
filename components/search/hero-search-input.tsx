@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
-import { trackEvent } from '@/lib/analytics/umami';
+import { trackHeroSearchClicked } from '@/lib/analytics/umami';
 
 interface HeroSearchInputProps {
   placeholder: string;
@@ -153,26 +153,31 @@ export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchI
   // Use the typed placeholder, or fallback to default if something goes wrong (though hook ensures string)
   const displayPlaceholder = typedPlaceholder || defaultPlaceholder;
 
-  // Track hero search clicks
   const handleClick = () => {
-    trackEvent('hero_search_clicked', {
-      placeholderShown: typedPlaceholder || 'default',
-    });
+    trackHeroSearchClicked({ placeholderShown: typedPlaceholder || 'default' });
   };
 
   return (
     <div
-      className="mx-auto w-full max-w-2xl transform transition-all hover:scale-[1.01]"
+      className="group/hero mx-auto w-full max-w-2xl cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.03]"
       onClick={handleClick}
     >
-      <div className="relative">
-        <div className="bg-background/80 shadow-primary/5 absolute -inset-0.5 rounded-xl opacity-30 blur transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
-        <div className="relative">
+      {/* Stable container to avoid CLS: min size so typewriter text changes don't resize the box */}
+      <div className="relative min-h-[3.5rem] w-full">
+        {/* Pulse ring – soft breathing effect */}
+        <div
+          className="border-primary/40 pointer-events-none absolute -inset-1 rounded-2xl border-2"
+          style={{ animation: 'hero-search-pulse 2.5s ease-in-out infinite' }}
+          aria-hidden="true"
+        />
+        {/* Prominent border; min-w-[22ch] keeps width stable when placeholder text length changes */}
+        <div className="border-primary/60 group-hover/hero:border-primary group-hover/hero:shadow-primary/10 relative min-h-[3.5rem] w-full min-w-[22ch] rounded-xl border-2 shadow-md transition-[border-color,box-shadow] duration-200 group-hover/hero:shadow-lg">
           <SearchCommand
             trigger="input"
             placeholder={displayPlaceholder}
             autoFocusOnType={true}
-            className={typedPlaceholder ? 'text-foreground' : 'text-muted-foreground'}
+            searchOpenSource="hero"
+            className={`border-0 !shadow-none ${typedPlaceholder ? 'text-foreground' : 'text-muted-foreground'}`}
           />
         </div>
       </div>

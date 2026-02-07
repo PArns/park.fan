@@ -1,5 +1,6 @@
 /**
- * TypeScript types for /v1/discovery/nearby API endpoint
+ * TypeScript types for /v1/discovery/nearby API endpoint.
+ * Distance in responses (e.g. park.distance) is in meters. Request params (radius) use km.
  */
 
 export interface UserLocation {
@@ -28,6 +29,7 @@ export interface NearbyParkInfo {
   slug: string;
   distance: number;
   status: string;
+  url?: string; // Park page URL (when provided by API)
   analytics?: {
     avgWaitTime?: number;
     crowdLevel?: string;

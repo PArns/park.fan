@@ -38,6 +38,8 @@ interface SearchCommandProps {
   isGlobal?: boolean;
   autoFocusOnType?: boolean;
   size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
+  /** When set, used as source for search_opened when this trigger opens the dialog (e.g. "hero" for hero search field). */
+  searchOpenSource?: 'header' | 'hero';
   className?: string;
 }
 
@@ -48,6 +50,7 @@ export function SearchCommand({
   isGlobal = false,
   autoFocusOnType = false,
   size = 'lg',
+  searchOpenSource = 'header',
   className,
 }: SearchCommandProps) {
   const t = useTranslations('common');
@@ -283,7 +286,7 @@ export function SearchCommand({
           className="relative h-10 w-10 p-0 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2"
           onClick={() => {
             setOpen(true);
-            trackSearchOpened('header');
+            trackSearchOpened(searchOpenSource);
           }}
           aria-label={t('search')}
         >
@@ -302,7 +305,7 @@ export function SearchCommand({
           className="group relative w-full cursor-pointer"
           onClick={() => {
             setOpen(true);
-            trackSearchOpened('header');
+            trackSearchOpened(searchOpenSource);
           }}
         >
           <Search
@@ -351,7 +354,7 @@ export function SearchCommand({
           className="gap-2"
           onClick={() => {
             setOpen(true);
-            trackSearchOpened('hero');
+            trackSearchOpened(searchOpenSource || 'hero');
           }}
         >
           <Search className="h-4 w-4" />

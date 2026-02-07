@@ -71,6 +71,7 @@
     }
   },
   "home": {
+    "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 150 pretparken en 5.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
     "hero": {
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
@@ -79,7 +80,9 @@
     "sections": {
       "explore": "Verkennen per Regio",
       "plan": "Plan je perfecte bezoek",
-      "liveNow": "Parken nu open"
+      "liveNow": "Parken nu open",
+      "liveNowIntro": "Pretparken per regio met actuele openstelling en live wachttijden.",
+      "featuresIntro": "Gebruik realtime wachttijden, druktevoorspellingen en parkkalenders om de beste dag te kiezen en wachtrijen bij Disney, Universal, Europa-Park en meer te plannen."
     },
     "features": {
       "realtime": {
@@ -144,7 +147,8 @@
     "continents": "Continenten",
     "explore": "Ontdek Parken",
     "search": "Zoek Parken & Attracties",
-    "admin": "Admin"
+    "admin": "Admin",
+    "nearbyPark": "In de buurt: {parkName}"
   },
   "theme": {
     "light": "Licht",
@@ -153,8 +157,11 @@
     "toggle": "Thema wisselen"
   },
   "parks": {
-    "title": "Wachttijden, Voorspellingen & Navigatie",
-    "subtitle": "Realtime wachttijden, AI-voorspellingen en drukteskalenders voor {parks} parken met {attractions} attracties, {shows} shows & {restaurants} restaurants wereldwijd",
+    "title": "Pretpark Wachttijden & AI-Drukte Voorspellingen",
+    "heroWelcome": "Welkom in {parkName}",
+    "heroNearPark": "{parkName} is in de buurt (binnen 5 km). Hieronder vind je actuele wachttijden, openingstijden en drukte – of zoek een ander park.",
+    "heroWelcomeAttractions": "{count} attracties in bedrijf",
+    "heroParkLink": "Naar park",
     "operating": "Geopend",
     "closed": "Gesloten",
     "crowdLevel": "Drukteniveau",
@@ -441,10 +448,17 @@
     "bannerBody": "park.fan gebruikt je exacte positie alleen om parken in de buurt te tonen en om attracties en wachttijden om je heen te tonen wanneer je in een park bent.",
     "bannerPrivacy": "We slaan deze gegevens niet op.",
     "youAreIn": "Je bent hier",
+    "youAreInPark": "Je bent in {parkName}",
+    "nearParkSubtitle": "In jouw buurt: {parkName} en meer",
     "awayFrom": "van",
     "nearestAttractions": "Dichtstbijzijnde Attracties",
     "noParksNearby": "Geen parken in de buurt gevonden.",
     "nearbyParks": "Parken in de Buurt",
+    "nearestOpenTitle": "Dichtstbijzijnde open park",
+    "nearbyParksClosedTitle": "Parken in de buurt",
+    "noOpenNearbyFocus": "Geen parken in de buurt open – hier de dichtstbijzijnde.",
+    "goToParkPage": "Naar parkpagina",
+    "nearestOpenBadge": "Dichtstbij open",
     "opens": "Opent",
     "opensOn": "Opent op",
     "opensIn": "Opent over",
@@ -494,6 +508,7 @@
   },
   "stats": {
     "globalStats": "Wereldwijde Statistieken",
+    "globalStatsIntro": "Live gegevens van pretparken en attracties wereldwijd.",
     "openParks": "Open Parken",
     "totalAttractions": "Totaal Attracties",
     "mostCrowded": "Drukste",
@@ -504,6 +519,7 @@
     "platformStatsDescription": "Realtime gegevensinzichten over het platform",
     "totalWaitTime": "Totale Wachttijd",
     "dataPoints": "Datapunten",
+    "dataPointsTooltipSuffix": "punten momenteel",
     "queueDataRecords": "wachtrij records",
     "alsoTracking": "Ook Tracking"
   },

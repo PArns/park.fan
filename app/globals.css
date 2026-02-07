@@ -127,6 +127,17 @@
   }
 }
 
+/* Hero search field: soft pulse on ring */
+@keyframes hero-search-pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
 /* Theme Park Specific Colors */
 :root {
   /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */

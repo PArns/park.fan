@@ -47,6 +47,8 @@ interface ParkCardNearbyProps {
   };
   backgroundImage?: string | null;
   url: string;
+  /** Show a "Nearest open" badge (homepage focus). */
+  highlightAsNearestOpen?: boolean;
 }
 
 function getScheduleMessage(
@@ -211,6 +213,7 @@ export function ParkCardNearby({
   nextSchedule,
   backgroundImage,
   url,
+  highlightAsNearestOpen = false,
 }: ParkCardNearbyProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
@@ -246,6 +249,14 @@ export function ParkCardNearby({
         <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
           <FavoriteStar type="park" id={id} />
         </div>
+        {/* Nearest open park badge (homepage focus) */}
+        {highlightAsNearestOpen && isOpen && (
+          <div className="absolute top-2 left-2 z-20">
+            <Badge className="bg-primary text-primary-foreground border-0 text-xs font-medium shadow-md">
+              {t('nearestOpenBadge')}
+            </Badge>
+          </div>
+        )}
 
         <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
           <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">

@@ -21,15 +21,23 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const radiusInMeters = opts.radiusInMeters ?? 1000;
   const limit = opts.limit ?? 6;
 
-  const { position, loading: geoLoading } = useGeolocation();
+  const { position, loading: geoLoading, initialCheckDone, permissionDenied, error: geoError } =
+    useGeolocation();
+
+  // Prefer browser location: only run when we have coords or we've given up (denied/error).
+  // Never run with IP fallback while we might still get a position.
+  const hasCoords = position != null;
+  const gaveUpOnCoords = permissionDenied || geoError;
+  const canRun = initialCheckDone && !geoLoading && (hasCoords || gaveUpOnCoords);
 
   return useQuery<NearbyResponse>({
     queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit],
     queryFn: async () => {
       const url = new URL('/api/nearby', window.location.origin);
-      if (position) {
-        url.searchParams.set('lat', position.lat.toString());
-        url.searchParams.set('lng', position.lng.toString());
+      const coords = position ?? null;
+      if (coords) {
+        url.searchParams.set('lat', String(coords.lat));
+        url.searchParams.set('lng', String(coords.lng));
       }
       url.searchParams.set('radius', radiusInMeters.toString());
       url.searchParams.set('limit', limit.toString());
@@ -47,7 +55,7 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
 
       return response.json();
     },
-    enabled: !geoLoading,
+    enabled: canRun,
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
   });

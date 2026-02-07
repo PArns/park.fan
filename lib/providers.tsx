@@ -4,16 +4,19 @@ import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GeolocationProvider } from '@/lib/contexts/geolocation-context';
 import { useState, type ReactNode } from 'react';
+import type { DebugGeoMode } from '@/flags';
 
 interface ProvidersProps {
   children: ReactNode;
+  /** From Vercel Toolbar Flags Explorer (debug geo override). */
+  initialDebugGeoMode?: DebugGeoMode;
 }
 
 /**
  * Client-side providers wrapper.
  * Includes theme, geolocation, and data fetching (React Query).
  */
-export function Providers({ children }: ProvidersProps) {
+export function Providers({ children, initialDebugGeoMode = 'real' }: ProvidersProps) {
   // Create QueryClient with optimized defaults
   const [queryClient] = useState(
     () =>
@@ -41,7 +44,9 @@ export function Providers({ children }: ProvidersProps) {
         enableSystem
         disableTransitionOnChange
       >
-        <GeolocationProvider>{children}</GeolocationProvider>
+        <GeolocationProvider initialDebugGeoMode={initialDebugGeoMode}>
+          {children}
+        </GeolocationProvider>
       </NextThemesProvider>
     </QueryClientProvider>
   );

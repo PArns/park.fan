@@ -30,6 +30,7 @@ export const UMAMI_EVENTS = {
   SEARCH_OPENED: 'search_opened',
   SEARCH_RESULT_CLICKED: 'search_result_clicked',
   SEARCH_VIEW_ALL: 'search_view_all',
+  HERO_SEARCH_CLICKED: 'hero_search_clicked',
 
   // Navigation & Content
   PARK_CARD_CLICKED: 'park_card_clicked',
@@ -58,8 +59,14 @@ export interface FavoriteEventProps {
 export interface NearbyParksLoadedProps {
   count: number;
   type: 'nearby_parks' | 'in_park';
+  /** True when user is detected inside a park; false when only nearby parks. Use in Umami to segment "in park" vs "not in park". */
+  in_park: boolean;
   /** Whether results came from GPS (user granted location) or IP fallback */
   source?: 'gps' | 'ip';
+  /** When in_park, the park id for segmentation */
+  parkId?: string;
+  /** When in_park, the park name for reports */
+  parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -71,6 +78,12 @@ export interface NearbyInParkProps {
 
 export interface SearchOpenedProps {
   source: 'header' | 'hero' | 'keyboard';
+  [key: string]: string | number | boolean;
+}
+
+export interface HeroSearchClickedProps {
+  /** Placeholder text shown when user clicked (typewriter or default). */
+  placeholderShown: string;
   [key: string]: string | number | boolean;
 }
 
@@ -179,6 +192,10 @@ export function trackNearbyInParkDetected(props: NearbyInParkProps): void {
 
 export function trackSearchOpened(source: SearchOpenedProps['source']): void {
   trackEvent(UMAMI_EVENTS.SEARCH_OPENED, { source });
+}
+
+export function trackHeroSearchClicked(props: HeroSearchClickedProps): void {
+  trackEvent(UMAMI_EVENTS.HERO_SEARCH_CLICKED, props);
 }
 
 export function trackSearchResultClicked(props: SearchResultClickedProps): void {

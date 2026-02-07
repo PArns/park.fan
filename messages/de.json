@@ -71,6 +71,7 @@
     }
   },
   "home": {
+    "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 150 Freizeitparks und 5.000+ Attraktionen weltweit—u. a. Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",
     "hero": {
       "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
@@ -79,7 +80,9 @@
     "sections": {
       "explore": "Nach Region entdecken",
       "plan": "Plane deinen perfekten Besuch",
-      "liveNow": "Parks jetzt geöffnet"
+      "liveNow": "Parks jetzt geöffnet",
+      "liveNowIntro": "Freizeitparks nach Region mit aktuellem Öffnungsstatus und Live-Wartezeiten.",
+      "featuresIntro": "Nutze Echtzeit-Wartezeiten, Besucherprognosen und Park-Kalender, um den besten Tag zu wählen und Warteschlangen bei Disney, Universal, Europa-Park und mehr zu planen."
     },
     "features": {
       "realtime": {
@@ -144,7 +147,8 @@
     "continents": "Kontinente",
     "explore": "Parks entdecken",
     "search": "Parks & Attraktionen suchen",
-    "admin": "Admin"
+    "admin": "Admin",
+    "nearbyPark": "In der Nähe: {parkName}"
   },
   "theme": {
     "light": "Hell",
@@ -153,8 +157,11 @@
     "toggle": "Design wechseln"
   },
   "parks": {
-    "title": "Wartezeiten, Prognosen & Navigation",
-    "subtitle": "Live-Wartezeiten, KI-Prognosen und Crowd-Kalender für {parks} Parks mit {attractions} Attraktionen, {shows} Shows & {restaurants} Restaurants weltweit",
+    "title": "Freizeitpark Wartezeiten & KI-Prognosen",
+    "heroWelcome": "Herzlich willkommen im {parkName}",
+    "heroNearPark": "Der {parkName} ist in deiner Nähe (unter 5 km). Unten siehst du aktuelle Wartezeiten, Öffnungszeiten und Auslastung – oder suche einen anderen Park.",
+    "heroWelcomeAttractions": "{count} Attraktionen in Betrieb",
+    "heroParkLink": "Zum Park",
     "operating": "Geöffnet",
     "closed": "Geschlossen",
     "open": "Geöffnet",
@@ -441,10 +448,17 @@
     "bannerBody": "park.fan verwendet deine genaue Position nur, um dir Parks in deiner Nähe anzuzeigen und dir in einem Park Attraktionen und Wartezeiten um dich herum anzuzeigen.",
     "bannerPrivacy": "Wir speichern diese Daten nicht.",
     "youAreIn": "Du bist hier",
+    "youAreInPark": "Du bist im {parkName}",
+    "nearParkSubtitle": "In deiner Umgebung: {parkName} und weitere Parks",
     "awayFrom": "entfernt",
     "nearestAttractions": "Attraktionen in deiner Nähe",
     "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
     "nearbyParks": "Parks in deiner Nähe",
+    "nearestOpenTitle": "Nächster geöffneter Park",
+    "nearbyParksClosedTitle": "Parks in deiner Nähe",
+    "noOpenNearbyFocus": "Keine Parks in der Nähe geöffnet – hier die nächsten.",
+    "goToParkPage": "Zur Park-Seite",
+    "nearestOpenBadge": "Nächster offen",
     "opens": "Öffnet",
     "opensOn": "Öffnet am",
     "opensIn": "Öffnet in",
@@ -494,6 +508,7 @@
   },
   "stats": {
     "globalStats": "Globale Statistiken",
+    "globalStatsIntro": "Live-Daten von Freizeitparks und Attraktionen weltweit.",
     "openParks": "Offene Parks",
     "totalAttractions": "Attraktionen gesamt",
     "mostCrowded": "Am vollsten",
@@ -504,6 +519,7 @@
     "platformStatsDescription": "Echtzeit-Dateneinblicke über die gesamte Plattform",
     "totalWaitTime": "Gesamte Wartezeit",
     "dataPoints": "Datenpunkte",
+    "dataPointsTooltipSuffix": "Punkte aktuell",
     "queueDataRecords": "Warteschlangen-Datensätze",
     "alsoTracking": "Außerdem erfasst"
   },
