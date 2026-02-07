@@ -1,5 +1,3 @@
-import { CACHE_TTL } from './cache-config';
-
 export interface FavoritePark {
   id: string;
   name: string;
@@ -223,7 +221,7 @@ export async function getFavorites(
       headers: {
         'Content-Type': 'application/json',
       },
-      next: { revalidate: CACHE_TTL.nearby },
+      next: { revalidate: 0 }, // User-specific (cookies/context), do not cache
     });
 
     if (!response.ok) {

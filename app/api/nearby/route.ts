@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 
+/** Response depends on client IP (GeoIP when no coords); must not be cached. */
+export const dynamic = 'force-dynamic';
+
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;
 /** Max radius in meters. */
