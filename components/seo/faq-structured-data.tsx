@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { WithContext, Thing } from 'schema-dts';
 import { formatInTimeZone } from 'date-fns-tz';
 import { translateCountry } from '@/lib/i18n/helpers';
+import { escapeJsonLd } from '@/components/seo/structured-data';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
@@ -163,9 +164,6 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(jsonLd) }} />
   );
 }

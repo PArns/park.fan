@@ -8,14 +8,46 @@ import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 
+import nextDynamic from 'next/dynamic';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
-import { FavoritesSection } from '@/components/parks/favorites-section';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { OrganizationStructuredData } from '@/components/seo/structured-data';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
+
+const LocationBanner = nextDynamic(
+  () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
+  { loading: () => null, ssr: true }
+);
+
+const FavoritesSection = nextDynamic(
+  () =>
+    import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
+  {
+    loading: () => (
+      <section className="border-b px-4 py-8">
+        <div className="container mx-auto">
+          <div className="bg-muted h-48 animate-pulse rounded-xl" />
+        </div>
+      </section>
+    ),
+    ssr: true,
+  }
+);
+
+const NearbyParksCard = nextDynamic(
+  () =>
+    import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
+  {
+    loading: () => (
+      <section className="bg-card min-h-[200px] rounded-xl border py-4">
+        <div className="bg-muted mx-4 h-40 animate-pulse rounded-lg" />
+      </section>
+    ),
+    ssr: true,
+  }
+);
 import { StatsCard } from '@/components/common/stats-card';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
@@ -63,7 +95,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `/${locale}`,
+      canonical: `https://park.fan/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
         'x-default': '/en',
@@ -84,8 +116,8 @@ export default async function HomePage({ params }: HomePageProps) {
   const tExplore = await getTranslations('explore');
   const tSeo = await getTranslations('seo.home');
 
-  // Select random hero image server-side
-  // eslint-disable-next-line react-hooks/purity
+  // Random hero image per request (intentional variety; disable purity for this line only)
+  // eslint-disable-next-line react-hooks/purity -- random hero is intentional
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 
   // Fetch data in parallel
@@ -131,6 +163,18 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Announcement Section */}
       <AnnounceSection locale={locale} />
+
+      {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
+      <section
+        className="border-b px-4 py-4"
+        aria-label={tCommon('locationBannerLabel')}
+        data-nosnippet
+        data-noindex
+      >
+        <div className="container mx-auto">
+          <LocationBanner />
+        </div>
+      </section>
 
       {/* Favorites Section - Above Nearby Parks */}
       <FavoritesSection />

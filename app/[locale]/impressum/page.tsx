@@ -50,7 +50,7 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `/${locale}/impressum`,
+      canonical: `https://park.fan/${locale}/impressum`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/impressum`),
         'x-default': '/en/impressum',

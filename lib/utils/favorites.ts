@@ -14,6 +14,27 @@ export interface FavoritesData {
 
 const FAVORITES_COOKIE_NAME = 'favorites';
 const FAVORITES_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year in seconds
+const SYNC_DEBOUNCE_MS = 400; // Batch rapid toggles into a single API call
+
+let syncTimeout: ReturnType<typeof setTimeout> | null = null;
+
+function scheduleSyncToApi(): void {
+  if (typeof window === 'undefined') return;
+
+  if (syncTimeout) clearTimeout(syncTimeout);
+  syncTimeout = setTimeout(() => {
+    syncTimeout = null;
+    const favorites = getFavoritesFromCookies();
+    getFavorites(
+      favorites.parks,
+      favorites.attractions,
+      favorites.shows,
+      favorites.restaurants
+    ).catch((error) => {
+      console.debug('[Favorites] API sync failed (non-critical):', error);
+    });
+  }, SYNC_DEBOUNCE_MS);
+}
 
 /**
  * Get favorites from cookies
@@ -77,9 +98,10 @@ function dispatchFavoritesChanged(): void {
 }
 
 /**
- * Add a favorite
+ * Add a favorite.
+ * Updates cookies and dispatches immediately; API sync runs in background.
  */
-export async function addFavorite(type: FavoriteType, id: string): Promise<void> {
+export function addFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
   }
@@ -90,28 +112,16 @@ export async function addFavorite(type: FavoriteType, id: string): Promise<void>
   if (!favorites[key].includes(id)) {
     favorites[key].push(id);
     saveFavoritesToCookies(favorites);
-
-    // Call API with updated favorites to get full data (API requires query params)
-    try {
-      await getFavorites(
-        favorites.parks,
-        favorites.attractions,
-        favorites.shows,
-        favorites.restaurants
-      );
-    } catch (error) {
-      // Silently fail - favorites are saved in cookies, API call is optional
-      console.debug('[Favorites] API call after adding favorite failed (non-critical):', error);
-    }
-
     dispatchFavoritesChanged();
+    scheduleSyncToApi();
   }
 }
 
 /**
- * Remove a favorite
+ * Remove a favorite.
+ * Updates cookies and dispatches immediately; API sync runs in background.
  */
-export async function removeFavorite(type: FavoriteType, id: string): Promise<void> {
+export function removeFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
   }
@@ -123,39 +133,25 @@ export async function removeFavorite(type: FavoriteType, id: string): Promise<vo
   if (index > -1) {
     favorites[key].splice(index, 1);
     saveFavoritesToCookies(favorites);
-
-    // Call API with updated favorites to get full data (API requires query params)
-    // If no favorites left, API will return empty response
-    try {
-      await getFavorites(
-        favorites.parks,
-        favorites.attractions,
-        favorites.shows,
-        favorites.restaurants
-      );
-    } catch (error) {
-      // Silently fail - favorites are saved in cookies, API call is optional
-      console.debug('[Favorites] API call after removing favorite failed (non-critical):', error);
-    }
-
     dispatchFavoritesChanged();
+    scheduleSyncToApi();
   }
 }
 
 /**
- * Toggle a favorite
+ * Toggle a favorite. Returns the new state immediately (optimistic).
  */
-export async function toggleFavorite(type: FavoriteType, id: string): Promise<boolean> {
+export function toggleFavorite(type: FavoriteType, id: string): boolean {
   if (typeof window === 'undefined') {
     return false;
   }
 
   const isCurrentlyFavorite = isFavorite(type, id);
   if (isCurrentlyFavorite) {
-    await removeFavorite(type, id);
+    removeFavorite(type, id);
     return false;
   } else {
-    await addFavorite(type, id);
+    addFavorite(type, id);
     return true;
   }
 }

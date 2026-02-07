@@ -52,7 +52,7 @@ export async function generateMetadata({
       images: [getOgImageUrl([locale, 'search'])],
     },
     alternates: {
-      canonical: `/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+      canonical: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       languages: {
         ...generateAlternateLanguages(
           (l) => `/${l}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`

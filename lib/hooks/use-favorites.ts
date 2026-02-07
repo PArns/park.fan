@@ -5,38 +5,30 @@ import type { FavoritesResponse } from '@/lib/api/favorites';
 
 /**
  * Hook to fetch favorites using React Query
+ * - Reads favorite IDs from cookies inside queryFn so refetch after toggle uses current state
  * - Automatically uses geolocation from context
- * - Caches results for 1 minute (wait times should be fresh)
- * - Deduplicates simultaneous requests
+ * - Caches results for 1 minute (wait times should be relatively fresh)
  */
 export function useFavorites() {
   const { position, loading: geoLoading } = useGeolocation();
 
-  // Get favorite IDs from cookies
-  const favoriteIds = {
-    parks: getFavoriteIds('park'),
-    attractions: getFavoriteIds('attraction'),
-    shows: getFavoriteIds('show'),
-    restaurants: getFavoriteIds('restaurant'),
-  };
-
-  const hasFavorites =
-    favoriteIds.parks.length > 0 ||
-    favoriteIds.attractions.length > 0 ||
-    favoriteIds.shows.length > 0 ||
-    favoriteIds.restaurants.length > 0;
-
   return useQuery<FavoritesResponse>({
-    queryKey: [
-      'favorites',
-      favoriteIds.parks.join(','),
-      favoriteIds.attractions.join(','),
-      favoriteIds.shows.join(','),
-      favoriteIds.restaurants.join(','),
-      position?.lat,
-      position?.lng,
-    ],
+    queryKey: ['favorites', position?.lat, position?.lng],
     queryFn: async () => {
+      // Read current cookie state at fetch time so invalidate+refetch shows updated list
+      const favoriteIds = {
+        parks: getFavoriteIds('park'),
+        attractions: getFavoriteIds('attraction'),
+        shows: getFavoriteIds('show'),
+        restaurants: getFavoriteIds('restaurant'),
+      };
+
+      const hasFavorites =
+        favoriteIds.parks.length > 0 ||
+        favoriteIds.attractions.length > 0 ||
+        favoriteIds.shows.length > 0 ||
+        favoriteIds.restaurants.length > 0;
+
       if (!hasFavorites) {
         return {
           parks: [],
@@ -48,7 +40,6 @@ export function useFavorites() {
 
       const url = new URL('/api/favorites', window.location.origin);
 
-      // Add query parameters
       if (favoriteIds.parks.length > 0) {
         url.searchParams.set('parkIds', favoriteIds.parks.join(','));
       }
@@ -80,8 +71,8 @@ export function useFavorites() {
 
       return response.json();
     },
-    enabled: !geoLoading && hasFavorites,
-    staleTime: 60 * 1000, // 1 minute - wait times should be relatively fresh
-    gcTime: 5 * 60 * 1000, // Keep in cache for 5 minutes
+    enabled: !geoLoading,
+    staleTime: 60 * 1000, // 1 minute
+    gcTime: 5 * 60 * 1000, // 5 minutes
   });
 }

@@ -27,8 +27,6 @@ export async function getParkHolidays(
     // Use the geographic holiday endpoint: /v1/parks/{continent}/{country}/{city}/{parkSlug}/holidays
     const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/holidays?year=${year}`;
 
-    console.log(`[Calendar] Fetching holidays from: ${url}`);
-
     const response = await fetch(url, {
       next: { revalidate: CACHE_TTL.holidays },
       headers: {
@@ -45,7 +43,6 @@ export async function getParkHolidays(
     }
 
     const data: HolidayResponse = await response.json();
-    console.log(`[Calendar] Loaded ${data.holidays?.length || 0} holidays for ${parkSlug}/${year}`);
     return data.holidays || [];
   } catch (error) {
     console.error(`[Calendar] Error fetching holidays:`, error);

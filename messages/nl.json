@@ -35,6 +35,7 @@
     "restaurants": "restaurants",
     "status": "Status",
     "home": "Home",
+    "locationBannerLabel": "Locatieservices",
     "updated": "Bijgewerkt",
     "trend": "Trend",
     "in": "in",
@@ -436,6 +437,9 @@
     "loadError": "Parken in de buurt laden mislukt",
     "loadErrorDescription": "Er is iets misgegaan bij het laden van parken in de buurt. Probeer het opnieuw.",
     "locationHint": "Parken in de buurt zijn nauwkeuriger als je locatietoegang inschakelt.",
+    "bannerHeadline": "park.fan werkt beter als je je locatie deelt!",
+    "bannerBody": "park.fan gebruikt je exacte positie alleen om parken in de buurt te tonen en om attracties en wachttijden om je heen te tonen wanneer je in een park bent.",
+    "bannerPrivacy": "We slaan deze gegevens niet op.",
     "youAreIn": "Je bent hier",
     "awayFrom": "van",
     "nearestAttractions": "Dichtstbijzijnde Attracties",
@@ -672,7 +676,9 @@
     "shows": "Shows",
     "restaurants": "Restaurants",
     "tooltip": "Voeg toe aan favorieten om het op de homepage te zien",
-    "locationHint": "Schakel locatie in om op afstand te sorteren"
+    "locationHint": "Schakel locatie in om op afstand te sorteren",
+    "addToFavorites": "Toevoegen aan favorieten",
+    "removeFromFavorites": "Verwijderen uit favorieten"
   },
   "impressum": {
     "title": "Colofon - park.fan",

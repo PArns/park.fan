@@ -142,7 +142,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       languages: {
         ...generateAlternateLanguages(
           (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`

@@ -59,6 +59,7 @@
     "shows": "Shows",
     "restaurants": "Restaurants",
     "home": "Startseite",
+    "locationBannerLabel": "Standortdienste",
     "status": "Status",
     "updated": "Aktualisiert",
     "discover": "Entdecken",
@@ -436,6 +437,9 @@
     "loadError": "Parks in der Nähe konnten nicht geladen werden",
     "loadErrorDescription": "Beim Laden der Parks in der Nähe ist etwas schiefgelaufen. Bitte versuche es erneut.",
     "locationHint": "Parks in der Nähe sind genauer, wenn du den Standortzugriff erlaubst.",
+    "bannerHeadline": "park.fan funktioniert besser, wenn du deinen Standort freigibst!",
+    "bannerBody": "park.fan verwendet deine genaue Position nur, um dir Parks in deiner Nähe anzuzeigen und dir in einem Park Attraktionen und Wartezeiten um dich herum anzuzeigen.",
+    "bannerPrivacy": "Wir speichern diese Daten nicht.",
     "youAreIn": "Du bist hier",
     "awayFrom": "entfernt",
     "nearestAttractions": "Attraktionen in deiner Nähe",
@@ -672,7 +676,9 @@
     "shows": "Shows",
     "restaurants": "Restaurants",
     "tooltip": "Zu Favoriten hinzufügen, um es auf der Startseite zu sehen",
-    "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren"
+    "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren",
+    "addToFavorites": "Zu Favoriten hinzufügen",
+    "removeFromFavorites": "Aus Favoriten entfernen"
   },
   "impressum": {
     "title": "Impressum - park.fan",

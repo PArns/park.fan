@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -34,17 +35,16 @@ export async function GET(request: NextRequest) {
       apiUrl.searchParams.set('lng', lng);
     }
 
-    // Call backend API server-side (no CORS issues)
-    // Get cookies from the incoming request
     const cookieHeader = request.headers.get('cookie');
+    const forwardedHeaders = getForwardedForHeaders(request);
 
     const response = await fetch(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
-        // Forward cookies from the request to the API
         ...(cookieHeader ? { Cookie: cookieHeader } : {}),
+        ...forwardedHeaders,
       },
-      next: { revalidate: 0 }, // No Next.js cache for location-based requests
+      next: { revalidate: 0 },
     });
 
     if (!response.ok) {

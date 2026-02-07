@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Star } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { isFavorite, toggleFavorite, type FavoriteType } from '@/lib/utils/favorites';
@@ -47,29 +47,25 @@ export function FavoriteStar({
     };
   }, [type, id]);
 
-  const handleClick = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
 
-    const newState = await toggleFavorite(type, id);
-    setIsFav(newState);
-    onToggle?.(newState);
+      const newState = toggleFavorite(type, id);
+      setIsFav(newState);
+      onToggle?.(newState);
 
-    // Track event in Umami with optional name
-    if (newState) {
-      trackFavoriteAdd(type, id);
-      // Track additional event with name for analytics
-      if (name) {
-        trackEvent('favorite_item_added', { type, name });
+      if (newState) {
+        trackFavoriteAdd(type, id);
+        if (name) trackEvent('favorite_item_added', { type, name });
+      } else {
+        trackFavoriteRemove(type, id);
+        if (name) trackEvent('favorite_item_removed', { type, name });
       }
-    } else {
-      trackFavoriteRemove(type, id);
-      // Track additional event with name for analytics
-      if (name) {
-        trackEvent('favorite_item_removed', { type, name });
-      }
-    }
-  };
+    },
+    [type, id, name, onToggle]
+  );
 
   // Size variants
   const sizeClasses = {
@@ -84,6 +80,7 @@ export function FavoriteStar({
     <Tooltip>
       <TooltipTrigger asChild>
         <button
+          type="button"
           onClick={handleClick}
           className={cn(
             'z-10 flex items-center justify-center transition-all hover:scale-110',
@@ -91,8 +88,8 @@ export function FavoriteStar({
             !noCircle && 'border-border/50 hover:border-border rounded-full border p-1 shadow-md',
             className
           )}
-          aria-label={isFav ? 'Remove from favorites' : 'Add to favorites'}
-          type="button"
+          aria-label={isFav ? t('removeFromFavorites') : t('addToFavorites')}
+          aria-pressed={isFav}
         >
           <Star
             className={cn(

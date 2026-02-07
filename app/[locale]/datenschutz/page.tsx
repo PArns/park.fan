@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `/${locale}/datenschutz`,
+      canonical: `https://park.fan/${locale}/datenschutz`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/datenschutz`),
         'x-default': '/en/datenschutz',

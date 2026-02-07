@@ -43,23 +43,18 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     return [
+      // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
-          },
-        ],
+        source: '/api/:path*',
+        headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
+      },
+      {
+        source: '/:locale/search',
+        headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },
       {
         source: '/(.*)',
-        headers: [
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
+        headers: [{ key: 'Referrer-Policy', value: 'origin-when-cross-origin' }],
       },
     ];
   },

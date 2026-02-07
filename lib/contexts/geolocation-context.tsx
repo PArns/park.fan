@@ -20,6 +20,8 @@ export interface GeolocationContextValue {
   loading: boolean;
   error: boolean;
   permissionDenied: boolean;
+  /** False until initial permission check (Permissions API) has completed; avoids banner flash when permission already granted */
+  initialCheckDone: boolean;
   refresh: () => void;
   isInPark: boolean;
   setIsInPark: (inPark: boolean) => void;
@@ -32,24 +34,38 @@ interface GeolocationProviderProps {
 }
 
 /**
- * Centralized geolocation provider
- * - Requests location once on mount
- * - Shares position across all components
- * - Auto-refreshes every 5 minutes (or 1 minute when in park)
- * - Prevents duplicate geolocation requests
+ * Check if geolocation permission is already granted via Permissions API.
+ * If granted, we request location on mount without showing the banner.
+ */
+async function isGeolocationGranted(): Promise<boolean> {
+  if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
+    return false;
+  }
+  try {
+    const status = await navigator.permissions.query({ name: 'geolocation' });
+    return status.state === 'granted';
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Centralized geolocation provider.
+ * - If permission already granted (Permissions API): request location on mount, no banner.
+ * - If prompt/denied: don't request on mount; user can enable via banner.
+ * - Auto-refreshes when position is set (5 min / 1 min in park).
  */
 export function GeolocationProvider({ children }: GeolocationProviderProps) {
   const [position, setPosition] = useState<GeolocationPosition | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
   const [isInPark, setIsInPark] = useState(false);
+  const [initialCheckDone, setInitialCheckDone] = useState(false);
 
-  // Use ref to track current position for interval callbacks
   const positionRef = useRef<GeolocationPosition | null>(null);
   const isInParkRef = useRef(false);
 
-  // Update refs when state changes
   useEffect(() => {
     positionRef.current = position;
   }, [position]);
@@ -108,16 +124,24 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     requestLocation();
   }, [requestLocation]);
 
-  // Initial location request
+  // On mount: if permission already granted (Permissions API), request location immediately
   useEffect(() => {
-    const timer = setTimeout(() => {
-      requestLocation();
-    }, 0);
+    let cancelled = false;
 
-    return () => clearTimeout(timer);
+    isGeolocationGranted().then((granted) => {
+      if (cancelled) return;
+      setInitialCheckDone(true);
+      if (granted) {
+        requestLocation();
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [requestLocation]);
 
-  // Auto-refresh with dynamic interval
+  // Auto-refresh with dynamic interval (only when we have position)
   useEffect(() => {
     if (position === null || permissionDenied) {
       // Don't set up auto-refresh if we don't have a position or permission was denied
@@ -128,9 +152,6 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
 
     const interval = setInterval(() => {
-      console.log(
-        `[Geolocation] Auto-refreshing position (${isInParkRef.current ? 'in park - 1 min' : 'normal - 5 min'})`
-      );
       requestLocation();
     }, refreshInterval);
 
@@ -142,6 +163,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     loading,
     error,
     permissionDenied,
+    initialCheckDone,
     refresh,
     isInPark,
     setIsInPark,

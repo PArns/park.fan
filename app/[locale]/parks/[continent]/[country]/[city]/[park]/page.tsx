@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
+      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       languages: {
         ...generateAlternateLanguages(
           (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}`

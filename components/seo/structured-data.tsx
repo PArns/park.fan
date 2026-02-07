@@ -20,36 +20,78 @@ type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
 };
 
-function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
-  const json = JSON.stringify(data)
+/** Escapes JSON for safe use in script tags (prevents XSS in JSON-LD). */
+export function escapeJsonLd(data: object): string {
+  return JSON.stringify(data)
     .replace(/</g, '\\u003c')
     .replace(/>/g, '\\u003e')
     .replace(/&/g, '\\u0026')
     .replace(/\u2028/g, '\\u2028')
     .replace(/\u2029/g, '\\u2029');
-
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
 }
+
+function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
+  );
+}
+
+const SITE_URL = 'https://park.fan';
 
 export function OrganizationStructuredData({ description }: { description?: string }) {
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'park.fan',
-    url: 'https://park.fan',
-    logo: 'https://park.fan/icon.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
-    sameAs: ['https://x.com/arns_dev'],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
-      url: 'https://park.fan',
+      url: SITE_URL,
     },
   };
 
   return <JsonLd data={data} />;
+}
+
+/**
+ * WebSite schema with SearchAction – helps Google show sitelinks search box and
+ * understand site structure. Locale-aware so each language has correct search URL.
+ */
+export function WebSiteStructuredData({
+  locale,
+  siteName = 'park.fan',
+  description,
+}: {
+  locale: string;
+  siteName?: string;
+  description?: string;
+}) {
+  const baseUrl = `${SITE_URL}/${locale}`;
+  const searchUrl = `${baseUrl}/search?q={search_term_string}`;
+
+  const data = {
+    '@context': 'https://schema.org' as const,
+    '@type': 'WebSite' as const,
+    name: siteName,
+    url: baseUrl,
+    ...(description && { description }),
+    inLanguage: locale,
+    potentialAction: {
+      '@type': 'SearchAction' as const,
+      target: {
+        '@type': 'EntryPoint' as const,
+        urlTemplate: searchUrl,
+      },
+      'query-input': 'required name=search_term_string' as const,
+    },
+  };
+
+  return <JsonLd data={data as WithContext<Thing>} />;
 }
 
 export function ParkStructuredData({

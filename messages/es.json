@@ -35,6 +35,7 @@
     "restaurants": "restaurantes",
     "status": "Estado",
     "home": "Inicio",
+    "locationBannerLabel": "Servicios de ubicación",
     "updated": "Actualizado",
     "trend": "Tendencia",
     "in": "en",
@@ -436,6 +437,9 @@
     "loadError": "No se pudieron cargar los parques cercanos",
     "loadErrorDescription": "Algo salió mal al cargar los parques cercanos. Por favor, inténtalo de nuevo.",
     "locationHint": "Los parques cercanos son más precisos si activas la ubicación.",
+    "bannerHeadline": "¡park.fan funciona mejor si compartes tu ubicación!",
+    "bannerBody": "park.fan usa tu posición exacta solo para mostrarte parques cercanos y para mostrarte atracciones y tiempos de espera a tu alrededor cuando estás en un parque.",
+    "bannerPrivacy": "No guardamos estos datos.",
     "youAreIn": "Estás aquí",
     "awayFrom": "de",
     "nearestAttractions": "Atracciones Más Cercanas",
@@ -672,7 +676,9 @@
     "shows": "Espectáculos",
     "restaurants": "Restaurantes",
     "tooltip": "Añadir a favoritos para ver en inicio",
-    "locationHint": "Habilita la ubicación para ordenar por distancia"
+    "locationHint": "Habilita la ubicación para ordenar por distancia",
+    "addToFavorites": "Añadir a favoritos",
+    "removeFromFavorites": "Quitar de favoritos"
   },
   "impressum": {
     "title": "Aviso Legal - park.fan",

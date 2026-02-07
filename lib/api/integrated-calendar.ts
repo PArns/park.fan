@@ -47,8 +47,6 @@ export async function getIntegratedCalendar(
   const queryString = params.toString();
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
-  console.log(`[Calendar] Fetching integrated calendar from: ${url}`);
-
   const response = await fetch(url, {
     next: { revalidate: CACHE_TTL.calendar },
     headers: {
@@ -57,12 +55,17 @@ export async function getIntegratedCalendar(
   });
 
   if (!response.ok) {
-    console.error(`[Calendar] Failed to fetch calendar: ${response.status}`);
-    throw new Error(`Failed to fetch calendar data: ${response.statusText}`);
+    const body = await response.text();
+    let message = response.statusText;
+    try {
+      const json = JSON.parse(body) as { message?: string; error?: string };
+      message = json.message ?? json.error ?? message;
+    } catch {
+      if (body) message = body.slice(0, 200);
+    }
+    throw new Error(`Calendar ${response.status}: ${message}`);
   }
 
   const data: IntegratedCalendarResponse = await response.json();
-  console.log(`[Calendar] Loaded ${data.days?.length || 0} days for ${parkSlug}`);
-
   return data;
 }

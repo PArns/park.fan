@@ -9,7 +9,10 @@ import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
-import { OrganizationStructuredData } from '@/components/seo/structured-data';
+import {
+  OrganizationStructuredData,
+  WebSiteStructuredData,
+} from '@/components/seo/structured-data';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 const geistSans = Geist({
@@ -57,7 +60,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       canonical: `${siteUrl}/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': '/',
+        'x-default': '/en',
       },
     },
     openGraph: {
@@ -110,6 +113,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   // Get messages for the current locale
   const messages = await getMessages();
+  const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // Render html/body here to have access to locale for lang attribute
   return (
@@ -125,7 +129,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         />
       )}
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <OrganizationStructuredData />
+        <OrganizationStructuredData description={tSeo('description')} />
+        <WebSiteStructuredData locale={locale} description={tSeo('description')} />
         <Providers>
           <NextIntlClientProvider messages={messages} locale={locale}>
             <LanguageBanner currentLocale={locale as Locale} />

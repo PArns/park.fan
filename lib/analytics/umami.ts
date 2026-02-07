@@ -58,7 +58,9 @@ export interface FavoriteEventProps {
 export interface NearbyParksLoadedProps {
   count: number;
   type: 'nearby_parks' | 'in_park';
-  [key: string]: string | number | boolean;
+  /** Whether results came from GPS (user granted location) or IP fallback */
+  source?: 'gps' | 'ip';
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface NearbyInParkProps {

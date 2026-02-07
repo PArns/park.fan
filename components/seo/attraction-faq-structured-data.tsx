@@ -1,6 +1,7 @@
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { WithContext, Thing } from 'schema-dts';
+import { escapeJsonLd } from '@/components/seo/structured-data';
 
 interface AttractionFAQStructuredDataProps {
   attraction: ParkAttraction;
@@ -86,9 +87,6 @@ export function AttractionFAQStructuredData({
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(jsonLd) }} />
   );
 }

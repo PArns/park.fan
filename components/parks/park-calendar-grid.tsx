@@ -112,7 +112,6 @@ export function ParkCalendarGrid({
   // Handle month navigation
   const handleMonthChange = async (direction: 'next' | 'prev') => {
     const newMonth = direction === 'next' ? addMonths(currentMonth, 1) : subMonths(currentMonth, 1);
-    console.log('[Calendar Grid] handleMonthChange:', direction, 'New month:', newMonth);
     setCurrentMonth(newMonth);
 
     // Update hash when user navigates

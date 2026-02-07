@@ -139,29 +139,20 @@ export function ParkTimeInfo({
   const isOperatingToday = todaySchedule && todaySchedule.scheduleType === 'OPERATING';
 
   if (!isOperatingToday) {
-    if (!nextSchedule) return null;
+    if (!nextSchedule?.date) return null;
 
-    // OffSeason Logic
     const nextOpening = new Date(nextSchedule.date);
-    const now = new Date(); // This should ideally be timezone aware or strictly relative, but for days diff native Date is often used in this app context.
-    // However, the previous logic in park-card-nearby used specific math.
-    // Let's use a simpler heuristic or replicate logic if needed.
-    // For now, let's assume we show it if we have nextSchedule.
+    if (Number.isNaN(nextOpening.getTime())) return null;
 
-    // We need to calculate if it is > 7 days to show the special "OffSeason (Opens...)" message
-    // Or just show "Opens [Date]" if < 7 days?
-    // The user said: "If the park opens today or tomorrow, show as is. Otherwise like in park card".
-
-    // Let's replicate the logic for > 7 days vs < 7 days from park-card-nearby
+    const now = new Date();
     const dayDiff = Math.ceil((nextOpening.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
     const totalWeeks = dayDiff / 7;
 
     const dateFormatted = nextOpening.toLocaleDateString(locale, {
-      // Use locale from context if possible, but here we might default or need hook
       day: 'numeric',
       month: 'long',
       timeZone: timezone,
-    }); // Note: using de-DE here hardcoded is risky if not using proper locale.
+    });
     // But the component uses `toLocaleTimeString` later with hardcoded de-DE in `formatCurrentTime`.
     // We should arguably use the user's locale.
     // `ParkTimeInfo` doesn't currently receive locale.

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useMemo, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -23,14 +23,16 @@ import { Link } from '@/i18n/navigation';
 import { ChevronRight, Navigation, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export function FavoritesSection() {
   const t = useTranslations('favorites');
+  const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
 
-  // Use centralized geolocation (though not required for favorites)
   const { position } = useGeolocation();
-
-  // Use React Query hook for favorites
-  const { data: favoritesData, isLoading: loading, refetch } = useFavorites();
+  const { data: favoritesData, isLoading: loading } = useFavorites();
 
   const queryClient = useQueryClient();
 
@@ -38,46 +40,45 @@ export function FavoritesSection() {
   const sortByDistanceOrName = useCallback(
     <T extends { distance?: number; name: string }>(items: T[]): T[] => {
       return [...items].sort((a, b) => {
-        // If both have distance, sort by distance
         if (a.distance !== undefined && b.distance !== undefined) {
           return a.distance - b.distance;
         }
-        // If only one has distance, prioritize it
         if (a.distance !== undefined) return -1;
         if (b.distance !== undefined) return 1;
-        // If neither has distance, sort alphabetically by name
         return a.name.localeCompare(b.name);
       });
     },
     []
   );
 
-  // Sort favorites when data changes
-  const sortedFavorites = favoritesData
-    ? {
-        parks: sortByDistanceOrName(favoritesData.parks),
-        attractions: sortByDistanceOrName(favoritesData.attractions),
-        shows: sortByDistanceOrName(favoritesData.shows),
-        restaurants: sortByDistanceOrName(favoritesData.restaurants),
-      }
-    : null;
+  // Memoize sorted list to avoid recalculating when parent re-renders
+  const sortedFavorites = useMemo(
+    () =>
+      favoritesData
+        ? {
+            parks: sortByDistanceOrName(favoritesData.parks),
+            attractions: sortByDistanceOrName(favoritesData.attractions),
+            shows: sortByDistanceOrName(favoritesData.shows),
+            restaurants: sortByDistanceOrName(favoritesData.restaurants),
+          }
+        : null,
+    [favoritesData, sortByDistanceOrName]
+  );
 
-  // Listen for favorites-changed events and invalidate query
+  // Invalidate on favorites-changed (React Query refetches active queries automatically)
   useEffect(() => {
     const handleFavoritesChanged = () => {
-      // Invalidate and refetch the favorites query
       queryClient.invalidateQueries({ queryKey: ['favorites'] });
-      refetch();
     };
 
     window.addEventListener('favorites-changed', handleFavoritesChanged);
     return () => {
       window.removeEventListener('favorites-changed', handleFavoritesChanged);
     };
-  }, [queryClient, refetch]);
+  }, [queryClient]);
 
-  // Show skeleton loaders while loading
-  if (loading) {
+  // Same structure on server and initial client to avoid hydration mismatch (React Query state differs)
+  if (!mounted || loading) {
     return (
       <section className="border-b px-4 py-8">
         <div className="container mx-auto">
@@ -91,7 +92,6 @@ export function FavoritesSection() {
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
-              {/* Parks Skeleton */}
               <div>
                 <div className="bg-muted mb-4 h-6 w-24 rounded" />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -100,7 +100,6 @@ export function FavoritesSection() {
                   <ParkCardNearbySkeleton />
                 </div>
               </div>
-              {/* Attractions Skeleton */}
               <div>
                 <div className="bg-muted mb-4 h-6 w-24 rounded" />
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -116,31 +115,26 @@ export function FavoritesSection() {
     );
   }
 
-  if (
-    !sortedFavorites ||
-    (sortedFavorites.parks.length === 0 &&
-      sortedFavorites.attractions.length === 0 &&
-      sortedFavorites.shows.length === 0 &&
-      sortedFavorites.restaurants.length === 0)
-  ) {
-    return null;
-  }
-
   const hasAnyFavorites =
-    sortedFavorites.parks.length > 0 ||
-    sortedFavorites.attractions.length > 0 ||
-    sortedFavorites.shows.length > 0 ||
-    sortedFavorites.restaurants.length > 0;
-
-  if (!hasAnyFavorites) {
-    return null;
-  }
+    sortedFavorites &&
+    (sortedFavorites.parks.length > 0 ||
+      sortedFavorites.attractions.length > 0 ||
+      sortedFavorites.shows.length > 0 ||
+      sortedFavorites.restaurants.length > 0);
 
   const totalFavorites =
-    (sortedFavorites?.parks.length || 0) +
+    (sortedFavorites?.parks.length ?? 0) +
     (sortedFavorites?.attractions.length || 0) +
     (sortedFavorites?.shows.length || 0) +
     (sortedFavorites?.restaurants.length || 0);
+
+  if (!hasAnyFavorites) {
+    return (
+      <section className="border-b px-4 py-8">
+        <div className="container mx-auto" />
+      </section>
+    );
+  }
 
   return (
     <section className="border-b px-4 py-8">

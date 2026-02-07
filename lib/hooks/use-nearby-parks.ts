@@ -21,9 +21,7 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const radiusInMeters = opts.radiusInMeters ?? 1000;
   const limit = opts.limit ?? 6;
 
-  const { position, loading: geoLoading, permissionDenied, error: geoError } = useGeolocation();
-
-  const useCoords = position !== null;
+  const { position, loading: geoLoading } = useGeolocation();
 
   return useQuery<NearbyResponse>({
     queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit],
@@ -49,7 +47,7 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
 
       return response.json();
     },
-    enabled: !geoLoading && (useCoords || permissionDenied || geoError),
+    enabled: !geoLoading,
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
   });

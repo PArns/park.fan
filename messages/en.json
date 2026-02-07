@@ -35,6 +35,7 @@
     "restaurants": "restaurants",
     "status": "Status",
     "home": "Home",
+    "locationBannerLabel": "Location services",
     "updated": "Updated",
     "trend": "Trend",
     "in": "in",
@@ -436,6 +437,9 @@
     "loadError": "Couldn't Load Nearby Parks",
     "loadErrorDescription": "Something went wrong while loading nearby parks. Please try again.",
     "locationHint": "Nearby parks are more accurate when you enable location.",
+    "bannerHeadline": "park.fan works better when you share your location!",
+    "bannerBody": "park.fan uses your exact position only to show you parks near you and to show you attractions and wait times around you when you're in a park.",
+    "bannerPrivacy": "We don't store this data.",
     "youAreIn": "You are here",
     "awayFrom": "away",
     "nearestAttractions": "Nearest Attractions",
@@ -673,7 +677,9 @@
     "shows": "Shows",
     "restaurants": "Restaurants",
     "tooltip": "Add to favorites to see it on the homepage",
-    "locationHint": "Enable location access to sort by distance"
+    "locationHint": "Enable location access to sort by distance",
+    "addToFavorites": "Add to favorites",
+    "removeFromFavorites": "Remove from favorites"
   },
   "impressum": {
     "title": "Imprint - park.fan",

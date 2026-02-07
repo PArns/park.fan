@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { WithContext, Thing } from 'schema-dts';
+import { escapeJsonLd } from '@/components/seo/structured-data';
 
 export function HomepageFAQStructuredData() {
   const t = useTranslations('seo.homepage.faq');
@@ -70,7 +71,7 @@ export function HomepageFAQStructuredData() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      dangerouslySetInnerHTML={{ __html: escapeJsonLd(faqSchema) }}
     />
   );
 }

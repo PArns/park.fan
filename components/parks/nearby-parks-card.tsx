@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useSyncExternalStore, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -30,8 +30,12 @@ export function NearbyParksCard() {
   const tCommon = useTranslations('common');
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
-  // Use centralized geolocation context
   const {
     position,
     loading: geoLoading,
@@ -41,70 +45,65 @@ export function NearbyParksCard() {
     setIsInPark,
   } = useGeolocation();
 
-  // Use React Query hook for nearby parks data
   const { data: nearbyData, isLoading: dataLoading, error: dataError } = useNearbyParks();
 
-  // Track analytics when data changes
+  const hasTrackedGranted = useRef(false);
+  const hasTrackedDenied = useRef(false);
+  const lastTrackedDataKey = useRef<string | null>(null);
+
+  const locationSource = position ? 'gps' : 'ip';
+
+  // Track analytics when nearby data changes (once per result, include source: gps | ip)
   useEffect(() => {
     if (!nearbyData) return;
+
+    const dataKey =
+      nearbyData.type === 'nearby_parks'
+        ? `parks-${(nearbyData.data as NearbyParksData).parks.length}-${locationSource}`
+        : `in_park-${(nearbyData.data as NearbyAttractionsData).park?.id}-${locationSource}`;
+    if (lastTrackedDataKey.current === dataKey) return;
+    lastTrackedDataKey.current = dataKey;
 
     if (nearbyData.type === 'nearby_parks') {
       trackNearbyParksLoaded({
         count: (nearbyData.data as NearbyParksData).parks.length,
         type: 'nearby_parks',
+        source: locationSource,
       });
-      // User is not in a park, use 5-minute refresh interval
       setIsInPark(false);
     } else if (nearbyData.type === 'in_park') {
       const parkData = nearbyData.data as NearbyAttractionsData;
-      trackNearbyParksLoaded({ count: 1, type: 'in_park' });
+      trackNearbyParksLoaded({ count: 1, type: 'in_park', source: locationSource });
       trackNearbyInParkDetected({
         parkId: parkData.park.id,
         parkName: parkData.park.name,
       });
-      // User is in a park, use 1-minute refresh interval
       setIsInPark(true);
     }
-  }, [nearbyData, setIsInPark]);
+  }, [nearbyData, setIsInPark, locationSource]);
 
-  // Track permission granted/denied
+  // Track permission granted once when user grants location
   useEffect(() => {
-    if (position && !permissionDenied) {
+    if (position && !permissionDenied && !hasTrackedGranted.current) {
+      hasTrackedGranted.current = true;
       trackNearbyPermissionGranted();
     }
+    if (!position) hasTrackedGranted.current = false;
   }, [position, permissionDenied]);
 
+  // Track permission denied once when user denies location
   useEffect(() => {
-    if (permissionDenied) {
+    if (permissionDenied && !hasTrackedDenied.current) {
+      hasTrackedDenied.current = true;
       trackNearbyPermissionDenied();
     }
+    if (!permissionDenied) hasTrackedDenied.current = false;
   }, [permissionDenied]);
 
   const isLoading = geoLoading || dataLoading;
 
-  // Prompt state - show enable button (no position and no error and not loading)
-  if (!position && !geoError && !permissionDenied && !geoLoading) {
-    return (
-      <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
-        <CardHeader className="pb-4">
-          <CardTitle className="flex items-center gap-2">
-            <MapPin className="text-muted-foreground h-5 w-5" />
-            {t('title')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="flex flex-col items-center space-y-4 text-center">
-          <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
-          <Button onClick={refresh}>
-            <Navigation className="mr-2 h-4 w-4" />
-            {t('enable')}
-          </Button>
-        </CardContent>
-      </section>
-    );
-  }
-
-  // Loading state
-  if (isLoading) {
+  // Same structure on server and initial client to avoid hydration mismatch
+  if (!mounted || isLoading) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6">
         <CardHeader className="pb-2 md:pb-4">
@@ -125,6 +124,27 @@ export function NearbyParksCard() {
               <ParkCardNearbySkeleton />
             </li>
           </ul>
+        </CardContent>
+      </section>
+    );
+  }
+
+  // Prompt state - show enable button only when we have no data and are not loading (homepage uses LocationBanner instead)
+  if (!position && !geoError && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
+    return (
+      <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2">
+            <MapPin className="text-muted-foreground h-5 w-5" />
+            {t('title')}
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col items-center space-y-4 text-center">
+          <p className="text-muted-foreground text-sm">{t('enableDescription')}</p>
+          <Button onClick={refresh}>
+            <Navigation className="mr-2 h-4 w-4" />
+            {t('enable')}
+          </Button>
         </CardContent>
       </section>
     );
@@ -172,25 +192,12 @@ export function NearbyParksCard() {
   if (nearbyData.type === 'in_park') {
     const data = nearbyData.data as NearbyAttractionsData;
 
-    // Debug logging
-    console.log('[NearbyParks] in_park data:', {
-      hasData: !!data,
-      hasPark: !!data?.park,
-      parkName: data?.park?.name,
-      ridesCount: data?.rides?.length,
-      firstFewRides: data?.rides?.slice(0, 3),
-    });
-
-    // Safety check: if data is null/undefined, skip rendering
     if (!data || !data.park) {
-      console.log('[NearbyParks] Skipping render - missing data or park');
       return null;
     }
 
     const park = data.park;
-    const attractions = (data.rides || []).slice(0, 5); // Show max 5 attractions (backend calls them 'rides')
-
-    console.log('[NearbyParks] Will render', attractions.length, 'attractions');
+    const attractions = (data.rides || []).slice(0, 5);
 
     // Extract park URL from first attraction if available
     const parkMapUrl =
