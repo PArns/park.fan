@@ -1,5 +1,6 @@
 import { parseISO, startOfDay, endOfDay } from 'date-fns';
 import { toZonedTime, formatInTimeZone } from 'date-fns-tz';
+import { stripNewPrefix } from '@/lib/utils';
 import type {
   CalendarEvent,
   CalendarEventData,
@@ -539,7 +540,7 @@ export function formatEventDescription(event: CalendarEvent): string {
             minute: '2-digit',
             hour12: false,
           });
-          return `${resource.show.name}: ${startStr} - ${endStr}`;
+          return `${stripNewPrefix(resource.show.name)}: ${startStr} - ${endStr}`;
         }
         const start = getParkTime(resource.show.time, resource.timezone || 'UTC');
         const startStr = start.toLocaleTimeString([], {
@@ -547,7 +548,7 @@ export function formatEventDescription(event: CalendarEvent): string {
           minute: '2-digit',
           hour12: false,
         });
-        return `${resource.show.name} at ${startStr}`;
+        return `${stripNewPrefix(resource.show.name)} at ${startStr}`;
       }
       return 'Show details unavailable';
     }

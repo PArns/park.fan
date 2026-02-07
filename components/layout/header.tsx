@@ -22,8 +22,7 @@ export function Header() {
   const parks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
   const nearestPark = parks[0];
-  const showNearbyPark =
-    nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
+  const showNearbyPark = nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
 
   return (
     <header className="glass-header sticky top-0 z-50">
@@ -51,7 +50,7 @@ export function Header() {
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
             >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-              <span className="truncate max-w-[140px]">{nearestPark.name}</span>
+              <span className="max-w-[140px] truncate">{nearestPark.name}</span>
             </Link>
           )}
           <Link

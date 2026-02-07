@@ -15,12 +15,14 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { SearchResult, SearchResultItem } from '@/lib/api/types';
 import {
   trackSearchOpened,
   trackSearchResultClicked,
   trackSearchViewAll,
+  trackSearchNoResults,
 } from '@/lib/analytics/umami';
 
 const typeIcons = {
@@ -130,6 +132,9 @@ export function SearchCommand({
       if (response.ok) {
         const data = (await response.json()) as SearchResult;
         setResults(data);
+        if (data.results.length === 0) {
+          trackSearchNoResults({ query: searchQuery, queryLength: searchQuery.length });
+        }
       }
     } catch (error) {
       console.error('Search error:', error);
@@ -157,6 +162,8 @@ export function SearchCommand({
     trackSearchResultClicked({
       resultType: result.type,
       position,
+      hasQuery: query.trim().length > 0,
+      queryLength: query.trim().length,
     });
 
     if (result.url) {
@@ -190,7 +197,7 @@ export function SearchCommand({
     return (
       <CommandItem
         key={result.id}
-        value={`${result.name} ${result.type}`}
+        value={`${stripNewPrefix(result.name)} ${result.type}`}
         onSelect={() => handleSelect(result, position)}
         className="flex items-start gap-3 py-4 md:py-3"
       >
@@ -199,7 +206,7 @@ export function SearchCommand({
         </div>
         <div className="flex-1 overflow-hidden">
           <div className="flex items-center gap-2">
-            <span className="font-medium">{result.name}</span>
+            <span className="font-medium">{stripNewPrefix(result.name)}</span>
             {result.status && (
               <Badge
                 className={`border-0 text-xs font-medium ${
@@ -236,7 +243,9 @@ export function SearchCommand({
 
             {/* Parent Park for attractions */}
             {result.parentPark && (
-              <span className="truncate">{tSearch('at', { park: result.parentPark.name })}</span>
+              <span className="truncate">
+                {tSearch('at', { park: stripNewPrefix(result.parentPark.name) })}
+              </span>
             )}
 
             {/* Wait Time */}

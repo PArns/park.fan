@@ -19,7 +19,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -150,7 +150,7 @@ export function AttractionCard({
         {backgroundImage && (
           <BackgroundOverlay
             imageSrc={backgroundImage}
-            alt={attraction.name}
+            alt={stripNewPrefix(attraction.name)}
             intensity="medium"
             hoverEffect
           />
@@ -159,13 +159,19 @@ export function AttractionCard({
         {/* Favorite Star */}
         {attraction.id && (
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-            <FavoriteStar type="attraction" id={attraction.id} name={attraction.name} />
+            <FavoriteStar
+              type="attraction"
+              id={attraction.id}
+              name={stripNewPrefix(attraction.name)}
+            />
           </div>
         )}
         <CardContent className="relative z-10 flex h-full flex-col p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              <h3 className="truncate leading-tight font-medium">{attraction.name}</h3>
+              <h3 className="truncate leading-tight font-medium">
+                {stripNewPrefix(attraction.name)}
+              </h3>
 
               {/* Park Name (only for favorites section on homepage) */}
               {showParkName &&
@@ -173,7 +179,7 @@ export function AttractionCard({
                 attraction.park &&
                 'name' in attraction.park && (
                   <p className="text-muted-foreground mt-1 truncate text-xs">
-                    {attraction.park.name}
+                    {stripNewPrefix(attraction.park.name)}
                   </p>
                 )}
 

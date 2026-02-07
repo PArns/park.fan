@@ -15,6 +15,7 @@ import {
 } from 'schema-dts';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getAttractionImage } from '@/lib/attraction-images';
+import { stripNewPrefix } from '@/lib/utils';
 
 type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
@@ -103,12 +104,13 @@ export function ParkStructuredData({
   url: string;
   description?: string;
 }) {
+  const parkName = stripNewPrefix(park.name);
   const data: WithContext<ThemePark> = {
     '@context': 'https://schema.org',
     '@type': 'ThemePark',
-    name: park.name,
+    name: parkName,
     url: url,
-    description: description || `Real-time wait times and crowd levels for ${park.name}.`,
+    description: description || `Real-time wait times and crowd levels for ${parkName}.`,
     image: getParkBackgroundImage(park.slug)
       ? `https://park.fan${getParkBackgroundImage(park.slug)}`
       : undefined,
@@ -137,7 +139,7 @@ export function ParkStructuredData({
       ...('attractions' in park && park.attractions
         ? park.attractions.map((attraction) => ({
             '@type': 'TouristAttraction' as const,
-            name: attraction.name,
+            name: stripNewPrefix(attraction.name),
             url: `${url}/${attraction.slug}`,
             image: getAttractionImage(park.slug, attraction.slug)
               ? `https://park.fan${getAttractionImage(park.slug, attraction.slug)}`
@@ -147,7 +149,7 @@ export function ParkStructuredData({
       ...('restaurants' in park && park.restaurants
         ? park.restaurants.map((restaurant) => ({
             '@type': 'FoodEstablishment' as const,
-            name: restaurant.name,
+            name: stripNewPrefix(restaurant.name),
             servesCuisine: restaurant.cuisineType || undefined,
           }))
         : []),
@@ -185,19 +187,21 @@ export function AttractionStructuredData({
   url: string;
   description?: string;
 }) {
+  const attractionName = stripNewPrefix(attraction.name);
+  const parkName = stripNewPrefix(park.name);
   const data: WithContext<Attraction> = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
-    name: attraction.name,
+    name: attractionName,
     url: url,
     description:
-      description || `${attraction.name} at ${park.name} - Real-time wait times and status.`,
+      description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
     image: getAttractionImage(park.slug, attraction.slug)
       ? `https://park.fan${getAttractionImage(park.slug, attraction.slug)}`
       : undefined,
     containedInPlace: {
       '@type': 'ThemePark',
-      name: park.name,
+      name: parkName,
       url: url.split('/').slice(0, -1).join('/'), // Remove attraction slug to get park URL
     },
     address:
@@ -237,14 +241,14 @@ export function ShowsStructuredData({
     (show.showtimes || []).map((showtime) => ({
       '@context': 'https://schema.org' as const,
       '@type': 'Event' as const,
-      name: show.name,
+      name: stripNewPrefix(show.name),
       startDate: `${date}T${showtime.startTime}`,
       image: getParkBackgroundImage(park.slug)
         ? `https://park.fan${getParkBackgroundImage(park.slug)}`
         : undefined, // Fallback to park image if no show image
       location: {
         '@type': 'Place' as const,
-        name: park.name,
+        name: stripNewPrefix(park.name),
         address: {
           '@type': 'PostalAddress' as const,
           addressLocality: park.city || undefined,

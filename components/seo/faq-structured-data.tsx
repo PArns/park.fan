@@ -4,6 +4,7 @@ import { WithContext, Thing } from 'schema-dts';
 import { formatInTimeZone } from 'date-fns-tz';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { escapeJsonLd } from '@/components/seo/structured-data';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
@@ -13,11 +14,7 @@ interface FAQStructuredDataProps {
 export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   const t = useTranslations('seo.faq');
   const tGeo = useTranslations('geo');
-
-  // Helper function to remove "NEW:", "NEU:", etc. prefixes
-  const cleanName = (name: string): string => {
-    return name.replace(/^(NEW|NEU|NOUVEAU|NIEUW|NUEVO):\s*/i, '').trim();
-  };
+  const parkName = stripNewPrefix(park.name);
 
   // Get current date in park's timezone
   const timeZone = park.timezone || 'UTC';
@@ -48,20 +45,20 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
     const close = todaySchedule.closingTime.substring(0, 5);
     openingHoursAnswer = t('openingHoursA', {
       date: localizedDate,
-      park: park.name,
+      park: parkName,
       open,
       close,
     });
   } else {
     openingHoursAnswer = t('openingHoursClosed', {
       date: localizedDate,
-      park: park.name,
+      park: parkName,
     });
   }
 
   mainEntity.push({
     '@type': 'Question',
-    name: t('openingHoursQ', { park: park.name }),
+    name: t('openingHoursQ', { park: parkName }),
     acceptedAnswer: {
       '@type': 'Answer',
       text: openingHoursAnswer,
@@ -75,11 +72,11 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
 
     mainEntity.push({
       '@type': 'Question',
-      name: t('locationQ', { park: park.name }),
+      name: t('locationQ', { park: parkName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: t('locationA', {
-          park: park.name,
+          park: parkName,
           city: park.city,
           country: translatedCountry,
         }),
@@ -93,11 +90,11 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   if (totalAttractions) {
     mainEntity.push({
       '@type': 'Question',
-      name: t('attractionCountQ', { park: park.name }),
+      name: t('attractionCountQ', { park: parkName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: t('attractionCountA', {
-          park: park.name,
+          park: parkName,
           count: totalAttractions,
         }),
       },
@@ -107,11 +104,11 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   // Question 4: Themed Areas
   const themedAreas = Array.from(new Set(park.attractions?.map((a) => a.land).filter(Boolean)));
   if (themedAreas.length > 0) {
-    const intro = t('themedAreasA', { park: park.name, count: themedAreas.length });
+    const intro = t('themedAreasA', { park: parkName, count: themedAreas.length });
     const list = themedAreas.join(', ');
     mainEntity.push({
       '@type': 'Question',
-      name: t('themedAreasQ', { park: park.name }),
+      name: t('themedAreasQ', { park: parkName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: `${intro} ${list}`,
@@ -121,11 +118,11 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
 
   // Question 5: Shows
   if (park.shows && park.shows.length > 0) {
-    const showNames = park.shows.map((s) => cleanName(s.name)).join(', ');
-    const intro = t('showsA', { park: park.name, count: park.shows.length });
+    const showNames = park.shows.map((s) => stripNewPrefix(s.name)).join(', ');
+    const intro = t('showsA', { park: parkName, count: park.shows.length });
     mainEntity.push({
       '@type': 'Question',
-      name: t('showsQ', { park: park.name }),
+      name: t('showsQ', { park: parkName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: `${intro} ${showNames}`,
@@ -135,11 +132,11 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
 
   // Question 6: Dining
   if (park.restaurants && park.restaurants.length > 0) {
-    const restaurantNames = park.restaurants.map((r) => cleanName(r.name)).join(', ');
-    const intro = t('diningA', { park: park.name, count: park.restaurants.length });
+    const restaurantNames = park.restaurants.map((r) => stripNewPrefix(r.name)).join(', ');
+    const intro = t('diningA', { park: parkName, count: park.restaurants.length });
     mainEntity.push({
       '@type': 'Question',
-      name: t('diningQ', { park: park.name }),
+      name: t('diningQ', { park: parkName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: `${intro} ${restaurantNames}`,
@@ -150,10 +147,10 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   // Question 7: Crowd Calendar
   mainEntity.push({
     '@type': 'Question',
-    name: t('crowdCalendarQ', { park: park.name }),
+    name: t('crowdCalendarQ', { park: parkName }),
     acceptedAnswer: {
       '@type': 'Answer',
-      text: t('crowdCalendarA', { park: park.name }),
+      text: t('crowdCalendarA', { park: parkName }),
     },
   });
 

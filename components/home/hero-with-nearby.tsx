@@ -1,10 +1,13 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { stripNewPrefix } from '@/lib/utils';
+import { trackHeroViewed } from '@/lib/analytics/umami';
 import { Badge } from '@/components/ui/badge';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import type {
@@ -92,7 +95,7 @@ function ParkBadges({
         <Link
           href={parkUrl}
           prefetch={isOpenForPrefetch}
-          className="text-primary hover:text-primary/90 mt-1 inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-0 md:px-4 md:py-2 md:text-sm"
+          className="text-primary hover:text-primary/90 focus-visible:ring-ring mt-1 inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none md:mt-0 md:px-4 md:py-2 md:text-sm"
         >
           {t('heroParkLink')}
           <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -112,10 +115,29 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
   const inPark = nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   let park = inPark?.park;
 
+  const nearbyParksList =
+    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
+  const nearestParkForVariant = nearbyParksList.length > 0 ? nearbyParksList[0] : null;
+  const showNearParkHero =
+    nearestParkForVariant != null && nearestParkForVariant.distance <= NEAR_PARK_HERO_RADIUS_M;
+
+  const heroVariant = park ? 'in_park' : showNearParkHero ? 'near_park' : 'default';
+  const heroParkName = park?.name ?? nearestParkForVariant?.name;
+  const heroParkId = park?.id ?? nearestParkForVariant?.id;
+  const lastTrackedVariant = useRef<string | null>(null);
+  useEffect(() => {
+    if (lastTrackedVariant.current === heroVariant) return;
+    lastTrackedVariant.current = heroVariant;
+    trackHeroViewed({
+      variant: heroVariant as 'in_park' | 'near_park' | 'default',
+      ...(heroParkName && { parkName: heroParkName }),
+      ...(heroParkId && { parkId: heroParkId }),
+    });
+  }, [heroVariant, heroParkName, heroParkId]);
+
   // Fallback: API returned nearby_parks but user is very close → show "im Park" (distance from API is in meters)
   if (!park && nearbyData?.type === 'nearby_parks') {
-    const parks = (nearbyData.data as NearbyParksData).parks;
-    const nearest: ParkWithDistance | undefined = parks[0];
+    const nearest: ParkWithDistance | undefined = nearbyParksList[0];
     if (nearest && nearest.distance <= IN_PARK_FALLBACK_DISTANCE_M) {
       park = {
         ...nearest,
@@ -144,14 +166,12 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
         : null;
 
     const parkUrl =
-      park.url != null && park.url !== ''
-        ? convertApiUrlToFrontendUrl(park.url)
-        : null;
+      park.url != null && park.url !== '' ? convertApiUrlToFrontendUrl(park.url) : null;
 
     return (
       <>
         <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-          {t('heroWelcome', { parkName: park.name })}
+          {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
         </h1>
         <p className="text-muted-foreground mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
           {tHome('intro')}
@@ -171,31 +191,27 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
     );
   }
 
-  const nearbyParks =
-    nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
-  const nearestPark = nearbyParks.length > 0 ? nearbyParks[0] : null;
-  const showNearParkHero =
-    nearestPark != null && nearestPark.distance <= NEAR_PARK_HERO_RADIUS_M;
-
-  const nearParkOpen = nearestPark?.status === 'OPERATING';
-  const nearParkOperatingCount = nearestPark?.operatingAttractions ?? null;
+  const nearParkOpen = nearestParkForVariant?.status === 'OPERATING';
+  const nearParkOperatingCount = nearestParkForVariant?.operatingAttractions ?? null;
   const nearParkCrowdLabel =
-    nearestPark?.analytics?.crowdLevel != null
-      ? t(`crowdLevels.${nearestPark.analytics.crowdLevel}` as 'very_low') ||
-        nearestPark.analytics.crowdLevel
+    nearestParkForVariant?.analytics?.crowdLevel != null
+      ? t(`crowdLevels.${nearestParkForVariant.analytics.crowdLevel}` as 'very_low') ||
+        nearestParkForVariant.analytics.crowdLevel
       : null;
   const nearParkHoursStr =
-    nearParkOpen && nearestPark?.todaySchedule?.scheduleType === 'OPERATING' && nearestPark?.timezone
+    nearParkOpen &&
+    nearestParkForVariant?.todaySchedule?.scheduleType === 'OPERATING' &&
+    nearestParkForVariant?.timezone
       ? formatTimeRange(
-          nearestPark.todaySchedule?.openingTime,
-          nearestPark.todaySchedule?.closingTime,
+          nearestParkForVariant.todaySchedule?.openingTime,
+          nearestParkForVariant.todaySchedule?.closingTime,
           locale,
-          nearestPark.timezone
+          nearestParkForVariant.timezone
         )
       : null;
   const nearParkUrl =
-    nearestPark?.url != null && nearestPark.url !== ''
-      ? convertApiUrlToFrontendUrl(nearestPark.url)
+    nearestParkForVariant?.url != null && nearestParkForVariant.url !== ''
+      ? convertApiUrlToFrontendUrl(nearestParkForVariant.url)
       : null;
 
   return (
@@ -206,7 +222,7 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
       {showNearParkHero ? (
         <>
           <p className="text-muted-foreground mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
-            {t('heroNearPark', { parkName: nearestPark!.name })}
+            {t('heroNearPark', { parkName: nearestParkForVariant!.name })}
           </p>
           <ParkBadges
             isOpen={nearParkOpen ?? false}

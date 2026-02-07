@@ -3,6 +3,18 @@
  *
  * Type-safe wrapper for Umami event tracking.
  * Provides centralized event definitions and tracking functions.
+ *
+ * Events & properties in use:
+ * - nearby_parks_loaded: count, type, in_park, geo_allowed, source, parkId, parkName
+ * - nearby_in_park_detected: parkId, parkName, geo_allowed
+ * - hero_viewed: variant (in_park | near_park | default), parkName, parkId
+ * - location_banner_clicked: (when user clicks to enable location)
+ * - search_result_clicked: resultType, position, hasQuery, queryLength
+ * - search_no_results: query, queryLength
+ * - tab_changed (park page): tab, parkId, parkName
+ *
+ * Optional (wired where links are client-side): country_clicked, city_clicked (level, slug, name).
+ * ContentClickedProps: add source (home | nearby | search | explore) when calling from cards.
  */
 
 // Extend Window interface for Umami
@@ -47,6 +59,17 @@ export const UMAMI_EVENTS = {
 
   // Tabs
   TAB_CHANGED: 'tab_changed',
+
+  // Hero & Entry points
+  HERO_VIEWED: 'hero_viewed',
+  LOCATION_BANNER_CLICKED: 'location_banner_clicked',
+
+  // Discovery funnel (continent → country → city → park)
+  COUNTRY_CLICKED: 'country_clicked',
+  CITY_CLICKED: 'city_clicked',
+
+  // Engagement & health
+  SEARCH_NO_RESULTS: 'search_no_results',
 } as const;
 
 // Event property types
@@ -61,6 +84,8 @@ export interface NearbyParksLoadedProps {
   type: 'nearby_parks' | 'in_park';
   /** True when user is detected inside a park; false when only nearby parks. Use in Umami to segment "in park" vs "not in park". */
   in_park: boolean;
+  /** True when user granted browser location (results from GPS); false when using IP fallback. Segment "geo allowed" in Umami. */
+  geo_allowed: boolean;
   /** Whether results came from GPS (user granted location) or IP fallback */
   source?: 'gps' | 'ip';
   /** When in_park, the park id for segmentation */
@@ -73,6 +98,8 @@ export interface NearbyParksLoadedProps {
 export interface NearbyInParkProps {
   parkId: string;
   parkName: string;
+  /** True when user granted browser location. */
+  geo_allowed: boolean;
   [key: string]: string | number | boolean;
 }
 
@@ -90,6 +117,9 @@ export interface HeroSearchClickedProps {
 export interface SearchResultClickedProps {
   resultType: 'park' | 'attraction' | 'show' | 'restaurant' | 'location';
   position?: number;
+  /** Whether user had typed a search query (vs. opened empty search). */
+  hasQuery?: boolean;
+  queryLength?: number;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -107,12 +137,41 @@ export interface ThemeToggledProps {
 export interface ContentClickedProps {
   name: string;
   id?: string;
+  /** Where the click came from: homepage, nearby, search, explore (continent/country/city list) */
+  source?: 'home' | 'nearby' | 'search' | 'explore';
+  parkId?: string;
+  parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
-export interface TabChangedProps {
-  tab: string;
+export interface HeroViewedProps {
+  /** in_park | near_park | default */
+  variant: 'in_park' | 'near_park' | 'default';
+  parkName?: string;
   parkId?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
+export interface DiscoveryClickedProps {
+  name: string;
+  slug: string;
+  /** continent | country | city */
+  level: 'continent' | 'country' | 'city';
+  parentSlug?: string;
+  [key: string]: string | number | boolean | undefined;
+}
+
+export interface SearchNoResultsProps {
+  query: string;
+  queryLength: number;
+  [key: string]: string | number | boolean;
+}
+
+export interface TabChangedProps {
+  /** attractions | calendar | map | shows | restaurants */
+  tab: 'attractions' | 'calendar' | 'map' | 'shows' | 'restaurants';
+  parkId?: string;
+  parkName?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -236,4 +295,24 @@ export function trackCalendarDateSelected(date: string, parkId?: string): void {
 
 export function trackTabChanged(props: TabChangedProps): void {
   trackEvent(UMAMI_EVENTS.TAB_CHANGED, props);
+}
+
+export function trackHeroViewed(props: HeroViewedProps): void {
+  trackEvent(UMAMI_EVENTS.HERO_VIEWED, props);
+}
+
+export function trackLocationBannerClicked(): void {
+  trackEvent(UMAMI_EVENTS.LOCATION_BANNER_CLICKED);
+}
+
+export function trackCountryClicked(props: DiscoveryClickedProps): void {
+  trackEvent(UMAMI_EVENTS.COUNTRY_CLICKED, props);
+}
+
+export function trackCityClicked(props: DiscoveryClickedProps): void {
+  trackEvent(UMAMI_EVENTS.CITY_CLICKED, props);
+}
+
+export function trackSearchNoResults(props: SearchNoResultsProps): void {
+  trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
 }

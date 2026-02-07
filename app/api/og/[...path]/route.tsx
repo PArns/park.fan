@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import { stripNewPrefix } from '@/lib/utils';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale } from '@/i18n/config';
@@ -339,7 +340,7 @@ export async function GET(
 
         if (!attraction) return new Response('Attraction not found', { status: 404 });
 
-        name = attraction.name;
+        name = stripNewPrefix(attraction.name);
         backgroundImagePath =
           getAttractionBackgroundImage(parkSlug, attractionSlug) ??
           getParkBackgroundImage(parkSlug);
@@ -361,7 +362,7 @@ export async function GET(
         peakWaitToday = attraction.statistics?.peakWaitToday ?? undefined;
       } else {
         // Park logic
-        name = park.name;
+        name = stripNewPrefix(park.name);
         backgroundImagePath = getParkBackgroundImage(parkSlug);
         status = park.status || 'CLOSED';
         crowdLevel = park.currentLoad?.crowdLevel;

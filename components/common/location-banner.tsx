@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { MapPin, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { trackLocationBannerClicked } from '@/lib/analytics/umami';
 
 /**
  * Banner shown when the user has not granted location (prompt) or has denied it.
@@ -41,7 +42,10 @@ export function LocationBanner() {
           </div>
         </div>
         <Button
-          onClick={refresh}
+          onClick={() => {
+            trackLocationBannerClicked();
+            refresh();
+          }}
           size="lg"
           disabled={loading}
           className="w-full shrink-0 sm:w-auto"

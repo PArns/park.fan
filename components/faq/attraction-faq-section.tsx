@@ -4,6 +4,7 @@ import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { ChevronDown, MapPin, Clock, Users, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface AttractionFAQSectionProps {
   attraction: ParkAttraction;
@@ -12,6 +13,8 @@ interface AttractionFAQSectionProps {
 
 export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
   const t = useTranslations('seo.faq.attraction');
+  const attractionName = stripNewPrefix(attraction.name);
+  const parkName = stripNewPrefix(park.name);
 
   const faqs = [];
 
@@ -19,10 +22,10 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
   if (park.name) {
     faqs.push({
       icon: MapPin,
-      question: t('locationQ', { attraction: attraction.name }),
+      question: t('locationQ', { attraction: attractionName }),
       answer: t('locationA', {
-        attraction: attraction.name,
-        park: park.name,
+        attraction: attractionName,
+        park: parkName,
         land: attraction.land ? t('inLand', { land: attraction.land }) : '',
       }),
     });
@@ -31,8 +34,8 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
   // Question 2: Wait Time
   faqs.push({
     icon: Clock,
-    question: t('waitTimeQ', { attraction: attraction.name }),
-    answer: t('waitTimeA', { attraction: attraction.name }),
+    question: t('waitTimeQ', { attraction: attractionName }),
+    answer: t('waitTimeA', { attraction: attractionName }),
   });
 
   // Question 3: Single Rider
@@ -40,8 +43,8 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
   if (singleRiderQueue) {
     faqs.push({
       icon: Users,
-      question: t('singleRiderQ', { attraction: attraction.name }),
-      answer: t('singleRiderA', { attraction: attraction.name }),
+      question: t('singleRiderQ', { attraction: attractionName }),
+      answer: t('singleRiderA', { attraction: attractionName }),
     });
   }
 
@@ -54,9 +57,9 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
     const typeName = 'Express Pass / Premier Access';
     faqs.push({
       icon: Zap,
-      question: t('paidQueueQ', { attraction: attraction.name }),
+      question: t('paidQueueQ', { attraction: attractionName }),
       answer: t('paidQueueA', {
-        attraction: attraction.name,
+        attraction: attractionName,
         type: typeName,
       }),
     });
@@ -66,7 +69,7 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
 
   return (
     <section className="space-y-4">
-      <h2 className="text-2xl font-bold">{t('title', { attraction: attraction.name })}</h2>
+      <h2 className="text-2xl font-bold">{t('title', { attraction: attractionName })}</h2>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = faq.icon;

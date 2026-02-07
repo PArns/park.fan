@@ -13,6 +13,8 @@ import { Badge } from '@/components/ui/badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
+import { stripNewPrefix } from '@/lib/utils';
+import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 
 // import { LocalTime } from '@/components/ui/local-time';
 import type {
@@ -168,6 +170,15 @@ export function TabsWithHash({
   // Update URL hash when tab changes
   const handleTabChange = (value: string) => {
     setActiveTab(value);
+
+    const tab = value as TabChangedProps['tab'];
+    if (['attractions', 'calendar', 'map', 'shows', 'restaurants'].includes(tab)) {
+      trackTabChanged({
+        tab,
+        ...(park.id && { parkId: String(park.id) }),
+        ...(park.name && { parkName: stripNewPrefix(park.name) }),
+      });
+    }
 
     // Preserve calendar month hash if switching to calendar tab
     let newHash = value;
@@ -349,7 +360,7 @@ export function TabsWithHash({
                   <ShowCard
                     key={show.id}
                     id={show.id}
-                    name={show.name}
+                    name={stripNewPrefix(show.name)}
                     slug={show.slug}
                     status={show.status || 'CLOSED'}
                     showtimes={show.showtimes}
@@ -374,7 +385,7 @@ export function TabsWithHash({
                     </div>
                   )}
                   <CardContent className="p-4">
-                    <h3 className="font-semibold">{restaurant.name}</h3>
+                    <h3 className="font-semibold">{stripNewPrefix(restaurant.name)}</h3>
                     {restaurant.cuisineType && (
                       <Badge variant="secondary" className="mt-2 text-xs">
                         {restaurant.cuisineType}

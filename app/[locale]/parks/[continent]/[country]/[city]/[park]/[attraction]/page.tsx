@@ -38,6 +38,7 @@ import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findAttractionPageRedirect } from '@/lib/utils/redirect-utils';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -73,14 +74,16 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
+  const attractionName = stripNewPrefix(attraction.name);
+  const parkName = stripNewPrefix(park?.name || '');
 
   const cityName = park?.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
   const keywords = [
-    attraction.name,
-    `${attraction.name} wait times`,
-    park?.name || '',
-    `${park?.name || ''} ${cityName}`,
+    attractionName,
+    `${attractionName} wait times`,
+    parkName,
+    `${parkName} ${cityName}`,
     cityName,
     tGlobal('keywords'),
   ]
@@ -89,25 +92,25 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
   return {
     title: t('titleTemplate', {
-      attraction: attraction.name,
-      park: park?.name || '',
+      attraction: attractionName,
+      park: parkName,
       city: cityName,
     }),
     description: t('metaDescriptionTemplate', {
-      attraction: attraction.name,
-      park: park?.name || '',
+      attraction: attractionName,
+      park: parkName,
       city: cityName,
     }),
     keywords,
     openGraph: {
       title: t('titleTemplate', {
-        attraction: attraction.name,
-        park: park?.name || '',
+        attraction: attractionName,
+        park: parkName,
         city: cityName,
       }),
       description: t('metaDescriptionTemplate', {
-        attraction: attraction.name,
-        park: park?.name || '',
+        attraction: attractionName,
+        park: parkName,
         city: cityName,
       }),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
@@ -121,8 +124,8 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
           width: 1200,
           height: 630,
           alt: tImageAlt('attraction', {
-            attraction: attraction.name,
-            park: park?.name || '',
+            attraction: attractionName,
+            park: parkName,
           }),
         },
       ],
@@ -130,13 +133,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     twitter: {
       card: 'summary_large_image',
       title: t('titleTemplate', {
-        attraction: attraction.name,
-        park: park?.name || '',
+        attraction: attractionName,
+        park: parkName,
         city: cityName,
       }),
       description: t('metaDescriptionTemplate', {
-        attraction: attraction.name,
-        park: park?.name || '',
+        attraction: attractionName,
+        park: parkName,
         city: cityName,
       }),
       images: [ogImageUrl],
@@ -243,6 +246,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     ? tGeo(`countries.${country}`)
     : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
+  const attractionName = stripNewPrefix(attraction.name);
+  const parkName = stripNewPrefix(park.name);
 
   // Construct breadcrumbs using utility
   const { generateAttractionBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
@@ -256,7 +261,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     continentName,
     countryName,
     cityName,
-    parkName: park.name,
+    parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
@@ -274,19 +279,19 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         park={park}
         url={attractionUrl}
         description={tSeo('metaDescriptionTemplate', {
-          attraction: attraction.name,
-          park: park.name,
+          attraction: attractionName,
+          park: parkName,
           city: cityName,
         })}
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
-      <ParkBackground imageSrc={backgroundImage} alt={attraction.name} />
+      <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
       <PageContainer>
         {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
-          currentPage={attraction.name}
+          currentPage={attractionName}
           className="bg-background/60 text-primary w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
@@ -302,7 +307,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               )}
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attraction.name}</h1>
+                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">{attractionName}</h1>
                   <div className="text-foreground flex flex-wrap items-center gap-3">
                     <Link
                       href={
@@ -312,7 +317,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       className="hover:text-foreground flex items-center gap-1"
                     >
                       <MapPin className="h-4 w-4" />
-                      {park.name}
+                      {parkName}
                     </Link>
                     {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
                   </div>

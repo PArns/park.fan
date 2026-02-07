@@ -21,8 +21,13 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const radiusInMeters = opts.radiusInMeters ?? 1000;
   const limit = opts.limit ?? 6;
 
-  const { position, loading: geoLoading, initialCheckDone, permissionDenied, error: geoError } =
-    useGeolocation();
+  const {
+    position,
+    loading: geoLoading,
+    initialCheckDone,
+    permissionDenied,
+    error: geoError,
+  } = useGeolocation();
 
   // Prefer browser location: only run when we have coords or we've given up (denied/error).
   // Never run with IP fallback while we might still get a position.

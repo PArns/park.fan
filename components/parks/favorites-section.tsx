@@ -14,6 +14,7 @@ import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useQueryClient } from '@tanstack/react-query';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { stripNewPrefix } from '@/lib/utils';
 import {
   buildShowUrl,
   buildRestaurantUrl,
@@ -160,7 +161,7 @@ export function FavoritesSection() {
                       <ParkCardNearby
                         key={park.id}
                         id={park.id}
-                        name={park.name}
+                        name={stripNewPrefix(park.name)}
                         slug={park.slug}
                         city={park.city}
                         country={park.country}
@@ -251,13 +252,13 @@ export function FavoritesSection() {
                         <ShowCard
                           key={show.id}
                           id={show.id}
-                          name={show.name}
+                          name={stripNewPrefix(show.name)}
                           slug={show.slug}
                           status={show.status}
                           showtimes={show.showtimes}
                           timezone={show.park?.timezone || 'UTC'}
                           href={showHref}
-                          parkName={show.park?.name}
+                          parkName={show.park?.name ? stripNewPrefix(show.park.name) : undefined}
                           distance={show.distance}
                         />
                       );
@@ -330,11 +331,11 @@ export function FavoritesSection() {
                             <div className="flex items-start justify-between gap-2">
                               <div className="min-w-0 flex-1">
                                 <h3 className="group-hover:text-primary line-clamp-2 text-base font-semibold transition-colors">
-                                  {restaurant.name}
+                                  {stripNewPrefix(restaurant.name)}
                                 </h3>
                                 {restaurant.park && (
                                   <p className="text-muted-foreground mt-1 truncate text-xs">
-                                    {restaurant.park.name}
+                                    {stripNewPrefix(restaurant.park.name)}
                                   </p>
                                 )}
                                 {restaurant.cuisineType && (

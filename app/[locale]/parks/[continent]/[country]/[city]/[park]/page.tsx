@@ -30,6 +30,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface ParkPageProps {
   params: Promise<{
@@ -56,6 +57,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   }
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
+  const parkName = stripNewPrefix(park.name);
 
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = tGeo.has(`countries.${country}`)
@@ -63,23 +65,23 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
 
   const keywords = [
-    park.name,
-    `${park.name} ${cityName}`,
-    `${park.name} ${countryName}`,
-    `${park.name} wait times`,
-    `${park.name} crowd calendar`,
+    parkName,
+    `${parkName} ${cityName}`,
+    `${parkName} ${countryName}`,
+    `${parkName} wait times`,
+    `${parkName} crowd calendar`,
     cityName,
     countryName,
     tGlobal('keywords'),
   ].join(', ');
 
   return {
-    title: t('titleTemplate', { park: park.name, city: cityName }),
-    description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
+    title: t('titleTemplate', { park: parkName, city: cityName }),
+    description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
     keywords,
     openGraph: {
-      title: t('titleTemplate', { park: park.name, city: cityName }),
-      description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
+      title: t('titleTemplate', { park: parkName, city: cityName }),
+      description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
@@ -90,14 +92,14 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: tImageAlt('park', { park: park.name }),
+          alt: tImageAlt('park', { park: parkName }),
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('titleTemplate', { park: park.name, city: cityName }),
-      description: t('metaDescriptionTemplate', { park: park.name, city: cityName }),
+      title: t('titleTemplate', { park: parkName, city: cityName }),
+      description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
       images: [ogImageUrl],
     },
     alternates: {
@@ -219,6 +221,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
     return park.schedule.find((s) => s.date === todayInParkTz) || park.schedule[0];
   };
   const todaySchedule = getTodaySchedule();
+  const parkName = stripNewPrefix(park.name);
 
   // Construct breadcrumbs using utility
   const { generateParkBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
@@ -228,22 +231,24 @@ export default async function ParkPage({ params }: ParkPageProps) {
     continent,
     country,
     city,
+    parkSlug,
     continentName,
     countryName,
     cityName,
+    parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
 
   return (
     <>
-      <ParkBackground imageSrc={getParkBackgroundImage(parkSlug)} alt={park.name} />
+      <ParkBackground imageSrc={getParkBackgroundImage(parkSlug)} alt={parkName} />
 
       <PageContainer>
         <ParkStructuredData
           park={park}
           url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
-          description={tSeo('metaDescriptionTemplate', { park: park.name, city: cityName })}
+          description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
         {park.shows && park.shows.length > 0 && (
@@ -258,7 +263,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
-          currentPage={park.name}
+          currentPage={parkName}
           className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
@@ -269,7 +274,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="mb-2 flex flex-wrap items-center gap-3">
-                    <h1 className="text-3xl font-bold md:text-4xl">{park.name}</h1>
+                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
                     {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
                     {park.id && (
                       <div className="ml-auto">

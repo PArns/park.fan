@@ -15,6 +15,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
@@ -71,11 +72,14 @@ export function NearbyParksCard() {
     if (lastTrackedDataKey.current === dataKey) return;
     lastTrackedDataKey.current = dataKey;
 
+    const geoAllowed = !!position;
+
     if (nearbyData.type === 'nearby_parks') {
       trackNearbyParksLoaded({
         count: (nearbyData.data as NearbyParksData).parks.length,
         type: 'nearby_parks',
         in_park: false,
+        geo_allowed: geoAllowed,
         source: locationSource,
       });
       setIsInPark(false);
@@ -85,17 +89,19 @@ export function NearbyParksCard() {
         count: 1,
         type: 'in_park',
         in_park: true,
+        geo_allowed: geoAllowed,
         source: locationSource,
         parkId: parkData.park.id,
-        parkName: parkData.park.name,
+        parkName: stripNewPrefix(parkData.park.name),
       });
       trackNearbyInParkDetected({
         parkId: parkData.park.id,
-        parkName: parkData.park.name,
+        parkName: stripNewPrefix(parkData.park.name),
+        geo_allowed: geoAllowed,
       });
       setIsInPark(true);
     }
-  }, [nearbyData, setIsInPark, locationSource]);
+  }, [nearbyData, setIsInPark, locationSource, position]);
 
   // Track permission granted once when user grants location
   useEffect(() => {
@@ -226,14 +232,18 @@ export function NearbyParksCard() {
       <section className="bg-park-primary/5 border-park-primary/30 relative min-h-[200px] overflow-hidden rounded-xl border py-6 shadow-sm">
         {/* Background Image */}
         {park.backgroundImage && (
-          <BackgroundOverlay imageSrc={park.backgroundImage} alt={park.name} intensity="medium" />
+          <BackgroundOverlay
+            imageSrc={park.backgroundImage}
+            alt={stripNewPrefix(park.name)}
+            intensity="medium"
+          />
         )}
 
         <div className="relative z-10">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2">
               <MapPin className="text-park-primary h-5 w-5" />
-              {t('youAreInPark', { parkName: park.name })}
+              {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -267,7 +277,7 @@ export function NearbyParksCard() {
                 <article className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
-                      <h3 className="text-lg font-semibold">{park.name}</h3>
+                      <h3 className="text-lg font-semibold">{stripNewPrefix(park.name)}</h3>
                       <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 transition-colors" />
                     </div>
                     <p className="text-muted-foreground text-sm">
@@ -305,7 +315,7 @@ export function NearbyParksCard() {
               <>
                 <article className="flex items-start justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold">{park.name}</h3>
+                    <h3 className="text-lg font-semibold">{stripNewPrefix(park.name)}</h3>
                     <p className="text-muted-foreground text-sm">
                       {t('youAreIn')} · {park.status}
                     </p>
@@ -362,7 +372,7 @@ export function NearbyParksCard() {
                           )}
                           <div className="min-w-0 flex-1 pr-2">
                             <p className="group-hover:text-primary truncate font-medium transition-colors">
-                              {attraction.name}
+                              {stripNewPrefix(attraction.name)}
                             </p>
                             <p className="text-muted-foreground text-xs">
                               {formatDistance(attraction.distance)} {t('awayFrom')}
@@ -467,7 +477,7 @@ export function NearbyParksCard() {
                 <li key={park.id} className={hiddenClass}>
                   <ParkCardNearby
                     id={park.id}
-                    name={park.name}
+                    name={stripNewPrefix(park.name)}
                     slug={park.slug}
                     city={park.city}
                     country={park.country}

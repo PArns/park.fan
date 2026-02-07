@@ -11,6 +11,7 @@ import type {
   ParkRestaurant,
 } from '@/lib/api/types';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
+import { stripNewPrefix } from '@/lib/utils';
 import 'leaflet/dist/leaflet.css';
 
 // Fix for default marker icons in Next.js
@@ -249,7 +250,7 @@ export function ParkMap({ park }: ParkMapProps) {
           );
           entities.push({
             id: attraction.id,
-            name: attraction.name,
+            name: stripNewPrefix(attraction.name),
             type: 'attraction',
             distance,
             latitude: attraction.latitude,
@@ -269,7 +270,7 @@ export function ParkMap({ park }: ParkMapProps) {
           );
           entities.push({
             id: show.id,
-            name: show.name,
+            name: stripNewPrefix(show.name),
             type: 'show',
             distance,
             latitude: show.latitude,
@@ -289,7 +290,7 @@ export function ParkMap({ park }: ParkMapProps) {
           );
           entities.push({
             id: restaurant.id,
-            name: restaurant.name,
+            name: stripNewPrefix(restaurant.name),
             type: 'restaurant',
             distance,
             latitude: restaurant.latitude,
@@ -376,7 +377,7 @@ export function ParkMap({ park }: ParkMapProps) {
         {park.latitude && park.longitude && (
           <Marker position={[park.latitude, park.longitude]} icon={parkIcon}>
             <Popup>
-              <div className="font-semibold">{park.name}</div>
+              <div className="font-semibold">{stripNewPrefix(park.name)}</div>
               <div className="text-muted-foreground text-xs">{t('parkCenter')}</div>
             </Popup>
           </Marker>
@@ -399,7 +400,7 @@ export function ParkMap({ park }: ParkMapProps) {
             >
               <Popup>
                 <div>
-                  <div className="font-semibold">{attraction.name}</div>
+                  <div className="font-semibold">{stripNewPrefix(attraction.name)}</div>
                   {attraction.land && (
                     <div className="text-muted-foreground text-xs">{attraction.land}</div>
                   )}
@@ -437,7 +438,7 @@ export function ParkMap({ park }: ParkMapProps) {
           <Marker key={show.id} position={[show.latitude!, show.longitude!]} icon={showIcon}>
             <Popup>
               <div>
-                <div className="font-semibold">{show.name}</div>
+                <div className="font-semibold">{stripNewPrefix(show.name)}</div>
                 <div className="text-muted-foreground text-xs">{t('show')}</div>
                 {show.showtimes && show.showtimes.length > 0 && (
                   <div className="mt-1 text-xs">
@@ -463,7 +464,7 @@ export function ParkMap({ park }: ParkMapProps) {
           >
             <Popup>
               <div>
-                <div className="font-semibold">{restaurant.name}</div>
+                <div className="font-semibold">{stripNewPrefix(restaurant.name)}</div>
                 <div className="text-muted-foreground text-xs">{t('restaurant')}</div>
                 {restaurant.cuisineType && (
                   <div className="mt-1 text-xs">

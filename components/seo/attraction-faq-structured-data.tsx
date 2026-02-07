@@ -2,6 +2,7 @@ import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface AttractionFAQStructuredDataProps {
   attraction: ParkAttraction;
@@ -14,6 +15,8 @@ export function AttractionFAQStructuredData({
   park,
 }: AttractionFAQStructuredDataProps) {
   const t = useTranslations('seo.faq.attraction');
+  const attractionName = stripNewPrefix(attraction.name);
+  const parkName = stripNewPrefix(park.name);
 
   const mainEntity = [];
 
@@ -21,12 +24,12 @@ export function AttractionFAQStructuredData({
   if (park.name) {
     mainEntity.push({
       '@type': 'Question',
-      name: t('locationQ', { attraction: attraction.name }),
+      name: t('locationQ', { attraction: attractionName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: t('locationA', {
-          attraction: attraction.name,
-          park: park.name,
+          attraction: attractionName,
+          park: parkName,
           land: attraction.land ? t('inLand', { land: attraction.land }) : '',
         }),
       },
@@ -36,10 +39,10 @@ export function AttractionFAQStructuredData({
   // Question 2: Wait Time (if it's a ride)
   mainEntity.push({
     '@type': 'Question',
-    name: t('waitTimeQ', { attraction: attraction.name }),
+    name: t('waitTimeQ', { attraction: attractionName }),
     acceptedAnswer: {
       '@type': 'Answer',
-      text: t('waitTimeA', { attraction: attraction.name }),
+      text: t('waitTimeA', { attraction: attractionName }),
     },
   });
 
@@ -49,10 +52,10 @@ export function AttractionFAQStructuredData({
   if (singleRiderQueue) {
     mainEntity.push({
       '@type': 'Question',
-      name: t('singleRiderQ', { attraction: attraction.name }),
+      name: t('singleRiderQ', { attraction: attractionName }),
       acceptedAnswer: {
         '@type': 'Answer',
-        text: t('singleRiderA', { attraction: attraction.name }),
+        text: t('singleRiderA', { attraction: attractionName }),
       },
     });
   }
@@ -69,11 +72,11 @@ export function AttractionFAQStructuredData({
 
     mainEntity.push({
       '@type': 'Question',
-      name: t('paidQueueQ', { attraction: attraction.name }),
+      name: t('paidQueueQ', { attraction: attractionName }),
       acceptedAnswer: {
         '@type': 'Answer',
         text: t('paidQueueA', {
-          attraction: attraction.name,
+          attraction: attractionName,
           type: typeName,
         }),
       },

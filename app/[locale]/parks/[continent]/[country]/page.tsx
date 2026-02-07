@@ -9,6 +9,7 @@ import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
 
 interface CountryPageProps {
@@ -153,7 +154,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
               {city.parks.map((park) => (
                 <ParkCard
                   key={park.id}
-                  name={park.name}
+                  name={stripNewPrefix(park.name)}
                   slug={park.slug}
                   city={city.name}
                   country={countryName}

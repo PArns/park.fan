@@ -4,6 +4,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { ChevronDown, MapPin, Calendar, Ticket, Map, Theater, UtensilsCrossed } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { translateCountry } from '@/lib/i18n/helpers';
+import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
 
 interface ParkFAQSectionProps {
@@ -20,11 +21,7 @@ interface FAQItem {
 export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
-
-  // Helper function to remove "NEW:", "NEU:", etc. prefixes
-  const cleanName = (name: string): string => {
-    return name.replace(/^(NEW|NEU|NOUVEAU|NIEUW|NUEVO):\s*/i, '').trim();
-  };
+  const parkName = stripNewPrefix(park.name);
 
   // Get current date in park's timezone
   const timeZone = park.timezone || 'UTC';
@@ -55,20 +52,20 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
     const close = todaySchedule.closingTime.substring(0, 5);
     openingHoursAnswer = t('openingHoursA', {
       date: localizedDate,
-      park: park.name,
+      park: parkName,
       open,
       close,
     });
   } else {
     openingHoursAnswer = t('openingHoursClosed', {
       date: localizedDate,
-      park: park.name,
+      park: parkName,
     });
   }
 
   faqs.push({
     icon: Calendar,
-    question: t('openingHoursQ', { park: park.name }),
+    question: t('openingHoursQ', { park: parkName }),
     answer: openingHoursAnswer,
   });
 
@@ -79,9 +76,9 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
 
     faqs.push({
       icon: MapPin,
-      question: t('locationQ', { park: park.name }),
+      question: t('locationQ', { park: parkName }),
       answer: t('locationA', {
-        park: park.name,
+        park: parkName,
         city: park.city,
         country: translatedCountry,
       }),
@@ -94,9 +91,9 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
   if (totalAttractions) {
     faqs.push({
       icon: Ticket,
-      question: t('attractionCountQ', { park: park.name }),
+      question: t('attractionCountQ', { park: parkName }),
       answer: t('attractionCountA', {
-        park: park.name,
+        park: parkName,
         count: totalAttractions,
       }),
     });
@@ -108,9 +105,9 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
   if (uniqueLands.length > 0) {
     faqs.push({
       icon: Map,
-      question: t('themedAreasQ', { park: park.name }),
+      question: t('themedAreasQ', { park: parkName }),
       answer: {
-        text: t('themedAreasA', { park: park.name, count: uniqueLands.length }),
+        text: t('themedAreasA', { park: parkName, count: uniqueLands.length }),
         list: uniqueLands,
       },
     });
@@ -118,12 +115,12 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
 
   // Question 5: Shows
   if (park.shows && park.shows.length > 0) {
-    const showNames = park.shows.map((s) => cleanName(s.name));
+    const showNames = park.shows.map((s) => stripNewPrefix(s.name));
     faqs.push({
       icon: Theater,
-      question: t('showsQ', { park: park.name }),
+      question: t('showsQ', { park: parkName }),
       answer: {
-        text: t('showsA', { park: park.name, count: park.shows.length }),
+        text: t('showsA', { park: parkName, count: park.shows.length }),
         list: showNames,
       },
     });
@@ -131,12 +128,12 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
 
   // Question 6: Dining
   if (park.restaurants && park.restaurants.length > 0) {
-    const restaurantNames = park.restaurants.map((r) => cleanName(r.name));
+    const restaurantNames = park.restaurants.map((r) => stripNewPrefix(r.name));
     faqs.push({
       icon: UtensilsCrossed,
-      question: t('diningQ', { park: park.name }),
+      question: t('diningQ', { park: parkName }),
       answer: {
-        text: t('diningA', { park: park.name, count: park.restaurants.length }),
+        text: t('diningA', { park: parkName, count: park.restaurants.length }),
         list: restaurantNames,
       },
     });
@@ -146,7 +143,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-2xl font-bold">{t('title', { park: park.name })}</h2>
+      <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = faq.icon;
