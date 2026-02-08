@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { translateContinent } from '@/lib/i18n/helpers';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
@@ -113,7 +114,7 @@ export default async function ParksPage({ params }: ParksPageProps) {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {continentItems.map((continent) => {
-          const continentName = t(`continents.${continent.slug}` as string) || continent.name;
+          const continentName = translateContinent(t, continent.slug, locale, continent.name);
 
           return (
             <GeoLocationCard

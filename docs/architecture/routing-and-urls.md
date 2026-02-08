@@ -9,6 +9,7 @@ The app uses **geographic routes** analogous to the API:
 ```
 
 **Examples:**
+
 - `/en/parks/europe/germany/bruhl/phantasialand`
 - `/de/parks/europe/germany/bruhl/phantasialand/taron`
 - `/en/parks/north-america/united-states/orlando/magic-kingdom`
@@ -34,6 +35,7 @@ const href = `/parks/${continent}/${country}/${city}/${park}`;
 ```
 
 **Mapping:**
+
 - `/v1/parks/...` → `/parks/...`
 - `/v1/parks/.../attractions/xyz` → `/parks/.../xyz` (attraction directly under park)
 - `/v1/shows/...`, `/v1/restaurants/...` → Hash fragments (`#shows`, `#restaurants`)
@@ -72,16 +74,19 @@ Each returns an array of `{ name, url, className? }` for `BreadcrumbNav`. Pass l
 Malformed URLs (e.g. missing city) are checked **before** returning 404 and redirected if possible.
 
 **`lib/utils/redirect-utils.ts`:**
+
 - `findParkBySlug()` – Lookup in geo structure
 - `findAttractionBySlug()` – Attraction in park
 - Redirects e.g. `/parks/europe/germany/phantasialand` → `/parks/europe/germany/bruhl/phantasialand`
 
 **Implemented in:**
+
 - City page
 - Park page
 - Attraction page
 
 **Example redirects:**
+
 - `/de/parks/europe/germany/phantasialand` → `/de/parks/europe/germany/bruhl/phantasialand`
 - `/de/parks/europe/netherlands/toverland/fenix` → `/de/parks/europe/netherlands/sevenum/toverland/fenix`
 
@@ -97,12 +102,12 @@ Malformed URLs (e.g. missing city) are checked **before** returning 404 and redi
 
 ## Link Prefetching
 
-| Link Type | Recommendation |
-|-----------|----------------|
-| Header/Footer | `prefetch={false}` |
-| Discovery/Geo cards | `prefetch={false}` |
-| Parks/Attractions | `prefetch={status === 'OPERATING'}` (only when open) |
-| Search | `prefetch={false}` for locations, conditional for others |
+| Link Type           | Recommendation                                           |
+| ------------------- | -------------------------------------------------------- |
+| Header/Footer       | `prefetch={false}`                                       |
+| Discovery/Geo cards | `prefetch={false}`                                       |
+| Parks/Attractions   | `prefetch={status === 'OPERATING'}` (only when open)     |
+| Search              | `prefetch={false}` for locations, conditional for others |
 
 ---
 

@@ -16,7 +16,7 @@ import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
 import type { CrowdLevel } from '@/lib/api/types';
 import {
@@ -221,11 +221,12 @@ export function NearbyParksCard() {
     const attractions = (data.rides || []).slice(0, 5);
 
     // Park page URL (for "Go to park page" CTA); fallback from first attraction
-    const parkPageUrl =
-      (park as { url?: string })?.url ||
-      (attractions.length > 0
-        ? convertApiUrlToFrontendUrl(attractions[0].url.split('/attractions/')[0])
-        : null);
+    const rawParkUrl = (park as { url?: string })?.url;
+    const parkPageUrl = rawParkUrl
+      ? convertApiUrlToFrontendUrl(rawParkUrl)
+      : attractions.length > 0
+        ? getParkUrlFromAttractionUrl(attractions[0].url)
+        : null;
     const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (

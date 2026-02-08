@@ -62,7 +62,7 @@ Locale-specific markdown files in **`content/home/`**:
 Each file can have YAML frontmatter and body. **`components/home/announce-section.tsx`** loads:
 
 ```ts
-getMarkdownContent(`content/home/announce.${locale}.md`)
+getMarkdownContent(`content/home/announce.${locale}.md`);
 ```
 
 and renders the body with `react-markdown`. Used on the homepage to show a single announcement block.

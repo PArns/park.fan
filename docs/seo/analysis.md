@@ -6,18 +6,18 @@ As of February 2026. Full-site analysis with concrete recommendations.
 
 ## Already Well Implemented
 
-| Area | Status |
-|------|--------|
-| **Metadata** | `generateMetadata` on all relevant pages (Home, Parks, Park, Attraction, Continent, Country, City, Search, Impressum, Privacy) |
-| **Canonical URLs** | Set everywhere, locale-specific |
-| **hreflang / alternates** | `alternates.languages` + `x-default` in locale layout and subpages |
-| **Open Graph** | title, description, url, locale, images (1200×630), siteName |
-| **Twitter Cards** | summary_large_image with title, description, image |
-| **Structured Data** | Organization, WebSite (with SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home + Park + Attraction), Event (Shows) |
-| **Sitemap** | Dynamic from geo structure, all locales, priorities and changeFrequency set |
-| **robots.txt** | Allow /, Disallow /api/ and /_next/, Sitemap URL specified |
-| **Semantics** | H1 per page, nav with aria-label |
-| **Viewport & Theme** | viewport, themeColor for Light/Dark |
+| Area                      | Status                                                                                                                                     |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Metadata**              | `generateMetadata` on all relevant pages (Home, Parks, Park, Attraction, Continent, Country, City, Search, Impressum, Privacy)             |
+| **Canonical URLs**        | Set everywhere, locale-specific                                                                                                            |
+| **hreflang / alternates** | `alternates.languages` + `x-default` in locale layout and subpages                                                                         |
+| **Open Graph**            | title, description, url, locale, images (1200×630), siteName                                                                               |
+| **Twitter Cards**         | summary_large_image with title, description, image                                                                                         |
+| **Structured Data**       | Organization, WebSite (with SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home + Park + Attraction), Event (Shows) |
+| **Sitemap**               | Dynamic from geo structure, all locales, priorities and changeFrequency set                                                                |
+| **robots.txt**            | Allow /, Disallow /api/ and /\_next/, Sitemap URL specified                                                                                |
+| **Semantics**             | H1 per page, nav with aria-label                                                                                                           |
+| **Viewport & Theme**      | viewport, themeColor for Light/Dark                                                                                                        |
 
 ---
 
@@ -28,6 +28,7 @@ As of February 2026. Full-site analysis with concrete recommendations.
 **Problem:** Impressum, Privacy, and the plain search URL (`/search`) are not in the sitemap.
 
 **Recommendation:** Add in `app/sitemap.ts`:
+
 - `${BASE_URL}/${locale}/impressum`
 - `${BASE_URL}/${locale}/datenschutz`
 - `${BASE_URL}/${locale}/search` (search page only, no query, e.g. priority 0.5, changeFrequency monthly)
@@ -41,6 +42,7 @@ As of February 2026. Full-site analysis with concrete recommendations.
 **Problem:** Each search URL with `?q=...` gets its own canonical URL and could be treated as duplicate content.
 
 **Recommendation:** For search pages with query parameter, set `robots` to `noindex, follow`:
+
 - In `app/[locale]/search/page.tsx` in `generateMetadata`:  
   When `q` is present: `robots: { index: false, follow: true }`.
 - Without query (`/search`) keep `index: true` (inherited from layout).
@@ -77,6 +79,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 **Problem:** Long titles (e.g. "{Park} {City} Live Wait Times, Crowd Calendar & Best Days to Visit") can be truncated in search results (~50–60 chars visible).
 
 **Recommendation:**
+
 - Adjust title templates in messages so the core (Park/Attraction + location) comes first and stays under ~55 chars, e.g.  
   `{park} – Wait Times & Crowd | park.fan` or  
   `{attraction} @ {park} – Wait Times | park.fan`.
@@ -101,6 +104,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 **Problem:** No `manifest.json` (or PWA manifest) and no explicit Apple Touch Icon references.
 
 **Recommendation:**
+
 - Create `app/manifest.ts` (or `manifest.json`) with:
   - `name`, `short_name`, `description`, `start_url` (e.g. `/en`), `display: 'standalone'` or `'browser'`, `theme_color`, `background_color`, `icons` (min. 192×192, 512×512).
 - In `app/layout.tsx` or root layout:
@@ -116,6 +120,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 **Problem:** Continent/Country/City pages list parks without ItemList schema.
 
 **Recommendation:** Optionally add `ItemList` schema for Continent, Country, City:
+
 - `@type: ItemList`
 - `numberOfItems`, `itemListElement` (list of `ListItem` with `url` and `name` of parks)
 
@@ -144,6 +149,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 **Status:** `app/not-found.tsx` exists.
 
 **Recommendation:** Ensure the 404 page:
+
 - has clear, helpful text and link to homepage/search,
 - does not get `noindex` (404 pages may be indexed, though Google often removes them),
 - optionally add a simple breadcrumb or "You are here: park.fan → Page not found" for context.
@@ -168,15 +174,15 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 
 ## Prioritization
 
-| Priority | Action | Effort | Benefit |
-|----------|--------|--------|---------|
-| High | Extend sitemap with Impressum, Privacy, /search | Low | Index legal pages + search entry |
-| High | Set search pages with `?q=...` to noindex, follow | Low | Avoid duplicate content |
-| Medium | Shorten title templates (Park/Attraction) | Medium | Better SERP display |
-| Medium | Check/shorten meta description lengths | Low | Better SERP display |
-| Medium | Web app manifest + icons | Low | Completeness, Add-to-Homescreen |
-| Low | hreflang absolute URLs (only if currently relative) | Low | Best practice |
-| Low | ItemList for Continent/Country/City | Medium | Optional better list interpretation |
+| Priority | Action                                              | Effort | Benefit                             |
+| -------- | --------------------------------------------------- | ------ | ----------------------------------- |
+| High     | Extend sitemap with Impressum, Privacy, /search     | Low    | Index legal pages + search entry    |
+| High     | Set search pages with `?q=...` to noindex, follow   | Low    | Avoid duplicate content             |
+| Medium   | Shorten title templates (Park/Attraction)           | Medium | Better SERP display                 |
+| Medium   | Check/shorten meta description lengths              | Low    | Better SERP display                 |
+| Medium   | Web app manifest + icons                            | Low    | Completeness, Add-to-Homescreen     |
+| Low      | hreflang absolute URLs (only if currently relative) | Low    | Best practice                       |
+| Low      | ItemList for Continent/Country/City                 | Medium | Optional better list interpretation |
 
 ---
 

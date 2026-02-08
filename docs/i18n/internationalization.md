@@ -6,13 +6,13 @@ The app uses [next-intl](https://next-intl-docs.vercel.app/) for routing and tra
 
 ## Locales
 
-| Code | Language |
-|------|----------|
+| Code | Language          |
+| ---- | ----------------- |
 | `en` | English (default) |
-| `de` | Deutsch |
-| `nl` | Nederlands |
-| `fr` | Français |
-| `es` | Español |
+| `de` | Deutsch           |
+| `nl` | Nederlands        |
+| `fr` | Français          |
+| `es` | Español           |
 
 Configured in `i18n/config.ts`.
 
@@ -42,13 +42,14 @@ Configured in `i18n/config.ts`.
 import { useTranslations } from 'next-intl';
 
 const t = useTranslations('parks');
-t('status.open');   // "Open"
+t('status.open'); // "Open"
 t('status.closed'); // "Closed"
 ```
 
 ## Crowd Level "Normal"
 
 API returns `moderate` for P50 baseline. We display it as **"Normal"** in all locales:
+
 - EN: Normal
 - DE: Normal
 - NL: Normaal

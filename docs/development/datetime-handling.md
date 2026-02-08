@@ -80,12 +80,12 @@ Use the park timezone when rendering times:
 
 ## Where we use it
 
-| Place | Usage |
-|-------|--------|
-| Park page | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })` |
-| FAQ / structured data | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today |
-| Calendar | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone` |
-| ParkTimeInfo, LocalTime | `timeZone={park.timezone}` |
+| Place                   | Usage                                                                           |
+| ----------------------- | ------------------------------------------------------------------------------- |
+| Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`    |
+| FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                       |
+| Calendar                | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone` |
+| ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                      |
 
 ---
 

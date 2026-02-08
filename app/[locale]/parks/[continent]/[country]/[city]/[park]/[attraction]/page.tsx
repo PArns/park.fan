@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, redirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import {
@@ -239,12 +240,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const StatusIcon = config.icon;
 
   // Format names - use actual names from park data (proper umlauts)
-  const continentName = tGeo.has(`continents.${continent}`)
-    ? tGeo(`continents.${continent}`)
-    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
-  const countryName = tGeo.has(`countries.${country}`)
-    ? tGeo(`countries.${country}`)
-    : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(tGeo, continent, locale);
+  const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);

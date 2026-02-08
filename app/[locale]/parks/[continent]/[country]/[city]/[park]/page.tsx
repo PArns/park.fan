@@ -1,6 +1,7 @@
 import { format, startOfMonth, endOfMonth, addMonths } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, redirect } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -60,9 +61,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const parkName = stripNewPrefix(park.name);
 
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  const countryName = tGeo.has(`countries.${country}`)
-    ? tGeo(`countries.${country}`)
-    : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
   const keywords = [
     parkName,
@@ -201,12 +200,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
   });
 
   // Format names for breadcrumb - use actual names from park data (proper umlauts)
-  const continentName = tGeo.has(`continents.${continent}`)
-    ? tGeo(`continents.${continent}`)
-    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
-  const countryName = tGeo.has(`countries.${country}`)
-    ? tGeo(`countries.${country}`)
-    : park.country || country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(tGeo, continent, locale);
+  const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
   // Get today's schedule - filter by date in park's timezone

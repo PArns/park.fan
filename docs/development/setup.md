@@ -8,12 +8,14 @@
 ## Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone <repo-url>
    cd park.fan
    ```
 
 2. **Install dependencies:**
+
    ```bash
    pnpm install
    ```
@@ -40,17 +42,17 @@ Prebuild runs `generate-build-info.mjs`, `generate-hero-images`, and `generate-a
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start dev server (Turbopack) |
-| `pnpm build` | Production build |
-| `pnpm start` | Run production build |
-| `pnpm lint` | Run ESLint |
-| `pnpm lint:fix` | Fix lint errors |
-| `pnpm format` | Format with Prettier |
-| `pnpm format:check` | Check formatting |
-| `pnpm validate:translations` | Validate translation keys |
-| `pnpm crawl:translations` | Translation crawler (static) |
+| Command                        | Description                       |
+| ------------------------------ | --------------------------------- |
+| `pnpm dev`                     | Start dev server (Turbopack)      |
+| `pnpm build`                   | Production build                  |
+| `pnpm start`                   | Run production build              |
+| `pnpm lint`                    | Run ESLint                        |
+| `pnpm lint:fix`                | Fix lint errors                   |
+| `pnpm format`                  | Format with Prettier              |
+| `pnpm format:check`            | Check formatting                  |
+| `pnpm validate:translations`   | Validate translation keys         |
+| `pnpm crawl:translations`      | Translation crawler (static)      |
 | `pnpm crawl:translations:live` | Translation crawler (live server) |
 
 ## Related

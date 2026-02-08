@@ -87,6 +87,24 @@ export function convertApiUrlToFrontendUrl(apiUrl: string): string {
 }
 
 /**
+ * Extract park URL from an attraction URL
+ *
+ * Use when you only have an attraction URL (e.g. from attractions[0].url)
+ * and need the parent park page URL.
+ *
+ * @param attractionUrl - API or frontend URL containing /attractions/
+ * @returns Park page URL, or '#' if invalid
+ */
+export function getParkUrlFromAttractionUrl(attractionUrl: string): string {
+  if (!attractionUrl) return '#';
+  if (attractionUrl.includes('/attractions/')) {
+    const parkPart = attractionUrl.split('/attractions/')[0];
+    return convertApiUrlToFrontendUrl(parkPart);
+  }
+  return convertApiUrlToFrontendUrl(attractionUrl);
+}
+
+/**
  * Build show URL from park URL
  * Ensures the URL ends with #shows (replaces existing hash if present)
  */

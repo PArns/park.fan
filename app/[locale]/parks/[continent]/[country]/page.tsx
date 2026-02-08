@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
@@ -42,9 +43,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   const t = await getTranslations({ locale, namespace: 'seo.country' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
-  const countryName = tGeo.has(`countries.${country}`)
-    ? tGeo(`countries.${country}`)
-    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const countryName = translateCountry(tGeo, country, locale);
 
   const ogImageUrl = getOgImageUrl([locale, continent, country]);
 
@@ -106,13 +105,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
   // Calculate totals
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);
 
-  // Get translated names
-  const continentName = t.has(`continents.${continent}`)
-    ? t(`continents.${continent}`)
-    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
-  const countryName = t.has(`countries.${country}`)
-    ? t(`countries.${country}`)
-    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(t, continent, locale);
+  const countryName = translateCountry(t, country, locale);
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');

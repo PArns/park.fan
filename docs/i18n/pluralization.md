@@ -9,10 +9,10 @@ next-intl uses ICU message format for pluralization.
 ```json
 {
   "common": {
-    "minute": "{count, plural, =1 {Minute} other {Minuten}}",  // DE
-    "minute": "{count, plural, =1 {minute} other {minutes}}",  // EN
-    "hour": "{count, plural, =1 {Stunde} other {Stunden}}",    // DE  
-    "hour": "{count, plural, =1 {hour} other {hours}}"         // EN
+    "minute": "{count, plural, =1 {Minute} other {Minuten}}", // DE
+    "minute": "{count, plural, =1 {minute} other {minutes}}", // EN
+    "hour": "{count, plural, =1 {Stunde} other {Stunden}}", // DE
+    "hour": "{count, plural, =1 {hour} other {hours}}" // EN
   }
 }
 ```
@@ -28,15 +28,19 @@ import { useTranslations } from 'next-intl';
 
 export function WaitTimeDisplay({ minutes }: { minutes: number }) {
   const t = useTranslations('common');
-  
+
   return (
     <div>
       {/* Old method - no pluralization */}
-      <span>{minutes} {t('minutes')}</span>  
+      <span>
+        {minutes} {t('minutes')}
+      </span>
       {/* → "5 minutes" for all numbers */}
-      
+
       {/* New method - with pluralization */}
-      <span>{minutes} {t('minute', { count: minutes })}</span>
+      <span>
+        {minutes} {t('minute', { count: minutes })}
+      </span>
       {/* → "1 minute" for 1, "5 minutes" for 5 */}
     </div>
   );
@@ -50,10 +54,12 @@ import { getTranslations } from 'next-intl/server';
 
 export async function ParkStats({ waitTime }: { waitTime: number }) {
   const t = await getTranslations('common');
-  
+
   return (
     <div>
-      <p>{waitTime} {t('minute', { count: waitTime })}</p>
+      <p>
+        {waitTime} {t('minute', { count: waitTime })}
+      </p>
     </div>
   );
 }
@@ -70,17 +76,17 @@ import { formatWaitTime, formatHours } from '@/lib/i18n/time';
 
 export function MyComponent() {
   const t = useTranslations('common');
-  
+
   // Format wait time with count and unit
-  const waitText = formatWaitTime(t, 15);  
+  const waitText = formatWaitTime(t, 15);
   // → "15 minutes" (EN) / "15 Minuten" (DE)
-  
+
   const waitSingle = formatWaitTime(t, 1);
   // → "1 minute" (EN) / "1 Minute" (DE)
-  
+
   const hours = formatHours(t, 3);
   // → "3 hours" (EN) / "3 Stunden" (DE)
-  
+
   return <div>{waitText}</div>;
 }
 ```
@@ -90,22 +96,29 @@ export function MyComponent() {
 ## Migration Example
 
 **Before:**
+
 ```tsx
-<span>{avgWait} {tCommon('minutes')}</span>
+<span>
+  {avgWait} {tCommon('minutes')}
+</span>
 // Problem: "1 minutes" ❌
 ```
 
 **After:**
+
 ```tsx
-<span>{avgWait} {tCommon('minute', { count: avgWait })}</span>
+<span>
+  {avgWait} {tCommon('minute', { count: avgWait })}
+</span>
 // ✅ "1 minute"
 // ✅ "5 minutes"
 ```
 
 Or with helper:
+
 ```tsx
 import { formatWaitTime } from '@/lib/i18n/time';
-<span>{formatWaitTime(tCommon, avgWait)}</span>
+<span>{formatWaitTime(tCommon, avgWait)}</span>;
 ```
 
 ---
@@ -121,15 +134,16 @@ The ICU format supports different plural categories:
 ```
 
 - `=0` - Exact match for 0
-- `=1` - Exact match for 1  
+- `=1` - Exact match for 1
 - `other` - All other numbers
 - `#` - Replaced by the number
 
 Example:
+
 ```tsx
-t('items', { count: 0 })  // "no items"
-t('items', { count: 1 })  // "one item"
-t('items', { count: 5 })  // "5 items"
+t('items', { count: 0 }); // "no items"
+t('items', { count: 1 }); // "one item"
+t('items', { count: 5 }); // "5 items"
 ```
 
 ---
@@ -145,7 +159,7 @@ t('items', { count: 5 })  // "5 items"
 ```
 
 ```tsx
-t('parkCount', { count: parks.length })
+t('parkCount', { count: parks.length });
 ```
 
 ### Countries Count
@@ -176,8 +190,9 @@ t('parkCount', { count: parks.length })
 4. **Use formatWaitTime()** for standard cases
 
 Additional keys can be pluralized over time:
+
 - `common.parks`
-- `common.countries`  
+- `common.countries`
 - `common.rides`
 - `explore.stats.park`
 - `explore.stats.country`

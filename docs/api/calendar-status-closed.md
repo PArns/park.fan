@@ -28,6 +28,7 @@ Currently the API returns for many days (e.g. Phantasialand February 2026) both 
 ## Example (current vs desired)
 
 **Current (February 2026, Phantasialand):**
+
 ```json
 {
   "date": "2026-02-01",
@@ -36,9 +37,11 @@ Currently the API returns for many days (e.g. Phantasialand February 2026) both 
   ...
 }
 ```
+
 → Frontend: "Opening hours not yet available" (gray question mark).
 
 **Desired:**
+
 ```json
 {
   "date": "2026-02-01",
@@ -47,6 +50,7 @@ Currently the API returns for many days (e.g. Phantasialand February 2026) both 
   ...
 }
 ```
+
 → Frontend: "Closed" (red icon, as in legend).
 
 ## Affected Endpoint
@@ -60,11 +64,11 @@ Currently the API returns for many days (e.g. Phantasialand February 2026) both 
 
 How to show each calendar day status (Crowd Calendar and related UI):
 
-| status      | Meaning | Display |
-|------------|---------|---------|
-| **OPERATING** | Park has opening hours from source. | Show opening and closing times (e.g. from `hours.openingTime` / `hours.closingTime`). |
-| **CLOSED**    | Park is confirmed closed on this day. | "Closed" – no time range (e.g. red "Closed" in legend). |
-| **UNKNOWN**   | No opening hours from source yet (not published or placeholder). | "Opening hours not yet available" or "Not yet published" – **not** "Closed". |
+| status        | Meaning                                                          | Display                                                                               |
+| ------------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **OPERATING** | Park has opening hours from source.                              | Show opening and closing times (e.g. from `hours.openingTime` / `hours.closingTime`). |
+| **CLOSED**    | Park is confirmed closed on this day.                            | "Closed" – no time range (e.g. red "Closed" in legend).                               |
+| **UNKNOWN**   | No opening hours from source yet (not published or placeholder). | "Opening hours not yet available" or "Not yet published" – **not** "Closed".          |
 
 **Rule:** UNKNOWN ≠ closed. Use CLOSED only when the park is explicitly reported closed; use UNKNOWN when schedule data is missing.
 
@@ -73,15 +77,15 @@ Example (TypeScript):
 ```ts
 function getScheduleLabel(day: CalendarDay): string {
   switch (day.status) {
-    case "OPERATING":
+    case 'OPERATING':
       return day.hours
         ? `${formatTime(day.hours.openingTime)} – ${formatTime(day.hours.closingTime)}`
-        : "Open";
-    case "CLOSED":
-      return "Closed";
-    case "UNKNOWN":
+        : 'Open';
+    case 'CLOSED':
+      return 'Closed';
+    case 'UNKNOWN':
     default:
-      return "Opening hours not yet available";
+      return 'Opening hours not yet available';
   }
 }
 ```

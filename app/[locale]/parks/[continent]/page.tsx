@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
@@ -25,9 +26,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
   const t = await getTranslations({ locale, namespace: 'seo.continent' });
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
-  const continentName = tGeo.has(`continents.${continent}`)
-    ? tGeo(`continents.${continent}`)
-    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(tGeo, continent, locale);
 
   const ogImageUrl = getOgImageUrl([locale, continent]);
 
@@ -90,10 +89,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   const uniqueCountries = new Map();
 
   rawCountries.forEach((country) => {
-    // Try to translate, fall back to API name
-    // We try both the slug and potential known variations if needed, but usually slug is enough
-    const name = t(`countries.${country.slug}` as string);
-    const resolvedName = name === `countries.${country.slug}` ? country.name : name;
+    const resolvedName = translateCountry(t, country.slug, locale, country.name);
 
     // If we haven't seen this name yet, or if this entry has more parks (prefer the "main" entry), use it
     const existing = uniqueCountries.get(resolvedName);
@@ -121,10 +117,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   const totalCities = countries.reduce((sum, c) => sum + c.cityCount, 0);
   const totalOpenParks = countries.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
 
-  // Format continent name for display
-  const continentName =
-    t(`continents.${continent}` as 'continents.europe') ||
-    continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(t, continent, locale);
 
   // Create breadcrumbs for continent page
   const tCommon = await getTranslations('common');
@@ -136,7 +129,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   });
 
   const itemListItems = countries.map((country) => {
-    const name = t(`countries.${country.slug}` as 'countries.germany') || country.name;
+    const name = translateCountry(t, country.slug, locale, country.name);
     return {
       name,
       url: `/${locale}/parks/${continent}/${country.slug}`,
@@ -169,7 +162,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {countries.map((country) => {
-          const countryName = t(`countries.${country.slug}` as 'countries.germany') || country.name;
+          const countryName = translateCountry(t, country.slug, locale, country.name);
 
           return (
             <GeoLocationCard

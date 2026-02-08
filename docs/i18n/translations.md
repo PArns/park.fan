@@ -9,6 +9,7 @@ The translation system uses `next-intl` with additional type-safety layers and b
 ### 1. Add to All Language Files
 
 Always add new keys **to all** language files:
+
 - `/messages/en.json`
 - `/messages/de.json`
 - (and nl, fr, es if applicable)
@@ -36,7 +37,7 @@ import { useTranslations } from 'next-intl';
 
 export function MyComponent() {
   const t = useTranslations('myNamespace');
-  
+
   return <div>{t('myKey')}</div>;
 }
 ```
@@ -48,7 +49,7 @@ import { getTranslations } from 'next-intl/server';
 
 export async function MyPage() {
   const t = await getTranslations('myNamespace');
-  
+
   return <div>{t('myKey')}</div>;
 }
 ```
@@ -74,7 +75,7 @@ const country = translateCountry(
   (key) => tGeo(key),
   slug,
   locale,
-  "Fallback Name" // optional
+  'Fallback Name' // optional
 );
 ```
 
@@ -83,11 +84,7 @@ const country = translateCountry(
 ```tsx
 import { translateContinent } from '@/lib/i18n/helpers';
 
-const continent = translateContinent(
-  (key) => tGeo(key),
-  continentSlug,
-  locale
-);
+const continent = translateContinent((key) => tGeo(key), continentSlug, locale);
 ```
 
 ## Translation Logging
@@ -95,10 +92,12 @@ const continent = translateContinent(
 Missing translations are logged automatically:
 
 ### Development
+
 - Warnings in console
 - Real-time feedback
 
 ### Production Build
+
 - All missing keys are stored in `translation-missing.json`
 - Can be analyzed via crawler
 
@@ -111,6 +110,7 @@ pnpm validate:translations
 ```
 
 Shows:
+
 - Keys that only exist in one language
 - Keys used in code but not defined
 - Potentially unused keys
@@ -129,19 +129,23 @@ cat translation-missing.json
 The crawler supports **two modes**:
 
 **Static Mode (after build):**
+
 ```bash
 pnpm build
 pnpm crawl:translations
 ```
+
 - Crawls pre-built HTML files
 - Fast, offline
 - Tests only statically generated pages
 
 **Live Mode (against running server):**
+
 ```bash
 pnpm dev  # or start for production
 pnpm crawl:translations:live
 ```
+
 - Makes HTTP requests
 - Tests SSR/dynamic routes too
 - Requires running server
@@ -222,6 +226,7 @@ jobs:
 ```
 
 This ensures:
+
 1. All locales stay in sync
 2. No missing keys are committed
 3. All pages are validated
@@ -233,6 +238,7 @@ This ensures:
 **Problem:** `[Translation Missing] de/geo.countries.xyz`
 
 **Solution:**
+
 1. Check if key exists in `messages/de.json` and `messages/en.json`
 2. Check namespace (must be `geo.countries.xyz`, not `countries.xyz`)
 3. Use helper function for dynamic lookups
@@ -242,7 +248,8 @@ This ensures:
 **Problem:** `${country}` is shown in HTML
 
 **Solution:**
-- Do not use `` t(`countries.${slug}`) ``
+
+- Do not use ``t(`countries.${slug}`)``
 - Use `translateCountry()` helper instead
 
 ### Build Fails with Translation Errors
@@ -250,6 +257,7 @@ This ensures:
 **Problem:** Build fails due to missing translations
 
 **Solution:**
+
 1. Run `node scripts/validate-translations.js`
 2. Add missing keys
 3. Build again

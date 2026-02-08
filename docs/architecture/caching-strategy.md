@@ -4,15 +4,15 @@
 
 Next.js ISR controls revalidation per route:
 
-| Route | revalidate | Reason |
-|-------|------------|--------|
-| Homepage | 60s | Stats, Nearby Parks |
-| Continent | 3600 (1h) | Stable geo structure |
-| Country | 3600 (1h) | Stable geo structure |
-| City | 1800 (30min) | Parks list |
-| Park | 300 (5min) | Wait times, status |
-| Attraction | 300 (5min) | Details, predictions |
-| Search | Dynamic | No cache |
+| Route      | revalidate   | Reason               |
+| ---------- | ------------ | -------------------- |
+| Homepage   | 60s          | Stats, Nearby Parks  |
+| Continent  | 3600 (1h)    | Stable geo structure |
+| Country    | 3600 (1h)    | Stable geo structure |
+| City       | 1800 (30min) | Parks list           |
+| Park       | 300 (5min)   | Wait times, status   |
+| Attraction | 300 (5min)   | Details, predictions |
+| Search     | Dynamic      | No cache             |
 
 ---
 
@@ -50,14 +50,14 @@ In `next.config.ts`:
 
 When the frontend caches API responses (e.g. in fetch wrappers or data layers), it uses `CACHE_TTL` from `lib/api/cache-config.ts`. Rule: **frontend TTL should not be shorter than the API’s**, to avoid extra requests without fresher data.
 
-| Key | TTL | Use |
-|-----|-----|-----|
-| `search` | 60s | Search results |
-| `nearby` | 60s | Nearby parks (homepage) |
-| `realtime` | 120s | Global stats (Most/Least Crowded) |
-| `geo`, `continents`, `parks`, `parkDetail`, `waitTimes` | 120s | Discovery and park data |
-| `calendar`, `weather` | 3600s (1h) | Calendar, weather |
-| `predictions`, `holidays` | 86400s (24h) | ML predictions, holidays |
+| Key                                                     | TTL          | Use                               |
+| ------------------------------------------------------- | ------------ | --------------------------------- |
+| `search`                                                | 60s          | Search results                    |
+| `nearby`                                                | 60s          | Nearby parks (homepage)           |
+| `realtime`                                              | 120s         | Global stats (Most/Least Crowded) |
+| `geo`, `continents`, `parks`, `parkDetail`, `waitTimes` | 120s         | Discovery and park data           |
+| `calendar`, `weather`                                   | 3600s (1h)   | Calendar, weather                 |
+| `predictions`, `holidays`                               | 86400s (24h) | ML predictions, holidays          |
 
 ---
 

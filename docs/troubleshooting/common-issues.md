@@ -21,6 +21,7 @@ Short guide for frequent problems and how to fix them.
 **Cause:** Missing key in `messages/{locale}.json` or typo in namespace/key.
 
 **Fix:**
+
 1. Run `pnpm validate:translations` to check keys
 2. Run `pnpm crawl:translations:live` (with dev server) to find untranslated keys
 3. Add missing keys to all `messages/*.json` files

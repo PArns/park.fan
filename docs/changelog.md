@@ -4,6 +4,15 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.5.12 (2026-02-08) – Docs vs Code alignment
+
+- **URL helpers:** Added `getParkUrlFromAttractionUrl()` in `lib/utils/url-utils.ts`; use in `nearby-parks-card` instead of manual `split('/attractions/')`. Park URLs from API now always go through `convertApiUrlToFrontendUrl()`.
+- **Translation helpers:** Replaced `t(\`countries.${slug}\`)` / `t(\`continents.${x}\`)`with`translateCountry`/`translateContinent`across geo pages (parks, continent, country, city, park, attraction). Missing keys are now logged via`logMissingTranslation`.
+
+→ [Translation System](i18n/translations.md), [Routing & URLs](architecture/routing-and-urls.md), [Notes for Sessions](development/notes-for-sessions.md)
+
+---
+
 ## 2.5.5 (2026-01-25) – 404 prevention
 
 - Redirect logic for malformed URLs (e.g. missing city segment).

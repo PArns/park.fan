@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, redirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
@@ -26,9 +27,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const cityName =
     city?.name || citySlug.charAt(0).toUpperCase() + citySlug.slice(1).replace(/-/g, ' ');
 
-  const countryName = tGeo.has(`countries.${country}`)
-    ? tGeo(`countries.${country}`)
-    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const countryName = translateCountry(tGeo, country, locale);
 
   const ogImageUrl = getOgImageUrl([locale, continent, country, citySlug]);
 
@@ -100,13 +99,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const { parks } = city;
 
-  // Get translated names
-  const continentName = t.has(`continents.${continent}`)
-    ? t(`continents.${continent}`)
-    : continent.charAt(0).toUpperCase() + continent.slice(1).replace(/-/g, ' ');
-  const countryName = t.has(`countries.${country}`)
-    ? t(`countries.${country}`)
-    : country.charAt(0).toUpperCase() + country.slice(1).replace(/-/g, ' ');
+  const continentName = translateContinent(t, continent, locale);
+  const countryName = translateCountry(t, country, locale);
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');

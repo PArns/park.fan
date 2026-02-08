@@ -68,8 +68,8 @@ API uses P50 baseline; it returns **`moderate`** for a typical day. We display i
 
 ## 9. Calendar day status
 
-- **OPERATING** → show opening/closing times  
-- **CLOSED** → "Closed" (no time range)  
+- **OPERATING** → show opening/closing times
+- **CLOSED** → "Closed" (no time range)
 - **UNKNOWN** → "Opening hours not yet available" (not "Closed")
 
 → [Calendar Status](../api/calendar-status-closed.md)

@@ -21,11 +21,14 @@ Reminders and context for AI or human sessions working on the codebase.
 7. **Cache** – Respect API cache headers; frontend TTLs in `lib/api/cache-config.ts`.  
    → [Caching Strategy](../architecture/caching-strategy.md)
 
-8. **Translations** – All UI strings from `messages/`; add keys to all locale files.  
+8. **Translations** – All UI strings from `messages/`; add keys to all locale files. Use `translateCountry` / `translateContinent` from `lib/i18n/helpers` for geo labels (logs missing keys).  
    → [Translation System](../i18n/translations.md)
 
-9. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.  
-   → [Flags & Debug](flags-and-debug.md)
+9. **URLs from API** – Always use `convertApiUrlToFrontendUrl()` or `getParkUrlFromAttractionUrl()`; never manually construct from string splits.  
+   → [Routing & URLs](../architecture/routing-and-urls.md)
+
+10. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.  
+    → [Flags & Debug](flags-and-debug.md)
 
 ---
 

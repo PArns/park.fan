@@ -11,16 +11,16 @@ The park.fan frontend integrates with [api.park.fan](https://api.park.fan) via R
 
 ## Key Endpoints Used
 
-| Endpoint | Usage |
-|----------|-------|
-| `/v1/discovery/geo` | Geo structure, redirect lookups |
-| `/v1/parks/{path}` | Park by geographic path |
-| `/v1/parks/{path}/wait-times` | Current wait times |
-| `/v1/parks/{path}/calendar` | Integrated calendar |
-| `/v1/parks/{path}/weather` | Current weather |
-| `/v1/parks/{path}/predictions/yearly` | Crowd predictions |
-| `/v1/search` | Search (via `/api/search` proxy) |
-| `/v1/analytics/realtime` | Global stats |
+| Endpoint                              | Usage                            |
+| ------------------------------------- | -------------------------------- |
+| `/v1/discovery/geo`                   | Geo structure, redirect lookups  |
+| `/v1/parks/{path}`                    | Park by geographic path          |
+| `/v1/parks/{path}/wait-times`         | Current wait times               |
+| `/v1/parks/{path}/calendar`           | Integrated calendar              |
+| `/v1/parks/{path}/weather`            | Current weather                  |
+| `/v1/parks/{path}/predictions/yearly` | Crowd predictions                |
+| `/v1/search`                          | Search (via `/api/search` proxy) |
+| `/v1/analytics/realtime`              | Global stats                     |
 
 ## API Client Modules
 
@@ -51,19 +51,19 @@ Other levels (`very_low`, `low`, `high`, `very_high`, `extreme`, `closed`) are s
 
 ---
 
-## App API Routes (app/api/*)
+## App API Routes (app/api/\*)
 
 Next.js API routes used by the frontend (all under `app/api/`):
 
-| Route | Purpose |
-|-------|---------|
-| **GET /api/search** | Proxies to API search; avoids CORS when calling from client. |
-| **GET /api/parks/[...path]** | Proxies park endpoints (e.g. by geo path). |
-| **GET /api/parks/backgrounds** | Returns park/attraction background image paths (uses `lib/utils/park-assets`). |
-| **GET /api/nearby** | Proxies nearby-parks (geo) with optional lat/lng. |
-| **GET /api/favorites** | Proxies to `api.park.fan/v1/favorites` with query params (parkIds, attractionIds, lat, lng, etc.); used to enrich favorites with full entities. Response is dynamic (cookies/params). |
-| **GET /api/og/[...path]** | Dynamic OG image generation (park, attraction, geo pages); uses `lib/utils/park-assets`, `lib/hero-images`, translations. |
-| **GET /api/debug-geo-mode** | Returns current `debug-geo-mode` flag value (Vercel Toolbar / debug geo). |
+| Route                          | Purpose                                                                                                                                                                               |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **GET /api/search**            | Proxies to API search; avoids CORS when calling from client.                                                                                                                          |
+| **GET /api/parks/[...path]**   | Proxies park endpoints (e.g. by geo path).                                                                                                                                            |
+| **GET /api/parks/backgrounds** | Returns park/attraction background image paths (uses `lib/utils/park-assets`).                                                                                                        |
+| **GET /api/nearby**            | Proxies nearby-parks (geo) with optional lat/lng.                                                                                                                                     |
+| **GET /api/favorites**         | Proxies to `api.park.fan/v1/favorites` with query params (parkIds, attractionIds, lat, lng, etc.); used to enrich favorites with full entities. Response is dynamic (cookies/params). |
+| **GET /api/og/[...path]**      | Dynamic OG image generation (park, attraction, geo pages); uses `lib/utils/park-assets`, `lib/hero-images`, translations.                                                             |
+| **GET /api/debug-geo-mode**    | Returns current `debug-geo-mode` flag value (Vercel Toolbar / debug geo).                                                                                                             |
 
 All `/api/*` routes send `Cache-Control: no-store, must-revalidate` (see [Caching Strategy](../architecture/caching-strategy.md)).
 
