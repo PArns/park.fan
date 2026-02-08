@@ -2,9 +2,9 @@
 
 ## ICU Message Format Pluralization
 
-next-intl nutzt ICU message format für Pluralisierung.
+next-intl uses ICU message format for pluralization.
 
-### Neue Keys hinzugefügt:
+### New Keys Added:
 
 ```json
 {
@@ -19,7 +19,7 @@ next-intl nutzt ICU message format für Pluralisierung.
 
 ---
 
-## Verwendung in Components
+## Usage in Components
 
 ### Client Components
 
@@ -31,13 +31,13 @@ export function WaitTimeDisplay({ minutes }: { minutes: number }) {
   
   return (
     <div>
-      {/* Alte Methode - keine Pluralisierung */}
+      {/* Old method - no pluralization */}
       <span>{minutes} {t('minutes')}</span>  
-      {/* → "5 Minuten" für alle Zahlen */}
+      {/* → "5 minutes" for all numbers */}
       
-      {/* Neue Methode - mit Pluralisierung */}
+      {/* New method - with pluralization */}
       <span>{minutes} {t('minute', { count: minutes })}</span>
-      {/* → "1 Minute" für 1, "5 Minuten" für 5 */}
+      {/* → "1 minute" for 1, "5 minutes" for 5 */}
     </div>
   );
 }
@@ -63,7 +63,7 @@ export async function ParkStats({ waitTime }: { waitTime: number }) {
 
 ## Helper Functions
 
-Für häufige Use-Cases gibt es Helper:
+There are helpers for common use cases:
 
 ```tsx
 import { formatWaitTime, formatHours } from '@/lib/i18n/time';
@@ -73,13 +73,13 @@ export function MyComponent() {
   
   // Format wait time with count and unit
   const waitText = formatWaitTime(t, 15);  
-  // → "15 Minuten" (DE) / "15 minutes" (EN)
+  // → "15 minutes" (EN) / "15 Minuten" (DE)
   
   const waitSingle = formatWaitTime(t, 1);
-  // → "1 Minute" (DE) / "1 minute" (EN)
+  // → "1 minute" (EN) / "1 Minute" (DE)
   
   const hours = formatHours(t, 3);
-  // → "3 Stunden" (DE) / "3 hours" (EN)
+  // → "3 hours" (EN) / "3 Stunden" (DE)
   
   return <div>{waitText}</div>;
 }
@@ -87,22 +87,22 @@ export function MyComponent() {
 
 ---
 
-## Migration Beispiel
+## Migration Example
 
-**Vorher:**
+**Before:**
 ```tsx
 <span>{avgWait} {tCommon('minutes')}</span>
-// Problem: "1 Minuten" ❌
+// Problem: "1 minutes" ❌
 ```
 
-**Nachher:**
+**After:**
 ```tsx
 <span>{avgWait} {tCommon('minute', { count: avgWait })}</span>
-// ✅ "1 Minute"
-// ✅ "5 Minuten"
+// ✅ "1 minute"
+// ✅ "5 minutes"
 ```
 
-Oder mit Helper:
+Or with helper:
 ```tsx
 import { formatWaitTime } from '@/lib/i18n/time';
 <span>{formatWaitTime(tCommon, avgWait)}</span>
@@ -112,35 +112,35 @@ import { formatWaitTime } from '@/lib/i18n/time';
 
 ## ICU Plural Rules
 
-Das ICU Format unterstützt verschiedene Plural-Kategorien:
+The ICU format supports different plural categories:
 
 ```json
 {
-  "items": "{count, plural, =0 {keine Items} =1 {ein Item} other {# Items}}"
+  "items": "{count, plural, =0 {no items} =1 {one item} other {# items}}"
 }
 ```
 
-- `=0` - Exact match für 0
-- `=1` - Exact match für 1  
-- `other` - Alle anderen Zahlen
-- `#` - Wird durch die Zahl ersetzt
+- `=0` - Exact match for 0
+- `=1` - Exact match for 1  
+- `other` - All other numbers
+- `#` - Replaced by the number
 
-Beispiel:
+Example:
 ```tsx
-t('items', { count: 0 })  // "keine Items"
-t('items', { count: 1 })  // "ein Item"
-t('items', { count: 5 })  // "5 Items"
+t('items', { count: 0 })  // "no items"
+t('items', { count: 1 })  // "one item"
+t('items', { count: 5 })  // "5 items"
 ```
 
 ---
 
-## Weitere Anwendungsfälle
+## Further Use Cases
 
 ### Parks Count
 
 ```json
 {
-  "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}"
+  "parkCount": "{count, plural, =1 {1 park} other {# parks}}"
 }
 ```
 
@@ -152,7 +152,7 @@ t('parkCount', { count: parks.length })
 
 ```json
 {
-  "countryCount": "{count, plural, =1 {1 Land} other {# Länder}}"
+  "countryCount": "{count, plural, =1 {1 country} other {# countries}}"
 }
 ```
 
@@ -160,25 +160,30 @@ t('parkCount', { count: parks.length })
 
 ## Best Practices
 
-1. **Nutze Pluralisierung** für alle zählbaren Einheiten
-2. **Helpers verwenden** für wiederkehrende Patterns
-3. **`#` Placeholder** um die Zahl in den Text einzufügen
-4. **Teste beide Fälle** - Singular (1) und Plural (\u003e1)
-5. **Edge Cases bedenken** - Was passiert bei 0?
+1. **Use pluralization** for all countable units
+2. **Use helpers** for recurring patterns
+3. **`#` placeholder** to insert the number in the text
+4. **Test both cases** - singular (1) and plural (>1)
+5. **Consider edge cases** - What happens at 0?
 
 ---
 
-## Migrationsplan
+## Migration Plan
 
-1. **Identifiziere alle Stellen** wo `minutes`, `hours` etc. verwendet werden
-2. **Ersetze schrittweise** mit pluralisierten Versionen
-3. **Teste in beiden Sprachen** (DE/EN)
-4. **Nutze formatWaitTime()** für Standard-Fälle
+1. **Identify all places** where `minutes`, `hours` etc. are used
+2. **Replace gradually** with pluralized versions
+3. **Test in both languages** (DE/EN)
+4. **Use formatWaitTime()** for standard cases
 
-Nach und nach können weitere Keys pluralisiert werden:
+Additional keys can be pluralized over time:
 - `common.parks`
 - `common.countries`  
 - `common.rides`
 - `explore.stats.park`
 - `explore.stats.country`
 - `explore.stats.city`
+
+## Related
+
+- [Internationalization](internationalization.md) – Locales and namespaces
+- [Translation System](translations.md) – Adding keys, helpers, validation

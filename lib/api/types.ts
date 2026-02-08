@@ -77,6 +77,9 @@ export interface ScheduleItem {
   influencingHolidays?: InfluencingHoliday[];
 }
 
+/** API nextSchedule shape: often has only openingTime/closingTime/scheduleType (no date). */
+export type NextScheduleItem = Omit<ScheduleItem, 'date'> & { date?: string };
+
 // ============================================================================
 // Weather
 // ============================================================================
@@ -329,7 +332,7 @@ export interface ParkResponse extends ParkBase {
   weather?: WeatherData;
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
-  nextSchedule?: ScheduleItem | null;
+  nextSchedule?: NextScheduleItem | null;
 }
 
 export interface ParkWithAttractions extends ParkBase {
@@ -341,7 +344,7 @@ export interface ParkWithAttractions extends ParkBase {
   restaurants?: ParkRestaurant[];
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
-  nextSchedule?: ScheduleItem | null;
+  nextSchedule?: NextScheduleItem | null;
   crowdForecast?: ParkDailyPrediction[];
 }
 

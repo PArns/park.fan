@@ -2,16 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Clock, Calendar } from 'lucide-react';
+import { Clock, Calendar, DoorOpen, Snowflake } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LocalTimeRange } from '@/components/ui/local-time';
-import type { ScheduleItem, InfluencingHoliday } from '@/lib/api/types';
+import type { ScheduleItem, NextScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 
 interface ParkTimeInfoProps {
   timezone: string;
   todaySchedule?: ScheduleItem | null;
-  nextSchedule?: ScheduleItem | null;
+  nextSchedule?: NextScheduleItem | null;
   className?: string;
 }
 
@@ -29,6 +29,7 @@ export function ParkTimeInfo({
 }: ParkTimeInfoProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
+  const tNearby = useTranslations('nearby');
   const locale = useLocale();
   const [currentTime, setCurrentTime] = useState<Date | null>(null);
 
@@ -139,9 +140,11 @@ export function ParkTimeInfo({
   const isOperatingToday = todaySchedule && todaySchedule.scheduleType === 'OPERATING';
 
   if (!isOperatingToday) {
-    if (!nextSchedule?.date) return null;
+    // API may send nextSchedule with only openingTime/closingTime (no date)
+    const nextOpeningRaw = nextSchedule?.date ?? nextSchedule?.openingTime;
+    if (!nextOpeningRaw) return null;
 
-    const nextOpening = new Date(nextSchedule.date);
+    const nextOpening = new Date(nextOpeningRaw);
     if (Number.isNaN(nextOpening.getTime())) return null;
 
     const now = new Date();
@@ -163,7 +166,7 @@ export function ParkTimeInfo({
 
     // Let's rely on `nextSchedule` display.
 
-    // If > 7 days
+    // If > 7 days – same icon/logic as nearby cards (offseason)
     if (totalWeeks >= 1) {
       const weeks = Math.ceil(totalWeeks);
       return (
@@ -175,18 +178,18 @@ export function ParkTimeInfo({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-2 text-amber-500">
+            <div className="flex items-center gap-1.5 text-amber-500">
+              <Snowflake className="h-4 w-4 flex-shrink-0" />
               <span className="font-medium">
                 {t('offseason')} ({t('opensOn')} {dateFormatted} - {tCommon('in')} {weeks}{' '}
-                {t('week', { count: weeks })})
+                {tNearby('week', { count: weeks })})
               </span>
             </div>
           </CardContent>
         </Card>
       );
     } else {
-      // < 1 week, but not today (since isOperatingToday is false)
-      // Show "Opens [Day/Date]"
+      // < 1 week, but not today – same icon as nearby (opening)
       return (
         <Card className={className}>
           <CardHeader className="pb-3">
@@ -196,7 +199,8 @@ export function ParkTimeInfo({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
+              <DoorOpen className="text-muted-foreground h-4 w-4 flex-shrink-0" />
               <span className="font-medium">
                 {t('opensOn')} {dateFormatted}
               </span>

@@ -35,6 +35,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -53,3 +54,8 @@ lib/hero-images.ts
 
 !content/home/*.md
 .env*.local
+
+# Docs and project markdown (keep in git)
+!/docs/*.md
+!/docs/**/*.md
+!CLAUDE.md
