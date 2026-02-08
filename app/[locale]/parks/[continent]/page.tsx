@@ -6,7 +6,7 @@ import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
@@ -135,9 +135,22 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     continentsLabel: tNav('continents'),
   });
 
+  const itemListItems = countries.map((country) => {
+    const name = t(`countries.${country.slug}` as 'countries.germany') || country.name;
+    return {
+      name,
+      url: `/${locale}/parks/${continent}/${country.slug}`,
+    };
+  });
+
   return (
     <PageContainer>
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <ItemListStructuredData
+        items={itemListItems}
+        listName={tExplore('title', { location: continentName })}
+        pageUrl={`/${locale}/parks/${continent}`}
+      />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={continentName}

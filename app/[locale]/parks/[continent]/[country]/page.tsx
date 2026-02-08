@@ -7,7 +7,7 @@ import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
@@ -125,9 +125,21 @@ export default async function CountryPage({ params }: CountryPageProps) {
     continentsLabel: tNav('continents'),
   });
 
+  const itemListItems = cities.flatMap((city) =>
+    city.parks.map((park) => ({
+      name: stripNewPrefix(park.name),
+      url: `/${locale}/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+    }))
+  );
+
   return (
     <PageContainer>
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <ItemListStructuredData
+        items={itemListItems}
+        listName={t('parksIn', { location: countryName })}
+        pageUrl={`/${locale}/parks/${continent}/${country}`}
+      />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={countryName}

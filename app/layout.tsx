@@ -1,6 +1,5 @@
 import type { Viewport } from 'next';
 import './globals.css';
-import './globals.css';
 
 // Metadata is now handled in [locale]/layout.tsx for i18n support
 

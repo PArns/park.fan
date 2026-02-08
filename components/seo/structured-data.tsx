@@ -159,6 +159,42 @@ export function ParkStructuredData({
   return <JsonLd data={data} />;
 }
 
+/**
+ * ItemList schema for listing pages (Continent = countries, Country/City = parks).
+ * Helps search engines understand the page as a list of items.
+ */
+export function ItemListStructuredData({
+  items,
+  listName,
+  pageUrl,
+}: {
+  items: { name: string; url: string }[];
+  listName?: string;
+  pageUrl: string;
+}) {
+  if (!items || items.length === 0) return null;
+
+  const absoluteUrls = items.map((item) =>
+    item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`
+  );
+
+  const data = {
+    '@context': 'https://schema.org' as const,
+    '@type': 'ItemList' as const,
+    ...(listName && { name: listName }),
+    url: pageUrl.startsWith('http') ? pageUrl : `${SITE_URL}${pageUrl}`,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem' as const,
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrls[index],
+    })),
+  };
+
+  return <JsonLd data={data as WithContext<Thing>} />;
+}
+
 export function BreadcrumbStructuredData({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
   if (!breadcrumbs || breadcrumbs.length === 0) return null;
 

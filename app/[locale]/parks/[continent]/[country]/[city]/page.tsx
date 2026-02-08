@@ -5,7 +5,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
-import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -121,9 +121,19 @@ export default async function CityPage({ params }: CityPageProps) {
     continentsLabel: tNav('continents'),
   });
 
+  const itemListItems = parks.map((park) => ({
+    name: stripNewPrefix(park.name),
+    url: `/${locale}/parks/${continent}/${country}/${citySlug}/${park.slug}`,
+  }));
+
   return (
     <PageContainer>
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <ItemListStructuredData
+        items={itemListItems}
+        listName={t('parksIn', { location: city.name })}
+        pageUrl={`/${locale}/parks/${continent}/${country}/${citySlug}`}
+      />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={city.name}

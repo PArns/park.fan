@@ -29,6 +29,9 @@ export async function generateMetadata({
   return {
     title: q ? t('titleTemplate', { query: q }) : t('title'),
     description: t('metaDescriptionTemplate'),
+    ...(q && {
+      robots: { index: false, follow: true },
+    }),
     openGraph: {
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
