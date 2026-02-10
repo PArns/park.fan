@@ -151,6 +151,9 @@ export default async function CityPage({ params }: CityPageProps) {
             operatingAttractions={park.analytics?.statistics?.operatingAttractions}
             totalAttractions={park.analytics?.statistics?.totalAttractions}
             variant="detailed"
+            timezone={park.timezone}
+            todaySchedule={park.todaySchedule}
+            nextSchedule={park.nextSchedule}
           />
         ))}
       </div>

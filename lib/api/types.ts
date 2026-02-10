@@ -496,6 +496,17 @@ export interface ParkReference {
       totalAttractions: number;
     };
   };
+  timezone?: string;
+  todaySchedule?: {
+    openingTime: string;
+    closingTime: string;
+    scheduleType: string;
+  };
+  nextSchedule?: {
+    openingTime: string;
+    closingTime: string;
+    scheduleType: string;
+  };
 }
 
 export interface City {

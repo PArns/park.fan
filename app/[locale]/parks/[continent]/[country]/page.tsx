@@ -172,6 +172,9 @@ export default async function CountryPage({ params }: CountryPageProps) {
                   totalAttractions={park.analytics?.statistics?.totalAttractions}
                   showBackground={true}
                   variant="detailed"
+                  timezone={park.timezone}
+                  todaySchedule={park.todaySchedule}
+                  nextSchedule={park.nextSchedule}
                 />
               ))}
             </div>

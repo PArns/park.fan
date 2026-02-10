@@ -77,7 +77,8 @@ The park.fan frontend uses TailwindCSS 4 with custom CSS variables, shadcn/ui co
 3. Status row: Distance/City (left) + Status badge (right)
 4. Stats: Wait time + Crowd level badge
 5. Attractions: Operating count + label
-6. Background: Optional park image with gradient overlay
+6. Schedule: Opening/closing time or OffSeason indicator (border-top separator)
+7. Background: Optional park image with gradient overlay
 
 ### Spacing
 
