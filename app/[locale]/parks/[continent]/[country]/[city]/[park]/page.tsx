@@ -161,9 +161,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Pre-fetch calendar for current month + next 3 months so opening hours
-  // are available in advance (e.g. Efteling May)
-  const calendarMonthsAhead = 3;
+  // Pre-fetch calendar for current month + next 2 months so opening hours
+  // are available in advance (API limit: 90 days max)
+  const calendarMonthsAhead = 2;
   const calendarFrom = startOfMonth(new Date());
   const calendarTo = endOfMonth(addMonths(new Date(), calendarMonthsAhead));
   let calendarData: IntegratedCalendarResponse;
