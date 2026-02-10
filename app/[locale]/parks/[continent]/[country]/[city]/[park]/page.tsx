@@ -51,6 +51,15 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
 
+  // If this is a malformed URL (e.g. .../efteling/villa-volta), avoid calling the API
+  const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
+  if (redirectUrl) {
+    return {
+      title: tNotFound('park'),
+      alternates: { canonical: `https://park.fan/${locale}${redirectUrl}` },
+    };
+  }
+
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
   if (!park) {
@@ -147,17 +156,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const tGeo = await getTranslations('geo');
   const tSeo = await getTranslations('seo.parks');
 
+  // Check for malformed URLs first (e.g. /parks/europe/netherlands/efteling/villa-volta
+  // where "efteling" is the park and "villa-volta" is an attraction). Redirect before
+  // calling the API to avoid 404s on the backend.
+  const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
+  if (redirectUrl) {
+    redirect(`/${locale}${redirectUrl}`);
+  }
+
   // Fetch park data and holidays (holidays are optional)
   const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
 
   if (!park) {
-    // Before returning 404, check if the "city" slug is actually a park
-    // This handles malformed URLs like /parks/europe/netherlands/toverland/some-attraction
-    // where "toverland" is actually the park and "some-attraction" might be an attraction
-    const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
-    if (redirectUrl) {
-      redirect(`/${locale}${redirectUrl}`);
-    }
     notFound();
   }
 

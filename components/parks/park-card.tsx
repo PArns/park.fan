@@ -1,5 +1,13 @@
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, ChevronRight, Navigation, XCircle, DoorOpen, Snowflake } from 'lucide-react';
+import {
+  Clock,
+  TrendingUp,
+  ChevronRight,
+  Navigation,
+  XCircle,
+  DoorOpen,
+  Snowflake,
+} from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -214,7 +222,15 @@ export function ParkCard({
     }
   }
   const isOpen = status === 'OPERATING';
-  const scheduleInfo = getScheduleMessage(todaySchedule, nextSchedule, timezone, status, locale, tNearby, tCommon);
+  const scheduleInfo = getScheduleMessage(
+    todaySchedule,
+    nextSchedule,
+    timezone,
+    status,
+    locale,
+    tNearby,
+    tCommon
+  );
 
   return (
     <Link
