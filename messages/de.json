@@ -612,15 +612,15 @@
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Besucherprognosen."
+      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten, Besucherprognosen und Live-Daten. Vergleiche Parks, prüfe Öffnungszeiten und plane deinen perfekten Besuch."
     },
     "country": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten."
+      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Besucherandrang und plane die besten Besuchstage."
     },
     "city": {
       "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten & Öffnungszeiten",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Besucherandrang für Freizeitparks in {city}. Plane deinen Besuch mit Echtzeit-Daten."
+      "metaDescriptionTemplate": "Live-Wartezeiten und Besucherprognosen für Freizeitparks in {city}. Prüfe heutige Vorhersage, Öffnungszeiten und plane deinen Besuch mit unserem Echtzeit-Crowd-Kalender."
     },
     "search": {
       "titleTemplate": "Suche: {query}",

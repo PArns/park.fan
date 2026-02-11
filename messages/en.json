@@ -613,15 +613,15 @@
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Explore theme parks in {location} with real-time wait times and crowd predictions."
+      "metaDescriptionTemplate": "Explore theme parks in {location} with real-time wait times, crowd predictions, and live data. Compare parks, check opening hours, and plan your perfect visit."
     },
     "country": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Discover theme parks in {location} with live wait times, crowd predictions, and schedules."
+      "metaDescriptionTemplate": "Discover theme parks in {location} with live wait times, crowd predictions, and opening schedules. Compare crowd levels and plan the best days to visit."
     },
     "city": {
       "titleTemplate": "Theme Parks in {city}, {country}: Wait Times & Hours",
-      "metaDescriptionTemplate": "Live wait times and crowd levels for theme parks in {city}. Plan your visit with real-time data."
+      "metaDescriptionTemplate": "Live wait times and crowd predictions for theme parks in {city}. Check today's forecast, opening hours, and plan your visit with our real-time crowd calendar."
     },
     "search": {
       "titleTemplate": "Search: {query}",

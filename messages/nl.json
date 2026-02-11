@@ -612,15 +612,15 @@
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen."
+      "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden, druktevoorspellingen en live data. Vergelijk parken, check openingstijden en plan je perfecte bezoek."
     },
     "country": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden."
+      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
     },
     "city": {
       "titleTemplate": "Pretparken in {city}, {country}: Wachttijden & Openingstijden",
-      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Plan je bezoek met realtime data."
+      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk vandaag's verwachting, openingstijden en plan je bezoek met onze realtime druktekalender."
     },
     "search": {
       "titleTemplate": "Zoeken: {query}",

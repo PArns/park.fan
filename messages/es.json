@@ -612,15 +612,15 @@
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en tiempo real y predicciones de afluencia."
+      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en tiempo real, predicciones de afluencia y datos en vivo. Compara parques, horarios y planifica tu visita perfecta."
     },
     "country": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en vivo, predicciones de afluencia y horarios."
+      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en vivo, predicciones de afluencia y horarios. Compara niveles de afluencia y planifica los mejores días para visitar."
     },
     "city": {
       "titleTemplate": "Parques Temáticos en {city}, {country}: Espera y Horarios",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y niveles de afluencia para parques temáticos en {city}. Planifica tu visita con datos en tiempo real."
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y predicciones de afluencia para parques temáticos en {city}. Consulta el pronóstico de hoy, horarios y planifica tu visita con nuestro calendario de afluencia."
     },
     "search": {
       "titleTemplate": "Búsqueda: {query}",

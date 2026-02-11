@@ -612,15 +612,15 @@
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en temps réel et prévisions d'affluence."
+      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en temps réel, prévisions d'affluence et données live. Comparez les parcs, horaires et planifiez votre visite parfaite."
     },
     "country": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en direct, prévisions d'affluence et horaires d'ouverture."
+      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en direct, prévisions d'affluence et horaires. Comparez l'affluence et planifiez les meilleurs jours de visite."
     },
     "city": {
       "titleTemplate": "Parcs d'Attractions à {city}, {country} : Attente & Horaires",
-      "metaDescriptionTemplate": "Temps d'attente en direct et affluence pour les parcs à {city}. Planifiez votre visite avec des données en temps réel."
+      "metaDescriptionTemplate": "Temps d'attente en direct et prévisions d'affluence pour les parcs à {city}. Vérifiez les prévisions du jour, horaires et planifiez votre visite avec notre calendrier d'affluence."
     },
     "search": {
       "titleTemplate": "Recherche: {query}",
