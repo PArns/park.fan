@@ -390,6 +390,11 @@ export function NearbyParksCard() {
                                   {attraction.waitTime} min
                                 </Badge>
                               )}
+                            {attraction.status === 'OPERATING' &&
+                              attraction.crowdLevel &&
+                              attraction.crowdLevel !== null && (
+                                <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
+                              )}
                             <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
                           </div>
                         </div>

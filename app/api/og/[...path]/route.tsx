@@ -112,13 +112,11 @@ function getCrowdLevelColor(level: string): string {
   const colors: Record<string, string> = {
     very_low: '#0d9488', // teal-600
     low: '#10b981', // emerald-500
-    normal: '#22c55e', // green-500 – "Normal" (P50)
     moderate: '#22c55e', // green-500
-    higher: '#f97316', // orange-500
     high: '#f97316', // orange-500
     very_high: '#f43f5e', // rose-500
     extreme: '#dc2626', // red-600
-    full: '#dc2626', // red-600
+    full: '#dc2626', // red-600 (legacy fallback)
     closed: '#94a3b8', // slate-400
   };
   return colors[level] || '#6b7280';

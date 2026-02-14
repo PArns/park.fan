@@ -15,6 +15,7 @@ export interface AttractionWithDistance {
   distance: number;
   waitTime: number | null;
   status: 'OPERATING' | 'CLOSED' | 'DOWN';
+  crowdLevel?: 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | null;
   analytics?: {
     p50?: number;
     p90?: number;
