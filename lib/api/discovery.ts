@@ -96,6 +96,7 @@ export async function getCitiesInCountry(
  * Get nearby parks or attractions based on user coordinates.
  * Client-side only. Uses Next.js API route (no CORS).
  * For "no coords" (IP fallback), call /api/nearby without lat/lng or use useNearbyParks() which handles both.
+ * Uses cache: 'no-store' for live park status
  */
 export async function getNearbyParks(
   latitude: number,

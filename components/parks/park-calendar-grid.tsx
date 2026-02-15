@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
   format,
@@ -15,6 +15,7 @@ import {
 import { de, enUS, es, fr, nl } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -41,6 +42,7 @@ export function ParkCalendarGrid({
   const pathname = usePathname();
   const t = useTranslations('parks');
   const tAttractions = useTranslations('attractions');
+  const tCommon = useTranslations('common');
 
   // Map locale to date-fns locale
   const dateLocale =
@@ -53,38 +55,29 @@ export function ParkCalendarGrid({
     }[locale as 'de' | 'en' | 'es' | 'fr' | 'nl'] || enUS;
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [calendarData, setCalendarData] = useState(initialCalendarData);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch month data helper
-  const fetchMonthData = useCallback(
-    async (month: Date) => {
-      setIsLoading(true);
-      try {
-        const from = format(startOfMonth(month), 'yyyy-MM-dd');
-        const to = format(endOfMonth(month), 'yyyy-MM-dd');
+  // Fetch calendar data with React Query (automatic caching)
+  const from = format(startOfMonth(currentMonth), 'yyyy-MM-dd');
+  const to = format(endOfMonth(currentMonth), 'yyyy-MM-dd');
 
-        const response = await fetch(
-          `/api/parks/${continent}/${country}/${city}/${parkSlug}/calendar?from=${from}&to=${to}`
-        );
+  const {
+    data: fetchedCalendarData,
+    isLoading,
+    error,
+  } = useCalendarData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from,
+    to,
+    enabled: true, // Always fetch for current month
+  });
 
-        if (!response.ok) {
-          throw new Error('Failed to fetch calendar data');
-        }
-
-        const data: IntegratedCalendarResponse = await response.json();
-        setCalendarData(data);
-      } catch (error) {
-        console.error('[Calendar] Failed to fetch month data:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    },
-    [continent, country, city, parkSlug]
-  );
+  // Use fetched data if available, otherwise fall back to initial data
+  const calendarData = fetchedCalendarData || initialCalendarData;
 
   // Read month from URL hash on mount (e.g., #calendar-2026-01)
-  // Also load data if initialCalendarData is empty (lazy loading)
   useEffect(() => {
     const hash = window.location.hash;
     const match = hash.match(/^#calendar-(\d{4})-(\d{2})$/);
@@ -93,24 +86,18 @@ export function ParkCalendarGrid({
       const parsedDate = new Date(parseInt(year), parseInt(month) - 1, 1);
       if (!isNaN(parsedDate.getTime())) {
         setCurrentMonth(parsedDate);
-        fetchMonthData(parsedDate);
+        // React Query will automatically fetch when currentMonth changes
       }
-    } else if (initialCalendarData.days.length === 0) {
-      // No hash and no initial data - load current month (lazy loading)
-      fetchMonthData(currentMonth);
-      // Set hash to current month
-      const monthHash = `calendar-${format(currentMonth, 'yyyy-MM')}`;
-      window.history.replaceState(null, '', `${pathname}#${monthHash}`);
     } else {
-      // Has initial data - just set hash
+      // Set hash to current month
       const monthHash = `calendar-${format(currentMonth, 'yyyy-MM')}`;
       window.history.replaceState(null, '', `${pathname}#${monthHash}`);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run on mount, fetchMonthData is stable due to useCallback
+  }, []); // Only run on mount
 
   // Handle month navigation
-  const handleMonthChange = async (direction: 'next' | 'prev') => {
+  const handleMonthChange = (direction: 'next' | 'prev') => {
     const newMonth = direction === 'next' ? addMonths(currentMonth, 1) : subMonths(currentMonth, 1);
     setCurrentMonth(newMonth);
 
@@ -118,7 +105,7 @@ export function ParkCalendarGrid({
     const monthHash = `calendar-${format(newMonth, 'yyyy-MM')}`;
     window.history.replaceState(null, '', `${pathname}#${monthHash}`);
 
-    await fetchMonthData(newMonth);
+    // React Query will automatically fetch when currentMonth changes (from/to change)
   };
 
   // Calculate date range for current month
@@ -219,6 +206,15 @@ export function ParkCalendarGrid({
             </Button>
           </div>
         </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="rounded-lg border border-red-500 bg-red-50 p-3 dark:bg-red-950/20">
+            <p className="text-sm text-red-600 dark:text-red-400">
+              {tCommon('failedToLoadCalendar')}
+            </p>
+          </div>
+        )}
 
         {/* Legend */}
         <div className="flex flex-wrap items-center gap-2 text-sm">

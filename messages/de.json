@@ -68,7 +68,12 @@
       "hours": "Stunden",
       "minutes": "Minuten",
       "seconds": "Sekunden"
-    }
+    },
+    "liveData": "Live-Daten",
+    "failedToLoadLiveData": "Live-Daten konnten nicht geladen werden",
+    "showingLastKnownState": "Zeige letzten bekannten Stand",
+    "failedToLoadCalendar": "Kalenderdaten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
+    "updating": "Aktualisiere..."
   },
   "home": {
     "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 150 Freizeitparks und 5.000+ Attraktionen weltweit—u. a. Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",

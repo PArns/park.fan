@@ -68,7 +68,12 @@
       "hours": "Hours",
       "minutes": "Minutes",
       "seconds": "Seconds"
-    }
+    },
+    "liveData": "Live Data",
+    "failedToLoadLiveData": "Failed to load live data",
+    "showingLastKnownState": "Showing last known state",
+    "failedToLoadCalendar": "Failed to load calendar data. Please try again later.",
+    "updating": "Updating..."
   },
   "home": {
     "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
@@ -585,7 +590,6 @@
       "syncHolidays": "Sync Holidays"
     }
   },
-
   "languageBanner": {
     "message": "This site is also available in {language}",
     "switchButton": "Switch to {language}",

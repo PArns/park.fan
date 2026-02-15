@@ -9,12 +9,10 @@ import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
-import { ParkStatus } from '@/components/parks/park-status';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import {
   ParkStructuredData,
   BreadcrumbStructuredData,
@@ -32,6 +30,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { LiveParkData } from '@/components/parks/live-park-data';
 
 interface ParkPageProps {
   params: Promise<{
@@ -122,7 +121,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 60; // 1 minute (matches homepage stats)
+export const revalidate = 300; // 5 minutes (matches API cache for live wait times)
 
 // Group attractions by land
 function groupAttractionsByLand(
@@ -326,22 +325,14 @@ export default async function ParkPage({ params }: ParkPageProps) {
             )}
           </div>
 
-          {/* Park Status Component */}
-          <ParkStatus park={park} variant="detailed" />
-
-          <Separator className="my-8" />
-
-          {/* Tabs for Attractions, Shows, Restaurants */}
-          <TabsWithHash
-            defaultValue="attractions"
-            showsAvailable={park.shows && park.shows.length > 0}
-            restaurantsAvailable={park.restaurants && park.restaurants.length > 0}
-            park={park}
-            calendarData={calendarData}
+          {/* Live Park Data (Status + Tabs with auto-refresh) */}
+          <LiveParkData
+            initialData={park}
             continent={continent}
             country={country}
             city={city}
             parkSlug={parkSlug}
+            calendarData={calendarData}
             landNames={landNames}
             attractionsByLand={attractionsByLand}
           />

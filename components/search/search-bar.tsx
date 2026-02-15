@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
+import { useQuery } from '@tanstack/react-query';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, Loader2 } from 'lucide-react';
 import {
   CommandDialog,
@@ -61,8 +62,38 @@ export function SearchCommand({
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState<SearchResult | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [debouncedQuery, setDebouncedQuery] = useState('');
+
+  // React Query for search with caching
+  const { data: results, isLoading: loading } = useQuery<SearchResult>({
+    queryKey: ['search', debouncedQuery],
+    queryFn: async () => {
+      const response = await fetch(`/api/search?q=${encodeURIComponent(debouncedQuery)}`);
+      if (!response.ok) throw new Error('Search failed');
+      const data = (await response.json()) as SearchResult;
+
+      // Track no results
+      if (data.results.length === 0) {
+        trackSearchNoResults({ query: debouncedQuery, queryLength: debouncedQuery.length });
+      }
+
+      return data;
+    },
+    enabled: debouncedQuery.length >= 3,
+    staleTime: 60_000, // 1 min cache
+    gcTime: 5 * 60_000, // 5 min garbage collection
+    retry: 1,
+  });
+
+  // Handle dialog open/close and reset state
+  const handleOpenChange = (newOpen: boolean) => {
+    setOpen(newOpen);
+    if (!newOpen) {
+      // Reset search when dialog closes
+      setQuery('');
+      setDebouncedQuery('');
+    }
+  };
 
   // Keyboard shortcut to open search (Cmd+K / Ctrl+K)
   useEffect(() => {
@@ -118,45 +149,18 @@ export function SearchCommand({
     return () => document.removeEventListener('keydown', handleGlobalKeyDown);
   }, [autoFocusOnType, open]);
 
-  // Debounced search
-  const performSearch = useCallback(async (searchQuery: string) => {
-    if (searchQuery.length < 3) {
-      setResults(null);
-      return;
-    }
-
-    setLoading(true);
-    try {
-      // Use local API route to avoid CORS
-      const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`);
-      if (response.ok) {
-        const data = (await response.json()) as SearchResult;
-        setResults(data);
-        if (data.results.length === 0) {
-          trackSearchNoResults({ query: searchQuery, queryLength: searchQuery.length });
-        }
-      }
-    } catch (error) {
-      console.error('Search error:', error);
-      setResults(null);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  // Debounce the search
+  // Debounce the search query
   useEffect(() => {
     const timer = setTimeout(() => {
-      performSearch(query);
+      setDebouncedQuery(query);
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [query, performSearch]);
+  }, [query]);
 
   // Handle selecting a result
   const handleSelect = (result: SearchResultItem, position?: number) => {
-    setOpen(false);
-    setQuery('');
+    handleOpenChange(false);
 
     // Track the result click (NOT the search query content)
     trackSearchResultClicked({
@@ -294,7 +298,7 @@ export function SearchCommand({
           variant="outline"
           className="relative h-10 w-10 p-0 md:h-9 md:w-64 md:justify-start md:px-3 md:py-2"
           onClick={() => {
-            setOpen(true);
+            handleOpenChange(true);
             trackSearchOpened(searchOpenSource);
           }}
           aria-label={t('search')}
@@ -313,7 +317,7 @@ export function SearchCommand({
         <div
           className="group relative w-full cursor-pointer"
           onClick={() => {
-            setOpen(true);
+            handleOpenChange(true);
             trackSearchOpened(searchOpenSource);
           }}
         >
@@ -362,7 +366,7 @@ export function SearchCommand({
           size="lg"
           className="gap-2"
           onClick={() => {
-            setOpen(true);
+            handleOpenChange(true);
             trackSearchOpened(searchOpenSource || 'hero');
           }}
         >
@@ -372,7 +376,7 @@ export function SearchCommand({
       )}
 
       {/* Search Dialog */}
-      <CommandDialog open={open} onOpenChange={setOpen} shouldFilter={false}>
+      <CommandDialog open={open} onOpenChange={handleOpenChange} shouldFilter={false}>
         <CommandInput
           placeholder={isMobile ? 'Parks, Attraktionen...' : t('searchPlaceholderLong')}
           value={query}
@@ -412,7 +416,7 @@ export function SearchCommand({
                   variant="ghost"
                   className="w-full justify-center text-sm"
                   onClick={() => {
-                    setOpen(false);
+                    handleOpenChange(false);
                     trackSearchViewAll(); // Track viewing all results
                     router.push(`/search?q=${encodeURIComponent(query)}`);
                   }}

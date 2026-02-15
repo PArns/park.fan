@@ -68,7 +68,12 @@
       "hours": "Heures",
       "minutes": "Minutes",
       "seconds": "Secondes"
-    }
+    },
+    "liveData": "Données en direct",
+    "failedToLoadLiveData": "Impossible de charger les données en direct",
+    "showingLastKnownState": "Affichage du dernier état connu",
+    "failedToLoadCalendar": "Impossible de charger les données du calendrier. Veuillez réessayer plus tard.",
+    "updating": "Mise à jour..."
   },
   "home": {
     "intro": "park.fan affiche les temps d'attente en direct et l'affluence pour plus de 150 parcs d'attractions et 5 000+ attractions dans le monde—dont Disney, Universal Studios, Europa-Park et Phantasialand. Planifiez votre visite avec les files en direct, horaires et prédictions IA.",

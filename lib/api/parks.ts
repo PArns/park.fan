@@ -32,15 +32,18 @@ export async function getParks(): Promise<PaginatedResponse<ParkResponse>> {
 
 /**
  * Get a specific park by slug with all attractions
+ * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times
  */
 export async function getPark(slug: string): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${slug}`, {
-    next: { revalidate: CACHE_TTL.parkDetail, tags: [PARK_CACHE_TAGS.detail(slug)] },
+    cache: 'no-store',
+    next: { tags: [PARK_CACHE_TAGS.detail(slug)] },
   });
 }
 
 /**
  * Get parks by geographic path
+ * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times
  */
 export async function getParkByGeoPath(
   continent: string,
@@ -49,7 +52,7 @@ export async function getParkByGeoPath(
   parkSlug: string
 ): Promise<ParkWithAttractions> {
   return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-    next: { revalidate: CACHE_TTL.parkDetail },
+    cache: 'no-store',
   });
 }
 
@@ -166,6 +169,7 @@ export async function getParkHolidays(
 
 /**
  * Get a specific attraction by geographic path with full data including history
+ * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times
  */
 export async function getAttractionByGeoPath(
   continent: string,
@@ -177,7 +181,7 @@ export async function getAttractionByGeoPath(
   return api.get<AttractionResponse>(
     `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
     {
-      next: { revalidate: CACHE_TTL.parkDetail },
+      cache: 'no-store',
     }
   );
 }

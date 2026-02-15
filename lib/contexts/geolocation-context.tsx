@@ -129,7 +129,8 @@ export function GeolocationProvider({
         }
 
         if (err.code !== 1) {
-          const errorType = err.code === 3 ? 'Timeout' : err.code === 2 ? 'Position unavailable' : 'Unknown error';
+          const errorType =
+            err.code === 3 ? 'Timeout' : err.code === 2 ? 'Position unavailable' : 'Unknown error';
           console.warn(`[Geolocation] ${errorType}:`, {
             code: err.code,
             message: err.message,

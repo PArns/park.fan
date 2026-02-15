@@ -157,7 +157,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-export const revalidate = 300; // 5 minutes
+export const revalidate = 300; // 5 minutes (matches API cache for live wait times)
 
 // Status config will be created inside the component to use translations
 

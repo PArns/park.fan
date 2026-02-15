@@ -1,5 +1,4 @@
 import { api } from './client';
-import { CACHE_TTL } from './cache-config';
 import type { SearchResult } from './types';
 
 export type SearchType = 'park' | 'attraction' | 'show' | 'restaurant';
@@ -13,8 +12,10 @@ export async function search(query: string, types?: SearchType[]): Promise<Searc
     params.type = types.join(',');
   }
 
+  // Use cache: 'no-store' to respect API cache headers (60s)
+  // This prevents double-caching (Frontend + API)
   return api.get<SearchResult>('/v1/search', {
     params,
-    next: { revalidate: CACHE_TTL.search },
+    cache: 'no-store',
   });
 }
