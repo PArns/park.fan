@@ -149,16 +149,22 @@ export function GeolocationProvider({
     requestLocation();
   }, [requestLocation]);
 
-  // Fetch flag from API on mount and on window focus so Flags Explorer overrides apply (cookie is sent with fetch)
+  // Fetch flag from API on mount and on window focus (development only) so Flags Explorer overrides apply
   useEffect(() => {
     const apply = () => {
       fetchDebugGeoMode().then((mode) => {
         setClientDebugMode(mode);
       });
     };
+
+    // Always check on mount
     apply();
-    window.addEventListener('focus', apply);
-    return () => window.removeEventListener('focus', apply);
+
+    // Only check on window focus in development (for Flags Explorer)
+    if (process.env.NODE_ENV === 'development') {
+      window.addEventListener('focus', apply);
+      return () => window.removeEventListener('focus', apply);
+    }
   }, []);
 
   // When debug position is set, use it; otherwise run normal flow (permission check + request)
