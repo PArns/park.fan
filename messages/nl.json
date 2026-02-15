@@ -531,7 +531,8 @@
   "homepage": {
     "hero": {
       "badge": "ML-Gestuurde Voorspellingen",
-      "exploreParks": "Ontdek Parken"
+      "exploreParks": "Ontdek Parken",
+      "searchPlaceholder": "Zoek parken, attracties, shows en restaurants..."
     },
     "features": {
       "title": "Plan je Perfecte Bezoek",

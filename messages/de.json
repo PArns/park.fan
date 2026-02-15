@@ -531,7 +531,8 @@
   "homepage": {
     "hero": {
       "badge": "KI-gestützte Vorhersagen",
-      "exploreParks": "Parks entdecken"
+      "exploreParks": "Parks entdecken",
+      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants durchsuchen..."
     },
     "features": {
       "title": "Plane deinen perfekten Besuch",

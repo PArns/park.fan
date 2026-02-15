@@ -531,7 +531,8 @@
   "homepage": {
     "hero": {
       "badge": "ML-Powered Predictions",
-      "exploreParks": "Explore Parks"
+      "exploreParks": "Explore Parks",
+      "searchPlaceholder": "Search parks, attractions, shows & restaurants..."
     },
     "features": {
       "title": "Plan Your Perfect Visit",

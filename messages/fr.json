@@ -531,7 +531,8 @@
   "homepage": {
     "hero": {
       "badge": "Prédictions par ML",
-      "exploreParks": "Explorer les Parcs"
+      "exploreParks": "Explorer les Parcs",
+      "searchPlaceholder": "Rechercher des parcs, attractions, shows et restaurants..."
     },
     "features": {
       "title": "Planifiez votre Visite Parfaite",

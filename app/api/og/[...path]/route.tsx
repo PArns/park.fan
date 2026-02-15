@@ -435,12 +435,18 @@ export async function GET(
     // Since we can't easily load custom fonts here without more setup, we'll stick to system-ui but making it look good.
 
     // Pre-calculate translations to avoid lint errors with dynamic keys in JSX
-    const localizedCountryName = country
-      ? tGeo(`countries.${country.toLowerCase().replace(/\s+/g, '-')}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
-      : '';
-    const localizedContinentName = continent
-      ? tGeo(`continents.${continent}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
-      : '';
+    // Only translate for geographic pages (CONTINENT, COUNTRY, CITY, PARK, ATTRACTION)
+    const needsGeoTranslations = ['CONTINENT', 'COUNTRY', 'CITY', 'PARK', 'ATTRACTION'].includes(
+      type
+    );
+    const localizedCountryName =
+      country && needsGeoTranslations
+        ? tGeo(`countries.${country.toLowerCase().replace(/\s+/g, '-')}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
+        : '';
+    const localizedContinentName =
+      continent && needsGeoTranslations
+        ? tGeo(`continents.${continent}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
+        : '';
 
     return new ImageResponse(
       <div
