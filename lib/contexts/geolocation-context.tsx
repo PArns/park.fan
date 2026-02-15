@@ -129,7 +129,8 @@ export function GeolocationProvider({
         }
 
         if (err.code !== 1) {
-          console.warn('[Geolocation] Error:', {
+          const errorType = err.code === 3 ? 'Timeout' : err.code === 2 ? 'Position unavailable' : 'Unknown error';
+          console.warn(`[Geolocation] ${errorType}:`, {
             code: err.code,
             message: err.message,
           });
@@ -137,8 +138,8 @@ export function GeolocationProvider({
       },
       {
         enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 0,
+        timeout: 20000,
+        maximumAge: 300000,
       }
     );
   }, [debugPos]);
