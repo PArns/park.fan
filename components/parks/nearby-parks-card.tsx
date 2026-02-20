@@ -123,6 +123,15 @@ export function NearbyParksCard() {
 
   const isLoading = geoLoading || dataLoading;
 
+  // "Location required" 400 = no public IP and no coords (e.g. local dev). Treat as prompt, not error.
+  const isLocationUnavailable =
+    dataError != null &&
+    !dataLoading &&
+    typeof (dataError as Error)?.message === 'string' &&
+    ((dataError as Error).message.toLowerCase().includes('location') ||
+      (dataError as Error).message.toLowerCase().includes('geoip') ||
+      (dataError as Error).message.includes('400'));
+
   // Same structure on server and initial client to avoid hydration mismatch
   if (!mounted || isLoading) {
     return (
@@ -150,8 +159,8 @@ export function NearbyParksCard() {
     );
   }
 
-  // Prompt state - show enable button only when we have no data and are not loading (homepage uses LocationBanner instead)
-  if (!position && !geoError && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
+  // Prompt state: no data yet, or "location required" error (no public IP + no coords → needs browser location)
+  if (!position && !geoError && !permissionDenied && !geoLoading && !dataLoading && (!nearbyData || isLocationUnavailable)) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
@@ -171,14 +180,8 @@ export function NearbyParksCard() {
     );
   }
 
-  // Error state: from API/backend only (browser "permission denied" is not an error here – we use IP fallback)
-  const showErrorCard = dataError && !dataLoading;
-  const isLocationUnavailable =
-    showErrorCard &&
-    typeof (dataError as Error)?.message === 'string' &&
-    ((dataError as Error).message.toLowerCase().includes('location') ||
-      (dataError as Error).message.toLowerCase().includes('geoip') ||
-      (dataError as Error).message.includes('400'));
+  // Error state: unexpected API/backend errors only
+  const showErrorCard = dataError && !dataLoading && !isLocationUnavailable;
 
   if (showErrorCard) {
     return (
@@ -186,14 +189,12 @@ export function NearbyParksCard() {
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
-            {isLocationUnavailable ? t('locationUnavailable') : t('loadError')}
+            {t('loadError')}
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center space-y-4 text-center">
           <p className="text-muted-foreground mx-auto max-w-md text-sm">
-            {isLocationUnavailable
-              ? t('locationUnavailableDescription')
-              : t('loadErrorDescription')}
+            {t('loadErrorDescription')}
           </p>
           <Button onClick={refresh} variant="outline">
             <Navigation className="mr-2 h-4 w-4" />

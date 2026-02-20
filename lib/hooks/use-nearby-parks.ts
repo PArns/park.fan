@@ -21,19 +21,13 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const radiusInMeters = opts.radiusInMeters ?? 1000;
   const limit = opts.limit ?? 6;
 
-  const {
-    position,
-    loading: geoLoading,
-    initialCheckDone,
-    permissionDenied,
-    error: geoError,
-  } = useGeolocation();
+  const { position, loading: geoLoading, initialCheckDone } = useGeolocation();
 
-  // Prefer browser location: only run when we have coords or we've given up (denied/error).
-  // Never run with IP fallback while we might still get a position.
+  // Run as soon as the initial permission check is done, unless GPS is actively loading
+  // (permission was already granted — worth waiting for accurate coords in that case).
+  // Covers: prompt state, pre-denied, denied, error → all use IP fallback via the proxy.
   const hasCoords = position != null;
-  const gaveUpOnCoords = permissionDenied || geoError;
-  const canRun = initialCheckDone && !geoLoading && (hasCoords || gaveUpOnCoords);
+  const canRun = initialCheckDone && (hasCoords || !geoLoading);
 
   return useQuery<NearbyResponse>({
     queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit],

@@ -40,7 +40,7 @@ export function Header() {
             width={27}
             height={32}
             alt=""
-            className="h-8 w-auto dark:hidden"
+            className="h-10 w-auto dark:hidden"
             priority
             aria-hidden="true"
           />
@@ -49,7 +49,7 @@ export function Header() {
             width={27}
             height={32}
             alt=""
-            className="hidden h-8 w-auto dark:block"
+            className="hidden h-10 w-auto dark:block"
             priority
             aria-hidden="true"
           />
@@ -58,7 +58,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="h-6 w-auto dark:hidden"
+            className="h-9 w-auto dark:hidden"
             priority
           />
           <Image
@@ -66,7 +66,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="hidden h-6 w-auto dark:block"
+            className="hidden h-9 w-auto dark:block"
             priority
           />
         </Link>
