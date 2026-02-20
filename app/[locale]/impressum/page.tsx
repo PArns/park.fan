@@ -167,19 +167,21 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                 Datenquellen
               </h2>
               <p className="mb-4">
-                Die auf dieser Webseite angezeigten Wartezeiten werden von den folgenden Plattformen
-                bereitgestellt. Wir bedanken uns herzlich für die Bereitstellung der Daten:
+                Die angezeigten Wartezeiten werden von folgenden Plattformen bereitgestellt:
               </p>
-              <ul className="mb-4 space-y-2">
+              <ul className="divide-border mb-4 divide-y">
                 <li>
                   <a
                     href="https://themeparks.wiki"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    ThemeParks.wiki
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">ThemeParks.wiki</span>
+                      <p className="text-muted-foreground text-sm">Wartezeiten & Attraktionsdaten</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
                 <li>
@@ -187,10 +189,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     href="https://queue-times.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    Queue-Times.com
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">Queue-Times.com</span>
+                      <p className="text-muted-foreground text-sm">Live-Wartezeiten & historische Daten</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
                 <li>
@@ -198,10 +203,50 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     href="https://wartezeiten.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    Wartezeiten.app
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">Wartezeiten.app</span>
+                      <p className="text-muted-foreground text-sm">Wartezeiten für deutschsprachige Parks</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </li>
+              </ul>
+
+              <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
+                Bildnachweise
+              </h2>
+              <p className="mb-4">
+                Herzlichen Dank an alle, die zum Erscheinungsbild von park.fan beigetragen haben:
+              </p>
+              <ul className="divide-border mb-4 divide-y">
+                <li>
+                  <a
+                    href="https://www.instagram.com/pupilbox/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="font-medium group-hover:text-primary">@pupilbox</span>
+                      <p className="text-muted-foreground text-sm">park.fan Logo · Instagram</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/part_82/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="font-medium group-hover:text-primary">@part_82</span>
+                      <p className="text-muted-foreground text-sm">Park-Fotos · Instagram</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
               </ul>
@@ -290,20 +335,20 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
               <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
                 Data Sources
               </h2>
-              <p className="mb-4">
-                The wait times displayed on this website are provided by the following platforms. We
-                sincerely thank them for providing the data:
-              </p>
-              <ul className="mb-4 space-y-2">
+              <p className="mb-4">Wait times are provided by the following platforms:</p>
+              <ul className="divide-border mb-4 divide-y">
                 <li>
                   <a
                     href="https://themeparks.wiki"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    ThemeParks.wiki
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">ThemeParks.wiki</span>
+                      <p className="text-muted-foreground text-sm">Wait times & attraction data</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
                 <li>
@@ -311,10 +356,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     href="https://queue-times.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    Queue-Times.com
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">Queue-Times.com</span>
+                      <p className="text-muted-foreground text-sm">Live wait times & historical data</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
                 <li>
@@ -322,10 +370,50 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     href="https://wartezeiten.app"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 inline-flex items-center gap-1.5"
+                    className="group flex items-center justify-between py-3"
                   >
-                    Wartezeiten.app
-                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    <div>
+                      <span className="font-medium group-hover:text-primary">Wartezeiten.app</span>
+                      <p className="text-muted-foreground text-sm">Wait times for German-speaking parks</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </li>
+              </ul>
+
+              <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
+                Image Credits
+              </h2>
+              <p className="mb-4">
+                Many thanks to everyone who contributed to the look of park.fan:
+              </p>
+              <ul className="divide-border mb-4 divide-y">
+                <li>
+                  <a
+                    href="https://www.instagram.com/pupilbox/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="font-medium group-hover:text-primary">@pupilbox</span>
+                      <p className="text-muted-foreground text-sm">park.fan logo · Instagram</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/part_82/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="font-medium group-hover:text-primary">@part_82</span>
+                      <p className="text-muted-foreground text-sm">Park photos · Instagram</p>
+                    </div>
+                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
                   </a>
                 </li>
               </ul>
