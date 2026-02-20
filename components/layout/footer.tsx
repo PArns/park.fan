@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { Sparkles, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
 
@@ -24,10 +25,36 @@ export async function Footer({ locale }: FooterProps) {
               className="flex items-center gap-2"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
-              <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
-                <Sparkles className="text-park-primary-foreground h-5 w-5" aria-hidden="true" />
-              </div>
-              <span className="text-xl font-bold">park.fan</span>
+              <Image
+                src="/logo.svg"
+                width={27}
+                height={32}
+                alt=""
+                className="h-8 w-auto dark:hidden"
+                aria-hidden="true"
+              />
+              <Image
+                src="/logo-dark.svg"
+                width={27}
+                height={32}
+                alt=""
+                className="hidden h-8 w-auto dark:block"
+                aria-hidden="true"
+              />
+              <Image
+                src="/parkfan.svg"
+                width={84}
+                height={24}
+                alt="park.fan"
+                className="h-6 w-auto dark:hidden"
+              />
+              <Image
+                src="/parkfan-dark.svg"
+                width={84}
+                height={24}
+                alt="park.fan"
+                className="hidden h-6 w-auto dark:block"
+              />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
             <nav

@@ -1,7 +1,17 @@
-import type { Viewport } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 // Metadata is now handled in [locale]/layout.tsx for i18n support
+
+export const metadata: Metadata = {
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/logo.png', type: 'image/png' },
+    ],
+    apple: '/logo.png',
+  },
+};
 
 export const viewport: Viewport = {
   width: 'device-width',

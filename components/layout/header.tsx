@@ -2,7 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Menu, MapPin, Sparkles } from 'lucide-react';
+import { Menu, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/common/theme-toggle';
@@ -34,10 +35,40 @@ export function Header() {
           className="flex items-center gap-2"
           aria-label="park.fan - Home"
         >
-          <div className="bg-park-primary flex h-8 w-8 items-center justify-center rounded-lg">
-            <Sparkles className="text-park-primary-foreground h-5 w-5" aria-hidden="true" />
-          </div>
-          <span className="text-xl font-bold">park.fan</span>
+          <Image
+            src="/logo.svg"
+            width={27}
+            height={32}
+            alt=""
+            className="h-8 w-auto dark:hidden"
+            priority
+            aria-hidden="true"
+          />
+          <Image
+            src="/logo-dark.svg"
+            width={27}
+            height={32}
+            alt=""
+            className="hidden h-8 w-auto dark:block"
+            priority
+            aria-hidden="true"
+          />
+          <Image
+            src="/parkfan.svg"
+            width={84}
+            height={24}
+            alt="park.fan"
+            className="h-6 w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/parkfan-dark.svg"
+            width={84}
+            height={24}
+            alt="park.fan"
+            className="hidden h-6 w-auto dark:block"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
