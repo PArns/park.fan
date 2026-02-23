@@ -52,6 +52,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
+import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 
@@ -141,14 +142,14 @@ export default async function HomePage({ params }: HomePageProps) {
     <div className="flex flex-col">
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:pb-28">
+      <section className="relative -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
         <HeroBackground imageSrc={randomHeroImage} />
-        <div className="relative container mx-auto xl:ml-36">
+        <div className="relative container mx-auto xl:ml-28">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
             <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center">
               {/* Logo – light/dark variants */}
-              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72 xl:-mr-36">
+              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72 xl:-mr-28">
                 <Image
                   src="/logo-big.svg"
                   alt="park.fan"
@@ -174,6 +175,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* Row 2: Search bar centered */}
         <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
+
+        {/* Scroll indicator – desktop fullscreen only, fades out on scroll */}
+        <ScrollIndicator />
       </section>
 
       {/* Announcement Section */}

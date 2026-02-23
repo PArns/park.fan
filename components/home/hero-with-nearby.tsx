@@ -179,7 +179,7 @@ export function HeroWithNearby({
         <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
           {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
         </h1>
-        <p className="text-muted-foreground mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
+        <p className="text-foreground/85 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
           {tHome('intro')}
         </p>
         <ParkBadges
@@ -227,7 +227,7 @@ export function HeroWithNearby({
       </h1>
       {showNearParkHero ? (
         <>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
+          <p className="text-foreground/75 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
             {t('heroNearPark', { parkName: nearestParkForVariant!.name })}
           </p>
           <ParkBadges

@@ -42,9 +42,10 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
       quality={75}
-      className={`object-cover transition-opacity duration-1000 ${
+      className={`object-cover transition-opacity duration-1000 will-change-transform ${
         isServerImage || isLoaded ? 'opacity-90' : 'opacity-0'
       }`}
+      style={{ animation: 'ken-burns 22s ease-in-out infinite alternate' }}
       onLoad={() => setIsLoaded(true)}
       sizes="100vw"
     />
@@ -59,7 +60,7 @@ export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       <RandomHeroImage imageSrc={imageSrc} />
-      <div className="from-background via-background/80 to-muted/50 absolute inset-0 bg-gradient-to-br" />
+      <div className="from-background via-background/70 to-muted/50 absolute inset-0 bg-gradient-to-br" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
   );
