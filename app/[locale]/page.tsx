@@ -70,11 +70,13 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   const t = await getTranslations({ locale, namespace: 'seo.home' });
   const ogImageUrl = getOgImageUrl([locale]);
 
+  const fullTitle = `${t('title')} | park.fan`;
+
   return {
-    title: t('title'),
+    title: { absolute: fullTitle },
     description: t('description'),
     openGraph: {
-      title: t('title'),
+      title: fullTitle,
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
@@ -92,7 +94,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
+      title: fullTitle,
       description: t('description'),
       images: [ogImageUrl],
     },

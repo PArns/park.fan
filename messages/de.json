@@ -605,17 +605,17 @@
       "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
     },
     "home": {
-      "title": "Freizeitpark Wartezeiten, Prognosen & Navigation",
+      "title": "Live Freizeitpark Wartezeiten & Crowd-Prognosen",
       "description": "Dein Begleiter für Freizeitparks: Live-Wartezeiten, KI-Prognosen und präzise In-Park Navigation. Für Disney, Universal, Europa-Park und mehr."
     },
     "parks": {
-      "title": "Freizeitparks Weltweit - park.fan",
+      "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten und Crowd-Kalender für {park}. Prüfe heutige Besucherprognose, beste Besuchstage und Öffnungszeiten. Plane deinen Besuch optimal.",
-      "titleTemplate": "{park} {city} Live Wartezeiten, Crowd-Kalender & beste Besuchstage"
+      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage"
     },
     "attraction": {
-      "titleTemplate": "{attraction} {park} {city} Live Wartezeiten, Status & Prognose",
+      "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
       "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park} {city}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {
@@ -627,7 +627,7 @@
       "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Besucherandrang und plane die besten Besuchstage."
     },
     "city": {
-      "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten & Öffnungszeiten",
+      "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten",
       "metaDescriptionTemplate": "Live-Wartezeiten und Besucherprognosen für Freizeitparks in {city}. Prüfe heutige Vorhersage, Öffnungszeiten und plane deinen Besuch mit unserem Echtzeit-Crowd-Kalender."
     },
     "search": {

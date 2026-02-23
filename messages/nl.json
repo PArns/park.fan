@@ -605,17 +605,17 @@
       "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd"
     },
     "home": {
-      "title": "Pretpark Wachttijden, Voorspellingen & Navigatie",
+      "title": "Live Pretpark Wachttijden & Druktevoorspellingen",
       "description": "Maximaliseer je bezoek met realtime wachttijden, AI-voorspellingen en navigatie in het park. Omvat Disney, Universal, Europa-Park en meer."
     },
     "parks": {
-      "title": "Pretparken Wereldwijd - park.fan",
+      "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
       "metaDescriptionTemplate": "Live wachttijden en druktekalender voor {park}. Bekijk vandaag's druktevoorspelling, beste bezoekdagen en openingstijden. Plan je bezoek optimaal.",
-      "titleTemplate": "{park} {city} Live Wachttijden, Druktekalender & Beste Bezoekdagen"
+      "titleTemplate": "{park} {city} Wachttijden & Beste Bezoekdagen"
     },
     "attraction": {
-      "titleTemplate": "{attraction} {park} {city} Live Wachttijden, Status & Verwachting",
+      "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
       "metaDescriptionTemplate": "Actuele wachttijden en voorspellingen voor {attraction} in {park} {city}. Check live wachtrij data en drukte."
     },
     "continent": {
@@ -627,7 +627,7 @@
       "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
     },
     "city": {
-      "titleTemplate": "Pretparken in {city}, {country}: Wachttijden & Openingstijden",
+      "titleTemplate": "Pretparken in {city}, {country}: Wachttijden",
       "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk vandaag's verwachting, openingstijden en plan je bezoek met onze realtime druktekalender."
     },
     "search": {
