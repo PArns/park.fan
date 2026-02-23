@@ -1,36 +1,45 @@
+import { cache } from 'react';
 import { api } from './client';
 import type { ParkWithAttractions, AttractionResponse } from './types';
 
 /**
  * Get parks by geographic path
- * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times
+ * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times.
+ * Wrapped with React.cache() for within-request deduplication only (not cross-request
+ * caching) — so generateMetadata + page share one fetch result per SSR request.
  */
-export async function getParkByGeoPath(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string
-): Promise<ParkWithAttractions> {
-  return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-    cache: 'no-store',
-  });
-}
+export const getParkByGeoPath = cache(
+  async (
+    continent: string,
+    country: string,
+    city: string,
+    parkSlug: string
+  ): Promise<ParkWithAttractions> => {
+    return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
+      cache: 'no-store',
+    });
+  }
+);
 
 /**
  * Get a specific attraction by geographic path with full data including history
- * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times
+ * Uses cache: 'no-store' to respect API cache headers (120s) for live wait times.
+ * Wrapped with React.cache() for within-request deduplication only (not cross-request
+ * caching) — so generateMetadata + page share one fetch result per SSR request.
  */
-export async function getAttractionByGeoPath(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string,
-  attractionSlug: string
-): Promise<AttractionResponse> {
-  return api.get<AttractionResponse>(
-    `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-    {
-      cache: 'no-store',
-    }
-  );
-}
+export const getAttractionByGeoPath = cache(
+  async (
+    continent: string,
+    country: string,
+    city: string,
+    parkSlug: string,
+    attractionSlug: string
+  ): Promise<AttractionResponse> => {
+    return api.get<AttractionResponse>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+      {
+        cache: 'no-store',
+      }
+    );
+  }
+);

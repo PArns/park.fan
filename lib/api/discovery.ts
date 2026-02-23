@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import { api } from './client';
 import { CACHE_TTL } from './cache-config';
 import type {
@@ -29,31 +30,32 @@ export async function getContinents(): Promise<Continent[]> {
 
 /**
  * Get countries in a continent with hydrated park data and breadcrumbs
- * This replaces the old getCountriesInContinent for pages that need park details
+ * This replaces the old getCountriesInContinent for pages that need park details.
+ * Wrapped with React.cache() so generateMetadata + page share one result per request.
  */
-export async function getCountriesWithParks(
-  continentSlug: string
-): Promise<DiscoveryCountryResponse> {
-  return api.get<DiscoveryCountryResponse>(`/v1/discovery/continents/${continentSlug}`, {
-    next: { revalidate: CACHE_TTL.continents },
-  });
-}
+export const getCountriesWithParks = cache(
+  async (continentSlug: string): Promise<DiscoveryCountryResponse> => {
+    return api.get<DiscoveryCountryResponse>(`/v1/discovery/continents/${continentSlug}`, {
+      next: { revalidate: CACHE_TTL.continents },
+    });
+  }
+);
 
 /**
  * Get cities in a country with hydrated park data and breadcrumbs
- * This replaces the old getCitiesInCountry for pages that need park details
+ * This replaces the old getCitiesInCountry for pages that need park details.
+ * Wrapped with React.cache() so generateMetadata + page share one result per request.
  */
-export async function getCitiesWithParks(
-  continentSlug: string,
-  countrySlug: string
-): Promise<DiscoveryCityResponse> {
-  return api.get<DiscoveryCityResponse>(
-    `/v1/discovery/continents/${continentSlug}/${countrySlug}`,
-    {
-      next: { revalidate: CACHE_TTL.continents },
-    }
-  );
-}
+export const getCitiesWithParks = cache(
+  async (continentSlug: string, countrySlug: string): Promise<DiscoveryCityResponse> => {
+    return api.get<DiscoveryCityResponse>(
+      `/v1/discovery/continents/${continentSlug}/${countrySlug}`,
+      {
+        next: { revalidate: CACHE_TTL.continents },
+      }
+    );
+  }
+);
 
 /**
  * Get countries in a continent (basic structure only, without park details).

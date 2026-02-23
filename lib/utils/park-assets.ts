@@ -3,7 +3,14 @@ import path from 'path';
 
 const SUPPORTED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
 
+// Module-level caches — populated on first call, reused for the lifetime of the
+// serverless instance. Images only change on deployment, so staleness is not a concern.
+const parkBackgroundCache = new Map<string, string | null>();
+const attractionImageCache = new Map<string, string | null>();
+
 export function getParkBackgroundImage(parkSlug: string): string | null {
+  if (parkBackgroundCache.has(parkSlug)) return parkBackgroundCache.get(parkSlug)!;
+
   const publicDir = path.join(process.cwd(), 'public');
   const parkDir = `images/parks/${parkSlug}`;
 
@@ -11,10 +18,12 @@ export function getParkBackgroundImage(parkSlug: string): string | null {
     const relativePath = `${parkDir}/background${ext}`;
     const fullPath = path.join(publicDir, relativePath);
     if (fs.existsSync(fullPath)) {
+      parkBackgroundCache.set(parkSlug, `/${relativePath}`);
       return `/${relativePath}`;
     }
   }
 
+  parkBackgroundCache.set(parkSlug, null);
   return null;
 }
 
@@ -22,6 +31,9 @@ export function getAttractionBackgroundImage(
   parkSlug: string,
   attractionSlug: string
 ): string | null {
+  const cacheKey = `${parkSlug}/${attractionSlug}`;
+  if (attractionImageCache.has(cacheKey)) return attractionImageCache.get(cacheKey)!;
+
   const publicDir = path.join(process.cwd(), 'public');
 
   // First, try to find attraction image in park's main directory (e.g., images/parks/phantasialand/taron.jpg)
@@ -30,6 +42,7 @@ export function getAttractionBackgroundImage(
     const relativePath = `${parkDir}/${attractionSlug}${ext}`;
     const fullPath = path.join(publicDir, relativePath);
     if (fs.existsSync(fullPath)) {
+      attractionImageCache.set(cacheKey, `/${relativePath}`);
       return `/${relativePath}`;
     }
   }
@@ -40,11 +53,13 @@ export function getAttractionBackgroundImage(
     const relativePath = `${attractionDir}/${attractionSlug}${ext}`;
     const fullPath = path.join(publicDir, relativePath);
     if (fs.existsSync(fullPath)) {
+      attractionImageCache.set(cacheKey, `/${relativePath}`);
       return `/${relativePath}`;
     }
   }
 
   // Return null if no attraction-specific image is found
   // Fallback to park background should be handled by the calling code
+  attractionImageCache.set(cacheKey, null);
   return null;
 }
