@@ -105,7 +105,13 @@ function ParkBadges({
   );
 }
 
-export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: string }) {
+export function HeroWithNearby({
+  searchPlaceholder,
+  hideSearch = false,
+}: {
+  searchPlaceholder: string;
+  hideSearch?: boolean;
+}) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
@@ -186,7 +192,7 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
           t={t}
           tCommon={tCommon}
         />
-        <HeroSearchInput placeholder={searchPlaceholder} />
+        {!hideSearch && <HeroSearchInput placeholder={searchPlaceholder} />}
       </>
     );
   }
@@ -240,7 +246,7 @@ export function HeroWithNearby({ searchPlaceholder }: { searchPlaceholder: strin
           {tHome('intro')}
         </p>
       )}
-      <HeroSearchInput placeholder={searchPlaceholder} />
+      {!hideSearch && <HeroSearchInput placeholder={searchPlaceholder} />}
     </>
   );
 }

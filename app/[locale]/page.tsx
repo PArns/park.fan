@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 
+import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { HeroBackground } from '@/components/layout/hero-background';
@@ -53,6 +54,7 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
+import { HeroSearchInput } from '@/components/search/hero-search-input';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -143,9 +145,37 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 lg:py-28">
         <HeroBackground imageSrc={randomHeroImage} />
-        <div className="relative container mx-auto text-center">
-          <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} />
+        <div className="relative container mx-auto xl:ml-36">
+          <div className="flex flex-col">
+            {/* Row 1: Logo left + Title/Description right */}
+            <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center">
+              {/* Logo – light/dark variants */}
+              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72 xl:-mr-36">
+                <Image
+                  src="/logo-big.svg"
+                  alt="park.fan"
+                  fill
+                  className="block object-contain dark:hidden"
+                  priority
+                />
+                <Image
+                  src="/logo-big-dark.svg"
+                  alt="park.fan"
+                  fill
+                  className="hidden object-contain dark:block"
+                  priority
+                />
+              </div>
+              {/* Title + Description only (search rendered separately below) */}
+              <div className="min-w-0 flex-1 text-center">
+                <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Row 2: Search bar centered */}
+        <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
       </section>
 
       {/* Announcement Section */}

@@ -29,12 +29,7 @@ export function Header() {
     <header className="glass-header sticky top-0 z-50">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link
-          href="/"
-          prefetch={false}
-          className="flex items"
-          aria-label="park.fan - Home"
-        >
+        <Link href="/" prefetch={false} className="items flex" aria-label="park.fan - Home">
           <Image
             src="/logo-small.svg"
             width={27}

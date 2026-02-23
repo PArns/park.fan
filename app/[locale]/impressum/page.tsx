@@ -178,10 +178,15 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">ThemeParks.wiki</span>
-                      <p className="text-muted-foreground text-sm">Wartezeiten & Attraktionsdaten</p>
+                      <span className="group-hover:text-primary font-medium">ThemeParks.wiki</span>
+                      <p className="text-muted-foreground text-sm">
+                        Wartezeiten & Attraktionsdaten
+                      </p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -192,10 +197,15 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">Queue-Times.com</span>
-                      <p className="text-muted-foreground text-sm">Live-Wartezeiten & historische Daten</p>
+                      <span className="group-hover:text-primary font-medium">Queue-Times.com</span>
+                      <p className="text-muted-foreground text-sm">
+                        Live-Wartezeiten & historische Daten
+                      </p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -206,10 +216,15 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">Wartezeiten.app</span>
-                      <p className="text-muted-foreground text-sm">Wartezeiten für deutschsprachige Parks</p>
+                      <span className="group-hover:text-primary font-medium">Wartezeiten.app</span>
+                      <p className="text-muted-foreground text-sm">
+                        Wartezeiten für deutschsprachige Parks
+                      </p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
               </ul>
@@ -229,10 +244,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">@pupilbox</span>
+                      <span className="group-hover:text-primary font-medium">@pupilbox</span>
                       <p className="text-muted-foreground text-sm">park.fan Logo · Instagram</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -243,10 +261,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">@part_82</span>
+                      <span className="group-hover:text-primary font-medium">@part_82</span>
                       <p className="text-muted-foreground text-sm">Park-Fotos · Instagram</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
               </ul>
@@ -345,10 +366,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">ThemeParks.wiki</span>
+                      <span className="group-hover:text-primary font-medium">ThemeParks.wiki</span>
                       <p className="text-muted-foreground text-sm">Wait times & attraction data</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -359,10 +383,15 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">Queue-Times.com</span>
-                      <p className="text-muted-foreground text-sm">Live wait times & historical data</p>
+                      <span className="group-hover:text-primary font-medium">Queue-Times.com</span>
+                      <p className="text-muted-foreground text-sm">
+                        Live wait times & historical data
+                      </p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -373,10 +402,15 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">Wartezeiten.app</span>
-                      <p className="text-muted-foreground text-sm">Wait times for German-speaking parks</p>
+                      <span className="group-hover:text-primary font-medium">Wartezeiten.app</span>
+                      <p className="text-muted-foreground text-sm">
+                        Wait times for German-speaking parks
+                      </p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
               </ul>
@@ -396,10 +430,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">@pupilbox</span>
+                      <span className="group-hover:text-primary font-medium">@pupilbox</span>
                       <p className="text-muted-foreground text-sm">park.fan logo · Instagram</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
                 <li>
@@ -410,10 +447,13 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     className="group flex items-center justify-between py-3"
                   >
                     <div>
-                      <span className="font-medium group-hover:text-primary">@part_82</span>
+                      <span className="group-hover:text-primary font-medium">@part_82</span>
                       <p className="text-muted-foreground text-sm">Park photos · Instagram</p>
                     </div>
-                    <ExternalLink className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0" aria-hidden="true" />
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
                   </a>
                 </li>
               </ul>

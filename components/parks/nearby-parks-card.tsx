@@ -160,7 +160,14 @@ export function NearbyParksCard() {
   }
 
   // Prompt state: no data yet, or "location required" error (no public IP + no coords → needs browser location)
-  if (!position && !geoError && !permissionDenied && !geoLoading && !dataLoading && (!nearbyData || isLocationUnavailable)) {
+  if (
+    !position &&
+    !geoError &&
+    !permissionDenied &&
+    !geoLoading &&
+    !dataLoading &&
+    (!nearbyData || isLocationUnavailable)
+  ) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
