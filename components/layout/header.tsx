@@ -1,7 +1,8 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -19,17 +20,46 @@ const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
 export function Header() {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const pathname = usePathname();
   const { data: nearbyData } = useNearbyParks({ radiusInMeters: 200, limit: 6 });
   const parks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
   const nearestPark = parks[0];
   const showNearbyPark = nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
 
+  const isHomePage = pathname === '/';
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const check = () => setScrolled(window.scrollY > 50);
+    check();
+    if (!isHomePage) return;
+    window.addEventListener('scroll', check, { passive: true });
+    return () => window.removeEventListener('scroll', check);
+  }, [isHomePage]);
+
+  const isTransparent = isHomePage && !scrolled;
+
+  // Shared fade class for elements that hide on the transparent homepage header
+  const fadeClass = `transition-all duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+
   return (
-    <header className="glass-header sticky top-0 z-50">
+    <header
+      className={`sticky top-0 z-50 transition-all duration-500 ${
+        isTransparent
+          ? 'border-b border-transparent bg-transparent'
+          : 'border-border/50 bg-background/80 border-b backdrop-blur-md'
+      }`}
+    >
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
-        {/* Logo */}
-        <Link href="/" prefetch={false} className="items flex" aria-label="park.fan - Home">
+        {/* Logo – fades in on scroll */}
+        <Link
+          href="/"
+          prefetch={false}
+          className={`items flex ${fadeClass}`}
+          aria-label="park.fan - Home"
+          tabIndex={isTransparent ? -1 : 0}
+        >
           <Image
             src="/logo-small.svg"
             width={27}
@@ -66,14 +96,19 @@ export function Header() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">
+        {/* Desktop Navigation – fades in on scroll */}
+        <nav
+          className={`hidden items-center gap-6 md:flex ${fadeClass}`}
+          aria-label="Main navigation"
+          aria-hidden={isTransparent}
+        >
           {showNearbyPark && (
             <Link
               href={convertApiUrlToFrontendUrl(nearestPark.url)}
               prefetch={nearestPark.status === 'OPERATING'}
               className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+              tabIndex={isTransparent ? -1 : 0}
             >
               <MapPin className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
@@ -83,7 +118,7 @@ export function Header() {
             href="/"
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            aria-label="Go to homepage"
+            tabIndex={isTransparent ? -1 : 0}
           >
             {t('home')}
           </Link>
@@ -91,14 +126,14 @@ export function Header() {
             href="/parks/europe"
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            aria-label="Explore theme parks"
+            tabIndex={isTransparent ? -1 : 0}
           >
             {t('explore')}
           </Link>
         </nav>
 
-        {/* Search - Desktop (shows as input-like button) */}
-        <div className="hidden lg:block lg:w-64">
+        {/* Search Desktop – fades in on scroll */}
+        <div className={`hidden lg:block lg:w-64 ${fadeClass}`}>
           <SearchCommand
             trigger="input"
             size="sm"
@@ -109,54 +144,61 @@ export function Header() {
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          {/* Search Button - Mobile/Tablet (icon only) */}
-          <div className="lg:hidden">
+          {/* Search Button Mobile – fades in on scroll */}
+          <div className={`lg:hidden ${fadeClass}`}>
             <SearchCommand trigger="button" />
           </div>
 
+          {/* Always visible: locale switcher + theme toggle */}
           <LocaleSwitcher />
           <ThemeToggle />
 
-          {/* Mobile Menu */}
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden" suppressHydrationWarning>
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] p-6 pt-12">
-              <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
-                {showNearbyPark && (
+          {/* Mobile Menu – fades in on scroll */}
+          <div className={fadeClass}>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  suppressHydrationWarning
+                  tabIndex={isTransparent ? -1 : 0}
+                >
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] p-6 pt-12">
+                <nav className="mt-8 flex flex-col gap-4" aria-label="Mobile navigation">
+                  {showNearbyPark && (
+                    <Link
+                      href={convertApiUrlToFrontendUrl(nearestPark.url)}
+                      prefetch={nearestPark.status === 'OPERATING'}
+                      className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
+                      aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                    >
+                      <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+                      {t('nearbyPark', { parkName: nearestPark.name })}
+                    </Link>
+                  )}
                   <Link
-                    href={convertApiUrlToFrontendUrl(nearestPark.url)}
-                    prefetch={nearestPark.status === 'OPERATING'}
-                    className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
-                    aria-label={t('nearbyPark', { parkName: nearestPark.name })}
+                    href="/"
+                    prefetch={false}
+                    className="hover:text-primary text-lg font-medium transition-colors"
                   >
-                    <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-                    {t('nearbyPark', { parkName: nearestPark.name })}
+                    {t('home')}
                   </Link>
-                )}
-                <Link
-                  href="/"
-                  prefetch={false}
-                  className="hover:text-primary text-lg font-medium transition-colors"
-                  aria-label="Go to homepage"
-                >
-                  {t('home')}
-                </Link>
-                <Link
-                  href="/parks/europe"
-                  prefetch={false}
-                  className="hover:text-primary text-lg font-medium transition-colors"
-                  aria-label="Explore theme parks"
-                >
-                  {t('explore')}
-                </Link>
-              </nav>
-            </SheetContent>
-          </Sheet>
+                  <Link
+                    href="/parks/europe"
+                    prefetch={false}
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('explore')}
+                  </Link>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>

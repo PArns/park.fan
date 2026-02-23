@@ -143,7 +143,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <OrganizationStructuredData description={tSeo('description')} />
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24 lg:py-28">
+      <section className="relative -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:pb-28">
         <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto xl:ml-36">
           <div className="flex flex-col">
