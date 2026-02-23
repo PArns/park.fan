@@ -9,6 +9,7 @@ import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
+import { AnalyticsIdentify } from '@/components/common/analytics-identify';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -133,6 +134,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <WebSiteStructuredData locale={locale} description={tSeo('description')} />
         <Providers>
           <NextIntlClientProvider messages={messages} locale={locale}>
+            <AnalyticsIdentify locale={locale} />
             <LanguageBanner currentLocale={locale as Locale} />
             <div className="flex min-h-screen flex-col">
               <Header />

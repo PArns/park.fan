@@ -22,6 +22,7 @@ declare global {
   interface Window {
     umami?: {
       track: (eventName: string, eventData?: Record<string, string | number | boolean>) => void;
+      identify: (properties: Record<string, string | number | boolean>) => void;
     };
   }
 }
@@ -315,4 +316,10 @@ export function trackCityClicked(props: DiscoveryClickedProps): void {
 
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
+}
+
+export function identifyVisitor(siteLocale: string, hasFavorites: boolean): void {
+  if (typeof window === 'undefined' || !window.umami?.identify) return;
+  const browserLanguage = navigator.language.split('-')[0];
+  window.umami.identify({ browser_language: browserLanguage, site_locale: siteLocale, has_favorites: hasFavorites });
 }
