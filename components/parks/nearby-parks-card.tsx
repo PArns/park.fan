@@ -121,7 +121,10 @@ export function NearbyParksCard() {
     if (!permissionDenied) hasTrackedDenied.current = false;
   }, [permissionDenied]);
 
-  const isLoading = geoLoading || dataLoading;
+  // Only show loading skeleton on initial load — not during background auto-refresh
+  // (when we already have data or a known position, the refresh happens silently).
+  const isInitialLoad = !nearbyData && !dataError;
+  const isLoading = isInitialLoad && (geoLoading || dataLoading);
 
   // "Location required" 400 = no public IP and no coords (e.g. local dev). Treat as prompt, not error.
   const isLocationUnavailable =

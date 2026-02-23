@@ -9,7 +9,6 @@ import {
   useRef,
   type ReactNode,
 } from 'react';
-import { getDebugPositionForMode, type DebugGeoMode } from '@/lib/debug-geo';
 
 export interface GeolocationPosition {
   lat: number;
@@ -26,80 +25,35 @@ export interface GeolocationContextValue {
   refresh: () => void;
   isInPark: boolean;
   setIsInPark: (inPark: boolean) => void;
-  /** Current debug geo mode from Vercel Toolbar (read-only). */
-  debugGeoMode: DebugGeoMode | null;
 }
 
 const GeolocationContext = createContext<GeolocationContextValue | null>(null);
 
 interface GeolocationProviderProps {
   children: ReactNode;
-  /** From Vercel Toolbar Flags Explorer; when "near" or "in", overrides real geolocation. */
-  initialDebugGeoMode?: DebugGeoMode;
-}
-
-/**
- * Fetches the debug-geo-mode flag from the API (reads cookie on server). Ensures flag overrides
- * work even when the initial server render didn't receive the cookie.
- */
-async function fetchDebugGeoMode(): Promise<DebugGeoMode> {
-  try {
-    const res = await fetch('/api/debug-geo-mode', { credentials: 'same-origin' });
-    if (!res.ok) return 'real';
-    const json = await res.json();
-    const mode = json?.mode;
-    return mode === 'near' || mode === 'in' ? mode : 'real';
-  } catch {
-    return 'real';
-  }
 }
 
 /**
  * Centralized geolocation provider.
  * - If permission already granted (Permissions API): request location on mount, no banner.
  * - If prompt/denied: don't request on mount; user can enable via banner.
- * - When debug mode is "near" or "in" (from server or client fetch), uses preset coordinates (Phantasialand).
- * - Client fetches /api/debug-geo-mode on mount and on window focus so Flags Explorer overrides apply without full reload.
  * - Auto-refreshes when position is set (5 min / 1 min in park).
  */
-export function GeolocationProvider({
-  children,
-  initialDebugGeoMode = 'real',
-}: GeolocationProviderProps) {
+export function GeolocationProvider({ children }: GeolocationProviderProps) {
   const [position, setPosition] = useState<GeolocationPosition | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
   const [isInPark, setIsInPark] = useState(false);
   const [initialCheckDone, setInitialCheckDone] = useState(false);
-  /** Client-resolved flag from /api/debug-geo-mode (cookie); overrides initialDebugGeoMode when set. */
-  const [clientDebugMode, setClientDebugMode] = useState<DebugGeoMode | null>(null);
 
-  const positionRef = useRef<GeolocationPosition | null>(null);
   const isInParkRef = useRef(false);
-  const prevEffectiveModeRef = useRef<DebugGeoMode>(initialDebugGeoMode);
-
-  const effectiveDebugMode: DebugGeoMode =
-    clientDebugMode !== null ? clientDebugMode : initialDebugGeoMode;
-  const debugPos = getDebugPositionForMode(effectiveDebugMode);
-
-  useEffect(() => {
-    positionRef.current = position;
-  }, [position]);
 
   useEffect(() => {
     isInParkRef.current = isInPark;
   }, [isInPark]);
 
   const requestLocation = useCallback(() => {
-    if (debugPos) {
-      setPosition(debugPos);
-      setLoading(false);
-      setError(false);
-      setPermissionDenied(false);
-      return;
-    }
-
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
       setLoading(false);
       setError(true);
@@ -111,86 +65,42 @@ export function GeolocationProvider({
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const newPosition = {
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude,
-        };
-        setPosition(newPosition);
+        setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
         setLoading(false);
         setError(false);
         setPermissionDenied(false);
       },
       (err) => {
         setLoading(false);
-        setError(true);
 
         if (err.code === 1) {
+          // User explicitly denied → show permission denied state
           setPermissionDenied(true);
-        }
-
-        if (err.code !== 1) {
-          const errorType =
-            err.code === 3 ? 'Timeout' : err.code === 2 ? 'Position unavailable' : 'Unknown error';
-          console.warn(`[Geolocation] ${errorType}:`, {
-            code: err.code,
-            message: err.message,
-          });
+          setError(true);
+        } else {
+          // code=2 (unavailable) or code=3 (timeout): silently fall back to IP-based lookup.
+          // canRun becomes true without coords → GeoIP fallback in the API.
+          console.warn('[Geolocation]', err.code === 3 ? 'Timeout' : 'Position unavailable', err.message);
         }
       },
       {
         enableHighAccuracy: false,
-        timeout: 20000,
-        maximumAge: 300000,
+        timeout: 10000,
+        // Longer than the refresh interval (5 min / 1 min in park) so cached positions
+        // are always reused on auto-refresh instead of triggering a fresh GPS lookup.
+        maximumAge: 8 * 60 * 1000,
       }
     );
-  }, [debugPos]);
+  }, []);
 
   const refresh = useCallback(() => {
     requestLocation();
   }, [requestLocation]);
 
-  // Fetch flag from API on mount and on window focus (development only) so Flags Explorer overrides apply
-  useEffect(() => {
-    const apply = () => {
-      fetchDebugGeoMode().then((mode) => {
-        setClientDebugMode(mode);
-      });
-    };
-
-    // Always check on mount
-    apply();
-
-    // Only check on window focus in development (for Flags Explorer)
-    if (process.env.NODE_ENV === 'development') {
-      window.addEventListener('focus', apply);
-      return () => window.removeEventListener('focus', apply);
-    }
-  }, []);
-
-  // When debug position is set, use it; otherwise run normal flow (permission check + request)
+  // On mount: check if permission already granted, request silently if so.
   useEffect(() => {
     let cancelled = false;
-    const wasDebug =
-      prevEffectiveModeRef.current === 'near' || prevEffectiveModeRef.current === 'in';
-    prevEffectiveModeRef.current = effectiveDebugMode;
 
-    if (debugPos) {
-      queueMicrotask(() => {
-        if (cancelled) return;
-        setPosition(debugPos);
-        setInitialCheckDone(true);
-        setLoading(false);
-      });
-      return () => {
-        cancelled = true;
-      };
-    }
-
-    if (wasDebug && effectiveDebugMode === 'real') {
-      queueMicrotask(() => {
-        if (!cancelled) setPosition(null);
-      });
-    }
     isGeolocationGranted().then((granted) => {
       if (cancelled) return;
       setInitialCheckDone(true);
@@ -202,13 +112,11 @@ export function GeolocationProvider({
     return () => {
       cancelled = true;
     };
-  }, [requestLocation, debugPos, effectiveDebugMode]);
+  }, [requestLocation]);
 
   // Auto-refresh with dynamic interval (only when we have position)
   useEffect(() => {
-    if (position === null || permissionDenied) {
-      return;
-    }
+    if (position === null || permissionDenied) return;
 
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
     const interval = setInterval(() => {
@@ -227,7 +135,6 @@ export function GeolocationProvider({
     refresh,
     isInPark,
     setIsInPark,
-    debugGeoMode: effectiveDebugMode !== 'real' ? effectiveDebugMode : null,
   };
 
   return <GeolocationContext.Provider value={value}>{children}</GeolocationContext.Provider>;

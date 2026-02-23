@@ -1,12 +1,5 @@
 import { useTranslations } from 'next-intl';
-import {
-  Clock,
-  Users,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  ActivitySquare,
-} from 'lucide-react';
+import { Clock, Users, TrendingUp, TrendingDown, Minus, ActivitySquare } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
