@@ -21,7 +21,6 @@ import {
 import { FAQStructuredData } from '@/components/seo/faq-structured-data';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
-import type { ParkAttraction } from '@/lib/api/types';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -31,6 +30,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { groupAttractionsByLand } from '@/lib/utils/park-utils';
+import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 
 interface ParkPageProps {
   params: Promise<{
@@ -123,29 +124,6 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
 export const revalidate = 300; // 5 minutes (matches API cache for live wait times)
 
-// Group attractions by land
-function groupAttractionsByLand(
-  attractions: ParkAttraction[],
-  fallbackName: string = 'Other Attractions'
-): Record<string, ParkAttraction[]> {
-  const grouped: Record<string, ParkAttraction[]> = {};
-
-  attractions.forEach((attraction) => {
-    const landName = attraction.land || fallbackName;
-    if (!grouped[landName]) {
-      grouped[landName] = [];
-    }
-    grouped[landName].push(attraction);
-  });
-
-  // Sort attractions within each land by name
-  Object.keys(grouped).forEach((land) => {
-    grouped[land].sort((a, b) => a.name.localeCompare(b.name));
-  });
-
-  return grouped;
-}
-
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
@@ -228,10 +206,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const parkName = stripNewPrefix(park.name);
 
   // Construct breadcrumbs using utility
-  const { generateParkBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const tNav = await getTranslations('navigation');
   const breadcrumbs = generateParkBreadcrumbs({
-    locale: locale as 'en' | 'de',
     continent,
     country,
     city,

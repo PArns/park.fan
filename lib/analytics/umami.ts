@@ -321,5 +321,9 @@ export function trackSearchNoResults(props: SearchNoResultsProps): void {
 export function identifyVisitor(siteLocale: string, hasFavorites: boolean): void {
   if (typeof window === 'undefined' || !window.umami?.identify) return;
   const browserLanguage = navigator.language.split('-')[0];
-  window.umami.identify({ browser_language: browserLanguage, site_locale: siteLocale, has_favorites: hasFavorites });
+  window.umami.identify({
+    browser_language: browserLanguage,
+    site_locale: siteLocale,
+    has_favorites: hasFavorites,
+  });
 }

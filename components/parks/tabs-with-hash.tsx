@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -16,7 +16,6 @@ import { LandSection } from '@/components/parks/land-section';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 
-// import { LocalTime } from '@/components/ui/local-time';
 import type {
   ParkWithAttractions,
   IntegratedCalendarResponse,
@@ -63,7 +62,6 @@ export function TabsWithHash({
 }: TabsWithHashProps) {
   const pathname = usePathname();
   const t = useTranslations('parks');
-  // const tCommon = useTranslations('common');
 
   // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
   const [activeTab, setActiveTab] = useState(defaultValue);
@@ -194,22 +192,21 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${newHash}`);
   };
 
-  // Flatten attractions for Fuse.js
-  const allAttractions = Object.values(attractionsByLand).flat();
-
-  // Initialize Fuse instance
-  const fuse = new Fuse(allAttractions, {
-    keys: [
-      { name: 'name', weight: 0.8 },
-      { name: 'slug', weight: 0.8 },
-      { name: 'land', weight: 0.5 },
-      { name: 'queues.queueType', weight: 0.3 },
-    ],
-    threshold: 0.3,
-    distance: 100,
-    ignoreLocation: true,
-    minMatchCharLength: 2,
-  });
+  const fuse = useMemo(() => {
+    const allAttractions = Object.values(attractionsByLand).flat();
+    return new Fuse(allAttractions, {
+      keys: [
+        { name: 'name', weight: 0.8 },
+        { name: 'slug', weight: 0.8 },
+        { name: 'land', weight: 0.5 },
+        { name: 'queues.queueType', weight: 0.3 },
+      ],
+      threshold: 0.3,
+      distance: 100,
+      ignoreLocation: true,
+      minMatchCharLength: 2,
+    });
+  }, [attractionsByLand]);
 
   // Filter attractions based on search query
   const filteredAttractionsByLand =

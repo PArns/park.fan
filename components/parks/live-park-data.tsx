@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
+import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type {
   ParkWithAttractions,
   IntegratedCalendarResponse,
@@ -124,27 +125,4 @@ export function LiveParkData({
       />
     </>
   );
-}
-
-// Helper function to group attractions by land (same as in page.tsx)
-function groupAttractionsByLand(
-  attractions: ParkAttraction[],
-  fallbackName: string = 'Other Attractions'
-): Record<string, ParkAttraction[]> {
-  const grouped: Record<string, ParkAttraction[]> = {};
-
-  attractions.forEach((attraction) => {
-    const landName = attraction.land || fallbackName;
-    if (!grouped[landName]) {
-      grouped[landName] = [];
-    }
-    grouped[landName].push(attraction);
-  });
-
-  // Sort attractions within each land by name
-  Object.keys(grouped).forEach((land) => {
-    grouped[land].sort((a, b) => a.name.localeCompare(b.name));
-  });
-
-  return grouped;
 }

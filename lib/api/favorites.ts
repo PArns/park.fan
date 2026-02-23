@@ -1,3 +1,5 @@
+import type { ScheduleSummary } from '@/lib/api/types';
+
 export interface FavoritePark {
   id: string;
   name: string;
@@ -16,16 +18,8 @@ export interface FavoritePark {
   url: string;
   timezone: string;
   backgroundImage?: string | null; // Added by proxy route
-  todaySchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
-  nextSchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
 }
 
 export interface FavoriteAttraction {

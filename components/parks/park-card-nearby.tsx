@@ -16,12 +16,12 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { useTranslations, useLocale } from 'next-intl';
-import type { CrowdLevel } from '@/lib/api/types';
+import { getScheduleMessage } from '@/lib/utils/schedule-utils';
+import type { CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 
 interface ParkCardNearbyProps {
   id: string;
   name: string;
-  slug: string;
   city: string;
   country: string;
   continent?: string; // For robust URL building
@@ -35,167 +35,12 @@ interface ParkCardNearbyProps {
     crowdLevel?: string;
     occupancy?: number;
   };
-  todaySchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
-  nextSchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
   url: string;
   /** Show a "Nearest open" badge (homepage focus). */
   highlightAsNearestOpen?: boolean;
-}
-
-function getScheduleMessage(
-  todaySchedule: ParkCardNearbyProps['todaySchedule'],
-  nextSchedule: ParkCardNearbyProps['nextSchedule'],
-  timezone: string,
-  status: string,
-  isInMaintenance: boolean,
-  locale: string,
-  t: ReturnType<typeof useTranslations<'nearby'>>,
-  tCommon: ReturnType<typeof useTranslations<'common'>>
-): { message: string; icon: 'opening' | 'closing' | 'offseason' } | null {
-  // Don't show schedule for parks in maintenance
-  if (isInMaintenance) {
-    return null;
-  }
-
-  try {
-    const now = new Date();
-
-    // If today is OPERATING, show closing time
-    if (status === 'OPERATING' && todaySchedule?.scheduleType === 'OPERATING') {
-      const closing = new Date(todaySchedule.closingTime);
-      const diff = closing.getTime() - now.getTime();
-      if (diff <= 0) return null;
-
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-      if (hours > 0) {
-        return {
-          message: `${t('closesIn')} ${hours} ${tCommon('hours')}. ${minutes} Min.`,
-          icon: 'closing',
-        };
-      }
-      return { message: `${t('closesIn')} ${minutes} Min.`, icon: 'closing' };
-    }
-
-    // If park is closed today, check if we have today's opening time or next schedule
-    if (status === 'CLOSED') {
-      // Try today's opening time first
-      if (todaySchedule?.scheduleType === 'OPERATING' && todaySchedule.openingTime) {
-        const opening = new Date(todaySchedule.openingTime);
-        const diff = opening.getTime() - now.getTime();
-
-        if (diff > 0) {
-          const hours = Math.floor(diff / (1000 * 60 * 60));
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-          // < 24 hours: Show time with hours and minutes
-          if (hours < 24) {
-            const openingTimeFormatted = opening.toLocaleTimeString(locale, {
-              hour: '2-digit',
-              minute: '2-digit',
-              timeZone: timezone,
-            });
-            if (hours > 0) {
-              return {
-                message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
-                icon: 'opening',
-              };
-            }
-            return {
-              message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${minutes} Min.)`,
-              icon: 'opening',
-            };
-          }
-        }
-      }
-
-      // Use nextSchedule if available and OPERATING
-      if (nextSchedule?.scheduleType === 'OPERATING' && nextSchedule.openingTime) {
-        const nextOpening = new Date(nextSchedule.openingTime);
-        const diff = nextOpening.getTime() - now.getTime();
-
-        if (diff > 0) {
-          const totalHours = diff / (1000 * 60 * 60);
-          const totalDays = diff / (1000 * 60 * 60 * 24);
-          const totalWeeks = totalDays / 7;
-
-          const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
-            hour: '2-digit',
-            minute: '2-digit',
-            timeZone: timezone,
-          });
-
-          // < 24 hours: "10:00 Uhr (in 2 Std. 10 Min.)"
-          if (totalHours < 24) {
-            const hours = Math.floor(totalHours);
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-            if (hours > 0) {
-              return {
-                message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
-                icon: 'opening',
-              };
-            }
-            return {
-              message: `${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${minutes} Min.)`,
-              icon: 'opening',
-            };
-          }
-          // > 24 hours but < 7 days: "Mittwoch, 11:00 Uhr (in 1 Tag, 16 Std.)"
-          else if (totalDays < 7) {
-            const weekday = nextOpening.toLocaleDateString(locale, {
-              weekday: 'long',
-              timeZone: timezone,
-            });
-            const days = Math.floor(totalDays);
-            const remainingHours = Math.floor(totalHours % 24);
-
-            return {
-              message: `${weekday}, ${openingTimeFormatted}${locale === 'de' ? ' Uhr' : ''} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
-              icon: 'opening',
-            };
-          }
-          // > 7 days: "OffSeason (Öffnet am 2. Mai - in 6 Wochen)"
-          else {
-            const dateFormatted = nextOpening.toLocaleDateString(locale, {
-              day: 'numeric',
-              month: 'long',
-              timeZone: timezone,
-            });
-            const weeks = Math.ceil(totalWeeks);
-
-            return {
-              message: `${t('offseason')} (${t('opensOn')} ${dateFormatted} - ${tCommon('in')} ${weeks} ${t('week', { count: weeks })})`,
-              icon: 'offseason',
-            };
-          }
-        }
-      }
-
-      // If park is closed and no next schedule is available, show OffSeason
-      if (!nextSchedule || nextSchedule.scheduleType !== 'OPERATING') {
-        return {
-          message: t('offseason'),
-          icon: 'offseason',
-        };
-      }
-    }
-
-    return null;
-  } catch (error) {
-    console.error('[ParkCardNearby] Error calculating schedule:', error);
-    return null;
-  }
 }
 
 export function ParkCardNearby({

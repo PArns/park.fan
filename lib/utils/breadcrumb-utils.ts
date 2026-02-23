@@ -1,5 +1,4 @@
 import type { Breadcrumb } from '@/lib/api/types';
-import type { Locale } from '@/i18n/routing';
 
 /**
  * Generate breadcrumbs for continent pages
@@ -26,7 +25,6 @@ export function generateCountryBreadcrumbs({
   homeLabel,
   continentsLabel,
 }: {
-  locale: Locale;
   continent: string;
   continentName: string;
   homeLabel: string;
@@ -50,7 +48,6 @@ export function generateCityBreadcrumbs({
   homeLabel,
   continentsLabel,
 }: {
-  locale: Locale;
   continent: string;
   country: string;
   continentName: string;
@@ -81,7 +78,6 @@ export function generateParkBreadcrumbs({
   homeLabel,
   continentsLabel,
 }: {
-  locale: Locale;
   continent: string;
   country: string;
   city: string;
@@ -118,7 +114,6 @@ export function generateAttractionBreadcrumbs({
   homeLabel,
   continentsLabel,
 }: {
-  locale: Locale;
   continent: string;
   country: string;
   city: string;

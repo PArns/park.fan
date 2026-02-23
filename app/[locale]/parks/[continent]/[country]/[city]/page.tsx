@@ -8,6 +8,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { generateCityBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
@@ -104,9 +105,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
-  const { generateCityBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const breadcrumbs = generateCityBreadcrumbs({
-    locale: locale as 'en' | 'de',
     continent,
     country,
     continentName,

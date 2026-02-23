@@ -5,10 +5,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   icons: {
-    icon: [
-      { url: '/logo-small.svg', type: 'image/svg+xml' },
-      { url: '/logo-small.svg', type: 'image/svg+xml' },
-    ],
+    icon: [{ url: '/logo-small.svg', type: 'image/svg+xml' }],
     apple: '/logo-small.svg',
   },
 };

@@ -492,7 +492,6 @@ export function NearbyParksCard() {
                   <ParkCardNearby
                     id={park.id}
                     name={stripNewPrefix(park.name)}
-                    slug={park.slug}
                     city={park.city}
                     country={park.country}
                     continent={continent}

@@ -5,7 +5,6 @@ import {
   TrendingUp,
   TrendingDown,
   Minus,
-  Calendar,
   ActivitySquare,
 } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
@@ -23,8 +22,6 @@ type ParkData = ParkWithAttractions | ParkResponse;
 interface ParkStatusProps {
   park: ParkData;
   variant: 'compact' | 'detailed' | 'card' | 'hero';
-  showWeather?: boolean;
-  showSchedule?: boolean;
   className?: string;
 }
 
@@ -36,11 +33,10 @@ const trendIconMap: Record<TrendDirection, typeof TrendingUp> = {
   decreasing: TrendingDown,
 };
 
-export function ParkStatus({ park, variant, showSchedule = true, className }: ParkStatusProps) {
+export function ParkStatus({ park, variant, className }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
   const currentLoad = 'currentLoad' in park ? park.currentLoad : null;
   const status = 'status' in park ? park.status : undefined;
-  const schedule = 'schedule' in park ? park.schedule : undefined;
   const tCommon = useTranslations('common');
   const t = useTranslations('parks');
 
@@ -70,7 +66,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
           <div className="grid grid-cols-2 gap-2 text-sm">
             <div className="flex items-center gap-1.5">
               <Clock className="text-muted-foreground h-4 w-4" />
-              <span>{analytics.statistics.avgWaitTime} min avg</span>
+              <span>
+                {analytics.statistics.avgWaitTime} {tCommon('minutes')} {tCommon('avgWait')}
+              </span>
             </div>
             <div className="flex items-center gap-1.5">
               <Users className="text-muted-foreground h-4 w-4" />
@@ -95,7 +93,7 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
         {analytics?.statistics && (
           <Badge variant="outline" className="px-4 py-1 text-base">
             <Clock className="mr-2 h-4 w-4" />
-            {analytics.statistics.avgWaitTime} min avg
+            {analytics.statistics.avgWaitTime} {tCommon('minutes')} {tCommon('avgWait')}
           </Badge>
         )}
         {analytics?.statistics?.peakWaitToday !== undefined && (
@@ -181,7 +179,9 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-baseline justify-between pt-1">
-                    <span className="text-muted-foreground text-sm font-medium">Aktuell</span>
+                    <span className="text-muted-foreground text-sm font-medium">
+                      {tCommon('current')}
+                    </span>
                     <div className="flex items-baseline gap-1.5">
                       <span className="text-foreground text-3xl font-bold tabular-nums">
                         {stats.avgWaitTime}
@@ -306,146 +306,5 @@ export function ParkStatus({ park, variant, showSchedule = true, className }: Pa
     );
   }
 
-  // Default variant (full stats grid) - kept for backwards compatibility
-  return (
-    <Card className={className}>
-      <CardContent className="p-6">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Status */}
-          <div className="space-y-2">
-            <p className="text-muted-foreground text-sm font-medium">{tCommon('status')}</p>
-            <div className="flex items-center gap-2">
-              {status && <ParkStatusBadge status={status} />}
-            </div>
-          </div>
-
-          {/* Crowd Level */}
-          {currentLoad && status === 'OPERATING' && (
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm font-medium">{t('crowdLevel')}</p>
-              <CrowdLevelBadge level={currentLoad.crowdLevel} />
-            </div>
-          )}
-
-          {/* Average Wait Time */}
-          {analytics?.statistics && (
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm font-medium">{t('avgWaitTime')}</p>
-              <div className="flex items-center gap-2">
-                <Clock className="text-primary h-5 w-5" />
-                <span className="text-2xl font-bold">{analytics.statistics.avgWaitTime}</span>
-                <span className="text-muted-foreground">{tCommon('minutes')}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Operating Attractions */}
-          {analytics?.statistics && (
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm font-medium">{t('attractions')}</p>
-              <div className="flex items-center gap-2">
-                <Users className="text-primary h-5 w-5" />
-                <span className="text-2xl font-bold">
-                  {analytics.statistics.operatingAttractions}
-                </span>
-                <span className="text-muted-foreground">
-                  / {analytics.statistics.totalAttractions} {t('open')}
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Occupancy Trend */}
-          {analytics?.occupancy && (
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm font-medium">{tCommon('trend')}</p>
-              <div className="flex items-center gap-2">
-                {(() => {
-                  const TrendIcon = trendIconMap[analytics.occupancy.trend];
-                  return (
-                    <>
-                      <TrendIcon
-                        className={cn(
-                          'h-5 w-5',
-                          (analytics.occupancy.trend === 'up' ||
-                            analytics.occupancy.trend === 'increasing') &&
-                            'text-crowd-high',
-                          (analytics.occupancy.trend === 'down' ||
-                            analytics.occupancy.trend === 'decreasing') &&
-                            'text-crowd-low',
-                          analytics.occupancy.trend === 'stable' && 'text-muted-foreground'
-                        )}
-                      />
-                      <span className="capitalize">{tCommon(analytics.occupancy.trend)}</span>
-                    </>
-                  );
-                })()}
-              </div>
-            </div>
-          )}
-
-          {/* Comparison to Typical */}
-          {analytics?.occupancy && (
-            <div className="space-y-2">
-              <p className="text-muted-foreground text-sm font-medium">{tCommon('vsTypical')}</p>
-              <Badge
-                variant="outline"
-                className={cn(
-                  (analytics.occupancy.comparisonStatus === 'lower' ||
-                    analytics.occupancy.comparisonStatus === 'much_lower') &&
-                    'border-crowd-low text-crowd-low',
-                  (analytics.occupancy.comparisonStatus === 'higher' ||
-                    analytics.occupancy.comparisonStatus === 'much_higher') &&
-                    'border-crowd-high text-crowd-high',
-                  analytics.occupancy.comparisonStatus === 'typical' && 'border-muted-foreground'
-                )}
-              >
-                {analytics.occupancy.comparedToTypical > 0 ? '+' : ''}
-                {analytics.occupancy.comparedToTypical}%{' '}
-                {tCommon(analytics.occupancy.comparisonStatus)}
-              </Badge>
-            </div>
-          )}
-
-          {/* Today's Schedule */}
-          {showSchedule &&
-            schedule &&
-            schedule.length > 0 &&
-            (() => {
-              // Get today's schedule - filter by date in park's timezone
-              const todayInParkTz = new Date().toLocaleDateString('en-CA', {
-                timeZone: park.timezone,
-              }); // Format: YYYY-MM-DD
-              const todaySchedule = schedule.find((s) => s.date === todayInParkTz) || schedule[0];
-
-              if (!todaySchedule) return null;
-
-              return (
-                <div className="space-y-2">
-                  <p className="text-muted-foreground text-sm font-medium">{tCommon('today')}</p>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="text-primary h-5 w-5" />
-                    {todaySchedule.scheduleType === 'OPERATING' ? (
-                      <span>
-                        <LocalTime
-                          time={todaySchedule.openingTime || ''}
-                          timeZone={park.timezone}
-                        />
-                        {' - '}
-                        <LocalTime
-                          time={todaySchedule.closingTime || ''}
-                          timeZone={park.timezone}
-                        />
-                      </span>
-                    ) : (
-                      <span className="text-status-closed">Closed</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })()}
-        </div>
-      </CardContent>
-    </Card>
-  );
+  return null;
 }

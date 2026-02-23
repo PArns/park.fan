@@ -18,6 +18,8 @@
     "tomorrow": "Morgen",
     "closed": "Gesloten",
     "open": "Open",
+    "current": "Huidig",
+    "timeSuffix": "",
     "seeMore": "Bekijk meer",
     "showMore": "Toon meer",
     "searchPlaceholder": "Zoeken...",

@@ -2,6 +2,7 @@
  * TypeScript types for /v1/discovery/nearby API endpoint.
  * Distance in responses (e.g. park.distance) is in meters. Request params (radius) use km.
  */
+import type { AttractionStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 
 export interface UserLocation {
   latitude: number;
@@ -14,8 +15,8 @@ export interface AttractionWithDistance {
   slug: string;
   distance: number;
   waitTime: number | null;
-  status: 'OPERATING' | 'CLOSED' | 'DOWN';
-  crowdLevel?: 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | null;
+  status: AttractionStatus;
+  crowdLevel?: CrowdLevel | null;
   analytics?: {
     p50?: number;
     p90?: number;
@@ -37,16 +38,8 @@ export interface NearbyParkInfo {
     operatingAttractions?: number;
   };
   timezone: string;
-  todaySchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
-  nextSchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
 }
 
@@ -73,16 +66,8 @@ export interface ParkWithDistance {
   };
   url: string;
   timezone: string;
-  todaySchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
-  nextSchedule?: {
-    openingTime: string;
-    closingTime: string;
-    scheduleType: string;
-  };
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
 }
 

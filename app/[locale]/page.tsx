@@ -11,7 +11,6 @@ import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { HeroBackground } from '@/components/layout/hero-background';
-import { OrganizationStructuredData } from '@/components/seo/structured-data';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { FavoriteStar } from '@/components/common/favorite-star';
@@ -116,8 +115,6 @@ export default async function HomePage({ params }: HomePageProps) {
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
-  const tSeo = await getTranslations('seo.home');
-
   // Random hero image per request (intentional variety; disable purity for this line only)
   // eslint-disable-next-line react-hooks/purity -- random hero is intentional
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
@@ -140,7 +137,6 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col">
-      <OrganizationStructuredData description={tSeo('description')} />
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:pb-28">

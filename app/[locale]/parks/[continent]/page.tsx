@@ -9,6 +9,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { generateContinentBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import type { Metadata } from 'next';
 
 interface ContinentPageProps {
@@ -121,7 +122,6 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
   // Create breadcrumbs for continent page
   const tCommon = await getTranslations('common');
-  const { generateContinentBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const tNav = await getTranslations('navigation');
   const breadcrumbs = generateContinentBreadcrumbs({
     homeLabel: tCommon('home'),

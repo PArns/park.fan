@@ -18,6 +18,8 @@
     "tomorrow": "Demain",
     "closed": "Fermé",
     "open": "Ouvert",
+    "current": "Actuel",
+    "timeSuffix": "",
     "seeMore": "Voir plus",
     "showMore": "Afficher plus",
     "searchPlaceholder": "Rechercher...",

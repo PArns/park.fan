@@ -47,14 +47,7 @@ export interface Pagination {
 // API Response Types
 export interface PaginatedResponse<T> {
   data: T[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-    hasNext: boolean;
-    hasPrevious: boolean;
-  };
+  pagination: Pagination;
 }
 
 // ============================================================================
@@ -79,6 +72,13 @@ export interface ScheduleItem {
 
 /** API nextSchedule shape: often has only openingTime/closingTime/scheduleType (no date). */
 export type NextScheduleItem = Omit<ScheduleItem, 'date'> & { date?: string };
+
+/** Compact schedule summary used in park cards and nearby responses. */
+export interface ScheduleSummary {
+  openingTime: string;
+  closingTime: string;
+  scheduleType: string;
+}
 
 // ============================================================================
 // Weather
@@ -360,7 +360,7 @@ export interface AttractionResponse {
   land: Land | null;
   queues?: QueueDataItem[];
   currentLoad?: ParkLoad | null;
-  hourlyForecast?: string[];
+  hourlyForecast?: ForecastItem[];
   forecasts?: ForecastItem[];
   latitude: number | null;
   longitude: number | null;

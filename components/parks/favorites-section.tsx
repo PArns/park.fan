@@ -162,7 +162,6 @@ export function FavoritesSection() {
                         key={park.id}
                         id={park.id}
                         name={stripNewPrefix(park.name)}
-                        slug={park.slug}
                         city={park.city}
                         country={park.country}
                         distance={park.distance || 0}

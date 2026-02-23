@@ -10,6 +10,7 @@ import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import type { Metadata } from 'next';
 
@@ -110,9 +111,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
-  const { generateCountryBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const breadcrumbs = generateCountryBreadcrumbs({
-    locale: locale as 'en' | 'de',
     continent,
     continentName,
     homeLabel: tCommon('home'),

@@ -38,6 +38,7 @@ import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findAttractionPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 
@@ -247,10 +248,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const parkName = stripNewPrefix(park.name);
 
   // Construct breadcrumbs using utility
-  const { generateAttractionBreadcrumbs } = await import('@/lib/utils/breadcrumb-utils');
   const tNav = await getTranslations('navigation');
   const breadcrumbs = generateAttractionBreadcrumbs({
-    locale: locale as 'en' | 'de',
     continent,
     country,
     city,
