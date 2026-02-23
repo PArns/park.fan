@@ -6,8 +6,6 @@ import Script from 'next/script';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
 import { Providers } from '@/lib/providers';
-import { debugGeoModeFlag } from '@/flags';
-import { VercelToolbar } from '@vercel/toolbar/next';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
@@ -33,9 +31,6 @@ interface LocaleLayoutProps {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }
-
-/** Force dynamic so Vercel Toolbar flag overrides (cookie) are read on every request. */
-export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -119,7 +114,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Get messages for the current locale
   const messages = await getMessages();
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
-  const debugGeoMode = await debugGeoModeFlag();
 
   // Render html/body here to have access to locale for lang attribute
   return (
@@ -137,11 +131,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <OrganizationStructuredData description={tSeo('description')} />
         <WebSiteStructuredData locale={locale} description={tSeo('description')} />
-        {process.env.NODE_ENV === 'development' &&
-          (process.env.VERCEL === '1' || process.env.NEXT_PUBLIC_VERCEL_TOOLBAR === 'true') && (
-            <VercelToolbar />
-          )}
-        <Providers initialDebugGeoMode={debugGeoMode}>
+        <Providers>
           <NextIntlClientProvider messages={messages} locale={locale}>
             <LanguageBanner currentLocale={locale as Locale} />
             <div className="flex min-h-screen flex-col">

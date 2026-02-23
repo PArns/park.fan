@@ -32,11 +32,11 @@ export function Header() {
         <Link
           href="/"
           prefetch={false}
-          className="flex items-center gap-2"
+          className="flex items"
           aria-label="park.fan - Home"
         >
           <Image
-            src="/logo.svg"
+            src="/logo-small.svg"
             width={27}
             height={32}
             alt=""
@@ -45,7 +45,7 @@ export function Header() {
             aria-hidden="true"
           />
           <Image
-            src="/logo-dark.svg"
+            src="/logo-small-dark.svg"
             width={27}
             height={32}
             alt=""
