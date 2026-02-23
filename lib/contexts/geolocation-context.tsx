@@ -20,7 +20,9 @@ export interface GeolocationContextValue {
   loading: boolean;
   error: boolean;
   permissionDenied: boolean;
-  /** False until initial permission check (Permissions API) has completed; avoids banner flash when permission already granted */
+  /** True once the user has granted location access (survives GPS timeout/unavailable). */
+  permissionGranted: boolean;
+  /** False until initial permission check (Permissions API) has completed. */
   initialCheckDone: boolean;
   refresh: () => void;
   isInPark: boolean;
@@ -44,6 +46,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
+  const [permissionGranted, setPermissionGranted] = useState(false);
   const [isInPark, setIsInPark] = useState(false);
   const [initialCheckDone, setInitialCheckDone] = useState(false);
 
@@ -69,23 +72,31 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
         setLoading(false);
         setError(false);
         setPermissionDenied(false);
+        setPermissionGranted(true);
       },
       (err) => {
         setLoading(false);
 
         if (err.code === 1) {
-          // User explicitly denied → show permission denied state
+          // User explicitly denied → clear granted flag
           setPermissionDenied(true);
+          setPermissionGranted(false);
           setError(true);
+          console.warn('[Geolocation] Permission denied by user');
         } else {
-          // code=2 (unavailable) or code=3 (timeout): silently fall back to IP-based lookup.
-          // canRun becomes true without coords → GeoIP fallback in the API.
-          console.warn('[Geolocation]', err.code === 3 ? 'Timeout' : 'Position unavailable', err.message);
+          // code=2 (unavailable) or code=3 (timeout): the browser had permission but
+          // couldn't get a fix. Mark as granted so banners don't reappear.
+          setPermissionGranted(true);
+          console.warn(
+            '[Geolocation]',
+            err.code === 3 ? 'Timeout' : 'Position unavailable',
+            err.message
+          );
         }
       },
       {
         enableHighAccuracy: false,
-        timeout: 10000,
+        timeout: 5000,
         // Longer than the refresh interval (5 min / 1 min in park) so cached positions
         // are always reused on auto-refresh instead of triggering a fresh GPS lookup.
         maximumAge: 8 * 60 * 1000,
@@ -105,6 +116,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
       if (cancelled) return;
       setInitialCheckDone(true);
       if (granted) {
+        setPermissionGranted(true);
         requestLocation();
       }
     });
@@ -131,6 +143,7 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     loading,
     error,
     permissionDenied,
+    permissionGranted,
     initialCheckDone,
     refresh,
     isInPark,
@@ -147,7 +160,8 @@ async function isGeolocationGranted(): Promise<boolean> {
   try {
     const status = await navigator.permissions.query({ name: 'geolocation' });
     return status.state === 'granted';
-  } catch {
+  } catch (e) {
+    console.warn('[Geolocation] Permissions API error:', e);
     return false;
   }
 }

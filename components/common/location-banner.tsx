@@ -12,9 +12,9 @@ import { trackLocationBannerClicked } from '@/lib/analytics/umami';
  */
 export function LocationBanner() {
   const t = useTranslations('nearby');
-  const { position, loading, initialCheckDone, refresh } = useGeolocation();
+  const { permissionGranted, loading, initialCheckDone, refresh } = useGeolocation();
 
-  if (!initialCheckDone || position !== null || loading) {
+  if (!initialCheckDone || permissionGranted || loading) {
     return null;
   }
 

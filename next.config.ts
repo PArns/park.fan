@@ -1,10 +1,8 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import createWithVercelToolbar from '@vercel/toolbar/plugins/next';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
-const withVercelToolbar = createWithVercelToolbar();
 
 const nextConfig: NextConfig = {
   compiler: {
@@ -66,4 +64,4 @@ const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 });
 
-export default withVercelToolbar(withNextIntl(bundleAnalyzer(nextConfig)));
+export default withNextIntl(bundleAnalyzer(nextConfig));

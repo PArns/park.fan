@@ -40,8 +40,8 @@ export function NearbyParksCard() {
   const {
     position,
     loading: geoLoading,
-    error: geoError,
     permissionDenied,
+    permissionGranted,
     refresh,
     setIsInPark,
   } = useGeolocation();
@@ -85,6 +85,7 @@ export function NearbyParksCard() {
       setIsInPark(false);
     } else if (nearbyData.type === 'in_park') {
       const parkData = nearbyData.data as NearbyAttractionsData;
+      if (!parkData?.park) return;
       trackNearbyParksLoaded({
         count: 1,
         type: 'in_park',
@@ -121,10 +122,10 @@ export function NearbyParksCard() {
     if (!permissionDenied) hasTrackedDenied.current = false;
   }, [permissionDenied]);
 
-  // Only show loading skeleton on initial load — not during background auto-refresh
-  // (when we already have data or a known position, the refresh happens silently).
-  const isInitialLoad = !nearbyData && !dataError;
-  const isLoading = isInitialLoad && (geoLoading || dataLoading);
+  // Show skeleton whenever there's nothing to display and something is still in progress.
+  // Keep showing skeleton even on 400 errors while GPS is still loading — coords may arrive
+  // and trigger a successful retry. nearbyData covers both real and placeholder (cached) data.
+  const isLoading = !nearbyData && (geoLoading || dataLoading);
 
   // "Location required" 400 = no public IP and no coords (e.g. local dev). Treat as prompt, not error.
   const isLocationUnavailable =
@@ -162,15 +163,9 @@ export function NearbyParksCard() {
     );
   }
 
-  // Prompt state: no data yet, or "location required" error (no public IP + no coords → needs browser location)
-  if (
-    !position &&
-    !geoError &&
-    !permissionDenied &&
-    !geoLoading &&
-    !dataLoading &&
-    (!nearbyData || isLocationUnavailable)
-  ) {
+  // Prompt state: only when user hasn't granted location yet (or is still undecided).
+  // Don't show if GPS timed out / unavailable — permissionGranted stays true in that case.
+  if (!permissionGranted && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
     return (
       <section className="bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm">
         <CardHeader className="pb-4">
@@ -259,7 +254,7 @@ export function NearbyParksCard() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {!position && (
+            {!permissionGranted && !permissionDenied && (
               <div className="bg-muted/50 border-border flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
                 <span className="text-muted-foreground">{t('locationHint')}</span>
                 <Button onClick={refresh} size="sm" variant="outline">
@@ -473,7 +468,7 @@ export function NearbyParksCard() {
           )}
         </CardHeader>
         <CardContent>
-          {!position && (
+          {!permissionGranted && !permissionDenied && (
             <div className="bg-muted/50 border-border mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
               <span className="text-muted-foreground">{t('locationHint')}</span>
               <Button onClick={refresh} size="sm" variant="outline">
