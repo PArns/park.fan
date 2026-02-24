@@ -51,7 +51,7 @@ export function Header() {
           : 'border-border/50 bg-background/80 border-b backdrop-blur-md'
       }`}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-0">
         {/* Logo – fades in on scroll */}
         <Link
           href="/"
@@ -62,19 +62,19 @@ export function Header() {
         >
           <Image
             src="/logo-small.svg"
-            width={27}
-            height={32}
+            width={26}
+            height={30}
             alt=""
-            className="h-10 w-auto dark:hidden"
+            className="h-9 w-auto dark:hidden"
             priority
             aria-hidden="true"
           />
           <Image
             src="/logo-small-dark.svg"
-            width={27}
-            height={32}
+            width={26}
+            height={30}
             alt=""
-            className="hidden h-10 w-auto dark:block"
+            className="hidden h-9 w-auto dark:block"
             priority
             aria-hidden="true"
           />
