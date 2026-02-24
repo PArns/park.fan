@@ -144,12 +144,12 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
         <HeroBackground imageSrc={randomHeroImage} />
-        <div className="relative container mx-auto xl:ml-28">
+        <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center">
+            <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center lg:justify-center">
               {/* Logo – light/dark variants */}
-              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72 xl:-mr-28">
+              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72">
                 <Image
                   src="/logo-big.svg"
                   alt="park.fan"
@@ -166,7 +166,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 />
               </div>
               {/* Title + Description only (search rendered separately below) */}
-              <div className="min-w-0 flex-1 text-center">
+              <div className="min-w-0 lg:max-w-2xl text-center">
                 <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
               </div>
             </div>
