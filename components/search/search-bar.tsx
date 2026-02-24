@@ -281,7 +281,7 @@ export function SearchCommand({
     };
 
     const checkPlatform = () => {
-      setIsMac(navigator.platform.toUpperCase().indexOf('MAC') >= 0);
+      setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
     };
 
     checkMobile();
@@ -378,7 +378,7 @@ export function SearchCommand({
       {/* Search Dialog */}
       <CommandDialog open={open} onOpenChange={handleOpenChange} shouldFilter={false}>
         <CommandInput
-          placeholder={isMobile ? 'Parks, Attraktionen...' : t('searchPlaceholderLong')}
+          placeholder={isMobile ? t('searchPlaceholderShort') : t('searchPlaceholderLong')}
           value={query}
           onValueChange={setQuery}
         />

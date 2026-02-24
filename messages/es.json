@@ -75,7 +75,10 @@
     "failedToLoadLiveData": "No se pudieron cargar los datos en vivo",
     "showingLastKnownState": "Mostrando último estado conocido",
     "failedToLoadCalendar": "No se pudieron cargar los datos del calendario. Por favor, inténtelo más tarde.",
-    "updating": "Actualizando..."
+    "updating": "Actualizando...",
+    "errorPageTitle": "Algo salió mal",
+    "errorPageDescription": "Se produjo un error inesperado. Por favor, inténtalo de nuevo.",
+    "goHome": "Ir a la página de inicio"
   },
   "home": {
     "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
@@ -498,6 +501,7 @@
       "italy": "Italia",
       "poland": "Polonia",
       "sweden": "Suecia",
+      "england": "Inglaterra",
       "united-kingdom": "Reino Unido",
       "united-states": "Estados Unidos",
       "japan": "Japón",

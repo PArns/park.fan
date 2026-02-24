@@ -1,19 +1,18 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, ChevronRight, Map as MapIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { HeroBackground } from '@/components/layout/hero-background';
+import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
-import { FavoriteStar } from '@/components/common/favorite-star';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -48,10 +47,11 @@ const NearbyParksCard = nextDynamic(
   }
 );
 import { StatsCard } from '@/components/common/stats-card';
-import { HERO_IMAGES } from '@/lib/hero-images';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
+import { ParkStatCard } from '@/components/home/park-stat-card';
+import { AttractionStatCard } from '@/components/home/attraction-stat-card';
 import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -59,8 +59,6 @@ import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
 import type { Metadata } from 'next';
-
-export const dynamic = 'force-dynamic';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -76,29 +74,13 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   return {
     title: { absolute: fullTitle },
     description: t('description'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: t('title'),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description: t('description'),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: `https://park.fan/${locale}`,
       languages: {
@@ -118,8 +100,8 @@ export default async function HomePage({ params }: HomePageProps) {
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
-  // Random hero image per request (intentional variety; disable purity for this line only)
-  // eslint-disable-next-line react-hooks/purity -- random hero is intentional
+
+  // eslint-disable-next-line react-hooks/purity -- intentional per-request randomization
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 
   // Fetch data in parallel
@@ -241,218 +223,55 @@ export default async function HomePage({ params }: HomePageProps) {
 
             {/* Grid Layout: Second row - Parks */}
             <div className="mb-3 grid gap-4 sm:grid-cols-2">
-              {/* Most Crowded Park */}
               {stats.mostCrowdedPark && (
-                <Link
-                  href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url)}
-                  prefetch={false}
-                  className="group block min-w-0"
-                >
-                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
-                    {/* Favorite Star */}
-                    {stats.mostCrowdedPark.id && (
-                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                        <FavoriteStar type="park" id={stats.mostCrowdedPark.id} />
-                      </div>
-                    )}
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-muted-foreground text-sm font-medium">
-                        {t('mostCrowded')}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.mostCrowdedPark.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.mostCrowdedPark.city},{' '}
-                        {tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)}
-                      </p>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          {stats.mostCrowdedPark.averageWaitTime != null &&
-                            stats.mostCrowdedPark.averageWaitTime > 0 && (
-                              <>
-                                <Clock className="text-muted-foreground h-4 w-4" />
-                                <Badge variant="secondary">
-                                  {stats.mostCrowdedPark.averageWaitTime} {tCommon('minutes')}
-                                </Badge>
-                              </>
-                            )}
-                          {stats.mostCrowdedPark.crowdLevel && (
-                            <CrowdLevelBadge
-                              level={stats.mostCrowdedPark.crowdLevel}
-                              className="h-5 px-1.5 text-[10px]"
-                            />
-                          )}
-                        </div>
-                        {stats.mostCrowdedPark.operatingAttractions != null &&
-                          stats.mostCrowdedPark.totalAttractions != null && (
-                            <div className="text-muted-foreground flex items-center gap-1 text-xs">
-                              <TrendingUp className="h-3 w-3" />
-                              <span>
-                                {stats.mostCrowdedPark.operatingAttractions}/
-                                {stats.mostCrowdedPark.totalAttractions} {tCommon('operating')}
-                              </span>
-                            </div>
-                          )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <ParkStatCard
+                  label={t('mostCrowded')}
+                  park={{
+                    ...stats.mostCrowdedPark,
+                    url: convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url),
+                    countryName: tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string),
+                  }}
+                />
               )}
-
-              {/* Least Crowded Park */}
               {stats.leastCrowdedPark && (
-                <Link
-                  href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url)}
-                  prefetch={false}
-                  className="group block min-w-0"
-                >
-                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
-                    {/* Favorite Star */}
-                    {stats.leastCrowdedPark.id && (
-                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                        <FavoriteStar type="park" id={stats.leastCrowdedPark.id} />
-                      </div>
-                    )}
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-muted-foreground text-sm font-medium">
-                        {t('leastCrowded')}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.leastCrowdedPark.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.leastCrowdedPark.city},{' '}
-                        {tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)}
-                      </p>
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          {stats.leastCrowdedPark.averageWaitTime != null &&
-                            stats.leastCrowdedPark.averageWaitTime > 0 && (
-                              <>
-                                <Clock className="text-muted-foreground h-4 w-4" />
-                                <Badge variant="secondary">
-                                  {stats.leastCrowdedPark.averageWaitTime} {tCommon('minutes')}
-                                </Badge>
-                              </>
-                            )}
-                          {stats.leastCrowdedPark.crowdLevel && (
-                            <CrowdLevelBadge
-                              level={stats.leastCrowdedPark.crowdLevel}
-                              className="h-5 px-1.5 text-[10px]"
-                            />
-                          )}
-                        </div>
-                        {stats.leastCrowdedPark.operatingAttractions != null &&
-                          stats.leastCrowdedPark.totalAttractions != null && (
-                            <div className="text-muted-foreground flex items-center gap-1 text-xs">
-                              <TrendingUp className="h-3 w-3" />
-                              <span>
-                                {stats.leastCrowdedPark.operatingAttractions}/
-                                {stats.leastCrowdedPark.totalAttractions} {tCommon('operating')}
-                              </span>
-                            </div>
-                          )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <ParkStatCard
+                  label={t('leastCrowded')}
+                  park={{
+                    ...stats.leastCrowdedPark,
+                    url: convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url),
+                    countryName: tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string),
+                  }}
+                />
               )}
             </div>
 
             {/* Grid Layout: Third row - Attractions */}
             <div className="grid gap-4 sm:grid-cols-2">
-              {/* Longest Wait Ride */}
               {stats.longestWaitRide && (
-                <Link
-                  href={convertApiUrlToFrontendUrl(stats.longestWaitRide.url)}
-                  prefetch={false}
-                  className="group block min-w-0"
-                >
-                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
-                    {/* Favorite Star */}
-                    {stats.longestWaitRide.id && (
-                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                        <FavoriteStar type="attraction" id={stats.longestWaitRide.id} />
-                      </div>
-                    )}
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-muted-foreground text-sm font-medium">
-                        {t('longestWait')}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.longestWaitRide.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.longestWaitRide.parkName} · {stats.longestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) ||
-                          stats.longestWaitRide.parkCountry}
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <Clock className="text-muted-foreground h-4 w-4" />
-                        <Badge variant="secondary" className="bg-status-down/20 text-status-down">
-                          {stats.longestWaitRide.waitTime} {tCommon('minutes')}
-                        </Badge>
-                        <CrowdLevelBadge
-                          level={stats.longestWaitRide.crowdLevel}
-                          className="h-5 px-1.5 text-[10px]"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <AttractionStatCard
+                  label={t('longestWait')}
+                  variant="high"
+                  attraction={{
+                    ...stats.longestWaitRide,
+                    url: convertApiUrlToFrontendUrl(stats.longestWaitRide.url),
+                    countryName:
+                      tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) ||
+                      stats.longestWaitRide.parkCountry,
+                  }}
+                />
               )}
-
-              {/* Shortest Wait Ride */}
               {stats.shortestWaitRide && (
-                <Link
-                  href={convertApiUrlToFrontendUrl(stats.shortestWaitRide.url)}
-                  prefetch={false}
-                  className="group block min-w-0"
-                >
-                  <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
-                    {/* Favorite Star */}
-                    {stats.shortestWaitRide.id && (
-                      <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                        <FavoriteStar type="attraction" id={stats.shortestWaitRide.id} />
-                      </div>
-                    )}
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-muted-foreground text-sm font-medium">
-                        {t('shortestWait')}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="group-hover:text-primary mb-1 truncate text-lg font-semibold transition-colors">
-                        {stats.shortestWaitRide.name}
-                      </div>
-                      <p className="text-muted-foreground mb-2 truncate text-xs">
-                        {stats.shortestWaitRide.parkName} · {stats.shortestWaitRide.parkCity},{' '}
-                        {tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) ||
-                          stats.shortestWaitRide.parkCountry}
-                      </p>
-                      <div className="flex items-center gap-2">
-                        <Clock className="text-muted-foreground h-4 w-4" />
-                        <Badge
-                          variant="secondary"
-                          className="bg-status-operating/20 text-status-operating"
-                        >
-                          {stats.shortestWaitRide.waitTime} {tCommon('minutes')}
-                        </Badge>
-                        <CrowdLevelBadge
-                          level={stats.shortestWaitRide.crowdLevel}
-                          className="h-5 px-1.5 text-[10px]"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
+                <AttractionStatCard
+                  label={t('shortestWait')}
+                  variant="low"
+                  attraction={{
+                    ...stats.shortestWaitRide,
+                    url: convertApiUrlToFrontendUrl(stats.shortestWaitRide.url),
+                    countryName:
+                      tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) ||
+                      stats.shortestWaitRide.parkCountry,
+                  }}
+                />
               )}
             </div>
           </div>

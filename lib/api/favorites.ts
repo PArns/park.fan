@@ -1,4 +1,10 @@
-import type { ScheduleSummary } from '@/lib/api/types';
+import type {
+  ScheduleSummary,
+  CrowdLevel,
+  TrendDirection,
+  ComparisonStatus,
+  AccuracyBadge,
+} from '@/lib/api/types';
 
 export interface FavoritePark {
   id: string;
@@ -12,7 +18,7 @@ export interface FavoritePark {
   operatingAttractions: number;
   analytics?: {
     avgWaitTime?: number;
-    crowdLevel?: string;
+    crowdLevel?: CrowdLevel;
     occupancy?: number;
   };
   url: string;
@@ -81,25 +87,25 @@ export interface FavoriteAttraction {
     }>;
     timestamp: string;
   } | null;
-  trend?: 'up' | 'down' | 'stable' | null;
+  trend?: TrendDirection | null;
   predictionAccuracy?: {
-    badge: 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
+    badge: AccuracyBadge;
     last30Days: {
       comparedPredictions: number;
       totalPredictions: number;
     };
     message?: string;
   } | null;
-  crowdLevel?: string; // Crowd level for the attraction (direct field) - matches CrowdLevel type
+  crowdLevel?: CrowdLevel;
   currentLoad?: {
-    crowdLevel: string; // Matches CrowdLevel: 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
+    crowdLevel: CrowdLevel;
     baseline?: number;
     currentWaitTime?: number;
-    value?: number; // Alternative field name
-    trend?: string; // Matches TrendDirection
+    value?: number;
+    trend?: TrendDirection;
     percentage?: number;
     queueSize?: number;
-    comparisonStatus?: string; // Matches ComparisonStatus
+    comparisonStatus?: ComparisonStatus;
   } | null;
   url: string;
   backgroundImage?: string | null; // Added by proxy route
@@ -206,7 +212,8 @@ export async function getFavorites(
   // Use local proxy route (like nearby) to avoid CORS and forward cookies
   if (typeof window === 'undefined') {
     // Server-side: call API directly
-    const apiUrl = new URL('https://api.park.fan/v1/favorites');
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
+    const apiUrl = new URL(`${apiBase}/v1/favorites`);
     Object.entries(params).forEach(([key, value]) => {
       apiUrl.searchParams.set(key, value);
     });

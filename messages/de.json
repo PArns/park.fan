@@ -75,7 +75,10 @@
     "failedToLoadLiveData": "Live-Daten konnten nicht geladen werden",
     "showingLastKnownState": "Zeige letzten bekannten Stand",
     "failedToLoadCalendar": "Kalenderdaten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.",
-    "updating": "Aktualisiere..."
+    "updating": "Aktualisiere...",
+    "errorPageTitle": "Etwas ist schiefgelaufen",
+    "errorPageDescription": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "goHome": "Zur Startseite"
   },
   "home": {
     "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 150 Freizeitparks und 5.000+ Attraktionen weltweit—u. a. Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",
@@ -498,6 +501,7 @@
       "italy": "Italien",
       "poland": "Polen",
       "sweden": "Schweden",
+      "england": "England",
       "united-kingdom": "Vereinigtes Königreich",
       "united-states": "USA",
       "japan": "Japan",

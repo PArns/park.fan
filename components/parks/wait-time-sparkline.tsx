@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, useRef, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 import type { AttractionStatistics } from '@/lib/api/types';
 
 interface WaitTimeSparklineProps {
@@ -9,6 +10,7 @@ interface WaitTimeSparklineProps {
 }
 
 export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps) {
+  const locale = useLocale();
   const [activePoint, setActivePoint] = useState<{ x: number; time: number; value: number } | null>(
     null
   );
@@ -131,7 +133,7 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
   const handleMouseLeave = () => setActivePoint(null);
 
   const formatTime = (ms: number) =>
-    new Date(ms).toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' });
+    new Date(ms).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
 
   return (
     <div

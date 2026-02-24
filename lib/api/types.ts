@@ -243,7 +243,10 @@ export interface ParkAnalytics {
 
 export interface PredictionAccuracy {
   badge: AccuracyBadge;
-  last30Days: Record<string, unknown>;
+  last30Days: {
+    comparedPredictions: number;
+    totalPredictions: number;
+  };
   message: string;
 }
 

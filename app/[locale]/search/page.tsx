@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
@@ -32,28 +33,13 @@ export async function generateMetadata({
     ...(q && {
       robots: { index: false, follow: true },
     }),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
-      siteName: 'park.fan',
-      images: [
-        {
-          url: getOgImageUrl([locale, 'search']),
-          width: 1200,
-          height: 630,
-          alt: q ? t('titleTemplate', { query: q }) : t('title'),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: q ? t('titleTemplate', { query: q }) : t('title'),
-      description: t('metaDescriptionTemplate'),
-      images: [getOgImageUrl([locale, 'search'])],
-    },
+      ogImageUrl: getOgImageUrl([locale, 'search']),
+    }),
     alternates: {
       canonical: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       languages: {

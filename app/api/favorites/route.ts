@@ -16,7 +16,8 @@ export async function GET(request: NextRequest) {
 
   try {
     // Build API URL
-    const apiUrl = new URL('https://api.park.fan/v1/favorites');
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
+    const apiUrl = new URL(`${apiBase}/v1/favorites`);
 
     // Add query parameters if provided
     if (parkIds) {

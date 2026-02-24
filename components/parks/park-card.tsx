@@ -16,6 +16,16 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { cn } from '@/lib/utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
 import { useTranslations, useLocale } from 'next-intl';
+
+// Lazily loaded server-side only — avoids bundling `fs` into the client
+/* eslint-disable @typescript-eslint/no-require-imports */
+const serverAssets =
+  typeof window === 'undefined'
+    ? (require('@/lib/utils/park-assets') as {
+        getParkBackgroundImage: (slug: string) => string | null;
+      })
+    : null;
+/* eslint-enable @typescript-eslint/no-require-imports */
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
 import type { ScheduleSummary } from '@/lib/api/types';
 
@@ -70,14 +80,8 @@ export function ParkCard({
   if (propBackgroundImage !== undefined) {
     // Use provided backgroundImage (from API/proxy)
     backgroundImage = propBackgroundImage;
-  } else if (showBackground) {
-    // Only call getParkBackgroundImage on server-side to avoid fs in client bundle
-    if (typeof window === 'undefined') {
-      // Dynamic import to prevent fs from being bundled in client
-      // eslint-disable-next-line @typescript-eslint/no-require-imports
-      const { getParkBackgroundImage } = require('@/lib/utils/park-assets');
-      backgroundImage = getParkBackgroundImage(slug);
-    }
+  } else if (showBackground && serverAssets) {
+    backgroundImage = serverAssets.getParkBackgroundImage(slug);
   }
   const isOpen = status === 'OPERATING';
   const isInMaintenance = !!status && status !== 'OPERATING' && status !== 'CLOSED';

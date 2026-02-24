@@ -6,6 +6,7 @@ import { TabsWithHash } from '@/components/parks/tabs-with-hash';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { AlertCircle, Loader2 } from 'lucide-react';
+import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type {
@@ -60,21 +61,24 @@ export function LiveParkData({
   // Use current data if available, otherwise fall back to initial data
   const currentPark = park || initialData;
 
-  // Re-group attractions if data has changed
-  const currentAttractionsByLand =
-    park && park.attractions !== initialData.attractions
-      ? groupAttractionsByLand(park.attractions || [], landNames[landNames.length - 1])
-      : attractionsByLand;
+  // Re-group attractions if data has changed (memoized to avoid recalculating on every render)
+  const currentAttractionsByLand = useMemo(
+    () =>
+      park && park.attractions !== initialData.attractions
+        ? groupAttractionsByLand(park.attractions || [], landNames[landNames.length - 1])
+        : attractionsByLand,
+    [park, initialData.attractions, attractionsByLand, landNames]
+  );
 
-  const currentLandNames =
-    park && park.attractions !== initialData.attractions
-      ? Object.keys(currentAttractionsByLand).sort((a, b) => {
-          const otherLabel = landNames[landNames.length - 1];
-          if (a === otherLabel) return 1;
-          if (b === otherLabel) return -1;
-          return a.localeCompare(b);
-        })
-      : landNames;
+  const currentLandNames = useMemo(() => {
+    if (!(park && park.attractions !== initialData.attractions)) return landNames;
+    const otherLabel = landNames[landNames.length - 1];
+    return Object.keys(currentAttractionsByLand).sort((a, b) => {
+      if (a === otherLabel) return 1;
+      if (b === otherLabel) return -1;
+      return a.localeCompare(b);
+    });
+  }, [currentAttractionsByLand, park, initialData.attractions, landNames]);
 
   return (
     <>

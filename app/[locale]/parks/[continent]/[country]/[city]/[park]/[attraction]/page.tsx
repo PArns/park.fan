@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, redirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
@@ -22,7 +23,39 @@ import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
-import type { AttractionStatus, QueueDataItem, StandbyQueue } from '@/lib/api/types';
+import type {
+  AttractionStatus,
+  QueueDataItem,
+  QueueType,
+  QueueStatus,
+  AccuracyBadge,
+  StandbyQueue,
+} from '@/lib/api/types';
+
+// Typed lookup maps — avoid `as any` when translating dynamic enum values
+const QUEUE_TYPE_KEYS = {
+  STANDBY: 'queue.STANDBY',
+  SINGLE_RIDER: 'queue.SINGLE_RIDER',
+  RETURN_TIME: 'queue.RETURN_TIME',
+  PAID_RETURN_TIME: 'queue.PAID_RETURN_TIME',
+  BOARDING_GROUP: 'queue.BOARDING_GROUP',
+  PAID_STANDBY: 'queue.PAID_STANDBY',
+} as const satisfies Record<QueueType, string>;
+
+const QUEUE_STATUS_KEYS = {
+  OPERATING: 'queue.status.OPERATING',
+  DOWN: 'queue.status.DOWN',
+  CLOSED: 'queue.status.CLOSED',
+  REFURBISHMENT: 'queue.status.REFURBISHMENT',
+} as const satisfies Record<QueueStatus, string>;
+
+const ACCURACY_BADGE_KEYS = {
+  excellent: 'accuracy.excellent',
+  good: 'accuracy.good',
+  fair: 'accuracy.fair',
+  poor: 'accuracy.poor',
+  insufficient_data: 'accuracy.insufficient_data',
+} as const satisfies Record<AccuracyBadge, string>;
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -104,7 +137,8 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       city: cityName,
     }),
     keywords,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('titleTemplate', {
         attraction: attractionName,
         park: parkName,
@@ -115,37 +149,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         park: parkName,
         city: cityName,
       }),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: tImageAlt('attraction', {
-            attraction: attractionName,
-            park: parkName,
-          }),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('titleTemplate', {
+      ogImageUrl,
+      imageAlt: tImageAlt('attraction', {
         attraction: attractionName,
         park: parkName,
-        city: cityName,
       }),
-      description: t('metaDescriptionTemplate', {
-        attraction: attractionName,
-        park: parkName,
-        city: cityName,
-      }),
-      images: [ogImageUrl],
-    },
+    }),
     alternates: {
       canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
       languages: {
@@ -434,8 +444,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       attraction.predictionAccuracy.badge === 'excellent',
                   })}
                 >
-                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                  {t(`accuracy.${attraction.predictionAccuracy.badge}` as any)}{' '}
+                  {t(ACCURACY_BADGE_KEYS[attraction.predictionAccuracy.badge])}{' '}
                 </Badge>
                 <p className="text-muted-foreground mt-2 text-sm">
                   {attraction.predictionAccuracy.message}
@@ -484,14 +493,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <CardContent className="p-4">
                         <div className="mb-2 flex items-center justify-between">
                           <span className="font-medium">
-                            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                            {t(`queue.${queue.queueType}` as any)}{' '}
+                            {t(QUEUE_TYPE_KEYS[queue.queueType])}{' '}
                           </span>
-                          <Badge variant="outline">
-                            {queue.status === 'OPERATING' || queue.status === 'CLOSED'
-                              ? t(`queue.status.${queue.status}` as any) // eslint-disable-line @typescript-eslint/no-explicit-any
-                              : queue.status}
-                          </Badge>
+                          <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
                         </div>
                         {'waitTime' in queue && queue.waitTime !== null && (
                           <p className="text-2xl font-bold">

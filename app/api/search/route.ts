@@ -9,6 +9,10 @@ export async function GET(request: Request) {
     return NextResponse.json({ results: [], counts: {}, query: '' });
   }
 
+  if (query.length > 100) {
+    return NextResponse.json({ results: [], counts: {}, query: '' });
+  }
+
   try {
     const data = await search(query);
     return NextResponse.json(data);

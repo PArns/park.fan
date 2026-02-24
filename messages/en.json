@@ -75,7 +75,10 @@
     "failedToLoadLiveData": "Failed to load live data",
     "showingLastKnownState": "Showing last known state",
     "failedToLoadCalendar": "Failed to load calendar data. Please try again later.",
-    "updating": "Updating..."
+    "updating": "Updating...",
+    "errorPageTitle": "Something went wrong",
+    "errorPageDescription": "An unexpected error occurred. Please try again.",
+    "goHome": "Go to homepage"
   },
   "home": {
     "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
@@ -498,6 +501,7 @@
       "italy": "Italy",
       "poland": "Poland",
       "sweden": "Sweden",
+      "england": "England",
       "united-kingdom": "United Kingdom",
       "united-states": "USA",
       "japan": "Japan",

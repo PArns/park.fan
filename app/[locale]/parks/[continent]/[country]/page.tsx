@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
@@ -51,29 +52,13 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   return {
     title: t('titleTemplate', { location: countryName }),
     description: t('metaDescriptionTemplate', { location: countryName }),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('titleTemplate', { location: countryName }),
       description: t('metaDescriptionTemplate', { location: countryName }),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: t('titleTemplate', { location: countryName }),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('titleTemplate', { location: countryName }),
-      description: t('metaDescriptionTemplate', { location: countryName }),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: `https://park.fan/${locale}/parks/${continent}/${country}`,
       languages: {

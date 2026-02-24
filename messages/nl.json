@@ -75,7 +75,10 @@
     "failedToLoadLiveData": "Kan live gegevens niet laden",
     "showingLastKnownState": "Laatst bekende status wordt getoond",
     "failedToLoadCalendar": "Kan kalendergegevens niet laden. Probeer het later opnieuw.",
-    "updating": "Bijwerken..."
+    "updating": "Bijwerken...",
+    "errorPageTitle": "Er is iets misgegaan",
+    "errorPageDescription": "Er is een onverwachte fout opgetreden. Probeer het opnieuw.",
+    "goHome": "Naar de startpagina"
   },
   "home": {
     "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 150 pretparken en 5.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
@@ -498,6 +501,7 @@
       "italy": "Italië",
       "poland": "Polen",
       "sweden": "Zweden",
+      "england": "Engeland",
       "united-kingdom": "Verenigd Koninkrijk",
       "united-states": "Verenigde Staten",
       "japan": "Japan",

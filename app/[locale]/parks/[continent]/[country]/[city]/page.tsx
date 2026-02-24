@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, redirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
@@ -35,29 +36,13 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   return {
     title: t('titleTemplate', { city: cityName, country: countryName }),
     description: t('metaDescriptionTemplate', { city: cityName }),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('titleTemplate', { city: cityName, country: countryName }),
       description: t('metaDescriptionTemplate', { city: cityName }),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${citySlug}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: t('titleTemplate', { city: cityName, country: countryName }),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('titleTemplate', { city: cityName, country: countryName }),
-      description: t('metaDescriptionTemplate', { city: cityName }),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${citySlug}`,
       languages: {

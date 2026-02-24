@@ -58,7 +58,8 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const apiUrl = new URL('https://api.park.fan/v1/discovery/nearby');
+    const apiBase = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
+    const apiUrl = new URL(`${apiBase}/v1/discovery/nearby`);
     if (hasCoords) {
       apiUrl.searchParams.set('lat', lat!);
       apiUrl.searchParams.set('lng', lng!);

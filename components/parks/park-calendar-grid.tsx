@@ -108,9 +108,59 @@ export function ParkCalendarGrid({
     // React Query will automatically fetch when currentMonth changes (from/to change)
   };
 
-  // Calculate date range for current month
-  const monthStart = startOfMonth(currentMonth);
-  const monthEnd = endOfMonth(currentMonth);
+  // Memoize expensive calendar layout calculations — only recalculate when month or locale changes
+  const { weeks, weekdayHeaders, reversedDays } = useMemo(() => {
+    // Compute start/end inside the memo so Date object identity doesn't cause spurious invalidation
+    const start = startOfMonth(currentMonth);
+    const end = endOfMonth(currentMonth);
+    const allDays = eachDayOfInterval({ start, end });
+
+    const computedWeeks: ((typeof allDays)[0] | null)[][] = [];
+    let currentWeek: ((typeof allDays)[0] | null)[] = [];
+
+    const firstDay = allDays[0];
+    const weekStart = startOfWeek(firstDay, { weekStartsOn: 1, locale: dateLocale });
+    const daysBeforeFirst = Math.floor(
+      (firstDay.getTime() - weekStart.getTime()) / (1000 * 60 * 60 * 24)
+    );
+
+    for (let i = 0; i < daysBeforeFirst; i++) {
+      currentWeek.push(null);
+    }
+
+    allDays.forEach((day) => {
+      const dayOfWeek = getDay(day);
+      const mondayBasedDay = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+
+      if (mondayBasedDay === 0 && currentWeek.length > 0) {
+        computedWeeks.push(currentWeek);
+        currentWeek = [day];
+      } else {
+        currentWeek.push(day);
+      }
+    });
+
+    if (currentWeek.length > 0) {
+      while (currentWeek.length < 7) {
+        currentWeek.push(null);
+      }
+      computedWeeks.push(currentWeek);
+    }
+
+    const computedHeaders: string[] = [];
+    const monday = new Date(2024, 0, 1);
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + i);
+      computedHeaders.push(format(date, 'EEE', { locale: dateLocale }));
+    }
+
+    return {
+      weeks: computedWeeks,
+      weekdayHeaders: computedHeaders,
+      reversedDays: [...allDays].reverse(),
+    };
+  }, [currentMonth, dateLocale]);
 
   // Create a map of calendar data by date for quick lookup
   const calendarMap = useMemo(() => {
@@ -122,56 +172,6 @@ export function ParkCalendarGrid({
     }
     return map;
   }, [calendarData]);
-
-  // Generate all days in the month and group into weeks
-  const allDays = eachDayOfInterval({ start: monthStart, end: monthEnd });
-
-  const weeks: ((typeof allDays)[0] | null)[][] = [];
-  let currentWeek: ((typeof allDays)[0] | null)[] = [];
-
-  // Find the start of the week (Monday) for the first day
-  const firstDay = allDays[0];
-  const weekStart = startOfWeek(firstDay, { weekStartsOn: 1, locale: dateLocale });
-  const daysBeforeFirst = Math.floor(
-    (firstDay.getTime() - weekStart.getTime()) / (1000 * 60 * 60 * 24)
-  );
-
-  // Add empty cells for days before the first day in the month
-  for (let i = 0; i < daysBeforeFirst; i++) {
-    currentWeek.push(null);
-  }
-
-  allDays.forEach((day) => {
-    const dayOfWeek = getDay(day);
-    const mondayBasedDay = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-
-    if (mondayBasedDay === 0 && currentWeek.length > 0) {
-      weeks.push(currentWeek);
-      currentWeek = [day];
-    } else {
-      currentWeek.push(day);
-    }
-  });
-
-  // Add the last week if it has days
-  if (currentWeek.length > 0) {
-    while (currentWeek.length < 7) {
-      currentWeek.push(null);
-    }
-    weeks.push(currentWeek);
-  }
-
-  // Weekday headers (Monday to Sunday)
-  const weekdayHeaders: string[] = [];
-  const monday = new Date(2024, 0, 1); // 2024-01-01 is a Monday
-  for (let i = 0; i < 7; i++) {
-    const date = new Date(monday);
-    date.setDate(monday.getDate() + i);
-    weekdayHeaders.push(format(date, 'EEE', { locale: dateLocale }));
-  }
-
-  // For mobile: reverse order (newest first)
-  const reversedDays = [...allDays].reverse();
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
