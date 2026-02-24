@@ -147,7 +147,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center lg:justify-center">
+            <div className="flex flex-col items-center lg:mb-16 lg:flex-row-reverse lg:items-center lg:justify-center">
               {/* Logo – light/dark variants */}
               <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72">
                 <Image
@@ -166,7 +166,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 />
               </div>
               {/* Title + Description only (search rendered separately below) */}
-              <div className="min-w-0 lg:max-w-2xl text-center">
+              <div className="min-w-0 lg:max-w-2xl text-center lg:text-left">
                 <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
               </div>
             </div>
