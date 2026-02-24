@@ -166,7 +166,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 />
               </div>
               {/* Title + Description only (search rendered separately below) */}
-              <div className="min-w-0 lg:max-w-2xl text-center lg:text-left">
+              <div className="min-w-0 lg:max-w-2xl text-center">
                 <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
               </div>
             </div>
