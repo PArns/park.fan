@@ -108,9 +108,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   // Create breadcrumbs for continent page
   const tCommon = await getTranslations('common');
   const tNav = await getTranslations('navigation');
-  const breadcrumbs = generateContinentBreadcrumbs({
+  const { breadcrumbs, currentPage: continentCurrentPage } = generateContinentBreadcrumbs({
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
+    continentName,
   });
 
   const itemListItems = countries.map((country) => {
@@ -131,7 +132,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
       />
       <PageHeader
         breadcrumbs={breadcrumbs}
-        currentPage={continentName}
+        currentPage={continentCurrentPage}
         title={tExplore('title', { location: continentName })}
         description={
           <>

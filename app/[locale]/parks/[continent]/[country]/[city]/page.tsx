@@ -90,11 +90,12 @@ export default async function CityPage({ params }: CityPageProps) {
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
-  const breadcrumbs = generateCityBreadcrumbs({
+  const { breadcrumbs, currentPage: cityCurrentPage } = generateCityBreadcrumbs({
     continent,
     country,
     continentName,
     countryName,
+    cityName: city.name,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
@@ -114,7 +115,7 @@ export default async function CityPage({ params }: CityPageProps) {
       />
       <PageHeader
         breadcrumbs={breadcrumbs}
-        currentPage={city.name}
+        currentPage={cityCurrentPage}
         title={t('parksIn', { location: city.name })}
         description={t('parkCount', { count: parks.length })}
       />

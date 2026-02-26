@@ -1,19 +1,29 @@
 import type { Breadcrumb } from '@/lib/api/types';
 
+interface BreadcrumbResult {
+  breadcrumbs: Breadcrumb[];
+  currentPage: string;
+}
+
 /**
  * Generate breadcrumbs for continent pages
  */
 export function generateContinentBreadcrumbs({
   homeLabel,
   continentsLabel,
+  continentName,
 }: {
   homeLabel: string;
   continentsLabel: string;
-}): Breadcrumb[] {
-  return [
-    { name: homeLabel, url: '/' },
-    { name: continentsLabel, url: '/parks' },
-  ];
+  continentName: string;
+}): BreadcrumbResult {
+  return {
+    breadcrumbs: [
+      { name: homeLabel, url: '/' },
+      { name: continentsLabel, url: '/parks' },
+    ],
+    currentPage: continentName,
+  };
 }
 
 /**
@@ -22,19 +32,24 @@ export function generateContinentBreadcrumbs({
 export function generateCountryBreadcrumbs({
   continent,
   continentName,
+  countryName,
   homeLabel,
   continentsLabel,
 }: {
   continent: string;
   continentName: string;
+  countryName: string;
   homeLabel: string;
   continentsLabel: string;
-}): Breadcrumb[] {
-  return [
-    { name: homeLabel, url: '/' },
-    { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-    { name: continentName, url: `/parks/${continent}` },
-  ];
+}): BreadcrumbResult {
+  return {
+    breadcrumbs: [
+      { name: homeLabel, url: '/' },
+      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
+      { name: continentName, url: `/parks/${continent}` },
+    ],
+    currentPage: countryName,
+  };
 }
 
 /**
@@ -45,6 +60,7 @@ export function generateCityBreadcrumbs({
   country,
   continentName,
   countryName,
+  cityName,
   homeLabel,
   continentsLabel,
 }: {
@@ -52,15 +68,19 @@ export function generateCityBreadcrumbs({
   country: string;
   continentName: string;
   countryName: string;
+  cityName: string;
   homeLabel: string;
   continentsLabel: string;
-}): Breadcrumb[] {
-  return [
-    { name: homeLabel, url: '/' },
-    { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-    { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
-    { name: countryName, url: `/parks/${continent}/${country}` },
-  ];
+}): BreadcrumbResult {
+  return {
+    breadcrumbs: [
+      { name: homeLabel, url: '/' },
+      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
+      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: countryName, url: `/parks/${continent}/${country}` },
+    ],
+    currentPage: cityName,
+  };
 }
 
 /**
@@ -70,7 +90,6 @@ export function generateParkBreadcrumbs({
   continent,
   country,
   city,
-  parkSlug,
   continentName,
   countryName,
   cityName,
@@ -81,22 +100,23 @@ export function generateParkBreadcrumbs({
   continent: string;
   country: string;
   city: string;
-  parkSlug: string;
   continentName: string;
   countryName: string;
   cityName: string;
   parkName: string;
   homeLabel: string;
   continentsLabel: string;
-}): Breadcrumb[] {
-  return [
-    { name: homeLabel, url: '/' },
-    { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-    { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
-    { name: countryName, url: `/parks/${continent}/${country}` },
-    { name: cityName, url: `/parks/${continent}/${country}/${city}` },
-    { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
-  ];
+}): BreadcrumbResult {
+  return {
+    breadcrumbs: [
+      { name: homeLabel, url: '/' },
+      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
+      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: countryName, url: `/parks/${continent}/${country}` },
+      { name: cityName, url: `/parks/${continent}/${country}/${city}` },
+    ],
+    currentPage: parkName,
+  };
 }
 
 /**
@@ -111,6 +131,7 @@ export function generateAttractionBreadcrumbs({
   countryName,
   cityName,
   parkName,
+  attractionName,
   homeLabel,
   continentsLabel,
 }: {
@@ -122,15 +143,19 @@ export function generateAttractionBreadcrumbs({
   countryName: string;
   cityName: string;
   parkName: string;
+  attractionName: string;
   homeLabel: string;
   continentsLabel: string;
-}): Breadcrumb[] {
-  return [
-    { name: homeLabel, url: '/' },
-    { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-    { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
-    { name: countryName, url: `/parks/${continent}/${country}` },
-    { name: cityName, url: `/parks/${continent}/${country}/${city}` },
-    { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
-  ];
+}): BreadcrumbResult {
+  return {
+    breadcrumbs: [
+      { name: homeLabel, url: '/' },
+      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
+      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: countryName, url: `/parks/${continent}/${country}` },
+      { name: cityName, url: `/parks/${continent}/${country}/${city}` },
+      { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
+    ],
+    currentPage: attractionName,
+  };
 }
