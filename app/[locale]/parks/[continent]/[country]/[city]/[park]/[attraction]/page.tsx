@@ -259,7 +259,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   // Construct breadcrumbs using utility
   const tNav = await getTranslations('navigation');
-  const breadcrumbs = generateAttractionBreadcrumbs({
+  const { breadcrumbs, currentPage: attractionCurrentPage } = generateAttractionBreadcrumbs({
     continent,
     country,
     city,
@@ -268,6 +268,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     countryName,
     cityName,
     parkName,
+    attractionName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
@@ -297,7 +298,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
-          currentPage={attractionName}
+          currentPage={attractionCurrentPage}
           className="bg-background/60 text-primary w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 

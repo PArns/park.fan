@@ -193,13 +193,14 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
   // Construct breadcrumbs using utility
   const tNav = await getTranslations('navigation');
-  const breadcrumbs = generateParkBreadcrumbs({
+  const { breadcrumbs, currentPage: parkCurrentPage } = generateParkBreadcrumbs({
     continent,
     country,
     city,
     continentName,
     countryName,
     cityName,
+    parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
@@ -227,7 +228,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
-          currentPage={parkName}
+          currentPage={parkCurrentPage}
           className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 

@@ -96,9 +96,10 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
-  const breadcrumbs = generateCountryBreadcrumbs({
+  const { breadcrumbs, currentPage: countryCurrentPage } = generateCountryBreadcrumbs({
     continent,
     continentName,
+    countryName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
@@ -120,7 +121,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
       />
       <PageHeader
         breadcrumbs={breadcrumbs}
-        currentPage={countryName}
+        currentPage={countryCurrentPage}
         title={t('parksIn', { location: countryName })}
         description={
           <>
