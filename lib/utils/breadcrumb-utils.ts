@@ -70,22 +70,18 @@ export function generateParkBreadcrumbs({
   continent,
   country,
   city,
-  parkSlug,
   continentName,
   countryName,
   cityName,
-  parkName,
   homeLabel,
   continentsLabel,
 }: {
   continent: string;
   country: string;
   city: string;
-  parkSlug: string;
   continentName: string;
   countryName: string;
   cityName: string;
-  parkName: string;
   homeLabel: string;
   continentsLabel: string;
 }): Breadcrumb[] {
@@ -95,7 +91,6 @@ export function generateParkBreadcrumbs({
     { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
     { name: countryName, url: `/parks/${continent}/${country}` },
     { name: cityName, url: `/parks/${continent}/${country}/${city}` },
-    { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },
   ];
 }
 

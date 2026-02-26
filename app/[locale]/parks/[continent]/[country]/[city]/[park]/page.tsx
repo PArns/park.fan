@@ -197,11 +197,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
     continent,
     country,
     city,
-    parkSlug,
     continentName,
     countryName,
     cityName,
-    parkName,
     homeLabel: tCommon('home'),
     continentsLabel: tNav('continents'),
   });
