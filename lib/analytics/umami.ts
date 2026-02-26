@@ -318,12 +318,13 @@ export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
 }
 
-export function identifyVisitor(siteLocale: string, hasFavorites: boolean): void {
-  if (typeof window === 'undefined' || !window.umami?.identify) return;
+export function identifyVisitor(siteLocale: string, hasFavorites: boolean): boolean {
+  if (typeof window === 'undefined' || !window.umami?.identify) return false;
   const browserLanguage = navigator.language.split('-')[0];
   window.umami.identify({
     browser_language: browserLanguage,
     site_locale: siteLocale,
     has_favorites: hasFavorites,
   });
+  return true;
 }
