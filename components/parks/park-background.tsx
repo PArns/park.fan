@@ -9,7 +9,7 @@ export function ParkBackground({ imageSrc, alt }: ParkBackgroundProps) {
   if (!imageSrc) return null;
 
   return (
-    <div className="pointer-events-none absolute top-16 right-0 left-0 -z-10 h-[60vh] max-h-[600px] overflow-hidden select-none">
+    <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(60vh+4rem)] max-h-[664px] overflow-hidden select-none">
       <div className="relative h-full w-full">
         <Image
           src={imageSrc}
