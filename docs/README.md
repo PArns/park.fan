@@ -100,7 +100,7 @@
 ```
 park.fan/
 ├── app/                    # App Router
-│   ├── [locale]/           # i18n routes (en, de, nl, fr, es)
+│   ├── [locale]/           # i18n routes (en, de, fr, it, nl, es)
 │   │   ├── parks/          # Geo: Continent → Country → City → Park → Attraction
 │   │   ├── search/         # Search page
 │   │   ├── datenschutz/    # Privacy policy
@@ -110,7 +110,7 @@ park.fan/
 ├── content/home/           # Markdown announcements (announce.[locale].md)
 ├── lib/                    # API client, utils, hooks, i18n helpers, analytics
 ├── i18n/                   # Config, routing, request, navigation
-├── messages/               # Translations (en, de, nl, fr, es)
+├── messages/               # Translations (en, de, fr, it, nl, es)
 ├── scripts/                # Build scripts, crawler, validation
 ├── flags.ts                # Vercel flags (debug-geo-mode)
 ├── proxy.ts                # Next.js 16 i18n proxy

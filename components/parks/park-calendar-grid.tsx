@@ -12,7 +12,7 @@ import {
   addMonths,
   subMonths,
 } from 'date-fns';
-import { de, enUS, es, fr, nl } from 'date-fns/locale';
+import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight, Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -51,8 +51,9 @@ export function ParkCalendarGrid({
       en: enUS,
       es,
       fr,
+      it,
       nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'nl'] || enUS;
+    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
 

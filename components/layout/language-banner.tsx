@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
-import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES } from '@/components/common/icons/flags';
+import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
   currentLocale: Locale;
@@ -17,6 +17,7 @@ const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>
   nl: FlagNL,
   fr: FlagFR,
   es: FlagES,
+  it: FlagIT,
 };
 
 interface BannerTranslations {

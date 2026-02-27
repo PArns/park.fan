@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { routing, type Locale } from '@/i18n/routing';
 import { localeNames } from '@/i18n/config';
-import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES } from '@/components/common/icons/flags';
+import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 import { trackLanguageSwitched } from '@/lib/analytics/umami';
 
 const LocaleFlag = ({ locale }: { locale: Locale }) => {
@@ -25,6 +25,8 @@ const LocaleFlag = ({ locale }: { locale: Locale }) => {
       return <FlagFR className="h-4 w-6" />;
     case 'es':
       return <FlagES className="h-4 w-6" />;
+    case 'it':
+      return <FlagIT className="h-4 w-6" />;
   }
 };
 
