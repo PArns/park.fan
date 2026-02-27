@@ -8,7 +8,7 @@
  * 4. All other files will automatically pick up the new locale
  */
 
-export const locales = ['en', 'de', 'nl', 'fr', 'es'] as const;
+export const locales = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
@@ -19,6 +19,7 @@ export const localeNames: Record<Locale, string> = {
   nl: 'Nederlands',
   fr: 'Français',
   es: 'Español',
+  it: 'Italiano',
 };
 
 /**
@@ -67,4 +68,5 @@ export const localeToOpenGraphLocale: Record<Locale, string> = {
   nl: 'nl_NL',
   fr: 'fr_FR',
   es: 'es_ES',
+  it: 'it_IT',
 };
