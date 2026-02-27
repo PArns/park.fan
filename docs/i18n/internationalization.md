@@ -10,9 +10,10 @@ The app uses [next-intl](https://next-intl-docs.vercel.app/) for routing and tra
 | ---- | ----------------- |
 | `en` | English (default) |
 | `de` | Deutsch           |
-| `nl` | Nederlands        |
 | `fr` | Français          |
+| `nl` | Nederlands        |
 | `es` | Español           |
+| `it` | Italiano          |
 
 Configured in `i18n/config.ts`.
 
@@ -55,6 +56,7 @@ API returns `moderate` for P50 baseline. We display it as **"Normal"** in all lo
 - NL: Normaal
 - ES: Normal
 - FR: Normal
+- IT: Normale
 
 Keys: `parks.crowdLevels.moderate`, `stats.crowd.moderate`, etc.
 

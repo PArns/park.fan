@@ -1,6 +1,6 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { format, eachDayOfInterval, startOfWeek, getDay } from 'date-fns';
-import { de, enUS } from 'date-fns/locale';
+import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
 import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
@@ -22,7 +22,8 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
   const locale = await getLocale();
   const t = await getTranslations('attractions');
 
-  const dateLocale = locale === 'de' ? de : enUS;
+  const dateLocale: Locale =
+    ({ de, en: enUS, es, fr, it, nl } as Record<string, Locale>)[locale] ?? enUS;
 
   // Calculate date range: today to 30 days ago
   const today = new Date();

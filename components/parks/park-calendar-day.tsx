@@ -7,7 +7,7 @@ import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useTranslations, useLocale } from 'next-intl';
 import { format, parseISO } from 'date-fns';
-import { de, enUS, es, fr, nl } from 'date-fns/locale';
+import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import {
   getWeatherIconFromCode,
   getEventIcon,
@@ -40,8 +40,9 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
       en: enUS,
       es,
       fr,
+      it,
       nl,
-    }[locale as 'de' | 'en' | 'es' | 'fr' | 'nl'] || enUS;
+    }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
 
   const dayDate = parseISO(day.date);
   const dayOfWeek = format(dayDate, 'EEE', { locale: dateLocale });

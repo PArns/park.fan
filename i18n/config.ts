@@ -8,7 +8,7 @@
  * 4. All other files will automatically pick up the new locale
  */
 
-export const locales = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
+export const locales = ['en', 'de', 'fr', 'nl', 'es', 'it'] as const;
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
