@@ -22,8 +22,8 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
   const locale = await getLocale();
   const t = await getTranslations('attractions');
 
-  const dateLocale: Locale =
-    ({ de, en: enUS, es, fr, it, nl } as Record<string, Locale>)[locale] ?? enUS;
+  const dateLocaleMap: Record<string, Locale> = { de, en: enUS, fr, it, nl, es };
+  const dateLocale: Locale = dateLocaleMap[locale] ?? enUS;
 
   // Calculate date range: today to 30 days ago
   const today = new Date();

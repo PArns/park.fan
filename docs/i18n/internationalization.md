@@ -11,9 +11,9 @@ The app uses [next-intl](https://next-intl-docs.vercel.app/) for routing and tra
 | `en` | English (default) |
 | `de` | Deutsch           |
 | `fr` | Français          |
+| `it` | Italiano          |
 | `nl` | Nederlands        |
 | `es` | Español           |
-| `it` | Italiano          |
 
 Configured in `i18n/config.ts`.
 

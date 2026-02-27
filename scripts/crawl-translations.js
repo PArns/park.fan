@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 const OUT_DIR = path.join(process.cwd(), '.next/server/app');
-const LOCALES = ['de', 'en', 'nl', 'fr', 'es', 'it'];
+const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'https://api.park.fan';
 
 const args = process.argv.slice(2);
