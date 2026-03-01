@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, redirect, permanentRedirect } from 'next/navigation';
 import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -124,7 +124,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   // calling the API to avoid 404s on the backend.
   const redirectUrl = await findParkPageRedirect(continent, country, city, parkSlug);
   if (redirectUrl) {
-    redirect(`/${locale}${redirectUrl}`);
+    permanentRedirect(`/${locale}${redirectUrl}`);
   }
 
   // Fetch park data and holidays (holidays are optional)

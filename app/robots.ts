@@ -7,7 +7,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'],
+      disallow: [
+      '/api/',
+      '/_next/',
+      '/parks/', // always redirects to /{locale}/parks/ — no crawl budget needed
+    ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

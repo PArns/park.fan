@@ -78,7 +78,7 @@ export default async function CityPage({ params }: CityPageProps) {
     // which should be /parks/europe/germany/bruhl/phantasialand
     const redirectUrl = await findCityPageRedirect(continent, country, citySlug);
     if (redirectUrl) {
-      redirect(`/${locale}${redirectUrl}`);
+      permanentRedirect(`/${locale}${redirectUrl}`);
     }
     notFound();
   }

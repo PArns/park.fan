@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, redirect, permanentRedirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import {
   Clock,
@@ -236,7 +236,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       attractionSlug
     );
     if (redirectUrl) {
-      redirect(`/${locale}${redirectUrl}`);
+      permanentRedirect(`/${locale}${redirectUrl}`);
     }
     notFound();
   }
