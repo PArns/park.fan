@@ -45,7 +45,7 @@ function CommandDialog({
     <Dialog {...props}>
       <DialogContent
         className={cn(
-          'overflow-hidden border-primary/15 bg-background/40 p-0 backdrop-blur-3xl sm:max-w-2xl shadow-[0_40px_80px_-12px_rgba(0,0,0,0.8),0_8px_24px_rgba(0,0,0,0.4),0_0_0_1px_rgba(33,145,211,0.1),inset_0_1px_0_rgba(33,145,211,0.08)] data-[state=open]:slide-in-from-top-6 data-[state=closed]:slide-out-to-top-4 duration-300 data-[state=closed]:duration-200',
+          'border-primary/15 bg-background/40 data-[state=open]:slide-in-from-top-6 data-[state=closed]:slide-out-to-top-4 overflow-hidden p-0 shadow-[0_40px_80px_-12px_rgba(0,0,0,0.8),0_8px_24px_rgba(0,0,0,0.4),0_0_0_1px_rgba(33,145,211,0.1),inset_0_1px_0_rgba(33,145,211,0.08)] backdrop-blur-3xl duration-300 data-[state=closed]:duration-200 sm:max-w-2xl',
           className
         )}
         showCloseButton={showCloseButton}
@@ -56,7 +56,7 @@ function CommandDialog({
         </DialogHeader>
         <Command
           shouldFilter={shouldFilter}
-          className="bg-transparent [&_[cmdk-group-heading]]:text-muted-foreground/50 **:data-[slot=command-input-wrapper]:h-14 [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-4 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-14 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-3.5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
+          className="[&_[cmdk-group-heading]]:text-muted-foreground/50 bg-transparent **:data-[slot=command-input-wrapper]:h-14 [&_[cmdk-group-heading]]:px-4 [&_[cmdk-group-heading]]:pt-4 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-[10px] [&_[cmdk-group-heading]]:font-semibold [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-14 [&_[cmdk-item]]:px-3 [&_[cmdk-item]]:py-3.5 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5"
         >
           {children}
         </Command>
@@ -73,7 +73,7 @@ function CommandInput({
   return (
     <div
       data-slot="command-input-wrapper"
-      className="flex h-9 items-center gap-3 border-b border-primary/10 bg-primary/[3%] px-5"
+      className="border-primary/10 bg-primary/[3%] flex h-9 items-center gap-3 border-b px-5"
     >
       <SearchIcon className="size-5 shrink-0 opacity-50" />
       <CommandPrimitive.Input

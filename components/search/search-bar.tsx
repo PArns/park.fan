@@ -131,7 +131,12 @@ export function SearchCommand({
           url: ride.url,
           status: ride.status,
           waitTime: ride.waitTime ?? undefined,
-          parentPark: { id: d.park.id, name: d.park.name, slug: d.park.slug, url: d.park.url ?? '' },
+          parentPark: {
+            id: d.park.id,
+            name: d.park.name,
+            slug: d.park.slug,
+            url: d.park.url ?? '',
+          },
           distanceM: ride.distance,
         })),
       ];
@@ -294,7 +299,7 @@ export function SearchCommand({
         className="flex items-center gap-4"
       >
         {/* Icon */}
-        <div className="bg-white/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
           <Icon className="text-foreground/65 h-5 w-5" />
         </div>
 
@@ -302,15 +307,13 @@ export function SearchCommand({
         <div className="flex min-w-0 flex-1 flex-col gap-1.5">
           {/* Row 1: Name + Status */}
           <div className="flex items-center justify-between gap-3">
-            <span className="truncate text-[15px] font-semibold leading-none">
+            <span className="truncate text-[15px] leading-none font-semibold">
               {stripNewPrefix(result.name)}
             </span>
             {result.status && (
               <span
                 className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                  isOpen
-                    ? 'bg-emerald-500/20 text-emerald-400'
-                    : 'bg-white/10 text-foreground/40'
+                  isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'text-foreground/40 bg-white/10'
                 }`}
               >
                 {isOpen ? t('open') : t('closed')}
@@ -320,7 +323,7 @@ export function SearchCommand({
 
           {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
           <div className="flex items-center justify-between gap-3">
-            <div className="flex min-w-0 items-center gap-2 text-xs text-foreground/45">
+            <div className="text-foreground/45 flex min-w-0 items-center gap-2 text-xs">
               {/* Location */}
               {(result.city || result.country) && (
                 <span className="flex min-w-0 items-center gap-1">
@@ -329,9 +332,7 @@ export function SearchCommand({
                     {[
                       result.city,
                       result.country
-                        ? tGeo(
-                            `countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`
-                          )
+                        ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`)
                         : null,
                     ]
                       .filter(Boolean)
@@ -351,7 +352,7 @@ export function SearchCommand({
             {/* Right: Wait Time + Crowd + Distance */}
             <div className="flex shrink-0 items-center gap-2">
               {result.type === 'attraction' && result.waitTime != null && (
-                <span className="flex items-center gap-1 text-xs font-semibold text-foreground/70">
+                <span className="text-foreground/70 flex items-center gap-1 text-xs font-semibold">
                   <Clock className="h-3 w-3" />
                   {result.waitTime} min
                 </span>
@@ -362,7 +363,7 @@ export function SearchCommand({
               )}
 
               {result.distanceM != null && (
-                <span className="text-[11px] font-medium text-foreground/35 tabular-nums">
+                <span className="text-foreground/35 text-[11px] font-medium tabular-nums">
                   {formatDistance(result.distanceM)}
                 </span>
               )}
@@ -427,7 +428,7 @@ export function SearchCommand({
         >
           {/* Animated idle ring — hero only, not in header */}
           {size === 'lg' && (
-            <div className="pointer-events-none absolute -inset-[2px] rounded-[14px] border border-primary/50 transition-opacity animate-[hero-search-pulse_2.5s_ease-in-out_infinite] group-hover:opacity-0" />
+            <div className="border-primary/50 pointer-events-none absolute -inset-[2px] animate-[hero-search-pulse_2.5s_ease-in-out_infinite] rounded-[14px] border transition-opacity group-hover:opacity-0" />
           )}
           <Search
             className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
@@ -435,13 +436,13 @@ export function SearchCommand({
             }`}
           />
           <div
-            className={`border-primary/20 bg-[oklch(0.12_0.025_241_/_0.55)] hover:bg-[oklch(0.14_0.030_241_/_0.65)] hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg ${
+            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border bg-[oklch(0.12_0.025_241_/_0.55)] shadow-md backdrop-blur-lg transition-all hover:bg-[oklch(0.14_0.030_241_/_0.65)] hover:shadow-lg ${
               size === 'sm'
                 ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
                 : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
             } ${className}`}
           >
-            <span className="w-full truncate text-left text-muted-foreground/50">
+            <span className="text-muted-foreground/50 w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
@@ -484,13 +485,18 @@ export function SearchCommand({
       )}
 
       {/* Search Dialog */}
-      <CommandDialog open={open} onOpenChange={handleOpenChange} shouldFilter={false} showCloseButton={false}>
+      <CommandDialog
+        open={open}
+        onOpenChange={handleOpenChange}
+        shouldFilter={false}
+        showCloseButton={false}
+      >
         <CommandInput
           placeholder={isMobile ? t('searchPlaceholderShort') : t('searchPlaceholderLong')}
           value={query}
           onValueChange={setQuery}
           hint={
-            <kbd className="bg-primary/15 text-primary border border-primary/20 hidden shrink-0 items-center gap-0.5 rounded px-1.5 py-1 font-mono text-xs md:flex">
+            <kbd className="bg-primary/15 text-primary border-primary/20 hidden shrink-0 items-center gap-0.5 rounded border px-1.5 py-1 font-mono text-xs md:flex">
               {isMac ? (
                 <>
                   <span className="translate-y-px text-sm">⌘</span>
@@ -506,14 +512,14 @@ export function SearchCommand({
           {isPending && (
             <div className="h-[420px] overflow-hidden p-1">
               {/* Fake section header */}
-              <div className="px-3 pb-1.5 pt-4">
+              <div className="px-3 pt-4 pb-1.5">
                 <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
               </div>
               {Array.from({ length: 2 }).map((_, i) => (
                 <SkeletonItem key={`a${i}`} width={['55%', '72%'][i]} />
               ))}
               {/* Fake section header */}
-              <div className="px-3 pb-1.5 pt-4">
+              <div className="px-3 pt-4 pb-1.5">
                 <div className="h-2 w-24 animate-pulse rounded-full bg-white/[8%]" />
               </div>
               {Array.from({ length: 3 }).map((_, i) => (
@@ -522,9 +528,11 @@ export function SearchCommand({
             </div>
           )}
 
-          {!isPending && debouncedQuery.length >= 3 && (!results || results.results.length === 0) && (
-            <CommandEmpty>{t('noResults')}</CommandEmpty>
-          )}
+          {!isPending &&
+            debouncedQuery.length >= 3 &&
+            (!results || results.results.length === 0) && (
+              <CommandEmpty>{t('noResults')}</CommandEmpty>
+            )}
 
           {!isPending && results && results.results.length > 0 && (
             <>
@@ -550,7 +558,7 @@ export function SearchCommand({
               <div className="border-t border-white/10 p-3">
                 <Button
                   variant="ghost"
-                  className="hover:bg-white/10 w-full justify-center text-sm"
+                  className="w-full justify-center text-sm hover:bg-white/10"
                   onClick={() => {
                     handleOpenChange(false);
                     trackSearchViewAll();
@@ -579,7 +587,7 @@ export function SearchCommand({
         </CommandList>
 
         {/* Keyboard shortcuts footer */}
-        <div className="flex items-center gap-4 border-t border-primary/10 bg-primary/10 px-5 py-3 text-xs text-muted-foreground/60">
+        <div className="border-primary/10 bg-primary/10 text-muted-foreground/60 flex items-center gap-4 border-t px-5 py-3 text-xs">
           <span className="flex items-center gap-1.5">
             <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
               ↑↓

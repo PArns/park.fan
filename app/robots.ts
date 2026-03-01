@@ -8,10 +8,10 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
       disallow: [
-      '/api/',
-      '/_next/',
-      '/parks/', // always redirects to /{locale}/parks/ — no crawl budget needed
-    ],
+        '/api/',
+        '/_next/',
+        '/parks/', // always redirects to /{locale}/parks/ — no crawl budget needed
+      ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };

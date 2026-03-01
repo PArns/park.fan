@@ -25,9 +25,9 @@ export function ScrollIndicator() {
       </span>
 
       {/* Mouse shape */}
-      <div className="border-foreground/75 relative flex h-11 w-6 items-start justify-center rounded-full border pt-2.5 bg-white/10 backdrop-blur-md">
+      <div className="border-foreground/75 relative flex h-11 w-6 items-start justify-center rounded-full border bg-white/10 pt-2.5 backdrop-blur-md">
         {/* Animated ball */}
-        <div className="h-1.5 w-1.5 rounded-full bg-gradient-to-b from-primary to-primary/50 animate-[scroll-ball_1.8s_ease-in-out_infinite]" />
+        <div className="from-primary to-primary/50 h-1.5 w-1.5 animate-[scroll-ball_1.8s_ease-in-out_infinite] rounded-full bg-gradient-to-b" />
       </div>
 
       {/* Chevron */}

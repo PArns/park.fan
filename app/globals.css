@@ -150,7 +150,8 @@
 
 /* Scroll indicator: ball travels down inside mouse shape */
 @keyframes scroll-ball {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
     opacity: 1;
   }
