@@ -1,5 +1,6 @@
 {
   "common": {
+    "scroll": "Scrollen",
     "loading": "Laden...",
     "trend": "Trend",
     "in": "in",
@@ -573,7 +574,14 @@
       "attraction": "Attraktionen ({count})",
       "show": "Shows ({count})",
       "restaurant": "Restaurants ({count})",
-      "location": "Orte ({count})"
+      "location": "Orte ({count})",
+      "nearby": "Parks in der Nähe",
+      "inPark": "Du bist in {park}"
+    },
+    "keyboard": {
+      "navigate": "Navigieren",
+      "select": "Auswählen",
+      "close": "Schließen"
     }
   },
   "admin": {

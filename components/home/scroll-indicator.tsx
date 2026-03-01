@@ -1,25 +1,37 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { ChevronDown } from 'lucide-react';
 
 export function ScrollIndicator() {
+  const t = useTranslations('common');
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const check = () => setVisible(window.scrollY < 10);
-    check(); // run on mount in case page restored scroll position
+    check();
     window.addEventListener('scroll', check, { passive: true });
     return () => window.removeEventListener('scroll', check);
   }, []);
 
   return (
     <div
-      className={`pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 animate-bounce transition-opacity duration-500 lg:flex lg:items-center lg:justify-center ${visible ? 'opacity-100' : 'opacity-0'}`}
+      className={`pointer-events-none absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 transition-opacity duration-500 lg:flex ${visible ? 'opacity-100' : 'opacity-0'}`}
     >
-      <div className="border-foreground/25 bg-background/30 flex h-10 w-10 items-center justify-center rounded-full border backdrop-blur-sm">
-        <ChevronDown className="text-foreground/80 h-5 w-5" />
+      {/* Label */}
+      <span className="text-foreground/75 font-mono text-[10px] tracking-[0.25em] uppercase select-none">
+        {t('scroll')}
+      </span>
+
+      {/* Mouse shape */}
+      <div className="border-foreground/75 relative flex h-11 w-6 items-start justify-center rounded-full border pt-2.5 bg-white/10 backdrop-blur-md">
+        {/* Animated ball */}
+        <div className="h-1.5 w-1.5 rounded-full bg-gradient-to-b from-primary to-primary/50 animate-[scroll-ball_1.8s_ease-in-out_infinite]" />
       </div>
+
+      {/* Chevron */}
+      <ChevronDown className="text-foreground/75 h-3.5 w-3.5" />
     </div>
   );
 }

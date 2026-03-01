@@ -1,5 +1,6 @@
 {
   "common": {
+    "scroll": "Scrollen",
     "loading": "Laden...",
     "error": "Er is een fout opgetreden",
     "retry": "Opnieuw proberen",
@@ -573,7 +574,14 @@
       "attraction": "Attracties ({count})",
       "show": "Shows ({count})",
       "restaurant": "Restaurants ({count})",
-      "location": "Locaties ({count})"
+      "location": "Locaties ({count})",
+      "nearby": "Parken in de buurt",
+      "inPark": "Je bent bij {park}"
+    },
+    "keyboard": {
+      "navigate": "Navigeren",
+      "select": "Selecteren",
+      "close": "Sluiten"
     }
   },
   "admin": {

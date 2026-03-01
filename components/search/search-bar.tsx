@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, Loader2 } from 'lucide-react';
+import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
 import {
   CommandDialog,
   CommandEmpty,
@@ -13,18 +13,19 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import type { SearchResult, SearchResultItem } from '@/lib/api/types';
+import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
 import {
   trackSearchOpened,
   trackSearchResultClicked,
   trackSearchViewAll,
   trackSearchNoResults,
 } from '@/lib/analytics/umami';
+import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import type { NearbyParksData, NearbyAttractionsData } from '@/types/nearby';
 
 const typeIcons = {
   park: TreePalm,
@@ -33,6 +34,24 @@ const typeIcons = {
   restaurant: Utensils,
   location: MapPin,
 };
+
+function SkeletonItem({ width }: { width: string }) {
+  return (
+    <div className="flex items-center gap-4 rounded-lg px-3 py-3.5">
+      <div className="h-11 w-11 shrink-0 animate-pulse rounded-xl bg-white/10" />
+      <div className="flex min-w-0 flex-1 flex-col gap-2">
+        <div className="flex items-center justify-between gap-3">
+          <div className="h-3.5 animate-pulse rounded-full bg-white/10" style={{ width }} />
+          <div className="h-4 w-14 animate-pulse rounded-full bg-white/[8%]" />
+        </div>
+        <div className="flex items-center justify-between gap-3">
+          <div className="h-2.5 w-28 animate-pulse rounded-full bg-white/[8%]" />
+          <div className="h-2.5 w-10 animate-pulse rounded-full bg-white/[8%]" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 interface SearchCommandProps {
   trigger?: 'button' | 'input' | 'hero';
@@ -84,6 +103,66 @@ export function SearchCommand({
     gcTime: 5 * 60_000, // 5 min garbage collection
     retry: 1,
   });
+
+  // Nearby parks for pre-populating the dialog when no query is entered
+  const { data: nearbyData } = useNearbyParks({ radiusInMeters: 50000, limit: 5 });
+
+  const nearbyItems = useMemo((): (SearchResultItem & { distanceM?: number })[] => {
+    if (!nearbyData) return [];
+
+    if (nearbyData.type === 'in_park') {
+      const d = nearbyData.data as NearbyAttractionsData;
+      return [
+        {
+          type: 'park',
+          id: d.park.id,
+          name: d.park.name,
+          slug: d.park.slug,
+          url: d.park.url,
+          status: d.park.status as ParkStatus,
+          load: d.park.analytics?.crowdLevel as CrowdLevel | undefined,
+          distanceM: d.park.distance,
+        },
+        ...d.rides.slice(0, 3).map((ride) => ({
+          type: 'attraction' as const,
+          id: ride.id,
+          name: ride.name,
+          slug: ride.slug,
+          url: ride.url,
+          status: ride.status,
+          waitTime: ride.waitTime ?? undefined,
+          parentPark: { id: d.park.id, name: d.park.name, slug: d.park.slug, url: d.park.url ?? '' },
+          distanceM: ride.distance,
+        })),
+      ];
+    }
+
+    if (nearbyData.type === 'nearby_parks') {
+      const d = nearbyData.data as NearbyParksData;
+      return d.parks.slice(0, 5).map((park) => ({
+        type: 'park' as const,
+        id: park.id,
+        name: park.name,
+        slug: park.slug,
+        url: park.url,
+        city: park.city,
+        country: park.country,
+        continent: park.continent,
+        status: park.status as ParkStatus,
+        load: park.analytics?.crowdLevel as CrowdLevel | undefined,
+        distanceM: park.distance,
+      }));
+    }
+
+    return [];
+  }, [nearbyData]);
+
+  const nearbyHeading =
+    nearbyData?.type === 'in_park'
+      ? tSearch('headings.inPark', {
+          park: stripNewPrefix((nearbyData.data as NearbyAttractionsData).park.name),
+        })
+      : tSearch('headings.nearby');
 
   // Handle dialog open/close and reset state
   const handleOpenChange = (newOpen: boolean) => {
@@ -195,77 +274,99 @@ export function SearchCommand({
   };
 
   // Render a search result item
-  const renderResultItem = (result: SearchResultItem, position?: number) => {
+  const renderResultItem = (
+    result: SearchResultItem & { distanceM?: number },
+    position?: number
+  ) => {
     const Icon = typeIcons[result.type];
+
+    const formatDistance = (m: number) =>
+      m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
+
+    const isOpen = result.status === 'OPERATING';
+    const isClosed = result.status && result.status !== 'OPERATING';
 
     return (
       <CommandItem
         key={result.id}
         value={`${stripNewPrefix(result.name)} ${result.type}`}
         onSelect={() => handleSelect(result, position)}
-        className="flex items-start gap-3 py-4 md:py-3"
+        className="flex items-center gap-4"
       >
-        <div className="bg-primary/10 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg">
-          <Icon className="text-primary h-4 w-4" />
+        {/* Icon */}
+        <div className="bg-white/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+          <Icon className="text-foreground/65 h-5 w-5" />
         </div>
-        <div className="flex-1 overflow-hidden">
-          <div className="flex items-center gap-2">
-            <span className="font-medium">{stripNewPrefix(result.name)}</span>
+
+        {/* Content */}
+        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+          {/* Row 1: Name + Status */}
+          <div className="flex items-center justify-between gap-3">
+            <span className="truncate text-[15px] font-semibold leading-none">
+              {stripNewPrefix(result.name)}
+            </span>
             {result.status && (
-              <Badge
-                className={`border-0 text-xs font-medium ${
-                  result.status === 'OPERATING'
-                    ? 'bg-status-operating text-white'
-                    : 'bg-status-closed text-white'
+              <span
+                className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
+                  isOpen
+                    ? 'bg-emerald-500/20 text-emerald-400'
+                    : 'bg-white/10 text-foreground/40'
                 }`}
               >
-                {result.status === 'OPERATING' ? t('open') : t('closed')}
-              </Badge>
+                {isOpen ? t('open') : t('closed')}
+              </span>
             )}
           </div>
 
-          <div className="text-muted-foreground flex flex-wrap items-center gap-2 text-xs">
-            {/* Type Badge */}
-            <Badge variant="secondary" className="text-xs">
-              {tSearch(`types.${result.type}`)}
-            </Badge>
+          {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-2 text-xs text-foreground/45">
+              {/* Location */}
+              {(result.city || result.country) && (
+                <span className="flex min-w-0 items-center gap-1">
+                  <MapPin className="h-3 w-3 shrink-0" />
+                  <span className="truncate">
+                    {[
+                      result.city,
+                      result.country
+                        ? tGeo(
+                            `countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`
+                          )
+                        : null,
+                    ]
+                      .filter(Boolean)
+                      .join(', ')}
+                  </span>
+                </span>
+              )}
 
-            {/* Location */}
-            {(result.city || result.country) && (
-              <span className="flex items-center gap-1">
-                <MapPin className="h-3 w-3" />
-                {[
-                  result.city,
-                  result.country
-                    ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`)
-                    : null,
-                ]
-                  .filter(Boolean)
-                  .join(', ')}
-              </span>
-            )}
+              {/* Parent Park for attractions */}
+              {result.parentPark && (
+                <span className="truncate">
+                  {tSearch('at', { park: stripNewPrefix(result.parentPark.name) })}
+                </span>
+              )}
+            </div>
 
-            {/* Parent Park for attractions */}
-            {result.parentPark && (
-              <span className="truncate">
-                {tSearch('at', { park: stripNewPrefix(result.parentPark.name) })}
-              </span>
-            )}
-
-            {/* Wait Time */}
-            {result.type === 'attraction' &&
-              result.waitTime !== undefined &&
-              result.waitTime !== null && (
-                <span className="text-foreground flex items-center gap-1 font-medium">
+            {/* Right: Wait Time + Crowd + Distance */}
+            <div className="flex shrink-0 items-center gap-2">
+              {result.type === 'attraction' && result.waitTime != null && (
+                <span className="flex items-center gap-1 text-xs font-semibold text-foreground/70">
                   <Clock className="h-3 w-3" />
                   {result.waitTime} min
                 </span>
               )}
 
-            {/* Crowd Level */}
-            {result.type === 'park' && result.load && result.status !== 'CLOSED' && (
-              <CrowdLevelBadge level={result.load} className="text-xs" />
-            )}
+              {result.type === 'park' && result.load && !isClosed && (
+                <CrowdLevelBadge level={result.load} className="text-[11px]" />
+              )}
+
+              {result.distanceM != null && (
+                <span className="text-[11px] font-medium text-foreground/35 tabular-nums">
+                  {formatDistance(result.distanceM)}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </CommandItem>
@@ -290,6 +391,9 @@ export function SearchCommand({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Show skeleton as soon as user types ≥3 chars (covers debounce window + fetch)
+  const isPending = loading || (query.trim().length >= 3 && debouncedQuery.trim().length < 3);
+
   return (
     <>
       {/* Trigger */}
@@ -307,7 +411,7 @@ export function SearchCommand({
           <span className="hidden md:inline-flex">
             {placeholder || t('searchPlaceholderShort')}
           </span>
-          <kbd className="bg-muted pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 select-none md:flex">
+          <kbd className="bg-primary/15 text-primary border-primary/20 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 select-none md:flex">
             {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
           </kbd>
         </Button>
@@ -321,24 +425,28 @@ export function SearchCommand({
             trackSearchOpened(searchOpenSource);
           }}
         >
+          {/* Animated idle ring — hero only, not in header */}
+          {size === 'lg' && (
+            <div className="pointer-events-none absolute -inset-[2px] rounded-[14px] border border-primary/50 transition-opacity animate-[hero-search-pulse_2.5s_ease-in-out_infinite] group-hover:opacity-0" />
+          )}
           <Search
             className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${
               size === 'sm' ? 'left-3 h-4 w-4' : 'left-4 h-5 w-5'
             }`}
           />
           <div
-            className={`border-input bg-background/60 hover:bg-background/80 hover:border-primary/50 text-muted-foreground flex w-full items-center justify-between border shadow-sm backdrop-blur-md transition-all hover:shadow-md ${
+            className={`border-primary/20 bg-[oklch(0.12_0.025_241_/_0.55)] hover:bg-[oklch(0.14_0.030_241_/_0.65)] hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg ${
               size === 'sm'
                 ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
                 : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
             } ${className}`}
           >
-            <span className="w-full truncate text-left">
+            <span className="w-full truncate text-left text-muted-foreground/50">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
           <kbd
-            className={`bg-muted text-muted-foreground pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium md:flex ${
+            className={`bg-primary/15 text-primary border-primary/20 pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium md:flex ${
               size === 'sm' ? 'right-2 h-6 px-1.5 text-[11px]' : 'right-3 h-8 gap-1 px-2.5 text-sm'
             }`}
           >
@@ -376,27 +484,55 @@ export function SearchCommand({
       )}
 
       {/* Search Dialog */}
-      <CommandDialog open={open} onOpenChange={handleOpenChange} shouldFilter={false}>
+      <CommandDialog open={open} onOpenChange={handleOpenChange} shouldFilter={false} showCloseButton={false}>
         <CommandInput
           placeholder={isMobile ? t('searchPlaceholderShort') : t('searchPlaceholderLong')}
           value={query}
           onValueChange={setQuery}
+          hint={
+            <kbd className="bg-primary/15 text-primary border border-primary/20 hidden shrink-0 items-center gap-0.5 rounded px-1.5 py-1 font-mono text-xs md:flex">
+              {isMac ? (
+                <>
+                  <span className="translate-y-px text-sm">⌘</span>
+                  <span>K</span>
+                </>
+              ) : (
+                <>Ctrl K</>
+              )}
+            </kbd>
+          }
         />
         <CommandList>
-          {loading && (
-            <div className="flex items-center justify-center py-6">
-              <Loader2 className="text-muted-foreground h-6 w-6 animate-spin" />
+          {isPending && (
+            <div className="h-[420px] overflow-hidden p-1">
+              {/* Fake section header */}
+              <div className="px-3 pb-1.5 pt-4">
+                <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
+              </div>
+              {Array.from({ length: 2 }).map((_, i) => (
+                <SkeletonItem key={`a${i}`} width={['55%', '72%'][i]} />
+              ))}
+              {/* Fake section header */}
+              <div className="px-3 pb-1.5 pt-4">
+                <div className="h-2 w-24 animate-pulse rounded-full bg-white/[8%]" />
+              </div>
+              {Array.from({ length: 3 }).map((_, i) => (
+                <SkeletonItem key={`b${i}`} width={['48%', '65%', '58%'][i]} />
+              ))}
             </div>
           )}
 
-          {!loading && query.length >= 3 && (!results || results.results.length === 0) && (
+          {!isPending && debouncedQuery.length >= 3 && (!results || results.results.length === 0) && (
             <CommandEmpty>{t('noResults')}</CommandEmpty>
           )}
 
-          {!loading && results && results.results.length > 0 && (
+          {!isPending && results && results.results.length > 0 && (
             <>
-              {/* Group by type */}
-              {(['park', 'attraction', 'show', 'restaurant', 'location'] as const).map((type) => {
+              {/* Group by type — locations first if present (e.g. "orlando" → show city before parks) */}
+              {(results.results.some((r) => r.type === 'location')
+                ? (['location', 'park', 'attraction', 'show', 'restaurant'] as const)
+                : (['park', 'attraction', 'show', 'restaurant', 'location'] as const)
+              ).map((type) => {
                 const items = results.results.filter((r) => r.type === type);
                 if (items.length === 0) return null;
 
@@ -411,13 +547,13 @@ export function SearchCommand({
               })}
 
               {/* Link to full search page */}
-              <div className="border-t p-2">
+              <div className="border-t border-white/10 p-3">
                 <Button
                   variant="ghost"
-                  className="w-full justify-center text-sm"
+                  className="hover:bg-white/10 w-full justify-center text-sm"
                   onClick={() => {
                     handleOpenChange(false);
-                    trackSearchViewAll(); // Track viewing all results
+                    trackSearchViewAll();
                     router.push(`/search?q=${encodeURIComponent(query)}`);
                   }}
                 >
@@ -427,12 +563,42 @@ export function SearchCommand({
             </>
           )}
 
-          {!loading && query.length < 3 && (
-            <div className="text-muted-foreground py-6 text-center text-sm">
-              {tSearch('typeToSearch')}
-            </div>
+          {!isPending && query.length < 3 && (
+            <>
+              {nearbyItems.length > 0 ? (
+                <CommandGroup heading={nearbyHeading}>
+                  {nearbyItems.map((item, index) => renderResultItem(item, index))}
+                </CommandGroup>
+              ) : (
+                <div className="text-muted-foreground py-10 text-center text-sm">
+                  {tSearch('typeToSearch')}
+                </div>
+              )}
+            </>
           )}
         </CommandList>
+
+        {/* Keyboard shortcuts footer */}
+        <div className="flex items-center gap-4 border-t border-primary/10 bg-primary/10 px-5 py-3 text-xs text-muted-foreground/60">
+          <span className="flex items-center gap-1.5">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+              ↑↓
+            </kbd>
+            {tSearch('keyboard.navigate')}
+          </span>
+          <span className="flex items-center gap-1.5">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+              ↵
+            </kbd>
+            {tSearch('keyboard.select')}
+          </span>
+          <span className="ml-auto flex items-center gap-1.5">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+              Esc
+            </kbd>
+            {tSearch('keyboard.close')}
+          </span>
+        </div>
       </CommandDialog>
     </>
   );

@@ -1,5 +1,6 @@
 {
   "common": {
+    "scroll": "Desplazar",
     "loading": "Cargando...",
     "error": "Ocurrió un error",
     "retry": "Reintentar",
@@ -573,7 +574,14 @@
       "attraction": "Atracciones ({count})",
       "show": "Espectáculos ({count})",
       "restaurant": "Restaurantes ({count})",
-      "location": "Ubicaciones ({count})"
+      "location": "Ubicaciones ({count})",
+      "nearby": "Parques cercanos",
+      "inPark": "Estás en {park}"
+    },
+    "keyboard": {
+      "navigate": "Navegar",
+      "select": "Seleccionar",
+      "close": "Cerrar"
     }
   },
   "admin": {

@@ -8,31 +8,31 @@ import { User, Users, AlertCircle, Ban } from 'lucide-react';
 /* Green band: teal (very_low) → emerald (low) → green (moderate/Normal); then orange → rose → red. */
 const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }> = {
   very_low: {
-    colorClass: 'bg-teal-600 text-white dark:bg-teal-400/40 dark:text-teal-50',
+    colorClass: 'bg-crowd-very-low/15 text-crowd-very-low',
     Icon: User,
   },
   low: {
-    colorClass: 'bg-emerald-500 text-white dark:bg-emerald-500/32 dark:text-emerald-100',
+    colorClass: 'bg-crowd-low/15 text-crowd-low',
     Icon: User,
   },
   moderate: {
-    colorClass: 'bg-green-500 text-white dark:bg-green-500/30 dark:text-green-100',
+    colorClass: 'bg-crowd-moderate/15 text-crowd-moderate',
     Icon: Users,
   },
   high: {
-    colorClass: 'bg-orange-500 text-white dark:bg-orange-500/30 dark:text-orange-100',
+    colorClass: 'bg-crowd-high/15 text-crowd-high',
     Icon: Users,
   },
   very_high: {
-    colorClass: 'bg-rose-500 text-white dark:bg-rose-500/30 dark:text-rose-100',
+    colorClass: 'bg-crowd-very-high/15 text-crowd-very-high',
     Icon: Users,
   },
   extreme: {
-    colorClass: 'bg-red-600 text-white dark:bg-red-500/30 dark:text-red-100',
+    colorClass: 'bg-crowd-extreme/15 text-crowd-extreme',
     Icon: AlertCircle,
   },
   closed: {
-    colorClass: 'bg-slate-400 text-slate-900 dark:bg-slate-700 dark:text-slate-300',
+    colorClass: 'bg-status-closed/15 text-status-closed',
     Icon: Ban,
   },
 };

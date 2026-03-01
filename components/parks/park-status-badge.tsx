@@ -14,20 +14,19 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
 
   const statusConfig = {
     OPERATING: {
-      color:
-        'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400 text-white dark:text-slate-900',
+      color: 'bg-status-operating/15 text-status-operating',
       icon: Clock,
     },
     DOWN: {
-      color: 'bg-status-down hover:opacity-90 text-white',
+      color: 'bg-status-down/15 text-status-down',
       icon: AlertTriangle,
     },
     CLOSED: {
-      color: 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400 text-white dark:text-slate-900',
+      color: 'bg-status-closed/15 text-status-closed',
       icon: XCircle,
     },
     REFURBISHMENT: {
-      color: 'bg-status-refurbishment hover:opacity-90 text-white',
+      color: 'bg-status-refurbishment/15 text-status-refurbishment',
       icon: Wrench,
     },
   };
