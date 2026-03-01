@@ -279,7 +279,7 @@ export function ShowsStructuredData({
       '@type': 'Event' as const,
       name: stripNewPrefix(show.name),
       startDate: `${date}T${showtime.startTime}`,
-      image: parkBgImage ? `https://park.fan${parkBgImage}` : undefined, // Fallback to park image if no show image
+      image: parkBgImage ? `https://park.fan${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {
         '@type': 'Place' as const,
         name: stripNewPrefix(park.name),
