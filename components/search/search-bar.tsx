@@ -296,7 +296,7 @@ export function SearchCommand({
         key={result.id}
         value={`${stripNewPrefix(result.name)} ${result.type}`}
         onSelect={() => handleSelect(result, position)}
-        className="flex items-center gap-4"
+        className="flex cursor-pointer items-center gap-4"
       >
         {/* Icon */}
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
