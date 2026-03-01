@@ -104,6 +104,18 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     return { title: tNotFound('attraction') };
   }
 
+  // Numbered-suffix slugs (e.g. playground-2, behind-the-seams-3) are backend
+  // duplicates of the base attraction. Mark them noindex and point canonical at
+  // the base slug so Google consolidates signals on the primary page.
+  const isVariantSlug = /^.+-\d+$/.test(attractionSlug);
+  const baseSlug = isVariantSlug ? attractionSlug.replace(/-\d+$/, '') : attractionSlug;
+  const canonicalAttractionSlug = park?.attractions?.some((a) => a.slug === baseSlug)
+    ? baseSlug
+    : attractionSlug;
+  // Only noindex when we actually resolved a different canonical — avoids
+  // incorrectly noindexing legitimate slugs like "area-51" or "coaster-360".
+  const isDeduplicatedVariant = isVariantSlug && canonicalAttractionSlug !== attractionSlug;
+
   const t = await getTranslations({ locale, namespace: 'seo.attraction' });
   const tGlobal = await getTranslations({ locale, namespace: 'seo.global' });
   const tImageAlt = await getTranslations({ locale, namespace: 'seo.imageAlt' });
@@ -137,6 +149,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       city: cityName,
     }),
     keywords,
+    ...(isDeduplicatedVariant && { robots: { index: false, follow: true } }),
     ...buildOpenGraphMetadata({
       locale,
       title: t('titleTemplate', {
@@ -149,7 +162,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         park: parkName,
         city: cityName,
       }),
-      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('attraction', {
         attraction: attractionName,
@@ -157,12 +170,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       }),
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       languages: {
         ...generateAlternateLanguages(
-          (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`
+          (l) =>
+            `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
         ),
-        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       },
     },
   };

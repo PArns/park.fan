@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound, redirect } from 'next/navigation';
+import { notFound, redirect, permanentRedirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
@@ -84,6 +84,12 @@ export default async function CityPage({ params }: CityPageProps) {
   }
 
   const { parks } = city;
+
+  // Single-park cities are thin duplicates of the park page itself.
+  // Redirect permanently so Google consolidates signals on the park page.
+  if (parks.length === 1) {
+    permanentRedirect(`/${locale}/parks/${continent}/${country}/${citySlug}/${parks[0].slug}`);
+  }
 
   const continentName = translateContinent(t, continent, locale);
   const countryName = translateCountry(t, country, locale);
