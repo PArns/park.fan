@@ -183,7 +183,7 @@
   --crowd-extreme: oklch(0.52 0.22 27);
 
   /* Status Colors */
-  --status-operating: oklch(0.723 0.219 142.136);
+  --status-operating: oklch(0.55 0.21 142.136);
   --status-down: oklch(0.705 0.213 47.604);
   --status-closed: oklch(0.556 0 0);
   --status-refurbishment: oklch(0.623 0.214 259.815);
@@ -193,7 +193,7 @@
   --park-primary-foreground: oklch(0.985 0 0);
 
   /* Semantic Colors */
-  --success: oklch(0.723 0.219 142.136); /* Green - same as status-operating */
+  --success: oklch(0.55 0.21 142.136); /* Green - same as status-operating */
   --success-foreground: oklch(0.145 0 0);
   --error: oklch(0.577 0.245 27.325); /* Red - same as destructive */
   --error-foreground: oklch(1 0 0);
