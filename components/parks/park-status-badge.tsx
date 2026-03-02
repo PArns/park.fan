@@ -2,10 +2,10 @@ import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { Clock, AlertTriangle, XCircle, Wrench } from 'lucide-react';
-import type { ParkStatus } from '@/lib/api/types';
+import type { ParkStatus, AttractionStatus } from '@/lib/api/types';
 
 interface ParkStatusBadgeProps {
-  status: ParkStatus;
+  status: ParkStatus | AttractionStatus;
   className?: string;
 }
 

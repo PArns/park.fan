@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/command';
 import { Button } from '@/components/ui/button';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
@@ -288,7 +289,6 @@ export function SearchCommand({
     const formatDistance = (m: number) =>
       m < 1000 ? `${Math.round(m)} m` : `${(m / 1000).toFixed(1)} km`;
 
-    const isOpen = result.status === 'OPERATING';
     const isClosed = result.status && result.status !== 'OPERATING';
 
     return (
@@ -311,13 +311,7 @@ export function SearchCommand({
               {stripNewPrefix(result.name)}
             </span>
             {result.status && (
-              <span
-                className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                  isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'text-foreground/40 bg-foreground/10'
-                }`}
-              >
-                {isOpen ? t('open') : t('closed')}
-              </span>
+              <ParkStatusBadge status={result.status} className="text-[11px]" />
             )}
           </div>
 
@@ -510,7 +504,7 @@ export function SearchCommand({
         />
         <CommandList>
           {isPending && (
-            <div className="h-[calc(100svh-14rem)] overflow-hidden p-1 sm:h-[420px]">
+            <div className="max-h-[calc(100svh-14rem)] overflow-hidden p-1 sm:max-h-[420px]">
               {/* Fake section header */}
               <div className="px-3 pt-4 pb-1.5">
                 <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
