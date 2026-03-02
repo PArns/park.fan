@@ -38,15 +38,15 @@ const typeIcons = {
 function SkeletonItem({ width }: { width: string }) {
   return (
     <div className="flex items-center gap-4 rounded-lg px-3 py-3.5">
-      <div className="h-11 w-11 shrink-0 animate-pulse rounded-xl bg-white/10" />
+      <div className="h-11 w-11 shrink-0 animate-pulse rounded-xl bg-foreground/10" />
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-center justify-between gap-3">
-          <div className="h-3.5 animate-pulse rounded-full bg-white/10" style={{ width }} />
-          <div className="h-4 w-14 animate-pulse rounded-full bg-white/[8%]" />
+          <div className="h-3.5 animate-pulse rounded-full bg-foreground/10" style={{ width }} />
+          <div className="h-4 w-14 animate-pulse rounded-full bg-foreground/[8%]" />
         </div>
         <div className="flex items-center justify-between gap-3">
-          <div className="h-2.5 w-28 animate-pulse rounded-full bg-white/[8%]" />
-          <div className="h-2.5 w-10 animate-pulse rounded-full bg-white/[8%]" />
+          <div className="h-2.5 w-28 animate-pulse rounded-full bg-foreground/[8%]" />
+          <div className="h-2.5 w-10 animate-pulse rounded-full bg-foreground/[8%]" />
         </div>
       </div>
     </div>
@@ -299,7 +299,7 @@ export function SearchCommand({
         className="flex cursor-pointer items-center gap-4"
       >
         {/* Icon */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-foreground/10">
           <Icon className="text-foreground/65 h-5 w-5" />
         </div>
 
@@ -313,7 +313,7 @@ export function SearchCommand({
             {result.status && (
               <span
                 className={`shrink-0 rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                  isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'text-foreground/40 bg-white/10'
+                  isOpen ? 'bg-emerald-500/20 text-emerald-400' : 'text-foreground/40 bg-foreground/10'
                 }`}
               >
                 {isOpen ? t('open') : t('closed')}
@@ -436,13 +436,13 @@ export function SearchCommand({
             }`}
           />
           <div
-            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border bg-[oklch(0.12_0.025_241_/_0.55)] shadow-md backdrop-blur-lg transition-all hover:bg-[oklch(0.14_0.030_241_/_0.65)] hover:shadow-lg ${
+            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
               size === 'sm'
-                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
-                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
+                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm bg-background/60 hover:bg-background/75'
+                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base bg-background/35 hover:bg-background/50'
             } ${className}`}
           >
-            <span className="text-muted-foreground/50 w-full truncate text-left">
+            <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
@@ -510,7 +510,7 @@ export function SearchCommand({
         />
         <CommandList>
           {isPending && (
-            <div className="h-[420px] overflow-hidden p-1">
+            <div className="h-[calc(100svh-14rem)] overflow-hidden p-1 sm:h-[420px]">
               {/* Fake section header */}
               <div className="px-3 pt-4 pb-1.5">
                 <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
@@ -555,10 +555,10 @@ export function SearchCommand({
               })}
 
               {/* Link to full search page */}
-              <div className="border-t border-white/10 p-3">
+              <div className="border-t border-border/30 p-3">
                 <Button
                   variant="ghost"
-                  className="w-full justify-center text-sm hover:bg-white/10"
+                  className="w-full justify-center text-sm hover:bg-foreground/10"
                   onClick={() => {
                     handleOpenChange(false);
                     trackSearchViewAll();
@@ -586,8 +586,8 @@ export function SearchCommand({
           )}
         </CommandList>
 
-        {/* Keyboard shortcuts footer */}
-        <div className="border-primary/10 bg-primary/10 text-muted-foreground/60 flex items-center gap-4 border-t px-5 py-3 text-xs">
+        {/* Keyboard shortcuts footer – hidden on mobile */}
+        <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
           <span className="flex items-center gap-1.5">
             <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
               ↑↓
