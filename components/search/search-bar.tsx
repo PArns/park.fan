@@ -436,13 +436,13 @@ export function SearchCommand({
             }`}
           />
           <div
-            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border bg-background/60 shadow-md backdrop-blur-lg transition-all hover:bg-background/75 hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
+            className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
               size === 'sm'
-                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
-                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
+                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm bg-background/60 hover:bg-background/75'
+                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base bg-background/35 hover:bg-background/50'
             } ${className}`}
           >
-            <span className="text-muted-foreground/50 w-full truncate text-left">
+            <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
               {placeholder || t('searchPlaceholderLong')}
             </span>
           </div>
@@ -587,7 +587,7 @@ export function SearchCommand({
         </CommandList>
 
         {/* Keyboard shortcuts footer – hidden on mobile */}
-        <div className="border-primary/10 bg-primary/10 text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
+        <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
           <span className="flex items-center gap-1.5">
             <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
               ↑↓
