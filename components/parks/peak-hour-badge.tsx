@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { fromZonedTime } from 'date-fns-tz';
 import { Badge } from '@/components/ui/badge';
 import { Clock } from 'lucide-react';
 
 interface PeakHourBadgeProps {
   peakHour: string;
+  timezone: string;
 }
 
-export function PeakHourBadge({ peakHour }: PeakHourBadgeProps) {
+export function PeakHourBadge({ peakHour, timezone }: PeakHourBadgeProps) {
   const tCommon = useTranslations('common');
   const [timeRemaining, setTimeRemaining] = useState<string | null>(null);
   const [shouldShow, setShouldShow] = useState(false);
@@ -21,20 +23,12 @@ export function PeakHourBadge({ peakHour }: PeakHourBadgeProps) {
         return new Date(peakHour);
       }
 
-      // Assume HH:mm string in UTC (as established by the user task context)
+      // peakHour is HH:mm in the park's LOCAL timezone
       const [h, m] = peakHour.split(':').map(Number);
       if (isNaN(h) || isNaN(m)) return null;
 
-      const d = new Date();
-      d.setUTCHours(h, m, 0, 0);
-
-      // Handle day wrap-around for UTC times (e.g. 00:00 UTC might be tomorrow)
-      const now = new Date();
-      if (d.getTime() < now.getTime() - 12 * 60 * 60 * 1000) {
-        d.setDate(d.getDate() + 1);
-      }
-
-      return d;
+      const today = new Date().toLocaleDateString('en-CA', { timeZone: timezone });
+      return fromZonedTime(`${today}T${peakHour}:00`, timezone);
     };
 
     const calculateTimeRemaining = () => {

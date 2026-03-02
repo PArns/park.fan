@@ -80,6 +80,11 @@ export function ParkTimeInfo({
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
 
+    // Guard: opening must be today in the park's timezone (not tomorrow's schedule entry)
+    const openingDateInParkTz = opening.toLocaleDateString('en-CA', { timeZone: timezone });
+    const todayInParkTz = now.toLocaleDateString('en-CA', { timeZone: timezone });
+    if (openingDateInParkTz !== todayInParkTz) return null;
+
     // If park hasn't opened yet
     if (now < opening) {
       const diffMs = opening.getTime() - now.getTime();

@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { fromZonedTime } from 'date-fns-tz';
 import { Clock, Users, TrendingUp, TrendingDown, Minus, ActivitySquare } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -239,16 +240,19 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
                               stats.peakHour.includes('T')
                                 ? stats.peakHour
                                 : (() => {
-                                    const now = new Date();
-                                    const [h, m] = stats.peakHour.split(':').map(Number);
-                                    now.setUTCHours(h, m, 0, 0);
-                                    return now.toISOString();
+                                    const today = new Date().toLocaleDateString('en-CA', {
+                                      timeZone: park.timezone,
+                                    });
+                                    return fromZonedTime(
+                                      `${today}T${stats.peakHour}:00`,
+                                      park.timezone
+                                    ).toISOString();
                                   })()
                             }
                             timeZone={park.timezone}
                           />
                         </span>
-                        <PeakHourBadge peakHour={stats.peakHour} />
+                        <PeakHourBadge peakHour={stats.peakHour} timezone={park.timezone} />
                       </div>
                     </div>
                   )}

@@ -313,7 +313,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
           currentPage={attractionCurrentPage}
-          className="bg-background/60 text-primary w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
+          className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
         />
 
         <article itemScope itemType="https://schema.org/TouristAttraction">
