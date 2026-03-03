@@ -22,7 +22,7 @@ export async function Footer({ locale }: FooterProps) {
           <section className="space-y-4 md:col-span-2">
             <Link
               href="/"
-              className="flex items-center gap-2"
+              className="inline-flex items-center gap-1.5"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
               <Image
@@ -30,7 +30,7 @@ export async function Footer({ locale }: FooterProps) {
                 width={27}
                 height={32}
                 alt=""
-                className="h-20 w-auto dark:hidden"
+                className="h-8 w-auto shrink-0 dark:hidden md:h-12"
                 aria-hidden="true"
               />
               <Image
@@ -38,7 +38,7 @@ export async function Footer({ locale }: FooterProps) {
                 width={27}
                 height={32}
                 alt=""
-                className="hidden h-20 w-auto dark:block"
+                className="hidden h-8 w-auto shrink-0 dark:block md:h-12"
                 aria-hidden="true"
               />
               <Image
@@ -46,14 +46,14 @@ export async function Footer({ locale }: FooterProps) {
                 width={84}
                 height={24}
                 alt="park.fan"
-                className="h-16 w-auto dark:hidden"
+                className="h-8 w-auto dark:hidden md:h-12"
               />
               <Image
                 src="/parkfan-dark.svg"
                 width={84}
                 height={24}
                 alt="park.fan"
-                className="hidden h-16 w-auto dark:block"
+                className="hidden h-8 w-auto dark:block md:h-12"
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>

@@ -56,7 +56,7 @@ export function Header() {
         <Link
           href="/"
           prefetch={false}
-          className={`items flex ${fadeClass}`}
+          className={`flex shrink-0 items-center gap-1.5 ${fadeClass}`}
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? -1 : 0}
         >
@@ -65,7 +65,7 @@ export function Header() {
             width={26}
             height={30}
             alt=""
-            className="h-9 w-auto dark:hidden"
+            className="h-7 w-auto dark:hidden md:h-9"
             priority
             aria-hidden="true"
           />
@@ -74,7 +74,7 @@ export function Header() {
             width={26}
             height={30}
             alt=""
-            className="hidden h-9 w-auto dark:block"
+            className="hidden h-7 w-auto dark:block md:h-9"
             priority
             aria-hidden="true"
           />
@@ -83,7 +83,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="h-9 w-auto dark:hidden"
+            className="h-7 w-auto dark:hidden md:h-9"
             priority
           />
           <Image
@@ -91,7 +91,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="hidden h-9 w-auto dark:block"
+            className="hidden h-7 w-auto dark:block md:h-9"
             priority
           />
         </Link>
