@@ -74,7 +74,10 @@ export function BreadcrumbNav({
     const nav = navRef.current;
     if (!nav) return;
     if (collapsedCount >= collapsibleCrumbs.length) return;
-    if (nav.scrollWidth > nav.clientWidth + 1) {
+    // scrollWidth = paddingLeft + contentWidth (without paddingRight in most browsers).
+    // Subtract paddingRight from clientWidth so we collapse before items touch the border.
+    const paddingRight = parseFloat(getComputedStyle(nav).paddingRight) || 0;
+    if (nav.scrollWidth > nav.clientWidth - paddingRight + 1) {
       setCollapsedCount((c) => c + 1);
     }
   });
@@ -140,7 +143,7 @@ export function BreadcrumbNav({
           <Separator />
           <button
             onClick={() => setUserExpanded(true)}
-            className="hover:text-foreground shrink-0 rounded px-1 leading-none tracking-widest"
+            className="hover:text-foreground shrink-0 cursor-pointer rounded px-1 leading-none tracking-widest"
             aria-label="Show full breadcrumb path"
           >
             &hellip;
