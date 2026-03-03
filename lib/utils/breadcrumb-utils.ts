@@ -45,7 +45,7 @@ export function generateCountryBreadcrumbs({
   return {
     breadcrumbs: [
       { name: homeLabel, url: '/' },
-      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
+      { name: continentsLabel, url: '/parks' },
       { name: continentName, url: `/parks/${continent}` },
     ],
     currentPage: countryName,
@@ -75,8 +75,8 @@ export function generateCityBreadcrumbs({
   return {
     breadcrumbs: [
       { name: homeLabel, url: '/' },
-      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: continentsLabel, url: '/parks' },
+      { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
     ],
     currentPage: cityName,
@@ -110,8 +110,8 @@ export function generateParkBreadcrumbs({
   return {
     breadcrumbs: [
       { name: homeLabel, url: '/' },
-      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: continentsLabel, url: '/parks' },
+      { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
       { name: cityName, url: `/parks/${continent}/${country}/${city}` },
     ],
@@ -150,8 +150,8 @@ export function generateAttractionBreadcrumbs({
   return {
     breadcrumbs: [
       { name: homeLabel, url: '/' },
-      { name: continentsLabel, url: '/parks', className: 'hidden md:inline-flex' },
-      { name: continentName, url: `/parks/${continent}`, className: 'hidden md:inline-flex' },
+      { name: continentsLabel, url: '/parks' },
+      { name: continentName, url: `/parks/${continent}` },
       { name: countryName, url: `/parks/${continent}/${country}` },
       { name: cityName, url: `/parks/${continent}/${country}/${city}` },
       { name: parkName, url: `/parks/${continent}/${country}/${city}/${parkSlug}` },

@@ -314,6 +314,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           breadcrumbs={breadcrumbs}
           currentPage={attractionCurrentPage}
           className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
+          pinLastBreadcrumb
         />
 
         <article itemScope itemType="https://schema.org/TouristAttraction">
