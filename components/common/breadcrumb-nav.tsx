@@ -54,6 +54,9 @@ export function BreadcrumbNav({
   const [collapsedCount, setCollapsedCount] = useState(0);
   // Set to true when user manually clicks "…" to reveal all items
   const [userExpanded, setUserExpanded] = useState(false);
+  // Bumped on container-shrink to force a re-render so the layout effect
+  // can detect overflow even when collapsedCount itself didn't change yet.
+  const [, setResizeGen] = useState(0);
 
   const firstCrumb = breadcrumbs.length > 0 ? breadcrumbs[0] : null;
   const hasPinnedLast = pinLastBreadcrumb && breadcrumbs.length > 1;
@@ -76,21 +79,28 @@ export function BreadcrumbNav({
     }
   });
 
-  // When the viewport grows, reset so items can re-expand. The layout effect
-  // above will immediately re-collapse if still needed.
+  // Observe the parent element's width so we react to both grow and shrink:
+  //   grow  → reset collapsedCount so items can re-expand
+  //   shrink → bump resizeGen to force a re-render so the layout effect above
+  //            can detect the new overflow and collapse one more item
   useEffect(() => {
     if (userExpanded) return;
+    const parent = navRef.current?.parentElement;
+    if (!parent) return;
 
-    let prevWidth = window.innerWidth;
-    const onResize = () => {
-      if (window.innerWidth > prevWidth) {
+    let prevWidth = parent.clientWidth;
+    const ro = new ResizeObserver(() => {
+      const w = parent.clientWidth;
+      if (w > prevWidth) {
         setCollapsedCount(0);
+      } else if (w < prevWidth) {
+        setResizeGen((n) => n + 1);
       }
-      prevWidth = window.innerWidth;
-    };
+      prevWidth = w;
+    });
 
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    ro.observe(parent);
+    return () => ro.disconnect();
   }, [userExpanded]);
 
   const showDots = !userExpanded && collapsedCount > 0;
@@ -112,7 +122,7 @@ export function BreadcrumbNav({
         'text-muted-foreground mb-4 flex items-center gap-2 text-sm',
         // Allow wrapping only when user manually expanded (pinned items must
         // always be visible even if they wrap)
-        userExpanded ? 'flex-wrap' : 'overflow-hidden',
+        userExpanded && 'flex-wrap',
         className
       )}
       aria-label="Breadcrumb"
