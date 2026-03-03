@@ -244,10 +244,10 @@ export function ParkTimeInfo({
 
           {/* Inline Countdown Badge */}
           {timeUntil && (
-            <div className="flex items-center justify-end">
+            <div className="flex items-center justify-end overflow-hidden">
               <Badge
                 variant={timeUntil.variant === 'opening' ? 'default' : 'secondary'}
-                className="text-xs font-medium"
+                className="max-w-full truncate text-xs font-medium"
               >
                 {timeUntil.message}
               </Badge>

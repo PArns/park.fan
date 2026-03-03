@@ -208,7 +208,7 @@ export function AttractionCard({
 
               {/* Queue Types */}
               {status === 'OPERATING' && (
-                <div className="mt-2 flex flex-wrap gap-1">
+                <div className="mt-2 flex max-w-full flex-wrap gap-1 overflow-hidden">
                   {attraction.queues
                     ?.filter((q) => {
                       // Filter out STANDBY
@@ -380,7 +380,7 @@ export function AttractionCard({
           {status === 'OPERATING' &&
             attraction.statistics?.history &&
             attraction.statistics.history.length > 0 && (
-              <div className="mt-auto h-16 w-full pt-4 opacity-50 transition-opacity group-hover:opacity-100">
+              <div className="mt-auto h-16 w-full overflow-hidden pt-4 opacity-50 transition-opacity group-hover:opacity-100">
                 <WaitTimeSparkline
                   history={attraction.statistics.history}
                   className="text-primary"
