@@ -56,7 +56,7 @@ export function Header() {
         <Link
           href="/"
           prefetch={false}
-          className={`flex shrink-0 items-center ${fadeClass}`}
+          className={`flex shrink-0 items-center gap-1.5 ${fadeClass}`}
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? -1 : 0}
         >
