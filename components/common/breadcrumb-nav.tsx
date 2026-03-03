@@ -119,7 +119,7 @@ export function BreadcrumbNav({
     <nav
       ref={navRef}
       className={cn(
-        'text-muted-foreground mb-4 flex items-center gap-2 text-sm',
+        'text-muted-foreground mb-4 flex max-w-full items-center gap-2 text-sm',
         // Allow wrapping only when user manually expanded (pinned items must
         // always be visible even if they wrap)
         userExpanded && 'flex-wrap',
