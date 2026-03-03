@@ -234,7 +234,7 @@ export function TabsWithHash({
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <TabsList className="mb-6 h-auto w-full flex-wrap justify-start">
+          <TabsList className="mb-6 flex h-auto w-full flex-wrap justify-start">
             <TabsTrigger value="attractions">
               {t('attractions')} ({park.attractions?.length || 0})
             </TabsTrigger>
@@ -272,7 +272,7 @@ export function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <TabsList className="mb-6 h-auto w-full flex-wrap justify-start">
+        <TabsList className="mb-6 flex h-auto w-full flex-wrap justify-start">
           <TabsTrigger value="attractions">
             {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
@@ -299,7 +299,7 @@ export function TabsWithHash({
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
-                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] focus:sm:w-[300px] ${
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] ${
                     isFocused && searchQuery ? 'pr-16' : 'pr-4'
                   }`}
                   value={searchQuery}
