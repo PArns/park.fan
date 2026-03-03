@@ -74,10 +74,16 @@ export function BreadcrumbNav({
     const nav = navRef.current;
     if (!nav) return;
     if (collapsedCount >= collapsibleCrumbs.length) return;
-    // scrollWidth = paddingLeft + contentWidth (without paddingRight in most browsers).
-    // Subtract paddingRight from clientWidth so we collapse before items touch the border.
+    // Compare the last child's right edge against the nav's right content edge
+    // (right border minus right padding). This correctly handles both w-fit navs
+    // (where scrollWidth === clientWidth even when items fill the content area)
+    // and constrained navs, without ever falsely triggering when items fit.
+    const lastChild = nav.lastElementChild as HTMLElement | null;
+    if (!lastChild) return;
+    const navRect = nav.getBoundingClientRect();
+    const lastRect = lastChild.getBoundingClientRect();
     const paddingRight = parseFloat(getComputedStyle(nav).paddingRight) || 0;
-    if (nav.scrollWidth > nav.clientWidth - paddingRight + 1) {
+    if (lastRect.right > navRect.right - paddingRight + 1) {
       setCollapsedCount((c) => c + 1);
     }
   });
