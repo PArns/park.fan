@@ -33,9 +33,9 @@ interface BreadcrumbNavProps {
  * Breadcrumb navigation component.
  *
  * Collapses middle items into a "…" button only when the available width
- * is too narrow to show everything on one line. Items collapse from right
- * to left (closest to the current page first). Clicking "…" reveals the
- * full path.
+ * is too narrow to show everything on one line. Items collapse from left
+ * to right (furthest from the current page first). Clicking "…" reveals
+ * the full path.
  *
  * Always pinned:
  *   - First breadcrumb (e.g. Home)
@@ -50,7 +50,7 @@ export function BreadcrumbNav({
   pinLastBreadcrumb,
 }: BreadcrumbNavProps) {
   const navRef = useRef<HTMLElement>(null);
-  // Number of collapsible items hidden from the right end (back-to-front)
+  // Number of collapsible items hidden from the left end (front-to-back)
   const [collapsedCount, setCollapsedCount] = useState(0);
   // Set to true when user manually clicks "…" to reveal all items
   const [userExpanded, setUserExpanded] = useState(false);
@@ -58,7 +58,7 @@ export function BreadcrumbNav({
   const firstCrumb = breadcrumbs.length > 0 ? breadcrumbs[0] : null;
   const hasPinnedLast = pinLastBreadcrumb && breadcrumbs.length > 1;
   const lastPinnedCrumb = hasPinnedLast ? breadcrumbs[breadcrumbs.length - 1] : null;
-  // Middle items that may be collapsed. Rightmost collapses first.
+  // Middle items that may be collapsed. Leftmost (furthest from current page) collapses first.
   const collapsibleCrumbs = breadcrumbs.slice(
     1,
     hasPinnedLast ? breadcrumbs.length - 1 : breadcrumbs.length
@@ -94,13 +94,14 @@ export function BreadcrumbNav({
   }, [userExpanded]);
 
   const showDots = !userExpanded && collapsedCount > 0;
+  // Collapse from the left (front): skip the first `collapsedCount` items
   const visibleCollapsible = userExpanded
     ? collapsibleCrumbs
-    : collapsibleCrumbs.slice(0, collapsibleCrumbs.length - collapsedCount);
+    : collapsibleCrumbs.slice(collapsedCount);
   const hasAnyBefore = !!(
     firstCrumb ||
-    visibleCollapsible.length > 0 ||
     showDots ||
+    visibleCollapsible.length > 0 ||
     lastPinnedCrumb
   );
 
@@ -123,17 +124,7 @@ export function BreadcrumbNav({
         </Link>
       )}
 
-      {/* Visible middle items (shown from left; rightmost collapse first) */}
-      {visibleCollapsible.map((crumb) => (
-        <Fragment key={crumb.url}>
-          <Separator />
-          <Link href={crumb.url} prefetch={false} className="hover:text-foreground shrink-0">
-            {crumb.name}
-          </Link>
-        </Fragment>
-      ))}
-
-      {/* Collapse indicator */}
+      {/* Collapse indicator – sits right after Home, before remaining items */}
       {showDots && (
         <>
           <Separator />
@@ -146,6 +137,16 @@ export function BreadcrumbNav({
           </button>
         </>
       )}
+
+      {/* Visible middle items (leftmost collapse first; closest to current page survive longest) */}
+      {visibleCollapsible.map((crumb) => (
+        <Fragment key={crumb.url}>
+          <Separator />
+          <Link href={crumb.url} prefetch={false} className="hover:text-foreground shrink-0">
+            {crumb.name}
+          </Link>
+        </Fragment>
+      ))}
 
       {/* Pinned last breadcrumb (park on ride/attraction pages) – always visible */}
       {lastPinnedCrumb && (
