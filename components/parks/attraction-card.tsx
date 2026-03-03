@@ -208,7 +208,7 @@ export function AttractionCard({
 
               {/* Queue Types */}
               {status === 'OPERATING' && (
-                <div className="mt-2 flex max-w-full flex-wrap gap-1 overflow-hidden">
+                <div className="mt-2 flex max-w-full flex-wrap gap-1">
                   {attraction.queues
                     ?.filter((q) => {
                       // Filter out STANDBY
@@ -323,10 +323,10 @@ export function AttractionCard({
                         <Badge
                           key={`${queue.queueType}-${i}`}
                           variant={variant}
-                          className="flex items-center gap-1.5 px-1.5 py-0.5 text-[10px] font-normal"
+                          className="flex max-w-full items-center gap-1.5 px-1.5 py-0.5 text-[10px] font-normal"
                         >
-                          <Icon className="h-3 w-3" />
-                          {label}
+                          <Icon className="h-3 w-3 shrink-0" />
+                          <span className="min-w-0 truncate">{label}</span>
                         </Badge>
                       );
                     })}

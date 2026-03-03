@@ -247,9 +247,9 @@ export function ParkTimeInfo({
             <div className="flex items-center justify-end overflow-hidden">
               <Badge
                 variant={timeUntil.variant === 'opening' ? 'default' : 'secondary'}
-                className="max-w-full truncate text-xs font-medium"
+                className="max-w-full text-xs font-medium"
               >
-                {timeUntil.message}
+                <span className="min-w-0 truncate">{timeUntil.message}</span>
               </Badge>
             </div>
           )}
