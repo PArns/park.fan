@@ -69,6 +69,9 @@ export function BreadcrumbNav({
 
   // After every render: if the nav overflows its container, collapse one more
   // item from the right. Runs synchronously before paint so no flash is visible.
+  // Uses getBoundingClientRect so we detect overflow into the right padding area
+  // before text touches the border, and avoids false positives on w-fit navs
+  // where scrollWidth === clientWidth even when items perfectly fill the content.
   useLayoutEffect(() => {
     if (userExpanded) return;
     const nav = navRef.current;
@@ -113,6 +116,9 @@ export function BreadcrumbNav({
   }, [userExpanded]);
 
   const showDots = !userExpanded && collapsedCount > 0;
+  // Once every collapsible item is hidden, allow pinned items to truncate with
+  // ellipsis instead of just being clipped by the nav's overflow:hidden.
+  const allCollapsed = !userExpanded && collapsedCount >= collapsibleCrumbs.length;
   // Collapse from the left (front): skip the first `collapsedCount` items
   const visibleCollapsible = userExpanded
     ? collapsibleCrumbs
@@ -138,7 +144,11 @@ export function BreadcrumbNav({
     >
       {/* First item – always visible */}
       {firstCrumb && (
-        <Link href={firstCrumb.url} prefetch={false} className="hover:text-foreground shrink-0">
+        <Link
+          href={firstCrumb.url}
+          prefetch={false}
+          className={cn('hover:text-foreground', allCollapsed ? 'min-w-0 truncate' : 'shrink-0')}
+        >
           {firstCrumb.name}
         </Link>
       )}
@@ -174,7 +184,10 @@ export function BreadcrumbNav({
           <Link
             href={lastPinnedCrumb.url}
             prefetch={false}
-            className="hover:text-foreground shrink-0"
+            className={cn(
+              'hover:text-foreground',
+              allCollapsed ? 'min-w-0 truncate' : 'shrink-0'
+            )}
           >
             {lastPinnedCrumb.name}
           </Link>
@@ -185,7 +198,13 @@ export function BreadcrumbNav({
       {currentPage && (
         <>
           {hasAnyBefore && <Separator />}
-          <span className="text-foreground shrink-0 font-bold" aria-current="page">
+          <span
+            className={cn(
+              'text-foreground font-bold',
+              allCollapsed ? 'min-w-0 truncate' : 'shrink-0'
+            )}
+            aria-current="page"
+          >
             {currentPage}
           </span>
         </>
