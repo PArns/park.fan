@@ -148,7 +148,7 @@
     "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen."
   },
   "explore": {
-    "title": "Parks in {location}",
+    "title": "Freizeitparks in {location}",
     "parks": "Parks",
     "parksTitle": "Parks weltweit",
     "description": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Andrangsprognosen.",
@@ -160,7 +160,8 @@
       "country": "{count, plural, =1 {Land} other {Länder}}",
       "city": "{count, plural, =1 {Stadt} other {Städte}}",
       "more": "+{count} weitere"
-    }
+    },
+    "countries": "Länder"
   },
   "navigation": {
     "home": "Startseite",
@@ -347,7 +348,8 @@
       "distanceToPark": "Entfernung zum Park",
       "nearest": "In deiner Nähe",
       "away": "entfernt"
-    }
+    },
+    "h1Suffix": "Aktuelle Wartezeiten"
   },
   "attractions": {
     "title": "Attraktionen",
@@ -441,7 +443,8 @@
         "boardingGroupsPaused": "Gruppen pausiert",
         "return": "Rückkehr: {start} - {end}"
       }
-    }
+    },
+    "h1Suffix": "Aktuelle Wartezeit"
   },
   "calendar": {
     "legend": "Legende",
@@ -524,7 +527,7 @@
       "australia": "Australien",
       "brazil": "Brasilien"
     },
-    "parksIn": "Parks in {location}",
+    "parksIn": "Freizeitparks in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
     "exploreByRegion": "Nach Region entdecken"
   },

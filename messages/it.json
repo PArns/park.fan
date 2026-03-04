@@ -148,7 +148,7 @@
     "disclaimer": "Tutte le informazioni sono fornite senza garanzia. I tempi di attesa e le informazioni sullo stato visualizzati sono forniti automaticamente e possono differire dalla situazione reale sul posto."
   },
   "explore": {
-    "title": "Parchi in {location}",
+    "title": "Parchi a tema in {location}",
     "parks": "Parchi",
     "parksTitle": "Parchi nel mondo",
     "description": "Esplora i parchi a tema in {location} con tempi di attesa in tempo reale e previsioni di affluenza.",
@@ -160,7 +160,8 @@
       "country": "{count, plural, =1 {paese} other {paesi}}",
       "city": "{count, plural, =1 {città} other {città}}",
       "more": "+{count} altri"
-    }
+    },
+    "countries": "Paesi"
   },
   "navigation": {
     "home": "Home",
@@ -347,7 +348,8 @@
       "thunderstorm": "Temporale",
       "cloudy": "Nuvoloso",
       "mist": "Foschia"
-    }
+    },
+    "h1Suffix": "Tempi di attesa in diretta"
   },
   "attractions": {
     "title": "Attrazioni",
@@ -441,7 +443,8 @@
         "boardingGroupsPaused": "Gruppi di imbarco in pausa",
         "return": "Ritorno: {start} - {end}"
       }
-    }
+    },
+    "h1Suffix": "Tempo di attesa in diretta"
   },
   "calendar": {
     "legend": "Legenda",
@@ -524,7 +527,7 @@
       "australia": "Australia",
       "brazil": "Brasile"
     },
-    "parksIn": "Parchi in {location}",
+    "parksIn": "Parchi a tema in {location}",
     "parkCount": "{count, plural, =1 {1 parco} other {# parchi}}",
     "exploreByRegion": "Esplora per regione"
   },

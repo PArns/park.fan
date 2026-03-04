@@ -61,6 +61,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const t = await getTranslations('geo');
   const tCommon = await getTranslations('common');
+  const tExplore = await getTranslations('explore');
 
   // Fetch cities with parks
   const response = await getCitiesWithParks(continent, country).catch(() => null);
@@ -127,27 +128,30 @@ export default async function CityPage({ params }: CityPageProps) {
       />
 
       {/* Parks Grid */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {parks.map((park) => (
-          <ParkCard
-            key={park.id}
-            name={stripNewPrefix(park.name)}
-            slug={park.slug}
-            city={city.name}
-            country={countryName}
-            href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
-            status={park.status}
-            crowdLevel={park.currentLoad?.crowdLevel}
-            averageWaitTime={park.analytics?.statistics?.avgWaitTime}
-            operatingAttractions={park.analytics?.statistics?.operatingAttractions}
-            totalAttractions={park.analytics?.statistics?.totalAttractions}
-            variant="detailed"
-            timezone={park.timezone}
-            todaySchedule={park.todaySchedule}
-            nextSchedule={park.nextSchedule}
-          />
-        ))}
-      </div>
+      <section aria-label={tExplore('parks')}>
+        <h2 className="sr-only">{tExplore('parks')}</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {parks.map((park) => (
+            <ParkCard
+              key={park.id}
+              name={stripNewPrefix(park.name)}
+              slug={park.slug}
+              city={city.name}
+              country={countryName}
+              href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
+              status={park.status}
+              crowdLevel={park.currentLoad?.crowdLevel}
+              averageWaitTime={park.analytics?.statistics?.avgWaitTime}
+              operatingAttractions={park.analytics?.statistics?.operatingAttractions}
+              totalAttractions={park.analytics?.statistics?.totalAttractions}
+              variant="detailed"
+              timezone={park.timezone}
+              todaySchedule={park.todaySchedule}
+              nextSchedule={park.nextSchedule}
+            />
+          ))}
+        </div>
+      </section>
     </PageContainer>
   );
 }

@@ -148,7 +148,7 @@
     "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site."
   },
   "explore": {
-    "title": "Parks in {location}",
+    "title": "Theme Parks in {location}",
     "parks": "Parks",
     "parksTitle": "Parks Worldwide",
     "description": "Explore theme parks in {location} with real-time wait times and crowd predictions.",
@@ -160,7 +160,8 @@
       "country": "{count, plural, =1 {country} other {countries}}",
       "city": "{count, plural, =1 {city} other {cities}}",
       "more": "+{count} more"
-    }
+    },
+    "countries": "Countries"
   },
   "navigation": {
     "home": "Home",
@@ -347,7 +348,8 @@
       "thunderstorm": "Thunderstorm",
       "cloudy": "Cloudy",
       "mist": "Mist"
-    }
+    },
+    "h1Suffix": "Live Wait Times"
   },
   "attractions": {
     "title": "Attractions",
@@ -441,7 +443,8 @@
         "boardingGroupsPaused": "Boarding Groups Paused",
         "return": "Return: {start} - {end}"
       }
-    }
+    },
+    "h1Suffix": "Live Wait Time"
   },
   "calendar": {
     "legend": "Legend",
@@ -524,7 +527,7 @@
       "australia": "Australia",
       "brazil": "Brazil"
     },
-    "parksIn": "Parks in {location}",
+    "parksIn": "Theme Parks in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
     "exploreByRegion": "Explore by Region"
   },

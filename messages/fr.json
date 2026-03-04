@@ -148,7 +148,7 @@
     "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d'attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
   },
   "explore": {
-    "title": "Parcs à {location}",
+    "title": "Parcs d'attractions à {location}",
     "parks": "Parcs",
     "parksTitle": "Parcs dans le Monde",
     "description": "Explorez les parcs d'attractions à {location} avec temps d'attente et prédictions d'affluence en temps réel.",
@@ -160,7 +160,8 @@
       "country": "{count, plural, =1 {pays} other {pays}}",
       "city": "{count, plural, =1 {ville} other {villes}}",
       "more": "+{count} plus"
-    }
+    },
+    "countries": "Pays"
   },
   "navigation": {
     "home": "Accueil",
@@ -347,7 +348,8 @@
       "thunderstorm": "Orage",
       "cloudy": "Nuageux",
       "mist": "Brume"
-    }
+    },
+    "h1Suffix": "Temps d'attente en direct"
   },
   "attractions": {
     "title": "Attractions",
@@ -441,7 +443,8 @@
         "boardingGroupsPaused": "Groupes Suspendus",
         "return": "Retour: {start} - {end}"
       }
-    }
+    },
+    "h1Suffix": "Temps d'attente en direct"
   },
   "calendar": {
     "legend": "Légende",
@@ -524,7 +527,7 @@
       "australia": "Australie",
       "brazil": "Brésil"
     },
-    "parksIn": "Parcs à {location}",
+    "parksIn": "Parcs d'attractions à {location}",
     "parkCount": "{count, plural, =1 {1 parc} other {# parcs}}",
     "exploreByRegion": "Explorer par Région"
   },

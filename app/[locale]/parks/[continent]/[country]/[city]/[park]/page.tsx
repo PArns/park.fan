@@ -251,7 +251,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="mb-2 flex flex-wrap items-center gap-3">
-                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
+                    <h1 className="text-3xl font-bold md:text-4xl">
+                    {parkName}
+                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
+                      – {t('h1Suffix')}
+                    </span>
+                  </h1>
                     {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
                     {park.id && (
                       <div className="ml-auto">
@@ -299,6 +304,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           </div>
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
+          <h2 className="sr-only">{t('attractions')}</h2>
           <LiveParkData
             initialData={park}
             continent={continent}

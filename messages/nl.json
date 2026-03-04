@@ -148,7 +148,7 @@
     "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
   },
   "explore": {
-    "title": "Parken in {location}",
+    "title": "Attractieparken in {location}",
     "parks": "Parken",
     "parksTitle": "Parken Wereldwijd",
     "description": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen.",
@@ -160,7 +160,8 @@
       "country": "{count, plural, =1 {land} other {landen}}",
       "city": "{count, plural, =1 {stad} other {steden}}",
       "more": "+{count} meer"
-    }
+    },
+    "countries": "Landen"
   },
   "navigation": {
     "home": "Home",
@@ -347,7 +348,8 @@
       "thunderstorm": "Onweer",
       "cloudy": "Bewolkt",
       "mist": "Nevel"
-    }
+    },
+    "h1Suffix": "Live wachttijden"
   },
   "attractions": {
     "title": "Attracties",
@@ -441,7 +443,8 @@
         "boardingGroupsPaused": "Boarding Groups Gepauzeerd",
         "return": "Terug: {start} - {end}"
       }
-    }
+    },
+    "h1Suffix": "Live wachttijd"
   },
   "calendar": {
     "legend": "Legenda",
@@ -524,7 +527,7 @@
       "australia": "Australië",
       "brazil": "Brazilië"
     },
-    "parksIn": "Parken in {location}",
+    "parksIn": "Attractieparken in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
     "exploreByRegion": "Verkennen per Regio"
   },
