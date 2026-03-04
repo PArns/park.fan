@@ -108,6 +108,16 @@
         "title": "Planificación y Navegación",
         "description": "Encuentra los mejores días con nuestro calendario de afluencia y navega por el parque."
       }
+    },
+    "about": {
+      "title": "¿Qué es park.fan?",
+      "p1": "park.fan es una plataforma gratuita que reúne tiempos de espera en vivo, predicciones de afluencia y datos operativos de más de 150 parques temáticos en Europa, América del Norte, Asia y más. Ya sea que visites Disneyland París, Universal Studios Hollywood, Europa-Park o Phantasialand, park.fan te ayuda a evitar las filas más largas y elegir el mejor día para tu visita, con datos actualizados cada minuto.",
+      "p2": "Nuestra IA analiza datos históricos de afluencia, el tiempo, calendarios de vacaciones escolares y eventos especiales para generar predicciones precisas por parque y atracción. El modelo fue entrenado con millones de registros de colas recopilados durante varios años.",
+      "coverageTitle": "¿Qué parques están incluidos?",
+      "p3": "park.fan cubre 150+ parques temáticos y 5.000+ atracciones en todo el mundo — desde Walt Disney World, Disneyland Resort y Universal Orlando hasta parques europeos como Europa-Park, Phantasialand, Efteling, Heide Park y Toverland, además de parques en Asia, Australia y América del Sur.",
+      "howTitle": "¿Cómo usar park.fan?",
+      "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque verás tiempos de espera en vivo para cada atracción, restaurante y espectáculo, junto con predicciones de afluencia y un calendario diario. Los días verdes indican filas cortas; los días naranja o rojos, mayor afluencia.",
+      "p5": "park.fan se actualiza cada minuto para reflejar siempre la situación actual en el parque. También puedes guardar tus parques favoritos para acceder rápidamente en futuras visitas."
     }
   },
   "footer": {

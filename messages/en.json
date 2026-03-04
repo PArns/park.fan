@@ -108,6 +108,16 @@
         "title": "Planning & In-Park Navigation",
         "description": "Find the best days with our crowd calendar and navigate the park live."
       }
+    },
+    "about": {
+      "title": "What Is park.fan?",
+      "p1": "park.fan is a free platform that brings together live wait times, crowd forecasts, and operational data for more than 150 theme parks across Europe, North America, Asia, and beyond. Whether you are visiting Disneyland Paris, Universal Studios Hollywood, Europa-Park, or Phantasialand, park.fan helps you skip the longest queues and choose the best day for your visit—all based on real-time data updated every minute.",
+      "p2": "Our AI analyzes historical crowd data, weather, school holiday calendars, and special events to generate accurate crowd-level predictions for each park and attraction. The model is trained on millions of queue records collected over several years, letting you check predicted wait times days and weeks before you visit.",
+      "coverageTitle": "Which Parks Are Covered?",
+      "p3": "park.fan covers 150+ theme parks and 5,000+ attractions worldwide—from Walt Disney World, Disneyland Resort, Universal Orlando, and Universal Studios Japan to European parks like Europa-Park, Phantasialand, Efteling, Heide Park, and Toverland, plus parks across Asia, Australia, and South America.",
+      "howTitle": "How To Use park.fan",
+      "p4": "Search for your park using the search bar, or browse by continent, country, and city. On the park page you see live wait times for every ride, restaurant, and show, alongside crowd predictions and a day-by-day crowd calendar. Green days mean short queues; orange or red days mean higher crowds.",
+      "p5": "park.fan is updated every minute, so the data you see always reflects the current situation at the park. You can also save favorite parks to your profile for quick access on future visits."
     }
   },
   "footer": {

@@ -108,6 +108,16 @@
         "title": "Planung & In-Park Navigation",
         "description": "Finde den besten Tag mit unserem Crowd-Kalender und navigiere live durch den Park."
       }
+    },
+    "about": {
+      "title": "Was ist park.fan?",
+      "p1": "park.fan ist eine kostenlose Plattform, die Live-Wartezeiten, Besucherprognosen und Betriebsdaten für über 150 Freizeitparks in Europa, Nordamerika, Asien und darüber hinaus bündelt. Ob du den Disneyland Paris, Universal Studios Hollywood, den Europa-Park oder Phantasialand besuchst – park.fan hilft dir, die längsten Warteschlangen zu meiden und den besten Besuchstag zu wählen. Alle Daten werden minütlich aktualisiert.",
+      "p2": "Unsere KI analysiert historische Besucherdaten, Wetterdaten, Schulferienkalender und Sonderveranstaltungen, um präzise Prognosen für Besucherandrang und Wartezeiten zu erstellen. Das Modell wurde auf Millionen von Warteschlangendatensätzen aus mehreren Jahren trainiert – so kannst du Wartezeiten schon Tage vor deinem Besuch abschätzen.",
+      "coverageTitle": "Welche Parks sind abgedeckt?",
+      "p3": "park.fan erfasst 150+ Freizeitparks und 5.000+ Attraktionen weltweit – von Walt Disney World, Disneyland Resort, Universal Orlando und Universal Studios Japan bis zu europäischen Parks wie Europa-Park, Phantasialand, Efteling, Heide Park und Toverland sowie Parks in Asien, Australien und Südamerika.",
+      "howTitle": "Wie nutze ich park.fan?",
+      "p4": "Suche deinen Park über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite siehst du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows sowie Besucherprognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage bedeuten kurze Warteschlangen; orange oder rote Tage stehen für höheren Andrang.",
+      "p5": "park.fan wird minütlich aktualisiert, sodass du stets den aktuellen Stand im Park siehst. Du kannst außerdem Lieblingsparks speichern, um bei zukünftigen Besuchen schnell darauf zugreifen zu können."
     }
   },
   "footer": {
