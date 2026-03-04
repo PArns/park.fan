@@ -176,7 +176,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
           (l) =>
             `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
         ),
-        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
+        'x-default': `https://park.fan/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       },
     },
   };

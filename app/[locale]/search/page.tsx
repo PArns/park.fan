@@ -46,7 +46,7 @@ export async function generateMetadata({
         ...generateAlternateLanguages(
           (l) => `/${l}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`
         ),
-        'x-default': `/en/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+        'x-default': `https://park.fan/en/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       },
     },
   };

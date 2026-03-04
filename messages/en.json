@@ -108,6 +108,16 @@
         "title": "Planning & In-Park Navigation",
         "description": "Find the best days with our crowd calendar and navigate the park live."
       }
+    },
+    "about": {
+      "title": "What Is park.fan?",
+      "p1": "park.fan was born from a frustration every theme park fan knows: standing in a 90-minute queue and wondering whether smarter planning could have avoided it. What started as a side project—\"let me just track some wait times\"—grew into a full platform now covering 151 parks, 5,253 attractions, and millions of queue data records processed every day. The goal has always been the same: take the guesswork out of planning a theme park visit.",
+      "p2": "The AI behind park.fan analyzes historical crowd data, weather forecasts, school holiday calendars, and special events to predict crowd levels and wait times days or even weeks ahead. Instead of guessing, you can check whether next Saturday at Europa-Park Resort or Phantasialand is going to be a green day—short queues, relaxed atmosphere—or a red day where every popular ride has a 60-minute wait. The model is continuously trained on new data, so its predictions get sharper over time.",
+      "coverageTitle": "Which Parks Are Covered?",
+      "p3": "park.fan currently tracks 151 theme parks and 5,253 individual attractions worldwide—from Walt Disney World, Disneyland Resort, Universal Orlando, and Universal Studios Japan to European parks like Europa-Park, Phantasialand, Efteling, Heide Park, and Toverland, plus parks across Asia, Australia, and South America. New parks are added regularly as the platform continues to grow.",
+      "howTitle": "How To Use park.fan",
+      "p4": "Search for your destination park using the search bar, or browse by continent, country, and city. On the park page you will find live wait times for every ride, restaurant, and show—updated every minute—alongside AI crowd predictions and a day-by-day crowd calendar. Green days signal short queues and smaller crowds; orange or red days mean higher attendance and longer waits.",
+      "p5": "park.fan is a living project, constantly evolving with new features and parks. Save your favourite parks for quick access, use in-park navigation to plan the most efficient route through the park, and always check the crowd calendar before booking to make sure your visit lands on the best possible day."
     }
   },
   "footer": {
@@ -622,25 +632,26 @@
     },
     "parks": {
       "title": "Theme Parks Worldwide",
-      "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
-      "metaDescriptionTemplate": "Live wait times and crowd calendar for {park}. Check today's crowd forecast, best days to visit, and opening hours. Plan your visit with real-time predictions.",
-      "titleTemplate": "{park} {city} Wait Times & Best Days to Visit"
+      "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
+      "metaDescriptionTemplate": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
+      "titleTemplate": "{park} {city} Wait Times & Best Days to Visit",
+      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit"
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
-      "metaDescriptionTemplate": "Current wait times and predictions for {attraction} at {park} {city}. Check live queue data and crowd levels."
+      "metaDescriptionTemplate": "Live wait times and predictions for {attraction} at {park}. Check queue data and crowd levels."
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Explore theme parks in {location} with real-time wait times, crowd predictions, and live data. Compare parks, check opening hours, and plan your perfect visit."
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & opening hours. Compare parks and plan your visit."
     },
     "country": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",
-      "metaDescriptionTemplate": "Discover theme parks in {location} with live wait times, crowd predictions, and opening schedules. Compare crowd levels and plan the best days to visit."
+      "metaDescriptionTemplate": "Theme parks in {location}: live wait times, crowd predictions & best days to visit. Compare parks and plan your perfect visit."
     },
     "city": {
       "titleTemplate": "Theme Parks in {city}, {country}: Wait Times & Hours",
-      "metaDescriptionTemplate": "Live wait times and crowd predictions for theme parks in {city}. Check today's forecast, opening hours, and plan your visit with our real-time crowd calendar."
+      "metaDescriptionTemplate": "Live wait times & crowd predictions for theme parks in {city}. Check opening hours and plan your visit with real-time forecasts."
     },
     "search": {
       "titleTemplate": "Search: {query}",

@@ -108,6 +108,16 @@
         "title": "Planung & In-Park Navigation",
         "description": "Finde den besten Tag mit unserem Crowd-Kalender und navigiere live durch den Park."
       }
+    },
+    "about": {
+      "title": "Was ist park.fan?",
+      "p1": "park.fan entstand aus einer Frustration, die wohl jeder Freizeitpark-Fan kennt: 90 Minuten in einer Warteschlange stehen und sich fragen, ob clevere Planung das hätte verhindern können. Was als Nebenprojekt begann – «lass mich einfach ein paar Wartezeiten tracken» – wuchs zu einer vollständigen Plattform, die heute 151 Parks, 5.253 Attraktionen und täglich Millionen von Warteschlangendatensätzen verarbeitet. Das Ziel war und ist: das Rätselraten bei der Planung eines Freizeitpark-Besuchs ein für alle Mal beenden.",
+      "p2": "Die KI hinter park.fan analysiert historische Besucherdaten, Wetterprognosen, Schulferienkalender und Sonderveranstaltungen, um Besucherandrang und Wartezeiten Tage oder sogar Wochen im Voraus vorherzusagen. Statt zu hoffen und zu raten, kannst du vorab prüfen, ob der nächste Samstag im Europa-Park Resort oder Phantasialand ein grüner Tag wird – kurze Warteschlangen, entspannte Atmosphäre – oder ein roter Tag, an dem jede beliebte Attraktion 60 Minuten Wartezeit bedeutet. Das Modell wird kontinuierlich mit neuen Daten trainiert und wird mit der Zeit immer präziser.",
+      "coverageTitle": "Welche Parks sind abgedeckt?",
+      "p3": "park.fan erfasst derzeit 151 Freizeitparks und 5.253 Attraktionen weltweit – von Walt Disney World, Disneyland Resort, Universal Orlando und Universal Studios Japan bis zu europäischen Parks wie Europa-Park, Phantasialand, Efteling, Heide Park und Toverland sowie Parks in Asien, Australien und Südamerika. Regelmäßig kommen neue Parks hinzu, denn die Plattform wächst stetig weiter.",
+      "howTitle": "Wie nutze ich park.fan?",
+      "p4": "Suche deinen Wunschpark über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite findest du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows – minütlich aktualisiert – sowie KI-Prognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage signalisieren kurze Warteschlangen und wenig Betrieb; orange oder rote Tage stehen für mehr Andrang und längere Wartezeiten.",
+      "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen."
     }
   },
   "footer": {
@@ -613,7 +623,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
-      "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
+      "description": "Live-Wartezeiten und KI-Prognosen für 142+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
       "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
     },
     "home": {
@@ -623,24 +633,25 @@
     "parks": {
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Crowd-Kalender für {park}. Prüfe heutige Besucherprognose, beste Besuchstage und Öffnungszeiten. Plane deinen Besuch optimal.",
-      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage"
+      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
+      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage",
+      "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage"
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
-      "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park} {city}. Prüfe Live-Daten und Besucherandrang."
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten, Besucherprognosen und Live-Daten. Vergleiche Parks, prüfe Öffnungszeiten und plane deinen perfekten Besuch."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Parks und plane deinen Besuch."
     },
     "country": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Besucherandrang und plane die besten Besuchstage."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Plane die besten Besuchstage."
     },
     "city": {
       "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Besucherprognosen für Freizeitparks in {city}. Prüfe heutige Vorhersage, Öffnungszeiten und plane deinen Besuch mit unserem Echtzeit-Crowd-Kalender."
+      "metaDescriptionTemplate": "Live-Wartezeiten und Prognosen für Freizeitparks in {city}. Prüfe Öffnungszeiten und plane deinen Besuch mit dem Echtzeit-Kalender."
     },
     "search": {
       "titleTemplate": "Suche: {query}",

@@ -60,7 +60,7 @@ export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden">
       <RandomHeroImage imageSrc={imageSrc} />
-      <div className="absolute inset-0 bg-gradient-to-br from-background/50 via-background/20 to-transparent dark:from-background dark:via-background/70 dark:to-muted/50" />
+      <div className="from-background/50 via-background/20 dark:from-background dark:via-background/70 dark:to-muted/50 absolute inset-0 bg-gradient-to-br to-transparent" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
   );

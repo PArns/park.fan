@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       canonical: `https://park.fan/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': '/en',
+        'x-default': 'https://park.fan/en',
       },
     },
   };
@@ -421,6 +421,22 @@ export default async function HomePage({ params }: HomePageProps) {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* About Section – editorial content for SEO word count */}
+      <section className="border-t px-4 py-16">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="mb-6 text-2xl font-semibold">{tHome('about.title')}</h2>
+          <p className="text-muted-foreground mb-4 leading-relaxed">{tHome('about.p1')}</p>
+          <p className="text-muted-foreground mb-10 leading-relaxed">{tHome('about.p2')}</p>
+
+          <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
+          <p className="text-muted-foreground mb-10 leading-relaxed">{tHome('about.p3')}</p>
+
+          <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">{tHome('about.p4')}</p>
+          <p className="text-muted-foreground leading-relaxed">{tHome('about.p5')}</p>
         </div>
       </section>
     </div>

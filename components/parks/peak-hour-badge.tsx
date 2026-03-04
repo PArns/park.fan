@@ -69,7 +69,7 @@ export function PeakHourBadge({ peakHour, timezone }: PeakHourBadgeProps) {
     const interval = setInterval(calculateTimeRemaining, 60000);
 
     return () => clearInterval(interval);
-  }, [peakHour, tCommon]);
+  }, [peakHour, timezone, tCommon]);
 
   if (!shouldShow || !timeRemaining) return null;
 

@@ -13,6 +13,8 @@ export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = 'en';
 
+export const SITE_URL = 'https://park.fan';
+
 export const localeNames: Record<Locale, string> = {
   en: 'English',
   de: 'Deutsch',
@@ -38,7 +40,7 @@ export function generateAlternateLanguages(
   const result: Record<string, string> = {};
 
   for (const locale of locales) {
-    result[locale] = pathTemplate(locale);
+    result[locale] = `${SITE_URL}${pathTemplate(locale)}`;
   }
 
   return result;

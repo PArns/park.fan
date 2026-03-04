@@ -64,8 +64,8 @@ export function Header() {
             src="/logo-small.svg"
             width={26}
             height={30}
-            alt=""
-            className="h-7 w-auto dark:hidden md:h-9"
+            alt="park.fan"
+            className="h-7 w-auto md:h-9 dark:hidden"
             priority
             aria-hidden="true"
           />
@@ -73,8 +73,8 @@ export function Header() {
             src="/logo-small-dark.svg"
             width={26}
             height={30}
-            alt=""
-            className="hidden h-7 w-auto dark:block md:h-9"
+            alt="park.fan"
+            className="hidden h-7 w-auto md:h-9 dark:block"
             priority
             aria-hidden="true"
           />
@@ -83,7 +83,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="h-7 w-auto dark:hidden md:h-9"
+            className="h-7 w-auto md:h-9 dark:hidden"
             priority
           />
           <Image
@@ -91,7 +91,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="hidden h-7 w-auto dark:block md:h-9"
+            className="hidden h-7 w-auto md:h-9 dark:block"
             priority
           />
         </Link>

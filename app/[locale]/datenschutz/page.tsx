@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       canonical: `https://park.fan/${locale}/datenschutz`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/datenschutz`),
-        'x-default': '/en/datenschutz',
+        'x-default': 'https://park.fan/en/datenschutz',
       },
     },
     robots: {

@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
       canonical: `https://park.fan/${locale}/impressum`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/impressum`),
-        'x-default': '/en/impressum',
+        'x-default': 'https://park.fan/en/impressum',
       },
     },
     robots: {

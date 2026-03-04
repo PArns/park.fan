@@ -108,6 +108,16 @@
         "title": "Planning & Navigatie",
         "description": "Vind de beste dagen met onze drukteskalender en navigeer live in het park."
       }
+    },
+    "about": {
+      "title": "Wat is park.fan?",
+      "p1": "park.fan is ontstaan uit een frustratie die elke pretparkfan kent: 90 minuten in de rij staan en je afvragen of slimmer plannen dit had kunnen voorkomen. Wat begon als een zijproject — «ik ga gewoon wat wachttijden bijhouden» — groeide uit tot een volledig platform dat nu 151 parken, 5.253 attracties dekt en dagelijks miljoenen wachtrij-records verwerkt. Het doel was en is: het giswerk bij het plannen van een pretparkbezoek voorgoed elimineren.",
+      "p2": "De AI achter park.fan analyseert historische bezoekersdata, weersverwachtingen, schoolvakantiekalenders en speciale evenementen om drukte en wachttijden dagen of zelfs weken van tevoren te voorspellen. In plaats van hopen op het beste, kun je van tevoren checken of aanstaande zaterdag in Europa-Park of Phantasialand een groene dag wordt — korte rijen, relaxte sfeer — of een rode dag met 60 minuten wachten bij elke populaire attractie. Het model wordt voortdurend getraind op nieuwe data en wordt met de tijd nauwkeuriger.",
+      "coverageTitle": "Welke parken zijn gedekt?",
+      "p3": "park.fan dekt momenteel 151 pretparken en 5.253 attracties wereldwijd — van Walt Disney World, Disneyland Resort, Universal Orlando en Universal Studios Japan tot Europese parken als Europa-Park, Phantasialand, Efteling, Heide Park en Toverland, plus parken in Azië, Australië en Zuid-Amerika. Er worden regelmatig nieuwe parken toegevoegd.",
+      "howTitle": "Hoe gebruik je park.fan?",
+      "p4": "Zoek je park via de zoekbalk of blader per continent, land en stad. Op de parkpagina vind je live wachttijden voor elke attractie, restaurant en show — elke minuut bijgewerkt — samen met AI-druktevoorspellingen en een dag-voor-dag druktekalender. Groene dagen betekenen korte rijen en weinig drukte; oranje of rode dagen signaleren hogere bezetting en langere wachttijden.",
+      "p5": "park.fan is een levend project dat voortdurend wordt uitgebreid met nieuwe functies en parken. Sla je favoriete parken op voor snelle toegang, gebruik de navigatie in het park voor de meest efficiënte route, en check altijd de druktekalender vóór het boeken om je bezoek op de best mogelijke dag te plannen."
     }
   },
   "footer": {
@@ -613,7 +623,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Pretpark Wachttijden & Voorspellingen",
-      "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken wereldwijd. Plan je perfecte parkbezoek met realtime gegevens en navigatie in het park.",
+      "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken. Plan je bezoek met realtime gegevens en in-park navigatie.",
       "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd"
     },
     "home": {
@@ -623,24 +633,25 @@
     "parks": {
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
-      "metaDescriptionTemplate": "Live wachttijden en druktekalender voor {park}. Bekijk vandaag's druktevoorspelling, beste bezoekdagen en openingstijden. Plan je bezoek optimaal.",
-      "titleTemplate": "{park} {city} Wachttijden & Beste Bezoekdagen"
+      "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "titleTemplate": "{park} {city} Wachttijden & Beste Bezoekdagen",
+      "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen"
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
-      "metaDescriptionTemplate": "Actuele wachttijden en voorspellingen voor {attraction} in {park} {city}. Check live wachtrij data en drukte."
+      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden, druktevoorspellingen en live data. Vergelijk parken, check openingstijden en plan je perfecte bezoek."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk parken en plan je bezoek."
     },
     "country": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
     },
     "city": {
       "titleTemplate": "Pretparken in {city}, {country}: Wachttijden",
-      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk vandaag's verwachting, openingstijden en plan je bezoek met onze realtime druktekalender."
+      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk openingstijden en plan je bezoek met de realtime druktekalender."
     },
     "search": {
       "titleTemplate": "Zoeken: {query}",

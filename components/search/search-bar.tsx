@@ -39,15 +39,15 @@ const typeIcons = {
 function SkeletonItem({ width }: { width: string }) {
   return (
     <div className="flex items-center gap-4 rounded-lg px-3 py-3.5">
-      <div className="h-11 w-11 shrink-0 animate-pulse rounded-xl bg-foreground/10" />
+      <div className="bg-foreground/10 h-11 w-11 shrink-0 animate-pulse rounded-xl" />
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-center justify-between gap-3">
-          <div className="h-3.5 animate-pulse rounded-full bg-foreground/10" style={{ width }} />
-          <div className="h-4 w-14 animate-pulse rounded-full bg-foreground/[8%]" />
+          <div className="bg-foreground/10 h-3.5 animate-pulse rounded-full" style={{ width }} />
+          <div className="bg-foreground/[8%] h-4 w-14 animate-pulse rounded-full" />
         </div>
         <div className="flex items-center justify-between gap-3">
-          <div className="h-2.5 w-28 animate-pulse rounded-full bg-foreground/[8%]" />
-          <div className="h-2.5 w-10 animate-pulse rounded-full bg-foreground/[8%]" />
+          <div className="bg-foreground/[8%] h-2.5 w-28 animate-pulse rounded-full" />
+          <div className="bg-foreground/[8%] h-2.5 w-10 animate-pulse rounded-full" />
         </div>
       </div>
     </div>
@@ -299,7 +299,7 @@ export function SearchCommand({
         className="flex cursor-pointer items-center gap-4"
       >
         {/* Icon */}
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-foreground/10">
+        <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
           <Icon className="text-foreground/65 h-5 w-5" />
         </div>
 
@@ -310,9 +310,7 @@ export function SearchCommand({
             <span className="truncate text-[15px] leading-none font-semibold">
               {stripNewPrefix(result.name)}
             </span>
-            {result.status && (
-              <ParkStatusBadge status={result.status} className="text-[11px]" />
-            )}
+            {result.status && <ParkStatusBadge status={result.status} className="text-[11px]" />}
           </div>
 
           {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
@@ -432,8 +430,8 @@ export function SearchCommand({
           <div
             className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
               size === 'sm'
-                ? 'h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm bg-background/60 hover:bg-background/75'
-                : 'h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base bg-background/35 hover:bg-background/50'
+                ? 'bg-background/60 hover:bg-background/75 h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
+                : 'bg-background/35 hover:bg-background/50 h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
             } ${className}`}
           >
             <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
@@ -549,10 +547,10 @@ export function SearchCommand({
               })}
 
               {/* Link to full search page */}
-              <div className="border-t border-border/30 p-3">
+              <div className="border-border/30 border-t p-3">
                 <Button
                   variant="ghost"
-                  className="w-full justify-center text-sm hover:bg-foreground/10"
+                  className="hover:bg-foreground/10 w-full justify-center text-sm"
                   onClick={() => {
                     handleOpenChange(false);
                     trackSearchViewAll();
