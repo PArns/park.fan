@@ -85,6 +85,11 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     ? t(titleKey, { park: parkName })
     : t(titleKey, { park: parkName, city: cityName });
 
+  const descriptionKey = cityInParkName ? 'metaDescriptionTemplateNoCity' : 'metaDescriptionTemplate';
+  const description = cityInParkName
+    ? t(descriptionKey, { park: parkName })
+    : t(descriptionKey, { park: parkName, city: cityName });
+
   const keywords = [
     parkName,
     `${parkName} ${cityName}`,
@@ -98,12 +103,12 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
   return {
     title,
-    description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
+    description,
     keywords,
     ...buildOpenGraphMetadata({
       locale,
       title,
-      description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
+      description,
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('park', { park: parkName }),

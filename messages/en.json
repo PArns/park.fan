@@ -636,9 +636,10 @@
     "parks": {
       "title": "Theme Parks Worldwide",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
-      "metaDescriptionTemplate": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
+      "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
       "titleTemplate": "{park} {city} Wait Times & Best Days to Visit",
-      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit"
+      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit",
+      "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours."
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
