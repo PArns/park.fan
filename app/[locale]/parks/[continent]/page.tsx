@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       canonical: `https://park.fan/${locale}/parks/${continent}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/parks/${continent}`),
-        'x-default': `/en/parks/${continent}`,
+        'x-default': `https://park.fan/en/parks/${continent}`,
       },
     },
   };

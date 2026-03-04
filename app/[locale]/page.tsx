@@ -85,7 +85,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       canonical: `https://park.fan/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': '/en',
+        'x-default': 'https://park.fan/en',
       },
     },
   };

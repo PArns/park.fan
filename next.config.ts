@@ -5,6 +5,7 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  poweredByHeader: false,
   compiler: {
     // Remove React properties that are not needed in production
     reactRemoveProperties: process.env.NODE_ENV === 'production',

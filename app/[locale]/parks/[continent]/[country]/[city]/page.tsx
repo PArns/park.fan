@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
       canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${citySlug}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/parks/${continent}/${country}/${citySlug}`),
-        'x-default': `/en/parks/${continent}/${country}/${citySlug}`,
+        'x-default': `https://park.fan/en/parks/${continent}/${country}/${citySlug}`,
       },
     },
   };

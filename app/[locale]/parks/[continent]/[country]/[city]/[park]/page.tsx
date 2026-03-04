@@ -102,7 +102,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
         ...generateAlternateLanguages(
           (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}`
         ),
-        'x-default': `/en/parks/${continent}/${country}/${city}/${parkSlug}`,
+        'x-default': `https://park.fan/en/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
     },
   };

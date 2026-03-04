@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
       canonical: `${siteUrl}/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': '/en',
+        'x-default': 'https://park.fan/en',
       },
     },
     openGraph: {

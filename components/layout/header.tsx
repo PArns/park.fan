@@ -64,7 +64,7 @@ export function Header() {
             src="/logo-small.svg"
             width={26}
             height={30}
-            alt=""
+            alt="park.fan"
             className="h-7 w-auto dark:hidden md:h-9"
             priority
             aria-hidden="true"
@@ -73,7 +73,7 @@ export function Header() {
             src="/logo-small-dark.svg"
             width={26}
             height={30}
-            alt=""
+            alt="park.fan"
             className="hidden h-7 w-auto dark:block md:h-9"
             priority
             aria-hidden="true"

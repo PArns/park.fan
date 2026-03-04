@@ -29,7 +29,7 @@ export async function Footer({ locale }: FooterProps) {
                 src="/logo.svg"
                 width={27}
                 height={32}
-                alt=""
+                alt="park.fan"
                 className="h-8 w-auto shrink-0 dark:hidden md:h-12"
                 aria-hidden="true"
               />
@@ -37,7 +37,7 @@ export async function Footer({ locale }: FooterProps) {
                 src="/logo-dark.svg"
                 width={27}
                 height={32}
-                alt=""
+                alt="park.fan"
                 className="hidden h-8 w-auto shrink-0 dark:block md:h-12"
                 aria-hidden="true"
               />
