@@ -624,7 +624,8 @@
       "title": "Parcs d'Attractions Monde",
       "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
       "metaDescriptionTemplate": "Temps d'attente en direct et calendrier d'affluence pour {park}. Vérifiez les prévisions du jour, meilleurs jours de visite et horaires. Planifiez votre visite.",
-      "titleTemplate": "{park} {city} Temps d'Attente & Meilleurs Jours"
+      "titleTemplate": "{park} {city} Temps d'Attente & Meilleurs Jours",
+      "titleTemplateNoCity": "{park} – Temps d'Attente & Meilleurs Jours"
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",

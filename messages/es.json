@@ -624,7 +624,8 @@
       "title": "Parques Temáticos Mundiales",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
       "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario de afluencia para {park}. Consulta pronóstico de hoy, mejores días para visitar y horarios. Planifica tu visita perfecta.",
-      "titleTemplate": "{park} {city} Tiempos de Espera & Mejores Días"
+      "titleTemplate": "{park} {city} Tiempos de Espera & Mejores Días",
+      "titleTemplateNoCity": "{park} – Tiempos de Espera & Mejores Días"
     },
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",

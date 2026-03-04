@@ -624,7 +624,8 @@
       "title": "Parchi a tema nel mondo",
       "description": "Confronta i tempi di coda in diretta, lo stato operativo e i livelli di affluenza dei principali parchi a tema, tra cui Disney World, Disneyland, Universal Studios ed Europa-Park.",
       "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario delle affluenze per {park}. Controlla la previsione di affluenza di oggi, i giorni migliori per visitare e gli orari di apertura.",
-      "titleTemplate": "{park} {city} - Tempi di attesa e giorni migliori per visitare"
+      "titleTemplate": "{park} {city} - Tempi di attesa e giorni migliori per visitare",
+      "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare"
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",

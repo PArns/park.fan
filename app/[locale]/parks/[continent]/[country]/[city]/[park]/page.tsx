@@ -73,6 +73,12 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
+  const cityInParkName = parkName.toLowerCase().includes(cityName.toLowerCase());
+  const titleKey = cityInParkName ? 'titleTemplateNoCity' : 'titleTemplate';
+  const title = cityInParkName
+    ? t(titleKey, { park: parkName })
+    : t(titleKey, { park: parkName, city: cityName });
+
   const keywords = [
     parkName,
     `${parkName} ${cityName}`,
@@ -85,12 +91,12 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   ].join(', ');
 
   return {
-    title: t('titleTemplate', { park: parkName, city: cityName }),
+    title,
     description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
     keywords,
     ...buildOpenGraphMetadata({
       locale,
-      title: t('titleTemplate', { park: parkName, city: cityName }),
+      title,
       description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       ogImageUrl,

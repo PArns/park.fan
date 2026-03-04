@@ -624,7 +624,8 @@
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten und Crowd-Kalender für {park}. Prüfe heutige Besucherprognose, beste Besuchstage und Öffnungszeiten. Plane deinen Besuch optimal.",
-      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage"
+      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage",
+      "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage"
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",

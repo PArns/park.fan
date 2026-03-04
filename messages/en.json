@@ -624,7 +624,8 @@
       "title": "Theme Parks Worldwide",
       "description": "Compare live queue times, operating status, and crowd levels for top theme parks including Disney World, Disneyland, Universal Studios, and Europa-Park.",
       "metaDescriptionTemplate": "Live wait times and crowd calendar for {park}. Check today's crowd forecast, best days to visit, and opening hours. Plan your visit with real-time predictions.",
-      "titleTemplate": "{park} {city} Wait Times & Best Days to Visit"
+      "titleTemplate": "{park} {city} Wait Times & Best Days to Visit",
+      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit"
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
