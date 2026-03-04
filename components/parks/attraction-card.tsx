@@ -136,7 +136,7 @@ export function AttractionCard({
       prefetch={status === 'OPERATING'} // Only prefetch operating attractions
       className="group block h-full"
     >
-      <Card className="relative h-full overflow-hidden bg-background/60 backdrop-blur-md transition-colors hover:bg-background/70">
+      <Card className="bg-background/60 hover:bg-background/70 relative h-full overflow-hidden backdrop-blur-md transition-colors">
         {/* Background Image */}
         {backgroundImage && (
           <BackgroundOverlay

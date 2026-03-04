@@ -234,7 +234,7 @@ export function TabsWithHash({
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <TabsList className="mb-6 flex h-auto w-full flex-wrap justify-start border border-border/50 bg-background/60 backdrop-blur-md">
+          <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
             <TabsTrigger value="attractions">
               {t('attractions')} ({park.attractions?.length || 0})
             </TabsTrigger>
@@ -272,7 +272,7 @@ export function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <TabsList className="mb-6 flex h-auto w-full flex-wrap justify-start border border-border/50 bg-background/60 backdrop-blur-md">
+        <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
           <TabsTrigger value="attractions">
             {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
@@ -374,7 +374,7 @@ export function TabsWithHash({
           <TabsContent value="restaurants">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
-                <Card key={restaurant.id} className="relative bg-background/60 backdrop-blur-md">
+                <Card key={restaurant.id} className="bg-background/60 relative backdrop-blur-md">
                   {/* Favorite Star */}
                   {restaurant.id && (
                     <div className="absolute top-2 right-2 z-20 flex items-center justify-center">

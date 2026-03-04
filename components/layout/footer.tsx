@@ -30,7 +30,7 @@ export async function Footer({ locale }: FooterProps) {
                 width={27}
                 height={32}
                 alt="park.fan"
-                className="h-8 w-auto shrink-0 dark:hidden md:h-12"
+                className="h-8 w-auto shrink-0 md:h-12 dark:hidden"
                 aria-hidden="true"
               />
               <Image
@@ -38,7 +38,7 @@ export async function Footer({ locale }: FooterProps) {
                 width={27}
                 height={32}
                 alt="park.fan"
-                className="hidden h-8 w-auto shrink-0 dark:block md:h-12"
+                className="hidden h-8 w-auto shrink-0 md:h-12 dark:block"
                 aria-hidden="true"
               />
               <Image
@@ -46,14 +46,14 @@ export async function Footer({ locale }: FooterProps) {
                 width={84}
                 height={24}
                 alt="park.fan"
-                className="h-8 w-auto dark:hidden md:h-12"
+                className="h-8 w-auto md:h-12 dark:hidden"
               />
               <Image
                 src="/parkfan-dark.svg"
                 width={84}
                 height={24}
                 alt="park.fan"
-                className="hidden h-8 w-auto dark:block md:h-12"
+                className="hidden h-8 w-auto md:h-12 dark:block"
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
