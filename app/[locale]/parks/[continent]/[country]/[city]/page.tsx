@@ -12,6 +12,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCityBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { stripParkAttractions } from '@/lib/utils/park-utils';
 import type { Metadata } from 'next';
 
 interface CityPageProps {
@@ -70,15 +71,10 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Find the specific city we're looking for.
-  // Strip attractions from each park upfront – the array is not used on this page
-  // but inflates the RSC payload for large countries (e.g. USA has 10k+ entries).
-  const city = response.data
-    .map((c) => ({
-      ...c,
-      parks: c.parks.map(({ attractions: _, ...park }) => park),
-    }))
-    .find((c) => c.slug === citySlug);
+  // Find the target city first, then strip attractions from its parks.
+  // (stripping upfront via map+find would process every city's parks unnecessarily)
+  const rawCity = response.data.find((c) => c.slug === citySlug);
+  const city = rawCity ? stripParkAttractions([rawCity])[0] : undefined;
 
   if (!city || city.parks.length === 0) {
     // Before returning 404, check if the "city" slug is actually a park

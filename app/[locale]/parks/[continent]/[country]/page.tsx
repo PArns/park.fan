@@ -13,6 +13,7 @@ import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/s
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { stripParkAttractions } from '@/lib/utils/park-utils';
 import type { Metadata } from 'next';
 
 interface CountryPageProps {
@@ -86,12 +87,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
     notFound();
   }
 
-  // Strip the attractions array from each park – it's not used on this page
-  // but can be thousands of items (e.g. USA), massively inflating the RSC payload.
-  const cities = response.data.map((city) => ({
-    ...city,
-    parks: city.parks.map(({ attractions: _, ...park }) => park),
-  }));
+  const cities = stripParkAttractions(response.data);
 
   // Calculate totals
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);
