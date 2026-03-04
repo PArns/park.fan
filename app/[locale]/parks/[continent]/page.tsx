@@ -80,7 +80,11 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     // If we haven't seen this name yet, or if this entry has more parks (prefer the "main" entry), use it
     const existing = uniqueCountries.get(resolvedName);
     if (!existing || country.parkCount > existing.parkCount) {
-      uniqueCountries.set(resolvedName, { ...country, displayName: resolvedName });
+      // Drop the nested cities→parks→attractions tree – this page only needs
+      // country-level aggregate fields, and the full tree can be hundreds of
+      // thousands of bytes (e.g. all US attraction data) in the RSC payload.
+      const { cities: _, ...countryData } = country;
+      uniqueCountries.set(resolvedName, { ...countryData, displayName: resolvedName });
     }
   });
 

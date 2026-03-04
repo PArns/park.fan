@@ -70,8 +70,15 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Find the specific city we're looking for
-  const city = response.data.find((c) => c.slug === citySlug);
+  // Find the specific city we're looking for.
+  // Strip attractions from each park upfront – the array is not used on this page
+  // but inflates the RSC payload for large countries (e.g. USA has 10k+ entries).
+  const city = response.data
+    .map((c) => ({
+      ...c,
+      parks: c.parks.map(({ attractions: _, ...park }) => park),
+    }))
+    .find((c) => c.slug === citySlug);
 
   if (!city || city.parks.length === 0) {
     // Before returning 404, check if the "city" slug is actually a park
