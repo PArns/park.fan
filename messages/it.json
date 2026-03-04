@@ -613,7 +613,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Tempi di attesa e previsioni per parchi a tema",
-      "description": "Tempi di attesa in tempo reale, previsioni di affluenza e programmi per i parchi a tema. Pianifica la visita perfetta con previsioni ML per oltre 142 parchi a tema nel mondo.",
+      "description": "Tempi di attesa in tempo reale e previsioni di affluenza per 142+ parchi a tema. Pianifica la visita con dati live.",
       "keywords": "tempi di attesa parchi a tema, tempi di coda, previsioni affluenza, disponibilità giostre, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, calendario parco a tema, miglior momento per visitare"
     },
     "home": {
@@ -622,26 +622,26 @@
     },
     "parks": {
       "title": "Parchi a tema nel mondo",
-      "description": "Confronta i tempi di coda in diretta, lo stato operativo e i livelli di affluenza dei principali parchi a tema, tra cui Disney World, Disneyland, Universal Studios ed Europa-Park.",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario delle affluenze per {park}. Controlla la previsione di affluenza di oggi, i giorni migliori per visitare e gli orari di apertura.",
+      "description": "Confronta i tempi di coda in diretta e l'affluenza dei principali parchi: Disney, Universal Studios ed Europa-Park.",
+      "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
       "titleTemplate": "{park} {city} - Tempi di attesa e giorni migliori per visitare",
       "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare"
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
-      "metaDescriptionTemplate": "Tempi di attesa attuali e previsioni per {attraction} a {park} {city}. Controlla i dati sulle code e i livelli di affluenza in diretta."
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza."
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
-      "metaDescriptionTemplate": "Esplora i parchi a tema in {location} con tempi di attesa in tempo reale, previsioni di affluenza e dati in diretta. Confronta i parchi, controlla gli orari di apertura e pianifica la visita perfetta."
+      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e orari. Confronta i parchi e pianifica la tua visita."
     },
     "country": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",
-      "metaDescriptionTemplate": "Scopri i parchi a tema in {location} con tempi di attesa in diretta, previsioni di affluenza e programmi di apertura. Confronta i livelli di affluenza e pianifica i giorni migliori per visitare."
+      "metaDescriptionTemplate": "Parchi a tema in {location}: tempi di attesa in diretta, previsioni e giorni migliori. Confronta i livelli di affluenza."
     },
     "city": {
       "titleTemplate": "Parchi a tema a {city}, {country}: Tempi di attesa e orari",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta e previsioni di affluenza per i parchi a tema a {city}. Controlla le previsioni di oggi, gli orari di apertura e pianifica la tua visita con il nostro calendario di affluenza in tempo reale."
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per i parchi a tema a {city}. Previsioni del giorno, orari di apertura e calendario di affluenza."
     },
     "search": {
       "titleTemplate": "Ricerca: {query}",

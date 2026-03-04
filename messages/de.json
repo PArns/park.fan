@@ -613,7 +613,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
-      "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
+      "description": "Live-Wartezeiten und KI-Prognosen für 142+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
       "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
     },
     "home": {
@@ -623,25 +623,25 @@
     "parks": {
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Crowd-Kalender für {park}. Prüfe heutige Besucherprognose, beste Besuchstage und Öffnungszeiten. Plane deinen Besuch optimal.",
+      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
       "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage",
       "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage"
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
-      "metaDescriptionTemplate": "Aktuelle Wartezeit und Prognosen für {attraction} im {park} {city}. Prüfe Live-Daten und Besucherandrang."
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten, Besucherprognosen und Live-Daten. Vergleiche Parks, prüfe Öffnungszeiten und plane deinen perfekten Besuch."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Parks und plane deinen Besuch."
     },
     "country": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",
-      "metaDescriptionTemplate": "Entdecke Freizeitparks in {location} mit Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Vergleiche Besucherandrang und plane die besten Besuchstage."
+      "metaDescriptionTemplate": "Freizeitparks in {location}: Live-Wartezeiten, Besucherprognosen und Öffnungszeiten. Plane die besten Besuchstage."
     },
     "city": {
       "titleTemplate": "Freizeitparks in {city}, {country}: Wartezeiten",
-      "metaDescriptionTemplate": "Live-Wartezeiten und Besucherprognosen für Freizeitparks in {city}. Prüfe heutige Vorhersage, Öffnungszeiten und plane deinen Besuch mit unserem Echtzeit-Crowd-Kalender."
+      "metaDescriptionTemplate": "Live-Wartezeiten und Prognosen für Freizeitparks in {city}. Prüfe Öffnungszeiten und plane deinen Besuch mit dem Echtzeit-Kalender."
     },
     "search": {
       "titleTemplate": "Suche: {query}",

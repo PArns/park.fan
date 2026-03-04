@@ -613,7 +613,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Tiempos de Espera Parques Temáticos & Predicciones",
-      "description": "Tiempos de espera en vivo y predicciones de afluencia para más de 142 parques temáticos. Planifica tu visita perfecta con datos en tiempo real y navegación.",
+      "description": "Tiempos de espera en vivo y predicciones de afluencia para 142+ parques temáticos. Planifica tu visita con datos en tiempo real.",
       "keywords": "tiempos de espera parques temáticos, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, calendario parque, mejor momento visita"
     },
     "home": {
@@ -623,25 +623,25 @@
     "parks": {
       "title": "Parques Temáticos Mundiales",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario de afluencia para {park}. Consulta pronóstico de hoy, mejores días para visitar y horarios. Planifica tu visita perfecta.",
+      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
       "titleTemplate": "{park} {city} Tiempos de Espera & Mejores Días",
       "titleTemplateNoCity": "{park} – Tiempos de Espera & Mejores Días"
     },
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
-      "metaDescriptionTemplate": "Tiempos de espera actuales y predicciones para {attraction} en {park} {city}. Revisa la cola en vivo."
+      "metaDescriptionTemplate": "Tiempos de espera actuales para {attraction} en {park}. Revisa la cola en vivo y el nivel de afluencia."
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en tiempo real, predicciones de afluencia y datos en vivo. Compara parques, horarios y planifica tu visita perfecta."
+      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Compara parques y planifica tu visita."
     },
     "country": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",
-      "metaDescriptionTemplate": "Descubre parques temáticos en {location} con tiempos de espera en vivo, predicciones de afluencia y horarios. Compara niveles de afluencia y planifica los mejores días para visitar."
+      "metaDescriptionTemplate": "Parques temáticos en {location}: tiempos de espera en vivo, predicciones y horarios. Planifica los mejores días de visita."
     },
     "city": {
       "titleTemplate": "Parques Temáticos en {city}, {country}: Tiempos de Espera",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y predicciones de afluencia para parques temáticos en {city}. Consulta el pronóstico de hoy, horarios y planifica tu visita con nuestro calendario de afluencia."
+      "metaDescriptionTemplate": "Tiempos de espera en vivo para parques temáticos en {city}. Pronóstico de hoy, horarios y calendario de afluencia."
     },
     "search": {
       "titleTemplate": "Búsqueda: {query}",

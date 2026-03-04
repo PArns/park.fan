@@ -613,7 +613,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Pretpark Wachttijden & Voorspellingen",
-      "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken wereldwijd. Plan je perfecte parkbezoek met realtime gegevens en navigatie in het park.",
+      "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken. Plan je bezoek met realtime gegevens en in-park navigatie.",
       "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd"
     },
     "home": {
@@ -623,25 +623,25 @@
     "parks": {
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
-      "metaDescriptionTemplate": "Live wachttijden en druktekalender voor {park}. Bekijk vandaag's druktevoorspelling, beste bezoekdagen en openingstijden. Plan je bezoek optimaal.",
+      "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
       "titleTemplate": "{park} {city} Wachttijden & Beste Bezoekdagen",
       "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen"
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
-      "metaDescriptionTemplate": "Actuele wachttijden en voorspellingen voor {attraction} in {park} {city}. Check live wachtrij data en drukte."
+      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met realtime wachttijden, druktevoorspellingen en live data. Vergelijk parken, check openingstijden en plan je perfecte bezoek."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk parken en plan je bezoek."
     },
     "country": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
-      "metaDescriptionTemplate": "Ontdek pretparken in {location} met live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
+      "metaDescriptionTemplate": "Pretparken in {location}: live wachttijden, druktevoorspellingen en openingstijden. Vergelijk drukte en plan de beste bezoekdagen."
     },
     "city": {
       "titleTemplate": "Pretparken in {city}, {country}: Wachttijden",
-      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk vandaag's verwachting, openingstijden en plan je bezoek met onze realtime druktekalender."
+      "metaDescriptionTemplate": "Live wachttijden en druktevoorspellingen voor pretparken in {city}. Bekijk openingstijden en plan je bezoek met de realtime druktekalender."
     },
     "search": {
       "titleTemplate": "Zoeken: {query}",

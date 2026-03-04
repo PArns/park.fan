@@ -613,7 +613,7 @@
   "seo": {
     "global": {
       "title": "park.fan - Temps d'Attente Parcs d'Attractions & Prédictions",
-      "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
+      "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs. Planifiez votre visite avec des données en temps réel.",
       "keywords": "temps d'attente parc attraction, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, calendrier parc, meilleur moment visite"
     },
     "home": {
@@ -623,25 +623,25 @@
     "parks": {
       "title": "Parcs d'Attractions Monde",
       "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
-      "metaDescriptionTemplate": "Temps d'attente en direct et calendrier d'affluence pour {park}. Vérifiez les prévisions du jour, meilleurs jours de visite et horaires. Planifiez votre visite.",
+      "metaDescriptionTemplate": "Temps d'attente en direct et calendrier pour {park}. Prévisions du jour, meilleurs jours et horaires d'ouverture.",
       "titleTemplate": "{park} {city} Temps d'Attente & Meilleurs Jours",
       "titleTemplateNoCity": "{park} – Temps d'Attente & Meilleurs Jours"
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",
-      "metaDescriptionTemplate": "Temps d'attente actuels et prédictions pour {attraction} à {park} {city}. Vérifiez la file en direct."
+      "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence."
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en temps réel, prévisions d'affluence et données live. Comparez les parcs, horaires et planifiez votre visite parfaite."
+      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Comparez les parcs et planifiez votre visite."
     },
     "country": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",
-      "metaDescriptionTemplate": "Découvrez les parcs en {location} avec temps d'attente en direct, prévisions d'affluence et horaires. Comparez l'affluence et planifiez les meilleurs jours de visite."
+      "metaDescriptionTemplate": "Parcs en {location} : temps d'attente en direct, prévisions d'affluence et horaires. Planifiez les meilleurs jours de visite."
     },
     "city": {
       "titleTemplate": "Parcs d'Attractions à {city}, {country} : Attente & Horaires",
-      "metaDescriptionTemplate": "Temps d'attente en direct et prévisions d'affluence pour les parcs à {city}. Vérifiez les prévisions du jour, horaires et planifiez votre visite avec notre calendrier d'affluence."
+      "metaDescriptionTemplate": "Temps d'attente en direct pour les parcs à {city}. Prévisions du jour, horaires et calendrier d'affluence en temps réel."
     },
     "search": {
       "titleTemplate": "Recherche: {query}",
