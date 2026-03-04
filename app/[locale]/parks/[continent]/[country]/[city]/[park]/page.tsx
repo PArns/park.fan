@@ -73,7 +73,13 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
-  const cityInParkName = parkName.toLowerCase().includes(cityName.toLowerCase());
+  const parkNameLower = parkName.toLowerCase();
+  const cityNameLower = cityName.toLowerCase();
+  const cityInParkName =
+    parkNameLower.includes(cityNameLower) ||
+    cityNameLower.split(/\s+/).some(
+      (word) => word.length > 3 && parkNameLower.split(/\s+/).includes(word),
+    );
   const titleKey = cityInParkName ? 'titleTemplateNoCity' : 'titleTemplate';
   const title = cityInParkName
     ? t(titleKey, { park: parkName })

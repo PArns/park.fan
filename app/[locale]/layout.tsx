@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
 
   return {
     title: {
-      template: '%s | park.fan',
+      template: '%s',
       default: t('title'),
     },
     description: t('description'),
