@@ -72,6 +72,7 @@ export function BreadcrumbNav({
   // Uses getBoundingClientRect so we detect overflow into the right padding area
   // before text touches the border, and avoids false positives on w-fit navs
   // where scrollWidth === clientWidth even when items perfectly fill the content.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useLayoutEffect(() => {
     if (userExpanded) return;
     const nav = navRef.current;
@@ -184,10 +185,7 @@ export function BreadcrumbNav({
           <Link
             href={lastPinnedCrumb.url}
             prefetch={false}
-            className={cn(
-              'hover:text-foreground',
-              allCollapsed ? 'min-w-0 truncate' : 'shrink-0'
-            )}
+            className={cn('hover:text-foreground', allCollapsed ? 'min-w-0 truncate' : 'shrink-0')}
           >
             {lastPinnedCrumb.name}
           </Link>
