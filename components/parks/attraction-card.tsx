@@ -89,15 +89,6 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
     }
   }
 
-  // For FavoriteAttraction, try to construct from park data if available
-  if ('park' in attraction && attraction.park) {
-    const favoriteAttraction = attraction as FavoriteAttraction;
-    const park = favoriteAttraction.park;
-    if (park && park.continent && park.country && park.city) {
-      return `/parks/${park.continent}/${park.country}/${park.city}/${park.slug}/${attraction.slug}`;
-    }
-  }
-
   // Fallback: use parkPath (for ParkAttraction on park detail pages)
   if (parkPath) {
     return `${parkPath}/${attraction.slug}` as '/europe/germany/rust/europa-park/blue-fire';

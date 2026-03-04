@@ -85,13 +85,6 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
   if (result.url) {
     // Use centralized utility for URL conversion
     href = convertApiUrlToFrontendUrl(result.url);
-  } else if (result.type === 'park') {
-    // Fallback URL construction for parks
-    if (result.slug && result.city && result.country) {
-      href = `/parks/${result.continent?.toLowerCase() || 'europe'}/${result.country.toLowerCase()}/${result.city.toLowerCase().replace(/\s+/g, '-')}/${result.slug}`;
-    } else {
-      href = `/search?q=${result.name}`;
-    }
   } else if (result.parentPark && result.parentPark.url) {
     // Fallback for attractions/shows/restaurants without explicit URL
     const parkUrl = convertApiUrlToFrontendUrl(result.parentPark.url);
