@@ -13,8 +13,8 @@
  * Use this whenever you receive a URL from the API response.
  *
  * Examples:
- * - /v1/parks/europe/germany/bruhl/phantasialand → /parks/europe/germany/bruhl/phantasialand
- * - /v1/parks/europe/germany/bruhl/phantasialand/attractions/taron → /parks/europe/germany/bruhl/phantasialand/taron
+ * - /v1/parks/europe/germany/bruehl/phantasialand → /parks/europe/germany/bruehl/phantasialand
+ * - /v1/parks/europe/germany/bruehl/phantasialand/attractions/taron → /parks/europe/germany/bruehl/phantasialand/taron
  * - /v1/shows/... → /parks/...#shows
  * - /v1/restaurants/... → /parks/...#restaurants
  * - /v1/discovery/... → /parks/...
@@ -174,10 +174,10 @@ export interface AttractionGeoData {
  * buildParkUrl({
  *   continent: 'europe',
  *   country: 'germany',
- *   city: 'bruhl',
+ *   city: 'bruehl',
  *   slug: 'phantasialand'
  * })
- * // Returns: '/parks/europe/germany/bruhl/phantasialand'
+ * // Returns: '/parks/europe/germany/bruehl/phantasialand'
  * ```
  */
 export function buildParkUrl(data: ParkGeoData): string {
@@ -217,11 +217,11 @@ export function buildParkUrl(data: ParkGeoData): string {
  *   park: {
  *     continent: 'europe',
  *     country: 'germany',
- *     city: 'bruhl',
+ *     city: 'bruehl',
  *     slug: 'phantasialand'
  *   }
  * })
- * // Returns: '/parks/europe/germany/bruhl/phantasialand/taron'
+ * // Returns: '/parks/europe/germany/bruehl/phantasialand/taron'
  * ```
  */
 export function buildAttractionUrlFromGeo(data: AttractionGeoData): string {
