@@ -180,12 +180,12 @@ export async function Footer({ locale }: FooterProps) {
                   aria-label="Popular theme parks in USA"
                 >
                   <Link
-                    href="/parks/north-america/united-states/orlando/walt-disney-world"
+                    href="/parks/north-america/united-states/orlando/magic-kingdom-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Walt Disney World - Wait Times"
+                    aria-label="Magic Kingdom - Wait Times"
                   >
-                    Walt Disney World
+                    Magic Kingdom
                   </Link>
                   <Link
                     href="/parks/north-america/united-states/orlando/universal-studios-florida"
@@ -204,15 +204,15 @@ export async function Footer({ locale }: FooterProps) {
                     Busch Gardens Tampa
                   </Link>
                   <Link
-                    href="/parks/north-america/united-states/sandusky/cedar-point"
+                    href="/parks/north-america/united-states/anaheim/disneyland-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Cedar Point - Wait Times"
+                    aria-label="Disneyland - Wait Times"
                   >
-                    Cedar Point
+                    Disneyland
                   </Link>
                   <Link
-                    href="/parks/north-america/united-states/valencia/six-flags-magic-mountain"
+                    href="/parks/north-america/united-states/santa-clarita/six-flags-magic-mountain"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Six Flags Magic Mountain - Wait Times"
@@ -244,7 +244,7 @@ export async function Footer({ locale }: FooterProps) {
                   aria-label={`Popular theme parks in ${tGeo('countries.france')}`}
                 >
                   <Link
-                    href="/parks/europe/france/marne-la-vallee/disneyland-paris"
+                    href="/parks/europe/france/paris/disneyland-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Disneyland Paris - Wait Times"
@@ -260,12 +260,12 @@ export async function Footer({ locale }: FooterProps) {
                     Parc Asterix
                   </Link>
                   <Link
-                    href="/parks/europe/france/les-epesses/puy-du-fou"
+                    href="/parks/europe/france/paris/walt-disney-studios-park"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Puy du Fou - Wait Times"
+                    aria-label="Walt Disney Studios Park - Wait Times"
                   >
-                    Puy du Fou
+                    Walt Disney Studios
                   </Link>
                   <Link
                     href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
