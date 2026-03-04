@@ -13,6 +13,7 @@ import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/s
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { stripParkAttractions } from '@/lib/utils/park-utils';
 import type { Metadata } from 'next';
 
 interface CountryPageProps {
@@ -86,7 +87,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
     notFound();
   }
 
-  const { data: cities } = response;
+  const cities = stripParkAttractions(response.data);
 
   // Calculate totals
   const totalParks = cities.reduce((sum, c) => sum + c.parkCount, 0);

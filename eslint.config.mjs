@@ -9,6 +9,12 @@ const eslintConfig = defineConfig([
     settings: {
       react: { version: '19' },
     },
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { varsIgnorePattern: '^_', argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
+      ],
+    },
   },
   globalIgnores([
     // Default ignores of eslint-config-next:

@@ -73,11 +73,22 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
 
-  const cityInParkName = parkName.toLowerCase().includes(cityName.toLowerCase());
+  const parkNameLower = parkName.toLowerCase();
+  const cityNameLower = cityName.toLowerCase();
+  const cityInParkName =
+    parkNameLower.includes(cityNameLower) ||
+    cityNameLower.split(/\s+/).some(
+      (word) => word.length > 3 && parkNameLower.split(/\s+/).includes(word),
+    );
   const titleKey = cityInParkName ? 'titleTemplateNoCity' : 'titleTemplate';
   const title = cityInParkName
     ? t(titleKey, { park: parkName })
     : t(titleKey, { park: parkName, city: cityName });
+
+  const descriptionKey = cityInParkName ? 'metaDescriptionTemplateNoCity' : 'metaDescriptionTemplate';
+  const description = cityInParkName
+    ? t(descriptionKey, { park: parkName })
+    : t(descriptionKey, { park: parkName, city: cityName });
 
   const keywords = [
     parkName,
@@ -92,12 +103,12 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
   return {
     title,
-    description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
+    description,
     keywords,
     ...buildOpenGraphMetadata({
       locale,
       title,
-      description: t('metaDescriptionTemplate', { park: parkName, city: cityName }),
+      description,
       url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('park', { park: parkName }),
@@ -245,7 +256,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="mb-2 flex flex-wrap items-center gap-3">
-                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
+                    <h1 className="text-3xl font-bold md:text-4xl">
+                    {parkName}
+                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
+                      – {t('h1Suffix')}
+                    </span>
+                  </h1>
                     {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
                     {park.id && (
                       <div className="ml-auto">
@@ -293,6 +309,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           </div>
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
+          <h2 className="sr-only">{t('attractions')}</h2>
           <LiveParkData
             initialData={park}
             continent={continent}

@@ -12,6 +12,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCityBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { findCityPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { stripParkAttractions } from '@/lib/utils/park-utils';
 import type { Metadata } from 'next';
 
 interface CityPageProps {
@@ -61,6 +62,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const t = await getTranslations('geo');
   const tCommon = await getTranslations('common');
+  const tExplore = await getTranslations('explore');
 
   // Fetch cities with parks
   const response = await getCitiesWithParks(continent, country).catch(() => null);
@@ -69,8 +71,10 @@ export default async function CityPage({ params }: CityPageProps) {
     notFound();
   }
 
-  // Find the specific city we're looking for
-  const city = response.data.find((c) => c.slug === citySlug);
+  // Find the target city first, then strip attractions from its parks.
+  // (stripping upfront via map+find would process every city's parks unnecessarily)
+  const rawCity = response.data.find((c) => c.slug === citySlug);
+  const city = rawCity ? stripParkAttractions([rawCity])[0] : undefined;
 
   if (!city || city.parks.length === 0) {
     // Before returning 404, check if the "city" slug is actually a park
@@ -127,27 +131,30 @@ export default async function CityPage({ params }: CityPageProps) {
       />
 
       {/* Parks Grid */}
-      <div className="grid gap-6 md:grid-cols-2">
-        {parks.map((park) => (
-          <ParkCard
-            key={park.id}
-            name={stripNewPrefix(park.name)}
-            slug={park.slug}
-            city={city.name}
-            country={countryName}
-            href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
-            status={park.status}
-            crowdLevel={park.currentLoad?.crowdLevel}
-            averageWaitTime={park.analytics?.statistics?.avgWaitTime}
-            operatingAttractions={park.analytics?.statistics?.operatingAttractions}
-            totalAttractions={park.analytics?.statistics?.totalAttractions}
-            variant="detailed"
-            timezone={park.timezone}
-            todaySchedule={park.todaySchedule}
-            nextSchedule={park.nextSchedule}
-          />
-        ))}
-      </div>
+      <section aria-label={tExplore('parks')}>
+        <h2 className="sr-only">{tExplore('parks')}</h2>
+        <div className="grid gap-6 md:grid-cols-2">
+          {parks.map((park) => (
+            <ParkCard
+              key={park.id}
+              name={stripNewPrefix(park.name)}
+              slug={park.slug}
+              city={city.name}
+              country={countryName}
+              href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
+              status={park.status}
+              crowdLevel={park.currentLoad?.crowdLevel}
+              averageWaitTime={park.analytics?.statistics?.avgWaitTime}
+              operatingAttractions={park.analytics?.statistics?.operatingAttractions}
+              totalAttractions={park.analytics?.statistics?.totalAttractions}
+              variant="detailed"
+              timezone={park.timezone}
+              todaySchedule={park.todaySchedule}
+              nextSchedule={park.nextSchedule}
+            />
+          ))}
+        </div>
+      </section>
     </PageContainer>
   );
 }

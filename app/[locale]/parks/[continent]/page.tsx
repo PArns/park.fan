@@ -80,7 +80,11 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     // If we haven't seen this name yet, or if this entry has more parks (prefer the "main" entry), use it
     const existing = uniqueCountries.get(resolvedName);
     if (!existing || country.parkCount > existing.parkCount) {
-      uniqueCountries.set(resolvedName, { ...country, displayName: resolvedName });
+      // Drop the nested cities→parks→attractions tree – this page only needs
+      // country-level aggregate fields, and the full tree can be hundreds of
+      // thousands of bytes (e.g. all US attraction data) in the RSC payload.
+      const { cities: _, ...countryData } = country;
+      uniqueCountries.set(resolvedName, { ...countryData, displayName: resolvedName });
     }
   });
 
@@ -146,24 +150,27 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
         }
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {countries.map((country) => {
-          const countryName = translateCountry(t, country.slug, locale, country.name);
+      <section aria-label={tExplore('countries')}>
+        <h2 className="sr-only">{tExplore('countries')}</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {countries.map((country) => {
+            const countryName = translateCountry(t, country.slug, locale, country.name);
 
-          return (
-            <GeoLocationCard
-              key={country.slug}
-              name={countryName}
-              slug={country.slug}
-              href={`/parks/${continent}/${country.slug}`}
-              openParkCount={country.openParkCount}
-              totalParkCount={country.parkCount}
-              subtitle={`${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`}
-              variant="country"
-            />
-          );
-        })}
-      </div>
+            return (
+              <GeoLocationCard
+                key={country.slug}
+                name={countryName}
+                slug={country.slug}
+                href={`/parks/${continent}/${country.slug}`}
+                openParkCount={country.openParkCount}
+                totalParkCount={country.parkCount}
+                subtitle={`${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`}
+                variant="country"
+              />
+            );
+          })}
+        </div>
+      </section>
     </PageContainer>
   );
 }
