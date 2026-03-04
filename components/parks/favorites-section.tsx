@@ -235,13 +235,6 @@ export function FavoritesSection() {
                         }
                       }
 
-                      // If we don't have a park URL yet, construct from park data
-                      if (!parkUrl && show.park) {
-                        if (show.park.continent && show.park.country && show.park.city) {
-                          parkUrl = `/parks/${show.park.continent}/${show.park.country}/${show.park.city}/${show.park.slug}`;
-                        }
-                      }
-
                       // Build show URL with hash
                       if (parkUrl) {
                         showHref = buildShowUrl(parkUrl);
@@ -295,17 +288,6 @@ export function FavoritesSection() {
                         if (converted !== '#' && converted.startsWith('/parks/')) {
                           parkUrl = converted;
                         }
-                      }
-                    }
-
-                    // If we don't have a park URL yet, construct from park data
-                    if (!parkUrl && restaurant.park) {
-                      if (
-                        restaurant.park.continent &&
-                        restaurant.park.country &&
-                        restaurant.park.city
-                      ) {
-                        parkUrl = `/parks/${restaurant.park.continent}/${restaurant.park.country}/${restaurant.park.city}/${restaurant.park.slug}`;
                       }
                     }
 

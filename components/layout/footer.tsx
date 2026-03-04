@@ -124,7 +124,7 @@ export async function Footer({ locale }: FooterProps) {
                     Europa-Park
                   </Link>
                   <Link
-                    href="/parks/europe/germany/bruhl/phantasialand"
+                    href="/parks/europe/germany/bruehl/phantasialand"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label="Phantasialand - Wait Times"

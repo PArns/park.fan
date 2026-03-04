@@ -75,7 +75,7 @@ export default async function CityPage({ params }: CityPageProps) {
   if (!city || city.parks.length === 0) {
     // Before returning 404, check if the "city" slug is actually a park
     // This handles malformed URLs like /parks/europe/germany/phantasialand
-    // which should be /parks/europe/germany/bruhl/phantasialand
+    // which should be /parks/europe/germany/bruehl/phantasialand
     const redirectUrl = await findCityPageRedirect(continent, country, citySlug);
     if (redirectUrl) {
       permanentRedirect(`/${locale}${redirectUrl}`);
