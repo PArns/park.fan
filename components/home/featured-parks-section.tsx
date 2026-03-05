@@ -8,54 +8,57 @@ import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/li
  * Featured parks per locale — verified slugs from footer + API structure.
  * Ordered by visit relevance for each language audience.
  */
+// Sources: TEA 2024 Global Experience Index + European attendance rankings.
+// Ordered by wait-time search relevance for each language market.
+// Note: 'disneyland-park' resolves to Paris (Europe traversed before North America).
 const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   de: [
-    'europa-park',
-    'phantasialand',
-    'heide-park',
-    'movie-park-germany',
-    'efteling',
-    'attractiepark-toverland',
+    'europa-park', // 6M visitors, #1 DACH by far
+    'phantasialand', // 2M, #2 Germany
+    'heide-park', // 1.4M, #3 Germany
+    'movie-park-germany', // #4 Germany
+    'efteling', // 5.6M, hugely popular with Germans (close to NRW border)
+    'disneyland-park', // Paris — "Disneyland Paris Wartezeiten" is high-volume DE query
   ],
   en: [
-    'magic-kingdom-park',
-    'universal-studios-florida',
-    'six-flags-magic-mountain',
-    'tokyo-disneyland',
-    'tokyo-disneysea',
-    'universal-studios-japan',
+    'magic-kingdom-park', // 17.8M, #1 worldwide
+    'universal-studios-florida', // 9.5M, high US search volume
+    'disneyland-park', // Paris — 10.2M, massive English search interest globally
+    'tokyo-disneyland', // 15.1M, #4 worldwide, aspirational for EN speakers
+    'tokyo-disneysea', // 12.4M, Fantasy Springs drove huge 2024 search interest
+    'universal-studios-japan', // 16M, #3 worldwide
   ],
   fr: [
-    'disneyland-park', // Paris
-    'walt-disney-studios-park',
-    'parc-asterix',
-    'futuroscope',
-    'europa-park',
-    'phantasialand',
+    'disneyland-park', // Paris — 10.2M, #1 Europe, dominant FR query
+    'walt-disney-studios-park', // 5.6M, same resort
+    'parc-asterix', // 2.84M, 2024 record, #1 French domestic after Disney
+    'europa-park', // 6M, very popular with French-Swiss and Alsace visitors
+    'futuroscope', // 2.05M, France's 3rd most visited domestic park
+    'phantasialand', // 2M, known to French enthusiasts
   ],
   nl: [
-    'efteling',
-    'attractiepark-toverland',
-    'walibi-belgium',
-    'europa-park',
-    'phantasialand',
-    'disneyland-park', // Paris
+    'efteling', // 5.6M, #1 NL by massive margin, deeply culturally embedded
+    'attractiepark-toverland', // #2 NL domestic
+    'walibi-belgium', // #1 Belgium, relevant for Flemish/Belgian Dutch speakers
+    'europa-park', // top cross-border destination for Dutch
+    'phantasialand', // popular with Dutch visitors to Germany
+    'disneyland-park', // Paris — ~500K Dutch visitors/year
   ],
   it: [
-    'gardaland',
-    'disneyland-park', // Paris
-    'europa-park',
-    'phantasialand',
-    'magic-kingdom-park',
-    'universal-studios-japan',
+    'gardaland', // 3M, #1 Italy by huge margin, dominant domestic search
+    'disneyland-park', // Paris — top aspirational European park for Italians
+    'europa-park', // 6M, frequently cited as best European park in Italian media
+    'portaventura-world', // Spain is top Italian travel destination, well-searched in IT
+    'efteling', // growing Italian fanbase, featured in Italian travel content
+    'phantasialand', // known to Italian theme park enthusiasts
   ],
   es: [
-    'portaventura-world',
-    'disneyland-park', // Paris
-    'europa-park',
-    'magic-kingdom-park',
-    'universal-studios-florida',
-    'tokyo-disneyland',
+    'portaventura-world', // 5.3M, Spain's #1, dominant domestic search
+    'disneyland-park', // Paris — ~900K Spanish visitors/year, #2 source market
+    'europa-park', // growing Spanish awareness, reachable via France
+    'phantasialand', // more reachable for Spanish European travelers than Orlando
+    'gardaland', // Italy is a top Spanish travel destination
+    'efteling', // reachable European park; far more relevant than Tokyo/Orlando for ES users
   ],
 };
 
