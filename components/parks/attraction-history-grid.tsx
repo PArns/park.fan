@@ -205,7 +205,7 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
                 .reverse()
                 .map((day) => {
                   // Strict props passing to avoid passing Date object to client component
-                   
+
                   const { date: _date, ...dayProps } = day;
                   return <HistoryDay key={day.dateStr} day={dayProps} />;
                 })}
@@ -221,7 +221,7 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
                     }
 
                     // Strict props passing to avoid passing Date object to client component
-                     
+
                     const { date: _date, ...dayProps } = day;
                     return <HistoryDay key={day.dateStr} day={dayProps} />;
                   })}

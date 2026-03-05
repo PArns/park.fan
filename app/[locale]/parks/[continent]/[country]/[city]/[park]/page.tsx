@@ -77,15 +77,17 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const cityNameLower = cityName.toLowerCase();
   const cityInParkName =
     parkNameLower.includes(cityNameLower) ||
-    cityNameLower.split(/\s+/).some(
-      (word) => word.length > 3 && parkNameLower.split(/\s+/).includes(word),
-    );
+    cityNameLower
+      .split(/\s+/)
+      .some((word) => word.length > 3 && parkNameLower.split(/\s+/).includes(word));
   const titleKey = cityInParkName ? 'titleTemplateNoCity' : 'titleTemplate';
   const title = cityInParkName
     ? t(titleKey, { park: parkName })
     : t(titleKey, { park: parkName, city: cityName });
 
-  const descriptionKey = cityInParkName ? 'metaDescriptionTemplateNoCity' : 'metaDescriptionTemplate';
+  const descriptionKey = cityInParkName
+    ? 'metaDescriptionTemplateNoCity'
+    : 'metaDescriptionTemplate';
   const description = cityInParkName
     ? t(descriptionKey, { park: parkName })
     : t(descriptionKey, { park: parkName, city: cityName });
@@ -257,11 +259,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 <div className="flex-1">
                   <div className="mb-2 flex flex-wrap items-center gap-3">
                     <h1 className="text-3xl font-bold md:text-4xl">
-                    {parkName}
-                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
-                      – {t('h1Suffix')}
-                    </span>
-                  </h1>
+                      {parkName}
+                      <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
+                        – {t('h1Suffix')}
+                      </span>
+                    </h1>
                     {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
                     {park.id && (
                       <div className="ml-auto">
