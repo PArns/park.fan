@@ -21,8 +21,9 @@ export function generateSitemaps() {
   return [{ id: 0 }, { id: 1 }, { id: 2 }];
 }
 
-export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-  switch (id) {
+export default async function sitemap(props: { id: Promise<string> }): Promise<MetadataRoute.Sitemap> {
+  const id = await props.id;
+  switch (Number(id)) {
     case 0:
       return generateHomeParksSitemap();
     case 1:
