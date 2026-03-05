@@ -42,15 +42,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/sitemap/0.xml',
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
