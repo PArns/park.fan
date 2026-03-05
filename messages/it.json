@@ -93,7 +93,9 @@
       "plan": "Pianifica la tua visita perfetta",
       "liveNow": "Parchi aperti adesso",
       "liveNowIntro": "Parchi a tema e parchi divertimento per regione con stato di apertura attuale e tempi di attesa in diretta.",
-      "featuresIntro": "Utilizza i tempi di attesa in tempo reale, le previsioni sull'affluenza e i calendari dei parchi per scegliere il giorno migliore e navigare le code a Disney, Universal, Europa-Park e altri."
+      "featuresIntro": "Utilizza i tempi di attesa in tempo reale, le previsioni sull'affluenza e i calendari dei parchi per scegliere il giorno migliore e navigare le code a Disney, Universal, Europa-Park e altri.",
+      "featuredParks": "Parchi popolari",
+      "featuredParksIntro": "I parchi divertimenti più visitati nella tua regione — con tempi di attesa in tempo reale e previsioni di affluenza."
     },
     "features": {
       "realtime": {

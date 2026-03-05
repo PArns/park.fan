@@ -93,7 +93,9 @@
       "plan": "Plan Your Perfect Visit",
       "liveNow": "Parks Open Right Now",
       "liveNowIntro": "Theme parks and amusement parks by region with current open status and live wait times.",
-      "featuresIntro": "Use real-time wait times, crowd predictions, and park calendars to choose the best day and navigate queues at Disney, Universal, Europa-Park, and more."
+      "featuresIntro": "Use real-time wait times, crowd predictions, and park calendars to choose the best day and navigate queues at Disney, Universal, Europa-Park, and more.",
+      "featuredParks": "Popular Parks",
+      "featuredParksIntro": "The most-visited theme parks in your region — with real-time wait times and crowd predictions."
     },
     "features": {
       "realtime": {

@@ -7,6 +7,7 @@ import { getGeoLiveStats } from '@/lib/api/analytics';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
+import { ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import type { Metadata } from 'next';
 
@@ -80,8 +81,18 @@ export default async function ParksPage({ params }: ParksPageProps) {
 
   const tNav = await getTranslations('navigation');
 
+  const itemListItems = continentItems.map((continent) => {
+    const name = translateContinent(t, continent.slug, locale, continent.name);
+    return { name, url: `/${locale}/parks/${continent.slug}` };
+  });
+
   return (
     <PageContainer>
+      <ItemListStructuredData
+        items={itemListItems}
+        listName={tExplore('parksTitle')}
+        pageUrl={`/${locale}/parks`}
+      />
       <PageHeader
         breadcrumbs={breadcrumbs}
         currentPage={tNav('continents')}
