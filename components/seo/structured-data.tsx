@@ -39,6 +39,16 @@ function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
 
 const SITE_URL = 'https://park.fan';
 
+/** Normalizes raw API cuisineType values to proper display names. */
+function normalizeCuisineType(cuisineType: string | null): string | undefined {
+  if (!cuisineType) return undefined;
+  const map: Record<string, string> = {
+    cafe: 'Café',
+    fondu: 'Fondue',
+  };
+  return map[cuisineType.toLowerCase()] ?? cuisineType;
+}
+
 export function OrganizationStructuredData({ description }: { description?: string }) {
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
@@ -150,7 +160,7 @@ export function ParkStructuredData({
         ? park.restaurants.map((restaurant) => ({
             '@type': 'FoodEstablishment' as const,
             name: stripNewPrefix(restaurant.name),
-            servesCuisine: restaurant.cuisineType || undefined,
+            servesCuisine: normalizeCuisineType(restaurant.cuisineType),
           }))
         : []),
     ],
