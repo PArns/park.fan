@@ -4,6 +4,33 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.6.4 (2026-03-05) – SEO: Featured Parks, Split Sitemaps, ItemList
+
+### Featured Parks Section (Homepage)
+- New `FeaturedParksSection` component on homepage — 6 locale-specific park cards with live data (status, crowd level, wait times, opening hours).
+- Parks resolved from existing `geoData` (no extra API call; `CACHE_TTL.geo = 120s`).
+- Locale configs based on TEA 2024 attendance data + language-market wait-time search relevance.
+- Translated country names via `tGeo('countries.*')`.
+- Positioned after FavoritesSection — first "browse parks" content above the fold.
+
+### Sitemap Split
+- `sitemap.ts` → **primary** (home + all park pages, 1h revalidate, priority 1.0)
+- `sitemap-attractions.ts` → **new** (all attraction pages, 24h, priority 0.7)
+- `sitemap-geo.ts` → **new** (continent/country/city hub pages — was completely missing before, priority 0.6–0.8)
+- `robots.txt` updated to reference all 3 sitemaps in priority order.
+
+### ItemList Structured Data
+- Added `ItemListStructuredData` to `/parks` overview page (continents). All listing levels now have ItemList schema.
+
+### Docs
+- New: [docs/seo/featured-parks.md](seo/featured-parks.md) — how to update park lists, slug collision notes, SEO rationale.
+- New: [docs/seo/sitemaps.md](seo/sitemaps.md) — full sitemap strategy, priorities, exclusions.
+- Updated: [docs/seo/analysis.md](seo/analysis.md) — completed items marked done, open items updated.
+
+→ [SEO Analysis](seo/analysis.md) · [Featured Parks](seo/featured-parks.md) · [Sitemaps](seo/sitemaps.md)
+
+---
+
 ## 2.5.12 (2026-02-08) – Docs vs Code alignment
 
 - **URL helpers:** Added `getParkUrlFromAttractionUrl()` in `lib/utils/url-utils.ts`; use in `nearby-parks-card` instead of manual `split('/attractions/')`. Park URLs from API now always go through `convertApiUrlToFrontendUrl()`.
