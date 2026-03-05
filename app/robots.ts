@@ -12,6 +12,10 @@ export default function robots(): MetadataRoute.Robots {
         '/_next/',
       ],
     },
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: [
+      `${baseUrl}/sitemap/0.xml`,
+      `${baseUrl}/sitemap/1.xml`,
+      `${baseUrl}/sitemap/2.xml`,
+    ],
   };
 }
