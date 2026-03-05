@@ -4,8 +4,8 @@ import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
 
-// 6h revalidation — attraction slugs change infrequently
-export const revalidate = 21600;
+// 24h revalidation — matches geo structure TTL; attraction slugs rarely change
+export const revalidate = 86400;
 
 /**
  * Attractions sitemap — one entry per attraction × locale.

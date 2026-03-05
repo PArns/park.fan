@@ -20,7 +20,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   en: [
     'magic-kingdom-park',
     'universal-studios-florida',
-    'disneyland-park', // Anaheim
+    'six-flags-magic-mountain',
     'tokyo-disneyland',
     'tokyo-disneysea',
     'universal-studios-japan',
