@@ -10,7 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       disallow: [
         '/api/',
         '/_next/',
-        '/parks/', // always redirects to /{locale}/parks/ — no crawl budget needed
       ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
