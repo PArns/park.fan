@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { ParkCard } from '@/components/parks/park-card';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
-import type { GeoStructure } from '@/lib/api/types';
+import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
@@ -62,15 +62,23 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
 interface FeaturedPark {
   name: string;
   slug: string;
+  parkId: string;
   city: string;
-  country: string;
+  countrySlug: string;
+  countryName: string; // raw name, translated in component
   href: string;
+  // Live data from ParkReference
+  status?: ParkStatus;
+  crowdLevel?: CrowdLevel;
+  averageWaitTime?: number;
+  operatingAttractions?: number;
+  totalAttractions?: number;
+  timezone?: string;
+  todaySchedule?: ScheduleSummary;
+  nextSchedule?: ScheduleSummary;
 }
 
-function extractFeaturedParks(
-  geoData: GeoStructure | null,
-  locale: string
-): FeaturedPark[] {
+function extractFeaturedParks(geoData: GeoStructure | null, locale: string): FeaturedPark[] {
   if (!geoData) return [];
 
   const slugs = FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS['en'];
@@ -84,9 +92,19 @@ function extractFeaturedParks(
             slugMap.set(park.slug, {
               name: park.name,
               slug: park.slug,
+              parkId: park.id,
               city: city.name,
-              country: country.name,
+              countrySlug: country.slug,
+              countryName: country.name,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+              status: park.status,
+              crowdLevel: park.currentLoad?.crowdLevel,
+              averageWaitTime: park.analytics?.statistics?.avgWaitTime,
+              operatingAttractions: park.analytics?.statistics?.operatingAttractions,
+              totalAttractions: park.analytics?.statistics?.totalAttractions,
+              timezone: park.timezone,
+              todaySchedule: park.todaySchedule,
+              nextSchedule: park.nextSchedule,
             });
           }
         }
@@ -105,6 +123,7 @@ interface FeaturedParksSectionProps {
 
 export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSectionProps) {
   const tHome = await getTranslations('home');
+  const tGeo = await getTranslations('geo');
 
   const parks = extractFeaturedParks(geoData, locale);
   if (parks.length === 0) return null;
@@ -120,17 +139,33 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {parks.map((park) => (
-            <ParkCard
-              key={park.slug}
-              name={park.name}
-              slug={park.slug}
-              city={park.city}
-              country={park.country}
-              href={park.href as '/'}
-              variant="detailed"
-            />
-          ))}
+          {parks.map((park) => {
+            // Translate country name using geo translations (same pattern as ParkCardNearby)
+            const normalizedCountry = park.countrySlug.toLowerCase().replace(/\s+/g, '-');
+            const translatedCountry =
+              tGeo(`countries.${normalizedCountry}` as string) || park.countryName;
+
+            return (
+              <ParkCard
+                key={park.slug}
+                name={park.name}
+                slug={park.slug}
+                parkId={park.parkId}
+                city={park.city}
+                country={translatedCountry}
+                href={park.href as '/'}
+                status={park.status}
+                crowdLevel={park.crowdLevel}
+                averageWaitTime={park.averageWaitTime}
+                operatingAttractions={park.operatingAttractions}
+                totalAttractions={park.totalAttractions}
+                timezone={park.timezone}
+                todaySchedule={park.todaySchedule}
+                nextSchedule={park.nextSchedule}
+                variant="detailed"
+              />
+            );
+          })}
         </div>
 
         <div className="mt-6 flex justify-center">

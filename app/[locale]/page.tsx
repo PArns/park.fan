@@ -188,6 +188,9 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Favorites Section */}
       <FavoritesSection />
 
+      {/* Featured Parks – locale-aware, direct park links for SEO */}
+      <FeaturedParksSection locale={locale} geoData={geoData} />
+
       {/* Global Stats */}
       {stats && (
         <section className="bg-muted/30 border-b px-4 py-12">
@@ -332,9 +335,6 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
       )}
-      {/* Featured Parks – locale-aware, direct park links for SEO */}
-      <FeaturedParksSection locale={locale} geoData={geoData} />
-
       {/* Live Activity - Parks Open Now */}
       {continents.length > 0 && (
         <section className="border-b px-4 py-12">
