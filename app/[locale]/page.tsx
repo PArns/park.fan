@@ -55,6 +55,7 @@ import { AttractionStatCard } from '@/components/home/attraction-stat-card';
 import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
+import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 
@@ -186,6 +187,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Favorites Section */}
       <FavoritesSection />
+
+      {/* Featured Parks – locale-aware, direct park links for SEO */}
+      <FeaturedParksSection locale={locale} geoData={geoData} />
 
       {/* Global Stats */}
       {stats && (

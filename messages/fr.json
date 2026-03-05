@@ -93,7 +93,9 @@
       "plan": "Planifier votre visite",
       "liveNow": "Parcs ouverts maintenant",
       "liveNowIntro": "Parcs d'attractions par région avec statut d'ouverture actuel et temps d'attente en direct.",
-      "featuresIntro": "Utilisez les temps d'attente en direct, les prédictions d'affluence et les calendriers des parcs pour choisir le meilleur jour et planifier les files à Disney, Universal, Europa-Park et plus."
+      "featuresIntro": "Utilisez les temps d'attente en direct, les prédictions d'affluence et les calendriers des parcs pour choisir le meilleur jour et planifier les files à Disney, Universal, Europa-Park et plus.",
+      "featuredParks": "Parcs populaires",
+      "featuredParksIntro": "Les parcs d'attractions les plus visités de votre région — avec temps d'attente en direct et prévisions d'affluence."
     },
     "features": {
       "realtime": {

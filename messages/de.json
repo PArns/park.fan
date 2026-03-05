@@ -93,7 +93,9 @@
       "plan": "Plane deinen perfekten Besuch",
       "liveNow": "Parks jetzt geöffnet",
       "liveNowIntro": "Freizeitparks nach Region mit aktuellem Öffnungsstatus und Live-Wartezeiten.",
-      "featuresIntro": "Nutze Echtzeit-Wartezeiten, Besucherprognosen und Park-Kalender, um den besten Tag zu wählen und Warteschlangen bei Disney, Universal, Europa-Park und mehr zu planen."
+      "featuresIntro": "Nutze Echtzeit-Wartezeiten, Besucherprognosen und Park-Kalender, um den besten Tag zu wählen und Warteschlangen bei Disney, Universal, Europa-Park und mehr zu planen.",
+      "featuredParks": "Beliebte Parks",
+      "featuredParksIntro": "Die meistbesuchten Freizeitparks in deiner Region – mit Echtzeit-Wartezeiten und Crowd-Prognosen."
     },
     "features": {
       "realtime": {
