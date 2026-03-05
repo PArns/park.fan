@@ -6,18 +6,18 @@ As of February 2026. Full-site analysis with concrete recommendations.
 
 ## Already Well Implemented
 
-| Area                      | Status                                                                                                                                     |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Metadata**              | `generateMetadata` on all relevant pages (Home, Parks, Park, Attraction, Continent, Country, City, Search, Impressum, Privacy)             |
-| **Canonical URLs**        | Set everywhere, locale-specific                                                                                                            |
-| **hreflang / alternates** | `alternates.languages` + `x-default` in locale layout and subpages                                                                         |
-| **Open Graph**            | title, description, url, locale, images (1200×630), siteName                                                                               |
-| **Twitter Cards**         | summary_large_image with title, description, image                                                                                         |
-| **Structured Data**       | Organization, WebSite (with SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home + Park + Attraction), Event (Shows) |
-| **Sitemap**               | Split into 3 files: `sitemap.xml` (home+parks), `sitemap-attractions.xml`, `sitemap-geo.xml` — see [sitemaps.md](sitemaps.md)              |
-| **robots.txt**            | Allow /, Disallow /api/, /\_next/, /parks/ (root redirect); all 3 sitemap URLs listed                                                      |
-| **Semantics**             | H1 per page, nav with aria-label                                                                                                           |
-| **Viewport & Theme**      | viewport, themeColor for Light/Dark                                                                                                        |
+| Area                      | Status                                                                                                                                                                     |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Metadata**              | `generateMetadata` on all relevant pages (Home, Parks, Park, Attraction, Continent, Country, City, Search, Impressum, Privacy)                                             |
+| **Canonical URLs**        | Set everywhere, locale-specific                                                                                                                                            |
+| **hreflang / alternates** | `alternates.languages` + `x-default` in locale layout and subpages                                                                                                         |
+| **Open Graph**            | title, description, url, locale, images (1200×630), siteName                                                                                                               |
+| **Twitter Cards**         | summary_large_image with title, description, image                                                                                                                         |
+| **Structured Data**       | Organization, WebSite (with SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home + Park + Attraction), Event (Shows)                                 |
+| **Sitemap**               | Split into 3 sub-sitemaps via `generateSitemaps()`: `/sitemap/0.xml` (home+parks), `/sitemap/1.xml` (attractions), `/sitemap/2.xml` (geo) — see [sitemaps.md](sitemaps.md) |
+| **robots.txt**            | Allow /, Disallow /api/, /\_next/, /parks/ (root redirect); sitemap index `/sitemap.xml` listed                                                                            |
+| **Semantics**             | H1 per page, nav with aria-label                                                                                                                                           |
+| **Viewport & Theme**      | viewport, themeColor for Light/Dark                                                                                                                                        |
 
 ---
 
@@ -120,6 +120,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 ~~**Problem:** Continent/Country/City pages list parks without ItemList schema.~~
 
 **Status (v2.6.4):** `ItemListStructuredData` is now present on all listing pages:
+
 - `/parks` overview (continents as ItemList) — **added v2.6.4**
 - `/parks/{continent}` (countries) — already present
 - `/parks/{continent}/{country}` (parks) — already present
@@ -158,6 +159,7 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 ### 11. **Internal Linking & Breadcrumbs** ✅ Partially Done
 
 **Status (v2.6.4):**
+
 - BreadcrumbNav and BreadcrumbList structured data present on all pages.
 - **FeaturedParksSection added to homepage** — 6 direct park links per locale, locale-specific (de/en/fr/nl/it/es), with live crowd/wait-time data. Reduces click depth from 4+ hops to 1. See [featured-parks.md](featured-parks.md).
 
@@ -175,18 +177,18 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 
 ## Prioritization
 
-| Priority | Action                                              | Effort | Benefit                             | Status |
-| -------- | --------------------------------------------------- | ------ | ----------------------------------- | ------ |
-| High     | Extend sitemap with Impressum, Privacy, /search     | Low    | Index legal pages + search entry    | Open   |
-| High     | Set search pages with `?q=...` to noindex, follow   | Low    | Avoid duplicate content             | Open   |
-| High     | Nearby Parks section on park detail pages           | Medium | Cross-linking between parks         | Planned (needs API) |
-| Medium   | Shorten title templates (Park/Attraction)           | Medium | Better SERP display                 | Open   |
-| Medium   | Check/shorten meta description lengths              | Low    | Better SERP display                 | Open   |
-| Medium   | Web app manifest + icons                            | Low    | Completeness, Add-to-Homescreen     | Open   |
-| Low      | hreflang absolute URLs (only if currently relative) | Low    | Best practice                       | Open   |
-| ~~Low~~  | ~~ItemList for Continent/Country/City~~             | ~~Medium~~ | ~~Optional better list interpretation~~ | ✅ Done v2.6.4 |
-| ~~High~~ | ~~Homepage direct park links (FeaturedParks)~~      | ~~Medium~~ | ~~Internal linking, click depth~~   | ✅ Done v2.6.4 |
-| ~~High~~ | ~~Split sitemap into separate files~~               | ~~Medium~~ | ~~Crawl budget, geo hub pages~~     | ✅ Done v2.6.4 |
+| Priority | Action                                              | Effort     | Benefit                                 | Status              |
+| -------- | --------------------------------------------------- | ---------- | --------------------------------------- | ------------------- |
+| High     | Extend sitemap with Impressum, Privacy, /search     | Low        | Index legal pages + search entry        | Open                |
+| High     | Set search pages with `?q=...` to noindex, follow   | Low        | Avoid duplicate content                 | Open                |
+| High     | Nearby Parks section on park detail pages           | Medium     | Cross-linking between parks             | Planned (needs API) |
+| Medium   | Shorten title templates (Park/Attraction)           | Medium     | Better SERP display                     | Open                |
+| Medium   | Check/shorten meta description lengths              | Low        | Better SERP display                     | Open                |
+| Medium   | Web app manifest + icons                            | Low        | Completeness, Add-to-Homescreen         | Open                |
+| Low      | hreflang absolute URLs (only if currently relative) | Low        | Best practice                           | Open                |
+| ~~Low~~  | ~~ItemList for Continent/Country/City~~             | ~~Medium~~ | ~~Optional better list interpretation~~ | ✅ Done v2.6.4      |
+| ~~High~~ | ~~Homepage direct park links (FeaturedParks)~~      | ~~Medium~~ | ~~Internal linking, click depth~~       | ✅ Done v2.6.4      |
+| ~~High~~ | ~~Split sitemap into separate files~~               | ~~Medium~~ | ~~Crawl budget, geo hub pages~~         | ✅ Done v2.6.4      |
 
 ---
 

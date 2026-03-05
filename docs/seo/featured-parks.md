@@ -27,6 +27,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
 ```
 
 **Rules:**
+
 - Slugs must exist in the API geo structure (verify in the footer or the `/v1/discovery/geo` endpoint).
 - Order = display order = relevance ranking (most important first).
 - If a slug is not found in geoData, that card is silently dropped. The section only hides entirely if 0 parks are found.
@@ -46,14 +47,14 @@ If you ever need Anaheim specifically, use a different approach (path-based matc
 
 Based on TEA 2024 Global Experience Index + language-market wait-time search relevance.
 
-| Locale | Parks (in order) | Rationale |
-|--------|-----------------|-----------|
-| `de` | Europa-Park, Phantasialand, Heide-Park, Movie Park Germany, Efteling, Disneyland Paris | Top 4 German parks + Efteling (popular with NRW visitors) + DLP (high-volume DE query) |
-| `en` | Magic Kingdom, Universal Studios FL, Disneyland Paris, Tokyo Disneyland, Tokyo DisneySea, Universal Studios Japan | Top worldwide parks by attendance (TEA 2024) |
-| `fr` | Disneyland Paris, Walt Disney Studios, Parc Astérix, Europa-Park, Futuroscope, Phantasialand | French domestic + cross-border from Alsace/French-Swiss |
-| `nl` | Efteling, Attractiepark Toverland, Walibi Belgium, Europa-Park, Phantasialand, Disneyland Paris | Best-calibrated locale — domestic NL/BE + popular German/French cross-border |
-| `it` | Gardaland, Disneyland Paris, Europa-Park, PortAventura, Efteling, Phantasialand | Italian domestic + reachable European parks; removed Magic Kingdom/USJ (no IT wait-time searches) |
-| `es` | PortAventura, Disneyland Paris, Europa-Park, Phantasialand, Gardaland, Efteling | Spain domestic + European parks; removed US/Japan parks (no ES wait-time searches) |
+| Locale | Parks (in order)                                                                                                  | Rationale                                                                                         |
+| ------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `de`   | Europa-Park, Phantasialand, Heide-Park, Movie Park Germany, Efteling, Disneyland Paris                            | Top 4 German parks + Efteling (popular with NRW visitors) + DLP (high-volume DE query)            |
+| `en`   | Magic Kingdom, Universal Studios FL, Disneyland Paris, Tokyo Disneyland, Tokyo DisneySea, Universal Studios Japan | Top worldwide parks by attendance (TEA 2024)                                                      |
+| `fr`   | Disneyland Paris, Walt Disney Studios, Parc Astérix, Europa-Park, Futuroscope, Phantasialand                      | French domestic + cross-border from Alsace/French-Swiss                                           |
+| `nl`   | Efteling, Attractiepark Toverland, Walibi Belgium, Europa-Park, Phantasialand, Disneyland Paris                   | Best-calibrated locale — domestic NL/BE + popular German/French cross-border                      |
+| `it`   | Gardaland, Disneyland Paris, Europa-Park, PortAventura, Efteling, Phantasialand                                   | Italian domestic + reachable European parks; removed Magic Kingdom/USJ (no IT wait-time searches) |
+| `es`   | PortAventura, Disneyland Paris, Europa-Park, Phantasialand, Gardaland, Efteling                                   | Spain domestic + European parks; removed US/Japan parks (no ES wait-time searches)                |
 
 ---
 

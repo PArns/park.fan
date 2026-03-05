@@ -13,10 +13,6 @@ export default function robots(): MetadataRoute.Robots {
         '/parks/', // always redirects to /{locale}/parks/ — no crawl budget needed
       ],
     },
-    sitemap: [
-      `${baseUrl}/sitemap.xml`,
-      `${baseUrl}/sitemap-attractions.xml`,
-      `${baseUrl}/sitemap-geo.xml`,
-    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
