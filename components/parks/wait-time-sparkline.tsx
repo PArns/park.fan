@@ -11,9 +11,13 @@ interface WaitTimeSparklineProps {
 
 export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps) {
   const locale = useLocale();
-  const [activePoint, setActivePoint] = useState<{ x: number; time: number; value: number } | null>(
-    null
-  );
+  const [activePoint, setActivePoint] = useState<{
+    x: number;
+    time: number;
+    value: number;
+    clientX: number;
+    clientY: number;
+  } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Use state for current time to avoid hydration mismatch and impure render
@@ -122,11 +126,11 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
     }
 
     setActivePoint({
-      x: getX(found.time), // or cursor position? Usually step charts highlight the interval or the cursor X.
-      // Let's stick to cursor X for the tooltip position, but snap Y to the value.
-      time: hoverTime, // Show actual mouse time or point time? Recharts shows point time usually, but for continuous axis...
-      // Let's use the exact point value
+      x: getX(found.time),
+      time: hoverTime,
       value: found.value,
+      clientX: e.clientX,
+      clientY: e.clientY,
     });
   };
 
@@ -160,10 +164,11 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
 
       {activePoint && (
         <div
-          className="bg-popover text-popover-foreground pointer-events-none absolute top-0 z-10 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
+          className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
           style={{
-            left: `${((activePoint.time - minTime) / timeRange) * 100}%`,
-            transform: 'translate(-50%, -120%)',
+            left: activePoint.clientX,
+            top: activePoint.clientY,
+            transform: 'translate(-50%, calc(-100% - 8px))',
           }}
         >
           <div className="font-medium">{formatTime(activePoint.time)}</div>

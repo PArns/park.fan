@@ -9,9 +9,13 @@ interface HourlyP90SparklineProps {
 }
 
 export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineProps) {
-  const [activePoint, setActivePoint] = useState<{ x: number; hour: string; value: number } | null>(
-    null
-  );
+  const [activePoint, setActivePoint] = useState<{
+    x: number;
+    hour: string;
+    value: number;
+    clientX: number;
+    clientY: number;
+  } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Process data for charts
@@ -95,6 +99,8 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
       x: getX(found.hourNum),
       hour: found.hour,
       value: found.value,
+      clientX: e.clientX,
+      clientY: e.clientY,
     });
   };
 
@@ -125,10 +131,11 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
 
       {activePoint && (
         <div
-          className="bg-popover text-popover-foreground pointer-events-none absolute top-0 z-10 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
+          className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
           style={{
-            left: `${activePoint.x}%`,
-            transform: 'translate(-50%, -120%)',
+            left: activePoint.clientX,
+            top: activePoint.clientY,
+            transform: 'translate(-50%, calc(-100% - 8px))',
           }}
         >
           <div className="font-medium">{activePoint.hour}</div>
