@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useLocale } from 'next-intl';
 import type { AttractionStatistics } from '@/lib/api/types';
 
@@ -19,12 +20,14 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
     clientY: number;
   } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
   // Use state for current time to avoid hydration mismatch and impure render
   const [now, setNow] = useState<number>(0);
 
   // Update time on mount
   useEffect(() => {
+    setMounted(true);
     const timer = setTimeout(() => {
       setNow(Date.now());
     }, 0);
@@ -162,19 +165,22 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
         />
       </svg>
 
-      {activePoint && (
-        <div
-          className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
-          style={{
-            left: activePoint.clientX,
-            top: activePoint.clientY,
-            transform: 'translate(-50%, calc(-100% - 8px))',
-          }}
-        >
-          <div className="font-medium">{formatTime(activePoint.time)}</div>
-          <div className="font-bold">{activePoint.value} min</div>
-        </div>
-      )}
+      {mounted &&
+        activePoint &&
+        createPortal(
+          <div
+            className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
+            style={{
+              left: activePoint.clientX,
+              top: activePoint.clientY,
+              transform: 'translate(-50%, calc(-100% - 8px))',
+            }}
+          >
+            <div className="font-medium">{formatTime(activePoint.time)}</div>
+            <div className="font-bold">{activePoint.value} min</div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }

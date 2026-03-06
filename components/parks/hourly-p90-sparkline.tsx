@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo, useState, useRef } from 'react';
+import { useMemo, useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { AttractionHistoryDay } from '@/lib/api/types';
 
 interface HourlyP90SparklineProps {
@@ -17,6 +18,11 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
     clientY: number;
   } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Process data for charts
   const { points, maxValue, minHour, maxHour } = useMemo(() => {
@@ -129,19 +135,22 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
         />
       </svg>
 
-      {activePoint && (
-        <div
-          className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
-          style={{
-            left: activePoint.clientX,
-            top: activePoint.clientY,
-            transform: 'translate(-50%, calc(-100% - 8px))',
-          }}
-        >
-          <div className="font-medium">{activePoint.hour}</div>
-          <div className="font-bold">{activePoint.value} min</div>
-        </div>
-      )}
+      {mounted &&
+        activePoint &&
+        createPortal(
+          <div
+            className="bg-popover text-popover-foreground pointer-events-none fixed z-50 rounded-lg border px-2 py-1 text-xs whitespace-nowrap shadow-md"
+            style={{
+              left: activePoint.clientX,
+              top: activePoint.clientY,
+              transform: 'translate(-50%, calc(-100% - 8px))',
+            }}
+          >
+            <div className="font-medium">{activePoint.hour}</div>
+            <div className="font-bold">{activePoint.value} min</div>
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
