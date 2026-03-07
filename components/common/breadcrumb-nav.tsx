@@ -22,6 +22,12 @@ interface BreadcrumbNavProps {
    */
   className?: string;
   /**
+   * Visual style:
+   * - "pill" (default): glass card with border + padding — for pages with a background image
+   * - "plain": unstyled inline text — for listing pages without a background
+   */
+  variant?: 'pill' | 'plain';
+  /**
    * When true, the last breadcrumb link is pinned (always visible).
    * Use on ride/attraction pages so the park name stays visible alongside
    * the first item and currentPage.
@@ -47,6 +53,7 @@ export function BreadcrumbNav({
   breadcrumbs,
   currentPage,
   className,
+  variant = 'pill',
   pinLastBreadcrumb,
 }: BreadcrumbNavProps) {
   const navRef = useRef<HTMLElement>(null);
@@ -136,6 +143,7 @@ export function BreadcrumbNav({
       ref={navRef}
       className={cn(
         'text-muted-foreground mb-4 flex max-w-full items-center gap-2 text-sm',
+        variant === 'pill' && 'glass-card w-fit rounded-lg px-3 py-1',
         // Allow wrapping only when user manually expanded (pinned items must
         // always be visible even if they wrap)
         userExpanded && 'flex-wrap',

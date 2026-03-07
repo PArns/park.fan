@@ -331,7 +331,8 @@
       "OPERATING": "Open",
       "CLOSED": "Gesloten",
       "REFURBISHMENT": "Onderhoud",
-      "DOWN": "Storing"
+      "DOWN": "Storing",
+      "UNKNOWN": "Onbekend"
     },
     "weather": {
       "clear": "Helder",

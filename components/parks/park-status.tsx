@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { fromZonedTime } from 'date-fns-tz';
-import { Clock, Users, TrendingUp, TrendingDown, Minus, ActivitySquare } from 'lucide-react';
+import { Clock, Users, TrendingUp, ActivitySquare } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -8,8 +8,9 @@ import { Progress } from '@/components/ui/progress';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { PeakHourBadge } from './peak-hour-badge';
 import { ParkStatusBadge } from './park-status-badge';
+import { TrendIndicator } from './trend-indicator';
 import { cn } from '@/lib/utils';
-import type { ParkWithAttractions, ParkResponse, TrendDirection } from '@/lib/api/types';
+import type { ParkWithAttractions, ParkResponse } from '@/lib/api/types';
 
 type ParkData = ParkWithAttractions | ParkResponse;
 
@@ -18,14 +19,6 @@ interface ParkStatusProps {
   variant: 'compact' | 'detailed' | 'card' | 'hero';
   className?: string;
 }
-
-const trendIconMap: Record<TrendDirection, typeof TrendingUp> = {
-  up: TrendingUp,
-  stable: Minus,
-  down: TrendingDown,
-  increasing: TrendingUp,
-  decreasing: TrendingDown,
-};
 
 export function ParkStatus({ park, variant, className }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
@@ -191,26 +184,11 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
                       <span className="text-muted-foreground text-sm font-medium">
                         {tCommon('trend')}
                       </span>
-                      <div className="flex items-center gap-2">
-                        {(() => {
-                          const Icon = trendIconMap[occupancy.trend];
-                          return (
-                            <div
-                              className={cn(
-                                'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
-                                (occupancy.trend === 'up' || occupancy.trend === 'increasing') &&
-                                  'bg-trend-up/10 text-trend-up',
-                                (occupancy.trend === 'down' || occupancy.trend === 'decreasing') &&
-                                  'bg-trend-down/10 text-trend-down',
-                                occupancy.trend === 'stable' && 'bg-muted text-muted-foreground'
-                              )}
-                            >
-                              <Icon className="h-3 w-3" />
-                              <span className="capitalize">{tCommon(occupancy.trend)}</span>
-                            </div>
-                          );
-                        })()}
-                      </div>
+                      <TrendIndicator
+                        trend={occupancy.trend}
+                        variant="pill"
+                        label={tCommon(occupancy.trend)}
+                      />
                     </div>
                   )}
                   {stats.peakWaitToday !== undefined && (

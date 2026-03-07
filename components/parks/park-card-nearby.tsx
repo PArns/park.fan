@@ -1,19 +1,12 @@
 import { Link } from '@/i18n/navigation';
-import {
-  Clock,
-  TrendingUp,
-  ChevronRight,
-  Navigation,
-  DoorOpen,
-  Snowflake,
-  XCircle,
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Clock, TrendingUp, ChevronRight, DoorOpen, Snowflake } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
+import { DistanceBadge } from '@/components/common/distance-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { formatDistance } from '@/lib/utils/distance-utils';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { useTranslations, useLocale } from 'next-intl';
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
@@ -127,25 +120,8 @@ export function ParkCardNearby({
             <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
               {/* Distance + Status */}
               <div className="flex items-center justify-between text-sm">
-                <div className="text-muted-foreground flex items-center gap-1.5">
-                  <Navigation className="h-4 w-4" />
-                  <span className="font-medium">{formatDistance(distance)}</span>
-                </div>
-                <Badge
-                  className={cn(
-                    'border-0 text-xs font-medium text-white dark:text-slate-900',
-                    isOpen
-                      ? 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400'
-                      : 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
-                  )}
-                >
-                  {isOpen ? (
-                    <Clock className="mr-1 h-3 w-3" />
-                  ) : (
-                    <XCircle className="mr-1 h-3 w-3" />
-                  )}
-                  {isOpen ? tCommon('open') : tCommon('closed')}
-                </Badge>
+                <DistanceBadge distance={distance} size="md" />
+                <ParkStatusBadge status={status as import('@/lib/api/types').ParkStatus} />
               </div>
 
               <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
@@ -153,13 +129,7 @@ export function ParkCardNearby({
                 {isOpen && analytics ? (
                   <div className="flex items-center gap-2.5 text-sm">
                     {analytics.avgWaitTime !== undefined && analytics.avgWaitTime > 0 && (
-                      <div className="text-muted-foreground flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span className="text-xs font-medium">
-                          {analytics.avgWaitTime}{' '}
-                          {tCommon('minute', { count: analytics.avgWaitTime })}
-                        </span>
-                      </div>
+                      <WaitTimeBadge waitTime={analytics.avgWaitTime} size="sm" />
                     )}
                     {analytics.crowdLevel && (
                       <CrowdLevelBadge

@@ -331,7 +331,8 @@
       "OPERATING": "Open",
       "CLOSED": "Closed",
       "REFURBISHMENT": "Refurbishment",
-      "DOWN": "Down"
+      "DOWN": "Down",
+      "UNKNOWN": "Unknown"
     },
     "weather": {
       "clear": "Clear sky",

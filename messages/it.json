@@ -331,7 +331,8 @@
       "OPERATING": "Aperto",
       "CLOSED": "Chiuso",
       "REFURBISHMENT": "In manutenzione",
-      "DOWN": "Fermo"
+      "DOWN": "Fermo",
+      "UNKNOWN": "Sconosciuto"
     },
     "weather": {
       "clear": "Cielo sereno",

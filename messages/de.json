@@ -193,7 +193,8 @@
       "OPERATING": "Geöffnet",
       "CLOSED": "Geschlossen",
       "REFURBISHMENT": "In Renovierung",
-      "DOWN": "Störung"
+      "DOWN": "Störung",
+      "UNKNOWN": "Unbekannt"
     },
     "weather": {
       "clear": "Klarer Himmel",

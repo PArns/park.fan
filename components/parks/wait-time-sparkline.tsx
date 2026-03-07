@@ -26,8 +26,8 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
 
   // Mount effect: set up portal target and update clock
   useEffect(() => {
-    setPortalTarget(document.body);
     const timer = setTimeout(() => {
+      setPortalTarget(document.body);
       setNow(Date.now());
     }, 0);
     return () => clearTimeout(timer);
@@ -62,7 +62,7 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
     if (points.length === 0) return;
 
     const timeRange = maxTime - minTime;
-    const getX = (time: number) => (timeRange === 0 ? 0 : ((time - minTime) / timeRange) * 100);
+    const _getX = (time: number) => (timeRange === 0 ? 0 : ((time - minTime) / timeRange) * 100);
 
     const handleMouseMove = (e: MouseEvent) => {
       const el = containerRef.current;

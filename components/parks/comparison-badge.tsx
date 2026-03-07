@@ -20,15 +20,24 @@ export function ComparisonBadge({ comparison, className, showIcon = true }: Comp
   let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'outline';
   let colorClass = '';
 
-  if (comparison === 'higher') {
+  if (comparison === 'much_higher') {
+    variant = 'secondary';
+    colorClass = 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900';
+  } else if (comparison === 'higher') {
     variant = 'secondary';
     colorClass = 'bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900';
   } else if (comparison === 'lower') {
     variant = 'secondary';
     colorClass = 'bg-emerald-600 text-white dark:bg-emerald-400 dark:text-slate-900';
+  } else if (comparison === 'much_lower') {
+    variant = 'secondary';
+    colorClass = 'bg-teal-600 text-white dark:bg-teal-400 dark:text-slate-900';
   } else if (comparison === 'typical') {
     variant = 'secondary';
     colorClass = 'bg-blue-600 text-white dark:bg-blue-400 dark:text-slate-900';
+  } else if (comparison === 'closed') {
+    variant = 'secondary';
+    colorClass = 'bg-status-closed/15 text-status-closed border border-status-closed/30';
   }
 
   return (

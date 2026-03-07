@@ -331,7 +331,8 @@
       "OPERATING": "Abierto",
       "CLOSED": "Cerrado",
       "REFURBISHMENT": "Mantenimiento",
-      "DOWN": "Fuera de Servicio"
+      "DOWN": "Fuera de Servicio",
+      "UNKNOWN": "Desconocido"
     },
     "weather": {
       "clear": "Despejado",

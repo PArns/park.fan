@@ -1,17 +1,11 @@
 import { Link } from '@/i18n/navigation';
-import {
-  Clock,
-  TrendingUp,
-  ChevronRight,
-  Navigation,
-  XCircle,
-  DoorOpen,
-  Snowflake,
-} from 'lucide-react';
+import { Clock, TrendingUp, ChevronRight, DoorOpen, Snowflake } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
+import { DistanceBadge } from '@/components/common/distance-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { cn } from '@/lib/utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
@@ -133,33 +127,14 @@ export function ParkCard({
               {/* Distance + Status Badge (matching NearbyParksCard) */}
               <div className="flex items-center justify-between text-sm">
                 {distance ? (
-                  <div className="text-muted-foreground flex items-center gap-1.5">
-                    <Navigation className="h-4 w-4" />
-                    <span className="font-medium">{distance}</span>
-                  </div>
+                  <DistanceBadge distance={distance} size="md" />
                 ) : (
                   <div className="text-muted-foreground text-xs">
                     {variant === 'hero' ? 'Featured' : city}
                   </div>
                 )}
 
-                {status && (
-                  <Badge
-                    className={cn(
-                      'border-0 text-xs font-medium text-white dark:text-slate-900',
-                      isOpen
-                        ? 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-400'
-                        : 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
-                    )}
-                  >
-                    {isOpen ? (
-                      <Clock className="mr-1 h-3 w-3" />
-                    ) : (
-                      <XCircle className="mr-1 h-3 w-3" />
-                    )}
-                    {isOpen ? tCommon('open') : tCommon('closed')}
-                  </Badge>
-                )}
+                {status && <ParkStatusBadge status={status} />}
               </div>
 
               {/* Wait Time + Crowd Level (matching NearbyParksCard layout) */}
@@ -167,12 +142,7 @@ export function ParkCard({
                 {isOpen && (averageWaitTime !== undefined || crowdLevel) ? (
                   <div className="flex items-center gap-2.5 text-sm">
                     {averageWaitTime !== undefined && averageWaitTime > 0 && (
-                      <div className="text-muted-foreground flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        <span className="text-xs font-medium">
-                          {averageWaitTime} {tCommon('minute', { count: averageWaitTime })}
-                        </span>
-                      </div>
+                      <WaitTimeBadge waitTime={averageWaitTime} size="sm" />
                     )}
                     {crowdLevel && <CrowdLevelBadge level={crowdLevel} className="text-xs" />}
                   </div>

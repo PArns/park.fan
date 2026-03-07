@@ -35,10 +35,7 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const Icon = config.icon;
 
   return (
-    <Badge
-      variant="default"
-      className={cn('border-0 font-medium whitespace-nowrap', config.color, className)}
-    >
+    <Badge className={cn('border-0 font-medium whitespace-nowrap', config.color, className)}>
       <Icon className="mr-1.5 h-3.5 w-3.5" />
       {t(status)}
     </Badge>

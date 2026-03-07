@@ -331,7 +331,8 @@
       "OPERATING": "Ouvert",
       "CLOSED": "Fermé",
       "REFURBISHMENT": "Rénovation",
-      "DOWN": "Panne"
+      "DOWN": "Panne",
+      "UNKNOWN": "Inconnu"
     },
     "weather": {
       "clear": "Dégagé",

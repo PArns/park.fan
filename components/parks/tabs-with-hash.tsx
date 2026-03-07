@@ -8,11 +8,9 @@ import { Search } from 'lucide-react';
 import Fuse from 'fuse.js';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { FavoriteStar } from '@/components/common/favorite-star';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
+import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 
@@ -374,22 +372,12 @@ export function TabsWithHash({
           <TabsContent value="restaurants">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
-                <Card key={restaurant.id} className="bg-background/60 relative backdrop-blur-md">
-                  {/* Favorite Star */}
-                  {restaurant.id && (
-                    <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                      <FavoriteStar type="restaurant" id={restaurant.id} />
-                    </div>
-                  )}
-                  <CardContent className="p-4">
-                    <h3 className="font-semibold">{stripNewPrefix(restaurant.name)}</h3>
-                    {restaurant.cuisineType && (
-                      <Badge variant="secondary" className="mt-2 text-xs">
-                        {restaurant.cuisineType}
-                      </Badge>
-                    )}
-                  </CardContent>
-                </Card>
+                <RestaurantCard
+                  key={restaurant.id}
+                  id={restaurant.id}
+                  name={restaurant.name}
+                  cuisineType={restaurant.cuisineType}
+                />
               ))}
             </div>
           </TabsContent>

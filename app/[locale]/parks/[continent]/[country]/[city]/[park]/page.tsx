@@ -245,11 +245,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         <FAQStructuredData park={park} locale={locale} />
 
         {/* Breadcrumb */}
-        <BreadcrumbNav
-          breadcrumbs={breadcrumbs}
-          currentPage={parkCurrentPage}
-          className="bg-background/80 w-fit rounded-lg border px-3 py-1 shadow-sm backdrop-blur-md"
-        />
+        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
 
         <article itemScope itemType="https://schema.org/ThemePark">
           {/* Park Header */}

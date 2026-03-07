@@ -20,7 +20,8 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
-    setPortalTarget(document.body);
+    const id = setTimeout(() => setPortalTarget(document.body), 0);
+    return () => clearTimeout(id);
   }, []);
 
   // Process data for charts

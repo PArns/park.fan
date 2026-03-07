@@ -1,12 +1,12 @@
 'use client';
 
-import { XCircle, AlertTriangle } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { DistanceBadge } from '@/components/common/distance-badge';
 import { LocalTime } from '@/components/ui/local-time';
-import { formatDistance } from '@/lib/utils/distance-utils';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
@@ -71,9 +71,7 @@ export function ShowCard({
 
           {/* Distance (for favorites) */}
           {distance !== undefined && distance !== null && (
-            <div className="text-muted-foreground mt-2 flex items-center gap-1.5 text-xs">
-              <span className="font-medium">{formatDistance(distance)}</span>
-            </div>
+            <DistanceBadge distance={distance} className="mt-2" />
           )}
 
           {/* All showtimes */}
@@ -87,11 +85,13 @@ export function ShowCard({
                 return (
                   <Badge
                     key={i}
-                    variant={isNext ? 'default' : 'outline'}
+                    variant="outline"
                     className={cn(
                       'text-xs',
-                      isPast && 'line-through opacity-50',
-                      isNext && 'bg-status-operating text-white hover:opacity-90'
+                      isPast && 'line-through opacity-40',
+                      isNext &&
+                        'border-status-operating/40 bg-status-operating/15 text-status-operating',
+                      !isPast && !isNext && 'text-muted-foreground'
                     )}
                   >
                     <LocalTime time={showtime.startTime} timeZone={timezone} />
@@ -112,21 +112,7 @@ export function ShowCard({
           {/* Status Badge for closed shows */}
           {status !== 'OPERATING' && (
             <div className="mt-2">
-              <Badge
-                className={cn(
-                  'border-0 text-xs font-medium text-white dark:text-slate-900',
-                  status === 'CLOSED'
-                    ? 'bg-rose-600 hover:bg-rose-700 dark:bg-rose-400'
-                    : 'bg-status-down hover:opacity-90'
-                )}
-              >
-                {status === 'CLOSED' ? (
-                  <XCircle className="mr-1 h-3 w-3" />
-                ) : (
-                  <AlertTriangle className="mr-1 h-3 w-3" />
-                )}
-                {tCommon(status.toLowerCase() as 'closed')}
-              </Badge>
+              <ParkStatusBadge status={status as import('@/lib/api/types').AttractionStatus} />
             </div>
           )}
         </CardContent>
