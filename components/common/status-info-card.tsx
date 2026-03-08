@@ -22,7 +22,7 @@ export function StatusInfoCard({
   glass = true,
 }: StatusInfoCardProps) {
   return (
-    <Card className={cn(glass && 'bg-background/60 border-primary/10 backdrop-blur-md', className)}>
+    <Card className={cn(glass && 'border-primary/10', className)}>
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-base">
           <Icon className="h-4 w-4" />

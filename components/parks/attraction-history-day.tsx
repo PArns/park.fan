@@ -1,8 +1,9 @@
 'use client';
 
 import { PartyPopper, Calendar, Backpack, Ban } from 'lucide-react';
-import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
+import type { AttractionHistoryDay, ScheduleItem, CrowdLevel } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
+import { CrowdLevelBadge } from './crowd-level-badge';
 import { HourlyP90Sparkline } from './hourly-p90-sparkline';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useTranslations } from 'next-intl';
@@ -84,7 +85,7 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
 
     // Check if park is closed (from schedule)
     if (day.attractionStatus === 'PARK_CLOSED') {
-      return `${borderWidth} border-red-500 dark:border-red-600`;
+      return `${borderWidth} border-status-closed`;
     }
 
     // Priority: Public Holiday (1) > School Vacation (2) > Bridge Day (3)
@@ -98,7 +99,7 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
 
     // Default border if no schedule marking or if UNKNOWN
     if (day.isToday) {
-      return `${borderWidth} border-park-primary`;
+      return `${borderWidth} border-primary`;
     }
     return borderWidth;
   };
@@ -143,22 +144,11 @@ export function AttractionHistoryDay({ day }: AttractionHistoryDayProps) {
         <div className="flex flex-1 flex-col">
           {/* Utilization Badge */}
           {historyData && (
-            <div
-              className={`mb-4 flex w-full justify-center rounded-md border px-2.5 py-0.5 text-xs font-medium ${
-                historyData.utilization === 'very_low'
-                  ? 'border-green-200 bg-green-100 text-green-800 dark:border-green-800 dark:bg-green-900/50 dark:text-green-100'
-                  : historyData.utilization === 'low'
-                    ? 'border-lime-200 bg-lime-100 text-lime-800 dark:border-lime-800 dark:bg-lime-900/50 dark:text-lime-100'
-                    : historyData.utilization === 'moderate'
-                      ? 'border-yellow-200 bg-yellow-100 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-100'
-                      : historyData.utilization === 'high'
-                        ? 'border-orange-200 bg-orange-100 text-orange-800 dark:border-orange-800 dark:bg-orange-900/50 dark:text-orange-100'
-                        : historyData.utilization === 'very_high'
-                          ? 'border-red-200 bg-red-100 text-red-800 dark:border-red-800 dark:bg-red-900/50 dark:text-red-100'
-                          : 'border-red-300 bg-red-200 text-red-900 dark:border-red-700 dark:bg-red-800/50 dark:text-red-50'
-              }`}
-            >
-              {t(`crowdLevels.${historyData.utilization}`)}
+            <div className="mb-4 flex w-full justify-center">
+              <CrowdLevelBadge
+                level={historyData.utilization as CrowdLevel}
+                className="w-full justify-center py-0.5 text-[10px]"
+              />
             </div>
           )}
 

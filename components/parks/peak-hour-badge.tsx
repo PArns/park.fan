@@ -74,11 +74,9 @@ export function PeakHourBadge({ peakHour, timezone }: PeakHourBadgeProps) {
   if (!shouldShow || !timeRemaining) return null;
 
   return (
-    <Badge variant="outline" className="ml-2 gap-1 px-1.5 py-0 font-normal">
-      <Clock className="h-3 w-3" />
-      <span className="text-xs">
-        {tCommon('in')} {timeRemaining}
-      </span>
+    <Badge className="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40 ml-2 border font-bold tracking-wide text-white uppercase backdrop-blur-md">
+      <Clock className="h-3 w-3 text-inherit" />
+      {tCommon('in')} {timeRemaining}
     </Badge>
   );
 }

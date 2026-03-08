@@ -127,18 +127,24 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
         <HeroBackground imageSrc={randomHeroImage} />
-        {/* Force dark mode for logo + text — search below stays theme-aware */}
-        <div className="dark text-foreground relative container mx-auto">
+        <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <div className="flex flex-col items-center lg:mb-16 lg:flex-row lg:items-center lg:justify-center">
-              {/* Logo – always dark variant (hero is always dark) */}
+            <div className="mx-auto flex w-full max-w-5xl flex-col items-center rounded-2xl bg-white/50 px-6 py-8 shadow-2xl backdrop-blur-md lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
+              {/* Logo – light/dark variant based on theme */}
               <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72">
+                <Image
+                  src="/logo-big.svg"
+                  alt="park.fan"
+                  fill
+                  className="object-contain dark:hidden"
+                  priority
+                />
                 <Image
                   src="/logo-big-dark.svg"
                   alt="park.fan"
                   fill
-                  className="object-contain"
+                  className="hidden object-contain dark:block"
                   priority
                 />
               </div>
@@ -224,6 +230,7 @@ export default async function HomePage({ params }: HomePageProps) {
               {stats.mostCrowdedPark && (
                 <ParkStatCard
                   label={t('mostCrowded')}
+                  variant="high"
                   park={{
                     ...stats.mostCrowdedPark,
                     url: convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url),

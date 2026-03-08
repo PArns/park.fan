@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 import { Activity } from 'lucide-react';
 
 interface ComparisonBadgeProps {
@@ -13,39 +14,29 @@ export function ComparisonBadge({ comparison, className, showIcon = true }: Comp
 
   if (!comparison) return null;
 
-  // Determine variant based on comparison value
-  // "higher" -> usually bad (more crowds/wait)
-  // "lower" -> usually good (less crowds/wait)
-  // "typical" -> neutral
-  let variant: 'default' | 'secondary' | 'destructive' | 'outline' = 'outline';
-  let colorClass = '';
+  // Map to shared crowd/status CSS tokens — same palette as CrowdLevelBadge/ParkStatusBadge
+  const colorMap: Record<string, string> = {
+    much_lower:
+      'bg-crowd-very-low/65 text-white border border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+    lower:
+      'bg-crowd-low/65 text-white border border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+    typical:
+      'bg-crowd-moderate/65 text-white border border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+    higher:
+      'bg-crowd-high/65 text-white border border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+    much_higher:
+      'bg-crowd-extreme/65 text-white border border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+    closed:
+      'bg-status-closed/65 text-white border border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+  };
 
-  if (comparison === 'much_higher') {
-    variant = 'secondary';
-    colorClass = 'bg-red-600 text-white dark:bg-red-400 dark:text-slate-900';
-  } else if (comparison === 'higher') {
-    variant = 'secondary';
-    colorClass = 'bg-orange-600 text-white dark:bg-orange-400 dark:text-slate-900';
-  } else if (comparison === 'lower') {
-    variant = 'secondary';
-    colorClass = 'bg-emerald-600 text-white dark:bg-emerald-400 dark:text-slate-900';
-  } else if (comparison === 'much_lower') {
-    variant = 'secondary';
-    colorClass = 'bg-teal-600 text-white dark:bg-teal-400 dark:text-slate-900';
-  } else if (comparison === 'typical') {
-    variant = 'secondary';
-    colorClass = 'bg-blue-600 text-white dark:bg-blue-400 dark:text-slate-900';
-  } else if (comparison === 'closed') {
-    variant = 'secondary';
-    colorClass = 'bg-status-closed/15 text-status-closed border border-status-closed/30';
-  }
+  const colorClass = colorMap[comparison] ?? '';
 
   return (
     <Badge
-      variant={variant}
-      className={`h-5 gap-1 px-1 text-[10px] font-bold tracking-wide uppercase ${colorClass} ${className}`}
+      className={cn('font-bold tracking-wide uppercase backdrop-blur-md', colorClass, className)}
     >
-      {showIcon && <Activity className="h-3 w-3" />}
+      {showIcon && <Activity className="h-3 w-3 text-inherit" />}
       {tCommon(comparison)}
     </Badge>
   );

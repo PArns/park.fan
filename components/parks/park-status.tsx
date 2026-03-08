@@ -78,13 +78,13 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
           <CrowdLevelBadge level={currentLoad.crowdLevel} className="px-4 py-1 text-base" />
         )}
         {analytics?.statistics && (
-          <Badge variant="outline" className="px-4 py-1 text-base">
+          <Badge variant="outline" className="px-4 py-1 text-base backdrop-blur-md">
             <Clock className="mr-2 h-4 w-4" />
             {analytics.statistics.avgWaitTime} {tCommon('minutes')} {tCommon('avgWait')}
           </Badge>
         )}
         {analytics?.statistics?.peakWaitToday !== undefined && (
-          <Badge variant="outline" className="px-4 py-1 text-base">
+          <Badge variant="outline" className="px-4 py-1 text-base backdrop-blur-md">
             <TrendingUp className="mr-2 h-4 w-4" />
             {t('peak')}: {analytics.statistics.peakWaitToday} min
           </Badge>

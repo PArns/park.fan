@@ -404,7 +404,7 @@ export function SearchCommand({
           <span className="hidden md:inline-flex">
             {placeholder || t('searchPlaceholderShort')}
           </span>
-          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium shadow-sm opacity-100 select-none md:flex">
+          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 shadow-sm select-none md:flex">
             {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
           </kbd>
         </Button>

@@ -58,6 +58,10 @@
   --color-crowd-high: var(--crowd-high);
   --color-crowd-very-high: var(--crowd-very-high);
   --color-crowd-extreme: var(--crowd-extreme);
+  /* Trend colors — enables opacity modifiers like bg-trend-up/65, border-trend-down/80 */
+  --color-trend-up: var(--trend-up);
+  --color-trend-down: var(--trend-down);
+  --color-trend-stable: var(--trend-stable);
 }
 
 :root {

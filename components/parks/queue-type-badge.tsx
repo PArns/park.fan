@@ -1,7 +1,13 @@
 import { User, Zap, Ticket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 import type { QueueDataItem } from '@/lib/api/types';
+
+const colorPrimary =
+  'bg-primary/65 text-white border border-primary/80 dark:bg-primary/25 dark:border-primary/40';
+const colorPaid =
+  'bg-status-down/65 text-white border border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40';
 
 interface QueueTypeBadgeProps {
   queue: QueueDataItem;
@@ -12,7 +18,7 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
 
   let Icon = Ticket;
   let label = '';
-  let variant: 'outline' | 'secondary' | 'default' = 'outline';
+  let colorClass = colorPrimary;
 
   const getWaitTime = (q: QueueDataItem): number | null => {
     if (!('waitTime' in q)) return null;
@@ -31,7 +37,6 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
         wt !== null
           ? t('queue.details.singleRider', { time: wt })
           : t('queue.details.singleRiderNoTime');
-      variant = 'outline';
       break;
     }
 
@@ -41,7 +46,7 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
         'price' in queue && queue.price?.formatted
           ? t('queue.details.lightningLane', { price: queue.price.formatted })
           : t('queue.details.lightningLaneNoPrice');
-      variant = 'secondary';
+      colorClass = colorPaid;
       break;
 
     case 'PAID_STANDBY':
@@ -50,7 +55,7 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
         'price' in queue && queue.price?.formatted
           ? t('queue.details.express', { price: queue.price.formatted })
           : t('queue.details.expressNoPrice');
-      variant = 'secondary';
+      colorClass = colorPaid;
       break;
 
     case 'RETURN_TIME':
@@ -78,7 +83,6 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
             ? t('queue.details.virtualQueueFull')
             : t('queue.details.virtualQueue');
       }
-      variant = 'outline';
       break;
 
     case 'BOARDING_GROUP':
@@ -96,7 +100,6 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
             ? t('queue.details.boardingGroupsDistributed')
             : t('queue.details.boardingGroupsPaused');
       }
-      variant = 'outline';
       break;
 
     default:
@@ -104,11 +107,8 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
   }
 
   return (
-    <Badge
-      variant={variant}
-      className="flex max-w-full items-center gap-1.5 px-1.5 py-0.5 text-[10px] font-normal"
-    >
-      <Icon className="h-3 w-3 shrink-0" />
+    <Badge className={cn('font-bold tracking-wide uppercase backdrop-blur-md', colorClass)}>
+      <Icon className="h-3 w-3 shrink-0 text-inherit" />
       <span className="min-w-0 truncate">{label}</span>
     </Badge>
   );

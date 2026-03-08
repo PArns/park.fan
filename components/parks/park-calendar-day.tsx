@@ -105,7 +105,7 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
     const borderWidth = isToday ? 'border-4' : 'border';
 
     if (day.status === 'CLOSED') {
-      return `${borderWidth} border-red-500 dark:border-red-600`;
+      return `${borderWidth} border-status-closed`;
     }
     if (day.status === 'UNKNOWN') {
       return `${borderWidth} border-gray-300 dark:border-gray-600`;

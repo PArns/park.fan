@@ -13,9 +13,9 @@ interface BackgroundOverlayProps {
 }
 
 const gradientIntensity = {
-  light: 'from-background/70 via-background/30 to-background/20',
-  medium: 'from-background/90 via-background/40 to-background/30',
-  heavy: 'from-background/95 via-background/60 to-background/40',
+  light: 'from-background/50 via-background/30 to-background/10',
+  medium: 'from-background/60 via-background/40 to-background/10',
+  heavy: 'from-background/70 via-background/60 to-background/10',
 };
 
 export function BackgroundOverlay({
@@ -36,7 +36,7 @@ export function BackgroundOverlay({
         className={cn(
           'object-cover transition-opacity duration-700',
           isLoaded ? 'opacity-40' : 'opacity-0',
-          hoverEffect && 'group-hover:opacity-50'
+          hoverEffect && 'group-hover:opacity-70'
         )}
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}

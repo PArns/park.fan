@@ -5,10 +5,12 @@ import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { useTranslations } from 'next-intl';
+import { cn } from '@/lib/utils';
 import type { CrowdLevel } from '@/lib/api/types';
 
 interface ParkStatCardProps {
   label: string;
+  variant?: 'high' | 'low';
   park: {
     id?: string;
     name: string;
@@ -22,7 +24,7 @@ interface ParkStatCardProps {
   };
 }
 
-export function ParkStatCard({ label, park }: ParkStatCardProps) {
+export function ParkStatCard({ label, variant = 'low', park }: ParkStatCardProps) {
   const tCommon = useTranslations('common');
 
   return (
@@ -48,14 +50,19 @@ export function ParkStatCard({ label, park }: ParkStatCardProps) {
               {park.averageWaitTime != null && park.averageWaitTime > 0 && (
                 <>
                   <Clock className="text-muted-foreground h-4 w-4" />
-                  <Badge variant="secondary">
+                  <Badge
+                    className={cn(
+                      'font-bold tracking-wide uppercase backdrop-blur-md',
+                      variant === 'high'
+                        ? 'border-status-down/80 bg-status-down/65 dark:border-status-down/40 dark:bg-status-down/25 border text-white'
+                        : 'border-status-operating/80 bg-status-operating/65 dark:border-status-operating/40 dark:bg-status-operating/25 border text-white'
+                    )}
+                  >
                     {park.averageWaitTime} {tCommon('minutes')}
                   </Badge>
                 </>
               )}
-              {park.crowdLevel && (
-                <CrowdLevelBadge level={park.crowdLevel} className="h-5 px-1.5 text-[10px]" />
-              )}
+              {park.crowdLevel && <CrowdLevelBadge level={park.crowdLevel} />}
             </div>
             {park.operatingAttractions != null && park.totalAttractions != null && (
               <div className="text-muted-foreground flex items-center gap-1 text-xs">

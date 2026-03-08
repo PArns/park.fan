@@ -1,5 +1,6 @@
 import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
 import type { TrendDirection } from '@/lib/api/types';
 
 const trendIconMap: Record<TrendDirection, typeof TrendingUp> = {
@@ -30,22 +31,26 @@ export function TrendIndicator({
   const Icon = trendIconMap[trend];
   const isUp = trend === 'up' || trend === 'increasing';
   const isDown = trend === 'down' || trend === 'decreasing';
-  const iconClass = cn(size === 'sm' ? 'h-3 w-3' : 'h-4 w-4');
+  const iconClass = cn(size === 'sm' ? 'h-3 w-3' : 'h-4 w-4', 'text-inherit');
 
   if (variant === 'pill') {
     return (
-      <div
+      <Badge
         className={cn(
-          'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium',
-          isUp && 'bg-trend-up/10 text-trend-up',
-          isDown && 'bg-trend-down/10 text-trend-down',
-          trend === 'stable' && 'bg-muted text-muted-foreground',
+          'font-bold tracking-wide uppercase backdrop-blur-md',
+          isUp &&
+            'bg-trend-up/65 border-trend-up/80 dark:bg-trend-up/25 dark:border-trend-up/40 border text-white',
+          isDown &&
+            'bg-trend-down/65 border-trend-down/80 dark:bg-trend-down/25 dark:border-trend-down/40 border text-white',
+          trend === 'stable' &&
+            'bg-trend-stable/65 border-trend-stable/80 dark:bg-trend-stable/25 dark:border-trend-stable/40 border text-white',
+          size === 'md' && 'px-3 py-1 text-sm',
           className
         )}
       >
         <Icon className={iconClass} />
-        {label && <span className="capitalize">{label}</span>}
-      </div>
+        {label && <span>{label}</span>}
+      </Badge>
     );
   }
 
@@ -53,9 +58,9 @@ export function TrendIndicator({
     <span
       className={cn(
         'flex items-center',
-        isUp && 'text-rose-500',
-        isDown && 'text-emerald-500',
-        trend === 'stable' && 'text-muted-foreground',
+        isUp && 'text-trend-up',
+        isDown && 'text-trend-down',
+        trend === 'stable' && 'text-trend-stable',
         className
       )}
     >

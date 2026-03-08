@@ -6,6 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { Input } from '@/components/ui/input';
 import { LocalTime } from '@/components/ui/local-time';
 import { search } from '@/lib/api/search';
@@ -99,7 +100,6 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
   }
 
   const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result.slug) : null;
-  const isOpen = result.status === 'OPERATING';
 
   return (
     <Link
@@ -132,18 +132,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
                 {typeLabels[result.type]}
               </Badge>
             </div>
-            {result.status && (
-              <Badge
-                variant="outline"
-                className={`text-xs ${
-                  isOpen
-                    ? 'border-status-operating text-status-operating'
-                    : 'border-status-closed text-status-closed'
-                }`}
-              >
-                {isOpen ? t('open') : t('closed')}
-              </Badge>
-            )}
+            {result.status && <ParkStatusBadge status={result.status} className="text-xs" />}
           </div>
 
           <h3 className="group-hover:text-primary mb-1 font-semibold transition-colors">

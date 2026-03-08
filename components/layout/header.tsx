@@ -149,9 +149,13 @@ export function Header() {
             <SearchCommand trigger="button" />
           </div>
 
-          {/* Always visible: locale switcher + theme toggle */}
-          <LocaleSwitcher />
-          <ThemeToggle />
+          {/* Always visible: locale switcher + theme toggle — glass pill on transparent hero */}
+          <div
+            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'bg-white/60 px-1 py-0.5 backdrop-blur-md dark:bg-black/40' : ''}`}
+          >
+            <LocaleSwitcher />
+            <ThemeToggle />
+          </div>
 
           {/* Mobile Menu – fades in on scroll */}
           <div className={fadeClass}>

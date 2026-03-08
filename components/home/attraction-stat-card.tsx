@@ -48,18 +48,16 @@ export function AttractionStatCard({ label, variant, attraction }: AttractionSta
           <div className="flex items-center gap-2">
             <Clock className="text-muted-foreground h-4 w-4" />
             <Badge
-              variant="secondary"
               className={cn(
+                'font-bold tracking-wide uppercase backdrop-blur-md',
                 variant === 'high'
-                  ? 'bg-status-down/20 text-status-down'
-                  : 'bg-status-operating/20 text-status-operating'
+                  ? 'border-status-down/80 bg-status-down/65 dark:border-status-down/40 dark:bg-status-down/25 border text-white'
+                  : 'border-status-operating/80 bg-status-operating/65 dark:border-status-operating/40 dark:bg-status-operating/25 border text-white'
               )}
             >
               {attraction.waitTime} {tCommon('minutes')}
             </Badge>
-            {attraction.crowdLevel && (
-              <CrowdLevelBadge level={attraction.crowdLevel} className="h-5 px-1.5 text-[10px]" />
-            )}
+            {attraction.crowdLevel && <CrowdLevelBadge level={attraction.crowdLevel} />}
           </div>
         </CardContent>
       </Card>

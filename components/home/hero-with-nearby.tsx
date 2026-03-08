@@ -242,7 +242,7 @@ export function HeroWithNearby({
           />
         </>
       ) : (
-        <p className="text-muted-foreground mx-auto mb-8 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
+        <p className="text-foreground/80 mx-auto mb-8 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
           {tHome('intro')}
         </p>
       )}

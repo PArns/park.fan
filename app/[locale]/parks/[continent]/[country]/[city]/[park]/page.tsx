@@ -294,15 +294,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
               timezone={park.timezone}
               todaySchedule={todaySchedule}
               nextSchedule={park.nextSchedule}
-              className="bg-background/60 border-primary/10 backdrop-blur-md"
+              className="border-primary/10"
             />
 
             {/* Weather */}
             {park.weather?.current && (
-              <WeatherCard
-                weather={park.weather}
-                className="bg-background/60 border-primary/10 backdrop-blur-md"
-              />
+              <WeatherCard weather={park.weather} className="border-primary/10" />
             )}
           </div>
 

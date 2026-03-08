@@ -11,7 +11,7 @@ interface RestaurantCardProps {
 
 export function RestaurantCard({ id, name, cuisineType }: RestaurantCardProps) {
   return (
-    <Card className="bg-background/60 relative backdrop-blur-md">
+    <Card className="relative">
       <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
         <FavoriteStar type="restaurant" id={id} />
       </div>

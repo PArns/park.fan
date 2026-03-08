@@ -14,19 +14,23 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
 
   const statusConfig = {
     OPERATING: {
-      color: 'bg-status-operating/15 text-status-operating',
+      color:
+        'bg-status-operating/65 text-white border border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
       icon: Clock,
     },
     DOWN: {
-      color: 'bg-status-down/15 text-status-down',
+      color:
+        'bg-status-down/65 text-white border border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
       icon: AlertTriangle,
     },
     CLOSED: {
-      color: 'bg-status-closed/15 text-status-closed',
+      color:
+        'bg-status-closed/65 text-white border border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
       icon: XCircle,
     },
     REFURBISHMENT: {
-      color: 'bg-status-refurbishment/15 text-status-refurbishment',
+      color:
+        'bg-status-refurbishment/65 text-white border border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
       icon: Wrench,
     },
   };
@@ -35,8 +39,10 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const Icon = config.icon;
 
   return (
-    <Badge className={cn('border-0 font-medium whitespace-nowrap', config.color, className)}>
-      <Icon className="mr-1.5 h-3.5 w-3.5" />
+    <Badge
+      className={cn('font-bold tracking-wide uppercase backdrop-blur-md', config.color, className)}
+    >
+      <Icon className="h-3 w-3 text-inherit" />
       {t(status)}
     </Badge>
   );
