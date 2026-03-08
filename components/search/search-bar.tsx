@@ -404,7 +404,7 @@ export function SearchCommand({
           <span className="hidden md:inline-flex">
             {placeholder || t('searchPlaceholderShort')}
           </span>
-          <kbd className="bg-primary/15 text-primary border-primary/20 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium opacity-100 select-none md:flex">
+          <kbd className="bg-primary/40 text-primary border-primary/40 pointer-events-none absolute top-2 right-2 hidden h-5 items-center gap-1 rounded border px-1.5 font-mono text-xs font-medium shadow-sm opacity-100 select-none md:flex">
             {isMac ? <span className="text-xs">⌘</span> : 'Ctrl'}K
           </kbd>
         </Button>
@@ -431,7 +431,7 @@ export function SearchCommand({
             className={`border-primary/20 hover:border-primary/40 text-muted-foreground flex w-full items-center justify-between border shadow-md backdrop-blur-lg transition-all hover:shadow-lg dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
               size === 'sm'
                 ? 'bg-background/60 hover:bg-background/75 h-10 rounded-lg px-3 py-2 pr-12 pl-10 text-sm'
-                : 'bg-background/35 hover:bg-background/50 h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
+                : 'bg-background/77 hover:bg-background/85 h-14 rounded-xl px-4 py-3 pr-14 pl-12 text-base'
             } ${className}`}
           >
             <span className="text-foreground/40 dark:text-muted-foreground/50 w-full truncate text-left">
@@ -439,7 +439,7 @@ export function SearchCommand({
             </span>
           </div>
           <kbd
-            className={`bg-primary/15 text-primary border-primary/20 pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium md:flex ${
+            className={`bg-primary/20 text-primary border-primary/20 pointer-events-none absolute top-1/2 hidden -translate-y-1/2 items-center gap-0.5 rounded border font-mono font-medium shadow-sm md:flex ${
               size === 'sm' ? 'right-2 h-6 px-1.5 text-[11px]' : 'right-3 h-8 gap-1 px-2.5 text-sm'
             }`}
           >
@@ -488,7 +488,7 @@ export function SearchCommand({
           value={query}
           onValueChange={setQuery}
           hint={
-            <kbd className="bg-primary/15 text-primary border-primary/20 hidden shrink-0 items-center gap-0.5 rounded border px-1.5 py-1 font-mono text-xs md:flex">
+            <kbd className="bg-primary/15 text-primary border-primary/20 hidden shrink-0 items-center gap-0.5 rounded border px-1.5 py-1 font-mono text-xs shadow-sm md:flex">
               {isMac ? (
                 <>
                   <span className="translate-y-px text-sm">⌘</span>
@@ -581,19 +581,19 @@ export function SearchCommand({
         {/* Keyboard shortcuts footer – hidden on mobile */}
         <div className="border-primary/10 bg-primary/10 text-foreground/50 dark:text-muted-foreground/60 hidden items-center gap-4 border-t px-5 py-3 text-xs sm:flex">
           <span className="flex items-center gap-1.5">
-            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px] shadow-sm">
               ↑↓
             </kbd>
             {tSearch('keyboard.navigate')}
           </span>
           <span className="flex items-center gap-1.5">
-            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px] shadow-sm">
               ↵
             </kbd>
             {tSearch('keyboard.select')}
           </span>
           <span className="ml-auto flex items-center gap-1.5">
-            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px]">
+            <kbd className="bg-primary/20 text-primary flex items-center justify-center rounded px-1.5 py-0.5 font-mono text-[11px] shadow-sm">
               Esc
             </kbd>
             {tSearch('keyboard.close')}
