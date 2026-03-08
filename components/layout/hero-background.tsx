@@ -58,9 +58,9 @@ interface HeroBackgroundProps {
 
 export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="dark bg-background absolute inset-0 -z-10 overflow-hidden">
       <RandomHeroImage imageSrc={imageSrc} />
-      <div className="from-background/50 via-background/20 dark:from-background dark:via-background/70 dark:to-muted/50 absolute inset-0 bg-gradient-to-br to-transparent" />
+      <div className="from-background via-background/40 to-muted/50 absolute inset-0 bg-gradient-to-br" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
   );

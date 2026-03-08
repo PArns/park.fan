@@ -7,6 +7,7 @@ import type {
   Country,
   DiscoveryCountryResponse,
   DiscoveryCityResponse,
+  SitemapAttraction,
 } from './types';
 
 /**
@@ -56,6 +57,16 @@ export const getCitiesWithParks = cache(
     );
   }
 );
+
+/**
+ * Get all attractions for sitemap generation.
+ * Cached for 24 hours. Returns flat array of { url, slug }.
+ */
+export async function getSitemapAttractions(): Promise<SitemapAttraction[]> {
+  return api.get<SitemapAttraction[]>('/v1/sitemap/attractions', {
+    next: { revalidate: CACHE_TTL.geo },
+  });
+}
 
 /**
  * Get countries in a continent (basic structure only, without park details).

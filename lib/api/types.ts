@@ -478,7 +478,7 @@ export interface ParkReference {
   name: string;
   slug: string;
   country: string;
-  attractions: AttractionReference[];
+  attractions?: AttractionReference[];
   attractionCount: number;
   // New backend fields (optional as backend might not always populate them?)
   // Actually, for discovery endpoints they ARE populated now.
@@ -537,6 +537,11 @@ export interface Continent {
   countryCount: number;
   parkCount: number;
   openParkCount: number;
+}
+
+export interface SitemapAttraction {
+  url: string;
+  slug: string;
 }
 
 export interface GeoStructure {

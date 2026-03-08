@@ -45,10 +45,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 z-50 h-16 border-b transition-all duration-500 ${
         isTransparent
-          ? 'border-b border-transparent bg-transparent'
-          : 'border-border/50 bg-background/80 border-b backdrop-blur-md'
+          ? 'border-transparent bg-transparent'
+          : 'border-border/50 bg-background/80 backdrop-blur-md'
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-0">

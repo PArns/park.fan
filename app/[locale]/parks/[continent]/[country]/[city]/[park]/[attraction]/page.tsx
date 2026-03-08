@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound, permanentRedirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import {
   Clock,
@@ -72,7 +72,6 @@ import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { findAttractionPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 
 interface AttractionPageProps {
@@ -226,18 +225,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     : null;
 
   if (!park || !attraction) {
-    // Before returning 404, check if the URL structure is malformed
-    // This handles cases where the city/park/attraction path is shifted
-    const redirectUrl = await findAttractionPageRedirect(
-      continent,
-      country,
-      city,
-      parkSlug,
-      attractionSlug
-    );
-    if (redirectUrl) {
-      permanentRedirect(`/${locale}${redirectUrl}`);
-    }
     notFound();
   }
 

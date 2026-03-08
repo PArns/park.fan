@@ -20,9 +20,8 @@ let geoStructureCache: {
   timestamp: 0,
 };
 
-// O(1) lookup indexes built once when geo structure is loaded
+// O(1) lookup index built once when geo structure is loaded
 let parkSlugIndex: Map<string, ParkLookupResult> | null = null;
-let attractionSlugIndex: Map<string, ParkLookupResult & { attractionSlug: string }> | null = null;
 
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
@@ -32,7 +31,11 @@ const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 async function getCachedGeoStructure() {
   const now = Date.now();
 
-  if (geoStructureCache.data && now - geoStructureCache.timestamp < CACHE_TTL && parkSlugIndex) {
+  if (
+    geoStructureCache.data &&
+    now - geoStructureCache.timestamp < CACHE_TTL &&
+    parkSlugIndex !== null
+  ) {
     return geoStructureCache.data;
   }
 
@@ -40,31 +43,19 @@ async function getCachedGeoStructure() {
     const data = await getGeoStructure(86400); // 24h cache at API level
     geoStructureCache = { data, timestamp: now };
 
-    // Rebuild O(1) indexes whenever we refresh the geo structure
+    // Rebuild O(1) index whenever we refresh the geo structure
     parkSlugIndex = new Map();
-    attractionSlugIndex = new Map();
 
     for (const continent of data.continents) {
       for (const country of continent.countries) {
         for (const city of country.cities) {
           for (const park of city.parks) {
-            const entry: ParkLookupResult = {
+            parkSlugIndex.set(park.slug, {
               continent: continent.slug,
               country: country.slug,
               city: city.slug,
               parkSlug: park.slug,
-              attractions: park.attractions || [],
-            };
-            parkSlugIndex.set(park.slug, entry);
-
-            if (park.attractions) {
-              for (const attraction of park.attractions) {
-                attractionSlugIndex.set(attraction.slug, {
-                  ...entry,
-                  attractionSlug: attraction.slug,
-                });
-              }
-            }
+            });
           }
         }
       }
@@ -82,7 +73,6 @@ export interface ParkLookupResult {
   country: string;
   city: string;
   parkSlug: string;
-  attractions: Array<{ slug: string }>;
 }
 
 /**
@@ -92,17 +82,6 @@ export interface ParkLookupResult {
 export async function findParkBySlug(parkSlug: string): Promise<ParkLookupResult | null> {
   await getCachedGeoStructure();
   return parkSlugIndex?.get(parkSlug) ?? null;
-}
-
-/**
- * Find attraction by slug across all parks — O(1) via index.
- * Returns the full geographic path if found.
- */
-export async function findAttractionBySlug(
-  attractionSlug: string
-): Promise<(ParkLookupResult & { attractionSlug: string }) | null> {
-  await getCachedGeoStructure();
-  return attractionSlugIndex?.get(attractionSlug) ?? null;
 }
 
 /**
@@ -141,24 +120,15 @@ export const findParkPageRedirect = cache(
     continent: string,
     country: string,
     citySlug: string,
-    parkSlug: string
+    _parkSlug: string
   ): Promise<string | null> => {
     // Check if the "citySlug" is actually a park slug
     const park = await findParkBySlug(citySlug);
 
     if (park && park.continent === continent && park.country === country) {
-      // The "city" is actually a park!
-      // Check if the "park" is actually an attraction of this park
-      const isAttraction = park.attractions.some((a) => a.slug === parkSlug);
-
-      if (isAttraction) {
-        // It's an attraction! Redirect to correct URL
-        return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}/${parkSlug}`;
-      } else {
-        // Not an attraction, might just be a wrong URL entirely
-        // Redirect to the park page at least
-        return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
-      }
+      // The "city" is actually a park — redirect to the park page at least.
+      // We can no longer check if parkSlug is an attraction (removed from discovery endpoint).
+      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
     }
 
     return null;
@@ -173,22 +143,5 @@ export const findParkPageRedirect = cache(
  *
  * @returns The correct URL or null if no redirect found
  */
-export const findAttractionPageRedirect = cache(
-  async (
-    continent: string,
-    country: string,
-    citySlug: string,
-    parkSlug: string,
-    attractionSlug: string
-  ): Promise<string | null> => {
-    // Most complex case: entire path might be shifted
-    // For now just check if attraction exists anywhere
-    const attraction = await findAttractionBySlug(attractionSlug);
-
-    if (attraction && attraction.continent === continent && attraction.country === country) {
-      return `/parks/${attraction.continent}/${attraction.country}/${attraction.city}/${attraction.parkSlug}/${attraction.attractionSlug}`;
-    }
-
-    return null;
-  }
-);
+// findAttractionPageRedirect removed: attraction data is no longer available
+// from discovery endpoints. Attraction redirect lookups are no longer supported.
