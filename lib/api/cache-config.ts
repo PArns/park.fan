@@ -20,8 +20,8 @@ export const CACHE_TTL = {
   realtime: 120, // ⚠️ Using cache: 'no-store' - respects API 120s cache
 
   // Discovery & Park data - Using cache: 'no-store' for live data
-  geo: 120, // ⚠️ Still using revalidate - geo structure changes rarely
-  continents: 120, // ⚠️ Still using revalidate - geo structure changes rarely
+  geo: 300, // ⚠️ Still using revalidate - geo structure changes rarely
+  continents: 300, // ⚠️ Still using revalidate - geo structure changes rarely
   parks: 300, // ⚠️ Using cache: 'no-store' for live park lists - respects API 300s cache
   parkDetail: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
   waitTimes: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache

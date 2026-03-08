@@ -64,7 +64,7 @@ export const getCitiesWithParks = cache(
  */
 export async function getSitemapAttractions(): Promise<SitemapAttraction[]> {
   return api.get<SitemapAttraction[]>('/v1/sitemap/attractions', {
-    next: { revalidate: CACHE_TTL.geo },
+    next: { revalidate: 86400 },
   });
 }
 
