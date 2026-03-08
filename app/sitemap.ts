@@ -4,7 +4,7 @@ import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
 
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [];
