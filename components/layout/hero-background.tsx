@@ -41,7 +41,7 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
       fill
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
-      quality={75}
+      quality={85}
       className={`object-cover transition-opacity duration-1000 will-change-transform ${
         isServerImage || isLoaded ? 'opacity-90' : 'opacity-0'
       }`}
