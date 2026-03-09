@@ -1,4 +1,4 @@
-import { format, startOfMonth, endOfMonth, addMonths } from 'date-fns';
+import { format, startOfMonth, endOfMonth, addMonths, addDays, min } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
@@ -154,10 +154,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
   }
 
   // Pre-fetch calendar for current month + next 2 months so opening hours
-  // are available in advance (API limit: 90 days max)
-  const calendarMonthsAhead = 2;
+  // are available in advance (API limit: 90 days max — cap to avoid 400)
   const calendarFrom = startOfMonth(new Date());
-  const calendarTo = endOfMonth(addMonths(new Date(), calendarMonthsAhead));
+  const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
   let calendarData: IntegratedCalendarResponse;
   try {
     calendarData = await getIntegratedCalendar(continent, country, city, parkSlug, {

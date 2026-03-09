@@ -19,6 +19,7 @@ import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -413,20 +414,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
             {/* Status */}
             <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
-              <Badge
-                className={`text-base ${
-                  status === 'OPERATING'
-                    ? 'bg-status-operating'
-                    : status === 'DOWN'
-                      ? 'bg-status-down'
-                      : status === 'REFURBISHMENT'
-                        ? 'bg-status-refurbishment'
-                        : 'bg-status-closed'
-                } text-white`}
-              >
-                <StatusIcon className="mr-1 h-4 w-4" />
-                {config.label}
-              </Badge>
+              <ParkStatusBadge status={status} className="text-base" />
               {mainQueue?.lastUpdated && (
                 <p className="text-muted-foreground mt-2 text-xs">
                   {tCommon('updated')}{' '}
@@ -439,15 +427,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             {attraction.predictionAccuracy && (
               <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
                 <Badge
-                  variant="outline"
                   className={cn('text-base', {
-                    'border-red-500 bg-red-500/10 text-red-500':
+                    'bg-status-closed/15 text-status-closed':
                       attraction.predictionAccuracy.badge === 'poor',
-                    'border-yellow-500 bg-yellow-500/10 text-yellow-500':
+                    'bg-status-down/15 text-status-down':
                       attraction.predictionAccuracy.badge === 'fair',
-                    'border-emerald-500 bg-emerald-500/10 text-emerald-500':
+                    'bg-status-operating/15 text-status-operating':
                       attraction.predictionAccuracy.badge === 'good',
-                    'border-blue-500 bg-blue-500/10 text-blue-500':
+                    'bg-status-refurbishment/15 text-status-refurbishment':
                       attraction.predictionAccuracy.badge === 'excellent',
                   })}
                 >
