@@ -24,6 +24,8 @@ import {
   Backpack,
   Calendar,
   ChevronRight,
+  MapPin,
+  Sun,
 } from 'lucide-react';
 
 interface HowtoPageProps {
@@ -179,6 +181,443 @@ function Li({ children }: { children: React.ReactNode }) {
   );
 }
 
+// ─── Mock example components ──────────────────────────────────────────────────
+
+type MockLocale = 'de' | 'en';
+
+const CROWD_LABELS: Record<MockLocale, Record<string, string>> = {
+  de: {
+    very_low: 'Sehr Niedrig',
+    low: 'Niedrig',
+    moderate: 'Normal',
+    high: 'Hoch',
+    very_high: 'Sehr Hoch',
+    extreme: 'Extrem',
+  },
+  en: {
+    very_low: 'Very Low',
+    low: 'Low',
+    moderate: 'Moderate',
+    high: 'High',
+    very_high: 'Very High',
+    extreme: 'Extreme',
+  },
+};
+
+const CROWD_COLORS: Record<string, string> = {
+  very_low:
+    'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+  low: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+  moderate:
+    'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+  high: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+  very_high:
+    'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+  extreme:
+    'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+};
+
+const CROWD_ICONS: Record<string, React.ElementType> = {
+  very_low: User,
+  low: User,
+  moderate: Users,
+  high: Users,
+  very_high: Users,
+  extreme: AlertTriangle,
+};
+
+function CrowdBadge({ level, locale }: { level: string; locale: MockLocale }) {
+  const Icon = CROWD_ICONS[level] || Users;
+  return (
+    <DemoBadge
+      color={CROWD_COLORS[level] || 'bg-muted border-border'}
+      label={CROWD_LABELS[locale][level] || level}
+      icon={Icon}
+    />
+  );
+}
+
+function MockSparkline({ data }: { data: number[] }) {
+  const max = Math.max(...data);
+  const min = Math.min(...data);
+  const range = max - min || 1;
+  const W = 200;
+  const H = 36;
+  const pts = data
+    .map((v, i) => {
+      const x = (i / (data.length - 1)) * W;
+      const y = H - ((v - min) / range) * (H - 6) - 3;
+      return `${x},${y}`;
+    })
+    .join(' ');
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-9" preserveAspectRatio="none">
+      <polyline
+        points={pts}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MockParkHeader({ locale }: { locale: MockLocale }) {
+  const t =
+    locale === 'de'
+      ? {
+          operating: 'Geöffnet',
+          peakTime: 'Stoßzeit in 1 Std. 45 Min.',
+          hours: '09:00 – 22:00',
+          weather: '23°C, sonnig',
+          remaining: 'Noch 6h 20m geöffnet',
+          progress: '58 % des heutigen Öffnungstags vergangen',
+          favLabel: 'Favorit',
+          city: 'Brühl, NRW',
+        }
+      : {
+          operating: 'Operating',
+          peakTime: 'Peak in 1h 45m',
+          hours: '09:00 – 22:00',
+          weather: '23°C, sunny',
+          remaining: '6h 20m remaining today',
+          progress: '58% of today\'s opening hours elapsed',
+          favLabel: 'Favorite',
+          city: 'Brühl, NRW',
+        };
+
+  return (
+    <div className="not-prose rounded-2xl border overflow-hidden shadow-sm">
+      {/* Hero image area */}
+      <div className="relative h-36 sm:h-44 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 flex items-end px-4 pb-4">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        {/* Annotated favourite star */}
+        <div className="absolute top-3 right-3 flex flex-col items-center gap-1 z-10">
+          <Star className="h-6 w-6 text-yellow-400 fill-yellow-400 drop-shadow" />
+          <span className="text-[10px] font-bold text-yellow-300 bg-black/50 rounded px-1.5 py-0.5 whitespace-nowrap">
+            {t.favLabel}
+          </span>
+        </div>
+        <div className="relative z-10 space-y-2">
+          <div className="flex flex-wrap gap-1.5">
+            <DemoBadge
+              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+              label={t.operating}
+              icon={Clock}
+            />
+            <CrowdBadge level="high" locale={locale} />
+            <DemoBadge
+              color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
+              label={t.peakTime}
+              icon={Clock}
+            />
+          </div>
+          <div>
+            <h3 className="text-white text-xl font-bold">Phantasialand</h3>
+            <p className="text-white/70 text-xs flex items-center gap-1 mt-0.5">
+              <MapPin className="h-3 w-3" />
+              {t.city}
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* Info row */}
+      <div className="bg-muted/30 px-4 py-2.5 flex flex-wrap gap-x-5 gap-y-1 text-sm border-b">
+        <span className="flex items-center gap-1.5 text-muted-foreground">
+          <Clock className="h-3.5 w-3.5" />
+          {t.hours}
+        </span>
+        <span className="flex items-center gap-1.5 text-muted-foreground">
+          <Sun className="h-3.5 w-3.5" />
+          {t.weather}
+        </span>
+        <span className="text-muted-foreground">{t.remaining}</span>
+      </div>
+      {/* Progress bar */}
+      <div className="px-4 py-2.5">
+        <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+          <div className="h-full bg-primary rounded-full w-[58%]" />
+        </div>
+        <p className="text-[11px] text-muted-foreground mt-1">{t.progress}</p>
+      </div>
+    </div>
+  );
+}
+
+function MockAttractionCards({ locale }: { locale: MockLocale }) {
+  const isDE = locale === 'de';
+  const cards = [
+    {
+      name: 'Taron',
+      wait: 55,
+      trend: 'up' as const,
+      crowd: 'high',
+      favorited: true,
+      spark: [15, 22, 28, 38, 47, 55],
+      extra: 'Single Rider',
+    },
+    {
+      name: 'Black Mamba',
+      wait: 12,
+      trend: 'down' as const,
+      crowd: 'low',
+      favorited: true,
+      spark: [40, 33, 26, 20, 15, 12],
+    },
+    {
+      name: 'Klugheim',
+      wait: 30,
+      trend: 'stable' as const,
+      crowd: 'moderate',
+      favorited: false,
+      spark: [28, 32, 30, 33, 29, 30],
+    },
+  ];
+
+  return (
+    <div className="not-prose grid gap-3 sm:grid-cols-3">
+      {cards.map(({ name, wait, trend, crowd, favorited, spark, extra }) => (
+        <div key={name} className="bg-card rounded-xl border p-4 relative flex flex-col gap-2.5">
+          <div className="absolute top-3 right-3 flex flex-col items-center gap-0.5">
+            <Star
+              className={`h-4 w-4 ${favorited ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground'}`}
+            />
+            {favorited && (
+              <span className="text-[9px] text-yellow-500 font-medium">
+                {isDE ? 'Favorit' : 'Fav'}
+              </span>
+            )}
+          </div>
+          <p className="font-semibold pr-8 text-sm">{name}</p>
+          <div className="flex flex-wrap gap-1">
+            <DemoBadge
+              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+              label={isDE ? 'Geöffnet' : 'Operating'}
+              icon={Clock}
+            />
+            <CrowdBadge level={crowd} locale={locale} />
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
+            <span className="text-2xl font-bold">{wait}</span>
+            <span className="text-muted-foreground text-sm">min</span>
+            {trend === 'up' && <TrendingUp className="ml-auto h-5 w-5 text-trend-up" />}
+            {trend === 'down' && <TrendingDown className="ml-auto h-5 w-5 text-trend-down" />}
+            {trend === 'stable' && <Minus className="ml-auto h-5 w-5 text-trend-stable" />}
+          </div>
+          {extra && (
+            <DemoBadge
+              color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
+              label={extra}
+              icon={User}
+            />
+          )}
+          <div className="text-muted-foreground/50 mt-auto pt-1">
+            <MockSparkline data={spark} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MockNearbyCards({ locale }: { locale: MockLocale }) {
+  const isDE = locale === 'de';
+  return (
+    <div className="not-prose grid gap-3 sm:grid-cols-2">
+      {/* Card 1: favorited, nearest open */}
+      <div className="bg-card rounded-xl border overflow-hidden relative">
+        <div className="absolute top-3 left-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">
+          {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
+        </div>
+        <div className="p-4 pt-10">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="font-bold leading-tight">Phantasialand</h3>
+              <p className="text-muted-foreground text-xs mt-0.5 flex items-center gap-1">
+                <MapPin className="h-3 w-3" /> Brühl, NRW
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-0.5 shrink-0">
+              <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
+              <span className="text-[10px] font-semibold text-yellow-500">
+                {isDE ? 'Favorit' : 'Favorite'}
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-1.5 mt-3">
+            <span className="flex items-center gap-1 text-xs bg-muted rounded-full px-2 py-0.5">
+              <MapPin className="h-3 w-3" /> 8.4 km
+            </span>
+            <DemoBadge
+              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+              label={isDE ? 'Geöffnet' : 'Operating'}
+              icon={Clock}
+            />
+          </div>
+          <div className="flex items-center gap-2 mt-2">
+            <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
+            <CrowdBadge level="high" locale={locale} />
+          </div>
+        </div>
+      </div>
+
+      {/* Card 2: not favorited, closed */}
+      <div className="bg-card rounded-xl border overflow-hidden">
+        <div className="p-4">
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <h3 className="font-bold leading-tight">Europa-Park</h3>
+              <p className="text-muted-foreground text-xs mt-0.5 flex items-center gap-1">
+                <MapPin className="h-3 w-3" /> Rust, Baden-Württemberg
+              </p>
+            </div>
+            <div className="flex flex-col items-center gap-0.5 shrink-0">
+              <Star className="h-5 w-5 text-muted-foreground" />
+              <span className="text-[10px] text-muted-foreground">
+                {isDE ? 'Hinzufügen' : 'Add fav'}
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-1.5 mt-3">
+            <span className="flex items-center gap-1 text-xs bg-muted rounded-full px-2 py-0.5">
+              <MapPin className="h-3 w-3" /> 124 km
+            </span>
+            <DemoBadge
+              color="bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40"
+              label={isDE ? 'Geschlossen' : 'Closed'}
+              icon={XCircle}
+            />
+          </div>
+          <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
+            <Clock className="h-3 w-3" />
+            {isDE ? 'Öffnet morgen um 10:00' : 'Opens tomorrow at 10:00'}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface CalendarDay {
+  wd: [string, string];
+  date: string;
+  crowd: string;
+  border: string;
+  hours: string;
+  temp: string;
+  avg: number;
+  tag?: 'school' | 'holiday';
+  best?: boolean;
+}
+
+const CALENDAR_DAYS: CalendarDay[] = [
+  { wd: ['Sa', 'Sat'], date: '14. Jun', crowd: 'extreme', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–22:00', temp: '24°C', avg: 72 },
+  { wd: ['So', 'Sun'], date: '15. Jun', crowd: 'very_high', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–21:00', temp: '21°C', avg: 60 },
+  { wd: ['Mo', 'Mon'], date: '16. Jun', crowd: 'low', border: 'border-border', hours: '10:00–20:00', temp: '20°C', avg: 18 },
+  { wd: ['Di', 'Tue'], date: '17. Jun', crowd: 'very_low', border: 'border-border', best: true, hours: '10:00–19:00', temp: '21°C', avg: 10 },
+  { wd: ['Mi', 'Wed'], date: '18. Jun', crowd: 'low', border: 'border-border', hours: '10:00–20:00', temp: '22°C', avg: 15 },
+  { wd: ['Do', 'Thu'], date: '19. Jun', crowd: 'moderate', border: 'border-border', hours: '09:00–20:00', temp: '24°C', avg: 30 },
+  { wd: ['Fr', 'Fri'], date: '20. Jun', crowd: 'high', tag: 'holiday', border: 'border-orange-500 dark:border-orange-400', hours: '09:00–22:00', temp: '26°C', avg: 55 },
+];
+
+function MockCalendar({ locale }: { locale: MockLocale }) {
+  const li = locale === 'de' ? 0 : 1;
+  const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+
+  return (
+    <div className="not-prose space-y-2">
+      <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+        {CALENDAR_DAYS.map(({ wd, date, crowd, tag, border, best, hours, temp, avg }) => (
+          <div
+            key={date}
+            className={`relative rounded-lg border-2 ${border} bg-card p-1 sm:p-1.5 flex flex-col gap-0.5 text-center`}
+          >
+            {best && (
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5">
+                {bestLabel}
+              </div>
+            )}
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] font-semibold text-muted-foreground">{wd[li]}</span>
+              {tag === 'school' && <Backpack className="h-2.5 w-2.5 text-yellow-500 shrink-0" />}
+              {tag === 'holiday' && <PartyPopper className="h-2.5 w-2.5 text-orange-500 shrink-0" />}
+              {!tag && <span className="h-2.5 w-2.5" />}
+            </div>
+            <p className="text-[9px] font-bold leading-tight">{date}</p>
+            <div
+              className={`text-[8px] font-bold tracking-wide uppercase text-white rounded px-0.5 py-0.5 leading-tight ${CROWD_COLORS[crowd]}`}
+            >
+              {CROWD_LABELS[locale][crowd]}
+            </div>
+            <div className="text-[8px] text-muted-foreground leading-tight hidden sm:block">
+              {hours}
+            </div>
+            <div className="text-[8px] text-muted-foreground">☀️ {temp}</div>
+            <div className="text-[8px] text-muted-foreground">
+              {locale === 'de' ? 'Ø' : 'avg'} {avg}m
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="text-[11px] text-muted-foreground text-center">
+        Phantasialand · Juni · {locale === 'de' ? 'Beispieldaten' : 'Example data'}
+      </p>
+    </div>
+  );
+}
+
+const HOURLY_WAITS = [15, 22, 38, 55, 70, 68, 52, 40, 30, 22, 14];
+const HOURLY_LABELS = ['9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h'];
+
+function MockHourlyChart({ locale }: { locale: MockLocale }) {
+  const isDE = locale === 'de';
+  const maxWait = Math.max(...HOURLY_WAITS);
+
+  function barColor(w: number) {
+    if (w < 20) return 'bg-crowd-very-low';
+    if (w < 35) return 'bg-crowd-low';
+    if (w < 50) return 'bg-crowd-moderate';
+    if (w < 65) return 'bg-crowd-high';
+    return 'bg-crowd-very-high';
+  }
+
+  return (
+    <div className="not-prose bg-muted/30 rounded-xl border p-4">
+      <p className="text-sm font-semibold mb-4">
+        Taron ·{' '}
+        {isDE ? 'Prognostizierter Wartezeit-Verlauf (Samstag)' : 'Predicted wait times (Saturday)'}
+      </p>
+      <div className="flex items-end gap-1 h-32">
+        {HOURLY_WAITS.map((w, i) => (
+          <div key={HOURLY_LABELS[i]} className="flex-1 flex flex-col items-center gap-1">
+            <span className="text-[9px] text-muted-foreground leading-none">{w}</span>
+            <div
+              className={`w-full rounded-t transition-all ${barColor(w)}`}
+              style={{ height: `${(w / maxWait) * 100}%` }}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex gap-1 mt-1.5">
+        {HOURLY_LABELS.map((h) => (
+          <div key={h} className="flex-1 text-center text-[9px] text-muted-foreground">
+            {h}
+          </div>
+        ))}
+      </div>
+      <p className="text-[11px] text-muted-foreground mt-3 flex items-center gap-1">
+        <TrendingDown className="h-3.5 w-3.5 text-trend-down shrink-0" />
+        {isDE
+          ? 'Beste Slots: direkt nach Öffnung (9–10 Uhr) oder ab 18:00 Uhr'
+          : 'Best slots: right at opening (9–10h) or from 18:00'}
+      </p>
+    </div>
+  );
+}
+
 // ─── German Content ────────────────────────────────────────────────────────────
 
 function ContentDE() {
@@ -326,6 +765,7 @@ function ContentDE() {
             eigener Bereich mit allen gespeicherten Parks, Attraktionen, Shows und Restaurants. Bei
             aktiviertem Standort werden sie nach Entfernung sortiert – der nächste Park zuerst.
           </p>
+          <MockNearbyCards locale="de" />
         </SubSection>
 
         <SubSection title="Was wird als Favorit gespeichert?">
@@ -364,6 +804,7 @@ function ContentDE() {
             den heutigen Öffnungszeiten, der aktuellen Auslastung und dem Wetter. Eine
             Fortschrittsleiste zeigt, wie lange der Park heute noch offen ist.
           </p>
+          <MockParkHeader locale="de" />
         </SubSection>
 
         <SubSection title="Tabs – Attraktionen, Shows, Kalender, Karte">
@@ -404,6 +845,7 @@ function ContentDE() {
             stabil / fallend), Vergleich zum typischen Wert, das heutige Tageshoch und einen
             Mini-Graphen (Sparkline) mit dem Wartezeit-Verlauf der letzten Stunden.
           </p>
+          <MockAttractionCards locale="de" />
         </SubSection>
       </Section>
 
@@ -797,6 +1239,7 @@ function ContentDE() {
               </span>
             </li>
           </ol>
+          <MockCalendar locale="de" />
         </SubSection>
 
         <SubSection title="Attraktion-Kalender">
@@ -939,6 +1382,7 @@ function ContentDE() {
             Wartezeit-Verlauf der letzten Stunden. So erkennst du sofort Trends: War es morgens
             ruhig und steigt die Wartezeit jetzt rapide an – oder fällt sie gerade?
           </p>
+          <MockHourlyChart locale="de" />
         </SubSection>
 
         <TipBox>
@@ -1462,6 +1906,7 @@ function ContentENSections() {
             all saved parks, attractions, shows and restaurants. With location enabled, they are
             sorted by distance – nearest first.
           </p>
+          <MockNearbyCards locale="en" />
         </SubSection>
 
         <TipBox>
@@ -1476,6 +1921,7 @@ function ContentENSections() {
           Every park has its own page with live data, opening hours, an interactive calendar and a
           map.
         </p>
+        <MockParkHeader locale="en" />
 
         <SubSection title="Tabs – Attractions, Shows, Calendar, Map">
           <div className="space-y-3 text-sm">
@@ -1509,6 +1955,7 @@ function ContentENSections() {
               </div>
             ))}
           </div>
+          <MockAttractionCards locale="en" />
         </SubSection>
       </Section>
 
@@ -1813,6 +2260,7 @@ function ContentENSections() {
               </span>
             </li>
           </ol>
+          <MockCalendar locale="en" />
         </SubSection>
 
         <SubSection title="Attraction calendar">
@@ -1948,6 +2396,7 @@ function ContentENSections() {
             last few hours. You can instantly see whether queues are building up, holding steady
             or shrinking.
           </p>
+          <MockHourlyChart locale="en" />
         </SubSection>
 
         <TipBox>
