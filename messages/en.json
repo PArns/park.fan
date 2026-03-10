@@ -140,6 +140,7 @@
     },
     "api": "API Documentation",
     "impressum": "Imprint",
+    "howto": "How it works",
     "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -733,6 +734,10 @@
     "locationHint": "Enable location access to sort by distance",
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites"
+  },
+  "howto": {
+    "title": "How does park.fan work? – The complete guide",
+    "description": "Everything about park.fan explained: search, favorites, crowd calendar, AI predictions and all badges. For families, theme park enthusiasts and first-time visitors."
   },
   "impressum": {
     "title": "Imprint - park.fan",

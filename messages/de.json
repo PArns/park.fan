@@ -140,6 +140,7 @@
     },
     "api": "API Dokumentation",
     "impressum": "Impressum",
+    "howto": "Anleitung",
     "datenschutz": "Datenschutzerklärung",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
@@ -733,6 +734,10 @@
     "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren",
     "addToFavorites": "Zu Favoriten hinzufügen",
     "removeFromFavorites": "Aus Favoriten entfernen"
+  },
+  "howto": {
+    "title": "Wie funktioniert park.fan? – Die vollständige Anleitung",
+    "description": "Alles über park.fan erklärt: Suche, Favoriten, Crowd-Kalender, KI-Prognosen und alle Badges im Überblick. Für Familien, Freizeitparknerds und Erstbesucher."
   },
   "impressum": {
     "title": "Impressum - park.fan",

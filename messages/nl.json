@@ -140,6 +140,7 @@
     },
     "api": "API Documentatie",
     "impressum": "Colofon",
+    "howto": "Hoe het werkt",
     "datenschutz": "Privacybeleid",
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden",
@@ -733,6 +734,10 @@
     "locationHint": "Schakel locatie in om op afstand te sorteren",
     "addToFavorites": "Toevoegen aan favorieten",
     "removeFromFavorites": "Verwijderen uit favorieten"
+  },
+  "howto": {
+    "title": "Hoe werkt park.fan? – De complete gids",
+    "description": "Alles over park.fan uitgelegd: zoeken, favorieten, drukte-kalender, AI-voorspellingen en alle badges. Voor gezinnen, pretparkfans en eerste bezoekers."
   },
   "impressum": {
     "title": "Colofon - park.fan",

@@ -140,6 +140,7 @@
     },
     "api": "Documentazione API",
     "impressum": "Impressum",
+    "howto": "Come funziona",
     "datenschutz": "Informativa sulla privacy",
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di servizio",
@@ -733,6 +734,10 @@
     "locationHint": "Abilita l'accesso alla posizione per ordinare per distanza",
     "addToFavorites": "Aggiungi ai preferiti",
     "removeFromFavorites": "Rimuovi dai preferiti"
+  },
+  "howto": {
+    "title": "Come funziona park.fan? – La guida completa",
+    "description": "Tutto su park.fan spiegato: ricerca, preferiti, calendario affollamento, previsioni AI e tutti i badge. Per famiglie, appassionati e visitatori novizi."
   },
   "impressum": {
     "title": "Note legali - park.fan",
