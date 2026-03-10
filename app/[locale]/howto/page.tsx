@@ -5,6 +5,8 @@ import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { LocaleContent } from '@/components/common/locale-content';
+import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
+import type { CalendarDay } from '@/lib/api/types';
 import {
   Search,
   Star,
@@ -179,6 +181,140 @@ function Li({ children }: { children: React.ReactNode }) {
       <span>{children}</span>
     </li>
   );
+}
+
+// ─── Live calendar example (Phantasialand, next 7 days) ──────────────────────
+
+function buildBorderColor(day: CalendarDay): string {
+  if (day.status === 'CLOSED') return 'border-status-closed dark:border-status-closed';
+  if (day.isSchoolVacation || day.isSchoolHoliday)
+    return 'border-yellow-500 dark:border-yellow-400';
+  if (day.isHoliday || day.isPublicHoliday) return 'border-orange-500 dark:border-orange-400';
+  if (day.isBridgeDay) return 'border-blue-500 dark:border-blue-400';
+  if (day.isToday) return 'border-primary';
+  return 'border-border';
+}
+
+async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
+  try {
+    const today = new Date();
+    const from = today.toISOString().split('T')[0];
+    const to = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+
+    const calendar = await getIntegratedCalendar(
+      'europe',
+      'germany',
+      'bruehl',
+      'phantasialand',
+      { from, to, includeHourly: 'none' }
+    );
+
+    const days = calendar.days.slice(0, 7);
+    if (days.length === 0) return <MockCalendar locale={locale} />;
+
+    const dtFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
+      weekday: 'short',
+    });
+    const dateFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
+      day: 'numeric',
+      month: 'short',
+    });
+
+    // Find the best day (lowest crowd, operating)
+    const bestIdx = days.reduce((best, d, i) => {
+      if (d.status === 'CLOSED') return best;
+      const order = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme', 'closed'];
+      const cur = order.indexOf(d.crowdLevel);
+      const bestCur = order.indexOf(days[best]?.crowdLevel ?? 'closed');
+      return cur < bestCur ? i : best;
+    }, -1);
+
+    const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+    const avgLabel = locale === 'de' ? 'Ø' : 'avg';
+
+    return (
+      <div className="not-prose space-y-2">
+        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+          {days.map((day, i) => {
+            const d = new Date(day.date + 'T12:00:00');
+            const wd = dtFmt.format(d);
+            const dateStr = dateFmt.format(d);
+            const isBest = i === bestIdx;
+            const border = buildBorderColor(day);
+            const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
+            const crowdLabel =
+              crowd === 'closed'
+                ? locale === 'de'
+                  ? 'Geschlossen'
+                  : 'Closed'
+                : (CROWD_LABELS[locale][crowd] ?? crowd);
+            const crowdColor =
+              crowd === 'closed'
+                ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
+                : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
+            const hoursStr =
+              day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
+            const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
+            const avgStr = day.avgWaitTime ? `${day.avgWaitTime}m` : '—';
+
+            return (
+              <div
+                key={day.date}
+                className={`relative rounded-lg border-2 ${border} bg-card p-1 sm:p-1.5 flex flex-col gap-0.5 text-center`}
+              >
+                {isBest && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5">
+                    {bestLabel}
+                  </div>
+                )}
+                <div className="flex items-center justify-between">
+                  <span className="text-[9px] font-semibold text-muted-foreground">{wd}</span>
+                  {(day.isSchoolVacation || day.isSchoolHoliday) && (
+                    <Backpack className="h-2.5 w-2.5 text-yellow-500 shrink-0" />
+                  )}
+                  {(day.isHoliday || day.isPublicHoliday) &&
+                    !day.isSchoolVacation &&
+                    !day.isSchoolHoliday && (
+                      <PartyPopper className="h-2.5 w-2.5 text-orange-500 shrink-0" />
+                    )}
+                  {day.isBridgeDay &&
+                    !day.isHoliday &&
+                    !day.isPublicHoliday &&
+                    !day.isSchoolVacation &&
+                    !day.isSchoolHoliday && (
+                      <Calendar className="h-2.5 w-2.5 text-blue-500 shrink-0" />
+                    )}
+                  {!day.isSchoolVacation &&
+                    !day.isSchoolHoliday &&
+                    !day.isHoliday &&
+                    !day.isPublicHoliday &&
+                    !day.isBridgeDay && <span className="h-2.5 w-2.5" />}
+                </div>
+                <p className="text-[9px] font-bold leading-tight">{dateStr}</p>
+                <div
+                  className={`text-[8px] font-bold tracking-wide uppercase text-white rounded px-0.5 py-0.5 leading-tight ${crowdColor}`}
+                >
+                  {crowdLabel}
+                </div>
+                <div className="text-[8px] text-muted-foreground leading-tight hidden sm:block">
+                  {hoursStr}
+                </div>
+                {tempStr && <div className="text-[8px] text-muted-foreground">☀️ {tempStr}</div>}
+                <div className="text-[8px] text-muted-foreground">
+                  {avgLabel} {avgStr}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+        <p className="text-[11px] text-muted-foreground text-center">
+          Phantasialand · {locale === 'de' ? 'Live-Daten der nächsten 7 Tage' : 'Live data – next 7 days'}
+        </p>
+      </div>
+    );
+  } catch {
+    return <MockCalendar locale={locale} />;
+  }
 }
 
 // ─── Mock example components ──────────────────────────────────────────────────
@@ -501,7 +637,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
   );
 }
 
-interface CalendarDay {
+interface MockCalendarDay {
   wd: [string, string];
   date: string;
   crowd: string;
@@ -513,7 +649,7 @@ interface CalendarDay {
   best?: boolean;
 }
 
-const CALENDAR_DAYS: CalendarDay[] = [
+const CALENDAR_DAYS: MockCalendarDay[] = [
   { wd: ['Sa', 'Sat'], date: '14. Jun', crowd: 'extreme', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–22:00', temp: '24°C', avg: 72 },
   { wd: ['So', 'Sun'], date: '15. Jun', crowd: 'very_high', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–21:00', temp: '21°C', avg: 60 },
   { wd: ['Mo', 'Mon'], date: '16. Jun', crowd: 'low', border: 'border-border', hours: '10:00–20:00', temp: '20°C', avg: 18 },
@@ -1239,7 +1375,7 @@ function ContentDE() {
               </span>
             </li>
           </ol>
-          <MockCalendar locale="de" />
+          <LiveCalendarExample locale="de" />
         </SubSection>
 
         <SubSection title="Attraktion-Kalender">
@@ -2260,7 +2396,7 @@ function ContentENSections() {
               </span>
             </li>
           </ol>
-          <MockCalendar locale="en" />
+          <LiveCalendarExample locale="en" />
         </SubSection>
 
         <SubSection title="Attraction calendar">
