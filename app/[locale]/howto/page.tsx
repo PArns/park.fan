@@ -1139,54 +1139,260 @@ function ContentDE() {
 
 // ─── English Content ───────────────────────────────────────────────────────────
 
-function ContentEN() {
+function IntroEN() {
   return (
-    <div className="space-y-16 text-base leading-7">
-      {/* Intro */}
-      <div className="space-y-4">
-        <div className="space-y-4 text-base leading-relaxed">
-          <p className="text-muted-foreground text-lg font-medium">
-            Sound familiar? You're standing in an 80-minute queue for Taron – and just ten metres
-            away another ride has no wait at all. Or: you book your holiday and discover that every
-            school in the country is on break that exact week.
-          </p>
-          <p className="text-muted-foreground">
-            park.fan was built out of exactly that frustration. What started as a small side
-            project – "let me just track some wait times" – has grown into a platform with live
-            data from 150+ parks, over 5,000 attractions and millions of queue data points
-            processed every day.
-          </p>
-          <p className="text-muted-foreground">
-            The goal is simple:{' '}
-            <strong>take the guesswork out of your theme park visit.</strong> Use the crowd
-            calendar to pick the right day, navigate with live wait times, and rely on AI
-            predictions to know when each ride will be at its quietest. This page explains every
-            feature in detail.
-          </p>
-        </div>
-        <nav aria-label="Table of Contents" className="bg-muted/40 rounded-xl border p-5 not-prose">
-          <p className="mb-3 font-semibold">Table of Contents</p>
-          <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
-            {[
-              ['#suche', '1. Search'],
-              ['#favoriten', '2. Favorites'],
-              ['#parkseite', '3. The Park Page'],
-              ['#badges', '4. Badges & Indicators'],
-              ['#kalender', '5. Crowd Calendar'],
-              ['#prognosen', '6. AI Predictions'],
-              ['#standort', '7. Location & Nearby'],
-              ['#personas', '8. Who is it for?'],
-              ['#faq', '9. FAQ'],
-            ].map(([href, label]) => (
-              <li key={href}>
-                <a href={href} className="hover:text-primary transition-colors">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ol>
-        </nav>
+    <div className="space-y-4">
+      <div className="space-y-4 text-base leading-relaxed">
+        <p className="text-muted-foreground text-lg font-medium">
+          Sound familiar? You're standing in an 80-minute queue for Taron – and just ten metres
+          away another ride has no wait at all. Or: you book your holiday and discover that every
+          school in the country is on break that exact week.
+        </p>
+        <p className="text-muted-foreground">
+          park.fan was built out of exactly that frustration. What started as a small side
+          project – "let me just track some wait times" – has grown into a platform with live
+          data from 150+ parks, over 5,000 attractions and millions of queue data points
+          processed every day.
+        </p>
+        <p className="text-muted-foreground">
+          The goal is simple:{' '}
+          <strong>take the guesswork out of your theme park visit.</strong> Use the crowd calendar
+          to pick the right day, navigate with live wait times, and rely on AI predictions to know
+          when each ride will be at its quietest. This page explains every feature in detail.
+        </p>
       </div>
+      <nav aria-label="Table of Contents" className="bg-muted/40 rounded-xl border p-5 not-prose">
+        <p className="mb-3 font-semibold">Table of Contents</p>
+        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          {[
+            ['#suche', '1. Search'],
+            ['#favoriten', '2. Favorites'],
+            ['#parkseite', '3. The Park Page'],
+            ['#badges', '4. Badges & Indicators'],
+            ['#kalender', '5. Crowd Calendar'],
+            ['#prognosen', '6. AI Predictions'],
+            ['#standort', '7. Location & Nearby'],
+            ['#personas', '8. Who is it for?'],
+            ['#faq', '9. FAQ'],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:text-primary transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+function IntroES() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-4 text-base leading-relaxed">
+        <p className="text-muted-foreground text-lg font-medium">
+          ¿Te resulta familiar? 80 minutos de cola para Taron y, a diez metros de distancia, otra
+          atracción sin espera. O reservas tus vacaciones y descubres que esa semana hay vacaciones
+          escolares en toda la región.
+        </p>
+        <p className="text-muted-foreground">
+          park.fan nació de esa misma frustración. Lo que empezó como un pequeño proyecto personal –
+          &quot;solo voy a rastrear algunos tiempos de espera&quot; – se ha convertido en una
+          plataforma con datos en directo de más de 150 parques, más de 5.000 atracciones y
+          millones de registros de colas procesados cada día.
+        </p>
+        <p className="text-muted-foreground">
+          El objetivo es simple:{' '}
+          <strong>elimina las conjeturas de tu visita al parque temático.</strong> Usa el calendario
+          de afluencia para elegir el mejor día, navega con tiempos de espera en directo y aprovecha
+          las predicciones de IA para saber cuándo cada atracción tendrá menos cola. Esta página
+          explica cada función en detalle.
+        </p>
+      </div>
+      <nav
+        aria-label="Índice de contenidos"
+        className="bg-muted/40 rounded-xl border p-5 not-prose"
+      >
+        <p className="mb-3 font-semibold">Índice de contenidos</p>
+        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          {[
+            ['#suche', '1. Búsqueda'],
+            ['#favoriten', '2. Favoritos'],
+            ['#parkseite', '3. La página del parque'],
+            ['#badges', '4. Insignias y estados'],
+            ['#kalender', '5. Calendario de afluencia'],
+            ['#prognosen', '6. Predicciones IA'],
+            ['#standort', '7. Ubicación'],
+            ['#personas', '8. ¿Para quién?'],
+            ['#faq', '9. Preguntas frecuentes'],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:text-primary transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+function IntroFR() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-4 text-base leading-relaxed">
+        <p className="text-muted-foreground text-lg font-medium">
+          Ça te parle ? 80 minutes de queue pour Taron — et à dix mètres de là, une autre
+          attraction sans attente. Ou encore : tu réserves tes vacances et tu découvres que c&apos;est
+          exactement la semaine des congés scolaires dans toute la région.
+        </p>
+        <p className="text-muted-foreground">
+          park.fan est né de cette frustration. Ce qui a commencé comme un petit projet personnel –
+          &quot;je vais juste suivre quelques temps d&apos;attente&quot; – est devenu une plateforme
+          avec des données en direct de plus de 150 parcs, plus de 5 000 attractions et des
+          millions de points de données traités chaque jour.
+        </p>
+        <p className="text-muted-foreground">
+          L&apos;objectif est simple :{' '}
+          <strong>éliminer les approximations lors de ta visite en parc d&apos;attractions.</strong>{' '}
+          Utilise le calendrier d&apos;affluence pour choisir le bon jour, navigue avec des temps
+          d&apos;attente en direct et compte sur les prédictions IA pour savoir quand chaque
+          attraction sera la moins fréquentée. Cette page explique chaque fonctionnalité en détail.
+        </p>
+      </div>
+      <nav
+        aria-label="Table des matières"
+        className="bg-muted/40 rounded-xl border p-5 not-prose"
+      >
+        <p className="mb-3 font-semibold">Table des matières</p>
+        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          {[
+            ['#suche', '1. Recherche'],
+            ['#favoriten', '2. Favoris'],
+            ['#parkseite', '3. La page du parc'],
+            ['#badges', '4. Badges et statuts'],
+            ['#kalender', "5. Calendrier d'affluence"],
+            ['#prognosen', '6. Prédictions IA'],
+            ['#standort', '7. Localisation'],
+            ['#personas', '8. Pour qui ?'],
+            ['#faq', '9. FAQ'],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:text-primary transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+function IntroIT() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-4 text-base leading-relaxed">
+        <p className="text-muted-foreground text-lg font-medium">
+          Ti suona familiare? 80 minuti di coda per Taron — e a dieci metri di distanza
+          un&apos;altra attrazione senza attesa. Oppure: prenoti le vacanze e scopri che quella
+          settimana ci sono le vacanze scolastiche in tutta la regione.
+        </p>
+        <p className="text-muted-foreground">
+          park.fan è nato da questa stessa frustrazione. Quello che è iniziato come un piccolo
+          progetto personale – &quot;voglio solo tracciare alcuni tempi di attesa&quot; – è
+          diventato una piattaforma con dati in tempo reale da oltre 150 parchi, più di 5.000
+          attrazioni e milioni di dati sulle code elaborati ogni giorno.
+        </p>
+        <p className="text-muted-foreground">
+          L&apos;obiettivo è semplice:{' '}
+          <strong>elimina le congetture dalla tua visita al parco divertimenti.</strong> Usa il
+          calendario dell&apos;affluenza per scegliere il giorno migliore, naviga con i tempi di
+          attesa in diretta e affidati alle previsioni IA per sapere quando ogni attrazione avrà
+          meno coda. Questa pagina spiega ogni funzione in dettaglio.
+        </p>
+      </div>
+      <nav aria-label="Indice" className="bg-muted/40 rounded-xl border p-5 not-prose">
+        <p className="mb-3 font-semibold">Indice</p>
+        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          {[
+            ['#suche', '1. Ricerca'],
+            ['#favoriten', '2. Preferiti'],
+            ['#parkseite', '3. La pagina del parco'],
+            ['#badges', '4. Badge e stati'],
+            ["#kalender", "5. Calendario affluenza"],
+            ['#prognosen', '6. Previsioni IA'],
+            ['#standort', '7. Posizione'],
+            ['#personas', '8. Per chi?'],
+            ['#faq', '9. FAQ'],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:text-primary transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+function IntroNL() {
+  return (
+    <div className="space-y-4">
+      <div className="space-y-4 text-base leading-relaxed">
+        <p className="text-muted-foreground text-lg font-medium">
+          Klinkt dit bekend? 80 minuten in de rij voor Taron — en tien meter verderop staat er
+          niemand bij een andere attractie. Of: je boekt je vakantie en ontdekt dat die week precies
+          de schoolvakantie valt.
+        </p>
+        <p className="text-muted-foreground">
+          park.fan is gebouwd vanuit precies die frustratie. Wat begon als een klein zijproject –
+          &quot;ik ga gewoon wat wachttijden bijhouden&quot; – is uitgegroeid tot een platform met
+          live data van 150+ parken, meer dan 5.000 attracties en miljoenen wachtrij-datapunten die
+          dagelijks worden verwerkt.
+        </p>
+        <p className="text-muted-foreground">
+          Het doel is eenvoudig:{' '}
+          <strong>neem het giswerk weg uit je pretparkbezoek.</strong> Gebruik de drukte-kalender
+          om de juiste dag te kiezen, navigeer met live wachttijden en vertrouw op
+          AI-voorspellingen om te weten wanneer elke attractie het rustigst is. Deze pagina legt
+          elke functie in detail uit.
+        </p>
+      </div>
+      <nav aria-label="Inhoudsopgave" className="bg-muted/40 rounded-xl border p-5 not-prose">
+        <p className="mb-3 font-semibold">Inhoudsopgave</p>
+        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          {[
+            ['#suche', '1. Zoeken'],
+            ['#favoriten', '2. Favorieten'],
+            ['#parkseite', '3. De parkpagina'],
+            ['#badges', '4. Badges & statussen'],
+            ['#kalender', '5. Drukte-kalender'],
+            ['#prognosen', '6. AI-voorspellingen'],
+            ['#standort', '7. Locatie'],
+            ['#personas', '8. Voor wie?'],
+            ['#faq', '9. FAQ'],
+          ].map(([href, label]) => (
+            <li key={href}>
+              <a href={href} className="hover:text-primary transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
+  );
+}
+
+// Sections are shared across EN / ES / FR / IT / NL
+function ContentENSections() {
+  return (
+    <>
 
       {/* ── 1. Search ───────────────────────────────────────────────────────── */}
       <Section id="suche" title="Search">
@@ -1839,6 +2045,51 @@ function ContentEN() {
           ))}
         </div>
       </Section>
+    </>
+  );
+}
+
+function ContentEN() {
+  return (
+    <div className="space-y-16 text-base leading-7">
+      <IntroEN />
+      <ContentENSections />
+    </div>
+  );
+}
+
+function ContentES() {
+  return (
+    <div className="space-y-16 text-base leading-7">
+      <IntroES />
+      <ContentENSections />
+    </div>
+  );
+}
+
+function ContentFR() {
+  return (
+    <div className="space-y-16 text-base leading-7">
+      <IntroFR />
+      <ContentENSections />
+    </div>
+  );
+}
+
+function ContentIT() {
+  return (
+    <div className="space-y-16 text-base leading-7">
+      <IntroIT />
+      <ContentENSections />
+    </div>
+  );
+}
+
+function ContentNL() {
+  return (
+    <div className="space-y-16 text-base leading-7">
+      <IntroNL />
+      <ContentENSections />
     </div>
   );
 }
@@ -1858,7 +2109,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
     <div className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-4xl">
         <LocaleContent
-          locale={locale as 'de' | 'en'}
+          locale={locale as Locale}
           de={
             <>
               <h1 className="mb-2 text-4xl font-bold">Wie funktioniert park.fan?</h1>
@@ -1877,6 +2128,49 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
                 calendar, AI predictions and all badges explained.
               </p>
               <ContentEN />
+            </>
+          }
+          es={
+            <>
+              <h1 className="mb-2 text-4xl font-bold">¿Cómo funciona park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                La guía completa para visitar parques temáticos – desde la búsqueda y los
+                favoritos hasta el calendario de afluencia, las predicciones IA y todos los
+                indicadores explicados.
+              </p>
+              <ContentES />
+            </>
+          }
+          fr={
+            <>
+              <h1 className="mb-2 text-4xl font-bold">Comment fonctionne park.fan ?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
+                aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
+                tous les indicateurs expliqués.
+              </p>
+              <ContentFR />
+            </>
+          }
+          it={
+            <>
+              <h1 className="mb-2 text-4xl font-bold">Come funziona park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
+                preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e
+                tutti gli indicatori spiegati.
+              </p>
+              <ContentIT />
+            </>
+          }
+          nl={
+            <>
+              <h1 className="mb-2 text-4xl font-bold">Hoe werkt park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
+                drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
+              </p>
+              <ContentNL />
             </>
           }
         />
