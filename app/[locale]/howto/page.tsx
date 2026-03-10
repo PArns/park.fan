@@ -7,6 +7,10 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { LocaleContent } from '@/components/common/locale-content';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { CalendarDay } from '@/lib/api/types';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 import {
   Search,
   Star,
@@ -123,29 +127,29 @@ function DemoBadge({
   icon?: React.ElementType;
 }) {
   return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-bold tracking-wide text-white uppercase ${color}`}
-    >
-      {Icon && <Icon className="h-3 w-3 shrink-0" />}
+    <Badge className={cn('font-bold tracking-wide uppercase backdrop-blur-md text-white', color)}>
+      {Icon && <Icon className="h-3 w-3 text-inherit" />}
       {label}
-    </span>
+    </Badge>
   );
 }
 
 function InfoBox({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-primary/5 border-primary/20 rounded-xl border p-4 text-sm leading-relaxed">
-      {children}
-    </div>
+    <Card className="bg-primary/5 border-primary/20 shadow-none">
+      <CardContent className="text-sm leading-relaxed">{children}</CardContent>
+    </Card>
   );
 }
 
-function TipBox({ children }: { children: React.ReactNode }) {
+function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
-    <div className="rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4 text-sm leading-relaxed">
-      <span className="mb-1 block font-bold text-yellow-600 dark:text-yellow-400">Tipp</span>
-      {children}
-    </div>
+    <Card className="border-yellow-500/20 bg-yellow-500/5 shadow-none">
+      <CardContent className="text-sm leading-relaxed">
+        <span className="mb-1 block font-bold text-yellow-600 dark:text-yellow-400">{label}</span>
+        {children}
+      </CardContent>
+    </Card>
   );
 }
 
@@ -161,16 +165,20 @@ function PersonaCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-card rounded-xl border p-6">
-      <div className="mb-3 flex items-center gap-3">
-        <span className="text-3xl">{emoji}</span>
-        <div>
-          <h3 className="text-lg font-bold">{title}</h3>
-          <p className="text-muted-foreground text-sm">{subtitle}</p>
+    <Card>
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">{emoji}</span>
+          <div>
+            <CardTitle className="text-lg">{title}</CardTitle>
+            <CardDescription>{subtitle}</CardDescription>
+          </div>
         </div>
-      </div>
-      <ul className="text-muted-foreground space-y-2 text-sm">{children}</ul>
-    </div>
+      </CardHeader>
+      <CardContent>
+        <ul className="text-muted-foreground space-y-2 text-sm">{children}</ul>
+      </CardContent>
+    </Card>
   );
 }
 
@@ -473,9 +481,7 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
       </div>
       {/* Progress bar */}
       <div className="px-4 py-2.5">
-        <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-          <div className="h-full bg-primary rounded-full w-[58%]" />
-        </div>
+        <Progress value={58} className="h-1.5" />
         <p className="text-[11px] text-muted-foreground mt-1">{t.progress}</p>
       </div>
     </div>
@@ -515,7 +521,8 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
   return (
     <div className="not-prose grid gap-3 sm:grid-cols-3">
       {cards.map(({ name, wait, trend, crowd, favorited, spark, extra }) => (
-        <div key={name} className="bg-card rounded-xl border p-4 relative flex flex-col gap-2.5">
+        <Card key={name} className="relative">
+          <CardContent className="flex flex-col gap-2.5">
           <div className="absolute top-3 right-3 flex flex-col items-center gap-0.5">
             <Star
               className={`h-4 w-4 ${favorited ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground'}`}
@@ -553,7 +560,8 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
           <div className="text-muted-foreground/50 mt-auto pt-1">
             <MockSparkline data={spark} />
           </div>
-        </div>
+          </CardContent>
+        </Card>
       ))}
     </div>
   );
@@ -564,11 +572,11 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
   return (
     <div className="not-prose grid gap-3 sm:grid-cols-2">
       {/* Card 1: favorited, nearest open */}
-      <div className="bg-card rounded-xl border overflow-hidden relative">
+      <Card className="relative overflow-hidden">
         <div className="absolute top-3 left-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">
           {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
         </div>
-        <div className="p-4 pt-10">
+        <CardContent className="pt-10">
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="font-bold leading-tight">Phantasialand</h3>
@@ -597,12 +605,12 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
             <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
             <CrowdBadge level="high" locale={locale} />
           </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {/* Card 2: not favorited, closed */}
-      <div className="bg-card rounded-xl border overflow-hidden">
-        <div className="p-4">
+      <Card>
+        <CardContent>
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="font-bold leading-tight">Europa-Park</h3>
@@ -631,8 +639,8 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
             <Clock className="h-3 w-3" />
             {isDE ? 'Öffnet morgen um 10:00' : 'Opens tomorrow at 10:00'}
           </p>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
@@ -786,7 +794,7 @@ function ContentDE() {
           className="bg-muted/40 rounded-xl border p-5 not-prose"
         >
           <p className="mb-3 font-semibold">Inhaltsverzeichnis</p>
-          <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+          <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
             {[
               ['#suche', '1. Suche'],
               ['#favoriten', '2. Favoriten'],
@@ -1039,10 +1047,9 @@ function ContentDE() {
         {/* Crowd Level */}
         <SubSection title="Auslastungsstufen (Crowd Level)">
           <p className="text-muted-foreground mb-3 text-sm">
-            Das Crowd Level zeigt, wie voll ein Park oder wie lange die Warteschlange an einer
-            Attraktion ist – im Verhältnis zum historischen 90. Perzentil (P90). Das bedeutet: Ein
-            Wert von "Hoch" heißt, dass der Park heute voller ist als an 90 % der bisherigen
-            Betriebstage.
+            Das Crowd Level zeigt, wie voll ein Park oder wie stark eine Attraktion ausgelastet ist –
+            im Verhältnis zum historischen Median (P50), also dem typischen Wert für diese
+            Attraktion. 100 % bedeutet: genau so voll wie ein durchschnittlicher Tag.
           </p>
           <div className="space-y-3">
             {[
@@ -1051,7 +1058,7 @@ function ContentDE() {
                   'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
                 label: 'Sehr Niedrig',
                 icon: User,
-                threshold: '< 20 % des P90',
+                threshold: '≤ 60 % des P50',
                 desc: 'Kaum Betrieb – kurze bis keine Warteschlangen. Idealer Besuchstag.',
               },
               {
@@ -1059,7 +1066,7 @@ function ContentDE() {
                   'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
                 label: 'Niedrig',
                 icon: User,
-                threshold: '20–40 % des P90',
+                threshold: '61–89 % des P50',
                 desc: 'Wenig los – die meisten Attraktionen laufen mit kurzen Wartezeiten.',
               },
               {
@@ -1067,32 +1074,32 @@ function ContentDE() {
                   'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
                 label: 'Normal',
                 icon: Users,
-                threshold: '40–60 % des P90',
-                desc: 'Typischer Tag – angemessene Wartezeiten, nichts Ungewöhnliches.',
+                threshold: '90–110 % des P50',
+                desc: 'Typischer Tag – Wartezeiten im erwarteten Rahmen (±10 % des Medians).',
               },
               {
                 color:
                   'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
                 label: 'Hoch',
                 icon: Users,
-                threshold: '60–80 % des P90',
-                desc: 'Viel los – beliebte Attraktionen haben 30–60 Minuten Wartezeit.',
+                threshold: '111–150 % des P50',
+                desc: 'Viel los – Wartezeiten spürbar über dem Durchschnitt.',
               },
               {
                 color:
                   'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
                 label: 'Sehr Hoch',
                 icon: Users,
-                threshold: '80–100 % des P90',
-                desc: 'Sehr voll – Wartezeiten über 60 Minuten, früh anreisen lohnt sich.',
+                threshold: '151–200 % des P50',
+                desc: 'Sehr voll – Wartezeiten fast doppelt so lang wie üblich. Früh anreisen lohnt sich.',
               },
               {
                 color:
                   'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
                 label: 'Extrem',
                 icon: AlertTriangle,
-                threshold: '> 100 % des P90',
-                desc: 'Rekordbetrieb – Wartezeiten über 90 Minuten möglich. Schulferien-Wochenenden, Sondertage.',
+                threshold: '> 200 % des P50',
+                desc: 'Rekordbetrieb – mehr als doppelt so voll wie an einem typischen Tag. Schulferien-Wochenenden, Sondertage.',
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
@@ -1107,10 +1114,11 @@ function ContentDE() {
             ))}
           </div>
           <InfoBox>
-            <strong>Was ist das 90. Perzentil (P90)?</strong> park.fan vergleicht die aktuelle
-            Auslastung mit historischen Daten. Das P90 ist der Wert, den nur 10 % aller Tage
-            überschreiten – quasi der "sehr volle Tag"-Wert. Liegt die Auslastung heute bei 50 % des
-            P90, ist es nur halb so voll wie an den vollsten Tagen.
+            <strong>Wie wird das Crowd Level berechnet?</strong> park.fan vergleicht die aktuelle
+            durchschnittliche Wartezeit mit dem historischen Median (P50) – dem typischen Wert für
+            diese Attraktion. Eine Auslastung von 100 % bedeutet: genau so voll wie ein
+            durchschnittlicher Tag. Bei 60 % ist es deutlich ruhiger, bei 200 % doppelt so voll wie
+            üblich.
           </InfoBox>
         </SubSection>
 
@@ -1595,8 +1603,8 @@ function ContentDE() {
             subtitle="Jede Minute im Park muss optimal genutzt werden"
           >
             <Li>
-              P90-Schwellwerte: Verstehe, ob eine Attraktion gerade wirklich voll ist – oder nur
-              "normal".
+              Crowd Level (P50-Basis): Verstehe, ob eine Attraktion gerade wirklich überdurchschnittlich
+              voll ist – oder nur "normal".
             </Li>
             <Li>
               Historischer Verlauf: Wann hatte Taron in den letzten Wochen typischerweise kurze
@@ -1743,7 +1751,7 @@ function IntroEN() {
       </div>
       <nav aria-label="Table of Contents" className="bg-muted/40 rounded-xl border p-5 not-prose">
         <p className="mb-3 font-semibold">Table of Contents</p>
-        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Search'],
             ['#favoriten', '2. Favorites'],
@@ -1795,7 +1803,7 @@ function IntroES() {
         className="bg-muted/40 rounded-xl border p-5 not-prose"
       >
         <p className="mb-3 font-semibold">Índice de contenidos</p>
-        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Búsqueda'],
             ['#favoriten', '2. Favoritos'],
@@ -1847,7 +1855,7 @@ function IntroFR() {
         className="bg-muted/40 rounded-xl border p-5 not-prose"
       >
         <p className="mb-3 font-semibold">Table des matières</p>
-        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Recherche'],
             ['#favoriten', '2. Favoris'],
@@ -1896,7 +1904,7 @@ function IntroIT() {
       </div>
       <nav aria-label="Indice" className="bg-muted/40 rounded-xl border p-5 not-prose">
         <p className="mb-3 font-semibold">Indice</p>
-        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Ricerca'],
             ['#favoriten', '2. Preferiti'],
@@ -1945,7 +1953,7 @@ function IntroNL() {
       </div>
       <nav aria-label="Inhoudsopgave" className="bg-muted/40 rounded-xl border p-5 not-prose">
         <p className="mb-3 font-semibold">Inhoudsopgave</p>
-        <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
+        <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Zoeken'],
             ['#favoriten', '2. Favorieten'],
@@ -2143,8 +2151,9 @@ function ContentENSections() {
 
         <SubSection title="Crowd Levels">
           <p className="text-muted-foreground mb-3 text-sm">
-            The crowd level shows how busy a park or attraction is relative to the historical 90th
-            percentile (P90). A "High" value means the park is busier than 90% of typical days.
+            The crowd level shows how busy a park or attraction is relative to the historical median
+            wait time (P50) – the typical value for that attraction. 100% means exactly as busy as
+            an average day.
           </p>
           <div className="space-y-3">
             {[
@@ -2153,48 +2162,48 @@ function ContentENSections() {
                   'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
                 label: 'Very Low',
                 icon: User,
-                threshold: '< 20% of P90',
-                desc: 'Almost no queues. Ideal visit day.',
+                threshold: '≤ 60% of P50',
+                desc: 'Noticeably quieter than usual. Almost no queues – ideal visit day.',
               },
               {
                 color:
                   'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
                 label: 'Low',
                 icon: User,
-                threshold: '20–40% of P90',
-                desc: 'Short wait times at most attractions.',
+                threshold: '61–89% of P50',
+                desc: 'Below average – short wait times at most attractions.',
               },
               {
                 color:
                   'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
                 label: 'Moderate',
                 icon: Users,
-                threshold: '40–60% of P90',
-                desc: 'Typical day – manageable wait times.',
+                threshold: '90–110% of P50',
+                desc: 'Typical day – wait times within the expected range (±10% of median).',
               },
               {
                 color:
                   'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
                 label: 'High',
                 icon: Users,
-                threshold: '60–80% of P90',
-                desc: 'Busy – popular rides have 30–60 min waits.',
+                threshold: '111–150% of P50',
+                desc: 'Busier than average – noticeably longer wait times.',
               },
               {
                 color:
                   'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
                 label: 'Very High',
                 icon: Users,
-                threshold: '80–100% of P90',
-                desc: 'Very crowded – plan around peak hours.',
+                threshold: '151–200% of P50',
+                desc: 'Very crowded – waits nearly twice as long as usual. Arrive early.',
               },
               {
                 color:
                   'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
                 label: 'Extreme',
                 icon: AlertTriangle,
-                threshold: '> 100% of P90',
-                desc: 'Record crowds – 90+ min waits possible. School holidays, special events.',
+                threshold: '> 200% of P50',
+                desc: 'Record crowds – more than twice as busy as a typical day. School holidays, special events.',
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
@@ -2209,10 +2218,10 @@ function ContentENSections() {
             ))}
           </div>
           <InfoBox>
-            <strong>What is the 90th percentile (P90)?</strong> park.fan compares current occupancy
-            with historical data. The P90 is the value exceeded by only 10% of all days – essentially
-            the "very busy day" benchmark. If occupancy is at 50% of P90 today, it's half as busy as
-            the busiest days.
+            <strong>How is the crowd level calculated?</strong> park.fan compares the current
+            average wait time with the historical median (P50) – the typical value for that
+            attraction. 100% means exactly as busy as an average day; 60% is notably quieter, 200%
+            means twice as crowded as usual.
           </InfoBox>
         </SubSection>
 
@@ -2568,7 +2577,7 @@ function ContentENSections() {
           </PersonaCard>
 
           <PersonaCard emoji="🎢" title="Theme Park Enthusiasts" subtitle="Every minute must be optimised">
-            <Li>P90 thresholds: understand if a ride is really busy or just "normal".</Li>
+            <Li>Crowd level (P50 baseline): understand if a ride is genuinely above average – or just "normal".</Li>
             <Li>Historical trends: when does Taron typically have short waits?</Li>
             <Li>Trend indicators: queue rising? Wait 20 minutes and it might be shorter.</Li>
             <Li>Single Rider / Lightning Lane: all queue types shown with times and prices.</Li>
