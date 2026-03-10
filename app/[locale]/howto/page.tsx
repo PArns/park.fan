@@ -186,11 +186,25 @@ function ContentDE() {
     <div className="space-y-16 text-base leading-7">
       {/* Intro */}
       <div className="space-y-4">
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          park.fan ist dein kostenloser Begleiter für Freizeitparks weltweit – mit Live-Wartezeiten,
-          KI-gestützten Besucherprognosen und einem tagesgenauen Crowd-Kalender. Diese Seite erklärt
-          alle Funktionen im Detail.
-        </p>
+        <div className="space-y-4 text-base leading-relaxed">
+          <p className="text-muted-foreground text-lg font-medium">
+            Kennst du das? 80 Minuten Schlange für Taron – und zehn Meter weiter läuft eine andere
+            Attraktion ohne Wartezeit. Oder: du buchst deinen Urlaub und ausgerechnet in dieser
+            Woche sind alle Schulen in NRW in den Ferien.
+          </p>
+          <p className="text-muted-foreground">
+            park.fan wurde aus genau dieser Frustration heraus entwickelt. Was als kleines
+            Nebenprojekt begann – „ich tracke mal ein paar Wartezeiten" – ist heute eine Plattform
+            mit Live-Daten aus 150+ Parks, mehr als 5.000 Attraktionen und Millionen von
+            Warteschlangen-Datenpunkten, die täglich verarbeitet werden.
+          </p>
+          <p className="text-muted-foreground">
+            Das Ziel ist einfach: <strong>Nimm das Rätselraten aus deinem Freizeitpark-Besuch.</strong>{' '}
+            Plane mit dem Crowd-Kalender den richtigen Tag, navigiere mit Live-Wartezeiten durch den
+            Park und verlasse dich auf KI-Prognosen, die dir sagen, wann welche Attraktion am
+            ruhigsten ist. Diese Seite erklärt alle Funktionen im Detail.
+          </p>
+        </div>
         {/* TOC */}
         <nav
           aria-label="Inhaltsverzeichnis"
@@ -678,11 +692,30 @@ function ContentDE() {
       <Section id="kalender" title="Der Crowd-Kalender">
         <p className="text-muted-foreground mb-4">
           Der Kalender ist das mächtigste Werkzeug auf park.fan, wenn du deinen Besuch im Voraus
-          planst. Er zeigt für jeden Tag der nächsten 30+ Tage: Crowd-Level, Öffnungszeiten, Wetter
-          und besondere Ereignisse.
+          planst. Er zeigt für jeden Tag der nächsten 30+ Tage eine KI-Prognose mit Crowd-Level,
+          Öffnungszeiten, Wetter und besonderen Ereignissen – alles auf einen Blick.
         </p>
 
-        <SubSection title="Legende – Rahmenfarben der Kalender-Karten">
+        <SubSection title="Was steht in jeder Kalender-Karte?">
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm">
+            <p className="font-semibold mb-2">Eine typische Kalender-Karte zeigt:</p>
+            <ul className="text-muted-foreground space-y-1.5">
+              <li>📅 <strong>Datum und Wochentag</strong></li>
+              <li>🎯 <strong>Crowd-Level-Badge</strong> (z. B. „Sehr Hoch") – die KI-Prognose für den Gesamtandrang</li>
+              <li>🕐 <strong>Öffnungszeiten</strong> – oder „Est." wenn noch nicht offiziell bestätigt (s. u.)</li>
+              <li>🌤️ <strong>Wettervorhersage</strong> mit Min-/Max-Temperatur</li>
+              <li>⌚ <strong>Ø Wartezeit</strong> – prognostizierte durchschnittliche Wartezeit aller Attraktionen</li>
+              <li>🎟️ <strong>Ticketpreis</strong>, wenn vom Park veröffentlicht</li>
+            </ul>
+          </div>
+          <p className="text-muted-foreground mt-2 text-sm">
+            <strong>Was bedeutet „Est."?</strong> Öffnungszeiten mit dem Zusatz „Est." (Estimated /
+            Geschätzt) wurden noch nicht offiziell vom Park bestätigt. park.fan leitet sie aus
+            historischen Mustern ab – sie können sich noch ändern.
+          </p>
+        </SubSection>
+
+        <SubSection title="Legende – Icons in den Kalender-Karten">
           <div className="space-y-2 text-sm">
             {[
               {
@@ -695,7 +728,7 @@ function ContentDE() {
                 icon: Backpack,
                 color: 'text-yellow-500',
                 label: 'Schulferien',
-                desc: 'Erfahrungsgemäß die vollsten Tage des Jahres – Extreme Wartezeiten möglich.',
+                desc: 'Erfahrungsgemäß die vollsten Tage des Jahres – extreme Wartezeiten möglich.',
               },
               {
                 icon: Calendar,
@@ -721,33 +754,65 @@ function ContentDE() {
           </div>
         </SubSection>
 
-        <SubSection title="Was steht in jeder Kalender-Karte?">
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Eine typische Kalender-Karte zeigt:</p>
-            <ul className="text-muted-foreground space-y-1">
-              <li>📅 Datum und Wochentag</li>
-              <li>🎯 Crowd-Level-Badge (z. B. "Sehr Hoch")</li>
-              <li>🕐 Öffnungszeiten (oder "Est." wenn noch nicht offiziell bestätigt)</li>
-              <li>🌤️ Wettervorhersage mit Min-/Max-Temperatur</li>
-              <li>⌚ Durchschnittliche Wartezeit des Tages</li>
-              <li>🎟️ Ticketpreis, wenn verfügbar</li>
-            </ul>
-          </div>
+        <SubSection title="Praxisbeispiel: Den besten Besuchstag finden">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Du planst einen Besuch im Europa-Park im Oktober. So gehst du vor:
+          </p>
+          <ol className="text-muted-foreground space-y-3 text-sm">
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                Öffne die Park-Seite und wechsle zum Tab <strong>Kalender</strong>.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
+              <span>
+                Du siehst sofort: Die Ferienwochen in Baden-Württemberg und NRW haben viele Karten
+                mit dem <Backpack className="inline h-4 w-4 text-yellow-500" />
+                -Icon und dem Badge <strong>„Sehr Hoch"</strong> oder <strong>„Extrem"</strong>.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
+              <span>
+                Suche dir einen Dienstag oder Mittwoch <em>ohne</em> Ferienicon – diese zeigen
+                oft <strong>„Niedrig"</strong> oder <strong>„Normal"</strong>. Öffnungszeiten und
+                Wetterprognose helfen dir, die finale Entscheidung zu treffen.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Merke dir den Tag und buche Tickets frühzeitig – besonders an prognostizierten
+                grünen Tagen sind die Kontingente oft begrenzt.
+              </span>
+            </li>
+          </ol>
         </SubSection>
 
         <SubSection title="Attraktion-Kalender">
           <p className="text-muted-foreground text-sm">
             Auf der Detailseite einer Attraktion gibt es ebenfalls einen Verlaufs-Kalender. Er zeigt
             für jeden vergangenen Tag, wie stark die Attraktion ausgelastet war – und ob sie in
-            Betrieb war oder nicht. Das ist ideal, um Muster zu erkennen: Wann hatte diese
-            Attraktion regelmäßig kurze Wartezeiten?
+            Betrieb war oder nicht. Das ist ideal, um wiederkehrende Muster zu erkennen: Hatte
+            Taron in den letzten vier Wochen immer donnerstags kurze Wartezeiten? Dann könnte das
+            auch nächste Woche so sein.
           </p>
         </SubSection>
 
         <TipBox>
-          Die besten Besuchstage sind in der Regel frühe Wochentage außerhalb der Schulferien –
-          Dienstag bis Donnerstag zeigen oft die niedrigsten Crowd-Level. Vermeide Schulferien-Wochen
-          in den bevölkerungsreichen Bundesländern.
+          Die besten Besuchstage sind frühe Wochentage außerhalb der Schulferien –
+          Dienstag bis Donnerstag zeigen oft die niedrigsten Crowd-Level. Vermeide insbesondere
+          Schulferienwochen der bevölkerungsreichen Bundesländer NRW, Bayern und Baden-Württemberg.
         </TipBox>
       </Section>
 
@@ -755,7 +820,8 @@ function ContentDE() {
       <Section id="prognosen" title="KI-gestützte Prognosen">
         <p className="text-muted-foreground mb-4">
           park.fan nutzt maschinelles Lernen, um Besucherandrang und Wartezeiten Tage im Voraus
-          vorherzusagen. Das Modell berücksichtigt:
+          vorherzusagen. Das Modell wird kontinuierlich mit neuen Daten trainiert und berücksichtigt
+          dabei vier Hauptfaktoren:
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -763,22 +829,22 @@ function ContentDE() {
             {
               icon: '📊',
               title: 'Historische Daten',
-              desc: 'Millionen von Warteschlangen-Datenpunkten aus der Vergangenheit.',
+              desc: 'Millionen von Warteschlangen-Datenpunkten aus der Vergangenheit – pro Attraktion, Wochentag und Uhrzeit.',
             },
             {
               icon: '📅',
               title: 'Ferienkalender',
-              desc: 'Schulferien aller Bundesländer und nationaler Feiertage europaweit.',
+              desc: 'Schulferien aller deutschen Bundesländer sowie nationaler Feiertage in ganz Europa.',
             },
             {
               icon: '🌤️',
               title: 'Wetterprognosen',
-              desc: 'Temperatur, Niederschlag und Sonnenstunden beeinflussen den Andrang.',
+              desc: 'Temperatur, Niederschlag und Sonnenstunden – Regen treibt mehr Besucher zu Indoorattraktionen.',
             },
             {
               icon: '🎉',
               title: 'Sonderevents',
-              desc: 'Halloween, Weihnachtsmarkt und andere Parksondertage werden berücksichtigt.',
+              desc: 'Halloween-Nights, Winter-Events und andere Parksondertage erzeugen deutlich höheren Andrang.',
             },
           ].map(({ icon, title, desc }) => (
             <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
@@ -791,23 +857,95 @@ function ContentDE() {
           ))}
         </div>
 
+        <SubSection title="Wo finde ich die Prognosen?">
+          <div className="space-y-3 text-sm">
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">📅 Im Crowd-Kalender</p>
+              <p className="text-muted-foreground mt-0.5">
+                Jede Kalenderkarte enthält eine Tagesprognose: Crowd-Level, Ø Wartezeit und
+                Öffnungszeiten – bis zu 30+ Tage im Voraus.
+              </p>
+            </div>
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">⏰ Stoßzeit-Badge auf der Park-Seite</p>
+              <p className="text-muted-foreground mt-0.5">
+                Im Park-Kopfbereich zeigt ein Badge, wann heute voraussichtlich die Stoßzeit ist –
+                z. B. „Stoßzeit in 1 Std. 30 Min.". So kannst du eine Pause oder den Besuch einer
+                weniger beliebten Attraktion genau dann einplanen.
+              </p>
+            </div>
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">📈 Stündliche Prognosekurve auf der Attraktions-Seite</p>
+              <p className="text-muted-foreground mt-0.5">
+                Jede Attraktion hat eine eigene Seite mit einer Kurve, die zeigt, wie sich die
+                Wartezeit über den Tag verteilt – mit dem prognostizierten Verlauf für heute und
+                morgen.
+              </p>
+            </div>
+          </div>
+        </SubSection>
+
+        <SubSection title="Praxisbeispiel: Prognose im Alltag nutzen">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Du bist an einem Samstag in den Herbstferien in Phantasialand. Der Kalender zeigt
+            „Sehr Hoch" für den Tag. So nutzt du die Prognosen:
+          </p>
+          <ol className="text-muted-foreground space-y-3 text-sm">
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                <strong>Morgens beim Betreten:</strong> Der Stoßzeit-Badge zeigt „Stoßzeit in ca.
+                2 Std." – du hast also bis ca. 11:30 Uhr Zeit für die ersten Highlights.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
+              <span>
+                <strong>Taron-Seite aufrufen:</strong> Die Prognosekurve zeigt heute 9:30 Uhr ≈ 15
+                Min., 12:00 Uhr ≈ 65 Min., 15:00 Uhr ≈ 40 Min. → Du weißt: direkt nach Öffnung
+                oder Mitte des Nachmittags sind die besten Slots.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
+              <span>
+                <strong>Mittagspause zur Stoßzeit:</strong> Statt um 12 Uhr in der Schlange zu
+                stehen, gönnst du dir das Restaurant. Die Live-Trends zeigen: um 15 Uhr fällt die
+                Wartezeit wieder – perfekter Moment für Taron.
+              </span>
+            </li>
+          </ol>
+        </SubSection>
+
         <SubSection title="Wie genau sind die Prognosen?">
           <p className="text-muted-foreground text-sm">
             Die Genauigkeit variiert je nach Park und Vorhersagezeitraum. Auf der
-            Attraktionsdetailseite wird die Prognose-Genauigkeit für jede Attraktion angezeigt
-            (Schlecht / Mittel / Gut / Exzellent). Je mehr historische Daten vorhanden, desto
-            präziser die Prognose. Kurzfristige Vorhersagen (1–3 Tage) sind grundsätzlich
-            zuverlässiger als langfristige.
+            Attraktionsdetailseite wird die Prognose-Genauigkeit für jede Attraktion angezeigt –
+            von <strong>Schlecht</strong> bis <strong>Exzellent</strong>. Je mehr historische Daten
+            vorhanden sind, desto präziser die Prognose. Kurzfristige Vorhersagen (1–3 Tage) sind
+            grundsätzlich zuverlässiger als langfristige (7–14 Tage).
           </p>
         </SubSection>
 
         <SubSection title="Wartezeit-Sparklines">
           <p className="text-muted-foreground text-sm">
             Auf jeder Attraktionskarte zeigt ein kleiner Liniengraph (Sparkline) den
-            Wartezeit-Verlauf der letzten Stunden. So erkennst du sofort Muster: War es morgens
-            ruhig und steigt die Wartezeit jetzt rapide an?
+            Wartezeit-Verlauf der letzten Stunden. So erkennst du sofort Trends: War es morgens
+            ruhig und steigt die Wartezeit jetzt rapide an – oder fällt sie gerade?
           </p>
         </SubSection>
+
+        <TipBox>
+          Kombiniere Kalender und Prognose: Suche dir im Kalender einen grünen Tag aus, dann schau
+          auf der Attraktionsseite, zu welcher Stunde die Prognosekurve am tiefsten ist. So triffst
+          du immer zum richtigen Moment auf die kürzeste Schlange.
+        </TipBox>
       </Section>
 
       {/* ── 7. Standort ─────────────────────────────────────────────────────── */}
@@ -1006,11 +1144,26 @@ function ContentEN() {
     <div className="space-y-16 text-base leading-7">
       {/* Intro */}
       <div className="space-y-4">
-        <p className="text-muted-foreground text-lg leading-relaxed">
-          park.fan is your free companion for theme parks worldwide – with live wait times,
-          AI-powered crowd predictions and a day-by-day crowd calendar. This page explains all
-          features in detail.
-        </p>
+        <div className="space-y-4 text-base leading-relaxed">
+          <p className="text-muted-foreground text-lg font-medium">
+            Sound familiar? You're standing in an 80-minute queue for Taron – and just ten metres
+            away another ride has no wait at all. Or: you book your holiday and discover that every
+            school in the country is on break that exact week.
+          </p>
+          <p className="text-muted-foreground">
+            park.fan was built out of exactly that frustration. What started as a small side
+            project – "let me just track some wait times" – has grown into a platform with live
+            data from 150+ parks, over 5,000 attractions and millions of queue data points
+            processed every day.
+          </p>
+          <p className="text-muted-foreground">
+            The goal is simple:{' '}
+            <strong>take the guesswork out of your theme park visit.</strong> Use the crowd
+            calendar to pick the right day, navigate with live wait times, and rely on AI
+            predictions to know when each ride will be at its quietest. This page explains every
+            feature in detail.
+          </p>
+        </div>
         <nav aria-label="Table of Contents" className="bg-muted/40 rounded-xl border p-5 not-prose">
           <p className="mb-3 font-semibold">Table of Contents</p>
           <ol className="text-muted-foreground grid gap-1.5 text-sm sm:grid-cols-2">
@@ -1351,11 +1504,31 @@ function ContentEN() {
       {/* ── 5. Calendar ─────────────────────────────────────────────────────── */}
       <Section id="kalender" title="The Crowd Calendar">
         <p className="text-muted-foreground mb-4">
-          The calendar is the most powerful planning tool on park.fan. It shows crowd level,
-          opening hours, weather and special events for each day of the next 30+ days.
+          The calendar is the most powerful planning tool on park.fan. It shows an AI-powered
+          forecast for each of the next 30+ days – crowd level, opening hours, weather and special
+          events, all at a glance.
         </p>
 
-        <SubSection title="Calendar Card Icons">
+        <SubSection title="What's on each calendar card?">
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm">
+            <p className="font-semibold mb-2">A typical calendar card shows:</p>
+            <ul className="text-muted-foreground space-y-1.5">
+              <li>📅 <strong>Date and weekday</strong></li>
+              <li>🎯 <strong>Crowd Level badge</strong> (e.g. "Very High") – the AI forecast for overall busyness</li>
+              <li>🕐 <strong>Opening hours</strong> – or "Est." if not yet officially confirmed (see below)</li>
+              <li>🌤️ <strong>Weather forecast</strong> with min/max temperature</li>
+              <li>⌚ <strong>Avg. wait time</strong> – predicted average wait across all attractions</li>
+              <li>🎟️ <strong>Ticket price</strong>, when published by the park</li>
+            </ul>
+          </div>
+          <p className="text-muted-foreground mt-2 text-sm">
+            <strong>What does "Est." mean?</strong> Opening hours marked "Est." (Estimated) have
+            not yet been officially confirmed by the park. park.fan derives them from historical
+            patterns – they may still change.
+          </p>
+        </SubSection>
+
+        <SubSection title="Calendar card icons">
           <div className="space-y-2 text-sm">
             {[
               {
@@ -1380,7 +1553,7 @@ function ContentEN() {
                 icon: XCircle,
                 color: 'text-red-500',
                 label: 'Park Closed',
-                desc: 'No operation on this day.',
+                desc: 'No operation on this day – no forecast available.',
               },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
@@ -1394,9 +1567,60 @@ function ContentEN() {
           </div>
         </SubSection>
 
+        <SubSection title="Practical example: finding the best visit day">
+          <p className="text-muted-foreground mb-3 text-sm">
+            You're planning a visit to Europa-Park in October. Here's how to use the calendar:
+          </p>
+          <ol className="text-muted-foreground space-y-3 text-sm">
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>Open the park page and switch to the <strong>Calendar</strong> tab.</span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
+              <span>
+                You'll immediately spot the school holiday weeks – lots of cards with the{' '}
+                <Backpack className="inline h-4 w-4 text-yellow-500" /> icon and badges showing{' '}
+                <strong>"Very High"</strong> or <strong>"Extreme"</strong>.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
+              <span>
+                Look for a Tuesday or Wednesday <em>without</em> a holiday icon – these often
+                show <strong>"Low"</strong> or <strong>"Moderate"</strong>. Opening hours and the
+                weather forecast help you make the final call.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Book tickets early – on forecast green days, ticket contingents can be limited.
+              </span>
+            </li>
+          </ol>
+        </SubSection>
+
+        <SubSection title="Attraction calendar">
+          <p className="text-muted-foreground text-sm">
+            Each attraction's detail page also has a historical calendar showing how busy it was on
+            every past day – and whether it was operating or not. This is perfect for spotting
+            recurring patterns: did Taron consistently have short waits on Thursday afternoons over
+            the past month? It might next week too.
+          </p>
+        </SubSection>
+
         <TipBox>
           Best visit days are typically early weekdays outside of school holidays – Tuesday through
-          Thursday show the lowest crowd levels. Avoid school holiday periods in densely populated
+          Thursday show the lowest crowd levels. Avoid school holiday weeks in densely populated
           regions.
         </TipBox>
       </Section>
@@ -1404,14 +1628,127 @@ function ContentEN() {
       {/* ── 6. AI Predictions ───────────────────────────────────────────────── */}
       <Section id="prognosen" title="AI-Powered Predictions">
         <p className="text-muted-foreground mb-4">
-          park.fan uses machine learning to predict crowd levels and wait times days in advance,
-          considering historical data, school calendars, weather forecasts and special events.
+          park.fan uses machine learning to predict crowd levels and wait times days in advance.
+          The model is continuously trained on new data and considers four key factors:
         </p>
 
-        <InfoBox>
-          Prediction accuracy is shown on each attraction's detail page (Poor / Fair / Good /
-          Excellent). Short-term forecasts (1–3 days) are more reliable than long-term ones.
-        </InfoBox>
+        <div className="grid gap-4 sm:grid-cols-2">
+          {[
+            {
+              icon: '📊',
+              title: 'Historical data',
+              desc: 'Millions of queue data points per attraction, weekday and time of day.',
+            },
+            {
+              icon: '📅',
+              title: 'Holiday calendars',
+              desc: 'School holidays and public holidays across Europe and worldwide.',
+            },
+            {
+              icon: '🌤️',
+              title: 'Weather forecasts',
+              desc: 'Temperature, rain and sunshine – bad weather pushes crowds towards indoor rides.',
+            },
+            {
+              icon: '🎉',
+              title: 'Special events',
+              desc: 'Halloween nights, Christmas events and other park-specific dates drive significantly higher attendance.',
+            },
+          ].map(({ icon, title, desc }) => (
+            <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
+              <span className="text-2xl">{icon}</span>
+              <div>
+                <p className="font-semibold">{title}</p>
+                <p className="text-muted-foreground text-sm">{desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <SubSection title="Where to find predictions">
+          <div className="space-y-3 text-sm">
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">📅 In the crowd calendar</p>
+              <p className="text-muted-foreground mt-0.5">
+                Every calendar card contains a day-level forecast: crowd level, average wait time
+                and opening hours – up to 30+ days ahead.
+              </p>
+            </div>
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">⏰ Peak-time badge on the park page</p>
+              <p className="text-muted-foreground mt-0.5">
+                The park header shows when today's crowd peak is expected – e.g. "Peak in 1h 30m".
+                Plan a lunch break or a visit to a less popular ride for exactly that window.
+              </p>
+            </div>
+            <div className="bg-muted/30 rounded-lg p-3">
+              <p className="font-semibold">📈 Hourly prediction chart on the attraction page</p>
+              <p className="text-muted-foreground mt-0.5">
+                Every attraction has its own page with a chart showing how wait times are forecast
+                to evolve through the day – for today and tomorrow.
+              </p>
+            </div>
+          </div>
+        </SubSection>
+
+        <SubSection title="Practical example: using predictions on the day">
+          <p className="text-muted-foreground mb-3 text-sm">
+            You're visiting Phantasialand on a Saturday during school holidays. The calendar shows
+            "Very High". Here's how predictions help:
+          </p>
+          <ol className="text-muted-foreground space-y-3 text-sm">
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                <strong>At the gate:</strong> The peak-time badge shows "Peak in ~2h" – you have
+                until around 11:30 for your first highlights.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
+              <span>
+                <strong>Open the Taron page:</strong> The prediction chart shows 9:30 ≈ 15 min,
+                12:00 ≈ 65 min, 15:00 ≈ 40 min → ride right after opening or mid-afternoon.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
+              <span>
+                <strong>Lunch during peak:</strong> Instead of queuing at noon, you grab lunch.
+                Live trends confirm: by 15:00 the wait is dropping – perfect moment to ride.
+              </span>
+            </li>
+          </ol>
+        </SubSection>
+
+        <SubSection title="How accurate are predictions?">
+          <p className="text-muted-foreground text-sm">
+            Accuracy varies by park and forecast window. Each attraction's detail page shows its
+            prediction quality – from <strong>Poor</strong> to <strong>Excellent</strong>. More
+            historical data means more precise forecasts. Short-term predictions (1–3 days) are
+            inherently more reliable than longer-range ones (7–14 days).
+          </p>
+        </SubSection>
+
+        <SubSection title="Wait time sparklines">
+          <p className="text-muted-foreground text-sm">
+            Every attraction card shows a small sparkline graph with the wait time trend over the
+            last few hours. You can instantly see whether queues are building up, holding steady
+            or shrinking.
+          </p>
+        </SubSection>
+
+        <TipBox>
+          Combine calendar and predictions: pick a green day from the calendar, then check the
+          hourly forecast on the attraction page to find the quietest slot. You'll always arrive
+          at the shortest queue.
+        </TipBox>
       </Section>
 
       {/* ── 7. Location ─────────────────────────────────────────────────────── */}
