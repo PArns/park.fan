@@ -1208,8 +1208,8 @@ function ContentDE() {
               ['#kalender', '6. Crowd-Kalender'],
               ['#prognosen', '7. KI-Prognosen'],
               ['#personas', '8. Für wen?'],
-              ['#faq', '9. FAQ'],
-              ['#parks', '10. Beliebte Parks'],
+              ['#parks', '9. Beliebte Parks'],
+              ['#faq', '10. FAQ'],
             ].map(([href, label]) => (
               <li key={href}>
                 <a href={href} className="hover:text-primary transition-colors">
@@ -2097,7 +2097,19 @@ function ContentDE() {
         </div>
       </Section>
 
-      {/* ── 9. FAQ ──────────────────────────────────────────────────────────── */}
+      {/* ── 9. Beliebte Parks ───────────────────────────────────────────────── */}
+      <Section id="parks" title="Beliebte Parks">
+        <p className="text-muted-foreground mb-6">
+          park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
+          Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
+        </p>
+        <PopularParksGrid
+          locale="de"
+          emptyHint="Parkdaten werden geladen – bitte Seite neu laden."
+        />
+      </Section>
+
+      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Häufige Fragen">
         <div className="space-y-4">
           {[
@@ -2146,18 +2158,6 @@ function ContentDE() {
           ))}
         </div>
       </Section>
-
-      {/* ── 10. Beliebte Parks ──────────────────────────────────────────────── */}
-      <Section id="parks" title="Beliebte Parks">
-        <p className="text-muted-foreground mb-6">
-          park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
-          Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
-        </p>
-        <PopularParksGrid
-          locale="de"
-          emptyHint="Parkdaten werden geladen – bitte Seite neu laden."
-        />
-      </Section>
     </div>
   );
 }
@@ -2198,8 +2198,8 @@ function IntroEN() {
             ['#kalender', '6. Crowd Calendar'],
             ['#prognosen', '7. AI Predictions'],
             ['#personas', '8. Who is it for?'],
-            ['#faq', '9. FAQ'],
-            ['#parks', '10. Popular Parks'],
+            ['#parks', '9. Popular Parks'],
+            ['#faq', '10. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2251,8 +2251,8 @@ function IntroES() {
             ['#kalender', '6. Calendario de afluencia'],
             ['#prognosen', '7. Predicciones IA'],
             ['#personas', '8. ¿Para quién?'],
-            ['#faq', '9. Preguntas frecuentes'],
-            ['#parks', '10. Parques populares'],
+            ['#parks', '9. Parques populares'],
+            ['#faq', '10. Preguntas frecuentes'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2304,8 +2304,8 @@ function IntroFR() {
             ['#kalender', "6. Calendrier d'affluence"],
             ['#prognosen', '7. Prédictions IA'],
             ['#personas', '8. Pour qui ?'],
-            ['#faq', '9. FAQ'],
-            ['#parks', '10. Parcs populaires'],
+            ['#parks', '9. Parcs populaires'],
+            ['#faq', '10. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2354,8 +2354,8 @@ function IntroIT() {
             ['#kalender', '6. Calendario affluenza'],
             ['#prognosen', '7. Previsioni IA'],
             ['#personas', '8. Per chi?'],
-            ['#faq', '9. FAQ'],
-            ['#parks', '10. Parchi popolari'],
+            ['#parks', '9. Parchi popolari'],
+            ['#faq', '10. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2404,8 +2404,8 @@ function IntroNL() {
             ['#kalender', '6. Drukte-kalender'],
             ['#prognosen', '7. AI-voorspellingen'],
             ['#personas', '8. Voor wie?'],
-            ['#faq', '9. FAQ'],
-            ['#parks', '10. Populaire parken'],
+            ['#parks', '9. Populaire parken'],
+            ['#faq', '10. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -3076,7 +3076,19 @@ function ContentENSections() {
         </div>
       </Section>
 
-      {/* ── 9. FAQ ──────────────────────────────────────────────────────────── */}
+      {/* ── 9. Popular Parks ────────────────────────────────────────────────── */}
+      <Section id="parks" title="Popular Parks">
+        <p className="text-muted-foreground mb-6">
+          park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
+          and Europa-Park. Here are the most-visited parks in your region with live data:
+        </p>
+        <PopularParksGrid
+          locale="en"
+          emptyHint="Park data is loading – please reload the page."
+        />
+      </Section>
+
+      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Frequently Asked Questions">
         <div className="space-y-4">
           {[
@@ -3116,18 +3128,6 @@ function ContentENSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 10. Popular Parks ───────────────────────────────────────────────── */}
-      <Section id="parks" title="Popular Parks">
-        <p className="text-muted-foreground mb-6">
-          park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
-          and Europa-Park. Here are the most-visited parks in your region with live data:
-        </p>
-        <PopularParksGrid
-          locale="en"
-          emptyHint="Park data is loading – please reload the page."
-        />
       </Section>
     </>
   );
@@ -3717,7 +3717,19 @@ function ContentESSections() {
         </div>
       </Section>
 
-      {/* ── 9. Preguntas Frecuentes ──────────────────────────────────────────── */}
+      {/* ── 9. Parques populares ────────────────────────────────────────────── */}
+      <Section id="parks" title="Parques populares">
+        <p className="text-muted-foreground mb-6">
+          park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más
+          visitados de tu región con datos en directo:
+        </p>
+        <PopularParksGrid
+          locale="es"
+          emptyHint="Los datos del parque se están cargando – recarga la página."
+        />
+      </Section>
+
+      {/* ── 10. Preguntas Frecuentes ─────────────────────────────────────────── */}
       <Section id="faq" title="Preguntas Frecuentes">
         <div className="space-y-4">
           {[
@@ -3757,18 +3769,6 @@ function ContentESSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 10. Parques populares ───────────────────────────────────────────── */}
-      <Section id="parks" title="Parques populares">
-        <p className="text-muted-foreground mb-6">
-          park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más
-          visitados de tu región con datos en directo:
-        </p>
-        <PopularParksGrid
-          locale="es"
-          emptyHint="Los datos del parque se están cargando – recarga la página."
-        />
       </Section>
     </>
   );
@@ -4267,7 +4267,19 @@ function ContentFRSections() {
         </div>
       </Section>
 
-      {/* ── 9. FAQ ───────────────────────────────────────────────────────────── */}
+      {/* ── 9. Parcs populaires ─────────────────────────────────────────────── */}
+      <Section id="parks" title="Parcs populaires">
+        <p className="text-muted-foreground mb-6">
+          park.fan couvre plus de 150 parcs d&apos;attractions dans le monde. Voici les plus visités
+          de votre région avec des données en direct :
+        </p>
+        <PopularParksGrid
+          locale="fr"
+          emptyHint="Les données du parc se chargent – veuillez recharger la page."
+        />
+      </Section>
+
+      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Questions Fréquentes">
         <div className="space-y-4">
           {[
@@ -4289,18 +4301,6 @@ function ContentFRSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 10. Parcs populaires ────────────────────────────────────────────── */}
-      <Section id="parks" title="Parcs populaires">
-        <p className="text-muted-foreground mb-6">
-          park.fan couvre plus de 150 parcs d&apos;attractions dans le monde. Voici les plus visités
-          de votre région avec des données en direct :
-        </p>
-        <PopularParksGrid
-          locale="fr"
-          emptyHint="Les données du parc se chargent – veuillez recharger la page."
-        />
       </Section>
     </>
   );
@@ -4794,7 +4794,19 @@ function ContentITSections() {
         </div>
       </Section>
 
-      {/* ── 9. FAQ ───────────────────────────────────────────────────────────── */}
+      {/* ── 9. Parchi popolari ──────────────────────────────────────────────── */}
+      <Section id="parks" title="Parchi popolari">
+        <p className="text-muted-foreground mb-6">
+          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati
+          nella tua regione con dati in tempo reale:
+        </p>
+        <PopularParksGrid
+          locale="it"
+          emptyHint="I dati del parco si stanno caricando – ricarica la pagina."
+        />
+      </Section>
+
+      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Domande Frequenti">
         <div className="space-y-4">
           {[
@@ -4816,18 +4828,6 @@ function ContentITSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 10. Parchi popolari ─────────────────────────────────────────────── */}
-      <Section id="parks" title="Parchi popolari">
-        <p className="text-muted-foreground mb-6">
-          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati
-          nella tua regione con dati in tempo reale:
-        </p>
-        <PopularParksGrid
-          locale="it"
-          emptyHint="I dati del parco si stanno caricando – ricarica la pagina."
-        />
       </Section>
     </>
   );
@@ -5316,7 +5316,19 @@ function ContentNLSections() {
         </div>
       </Section>
 
-      {/* ── 9. FAQ ───────────────────────────────────────────────────────────── */}
+      {/* ── 9. Populaire parken ─────────────────────────────────────────────── */}
+      <Section id="parks" title="Populaire parken">
+        <p className="text-muted-foreground mb-6">
+          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw
+          regio met live data:
+        </p>
+        <PopularParksGrid
+          locale="nl"
+          emptyHint="Parkdata worden geladen – herlaad de pagina."
+        />
+      </Section>
+
+      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Veelgestelde Vragen">
         <div className="space-y-4">
           {[
@@ -5338,18 +5350,6 @@ function ContentNLSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 10. Populaire parken ────────────────────────────────────────────── */}
-      <Section id="parks" title="Populaire parken">
-        <p className="text-muted-foreground mb-6">
-          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw
-          regio met live data:
-        </p>
-        <PopularParksGrid
-          locale="nl"
-          emptyHint="Parkdata worden geladen – herlaad de pagina."
-        />
       </Section>
     </>
   );
