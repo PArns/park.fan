@@ -12,13 +12,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [geo, attractions] = await Promise.all([getGeoStructure(86400), getSitemapAttractions()]);
 
   // Static pages
-  const staticPaths = ['', '/parks', '/datenschutz', '/impressum'];
+  const staticPaths = ['', '/parks', '/howto', '/datenschutz', '/impressum'];
   for (const path of staticPaths) {
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${path}`,
         changeFrequency: 'weekly',
-        priority: path === '' ? 1 : 0.5,
+        priority: path === '' ? 1 : path === '/howto' ? 0.8 : 0.5,
       });
     }
   }
