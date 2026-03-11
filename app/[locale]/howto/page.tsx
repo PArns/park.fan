@@ -90,19 +90,69 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
         'x-default': 'https://park.fan/en/howto',
       },
     },
-    keywords: [
-      'Freizeitpark Wartezeiten',
-      'Freizeitpark App',
-      'park.fan Anleitung',
-      'Crowd-Kalender',
-      'Besucherprognose',
-      'Warteschlangen',
-      'theme park wait times',
-      'crowd calendar',
-      'Disney Wartezeiten',
-      'Europa-Park Wartezeiten',
-      'Phantasialand Wartezeiten',
-    ],
+    keywords:
+      locale === 'de'
+        ? [
+            'Freizeitpark Wartezeiten',
+            'Freizeitpark App',
+            'park.fan Anleitung',
+            'Crowd-Kalender',
+            'Besucherprognose',
+            'Warteschlangen',
+            'Disney Wartezeiten',
+            'Europa-Park Wartezeiten',
+            'Phantasialand Wartezeiten',
+          ]
+        : locale === 'es'
+          ? [
+              'tiempos de espera parque temático',
+              'aplicación parque temático',
+              'guía park.fan',
+              'calendario de afluencia',
+              'predicciones de visitantes',
+              'colas atracciones',
+              'tiempos de espera Disneyland',
+            ]
+          : locale === 'fr'
+            ? [
+                'temps d\'attente parc d\'attractions',
+                'application parc d\'attractions',
+                'guide park.fan',
+                'calendrier d\'affluence',
+                'prévisions visiteurs',
+                'files d\'attente attractions',
+                'temps d\'attente Disneyland Paris',
+              ]
+            : locale === 'it'
+              ? [
+                  'tempi di attesa parco divertimenti',
+                  'app parco divertimenti',
+                  'guida park.fan',
+                  'calendario affollamento',
+                  'previsioni visitatori',
+                  'code attrazioni',
+                ]
+              : locale === 'nl'
+                ? [
+                    'wachttijden pretpark',
+                    'pretpark app',
+                    'park.fan handleiding',
+                    'drukte-kalender',
+                    'bezoekersvoorspellingen',
+                    'wachtrijen attracties',
+                    'wachttijden Disneyland Paris',
+                    'Efteling wachttijden',
+                  ]
+                : [
+                    'theme park wait times',
+                    'theme park app',
+                    'park.fan guide',
+                    'crowd calendar',
+                    'visitor predictions',
+                    'ride queues',
+                    'Disney wait times',
+                    'Europa-Park wait times',
+                  ],
   };
 }
 
@@ -843,7 +893,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
 
       {/* Card 2: not favorited, offseason closed */}
       <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
-        <BackgroundOverlay imageSrc="/images/parks/efteling/background.jpg" alt="Europa-Park" intensity="medium" />
+        <BackgroundOverlay imageSrc="/images/parks/efteling/background.jpg" alt="Efteling" intensity="medium" />
         <div className="absolute top-2 right-2 z-20">
           <Star className="h-5 w-5 text-muted-foreground" />
         </div>
@@ -1059,12 +1109,12 @@ function ContentDE() {
           <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
             {[
               ['#suche', '1. Suche'],
-              ['#favoriten', '2. Favoriten'],
+              ['#favoriten', '3. Favoriten'],
               ['#parkseite', '4. Die Park-Seite'],
               ['#badges', '5. Badges & Anzeigen'],
               ['#kalender', '6. Crowd-Kalender'],
               ['#prognosen', '7. KI-Prognosen'],
-              ['#standort', '7. Standort & Nearby'],
+              ['#standort', '2. Standort & Nearby'],
               ['#personas', '8. Für wen?'],
               ['#faq', '9. FAQ'],
             ].map(([href, label]) => (
@@ -2036,12 +2086,12 @@ function IntroEN() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Search'],
-            ['#favoriten', '2. Favorites'],
+            ['#favoriten', '3. Favorites'],
             ['#parkseite', '4. The Park Page'],
             ['#badges', '5. Badges & Indicators'],
             ['#kalender', '6. Crowd Calendar'],
             ['#prognosen', '7. AI Predictions'],
-            ['#standort', '7. Location & Nearby'],
+            ['#standort', '2. Location & Nearby'],
             ['#personas', '8. Who is it for?'],
             ['#faq', '9. FAQ'],
           ].map(([href, label]) => (
@@ -2088,12 +2138,12 @@ function IntroES() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Búsqueda'],
-            ['#favoriten', '2. Favoritos'],
+            ['#favoriten', '3. Favoritos'],
             ['#parkseite', '4. La página del parque'],
             ['#badges', '5. Insignias y estados'],
             ['#kalender', '6. Calendario de afluencia'],
             ['#prognosen', '7. Predicciones IA'],
-            ['#standort', '7. Ubicación'],
+            ['#standort', '2. Ubicación'],
             ['#personas', '8. ¿Para quién?'],
             ['#faq', '9. Preguntas frecuentes'],
           ].map(([href, label]) => (
@@ -2140,12 +2190,12 @@ function IntroFR() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Recherche'],
-            ['#favoriten', '2. Favoris'],
+            ['#favoriten', '3. Favoris'],
             ['#parkseite', '4. La page du parc'],
             ['#badges', '5. Badges et statuts'],
             ['#kalender', "6. Calendrier d'affluence"],
             ['#prognosen', '7. Prédictions IA'],
-            ['#standort', '7. Localisation'],
+            ['#standort', '2. Localisation'],
             ['#personas', '8. Pour qui ?'],
             ['#faq', '9. FAQ'],
           ].map(([href, label]) => (
@@ -2189,12 +2239,12 @@ function IntroIT() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Ricerca'],
-            ['#favoriten', '2. Preferiti'],
+            ['#favoriten', '3. Preferiti'],
             ['#parkseite', '4. La pagina del parco'],
             ['#badges', '5. Badge e stati'],
             ['#kalender', '6. Calendario affluenza'],
             ['#prognosen', '7. Previsioni IA'],
-            ['#standort', '7. Posizione'],
+            ['#standort', '2. Posizione'],
             ['#personas', '8. Per chi?'],
             ['#faq', '9. FAQ'],
           ].map(([href, label]) => (
@@ -2238,12 +2288,12 @@ function IntroNL() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Zoeken'],
-            ['#favoriten', '2. Favorieten'],
+            ['#favoriten', '3. Favorieten'],
             ['#parkseite', '4. De parkpagina'],
             ['#badges', '5. Badges & statussen'],
             ['#kalender', '6. Drukte-kalender'],
             ['#prognosen', '7. AI-voorspellingen'],
-            ['#standort', '7. Locatie'],
+            ['#standort', '2. Locatie'],
             ['#personas', '8. Voor wie?'],
             ['#faq', '9. FAQ'],
           ].map(([href, label]) => (
