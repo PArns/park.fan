@@ -987,18 +987,27 @@ function MockHourlyChart({ locale }: { locale: MockLocale }) {
         Taron ·{' '}
         {isDE ? 'Prognostizierter Wartezeit-Verlauf (Samstag)' : 'Predicted wait times (Saturday)'}
       </p>
-      <div className="flex items-end gap-1 h-32">
+      {/* Value labels above bars */}
+      <div className="flex gap-1 mb-1">
         {HOURLY_WAITS.map((w, i) => (
-          <div key={HOURLY_LABELS[i]} className="flex-1 flex flex-col items-center gap-1">
-            <span className="text-[9px] text-muted-foreground leading-none">{w}</span>
+          <div key={HOURLY_LABELS[i]} className="flex-1 text-center text-[9px] text-muted-foreground leading-none">
+            {w}
+          </div>
+        ))}
+      </div>
+      {/* Bars: items-stretch so each column fills h-20, then justify-end pushes bar to bottom */}
+      <div className="flex items-stretch gap-1 h-20">
+        {HOURLY_WAITS.map((w, i) => (
+          <div key={HOURLY_LABELS[i]} className="flex-1 flex flex-col justify-end">
             <div
-              className={`w-full rounded-t transition-all ${barColor(w)}`}
+              className={`w-full rounded-t ${barColor(w)}`}
               style={{ height: `${(w / maxWait) * 100}%` }}
             />
           </div>
         ))}
       </div>
-      <div className="flex gap-1 mt-1.5">
+      {/* Hour labels below */}
+      <div className="flex gap-1 mt-1">
         {HOURLY_LABELS.map((h) => (
           <div key={h} className="flex-1 text-center text-[9px] text-muted-foreground">
             {h}
@@ -1050,11 +1059,11 @@ function ContentDE() {
           <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
             {[
               ['#suche', '1. Suche'],
-              ['#parkseite', '2. Die Park-Seite'],
-              ['#badges', '3. Badges & Anzeigen'],
-              ['#kalender', '4. Crowd-Kalender'],
-              ['#prognosen', '5. KI-Prognosen'],
-              ['#favoriten', '6. Favoriten'],
+              ['#favoriten', '2. Favoriten'],
+              ['#parkseite', '3. Die Park-Seite'],
+              ['#badges', '4. Badges & Anzeigen'],
+              ['#kalender', '5. Crowd-Kalender'],
+              ['#prognosen', '6. KI-Prognosen'],
               ['#standort', '7. Standort & Nearby'],
               ['#personas', '8. Für wen?'],
               ['#faq', '9. FAQ'],
@@ -1137,8 +1146,62 @@ function ContentDE() {
           </p>
         </SubSection>
       </Section>
+      {/* ── 2. Favoriten ────────────────────────────────────────────────────── */}
+      <Section id="favoriten" title="Favoriten">
+        <p className="text-muted-foreground mb-4">
+          Markiere Parks, Attraktionen, Shows und Restaurants als Favoriten, um sie jederzeit
+          schnell zur Hand zu haben – direkt auf der Startseite.
+        </p>
 
-      {/* ── 2. Park-Seite ───────────────────────────────────────────────────────── */}
+        <SubSection title="Favorit hinzufügen">
+          <div className="space-y-2 text-sm">
+            <p>
+              Klicke auf den <Star className="inline h-4 w-4 text-yellow-500" />-Stern auf jeder
+              Park- oder Attraktionskarte. Der Stern leuchtet auf – der Favorit ist gespeichert.
+            </p>
+            <p>
+              Favoriten werden <strong>lokal in deinem Browser</strong> gespeichert – keine
+              Anmeldung notwendig. Sie bleiben erhalten, bis du sie manuell entfernst.
+            </p>
+          </div>
+        </SubSection>
+
+        <SubSection title="Favoriten auf der Startseite">
+          <p className="text-muted-foreground text-sm">
+            Sobald du mindestens einen Favoriten gesetzt hast, erscheint auf der Startseite ein
+            eigener Bereich mit allen gespeicherten Parks, Attraktionen, Shows und Restaurants. Bei
+            aktiviertem Standort werden sie nach Entfernung sortiert – der nächste Park zuerst.
+          </p>
+          <MockNearbyCards locale="de" />
+        </SubSection>
+
+        <SubSection title="Was wird als Favorit gespeichert?">
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { icon: '🌴', label: 'Parks', desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick' },
+              { icon: '🎢', label: 'Attraktionen', desc: 'Live-Wartezeit und Trend direkt in der Übersicht' },
+              { icon: '🎭', label: 'Shows', desc: 'Nächste Showtime immer im Blick' },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Küche und aktueller Status' },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
+                <span className="text-xl">{icon}</span>
+                <div>
+                  <p className="font-semibold">{label}</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SubSection>
+
+        <TipBox>
+          Plane deinen nächsten Besuch effizienter: Speichere die 5-10 Lieblingsattraktionen deines
+          Zielparks als Favoriten. Auf der Startseite siehst du dann sofort, welche davon gerade
+          kurze Wartezeiten haben – ideal für die spontane Entscheidung am Besuchstag.
+        </TipBox>
+      </Section>
+
+      {/* ── 3. Park-Seite ───────────────────────────────────────────────────────── */}
       <Section id="parkseite" title="Die Park-Seite">
         <p className="text-muted-foreground mb-4">
           Jeder Park auf park.fan hat eine eigene Seite mit Live-Daten, Öffnungszeiten, einem
@@ -1209,7 +1272,7 @@ function ContentDE() {
         </SubSection>
       </Section>
 
-      {/* ── 3. Badges ───────────────────────────────────────────────────────── */}
+      {/* ── 4. Badges ───────────────────────────────────────────────────────── */}
       <Section id="badges" title="Badges & Status-Anzeigen">
         <p className="text-muted-foreground mb-4">
           park.fan nutzt ein einheitliches Farbsystem, um Informationen sofort verständlich zu
@@ -1490,7 +1553,7 @@ function ContentDE() {
         </SubSection>
       </Section>
 
-      {/* ── 4. Kalender ─────────────────────────────────────────────────────── */}
+      {/* ── 5. Kalender ─────────────────────────────────────────────────────── */}
       <Section id="kalender" title="Der Crowd-Kalender">
         <p className="text-muted-foreground mb-4">
           Der Kalender ist das mächtigste Werkzeug auf park.fan, wenn du deinen Besuch im Voraus
@@ -1619,7 +1682,7 @@ function ContentDE() {
         </TipBox>
       </Section>
 
-      {/* ── 5. KI-Prognosen ─────────────────────────────────────────────────────── */}
+      {/* ── 6. KI-Prognosen ─────────────────────────────────────────────────────── */}
       <Section id="prognosen" title="KI-gestützte Prognosen">
         <p className="text-muted-foreground mb-4">
           park.fan nutzt maschinelles Lernen, um Besucherandrang und Wartezeiten Tage im Voraus
@@ -1752,60 +1815,6 @@ function ContentDE() {
         </TipBox>
       </Section>
 
-      {/* ── 6. Favoriten ────────────────────────────────────────────────────── */}
-      <Section id="favoriten" title="Favoriten">
-        <p className="text-muted-foreground mb-4">
-          Markiere Parks, Attraktionen, Shows und Restaurants als Favoriten, um sie jederzeit
-          schnell zur Hand zu haben – direkt auf der Startseite.
-        </p>
-
-        <SubSection title="Favorit hinzufügen">
-          <div className="space-y-2 text-sm">
-            <p>
-              Klicke auf den <Star className="inline h-4 w-4 text-yellow-500" />-Stern auf jeder
-              Park- oder Attraktionskarte. Der Stern leuchtet auf – der Favorit ist gespeichert.
-            </p>
-            <p>
-              Favoriten werden <strong>lokal in deinem Browser</strong> gespeichert – keine
-              Anmeldung notwendig. Sie bleiben erhalten, bis du sie manuell entfernst.
-            </p>
-          </div>
-        </SubSection>
-
-        <SubSection title="Favoriten auf der Startseite">
-          <p className="text-muted-foreground text-sm">
-            Sobald du mindestens einen Favoriten gesetzt hast, erscheint auf der Startseite ein
-            eigener Bereich mit allen gespeicherten Parks, Attraktionen, Shows und Restaurants. Bei
-            aktiviertem Standort werden sie nach Entfernung sortiert – der nächste Park zuerst.
-          </p>
-          <MockNearbyCards locale="de" />
-        </SubSection>
-
-        <SubSection title="Was wird als Favorit gespeichert?">
-          <div className="grid gap-2 sm:grid-cols-2">
-            {[
-              { icon: '🌴', label: 'Parks', desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick' },
-              { icon: '🎢', label: 'Attraktionen', desc: 'Live-Wartezeit und Trend direkt in der Übersicht' },
-              { icon: '🎭', label: 'Shows', desc: 'Nächste Showtime immer im Blick' },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Küche und aktueller Status' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <TipBox>
-          Plane deinen nächsten Besuch effizienter: Speichere die 5-10 Lieblingsattraktionen deines
-          Zielparks als Favoriten. Auf der Startseite siehst du dann sofort, welche davon gerade
-          kurze Wartezeiten haben – ideal für die spontane Entscheidung am Besuchstag.
-        </TipBox>
-      </Section>
 
       {/* ── 7. Standort ─────────────────────────────────────────────────────── */}
       <Section id="standort" title="Standort & Nearby-Parks">
@@ -2027,11 +2036,11 @@ function IntroEN() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Search'],
-            ['#parkseite', '2. The Park Page'],
-            ['#badges', '3. Badges & Indicators'],
-            ['#kalender', '4. Crowd Calendar'],
-            ['#prognosen', '5. AI Predictions'],
-            ['#favoriten', '6. Favorites'],
+            ['#favoriten', '2. Favorites'],
+            ['#parkseite', '3. The Park Page'],
+            ['#badges', '4. Badges & Indicators'],
+            ['#kalender', '5. Crowd Calendar'],
+            ['#prognosen', '6. AI Predictions'],
             ['#standort', '7. Location & Nearby'],
             ['#personas', '8. Who is it for?'],
             ['#faq', '9. FAQ'],
@@ -2079,11 +2088,11 @@ function IntroES() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Búsqueda'],
-            ['#parkseite', '2. La página del parque'],
-            ['#badges', '3. Insignias y estados'],
-            ['#kalender', '4. Calendario de afluencia'],
-            ['#prognosen', '5. Predicciones IA'],
-            ['#favoriten', '6. Favoritos'],
+            ['#favoriten', '2. Favoritos'],
+            ['#parkseite', '3. La página del parque'],
+            ['#badges', '4. Insignias y estados'],
+            ['#kalender', '5. Calendario de afluencia'],
+            ['#prognosen', '6. Predicciones IA'],
             ['#standort', '7. Ubicación'],
             ['#personas', '8. ¿Para quién?'],
             ['#faq', '9. Preguntas frecuentes'],
@@ -2131,11 +2140,11 @@ function IntroFR() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Recherche'],
-            ['#parkseite', '2. La page du parc'],
-            ['#badges', '3. Badges et statuts'],
-            ['#kalender', "4. Calendrier d'affluence"],
-            ['#prognosen', '5. Prédictions IA'],
-            ['#favoriten', '6. Favoris'],
+            ['#favoriten', '2. Favoris'],
+            ['#parkseite', '3. La page du parc'],
+            ['#badges', '4. Badges et statuts'],
+            ['#kalender', "5. Calendrier d'affluence"],
+            ['#prognosen', '6. Prédictions IA'],
             ['#standort', '7. Localisation'],
             ['#personas', '8. Pour qui ?'],
             ['#faq', '9. FAQ'],
@@ -2180,11 +2189,11 @@ function IntroIT() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Ricerca'],
-            ['#parkseite', '2. La pagina del parco'],
-            ['#badges', '3. Badge e stati'],
-            ['#kalender', '4. Calendario affluenza'],
-            ['#prognosen', '5. Previsioni IA'],
-            ['#favoriten', '6. Preferiti'],
+            ['#favoriten', '2. Preferiti'],
+            ['#parkseite', '3. La pagina del parco'],
+            ['#badges', '4. Badge e stati'],
+            ['#kalender', '5. Calendario affluenza'],
+            ['#prognosen', '6. Previsioni IA'],
             ['#standort', '7. Posizione'],
             ['#personas', '8. Per chi?'],
             ['#faq', '9. FAQ'],
@@ -2229,11 +2238,11 @@ function IntroNL() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Zoeken'],
-            ['#parkseite', '2. De parkpagina'],
-            ['#badges', '3. Badges & statussen'],
-            ['#kalender', '4. Drukte-kalender'],
-            ['#prognosen', '5. AI-voorspellingen'],
-            ['#favoriten', '6. Favorieten'],
+            ['#favoriten', '2. Favorieten'],
+            ['#parkseite', '3. De parkpagina'],
+            ['#badges', '4. Badges & statussen'],
+            ['#kalender', '5. Drukte-kalender'],
+            ['#prognosen', '6. AI-voorspellingen'],
             ['#standort', '7. Locatie'],
             ['#personas', '8. Voor wie?'],
             ['#faq', '9. FAQ'],
@@ -2304,8 +2313,55 @@ function ContentENSections() {
           you&apos;ll find &quot;Phantasialand&quot;.
         </InfoBox>
       </Section>
+      {/* ── 2. Favorites ────────────────────────────────────────────────────── */}
+      <Section id="favoriten" title="Favorites">
+        <p className="text-muted-foreground mb-4">
+          Save parks, attractions, shows and restaurants as favorites for quick access directly on
+          the homepage.
+        </p>
 
-      {/* ── 2. Park Page ────────────────────────────────────────────────────── */}
+        <SubSection title="Adding a favorite">
+          <p className="text-sm">
+            Click the <Star className="inline h-4 w-4 text-yellow-500" /> star on any park or
+            attraction card. Favorites are saved locally in your browser – no login required.
+          </p>
+        </SubSection>
+
+        <SubSection title="Favorites on the homepage">
+          <p className="text-muted-foreground text-sm">
+            Once you have at least one favorite, a dedicated section appears on the homepage showing
+            all saved parks, attractions, shows and restaurants. With location enabled, they are
+            sorted by distance – nearest first.
+          </p>
+          <MockNearbyCards locale="en" />
+        </SubSection>
+
+        <SubSection title="What gets saved?">
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { icon: '🌴', label: 'Parks', desc: 'Status, opening hours and crowd level at a glance' },
+              { icon: '🎢', label: 'Attractions', desc: 'Live wait time and trend directly in the overview' },
+              { icon: '🎭', label: 'Shows', desc: 'Next showtime always visible' },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Kitchen status and location' },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
+                <span className="text-xl">{icon}</span>
+                <div>
+                  <p className="font-semibold">{label}</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SubSection>
+
+        <TipBox label="Tip">
+          Save your 5–10 favorite attractions at your target park. On the day of your visit,
+          you&apos;ll instantly see which ones have short wait times – great for on-the-fly decisions.
+        </TipBox>
+      </Section>
+
+      {/* ── 3. Park Page ────────────────────────────────────────────────────── */}
       <Section id="parkseite" title="The Park Page">
         <p className="text-muted-foreground mb-4">
           Every park has its own page with live data, opening hours, an interactive calendar and a
@@ -2362,7 +2418,7 @@ function ContentENSections() {
         </SubSection>
       </Section>
 
-      {/* ── 3. Badges ───────────────────────────────────────────────────────── */}
+      {/* ── 4. Badges ───────────────────────────────────────────────────────── */}
       <Section id="badges" title="Badges & Status Indicators">
         <p className="text-muted-foreground mb-4">
           park.fan uses a consistent color system to make information immediately understandable.
@@ -2558,7 +2614,7 @@ function ContentENSections() {
         </SubSection>
       </Section>
 
-      {/* ── 4. Calendar ─────────────────────────────────────────────────────── */}
+      {/* ── 5. Calendar ─────────────────────────────────────────────────────── */}
       <Section id="kalender" title="The Crowd Calendar">
         <p className="text-muted-foreground mb-4">
           The calendar is the most powerful planning tool on park.fan. It shows an AI-powered
@@ -2683,7 +2739,7 @@ function ContentENSections() {
         </TipBox>
       </Section>
 
-      {/* ── 5. AI Predictions ───────────────────────────────────────────────────── */}
+      {/* ── 6. AI Predictions ───────────────────────────────────────────────────── */}
       <Section id="prognosen" title="AI-Powered Predictions">
         <p className="text-muted-foreground mb-4">
           park.fan uses machine learning to predict crowd levels and wait times days in advance.
@@ -2810,53 +2866,6 @@ function ContentENSections() {
         </TipBox>
       </Section>
 
-      {/* ── 6. Favorites ────────────────────────────────────────────────────── */}
-      <Section id="favoriten" title="Favorites">
-        <p className="text-muted-foreground mb-4">
-          Save parks, attractions, shows and restaurants as favorites for quick access directly on
-          the homepage.
-        </p>
-
-        <SubSection title="Adding a favorite">
-          <p className="text-sm">
-            Click the <Star className="inline h-4 w-4 text-yellow-500" /> star on any park or
-            attraction card. Favorites are saved locally in your browser – no login required.
-          </p>
-        </SubSection>
-
-        <SubSection title="Favorites on the homepage">
-          <p className="text-muted-foreground text-sm">
-            Once you have at least one favorite, a dedicated section appears on the homepage showing
-            all saved parks, attractions, shows and restaurants. With location enabled, they are
-            sorted by distance – nearest first.
-          </p>
-          <MockNearbyCards locale="en" />
-        </SubSection>
-
-        <SubSection title="What gets saved?">
-          <div className="grid gap-2 sm:grid-cols-2">
-            {[
-              { icon: '🌴', label: 'Parks', desc: 'Status, opening hours and crowd level at a glance' },
-              { icon: '🎢', label: 'Attractions', desc: 'Live wait time and trend directly in the overview' },
-              { icon: '🎭', label: 'Shows', desc: 'Next showtime always visible' },
-              { icon: '🍽️', label: 'Restaurants', desc: 'Kitchen status and location' },
-            ].map(({ icon, label, desc }) => (
-              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
-                <span className="text-xl">{icon}</span>
-                <div>
-                  <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </SubSection>
-
-        <TipBox label="Tip">
-          Save your 5–10 favorite attractions at your target park. On the day of your visit,
-          you&apos;ll instantly see which ones have short wait times – great for on-the-fly decisions.
-        </TipBox>
-      </Section>
 
       {/* ── 7. Location ─────────────────────────────────────────────────────── */}
       <Section id="standort" title="Location & Nearby Parks">
