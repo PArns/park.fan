@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { cache } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
@@ -6,7 +7,12 @@ import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { LocaleContent } from '@/components/common/locale-content';
 import { getGeoStructure } from '@/lib/api/discovery';
-import { FeaturedParksSection } from '@/components/home/featured-parks-section';
+import { extractFeaturedParks } from '@/components/home/featured-parks-section';
+import { ParkCard } from '@/components/parks/park-card';
+import { Link } from '@/i18n/navigation';
+
+// Cached geoData fetch – deduplicated across all async server components in one render
+const getCachedGeoData = cache(() => getGeoStructure().catch(() => null));
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { CalendarDay } from '@/lib/api/types';
 import { Badge } from '@/components/ui/badge';
@@ -192,6 +198,64 @@ function Section({ id, title, children }: { id: string; title: string; children:
       <h2 className="border-border mb-6 border-b pb-3 text-xl sm:text-3xl font-bold">{title}</h2>
       {children}
     </section>
+  );
+}
+
+// ─── Popular Parks (async RSC – fetches geoData via cache()) ──────────────────
+
+async function PopularParksGrid({ locale, emptyHint }: { locale: string; emptyHint: string }) {
+  const tGeo = await getTranslations('geo');
+  const geoData = await getCachedGeoData();
+  const parks = extractFeaturedParks(geoData, locale);
+
+  if (parks.length === 0) {
+    return <p className="text-muted-foreground text-sm">{emptyHint}</p>;
+  }
+
+  return (
+    <div className="space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {parks.map((park) => {
+          const translatedCountry =
+            tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) ||
+            park.countryName;
+          return (
+            <ParkCard
+              key={park.slug}
+              name={park.name}
+              slug={park.slug}
+              parkId={park.parkId}
+              city={park.city}
+              country={translatedCountry}
+              href={park.href as '/'}
+              status={park.status}
+              crowdLevel={park.crowdLevel}
+              averageWaitTime={park.averageWaitTime}
+              operatingAttractions={park.operatingAttractions}
+              totalAttractions={park.totalAttractions}
+              timezone={park.timezone}
+              todaySchedule={park.todaySchedule}
+              nextSchedule={park.nextSchedule}
+              variant="detailed"
+            />
+          );
+        })}
+      </div>
+      <div className="flex justify-end">
+        <Link
+          href="/parks"
+          prefetch={false}
+          className="text-primary text-sm font-medium hover:underline"
+        >
+          {locale === 'de' ? 'Alle Parks ansehen →' :
+           locale === 'es' ? 'Ver todos los parques →' :
+           locale === 'fr' ? 'Voir tous les parcs →' :
+           locale === 'it' ? 'Vedi tutti i parchi →' :
+           locale === 'nl' ? 'Bekijk alle parken →' :
+           'View all parks →'}
+        </Link>
+      </div>
+    </div>
   );
 }
 
@@ -1137,14 +1201,15 @@ function ContentDE() {
           <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
             {[
               ['#suche', '1. Suche'],
+              ['#standort', '2. Standort & Nearby'],
               ['#favoriten', '3. Favoriten'],
               ['#parkseite', '4. Die Park-Seite'],
               ['#badges', '5. Badges & Anzeigen'],
               ['#kalender', '6. Crowd-Kalender'],
               ['#prognosen', '7. KI-Prognosen'],
-              ['#standort', '2. Standort & Nearby'],
               ['#personas', '8. Für wen?'],
               ['#faq', '9. FAQ'],
+              ['#parks', '10. Beliebte Parks'],
             ].map(([href, label]) => (
               <li key={href}>
                 <a href={href} className="hover:text-primary transition-colors">
@@ -2081,6 +2146,18 @@ function ContentDE() {
           ))}
         </div>
       </Section>
+
+      {/* ── 10. Beliebte Parks ──────────────────────────────────────────────── */}
+      <Section id="parks" title="Beliebte Parks">
+        <p className="text-muted-foreground mb-6">
+          park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
+          Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
+        </p>
+        <PopularParksGrid
+          locale="de"
+          emptyHint="Parkdaten werden geladen – bitte Seite neu laden."
+        />
+      </Section>
     </div>
   );
 }
@@ -2114,14 +2191,15 @@ function IntroEN() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Search'],
+            ['#standort', '2. Location & Nearby'],
             ['#favoriten', '3. Favorites'],
             ['#parkseite', '4. The Park Page'],
             ['#badges', '5. Badges & Indicators'],
             ['#kalender', '6. Crowd Calendar'],
             ['#prognosen', '7. AI Predictions'],
-            ['#standort', '2. Location & Nearby'],
             ['#personas', '8. Who is it for?'],
             ['#faq', '9. FAQ'],
+            ['#parks', '10. Popular Parks'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2166,14 +2244,15 @@ function IntroES() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Búsqueda'],
+            ['#standort', '2. Ubicación'],
             ['#favoriten', '3. Favoritos'],
             ['#parkseite', '4. La página del parque'],
             ['#badges', '5. Insignias y estados'],
             ['#kalender', '6. Calendario de afluencia'],
             ['#prognosen', '7. Predicciones IA'],
-            ['#standort', '2. Ubicación'],
             ['#personas', '8. ¿Para quién?'],
             ['#faq', '9. Preguntas frecuentes'],
+            ['#parks', '10. Parques populares'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2218,14 +2297,15 @@ function IntroFR() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Recherche'],
+            ['#standort', '2. Localisation'],
             ['#favoriten', '3. Favoris'],
             ['#parkseite', '4. La page du parc'],
             ['#badges', '5. Badges et statuts'],
             ['#kalender', "6. Calendrier d'affluence"],
             ['#prognosen', '7. Prédictions IA'],
-            ['#standort', '2. Localisation'],
             ['#personas', '8. Pour qui ?'],
             ['#faq', '9. FAQ'],
+            ['#parks', '10. Parcs populaires'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2267,14 +2347,15 @@ function IntroIT() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Ricerca'],
+            ['#standort', '2. Posizione'],
             ['#favoriten', '3. Preferiti'],
             ['#parkseite', '4. La pagina del parco'],
             ['#badges', '5. Badge e stati'],
             ['#kalender', '6. Calendario affluenza'],
             ['#prognosen', '7. Previsioni IA'],
-            ['#standort', '2. Posizione'],
             ['#personas', '8. Per chi?'],
             ['#faq', '9. FAQ'],
+            ['#parks', '10. Parchi popolari'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2316,14 +2397,15 @@ function IntroNL() {
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
             ['#suche', '1. Zoeken'],
+            ['#standort', '2. Locatie'],
             ['#favoriten', '3. Favorieten'],
             ['#parkseite', '4. De parkpagina'],
             ['#badges', '5. Badges & statussen'],
             ['#kalender', '6. Drukte-kalender'],
             ['#prognosen', '7. AI-voorspellingen'],
-            ['#standort', '2. Locatie'],
             ['#personas', '8. Voor wie?'],
             ['#faq', '9. FAQ'],
+            ['#parks', '10. Populaire parken'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -3035,6 +3117,18 @@ function ContentENSections() {
           ))}
         </div>
       </Section>
+
+      {/* ── 10. Popular Parks ───────────────────────────────────────────────── */}
+      <Section id="parks" title="Popular Parks">
+        <p className="text-muted-foreground mb-6">
+          park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
+          and Europa-Park. Here are the most-visited parks in your region with live data:
+        </p>
+        <PopularParksGrid
+          locale="en"
+          emptyHint="Park data is loading – please reload the page."
+        />
+      </Section>
     </>
   );
 }
@@ -3664,6 +3758,18 @@ function ContentESSections() {
           ))}
         </div>
       </Section>
+
+      {/* ── 10. Parques populares ───────────────────────────────────────────── */}
+      <Section id="parks" title="Parques populares">
+        <p className="text-muted-foreground mb-6">
+          park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más
+          visitados de tu región con datos en directo:
+        </p>
+        <PopularParksGrid
+          locale="es"
+          emptyHint="Los datos del parque se están cargando – recarga la página."
+        />
+      </Section>
     </>
   );
 }
@@ -4184,6 +4290,18 @@ function ContentFRSections() {
           ))}
         </div>
       </Section>
+
+      {/* ── 10. Parcs populaires ────────────────────────────────────────────── */}
+      <Section id="parks" title="Parcs populaires">
+        <p className="text-muted-foreground mb-6">
+          park.fan couvre plus de 150 parcs d&apos;attractions dans le monde. Voici les plus visités
+          de votre région avec des données en direct :
+        </p>
+        <PopularParksGrid
+          locale="fr"
+          emptyHint="Les données du parc se chargent – veuillez recharger la page."
+        />
+      </Section>
     </>
   );
 }
@@ -4685,7 +4803,7 @@ function ContentITSections() {
             { q: 'park.fan è gratuito?',                                                a: 'Sì, park.fan è completamente gratuito e non richiede registrazione.' },
             { q: 'I preferiti vengono sincronizzati tra i dispositivi?',               a: 'No, i preferiti vengono salvati localmente nel tuo browser (localStorage). Sono disponibili solo sul dispositivo in cui li hai salvati.' },
             { q: 'Fino a quanto tempo in anticipo il calendario di affluenza fa previsioni?', a: 'Il calendario mostra previsioni per oltre 30 giorni. Le previsioni per date più lontane sono naturalmente un po\' meno precise di quelle a breve termine.' },
-            { q: 'Quanti parchi sono coperti?',                                         a: 'park.fan copre attualmente oltre 150 parchi con più di 5.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.' },
+            { q: 'Quanti parchi sono coperti?',                                         a: 'park.fan copre attualmente oltre 150 parchi con più di 5.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.'},
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
@@ -4698,6 +4816,18 @@ function ContentITSections() {
             </details>
           ))}
         </div>
+      </Section>
+
+      {/* ── 10. Parchi popolari ─────────────────────────────────────────────── */}
+      <Section id="parks" title="Parchi popolari">
+        <p className="text-muted-foreground mb-6">
+          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati
+          nella tua regione con dati in tempo reale:
+        </p>
+        <PopularParksGrid
+          locale="it"
+          emptyHint="I dati del parco si stanno caricando – ricarica la pagina."
+        />
       </Section>
     </>
   );
@@ -5195,7 +5325,7 @@ function ContentNLSections() {
             { q: 'Is park.fan gratis?',                                              a: 'Ja, park.fan is volledig gratis en vereist geen registratie.' },
             { q: 'Worden favorieten gesynchroniseerd tussen apparaten?',             a: 'Nee, favorieten worden lokaal opgeslagen in je browser (localStorage). Ze zijn alleen beschikbaar op het apparaat waar je ze hebt opgeslagen.' },
             { q: 'Hoe ver vooruit doet de drukte-kalender voorspellingen?',         a: 'De kalender toont voorspellingen voor 30+ dagen. Voorspellingen voor verdere datums zijn van nature iets minder nauwkeurig dan voorspellingen op korte termijn.' },
-            { q: 'Hoeveel parken zijn er beschikbaar?',                             a: 'park.fan dekt momenteel 150+ parken met 5.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.' },
+            { q: 'Hoeveel parken zijn er beschikbaar?',                             a: 'park.fan dekt momenteel 150+ parken met 5.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.'},
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
@@ -5208,6 +5338,18 @@ function ContentNLSections() {
             </details>
           ))}
         </div>
+      </Section>
+
+      {/* ── 10. Populaire parken ────────────────────────────────────────────── */}
+      <Section id="parks" title="Populaire parken">
+        <p className="text-muted-foreground mb-6">
+          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw
+          regio met live data:
+        </p>
+        <PopularParksGrid
+          locale="nl"
+          emptyHint="Parkdata worden geladen – herlaad de pagina."
+        />
       </Section>
     </>
   );
@@ -5269,81 +5411,76 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
 
   setRequestLocale(locale);
 
-  const geoData = await getGeoStructure().catch(() => null);
-
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-4xl">
-        <LocaleContent
-          locale={locale as Locale}
-          de={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Wie funktioniert park.fan?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den
-                Crowd-Kalender bis zu allen Badges und KI-Prognosen.
-              </p>
-              <ContentDE />
-            </>
-          }
-          en={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">How does park.fan work?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                The complete guide for theme park visitors – from search and favorites to the crowd
-                calendar, AI predictions and all badges explained.
-              </p>
-              <ContentEN />
-            </>
-          }
-          es={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">¿Cómo funciona park.fan?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                La guía completa para visitar parques temáticos – desde la búsqueda y los
-                favoritos hasta el calendario de afluencia, las predicciones IA y todos los
-                indicadores explicados.
-              </p>
-              <ContentES />
-            </>
-          }
-          fr={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Comment fonctionne park.fan ?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
-                aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
-                tous les indicateurs expliqués.
-              </p>
-              <ContentFR />
-            </>
-          }
-          it={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Come funziona park.fan?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
-                preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e
-                tutti gli indicatori spiegati.
-              </p>
-              <ContentIT />
-            </>
-          }
-          nl={
-            <>
-              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Hoe werkt park.fan?</h1>
-              <p className="text-muted-foreground mb-10 text-lg">
-                De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
-                drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
-              </p>
-              <ContentNL />
-            </>
-          }
-        />
-      </div>
-
-      {/* Popular Parks – same data as homepage, locale-aware */}
-      <FeaturedParksSection locale={locale} geoData={geoData} />
+          <LocaleContent
+            locale={locale as Locale}
+            de={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Wie funktioniert park.fan?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den
+                  Crowd-Kalender bis zu allen Badges und KI-Prognosen.
+                </p>
+                <ContentDE />
+              </>
+            }
+            en={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">How does park.fan work?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  The complete guide for theme park visitors – from search and favorites to the crowd
+                  calendar, AI predictions and all badges explained.
+                </p>
+                <ContentEN />
+              </>
+            }
+            es={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">¿Cómo funciona park.fan?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  La guía completa para visitar parques temáticos – desde la búsqueda y los
+                  favoritos hasta el calendario de afluencia, las predicciones IA y todos los
+                  indicadores explicados.
+                </p>
+                <ContentES />
+              </>
+            }
+            fr={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Comment fonctionne park.fan ?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
+                  aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
+                  tous les indicateurs expliqués.
+                </p>
+                <ContentFR />
+              </>
+            }
+            it={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Come funziona park.fan?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
+                  preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e
+                  tutti gli indicatori spiegati.
+                </p>
+                <ContentIT />
+              </>
+            }
+            nl={
+              <>
+                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Hoe werkt park.fan?</h1>
+                <p className="text-muted-foreground mb-10 text-lg">
+                  De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
+                  drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
+                </p>
+                <ContentNL />
+              </>
+            }
+          />
+        </div>
     </div>
   );
 }
