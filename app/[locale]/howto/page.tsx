@@ -144,16 +144,16 @@ function DemoBadge({
 
 function InfoBox({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="bg-primary/5 border-primary/20 shadow-none">
-      <CardContent className="p-4 text-sm leading-relaxed">{children}</CardContent>
+    <Card className="bg-primary/5 border-primary/20 shadow-none !mt-6">
+      <CardContent className="p-3 text-sm leading-relaxed">{children}</CardContent>
     </Card>
   );
 }
 
 function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
-    <Card className="border-yellow-500/20 bg-yellow-500/5 shadow-none">
-      <CardContent className="p-4 text-sm leading-relaxed">
+    <Card className="border-yellow-500/20 bg-yellow-500/5 shadow-none !mt-6">
+      <CardContent className="p-3 text-sm leading-relaxed">
         <span className="mb-1 block font-bold text-yellow-600 dark:text-yellow-400">{label}</span>
         {children}
       </CardContent>
