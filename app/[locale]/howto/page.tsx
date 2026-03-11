@@ -11,6 +11,10 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
+import { GlassCard } from '@/components/common/glass-card';
+import { HeroSearchInput } from '@/components/search/hero-search-input';
+import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
+import { TrendIndicator } from '@/components/parks/trend-indicator';
 import {
   Search,
   Star,
@@ -31,6 +35,9 @@ import {
   Calendar,
   ChevronRight,
   MapPin,
+  Navigation,
+  Snowflake,
+  Wind,
   Sun,
 } from 'lucide-react';
 
@@ -409,80 +416,238 @@ function MockSparkline({ data }: { data: number[] }) {
 }
 
 function MockParkHeader({ locale }: { locale: MockLocale }) {
-  const t =
-    locale === 'de'
-      ? {
-          operating: 'Geöffnet',
-          peakTime: 'Stoßzeit in 1 Std. 45 Min.',
-          hours: '09:00 – 22:00',
-          weather: '23°C, sonnig',
-          remaining: 'Noch 6h 20m geöffnet',
-          progress: '58 % des heutigen Öffnungstags vergangen',
-          favLabel: 'Favorit',
-          city: 'Brühl, NRW',
-        }
-      : {
-          operating: 'Operating',
-          peakTime: 'Peak in 1h 45m',
-          hours: '09:00 – 22:00',
-          weather: '23°C, sunny',
-          remaining: '6h 20m remaining today',
-          progress: '58% of today\'s opening hours elapsed',
-          favLabel: 'Favorite',
-          city: 'Brühl, NRW',
-        };
+  const isDE = locale === 'de';
+  const t = isDE
+    ? {
+        suffix: 'Aktuelle Wartezeiten',
+        operating: 'GEÖFFNET',
+        city: 'Brühl',
+        country: 'Deutschland',
+        timezone: 'Europe/Berlin',
+        todaySchedule: 'Heutige Öffnungszeiten',
+        openingHours: 'Öffnungszeiten',
+        hours: '09:00 – 22:00',
+        closingIn: 'Schließt in 6 Stunden 20 Minuten',
+        currentTime: 'Aktuelle Uhrzeit',
+        time: '15:40',
+        weatherLabel: 'Wetter',
+        weatherDesc: 'Sonnig',
+        occupancyLabel: 'Auslastung',
+        avgWaitLabel: 'Ø Wartezeit',
+        current: 'Aktuell',
+        trend: 'Trend',
+        parkPeak: 'Park-Höchststand',
+        peakTime: 'Stoßzeit',
+        peakBadge: 'IN 1 STD. 45 MIN.',
+        attractionsLabel: 'Attraktionen',
+        open: 'Geöffnet',
+        closed: 'Geschlossen',
+        vsTypical: '15% Höher vs typisch',
+        minutes: 'Minuten',
+        operating2: 'in Betrieb',
+      }
+    : {
+        suffix: 'Current Wait Times',
+        operating: 'OPERATING',
+        city: 'Brühl',
+        country: 'Germany',
+        timezone: 'Europe/Berlin',
+        todaySchedule: "Today's Hours",
+        openingHours: 'Opening hours',
+        hours: '09:00 – 22:00',
+        closingIn: 'Closes in 6 hours 20 minutes',
+        currentTime: 'Current time',
+        time: '3:40 PM',
+        weatherLabel: 'Weather',
+        weatherDesc: 'Sunny',
+        occupancyLabel: 'Occupancy',
+        avgWaitLabel: 'Avg. wait',
+        current: 'Currently',
+        trend: 'Trend',
+        parkPeak: 'Park peak today',
+        peakTime: 'Peak time',
+        peakBadge: 'IN 1H 45M',
+        attractionsLabel: 'Attractions',
+        open: 'Open',
+        closed: 'Closed',
+        vsTypical: '15% Higher vs typical',
+        minutes: 'Minutes',
+        operating2: 'operating',
+      };
 
   return (
-    <div className="not-prose rounded-2xl border overflow-hidden shadow-sm">
-      {/* Hero image area */}
-      <div className="relative h-36 sm:h-44 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 flex items-end px-4 pb-4">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        {/* Annotated favourite star */}
-        <div className="absolute top-3 right-3 flex flex-col items-center gap-1 z-10">
-          <Star className="h-6 w-6 text-yellow-400 fill-yellow-400 drop-shadow" />
-          <span className="text-[10px] font-bold text-yellow-300 bg-black/50 rounded px-1.5 py-0.5 whitespace-nowrap">
-            {t.favLabel}
-          </span>
+    <div className="not-prose space-y-3">
+      {/* Park header — GlassCard style */}
+      <GlassCard>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex-1">
+            <div className="mb-2 flex flex-wrap items-center gap-3">
+              <h3 className="text-2xl font-bold">
+                Phantasialand
+                <span className="text-muted-foreground ml-2 text-lg font-normal">
+                  – {t.suffix}
+                </span>
+              </h3>
+              <DemoBadge
+                color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+                label={t.operating}
+                icon={Clock}
+              />
+            </div>
+            <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
+              <address className="flex items-center gap-1 not-italic">
+                <MapPin className="h-4 w-4" />
+                {t.city}, {t.country}
+              </address>
+              <Badge variant="outline" className="gap-1 font-mono text-xs">
+                <Clock className="h-3 w-3" />
+                {t.timezone}
+              </Badge>
+            </div>
+          </div>
+          <Star className="h-6 w-6 text-muted-foreground shrink-0" />
         </div>
-        <div className="relative z-10 space-y-2">
-          <div className="flex flex-wrap gap-1.5">
-            <DemoBadge
-              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-              label={t.operating}
-              icon={Clock}
-            />
+      </GlassCard>
+
+      {/* 2-col: opening hours + weather */}
+      <div className="grid gap-3 md:grid-cols-2">
+        <Card>
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Calendar className="h-4 w-4" />
+              {t.todaySchedule}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground text-sm font-medium">{t.openingHours}</span>
+              <span className="text-lg font-semibold tabular-nums">{t.hours}</span>
+            </div>
+            <div className="flex items-center justify-end">
+              <Badge variant="secondary">{t.closingIn}</Badge>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground text-sm font-medium">{t.currentTime}</span>
+              <div className="flex items-center gap-1.5">
+                <Clock className="text-primary h-4 w-4" />
+                <time className="text-lg font-bold tabular-nums">{t.time}</time>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Sun className="h-4 w-4" />
+              {t.weatherLabel}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="bg-muted rounded-full p-2">
+                  <Sun className="h-8 w-8 text-sky-400" />
+                </div>
+                <div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-bold">23°</span>
+                    <span className="text-muted-foreground text-sm">/ 16°</span>
+                  </div>
+                  <p className="text-muted-foreground text-sm font-medium">{t.weatherDesc}</p>
+                </div>
+              </div>
+              <div className="text-muted-foreground space-y-1 text-xs">
+                <div className="flex items-center gap-1.5">
+                  <span>☂</span><span>0mm</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Wind className="h-3 w-3" /><span>12 km/h</span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* 3-col: occupancy + avg wait + attractions */}
+      <div className="grid gap-3 md:grid-cols-3">
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Users className="h-4 w-4" />
+              {t.occupancyLabel}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
             <CrowdBadge level="high" locale={locale} />
-            <DemoBadge
-              color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
-              label={t.peakTime}
-              icon={Clock}
-            />
-          </div>
-          <div>
-            <h3 className="text-white text-xl font-bold">Phantasialand</h3>
-            <p className="text-white/70 text-xs flex items-center gap-1 mt-0.5">
-              <MapPin className="h-3 w-3" />
-              {t.city}
-            </p>
-          </div>
-        </div>
-      </div>
-      {/* Info row */}
-      <div className="bg-muted/30 px-4 py-2.5 flex flex-wrap gap-x-5 gap-y-1 text-sm border-b">
-        <span className="flex items-center gap-1.5 text-muted-foreground">
-          <Clock className="h-3.5 w-3.5" />
-          {t.hours}
-        </span>
-        <span className="flex items-center gap-1.5 text-muted-foreground">
-          <Sun className="h-3.5 w-3.5" />
-          {t.weather}
-        </span>
-        <span className="text-muted-foreground">{t.remaining}</span>
-      </div>
-      {/* Progress bar */}
-      <div className="px-4 py-2.5">
-        <Progress value={58} className="h-1.5" />
-        <p className="text-[11px] text-muted-foreground mt-1">{t.progress}</p>
+            <div className="flex items-center justify-between text-sm">
+              <span className="text-muted-foreground">{t.occupancyLabel}</span>
+              <span className="font-bold">78%</span>
+            </div>
+            <Progress value={78} className="h-1.5" />
+            <p className="text-xs font-medium text-trend-up">{t.vsTypical}</p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <Clock className="h-4 w-4" />
+              {t.avgWaitLabel}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2 text-sm">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">{t.current}</span>
+              <span className="text-xl font-bold">
+                45{' '}
+                <span className="text-sm font-normal text-muted-foreground">{t.minutes}</span>
+              </span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">{t.trend}</span>
+              <TrendIndicator trend="stable" variant="pill" label={isDE ? 'STABIL' : 'STABLE'} />
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">{t.parkPeak}</span>
+              <span className="font-semibold">55 min</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground">{t.peakTime}</span>
+              <DemoBadge
+                color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
+                label={t.peakBadge}
+                icon={Clock}
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="flex items-center gap-2 text-base">
+              <TrendingUp className="h-4 w-4" />
+              {t.attractionsLabel}
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="mb-3 flex items-baseline gap-2">
+              <span className="text-3xl font-bold">32</span>
+              <span className="text-muted-foreground text-lg">/ 40</span>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-lg bg-emerald-500/10 p-2 text-center">
+                <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">32</div>
+                <div className="text-muted-foreground text-xs">{t.open}</div>
+              </div>
+              <div className="bg-muted rounded-lg p-2 text-center">
+                <div className="text-lg font-bold">8</div>
+                <div className="text-muted-foreground text-xs">{t.closed}</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
@@ -521,45 +686,49 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
   return (
     <div className="not-prose grid gap-3 sm:grid-cols-3">
       {cards.map(({ name, wait, trend, crowd, favorited, spark, extra }) => (
-        <Card key={name} className="relative">
-          <CardContent className="flex flex-col gap-2.5">
-          <div className="absolute top-3 right-3 flex flex-col items-center gap-0.5">
+        <Card key={name} className="relative overflow-hidden">
+          {/* Favorite star — top right, matching real attraction card */}
+          <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
             <Star
               className={`h-4 w-4 ${favorited ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground'}`}
             />
-            {favorited && (
-              <span className="text-[9px] text-yellow-500 font-medium">
-                {isDE ? 'Favorit' : 'Fav'}
-              </span>
-            )}
           </div>
-          <p className="font-semibold pr-8 text-sm">{name}</p>
-          <div className="flex flex-wrap gap-1">
-            <DemoBadge
-              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-              label={isDE ? 'Geöffnet' : 'Operating'}
-              icon={Clock}
-            />
-            <CrowdBadge level={crowd} locale={locale} />
-          </div>
-          <div className="flex items-center gap-2">
-            <Clock className="h-4 w-4 text-muted-foreground shrink-0" />
-            <span className="text-2xl font-bold">{wait}</span>
-            <span className="text-muted-foreground text-sm">min</span>
-            {trend === 'up' && <TrendingUp className="ml-auto h-5 w-5 text-trend-up" />}
-            {trend === 'down' && <TrendingDown className="ml-auto h-5 w-5 text-trend-down" />}
-            {trend === 'stable' && <Minus className="ml-auto h-5 w-5 text-trend-stable" />}
-          </div>
-          {extra && (
-            <DemoBadge
-              color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
-              label={extra}
-              icon={User}
-            />
-          )}
-          <div className="text-muted-foreground/50 mt-auto pt-1">
-            <MockSparkline data={spark} />
-          </div>
+          <CardContent className="relative z-10 flex h-full flex-col p-4">
+            <div className="flex items-start justify-between gap-2">
+              {/* Left: name + wait time + queue type */}
+              <div className="min-w-0 flex-1">
+                <h3 className="truncate leading-tight font-medium pr-6">{name}</h3>
+                <div className="mt-1 flex items-baseline gap-2">
+                  <div className="flex items-center gap-1.5 text-lg font-bold">
+                    <Clock className="h-4 w-4" />
+                    {wait} min
+                  </div>
+                  <TrendIndicator trend={trend} />
+                </div>
+                {extra && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    <DemoBadge
+                      color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
+                      label={extra}
+                      icon={User}
+                    />
+                  </div>
+                )}
+              </div>
+              {/* Right: status + crowd badges */}
+              <div className="flex flex-col items-end gap-2 shrink-0">
+                <DemoBadge
+                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+                  label={isDE ? 'GEÖFFNET' : 'OPERATING'}
+                  icon={Clock}
+                />
+                <CrowdBadge level={crowd} locale={locale} />
+              </div>
+            </div>
+            {/* Sparkline — bottom, matching opacity-50 style */}
+            <div className="mt-auto h-16 w-full overflow-hidden pt-4 opacity-50">
+              <MockSparkline data={spark} />
+            </div>
           </CardContent>
         </Card>
       ))}
@@ -571,76 +740,95 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
   const isDE = locale === 'de';
   return (
     <div className="not-prose grid gap-3 sm:grid-cols-2">
-      {/* Card 1: favorited, nearest open */}
-      <Card className="relative overflow-hidden">
-        <div className="absolute top-3 left-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 rounded-full">
-          {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
+      {/* Card 1: favorited, nearest open — matches ParkCardNearby structure */}
+      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 opacity-50" />
+        <div className="absolute top-2 right-2 z-20">
+          <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 drop-shadow" />
         </div>
-        <CardContent className="pt-10">
-          <div className="flex items-start justify-between gap-2">
+        <div className="absolute top-2 left-2 z-20">
+          <Badge className="border-0 bg-primary text-primary-foreground text-xs font-medium shadow-md">
+            {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
+          </Badge>
+        </div>
+        <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
+          <div className="bg-background/20 mt-6 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
             <div>
-              <h3 className="font-bold leading-tight">Phantasialand</h3>
-              <p className="text-muted-foreground text-xs mt-0.5 flex items-center gap-1">
-                <MapPin className="h-3 w-3" /> Brühl, NRW
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="line-clamp-2 text-base font-semibold">Phantasialand</h3>
+                <ChevronRight className="text-muted-foreground mt-0.5 h-4 w-4 flex-shrink-0" />
+              </div>
+              <p className="text-muted-foreground mt-1 truncate text-xs">
+                Brühl, {isDE ? 'Deutschland' : 'Germany'}
               </p>
             </div>
-            <div className="flex flex-col items-center gap-0.5 shrink-0">
-              <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-              <span className="text-[10px] font-semibold text-yellow-500">
-                {isDE ? 'Favorit' : 'Favorite'}
-              </span>
+            <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
+              <div className="flex items-center justify-between text-sm">
+                <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
+                  <Navigation className="h-4 w-4" />
+                  <span className="font-medium">8.4 km</span>
+                </div>
+                <DemoBadge
+                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+                  label={isDE ? 'GEÖFFNET' : 'OPERATING'}
+                  icon={Clock}
+                />
+              </div>
+              <div className="flex items-center gap-2.5 text-sm">
+                <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
+                <CrowdBadge level="high" locale={locale} />
+              </div>
+              <div className="border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs text-muted-foreground">
+                <Clock className="h-3.5 w-3.5" />
+                <span>{isDE ? 'Schließt heute um 22:00' : 'Closes today at 22:00'}</span>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            <span className="flex items-center gap-1 text-xs bg-muted rounded-full px-2 py-0.5">
-              <MapPin className="h-3 w-3" /> 8.4 km
-            </span>
-            <DemoBadge
-              color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-              label={isDE ? 'Geöffnet' : 'Operating'}
-              icon={Clock}
-            />
-          </div>
-          <div className="flex items-center gap-2 mt-2">
-            <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
-            <CrowdBadge level="high" locale={locale} />
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </article>
 
-      {/* Card 2: not favorited, closed */}
-      <Card>
-        <CardContent>
-          <div className="flex items-start justify-between gap-2">
+      {/* Card 2: not favorited, offseason closed */}
+      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-40" />
+        <div className="absolute top-2 right-2 z-20">
+          <Star className="h-5 w-5 text-muted-foreground" />
+        </div>
+        <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
+          <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
             <div>
-              <h3 className="font-bold leading-tight">Europa-Park</h3>
-              <p className="text-muted-foreground text-xs mt-0.5 flex items-center gap-1">
-                <MapPin className="h-3 w-3" /> Rust, Baden-Württemberg
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="line-clamp-2 text-base font-semibold">Europa-Park</h3>
+                <ChevronRight className="text-muted-foreground mt-0.5 h-4 w-4 flex-shrink-0" />
+              </div>
+              <p className="text-muted-foreground mt-1 truncate text-xs">
+                Rust, {isDE ? 'Deutschland' : 'Germany'}
               </p>
             </div>
-            <div className="flex flex-col items-center gap-0.5 shrink-0">
-              <Star className="h-5 w-5 text-muted-foreground" />
-              <span className="text-[10px] text-muted-foreground">
-                {isDE ? 'Hinzufügen' : 'Add fav'}
-              </span>
+            <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
+              <div className="flex items-center justify-between text-sm">
+                <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
+                  <Navigation className="h-4 w-4" />
+                  <span className="font-medium">124 km</span>
+                </div>
+                <DemoBadge
+                  color="bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40"
+                  label={isDE ? 'GESCHLOSSEN' : 'CLOSED'}
+                  icon={XCircle}
+                />
+              </div>
+              <div className="h-5" />
+              <div className="border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs text-muted-foreground">
+                <Snowflake className="h-3.5 w-3.5" />
+                <span>
+                  {isDE
+                    ? 'OffSeason (Öffnet am 28. März – in 3 Wochen)'
+                    : 'OffSeason (Opens March 28 – in 3 weeks)'}
+                </span>
+              </div>
             </div>
           </div>
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            <span className="flex items-center gap-1 text-xs bg-muted rounded-full px-2 py-0.5">
-              <MapPin className="h-3 w-3" /> 124 km
-            </span>
-            <DemoBadge
-              color="bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40"
-              label={isDE ? 'Geschlossen' : 'Closed'}
-              icon={XCircle}
-            />
-          </div>
-          <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-            <Clock className="h-3 w-3" />
-            {isDE ? 'Öffnet morgen um 10:00' : 'Opens tomorrow at 10:00'}
-          </p>
-        </CardContent>
-      </Card>
+        </div>
+      </article>
     </div>
   );
 }
@@ -842,6 +1030,7 @@ function ContentDE() {
               Zeichen sofort.
             </p>
           </div>
+          <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
         </SubSection>
 
         <SubSection title="Was du suchen kannst">
@@ -1562,6 +1751,8 @@ function ContentDE() {
             immer, welche Attraktion gerade am nächsten liegt und wie lange die Wartezeit ist.
           </p>
         </SubSection>
+
+        <NearbyParksCard />
       </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
@@ -2003,6 +2194,7 @@ function ContentENSections() {
               in the header or the search field on the homepage.
             </p>
           </div>
+          <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
         </SubSection>
 
         <SubSection title="What you can search for">
@@ -2564,6 +2756,8 @@ function ContentENSections() {
             perfect for navigating between rides.
           </p>
         </SubSection>
+
+        <NearbyParksCard />
       </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
