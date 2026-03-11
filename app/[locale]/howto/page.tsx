@@ -111,7 +111,7 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
 function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
     <section id={id} className="scroll-mt-20">
-      <h2 className="border-border mb-6 border-b pb-3 text-3xl font-bold">{title}</h2>
+      <h2 className="border-border mb-6 border-b pb-3 text-xl sm:text-3xl font-bold">{title}</h2>
       {children}
     </section>
   );
@@ -257,7 +257,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
 
     return (
       <div className="not-prose space-y-2">
-        <div className="grid grid-cols-7 gap-2">
+        <div className="grid grid-cols-7 gap-1 sm:gap-2">
           {days.map((day, i) => {
             const d = new Date(day.date + 'T12:00:00');
             const wd = dtFmt.format(d);
@@ -920,7 +920,7 @@ function MockCalendar({ locale }: { locale: MockLocale }) {
 
   return (
     <div className="not-prose space-y-2">
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1 sm:gap-2">
         {CALENDAR_DAYS.map(({ wd, date, crowd, tag, border, best, hours, temp, avg }) => (
           <Card
             key={date}
@@ -1323,7 +1323,7 @@ function ContentDE() {
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
                   <DemoBadge color={color} label={label} icon={icon} />
                   <span className="text-muted-foreground pl-1 font-mono text-[10px]">
                     {threshold}
@@ -2470,7 +2470,7 @@ function ContentENSections() {
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
                   <DemoBadge color={color} label={label} icon={icon} />
                   <span className="text-muted-foreground pl-1 font-mono text-[10px]">
                     {threshold}
@@ -3019,7 +3019,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           locale={locale as Locale}
           de={
             <>
-              <h1 className="mb-2 text-4xl font-bold">Wie funktioniert park.fan?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Wie funktioniert park.fan?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den
                 Crowd-Kalender bis zu allen Badges und KI-Prognosen.
@@ -3029,7 +3029,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
           en={
             <>
-              <h1 className="mb-2 text-4xl font-bold">How does park.fan work?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">How does park.fan work?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 The complete guide for theme park visitors – from search and favorites to the crowd
                 calendar, AI predictions and all badges explained.
@@ -3039,7 +3039,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
           es={
             <>
-              <h1 className="mb-2 text-4xl font-bold">¿Cómo funciona park.fan?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">¿Cómo funciona park.fan?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 La guía completa para visitar parques temáticos – desde la búsqueda y los
                 favoritos hasta el calendario de afluencia, las predicciones IA y todos los
@@ -3050,7 +3050,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
           fr={
             <>
-              <h1 className="mb-2 text-4xl font-bold">Comment fonctionne park.fan ?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Comment fonctionne park.fan ?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
                 aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
@@ -3061,7 +3061,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
           it={
             <>
-              <h1 className="mb-2 text-4xl font-bold">Come funziona park.fan?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Come funziona park.fan?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
                 preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e
@@ -3072,7 +3072,7 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
           nl={
             <>
-              <h1 className="mb-2 text-4xl font-bold">Hoe werkt park.fan?</h1>
+              <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Hoe werkt park.fan?</h1>
               <p className="text-muted-foreground mb-10 text-lg">
                 De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
                 drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
