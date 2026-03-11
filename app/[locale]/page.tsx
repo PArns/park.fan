@@ -159,6 +159,17 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* Row 2: Search bar centered */}
         <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
 
+        {/* Howto link below search */}
+        <div className="mt-3 text-center">
+          <Link
+            href="/howto"
+            prefetch={false}
+            className="text-foreground/60 hover:text-foreground/90 text-sm font-medium underline-offset-4 hover:underline transition-colors"
+          >
+            {tHome('hero.howto')}
+          </Link>
+        </div>
+
         {/* Scroll indicator – desktop fullscreen only, fades out on scroll */}
         <ScrollIndicator />
       </section>

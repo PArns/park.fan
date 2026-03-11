@@ -86,7 +86,8 @@
     "hero": {
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
-      "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes..."
+      "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
+      "howto": "¿Cómo uso park.fan?"
     },
     "sections": {
       "explore": "Explorar por Región",
@@ -173,7 +174,8 @@
     "explore": "Explorar Parques",
     "search": "Buscar Parques y Atracciones",
     "admin": "Admin",
-    "nearbyPark": "Cerca: {parkName}"
+    "nearbyPark": "Cerca: {parkName}",
+    "howto": "Guía"
   },
   "theme": {
     "light": "Claro",

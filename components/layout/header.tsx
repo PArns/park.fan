@@ -130,6 +130,14 @@ export function Header() {
           >
             {t('explore')}
           </Link>
+          <Link
+            href="/howto"
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+          >
+            {t('howto')}
+          </Link>
         </nav>
 
         {/* Search Desktop – fades in on scroll */}
@@ -198,6 +206,13 @@ export function Header() {
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('explore')}
+                  </Link>
+                  <Link
+                    href="/howto"
+                    prefetch={false}
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('howto')}
                   </Link>
                 </nav>
               </SheetContent>

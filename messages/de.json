@@ -86,7 +86,8 @@
     "hero": {
       "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
-      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen..."
+      "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
+      "howto": "Wie nutze ich park.fan?"
     },
     "sections": {
       "explore": "Nach Region entdecken",
@@ -173,7 +174,8 @@
     "explore": "Parks entdecken",
     "search": "Parks & Attraktionen suchen",
     "admin": "Admin",
-    "nearbyPark": "In der Nähe: {parkName}"
+    "nearbyPark": "In der Nähe: {parkName}",
+    "howto": "Anleitung"
   },
   "theme": {
     "light": "Hell",

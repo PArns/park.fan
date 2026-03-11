@@ -86,7 +86,8 @@
     "hero": {
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
-      "searchPlaceholder": "Zoek parken, attracties, shows & restaurants..."
+      "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
+      "howto": "Hoe gebruik ik park.fan?"
     },
     "sections": {
       "explore": "Verkennen per Regio",
@@ -173,7 +174,8 @@
     "explore": "Ontdek Parken",
     "search": "Zoek Parken & Attracties",
     "admin": "Admin",
-    "nearbyPark": "In de buurt: {parkName}"
+    "nearbyPark": "In de buurt: {parkName}",
+    "howto": "Gids"
   },
   "theme": {
     "light": "Licht",

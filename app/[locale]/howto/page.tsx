@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
+import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { TrendIndicator } from '@/components/parks/trend-indicator';
@@ -144,7 +145,7 @@ function DemoBadge({
 function InfoBox({ children }: { children: React.ReactNode }) {
   return (
     <Card className="bg-primary/5 border-primary/20 shadow-none">
-      <CardContent className="text-sm leading-relaxed">{children}</CardContent>
+      <CardContent className="p-4 text-sm leading-relaxed">{children}</CardContent>
     </Card>
   );
 }
@@ -152,7 +153,7 @@ function InfoBox({ children }: { children: React.ReactNode }) {
 function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
     <Card className="border-yellow-500/20 bg-yellow-500/5 shadow-none">
-      <CardContent className="text-sm leading-relaxed">
+      <CardContent className="p-4 text-sm leading-relaxed">
         <span className="mb-1 block font-bold text-yellow-600 dark:text-yellow-400">{label}</span>
         {children}
       </CardContent>
@@ -249,7 +250,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
 
     return (
       <div className="not-prose space-y-2">
-        <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+        <div className="grid grid-cols-7 gap-2">
           {days.map((day, i) => {
             const d = new Date(day.date + 'T12:00:00');
             const wd = dtFmt.format(d);
@@ -270,55 +271,59 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
             const hoursStr =
               day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
             const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
-            const avgStr = day.avgWaitTime ? `${day.avgWaitTime}m` : '—';
+            const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
+
+            const scheduleIcon = (day.isSchoolVacation || day.isSchoolHoliday)
+              ? <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />
+              : (day.isHoliday || day.isPublicHoliday)
+              ? <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+              : day.isBridgeDay
+              ? <Calendar className="h-3.5 w-3.5 text-blue-500 shrink-0" />
+              : null;
 
             return (
-              <div
+              <Card
                 key={day.date}
-                className={`relative rounded-lg border-2 ${border} bg-card p-1 sm:p-1.5 flex flex-col gap-0.5 text-center`}
+                className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
               >
                 {isBest && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
                     {bestLabel}
                   </div>
                 )}
-                <div className="flex items-center justify-between">
-                  <span className="text-[9px] font-semibold text-muted-foreground">{wd}</span>
-                  {(day.isSchoolVacation || day.isSchoolHoliday) && (
-                    <Backpack className="h-2.5 w-2.5 text-yellow-500 shrink-0" />
-                  )}
-                  {(day.isHoliday || day.isPublicHoliday) &&
-                    !day.isSchoolVacation &&
-                    !day.isSchoolHoliday && (
-                      <PartyPopper className="h-2.5 w-2.5 text-orange-500 shrink-0" />
-                    )}
-                  {day.isBridgeDay &&
-                    !day.isHoliday &&
-                    !day.isPublicHoliday &&
-                    !day.isSchoolVacation &&
-                    !day.isSchoolHoliday && (
-                      <Calendar className="h-2.5 w-2.5 text-blue-500 shrink-0" />
-                    )}
-                  {!day.isSchoolVacation &&
-                    !day.isSchoolHoliday &&
-                    !day.isHoliday &&
-                    !day.isPublicHoliday &&
-                    !day.isBridgeDay && <span className="h-2.5 w-2.5" />}
+                {/* Header: weekday + date + schedule icon */}
+                <div className="mb-1 flex items-start justify-between">
+                  <div className="flex flex-col">
+                    <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
+                    <span className="text-xs font-semibold mt-0.5 leading-tight">{dateStr}</span>
+                  </div>
+                  {scheduleIcon}
                 </div>
-                <p className="text-[9px] font-bold leading-tight">{dateStr}</p>
+                {/* Crowd badge */}
                 <div
-                  className={`text-[8px] font-bold tracking-wide uppercase text-white rounded px-0.5 py-0.5 leading-tight ${crowdColor}`}
+                  className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${crowdColor}`}
                 >
                   {crowdLabel}
                 </div>
-                <div className="text-[8px] text-muted-foreground leading-tight hidden sm:block">
-                  {hoursStr}
-                </div>
-                {tempStr && <div className="text-[8px] text-muted-foreground">☀️ {tempStr}</div>}
-                <div className="text-[8px] text-muted-foreground">
+                {/* Hours */}
+                {hoursStr !== '—' && (
+                  <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
+                    <Clock className="h-2.5 w-2.5" />
+                    <span className="font-medium hidden sm:inline">{hoursStr}</span>
+                  </div>
+                )}
+                {/* Weather */}
+                {tempStr && (
+                  <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
+                    <Sun className="h-2.5 w-2.5" />
+                    <span>{tempStr}</span>
+                  </div>
+                )}
+                {/* Avg wait */}
+                <div className="text-muted-foreground text-center text-[9px]">
                   {avgLabel} {avgStr}
                 </div>
-              </div>
+              </Card>
             );
           })}
         </div>
@@ -742,7 +747,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
     <div className="not-prose grid gap-3 sm:grid-cols-2">
       {/* Card 1: favorited, nearest open — matches ParkCardNearby structure */}
       <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900 via-teal-800 to-cyan-900 opacity-50" />
+        <BackgroundOverlay imageSrc="/images/parks/phantasialand/background.jpg" alt="Phantasialand" intensity="medium" hoverEffect />
         <div className="absolute top-2 right-2 z-20">
           <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 drop-shadow" />
         </div>
@@ -789,7 +794,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
 
       {/* Card 2: not favorited, offseason closed */}
       <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 opacity-40" />
+        <BackgroundOverlay imageSrc="/images/parks/efteling/background.jpg" alt="Europa-Park" intensity="medium" />
         <div className="absolute top-2 right-2 z-20">
           <Star className="h-5 w-5 text-muted-foreground" />
         </div>
@@ -858,40 +863,51 @@ const CALENDAR_DAYS: MockCalendarDay[] = [
 function MockCalendar({ locale }: { locale: MockLocale }) {
   const li = locale === 'de' ? 0 : 1;
   const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+  const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
   return (
     <div className="not-prose space-y-2">
-      <div className="grid grid-cols-7 gap-1 sm:gap-1.5">
+      <div className="grid grid-cols-7 gap-2">
         {CALENDAR_DAYS.map(({ wd, date, crowd, tag, border, best, hours, temp, avg }) => (
-          <div
+          <Card
             key={date}
-            className={`relative rounded-lg border-2 ${border} bg-card p-1 sm:p-1.5 flex flex-col gap-0.5 text-center`}
+            className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border}`}
           >
             {best && (
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
                 {bestLabel}
               </div>
             )}
-            <div className="flex items-center justify-between">
-              <span className="text-[9px] font-semibold text-muted-foreground">{wd[li]}</span>
-              {tag === 'school' && <Backpack className="h-2.5 w-2.5 text-yellow-500 shrink-0" />}
-              {tag === 'holiday' && <PartyPopper className="h-2.5 w-2.5 text-orange-500 shrink-0" />}
-              {!tag && <span className="h-2.5 w-2.5" />}
+            {/* Header: weekday + date + schedule icon */}
+            <div className="mb-1 flex items-start justify-between">
+              <div className="flex flex-col">
+                <span className="text-muted-foreground text-xs leading-tight font-medium">{wd[li]}</span>
+                <span className="text-xs font-semibold mt-0.5 leading-tight">{date}</span>
+              </div>
+              {tag === 'school' && <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />}
+              {tag === 'holiday' && <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />}
             </div>
-            <p className="text-[9px] font-bold leading-tight">{date}</p>
+            {/* Crowd badge */}
             <div
-              className={`text-[8px] font-bold tracking-wide uppercase text-white rounded px-0.5 py-0.5 leading-tight ${CROWD_COLORS[crowd]}`}
+              className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${CROWD_COLORS[crowd]}`}
             >
               {CROWD_LABELS[locale][crowd]}
             </div>
-            <div className="text-[8px] text-muted-foreground leading-tight hidden sm:block">
-              {hours}
+            {/* Hours */}
+            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
+              <Clock className="h-2.5 w-2.5" />
+              <span className="font-medium hidden sm:inline">{hours}</span>
             </div>
-            <div className="text-[8px] text-muted-foreground">☀️ {temp}</div>
-            <div className="text-[8px] text-muted-foreground">
-              {locale === 'de' ? 'Ø' : 'avg'} {avg}m
+            {/* Weather */}
+            <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
+              <Sun className="h-2.5 w-2.5" />
+              <span>{temp}</span>
             </div>
-          </div>
+            {/* Avg wait */}
+            <div className="text-muted-foreground text-center text-[9px]">
+              {avgLabel} {avg} min
+            </div>
+          </Card>
         ))}
       </div>
       <p className="text-[11px] text-muted-foreground text-center">
@@ -1038,6 +1054,7 @@ function ContentDE() {
             {[
               { icon: '🌴', label: 'Parks', desc: 'Europa-Park, Phantasialand, Disneyland...' },
               { icon: '🎢', label: 'Attraktionen', desc: 'Taron, Silver Star, Space Mountain...' },
+              { icon: '🗺️', label: 'Städte & Länder', desc: 'Orlando, Paris, Deutschland...' },
               { icon: '🎭', label: 'Shows', desc: 'Showtimes, Programm, Zeiten' },
               { icon: '🍽️', label: 'Restaurants', desc: 'Gastronomie und Imbisse im Park' },
             ].map(({ icon, label, desc }) => (
@@ -1137,6 +1154,10 @@ function ContentDE() {
             den heutigen Öffnungszeiten, der aktuellen Auslastung und dem Wetter. Eine
             Fortschrittsleiste zeigt, wie lange der Park heute noch offen ist.
           </p>
+          <InfoBox>
+            Alle Zeiten werden in der <strong>Zeitzone des Parks</strong> angezeigt – egal wo du dich
+            gerade befindest. Ein Park in Florida zeigt z.&nbsp;B. Eastern Time, Europa-Park Mitteleuropäische Zeit.
+          </InfoBox>
           <MockParkHeader locale="de" />
         </SubSection>
 
@@ -2202,6 +2223,7 @@ function ContentENSections() {
             {[
               { icon: '🌴', label: 'Parks', desc: 'Europa-Park, Phantasialand, Disneyland...' },
               { icon: '🎢', label: 'Attractions', desc: 'Taron, Silver Star, Space Mountain...' },
+              { icon: '🗺️', label: 'Cities & Countries', desc: 'Orlando, Paris, Germany...' },
               { icon: '🎭', label: 'Shows', desc: 'Show schedules and times' },
               { icon: '🍽️', label: 'Restaurants', desc: 'Dining options inside parks' },
             ].map(({ icon, label, desc }) => (
@@ -2257,6 +2279,10 @@ function ContentENSections() {
           Every park has its own page with live data, opening hours, an interactive calendar and a
           map.
         </p>
+        <InfoBox>
+          All times are displayed in the <strong>park&apos;s local timezone</strong> — regardless of
+          where you are. A park in Florida shows Eastern Time, Europa-Park shows Central European Time.
+        </InfoBox>
         <MockParkHeader locale="en" />
 
         <SubSection title="Tabs – Attractions, Shows, Calendar, Map">
