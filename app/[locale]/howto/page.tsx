@@ -1060,10 +1060,10 @@ function ContentDE() {
             {[
               ['#suche', '1. Suche'],
               ['#favoriten', '2. Favoriten'],
-              ['#parkseite', '3. Die Park-Seite'],
-              ['#badges', '4. Badges & Anzeigen'],
-              ['#kalender', '5. Crowd-Kalender'],
-              ['#prognosen', '6. KI-Prognosen'],
+              ['#parkseite', '4. Die Park-Seite'],
+              ['#badges', '5. Badges & Anzeigen'],
+              ['#kalender', '6. Crowd-Kalender'],
+              ['#prognosen', '7. KI-Prognosen'],
               ['#standort', '7. Standort & Nearby'],
               ['#personas', '8. Für wen?'],
               ['#faq', '9. FAQ'],
@@ -1146,7 +1146,36 @@ function ContentDE() {
           </p>
         </SubSection>
       </Section>
-      {/* ── 2. Favoriten ────────────────────────────────────────────────────── */}
+      {/* ── 2. Standort ─────────────────────────────────────────────────────── */}
+      <Section id="standort" title="Standort & Nearby-Parks">
+        <p className="text-muted-foreground mb-4">
+          Mit deinem Standort wird park.fan noch smarter: Du siehst Parks und Attraktionen in deiner
+          Nähe – sortiert nach Entfernung.
+        </p>
+
+        <SubSection title="Standort aktivieren">
+          <p className="text-muted-foreground text-sm">
+            Beim ersten Besuch erscheint ein Banner, das dich um Standortzugriff bittet. Die
+            Zustimmung ist vollständig freiwillig. park.fan speichert deinen Standort nicht –
+            er wird ausschließlich für die Nearby-Funktion genutzt und nicht an Dritte weitergegeben.
+          </p>
+        </SubSection>
+
+        <SubSection title="In-Park Navigation">
+          <p className="text-muted-foreground text-sm">
+            Bist du im Park? park.fan erkennt automatisch, in welchem Park du dich befindest, und
+            zeigt auf der Startseite "Du bist im [Parkname]". Die Karte des Parks wird mit deinem
+            aktuellen Standort angezeigt – perfekt für die Navigation.
+          </p>
+          <p className="text-muted-foreground mt-2 text-sm">
+            Deine favorisierten Attraktionen werden nach Entfernung zu dir sortiert – du siehst
+            immer, welche Attraktion gerade am nächsten liegt und wie lange die Wartezeit ist.
+          </p>
+        </SubSection>
+
+        <NearbyParksCard />
+      </Section>
+      {/* ── 3. Favoriten ────────────────────────────────────────────────────── */}
       <Section id="favoriten" title="Favoriten">
         <p className="text-muted-foreground mb-4">
           Markiere Parks, Attraktionen, Shows und Restaurants als Favoriten, um sie jederzeit
@@ -1201,7 +1230,7 @@ function ContentDE() {
         </TipBox>
       </Section>
 
-      {/* ── 3. Park-Seite ───────────────────────────────────────────────────────── */}
+      {/* ── 4. Park-Seite ───────────────────────────────────────────────────────── */}
       <Section id="parkseite" title="Die Park-Seite">
         <p className="text-muted-foreground mb-4">
           Jeder Park auf park.fan hat eine eigene Seite mit Live-Daten, Öffnungszeiten, einem
@@ -1272,7 +1301,7 @@ function ContentDE() {
         </SubSection>
       </Section>
 
-      {/* ── 4. Badges ───────────────────────────────────────────────────────── */}
+      {/* ── 5. Badges ───────────────────────────────────────────────────────── */}
       <Section id="badges" title="Badges & Status-Anzeigen">
         <p className="text-muted-foreground mb-4">
           park.fan nutzt ein einheitliches Farbsystem, um Informationen sofort verständlich zu
@@ -1553,7 +1582,7 @@ function ContentDE() {
         </SubSection>
       </Section>
 
-      {/* ── 5. Kalender ─────────────────────────────────────────────────────── */}
+      {/* ── 6. Kalender ─────────────────────────────────────────────────────── */}
       <Section id="kalender" title="Der Crowd-Kalender">
         <p className="text-muted-foreground mb-4">
           Der Kalender ist das mächtigste Werkzeug auf park.fan, wenn du deinen Besuch im Voraus
@@ -1682,7 +1711,7 @@ function ContentDE() {
         </TipBox>
       </Section>
 
-      {/* ── 6. KI-Prognosen ─────────────────────────────────────────────────────── */}
+      {/* ── 7. KI-Prognosen ─────────────────────────────────────────────────────── */}
       <Section id="prognosen" title="KI-gestützte Prognosen">
         <p className="text-muted-foreground mb-4">
           park.fan nutzt maschinelles Lernen, um Besucherandrang und Wartezeiten Tage im Voraus
@@ -1816,35 +1845,6 @@ function ContentDE() {
       </Section>
 
 
-      {/* ── 7. Standort ─────────────────────────────────────────────────────── */}
-      <Section id="standort" title="Standort & Nearby-Parks">
-        <p className="text-muted-foreground mb-4">
-          Mit deinem Standort wird park.fan noch smarter: Du siehst Parks und Attraktionen in deiner
-          Nähe – sortiert nach Entfernung.
-        </p>
-
-        <SubSection title="Standort aktivieren">
-          <p className="text-muted-foreground text-sm">
-            Beim ersten Besuch erscheint ein Banner, das dich um Standortzugriff bittet. Die
-            Zustimmung ist vollständig freiwillig. park.fan speichert deinen Standort nicht –
-            er wird ausschließlich für die Nearby-Funktion genutzt und nicht an Dritte weitergegeben.
-          </p>
-        </SubSection>
-
-        <SubSection title="In-Park Navigation">
-          <p className="text-muted-foreground text-sm">
-            Bist du im Park? park.fan erkennt automatisch, in welchem Park du dich befindest, und
-            zeigt auf der Startseite "Du bist im [Parkname]". Die Karte des Parks wird mit deinem
-            aktuellen Standort angezeigt – perfekt für die Navigation.
-          </p>
-          <p className="text-muted-foreground mt-2 text-sm">
-            Deine favorisierten Attraktionen werden nach Entfernung zu dir sortiert – du siehst
-            immer, welche Attraktion gerade am nächsten liegt und wie lange die Wartezeit ist.
-          </p>
-        </SubSection>
-
-        <NearbyParksCard />
-      </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
       <Section id="personas" title="Für wen eignet sich park.fan?">
@@ -2037,10 +2037,10 @@ function IntroEN() {
           {[
             ['#suche', '1. Search'],
             ['#favoriten', '2. Favorites'],
-            ['#parkseite', '3. The Park Page'],
-            ['#badges', '4. Badges & Indicators'],
-            ['#kalender', '5. Crowd Calendar'],
-            ['#prognosen', '6. AI Predictions'],
+            ['#parkseite', '4. The Park Page'],
+            ['#badges', '5. Badges & Indicators'],
+            ['#kalender', '6. Crowd Calendar'],
+            ['#prognosen', '7. AI Predictions'],
             ['#standort', '7. Location & Nearby'],
             ['#personas', '8. Who is it for?'],
             ['#faq', '9. FAQ'],
@@ -2089,10 +2089,10 @@ function IntroES() {
           {[
             ['#suche', '1. Búsqueda'],
             ['#favoriten', '2. Favoritos'],
-            ['#parkseite', '3. La página del parque'],
-            ['#badges', '4. Insignias y estados'],
-            ['#kalender', '5. Calendario de afluencia'],
-            ['#prognosen', '6. Predicciones IA'],
+            ['#parkseite', '4. La página del parque'],
+            ['#badges', '5. Insignias y estados'],
+            ['#kalender', '6. Calendario de afluencia'],
+            ['#prognosen', '7. Predicciones IA'],
             ['#standort', '7. Ubicación'],
             ['#personas', '8. ¿Para quién?'],
             ['#faq', '9. Preguntas frecuentes'],
@@ -2141,10 +2141,10 @@ function IntroFR() {
           {[
             ['#suche', '1. Recherche'],
             ['#favoriten', '2. Favoris'],
-            ['#parkseite', '3. La page du parc'],
-            ['#badges', '4. Badges et statuts'],
-            ['#kalender', "5. Calendrier d'affluence"],
-            ['#prognosen', '6. Prédictions IA'],
+            ['#parkseite', '4. La page du parc'],
+            ['#badges', '5. Badges et statuts'],
+            ['#kalender', "6. Calendrier d'affluence"],
+            ['#prognosen', '7. Prédictions IA'],
             ['#standort', '7. Localisation'],
             ['#personas', '8. Pour qui ?'],
             ['#faq', '9. FAQ'],
@@ -2190,10 +2190,10 @@ function IntroIT() {
           {[
             ['#suche', '1. Ricerca'],
             ['#favoriten', '2. Preferiti'],
-            ['#parkseite', '3. La pagina del parco'],
-            ['#badges', '4. Badge e stati'],
-            ['#kalender', '5. Calendario affluenza'],
-            ['#prognosen', '6. Previsioni IA'],
+            ['#parkseite', '4. La pagina del parco'],
+            ['#badges', '5. Badge e stati'],
+            ['#kalender', '6. Calendario affluenza'],
+            ['#prognosen', '7. Previsioni IA'],
             ['#standort', '7. Posizione'],
             ['#personas', '8. Per chi?'],
             ['#faq', '9. FAQ'],
@@ -2239,10 +2239,10 @@ function IntroNL() {
           {[
             ['#suche', '1. Zoeken'],
             ['#favoriten', '2. Favorieten'],
-            ['#parkseite', '3. De parkpagina'],
-            ['#badges', '4. Badges & statussen'],
-            ['#kalender', '5. Drukte-kalender'],
-            ['#prognosen', '6. AI-voorspellingen'],
+            ['#parkseite', '4. De parkpagina'],
+            ['#badges', '5. Badges & statussen'],
+            ['#kalender', '6. Drukte-kalender'],
+            ['#prognosen', '7. AI-voorspellingen'],
             ['#standort', '7. Locatie'],
             ['#personas', '8. Voor wie?'],
             ['#faq', '9. FAQ'],
@@ -2313,7 +2313,23 @@ function ContentENSections() {
           you&apos;ll find &quot;Phantasialand&quot;.
         </InfoBox>
       </Section>
-      {/* ── 2. Favorites ────────────────────────────────────────────────────── */}
+      {/* ── 2. Location ─────────────────────────────────────────────────────── */}
+      <Section id="standort" title="Location & Nearby Parks">
+        <p className="text-muted-foreground mb-4">
+          With your location enabled, park.fan becomes smarter: see nearby parks and attractions
+          sorted by distance. park.fan does not store your location.
+        </p>
+        <SubSection title="In-Park Navigation">
+          <p className="text-muted-foreground text-sm">
+            When you're in a park, park.fan automatically detects which park you're in and shows
+            "You're in [Park Name]" on the homepage. The park map displays your live location –
+            perfect for navigating between rides.
+          </p>
+        </SubSection>
+
+        <NearbyParksCard />
+      </Section>
+      {/* ── 3. Favorites ────────────────────────────────────────────────────── */}
       <Section id="favoriten" title="Favorites">
         <p className="text-muted-foreground mb-4">
           Save parks, attractions, shows and restaurants as favorites for quick access directly on
@@ -2361,7 +2377,7 @@ function ContentENSections() {
         </TipBox>
       </Section>
 
-      {/* ── 3. Park Page ────────────────────────────────────────────────────── */}
+      {/* ── 4. Park Page ────────────────────────────────────────────────────── */}
       <Section id="parkseite" title="The Park Page">
         <p className="text-muted-foreground mb-4">
           Every park has its own page with live data, opening hours, an interactive calendar and a
@@ -2418,7 +2434,7 @@ function ContentENSections() {
         </SubSection>
       </Section>
 
-      {/* ── 4. Badges ───────────────────────────────────────────────────────── */}
+      {/* ── 5. Badges ───────────────────────────────────────────────────────── */}
       <Section id="badges" title="Badges & Status Indicators">
         <p className="text-muted-foreground mb-4">
           park.fan uses a consistent color system to make information immediately understandable.
@@ -2614,7 +2630,7 @@ function ContentENSections() {
         </SubSection>
       </Section>
 
-      {/* ── 5. Calendar ─────────────────────────────────────────────────────── */}
+      {/* ── 6. Calendar ─────────────────────────────────────────────────────── */}
       <Section id="kalender" title="The Crowd Calendar">
         <p className="text-muted-foreground mb-4">
           The calendar is the most powerful planning tool on park.fan. It shows an AI-powered
@@ -2739,7 +2755,7 @@ function ContentENSections() {
         </TipBox>
       </Section>
 
-      {/* ── 6. AI Predictions ───────────────────────────────────────────────────── */}
+      {/* ── 7. AI Predictions ───────────────────────────────────────────────────── */}
       <Section id="prognosen" title="AI-Powered Predictions">
         <p className="text-muted-foreground mb-4">
           park.fan uses machine learning to predict crowd levels and wait times days in advance.
@@ -2867,22 +2883,6 @@ function ContentENSections() {
       </Section>
 
 
-      {/* ── 7. Location ─────────────────────────────────────────────────────── */}
-      <Section id="standort" title="Location & Nearby Parks">
-        <p className="text-muted-foreground mb-4">
-          With your location enabled, park.fan becomes smarter: see nearby parks and attractions
-          sorted by distance. park.fan does not store your location.
-        </p>
-        <SubSection title="In-Park Navigation">
-          <p className="text-muted-foreground text-sm">
-            When you're in a park, park.fan automatically detects which park you're in and shows
-            "You're in [Park Name]" on the homepage. The park map displays your live location –
-            perfect for navigating between rides.
-          </p>
-        </SubSection>
-
-        <NearbyParksCard />
-      </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
       <Section id="personas" title="Who is park.fan for?">
