@@ -155,8 +155,9 @@ export default async function HomePage({ params }: HomePageProps) {
                   <Link
                     href="/howto"
                     prefetch={false}
-                    className="text-foreground/60 hover:text-foreground text-sm font-medium underline-offset-4 transition-colors hover:underline"
+                    className="text-primary/70 hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:underline"
                   >
+                    <BookOpen className="h-3.5 w-3.5 shrink-0" />
                     {tHome('hero.howto')}
                   </Link>
                 </div>
