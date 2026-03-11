@@ -255,84 +255,80 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
     const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
     const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
+    const renderDay = (day: (typeof days)[0], i: number) => {
+      const d = new Date(day.date + 'T12:00:00');
+      const wd = dtFmt.format(d);
+      const dateStr = dateFmt.format(d);
+      const isBest = i === bestIdx;
+      const border = buildBorderColor(day);
+      const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
+      const crowdLabel =
+        crowd === 'closed'
+          ? locale === 'de' ? 'Geschlossen' : 'Closed'
+          : (CROWD_LABELS[locale][crowd] ?? crowd);
+      const crowdColor =
+        crowd === 'closed'
+          ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
+          : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
+      const hoursStr = day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
+      const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
+      const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
+      const scheduleIcon = (day.isSchoolVacation || day.isSchoolHoliday)
+        ? <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />
+        : (day.isHoliday || day.isPublicHoliday)
+        ? <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />
+        : day.isBridgeDay
+        ? <Calendar className="h-3.5 w-3.5 text-blue-500 shrink-0" />
+        : null;
+
+      return (
+        <Card
+          key={day.date}
+          className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
+        >
+          {isBest && (
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
+              {bestLabel}
+            </div>
+          )}
+          <div className="mb-1 flex items-start justify-between">
+            <div className="flex flex-col">
+              <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
+              <span className="text-xs font-semibold mt-0.5 leading-tight">{dateStr}</span>
+            </div>
+            {scheduleIcon}
+          </div>
+          <div className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${crowdColor}`}>
+            {crowdLabel}
+          </div>
+          {hoursStr !== '—' && (
+            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
+              <Clock className="h-2.5 w-2.5" />
+              <span className="font-medium">{hoursStr}</span>
+            </div>
+          )}
+          {tempStr && (
+            <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
+              <Sun className="h-2.5 w-2.5" />
+              <span>{tempStr}</span>
+            </div>
+          )}
+          <div className="text-muted-foreground text-center text-[9px]">{avgLabel} {avgStr}</div>
+        </Card>
+      );
+    };
+
     return (
       <div className="not-prose space-y-2">
-        <div className="grid grid-cols-7 gap-1 sm:gap-2">
-          {days.map((day, i) => {
-            const d = new Date(day.date + 'T12:00:00');
-            const wd = dtFmt.format(d);
-            const dateStr = dateFmt.format(d);
-            const isBest = i === bestIdx;
-            const border = buildBorderColor(day);
-            const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
-            const crowdLabel =
-              crowd === 'closed'
-                ? locale === 'de'
-                  ? 'Geschlossen'
-                  : 'Closed'
-                : (CROWD_LABELS[locale][crowd] ?? crowd);
-            const crowdColor =
-              crowd === 'closed'
-                ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
-                : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
-            const hoursStr =
-              day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
-            const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
-            const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
-
-            const scheduleIcon = (day.isSchoolVacation || day.isSchoolHoliday)
-              ? <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />
-              : (day.isHoliday || day.isPublicHoliday)
-              ? <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />
-              : day.isBridgeDay
-              ? <Calendar className="h-3.5 w-3.5 text-blue-500 shrink-0" />
-              : null;
-
-            return (
-              <Card
-                key={day.date}
-                className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
-              >
-                {isBest && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
-                    {bestLabel}
-                  </div>
-                )}
-                {/* Header: weekday + date + schedule icon */}
-                <div className="mb-1 flex items-start justify-between">
-                  <div className="flex flex-col">
-                    <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
-                    <span className="text-xs font-semibold mt-0.5 leading-tight">{dateStr}</span>
-                  </div>
-                  {scheduleIcon}
-                </div>
-                {/* Crowd badge */}
-                <div
-                  className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${crowdColor}`}
-                >
-                  {crowdLabel}
-                </div>
-                {/* Hours */}
-                {hoursStr !== '—' && (
-                  <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
-                    <Clock className="h-2.5 w-2.5" />
-                    <span className="font-medium hidden sm:inline">{hoursStr}</span>
-                  </div>
-                )}
-                {/* Weather */}
-                {tempStr && (
-                  <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
-                    <Sun className="h-2.5 w-2.5" />
-                    <span>{tempStr}</span>
-                  </div>
-                )}
-                {/* Avg wait */}
-                <div className="text-muted-foreground text-center text-[9px]">
-                  {avgLabel} {avgStr}
-                </div>
-              </Card>
-            );
-          })}
+        {/* Desktop: 7-column week grid */}
+        <div className="hidden md:block">
+          <div className="grid grid-cols-7 gap-2">
+            {days.map((day, i) => renderDay(day, i))}
+          </div>
+        </div>
+        {/* Mobile: 2-column grid — same as real park page */}
+        <div className="grid grid-cols-2 gap-3 md:hidden">
+          {days.map((day, i) => renderDay(day, i))}
         </div>
         <p className="text-[11px] text-muted-foreground text-center">
           Phantasialand · {locale === 'de' ? 'Live-Daten der nächsten 7 Tage' : 'Live data – next 7 days'}
