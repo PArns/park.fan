@@ -488,7 +488,9 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
       };
 
   return (
-    <div className="not-prose space-y-3">
+    <div className="not-prose relative overflow-hidden rounded-xl">
+      <BackgroundOverlay imageSrc="/images/parks/phantasialand/background.jpg" alt="Phantasialand" intensity="medium" />
+      <div className="relative z-10 space-y-3 p-3">
       {/* Park header — GlassCard style */}
       <GlassCard>
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -660,6 +662,7 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
             </div>
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );
