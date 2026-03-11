@@ -5,6 +5,8 @@ import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { LocaleContent } from '@/components/common/locale-content';
+import { getGeoStructure } from '@/lib/api/discovery';
+import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { CalendarDay } from '@/lib/api/types';
 import { Badge } from '@/components/ui/badge';
@@ -57,29 +59,31 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
   const t = await getTranslations({ locale, namespace: 'howto' });
   const ogImageUrl = getOgImageUrl([locale, 'howto']);
 
+  const fullTitle = `${t('title')} | park.fan`;
+
   return {
-    title: t('title'),
+    title: { absolute: fullTitle },
     description: t('description'),
     openGraph: {
-      title: t('title'),
+      title: fullTitle,
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `https://park.fan/${locale}/howto`,
       siteName: 'park.fan',
-      type: 'website',
+      type: 'article',
       images: [
         {
           url: ogImageUrl,
           width: 1200,
           height: 630,
-          alt: t('title'),
+          alt: fullTitle,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
+      title: fullTitle,
       description: t('description'),
       images: [ogImageUrl],
     },
@@ -88,6 +92,16 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/howto`),
         'x-default': 'https://park.fan/en/howto',
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
     keywords:
@@ -102,6 +116,9 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
             'Disney Wartezeiten',
             'Europa-Park Wartezeiten',
             'Phantasialand Wartezeiten',
+            'Heide Park Wartezeiten',
+            'Efteling Wartezeiten',
+            'Freizeitpark planen',
           ]
         : locale === 'es'
           ? [
@@ -112,6 +129,8 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
               'predicciones de visitantes',
               'colas atracciones',
               'tiempos de espera Disneyland',
+              'PortAventura tiempos de espera',
+              'Gardaland tiempos de espera',
             ]
           : locale === 'fr'
             ? [
@@ -122,6 +141,8 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
                 'prévisions visiteurs',
                 'files d\'attente attractions',
                 'temps d\'attente Disneyland Paris',
+                'Europa-Park temps d\'attente',
+                'Parc Astérix temps d\'attente',
               ]
             : locale === 'it'
               ? [
@@ -131,6 +152,8 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
                   'calendario affollamento',
                   'previsioni visitatori',
                   'code attrazioni',
+                  'Gardaland tempi di attesa',
+                  'Europa-Park tempi di attesa',
                 ]
               : locale === 'nl'
                 ? [
@@ -142,6 +165,8 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
                     'wachtrijen attracties',
                     'wachttijden Disneyland Paris',
                     'Efteling wachttijden',
+                    'Europa-Park wachttijden',
+                    'Toverland wachttijden',
                   ]
                 : [
                     'theme park wait times',
@@ -152,6 +177,9 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
                     'ride queues',
                     'Disney wait times',
                     'Europa-Park wait times',
+                    'Universal Studios wait times',
+                    'Magic Kingdom wait times',
+                    'theme park planning',
                   ],
   };
 }
@@ -843,9 +871,9 @@ function MockShowCards() {
 function MockNearbyCards({ locale }: { locale: MockLocale }) {
   const isDE = locale === 'de';
   return (
-    <div className="not-prose grid gap-3 sm:grid-cols-2">
+    <div className="not-prose grid gap-3 sm:grid-cols-2 items-stretch">
       {/* Card 1: favorited, nearest open — matches ParkCardNearby structure */}
-      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
+      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6 h-full">
         <BackgroundOverlay imageSrc="/images/parks/phantasialand/background.jpg" alt="Phantasialand" intensity="medium" hoverEffect />
         <div className="absolute top-2 right-2 z-20">
           <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 drop-shadow" />
@@ -892,7 +920,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
       </article>
 
       {/* Card 2: not favorited, offseason closed */}
-      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6">
+      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6 h-full">
         <BackgroundOverlay imageSrc="/images/parks/efteling/background.jpg" alt="Efteling" intensity="medium" />
         <div className="absolute top-2 right-2 z-20">
           <Star className="h-5 w-5 text-muted-foreground" />
@@ -5241,6 +5269,8 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
 
   setRequestLocale(locale);
 
+  const geoData = await getGeoStructure().catch(() => null);
+
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="mx-auto max-w-4xl">
@@ -5311,6 +5341,9 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
           }
         />
       </div>
+
+      {/* Popular Parks – same data as homepage, locale-aware */}
+      <FeaturedParksSection locale={locale} geoData={geoData} />
     </div>
   );
 }
