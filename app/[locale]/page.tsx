@@ -151,13 +151,22 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Title + Description only (search rendered separately below) */}
               <div className="min-w-0 text-center lg:max-w-2xl">
                 <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
+                <div className="mt-4">
+                  <Link
+                    href="/howto"
+                    prefetch={false}
+                    className="text-foreground/60 hover:text-foreground text-sm font-medium underline-offset-4 transition-colors hover:underline"
+                  >
+                    {tHome('hero.howto')}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Row 2: Search bar centered */}
-        <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} howtoLabel={tHome('hero.howto')} />
+        <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
 
         {/* Scroll indicator – desktop fullscreen only, fades out on scroll */}
         <ScrollIndicator />

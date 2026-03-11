@@ -3,11 +3,9 @@ import { useState, useEffect } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
-import { Link } from '@/i18n/navigation';
 
 interface HeroSearchInputProps {
   placeholder: string;
-  howtoLabel?: string;
 }
 
 /**
@@ -149,7 +147,7 @@ function useTypewriter(
   return `${displayText}${finalCursor}`;
 }
 
-export function HeroSearchInput({ placeholder: defaultPlaceholder, howtoLabel }: HeroSearchInputProps) {
+export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchInputProps) {
   const typedPlaceholder = useTypewriter(PLACEHOLDERS);
 
   // Use the typed placeholder, or fallback to default if something goes wrong (though hook ensures string)
@@ -183,17 +181,6 @@ export function HeroSearchInput({ placeholder: defaultPlaceholder, howtoLabel }:
           />
         </div>
       </div>
-      {howtoLabel && (
-        <div className="mt-2 text-center">
-          <Link
-            href="/howto"
-            prefetch={false}
-            className="text-foreground/70 hover:text-foreground text-sm font-medium underline-offset-4 transition-colors hover:underline"
-          >
-            {howtoLabel}
-          </Link>
-        </div>
-      )}
     </div>
   );
 }
