@@ -86,7 +86,8 @@
     "hero": {
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
-      "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes..."
+      "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
+      "howto": "¿Cómo uso park.fan?"
     },
     "sections": {
       "explore": "Explorar por Región",
@@ -119,7 +120,8 @@
       "p3": "park.fan cubre actualmente 151 parques temáticos y 5.253 atracciones en todo el mundo — desde Walt Disney World, Disneyland Resort, Universal Orlando y Universal Studios Japan hasta parques europeos como Europa-Park, Phantasialand, Efteling, Heide Park y Toverland, además de parques en Asia, Australia y América del Sur. Se añaden nuevos parques regularmente.",
       "howTitle": "¿Cómo usar park.fan?",
       "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque encontrarás tiempos de espera en vivo para cada atracción, restaurante y espectáculo — actualizados cada minuto — junto con predicciones de afluencia y un calendario diario. Los días verdes señalan colas cortas; los días naranja o rojos indican mayor afluencia y esperas más largas.",
-      "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible."
+      "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
+      "howtoLink": "Leer la guía completa"
     }
   },
   "footer": {
@@ -140,6 +142,7 @@
     },
     "api": "Documentación API",
     "impressum": "Aviso Legal",
+    "howto": "Cómo funciona",
     "datenschutz": "Privacidad",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
@@ -172,7 +175,8 @@
     "explore": "Explorar Parques",
     "search": "Buscar Parques y Atracciones",
     "admin": "Admin",
-    "nearbyPark": "Cerca: {parkName}"
+    "nearbyPark": "Cerca: {parkName}",
+    "howto": "Guía"
   },
   "theme": {
     "light": "Claro",
@@ -733,6 +737,10 @@
     "locationHint": "Habilita la ubicación para ordenar por distancia",
     "addToFavorites": "Añadir a favoritos",
     "removeFromFavorites": "Quitar de favoritos"
+  },
+  "howto": {
+    "title": "¿Cómo funciona park.fan? – La guía completa",
+    "description": "Todo sobre park.fan explicado: búsqueda, favoritos, calendario de afluencia, predicciones IA y todas las insignias. Para familias, fanáticos y visitantes por primera vez."
   },
   "impressum": {
     "title": "Aviso Legal - park.fan",

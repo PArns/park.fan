@@ -81,7 +81,10 @@ interface FeaturedPark {
   nextSchedule?: ScheduleSummary;
 }
 
-function extractFeaturedParks(geoData: GeoStructure | null, locale: string): FeaturedPark[] {
+export { FEATURED_PARK_SLUGS };
+export type { FeaturedPark };
+
+export function extractFeaturedParks(geoData: GeoStructure | null, locale: string): FeaturedPark[] {
   if (!geoData) return [];
 
   const slugs = FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS['en'];

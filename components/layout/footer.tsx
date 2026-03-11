@@ -350,6 +350,15 @@ export async function Footer({ locale }: FooterProps) {
           </div>
           <div className="flex items-center gap-2">
             <Link
+              href="/howto"
+              prefetch={false}
+              className="hover:text-foreground text-sm transition-colors"
+              aria-label={t('howto')}
+            >
+              {t('howto')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
               href="/impressum"
               prefetch={false}
               className="hover:text-foreground text-sm transition-colors"

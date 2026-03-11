@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, ChevronRight, Map as MapIcon } from 'lucide-react';
+import { Clock, TrendingUp, ChevronRight, Map as MapIcon, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
@@ -151,6 +151,16 @@ export default async function HomePage({ params }: HomePageProps) {
               {/* Title + Description only (search rendered separately below) */}
               <div className="min-w-0 text-center lg:max-w-2xl">
                 <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
+                <div className="mt-4">
+                  <Link
+                    href="/howto"
+                    prefetch={false}
+                    className="text-primary/70 hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:underline"
+                  >
+                    <BookOpen className="h-3.5 w-3.5 shrink-0" />
+                    {tHome('hero.howto')}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -442,6 +452,17 @@ export default async function HomePage({ params }: HomePageProps) {
           <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
           <p className="text-muted-foreground mb-4 leading-relaxed">{tHome('about.p4')}</p>
           <p className="text-muted-foreground leading-relaxed">{tHome('about.p5')}</p>
+
+          <div className="mt-8">
+            <Link
+              href="/howto"
+              prefetch={false}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+            >
+              <BookOpen className="h-4 w-4" />
+              {tHome('about.howtoLink')}
+            </Link>
+          </div>
         </div>
       </section>
     </div>
