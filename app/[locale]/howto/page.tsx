@@ -1077,7 +1077,7 @@ function ContentDE() {
           </p>
           <InfoBox>
             Die Suche verwendet intelligente Volltextsuche, die auch bei Tippfehlern funktioniert.
-            Suche nach "Phantasia" und du findest "Phantasialand".
+            Suche nach "fantasia" und du findest "Phantasialand".
           </InfoBox>
         </SubSection>
 
@@ -2239,7 +2239,7 @@ function ContentENSections() {
         </SubSection>
 
         <InfoBox>
-          The search uses smart full-text search that works even with typos. Search for "Phantasia"
+          The search uses smart full-text search that works even with typos. Search for "fantasia"
           and you'll find "Phantasialand".
         </InfoBox>
       </Section>
