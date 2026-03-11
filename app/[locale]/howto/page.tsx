@@ -40,6 +40,8 @@ import {
   Snowflake,
   Wind,
   Sun,
+  Info,
+  Lightbulb,
 } from 'lucide-react';
 
 interface HowtoPageProps {
@@ -142,22 +144,27 @@ function DemoBadge({
   );
 }
 
-function InfoBox({ children }: { children: React.ReactNode }) {
+function InfoBox({ children, label = 'Hinweis' }: { children: React.ReactNode; label?: string }) {
   return (
-    <Card className="bg-primary/5 border-primary/20 shadow-none !mt-6">
-      <CardContent className="p-3 text-sm leading-relaxed">{children}</CardContent>
-    </Card>
+    <div className="bg-primary/5 border-primary/20 rounded-lg border px-3 py-2.5 text-sm leading-relaxed !mt-6">
+      <div className="mb-1 flex items-center gap-1.5 font-semibold text-primary">
+        <Info className="h-3.5 w-3.5 shrink-0" />
+        <span>{label}</span>
+      </div>
+      {children}
+    </div>
   );
 }
 
 function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
-    <Card className="border-yellow-500/20 bg-yellow-500/5 shadow-none !mt-6">
-      <CardContent className="p-3 text-sm leading-relaxed">
-        <span className="mb-1 block font-bold text-yellow-600 dark:text-yellow-400">{label}</span>
-        {children}
-      </CardContent>
-    </Card>
+    <div className="border-yellow-500/20 bg-yellow-500/5 rounded-lg border px-3 py-2.5 text-sm leading-relaxed !mt-6">
+      <div className="mb-1 flex items-center gap-1.5 font-semibold text-yellow-600 dark:text-yellow-400">
+        <Lightbulb className="h-3.5 w-3.5 shrink-0" />
+        <span>{label}</span>
+      </div>
+      {children}
+    </div>
   );
 }
 
@@ -741,6 +748,49 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
   );
 }
 
+function MockShowCards() {
+  const shows = [
+    { name: 'Mia and Me – Live', times: ['09:00', '11:00', '13:00', '15:00'], nextIdx: 1, pastIdx: [0] },
+    { name: 'F.L.Y. Pre-Show', times: ['10:30', '12:30', '14:30', '16:30'], nextIdx: 2, pastIdx: [0, 1] },
+    { name: 'Mystery Castle Show', times: ['18:00'], nextIdx: 0, pastIdx: [] },
+  ];
+  return (
+    <div className="not-prose grid gap-3 sm:grid-cols-3">
+      {shows.map(({ name, times, nextIdx, pastIdx }) => (
+        <Card key={name} className="relative">
+          <div className="absolute top-2 right-2 z-20">
+            <Star className="h-4 w-4 text-muted-foreground" />
+          </div>
+          <CardContent className="p-4">
+            <h3 className="pr-6 font-semibold">{name}</h3>
+            <div className="mt-2 flex flex-wrap gap-1">
+              {times.map((time, i) => {
+                const isPast = pastIdx.includes(i);
+                const isNext = i === nextIdx;
+                return (
+                  <Badge
+                    key={time}
+                    variant="outline"
+                    className={cn(
+                      'text-xs',
+                      isPast && 'line-through opacity-40',
+                      isNext &&
+                        'border-status-operating/40 bg-status-operating/15 text-status-operating font-semibold',
+                      !isPast && !isNext && 'text-muted-foreground'
+                    )}
+                  >
+                    {time}
+                  </Badge>
+                );
+              })}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 function MockNearbyCards({ locale }: { locale: MockLocale }) {
   const isDE = locale === 'de';
   return (
@@ -1119,16 +1169,19 @@ function ContentDE() {
         </SubSection>
 
         <SubSection title="Was wird als Favorit gespeichert?">
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { label: 'Parks', desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick' },
-              { label: 'Attraktionen', desc: 'Live-Wartezeit und Trend direkt in der Übersicht' },
-              { label: 'Shows', desc: 'Nächste Showtime immer im Blick' },
-              { label: 'Restaurants', desc: 'Küche und aktueller Status' },
-            ].map(({ label, desc }) => (
-              <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">{label}</p>
-                <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+              { icon: '🌴', label: 'Parks', desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick' },
+              { icon: '🎢', label: 'Attraktionen', desc: 'Live-Wartezeit und Trend direkt in der Übersicht' },
+              { icon: '🎭', label: 'Shows', desc: 'Nächste Showtime immer im Blick' },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Küche und aktueller Status' },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
+                <span className="text-xl">{icon}</span>
+                <div>
+                  <p className="font-semibold">{label}</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1200,6 +1253,15 @@ function ContentDE() {
             Mini-Graphen (Sparkline) mit dem Wartezeit-Verlauf der letzten Stunden.
           </p>
           <MockAttractionCards locale="de" />
+        </SubSection>
+
+        <SubSection title="Show-Tab: Showzeiten auf einen Blick">
+          <p className="text-muted-foreground text-sm">
+            Der Shows-Tab listet alle Shows des Parks mit ihren heutigen Showzeiten. Vergangene
+            Zeiten werden durchgestrichen, die <strong>nächste Showtime</strong> ist grün
+            hervorgehoben – so siehst du auf einen Blick, wann du wo sein musst.
+          </p>
+          <MockShowCards />
         </SubSection>
       </Section>
 
@@ -2238,9 +2300,9 @@ function ContentENSections() {
           </div>
         </SubSection>
 
-        <InfoBox>
-          The search uses smart full-text search that works even with typos. Search for "fantasia"
-          and you'll find "Phantasialand".
+        <InfoBox label="Note">
+          The search uses smart full-text search that works even with typos. Search for &quot;fantasia&quot; and
+          you&apos;ll find &quot;Phantasialand&quot;.
         </InfoBox>
       </Section>
 
@@ -2267,9 +2329,28 @@ function ContentENSections() {
           <MockNearbyCards locale="en" />
         </SubSection>
 
-        <TipBox>
+        <SubSection title="What gets saved?">
+          <div className="grid gap-2 sm:grid-cols-2">
+            {[
+              { icon: '🌴', label: 'Parks', desc: 'Status, opening hours and crowd level at a glance' },
+              { icon: '🎢', label: 'Attractions', desc: 'Live wait time and trend directly in the overview' },
+              { icon: '🎭', label: 'Shows', desc: 'Next showtime always visible' },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Kitchen status and location' },
+            ].map(({ icon, label, desc }) => (
+              <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
+                <span className="text-xl">{icon}</span>
+                <div>
+                  <p className="font-semibold">{label}</p>
+                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </SubSection>
+
+        <TipBox label="Tip">
           Save your 5–10 favorite attractions at your target park. On the day of your visit,
-          you'll instantly see which ones have short wait times – great for on-the-fly decisions.
+          you&apos;ll instantly see which ones have short wait times – great for on-the-fly decisions.
         </TipBox>
       </Section>
 
@@ -2279,7 +2360,7 @@ function ContentENSections() {
           Every park has its own page with live data, opening hours, an interactive calendar and a
           map.
         </p>
-        <InfoBox>
+        <InfoBox label="Note">
           All times are displayed in the <strong>park&apos;s local timezone</strong> — regardless of
           where you are. A park in Florida shows Eastern Time, Europa-Park shows Central European Time.
         </InfoBox>
@@ -2318,6 +2399,15 @@ function ContentENSections() {
             ))}
           </div>
           <MockAttractionCards locale="en" />
+        </SubSection>
+
+        <SubSection title="Shows Tab: Showtimes at a Glance">
+          <p className="text-muted-foreground text-sm">
+            The Shows tab lists all shows with their showtimes for today. Past times are struck
+            through, the <strong>next showtime</strong> is highlighted in green — so you always know
+            when and where to be.
+          </p>
+          <MockShowCards />
         </SubSection>
       </Section>
 
@@ -2435,7 +2525,7 @@ function ContentENSections() {
               </div>
             ))}
           </div>
-          <InfoBox>
+          <InfoBox label="Note">
             <strong>How is the crowd level calculated?</strong> park.fan compares the current
             average wait time with the historical median (P50) – the typical value for that
             attraction. 100% means exactly as busy as an average day; 60% is notably quieter, 200%
@@ -2635,7 +2725,7 @@ function ContentENSections() {
           </p>
         </SubSection>
 
-        <TipBox>
+        <TipBox label="Tip">
           Best visit days are typically early weekdays outside of school holidays – Tuesday through
           Thursday show the lowest crowd levels. Avoid school holiday weeks in densely populated
           regions.
@@ -2762,9 +2852,9 @@ function ContentENSections() {
           <MockHourlyChart locale="en" />
         </SubSection>
 
-        <TipBox>
+        <TipBox label="Tip">
           Combine calendar and predictions: pick a green day from the calendar, then check the
-          hourly forecast on the attraction page to find the quietest slot. You'll always arrive
+          hourly forecast on the attraction page to find the quietest slot. You&apos;ll always arrive
           at the shortest queue.
         </TipBox>
       </Section>
