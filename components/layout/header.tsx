@@ -157,9 +157,12 @@ export function Header() {
             <SearchCommand trigger="button" />
           </div>
 
-          {/* Always visible: locale switcher + theme toggle — glass pill on transparent hero */}
+          {/* Always visible: locale switcher + theme toggle — glass pill on transparent hero.
+              On mobile in transparent mode, offset right by the width of the invisible menu button
+              (size-9 = 36px) + gap-2 (8px) = 44px so the pill aligns with the hero card edge.
+              On md+ the menu button is display:none and needs no offset (md:translate-x-0). */}
           <div
-            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'bg-white/60 px-1 py-0.5 backdrop-blur-md dark:bg-black/40' : ''}`}
+            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'translate-x-11 md:translate-x-0 bg-white/60 px-1 py-0.5 backdrop-blur-md dark:bg-black/40' : 'translate-x-0'}`}
           >
             <LocaleSwitcher />
             <ThemeToggle />
