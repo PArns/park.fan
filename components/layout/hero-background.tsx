@@ -52,7 +52,7 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
        * scale(1.05) prevents the blur filter from leaving a visible hard edge.
        */}
       <div
-        className={`absolute inset-0 ${isLoaded ? 'opacity-0' : 'opacity-100'} ${skipFade ? '' : 'transition-opacity duration-1000'}`}
+        className={`absolute inset-0 ${isLoaded ? 'opacity-0' : 'opacity-100'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
         style={{
           backgroundImage: `url("${HERO_BLUR_DATA_URL}")`,
           backgroundSize: 'cover',
@@ -72,7 +72,7 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
           priority={isServerImage}
           fetchPriority={isServerImage ? 'high' : undefined}
           quality={85}
-          className={`object-cover will-change-transform ${isLoaded ? 'opacity-90' : 'opacity-0'} ${skipFade ? '' : 'transition-opacity duration-1000'}`}
+          className={`object-cover will-change-transform ${isLoaded ? 'opacity-90' : 'opacity-0'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
           style={{ animation: 'ken-burns 22s ease-in-out infinite alternate' }}
           onLoad={() => setIsLoaded(true)}
           sizes="100vw"
