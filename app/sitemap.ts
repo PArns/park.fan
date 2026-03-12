@@ -4,59 +4,34 @@ import { locales } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
 
-export const revalidate = 86400;
+// Variant slugs like "taron-2", "coaster-3" are noindex pages — exclude from sitemap
+const VARIANT_SLUG_RE = /^.+-\d+$/;
+
+export const revalidate = 86400; // 24h
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [geo, attractions] = await Promise.all([getGeoStructure(86400), getSitemapAttractions()]);
   const routes: MetadataRoute.Sitemap = [];
 
-  const [geo, attractions] = await Promise.all([getGeoStructure(86400), getSitemapAttractions()]);
+  // ── Static pages ──────────────────────────────────────────────────────────
+  for (const locale of locales) {
+    routes.push(
+      { url: `${BASE_URL}/${locale}`, changeFrequency: 'daily', priority: 1.0 },
 
-  // Static pages
-  const staticPaths = ['', '/parks', '/howto', '/datenschutz', '/impressum'];
-  for (const path of staticPaths) {
-    for (const locale of locales) {
-      routes.push({
-        url: `${BASE_URL}/${locale}${path}`,
-        changeFrequency: 'weekly',
-        priority: path === '' ? 1 : path === '/howto' ? 0.8 : 0.5,
-      });
-    }
+      { url: `${BASE_URL}/${locale}/howto`, changeFrequency: 'weekly', priority: 0.8 },
+    );
   }
 
-  // Geo listing pages + park pages
+  // ── Park pages ────────────────────────────────────────────────────────────
   for (const continent of geo.continents) {
-    for (const locale of locales) {
-      routes.push({
-        url: `${BASE_URL}/${locale}/parks/${continent.slug}`,
-        changeFrequency: 'weekly',
-        priority: 0.5,
-      });
-    }
-
     for (const country of continent.countries) {
-      for (const locale of locales) {
-        routes.push({
-          url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}`,
-          changeFrequency: 'weekly',
-          priority: 0.5,
-        });
-      }
-
       for (const city of country.cities) {
-        for (const locale of locales) {
-          routes.push({
-            url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}`,
-            changeFrequency: 'weekly',
-            priority: 0.5,
-          });
-        }
-
         for (const park of city.parks) {
           for (const locale of locales) {
             routes.push({
               url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
               changeFrequency: 'hourly',
-              priority: 1,
+              priority: 1.0,
             });
           }
         }
@@ -64,10 +39,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Attraction pages — from dedicated sitemap endpoint
-  // API url format: /v1/parks/europe/germany/rust/europa-park/attractions/blue-fire
-  // Frontend format: /parks/europe/germany/rust/europa-park/blue-fire
+  // ── Attraction pages (long-tail SEO) ──────────────────────────────────────
   for (const attraction of attractions) {
+    // Variant slugs (e.g. "blue-fire-2") are noindex — skip
+    if (VARIANT_SLUG_RE.test(attraction.slug)) continue;
+
     const frontendPath = attraction.url
       .replace(/^\/v1\/parks\//, '/parks/')
       .replace(/\/attractions\//, '/');
@@ -75,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${frontendPath}`,
-        changeFrequency: 'hourly',
+        changeFrequency: 'weekly',
         priority: 0.7,
       });
     }
