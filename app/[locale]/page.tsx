@@ -125,14 +125,14 @@ export default async function HomePage({ params }: HomePageProps) {
     <div className="flex flex-col">
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative isolate -mt-16 overflow-hidden px-4 pt-16 pb-16 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
+      <section className="relative isolate -mt-16 overflow-hidden px-4 pt-16 pb-4 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
         <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <div className="mx-auto flex w-full max-w-5xl flex-col items-center rounded-2xl bg-white/50 px-6 py-8 shadow-2xl backdrop-blur-md lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
+            <div className="mx-auto flex w-full max-w-5xl flex-col items-center rounded-2xl bg-white/50 px-6 py-4 shadow-2xl backdrop-blur-md sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
               {/* Logo – light/dark variant based on theme */}
-              <div className="relative h-36 w-36 shrink-0 lg:h-72 lg:w-72">
+              <div className="relative h-20 w-20 shrink-0 sm:h-36 sm:w-36 lg:h-72 lg:w-72">
                 <Image
                   src="/logo-big.svg"
                   alt="park.fan"

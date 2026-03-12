@@ -62,7 +62,7 @@ function ParkBadges({
   tCommon,
 }: ParkBadgesProps) {
   return (
-    <div className="mx-auto mt-6 mb-8 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-4 py-4 md:gap-3 md:px-6 md:py-5">
+    <div className="mx-auto mt-3 mb-3 flex max-w-2xl flex-wrap items-center justify-center gap-2 px-4 py-2 md:mt-6 md:mb-8 md:gap-3 md:px-6 md:py-5">
       <Badge
         variant="outline"
         className={
@@ -176,7 +176,7 @@ export function HeroWithNearby({
 
     return (
       <>
-        <h1 className="mb-8 text-3xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+        <h1 className="mb-3 text-3xl font-bold tracking-tight sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl">
           {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
         </h1>
         <p className="text-foreground/85 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
@@ -222,7 +222,7 @@ export function HeroWithNearby({
 
   return (
     <>
-      <h1 className="mb-8 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+      <h1 className="mb-3 text-2xl font-bold tracking-tight sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl">
         {t('title')}
       </h1>
       {showNearParkHero ? (
@@ -242,7 +242,7 @@ export function HeroWithNearby({
           />
         </>
       ) : (
-        <p className="text-foreground/80 mx-auto mb-8 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
+        <p className="text-foreground/80 mx-auto mb-3 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
           {tHome('intro')}
         </p>
       )}
