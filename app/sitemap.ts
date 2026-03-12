@@ -39,40 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // ── Geo hub pages (continent / country / city listing pages) ──────────────
-  for (const continent of geo.continents) {
-    for (const locale of locales) {
-      routes.push({
-        url: `${BASE_URL}/${locale}/parks/${continent.slug}`,
-        changeFrequency: 'weekly',
-        priority: 0.8,
-      });
-    }
-
-    for (const country of continent.countries) {
-      for (const locale of locales) {
-        routes.push({
-          url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}`,
-          changeFrequency: 'weekly',
-          priority: 0.7,
-        });
-      }
-
-      for (const city of country.cities) {
-        // Single-park cities 301-redirect to the park page — no independent value
-        if (city.parks.length <= 1) continue;
-
-        for (const locale of locales) {
-          routes.push({
-            url: `${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}`,
-            changeFrequency: 'weekly',
-            priority: 0.6,
-          });
-        }
-      }
-    }
-  }
-
   // ── Attraction pages (long-tail SEO) ──────────────────────────────────────
   for (const attraction of attractions) {
     // Variant slugs (e.g. "blue-fire-2") are noindex — skip
