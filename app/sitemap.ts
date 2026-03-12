@@ -7,7 +7,7 @@ const BASE_URL = 'https://park.fan';
 // Variant slugs like "taron-2", "coaster-3" are noindex pages — exclude from sitemap
 const VARIANT_SLUG_RE = /^.+-\d+$/;
 
-export const revalidate = 3600; // 1h — keeps park pages (live wait times) reasonably fresh
+export const revalidate = 86400; // 24h
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [geo, attractions] = await Promise.all([getGeoStructure(86400), getSitemapAttractions()]);
