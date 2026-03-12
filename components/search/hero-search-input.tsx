@@ -159,7 +159,7 @@ export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchI
 
   return (
     <div
-      className="group/hero mx-auto w-full max-w-2xl cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.05]"
+      className="group/hero mx-auto mt-4 w-full max-w-2xl cursor-pointer transition-transform duration-200 ease-out hover:scale-[1.05] sm:mt-6 lg:mt-0"
       onClick={handleClick}
     >
       {/* Stable container to avoid CLS: min size so typewriter text changes don't resize the box */}

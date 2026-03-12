@@ -27,28 +27,36 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
 
   const finalImage = imageSrc || randomImage;
 
-  if (!finalImage) {
-    return null;
-  }
-
   // If provided from server (imageSrc), we can load with priority and no fade-in
   const isServerImage = !!imageSrc;
 
   return (
-    <Image
-      src={finalImage}
-      alt="Park Background"
-      fill
-      priority={isServerImage}
-      fetchPriority={isServerImage ? 'high' : undefined}
-      quality={85}
-      className={`object-cover transition-opacity duration-1000 will-change-transform ${
-        isServerImage || isLoaded ? 'opacity-90' : 'opacity-0'
-      }`}
-      style={{ animation: 'ken-burns 22s ease-in-out infinite alternate' }}
-      onLoad={() => setIsLoaded(true)}
-      sizes="100vw"
-    />
+    <>
+      {/* Shimmer placeholder – pulsing gradient shown while the image hasn't loaded yet */}
+      <div
+        className={`absolute inset-0 transition-opacity duration-700 ${isLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+        aria-hidden="true"
+      >
+        <div className="h-full w-full animate-pulse bg-gradient-to-br from-muted/90 via-muted/60 to-muted/30" />
+      </div>
+
+      {finalImage && (
+        <Image
+          src={finalImage}
+          alt="Park Background"
+          fill
+          priority={isServerImage}
+          fetchPriority={isServerImage ? 'high' : undefined}
+          quality={85}
+          className={`object-cover transition-opacity duration-1000 will-change-transform ${
+            isServerImage || isLoaded ? 'opacity-90' : 'opacity-0'
+          }`}
+          style={{ animation: 'ken-burns 22s ease-in-out infinite alternate' }}
+          onLoad={() => setIsLoaded(true)}
+          sizes="100vw"
+        />
+      )}
+    </>
   );
 }
 
