@@ -1316,7 +1316,7 @@ function ContentDE() {
           </p>
         </SubSection>
 
-        <NearbyParksCard />
+        <NearbyParksCard className="mt-4" />
       </Section>
       {/* ── 3. Favoriten ────────────────────────────────────────────────────── */}
       <Section id="favoriten" title="Favoriten">
