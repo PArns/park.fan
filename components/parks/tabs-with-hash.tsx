@@ -297,7 +297,7 @@ export function TabsWithHash({
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
-                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] ${
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] bg-background/60 backdrop-blur-md shadow-md ${
                     isFocused && searchQuery ? 'pr-16' : 'pr-4'
                   }`}
                   value={searchQuery}
