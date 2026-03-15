@@ -66,6 +66,17 @@ Geo hub pages: Continent (0.8) > Country (0.7) > City (0.6)
 
 ---
 
+## Glossary Pages
+
+Glossary pages are included in `/sitemap/0.xml` (overview) and a dedicated block within the primary sitemap:
+
+- `https://park.fan/{locale}/{segment}` × 6 locales — priority **0.7**, weekly (overview pages)
+- `https://park.fan/{locale}/{segment}/{term-slug}` × all terms × 6 locales — priority **0.5**, monthly (~540 URLs)
+
+The `GLOSSARY_SEGMENTS` map in `lib/glossary/translations.ts` provides the locale-specific URL segment (e.g. `glossar` for DE).
+
+---
+
 ## What Is NOT in the Sitemap
 
 | Page                                      | Reason                                                           |

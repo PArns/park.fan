@@ -140,15 +140,15 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
             ]
           : locale === 'fr'
             ? [
-                'temps d\'attente parc d\'attractions',
-                'application parc d\'attractions',
+                "temps d'attente parc d'attractions",
+                "application parc d'attractions",
                 'guide park.fan',
-                'calendrier d\'affluence',
+                "calendrier d'affluence",
                 'prévisions visiteurs',
-                'files d\'attente attractions',
-                'temps d\'attente Disneyland Paris',
-                'Europa-Park temps d\'attente',
-                'Parc Astérix temps d\'attente',
+                "files d'attente attractions",
+                "temps d'attente Disneyland Paris",
+                "Europa-Park temps d'attente",
+                "Parc Astérix temps d'attente",
               ]
             : locale === 'it'
               ? [
@@ -192,10 +192,18 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
 
 // ─── Reusable layout helpers ──────────────────────────────────────────────────
 
-function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
+function Section({
+  id,
+  title,
+  children,
+}: {
+  id: string;
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
     <section id={id} className="scroll-mt-20">
-      <h2 className="border-border mb-6 border-b pb-3 text-xl sm:text-3xl font-bold">{title}</h2>
+      <h2 className="border-border mb-6 border-b pb-3 text-xl font-bold sm:text-3xl">{title}</h2>
       {children}
     </section>
   );
@@ -247,12 +255,17 @@ async function PopularParksGrid({ locale, emptyHint }: { locale: string; emptyHi
           prefetch={false}
           className="text-primary text-sm font-medium hover:underline"
         >
-          {locale === 'de' ? 'Alle Parks ansehen →' :
-           locale === 'es' ? 'Ver todos los parques →' :
-           locale === 'fr' ? 'Voir tous les parcs →' :
-           locale === 'it' ? 'Vedi tutti i parchi →' :
-           locale === 'nl' ? 'Bekijk alle parken →' :
-           'View all parks →'}
+          {locale === 'de'
+            ? 'Alle Parks ansehen →'
+            : locale === 'es'
+              ? 'Ver todos los parques →'
+              : locale === 'fr'
+                ? 'Voir tous les parcs →'
+                : locale === 'it'
+                  ? 'Vedi tutti i parchi →'
+                  : locale === 'nl'
+                    ? 'Bekijk alle parken →'
+                    : 'View all parks →'}
         </Link>
       </div>
     </div>
@@ -279,7 +292,7 @@ function DemoBadge({
   icon?: React.ElementType;
 }) {
   return (
-    <Badge className={cn('font-bold tracking-wide uppercase backdrop-blur-md text-white', color)}>
+    <Badge className={cn('font-bold tracking-wide text-white uppercase backdrop-blur-md', color)}>
       {Icon && <Icon className="h-3 w-3 text-inherit" />}
       {label}
     </Badge>
@@ -288,8 +301,8 @@ function DemoBadge({
 
 function InfoBox({ children, label = 'Hinweis' }: { children: React.ReactNode; label?: string }) {
   return (
-    <div className="bg-primary/5 border-primary/20 rounded-lg border px-3 py-2.5 text-sm leading-relaxed !mt-6">
-      <div className="mb-1 flex items-center gap-1.5 font-semibold text-primary">
+    <div className="bg-primary/5 border-primary/20 !mt-6 rounded-lg border px-3 py-2.5 text-sm leading-relaxed">
+      <div className="text-primary mb-1 flex items-center gap-1.5 font-semibold">
         <Info className="h-3.5 w-3.5 shrink-0" />
         <span>{label}</span>
       </div>
@@ -300,7 +313,7 @@ function InfoBox({ children, label = 'Hinweis' }: { children: React.ReactNode; l
 
 function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
-    <div className="border-yellow-500/20 bg-yellow-500/5 rounded-lg border px-3 py-2.5 text-sm leading-relaxed !mt-6">
+    <div className="!mt-6 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2.5 text-sm leading-relaxed">
       <div className="mb-1 flex items-center gap-1.5 font-semibold text-yellow-600 dark:text-yellow-400">
         <Lightbulb className="h-3.5 w-3.5 shrink-0" />
         <span>{label}</span>
@@ -342,7 +355,7 @@ function PersonaCard({
 function Li({ children }: { children: React.ReactNode }) {
   return (
     <li className="flex items-start gap-2">
-      <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+      <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0" />
       <span>{children}</span>
     </li>
   );
@@ -361,125 +374,135 @@ function buildBorderColor(day: CalendarDay): string {
 }
 
 async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
+  // ── Fetch data only — JSX must not be constructed inside try/catch ─────────
+  let days: CalendarDay[] = [];
+  let dtFmt: Intl.DateTimeFormat | null = null;
+  let dateFmt: Intl.DateTimeFormat | null = null;
+  let bestIdx = -1;
+
   try {
     const today = new Date();
     const from = today.toISOString().split('T')[0];
     const to = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
-    const calendar = await getIntegratedCalendar(
-      'europe',
-      'germany',
-      'bruehl',
-      'phantasialand',
-      { from, to, includeHourly: 'none' }
-    );
-
-    const days = calendar.days.slice(0, 7);
-    if (days.length === 0) return <MockCalendar locale={locale} />;
-
-    const dtFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
-      weekday: 'short',
-    });
-    const dateFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
-      day: 'numeric',
-      month: 'short',
+    const calendar = await getIntegratedCalendar('europe', 'germany', 'bruehl', 'phantasialand', {
+      from,
+      to,
+      includeHourly: 'none',
     });
 
-    // Find the best day (lowest crowd, operating)
-    const bestIdx = days.reduce((best, d, i) => {
-      if (d.status === 'CLOSED') return best;
-      const order = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme', 'closed'];
-      const cur = order.indexOf(d.crowdLevel);
-      const bestCur = order.indexOf(days[best]?.crowdLevel ?? 'closed');
-      return cur < bestCur ? i : best;
-    }, -1);
+    days = calendar.days.slice(0, 7);
 
-    const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
-    const avgLabel = locale === 'de' ? 'Ø' : 'avg';
+    if (days.length > 0) {
+      dtFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', { weekday: 'short' });
+      dateFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
+        day: 'numeric',
+        month: 'short',
+      });
+      bestIdx = days.reduce((best, d, i) => {
+        if (d.status === 'CLOSED') return best;
+        const order = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme', 'closed'];
+        const cur = order.indexOf(d.crowdLevel);
+        const bestCur = order.indexOf(days[best]?.crowdLevel ?? 'closed');
+        return cur < bestCur ? i : best;
+      }, -1);
+    }
+  } catch {
+    // Data fetch failed — fall through to MockCalendar
+  }
 
-    const renderDay = (day: (typeof days)[0], i: number) => {
-      const d = new Date(day.date + 'T12:00:00');
-      const wd = dtFmt.format(d);
-      const dateStr = dateFmt.format(d);
-      const isBest = i === bestIdx;
-      const border = buildBorderColor(day);
-      const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
-      const crowdLabel =
-        crowd === 'closed'
-          ? locale === 'de' ? 'Geschlossen' : 'Closed'
-          : (CROWD_LABELS[locale][crowd] ?? crowd);
-      const crowdColor =
-        crowd === 'closed'
-          ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
-          : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
-      const hoursStr = day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
-      const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
-      const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
-      const scheduleIcon = (day.isSchoolVacation || day.isSchoolHoliday)
-        ? <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />
-        : (day.isHoliday || day.isPublicHoliday)
-        ? <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />
-        : day.isBridgeDay
-        ? <Calendar className="h-3.5 w-3.5 text-blue-500 shrink-0" />
-        : null;
+  // ── Render outside try/catch ───────────────────────────────────────────────
+  if (days.length === 0 || !dtFmt || !dateFmt) return <MockCalendar locale={locale} />;
 
-      return (
-        <Card
-          key={day.date}
-          className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
-        >
-          {isBest && (
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
-              {bestLabel}
-            </div>
-          )}
-          <div className="mb-1 flex items-start justify-between">
-            <div className="flex flex-col">
-              <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
-              <span className="text-xs font-semibold mt-0.5 leading-tight">{dateStr}</span>
-            </div>
-            {scheduleIcon}
-          </div>
-          <div className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${crowdColor}`}>
-            {crowdLabel}
-          </div>
-          {hoursStr !== '—' && (
-            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
-              <Clock className="h-2.5 w-2.5" />
-              <span className="font-medium">{hoursStr}</span>
-            </div>
-          )}
-          {tempStr && (
-            <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
-              <Sun className="h-2.5 w-2.5" />
-              <span>{tempStr}</span>
-            </div>
-          )}
-          <div className="text-muted-foreground text-center text-[9px]">{avgLabel} {avgStr}</div>
-        </Card>
-      );
-    };
+  const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+  const avgLabel = locale === 'de' ? 'Ø' : 'avg';
+
+  const renderDay = (day: CalendarDay, i: number) => {
+    const d = new Date(day.date + 'T12:00:00');
+    const wd = dtFmt!.format(d);
+    const dateStr = dateFmt!.format(d);
+    const isBest = i === bestIdx;
+    const border = buildBorderColor(day);
+    const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
+    const crowdLabel =
+      crowd === 'closed'
+        ? locale === 'de'
+          ? 'Geschlossen'
+          : 'Closed'
+        : (CROWD_LABELS[locale][crowd] ?? crowd);
+    const crowdColor =
+      crowd === 'closed'
+        ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
+        : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
+    const hoursStr = day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
+    const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
+    const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
+    const scheduleIcon =
+      day.isSchoolVacation || day.isSchoolHoliday ? (
+        <Backpack className="h-3.5 w-3.5 shrink-0 text-yellow-500" />
+      ) : day.isHoliday || day.isPublicHoliday ? (
+        <PartyPopper className="h-3.5 w-3.5 shrink-0 text-orange-500" />
+      ) : day.isBridgeDay ? (
+        <Calendar className="h-3.5 w-3.5 shrink-0 text-blue-500" />
+      ) : null;
 
     return (
-      <div className="not-prose space-y-2">
-        {/* Desktop: 7-column week grid */}
-        <div className="hidden md:block">
-          <div className="grid grid-cols-7 gap-2">
-            {days.map((day, i) => renderDay(day, i))}
+      <Card
+        key={day.date}
+        className={`relative flex h-full flex-col gap-1 border-2 p-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
+      >
+        {isBest && (
+          <div className="bg-crowd-low absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-0.5 text-[9px] font-bold whitespace-nowrap text-white">
+            {bestLabel}
           </div>
+        )}
+        <div className="mb-1 flex items-start justify-between">
+          <div className="flex flex-col">
+            <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
+            <span className="mt-0.5 text-xs leading-tight font-semibold">{dateStr}</span>
+          </div>
+          {scheduleIcon}
         </div>
-        {/* Mobile: 2-column grid — same as real park page */}
-        <div className="grid grid-cols-2 gap-3 md:hidden">
-          {days.map((day, i) => renderDay(day, i))}
+        <div
+          className={`w-full rounded px-0.5 py-0.5 text-center text-[9px] leading-tight font-bold tracking-wide text-white uppercase ${crowdColor}`}
+        >
+          {crowdLabel}
         </div>
-        <p className="text-[11px] text-muted-foreground text-center">
-          Phantasialand · {locale === 'de' ? 'Live-Daten der nächsten 7 Tage' : 'Live data – next 7 days'}
-        </p>
-      </div>
+        {hoursStr !== '—' && (
+          <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
+            <Clock className="h-2.5 w-2.5" />
+            <span className="font-medium">{hoursStr}</span>
+          </div>
+        )}
+        {tempStr && (
+          <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
+            <Sun className="h-2.5 w-2.5" />
+            <span>{tempStr}</span>
+          </div>
+        )}
+        <div className="text-muted-foreground text-center text-[9px]">
+          {avgLabel} {avgStr}
+        </div>
+      </Card>
     );
-  } catch {
-    return <MockCalendar locale={locale} />;
-  }
+  };
+
+  return (
+    <div className="not-prose space-y-2">
+      {/* Desktop: 7-column week grid */}
+      <div className="hidden md:block">
+        <div className="grid grid-cols-7 gap-2">{days.map((day, i) => renderDay(day, i))}</div>
+      </div>
+      {/* Mobile: 2-column grid — same as real park page */}
+      <div className="grid grid-cols-2 gap-3 md:hidden">
+        {days.map((day, i) => renderDay(day, i))}
+      </div>
+      <p className="text-muted-foreground text-center text-[11px]">
+        Phantasialand ·{' '}
+        {locale === 'de' ? 'Live-Daten der nächsten 7 Tage' : 'Live data – next 7 days'}
+      </p>
+    </div>
+  );
 }
 
 // ─── Mock example components ──────────────────────────────────────────────────
@@ -552,7 +575,7 @@ function MockSparkline({ data }: { data: number[] }) {
     })
     .join(' ');
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-9" preserveAspectRatio="none">
+    <svg viewBox={`0 0 ${W} ${H}`} className="h-9 w-full" preserveAspectRatio="none">
       <polyline
         points={pts}
         fill="none"
@@ -627,180 +650,185 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
 
   return (
     <div className="not-prose relative overflow-hidden rounded-xl">
-      <BackgroundOverlay imageSrc="/images/parks/phantasialand/background.jpg" alt="Phantasialand" intensity="medium" />
+      <BackgroundOverlay
+        imageSrc="/images/parks/phantasialand/background.jpg"
+        alt="Phantasialand"
+        intensity="medium"
+      />
       <div className="relative z-10 space-y-3 p-3">
-      {/* Park header — GlassCard style */}
-      <GlassCard>
-        <div className="flex flex-wrap items-start justify-between gap-4">
-          <div className="flex-1">
-            <div className="mb-2 flex flex-wrap items-center gap-3">
-              <h3 className="text-2xl font-bold">
-                Phantasialand
-                <span className="text-muted-foreground ml-2 text-lg font-normal">
-                  – {t.suffix}
-                </span>
-              </h3>
-              <DemoBadge
-                color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-                label={t.operating}
-                icon={Clock}
-              />
+        {/* Park header — GlassCard style */}
+        <GlassCard>
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex-1">
+              <div className="mb-2 flex flex-wrap items-center gap-3">
+                <h3 className="text-2xl font-bold">
+                  Phantasialand
+                  <span className="text-muted-foreground ml-2 text-lg font-normal">
+                    – {t.suffix}
+                  </span>
+                </h3>
+                <DemoBadge
+                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
+                  label={t.operating}
+                  icon={Clock}
+                />
+              </div>
+              <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
+                <address className="flex items-center gap-1 not-italic">
+                  <MapPin className="h-4 w-4" />
+                  {t.city}, {t.country}
+                </address>
+                <Badge variant="outline" className="gap-1 font-mono text-xs">
+                  <Clock className="h-3 w-3" />
+                  {t.timezone}
+                </Badge>
+              </div>
             </div>
-            <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
-              <address className="flex items-center gap-1 not-italic">
-                <MapPin className="h-4 w-4" />
-                {t.city}, {t.country}
-              </address>
-              <Badge variant="outline" className="gap-1 font-mono text-xs">
-                <Clock className="h-3 w-3" />
-                {t.timezone}
-              </Badge>
-            </div>
+            <Star className="text-muted-foreground h-6 w-6 shrink-0" />
           </div>
-          <Star className="h-6 w-6 text-muted-foreground shrink-0" />
-        </div>
-      </GlassCard>
+        </GlassCard>
 
-      {/* 2-col: opening hours + weather */}
-      <div className="grid gap-3 md:grid-cols-2">
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <Calendar className="h-4 w-4" />
-              {t.todaySchedule}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground text-sm font-medium">{t.openingHours}</span>
-              <span className="text-lg font-semibold tabular-nums">{t.hours}</span>
-            </div>
-            <div className="flex items-center justify-end">
-              <Badge variant="secondary">{t.closingIn}</Badge>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground text-sm font-medium">{t.currentTime}</span>
-              <div className="flex items-center gap-1.5">
-                <Clock className="text-primary h-4 w-4" />
-                <time className="text-lg font-bold tabular-nums">{t.time}</time>
+        {/* 2-col: opening hours + weather */}
+        <div className="grid gap-3 md:grid-cols-2">
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Calendar className="h-4 w-4" />
+                {t.todaySchedule}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground text-sm font-medium">{t.openingHours}</span>
+                <span className="text-lg font-semibold tabular-nums">{t.hours}</span>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <Sun className="h-4 w-4" />
-              {t.weatherLabel}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div className="bg-muted rounded-full p-2">
-                  <Sun className="h-8 w-8 text-sky-400" />
+              <div className="flex items-center justify-end">
+                <Badge variant="secondary">{t.closingIn}</Badge>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground text-sm font-medium">{t.currentTime}</span>
+                <div className="flex items-center gap-1.5">
+                  <Clock className="text-primary h-4 w-4" />
+                  <time className="text-lg font-bold tabular-nums">{t.time}</time>
                 </div>
-                <div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-bold">23°</span>
-                    <span className="text-muted-foreground text-sm">/ 16°</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Sun className="h-4 w-4" />
+                {t.weatherLabel}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="bg-muted rounded-full p-2">
+                    <Sun className="h-8 w-8 text-sky-400" />
                   </div>
-                  <p className="text-muted-foreground text-sm font-medium">{t.weatherDesc}</p>
+                  <div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl font-bold">23°</span>
+                      <span className="text-muted-foreground text-sm">/ 16°</span>
+                    </div>
+                    <p className="text-muted-foreground text-sm font-medium">{t.weatherDesc}</p>
+                  </div>
+                </div>
+                <div className="text-muted-foreground space-y-1 text-xs">
+                  <div className="flex items-center gap-1.5">
+                    <span>☂</span>
+                    <span>0mm</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <Wind className="h-3 w-3" />
+                    <span>12 km/h</span>
+                  </div>
                 </div>
               </div>
-              <div className="text-muted-foreground space-y-1 text-xs">
-                <div className="flex items-center gap-1.5">
-                  <span>☂</span><span>0mm</span>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* 3-col: occupancy + avg wait + attractions */}
+        <div className="grid gap-3 md:grid-cols-3">
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Users className="h-4 w-4" />
+                {t.occupancyLabel}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <CrowdBadge level="high" locale={locale} />
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">{t.occupancyLabel}</span>
+                <span className="font-bold">130%</span>
+              </div>
+              <Progress value={65} className="h-1.5" />
+              <p className="text-trend-up text-xs font-medium">{t.vsTypical}</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <Clock className="h-4 w-4" />
+                {t.avgWaitLabel}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-2 text-sm">
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">{t.current}</span>
+                <span className="text-xl font-bold">
+                  45 <span className="text-muted-foreground text-sm font-normal">{t.minutes}</span>
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">{t.trend}</span>
+                <TrendIndicator trend="stable" variant="pill" label={isDE ? 'STABIL' : 'STABLE'} />
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">{t.parkPeak}</span>
+                <span className="font-semibold">55 min</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-muted-foreground">{t.peakTime}</span>
+                <DemoBadge
+                  color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
+                  label={t.peakBadge}
+                  icon={Clock}
+                />
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-base">
+                <TrendingUp className="h-4 w-4" />
+                {t.attractionsLabel}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="mb-3 flex items-baseline gap-2">
+                <span className="text-3xl font-bold">32</span>
+                <span className="text-muted-foreground text-lg">/ 40</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="rounded-lg bg-emerald-500/10 p-2 text-center">
+                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">32</div>
+                  <div className="text-muted-foreground text-xs">{t.open}</div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <Wind className="h-3 w-3" /><span>12 km/h</span>
+                <div className="bg-muted rounded-lg p-2 text-center">
+                  <div className="text-lg font-bold">8</div>
+                  <div className="text-muted-foreground text-xs">{t.closed}</div>
                 </div>
               </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* 3-col: occupancy + avg wait + attractions */}
-      <div className="grid gap-3 md:grid-cols-3">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <Users className="h-4 w-4" />
-              {t.occupancyLabel}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <CrowdBadge level="high" locale={locale} />
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">{t.occupancyLabel}</span>
-              <span className="font-bold">130%</span>
-            </div>
-            <Progress value={65} className="h-1.5" />
-            <p className="text-xs font-medium text-trend-up">{t.vsTypical}</p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <Clock className="h-4 w-4" />
-              {t.avgWaitLabel}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-2 text-sm">
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">{t.current}</span>
-              <span className="text-xl font-bold">
-                45{' '}
-                <span className="text-sm font-normal text-muted-foreground">{t.minutes}</span>
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">{t.trend}</span>
-              <TrendIndicator trend="stable" variant="pill" label={isDE ? 'STABIL' : 'STABLE'} />
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">{t.parkPeak}</span>
-              <span className="font-semibold">55 min</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">{t.peakTime}</span>
-              <DemoBadge
-                color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
-                label={t.peakBadge}
-                icon={Clock}
-              />
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base">
-              <TrendingUp className="h-4 w-4" />
-              {t.attractionsLabel}
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="mb-3 flex items-baseline gap-2">
-              <span className="text-3xl font-bold">32</span>
-              <span className="text-muted-foreground text-lg">/ 40</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2">
-              <div className="rounded-lg bg-emerald-500/10 p-2 text-center">
-                <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">32</div>
-                <div className="text-muted-foreground text-xs">{t.open}</div>
-              </div>
-              <div className="bg-muted rounded-lg p-2 text-center">
-                <div className="text-lg font-bold">8</div>
-                <div className="text-muted-foreground text-xs">{t.closed}</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </div>
   );
@@ -843,14 +871,14 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
           {/* Favorite star — top right, matching real attraction card */}
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
             <Star
-              className={`h-4 w-4 ${favorited ? 'text-yellow-400 fill-yellow-400' : 'text-muted-foreground'}`}
+              className={`h-4 w-4 ${favorited ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
             />
           </div>
           <CardContent className="relative z-10 flex h-full flex-col p-4">
             <div className="flex items-start justify-between gap-2">
               {/* Left: name + wait time + queue type */}
               <div className="min-w-0 flex-1">
-                <h3 className="truncate leading-tight font-medium pr-6">{name}</h3>
+                <h3 className="truncate pr-6 leading-tight font-medium">{name}</h3>
                 <div className="mt-1 flex items-baseline gap-2">
                   <div className="flex items-center gap-1.5 text-lg font-bold">
                     <Clock className="h-4 w-4" />
@@ -869,7 +897,7 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
                 )}
               </div>
               {/* Right: status + crowd badges */}
-              <div className="flex flex-col items-end gap-2 shrink-0">
+              <div className="flex shrink-0 flex-col items-end gap-2">
                 <DemoBadge
                   color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
                   label={isDE ? 'GEÖFFNET' : 'OPERATING'}
@@ -891,8 +919,18 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
 
 function MockShowCards() {
   const shows = [
-    { name: 'Mia and Me – Live', times: ['09:00', '11:00', '13:00', '15:00'], nextIdx: 1, pastIdx: [0] },
-    { name: 'F.L.Y. Pre-Show', times: ['10:30', '12:30', '14:30', '16:30'], nextIdx: 2, pastIdx: [0, 1] },
+    {
+      name: 'Mia and Me – Live',
+      times: ['09:00', '11:00', '13:00', '15:00'],
+      nextIdx: 1,
+      pastIdx: [0],
+    },
+    {
+      name: 'F.L.Y. Pre-Show',
+      times: ['10:30', '12:30', '14:30', '16:30'],
+      nextIdx: 2,
+      pastIdx: [0, 1],
+    },
     { name: 'Mystery Castle Show', times: ['18:00'], nextIdx: 0, pastIdx: [] },
   ];
   return (
@@ -900,7 +938,7 @@ function MockShowCards() {
       {shows.map(({ name, times, nextIdx, pastIdx }) => (
         <Card key={name} className="relative">
           <div className="absolute top-2 right-2 z-20">
-            <Star className="h-4 w-4 text-muted-foreground" />
+            <Star className="text-muted-foreground h-4 w-4" />
           </div>
           <CardContent className="p-4">
             <h3 className="pr-6 font-semibold">{name}</h3>
@@ -935,15 +973,20 @@ function MockShowCards() {
 function MockNearbyCards({ locale }: { locale: MockLocale }) {
   const isDE = locale === 'de';
   return (
-    <div className="not-prose grid gap-3 sm:grid-cols-2 items-stretch">
+    <div className="not-prose grid items-stretch gap-3 sm:grid-cols-2">
       {/* Card 1: favorited, nearest open — matches ParkCardNearby structure */}
-      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6 h-full">
-        <BackgroundOverlay imageSrc="/images/parks/phantasialand/background.jpg" alt="Phantasialand" intensity="medium" hoverEffect />
+      <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
+        <BackgroundOverlay
+          imageSrc="/images/parks/phantasialand/background.jpg"
+          alt="Phantasialand"
+          intensity="medium"
+          hoverEffect
+        />
         <div className="absolute top-2 right-2 z-20">
-          <Star className="h-5 w-5 text-yellow-400 fill-yellow-400 drop-shadow" />
+          <Star className="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow" />
         </div>
         <div className="absolute top-2 left-2 z-20">
-          <Badge className="border-0 bg-primary text-primary-foreground text-xs font-medium shadow-md">
+          <Badge className="bg-primary text-primary-foreground border-0 text-xs font-medium shadow-md">
             {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
           </Badge>
         </div>
@@ -974,7 +1017,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
                 <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
                 <CrowdBadge level="high" locale={locale} />
               </div>
-              <div className="border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs text-muted-foreground">
+              <div className="border-border/50 text-muted-foreground mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
                 <Clock className="h-3.5 w-3.5" />
                 <span>{isDE ? 'Schließt heute um 22:00' : 'Closes today at 22:00'}</span>
               </div>
@@ -984,10 +1027,14 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
       </article>
 
       {/* Card 2: not favorited, offseason closed */}
-      <article className="bg-card relative overflow-hidden rounded-xl border py-4 md:py-6 h-full">
-        <BackgroundOverlay imageSrc="/images/parks/efteling/background.jpg" alt="Efteling" intensity="medium" />
+      <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
+        <BackgroundOverlay
+          imageSrc="/images/parks/efteling/background.jpg"
+          alt="Efteling"
+          intensity="medium"
+        />
         <div className="absolute top-2 right-2 z-20">
-          <Star className="h-5 w-5 text-muted-foreground" />
+          <Star className="text-muted-foreground h-5 w-5" />
         </div>
         <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
           <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
@@ -1013,7 +1060,7 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
                 />
               </div>
               <div className="h-5" />
-              <div className="border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs text-muted-foreground">
+              <div className="border-border/50 text-muted-foreground mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
                 <Snowflake className="h-3.5 w-3.5" />
                 <span>
                   {isDE
@@ -1042,13 +1089,73 @@ interface MockCalendarDay {
 }
 
 const CALENDAR_DAYS: MockCalendarDay[] = [
-  { wd: ['Sa', 'Sat'], date: '14. Jun', crowd: 'extreme', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–22:00', temp: '24°C', avg: 72 },
-  { wd: ['So', 'Sun'], date: '15. Jun', crowd: 'very_high', tag: 'school', border: 'border-yellow-500 dark:border-yellow-400', hours: '09:00–21:00', temp: '21°C', avg: 60 },
-  { wd: ['Mo', 'Mon'], date: '16. Jun', crowd: 'low', border: 'border-border', hours: '10:00–20:00', temp: '20°C', avg: 18 },
-  { wd: ['Di', 'Tue'], date: '17. Jun', crowd: 'very_low', border: 'border-border', best: true, hours: '10:00–19:00', temp: '21°C', avg: 10 },
-  { wd: ['Mi', 'Wed'], date: '18. Jun', crowd: 'low', border: 'border-border', hours: '10:00–20:00', temp: '22°C', avg: 15 },
-  { wd: ['Do', 'Thu'], date: '19. Jun', crowd: 'moderate', border: 'border-border', hours: '09:00–20:00', temp: '24°C', avg: 30 },
-  { wd: ['Fr', 'Fri'], date: '20. Jun', crowd: 'high', tag: 'holiday', border: 'border-orange-500 dark:border-orange-400', hours: '09:00–22:00', temp: '26°C', avg: 55 },
+  {
+    wd: ['Sa', 'Sat'],
+    date: '14. Jun',
+    crowd: 'extreme',
+    tag: 'school',
+    border: 'border-yellow-500 dark:border-yellow-400',
+    hours: '09:00–22:00',
+    temp: '24°C',
+    avg: 72,
+  },
+  {
+    wd: ['So', 'Sun'],
+    date: '15. Jun',
+    crowd: 'very_high',
+    tag: 'school',
+    border: 'border-yellow-500 dark:border-yellow-400',
+    hours: '09:00–21:00',
+    temp: '21°C',
+    avg: 60,
+  },
+  {
+    wd: ['Mo', 'Mon'],
+    date: '16. Jun',
+    crowd: 'low',
+    border: 'border-border',
+    hours: '10:00–20:00',
+    temp: '20°C',
+    avg: 18,
+  },
+  {
+    wd: ['Di', 'Tue'],
+    date: '17. Jun',
+    crowd: 'very_low',
+    border: 'border-border',
+    best: true,
+    hours: '10:00–19:00',
+    temp: '21°C',
+    avg: 10,
+  },
+  {
+    wd: ['Mi', 'Wed'],
+    date: '18. Jun',
+    crowd: 'low',
+    border: 'border-border',
+    hours: '10:00–20:00',
+    temp: '22°C',
+    avg: 15,
+  },
+  {
+    wd: ['Do', 'Thu'],
+    date: '19. Jun',
+    crowd: 'moderate',
+    border: 'border-border',
+    hours: '09:00–20:00',
+    temp: '24°C',
+    avg: 30,
+  },
+  {
+    wd: ['Fr', 'Fri'],
+    date: '20. Jun',
+    crowd: 'high',
+    tag: 'holiday',
+    border: 'border-orange-500 dark:border-orange-400',
+    hours: '09:00–22:00',
+    temp: '26°C',
+    avg: 55,
+  },
 ];
 
 function MockCalendar({ locale }: { locale: MockLocale }) {
@@ -1060,34 +1167,35 @@ function MockCalendar({ locale }: { locale: MockLocale }) {
     <div className="not-prose space-y-2">
       <div className="grid grid-cols-7 gap-1 sm:gap-2">
         {CALENDAR_DAYS.map(({ wd, date, crowd, tag, border, best, hours, temp, avg }) => (
-          <Card
-            key={date}
-            className={`relative flex h-full flex-col gap-1 p-2 border-2 ${border}`}
-          >
+          <Card key={date} className={`relative flex h-full flex-col gap-1 border-2 p-2 ${border}`}>
             {best && (
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] font-bold text-white bg-crowd-low rounded px-1 py-0.5 z-10">
+              <div className="bg-crowd-low absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-0.5 text-[9px] font-bold whitespace-nowrap text-white">
                 {bestLabel}
               </div>
             )}
             {/* Header: weekday + date + schedule icon */}
             <div className="mb-1 flex items-start justify-between">
               <div className="flex flex-col">
-                <span className="text-muted-foreground text-xs leading-tight font-medium">{wd[li]}</span>
-                <span className="text-xs font-semibold mt-0.5 leading-tight">{date}</span>
+                <span className="text-muted-foreground text-xs leading-tight font-medium">
+                  {wd[li]}
+                </span>
+                <span className="mt-0.5 text-xs leading-tight font-semibold">{date}</span>
               </div>
-              {tag === 'school' && <Backpack className="h-3.5 w-3.5 text-yellow-500 shrink-0" />}
-              {tag === 'holiday' && <PartyPopper className="h-3.5 w-3.5 text-orange-500 shrink-0" />}
+              {tag === 'school' && <Backpack className="h-3.5 w-3.5 shrink-0 text-yellow-500" />}
+              {tag === 'holiday' && (
+                <PartyPopper className="h-3.5 w-3.5 shrink-0 text-orange-500" />
+              )}
             </div>
             {/* Crowd badge */}
             <div
-              className={`text-[9px] font-bold tracking-wide uppercase text-white rounded w-full text-center px-0.5 py-0.5 leading-tight ${CROWD_COLORS[crowd]}`}
+              className={`w-full rounded px-0.5 py-0.5 text-center text-[9px] leading-tight font-bold tracking-wide text-white uppercase ${CROWD_COLORS[crowd]}`}
             >
               {CROWD_LABELS[locale][crowd]}
             </div>
             {/* Hours */}
             <div className="text-muted-foreground flex items-center justify-center gap-1 text-[9px]">
               <Clock className="h-2.5 w-2.5" />
-              <span className="font-medium hidden sm:inline">{hours}</span>
+              <span className="hidden font-medium sm:inline">{hours}</span>
             </div>
             {/* Weather */}
             <div className="text-muted-foreground flex items-center justify-center gap-0.5 text-[9px]">
@@ -1101,7 +1209,7 @@ function MockCalendar({ locale }: { locale: MockLocale }) {
           </Card>
         ))}
       </div>
-      <p className="text-[11px] text-muted-foreground text-center">
+      <p className="text-muted-foreground text-center text-[11px]">
         Phantasialand · Juni · {locale === 'de' ? 'Beispieldaten' : 'Example data'}
       </p>
     </div>
@@ -1125,22 +1233,25 @@ function MockHourlyChart({ locale }: { locale: MockLocale }) {
 
   return (
     <div className="not-prose bg-muted/30 rounded-xl border p-4">
-      <p className="text-sm font-semibold mb-4">
+      <p className="mb-4 text-sm font-semibold">
         Taron ·{' '}
         {isDE ? 'Prognostizierter Wartezeit-Verlauf (Samstag)' : 'Predicted wait times (Saturday)'}
       </p>
       {/* Value labels above bars */}
-      <div className="flex gap-1 mb-1">
+      <div className="mb-1 flex gap-1">
         {HOURLY_WAITS.map((w, i) => (
-          <div key={HOURLY_LABELS[i]} className="flex-1 text-center text-[9px] text-muted-foreground leading-none">
+          <div
+            key={HOURLY_LABELS[i]}
+            className="text-muted-foreground flex-1 text-center text-[9px] leading-none"
+          >
             {w}
           </div>
         ))}
       </div>
       {/* Bars: items-stretch so each column fills h-20, then justify-end pushes bar to bottom */}
-      <div className="flex items-stretch gap-1 h-20">
+      <div className="flex h-20 items-stretch gap-1">
         {HOURLY_WAITS.map((w, i) => (
-          <div key={HOURLY_LABELS[i]} className="flex-1 flex flex-col justify-end">
+          <div key={HOURLY_LABELS[i]} className="flex flex-1 flex-col justify-end">
             <div
               className={`w-full rounded-t ${barColor(w)}`}
               style={{ height: `${(w / maxWait) * 100}%` }}
@@ -1149,15 +1260,15 @@ function MockHourlyChart({ locale }: { locale: MockLocale }) {
         ))}
       </div>
       {/* Hour labels below */}
-      <div className="flex gap-1 mt-1">
+      <div className="mt-1 flex gap-1">
         {HOURLY_LABELS.map((h) => (
-          <div key={h} className="flex-1 text-center text-[9px] text-muted-foreground">
+          <div key={h} className="text-muted-foreground flex-1 text-center text-[9px]">
             {h}
           </div>
         ))}
       </div>
-      <p className="text-[11px] text-muted-foreground mt-3 flex items-center gap-1">
-        <TrendingDown className="h-3.5 w-3.5 text-trend-down shrink-0" />
+      <p className="text-muted-foreground mt-3 flex items-center gap-1 text-[11px]">
+        <TrendingDown className="text-trend-down h-3.5 w-3.5 shrink-0" />
         {isDE
           ? 'Beste Slots: direkt nach Öffnung (9–10 Uhr) oder ab 18:00 Uhr'
           : 'Best slots: right at opening (9–10h) or from 18:00'}
@@ -1186,16 +1297,17 @@ function ContentDE() {
             Warteschlangen-Datenpunkten, die täglich verarbeitet werden.
           </p>
           <p className="text-muted-foreground">
-            Das Ziel ist einfach: <strong>Nimm das Rätselraten aus deinem Freizeitpark-Besuch.</strong>{' '}
-            Plane mit dem Crowd-Kalender den richtigen Tag, navigiere mit Live-Wartezeiten durch den
-            Park und verlasse dich auf KI-Prognosen, die dir sagen, wann welche Attraktion am
-            ruhigsten ist. Diese Seite erklärt alle Funktionen im Detail.
+            Das Ziel ist einfach:{' '}
+            <strong>Nimm das Rätselraten aus deinem Freizeitpark-Besuch.</strong> Plane mit dem
+            Crowd-Kalender den richtigen Tag, navigiere mit Live-Wartezeiten durch den Park und
+            verlasse dich auf KI-Prognosen, die dir sagen, wann welche Attraktion am ruhigsten ist.
+            Diese Seite erklärt alle Funktionen im Detail.
           </p>
         </div>
         {/* TOC */}
         <nav
           aria-label="Inhaltsverzeichnis"
-          className="bg-muted/40 rounded-xl border p-5 not-prose"
+          className="bg-muted/40 not-prose rounded-xl border p-5"
         >
           <p className="mb-3 font-semibold">Inhaltsverzeichnis</p>
           <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
@@ -1238,9 +1350,8 @@ function ContentDE() {
               (Mac), um die Suche jederzeit zu öffnen.
             </p>
             <p>
-              <strong>Mobil & Desktop:</strong> Klicke auf das{' '}
-              <Search className="inline h-4 w-4" />-Symbol in der Kopfzeile oder in das
-              Suchfeld auf der Startseite.
+              <strong>Mobil & Desktop:</strong> Klicke auf das <Search className="inline h-4 w-4" />
+              -Symbol in der Kopfzeile oder in das Suchfeld auf der Startseite.
             </p>
             <p>
               <strong>Tipp:</strong> Du kannst einfach anfangen zu tippen – die Suche reagiert ab 3
@@ -1299,8 +1410,8 @@ function ContentDE() {
         <SubSection title="Standort aktivieren">
           <p className="text-muted-foreground text-sm">
             Beim ersten Besuch erscheint ein Banner, das dich um Standortzugriff bittet. Die
-            Zustimmung ist vollständig freiwillig. park.fan speichert deinen Standort nicht –
-            er wird ausschließlich für die Nearby-Funktion genutzt und nicht an Dritte weitergegeben.
+            Zustimmung ist vollständig freiwillig. park.fan speichert deinen Standort nicht – er
+            wird ausschließlich für die Nearby-Funktion genutzt und nicht an Dritte weitergegeben.
           </p>
         </SubSection>
 
@@ -1328,8 +1439,9 @@ function ContentDE() {
         <SubSection title="Favorit hinzufügen">
           <div className="space-y-2 text-sm">
             <p>
-              Klicke auf den <Star className="inline h-4 w-4 text-yellow-500" />-Stern auf jeder
-              Park- oder Attraktionskarte. Der Stern leuchtet auf – der Favorit ist gespeichert.
+              Klicke auf den <Star className="inline h-4 w-4 text-yellow-500" />
+              -Stern auf jeder Park- oder Attraktionskarte. Der Stern leuchtet auf – der Favorit ist
+              gespeichert.
             </p>
             <p>
               Favoriten werden <strong>lokal in deinem Browser</strong> gespeichert – keine
@@ -1350,8 +1462,16 @@ function ContentDE() {
         <SubSection title="Was wird als Favorit gespeichert?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parks', desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick' },
-              { icon: '🎢', label: 'Attraktionen', desc: 'Live-Wartezeit und Trend direkt in der Übersicht' },
+              {
+                icon: '🌴',
+                label: 'Parks',
+                desc: 'Status, Öffnungszeiten, Auslastung auf einen Blick',
+              },
+              {
+                icon: '🎢',
+                label: 'Attraktionen',
+                desc: 'Live-Wartezeit und Trend direkt in der Übersicht',
+              },
               { icon: '🎭', label: 'Shows', desc: 'Nächste Showtime immer im Blick' },
               { icon: '🍽️', label: 'Restaurants', desc: 'Küche und aktueller Status' },
             ].map(({ icon, label, desc }) => (
@@ -1359,7 +1479,7 @@ function ContentDE() {
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -1387,8 +1507,9 @@ function ContentDE() {
             Fortschrittsleiste zeigt, wie lange der Park heute noch offen ist.
           </p>
           <InfoBox>
-            Alle Zeiten werden in der <strong>Zeitzone des Parks</strong> angezeigt – egal wo du dich
-            gerade befindest. Ein Park in Florida zeigt z.&nbsp;B. Eastern Time, Europa-Park Mitteleuropäische Zeit.
+            Alle Zeiten werden in der <strong>Zeitzone des Parks</strong> angezeigt – egal wo du
+            dich gerade befindest. Ein Park in Florida zeigt z.&nbsp;B. Eastern Time, Europa-Park
+            Mitteleuropäische Zeit.
           </InfoBox>
           <MockParkHeader locale="de" />
         </SubSection>
@@ -1498,8 +1619,8 @@ function ContentDE() {
         {/* Crowd Level */}
         <SubSection title="Auslastungsstufen (Crowd Level)">
           <p className="text-muted-foreground mb-3 text-sm">
-            Das Crowd Level zeigt, wie voll ein Park oder wie stark eine Attraktion ausgelastet ist –
-            im Verhältnis zum historischen Median (P50), also dem typischen Wert für diese
+            Das Crowd Level zeigt, wie voll ein Park oder wie stark eine Attraktion ausgelastet ist
+            – im Verhältnis zum historischen Median (P50), also dem typischen Wert für diese
             Attraktion. 100 % bedeutet: genau so voll wie ein durchschnittlicher Tag.
           </p>
           <div className="space-y-3">
@@ -1554,7 +1675,7 @@ function ContentDE() {
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
                   <span className="text-muted-foreground pl-1 font-mono text-[10px]">
                     {threshold}
@@ -1600,9 +1721,7 @@ function ContentDE() {
               },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-center gap-3">
-                <span
-                  className={`flex w-24 items-center gap-1 font-semibold text-sm ${color}`}
-                >
+                <span className={`flex w-24 items-center gap-1 text-sm font-semibold ${color}`}>
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
@@ -1672,8 +1791,7 @@ function ContentDE() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Single Rider',
                 desc: 'Einzelfahrer-Schlange. Oft deutlich kürzer als die reguläre Schlange, aber du kannst nicht mit Begleitern fahren.',
@@ -1686,15 +1804,13 @@ function ContentDE() {
                 desc: 'Kostenpflichtiger Express-Pass (z. B. bei Disney). Zeigt den aktuellen Preis und die Rückkehrzeit.',
               },
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Rückkehrzeit',
                 desc: 'Kostenlose virtuelle Schlange – du holst dir einen Zeitslot und kehrst zur angezeigten Uhrzeit zurück.',
               },
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Boarding Group',
                 desc: 'Virtuelle Warteschlange mit Gruppenummer. Beliebt bei sehr gefragten neuen Attraktionen.',
@@ -1735,14 +1851,29 @@ function ContentDE() {
 
         <SubSection title="Was steht in jeder Kalender-Karte?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Eine typische Kalender-Karte zeigt:</p>
+            <p className="mb-2 font-semibold">Eine typische Kalender-Karte zeigt:</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Datum und Wochentag</strong></li>
-              <li>🎯 <strong>Crowd-Level-Badge</strong> (z. B. „Sehr Hoch") – die KI-Prognose für den Gesamtandrang</li>
-              <li>🕐 <strong>Öffnungszeiten</strong> – oder „Est." wenn noch nicht offiziell bestätigt (s. u.)</li>
-              <li>🌤️ <strong>Wettervorhersage</strong> mit Min-/Max-Temperatur</li>
-              <li>⌚ <strong>Ø Wartezeit</strong> – prognostizierte durchschnittliche Wartezeit aller Attraktionen</li>
-              <li>🎟️ <strong>Ticketpreis</strong>, wenn vom Park veröffentlicht</li>
+              <li>
+                📅 <strong>Datum und Wochentag</strong>
+              </li>
+              <li>
+                🎯 <strong>Crowd-Level-Badge</strong> (z. B. „Sehr Hoch") – die KI-Prognose für den
+                Gesamtandrang
+              </li>
+              <li>
+                🕐 <strong>Öffnungszeiten</strong> – oder „Est." wenn noch nicht offiziell bestätigt
+                (s. u.)
+              </li>
+              <li>
+                🌤️ <strong>Wettervorhersage</strong> mit Min-/Max-Temperatur
+              </li>
+              <li>
+                ⌚ <strong>Ø Wartezeit</strong> – prognostizierte durchschnittliche Wartezeit aller
+                Attraktionen
+              </li>
+              <li>
+                🎟️ <strong>Ticketpreis</strong>, wenn vom Park veröffentlicht
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
@@ -1819,8 +1950,8 @@ function ContentDE() {
                 3
               </span>
               <span>
-                Suche dir einen Dienstag oder Mittwoch <em>ohne</em> Ferienicon – diese zeigen
-                oft <strong>„Niedrig"</strong> oder <strong>„Normal"</strong>. Öffnungszeiten und
+                Suche dir einen Dienstag oder Mittwoch <em>ohne</em> Ferienicon – diese zeigen oft{' '}
+                <strong>„Niedrig"</strong> oder <strong>„Normal"</strong>. Öffnungszeiten und
                 Wetterprognose helfen dir, die finale Entscheidung zu treffen.
               </span>
             </li>
@@ -1841,16 +1972,16 @@ function ContentDE() {
           <p className="text-muted-foreground text-sm">
             Auf der Detailseite einer Attraktion gibt es ebenfalls einen Verlaufs-Kalender. Er zeigt
             für jeden vergangenen Tag, wie stark die Attraktion ausgelastet war – und ob sie in
-            Betrieb war oder nicht. Das ist ideal, um wiederkehrende Muster zu erkennen: Hatte
-            Taron in den letzten vier Wochen immer donnerstags kurze Wartezeiten? Dann könnte das
-            auch nächste Woche so sein.
+            Betrieb war oder nicht. Das ist ideal, um wiederkehrende Muster zu erkennen: Hatte Taron
+            in den letzten vier Wochen immer donnerstags kurze Wartezeiten? Dann könnte das auch
+            nächste Woche so sein.
           </p>
         </SubSection>
 
         <TipBox>
-          Die besten Besuchstage sind frühe Wochentage außerhalb der Schulferien –
-          Dienstag bis Donnerstag zeigen oft die niedrigsten Crowd-Level. Vermeide insbesondere
-          Schulferienwochen der bevölkerungsreichen Bundesländer NRW, Bayern und Baden-Württemberg.
+          Die besten Besuchstage sind frühe Wochentage außerhalb der Schulferien – Dienstag bis
+          Donnerstag zeigen oft die niedrigsten Crowd-Level. Vermeide insbesondere Schulferienwochen
+          der bevölkerungsreichen Bundesländer NRW, Bayern und Baden-Württemberg.
         </TipBox>
       </Section>
 
@@ -1925,8 +2056,8 @@ function ContentDE() {
 
         <SubSection title="Praxisbeispiel: Prognose im Alltag nutzen">
           <p className="text-muted-foreground mb-3 text-sm">
-            Du bist an einem Samstag in den Herbstferien in Phantasialand. Der Kalender zeigt
-            „Sehr Hoch" für den Tag. So nutzt du die Prognosen:
+            Du bist an einem Samstag in den Herbstferien in Phantasialand. Der Kalender zeigt „Sehr
+            Hoch" für den Tag. So nutzt du die Prognosen:
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
@@ -1934,8 +2065,8 @@ function ContentDE() {
                 1
               </span>
               <span>
-                <strong>Morgens beim Betreten:</strong> Der Stoßzeit-Badge zeigt „Stoßzeit in ca.
-                2 Std." – du hast also bis ca. 11:30 Uhr Zeit für die ersten Highlights.
+                <strong>Morgens beim Betreten:</strong> Der Stoßzeit-Badge zeigt „Stoßzeit in ca. 2
+                Std." – du hast also bis ca. 11:30 Uhr Zeit für die ersten Highlights.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -1944,8 +2075,8 @@ function ContentDE() {
               </span>
               <span>
                 <strong>Taron-Seite aufrufen:</strong> Die Prognosekurve zeigt heute 9:30 Uhr ≈ 15
-                Min., 12:00 Uhr ≈ 65 Min., 15:00 Uhr ≈ 40 Min. → Du weißt: direkt nach Öffnung
-                oder Mitte des Nachmittags sind die besten Slots.
+                Min., 12:00 Uhr ≈ 65 Min., 15:00 Uhr ≈ 40 Min. → Du weißt: direkt nach Öffnung oder
+                Mitte des Nachmittags sind die besten Slots.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -1964,8 +2095,8 @@ function ContentDE() {
         <SubSection title="Wie genau sind die Prognosen?">
           <p className="text-muted-foreground text-sm">
             Die Genauigkeit variiert je nach Park und Vorhersagezeitraum. Auf der
-            Attraktionsdetailseite wird die Prognose-Genauigkeit für jede Attraktion angezeigt –
-            von <strong>Schlecht</strong> bis <strong>Exzellent</strong>. Je mehr historische Daten
+            Attraktionsdetailseite wird die Prognose-Genauigkeit für jede Attraktion angezeigt – von{' '}
+            <strong>Schlecht</strong> bis <strong>Exzellent</strong>. Je mehr historische Daten
             vorhanden sind, desto präziser die Prognose. Kurzfristige Vorhersagen (1–3 Tage) sind
             grundsätzlich zuverlässiger als langfristige (7–14 Tage).
           </p>
@@ -1987,8 +2118,6 @@ function ContentDE() {
         </TipBox>
       </Section>
 
-
-
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
       <Section id="personas" title="Für wen eignet sich park.fan?">
         <p className="text-muted-foreground mb-6">
@@ -2003,12 +2132,10 @@ function ContentDE() {
             subtitle="Plant einen unvergesslichen Ausflug für alle"
           >
             <Li>
-              Crowd-Kalender: Welcher Tag hat die kürzesten Warteschlangen? Perfekt um den Urlaub
-              zu planen.
+              Crowd-Kalender: Welcher Tag hat die kürzesten Warteschlangen? Perfekt um den Urlaub zu
+              planen.
             </Li>
-            <Li>
-              Wetter im Kalender: Plant ihr für einen Regentag? Indoor-Attraktionen prüfen!
-            </Li>
+            <Li>Wetter im Kalender: Plant ihr für einen Regentag? Indoor-Attraktionen prüfen!</Li>
             <Li>
               Favoriten: Speichere die 10 wichtigsten Attraktionen für Kinder – sieh sofort, welche
               gerade offen und kurz sind.
@@ -2028,8 +2155,8 @@ function ContentDE() {
             subtitle="Jede Minute im Park muss optimal genutzt werden"
           >
             <Li>
-              Crowd Level (P50-Basis): Verstehe, ob eine Attraktion gerade wirklich überdurchschnittlich
-              voll ist – oder nur "normal".
+              Crowd Level (P50-Basis): Verstehe, ob eine Attraktion gerade wirklich
+              überdurchschnittlich voll ist – oder nur "normal".
             </Li>
             <Li>
               Historischer Verlauf: Wann hatte Taron in den letzten Wochen typischerweise kurze
@@ -2054,9 +2181,7 @@ function ContentDE() {
             title="Der Erstbesucher"
             subtitle="Zum ersten Mal in einem großen Freizeitpark"
           >
-            <Li>
-              Suche: Finde deinen Park schnell – auch wenn du den genauen Namen nicht weißt.
-            </Li>
+            <Li>Suche: Finde deinen Park schnell – auch wenn du den genauen Namen nicht weißt.</Li>
             <Li>
               Park-Karte: Orientiere dich mit der interaktiven Karte, bevor und während du im Park
               bist.
@@ -2066,12 +2191,10 @@ function ContentDE() {
               längere Wartung. Einfach und klar.
             </Li>
             <Li>
-              Crowd-Kalender: Welcher Tag ist der beste? Die Farben sagen alles – Grün ist gut,
-              Rot ist stressig.
+              Crowd-Kalender: Welcher Tag ist der beste? Die Farben sagen alles – Grün ist gut, Rot
+              ist stressig.
             </Li>
-            <Li>
-              Öffnungszeiten: Immer aktuell – inklusive Sonderöffnungszeiten an Feiertagen.
-            </Li>
+            <Li>Öffnungszeiten: Immer aktuell – inklusive Sonderöffnungszeiten an Feiertagen.</Li>
           </PersonaCard>
 
           <PersonaCard
@@ -2086,9 +2209,7 @@ function ContentDE() {
             <Li>
               Live-Wartezeiten: Sofort sehen, was gerade offen ist und wie lange die Wartezeit ist.
             </Li>
-            <Li>
-              Trend-Indikatoren: Warteschlange fällt gerade? Perfekter Moment zum Anstellen.
-            </Li>
+            <Li>Trend-Indikatoren: Warteschlange fällt gerade? Perfekter Moment zum Anstellen.</Li>
             <Li>
               Favoriten: Wenn du den Park schon kennst, hast du deine Top-Attraktionen schon
               gespeichert.
@@ -2149,7 +2270,7 @@ function ContentDE() {
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -2169,24 +2290,23 @@ function IntroEN() {
     <div className="space-y-4">
       <div className="space-y-4 text-base leading-relaxed">
         <p className="text-muted-foreground text-lg font-medium">
-          Sound familiar? You're standing in an 80-minute queue for Taron – and just ten metres
-          away another ride has no wait at all. Or: you book your holiday and discover that every
-          school in the country is on break that exact week.
+          Sound familiar? You're standing in an 80-minute queue for Taron – and just ten metres away
+          another ride has no wait at all. Or: you book your holiday and discover that every school
+          in the country is on break that exact week.
         </p>
         <p className="text-muted-foreground">
-          park.fan was built out of exactly that frustration. What started as a small side
-          project – "let me just track some wait times" – has grown into a platform with live
-          data from 150+ parks, over 5,000 attractions and millions of queue data points
-          processed every day.
+          park.fan was built out of exactly that frustration. What started as a small side project –
+          "let me just track some wait times" – has grown into a platform with live data from 150+
+          parks, over 5,000 attractions and millions of queue data points processed every day.
         </p>
         <p className="text-muted-foreground">
-          The goal is simple:{' '}
-          <strong>take the guesswork out of your theme park visit.</strong> Use the crowd calendar
-          to pick the right day, navigate with live wait times, and rely on AI predictions to know
-          when each ride will be at its quietest. This page explains every feature in detail.
+          The goal is simple: <strong>take the guesswork out of your theme park visit.</strong> Use
+          the crowd calendar to pick the right day, navigate with live wait times, and rely on AI
+          predictions to know when each ride will be at its quietest. This page explains every
+          feature in detail.
         </p>
       </div>
-      <nav aria-label="Table of Contents" className="bg-muted/40 rounded-xl border p-5 not-prose">
+      <nav aria-label="Table of Contents" className="bg-muted/40 not-prose rounded-xl border p-5">
         <p className="mb-3 font-semibold">Table of Contents</p>
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
@@ -2225,8 +2345,8 @@ function IntroES() {
         <p className="text-muted-foreground">
           park.fan nació de esa misma frustración. Lo que empezó como un pequeño proyecto personal –
           &quot;solo voy a rastrear algunos tiempos de espera&quot; – se ha convertido en una
-          plataforma con datos en directo de más de 150 parques, más de 5.000 atracciones y
-          millones de registros de colas procesados cada día.
+          plataforma con datos en directo de más de 150 parques, más de 5.000 atracciones y millones
+          de registros de colas procesados cada día.
         </p>
         <p className="text-muted-foreground">
           El objetivo es simple:{' '}
@@ -2238,7 +2358,7 @@ function IntroES() {
       </div>
       <nav
         aria-label="Índice de contenidos"
-        className="bg-muted/40 rounded-xl border p-5 not-prose"
+        className="bg-muted/40 not-prose rounded-xl border p-5"
       >
         <p className="mb-3 font-semibold">Índice de contenidos</p>
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
@@ -2271,15 +2391,15 @@ function IntroFR() {
     <div className="space-y-4">
       <div className="space-y-4 text-base leading-relaxed">
         <p className="text-muted-foreground text-lg font-medium">
-          Ça te parle ? 80 minutes de queue pour Taron — et à dix mètres de là, une autre
-          attraction sans attente. Ou encore : tu réserves tes vacances et tu découvres que c&apos;est
+          Ça te parle ? 80 minutes de queue pour Taron — et à dix mètres de là, une autre attraction
+          sans attente. Ou encore : tu réserves tes vacances et tu découvres que c&apos;est
           exactement la semaine des congés scolaires dans toute la région.
         </p>
         <p className="text-muted-foreground">
           park.fan est né de cette frustration. Ce qui a commencé comme un petit projet personnel –
           &quot;je vais juste suivre quelques temps d&apos;attente&quot; – est devenu une plateforme
-          avec des données en direct de plus de 150 parcs, plus de 5 000 attractions et des
-          millions de points de données traités chaque jour.
+          avec des données en direct de plus de 150 parcs, plus de 5 000 attractions et des millions
+          de points de données traités chaque jour.
         </p>
         <p className="text-muted-foreground">
           L&apos;objectif est simple :{' '}
@@ -2289,10 +2409,7 @@ function IntroFR() {
           attraction sera la moins fréquentée. Cette page explique chaque fonctionnalité en détail.
         </p>
       </div>
-      <nav
-        aria-label="Table des matières"
-        className="bg-muted/40 rounded-xl border p-5 not-prose"
-      >
+      <nav aria-label="Table des matières" className="bg-muted/40 not-prose rounded-xl border p-5">
         <p className="mb-3 font-semibold">Table des matières</p>
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
@@ -2342,7 +2459,7 @@ function IntroIT() {
           meno coda. Questa pagina spiega ogni funzione in dettaglio.
         </p>
       </div>
-      <nav aria-label="Indice" className="bg-muted/40 rounded-xl border p-5 not-prose">
+      <nav aria-label="Indice" className="bg-muted/40 not-prose rounded-xl border p-5">
         <p className="mb-3 font-semibold">Indice</p>
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
@@ -2385,14 +2502,13 @@ function IntroNL() {
           dagelijks worden verwerkt.
         </p>
         <p className="text-muted-foreground">
-          Het doel is eenvoudig:{' '}
-          <strong>neem het giswerk weg uit je pretparkbezoek.</strong> Gebruik de drukte-kalender
-          om de juiste dag te kiezen, navigeer met live wachttijden en vertrouw op
-          AI-voorspellingen om te weten wanneer elke attractie het rustigst is. Deze pagina legt
-          elke functie in detail uit.
+          Het doel is eenvoudig: <strong>neem het giswerk weg uit je pretparkbezoek.</strong>{' '}
+          Gebruik de drukte-kalender om de juiste dag te kiezen, navigeer met live wachttijden en
+          vertrouw op AI-voorspellingen om te weten wanneer elke attractie het rustigst is. Deze
+          pagina legt elke functie in detail uit.
         </p>
       </div>
-      <nav aria-label="Inhoudsopgave" className="bg-muted/40 rounded-xl border p-5 not-prose">
+      <nav aria-label="Inhoudsopgave" className="bg-muted/40 not-prose rounded-xl border p-5">
         <p className="mb-3 font-semibold">Inhoudsopgave</p>
         <ol className="text-muted-foreground flex flex-col gap-1.5 text-sm">
           {[
@@ -2423,7 +2539,6 @@ function IntroNL() {
 function ContentENSections() {
   return (
     <>
-
       {/* ── 1. Search ───────────────────────────────────────────────────────── */}
       <Section id="suche" title="Search">
         <p className="text-muted-foreground mb-4">
@@ -2436,8 +2551,7 @@ function ContentENSections() {
             <p>
               <strong>Desktop:</strong> Press{' '}
               <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              or{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
+              or <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
               (Mac) to open the search at any time.
             </p>
             <p>
@@ -2469,8 +2583,8 @@ function ContentENSections() {
         </SubSection>
 
         <InfoBox label="Note">
-          The search uses smart full-text search that works even with typos. Search for &quot;fantasia&quot; and
-          you&apos;ll find &quot;Phantasialand&quot;.
+          The search uses smart full-text search that works even with typos. Search for
+          &quot;fantasia&quot; and you&apos;ll find &quot;Phantasialand&quot;.
         </InfoBox>
       </Section>
       {/* ── 2. Location ─────────────────────────────────────────────────────── */}
@@ -2515,8 +2629,16 @@ function ContentENSections() {
         <SubSection title="What gets saved?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parks', desc: 'Status, opening hours and crowd level at a glance' },
-              { icon: '🎢', label: 'Attractions', desc: 'Live wait time and trend directly in the overview' },
+              {
+                icon: '🌴',
+                label: 'Parks',
+                desc: 'Status, opening hours and crowd level at a glance',
+              },
+              {
+                icon: '🎢',
+                label: 'Attractions',
+                desc: 'Live wait time and trend directly in the overview',
+              },
               { icon: '🎭', label: 'Shows', desc: 'Next showtime always visible' },
               { icon: '🍽️', label: 'Restaurants', desc: 'Kitchen status and location' },
             ].map(({ icon, label, desc }) => (
@@ -2524,7 +2646,7 @@ function ContentENSections() {
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -2533,7 +2655,8 @@ function ContentENSections() {
 
         <TipBox label="Tip">
           Save your 5–10 favorite attractions at your target park. On the day of your visit,
-          you&apos;ll instantly see which ones have short wait times – great for on-the-fly decisions.
+          you&apos;ll instantly see which ones have short wait times – great for on-the-fly
+          decisions.
         </TipBox>
       </Section>
 
@@ -2545,7 +2668,8 @@ function ContentENSections() {
         </p>
         <InfoBox label="Note">
           All times are displayed in the <strong>park&apos;s local timezone</strong> — regardless of
-          where you are. A park in Florida shows Eastern Time, Europa-Park shows Central European Time.
+          where you are. A park in Florida shows Eastern Time, Europa-Park shows Central European
+          Time.
         </InfoBox>
         <MockParkHeader locale="en" />
 
@@ -2698,7 +2822,7 @@ function ContentENSections() {
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
                   <span className="text-muted-foreground pl-1 font-mono text-[10px]">
                     {threshold}
@@ -2753,8 +2877,7 @@ function ContentENSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Single Rider',
                 desc: "Often much shorter than regular queue – but you can't ride with your group.",
@@ -2767,15 +2890,13 @@ function ContentENSections() {
                 desc: 'Paid express pass (e.g. at Disney). Shows current price and return time.',
               },
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Return Time',
                 desc: 'Free virtual queue – reserve a time slot and return later.',
               },
               {
-                color:
-                  'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Boarding Group',
                 desc: 'Virtual queue with group number – popular for highly demanded new rides.',
@@ -2800,19 +2921,33 @@ function ContentENSections() {
 
         <SubSection title="What's on each calendar card?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">A typical calendar card shows:</p>
+            <p className="mb-2 font-semibold">A typical calendar card shows:</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Date and weekday</strong></li>
-              <li>🎯 <strong>Crowd Level badge</strong> (e.g. "Very High") – the AI forecast for overall busyness</li>
-              <li>🕐 <strong>Opening hours</strong> – or "Est." if not yet officially confirmed (see below)</li>
-              <li>🌤️ <strong>Weather forecast</strong> with min/max temperature</li>
-              <li>⌚ <strong>Avg. wait time</strong> – predicted average wait across all attractions</li>
-              <li>🎟️ <strong>Ticket price</strong>, when published by the park</li>
+              <li>
+                📅 <strong>Date and weekday</strong>
+              </li>
+              <li>
+                🎯 <strong>Crowd Level badge</strong> (e.g. "Very High") – the AI forecast for
+                overall busyness
+              </li>
+              <li>
+                🕐 <strong>Opening hours</strong> – or "Est." if not yet officially confirmed (see
+                below)
+              </li>
+              <li>
+                🌤️ <strong>Weather forecast</strong> with min/max temperature
+              </li>
+              <li>
+                ⌚ <strong>Avg. wait time</strong> – predicted average wait across all attractions
+              </li>
+              <li>
+                🎟️ <strong>Ticket price</strong>, when published by the park
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
-            <strong>What does "Est." mean?</strong> Opening hours marked "Est." (Estimated) have
-            not yet been officially confirmed by the park. park.fan derives them from historical
+            <strong>What does "Est." mean?</strong> Opening hours marked "Est." (Estimated) have not
+            yet been officially confirmed by the park. park.fan derives them from historical
             patterns – they may still change.
           </p>
         </SubSection>
@@ -2865,7 +3000,9 @@ function ContentENSections() {
               <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
                 1
               </span>
-              <span>Open the park page and switch to the <strong>Calendar</strong> tab.</span>
+              <span>
+                Open the park page and switch to the <strong>Calendar</strong> tab.
+              </span>
             </li>
             <li className="flex items-start gap-3">
               <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
@@ -2882,9 +3019,9 @@ function ContentENSections() {
                 3
               </span>
               <span>
-                Look for a Tuesday or Wednesday <em>without</em> a holiday icon – these often
-                show <strong>"Low"</strong> or <strong>"Moderate"</strong>. Opening hours and the
-                weather forecast help you make the final call.
+                Look for a Tuesday or Wednesday <em>without</em> a holiday icon – these often show{' '}
+                <strong>"Low"</strong> or <strong>"Moderate"</strong>. Opening hours and the weather
+                forecast help you make the final call.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -2918,8 +3055,8 @@ function ContentENSections() {
       {/* ── 7. AI Predictions ───────────────────────────────────────────────────── */}
       <Section id="prognosen" title="AI-Powered Predictions">
         <p className="text-muted-foreground mb-4">
-          park.fan uses machine learning to predict crowd levels and wait times days in advance.
-          The model is continuously trained on new data and considers four key factors:
+          park.fan uses machine learning to predict crowd levels and wait times days in advance. The
+          model is continuously trained on new data and considers four key factors:
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -3010,8 +3147,8 @@ function ContentENSections() {
                 3
               </span>
               <span>
-                <strong>Lunch during peak:</strong> Instead of queuing at noon, you grab lunch.
-                Live trends confirm: by 15:00 the wait is dropping – perfect moment to ride.
+                <strong>Lunch during peak:</strong> Instead of queuing at noon, you grab lunch. Live
+                trends confirm: by 15:00 the wait is dropping – perfect moment to ride.
               </span>
             </li>
           </ol>
@@ -3029,46 +3166,63 @@ function ContentENSections() {
         <SubSection title="Wait time sparklines">
           <p className="text-muted-foreground text-sm">
             Every attraction card shows a small sparkline graph with the wait time trend over the
-            last few hours. You can instantly see whether queues are building up, holding steady
-            or shrinking.
+            last few hours. You can instantly see whether queues are building up, holding steady or
+            shrinking.
           </p>
           <MockHourlyChart locale="en" />
         </SubSection>
 
         <TipBox label="Tip">
           Combine calendar and predictions: pick a green day from the calendar, then check the
-          hourly forecast on the attraction page to find the quietest slot. You&apos;ll always arrive
-          at the shortest queue.
+          hourly forecast on the attraction page to find the quietest slot. You&apos;ll always
+          arrive at the shortest queue.
         </TipBox>
       </Section>
-
-
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}
       <Section id="personas" title="Who is park.fan for?">
         <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard emoji="👨‍👩‍👧‍👦" title="Families" subtitle="Planning a perfect day out for everyone">
+          <PersonaCard
+            emoji="👨‍👩‍👧‍👦"
+            title="Families"
+            subtitle="Planning a perfect day out for everyone"
+          >
             <Li>Crowd calendar: which day has the shortest queues?</Li>
             <Li>Weather in the calendar: planning for a rainy day? Check indoor rides!</Li>
             <Li>Favorites: save the 10 must-do rides for kids.</Li>
             <Li>Live wait times: decide on the fly which ride to do next.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🎢" title="Theme Park Enthusiasts" subtitle="Every minute must be optimised">
-            <Li>Crowd level (P50 baseline): understand if a ride is genuinely above average – or just "normal".</Li>
+          <PersonaCard
+            emoji="🎢"
+            title="Theme Park Enthusiasts"
+            subtitle="Every minute must be optimised"
+          >
+            <Li>
+              Crowd level (P50 baseline): understand if a ride is genuinely above average – or just
+              "normal".
+            </Li>
             <Li>Historical trends: when does Taron typically have short waits?</Li>
             <Li>Trend indicators: queue rising? Wait 20 minutes and it might be shorter.</Li>
             <Li>Single Rider / Lightning Lane: all queue types shown with times and prices.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🌟" title="First-Time Visitors" subtitle="First time at a major theme park">
+          <PersonaCard
+            emoji="🌟"
+            title="First-Time Visitors"
+            subtitle="First time at a major theme park"
+          >
             <Li>Search: find your park quickly, even if you don't know the exact name.</Li>
             <Li>Park map: get oriented before and during your visit.</Li>
             <Li>Status badges: green = running, orange = brief issue, grey = closed today.</Li>
             <Li>Crowd calendar: colours tell everything – green is good, red is stressful.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="⚡" title="Spontaneous Visitors" subtitle="Last-minute decision, maximum efficiency">
+          <PersonaCard
+            emoji="⚡"
+            title="Spontaneous Visitors"
+            subtitle="Last-minute decision, maximum efficiency"
+          >
             <Li>Location: park.fan automatically finds your nearest park.</Li>
             <Li>Live wait times: instantly see what's open and how long the wait is.</Li>
             <Li>Trend indicators: queue falling? Perfect moment to join.</Li>
@@ -3082,10 +3236,7 @@ function ContentENSections() {
           park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
           and Europa-Park. Here are the most-visited parks in your region with live data:
         </p>
-        <PopularParksGrid
-          locale="en"
-          emptyHint="Park data is loading – please reload the page."
-        />
+        <PopularParksGrid locale="en" emptyHint="Park data is loading – please reload the page." />
       </Section>
 
       {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
@@ -3120,7 +3271,7 @@ function ContentENSections() {
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -3133,16 +3284,14 @@ function ContentENSections() {
   );
 }
 
-
 function ContentESSections() {
   return (
     <>
-
       {/* ── 1. Búsqueda ───────────────────────────────────────────────────────── */}
       <Section id="suche" title="Búsqueda">
         <p className="text-muted-foreground mb-4">
-          La búsqueda global es la forma más rápida de encontrar un parque, atracción, espectáculo
-          o restaurante – ya sea en escritorio o móvil.
+          La búsqueda global es la forma más rápida de encontrar un parque, atracción, espectáculo o
+          restaurante – ya sea en escritorio o móvil.
         </p>
 
         <SubSection title="Abrir la búsqueda">
@@ -3150,13 +3299,13 @@ function ContentESSections() {
             <p>
               <strong>Escritorio:</strong> Pulsa{' '}
               <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              o{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
+              o <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
               (Mac) para abrir la búsqueda en cualquier momento.
             </p>
             <p>
-              <strong>Móvil y Escritorio:</strong> Toca el icono <Search className="inline h-4 w-4" /> en
-              el encabezado o el campo de búsqueda en la página de inicio.
+              <strong>Móvil y Escritorio:</strong> Toca el icono{' '}
+              <Search className="inline h-4 w-4" /> en el encabezado o el campo de búsqueda en la
+              página de inicio.
             </p>
           </div>
           <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
@@ -3169,7 +3318,11 @@ function ContentESSections() {
               { icon: '🎢', label: 'Atracciones', desc: 'Taron, Silver Star, Space Mountain...' },
               { icon: '🗺️', label: 'Ciudades y Países', desc: 'Orlando, París, Alemania...' },
               { icon: '🎭', label: 'Espectáculos', desc: 'Horarios y programas de shows' },
-              { icon: '🍽️', label: 'Restaurantes', desc: 'Opciones gastronómicas dentro del parque' },
+              {
+                icon: '🍽️',
+                label: 'Restaurantes',
+                desc: 'Opciones gastronómicas dentro del parque',
+              },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
@@ -3196,10 +3349,9 @@ function ContentESSections() {
         </p>
         <SubSection title="Navegación en el parque">
           <p className="text-muted-foreground text-sm">
-            Cuando estás en un parque, park.fan detecta automáticamente en qué parque te
-            encuentras y muestra &quot;Estás en [Nombre del Parque]&quot; en la página de inicio.
-            El mapa del parque muestra tu ubicación en tiempo real – perfecto para moverte entre
-            atracciones.
+            Cuando estás en un parque, park.fan detecta automáticamente en qué parque te encuentras
+            y muestra &quot;Estás en [Nombre del Parque]&quot; en la página de inicio. El mapa del
+            parque muestra tu ubicación en tiempo real – perfecto para moverte entre atracciones.
           </p>
         </SubSection>
         <NearbyParksCard />
@@ -3215,8 +3367,8 @@ function ContentESSections() {
         <SubSection title="Añadir un favorito">
           <p className="text-sm">
             Haz clic en la estrella <Star className="inline h-4 w-4 text-yellow-500" /> de cualquier
-            tarjeta de parque o atracción. Los favoritos se guardan localmente en tu navegador –
-            sin necesidad de registro.
+            tarjeta de parque o atracción. Los favoritos se guardan localmente en tu navegador – sin
+            necesidad de registro.
           </p>
         </SubSection>
 
@@ -3232,8 +3384,16 @@ function ContentESSections() {
         <SubSection title="¿Qué se guarda?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parques', desc: 'Estado, horarios y nivel de afluencia de un vistazo' },
-              { icon: '🎢', label: 'Atracciones', desc: 'Tiempo de espera en vivo y tendencia directamente en el resumen' },
+              {
+                icon: '🌴',
+                label: 'Parques',
+                desc: 'Estado, horarios y nivel de afluencia de un vistazo',
+              },
+              {
+                icon: '🎢',
+                label: 'Atracciones',
+                desc: 'Tiempo de espera en vivo y tendencia directamente en el resumen',
+              },
               { icon: '🎭', label: 'Espectáculos', desc: 'El próximo horario siempre visible' },
               { icon: '🍽️', label: 'Restaurantes', desc: 'Estado de cocina y ubicación' },
             ].map(({ icon, label, desc }) => (
@@ -3241,7 +3401,7 @@ function ContentESSections() {
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -3250,8 +3410,8 @@ function ContentESSections() {
 
         <TipBox label="Consejo">
           Guarda entre 5 y 10 atracciones favoritas del parque que vayas a visitar. El día de tu
-          visita verás al instante cuáles tienen tiempos de espera cortos – ideal para decidir
-          sobre la marcha.
+          visita verás al instante cuáles tienen tiempos de espera cortos – ideal para decidir sobre
+          la marcha.
         </TipBox>
       </Section>
 
@@ -3306,8 +3466,8 @@ function ContentESSections() {
         <SubSection title="Pestaña Shows: Horarios de un vistazo">
           <p className="text-muted-foreground text-sm">
             La pestaña Shows lista todos los espectáculos con sus horarios para hoy. Los horarios
-            pasados aparecen tachados, el <strong>próximo pase</strong> se resalta en verde –
-            para que siempre sepas cuándo y dónde estar.
+            pasados aparecen tachados, el <strong>próximo pase</strong> se resalta en verde – para
+            que siempre sepas cuándo y dónde estar.
           </p>
           <MockShowCards />
         </SubSection>
@@ -3325,25 +3485,29 @@ function ContentESSections() {
             {[
               {
                 icon: Clock,
-                color: 'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color:
+                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
                 label: 'Operativo',
                 desc: 'La atracción / el parque está en funcionamiento. Los tiempos de espera se actualizan en vivo.',
               },
               {
                 icon: AlertTriangle,
-                color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 label: 'Avería',
                 desc: 'Cerrado temporalmente – p. ej. problema técnico o parada de seguridad. Normalmente breve.',
               },
               {
                 icon: XCircle,
-                color: 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color:
+                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
                 label: 'Cerrado',
                 desc: 'Sin operación hoy – cierre de temporada o día de descanso programado.',
               },
               {
                 icon: Wrench,
-                color: 'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color:
+                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
                 label: 'Renovación',
                 desc: 'Mantenimiento prolongado. Cerrado durante días o semanas.',
               },
@@ -3365,42 +3529,48 @@ function ContentESSections() {
           <div className="space-y-3">
             {[
               {
-                color: 'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color:
+                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
                 label: 'Muy Baja',
                 icon: User,
                 threshold: '≤ 60% de P50',
                 desc: 'Notablemente más tranquilo de lo habitual. Casi sin colas – día ideal para visitar.',
               },
               {
-                color: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color:
+                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
                 label: 'Baja',
                 icon: User,
                 threshold: '61–89% de P50',
                 desc: 'Por debajo de la media – tiempos de espera cortos en la mayoría de atracciones.',
               },
               {
-                color: 'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color:
+                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
                 label: 'Moderada',
                 icon: Users,
                 threshold: '90–110% de P50',
                 desc: 'Día típico – tiempos de espera dentro del rango esperado (±10% de la mediana).',
               },
               {
-                color: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color:
+                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
                 label: 'Alta',
                 icon: Users,
                 threshold: '111–150% de P50',
                 desc: 'Más concurrido que la media – tiempos de espera notablemente más largos.',
               },
               {
-                color: 'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color:
+                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
                 label: 'Muy Alta',
                 icon: Users,
                 threshold: '151–200% de P50',
                 desc: 'Muy concurrido – esperas casi el doble de lo habitual. Llega temprano.',
               },
               {
-                color: 'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color:
+                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
                 label: 'Extrema',
                 icon: AlertTriangle,
                 threshold: '> 200% de P50',
@@ -3408,7 +3578,7 @@ function ContentESSections() {
               },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
                   <span className="text-muted-foreground pl-1 font-mono text-[10px]">
                     {threshold}
@@ -3419,8 +3589,8 @@ function ContentESSections() {
             ))}
           </div>
           <InfoBox label="Nota">
-            <strong>¿Cómo se calcula el nivel de afluencia?</strong> park.fan compara el tiempo
-            de espera promedio actual con la mediana histórica (P50). El 100% significa igual de
+            <strong>¿Cómo se calcula el nivel de afluencia?</strong> park.fan compara el tiempo de
+            espera promedio actual con la mediana histórica (P50). El 100% significa igual de
             concurrido que un día promedio; el 60% es notablemente más tranquilo, el 200% significa
             el doble de afluencia que lo habitual.
           </InfoBox>
@@ -3429,9 +3599,24 @@ function ContentESSections() {
         <SubSection title="Indicadores de Tendencia">
           <div className="space-y-2">
             {[
-              { icon: TrendingUp,   color: 'text-trend-up',     label: 'Subiendo', desc: 'La cola se alarga. Únete pronto.' },
-              { icon: Minus,        color: 'text-trend-stable',  label: 'Estable',  desc: 'El tiempo de espera se mantiene constante.' },
-              { icon: TrendingDown, color: 'text-trend-down',    label: 'Bajando',  desc: 'La cola se acorta – buen momento para unirse.' },
+              {
+                icon: TrendingUp,
+                color: 'text-trend-up',
+                label: 'Subiendo',
+                desc: 'La cola se alarga. Únete pronto.',
+              },
+              {
+                icon: Minus,
+                color: 'text-trend-stable',
+                label: 'Estable',
+                desc: 'El tiempo de espera se mantiene constante.',
+              },
+              {
+                icon: TrendingDown,
+                color: 'text-trend-down',
+                label: 'Bajando',
+                desc: 'La cola se acorta – buen momento para unirse.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-center gap-3">
                 <span className={`flex w-24 items-center gap-1 text-sm font-semibold ${color}`}>
@@ -3454,7 +3639,8 @@ function ContentESSections() {
                 desc: 'A menudo mucho más corta que la fila normal – pero no puedes ir con tu grupo.',
               },
               {
-                color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
                 desc: 'Pase exprés de pago (p. ej. en Disney). Muestra el precio actual y la hora de regreso.',
@@ -3491,30 +3677,65 @@ function ContentESSections() {
 
         <SubSection title="¿Qué muestra cada tarjeta del calendario?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Una tarjeta típica del calendario muestra:</p>
+            <p className="mb-2 font-semibold">Una tarjeta típica del calendario muestra:</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Fecha y día de la semana</strong></li>
-              <li>🎯 <strong>Insignia de Afluencia</strong> (p. ej. &quot;Muy Alta&quot;) – la previsión de IA para la concurrencia general</li>
-              <li>🕐 <strong>Horario de apertura</strong> – o &quot;Est.&quot; si aún no está confirmado oficialmente</li>
-              <li>🌤️ <strong>Previsión meteorológica</strong> con temperaturas mín./máx.</li>
-              <li>⌚ <strong>Tiempo de espera medio</strong> – espera media prevista en todas las atracciones</li>
-              <li>🎟️ <strong>Precio de la entrada</strong>, cuando lo publica el parque</li>
+              <li>
+                📅 <strong>Fecha y día de la semana</strong>
+              </li>
+              <li>
+                🎯 <strong>Insignia de Afluencia</strong> (p. ej. &quot;Muy Alta&quot;) – la
+                previsión de IA para la concurrencia general
+              </li>
+              <li>
+                🕐 <strong>Horario de apertura</strong> – o &quot;Est.&quot; si aún no está
+                confirmado oficialmente
+              </li>
+              <li>
+                🌤️ <strong>Previsión meteorológica</strong> con temperaturas mín./máx.
+              </li>
+              <li>
+                ⌚ <strong>Tiempo de espera medio</strong> – espera media prevista en todas las
+                atracciones
+              </li>
+              <li>
+                🎟️ <strong>Precio de la entrada</strong>, cuando lo publica el parque
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
-            <strong>¿Qué significa &quot;Est.&quot;?</strong> Los horarios marcados como &quot;Est.&quot;
-            (Estimado) aún no han sido confirmados oficialmente por el parque. park.fan los
-            deriva de patrones históricos – pueden cambiar.
+            <strong>¿Qué significa &quot;Est.&quot;?</strong> Los horarios marcados como
+            &quot;Est.&quot; (Estimado) aún no han sido confirmados oficialmente por el parque.
+            park.fan los deriva de patrones históricos – pueden cambiar.
           </p>
         </SubSection>
 
         <SubSection title="Iconos de la tarjeta del calendario">
           <div className="space-y-2 text-sm">
             {[
-              { icon: PartyPopper, color: 'text-orange-500', label: 'Festivo',           desc: 'Los parques suelen abrir más, pero también están más concurridos. ¡Consulta la previsión!' },
-              { icon: Backpack,    color: 'text-yellow-500', label: 'Vacaciones escolares', desc: 'Normalmente los días más concurridos del año – posibles tiempos de espera extremos.' },
-              { icon: Calendar,   color: 'text-blue-500',   label: 'Puente',             desc: 'Probablemente más concurrido, ya que mucha gente aprovecha el fin de semana largo.' },
-              { icon: XCircle,    color: 'text-red-500',    label: 'Parque Cerrado',     desc: 'Sin operación ese día – sin previsión disponible.' },
+              {
+                icon: PartyPopper,
+                color: 'text-orange-500',
+                label: 'Festivo',
+                desc: 'Los parques suelen abrir más, pero también están más concurridos. ¡Consulta la previsión!',
+              },
+              {
+                icon: Backpack,
+                color: 'text-yellow-500',
+                label: 'Vacaciones escolares',
+                desc: 'Normalmente los días más concurridos del año – posibles tiempos de espera extremos.',
+              },
+              {
+                icon: Calendar,
+                color: 'text-blue-500',
+                label: 'Puente',
+                desc: 'Probablemente más concurrido, ya que mucha gente aprovecha el fin de semana largo.',
+              },
+              {
+                icon: XCircle,
+                color: 'text-red-500',
+                label: 'Parque Cerrado',
+                desc: 'Sin operación ese día – sin previsión disponible.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
@@ -3533,28 +3754,41 @@ function ContentESSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
-              <span>Abre la página del parque y cambia a la pestaña <strong>Calendario</strong>.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                Abre la página del parque y cambia a la pestaña <strong>Calendario</strong>.
+              </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
-                Verás de inmediato las semanas de vacaciones escolares – muchas tarjetas con el icono{' '}
-                <Backpack className="inline h-4 w-4 text-yellow-500" /> e insignias de{' '}
+                Verás de inmediato las semanas de vacaciones escolares – muchas tarjetas con el
+                icono <Backpack className="inline h-4 w-4 text-yellow-500" /> e insignias de{' '}
                 <strong>&quot;Muy Alta&quot;</strong> o <strong>&quot;Extrema&quot;</strong>.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
                 Busca un martes o miércoles <em>sin</em> icono de festivo – estos suelen mostrar
-                <strong> &quot;Baja&quot;</strong> o <strong>&quot;Moderada&quot;</strong>. Los horarios
-                de apertura y la previsión del tiempo te ayudan a decidir.
+                <strong> &quot;Baja&quot;</strong> o <strong>&quot;Moderada&quot;</strong>. Los
+                horarios de apertura y la previsión del tiempo te ayudan a decidir.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">4</span>
-              <span>Compra las entradas con antelación – en los días verdes del pronóstico, los cupos pueden ser limitados.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Compra las entradas con antelación – en los días verdes del pronóstico, los cupos
+                pueden ser limitados.
+              </span>
             </li>
           </ol>
           <LiveCalendarExample locale="en" />
@@ -3564,15 +3798,15 @@ function ContentESSections() {
           <p className="text-muted-foreground text-sm">
             La página de detalle de cada atracción también tiene un calendario histórico que muestra
             lo concurrida que estuvo cada día pasado – y si estaba en funcionamiento o no. Perfecto
-            para detectar patrones recurrentes: ¿tuvo Taron sistemáticamente colas cortas los
-            jueves por la tarde el mes pasado? Puede que también la próxima semana.
+            para detectar patrones recurrentes: ¿tuvo Taron sistemáticamente colas cortas los jueves
+            por la tarde el mes pasado? Puede que también la próxima semana.
           </p>
         </SubSection>
 
         <TipBox label="Consejo">
           Los mejores días de visita son normalmente los días de semana fuera de las vacaciones
-          escolares – martes, miércoles y jueves muestran los niveles de afluencia más bajos.
-          Evita las semanas de vacaciones escolares en regiones densamente pobladas.
+          escolares – martes, miércoles y jueves muestran los niveles de afluencia más bajos. Evita
+          las semanas de vacaciones escolares en regiones densamente pobladas.
         </TipBox>
       </Section>
 
@@ -3586,10 +3820,26 @@ function ContentESSections() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: '📊', title: 'Datos históricos',       desc: 'Millones de datos de colas por atracción, día de la semana y hora del día.' },
-            { icon: '📅', title: 'Calendarios de festivos', desc: 'Vacaciones escolares y días festivos en Europa y todo el mundo.' },
-            { icon: '🌤️', title: 'Previsiones del tiempo', desc: 'Temperatura, lluvia y sol – el mal tiempo empuja a las multitudes hacia las atracciones interiores.' },
-            { icon: '🎉', title: 'Eventos especiales',      desc: 'Noches de Halloween, eventos navideños y otras fechas específicas del parque generan una asistencia significativamente mayor.' },
+            {
+              icon: '📊',
+              title: 'Datos históricos',
+              desc: 'Millones de datos de colas por atracción, día de la semana y hora del día.',
+            },
+            {
+              icon: '📅',
+              title: 'Calendarios de festivos',
+              desc: 'Vacaciones escolares y días festivos en Europa y todo el mundo.',
+            },
+            {
+              icon: '🌤️',
+              title: 'Previsiones del tiempo',
+              desc: 'Temperatura, lluvia y sol – el mal tiempo empuja a las multitudes hacia las atracciones interiores.',
+            },
+            {
+              icon: '🎉',
+              title: 'Eventos especiales',
+              desc: 'Noches de Halloween, eventos navideños y otras fechas específicas del parque generan una asistencia significativamente mayor.',
+            },
           ].map(({ icon, title, desc }) => (
             <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
               <span className="text-2xl">{icon}</span>
@@ -3613,16 +3863,18 @@ function ContentESSections() {
             <div className="bg-muted/30 rounded-lg p-3">
               <p className="font-semibold">⏰ Insignia de hora punta en la página del parque</p>
               <p className="text-muted-foreground mt-0.5">
-                La cabecera del parque muestra cuándo se espera el pico de afluencia de hoy –
-                p. ej. &quot;Pico en 1h 30min&quot;. Planifica una pausa para comer o visita una
-                atracción menos popular justo en ese intervalo.
+                La cabecera del parque muestra cuándo se espera el pico de afluencia de hoy – p. ej.
+                &quot;Pico en 1h 30min&quot;. Planifica una pausa para comer o visita una atracción
+                menos popular justo en ese intervalo.
               </p>
             </div>
             <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📈 Gráfico de predicción por horas en la página de la atracción</p>
+              <p className="font-semibold">
+                📈 Gráfico de predicción por horas en la página de la atracción
+              </p>
               <p className="text-muted-foreground mt-0.5">
-                Cada atracción tiene su propia página con un gráfico que muestra cómo se prevé
-                que evolucionen los tiempos de espera a lo largo del día – para hoy y mañana.
+                Cada atracción tiene su propia página con un gráfico que muestra cómo se prevé que
+                evolucionen los tiempos de espera a lo largo del día – para hoy y mañana.
               </p>
             </div>
           </div>
@@ -3635,25 +3887,31 @@ function ContentESSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
               <span>
-                <strong>En la entrada:</strong> La insignia de hora punta muestra &quot;Pico en ~2h&quot; –
-                tienes hasta las 11:30 aprox. para tus primeros highlights.
+                <strong>En la entrada:</strong> La insignia de hora punta muestra &quot;Pico en
+                ~2h&quot; – tienes hasta las 11:30 aprox. para tus primeros highlights.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
-                <strong>Abre la página de Taron:</strong> El gráfico de predicción muestra 9:30 ≈ 15 min,
-                12:00 ≈ 65 min, 15:00 ≈ 40 min → monta justo al abrir o a media tarde.
+                <strong>Abre la página de Taron:</strong> El gráfico de predicción muestra 9:30 ≈ 15
+                min, 12:00 ≈ 65 min, 15:00 ≈ 40 min → monta justo al abrir o a media tarde.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
-                <strong>Come durante el pico:</strong> En lugar de hacer cola al mediodía, aprovechas
-                para comer. Las tendencias en vivo confirman que a las 15:00 la espera baja –
-                momento perfecto para montar.
+                <strong>Come durante el pico:</strong> En lugar de hacer cola al mediodía,
+                aprovechas para comer. Las tendencias en vivo confirman que a las 15:00 la espera
+                baja – momento perfecto para montar.
               </span>
             </li>
           </ol>
@@ -3661,18 +3919,18 @@ function ContentESSections() {
 
         <SubSection title="¿Qué precisión tienen las predicciones?">
           <p className="text-muted-foreground text-sm">
-            La precisión varía según el parque y el horizonte de predicción. La página de detalle
-            de cada atracción muestra su calidad de predicción – de <strong>Baja</strong> a{' '}
-            <strong>Excelente</strong>. Más datos históricos significa previsiones más precisas.
-            Las predicciones a corto plazo (1–3 días) son intrínsecamente más fiables que las de
-            largo plazo (7–14 días).
+            La precisión varía según el parque y el horizonte de predicción. La página de detalle de
+            cada atracción muestra su calidad de predicción – de <strong>Baja</strong> a{' '}
+            <strong>Excelente</strong>. Más datos históricos significa previsiones más precisas. Las
+            predicciones a corto plazo (1–3 días) son intrínsecamente más fiables que las de largo
+            plazo (7–14 días).
           </p>
         </SubSection>
 
         <SubSection title="Minigráficos de tiempo de espera">
           <p className="text-muted-foreground text-sm">
-            Cada tarjeta de atracción muestra un pequeño minigráfico con la tendencia del tiempo
-            de espera en las últimas horas. Puedes ver al instante si las colas están aumentando,
+            Cada tarjeta de atracción muestra un pequeño minigráfico con la tendencia del tiempo de
+            espera en las últimas horas. Puedes ver al instante si las colas están aumentando,
             estables o disminuyendo.
           </p>
           <MockHourlyChart locale="en" />
@@ -3688,30 +3946,64 @@ function ContentESSections() {
       {/* ── 8. Para quién ────────────────────────────────────────────────────── */}
       <Section id="personas" title="¿Para quién es park.fan?">
         <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard emoji="👨‍👩‍👧‍👦" title="Familias" subtitle="Planificando el día perfecto para todos">
+          <PersonaCard
+            emoji="👨‍👩‍👧‍👦"
+            title="Familias"
+            subtitle="Planificando el día perfecto para todos"
+          >
             <Li>Calendario de afluencia: ¿qué día tiene las colas más cortas?</Li>
             <Li>Tiempo en el calendario: ¿día lluvioso? ¡Consulta las atracciones de interior!</Li>
             <Li>Favoritos: guarda las 10 atracciones imprescindibles para los niños.</Li>
-            <Li>Tiempos de espera en vivo: decide sobre la marcha qué atracción visitar a continuación.</Li>
+            <Li>
+              Tiempos de espera en vivo: decide sobre la marcha qué atracción visitar a
+              continuación.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🎢" title="Entusiastas de Parques Temáticos" subtitle="Cada minuto debe estar optimizado">
-            <Li>Nivel de afluencia (base P50): entiende si una atracción está realmente por encima de la media.</Li>
+          <PersonaCard
+            emoji="🎢"
+            title="Entusiastas de Parques Temáticos"
+            subtitle="Cada minuto debe estar optimizado"
+          >
+            <Li>
+              Nivel de afluencia (base P50): entiende si una atracción está realmente por encima de
+              la media.
+            </Li>
             <Li>Tendencias históricas: ¿cuándo suele tener Taron tiempos de espera cortos?</Li>
             <Li>Indicadores de tendencia: ¿sube la cola? Espera 20 minutos y puede acortarse.</Li>
-            <Li>Fila Individual / Lightning Lane: todos los tipos de cola con tiempos y precios.</Li>
+            <Li>
+              Fila Individual / Lightning Lane: todos los tipos de cola con tiempos y precios.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🌟" title="Visitantes por Primera Vez" subtitle="Primera visita a un gran parque temático">
-            <Li>Búsqueda: encuentra tu parque rápidamente, incluso si no conoces el nombre exacto.</Li>
+          <PersonaCard
+            emoji="🌟"
+            title="Visitantes por Primera Vez"
+            subtitle="Primera visita a un gran parque temático"
+          >
+            <Li>
+              Búsqueda: encuentra tu parque rápidamente, incluso si no conoces el nombre exacto.
+            </Li>
             <Li>Mapa del parque: oriéntate antes y durante tu visita.</Li>
-            <Li>Insignias de estado: verde = en marcha, naranja = incidencia breve, gris = cerrado hoy.</Li>
-            <Li>Calendario de afluencia: los colores lo dicen todo – verde es bueno, rojo es estresante.</Li>
+            <Li>
+              Insignias de estado: verde = en marcha, naranja = incidencia breve, gris = cerrado
+              hoy.
+            </Li>
+            <Li>
+              Calendario de afluencia: los colores lo dicen todo – verde es bueno, rojo es
+              estresante.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="⚡" title="Visitantes Espontáneos" subtitle="Decisión de última hora, máxima eficiencia">
+          <PersonaCard
+            emoji="⚡"
+            title="Visitantes Espontáneos"
+            subtitle="Decisión de última hora, máxima eficiencia"
+          >
             <Li>Ubicación: park.fan encuentra automáticamente el parque más cercano.</Li>
-            <Li>Tiempos de espera en vivo: ve al instante qué está abierto y cuánto hay que esperar.</Li>
+            <Li>
+              Tiempos de espera en vivo: ve al instante qué está abierto y cuánto hay que esperar.
+            </Li>
             <Li>Indicadores de tendencia: ¿baja la cola? El momento perfecto para unirse.</Li>
           </PersonaCard>
         </div>
@@ -3720,8 +4012,8 @@ function ContentESSections() {
       {/* ── 9. Parques populares ────────────────────────────────────────────── */}
       <Section id="parks" title="Parques populares">
         <p className="text-muted-foreground mb-6">
-          park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más
-          visitados de tu región con datos en directo:
+          park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más visitados
+          de tu región con datos en directo:
         </p>
         <PopularParksGrid
           locale="es"
@@ -3761,7 +4053,7 @@ function ContentESSections() {
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -3774,16 +4066,14 @@ function ContentESSections() {
   );
 }
 
-
 function ContentFRSections() {
   return (
     <>
-
       {/* ── 1. Recherche ─────────────────────────────────────────────────────── */}
       <Section id="suche" title="Recherche">
         <p className="text-muted-foreground mb-4">
-          La recherche globale est le moyen le plus rapide de trouver un parc, une attraction,
-          un spectacle ou un restaurant – sur ordinateur comme sur mobile.
+          La recherche globale est le moyen le plus rapide de trouver un parc, une attraction, un
+          spectacle ou un restaurant – sur ordinateur comme sur mobile.
         </p>
 
         <SubSection title="Ouvrir la recherche">
@@ -3791,13 +4081,13 @@ function ContentFRSections() {
             <p>
               <strong>Ordinateur :</strong> Appuie sur{' '}
               <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              ou{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
+              ou <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
               (Mac) pour ouvrir la recherche à tout moment.
             </p>
             <p>
-              <strong>Mobile et Ordinateur :</strong> Tape sur l&apos;icône <Search className="inline h-4 w-4" /> dans
-              l&apos;en-tête ou dans le champ de recherche de la page d&apos;accueil.
+              <strong>Mobile et Ordinateur :</strong> Tape sur l&apos;icône{' '}
+              <Search className="inline h-4 w-4" /> dans l&apos;en-tête ou dans le champ de
+              recherche de la page d&apos;accueil.
             </p>
           </div>
           <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
@@ -3806,11 +4096,11 @@ function ContentFRSections() {
         <SubSection title="Ce que tu peux rechercher">
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parcs',             desc: 'Europa-Park, Phantasialand, Disneyland...' },
-              { icon: '🎢', label: 'Attractions',       desc: 'Taron, Silver Star, Space Mountain...' },
-              { icon: '🗺️', label: 'Villes et Pays',   desc: 'Orlando, Paris, Allemagne...' },
-              { icon: '🎭', label: 'Spectacles',        desc: 'Horaires et programmes des shows' },
-              { icon: '🍽️', label: 'Restaurants',      desc: 'Options de restauration dans les parcs' },
+              { icon: '🌴', label: 'Parcs', desc: 'Europa-Park, Phantasialand, Disneyland...' },
+              { icon: '🎢', label: 'Attractions', desc: 'Taron, Silver Star, Space Mountain...' },
+              { icon: '🗺️', label: 'Villes et Pays', desc: 'Orlando, Paris, Allemagne...' },
+              { icon: '🎭', label: 'Spectacles', desc: 'Horaires et programmes des shows' },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Options de restauration dans les parcs' },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
@@ -3838,9 +4128,9 @@ function ContentFRSections() {
         <SubSection title="Navigation dans le parc">
           <p className="text-muted-foreground text-sm">
             Lorsque tu es dans un parc, park.fan détecte automatiquement dans quel parc tu te
-            trouves et affiche &quot;Tu es dans [Nom du Parc]&quot; sur la page d&apos;accueil.
-            La carte du parc affiche ta position en temps réel – parfait pour te déplacer entre
-            les attractions.
+            trouves et affiche &quot;Tu es dans [Nom du Parc]&quot; sur la page d&apos;accueil. La
+            carte du parc affiche ta position en temps réel – parfait pour te déplacer entre les
+            attractions.
           </p>
         </SubSection>
         <NearbyParksCard />
@@ -3855,17 +4145,17 @@ function ContentFRSections() {
 
         <SubSection title="Ajouter un favori">
           <p className="text-sm">
-            Clique sur l&apos;étoile <Star className="inline h-4 w-4 text-yellow-500" /> de n&apos;importe
-            quelle carte de parc ou d&apos;attraction. Les favoris sont sauvegardés localement dans
-            ton navigateur – aucune inscription requise.
+            Clique sur l&apos;étoile <Star className="inline h-4 w-4 text-yellow-500" /> de
+            n&apos;importe quelle carte de parc ou d&apos;attraction. Les favoris sont sauvegardés
+            localement dans ton navigateur – aucune inscription requise.
           </p>
         </SubSection>
 
         <SubSection title="Favoris sur la page d'accueil">
           <p className="text-muted-foreground text-sm">
-            Dès que tu as au moins un favori, une section dédiée apparaît sur la page
-            d&apos;accueil avec tous tes parcs, attractions, spectacles et restaurants sauvegardés.
-            Avec la localisation activée, ils sont triés par distance – le plus proche en premier.
+            Dès que tu as au moins un favori, une section dédiée apparaît sur la page d&apos;accueil
+            avec tous tes parcs, attractions, spectacles et restaurants sauvegardés. Avec la
+            localisation activée, ils sont triés par distance – le plus proche en premier.
           </p>
           <MockNearbyCards locale="en" />
         </SubSection>
@@ -3873,16 +4163,28 @@ function ContentFRSections() {
         <SubSection title="Qu'est-ce qui est sauvegardé ?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parcs',        desc: 'Statut, horaires d\'ouverture et niveau d\'affluence en un coup d\'œil' },
-              { icon: '🎢', label: 'Attractions',  desc: 'Temps d\'attente en direct et tendance directement dans la vue d\'ensemble' },
-              { icon: '🎭', label: 'Spectacles',   desc: 'La prochaine représentation toujours visible' },
+              {
+                icon: '🌴',
+                label: 'Parcs',
+                desc: "Statut, horaires d'ouverture et niveau d'affluence en un coup d'œil",
+              },
+              {
+                icon: '🎢',
+                label: 'Attractions',
+                desc: "Temps d'attente en direct et tendance directement dans la vue d'ensemble",
+              },
+              {
+                icon: '🎭',
+                label: 'Spectacles',
+                desc: 'La prochaine représentation toujours visible',
+              },
               { icon: '🍽️', label: 'Restaurants', desc: 'Statut de la cuisine et emplacement' },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -3890,9 +4192,9 @@ function ContentFRSections() {
         </SubSection>
 
         <TipBox label="Astuce">
-          Sauvegarde 5 à 10 attractions favorites du parc que tu prévois de visiter. Le jour J,
-          tu verras instantanément lesquelles ont de courtes files d&apos;attente – idéal pour
-          décider à la volée.
+          Sauvegarde 5 à 10 attractions favorites du parc que tu prévois de visiter. Le jour J, tu
+          verras instantanément lesquelles ont de courtes files d&apos;attente – idéal pour décider
+          à la volée.
         </TipBox>
       </Section>
 
@@ -3912,13 +4214,31 @@ function ContentFRSections() {
         <SubSection title="Onglets – Attractions, Spectacles, Calendrier, Carte">
           <div className="space-y-3 text-sm">
             {[
-              { icon: '🎢', label: 'Attractions', desc: 'Toutes les attractions avec temps d\'attente en direct, statut, tendance et comparaison à la moyenne.' },
-              { icon: '🎭', label: 'Spectacles',  desc: 'Tous les spectacles avec statut actuel et prochains horaires.' },
-              { icon: '📅', label: 'Calendrier',  desc: 'Prévision sur 30+ jours avec prédictions d\'affluence, météo, jours fériés et vacances scolaires.' },
-              { icon: '🗺️', label: 'Carte',       desc: 'Carte interactive avec toutes les attractions, spectacles et restaurants.' },
+              {
+                icon: '🎢',
+                label: 'Attractions',
+                desc: "Toutes les attractions avec temps d'attente en direct, statut, tendance et comparaison à la moyenne.",
+              },
+              {
+                icon: '🎭',
+                label: 'Spectacles',
+                desc: 'Tous les spectacles avec statut actuel et prochains horaires.',
+              },
+              {
+                icon: '📅',
+                label: 'Calendrier',
+                desc: "Prévision sur 30+ jours avec prédictions d'affluence, météo, jours fériés et vacances scolaires.",
+              },
+              {
+                icon: '🗺️',
+                label: 'Carte',
+                desc: 'Carte interactive avec toutes les attractions, spectacles et restaurants.',
+              },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">{icon} {label}</p>
+                <p className="font-semibold">
+                  {icon} {label}
+                </p>
                 <p className="text-muted-foreground mt-0.5">{desc}</p>
               </div>
             ))}
@@ -3946,10 +4266,34 @@ function ContentFRSections() {
         <SubSection title="Statut des Parcs et Attractions">
           <div className="space-y-3">
             {[
-              { icon: Clock,         color: 'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40', label: 'En service',    desc: 'L\'attraction / le parc est en fonctionnement. Les temps d\'attente sont mis à jour en direct.' },
-              { icon: AlertTriangle, color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',                   label: 'En panne',      desc: 'Fermé temporairement – p. ex. problème technique ou arrêt de sécurité. Généralement bref.' },
-              { icon: XCircle,       color: 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',           label: 'Fermé',         desc: 'Pas d\'opération aujourd\'hui – fermeture saisonnière ou jour de repos prévu.' },
-              { icon: Wrench,        color: 'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40', label: 'Rénovation', desc: 'Maintenance prolongée. Fermé pendant des jours ou des semaines.' },
+              {
+                icon: Clock,
+                color:
+                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                label: 'En service',
+                desc: "L'attraction / le parc est en fonctionnement. Les temps d'attente sont mis à jour en direct.",
+              },
+              {
+                icon: AlertTriangle,
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                label: 'En panne',
+                desc: 'Fermé temporairement – p. ex. problème technique ou arrêt de sécurité. Généralement bref.',
+              },
+              {
+                icon: XCircle,
+                color:
+                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                label: 'Fermé',
+                desc: "Pas d'opération aujourd'hui – fermeture saisonnière ou jour de repos prévu.",
+              },
+              {
+                icon: Wrench,
+                color:
+                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                label: 'Rénovation',
+                desc: 'Maintenance prolongée. Fermé pendant des jours ou des semaines.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
@@ -3967,36 +4311,95 @@ function ContentFRSections() {
           </p>
           <div className="space-y-3">
             {[
-              { color: 'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',   label: 'Très Faible', icon: User,         threshold: '≤ 60% de P50',   desc: 'Nettement plus calme que d\'habitude. Presque pas de files – jour idéal pour visiter.' },
-              { color: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',                       label: 'Faible',      icon: User,         threshold: '61–89% de P50',  desc: 'En dessous de la moyenne – courtes files d\'attente pour la plupart des attractions.' },
-              { color: 'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',   label: 'Modéré',      icon: Users,        threshold: '90–110% de P50', desc: 'Jour typique – temps d\'attente dans la plage attendue (±10% de la médiane).' },
-              { color: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',                   label: 'Élevé',       icon: Users,        threshold: '111–150% de P50', desc: 'Plus fréquenté que la moyenne – temps d\'attente nettement plus longs.' },
-              { color: 'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40', label: 'Très Élevé', icon: Users,       threshold: '151–200% de P50', desc: 'Très fréquenté – attentes presque deux fois plus longues que d\'habitude. Arrive tôt.' },
-              { color: 'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',       label: 'Extrême',     icon: AlertTriangle, threshold: '> 200% de P50',  desc: 'Affluence record – plus du double d\'un jour typique. Vacances scolaires, événements spéciaux.' },
+              {
+                color:
+                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                label: 'Très Faible',
+                icon: User,
+                threshold: '≤ 60% de P50',
+                desc: "Nettement plus calme que d'habitude. Presque pas de files – jour idéal pour visiter.",
+              },
+              {
+                color:
+                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                label: 'Faible',
+                icon: User,
+                threshold: '61–89% de P50',
+                desc: "En dessous de la moyenne – courtes files d'attente pour la plupart des attractions.",
+              },
+              {
+                color:
+                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                label: 'Modéré',
+                icon: Users,
+                threshold: '90–110% de P50',
+                desc: "Jour typique – temps d'attente dans la plage attendue (±10% de la médiane).",
+              },
+              {
+                color:
+                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                label: 'Élevé',
+                icon: Users,
+                threshold: '111–150% de P50',
+                desc: "Plus fréquenté que la moyenne – temps d'attente nettement plus longs.",
+              },
+              {
+                color:
+                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                label: 'Très Élevé',
+                icon: Users,
+                threshold: '151–200% de P50',
+                desc: "Très fréquenté – attentes presque deux fois plus longues que d'habitude. Arrive tôt.",
+              },
+              {
+                color:
+                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                label: 'Extrême',
+                icon: AlertTriangle,
+                threshold: '> 200% de P50',
+                desc: "Affluence record – plus du double d'un jour typique. Vacances scolaires, événements spéciaux.",
+              },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
-                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">{threshold}</span>
+                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">
+                    {threshold}
+                  </span>
                 </div>
                 <p className="text-muted-foreground text-sm">{desc}</p>
               </div>
             ))}
           </div>
           <InfoBox label="Note">
-            <strong>Comment le niveau d&apos;affluence est-il calculé ?</strong> park.fan compare
-            le temps d&apos;attente moyen actuel à la médiane historique (P50). 100% signifie
-            aussi fréquenté qu&apos;un jour moyen ; 60% est nettement plus calme, 200% signifie
-            deux fois plus fréquenté que d&apos;habitude.
+            <strong>Comment le niveau d&apos;affluence est-il calculé ?</strong> park.fan compare le
+            temps d&apos;attente moyen actuel à la médiane historique (P50). 100% signifie aussi
+            fréquenté qu&apos;un jour moyen ; 60% est nettement plus calme, 200% signifie deux fois
+            plus fréquenté que d&apos;habitude.
           </InfoBox>
         </SubSection>
 
         <SubSection title="Indicateurs de Tendance">
           <div className="space-y-2">
             {[
-              { icon: TrendingUp,   color: 'text-trend-up',    label: 'En hausse', desc: 'La file s\'allonge. Rejoins-la bientôt.' },
-              { icon: Minus,        color: 'text-trend-stable', label: 'Stable',    desc: 'Le temps d\'attente reste constant.' },
-              { icon: TrendingDown, color: 'text-trend-down',   label: 'En baisse', desc: 'La file raccourcit – bon moment pour la rejoindre.' },
+              {
+                icon: TrendingUp,
+                color: 'text-trend-up',
+                label: 'En hausse',
+                desc: "La file s'allonge. Rejoins-la bientôt.",
+              },
+              {
+                icon: Minus,
+                color: 'text-trend-stable',
+                label: 'Stable',
+                desc: "Le temps d'attente reste constant.",
+              },
+              {
+                icon: TrendingDown,
+                color: 'text-trend-down',
+                label: 'En baisse',
+                desc: 'La file raccourcit – bon moment pour la rejoindre.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-center gap-3">
                 <span className={`flex w-28 items-center gap-1 text-sm font-semibold ${color}`}>
@@ -4012,10 +4415,31 @@ function ContentFRSections() {
         <SubSection title="Types de File">
           <div className="space-y-3">
             {[
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: User,   label: 'File Individuelle', desc: 'Souvent bien plus courte que la file normale – mais tu ne peux pas y aller avec ton groupe.' },
-              { color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',             icon: Zap,    label: 'Lightning Lane',    desc: 'Pass express payant (p. ex. chez Disney). Affiche le prix actuel et l\'heure de retour.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Heure de Retour',   desc: 'File virtuelle gratuite – réserve un créneau et reviens plus tard.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Groupe d\'Embarquement', desc: 'File virtuelle avec numéro de groupe – populaire pour les nouvelles attractions très demandées.' },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: User,
+                label: 'File Individuelle',
+                desc: 'Souvent bien plus courte que la file normale – mais tu ne peux pas y aller avec ton groupe.',
+              },
+              {
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                icon: Zap,
+                label: 'Lightning Lane',
+                desc: "Pass express payant (p. ex. chez Disney). Affiche le prix actuel et l'heure de retour.",
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: 'Heure de Retour',
+                desc: 'File virtuelle gratuite – réserve un créneau et reviens plus tard.',
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: "Groupe d'Embarquement",
+                desc: 'File virtuelle avec numéro de groupe – populaire pour les nouvelles attractions très demandées.',
+              },
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
@@ -4037,14 +4461,29 @@ function ContentFRSections() {
 
         <SubSection title="Que contient chaque carte du calendrier ?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Une carte typique du calendrier affiche :</p>
+            <p className="mb-2 font-semibold">Une carte typique du calendrier affiche :</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Date et jour de la semaine</strong></li>
-              <li>🎯 <strong>Badge d&apos;Affluence</strong> (p. ex. &quot;Très Élevé&quot;) – la prévision IA de l&apos;affluence globale</li>
-              <li>🕐 <strong>Horaires d&apos;ouverture</strong> – ou &quot;Est.&quot; si pas encore confirmés officiellement</li>
-              <li>🌤️ <strong>Prévision météo</strong> avec températures min./max.</li>
-              <li>⌚ <strong>Temps d&apos;attente moyen</strong> – attente moyenne prévue sur toutes les attractions</li>
-              <li>🎟️ <strong>Prix du billet</strong>, quand publié par le parc</li>
+              <li>
+                📅 <strong>Date et jour de la semaine</strong>
+              </li>
+              <li>
+                🎯 <strong>Badge d&apos;Affluence</strong> (p. ex. &quot;Très Élevé&quot;) – la
+                prévision IA de l&apos;affluence globale
+              </li>
+              <li>
+                🕐 <strong>Horaires d&apos;ouverture</strong> – ou &quot;Est.&quot; si pas encore
+                confirmés officiellement
+              </li>
+              <li>
+                🌤️ <strong>Prévision météo</strong> avec températures min./max.
+              </li>
+              <li>
+                ⌚ <strong>Temps d&apos;attente moyen</strong> – attente moyenne prévue sur toutes
+                les attractions
+              </li>
+              <li>
+                🎟️ <strong>Prix du billet</strong>, quand publié par le parc
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
@@ -4057,10 +4496,30 @@ function ContentFRSections() {
         <SubSection title="Icônes des cartes du calendrier">
           <div className="space-y-2 text-sm">
             {[
-              { icon: PartyPopper, color: 'text-orange-500', label: 'Jour Férié',          desc: 'Les parcs ouvrent souvent plus longtemps, mais sont aussi plus fréquentés. Consulte la prévision !' },
-              { icon: Backpack,    color: 'text-yellow-500', label: 'Vacances Scolaires',  desc: 'Généralement les jours les plus fréquentés de l\'année – temps d\'attente extrêmes possibles.' },
-              { icon: Calendar,   color: 'text-blue-500',   label: 'Pont',                 desc: 'Probablement plus fréquenté car beaucoup de gens prolongent les week-ends.' },
-              { icon: XCircle,    color: 'text-red-500',    label: 'Parc Fermé',           desc: 'Pas d\'opération ce jour-là – aucune prévision disponible.' },
+              {
+                icon: PartyPopper,
+                color: 'text-orange-500',
+                label: 'Jour Férié',
+                desc: 'Les parcs ouvrent souvent plus longtemps, mais sont aussi plus fréquentés. Consulte la prévision !',
+              },
+              {
+                icon: Backpack,
+                color: 'text-yellow-500',
+                label: 'Vacances Scolaires',
+                desc: "Généralement les jours les plus fréquentés de l'année – temps d'attente extrêmes possibles.",
+              },
+              {
+                icon: Calendar,
+                color: 'text-blue-500',
+                label: 'Pont',
+                desc: 'Probablement plus fréquenté car beaucoup de gens prolongent les week-ends.',
+              },
+              {
+                icon: XCircle,
+                color: 'text-red-500',
+                label: 'Parc Fermé',
+                desc: "Pas d'opération ce jour-là – aucune prévision disponible.",
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
@@ -4079,19 +4538,28 @@ function ContentFRSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
-              <span>Ouvre la page du parc et bascule sur l&apos;onglet <strong>Calendrier</strong>.</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
               <span>
-                Tu repères immédiatement les semaines de vacances scolaires – beaucoup de cartes avec
-                l&apos;icône <Backpack className="inline h-4 w-4 text-yellow-500" /> et des badges
-                &quot;<strong>Très Élevé</strong>&quot; ou &quot;<strong>Extrême</strong>&quot;.
+                Ouvre la page du parc et bascule sur l&apos;onglet <strong>Calendrier</strong>.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
+              <span>
+                Tu repères immédiatement les semaines de vacances scolaires – beaucoup de cartes
+                avec l&apos;icône <Backpack className="inline h-4 w-4 text-yellow-500" /> et des
+                badges &quot;<strong>Très Élevé</strong>&quot; ou &quot;<strong>Extrême</strong>
+                &quot;.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
                 Cherche un mardi ou mercredi <em>sans</em> icône de jour férié – ils affichent
                 souvent <strong>&quot;Faible&quot;</strong> ou <strong>&quot;Modéré&quot;</strong>.
@@ -4099,8 +4567,13 @@ function ContentFRSections() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">4</span>
-              <span>Achète les billets à l&apos;avance – les jours verts du calendrier peuvent avoir des contingents limités.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Achète les billets à l&apos;avance – les jours verts du calendrier peuvent avoir des
+                contingents limités.
+              </span>
             </li>
           </ol>
           <LiveCalendarExample locale="en" />
@@ -4110,16 +4583,16 @@ function ContentFRSections() {
           <p className="text-muted-foreground text-sm">
             La page de détail de chaque attraction possède également un calendrier historique
             montrant l&apos;affluence de chaque jour passé – et si l&apos;attraction était en
-            service ou non. Parfait pour repérer les schémas récurrents : Taron avait-il
-            constamment de courtes files le jeudi après-midi le mois dernier ? C&apos;est
-            peut-être encore le cas la semaine prochaine.
+            service ou non. Parfait pour repérer les schémas récurrents : Taron avait-il constamment
+            de courtes files le jeudi après-midi le mois dernier ? C&apos;est peut-être encore le
+            cas la semaine prochaine.
           </p>
         </SubSection>
 
         <TipBox label="Astuce">
           Les meilleurs jours de visite sont généralement les jours de semaine en dehors des
-          vacances scolaires – mardi, mercredi et jeudi affichent les niveaux d&apos;affluence
-          les plus bas. Évite les semaines de vacances scolaires dans les régions très peuplées.
+          vacances scolaires – mardi, mercredi et jeudi affichent les niveaux d&apos;affluence les
+          plus bas. Évite les semaines de vacances scolaires dans les régions très peuplées.
         </TipBox>
       </Section>
 
@@ -4134,10 +4607,26 @@ function ContentFRSections() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: '📊', title: 'Données historiques',     desc: 'Des millions de points de données par attraction, jour de la semaine et heure de la journée.' },
-            { icon: '📅', title: 'Calendriers de vacances', desc: 'Vacances scolaires et jours fériés en Europe et dans le monde.' },
-            { icon: '🌤️', title: 'Prévisions météo',       desc: 'Température, pluie et soleil – le mauvais temps pousse les foules vers les attractions en intérieur.' },
-            { icon: '🎉', title: 'Événements spéciaux',     desc: 'Nuits d\'Halloween, événements de Noël et autres dates propres aux parcs génèrent une fréquentation nettement plus élevée.' },
+            {
+              icon: '📊',
+              title: 'Données historiques',
+              desc: 'Des millions de points de données par attraction, jour de la semaine et heure de la journée.',
+            },
+            {
+              icon: '📅',
+              title: 'Calendriers de vacances',
+              desc: 'Vacances scolaires et jours fériés en Europe et dans le monde.',
+            },
+            {
+              icon: '🌤️',
+              title: 'Prévisions météo',
+              desc: 'Température, pluie et soleil – le mauvais temps pousse les foules vers les attractions en intérieur.',
+            },
+            {
+              icon: '🎉',
+              title: 'Événements spéciaux',
+              desc: "Nuits d'Halloween, événements de Noël et autres dates propres aux parcs génèrent une fréquentation nettement plus élevée.",
+            },
           ].map(({ icon, title, desc }) => (
             <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
               <span className="text-2xl">{icon}</span>
@@ -4162,13 +4651,15 @@ function ContentFRSections() {
             <div className="bg-muted/30 rounded-lg p-3">
               <p className="font-semibold">⏰ Badge heure de pointe sur la page du parc</p>
               <p className="text-muted-foreground mt-0.5">
-                L&apos;en-tête du parc indique quand le pic d&apos;affluence est prévu aujourd&apos;hui –
-                p. ex. &quot;Pic dans 1h 30min&quot;. Planifie une pause déjeuner ou visite une
-                attraction moins populaire pendant cette fenêtre.
+                L&apos;en-tête du parc indique quand le pic d&apos;affluence est prévu
+                aujourd&apos;hui – p. ex. &quot;Pic dans 1h 30min&quot;. Planifie une pause déjeuner
+                ou visite une attraction moins populaire pendant cette fenêtre.
               </p>
             </div>
             <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📈 Graphique de prédiction horaire sur la page de l&apos;attraction</p>
+              <p className="font-semibold">
+                📈 Graphique de prédiction horaire sur la page de l&apos;attraction
+              </p>
               <p className="text-muted-foreground mt-0.5">
                 Chaque attraction a sa propre page avec un graphique montrant comment les temps
                 d&apos;attente sont prévus d&apos;évoluer au cours de la journée – pour
@@ -4180,30 +4671,37 @@ function ContentFRSections() {
 
         <SubSection title="Exemple pratique : utiliser les prédictions le jour de la visite">
           <p className="text-muted-foreground mb-3 text-sm">
-            Tu visites Phantasialand un samedi pendant les vacances scolaires. Le calendrier
-            affiche &quot;Très Élevé&quot;. Voici comment les prédictions t&apos;aident :
+            Tu visites Phantasialand un samedi pendant les vacances scolaires. Le calendrier affiche
+            &quot;Très Élevé&quot;. Voici comment les prédictions t&apos;aident :
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
               <span>
-                <strong>À l&apos;entrée :</strong> Le badge heure de pointe affiche &quot;Pic dans ~2h&quot; –
-                tu as jusqu&apos;à environ 11h30 pour tes premiers highlights.
+                <strong>À l&apos;entrée :</strong> Le badge heure de pointe affiche &quot;Pic dans
+                ~2h&quot; – tu as jusqu&apos;à environ 11h30 pour tes premiers highlights.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
-                <strong>Ouvre la page Taron :</strong> Le graphique de prédiction montre 9h30 ≈ 15 min,
-                12h ≈ 65 min, 15h ≈ 40 min → monte juste à l&apos;ouverture ou en milieu d&apos;après-midi.
+                <strong>Ouvre la page Taron :</strong> Le graphique de prédiction montre 9h30 ≈ 15
+                min, 12h ≈ 65 min, 15h ≈ 40 min → monte juste à l&apos;ouverture ou en milieu
+                d&apos;après-midi.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
                 <strong>Déjeuner pendant le pic :</strong> Plutôt que de faire la queue à midi, tu
-                en profites pour manger. Les tendances en direct confirment qu&apos;à 15h l&apos;attente
-                baisse – moment parfait pour y aller.
+                en profites pour manger. Les tendances en direct confirment qu&apos;à 15h
+                l&apos;attente baisse – moment parfait pour y aller.
               </span>
             </li>
           </ol>
@@ -4211,8 +4709,8 @@ function ContentFRSections() {
 
         <SubSection title="Quelle est la précision des prédictions ?">
           <p className="text-muted-foreground text-sm">
-            La précision varie selon le parc et la fenêtre de prévision. La page de détail de
-            chaque attraction affiche sa qualité de prédiction – de <strong>Faible</strong> à{' '}
+            La précision varie selon le parc et la fenêtre de prévision. La page de détail de chaque
+            attraction affiche sa qualité de prédiction – de <strong>Faible</strong> à{' '}
             <strong>Excellente</strong>. Plus de données historiques signifie des prévisions plus
             précises. Les prédictions à court terme (1–3 jours) sont intrinsèquement plus fiables
             que celles à long terme (7–14 jours).
@@ -4221,47 +4719,84 @@ function ContentFRSections() {
 
         <SubSection title="Graphiques sparkline des temps d'attente">
           <p className="text-muted-foreground text-sm">
-            Chaque carte d&apos;attraction affiche un petit graphique sparkline avec la tendance
-            des temps d&apos;attente sur les dernières heures. Tu peux voir instantanément si les
-            files augmentent, se stabilisent ou diminuent.
+            Chaque carte d&apos;attraction affiche un petit graphique sparkline avec la tendance des
+            temps d&apos;attente sur les dernières heures. Tu peux voir instantanément si les files
+            augmentent, se stabilisent ou diminuent.
           </p>
           <MockHourlyChart locale="en" />
         </SubSection>
 
         <TipBox label="Astuce">
-          Combine calendrier et prédictions : choisis un jour vert dans le calendrier, puis
-          consulte la prévision horaire sur la page de l&apos;attraction pour trouver le créneau
-          le plus calme. Tu arriveras toujours à la file la plus courte.
+          Combine calendrier et prédictions : choisis un jour vert dans le calendrier, puis consulte
+          la prévision horaire sur la page de l&apos;attraction pour trouver le créneau le plus
+          calme. Tu arriveras toujours à la file la plus courte.
         </TipBox>
       </Section>
 
       {/* ── 8. Pour qui ──────────────────────────────────────────────────────── */}
       <Section id="personas" title="Pour qui est park.fan ?">
         <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard emoji="👨‍👩‍👧‍👦" title="Familles" subtitle="Planifier une journée parfaite pour tout le monde">
+          <PersonaCard
+            emoji="👨‍👩‍👧‍👦"
+            title="Familles"
+            subtitle="Planifier une journée parfaite pour tout le monde"
+          >
             <Li>Calendrier d&apos;affluence : quel jour a les files les plus courtes ?</Li>
-            <Li>Météo dans le calendrier : journée pluvieuse ? Consulte les attractions intérieures !</Li>
+            <Li>
+              Météo dans le calendrier : journée pluvieuse ? Consulte les attractions intérieures !
+            </Li>
             <Li>Favoris : sauvegarde les 10 attractions incontournables pour les enfants.</Li>
-            <Li>Temps d&apos;attente en direct : décide à la volée quelle attraction faire ensuite.</Li>
+            <Li>
+              Temps d&apos;attente en direct : décide à la volée quelle attraction faire ensuite.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🎢" title="Passionnés de Parcs" subtitle="Chaque minute doit être optimisée">
-            <Li>Niveau d&apos;affluence (base P50) : comprends si une attraction est vraiment au-dessus de la moyenne.</Li>
+          <PersonaCard
+            emoji="🎢"
+            title="Passionnés de Parcs"
+            subtitle="Chaque minute doit être optimisée"
+          >
+            <Li>
+              Niveau d&apos;affluence (base P50) : comprends si une attraction est vraiment
+              au-dessus de la moyenne.
+            </Li>
             <Li>Tendances historiques : quand Taron a-t-il habituellement de courtes files ?</Li>
-            <Li>Indicateurs de tendance : file en hausse ? Attends 20 minutes, elle pourrait raccourcir.</Li>
-            <Li>File Individuelle / Lightning Lane : tous les types de file avec horaires et prix.</Li>
+            <Li>
+              Indicateurs de tendance : file en hausse ? Attends 20 minutes, elle pourrait
+              raccourcir.
+            </Li>
+            <Li>
+              File Individuelle / Lightning Lane : tous les types de file avec horaires et prix.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🌟" title="Primo-Visiteurs" subtitle="Première visite dans un grand parc à thème">
+          <PersonaCard
+            emoji="🌟"
+            title="Primo-Visiteurs"
+            subtitle="Première visite dans un grand parc à thème"
+          >
             <Li>Recherche : trouve ton parc rapidement, même si tu ne connais pas le nom exact.</Li>
             <Li>Carte du parc : repère-toi avant et pendant ta visite.</Li>
-            <Li>Badges de statut : vert = en marche, orange = bref incident, gris = fermé aujourd&apos;hui.</Li>
-            <Li>Calendrier d&apos;affluence : les couleurs disent tout – vert c&apos;est bien, rouge c&apos;est stressant.</Li>
+            <Li>
+              Badges de statut : vert = en marche, orange = bref incident, gris = fermé
+              aujourd&apos;hui.
+            </Li>
+            <Li>
+              Calendrier d&apos;affluence : les couleurs disent tout – vert c&apos;est bien, rouge
+              c&apos;est stressant.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="⚡" title="Visiteurs Spontanés" subtitle="Décision de dernière minute, efficacité maximale">
+          <PersonaCard
+            emoji="⚡"
+            title="Visiteurs Spontanés"
+            subtitle="Décision de dernière minute, efficacité maximale"
+          >
             <Li>Localisation : park.fan trouve automatiquement ton parc le plus proche.</Li>
-            <Li>Temps d&apos;attente en direct : vois instantanément ce qui est ouvert et combien de temps il faut attendre.</Li>
+            <Li>
+              Temps d&apos;attente en direct : vois instantanément ce qui est ouvert et combien de
+              temps il faut attendre.
+            </Li>
             <Li>Indicateurs de tendance : file en baisse ? Moment idéal pour la rejoindre.</Li>
           </PersonaCard>
         </div>
@@ -4283,17 +4818,35 @@ function ContentFRSections() {
       <Section id="faq" title="Questions Fréquentes">
         <div className="space-y-4">
           {[
-            { q: 'À quelle fréquence les temps d\'attente sont-ils mis à jour ?',    a: 'Les temps d\'attente sont mis à jour chaque minute. Pour certains parcs, les mises à jour ont lieu toutes les 2 à 5 minutes selon la disponibilité des données.' },
-            { q: 'D\'où proviennent les données ?',                                   a: 'park.fan obtient des données en direct de ThemeParks.wiki, Queue-Times.com et Wartezeiten.app.' },
-            { q: 'park.fan est-il gratuit ?',                                         a: 'Oui, park.fan est entièrement gratuit et ne nécessite aucune inscription.' },
-            { q: 'Les favoris sont-ils synchronisés entre les appareils ?',           a: 'Non, les favoris sont stockés localement dans ton navigateur (localStorage). Ils ne sont disponibles que sur l\'appareil où tu les as sauvegardés.' },
-            { q: 'Jusqu\'à quand le calendrier d\'affluence fait-il des prévisions ?', a: 'Le calendrier affiche des prévisions pour plus de 30 jours. Les prévisions pour des dates plus éloignées sont naturellement un peu moins précises que celles à court terme.' },
-            { q: 'Combien de parcs sont couverts ?',                                  a: 'park.fan couvre actuellement plus de 150 parcs avec plus de 5 000 attractions dans le monde entier – de Walt Disney World et Universal à Europa-Park, Phantasialand et des parcs en Asie et en Australie.' },
+            {
+              q: "À quelle fréquence les temps d'attente sont-ils mis à jour ?",
+              a: "Les temps d'attente sont mis à jour chaque minute. Pour certains parcs, les mises à jour ont lieu toutes les 2 à 5 minutes selon la disponibilité des données.",
+            },
+            {
+              q: "D'où proviennent les données ?",
+              a: 'park.fan obtient des données en direct de ThemeParks.wiki, Queue-Times.com et Wartezeiten.app.',
+            },
+            {
+              q: 'park.fan est-il gratuit ?',
+              a: 'Oui, park.fan est entièrement gratuit et ne nécessite aucune inscription.',
+            },
+            {
+              q: 'Les favoris sont-ils synchronisés entre les appareils ?',
+              a: "Non, les favoris sont stockés localement dans ton navigateur (localStorage). Ils ne sont disponibles que sur l'appareil où tu les as sauvegardés.",
+            },
+            {
+              q: "Jusqu'à quand le calendrier d'affluence fait-il des prévisions ?",
+              a: 'Le calendrier affiche des prévisions pour plus de 30 jours. Les prévisions pour des dates plus éloignées sont naturellement un peu moins précises que celles à court terme.',
+            },
+            {
+              q: 'Combien de parcs sont couverts ?',
+              a: 'park.fan couvre actuellement plus de 150 parcs avec plus de 5 000 attractions dans le monde entier – de Walt Disney World et Universal à Europa-Park, Phantasialand et des parcs en Asie et en Australie.',
+            },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -4306,11 +4859,9 @@ function ContentFRSections() {
   );
 }
 
-
 function ContentITSections() {
   return (
     <>
-
       {/* ── 1. Ricerca ───────────────────────────────────────────────────────── */}
       <Section id="suche" title="Ricerca">
         <p className="text-muted-foreground mb-4">
@@ -4323,13 +4874,13 @@ function ContentITSections() {
             <p>
               <strong>Desktop:</strong> Premi{' '}
               <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              o{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
+              o <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
               (Mac) per aprire la ricerca in qualsiasi momento.
             </p>
             <p>
-              <strong>Mobile e Desktop:</strong> Tocca l&apos;icona <Search className="inline h-4 w-4" /> nell&apos;intestazione
-              o nel campo di ricerca nella pagina principale.
+              <strong>Mobile e Desktop:</strong> Tocca l&apos;icona{' '}
+              <Search className="inline h-4 w-4" /> nell&apos;intestazione o nel campo di ricerca
+              nella pagina principale.
             </p>
           </div>
           <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
@@ -4338,11 +4889,15 @@ function ContentITSections() {
         <SubSection title="Cosa puoi cercare">
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parchi',           desc: 'Europa-Park, Phantasialand, Disneyland...' },
-              { icon: '🎢', label: 'Attrazioni',        desc: 'Taron, Silver Star, Space Mountain...' },
-              { icon: '🗺️', label: 'Città e Paesi',    desc: 'Orlando, Parigi, Germania...' },
-              { icon: '🎭', label: 'Spettacoli',        desc: 'Orari e programmi degli show' },
-              { icon: '🍽️', label: 'Ristoranti',       desc: 'Opzioni ristorative all\'interno dei parchi' },
+              { icon: '🌴', label: 'Parchi', desc: 'Europa-Park, Phantasialand, Disneyland...' },
+              { icon: '🎢', label: 'Attrazioni', desc: 'Taron, Silver Star, Space Mountain...' },
+              { icon: '🗺️', label: 'Città e Paesi', desc: 'Orlando, Parigi, Germania...' },
+              { icon: '🎭', label: 'Spettacoli', desc: 'Orari e programmi degli show' },
+              {
+                icon: '🍽️',
+                label: 'Ristoranti',
+                desc: "Opzioni ristorative all'interno dei parchi",
+              },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
@@ -4365,13 +4920,12 @@ function ContentITSections() {
       <Section id="standort" title="Posizione e Parchi Vicini">
         <p className="text-muted-foreground mb-4">
           Con la posizione attivata, park.fan diventa più intelligente: vedi i parchi e le
-          attrazioni nelle vicinanze ordinati per distanza. park.fan non memorizza la tua
-          posizione.
+          attrazioni nelle vicinanze ordinati per distanza. park.fan non memorizza la tua posizione.
         </p>
         <SubSection title="Navigazione nel parco">
           <p className="text-muted-foreground text-sm">
-            Quando sei in un parco, park.fan rileva automaticamente in quale parco ti trovi e
-            mostra &quot;Sei in [Nome del Parco]&quot; nella pagina principale. La mappa del parco
+            Quando sei in un parco, park.fan rileva automaticamente in quale parco ti trovi e mostra
+            &quot;Sei in [Nome del Parco]&quot; nella pagina principale. La mappa del parco
             visualizza la tua posizione in tempo reale – perfetta per muoverti tra le attrazioni.
           </p>
         </SubSection>
@@ -4381,8 +4935,8 @@ function ContentITSections() {
       {/* ── 3. Preferiti ─────────────────────────────────────────────────────── */}
       <Section id="favoriten" title="Preferiti">
         <p className="text-muted-foreground mb-4">
-          Salva parchi, attrazioni, spettacoli e ristoranti come preferiti per accedervi
-          rapidamente dalla pagina principale.
+          Salva parchi, attrazioni, spettacoli e ristoranti come preferiti per accedervi rapidamente
+          dalla pagina principale.
         </p>
 
         <SubSection title="Aggiungere un preferito">
@@ -4395,8 +4949,8 @@ function ContentITSections() {
 
         <SubSection title="Preferiti nella pagina principale">
           <p className="text-muted-foreground text-sm">
-            Con almeno un preferito salvato, nella pagina principale appare una sezione dedicata
-            con tutti i tuoi parchi, attrazioni, spettacoli e ristoranti salvati. Con la posizione
+            Con almeno un preferito salvato, nella pagina principale appare una sezione dedicata con
+            tutti i tuoi parchi, attrazioni, spettacoli e ristoranti salvati. Con la posizione
             attivata, vengono ordinati per distanza – il più vicino per primo.
           </p>
           <MockNearbyCards locale="en" />
@@ -4405,8 +4959,16 @@ function ContentITSections() {
         <SubSection title="Cosa viene salvato?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parchi',     desc: 'Stato, orari di apertura e livello di affluenza in un colpo d\'occhio' },
-              { icon: '🎢', label: 'Attrazioni', desc: 'Tempo di attesa in diretta e tendenza direttamente nel riepilogo' },
+              {
+                icon: '🌴',
+                label: 'Parchi',
+                desc: "Stato, orari di apertura e livello di affluenza in un colpo d'occhio",
+              },
+              {
+                icon: '🎢',
+                label: 'Attrazioni',
+                desc: 'Tempo di attesa in diretta e tendenza direttamente nel riepilogo',
+              },
               { icon: '🎭', label: 'Spettacoli', desc: 'Il prossimo orario sempre visibile' },
               { icon: '🍽️', label: 'Ristoranti', desc: 'Stato cucina e posizione' },
             ].map(({ icon, label, desc }) => (
@@ -4414,7 +4976,7 @@ function ContentITSections() {
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -4423,16 +4985,16 @@ function ContentITSections() {
 
         <TipBox label="Consiglio">
           Salva tra 5 e 10 attrazioni preferite del parco che intendi visitare. Il giorno della
-          visita vedrai immediatamente quali hanno tempi di attesa brevi – ideale per decidere
-          al volo.
+          visita vedrai immediatamente quali hanno tempi di attesa brevi – ideale per decidere al
+          volo.
         </TipBox>
       </Section>
 
       {/* ── 4. Pagina del Parco ──────────────────────────────────────────────── */}
       <Section id="parkseite" title="La Pagina del Parco">
         <p className="text-muted-foreground mb-4">
-          Ogni parco ha la propria pagina con dati in tempo reale, orari di apertura, un
-          calendario interattivo e una mappa.
+          Ogni parco ha la propria pagina con dati in tempo reale, orari di apertura, un calendario
+          interattivo e una mappa.
         </p>
         <InfoBox label="Nota">
           Tutti gli orari sono visualizzati nel <strong>fuso orario locale del parco</strong> –
@@ -4444,13 +5006,31 @@ function ContentITSections() {
         <SubSection title="Schede – Attrazioni, Spettacoli, Calendario, Mappa">
           <div className="space-y-3 text-sm">
             {[
-              { icon: '🎢', label: 'Attrazioni', desc: 'Tutte le attrazioni con tempo di attesa in diretta, stato, tendenza e confronto con la media.' },
-              { icon: '🎭', label: 'Spettacoli', desc: 'Tutti gli spettacoli con stato attuale e prossimi orari.' },
-              { icon: '📅', label: 'Calendario', desc: 'Previsione su 30+ giorni con previsioni di affluenza, meteo, festività e vacanze scolastiche.' },
-              { icon: '🗺️', label: 'Mappa',      desc: 'Mappa interattiva con tutte le attrazioni, gli spettacoli e i ristoranti.' },
+              {
+                icon: '🎢',
+                label: 'Attrazioni',
+                desc: 'Tutte le attrazioni con tempo di attesa in diretta, stato, tendenza e confronto con la media.',
+              },
+              {
+                icon: '🎭',
+                label: 'Spettacoli',
+                desc: 'Tutti gli spettacoli con stato attuale e prossimi orari.',
+              },
+              {
+                icon: '📅',
+                label: 'Calendario',
+                desc: 'Previsione su 30+ giorni con previsioni di affluenza, meteo, festività e vacanze scolastiche.',
+              },
+              {
+                icon: '🗺️',
+                label: 'Mappa',
+                desc: 'Mappa interattiva con tutte le attrazioni, gli spettacoli e i ristoranti.',
+              },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">{icon} {label}</p>
+                <p className="font-semibold">
+                  {icon} {label}
+                </p>
                 <p className="text-muted-foreground mt-0.5">{desc}</p>
               </div>
             ))}
@@ -4461,8 +5041,8 @@ function ContentITSections() {
         <SubSection title="Scheda Spettacoli: Orari in un colpo d'occhio">
           <p className="text-muted-foreground text-sm">
             La scheda Spettacoli elenca tutti gli show con i loro orari per oggi. Gli orari passati
-            appaiono barrati, il <strong>prossimo spettacolo</strong> è evidenziato in verde –
-            così sai sempre quando e dove essere.
+            appaiono barrati, il <strong>prossimo spettacolo</strong> è evidenziato in verde – così
+            sai sempre quando e dove essere.
           </p>
           <MockShowCards />
         </SubSection>
@@ -4471,17 +5051,41 @@ function ContentITSections() {
       {/* ── 5. Badge ─────────────────────────────────────────────────────────── */}
       <Section id="badges" title="Badge e Indicatori di Stato">
         <p className="text-muted-foreground mb-4">
-          park.fan utilizza un sistema di colori coerente per rendere le informazioni
-          immediatamente comprensibili.
+          park.fan utilizza un sistema di colori coerente per rendere le informazioni immediatamente
+          comprensibili.
         </p>
 
         <SubSection title="Stato di Parchi e Attrazioni">
           <div className="space-y-3">
             {[
-              { icon: Clock,         color: 'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40', label: 'In funzione',    desc: 'L\'attrazione / il parco è operativo. I tempi di attesa vengono aggiornati in diretta.' },
-              { icon: AlertTriangle, color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',                   label: 'Guasto',         desc: 'Chiuso temporaneamente – p. es. problema tecnico o pausa di sicurezza. Di solito breve.' },
-              { icon: XCircle,       color: 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',           label: 'Chiuso',         desc: 'Nessuna operazione oggi – chiusura stagionale o giorno di riposo programmato.' },
-              { icon: Wrench,        color: 'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40', label: 'Ristrutturazione', desc: 'Manutenzione prolungata. Chiuso per giorni o settimane.' },
+              {
+                icon: Clock,
+                color:
+                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                label: 'In funzione',
+                desc: "L'attrazione / il parco è operativo. I tempi di attesa vengono aggiornati in diretta.",
+              },
+              {
+                icon: AlertTriangle,
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                label: 'Guasto',
+                desc: 'Chiuso temporaneamente – p. es. problema tecnico o pausa di sicurezza. Di solito breve.',
+              },
+              {
+                icon: XCircle,
+                color:
+                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                label: 'Chiuso',
+                desc: 'Nessuna operazione oggi – chiusura stagionale o giorno di riposo programmato.',
+              },
+              {
+                icon: Wrench,
+                color:
+                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                label: 'Ristrutturazione',
+                desc: 'Manutenzione prolungata. Chiuso per giorni o settimane.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
@@ -4493,23 +5097,67 @@ function ContentITSections() {
 
         <SubSection title="Livelli di Affluenza">
           <p className="text-muted-foreground mb-3 text-sm">
-            Il livello di affluenza mostra quanto è affollato un parco o un&apos;attrazione
-            rispetto alla mediana storica dei tempi di attesa (P50). Il 100% significa esattamente
-            affollato come un giorno medio.
+            Il livello di affluenza mostra quanto è affollato un parco o un&apos;attrazione rispetto
+            alla mediana storica dei tempi di attesa (P50). Il 100% significa esattamente affollato
+            come un giorno medio.
           </p>
           <div className="space-y-3">
             {[
-              { color: 'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',   label: 'Molto Bassa', icon: User,          threshold: '≤ 60% di P50',   desc: 'Notevolmente più tranquillo del solito. Quasi nessuna coda – giorno ideale per visitare.' },
-              { color: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',                       label: 'Bassa',        icon: User,          threshold: '61–89% di P50',  desc: 'Sotto la media – brevi tempi di attesa per la maggior parte delle attrazioni.' },
-              { color: 'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',   label: 'Moderata',     icon: Users,         threshold: '90–110% di P50', desc: 'Giorno tipico – tempi di attesa nell\'intervallo previsto (±10% della mediana).' },
-              { color: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',                   label: 'Alta',         icon: Users,         threshold: '111–150% di P50', desc: 'Più affollato della media – tempi di attesa notevolmente più lunghi.' },
-              { color: 'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40', label: 'Molto Alta', icon: Users,         threshold: '151–200% di P50', desc: 'Molto affollato – attese quasi il doppio del solito. Arriva presto.' },
-              { color: 'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',       label: 'Estrema',      icon: AlertTriangle, threshold: '> 200% di P50',  desc: 'Affluenza record – più del doppio di un giorno tipico. Vacanze scolastiche, eventi speciali.' },
+              {
+                color:
+                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                label: 'Molto Bassa',
+                icon: User,
+                threshold: '≤ 60% di P50',
+                desc: 'Notevolmente più tranquillo del solito. Quasi nessuna coda – giorno ideale per visitare.',
+              },
+              {
+                color:
+                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                label: 'Bassa',
+                icon: User,
+                threshold: '61–89% di P50',
+                desc: 'Sotto la media – brevi tempi di attesa per la maggior parte delle attrazioni.',
+              },
+              {
+                color:
+                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                label: 'Moderata',
+                icon: Users,
+                threshold: '90–110% di P50',
+                desc: "Giorno tipico – tempi di attesa nell'intervallo previsto (±10% della mediana).",
+              },
+              {
+                color:
+                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                label: 'Alta',
+                icon: Users,
+                threshold: '111–150% di P50',
+                desc: 'Più affollato della media – tempi di attesa notevolmente più lunghi.',
+              },
+              {
+                color:
+                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                label: 'Molto Alta',
+                icon: Users,
+                threshold: '151–200% di P50',
+                desc: 'Molto affollato – attese quasi il doppio del solito. Arriva presto.',
+              },
+              {
+                color:
+                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                label: 'Estrema',
+                icon: AlertTriangle,
+                threshold: '> 200% di P50',
+                desc: 'Affluenza record – più del doppio di un giorno tipico. Vacanze scolastiche, eventi speciali.',
+              },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
-                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">{threshold}</span>
+                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">
+                    {threshold}
+                  </span>
                 </div>
                 <p className="text-muted-foreground text-sm">{desc}</p>
               </div>
@@ -4526,9 +5174,24 @@ function ContentITSections() {
         <SubSection title="Indicatori di Tendenza">
           <div className="space-y-2">
             {[
-              { icon: TrendingUp,   color: 'text-trend-up',    label: 'In aumento', desc: 'La coda si allunga. Unisciti presto.' },
-              { icon: Minus,        color: 'text-trend-stable', label: 'Stabile',    desc: 'Il tempo di attesa rimane costante.' },
-              { icon: TrendingDown, color: 'text-trend-down',   label: 'In calo',    desc: 'La coda si accorcia – buon momento per unirsi.' },
+              {
+                icon: TrendingUp,
+                color: 'text-trend-up',
+                label: 'In aumento',
+                desc: 'La coda si allunga. Unisciti presto.',
+              },
+              {
+                icon: Minus,
+                color: 'text-trend-stable',
+                label: 'Stabile',
+                desc: 'Il tempo di attesa rimane costante.',
+              },
+              {
+                icon: TrendingDown,
+                color: 'text-trend-down',
+                label: 'In calo',
+                desc: 'La coda si accorcia – buon momento per unirsi.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-center gap-3">
                 <span className={`flex w-28 items-center gap-1 text-sm font-semibold ${color}`}>
@@ -4544,10 +5207,31 @@ function ContentITSections() {
         <SubSection title="Tipi di Coda">
           <div className="space-y-3">
             {[
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: User,   label: 'Fila Singola',      desc: 'Spesso molto più breve della fila normale – ma non puoi andarci con il tuo gruppo.' },
-              { color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',             icon: Zap,    label: 'Lightning Lane',    desc: 'Pass express a pagamento (p. es. da Disney). Mostra il prezzo attuale e l\'ora di ritorno.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Ora di Ritorno',    desc: 'Coda virtuale gratuita – prenota uno slot orario e torna più tardi.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Gruppo d\'Imbarco', desc: 'Coda virtuale con numero di gruppo – popolare per le nuove attrazioni molto richieste.' },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: User,
+                label: 'Fila Singola',
+                desc: 'Spesso molto più breve della fila normale – ma non puoi andarci con il tuo gruppo.',
+              },
+              {
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                icon: Zap,
+                label: 'Lightning Lane',
+                desc: "Pass express a pagamento (p. es. da Disney). Mostra il prezzo attuale e l'ora di ritorno.",
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: 'Ora di Ritorno',
+                desc: 'Coda virtuale gratuita – prenota uno slot orario e torna più tardi.',
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: "Gruppo d'Imbarco",
+                desc: 'Coda virtuale con numero di gruppo – popolare per le nuove attrazioni molto richieste.',
+              },
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
@@ -4568,30 +5252,65 @@ function ContentITSections() {
 
         <SubSection title="Cosa mostra ogni scheda del calendario?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Una scheda tipica del calendario mostra:</p>
+            <p className="mb-2 font-semibold">Una scheda tipica del calendario mostra:</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Data e giorno della settimana</strong></li>
-              <li>🎯 <strong>Badge Affluenza</strong> (p. es. &quot;Molto Alta&quot;) – la previsione IA dell&apos;affollamento complessivo</li>
-              <li>🕐 <strong>Orari di apertura</strong> – o &quot;Est.&quot; se non ancora confermati ufficialmente</li>
-              <li>🌤️ <strong>Previsione meteo</strong> con temperature min./max.</li>
-              <li>⌚ <strong>Tempo di attesa medio</strong> – attesa media prevista su tutte le attrazioni</li>
-              <li>🎟️ <strong>Prezzo del biglietto</strong>, quando pubblicato dal parco</li>
+              <li>
+                📅 <strong>Data e giorno della settimana</strong>
+              </li>
+              <li>
+                🎯 <strong>Badge Affluenza</strong> (p. es. &quot;Molto Alta&quot;) – la previsione
+                IA dell&apos;affollamento complessivo
+              </li>
+              <li>
+                🕐 <strong>Orari di apertura</strong> – o &quot;Est.&quot; se non ancora confermati
+                ufficialmente
+              </li>
+              <li>
+                🌤️ <strong>Previsione meteo</strong> con temperature min./max.
+              </li>
+              <li>
+                ⌚ <strong>Tempo di attesa medio</strong> – attesa media prevista su tutte le
+                attrazioni
+              </li>
+              <li>
+                🎟️ <strong>Prezzo del biglietto</strong>, quando pubblicato dal parco
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
-            <strong>Cosa significa &quot;Est.&quot;?</strong> Gli orari contrassegnati &quot;Est.&quot;
-            (Stimato) non sono ancora stati confermati ufficialmente dal parco. park.fan li
-            deriva da pattern storici – possono ancora cambiare.
+            <strong>Cosa significa &quot;Est.&quot;?</strong> Gli orari contrassegnati
+            &quot;Est.&quot; (Stimato) non sono ancora stati confermati ufficialmente dal parco.
+            park.fan li deriva da pattern storici – possono ancora cambiare.
           </p>
         </SubSection>
 
         <SubSection title="Icone della scheda del calendario">
           <div className="space-y-2 text-sm">
             {[
-              { icon: PartyPopper, color: 'text-orange-500', label: 'Festività',         desc: 'I parchi spesso aprono più a lungo, ma sono anche più affollati. Controlla la previsione!' },
-              { icon: Backpack,    color: 'text-yellow-500', label: 'Vacanze Scolastiche', desc: 'Di solito i giorni più affollati dell\'anno – possibili tempi di attesa estremi.' },
-              { icon: Calendar,   color: 'text-blue-500',   label: 'Ponte',              desc: 'Probabilmente più affollato poiché molte persone prolungano i fine settimana lunghi.' },
-              { icon: XCircle,    color: 'text-red-500',    label: 'Parco Chiuso',       desc: 'Nessuna operazione quel giorno – nessuna previsione disponibile.' },
+              {
+                icon: PartyPopper,
+                color: 'text-orange-500',
+                label: 'Festività',
+                desc: 'I parchi spesso aprono più a lungo, ma sono anche più affollati. Controlla la previsione!',
+              },
+              {
+                icon: Backpack,
+                color: 'text-yellow-500',
+                label: 'Vacanze Scolastiche',
+                desc: "Di solito i giorni più affollati dell'anno – possibili tempi di attesa estremi.",
+              },
+              {
+                icon: Calendar,
+                color: 'text-blue-500',
+                label: 'Ponte',
+                desc: 'Probabilmente più affollato poiché molte persone prolungano i fine settimana lunghi.',
+              },
+              {
+                icon: XCircle,
+                color: 'text-red-500',
+                label: 'Parco Chiuso',
+                desc: 'Nessuna operazione quel giorno – nessuna previsione disponibile.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
@@ -4610,11 +5329,17 @@ function ContentITSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
-              <span>Apri la pagina del parco e passa alla scheda <strong>Calendario</strong>.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                Apri la pagina del parco e passa alla scheda <strong>Calendario</strong>.
+              </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
                 Vedrai subito le settimane di vacanze scolastiche – molte schede con l&apos;icona{' '}
                 <Backpack className="inline h-4 w-4 text-yellow-500" /> e badge{' '}
@@ -4622,7 +5347,9 @@ function ContentITSections() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
                 Cerca un martedì o mercoledì <em>senza</em> icona di festività – mostrano spesso
                 <strong> &quot;Bassa&quot;</strong> o <strong>&quot;Moderata&quot;</strong>. Gli
@@ -4630,8 +5357,13 @@ function ContentITSections() {
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">4</span>
-              <span>Acquista i biglietti in anticipo – nei giorni verdi del calendario, i posti possono essere limitati.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Acquista i biglietti in anticipo – nei giorni verdi del calendario, i posti possono
+                essere limitati.
+              </span>
             </li>
           </ol>
           <LiveCalendarExample locale="en" />
@@ -4663,10 +5395,26 @@ function ContentITSections() {
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: '📊', title: 'Dati storici',          desc: 'Milioni di punti dati per attrazione, giorno della settimana e ora del giorno.' },
-            { icon: '📅', title: 'Calendari delle ferie', desc: 'Vacanze scolastiche e festività in Europa e nel mondo.' },
-            { icon: '🌤️', title: 'Previsioni meteo',      desc: 'Temperatura, pioggia e sole – il maltempo spinge le folle verso le attrazioni al coperto.' },
-            { icon: '🎉', title: 'Eventi speciali',        desc: 'Notti di Halloween, eventi natalizi e altre date specifiche dei parchi generano un\'affluenza significativamente maggiore.' },
+            {
+              icon: '📊',
+              title: 'Dati storici',
+              desc: 'Milioni di punti dati per attrazione, giorno della settimana e ora del giorno.',
+            },
+            {
+              icon: '📅',
+              title: 'Calendari delle ferie',
+              desc: 'Vacanze scolastiche e festività in Europa e nel mondo.',
+            },
+            {
+              icon: '🌤️',
+              title: 'Previsioni meteo',
+              desc: 'Temperatura, pioggia e sole – il maltempo spinge le folle verso le attrazioni al coperto.',
+            },
+            {
+              icon: '🎉',
+              title: 'Eventi speciali',
+              desc: "Notti di Halloween, eventi natalizi e altre date specifiche dei parchi generano un'affluenza significativamente maggiore.",
+            },
           ].map(({ icon, title, desc }) => (
             <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
               <span className="text-2xl">{icon}</span>
@@ -4684,22 +5432,25 @@ function ContentITSections() {
               <p className="font-semibold">📅 Nel calendario di affluenza</p>
               <p className="text-muted-foreground mt-0.5">
                 Ogni scheda del calendario contiene una previsione giornaliera: livello di
-                affluenza, tempo di attesa medio e orari di apertura – fino a 30+ giorni di anticipo.
+                affluenza, tempo di attesa medio e orari di apertura – fino a 30+ giorni di
+                anticipo.
               </p>
             </div>
             <div className="bg-muted/30 rounded-lg p-3">
               <p className="font-semibold">⏰ Badge ora di punta sulla pagina del parco</p>
               <p className="text-muted-foreground mt-0.5">
-                L&apos;intestazione del parco mostra quando è previsto il picco di affluenza di
-                oggi – p. es. &quot;Picco tra 1h 30min&quot;. Pianifica una pausa pranzo o visita
+                L&apos;intestazione del parco mostra quando è previsto il picco di affluenza di oggi
+                – p. es. &quot;Picco tra 1h 30min&quot;. Pianifica una pausa pranzo o visita
                 un&apos;attrazione meno popolare proprio in quella finestra.
               </p>
             </div>
             <div className="bg-muted/30 rounded-lg p-3">
-              <p className="font-semibold">📈 Grafico di previsione oraria sulla pagina dell&apos;attrazione</p>
+              <p className="font-semibold">
+                📈 Grafico di previsione oraria sulla pagina dell&apos;attrazione
+              </p>
               <p className="text-muted-foreground mt-0.5">
-                Ogni attrazione ha la propria pagina con un grafico che mostra come si prevede
-                che i tempi di attesa evolvano nel corso della giornata – per oggi e domani.
+                Ogni attrazione ha la propria pagina con un grafico che mostra come si prevede che i
+                tempi di attesa evolvano nel corso della giornata – per oggi e domani.
               </p>
             </div>
           </div>
@@ -4712,24 +5463,30 @@ function ContentITSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
               <span>
-                <strong>All&apos;ingresso:</strong> Il badge ora di punta mostra &quot;Picco tra ~2h&quot; –
-                hai fino alle 11:30 circa per i tuoi primi highlights.
+                <strong>All&apos;ingresso:</strong> Il badge ora di punta mostra &quot;Picco tra
+                ~2h&quot; – hai fino alle 11:30 circa per i tuoi primi highlights.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
-                <strong>Apri la pagina di Taron:</strong> Il grafico di previsione mostra 9:30 ≈ 15 min,
-                12:00 ≈ 65 min, 15:00 ≈ 40 min → vai subito all&apos;apertura o nel pomeriggio.
+                <strong>Apri la pagina di Taron:</strong> Il grafico di previsione mostra 9:30 ≈ 15
+                min, 12:00 ≈ 65 min, 15:00 ≈ 40 min → vai subito all&apos;apertura o nel pomeriggio.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
-                <strong>Pranzo durante il picco:</strong> Invece di fare la coda a mezzogiorno,
-                ne approfitti per mangiare. Le tendenze in diretta confermano che alle 15:00
+                <strong>Pranzo durante il picco:</strong> Invece di fare la coda a mezzogiorno, ne
+                approfitti per mangiare. Le tendenze in diretta confermano che alle 15:00
                 l&apos;attesa scende – momento perfetto per andare.
               </span>
             </li>
@@ -4739,17 +5496,17 @@ function ContentITSections() {
         <SubSection title="Quanto sono accurate le previsioni?">
           <p className="text-muted-foreground text-sm">
             La precisione varia in base al parco e all&apos;orizzonte di previsione. La pagina di
-            dettaglio di ogni attrazione mostra la sua qualità predittiva – da <strong>Scarsa</strong>{' '}
-            a <strong>Eccellente</strong>. Più dati storici significa previsioni più precise. Le
-            previsioni a breve termine (1–3 giorni) sono intrinsecamente più affidabili di quelle
-            a lungo termine (7–14 giorni).
+            dettaglio di ogni attrazione mostra la sua qualità predittiva – da{' '}
+            <strong>Scarsa</strong> a <strong>Eccellente</strong>. Più dati storici significa
+            previsioni più precise. Le previsioni a breve termine (1–3 giorni) sono intrinsecamente
+            più affidabili di quelle a lungo termine (7–14 giorni).
           </p>
         </SubSection>
 
         <SubSection title="Grafici sparkline dei tempi di attesa">
           <p className="text-muted-foreground text-sm">
-            Ogni scheda attrazione mostra un piccolo grafico sparkline con la tendenza dei tempi
-            di attesa nelle ultime ore. Puoi vedere istantaneamente se le code stanno aumentando,
+            Ogni scheda attrazione mostra un piccolo grafico sparkline con la tendenza dei tempi di
+            attesa nelle ultime ore. Puoi vedere istantaneamente se le code stanno aumentando,
             rimanendo stabili o diminuendo.
           </p>
           <MockHourlyChart locale="en" />
@@ -4765,30 +5522,55 @@ function ContentITSections() {
       {/* ── 8. Per chi ───────────────────────────────────────────────────────── */}
       <Section id="personas" title="A chi è rivolto park.fan?">
         <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard emoji="👨‍👩‍👧‍👦" title="Famiglie" subtitle="Pianificare una giornata perfetta per tutti">
+          <PersonaCard
+            emoji="👨‍👩‍👧‍👦"
+            title="Famiglie"
+            subtitle="Pianificare una giornata perfetta per tutti"
+          >
             <Li>Calendario di affluenza: quale giorno ha le code più brevi?</Li>
             <Li>Meteo nel calendario: giornata piovosa? Controlla le attrazioni al coperto!</Li>
             <Li>Preferiti: salva le 10 attrazioni imperdibili per i bambini.</Li>
             <Li>Tempi di attesa in diretta: decidi al volo quale attrazione fare dopo.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🎢" title="Appassionati di Parchi" subtitle="Ogni minuto deve essere ottimizzato">
-            <Li>Livello di affluenza (base P50): capisci se un&apos;attrazione è davvero sopra la media.</Li>
+          <PersonaCard
+            emoji="🎢"
+            title="Appassionati di Parchi"
+            subtitle="Ogni minuto deve essere ottimizzato"
+          >
+            <Li>
+              Livello di affluenza (base P50): capisci se un&apos;attrazione è davvero sopra la
+              media.
+            </Li>
             <Li>Tendenze storiche: quando Taron ha di solito brevi attese?</Li>
             <Li>Indicatori di tendenza: la coda sale? Aspetta 20 minuti e potrebbe accorciarsi.</Li>
             <Li>Fila Singola / Lightning Lane: tutti i tipi di coda con tempi e prezzi.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🌟" title="Visitatori per la Prima Volta" subtitle="Prima visita in un grande parco a tema">
+          <PersonaCard
+            emoji="🌟"
+            title="Visitatori per la Prima Volta"
+            subtitle="Prima visita in un grande parco a tema"
+          >
             <Li>Ricerca: trova il tuo parco rapidamente, anche se non conosci il nome esatto.</Li>
             <Li>Mappa del parco: orientati prima e durante la visita.</Li>
-            <Li>Badge di stato: verde = in funzione, arancione = breve problema, grigio = chiuso oggi.</Li>
-            <Li>Calendario di affluenza: i colori dicono tutto – verde è bene, rosso è stressante.</Li>
+            <Li>
+              Badge di stato: verde = in funzione, arancione = breve problema, grigio = chiuso oggi.
+            </Li>
+            <Li>
+              Calendario di affluenza: i colori dicono tutto – verde è bene, rosso è stressante.
+            </Li>
           </PersonaCard>
 
-          <PersonaCard emoji="⚡" title="Visitatori Spontanei" subtitle="Decisione dell'ultimo minuto, massima efficienza">
+          <PersonaCard
+            emoji="⚡"
+            title="Visitatori Spontanei"
+            subtitle="Decisione dell'ultimo minuto, massima efficienza"
+          >
             <Li>Posizione: park.fan trova automaticamente il parco più vicino a te.</Li>
-            <Li>Tempi di attesa in diretta: vedi istantaneamente cosa è aperto e quanto si aspetta.</Li>
+            <Li>
+              Tempi di attesa in diretta: vedi istantaneamente cosa è aperto e quanto si aspetta.
+            </Li>
             <Li>Indicatori di tendenza: la coda scende? Il momento perfetto per unirsi.</Li>
           </PersonaCard>
         </div>
@@ -4797,8 +5579,8 @@ function ContentITSections() {
       {/* ── 9. Parchi popolari ──────────────────────────────────────────────── */}
       <Section id="parks" title="Parchi popolari">
         <p className="text-muted-foreground mb-6">
-          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati
-          nella tua regione con dati in tempo reale:
+          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati nella
+          tua regione con dati in tempo reale:
         </p>
         <PopularParksGrid
           locale="it"
@@ -4810,17 +5592,35 @@ function ContentITSections() {
       <Section id="faq" title="Domande Frequenti">
         <div className="space-y-4">
           {[
-            { q: 'Con quale frequenza vengono aggiornati i tempi di attesa?',          a: 'I tempi di attesa vengono aggiornati ogni minuto. Per alcuni parchi, gli aggiornamenti avvengono ogni 2–5 minuti in base alla disponibilità dei dati.' },
-            { q: 'Da dove provengono i dati?',                                          a: 'park.fan ottiene dati in diretta da ThemeParks.wiki, Queue-Times.com e Wartezeiten.app.' },
-            { q: 'park.fan è gratuito?',                                                a: 'Sì, park.fan è completamente gratuito e non richiede registrazione.' },
-            { q: 'I preferiti vengono sincronizzati tra i dispositivi?',               a: 'No, i preferiti vengono salvati localmente nel tuo browser (localStorage). Sono disponibili solo sul dispositivo in cui li hai salvati.' },
-            { q: 'Fino a quanto tempo in anticipo il calendario di affluenza fa previsioni?', a: 'Il calendario mostra previsioni per oltre 30 giorni. Le previsioni per date più lontane sono naturalmente un po\' meno precise di quelle a breve termine.' },
-            { q: 'Quanti parchi sono coperti?',                                         a: 'park.fan copre attualmente oltre 150 parchi con più di 5.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.'},
+            {
+              q: 'Con quale frequenza vengono aggiornati i tempi di attesa?',
+              a: 'I tempi di attesa vengono aggiornati ogni minuto. Per alcuni parchi, gli aggiornamenti avvengono ogni 2–5 minuti in base alla disponibilità dei dati.',
+            },
+            {
+              q: 'Da dove provengono i dati?',
+              a: 'park.fan ottiene dati in diretta da ThemeParks.wiki, Queue-Times.com e Wartezeiten.app.',
+            },
+            {
+              q: 'park.fan è gratuito?',
+              a: 'Sì, park.fan è completamente gratuito e non richiede registrazione.',
+            },
+            {
+              q: 'I preferiti vengono sincronizzati tra i dispositivi?',
+              a: 'No, i preferiti vengono salvati localmente nel tuo browser (localStorage). Sono disponibili solo sul dispositivo in cui li hai salvati.',
+            },
+            {
+              q: 'Fino a quanto tempo in anticipo il calendario di affluenza fa previsioni?',
+              a: "Il calendario mostra previsioni per oltre 30 giorni. Le previsioni per date più lontane sono naturalmente un po' meno precise di quelle a breve termine.",
+            },
+            {
+              q: 'Quanti parchi sono coperti?',
+              a: 'park.fan copre attualmente oltre 150 parchi con più di 5.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.',
+            },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -4833,16 +5633,14 @@ function ContentITSections() {
   );
 }
 
-
 function ContentNLSections() {
   return (
     <>
-
       {/* ── 1. Zoeken ────────────────────────────────────────────────────────── */}
       <Section id="suche" title="Zoeken">
         <p className="text-muted-foreground mb-4">
-          De globale zoekfunctie is de snelste manier om een park, attractie, show of restaurant
-          te vinden – zowel op desktop als mobiel.
+          De globale zoekfunctie is de snelste manier om een park, attractie, show of restaurant te
+          vinden – zowel op desktop als mobiel.
         </p>
 
         <SubSection title="Zoeken openen">
@@ -4850,13 +5648,12 @@ function ContentNLSections() {
             <p>
               <strong>Desktop:</strong> Druk op{' '}
               <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">Ctrl + K</kbd>{' '}
-              of{' '}
-              <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
+              of <kbd className="bg-muted rounded border px-2 py-0.5 font-mono text-xs">⌘ + K</kbd>{' '}
               (Mac) om de zoekfunctie op elk moment te openen.
             </p>
             <p>
-              <strong>Mobiel en Desktop:</strong> Tik op het <Search className="inline h-4 w-4" />-icoon
-              in de koptekst of het zoekveld op de startpagina.
+              <strong>Mobiel en Desktop:</strong> Tik op het <Search className="inline h-4 w-4" />
+              -icoon in de koptekst of het zoekveld op de startpagina.
             </p>
           </div>
           <HeroSearchInput placeholder="Europa-Park, Taron, ..." />
@@ -4865,11 +5662,11 @@ function ContentNLSections() {
         <SubSection title="Wat kun je zoeken?">
           <div className="grid gap-3 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parken',          desc: 'Europa-Park, Phantasialand, Disneyland...' },
-              { icon: '🎢', label: 'Attracties',      desc: 'Taron, Silver Star, Space Mountain...' },
+              { icon: '🌴', label: 'Parken', desc: 'Europa-Park, Phantasialand, Disneyland...' },
+              { icon: '🎢', label: 'Attracties', desc: 'Taron, Silver Star, Space Mountain...' },
               { icon: '🗺️', label: 'Steden en Landen', desc: 'Orlando, Parijs, Duitsland...' },
-              { icon: '🎭', label: 'Shows',            desc: 'Showschema\'s en tijden' },
-              { icon: '🍽️', label: 'Restaurants',     desc: 'Eetmogelijkheden in parken' },
+              { icon: '🎭', label: 'Shows', desc: "Showschema's en tijden" },
+              { icon: '🍽️', label: 'Restaurants', desc: 'Eetmogelijkheden in parken' },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
@@ -4891,14 +5688,14 @@ function ContentNLSections() {
       {/* ── 2. Locatie ───────────────────────────────────────────────────────── */}
       <Section id="standort" title="Locatie en Nabijgelegen Parken">
         <p className="text-muted-foreground mb-4">
-          Met je locatie ingeschakeld wordt park.fan slimmer: zie nabijgelegen parken en
-          attracties gesorteerd op afstand. park.fan slaat je locatie niet op.
+          Met je locatie ingeschakeld wordt park.fan slimmer: zie nabijgelegen parken en attracties
+          gesorteerd op afstand. park.fan slaat je locatie niet op.
         </p>
         <SubSection title="Navigatie in het park">
           <p className="text-muted-foreground text-sm">
             Wanneer je in een park bent, detecteert park.fan automatisch in welk park je bent en
-            toont &quot;Je bent in [Parknaam]&quot; op de startpagina. De parkkaart toont je
-            live locatie – perfect voor navigeren tussen attracties.
+            toont &quot;Je bent in [Parknaam]&quot; op de startpagina. De parkkaart toont je live
+            locatie – perfect voor navigeren tussen attracties.
           </p>
         </SubSection>
         <NearbyParksCard />
@@ -4907,23 +5704,23 @@ function ContentNLSections() {
       {/* ── 3. Favorieten ────────────────────────────────────────────────────── */}
       <Section id="favoriten" title="Favorieten">
         <p className="text-muted-foreground mb-4">
-          Sla parken, attracties, shows en restaurants op als favorieten voor snelle toegang
-          direct vanaf de startpagina.
+          Sla parken, attracties, shows en restaurants op als favorieten voor snelle toegang direct
+          vanaf de startpagina.
         </p>
 
         <SubSection title="Een favoriet toevoegen">
           <p className="text-sm">
-            Klik op de <Star className="inline h-4 w-4 text-yellow-500" />-ster op een park- of
-            attractiekaart. Favorieten worden lokaal opgeslagen in je browser – geen aanmelding
-            vereist.
+            Klik op de <Star className="inline h-4 w-4 text-yellow-500" />
+            -ster op een park- of attractiekaart. Favorieten worden lokaal opgeslagen in je browser
+            – geen aanmelding vereist.
           </p>
         </SubSection>
 
         <SubSection title="Favorieten op de startpagina">
           <p className="text-muted-foreground text-sm">
-            Zodra je minstens één favoriet hebt, verschijnt er een speciale sectie op de
-            startpagina met al je opgeslagen parken, attracties, shows en restaurants. Met locatie
-            ingeschakeld worden ze gesorteerd op afstand – dichtstbijzijnde eerst.
+            Zodra je minstens één favoriet hebt, verschijnt er een speciale sectie op de startpagina
+            met al je opgeslagen parken, attracties, shows en restaurants. Met locatie ingeschakeld
+            worden ze gesorteerd op afstand – dichtstbijzijnde eerst.
           </p>
           <MockNearbyCards locale="en" />
         </SubSection>
@@ -4931,16 +5728,24 @@ function ContentNLSections() {
         <SubSection title="Wat wordt opgeslagen?">
           <div className="grid gap-2 sm:grid-cols-2">
             {[
-              { icon: '🌴', label: 'Parken',     desc: 'Status, openingstijden en drukte in één oogopslag' },
-              { icon: '🎢', label: 'Attracties', desc: 'Live wachttijd en trend direct in het overzicht' },
-              { icon: '🎭', label: 'Shows',       desc: 'Volgende showtime altijd zichtbaar' },
+              {
+                icon: '🌴',
+                label: 'Parken',
+                desc: 'Status, openingstijden en drukte in één oogopslag',
+              },
+              {
+                icon: '🎢',
+                label: 'Attracties',
+                desc: 'Live wachttijd en trend direct in het overzicht',
+              },
+              { icon: '🎭', label: 'Shows', desc: 'Volgende showtime altijd zichtbaar' },
               { icon: '🍽️', label: 'Restaurants', desc: 'Keukenstatus en locatie' },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 flex items-start gap-3 rounded-lg p-3">
                 <span className="text-xl">{icon}</span>
                 <div>
                   <p className="font-semibold">{label}</p>
-                  <p className="text-muted-foreground text-xs mt-0.5">{desc}</p>
+                  <p className="text-muted-foreground mt-0.5 text-xs">{desc}</p>
                 </div>
               </div>
             ))}
@@ -4956,8 +5761,8 @@ function ContentNLSections() {
       {/* ── 4. Parkpagina ────────────────────────────────────────────────────── */}
       <Section id="parkseite" title="De Parkpagina">
         <p className="text-muted-foreground mb-4">
-          Elk park heeft zijn eigen pagina met live data, openingstijden, een interactieve
-          kalender en een kaart.
+          Elk park heeft zijn eigen pagina met live data, openingstijden, een interactieve kalender
+          en een kaart.
         </p>
         <InfoBox label="Opmerking">
           Alle tijden worden weergegeven in de <strong>lokale tijdzone van het park</strong> –
@@ -4969,13 +5774,31 @@ function ContentNLSections() {
         <SubSection title="Tabbladen – Attracties, Shows, Kalender, Kaart">
           <div className="space-y-3 text-sm">
             {[
-              { icon: '🎢', label: 'Attracties', desc: 'Alle attracties met live wachttijd, status, trend en vergelijking met het gemiddelde.' },
-              { icon: '🎭', label: 'Shows',       desc: 'Alle shows met huidige status en komende tijden.' },
-              { icon: '📅', label: 'Kalender',    desc: 'Vooruitblik van 30+ dagen met druktevoorspellingen, weer, feestdagen en schoolvakanties.' },
-              { icon: '🗺️', label: 'Kaart',       desc: 'Interactieve kaart met alle attracties, shows en restaurants.' },
+              {
+                icon: '🎢',
+                label: 'Attracties',
+                desc: 'Alle attracties met live wachttijd, status, trend en vergelijking met het gemiddelde.',
+              },
+              {
+                icon: '🎭',
+                label: 'Shows',
+                desc: 'Alle shows met huidige status en komende tijden.',
+              },
+              {
+                icon: '📅',
+                label: 'Kalender',
+                desc: 'Vooruitblik van 30+ dagen met druktevoorspellingen, weer, feestdagen en schoolvakanties.',
+              },
+              {
+                icon: '🗺️',
+                label: 'Kaart',
+                desc: 'Interactieve kaart met alle attracties, shows en restaurants.',
+              },
             ].map(({ icon, label, desc }) => (
               <div key={label} className="bg-muted/30 rounded-lg p-3">
-                <p className="font-semibold">{icon} {label}</p>
+                <p className="font-semibold">
+                  {icon} {label}
+                </p>
                 <p className="text-muted-foreground mt-0.5">{desc}</p>
               </div>
             ))}
@@ -4985,9 +5808,9 @@ function ContentNLSections() {
 
         <SubSection title="Tabblad Shows: Tijden in één oogopslag">
           <p className="text-muted-foreground text-sm">
-            Het tabblad Shows toont alle shows met hun tijden voor vandaag. Verstreken tijden
-            zijn doorgestreept, de <strong>volgende showtime</strong> is groen gemarkeerd –
-            zodat je altijd weet wanneer en waar je moet zijn.
+            Het tabblad Shows toont alle shows met hun tijden voor vandaag. Verstreken tijden zijn
+            doorgestreept, de <strong>volgende showtime</strong> is groen gemarkeerd – zodat je
+            altijd weet wanneer en waar je moet zijn.
           </p>
           <MockShowCards />
         </SubSection>
@@ -5002,10 +5825,34 @@ function ContentNLSections() {
         <SubSection title="Park- en Attractiestatus">
           <div className="space-y-3">
             {[
-              { icon: Clock,         color: 'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40', label: 'In bedrijf',  desc: 'Attractie / park is in werking. Wachttijden worden live bijgewerkt.' },
-              { icon: AlertTriangle, color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',                   label: 'Storing',     desc: 'Tijdelijk gesloten – bijv. technisch probleem of veiligheidspauze. Meestal kort.' },
-              { icon: XCircle,       color: 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',           label: 'Gesloten',    desc: 'Vandaag niet in bedrijf – seizoensluiting of geplande rustdag.' },
-              { icon: Wrench,        color: 'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40', label: 'Onderhoud', desc: 'Uitgebreid onderhoud. Gesloten voor dagen of weken.' },
+              {
+                icon: Clock,
+                color:
+                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                label: 'In bedrijf',
+                desc: 'Attractie / park is in werking. Wachttijden worden live bijgewerkt.',
+              },
+              {
+                icon: AlertTriangle,
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                label: 'Storing',
+                desc: 'Tijdelijk gesloten – bijv. technisch probleem of veiligheidspauze. Meestal kort.',
+              },
+              {
+                icon: XCircle,
+                color:
+                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                label: 'Gesloten',
+                desc: 'Vandaag niet in bedrijf – seizoensluiting of geplande rustdag.',
+              },
+              {
+                icon: Wrench,
+                color:
+                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                label: 'Onderhoud',
+                desc: 'Uitgebreid onderhoud. Gesloten voor dagen of weken.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
@@ -5017,23 +5864,66 @@ function ContentNLSections() {
 
         <SubSection title="Drukteniveaus">
           <p className="text-muted-foreground mb-3 text-sm">
-            Het drukteniveau toont hoe druk een park of attractie is ten opzichte van de
-            historische mediaan van de wachttijd (P50). 100% betekent precies even druk als een
-            gemiddelde dag.
+            Het drukteniveau toont hoe druk een park of attractie is ten opzichte van de historische
+            mediaan van de wachttijd (P50). 100% betekent precies even druk als een gemiddelde dag.
           </p>
           <div className="space-y-3">
             {[
-              { color: 'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',   label: 'Zeer Laag', icon: User,          threshold: '≤ 60% van P50',   desc: 'Merkbaar rustiger dan gewoonlijk. Bijna geen wachtrijen – ideale bezoekdag.' },
-              { color: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',                       label: 'Laag',      icon: User,          threshold: '61–89% van P50',  desc: 'Onder gemiddeld – korte wachttijden bij de meeste attracties.' },
-              { color: 'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',   label: 'Matig',     icon: Users,         threshold: '90–110% van P50', desc: 'Typische dag – wachttijden binnen het verwachte bereik (±10% van mediaan).' },
-              { color: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',                   label: 'Hoog',      icon: Users,         threshold: '111–150% van P50', desc: 'Drukker dan gemiddeld – merkbaar langere wachttijden.' },
-              { color: 'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40', label: 'Zeer Hoog', icon: Users,       threshold: '151–200% van P50', desc: 'Zeer druk – wachttijden bijna twee keer zo lang als gewoonlijk. Kom vroeg aan.' },
-              { color: 'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',       label: 'Extreem',   icon: AlertTriangle, threshold: '> 200% van P50',  desc: 'Recorddrukte – meer dan twee keer zo druk als een normale dag. Schoolvakanties, speciale evenementen.' },
+              {
+                color:
+                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                label: 'Zeer Laag',
+                icon: User,
+                threshold: '≤ 60% van P50',
+                desc: 'Merkbaar rustiger dan gewoonlijk. Bijna geen wachtrijen – ideale bezoekdag.',
+              },
+              {
+                color:
+                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                label: 'Laag',
+                icon: User,
+                threshold: '61–89% van P50',
+                desc: 'Onder gemiddeld – korte wachttijden bij de meeste attracties.',
+              },
+              {
+                color:
+                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                label: 'Matig',
+                icon: Users,
+                threshold: '90–110% van P50',
+                desc: 'Typische dag – wachttijden binnen het verwachte bereik (±10% van mediaan).',
+              },
+              {
+                color:
+                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                label: 'Hoog',
+                icon: Users,
+                threshold: '111–150% van P50',
+                desc: 'Drukker dan gemiddeld – merkbaar langere wachttijden.',
+              },
+              {
+                color:
+                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                label: 'Zeer Hoog',
+                icon: Users,
+                threshold: '151–200% van P50',
+                desc: 'Zeer druk – wachttijden bijna twee keer zo lang als gewoonlijk. Kom vroeg aan.',
+              },
+              {
+                color:
+                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                label: 'Extreem',
+                icon: AlertTriangle,
+                threshold: '> 200% van P50',
+                desc: 'Recorddrukte – meer dan twee keer zo druk als een normale dag. Schoolvakanties, speciale evenementen.',
+              },
             ].map(({ color, label, icon, threshold, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <div className="flex min-w-[100px] sm:min-w-[120px] flex-col gap-1">
+                <div className="flex min-w-[100px] flex-col gap-1 sm:min-w-[120px]">
                   <DemoBadge color={color} label={label} icon={icon} />
-                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">{threshold}</span>
+                  <span className="text-muted-foreground pl-1 font-mono text-[10px]">
+                    {threshold}
+                  </span>
                 </div>
                 <p className="text-muted-foreground text-sm">{desc}</p>
               </div>
@@ -5049,9 +5939,24 @@ function ContentNLSections() {
         <SubSection title="Trendindicatoren">
           <div className="space-y-2">
             {[
-              { icon: TrendingUp,   color: 'text-trend-up',    label: 'Stijgend', desc: 'Wachtrij wordt langer. Sluit snel aan.' },
-              { icon: Minus,        color: 'text-trend-stable', label: 'Stabiel',  desc: 'Wachttijd blijft constant.' },
-              { icon: TrendingDown, color: 'text-trend-down',   label: 'Dalend',   desc: 'Wachtrij wordt korter – goed moment om aan te sluiten.' },
+              {
+                icon: TrendingUp,
+                color: 'text-trend-up',
+                label: 'Stijgend',
+                desc: 'Wachtrij wordt langer. Sluit snel aan.',
+              },
+              {
+                icon: Minus,
+                color: 'text-trend-stable',
+                label: 'Stabiel',
+                desc: 'Wachttijd blijft constant.',
+              },
+              {
+                icon: TrendingDown,
+                color: 'text-trend-down',
+                label: 'Dalend',
+                desc: 'Wachtrij wordt korter – goed moment om aan te sluiten.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-center gap-3">
                 <span className={`flex w-24 items-center gap-1 text-sm font-semibold ${color}`}>
@@ -5067,10 +5972,31 @@ function ContentNLSections() {
         <SubSection title="Wachtrij-typen">
           <div className="space-y-3">
             {[
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: User,   label: 'Single Rider',   desc: 'Vaak veel korter dan de gewone rij – maar je kunt niet met je groep meerijden.' },
-              { color: 'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',             icon: Zap,    label: 'Lightning Lane', desc: 'Betaald express-pas (bijv. bij Disney). Toont huidige prijs en terugtijdstip.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Terugtijdstip',  desc: 'Gratis virtuele wachtrij – reserveer een tijdslot en kom later terug.' },
-              { color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',                             icon: Ticket, label: 'Boardinggroep',  desc: 'Virtuele wachtrij met groepsnummer – populair voor veelgevraagde nieuwe attracties.' },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: User,
+                label: 'Single Rider',
+                desc: 'Vaak veel korter dan de gewone rij – maar je kunt niet met je groep meerijden.',
+              },
+              {
+                color:
+                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                icon: Zap,
+                label: 'Lightning Lane',
+                desc: 'Betaald express-pas (bijv. bij Disney). Toont huidige prijs en terugtijdstip.',
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: 'Terugtijdstip',
+                desc: 'Gratis virtuele wachtrij – reserveer een tijdslot en kom later terug.',
+              },
+              {
+                color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
+                icon: Ticket,
+                label: 'Boardinggroep',
+                desc: 'Virtuele wachtrij met groepsnummer – populair voor veelgevraagde nieuwe attracties.',
+              },
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
@@ -5084,37 +6010,72 @@ function ContentNLSections() {
       {/* ── 6. Drukte-kalender ───────────────────────────────────────────────── */}
       <Section id="kalender" title="De Drukte-Kalender">
         <p className="text-muted-foreground mb-4">
-          De kalender is het krachtigste planningsinstrument op park.fan. Het toont een
-          AI-gestuurde voorspelling voor elk van de komende 30+ dagen – drukteniveau,
-          openingstijden, weer en speciale evenementen, alles in één oogopslag.
+          De kalender is het krachtigste planningsinstrument op park.fan. Het toont een AI-gestuurde
+          voorspelling voor elk van de komende 30+ dagen – drukteniveau, openingstijden, weer en
+          speciale evenementen, alles in één oogopslag.
         </p>
 
         <SubSection title="Wat staat er op elke kalenderkaart?">
           <div className="bg-muted/30 rounded-xl border p-4 text-sm">
-            <p className="font-semibold mb-2">Een typische kalenderkaart toont:</p>
+            <p className="mb-2 font-semibold">Een typische kalenderkaart toont:</p>
             <ul className="text-muted-foreground space-y-1.5">
-              <li>📅 <strong>Datum en weekdag</strong></li>
-              <li>🎯 <strong>Druktebadge</strong> (bijv. &quot;Zeer Hoog&quot;) – de AI-voorspelling van de algehele drukte</li>
-              <li>🕐 <strong>Openingstijden</strong> – of &quot;Geschat&quot; als nog niet officieel bevestigd</li>
-              <li>🌤️ <strong>Weersvoorspelling</strong> met min-/maxtemperatuur</li>
-              <li>⌚ <strong>Gem. wachttijd</strong> – voorspelde gemiddelde wachttijd over alle attracties</li>
-              <li>🎟️ <strong>Entreeprijs</strong>, wanneer gepubliceerd door het park</li>
+              <li>
+                📅 <strong>Datum en weekdag</strong>
+              </li>
+              <li>
+                🎯 <strong>Druktebadge</strong> (bijv. &quot;Zeer Hoog&quot;) – de AI-voorspelling
+                van de algehele drukte
+              </li>
+              <li>
+                🕐 <strong>Openingstijden</strong> – of &quot;Geschat&quot; als nog niet officieel
+                bevestigd
+              </li>
+              <li>
+                🌤️ <strong>Weersvoorspelling</strong> met min-/maxtemperatuur
+              </li>
+              <li>
+                ⌚ <strong>Gem. wachttijd</strong> – voorspelde gemiddelde wachttijd over alle
+                attracties
+              </li>
+              <li>
+                🎟️ <strong>Entreeprijs</strong>, wanneer gepubliceerd door het park
+              </li>
             </ul>
           </div>
           <p className="text-muted-foreground mt-2 text-sm">
             <strong>Wat betekent &quot;Geschat&quot;?</strong> Openingstijden gemarkeerd als
-            &quot;Geschat&quot; zijn nog niet officieel bevestigd door het park. park.fan leidt
-            ze af uit historische patronen – ze kunnen nog veranderen.
+            &quot;Geschat&quot; zijn nog niet officieel bevestigd door het park. park.fan leidt ze
+            af uit historische patronen – ze kunnen nog veranderen.
           </p>
         </SubSection>
 
         <SubSection title="Kalenderkaart-iconen">
           <div className="space-y-2 text-sm">
             {[
-              { icon: PartyPopper, color: 'text-orange-500', label: 'Feestdag',          desc: 'Parken zijn vaak langer open, maar ook drukker. Bekijk de voorspelling!' },
-              { icon: Backpack,    color: 'text-yellow-500', label: 'Schoolvakantie',    desc: 'Doorgaans de drukste dagen van het jaar – extreme wachttijden mogelijk.' },
-              { icon: Calendar,   color: 'text-blue-500',   label: 'Brugdag',           desc: 'Waarschijnlijk drukker omdat veel mensen lange weekenden verlengen.' },
-              { icon: XCircle,    color: 'text-red-500',    label: 'Park Gesloten',     desc: 'Geen operatie op deze dag – geen voorspelling beschikbaar.' },
+              {
+                icon: PartyPopper,
+                color: 'text-orange-500',
+                label: 'Feestdag',
+                desc: 'Parken zijn vaak langer open, maar ook drukker. Bekijk de voorspelling!',
+              },
+              {
+                icon: Backpack,
+                color: 'text-yellow-500',
+                label: 'Schoolvakantie',
+                desc: 'Doorgaans de drukste dagen van het jaar – extreme wachttijden mogelijk.',
+              },
+              {
+                icon: Calendar,
+                color: 'text-blue-500',
+                label: 'Brugdag',
+                desc: 'Waarschijnlijk drukker omdat veel mensen lange weekenden verlengen.',
+              },
+              {
+                icon: XCircle,
+                color: 'text-red-500',
+                label: 'Park Gesloten',
+                desc: 'Geen operatie op deze dag – geen voorspelling beschikbaar.',
+              },
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${color}`} />
@@ -5133,28 +6094,42 @@ function ContentNLSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
-              <span>Open de parkpagina en schakel naar het tabblad <strong>Kalender</strong>.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
+              <span>
+                Open de parkpagina en schakel naar het tabblad <strong>Kalender</strong>.
+              </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
                 Je ziet meteen de schoolvakantieweken – veel kaarten met het{' '}
-                <Backpack className="inline h-4 w-4 text-yellow-500" />-icoon en badges van{' '}
-                <strong>&quot;Zeer Hoog&quot;</strong> of <strong>&quot;Extreem&quot;</strong>.
+                <Backpack className="inline h-4 w-4 text-yellow-500" />
+                -icoon en badges van <strong>&quot;Zeer Hoog&quot;</strong> of{' '}
+                <strong>&quot;Extreem&quot;</strong>.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
                 Zoek een dinsdag of woensdag <em>zonder</em> feestdagicoon – deze tonen vaak
-                <strong> &quot;Laag&quot;</strong> of <strong>&quot;Matig&quot;</strong>. Openingstijden
-                en weersvoorspelling helpen je de definitieve keuze te maken.
+                <strong> &quot;Laag&quot;</strong> of <strong>&quot;Matig&quot;</strong>.
+                Openingstijden en weersvoorspelling helpen je de definitieve keuze te maken.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">4</span>
-              <span>Koop tickets vooraf – op groene voorspellingsdagen kunnen tickets snel uitverkocht zijn.</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                4
+              </span>
+              <span>
+                Koop tickets vooraf – op groene voorspellingsdagen kunnen tickets snel uitverkocht
+                zijn.
+              </span>
             </li>
           </ol>
           <LiveCalendarExample locale="en" />
@@ -5162,34 +6137,50 @@ function ContentNLSections() {
 
         <SubSection title="Attractiekalender">
           <p className="text-muted-foreground text-sm">
-            De detailpagina van elke attractie heeft ook een historische kalender die toont hoe
-            druk het was op elke afgelopen dag – en of de attractie in bedrijf was of niet.
-            Perfect om terugkerende patronen te herkennen: had Taron de afgelopen maand
-            consequent korte wachttijden op donderdagmiddag? Volgende week misschien ook.
+            De detailpagina van elke attractie heeft ook een historische kalender die toont hoe druk
+            het was op elke afgelopen dag – en of de attractie in bedrijf was of niet. Perfect om
+            terugkerende patronen te herkennen: had Taron de afgelopen maand consequent korte
+            wachttijden op donderdagmiddag? Volgende week misschien ook.
           </p>
         </SubSection>
 
         <TipBox label="Tip">
-          De beste bezoekdagen zijn doorgaans vroege weekdagen buiten schoolvakanties –
-          dinsdag tot donderdag vertonen de laagste drukteniveaus. Vermijd schoolvakantieweken
-          in dichtbevolkte regio&apos;s.
+          De beste bezoekdagen zijn doorgaans vroege weekdagen buiten schoolvakanties – dinsdag tot
+          donderdag vertonen de laagste drukteniveaus. Vermijd schoolvakantieweken in dichtbevolkte
+          regio&apos;s.
         </TipBox>
       </Section>
 
       {/* ── 7. AI-Voorspellingen ─────────────────────────────────────────────── */}
       <Section id="prognosen" title="AI-Voorspellingen">
         <p className="text-muted-foreground mb-4">
-          park.fan gebruikt machine learning om drukteniveaus en wachttijden dagen van tevoren
-          te voorspellen. Het model wordt continu getraind op nieuwe data en houdt rekening met
-          vier sleutelfactoren:
+          park.fan gebruikt machine learning om drukteniveaus en wachttijden dagen van tevoren te
+          voorspellen. Het model wordt continu getraind op nieuwe data en houdt rekening met vier
+          sleutelfactoren:
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            { icon: '📊', title: 'Historische data',      desc: 'Miljoenen wachtrij-datapunten per attractie, weekdag en tijdstip.' },
-            { icon: '📅', title: 'Vakantiekalenders',     desc: 'Schoolvakanties en feestdagen in Europa en wereldwijd.' },
-            { icon: '🌤️', title: 'Weersvoorspellingen',  desc: 'Temperatuur, regen en zonneschijn – slecht weer duwt bezoekers naar overdekte attracties.' },
-            { icon: '🎉', title: 'Speciale evenementen',  desc: 'Halloween-nachten, kerstevenementen en andere parkeigen data zorgen voor significant hogere bezoekersaantallen.' },
+            {
+              icon: '📊',
+              title: 'Historische data',
+              desc: 'Miljoenen wachtrij-datapunten per attractie, weekdag en tijdstip.',
+            },
+            {
+              icon: '📅',
+              title: 'Vakantiekalenders',
+              desc: 'Schoolvakanties en feestdagen in Europa en wereldwijd.',
+            },
+            {
+              icon: '🌤️',
+              title: 'Weersvoorspellingen',
+              desc: 'Temperatuur, regen en zonneschijn – slecht weer duwt bezoekers naar overdekte attracties.',
+            },
+            {
+              icon: '🎉',
+              title: 'Speciale evenementen',
+              desc: 'Halloween-nachten, kerstevenementen en andere parkeigen data zorgen voor significant hogere bezoekersaantallen.',
+            },
           ].map(({ icon, title, desc }) => (
             <div key={title} className="bg-muted/30 flex items-start gap-3 rounded-xl border p-4">
               <span className="text-2xl">{icon}</span>
@@ -5213,16 +6204,16 @@ function ContentNLSections() {
             <div className="bg-muted/30 rounded-lg p-3">
               <p className="font-semibold">⏰ Piekmomenten-badge op de parkpagina</p>
               <p className="text-muted-foreground mt-0.5">
-                De parkkoptekst toont wanneer de druktepiek van vandaag verwacht wordt –
-                bijv. &quot;Piek over 1u 30min&quot;. Plan een lunchpauze of bezoek een minder
-                populaire attractie precies in dat tijdvenster.
+                De parkkoptekst toont wanneer de druktepiek van vandaag verwacht wordt – bijv.
+                &quot;Piek over 1u 30min&quot;. Plan een lunchpauze of bezoek een minder populaire
+                attractie precies in dat tijdvenster.
               </p>
             </div>
             <div className="bg-muted/30 rounded-lg p-3">
               <p className="font-semibold">📈 Uursvoorspellingsgrafiek op de attractiepagina</p>
               <p className="text-muted-foreground mt-0.5">
-                Elke attractie heeft zijn eigen pagina met een grafiek die laat zien hoe
-                wachttijden naar verwachting verlopen door de dag – voor vandaag en morgen.
+                Elke attractie heeft zijn eigen pagina met een grafiek die laat zien hoe wachttijden
+                naar verwachting verlopen door de dag – voor vandaag en morgen.
               </p>
             </div>
           </div>
@@ -5235,25 +6226,31 @@ function ContentNLSections() {
           </p>
           <ol className="text-muted-foreground space-y-3 text-sm">
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">1</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                1
+              </span>
               <span>
-                <strong>Bij de ingang:</strong> De piekmomenten-badge toont &quot;Piek over ~2u&quot; –
-                je hebt tot ongeveer 11:30 voor je eerste hoogtepunten.
+                <strong>Bij de ingang:</strong> De piekmomenten-badge toont &quot;Piek over
+                ~2u&quot; – je hebt tot ongeveer 11:30 voor je eerste hoogtepunten.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">2</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                2
+              </span>
               <span>
                 <strong>Open de Taron-pagina:</strong> De voorspellingsgrafiek toont 9:30 ≈ 15 min,
                 12:00 ≈ 65 min, 15:00 ≈ 40 min → rijd direct bij opening of midden in de middag.
               </span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">3</span>
+              <span className="bg-primary text-primary-foreground flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                3
+              </span>
               <span>
-                <strong>Lunch tijdens de piek:</strong> In plaats van in de rij te staan om
-                12:00, ga je lunchen. Live trends bevestigen: om 15:00 daalt de wachttijd –
-                perfect moment om te rijden.
+                <strong>Lunch tijdens de piek:</strong> In plaats van in de rij te staan om 12:00,
+                ga je lunchen. Live trends bevestigen: om 15:00 daalt de wachttijd – perfect moment
+                om te rijden.
               </span>
             </li>
           </ol>
@@ -5263,9 +6260,9 @@ function ContentNLSections() {
           <p className="text-muted-foreground text-sm">
             De nauwkeurigheid varieert per park en voorspellingsvenster. De detailpagina van elke
             attractie toont de voorspellingskwaliteit – van <strong>Slecht</strong> tot{' '}
-            <strong>Uitstekend</strong>. Meer historische data betekent nauwkeurigere voorspellingen.
-            Kortetermijnvoorspellingen (1–3 dagen) zijn van nature betrouwbaarder dan
-            langetermijnvoorspellingen (7–14 dagen).
+            <strong>Uitstekend</strong>. Meer historische data betekent nauwkeurigere
+            voorspellingen. Kortetermijnvoorspellingen (1–3 dagen) zijn van nature betrouwbaarder
+            dan langetermijnvoorspellingen (7–14 dagen).
           </p>
         </SubSection>
 
@@ -5278,37 +6275,55 @@ function ContentNLSections() {
         </SubSection>
 
         <TipBox label="Tip">
-          Combineer kalender en voorspellingen: kies een groene dag uit de kalender, controleer
-          dan de uursvoorspelling op de attractiepagina voor het rustigste tijdslot. Je arriveert
-          altijd bij de kortste wachtrij.
+          Combineer kalender en voorspellingen: kies een groene dag uit de kalender, controleer dan
+          de uursvoorspelling op de attractiepagina voor het rustigste tijdslot. Je arriveert altijd
+          bij de kortste wachtrij.
         </TipBox>
       </Section>
 
       {/* ── 8. Voor wie ──────────────────────────────────────────────────────── */}
       <Section id="personas" title="Voor wie is park.fan?">
         <div className="grid gap-4 md:grid-cols-2">
-          <PersonaCard emoji="👨‍👩‍👧‍👦" title="Gezinnen" subtitle="Een perfecte dag plannen voor iedereen">
+          <PersonaCard
+            emoji="👨‍👩‍👧‍👦"
+            title="Gezinnen"
+            subtitle="Een perfecte dag plannen voor iedereen"
+          >
             <Li>Drukte-kalender: welke dag heeft de kortste wachtrijen?</Li>
             <Li>Weer in de kalender: regenachtige dag? Bekijk overdekte attracties!</Li>
             <Li>Favorieten: sla de 10 must-do attracties voor kinderen op.</Li>
             <Li>Live wachttijden: beslis ter plekke welke attractie je als volgende doet.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🎢" title="Pretpark-enthousiastelingen" subtitle="Elke minuut moet geoptimaliseerd zijn">
+          <PersonaCard
+            emoji="🎢"
+            title="Pretpark-enthousiastelingen"
+            subtitle="Elke minuut moet geoptimaliseerd zijn"
+          >
             <Li>Drukteniveau (P50-basis): begrijp of een attractie echt boven gemiddeld is.</Li>
             <Li>Historische trends: wanneer heeft Taron doorgaans korte wachttijden?</Li>
             <Li>Trendindicatoren: wachtrij stijgt? Wacht 20 minuten en het kan korter zijn.</Li>
             <Li>Single Rider / Lightning Lane: alle wachtrij-typen met tijden en prijzen.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="🌟" title="Eerstebezoekende" subtitle="Eerste bezoek aan een groot pretpark">
+          <PersonaCard
+            emoji="🌟"
+            title="Eerstebezoekende"
+            subtitle="Eerste bezoek aan een groot pretpark"
+          >
             <Li>Zoeken: vind je park snel, ook als je de exacte naam niet weet.</Li>
             <Li>Parkkaart: oriënteer je voor en tijdens je bezoek.</Li>
-            <Li>Statusbadges: groen = in bedrijf, oranje = kort probleem, grijs = vandaag gesloten.</Li>
+            <Li>
+              Statusbadges: groen = in bedrijf, oranje = kort probleem, grijs = vandaag gesloten.
+            </Li>
             <Li>Drukte-kalender: kleuren zeggen alles – groen is goed, rood is stressvol.</Li>
           </PersonaCard>
 
-          <PersonaCard emoji="⚡" title="Spontane Bezoekers" subtitle="Last-minute beslissing, maximale efficiëntie">
+          <PersonaCard
+            emoji="⚡"
+            title="Spontane Bezoekers"
+            subtitle="Last-minute beslissing, maximale efficiëntie"
+          >
             <Li>Locatie: park.fan vindt automatisch je dichtstbijzijnde park.</Li>
             <Li>Live wachttijden: zie direct wat open is en hoe lang de wachttijd is.</Li>
             <Li>Trendindicatoren: wachtrij daalt? Perfect moment om aan te sluiten.</Li>
@@ -5319,30 +6334,45 @@ function ContentNLSections() {
       {/* ── 9. Populaire parken ─────────────────────────────────────────────── */}
       <Section id="parks" title="Populaire parken">
         <p className="text-muted-foreground mb-6">
-          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw
-          regio met live data:
+          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw regio
+          met live data:
         </p>
-        <PopularParksGrid
-          locale="nl"
-          emptyHint="Parkdata worden geladen – herlaad de pagina."
-        />
+        <PopularParksGrid locale="nl" emptyHint="Parkdata worden geladen – herlaad de pagina." />
       </Section>
 
       {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Veelgestelde Vragen">
         <div className="space-y-4">
           {[
-            { q: 'Hoe vaak worden wachttijden bijgewerkt?',                          a: 'Wachttijden worden elke minuut bijgewerkt. Voor sommige parken vinden updates elke 2–5 minuten plaats, afhankelijk van de databeschikbaarheid.' },
-            { q: 'Waar komen de gegevens vandaan?',                                  a: 'park.fan haalt live data op van ThemeParks.wiki, Queue-Times.com en Wartezeiten.app.' },
-            { q: 'Is park.fan gratis?',                                              a: 'Ja, park.fan is volledig gratis en vereist geen registratie.' },
-            { q: 'Worden favorieten gesynchroniseerd tussen apparaten?',             a: 'Nee, favorieten worden lokaal opgeslagen in je browser (localStorage). Ze zijn alleen beschikbaar op het apparaat waar je ze hebt opgeslagen.' },
-            { q: 'Hoe ver vooruit doet de drukte-kalender voorspellingen?',         a: 'De kalender toont voorspellingen voor 30+ dagen. Voorspellingen voor verdere datums zijn van nature iets minder nauwkeurig dan voorspellingen op korte termijn.' },
-            { q: 'Hoeveel parken zijn er beschikbaar?',                             a: 'park.fan dekt momenteel 150+ parken met 5.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.'},
+            {
+              q: 'Hoe vaak worden wachttijden bijgewerkt?',
+              a: 'Wachttijden worden elke minuut bijgewerkt. Voor sommige parken vinden updates elke 2–5 minuten plaats, afhankelijk van de databeschikbaarheid.',
+            },
+            {
+              q: 'Waar komen de gegevens vandaan?',
+              a: 'park.fan haalt live data op van ThemeParks.wiki, Queue-Times.com en Wartezeiten.app.',
+            },
+            {
+              q: 'Is park.fan gratis?',
+              a: 'Ja, park.fan is volledig gratis en vereist geen registratie.',
+            },
+            {
+              q: 'Worden favorieten gesynchroniseerd tussen apparaten?',
+              a: 'Nee, favorieten worden lokaal opgeslagen in je browser (localStorage). Ze zijn alleen beschikbaar op het apparaat waar je ze hebt opgeslagen.',
+            },
+            {
+              q: 'Hoe ver vooruit doet de drukte-kalender voorspellingen?',
+              a: 'De kalender toont voorspellingen voor 30+ dagen. Voorspellingen voor verdere datums zijn van nature iets minder nauwkeurig dan voorspellingen op korte termijn.',
+            },
+            {
+              q: 'Hoeveel parken zijn er beschikbaar?',
+              a: 'park.fan dekt momenteel 150+ parken met 5.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.',
+            },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">
               <summary className="cursor-pointer list-none p-4 font-semibold group-open:pb-2">
                 <span className="flex items-start gap-2">
-                  <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary transition-transform group-open:rotate-90" />
+                  <ChevronRight className="text-primary mt-0.5 h-4 w-4 shrink-0 transition-transform group-open:rotate-90" />
                   {q}
                 </span>
               </summary>
@@ -5413,74 +6443,74 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="mx-auto max-w-4xl">
-          <LocaleContent
-            locale={locale as Locale}
-            de={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Wie funktioniert park.fan?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den
-                  Crowd-Kalender bis zu allen Badges und KI-Prognosen.
-                </p>
-                <ContentDE />
-              </>
-            }
-            en={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">How does park.fan work?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  The complete guide for theme park visitors – from search and favorites to the crowd
-                  calendar, AI predictions and all badges explained.
-                </p>
-                <ContentEN />
-              </>
-            }
-            es={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">¿Cómo funciona park.fan?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  La guía completa para visitar parques temáticos – desde la búsqueda y los
-                  favoritos hasta el calendario de afluencia, las predicciones IA y todos los
-                  indicadores explicados.
-                </p>
-                <ContentES />
-              </>
-            }
-            fr={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Comment fonctionne park.fan ?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
-                  aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
-                  tous les indicateurs expliqués.
-                </p>
-                <ContentFR />
-              </>
-            }
-            it={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Come funziona park.fan?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
-                  preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e
-                  tutti gli indicatori spiegati.
-                </p>
-                <ContentIT />
-              </>
-            }
-            nl={
-              <>
-                <h1 className="mb-2 text-2xl sm:text-4xl font-bold">Hoe werkt park.fan?</h1>
-                <p className="text-muted-foreground mb-10 text-lg">
-                  De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
-                  drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
-                </p>
-                <ContentNL />
-              </>
-            }
-          />
-        </div>
+      <div>
+        <LocaleContent
+          locale={locale as Locale}
+          de={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">Wie funktioniert park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                Die vollständige Anleitung für Freizeitpark-Besucher – von der Suche über den
+                Crowd-Kalender bis zu allen Badges und KI-Prognosen.
+              </p>
+              <ContentDE />
+            </>
+          }
+          en={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">How does park.fan work?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                The complete guide for theme park visitors – from search and favorites to the crowd
+                calendar, AI predictions and all badges explained.
+              </p>
+              <ContentEN />
+            </>
+          }
+          es={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">¿Cómo funciona park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                La guía completa para visitar parques temáticos – desde la búsqueda y los favoritos
+                hasta el calendario de afluencia, las predicciones IA y todos los indicadores
+                explicados.
+              </p>
+              <ContentES />
+            </>
+          }
+          fr={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">Comment fonctionne park.fan ?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                Le guide complet pour les visiteurs de parcs d&apos;attractions – de la recherche
+                aux favoris en passant par le calendrier d&apos;affluence, les prédictions IA et
+                tous les indicateurs expliqués.
+              </p>
+              <ContentFR />
+            </>
+          }
+          it={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">Come funziona park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                La guida completa per i visitatori dei parchi divertimento – dalla ricerca ai
+                preferiti, passando per il calendario dell&apos;affluenza, le previsioni IA e tutti
+                gli indicatori spiegati.
+              </p>
+              <ContentIT />
+            </>
+          }
+          nl={
+            <>
+              <h1 className="mb-2 text-2xl font-bold sm:text-4xl">Hoe werkt park.fan?</h1>
+              <p className="text-muted-foreground mb-10 text-lg">
+                De complete gids voor pretparkbezoekers – van zoeken en favorieten tot de
+                drukte-kalender, AI-voorspellingen en alle badges uitgelegd.
+              </p>
+              <ContentNL />
+            </>
+          }
+        />
+      </div>
     </div>
   );
 }

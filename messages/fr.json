@@ -87,7 +87,8 @@
       "badge": "Prédictions par IA",
       "cta": "Explorer les Parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
-      "howto": "Comment utiliser park.fan ?"
+      "howto": "Comment utiliser park.fan ?",
+      "glossary": "Glossaire des parcs d'attractions"
     },
     "sections": {
       "explore": "Explorer par Région",
@@ -143,6 +144,7 @@
     "api": "Documentation API",
     "impressum": "Mentions Légales",
     "howto": "Comment ça marche",
+    "glossaryLink": "Glossaire",
     "datenschutz": "Confidentialité",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation",
@@ -176,7 +178,8 @@
     "search": "Recherche Parcs & Attractions",
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
-    "howto": "Guide"
+    "howto": "Guide",
+    "glossary": "Glossaire"
   },
   "theme": {
     "light": "Clair",
@@ -596,7 +599,8 @@
       "restaurant": "Restaurants ({count})",
       "location": "Lieux ({count})",
       "nearby": "Parcs à proximité",
-      "inPark": "Vous êtes à {park}"
+      "inPark": "Vous êtes à {park}",
+      "glossary": "Glossaire ({count})"
     },
     "keyboard": {
       "navigate": "Naviguer",
@@ -737,6 +741,26 @@
     "locationHint": "Activez la localisation pour trier par distance",
     "addToFavorites": "Ajouter aux favoris",
     "removeFromFavorites": "Retirer des favoris"
+  },
+  "glossary": {
+    "overviewTitle": "Glossaire des Parcs à Thème",
+    "overviewDescription": "Définitions de tous les termes des parcs à thème : temps d'attente, niveaux d'affluence, éléments de montagnes russes, files virtuelles et bien plus — expliqués simplement.",
+    "overviewKeywords": "glossaire parc à thème, définition temps d'attente, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",
+    "termTitleSuffix": "Glossaire des Parcs",
+    "relatedTerms": "Termes associés",
+    "backToGlossary": "Retour au glossaire",
+    "category": {
+      "wait-times": "Temps d'attente",
+      "crowd-levels": "Niveaux d'affluence",
+      "park-operations": "Exploitation du parc",
+      "planning": "Planification",
+      "attractions": "Attractions",
+      "coasters": "Montagnes russes",
+      "coaster-elements": "Éléments de coaster"
+    },
+    "searchPlaceholder": "Rechercher un terme…",
+    "noResults": "Aucun terme trouvé pour « {query} ».",
+    "noResultsHint": "Essayez un autre mot ou parcourez les catégories."
   },
   "howto": {
     "title": "Comment fonctionne park.fan ? – Le guide complet",

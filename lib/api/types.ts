@@ -435,7 +435,7 @@ export interface RestaurantResponse {
 // ============================================================================
 
 export interface SearchResultItem {
-  type: 'park' | 'attraction' | 'show' | 'restaurant' | 'location';
+  type: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
   id: string; // Format: "city:slug" or "country:slug" for locations
   name: string;
   slug: string;
@@ -452,6 +452,7 @@ export interface SearchResultItem {
   load?: CrowdLevel;
   parkHours?: { open: string; close: string; type: string };
   waitTime?: number;
+  shortDefinition?: string;
   showTimes?: string[];
   parentPark?: { id: string; name: string; slug: string; url: string };
 }

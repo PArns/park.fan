@@ -1,9 +1,22 @@
 import { NextResponse } from 'next/server';
-import { getGeoStructure } from '@/lib/api/discovery';
+import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 
 const BASE_URL = 'https://park.fan';
+
+const GLOSSARY_SEGMENTS: Record<Locale, string> = {
+  en: 'glossary',
+  de: 'glossar',
+  fr: 'glossaire',
+  it: 'glossario',
+  nl: 'woordenlijst',
+  es: 'glosario',
+};
+
+// Variant slugs like "taron-2" are noindex pages — exclude from IndexNow
+const VARIANT_SLUG_RE = /^.+-\d+$/;
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -14,15 +27,16 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const urls: string[] = [BASE_URL];
+  const urls: string[] = [];
 
-  // Home + parks overview for all locales
+  // ── Static pages (high-value, matches sitemap priority ≥ 0.7) ─────────────
   for (const locale of locales) {
-    urls.push(`${BASE_URL}/${locale}`);
-    urls.push(`${BASE_URL}/${locale}/parks`);
+    urls.push(`${BASE_URL}/${locale}`); // home
+    urls.push(`${BASE_URL}/${locale}/howto`); // guide
+    urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`); // glossary overview
   }
 
-  // All individual park pages
+  // ── Park pages ─────────────────────────────────────────────────────────────
   try {
     const geo = await getGeoStructure(86400);
 
@@ -41,6 +55,23 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('[IndexNow] Failed to fetch geo structure:', error);
     return NextResponse.json({ error: 'Failed to fetch geo structure' }, { status: 500 });
+  }
+
+  // ── Attraction pages (long-tail SEO, same filter as sitemap) ───────────────
+  try {
+    const attractions = await getSitemapAttractions();
+    for (const attraction of attractions) {
+      if (VARIANT_SLUG_RE.test(attraction.slug)) continue;
+      const frontendPath = attraction.url
+        .replace(/^\/v1\/parks\//, '/parks/')
+        .replace(/\/attractions\//, '/');
+      for (const locale of locales) {
+        urls.push(`${BASE_URL}/${locale}${frontendPath}`);
+      }
+    }
+  } catch (error) {
+    console.error('[IndexNow] Failed to fetch attractions:', error);
+    // Non-fatal — continue with what we have
   }
 
   // IndexNow accepts up to 10 000 URLs per request

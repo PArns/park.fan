@@ -87,7 +87,8 @@
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
-      "howto": "¿Cómo uso park.fan?"
+      "howto": "¿Cómo uso park.fan?",
+      "glossary": "Glosario de parques temáticos"
     },
     "sections": {
       "explore": "Explorar por Región",
@@ -143,6 +144,7 @@
     "api": "Documentación API",
     "impressum": "Aviso Legal",
     "howto": "Cómo funciona",
+    "glossaryLink": "Glosario",
     "datenschutz": "Privacidad",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
@@ -176,7 +178,8 @@
     "search": "Buscar Parques y Atracciones",
     "admin": "Admin",
     "nearbyPark": "Cerca: {parkName}",
-    "howto": "Guía"
+    "howto": "Guía",
+    "glossary": "Glosario"
   },
   "theme": {
     "light": "Claro",
@@ -596,7 +599,8 @@
       "restaurant": "Restaurantes ({count})",
       "location": "Ubicaciones ({count})",
       "nearby": "Parques cercanos",
-      "inPark": "Estás en {park}"
+      "inPark": "Estás en {park}",
+      "glossary": "Glosario ({count})"
     },
     "keyboard": {
       "navigate": "Navegar",
@@ -737,6 +741,26 @@
     "locationHint": "Habilita la ubicación para ordenar por distancia",
     "addToFavorites": "Añadir a favoritos",
     "removeFromFavorites": "Quitar de favoritos"
+  },
+  "glossary": {
+    "overviewTitle": "Glosario de Parques Temáticos",
+    "overviewDescription": "Definiciones de todos los términos de parques temáticos: tiempos de espera, niveles de afluencia, elementos de montaña rusa, colas virtuales y más — explicados con claridad.",
+    "overviewKeywords": "glosario parque temático, definición tiempo de espera, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",
+    "termTitleSuffix": "Glosario de Parques",
+    "relatedTerms": "Términos relacionados",
+    "backToGlossary": "Volver al glosario",
+    "category": {
+      "wait-times": "Tiempos de espera",
+      "crowd-levels": "Niveles de afluencia",
+      "park-operations": "Operaciones del parque",
+      "planning": "Planificación",
+      "attractions": "Atracciones",
+      "coasters": "Montañas rusas",
+      "coaster-elements": "Elementos de coaster"
+    },
+    "searchPlaceholder": "Buscar términos…",
+    "noResults": "No se encontraron términos para \"{query}\".",
+    "noResultsHint": "Prueba con otra palabra o explora las categorías."
   },
   "howto": {
     "title": "¿Cómo funciona park.fan? – La guía completa",

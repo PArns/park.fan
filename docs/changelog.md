@@ -4,6 +4,45 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.7.0 (2026-03-15) – Glossary System
+
+### Complete Glossary Launch
+
+- **90 terms** across 7 categories: wait-times, crowd-levels, park-operations, planning, attractions, coasters, coaster-elements
+- All terms with full definitions in 6 languages (EN/DE/FR/IT/NL/ES) — multi-paragraph format (`\n\n` separator), locale-appropriate park references
+- Localized URL segments: `/glossary`, `/glossar`, `/glossaire`, `/glossario`, `/woordenlijst`, `/glosario`
+
+### Design & UX
+
+- **Random hero background** on all glossary pages (`GlossaryBackground` component, no Ken Burns animation)
+- **Glass UI**: unified glass panel on overview (breadcrumb above panel; title + description + search inside); glass cards on detail page
+- **Type-to-search**: typing anywhere on overview focuses the search input; ESC clears + blurs
+- **Category filter pills** with instant client-side filtering
+- **Detail page**: 2-column layout, multi-paragraph definition rendering, primary-color back button
+- **Homepage extras on detail pages**: `NearbyParksCard`, `FavoritesSection`, `FeaturedParksSection` below each term
+
+### Navigation
+
+- **Header**: removed "Startseite" from desktop nav; reordered to Parks entdecken → Glossar → Anleitung
+- **Homepage hero**: added glossary link ("Wichtige Freizeitparkbegriffe") next to the howto link in all 6 locales
+- **Howto page**: removed `max-w-4xl` constraint — now full container width like other pages
+
+### SEO & Indexing
+
+- Glossary added to sitemap: 6 overview pages (priority 0.7) + ~540 term pages (priority 0.5)
+- IndexNow aligned to sitemap scope: home, howto, glossary overview, parks, attractions
+- Improved `generateMetadata` on both overview and detail pages: keyword-rich titles, `overviewKeywords` meta tag, locale-specific `termTitleSuffix`
+- Schema.org: `DefinedTermSet` + `DefinedTerm` with `inLanguage`, `termCode`, localized descriptions
+
+### Bug Fixes
+
+- **Language switcher 404**: now extracts pathname from hreflang `<link>` tags instead of using full production URL — works on localhost and production
+- **Breadcrumb double-locale** (`/de/de/glossar`): fixed by removing locale prefix from breadcrumb URL (next-intl `Link` adds it automatically)
+
+→ [Glossary System](features/glossary.md) · [Sitemaps](seo/sitemaps.md)
+
+---
+
 ## 2.6.4 (2026-03-05) – SEO: Featured Parks, Split Sitemaps, ItemList
 
 ### Featured Parks Section (Homepage)

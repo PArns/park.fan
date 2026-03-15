@@ -139,7 +139,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
   // Same structure on server and initial client to avoid hydration mismatch
   if (!mounted || isLoading) {
     return (
-      <section className={cn("bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6", className)}>
+      <section
+        className={cn(
+          'bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6',
+          className
+        )}
+      >
         <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <Loader2 className="text-muted-foreground h-5 w-5 animate-spin" />
@@ -167,7 +172,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
   // Don't show if GPS timed out / unavailable — permissionGranted stays true in that case.
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
     return (
-      <section className={cn("bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm", className)}>
+      <section
+        className={cn(
+          'bg-card text-card-foreground min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm',
+          className
+        )}
+      >
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-muted-foreground h-5 w-5" />
@@ -190,7 +200,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
   if (showErrorCard) {
     return (
-      <section className={cn("bg-muted/30 min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm", className)}>
+      <section
+        className={cn(
+          'bg-muted/30 min-h-[200px] rounded-xl border border-dashed py-6 shadow-sm',
+          className
+        )}
+      >
         <CardHeader className="pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />
@@ -236,7 +251,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
     const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
-      <section className={cn("bg-park-primary/5 border-park-primary/30 relative min-h-[200px] overflow-hidden rounded-xl border py-6 shadow-sm", className)}>
+      <section
+        className={cn(
+          'bg-park-primary/5 border-park-primary/30 relative min-h-[200px] overflow-hidden rounded-xl border py-6 shadow-sm',
+          className
+        )}
+      >
         {/* Background Image */}
         {park.backgroundImage && (
           <BackgroundOverlay
@@ -432,7 +452,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
     if (parks.length === 0) {
       return (
-        <Card className={cn("min-h-[200px]", className)}>
+        <Card className={cn('min-h-[200px]', className)}>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <MapPin className="text-muted-foreground h-5 w-5" />
@@ -447,7 +467,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     return (
-      <section className={cn("bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6", className)}>
+      <section
+        className={cn(
+          'bg-card text-card-foreground min-h-[200px] rounded-xl border py-4 shadow-sm md:py-6',
+          className
+        )}
+      >
         <CardHeader className="pb-2 md:pb-4">
           <CardTitle className="flex items-center gap-2">
             <MapPin className="text-park-primary h-5 w-5" />

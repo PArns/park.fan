@@ -359,6 +359,14 @@ export async function Footer({ locale }: FooterProps) {
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
+              href="/glossary"
+              prefetch={false}
+              className="hover:text-foreground text-sm transition-colors"
+            >
+              {t('glossaryLink')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
               href="/impressum"
               prefetch={false}
               className="hover:text-foreground text-sm transition-colors"

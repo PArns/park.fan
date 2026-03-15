@@ -27,8 +27,11 @@ Reminders and context for AI or human sessions working on the codebase.
 9. **URLs from API** – Always use `convertApiUrlToFrontendUrl()` or `getParkUrlFromAttractionUrl()`; never manually construct from string splits.  
    → [Routing & URLs](../architecture/routing-and-urls.md)
 
-10. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.  
+10. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.
     → [Flags & Debug](flags-and-debug.md)
+
+11. **Glossary** – 90 terms across 7 categories. Term data (slugs) in `lib/glossary/data.ts`; per-locale definitions in `content/glossary/XX.ts` — use `\n\n` to separate paragraphs in `definition` fields. Localized URLs (`/de/glossar/wartezeit`) handled via Next.js `rewrites()` in `next.config.ts` — file-system path stays `app/[locale]/glossary/[term]`. Add new terms to both `data.ts` and all 6 locale content files.
+    → [Glossary System](../features/glossary.md)
 
 ---
 

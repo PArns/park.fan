@@ -87,7 +87,8 @@
       "badge": "KI-gestützte Vorhersagen",
       "cta": "Parks entdecken",
       "searchPlaceholder": "Parks, Attraktionen, Shows & Restaurants suchen...",
-      "howto": "Wie nutze ich park.fan?"
+      "howto": "Wie nutze ich park.fan?",
+      "glossary": "Wichtige Freizeitparkbegriffe"
     },
     "sections": {
       "explore": "Nach Region entdecken",
@@ -143,6 +144,7 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "howto": "Anleitung",
+    "glossaryLink": "Glossar",
     "datenschutz": "Datenschutzerklärung",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
@@ -176,7 +178,8 @@
     "search": "Parks & Attraktionen suchen",
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
-    "howto": "Anleitung"
+    "howto": "Anleitung",
+    "glossary": "Glossar"
   },
   "theme": {
     "light": "Hell",
@@ -596,7 +599,8 @@
       "restaurant": "Restaurants ({count})",
       "location": "Orte ({count})",
       "nearby": "Parks in der Nähe",
-      "inPark": "Du bist in {park}"
+      "inPark": "Du bist in {park}",
+      "glossary": "Glossar ({count})"
     },
     "keyboard": {
       "navigate": "Navigieren",
@@ -737,6 +741,26 @@
     "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren",
     "addToFavorites": "Zu Favoriten hinzufügen",
     "removeFromFavorites": "Aus Favoriten entfernen"
+  },
+  "glossary": {
+    "overviewTitle": "Freizeitpark-Glossar",
+    "overviewDescription": "Alle Fachbegriffe für deinen Freizeitparkbesuch erklärt: Wartezeiten, Besucherdichte, Achterbahnelemente, virtuelle Warteschlangen und vieles mehr – einfach und verständlich.",
+    "overviewKeywords": "Freizeitpark Glossar, Wartezeit Bedeutung, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe, Freizeitpark Lexikon",
+    "termTitleSuffix": "Freizeitpark-Glossar",
+    "relatedTerms": "Verwandte Begriffe",
+    "backToGlossary": "Zurück zum Glossar",
+    "category": {
+      "wait-times": "Wartezeiten",
+      "crowd-levels": "Besucherdichte",
+      "park-operations": "Parkbetrieb",
+      "planning": "Planung",
+      "attractions": "Attraktionen",
+      "coasters": "Achterbahnen",
+      "coaster-elements": "Achterbahnelemente"
+    },
+    "searchPlaceholder": "Begriffe suchen…",
+    "noResults": "Keine Begriffe für „{query}\" gefunden.",
+    "noResultsHint": "Versuche ein anderes Wort oder sieh dir die Kategorien an."
   },
   "howto": {
     "title": "Wie funktioniert park.fan? – Die vollständige Anleitung",

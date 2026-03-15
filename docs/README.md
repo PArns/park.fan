@@ -74,6 +74,12 @@
 | ------------------------------------------------- | ------------------------------------------ |
 | [Common Issues](troubleshooting/common-issues.md) | 404s, translations, search, timezone, a11y |
 
+### Features
+
+| Doc                                     | Description                                              |
+| --------------------------------------- | -------------------------------------------------------- |
+| [Glossary System](features/glossary.md) | Term data, translations, localized URLs, search, sitemap |
+
 ### Other
 
 | Doc                       | Description                                    |
@@ -102,12 +108,15 @@ park.fan/
 ├── app/                    # App Router
 │   ├── [locale]/           # i18n routes (en, de, fr, it, nl, es)
 │   │   ├── parks/          # Geo: Continent → Country → City → Park → Attraction
+│   │   ├── glossary/       # Glossary overview + [term] detail pages
 │   │   ├── search/         # Search page
 │   │   ├── datenschutz/    # Privacy policy
 │   │   └── impressum/      # Imprint
-│   └── api/                # API routes (proxy, OG, favorites, …)
-├── components/             # Layout, parks, common, search, ui, seo, faq, home, shows
+│   └── api/                # API routes (proxy, OG, favorites, glossary-search, …)
+├── components/             # Layout, parks, common, search, ui, seo, faq, home, shows, glossary
 ├── content/home/           # Markdown announcements (announce.[locale].md)
+├── content/glossary/       # Glossary translations (en/de/fr/it/nl/es.ts)
+├── lib/glossary/           # Glossary types, data, loader functions
 ├── lib/                    # API client, utils, hooks, i18n helpers, analytics
 ├── i18n/                   # Config, routing, request, navigation
 ├── messages/               # Translations (en, de, fr, it, nl, es)
