@@ -18,8 +18,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push(
       { url: `${BASE_URL}/${locale}`, changeFrequency: 'daily', priority: 1.0 },
 
-      { url: `${BASE_URL}/${locale}/howto`, changeFrequency: 'weekly', priority: 0.8 },
+      { url: `${BASE_URL}/${locale}/howto`, changeFrequency: 'weekly', priority: 0.8 }
     );
+  }
+
+  // ── Glossary pages ────────────────────────────────────────────────────────
+  const glossarySegments: Record<string, string> = {
+    en: 'glossary',
+    de: 'glossar',
+    fr: 'glossaire',
+    it: 'glossario',
+    nl: 'woordenlijst',
+    es: 'glosario',
+  };
+
+  for (const locale of locales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}/${glossarySegments[locale]}`,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    });
+  }
+
+  // Import lazily to avoid circular dependencies
+  const { getGlossaryTerms } = await import('@/lib/glossary/translations');
+  for (const locale of locales) {
+    const terms = await getGlossaryTerms(locale as import('@/i18n/config').Locale);
+    for (const term of terms) {
+      routes.push({
+        url: `${BASE_URL}/${locale}/${glossarySegments[locale]}/${term.slug}`,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+      });
+    }
   }
 
   // ── Park pages ────────────────────────────────────────────────────────────

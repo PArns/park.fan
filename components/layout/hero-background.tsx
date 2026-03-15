@@ -12,9 +12,10 @@ const HERO_BLUR_DATA_URL =
 
 interface RandomHeroImageProps {
   imageSrc?: string;
+  noAnimation?: boolean;
 }
 
-export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
+export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   // When the image is already in browser cache we skip the fade animation entirely.
@@ -36,10 +37,14 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
   // already has the image in cache. If so, `complete` is true and onLoad won't fire —
   // we mark it loaded immediately without playing the fade-in transition.
   useEffect(() => {
+    // Read DOM synchronously: if the image is already in browser cache,
+    // `complete` is true and onLoad won't fire — skip the fade-in animation.
+    /* eslint-disable react-hooks/set-state-in-effect */
     if (imgRef.current?.complete) {
       setSkipFade(true);
       setIsLoaded(true);
     }
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [finalImage]);
 
   const isServerImage = !!imageSrc;
@@ -72,8 +77,10 @@ export function RandomHeroImage({ imageSrc }: RandomHeroImageProps) {
           priority={isServerImage}
           fetchPriority={isServerImage ? 'high' : undefined}
           quality={85}
-          className={`object-cover will-change-transform ${isLoaded ? 'opacity-90' : 'opacity-0'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
-          style={{ animation: 'ken-burns 22s ease-in-out infinite alternate' }}
+          className={`object-cover ${noAnimation ? '' : 'will-change-transform'} ${isLoaded ? 'opacity-90' : 'opacity-0'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
+          style={
+            noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
+          }
           onLoad={() => setIsLoaded(true)}
           sizes="100vw"
         />

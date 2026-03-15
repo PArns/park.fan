@@ -116,7 +116,7 @@ export interface HeroSearchClickedProps {
 }
 
 export interface SearchResultClickedProps {
-  resultType: 'park' | 'attraction' | 'show' | 'restaurant' | 'location';
+  resultType: 'park' | 'attraction' | 'show' | 'restaurant' | 'location' | 'glossary';
   position?: number;
   /** Whether user had typed a search query (vs. opened empty search). */
   hasQuery?: boolean;

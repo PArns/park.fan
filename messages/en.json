@@ -87,7 +87,8 @@
       "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
-      "howto": "How do I use park.fan?"
+      "howto": "How do I use park.fan?",
+      "glossary": "Theme Park Glossary"
     },
     "sections": {
       "explore": "Explore by Region",
@@ -143,6 +144,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "How it works",
+    "glossaryLink": "Glossary",
     "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -176,7 +178,8 @@
     "search": "Search Parks & Attractions",
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
-    "howto": "Guide"
+    "howto": "Guide",
+    "glossary": "Glossary"
   },
   "theme": {
     "light": "Light",
@@ -596,7 +599,8 @@
       "restaurant": "Restaurants ({count})",
       "location": "Locations ({count})",
       "nearby": "Nearby Parks",
-      "inPark": "You're at {park}"
+      "inPark": "You're at {park}",
+      "glossary": "Glossary ({count})"
     },
     "keyboard": {
       "navigate": "Navigate",
@@ -737,6 +741,26 @@
     "locationHint": "Enable location access to sort by distance",
     "addToFavorites": "Add to favorites",
     "removeFromFavorites": "Remove from favorites"
+  },
+  "glossary": {
+    "overviewTitle": "Theme Park Glossary",
+    "overviewDescription": "Definitions for every theme park term you'll encounter: wait times, crowd levels, roller coaster elements, virtual queues, and more — in plain language.",
+    "overviewKeywords": "theme park glossary, wait time definition, crowd level meaning, roller coaster terms, virtual queue, theme park vocabulary, amusement park terms",
+    "termTitleSuffix": "Theme Park Glossary",
+    "relatedTerms": "Related Terms",
+    "backToGlossary": "Back to Glossary",
+    "category": {
+      "wait-times": "Wait Times",
+      "crowd-levels": "Crowd Levels",
+      "park-operations": "Park Operations",
+      "planning": "Planning",
+      "attractions": "Attractions",
+      "coasters": "Coasters",
+      "coaster-elements": "Coaster Elements"
+    },
+    "searchPlaceholder": "Search terms…",
+    "noResults": "No terms found for \"{query}\".",
+    "noResultsHint": "Try a different word or browse the categories below."
   },
   "howto": {
     "title": "How does park.fan work? – The complete guide",

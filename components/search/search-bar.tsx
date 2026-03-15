@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
+import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen } from 'lucide-react';
 import {
   CommandDialog,
   CommandEmpty,
@@ -34,6 +34,7 @@ const typeIcons = {
   show: Music,
   restaurant: Utensils,
   location: MapPin,
+  glossary: BookOpen,
 };
 
 function SkeletonItem({ width }: { width: string }) {
@@ -80,6 +81,7 @@ export function SearchCommand({
   const tSearch = useTranslations('search');
   const tGeo = useTranslations('geo');
   const router = useRouter();
+  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
@@ -103,6 +105,38 @@ export function SearchCommand({
     staleTime: 60_000, // 1 min cache
     gcTime: 5 * 60_000, // 5 min garbage collection
     retry: 1,
+  });
+
+  // Glossary search
+  const { data: glossaryData } = useQuery<{
+    results: Array<{
+      type: 'glossary';
+      id: string;
+      name: string;
+      slug: string;
+      shortDefinition: string;
+      category: string;
+    }>;
+  }>({
+    queryKey: ['glossary-search', debouncedQuery, locale],
+    queryFn: async () => {
+      const response = await fetch(
+        `/api/glossary-search?q=${encodeURIComponent(debouncedQuery)}&locale=${locale}`
+      );
+      if (!response.ok) throw new Error('Glossary search failed');
+      return response.json() as Promise<{
+        results: Array<{
+          type: 'glossary';
+          id: string;
+          name: string;
+          slug: string;
+          shortDefinition: string;
+          category: string;
+        }>;
+      }>;
+    },
+    enabled: debouncedQuery.length >= 3,
+    staleTime: 300_000,
   });
 
   // Nearby parks for pre-populating the dialog when no query is entered
@@ -265,6 +299,18 @@ export function SearchCommand({
       router.push(
         `/parks/${result.continent.toLowerCase()}/${result.country.toLowerCase()}/${citySlug}/${result.slug}` as '/parks/europe/germany/rust/europa-park'
       );
+    } else if (result.type === 'glossary') {
+      // Navigate to glossary term page — next-intl router adds locale prefix automatically
+      const glossarySegments: Record<string, string> = {
+        en: 'glossary',
+        de: 'glossar',
+        fr: 'glossaire',
+        it: 'glossario',
+        nl: 'woordenlijst',
+        es: 'glosario',
+      };
+      const seg = glossarySegments[locale] ?? 'glossary';
+      router.push(`/${seg}/${result.slug}` as '/parks/europe');
     } else if (result.parentPark && result.parentPark.url) {
       // Fallback for attractions/shows/restaurants without explicit URL
       const parkUrl = convertApiUrlToFrontendUrl(result.parentPark.url);
@@ -522,8 +568,54 @@ export function SearchCommand({
 
           {!isPending &&
             debouncedQuery.length >= 3 &&
-            (!results || results.results.length === 0) && (
+            (!results || results.results.length === 0) &&
+            (!glossaryData || glossaryData.results.length === 0) && (
               <CommandEmpty>{t('noResults')}</CommandEmpty>
+            )}
+
+          {!isPending &&
+            debouncedQuery.length >= 3 &&
+            (!results || results.results.length === 0) &&
+            glossaryData &&
+            glossaryData.results.length > 0 && (
+              <CommandGroup
+                heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
+              >
+                {glossaryData.results.map((item) => {
+                  const glossarySegments: Record<string, string> = {
+                    en: 'glossary',
+                    de: 'glossar',
+                    fr: 'glossaire',
+                    it: 'glossario',
+                    nl: 'woordenlijst',
+                    es: 'glosario',
+                  };
+                  const seg = glossarySegments[locale] ?? 'glossary';
+                  return (
+                    <CommandItem
+                      key={item.id}
+                      value={`${item.name} glossary`}
+                      onSelect={() => {
+                        handleOpenChange(false);
+                        router.push(`/${seg}/${item.slug}` as '/parks/europe');
+                      }}
+                      className="flex cursor-pointer items-center gap-4"
+                    >
+                      <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+                        <BookOpen className="text-foreground/65 h-5 w-5" />
+                      </div>
+                      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                        <span className="truncate text-[15px] leading-none font-semibold">
+                          {item.name}
+                        </span>
+                        <span className="text-foreground/45 truncate text-xs">
+                          {item.shortDefinition}
+                        </span>
+                      </div>
+                    </CommandItem>
+                  );
+                })}
+              </CommandGroup>
             )}
 
           {!isPending && results && results.results.length > 0 && (
@@ -545,6 +637,48 @@ export function SearchCommand({
                   </CommandGroup>
                 );
               })}
+
+              {/* Glossary results */}
+              {glossaryData && glossaryData.results.length > 0 && (
+                <CommandGroup
+                  heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
+                >
+                  {glossaryData.results.map((item) => {
+                    const glossarySegments: Record<string, string> = {
+                      en: 'glossary',
+                      de: 'glossar',
+                      fr: 'glossaire',
+                      it: 'glossario',
+                      nl: 'woordenlijst',
+                      es: 'glosario',
+                    };
+                    const seg = glossarySegments[locale] ?? 'glossary';
+                    return (
+                      <CommandItem
+                        key={item.id}
+                        value={`${item.name} glossary`}
+                        onSelect={() => {
+                          handleOpenChange(false);
+                          router.push(`/${seg}/${item.slug}` as '/parks/europe');
+                        }}
+                        className="flex cursor-pointer items-center gap-4"
+                      >
+                        <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+                          <BookOpen className="text-foreground/65 h-5 w-5" />
+                        </div>
+                        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                          <span className="truncate text-[15px] leading-none font-semibold">
+                            {item.name}
+                          </span>
+                          <span className="text-foreground/45 truncate text-xs">
+                            {item.shortDefinition}
+                          </span>
+                        </div>
+                      </CommandItem>
+                    );
+                  })}
+                </CommandGroup>
+              )}
 
               {/* Link to full search page */}
               <div className="border-border/30 border-t p-3">

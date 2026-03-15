@@ -87,7 +87,8 @@
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
-      "howto": "Hoe gebruik ik park.fan?"
+      "howto": "Hoe gebruik ik park.fan?",
+      "glossary": "Begrippen voor pretparken"
     },
     "sections": {
       "explore": "Verkennen per Regio",
@@ -143,6 +144,7 @@
     "api": "API Documentatie",
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
+    "glossaryLink": "Woordenlijst",
     "datenschutz": "Privacybeleid",
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden",
@@ -176,7 +178,8 @@
     "search": "Zoek Parken & Attracties",
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
-    "howto": "Gids"
+    "howto": "Gids",
+    "glossary": "Woordenlijst"
   },
   "theme": {
     "light": "Licht",
@@ -596,7 +599,8 @@
       "restaurant": "Restaurants ({count})",
       "location": "Locaties ({count})",
       "nearby": "Parken in de buurt",
-      "inPark": "Je bent bij {park}"
+      "inPark": "Je bent bij {park}",
+      "glossary": "Woordenlijst ({count})"
     },
     "keyboard": {
       "navigate": "Navigeren",
@@ -737,6 +741,26 @@
     "locationHint": "Schakel locatie in om op afstand te sorteren",
     "addToFavorites": "Toevoegen aan favorieten",
     "removeFromFavorites": "Verwijderen uit favorieten"
+  },
+  "glossary": {
+    "overviewTitle": "Pretpark Woordenlijst",
+    "overviewDescription": "Uitleg bij alle pretparkbegrippen: wachttijden, drukteniveaus, achtbaanelementen, virtuele wachtrijen en meer — helder en begrijpelijk uitgelegd.",
+    "overviewKeywords": "pretpark woordenlijst, wachttijd betekenis, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen, achtbaan lexicon",
+    "termTitleSuffix": "Pretpark Woordenlijst",
+    "relatedTerms": "Gerelateerde begrippen",
+    "backToGlossary": "Terug naar woordenlijst",
+    "category": {
+      "wait-times": "Wachttijden",
+      "crowd-levels": "Drukteniveaus",
+      "park-operations": "Parkbeheer",
+      "planning": "Planning",
+      "attractions": "Attracties",
+      "coasters": "Achtbanen",
+      "coaster-elements": "Coaster-elementen"
+    },
+    "searchPlaceholder": "Termen zoeken…",
+    "noResults": "Geen termen gevonden voor \"{query}\".",
+    "noResultsHint": "Probeer een ander woord of blader door de categorieën."
   },
   "howto": {
     "title": "Hoe werkt park.fan? – De complete gids",

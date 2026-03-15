@@ -115,20 +115,20 @@ export function Header() {
             </Link>
           )}
           <Link
-            href="/"
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
-            tabIndex={isTransparent ? -1 : 0}
-          >
-            {t('home')}
-          </Link>
-          <Link
             href="/parks/europe"
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
           >
             {t('explore')}
+          </Link>
+          <Link
+            href="/glossary"
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+          >
+            {t('glossary')}
           </Link>
           <Link
             href="/howto"
@@ -162,7 +162,7 @@ export function Header() {
               (size-9 = 36px) + gap-2 (8px) = 44px so the pill aligns with the hero card edge.
               On md+ the menu button is display:none and needs no offset (md:translate-x-0). */}
           <div
-            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'translate-x-11 md:translate-x-0 bg-white/60 px-1 py-0.5 backdrop-blur-md dark:bg-black/40' : 'translate-x-0'}`}
+            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'translate-x-11 bg-white/60 px-1 py-0.5 backdrop-blur-md md:translate-x-0 dark:bg-black/40' : 'translate-x-0'}`}
           >
             <LocaleSwitcher />
             <ThemeToggle />
@@ -209,6 +209,13 @@ export function Header() {
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >
                     {t('explore')}
+                  </Link>
+                  <Link
+                    href="/glossary"
+                    prefetch={false}
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('glossary')}
                   </Link>
                   <Link
                     href="/howto"

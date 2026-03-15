@@ -3,7 +3,7 @@ import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
-import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock } from 'lucide-react';
+import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
@@ -62,6 +62,7 @@ const typeIcons = {
   show: Music,
   restaurant: Utensils,
   location: MapPin,
+  glossary: BookOpen,
 };
 
 const typeLabels = {
@@ -70,6 +71,7 @@ const typeLabels = {
   show: 'Show',
   restaurant: 'Restaurant',
   location: 'Location',
+  glossary: 'Glossary',
 };
 
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';

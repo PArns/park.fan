@@ -36,8 +36,20 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: Locale) => {
-    // Track language switch
     trackLanguageSwitched(locale, newLocale);
+
+    // Pages with localized URL segments (e.g. /de/glossar/wartezeit → /en/glossary/wait-time)
+    // publish hreflang <link> tags with the correct per-locale URL. Use those when available
+    // so the user lands on the right localized path instead of a 404.
+    const hreflangEl = document.querySelector<HTMLLinkElement>(
+      `link[rel="alternate"][hreflang="${newLocale}"]`
+    );
+    if (hreflangEl?.href) {
+      // Use only the pathname so it works on localhost and production alike
+      const { pathname: hreflangPath } = new URL(hreflangEl.href);
+      window.location.replace(hreflangPath);
+      return;
+    }
 
     router.replace(pathname, { locale: newLocale });
   };

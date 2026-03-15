@@ -42,6 +42,24 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    // Map localized glossary URL segments to the canonical /glossary path
+    const localeSegments: Record<string, string> = {
+      de: 'glossar',
+      fr: 'glossaire',
+      it: 'glossario',
+      nl: 'woordenlijst',
+      es: 'glosario',
+    };
+    const rules: { source: string; destination: string }[] = [];
+    for (const [locale, segment] of Object.entries(localeSegments)) {
+      rules.push(
+        { source: `/${locale}/${segment}`, destination: `/${locale}/glossary` },
+        { source: `/${locale}/${segment}/:term`, destination: `/${locale}/glossary/:term` }
+      );
+    }
+    return rules;
+  },
   async headers() {
     return [
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
