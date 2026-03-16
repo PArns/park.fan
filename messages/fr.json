@@ -746,7 +746,9 @@
     "overviewTitle": "Glossaire des Parcs à Thème",
     "overviewDescription": "Définitions de tous les termes des parcs à thème : temps d'attente, niveaux d'affluence, éléments de montagnes russes, files virtuelles et bien plus — expliqués simplement.",
     "overviewKeywords": "glossaire parc à thème, définition temps d'attente, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",
-    "termTitleSuffix": "Glossaire des Parcs",
+    "termTitleSuffix": "Glossaire",
+    "termH1Suffix": "expliqué – Définition",
+    "overviewH1": "Glossaire des Parcs à Thème – Tous les termes & définitions",
     "relatedTerms": "Termes associés",
     "backToGlossary": "Retour au glossaire",
     "category": {
@@ -763,7 +765,7 @@
     "noResultsHint": "Essayez un autre mot ou parcourez les catégories."
   },
   "howto": {
-    "title": "Comment fonctionne park.fan ? – Le guide complet",
+    "title": "Comment ça marche – Le guide complet",
     "description": "Tout sur park.fan expliqué : recherche, favoris, calendrier des foules, prédictions IA et tous les badges. Pour les familles, passionnés et primo-visiteurs."
   },
   "impressum": {

@@ -746,7 +746,9 @@
     "overviewTitle": "Theme Park Glossary",
     "overviewDescription": "Definitions for every theme park term you'll encounter: wait times, crowd levels, roller coaster elements, virtual queues, and more — in plain language.",
     "overviewKeywords": "theme park glossary, wait time definition, crowd level meaning, roller coaster terms, virtual queue, theme park vocabulary, amusement park terms",
-    "termTitleSuffix": "Theme Park Glossary",
+    "termTitleSuffix": "Glossary",
+    "termH1Suffix": "Explained – Theme Park Definition",
+    "overviewH1": "Theme Park Glossary – All Terms & Definitions",
     "relatedTerms": "Related Terms",
     "backToGlossary": "Back to Glossary",
     "category": {
@@ -763,7 +765,7 @@
     "noResultsHint": "Try a different word or browse the categories below."
   },
   "howto": {
-    "title": "How does park.fan work? – The complete guide",
+    "title": "How It Works – The Complete Guide",
     "description": "Everything about park.fan explained: search, favorites, crowd calendar, AI predictions and all badges. For families, theme park enthusiasts and first-time visitors."
   },
   "impressum": {

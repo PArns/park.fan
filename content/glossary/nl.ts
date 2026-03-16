@@ -798,6 +798,33 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
+    id: 'ai-forecast',
+    name: 'AI-voorspelling',
+    shortDefinition:
+      'Machine learning-voorspellingen voor druktenivaues en wachttijden — tot 30+ dagen van tevoren.',
+    definition:
+      'Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema\'s en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan genereert AI-voorspellingen voor drukte en verwachte wachttijden tot 30+ dagen van tevoren.\n\nVoorspellingen worden continu bijgewerkt naarmate nieuwe data binnenkomt. Kortetermijnvoorspellingen (1–7 dagen) zijn doorgaans zeer nauwkeurig omdat ze actuele weersdata, aankondigingen van evenementen en boekingssignalen meenemen. Langetermijnvoorspellingen zijn van nature minder nauwkeurig, maar blijven waardevol voor het identificeren van rustige of drukke perioden ruim van tevoren.',
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Openingstijden',
+    shortDefinition:
+      'Het officiële dagprogramma dat aangeeft wanneer een pretpark of attractie opent en sluit.',
+    definition:
+      'Openingstijden zijn het gepubliceerde dagprogramma voor een pretpark of individuele attractie — ze geven aan wanneer de toegang begint en wanneer de exploitatie eindigt. De meeste grote parken publiceren een rollend schema weken of maanden van tevoren, hoewel tijden op korte termijn kunnen wijzigen door speciale evenementen, seizoensaanpassingen of operationele problemen.\n\npark.fan toont openingstijden voor elk park. Tijden aangeduid met "Est." (Geschat) zijn afgeleid uit historische patronen en niet officieel bevestigd door het park — ze moeten worden gecontroleerd vóór een gepland bezoek.',
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Wachttijdtrend',
+    shortDefinition:
+      'De richting van de verandering in wachtrijlengte over de afgelopen 30 minuten — stijgend, dalend of stabiel.',
+    definition:
+      'De wachttijdtrend geeft aan of de wachtrij van een attractie langer, korter of gelijk is dan 30 minuten geleden. park.fan geeft dit weer met een pijl: omhoog (wachtrij groeit), omlaag (wachtrij krimpt) of horizontaal (stabiel).\n\nDe trend is vaak veelzeggender dan de kale wachttijd. Een attractie met 45 minuten en een dalende trend is een betere keuze dan een met 40 minuten en een sterk stijgende trend — tegen de tijd dat je aankomt, kan de eerste wachtrij gedaald zijn naar 30 minuten terwijl de tweede al op 55 minuten staat.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
+  },
+  {
     id: 'trackless-ride',
     name: 'Trackless Ride',
     shortDefinition:
@@ -805,6 +832,36 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een Trackless Ride is een type dark ride waarbij voertuigen niet gebonden zijn aan een vaste rail maar autonoom door de attractieruimte navigeren, geleid door inductielussen, wifi of lasergeleidingssystemen in de vloer. De bewegingsvrijheid maakt veel complexere scenering en niet-lineaire verhaallijnen mogelijk. Symbolica in Efteling is het meest bekende Nederlandse voorbeeld. Andere beroemde voorbeelden: Star Wars: Rise of the Resistance (Disney) en Ratatouille: The Adventure (Disneyland Paris).',
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
+  },
+  {
+    id: 'ki',
+    name: 'AI',
+    shortDefinition:
+      'Kunstmatige Intelligentie — de machine-learningmodellen die drukte-prognoses en wachttijdvoorspellingen berekenen.',
+    definition:
+      "AI (Kunstmatige Intelligentie) verwijst naar machine-learningalgoritmen die patronen herkennen in grote datasets en voorspellingen genereren. park.fan gebruikt AI-modellen die getraind zijn op jaren aan historische wachttijddata, schoolvakantieregelingen, weerdata en evenementaankondigingen om dagelijkse drukte- en wachttijdprognoses te produceren voor elk bijgehouden park — tot 30+ dagen vooruit.",
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Kunstmatige Intelligentie'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Live wachttijd',
+    shortDefinition:
+      'Wachttijddata die direct vanuit de parksystemen wordt opgehaald en elke minuut bijgewerkt.',
+    definition:
+      "Een live wachttijd is de actuele, realtime wachttijd direct vanuit de datasystemen van een park — geen historisch gemiddelde, maar het werkelijke cijfer van dit moment, tot op de minuut nauwkeurig. park.fan haalt live wachttijden op vanuit officiële park-API's en derde partijen en vernieuwt elke minuut.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Live wachttijden', 'Realtime wachttijd', 'Realtime wachttijden'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Drukte-prognose',
+    shortDefinition:
+      'AI-gebaseerde voorspelling van hoe druk een attractiepark op een bepaalde dag zal zijn.',
+    definition:
+      'Een drukte-prognose is een datagestuurde voorspelling van hoe druk een attractiepark op een bepaalde dag of tijd zal zijn. park.fan herberekent drukte-prognoses dagelijks op basis van historische bezoekerscijfers, schoolvakanties, weerdata en speciale evenementen. De resultaten vloeien direct in de drukte-kalender: groene dagen betekenen korte rijen, rode dagen signaleren piekdrukte met lange wachttijden.',
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Drukte-prognoses'],
   },
 ];
 

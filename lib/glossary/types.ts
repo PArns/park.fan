@@ -21,6 +21,8 @@ export interface GlossaryTermTranslation {
   shortDefinition: string;
   definition: string;
   relatedTermIds?: string[];
+  /** Additional strings (plural forms, alternate names) that should also link to this term. */
+  aliases?: string[];
 }
 
 export interface GlossaryTerm extends GlossaryTermData {
@@ -29,6 +31,8 @@ export interface GlossaryTerm extends GlossaryTermData {
   definition: string;
   slug: string;
   relatedTermIds?: string[];
+  /** Additional strings (plural forms, alternate names) that also match this term. */
+  aliases?: string[];
 }
 
 export interface GlossaryTermWithEnName extends GlossaryTerm {

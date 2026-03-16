@@ -58,4 +58,5 @@ lib/hero-images.ts
 # Docs and project markdown (keep in git)
 !/docs/*.md
 !/docs/**/*.md
-!CLAUDE.mdpackage-lock.json
+!CLAUDE.md
+package-lock.json

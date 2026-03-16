@@ -17,6 +17,7 @@ interface GlossaryTermDetailProps {
     backToGlossary: string;
     relatedTerms: string;
     category: string;
+    termH1Suffix: string;
   };
 }
 
@@ -41,7 +42,10 @@ export function GlossaryTermDetail({
           {/* Header card: title → short definition → category badge */}
           <Card className="border-primary/20 shadow-md">
             <div className="px-6 pt-4 pb-4">
-              <h1 className="mb-3 text-3xl leading-tight font-bold">{term.name}</h1>
+              <h1 className="mb-3 text-3xl leading-tight font-bold">
+                {term.name}{' '}
+                <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
+              </h1>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 {term.shortDefinition}
               </p>
@@ -75,7 +79,7 @@ export function GlossaryTermDetail({
 
         {/* ── Sidebar: Related terms ────────────────────────────────────── */}
         {relatedTerms.length > 0 && (
-          <aside>
+          <aside aria-label={labels.relatedTerms}>
             {/* Sidebar wrapped in its own glass card so the heading is readable */}
             <Card className="border-primary/15 shadow-sm">
               <div className="border-primary/10 border-b px-4 py-2">

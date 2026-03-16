@@ -341,6 +341,78 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'fecha-bloqueada',
     },
   },
+  {
+    id: 'ai-forecast',
+    category: 'planning',
+    slugs: {
+      en: 'ai-forecast',
+      de: 'ki-prognose',
+      fr: 'prevision-ia',
+      it: 'previsione-ia',
+      nl: 'ai-voorspelling',
+      es: 'prediccion-ia',
+    },
+  },
+  {
+    id: 'ki',
+    category: 'planning',
+    slugs: {
+      en: 'artificial-intelligence',
+      de: 'kuenstliche-intelligenz',
+      fr: 'intelligence-artificielle',
+      it: 'intelligenza-artificiale',
+      nl: 'kunstmatige-intelligentie',
+      es: 'inteligencia-artificial',
+    },
+  },
+  {
+    id: 'realtime-wait-time',
+    category: 'wait-times',
+    slugs: {
+      en: 'live-wait-time',
+      de: 'echtzeit-wartezeit',
+      fr: 'attente-temps-reel',
+      it: 'attesa-tempo-reale',
+      nl: 'realtime-wachttijd',
+      es: 'espera-tiempo-real',
+    },
+  },
+  {
+    id: 'crowd-forecast',
+    category: 'crowd-levels',
+    slugs: {
+      en: 'crowd-forecast',
+      de: 'crowd-prognose',
+      fr: 'prevision-affluence',
+      it: 'previsione-affluenza',
+      nl: 'drukte-prognose',
+      es: 'prevision-afluencia',
+    },
+  },
+  {
+    id: 'opening-hours',
+    category: 'park-operations',
+    slugs: {
+      en: 'opening-hours',
+      de: 'oeffnungszeiten',
+      fr: 'horaires-ouverture',
+      it: 'orari-apertura',
+      nl: 'openingstijden',
+      es: 'horarios-apertura',
+    },
+  },
+  {
+    id: 'wait-time-trend',
+    category: 'wait-times',
+    slugs: {
+      en: 'wait-time-trend',
+      de: 'wartezeit-trend',
+      fr: 'tendance-attente',
+      it: 'tendenza-attesa',
+      nl: 'wachttijd-trend',
+      es: 'tendencia-espera',
+    },
+  },
   // ── Attractions ────────────────────────────────────────────────────────────
   {
     id: 'height-requirement',

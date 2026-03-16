@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { ParkCard } from '@/components/parks/park-card';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -141,7 +142,7 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
           {tHome('sections.featuredParks')}
         </h2>
         <p className="text-muted-foreground mb-8 text-center text-sm">
-          {tHome('sections.featuredParksIntro')}
+          <GlossaryInject>{tHome('sections.featuredParksIntro')}</GlossaryInject>
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

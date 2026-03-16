@@ -8,6 +8,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Wait time (also called queue time) is the estimated duration a guest must stand in line before boarding a ride or attraction. Parks post wait times at ride entrances and on their official apps, calculating the figure from queue length sensors, historical throughput data, and current loading efficiency. On busy days a single popular attraction can show waits of 90 minutes or more, making real-time data invaluable for planning your day.\n\npark.fan tracks live wait times updated every few minutes so you can monitor conditions across all attractions simultaneously. By comparing wait times across a park in real time you can identify which rides are experiencing temporary lulls and which have built up long queues — and act accordingly. Combining live wait data with the crowd calendar gives you the full picture before you even arrive at the gate.',
     relatedTermIds: ['posted-wait-time', 'virtual-queue', 'single-rider', 'express-pass'],
+    aliases: ['Wait Times'],
   },
   {
     id: 'single-rider',
@@ -205,6 +206,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Off-peak periods are the calmer stretches of the calendar when schools are in session and no major holidays fall. Typical off-peak windows include January through early February, the second half of September through October (excluding Halloween event evenings), and the first two weeks of November. During these periods, wait times for popular attractions can be a fraction of their summer peaks — rides that post 90-minute waits in July might show 15–20 minutes in October.\n\nFor guests with flexible schedules, visiting off-peak is one of the single most effective strategies for getting the most value out of a theme park day. Ticket prices are typically at their lowest, car parks are far from full, and the atmosphere at restaurants and shopping areas is far more relaxed. The trade-off is that some seasonal attractions, entertainment, and food offerings are only available during peak periods. park.fan's crowd calendar highlights off-peak windows for every tracked park so you can identify the best available dates for your trip.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+    aliases: ['Off Season', 'OffSeason'],
   },
   {
     id: 'ride-photo',
@@ -223,6 +225,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The queue line is the physical space — indoor corridors, outdoor switchback sections, or elaborately themed rooms — that guests walk through while waiting to board an attraction. At many modern theme parks, the queue itself is a meaningful part of the storytelling experience. Disney's Haunted Mansion queue uses gravestones, crypts, and stretching room effects to build atmosphere long before you board a Doom Buggy. Universal's Harry Potter rides begin their narrative immersion the moment you step into the queue building.\n\nA well-designed queue line makes even a substantial wait feel engaging and can meaningfully reduce perceived wait time. Parks invest heavily in queue theming for their flagship attractions precisely because the queue is where most guests spend the majority of their in-attraction time. When assessing whether a long wait is worth it, the quality of the queue experience is a genuine factor — some of the most celebrated queues in the world are at attractions with 60-minute waits that guests rate as entirely worthwhile.",
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ['Queue Lines', 'Queues'],
   },
   {
     id: 'opening-day',
@@ -799,6 +802,64 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Animatronics are electro-mechanical robotic figures used in theme park attractions and live shows to portray characters, creatures, or scene elements in a realistic or fantastical way. Disney coined the term Audio-Animatronics (a registered trademark) for their synchronised audio-figure system, first demonstrated publicly at the 1964 New York World's Fair. The technology has evolved enormously since then — from simple cam-driven cyclic figures to sophisticated servo-driven robots with complex facial expressions, full-body articulation, and real-time responsive behaviour.\n\nModern animatronics at major parks represent extraordinary engineering achievements. The Na'vi Shaman of Songs in Pandora at Disney's Animal Kingdom and the life-sized dinosaurs in the Jurassic World ride at Universal are among the most technically sophisticated moving figures ever built. For many guests, a great animatronic figure is more convincing and emotionally affecting than any screen-based effect. Parks routinely cite animatronics as the single most expensive component of a new dark ride build.",
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
+  },
+  {
+    id: 'ai-forecast',
+    name: 'AI Forecast',
+    shortDefinition:
+      'Machine-learning predictions of crowd levels and wait times at theme parks, generated up to 30+ days in advance.',
+    definition:
+      "An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 30+ days in advance.\n\nThe predictions are updated continuously as new data arrives. Near-term forecasts (1–7 days) are typically very accurate because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are naturally less precise but still valuable for planning — they identify reliably quiet or busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all shift the prediction meaningfully away from the historical baseline.",
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+    aliases: ['AI Forecasts'],
+  },
+  {
+    id: 'ki',
+    name: 'AI',
+    shortDefinition:
+      'Artificial Intelligence — the machine-learning models that calculate crowd forecasts and wait time predictions.',
+    definition:
+      'AI (Artificial Intelligence) refers to the machine-learning algorithms that recognise patterns in large datasets and generate predictions. park.fan uses AI models trained on years of historical wait-time data, school holiday calendars, weather data, and event announcements to produce daily crowd and wait-time forecasts for every tracked park — up to 30+ days ahead.',
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Artificial Intelligence'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Live Wait Time',
+    shortDefinition:
+      'Wait time data pulled directly from park systems and updated every minute.',
+    definition:
+      'A live wait time is the current, real-time wait pulled from a park\'s own data systems — not a historical average, but the actual figure right now, to the minute. park.fan fetches live wait times from official park APIs and third-party sources and refreshes every minute, so you always know which attractions are running short queues and which are backed up.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Live Wait Times', 'Real-Time Wait Time', 'Real-Time Wait Times'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Crowd Forecast',
+    shortDefinition:
+      'AI-based prediction of how busy a theme park will be on a given day.',
+    definition:
+      'A crowd forecast is a data-driven prediction of how crowded a theme park will be on a particular day or at a specific time. park.fan recalculates crowd forecasts daily using historical attendance figures, school holiday calendars, weather data, and special events. The results feed directly into the crowd calendar: green days signal short queues, red days indicate peak crowds with long wait times.',
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Crowd Forecasts'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Opening Hours',
+    shortDefinition:
+      'The official daily schedule showing when a theme park or attraction opens and closes.',
+    definition:
+      "Opening hours are the published daily schedule for a theme park or individual attraction — specifying when it starts admitting guests and when it stops operating. Most major parks publish a rolling schedule weeks or months in advance, though hours can change at short notice due to special events, seasonal adjustments, or operational issues.\n\npark.fan shows opening hours for each park and, where available, estimated operating hours for individual attractions. Hours marked as 'Est.' (Estimated) have been derived from historical patterns rather than confirmed by the park directly — they should be verified before planning a visit around a tight schedule.\n\nOpening hours matter enormously for strategy: parks that open early reward rope-drop visitors with shorter queues before the crowd builds; parks that close late offer a second window of shorter waits in the final hour of operation as casual visitors leave.",
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Wait Time Trend',
+    shortDefinition:
+      'The direction of queue length change over the last 30 minutes — shown as rising, falling, or stable.',
+    definition:
+      "The wait time trend indicates whether a ride's queue is getting longer, shorter, or holding steady compared to 30 minutes ago. park.fan displays this as an arrow: upward (queue growing), downward (queue shrinking), or horizontal (stable).\n\nThe trend is often more actionable than the raw wait time itself. A ride showing 45 minutes with a falling trend is a better bet than a ride showing 40 minutes with a rapidly rising trend — by the time you arrive, the first queue may be at 30 minutes while the second could be at 55.\n\nTrend data is most valuable during the park's mid-morning and late-afternoon transition periods, when crowds shift quickly as different guest cohorts move through the park.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
   },
   {
     id: 'trackless-ride',

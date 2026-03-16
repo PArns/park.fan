@@ -58,6 +58,7 @@ import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
@@ -98,6 +99,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   const t = await getTranslations('stats');
   const tHome = await getTranslations('home');
+  const tParks = await getTranslations('parks');
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
@@ -150,7 +152,12 @@ export default async function HomePage({ params }: HomePageProps) {
               </div>
               {/* Title + Description only (search rendered separately below) */}
               <div className="min-w-0 text-center lg:max-w-2xl">
-                <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
+                <HeroWithNearby
+                  searchPlaceholder={tHome('hero.searchPlaceholder')}
+                  hideSearch
+                  titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
+                  introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
+                />
                 <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
                   <Link
                     href="/howto"
@@ -413,34 +420,42 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Features Section */}
       <section className="bg-muted/30 border-t px-4 py-16">
         <div className="container mx-auto">
-          <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.plan')}</h2>
+          <h2 className="mb-2 text-center text-2xl font-semibold">
+            <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
+          </h2>
           <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-sm leading-relaxed">
-            {tHome('sections.featuresIntro')}
+            <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
           </p>
           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">
               <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <Clock className="text-crowd-very-low h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.realtime.title')}</h3>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.realtime.title')}</GlossaryInject>
+              </h3>
               <p className="text-muted-foreground text-sm">
-                {tHome('features.realtime.description')}
+                <GlossaryInject>{tHome('features.realtime.description')}</GlossaryInject>
               </p>
             </div>
             <div className="text-center">
               <div className="bg-park-primary/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <TrendingUp className="text-park-primary h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.ml.title')}</h3>
-              <p className="text-muted-foreground text-sm">{tHome('features.ml.description')}</p>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
+              </h3>
+              <p className="text-muted-foreground text-sm"><GlossaryInject>{tHome('features.ml.description')}</GlossaryInject></p>
             </div>
             <div className="text-center">
               <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <MapIcon className="text-crowd-moderate h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.calendar.title')}</h3>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.calendar.title')}</GlossaryInject>
+              </h3>
               <p className="text-muted-foreground text-sm">
-                {tHome('features.calendar.description')}
+                <GlossaryInject>{tHome('features.calendar.description')}</GlossaryInject>
               </p>
             </div>
           </div>
@@ -451,15 +466,15 @@ export default async function HomePage({ params }: HomePageProps) {
       <section className="border-t px-4 py-16">
         <div className="container mx-auto max-w-3xl">
           <h2 className="mb-6 text-2xl font-semibold">{tHome('about.title')}</h2>
-          <p className="text-muted-foreground mb-4 leading-relaxed">{tHome('about.p1')}</p>
-          <p className="text-muted-foreground mb-10 leading-relaxed">{tHome('about.p2')}</p>
+          <p className="text-muted-foreground mb-4 leading-relaxed"><GlossaryInject>{tHome('about.p1')}</GlossaryInject></p>
+          <p className="text-muted-foreground mb-10 leading-relaxed"><GlossaryInject>{tHome('about.p2')}</GlossaryInject></p>
 
           <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
-          <p className="text-muted-foreground mb-10 leading-relaxed">{tHome('about.p3')}</p>
+          <p className="text-muted-foreground mb-10 leading-relaxed"><GlossaryInject>{tHome('about.p3')}</GlossaryInject></p>
 
           <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
-          <p className="text-muted-foreground mb-4 leading-relaxed">{tHome('about.p4')}</p>
-          <p className="text-muted-foreground leading-relaxed">{tHome('about.p5')}</p>
+          <p className="text-muted-foreground mb-4 leading-relaxed"><GlossaryInject>{tHome('about.p4')}</GlossaryInject></p>
+          <p className="text-muted-foreground leading-relaxed"><GlossaryInject>{tHome('about.p5')}</GlossaryInject></p>
 
           <div className="mt-8">
             <Link

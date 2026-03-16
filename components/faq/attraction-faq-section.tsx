@@ -1,18 +1,17 @@
-'use client';
-
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ChevronDown, MapPin, Clock, Users, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 interface AttractionFAQSectionProps {
   attraction: ParkAttraction;
   park: ParkWithAttractions;
 }
 
-export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
-  const t = useTranslations('seo.faq.attraction');
+export async function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
+  const t = await getTranslations('seo.faq.attraction');
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
 
@@ -83,7 +82,9 @@ export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionP
                   </div>
                   <ChevronDown className="text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
                 </summary>
-                <div className="text-muted-foreground border-t px-4 pt-2 pb-4">{faq.answer}</div>
+                <div className="text-muted-foreground border-t px-4 pt-2 pb-4">
+                  <GlossaryInject>{faq.answer}</GlossaryInject>
+                </div>
               </details>
             </Card>
           );

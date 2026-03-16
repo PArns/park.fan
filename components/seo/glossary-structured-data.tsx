@@ -4,6 +4,9 @@ import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 
+/** ISO date of last glossary content review — update when terms are added or changed */
+const GLOSSARY_CONTENT_DATE = '2026-03-16';
+
 /** Maps locale codes to BCP-47 language tags used in schema.org inLanguage */
 const SCHEMA_LANGUAGE: Record<Locale, string> = {
   en: 'en',
@@ -61,6 +64,7 @@ export function GlossaryStructuredData({
       description: TERM_SET_DESCRIPTION[locale],
       url: termSetUrl,
       inLanguage: lang,
+      dateModified: GLOSSARY_CONTENT_DATE,
       hasDefinedTerm: terms.map((t) => ({
         '@type': 'DefinedTerm',
         '@id': `${SITE_URL}/${locale}/${segment}/${t.slug}`,
@@ -87,6 +91,7 @@ export function GlossaryStructuredData({
       url: termUrl,
       inLanguage: lang,
       termCode: term.id,
+      dateModified: GLOSSARY_CONTENT_DATE,
       inDefinedTermSet: {
         '@type': 'DefinedTermSet',
         '@id': termSetUrl,

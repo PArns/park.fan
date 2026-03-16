@@ -22,6 +22,7 @@ interface GlossaryOverviewClientProps {
   locale: Locale;
   segment: string;
   title: string;
+  h1: string;
   description: string;
   breadcrumbs: Breadcrumb[];
 }
@@ -31,6 +32,7 @@ export function GlossaryOverviewClient({
   locale,
   segment,
   title,
+  h1,
   description,
   breadcrumbs,
 }: GlossaryOverviewClientProps) {
@@ -96,7 +98,7 @@ export function GlossaryOverviewClient({
       <div className="bg-background/60 border-primary/15 mb-10 rounded-xl border shadow-sm backdrop-blur-md">
         {/* Title + description */}
         <div className="px-6 pt-5 pb-6">
-          <h1 className="mb-2 text-3xl font-bold">{title}</h1>
+          <h1 className="mb-2 text-3xl font-bold">{h1}</h1>
           <p className="text-muted-foreground">{description}</p>
         </div>
 
@@ -146,6 +148,7 @@ export function GlossaryOverviewClient({
               <button
                 key={category}
                 onClick={() => setActiveCategory((prev) => (prev === category ? null : category))}
+                aria-pressed={activeCategory === category}
                 className={cn(
                   'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
                   activeCategory === category
@@ -161,6 +164,7 @@ export function GlossaryOverviewClient({
       </div>
 
       {/* ── Results ──────────────────────────────────────────────────────── */}
+      <div aria-live="polite" aria-atomic="false">
       {filtered.length === 0 ? (
         <div className="flex justify-center py-16">
           <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
@@ -185,6 +189,7 @@ export function GlossaryOverviewClient({
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

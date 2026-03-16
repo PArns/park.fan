@@ -22,6 +22,7 @@ const serverAssets =
 /* eslint-enable @typescript-eslint/no-require-imports */
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
 import type { ScheduleSummary } from '@/lib/api/types';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 
 interface ParkCardProps {
   name: string;
@@ -178,7 +179,16 @@ export function ParkCard({
                   )}
                   <span>
                     {scheduleInfo.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
-                    {scheduleInfo.message}
+                    {scheduleInfo.icon === 'offseason' ? (
+                      <>
+                        <GlossaryTermLink termId="off-peak">
+                          {tNearby('offseason')}
+                        </GlossaryTermLink>
+                        {scheduleInfo.message.slice(tNearby('offseason').length)}
+                      </>
+                    ) : (
+                      scheduleInfo.message
+                    )}
                   </span>
                 </div>
               )}

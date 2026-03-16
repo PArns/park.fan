@@ -800,6 +800,33 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
+    id: 'ai-forecast',
+    name: 'Previsione IA',
+    shortDefinition:
+      'Previsioni basate sul machine learning per i livelli di affluenza e i tempi di attesa — fino a 30+ giorni in anticipo.',
+    definition:
+      'Una previsione IA utilizza modelli di machine learning addestrati su dati storici di affluenza, dati meteo, calendari scolastici e dati in tempo reale per prevedere quanto sarà affollato un parco o una singola attrazione in un determinato giorno o ora. park.fan genera previsioni IA per affluenza e tempi di attesa previsti fino a 30+ giorni in anticipo.\n\nLe previsioni vengono aggiornate continuamente man mano che arrivano nuovi dati. Le previsioni a breve termine (1–7 giorni) sono generalmente molto precise poiché integrano dati meteo attuali, annunci di eventi e segnali di prenotazione. Le previsioni a lungo termine sono naturalmente meno precise, ma rimangono utili per identificare in anticipo periodi tranquilli o affollati.',
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Orari di apertura',
+    shortDefinition:
+      "Il programma giornaliero ufficiale che indica quando un parco a tema o un'attrazione apre e chiude.",
+    definition:
+      "Gli orari di apertura sono il programma giornaliero pubblicato per un parco a tema o una singola attrazione — indicano quando inizia l'accesso e quando termina l'operatività. La maggior parte dei grandi parchi pubblica un calendario scorrevole con settimane o mesi di anticipo, sebbene gli orari possano cambiare a breve termine a causa di eventi speciali, aggiustamenti stagionali o problemi operativi.\n\npark.fan mostra gli orari di apertura per ogni parco. Gli orari contrassegnati con «Est.» (Stimato) sono stati derivati da schemi storici e non confermati ufficialmente dal parco — devono essere verificati prima di una visita pianificata.",
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Tendenza',
+    shortDefinition:
+      'La direzione del cambiamento nella lunghezza della coda negli ultimi 30 minuti — in aumento, in calo o stabile.',
+    definition:
+      "La tendenza indica se la coda di un'attrazione è più lunga, più corta o uguale rispetto a 30 minuti fa. park.fan la rappresenta con una freccia: su (coda in crescita), giù (coda in diminuzione) o orizzontale (stabile).\n\nLa tendenza è spesso più significativa del tempo di attesa grezzo. Un'attrazione con 45 minuti e tendenza in calo è una scelta migliore rispetto a una con 40 minuti e tendenza fortemente in aumento — nel tempo che ci vuole ad arrivare, la prima coda potrebbe essere scesa a 30 minuti mentre la seconda ha già raggiunto i 55.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
+  },
+  {
     id: 'trackless-ride',
     name: 'Trackless Ride',
     shortDefinition:
@@ -807,6 +834,36 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Un Trackless Ride è un tipo di dark ride in cui i veicoli non sono vincolati a una rotaia fissa ma navigano autonomamente attraverso lo spazio dell'attrazione, guidati da loop di induzione, Wi-Fi o laser incorporati nel pavimento. La libertà di movimento consente scenografie molto più complesse e narrazioni non lineari: i veicoli possono girare, ruotare e avvicinarsi alle scene da diverse angolazioni. Esempi celebri: Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Avventura Totalmente Toccata di Remy (Disneyland Paris) e Symbolica (Efteling, Paesi Bassi).",
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
+  },
+  {
+    id: 'ki',
+    name: 'IA',
+    shortDefinition:
+      'Intelligenza Artificiale — i modelli di machine learning che calcolano le previsioni di affluenza e i tempi di attesa.',
+    definition:
+      "L'IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati su anni di dati storici sui tempi di attesa, calendari scolastici, dati meteorologici e annunci di eventi per produrre previsioni giornaliere di affluenza e tempi di attesa — fino a 30+ giorni in anticipo.",
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Intelligenza Artificiale'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Tempo di attesa in tempo reale',
+    shortDefinition:
+      'Dati sui tempi di attesa aggiornati in tempo reale direttamente dai sistemi del parco.',
+    definition:
+      "Un tempo di attesa in tempo reale è il dato attuale estratto direttamente dai sistemi del parco — non una media storica, ma il dato reale al minuto. park.fan recupera i tempi di attesa in tempo reale dalle API ufficiali dei parchi e da fonti terze, aggiornando ogni minuto.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Tempi di attesa in tempo reale', 'Attesa live'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Previsione affluenza',
+    shortDefinition:
+      "Previsione basata sull'IA dell'affluenza in un parco a tema per un giorno specifico.",
+    definition:
+      "Una previsione affluenza è una previsione basata sui dati di quanto sarà affollato un parco a tema in un giorno o a un'ora specifica. park.fan ricalcola le previsioni di affluenza quotidianamente utilizzando dati storici di presenze, calendari scolastici, dati meteorologici ed eventi speciali. I risultati alimentano direttamente il calendario delle affluenze: i giorni verdi indicano code brevi, i giorni rossi segnalano affluenza di punta con lunghi tempi di attesa.",
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Previsioni affluenza'],
   },
 ];
 

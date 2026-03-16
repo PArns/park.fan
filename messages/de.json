@@ -746,7 +746,9 @@
     "overviewTitle": "Freizeitpark-Glossar",
     "overviewDescription": "Alle Fachbegriffe für deinen Freizeitparkbesuch erklärt: Wartezeiten, Besucherdichte, Achterbahnelemente, virtuelle Warteschlangen und vieles mehr – einfach und verständlich.",
     "overviewKeywords": "Freizeitpark Glossar, Wartezeit Bedeutung, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe, Freizeitpark Lexikon",
-    "termTitleSuffix": "Freizeitpark-Glossar",
+    "termTitleSuffix": "Glossar",
+    "termH1Suffix": "erklärt – Wortbedeutung",
+    "overviewH1": "Freizeitpark-Glossar – Alle Begriffe & Definitionen",
     "relatedTerms": "Verwandte Begriffe",
     "backToGlossary": "Zurück zum Glossar",
     "category": {
@@ -763,7 +765,7 @@
     "noResultsHint": "Versuche ein anderes Wort oder sieh dir die Kategorien an."
   },
   "howto": {
-    "title": "Wie funktioniert park.fan? – Die vollständige Anleitung",
+    "title": "So funktioniert es – Die vollständige Anleitung",
     "description": "Alles über park.fan erklärt: Suche, Favoriten, Crowd-Kalender, KI-Prognosen und alle Badges im Überblick. Für Familien, Freizeitparknerds und Erstbesucher."
   },
   "impressum": {

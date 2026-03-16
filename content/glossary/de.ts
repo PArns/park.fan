@@ -9,6 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Wartezeit (auch Wartezeit in der Warteschlange) ist die geschätzte Dauer, die ein Besucher in der Warteschlange verbringt, bevor er eine Attraktion besteigen kann. Parks zeigen Wartezeiten an Attraktionseingängen und in ihren Apps an. park.fan erfasst live Wartezeiten, die jede Minute aktualisiert werden, damit du die aktuellen Bedingungen für alle Attraktionen einsehen kannst.',
     relatedTermIds: ['posted-wait-time', 'virtual-queue', 'single-rider', 'express-pass'],
+    aliases: ['Wartezeiten'],
   },
   {
     id: 'single-rider',
@@ -62,6 +63,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Besucherkalender ist ein Monats- oder Jahreskalender, der vorhergesagte Besucherdichten für jeden Tag zeigt. park.fan erstellt Besucherkalender mit KI-Modellen, die auf jahrelangen historischen Wartezeitdaten, kombinierten Schulferienkalendern, bevorstehenden Veranstaltungen und saisonalen Trends trainiert wurden. Grüne Tage zeigen niedrige Besucherzahlen an; orange und rote Tage zeigen hohe Besucherzahlen an.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
+    aliases: ['Crowd-Kalender'],
   },
   {
     id: 'peak-day',
@@ -204,6 +206,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen — typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert Nebensaison-Fenster, damit du deinen Besuch optimal planen kannst.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+    aliases: ['Off-Season', 'OffSeason'],
   },
   {
     id: 'ride-photo',
@@ -222,6 +225,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt dir die aktuellen Wartezeiten aller Attraktionen, damit du die Planung deines Parkbesuchs optimal anpassen kannst.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ['Warteschlangen'],
   },
   {
     id: 'opening-day',
@@ -797,6 +801,64 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Animatronics (Singular: Animatronic, auch Animatronik) sind elektromechanische Roboterfiguren, die in Themenfahrten und Live-Shows eingesetzt werden, um Charaktere oder Szenenbewohner realistisch darzustellen. Disney prägte den Begriff "Audio-Animatronics" 1964 auf der Weltausstellung. Moderne Animatronics reichen von einfachen Zyklus-Figuren bis zu hochentwickelten Servo- und Pneumatik-Robotern mit komplexen Gesichtsausdrücken und ganzkörperlichen Bewegungsabläufen. Der Schamane in Disneys Pandora – The World of Avatar und die Dinosaurier der Jurassic World-Fahrt bei Universal sind Meilensteine der Technik.',
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
+  },
+  {
+    id: 'ai-forecast',
+    name: 'KI-Prognose',
+    shortDefinition:
+      'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks – bis zu 30+ Tage im Voraus.',
+    definition:
+      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 30+ Tage im Voraus.\n\nDie Vorhersagen werden kontinuierlich aktualisiert, wenn neue Daten eintreffen. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+    aliases: ['KI-Prognosen'],
+  },
+  {
+    id: 'ki',
+    name: 'KI',
+    shortDefinition:
+      'Künstliche Intelligenz — Machine-Learning-Modelle, die Besucherprognosen und Wartezeiten für Freizeitparks berechnen.',
+    definition:
+      'KI (Künstliche Intelligenz) bezeichnet Machine-Learning-Algorithmen, die Muster in großen Datensätzen erkennen und Vorhersagen treffen. park.fan setzt KI-Modelle ein, die auf jahrelangen historischen Wartezeitdaten, Schulferienkalendern, Wetterdaten und Veranstaltungsankündigungen trainiert wurden. Diese Modelle berechnen täglich neue Prognosen für Besucherdichte und erwartete Wartezeiten – für jeden Park, jeden Tag, bis zu 30+ Tage im Voraus.',
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Künstliche Intelligenz'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Echtzeit-Wartezeit',
+    shortDefinition:
+      'Minütlich aktualisierte Live-Wartezeit direkt aus den Systemen eines Freizeitparks.',
+    definition:
+      'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit — kein historischer Durchschnitt, sondern der tatsächliche Stand von heute, jetzt, auf die Minute genau. park.fan ruft Echtzeit-Wartezeiten aus offiziellen Park-APIs und Drittquellen ab und aktualisiert die Daten im Minutentakt. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Echtzeit-Wartezeiten', 'Live-Wartezeit', 'Live-Wartezeiten'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Crowd-Prognose',
+    shortDefinition:
+      'KI-basierte Vorhersage der Besucherdichte für einen Freizeitpark an einem bestimmten Tag.',
+    definition:
+      'Eine Crowd-Prognose (auch Besucherprognose) ist eine datengestützte Vorhersage, wie voll ein Freizeitpark an einem bestimmten Tag oder zu einer bestimmten Uhrzeit sein wird. park.fan berechnet Crowd-Prognosen täglich neu auf Basis historischer Besuchszahlen, Schulferienkalender, Wetterdaten und Sonderveranstaltungen. Die Ergebnisse fließen direkt in den Besucherkalender ein: Grüne Tage bedeuten kurze Warteschlangen, rote Tage stehen für Spitzenbetrieb mit langen Wartezeiten.',
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Crowd-Prognosen', 'Besucherprognose', 'Besucherprognosen'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Öffnungszeiten',
+    shortDefinition:
+      'Der offizielle Tagesplan mit den Öffnungs- und Schließzeiten eines Freizeitparks oder einer Attraktion.',
+    definition:
+      "Die Öffnungszeiten sind der veröffentlichte Tagesplan für einen Freizeitpark oder eine einzelne Attraktion – er gibt an, wann der Einlass beginnt und wann der Betrieb endet. Die meisten großen Parks veröffentlichen einen rollierenden Fahrplan Wochen oder Monate im Voraus, obwohl sich die Zeiten kurzfristig aufgrund von Sonderveranstaltungen, saisonalen Anpassungen oder betrieblichen Problemen ändern können.\n\npark.fan zeigt Öffnungszeiten für jeden Park an. Zeiten, die als 'Est.' (Estimated / Geschätzt) gekennzeichnet sind, wurden aus historischen Mustern abgeleitet und nicht vom Park offiziell bestätigt – sie sollten vor einem geplanten Besuch überprüft werden.\n\nÖffnungszeiten sind strategisch äußerst wichtig: Parks, die früh öffnen, belohnen Rope-Drop-Besucher mit kürzeren Warteschlangen, bevor sich die Massen aufbauen; Parks, die spät schließen, bieten ein zweites Fenster kürzerer Wartezeiten in der letzten Betriebsstunde.",
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Trend',
+    shortDefinition:
+      'Die Entwicklungsrichtung der Warteschlangenlänge in den letzten 30 Minuten – steigend, fallend oder stabil.',
+    definition:
+      "Der Trend zeigt an, ob die Warteschlange einer Attraktion im Vergleich zu vor 30 Minuten länger, kürzer oder gleich geblieben ist. park.fan stellt dies als Pfeil dar: aufwärts (Warteschlange wächst), abwärts (Warteschlange schrumpft) oder horizontal (stabil).\n\nDer Trend ist oft aussagekräftiger als die reine Wartezeit. Eine Attraktion mit 45 Minuten und fallendem Trend ist eine bessere Wahl als eine mit 40 Minuten und stark steigendem Trend – bis man ankommt, kann die erste Schlange auf 30 Minuten gesunken sein, während die zweite bereits bei 55 Minuten liegt.\n\nTrend-Daten sind besonders wertvoll in den Übergangsphasen des Parks am späten Vormittag und frühen Nachmittag, wenn sich die Besucher schnell durch den Park verteilen.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
   },
   {
     id: 'trackless-ride',

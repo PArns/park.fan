@@ -9,6 +9,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 import nextDynamic from 'next/dynamic';
 import type { Metadata } from 'next';
@@ -54,8 +55,10 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
 
   // Keyword-rich title: "Wait Time – Theme Park Glossary | park.fan"
   const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
-  // Description combines short definition with category context
-  const description = term.shortDefinition;
+  // Description: first paragraph of definition, capped at 155 chars
+  const rawDesc = term.definition.split('\n\n')[0];
+  const description =
+    rawDesc.length > 155 ? rawDesc.slice(0, 152).replace(/\s\S*$/, '') + '…' : rawDesc;
   // Keywords: term name + related IDs resolved to names + category label
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds
@@ -128,6 +131,12 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           segment={segment}
           variant="detail"
         />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            ...breadcrumbs,
+            { name: term.name, url: `/${segment}/${termSlug}` },
+          ]}
+        />
         <GlossaryTermDetail
           term={term}
           relatedTerms={relatedTerms}
@@ -138,6 +147,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             backToGlossary: t('backToGlossary'),
             relatedTerms: t('relatedTerms'),
             category: t(`category.${term.category}`),
+            termH1Suffix: t('termH1Suffix'),
           }}
         />
       </PageContainer>
