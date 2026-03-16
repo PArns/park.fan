@@ -58,7 +58,9 @@ import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { GlossaryInjectLoader } from '@/components/glossary/glossary-inject-loader';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import type { Locale } from '@/i18n/config';
 
 import type { Metadata } from 'next';
 
@@ -123,6 +125,7 @@ export default async function HomePage({ params }: HomePageProps) {
     }) || [];
 
   return (
+    <GlossaryInjectLoader locale={locale as Locale}>
     <div className="flex flex-col">
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
@@ -475,5 +478,6 @@ export default async function HomePage({ params }: HomePageProps) {
         </div>
       </section>
     </div>
+    </GlossaryInjectLoader>
   );
 }
