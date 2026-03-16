@@ -55,8 +55,10 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
 
   // Keyword-rich title: "Wait Time – Theme Park Glossary | park.fan"
   const title = `${term.name} – ${t('termTitleSuffix')} | park.fan`;
-  // Description combines short definition with category context
-  const description = term.shortDefinition;
+  // Description: first paragraph of definition, capped at 155 chars
+  const rawDesc = term.definition.split('\n\n')[0];
+  const description =
+    rawDesc.length > 155 ? rawDesc.slice(0, 152).replace(/\s\S*$/, '') + '…' : rawDesc;
   // Keywords: term name + related IDs resolved to names + category label
   const allTerms = await getGlossaryTerms(locale as Locale);
   const relatedNames = term.relatedTermIds

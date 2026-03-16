@@ -148,6 +148,7 @@ export function GlossaryOverviewClient({
               <button
                 key={category}
                 onClick={() => setActiveCategory((prev) => (prev === category ? null : category))}
+                aria-pressed={activeCategory === category}
                 className={cn(
                   'rounded-full border px-2.5 py-0.5 text-xs transition-colors',
                   activeCategory === category
@@ -163,6 +164,7 @@ export function GlossaryOverviewClient({
       </div>
 
       {/* ── Results ──────────────────────────────────────────────────────── */}
+      <div aria-live="polite" aria-atomic="false">
       {filtered.length === 0 ? (
         <div className="flex justify-center py-16">
           <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
@@ -187,6 +189,7 @@ export function GlossaryOverviewClient({
           ))}
         </div>
       )}
+      </div>
     </div>
   );
 }

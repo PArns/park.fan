@@ -79,7 +79,7 @@ export function GlossaryTermDetail({
 
         {/* ── Sidebar: Related terms ────────────────────────────────────── */}
         {relatedTerms.length > 0 && (
-          <aside>
+          <aside aria-label={labels.relatedTerms}>
             {/* Sidebar wrapped in its own glass card so the heading is readable */}
             <Card className="border-primary/15 shadow-sm">
               <div className="border-primary/10 border-b px-4 py-2">
