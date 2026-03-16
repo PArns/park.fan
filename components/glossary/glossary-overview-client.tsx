@@ -22,6 +22,7 @@ interface GlossaryOverviewClientProps {
   locale: Locale;
   segment: string;
   title: string;
+  h1: string;
   description: string;
   breadcrumbs: Breadcrumb[];
 }
@@ -31,6 +32,7 @@ export function GlossaryOverviewClient({
   locale,
   segment,
   title,
+  h1,
   description,
   breadcrumbs,
 }: GlossaryOverviewClientProps) {
@@ -96,7 +98,7 @@ export function GlossaryOverviewClient({
       <div className="bg-background/60 border-primary/15 mb-10 rounded-xl border shadow-sm backdrop-blur-md">
         {/* Title + description */}
         <div className="px-6 pt-5 pb-6">
-          <h1 className="mb-2 text-3xl font-bold">{title}</h1>
+          <h1 className="mb-2 text-3xl font-bold">{h1}</h1>
           <p className="text-muted-foreground">{description}</p>
         </div>
 

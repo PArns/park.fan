@@ -7,6 +7,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryOverviewClient } from '@/components/glossary/glossary-overview-client';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import type { GlossaryCategory, GlossaryTermWithEnName } from '@/lib/glossary/types';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
@@ -111,11 +112,18 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
           segment={segment}
           variant="overview"
         />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            { name: tCommon('home'), url: '/' },
+            { name: t('overviewTitle'), url: `/${segment}` },
+          ]}
+        />
         <GlossaryOverviewClient
           groupedTerms={groupedTerms}
           locale={locale as Locale}
           segment={segment}
           title={t('overviewTitle')}
+          h1={t('overviewH1')}
           description={t('overviewDescription')}
           breadcrumbs={breadcrumbs}
         />

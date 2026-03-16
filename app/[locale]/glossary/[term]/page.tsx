@@ -9,6 +9,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { FeaturedParksSection } from '@/components/home/featured-parks-section';
 import nextDynamic from 'next/dynamic';
 import type { Metadata } from 'next';
@@ -128,6 +129,12 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           segment={segment}
           variant="detail"
         />
+        <BreadcrumbStructuredData
+          breadcrumbs={[
+            ...breadcrumbs,
+            { name: term.name, url: `/${segment}/${termSlug}` },
+          ]}
+        />
         <GlossaryTermDetail
           term={term}
           relatedTerms={relatedTerms}
@@ -138,6 +145,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             backToGlossary: t('backToGlossary'),
             relatedTerms: t('relatedTerms'),
             category: t(`category.${term.category}`),
+            termH1Suffix: t('termH1Suffix'),
           }}
         />
       </PageContainer>
