@@ -6,6 +6,7 @@ import { Clock, Calendar, DoorOpen, Snowflake } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { LocalTimeRange } from '@/components/ui/local-time';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { ScheduleItem, NextScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 
 interface ParkTimeInfoProps {
@@ -186,7 +187,13 @@ export function ParkTimeInfo({
             <div className="flex items-center gap-1.5 text-amber-500">
               <Snowflake className="h-4 w-4 flex-shrink-0" />
               <span className="font-medium">
-                {t('offseason')} ({t('opensOn')} {dateFormatted} - {tCommon('in')} {weeks}{' '}
+                <GlossaryTermLink
+                  termId="off-peak"
+                  className="border-b border-dashed border-current/40 cursor-help font-[inherit]"
+                >
+                  {t('offseason')}
+                </GlossaryTermLink>{' '}
+                ({t('opensOn')} {dateFormatted} - {tCommon('in')} {weeks}{' '}
                 {tNearby('week', { count: weeks })})
               </span>
             </div>
