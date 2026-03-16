@@ -746,7 +746,7 @@
     "overviewTitle": "Glosario de Parques Temáticos",
     "overviewDescription": "Definiciones de todos los términos de parques temáticos: tiempos de espera, niveles de afluencia, elementos de montaña rusa, colas virtuales y más — explicados con claridad.",
     "overviewKeywords": "glosario parque temático, definición tiempo de espera, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",
-    "termTitleSuffix": "Glosario de Parques",
+    "termTitleSuffix": "Glosario",
     "relatedTerms": "Términos relacionados",
     "backToGlossary": "Volver al glosario",
     "category": {
@@ -763,7 +763,7 @@
     "noResultsHint": "Prueba con otra palabra o explora las categorías."
   },
   "howto": {
-    "title": "¿Cómo funciona park.fan? – La guía completa",
+    "title": "Cómo funciona – La guía completa",
     "description": "Todo sobre park.fan explicado: búsqueda, favoritos, calendario de afluencia, predicciones IA y todas las insignias. Para familias, fanáticos y visitantes por primera vez."
   },
   "impressum": {

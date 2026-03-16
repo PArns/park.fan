@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   const t = await getTranslations({ locale, namespace: 'glossary' });
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}`;
-  const title = `${t('overviewTitle')} | park.fan`;
+  const title = `${t('termTitleSuffix')} | park.fan`;
   const description = t('overviewDescription');
 
   return {
