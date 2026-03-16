@@ -1,9 +1,8 @@
-'use client';
-
-import { useMemo } from 'react';
-import Link from 'next/link';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useGlossaryInject, type GlossaryInjectTerm } from './glossary-inject-context';
+import { getLocale } from 'next-intl/server';
+import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import type { Locale } from '@/i18n/config';
+import type { GlossaryTerm } from '@/lib/glossary/types';
+import { GlossaryInjectTerm } from './glossary-inject-term';
 
 function escapeRegex(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -13,7 +12,7 @@ type Segment =
   | { type: 'text'; content: string }
   | { type: 'term'; id: string; matchedText: string; slug: string; shortDefinition: string; name: string };
 
-function parseSegments(text: string, terms: GlossaryInjectTerm[]): Segment[] {
+function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
   // Sort longest-first so "Express Pass" matches before "Express"
   const sorted = [...terms].sort((a, b) => b.name.length - a.name.length);
   const pattern = sorted.map((t) => `\\b${escapeRegex(t.name)}\\b`).join('|');
@@ -52,41 +51,39 @@ function parseSegments(text: string, terms: GlossaryInjectTerm[]): Segment[] {
 }
 
 /**
- * Scans a text string for glossary terms and replaces the first occurrence of
- * each with a dashed-underline link that shows a tooltip with the short definition.
+ * Async server component — fetches glossary terms for the current locale and
+ * replaces the first occurrence of each term with a dashed-underline tooltip link.
  *
- * Requires a <GlossaryInjectLoader> ancestor in the tree.
- * If no provider is found, renders the text as-is.
+ * No provider or wrapper needed. Works in any server component.
  */
-export function GlossaryInject({ children }: { children: string }) {
-  const ctx = useGlossaryInject();
+export async function GlossaryInject({ children }: { children: string }) {
+  if (!children) return <>{children}</>;
 
-  const segments = useMemo<Segment[]>(() => {
-    if (!ctx || !children) return [{ type: 'text', content: children ?? '' }];
-    return parseSegments(children, ctx.terms);
-  }, [ctx, children]);
+  const locale = (await getLocale()) as Locale;
+  const terms = await getGlossaryTerms(locale);
+  const segment = GLOSSARY_SEGMENTS[locale];
 
-  if (!ctx) return <>{children}</>;
+  const segments = parseSegments(children, terms);
+
+  // If no terms matched, return plain text
+  if (segments.every((s) => s.type === 'text')) {
+    return <>{children}</>;
+  }
 
   return (
     <>
-      {segments.map((seg: Segment) => {
+      {segments.map((seg, i) => {
         if (seg.type === 'text') return seg.content;
         return (
-          <Tooltip key={seg.id}>
-            <TooltipTrigger asChild>
-              <Link
-                href={`/${ctx.locale}/${ctx.segment}/${seg.slug}`}
-                className="border-b border-dashed border-current/40 cursor-help font-[inherit] decoration-0"
-              >
-                {seg.matchedText}
-              </Link>
-            </TooltipTrigger>
-            <TooltipContent side="top" className="max-w-64">
-              <p className="font-semibold">{seg.name}</p>
-              <p className="mt-0.5 opacity-80">{seg.shortDefinition}</p>
-            </TooltipContent>
-          </Tooltip>
+          <GlossaryInjectTerm
+            key={`${seg.id}-${i}`}
+            matchedText={seg.matchedText}
+            name={seg.name}
+            slug={seg.slug}
+            shortDefinition={seg.shortDefinition}
+            locale={locale}
+            segment={segment}
+          />
         );
       })}
     </>

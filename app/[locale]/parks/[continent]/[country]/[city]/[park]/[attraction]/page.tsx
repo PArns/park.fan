@@ -66,7 +66,6 @@ import {
 } from '@/components/seo/structured-data';
 import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
-import { GlossaryInjectLoader } from '@/components/glossary/glossary-inject-loader';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
@@ -297,7 +296,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
       <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
-      <GlossaryInjectLoader locale={locale as Locale}>
       <PageContainer>
         {/* Breadcrumb */}
         <BreadcrumbNav
@@ -526,7 +524,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           <AttractionFAQSection attraction={attraction} park={park} />
         </article>
       </PageContainer>
-      </GlossaryInjectLoader>
     </>
   );
 }

@@ -14,7 +14,6 @@ import { Link } from '@/i18n/navigation';
 // Cached geoData fetch – deduplicated across all async server components in one render
 const getCachedGeoData = cache(() => getGeoStructure().catch(() => null));
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
-import { GlossaryInjectLoader } from '@/components/glossary/glossary-inject-loader';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import type { CalendarDay } from '@/lib/api/types';
 import { Badge } from '@/components/ui/badge';
@@ -6691,7 +6690,6 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
   setRequestLocale(locale);
 
   return (
-    <GlossaryInjectLoader locale={locale as Locale}>
     <div className="container mx-auto px-4 py-12">
       <div>
         <LocaleContent
@@ -6762,6 +6760,5 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
         />
       </div>
     </div>
-    </GlossaryInjectLoader>
   );
 }

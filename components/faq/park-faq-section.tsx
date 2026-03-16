@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
@@ -171,7 +172,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
                       </ul>
                     </>
                   ) : (
-                    (faq.answer as string)
+                    <GlossaryInject>{faq.answer as string}</GlossaryInject>
                   )}
                 </div>
               </details>

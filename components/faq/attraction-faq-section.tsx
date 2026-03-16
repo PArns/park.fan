@@ -1,7 +1,5 @@
-'use client';
-
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { ChevronDown, MapPin, Clock, Users, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
@@ -12,8 +10,8 @@ interface AttractionFAQSectionProps {
   park: ParkWithAttractions;
 }
 
-export function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
-  const t = useTranslations('seo.faq.attraction');
+export async function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
+  const t = await getTranslations('seo.faq.attraction');
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
 

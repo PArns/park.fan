@@ -93,7 +93,6 @@ import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 
 // Glossary inject
-import { GlossaryInjectLoader } from '@/components/glossary/glossary-inject-loader';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 // Search
@@ -2528,21 +2527,15 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
         </Section>
 
         {/* ── Glossary Inject ─────────────────────────────────────────── */}
-        <GlossaryInjectLoader locale={locale as import('@/i18n/config').Locale}>
           <Section title="Glossary Term Inject" icon={BookOpen}>
             <ComponentLabel
-              name="GlossaryInjectLoader + GlossaryInject"
-              file="components/glossary/glossary-inject-loader.tsx · glossary-inject.tsx"
+              name="GlossaryInject"
+              file="components/glossary/glossary-inject.tsx"
             />
 
-            <Sub title="Usage — wrap page once with GlossaryInjectLoader, use GlossaryInject anywhere inside">
-              <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// page.tsx (server component)
-<GlossaryInjectLoader locale={locale}>
-  <AttractionFAQSection ... />   {/* any depth */}
-</GlossaryInjectLoader>
-
-// inside any client component — no props needed
-<GlossaryInject>{faq.answer}</GlossaryInject>`}</div>
+            <Sub title="Usage — use GlossaryInject in any server component, no wrapper needed">
+              <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// any server component — self-sufficient, no provider needed
+<GlossaryInject>{someTextString}</GlossaryInject>`}</div>
             </Sub>
 
             <Sub title="Live preview — FAQ-style answer text (hover the dashed terms)">
@@ -2575,11 +2568,10 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 <li>Only the <strong>first occurrence</strong> of each term per text block is linked — no over-linking</li>
                 <li>Terms are matched <strong>longest-first</strong> (e.g. &quot;Express Pass&quot; before &quot;Express&quot;)</li>
                 <li>Matching is <strong>case-insensitive</strong> and respects word boundaries</li>
-                <li>Without a <code className="bg-muted rounded px-1 text-xs">GlossaryInjectLoader</code> ancestor the component renders plain text — no crash</li>
+                <li>Fetches glossary terms via <code className="bg-muted rounded px-1 text-xs">getGlossaryTerms(locale)</code> — cached per request via React cache()</li>
               </ul>
             </Sub>
           </Section>
-        </GlossaryInjectLoader>
       </div>
     </div>
   );
