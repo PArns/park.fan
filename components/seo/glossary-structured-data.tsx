@@ -5,7 +5,7 @@ import type { Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 
 /** ISO date of last glossary content review — update when terms are added or changed */
-const GLOSSARY_CONTENT_DATE = '2026-03-01';
+const GLOSSARY_CONTENT_DATE = '2026-03-16';
 
 /** Maps locale codes to BCP-47 language tags used in schema.org inLanguage */
 const SCHEMA_LANGUAGE: Record<Locale, string> = {

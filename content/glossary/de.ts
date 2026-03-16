@@ -799,6 +799,33 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
+    id: 'ai-forecast',
+    name: 'KI-Prognose',
+    shortDefinition:
+      'KI-gestützte Vorhersagen für Besucherdichte und Wartezeiten in Freizeitparks – bis zu 30+ Tage im Voraus.',
+    definition:
+      'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 30+ Tage im Voraus.\n\nDie Vorhersagen werden kontinuierlich aktualisiert, wenn neue Daten eintreffen. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Öffnungszeiten',
+    shortDefinition:
+      'Der offizielle Tagesplan mit den Öffnungs- und Schließzeiten eines Freizeitparks oder einer Attraktion.',
+    definition:
+      "Die Öffnungszeiten sind der veröffentlichte Tagesplan für einen Freizeitpark oder eine einzelne Attraktion – er gibt an, wann der Einlass beginnt und wann der Betrieb endet. Die meisten großen Parks veröffentlichen einen rollierenden Fahrplan Wochen oder Monate im Voraus, obwohl sich die Zeiten kurzfristig aufgrund von Sonderveranstaltungen, saisonalen Anpassungen oder betrieblichen Problemen ändern können.\n\npark.fan zeigt Öffnungszeiten für jeden Park an. Zeiten, die als 'Est.' (Estimated / Geschätzt) gekennzeichnet sind, wurden aus historischen Mustern abgeleitet und nicht vom Park offiziell bestätigt – sie sollten vor einem geplanten Besuch überprüft werden.\n\nÖffnungszeiten sind strategisch äußerst wichtig: Parks, die früh öffnen, belohnen Rope-Drop-Besucher mit kürzeren Warteschlangen, bevor sich die Massen aufbauen; Parks, die spät schließen, bieten ein zweites Fenster kürzerer Wartezeiten in der letzten Betriebsstunde.",
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Trend',
+    shortDefinition:
+      'Die Entwicklungsrichtung der Warteschlangenlänge in den letzten 30 Minuten – steigend, fallend oder stabil.',
+    definition:
+      "Der Trend zeigt an, ob die Warteschlange einer Attraktion im Vergleich zu vor 30 Minuten länger, kürzer oder gleich geblieben ist. park.fan stellt dies als Pfeil dar: aufwärts (Warteschlange wächst), abwärts (Warteschlange schrumpft) oder horizontal (stabil).\n\nDer Trend ist oft aussagekräftiger als die reine Wartezeit. Eine Attraktion mit 45 Minuten und fallendem Trend ist eine bessere Wahl als eine mit 40 Minuten und stark steigendem Trend – bis man ankommt, kann die erste Schlange auf 30 Minuten gesunken sein, während die zweite bereits bei 55 Minuten liegt.\n\nTrend-Daten sind besonders wertvoll in den Übergangsphasen des Parks am späten Vormittag und frühen Nachmittag, wenn sich die Besucher schnell durch den Park verteilen.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
+  },
+  {
     id: 'trackless-ride',
     name: 'Trackless Ride',
     shortDefinition:

@@ -341,6 +341,42 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'fecha-bloqueada',
     },
   },
+  {
+    id: 'ai-forecast',
+    category: 'planning',
+    slugs: {
+      en: 'ai-forecast',
+      de: 'ki-prognose',
+      fr: 'prevision-ia',
+      it: 'previsione-ia',
+      nl: 'ai-voorspelling',
+      es: 'prediccion-ia',
+    },
+  },
+  {
+    id: 'opening-hours',
+    category: 'park-operations',
+    slugs: {
+      en: 'opening-hours',
+      de: 'oeffnungszeiten',
+      fr: 'horaires-ouverture',
+      it: 'orari-apertura',
+      nl: 'openingstijden',
+      es: 'horarios-apertura',
+    },
+  },
+  {
+    id: 'wait-time-trend',
+    category: 'wait-times',
+    slugs: {
+      en: 'wait-time-trend',
+      de: 'wartezeit-trend',
+      fr: 'tendance-attente',
+      it: 'tendenza-attesa',
+      nl: 'wachttijd-trend',
+      es: 'tendencia-espera',
+    },
+  },
   // ── Attractions ────────────────────────────────────────────────────────────
   {
     id: 'height-requirement',

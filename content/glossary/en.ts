@@ -801,6 +801,33 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
+    id: 'ai-forecast',
+    name: 'AI Forecast',
+    shortDefinition:
+      'Machine-learning predictions of crowd levels and wait times at theme parks, generated up to 30+ days in advance.',
+    definition:
+      "An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 30+ days in advance.\n\nThe predictions are updated continuously as new data arrives. Near-term forecasts (1–7 days) are typically very accurate because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are naturally less precise but still valuable for planning — they identify reliably quiet or busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all shift the prediction meaningfully away from the historical baseline.",
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Opening Hours',
+    shortDefinition:
+      'The official daily schedule showing when a theme park or attraction opens and closes.',
+    definition:
+      "Opening hours are the published daily schedule for a theme park or individual attraction — specifying when it starts admitting guests and when it stops operating. Most major parks publish a rolling schedule weeks or months in advance, though hours can change at short notice due to special events, seasonal adjustments, or operational issues.\n\npark.fan shows opening hours for each park and, where available, estimated operating hours for individual attractions. Hours marked as 'Est.' (Estimated) have been derived from historical patterns rather than confirmed by the park directly — they should be verified before planning a visit around a tight schedule.\n\nOpening hours matter enormously for strategy: parks that open early reward rope-drop visitors with shorter queues before the crowd builds; parks that close late offer a second window of shorter waits in the final hour of operation as casual visitors leave.",
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Wait Time Trend',
+    shortDefinition:
+      'The direction of queue length change over the last 30 minutes — shown as rising, falling, or stable.',
+    definition:
+      "The wait time trend indicates whether a ride's queue is getting longer, shorter, or holding steady compared to 30 minutes ago. park.fan displays this as an arrow: upward (queue growing), downward (queue shrinking), or horizontal (stable).\n\nThe trend is often more actionable than the raw wait time itself. A ride showing 45 minutes with a falling trend is a better bet than a ride showing 40 minutes with a rapidly rising trend — by the time you arrive, the first queue may be at 30 minutes while the second could be at 55.\n\nTrend data is most valuable during the park's mid-morning and late-afternoon transition periods, when crowds shift quickly as different guest cohorts move through the park.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
+  },
+  {
     id: 'trackless-ride',
     name: 'Trackless Ride',
     shortDefinition:

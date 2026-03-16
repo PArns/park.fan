@@ -6548,7 +6548,47 @@ function ContentNLSections() {
         <PopularParksGrid locale="nl" emptyHint="Parkdata worden geladen – herlaad de pagina." />
       </Section>
 
-      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
+      {/* ── 10. Woordenlijst ─────────────────────────────────────────────── */}
+      <Section id="glossar" title="De Woordenlijst & Termijn-Markering">
+        <p className="text-muted-foreground mb-4">
+          park.fan beheert een volledige{' '}
+          <Link href="/glossary" className="text-primary underline">
+            woordenlijst van pretparkbegrippen
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {`van wachttijden en drukte-niveaus tot achtbaanelementen en virtuele wachtrijen. Elke term bevat een korte definitie en een uitgebreide uitleg.`}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Automatische termijn-markering op attractiepagina's">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {`Op attractiepagina's worden woordenlijst-termen automatisch herkend in tekst en onderstreept met een stippellijn. Bij hover verschijnt een korte definitie; klikken brengt je direct naar het volledige woordenlijst-item.`}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Voorbeeldtekst (hover over de gestippelde termen)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`De beste manier om je bezoek te plannen is de druktekalender te bekijken voor je boekt. Op een piekdag kunnen wachttijden voor populaire attracties 90 minuten overschrijden. Een virtuele wachtrij laat je een tijdslot reserveren zonder in de rij te staan, terwijl de single rider-rij je wacht meer dan de helft kan verminderen. Als het drukte-niveau hoog is, is een express pas vaak de moeite waard.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Tip">
+          De volledige woordenlijst is beschikbaar op{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/woordenlijst
+          </Link>{' '}
+          met termen in 7 categorieën.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. Veelgestelde Vragen ──────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Veelgestelde Vragen">
         <div className="space-y-4">
           {[
@@ -6590,43 +6630,6 @@ function ContentNLSections() {
         </div>
       </Section>
 
-      {/* ── 11. Woordenlijst ─────────────────────────────────────────────── */}
-      <Section id="glossar" title="De Woordenlijst & Termijn-Markering">
-        <p className="text-muted-foreground mb-4">
-          park.fan beheert een volledige{' '}
-          <Link href="/glossary" className="text-primary underline">
-            woordenlijst van pretparkbegrippen
-          </Link>{' '}
-          – van wachttijden en drukte-niveaus tot achtbaanelementen en virtuele wachtrijen. Elke
-          term bevat een korte definitie en een uitgebreide uitleg.
-        </p>
-
-        <SubSection title="Automatische termijn-markering op attractiepagina's">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Op attractiepagina's worden woordenlijst-termen automatisch herkend in tekst en
-            onderstreept met een stippellijn. Bij hover verschijnt een korte definitie; klikken
-            brengt je direct naar het volledige woordenlijst-item.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Voorbeeldtekst (hover over de gestippelde termen)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`De beste manier om je bezoek te plannen is de druktekalender te bekijken voor je boekt. Op een piekdag kunnen wachttijden voor populaire attracties 90 minuten overschrijden. Een virtuele wachtrij laat je een tijdslot reserveren zonder in de rij te staan, terwijl de single rider-rij je wacht meer dan de helft kan verminderen. Als het drukte-niveau hoog is, is een express pas vaak de moeite waard.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Tip">
-          De volledige woordenlijst is beschikbaar op{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/woordenlijst
-          </Link>{' '}
-          met termen in 7 categorieën.
-        </TipBox>
-      </Section>
     </>
   );
 }

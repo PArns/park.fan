@@ -800,6 +800,33 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
   {
+    id: 'ai-forecast',
+    name: 'Predicción IA',
+    shortDefinition:
+      'Predicciones basadas en machine learning para niveles de afluencia y tiempos de espera — hasta 30+ días de antelación.',
+    definition:
+      'Una predicción IA utiliza modelos de machine learning entrenados con datos históricos de afluencia, datos meteorológicos, calendarios escolares y datos en tiempo real para predecir cuán concurrido estará un parque o atracción en un día u hora concretos. park.fan genera predicciones IA para afluencia y tiempos de espera previstos hasta 30+ días de antelación.\n\nLas predicciones se actualizan continuamente a medida que llegan nuevos datos. Las predicciones a corto plazo (1–7 días) suelen ser muy precisas al incorporar datos meteorológicos actuales, anuncios de eventos y señales de reserva. Las predicciones a largo plazo son naturalmente menos precisas, pero siguen siendo valiosas para identificar períodos tranquilos o concurridos con bastante antelación.',
+    relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
+  },
+  {
+    id: 'opening-hours',
+    name: 'Horario de apertura',
+    shortDefinition:
+      'El programa diario oficial que indica cuándo abre y cierra un parque temático o atracción.',
+    definition:
+      'El horario de apertura es el programa diario publicado para un parque temático o atracción individual — indica cuándo comienza el acceso y cuándo finaliza la operación. La mayoría de los grandes parques publican un calendario rotativo con semanas o meses de antelación, aunque los horarios pueden cambiar a corto plazo por eventos especiales, ajustes estacionales o problemas operativos.\n\npark.fan muestra los horarios de apertura de cada parque. Los horarios marcados con «Est.» (Estimado) se han derivado de patrones históricos y no están confirmados oficialmente por el parque — deben verificarse antes de una visita planificada.',
+    relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
+  },
+  {
+    id: 'wait-time-trend',
+    name: 'Tendencia de espera',
+    shortDefinition:
+      'La dirección del cambio en la longitud de la cola durante los últimos 30 minutos — subiendo, bajando o estable.',
+    definition:
+      'La tendencia de espera indica si la cola de una atracción es más larga, más corta o igual que hace 30 minutos. park.fan la representa con una flecha: hacia arriba (cola creciendo), hacia abajo (cola reduciéndose) u horizontal (estable).\n\nLa tendencia suele ser más reveladora que el tiempo de espera bruto. Una atracción con 45 minutos y tendencia a la baja es mejor opción que una con 40 minutos y tendencia fuertemente al alza — para cuando llegues, la primera cola puede haber bajado a 30 minutos mientras la segunda ya alcanza los 55.',
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
+  },
+  {
     id: 'trackless-ride',
     name: 'Trackless Ride',
     shortDefinition:
