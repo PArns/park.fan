@@ -5,6 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 interface AnnounceSectionProps {
   locale: string;
@@ -76,12 +77,12 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
           <div className="mb-12 space-y-4">
             {title && (
               <h2 className="text-3xl font-bold tracking-tight drop-shadow-sm md:text-5xl lg:text-6xl">
-                {title}
+                <GlossaryInject>{title}</GlossaryInject>
               </h2>
             )}
             {subtitle && (
               <p className="text-muted-foreground mx-auto max-w-2xl text-xl font-semibold md:text-2xl">
-                {subtitle}
+                <GlossaryInject>{subtitle}</GlossaryInject>
               </p>
             )}
           </div>
@@ -121,7 +122,11 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
               },
               p: ({ children }) => (
                 <p className="text-muted-foreground mb-6 text-xl leading-relaxed font-medium last:mb-0 md:text-2xl">
-                  {children}
+                  {typeof children === 'string' ? (
+                    <GlossaryInject>{children}</GlossaryInject>
+                  ) : (
+                    children
+                  )}
                 </p>
               ),
             }}

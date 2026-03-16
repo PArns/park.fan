@@ -10,6 +10,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
+import { GlossaryInjectLoader } from '@/components/glossary/glossary-inject-loader';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -136,11 +137,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <NextIntlClientProvider messages={messages} locale={locale}>
             <AnalyticsIdentify locale={locale} />
             <LanguageBanner currentLocale={locale as Locale} />
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer locale={locale} />
-            </div>
+            <GlossaryInjectLoader locale={locale as Locale}>
+              <div className="flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer locale={locale} />
+              </div>
+            </GlossaryInjectLoader>
           </NextIntlClientProvider>
         </Providers>
       </body>
