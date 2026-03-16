@@ -206,7 +206,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen — typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert Nebensaison-Fenster, damit du deinen Besuch optimal planen kannst.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
-    aliases: ['Off-Season', 'OffSeason'],
+  },
+  {
+    id: 'offseason',
+    name: 'OffSeason',
+    shortDefinition:
+      'Saisonale Schließungsperiode, in der der Park für Wartungsarbeiten, Umbauten oder die Winterpause vollständig geschlossen und nicht für Besucher zugänglich ist.',
+    definition:
+      'Die OffSeason bezeichnet den Zeitraum, in dem ein Freizeitpark seine Tore vollständig schließt — nicht bloß eine ruhigere Besuchsphase, sondern eine echte Betriebspause. Parks nutzen dieses Fenster für notwendige Wartungsarbeiten an Attraktionen und Anlagen, umfangreichere Umbauten, die während des laufenden Betriebs nicht möglich wären, sowie zur Erholung des Personals vor der neuen Saison. OffSeason-Schließungen finden am häufigsten in den Wintermonaten statt und dauern je nach Park und Klima einige Wochen bis mehrere Monate. In dieser Zeit sind keinerlei Attraktionen, Restaurants oder Shows zugänglich.\n\nZeigt park.fan den Status OffSeason für einen Park an, bedeutet das: Für den aktuellen Zeitraum liegt kein Öffnungsplan vor und das nächste bestätigte Öffnungsdatum liegt noch einige Wochen entfernt. Prüfe die offizielle Park-Website für das genaue Wiedereröffnungsdatum — beliebte Parks verkaufen die ersten Tage nach der OffSeason erfahrungsgemäß schnell aus.',
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
   },
   {
     id: 'ride-photo',

@@ -188,7 +188,7 @@ export function ParkTimeInfo({
               <Snowflake className="h-4 w-4 flex-shrink-0" />
               <span className="font-medium">
                 <GlossaryTermLink
-                  termId="off-peak"
+                  termId="offseason"
                   className="border-b border-dashed border-current/40 cursor-help font-[inherit]"
                 >
                   {t('offseason')}

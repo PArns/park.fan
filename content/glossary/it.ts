@@ -207,6 +207,15 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
   },
   {
+    id: 'offseason',
+    name: 'Chiusura stagionale',
+    shortDefinition:
+      "Periodo di chiusura stagionale in cui il parco è completamente chiuso al pubblico per manutenzione, lavori o pausa invernale.",
+    definition:
+      "La chiusura stagionale (o OffSeason) è il periodo in cui un parco a tema chiude completamente i battenti — non una semplice fase di minor affluenza, ma un vero e proprio fermo operativo. I parchi sfruttano questa finestra per effettuare la manutenzione essenziale su attrazioni e impianti, avviare importanti lavori di ristrutturazione impossibili durante l'esercizio e consentire al personale un periodo di riposo prima della nuova stagione. Le chiusure stagionali avvengono più spesso nei mesi invernali e durano da qualche settimana a diversi mesi a seconda del parco e del clima. In questo periodo non sono accessibili attrazioni, ristoranti o spettacoli.\n\nQuando park.fan mostra lo stato OffSeason per un parco, significa che non è disponibile alcun calendario operativo per il periodo corrente e che la prossima data di apertura confermata è ancora a qualche settimana. Controlla il sito ufficiale del parco per la data esatta di riapertura — i parchi più popolari esauriscono spesso i biglietti dei primi giorni di riapertura molto rapidamente.",
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
+  },
+  {
     id: 'ride-photo',
     name: 'Foto di bordo',
     shortDefinition:

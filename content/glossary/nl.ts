@@ -207,6 +207,15 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
   },
   {
+    id: 'offseason',
+    name: 'Seizoenssluiting',
+    shortDefinition:
+      'Seizoensgebonden sluitingsperiode waarin het park volledig gesloten is voor onderhoud, verbouwingen of winterpauze en niet toegankelijk is voor het publiek.',
+    definition:
+      'De seizoenssluiting (of OffSeason) is de periode waarin een pretpark zijn deuren volledig sluit — niet enkel een rustigere periode, maar een echte bedrijfspauze. Parken gebruiken dit venster voor noodzakelijk onderhoud aan attracties en faciliteiten, grootschalige verbouwingen die tijdens normale openingstijden niet mogelijk zijn, en een rustperiode voor het personeel voor het nieuwe seizoen. Seizoenssluitingen vinden het vaakst plaats in de wintermaanden en duren van een paar weken tot meerdere maanden, afhankelijk van het park en het klimaat. Gedurende deze periode zijn geen attracties, restaurants of shows toegankelijk voor het publiek.\n\nWanneer park.fan de status OffSeason toont voor een park, betekent dit dat er geen openingsschema beschikbaar is voor de huidige periode en dat de volgende bevestigde openingsdatum nog enkele weken weg is. Raadpleeg de officiële parkwebsite voor de exacte heropeningsdatum — populaire parken verkopen de eerste dagen na de sluiting vaak snel uit.',
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
+  },
+  {
     id: 'ride-photo',
     name: 'Ritfoto',
     shortDefinition:

@@ -207,6 +207,15 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
   },
   {
+    id: 'offseason',
+    name: 'Fermeture saisonnière',
+    shortDefinition:
+      'Période de fermeture saisonnière pendant laquelle le parc est entièrement fermé au public pour maintenance, travaux ou congés hivernaux.',
+    definition:
+      "La fermeture saisonnière (ou OffSeason) désigne la période pendant laquelle un parc à thème ferme complètement ses portes — non pas une simple période creuse, mais un véritable arrêt d'exploitation. Les parcs profitent de cette fenêtre pour effectuer les maintenances essentielles sur les attractions et équipements, engager des rénovations majeures impossibles en exploitation, et permettre au personnel de se reposer avant la nouvelle saison. Les fermetures saisonnières ont lieu le plus souvent en hiver et durent de quelques semaines à plusieurs mois selon le parc et son climat. Durant cette période, aucune attraction, restaurant ou spectacle n'est accessible au public.\n\nLorsque park.fan affiche le statut OffSeason pour un parc, cela signifie qu'aucun calendrier d'ouverture n'est disponible pour la période en cours et que la prochaine date d'ouverture confirmée est encore à plusieurs semaines. Consultez le site officiel du parc pour connaître la date exacte de réouverture — les parcs populaires affichent souvent complet dès les premiers jours de réouverture.",
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
+  },
+  {
     id: 'ride-photo',
     name: 'Photo de manège',
     shortDefinition:

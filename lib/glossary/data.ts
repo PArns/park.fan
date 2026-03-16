@@ -209,6 +209,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   // ── Park Operations ────────────────────────────────────────────────────────
   {
+    id: 'offseason',
+    category: 'park-operations',
+    slugs: {
+      en: 'offseason',
+      de: 'offseason',
+      fr: 'fermeture-saisonniere',
+      it: 'chiusura-stagionale',
+      nl: 'seizoenssluiting',
+      es: 'cierre-temporal',
+    },
+  },
+  {
     id: 'refurbishment',
     category: 'park-operations',
     slugs: {

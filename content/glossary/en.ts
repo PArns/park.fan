@@ -206,7 +206,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Off-peak periods are the calmer stretches of the calendar when schools are in session and no major holidays fall. Typical off-peak windows include January through early February, the second half of September through October (excluding Halloween event evenings), and the first two weeks of November. During these periods, wait times for popular attractions can be a fraction of their summer peaks — rides that post 90-minute waits in July might show 15–20 minutes in October.\n\nFor guests with flexible schedules, visiting off-peak is one of the single most effective strategies for getting the most value out of a theme park day. Ticket prices are typically at their lowest, car parks are far from full, and the atmosphere at restaurants and shopping areas is far more relaxed. The trade-off is that some seasonal attractions, entertainment, and food offerings are only available during peak periods. park.fan's crowd calendar highlights off-peak windows for every tracked park so you can identify the best available dates for your trip.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
-    aliases: ['Off Season', 'OffSeason'],
+  },
+  {
+    id: 'offseason',
+    name: 'OffSeason',
+    shortDefinition:
+      'A seasonal closure period during which the park shuts completely for maintenance, ride upgrades, or a winter break — and is not open to the public.',
+    definition:
+      "The OffSeason is a defined period during which a theme park closes its gates entirely — not simply a quieter visiting time, but a full operational shutdown. Parks use this window to carry out essential maintenance on rides and facilities, undertake major refurbishments that cannot be performed while guests are present, and give staff a rest period before the new operating season begins. OffSeason closures are most common during winter months and typically last anywhere from a few weeks to several months depending on the park and its climate. During this time no attractions, restaurants, or shows are accessible to the public.\n\nWhen park.fan shows an OffSeason status for a park, it means no operating schedule is available for the current period and the next confirmed opening date is still some weeks away. Check the park's official website for the exact reopening date and any pre-sale ticket windows — popular parks often sell out their first days back quickly.",
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
   },
   {
     id: 'ride-photo',

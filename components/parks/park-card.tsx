@@ -181,7 +181,7 @@ export function ParkCard({
                     {scheduleInfo.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
                     {scheduleInfo.icon === 'offseason' ? (
                       <>
-                        <GlossaryTermLink termId="off-peak">
+                        <GlossaryTermLink termId="offseason">
                           {tNearby('offseason')}
                         </GlossaryTermLink>
                         {scheduleInfo.message.slice(tNearby('offseason').length)}

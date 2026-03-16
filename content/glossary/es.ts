@@ -206,6 +206,15 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
   },
   {
+    id: 'offseason',
+    name: 'Cierre temporal',
+    shortDefinition:
+      'Período de cierre estacional en el que el parque permanece completamente cerrado al público para mantenimiento, obras o vacaciones invernales.',
+    definition:
+      'El cierre temporal (u OffSeason) es el período durante el cual un parque temático cierra completamente sus puertas — no se trata de una temporada baja con menor afluencia, sino de un auténtico cierre operativo. Los parques aprovechan esta ventana para realizar el mantenimiento esencial en atracciones e instalaciones, acometer reformas importantes que no son posibles con el parque en funcionamiento, y permitir al personal un período de descanso antes de la nueva temporada. Los cierres temporales se producen con más frecuencia en los meses de invierno y duran desde unas semanas hasta varios meses según el parque y su clima. En este período no hay atracciones, restaurantes ni espectáculos accesibles al público.\n\nCuando park.fan muestra el estado OffSeason para un parque, significa que no hay calendario de apertura disponible para el período actual y que la próxima fecha de apertura confirmada está aún a varias semanas. Consulta el sitio web oficial del parque para conocer la fecha exacta de reapertura — los parques más populares suelen agotar los primeros días tras la reapertura muy rápidamente.',
+    relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
+  },
+  {
     id: 'ride-photo',
     name: 'Foto de atracción',
     shortDefinition:
