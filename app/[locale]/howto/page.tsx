@@ -1322,9 +1322,8 @@ function ContentDE() {
               ['#kalender', '6. Crowd-Kalender'],
               ['#prognosen', '7. KI-Prognosen'],
               ['#personas', '8. Für wen?'],
-              ['#parks', '9. Beliebte Parks'],
-              ['#faq', '10. FAQ'],
-              ['#glossar', '11. Glossar'],
+              ['#glossar', '10. Glossar'],
+              ['#faq', '11. FAQ'],
             ].map(([href, label]) => (
               <li key={href}>
                 <a href={href} className="hover:text-primary transition-colors">
@@ -2233,7 +2232,48 @@ function ContentDE() {
         />
       </Section>
 
-      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
+      {/* ── 10. Glossar ───────────────────────────────────────────────────── */}
+      <Section id="glossar" title="Das Glossar & Fachbegriff-Hervorhebung">
+        <p className="text-muted-foreground mb-4">
+          park.fan pflegt ein vollständiges{' '}
+          <Link href="/glossary" className="text-primary underline">
+            Glossar der Freizeitpark-Fachbegriffe
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {'von Wartezeit über Besucherkalender bis zu Achterbahn-Elementen. Jeder Begriff enthält eine Kurzdefinition und eine ausführliche Erklärung mit praktischen Tipps.'}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Automatische Fachbegriff-Hervorhebung auf Attraktions-Seiten">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {'Auf Attraktions-Seiten werden Glossar-Begriffe im Text automatisch erkannt und mit einer gestrichelten Linie unterstrichen. Beim Hovern erscheint eine Kurzbeschreibung – ein Klick führt direkt zum vollständigen Glossar-Eintrag.'}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Beispieltext (hover über die gestrichelten Begriffe)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`Die beste Strategie für einen Freizeitpark-Besuch ist, vorab einen Blick in den Besucherkalender zu werfen. An einem Spitzentag können die Wartezeiten für beliebte Attraktionen 90 Minuten überschreiten. Wer einen Express Pass kauft oder die Einzelfahrer-Lane nutzt, spart wertvolle Zeit. Alternativ bietet eine virtuelle Warteschlange die Möglichkeit, die Schlange komplett zu umgehen – ideal, wenn die Besucherdichte hoch ist.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Tipp">
+          Das vollständige Glossar ist unter{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/glossar
+          </Link>{' '}
+          erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb,
+          Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Häufige Fragen">
         <div className="space-y-4">
           {[
@@ -2282,45 +2322,6 @@ function ContentDE() {
           ))}
         </div>
       </Section>
-
-      {/* ── 11. Glossar ───────────────────────────────────────────────────── */}
-      <Section id="glossar" title="Das Glossar & Fachbegriff-Hervorhebung">
-        <p className="text-muted-foreground mb-4">
-          park.fan pflegt ein vollständiges{' '}
-          <Link href="/glossary" className="text-primary underline">
-            Glossar der Freizeitpark-Fachbegriffe
-          </Link>{' '}
-          – von Wartezeit über Besucherkalender bis zu Achterbahn-Elementen. Jeder Begriff enthält
-          eine Kurzdefinition und eine ausführliche Erklärung mit praktischen Tipps.
-        </p>
-
-        <SubSection title="Automatische Fachbegriff-Hervorhebung auf Attraktions-Seiten">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Auf Attraktions-Seiten werden Glossar-Begriffe im Text automatisch erkannt und mit einer
-            gestrichelten Linie unterstrichen. Beim Hovern erscheint eine Kurzbeschreibung – ein
-            Klick führt direkt zum vollständigen Glossar-Eintrag.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Beispieltext (hover über die gestrichelten Begriffe)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`Die beste Strategie für einen Freizeitpark-Besuch ist, vorab einen Blick in den Besucherkalender zu werfen. An einem Spitzentag können die Wartezeiten für beliebte Attraktionen 90 Minuten überschreiten. Wer einen Express Pass kauft oder die Einzelfahrer-Lane nutzt, spart wertvolle Zeit. Alternativ bietet eine virtuelle Warteschlange die Möglichkeit, die Schlange komplett zu umgehen – ideal, wenn die Besucherdichte hoch ist.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Tipp">
-          Das vollständige Glossar ist unter{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/glossar
-          </Link>{' '}
-          erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb,
-          Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.
-        </TipBox>
-      </Section>
     </div>
   );
 }
@@ -2360,9 +2361,8 @@ function IntroEN() {
             ['#kalender', '6. Crowd Calendar'],
             ['#prognosen', '7. AI Predictions'],
             ['#personas', '8. Who is it for?'],
-            ['#parks', '9. Popular Parks'],
-            ['#faq', '10. FAQ'],
-            ['#glossar', '11. Glossary'],
+            ['#glossar', '10. Glossary'],
+            ['#faq', '11. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2415,8 +2415,8 @@ function IntroES() {
             ['#prognosen', '7. Predicciones IA'],
             ['#personas', '8. ¿Para quién?'],
             ['#parks', '9. Parques populares'],
-            ['#faq', '10. Preguntas frecuentes'],
-            ['#glossar', '11. Glosario'],
+            ['#glossar', '10. Glosario'],
+            ['#faq', '11. Preguntas frecuentes'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2466,8 +2466,8 @@ function IntroFR() {
             ['#prognosen', '7. Prédictions IA'],
             ['#personas', '8. Pour qui ?'],
             ['#parks', '9. Parcs populaires'],
-            ['#faq', '10. FAQ'],
-            ['#glossar', '11. Glossaire'],
+            ['#glossar', '10. Glossaire'],
+            ['#faq', '11. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2517,8 +2517,8 @@ function IntroIT() {
             ['#prognosen', '7. Previsioni IA'],
             ['#personas', '8. Per chi?'],
             ['#parks', '9. Parchi popolari'],
-            ['#faq', '10. FAQ'],
-            ['#glossar', '11. Glossario'],
+            ['#glossar', '10. Glossario'],
+            ['#faq', '11. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -2567,8 +2567,8 @@ function IntroNL() {
             ['#prognosen', '7. AI-voorspellingen'],
             ['#personas', '8. Voor wie?'],
             ['#parks', '9. Populaire parken'],
-            ['#faq', '10. FAQ'],
-            ['#glossar', '11. Woordenlijst'],
+            ['#glossar', '10. Woordenlijst'],
+            ['#faq', '11. FAQ'],
           ].map(([href, label]) => (
             <li key={href}>
               <a href={href} className="hover:text-primary transition-colors">
@@ -3286,7 +3286,48 @@ function ContentENSections() {
         <PopularParksGrid locale="en" emptyHint="Park data is loading – please reload the page." />
       </Section>
 
-      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
+      {/* ── 10. Glossary ─────────────────────────────────────────────────── */}
+      <Section id="glossar" title="The Glossary & Term Highlighting">
+        <p className="text-muted-foreground mb-4">
+          park.fan maintains a full{' '}
+          <Link href="/glossary" className="text-primary underline">
+            Theme Park Glossary
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {'covering everything from wait times and crowd levels to roller coaster elements and virtual queues. Each entry includes a short definition and a detailed explanation.'}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Automatic term highlighting on attraction pages">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {'On attraction pages, glossary terms are automatically detected in text and underlined with a dashed line. Hovering reveals a short definition tooltip – clicking takes you directly to the full glossary entry. This happens automatically with no manual linking required.'}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Example text (hover over the dashed terms)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`The best way to plan your visit is to check the crowd calendar before booking. On a peak day, wait times for popular rides can exceed 90 minutes – making rope drop strategy essential. A virtual queue lets you reserve a ride slot without standing in line, while a single rider lane can cut your wait by over half. When crowd levels are high, an express pass is often worth the cost.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Tip">
+          The full glossary is available at{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/glossary
+          </Link>{' '}
+          – with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations,
+          Planning, Attractions, Coasters and Coaster Elements.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Frequently Asked Questions">
         <div className="space-y-4">
           {[
@@ -3326,46 +3367,6 @@ function ContentENSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 11. Glossary ─────────────────────────────────────────────────── */}
-      <Section id="glossar" title="The Glossary & Term Highlighting">
-        <p className="text-muted-foreground mb-4">
-          park.fan maintains a full{' '}
-          <Link href="/glossary" className="text-primary underline">
-            Theme Park Glossary
-          </Link>{' '}
-          covering everything from wait times and crowd levels to roller coaster elements and virtual
-          queues. Each entry includes a short definition and a detailed explanation.
-        </p>
-
-        <SubSection title="Automatic term highlighting on attraction pages">
-          <p className="text-muted-foreground mb-3 text-sm">
-            On attraction pages, glossary terms are automatically detected in text and underlined
-            with a dashed line. Hovering reveals a short definition tooltip – clicking takes you
-            directly to the full glossary entry. This happens automatically with no manual linking
-            required.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Example text (hover over the dashed terms)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`The best way to plan your visit is to check the crowd calendar before booking. On a peak day, wait times for popular rides can exceed 90 minutes – making rope drop strategy essential. A virtual queue lets you reserve a ride slot without standing in line, while a single rider lane can cut your wait by over half. When crowd levels are high, an express pass is often worth the cost.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Tip">
-          The full glossary is available at{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/glossary
-          </Link>{' '}
-          – with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations,
-          Planning, Attractions, Coasters and Coaster Elements.
-        </TipBox>
       </Section>
     </>
   );
@@ -4108,7 +4109,47 @@ function ContentESSections() {
         />
       </Section>
 
-      {/* ── 10. Preguntas Frecuentes ─────────────────────────────────────────── */}
+      {/* ── 10. Glosario ─────────────────────────────────────────────────── */}
+      <Section id="glossar" title="El Glosario y Resaltado de Términos">
+        <p className="text-muted-foreground mb-4">
+          park.fan mantiene un{' '}
+          <Link href="/glossary" className="text-primary underline">
+            glosario completo de términos de parques temáticos
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {`desde tiempos de espera y niveles de afluencia hasta elementos de montaña rusa y colas virtuales. Cada entrada incluye una definición corta y una explicación detallada.`}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Resaltado automático de términos en páginas de atracciones">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {`En las páginas de atracciones, los términos del glosario se detectan automáticamente en el texto y se subrayan con una línea discontinua. Al pasar el cursor aparece una definición breve; al hacer clic accedes directamente a la entrada completa del glosario.`}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Texto de ejemplo (pasa el cursor sobre los términos subrayados)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`La mejor forma de planificar tu visita es revisar el calendario de afluencia antes de reservar. En un día pico, los tiempos de espera para las atracciones más populares pueden superar los 90 minutos. Una cola virtual te permite reservar tu turno sin hacer cola, mientras que el carril de single rider puede reducir la espera a la mitad. Si el nivel de afluencia es alto, un pase express suele merecer la pena.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Consejo">
+          El glosario completo está disponible en{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/glosario
+          </Link>{' '}
+          con términos organizados en 7 categorías.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. Preguntas Frecuentes ─────────────────────────────────────────── */}
       <Section id="faq" title="Preguntas Frecuentes">
         <div className="space-y-4">
           {[
@@ -4148,44 +4189,6 @@ function ContentESSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 11. Glosario ─────────────────────────────────────────────────── */}
-      <Section id="glossar" title="El Glosario y Resaltado de Términos">
-        <p className="text-muted-foreground mb-4">
-          park.fan mantiene un{' '}
-          <Link href="/glossary" className="text-primary underline">
-            glosario completo de términos de parques temáticos
-          </Link>{' '}
-          – desde tiempos de espera y niveles de afluencia hasta elementos de montaña rusa y colas
-          virtuales. Cada entrada incluye una definición corta y una explicación detallada.
-        </p>
-
-        <SubSection title="Resaltado automático de términos en páginas de atracciones">
-          <p className="text-muted-foreground mb-3 text-sm">
-            En las páginas de atracciones, los términos del glosario se detectan automáticamente en
-            el texto y se subrayan con una línea discontinua. Al pasar el cursor aparece una
-            definición breve; al hacer clic accedes directamente a la entrada completa del glosario.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Texto de ejemplo (pasa el cursor sobre los términos subrayados)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`La mejor forma de planificar tu visita es revisar el calendario de afluencia antes de reservar. En un día pico, los tiempos de espera para las atracciones más populares pueden superar los 90 minutos. Una cola virtual te permite reservar tu turno sin hacer cola, mientras que el carril de single rider puede reducir la espera a la mitad. Si el nivel de afluencia es alto, un pase express suele merecer la pena.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Consejo">
-          El glosario completo está disponible en{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/glosario
-          </Link>{' '}
-          con términos organizados en 7 categorías.
-        </TipBox>
       </Section>
     </>
   );
@@ -4939,7 +4942,47 @@ function ContentFRSections() {
         />
       </Section>
 
-      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
+      {/* ── 10. Glossaire ────────────────────────────────────────────────── */}
+      <Section id="glossar" title="Le Glossaire et la Mise en Évidence des Termes">
+        <p className="text-muted-foreground mb-4">
+          park.fan maintient un{' '}
+          <Link href="/glossary" className="text-primary underline">
+            glossaire complet des termes des parcs à thème
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {`des temps d'attente et niveaux d'affluence aux éléments de montagnes russes et files d'attente virtuelles. Chaque entrée inclut une définition courte et une explication détaillée.`}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Mise en évidence automatique des termes sur les pages d'attractions">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {`Sur les pages d'attractions, les termes du glossaire sont automatiquement détectés dans le texte et soulignés en pointillés. En passant la souris, une définition courte apparaît ; un clic mène directement à l'entrée complète du glossaire.`}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Texte d'exemple (passez la souris sur les termes soulignés)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`La meilleure façon de planifier votre visite est de consulter le calendrier d'affluence avant de réserver. Un jour de pointe, les temps d'attente pour les attractions populaires peuvent dépasser 90 minutes. Une file d'attente virtuelle vous permet de réserver votre créneau sans faire la queue, tandis qu'un pass express vous donne accès à une file prioritaire. Vérifiez le niveau d'affluence avant d'acheter.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Conseil">
+          Le glossaire complet est disponible sur{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/glossaire
+          </Link>{' '}
+          avec des termes organisés en 7 catégories.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Questions Fréquentes">
         <div className="space-y-4">
           {[
@@ -4979,45 +5022,6 @@ function ContentFRSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 11. Glossaire ────────────────────────────────────────────────── */}
-      <Section id="glossar" title="Le Glossaire et la Mise en Évidence des Termes">
-        <p className="text-muted-foreground mb-4">
-          park.fan maintient un{' '}
-          <Link href="/glossary" className="text-primary underline">
-            glossaire complet des termes des parcs à thème
-          </Link>{' '}
-          – des temps d'attente et niveaux d'affluence aux éléments de montagnes russes et files
-          d'attente virtuelles. Chaque entrée inclut une définition courte et une explication
-          détaillée.
-        </p>
-
-        <SubSection title="Mise en évidence automatique des termes sur les pages d'attractions">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Sur les pages d'attractions, les termes du glossaire sont automatiquement détectés dans
-            le texte et soulignés en pointillés. En passant la souris, une définition courte
-            apparaît ; un clic mène directement à l'entrée complète du glossaire.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Texte d'exemple (passez la souris sur les termes soulignés)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`La meilleure façon de planifier votre visite est de consulter le calendrier d'affluence avant de réserver. Un jour de pointe, les temps d'attente pour les attractions populaires peuvent dépasser 90 minutes. Une file d'attente virtuelle vous permet de réserver votre créneau sans faire la queue, tandis qu'un pass express vous donne accès à une file prioritaire. Vérifiez le niveau d'affluence avant d'acheter.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Conseil">
-          Le glossaire complet est disponible sur{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/glossaire
-          </Link>{' '}
-          avec des termes organisés en 7 catégories.
-        </TipBox>
       </Section>
     </>
   );
@@ -5752,7 +5756,47 @@ function ContentITSections() {
         />
       </Section>
 
-      {/* ── 10. FAQ ─────────────────────────────────────────────────────────── */}
+      {/* ── 10. Glossario ────────────────────────────────────────────────── */}
+      <Section id="glossar" title="Il Glossario e l'Evidenziazione dei Termini">
+        <p className="text-muted-foreground mb-4">
+          park.fan mantiene un{' '}
+          <Link href="/glossary" className="text-primary underline">
+            glossario completo dei termini dei parchi a tema
+          </Link>{' '}
+          –{' '}
+          <GlossaryInject>
+            {`dai tempi di attesa e livelli di affluenza agli elementi delle montagne russe e code virtuali. Ogni voce include una definizione breve e una spiegazione dettagliata.`}
+          </GlossaryInject>
+        </p>
+
+        <SubSection title="Evidenziazione automatica dei termini nelle pagine delle attrazioni">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              {`Nelle pagine delle attrazioni, i termini del glossario vengono rilevati automaticamente nel testo e sottolineati con una linea tratteggiata. Passando il cursore appare una definizione breve; cliccando si accede direttamente alla voce completa del glossario.`}
+            </GlossaryInject>
+          </p>
+          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
+            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
+              Testo di esempio (passa il cursore sui termini sottolineati)
+            </p>
+            <p>
+              <GlossaryInject>
+                {`Il modo migliore per pianificare la tua visita è controllare il calendario dell'affluenza prima di prenotare. In un giorno di punta, i tempi di attesa per le attrazioni più popolari possono superare i 90 minuti. Una coda virtuale ti permette di prenotare il tuo slot senza fare la coda, mentre il single rider può ridurre l'attesa di oltre la metà. Quando il livello di affluenza è alto, il pass express vale spesso la pena.`}
+              </GlossaryInject>
+            </p>
+          </div>
+        </SubSection>
+
+        <TipBox label="Suggerimento">
+          Il glossario completo è disponibile su{' '}
+          <Link href="/glossary" className="text-primary font-medium underline">
+            park.fan/glossario
+          </Link>{' '}
+          con termini organizzati in 7 categorie.
+        </TipBox>
+      </Section>
+
+      {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
       <Section id="faq" title="Domande Frequenti">
         <div className="space-y-4">
           {[
@@ -5792,44 +5836,6 @@ function ContentITSections() {
             </details>
           ))}
         </div>
-      </Section>
-
-      {/* ── 11. Glossario ────────────────────────────────────────────────── */}
-      <Section id="glossar" title="Il Glossario e l'Evidenziazione dei Termini">
-        <p className="text-muted-foreground mb-4">
-          park.fan mantiene un{' '}
-          <Link href="/glossary" className="text-primary underline">
-            glossario completo dei termini dei parchi a tema
-          </Link>{' '}
-          – dai tempi di attesa e livelli di affluenza agli elementi delle montagne russe e code
-          virtuali. Ogni voce include una definizione breve e una spiegazione dettagliata.
-        </p>
-
-        <SubSection title="Evidenziazione automatica dei termini nelle pagine delle attrazioni">
-          <p className="text-muted-foreground mb-3 text-sm">
-            Nelle pagine delle attrazioni, i termini del glossario vengono rilevati automaticamente
-            nel testo e sottolineati con una linea tratteggiata. Passando il cursore appare una
-            definizione breve; cliccando si accede direttamente alla voce completa del glossario.
-          </p>
-          <div className="bg-muted/30 rounded-xl border p-4 text-sm leading-relaxed">
-            <p className="text-muted-foreground mb-3 text-xs font-semibold uppercase tracking-wide">
-              Testo di esempio (passa il cursore sui termini sottolineati)
-            </p>
-            <p>
-              <GlossaryInject>
-                {`Il modo migliore per pianificare la tua visita è controllare il calendario dell'affluenza prima di prenotare. In un giorno di punta, i tempi di attesa per le attrazioni più popolari possono superare i 90 minuti. Una coda virtuale ti permette di prenotare il tuo slot senza fare la coda, mentre il single rider può ridurre l'attesa di oltre la metà. Quando il livello di affluenza è alto, il pass express vale spesso la pena.`}
-              </GlossaryInject>
-            </p>
-          </div>
-        </SubSection>
-
-        <TipBox label="Suggerimento">
-          Il glossario completo è disponibile su{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
-            park.fan/glossario
-          </Link>{' '}
-          con termini organizzati in 7 categorie.
-        </TipBox>
       </Section>
     </>
   );
