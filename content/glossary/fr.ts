@@ -835,6 +835,36 @@ const translations: GlossaryTermTranslation[] = [
       "Un Trackless Ride est un type de dark ride où les véhicules ne sont pas contraints à un rail fixe mais naviguent de façon autonome dans l'espace de l'attraction, guidés par des boucles d'induction, le Wi-Fi ou des lasers intégrés au sol. Cette liberté de mouvement permet des décors bien plus complexes et des narrations non linéaires. Exemples emblématiques : Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Aventure Totalement Toquée de Rémy (Disneyland Paris) et Symbolica (Efteling, Pays-Bas).",
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
+  {
+    id: 'ki',
+    name: 'IA',
+    shortDefinition:
+      "Intelligence Artificielle — les modèles de machine learning qui calculent les prévisions de fréquentation et les temps d'attente.",
+    definition:
+      "L'IA (Intelligence Artificielle) désigne les algorithmes de machine learning qui reconnaissent des patterns dans de grands jeux de données et génèrent des prédictions. park.fan utilise des modèles IA entraînés sur des années de données historiques de temps d'attente, de calendriers scolaires, de données météo et d'annonces d'événements pour produire des prévisions quotidiennes de fréquentation et de temps d'attente — jusqu'à 30+ jours à l'avance.",
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Intelligence Artificielle'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: "Temps d'attente en direct",
+    shortDefinition:
+      "Temps d'attente mis à jour en temps réel directement depuis les systèmes du parc.",
+    definition:
+      "Un temps d'attente en direct est la donnée actuelle en temps réel extraite des systèmes du parc — pas une moyenne historique, mais le chiffre réel à la minute près. park.fan récupère les temps d'attente en direct depuis les APIs officielles des parcs et des sources tierces, avec une mise à jour chaque minute.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ["Temps d'attente en temps réel"],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Prévision de fréquentation',
+    shortDefinition:
+      "Prédiction basée sur l'IA de l'affluence dans un parc à thème pour un jour donné.",
+    definition:
+      "Une prévision de fréquentation est une prédiction basée sur les données de l'affluence attendue dans un parc à thème pour un jour ou une heure spécifique. park.fan recalcule les prévisions de fréquentation quotidiennement en utilisant les données historiques, les calendriers scolaires, la météo et les événements spéciaux. Les résultats alimentent directement le calendrier de fréquentation : les jours verts indiquent de courtes files d'attente, les jours rouges signalent une forte affluence.",
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Prévisions de fréquentation'],
+  },
 ];
 
 export default translations;

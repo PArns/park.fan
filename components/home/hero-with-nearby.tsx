@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import type React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -108,9 +109,15 @@ function ParkBadges({
 export function HeroWithNearby({
   searchPlaceholder,
   hideSearch = false,
+  titleSlot,
+  introSlot,
 }: {
   searchPlaceholder: string;
   hideSearch?: boolean;
+  /** Pre-rendered server slot replacing the default h1 title in the default/in-park variants. */
+  titleSlot?: React.ReactNode;
+  /** Pre-rendered server slot replacing the intro paragraph in all variants. */
+  introSlot?: React.ReactNode;
 }) {
   const t = useTranslations('parks');
   const tHome = useTranslations('home');
@@ -180,7 +187,7 @@ export function HeroWithNearby({
           {t('heroWelcome', { parkName: stripNewPrefix(park.name) })}
         </h1>
         <p className="text-foreground/85 mx-auto max-w-2xl text-center text-base leading-relaxed md:text-lg">
-          {tHome('intro')}
+          {introSlot ?? tHome('intro')}
         </p>
         <ParkBadges
           isOpen={isOpen}
@@ -223,7 +230,7 @@ export function HeroWithNearby({
   return (
     <>
       <h1 className="mb-3 text-2xl font-bold tracking-tight sm:mb-8 sm:text-3xl md:text-4xl lg:text-5xl">
-        {t('title')}
+        {titleSlot ?? t('title')}
       </h1>
       {showNearParkHero ? (
         <>
@@ -243,7 +250,7 @@ export function HeroWithNearby({
         </>
       ) : (
         <p className="text-foreground/80 mx-auto mb-3 max-w-2xl text-center text-base leading-relaxed md:mb-0 md:text-lg">
-          {tHome('intro')}
+          {introSlot ?? tHome('intro')}
         </p>
       )}
       {!hideSearch && <HeroSearchInput placeholder={searchPlaceholder} />}

@@ -99,6 +99,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
   const t = await getTranslations('stats');
   const tHome = await getTranslations('home');
+  const tParks = await getTranslations('parks');
   const tCommon = await getTranslations('common');
   const tGeo = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
@@ -151,7 +152,12 @@ export default async function HomePage({ params }: HomePageProps) {
               </div>
               {/* Title + Description only (search rendered separately below) */}
               <div className="min-w-0 text-center lg:max-w-2xl">
-                <HeroWithNearby searchPlaceholder={tHome('hero.searchPlaceholder')} hideSearch />
+                <HeroWithNearby
+                  searchPlaceholder={tHome('hero.searchPlaceholder')}
+                  hideSearch
+                  titleSlot={<GlossaryInject>{tParks('title')}</GlossaryInject>}
+                  introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
+                />
                 <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
                   <Link
                     href="/howto"
@@ -414,16 +420,20 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Features Section */}
       <section className="bg-muted/30 border-t px-4 py-16">
         <div className="container mx-auto">
-          <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.plan')}</h2>
+          <h2 className="mb-2 text-center text-2xl font-semibold">
+            <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
+          </h2>
           <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-sm leading-relaxed">
-            {tHome('sections.featuresIntro')}
+            <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
           </p>
           <div className="grid gap-8 md:grid-cols-3">
             <div className="text-center">
               <div className="bg-crowd-very-low/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <Clock className="text-crowd-very-low h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.realtime.title')}</h3>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.realtime.title')}</GlossaryInject>
+              </h3>
               <p className="text-muted-foreground text-sm">
                 <GlossaryInject>{tHome('features.realtime.description')}</GlossaryInject>
               </p>
@@ -432,14 +442,18 @@ export default async function HomePage({ params }: HomePageProps) {
               <div className="bg-park-primary/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <TrendingUp className="text-park-primary h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.ml.title')}</h3>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
+              </h3>
               <p className="text-muted-foreground text-sm"><GlossaryInject>{tHome('features.ml.description')}</GlossaryInject></p>
             </div>
             <div className="text-center">
               <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
                 <MapIcon className="text-crowd-moderate h-8 w-8" />
               </div>
-              <h3 className="mb-2 text-lg font-semibold">{tHome('features.calendar.title')}</h3>
+              <h3 className="mb-2 text-lg font-semibold">
+                <GlossaryInject>{tHome('features.calendar.title')}</GlossaryInject>
+              </h3>
               <p className="text-muted-foreground text-sm">
                 <GlossaryInject>{tHome('features.calendar.description')}</GlossaryInject>
               </p>

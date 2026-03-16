@@ -8,37 +8,64 @@ function escapeRegex(s: string) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
+interface MatchEntry {
+  /** The string pattern to match (term name or alias). */
+  pattern: string;
+  term: GlossaryTerm;
+}
+
+/** Build a flat list of all matchable patterns (names + aliases), sorted longest-first. */
+function buildMatchEntries(terms: GlossaryTerm[]): MatchEntry[] {
+  const entries: MatchEntry[] = [];
+  for (const term of terms) {
+    entries.push({ pattern: term.name, term });
+    for (const alias of term.aliases ?? []) {
+      entries.push({ pattern: alias, term });
+    }
+  }
+  return entries.sort((a, b) => b.pattern.length - a.pattern.length);
+}
+
 type Segment =
   | { type: 'text'; content: string }
-  | { type: 'term'; id: string; matchedText: string; slug: string; shortDefinition: string; name: string };
+  | {
+      type: 'term';
+      id: string;
+      matchedText: string;
+      slug: string;
+      shortDefinition: string;
+      name: string;
+    };
 
 function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
-  // Sort longest-first so "Express Pass" matches before "Express"
-  const sorted = [...terms].sort((a, b) => b.name.length - a.name.length);
-  const pattern = sorted.map((t) => `\\b${escapeRegex(t.name)}\\b`).join('|');
+  const entries = buildMatchEntries(terms);
+  if (entries.length === 0) return [{ type: 'text', content: text }];
+
+  const pattern = entries.map((e) => `\\b${escapeRegex(e.pattern)}\\b`).join('|');
   const regex = new RegExp(`(${pattern})`, 'gi');
 
   const segments: Segment[] = [];
+  /** Track which term IDs have already been linked (first-occurrence-only). */
   const used = new Set<string>();
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
   while ((match = regex.exec(text)) !== null) {
     const matched = match[0];
-    const term = sorted.find((t) => t.name.toLowerCase() === matched.toLowerCase());
-    if (!term || used.has(term.id)) continue;
-    used.add(term.id);
+    const entry = entries.find((e) => e.pattern.toLowerCase() === matched.toLowerCase());
+    if (!entry || used.has(entry.term.id)) continue;
+    used.add(entry.term.id);
 
     if (match.index > lastIndex) {
       segments.push({ type: 'text', content: text.slice(lastIndex, match.index) });
     }
     segments.push({
       type: 'term',
-      id: term.id,
+      id: entry.term.id,
       matchedText: matched,
-      slug: term.slug,
-      shortDefinition: term.shortDefinition,
-      name: term.name,
+      slug: entry.term.slug,
+      shortDefinition: entry.term.shortDefinition,
+      name: entry.term.name,
     });
     lastIndex = match.index + matched.length;
   }
@@ -52,9 +79,8 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
 
 /**
  * Async server component — fetches glossary terms for the current locale and
- * replaces the first occurrence of each term with a dashed-underline tooltip link.
- *
- * No provider or wrapper needed. Works in any server component.
+ * replaces the first occurrence of each term (or alias) with a dashed-underline
+ * tooltip link. No provider or wrapper needed.
  */
 export async function GlossaryInject({ children }: { children: string }) {
   if (!children) return <>{children}</>;
@@ -65,7 +91,6 @@ export async function GlossaryInject({ children }: { children: string }) {
 
   const segments = parseSegments(children, terms);
 
-  // If no terms matched, return plain text
   if (segments.every((s) => s.type === 'text')) {
     return <>{children}</>;
   }

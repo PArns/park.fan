@@ -833,6 +833,36 @@ const translations: GlossaryTermTranslation[] = [
       'Een Trackless Ride is een type dark ride waarbij voertuigen niet gebonden zijn aan een vaste rail maar autonoom door de attractieruimte navigeren, geleid door inductielussen, wifi of lasergeleidingssystemen in de vloer. De bewegingsvrijheid maakt veel complexere scenering en niet-lineaire verhaallijnen mogelijk. Symbolica in Efteling is het meest bekende Nederlandse voorbeeld. Andere beroemde voorbeelden: Star Wars: Rise of the Resistance (Disney) en Ratatouille: The Adventure (Disneyland Paris).',
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
+  {
+    id: 'ki',
+    name: 'AI',
+    shortDefinition:
+      'Kunstmatige Intelligentie — de machine-learningmodellen die drukte-prognoses en wachttijdvoorspellingen berekenen.',
+    definition:
+      "AI (Kunstmatige Intelligentie) verwijst naar machine-learningalgoritmen die patronen herkennen in grote datasets en voorspellingen genereren. park.fan gebruikt AI-modellen die getraind zijn op jaren aan historische wachttijddata, schoolvakantieregelingen, weerdata en evenementaankondigingen om dagelijkse drukte- en wachttijdprognoses te produceren voor elk bijgehouden park — tot 30+ dagen vooruit.",
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Kunstmatige Intelligentie'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Live wachttijd',
+    shortDefinition:
+      'Wachttijddata die direct vanuit de parksystemen wordt opgehaald en elke minuut bijgewerkt.',
+    definition:
+      "Een live wachttijd is de actuele, realtime wachttijd direct vanuit de datasystemen van een park — geen historisch gemiddelde, maar het werkelijke cijfer van dit moment, tot op de minuut nauwkeurig. park.fan haalt live wachttijden op vanuit officiële park-API's en derde partijen en vernieuwt elke minuut.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Live wachttijden', 'Realtime wachttijd', 'Realtime wachttijden'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Drukte-prognose',
+    shortDefinition:
+      'AI-gebaseerde voorspelling van hoe druk een attractiepark op een bepaalde dag zal zijn.',
+    definition:
+      'Een drukte-prognose is een datagestuurde voorspelling van hoe druk een attractiepark op een bepaalde dag of tijd zal zijn. park.fan herberekent drukte-prognoses dagelijks op basis van historische bezoekerscijfers, schoolvakanties, weerdata en speciale evenementen. De resultaten vloeien direct in de drukte-kalender: groene dagen betekenen korte rijen, rode dagen signaleren piekdrukte met lange wachttijden.',
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Drukte-prognoses'],
+  },
 ];
 
 export default translations;

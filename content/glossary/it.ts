@@ -835,6 +835,36 @@ const translations: GlossaryTermTranslation[] = [
       "Un Trackless Ride è un tipo di dark ride in cui i veicoli non sono vincolati a una rotaia fissa ma navigano autonomamente attraverso lo spazio dell'attrazione, guidati da loop di induzione, Wi-Fi o laser incorporati nel pavimento. La libertà di movimento consente scenografie molto più complesse e narrazioni non lineari: i veicoli possono girare, ruotare e avvicinarsi alle scene da diverse angolazioni. Esempi celebri: Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Avventura Totalmente Toccata di Remy (Disneyland Paris) e Symbolica (Efteling, Paesi Bassi).",
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
+  {
+    id: 'ki',
+    name: 'IA',
+    shortDefinition:
+      'Intelligenza Artificiale — i modelli di machine learning che calcolano le previsioni di affluenza e i tempi di attesa.',
+    definition:
+      "L'IA (Intelligenza Artificiale) si riferisce agli algoritmi di machine learning che riconoscono pattern in grandi dataset e generano previsioni. park.fan utilizza modelli IA addestrati su anni di dati storici sui tempi di attesa, calendari scolastici, dati meteorologici e annunci di eventi per produrre previsioni giornaliere di affluenza e tempi di attesa — fino a 30+ giorni in anticipo.",
+    relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
+    aliases: ['Intelligenza Artificiale'],
+  },
+  {
+    id: 'realtime-wait-time',
+    name: 'Tempo di attesa in tempo reale',
+    shortDefinition:
+      'Dati sui tempi di attesa aggiornati in tempo reale direttamente dai sistemi del parco.',
+    definition:
+      "Un tempo di attesa in tempo reale è il dato attuale estratto direttamente dai sistemi del parco — non una media storica, ma il dato reale al minuto. park.fan recupera i tempi di attesa in tempo reale dalle API ufficiali dei parchi e da fonti terze, aggiornando ogni minuto.",
+    relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
+    aliases: ['Tempi di attesa in tempo reale', 'Attesa live'],
+  },
+  {
+    id: 'crowd-forecast',
+    name: 'Previsione affluenza',
+    shortDefinition:
+      "Previsione basata sull'IA dell'affluenza in un parco a tema per un giorno specifico.",
+    definition:
+      "Una previsione affluenza è una previsione basata sui dati di quanto sarà affollato un parco a tema in un giorno o a un'ora specifica. park.fan ricalcola le previsioni di affluenza quotidianamente utilizzando dati storici di presenze, calendari scolastici, dati meteorologici ed eventi speciali. I risultati alimentano direttamente il calendario delle affluenze: i giorni verdi indicano code brevi, i giorni rossi segnalano affluenza di punta con lunghi tempi di attesa.",
+    relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
+    aliases: ['Previsioni affluenza'],
+  },
 ];
 
 export default translations;
