@@ -92,6 +92,19 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
   {
+    id: 'off-season',
+    name: 'Sluitingsperiode',
+    shortDefinition:
+      'De jaarlijkse sluitingsperiode van een seizoensgebonden attractiepark — doorgaans enkele weken tot maanden — waarin het park volledig gesloten is voor het publiek.',
+    definition:
+      'De sluitingsperiode is de jaarlijkse periode waarin een seizoensgebonden attractiepark volledig gesloten is voor bezoekers. Het gaat niet om een rustigere periode met minder bezoekers — het park is dicht. Voor de meeste seizoensparken in Europa valt de sluitingsperiode in de winter: Phantasialand en Europa-Park sluiten bijvoorbeeld doorgaans van eind januari tot eind maart. De exacte data verschillen per park en per jaar.
+
+Tijdens de sluitingsperiode voeren parken grote renovaties uit, installeren ze nieuwe attracties en verrichten ze onderhoudswerkzaamheden die niet uitvoerbaar zijn wanneer er bezoekers aanwezig zijn. Daarom openen veel nieuwe attracties precies bij de start van het nieuwe seizoen in plaats van halverwege het jaar.
+
+park.fan toont de sluitingsperiode-indicator op een parkkaart wanneer het park gesloten is en de eerstvolgende geplande openingsdatum meer dan een week weg is — zo wordt het onderscheiden van een gewone dagelijkse sluiting. Als je het label voor de sluitingsperiode ziet, opent het park voorlopig niet: raadpleeg altijd de officiële website van het park voor de exacte heropendatum voordat je reisplannen maakt.',
+    relatedTermIds: ['refurbishment', 'off-peak', 'crowd-calendar'],
+  },
+  {
     id: 'ride-capacity',
     name: 'Capaciteit',
     shortDefinition: 'Het aantal bezoekers dat een attractie per uur kan vervoeren.',

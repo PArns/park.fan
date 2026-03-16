@@ -91,6 +91,19 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
   {
+    id: 'off-season',
+    name: 'Hors-saison',
+    shortDefinition:
+      'La période de fermeture annuelle d\'un parc d\'attractions saisonnier — généralement plusieurs semaines à plusieurs mois — durant laquelle le parc est totalement fermé au public.',
+    definition:
+      'La hors-saison désigne la période annuelle durant laquelle un parc d\'attractions saisonnier est entièrement fermé aux visiteurs. Il ne s\'agit pas simplement d\'une période plus calme avec moins de monde — le parc est fermé. Pour la plupart des parcs saisonniers en Europe, la hors-saison se situe en hiver : Phantasialand et Europa-Park, par exemple, ferment généralement de fin janvier à fin mars. Les dates exactes varient selon le parc et l\'année.
+
+Pendant la hors-saison, les parcs effectuent des rénovations importantes, installent de nouvelles attractions et réalisent des travaux de maintenance qui seraient impossibles en présence des visiteurs. C\'est pourquoi de nombreuses nouvelles attractions ouvrent dès le début de la nouvelle saison plutôt qu\'en milieu d\'année.
+
+park.fan affiche l\'indicateur de hors-saison sur la fiche d\'un parc lorsque celui-ci est fermé et que la prochaine date d\'ouverture prévue est à plus d\'une semaine — le distinguant ainsi d\'une fermeture journalière ordinaire. Si vous voyez le label hors-saison, le parc ne rouvrira pas de sitôt : consultez toujours le site officiel du parc pour connaître la date exacte de réouverture avant de planifier votre voyage.',
+    relatedTermIds: ['refurbishment', 'off-peak', 'crowd-calendar'],
+  },
+  {
     id: 'ride-capacity',
     name: "Capacité d'attraction",
     shortDefinition: "Le nombre de visiteurs qu'une attraction peut accueillir par heure.",

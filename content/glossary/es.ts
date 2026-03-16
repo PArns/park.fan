@@ -92,6 +92,19 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
   {
+    id: 'off-season',
+    name: 'Temporada baja',
+    shortDefinition:
+      'El período de cierre anual de un parque temático de temporada — normalmente varias semanas o meses — durante el cual el parque está completamente cerrado al público.',
+    definition:
+      'La temporada baja es el período anual durante el cual un parque temático de temporada está completamente cerrado a los visitantes. No se trata simplemente de una época más tranquila con menos afluencia — el parque está cerrado. Para la mayoría de los parques de temporada en Europa, la temporada baja se sitúa en invierno: Phantasialand y Europa-Park, por ejemplo, suelen cerrar desde finales de enero hasta finales de marzo. Las fechas exactas varían según el parque y el año.
+
+Durante la temporada baja, los parques llevan a cabo reformas importantes, instalan nuevas atracciones y realizan trabajos de mantenimiento que serían inviables con visitantes presentes. Por eso muchas atracciones nuevas abren justo al inicio de la nueva temporada en lugar de a mitad de año.
+
+park.fan muestra el indicador de temporada baja en la tarjeta de un parque cuando este está cerrado y la próxima fecha de apertura programada está a más de una semana — distinguiéndolo así de un cierre diario habitual. Si ves la etiqueta de temporada baja, el parque no abrirá próximamente: consulta siempre el sitio web oficial del parque para conocer la fecha exacta de reapertura antes de hacer planes de viaje.',
+    relatedTermIds: ['refurbishment', 'off-peak', 'crowd-calendar'],
+  },
+  {
     id: 'ride-capacity',
     name: 'Capacidad de atracción',
     shortDefinition: 'El número de visitantes que una atracción puede acomodar por hora.',

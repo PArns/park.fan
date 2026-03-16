@@ -92,6 +92,19 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
   {
+    id: 'off-season',
+    name: 'Fuori stagione',
+    shortDefinition:
+      'Il periodo di chiusura annuale di un parco a tema stagionale — tipicamente da alcune settimane a diversi mesi — durante il quale il parco è completamente chiuso al pubblico.',
+    definition:
+      'Il fuori stagione è il periodo annuale durante il quale un parco a tema stagionale è completamente chiuso ai visitatori. Non si tratta semplicemente di un periodo più tranquillo con meno ospiti — il parco è chiuso. Per la maggior parte dei parchi stagionali in Europa, il fuori stagione cade in inverno: Phantasialand ed Europa-Park, ad esempio, chiudono tipicamente dalla fine di gennaio alla fine di marzo. Le date esatte variano a seconda del parco e dell\'anno.
+
+Durante il fuori stagione, i parchi effettuano importanti lavori di ristrutturazione, installano nuove attrazioni e svolgono interventi di manutenzione che sarebbero impraticabili con i visitatori presenti. Ecco perché molte nuove attrazioni aprono proprio all\'inizio della nuova stagione anziché a metà anno.
+
+park.fan mostra l\'indicatore di fuori stagione sulla scheda di un parco quando il parco è chiuso e la prossima data di apertura programmata è a più di una settimana — distinguendolo così da una normale chiusura giornaliera. Se vedi l\'etichetta fuori stagione, il parco non aprirà a breve: controlla sempre il sito ufficiale del parco per la data esatta di riapertura prima di pianificare il tuo viaggio.',
+    relatedTermIds: ['refurbishment', 'off-peak', 'crowd-calendar'],
+  },
+  {
     id: 'ride-capacity',
     name: "Capacità dell'attrazione",
     shortDefinition: "Il numero di ospiti che un'attrazione può ospitare per ora.",
