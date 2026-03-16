@@ -292,12 +292,12 @@ export function TabsWithHash({
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
-              <div className="relative w-full sm:w-auto">
-                <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4" />
+              <div className="group relative w-full sm:w-auto">
+                <Search className="text-muted-foreground absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors group-focus-within:text-primary" />
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
-                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] ${
+                  className={`w-full pl-9 transition-all duration-300 sm:w-[250px] sm:focus:w-[300px] bg-background/60 hover:bg-background/75 backdrop-blur-md shadow-md border-primary/20 hover:border-primary/40 focus-visible:border-primary/60 dark:bg-[oklch(0.12_0.025_241_/_0.55)] dark:hover:bg-[oklch(0.14_0.030_241_/_0.65)] ${
                     isFocused && searchQuery ? 'pr-16' : 'pr-4'
                   }`}
                   value={searchQuery}
