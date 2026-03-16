@@ -343,12 +343,12 @@ export async function Footer({ locale }: FooterProps) {
           <p className="text-muted-foreground/80 text-sm">{t('disclaimer')}</p>
         </div>
 
-        <div className="text-muted-foreground flex flex-col items-center justify-between text-sm md:flex-row">
+        <div className="text-muted-foreground flex flex-col items-center justify-between gap-6 text-sm md:flex-row">
           <div className="flex flex-col items-center text-center md:text-left">
             <p>{t('copyright', { year: currentYear })}</p>
             <BuildInfo />
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end">
             <Link
               href="/howto"
               prefetch={false}
