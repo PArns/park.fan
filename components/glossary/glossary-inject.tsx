@@ -81,8 +81,16 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
  * Async server component — fetches glossary terms for the current locale and
  * replaces the first occurrence of each term (or alias) with a dashed-underline
  * tooltip link. No provider or wrapper needed.
+ *
+ * @param noUnderline  When true, suppress the dashed underline (e.g. inside headings).
  */
-export async function GlossaryInject({ children }: { children: string }) {
+export async function GlossaryInject({
+  children,
+  noUnderline = false,
+}: {
+  children: string;
+  noUnderline?: boolean;
+}) {
   if (!children) return <>{children}</>;
 
   const locale = (await getLocale()) as Locale;
@@ -108,6 +116,7 @@ export async function GlossaryInject({ children }: { children: string }) {
             shortDefinition={seg.shortDefinition}
             locale={locale}
             segment={segment}
+            noUnderline={noUnderline}
           />
         );
       })}

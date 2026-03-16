@@ -155,7 +155,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 <HeroWithNearby
                   searchPlaceholder={tHome('hero.searchPlaceholder')}
                   hideSearch
-                  titleSlot={<GlossaryInject>{tParks('title')}</GlossaryInject>}
+                  titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
                   introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
                 />
                 <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
