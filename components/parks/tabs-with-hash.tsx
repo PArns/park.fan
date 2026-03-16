@@ -293,7 +293,7 @@ export function TabsWithHash({
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
               <div className="group relative w-full sm:w-auto">
-                <Search className="text-muted-foreground absolute top-2.5 left-3 h-4 w-4 transition-colors group-focus-within:text-primary" />
+                <Search className="text-muted-foreground absolute top-2.5 left-3 z-10 h-4 w-4 transition-colors group-focus-within:text-primary" />
                 <Input
                   ref={inputRef}
                   placeholder={t('searchAttractions')}
