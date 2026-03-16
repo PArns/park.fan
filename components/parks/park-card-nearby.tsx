@@ -7,6 +7,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { useTranslations, useLocale } from 'next-intl';
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
@@ -170,7 +171,16 @@ export function ParkCardNearby({
                   )}
                   <span>
                     {scheduleInfo.icon === 'opening' ? `${t('opens')}: ` : ''}
-                    {scheduleInfo.message}
+                    {scheduleInfo.icon === 'offseason' ? (
+                      <>
+                        <GlossaryTermLink termId="off-peak">
+                          {t('offseason')}
+                        </GlossaryTermLink>
+                        {scheduleInfo.message.slice(t('offseason').length)}
+                      </>
+                    ) : (
+                      scheduleInfo.message
+                    )}
                   </span>
                 </div>
               )}
