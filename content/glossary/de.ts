@@ -92,7 +92,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'off-season',
-    name: 'Offseason',
+    name: 'OffSeason',
     shortDefinition:
       'Der jährliche Schließungszeitraum eines saisonalen Freizeitparks — typischerweise mehrere Wochen bis Monate — in dem der Park vollständig für Besucher geschlossen ist.',
     definition:
