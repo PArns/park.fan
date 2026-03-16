@@ -233,6 +233,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'off-season',
+    category: 'park-operations',
+    slugs: {
+      en: 'off-season',
+      de: 'geschlossene-saison',
+      fr: 'fermeture-saisonniere',
+      it: 'chiusura-stagionale',
+      nl: 'seizoenssluiting',
+      es: 'cierre-estacional',
+    },
+  },
+  {
     id: 'ride-capacity',
     category: 'park-operations',
     slugs: {

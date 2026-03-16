@@ -243,7 +243,7 @@
     "currentTime": "Aktuelle Uhrzeit",
     "openingHours": "Öffnungszeiten",
     "opensOn": "Öffnet am",
-    "offseason": "OffSeason",
+    "offseason": "Offseason",
     "opensIn": "Öffnet in",
     "closesIn": "Schließt in",
     "nextShowIn": "Nächste Show in",
@@ -499,7 +499,7 @@
     "closesIn": "Schließt in",
     "day": "{count, plural, =1 {Tag} other {Tagen}}",
     "week": "{count, plural, =1 {Woche} other {Wochen}}",
-    "offseason": "OffSeason"
+    "offseason": "Offseason"
   },
   "geo": {
     "continent": "Kontinent",

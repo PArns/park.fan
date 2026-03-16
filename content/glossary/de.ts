@@ -78,8 +78,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine geplante Schließungszeit, in der eine Attraktion oder ein Bereich gewartet oder modernisiert wird.',
     definition:
-      'Eine Renovierung (von Enthusiasten oft als "Rehab" abgekürzt) ist ein geplanter Wartungs- oder Renovierungszeitraum, in dem eine Attraktion, eine Show oder ein Parkbereich vorübergehend geschlossen ist. Renovierungen können von einigen Tagen bis zu mehreren Monaten dauern und werden in der Regel für die Nebensaison geplant. park.fan markiert Attraktionen, die derzeit renoviert werden.',
-    relatedTermIds: ['downtime', 'ride-capacity'],
+      'Eine Renovierung (von Enthusiasten oft als "Rehab" abgekürzt) ist ein geplanter Wartungs- oder Renovierungszeitraum, in dem eine Attraktion, eine Show oder ein Parkbereich vorübergehend geschlossen ist. Renovierungen können von einigen Tagen bis zu mehreren Monaten dauern und werden in der Regel für die Offseason geplant, um die Auswirkungen auf Besucher zu minimieren. park.fan markiert Attraktionen, die derzeit renoviert werden, damit du den Status überprüfen kannst.',
+    relatedTermIds: ['downtime', 'off-season', 'ride-capacity'],
   },
   {
     id: 'downtime',
@@ -89,6 +89,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Betriebsstörung bezeichnet die ungeplante, vorübergehende Schließung einer Attraktion — im Gegensatz zur geplanten Renovierung. Ursachen sind technische Defekte, Sicherheitsüberprüfungen, Vorfälle mit Besuchern oder schlechtes Wetter. Die meisten Störungen dauern wenige Minuten bis einige Stunden. park.fan zeigt den aktuellen Betriebsstatus jeder Attraktion in Echtzeit an und unterscheidet zwischen "In Betrieb", "Störung", "Geschlossen" und "Renovierung".',
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
+  },
+  {
+    id: 'off-season',
+    name: 'Offseason',
+    shortDefinition:
+      'Eine Zeitperiode, in der ein Freizeitpark mit reduziertem Betrieb oder komplett geschlossen ist, typischerweise aufgrund von Wetter, Wartungsarbeiten oder niedriger Besuchernachfrage.',
+    definition:
+      'Die Offseason bezeichnet einen Zeitraum, in dem ein Freizeitpark mit stark reduzierten Öffnungszeiten, eingeschränktem Attraktionsangebot oder vollständiger Schließung operiert. Für Parks in gemäßigten Klimazonen sind die Wintermonate typischerweise Offseason aufgrund des Wetters. In anderen Regionen fällt die Offseason in Perioden mit traditionell niedriger Besuchernachfrage — beispielsweise Sommermonate in manchen europäischen Parks oder spezifische Monate basierend auf lokalen Schulkalendern. Einige Parks schließen komplett für Wochen oder Monate; andere bleiben ganzjährig offen, aber mit deutlich reduzierter Kapazität und Personal.\n\nDie Offseason ist ein ideales Zeitfenster für größere geplante Wartungsarbeiten und Renovierungen — Attraktionen können umfangreiche Überarbeitungen durchführen, ohne den regulären Betrieb zu beeinträchtigen. Für flexible Besucher ist die Offseason oft eine Option mit signifikant niedrigeren Ticketpreisen und minimalen Warteschlangen. park.fan markiert klar, wann Parks in der Offseason sind. Es ist unbedingt empfohlen, die offizielle Park-Website zu prüfen, da Öffnungszeiten, verfügbare Attraktionen und Preise in der Offseason deutlich vom Normalbetrieb abweichen können.',
+    relatedTermIds: ['refurbishment', 'peak-day', 'crowd-calendar'],
   },
   {
     id: 'ride-capacity',

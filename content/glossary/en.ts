@@ -79,7 +79,7 @@ const translations: GlossaryTermTranslation[] = [
       'A planned maintenance closure during which a ride or area undergoes repairs or upgrades.',
     definition:
       'A refurbishment (often called a "rehab" by enthusiasts) is a scheduled maintenance or renovation period during which a ride, show, or area of the park is temporarily closed. Refurbishments can last from a few days to several months and are typically planned for the off-season to minimise visitor impact. Parks usually publish refurbishment schedules in advance, though the dates can shift. Major parks like Disney and Universal schedule annual maintenance windows for each attraction, often rotating closures so that different rides are refurbished each year.\n\nRefurbishments are important planning considerations — discovering that your most anticipated ride is closed upon arrival can be deeply frustrating. park.fan marks attractions currently undergoing refurbishment so you can check the status of your target rides before booking travel. Always cross-reference park.fan data with the official park website before finalising a trip, particularly for shoulder-season visits when refurbishment activity is highest.',
-    relatedTermIds: ['downtime', 'ride-capacity'],
+    relatedTermIds: ['downtime', 'off-season', 'ride-capacity'],
   },
   {
     id: 'downtime',
@@ -89,6 +89,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Downtime refers to an unscheduled, temporary closure of a ride or attraction — distinct from a planned refurbishment. Causes include mechanical malfunctions, sensor errors, safety checks triggered by guest incidents, adverse weather (particularly lightning), or animals entering the ride zone. Most downtime events are resolved within minutes to a couple of hours, though complex mechanical failures can extend closures.\n\nFrom a planning perspective, downtime is one of the least predictable variables in a theme park day. High-capacity rides with complex systems — such as large roller coasters or elaborate dark rides — tend to experience downtime more frequently than simpler attractions. park.fan displays the current operational status of every tracked attraction in real time, distinguishing between Operating, Down, Closed, and Refurbishment states, so you can adjust your route the moment a ride goes offline.',
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
+  },
+  {
+    id: 'off-season',
+    name: 'Off-Season',
+    shortDefinition:
+      'A seasonal period when a theme park is completely closed, typically due to weather, maintenance, or low anticipated visitor demand.',
+    definition:
+      'The off-season refers to a period during which a theme park operates with significantly reduced hours, limited attractions, or complete closure. For many parks in temperate regions, winter months constitute the off-season due to harsh weather. In other regions, the off-season aligns with periods of traditionally low visitor demand — summer months in some European parks, or specific months determined by local school calendars. Some parks close entirely for weeks or months; others remain open year-round but substantially reduce capacity and staffing.\n\nOff-season periods are ideal windows for major planned maintenance, refurbishments, and capital projects — rides can undergo extended renovations without impacting peak-season guest experience. From a visitor perspective, off-season travel is viable at parks offering limited operations, typically featuring significantly lower ticket prices and minimal queues. park.fan's calendar clearly indicates off-season periods so you can plan accordingly. Checking the park\'s official website before visiting during off-season windows is essential, as operating hours, attraction availability, and pricing can differ substantially from regular operations.',
+    relatedTermIds: ['refurbishment', 'peak-day', 'crowd-calendar'],
   },
   {
     id: 'ride-capacity',
