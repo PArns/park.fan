@@ -812,9 +812,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'opening-hours',
     name: 'Orari di apertura',
     shortDefinition:
-      'Il programma giornaliero ufficiale che indica quando un parco a tema o un'attrazione apre e chiude.',
+      "Il programma giornaliero ufficiale che indica quando un parco a tema o un'attrazione apre e chiude.",
     definition:
-      'Gli orari di apertura sono il programma giornaliero pubblicato per un parco a tema o una singola attrazione — indicano quando inizia l'accesso e quando termina l'operatività. La maggior parte dei grandi parchi pubblica un calendario scorrevole con settimane o mesi di anticipo, sebbene gli orari possano cambiare a breve termine a causa di eventi speciali, aggiustamenti stagionali o problemi operativi.\n\npark.fan mostra gli orari di apertura per ogni parco. Gli orari contrassegnati con «Est.» (Stimato) sono stati derivati da schemi storici e non confermati ufficialmente dal parco — devono essere verificati prima di una visita pianificata.',
+      "Gli orari di apertura sono il programma giornaliero pubblicato per un parco a tema o una singola attrazione — indicano quando inizia l'accesso e quando termina l'operatività. La maggior parte dei grandi parchi pubblica un calendario scorrevole con settimane o mesi di anticipo, sebbene gli orari possano cambiare a breve termine a causa di eventi speciali, aggiustamenti stagionali o problemi operativi.\n\npark.fan mostra gli orari di apertura per ogni parco. Gli orari contrassegnati con «Est.» (Stimato) sono stati derivati da schemi storici e non confermati ufficialmente dal parco — devono essere verificati prima di una visita pianificata.",
     relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
   },
   {
@@ -823,7 +823,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'La direzione del cambiamento nella lunghezza della coda negli ultimi 30 minuti — in aumento, in calo o stabile.',
     definition:
-      'La tendenza indica se la coda di un'attrazione è più lunga, più corta o uguale rispetto a 30 minuti fa. park.fan la rappresenta con una freccia: su (coda in crescita), giù (coda in diminuzione) o orizzontale (stabile).\n\nLa tendenza è spesso più significativa del tempo di attesa grezzo. Un'attrazione con 45 minuti e tendenza in calo è una scelta migliore rispetto a una con 40 minuti e tendenza fortemente in aumento — nel tempo che ci vuole ad arrivare, la prima coda potrebbe essere scesa a 30 minuti mentre la seconda ha già raggiunto i 55.',
+      "La tendenza indica se la coda di un'attrazione è più lunga, più corta o uguale rispetto a 30 minuti fa. park.fan la rappresenta con una freccia: su (coda in crescita), giù (coda in diminuzione) o orizzontale (stabile).\n\nLa tendenza è spesso più significativa del tempo di attesa grezzo. Un'attrazione con 45 minuti e tendenza in calo è una scelta migliore rispetto a una con 40 minuti e tendenza fortemente in aumento — nel tempo che ci vuole ad arrivare, la prima coda potrebbe essere scesa a 30 minuti mentre la seconda ha già raggiunto i 55.",
     relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
   },
   {
