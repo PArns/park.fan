@@ -27,6 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A virtual queue (sometimes called a boarding group or return time) lets guests register for a ride via a park app or kiosk and receive a notification when their turn is approaching. Instead of standing in a physical queue, guests can explore other attractions, eat, or rest until their group is called. Parks use virtual queues for their highest-demand new attractions where physical queuing would create dangerous or unmanageable crowd concentrations.\n\nVirtual queues typically open at a fixed time — often the moment the park gates open — and can fill within minutes on busy days. Disney has used the system for Star Wars: Rise of the Resistance and Tron Lightcycle Run; Universal introduced it for Hagrid's Magical Creatures Motorbike Adventure. The key planning insight is that securing a virtual queue spot is often the very first thing you should do upon entering the park, before visiting any other attraction.",
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ['Virtual Queues'],
   },
   {
     id: 'express-pass',
@@ -54,6 +55,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Crowd level describes the overall visitor density at a park on a given day or time. park.fan uses a scale from Very Low to Extreme based on historical wait time data, current occupancy patterns, and AI-driven predictions. A Very Low day means short queues across almost all attractions, a relaxed atmosphere, and manageable crowds at restaurants. An Extreme day means the park is operating near maximum capacity, with waits of 90 minutes or more for popular rides and queues forming even at quick-service food outlets.\n\nCrowd levels are shaped by school holidays, public holidays, special events (fireworks, Halloween nights), seasonal patterns, and even weather forecasts. Understanding how these factors combine is essential for planning a visit that matches your priorities. park.fan's crowd calendar presents this data in an easy day-by-day view so you can identify windows of lower attendance weeks or months in advance.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Crowd Levels'],
   },
   {
     id: 'crowd-calendar',
@@ -297,6 +299,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A return time (sometimes called a return window) is a specific time period — typically a one-hour block — during which a guest who has booked priority access can present at the attraction's dedicated entrance. Return times are issued by Lightning Lane reservations, virtual queue boarding group assignments, and legacy systems like FastPass+. They allow guests to spend the intervening period exploring other areas of the park rather than standing in a physical queue.\n\nMissing your return time window typically forfeits the reservation, though Disney and Universal both offer some grace-period flexibility. Return time management — knowing which attractions to book first, when to book your second reservation, and how long it takes to walk between areas of the park — is a skill that separates experienced park visitors from first-timers. park.fan's live wait time data helps inform which attractions are worth using a return time on versus which can be done efficiently in standby.",
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Return Times'],
   },
   {
     id: 'airtime',
@@ -360,6 +363,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A wooden coaster is built with a wooden track structure (laminated layers of wood) on a wooden or steel support frame. Unlike steel coasters, wood has natural flex and imprecision in its construction that creates the characteristic rumble, lateral shuffle, and unpredictable airtime that enthusiasts prize. The experience tends to feel more raw and physical than the smooth precision of a steel coaster — a quality many riders find uniquely appealing.\n\nFamous wooden coasters include Balder at Liseberg (Sweden), widely regarded as Europe's best wooden coaster, The Beast at Kings Island (one of the longest in the world at 2.2 km), and Megafobia at Oakwood in Wales. Wooden coasters require significant ongoing maintenance — rails must be relaminated, checked, and replaced on a continuous cycle — and their ride characteristics change noticeably with temperature and humidity. Rocky Mountain Construction's conversion process can transform an ageing wooden coaster into a steel I-box hybrid, opening up new design possibilities while retaining the iconic wooden structure.",
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodie', 'Woodies'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Steel Coaster',
+    shortDefinition:
+      'A roller coaster built primarily with steel track and support structure, known for its smooth, precise ride experience.',
+    definition:
+      "A steel coaster is built with tubular or flat steel track supported by a steel lattice or tubular frame. Unlike wooden coasters with their natural flex and unpredictable motion, steel offers engineers precise control over G-forces, transitions, and inversions. The smooth, predictable ride of a steel coaster makes it ideal for executing complex layouts with multiple inversions, tight radius curves, and sustained high-speed sections.\n\nSteel coasters dominate modern coaster development because they allow designers to create nearly any shape imaginable — beyond-vertical drops, complete inversions, and rapid direction changes. The most celebrated steel coasters in Europe include Shambhala at PortAventura, Nemesis at Alton Towers, and Silver Star at Europa-Park. Steel coasters range from small family rides to record-breaking mega coasters, making the category the most versatile in the theme park industry. The precision of steel comes at a cost: maintenance requires careful track inspection and frequent repainting, and the steel structure is less forgiving of design errors than the flexibility of wood.",
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Steel Coasters', 'Steel track'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'A coaster where the train hangs below the track on a swinging pivot, allowing the vehicle to swing freely side to side.',
+    definition:
+      "A suspended coaster is a specialized coaster type where the train is suspended from above on a pivot point, allowing it to swing side to side independently of the track's path. As the train navigates curves, it swings outward like a pendulum — a motion that creates the characteristic 'whip' sensation and adds an unpredictable element to the ride experience. This swinging motion is distinct from an inverted coaster, where the train is rigidly attached above the track.\n\nSuspended coasters are less common than inverted coasters but offer a unique experience. The swinging motion makes even moderate-speed turns feel dramatic, and the sensation of 'flying' with the ground far below (or nearby obstacles) creates a thrilling exposure. Vekoma pioneered the Suspended Looping Coaster (SLC) model in the 1990s, and hundreds were built worldwide due to the format's compact footprint and distinctive experience. Kumba at Busch Gardens Tampa (B&M suspended) and the Vekoma suspended coasters at European parks remain popular examples. The swinging motion can feel chaotic compared to the precision of modern inversions, making suspended coasters either beloved for their raw, unpredictable nature or polarizing among enthusiasts.",
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Swinging coaster'],
   },
   {
     id: 'hybrid-coaster',
@@ -877,6 +901,66 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A trackless ride is a type of dark ride where vehicles are not constrained to a fixed track but navigate autonomously through the attraction space, guided by induction loops, Wi-Fi positioning systems, or laser/optical guidance embedded in the floor. The freedom of movement allows for dramatically more complex scene layouts, non-linear storytelling, and sequences where vehicles approach scenes from multiple angles, spin to face different directions, or travel through the same space as other vehicles simultaneously.\n\nTrackless technology is increasingly the standard for major new dark ride investments. Star Wars: Rise of the Resistance at Disneyland Paris and Walt Disney World uses trackless vehicles as part of an extraordinarily complex multi-room experience. Ratatouille: The Adventure at Disneyland Paris was an early and beloved European example when it opened in 2014. Symbolica at Efteling in the Netherlands is another celebrated trackless ride that has become a flagship attraction. The flexibility of the format allows designers to create entirely new storytelling possibilities that the fixed-track dark ride format simply cannot replicate.',
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
+  },
+  {
+    id: 'g-force',
+    name: 'G-Force',
+    shortDefinition:
+      "The unit of acceleration experienced by riders, measured as multiples of Earth's gravitational acceleration (9.81 m/s²).",
+    definition:
+      "G-force (gravitational force equivalent) measures the acceleration a rider's body experiences relative to Earth's gravity. Positive G-forces (above 1G) press riders into their seats as the train pulls through a valley or tight curve — the same force that makes you feel heavy in a fast car. Negative G-forces (below 0G) lift riders from their seats, creating airtime. Lateral G-forces act sideways, pushing riders across their seat on turns and transitions.\n\nRoller coasters are designed to sequence these forces deliberately. A sustained 4–5G valley is the hallmark of a powerful first drop transition. A brief −0.5G to −1G moment on an airtime hill produces the signature floating sensation. Most coasters target a range of 0–5G of sustained positive G-force, with brief spikes above this for dramatic effect. Sustained high-G exposure beyond a few seconds can cause discomfort or greyout; well-designed coasters balance intensity peaks with recovery sections.",
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['G-Forces', 'G Force', 'G Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Lateral Gs',
+    shortDefinition:
+      'Sideways forces pushing riders across their seat during turns, transitions, and helix sections.',
+    definition:
+      "Lateral Gs (lateral G-forces) are the sideways accelerations riders experience when a coaster changes direction in the horizontal plane — on banked turns, unbanked transitions, helices, and direction changes. Well-designed laterals are smooth and controlled, contributing to an energetic and engaging ride experience. Poorly engineered or rough laterals feel like being thrown sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nEnthusiasts distinguish between smooth, intentional laterals — like those found in the sweeping low turns of a classic wooden coaster or the exits of a well-banked steel turn — and harsh, unintended laterals produced by track deterioration or poor engineering. Wooden coasters are especially associated with lateral movement: the flex in the track and the side-to-side energy of unbanked turns is considered part of the authentic wooden coaster experience. Smooth lateral G sequences in a helix section, like those on Balder at Liseberg, are often cited as highlights by coaster enthusiasts.",
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Laterals', 'Lateral G-Forces', 'Lateral G'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intense negative G-forces that aggressively thrust riders from their seat, held in place only by the lap bar.',
+    definition:
+      "Ejector airtime describes the most intense form of negative G-force, where the coaster's trajectory departs so abruptly from free fall that riders are thrown powerfully from their seats — held in only by the lap bar. The name reflects the sensation: it feels as though the seat is actively trying to eject you. This is distinct from the gentle, prolonged floating of floater airtime; ejector is sharp, sudden, and can verge on violent if the transition into it is abrupt.\n\nEjector airtime is most commonly associated with RMC hybrid coasters, certain Intamin hypers, and modern wooden coasters with steep, parabolic hills. Enthusiasts describe the best ejector moments as the highlight of a ride experience — a brief, heart-stopping instant of true weightlessness before the track pulls you back. Untamed at Walibi Holland, Wildfire at Kolmården, and Steel Vengeance at Cedar Point are frequently cited as delivering some of the world's most intense ejector sequences. The intensity is one of the primary reasons RMC coasters have achieved cult status in the enthusiast community.",
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Gentle, sustained negative G-forces producing a prolonged floating sensation as the train crests a hill.',
+    definition:
+      "Floater airtime describes the gentle end of the negative G-force spectrum: a slow, prolonged sensation where riders rise slightly from their seats and float weightlessly for an extended moment as the train crests a hill following a gradual parabolic arc. The force is mild — typically around −0.1G to −0.3G — making it accessible and pleasurable even for riders who find intense ejector airtime overwhelming.\n\nFloater airtime is most characteristic of B&M hyper and giga coasters, which use large, gently rounded hills specifically engineered to produce extended float phases. Shambhala at PortAventura, Silver Star at Europa-Park, and Goliath at Walibi Holland are European examples celebrated for their long, floaty airtime sequences. Many enthusiasts consider the prolonged, relaxed quality of floater airtime more comfortable and repeatable than the sharp intensity of ejector, though enthusiast opinion is divided on which style is superior. The two types are not mutually exclusive — a single airtime hill can transition from floater at the crest to ejector on the descent.",
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'The sensation of hanging weightlessly in restraints during an inversion, caused by negative G-forces while upside down.',
+    definition:
+      "Hangtime describes the distinct experience of negative G-forces while a rider is inverted — literally hanging in the restraints as the coaster moves through the top of an inversion slowly enough for negative Gs to take effect. Unlike the brief upside-down flash of a fast vertical loop, hangtime occurs when the train lingers near the apex of an inversion, producing a drawn-out sensation of suspension. Riders feel their weight shift entirely into the over-the-shoulder restraints or lap bar, creating a uniquely disorienting and memorable moment.\n\nHangtime is most pronounced on elements where the train slows significantly near the inversion apex — the pretzel loop on flying coasters is the classic example, as train speed at the apex is low enough for sustained negative Gs while fully inverted. The heartline roll on some modern coasters can also produce hangtime, as can the tops of slow Norwegian loops. Enthusiasts generally consider hangtime one of the most thrilling inversion sensations, distinct from both the sustained positive-G compression of a fast vertical loop and the floating of conventional airtime.",
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Roller Coaster Element',
+    shortDefinition:
+      'A named section or feature of a roller coaster track, such as a loop, airtime hill, or inversion.',
+    definition:
+      "A roller coaster element is any distinct, named feature incorporated into a coaster's layout — from classic inversions like vertical loops and corkscrews to non-inverting elements like airtime hills, helices, and overbanks. Engineers design each element to produce a specific physical sensation: weightlessness (airtime), lateral G-forces, or the disorientation of going upside down. Coaster enthusiasts and manufacturers use precise names for these features to describe, compare, and rate ride designs worldwide.\n\npark.fan's glossary covers dozens of individual coaster elements — from the first drop and lifthill that open every ride to advanced features like the Stengel dive, Norwegian loop, and heartline roll found on modern steel coasters.",
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Roller Coaster Elements'],
   },
 ];
 

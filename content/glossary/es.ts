@@ -9,6 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El tiempo de espera es la duración estimada que un visitante pasa en la cola antes de poder subir a una atracción. Los parques muestran los tiempos de espera en las entradas de las atracciones y en sus aplicaciones. park.fan realiza un seguimiento de los tiempos de espera en vivo que se actualizan cada minuto.',
     relatedTermIds: ['posted-wait-time', 'virtual-queue', 'single-rider', 'express-pass'],
+    aliases: ['Tiempos de espera'],
   },
   {
     id: 'single-rider',
@@ -27,6 +28,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una cola virtual permite a los visitantes registrarse para una atracción a través de una app o quiosco y recibir una notificación cuando se acerca su turno. En lugar de hacer cola físicamente, los visitantes pueden disfrutar de otras áreas del parque y regresar cuando sean llamados.',
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ['Colas virtuales'],
   },
   {
     id: 'express-pass',
@@ -54,6 +56,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El nivel de afluencia describe la densidad general de visitantes en un parque en un día u hora determinados. park.fan utiliza una escala de Muy Bajo a Extremo basada en datos históricos de tiempos de espera, ocupación actual y predicciones de IA.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Niveles de afluencia'],
   },
   {
     id: 'crowd-calendar',
@@ -231,6 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'La cola es el espacio físico — pasillos, serpentines exteriores o salas interiores — que los visitantes recorren mientras esperan para embarcar en una atracción. En muchos parques temáticos modernos, la cola forma parte de la propia experiencia: la cola de la Haunted Mansion de Disney ambienta antes incluso de subir al Doom Buggy, mientras que las atracciones de Harry Potter en Universal sumergen a los visitantes en su mundo desde que se unen a la fila. Una cola bien diseñada hace la espera mucho más llevadera, incluso cuando es larga.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ['Colas', 'Fila', 'Filas'],
   },
   {
     id: 'opening-day',
@@ -285,6 +289,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una hora de regreso (o return window) es un período de tiempo específico — habitualmente un bloque de una hora — durante el cual un visitante que ha reservado acceso prioritario (mediante Lightning Lane, una cola virtual o sistema similar) puede presentarse en la entrada dedicada de la atracción. Las horas de regreso permiten a los visitantes explorar otras zonas del parque durante el intervalo en lugar de esperar en una cola física. Si se pierde la ventana horaria — normalmente definida como llegar más tarde de un número determinado de minutos — se suele perder la reserva. Los datos de tiempos de espera y niveles de afluencia de park.fan te ayudan a decidir qué atracciones priorizar para la reserva.',
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Horas de regreso'],
   },
   {
     id: 'ert',
@@ -393,6 +398,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una montaña rusa de madera es una atracción construida con pista y estructura de soporte de madera. A diferencia de las de acero, la madera tiene una flexión y una imprecisión naturales que crean la característica vibración, el bamboleo lateral y el airtime impredecible que tanto gustan a los entusiastas. Entre las montañas rusas de madera más famosas están Balder en Liseberg, The Beast en Kings Island y Megafobia en Oakwood. Requieren un mantenimiento constante — la pista debe relamiparse regularmente — y son sensibles a los cambios meteorológicos. El proceso de conversión de RMC puede transformar viejas montañas rusas de madera en coasters híbridos de pista de acero manteniendo la estructura de madera.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodies', 'Montañas rusas de madera'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Montaña rusa de acero',
+    shortDefinition:
+      'Una montaña rusa construida principalmente con pista y estructura de acero, conocida por su viaje suave y preciso.',
+    definition:
+      'Una montaña rusa de acero se construye con pista tubular o plana de acero soportada por una estructura de acero. A diferencia de las montañas rusas de madera con su flexibilidad natural, el acero ofrece a los ingenieros un control preciso de las fuerzas G, transiciones e inversiones. El viaje suave y predecible de una montaña rusa de acero permite crear layouts complejos con múltiples inversiones, curvas cerradas y secciones de alta velocidad.\n\nLas montañas rusas de acero dominan el desarrollo moderno de coasters. Los ejemplos más celebrados en Europa incluyen Shambhala en PortAventura, Nemesis en Alton Towers y Silver Star en Europa-Park. Las montañas rusas de acero van desde pequeñas atracciones familiares hasta mega coasters récord-rompedores. La precisión del acero requiere inspección y mantenimiento regular, pero permite menos margen de error de diseño que la flexibilidad de la madera.',
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Montañas rusas de acero', 'Acero'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'Un coaster donde el tren cuelga debajo de la pista en un pivote, permitiendo que el vehículo se balancee libremente de lado a lado.',
+    definition:
+      'Un suspended coaster es un tipo de coaster especializado donde el tren cuelga desde arriba en un punto pivote, permitiéndole balancearse libremente de un lado a otro independientemente de la trayectoria de la pista. Mientras el tren navega por las curvas, se balancea como un péndulo — un movimiento que crea la sensación característica del \"whip\" y añade un elemento impredecible a la experiencia. Este movimiento de balanceo es distinto de un coaster invertido, donde el tren está rígidamente unido encima de la pista.\n\nLos suspended coasters son menos comunes que los coasters invertidos pero ofrecen una experiencia única. El movimiento de balanceo hace que incluso las curvas moderadas se sientan dramáticas, y la sensación de \"volar\" con el terreno lejano crea una exposición emocionante. Vekoma creó el modelo Suspended Looping Coaster (SLC) en los años 90, y cientos fueron construidos mundialmente. El movimiento de balanceo puede parecer caótico en comparación con la precisión de las inversiones modernas, haciendo que los suspended coasters sean amados por su naturaleza cruda e impredecible.',
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Oscilante'],
   },
   {
     id: 'hybrid-coaster',
@@ -873,6 +899,66 @@ const translations: GlossaryTermTranslation[] = [
       'Una previsión de afluencia es una predicción basada en datos de cuánto de lleno estará un parque temático en un día u hora específicos. park.fan recalcula las previsiones de afluencia diariamente usando datos históricos de asistencia, calendarios escolares, datos meteorológicos y eventos especiales. Los resultados alimentan directamente el calendario de afluencia: los días verdes indican colas cortas, los días rojos señalan afluencia máxima con largas esperas.',
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
     aliases: ['Previsiones de afluencia'],
+  },
+  {
+    id: 'g-force',
+    name: 'Fuerza G',
+    shortDefinition:
+      "La unidad de aceleración que experimentan los pasajeros, medida como múltiplos de la aceleración gravitacional terrestre (9,81 m/s²).",
+    definition:
+      'La fuerza G (equivalente gravitacional) mide la aceleración que experimenta un pasajero en relación con la gravedad normal de la Tierra. Las fuerzas G positivas (por encima de 1G) presionan a los pasajeros contra sus asientos al pasar por valles o curvas cerradas. Las fuerzas G negativas (por debajo de 0G) levantan a los pasajeros de sus asientos y crean airtime. Las fuerzas G laterales actúan horizontalmente, empujando a los pasajeros hacia los lados en curvas y transiciones.\n\nLas montañas rusas están diseñadas para secuenciar estas fuerzas de forma deliberada. Un valle que genera 4–5G es la marca de una transición del primer descenso potente. Un breve momento de −0,5G en una colina de airtime produce la característica sensación de flotación. La mayoría de las atracciones apuntan a 0–5G de fuerzas positivas sostenidas, con picos breves para efectos dramáticos. Una exposición prolongada a fuerzas G elevadas puede causar malestar o greyout; las montañas rusas bien diseñadas equilibran los picos de intensidad con secciones de recuperación.',
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['Fuerzas G', 'G-Force', 'G-Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Fuerzas Laterales',
+    shortDefinition:
+      'Fuerzas horizontales que empujan a los pasajeros hacia los lados en curvas, transiciones y secciones en hélice.',
+    definition:
+      "Las fuerzas G laterales (o fuerzas laterales) son las aceleraciones horizontales que experimentan los pasajeros cuando una montaña rusa cambia de dirección en el plano horizontal — en curvas inclinadas o no inclinadas, hélices y cambios de dirección. Las fuerzas laterales bien diseñadas son suaves y controladas, contribuyendo a una experiencia dinámica. Las fuerzas laterales mal diseñadas o rugosas se sienten como ser lanzado bruscamente contra el respaldo o el costado del asiento, lo que puede ser incómodo o doloroso.\n\nLos entusiastas distinguen entre fuerzas laterales suaves e intencionales — como en las amplias curvas bajas de una clásica montaña rusa de madera — y fuerzas laterales bruscas debidas al desgaste del carril o a una ingeniería deficiente. Las montañas rusas de madera están especialmente asociadas al movimiento lateral: la flexibilidad del carril y la energía lateral de las curvas no inclinadas se consideran parte de la experiencia auténtica. Las secuencias laterales suaves en secciones de hélice — como en Balder en Liseberg — son frecuentemente citadas como momentos destacados por los aficionados.",
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Laterales', 'Fuerzas G Laterales', 'Lateral G'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intensas fuerzas G negativas que proyectan bruscamente a los pasajeros fuera de su asiento, retenidos solo por el arnés de rodillas.',
+    definition:
+      "El ejector airtime describe la forma más intensa de fuerzas G negativas: la trayectoria de la atracción se desvía tan bruscamente de la caída libre que los pasajeros son lanzados con fuerza fuera de sus asientos, retenidos únicamente por el arnés de rodillas. La sensación es la de ser activamente expulsado del asiento — distinta del suave y prolongado flotamiento del floater airtime, el ejector es repentino y puede rozar lo violento si la transición es demasiado abrupta.\n\nEl ejector airtime se asocia especialmente con los hybrid coasters RMC, ciertos hyper coasters Intamin y las modernas montañas rusas de madera con colinas parabólicas pronunciadas. Los entusiastas describen los mejores momentos de ejector como el punto culminante de un circuito — un breve e impactante instante de ingravidez real. Untamed en Walibi Holland, Wildfire en Kolmården y Steel Vengeance en Cedar Point son frecuentemente citados por sus secuencias ejector entre las más intensas del mundo.",
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Suaves y prolongadas fuerzas G negativas que producen una larga sensación de flotación al coronar una colina.',
+    definition:
+      'El floater airtime describe el extremo suave del espectro de fuerzas G negativas: una sensación lenta y prolongada en la que los pasajeros se elevan ligeramente de su asiento y flotan en ingravidez durante un largo momento mientras el tren corona una colina siguiendo un arco parabólico gradual. La fuerza es leve — típicamente entre −0,1G y −0,3G — lo que la hace accesible y placentera incluso para los pasajeros que encuentran demasiado intenso el ejector airtime.\n\nEl floater airtime es característico de los hyper y giga coasters de B&M, que utilizan grandes colinas suavemente redondeadas diseñadas para producir largas fases de flotación. Shambhala en PortAventura, Silver Star en Europa-Park y Goliath en Walibi Holland son ejemplos europeos celebrados por sus largas secuencias floater. Muchos entusiastas encuentran la calidad relajada del floater más cómoda y repetible que la aguda intensidad del ejector, aunque las opiniones están divididas sobre cuál estilo es superior.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'La sensación de colgar suspendido en los arneses durante una inversión, causada por fuerzas G negativas boca abajo.',
+    definition:
+      "El hangtime describe la experiencia particular de las fuerzas G negativas durante una inversión: el tren permanece suficiente tiempo cerca del apogeo de un elemento invertido para que las fuerzas G negativas tengan efecto — los pasajeros quedan literalmente suspendidos en sus arneses. A diferencia del breve momento invertido de un looping rápido, el hangtime ocurre cuando el tren reduce la velocidad cerca del apex de la inversión y crea una suspensión prolongada. El peso del cuerpo se desplaza completamente hacia los arneses de hombros o el arnés de rodillas, creando una sensación de desorientación memorable.\n\nEl hangtime es más pronunciado en los elementos donde el tren reduce considerablemente la velocidad cerca del apex de la inversión — el pretzel loop en los flying coasters es el ejemplo clásico, ya que la velocidad es suficientemente baja para fuerzas G negativas sostenidas en posición completamente invertida. El heartline roll de algunas atracciones modernas también puede producir hangtime. Los entusiastas generalmente consideran el hangtime como una de las sensaciones de inversión más emocionantes.",
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Elemento de montaña rusa',
+    shortDefinition:
+      'Una sección o característica nombrada de una montaña rusa, como un loop, una colina de airtime o una inversión.',
+    definition:
+      'Un elemento de montaña rusa es cualquier característica distinta y denominada incorporada en el trazado de una montaña rusa — desde inversiones clásicas como loops y sacacorchos hasta elementos no inversores como colinas de airtime, hélices y overbanks. Los ingenieros diseñan cada elemento para producir una sensación física específica: ingravidez (airtime), fuerzas G laterales o la desorientación de ir boca abajo.\n\nEl glosario de park.fan cubre docenas de elementos individuales — desde el primer drop y el lifthill hasta especialidades modernas como el Stengel dive, el Norwegian loop y el heartline roll.',
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Elementos de montaña rusa'],
   },
 ];
 

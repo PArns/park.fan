@@ -15,6 +15,7 @@ import { Link } from '@/i18n/navigation';
 const getCachedGeoData = cache(() => getGeoStructure().catch(() => null));
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { CalendarDay } from '@/lib/api/types';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -287,15 +288,23 @@ function DemoBadge({
   color,
   label,
   icon: Icon,
+  termId,
 }: {
   color: string;
   label: string;
   icon?: React.ElementType;
+  termId?: string;
 }) {
   return (
     <Badge className={cn('font-bold tracking-wide text-white uppercase backdrop-blur-md', color)}>
       {Icon && <Icon className="h-3 w-3 text-inherit" />}
-      {label}
+      {termId ? (
+        <GlossaryTermLink termId={termId} className="underline decoration-dashed underline-offset-2 decoration-white/60 cursor-help">
+          {label}
+        </GlossaryTermLink>
+      ) : (
+        label
+      )}
     </Badge>
   );
 }
@@ -312,14 +321,14 @@ function InfoBox({ children, label = 'Hinweis' }: { children: React.ReactNode; l
   );
 }
 
-function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
+async function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
     <div className="!mt-6 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2.5 text-sm leading-relaxed">
       <div className="mb-1 flex items-center gap-1.5 font-semibold text-yellow-600 dark:text-yellow-400">
         <Lightbulb className="h-3.5 w-3.5 shrink-0" />
         <span>{label}</span>
       </div>
-      {children}
+      {typeof children === 'string' ? <GlossaryInject>{children}</GlossaryInject> : children}
     </div>
   );
 }
@@ -1611,7 +1620,7 @@ function ContentDE() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1682,7 +1691,7 @@ function ContentDE() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1726,7 +1735,7 @@ function ContentDE() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1778,7 +1787,7 @@ function ContentDE() {
             ].map(({ color, label, icon, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1795,6 +1804,7 @@ function ContentDE() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Single Rider',
+                termId: 'single-rider',
                 desc: 'Einzelfahrer-Schlange. Oft deutlich kürzer als die reguläre Schlange, aber du kannst nicht mit Begleitern fahren.',
               },
               {
@@ -1802,24 +1812,27 @@ function ContentDE() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: 'Kostenpflichtiger Express-Pass (z. B. bei Disney). Zeigt den aktuellen Preis und die Rückkehrzeit.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Rückkehrzeit',
+                termId: 'virtual-queue',
                 desc: 'Kostenlose virtuelle Schlange – du holst dir einen Zeitslot und kehrst zur angezeigten Uhrzeit zurück.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Boarding Group',
+                termId: 'boarding-group',
                 desc: 'Virtuelle Warteschlange mit Gruppenummer. Beliebt bei sehr gefragten neuen Attraktionen.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2021,7 +2034,7 @@ function ContentDE() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -2267,8 +2280,9 @@ function ContentDE() {
           <Link href="/glossary" className="text-primary font-medium underline">
             park.fan/glossar
           </Link>{' '}
-          erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb,
-          Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.
+          <GlossaryInject>
+            {'erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb, Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.'}
+          </GlossaryInject>
         </TipBox>
       </Section>
 
@@ -2804,7 +2818,7 @@ function ContentENSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2874,7 +2888,7 @@ function ContentENSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2913,7 +2927,7 @@ function ContentENSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2926,6 +2940,7 @@ function ContentENSections() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Single Rider',
+                termId: 'single-rider',
                 desc: "Often much shorter than regular queue – but you can't ride with your group.",
               },
               {
@@ -2933,24 +2948,27 @@ function ContentENSections() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: 'Paid express pass (e.g. at Disney). Shows current price and return time.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Return Time',
+                termId: 'virtual-queue',
                 desc: 'Free virtual queue – reserve a time slot and return later.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Boarding Group',
+                termId: 'boarding-group',
                 desc: 'Virtual queue with group number – popular for highly demanded new rides.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3132,7 +3150,7 @@ function ContentENSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -3321,8 +3339,9 @@ function ContentENSections() {
           <Link href="/glossary" className="text-primary font-medium underline">
             park.fan/glossary
           </Link>{' '}
-          – with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations,
-          Planning, Attractions, Coasters and Coaster Elements.
+          <GlossaryInject>
+            {'– with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations, Planning, Attractions, Coasters and Coaster Elements.'}
+          </GlossaryInject>
         </TipBox>
       </Section>
 
@@ -3601,7 +3620,7 @@ function ContentESSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3671,7 +3690,7 @@ function ContentESSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3710,7 +3729,7 @@ function ContentESSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3723,6 +3742,7 @@ function ContentESSections() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Fila Individual',
+                termId: 'single-rider',
                 desc: 'A menudo mucho más corta que la fila normal – pero no puedes ir con tu grupo.',
               },
               {
@@ -3730,24 +3750,27 @@ function ContentESSections() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: 'Pase exprés de pago (p. ej. en Disney). Muestra el precio actual y la hora de regreso.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Hora de Regreso',
+                termId: 'virtual-queue',
                 desc: 'Cola virtual gratuita – reserva un horario y regresa más tarde.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Grupo de Embarque',
+                termId: 'boarding-group',
                 desc: 'Cola virtual con número de grupo – popular para nuevas atracciones muy demandadas.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3932,7 +3955,7 @@ function ContentESSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -4424,7 +4447,7 @@ function ContentFRSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4494,7 +4517,7 @@ function ContentFRSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4533,7 +4556,7 @@ function ContentFRSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4546,6 +4569,7 @@ function ContentFRSections() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'File Individuelle',
+                termId: 'single-rider',
                 desc: 'Souvent bien plus courte que la file normale – mais tu ne peux pas y aller avec ton groupe.',
               },
               {
@@ -4553,24 +4577,27 @@ function ContentFRSections() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: "Pass express payant (p. ex. chez Disney). Affiche le prix actuel et l'heure de retour.",
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Heure de Retour',
+                termId: 'virtual-queue',
                 desc: 'File virtuelle gratuite – réserve un créneau et reviens plus tard.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: "Groupe d'Embarquement",
+                termId: 'boarding-group',
                 desc: 'File virtuelle avec numéro de groupe – populaire pour les nouvelles attractions très demandées.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4759,7 +4786,7 @@ function ContentFRSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -5256,7 +5283,7 @@ function ContentITSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5326,7 +5353,7 @@ function ContentITSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5365,7 +5392,7 @@ function ContentITSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5378,6 +5405,7 @@ function ContentITSections() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Fila Singola',
+                termId: 'single-rider',
                 desc: 'Spesso molto più breve della fila normale – ma non puoi andarci con il tuo gruppo.',
               },
               {
@@ -5385,24 +5413,27 @@ function ContentITSections() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: "Pass express a pagamento (p. es. da Disney). Mostra il prezzo attuale e l'ora di ritorno.",
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Ora di Ritorno',
+                termId: 'virtual-queue',
                 desc: 'Coda virtuale gratuita – prenota uno slot orario e torna più tardi.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: "Gruppo d'Imbarco",
+                termId: 'boarding-group',
                 desc: 'Coda virtuale con numero di gruppo – popolare per le nuove attrazioni molto richieste.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5587,7 +5618,7 @@ function ContentITSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -6063,7 +6094,7 @@ function ContentNLSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6132,7 +6163,7 @@ function ContentNLSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6170,7 +6201,7 @@ function ContentNLSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6183,6 +6214,7 @@ function ContentNLSections() {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: User,
                 label: 'Single Rider',
+                termId: 'single-rider',
                 desc: 'Vaak veel korter dan de gewone rij – maar je kunt niet met je groep meerijden.',
               },
               {
@@ -6190,24 +6222,27 @@ function ContentNLSections() {
                   'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
                 icon: Zap,
                 label: 'Lightning Lane',
+                termId: 'lightning-lane',
                 desc: 'Betaald express-pas (bijv. bij Disney). Toont huidige prijs en terugtijdstip.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Terugtijdstip',
+                termId: 'virtual-queue',
                 desc: 'Gratis virtuele wachtrij – reserveer een tijdslot en kom later terug.',
               },
               {
                 color: 'bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40',
                 icon: Ticket,
                 label: 'Boardinggroep',
+                termId: 'boarding-group',
                 desc: 'Virtuele wachtrij met groepsnummer – populair voor veelgevraagde nieuwe attracties.',
               },
-            ].map(({ color, icon, label, desc }) => (
+            ].map(({ color, icon, label, termId, desc }) => (
               <div key={label} className="flex items-start gap-3">
-                <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <DemoBadge color={color} label={label} icon={icon} termId={termId} />
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6393,7 +6428,7 @@ function ContentNLSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}

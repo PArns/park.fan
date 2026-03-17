@@ -54,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Crowd-Level', 'Crowd-Levels', 'Besucherdichten'],
   },
   {
     id: 'crowd-calendar',
@@ -233,7 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt dir die aktuellen Wartezeiten aller Attraktionen, damit du die Planung deines Parkbesuchs optimal anpassen kannst.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
-    aliases: ['Warteschlangen'],
+    aliases: ['Warteschlangen', 'Schlange', 'Schlangen'],
   },
   {
     id: 'opening-day',
@@ -297,6 +298,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster — meist ein Ein-Stunden-Block —, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst — nach einer kurzen Toleranzzeit —, verliert die Reservierung. Mit den Live-Wartezeiten und Besucherdichte-Daten von park.fan kannst du gezielt entscheiden, welche Attraktionen du für Rückkehrzeiten einplanen möchtest.',
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Rückkehrzeiten', 'Returntime', 'Returntimes'],
   },
   {
     id: 'airtime',
@@ -360,6 +362,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Holzachterbahn ist eine Bahn mit hölzerner Strecke und Struktur. Anders als Stahlbahnen hat Holz eine natürliche Flexibilität und Ungenauigkeit, die das charakteristische Rumpeln, seitliche Schaukeln und unberechenbare Airtime erzeugt, das Enthusiasten lieben. Berühmte Holzachterbahnen sind Balder in Liseberg, Colossos in Heide-Park und Wodan im Europa-Park. Holzachterbahnen erfordern intensive Wartung — das Schienenprofil muss regelmäßig erneuert werden. Das RMC (Rocky Mountain Construction)-Konvertierungsverfahren kann alte Holzachterbahnen in Hybrid-Coaster verwandeln, die die Holzstruktur behalten, aber einen Stahlschieneneinsatz erhalten.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Holzachterbahnen', 'Holzbahn'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Stahlachterbahn',
+    shortDefinition:
+      'Eine Achterbahn mit Stahlschiene und Stahlstruktur, bekannt für ihre glatte und präzise Fahrt.',
+    definition:
+      'Eine Stahlachterbahn wird mit Stahlschiene und Stahlstützgerüst gebaut. Anders als Holzachterbahnen mit ihrer natürlichen Flexibilität bietet Stahl Ingenieuren präzise Kontrolle über G-Kräfte, Übergänge und Inversionen. Die glatte, vorhersagbare Fahrt einer Stahlachterbahn ermöglicht komplexe Layouts mit mehreren Inversionen, engen Kurvenradien und hohen Geschwindigkeiten.\n\nStahlachterbahnen dominieren die moderne Achterbahnentwicklung, weil Designer damit fast jede Form verwirklichen können — Überkopf-Drops, vollständige Inversionen und schnelle Richtungswechsel. Berühmte Stahlachterbahnen in Europa sind Shambhala in PortAventura, Nemesis in Alton Towers und Silver Star im Europa-Park. Stahlachterbahnen reichen von kleinen Familienbahnen bis zu Rekord-Mega-Coastern. Die Präzision von Stahl erfordert regelmäßige Kontrolle und Wartung, ist aber weniger fehleranfällig als die flexible Holzkonstruktion.',
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Stahlachterbahnen', 'Stahlschiene'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'Eine Achterbahn, bei der die Wagen unter der Schiene an einem Pivot hängen und seitlich frei schwingen können.',
+    definition:
+      'Eine Suspended Coaster ist ein spezieller Achterbahntyp, bei dem der Zug von oben an einem Pivot aufgehängt ist und seitlich unabhängig von der Schienenbahn schwingen kann. Während der Zug durch Kurven navigiert, schwingt er wie ein Pendel — eine Bewegung, die die charakteristische "Whip"-Sensation erzeugt. Diese Schwingbewegung unterscheidet sich von einer Inverted Coaster, wo der Zug starr an der Schiene befestigt ist.\n\nSuspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis. Die Schwingbewegung macht selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens erzeugt eine spannende Exposition. Vekoma entwickelte in den 1990er Jahren die Suspended Looping Coaster (SLC), von denen weltweit hunderte gebaut wurden. Die Schwingbewegung kann chaotisch wirken im Vergleich zur Präzision moderner Inversionen — manche Enthusiasten lieben sie für ihre rohe, unvorhersagbare Natur, während andere sie weniger mochten.',
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Hängende Achterbahn'],
   },
   {
     id: 'hybrid-coaster',
@@ -876,6 +899,66 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren — geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).",
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
+  },
+  {
+    id: 'g-force',
+    name: 'G-Kraft',
+    shortDefinition:
+      'Die Beschleunigungseinheit, die Fahrgäste erleben, gemessen in Vielfachen der Erdgravitation (9,81 m/s²).',
+    definition:
+      'G-Kraft (Erdbeschleunigungsäquivalent) misst die Beschleunigung, die ein Fahrgast im Vergleich zur normalen Schwerkraft der Erde erlebt. Positive G-Kräfte (über 1G) drücken Fahrgäste in ihre Sitze, wenn der Zug durch ein Tal oder eine enge Kurve zieht. Negative G-Kräfte (unter 0G) heben Fahrgäste aus ihren Sitzen und erzeugen Airtime. Seitliche G-Kräfte (Laterals) wirken quer zur Fahrtrichtung und schieben Fahrgäste auf Kurven und Übergängen seitlich.\n\nAchterbahnen sind so konstruiert, dass diese Kräfte gezielt sequenziert werden. 4–5G in einem Talboden sind das Merkmal einer kraftvollen First-Drop-Einleitung. Ein kurzer Moment von −0,5G bis −1G auf einem Airtime-Hügel erzeugt das typische Schwebegefühl. Die meisten Bahnen zielen auf 0–5G anhaltende positive Kräfte ab, mit kurzen Spitzen für dramatische Effekte. Anhaltend hohe G-Belastungen über mehrere Sekunden können zu Unbehagen oder Greyout führen; gut gestaltete Coaster balancieren Intensitätspitzen mit Erholungsabschnitten.',
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['G-Kräfte', 'G-Force', 'G-Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Seitliche G-Kräfte',
+    shortDefinition:
+      'Seitwärtskräfte, die Fahrgäste auf Kurven, Übergängen und Helix-Abschnitten seitlich in den Sitz drücken.',
+    definition:
+      'Seitliche G-Kräfte (Laterals) entstehen, wenn sich eine Achterbahn in der horizontalen Ebene ändert – auf überhöhten und nichtüberhöhten Kurven, Helices und Richtungswechseln. Gut gestaltete Laterals sind weich und kontrolliert und tragen zu einem energetischen Fahrerlebnis bei. Schlecht konstruierte oder raue Laterals fühlen sich an, als würde man brutal gegen den Rückhalt oder die Sitzlehne geworfen – unangenehm und oft schmerzhaft.\n\nEnthusiasten unterscheiden zwischen glatten, beabsichtigten Laterals – wie in den weiten Tiefkurven einer klassischen Holzachterbahn – und harten, unbeabsichtigten Laterals durch Gleisverschleiß oder mangelhaftes Engineering. Holzachterbahnen sind besonders für Laterals bekannt: das Spiel im Gleis und die seitliche Energie nichtüberhöhter Kurven gelten als Teil des authentischen Holzachterbahn-Erlebnisses. Sanfte Lateral-Sequenzen in Helix-Passagen – wie bei Balder in Liseberg – werden von Coaster-Enthusiasten oft als Highlights genannt.',
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Laterals', 'Lateral-G-Kräfte', 'Lateral G', 'Laterale G-Kräfte'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intensive negative G-Kräfte, die Fahrgäste schlagartig aus dem Sitz reißen – gehalten nur vom Schoßbügel.',
+    definition:
+      'Ejector Airtime bezeichnet die intensivste Form negativer G-Kräfte: Die Bahn verlässt die freie Fallbahn so abrupt, dass Fahrgäste schlagartig aus ihren Sitzen gerissen werden – einzig der Schoßbügel hält sie im Fahrzeug. Der Name beschreibt genau das Gefühl: Es wirkt, als wolle der Sitz die Fahrgäste aktiv herausschleudern. Das unterscheidet sich fundamental vom sanften, langen Schweben beim Floater Airtime; Ejector ist scharf, plötzlich und kann bei abrupten Übergängen fast gewaltsam wirken.\n\nEjector Airtime ist am häufigsten mit RMC-Hybridachterbahnen, bestimmten Intamin-Hyper-Coastern und modernen Holzachterbahnen mit steilen, parabolischen Hügeln verbunden. Enthusiasten beschreiben die intensivsten Ejector-Momente als Höhepunkt eines Fahrprofils – ein kurzer, herzstockender Augenblick echter Schwerelosigkeit. Untamed in Walibi Holland, Wildfire in Kolmården und Steel Vengeance in Cedar Point gelten als Maßstab für intensive Ejector-Sequenzen.',
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Sanfte, anhaltende negative G-Kräfte mit einem langen Schwebegefühl beim Überkuppen eines Hügels.',
+    definition:
+      'Floater Airtime beschreibt das sanfte Ende des negativen G-Kraft-Spektrums: ein langsames, anhaltendes Schwebegefühl, bei dem Fahrgäste leicht aus dem Sitz aufsteigen und für einen ausgedehnten Moment schwerelos schweben, während der Zug einen Hügel auf einem flachen Parabelbogen überquert. Die Kraft ist mild – typischerweise etwa −0,1G bis −0,3G – und damit auch für Fahrgäste zugänglich, die den intensiven Ejector Airtime als zu viel empfinden.\n\nFloater Airtime ist am stärksten mit B&M-Hyper- und Giga-Coastern verbunden, die große, sanft gerundete Hügel nutzen, um lange Schwebeabschnitte zu erzeugen. Shambhala in PortAventura, Silver Star in Europa-Park und Goliath in Walibi Holland sind europäische Beispiele, die für ihre langen Floater-Sequenzen gefeiert werden. Viele Enthusiasten empfinden die entspannte Qualität des Floater Airtime als angenehmer und wiederholfähiger als den schroffen Ejector – die Gemeinschaft ist jedoch gespalten, welcher Stil vorzuziehen ist.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'Das Gefühl, beim Überkopffahren schwerelos im Rückhalt zu hängen – ausgelöst durch negative G-Kräfte während einer Inversion.',
+    definition:
+      'Hangtime beschreibt die besondere Erfahrung negativer G-Kräfte während einer Inversion: Der Zug verweilt lange genug an der Spitze einer Überschlagsfigur, dass negative G-Kräfte wirksam werden – Fahrgäste hängen buchstäblich im Rückhalt. Anders als der kurze Kopf-unten-Moment eines schnellen Loopings entsteht Hangtime, wenn der Zug in der Nähe des Inversionsapex verlangsamt und ein ausgedehntes Hängegefühl erzeugt. Das Gewicht verlagert sich vollständig in die Schulterbügel oder den Schoßbügel, was eine einzigartig desorientierende Empfindung erzeugt.\n\nHangtime tritt am ausgeprägtesten bei Elementen auf, bei denen der Zug an der Inversions-Spitze stark verlangsamt – der Pretzel Loop auf Flying Coastern ist das klassische Beispiel, da die Geschwindigkeit so gering ist, dass anhaltende negative G-Kräfte im voll invertierten Zustand entstehen. Der Heartline Roll mancher moderner Bahnen kann ebenfalls Hangtime erzeugen. Enthusiasten betrachten Hangtime als eine der aufregendsten Inversionsempfindungen überhaupt.',
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Achterbahn-Element',
+    shortDefinition:
+      'Ein benannter Streckenabschnitt einer Achterbahn, z. B. Looping, Airtime-Hügel oder Inversion.',
+    definition:
+      'Ein Achterbahn-Element bezeichnet einen eigenständigen, benannten Teil einer Achterbahn-Strecke – von klassischen Inversionen wie Looping und Korkenzieher bis hin zu nicht-invertierenden Elementen wie Airtime-Hügeln, Helices und überneigten Kurven (Overbanks). Ingenieure gestalten jedes Element gezielt, um ein bestimmtes körperliches Erlebnis zu erzeugen: Schwerelosigkeit (Airtime), seitliche G-Kräfte oder die Desorientierung beim Kopf-über-Fahren. Enthusiasten und Hersteller weltweit verwenden präzise Begriffe für diese Elemente, um Coaster-Designs zu beschreiben und zu vergleichen.\n\nDas park.fan-Glossar erklärt Dutzende solcher Elemente – vom ersten Drop und Lifthill bis hin zu modernen Spezialformen wie dem Stengel Dive, Norwegian Loop und Heartline Roll.',
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Achterbahn-Elemente', 'Achterbahn-Elementen'],
   },
 ];
 

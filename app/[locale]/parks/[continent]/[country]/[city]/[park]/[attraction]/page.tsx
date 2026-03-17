@@ -43,6 +43,15 @@ const QUEUE_TYPE_KEYS = {
   PAID_STANDBY: 'queue.PAID_STANDBY',
 } as const satisfies Record<QueueType, string>;
 
+/** Maps API queue types to their glossary term IDs for tooltip linking. */
+const QUEUE_TYPE_TERM: Partial<Record<QueueType, string>> = {
+  SINGLE_RIDER: 'single-rider',
+  RETURN_TIME: 'virtual-queue',
+  PAID_RETURN_TIME: 'lightning-lane',
+  PAID_STANDBY: 'express-pass',
+  BOARDING_GROUP: 'boarding-group',
+};
+
 const QUEUE_STATUS_KEYS = {
   OPERATING: 'queue.status.OPERATING',
   DOWN: 'queue.status.DOWN',
@@ -66,6 +75,7 @@ import {
 } from '@/components/seo/structured-data';
 import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
@@ -487,7 +497,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       <CardContent className="p-4">
                         <div className="mb-2 flex items-center justify-between">
                           <span className="font-medium">
-                            {t(QUEUE_TYPE_KEYS[queue.queueType])}{' '}
+                            {QUEUE_TYPE_TERM[queue.queueType] ? (
+                              <GlossaryTermLink termId={QUEUE_TYPE_TERM[queue.queueType]!}>
+                                {t(QUEUE_TYPE_KEYS[queue.queueType])}
+                              </GlossaryTermLink>
+                            ) : (
+                              t(QUEUE_TYPE_KEYS[queue.queueType])
+                            )}{' '}
                           </span>
                           <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
                         </div>
