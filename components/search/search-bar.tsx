@@ -433,6 +433,34 @@ export function SearchCommand({
   // Show skeleton as soon as user types ≥3 chars (covers debounce window + fetch)
   const isPending = loading || (query.trim().length >= 3 && debouncedQuery.trim().length < 3);
 
+  // Calculate match score for exact matches: name should be compared with query
+  const calculateMatchScore = (item: SearchResultItem): number => {
+    const lowerName = item.name.toLowerCase();
+    const lowerQuery = debouncedQuery.toLowerCase();
+
+    // Exact name match = 100 points
+    if (lowerName === lowerQuery) {
+      return 100;
+    }
+
+    // Name starts with query = 50 points
+    if (lowerName.startsWith(lowerQuery)) {
+      return 50;
+    }
+
+    // Substring match = 30 points
+    if (lowerName.includes(lowerQuery)) {
+      return 30;
+    }
+
+    return 0;
+  };
+
+  // Sort results within each category by match score (exact matches first)
+  const sortResultsByMatch = (items: SearchResultItem[]): SearchResultItem[] => {
+    return [...items].sort((a, b) => calculateMatchScore(b) - calculateMatchScore(a));
+  };
+
   return (
     <>
       {/* Trigger */}
@@ -628,12 +656,15 @@ export function SearchCommand({
                 const items = results.results.filter((r) => r.type === type);
                 if (items.length === 0) return null;
 
+                // Sort by match score within each category (exact matches first)
+                const sortedItems = sortResultsByMatch(items);
+
                 return (
                   <CommandGroup
                     key={type}
                     heading={tSearch(`headings.${type}`, { count: items.length })}
                   >
-                    {items.slice(0, 5).map((item, index) => renderResultItem(item, index))}
+                    {sortedItems.slice(0, 5).map((item, index) => renderResultItem(item, index))}
                   </CommandGroup>
                 );
               })}
