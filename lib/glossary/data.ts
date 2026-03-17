@@ -1150,6 +1150,66 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'rollback',
     },
   },
+  {
+    id: 'g-force',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'g-force',
+      de: 'g-kraft',
+      fr: 'force-g',
+      it: 'forza-g',
+      nl: 'g-kracht',
+      es: 'fuerza-g',
+    },
+  },
+  {
+    id: 'lateral-gs',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'lateral-gs',
+      de: 'laterale-g-kraefte',
+      fr: 'forces-laterales',
+      it: 'forze-laterali',
+      nl: 'laterale-g-krachten',
+      es: 'fuerzas-laterales',
+    },
+  },
+  {
+    id: 'ejector-airtime',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'ejector-airtime',
+      de: 'ejector-airtime',
+      fr: 'ejector-airtime',
+      it: 'ejector-airtime',
+      nl: 'ejector-airtime',
+      es: 'ejector-airtime',
+    },
+  },
+  {
+    id: 'floater-airtime',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'floater-airtime',
+      de: 'floater-airtime',
+      fr: 'floater-airtime',
+      it: 'floater-airtime',
+      nl: 'floater-airtime',
+      es: 'floater-airtime',
+    },
+  },
+  {
+    id: 'hangtime',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'hangtime',
+      de: 'hangtime',
+      fr: 'hangtime',
+      it: 'hangtime',
+      nl: 'hangtime',
+      es: 'hangtime',
+    },
+  },
   // ── Roller Coaster Element (meta term) ────────────────────────────────────
   {
     id: 'roller-coaster-element',

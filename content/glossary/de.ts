@@ -880,6 +880,56 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
   {
+    id: 'g-force',
+    name: 'G-Kraft',
+    shortDefinition:
+      'Die Beschleunigungseinheit, die Fahrgäste erleben, gemessen in Vielfachen der Erdgravitation (9,81 m/s²).',
+    definition:
+      'G-Kraft (Erdbeschleunigungsäquivalent) misst die Beschleunigung, die ein Fahrgast im Vergleich zur normalen Schwerkraft der Erde erlebt. Positive G-Kräfte (über 1G) drücken Fahrgäste in ihre Sitze, wenn der Zug durch ein Tal oder eine enge Kurve zieht. Negative G-Kräfte (unter 0G) heben Fahrgäste aus ihren Sitzen und erzeugen Airtime. Seitliche G-Kräfte (Laterals) wirken quer zur Fahrtrichtung und schieben Fahrgäste auf Kurven und Übergängen seitlich.\n\nAchterbahnen sind so konstruiert, dass diese Kräfte gezielt sequenziert werden. 4–5G in einem Talboden sind das Merkmal einer kraftvollen First-Drop-Einleitung. Ein kurzer Moment von −0,5G bis −1G auf einem Airtime-Hügel erzeugt das typische Schwebegefühl. Die meisten Bahnen zielen auf 0–5G anhaltende positive Kräfte ab, mit kurzen Spitzen für dramatische Effekte. Anhaltend hohe G-Belastungen über mehrere Sekunden können zu Unbehagen oder Greyout führen; gut gestaltete Coaster balancieren Intensitätspitzen mit Erholungsabschnitten.',
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['G-Kräfte', 'G-Force', 'G-Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Seitliche G-Kräfte',
+    shortDefinition:
+      'Seitwärtskräfte, die Fahrgäste auf Kurven, Übergängen und Helix-Abschnitten seitlich in den Sitz drücken.',
+    definition:
+      'Seitliche G-Kräfte (Laterals) entstehen, wenn sich eine Achterbahn in der horizontalen Ebene ändert – auf überhöhten und nichtüberhöhten Kurven, Helices und Richtungswechseln. Gut gestaltete Laterals sind weich und kontrolliert und tragen zu einem energetischen Fahrerlebnis bei. Schlecht konstruierte oder raue Laterals fühlen sich an, als würde man brutal gegen den Rückhalt oder die Sitzlehne geworfen – unangenehm und oft schmerzhaft.\n\nEnthusiasten unterscheiden zwischen glatten, beabsichtigten Laterals – wie in den weiten Tiefkurven einer klassischen Holzachterbahn – und harten, unbeabsichtigten Laterals durch Gleisverschleiß oder mangelhaftes Engineering. Holzachterbahnen sind besonders für Laterals bekannt: das Spiel im Gleis und die seitliche Energie nichtüberhöhter Kurven gelten als Teil des authentischen Holzachterbahn-Erlebnisses. Sanfte Lateral-Sequenzen in Helix-Passagen – wie bei Balder in Liseberg – werden von Coaster-Enthusiasten oft als Highlights genannt.',
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Laterals', 'Lateral-G-Kräfte', 'Lateral G', 'Laterale G-Kräfte'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intensive negative G-Kräfte, die Fahrgäste schlagartig aus dem Sitz reißen – gehalten nur vom Schoßbügel.',
+    definition:
+      'Ejector Airtime bezeichnet die intensivste Form negativer G-Kräfte: Die Bahn verlässt die freie Fallbahn so abrupt, dass Fahrgäste schlagartig aus ihren Sitzen gerissen werden – einzig der Schoßbügel hält sie im Fahrzeug. Der Name beschreibt genau das Gefühl: Es wirkt, als wolle der Sitz die Fahrgäste aktiv herausschleudern. Das unterscheidet sich fundamental vom sanften, langen Schweben beim Floater Airtime; Ejector ist scharf, plötzlich und kann bei abrupten Übergängen fast gewaltsam wirken.\n\nEjector Airtime ist am häufigsten mit RMC-Hybridachterbahnen, bestimmten Intamin-Hyper-Coastern und modernen Holzachterbahnen mit steilen, parabolischen Hügeln verbunden. Enthusiasten beschreiben die intensivsten Ejector-Momente als Höhepunkt eines Fahrprofils – ein kurzer, herzstockender Augenblick echter Schwerelosigkeit. Untamed in Walibi Holland, Wildfire in Kolmården und Steel Vengeance in Cedar Point gelten als Maßstab für intensive Ejector-Sequenzen.',
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Sanfte, anhaltende negative G-Kräfte mit einem langen Schwebegefühl beim Überkuppen eines Hügels.',
+    definition:
+      'Floater Airtime beschreibt das sanfte Ende des negativen G-Kraft-Spektrums: ein langsames, anhaltendes Schwebegefühl, bei dem Fahrgäste leicht aus dem Sitz aufsteigen und für einen ausgedehnten Moment schwerelos schweben, während der Zug einen Hügel auf einem flachen Parabelbogen überquert. Die Kraft ist mild – typischerweise etwa −0,1G bis −0,3G – und damit auch für Fahrgäste zugänglich, die den intensiven Ejector Airtime als zu viel empfinden.\n\nFloater Airtime ist am stärksten mit B&M-Hyper- und Giga-Coastern verbunden, die große, sanft gerundete Hügel nutzen, um lange Schwebeabschnitte zu erzeugen. Shambhala in PortAventura, Silver Star in Europa-Park und Goliath in Walibi Holland sind europäische Beispiele, die für ihre langen Floater-Sequenzen gefeiert werden. Viele Enthusiasten empfinden die entspannte Qualität des Floater Airtime als angenehmer und wiederholfähiger als den schroffen Ejector – die Gemeinschaft ist jedoch gespalten, welcher Stil vorzuziehen ist.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'Das Gefühl, beim Überkopffahren schwerelos im Rückhalt zu hängen – ausgelöst durch negative G-Kräfte während einer Inversion.',
+    definition:
+      'Hangtime beschreibt die besondere Erfahrung negativer G-Kräfte während einer Inversion: Der Zug verweilt lange genug an der Spitze einer Überschlagsfigur, dass negative G-Kräfte wirksam werden – Fahrgäste hängen buchstäblich im Rückhalt. Anders als der kurze Kopf-unten-Moment eines schnellen Loopings entsteht Hangtime, wenn der Zug in der Nähe des Inversionsapex verlangsamt und ein ausgedehntes Hängegefühl erzeugt. Das Gewicht verlagert sich vollständig in die Schulterbügel oder den Schoßbügel, was eine einzigartig desorientierende Empfindung erzeugt.\n\nHangtime tritt am ausgeprägtesten bei Elementen auf, bei denen der Zug an der Inversions-Spitze stark verlangsamt – der Pretzel Loop auf Flying Coastern ist das klassische Beispiel, da die Geschwindigkeit so gering ist, dass anhaltende negative G-Kräfte im voll invertierten Zustand entstehen. Der Heartline Roll mancher moderner Bahnen kann ebenfalls Hangtime erzeugen. Enthusiasten betrachten Hangtime als eine der aufregendsten Inversionsempfindungen überhaupt.',
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
     id: 'roller-coaster-element',
     name: 'Achterbahn-Element',
     shortDefinition:

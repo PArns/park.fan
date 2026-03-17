@@ -882,6 +882,56 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
   {
+    id: 'g-force',
+    name: 'G-Force',
+    shortDefinition:
+      "The unit of acceleration experienced by riders, measured as multiples of Earth's gravitational acceleration (9.81 m/s²).",
+    definition:
+      "G-force (gravitational force equivalent) measures the acceleration a rider's body experiences relative to Earth's gravity. Positive G-forces (above 1G) press riders into their seats as the train pulls through a valley or tight curve — the same force that makes you feel heavy in a fast car. Negative G-forces (below 0G) lift riders from their seats, creating airtime. Lateral G-forces act sideways, pushing riders across their seat on turns and transitions.\n\nRoller coasters are designed to sequence these forces deliberately. A sustained 4–5G valley is the hallmark of a powerful first drop transition. A brief −0.5G to −1G moment on an airtime hill produces the signature floating sensation. Most coasters target a range of 0–5G of sustained positive G-force, with brief spikes above this for dramatic effect. Sustained high-G exposure beyond a few seconds can cause discomfort or greyout; well-designed coasters balance intensity peaks with recovery sections.",
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['G-Forces', 'G Force', 'G Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Lateral Gs',
+    shortDefinition:
+      'Sideways forces pushing riders across their seat during turns, transitions, and helix sections.',
+    definition:
+      "Lateral Gs (lateral G-forces) are the sideways accelerations riders experience when a coaster changes direction in the horizontal plane — on banked turns, unbanked transitions, helices, and direction changes. Well-designed laterals are smooth and controlled, contributing to an energetic and engaging ride experience. Poorly engineered or rough laterals feel like being thrown sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nEnthusiasts distinguish between smooth, intentional laterals — like those found in the sweeping low turns of a classic wooden coaster or the exits of a well-banked steel turn — and harsh, unintended laterals produced by track deterioration or poor engineering. Wooden coasters are especially associated with lateral movement: the flex in the track and the side-to-side energy of unbanked turns is considered part of the authentic wooden coaster experience. Smooth lateral G sequences in a helix section, like those on Balder at Liseberg, are often cited as highlights by coaster enthusiasts.",
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Laterals', 'Lateral G-Forces', 'Lateral G'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intense negative G-forces that aggressively thrust riders from their seat, held in place only by the lap bar.',
+    definition:
+      "Ejector airtime describes the most intense form of negative G-force, where the coaster's trajectory departs so abruptly from free fall that riders are thrown powerfully from their seats — held in only by the lap bar. The name reflects the sensation: it feels as though the seat is actively trying to eject you. This is distinct from the gentle, prolonged floating of floater airtime; ejector is sharp, sudden, and can verge on violent if the transition into it is abrupt.\n\nEjector airtime is most commonly associated with RMC hybrid coasters, certain Intamin hypers, and modern wooden coasters with steep, parabolic hills. Enthusiasts describe the best ejector moments as the highlight of a ride experience — a brief, heart-stopping instant of true weightlessness before the track pulls you back. Untamed at Walibi Holland, Wildfire at Kolmården, and Steel Vengeance at Cedar Point are frequently cited as delivering some of the world's most intense ejector sequences. The intensity is one of the primary reasons RMC coasters have achieved cult status in the enthusiast community.",
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Gentle, sustained negative G-forces producing a prolonged floating sensation as the train crests a hill.',
+    definition:
+      "Floater airtime describes the gentle end of the negative G-force spectrum: a slow, prolonged sensation where riders rise slightly from their seats and float weightlessly for an extended moment as the train crests a hill following a gradual parabolic arc. The force is mild — typically around −0.1G to −0.3G — making it accessible and pleasurable even for riders who find intense ejector airtime overwhelming.\n\nFloater airtime is most characteristic of B&M hyper and giga coasters, which use large, gently rounded hills specifically engineered to produce extended float phases. Shambhala at PortAventura, Silver Star at Europa-Park, and Goliath at Walibi Holland are European examples celebrated for their long, floaty airtime sequences. Many enthusiasts consider the prolonged, relaxed quality of floater airtime more comfortable and repeatable than the sharp intensity of ejector, though enthusiast opinion is divided on which style is superior. The two types are not mutually exclusive — a single airtime hill can transition from floater at the crest to ejector on the descent.",
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'The sensation of hanging weightlessly in restraints during an inversion, caused by negative G-forces while upside down.',
+    definition:
+      "Hangtime describes the distinct experience of negative G-forces while a rider is inverted — literally hanging in the restraints as the coaster moves through the top of an inversion slowly enough for negative Gs to take effect. Unlike the brief upside-down flash of a fast vertical loop, hangtime occurs when the train lingers near the apex of an inversion, producing a drawn-out sensation of suspension. Riders feel their weight shift entirely into the over-the-shoulder restraints or lap bar, creating a uniquely disorienting and memorable moment.\n\nHangtime is most pronounced on elements where the train slows significantly near the inversion apex — the pretzel loop on flying coasters is the classic example, as train speed at the apex is low enough for sustained negative Gs while fully inverted. The heartline roll on some modern coasters can also produce hangtime, as can the tops of slow Norwegian loops. Enthusiasts generally consider hangtime one of the most thrilling inversion sensations, distinct from both the sustained positive-G compression of a fast vertical loop and the floating of conventional airtime.",
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
     id: 'roller-coaster-element',
     name: 'Roller Coaster Element',
     shortDefinition:

@@ -878,6 +878,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Drukte-prognoses'],
   },
   {
+    id: 'g-force',
+    name: 'G-Kracht',
+    shortDefinition:
+      "De eenheid van versnelling die passagiers ervaren, gemeten als veelvouden van de zwaartekrachtversnelling op Aarde (9,81 m/s²).",
+    definition:
+      'G-kracht (gravitationeel equivalent) meet de versnelling die een passagier ervaart ten opzichte van de normale zwaartekracht van de Aarde. Positieve G-krachten (boven 1G) drukken passagiers in hun stoel tijdens dalen of scherpe bochten. Negatieve G-krachten (onder 0G) heffen passagiers uit hun stoel en creëren airtime. Laterale G-krachten werken zijdelings en duwen passagiers opzij in bochten en overgangen.\n\nAchtbanen zijn ontworpen om deze krachten doelgericht te rangschikken. Een dal dat 4–5G genereert is het kenmerk van een krachtige first drop-overgang. Een kort moment van −0,5G op een airtime-heuvel produceert het typische zweefgevoel. De meeste attracties richten zich op 0–5G aanhoudende positieve krachten, met korte pieken voor dramatisch effect. Langdurige hoge G-belasting boven enkele seconden kan ongemak of greyout veroorzaken; goed ontworpen achtbanen balanceren intensiteitspieken met herstelsecties.',
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['G-Krachten', 'G-Force', 'G-Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Laterale G-Krachten',
+    shortDefinition:
+      'Zijdelingse krachten die passagiers opzij duwen tijdens bochten, overgangen en helixgedeelten.',
+    definition:
+      'Laterale G-krachten zijn de zijdelingse versnellingen die passagiers ervaren wanneer een achtbaan van richting verandert in het horizontale vlak — in gembankte of ongembankte bochten, helices en richtingswisselingen. Goed ontworpen lateralen zijn vloeiend en gecontroleerd en dragen bij aan een energieke rijervaring. Slecht ontworpen of ruwe lateralen voelen aan als bruusk opzijgegooid worden tegen de rug- of zijkant van de stoel, wat oncomfortabel of pijnlijk kan zijn.\n\nEnthousiastelingen onderscheiden gladde, intentionele lateralen — zoals in de uitbochten van klassieke houten achtbanen — van harde, onbedoelde lateralen door railleer of slechte constructie. Houten achtbanen zijn sterk geassocieerd met laterale beweging: de flexibiliteit van het spoor en de zijdelingse energie van ongembankte bochten worden beschouwd als authentiek onderdeel van de houten achtbaanervaring. Vloeiende laterale sequenties in helixgedeelten — zoals op Balder in Liseberg — worden door enthousiastelingen vaak als hoogtepunten van een circuitprofiel genoemd.',
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Lateralen', 'Laterale G', 'Lateral G', 'Laterals'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Intense negatieve G-krachten die passagiers abrupt uit hun stoel slingeren, gehouden door alleen de schootbeugel.',
+    definition:
+      'Ejector airtime beschrijft de meest intense vorm van negatieve G-krachten: de baan wijkt zo abrupt af van de vrije val dat passagiers krachtig uit hun stoel worden gesmeten — alleen de schootbeugel houdt hen in het voertuig. De naam omschrijft precies het gevoel: het lijkt alsof de stoel je actief wil uitwerpen. Dit is fundamenteel anders dan het rustige, langdurige zweven van floater airtime; ejector is scherp, plotseling en kan bijna gewelddadig aanvoelen bij abrupte overgangen.\n\nEjector airtime is het meest geassocieerd met RMC hybride achtbanen, bepaalde Intamin hyper coasters en moderne houten achtbanen met steile parabolische heuvels. Enthousiastelingen beschrijven de beste ejector-momenten als het hoogtepunt van een circuit — een kort, hartverscheurend moment van echte gewichtloosheid. Untamed in Walibi Holland, Wildfire in Kolmården en Steel Vengeance in Cedar Point worden vaak geciteerd voor hun buitengewoon intense ejector-sequenties.',
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      'Zachte, aanhoudende negatieve G-krachten die een lang zweefgevoel produceren bij het passeren van een heuvel.',
+    definition:
+      'Floater airtime beschrijft het zachte uiterste van het negatieve G-kracht spectrum: een langzame, aanhoudende sensatie waarbij passagiers lichtjes uit hun stoel opstijgen en gewichtloos zweven voor een verlengd moment terwijl de trein een heuvel overgaat langs een geleidelijke parabolische boog. De kracht is mild — doorgaans −0,1G tot −0,3G — waardoor het toegankelijk en aangenaam is voor passagiers die de intensiteit van ejector airtime te heftig vinden.\n\nFloater airtime is het meest kenmerkend voor B&M hyper en giga coasters, die grote, zacht afgeronde heuvels gebruiken die zijn ontworpen om lange zweeffasen te produceren. Shambhala in PortAventura, Silver Star in Europa-Park en Goliath in Walibi Holland zijn Europese voorbeelden die worden gevierd om hun lange floater-sequenties. Veel enthousiastelingen vinden de ontspannen kwaliteit van floater airtime comfortabeler en herhaalbaarder dan de scherpe intensiteit van ejector, hoewel de meningen verdeeld zijn over welk stijl superieur is.',
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'Het gevoel van gewichtloos hangen in de beveiliging tijdens een inversie, veroorzaakt door negatieve G-krachten ondersteboven.',
+    definition:
+      'Hangtime beschrijft de bijzondere ervaring van negatieve G-krachten tijdens een inversie: de trein treuzelt lang genoeg nabij de top van een omgekeerd element zodat negatieve G-krachten hun effect voelen — passagiers hangen letterlijk in hun beveiliging. In tegenstelling tot het korte omgekeerde moment van een snelle looping, treedt hangtime op wanneer de trein langzamer gaat nabij het inversie-apex en een uitgerekte suspensie creëert. Het lichaamsgewicht verschuift volledig naar de schouderbeuges of schootbeugel, wat een uniek desoriënterende ervaring oplevert.\n\nHangtime is het meest uitgesproken op elementen waar de trein aanzienlijk vertraagt nabij het inversie-apex — de pretzel loop op flying coasters is het klassieke voorbeeld, omdat de snelheid laag genoeg is voor aanhoudende negatieve G\'s in volledig omgekeerde positie. De heartline roll van sommige moderne attracties kan ook hangtime produceren. Enthousiastelingen beschouwen hangtime over het algemeen als een van de meest opwindende inversiesensaties.',
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
     id: 'roller-coaster-element',
     name: 'Achtbaanelement',
     shortDefinition:

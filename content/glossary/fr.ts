@@ -879,6 +879,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Prévisions de fréquentation'],
   },
   {
+    id: 'g-force',
+    name: 'Force G',
+    shortDefinition:
+      "L'unité d'accélération ressentie par les passagers, mesurée en multiples de l'accélération gravitationnelle terrestre (9,81 m/s²).",
+    definition:
+      "La force G (équivalent gravitationnel) mesure l'accélération ressentie par un passager par rapport à la gravité terrestre normale. Les forces G positives (au-dessus de 1G) plaquent les passagers dans leur siège lors de passages dans des creux ou des virages serrés. Les forces G négatives (sous 0G) soulèvent les passagers de leur siège et créent de l'airtime. Les forces G latérales agissent horizontalement, poussant les passagers sur les côtés dans les virages et transitions.\n\nLes montagnes russes sont conçues pour enchaîner ces forces délibérément. Un creux générant 4–5G est la marque d'un premier drop puissant. Un bref moment à −0,5G sur une bosse d'airtime produit la sensation de flottement caractéristique. La plupart des attractions ciblent 0–5G de forces positives soutenues, avec des pics courts pour l'effet dramatique. Une exposition prolongée à des forces G élevées peut provoquer un malaise ou un « greyout » ; les bonnes conceptions alternent pics d'intensité et phases de récupération.",
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    aliases: ['Forces G', 'G-Force', 'G-Forces'],
+  },
+  {
+    id: 'lateral-gs',
+    name: 'Forces Latérales',
+    shortDefinition:
+      'Forces horizontales qui poussent les passagers sur les côtés lors de virages, transitions et sections en hélice.',
+    definition:
+      "Les forces G latérales (ou forces latérales) sont les accélérations horizontales ressenties lorsqu'une montagne russe change de direction dans le plan horizontal — dans les virages inclinés ou non, les hélices et les changements de cap. Des forces latérales bien conçues sont fluides et contrôlées, contribuant à une expérience dynamique. Des forces latérales mal maîtrisées se traduisent par un choc brutal contre le dossier ou le harnais, source d'inconfort ou de douleur.\n\nLes amateurs distinguent les forces latérales douces et intentionnelles — comme dans les grands virages bas d'une montagne russe en bois classique — des forces latérales brutales dues à l'usure du rail ou à une mauvaise conception. Les montagnes russes en bois sont particulièrement associées aux sensations latérales : le mouvement d'un côté à l'autre des virages non inclinés fait partie de l'expérience authentique. Les séquences latérales fluides en hélice — comme sur Balder à Liseberg — sont souvent citées comme des moments marquants par les passionnés.",
+    relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
+    aliases: ['Latéraux', 'Forces G Latérales', 'Lateral G', 'Laterals'],
+  },
+  {
+    id: 'ejector-airtime',
+    name: 'Ejector Airtime',
+    shortDefinition:
+      'Forces G négatives intenses qui propulsent brutalement les passagers hors de leur siège, retenus uniquement par le harnais de genoux.',
+    definition:
+      "L'ejector airtime décrit la forme la plus intense des forces G négatives : la trajectoire de l'attraction s'écarte si brusquement de la chute libre que les passagers sont violemment propulsés hors de leur siège, retenus uniquement par le harnais de genoux. La sensation est celle d'une éjection active du siège — distincte du flottement doux et prolongé du floater airtime, elle est soudaine et peut frôler le brutal si la transition est trop abrupte.\n\nL'ejector airtime est particulièrement associé aux hybrid coasters RMC, à certains hyper coasters Intamin et aux montagnes russes en bois modernes avec des collines paraboliques raides. Les amateurs citent les meilleurs moments d'ejector comme le sommet d'un circuit — un bref instant saisissant d'apesanteur réelle. Untamed à Walibi Holland, Wildfire à Kolmården et Steel Vengeance à Cedar Point sont souvent cités pour leurs séquences d'ejector parmi les plus intenses au monde.",
+    relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
+    aliases: ['Ejector'],
+  },
+  {
+    id: 'floater-airtime',
+    name: 'Floater Airtime',
+    shortDefinition:
+      "Forces G négatives douces et prolongées produisant une longue sensation de flottement au sommet d'une bosse.",
+    definition:
+      "Le floater airtime décrit l'extrémité douce du spectre des forces G négatives : une sensation lente et prolongée où les passagers s'élèvent légèrement de leur siège et flottent en apesanteur pendant un long moment lorsque le train passe au sommet d'une colline suivant une courbe parabolique progressive. La force est faible — généralement −0,1G à −0,3G — ce qui la rend accessible et agréable même pour les passagers que l'intensité de l'ejector rebute.\n\nLe floater airtime est caractéristique des hyper et giga coasters B&M, qui utilisent de grandes collines doucement arrondies conçues pour produire de longues phases de flottement. Shambhala à PortAventura, Silver Star à Europa-Park et Goliath à Walibi Holland sont des exemples européens célèbres pour leurs longues séquences floater. De nombreux amateurs trouvent la qualité détendue du floater plus confortable que l'intensité de l'ejector, bien que les avis soient partagés sur le style supérieur.",
+    relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
+    aliases: ['Floater'],
+  },
+  {
+    id: 'hangtime',
+    name: 'Hangtime',
+    shortDefinition:
+      'La sensation de rester suspendu dans les harnais lors d\'une inversion, causée par des forces G négatives la tête en bas.',
+    definition:
+      "Le hangtime désigne l'expérience particulière des forces G négatives lors d'une inversion : le train s'attarde suffisamment au sommet d'une figure tête en bas pour que des forces G négatives se manifestent — les passagers se retrouvent littéralement suspendus dans leurs harnais. Contrairement au bref passage inversé d'un looping rapide, le hangtime se produit lorsque le train ralentit près du sommet d'une inversion et crée une suspension prolongée. Le poids du corps se déporte entièrement dans les harnais d'épaules ou le harnais de genoux, créant une désorientation mémorable.\n\nLe hangtime est le plus prononcé sur les éléments où le train ralentit fortement au sommet de l'inversion — le pretzel loop sur les flying coasters en est l'exemple classique, car la vitesse est suffisamment faible pour des forces G négatives soutenues en position totalement inversée. Le heartline roll de certaines attractions modernes peut aussi produire du hangtime. Les amateurs considèrent généralement le hangtime comme l'une des sensations d'inversion les plus marquantes.",
+    relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
+    aliases: ['Hang Time'],
+  },
+  {
     id: 'roller-coaster-element',
     name: 'Élément de montagnes russes',
     shortDefinition:
