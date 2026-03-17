@@ -31,7 +31,7 @@ export function GlossaryInjectTerm({
           className={
             noUnderline
               ? 'cursor-help font-[inherit] decoration-0'
-              : 'border-b border-dashed border-current/40 cursor-help font-[inherit] decoration-0'
+              : 'cursor-help border-b border-dashed border-current/40 font-[inherit] decoration-0'
           }
         >
           {matchedText}
@@ -39,11 +39,11 @@ export function GlossaryInjectTerm({
       </TooltipTrigger>
       <TooltipContent
         side="top"
-        className="max-w-64 bg-background/80 text-foreground backdrop-blur-md border border-border/60 shadow-lg"
+        className="bg-background/80 text-foreground border-border/60 max-w-64 border shadow-lg backdrop-blur-md"
         arrowClassName="bg-background/80 fill-background border-border/60"
       >
         <p className="font-semibold">{name}</p>
-        <p className="mt-0.5 text-muted-foreground">{shortDefinition}</p>
+        <p className="text-muted-foreground mt-0.5">{shortDefinition}</p>
       </TooltipContent>
     </Tooltip>
   );

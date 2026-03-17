@@ -132,10 +132,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           variant="detail"
         />
         <BreadcrumbStructuredData
-          breadcrumbs={[
-            ...breadcrumbs,
-            { name: term.name, url: `/${segment}/${termSlug}` },
-          ]}
+          breadcrumbs={[...breadcrumbs, { name: term.name, url: `/${segment}/${termSlug}` }]}
         />
         <GlossaryTermDetail
           term={term}

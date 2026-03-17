@@ -43,7 +43,7 @@ export function GlossaryTermLink({
       href={`/${locale}/${segment}/${slug}`}
       className={
         className ??
-        'border-b border-dashed border-current/40 cursor-help font-[inherit] no-underline'
+        'cursor-help border-b border-dashed border-current/40 font-[inherit] no-underline'
       }
     >
       {children}
@@ -57,11 +57,11 @@ export function GlossaryTermLink({
         <TooltipTrigger asChild>{link}</TooltipTrigger>
         <TooltipContent
           side="top"
-          className="max-w-64 bg-background/80 text-foreground backdrop-blur-md border border-border/60 shadow-lg"
+          className="bg-background/80 text-foreground border-border/60 max-w-64 border shadow-lg backdrop-blur-md"
           arrowClassName="bg-background/80 fill-background border-border/60"
         >
           <p className="font-semibold">{tooltipName}</p>
-          <p className="mt-0.5 text-muted-foreground">{tooltipDefinition}</p>
+          <p className="text-muted-foreground mt-0.5">{tooltipDefinition}</p>
         </TooltipContent>
       </Tooltip>
     );

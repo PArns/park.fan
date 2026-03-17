@@ -19,7 +19,7 @@ export async function GET(request: Request) {
 
   // Calculate match score: exact name match = 100, alias match = 90, substring match = varies by position
   interface ScoredTerm {
-    term: typeof terms[0];
+    term: (typeof terms)[0];
     score: number;
   }
 

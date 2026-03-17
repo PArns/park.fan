@@ -670,7 +670,9 @@ export function SearchCommand({
                   const items = results.results.filter((r) => r.type === type);
                   if (items.length === 0) return;
                   const sortedItems = sortResultsByMatch(items);
-                  const bestScore = Math.max(...sortedItems.map((item) => calcNameScore(item.name)));
+                  const bestScore = Math.max(
+                    ...sortedItems.map((item) => calcNameScore(item.name))
+                  );
                   groups.push({
                     key: type,
                     score: bestScore,
@@ -679,9 +681,9 @@ export function SearchCommand({
                         key={type}
                         heading={tSearch(`headings.${type}`, { count: items.length })}
                       >
-                        {sortedItems.slice(0, 5).map((item, index) =>
-                          renderResultItem(item, index)
-                        )}
+                        {sortedItems
+                          .slice(0, 5)
+                          .map((item, index) => renderResultItem(item, index))}
                       </CommandGroup>
                     ),
                   });

@@ -30,9 +30,7 @@ export function GlossaryInjectProvider({
   segment: string;
 }) {
   return (
-    <GlossaryInjectContext value={{ terms, locale, segment }}>
-      {children}
-    </GlossaryInjectContext>
+    <GlossaryInjectContext value={{ terms, locale, segment }}>{children}</GlossaryInjectContext>
   );
 }
 

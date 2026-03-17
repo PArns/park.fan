@@ -760,7 +760,8 @@
       "coasters": "Achtbanen",
       "coaster-elements": "Coaster-elementen",
       "ride-experience": "Ritbeleving",
-      "shopping": "Winkelen"
+      "shopping": "Winkelen",
+      "dining": "Eten & Drinken"
     },
     "searchPlaceholder": "Termen zoeken…",
     "noResults": "Geen termen gevonden voor \"{query}\".",

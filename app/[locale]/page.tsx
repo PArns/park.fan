@@ -446,7 +446,9 @@ export default async function HomePage({ params }: HomePageProps) {
               <h3 className="mb-2 text-lg font-semibold">
                 <GlossaryInject>{tHome('features.ml.title')}</GlossaryInject>
               </h3>
-              <p className="text-muted-foreground text-sm"><GlossaryInject>{tHome('features.ml.description')}</GlossaryInject></p>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{tHome('features.ml.description')}</GlossaryInject>
+              </p>
             </div>
             <div className="text-center">
               <div className="bg-crowd-moderate/20 mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
@@ -467,15 +469,25 @@ export default async function HomePage({ params }: HomePageProps) {
       <section className="border-t px-4 py-16">
         <div className="container mx-auto max-w-3xl">
           <h2 className="mb-6 text-2xl font-semibold">{tHome('about.title')}</h2>
-          <p className="text-muted-foreground mb-4 leading-relaxed"><GlossaryInject>{tHome('about.p1')}</GlossaryInject></p>
-          <p className="text-muted-foreground mb-10 leading-relaxed"><GlossaryInject>{tHome('about.p2')}</GlossaryInject></p>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
+          </p>
+          <p className="text-muted-foreground mb-10 leading-relaxed">
+            <GlossaryInject>{tHome('about.p2')}</GlossaryInject>
+          </p>
 
           <h3 className="mb-4 text-xl font-semibold">{tHome('about.coverageTitle')}</h3>
-          <p className="text-muted-foreground mb-10 leading-relaxed"><GlossaryInject>{tHome('about.p3')}</GlossaryInject></p>
+          <p className="text-muted-foreground mb-10 leading-relaxed">
+            <GlossaryInject>{tHome('about.p3')}</GlossaryInject>
+          </p>
 
           <h3 className="mb-4 text-xl font-semibold">{tHome('about.howTitle')}</h3>
-          <p className="text-muted-foreground mb-4 leading-relaxed"><GlossaryInject>{tHome('about.p4')}</GlossaryInject></p>
-          <p className="text-muted-foreground leading-relaxed"><GlossaryInject>{tHome('about.p5')}</GlossaryInject></p>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            <GlossaryInject>{tHome('about.p4')}</GlossaryInject>
+          </p>
+          <p className="text-muted-foreground leading-relaxed">
+            <GlossaryInject>{tHome('about.p5')}</GlossaryInject>
+          </p>
 
           <div className="mt-8">
             <Link

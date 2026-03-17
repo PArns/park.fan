@@ -760,7 +760,8 @@
       "coasters": "Montagne russe",
       "coaster-elements": "Elementi di coaster",
       "ride-experience": "Esperienza di giro",
-      "shopping": "Shopping"
+      "shopping": "Shopping",
+      "dining": "Ristorazione"
     },
     "searchPlaceholder": "Cerca termini…",
     "noResults": "Nessun termine trovato per \"{query}\".",

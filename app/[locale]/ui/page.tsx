@@ -2527,51 +2527,66 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
         </Section>
 
         {/* ── Glossary Inject ─────────────────────────────────────────── */}
-          <Section title="Glossary Term Inject" icon={BookOpen}>
-            <ComponentLabel
-              name="GlossaryInject"
-              file="components/glossary/glossary-inject.tsx"
-            />
+        <Section title="Glossary Term Inject" icon={BookOpen}>
+          <ComponentLabel name="GlossaryInject" file="components/glossary/glossary-inject.tsx" />
 
-            <Sub title="Usage — use GlossaryInject in any server component, no wrapper needed">
-              <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// any server component — self-sufficient, no provider needed
+          <Sub title="Usage — use GlossaryInject in any server component, no wrapper needed">
+            <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// any server component — self-sufficient, no provider needed
 <GlossaryInject>{someTextString}</GlossaryInject>`}</div>
-            </Sub>
+          </Sub>
 
-            <Sub title="Live preview — FAQ-style answer text (hover the dashed terms)">
-              <div className="max-w-2xl space-y-4 text-sm leading-relaxed">
-                <p className="text-muted-foreground text-xs uppercase font-semibold tracking-wide">Paragraph 1 — Planning &amp; Crowd management</p>
-                <p>
-                  <GlossaryInject>
-                    {`The best way to plan a theme park visit is to check the crowd calendar before you book your tickets. On a peak day you can expect wait times of 90 minutes or more for popular attractions, so arriving at rope drop makes a significant difference. A virtual queue for the newest ride is often released the moment the park opens — sometimes within seconds.`}
-                  </GlossaryInject>
-                </p>
+          <Sub title="Live preview — FAQ-style answer text (hover the dashed terms)">
+            <div className="max-w-2xl space-y-4 text-sm leading-relaxed">
+              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                Paragraph 1 — Planning &amp; Crowd management
+              </p>
+              <p>
+                <GlossaryInject>
+                  {`The best way to plan a theme park visit is to check the crowd calendar before you book your tickets. On a peak day you can expect wait times of 90 minutes or more for popular attractions, so arriving at rope drop makes a significant difference. A virtual queue for the newest ride is often released the moment the park opens — sometimes within seconds.`}
+                </GlossaryInject>
+              </p>
 
-                <p className="text-muted-foreground text-xs uppercase font-semibold tracking-wide">Paragraph 2 — Queue strategies</p>
-                <p>
-                  <GlossaryInject>
-                    {`If the posted wait time looks too long, check whether the attraction offers a single rider lane — this can cut your wait by 50–70 % on busy days. Alternatively, an express pass grants priority access and is especially worth it when crowd levels are high. On low crowd days the standby queue moves fast enough that you probably won't need either option.`}
-                  </GlossaryInject>
-                </p>
+              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                Paragraph 2 — Queue strategies
+              </p>
+              <p>
+                <GlossaryInject>
+                  {`If the posted wait time looks too long, check whether the attraction offers a single rider lane — this can cut your wait by 50–70 % on busy days. Alternatively, an express pass grants priority access and is especially worth it when crowd levels are high. On low crowd days the standby queue moves fast enough that you probably won't need either option.`}
+                </GlossaryInject>
+              </p>
 
-                <p className="text-muted-foreground text-xs uppercase font-semibold tracking-wide">Paragraph 3 — Maintenance &amp; Operations</p>
-                <p>
-                  <GlossaryInject>
-                    {`Attractions go into refurbishment regularly — typically during the off-peak shoulder season when crowd levels are at their lowest. Parks publish refurbishment schedules months in advance so guests can plan accordingly. A ride that is down for maintenance won't appear in the live wait time feed at all.`}
-                  </GlossaryInject>
-                </p>
-              </div>
-            </Sub>
+              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                Paragraph 3 — Maintenance &amp; Operations
+              </p>
+              <p>
+                <GlossaryInject>
+                  {`Attractions go into refurbishment regularly — typically during the off-peak shoulder season when crowd levels are at their lowest. Parks publish refurbishment schedules months in advance so guests can plan accordingly. A ride that is down for maintenance won't appear in the live wait time feed at all.`}
+                </GlossaryInject>
+              </p>
+            </div>
+          </Sub>
 
-            <Sub title="Behaviour">
-              <ul className="text-muted-foreground list-disc pl-5 text-sm space-y-1">
-                <li>Only the <strong>first occurrence</strong> of each term per text block is linked — no over-linking</li>
-                <li>Terms are matched <strong>longest-first</strong> (e.g. &quot;Express Pass&quot; before &quot;Express&quot;)</li>
-                <li>Matching is <strong>case-insensitive</strong> and respects word boundaries</li>
-                <li>Fetches glossary terms via <code className="bg-muted rounded px-1 text-xs">getGlossaryTerms(locale)</code> — cached per request via React cache()</li>
-              </ul>
-            </Sub>
-          </Section>
+          <Sub title="Behaviour">
+            <ul className="text-muted-foreground list-disc space-y-1 pl-5 text-sm">
+              <li>
+                Only the <strong>first occurrence</strong> of each term per text block is linked —
+                no over-linking
+              </li>
+              <li>
+                Terms are matched <strong>longest-first</strong> (e.g. &quot;Express Pass&quot;
+                before &quot;Express&quot;)
+              </li>
+              <li>
+                Matching is <strong>case-insensitive</strong> and respects word boundaries
+              </li>
+              <li>
+                Fetches glossary terms via{' '}
+                <code className="bg-muted rounded px-1 text-xs">getGlossaryTerms(locale)</code> —
+                cached per request via React cache()
+              </li>
+            </ul>
+          </Sub>
+        </Section>
       </div>
     </div>
   );

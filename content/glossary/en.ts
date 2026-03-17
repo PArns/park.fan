@@ -371,7 +371,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A roller coaster built primarily with steel track and support structure, known for its smooth, precise ride experience.',
     definition:
-      "A steel coaster is built with tubular or flat steel track supported by a steel lattice or tubular frame. Unlike wooden coasters with their natural flex and unpredictable motion, steel offers engineers precise control over G-forces, transitions, and inversions. The smooth, predictable ride of a steel coaster makes it ideal for executing complex layouts with multiple inversions, tight radius curves, and sustained high-speed sections.\n\nSteel coasters dominate modern coaster development because they allow designers to create nearly any shape imaginable — beyond-vertical drops, complete inversions, and rapid direction changes. The most celebrated steel coasters in Europe include Shambhala at PortAventura, Nemesis at Alton Towers, and Silver Star at Europa-Park. Steel coasters range from small family rides to record-breaking mega coasters, making the category the most versatile in the theme park industry. The precision of steel comes at a cost: maintenance requires careful track inspection and frequent repainting, and the steel structure is less forgiving of design errors than the flexibility of wood.",
+      'A steel coaster is built with tubular or flat steel track supported by a steel lattice or tubular frame. Unlike wooden coasters with their natural flex and unpredictable motion, steel offers engineers precise control over G-forces, transitions, and inversions. The smooth, predictable ride of a steel coaster makes it ideal for executing complex layouts with multiple inversions, tight radius curves, and sustained high-speed sections.\n\nSteel coasters dominate modern coaster development because they allow designers to create nearly any shape imaginable — beyond-vertical drops, complete inversions, and rapid direction changes. The most celebrated steel coasters in Europe include Shambhala at PortAventura, Nemesis at Alton Towers, and Silver Star at Europa-Park. Steel coasters range from small family rides to record-breaking mega coasters, making the category the most versatile in the theme park industry. The precision of steel comes at a cost: maintenance requires careful track inspection and frequent repainting, and the steel structure is less forgiving of design errors than the flexibility of wood.',
     relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
     aliases: ['Steel Coasters', 'Steel track'],
   },
@@ -841,7 +841,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Machine-learning predictions of crowd levels and wait times at theme parks, generated up to 30+ days in advance.',
     definition:
-      "An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 30+ days in advance.\n\nThe predictions are updated continuously as new data arrives. Near-term forecasts (1–7 days) are typically very accurate because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are naturally less precise but still valuable for planning — they identify reliably quiet or busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all shift the prediction meaningfully away from the historical baseline.",
+      'An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 30+ days in advance.\n\nThe predictions are updated continuously as new data arrives. Near-term forecasts (1–7 days) are typically very accurate because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are naturally less precise but still valuable for planning — they identify reliably quiet or busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all shift the prediction meaningfully away from the historical baseline.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
     aliases: ['AI Forecasts'],
   },
@@ -858,18 +858,16 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'realtime-wait-time',
     name: 'Live Wait Time',
-    shortDefinition:
-      'Wait time data pulled directly from park systems and updated every minute.',
+    shortDefinition: 'Wait time data pulled directly from park systems and updated every minute.',
     definition:
-      'A live wait time is the current, real-time wait pulled from a park\'s own data systems — not a historical average, but the actual figure right now, to the minute. park.fan fetches live wait times from official park APIs and third-party sources and refreshes every minute, so you always know which attractions are running short queues and which are backed up.',
+      "A live wait time is the current, real-time wait pulled from a park's own data systems — not a historical average, but the actual figure right now, to the minute. park.fan fetches live wait times from official park APIs and third-party sources and refreshes every minute, so you always know which attractions are running short queues and which are backed up.",
     relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
     aliases: ['Live Wait Times', 'Real-Time Wait Time', 'Real-Time Wait Times'],
   },
   {
     id: 'crowd-forecast',
     name: 'Crowd Forecast',
-    shortDefinition:
-      'AI-based prediction of how busy a theme park will be on a given day.',
+    shortDefinition: 'AI-based prediction of how busy a theme park will be on a given day.',
     definition:
       'A crowd forecast is a data-driven prediction of how crowded a theme park will be on a particular day or at a specific time. park.fan recalculates crowd forecasts daily using historical attendance figures, school holiday calendars, weather data, and special events. The results feed directly into the crowd calendar: green days signal short queues, red days indicate peak crowds with long wait times.',
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
@@ -918,7 +916,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Sideways forces pushing riders across their seat during turns, transitions, and helix sections.',
     definition:
-      "Lateral Gs (lateral G-forces) are the sideways accelerations riders experience when a coaster changes direction in the horizontal plane — on banked turns, unbanked transitions, helices, and direction changes. Well-designed laterals are smooth and controlled, contributing to an energetic and engaging ride experience. Poorly engineered or rough laterals feel like being thrown sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nEnthusiasts distinguish between smooth, intentional laterals — like those found in the sweeping low turns of a classic wooden coaster or the exits of a well-banked steel turn — and harsh, unintended laterals produced by track deterioration or poor engineering. Wooden coasters are especially associated with lateral movement: the flex in the track and the side-to-side energy of unbanked turns is considered part of the authentic wooden coaster experience. Smooth lateral G sequences in a helix section, like those on Balder at Liseberg, are often cited as highlights by coaster enthusiasts.",
+      'Lateral Gs (lateral G-forces) are the sideways accelerations riders experience when a coaster changes direction in the horizontal plane — on banked turns, unbanked transitions, helices, and direction changes. Well-designed laterals are smooth and controlled, contributing to an energetic and engaging ride experience. Poorly engineered or rough laterals feel like being thrown sideways against the restraint or seat back, which can be uncomfortable or even bruising.\n\nEnthusiasts distinguish between smooth, intentional laterals — like those found in the sweeping low turns of a classic wooden coaster or the exits of a well-banked steel turn — and harsh, unintended laterals produced by track deterioration or poor engineering. Wooden coasters are especially associated with lateral movement: the flex in the track and the side-to-side energy of unbanked turns is considered part of the authentic wooden coaster experience. Smooth lateral G sequences in a helix section, like those on Balder at Liseberg, are often cited as highlights by coaster enthusiasts.',
     relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
     aliases: ['Laterals', 'Lateral G-Forces', 'Lateral G'],
   },
@@ -938,7 +936,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Gentle, sustained negative G-forces producing a prolonged floating sensation as the train crests a hill.',
     definition:
-      "Floater airtime describes the gentle end of the negative G-force spectrum: a slow, prolonged sensation where riders rise slightly from their seats and float weightlessly for an extended moment as the train crests a hill following a gradual parabolic arc. The force is mild — typically around −0.1G to −0.3G — making it accessible and pleasurable even for riders who find intense ejector airtime overwhelming.\n\nFloater airtime is most characteristic of B&M hyper and giga coasters, which use large, gently rounded hills specifically engineered to produce extended float phases. Shambhala at PortAventura, Silver Star at Europa-Park, and Goliath at Walibi Holland are European examples celebrated for their long, floaty airtime sequences. Many enthusiasts consider the prolonged, relaxed quality of floater airtime more comfortable and repeatable than the sharp intensity of ejector, though enthusiast opinion is divided on which style is superior. The two types are not mutually exclusive — a single airtime hill can transition from floater at the crest to ejector on the descent.",
+      'Floater airtime describes the gentle end of the negative G-force spectrum: a slow, prolonged sensation where riders rise slightly from their seats and float weightlessly for an extended moment as the train crests a hill following a gradual parabolic arc. The force is mild — typically around −0.1G to −0.3G — making it accessible and pleasurable even for riders who find intense ejector airtime overwhelming.\n\nFloater airtime is most characteristic of B&M hyper and giga coasters, which use large, gently rounded hills specifically engineered to produce extended float phases. Shambhala at PortAventura, Silver Star at Europa-Park, and Goliath at Walibi Holland are European examples celebrated for their long, floaty airtime sequences. Many enthusiasts consider the prolonged, relaxed quality of floater airtime more comfortable and repeatable than the sharp intensity of ejector, though enthusiast opinion is divided on which style is superior. The two types are not mutually exclusive — a single airtime hill can transition from floater at the crest to ejector on the descent.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
     aliases: ['Floater'],
   },
@@ -948,7 +946,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The sensation of hanging weightlessly in restraints during an inversion, caused by negative G-forces while upside down.',
     definition:
-      "Hangtime describes the distinct experience of negative G-forces while a rider is inverted — literally hanging in the restraints as the coaster moves through the top of an inversion slowly enough for negative Gs to take effect. Unlike the brief upside-down flash of a fast vertical loop, hangtime occurs when the train lingers near the apex of an inversion, producing a drawn-out sensation of suspension. Riders feel their weight shift entirely into the over-the-shoulder restraints or lap bar, creating a uniquely disorienting and memorable moment.\n\nHangtime is most pronounced on elements where the train slows significantly near the inversion apex — the pretzel loop on flying coasters is the classic example, as train speed at the apex is low enough for sustained negative Gs while fully inverted. The heartline roll on some modern coasters can also produce hangtime, as can the tops of slow Norwegian loops. Enthusiasts generally consider hangtime one of the most thrilling inversion sensations, distinct from both the sustained positive-G compression of a fast vertical loop and the floating of conventional airtime.",
+      'Hangtime describes the distinct experience of negative G-forces while a rider is inverted — literally hanging in the restraints as the coaster moves through the top of an inversion slowly enough for negative Gs to take effect. Unlike the brief upside-down flash of a fast vertical loop, hangtime occurs when the train lingers near the apex of an inversion, producing a drawn-out sensation of suspension. Riders feel their weight shift entirely into the over-the-shoulder restraints or lap bar, creating a uniquely disorienting and memorable moment.\n\nHangtime is most pronounced on elements where the train slows significantly near the inversion apex — the pretzel loop on flying coasters is the classic example, as train speed at the apex is low enough for sustained negative Gs while fully inverted. The heartline roll on some modern coasters can also produce hangtime, as can the tops of slow Norwegian loops. Enthusiasts generally consider hangtime one of the most thrilling inversion sensations, distinct from both the sustained positive-G compression of a fast vertical loop and the floating of conventional airtime.',
     relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
     aliases: ['Hang Time'],
   },
@@ -979,7 +977,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'The last row of seats in a ride vehicle, known for intense airtime and extended hanging sensations on hill-heavy layouts.',
     definition:
-      "The back row is the final row of seats in a coaster train or ride vehicle. Back row rides on hill-heavy coasters — hypers, gigas, and airtime-focused designs — are prized by enthusiasts for producing the most intense ejector airtime. As each successive hill completes, the back row experiences sustained negative G-forces as the train goes over the crest and passengers are ejected upward from their seats (held in only by restraints). This effect compounds across multiple hills: back row airtime is typically stronger, more prolonged, and more intense than front or middle row.\n\nOn coasters like Goliath (Walibi Holland) or Shambhala (PortAventura), back row is considered the prime seating position by coaster enthusiasts. The downside is that back rows can feel rough or rattled on older coasters, and on steep drops back row produces a different psychological profile — you see the crest disappear beneath you rather than plunging into the abyss. Enthusiast culture has established rankings of where on a coaster the best riding positions are, and back row consistently ranks at the top for airtime intensity.",
+      'The back row is the final row of seats in a coaster train or ride vehicle. Back row rides on hill-heavy coasters — hypers, gigas, and airtime-focused designs — are prized by enthusiasts for producing the most intense ejector airtime. As each successive hill completes, the back row experiences sustained negative G-forces as the train goes over the crest and passengers are ejected upward from their seats (held in only by restraints). This effect compounds across multiple hills: back row airtime is typically stronger, more prolonged, and more intense than front or middle row.\n\nOn coasters like Goliath (Walibi Holland) or Shambhala (PortAventura), back row is considered the prime seating position by coaster enthusiasts. The downside is that back rows can feel rough or rattled on older coasters, and on steep drops back row produces a different psychological profile — you see the crest disappear beneath you rather than plunging into the abyss. Enthusiast culture has established rankings of where on a coaster the best riding positions are, and back row consistently ranks at the top for airtime intensity.',
     relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
     aliases: ['Back Seat', 'Last Row'],
   },
@@ -1007,7 +1005,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'lap-bar',
     name: 'Lap Bar',
     shortDefinition:
-      'A horizontal safety restraint across the rider\'s lap that allows a greater range of free movement than over-the-shoulder harnesses.',
+      "A horizontal safety restraint across the rider's lap that allows a greater range of free movement than over-the-shoulder harnesses.",
     definition:
       "A lap bar is a horizontal safety restraint that pins riders securely across the upper thighs or lap area. Unlike over-the-shoulder harnesses that fully encase the torso, lap bars allow the upper body to move more freely, creating a more open, less restrictive sensation. Lap bars are the standard restraint on most modern hypercoasters, giga coasters, and many traditional steel and wooden coasters. During airtime moments, lap bars let riders experience the full sensation of being ejected upward from the seat, creating the sensation that only the bar prevents them from flying out of the vehicle.\n\nLap bars are preferred by enthusiasts for high-airtime coasters because they provide the most uninhibited airtime sensation — the gap between rider and seat is immediately noticeable. However, lap bars require proper positioning and can feel uncomfortable on riders with longer torsos or certain body shapes if the bar doesn't fit ideally. Coaster manufacturers have continuously refined lap bar design over decades, and modern lap bars are significantly more comfortable than earlier generations. On coasters with intense lateral forces, the lap bar may slide back and forth slightly during sharp turns, which some riders find annoying and others find thrilling.",
     relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
@@ -1019,7 +1017,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'An over-the-shoulder safety restraint that fully encloses the torso, limiting movement during the ride.',
     definition:
-      "A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses include ratcheting mechanisms that allow for varying tightness to accommodate different rider builds.\n\nWhen sitting in a shoulder harness on a high-airtime coaster, the sensation is notably different from a lap bar: riders cannot rise from the seat as dramatically because the shoulder restraint holds them down. This trade-off — greater security and comfort for some riders versus less intense airtime sensation — is a key design choice manufacturers make. Enthusiasts generally prefer lap bars for airtime-heavy coasters and consider shoulder harnesses slightly less thrilling for that purpose, though they can feel more secure and comfortable for nervous riders or on coasters with intense lateral forces.",
+      'A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses include ratcheting mechanisms that allow for varying tightness to accommodate different rider builds.\n\nWhen sitting in a shoulder harness on a high-airtime coaster, the sensation is notably different from a lap bar: riders cannot rise from the seat as dramatically because the shoulder restraint holds them down. This trade-off — greater security and comfort for some riders versus less intense airtime sensation — is a key design choice manufacturers make. Enthusiasts generally prefer lap bars for airtime-heavy coasters and consider shoulder harnesses slightly less thrilling for that purpose, though they can feel more secure and comfortable for nervous riders or on coasters with intense lateral forces.',
     relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
     aliases: ['OTS Harness', 'Over-the-shoulder Restraint'],
   },
@@ -1027,10 +1025,9 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'souvenir',
     name: 'Souvenir',
-    shortDefinition:
-      'A memento or small item purchased at a theme park to commemorate a visit.',
+    shortDefinition: 'A memento or small item purchased at a theme park to commemorate a visit.',
     definition:
-      "A souvenir is a physical memento — merchandise, apparel, or collectible item — purchased by visitors to remember their theme park experience. Common souvenirs include t-shirts with park logos, hats, pins, postcards, stuffed animals, and themed collectibles. Souvenirs serve both a functional purpose (wearable clothing) and an emotional one — they anchor memories of a specific visit and create lasting connections to beloved parks and attractions.\n\nTheme parks rely heavily on souvenir sales as a revenue stream; merchandise typically carries 2–3× markup compared to retail retail prices. Parks design souvenir photography moments into themed lands and attractions specifically to encourage impulse purchases. Limited-edition or seasonal souvenirs create urgency, while park-exclusive items (available nowhere else) drive higher prices and repeat visits. For many guests, collecting souvenirs from multiple parks is part of the experience — gathering pins, trading them with others, or building a commemorative shelf.",
+      'A souvenir is a physical memento — merchandise, apparel, or collectible item — purchased by visitors to remember their theme park experience. Common souvenirs include t-shirts with park logos, hats, pins, postcards, stuffed animals, and themed collectibles. Souvenirs serve both a functional purpose (wearable clothing) and an emotional one — they anchor memories of a specific visit and create lasting connections to beloved parks and attractions.\n\nTheme parks rely heavily on souvenir sales as a revenue stream; merchandise typically carries 2–3× markup compared to retail retail prices. Parks design souvenir photography moments into themed lands and attractions specifically to encourage impulse purchases. Limited-edition or seasonal souvenirs create urgency, while park-exclusive items (available nowhere else) drive higher prices and repeat visits. For many guests, collecting souvenirs from multiple parks is part of the experience — gathering pins, trading them with others, or building a commemorative shelf.',
     relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
     aliases: ['Memento', 'Keepsake'],
   },
@@ -1040,7 +1037,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Official products and goods sold by a theme park, including apparel, collectibles, and themed items.',
     definition:
-      "Merchandise refers to all goods sold by a theme park — from branded apparel (t-shirts, hoodies, hats) to collectibles (pins, figurines, plushies), food/drink merchandise, and specialty themed items tied to specific attractions or franchises. Theme parks operate vast merchandise operations spanning dozens of shops, mobile carts, and location-specific boutiques. Merchandise is a critical revenue pillar for parks, often generating 15–25% of total guest spending, second only to food and beverages.\n\nModern parks use sophisticated merchandising strategies: limited-edition seasonal items, collaboration merchandise with popular franchises, park-exclusive designs unavailable anywhere else, and special releases tied to new attraction openings or anniversaries. Merchandise design is increasingly data-driven — parks track which items sell fastest, photograph best for social media, and resonate most with repeat visitors. For dedicated fans, collecting merchandise from multiple visits becomes part of their park experience, and secondary markets exist where rare or sold-out items command premium prices.",
+      'Merchandise refers to all goods sold by a theme park — from branded apparel (t-shirts, hoodies, hats) to collectibles (pins, figurines, plushies), food/drink merchandise, and specialty themed items tied to specific attractions or franchises. Theme parks operate vast merchandise operations spanning dozens of shops, mobile carts, and location-specific boutiques. Merchandise is a critical revenue pillar for parks, often generating 15–25% of total guest spending, second only to food and beverages.\n\nModern parks use sophisticated merchandising strategies: limited-edition seasonal items, collaboration merchandise with popular franchises, park-exclusive designs unavailable anywhere else, and special releases tied to new attraction openings or anniversaries. Merchandise design is increasingly data-driven — parks track which items sell fastest, photograph best for social media, and resonate most with repeat visitors. For dedicated fans, collecting merchandise from multiple visits becomes part of their park experience, and secondary markets exist where rare or sold-out items command premium prices.',
     relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
     aliases: ['Merch'],
   },
@@ -1050,7 +1047,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A retail store within a theme park selling souvenirs, merchandise, and themed products.',
     definition:
-      "A gift shop is a retail space within a theme park dedicated to selling souvenirs, merchandise, and themed products — either located in a central area (like a main plaza) or integrated into specific themed lands and attractions. Major parks operate dozens of gift shops ranging from small carts to large departmental stores. Gift shops are carefully positioned at high-traffic bottleneck points: exit queues of major attractions, hotel corridors, and park entrances/exits where guests have downtime and purchasing inclination.\n\nModern gift shops use sophisticated retail design: entrance placement positions shoppers in impulsive-purchase zones, themed environments match the surrounding lands, and product placement highlights high-margin, visually-appealing items. Many attractions feature \"obligatory\" gift shops where exiting guests are funneled directly through the merchandise area — a proven retail strategy that inflates impulse purchases. Parks increasingly use IP merchandise (licensed brands and franchises) to command premium pricing. Collector-focused shops in premium resort hotels sell exclusive, limited-edition merchandise at significantly elevated price points.",
+      'A gift shop is a retail space within a theme park dedicated to selling souvenirs, merchandise, and themed products — either located in a central area (like a main plaza) or integrated into specific themed lands and attractions. Major parks operate dozens of gift shops ranging from small carts to large departmental stores. Gift shops are carefully positioned at high-traffic bottleneck points: exit queues of major attractions, hotel corridors, and park entrances/exits where guests have downtime and purchasing inclination.\n\nModern gift shops use sophisticated retail design: entrance placement positions shoppers in impulsive-purchase zones, themed environments match the surrounding lands, and product placement highlights high-margin, visually-appealing items. Many attractions feature "obligatory" gift shops where exiting guests are funneled directly through the merchandise area — a proven retail strategy that inflates impulse purchases. Parks increasingly use IP merchandise (licensed brands and franchises) to command premium pricing. Collector-focused shops in premium resort hotels sell exclusive, limited-edition merchandise at significantly elevated price points.',
     relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
     aliases: ['Souvenir Shop', 'Retail Shop'],
   },
@@ -1060,9 +1057,224 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A product or item available only at a specific theme park or within the park system, unavailable for purchase elsewhere.',
     definition:
-      "Park exclusive merchandise is a product designed and sold only at a specific theme park or within a park system (such as all Disney parks, or all Universal parks) — unavailable for purchase at any external retailer. Park-exclusive items create perceived scarcity, encourage impulse purchases from guests who believe they cannot obtain the item elsewhere, and command premium pricing (often 2–3× typical retail markup). Common park exclusives include limited-edition apparel, collectible pins, themed items tied to seasonal events or new attraction openings, and novelty food items.\n\nThe park-exclusive strategy is a cornerstone of modern merchandise psychology: guests traveling significant distances and spending considerable money on admission feel elevated impulse to purchase items they cannot get at home. Secondary markets (online resale platforms) demonstrate that truly limited, desirable park exclusives retain and appreciate in value, further driving collector behavior. Parks strategically design packaging and merchandising to emphasize the exclusive nature — tags reading \"Park Exclusive\" or \"Limited Release\" prominently feature on items. Theme park social media and forums frequently discuss which exclusives are most sought-after or rare, creating viral interest and FOMO (fear of missing out) among collector communities.",
+      'Park exclusive merchandise is a product designed and sold only at a specific theme park or within a park system (such as all Disney parks, or all Universal parks) — unavailable for purchase at any external retailer. Park-exclusive items create perceived scarcity, encourage impulse purchases from guests who believe they cannot obtain the item elsewhere, and command premium pricing (often 2–3× typical retail markup). Common park exclusives include limited-edition apparel, collectible pins, themed items tied to seasonal events or new attraction openings, and novelty food items.\n\nThe park-exclusive strategy is a cornerstone of modern merchandise psychology: guests traveling significant distances and spending considerable money on admission feel elevated impulse to purchase items they cannot get at home. Secondary markets (online resale platforms) demonstrate that truly limited, desirable park exclusives retain and appreciate in value, further driving collector behavior. Parks strategically design packaging and merchandising to emphasize the exclusive nature — tags reading "Park Exclusive" or "Limited Release" prominently feature on items. Theme park social media and forums frequently discuss which exclusives are most sought-after or rare, creating viral interest and FOMO (fear of missing out) among collector communities.',
     relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
     aliases: ['Exclusive', 'Park Exclusive Item'],
+  },
+  {
+    id: 'flying-coaster',
+    name: 'Flying Coaster',
+    shortDefinition: 'Roller coaster where riders lie face-down in a prone position.',
+    definition:
+      'A flying coaster suspends riders horizontally, face-down, simulating the sensation of flight. The train tilts from the seated position at the station to horizontal before the ride begins. Notable examples include B&M Flyers like Manta (SeaWorld Orlando) and Tatsu (Six Flags Magic Mountain).',
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster'],
+    aliases: ['flyer', 'flying ride', 'Superman ride', 'prone coaster'],
+  },
+  {
+    id: 'mine-train',
+    name: 'Mine Train',
+    shortDefinition: 'Family steel coaster themed as a mine cart journey.',
+    definition:
+      'A mine train coaster is a family-friendly steel roller coaster styled as a runaway mining cart. Typically featuring moderate speeds, small drops, and tight turns through themed tunnels and rock formations. Suitable for a wide age range. Examples include Big Thunder Mountain Railroad (Disney parks) and Gold Rush (Plopsaland).',
+    relatedTermIds: ['steel-coaster', 'family-coaster', 'themed-land'],
+    aliases: ['mine coaster', 'mine car coaster', 'mine ride', 'family coaster'],
+  },
+  {
+    id: 'terrain-coaster',
+    name: 'Terrain Coaster',
+    shortDefinition: 'Coaster designed to follow and interact with the natural landscape.',
+    definition:
+      'A terrain coaster is built to take advantage of natural topography — hills, valleys, and ravines — rather than relying entirely on artificial structure. The ride interacts closely with the ground, creating a sense of speed and immersion. Classic examples include Beast (Kings Island) and Ravine Flyer II (Waldameer).',
+    relatedTermIds: ['wooden-coaster', 'steel-coaster', 'airtime'],
+    aliases: ['terrain ride', 'landscape coaster', 'ground-hugging coaster'],
+  },
+  {
+    id: 'floorless-coaster',
+    name: 'Floorless Coaster',
+    shortDefinition: "Steel coaster where the floor retracts so riders' feet dangle freely.",
+    definition:
+      'On a floorless coaster, the car floor drops away after riders are secured, leaving legs dangling above the track. Unlike inverted coasters, the track runs beneath the car rather than above. B&M pioneered the type with Medusa (Six Flags Great Adventure, 1999). Examples in Europe include Goliath (Walibi Holland).',
+    relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster', 'dive-coaster'],
+    aliases: ['floorless', 'open floor coaster'],
+  },
+  {
+    id: 'arrow-dynamics',
+    name: 'Arrow Dynamics',
+    shortDefinition: 'American coaster manufacturer responsible for the first modern loop.',
+    definition:
+      "Arrow Dynamics (founded 1945) was a pioneering American roller coaster manufacturer that introduced the modern tubular steel track and the first modern vertical loop on Corkscrew (Knott's Berry Farm, 1975). Arrow coasters are known for their iconic corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.",
+    relatedTermIds: ['steel-coaster', 'corkscrew', 'suspended-coaster', 'vertical-loop'],
+    aliases: ['Arrow', 'Arrow Development', 'S&S Arrow'],
+  },
+  {
+    id: 'gci',
+    name: 'Great Coasters International (GCI)',
+    shortDefinition: 'American wooden coaster manufacturer known for fast, twisty layouts.',
+    definition:
+      'Great Coasters International (GCI) is an American manufacturer specialising in wooden roller coasters. Founded in 1994, GCI is known for their Millennium Flyer trains and layouts featuring rapid direction changes and sustained airtime. Notable installations include Wodan (Europa-Park), Thunderhead (Dollywood), and Troy (Toverland).',
+    relatedTermIds: ['wooden-coaster', 'airtime', 'rmc', 'terrain-coaster'],
+    aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer'],
+  },
+  {
+    id: 'stall',
+    name: 'Stall',
+    shortDefinition: 'Inversion where the train briefly hangs upside-down with near-zero speed.',
+    definition:
+      'A stall (also called a zero-G stall) is an element where the coaster train travels into an inversion at the apex and momentarily slows almost to a stop, leaving riders hanging upside-down. Pioneered by Rocky Mountain Construction (RMC), the element delivers prolonged hangtime. Famous examples appear on Zadra (Energylandia) and Steel Vengeance (Cedar Point).',
+    relatedTermIds: ['inversion', 'hangtime', 'rmc', 'zero-g-roll'],
+    aliases: ['zero-g stall', 'RMC stall', 'hangtime element'],
+  },
+  {
+    id: 'wave-turn',
+    name: 'Wave Turn',
+    shortDefinition: 'Sweeping banked direction change delivering strong airtime.',
+    definition:
+      'A wave turn is a high-speed banked turn that transitions through a brief moment of negative or lateral G-forces, creating a sensation of airtime mid-corner. Common on Rocky Mountain Construction coasters, the element combines directional change with ejector or floater airtime. It appears on rides like Wildfire (Kolmården) and Untamed (Walibi Holland).',
+    relatedTermIds: ['airtime', 'overbank', 'ejector-airtime', 'rmc', 'lateral-gs'],
+    aliases: ['wave turn element', 'banked airtime turn'],
+  },
+  {
+    id: 'shoulder-season',
+    name: 'Shoulder Season',
+    shortDefinition: 'Period between peak and off-season with moderate crowds and prices.',
+    definition:
+      "The shoulder season refers to the transitional periods between a theme park's busiest (peak) and quietest (off-season) periods. Typically spring (March–May) and early autumn (September–October) in European parks. Crowds are moderate, prices may be lower, and most attractions are open — making it a favoured time for enthusiasts seeking a good balance of experience and value.",
+    relatedTermIds: ['crowd-forecast', 'peak-season', 'school-holiday', 'crowd-level'],
+    aliases: ['off-peak', 'mid-season', 'quiet period', 'low season'],
+  },
+  {
+    id: 'school-holiday',
+    name: 'School Holiday',
+    shortDefinition: 'School vacation period that causes significant crowd spikes at theme parks.',
+    definition:
+      'School holidays — including summer break, Christmas/New Year, Easter, and half-term — are the primary driver of crowd spikes at theme parks. Families with children are the largest visitor segment, and their visits are concentrated in these windows. Parks often extend opening hours, add entertainment, and increase prices during these periods. Avoiding school holidays is the single most impactful crowd-reduction strategy.',
+    relatedTermIds: ['crowd-forecast', 'shoulder-season', 'peak-season', 'crowd-level'],
+    aliases: [
+      'school break',
+      'school vacation',
+      'half-term',
+      'summer holidays',
+      'Easter holidays',
+      'Christmas holidays',
+      'Ferien',
+      'vacances scolaires',
+    ],
+  },
+  {
+    id: 'photo-pass',
+    name: 'Photo Pass',
+    shortDefinition: 'Service providing unlimited digital ride and park photos.',
+    definition:
+      "A photo pass (or memory maker) is an optional add-on that grants digital access to all professionally taken photos and videos from a park visit — including ride photos, character meet-and-greet shots, and roaming photographer images. Sold as a flat-fee package, it can be cost-effective for families who would otherwise purchase individual ride photos. Disney's Memory Maker and Universal's Photo Pass are prominent examples.",
+    relatedTermIds: ['ride-photo', 'character-meet-and-greet', 'season-pass'],
+    aliases: ['Memory Maker', 'photo package', 'photo bundle', 'park photos', 'all-day photos'],
+  },
+  {
+    id: 'accessibility-pass',
+    name: 'Accessibility Pass',
+    shortDefinition:
+      'Pass allowing guests with disabilities to access attractions with reduced wait.',
+    definition:
+      'An accessibility pass (variously called DAS — Disability Access Service, accessibility card, or attraction access pass) is issued to guests who are unable to wait in a standard queue due to a disability. It typically allows the guest and a set number of companions to return at a specified time rather than physically waiting. Eligibility and processes vary by park and country.',
+    relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: [
+      'DAS',
+      'Disability Access Service',
+      'attraction access pass',
+      'accessibility card',
+      'disabled pass',
+      'PRM pass',
+      'KMG pass',
+      'Behindertenausweis',
+    ],
+  },
+  {
+    id: 'motion-simulator',
+    name: 'Motion Simulator',
+    shortDefinition:
+      'Ride that combines a moving platform with a film screen for immersive experiences.',
+    definition:
+      'A motion simulator (or simulator ride) combines a hydraulically or electrically actuated moving platform with a large screen film or projection, synchronising physical movement with on-screen action to create immersive experiences without a traditional track. Capacity is typically high and the experience can be refreshed by changing films. Examples include Star Tours (Disney), Mystic Manor (HKDL), and various 4D cinema attractions.',
+    relatedTermIds: ['dark-ride', 'trackless-ride', 'pre-show', 'animatronics'],
+    aliases: [
+      'simulator ride',
+      '4D ride',
+      'flight simulator',
+      'motion base',
+      'sim ride',
+      'Simulatorfahrt',
+    ],
+  },
+  {
+    id: 'character-meet-and-greet',
+    name: 'Character Meet & Greet',
+    shortDefinition: 'Scheduled opportunity to meet a costumed park character in person.',
+    definition:
+      'A character meet and greet is a designated area or scheduled event where guests can meet, pose for photos, and sometimes receive autographs from costumed park characters. Common at Disney and Universal parks, popular characters may have dedicated meet-and-greet locations with their own queues. They are especially popular with children and families.',
+    relatedTermIds: ['photo-pass', 'character-dining', 'themed-land'],
+    aliases: [
+      'character encounter',
+      'character appearance',
+      'meet and greet',
+      'character experience',
+      'Charaktertreffen',
+    ],
+  },
+  {
+    id: 'pre-show',
+    name: 'Pre-Show',
+    shortDefinition: 'Entertainment area that prepares guests for an attraction before boarding.',
+    definition:
+      'A pre-show is a staging element in a themed attraction where guests gather in a room or queue area before the main ride or experience to receive story context, safety instructions, or entertainment that sets the scene. Pre-shows serve both narrative and operational functions, allowing groups to be staged efficiently while enhancing immersion. Famous examples include the stretching room in the Haunted Mansion and the safety video on Guardians of the Galaxy – Mission: BREAKOUT!.',
+    relatedTermIds: ['dark-ride', 'motion-simulator', 'animatronics', 'themed-land'],
+    aliases: ['pre show', 'loading area entertainment', 'staging area', 'queue entertainment'],
+  },
+  {
+    id: 'quick-service',
+    name: 'Quick Service',
+    shortDefinition: 'Counter-service restaurant with no table waiting staff.',
+    definition:
+      'Quick service (also called counter service or fast casual) refers to park dining where guests order at a counter and carry their own food to a table. It is the most common type of in-park dining, offering speed and convenience. Disney popularised the term "quick service" to distinguish it from "table service" in their dining reservation system.',
+    relatedTermIds: ['table-service', 'character-dining'],
+    aliases: [
+      'counter service',
+      'fast food',
+      'fast casual',
+      'self-service restaurant',
+      'Schnellrestaurant',
+      'restauration rapide',
+    ],
+  },
+  {
+    id: 'table-service',
+    name: 'Table Service',
+    shortDefinition: 'Sit-down restaurant with waitstaff where reservations are often required.',
+    definition:
+      'Table service restaurants inside theme parks provide a full sit-down dining experience with waitstaff. Reservations (often bookable 60–180 days in advance at Disney parks) are strongly recommended as popular venues fill quickly, especially during peak season. Table service typically costs significantly more than quick service but offers higher food quality and a relaxing atmosphere away from the park crowds.',
+    relatedTermIds: ['quick-service', 'character-dining', 'peak-season'],
+    aliases: [
+      'sit-down dining',
+      'full-service restaurant',
+      'waiter service',
+      'reservation dining',
+      'Tischservice',
+    ],
+  },
+  {
+    id: 'character-dining',
+    name: 'Character Dining',
+    shortDefinition: 'Restaurant where costumed park characters visit tables during the meal.',
+    definition:
+      "Character dining is a table-service (or occasionally buffet) dining experience where costumed characters visit each table to interact with guests, pose for photos, and sign autographs during the meal. It guarantees character interaction without waiting in a separate meet-and-greet queue, making it popular with families. Examples include Chef Mickey's (Disney World) and the Princess Storybook Dining at Auberge de Cendrillon (Disneyland Paris).",
+    relatedTermIds: ['table-service', 'character-meet-and-greet', 'quick-service'],
+    aliases: [
+      'character meal',
+      'character breakfast',
+      'character lunch',
+      'character dinner',
+      'dining with characters',
+      'Charakterdinner',
+    ],
   },
 ];
 

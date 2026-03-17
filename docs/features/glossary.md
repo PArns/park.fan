@@ -38,15 +38,15 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 Currently **90 terms** across 7 categories:
 
-| Category          | Description                              |
-| ----------------- | ---------------------------------------- |
-| `wait-times`      | Queuing systems, express passes, etc.    |
-| `crowd-levels`    | Crowd forecasting, peak days, calendars  |
-| `park-operations` | Refurbishments, capacity, events         |
-| `planning`        | Rope drop, ERT, touring plans, passes    |
-| `attractions`     | Ride types, animatronics, height limits  |
-| `coasters`        | Coaster types and manufacturers          |
-| `coaster-elements`| Track elements (inversions, airtime, etc.)|
+| Category           | Description                                |
+| ------------------ | ------------------------------------------ |
+| `wait-times`       | Queuing systems, express passes, etc.      |
+| `crowd-levels`     | Crowd forecasting, peak days, calendars    |
+| `park-operations`  | Refurbishments, capacity, events           |
+| `planning`         | Rope drop, ERT, touring plans, passes      |
+| `attractions`      | Ride types, animatronics, height limits    |
+| `coasters`         | Coaster types and manufacturers            |
+| `coaster-elements` | Track elements (inversions, airtime, etc.) |
 
 ## Adding a New Term
 

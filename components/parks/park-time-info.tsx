@@ -189,7 +189,7 @@ export function ParkTimeInfo({
               <span className="font-medium">
                 <GlossaryTermLink
                   termId="offseason"
-                  className="border-b border-dashed border-current/40 cursor-help font-[inherit]"
+                  className="cursor-help border-b border-dashed border-current/40 font-[inherit]"
                 >
                   {t('offseason')}
                 </GlossaryTermLink>{' '}

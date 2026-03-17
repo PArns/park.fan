@@ -165,30 +165,30 @@ export function GlossaryOverviewClient({
 
       {/* ── Results ──────────────────────────────────────────────────────── */}
       <div aria-live="polite" aria-atomic="false">
-      {filtered.length === 0 ? (
-        <div className="flex justify-center py-16">
-          <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
-            <BookOpen className="text-muted-foreground h-10 w-10 opacity-40" />
-            <p className="text-foreground font-medium">
-              {t('noResults', { query: query || activeCategory || '' })}
-            </p>
-            <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>
+        {filtered.length === 0 ? (
+          <div className="flex justify-center py-16">
+            <div className="bg-background/60 border-primary/15 flex flex-col items-center gap-3 rounded-xl border px-10 py-10 text-center shadow-sm backdrop-blur-md">
+              <BookOpen className="text-muted-foreground h-10 w-10 opacity-40" />
+              <p className="text-foreground font-medium">
+                {t('noResults', { query: query || activeCategory || '' })}
+              </p>
+              <p className="text-muted-foreground text-sm">{t('noResultsHint')}</p>
+            </div>
           </div>
-        </div>
-      ) : (
-        <div className="space-y-10">
-          {filtered.map(({ category, categoryLabel, terms }) => (
-            <section key={category}>
-              <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {terms.map((term) => (
-                  <GlossaryTermCard key={term.id} term={term} locale={locale} segment={segment} />
-                ))}
-              </div>
-            </section>
-          ))}
-        </div>
-      )}
+        ) : (
+          <div className="space-y-10">
+            {filtered.map(({ category, categoryLabel, terms }) => (
+              <section key={category}>
+                <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {terms.map((term) => (
+                    <GlossaryTermCard key={term.id} term={term} locale={locale} segment={segment} />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

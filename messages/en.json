@@ -760,7 +760,8 @@
       "coasters": "Coasters",
       "coaster-elements": "Coaster Elements",
       "ride-experience": "Ride Experience",
-      "shopping": "Shopping"
+      "shopping": "Shopping",
+      "dining": "Dining"
     },
     "searchPlaceholder": "Search terms…",
     "noResults": "No terms found for \"{query}\".",

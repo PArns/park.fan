@@ -45,7 +45,9 @@ export function GlossaryTermDetail({
             <div className="px-6 pt-4 pb-4">
               <h1 className="mb-3 text-3xl leading-tight font-bold">
                 {term.name}{' '}
-                <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
+                <span className="text-muted-foreground text-xl font-normal">
+                  {labels.termH1Suffix}
+                </span>
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 <GlossaryInject locale={locale}>{term.shortDefinition}</GlossaryInject>

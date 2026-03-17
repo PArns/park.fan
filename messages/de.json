@@ -760,7 +760,8 @@
       "coasters": "Achterbahnen",
       "coaster-elements": "Achterbahnelemente",
       "ride-experience": "Fahrerlebnis",
-      "shopping": "Shopping"
+      "shopping": "Shopping",
+      "dining": "Gastronomie"
     },
     "searchPlaceholder": "Begriffe suchen…",
     "noResults": "Keine Begriffe für „{query}\" gefunden.",
