@@ -15,6 +15,7 @@ import { Link } from '@/i18n/navigation';
 const getCachedGeoData = cache(() => getGeoStructure().catch(() => null));
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { CalendarDay } from '@/lib/api/types';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
