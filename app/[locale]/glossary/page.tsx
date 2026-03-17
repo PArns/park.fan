@@ -92,7 +92,10 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     grouped.set(
       cat,
       [...catTerms].sort((a, b) =>
-        a.name.localeCompare(b.name, locale, { numeric: true })
+        a.name.localeCompare(b.name, locale, {
+          numeric: true,
+          sensitivity: 'base',
+        })
       )
     );
   }
