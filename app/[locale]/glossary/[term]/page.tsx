@@ -161,7 +161,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
 
       <FavoritesSection />
 
-      <FeaturedParksSection locale={locale} geoData={geoData} />
+      <FeaturedParksSection locale={locale as Locale} geoData={geoData} />
     </>
   );
 }
