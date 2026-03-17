@@ -54,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Crowd-Level', 'Crowd-Levels', 'Besucherdichten'],
   },
   {
     id: 'crowd-calendar',
@@ -233,7 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt dir die aktuellen Wartezeiten aller Attraktionen, damit du die Planung deines Parkbesuchs optimal anpassen kannst.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
-    aliases: ['Warteschlangen'],
+    aliases: ['Warteschlangen', 'Schlange', 'Schlangen'],
   },
   {
     id: 'opening-day',
@@ -297,6 +298,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster — meist ein Ein-Stunden-Block —, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst — nach einer kurzen Toleranzzeit —, verliert die Reservierung. Mit den Live-Wartezeiten und Besucherdichte-Daten von park.fan kannst du gezielt entscheiden, welche Attraktionen du für Rückkehrzeiten einplanen möchtest.',
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Rückkehrzeiten', 'Returntime', 'Returntimes'],
   },
   {
     id: 'airtime',

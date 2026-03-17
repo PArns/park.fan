@@ -234,6 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "La file d'attente est l'espace physique — couloirs, serpentins extérieurs ou salles intérieures — que les visiteurs parcourent en attendant d'embarquer sur une attraction. Dans de nombreux parcs modernes, la file fait elle-même partie de l'expérience : la file de la Haunted Mansion chez Disney crée l'atmosphère bien avant de monter dans le Doom Buggy, tandis que les attractions Harry Potter d'Universal plongent les visiteurs dans leur univers dès la file. Une file bien conçue rend l'attente beaucoup plus agréable, même lorsqu'elle est longue.",
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ["Files d'attente", 'file', 'files'],
   },
   {
     id: 'opening-day',
@@ -288,6 +289,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Une heure de retour (parfois appelée fenêtre de retour) est un créneau horaire précis — généralement d'une heure — pendant lequel un visiteur ayant réservé un accès prioritaire (via la Lightning Lane, une file virtuelle ou un système similaire) peut se présenter à l'entrée dédiée de l'attraction. Les heures de retour permettent aux visiteurs de profiter d'autres zones du parc pendant l'intervalle plutôt que de faire la queue physiquement. Manquer sa fenêtre de retour (généralement définie par un retard de quelques minutes au-delà du créneau) entraîne en principe la perte de la réservation. Les données de temps d'attente et de niveau d'affluence de park.fan vous aident à décider quelles attractions prioriser pour les réservations.",
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Heures de retour'],
   },
   {
     id: 'ert',

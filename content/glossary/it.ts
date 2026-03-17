@@ -234,6 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "La coda è lo spazio fisico — corridoi, serpentine all'aperto o sale interne — che gli ospiti attraversano aspettando di imbarcarsi su un'attrazione. Nei parchi moderni, la coda è spesso parte dell'esperienza stessa: la coda della Haunted Mansion di Disney crea atmosfera ancora prima di salire sul Doom Buggy, mentre le attrazioni di Harry Potter a Universal immergono i visitatori nel loro mondo fin dalla fila. Una coda ben progettata rende l'attesa molto più piacevole, anche quando è lunga.",
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ['Code', 'Fila', 'File'],
   },
   {
     id: 'opening-day',
@@ -287,6 +288,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Un orario di ritorno (return time) è un periodo specifico — tipicamente un blocco di un'ora — durante il quale un ospite che ha prenotato l'accesso prioritario (tramite Lightning Lane, coda virtuale o sistema simile) può presentarsi all'ingresso dedicato dell'attrazione. Gli orari di ritorno consentono agli ospiti di esplorare altre parti del parco nell'intervallo invece di stare in coda fisica. Perdere la propria finestra oraria (di solito definita come un ritardo superiore a un certo numero di minuti) comporta in genere la perdita della prenotazione. I dati sui tempi di attesa e i livelli di affluenza di park.fan possono aiutarvi a decidere quali attrazioni prioritizzare per la prenotazione dell'orario di ritorno.",
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Orari di ritorno', 'Ora di ritorno', 'Ore di ritorno'],
   },
   {
     id: 'ert',

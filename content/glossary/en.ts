@@ -299,6 +299,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A return time (sometimes called a return window) is a specific time period — typically a one-hour block — during which a guest who has booked priority access can present at the attraction's dedicated entrance. Return times are issued by Lightning Lane reservations, virtual queue boarding group assignments, and legacy systems like FastPass+. They allow guests to spend the intervening period exploring other areas of the park rather than standing in a physical queue.\n\nMissing your return time window typically forfeits the reservation, though Disney and Universal both offer some grace-period flexibility. Return time management — knowing which attractions to book first, when to book your second reservation, and how long it takes to walk between areas of the park — is a skill that separates experienced park visitors from first-timers. park.fan's live wait time data helps inform which attractions are worth using a return time on versus which can be done efficiently in standby.",
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Return Times'],
   },
   {
     id: 'airtime',
