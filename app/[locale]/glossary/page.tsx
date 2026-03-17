@@ -91,7 +91,9 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   for (const [cat, catTerms] of grouped) {
     grouped.set(
       cat,
-      [...catTerms].sort((a, b) => a.name.localeCompare(b.name, locale))
+      [...catTerms].sort((a, b) =>
+        a.name.localeCompare(b.name, locale, { numeric: true })
+      )
     );
   }
 
