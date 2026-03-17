@@ -312,14 +312,14 @@ function InfoBox({ children, label = 'Hinweis' }: { children: React.ReactNode; l
   );
 }
 
-function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
+async function TipBox({ children, label = 'Tipp' }: { children: React.ReactNode; label?: string }) {
   return (
     <div className="!mt-6 rounded-lg border border-yellow-500/20 bg-yellow-500/5 px-3 py-2.5 text-sm leading-relaxed">
       <div className="mb-1 flex items-center gap-1.5 font-semibold text-yellow-600 dark:text-yellow-400">
         <Lightbulb className="h-3.5 w-3.5 shrink-0" />
         <span>{label}</span>
       </div>
-      {children}
+      {typeof children === 'string' ? <GlossaryInject>{children}</GlossaryInject> : children}
     </div>
   );
 }
@@ -1611,7 +1611,7 @@ function ContentDE() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1682,7 +1682,7 @@ function ContentDE() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1726,7 +1726,7 @@ function ContentDE() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1778,7 +1778,7 @@ function ContentDE() {
             ].map(({ color, label, icon, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -1819,7 +1819,7 @@ function ContentDE() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2021,7 +2021,7 @@ function ContentDE() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -2267,8 +2267,9 @@ function ContentDE() {
           <Link href="/glossary" className="text-primary font-medium underline">
             park.fan/glossar
           </Link>{' '}
-          erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb,
-          Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.
+          <GlossaryInject>
+            {'erreichbar – mit Begriffen aus 7 Kategorien: Wartezeiten, Besucherdichte, Park-Betrieb, Planung, Attraktionen, Achterbahnen und Achterbahn-Elemente.'}
+          </GlossaryInject>
         </TipBox>
       </Section>
 
@@ -2804,7 +2805,7 @@ function ContentENSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2874,7 +2875,7 @@ function ContentENSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2913,7 +2914,7 @@ function ContentENSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -2950,7 +2951,7 @@ function ContentENSections() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3132,7 +3133,7 @@ function ContentENSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -3321,8 +3322,9 @@ function ContentENSections() {
           <Link href="/glossary" className="text-primary font-medium underline">
             park.fan/glossary
           </Link>{' '}
-          – with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations,
-          Planning, Attractions, Coasters and Coaster Elements.
+          <GlossaryInject>
+            {'– with terms organised across 7 categories: Wait Times, Crowd Levels, Park Operations, Planning, Attractions, Coasters and Coaster Elements.'}
+          </GlossaryInject>
         </TipBox>
       </Section>
 
@@ -3601,7 +3603,7 @@ function ContentESSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3671,7 +3673,7 @@ function ContentESSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3710,7 +3712,7 @@ function ContentESSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3747,7 +3749,7 @@ function ContentESSections() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -3932,7 +3934,7 @@ function ContentESSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -4424,7 +4426,7 @@ function ContentFRSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4494,7 +4496,7 @@ function ContentFRSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4533,7 +4535,7 @@ function ContentFRSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4570,7 +4572,7 @@ function ContentFRSections() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -4759,7 +4761,7 @@ function ContentFRSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -5256,7 +5258,7 @@ function ContentITSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5326,7 +5328,7 @@ function ContentITSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5365,7 +5367,7 @@ function ContentITSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5402,7 +5404,7 @@ function ContentITSections() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -5587,7 +5589,7 @@ function ContentITSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
@@ -6063,7 +6065,7 @@ function ContentNLSections() {
             ].map(({ icon: Icon, color, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={Icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6132,7 +6134,7 @@ function ContentNLSections() {
                     {threshold}
                   </span>
                 </div>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6170,7 +6172,7 @@ function ContentNLSections() {
                   <Icon className="h-4 w-4" />
                   {label}
                 </span>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6207,7 +6209,7 @@ function ContentNLSections() {
             ].map(({ color, icon, label, desc }) => (
               <div key={label} className="flex items-start gap-3">
                 <DemoBadge color={color} label={label} icon={icon} />
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             ))}
           </div>
@@ -6393,7 +6395,7 @@ function ContentNLSections() {
               <span className="text-2xl">{icon}</span>
               <div>
                 <p className="font-semibold">{title}</p>
-                <p className="text-muted-foreground text-sm">{desc}</p>
+                <p className="text-muted-foreground text-sm"><GlossaryInject>{desc}</GlossaryInject></p>
               </div>
             </div>
           ))}
