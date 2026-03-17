@@ -9,6 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El tiempo de espera es la duración estimada que un visitante pasa en la cola antes de poder subir a una atracción. Los parques muestran los tiempos de espera en las entradas de las atracciones y en sus aplicaciones. park.fan realiza un seguimiento de los tiempos de espera en vivo que se actualizan cada minuto.',
     relatedTermIds: ['posted-wait-time', 'virtual-queue', 'single-rider', 'express-pass'],
+    aliases: ['Tiempos de espera'],
   },
   {
     id: 'single-rider',
@@ -233,6 +234,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'La cola es el espacio físico — pasillos, serpentines exteriores o salas interiores — que los visitantes recorren mientras esperan para embarcar en una atracción. En muchos parques temáticos modernos, la cola forma parte de la propia experiencia: la cola de la Haunted Mansion de Disney ambienta antes incluso de subir al Doom Buggy, mientras que las atracciones de Harry Potter en Universal sumergen a los visitantes en su mundo desde que se unen a la fila. Una cola bien diseñada hace la espera mucho más llevadera, incluso cuando es larga.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
+    aliases: ['Colas', 'Fila', 'Filas'],
   },
   {
     id: 'opening-day',
@@ -287,6 +289,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una hora de regreso (o return window) es un período de tiempo específico — habitualmente un bloque de una hora — durante el cual un visitante que ha reservado acceso prioritario (mediante Lightning Lane, una cola virtual o sistema similar) puede presentarse en la entrada dedicada de la atracción. Las horas de regreso permiten a los visitantes explorar otras zonas del parque durante el intervalo en lugar de esperar en una cola física. Si se pierde la ventana horaria — normalmente definida como llegar más tarde de un número determinado de minutos — se suele perder la reserva. Los datos de tiempos de espera y niveles de afluencia de park.fan te ayudan a decidir qué atracciones priorizar para la reserva.',
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
+    aliases: ['Horas de regreso'],
   },
   {
     id: 'ert',
