@@ -959,6 +959,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Éléments de montagnes russes'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Première rangée',
+    shortDefinition:
+      'La première rangée de sièges dans un train de montagnes russes, offrant généralement la meilleure vue et les sensations les plus intenses.',
+    definition:
+      'La première rangée est la première rangée de sièges dans un train de montagnes russes. Les places à l\'avant offrent une vue dégagée vers l\'avant, très prisées des passagers pour l\'expérience visuelle. Sur les hypercoasters et gigas, la première rangée offre généralement l\'airtime le plus intense au premier drop, car les passagers n\'ont personne devant eux qui bloque l\'expérience. L\'effet psychologique de voir le drop s\'approcher — puis plonger dans le vide — amplifie le frisson bien au-delà des rangées centrales ou arrière.\n\nSur de nombreuses montagnes russes, la première rangée est devenue tellement recherchée que les parcs offrent des contournements de files ou des réservations express spécifiquement pour cette position de siège.',
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Siège avant', 'Première place'],
+  },
+  {
+    id: 'back-row',
+    name: 'Dernière rangée',
+    shortDefinition:
+      'La dernière rangée de sièges d\'un train, connue pour les sensations d\'airtime intenses et prolongées sur les montagnes russes riches en bosses.',
+    definition:
+      'La dernière rangée est la dernière rangée de sièges dans un train de montagnes russes. Les places à l\'arrière sur les montagnes russes riches en bosses — hypers, gigas, conceptions axées sur l\'airtime — sont très prisées des passionnés pour l\'airtime éjecteur le plus intense. À chaque bosse successive, la dernière rangée subit des forces G négatives prononcées tandis que le train franchit le sommet et les passagers sont éjectés des sièges (maintenus seulement par les harnais). Cet effet s\'accumule sur plusieurs bosses : l\'airtime en dernière rangée est généralement plus fort, plus prolongé et plus intense qu\'aux rangées avant ou centre.\n\nSur des coasters comme Goliath ou Shambhala, la dernière rangée est considérée comme la position de siège idéale par les passionnés.',
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Siège arrière', 'Dernière place'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Rangée centrale',
+    shortDefinition:
+      'Les rangées centrales d\'un train de montagnes russes, offrant une expérience équilibrée entre la première et la dernière rangée.',
+    definition:
+      'Les rangées centrales occupent les sièges au centre d\'un train de montagnes russes — positionnées entre l\'impact psychologique intense de la première rangée et l\'airtime éjecteur de la dernière rangée. Les rangées centrales offrent généralement une expérience équilibrée : une vue suffisante pour voir le tracé à venir, un airtime modéré, mais ni les extrêmes de l\'avant ni les intensités maximales de l\'arrière. Pour les familles ou visiteurs novices inquiets quant à l\'intensité, les rangées centrales offrent une expérience de coaster plus abordable.\n\nLes rangées centrales suscitent moins de discussion chez les passionnés car elles n\'offrent ni la spécialisation de la rangée avant ni les extrêmes de l\'arrière. Cependant, sur les montagnes russes avec des forces latérales intenses, les rangées centrales peuvent parfois ressentir la plus grande compression.',
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Siège central', 'Rangée du milieu'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Wagon',
+    shortDefinition:
+      'Le véhicule ou la voiture individuelle d\'un train de montagnes russes qui accueille une rangée ou plusieurs rangées de passagers.',
+    definition:
+      'Un wagon (également appelé car, voiture ou simplement partie d\'un train) est le segment de véhicule individuel qui accueille les passagers sur une montagne russe. Un train de coaster typique est composé de plusieurs wagons liés ensemble, chaque wagon accueillant une ou plusieurs rangées de passagers assis dos à dos. Les fabricants de montagnes russes conçoivent les dimensions des wagons, le positionnement des sièges et la géométrie des harnais pour optimiser le confort et la sensation.\n\nLa conception des wagons varie considérablement selon le type : les hypercoasters utilisent des wagons aérodynamiques et bas pour réduire la résistance au vent ; les inverted coasters suspendent les passagers sous la bande ; les wing coasters positionnent les passagers sur les côtés sans bande dessous ; les flying coasters montent les passagers face vers le bas. Les fabricants comme B&M, Intamin et Mack chacun ont des conceptions de wagon distinctives.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Voiture', 'Car'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Harnais de genoux',
+    shortDefinition:
+      'Un harnais horizontal de sécurité sur les genoux, permettant plus de liberté de mouvement que les harnais d\'épaules.',
+    definition:
+      'Un harnais de genoux est un dispositif de sécurité horizontal qui immobilise les passagers sur la région des cuisse. Contrairement aux harnais d\'épaules qui enferment entièrement le torse, les harnais de genoux permettent au haut du corps de se déplacer plus librement, créant une sensation plus ouverte et moins restrictive. Les harnais de genoux sont standard sur la plupart des hypercoasters, gigas et de nombreuses montagnes russes traditionnelles. Pendant les moments d\'airtime, les harnais de genoux permettent aux passagers de ressentir pleinement l\'éjection du siège, créant la sensation que seul le harnais les empêche de voler hors du véhicule.\n\nLes harnais de genoux sont préférés par les passionnés pour les montagnes russes à fort airtime car ils fournissent la sensation d\'airtime la plus sans entrave. Cependant, ils nécessitent un positionnement approprié et peuvent être inconfortables sur certaines morphologies. Les fabricants ont continuellement affiné la conception des harnais de genoux au fil des décennies, et les modèles modernes sont nettement plus confortables que les générations antérieures.',
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Harnais de lap'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Harnais d\'épaules',
+    shortDefinition:
+      'Un harnais de sécurité par-dessus les épaules qui enferme entièrement le torse, limitant les mouvements pendant le trajet.',
+    definition:
+      'Un harnais d\'épaules est un dispositif de sécurité qui descend sur les deux épaules et traverse les genoux, enfermant entièrement le torse. Les harnais d\'épaules étaient standard sur les montagnes russes des années 1980 aux 2000 et restent courants sur les inverted coasters, certains suspended coasters et les attractions familiales où la sécurité maximale est prioritaire. Les harnais modernes incluent des mécanismes de cliquet permettant une tension variable pour accommoder différentes morphologies.\n\nLorsqu\'on est assis dans un harnais d\'épaules sur une montagne russe à fort airtime, la sensation est notablement différente d\'un harnais de genoux : les passagers ne peuvent pas s\'élever du siège de manière aussi dramatique car le harnais les tient vers le bas. Ce compromis — sécurité et confort accrus par rapport à une sensation d\'airtime moins intense — est un choix de conception clé que les fabricants font.',
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['Harnais OTS'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Souvenir',
+    shortDefinition:
+      'Un objet commémoratif ou petit article acheté dans un parc à thème pour se souvenir d\'une visite.',
+    definition:
+      'Un souvenir est un objet commémoratif physique — merchandise, vêtements ou article de collection — acheté par les visiteurs pour se souvenir de leur visite au parc. Les souvenirs courants incluent les t-shirts avec logo du parc, chapeaux, épingles, cartes postales et figurines à thème. Les souvenirs servent deux fonctions : pratique (vêtements portables) et émotionnelle (ancrer les souvenirs d\'une visite spécifique).\n\nLes parcs à thème dépendent fortement des ventes de souvenirs comme source de revenus ; la merchandise porte généralement une marge de 2–3x par rapport aux prix de détail. Pour les visiteurs passionnés, collecter des souvenirs de plusieurs parcs fait partie de l\'expérience — accumuler des épingles, les échanger avec d\'autres, ou construire une étagère commémorative.',
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Mémento', 'Keepsake'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      'Produits et biens officiels vendus par un parc à thème, y compris les vêtements, les collectibles et les articles thématiques.',
+    definition:
+      'La merchandise désigne tous les biens vendus par un parc à thème — des vêtements de marque (t-shirts, sweats, casquettes) aux collectibles (épingles, figurines, peluches), merchandise alimentaire/boissons, et articles spécialisés à thème liés à des attractions spécifiques ou des franchises. Les parcs à thème opèrent des opérations de merchandise massives couvrant des dizaines de boutiques, chariots mobiles et boutiques situées. La merchandise est un pilier critique des revenus pour les parcs, générant souvent 15–25% des dépenses totales des visiteurs, deuxième après la nourriture et les boissons.\n\nLes parcs modernes utilisent des stratégies de merchandising sophistiquées : articles d\'édition limitée saisonnière, merchandise de collaboration avec des franchises populaires, designs exclusifs au parc indisponibles ailleurs, et versions spéciales liées aux nouvelles ouvertures d\'attractions ou aux anniversaires.',
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Boutique de souvenirs',
+    shortDefinition:
+      'Un magasin de vente au détail dans un parc à thème vendant des souvenirs, merchandise et produits à thème.',
+    definition:
+      'Une boutique de souvenirs est un espace de vente au détail au sein d\'un parc à thème dédié à la vente de souvenirs, merchandise et produits thématiques — soit situé dans une zone centrale (comme une place principale) ou intégré dans des zones thématiques spécifiques et des attractions. Les grands parcs opèrent des dizaines de boutiques de souvenirs, des petits chariots aux grands magasins. Les boutiques sont soigneusement positionnées aux points de fort passage : files de sortie des attractions majeures, couloirs d\'hôtel, entrées/sorties de parc où les visiteurs ont du temps libre et une inclinaison à acheter.\n\nLes boutiques de souvenirs modernes utilisent un design de vente au détail sophistiqué : positionnement d\'entrée, environnement thématique et placement stratégique de produits. De nombreuses attractions font passer les visiteurs directement à travers des zones de merchandise — une stratégie éprouvée pour amplifier les achats impulsifs. Les parcs utilisent de plus en plus la merchandise IP (licences et franchises) pour justifier les prix premium.',
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Boutique de souvenirs'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Exclusivité du parc',
+    shortDefinition:
+      'Un produit ou article disponible uniquement dans un parc à thème spécifique, indisponible à l\'achat ailleurs.',
+    definition:
+      'La merchandise exclusive au parc est un produit conçu et vendu uniquement dans un parc à thème spécifique ou au sein d\'un système de parcs — indisponible à l\'achat chez aucun détaillant externe. Les articles exclusifs au parc créent une rareté perçue, encouragent les achats impulsifs du sentiment que l\'article n\'existe nulle part ailleurs, et justifient une majoration de prix premium (souvent 2–3x la majoration de vente au détail typique). Les exclusivités courantes incluent vêtements d\'édition limitée, épingles de collection, articles à thème liés aux ouvertures de nouvelles attractions ou aux événements saisonniers.\n\nLa stratégie de l\'exclusivité au parc est fondamentale à la psychologie marchande moderne : les visiteurs ayant voyagé loin et dépensé considérablement pour l\'admission se sentent poussés à acheter des articles qu\'ils ne peuvent pas obtenir à la maison. Les marchés secondaires (plateformes de revente en ligne) démontrent que les exclusivités rares et désirables au parc conservent et apprécient la valeur, promouvant davantage le comportement de collection.',
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Exclusif', 'Article exclusif au parc'],
+  },
 ];
 
 export default translations;

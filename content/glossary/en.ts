@@ -962,6 +962,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Roller Coaster Elements'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Front Row',
+    shortDefinition:
+      'The first row of seats in a ride vehicle, typically offering the best view and often the most intense airtime sensation.',
+    definition:
+      "The front row is the first row of seats in a coaster train or ride vehicle. Front row seats offer unobstructed forward views, making them highly prized for the visual experience of navigating a coaster's layout. On hypercoasters and giga coasters, front row seats often experience the most intense airtime during the first drop and subsequent hills, as riders have no one in front to block their sensation of space. The psychological effect of seeing the drop approaching — and then plunging into it with nothing ahead — enhances the thrill factor beyond what middle or back rows provide.\n\nOn many coasters, front row has become so desirable that parks offer queue bypasses or express lane reservations specifically for this seat position. At some parks, guests wait in separate front-row-only queues, which can add 10–30 minutes to the experience but may be worth it for first-time riders seeking maximum psychological impact.",
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Front Seat', 'First Row'],
+  },
+  {
+    id: 'back-row',
+    name: 'Back Row',
+    shortDefinition:
+      'The last row of seats in a ride vehicle, known for intense airtime and extended hanging sensations on hill-heavy layouts.',
+    definition:
+      "The back row is the final row of seats in a coaster train or ride vehicle. Back row rides on hill-heavy coasters — hypers, gigas, and airtime-focused designs — are prized by enthusiasts for producing the most intense ejector airtime. As each successive hill completes, the back row experiences sustained negative G-forces as the train goes over the crest and passengers are ejected upward from their seats (held in only by restraints). This effect compounds across multiple hills: back row airtime is typically stronger, more prolonged, and more intense than front or middle row.\n\nOn coasters like Goliath (Walibi Holland) or Shambhala (PortAventura), back row is considered the prime seating position by coaster enthusiasts. The downside is that back rows can feel rough or rattled on older coasters, and on steep drops back row produces a different psychological profile — you see the crest disappear beneath you rather than plunging into the abyss. Enthusiast culture has established rankings of where on a coaster the best riding positions are, and back row consistently ranks at the top for airtime intensity.",
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Back Seat', 'Last Row'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Middle Row',
+    shortDefinition:
+      'The center rows of a ride vehicle, offering a balanced experience between front and back row sensations.',
+    definition:
+      "The middle rows are the central seats in a multi-row coaster train or ride vehicle — positioned between the intense front-row psychological impact and the ejector airtime of the back row. Middle rows tend to offer a balanced, moderate experience: enough forward view to see the layout approaching, sufficient airtime to feel significant negative Gs, but neither the extremes of front or back. For families or first-time riders nervous about intensity, middle rows provide an approachable coaster experience.\n\nMiddle rows receive less discussion in enthusiast circles because they are neither specialized for a particular sensation nor offer the extreme versions of either front-row or back-row experiences. However, on coasters with extended lateral forces or G-intensive turns, middle rows can sometimes feel the biggest compression simply due to their position in the train's center of mass. Layout analysis shows that middle rows consistently deliver solid mid-range thrills across most coaster types, making them a reliable choice when front or back row reservations are unavailable.",
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Middle Seat', 'Center Row'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Ride Cart',
+    shortDefinition:
+      'Individual vehicle or car in a roller coaster train that holds a row (or rows) of riders.',
+    definition:
+      "A ride cart (also called a car, train car, or simply train) is the individual carriage or vehicle segment that holds passengers on a roller coaster or other ride. A typical coaster train consists of multiple carts linked together, with each cart holding one or more rows of riders sitting back-to-back. Coaster manufacturers design cart dimensions, seat positioning, and restraint geometry to optimise both comfort and sensation for the intended ride experience.\n\nCart design varies dramatically across coaster types: hyper coasters use streamlined, relatively low-profile carts to minimise wind resistance and noise; inverted coasters dangle riders below the track; wing coasters position riders on either side of a central rail with nothing beneath them; and flying coasters mount riders face-down on the train. Coaster manufacturers like B&M, Intamin, and Mack each have signature cart designs that influence how their rides feel. Understanding which manufacturer built a coaster often gives you clues about cart comfort, restraint tightness, and the nature of G-forces you'll experience.",
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Train Car', 'Coaster Car', 'Seat Car'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Lap Bar',
+    shortDefinition:
+      'A horizontal safety restraint across the rider\'s lap that allows a greater range of free movement than over-the-shoulder harnesses.',
+    definition:
+      "A lap bar is a horizontal safety restraint that pins riders securely across the upper thighs or lap area. Unlike over-the-shoulder harnesses that fully encase the torso, lap bars allow the upper body to move more freely, creating a more open, less restrictive sensation. Lap bars are the standard restraint on most modern hypercoasters, giga coasters, and many traditional steel and wooden coasters. During airtime moments, lap bars let riders experience the full sensation of being ejected upward from the seat, creating the sensation that only the bar prevents them from flying out of the vehicle.\n\nLap bars are preferred by enthusiasts for high-airtime coasters because they provide the most uninhibited airtime sensation — the gap between rider and seat is immediately noticeable. However, lap bars require proper positioning and can feel uncomfortable on riders with longer torsos or certain body shapes if the bar doesn't fit ideally. Coaster manufacturers have continuously refined lap bar design over decades, and modern lap bars are significantly more comfortable than earlier generations. On coasters with intense lateral forces, the lap bar may slide back and forth slightly during sharp turns, which some riders find annoying and others find thrilling.",
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Lap Restraint', 'Lap Harness'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Shoulder Harness',
+    shortDefinition:
+      'An over-the-shoulder safety restraint that fully encloses the torso, limiting movement during the ride.',
+    definition:
+      "A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses include ratcheting mechanisms that allow for varying tightness to accommodate different rider builds.\n\nWhen sitting in a shoulder harness on a high-airtime coaster, the sensation is notably different from a lap bar: riders cannot rise from the seat as dramatically because the shoulder restraint holds them down. This trade-off — greater security and comfort for some riders versus less intense airtime sensation — is a key design choice manufacturers make. Enthusiasts generally prefer lap bars for airtime-heavy coasters and consider shoulder harnesses slightly less thrilling for that purpose, though they can feel more secure and comfortable for nervous riders or on coasters with intense lateral forces.",
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['OTS Harness', 'Over-the-shoulder Restraint'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Souvenir',
+    shortDefinition:
+      'A memento or small item purchased at a theme park to commemorate a visit.',
+    definition:
+      "A souvenir is a physical memento — merchandise, apparel, or collectible item — purchased by visitors to remember their theme park experience. Common souvenirs include t-shirts with park logos, hats, pins, postcards, stuffed animals, and themed collectibles. Souvenirs serve both a functional purpose (wearable clothing) and an emotional one — they anchor memories of a specific visit and create lasting connections to beloved parks and attractions.\n\nTheme parks rely heavily on souvenir sales as a revenue stream; merchandise typically carries 2–3× markup compared to retail retail prices. Parks design souvenir photography moments into themed lands and attractions specifically to encourage impulse purchases. Limited-edition or seasonal souvenirs create urgency, while park-exclusive items (available nowhere else) drive higher prices and repeat visits. For many guests, collecting souvenirs from multiple parks is part of the experience — gathering pins, trading them with others, or building a commemorative shelf.",
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Memento', 'Keepsake'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      'Official products and goods sold by a theme park, including apparel, collectibles, and themed items.',
+    definition:
+      "Merchandise refers to all goods sold by a theme park — from branded apparel (t-shirts, hoodies, hats) to collectibles (pins, figurines, plushies), food/drink merchandise, and specialty themed items tied to specific attractions or franchises. Theme parks operate vast merchandise operations spanning dozens of shops, mobile carts, and location-specific boutiques. Merchandise is a critical revenue pillar for parks, often generating 15–25% of total guest spending, second only to food and beverages.\n\nModern parks use sophisticated merchandising strategies: limited-edition seasonal items, collaboration merchandise with popular franchises, park-exclusive designs unavailable anywhere else, and special releases tied to new attraction openings or anniversaries. Merchandise design is increasingly data-driven — parks track which items sell fastest, photograph best for social media, and resonate most with repeat visitors. For dedicated fans, collecting merchandise from multiple visits becomes part of their park experience, and secondary markets exist where rare or sold-out items command premium prices.",
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Gift Shop',
+    shortDefinition:
+      'A retail store within a theme park selling souvenirs, merchandise, and themed products.',
+    definition:
+      "A gift shop is a retail space within a theme park dedicated to selling souvenirs, merchandise, and themed products — either located in a central area (like a main plaza) or integrated into specific themed lands and attractions. Major parks operate dozens of gift shops ranging from small carts to large departmental stores. Gift shops are carefully positioned at high-traffic bottleneck points: exit queues of major attractions, hotel corridors, and park entrances/exits where guests have downtime and purchasing inclination.\n\nModern gift shops use sophisticated retail design: entrance placement positions shoppers in impulsive-purchase zones, themed environments match the surrounding lands, and product placement highlights high-margin, visually-appealing items. Many attractions feature \"obligatory\" gift shops where exiting guests are funneled directly through the merchandise area — a proven retail strategy that inflates impulse purchases. Parks increasingly use IP merchandise (licensed brands and franchises) to command premium pricing. Collector-focused shops in premium resort hotels sell exclusive, limited-edition merchandise at significantly elevated price points.",
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Souvenir Shop', 'Retail Shop'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Park Exclusive',
+    shortDefinition:
+      'A product or item available only at a specific theme park or within the park system, unavailable for purchase elsewhere.',
+    definition:
+      "Park exclusive merchandise is a product designed and sold only at a specific theme park or within a park system (such as all Disney parks, or all Universal parks) — unavailable for purchase at any external retailer. Park-exclusive items create perceived scarcity, encourage impulse purchases from guests who believe they cannot obtain the item elsewhere, and command premium pricing (often 2–3× typical retail markup). Common park exclusives include limited-edition apparel, collectible pins, themed items tied to seasonal events or new attraction openings, and novelty food items.\n\nThe park-exclusive strategy is a cornerstone of modern merchandise psychology: guests traveling significant distances and spending considerable money on admission feel elevated impulse to purchase items they cannot get at home. Secondary markets (online resale platforms) demonstrate that truly limited, desirable park exclusives retain and appreciate in value, further driving collector behavior. Parks strategically design packaging and merchandising to emphasize the exclusive nature — tags reading \"Park Exclusive\" or \"Limited Release\" prominently feature on items. Theme park social media and forums frequently discuss which exclusives are most sought-after or rare, creating viral interest and FOMO (fear of missing out) among collector communities.",
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Exclusive', 'Park Exclusive Item'],
+  },
 ];
 
 export default translations;

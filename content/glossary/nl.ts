@@ -958,6 +958,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Achtbaanelementen'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Eerste rij',
+    shortDefinition:
+      'De eerste rij zitplaatsen in een achtbaantrein, meestal met het beste uitzicht en de meest intense airtime-sensaties.',
+    definition:
+      'De eerste rij is de eerste rij zitplaatsen in een achtbaantrein. Plaatsen in de eerste rij bieden een vrij uitzicht naar voren, zeer gewenst door passagiers voor de visuele ervaring. Op hypercoasters en gigacoasters ondervinden passagiers in de eerste rij meestal de meeste intense airtime tijdens de eerste daling, omdat zij niemand voor zich hebben die hun gevoel van ruimte blokkeert. Het psychologische effect van het zien van de daling die nadert — en vervolgens in het luchtledige te duiken — versterkt de spanning veel meer dan middelste of achterste rijen.\n\nOp veel achtbanen is de eerste rij zo gewenst dat parken bypass-wachtrijen of express-reserveringen specifiek voor deze zitpositie aanbieden.',
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Voorstoelplaats', 'Eerste plaats'],
+  },
+  {
+    id: 'back-row',
+    name: 'Achterste rij',
+    shortDefinition:
+      'De laatste rij zitplaatsen in een trein, bekend om intense airtime en uitgebreide schweefgevoelens op heuvelrijke layouts.',
+    definition:
+      'De achterste rij is de laatste rij zitplaatsen in een achtbaantrein. Achterplaatsen op heuvelrijke achtbanen — hypers, gigas en airtime-gerichte ontwerpen — zijn gewaardeerd door enthousiastelingen vanwege de meest intense ejector airtime. Bij elke opeenvolgende heuvel ervaart de achterste rij uitgebreide negatieve G-krachten terwijl de trein over de top gaat en passagiers uit hun stoelen worden geworpen (alleen door beveiliging gehouden). Dit effect stapelt zich over meerdere heuvels: achterste rij airtime is meestal sterker, langer en intenser dan voor- of middelste rij.\n\nOp coasters als Goliath of Shambhala wordt de achterste rij door enthousiastelingen als de beste zitpositie beschouwd.',
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Achterzitplaats', 'Laatste plaats'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Middelste rij',
+    shortDefinition:
+      'De middelste rijen van een achtbaantrein, biedend een evenwichtige ervaring tussen eerste en achterste rij.',
+    definition:
+      'De middelste rijen zijn de centrale zitplaatsen in een achtbaantrein — gepositioneerd tussen het intense psychologische effect van de eerste rij en de ejector airtime van de achterste rij. Middelste rijen bieden meestal een evenwichtige ervaring: voldoende uitzicht om het komende parcours te zien, aanzienlijke airtime, maar niet de uitersten van voor of achterkant. Voor gezinnen of eerstekeer-ruiters zenuwachtig voor intensiteit bieden middelste rijen een toegankelijker achtbaanervaring.\n\nMiddelste rijen ontvangen minder aandacht in enthusiastenkringen omdat ze niet gespecialiseerd zijn voor een bepaalde gewaarwording noch de extremen van voor- of achterkant bieden. Op achtbanen met uitgebreide zijwaartse krachten kunnen middelste rijen echter soms de grootste compressie voelen vanwege hun positie in het zwaartepunt van de trein.',
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Middelzitplaats', 'Middel rij'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Wagentje',
+    shortDefinition:
+      'Individueel voertuig of auto in een achtbaantrein dat een of meer rijen ruiters bevat.',
+    definition:
+      'Een wagentje (ook wel auto, car of eenvoudig treinwagentje genoemd) is het individuele voertuigsegment dat passagiers op een achtbaan bevat. Een typische achtbaantrein bestaat uit meerdere wagentjes aan elkaar gekoppeld, waarbij elk wagentje één of meer rijen passagiers rug-aan-rug bevat. Achtbaanfabrikanten ontwerpen wagentjesafmetingen, zitpositionering en beveiligingsgeometrie om zowel comfort als gewaarwording te optimaliseren.\n\nWagentjesontwerp varieert aanzienlijk tussen achtbaantypen: hypercoasters gebruiken gestroomlijnde, lage wagentjes om luchtweerstand te minimaliseren; omgekeerde coasters hangen ruiters onder het spoor; wing coasters positioneren ruiters aan weerszijden van een centraal spoor met niets eronder; flying coasters positioneren ruiters naar beneden gericht. Fabrikanten als B&M, Intamin en Mack hebben elk kenmerkende wagentjesontwerpen.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Auto', 'Car'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Schootbeugel',
+    shortDefinition:
+      'Een horizontale veiligheidsbalk over de schoot, die meer bewegingsvrijheid toestaat dan schouderbeugels.',
+    definition:
+      'Een schootbeugel is een horizontaal veiligheidsinrichting dat ruiters op de bovenbenen immobiliseert. In tegenstelling tot schouderbeugels die het gehele bovenlichaam omhullen, stellen schootbeugels het bovenlichaam in staat om vrijer te bewegen, wat een openere, minder beperkende gewaarwording creëert. Schootbeugels zijn standaard op de meeste moderne hypercoasters, gigacoasters en veel traditionele staal- en houten achtbanen. Tijdens airtimemomenten stellen schootbeugels ruiters in staat de volledige gewaarwording van uit de stoel worden geworpen te ervaren, wat het gevoel creëert dat alleen de balk hen in het voertuig houdt.\n\nSchootbeugels worden door enthousiastelingen voor hoogtiertime-achtbanen geprefereerd omdat zij de meest ongehinderde airtime-gewaarwording opleveren. Ze vereisen echter een juiste positionering en kunnen oncomfortabel zijn voor ruiters met langere rompjes. Fabrikanten hebben het schootbeugelontwerp in decennia voortdurend verfijnd, en moderne beugels zijn aanzienlijk comfortabeler dan eerdere generaties.',
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Schoot-beugel'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Schouderbeugel',
+    shortDefinition:
+      'Een over-de-schouder veiligheidsinrichting die het hele bovenlichaam omhult en beweging tijdens de rit beperkt.',
+    definition:
+      'Een schouderbeugel is een veiligheidsinrichting die over beide schouders en over de schoot komt, het gehele bovenlichaam volledig omhullend. Schouderbeugels waren standaard op achtbanen van de jaren \'80 tot 2000 en blijven gebruikelijk op omgekeerde coasters, sommige hangende coasters en family-attracties waar maximale veiligheid prioriteit heeft. Moderne beugels hebben click-mechanismen die verschillende strakheid toestaan om verschillende lichaamstypen aan te passen.\n\nWanneer je in een schouderbeugel op een hoogtiertime-achtbaan zit, is de gewaarwording aanzienlijk anders dan een schootbeugel: ruiters kunnen niet zo dramatisch uit de stoel omhoog komen omdat de beugel hen naar beneden houdt. Dit compromis — verbeterde veiligheid en comfort tegen minder intense airtime-gewaarwording — is een belangrijke ontwerkkeuze die fabrikanten maken.',
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['OTS-beugel'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Souvenir',
+    shortDefinition:
+      'Een herinneringsvoorwerp of klein artikel gekocht in een themapark ter herinnering aan een bezoek.',
+    definition:
+      'Een souvenir is een fysiek herinneringsvoorwerp — merchandise, kleding of verzamelarticle — gekocht door bezoekers om hun themapark-bezoek te herinneren. Veel voorkomende souvenirs zijn t-shirts met parklogo\'s, petten, spelden, ansichtkaarten en thema-pluche. Souvenirs vervullen zowel een functioneel doel (draagbare kleding) als een emotioneel — ze verankeren herinneringen aan een specifiek bezoek en creëren blijvende verbindingen met geliefde parken.\n\nThemaparken vertrouwen sterk op souvenirverkopen als inkomstenstream; merchandise draagt meestal een 2–3x opslag ten opzichte van retailprijzen. Voor veel gasten is het verzamelen van souvenirs uit meerdere parken deel van de ervaring — spelden verzamelen, ze met anderen uitwisselen of een herinneringsplank bouwen.',
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Souvenir', 'Aandenken'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      'Officiële producten en goederen verkocht door een themapark, inclusief kleding, verzamelobjekten en thema-artikelen.',
+    definition:
+      'Merchandise verwijst naar alle goederen verkocht door een themapark — van gemerkte kleding (t-shirts, hoodies, petten) tot verzamelobjekten (spelden, figurines, pluche), voedsel-/drankenmerchandise en speciaalverpakte thema-artikelen gebonden aan specifieke attracties of franchises. Themaparken opereren uitgebreide merchandiseoperaties met tientallen winkels, mobiele karren en gelokaliseerde boutiques. Merchandise is een kritische inkomstenpijler voor parken, die vaak 15–25% van totale gastpenditures genereren, tweede alleen na voedsel en dranken.\n\nModerne parken gebruiken geavanceerde merchandisingstrategieën: beperkte editie seizoensartikelen, collaboratie-merchandise met populaire franchises, parkexclusieve designs die nergens anders beschikbaar zijn, en speciale releases gekoppeld aan nieuwe attractie-openingen of jubilea.',
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Souvenirboutique',
+    shortDefinition:
+      'Een retailwinkel in een themapark die souvenirs, merchandise en thema-producten verkoopt.',
+    definition:
+      'Een souvenirboutique is een retailruimte in een themapark gewijd aan de verkoop van souvenirs, merchandise en thema-producten — gelegen in een centraal gebied (zoals een hoofdplein) of geïntegreerd in specifieke thema-gebieden en attracties. Grote parken beheren tientallen souvenirboutiques van kleine karren tot grote warenhuis-winkels. Souvenirboutiques zijn strategisch gepositioneerd op hoogverkeerspunten: uitgangsrijen van grote attracties, hotelgangen en park in-/uitgangen waar gasten vrij tijd hebben en aankoopaanleg voelen.\n\nModerne souvenirboutiques gebruiken geavanceerde retaildesign: ingangspositionering, thema-omgeving en strategische productplaatsing. Veel attracties leiden bezoekers rechtstreeks door merchandise-zones — een bewezen retailstrategie die impulscoupures versterkt. Parken gebruiken steeds meer IP-merchandise (gelicentieerde brands en franchises) om hogere prijzen te rechtvaardigen.',
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Souvenirwinkel'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Parkexclusief',
+    shortDefinition:
+      'Een product of artikel alleen beschikbaar in een specifiek themapark, niet verkrijgbaar elders.',
+    definition:
+      'Parkexclusieve merchandise is een product ontworpen en verkocht alleen in een specifiek themapark of in het parksysteem — niet verkrijgbaar bij enige externe retailer. Parkexclusieve artikelen creëren waargenomen schaarste, stimuleren impulsaankopen vanuit het gevoel dat het artikel nergens anders te verkrijgen is, en rechtvaardigen premiumprijs (vaak 2–3x typische retail markup). Veel voorkomende exclusiva zijn beperkte editie-kleding, verzamelspelden, thema-artikelen gekoppeld aan nieuwe attractieopeningen of seizoengebeurtenissen.\n\nDe parkexclusieve strategie is hoeksteen van moderne merchandisepsychologie: gasten die ver hebben gereisd en aanzienlijk voor toelating hebben uitgegeven, voelen verhoogde impulsaankoop voor artikelen die zij niet thuis kunnen verkrijgen. Secundaire markten (online wederverkoopplatforms) tonen aan dat zeldzame, gewenste parkexclusiva waarde behouden en waarderen, wat verdere verzamelgedrag stimuleert.',
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Exclusief'],
+  },
 ];
 
 export default translations;

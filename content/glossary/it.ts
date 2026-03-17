@@ -960,6 +960,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Elementi delle montagne russe'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Prima fila',
+    shortDefinition:
+      "La prima fila di sedili in un treno di montagne russe, che offre generalmente la migliore vista e le sensazioni più intense.",
+    definition:
+      "La prima fila è la prima fila di sedili in un treno di montagne russe. I posti in prima fila offrono una vista libera verso il basso, molto apprezzati dai passeggeri per l'esperienza visiva. Sui hypercoaster e gigas, la prima fila spesso sperimenta il massimo airtime durante il primo drop, poiché i passeggeri non hanno nessuno di fronte che blocchi la loro sensazione di spazio. L'effetto psicologico di vedere il drop avvicinarsi — e poi precipitare nel vuoto — aumenta il fattore brivido ben oltre quello delle file centrali o posteriori.\n\nSu molti coaster, la prima fila è diventata così desiderabile che i parchi offrono bypass delle code o prenotazioni express specificamente per questa posizione di seduta.",
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Primo sedile', 'Prima posizione'],
+  },
+  {
+    id: 'back-row',
+    name: 'Ultima fila',
+    shortDefinition:
+      "L'ultima fila di sedili in un treno, nota per l'airtime intenso e le sensazioni prolungate di sospensione su percorsi ricchi di colline.",
+    definition:
+      "L'ultima fila è l'ultima fila di sedili in un treno di montagne russe. I posti in ultima fila su coaster ricchi di colline — hypers, gigas, design focalizzati su airtime — sono apprezzati dagli appassionati per produrre il massimo airtime ejector. Su ogni collina successiva, l'ultima fila sperimenta forze G negative sostenute mentre il treno supera la cresta e i passeggeri vengono espulsi dai sedili (trattenuti solo dai dispositivi di sicurezza). Questo effetto si cumula su più colline: l'airtime in ultima fila è tipicamente più forte, più prolungato e più intenso rispetto alla fila anteriore o centrale.\n\nSu coaster come Goliath o Shambhala, l'ultima fila è considerata la posizione di seduta principale dagli appassionati.",
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Ultimo sedile', 'Ultima posizione'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Fila centrale',
+    shortDefinition:
+      "Le file centrali di un treno di montagne russe, che offrono un'esperienza equilibrata tra la prima e l'ultima fila.",
+    definition:
+      "Le file centrali sono i sedili al centro di un treno di montagne russe — posizionati tra l'impatto psicologico intenso della prima fila e l'airtime ejector dell'ultima fila. Le file centrali tendono a offrire un'esperienza equilibrata: visione sufficiente per vedere il layout che si avvicina, airtime significativo, ma nessuno degli estremi della prima o dell'ultima fila. Per le famiglie o i visitatori al primo viaggio nervosi per l'intensità, le file centrali forniscono un'esperienza di coaster più accessibile.\n\nLe file centrali ricevono meno discussione nei circoli di appassionati perché non sono specializzate per una particolare sensazione. Tuttavia, su coaster con forze laterali estese, le file centrali possono a volte sentire la più grande compressione semplicemente a causa della loro posizione nel centro di massa del treno.",
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Sedile centrale', 'Fila del mezzo'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Vagone',
+    shortDefinition:
+      "Veicolo o auto individuale in un treno di montagne russe che contiene una o più file di passeggeri.",
+    definition:
+      "Un vagone (anche chiamato auto, car o semplicemente vagone) è il segmento di veicolo individuale che contiene i passeggeri su una montagna russa. Un tipico treno coaster è composto da più vagoni collegati insieme, con ogni vagone che contiene una o più file di passeggeri seduti schiena contro schiena. I produttori di montagne russe progettano le dimensioni dei vagoni, il posizionamento dei sedili e la geometria dei dispositivi di sicurezza per ottimizzare sia il comfort che la sensazione.\n\nLa progettazione dei vagoni varia notevolmente tra i tipi di coaster: gli hypercoaster utilizzano vagoni snelli e a basso profilo per ridurre la resistenza aerodinamica; i coaster invertiti sospendono i passeggeri sotto la traccia; i wing coaster posizionano i passeggeri ai lati senza traccia sotto di loro; i flying coaster montano i passeggeri a faccia in giù. Produttori come B&M, Intamin e Mack hanno ciascuno progetti di vagone distintivi.",
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Auto', 'Car'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Barra inguinale',
+    shortDefinition:
+      "Un dispositivo di sicurezza orizzontale sulle ginocchia che consente maggiore libertà di movimento rispetto ai dispositivi sulle spalle.",
+    definition:
+      "Una barra inguinale è un dispositivo di sicurezza orizzontale che immobilizza i passeggeri sulle cosce superiori. A differenza dei dispositivi sulle spalle che avvolgono completamente il torso, le barre inguinali consentono al corpo superiore di muoversi più liberamente, creando una sensazione più aperta e meno restrittiva. Le barre inguinali sono standard sulla maggior parte dei coaster moderni, gigas e molti coaster tradizionali in acciaio e legno. Durante i momenti di airtime, le barre inguinali consentono ai passeggeri di sperimentare la piena sensazione di essere espulsi dal sedile, creando la sensazione che solo la barra li impedisce di volare fuori dal veicolo.\n\nLe barre inguinali sono preferite dagli appassionati per i coaster ad alto airtime perché forniscono la sensazione di airtime più inibita. Tuttavia, richiedono un corretto posizionamento e possono essere scomode per i rider con torsi più lunghi. I produttori hanno continuamente affinato il design della barra inguinale nel corso dei decenni, e le barre moderne sono significativamente più comode delle generazioni precedenti.",
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Dispositivo inguinale'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Dispositivo sulle spalle',
+    shortDefinition:
+      "Un dispositivo di sicurezza sulle spalle che avvolge completamente il torso, limitando il movimento durante il viaggio.",
+    definition:
+      "Un dispositivo sulle spalle (anche chiamato dispositivo sulle spalle o harness OTS) è un dispositivo di sicurezza che scende su entrambe le spalle e attraverso le ginocchia, avvolgendo completamente il torso. I dispositivi sulle spalle erano standard sui coaster dagli anni '80 ai 2000 e rimangono comuni sui coaster invertiti, su alcuni coaster sospesi e sulle attrazioni familiari dove la sicurezza massima è prioritaria. I dispositivi moderni includono meccanismi di cricchetto che consentono una tensione variabile per adattarsi a diversi tipi di corpo.\n\nQuando si è seduti in un dispositivo sulle spalle su un coaster ad alto airtime, la sensazione è notevolmente diversa da una barra inguinale: i passeggeri non possono sollevarsi dal sedile in modo così drammatico perché il dispositivo li tiene verso il basso. Questo compromesso — maggiore sicurezza e comfort rispetto a una sensazione di airtime meno intensa — è una scelta di design chiave che i produttori fanno.",
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['Dispositivo OTS'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Ricordo',
+    shortDefinition:
+      "Un oggetto commemorativo o un piccolo articolo acquistato in un parco a tema per ricordare una visita.",
+    definition:
+      "Un ricordo è un oggetto commemorativo fisico — merchandise, abbigliamento o articolo da collezione — acquistato dai visitatori per ricordare la loro visita al parco. I ricordi comuni includono magliette con loghi del parco, cappelli, spille, cartoline e peluche a tema. I ricordi servono sia uno scopo funzionale (abbigliamento indossabile) che uno emotivo — ancorano i ricordi di una visita specifica e creano connessioni durature con i parchi amati.\n\nI parchi a tema fanno molto affidamento sulle vendite di ricordi come flusso di entrate; il merchandise in genere porta un margine di 2–3x rispetto ai prezzi al dettaglio. Per molti ospiti, collezionare ricordi da più parchi è parte dell'esperienza — raccogliere spille, scambiarle con altri o costruire uno scaffale commemorativo.",
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Souvenir', 'Ricordo commemorativo'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      "Prodotti ufficiali venduti da un parco a tema, inclusi abbigliamento, articoli da collezione e articoli a tema.",
+    definition:
+      "Il merchandise si riferisce a tutti i beni venduti da un parco a tema — dall'abbigliamento di marca (magliette, felpe, cappelli) agli articoli da collezione (spille, figurine, peluche), merchandise alimentare/bevande e articoli a tema speciale legati ad attrazioni specifiche o franchise. I parchi a tema operano vaste operazioni di merchandise che coprono dozzine di negozi, carrelli mobili e boutique specifiche. Il merchandise è un pilastro critico delle entrate per i parchi, generando spesso il 15–25% della spesa totale degli ospiti, secondo solo al cibo e alle bevande.\n\nI parchi moderni utilizzano strategie di merchandising sofisticate: articoli a edizione limitata stagionali, merchandise di collaborazione con franchise popolari, design esclusivi del parco non disponibili da nessun'altra parte, e versioni speciali legate alle nuove aperture di attrazioni o agli anniversari.",
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Negozio di souvenir',
+    shortDefinition:
+      "Un negozio al dettaglio all'interno di un parco a tema che vende ricordi, merchandise e prodotti a tema.",
+    definition:
+      "Un negozio di souvenir è uno spazio al dettaglio all'interno di un parco a tema dedicato alla vendita di ricordi, merchandise e prodotti a tema — situato in un'area centrale (come una piazza principale) o integrato in aree tematiche specifiche e attrazioni. I grandi parchi gestiscono dozzine di negozi di souvenir che vanno da piccoli carrelli a grandi magazzini. I negozi di souvenir sono posizionati strategicamente nei punti di alto traffico: code di uscita dalle attrazioni principali, corridoi dell'hotel e ingressi/uscite del parco dove gli ospiti hanno tempo libero e inclinazione all'acquisto.\n\nI negozi di souvenir moderni utilizzano un design al dettaglio sofisticato: posizionamento dell'ingresso, ambiente a tema e collocamento strategico dei prodotti. Molte attrazioni fanno passare gli ospiti direttamente attraverso aree di merchandise — una strategia provata per aumentare gli acquisti d'impulso. I parchi utilizzano sempre più il merchandise IP (licenze e franchise) per giustificare i prezzi premium.",
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Negozio di ricordi'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Esclusiva del parco',
+    shortDefinition:
+      "Un prodotto o articolo disponibile solo in un parco a tema specifico, non disponibile per l'acquisto altrove.",
+    definition:
+      "Il merchandise esclusivo del parco è un prodotto progettato e venduto solo in un parco a tema specifico o all'interno di un sistema di parchi — non disponibile per l'acquisto presso alcun rivenditore esterno. Gli articoli esclusivi del parco creano scarsità percepita, incoraggiano gli acquisti d'impulso dalla sensazione che l'articolo non può essere ottenuto altrove, e giustificano il prezzo premium (spesso 2–3x il margine di vendita al dettaglio tipico). Gli articoli esclusivi comuni includono abbigliamento a edizione limitata, spille da collezione, articoli a tema legati alle aperture di nuove attrazioni o agli eventi stagionali.\n\nLa strategia esclusiva del parco è fondamentale per la psicologia del merchandising moderno: i visitatori che hanno viaggiato lontano e speso notevolmente per l'ammissione sentono un impulso elevato di acquistare articoli che non possono ottenere a casa. I mercati secondari (piattaforme di rivendita online) dimostrano che gli articoli esclusivi rari e desiderati del parco mantengono e apprezzano il valore, promuovendo ulteriormente il comportamento da collezionista.",
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Esclusivo'],
+  },
 ];
 
 export default translations;
