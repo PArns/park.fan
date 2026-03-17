@@ -758,7 +758,9 @@
       "planning": "Pianificazione",
       "attractions": "Attrazioni",
       "coasters": "Montagne russe",
-      "coaster-elements": "Elementi di coaster"
+      "coaster-elements": "Elementi di coaster",
+      "ride-experience": "Esperienza di giro",
+      "shopping": "Shopping"
     },
     "searchPlaceholder": "Cerca termini…",
     "noResults": "Nessun termine trovato per \"{query}\".",

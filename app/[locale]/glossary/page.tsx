@@ -59,6 +59,8 @@ const CATEGORY_ORDER: GlossaryCategory[] = [
   'attractions',
   'coasters',
   'coaster-elements',
+  'ride-experience',
+  'shopping',
 ];
 
 export default async function GlossaryPage({ params }: GlossaryPageProps) {

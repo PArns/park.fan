@@ -758,7 +758,9 @@
       "planning": "Planning",
       "attractions": "Attracties",
       "coasters": "Achtbanen",
-      "coaster-elements": "Coaster-elementen"
+      "coaster-elements": "Coaster-elementen",
+      "ride-experience": "Ritbeleving",
+      "shopping": "Winkelen"
     },
     "searchPlaceholder": "Termen zoeken…",
     "noResults": "Geen termen gevonden voor \"{query}\".",

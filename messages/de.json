@@ -758,7 +758,9 @@
       "planning": "Planung",
       "attractions": "Attraktionen",
       "coasters": "Achterbahnen",
-      "coaster-elements": "Achterbahnelemente"
+      "coaster-elements": "Achterbahnelemente",
+      "ride-experience": "Fahrerlebnis",
+      "shopping": "Shopping"
     },
     "searchPlaceholder": "Begriffe suchen…",
     "noResults": "Keine Begriffe für „{query}\" gefunden.",
