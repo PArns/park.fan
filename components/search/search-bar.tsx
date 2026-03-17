@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useQuery } from '@tanstack/react-query';
@@ -648,68 +649,98 @@ export function SearchCommand({
 
           {!isPending && results && results.results.length > 0 && (
             <>
-              {/* Group by type — locations first if present (e.g. "orlando" → show city before parks) */}
-              {(results.results.some((r) => r.type === 'location')
-                ? (['location', 'park', 'attraction', 'show', 'restaurant'] as const)
-                : (['park', 'attraction', 'show', 'restaurant', 'location'] as const)
-              ).map((type) => {
-                const items = results.results.filter((r) => r.type === type);
-                if (items.length === 0) return null;
+              {/* Build all category groups (including glossary), sort by best match score */}
+              {(() => {
+                const lowerQuery = debouncedQuery.toLowerCase();
+                const calcNameScore = (name: string): number => {
+                  const lower = name.toLowerCase();
+                  if (lower === lowerQuery) return 100;
+                  if (lower.startsWith(lowerQuery)) return 50;
+                  if (lower.includes(lowerQuery)) return 30;
+                  return 0;
+                };
 
-                // Sort by match score within each category (exact matches first)
-                const sortedItems = sortResultsByMatch(items);
+                const groups: { key: string; score: number; node: ReactNode }[] = [];
 
-                return (
-                  <CommandGroup
-                    key={type}
-                    heading={tSearch(`headings.${type}`, { count: items.length })}
-                  >
-                    {sortedItems.slice(0, 5).map((item, index) => renderResultItem(item, index))}
-                  </CommandGroup>
-                );
-              })}
+                const mainTypes = results.results.some((r) => r.type === 'location')
+                  ? (['location', 'park', 'attraction', 'show', 'restaurant'] as const)
+                  : (['park', 'attraction', 'show', 'restaurant', 'location'] as const);
 
-              {/* Glossary results */}
-              {glossaryData && glossaryData.results.length > 0 && (
-                <CommandGroup
-                  heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
-                >
-                  {glossaryData.results.map((item) => {
-                    const glossarySegments: Record<string, string> = {
-                      en: 'glossary',
-                      de: 'glossar',
-                      fr: 'glossaire',
-                      it: 'glossario',
-                      nl: 'woordenlijst',
-                      es: 'glosario',
-                    };
-                    const seg = glossarySegments[locale] ?? 'glossary';
-                    return (
-                      <CommandItem
-                        key={item.id}
-                        value={`${item.name} glossary`}
-                        onSelect={() => {
-                          handleOpenChange(false);
-                          router.push(`/${seg}/${item.slug}` as '/parks/europe');
-                        }}
-                        className="flex cursor-pointer items-center gap-4"
+                mainTypes.forEach((type) => {
+                  const items = results.results.filter((r) => r.type === type);
+                  if (items.length === 0) return;
+                  const sortedItems = sortResultsByMatch(items);
+                  const bestScore = Math.max(...sortedItems.map((item) => calcNameScore(item.name)));
+                  groups.push({
+                    key: type,
+                    score: bestScore,
+                    node: (
+                      <CommandGroup
+                        key={type}
+                        heading={tSearch(`headings.${type}`, { count: items.length })}
                       >
-                        <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-                          <BookOpen className="text-foreground/65 h-5 w-5" />
-                        </div>
-                        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                          <span className="truncate text-[15px] leading-none font-semibold">
-                            {item.name}
-                          </span>
-                          <span className="text-foreground/45 truncate text-xs">
-                            {item.shortDefinition}
-                          </span>
-                        </div>
-                      </CommandItem>
-                    );
-                  })}
-                </CommandGroup>
-              )}
+                        {sortedItems.slice(0, 5).map((item, index) =>
+                          renderResultItem(item, index)
+                        )}
+                      </CommandGroup>
+                    ),
+                  });
+                });
+
+                if (glossaryData && glossaryData.results.length > 0) {
+                  const glossarySegments: Record<string, string> = {
+                    en: 'glossary',
+                    de: 'glossar',
+                    fr: 'glossaire',
+                    it: 'glossario',
+                    nl: 'woordenlijst',
+                    es: 'glosario',
+                  };
+                  const seg = glossarySegments[locale] ?? 'glossary';
+                  const glossaryBestScore = calcNameScore(glossaryData.results[0].name);
+                  groups.push({
+                    key: 'glossary',
+                    score: glossaryBestScore,
+                    node: (
+                      <CommandGroup
+                        key="glossary"
+                        heading={tSearch('headings.glossary', {
+                          count: glossaryData.results.length,
+                        })}
+                      >
+                        {glossaryData.results.map((item) => (
+                          <CommandItem
+                            key={item.id}
+                            value={`${item.name} glossary`}
+                            onSelect={() => {
+                              handleOpenChange(false);
+                              router.push(`/${seg}/${item.slug}` as '/parks/europe');
+                            }}
+                            className="flex cursor-pointer items-center gap-4"
+                          >
+                            <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
+                              <BookOpen className="text-foreground/65 h-5 w-5" />
+                            </div>
+                            <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+                              <span className="truncate text-[15px] leading-none font-semibold">
+                                {item.name}
+                              </span>
+                              <span className="text-foreground/45 truncate text-xs">
+                                {item.shortDefinition}
+                              </span>
+                            </div>
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    ),
+                  });
+                }
+
+                // Sort all groups: exact matches (score=100) first, then by descending score
+                groups.sort((a, b) => b.score - a.score);
+
+                return groups.map((g) => g.node);
+              })()}
 
               {/* Link to full search page */}
               <div className="border-border/30 border-t p-3">
