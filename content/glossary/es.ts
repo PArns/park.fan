@@ -960,6 +960,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Elementos de montaña rusa'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Primera fila',
+    shortDefinition:
+      'La primera fila de asientos en un tren de montaña rusa, que generalmente ofrece la mejor vista y las sensaciones más intensas.',
+    definition:
+      'La primera fila es la primera fila de asientos en un tren de montaña rusa. Los asientos delanteros ofrecen una vista despejada hacia adelante, muy apreciados por los pasajeros para la experiencia visual. En hipercoasters y gigas, la primera fila a menudo experimenta el airtime más intenso durante la caída inicial, porque los pasajeros no tienen a nadie delante que bloquee su sensación de espacio. El efecto psicológico de ver la caída aproximarse — y luego precipitarse al vacío — amplifica la emoción mucho más allá de lo que las filas centrales o traseras proporcionan.\n\nEn muchas montañas rusas, la primera fila se ha vuelto tan deseable que los parques ofrecen desvíos de cola o reservas express específicamente para esta posición de asiento.',
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Asiento delantero', 'Primera posición'],
+  },
+  {
+    id: 'back-row',
+    name: 'Última fila',
+    shortDefinition:
+      'La última fila de asientos en un tren, conocida por airtime intenso y sensaciones prolongadas en recorridos ricos en colinas.',
+    definition:
+      'La última fila es la última fila de asientos en un tren de montaña rusa. Los asientos traseros en montañas rusas ricas en colinas — hypers, gigas, diseños enfocados en airtime — son apreciados por los entusiastas por producir el airtime eyector más intenso. En cada colina sucesiva, la última fila experimenta fuerzas G negativas sostenidas mientras el tren supera la cresta y los pasajeros se sienten expulsados de los asientos (mantenidos solo por arneses). Este efecto se acumula en múltiples colinas: el airtime en última fila es típicamente más fuerte, más prolongado e intenso que en filas delanteras o centrales.\n\nEn montañas rusas como Goliath o Shambhala, la última fila se considera la posición de asiento ideal por los entusiastas.',
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Asiento trasero', 'Última posición'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Fila central',
+    shortDefinition:
+      'Las filas centrales de un tren de montaña rusa, ofreciendo una experiencia equilibrada entre la primera y la última fila.',
+    definition:
+      'Las filas centrales son los asientos del centro de un tren de montaña rusa — posicionados entre el impacto psicológico intenso de la primera fila y el airtime eyector de la última fila. Las filas centrales tienden a ofrecer una experiencia equilibrada: vista suficiente para ver el trazado aproximándose, airtime significativo, pero sin los extremos de delante o atrás. Para familias o pasajeros novatos nerviosos por la intensidad, las filas centrales proporcionan una experiencia de montaña rusa más accesible.\n\nLas filas centrales reciben menos discusión entre los entusiastas porque no están especializadas para una sensación particular ni ofrecen los extremos de las filas delantera o trasera. Sin embargo, en montañas rusas con fuerzas laterales extensas, las filas centrales a veces pueden sentir la mayor compresión simplemente por su posición en el centro de masa del tren.',
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Asiento central', 'Fila del medio'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Carro',
+    shortDefinition:
+      'Vehículo individual o auto en un tren de montaña rusa que contiene una o más filas de pasajeros.',
+    definition:
+      'Un carro (también llamado auto, coche o simplemente carro del tren) es el segmento de vehículo individual que sostiene a los pasajeros en una montaña rusa. Un tren típico de coaster consta de múltiples carros enlazados, con cada carro conteniendo una o más filas de pasajeros sentados espalda con espalda. Los fabricantes de montañas rusas diseñan las dimensiones del carro, el posicionamiento del asiento y la geometría del arnés para optimizar tanto la comodidad como la sensación.\n\nEl diseño del carro varía dramáticamente entre tipos de montañas rusas: los hipercoasters usan carros aerodinámicos y bajos para minimizar la resistencia del aire; los coasters invertidos cuelgan pasajeros debajo de la vía; los wing coasters posicionan pasajeros a los lados sin vía debajo; los flying coasters montan pasajeros boca abajo. Fabricantes como B&M, Intamin y Mack tienen cada uno diseños de carro distintivos.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Auto', 'Coche'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Barra de regazo',
+    shortDefinition:
+      'Un arnés horizontal de seguridad sobre el regazo que permite mayor libertad de movimiento que los arneses de hombro.',
+    definition:
+      'Una barra de regazo es un dispositivo de seguridad horizontal que asegura a los pasajeros sobre los muslos superiores. A diferencia de los arneses de hombro que envuelven completamente el torso, las barras de regazo permiten que la parte superior del cuerpo se mueva más libremente, creando una sensación más abierta y menos restrictiva. Las barras de regazo son estándar en la mayoría de los hipercoasters, gigas y muchas montañas rusas de madera y acero tradicionales. Durante los momentos de airtime, las barras de regazo permiten a los pasajeros experimentar la sensación completa de ser expulsados del asiento, creando la sensación de que solo la barra evita que salgan del vehículo.\n\nLas barras de regazo son preferidas por los entusiastas para montañas rusas de alto airtime porque proporcionan la sensación de airtime más sin trabas. Sin embargo, requieren un posicionamiento adecuado y pueden sentirse incómodas para pasajeros con torsos más largos. Los fabricantes han refinado continuamente el diseño de la barra de regazo durante décadas, y los modelos modernos son significativamente más cómodos que las generaciones anteriores.',
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Arnés de regazo'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Arnés de hombro',
+    shortDefinition:
+      'Un arnés de seguridad sobre los hombros que envuelve completamente el torso, limitando el movimiento durante el viaje.',
+    definition:
+      'Un arnés de hombro es un dispositivo de seguridad que desciende sobre ambos hombros y a través de la cintura, envolviendo completamente el torso. Los arneses de hombro fueron estándar en montañas rusas desde los años \'80 hasta 2000 y siguen siendo comunes en coasters invertidos, algunos coasters suspendidos y atracciones familiares donde la seguridad máxima es prioridad. Los arneses modernos incluyen mecanismos de trinquete que permiten una tensión variable para acomodar diferentes tipos de cuerpo.\n\nCuando estás sentado en un arnés de hombro en una montaña rusa de alto airtime, la sensación es notablemente diferente de una barra de regazo: los pasajeros no pueden elevarse del asiento tan dramáticamente porque el arnés los mantiene hacia abajo. Este compromiso — mayor seguridad y comodidad frente a una sensación de airtime menos intensa — es una opción de diseño clave que hacen los fabricantes.',
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['Arnés OTS'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Recuerdo',
+    shortDefinition:
+      'Un artículo conmemorativo o pequeño producto comprado en un parque temático para recordar una visita.',
+    definition:
+      'Un recuerdo es un objeto conmemorativo físico — merchandise, ropa o artículo de colección — comprado por visitantes para recordar su visita al parque temático. Los recuerdos comunes incluyen camisetas con logos del parque, gorras, pines, postales y peluches temáticos. Los recuerdos sirven tanto un propósito funcional (ropa wearable) como emocional — anclan los recuerdos de una visita específica y crean conexiones duraderas con parques queridos.\n\nLos parques temáticos dependen fuertemente de las ventas de recuerdos como flujo de ingresos; la merchandise típicamente lleva un margen de 2–3x comparado con los precios al por menor. Para muchos visitantes, coleccionar recuerdos de múltiples parques es parte de la experiencia — reunir pines, intercambiarlos con otros, o construir un estante conmemorativo.',
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Souvenir', 'Recuerdo conmemorativo'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      'Productos y bienes oficiales vendidos por un parque temático, incluyendo ropa, coleccionables y artículos temáticos.',
+    definition:
+      'Merchandise se refiere a todos los bienes vendidos por un parque temático — desde ropa de marca (camisetas, sudaderas, gorras) hasta coleccionables (pines, figuritas, peluches), merchandise alimentario/bebidas, y artículos temáticos especializados vinculados a atracciones específicas o franquicias. Los parques temáticos operan vastas operaciones de merchandise abarcando docenas de tiendas, carritos móviles y boutiques localizadas. La merchandise es un pilar crítico de ingresos para los parques, generalmente generando 15–25% del gasto total de visitantes, segundo solo después de alimentos y bebidas.\n\nLos parques modernos utilizan estrategias de merchandising sofisticadas: artículos de edición limitada estacional, merchandise de colaboración con franquicias populares, diseños exclusivos del parque indisponibles en otros lugares, y versiones especiales vinculadas a nuevas aperturas de atracciones o aniversarios.',
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Tienda de regalos',
+    shortDefinition:
+      'Una tienda minorista dentro de un parque temático que vende recuerdos, merchandise y productos temáticos.',
+    definition:
+      'Una tienda de regalos es un espacio minorista dentro de un parque temático dedicado a la venta de recuerdos, merchandise y productos temáticos — ubicada en un área central (como una plaza principal) o integrada en áreas temáticas específicas y atracciones. Los parques grandes operan docenas de tiendas de regalos que van desde pequeños carritos hasta grandes almacenes. Las tiendas de regalos se posicionan estratégicamente en puntos de alto tráfico: filas de salida de atracciones principales, pasillos de hoteles, entradas/salidas de parque donde los visitantes tienen tiempo libre e inclinación a comprar.\n\nLas tiendas de regalos modernas utilizan diseño minorista sofisticado: posicionamiento de entrada, ambiente temático y colocación estratégica de productos. Muchas atracciones conducen a los visitantes directamente a través de áreas de merchandise — una estrategia probada para ampliar compras impulsivas. Los parques utilizan cada vez más merchandise IP (licencias y franquicias) para justificar precios premium.',
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Tienda de souvenirs'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Exclusiva del parque',
+    shortDefinition:
+      'Un producto o artículo disponible solo en un parque temático específico, no disponible para compra en otro lugar.',
+    definition:
+      'La merchandise exclusiva del parque es un producto diseñado y vendido solo en un parque temático específico o dentro de un sistema de parques — no disponible para compra en ningún minorista externo. Los artículos exclusivos del parque crean escasez percibida, incentivan compras impulsivas por el sentimiento de que el artículo no puede obtenerse en otro lugar, y justifican un precio premium (a menudo 2–3x el margen minorista típico). Los artículos exclusivos comunes incluyen ropa de edición limitada, pines de colección, artículos temáticos vinculados a nuevas aperturas de atracciones o eventos estacionales.\n\nLa estrategia de exclusiva del parque es central para la psicología de merchandise moderna: los visitantes que han viajado lejos y gastado considerablemente en admisión sienten impulso elevado de comprar artículos que no pueden obtener en casa. Los mercados secundarios (plataformas de reventa en línea) demuestran que los artículos exclusivos raros y deseables del parque retienen y aprecian valor, promoviendo aún más comportamiento coleccionista.',
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Exclusivo'],
+  },
 ];
 
 export default translations;

@@ -697,7 +697,9 @@ export function SearchCommand({
                     es: 'glosario',
                   };
                   const seg = glossarySegments[locale] ?? 'glossary';
-                  const glossaryBestScore = calcNameScore(glossaryData.results[0].name);
+                  // Glossary results found by API (which searches English names + aliases)
+                  // should rank higher than substring matches in other categories
+                  const glossaryBestScore = 40;
                   groups.push({
                     key: 'glossary',
                     score: glossaryBestScore,

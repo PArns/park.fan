@@ -960,6 +960,108 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
     aliases: ['Achterbahn-Elemente', 'Achterbahn-Elementen'],
   },
+  // ── Ride Experience ────────────────────────────────────────────────────────
+  {
+    id: 'front-row',
+    name: 'Erste Reihe',
+    shortDefinition:
+      'Die erste Reihe eines Fahrgeschäfts, oft mit bester Aussicht und intensivem Airtime-Erlebnis.',
+    definition:
+      'Die erste Reihe eines Achterbahn-Zugs bietet einen freien Blick nach vorne und gilt unter Gästen als begehrte Position. Bei Hypercoastern und Gigacoastern erleben Fahrgäste in der ersten Reihe beim ersten Drop intensives Airtime, da sie ungehindert sehen, wie der Drop näher kommt – und dann ins Leere stürzen. Der psychologische Effekt dieses ungehinderten Ausblicks vor dem Absturz verstärkt den Thrill deutlich.\n\nAuf vielen Achterbahnen ist die erste Reihe so begehrt, dass Parks separate Warteschlangen oder Express-Plätze nur für diese Sitzposition anbieten. Der längere Wartezeitraum kann sich für viele Fahrgäste lohnen, besonders beim ersten Mal, um die maximale psychologische Intensität zu erleben.',
+    relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
+    aliases: ['Erster Platz'],
+  },
+  {
+    id: 'back-row',
+    name: 'Letzte Reihe',
+    shortDefinition:
+      'Die letzte Reihe eines Fahrgeschäfts, bekannt für intensives Ejector Airtime auf Airtime-orientierten Layouts.',
+    definition:
+      'Die letzte Reihe eines Achterbahn-Zugs ist bei Enthusiasten für intensive Airtime-Empfindungen berühmt. Bei jeder Airtime-Kuppe erlebt die letzte Reihe den stärksten Effekt: Fahrgäste werden intensiv aus den Sitzen gehoben und von den Bügeln gehalten (Ejector Airtime). Dieser Effekt verstärkt sich über mehrere Hügel hinweg – das intensive, anhaltende Schwebelosigkeitsgefühl macht die letzte Reihe auf Airtime-Achterbahnen zur bevorzugten Position.\n\nBei Coastern wie Goliath oder Shambhala gilt die letzte Reihe als die beste Position für Enthusiasten. Der Nachteil: Letzte Reihen können auf älteren Achterbahnen rauer wirken, und bei steilen Drops sitzt man mit dem Blick auf die Kehre statt ins Leere. Enthusiasten-Rankings platzieren die letzte Reihe dennoch konsistent oben bei der Intensität des Airtime-Erlebnisses.',
+    relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
+    aliases: ['Letzter Platz'],
+  },
+  {
+    id: 'middle-row',
+    name: 'Mittlere Reihe',
+    shortDefinition:
+      'Die mittleren Reihen eines Fahrgeschäfts, die ein ausgewogenes Erlebnis zwischen erster und letzter Reihe bieten.',
+    definition:
+      'Die mittleren Reihen sitzen zwischen der intensiven psychologischen Wirkung der ersten Reihe und dem starken Ejector Airtime der letzten Reihe. Sie bieten ein ausgewogenes Erlebnis: genügend Ausblick auf die kommenden Elemente, moderates Airtime, aber ohne die Extreme der Randreihen. Für Familien oder erste Besucher sind mittlere Reihen eine zugänglichere Wahl.\n\nMittlere Reihen erhalten weniger Aufmerksamkeit von Enthusiasten, weil sie weder extreme Intensität noch spezielle Sensationen bieten. Auf Achterbahnen mit starken Seitenkräften können mittlere Reihen aber bemerkenswerte G-Effekte erzeugen. Sie sind eine verlässliche Wahl, wenn erste oder letzte Reihe nicht verfügbar sind.',
+    relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
+    aliases: ['Mittlerer Platz'],
+  },
+  {
+    id: 'ride-cart',
+    name: 'Fahrwagen',
+    shortDefinition:
+      'Einzelner Wagen oder Auto in einem Achterbahn-Zug, der eine oder mehrere Reihen von Fahrgästen aufnimmt.',
+    definition:
+      'Ein Fahrwagen (auch Auto, Wagen oder einfach Teil eines Zuges genannt) ist das einzelne Fahrzeug-Segment, das Fahrgäste auf einer Achterbahn hält. Ein typischer Achterbahn-Zug besteht aus mehreren Wagen, die aneinander gekoppelt sind und jeweils Fahrgäste in einer oder mehreren Reihen aufnehmen. Die Hersteller gestalten Wagengröße, Sitzbeschaffenheit und Bügel-Geometrie, um Komfort und Sensation zu optimieren.\n\nDie Wagenkonstruktion variiert dramatisch: Hypercoaster nutzen schlanke, niedrige Wagen zur Minderung von Luftwiderstand; Inverted Coaster hängen Fahrgäste unter der Schiene; Wing Coaster positionieren Fahrgäste seitlich mit nichts unter sich. Hersteller wie B&M, Intamin und Mack prägen mit ihren Designs die Fahrqualität erheblich. Der Hersteller gibt oft Hinweise auf Komfort, Bügel-Straffer und G-Kraft-Art.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
+    aliases: ['Wagen', 'Auto'],
+  },
+  {
+    id: 'lap-bar',
+    name: 'Schoßbügel',
+    shortDefinition:
+      'Ein horizontaler Sicherheitsbügel über dem Schoß, der mehr Bewegungsfreiheit als Schulterbügel ermöglicht.',
+    definition:
+      'Ein Schoßbügel ist ein horizontaler Sicherheitsbügel, der Fahrgäste über den Oberschenkeln festklemmt. Anders als Schulterbügel, die den ganzen Oberkörper umschließen, ermöglichen Schoßbügel mehr freie Bewegung – eine offenere, weniger eingeschränkte Empfindung. Schoßbügel sind Standard auf modernen Hypercoastern, Gigacoastern und vielen Stahl- und Holzachterbahnen. Während Airtime-Momenten ermöglichen Schoßbügel das volle Aufschwebensgefühl – Fahrgäste spüren deutlich den Abstand zwischen Sitz und Körper.\n\nScoßbügel werden von Enthusiasten für Airtime-Achterbahnen bevorzugt, weil sie das intensivste Airtime-Gefühl bieten. Allerdings können sie bei bestimmten Körperformen unbequem sein. Moderne Schoßbügel sind deutlich bequemer als frühere Generationen. Bei Achterbahnen mit starken Seitenkräften können Schoßbügel leicht vor- und zurück gleiten – was manche Fahrgäste störend, andere aufregend finden.',
+    relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
+    aliases: ['Schoss-Bügel'],
+  },
+  {
+    id: 'shoulder-harness',
+    name: 'Schulterbügel',
+    shortDefinition:
+      'Ein über-den-Schultern-Sicherheitsbügel, der den Oberkörper umschließt und Bewegung einschränkt.',
+    definition:
+      'Ein Schulterbügel ist ein Sicherheitssystem, das über beide Schultern und über den Schoß kommt und den Oberkörper vollständig umhüllt. Schulterbügel waren Standard auf Achterbahnen der 1980er und 2000er und bleiben verbreitet auf Inverted Coastern, manchen Suspended Coastern und Family-Rides, wo maximale Sicherheit Vorrang hat. Moderne Bügel haben Ratschenmechanismen, die unterschiedliche Engstellung ermöglichen.\n\nWenn man mit Schulterbügel auf einer Airtime-Achterbahn sitzt, fühlt sich das Erlebnis anders an: Fahrgäste können nicht so dramativ aus dem Sitz aufstehen, weil der Bügel sie festhält. Dieser Kompromiss – bessere Sicherheit gegen weniger intensive Airtime-Empfindung – ist ein bewusster Designentscheid. Enthusiasten bevorzugen Schoßbügel für Airtime-Achterbahnen, aber Schulterbügel fühlen sich für nervöse Fahrgäste sicherer an.',
+    relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
+    aliases: ['OTS-Bügel'],
+  },
+  // ── Shopping ───────────────────────────────────────────────────────────────
+  {
+    id: 'souvenir',
+    name: 'Andenken',
+    shortDefinition:
+      'Ein Erinnerungsstück oder kleines Objekt, das im Freizeitpark gekauft wird, um einen Besuch zu erinnern.',
+    definition:
+      'Ein Andenken ist ein physisches Erinnerungsstück – Merchandise, Kleidung oder Sammelobjekt – das Besucher kaufen, um ihren Parkbesuch zu erinnern. Häufige Andenken sind T-Shirts mit Park-Logos, Kappen, Pins, Postkarten, Plüschtiere und thematische Sammelobjekte. Andenken erfüllen zwei Funktionen: praktisch (tragbare Kleidung) und emotional (Erinnerungen verankern).\n\nFreizeitparks verdienen beträchtlich mit Andenken-Verkäufen; die Gewinnspanne beträgt typischerweise 2–3x Einzelhandelspreis. Parks inszenieren Andenken-Foto-Momente gezielt, um Impulskäufe zu fördern. Limitierte oder saisonale Andenken erzeugen Dringlichkeit, während Park-Exklusiv-Artikel höhere Preise ermöglichen. Für viele Gäste ist das Sammeln von Andenken aus mehreren Parks Teil des Erlebnisses.',
+    relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
+    aliases: ['Erinnerungsstück', 'Souvenir'],
+  },
+  {
+    id: 'merchandise',
+    name: 'Merchandise',
+    shortDefinition:
+      'Offizielle Produkte und Waren eines Freizeitparks, einschließlich Kleidung, Sammelobjekte und thematische Artikel.',
+    definition:
+      'Merchandise umfasst alle Waren eines Freizeitparks – von Markenbekleidung (T-Shirts, Hoodies, Kappen) über Sammelobjekte (Pins, Figuren, Plüschtiere) bis hin zu Spezial- und themengebundenen Artikeln. Parks betreiben umfangreiche Merchandise-Operationen über Dutzende Läden, mobile Verkaufswagen und spezialisierte Boutiquen. Merchandise ist eine kritische Einnahmequelle, oft 15–25% der Besucherausgaben.\n\nModerne Parks nutzen strategische Merchandising-Methoden: Limitierte saisonale Artikel, Kooperations-Merchandise mit beliebten Franchises, Park-exklusive Designs und Spezial-Releases zu neuen Eröffnungen. Merchandise-Design wird zunehmend datengesteuert – Parks verfolgen, welche Artikel am schnellsten verkaufen und am meisten auf Social Media funktionieren. Für dedizierte Fans wird Merchandise-Sammlung Teil ihrer Park-Erfahrung, und Sekundärmärkte existieren für seltene, ausverkaufte Artikel.',
+    relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
+    aliases: ['Merch'],
+  },
+  {
+    id: 'gift-shop',
+    name: 'Geschenkeladen',
+    shortDefinition:
+      'Ein Einzelhandelsladen in einem Freizeitpark, der Andenken und Merchandise verkauft.',
+    definition:
+      'Ein Geschenkeladen ist ein Einzelhandelspace innerhalb eines Freizeitparks für Andenken und thematische Produkte – entweder zentral oder integriert in thematische Bereiche. Große Parks betreiben Dutzende Läden von kleinen Verkaufswagen bis zu großen Abteilungsgeschäften. Geschenkeläden positionieren sich strategisch an Hochverkehrspunkten: Ausstiegsschlangen von Attraktionen, Hotelkorridore, Eingang/Ausgang.\n\nModerne Geschenkeläden nutzen Retail-Design: Eingangspositionierung, thematische Umgebung und geschickte Produktplatzierung. Viele Attraktionen führen Gäste direkt durch Merchandise-Bereiche – eine bewährte Strategie für Impulskäufe. Parks nutzen zunehmend lizenziertes IP-Merchandise zu Premium-Preisen. Sammler-fokussierte Läden in Premium-Resorts verkaufen exklusive Artikel zu deutlich höheren Preisen.',
+    relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
+    aliases: ['Souvenir-Laden', 'Laden'],
+  },
+  {
+    id: 'park-exclusive',
+    name: 'Parkexklusiv',
+    shortDefinition:
+      'Ein Produkt, das nur in einem bestimmten Freizeitpark erhältlich ist und nirgendwo sonst gekauft werden kann.',
+    definition:
+      'Park-exklusive Merchandise sind Produkte, die nur in einem bestimmten Park oder Parksystem verkauft werden – nirgendwo sonst erhältlich. Park-Exklusiva erzeugen Knappheit, fördern Impulskäufe durch das Gefühl der Nicht-Verfügbarkeit anderswo, und ermöglichen 2–3x höhere Preismargen. Häufige Exklusiva sind limitierte Kleidung, Sammel-Pins, thematische Artikel zu neuen Attraktionen und Novelty-Lebensmittel.\n\nDie Park-Exklusiv-Strategie ist psychologisch zentral: Gäste, die weit gereist sind und viel für Eintritt gezahlt haben, kaufen eher Artikel, die sie daheim nicht bekommen. Sekundärmärkte zeigen, dass begehrte, limitierte Park-Exklusiva an Wert gewinnen und sammlerische Verhaltensweisen fördern. Parks betonen strategisch „Park Exklusiv" auf Verpackungen. Online-Foren und Social Media zeigen ständig Diskussionen über die begehrtesten oder rärsten Exklusiva.',
+    relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
+    aliases: ['Exklusiv'],
+  },
 ];
 
 export default translations;

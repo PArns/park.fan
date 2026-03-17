@@ -129,11 +129,11 @@ function generateClientDataFile(allTerms) {
   const termsObject = Object.entries(allTerms)
     .map(([termId, data]) => {
       const nameObj = Object.entries(data.name)
-        .map(([locale, name]) => `      ${locale}: '${name.replace(/'/g, "\\'")}'`)
+        .map(([locale, name]) => `      ${locale}: "${name.replace(/"/g, '\\"')}"`)
         .join(',\n');
 
       const defObj = Object.entries(data.shortDefinition)
-        .map(([locale, def]) => `      ${locale}: '${def.replace(/'/g, "\\'")}'`)
+        .map(([locale, def]) => `      ${locale}: "${def.replace(/"/g, '\\"')}"`)
         .join(',\n');
 
       return `  '${termId}': {
