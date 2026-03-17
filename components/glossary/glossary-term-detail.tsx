@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
+import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
@@ -47,7 +48,7 @@ export function GlossaryTermDetail({
                 <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                {term.shortDefinition}
+                <GlossaryInject>{term.shortDefinition}</GlossaryInject>
               </p>
             </div>
             {/* Category footer strip */}
@@ -61,7 +62,9 @@ export function GlossaryTermDetail({
           <Card className="border-primary/10 px-6 py-4 shadow-sm">
             <div className="text-foreground/85 space-y-3 leading-relaxed">
               {term.definition.split('\n\n').map((para, i) => (
-                <p key={i}>{para}</p>
+                <p key={i}>
+                  <GlossaryInject>{para}</GlossaryInject>
+                </p>
               ))}
             </div>
           </Card>
