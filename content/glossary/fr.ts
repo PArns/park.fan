@@ -27,6 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Une file d'attente virtuelle permet aux visiteurs de s'inscrire pour une attraction via une application ou une borne et de recevoir une notification quand leur tour approche. Au lieu de faire la queue physiquement, les visiteurs peuvent profiter d'autres zones du parc et revenir lorsqu'ils sont appelés.",
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ["Files d'attente virtuelles"],
   },
   {
     id: 'express-pass',
@@ -53,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Le niveau d'affluence décrit la densité globale de visiteurs dans un parc un jour ou une heure donnés. park.fan utilise une échelle de Très Faible à Extrême basée sur les données historiques de temps d'attente, l'occupation actuelle et les prévisions IA.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ["Niveaux d'affluence"],
   },
   {
     id: 'crowd-calendar',
@@ -873,6 +875,16 @@ const translations: GlossaryTermTranslation[] = [
       "Une prévision de fréquentation est une prédiction basée sur les données de l'affluence attendue dans un parc à thème pour un jour ou une heure spécifique. park.fan recalcule les prévisions de fréquentation quotidiennement en utilisant les données historiques, les calendriers scolaires, la météo et les événements spéciaux. Les résultats alimentent directement le calendrier de fréquentation : les jours verts indiquent de courtes files d'attente, les jours rouges signalent une forte affluence.",
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
     aliases: ['Prévisions de fréquentation'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Élément de montagnes russes',
+    shortDefinition:
+      "Une section ou caractéristique nommée d'une montagne russe, comme un looping, une bosse d'airtime ou une inversion.",
+    definition:
+      "Un élément de montagnes russes désigne toute caractéristique distincte et nommée intégrée dans le tracé d'une montagne russe — des inversions classiques comme les loopings et les tire-bouchons aux éléments non-inversants comme les bosses d'airtime, les hélices et les virages surélevés (overbanks). Les ingénieurs conçoivent chaque élément pour produire une sensation physique précise : apesanteur (airtime), forces G latérales ou la désorientation de la tête en bas.\n\nLe glossaire de park.fan répertorie des dizaines d'éléments individuels — du premier drop et du lifthill aux spécialités modernes comme le Stengel dive, le Norwegian loop et le heartline roll.",
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Éléments de montagnes russes'],
   },
 ];
 

@@ -877,6 +877,16 @@ const translations: GlossaryTermTranslation[] = [
       "Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren — geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).",
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
+  {
+    id: 'roller-coaster-element',
+    name: 'Achterbahn-Element',
+    shortDefinition:
+      'Ein benannter Streckenabschnitt einer Achterbahn, z. B. Looping, Airtime-Hügel oder Inversion.',
+    definition:
+      'Ein Achterbahn-Element bezeichnet einen eigenständigen, benannten Teil einer Achterbahn-Strecke – von klassischen Inversionen wie Looping und Korkenzieher bis hin zu nicht-invertierenden Elementen wie Airtime-Hügeln, Helices und überneigten Kurven (Overbanks). Ingenieure gestalten jedes Element gezielt, um ein bestimmtes körperliches Erlebnis zu erzeugen: Schwerelosigkeit (Airtime), seitliche G-Kräfte oder die Desorientierung beim Kopf-über-Fahren. Enthusiasten und Hersteller weltweit verwenden präzise Begriffe für diese Elemente, um Coaster-Designs zu beschreiben und zu vergleichen.\n\nDas park.fan-Glossar erklärt Dutzende solcher Elemente – vom ersten Drop und Lifthill bis hin zu modernen Spezialformen wie dem Stengel Dive, Norwegian Loop und Heartline Roll.',
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Achterbahn-Elemente', 'Achterbahn-Elementen'],
+  },
 ];
 
 export default translations;

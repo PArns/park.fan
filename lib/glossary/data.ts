@@ -1150,6 +1150,19 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'rollback',
     },
   },
+  // ── Roller Coaster Element (meta term) ────────────────────────────────────
+  {
+    id: 'roller-coaster-element',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'roller-coaster-element',
+      de: 'achterbahn-element',
+      fr: 'element-montagnes-russes',
+      it: 'elemento-montagne-russe',
+      nl: 'achtbaanelement',
+      es: 'elemento-montana-rusa',
+    },
+  },
   // ── New Attractions ────────────────────────────────────────────────────────
   {
     id: 'animatronics',

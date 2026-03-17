@@ -27,6 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Una coda virtuale permette agli ospiti di registrarsi per un'attrazione tramite un'app o un chiosco e ricevere una notifica quando si avvicina il loro turno. Invece di fare la coda fisicamente, gli ospiti possono godersi altre aree del parco e tornare quando chiamati.",
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ['Code virtuali'],
   },
   {
     id: 'express-pass',
@@ -54,6 +55,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Il livello di affluenza descrive la densità complessiva dei visitatori in un parco in un dato giorno o momento. park.fan utilizza una scala da Molto Basso a Estremo basata sui dati storici dei tempi di attesa, l'occupazione attuale e le previsioni IA.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Livelli di affluenza'],
   },
   {
     id: 'crowd-calendar',
@@ -873,6 +875,16 @@ const translations: GlossaryTermTranslation[] = [
       "Una previsione affluenza è una previsione basata sui dati di quanto sarà affollato un parco a tema in un giorno o a un'ora specifica. park.fan ricalcola le previsioni di affluenza quotidianamente utilizzando dati storici di presenze, calendari scolastici, dati meteorologici ed eventi speciali. I risultati alimentano direttamente il calendario delle affluenze: i giorni verdi indicano code brevi, i giorni rossi segnalano affluenza di punta con lunghi tempi di attesa.",
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
     aliases: ['Previsioni affluenza'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Elemento delle montagne russe',
+    shortDefinition:
+      "Una sezione o caratteristica denominata di una montagna russa, come un looping, una collina airtime o un'inversione.",
+    definition:
+      "Un elemento delle montagne russe è qualsiasi caratteristica distinta e denominata incorporata nel percorso di una montagna russa — dalle classiche inversioni come looping e cavatappi agli elementi non invertenti come le colline airtime, le eliche e le curve sopraelevate (overbank). Gli ingegneri progettano ogni elemento per produrre una specifica sensazione fisica: assenza di peso (airtime), forze G laterali o il disorientamento da capogiro.\n\nIl glossario di park.fan copre decine di elementi individuali — dal primo drop e dal lifthill alle specialità moderne come lo Stengel dive, il Norwegian loop e l'heartline roll.",
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Elementi delle montagne russe'],
   },
 ];
 

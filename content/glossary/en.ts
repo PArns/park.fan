@@ -27,6 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A virtual queue (sometimes called a boarding group or return time) lets guests register for a ride via a park app or kiosk and receive a notification when their turn is approaching. Instead of standing in a physical queue, guests can explore other attractions, eat, or rest until their group is called. Parks use virtual queues for their highest-demand new attractions where physical queuing would create dangerous or unmanageable crowd concentrations.\n\nVirtual queues typically open at a fixed time — often the moment the park gates open — and can fill within minutes on busy days. Disney has used the system for Star Wars: Rise of the Resistance and Tron Lightcycle Run; Universal introduced it for Hagrid's Magical Creatures Motorbike Adventure. The key planning insight is that securing a virtual queue spot is often the very first thing you should do upon entering the park, before visiting any other attraction.",
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ['Virtual Queues'],
   },
   {
     id: 'express-pass',
@@ -54,6 +55,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Crowd level describes the overall visitor density at a park on a given day or time. park.fan uses a scale from Very Low to Extreme based on historical wait time data, current occupancy patterns, and AI-driven predictions. A Very Low day means short queues across almost all attractions, a relaxed atmosphere, and manageable crowds at restaurants. An Extreme day means the park is operating near maximum capacity, with waits of 90 minutes or more for popular rides and queues forming even at quick-service food outlets.\n\nCrowd levels are shaped by school holidays, public holidays, special events (fireworks, Halloween nights), seasonal patterns, and even weather forecasts. Understanding how these factors combine is essential for planning a visit that matches your priorities. park.fan's crowd calendar presents this data in an easy day-by-day view so you can identify windows of lower attendance weeks or months in advance.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Crowd Levels'],
   },
   {
     id: 'crowd-calendar',
@@ -877,6 +879,16 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A trackless ride is a type of dark ride where vehicles are not constrained to a fixed track but navigate autonomously through the attraction space, guided by induction loops, Wi-Fi positioning systems, or laser/optical guidance embedded in the floor. The freedom of movement allows for dramatically more complex scene layouts, non-linear storytelling, and sequences where vehicles approach scenes from multiple angles, spin to face different directions, or travel through the same space as other vehicles simultaneously.\n\nTrackless technology is increasingly the standard for major new dark ride investments. Star Wars: Rise of the Resistance at Disneyland Paris and Walt Disney World uses trackless vehicles as part of an extraordinarily complex multi-room experience. Ratatouille: The Adventure at Disneyland Paris was an early and beloved European example when it opened in 2014. Symbolica at Efteling in the Netherlands is another celebrated trackless ride that has become a flagship attraction. The flexibility of the format allows designers to create entirely new storytelling possibilities that the fixed-track dark ride format simply cannot replicate.',
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Roller Coaster Element',
+    shortDefinition:
+      'A named section or feature of a roller coaster track, such as a loop, airtime hill, or inversion.',
+    definition:
+      "A roller coaster element is any distinct, named feature incorporated into a coaster's layout — from classic inversions like vertical loops and corkscrews to non-inverting elements like airtime hills, helices, and overbanks. Engineers design each element to produce a specific physical sensation: weightlessness (airtime), lateral G-forces, or the disorientation of going upside down. Coaster enthusiasts and manufacturers use precise names for these features to describe, compare, and rate ride designs worldwide.\n\npark.fan's glossary covers dozens of individual coaster elements — from the first drop and lifthill that open every ride to advanced features like the Stengel dive, Norwegian loop, and heartline roll found on modern steel coasters.",
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Roller Coaster Elements'],
   },
 ];
 

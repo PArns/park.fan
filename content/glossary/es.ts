@@ -27,6 +27,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una cola virtual permite a los visitantes registrarse para una atracción a través de una app o quiosco y recibir una notificación cuando se acerca su turno. En lugar de hacer cola físicamente, los visitantes pueden disfrutar de otras áreas del parque y regresar cuando sean llamados.',
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
+    aliases: ['Colas virtuales'],
   },
   {
     id: 'express-pass',
@@ -54,6 +55,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El nivel de afluencia describe la densidad general de visitantes en un parque en un día u hora determinados. park.fan utiliza una escala de Muy Bajo a Extremo basada en datos históricos de tiempos de espera, ocupación actual y predicciones de IA.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
+    aliases: ['Niveles de afluencia'],
   },
   {
     id: 'crowd-calendar',
@@ -873,6 +875,16 @@ const translations: GlossaryTermTranslation[] = [
       'Una previsión de afluencia es una predicción basada en datos de cuánto de lleno estará un parque temático en un día u hora específicos. park.fan recalcula las previsiones de afluencia diariamente usando datos históricos de asistencia, calendarios escolares, datos meteorológicos y eventos especiales. Los resultados alimentan directamente el calendario de afluencia: los días verdes indican colas cortas, los días rojos señalan afluencia máxima con largas esperas.',
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
     aliases: ['Previsiones de afluencia'],
+  },
+  {
+    id: 'roller-coaster-element',
+    name: 'Elemento de montaña rusa',
+    shortDefinition:
+      'Una sección o característica nombrada de una montaña rusa, como un loop, una colina de airtime o una inversión.',
+    definition:
+      'Un elemento de montaña rusa es cualquier característica distinta y denominada incorporada en el trazado de una montaña rusa — desde inversiones clásicas como loops y sacacorchos hasta elementos no inversores como colinas de airtime, hélices y overbanks. Los ingenieros diseñan cada elemento para producir una sensación física específica: ingravidez (airtime), fuerzas G laterales o la desorientación de ir boca abajo.\n\nEl glosario de park.fan cubre docenas de elementos individuales — desde el primer drop y el lifthill hasta especialidades modernas como el Stengel dive, el Norwegian loop y el heartline roll.',
+    relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
+    aliases: ['Elementos de montaña rusa'],
   },
 ];
 
