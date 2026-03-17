@@ -48,7 +48,7 @@ export function GlossaryTermDetail({
                 <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                <GlossaryInject>{term.shortDefinition}</GlossaryInject>
+                <GlossaryInject locale={locale}>{term.shortDefinition}</GlossaryInject>
               </p>
             </div>
             {/* Category footer strip */}
@@ -63,7 +63,7 @@ export function GlossaryTermDetail({
             <div className="text-foreground/85 space-y-3 leading-relaxed">
               {term.definition.split('\n\n').map((para, i) => (
                 <p key={i}>
-                  <GlossaryInject>{para}</GlossaryInject>
+                  <GlossaryInject locale={locale}>{para}</GlossaryInject>
                 </p>
               ))}
             </div>

@@ -4,6 +4,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
+import type { Locale } from '@/i18n/config';
 
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
@@ -124,7 +125,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
 }
 
 interface FeaturedParksSectionProps {
-  locale: string;
+  locale: Locale;
   geoData: GeoStructure | null;
 }
 
@@ -142,7 +143,7 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
           {tHome('sections.featuredParks')}
         </h2>
         <p className="text-muted-foreground mb-8 text-center text-sm">
-          <GlossaryInject>{tHome('sections.featuredParksIntro')}</GlossaryInject>
+          <GlossaryInject locale={locale}>{tHome('sections.featuredParksIntro')}</GlossaryInject>
         </p>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
