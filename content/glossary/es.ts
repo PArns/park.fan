@@ -398,6 +398,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una montaña rusa de madera es una atracción construida con pista y estructura de soporte de madera. A diferencia de las de acero, la madera tiene una flexión y una imprecisión naturales que crean la característica vibración, el bamboleo lateral y el airtime impredecible que tanto gustan a los entusiastas. Entre las montañas rusas de madera más famosas están Balder en Liseberg, The Beast en Kings Island y Megafobia en Oakwood. Requieren un mantenimiento constante — la pista debe relamiparse regularmente — y son sensibles a los cambios meteorológicos. El proceso de conversión de RMC puede transformar viejas montañas rusas de madera en coasters híbridos de pista de acero manteniendo la estructura de madera.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodies', 'Montañas rusas de madera'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Montaña rusa de acero',
+    shortDefinition:
+      'Una montaña rusa construida principalmente con pista y estructura de acero, conocida por su viaje suave y preciso.',
+    definition:
+      'Una montaña rusa de acero se construye con pista tubular o plana de acero soportada por una estructura de acero. A diferencia de las montañas rusas de madera con su flexibilidad natural, el acero ofrece a los ingenieros un control preciso de las fuerzas G, transiciones e inversiones. El viaje suave y predecible de una montaña rusa de acero permite crear layouts complejos con múltiples inversiones, curvas cerradas y secciones de alta velocidad.\n\nLas montañas rusas de acero dominan el desarrollo moderno de coasters. Los ejemplos más celebrados en Europa incluyen Shambhala en PortAventura, Nemesis en Alton Towers y Silver Star en Europa-Park. Las montañas rusas de acero van desde pequeñas atracciones familiares hasta mega coasters récord-rompedores. La precisión del acero requiere inspección y mantenimiento regular, pero permite menos margen de error de diseño que la flexibilidad de la madera.',
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Montañas rusas de acero', 'Acero'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'Un coaster donde el tren cuelga debajo de la pista en un pivote, permitiendo que el vehículo se balancee libremente de lado a lado.',
+    definition:
+      'Un suspended coaster es un tipo de coaster especializado donde el tren cuelga desde arriba en un punto pivote, permitiéndole balancearse libremente de un lado a otro independientemente de la trayectoria de la pista. Mientras el tren navega por las curvas, se balancea como un péndulo — un movimiento que crea la sensación característica del \"whip\" y añade un elemento impredecible a la experiencia. Este movimiento de balanceo es distinto de un coaster invertido, donde el tren está rígidamente unido encima de la pista.\n\nLos suspended coasters son menos comunes que los coasters invertidos pero ofrecen una experiencia única. El movimiento de balanceo hace que incluso las curvas moderadas se sientan dramáticas, y la sensación de \"volar\" con el terreno lejano crea una exposición emocionante. Vekoma creó el modelo Suspended Looping Coaster (SLC) en los años 90, y cientos fueron construidos mundialmente. El movimiento de balanceo puede parecer caótico en comparación con la precisión de las inversiones modernas, haciendo que los suspended coasters sean amados por su naturaleza cruda e impredecible.',
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Oscilante'],
   },
   {
     id: 'hybrid-coaster',

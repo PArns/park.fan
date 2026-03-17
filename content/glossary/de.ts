@@ -362,6 +362,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Holzachterbahn ist eine Bahn mit hölzerner Strecke und Struktur. Anders als Stahlbahnen hat Holz eine natürliche Flexibilität und Ungenauigkeit, die das charakteristische Rumpeln, seitliche Schaukeln und unberechenbare Airtime erzeugt, das Enthusiasten lieben. Berühmte Holzachterbahnen sind Balder in Liseberg, Colossos in Heide-Park und Wodan im Europa-Park. Holzachterbahnen erfordern intensive Wartung — das Schienenprofil muss regelmäßig erneuert werden. Das RMC (Rocky Mountain Construction)-Konvertierungsverfahren kann alte Holzachterbahnen in Hybrid-Coaster verwandeln, die die Holzstruktur behalten, aber einen Stahlschieneneinsatz erhalten.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Holzachterbahnen', 'Holzbahn'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Stahlachterbahn',
+    shortDefinition:
+      'Eine Achterbahn mit Stahlschiene und Stahlstruktur, bekannt für ihre glatte und präzise Fahrt.',
+    definition:
+      'Eine Stahlachterbahn wird mit Stahlschiene und Stahlstützgerüst gebaut. Anders als Holzachterbahnen mit ihrer natürlichen Flexibilität bietet Stahl Ingenieuren präzise Kontrolle über G-Kräfte, Übergänge und Inversionen. Die glatte, vorhersagbare Fahrt einer Stahlachterbahn ermöglicht komplexe Layouts mit mehreren Inversionen, engen Kurvenradien und hohen Geschwindigkeiten.\n\nStahlachterbahnen dominieren die moderne Achterbahnentwicklung, weil Designer damit fast jede Form verwirklichen können — Überkopf-Drops, vollständige Inversionen und schnelle Richtungswechsel. Berühmte Stahlachterbahnen in Europa sind Shambhala in PortAventura, Nemesis in Alton Towers und Silver Star im Europa-Park. Stahlachterbahnen reichen von kleinen Familienbahnen bis zu Rekord-Mega-Coastern. Die Präzision von Stahl erfordert regelmäßige Kontrolle und Wartung, ist aber weniger fehleranfällig als die flexible Holzkonstruktion.',
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Stahlachterbahnen', 'Stahlschiene'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'Eine Achterbahn, bei der die Wagen unter der Schiene an einem Pivot hängen und seitlich frei schwingen können.',
+    definition:
+      'Eine Suspended Coaster ist ein spezieller Achterbahntyp, bei dem der Zug von oben an einem Pivot aufgehängt ist und seitlich unabhängig von der Schienenbahn schwingen kann. Während der Zug durch Kurven navigiert, schwingt er wie ein Pendel — eine Bewegung, die die charakteristische "Whip"-Sensation erzeugt. Diese Schwingbewegung unterscheidet sich von einer Inverted Coaster, wo der Zug starr an der Schiene befestigt ist.\n\nSuspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis. Die Schwingbewegung macht selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens erzeugt eine spannende Exposition. Vekoma entwickelte in den 1990er Jahren die Suspended Looping Coaster (SLC), von denen weltweit hunderte gebaut wurden. Die Schwingbewegung kann chaotisch wirken im Vergleich zur Präzision moderner Inversionen — manche Enthusiasten lieben sie für ihre rohe, unvorhersagbare Natur, während andere sie weniger mochten.',
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Hängende Achterbahn'],
   },
   {
     id: 'hybrid-coaster',

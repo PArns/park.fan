@@ -398,6 +398,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een houten achtbaan is een rit met een houten spoor en draagconstructie. In tegenstelling tot stalen achtbanen heeft hout van nature enige flexibiliteit en onnauwkeurigheid, wat het kenmerkende gerommel, de laterale beweging en de onvoorspelbare airtime creëert waar enthousiastelingen van houden. Beroemde houten achtbanen zijn Balder bij Liseberg, The Beast bij Kings Island en Megafobia bij Oakwood. Houten achtbanen vereisen constant onderhoud — de rails moeten regelmatig worden herverlamd — en zijn gevoelig voor weersveranderingen. Het RMC-conversieproces kan verouderde houten achtbanen omtoveren tot staalspoor-hybride achtbanen met behoud van de houten constructie.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodies', 'Houten achtbanen'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Stalen achtbaan',
+    shortDefinition:
+      'Een achtbaan gebouwd met stalen rail en stalen constructie, bekend om zijn vloeiende en nauwkeurige rijervaring.',
+    definition:
+      'Een stalen achtbaan wordt gebouwd met buisvormige of platte stalen rail ondersteund door een stalen frame. In tegenstelling tot houten achtbanen met hun natuurlijke flexibiliteit, biedt staal ingenieurs nauwkeurige controle over G-krachten, overgangen en inversies. De vloeiende, voorspelbare rit van een stalen achtbaan maakt het mogelijk om complexe layouts met meerdere inversies, nauwe bochten en snelle secties te creëren.\n\nStalen achtbanen domineren de moderne achtbaanentwickeling. De meest gevierde voorbeelden in Europa zijn Shambhala in PortAventura, Nemesis in Alton Towers en Silver Star in Europa-Park. Stalen achtbanen variëren van kleine familieattracties tot recordbrekende mega coasters. De nauwkeurigheid van staal vereist regelmatig onderhoud en inspectie, maar staat minder ontwerp-fouten toe dan de flexibiliteit van hout.',
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Stalen achtbanen', 'Staal'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'Een coaster waarbij de trein onder het spoor aan een scharnier hangt, waardoor het voertuig vrij opzij kan zwaaien.',
+    definition:
+      'Een suspended coaster is een gespecialiseerd coastertype waarbij de trein van bovenaf aan een spilpunt hangt en vrij van links naar rechts kan zwaaien. Terwijl de trein door bochten navigeert, zwaait het als een slinger — een beweging die de karakteristieke "whip"-sensatie creëert en een onvoorspelbaar element aan de rit toevoegt. Deze zwaaibeweging is anders dan een inverted coaster, waar de trein star aan het spoor boven bevestigd is.\n\nSuspended coasters zijn minder algemeen dan inverted coasters, maar bieden een unieke ervaring. De zwaaibeweging maakt zelfs matige bochten dramatisch, en het gevoel van vliegen creëert sensatie. Vekoma ontwikkelde in de jaren 90 het Suspended Looping Coaster (SLC)-model, waarvan wereldwijd honderden werden gebouwd. De zwaaibeweging kan chaotisch lijken vergeleken met de precisie van moderne inversies, waardoor suspended coasters door sommigen worden liefgehad voor hun ruwe, onvoorspelbare aard.',
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Hangende achtbaan'],
   },
   {
     id: 'hybrid-coaster',

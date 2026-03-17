@@ -363,6 +363,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A wooden coaster is built with a wooden track structure (laminated layers of wood) on a wooden or steel support frame. Unlike steel coasters, wood has natural flex and imprecision in its construction that creates the characteristic rumble, lateral shuffle, and unpredictable airtime that enthusiasts prize. The experience tends to feel more raw and physical than the smooth precision of a steel coaster — a quality many riders find uniquely appealing.\n\nFamous wooden coasters include Balder at Liseberg (Sweden), widely regarded as Europe's best wooden coaster, The Beast at Kings Island (one of the longest in the world at 2.2 km), and Megafobia at Oakwood in Wales. Wooden coasters require significant ongoing maintenance — rails must be relaminated, checked, and replaced on a continuous cycle — and their ride characteristics change noticeably with temperature and humidity. Rocky Mountain Construction's conversion process can transform an ageing wooden coaster into a steel I-box hybrid, opening up new design possibilities while retaining the iconic wooden structure.",
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodie', 'Woodies'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Steel Coaster',
+    shortDefinition:
+      'A roller coaster built primarily with steel track and support structure, known for its smooth, precise ride experience.',
+    definition:
+      "A steel coaster is built with tubular or flat steel track supported by a steel lattice or tubular frame. Unlike wooden coasters with their natural flex and unpredictable motion, steel offers engineers precise control over G-forces, transitions, and inversions. The smooth, predictable ride of a steel coaster makes it ideal for executing complex layouts with multiple inversions, tight radius curves, and sustained high-speed sections.\n\nSteel coasters dominate modern coaster development because they allow designers to create nearly any shape imaginable — beyond-vertical drops, complete inversions, and rapid direction changes. The most celebrated steel coasters in Europe include Shambhala at PortAventura, Nemesis at Alton Towers, and Silver Star at Europa-Park. Steel coasters range from small family rides to record-breaking mega coasters, making the category the most versatile in the theme park industry. The precision of steel comes at a cost: maintenance requires careful track inspection and frequent repainting, and the steel structure is less forgiving of design errors than the flexibility of wood.",
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Steel Coasters', 'Steel track'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      'A coaster where the train hangs below the track on a swinging pivot, allowing the vehicle to swing freely side to side.',
+    definition:
+      "A suspended coaster is a specialized coaster type where the train is suspended from above on a pivot point, allowing it to swing side to side independently of the track's path. As the train navigates curves, it swings outward like a pendulum — a motion that creates the characteristic 'whip' sensation and adds an unpredictable element to the ride experience. This swinging motion is distinct from an inverted coaster, where the train is rigidly attached above the track.\n\nSuspended coasters are less common than inverted coasters but offer a unique experience. The swinging motion makes even moderate-speed turns feel dramatic, and the sensation of 'flying' with the ground far below (or nearby obstacles) creates a thrilling exposure. Vekoma pioneered the Suspended Looping Coaster (SLC) model in the 1990s, and hundreds were built worldwide due to the format's compact footprint and distinctive experience. Kumba at Busch Gardens Tampa (B&M suspended) and the Vekoma suspended coasters at European parks remain popular examples. The swinging motion can feel chaotic compared to the precision of modern inversions, making suspended coasters either beloved for their raw, unpredictable nature or polarizing among enthusiasts.",
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Swinging coaster'],
   },
   {
     id: 'hybrid-coaster',

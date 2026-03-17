@@ -560,6 +560,30 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'steel-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'steel-coaster',
+      de: 'stahlachterbahn',
+      fr: 'montagne-russe-acier',
+      it: 'montagna-russa-acciaio',
+      nl: 'stalen-achtbaan',
+      es: 'montana-rusa-acero',
+    },
+  },
+  {
+    id: 'suspended-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'suspended-coaster',
+      de: 'suspended-coaster',
+      fr: 'suspended-coaster',
+      it: 'suspended-coaster',
+      nl: 'suspended-coaster',
+      es: 'suspended-coaster',
+    },
+  },
+  {
     id: 'hybrid-coaster',
     category: 'coasters',
     slugs: {

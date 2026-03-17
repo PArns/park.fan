@@ -398,6 +398,27 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Un ottovolante in legno è un giro costruito con binari e struttura portante in legno. A differenza dei coaster in acciaio, il legno ha una flessione naturale che crea il caratteristico fragore, lo scuotimento laterale e l'airtime imprevedibile amato dagli appassionati. Famosi ottovolanti in legno includono Balder a Liseberg, The Beast a Kings Island e Megafobia a Oakwood. Gli ottovolanti in legno richiedono una manutenzione costante — il binario deve essere rilaminato regolarmente — e sono suscettibili ai cambiamenti climatici. Il processo di conversione RMC (Rocky Mountain Construction) può trasformare i vecchi ottovolanti in coaster ibridi con binario in acciaio mantenendo la struttura in legno.",
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    aliases: ['Woodies', 'Legno'],
+  },
+  {
+    id: 'steel-coaster',
+    name: 'Montagna russa in acciaio',
+    shortDefinition:
+      "Una montagna russa costruita principalmente con binario e struttura in acciaio, nota per la sua corsa liscia e precisa.",
+    definition:
+      "Una montagna russa in acciaio è costruita con binario tubolare o piatto in acciaio supportato da un'armatura in acciaio. A differenza delle montagne russe in legno con la loro flessibilità naturale, l'acciaio offre ai progettisti un controllo preciso delle forze G, delle transizioni e delle inversioni. La corsa liscia e prevedibile di una montagna russa in acciaio consente di creare layout complessi con molteplici inversioni, curve strette e sezioni ad alta velocità.\n\nLe montagne russe in acciaio dominano lo sviluppo moderno dei coaster. Gli esempi più celebri in Europa includono Shambhala a PortAventura, Nemesis ad Alton Towers e Silver Star a Europa-Park. Le montagne russe in acciaio spaziano da piccole attrazioni familiari a mega coaster record-holder. La precisione dell'acciaio richiede ispezione e manutenzione regolari, ma offre meno margini di errore di progettazione rispetto alla flessibilità del legno.",
+    relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
+    aliases: ['Montagne russe in acciaio', 'Acciaio'],
+  },
+  {
+    id: 'suspended-coaster',
+    name: 'Suspended Coaster',
+    shortDefinition:
+      "Un coaster dove il treno è sospeso sotto il binario su un perno, consentendo al veicolo di oscillare liberamente da un lato all'altro.",
+    definition:
+      "Un suspended coaster è un tipo di coaster specializzato dove il treno è sospeso dall'alto su un punto di perno, consentendogli di oscillare liberamente da un lato all'altro indipendentemente dal percorso del binario. Mentre il treno naviga nelle curve, oscilla come un pendolo — un movimento che crea la caratteristica sensazione di 'frusta' e aggiunge un elemento imprevedibile all'esperienza. Questo movimento oscillante è distinto da un inverted coaster, dove il treno è rigidamente attaccato al di sopra del binario.\n\nI suspended coaster sono meno comuni dei coaster invertiti ma offrono un'esperienza unica. Il movimento oscillante rende anche le curve moderate drammatiche, e la sensazione di 'volare' con il terreno lontano crea un'esposizione emozionante. Vekoma ha sviluppato il modello Suspended Looping Coaster (SLC) negli anni '90, e centinaia sono stati costruiti in tutto il mondo. Il movimento oscillante può sembrare caotico rispetto alla precisione delle inversioni moderne, rendendo i suspended coaster amati per la loro natura grezza e imprevedibile.",
+    relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
+    aliases: ['Suspended', 'Oscillante'],
   },
   {
     id: 'hybrid-coaster',
