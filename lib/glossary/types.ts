@@ -7,7 +7,9 @@ export type GlossaryCategory =
   | 'planning'
   | 'attractions'
   | 'coasters'
-  | 'coaster-elements';
+  | 'coaster-elements'
+  | 'ride-experience'
+  | 'shopping';
 
 export interface GlossaryTermData {
   id: string;
