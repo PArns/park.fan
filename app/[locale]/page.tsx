@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
+import type { Locale } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, ChevronRight, Map as MapIcon, BookOpen, Tag } from 'lucide-react';
@@ -214,7 +215,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <FavoritesSection />
 
       {/* Featured Parks – locale-aware, direct park links for SEO */}
-      <FeaturedParksSection locale={locale} geoData={geoData} />
+      <FeaturedParksSection locale={locale as Locale} geoData={geoData} />
 
       {/* Global Stats */}
       {stats && (
