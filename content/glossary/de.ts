@@ -58,7 +58,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Crowd-Level', 'Crowd-Levels', 'Besucherdichten'],
+    aliases: ['Crowd-Level', 'Crowd-Levels', 'Besucherdichten', 'Besucherandrang'],
   },
   {
     id: 'crowd-calendar',
