@@ -188,7 +188,7 @@
     "toggle": "Toggle theme"
   },
   "parks": {
-    "title": "Theme Park Wait Times & AI Crowd Predictions",
+    "title": "More Thrills, Less Waiting",
     "heroWelcome": "Welcome to {parkName}",
     "heroNearPark": "{parkName} is nearby (within 5 km). Below you’ll find live wait times, opening hours and crowd levels – or search for another park.",
     "heroWelcomeAttractions": "{count} attractions operating",
