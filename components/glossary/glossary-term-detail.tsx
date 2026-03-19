@@ -17,6 +17,7 @@ interface GlossaryTermDetailProps {
   labels: {
     backToGlossary: string;
     relatedTerms: string;
+    alsoKnownAs: string;
     category: string;
     termH1Suffix: string;
   };
@@ -52,6 +53,12 @@ export function GlossaryTermDetail({
               <p className="text-muted-foreground text-lg leading-relaxed">
                 <GlossaryInject locale={locale}>{term.shortDefinition}</GlossaryInject>
               </p>
+              {term.aliases && term.aliases.length > 0 && (
+                <p className="text-muted-foreground mt-2 text-sm">
+                  <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
+                  {term.aliases.join(' · ')}
+                </p>
+              )}
             </div>
             {/* Category footer strip */}
             <div className="border-primary/10 flex items-center gap-1.5 border-t px-6 py-3">

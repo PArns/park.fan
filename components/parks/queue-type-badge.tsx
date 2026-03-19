@@ -3,6 +3,15 @@ import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { QueueDataItem } from '@/lib/api/types';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
+
+const QUEUE_GLOSSARY_TERMS: Partial<Record<string, string>> = {
+  SINGLE_RIDER: 'single-rider',
+  RETURN_TIME: 'virtual-queue',
+  BOARDING_GROUP: 'boarding-group',
+  PAID_RETURN_TIME: 'lightning-lane',
+  PAID_STANDBY: 'express-pass',
+};
 
 const colorPrimary =
   'bg-primary/65 text-white border border-primary/80 dark:bg-primary/25 dark:border-primary/40';
@@ -106,10 +115,21 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
       return null;
   }
 
-  return (
+  const termId = QUEUE_GLOSSARY_TERMS[queue.queueType];
+  const badge = (
     <Badge className={cn('font-bold tracking-wide uppercase backdrop-blur-md', colorClass)}>
       <Icon className="h-3 w-3 shrink-0 text-inherit" />
       <span className="min-w-0 truncate">{label}</span>
     </Badge>
   );
+
+  if (termId) {
+    return (
+      <GlossaryTermLink termId={termId} tooltipOnly>
+        {badge}
+      </GlossaryTermLink>
+    );
+  }
+
+  return badge;
 }
