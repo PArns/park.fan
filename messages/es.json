@@ -188,7 +188,7 @@
     "toggle": "Cambiar tema"
   },
   "parks": {
-    "title": "Tiempos de Espera & Predicciones IA de Parques",
+    "title": "Más loopings, menos esperas",
     "heroWelcome": "Bienvenido a {parkName}",
     "heroNearPark": "{parkName} está cerca (a menos de 5 km). Abajo verás tiempos de espera en vivo, horarios y nivel de afluencia – o busca otro parque.",
     "heroWelcomeAttractions": "{count} atracciones en funcionamiento",
