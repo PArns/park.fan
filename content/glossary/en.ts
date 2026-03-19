@@ -17,6 +17,7 @@ const translations: GlossaryTermTranslation[] = [
       'A separate, faster queue lane for guests willing to ride alone and fill odd empty seats.',
     definition:
       'Single rider queues allow guests who are comfortable riding alone — or separated from their group — to fill odd seats left over in ride vehicles. Because single riders slot into gaps rather than waiting for an entire row to fill, the line moves dramatically faster than the standby queue, often cutting wait times by 50–70%. Rides with large multi-row vehicles, such as roller coasters and simulator attractions, benefit the most from this system.\n\nNot every park or attraction offers single rider access. Where available it is one of the most cost-free strategies for reducing your daily queue time. The trade-off is that you may not sit alongside your companions, so it works best for larger thrill rides where the experience is largely individual. Always check the ride entrance signage or the park app before committing to the single rider lane.',
+    aliases: ['Single Rider Lane'],
     relatedTermIds: ['wait-time', 'express-pass', 'virtual-queue'],
   },
   {

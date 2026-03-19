@@ -31,7 +31,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Une file d'attente virtuelle permet aux visiteurs de s'inscrire pour une attraction via une application ou une borne et de recevoir une notification quand leur tour approche. Au lieu de faire la queue physiquement, les visiteurs peuvent profiter d'autres zones du parc et revenir lorsqu'ils sont appelés.",
     relatedTermIds: ['express-pass', 'wait-time', 'single-rider'],
-    aliases: ["Files d'attente virtuelles"],
+    aliases: ["Files d'attente virtuelles", 'File Virtuelle', 'File virtuelle'],
   },
   {
     id: 'express-pass',

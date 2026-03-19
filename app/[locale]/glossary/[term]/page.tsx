@@ -143,6 +143,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           labels={{
             backToGlossary: t('backToGlossary'),
             relatedTerms: t('relatedTerms'),
+            alsoKnownAs: t('alsoKnownAs'),
             category: t(`category.${term.category}`),
             termH1Suffix: t('termH1Suffix'),
           }}
