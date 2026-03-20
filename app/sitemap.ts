@@ -127,6 +127,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // ── Attraction pages (long-tail SEO) ──────────────────────────────────────
+  // No sitemap alternates here: 5000+ attractions × 6 locales × 7 alternate URLs
+  // would exceed the 19 MB ISR body limit. HTML hreflang tags in <head> cover
+  // language signals for these pages.
   for (const attraction of attractions) {
     // Variant slugs (e.g. "blue-fire-2") are noindex — skip
     if (VARIANT_SLUG_RE.test(attraction.slug)) continue;
@@ -135,14 +138,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .replace(/^\/v1\/parks\//, '/parks/')
       .replace(/\/attractions\//, '/');
 
-    const attractionAlternates = buildAlternates(() => frontendPath);
-
     for (const locale of locales) {
       routes.push({
         url: `${BASE_URL}/${locale}${frontendPath}`,
         changeFrequency: 'weekly',
         priority: 0.7,
-        alternates: attractionAlternates,
       });
     }
   }
