@@ -109,10 +109,12 @@ export function ParkStructuredData({
   park,
   url,
   description,
+  locale,
 }: {
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
+  locale?: string;
 }) {
   const parkName = stripNewPrefix(park.name);
   const parkBgImage = getParkBackgroundImage(park.slug);
@@ -121,6 +123,7 @@ export function ParkStructuredData({
     '@type': 'ThemePark',
     name: parkName,
     url: url,
+    ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,
     image: parkBgImage ? `https://park.fan${parkBgImage}` : undefined,
     address: {
@@ -243,11 +246,13 @@ export function AttractionStructuredData({
   park,
   url,
   description,
+  locale,
 }: {
   attraction: ParkAttraction;
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
+  locale?: string;
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
@@ -257,6 +262,7 @@ export function AttractionStructuredData({
     '@type': 'TouristAttraction',
     name: attractionName,
     url: url,
+    ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
     image: attrImg ? `https://park.fan${attrImg}` : undefined,

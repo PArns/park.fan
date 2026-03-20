@@ -297,6 +297,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         attraction={attraction}
         park={park}
         url={attractionUrl}
+        locale={locale}
         description={tSeo('metaDescriptionTemplate', {
           attraction: attractionName,
           park: parkName,
