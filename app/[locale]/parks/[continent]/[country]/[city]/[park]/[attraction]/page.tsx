@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, type Locale } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
@@ -297,6 +297,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         attraction={attraction}
         park={park}
         url={attractionUrl}
+        locale={locale}
         description={tSeo('metaDescriptionTemplate', {
           attraction: attractionName,
           park: parkName,
@@ -304,7 +305,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         })}
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
       <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
       <PageContainer>
         {/* Breadcrumb */}

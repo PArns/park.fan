@@ -61,7 +61,14 @@ const nextConfig: NextConfig = {
     return rules;
   },
   async headers() {
+    const localeHeaderRules = ['de', 'fr', 'it', 'nl', 'es', 'en'].map((locale) => ({
+      source: `/${locale}/:path*`,
+      headers: [{ key: 'Content-Language', value: locale }],
+    }));
+
     return [
+      // Content-Language per locale — helps Google associate pages with their language
+      ...localeHeaderRules,
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {
         source: '/api/:path*',

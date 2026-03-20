@@ -230,10 +230,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
       <PageContainer>
         <ParkStructuredData
           park={park}
-          url={`https://park.fan/parks/${continent}/${country}/${city}/${parkSlug}`}
+          url={`https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
           description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
+          locale={locale}
         />
-        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+        <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
         {park.shows && park.shows.length > 0 && (
           <ShowsStructuredData
             shows={park.shows}

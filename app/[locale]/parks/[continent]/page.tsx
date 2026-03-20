@@ -128,7 +128,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
   return (
     <PageContainer>
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
       <ItemListStructuredData
         items={itemListItems}
         listName={tExplore('title', { location: continentName })}

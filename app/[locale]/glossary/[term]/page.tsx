@@ -117,8 +117,8 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     : [];
 
   const breadcrumbs = [
-    { name: tCommon('home'), url: '/' },
-    { name: t('overviewTitle'), url: `/${segment}` },
+    { name: tCommon('home'), url: `/${locale}` },
+    { name: t('overviewTitle'), url: `/${locale}/${segment}` },
   ];
 
   return (
@@ -132,7 +132,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
           variant="detail"
         />
         <BreadcrumbStructuredData
-          breadcrumbs={[...breadcrumbs, { name: term.name, url: `/${segment}/${termSlug}` }]}
+          breadcrumbs={[...breadcrumbs, { name: term.name, url: `/${locale}/${segment}/${termSlug}` }]}
         />
         <GlossaryTermDetail
           term={term}

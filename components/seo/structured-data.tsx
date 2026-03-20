@@ -109,10 +109,12 @@ export function ParkStructuredData({
   park,
   url,
   description,
+  locale,
 }: {
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
+  locale?: string;
 }) {
   const parkName = stripNewPrefix(park.name);
   const parkBgImage = getParkBackgroundImage(park.slug);
@@ -121,6 +123,7 @@ export function ParkStructuredData({
     '@type': 'ThemePark',
     name: parkName,
     url: url,
+    ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,
     image: parkBgImage ? `https://park.fan${parkBgImage}` : undefined,
     address: {
@@ -205,8 +208,24 @@ export function ItemListStructuredData({
   return <JsonLd data={data as WithContext<Thing>} />;
 }
 
-export function BreadcrumbStructuredData({ breadcrumbs }: { breadcrumbs: Breadcrumb[] }) {
+export function BreadcrumbStructuredData({
+  breadcrumbs,
+  locale,
+}: {
+  breadcrumbs: Breadcrumb[];
+  locale?: string;
+}) {
   if (!breadcrumbs || breadcrumbs.length === 0) return null;
+
+  const toAbsoluteUrl = (url: string): string => {
+    if (url.startsWith('http')) return url;
+    if (!locale) return `${SITE_URL}${url}`;
+    // Home shorthand
+    if (url === '/') return `${SITE_URL}/${locale}`;
+    // Already has this locale prefix — don't double-prefix
+    if (url === `/${locale}` || url.startsWith(`/${locale}/`)) return `${SITE_URL}${url}`;
+    return `${SITE_URL}/${locale}${url}`;
+  };
 
   const data: WithContext<BreadcrumbList> = {
     '@context': 'https://schema.org',
@@ -215,7 +234,7 @@ export function BreadcrumbStructuredData({ breadcrumbs }: { breadcrumbs: Breadcr
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.name,
-      item: `https://park.fan${crumb.url}`,
+      item: toAbsoluteUrl(crumb.url),
     })),
   };
 
@@ -227,11 +246,13 @@ export function AttractionStructuredData({
   park,
   url,
   description,
+  locale,
 }: {
   attraction: ParkAttraction;
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
+  locale?: string;
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
@@ -241,6 +262,7 @@ export function AttractionStructuredData({
     '@type': 'TouristAttraction',
     name: attractionName,
     url: url,
+    ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
     image: attrImg ? `https://park.fan${attrImg}` : undefined,
