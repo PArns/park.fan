@@ -341,7 +341,7 @@ export function SearchCommand({
     return (
       <CommandItem
         key={result.id}
-        value={`${stripNewPrefix(result.name)} ${result.type}`}
+        value={`${stripNewPrefix(result.name)} ${result.type} ${result.id}`}
         onSelect={() => handleSelect(result, position)}
         className="flex cursor-pointer items-center gap-4"
       >
