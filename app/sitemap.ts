@@ -47,8 +47,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
       {
         url: `${BASE_URL}/${locale}/howto`,
-        changeFrequency: 'weekly',
-        priority: 0.8,
+        changeFrequency: 'monthly',
+        priority: 0.6,
         alternates: howtoAlternates,
       }
     );
@@ -69,8 +69,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const locale of locales) {
     routes.push({
       url: `${BASE_URL}/${locale}/${glossarySegments[locale]}`,
-      changeFrequency: 'weekly',
-      priority: 0.7,
+      changeFrequency: 'monthly',
+      priority: 0.5,
       alternates: glossaryIndexAlternates,
     });
   }
@@ -105,8 +105,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       routes.push({
         url: `${BASE_URL}/${locale}/${glossarySegments[locale]}/${localTerm.slug}`,
-        changeFrequency: 'monthly',
-        priority: 0.5,
+        changeFrequency: 'yearly',
+        priority: 0.3,
         alternates: { languages: termAlternates },
       });
     }
