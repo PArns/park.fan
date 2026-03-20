@@ -117,7 +117,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   return (
     <PageContainer>
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
       <ItemListStructuredData
         items={itemListItems}
         listName={t('parksIn', { location: city.name })}

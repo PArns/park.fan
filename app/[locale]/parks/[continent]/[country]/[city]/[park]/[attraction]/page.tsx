@@ -304,7 +304,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         })}
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
-      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} />
+      <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
       <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
       <PageContainer>
         {/* Breadcrumb */}
