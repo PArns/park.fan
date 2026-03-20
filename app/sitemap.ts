@@ -105,53 +105,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // ── Park hierarchy pages ──────────────────────────────────────────────────
-  const parksListingAlternates = buildAlternates(() => '/parks');
-  for (const locale of locales) {
-    routes.push({
-      url: `${BASE_URL}/${locale}/parks`,
-      changeFrequency: 'daily',
-      priority: 0.9,
-      alternates: parksListingAlternates,
-    });
-  }
-
+  // ── Park pages ────────────────────────────────────────────────────────────
+  // Note: continent/country/city hierarchy pages are intentionally excluded
+  // to avoid crawl budget exhaustion on low-value intermediate pages.
   for (const continent of geo.continents) {
-    const continentPath = `/parks/${continent.slug}`;
-    const continentAlternates = buildAlternates(() => continentPath);
-    for (const locale of locales) {
-      routes.push({
-        url: `${BASE_URL}/${locale}${continentPath}`,
-        changeFrequency: 'weekly',
-        priority: 0.8,
-        alternates: continentAlternates,
-      });
-    }
-
     for (const country of continent.countries) {
-      const countryPath = `/parks/${continent.slug}/${country.slug}`;
-      const countryAlternates = buildAlternates(() => countryPath);
-      for (const locale of locales) {
-        routes.push({
-          url: `${BASE_URL}/${locale}${countryPath}`,
-          changeFrequency: 'weekly',
-          priority: 0.7,
-          alternates: countryAlternates,
-        });
-      }
-
       for (const city of country.cities) {
-        const cityPath = `/parks/${continent.slug}/${country.slug}/${city.slug}`;
-        const cityAlternates = buildAlternates(() => cityPath);
-        for (const locale of locales) {
-          routes.push({
-            url: `${BASE_URL}/${locale}${cityPath}`,
-            changeFrequency: 'weekly',
-            priority: 0.7,
-            alternates: cityAlternates,
-          });
-        }
-
         for (const park of city.parks) {
           const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
           const parkAlternates = buildAlternates(() => parkPath);

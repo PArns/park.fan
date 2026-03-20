@@ -40,22 +40,9 @@ export async function GET(request: Request) {
   try {
     const geo = await getGeoStructure(86400);
 
-    for (const locale of locales) {
-      urls.push(`${BASE_URL}/${locale}/parks`);
-    }
-
     for (const continent of geo.continents) {
-      for (const locale of locales) {
-        urls.push(`${BASE_URL}/${locale}/parks/${continent.slug}`);
-      }
       for (const country of continent.countries) {
-        for (const locale of locales) {
-          urls.push(`${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}`);
-        }
         for (const city of country.cities) {
-          for (const locale of locales) {
-            urls.push(`${BASE_URL}/${locale}/parks/${continent.slug}/${country.slug}/${city.slug}`);
-          }
           for (const park of city.parks) {
             const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
             for (const locale of locales) {
