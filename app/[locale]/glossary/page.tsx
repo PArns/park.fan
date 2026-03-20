@@ -121,8 +121,8 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
         />
         <BreadcrumbStructuredData
           breadcrumbs={[
-            { name: tCommon('home'), url: '/' },
-            { name: t('overviewTitle'), url: `/${segment}` },
+            { name: tCommon('home'), url: `/${locale}` },
+            { name: t('overviewTitle'), url: `/${locale}/${segment}` },
           ]}
         />
         <GlossaryOverviewClient
