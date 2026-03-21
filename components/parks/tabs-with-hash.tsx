@@ -372,12 +372,7 @@ export function TabsWithHash({
           <TabsContent value="restaurants">
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
-                <RestaurantCard
-                  key={restaurant.id}
-                  id={restaurant.id}
-                  name={restaurant.name}
-                  cuisineType={restaurant.cuisineType}
-                />
+                <RestaurantCard key={restaurant.id} restaurant={restaurant} />
               ))}
             </div>
           </TabsContent>

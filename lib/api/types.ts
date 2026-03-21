@@ -268,14 +268,16 @@ export interface ParkAttraction {
   queues?: QueueDataItem[];
   land: string | null;
   status?: AttractionStatus;
-  hourlyForecast?: ForecastItem[];
-  predictionAccuracy?: PredictionAccuracy | null;
   currentLoad?: ParkLoad | null;
   // added fields
   crowdLevel?: CrowdLevel;
   trend?: TrendDirection;
   statistics?: AttractionStatistics;
   history?: AttractionHistoryDay[];
+  isHeadliner?: boolean;
+  // Only present on attraction detail page (merged from dedicated endpoint)
+  hourlyForecast?: ForecastItem[];
+  predictionAccuracy?: PredictionAccuracy | null;
 }
 
 export interface ShowtimeEntry {
@@ -290,9 +292,7 @@ export interface ParkShow {
   latitude: number | null;
   longitude: number | null;
   status?: string;
-  showtimes?: ShowtimeEntry[];
-  operatingHours?: string[];
-  lastUpdated?: string;
+  showtimes?: { startTime: string }[];
 }
 
 export interface ParkRestaurant {
@@ -304,9 +304,9 @@ export interface ParkRestaurant {
   cuisineType: string | null;
   requiresReservation: boolean;
   status?: string;
-  waitTime: number | null;
-  partySize: number | null;
-  operatingHours?: string[];
+  waitTime?: number | null;
+  partySize?: number | null;
+  operatingHours?: { type: string; startTime: string; endTime: string }[];
   lastUpdated?: string;
 }
 
@@ -348,7 +348,6 @@ export interface ParkWithAttractions extends ParkBase {
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
-  crowdForecast?: ParkDailyPrediction[];
 }
 
 // ============================================================================
@@ -467,29 +466,15 @@ export interface SearchResult {
 // Discovery / Geo Types
 // ============================================================================
 
-export interface AttractionReference {
-  id: string;
-  name: string;
-  slug: string;
-  url: string;
-}
-
 export interface ParkReference {
   id: string;
   name: string;
   slug: string;
   country: string;
-  attractions?: AttractionReference[];
   attractionCount: number;
-  // New backend fields (optional as backend might not always populate them?)
-  // Actually, for discovery endpoints they ARE populated now.
   status?: ParkStatus;
   currentLoad?: {
-    crowdLevel: CrowdLevel; // or string if purely from backend
-    value: number;
-    trend: TrendDirection;
-    percentage: number;
-    queueSize: number;
+    crowdLevel: CrowdLevel;
   };
   analytics?: {
     occupancy?: ParkOccupancy;
@@ -561,21 +546,12 @@ export interface GeoStructure {
 
 export interface GlobalCounts {
   openParks: number;
-  closedParks: number;
   parks: number;
-  parksOpenPercentage: number;
   openAttractions: number;
-  closedAttractions: number;
   attractions: number;
-  attractionsOpenPercentage: number;
   shows: number;
   restaurants: number;
   queueDataRecords: number;
-  weatherDataRecords: number;
-  scheduleEntries: number;
-  restaurantLiveDataRecords: number;
-  showLiveDataRecords: number;
-  waitTimePredictions: number;
   totalWaitTime?: number;
 }
 
@@ -585,15 +561,12 @@ export interface ParkStatsItem {
   slug: string;
   city: string;
   country: string;
-  countrySlug?: string;
+  countrySlug: string;
   averageWaitTime: number | null;
   url: string;
   crowdLevel: CrowdLevel | null;
-  occupancy: number | null;
-  comparedToTypical: string | null;
   totalAttractions: number;
   operatingAttractions: number;
-  closedAttractions: number;
 }
 
 export interface AttractionStatsItem {
@@ -604,12 +577,10 @@ export interface AttractionStatsItem {
   parkSlug: string;
   parkCity: string;
   parkCountry: string;
-  parkCountrySlug?: string;
+  parkCountrySlug: string;
   waitTime: number;
   url: string;
   crowdLevel: CrowdLevel | null;
-  baseline: number | null;
-  comparison: string | null;
 }
 
 export interface GlobalStats {
@@ -618,32 +589,21 @@ export interface GlobalStats {
   leastCrowdedPark: ParkStatsItem | null;
   longestWaitRide: AttractionStatsItem | null;
   shortestWaitRide: AttractionStatsItem | null;
-  lastUpdated: string;
 }
 
 export interface GeoLiveStatsDto {
   continents: ContinentLiveStats[];
-  generatedAt: string;
 }
 
 export interface ContinentLiveStats {
   slug: string;
   openParkCount: number;
-  averageWaitTime: number | null;
   countries: CountryLiveStats[];
 }
 
 export interface CountryLiveStats {
   slug: string;
   openParkCount: number;
-  averageWaitTime: number | null;
-  cities: CityLiveStats[];
-}
-
-export interface CityLiveStats {
-  slug: string;
-  openParkCount: number;
-  averageWaitTime: number | null;
 }
 
 // ============================================================================
@@ -759,11 +719,8 @@ export interface CalendarEvent {
 // ============================================================================
 
 export interface CalendarMeta {
-  parkId: string;
   slug: string;
   timezone: string;
-  generatedAt: string;
-  requestRange: { from: string; to: string };
 }
 
 export interface OperatingHours {
@@ -810,7 +767,7 @@ export interface CalendarDay {
   date: string;
   status: ParkStatus;
   isToday: boolean;
-  isTomorrow: boolean;
+  isTomorrow?: boolean;
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
   avgWaitTime?: number;

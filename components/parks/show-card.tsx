@@ -14,9 +14,7 @@ interface ShowCardProps {
   slug: string;
   status: string;
   showtimes?: Array<{
-    type: string;
     startTime: string;
-    endTime?: string;
   }> | null;
   timezone: string;
   href: string;

@@ -1807,10 +1807,10 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 href="/parks/europe/germany/bruhl/phantasialand#shows"
                 parkName="Phantasialand"
                 showtimes={[
-                  { type: 'REGULAR', startTime: twoHoursAgo },
-                  { type: 'REGULAR', startTime: hourAgo },
-                  { type: 'REGULAR', startTime: show1HAhead },
-                  { type: 'REGULAR', startTime: show3HAhead },
+                  { startTime: twoHoursAgo },
+                  { startTime: hourAgo },
+                  { startTime: show1HAhead },
+                  { startTime: show3HAhead },
                 ]}
               />
               <ShowCard
@@ -1821,12 +1821,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 timezone="Europe/Berlin"
                 href="/parks/europe/germany/bruhl/phantasialand#shows"
                 parkName="Phantasialand"
-                showtimes={[
-                  {
-                    type: 'REGULAR',
-                    startTime: showYesterday,
-                  },
-                ]}
+                showtimes={[{ startTime: showYesterday }]}
               />
               <ShowCard
                 id="show-down"
@@ -1857,7 +1852,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 href="/parks/europe/germany/bruhl/phantasialand#shows"
                 parkName="Phantasialand"
                 distance={3200}
-                showtimes={[{ type: 'REGULAR', startTime: show1HAhead }]}
+                showtimes={[{ startTime: show1HAhead }]}
               />
             </div>
           </Sub>
@@ -1872,11 +1867,46 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
           </Sub>
 
           <ComponentLabel name="RestaurantCard" file="components/parks/restaurant-card.tsx" />
-          <Sub title="RestaurantCard — with cuisineType / without cuisineType">
+          <Sub title="RestaurantCard — various states">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <RestaurantCard id="rest-1" name="Uhrwerk Restaurant" cuisineType="German" />
-              <RestaurantCard id="rest-2" name="Rookburgh Café" cuisineType="Café" />
-              <RestaurantCard id="rest-3" name="La Cantina" />
+              <RestaurantCard
+                restaurant={{
+                  id: 'rest-1',
+                  name: 'Uhrwerk Restaurant',
+                  slug: 'uhrwerk-restaurant',
+                  cuisineType: 'German',
+                  latitude: null,
+                  longitude: null,
+                  requiresReservation: false,
+                  status: 'OPERATING',
+                  waitTime: 15,
+                }}
+              />
+              <RestaurantCard
+                restaurant={{
+                  id: 'rest-2',
+                  name: 'Rookburgh Café',
+                  slug: 'rookburgh-cafe',
+                  cuisineType: 'Café',
+                  latitude: null,
+                  longitude: null,
+                  requiresReservation: true,
+                  status: 'OPERATING',
+                  operatingHours: [{ type: 'OPERATING', startTime: '10:00', endTime: '20:00' }],
+                }}
+              />
+              <RestaurantCard
+                restaurant={{
+                  id: 'rest-3',
+                  name: 'La Cantina',
+                  slug: 'la-cantina',
+                  cuisineType: null,
+                  latitude: null,
+                  longitude: null,
+                  requiresReservation: false,
+                  status: 'CLOSED',
+                }}
+              />
             </div>
           </Sub>
 

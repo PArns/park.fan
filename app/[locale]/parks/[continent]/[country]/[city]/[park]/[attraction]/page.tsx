@@ -226,12 +226,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Find attraction in park data and merge with full attraction data (including history)
   const parkAttraction = park?.attractions?.find((a) => a.slug === attractionSlug);
 
-  // Merge history and schedule data from attractionData into parkAttraction
+  // Merge history, schedule and forecast data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
         ...parkAttraction,
         history: attractionData?.history || parkAttraction.history,
         schedule: attractionData?.schedule,
+        hourlyForecast: attractionData?.hourlyForecast,
+        predictionAccuracy: attractionData?.predictionAccuracy,
       }
     : null;
 

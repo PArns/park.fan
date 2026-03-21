@@ -1,5 +1,5 @@
 import { Link } from '@/i18n/navigation';
-import { Clock } from 'lucide-react';
+import { Clock, Crown } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
@@ -131,7 +131,10 @@ export function AttractionCard({
         <CardContent className="relative z-10 flex h-full flex-col p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              <h3 className="truncate leading-tight font-medium">
+              <h3 className="flex items-center gap-1.5 truncate leading-tight font-medium">
+                {'isHeadliner' in attraction && attraction.isHeadliner && (
+                  <Crown className="text-amber-400 h-3.5 w-3.5 shrink-0" />
+                )}
                 {stripNewPrefix(attraction.name)}
               </h3>
 

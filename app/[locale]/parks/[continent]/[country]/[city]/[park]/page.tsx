@@ -167,14 +167,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
   } catch {
     calendarData = {
       meta: {
-        parkId: park.id,
         slug: parkSlug,
         timezone: park.timezone,
-        generatedAt: new Date().toISOString(),
-        requestRange: {
-          from: format(calendarFrom, 'yyyy-MM-dd'),
-          to: format(calendarTo, 'yyyy-MM-dd'),
-        },
       },
       days: [],
     };
