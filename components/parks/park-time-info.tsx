@@ -5,6 +5,8 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Clock, Calendar, DoorOpen, Snowflake } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import type { ParkStatus } from '@/lib/api/types';
 import { LocalTimeRange } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { ScheduleItem, NextScheduleItem, InfluencingHoliday } from '@/lib/api/types';
@@ -13,6 +15,7 @@ interface ParkTimeInfoProps {
   timezone: string;
   todaySchedule?: ScheduleItem | null;
   nextSchedule?: NextScheduleItem | null;
+  status?: ParkStatus | null;
   className?: string;
 }
 
@@ -26,6 +29,7 @@ export function ParkTimeInfo({
   timezone,
   todaySchedule,
   nextSchedule,
+  status,
   className,
 }: ParkTimeInfoProps) {
   const t = useTranslations('parks');
@@ -229,6 +233,7 @@ export function ParkTimeInfo({
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />
           {t('todaySchedule')}
+          {status && <ParkStatusBadge status={status} className="ml-auto" />}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">

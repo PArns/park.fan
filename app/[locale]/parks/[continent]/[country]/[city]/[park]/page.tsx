@@ -13,7 +13,6 @@ import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import {
   ParkStructuredData,
   BreadcrumbStructuredData,
@@ -247,19 +246,13 @@ export default async function ParkPage({ params }: ParkPageProps) {
             <GlassCard variant="medium">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
-                  <div className="mb-2 flex flex-wrap items-center gap-3">
+                  <div className="mb-2">
                     <h1 className="text-3xl font-bold md:text-4xl">
                       {parkName}
                       <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
                         – {t('h1Suffix')}
                       </span>
                     </h1>
-                    {park.status && <ParkStatusBadge status={park.status} className="scale-110" />}
-                    {park.id && (
-                      <div className="ml-auto">
-                        <ParkFavoriteButton parkId={park.id} />
-                      </div>
-                    )}
                   </div>
                   <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                     <address className="flex items-center gap-1 not-italic">
@@ -277,6 +270,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     )}
                   </div>
                 </div>
+                {park.id && <ParkFavoriteButton parkId={park.id} />}
               </div>
             </GlassCard>
           </div>
@@ -288,6 +282,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               timezone={park.timezone}
               todaySchedule={todaySchedule}
               nextSchedule={park.nextSchedule}
+              status={park.status}
               className="border-primary/10"
             />
 
