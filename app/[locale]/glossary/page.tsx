@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}`;
   const title = `${t('termTitleSuffix')} | park.fan`;
-  const description = t('overviewDescription');
+  const terms = await getGlossaryTerms(locale as Locale);
+  const termCount = Math.floor(terms.length / 10) * 10;
+  const description = t('overviewDescription', { count: termCount });
 
   return {
     title,
@@ -71,6 +73,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
   const tCommon = await getTranslations('common');
 
   const terms = await getGlossaryTerms(locale as Locale);
+  const termCount = Math.floor(terms.length / 10) * 10;
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
 
   // Load English names for cross-language search (cached — no extra I/O for EN locale)
@@ -131,7 +134,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
           segment={segment}
           title={t('overviewTitle')}
           h1={t('overviewH1')}
-          description={t('overviewDescription')}
+          description={t('overviewDescription', { count: termCount })}
           breadcrumbs={breadcrumbs}
         />
       </PageContainer>

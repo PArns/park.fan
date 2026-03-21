@@ -116,9 +116,10 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     ? allTerms.filter((t) => term.relatedTermIds!.includes(t.id))
     : [];
 
+  // Nav breadcrumbs: no locale prefix — next-intl Link adds it automatically
   const breadcrumbs = [
-    { name: tCommon('home'), url: `/${locale}` },
-    { name: t('overviewTitle'), url: `/${locale}/${segment}` },
+    { name: tCommon('home'), url: '/' },
+    { name: t('overviewTitle'), url: `/${segment}` },
   ];
 
   return (
@@ -133,7 +134,8 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
         />
         <BreadcrumbStructuredData
           breadcrumbs={[
-            ...breadcrumbs,
+            { name: tCommon('home'), url: `/${locale}` },
+            { name: t('overviewTitle'), url: `/${locale}/${segment}` },
             { name: term.name, url: `/${locale}/${segment}/${termSlug}` },
           ]}
         />
