@@ -648,7 +648,7 @@
       "title": "Parques Temáticos Mundiales",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
       "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, mejores días y horarios de apertura.",
-      "titleTemplate": "{park} {city} Tiempos de Espera & Mejores Días",
+      "titleTemplate": "{park} Tiempos de Espera – {city}",
       "titleTemplateNoCity": "{park} – Tiempos de Espera & Mejores Días",
       "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura."
     },
@@ -746,7 +746,7 @@
     "overviewTitle": "Glosario de Parques Temáticos",
     "overviewDescription": "Definiciones de todos los términos de parques temáticos: tiempos de espera, niveles de afluencia, elementos de montaña rusa, colas virtuales y más — explicados con claridad.",
     "overviewKeywords": "glosario parque temático, definición tiempo de espera, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",
-    "termTitleSuffix": "Glosario",
+    "termTitleSuffix": "Glosario de Parques Temáticos",
     "termH1Suffix": "explicado – Definición",
     "overviewH1": "Glosario de Parques Temáticos – Todos los términos y definiciones",
     "relatedTerms": "Términos relacionados",

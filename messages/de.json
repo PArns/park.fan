@@ -359,7 +359,7 @@
       "nearest": "In deiner Nähe",
       "away": "entfernt"
     },
-    "h1Suffix": "Aktuelle Wartezeiten"
+    "h1Suffix": "Wartezeiten live"
   },
   "attractions": {
     "title": "Attraktionen",
@@ -648,7 +648,7 @@
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} {city} Wartezeiten & beste Besuchstage",
+      "titleTemplate": "{park} Wartezeiten – {city}",
       "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage",
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick."
     },
@@ -746,7 +746,7 @@
     "overviewTitle": "Freizeitpark-Glossar",
     "overviewDescription": "Alle Fachbegriffe für deinen Freizeitparkbesuch erklärt: Wartezeiten, Besucherdichte, Achterbahnelemente, virtuelle Warteschlangen und vieles mehr – einfach und verständlich.",
     "overviewKeywords": "Freizeitpark Glossar, Wartezeit Bedeutung, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe, Freizeitpark Lexikon",
-    "termTitleSuffix": "Glossar",
+    "termTitleSuffix": "Themenpark-Glossar",
     "termH1Suffix": "erklärt – Wortbedeutung",
     "overviewH1": "Freizeitpark-Glossar – Alle Begriffe & Definitionen",
     "relatedTerms": "Verwandte Begriffe",

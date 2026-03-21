@@ -648,7 +648,7 @@
       "title": "Theme Parks Worldwide",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
       "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
-      "titleTemplate": "{park} {city} Wait Times & Best Days to Visit",
+      "titleTemplate": "{park} Wait Times – {city}",
       "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit",
       "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours."
     },
@@ -746,7 +746,7 @@
     "overviewTitle": "Theme Park Glossary",
     "overviewDescription": "Definitions for every theme park term you'll encounter: wait times, crowd levels, roller coaster elements, virtual queues, and more — in plain language.",
     "overviewKeywords": "theme park glossary, wait time definition, crowd level meaning, roller coaster terms, virtual queue, theme park vocabulary, amusement park terms",
-    "termTitleSuffix": "Glossary",
+    "termTitleSuffix": "Theme Park Glossary",
     "termH1Suffix": "Explained – Theme Park Definition",
     "overviewH1": "Theme Park Glossary – All Terms & Definitions",
     "relatedTerms": "Related Terms",

@@ -648,7 +648,7 @@
       "title": "Parchi a tema nel mondo",
       "description": "Confronta i tempi di coda in diretta e l'affluenza dei principali parchi: Disney, Universal Studios ed Europa-Park.",
       "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
-      "titleTemplate": "{park} {city} - Tempi di attesa e giorni migliori per visitare",
+      "titleTemplate": "{park} Tempi di attesa – {city}",
       "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare",
       "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura."
     },
@@ -746,7 +746,7 @@
     "overviewTitle": "Glossario dei Parchi a Tema",
     "overviewDescription": "Definizioni di tutti i termini dei parchi a tema: tempi di attesa, livelli di affluenza, elementi delle montagne russe, code virtuali e molto altro — spiegati in modo semplice.",
     "overviewKeywords": "glossario parco a tema, definizione tempo di attesa, livello di affluenza, termini montagne russe, coda virtuale, vocabolario parco divertimenti",
-    "termTitleSuffix": "Glossario",
+    "termTitleSuffix": "Glossario Parchi a Tema",
     "termH1Suffix": "spiegato – Definizione",
     "overviewH1": "Glossario dei Parchi a Tema – Tutti i termini e le definizioni",
     "relatedTerms": "Termini correlati",

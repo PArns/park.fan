@@ -42,8 +42,52 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    // Localized glossary segments per non-EN locale (EN uses /glossary directly)
+    const localeSegments: Record<string, string> = {
+      de: 'glossar',
+      fr: 'glossaire',
+      it: 'glossario',
+      nl: 'woordenlijst',
+      es: 'glosario',
+    };
+    const allSegments = Object.values(localeSegments);
+    const rules: { source: string; destination: string; permanent: boolean }[] = [];
+
+    // 1. Cross-locale wrong segments: /[locale]/[wrong-segment] → /[locale]/[correct-segment]
+    //    e.g. /nl/glossaire/:term → /nl/woordenlijst/:term  (Google indexed from stale hreflang)
+    for (const [locale, correctSegment] of Object.entries(localeSegments)) {
+      for (const wrongSegment of allSegments) {
+        if (wrongSegment === correctSegment) continue;
+        rules.push(
+          {
+            source: `/${locale}/${wrongSegment}`,
+            destination: `/${locale}/${correctSegment}`,
+            permanent: true,
+          },
+          {
+            source: `/${locale}/${wrongSegment}/:term`,
+            destination: `/${locale}/${correctSegment}/:term`,
+            permanent: true,
+          }
+        );
+      }
+    }
+
+    // 2. Missing locale prefix: /[segment]/:term → /[locale]/[segment]/:term
+    //    e.g. /glossar/top-hat → /de/glossar/top-hat  (indexed before localePrefix: 'always')
+    for (const [locale, segment] of Object.entries(localeSegments)) {
+      rules.push(
+        { source: `/${segment}`, destination: `/${locale}/${segment}`, permanent: true },
+        { source: `/${segment}/:term`, destination: `/${locale}/${segment}/:term`, permanent: true }
+      );
+    }
+
+    return rules;
+  },
   async rewrites() {
-    // Map localized glossary URL segments to the canonical /glossary path
+    // Serve localized glossary segments via the actual /glossary route.
+    // e.g. /de/glossar/:term → /de/glossary/:term (internal, no URL change)
     const localeSegments: Record<string, string> = {
       de: 'glossar',
       fr: 'glossaire',
@@ -80,7 +124,19 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/(.*)',
-        headers: [{ key: 'Referrer-Policy', value: 'origin-when-cross-origin' }],
+        headers: [
+          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(self), camera=(), microphone=()',
+          },
+        ],
       },
     ];
   },

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
 import { locales } from '@/i18n/config';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = 'https://park.fan';
@@ -55,20 +56,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // ── Glossary pages ────────────────────────────────────────────────────────
-  const glossarySegments: Record<string, string> = {
-    en: 'glossary',
-    de: 'glossar',
-    fr: 'glossaire',
-    it: 'glossario',
-    nl: 'woordenlijst',
-    es: 'glosario',
-  };
-
-  const glossaryIndexAlternates = buildAlternates((l) => `/${glossarySegments[l]}`);
+  const glossaryIndexAlternates = buildAlternates(
+    (l) => `/${GLOSSARY_SEGMENTS[l as keyof typeof GLOSSARY_SEGMENTS]}`
+  );
 
   for (const locale of locales) {
     routes.push({
-      url: `${BASE_URL}/${locale}/${glossarySegments[locale]}`,
+      url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}`,
       changeFrequency: 'monthly',
       priority: 0.5,
       alternates: glossaryIndexAlternates,
@@ -93,7 +87,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const localTerms = termsByLocale.get(l)!;
       const localTerm = localTerms.find((term) => term.id === enTerm.id);
       if (localTerm) {
-        termAlternates[l] = `${BASE_URL}/${l}/${glossarySegments[l]}/${localTerm.slug}`;
+        termAlternates[l] = `${BASE_URL}/${l}/${GLOSSARY_SEGMENTS[l]}/${localTerm.slug}`;
       }
     }
     termAlternates['x-default'] = termAlternates['en'];
@@ -104,7 +98,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (!localTerm) continue;
 
       routes.push({
-        url: `${BASE_URL}/${locale}/${glossarySegments[locale]}/${localTerm.slug}`,
+        url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`,
         changeFrequency: 'yearly',
         priority: 0.3,
         alternates: { languages: termAlternates },

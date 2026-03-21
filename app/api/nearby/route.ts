@@ -20,7 +20,9 @@ export async function GET(request: NextRequest) {
   const lng = searchParams.get('lng');
   const radius = searchParams.get('radius') ?? String(DEFAULT_RADIUS);
   const limit = searchParams.get('limit');
-  const ipDebug = searchParams.get('ip'); // Debug: force GeoIP for this IP
+  // Debug: force GeoIP for this IP — only available outside production
+  const ipDebug =
+    process.env.NODE_ENV !== 'production' ? searchParams.get('ip') : null;
 
   const hasCoords = lat != null && lat !== '' && lng != null && lng !== '';
 

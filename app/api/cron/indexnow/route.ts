@@ -2,18 +2,9 @@ import { NextResponse } from 'next/server';
 import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales } from '@/i18n/config';
-import type { Locale } from '@/i18n/config';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 
 const BASE_URL = 'https://park.fan';
-
-const GLOSSARY_SEGMENTS: Record<Locale, string> = {
-  en: 'glossary',
-  de: 'glossar',
-  fr: 'glossaire',
-  it: 'glossario',
-  nl: 'woordenlijst',
-  es: 'glosario',
-};
 
 // Variant slugs like "taron-2" are noindex pages — exclude from IndexNow
 const VARIANT_SLUG_RE = /^.+-\d+$/;

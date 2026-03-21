@@ -648,7 +648,7 @@
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
       "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
-      "titleTemplate": "{park} {city} Wachttijden & Beste Bezoekdagen",
+      "titleTemplate": "{park} Wachttijden – {city}",
       "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen",
       "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden."
     },
@@ -746,7 +746,7 @@
     "overviewTitle": "Pretpark Woordenlijst",
     "overviewDescription": "Uitleg bij alle pretparkbegrippen: wachttijden, drukteniveaus, achtbaanelementen, virtuele wachtrijen en meer — helder en begrijpelijk uitgelegd.",
     "overviewKeywords": "pretpark woordenlijst, wachttijd betekenis, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen, achtbaan lexicon",
-    "termTitleSuffix": "Woordenlijst",
+    "termTitleSuffix": "Pretpark Woordenlijst",
     "termH1Suffix": "uitgelegd – Betekenis",
     "overviewH1": "Pretpark Woordenlijst – Alle begrippen & definities",
     "relatedTerms": "Gerelateerde begrippen",
