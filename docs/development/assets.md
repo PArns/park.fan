@@ -62,7 +62,7 @@ Locale-specific markdown files in **`content/home/`**:
 Each file can have YAML frontmatter and body. **`components/home/announce-section.tsx`** loads:
 
 ```ts
-getMarkdownContent(`content/home/announce.${locale}.md`);
+getMarkdownContent(`home/announce.${locale}.md`);
 ```
 
 and renders the body with `react-markdown`. Used on the homepage to show a single announcement block.
@@ -71,8 +71,8 @@ and renders the body with `react-markdown`. Used on the homepage to show a singl
 
 **`lib/markdown.ts`**:
 
-- **`getMarkdownContent<T>(relativePath)`** – Reads file from project root, parses with `gray-matter`, returns `{ frontmatter, content }` or `null` if missing/error.
-- Path is relative to `process.cwd()` (e.g. `content/home/announce.en.md`).
+- **`getMarkdownContent<T>(relativePath)`** – Reads file from `content/` directory, parses with `gray-matter`, returns `{ frontmatter, content }` or `null` if missing/error.
+- Path is relative to `content/` (e.g. `home/announce.en.md`). Do **not** include the `content/` prefix.
 
 ---
 

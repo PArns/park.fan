@@ -21,7 +21,7 @@ interface AnnounceFrontmatter {
 }
 
 export async function AnnounceSection({ locale }: AnnounceSectionProps) {
-  const data = getMarkdownContent<AnnounceFrontmatter>(`content/home/announce.${locale}.md`);
+  const data = getMarkdownContent<AnnounceFrontmatter>(`home/announce.${locale}.md`);
   const t = await getTranslations('common'); // Or specific namespace if you have one for time labels
 
   // Fallback labels if not in translations yet, or use direct strings
