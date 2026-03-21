@@ -8,7 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
 import { getGeoStructure } from '@/lib/api/discovery';
 
-import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
@@ -62,6 +61,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
+
+export const revalidate = 300;
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -136,19 +137,18 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="mx-auto flex w-full max-w-5xl flex-col items-center rounded-2xl bg-white/50 px-6 py-4 shadow-2xl backdrop-blur-md sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
               {/* Logo – light/dark variant based on theme */}
               <div className="relative h-20 w-20 shrink-0 sm:h-36 sm:w-36 lg:h-72 lg:w-72">
-                <Image
+                {/* SVGs don't benefit from next/image optimization — use <img> directly */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/logo-big.svg"
                   alt="park.fan"
-                  fill
-                  className="object-contain dark:hidden"
-                  priority
+                  className="h-full w-full object-contain dark:hidden"
                 />
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="/logo-big-dark.svg"
                   alt="park.fan"
-                  fill
-                  className="hidden object-contain dark:block"
-                  priority
+                  className="hidden h-full w-full object-contain dark:block"
                 />
               </div>
               {/* Title + Description only (search rendered separately below) */}

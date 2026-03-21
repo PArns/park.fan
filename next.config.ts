@@ -113,6 +113,21 @@ const nextConfig: NextConfig = {
     return [
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
+      // OG images are semi-static — cache aggressively (must come before the /api no-store rule)
+      {
+        source: '/api/og/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=3600',
+          },
+        ],
+      },
+      // Static SVGs served from /public — cache for 1 year (immutable via content hash)
+      {
+        source: '/:file*.svg',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {
         source: '/api/:path*',

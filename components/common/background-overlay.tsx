@@ -1,8 +1,5 @@
-'use client';
-
-import { useState } from 'react';
-import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import { BackgroundOverlayImage } from './background-overlay-image';
 
 interface BackgroundOverlayProps {
   imageSrc: string;
@@ -25,23 +22,9 @@ export function BackgroundOverlay({
   hoverEffect = false,
   className,
 }: BackgroundOverlayProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
-
   return (
     <div className={cn('absolute inset-0 z-0', className)}>
-      <Image
-        src={imageSrc}
-        alt={alt}
-        fill
-        className={cn(
-          'object-cover transition-opacity duration-700',
-          isLoaded ? 'opacity-40' : 'opacity-0',
-          hoverEffect && 'group-hover:opacity-70'
-        )}
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        priority={false}
-        onLoad={() => setIsLoaded(true)}
-      />
+      <BackgroundOverlayImage imageSrc={imageSrc} alt={alt} hoverEffect={hoverEffect} />
       <div className={cn('absolute inset-0 bg-gradient-to-t', gradientIntensity[intensity])} />
     </div>
   );

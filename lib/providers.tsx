@@ -24,7 +24,7 @@ export function Providers({ children }: ProvidersProps) {
             // Don't refetch on window focus by default
             refetchOnWindowFocus: false,
             // Keep data fresh for reasonable time
-            staleTime: 60 * 1000, // 1 minute default
+            staleTime: 5 * 60 * 1000, // 5 minutes — aligns with API cache TTL
             // Keep unused data in cache for 5 minutes
             gcTime: 5 * 60 * 1000,
             // Retry failed requests once

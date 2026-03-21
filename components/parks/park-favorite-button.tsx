@@ -1,5 +1,3 @@
-'use client';
-
 import { FavoriteStar } from '@/components/common/favorite-star';
 
 interface ParkFavoriteButtonProps {

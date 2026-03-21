@@ -1,5 +1,3 @@
-'use client';
-
 import { getCookie, setCookie } from 'cookies-next';
 import { getFavorites } from '@/lib/api/favorites';
 

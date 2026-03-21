@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useReducer, useEffect } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
@@ -28,123 +28,125 @@ const PLACEHOLDERS = [
 
 type TypewriterPhase = 'typing' | 'pausing_typed' | 'deleting' | 'pausing_deleted';
 
+type TypewriterState = {
+  displayText: string;
+  phraseIndex: number;
+  phase: TypewriterPhase;
+  started: boolean;
+  cursorVisible: boolean;
+};
+
+type TypewriterAction =
+  | { type: 'start' }
+  | { type: 'type_char'; char: string }
+  | { type: 'delete_char' }
+  | { type: 'set_phase'; phase: TypewriterPhase }
+  | { type: 'next_phrase'; count: number }
+  | { type: 'toggle_cursor' };
+
+const initialState: TypewriterState = {
+  displayText: '',
+  phraseIndex: 0,
+  phase: 'typing',
+  started: false,
+  cursorVisible: true,
+};
+
+function typewriterReducer(state: TypewriterState, action: TypewriterAction): TypewriterState {
+  switch (action.type) {
+    case 'start':
+      return { ...state, started: true };
+    case 'type_char':
+      return { ...state, displayText: state.displayText + action.char };
+    case 'delete_char':
+      return { ...state, displayText: state.displayText.slice(0, -1) };
+    case 'set_phase':
+      return { ...state, phase: action.phase };
+    case 'next_phrase':
+      return {
+        ...state,
+        displayText: '',
+        phraseIndex: (state.phraseIndex + 1) % action.count,
+        phase: 'typing',
+      };
+    case 'toggle_cursor':
+      return { ...state, cursorVisible: !state.cursorVisible };
+    default:
+      return state;
+  }
+}
+
 function useTypewriter(
   phrases: string[],
   typingSpeed = 150,
   deletingSpeed = 50,
   pauseDuration = 2000
 ) {
-  const [displayText, setDisplayText] = useState('');
-  const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-  const [phase, setPhase] = useState<TypewriterPhase>('typing');
-  const [hasStarted, setHasStarted] = useState(false);
-  const [cursorVisible, setCursorVisible] = useState(true);
+  const [state, dispatch] = useReducer(typewriterReducer, initialState);
+  const { displayText, phraseIndex, phase, started, cursorVisible } = state;
 
   // Initial start delay
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setHasStarted(true);
-    }, 3000);
-    return () => clearTimeout(timeout);
+    const id = setTimeout(() => dispatch({ type: 'start' }), 3000);
+    return () => clearTimeout(id);
   }, []);
 
   // Cursor blinking
   useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setCursorVisible((prev) => !prev);
-    }, 530);
-    return () => clearInterval(cursorInterval);
+    const id = setInterval(() => dispatch({ type: 'toggle_cursor' }), 530);
+    return () => clearInterval(id);
   }, []);
 
+  // Main typewriter state machine
   useEffect(() => {
-    if (!hasStarted) return;
+    if (!started) return;
 
-    const currentPhrase = phrases[currentPhraseIndex];
-    let timeout: NodeJS.Timeout;
+    const phrase = phrases[phraseIndex];
+    let id: NodeJS.Timeout;
 
     switch (phase) {
       case 'typing':
-        // Type one character
-        if (displayText.length < currentPhrase.length) {
-          timeout = setTimeout(() => {
-            setDisplayText(currentPhrase.substring(0, displayText.length + 1));
-          }, typingSpeed);
+        if (displayText.length < phrase.length) {
+          id = setTimeout(
+            () => dispatch({ type: 'type_char', char: phrase[displayText.length] }),
+            typingSpeed
+          );
         } else {
-          // Finished typing, switch to pause
-          setTimeout(() => setPhase('pausing_typed'), 0);
+          id = setTimeout(() => dispatch({ type: 'set_phase', phase: 'pausing_typed' }), 0);
         }
         break;
-
       case 'pausing_typed':
-        // Wait before deleting
-        timeout = setTimeout(() => {
-          setPhase('deleting');
-        }, pauseDuration);
+        id = setTimeout(() => dispatch({ type: 'set_phase', phase: 'deleting' }), pauseDuration);
         break;
-
       case 'deleting':
-        // Delete one character
         if (displayText.length > 0) {
-          timeout = setTimeout(() => {
-            setDisplayText(currentPhrase.substring(0, displayText.length - 1));
-          }, deletingSpeed);
+          id = setTimeout(() => dispatch({ type: 'delete_char' }), deletingSpeed);
         } else {
-          // Finished deleting, switch to pause
-          setTimeout(() => setPhase('pausing_deleted'), 0);
+          id = setTimeout(() => dispatch({ type: 'set_phase', phase: 'pausing_deleted' }), 0);
         }
         break;
-
       case 'pausing_deleted':
-        // Wait before typing next word
-        timeout = setTimeout(() => {
-          setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
-          setPhase('typing');
-        }, 3000); // 3s pause after delete
+        id = setTimeout(() => dispatch({ type: 'next_phrase', count: phrases.length }), 3000);
         break;
     }
 
-    return () => clearTimeout(timeout);
+    return () => clearTimeout(id);
   }, [
+    started,
     displayText,
     phase,
-    hasStarted,
-    currentPhraseIndex,
+    phraseIndex,
     phrases,
     typingSpeed,
     deletingSpeed,
     pauseDuration,
   ]);
 
-  // Return logic:
-  // If not started, return null to let component show default placeholder
-  if (!hasStarted) {
-    return null;
-  }
+  if (!started) return null;
 
-  // If pausing after delete (waiting for next word), don't show blinking cursor if requested
-  // "between searches... text should not blink" -> Hide cursor during long pause
-  const finalCursor = phase === 'pausing_deleted' ? '' : cursorVisible ? '|' : '';
-
-  // If we are in pausing_deleted (empty text), we return empty string + no cursor = empty string
-  // This causes fallback to defaultPlaceholder which is NOT what we want if we want "pause between searches"
-  // Actually, if we want "pause between searches", we want it to look EMPTY?
-  // "2 seconds between text is deleted and next search starts".
-  // If it's empty, it shows default placeholder?
-  // If default placeholder is "Search parks...", then it's not "empty".
-  // The user said: "hier soll der text dann nicht blinken".
-  // If I return "", the component uses `displayPlaceholder || defaultPlaceholder`.
-  // So it shows "Search parks...".
-  // Maybe that IS what's desired? "Text deleted -> Show default placeholder for 2s"??
-  // A typewriter usually clears to empty.
-  // If I want it to be empty, I must return " " (space)?
-  // Let's assume return "" -> defaultPlaceholder is fine.
-  // BUT the user said "Text blinks now when searching for nothing" (start?).
-  // If I return `null` for start delay, it shows default.
-  // If I return `""` for pause, it shows default.
-  // The user complains about blinking.
-  // My fix `finalCursor` hides cursor during pause.
-
-  return `${displayText}${finalCursor}`;
+  // Hide cursor between phrases (during pausing_deleted)
+  const cursor = phase === 'pausing_deleted' ? '' : cursorVisible ? '|' : '';
+  return `${displayText}${cursor}`;
 }
 
 export function HeroSearchInput({ placeholder: defaultPlaceholder }: HeroSearchInputProps) {

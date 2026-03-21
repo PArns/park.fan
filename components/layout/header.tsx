@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { Menu, MapPin } from 'lucide-react';
@@ -29,13 +29,24 @@ export function Header() {
 
   const isHomePage = pathname === '/';
   const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const check = () => setScrolled(window.scrollY > 50);
     check();
     if (!isHomePage) return;
-    window.addEventListener('scroll', check, { passive: true });
-    return () => window.removeEventListener('scroll', check);
+    const handleScroll = () => {
+      if (rafRef.current !== null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        check();
+      });
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
   }, [isHomePage]);
 
   const isTransparent = isHomePage && !scrolled;
