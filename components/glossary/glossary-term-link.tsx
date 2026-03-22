@@ -51,11 +51,7 @@ export function GlossaryTermLink({
       return (
         <Tooltip>
           <TooltipTrigger asChild>{trigger}</TooltipTrigger>
-          <TooltipContent
-            side="top"
-            className="bg-background/80 text-foreground border-border/60 max-w-64 border shadow-lg backdrop-blur-md"
-            arrowClassName="bg-background/80 fill-background border-border/60"
-          >
+          <TooltipContent side="top" className="max-w-64">
             <p className="font-semibold">{tooltipName}</p>
             <p className="text-muted-foreground mt-0.5">{tooltipDefinition}</p>
           </TooltipContent>

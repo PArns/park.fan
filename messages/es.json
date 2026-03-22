@@ -455,7 +455,11 @@
         "return": "Regreso: {start} - {end}"
       }
     },
-    "h1Suffix": "Tiempo de espera en vivo"
+    "h1Suffix": "Tiempo de espera en vivo",
+    "headliner": {
+      "title": "Headliner",
+      "description": "Atracción imprescindible de este parque"
+    }
   },
   "calendar": {
     "legend": "Leyenda",

@@ -14,6 +14,8 @@ import { ParkStatusBadge } from './park-status-badge';
 import { TrendIndicator } from './trend-indicator';
 import { QueueTypeBadge } from './queue-type-badge';
 import { WaitTimeSparkline } from './wait-time-sparkline';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
+import { TruncatedText } from '@/components/common/truncated-text';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -131,11 +133,22 @@ export function AttractionCard({
         <CardContent className="relative z-10 flex h-full flex-col p-4">
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              <h3 className="flex items-center gap-1.5 truncate leading-tight font-medium">
+              <h3 className="flex items-center gap-1.5 leading-tight font-medium">
                 {'isHeadliner' in attraction && attraction.isHeadliner && (
-                  <Crown className="h-3.5 w-3.5 shrink-0 text-amber-400" />
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Crown className="h-3.5 w-3.5 shrink-0 text-amber-400" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="font-semibold">{t('headliner.title')}</p>
+                      <p className="text-muted-foreground mt-0.5">{t('headliner.description')}</p>
+                    </TooltipContent>
+                  </Tooltip>
                 )}
-                {stripNewPrefix(attraction.name)}
+                <TruncatedText
+                  text={stripNewPrefix(attraction.name)}
+                  className="block min-w-0 flex-1 truncate"
+                />
               </h3>
 
               {/* Park Name (only for favorites section on homepage) */}

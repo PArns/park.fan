@@ -455,7 +455,11 @@
         "return": "Return: {start} - {end}"
       }
     },
-    "h1Suffix": "Live Wait Time"
+    "h1Suffix": "Live Wait Time",
+    "headliner": {
+      "title": "Headliner",
+      "description": "Must-see attraction at this park"
+    }
   },
   "calendar": {
     "legend": "Legend",

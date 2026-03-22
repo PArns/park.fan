@@ -455,7 +455,11 @@
         "return": "Rückkehr: {start} - {end}"
       }
     },
-    "h1Suffix": "Aktuelle Wartezeit"
+    "h1Suffix": "Aktuelle Wartezeit",
+    "headliner": {
+      "title": "Headliner",
+      "description": "Highlight-Attraktion dieses Parks"
+    }
   },
   "calendar": {
     "legend": "Legende",

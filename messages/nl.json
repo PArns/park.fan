@@ -455,7 +455,11 @@
         "return": "Terug: {start} - {end}"
       }
     },
-    "h1Suffix": "Live wachttijd"
+    "h1Suffix": "Live wachttijd",
+    "headliner": {
+      "title": "Headliner",
+      "description": "Topattratie van dit park"
+    }
   },
   "calendar": {
     "legend": "Legenda",

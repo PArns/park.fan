@@ -362,6 +362,7 @@
     },
     "h1Suffix": "Temps d'attente en direct"
   },
+
   "attractions": {
     "title": "Attractions",
     "waitTime": "Attente",
@@ -455,7 +456,11 @@
         "return": "Retour: {start} - {end}"
       }
     },
-    "h1Suffix": "Temps d'attente en direct"
+    "h1Suffix": "Temps d'attente en direct",
+    "headliner": {
+      "title": "Headliner",
+      "description": "Attraction incontournable de ce parc"
+    }
   },
   "calendar": {
     "legend": "Légende",
