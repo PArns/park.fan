@@ -190,6 +190,17 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${newHash}`);
   };
 
+  // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
+  const attractionLandKey = useMemo(() => {
+    const map: Record<string, string> = {};
+    Object.entries(attractionsByLand).forEach(([land, attractions]) => {
+      attractions.forEach((a) => {
+        map[a.id] = land;
+      });
+    });
+    return map;
+  }, [attractionsByLand]);
+
   const fuse = useMemo(() => {
     const allAttractions = Object.values(attractionsByLand).flat();
     return new Fuse(allAttractions, {
@@ -215,7 +226,7 @@ export function TabsWithHash({
           .map((result) => result.item)
           .reduce(
             (acc, attraction) => {
-              const land = attraction.land || 'Other';
+              const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
               if (!acc[land]) {
                 acc[land] = [];
               }
