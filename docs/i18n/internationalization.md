@@ -60,6 +60,20 @@ API returns `moderate` for P50 baseline. We display it as **"Normal"** in all lo
 
 Keys: `parks.crowdLevels.moderate`, `stats.crowd.moderate`, etc.
 
+## Locale Switching
+
+Both `LocaleSwitcher` (`components/common/locale-switcher.tsx`) and `LanguageBanner` (`components/layout/language-banner.tsx`) navigate to the correct localized URL using the following strategy:
+
+1. **Hreflang first** – Query `link[rel="alternate"][hreflang="${newLocale}"]` from the page `<head>`. Parse `.href` via `new URL(el.href).pathname` to get the locale-correct path (e.g. `/de/glossar` vs `/en/glossary`). This works on localhost and production alike.
+2. **Regex fallback** – Replace only the leading `/:locale/` segment using `path.replace(/^\/:locale(\\/|$)/, /:newLocale$1/)`. Never use bare `String.replace(`/${locale}`, ...)` as it can hit locale strings elsewhere in the path.
+
+**Never use `path.replace(`/${locale}`, `/${newLocale}`)` directly** — it fails for:
+
+- Localized URL segments: `/en/glossary` → `/de/glossary` instead of `/de/glossar`
+- Paths containing the locale code: `/en/parks/europe/de` (Germany country code)
+
+**Flags:** `en` locale uses `FlagUS` (not `FlagGB`). All flag SVGs are in `components/common/icons/flags.tsx`.
+
 ## SEO
 
 - `generateAlternateLanguages()` in `i18n/config.ts` for hreflang

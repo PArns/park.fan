@@ -30,7 +30,10 @@ Reminders and context for AI or human sessions working on the codebase.
 10. **Flags / experiments** – Use Vercel Toolbar Flags Explorer and `flags.ts`; do not add env-based feature toggles.
     → [Flags & Debug](flags-and-debug.md)
 
-11. **Glossary** – 90 terms across 7 categories. Term data (slugs) in `lib/glossary/data.ts`; per-locale definitions in `content/glossary/XX.ts` — use `\n\n` to separate paragraphs in `definition` fields. Localized URLs (`/de/glossar/wartezeit`) handled via Next.js `rewrites()` in `next.config.ts` — file-system path stays `app/[locale]/glossary/[term]`. Add new terms to both `data.ts` and all 6 locale content files.
+11. **Locale switching** – Both `LocaleSwitcher` and `LanguageBanner` use hreflang `<link>` tags (from `generateMetadata`) to navigate, not naive `String.replace()`. This is critical for pages with localized URL segments (e.g. `/en/glossary` ↔ `/de/glossar`). The hreflang URL is parsed via `new URL(el.href).pathname` to strip the domain. Fallback regex replaces only the leading `/:locale/` segment. Never use bare `path.replace(`/${locale}`, ...)` for locale switching.
+    → Flag for `en` locale = `FlagUS` (not `FlagGB`).
+
+12. **Glossary** – 90 terms across 7 categories. Term data (slugs) in `lib/glossary/data.ts`; per-locale definitions in `content/glossary/XX.ts` — use `\n\n` to separate paragraphs in `definition` fields. Localized URLs (`/de/glossar/wartezeit`) handled via Next.js `rewrites()` in `next.config.ts` — file-system path stays `app/[locale]/glossary/[term]`. Add new terms to both `data.ts` and all 6 locale content files.
     → [Glossary System](../features/glossary.md)
 
 ---

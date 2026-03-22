@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { X } from 'lucide-react';
 import { locales, localeNames, type Locale } from '@/i18n/config';
-import { FlagDE, FlagGB, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
+import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 
 interface LanguageBannerProps {
   currentLocale: Locale;
@@ -12,7 +12,7 @@ interface LanguageBannerProps {
 
 // Flag components for each locale
 const FlagComponents: Record<Locale, React.ComponentType<{ className?: string }>> = {
-  en: FlagGB,
+  en: FlagUS,
   de: FlagDE,
   nl: FlagNL,
   fr: FlagFR,
@@ -89,9 +89,21 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
 
   const handleSwitch = () => {
     if (browserLocale) {
-      // Get current path and replace locale
+      // Prefer hreflang links — these carry the correct localized path (e.g. /de/glossar vs /en/glossary)
+      const hreflangEl = document.querySelector<HTMLLinkElement>(
+        `link[rel="alternate"][hreflang="${browserLocale}"]`
+      );
+      if (hreflangEl?.href) {
+        const { pathname: hreflangPath } = new URL(hreflangEl.href);
+        window.location.replace(hreflangPath);
+        return;
+      }
+      // Fallback: replace only the leading locale segment to avoid double-replacement
       const currentPath = window.location.pathname;
-      const newPath = currentPath.replace(`/${currentLocale}`, `/${browserLocale}`);
+      const newPath = currentPath.replace(
+        new RegExp(`^/${currentLocale}(/|$)`),
+        `/${browserLocale}$1`
+      );
       router.push(newPath);
     }
   };

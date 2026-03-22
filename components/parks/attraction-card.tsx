@@ -133,7 +133,7 @@ export function AttractionCard({
             <div className="min-w-0 flex-1">
               <h3 className="flex items-center gap-1.5 truncate leading-tight font-medium">
                 {'isHeadliner' in attraction && attraction.isHeadliner && (
-                  <Crown className="text-amber-400 h-3.5 w-3.5 shrink-0" />
+                  <Crown className="h-3.5 w-3.5 shrink-0 text-amber-400" />
                 )}
                 {stripNewPrefix(attraction.name)}
               </h3>
