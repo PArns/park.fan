@@ -11,18 +11,20 @@ export function stripNewPrefix(text: string): string {
 }
 
 /** Parks that sound unnatural with any article in German — used without one. */
-const GERMAN_NO_ARTICLE_SLUGS = new Set(['efteling']);
+const GERMAN_NO_ARTICLE_SLUGS = new Set(['efteling', 'walibi-belgium']);
 
 /**
  * Determines the German nominative article for a theme park name.
  * - Slugs in GERMAN_NO_ARTICLE_SLUGS → undefined (no article)
- * - "Park" as a word/hyphen component → 'der' (der Europa-Park, der Movie Park Germany)
+ * - "Park" or "Parc" as a word/hyphen component → 'der' (der Europa-Park, der Parc Astérix)
+ * - "Studios" as a word → 'die' (die Universal Studios Florida)
  * - Everything else → 'das' (default for foreign/unknown proper nouns in German)
  */
-export function getGermanArticle(parkName: string, parkSlug?: string): 'der' | 'das' | undefined {
+export function getGermanArticle(parkName: string, parkSlug?: string): 'der' | 'die' | 'das' | undefined {
   if (parkSlug && GERMAN_NO_ARTICLE_SLUGS.has(parkSlug)) return undefined;
   const lower = parkName.toLowerCase();
   const words = lower.split(/[\s-]+/);
-  if (words.some((w) => w === 'park') || lower.endsWith('park')) return 'der';
+  if (words.some((w) => w === 'park' || w === 'parc')) return 'der';
+  if (words.some((w) => w === 'studios')) return 'die';
   return 'das';
 }
