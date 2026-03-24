@@ -49,12 +49,8 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
     todaySchedule.openingTime &&
     todaySchedule.closingTime
   ) {
-    const open = todaySchedule.openingTime.includes('T')
-      ? todaySchedule.openingTime.substring(11, 16)
-      : todaySchedule.openingTime.substring(0, 5);
-    const close = todaySchedule.closingTime.includes('T')
-      ? todaySchedule.closingTime.substring(11, 16)
-      : todaySchedule.closingTime.substring(0, 5);
+    const open = formatInTimeZone(new Date(todaySchedule.openingTime), timeZone, 'HH:mm');
+    const close = formatInTimeZone(new Date(todaySchedule.closingTime), timeZone, 'HH:mm');
     openingHoursAnswer = t('openingHoursA', {
       date: localizedDate,
       park: parkName,
