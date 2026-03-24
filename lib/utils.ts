@@ -14,12 +14,11 @@ export function stripNewPrefix(text: string): string {
  * Determines the German nominative article for a theme park name.
  * - "Park" as a word/hyphen component → 'der' (der Europa-Park, der Movie Park Germany)
  * - Any word ending in "-land" → 'das' (das Phantasialand, das Disneyland, das Toverland)
- * - Everything else → undefined (no article added; grammatically correct in German)
+ * - Everything else → 'das' (default for foreign/unknown proper nouns in German)
  */
-export function getGermanArticle(parkName: string): 'der' | 'das' | undefined {
+export function getGermanArticle(parkName: string): 'der' | 'das' {
   const lower = parkName.toLowerCase();
   const words = lower.split(/[\s-]+/);
   if (words.some((w) => w === 'park') || lower.endsWith('park')) return 'der';
-  if (words.some((w) => w.endsWith('land'))) return 'das';
-  return undefined;
+  return 'das';
 }
