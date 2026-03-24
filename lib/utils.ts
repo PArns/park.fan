@@ -16,6 +16,7 @@ const GERMAN_NO_ARTICLE_SLUGS = new Set([
   'walibi-belgium',
   'universal-studios-florida',
   'universal-studios-japan',
+  'busch-gardens-tampa',
 ]);
 
 /**
