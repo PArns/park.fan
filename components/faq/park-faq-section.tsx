@@ -4,7 +4,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { ChevronDown, MapPin, Calendar, Ticket, Map, Theater, UtensilsCrossed } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { translateCountry } from '@/lib/i18n/helpers';
-import { stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
@@ -23,6 +23,13 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
+
+  // German article forms (only for parks whose name contains "Park", e.g. "Europa-Park")
+  const article = locale === 'de' ? getGermanArticle(parkName) : undefined;
+  const parkNom = article ? `${article} ${parkName}` : parkName;
+  const parkNomCap = article
+    ? `${article.charAt(0).toUpperCase()}${article.slice(1)} ${parkName}`
+    : parkName;
 
   // Get current date in park's timezone
   const timeZone = park.timezone || 'UTC';
@@ -53,20 +60,20 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
     const close = formatInTimeZone(new Date(todaySchedule.closingTime), timeZone, 'HH:mm');
     openingHoursAnswer = t('openingHoursA', {
       date: localizedDate,
-      park: parkName,
+      park: parkNom,
       open,
       close,
     });
   } else {
     openingHoursAnswer = t('openingHoursClosed', {
       date: localizedDate,
-      park: parkName,
+      park: parkNom,
     });
   }
 
   faqs.push({
     icon: Calendar,
-    question: t('openingHoursQ', { park: parkName }),
+    question: t('openingHoursQ', { park: parkNom }),
     answer: openingHoursAnswer,
   });
 
@@ -77,9 +84,9 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
 
     faqs.push({
       icon: MapPin,
-      question: t('locationQ', { park: parkName }),
+      question: t('locationQ', { park: parkNom }),
       answer: t('locationA', {
-        park: parkName,
+        park: parkNomCap,
         city: park.city,
         country: translatedCountry,
       }),
@@ -108,7 +115,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
       icon: Map,
       question: t('themedAreasQ', { park: parkName }),
       answer: {
-        text: t('themedAreasA', { park: parkName, count: uniqueLands.length }),
+        text: t('themedAreasA', { park: parkNomCap, count: uniqueLands.length }),
         list: uniqueLands,
       },
     });
@@ -121,7 +128,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
       icon: Theater,
       question: t('showsQ', { park: parkName }),
       answer: {
-        text: t('showsA', { park: parkName, count: park.shows.length }),
+        text: t('showsA', { park: parkNom, count: park.shows.length }),
         list: showNames,
       },
     });
@@ -134,7 +141,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
       icon: UtensilsCrossed,
       question: t('diningQ', { park: parkName }),
       answer: {
-        text: t('diningA', { park: parkName, count: park.restaurants.length }),
+        text: t('diningA', { park: parkNomCap, count: park.restaurants.length }),
         list: restaurantNames,
       },
     });
