@@ -17,7 +17,7 @@ export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
   const parkName = stripNewPrefix(park.name);
 
   // German article forms (only for parks whose name contains "Park", e.g. "Europa-Park")
-  const article = locale === 'de' ? getGermanArticle(parkName) : undefined;
+  const article = locale === 'de' ? getGermanArticle(parkName, park.slug) : undefined;
   const parkNom = article ? `${article} ${parkName}` : parkName;
   const parkNomCap = article
     ? `${article.charAt(0).toUpperCase()}${article.slice(1)} ${parkName}`
