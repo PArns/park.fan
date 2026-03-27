@@ -1564,6 +1564,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'wave-turn',
     },
   },
+  {
+    id: 'high-five',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'high-five',
+      de: 'high-five',
+      fr: 'high-five',
+      it: 'high-five',
+      nl: 'high-five',
+      es: 'high-five',
+    },
+  },
   // ── New Crowd/Planning (P1/P2) ─────────────────────────────────────────────
   {
     id: 'shoulder-season',
@@ -1722,6 +1734,118 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'spettacolo-dal-vivo',
       nl: 'live-show',
       es: 'espectaculo-en-vivo',
+    },
+  },
+  // ── New Attractions (P2) ───────────────────────────────────────────────────
+  {
+    id: 'drop-tower',
+    category: 'attractions',
+    slugs: {
+      en: 'drop-tower',
+      de: 'drop-tower',
+      fr: 'tour-de-chute',
+      it: 'torre-di-caduta',
+      nl: 'drop-tower',
+      es: 'torre-de-caida',
+    },
+  },
+  {
+    id: 'log-flume',
+    category: 'attractions',
+    slugs: {
+      en: 'log-flume',
+      de: 'wildwasserbahn',
+      fr: 'toboggan-aquatique',
+      it: 'fiume-dei-tronchi',
+      nl: 'wildwaterbaan',
+      es: 'descenso-de-troncos',
+    },
+  },
+  {
+    id: 'river-rapids',
+    category: 'attractions',
+    slugs: {
+      en: 'river-rapids',
+      de: 'wildwasser-rafting',
+      fr: 'rapides-riviere',
+      it: 'rapide-del-fiume',
+      nl: 'wildwaterrit',
+      es: 'rrapids-rio',
+    },
+  },
+  {
+    id: 'swing-ride',
+    category: 'attractions',
+    slugs: {
+      en: 'swing-ride',
+      de: 'kettenkarussell',
+      fr: 'chaises-volantes',
+      it: 'giostra-a-catene',
+      nl: 'zweefmolen',
+      es: 'sillas-voladoras',
+    },
+  },
+  // ── New Coasters (P2) ─────────────────────────────────────────────────────
+  {
+    id: 'racing-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'racing-coaster',
+      de: 'racing-coaster',
+      fr: 'montagnes-russes-course',
+      it: 'racing-coaster',
+      nl: 'racing-coaster',
+      es: 'montaña-rusa-carrera',
+    },
+  },
+  // ── New Dining (P2) ───────────────────────────────────────────────────────
+  {
+    id: 'dining-reservation',
+    category: 'dining',
+    slugs: {
+      en: 'dining-reservation',
+      de: 'tischreservierung',
+      fr: 'reservation-restaurant',
+      it: 'prenotazione-ristorante',
+      nl: 'tafelreservering',
+      es: 'reserva-restaurante',
+    },
+  },
+  {
+    id: 'mobile-ordering',
+    category: 'dining',
+    slugs: {
+      en: 'mobile-ordering',
+      de: 'mobile-bestellung',
+      fr: 'commande-mobile',
+      it: 'ordine-mobile',
+      nl: 'mobiel-bestellen',
+      es: 'pedido-movil',
+    },
+  },
+  {
+    id: 'food-court',
+    category: 'dining',
+    slugs: {
+      en: 'food-court',
+      de: 'food-court',
+      fr: 'food-court',
+      it: 'food-court',
+      nl: 'food-court',
+      es: 'food-court',
+    },
+  },
+  // ── New Park Operations (P2) ──────────────────────────────────────────────
+  {
+    id: 'capacity-closure',
+    category: 'park-operations',
+    slugs: {
+      en: 'capacity-closure',
+      de: 'kapazitaetsschliessung',
+      fr: 'fermeture-capacite',
+      it: 'chiusura-capacita',
+      nl: 'capaciteitssluiting',
+      es: 'cierre-por-capacidad',
     },
   },
 ];
