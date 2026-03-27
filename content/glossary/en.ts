@@ -1127,6 +1127,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'American manufacturer specialising in LSM/LIM launch coasters — in Europe best known through the Sky Scream family of inverted launch coasters.',
+    definition:
+      "Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Their launch technology was among the earliest commercially deployed, enabling smooth high-speed launches without hydraulic catapults. The Sky Rocket II — a compact, single-looping launch coaster — became widely popular through mid-tier park installations globally.\n\nIn Europe, Premier Rides is best known through Sky Scream at Holiday Park (Haßloch, Germany), an inverted family launch coaster and regional landmark attraction. Hagrid's Magical Creatures Motorbike Adventure at Universal Orlando also uses Premier's LSM launch system, showcasing the technology's versatility beyond traditional coasters.",
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'German manufacturer from Munich known for spinning coasters with trick track, the X-Car custom platform, and the Sky Loop vertical loop model.',
+    definition:
+      "Maurer Rides (Maurer AG, metal fabrication since 1876, amusement rides from 1993) is a Munich-based German manufacturer. The company developed the SC spinning coaster series featuring their signature trick track — a section where the car tilts sideways mid-ride — and the X-Car platform, a single-articulated-car format capable of highly customised compact layouts with launches and inversions.\n\nThe Sky Loop is a standalone vertical loop structure found across European parks as a space-efficient thrill ride, while the Spike coaster uses individual pursuit cars on a shared track. Well-known European installations include Winja's Fear and Winja's Force at Phantasialand (Germany) — indoor spinning coasters with trick track — and X-Car installations across various European parks.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Italian manufacturer with one of the largest portfolios of family-friendly coasters and flat rides worldwide, with 250+ coasters installed globally.',
+    definition:
+      "Zamperla (founded 1966, Altavilla Vicentina, Italy) is one of the world's most prolific amusement ride manufacturers. Where Intamin, B&M, and Mack target large-scale thrill installations, Zamperla focuses on volume and accessibility — their Family Coaster, Mini Coaster, Twister, and Disk'O Coaster models are staples of smaller parks, resort midways, and seasonal attractions worldwide.\n\nCompact footprints and modest height requirements make Zamperla rides especially common in European city parks, holiday resorts, and indoor facilities. The company also built Thunderbolt at Coney Island (New York), demonstrating their ability to scale up when required. Walt Disney Parks & Resorts has used Zamperla attractions across multiple properties.",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'American manufacturer known for pneumatic towers, the compact El Loco extreme coaster, and Free Fly 4D coasters.',
+    definition:
+      "S&S Worldwide (founded 1994, Logan, Utah; acquired by Sansei Technologies in 2012) originally developed pneumatic drop tower systems — the Space Shot and Turbo Drop — before expanding into coasters. Their El Loco model is a compact extreme coaster featuring a beyond-vertical first drop and inversion, delivering significant thrills within a very small footprint. The Free Fly is a 4D-style coaster where the seat pivots freely to flip riders at key moments.\n\nS&S also acquired the assets of the historic Arrow Dynamics after its 2001 bankruptcy, establishing a lineage connection to some of the most significant coasters in the industry. In Europe, S&S installations are less common than in North America, though the company's air-launch technology has influenced broader industry development.",
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'German manufacturer from Bavaria specialising in family coasters and classic park rides, with over 190 coasters built worldwide.',
+    definition:
+      'Zierer (founded 1930, Deggendorf, Bavaria) is a German manufacturer specialising in family-scale roller coasters and classic park rides. Their Force Coaster range spans multiple tiers — from compact junior models through to the higher-speed Force Custom installations. Zierer coasters are characterised by steel tubular track, smooth ride quality, and moderate height requirements, making them ideal for parks catering to a broad demographic.\n\nWith over 190 roller coasters delivered worldwide, Zierer is one of Europe\'s most prolific coaster builders by unit count. Notable European installations include Feuerdrache at Legoland Deutschland, and family coasters at parks across Germany, the Netherlands, and Scandinavia.',
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition: 'Inversion where the train briefly hangs upside-down with near-zero speed.',

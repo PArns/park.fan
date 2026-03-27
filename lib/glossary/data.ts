@@ -1479,6 +1479,66 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'gci',
     },
   },
+  {
+    id: 'premier-rides',
+    category: 'coasters',
+    slugs: {
+      en: 'premier-rides',
+      de: 'premier-rides',
+      fr: 'premier-rides',
+      it: 'premier-rides',
+      nl: 'premier-rides',
+      es: 'premier-rides',
+    },
+  },
+  {
+    id: 'maurer-rides',
+    category: 'coasters',
+    slugs: {
+      en: 'maurer-rides',
+      de: 'maurer-rides',
+      fr: 'maurer-rides',
+      it: 'maurer-rides',
+      nl: 'maurer-rides',
+      es: 'maurer-rides',
+    },
+  },
+  {
+    id: 'zamperla',
+    category: 'coasters',
+    slugs: {
+      en: 'zamperla',
+      de: 'zamperla',
+      fr: 'zamperla',
+      it: 'zamperla',
+      nl: 'zamperla',
+      es: 'zamperla',
+    },
+  },
+  {
+    id: 's-and-s-worldwide',
+    category: 'coasters',
+    slugs: {
+      en: 's-and-s-worldwide',
+      de: 's-and-s-worldwide',
+      fr: 's-and-s-worldwide',
+      it: 's-and-s-worldwide',
+      nl: 's-and-s-worldwide',
+      es: 's-and-s-worldwide',
+    },
+  },
+  {
+    id: 'zierer',
+    category: 'coasters',
+    slugs: {
+      en: 'zierer',
+      de: 'zierer',
+      fr: 'zierer',
+      it: 'zierer',
+      nl: 'zierer',
+      es: 'zierer',
+    },
+  },
   // ── New Coaster Elements (P1/P2) ───────────────────────────────────────────
   {
     id: 'stall',

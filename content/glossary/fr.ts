@@ -1231,6 +1231,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'Fabricant américain spécialisé dans les coasters à lancement LSM/LIM — en Europe, connu pour la gamme Sky Scream.',
+    definition:
+      "Premier Rides (fondé en 1995, Baltimore, Maryland) est un fabricant américain spécialisé dans les systèmes de lancement à moteur synchrone (LSM) et à moteur à induction (LIM). Le Sky Rocket II — un compact launch coaster avec une inversion — s'est répandu dans les parcs de taille moyenne à travers le monde.\n\nEn Europe, Premier Rides est surtout connu grâce à Sky Scream au Holiday Park (Haßloch, Allemagne), un launch coaster inversé devenu une attraction régionale incontournable. La technologie LSM de Premier équipe également Hagrid's Magical Creatures Motorbike Adventure à Universal Orlando.",
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'Fabricant allemand de Munich connu pour les spinning coasters avec trick track, la plateforme X-Car et le Sky Loop vertical.',
+    definition:
+      "Maurer Rides (Maurer AG, fabrication métallique depuis 1876, attractions depuis 1993) est un fabricant munichois. La série SC de spinning coasters se distingue par son trick track — une section où la rame s'incline latéralement — et la plateforme X-Car permet des layouts compacts hautement personnalisés avec lancements et inversions.\n\nLe Sky Loop est un loop vertical autonome présent dans de nombreux parcs européens. Installations notables : Winja's Fear et Winja's Force à Phantasialand (Allemagne), des spinning coasters indoor avec trick track.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Fabricant italien avec l\'un des plus grands portefeuilles de coasters familiaux et de manèges au monde — plus de 250 coasters installés.',
+    definition:
+      "Zamperla (fondé en 1966, Altavilla Vicentina, Italie) est l'un des fabricants d'attractions les plus prolifiques au monde. Là où Intamin, B&M et Mack visent les grandes installations, Zamperla mise sur le volume et l'accessibilité — leurs Family Coaster, Mini Coaster, Twister et Disk'O Coaster sont des incontournables des parcs de taille moyenne et des complexes touristiques.\n\nL'empreinte au sol compacte et les faibles exigences de taille rendent les attractions Zamperla particulièrement courantes dans les parcs urbains européens, les complexes hôteliers et les installations intérieures. L'entreprise a également construit Thunderbolt à Coney Island (New York).",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'Fabricant américain connu pour les tours pneumatiques, le compact El Loco et les coasters Free Fly 4D.',
+    definition:
+      "S&S Worldwide (fondé en 1994, Logan, Utah ; racheté par Sansei Technologies en 2012) a d'abord développé des systèmes de chute pneumatiques — Space Shot et Turbo Drop — avant d'élargir sa gamme. L'El Loco est un coaster extrême compact avec une première descente au-delà de la verticale et une inversion, concentrant des sensations fortes dans un espace réduit. Le Free Fly est un coaster 4D dont le siège pivote librement.\n\nS&S a également acquis les actifs d'Arrow Dynamics après sa faillite en 2001. En Europe, les installations S&S sont moins courantes qu'en Amérique du Nord.",
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'Fabricant bavarois spécialisé dans les coasters familiaux — plus de 190 installations dans le monde.',
+    definition:
+      "Zierer (fondé en 1930, Deggendorf, Bavière) est un fabricant allemand spécialisé dans les montagnes russes familiales et les attractions de parc classiques. La gamme Force Coaster couvre plusieurs niveaux, des modèles juniors compacts aux installations Force Custom plus rapides. Les coasters Zierer se distinguent par leur voie tubulaire acier, leur qualité de roulement et des exigences de taille modérées.\n\nAvec plus de 190 montagnes russes livrées dans le monde, Zierer est l'un des constructeurs européens les plus prolifiques en nombre d'unités. Installations notables : Feuerdrache au Legoland Deutschland et des coasters familiaux dans des parcs allemands, néerlandais et scandinaves.",
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition:

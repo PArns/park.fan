@@ -1228,6 +1228,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI Coaster', 'Millennium Flyer', 'gci'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'Amerikanischer Hersteller, spezialisiert auf LSM/LIM-Katapultachterbahnen — in Europa bekannt durch Sky Scream im Holiday Park.',
+    definition:
+      'Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid\'s Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier\'s LSM-Technologie und zeigt die Vielseitigkeit des Systems.',
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'Münchner Hersteller bekannt für Spinning Coaster mit Trick Track, die X-Car-Plattform und den Vertikallooping Sky Loop.',
+    definition:
+      "Maurer Rides (Maurer AG, Metallbau seit 1876, Freizeitanlagen ab 1993) ist ein Münchner Hersteller. Das Unternehmen entwickelte die SC-Spinning-Coaster-Serie mit dem charakteristischen Trick Track — einem Abschnitt, bei dem sich der Wagen seitlich neigt — sowie die X-Car-Plattform für individuelle Kompaktlayouts mit Katapultstarts und Inversionen.\n\nDer Sky Loop ist ein eigenständiges Vertikallooping-Modell, das platzsparend in vielen europäischen Parks steht. Bekannte europäische Installationen: Winja's Fear und Winja's Force im Phantasialand (Deutschland), Indoor-Spinning-Coaster mit Trick Track, sowie X-Car-Installationen in europäischen Parks.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Italienischer Hersteller mit einem der größten Portfolios familienfreundlicher Achterbahnen und Fahrgeschäfte weltweit — über 250 Achterbahnen installiert.',
+    definition:
+      "Zamperla (gegründet 1966, Altavilla Vicentina, Italien) ist einer der produktivsten Freizeitattraktionshersteller weltweit. Während Intamin, B&M und Mack auf große Thrill-Installationen abzielen, fokussiert sich Zamperla auf Zugänglichkeit und Volumen — Family Coaster, Mini Coaster, Twister und Disk'O Coaster sind Standardattraktionen kleinerer Parks und Resort-Midways weltweit.\n\nKompakte Grundrisse und moderate Mindestgrößen machen Zamperla-Bahnen besonders in europäischen Stadtparks, Ferienresorts und Innenbereichen verbreitet. Das Unternehmen baute auch Thunderbolt auf Coney Island (New York) und zeigt damit auch Kapazität für größere Projekte.",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'Amerikanischer Hersteller bekannt für pneumatische Drop-Tower, den kompakten El Loco und Free-Fly-4D-Coaster.',
+    definition:
+      'S&S Worldwide (gegründet 1994, Logan, Utah; übernommen von Sansei Technologies 2012) entwickelte ursprünglich pneumatische Drop-Türme — Space Shot und Turbo Drop — bevor das Unternehmen auf Achterbahnen ausweitete. Der El Loco ist ein kompakter Extremcoaster mit jenseits-vertikalem Erstabfall und Inversion auf kleinstem Grundriss. Der Free Fly ist ein 4D-Coaster mit frei schwenkendem Sitz.\n\nS&S übernahm außerdem die Vermögenswerte des historisch bedeutenden Arrow Dynamics nach dessen Insolvenz 2001. In Europa sind S&S-Installationen seltener als in Nordamerika, die Luftkatapult-Technologie hat jedoch die Branche beeinflusst.',
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'Bayerischer Hersteller aus Deggendorf, spezialisiert auf familienfreundliche Achterbahnen — über 190 gebaute Anlagen weltweit.',
+    definition:
+      'Zierer (gegründet 1930, Deggendorf, Bayern) ist ein bayerischer Hersteller für familienfreundliche Achterbahnen und klassische Parkattraktionen. Die Force-Coaster-Reihe umfasst mehrere Stufen: von kompakten Junior-Modellen bis zu schnelleren Force-Custom-Installationen. Zierer-Bahnen zeichnen sich durch Stahlrohrschienenführung, sanften Fahrkomfort und moderate Mindestgrößenanforderungen aus — ideal für Parks mit breitem demografischen Zielpublikum.\n\nMit über 190 weltweit ausgelieferten Achterbahnen ist Zierer einer der produktivsten europäischen Achterbahnbauer nach Stückzahl. Bekannte Installationen: Feuerdrache im Legoland Deutschland sowie Familienachterbahnen in deutschen, niederländischen und skandinavischen Parks.',
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition: 'Inversion, bei der der Zug kurzzeitig kopfüber fast zum Stehen kommt.',
