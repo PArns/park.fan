@@ -12,6 +12,7 @@
  * - search_result_clicked: resultType, position, hasQuery, queryLength
  * - search_no_results: query, queryLength
  * - tab_changed (park page): tab, parkId, parkName
+ * - glossary_term_viewed: term_id (English ID), locale
  *
  * Optional (wired where links are client-side): country_clicked, city_clicked (level, slug, name).
  * ContentClickedProps: add source (home | nearby | search | explore) when calling from cards.
@@ -71,6 +72,9 @@ export const UMAMI_EVENTS = {
 
   // Engagement & health
   SEARCH_NO_RESULTS: 'search_no_results',
+
+  // Glossary
+  GLOSSARY_TERM_VIEWED: 'glossary_term_viewed',
 } as const;
 
 // Event property types
@@ -165,6 +169,14 @@ export interface DiscoveryClickedProps {
 export interface SearchNoResultsProps {
   query: string;
   queryLength: number;
+  [key: string]: string | number | boolean;
+}
+
+export interface GlossaryTermViewedProps {
+  /** Original English term ID, language-independent (e.g. "wait-time", "fastpass"). */
+  term_id: string;
+  /** The locale the user is viewing the term in (e.g. "de", "nl"). */
+  locale: string;
   [key: string]: string | number | boolean;
 }
 
@@ -316,6 +328,10 @@ export function trackCityClicked(props: DiscoveryClickedProps): void {
 
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
+}
+
+export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {
+  trackEvent(UMAMI_EVENTS.GLOSSARY_TERM_VIEWED, props);
 }
 
 export function identifyVisitor(siteLocale: string, hasFavorites: boolean): boolean {
