@@ -110,7 +110,7 @@ export default async function GlossaryPage({ params }: GlossaryPageProps) {
     const categoryTerms = grouped.get(category);
     if (!categoryTerms || categoryTerms.length === 0) return [];
     return [{ category, categoryLabel: t(`category.${category}`), terms: categoryTerms }];
-  });
+  }).sort((a, b) => a.categoryLabel.localeCompare(b.categoryLabel, locale));
 
   const breadcrumbs = [{ name: tCommon('home'), url: '/' }];
 
