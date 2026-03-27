@@ -59,9 +59,11 @@ const CATEGORY_ORDER: GlossaryCategory[] = [
   'park-operations',
   'planning',
   'attractions',
+  'manufacturers',
   'coasters',
   'coaster-elements',
   'ride-experience',
+  'dining',
   'shopping',
 ];
 
