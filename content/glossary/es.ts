@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH es un fabricante alemán de montañas rusas con sede en Münsterhausen, Baviera. Fundada en 1946 como empresa metalúrgica, se adentró en el mercado de las atracciones en la década de 1980 y construyó su reputación mundial con el modelo Euro-Fighter — un compacto coaster de lanzamiento eléctrico famoso por su caída inicial más allá de la vertical (97 grados). Los Euro-Fighters pueden instalarse en espacios reducidos, lo que los hace atractivos para parques urbanos y recintos más pequeños; ejemplos son Rage en Adventure Island y Speed en Oakwood. Gerstlauer también produce el modelo Infinity Coaster, spinning coasters y el SkyRoller, un coaster giratorio en el que los pasajeros controlan sus propias volteretas. En la comunidad de entusiastas, las montañas rusas de Gerstlauer son apreciadas por su intensidad en relación con su pequeña huella.',
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -865,6 +865,16 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Spinner'],
 
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      'El modelo spinning coaster de alta intensidad de Gerstlauer — más rápido, más alto y con una rotación más pronunciada que los modelos estándar.',
+    definition:
+      'El Xtreme Spinning Coaster (XSC) es el modelo de referencia de Gerstlauer en la categoría spinning coaster, diseñado para llevar el formato al límite. Donde un spinning coaster estándar apunta a una intensidad familiar, el XSC ofrece una estructura más alta, caídas más pronunciadas, mayores velocidades máximas y un mecanismo de rotación calibrado para giros más marcados — los vagones giran con más fuerza y frecuencia en cada elemento del recorrido.\n\nLa impredecibilidad del giro se amplifica por el ritmo más elevado: la orientación del vagón cambia más rápido, haciendo que cada vuelta sea única. El modelo XSC posiciona a Gerstlauer entre los spinners familiares y las montañas rusas de alta intensidad, ofreciendo emoción real manteniendo el carácter rejugable que hace tan atractivos a los spinning coasters.',
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
     id: 'hyper-coaster',

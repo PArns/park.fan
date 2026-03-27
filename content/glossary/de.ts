@@ -509,7 +509,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. 1946 als metallverarbeitendes Unternehmen gegründet, stieg es in den 1980er Jahren in den Attraktionsmarkt ein und baute seinen Ruf mit dem Euro-Fighter-Modell aus — einem kompakten Elektro-Launch-Coaster mit berühmtem 97-Grad-Abfall über die Vertikale. Euro-Fighter lassen sich auf engem Raum installieren und sind damit attraktiv für Stadtparks und kleinere Veranstaltungsorte; Beispiele sind Rage im Adventure Island und Speed im Oakwood. Gerstlauer produziert außerdem das Infinity-Coaster-Modell, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste ihr eigenes Drehen steuern können. In der Enthusiasten-Szene werden Gerstlauer-Bahnen für ihre Intensität auf kleinem Footprint geschätzt.',
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -865,6 +865,16 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Spinner'],
 
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      'Gerstlauers Hochintensitäts-Spinning-Coaster-Modell — schneller, höher und mit aggressiverer Rotation als ein Standard-Spinning Coaster.',
+    definition:
+      'Der Xtreme Spinning Coaster (XSC) ist Gerstlauers Top-Modell unter den Spinning Coastern und treibt das Konzept auf die Spitze. Wo ein normaler Spinning Coaster eher familienfreundlich ausgelegt ist, bietet der XSC eine größere Struktur, steilere Abfälle, höhere Spitzengeschwindigkeiten und einen auf ausgeprägtere Rotation ausgelegten Drehmechanismus — die Fahrzeuge drehen sich kräftiger und häufiger durch jedes Streckenelement.\n\nDie Unvorhersehbarkeit des Drehens wird durch das höhere Tempo noch verstärkt: Die Fahrtrichtung ändert sich schneller, sodass dieselbe Strecke von Fahrt zu Fahrt völlig unterschiedlich wirken kann. Das XSC-Modell positioniert Gerstlauer zwischen familienfreundlichen Spinners und ausgewachsenen Thrill-Coastern — intensive Erlebnisse bei gleichzeitiger Wiederspielbarkeit.',
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
     id: 'hyper-coaster',

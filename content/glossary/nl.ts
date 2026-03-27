@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Opgericht in 1946 als metaalverwerkend bedrijf, stapte het in de jaren 80 over naar attracties en bouwde zijn wereldwijde reputatie op met het Euro-Fighter-model — een compacte elektrisch gelanceerde achtbaan beroemd om zijn voorbij-verticale (97 graden) eerste drop. Euro-Fighters kunnen op kleine ruimte worden geïnstalleerd, waardoor ze aantrekkelijk zijn voor stedelijke parken en kleinere locaties; voorbeelden zijn Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer produceert ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een roterende achtbaan waarbij rijders hun eigen flikflak regelen. In de enthousiastengemeenschap worden Gerstlauer-achtbanen gewaardeerd om hun intensiteit ten opzichte van hun kleine footprint.',
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -864,6 +864,16 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Spinner'],
 
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      'Gerstlauers hoge-intensiteit spinning coaster-model — sneller, hoger en met agressievere rotatie dan een standaard spinning coaster.',
+    definition:
+      'De Xtreme Spinning Coaster (XSC) is Gerstlauers topmodel in de spinning coaster-categorie, ontworpen om het format naar zijn uiterste grenzen te duwen. Waar een standaard spinning coaster gericht is op gezinsvriendelijke intensiteit, biedt de XSC een hogere constructie, steilere drops, hogere topsnelheden en een rotatiemechanisme dat is afgesteld op krachtigere rotatie — de wagons draaien harder en vaker door elk element van het parcours.\n\nDe onvoorspelbaarheid van het draaien wordt versterkt door het hogere tempo: de rijrichting verandert sneller, waardoor elke rit anders aanvoelt. Het XSC-model positioneert Gerstlauer tussen gezinsspinners en volwaardige thrill coasters — echte intensiteit met de herhaalbaarheid die spinning coasters zo aantrekkelijk maakt.',
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
     id: 'hyper-coaster',

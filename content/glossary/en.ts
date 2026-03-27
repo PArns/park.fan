@@ -447,7 +447,7 @@ const translations: GlossaryTermTranslation[] = [
       'A German manufacturer best known for the Euro-Fighter model with its beyond-vertical first drop, plus spinning coasters and compact family rides.',
     definition:
       'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer based in Münsterhausen, Bavaria. Founded in 1946 as a metalworking company, it entered the amusement ride market in the 1980s and built its global reputation with the Euro-Fighter model — a compact, electric-launch coaster famous for its beyond-vertical (up to 97-degree) first drop. Euro-Fighters can be installed in very tight spaces, making them attractive for urban parks and smaller venues. European examples include Saw – The Ride at Thorpe Park and Rage at Adventure Island.\n\nGerstlauer also produces the Infinity Coaster model, spinning coasters, and the SkyRoller — a coaster where riders control their own wing rotation, flipping themselves independently. In the enthusiast community, Gerstlauer rides are valued for packing significant intensity into small footprints. The company occupies an interesting market position between the large-scale ambitions of B&M and Intamin and the compact value of older Vekoma models.',
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -781,6 +781,16 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A spinning coaster features cars mounted on a platform that rotates freely around a vertical axis throughout the ride. Because the rotation is uncontrolled, each individual run produces a different sequence of forward, backward, and sideways orientations through every element. The unpredictability is a significant part of the appeal — two consecutive rides on the same circuit can feel entirely different depending on how the car rotates.\n\nMack Rides and Gerstlauer are the leading manufacturers of spinning coasters. Mack's models are particularly well regarded for their smooth ride quality and family-friendly intensity level — they are often described as among the most accessible thrill rides available, offering genuine excitement without the intimidating height, speed, or restraint systems of major coasters. Efteling's Joris en de Draak and Flying Dutchman and Phantasialand's spinning coasters are popular European examples. Spinning coasters are widely regarded as excellent family rides and frequently have lower height requirements than equivalent non-spinning coasters.",
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      "Gerstlauer's high-intensity spinning coaster model — faster, taller, and more aggressively spinning than a standard spinning coaster.",
+    definition:
+      "The Xtreme Spinning Coaster (XSC) is Gerstlauer's top-tier spinning coaster model, designed to push the spinning coaster format to its limits. Where a standard spinning coaster tends toward family-friendly intensity, the XSC features a taller structure, steeper drops, higher top speeds, and a spinning mechanism tuned for more pronounced rotation — meaning riders spin harder and more frequently through every element of the layout.\n\nThe unpredictability of spinning is amplified by the faster pace: the car's orientation changes more rapidly, so the same ride can feel completely different from run to run. Restraints are typically an over-the-shoulder or lap-bar system designed to handle the more intense forces generated. The XSC model positions Gerstlauer in the gap between approachable family spinners and full-scale thrill coasters, offering genuine intensity while keeping the playful, replayable quality that makes spinning coasters appealing to a wide audience.",
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
     id: 'hyper-coaster',

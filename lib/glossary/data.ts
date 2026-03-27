@@ -1114,6 +1114,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'xtreme-spinning-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'xtreme-spinning-coaster',
+      de: 'xtreme-spinning-coaster',
+      fr: 'xtreme-spinning-coaster',
+      it: 'xtreme-spinning-coaster',
+      nl: 'xtreme-spinning-coaster',
+      es: 'xtreme-spinning-coaster',
+    },
+  },
+  {
     id: 'hyper-coaster',
     category: 'coasters',
     slugs: {
