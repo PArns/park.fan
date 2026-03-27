@@ -339,6 +339,7 @@ export function TabsWithHash({
                     parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
                     parkSlug={parkSlug}
                     parkStatus={park.status}
+                    timezone={park.timezone}
                   />
                 );
               })

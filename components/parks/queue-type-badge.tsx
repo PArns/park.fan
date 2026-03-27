@@ -20,9 +20,10 @@ const colorPaid =
 
 interface QueueTypeBadgeProps {
   queue: QueueDataItem;
+  timezone?: string;
 }
 
-export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
+export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
   const t = useTranslations('attractions');
 
   let Icon = Ticket;
@@ -74,16 +75,15 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
         'returnStart' in queue &&
         queue.returnStart
       ) {
-        const start = new Date(queue.returnStart).toLocaleTimeString([], {
+        const timeFormat: Intl.DateTimeFormatOptions = {
           hour: '2-digit',
           minute: '2-digit',
-        });
+          ...(timezone ? { timeZone: timezone } : {}),
+        };
+        const start = new Date(queue.returnStart).toLocaleTimeString([], timeFormat);
         const end =
           'returnEnd' in queue && queue.returnEnd
-            ? new Date(queue.returnEnd).toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-              })
+            ? new Date(queue.returnEnd).toLocaleTimeString([], timeFormat)
             : '';
         label = t('queue.details.return', { start, end });
       } else {

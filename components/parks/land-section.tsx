@@ -10,6 +10,7 @@ interface LandSectionProps {
   parkPath: string;
   parkSlug: string; // Added for background image lookup
   parkStatus?: ParkStatus;
+  timezone?: string;
 }
 
 function getStatus(attraction: ParkAttraction, parkStatus?: ParkStatus): AttractionStatus {
@@ -26,6 +27,7 @@ export function LandSection({
   parkPath,
   parkSlug,
   parkStatus,
+  timezone,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter((a) => getStatus(a, parkStatus) === 'OPERATING').length;
@@ -56,6 +58,7 @@ export function LandSection({
                 parkPath={parkPath}
                 parkStatus={parkStatus}
                 backgroundImage={backgroundImage}
+                timezone={timezone}
               />
             </li>
           );
