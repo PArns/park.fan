@@ -452,7 +452,7 @@
         "boardingGroupsAvailable": "Gruppen verfügbar",
         "boardingGroupsDistributed": "Gruppen verteilt",
         "boardingGroupsPaused": "Gruppen pausiert",
-        "return": "Rückkehr: {start} - {end}"
+        "return": "Virtuelle Warteschlange: {start} - {end}"
       }
     },
     "h1Suffix": "Aktuelle Wartezeit",

@@ -79,6 +79,7 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
         const timeFormat: Intl.DateTimeFormatOptions = {
           hour: '2-digit',
           minute: '2-digit',
+          hour12: locale === 'en',
           ...(timezone ? { timeZone: timezone } : {}),
         };
         const start = new Date(queue.returnStart).toLocaleTimeString(locale, timeFormat);
