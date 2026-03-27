@@ -119,10 +119,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Umami Analytics - Privacy-friendly, cookie-free tracking */}
+      {/* Umami Analytics - beforeInteractive so PerformanceObserver captures Web Vitals */}
       {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
         <Script
-          defer
+          strategy="beforeInteractive"
           src={process.env.NEXT_PUBLIC_UMAMI_URL}
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           data-domains="park.fan"
