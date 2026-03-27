@@ -597,7 +597,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'b-and-m',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'b-and-m',
       de: 'b-and-m',
@@ -609,7 +609,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'intamin',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'intamin',
       de: 'intamin',
@@ -621,7 +621,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'mack-rides',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'mack-rides',
       de: 'mack-rides',
@@ -633,7 +633,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'rmc',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'rmc',
       de: 'rmc',
@@ -645,7 +645,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'vekoma',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'vekoma',
       de: 'vekoma',
@@ -657,7 +657,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'gerstlauer',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'gerstlauer',
       de: 'gerstlauer',
@@ -669,7 +669,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'schwarzkopf',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'schwarzkopf',
       de: 'schwarzkopf',
@@ -1006,7 +1006,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'credit',
-    category: 'coasters',
+    category: 'planning',
     slugs: {
       en: 'credit',
       de: 'credit',
@@ -1018,7 +1018,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'pov',
-    category: 'coasters',
+    category: 'ride-experience',
     slugs: {
       en: 'pov',
       de: 'pov',
@@ -1066,7 +1066,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'stacking',
-    category: 'coasters',
+    category: 'park-operations',
     slugs: {
       en: 'stacking',
       de: 'stacking',
@@ -1457,7 +1457,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'arrow-dynamics',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'arrow-dynamics',
       de: 'arrow-dynamics',
@@ -1469,7 +1469,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'gci',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'great-coasters-international',
       de: 'gci',
@@ -1481,7 +1481,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'premier-rides',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'premier-rides',
       de: 'premier-rides',
@@ -1493,7 +1493,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'maurer-rides',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'maurer-rides',
       de: 'maurer-rides',
@@ -1505,7 +1505,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'zamperla',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'zamperla',
       de: 'zamperla',
@@ -1517,7 +1517,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 's-and-s-worldwide',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 's-and-s-worldwide',
       de: 's-and-s-worldwide',
@@ -1529,7 +1529,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'zierer',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'zierer',
       de: 'zierer',

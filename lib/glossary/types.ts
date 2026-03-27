@@ -6,6 +6,7 @@ export type GlossaryCategory =
   | 'park-operations'
   | 'planning'
   | 'attractions'
+  | 'manufacturers'
   | 'coasters'
   | 'coaster-elements'
   | 'ride-experience'
