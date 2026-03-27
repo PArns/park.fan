@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { isFavorite, toggleFavorite, type FavoriteType } from '@/lib/utils/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { trackFavoriteAdd, trackFavoriteRemove, trackEvent } from '@/lib/analytics/umami';
+import { trackFavoriteAdd, trackFavoriteRemove } from '@/lib/analytics/umami';
 
 interface FavoriteStarProps {
   type: FavoriteType;
@@ -57,11 +57,9 @@ export function FavoriteStar({
       onToggle?.(newState);
 
       if (newState) {
-        trackFavoriteAdd(type, id);
-        if (name) trackEvent('favorite_item_added', { type, name });
+        trackFavoriteAdd(type, id, name);
       } else {
-        trackFavoriteRemove(type, id);
-        if (name) trackEvent('favorite_item_removed', { type, name });
+        trackFavoriteRemove(type, id, name);
       }
     },
     [type, id, name, onToggle]
