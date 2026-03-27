@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
       "Gerstlauer Amusement Rides GmbH è un produttore tedesco di montagne russe con sede a Münsterhausen, in Baviera. Fondata nel 1946 come azienda di lavorazione dei metalli, si è avventurata nel mercato delle attrazioni negli anni '80 e ha costruito la propria reputazione mondiale con il modello Euro-Fighter — un compatto coaster a lancio elettrico famoso per il suo drop iniziale oltre la verticale (97 gradi). Gli Euro-Fighter possono essere installati in spazi ristretti, rendendoli attraenti per parchi urbani e siti più piccoli; esempi includono Rage all'Adventure Island e Speed all'Oakwood. Gerstlauer produce anche il modello Infinity Coaster, spinning coaster e lo SkyRoller, un coaster rotante dove i passeggeri controllano il proprio capovolgimento. Nella comunità degli appassionati, le montagne russe Gerstlauer sono apprezzate per la loro intensità nonostante il piccolo ingombro.",
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -867,6 +867,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
   },
   {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      'Il modello di spinning coaster ad alta intensità di Gerstlauer — più veloce, più alto e con una rotazione più pronunciata rispetto ai modelli standard.',
+    definition:
+      "L'Xtreme Spinning Coaster (XSC) è il modello di punta di Gerstlauer nella categoria spinning coaster, progettato per spingere il formato ai suoi limiti. Dove uno spinning coaster standard punta a un'intensità familiare, lo XSC offre una struttura più alta, cadute più ripide, velocità massime più elevate e un meccanismo di rotazione calibrato per giri più marcati — i vagoni ruotano con più forza e frequenza in ogni elemento del percorso.\n\nL'imprevedibilità della rotazione è amplificata dal ritmo più sostenuto: l'orientamento del vagone cambia più rapidamente, rendendo ogni corsa unica. Il modello XSC posiziona Gerstlauer tra gli spinner familiari e i coaster ad alta intensità, offrendo emozione autentica pur mantenendo il carattere rejugabile che rende gli spinning coaster così apprezzati.",
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
+  },
+  {
     id: 'hyper-coaster',
     name: 'Hyper Coaster',
     shortDefinition:
@@ -1220,6 +1230,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'Produttore americano specializzato in coaster a lancio LSM/LIM — in Europa noto per la famiglia Sky Scream.',
+    definition:
+      "Premier Rides (fondato nel 1995, Baltimora, Maryland) è un produttore americano specializzato in sistemi di lancio a motore sincrono lineare (LSM) e a motore a induzione lineare (LIM). Lo Sky Rocket II — un compact launch coaster con un'inversione — si è diffuso nei parchi di medie dimensioni in tutto il mondo.\n\nIn Europa, Premier Rides è più noto attraverso Sky Scream all'Holiday Park (Haßloch, Germania), un launch coaster invertito diventato un'attrazione di riferimento regionale. La tecnologia LSM di Premier equipaggia anche Hagrid's Magical Creatures Motorbike Adventure a Universal Orlando.",
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'Produttore tedesco di Monaco noto per gli spinning coaster con trick track, la piattaforma X-Car e il modello verticale Sky Loop.',
+    definition:
+      "Maurer Rides (Maurer AG, lavorazione dei metalli dal 1876, attrazioni dal 1993) è un produttore monacense. La serie SC di spinning coaster si distingue per il trick track — una sezione in cui il vagone si inclina lateralmente — e la piattaforma X-Car consente layout compatti altamente personalizzati con lanci e inversioni.\n\nIl Sky Loop è un loop verticale autonomo presente in molti parchi europei come attrazione che occupa poco spazio. Installazioni europee notevoli: Winja's Fear e Winja's Force a Phantasialand (Germania), spinning coaster indoor con trick track.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Produttore italiano con uno dei più grandi portafogli di coaster familiari e attrazioni nel mondo — oltre 250 coaster installati.',
+    definition:
+      "Zamperla (fondato nel 1966, Altavilla Vicentina, Italia) è uno dei produttori di attrazioni più prolifici al mondo. Mentre Intamin, B&M e Mack puntano a grandi installazioni ad alta intensità, Zamperla si concentra su volume e accessibilità — i modelli Family Coaster, Mini Coaster, Twister e Disk'O Coaster sono elementi standard dei parchi di medie dimensioni e dei resort di tutto il mondo.\n\nLe dimensioni compatte e i requisiti di altezza moderati rendono le attrazioni Zamperla particolarmente diffuse nei parchi urbani europei, nei resort e nelle strutture coperte. L'azienda ha anche costruito Thunderbolt a Coney Island (New York).",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'Produttore americano noto per le torri pneumatiche, il compatto El Loco e i coaster Free Fly 4D.',
+    definition:
+      "S&S Worldwide (fondato nel 1994, Logan, Utah; acquisito da Sansei Technologies nel 2012) ha sviluppato inizialmente sistemi di caduta pneumatici — Space Shot e Turbo Drop — prima di espandere il catalogo ai coaster. L'El Loco è un coaster estremo compatto con una prima discesa oltre la verticale e un'inversione. Il Free Fly è un coaster 4D con sedile a rotazione libera.\n\nS&S ha anche acquisito i beni del leggendario Arrow Dynamics dopo il suo fallimento nel 2001. In Europa, le installazioni S&S sono meno comuni che in Nord America.",
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'Produttore bavarese specializzato in coaster familiari — oltre 190 installazioni in tutto il mondo.',
+    definition:
+      "Zierer (fondato nel 1930, Deggendorf, Baviera) è un produttore tedesco specializzato in montagne russe familiari e attrazioni classiche da parco. La gamma Force Coaster copre più livelli, dai modelli junior compatti alle installazioni Force Custom più veloci. I coaster Zierer si distinguono per la rotaia tubolare in acciaio, la qualità di marcia fluida e i requisiti di altezza moderati.\n\nCon oltre 190 montagne russe consegnate nel mondo, Zierer è uno dei costruttori europei più prolifici per numero di unità. Installazioni notevoli: Feuerdrache nel Legoland Deutschland e coaster familiari in parchi tedeschi, olandesi e scandinavi.",
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition:
@@ -1328,6 +1388,33 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['pre show', 'area di attesa tematizzata', 'zona pre-imbarco'],
   },
   {
+    id: 'flat-ride',
+    name: 'Flat Ride',
+    shortDefinition: "Attrazione a livello del suolo che ruota, oscilla o si inclina senza un circuito di binari sopraelevato.",
+    definition:
+      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, Frisbee, seggiolini volanti), torri di caduta e piattaforme rotanti. A differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
+    relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
+    aliases: ['flat rides', 'giostra da fiera', 'attrazione di terra'],
+  },
+  {
+    id: 'water-ride',
+    name: 'Attrazione Acquatica',
+    shortDefinition: "Attrazione in cui gli ospiti viaggiano su barche o veicoli attraverso l'acqua, rischiando di bagnarsi.",
+    definition:
+      "Un'attrazione acquatica (water ride) è qualsiasi attrazione in cui l'acqua è una componente centrale dell'esperienza – il veicolo percorre un canale d'acqua oppure l'acqua viene utilizzata come effetto deliberato. I tre tipi più comuni sono: le giostre a tronchi (barche su un canale con caduta finale), i fiumi dei rapidi (zattere circolari su acque bianche artificiali) e le battaglie d'acqua (gli ospiti si spruzzano reciprocamente con cannoni d'acqua). Le attrazioni acquatiche hanno in genere requisiti di altezza bassi e un pubblico molto ampio. Nelle giornate calde estive possono generare code estremamente lunghe.",
+    relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
+    aliases: ["attrazione d'acqua", 'ride acquatico', 'water ride', 'giostra acquatica'],
+  },
+  {
+    id: 'live-show',
+    name: 'Spettacolo dal Vivo',
+    shortDefinition: 'Spettacolo programmato con attori dal vivo, musica, acrobazie o personaggi in un teatro o anfiteatro dedicato.',
+    definition:
+      "Uno spettacolo dal vivo è un programma di intrattenimento eseguito da membri del cast umano – distinto da attrazioni o esibizioni fisse – in un anfiteatro all'aperto, teatro al chiuso o spazio scenico in strada. L'offerta varia da produzioni teatrali in stile Broadway e stunt show a sfilate di personaggi, esperienze 4D con elementi dal vivo e spettacoli laser e pirotecnici. A differenza delle attrazioni, gli spettacoli dal vivo si svolgono a orari fissi con capacità limitata per rappresentazione; inserirli nel piano di visita è importante per evitare conflitti di orario. Strategicamente, gli spettacoli sono una pausa utile nelle ore di punta del mezzogiorno, quando le file alle attrazioni sono più lunghe.",
+    relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
+    aliases: ['show', 'spettacolo', 'stunt show', 'show dal vivo', 'intrattenimento dal vivo'],
+  },
+  {
     id: 'quick-service',
     name: 'Self-Service',
     shortDefinition: 'Ristorante a banco senza personale di sala.',
@@ -1365,6 +1452,96 @@ const translations: GlossaryTermTranslation[] = [
       'character dining',
       'cena personaggi',
     ],
+  },
+  {
+    id: 'drop-tower',
+    name: 'Torre di Caduta',
+    shortDefinition: 'Attrazione a torre che porta i visitatori in quota e li lascia cadere in una rapida discesa in caduta libera.',
+    definition:
+      "Una torre di caduta (drop tower o free-fall tower) è un'attrazione in cui i visitatori vengono sollevati in una gondola o su sedili individuali intorno a una struttura centrale a torre e poi rilasciati in una rapida caduta verso il basso. La caduta può essere quasi in caduta libera (vicina all'assenza di peso), frenata o combinata con un lancio verso l'alto. Una fase di decelerazione progressiva frena dolcemente la gondola in basso. Le varianti includono torri rotanti, modelli multidirezionali e versioni ibride. Le torri di caduta offrono emozioni intense su un'impronta ridotta e si trovano in tutto il mondo. Produttori notevoli: Intamin, Mondial e S&S Worldwide.",
+    relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
+    aliases: ['torre caduta libera', 'free fall tower', 'drop ride', 'caduta libera'],
+  },
+  {
+    id: 'log-flume',
+    name: 'Fiume dei Tronchi',
+    shortDefinition: "Attrazione su canale d'acqua in cui barche a forma di tronco percorrono un tracciato e terminano con un grande tuffo.",
+    definition:
+      "Il fiume dei tronchi (log flume) è un'attrazione acquatica in cui gli ospiti prendono posto su imbarcazioni a forma di tronco e percorrono un canale pieno d'acqua. Dopo sezioni tranquille arriva una ripida discesa finale che si conclude con un grande schizzo, quasi garantendo un bagno ai passeggeri. Le giostre a tronchi sono state introdotte negli anni '60 e sono ormai un elemento fisso dei parchi di tutto il mondo, apprezzate per la loro accessibilità familiare, la capacità moderata e il fascino estivo. Esempi europei: Poseidon in Europa-Park e numerose installazioni di tipo Wildwasserbahn nei parchi di lingua tedesca.",
+    relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
+    aliases: ["giostra a tronchi", 'log flume', "scivolo d'acqua", 'Wildwasserbahn', 'barca di tronchi'],
+  },
+  {
+    id: 'river-rapids',
+    name: 'Rapide del Fiume',
+    shortDefinition: 'Attrazione su zattera circolare che navega rapide artificiali turbolente dove i visitatori possono bagnarsi completamente.',
+    definition:
+      "Le rapide del fiume (river rapids) mettono gli ospiti su zattere circolari gonfiabili o in plastica che derivano e ruotano lungo un canale artificiale progettato per simulare le acque bianche. Poiché la zattera circolare ruota liberamente sulla corrente, ogni percorso è imprevedibile: a seconda della posizione della zattera, alcuni passeggeri vengono completamente bagnati, altri rimangono relativamente asciutti. Le rapide hanno in genere un'alta capacità oraria, un ampio appeal familiare e requisiti di altezza generalmente bassi. Sono particolarmente popolari nelle giornate calde. Esempi europei notevoli: le Wildwasser di Phantasialand e varie installazioni a Efteling, Europa-Park e Thorpe Park.",
+    relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
+    aliases: ['rapide', 'river rapids', 'giro in zattera', 'acque bianche', 'rafting'],
+  },
+  {
+    id: 'swing-ride',
+    name: 'Giostra a Catene',
+    shortDefinition: "Attrazione rotatoria in cui i seggiolini appesi a catene si inclinano verso l'esterno mentre la struttura gira.",
+    definition:
+      "La giostra a catene (swing ride o Kettenkarussell) è un'attrazione rotante in cui i seggiolini appesi a catene sono fissati a una struttura centrale girevole. Man mano che la struttura accelera, la forza centrifuga proietta i seggiolini verso l'esterno e verso l'alto, dando ai passeggeri una sensazione di volo. Le giostre a catene sono tra i più antichi tipi di attrazione da fiera ancora in uso, con origini nei primi anni del XX secolo. Le versioni moderne vanno da morbide giostre per bambini a enormi torri a catena (starflyer) che sollevono i passeggeri a decine di metri di altezza. Sono presenti in quasi tutti i parchi a tema e le fiere del mondo.",
+    relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['seggiolini volanti', 'wave swinger', 'Kettenkarussell', 'swing ride', 'chairoplane', 'giostra volante'],
+  },
+  {
+    id: 'racing-coaster',
+    name: 'Racing Coaster',
+    shortDefinition: 'Due binari paralleli di montagne russe su cui i treni partono contemporaneamente e corrono fianco a fianco.',
+    definition:
+      "Un racing coaster ha due circuiti separati ma speculari che corrono in parallelo, con i treni lanciati contemporaneamente in modo che i passeggeri vivano la sensazione di gareggiare contro l'altro convoglio. I binari si incrociano o si sfiorano in più punti per massimizzare la tensione. Alcuni modelli adottano un design a nastro di Möbius: entrambi i circuiti formano un unico anello continuo e i passeggeri cambiano automaticamente lato. Il formato funziona ugualmente bene con montagne russe in legno e in acciaio. In Europa, Piraten al Djurs Sommerland e Dwervelwind al Plopsaland sono esempi noti.",
+    relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
+    aliases: ['montagne russe doppie', 'twin coaster', 'dueling coaster', 'racing coaster', 'Paarachterbahn'],
+  },
+  {
+    id: 'high-five',
+    name: 'High Five',
+    shortDefinition: "Elemento di montagne russe in cui due treni su binari paralleli si sfiorano a distanza di un braccio.",
+    definition:
+      "Un High Five è un elemento di quasi-collisione in cui due treni di montagne russe su binari separati ma molto vicini si incrociano a distanza estremamente ravvicinata – a volte a portata di mano – creando un'emozionante illusione di collisione imminente. Il nome deriva dalla sensazione che i passeggeri possano tendere la mano per fare un \"high five\" agli occupanti dell'altro treno. L'elemento richiede una sincronizzazione precisa delle partenze per far arrivare entrambi i treni al punto di incrocio nello stesso momento. I wing coaster e gli inverted coaster si prestano particolarmente bene al High Five perché i sedili esterni amplificano l'effetto di sfioramento. Duelling Dragons / Dragon Challenge a Universal's Islands of Adventure ne era un famoso esempio; l'elemento si ritrova oggi su diversi B&M wing coaster in tutto il mondo.",
+    relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
+    aliases: ['quasi-collisione', 'near miss', 'near-miss element', 'high 5'],
+  },
+  {
+    id: 'dining-reservation',
+    name: 'Prenotazione Ristorante',
+    shortDefinition: 'Prenotazione anticipata per un ristorante a servizio completo in un parco a tema o resort.',
+    definition:
+      "Una prenotazione ristorante è una prenotazione anticipata per un ristorante con servizio al tavolo o a tema con personaggi in un parco a tema, un hotel del resort o un complesso di intrattenimento associato. Nei parchi Disney, le prenotazioni sono possibili fino a 60 giorni in anticipo (con 10 giorni di vantaggio per gli ospiti dell'hotel del resort) e sono praticamente indispensabili per i ristoranti più gettonati – non prenotare in anticipo può significare non trovare posto nei periodi di punta. Le prenotazioni vengono in genere garantite con una carta di credito; Disney addebita una penale in caso di mancata presentazione o cancellazione tardiva. Nella comunità degli appassionati vengono spesso abbreviate come ADR (Advance Dining Reservation).",
+    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    aliases: ['ADR', 'advance dining reservation', 'prenotazione al ristorante', 'dining reservation', 'prenotazione tavolo'],
+  },
+  {
+    id: 'mobile-ordering',
+    name: 'Ordine Mobile',
+    shortDefinition: "Funzione dell'app del parco che consente di ordinare e pagare il cibo in anticipo senza fare la fila al banco.",
+    definition:
+      "L'ordine mobile consente agli ospiti di consultare il menu di un ristorante, effettuare e pagare un'ordinazione e selezionare una finestra temporale per il ritiro tramite l'app ufficiale del parco, senza dover fare la fila al banco. Disney ha reso popolare il sistema nei suoi ristoranti a servizio rapido; Universal, Six Flags, i parchi Merlin e molti altri operatori hanno da allora lanciato le proprie versioni. Quando arriva la fascia oraria scelta, gli ospiti ricevono una notifica e ritirano l'ordine all'apposito punto di raccolta. L'ordine mobile consente di risparmiare tempo prezioso, soprattutto durante il picco del pranzo. Richiede uno smartphone carico e una copertura di rete sufficiente all'interno del parco.",
+    relatedTermIds: ['quick-service', 'dining-reservation'],
+    aliases: ['ordinazione mobile', 'mobile order', 'ordine via app', 'mobile ordering'],
+  },
+  {
+    id: 'food-court',
+    name: 'Food Court',
+    shortDefinition: 'Grande area ristoro condivisa con più banchi di ristorazione rapida di cucine diverse sotto uno stesso tetto.',
+    definition:
+      "Un food court è uno spazio di ristorazione comune con più banchi o chioschi di ristorazione rapida indipendenti, ciascuno con una diversa cucina, che condividono una zona seduta comune. Nei parchi a tema, i food court sono in genere le aree di ristorazione con la maggiore capacità, progettate per gestire il flusso di visitatori all'ora di pranzo. Diversi membri di un gruppo possono ordinare a banconi diversi e sedersi insieme. Il livello di tematizzazione varia: Disney e Universal integrano spesso i food court nella tematica delle loro aree, mentre altri parchi li gestiscono come spazi puramente funzionali vicino agli ingressi. I food court sono in genere l'opzione di ristorazione più economica all'interno di un resort.",
+    relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
+    aliases: ['area ristoro', 'padiglione ristorazione', 'food court', 'zona ristorazione'],
+  },
+  {
+    id: 'capacity-closure',
+    name: 'Chiusura per Capacità',
+    shortDefinition: 'Quando un parco smette di ammettere nuovi visitatori perché ha raggiunto la capienza massima.',
+    definition:
+      "Una chiusura per capacità (detta anche parco esaurito o tetto di capienza) si verifica quando un parco a tema raggiunge il numero massimo di visitatori consentito e smette temporaneamente di vendere biglietti giornalieri o di ammettere nuovi ospiti. I parchi gestiscono la capienza attraverso prenotazioni di ingresso a orario, monitoraggio in tempo reale degli afflussi e chiusure temporanee degli accessi. I titolari di abbonamento annuale possono essere bloccati in certi giorni a seconda delle condizioni del parco; altri parchi usano sistemi di prenotazione anticipata per prevenire il sovraffollamento. Le chiusure per capacità sono più frequenti durante i picchi delle vacanze scolastiche, le serate di fuochi d'artificio e gli eventi speciali. Consultare l'app del parco o i social media la mattina della visita può evitare spiacevoli sorprese.",
+    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    aliases: ['parco esaurito', 'parco pieno', 'capacity closure', 'capienza massima', 'tutto esaurito'],
   },
 ];
 

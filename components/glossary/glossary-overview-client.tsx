@@ -10,6 +10,10 @@ import type { GlossaryTermWithEnName, GlossaryCategory } from '@/lib/glossary/ty
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
+import {
+  trackGlossaryCategoryFiltered,
+  trackGlossarySearched,
+} from '@/lib/analytics/umami';
 
 interface CategoryGroup {
   category: GlossaryCategory;
@@ -40,6 +44,16 @@ export function GlossaryOverviewClient({
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<GlossaryCategory | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Track search queries (debounced, min 3 chars, privacy-safe — only length)
+  useEffect(() => {
+    const trimmed = query.trim();
+    if (trimmed.length < 3) return;
+    const timer = setTimeout(() => {
+      trackGlossarySearched({ queryLength: trimmed.length, locale });
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [query, locale]);
 
   // Type anywhere to focus search; Escape to clear + blur
   useEffect(() => {
@@ -147,7 +161,14 @@ export function GlossaryOverviewClient({
             {groupedTerms.map(({ category, categoryLabel }) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory((prev) => (prev === category ? null : category))}
+                onClick={() => {
+                  const next = activeCategory === category ? null : category;
+                  setActiveCategory(next);
+                  trackGlossaryCategoryFiltered({
+                    category: next ?? 'none',
+                    locale,
+                  });
+                }}
                 aria-pressed={activeCategory === category}
                 className={cn(
                   'rounded-full border px-2.5 py-0.5 text-xs transition-colors',

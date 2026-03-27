@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { GlossaryTermTracker } from '@/components/glossary/glossary-term-tracker';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
@@ -33,6 +34,7 @@ export function GlossaryTermDetail({
 }: GlossaryTermDetailProps) {
   return (
     <div>
+      <GlossaryTermTracker termId={term.id} locale={locale} />
       {/* Breadcrumb — floats above the grid */}
       <div className="mb-5">
         <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="pill" />

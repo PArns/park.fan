@@ -10,8 +10,11 @@
  * - hero_viewed: variant (in_park | near_park | default), parkName, parkId
  * - location_banner_clicked: (when user clicks to enable location)
  * - search_result_clicked: resultType, position, hasQuery, queryLength
- * - search_no_results: query, queryLength
+ * - search_no_results: queryLength
  * - tab_changed (park page): tab, parkId, parkName
+ * - glossary_term_viewed: term_id (English ID), locale
+ * - glossary_category_filtered: category (slug or 'none'), locale
+ * - glossary_searched: queryLength, locale
  *
  * Optional (wired where links are client-side): country_clicked, city_clicked (level, slug, name).
  * ContentClickedProps: add source (home | nearby | search | explore) when calling from cards.
@@ -71,13 +74,19 @@ export const UMAMI_EVENTS = {
 
   // Engagement & health
   SEARCH_NO_RESULTS: 'search_no_results',
+
+  // Glossary
+  GLOSSARY_TERM_VIEWED: 'glossary_term_viewed',
+  GLOSSARY_CATEGORY_FILTERED: 'glossary_category_filtered',
+  GLOSSARY_SEARCHED: 'glossary_searched',
 } as const;
 
 // Event property types
 export interface FavoriteEventProps {
   type: 'park' | 'attraction' | 'show' | 'restaurant';
   id: string;
-  [key: string]: string | number | boolean;
+  name?: string;
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface NearbyParksLoadedProps {
@@ -121,6 +130,8 @@ export interface SearchResultClickedProps {
   /** Whether user had typed a search query (vs. opened empty search). */
   hasQuery?: boolean;
   queryLength?: number;
+  /** For glossary results: the English term ID (e.g. "wait-time"). */
+  term_id?: string;
   [key: string]: string | number | boolean | undefined;
 }
 
@@ -163,8 +174,28 @@ export interface DiscoveryClickedProps {
 }
 
 export interface SearchNoResultsProps {
-  query: string;
   queryLength: number;
+  [key: string]: string | number | boolean;
+}
+
+export interface GlossaryTermViewedProps {
+  /** Original English term ID, language-independent (e.g. "wait-time", "fastpass"). */
+  term_id: string;
+  /** The locale the user is viewing the term in (e.g. "de", "nl"). */
+  locale: string;
+  [key: string]: string | number | boolean;
+}
+
+export interface GlossaryCategoryFilteredProps {
+  /** Category slug (e.g. "wait-times") or "none" when filter is cleared. */
+  category: string;
+  locale: string;
+  [key: string]: string | number | boolean;
+}
+
+export interface GlossarySearchedProps {
+  queryLength: number;
+  locale: string;
   [key: string]: string | number | boolean;
 }
 
@@ -226,12 +257,20 @@ export function trackEvent(
 
 // Convenience functions for common events
 
-export function trackFavoriteAdd(type: FavoriteEventProps['type'], id: string): void {
-  trackEvent(UMAMI_EVENTS.FAVORITE_ADD, { type, id });
+export function trackFavoriteAdd(
+  type: FavoriteEventProps['type'],
+  id: string,
+  name?: string
+): void {
+  trackEvent(UMAMI_EVENTS.FAVORITE_ADD, { type, id, ...(name && { name }) });
 }
 
-export function trackFavoriteRemove(type: FavoriteEventProps['type'], id: string): void {
-  trackEvent(UMAMI_EVENTS.FAVORITE_REMOVE, { type, id });
+export function trackFavoriteRemove(
+  type: FavoriteEventProps['type'],
+  id: string,
+  name?: string
+): void {
+  trackEvent(UMAMI_EVENTS.FAVORITE_REMOVE, { type, id, ...(name && { name }) });
 }
 
 export function trackNearbyPermissionGranted(): void {
@@ -316,6 +355,18 @@ export function trackCityClicked(props: DiscoveryClickedProps): void {
 
 export function trackSearchNoResults(props: SearchNoResultsProps): void {
   trackEvent(UMAMI_EVENTS.SEARCH_NO_RESULTS, props);
+}
+
+export function trackGlossaryTermViewed(props: GlossaryTermViewedProps): void {
+  trackEvent(UMAMI_EVENTS.GLOSSARY_TERM_VIEWED, props);
+}
+
+export function trackGlossaryCategoryFiltered(props: GlossaryCategoryFilteredProps): void {
+  trackEvent(UMAMI_EVENTS.GLOSSARY_CATEGORY_FILTERED, props);
+}
+
+export function trackGlossarySearched(props: GlossarySearchedProps): void {
+  trackEvent(UMAMI_EVENTS.GLOSSARY_SEARCHED, props);
 }
 
 export function identifyVisitor(siteLocale: string, hasFavorites: boolean): boolean {

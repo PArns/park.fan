@@ -597,7 +597,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'b-and-m',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'b-and-m',
       de: 'b-and-m',
@@ -609,7 +609,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'intamin',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'intamin',
       de: 'intamin',
@@ -621,7 +621,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'mack-rides',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'mack-rides',
       de: 'mack-rides',
@@ -633,7 +633,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'rmc',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'rmc',
       de: 'rmc',
@@ -645,7 +645,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'vekoma',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'vekoma',
       de: 'vekoma',
@@ -657,7 +657,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'gerstlauer',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'gerstlauer',
       de: 'gerstlauer',
@@ -669,7 +669,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'schwarzkopf',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'schwarzkopf',
       de: 'schwarzkopf',
@@ -1006,7 +1006,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'credit',
-    category: 'coasters',
+    category: 'planning',
     slugs: {
       en: 'credit',
       de: 'credit',
@@ -1018,7 +1018,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'pov',
-    category: 'coasters',
+    category: 'ride-experience',
     slugs: {
       en: 'pov',
       de: 'pov',
@@ -1066,7 +1066,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'stacking',
-    category: 'coasters',
+    category: 'park-operations',
     slugs: {
       en: 'stacking',
       de: 'stacking',
@@ -1111,6 +1111,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'spinning-coaster',
       nl: 'spinning-coaster',
       es: 'spinning-coaster',
+    },
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'xtreme-spinning-coaster',
+      de: 'xtreme-spinning-coaster',
+      fr: 'xtreme-spinning-coaster',
+      it: 'xtreme-spinning-coaster',
+      nl: 'xtreme-spinning-coaster',
+      es: 'xtreme-spinning-coaster',
     },
   },
   {
@@ -1445,7 +1457,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'arrow-dynamics',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'arrow-dynamics',
       de: 'arrow-dynamics',
@@ -1457,7 +1469,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
   },
   {
     id: 'gci',
-    category: 'coasters',
+    category: 'manufacturers',
     slugs: {
       en: 'great-coasters-international',
       de: 'gci',
@@ -1465,6 +1477,66 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'gci',
       nl: 'gci',
       es: 'gci',
+    },
+  },
+  {
+    id: 'premier-rides',
+    category: 'manufacturers',
+    slugs: {
+      en: 'premier-rides',
+      de: 'premier-rides',
+      fr: 'premier-rides',
+      it: 'premier-rides',
+      nl: 'premier-rides',
+      es: 'premier-rides',
+    },
+  },
+  {
+    id: 'maurer-rides',
+    category: 'manufacturers',
+    slugs: {
+      en: 'maurer-rides',
+      de: 'maurer-rides',
+      fr: 'maurer-rides',
+      it: 'maurer-rides',
+      nl: 'maurer-rides',
+      es: 'maurer-rides',
+    },
+  },
+  {
+    id: 'zamperla',
+    category: 'manufacturers',
+    slugs: {
+      en: 'zamperla',
+      de: 'zamperla',
+      fr: 'zamperla',
+      it: 'zamperla',
+      nl: 'zamperla',
+      es: 'zamperla',
+    },
+  },
+  {
+    id: 's-and-s-worldwide',
+    category: 'manufacturers',
+    slugs: {
+      en: 's-and-s-worldwide',
+      de: 's-and-s-worldwide',
+      fr: 's-and-s-worldwide',
+      it: 's-and-s-worldwide',
+      nl: 's-and-s-worldwide',
+      es: 's-and-s-worldwide',
+    },
+  },
+  {
+    id: 'zierer',
+    category: 'manufacturers',
+    slugs: {
+      en: 'zierer',
+      de: 'zierer',
+      fr: 'zierer',
+      it: 'zierer',
+      nl: 'zierer',
+      es: 'zierer',
     },
   },
   // ── New Coaster Elements (P1/P2) ───────────────────────────────────────────
@@ -1490,6 +1562,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'wave-turn',
       nl: 'wave-turn',
       es: 'wave-turn',
+    },
+  },
+  {
+    id: 'high-five',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'high-five',
+      de: 'high-five',
+      fr: 'high-five',
+      it: 'high-five',
+      nl: 'high-five',
+      es: 'high-five',
     },
   },
   // ── New Crowd/Planning (P1/P2) ─────────────────────────────────────────────
@@ -1650,6 +1734,118 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       it: 'spettacolo-dal-vivo',
       nl: 'live-show',
       es: 'espectaculo-en-vivo',
+    },
+  },
+  // ── New Attractions (P2) ───────────────────────────────────────────────────
+  {
+    id: 'drop-tower',
+    category: 'attractions',
+    slugs: {
+      en: 'drop-tower',
+      de: 'drop-tower',
+      fr: 'tour-de-chute',
+      it: 'torre-di-caduta',
+      nl: 'drop-tower',
+      es: 'torre-de-caida',
+    },
+  },
+  {
+    id: 'log-flume',
+    category: 'attractions',
+    slugs: {
+      en: 'log-flume',
+      de: 'wildwasserbahn',
+      fr: 'toboggan-aquatique',
+      it: 'fiume-dei-tronchi',
+      nl: 'wildwaterbaan',
+      es: 'descenso-de-troncos',
+    },
+  },
+  {
+    id: 'river-rapids',
+    category: 'attractions',
+    slugs: {
+      en: 'river-rapids',
+      de: 'wildwasser-rafting',
+      fr: 'rapides-riviere',
+      it: 'rapide-del-fiume',
+      nl: 'wildwaterrit',
+      es: 'rrapids-rio',
+    },
+  },
+  {
+    id: 'swing-ride',
+    category: 'attractions',
+    slugs: {
+      en: 'swing-ride',
+      de: 'kettenkarussell',
+      fr: 'chaises-volantes',
+      it: 'giostra-a-catene',
+      nl: 'zweefmolen',
+      es: 'sillas-voladoras',
+    },
+  },
+  // ── New Coasters (P2) ─────────────────────────────────────────────────────
+  {
+    id: 'racing-coaster',
+    category: 'coasters',
+    slugs: {
+      en: 'racing-coaster',
+      de: 'racing-coaster',
+      fr: 'montagnes-russes-course',
+      it: 'racing-coaster',
+      nl: 'racing-coaster',
+      es: 'montaña-rusa-carrera',
+    },
+  },
+  // ── New Dining (P2) ───────────────────────────────────────────────────────
+  {
+    id: 'dining-reservation',
+    category: 'dining',
+    slugs: {
+      en: 'dining-reservation',
+      de: 'tischreservierung',
+      fr: 'reservation-restaurant',
+      it: 'prenotazione-ristorante',
+      nl: 'tafelreservering',
+      es: 'reserva-restaurante',
+    },
+  },
+  {
+    id: 'mobile-ordering',
+    category: 'dining',
+    slugs: {
+      en: 'mobile-ordering',
+      de: 'mobile-bestellung',
+      fr: 'commande-mobile',
+      it: 'ordine-mobile',
+      nl: 'mobiel-bestellen',
+      es: 'pedido-movil',
+    },
+  },
+  {
+    id: 'food-court',
+    category: 'dining',
+    slugs: {
+      en: 'food-court',
+      de: 'food-court',
+      fr: 'food-court',
+      it: 'food-court',
+      nl: 'food-court',
+      es: 'food-court',
+    },
+  },
+  // ── New Park Operations (P2) ──────────────────────────────────────────────
+  {
+    id: 'capacity-closure',
+    category: 'park-operations',
+    slugs: {
+      en: 'capacity-closure',
+      de: 'kapazitaetsschliessung',
+      fr: 'fermeture-capacite',
+      it: 'chiusura-capacita',
+      nl: 'capaciteitssluiting',
+      es: 'cierre-por-capacidad',
     },
   },
 ];

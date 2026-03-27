@@ -432,7 +432,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH is een Duitse achtbaanfabrikant gevestigd in Münsterhausen, Beieren. Opgericht in 1946 als metaalverwerkend bedrijf, stapte het in de jaren 80 over naar attracties en bouwde zijn wereldwijde reputatie op met het Euro-Fighter-model — een compacte elektrisch gelanceerde achtbaan beroemd om zijn voorbij-verticale (97 graden) eerste drop. Euro-Fighters kunnen op kleine ruimte worden geïnstalleerd, waardoor ze aantrekkelijk zijn voor stedelijke parken en kleinere locaties; voorbeelden zijn Rage bij Adventure Island en Speed bij Oakwood. Gerstlauer produceert ook het Infinity Coaster-model, spinning coasters en de SkyRoller, een roterende achtbaan waarbij rijders hun eigen flikflak regelen. In de enthousiastengemeenschap worden Gerstlauer-achtbanen gewaardeerd om hun intensiteit ten opzichte van hun kleine footprint.',
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -866,6 +866,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
   },
   {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      'Gerstlauers hoge-intensiteit spinning coaster-model — sneller, hoger en met agressievere rotatie dan een standaard spinning coaster.',
+    definition:
+      'De Xtreme Spinning Coaster (XSC) is Gerstlauers topmodel in de spinning coaster-categorie, ontworpen om het format naar zijn uiterste grenzen te duwen. Waar een standaard spinning coaster gericht is op gezinsvriendelijke intensiteit, biedt de XSC een hogere constructie, steilere drops, hogere topsnelheden en een rotatiemechanisme dat is afgesteld op krachtigere rotatie — de wagons draaien harder en vaker door elk element van het parcours.\n\nDe onvoorspelbaarheid van het draaien wordt versterkt door het hogere tempo: de rijrichting verandert sneller, waardoor elke rit anders aanvoelt. Het XSC-model positioneert Gerstlauer tussen gezinsspinners en volwaardige thrill coasters — echte intensiteit met de herhaalbaarheid die spinning coasters zo aantrekkelijk maakt.',
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
+  },
+  {
     id: 'hyper-coaster',
     name: 'Hyper Coaster',
     shortDefinition:
@@ -1218,6 +1228,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer', 'gci'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'Amerikaans fabrikant gespecialiseerd in LSM/LIM-lanceerachtbanen — in Europa bekend door de Sky Scream-familie.',
+    definition:
+      'Premier Rides (opgericht 1995, Baltimore, Maryland) is een Amerikaans fabrikant gespecialiseerd in lineaire synchrone motor (LSM)- en lineaire inductiemotor (LIM)-lanceersystemen. De Sky Rocket II — een compacte launch coaster met één inversie — heeft zich verspreid naar middelgrote parken wereldwijd.\n\nIn Europa is Premier Rides vooral bekend door Sky Scream in Holiday Park (Haßloch, Duitsland), een geïnverteerde familie-lanceerachtbaan die uitgroeide tot een regionale attractie. Hagrid\'s Magical Creatures Motorbike Adventure in Universal Orlando maakt ook gebruik van Premier\'s LSM-technologie.',
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'Duits fabrikant uit München bekend om spinning coasters met trick track, het X-Car-platform en het verticale Sky Loop-model.',
+    definition:
+      "Maurer Rides (Maurer AG, metaalbewerking sinds 1876, attracties vanaf 1993) is een fabrikant uit München. De SC-serie spinning coasters heeft een kenmerkend trick track-segment — een sectie waarbij de wagon zijwaarts kantelt — en het X-Car-platform maakt hoogst aanpasbare compacte layouts met lanceerstarts en inversies mogelijk.\n\nDe Sky Loop is een zelfstandig verticaal loop-model dat ruimtebesparend in vele Europese parken staat. Bekende Europese installaties: Winja's Fear en Winja's Force in Phantasialand (Duitsland), indoor spinning coasters met trick track.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Italiaans fabrikant met een van de grootste portfolio\'s van gezinsvriendelijke achtbanen en attracties ter wereld — meer dan 250 achtbanen geïnstalleerd.',
+    definition:
+      "Zamperla (opgericht 1966, Altavilla Vicentina, Italië) is een van de meest productieve attractiefabrikanten ter wereld. Waar Intamin, B&M en Mack zich richten op grootschalige thrill-installaties, focust Zamperla op volume en toegankelijkheid — hun Family Coaster, Mini Coaster, Twister en Disk'O Coaster zijn standaardinrichtingen van kleinere parken en vakantieresorts wereldwijd.\n\nCompacte afmetingen en gematigde lengte-eisen maken Zamperla-attracties bijzonder gangbaar in Europese stadsparken, vakantieparken en overdekte faciliteiten. Het bedrijf bouwde ook Thunderbolt op Coney Island (New York).",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'Amerikaans fabrikant bekend om pneumatische droptorens, de compacte El Loco en Free Fly 4D-achtbanen.',
+    definition:
+      'S&S Worldwide (opgericht 1994, Logan, Utah; overgenomen door Sansei Technologies in 2012) ontwikkelde oorspronkelijk pneumatische droptorens — Space Shot en Turbo Drop — voordat het bedrijf uitbreidde naar achtbanen. De El Loco is een compacte extreme achtbaan met een voorbij-verticale eerste helling en inversie, die veel thrills levert op een zeer kleine footprint. De Free Fly is een 4D-achtbaan waarbij de stoel vrij draait.\n\nS&S nam ook de activa van het historisch belangrijke Arrow Dynamics over na diens faillissement in 2001. In Europa zijn S&S-installaties minder gangbaar dan in Noord-Amerika.',
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'Duits fabrikant uit Beieren gespecialiseerd in gezinsachtbanen — meer dan 190 achtbanen gebouwd wereldwijd.',
+    definition:
+      "Zierer (opgericht 1930, Deggendorf, Beieren) is een Duits fabrikant gespecialiseerd in gezinsachtbanen en klassieke parkattrácties. De Force Coaster-reeks omvat meerdere niveaus — van compacte juniormodellen tot snellere Force Custom-installaties. Zierer-achtbanen kenmerken zich door stalen buisrail, een soepele rijervaring en gematigde lengte-eisen, ideaal voor parken die een breed publiek bedienen.\n\nMet meer dan 190 achtbanen geleverd wereldwijd is Zierer een van Europa's meest productieve achtbaanbouwers per eenheid. Bekende installaties: Feuerdrache in Legoland Deutschland en gezinsachtbanen in Duitse, Nederlandse en Scandinavische parken.",
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition: 'Inversie waarbij de trein kort ondersteboven bijna stilstaat.',
@@ -1324,6 +1384,33 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['pre show', 'wachtzaalanimatie', 'stagingzone', 'pre-show'],
   },
   {
+    id: 'flat-ride',
+    name: 'Flat Ride',
+    shortDefinition: 'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
+    definition:
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, Frisbee, zweefmolens), drop towers en rondedraaiplatforms. In tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+    relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
+    aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
+  },
+  {
+    id: 'water-ride',
+    name: 'Waterattractie',
+    shortDefinition: 'Attractie waarbij gasten in boten of voertuigen door water worden vervoerd en nat worden.',
+    definition:
+      'Een waterattractie is elke attractie waarbij water een centraal onderdeel is van de beleving – het voertuig vaart door een waterkanaal of water wordt als effect ingezet. De drie meest voorkomende typen zijn: wildwaterbanen (bootjes door een goot met eindval), wildwaterritten (ronde vlotten door turbulent kunstmatig water) en waterpistoolattracties waarbij bezoekers elkaar bespuiten. Waterattracties hebben doorgaans lage minimumlengte-eisen en een breed publiek. Op warme zomerdagen kunnen de wachttijden extreem lang worden.',
+    relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
+    aliases: ['waterrit', 'waterbaan', 'natte attractie', 'water ride'],
+  },
+  {
+    id: 'live-show',
+    name: 'Live Show',
+    shortDefinition: 'Gepland optreden met live acteurs, muziek, stunts of karakters in een theater of amfitheater.',
+    definition:
+      'Een live show is een gepland entertainmentprogramma uitgevoerd door mensen – in tegenstelling tot rijattracties of vaste exposities – in een openluchtamfitheater, overdekt theater of straatpodium. Het aanbod varieert van Broadway-achtige theaterproducties en stuntshows tot karakterparades, 4D-bioscoopshows met live elementen en laser- en vuurwerkspektakels. In tegenstelling tot attracties draaien live shows op vaste tijden met beperkte capaciteit per voorstelling; ze in je planning opnemen is belangrijk om conflicten te vermijden. Strategisch zijn shows een nuttige rustpauze in de drukste middaguren wanneer de wachtrijen het langst zijn.',
+    relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
+    aliases: ['show', 'liveshow', 'stuntshow', 'theatershow', 'live entertainment'],
+  },
+  {
     id: 'quick-service',
     name: 'Snelrestaurant',
     shortDefinition: 'Zelfbedieningsrestaurant zonder bediening aan tafel.',
@@ -1355,6 +1442,96 @@ const translations: GlossaryTermTranslation[] = [
       'diner met karakters',
       'character dining',
     ],
+  },
+  {
+    id: 'drop-tower',
+    name: 'Drop Tower',
+    shortDefinition: 'Torenaantractie die gasten omhoogbrengt en hen in vrije val naar beneden laat vallen.',
+    definition:
+      'Een drop tower (ook vrije-val-toren of free-fall tower) is een attractie waarbij bezoekers in een gondel of individuele stoelen rondom een centrale torenkonstruktie worden omhooggebracht en vervolgens in een snelle val naar beneden worden losgelaten. De val kan nagenoeg gewichtloos zijn (echte vrije val), geremd, of gecombineerd met een katapultimpuls omhoog. Onderin remt het systeem de gondel geleidelijk af. Varianten zijn roterende drop towers, meerdimensionale modellen en hybride versies. Drop towers bieden intense ervaringen op een compact grondoppervlak en zijn wereldwijd te vinden. Bekende fabrikanten: Intamin, Mondial en S&S Worldwide.',
+    relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
+    aliases: ['vrije-val-toren', 'free fall tower', 'drop ride', 'vrijeval'],
+  },
+  {
+    id: 'log-flume',
+    name: 'Wildwaterbaan',
+    shortDefinition: 'Waterkanaal-attractie waarbij bootje-achtige voertuigen een goot afleggen en eindigen met een grote plons.',
+    definition:
+      'Een wildwaterbaan (ook log flume of boomstambootje) is een waterattractie waarbij gasten in boomstamvormige bootjes door een watergevuld kanaal glijden. Na rustigere secties volgt een steile helling waarbij het bootje in een waterbekken plonst en passagiers vrijwel zeker nat worden. Wildwaterbanen dateren uit de jaren 1960 en zijn inmiddels een standaard in parken wereldwijd. Ze zijn familievriendelijk, hebben een gemiddelde capaciteit en zijn klassieke zomerattracties. Bekende Europese voorbeelden: Poseidon in Europa-Park en talrijke wildwaterbanen in Duitstalige parken.',
+    relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
+    aliases: ['boomstambootje', 'log flume', 'plonsbaan', 'wildwaterrit', 'waterglijbaan'],
+  },
+  {
+    id: 'river-rapids',
+    name: 'Wildwaterrit',
+    shortDefinition: 'Rondboot-attractie door turbulente kunstmatige stroomversnellingen waarbij alle inzittenden nat kunnen worden.',
+    definition:
+      'Een wildwaterrit (ook river rapids of vlottenrit) vervoert gasten in ronde opblaasbare of kunststof vlotten door een kunstmatig kanaal dat stroomversnellingen simuleert. Doordat het ronde vlot vrij draait op de stroom, is elke rit onvoorspelbaar: afhankelijk van de positie van het vlot worden sommige inzittenden doorweekt, anderen blijven relatief droog. Wildwaterritten hebben doorgaans een hoge capaciteit, een brede gezinsaantrekkingskracht en lage minimumlengte-eisen. Ze zijn bijzonder populair op warme dagen. Bekende Europese voorbeelden: de Wildwasser-attracties in Phantasialand en diverse ritten in Efteling, Europa-Park en Thorpe Park.',
+    relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
+    aliases: ['vlottenrit', 'river rapids', 'wildwater', 'stroomversnellingenrit', 'raftingrit'],
+  },
+  {
+    id: 'swing-ride',
+    name: 'Zweefmolen',
+    shortDefinition: 'Ronddraaiende attractie waarbij stoeltjes aan kettingen naar buiten slingeren als de molen draait.',
+    definition:
+      "Een zweefmolen (ook kettingcarrousel of Kettenflieger) is een ronddraaiende attractie waarbij stoeltjes aan kettingen aan een centrale draaiende structuur hangen. Bij het ronddraaien worden de stoeltjes door de middelpuntvliedende kracht naar buiten en omhoog geslingerd, wat passagiers het gevoel van vliegen geeft. Zweefmolens zijn een van de oudste nog bestaande kermisattracties en stammen uit het begin van de 20e eeuw. Moderne versies variëren van zachte kinderdraaimolens tot enorme kettingtorens (starflyers) die passagiers tientallen meters omhoogbrengen. Ze zijn in vrijwel elk pretpark en op kermissen wereldwijd te vinden.",
+    relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane'],
+  },
+  {
+    id: 'racing-coaster',
+    name: 'Racing Coaster',
+    shortDefinition: 'Twee parallelle achtbaanrails waarop treinen tegelijkertijd rijden en zij aan zij racen.',
+    definition:
+      'Een racing coaster heeft twee afzonderlijke maar gespiegelde achtbaanrails die parallel aan elkaar lopen; de treinen worden tegelijkertijd weggestuurd zodat passagiers de beleving hebben te racen tegen de andere trein. De rails kruisen elkaar of komen op meerdere punten extreem dichtbij, waardoor de spanning maximaal is. Sommige racing coasters zijn gebouwd als Möbius-lus: beide rails vormen één doorgaand circuit en passagiers wisselen automatisch van kant. Het format werkt even goed met houten als met stalen achtbanen. Bekende Europese voorbeelden: Piraten in Djurs Sommerland en Dwervelwind in Plopsaland.',
+    relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
+    aliases: ['dubbele achtbaan', 'twin coaster', 'dueling coaster', 'Paarachterbahn', 'racing coaster'],
+  },
+  {
+    id: 'high-five',
+    name: 'High Five',
+    shortDefinition: 'Achtbaanelement waarbij twee treinen op parallelle rails elkaar tot op armlengte passeren.',
+    definition:
+      "Een High Five is een bijna-botsings-element waarbij twee achtbaantreinen op afzonderlijke maar nauw bij elkaar gelegen rails elkaar op extreem korte afstand passeren – soms binnen armlengte – waardoor een spannende illusie van een dreigende botsing ontstaat. De naam verwijst naar het gevoel dat passagiers de inzittenden van de andere trein zouden kunnen aanraken. Het element vereist nauwkeurige ritme-coördinatie zodat beide treinen gelijktijdig op het kruispunt aankomen. Wing coasters en inverted coasters lenen zich bijzonder goed voor het High Five-element omdat de buitenwaartse stoelen het bijna-raakeleffect versterken. Duelling Dragons / Dragon Challenge in Universal's Islands of Adventure was een beroemd vroeg voorbeeld; het element komt tegenwoordig voor op diverse B&M wing coasters wereldwijd.",
+    relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
+    aliases: ['bijna-botsing element', 'near miss', 'near-miss element', 'high 5'],
+  },
+  {
+    id: 'dining-reservation',
+    name: 'Tafelreservering',
+    shortDefinition: 'Vooruitboeking voor een tafelservice-restaurant in een pretpark of resort.',
+    definition:
+      'Een tafelreservering is een vooruitboeking voor een tafelservice- of karakterdiner-restaurant in een pretpark, resorthotel of aanverwant entertainmentcomplex. Bij Disney-parken zijn reserveringen tot 60 dagen van tevoren mogelijk (met 10 dagen voorsprong voor resorthotelgasten) en zijn ze onmisbaar voor de populairste restaurants – wie niet op tijd boekt kan er tijdens drukke periodes simpelweg niet in. Reserveringen worden gewoonlijk gegarandeerd met een creditcard; Disney brengt kosten in rekening bij een no-show of late annulering. In de enthousiastengemeenschap worden tafelreserveringen ook wel aangeduid als ADR (Advance Dining Reservation).',
+    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    aliases: ['ADR', 'advance dining reservation', 'restaurantreservering', 'dining reservation', 'tafelboeking'],
+  },
+  {
+    id: 'mobile-ordering',
+    name: 'Mobiel Bestellen',
+    shortDefinition: 'App-functie waarmee gasten eten vooraf kunnen bestellen en betalen zonder aan de balie te wachten.',
+    definition:
+      'Mobiel bestellen stelt gasten in staat via de officiële park-app een restaurantmenu te bekijken, een bestelling te plaatsen en te betalen, en een ophaaltijdvak te kiezen – zonder aan de balie te hoeven aanschuiven. Disney maakte het systeem populair in zijn snelrestaurants; Universal, Six Flags, Merlin-parken en vele andere operators hebben sindsdien hun eigen versies ingevoerd. Wanneer het gekozen tijdvak aanbreekt, ontvangen gasten een melding om naar het speciale mobile-order-afhaalpunt te gaan. Mobiel bestellen bespaart aanzienlijk tijd op drukke middagmomenten. Vereist een opgeladen smartphone en voldoende netwerkdekking in het park.',
+    relatedTermIds: ['quick-service', 'dining-reservation'],
+    aliases: ['mobiele bestelling', 'mobile order', 'app-bestelling', 'mobile ordering'],
+  },
+  {
+    id: 'food-court',
+    name: 'Food Court',
+    shortDefinition: 'Grote gedeelde eetzaal met meerdere snelrestaurant-balies en verschillende keukens onder één dak.',
+    definition:
+      'Een food court is een gemeenschappelijke horecazone met meerdere zelfstandige snelrestaurant-balies of kraampjes die verschillende keukens aanbieden en een gezamenlijke zitruimte delen. In pretparken zijn food courts doorgaans de horecalocaties met de hoogste capaciteit, ontworpen om het middagse bezoekersvolume op te vangen. Verschillende leden van een gezelschap kunnen bij verschillende balies bestellen en toch samen zitten. Het thematingsniveau varieert: Disney en Universal integreren food courts vaak in de landthematiek, andere parken exploiteren ze als puur functionele rustplaatsen nabij ingangen. Food courts zijn in de regel de meest betaalbare eetoptie binnen een park.',
+    relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
+    aliases: ['eetplein', 'eetzaal', 'food court', 'restaurantplein'],
+  },
+  {
+    id: 'capacity-closure',
+    name: 'Capaciteitssluiting',
+    shortDefinition: 'Wanneer een park geen nieuwe bezoekers meer toelaat omdat de maximumcapaciteit is bereikt.',
+    definition:
+      'Een capaciteitssluiting (ook: uitverkocht park of capaciteitsplafond) treedt op wanneer een pretpark zijn maximaal toegestane of operationeel veilige bezoekersaantal bereikt en tijdelijk stopt met het verkopen van dagtickets of het toelaten van nieuwe bezoekers. Parken sturen capaciteit bij via tijdgebonden toegangsboekingen, realtime bezoekerstellingen en tijdelijke ingangssluitingen. Jaarkaarthouders kunnen op capaciteitsdagen afhankelijk van de parkregels worden geweigerd; andere parken gebruiken reserveringssystemen die overbezetting van tevoren voorkomen. Capaciteitssluitingen zijn het meest voorkomend tijdens schoolvakantiepieken, vuurwerkevenementen en speciale evenementenavonden. Even de park-app of sociale media raadplegen op de ochtend van je bezoek kan onaangename verrassingen voorkomen.',
+    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    aliases: ['park vol', 'park uitverkocht', 'capacity closure', 'capaciteitsgrens', 'volzit'],
   },
 ];
 

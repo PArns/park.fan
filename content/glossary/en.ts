@@ -447,7 +447,7 @@ const translations: GlossaryTermTranslation[] = [
       'A German manufacturer best known for the Euro-Fighter model with its beyond-vertical first drop, plus spinning coasters and compact family rides.',
     definition:
       'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer based in Münsterhausen, Bavaria. Founded in 1946 as a metalworking company, it entered the amusement ride market in the 1980s and built its global reputation with the Euro-Fighter model — a compact, electric-launch coaster famous for its beyond-vertical (up to 97-degree) first drop. Euro-Fighters can be installed in very tight spaces, making them attractive for urban parks and smaller venues. European examples include Saw – The Ride at Thorpe Park and Rage at Adventure Island.\n\nGerstlauer also produces the Infinity Coaster model, spinning coasters, and the SkyRoller — a coaster where riders control their own wing rotation, flipping themselves independently. In the enthusiast community, Gerstlauer rides are valued for packing significant intensity into small footprints. The company occupies an interesting market position between the large-scale ambitions of B&M and Intamin and the compact value of older Vekoma models.',
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
   },
   {
     id: 'schwarzkopf',
@@ -781,6 +781,16 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A spinning coaster features cars mounted on a platform that rotates freely around a vertical axis throughout the ride. Because the rotation is uncontrolled, each individual run produces a different sequence of forward, backward, and sideways orientations through every element. The unpredictability is a significant part of the appeal — two consecutive rides on the same circuit can feel entirely different depending on how the car rotates.\n\nMack Rides and Gerstlauer are the leading manufacturers of spinning coasters. Mack's models are particularly well regarded for their smooth ride quality and family-friendly intensity level — they are often described as among the most accessible thrill rides available, offering genuine excitement without the intimidating height, speed, or restraint systems of major coasters. Efteling's Joris en de Draak and Flying Dutchman and Phantasialand's spinning coasters are popular European examples. Spinning coasters are widely regarded as excellent family rides and frequently have lower height requirements than equivalent non-spinning coasters.",
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
+  },
+  {
+    id: 'xtreme-spinning-coaster',
+    name: 'Xtreme Spinning Coaster',
+    shortDefinition:
+      "Gerstlauer's high-intensity spinning coaster model — faster, taller, and more aggressively spinning than a standard spinning coaster.",
+    definition:
+      "The Xtreme Spinning Coaster (XSC) is Gerstlauer's top-tier spinning coaster model, designed to push the spinning coaster format to its limits. Where a standard spinning coaster tends toward family-friendly intensity, the XSC features a taller structure, steeper drops, higher top speeds, and a spinning mechanism tuned for more pronounced rotation — meaning riders spin harder and more frequently through every element of the layout.\n\nThe unpredictability of spinning is amplified by the faster pace: the car's orientation changes more rapidly, so the same ride can feel completely different from run to run. Restraints are typically an over-the-shoulder or lap-bar system designed to handle the more intense forces generated. The XSC model positions Gerstlauer in the gap between approachable family spinners and full-scale thrill coasters, offering genuine intensity while keeping the playful, replayable quality that makes spinning coasters appealing to a wide audience.",
+    aliases: ['XSC'],
+    relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
     id: 'hyper-coaster',
@@ -1117,6 +1127,56 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Great Coasters International', 'GCI coaster', 'Millennium Flyer'],
   },
   {
+    id: 'premier-rides',
+    name: 'Premier Rides',
+    shortDefinition:
+      'American manufacturer specialising in LSM/LIM launch coasters — in Europe best known through the Sky Scream family of inverted launch coasters.',
+    definition:
+      "Premier Rides (founded 1995, Baltimore, Maryland) is an American coaster manufacturer specialising in linear synchronous motor (LSM) and linear induction motor (LIM) launch systems. Their launch technology was among the earliest commercially deployed, enabling smooth high-speed launches without hydraulic catapults. The Sky Rocket II — a compact, single-looping launch coaster — became widely popular through mid-tier park installations globally.\n\nIn Europe, Premier Rides is best known through Sky Scream at Holiday Park (Haßloch, Germany), an inverted family launch coaster and regional landmark attraction. Hagrid's Magical Creatures Motorbike Adventure at Universal Orlando also uses Premier's LSM launch system, showcasing the technology's versatility beyond traditional coasters.",
+    aliases: ['Premier'],
+    relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
+  },
+  {
+    id: 'maurer-rides',
+    name: 'Maurer Rides',
+    shortDefinition:
+      'German manufacturer from Munich known for spinning coasters with trick track, the X-Car custom platform, and the Sky Loop vertical loop model.',
+    definition:
+      "Maurer Rides (Maurer AG, metal fabrication since 1876, amusement rides from 1993) is a Munich-based German manufacturer. The company developed the SC spinning coaster series featuring their signature trick track — a section where the car tilts sideways mid-ride — and the X-Car platform, a single-articulated-car format capable of highly customised compact layouts with launches and inversions.\n\nThe Sky Loop is a standalone vertical loop structure found across European parks as a space-efficient thrill ride, while the Spike coaster uses individual pursuit cars on a shared track. Well-known European installations include Winja's Fear and Winja's Force at Phantasialand (Germany) — indoor spinning coasters with trick track — and X-Car installations across various European parks.",
+    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
+  },
+  {
+    id: 'zamperla',
+    name: 'Zamperla',
+    shortDefinition:
+      'Italian manufacturer with one of the largest portfolios of family-friendly coasters and flat rides worldwide, with 250+ coasters installed globally.',
+    definition:
+      "Zamperla (founded 1966, Altavilla Vicentina, Italy) is one of the world's most prolific amusement ride manufacturers. Where Intamin, B&M, and Mack target large-scale thrill installations, Zamperla focuses on volume and accessibility — their Family Coaster, Mini Coaster, Twister, and Disk'O Coaster models are staples of smaller parks, resort midways, and seasonal attractions worldwide.\n\nCompact footprints and modest height requirements make Zamperla rides especially common in European city parks, holiday resorts, and indoor facilities. The company also built Thunderbolt at Coney Island (New York), demonstrating their ability to scale up when required. Walt Disney Parks & Resorts has used Zamperla attractions across multiple properties.",
+    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
+  },
+  {
+    id: 's-and-s-worldwide',
+    name: 'S&S Worldwide',
+    shortDefinition:
+      'American manufacturer known for pneumatic towers, the compact El Loco extreme coaster, and Free Fly 4D coasters.',
+    definition:
+      "S&S Worldwide (founded 1994, Logan, Utah; acquired by Sansei Technologies in 2012) originally developed pneumatic drop tower systems — the Space Shot and Turbo Drop — before expanding into coasters. Their El Loco model is a compact extreme coaster featuring a beyond-vertical first drop and inversion, delivering significant thrills within a very small footprint. The Free Fly is a 4D-style coaster where the seat pivots freely to flip riders at key moments.\n\nS&S also acquired the assets of the historic Arrow Dynamics after its 2001 bankruptcy, establishing a lineage connection to some of the most significant coasters in the industry. In Europe, S&S installations are less common than in North America, though the company's air-launch technology has influenced broader industry development.",
+    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
+  },
+  {
+    id: 'zierer',
+    name: 'Zierer',
+    shortDefinition:
+      'German manufacturer from Bavaria specialising in family coasters and classic park rides, with over 190 coasters built worldwide.',
+    definition:
+      'Zierer (founded 1930, Deggendorf, Bavaria) is a German manufacturer specialising in family-scale roller coasters and classic park rides. Their Force Coaster range spans multiple tiers — from compact junior models through to the higher-speed Force Custom installations. Zierer coasters are characterised by steel tubular track, smooth ride quality, and moderate height requirements, making them ideal for parks catering to a broad demographic.\n\nWith over 190 roller coasters delivered worldwide, Zierer is one of Europe\'s most prolific coaster builders by unit count. Notable European installations include Feuerdrache at Legoland Deutschland, and family coasters at parks across Germany, the Netherlands, and Scandinavia.',
+    aliases: ['Zierer GmbH', 'Zierer rides'],
+    relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
+  },
+  {
     id: 'stall',
     name: 'Stall',
     shortDefinition: 'Inversion where the train briefly hangs upside-down with near-zero speed.',
@@ -1231,6 +1291,33 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['pre show', 'loading area entertainment', 'staging area', 'queue entertainment'],
   },
   {
+    id: 'flat-ride',
+    name: 'Flat Ride',
+    shortDefinition: 'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
+    definition:
+      'A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Frisbees, wave swingers), drop and launch towers, and circular spinning platforms. Unlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park\'s family and children\'s ride lineup.',
+    relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
+    aliases: ['flat rides', 'carnival ride', 'midway ride'],
+  },
+  {
+    id: 'water-ride',
+    name: 'Water Ride',
+    shortDefinition: 'An attraction where guests travel in boats or vehicles through water, getting wet in the process.',
+    definition:
+      'A water ride is any attraction where water is a central part of the experience — either the vehicle travels through a water channel or water is used as a deliberate effect. The three most common types are log flumes, where boats travel down a trough with a final plunge drop; river rapids rides, where circular rafts spin through turbulent artificial white water; and splash battles, where guests use water cannons to spray each other and bystanders. Water rides typically have low height requirements and very broad guest appeal. In summer heat they can generate extremely long queues. Capacity varies significantly: river rapids rides tend to have high hourly throughput while log flumes can be somewhat lower.',
+    relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
+    aliases: ['water rides', 'water attraction', 'aquatic ride', 'wet ride', 'Wasserattraktion'],
+  },
+  {
+    id: 'live-show',
+    name: 'Live Show',
+    shortDefinition: 'A scheduled performance featuring live actors, music, stunts, or characters in a dedicated venue.',
+    definition:
+      'A live show is a scheduled entertainment experience performed by human cast members — distinct from a ride or fixed exhibit — in a dedicated venue such as an open-air amphitheatre, indoor theatre, or on-street performance space. Theme park live shows range from Broadway-style stage productions and stunt shows to character parades, 4D cinema experiences with live elements, and laser or fireworks spectaculars. Unlike rides, live shows run on fixed schedules with limited capacity per performance; adding shows to a touring plan is important to avoid timing conflicts. Strategically, live shows serve as useful rest periods during the midday crowd peak when ride queues are at their longest.',
+    relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
+    aliases: ['show', 'live entertainment', 'stage show', 'performance', 'stunt show', 'live entertainment show'],
+  },
+  {
     id: 'quick-service',
     name: 'Quick Service',
     shortDefinition: 'Counter-service restaurant with no table waiting staff.',
@@ -1276,6 +1363,96 @@ const translations: GlossaryTermTranslation[] = [
       'dining with characters',
       'Charakterdinner',
     ],
+  },
+  {
+    id: 'drop-tower',
+    name: 'Drop Tower',
+    shortDefinition: 'A tower attraction that lifts guests to height and releases them in a rapid free-fall descent.',
+    definition:
+      "A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to plummet rapidly toward the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. Drop towers offer intense thrills with a very compact footprint, making them popular worldwide. Well-known examples include the Tower of Terror installations at Disney parks and numerous models from manufacturers such as Intamin, Mondial, and S&S Worldwide.",
+    relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
+    aliases: ['free fall tower', 'drop ride', 'free fall ride', 'free-fall', 'Freifall-Turm', 'Freifallturm'],
+  },
+  {
+    id: 'log-flume',
+    name: 'Log Flume',
+    shortDefinition: 'A water channel ride where boat-shaped vehicles travel through a trough and finish with a dramatic plunge and splash.',
+    definition:
+      "A log flume (also called a flume ride or splash ride) is a water ride in which guests sit in boat-shaped vehicles — traditionally log-shaped fibreglass hulls — and travel along a water-filled channel, navigating a course of flat sections and small rises before a final steep drop splash. The impact at the bottom almost guarantees wet riders; the extent depends on the drop height and trough design. Log flumes were introduced in the 1960s and became a fixture of parks worldwide, prized for their family friendliness, moderate throughput, and iconic summer appeal. Many classic examples have received major theming upgrades. Well-known European examples include Poseidon at Europa-Park and various Wildwasserbahn installations across German-speaking parks.",
+    relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
+    aliases: ['flume ride', 'log ride', 'splash ride', 'water flume', 'Wildwasserbahn', 'Bootsfahrt'],
+  },
+  {
+    id: 'river-rapids',
+    name: 'River Rapids',
+    shortDefinition: 'A circular raft ride through turbulent artificial rapids where guests are likely to get soaked.',
+    definition:
+      'A river rapids ride (also called a white-water rafting ride or wild-water ride) puts guests in circular inflatable or fibreglass rafts that drift and spin along an artificially created channel designed to simulate the chaos of white-water rapids. Because the circular raft rotates freely on the current, each ride-through is unpredictable: depending on raft position at each water feature, some riders get completely drenched while others stay relatively dry. River rapids rides tend to have high hourly capacity and strong family appeal, with typically low height requirements. They are especially popular on hot days. Prominent European examples include the Wildwasser rides at Phantasialand and the various rapids attractions at Efteling, Europa-Park, and Thorpe Park.',
+    relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
+    aliases: ['rapids ride', 'white water rapids', 'raft ride', 'white-water ride', 'Wildwasser', 'Wildwasserfahrt'],
+  },
+  {
+    id: 'swing-ride',
+    name: 'Swing Ride',
+    shortDefinition: 'A rotating tower attraction where chairs suspended by chains swing outward as the ride spins.',
+    definition:
+      'A swing ride (also called a chair swing, wave swinger, or Kettenflieger) is a rotating attraction in which chairs suspended from chains are attached to a revolving central structure. As the ride spins, centrifugal force causes the chairs to swing outward and upward, giving riders a sensation of flying. Swing rides are among the oldest surviving fairground ride types, with roots in early 20th-century carnivals; modern theme park versions range from gentle low-speed models designed for young children to enormous tower versions (chain towers or starflyers) that lift riders dozens of metres into the air. They are a near-universal presence in both major theme parks and travelling funfairs worldwide.',
+    relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['chair swing', 'chair ride', 'wave swinger', 'chain swing', 'Kettenkarussell', 'Kettenflieger', 'Chairoplane'],
+  },
+  {
+    id: 'racing-coaster',
+    name: 'Racing Coaster',
+    shortDefinition: 'Two parallel roller coaster tracks on which trains are dispatched simultaneously to race side by side.',
+    definition:
+      "A racing coaster features two separate but mirrored roller coaster tracks running parallel to each other, with trains dispatched simultaneously so riders experience the sensation of racing against the other car. The tracks typically cross or run extremely close to each other at multiple points, maximising the head-to-head tension. Some racing coasters are built as Möbius-loop designs, where the two tracks form a single continuous circuit and riders automatically switch sides between rides. The format works equally well with wooden and steel coasters. Classic examples include Racer at Kings Island and Gemini at Cedar Point in the United States. In Europe, notable examples include Piraten at Djurs Sommerland and Dwervelwind at Plopsaland.",
+    relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
+    aliases: ['dual track coaster', 'twin coaster', 'duelling coaster', 'dueling coaster', 'Paarachterbahn'],
+  },
+  {
+    id: 'high-five',
+    name: 'High Five',
+    shortDefinition: 'A coaster near-miss element where two trains on parallel tracks pass each other at arm\'s reach.',
+    definition:
+      "A High Five is a near-miss coaster element in which two roller coaster trains on separate but closely spaced tracks pass each other at extremely short range — sometimes within arm's reach — creating an exhilarating illusion of imminent collision. The name comes from the sensation that riders could reach out and high-five occupants of the other train. The element depends on tight dispatch timing to synchronise both trains at the crossing point. Wing coasters and inverted coasters are especially well-suited to High Five elements because the outboard seating of the ride vehicles amplifies the near-miss sensation. Duelling Dragon / Dragon Challenge at Universal's Islands of Adventure was a celebrated early example; the element has since appeared on various B&M wing coasters and other near-miss designs around the world.",
+    relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
+    aliases: ['near miss element', 'near-miss', 'high 5', 'near fly'],
+  },
+  {
+    id: 'dining-reservation',
+    name: 'Dining Reservation',
+    shortDefinition: 'An advance booking for a table-service restaurant inside a theme park or resort.',
+    definition:
+      "A dining reservation is an advance booking for a table-service or character-dining restaurant at a theme park, resort hotel, or associated entertainment complex. At Disney parks, reservations can be made up to 60 days in advance (with a 10-day head-start for resort hotel guests) and are considered essential for the most popular restaurants — failing to book in advance during busy periods can mean missing out entirely. Reservations typically require a credit card to hold; most Disney table-service venues charge a no-show fee if guests cancel within 24 hours or fail to arrive. In enthusiast communities, advance dining reservations are commonly abbreviated as ADRs. For parks other than Disney, the booking window is typically shorter and systems less formalised.",
+    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    aliases: ['ADR', 'advance dining reservation', 'restaurant booking', 'table booking', 'Tischreservierung', 'restaurant reservation'],
+  },
+  {
+    id: 'mobile-ordering',
+    name: 'Mobile Ordering',
+    shortDefinition: 'A feature in park apps allowing guests to order and pay for food in advance and skip the counter queue.',
+    definition:
+      "Mobile ordering allows guests to browse a restaurant menu, place and pay for an order, and select a pickup time window directly through the park's official smartphone app — skipping the standard counter queue entirely. Disney popularised the system at its quick-service restaurants; Universal, Six Flags, Merlin parks, and many other major operators have since introduced their own versions. When the selected pickup window arrives, guests receive a notification to head to the restaurant's dedicated mobile order pickup counter, where food is ready. Mobile ordering can save significant time at busy dining periods, particularly the midday lunch rush. The system requires a charged smartphone and reliable in-park connectivity, which is not always consistent throughout large parks.",
+    relatedTermIds: ['quick-service', 'dining-reservation'],
+    aliases: ['mobile order', 'app ordering', 'app order', 'mobile food order'],
+  },
+  {
+    id: 'food-court',
+    name: 'Food Court',
+    shortDefinition: 'A large shared dining area with multiple quick-service counters offering different cuisines under one roof.',
+    definition:
+      'A food court is a communal dining space containing multiple individual quick-service counters or kiosks, each offering different cuisines or menu concepts, sharing a common seating area. In theme parks, food courts are typically the highest-capacity dining venues, designed to handle the volume of the midday dining rush. They allow different members of a group to order from different outlets and still sit together. Theming varies: Disney and Universal often integrate food courts into their land theming, while other parks operate them as purely functional spaces near entrance plazas or high-traffic areas. Food courts are generally the most affordable in-park dining option and do not require advance reservations.',
+    relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
+    aliases: ['food hall', 'dining court', 'food area', 'Foodcourt', 'Gastronomiehof'],
+  },
+  {
+    id: 'capacity-closure',
+    name: 'Capacity Closure',
+    shortDefinition: 'When a park stops admitting new guests because its maximum safe attendance has been reached.',
+    definition:
+      "A capacity closure (also called a park sellout or capacity cap) occurs when a theme park reaches its maximum permitted or operationally safe attendance figure and temporarily stops selling day tickets or admitting new guests at the gate. Parks manage capacity through a combination of timed entry reservations, real-time attendance monitoring, and temporary gate closures. Annual passholders at some parks may be blocked from admission on capacity days; others use pre-sold reservation systems that prevent overcrowding before it starts. Capacity closures are most common during school holiday peaks, fireworks nights, and special event evenings. Some parks communicate real-time admission status via their apps; others provide limited advance warning. Checking a park's social media and app on the morning of a planned visit can help guests avoid an unexpected closure.",
+    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    aliases: ['park sellout', 'park full', 'capacity cap', 'park sold out', 'Park ausverkauft', 'sold out day'],
   },
 ];
 

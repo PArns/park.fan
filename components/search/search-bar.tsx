@@ -95,9 +95,9 @@ export function SearchCommand({
       if (!response.ok) throw new Error('Search failed');
       const data = (await response.json()) as SearchResult;
 
-      // Track no results
+      // Track no results (no query text for privacy — only length)
       if (data.results.length === 0) {
-        trackSearchNoResults({ query: debouncedQuery, queryLength: debouncedQuery.length });
+        trackSearchNoResults({ queryLength: debouncedQuery.length });
       }
 
       return data;
@@ -626,6 +626,12 @@ export function SearchCommand({
                       value={`${item.name} glossary`}
                       onSelect={() => {
                         handleOpenChange(false);
+                        trackSearchResultClicked({
+                          resultType: 'glossary',
+                          term_id: item.id,
+                          hasQuery: query.trim().length > 0,
+                          queryLength: query.trim().length,
+                        });
                         router.push(`/${seg}/${item.slug}` as '/parks/europe');
                       }}
                       className="flex cursor-pointer items-center gap-4"
@@ -718,6 +724,12 @@ export function SearchCommand({
                             value={`${item.name} glossary`}
                             onSelect={() => {
                               handleOpenChange(false);
+                              trackSearchResultClicked({
+                                resultType: 'glossary',
+                                term_id: item.id,
+                                hasQuery: query.trim().length > 0,
+                                queryLength: query.trim().length,
+                              });
                               router.push(`/${seg}/${item.slug}` as '/parks/europe');
                             }}
                             className="flex cursor-pointer items-center gap-4"
