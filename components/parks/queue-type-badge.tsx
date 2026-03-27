@@ -1,5 +1,5 @@
 import { User, Zap, Ticket } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { QueueDataItem } from '@/lib/api/types';
@@ -20,10 +20,12 @@ const colorPaid =
 
 interface QueueTypeBadgeProps {
   queue: QueueDataItem;
+  timezone?: string;
 }
 
-export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
+export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
   const t = useTranslations('attractions');
+  const locale = useLocale();
 
   let Icon = Ticket;
   let label = '';
@@ -74,16 +76,16 @@ export function QueueTypeBadge({ queue }: QueueTypeBadgeProps) {
         'returnStart' in queue &&
         queue.returnStart
       ) {
-        const start = new Date(queue.returnStart).toLocaleTimeString([], {
+        const timeFormat: Intl.DateTimeFormatOptions = {
           hour: '2-digit',
           minute: '2-digit',
-        });
+          hour12: locale === 'en',
+          ...(timezone ? { timeZone: timezone } : {}),
+        };
+        const start = new Date(queue.returnStart).toLocaleTimeString(locale, timeFormat);
         const end =
           'returnEnd' in queue && queue.returnEnd
-            ? new Date(queue.returnEnd).toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-              })
+            ? new Date(queue.returnEnd).toLocaleTimeString(locale, timeFormat)
             : '';
         label = t('queue.details.return', { start, end });
       } else {

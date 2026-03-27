@@ -24,6 +24,7 @@ interface AttractionCardProps {
   backgroundImage?: string | null; // Optional background image (for favorites)
   distance?: number; // Optional distance (for favorites)
   showParkName?: boolean; // Show park name (for favorites section on homepage)
+  timezone?: string;
 }
 
 function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
@@ -88,6 +89,7 @@ export function AttractionCard({
   backgroundImage: propBackgroundImage,
   distance,
   showParkName = false, // Default: don't show park name (for park detail pages)
+  timezone,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
@@ -95,6 +97,8 @@ export function AttractionCard({
   const status = getStatus(attraction, parkStatus);
   // If park is closed, force wait time to null
   const waitTime = parkStatus && parkStatus !== 'OPERATING' ? null : getWaitTime(attraction);
+  const effectiveTimezone =
+    timezone ?? ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
 
   const crowdLevel = getCrowdLevel(attraction);
   const href = getHref(attraction, parkPath);
@@ -196,6 +200,7 @@ export function AttractionCard({
                       <QueueTypeBadge
                         key={`${queue.queueType}-${i}`}
                         queue={queue as import('@/lib/api/types').QueueDataItem}
+                        timezone={effectiveTimezone}
                       />
                     ))}
                 </div>
