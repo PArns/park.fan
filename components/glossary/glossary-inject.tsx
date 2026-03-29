@@ -54,6 +54,10 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
     const matched = match[0];
     const entry = entries.find((e) => e.pattern.toLowerCase() === matched.toLowerCase());
     if (!entry || used.has(entry.term.id)) continue;
+
+    // Short patterns (≤ 4 chars) must match exactly — avoids matching common words
+    // as acronym aliases (e.g. alias "DAS" case-insensitively matching article "das")
+    if (entry.pattern.length <= 4 && entry.pattern !== matched) continue;
     used.add(entry.term.id);
 
     if (match.index > lastIndex) {

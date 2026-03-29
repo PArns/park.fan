@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HERO_IMAGES } from '@/lib/hero-images';
 
@@ -17,47 +17,23 @@ interface RandomHeroImageProps {
 
 export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  // When the image is already in browser cache we skip the fade animation entirely.
-  const [skipFade, setSkipFade] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (imageSrc) return;
     const timer = setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
-      setRandomImage(HERO_IMAGES[randomIndex]);
+      setRandomImage(HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)]);
     }, 0);
     return () => clearTimeout(timer);
   }, [imageSrc]);
 
   const finalImage = imageSrc || randomImage;
-
-  // After the <img> element mounts (or finalImage changes), check whether the browser
-  // already has the image in cache. If so, `complete` is true and onLoad won't fire —
-  // we mark it loaded immediately without playing the fade-in transition.
-  useEffect(() => {
-    // Read DOM synchronously: if the image is already in browser cache,
-    // `complete` is true and onLoad won't fire — skip the fade-in animation.
-    /* eslint-disable react-hooks/set-state-in-effect */
-    if (imgRef.current?.complete) {
-      setSkipFade(true);
-      setIsLoaded(true);
-    }
-    /* eslint-enable react-hooks/set-state-in-effect */
-  }, [finalImage]);
-
   const isServerImage = !!imageSrc;
 
-  return (
-    <>
-      {/*
-       * Blurred brand-gradient backdrop – always mounted, crossfades OUT as the real image fades IN.
-       * Kept as a separate div so the blur is never hidden by the image's own opacity-0 state.
-       * scale(1.05) prevents the blur filter from leaving a visible hard edge.
-       */}
+  // While the client-side random image hasn't been selected yet, show the brand blur
+  if (!finalImage) {
+    return (
       <div
-        className={`absolute inset-0 ${isLoaded ? 'opacity-0' : 'opacity-100'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
+        className="absolute inset-0"
         style={{
           backgroundImage: `url("${HERO_BLUR_DATA_URL}")`,
           backgroundSize: 'cover',
@@ -67,25 +43,31 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
         }}
         aria-hidden="true"
       />
+    );
+  }
 
-      {finalImage && (
-        <Image
-          ref={imgRef}
-          src={finalImage}
-          alt="Park Background"
-          fill
-          priority={isServerImage}
-          fetchPriority={isServerImage ? 'high' : undefined}
-          quality={85}
-          className={`object-cover ${noAnimation ? '' : 'will-change-transform'} ${isLoaded ? 'opacity-90' : 'opacity-0'} ${skipFade ? '' : 'transition-opacity duration-300'}`}
-          style={
-            noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
-          }
-          onLoad={() => setIsLoaded(true)}
-          sizes="100vw"
-        />
-      )}
-    </>
+  return (
+    /*
+     * placeholder="blur" keeps the image visible (as blurred brand gradient) from the very first
+     * paint — LCP candidates require opacity > 0, so the previous opacity-0 → onLoad → setState
+     * pattern delayed LCP by the full React re-render + CSS transition cycle.
+     * Next.js handles the blur→sharp transition natively without extra state.
+     */
+    <Image
+      src={finalImage}
+      alt="Park Background"
+      fill
+      priority={isServerImage}
+      fetchPriority={isServerImage ? 'high' : undefined}
+      placeholder="blur"
+      blurDataURL={HERO_BLUR_DATA_URL}
+      quality={85}
+      className={`object-cover opacity-90 ${noAnimation ? '' : 'will-change-transform'}`}
+      style={
+        noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
+      }
+      sizes="100vw"
+    />
   );
 }
 

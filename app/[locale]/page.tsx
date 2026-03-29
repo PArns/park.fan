@@ -62,7 +62,7 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
-export const revalidate = 300;
+export const revalidate = 3600;
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;

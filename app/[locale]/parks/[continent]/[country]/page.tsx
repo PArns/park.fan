@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   };
 }
 
-export const revalidate = 300; // 5 minutes (matches API cache for live park stats)
+export const revalidate = 3600; // 1 hour — live data via React Query on client
 
 export default async function CountryPage({ params }: CountryPageProps) {
   const { locale, continent, country } = await params;

@@ -126,7 +126,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 300; // 5 minutes (matches API cache for live wait times)
+export const revalidate = 3600; // 1 hour — live data via React Query on client
 
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;

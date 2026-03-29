@@ -434,7 +434,13 @@ const translations: GlossaryTermTranslation[] = [
       "Gerstlauer Amusement Rides GmbH est un fabricant allemand de montagnes russes basé à Münsterhausen, en Bavière. Fondée en 1946 comme entreprise de métallurgie, elle s'est lancée dans les attractions foraines dans les années 1980 et a bâti sa réputation mondiale avec le modèle Euro-Fighter — un coaster compact à lancement électrique célèbre pour sa descente initiale au-delà de la verticale (97 degrés). Les Euro-Fighters peuvent être installés dans des espaces réduits, ce qui les rend attrayants pour les parcs urbains et les petits sites ; citons Rage à Adventure Island et Speed à Oakwood. Gerstlauer produit également le modèle Infinity Coaster, des spinning coasters et le SkyRoller, un coaster rotatif où les passagers contrôlent leur propre retournement. Les enthousiastes apprécient les montagnes russes Gerstlauer pour leur intensité malgré leur faible encombrement.",
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: [
+      'euro-fighter',
+      'spinning-coaster',
+      'xtreme-spinning-coaster',
+      'b-and-m',
+      'intamin',
+    ],
   },
   {
     id: 'schwarzkopf',
@@ -1254,7 +1260,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'zamperla',
     name: 'Zamperla',
     shortDefinition:
-      'Fabricant italien avec l\'un des plus grands portefeuilles de coasters familiaux et de manèges au monde — plus de 250 coasters installés.',
+      "Fabricant italien avec l'un des plus grands portefeuilles de coasters familiaux et de manèges au monde — plus de 250 coasters installés.",
     definition:
       "Zamperla (fondé en 1966, Altavilla Vicentina, Italie) est l'un des fabricants d'attractions les plus prolifiques au monde. Là où Intamin, B&M et Mack visent les grandes installations, Zamperla mise sur le volume et l'accessibilité — leurs Family Coaster, Mini Coaster, Twister et Disk'O Coaster sont des incontournables des parcs de taille moyenne et des complexes touristiques.\n\nL'empreinte au sol compacte et les faibles exigences de taille rendent les attractions Zamperla particulièrement courantes dans les parcs urbains européens, les complexes hôteliers et les installations intérieures. L'entreprise a également construit Thunderbolt à Coney Island (New York).",
     aliases: ['Zamperla rides', 'Antonio Zamperla'],
@@ -1391,27 +1397,30 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'flat-ride',
     name: 'Attraction à plat',
-    shortDefinition: 'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
+    shortDefinition:
+      'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      'Un flat ride est une catégorie d\'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives. Contrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d\'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l\'épine dorsale de l\'offre familiale et enfantine d\'un parc.',
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives. Contrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine', 'flat rides'],
   },
   {
     id: 'water-ride',
     name: 'Attraction aquatique',
-    shortDefinition: 'Attraction où les visiteurs voyagent dans des embarcations à travers l\'eau, en se mouillant.',
+    shortDefinition:
+      "Attraction où les visiteurs voyagent dans des embarcations à travers l'eau, en se mouillant.",
     definition:
-      'Une attraction aquatique est toute attraction où l\'eau est un élément central de l\'expérience : soit les véhicules évoluent dans un canal, soit l\'eau est utilisée comme effet délibéré. Les trois types les plus courants sont : les toboggans aquatiques (bateaux parcourant un canal avec une descente finale), les rapides (radeaux circulaires dérivant dans des rapides artificiels) et les batailles d\'eau (canons à eau entre visiteurs). Les attractions aquatiques ont généralement peu de restrictions de taille et séduisent un public très large. Par forte chaleur estivale, elles peuvent générer des files d\'attente extrêmement longues.',
+      "Une attraction aquatique est toute attraction où l'eau est un élément central de l'expérience : soit les véhicules évoluent dans un canal, soit l'eau est utilisée comme effet délibéré. Les trois types les plus courants sont : les toboggans aquatiques (bateaux parcourant un canal avec une descente finale), les rapides (radeaux circulaires dérivant dans des rapides artificiels) et les batailles d'eau (canons à eau entre visiteurs). Les attractions aquatiques ont généralement peu de restrictions de taille et séduisent un public très large. Par forte chaleur estivale, elles peuvent générer des files d'attente extrêmement longues.",
     relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
-    aliases: ['attraction d\'eau', 'ride aquatique', 'water ride'],
+    aliases: ["attraction d'eau", 'ride aquatique', 'water ride'],
   },
   {
     id: 'live-show',
     name: 'Spectacle vivant',
-    shortDefinition: 'Représentation programmée mettant en scène des artistes, de la musique, des cascades ou des personnages.',
+    shortDefinition:
+      'Représentation programmée mettant en scène des artistes, de la musique, des cascades ou des personnages.',
     definition:
-      'Un spectacle vivant est une animation programmée à heure fixe, jouée par des artistes en chair et en os – à distinguer d\'une attraction mécanique ou d\'une exposition fixe. Les lieux de représentation vont de l\'amphithéâtre en plein air à la salle fermée en passant par les espaces de rue. Le spectre va des productions scéniques façon Broadway et des shows de cascades aux spectacles de personnages, en passant par les expériences 4D avec éléments live et les shows laser ou pyrotechniques. Contrairement aux attractions, les spectacles vivants ont des horaires fixes et une capacité limitée par représentation. Ils constituent une bonne stratégie de pause pendant les pics d\'attente de la mi-journée.',
+      "Un spectacle vivant est une animation programmée à heure fixe, jouée par des artistes en chair et en os – à distinguer d'une attraction mécanique ou d'une exposition fixe. Les lieux de représentation vont de l'amphithéâtre en plein air à la salle fermée en passant par les espaces de rue. Le spectre va des productions scéniques façon Broadway et des shows de cascades aux spectacles de personnages, en passant par les expériences 4D avec éléments live et les shows laser ou pyrotechniques. Contrairement aux attractions, les spectacles vivants ont des horaires fixes et une capacité limitée par représentation. Ils constituent une bonne stratégie de pause pendant les pics d'attente de la mi-journée.",
     relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
     aliases: ['show', 'spectacle', 'show de cascades', 'animation live', 'live show'],
   },
@@ -1461,90 +1470,131 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'drop-tower',
     name: 'Tour de chute',
-    shortDefinition: 'Attraction en forme de tour qui élève les visiteurs en hauteur avant de les lâcher en chute libre.',
+    shortDefinition:
+      'Attraction en forme de tour qui élève les visiteurs en hauteur avant de les lâcher en chute libre.',
     definition:
-      'Une tour de chute (ou free-fall tower) est une attraction où les visiteurs sont hissés dans une nacelle ou sur des sièges individuels autour d\'une tour centrale, puis relâchés pour plonger rapidement vers le sol. La descente peut être une quasi-chute libre (approchant l\'apesanteur), freinée, ou même combinée avec un éjection vers le haut. Une phase de décélération progressive amortit l\'arrivée au bas. Les variantes incluent les tours rotatives, les modèles multi-directionnels et les versions hybrides avec éjection. Les tours de chute offrent des sensations intenses sur une emprise réduite ; parmi les fabricants notables : Intamin, Mondial et S&S Worldwide.',
+      "Une tour de chute (ou free-fall tower) est une attraction où les visiteurs sont hissés dans une nacelle ou sur des sièges individuels autour d'une tour centrale, puis relâchés pour plonger rapidement vers le sol. La descente peut être une quasi-chute libre (approchant l'apesanteur), freinée, ou même combinée avec un éjection vers le haut. Une phase de décélération progressive amortit l'arrivée au bas. Les variantes incluent les tours rotatives, les modèles multi-directionnels et les versions hybrides avec éjection. Les tours de chute offrent des sensations intenses sur une emprise réduite ; parmi les fabricants notables : Intamin, Mondial et S&S Worldwide.",
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
     aliases: ['free fall', 'chute libre', 'tour de chute libre', 'drop ride', 'Freifallturm'],
   },
   {
     id: 'log-flume',
     name: 'Toboggan aquatique',
-    shortDefinition: 'Attraction sur canal d\'eau où des bateaux-troncs descendent une piste et terminent dans une grande éclaboussure.',
+    shortDefinition:
+      "Attraction sur canal d'eau où des bateaux-troncs descendent une piste et terminent dans une grande éclaboussure.",
     definition:
-      'Un toboggan aquatique (aussi appelé log flume ou rivière en rondins) est une attraction aquatique où les visiteurs prennent place dans des embarcations en forme de tronc d\'arbre qui glissent le long d\'un canal, naviguant des sections plates avant une descente finale en piqué qui garantit une bonne éclaboussure. Apparus dans les années 1960, les toboggans aquatiques sont devenus un incontournable des parcs du monde entier, appréciés pour leur accessibilité familiale, leur débit modéré et leur attrait estival. Parmi les exemples européens notables : Poseidon à Europa-Park et de nombreuses installations de type Wildwasserbahn dans les parcs germanophones.',
+      "Un toboggan aquatique (aussi appelé log flume ou rivière en rondins) est une attraction aquatique où les visiteurs prennent place dans des embarcations en forme de tronc d'arbre qui glissent le long d'un canal, naviguant des sections plates avant une descente finale en piqué qui garantit une bonne éclaboussure. Apparus dans les années 1960, les toboggans aquatiques sont devenus un incontournable des parcs du monde entier, appréciés pour leur accessibilité familiale, leur débit modéré et leur attrait estival. Parmi les exemples européens notables : Poseidon à Europa-Park et de nombreuses installations de type Wildwasserbahn dans les parcs germanophones.",
     relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
-    aliases: ['log flume', 'rivière de troncs', 'flume ride', 'Wildwasserbahn', 'descente en bûche'],
+    aliases: [
+      'log flume',
+      'rivière de troncs',
+      'flume ride',
+      'Wildwasserbahn',
+      'descente en bûche',
+    ],
   },
   {
     id: 'river-rapids',
     name: 'Rapides',
-    shortDefinition: 'Attraction en radeau circulaire dérivant dans des rapides artificiels où les visiteurs risquent d\'être trempés.',
+    shortDefinition:
+      "Attraction en radeau circulaire dérivant dans des rapides artificiels où les visiteurs risquent d'être trempés.",
     definition:
-      'Les rapides (ou white-water ride) font prendre place aux visiteurs dans des radeaux circulaires en PVC ou en polyester qui dérivent et tournent sur un canal artificiel imitant des rapides. Comme le radeau tourne librement, chaque trajet est imprévisible : selon la position à chaque élément d\'eau, certains riders sont complètement trempés, d\'autres restent relativement secs. Les rapides ont généralement une forte capacité horaire, une grande accessibilité familiale et peu de restrictions de taille. Ils sont particulièrement populaires lors des fortes chaleurs. Parmi les exemples européens : les Wildwasser de Phantasialand et diverses installations à Efteling, Europa-Park et Thorpe Park.',
+      "Les rapides (ou white-water ride) font prendre place aux visiteurs dans des radeaux circulaires en PVC ou en polyester qui dérivent et tournent sur un canal artificiel imitant des rapides. Comme le radeau tourne librement, chaque trajet est imprévisible : selon la position à chaque élément d'eau, certains riders sont complètement trempés, d'autres restent relativement secs. Les rapides ont généralement une forte capacité horaire, une grande accessibilité familiale et peu de restrictions de taille. Ils sont particulièrement populaires lors des fortes chaleurs. Parmi les exemples européens : les Wildwasser de Phantasialand et diverses installations à Efteling, Europa-Park et Thorpe Park.",
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
-    aliases: ['rapides de rivière', 'white-water ride', 'river rapids', 'raft ride', 'Wildwasserfahrt'],
+    aliases: [
+      'rapides de rivière',
+      'white-water ride',
+      'river rapids',
+      'raft ride',
+      'Wildwasserfahrt',
+    ],
   },
   {
     id: 'swing-ride',
     name: 'Chaises volantes',
-    shortDefinition: 'Attraction rotative où des sièges suspendus à des chaînes s\'inclinent vers l\'extérieur à mesure que la plate-forme tourne.',
+    shortDefinition:
+      "Attraction rotative où des sièges suspendus à des chaînes s'inclinent vers l'extérieur à mesure que la plate-forme tourne.",
     definition:
-      'Les chaises volantes (aussi appelées wave swinger ou Kettenflieger) sont des attractions rotatives où des sièges suspendus à des chaînes sont accrochés à une structure centrale tournante. À mesure que la structure accélère, la force centrifuge projette les sièges vers l\'extérieur et vers le haut, procurant une sensation de vol. Les chaises volantes comptent parmi les plus anciennes attractions foraines encore en service ; les versions modernes vont du petit manège pour enfants aux gigantesques tours à chaînes (starflyers) qui hissent les passagers à de grandes hauteurs. On les retrouve dans pratiquement tous les parcs d\'attractions et fêtes foraines du monde.',
+      "Les chaises volantes (aussi appelées wave swinger ou Kettenflieger) sont des attractions rotatives où des sièges suspendus à des chaînes sont accrochés à une structure centrale tournante. À mesure que la structure accélère, la force centrifuge projette les sièges vers l'extérieur et vers le haut, procurant une sensation de vol. Les chaises volantes comptent parmi les plus anciennes attractions foraines encore en service ; les versions modernes vont du petit manège pour enfants aux gigantesques tours à chaînes (starflyers) qui hissent les passagers à de grandes hauteurs. On les retrouve dans pratiquement tous les parcs d'attractions et fêtes foraines du monde.",
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['manège à chaînes', 'wave swinger', 'chaises tournantes', 'Kettenkarussell', 'Chairoplane', 'swing ride'],
+    aliases: [
+      'manège à chaînes',
+      'wave swinger',
+      'chaises tournantes',
+      'Kettenkarussell',
+      'Chairoplane',
+      'swing ride',
+    ],
   },
   {
     id: 'racing-coaster',
     name: 'Montagnes russes en course',
-    shortDefinition: 'Deux voies parallèles de montagnes russes sur lesquelles les trains partent simultanément pour s\'affronter.',
+    shortDefinition:
+      "Deux voies parallèles de montagnes russes sur lesquelles les trains partent simultanément pour s'affronter.",
     definition:
-      'Un racing coaster (montagne russe en course) dispose de deux circuits séparés mais symétriques se déroulant côte à côte, avec des trains lancés simultanément pour que les passagers vivent la sensation de rivaliser avec l\'autre rame. Les voies se croisent ou se frôlent en plusieurs points pour intensifier le suspense. Certains modèles adoptent une configuration Möbius : les deux circuits forment une seule boucle continue et les passagers changent automatiquement de côté d\'un tour à l\'autre. Le concept fonctionne aussi bien en bois qu\'en acier. En Europe, Piraten à Djurs Sommerland et Dwervelwind à Plopsaland en sont des exemples reconnus.',
+      "Un racing coaster (montagne russe en course) dispose de deux circuits séparés mais symétriques se déroulant côte à côte, avec des trains lancés simultanément pour que les passagers vivent la sensation de rivaliser avec l'autre rame. Les voies se croisent ou se frôlent en plusieurs points pour intensifier le suspense. Certains modèles adoptent une configuration Möbius : les deux circuits forment une seule boucle continue et les passagers changent automatiquement de côté d'un tour à l'autre. Le concept fonctionne aussi bien en bois qu'en acier. En Europe, Piraten à Djurs Sommerland et Dwervelwind à Plopsaland en sont des exemples reconnus.",
     relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
-    aliases: ['dual track coaster', 'twin coaster', 'coaster de course', 'dueling coaster', 'racing coaster'],
+    aliases: [
+      'dual track coaster',
+      'twin coaster',
+      'coaster de course',
+      'dueling coaster',
+      'racing coaster',
+    ],
   },
   {
     id: 'high-five',
     name: 'High Five',
-    shortDefinition: 'Élément de montagnes russes où deux trains sur des voies parallèles se frôlent à portée de main.',
+    shortDefinition:
+      'Élément de montagnes russes où deux trains sur des voies parallèles se frôlent à portée de main.',
     definition:
-      'Un High Five est un élément de quasi-collision entre deux trains de montagnes russes circulant sur des voies distinctes mais très rapprochées – parfois à portée de bras – créant une illusion saisissante de collision imminente. Le nom vient de la sensation que les passagers pourraient tendre la main pour « taper dans la paume » des occupants de l\'autre train. L\'élément exige une synchronisation précise des départs pour amener les deux trains au point de croisement au même moment. Les wing coasters et les inverted coasters se prêtent particulièrement bien au High Five, car les sièges en porte-à-faux amplifient l\'effet de frôlement. Duelling Dragons / Dragon Challenge à Universal\'s Islands of Adventure en était un exemple célèbre ; l\'élément se retrouve aujourd\'hui sur plusieurs B&M wing coasters à travers le monde.',
+      "Un High Five est un élément de quasi-collision entre deux trains de montagnes russes circulant sur des voies distinctes mais très rapprochées – parfois à portée de bras – créant une illusion saisissante de collision imminente. Le nom vient de la sensation que les passagers pourraient tendre la main pour « taper dans la paume » des occupants de l'autre train. L'élément exige une synchronisation précise des départs pour amener les deux trains au point de croisement au même moment. Les wing coasters et les inverted coasters se prêtent particulièrement bien au High Five, car les sièges en porte-à-faux amplifient l'effet de frôlement. Duelling Dragons / Dragon Challenge à Universal's Islands of Adventure en était un exemple célèbre ; l'élément se retrouve aujourd'hui sur plusieurs B&M wing coasters à travers le monde.",
     relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
     aliases: ['quasi-collision', 'near miss', 'near-miss element', 'high 5'],
   },
   {
     id: 'dining-reservation',
     name: 'Réservation restaurant',
-    shortDefinition: 'Réservation anticipée pour un restaurant à service complet dans un parc ou un resort.',
+    shortDefinition:
+      'Réservation anticipée pour un restaurant à service complet dans un parc ou un resort.',
     definition:
-      'Une réservation restaurant est une réservation anticipée dans un restaurant à service complet ou à personnages dans un parc d\'attractions, un hôtel de resort ou un complexe de divertissement associé. Dans les parcs Disney, les réservations sont possibles jusqu\'à 60 jours à l\'avance (avec 10 jours supplémentaires pour les clients des hôtels du resort) et sont indispensables pour les établissements les plus prisés : ne pas réserver à temps peut signifier l\'impossibilité de dîner dans ces restaurants lors des périodes de forte fréquentation. Les réservations sont généralement garanties par une carte bancaire ; Disney facture des frais de non-présentation ou d\'annulation tardive. Dans la communauté des passionnés, les réservations en avance sont souvent désignées par le sigle ADR (Advance Dining Reservation).',
+      "Une réservation restaurant est une réservation anticipée dans un restaurant à service complet ou à personnages dans un parc d'attractions, un hôtel de resort ou un complexe de divertissement associé. Dans les parcs Disney, les réservations sont possibles jusqu'à 60 jours à l'avance (avec 10 jours supplémentaires pour les clients des hôtels du resort) et sont indispensables pour les établissements les plus prisés : ne pas réserver à temps peut signifier l'impossibilité de dîner dans ces restaurants lors des périodes de forte fréquentation. Les réservations sont généralement garanties par une carte bancaire ; Disney facture des frais de non-présentation ou d'annulation tardive. Dans la communauté des passionnés, les réservations en avance sont souvent désignées par le sigle ADR (Advance Dining Reservation).",
     relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
-    aliases: ['ADR', 'advance dining reservation', 'réservation de table', 'dining reservation', 'résa restaurant'],
+    aliases: [
+      'ADR',
+      'advance dining reservation',
+      'réservation de table',
+      'dining reservation',
+      'résa restaurant',
+    ],
   },
   {
     id: 'mobile-ordering',
     name: 'Commande mobile',
-    shortDefinition: 'Fonction de l\'appli du parc permettant de commander et payer ses repas à l\'avance sans faire la queue au comptoir.',
+    shortDefinition:
+      "Fonction de l'appli du parc permettant de commander et payer ses repas à l'avance sans faire la queue au comptoir.",
     definition:
-      'La commande mobile permet aux visiteurs de parcourir le menu d\'un restaurant, de passer et régler leur commande, puis de sélectionner un créneau de retrait via l\'application officielle du parc – sans faire la queue au comptoir. Disney a popularisé le système dans ses restaurants à service rapide ; Universal, Six Flags, Merlin Parks et de nombreux autres opérateurs ont depuis déployé leurs propres versions. Lorsque le créneau sélectionné arrive, les visiteurs reçoivent une notification et récupèrent leur commande au comptoir dédié. La commande mobile permet de gagner un temps précieux, surtout lors du pic du déjeuner. Elle nécessite un smartphone chargé et une connexion suffisante dans le parc, ce qui n\'est pas toujours garanti.',
+      "La commande mobile permet aux visiteurs de parcourir le menu d'un restaurant, de passer et régler leur commande, puis de sélectionner un créneau de retrait via l'application officielle du parc – sans faire la queue au comptoir. Disney a popularisé le système dans ses restaurants à service rapide ; Universal, Six Flags, Merlin Parks et de nombreux autres opérateurs ont depuis déployé leurs propres versions. Lorsque le créneau sélectionné arrive, les visiteurs reçoivent une notification et récupèrent leur commande au comptoir dédié. La commande mobile permet de gagner un temps précieux, surtout lors du pic du déjeuner. Elle nécessite un smartphone chargé et une connexion suffisante dans le parc, ce qui n'est pas toujours garanti.",
     relatedTermIds: ['quick-service', 'dining-reservation'],
     aliases: ['mobile order', 'commande sur appli', 'commande en ligne', 'mobile ordering'],
   },
   {
     id: 'food-court',
     name: 'Food court',
-    shortDefinition: 'Grand espace de restauration partagé regroupant plusieurs comptoirs de restauration rapide sous un même toit.',
+    shortDefinition:
+      'Grand espace de restauration partagé regroupant plusieurs comptoirs de restauration rapide sous un même toit.',
     definition:
-      'Un food court est un espace de restauration commun regroupant plusieurs comptoirs ou kiosques de restauration rapide proposant des cuisines différentes, autour d\'une salle commune. Dans les parcs d\'attractions, les food courts sont généralement les espaces de restauration à plus forte capacité, conçus pour absorber le flux du déjeuner. Différents membres d\'un groupe peuvent commander à différents comptoirs et se retrouver ensemble. Le niveau de thématisation varie : Disney et Universal intègrent souvent les food courts à l\'univers de leurs terres, tandis que d\'autres parcs les exploitent comme de simples espaces fonctionnels près des entrées. Les food courts sont en règle générale l\'option de restauration la plus abordable au sein d\'un resort.',
+      "Un food court est un espace de restauration commun regroupant plusieurs comptoirs ou kiosques de restauration rapide proposant des cuisines différentes, autour d'une salle commune. Dans les parcs d'attractions, les food courts sont généralement les espaces de restauration à plus forte capacité, conçus pour absorber le flux du déjeuner. Différents membres d'un groupe peuvent commander à différents comptoirs et se retrouver ensemble. Le niveau de thématisation varie : Disney et Universal intègrent souvent les food courts à l'univers de leurs terres, tandis que d'autres parcs les exploitent comme de simples espaces fonctionnels près des entrées. Les food courts sont en règle générale l'option de restauration la plus abordable au sein d'un resort.",
     relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
     aliases: ['espace restauration', 'halle alimentaire', 'food court', 'zone de restauration'],
   },
   {
     id: 'capacity-closure',
     name: 'Fermeture pour capacité maximale',
-    shortDefinition: 'Situation où un parc cesse d\'admettre de nouveaux visiteurs car sa fréquentation maximale est atteinte.',
+    shortDefinition:
+      "Situation où un parc cesse d'admettre de nouveaux visiteurs car sa fréquentation maximale est atteinte.",
     definition:
-      'Une fermeture pour capacité maximale (aussi appelée parc complet ou plafond de fréquentation) survient quand un parc d\'attractions atteint son seuil d\'affluence maximum autorisé ou opérationnellement sûr et cesse temporairement de vendre des billets journée ou d\'admettre de nouveaux visiteurs. Les parcs gèrent la capacité par des réservations d\'entrée horaires, une surveillance en temps réel de la fréquentation et des fermetures temporaires d\'entrée. Les détenteurs de pass annuel peuvent être bloqués certains jours selon les conditions du pass ; d\'autres parcs utilisent des systèmes de réservation anticipée pour éviter la surpopulation avant qu\'elle ne survienne. Les fermetures pour capacité sont les plus fréquentes lors des pics de vacances scolaires, des soirées de feux d\'artifice et des événements spéciaux. Consulter l\'appli du parc ou ses réseaux sociaux le matin du jour prévu peut éviter de mauvaises surprises.',
+      "Une fermeture pour capacité maximale (aussi appelée parc complet ou plafond de fréquentation) survient quand un parc d'attractions atteint son seuil d'affluence maximum autorisé ou opérationnellement sûr et cesse temporairement de vendre des billets journée ou d'admettre de nouveaux visiteurs. Les parcs gèrent la capacité par des réservations d'entrée horaires, une surveillance en temps réel de la fréquentation et des fermetures temporaires d'entrée. Les détenteurs de pass annuel peuvent être bloqués certains jours selon les conditions du pass ; d'autres parcs utilisent des systèmes de réservation anticipée pour éviter la surpopulation avant qu'elle ne survienne. Les fermetures pour capacité sont les plus fréquentes lors des pics de vacances scolaires, des soirées de feux d'artifice et des événements spéciaux. Consulter l'appli du parc ou ses réseaux sociaux le matin du jour prévu peut éviter de mauvaises surprises.",
     relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
     aliases: ['parc complet', 'parc plein', 'capacity closure', 'fermeture capacité', 'sold out'],
   },

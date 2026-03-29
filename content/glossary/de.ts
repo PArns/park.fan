@@ -509,7 +509,13 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. 1946 als metallverarbeitendes Unternehmen gegründet, stieg es in den 1980er Jahren in den Attraktionsmarkt ein und baute seinen Ruf mit dem Euro-Fighter-Modell aus — einem kompakten Elektro-Launch-Coaster mit berühmtem 97-Grad-Abfall über die Vertikale. Euro-Fighter lassen sich auf engem Raum installieren und sind damit attraktiv für Stadtparks und kleinere Veranstaltungsorte; Beispiele sind Rage im Adventure Island und Speed im Oakwood. Gerstlauer produziert außerdem das Infinity-Coaster-Modell, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste ihr eigenes Drehen steuern können. In der Enthusiasten-Szene werden Gerstlauer-Bahnen für ihre Intensität auf kleinem Footprint geschätzt.',
     aliases: ['Gerstlauer Rides'],
 
-    relatedTermIds: ['euro-fighter', 'spinning-coaster', 'xtreme-spinning-coaster', 'b-and-m', 'intamin'],
+    relatedTermIds: [
+      'euro-fighter',
+      'spinning-coaster',
+      'xtreme-spinning-coaster',
+      'b-and-m',
+      'intamin',
+    ],
   },
   {
     id: 'schwarzkopf',
@@ -1233,7 +1239,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Amerikanischer Hersteller, spezialisiert auf LSM/LIM-Katapultachterbahnen — in Europa bekannt durch Sky Scream im Holiday Park.',
     definition:
-      'Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid\'s Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier\'s LSM-Technologie und zeigt die Vielseitigkeit des Systems.',
+      "Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid's Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier's LSM-Technologie und zeigt die Vielseitigkeit des Systems.",
     aliases: ['Premier'],
     relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
   },
@@ -1391,7 +1397,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'flat-ride',
     name: 'Flat Ride',
-    shortDefinition: 'Bodennahe Attraktion, die dreht, schwingt oder rotiert – ohne klassische Achterbahnstrecke.',
+    shortDefinition:
+      'Bodennahe Attraktion, die dreht, schwingt oder rotiert – ohne klassische Achterbahnstrecke.',
     definition:
       'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Frisbees, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen. Im Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
@@ -1400,7 +1407,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'water-ride',
     name: 'Wasserfahrt',
-    shortDefinition: 'Attraktion, bei der Gäste in Booten oder Fahrzeugen durch Wasser fahren und dabei nass werden können.',
+    shortDefinition:
+      'Attraktion, bei der Gäste in Booten oder Fahrzeugen durch Wasser fahren und dabei nass werden können.',
     definition:
       'Als Wasserfahrt bezeichnet man Attraktionen, bei denen Wasser ein zentraler Bestandteil des Erlebnisses ist – entweder fahren die Fahrzeuge durch einen Wasserkanal, oder Wasser wird als gezielter Effekt eingesetzt. Die drei häufigsten Typen sind: Wildwasserbahnen (Bootsfahrten durch Kanäle mit Steilabfall), Wildwasser-Rafting-Bahnen (kreisförmige Boote durch künstliche Stromschnellen) und Spritz-Battles (Gäste beschießen sich gegenseitig mit Wasserkanonen). Wasserfahrten haben in der Regel niedrige Mindestgrößenanforderungen und eine sehr breite Zielgruppe. An heißen Sommertagen können die Wartezeiten extrem lang werden.',
     relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
@@ -1409,7 +1417,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'live-show',
     name: 'Live-Show',
-    shortDefinition: 'Geplante Aufführung mit lebenden Darstellern, Musik, Stunts oder Charakteren in einem Vorführungsbereich.',
+    shortDefinition:
+      'Geplante Aufführung mit lebenden Darstellern, Musik, Stunts oder Charakteren in einem Vorführungsbereich.',
     definition:
       'Eine Live-Show ist ein zu festen Zeiten stattfindendes Unterhaltungsprogramm, das von menschlichen Cast-Mitgliedern aufgeführt wird – im Gegensatz zu Fahrattraktionen oder festen Exponaten. Spielorte sind offene Amphitheater, geschlossene Theater oder Straßenauftrittsflächen. Das Spektrum reicht von Broadway-ähnlichen Bühnenshows und Stuntshows über Charakter-Paraden und 4D-Erlebnisse mit Live-Elementen bis hin zu Laser- und Feuerwerksshows. Im Gegensatz zu Attraktionen finden Live-Shows zu festen Uhrzeiten statt und haben begrenzte Zuschauerkapazitäten. Strategisch sind Shows eine willkommene Pause in ruhigeren Zeiten – insbesondere mittags, wenn die Wartezeiten an Attraktionen am längsten sind.',
     relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
@@ -1457,7 +1466,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'drop-tower',
     name: 'Drop Tower',
-    shortDefinition: 'Turmattraktion, die Gäste in die Höhe befördert und in einem rasanten freien Fall absinken lässt.',
+    shortDefinition:
+      'Turmattraktion, die Gäste in die Höhe befördert und in einem rasanten freien Fall absinken lässt.',
     definition:
       'Ein Drop Tower (auch Freifallturm oder Free-Fall-Tower) ist eine Attraktion, bei der Fahrgäste in einer Gondel oder einzelnen Sitzen rund um einen zentralen Turmaufbau in die Höhe gefahren und dann in einem raschen Sturz nach unten entlassen werden. Der Absturz kann nahezu schwerelos (echter freier Fall), gebremst oder in Kombination mit einem Katapultstart nach oben erfolgen. Am unteren Ende bremst das System die Gondel sanft ab. Varianten umfassen rotierende Drop Towers, Mehrachsen-Modelle und Hybrid-Versionen. Drop Towers bieten intensive Erlebnisse auf kleiner Grundfläche und sind weltweit verbreitet. Bekannte Hersteller sind Intamin, Mondial und S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
@@ -1466,7 +1476,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'log-flume',
     name: 'Wildwasserbahn',
-    shortDefinition: 'Wasserkanal-Attraktion, bei der bootförmige Fahrzeuge durch einen Kanal fahren und mit einem Steilabfall enden.',
+    shortDefinition:
+      'Wasserkanal-Attraktion, bei der bootförmige Fahrzeuge durch einen Kanal fahren und mit einem Steilabfall enden.',
     definition:
       'Eine Wildwasserbahn (auch Flossfahrt oder Logflume) ist eine Wasserattraktion, bei der Gäste in bootförmigen Fahrzeugen – traditionell Baumstamm-förmigen Kunststoffbooten – durch einen wasserführenden Kanal gleiten. Nach mehreren ruhigeren Abschnitten folgt ein steiler Abfall, bei dem das Boot in einen Wassertrog eintaucht und Fahrgäste garantiert nass macht. Wildwasserbahnen wurden in den 1960er Jahren eingeführt und sind heute in fast jedem Freizeitpark zu finden. Sie gelten als familienfreundlich, haben moderate Stundendurchsätze und sind klassische Sommerattraktionen. Bekannte europäische Beispiele: Poseidon im Europa-Park sowie zahlreiche Wildwasserbahn-Anlagen in deutschsprachigen Parks.',
     relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
@@ -1475,52 +1486,89 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'river-rapids',
     name: 'Wildwasser-Rafting',
-    shortDefinition: 'Rundboot-Attraktion durch turbulente Wildwasserstrecken, bei der alle Mitfahrer nass werden können.',
+    shortDefinition:
+      'Rundboot-Attraktion durch turbulente Wildwasserstrecken, bei der alle Mitfahrer nass werden können.',
     definition:
       'Eine Wildwasser-Rafting-Bahn (auch Wild-Water-Ride oder River-Rapids-Bahn) befördert Gäste in kreisförmigen aufblasbaren oder Kunststoffbooten durch einen künstlich angelegten Kanal, der Wildwasser-Stromschnellen simuliert. Da das kreisförmige Boot frei auf der Strömung rotiert, ist jede Fahrt unvorhersehbar: Je nach Position des Bootes werden manche Mitfahrer komplett durchnässt, andere bleiben relativ trocken. Wildwasser-Rafting-Bahnen bieten hohen Stundendurchsatz und große Familieneignung bei meist niedrigen Mindestgrößen. Bekannte europäische Beispiele sind die Wildwasser-Attraktionen im Phantasialand sowie Anlagen in Efteling, Europa-Park und Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
-    aliases: ['Wildwasserfahrt', 'Wild Water Ride', 'Rafting-Bahn', 'River Rapids', 'Rundboot-Bahn'],
+    aliases: [
+      'Wildwasserfahrt',
+      'Wild Water Ride',
+      'Rafting-Bahn',
+      'River Rapids',
+      'Rundboot-Bahn',
+    ],
   },
   {
     id: 'swing-ride',
     name: 'Kettenkarussell',
-    shortDefinition: 'Rotierende Attraktion, bei der kettenaufgehängte Sitze beim Drehen nach außen schwingen.',
+    shortDefinition:
+      'Rotierende Attraktion, bei der kettenaufgehängte Sitze beim Drehen nach außen schwingen.',
     definition:
       'Ein Kettenkarussell (auch Kettenflieger oder Wellenflieger) ist eine rotierende Attraktion, bei der Sitze an Ketten von einer zentralen Drehstruktur aufgehängt sind. Beim Drehen werden die Sitze durch die Fliehkraft nach außen und oben geschleudert und vermitteln Fahrgästen das Gefühl des Fliegens. Kettenkarussells gehören zu den ältesten noch verbreiteten Jahrmarktsfahrgeschäften und gehen bis ins frühe 20. Jahrhundert zurück. Moderne Versionen reichen von sanften Kinderkarussells bis hin zu riesigen Kettenturm-Anlagen (Starflyer), die Fahrgäste auf beachtliche Höhen heben. Sie sind in nahezu jedem Freizeitpark und auf Jahrmärkten weltweit anzutreffen.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['Kettenflieger', 'Wellenflieger', 'Hängekarussell', 'Swing Ride', 'Chairoplane', 'Kettenflug'],
+    aliases: [
+      'Kettenflieger',
+      'Wellenflieger',
+      'Hängekarussell',
+      'Swing Ride',
+      'Chairoplane',
+      'Kettenflug',
+    ],
   },
   {
     id: 'racing-coaster',
     name: 'Racing Coaster',
-    shortDefinition: 'Zwei parallele Achterbahn-Strecken, auf denen Züge gleichzeitig starten und Seite an Seite fahren.',
+    shortDefinition:
+      'Zwei parallele Achterbahn-Strecken, auf denen Züge gleichzeitig starten und Seite an Seite fahren.',
     definition:
       'Ein Racing Coaster verfügt über zwei separate, aber spiegelbildliche Achterbahn-Strecken, die parallel zueinander verlaufen. Züge werden gleichzeitig losgeschickt, sodass Fahrgäste das Gefühl haben, gegen den anderen Zug zu rennen. Die Strecken überkreuzen sich oder verlaufen an mehreren Punkten extrem nah aneinander, um die Wettbewerbsspannung zu maximieren. Einige Racing Coaster sind als Möbius-Loop konzipiert: Beide Strecken bilden eine einzige zusammenhängende Schleife, sodass Fahrgäste automatisch die Seite wechseln. Das Format funktioniert sowohl mit Holz- als auch mit Stahlachterbahnen. Bekannte europäische Beispiele sind Piraten im Djurs Sommerland und Dwervelwind im Plopsaland.',
     relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
-    aliases: ['Paarachterbahn', 'Twin Coaster', 'Dueling Coaster', 'Rennachterbahn', 'racing coaster'],
+    aliases: [
+      'Paarachterbahn',
+      'Twin Coaster',
+      'Dueling Coaster',
+      'Rennachterbahn',
+      'racing coaster',
+    ],
   },
   {
     id: 'high-five',
     name: 'High Five',
-    shortDefinition: 'Achterbahn-Element, bei dem zwei Züge auf parallelen Strecken in Armreichweite aneinander vorbeifahren.',
+    shortDefinition:
+      'Achterbahn-Element, bei dem zwei Züge auf parallelen Strecken in Armreichweite aneinander vorbeifahren.',
     definition:
       'Ein High Five ist ein Beinahekollisions-Element bei Achterbahnen, bei dem zwei Züge auf separaten, aber eng benachbarten Strecken in extremer Nähe – manchmal in Armreichweite – aneinander vorbeifahren. Der Name leitet sich von der Empfindung ab, dass Fahrgäste die Insassen des anderen Zuges „abklatschen" könnten. Das Element erfordert präzise Abfahrtssteuerung, um beide Züge zur richtigen Zeit am Kreuzungspunkt zusammenzuführen. Wing Coaster und Inverted Coaster eignen sich besonders gut für High-Five-Elemente, da die außenliegenden Sitze den Nahbereichseffekt verstärken. Duelling Dragons / Dragon Challenge in Universal\'s Islands of Adventure war ein bekanntes frühes Beispiel; das Element findet sich heute an verschiedenen B&M-Wing-Coastern weltweit.',
     relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
-    aliases: ['Beinahe-Kollisions-Element', 'Near Miss', 'Near-Miss-Element', 'high five', 'Nearfly'],
+    aliases: [
+      'Beinahe-Kollisions-Element',
+      'Near Miss',
+      'Near-Miss-Element',
+      'high five',
+      'Nearfly',
+    ],
   },
   {
     id: 'dining-reservation',
     name: 'Tischreservierung',
-    shortDefinition: 'Vorab-Buchung für ein Tischservice-Restaurant in einem Freizeitpark oder Resort.',
+    shortDefinition:
+      'Vorab-Buchung für ein Tischservice-Restaurant in einem Freizeitpark oder Resort.',
     definition:
       'Eine Tischreservierung ist die Vorab-Buchung eines Platzes in einem Tischservice- oder Charakter-Dinner-Restaurant in einem Freizeitpark, Resort-Hotel oder angeschlossenen Unterhaltungskomplex. Bei Disney-Parks sind Reservierungen bis zu 60 Tage im Voraus möglich (für Resort-Hotel-Gäste mit bis zu 10 Tagen Vorsprung) und für die beliebtesten Restaurants praktisch unerlässlich – wer nicht rechtzeitig bucht, findet in Stoßzeiten oft keine Plätze mehr. Reservierungen werden meist mit einer Kreditkarte gesichert; bei Disney gilt eine Stornierungsgebühr bei Nichterscheinen oder zu kurzfristiger Absage. In der Enthusiasten-Community wird die Vorabreservierung häufig mit ADR (Advance Dining Reservation) abgekürzt.',
     relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
-    aliases: ['ADR', 'Advance Dining Reservation', 'Restaurantreservierung', 'dining reservation', 'Tischbuchung'],
+    aliases: [
+      'ADR',
+      'Advance Dining Reservation',
+      'Restaurantreservierung',
+      'dining reservation',
+      'Tischbuchung',
+    ],
   },
   {
     id: 'mobile-ordering',
     name: 'Mobile Bestellung',
-    shortDefinition: 'App-Funktion, mit der Gäste Essen vorbestellen und bezahlen – ohne an der Theke Schlange stehen zu müssen.',
+    shortDefinition:
+      'App-Funktion, mit der Gäste Essen vorbestellen und bezahlen – ohne an der Theke Schlange stehen zu müssen.',
     definition:
       'Die mobile Bestellung ermöglicht es Gästen, über die offizielle Park-App ein Restaurantmenü zu durchsuchen, eine Bestellung aufzugeben, zu bezahlen und ein Abholzeitfenster zu wählen – ohne an der Theke anstehen zu müssen. Disney hat das System in seinen Schnellrestaurants eingeführt; Universal, Six Flags, Merlin-Parks und viele weitere Betreiber haben inzwischen eigene Varianten entwickelt. Wenn das gewählte Zeitfenster erreicht ist, erhalten Gäste eine App-Benachrichtigung und holen ihre Bestellung am Mobile-Order-Abholschalter ab. Besonders zu Mittagsstoßzeiten spart die mobile Bestellung erheblich Zeit. Voraussetzung sind ein geladenes Smartphone und ausreichende Netzabdeckung im Park.',
     relatedTermIds: ['quick-service', 'dining-reservation'],
@@ -1529,7 +1577,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'food-court',
     name: 'Food Court',
-    shortDefinition: 'Großer gemeinsamer Essbereich mit mehreren Schnellrestaurant-Theken verschiedener Küchen unter einem Dach.',
+    shortDefinition:
+      'Großer gemeinsamer Essbereich mit mehreren Schnellrestaurant-Theken verschiedener Küchen unter einem Dach.',
     definition:
       'Ein Food Court ist ein gemeinsamer Gastronomiebereich mit mehreren eigenständigen Schnellrestaurant-Theken oder Imbissständen, die verschiedene Küchen anbieten und einen gemeinsamen Sitzbereich teilen. In Freizeitparks sind Food Courts in der Regel die gastronomiestärksten Bereiche und darauf ausgelegt, das mittägliche Besuchervolumen zu bewältigen. Verschiedene Mitglieder einer Gruppe können an unterschiedlichen Theken bestellen und trotzdem zusammensitzen. Die thematische Gestaltung variiert: Disney und Universal integrieren Food Courts oft in die Landthematik, während andere Parks sie als rein funktionale Rastbereiche nahe Eingangsbereichen betreiben. Food Courts sind in der Regel die günstigste Verpflegungsoption innerhalb eines Parks.',
     relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
@@ -1538,11 +1587,18 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'capacity-closure',
     name: 'Kapazitätsschließung',
-    shortDefinition: 'Wenn ein Park keine neuen Besucher mehr einlässt, weil die maximale Besucherzahl erreicht wurde.',
+    shortDefinition:
+      'Wenn ein Park keine neuen Besucher mehr einlässt, weil die maximale Besucherzahl erreicht wurde.',
     definition:
       'Eine Kapazitätsschließung (auch Ausverkauf oder Kapazitätsobergrenze) tritt auf, wenn ein Freizeitpark seine maximal zulässige oder betrieblich sichere Besucherzahl erreicht und vorübergehend keine Tagestickets mehr verkauft oder keine neuen Gäste einlässt. Parks steuern die Kapazität über zeitgebundene Eintrittsbuchungen, Echtzeit-Besucherzählung und temporäre Eingangsschließungen. Inhaber von Jahreskarten können an Kapazitätstagen je nach Park-Regelung vom Einlass ausgeschlossen sein; andere Parks nutzen Reservierungssysteme, die Überfüllung bereits im Voraus verhindern. Kapazitätsschließungen sind am häufigsten in Schulferienspitzen, bei Sonderveranstaltungen und an Feiertagen. Ein Blick in die Park-App oder die sozialen Medien am Morgen des Besuchs kann Überraschungen vermeiden.',
     relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
-    aliases: ['Park ausverkauft', 'Kapazitätsgrenze', 'capacity closure', 'Park voll', 'Ausverkauft-Tag'],
+    aliases: [
+      'Park ausverkauft',
+      'Kapazitätsgrenze',
+      'capacity closure',
+      'Park voll',
+      'Ausverkauft-Tag',
+    ],
   },
 ];
 

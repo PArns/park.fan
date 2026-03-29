@@ -98,7 +98,8 @@ export function AttractionCard({
   // If park is closed, force wait time to null
   const waitTime = parkStatus && parkStatus !== 'OPERATING' ? null : getWaitTime(attraction);
   const effectiveTimezone =
-    timezone ?? ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
+    timezone ??
+    ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
 
   const crowdLevel = getCrowdLevel(attraction);
   const href = getHref(attraction, parkPath);

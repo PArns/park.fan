@@ -10,10 +10,7 @@ import type { GlossaryTermWithEnName, GlossaryCategory } from '@/lib/glossary/ty
 import type { Locale } from '@/i18n/config';
 import type { Breadcrumb } from '@/lib/api/types';
 import { cn } from '@/lib/utils';
-import {
-  trackGlossaryCategoryFiltered,
-  trackGlossarySearched,
-} from '@/lib/analytics/umami';
+import { trackGlossaryCategoryFiltered, trackGlossarySearched } from '@/lib/analytics/umami';
 
 interface CategoryGroup {
   category: GlossaryCategory;

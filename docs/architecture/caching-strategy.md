@@ -18,15 +18,15 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | revalidate | API Cache | Strategy                                |
-| ---------- | ---------- | --------- | --------------------------------------- |
-| Homepage   | Dynamic    | 120s      | Uses `cache: 'no-store'` for live stats |
-| Continent  | 3600 (1h)  | 120s      | Geo structure (rarely changes)          |
-| Country    | 300 (5min) | 300s      | Live park stats                         |
-| City       | 300 (5min) | 300s      | Live park stats                         |
-| Park       | 300 (5min) | 300s      | Live wait times                         |
-| Attraction | 300 (5min) | 300s      | Live wait times                         |
-| Search     | Dynamic    | 60s       | Uses `cache: 'no-store'`                |
+| Route      | revalidate | API Cache | Strategy                                           |
+| ---------- | ---------- | --------- | -------------------------------------------------- |
+| Homepage   | 3600 (1h)  | 120s      | Static shell; live stats via React Query on client |
+| Continent  | 3600 (1h)  | 120s      | Geo structure (rarely changes)                     |
+| Country    | 3600 (1h)  | 300s      | Static shell; live park stats via React Query      |
+| City       | 3600 (1h)  | 300s      | Static shell; live park stats via React Query      |
+| Park       | 3600 (1h)  | 300s      | Static shell; live wait times via React Query      |
+| Attraction | 3600 (1h)  | 300s      | Static shell; live wait times via React Query      |
+| Search     | Dynamic    | 60s       | Uses `cache: 'no-store'`                           |
 
 ---
 
