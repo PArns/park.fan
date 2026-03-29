@@ -55,7 +55,7 @@ import { AttractionStatCard } from '@/components/home/attraction-stat-card';
 import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
-import { FeaturedParksSection } from '@/components/home/featured-parks-section';
+import { FeaturedParksSectionClient } from '@/components/home/featured-parks-section-client';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -215,7 +215,11 @@ export default async function HomePage({ params }: HomePageProps) {
       <FavoritesSection />
 
       {/* Featured Parks – locale-aware, direct park links for SEO */}
-      <FeaturedParksSection locale={locale as Locale} geoData={geoData} />
+      <FeaturedParksSectionClient
+        headingText={tHome('sections.featuredParks')}
+        introText={tHome('sections.featuredParksIntro')}
+        ctaText={tHome('hero.cta')}
+      />
 
       {/* Global Stats */}
       {stats && (

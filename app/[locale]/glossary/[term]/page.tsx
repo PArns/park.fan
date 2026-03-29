@@ -4,13 +4,12 @@ import { getGlossaryTerms, getTermBySlug, GLOSSARY_SEGMENTS } from '@/lib/glossa
 import { locales, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { getGeoStructure } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FeaturedParksSection } from '@/components/home/featured-parks-section';
+import { FeaturedParksSectionClient } from '@/components/home/featured-parks-section-client';
 import nextDynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
@@ -93,7 +92,7 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 86400;
+export const dynamic = 'force-static'; // pure translations + local data; live parks via React Query
 
 export default async function GlossaryTermPage({ params }: TermPageProps) {
   const { locale, term: termSlug } = await params;
@@ -102,10 +101,10 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
   const term = await getTermBySlug(locale as Locale, termSlug);
   if (!term) notFound();
 
-  const [t, tCommon, geoData] = await Promise.all([
+  const [t, tCommon, tHome] = await Promise.all([
     getTranslations('glossary'),
     getTranslations('common'),
-    getGeoStructure().catch(() => null),
+    getTranslations('home'),
   ]);
 
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
@@ -164,7 +163,11 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
 
       <FavoritesSection />
 
-      <FeaturedParksSection locale={locale as Locale} geoData={geoData} />
+      <FeaturedParksSectionClient
+        headingText={tHome('sections.featuredParks')}
+        introText={tHome('sections.featuredParksIntro')}
+        ctaText={tHome('hero.cta')}
+      />
     </>
   );
 }

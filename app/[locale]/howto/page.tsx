@@ -1,18 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import { cache } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { LocaleContent } from '@/components/common/locale-content';
-import { getGeoStructure } from '@/lib/api/discovery';
-import { extractFeaturedParks } from '@/components/home/featured-parks-section';
-import { ParkCard } from '@/components/parks/park-card';
 import { Link } from '@/i18n/navigation';
+import { PopularParksGridClient } from '@/components/home/featured-parks-section-client';
 
-// Cached geoData fetch – deduplicated across all async server components in one render
-const getCachedGeoData = cache(() => getGeoStructure().catch(() => null));
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
@@ -57,6 +52,8 @@ import {
 interface HowtoPageProps {
   params: Promise<{ locale: string }>;
 }
+
+export const revalidate = 86400; // 1 day — static content; live parks via React Query
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -213,66 +210,6 @@ function Section({
 
 // ─── Popular Parks (async RSC – fetches geoData via cache()) ──────────────────
 
-async function PopularParksGrid({ locale, emptyHint }: { locale: string; emptyHint: string }) {
-  const tGeo = await getTranslations('geo');
-  const geoData = await getCachedGeoData();
-  const parks = extractFeaturedParks(geoData, locale);
-
-  if (parks.length === 0) {
-    return <p className="text-muted-foreground text-sm">{emptyHint}</p>;
-  }
-
-  return (
-    <div className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {parks.map((park) => {
-          const translatedCountry =
-            tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) ||
-            park.countryName;
-          return (
-            <ParkCard
-              key={park.slug}
-              name={park.name}
-              slug={park.slug}
-              parkId={park.parkId}
-              city={park.city}
-              country={translatedCountry}
-              href={park.href as '/'}
-              status={park.status}
-              crowdLevel={park.crowdLevel}
-              averageWaitTime={park.averageWaitTime}
-              operatingAttractions={park.operatingAttractions}
-              totalAttractions={park.totalAttractions}
-              timezone={park.timezone}
-              todaySchedule={park.todaySchedule}
-              nextSchedule={park.nextSchedule}
-              variant="detailed"
-            />
-          );
-        })}
-      </div>
-      <div className="flex justify-end">
-        <Link
-          href="/parks"
-          prefetch={false}
-          className="text-primary text-sm font-medium hover:underline"
-        >
-          {locale === 'de'
-            ? 'Alle Parks ansehen →'
-            : locale === 'es'
-              ? 'Ver todos los parques →'
-              : locale === 'fr'
-                ? 'Voir tous les parcs →'
-                : locale === 'it'
-                  ? 'Vedi tutti i parchi →'
-                  : locale === 'nl'
-                    ? 'Bekijk alle parken →'
-                    : 'View all parks →'}
-        </Link>
-      </div>
-    </div>
-  );
-}
 
 function SubSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -2253,10 +2190,7 @@ function ContentDE() {
           park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
           Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
         </p>
-        <PopularParksGrid
-          locale="de"
-          emptyHint="Parkdaten werden geladen – bitte Seite neu laden."
-        />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Glossar ───────────────────────────────────────────────────── */}
@@ -3331,7 +3265,7 @@ function ContentENSections() {
           park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
           and Europa-Park. Here are the most-visited parks in your region with live data:
         </p>
-        <PopularParksGrid locale="en" emptyHint="Park data is loading – please reload the page." />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Glossary ─────────────────────────────────────────────────── */}
@@ -4172,10 +4106,7 @@ function ContentESSections() {
           park.fan cubre más de 150 parques temáticos en todo el mundo. Aquí están los más visitados
           de tu región con datos en directo:
         </p>
-        <PopularParksGrid
-          locale="es"
-          emptyHint="Los datos del parque se están cargando – recarga la página."
-        />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Glosario ─────────────────────────────────────────────────── */}
@@ -5019,10 +4950,7 @@ function ContentFRSections() {
           park.fan couvre plus de 150 parcs d&apos;attractions dans le monde. Voici les plus visités
           de votre région avec des données en direct :
         </p>
-        <PopularParksGrid
-          locale="fr"
-          emptyHint="Les données du parc se chargent – veuillez recharger la page."
-        />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Glossaire ────────────────────────────────────────────────── */}
@@ -5847,10 +5775,7 @@ function ContentITSections() {
           park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati nella
           tua regione con dati in tempo reale:
         </p>
-        <PopularParksGrid
-          locale="it"
-          emptyHint="I dati del parco si stanno caricando – ricarica la pagina."
-        />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Glossario ────────────────────────────────────────────────── */}
@@ -6656,7 +6581,7 @@ function ContentNLSections() {
           park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw regio
           met live data:
         </p>
-        <PopularParksGrid locale="nl" emptyHint="Parkdata worden geladen – herlaad de pagina." />
+        <PopularParksGridClient />
       </Section>
 
       {/* ── 10. Woordenlijst ─────────────────────────────────────────────── */}

@@ -74,8 +74,8 @@ In `next.config.ts`:
 | `/v1/analytics/*`          | `cache: 'no-store'`  | 120s      | Real-time statistics           |
 | `/v1/parks/*` (detail)     | `cache: 'no-store'`  | 300s      | Live wait times and status     |
 | `/v1/parks/*/attractions`  | `cache: 'no-store'`  | 300s      | Live wait times                |
-| `/v1/discovery/geo`        | `revalidate: 120s`   | 120s      | Geo structure (rarely changes) |
-| `/v1/discovery/continents` | `revalidate: 120s`   | 120s      | Geo structure (rarely changes) |
+| `/v1/discovery/geo`        | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
+| `/v1/discovery/continents` | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | Calendar                   | `revalidate: 3600s`  | 300-3600s | Schedule data (changes daily)  |
 | Weather                    | `revalidate: 3600s`  | 3600s     | Forecast data (changes hourly) |
 | Predictions                | `revalidate: 86400s` | 86400s    | ML predictions (changes daily) |
