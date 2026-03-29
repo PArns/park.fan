@@ -127,6 +127,8 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col">
+      {/* Preload LCP image — React 19 hoists <link> to <head> from Server Components */}
+      <link rel="preload" as="image" href="/logo-big.svg" />
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-16 overflow-hidden px-4 pt-16 pb-4 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
@@ -142,6 +144,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 <img
                   src="/logo-big.svg"
                   alt="park.fan"
+                  fetchPriority="high"
                   className="h-full w-full object-contain dark:hidden"
                 />
                 {/* eslint-disable-next-line @next/next/no-img-element */}

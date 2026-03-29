@@ -57,6 +57,7 @@ export function BreadcrumbNav({
   pinLastBreadcrumb,
 }: BreadcrumbNavProps) {
   const navRef = useRef<HTMLElement>(null);
+  const paddingRightRef = useRef<number | null>(null);
   // Number of collapsible items hidden from the left end (front-to-back)
   const [collapsedCount, setCollapsedCount] = useState(0);
   // Set to true when user manually clicks "…" to reveal all items
@@ -93,7 +94,10 @@ export function BreadcrumbNav({
     if (!lastChild) return;
     const navRect = nav.getBoundingClientRect();
     const lastRect = lastChild.getBoundingClientRect();
-    const paddingRight = parseFloat(getComputedStyle(nav).paddingRight) || 0;
+    if (paddingRightRef.current === null) {
+      paddingRightRef.current = parseFloat(getComputedStyle(nav).paddingRight) || 0;
+    }
+    const paddingRight = paddingRightRef.current;
     if (lastRect.right > navRect.right - paddingRight + 1) {
       setCollapsedCount((c) => c + 1);
     }
