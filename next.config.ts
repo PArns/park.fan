@@ -128,6 +128,16 @@ const nextConfig: NextConfig = {
         source: '/:file*.svg',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
       },
+      // Featured parks API — cacheable geo data (must come before the /api no-store rule)
+      {
+        source: '/api/featured-parks/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, s-maxage=3600, stale-while-revalidate=7200',
+          },
+        ],
+      },
       // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {
         source: '/api/:path*',

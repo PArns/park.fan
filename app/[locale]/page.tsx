@@ -56,6 +56,7 @@ import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { FeaturedParksSectionClient } from '@/components/home/featured-parks-section-client';
+import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -219,6 +220,7 @@ export default async function HomePage({ params }: HomePageProps) {
         headingText={tHome('sections.featuredParks')}
         introText={tHome('sections.featuredParksIntro')}
         ctaText={tHome('hero.cta')}
+        initialParks={extractFeaturedParks(geoData, locale as string)}
       />
 
       {/* Global Stats */}

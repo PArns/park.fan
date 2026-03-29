@@ -13,6 +13,10 @@ async function fetchFeaturedParks(locale: string): Promise<FeaturedPark[]> {
   return res.json();
 }
 
+function translateCountry(tGeo: ReturnType<typeof useTranslations>, park: FeaturedPark): string {
+  return tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) || park.countryName;
+}
+
 /** Skeleton placeholder while parks load */
 function FeaturedParksSkeleton() {
   return (
@@ -31,6 +35,11 @@ interface FeaturedParksSectionClientProps {
   headingText: string;
   /** "View all parks" link label. */
   ctaText: string;
+  /**
+   * Parks pre-extracted server-side (from geoData already fetched by the page).
+   * Passed as React Query initialData so park links appear in the SSR HTML for SEO.
+   */
+  initialParks?: FeaturedPark[];
 }
 
 /**
@@ -40,6 +49,7 @@ interface FeaturedParksSectionClientProps {
 export function PopularParksGridClient() {
   const locale = useLocale();
   const tHome = useTranslations('home');
+  const tGeo = useTranslations('geo');
 
   const { data: parks, isLoading } = useQuery({
     queryKey: ['featured-parks', locale],
@@ -70,7 +80,7 @@ export function PopularParksGridClient() {
             slug={park.slug}
             parkId={park.parkId}
             city={park.city}
-            country={park.countryName}
+            country={translateCountry(tGeo, park)}
             href={park.href as '/'}
             status={park.status}
             crowdLevel={park.crowdLevel}
@@ -96,19 +106,25 @@ export function PopularParksGridClient() {
 /**
  * Client-side featured parks section — fetches live park data via React Query.
  * Keeps the parent page at revalidate=86400 by moving the live geo fetch client-side.
+ *
+ * Pass `initialParks` (extracted server-side from geoData) so that park links appear
+ * in the SSR HTML for SEO — React Query will refetch in the background for live status.
  */
 export function FeaturedParksSectionClient({
   introText,
   headingText,
   ctaText,
+  initialParks,
 }: FeaturedParksSectionClientProps) {
   const locale = useLocale();
+  const tGeo = useTranslations('geo');
 
   const { data: parks, isLoading } = useQuery({
     queryKey: ['featured-parks', locale],
     queryFn: () => fetchFeaturedParks(locale),
     staleTime: 5 * 60_000, // 5 min — matches API TTL
     refetchOnWindowFocus: true,
+    initialData: initialParks,
   });
 
   if (!isLoading && (!parks || parks.length === 0)) return null;
@@ -130,7 +146,7 @@ export function FeaturedParksSectionClient({
                 slug={park.slug}
                 parkId={park.parkId}
                 city={park.city}
-                country={park.countryName}
+                country={translateCountry(tGeo, park)}
                 href={park.href as '/'}
                 status={park.status}
                 crowdLevel={park.crowdLevel}
