@@ -54,21 +54,32 @@ export function getScheduleMessage(
           const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
           if (hours < 24) {
-            const openingTimeFormatted = opening.toLocaleTimeString(locale, {
-              hour: '2-digit',
-              minute: '2-digit',
-              ...tzOptions,
-            });
-            if (hours > 0) {
+            if (timezone) {
+              const openingTimeFormatted = opening.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                ...tzOptions,
+              });
+              if (hours > 0) {
+                return {
+                  message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  icon: 'opening',
+                };
+              }
               return {
-                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
               };
+            } else {
+              // No timezone available — show only relative time to avoid displaying wrong UTC time
+              if (hours > 0) {
+                return {
+                  message: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
+                  icon: 'opening',
+                };
+              }
+              return { message: `in ${minutes} Min.`, icon: 'opening' };
             }
-            return {
-              message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
-              icon: 'opening',
-            };
           }
         }
       }
@@ -82,26 +93,36 @@ export function getScheduleMessage(
           const totalDays = diff / (1000 * 60 * 60 * 24);
           const totalWeeks = totalDays / 7;
 
-          const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
-            hour: '2-digit',
-            minute: '2-digit',
-            ...tzOptions,
-          });
-
           if (totalHours < 24) {
             const hours = Math.floor(totalHours);
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-            if (hours > 0) {
+            if (timezone) {
+              const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                ...tzOptions,
+              });
+              if (hours > 0) {
+                return {
+                  message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  icon: 'opening',
+                };
+              }
               return {
-                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
               };
+            } else {
+              // No timezone available — show only relative time to avoid displaying wrong UTC time
+              if (hours > 0) {
+                return {
+                  message: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
+                  icon: 'opening',
+                };
+              }
+              return { message: `in ${minutes} Min.`, icon: 'opening' };
             }
-            return {
-              message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
-              icon: 'opening',
-            };
           } else if (totalDays < 7) {
             const weekday = nextOpening.toLocaleDateString(locale, {
               weekday: 'long',
@@ -110,8 +131,19 @@ export function getScheduleMessage(
             const days = Math.floor(totalDays);
             const remainingHours = Math.floor(totalHours % 24);
 
+            if (timezone) {
+              const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {
+                hour: '2-digit',
+                minute: '2-digit',
+                ...tzOptions,
+              });
+              return {
+                message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
+                icon: 'opening',
+              };
+            }
             return {
-              message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
+              message: `${weekday} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
               icon: 'opening',
             };
           } else {

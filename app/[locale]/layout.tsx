@@ -10,6 +10,7 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
+import { WebVitals } from '@/components/analytics/web-vitals';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -119,10 +120,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Umami Analytics - beforeInteractive so PerformanceObserver captures Web Vitals */}
+      {/* Umami Analytics */}
       {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
         <Script
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           src={process.env.NEXT_PUBLIC_UMAMI_URL}
           data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
           data-domains="park.fan"
@@ -135,6 +136,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <Providers>
           <NextIntlClientProvider messages={messages} locale={locale}>
             <AnalyticsIdentify locale={locale} />
+            <WebVitals />
             <LanguageBanner currentLocale={locale as Locale} />
             <div className="flex min-h-screen flex-col">
               <Header />
