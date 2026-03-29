@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import Script from 'next/script';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
 import { Providers } from '@/lib/providers';
@@ -10,7 +9,6 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
-import { WebVitals } from '@/components/analytics/web-vitals';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -120,23 +118,24 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Umami Analytics */}
-      {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
-        <Script
-          strategy="afterInteractive"
-          src={process.env.NEXT_PUBLIC_UMAMI_URL}
-          data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-          data-domains="park.fan"
-          data-do-not-track="true"
-        />
-      )}
+      {/* Umami Analytics - async in <head> so PerformanceObserver captures Web Vitals */}
+      <head>
+        {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
+          <script
+            async
+            src={process.env.NEXT_PUBLIC_UMAMI_URL}
+            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            data-domains="park.fan"
+            data-do-not-track="true"
+          />
+        )}
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <OrganizationStructuredData description={tSeo('description')} />
         <WebSiteStructuredData locale={locale} description={tSeo('description')} />
         <Providers>
           <NextIntlClientProvider messages={messages} locale={locale}>
             <AnalyticsIdentify locale={locale} />
-            <WebVitals />
             <LanguageBanner currentLocale={locale as Locale} />
             <div className="flex min-h-screen flex-col">
               <Header />

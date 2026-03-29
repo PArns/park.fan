@@ -210,7 +210,6 @@ function Section({
 
 // ─── Popular Parks (async RSC – fetches geoData via cache()) ──────────────────
 
-
 function SubSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mt-6 space-y-3">

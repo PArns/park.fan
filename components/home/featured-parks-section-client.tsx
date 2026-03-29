@@ -14,7 +14,10 @@ async function fetchFeaturedParks(locale: string): Promise<FeaturedPark[]> {
 }
 
 function translateCountry(tGeo: ReturnType<typeof useTranslations>, park: FeaturedPark): string {
-  return tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) || park.countryName;
+  return (
+    tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) ||
+    park.countryName
+  );
 }
 
 /** Skeleton placeholder while parks load */
@@ -95,7 +98,11 @@ export function PopularParksGridClient() {
         ))}
       </div>
       <div className="flex justify-end">
-        <Link href="/parks" prefetch={false} className="text-primary text-sm font-medium hover:underline">
+        <Link
+          href="/parks"
+          prefetch={false}
+          className="text-primary text-sm font-medium hover:underline"
+        >
           {tHome('hero.cta')}
         </Link>
       </div>
