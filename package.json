@@ -83,5 +83,12 @@
       "@parcel/watcher",
       "@swc/core"
     ]
-  }
+  },
+  "browserslist": [
+    "chrome >= 109",
+    "edge >= 109",
+    "firefox >= 115",
+    "safari >= 15.6",
+    "ios >= 15.6"
+  ]
 }

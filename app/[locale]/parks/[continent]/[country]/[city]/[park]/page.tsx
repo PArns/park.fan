@@ -216,9 +216,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
     continentsLabel: tNav('continents'),
   });
 
+  const parkBgImage = getParkBackgroundImage(parkSlug);
+
   return (
     <>
-      <ParkBackground imageSrc={getParkBackgroundImage(parkSlug)} alt={parkName} />
+      {parkBgImage && <link rel="preload" as="image" href={parkBgImage} />}
+      <ParkBackground imageSrc={parkBgImage} alt={parkName} />
 
       <PageContainer>
         <ParkStructuredData
