@@ -457,9 +457,16 @@ export function SearchCommand({
     return 0;
   };
 
-  // Sort results within each category by match score (exact matches first)
+  // Sort results within each category by match score (exact matches first), then by status (OPERATING first)
   const sortResultsByMatch = (items: SearchResultItem[]): SearchResultItem[] => {
-    return [...items].sort((a, b) => calculateMatchScore(b) - calculateMatchScore(a));
+    return [...items].sort((a, b) => {
+      const scoreDiff = calculateMatchScore(b) - calculateMatchScore(a);
+      if (scoreDiff !== 0) return scoreDiff;
+      // Prefer OPERATING over non-OPERATING when scores are equal
+      const aOperating = a.status === 'OPERATING' ? 0 : 1;
+      const bOperating = b.status === 'OPERATING' ? 0 : 1;
+      return aOperating - bOperating;
+    });
   };
 
   return (
