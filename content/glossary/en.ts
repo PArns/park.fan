@@ -327,7 +327,7 @@ const translations: GlossaryTermTranslation[] = [
       'The classic circular inversion taking riders through a complete 360-degree circle in the vertical plane.',
     definition:
       "The vertical loop is the most iconic inversion in roller coaster history — a complete 360-degree circle in the vertical plane that takes riders fully upside down at the apex. Modern loops use a clothoid (teardrop) shape rather than a perfect circle: the entry and exit sections of the loop are wider in radius, while the top is tighter. This geometry ensures smooth, sustained positive G-forces at the bottom and a brief negative-G moment at the top rather than the jarring spikes a perfect circle would produce.\n\nThe first modern loop coaster, Corkscrew at Knott's Berry Farm (1975), transformed the amusement industry. Today vertical loops anchor the inversion portfolios of coasters worldwide, from introductory looping coasters to record-breaking machines. Dragon Khan at PortAventura features eight loops — one of the highest counts on any European coaster. The sight of a train completing a loop remains one of the most immediately recognisable and crowd-drawing images in theme park marketing.",
-    relatedTermIds: ['inversion', 'immelmann', 'cobra-roll'],
+    relatedTermIds: ['inversion', 'immelmann', 'cobra-roll', 'interlocking-loops', 'inclined-loop'],
   },
   {
     id: 'immelmann',
@@ -345,7 +345,7 @@ const translations: GlossaryTermTranslation[] = [
       'A 360-degree roll following a parabolic arc where riders experience near-weightlessness while inverted at the apex.',
     definition:
       'The zero-G roll is an inversion element shaped so the train follows a parabolic arc through the rotation, similar in concept to a heartline roll but at higher speed and with greater vertical displacement. At the peak of the roll, riders experience momentary negative G-forces while upside down — the unique sensation of floating while inverted. This combination of inversion and airtime in a single element is what makes the zero-G roll one of the most celebrated elements in modern coaster design.\n\nZero-G rolls are strongly associated with B&M wing coasters and hyper coasters, where the open seating positions send riders dramatically sweeping through the sky with no track above, below, or beside them. On a wing coaster, the outside seats of a zero-G roll produce an extraordinarily open, exposed sensation unlike anything found on a conventional coaster. Shambhala at PortAventura and Fury 325 at Carowinds feature particularly celebrated zero-G rolls.',
-    relatedTermIds: ['inversion', 'heartline-roll', 'airtime', 'b-and-m'],
+    relatedTermIds: ['inversion', 'heartline-roll', 'airtime', 'b-and-m', 'zero-g-winder'],
   },
   {
     id: 'launch-coaster',
@@ -424,12 +424,12 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'rmc',
-    name: 'Rocky Mountain Construction',
+    name: 'RMC',
     shortDefinition:
       'An Idaho-based manufacturer that invented the hybrid coaster concept, converting ageing wooden coasters into steel I-box track rides with unprecedented airtime and inversions.',
     definition:
       "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company based in Hayden, Idaho, best known for inventing the I-box steel track system that can be fitted onto wooden coaster support structures. This conversion technology allowed parks to transform rough, ageing wooden coasters into world-class hybrid rides featuring intense airtime, multiple inversions, beyond-vertical drops, and dramatic overbanked turns — all design features impossible on traditional wood track.\n\nRMC conversions quickly became some of the most acclaimed rides in the world: Steel Vengeance at Cedar Point, Wicked Cyclone at Six Flags New England, and Wildfire at Kolmården in Sweden all received immediate enthusiast acclaim after their openings. New-build RMC hybrids — built from scratch rather than converted from an existing coaster — include Untamed at Walibi Holland, which opened in 2019 and is consistently ranked as one of Europe's best coasters. RMC fundamentally changed the calculus for parks with ageing wooden coasters, offering a clear upgrade path without the loss of beloved heritage structures.",
-    relatedTermIds: ['hybrid-coaster', 'wooden-coaster', 'airtime'],
+    relatedTermIds: ['hybrid-coaster', 'wooden-coaster', 'airtime', 'barrel-roll-drop', 'stall'],
   },
   {
     id: 'vekoma',
@@ -466,7 +466,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lifthill',
-    name: 'Lift Hill',
+    name: 'Lifthill',
     shortDefinition:
       'The mechanically powered ascent that pulls a coaster train to its highest point, building the potential energy that powers the rest of the ride.',
     definition:
@@ -525,7 +525,7 @@ const translations: GlossaryTermTranslation[] = [
       "A double-inversion B&M signature element shaped like a cobra's raised head — two inversions connected by a 180-degree twist at the apex.",
     definition:
       "The cobra roll is one of B&M's most recognisable signature elements, consisting of two inversions in rapid succession: the track curves upward into a half-loop, rotates 180 degrees at the top passing through a brief inverted section, then mirrors the movement to exit in the same direction as entry. Viewed from the side, the track outline resembles a cobra's raised and spread hood — the element is sometimes described as two Immelmanns placed back-to-back but entering from the same side.\n\nCobra rolls are a defining feature of B&M inverted coasters worldwide and appear on many of their sit-down looping coasters as well. Famous cobra rolls appear on Dragon Khan at PortAventura — one of the most recognised European coasters — as well as on B&M inverted coasters across the continent. The element delivers two full inversions in a compact space with smooth, predictable G-forces, making it a reliable crowd-pleaser that works well in the middle sections of a layout.",
-    relatedTermIds: ['inversion', 'immelmann', 'batwing', 'b-and-m'],
+    relatedTermIds: ['inversion', 'immelmann', 'batwing', 'b-and-m', 'banana-roll', 'sea-serpent'],
   },
   {
     id: 'corkscrew',
@@ -709,7 +709,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'credit',
-    name: 'Coaster Credit',
+    name: 'Credit',
     shortDefinition:
       'A roller coaster an enthusiast has ridden and logged to their personal count — collecting credits is a defining hobby in the coaster community.',
     definition:
@@ -1528,6 +1528,162 @@ const translations: GlossaryTermTranslation[] = [
       'Park ausverkauft',
       'sold out day',
     ],
+  },
+  {
+    id: 'zero-g-winder',
+    name: 'Zero-G Winder',
+    shortDefinition:
+      'A zero-G roll variant that incorporates a built-in directional change, so the train enters and exits the inversion on different headings.',
+    definition:
+      'The zero-G winder takes the core concept of a zero-G roll — a 360-degree inversion with a parabolic arc that produces near-weightlessness at the apex — and adds a directional change into the geometry. While a standard zero-G roll has the train enter and exit on roughly parallel headings, the winder curves the track during the roll so the train exits pointing in a meaningfully different direction from where it entered. This makes the element a layout-planning tool as well as an inversion: it simultaneously delivers the floating sensation of a zero-G roll and redirects the coaster into the next section.\n\nZero-G winders are strongly associated with newer, more technically ambitious coaster designs and appear on rides built by manufacturers such as Intamin and B&M. Kondaa at Walibi Belgium and VelociCoaster at Universal\'s Islands of Adventure both feature zero-G winders as standout elements. The combination of airtime, inversion, and directional transition in a single element gives a zero-G winder a more complex, multi-phase sensation than a straight zero-G roll.',
+    relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
+    aliases: ['zero g winder', 'zero-G winder', 'winder'],
+  },
+  {
+    id: 'banana-roll',
+    name: 'Banana Roll',
+    shortDefinition:
+      'An extended, asymmetric double-inversion element in which two inversions are connected by a long curved arc — giving the element a banana-like shape.',
+    definition:
+      'The banana roll is a stretched variation of the double-inversion concept in which two inversions are spaced further apart and connected by a sweeping curved section rather than the tight, symmetrical back-to-back geometry of a standard cobra roll. Viewed from above, the track follows a gradual arc through both inversions, resembling the curve of a banana. The looser geometry spreads the two inversions over a longer section of track, giving riders a more drawn-out, flowing experience through both inversions compared to the rapid-fire intensity of a conventional cobra roll.\n\nThe banana roll first appeared on Takabisha at Fuji-Q Highland, Japan, which opened in 2011 and was built by Gerstlauer. S&S Worldwide later developed their own variant for Steel Curtain at Kennywood, which features a double-inverting version of the element. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly between inversions. The visual impact — a gently curving double-inversion rather than the angular shape of a cobra roll — is distinctive and immediately recognisable.',
+    relatedTermIds: ['cobra-roll', 'inversion', 'gerstlauer', 's-and-s-worldwide'],
+    aliases: ['banana roll'],
+  },
+  {
+    id: 'inclined-loop',
+    name: 'Inclined Loop',
+    shortDefinition:
+      'A vertical loop rotated off its perpendicular axis, so the train approaches and exits at an angle rather than straight-on.',
+    definition:
+      'An inclined loop (also called a tilted loop) is a standard vertical loop that has been rotated around its axis, typically by 45 to 80 degrees relative to the track\'s direction of travel. Instead of the train entering and exiting the loop while traveling straight forward — as in a conventional upright loop — it approaches and leaves at an oblique angle, creating an asymmetric visual profile and a noticeably different on-ride sensation.\n\nThe tilted geometry changes how riders experience the inversion: the approach feels more lateral than a standard loop, and the pull-out at the bottom of the circle comes from a different direction than expected, which can be both disorienting and thrilling. From spectator viewpoints, an inclined loop looks dramatically different from a standard loop and is immediately recognisable as unusual. Inclined loops appear on several B&M and Intamin coasters, often in the mid or final sections of a layout where the track needs to change direction and designers incorporate the loop as a combined inversion and transition element.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
+    aliases: ['tilted loop', 'angled loop', 'tilted-loop'],
+  },
+  {
+    id: 'sea-serpent',
+    name: 'Sea Serpent',
+    shortDefinition:
+      'A Vekoma double-inversion element in which the train passes through two inversions and exits traveling in the same direction it entered.',
+    definition:
+      'The sea serpent is a double-inversion element most closely associated with Vekoma\'s inverted coaster designs. Like a cobra roll, it consists of two inversion sequences joined by a central connecting section, but the track geometry differs in a key way: while a cobra roll sends the train through a 180-degree direction reversal during the element, the sea serpent is laid out so the train enters and exits traveling in the same general direction. The two inversions arc up and over in a flowing sequence without reversing the train\'s heading, giving the element a longer, more S-curve-like appearance when viewed from the side — reminiscent of the body of a sea serpent arching through two peaks.\n\nSea serpents appear on Vekoma\'s Suspended Looping Coaster (SLC) model and on some of the manufacturer\'s custom installations. Because the SLC has been produced in large numbers for parks around the world, the sea serpent is one of the most widely distributed double-inversion elements globally, even if it is less well known by name than the cobra roll. The riding experience varies considerably across installations depending on track condition and wheel profile.',
+    relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
+    aliases: ['sea serpent', 'roll over'],
+  },
+  {
+    id: 'barrel-roll-drop',
+    name: 'Barrel Roll Drop',
+    shortDefinition:
+      'An RMC signature element that combines the first drop and a full barrel roll into one continuous sequence, inverting riders while they are still descending.',
+    definition:
+      'The barrel roll drop is one of Rocky Mountain Construction\'s most celebrated signature elements, merging what would normally be two separate experiences — the first drop and a full inversion — into a single, uninterrupted sequence. After departing the lift hill, the track rotates the train through a complete barrel roll while simultaneously descending: riders find themselves fully inverted near the steepest point of the drop, then are rotated back upright as the train reaches the bottom and transitions into the rest of the layout. The inversion happens at high speed because the train is accelerating through the drop at the same moment it is rolling.\n\nThe element was made possible by RMC\'s I-Box steel track system, which allows the tight radii and complex three-dimensional geometry required for a simultaneous roll and drop — a combination that would have been structurally impossible on traditional wooden coaster track. Medusa Steel Coaster at Six Flags Mexico was among the early coasters to feature a barrel roll drop; Steel Vengeance at Cedar Point and Zadra at Energylandia are other widely celebrated examples. The element has become one of the defining visual and experiential signatures of RMC\'s converted wooden coasters.',
+    relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
+    aliases: ['barrel roll drop', 'RMC barrel roll', 'barrel roll downdrop'],
+  },
+  {
+    id: 'mcbr',
+    name: 'MCBR',
+    shortDefinition:
+      'Mid-Course Brake Run — a set of brakes positioned partway through a coaster layout that can bring the train to a full stop to allow safe multi-train operation.',
+    definition:
+      'A mid-course brake run (MCBR) is a braking section installed somewhere in the middle of a coaster\'s layout — after the ride\'s initial major elements but before the closing sequence. Unlike trim brakes, which merely reduce speed and allow the train to continue immediately, an MCBR is a full block-section brake: it can stop the train completely and hold it until the next block section ahead is confirmed clear. This makes it possible to run multiple trains on the same track simultaneously without risk of collision, significantly increasing the ride\'s throughput capacity.\n\nOn a busy operating day with trains dispatched at full capacity, a well-timed MCBR will release a stopped train almost immediately, and riders may barely notice the brief deceleration before the ride continues. On quieter days with fewer trains running, the stop can last longer and feel more abrupt. MCBRs are standard on most large coasters: B&M inverted and floorless coasters, many Intamin rides, and other high-capacity attractions use them routinely. Riders sometimes note the way an MCBR can disrupt the pacing of a layout — slowing the train before a second half that was designed to run at higher speed.',
+    relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
+    aliases: [
+      'mid-course brake run',
+      'mid course brake',
+      'midcourse brake',
+      'mid-course brake',
+      'Mittelstreckenbremse',
+    ],
+  },
+  {
+    id: 'interlocking-loops',
+    name: 'Interlocking Loops',
+    shortDefinition:
+      'Two vertical loops whose planes cross each other — creating a visually dramatic chain-link or figure-eight structure.',
+    definition:
+      'Interlocking loops are two vertical loops positioned so their structural planes intersect, typically at roughly perpendicular angles. The result is a striking visual configuration in which one loop appears to pass through the other when seen from certain angles, resembling a chain link or an oversized figure-eight rising out of the ground. The structural engineering required to make two loops cross without the tracks actually touching is considerable, but the visual payoff makes the element a crowd-pleasing focal point in a park\'s skyline.\n\nInterlocking loops are most commonly associated with B&M inverted coasters and sit-down looping coasters designed for high inversion counts. Dragon Khan at PortAventura, long one of Europe\'s most famous coasters, features interlocking loops as part of its eight-inversion layout, and the crossing loops are one of the most photographed sections of the ride. The element appears on a number of other high-inversion coasters around the world. From a riding perspective, the experience of passing through an interlocking loop sequence is similar to two closely spaced vertical loops, though the compressed structural geometry can make the transitions feel unusually rapid.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
+    aliases: ['interlocking loops', 'crossing loops', 'linked loops'],
+  },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'The ratcheting safety device on a lift hill that prevents the train from rolling backwards — the source of the iconic click-clack sound.',
+    definition:
+      'An anti-rollback device (also called a rollback dog or anti-rollback dog) is a mechanical safety mechanism fitted along the underside of a lift hill. As the train climbs, spring-loaded metal pawls — sometimes called "dogs" — ratchet over a series of teeth embedded in the lift hill structure. If the chain or drive mechanism were to fail, the pawls would catch on the teeth and lock the train in place, preventing it from rolling back down. The ratcheting action of the pawls over the teeth is the source of the rhythmic clicking sound that has become one of the most recognisable audio signatures of traditional roller coasters.\n\nOn modern coasters with smooth elevator-cable or LSM-powered lift hills, anti-rollback dogs are often eliminated or replaced with quiet electromagnetic braking systems, which is why some newer lift hills are noticeably quieter. Enthusiasts sometimes lament this change as the loss of a classic sensory element of the coaster experience — the building tension of the click-clack soundtrack as the train climbs before the drop.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['anti-rollback device', 'rollback dog', 'click-clack', 'anti-rollback system'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Structural elements or track sections designed to pass just above riders\' heads at speed — creating a thrilling near-miss illusion.',
+    definition:
+      'Head choppers are deliberate design features in which a coaster\'s support structure, cross-bracing, tunnels, or sections of track pass immediately above riders\' heads at the moment the train is travelling at speed. The proximity and timing create a powerful illusion that something is about to strike the riders — an adrenaline spike with no actual danger, since the clearance is precisely engineered. The sensation is sharpest when riders have no warning: a train exiting a banked turn might sweep under a low beam just as it accelerates, leaving barely enough time to register what just happened.\n\nHead choppers are particularly associated with tightly spaced wooden coasters and with inverted coasters, where the dangling legs of riders and the low-slung profile of the hanging trains bring them close to supports, station buildings, and other track sections. Designers of compact twister coasters often route different sections of the track to pass within centimetres of each other at speed, maximising these near-miss moments. For many enthusiasts, well-designed head choppers are a sign of creative layout work and contribute significantly to the perceived intensity of a ride.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['head chopper', 'near miss', 'head-chopper element'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'When a ride operator presses lap bars or restraints too tightly against riders — reducing comfort and eliminating the airtime the ride was designed to deliver.',
+    definition:
+      'Stapling refers to the practice — intentional or over-cautious — of an operator pushing a lap bar or shoulder harness so firmly against a rider that it is significantly tighter than the minimum required safe position. The term comes from the sensation of being pinned or "stapled" into the seat. On airtime-focused coasters, lap bars are supposed to sit loosely enough for riders to actually lift slightly off the seat at the crests of hills — that\'s what delivers airtime. A stapled rider is held flat against the seat throughout and cannot experience the intended floating sensation, regardless of how well-designed the hills are.\n\nStapling is a common source of frustration in the enthusiast community, particularly on wooden coasters and hybrid coasters where airtime is the primary attraction. The degree of stapling varies by park, by operator, by time of day, and sometimes by the visible size of the rider being restrained. Some parks are known for consistently loose, rider-friendly policies; others are criticised for systematically over-restraining. Riders who want to maximise airtime often board as late as possible to avoid early check-by operators, and position the bar themselves before operators come to check it.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['stapled', 'over-stapled', 'over-tightened restraint'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'When a coaster train loses enough speed mid-ride that it becomes stranded in a low point of the track and cannot complete the course.',
+    definition:
+      'Valleying occurs when a coaster train, having lost too much kinetic energy during the ride, fails to have sufficient momentum to crest the next hill or complete the next element and comes to a stop — or rolls back — in a valley between two high points on the track. Because the train is now sitting at a low point rather than at a brake run or station, it cannot be moved by the normal operating systems. Recovering a valleyed train typically requires maintenance personnel to physically push or winch the train over the next high point, or disembark riders and pull the train back.\n\nValleying is rare under normal operating conditions, since rides are designed with substantial speed margins. It is more likely to occur in unusually cold weather (when wheel bearings run sluggish and friction increases), on an underpowered train running with fewer passengers than designed for, after excessive trim braking, or on rides that were originally designed for different wheel and axle specifications than are currently installed. Valleying incidents occasionally occur on ageing wooden coasters whose track geometry has shifted over time. When a coaster is reported to have "valleyed," it typically takes the ride out of operation for hours while recovery work is completed.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['valley', 'valleyed', 'stalled train', 'stranded train'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wild Mouse',
+    shortDefinition:
+      'A coaster style using small individual cars and a compact layout of tight flat turns at the edges of elevated platforms — creating the sensation the car is about to fly off.',
+    definition:
+      'A wild mouse coaster (also simply "mouse coaster") uses small cars seating two to four riders rather than the long trains of conventional coasters. The hallmark of the design is a series of tight, flat-banked hairpin turns executed at the very edges of the track, where the car travels perpendicular to the curve before turning sharply. Because the turns are not steeply banked — unlike the smooth banked curves of other coasters — riders are thrown laterally against the side of the car, and the momentum of the approach makes the turn feel later than expected, creating a convincing sensation that the car is about to slide off the track.\n\nWild mouse coasters are among the most space-efficient designs available, fitting a surprising amount of ride into a compact footprint by layering the hairpin turns on elevated platforms above the track below. Steel wild mouse models appear at parks around the world from manufacturers including Mack Rides, Maurer, and Gerstlauer; wooden wild mouse coasters exist but are rare. The ride profile appeals broadly — the cars are accessible to riders of many heights and ages, the speed is moderate, and the hairpin-turn sensation is reliably surprising regardless of how many times a rider has experienced it.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['wild mouse coaster', 'mouse coaster', 'Wilde Maus'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: 'Fourth Dimension Coaster',
+    shortDefinition:
+      'A coaster type where seats are mounted on rotating arms extending beyond the sides of the train — spinning independently of the train\'s direction of travel.',
+    definition:
+      'A fourth dimension coaster (4D coaster) is a coaster design in which the passenger seats are not fixed to the train but are instead mounted on pivoting arms extending to the left and right of each car. The seats can rotate forward or backward independently of the direction the train is travelling — controlled either by a fixed rail running alongside the track (which forces the seat to a predetermined position at each moment in the layout) or by allowing free rotation driven by gravity and rider weight distribution. The result is that passengers may be facing downward during a drop, inverted during a turn, or rotating through multiple axes simultaneously during inversions.\n\nThe concept was developed by Arrow Dynamics and later refined by S&S Worldwide. X2 at Six Flags Magic Mountain in California is the most famous example and the world\'s first 4D coaster, having opened in 2002 — its redesign in 2008 added fire effects and an audio system. Eejanaika at Fuji-Q Highland in Japan features the most inversions of any coaster in the world partly because the seat rotation multiplies inversion count. The riding experience on a 4D coaster is highly variable and often disorientating in a way that conventional coasters cannot replicate.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster', 'free spin coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'A coaster layout that travels in a relatively straight line away from the station, turns around at the far end, and returns along a parallel path.',
+    definition:
+      'An out-and-back is one of the two foundational roller coaster layout types. The train departs the station, travels outward in a broadly linear direction — typically delivering a series of hills optimised for airtime — executes a turnaround at the far end of the property, and returns along a similar path roughly parallel to the outbound leg. The two legs rarely cross, giving the layout a long, narrow footprint compared to the alternative twister layout.\n\nOut-and-back designs are strongly associated with traditional wooden coasters, where the sustained speed built on the long outbound hills is best exploited through a returning sequence of progressively faster, lower hills that maximise floater airtime. The layout style rewards designers who can tune each hill for a specific speed: as the train is lightest (fastest) on the return, the return hills are shorter and more closely spaced to maintain the floating sensation. Famous out-and-back wooden coasters include The Voyage at Holiday World, Comet at The Great Escape, and the various versions of the Racer coaster type. Steel coasters can also follow out-and-back paths, though the style is less common in steel than in wood.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['out and back', 'out-and-back layout', 'out and back coaster'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'A coaster layout that loops, spirals, and crosses back over itself — packing maximum elements into a compact footprint.',
+    definition:
+      'A twister coaster (also called a cyclone layout) is a coaster design in which the track spirals, doubles back, and crosses over or under itself repeatedly, weaving an intricate structure rather than following the simple two-legged path of an out-and-back layout. The defining characteristic is that the train frequently passes within close range of other sections of the same track — often in different directions and at different heights — creating the head-chopper near-miss sensations and visual complexity that define the type.\n\nTwister layouts are efficient with land area: a great deal of track length and vertical displacement can be packed into a relatively compact, roughly square or rectangular footprint. This makes them a popular choice in space-constrained parks. Wooden twisters include classics like the Twister at Grona Lund in Stockholm and the Jack Rabbit at Seabreeze; steel twisters include many B&M and Intamin designs. Because the train is constantly changing direction — banking, turning, climbing and descending all within the same compact zone — twister layouts tend to feel more intense and visually complex than out-and-back designs, even if their top speeds or heights are comparable.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['twister layout', 'cyclone', 'twister coaster', 'cyclone layout'],
   },
 ];
 

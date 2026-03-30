@@ -577,7 +577,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'zero-g-roll',
-    name: 'Zero-g Roll',
+    name: 'Zero-G Roll',
     shortDefinition:
       'Un giro de 360 grados sobre un arco parabólico donde los pasajeros experimentan casi ingravidez en la cima — uno de los elementos más celebrados del diseño moderno de coasters.',
     definition:
@@ -655,7 +655,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Sacacorchos',
+    name: 'Corkscrew',
     shortDefinition:
       'Una inversión en barril donde la pista espira 360 grados alrededor de un eje central — uno de los tipos de inversión más antiguos y ampliamente construidos.',
     definition:
@@ -1020,7 +1020,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'Fuerza G',
+    name: 'G-Force',
     shortDefinition:
       'La unidad de aceleración que experimentan los pasajeros, medida como múltiplos de la aceleración gravitacional terrestre (9,81 m/s²).',
     definition:
@@ -1030,7 +1030,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Fuerzas Laterales',
+    name: 'Lateral Gs',
     shortDefinition:
       'Fuerzas horizontales que empujan a los pasajeros hacia los lados en curvas, transiciones y secciones en hélice.',
     definition:
@@ -1481,7 +1481,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'drop-tower',
-    name: 'Torre de Caída',
+    name: 'Drop Tower',
     shortDefinition:
       'Atracción tipo torre que sube a los visitantes a gran altura y los suelta en una caída libre vertiginosa.',
     definition:
@@ -1597,6 +1597,161 @@ const translations: GlossaryTermTranslation[] = [
       'Un cierre por capacidad (también llamado parque completo o agotado) ocurre cuando un parque temático alcanza su número máximo de visitantes permitido y deja temporalmente de vender entradas de día o de admitir nuevos visitantes. Los parques gestionan la capacidad mediante reservas de entrada programadas, seguimiento en tiempo real de la asistencia y cierres temporales de acceso. Los titulares de abono anual pueden ser bloqueados en días de capacidad según las normas del parque; otros parques usan sistemas de reserva anticipada que evitan el aforo excesivo antes de que se produzca. Los cierres por capacidad son más frecuentes en los picos de vacaciones escolares, noches de fuegos artificiales y eventos especiales. Consultar la app del parque o sus redes sociales la mañana de la visita puede evitar sorpresas desagradables.',
     relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
     aliases: ['parque completo', 'parque lleno', 'capacity closure', 'aforo máximo', 'agotado'],
+  },
+  {
+    id: 'zero-g-winder',
+    name: 'Zero-G Winder',
+    shortDefinition:
+      'Una variante del zero-G roll con un cambio de dirección integrado — el tren entra y sale de la inversión con rumbos diferentes.',
+    definition:
+      'El zero-G winder toma el concepto central del zero-G roll — una rotación de 360 grados en un arco parabólico que genera casi ingravidez en el vértice — y añade un cambio de dirección en la geometría de la vía. Mientras que en un zero-G roll estándar el tren entra y sale en rumbos aproximadamente paralelos, el winder curva la vía durante la rotación de modo que el tren sale apuntando en una dirección diferente de la que tenía al entrar. Esto convierte el elemento en una herramienta de diseño de trazado y también en una inversión: al mismo tiempo ofrece la sensación flotante de un zero-G roll y redirige la montaña rusa hacia la siguiente sección.\n\nLos zero-G winders están fuertemente asociados a diseños más modernos y técnicamente ambiciosos de fabricantes como Intamin y B&M. Kondaa en Walibi Belgium y VelociCoaster en Universal\'s Islands of Adventure son dos ejemplos destacados. La combinación de airtime, inversión y transición de dirección en un único elemento dota al zero-G winder de una sensación más compleja que un zero-G roll convencional.',
+    relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
+    aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
+  },
+  {
+    id: 'banana-roll',
+    name: 'Banana Roll',
+    shortDefinition:
+      'Un elemento de doble inversión alargado y asimétrico en el que dos inversiones están conectadas por un arco curvo largo — con forma de banana visto desde arriba.',
+    definition:
+      'El banana roll es una variante estirada del concepto de doble inversión en la que las dos inversiones están más separadas y conectadas por una sección en curva amplia, en lugar de la geometría estrecha y simétrica de un cobra roll estándar. Visto desde arriba, la vía sigue un arco gradual a través de ambas inversiones que recuerda la curvatura de una banana. La geometría más abierta distribuye las dos inversiones a lo largo de una sección de vía más larga, ofreciendo al rider una experiencia más fluida y distendida a través de ambas inversiones en comparación con la intensidad rápida de un cobra roll convencional.\n\nEl banana roll apareció por primera vez en 2011 en Takabisha en Fuji-Q Highland, Japón, construido por Gerstlauer. S&S Worldwide desarrolló después su propia variante con doble inversión para Steel Curtain en Kennywood. Dado que el elemento requiere considerable espacio lateral, tiende a aparecer en instalaciones más grandes, a ras de suelo, donde la vía puede describir una trayectoria amplia entre las dos inversiones.',
+    relatedTermIds: ['cobra-roll', 'inversion', 'gerstlauer', 's-and-s-worldwide'],
+    aliases: ['banana roll'],
+  },
+  {
+    id: 'inclined-loop',
+    name: 'Looping Inclinado',
+    shortDefinition:
+      'Un looping vertical girado respecto a su eje perpendicular — el tren lo afronta y lo abandona en ángulo en lugar de de frente.',
+    definition:
+      'Un looping inclinado (en inglés inclined loop o tilted loop) es un looping vertical estándar rotado sobre su eje, normalmente entre 45 y 80 grados respecto a la dirección de marcha del tren. En lugar de que el tren entre y salga del looping en línea recta — como en un looping vertical clásico — lo afronta y lo abandona en diagonal, creando un perfil visual asimétrico y una sensación de conducción notablemente diferente.\n\nLa geometría inclinada cambia cómo los riders viven la inversión: la aproximación se siente más lateral que en un looping estándar, y la salida en la parte inferior del círculo proviene de una dirección inesperada, lo que puede ser tanto desorientador como emocionante. Para los espectadores, un looping inclinado luce dramáticamente distinto a uno recto y se reconoce al instante como inusual. Los loopings inclinados aparecen en varias montañas rusas de B&M e Intamin, a menudo en la parte media o final del trazado.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
+    aliases: ['tilted loop', 'looping torcido', 'inclined loop', 'looping inclinado'],
+  },
+  {
+    id: 'sea-serpent',
+    name: 'Sea Serpent',
+    shortDefinition:
+      'Elemento Vekoma de doble inversión en el que el tren sale en la misma dirección en la que entró.',
+    definition:
+      'El sea serpent es un elemento de doble inversión estrechamente asociado a los diseños de montañas rusas invertidas de Vekoma. Al igual que el cobra roll, consta de dos secuencias de inversión unidas por una sección central de conexión, pero la geometría de la vía difiere en un punto clave: mientras que el cobra roll hace girar el tren 180 grados, el sea serpent está diseñado para que el tren entre y salga en la misma dirección general. Las dos inversiones se elevan y descienden en una secuencia fluida sin invertir el rumbo del tren, dando al elemento, visto de lado, una apariencia larga en forma de S — como el cuerpo de una serpiente marina emergiendo entre dos olas.\n\nLos sea serpents aparecen en el modelo Suspended Looping Coaster (SLC) de Vekoma y en algunas de sus instalaciones personalizadas. Dado que el SLC ha sido producido en gran número para parques de todo el mundo, el sea serpent es uno de los elementos de doble inversión más extendidos a nivel global, aunque sea menos conocido por su nombre que el cobra roll.',
+    relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
+    aliases: ['sea serpent', 'roll over'],
+  },
+  {
+    id: 'barrel-roll-drop',
+    name: 'Barrel Roll Drop',
+    shortDefinition:
+      'Elemento firma de RMC que fusiona la primera caída y un barrel roll completo en una única secuencia continua — los riders quedan invertidos mientras todavía descienden.',
+    definition:
+      'El barrel roll drop es uno de los elementos firma más celebrados de Rocky Mountain Construction, fusionando dos experiencias normalmente separadas — la primera caída y una inversión completa — en una secuencia única e ininterrumpida. Tras abandonar el lifthill, la vía hace rotar el tren en un barrel roll completo mientras desciende simultáneamente: los riders quedan completamente invertidos cerca del punto más empinado de la caída, para luego ser devueltos a la posición vertical a medida que el tren alcanza la parte inferior y transiciona al resto del trazado.\n\nEl elemento fue posible gracias al sistema de vías de acero I-Box de RMC, que permite los radios ajustados y la compleja geometría tridimensional necesarios para un roll y una caída simultáneos — una combinación imposible en las vías de madera tradicionales. Medusa Steel Coaster en Six Flags México estuvo entre las primeras atracciones en incorporarlo; Steel Vengeance en Cedar Point y Zadra en Energylandia son otros ejemplos ampliamente reconocidos.',
+    relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
+    aliases: ['barrel roll drop', 'RMC barrel roll', 'barrel roll downdrop'],
+  },
+  {
+    id: 'mcbr',
+    name: 'MCBR',
+    shortDefinition:
+      'Mid-Course Brake Run — una zona de frenado a mitad del recorrido que puede detener el tren completamente para permitir la operación con múltiples trenes de forma segura.',
+    definition:
+      'Un mid-course brake run (MCBR) es una sección de frenos instalada en algún punto del centro del recorrido de una montaña rusa — después de los primeros elementos principales pero antes de la secuencia final. A diferencia de los trim brakes, que solo reducen la velocidad y dejan al tren continuar inmediatamente, un MCBR es un freno de bloque completo: puede detener el tren por completo y mantenerlo hasta que se confirme que la siguiente sección de bloque por delante está despejada. Esto permite operar múltiples trenes en el mismo circuito de forma simultánea sin riesgo de colisión, incrementando considerablemente la capacidad de la atracción.\n\nEn un día de operación concurrida con trenes a plena capacidad, un MCBR bien sincronizado liberará el tren detenido casi de inmediato y los riders apenas notarán la breve deceleración. En días más tranquilos con menos trenes en circulación, la parada puede durar más y resultar más brusca. Los MCBRs son estándar en la mayoría de las grandes montañas rusas: los B&M inverted y floorless, muchas atracciones Intamin y otras atracciones de alta capacidad los utilizan de forma rutinaria.',
+    relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
+    aliases: [
+      'mid-course brake run',
+      'freno de mitad de recorrido',
+      'freno intermedio',
+      'MCBR',
+    ],
+  },
+  {
+    id: 'interlocking-loops',
+    name: 'Loopings Entrelazados',
+    shortDefinition:
+      'Dos loopings verticales cuyos planos se cruzan — creando una vistosa estructura en forma de eslabón o figura ocho.',
+    definition:
+      'Los loopings entrelazados (en inglés interlocking loops) son dos loopings verticales posicionados de modo que sus planos estructurales se intersectan, generalmente en ángulos casi perpendiculares. El resultado es una configuración visual llamativa en la que un looping parece atravesar el otro desde ciertos ángulos, como un eslabón de cadena o un enorme ocho que surge del suelo. La complejidad estructural necesaria para hacer que dos loopings se crucen sin que las vías se toquen en realidad es considerable, pero el impacto visual convierte el elemento en un punto focal destacado en el horizonte del parque.\n\nLos loopings entrelazados se asocian más frecuentemente con los B&M inverted coasters y las montañas rusas de sentado diseñadas para un gran número de inversiones. Dragon Khan en PortAventura, durante mucho tiempo una de las montañas rusas más famosas de Europa, cuenta con loopings entrelazados como parte de su trazado de ocho inversiones, y la sección de loops cruzados es una de las más fotografiadas de la atracción.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
+    aliases: ['loopings entrelazados', 'interlocking loops', 'loops cruzados'],
+  },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'El mecanismo de trinquete en el lifthill que impide que el tren ruede hacia atrás — la fuente del icónico sonido clic-clac.',
+    definition:
+      'Un anti-rollback (también llamado "perro anti-rollback") es un mecanismo de seguridad mecánico instalado a lo largo de la parte inferior de un lifthill. A medida que el tren sube, unos trinquetes metálicos con resorte van encajando sobre una serie de dientes integrados en la estructura del lifthill. Si la cadena o el mecanismo de tracción fallara, los trinquetes se bloquearían en los dientes e inmovilizarían el tren, impidiendo que retroceda. El movimiento de trinquete sobre los dientes es el origen del rítmico sonido clic-clac que se ha convertido en una de las firmas acústicas más reconocibles de las montañas rusas tradicionales.\n\nEn las montañas rusas modernas con lifthill de cable silencioso o propulsión LSM, los anti-rollbacks se reemplazan a menudo por sistemas de frenado electromagnético silenciosos, motivo por el que algunos nuevos lifthill son notablemente más silenciosos. Algunos entusiastas lamentan la pérdida de este ritual sonoro clásico.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['anti-rollback device', 'trinquete anti-retroceso', 'clic-clac'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Elementos estructurales diseñados para pasar justo por encima de las cabezas de los riders a gran velocidad — creando una ilusión de casi impacto.',
+    definition:
+      'Los head choppers son elementos de diseño intencionales en los que la estructura de soporte, los travesaños, los túneles u otras secciones de vía pasan inmediatamente sobre las cabezas de los riders en el momento en que el tren viaja a plena velocidad. La proximidad y el momento crean una poderosa ilusión de que algo está a punto de golpear a los riders — un disparo de adrenalina sin peligro real, ya que el margen está precisamente calculado. La sensación es más intensa cuando los riders no lo anticipan.\n\nLos head choppers se asocian especialmente a las montañas rusas de madera muy compactas y a los inverted coasters, donde el perfil colgante de los trenes acerca a los riders a soportes y secciones de vía adyacentes. Para muchos entusiastas, unos head choppers bien diseñados son señal de creatividad en el trazado y contribuyen significativamente a la intensidad percibida de la atracción.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['head chopper', 'casi impacto', 'near miss'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'Cuando un operador aprieta los barcos de regazo o los arneses demasiado contra los riders — eliminando el confort y el airtime que la atracción fue diseñada para ofrecer.',
+    definition:
+      'El stapling se refiere a la práctica — intencional o por exceso de precaución — de un operador que empuja un lap bar o arnés de hombros tan firmemente contra un rider que queda mucho más ajustado de lo mínimo necesario para la seguridad. El término proviene de la sensación de estar "grapado" al asiento. En las montañas rusas centradas en el airtime, los lap bars deben quedar suficientemente sueltos para que los riders puedan elevarse ligeramente del asiento en las crestas de las colinas — eso es airtime. Un rider stapled permanece pegado al asiento durante toda la vuelta y no puede experimentar la sensación de flotación prevista, por bien diseñadas que estén las colinas.\n\nEl stapling es una fuente habitual de frustración en la comunidad de entusiastas, especialmente en montañas rusas de madera e híbridas donde el airtime es la atracción principal. Algunos parques son conocidos por su política sistemáticamente ajustada; otros se valoran por su libertad de lap bar.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['stapled', 'arnés demasiado ajustado', 'barra demasiado apretada'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'Cuando un tren de montaña rusa pierde suficiente velocidad a mitad del recorrido como para quedar atrapado en un punto bajo de la vía y no poder completar el circuito.',
+    definition:
+      'El valleying ocurre cuando un tren, habiendo perdido demasiada energía cinética durante la vuelta, no tiene suficiente impulso para superar el siguiente elemento y se detiene — o rueda hacia atrás — en un valle entre dos puntos altos de la vía. Al estar el tren en un punto bajo y no en una zona de frenos o en la estación, los sistemas de operación normales no pueden moverlo. La recuperación requiere normalmente que personal de mantenimiento empuje o cable el tren hasta el siguiente punto alto y evacúe a los riders.\n\nEl valleying es raro en condiciones normales de operación, ya que las atracciones están diseñadas con amplios márgenes de velocidad. Es más probable con clima muy frío (cuando los rodamientos funcionan rígidos), tras un frenado excesivo por trim brakes, o en montañas rusas de madera antiguas cuya geometría de vía ha variado con el tiempo.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['valleyed', 'tren atascado', 'tren varado'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wild Mouse',
+    shortDefinition:
+      'Un tipo de montaña rusa con pequeños vehículos individuales y un circuito compacto de curvas cerradas y planas en el borde de plataformas elevadas.',
+    definition:
+      'Una wild mouse (ratón salvaje) utiliza pequeños vehículos de dos a cuatro personas en lugar de trenes largos. Su sello distintivo es una serie de curvas en horquilla cerradas y poco peraltadas ejecutadas en los bordes más exteriores de la vía. La escasa inclinación — a diferencia de las curvas muy peraltadas de otras montañas rusas — lanza a los riders lateralmente contra la pared del vehículo, y la inercia del movimiento hace que la curva parezca llegar más tarde de lo esperado, creando la convincente sensación de que el vehículo está a punto de salirse de la vía.\n\nLas wild mouse son de las diseños más eficientes en cuanto a espacio, encajando una sorprendente cantidad de vía en una huella compacta al apilar los niveles de curvas en horquilla. Son comunes en parques de todo el mundo y de muy distintos tamaños. Fabricantes destacados: Mack Rides, Maurer y Gerstlauer.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['wild mouse coaster', 'ratón salvaje', 'Wilde Maus'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: 'Montaña Rusa 4D',
+    shortDefinition:
+      'Un tipo de montaña rusa cuyos asientos están montados en brazos giratorios que sobresalen a ambos lados del tren — y pueden girar independientemente de la dirección de marcha.',
+    definition:
+      'Una montaña rusa 4D (cuarta dimensión) es un diseño en el que los asientos de pasajeros no están fijados rígidamente al tren, sino montados en brazos giratorios que se extienden a izquierda y derecha de cada coche. Los asientos pueden girar hacia delante o hacia atrás independientemente de la dirección del tren — controlados bien por un raíl guía fijo junto a la vía principal (que impone una posición de asiento precisa en cada momento del recorrido), bien mediante rotación libre impulsada por la gravedad y la distribución del peso de los riders. El resultado: los pasajeros pueden mirar hacia abajo durante una caída, quedar invertidos en una curva, o rotar en varios ejes simultáneamente durante las inversiones.\n\nEl concepto fue desarrollado por Arrow Dynamics y refinado posteriormente por S&S Worldwide. X2 en Six Flags Magic Mountain (California) es el ejemplo más famoso, inaugurado en 2002 como primera montaña rusa 4D del mundo. Eejanaika en Fuji-Q Highland, Japón, ostenta el récord mundial de inversiones de cualquier montaña rusa, en parte gracias a la rotación de los asientos, que multiplica el recuento de inversiones.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D coaster', 'cuarta dimensión', 'montaña rusa cuarta dimensión', 'free spin coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'Un trazado de montaña rusa que se aleja de la estación en línea relativamente recta, da la vuelta al final del terreno y regresa en paralelo.',
+    definition:
+      'Un out-and-back es uno de los dos tipos de trazado fundamentales de montaña rusa. El tren sale de la estación, avanza en una dirección globalmente lineal — habitualmente con una serie de colinas optimizadas para airtime — ejecuta un giro en el extremo del terreno y regresa por una trayectoria paralela al tramo de ida. Los dos tramos rara vez se cruzan, dando un plano largo y estrecho.\n\nLos diseños out-and-back están fuertemente asociados a las montañas rusas de madera tradicionales, donde la velocidad acumulada en las largas colinas de ida se aprovecha en la vuelta mediante una sucesión de colinas progresivamente más cortas y rápidas que maximizan el floater airtime. Ejemplos famosos incluyen The Voyage en Holiday World y los distintos modelos del tipo Racer.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['out and back', 'trazado out-and-back', 'ida y vuelta'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'Un trazado de montaña rusa que en espiral, da vueltas y se cruza sobre sí mismo — empaquetando el máximo de elementos en una huella compacta.',
+    definition:
+      'Un twister (también llamado layout de ciclón) es un diseño de montaña rusa en el que la vía espirala, se pliega sobre sí misma y se cruza repetidamente, tejiendo una estructura intrincada en lugar de seguir el camino de dos tramos del out-and-back. El rasgo definitorio es que el tren pasa frecuentemente muy cerca de otras secciones de la misma vía — a menudo en distintas direcciones y alturas — creando efectos head-chopper y una complejidad visual característica.\n\nLos trazados twister son eficientes en cuanto a espacio: mucha longitud de vía y desnivel caben en una huella compacta, lo que los convierte en una opción popular en parques con espacio limitado. Los twisters de madera incluyen clásicos como el Twister de Gröna Lund en Estocolmo; los twisters de acero abarcan muchos diseños de B&M e Intamin.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['twister layout', 'ciclón', 'trazado twister'],
   },
 ];
 
