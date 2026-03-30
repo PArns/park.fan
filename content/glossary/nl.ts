@@ -576,7 +576,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'zero-g-roll',
-    name: 'Zero-g Roll',
+    name: 'Zero-G Roll',
     shortDefinition:
       'Een 360-graden rol langs een parabolische boog waarbij rijders aan het hoogste punt bijna gewichtloosheid ervaren — een van de meest gevierde elementen in modern achtbaanontwerp.',
     definition:
@@ -654,7 +654,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Kurketrekker',
+    name: 'Corkscrew',
     shortDefinition:
       'Een vat-rol-inversie waarbij het spoor 360 graden spiraalvormig om een centrale as draait — een van de vroegste en meest gebouwde inversietypen.',
     definition:
@@ -1018,7 +1018,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'G-Kracht',
+    name: 'G-Force',
     shortDefinition:
       'De eenheid van versnelling die passagiers ervaren, gemeten als veelvouden van de zwaartekrachtversnelling op Aarde (9,81 m/s²).',
     definition:
@@ -1028,7 +1028,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Laterale G-Krachten',
+    name: 'Lateral Gs',
     shortDefinition:
       'Zijdelingse krachten die passagiers opzij duwen tijdens bochten, overgangen en helixgedeelten.',
     definition:

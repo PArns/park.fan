@@ -13,7 +13,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'single-rider',
-    name: 'Einzelfahrer',
+    name: 'Single Rider',
     shortDefinition:
       'Eine separate Warteschlangenspur für Besucher, die bereit sind, allein zu fahren, um freie Plätze zu füllen.',
     definition:
@@ -548,7 +548,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'airtime-hill',
-    name: 'Airtime-Hügel',
+    name: 'Airtime Hill',
     shortDefinition:
       'Ein kuppelförmiges Element, das negative G-Kräfte erzeugt und die Fahrgäste aus dem Sitz hebt — das Herzstück jeder guten Hypercoaster-Strecke.',
     definition:
@@ -570,7 +570,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'block-brake',
-    name: 'Blockbremse',
+    name: 'Block Brake',
     shortDefinition:
       'Eine Bremssektion, die die Strecke in unabhängige Blöcke aufteilt, damit mehrere Züge gleichzeitig ohne Kollisionsgefahr fahren können.',
     definition:
@@ -597,7 +597,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Korkenzieher',
+    name: 'Corkscrew',
     shortDefinition:
       'Eine spiralförmige 360-Grad-Inversion, bei der die Strecke um eine Mittelachse gewickelt ist — einer der frühesten und meistgebauten Inversionstypen.',
     definition:
@@ -905,7 +905,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'overbank',
-    name: 'Übergeneigte Kurve',
+    name: 'Overbanked Turn',
     shortDefinition:
       'Kurve, bei der die Schiene über 90° geneigt ist — die Fahrgäste werden kurzzeitig über die Senkrechte hinaus gekippt.',
     definition:
@@ -916,7 +916,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'trim-brake',
-    name: 'Trim-Bremse',
+    name: 'Trim Brake',
     shortDefinition:
       'Eine Magnetbremse im Streckenverlauf, die den Zug abbremst, ohne ihn vollständig anzuhalten.',
     definition:
@@ -1018,7 +1018,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'G-Kraft',
+    name: 'G-Force',
     shortDefinition:
       'Die Beschleunigungseinheit, die Fahrgäste erleben, gemessen in Vielfachen der Erdgravitation (9,81 m/s²).',
     definition:
@@ -1028,7 +1028,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Seitliche G-Kräfte',
+    name: 'Lateral Gs',
     shortDefinition:
       'Seitwärtskräfte, die Fahrgäste auf Kurven, Übergängen und Helix-Abschnitten seitlich in den Sitz drücken.',
     definition:
@@ -1371,7 +1371,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'character-meet-and-greet',
-    name: 'Charaktertreffen',
+    name: 'Character Meet & Greet',
     shortDefinition: 'Geplante Möglichkeit, einem Parkkostümcharakter persönlich zu begegnen.',
     definition:
       'Ein Charaktertreffen (Character Meet & Greet) ist ein ausgewiesener Bereich oder ein geplantes Event, bei dem Gäste Kostümcharakteren begegnen, für Fotos posieren und Autogramme erhalten können. Besonders beliebt in Disney- und Universal-Parks; populäre Charaktere haben oft eigene Meet-&-Greet-Bereiche mit eigenem Wartesystem. Besonders bei Familien mit Kindern sehr beliebt.',
@@ -1450,7 +1450,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'character-dining',
-    name: 'Charakter-Dinner',
+    name: 'Character Dining',
     shortDefinition: 'Restaurant, bei dem Kostümcharaktere die Tische der Gäste besuchen.',
     definition:
       "Character Dining ist ein Tischservice- (oder gelegentlich Buffet-)Restauranterlebnis, bei dem Kostümcharaktere jeden Tisch besuchen, mit Gästen interagieren, Fotos machen und Autogramme geben. Es garantiert Charakterbegegnungen ohne separates Warteschlangenanstehen, was es bei Familien besonders beliebt macht. Beispiele: Chef Mickey's (Disney World) und das Prinzessinnen-Dinner in der Auberge de Cendrillon (Disneyland Paris).",

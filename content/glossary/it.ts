@@ -577,7 +577,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'zero-g-roll',
-    name: 'Zero-g Roll',
+    name: 'Zero-G Roll',
     shortDefinition:
       "Un rollio di 360 gradi che segue un arco parabolico in cui i passeggeri sperimentano quasi l'assenza di peso all'apice — uno degli elementi più celebrati nel design moderno dei coaster.",
     definition:
@@ -655,7 +655,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Cavatappi',
+    name: 'Corkscrew',
     shortDefinition:
       "Un'inversione a rollio a botte in cui il binario si avvolge a spirale di 360 gradi attorno a un asse centrale — uno dei primi e più diffusi tipi di inversione.",
     definition:
@@ -1020,7 +1020,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'Forza G',
+    name: 'G-Force',
     shortDefinition:
       "L'unità di accelerazione sperimentata dai passeggeri, misurata come multipli dell'accelerazione gravitazionale terrestre (9,81 m/s²).",
     definition:
@@ -1030,7 +1030,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Forze Laterali',
+    name: 'Lateral Gs',
     shortDefinition:
       'Forze orizzontali che spingono i passeggeri di lato durante curve, transizioni e sezioni a elica.',
     definition:
@@ -1464,7 +1464,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'drop-tower',
-    name: 'Torre di Caduta',
+    name: 'Drop Tower',
     shortDefinition:
       'Attrazione a torre che porta i visitatori in quota e li lascia cadere in una rapida discesa in caduta libera.',
     definition:

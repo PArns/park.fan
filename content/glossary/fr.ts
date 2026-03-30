@@ -579,7 +579,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'zero-g-roll',
-    name: 'Zero-g Roll',
+    name: 'Zero-G Roll',
     shortDefinition:
       "Un tonneau à 360° suivant un arc parabolique où les passagers ressentent une quasi-apesanteur au sommet — l'un des éléments les plus appréciés du design moderne de coasters.",
     definition:
@@ -619,7 +619,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'helix',
-    name: 'Hélix',
+    name: 'Helix',
     shortDefinition:
       "Une section en spirale continue où la voie s'enroule autour d'un axe central, générant des G-forces latérales soutenues.",
     definition:
@@ -657,7 +657,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Tire-bouchon',
+    name: 'Corkscrew',
     shortDefinition:
       "Une inversion en tonneau où la voie spirale à 360° autour d'un axe central — l'un des premiers types d'inversions construits et les plus répandus.",
     definition:
@@ -1021,7 +1021,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'Force G',
+    name: 'G-Force',
     shortDefinition:
       "L'unité d'accélération ressentie par les passagers, mesurée en multiples de l'accélération gravitationnelle terrestre (9,81 m/s²).",
     definition:
@@ -1031,7 +1031,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Forces Latérales',
+    name: 'Lateral Gs',
     shortDefinition:
       'Forces horizontales qui poussent les passagers sur les côtés lors de virages, transitions et sections en hélice.',
     definition:

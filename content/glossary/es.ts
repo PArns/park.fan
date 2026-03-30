@@ -577,7 +577,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'zero-g-roll',
-    name: 'Zero-g Roll',
+    name: 'Zero-G Roll',
     shortDefinition:
       'Un giro de 360 grados sobre un arco parabólico donde los pasajeros experimentan casi ingravidez en la cima — uno de los elementos más celebrados del diseño moderno de coasters.',
     definition:
@@ -655,7 +655,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'corkscrew',
-    name: 'Sacacorchos',
+    name: 'Corkscrew',
     shortDefinition:
       'Una inversión en barril donde la pista espira 360 grados alrededor de un eje central — uno de los tipos de inversión más antiguos y ampliamente construidos.',
     definition:
@@ -1020,7 +1020,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'g-force',
-    name: 'Fuerza G',
+    name: 'G-Force',
     shortDefinition:
       'La unidad de aceleración que experimentan los pasajeros, medida como múltiplos de la aceleración gravitacional terrestre (9,81 m/s²).',
     definition:
@@ -1030,7 +1030,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lateral-gs',
-    name: 'Fuerzas Laterales',
+    name: 'Lateral Gs',
     shortDefinition:
       'Fuerzas horizontales que empujan a los pasajeros hacia los lados en curvas, transiciones y secciones en hélice.',
     definition:
@@ -1481,7 +1481,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'drop-tower',
-    name: 'Torre de Caída',
+    name: 'Drop Tower',
     shortDefinition:
       'Atracción tipo torre que sube a los visitantes a gran altura y los suelta en una caída libre vertiginosa.',
     definition:

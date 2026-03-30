@@ -424,7 +424,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'rmc',
-    name: 'Rocky Mountain Construction',
+    name: 'RMC',
     shortDefinition:
       'An Idaho-based manufacturer that invented the hybrid coaster concept, converting ageing wooden coasters into steel I-box track rides with unprecedented airtime and inversions.',
     definition:
@@ -466,7 +466,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'lifthill',
-    name: 'Lift Hill',
+    name: 'Lifthill',
     shortDefinition:
       'The mechanically powered ascent that pulls a coaster train to its highest point, building the potential energy that powers the rest of the ride.',
     definition:
@@ -709,7 +709,7 @@ const translations: GlossaryTermTranslation[] = [
   },
   {
     id: 'credit',
-    name: 'Coaster Credit',
+    name: 'Credit',
     shortDefinition:
       'A roller coaster an enthusiast has ridden and logged to their personal count — collecting credits is a defining hobby in the coaster community.',
     definition:
