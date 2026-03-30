@@ -8,6 +8,7 @@ import { LocaleContent } from '@/components/common/locale-content';
 import { Link } from '@/i18n/navigation';
 import { PopularParksGridClient } from '@/components/home/featured-parks-section-client';
 
+import { formatInTimeZone } from 'date-fns-tz';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
@@ -328,6 +329,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
   let dtFmt: Intl.DateTimeFormat | null = null;
   let dateFmt: Intl.DateTimeFormat | null = null;
   let bestIdx = -1;
+  let timezone = 'Europe/Berlin';
 
   try {
     const today = new Date();
@@ -340,14 +342,12 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
       includeHourly: 'none',
     });
 
+    timezone = calendar.meta.timezone ?? 'Europe/Berlin';
     days = calendar.days.slice(0, 7);
 
     if (days.length > 0) {
-      dtFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', { weekday: 'short' });
-      dateFmt = new Intl.DateTimeFormat(locale === 'de' ? 'de' : 'en', {
-        day: 'numeric',
-        month: 'short',
-      });
+      dtFmt = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+      dateFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' });
       bestIdx = days.reduce((best, d, i) => {
         if (d.status === 'CLOSED') return best;
         const order = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme', 'closed'];
@@ -363,7 +363,18 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
   // ── Render outside try/catch ───────────────────────────────────────────────
   if (days.length === 0 || !dtFmt || !dateFmt) return <MockCalendar locale={locale} />;
 
-  const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+  const bestLabel =
+    locale === 'de'
+      ? '✓ Bester Tag'
+      : locale === 'es'
+        ? '✓ Mejor Día'
+        : locale === 'fr'
+          ? '✓ Meilleur Jour'
+          : locale === 'it'
+            ? '✓ Miglior Giorno'
+            : locale === 'nl'
+              ? '✓ Beste Dag'
+              : '✓ Best Day';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
   const renderDay = (day: CalendarDay, i: number) => {
@@ -383,7 +394,9 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
       crowd === 'closed'
         ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
         : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
-    const hoursStr = day.hours ? `${day.hours.openingTime}–${day.hours.closingTime}` : '—';
+    const hoursStr = day.hours
+      ? `${formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')}–${formatInTimeZone(day.hours.closingTime, timezone, 'HH:mm')}`
+      : '—';
     const tempStr = day.weather ? `${Math.round(day.weather.tempMax)}°C` : '';
     const avgStr = day.avgWaitTime ? `${day.avgWaitTime} min` : '—';
     const scheduleIcon =
@@ -429,9 +442,11 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
             <span>{tempStr}</span>
           </div>
         )}
-        <div className="text-muted-foreground text-center text-[9px]">
-          {avgLabel} {avgStr}
-        </div>
+        {day.avgWaitTime && (
+          <div className="text-muted-foreground text-center text-[9px]">
+            {avgLabel} {avgStr}
+          </div>
+        )}
       </Card>
     );
   };
@@ -456,7 +471,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
 
 // ─── Mock example components ──────────────────────────────────────────────────
 
-type MockLocale = 'de' | 'en';
+type MockLocale = 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl';
 
 const CROWD_LABELS: Record<MockLocale, Record<string, string>> = {
   de: {
@@ -474,6 +489,38 @@ const CROWD_LABELS: Record<MockLocale, Record<string, string>> = {
     high: 'High',
     very_high: 'Very High',
     extreme: 'Extreme',
+  },
+  es: {
+    very_low: 'Muy Bajo',
+    low: 'Bajo',
+    moderate: 'Moderado',
+    high: 'Alto',
+    very_high: 'Muy Alto',
+    extreme: 'Extremo',
+  },
+  fr: {
+    very_low: 'Très Bas',
+    low: 'Bas',
+    moderate: 'Modéré',
+    high: 'Élevé',
+    very_high: 'Très Élevé',
+    extreme: 'Extrême',
+  },
+  it: {
+    very_low: 'Molto Basso',
+    low: 'Basso',
+    moderate: 'Moderato',
+    high: 'Alto',
+    very_high: 'Molto Alto',
+    extreme: 'Estremo',
+  },
+  nl: {
+    very_low: 'Zeer Laag',
+    low: 'Laag',
+    moderate: 'Matig',
+    high: 'Hoog',
+    very_high: 'Zeer Hoog',
+    extreme: 'Extreem',
   },
 };
 
@@ -978,8 +1025,8 @@ function MockNearbyCards({ locale }: { locale: MockLocale }) {
       {/* Card 2: not favorited, offseason closed */}
       <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
         <BackgroundOverlay
-          imageSrc="/images/parks/efteling/background.jpg"
-          alt="Efteling"
+          imageSrc="/images/parks/europa-park/background.jpg"
+          alt="Europa-Park"
           intensity="medium"
         />
         <div className="absolute top-2 right-2 z-20">
@@ -1109,7 +1156,18 @@ const CALENDAR_DAYS: MockCalendarDay[] = [
 
 function MockCalendar({ locale }: { locale: MockLocale }) {
   const li = locale === 'de' ? 0 : 1;
-  const bestLabel = locale === 'de' ? '✓ Bester Tag' : '✓ Best Day';
+  const bestLabel =
+    locale === 'de'
+      ? '✓ Bester Tag'
+      : locale === 'es'
+        ? '✓ Mejor Día'
+        : locale === 'fr'
+          ? '✓ Meilleur Jour'
+          : locale === 'it'
+            ? '✓ Miglior Giorno'
+            : locale === 'nl'
+              ? '✓ Beste Dag'
+              : '✓ Best Day';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
   return (
@@ -1928,7 +1986,9 @@ function ContentDE() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="de" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="de" />
+          </div>
         </SubSection>
 
         <SubSection title="Attraktion-Kalender">
@@ -3059,7 +3119,9 @@ function ContentENSections() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="en" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="en" />
+          </div>
         </SubSection>
 
         <SubSection title="Attraction calendar">
@@ -3879,7 +3941,9 @@ function ContentESSections() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="en" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="es" />
+          </div>
         </SubSection>
 
         <SubSection title="Calendario de atracciones">
@@ -4715,7 +4779,9 @@ function ContentFRSections() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="en" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="fr" />
+          </div>
         </SubSection>
 
         <SubSection title="Calendrier des attractions">
@@ -5556,7 +5622,9 @@ function ContentITSections() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="en" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="it" />
+          </div>
         </SubSection>
 
         <SubSection title="Calendario delle attrazioni">
@@ -6373,7 +6441,9 @@ function ContentNLSections() {
               </span>
             </li>
           </ol>
-          <LiveCalendarExample locale="en" />
+          <div className="mt-6">
+            <LiveCalendarExample locale="nl" />
+          </div>
         </SubSection>
 
         <SubSection title="Attractiekalender">

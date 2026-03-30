@@ -76,6 +76,24 @@ Use the park timezone when rendering times:
 - **`ParkTimeInfo`**: receives `timezone={park.timezone}` and uses it for live time.
 - **date-fns-tz:** `formatInTimeZone(date, park.timezone, 'HH:mm')` or similar.
 
+### Calendar hours (`CalendarDay.hours.openingTime` / `closingTime`)
+
+These are **UTC ISO strings** (e.g. `2026-03-30T07:00:00.000Z`). Always convert using the park timezone — **never** use `format(parseISO(...), 'HH:mm')` from plain `date-fns`, which would render UTC time on the server.
+
+```ts
+import { formatInTimeZone } from 'date-fns-tz';
+
+// ✅ Correct — shows local park time (e.g. 09:00 for Europe/Berlin UTC+2)
+const open  = formatInTimeZone(day.hours.openingTime,  timezone, 'HH:mm');
+const close = formatInTimeZone(day.hours.closingTime, timezone, 'HH:mm');
+
+// ❌ Wrong — renders UTC time on the server
+import { format, parseISO } from 'date-fns';
+const open = format(parseISO(day.hours.openingTime), 'HH:mm');
+```
+
+The timezone comes from `IntegratedCalendarResponse.meta.timezone` (or `park.timezone`).
+
 ---
 
 ## Where we use it
@@ -84,7 +102,8 @@ Use the park timezone when rendering times:
 | ----------------------- | ------------------------------------------------------------------------------- |
 | Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`    |
 | FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                       |
-| Calendar                | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone` |
+| Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
+| Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone` |
 | ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                      |
 
 ---
