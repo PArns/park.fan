@@ -1638,6 +1638,86 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
     aliases: ['verstrengelde loops', 'interlocking loops', 'gekruiste loops'],
   },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'Het pal-veiligheidssysteem op een lifthill dat verhindert dat de trein achteruit rolt — en de bron van het kenmerkende klik-klak-geluid.',
+    definition:
+      'Een anti-rollback (ook wel rollback-pal) is een mechanisch veiligheidssysteem dat langs de onderkant van een lifthill is aangebracht. Terwijl de trein omhoog klimt, rasten veerbelaste metalen klinken over een tandenreeks die in de lifthillstructuur is verzonken. Als de ketting of de aandrijving zou falen, grijpen de klinken in de tanden en blokkeren ze de trein zodat hij niet achteruit kan rollen. Het rasten van de klinken over de tanden is de bron van het ritmische klik-klak-geluid dat is uitgegroeid tot een van de meest herkenbare geluidskenmerken van traditionele achtbanen.\n\nOp moderne achtbanen met stille kabelliften of LSM-aangedreven lifthills worden anti-rollbackklinken vaak vervangen door stille elektromagnetische remsystemen — daarom zijn sommige nieuwe lifthills merkbaar stiller. Enthousiastelingen betreuren soms het verlies van dit klassieke akoestische ritueel.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['anti-rollback systeem', 'rollback-pal', 'klik-klak'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Constructie-elementen die ontworpen zijn om rakelings over de hoofden van rijders te passeren — een aangrijpende bijna-botsing-illusie.',
+    definition:
+      'Head choppers zijn bewuste ontwerpelementen waarbij de draagconstructie, dwarsverbanden, tunnels of andere baansecties op het moment dat de trein op topsnelheid rijdt, direct boven de hoofden van de rijders doorgaan. De nabijheid en timing creëren een krachtige illusie dat er iets op het punt staat de rijders te raken — een adrenalinemomenten zonder enig echt gevaar, want de vrije ruimte is precies berekend. Het effect is het sterkst wanneer rijders er niet op voorbereid zijn: een trein die uit een gecantelde bocht accelereert kan onder een lage ligger doorscheuren voordat het brein de situatie kan registreren.\n\nHead choppers zijn sterk geassocieerd met strak gebouwde houten achtbanen en inverted coasters, waar het hangende profiel van de treinen rijders dicht bij steunpilaren en aangrenzende baansecties brengt. Voor veel enthousiastelingen zijn goed ontworpen head choppers een teken van creatief baanontwerp.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['head chopper', 'bijna-botsing', 'near miss'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'Wanneer een rijoperator beugels of schouderbanden te strak aantrekt — waardoor comfort en airtime verloren gaan.',
+    definition:
+      'Stapling verwijst naar de praktijk — opzettelijk of uit overvoorzichtigheid — waarbij een operator een schootbeugel of schouderbeugel zo stevig tegen een rijder aandruwt dat die significant strakker zit dan de minimaal vereiste veiligheidsstand. De term komt van het gevoel in de stoel te zijn "geniet". Bij airtime-georiënteerde achtbanen zijn schootbeugels juist bedoeld om los genoeg te zitten zodat rijders aan de top van heuvels iets van hun stoel kunnen loskomen — dat is airtime. Een gestapelde rijder wordt tijdens de hele rit plat op de stoel gedrukt en kan het beoogde zweefgevoel niet ervaren, hoe goed de heuvels ook zijn ontworpen.\n\nStapling is een veelgehoorde bron van frustratie in de enthousiastengemeenschap, met name bij houten achtbanen en hybride coasters waar airtime de hoofdattractiviteit is. Sommige parken staan bekend om hun consequent losse, rijdersvriendelijke beugelpolitiek; anderen worden bekritiseerd voor systematisch te strak aantrekken.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['gestapeld', 'te strakke beugel', 'over-stapled'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'Wanneer een achtbaantrein halverwege genoeg vaart verliest om vast te komen zitten in een laagpunt van de baan en de rit niet kan afmaken.',
+    definition:
+      'Valleying treedt op wanneer een trein tijdens de rit te veel kinetische energie heeft verloren, onvoldoende snelheid meer heeft om het volgende element te overwinnen en tot stilstand komt — of terugrollt — in een dal tussen twee hoge punten op de baan. Omdat de trein nu op een laagpunt staat en niet op een remzone of in het station, kunnen de normale bedrijfssystemen hem niet bewegen. Berging vereist doorgaans onderhoudspersoneel dat de trein handmatig over het volgende hoge punt duwt of wintst en de rijders evacueert.\n\nValleying is zeldzaam onder normale bedrijfsomstandigheden omdat achtbanen zijn ontworpen met ruime snelheidsmarges. Het is vaker waarschijnlijk bij ongewoon koud weer (wanneer wiellagering traag werkt), na overmatig remmen via trimbremmen, of op verouderde houten achtbanen waarvan de baangeometrie in de loop der tijd is verschoven.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['valleyed', 'vastgelopen trein', 'trein in dal'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wild Mouse',
+    shortDefinition:
+      'Een achtbaantype met kleine individuele wagentjes en een compact circuit van strakke, vlakke haarspeldbochten aan de rand van verhoogde platforms.',
+    definition:
+      'Een wild mouse (wilde muis) gebruikt kleine wagentjes van twee tot vier personen in plaats van lange treinen. Het handelsmerk is een reeks strakke, nauwelijks gecantelde haarspeldbochten die aan de buitenste rand van de baan worden genomen. Omdat de bochten niet steil zijn gecanteld — anders dan bij andere achtbanen — worden rijders zijdelings tegen de wand van het wagentje geduwd, en door de traagheid van de aanloop lijkt de bocht later te komen dan verwacht, wat de overtuigende illusie schept dat het wagentje van de baan gaat glijden.\n\nWild mouse-achtbanen behoren tot de meest ruimte-efficiënte ontwerpen en verpakken verrassend veel baanlengte in een compacte footprint door de niveaus van haarspeldbochten op elkaar te stapelen. Ze zijn wereldwijd te vinden bij parken van uiteenlopende grootte. Fabrikanten zijn onder meer Mack Rides, Maurer en Gerstlauer.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['wild mouse coaster', 'wilde muis', 'Wilde Maus'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: '4D Coaster',
+    shortDefinition:
+      'Een achtbaantype waarbij stoelen op roterende armen buiten de trein zijn gemonteerd en onafhankelijk van de rijrichting kunnen draaien.',
+    definition:
+      'Een fourth dimension coaster (4D-coaster) is een ontwerp waarbij de passagiersstoelen niet vast aan de trein zijn bevestigd, maar op zwenkbare armen die links en rechts van elke wagen uitsteken. De stoelen kunnen naar voren of achteren draaien onafhankelijk van de rijrichting — aangestuurd door een vaste stuurrail naast de hoofdbaan (die de stoelpositie op elk moment van het parcours bepaalt) of door vrije rotatie aangedreven door zwaartekracht en gewichtsverdeling. Het resultaat: passagiers kunnen tijdens een afdaling naar beneden wijzen, in een bocht ondersteboven hangen of bij inversies tegelijkertijd om meerdere assen roteren.\n\nHet concept werd ontwikkeld door Arrow Dynamics en later verfijnd door S&S Worldwide. X2 in Six Flags Magic Mountain (Californië) is de bekendste 4D-coaster ter wereld, geopend in 2002 als de eerste van zijn soort. Eejanaika in Fuji-Q Highland, Japan, houdt het record voor het hoogste inversieaantal van elke achtbaan, mede dankzij de stoelrotatie die het inversionstelling verveelvoudigt.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D coaster', '4D-achtbaan', 'vierde dimensie achtbaan', 'free spin coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'Een achtbaanparcours dat rechtlijnig van het station wegloopt, aan het einde van het terrein omkeert en parallel terugkeert.',
+    definition:
+      'Een out-and-back is een van de twee fundamentele achtbaanparcourstypen. De trein verlaat het station, rijdt in een globaal rechte richting weg — doorgaans over een reeks heuvels geoptimaliseerd voor airtime — maakt een keerpunt aan het einde van het terrein en keert terug over een parcours parallel aan het heentraject. De twee benen kruisen elkaar zelden, wat een lang en smal grondplan oplevert.\n\nOut-and-back-ontwerpen zijn sterk geassocieerd met traditionele houten achtbanen, waarbij de op het lange heentraject opgebouwde snelheid op de terugweg wordt benut door een reeks steeds snellere, lagere heuvels die maximale floater-airtime opleveren. Bekende voorbeelden zijn The Voyage in Holiday World en diverse Racer-modellen.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['out and back', 'out-and-back parcours', 'heen-en-terugachtbaan'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'Een achtbaanparcours dat spiraalvormig over zichzelf terugvouwt — maximale elementen in een compact grondplan.',
+    definition:
+      'Een twister-coaster (ook cyclone-layout) is een achtbaanontwerp waarbij de baan spiraalvormig verloopt, terugvouwt en zich herhaaldelijk boven of onder zichzelf kruist, in plaats van het eenvoudige tweebenigetraject van een out-and-back. Het kenmerkende is dat de trein regelmatig vlak langs andere secties van dezelfde baan passeert — vaak in verschillende richtingen en op verschillende hoogtes — waardoor head-chopper-effecten en visuele complexiteit ontstaan.\n\nTwister-layouts zijn ruimte-efficiënt: veel baanlengte en hoogteverschil kunnen in een compacte, ruwweg vierkante footprint worden samengebracht. Dit maakt ze populair bij parken met beperkte ruimte. Houten twisters zijn onder meer de Twister in Gröna Lund in Stockholm; stalen twisters omvatten veel B&M- en Intamin-ontwerpen.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['twister layout', 'cyclone', 'twister achtbaan'],
+  },
 ];
 
 export default translations;

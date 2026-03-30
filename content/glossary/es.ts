@@ -1673,6 +1673,86 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
     aliases: ['loopings entrelazados', 'interlocking loops', 'loops cruzados'],
   },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'El mecanismo de trinquete en el lifthill que impide que el tren ruede hacia atrás — la fuente del icónico sonido clic-clac.',
+    definition:
+      'Un anti-rollback (también llamado "perro anti-rollback") es un mecanismo de seguridad mecánico instalado a lo largo de la parte inferior de un lifthill. A medida que el tren sube, unos trinquetes metálicos con resorte van encajando sobre una serie de dientes integrados en la estructura del lifthill. Si la cadena o el mecanismo de tracción fallara, los trinquetes se bloquearían en los dientes e inmovilizarían el tren, impidiendo que retroceda. El movimiento de trinquete sobre los dientes es el origen del rítmico sonido clic-clac que se ha convertido en una de las firmas acústicas más reconocibles de las montañas rusas tradicionales.\n\nEn las montañas rusas modernas con lifthill de cable silencioso o propulsión LSM, los anti-rollbacks se reemplazan a menudo por sistemas de frenado electromagnético silenciosos, motivo por el que algunos nuevos lifthill son notablemente más silenciosos. Algunos entusiastas lamentan la pérdida de este ritual sonoro clásico.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['anti-rollback device', 'trinquete anti-retroceso', 'clic-clac'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Elementos estructurales diseñados para pasar justo por encima de las cabezas de los riders a gran velocidad — creando una ilusión de casi impacto.',
+    definition:
+      'Los head choppers son elementos de diseño intencionales en los que la estructura de soporte, los travesaños, los túneles u otras secciones de vía pasan inmediatamente sobre las cabezas de los riders en el momento en que el tren viaja a plena velocidad. La proximidad y el momento crean una poderosa ilusión de que algo está a punto de golpear a los riders — un disparo de adrenalina sin peligro real, ya que el margen está precisamente calculado. La sensación es más intensa cuando los riders no lo anticipan.\n\nLos head choppers se asocian especialmente a las montañas rusas de madera muy compactas y a los inverted coasters, donde el perfil colgante de los trenes acerca a los riders a soportes y secciones de vía adyacentes. Para muchos entusiastas, unos head choppers bien diseñados son señal de creatividad en el trazado y contribuyen significativamente a la intensidad percibida de la atracción.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['head chopper', 'casi impacto', 'near miss'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'Cuando un operador aprieta los barcos de regazo o los arneses demasiado contra los riders — eliminando el confort y el airtime que la atracción fue diseñada para ofrecer.',
+    definition:
+      'El stapling se refiere a la práctica — intencional o por exceso de precaución — de un operador que empuja un lap bar o arnés de hombros tan firmemente contra un rider que queda mucho más ajustado de lo mínimo necesario para la seguridad. El término proviene de la sensación de estar "grapado" al asiento. En las montañas rusas centradas en el airtime, los lap bars deben quedar suficientemente sueltos para que los riders puedan elevarse ligeramente del asiento en las crestas de las colinas — eso es airtime. Un rider stapled permanece pegado al asiento durante toda la vuelta y no puede experimentar la sensación de flotación prevista, por bien diseñadas que estén las colinas.\n\nEl stapling es una fuente habitual de frustración en la comunidad de entusiastas, especialmente en montañas rusas de madera e híbridas donde el airtime es la atracción principal. Algunos parques son conocidos por su política sistemáticamente ajustada; otros se valoran por su libertad de lap bar.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['stapled', 'arnés demasiado ajustado', 'barra demasiado apretada'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'Cuando un tren de montaña rusa pierde suficiente velocidad a mitad del recorrido como para quedar atrapado en un punto bajo de la vía y no poder completar el circuito.',
+    definition:
+      'El valleying ocurre cuando un tren, habiendo perdido demasiada energía cinética durante la vuelta, no tiene suficiente impulso para superar el siguiente elemento y se detiene — o rueda hacia atrás — en un valle entre dos puntos altos de la vía. Al estar el tren en un punto bajo y no en una zona de frenos o en la estación, los sistemas de operación normales no pueden moverlo. La recuperación requiere normalmente que personal de mantenimiento empuje o cable el tren hasta el siguiente punto alto y evacúe a los riders.\n\nEl valleying es raro en condiciones normales de operación, ya que las atracciones están diseñadas con amplios márgenes de velocidad. Es más probable con clima muy frío (cuando los rodamientos funcionan rígidos), tras un frenado excesivo por trim brakes, o en montañas rusas de madera antiguas cuya geometría de vía ha variado con el tiempo.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['valleyed', 'tren atascado', 'tren varado'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wild Mouse',
+    shortDefinition:
+      'Un tipo de montaña rusa con pequeños vehículos individuales y un circuito compacto de curvas cerradas y planas en el borde de plataformas elevadas.',
+    definition:
+      'Una wild mouse (ratón salvaje) utiliza pequeños vehículos de dos a cuatro personas en lugar de trenes largos. Su sello distintivo es una serie de curvas en horquilla cerradas y poco peraltadas ejecutadas en los bordes más exteriores de la vía. La escasa inclinación — a diferencia de las curvas muy peraltadas de otras montañas rusas — lanza a los riders lateralmente contra la pared del vehículo, y la inercia del movimiento hace que la curva parezca llegar más tarde de lo esperado, creando la convincente sensación de que el vehículo está a punto de salirse de la vía.\n\nLas wild mouse son de las diseños más eficientes en cuanto a espacio, encajando una sorprendente cantidad de vía en una huella compacta al apilar los niveles de curvas en horquilla. Son comunes en parques de todo el mundo y de muy distintos tamaños. Fabricantes destacados: Mack Rides, Maurer y Gerstlauer.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['wild mouse coaster', 'ratón salvaje', 'Wilde Maus'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: 'Montaña Rusa 4D',
+    shortDefinition:
+      'Un tipo de montaña rusa cuyos asientos están montados en brazos giratorios que sobresalen a ambos lados del tren — y pueden girar independientemente de la dirección de marcha.',
+    definition:
+      'Una montaña rusa 4D (cuarta dimensión) es un diseño en el que los asientos de pasajeros no están fijados rígidamente al tren, sino montados en brazos giratorios que se extienden a izquierda y derecha de cada coche. Los asientos pueden girar hacia delante o hacia atrás independientemente de la dirección del tren — controlados bien por un raíl guía fijo junto a la vía principal (que impone una posición de asiento precisa en cada momento del recorrido), bien mediante rotación libre impulsada por la gravedad y la distribución del peso de los riders. El resultado: los pasajeros pueden mirar hacia abajo durante una caída, quedar invertidos en una curva, o rotar en varios ejes simultáneamente durante las inversiones.\n\nEl concepto fue desarrollado por Arrow Dynamics y refinado posteriormente por S&S Worldwide. X2 en Six Flags Magic Mountain (California) es el ejemplo más famoso, inaugurado en 2002 como primera montaña rusa 4D del mundo. Eejanaika en Fuji-Q Highland, Japón, ostenta el récord mundial de inversiones de cualquier montaña rusa, en parte gracias a la rotación de los asientos, que multiplica el recuento de inversiones.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D coaster', 'cuarta dimensión', 'montaña rusa cuarta dimensión', 'free spin coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'Un trazado de montaña rusa que se aleja de la estación en línea relativamente recta, da la vuelta al final del terreno y regresa en paralelo.',
+    definition:
+      'Un out-and-back es uno de los dos tipos de trazado fundamentales de montaña rusa. El tren sale de la estación, avanza en una dirección globalmente lineal — habitualmente con una serie de colinas optimizadas para airtime — ejecuta un giro en el extremo del terreno y regresa por una trayectoria paralela al tramo de ida. Los dos tramos rara vez se cruzan, dando un plano largo y estrecho.\n\nLos diseños out-and-back están fuertemente asociados a las montañas rusas de madera tradicionales, donde la velocidad acumulada en las largas colinas de ida se aprovecha en la vuelta mediante una sucesión de colinas progresivamente más cortas y rápidas que maximizan el floater airtime. Ejemplos famosos incluyen The Voyage en Holiday World y los distintos modelos del tipo Racer.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['out and back', 'trazado out-and-back', 'ida y vuelta'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'Un trazado de montaña rusa que en espiral, da vueltas y se cruza sobre sí mismo — empaquetando el máximo de elementos en una huella compacta.',
+    definition:
+      'Un twister (también llamado layout de ciclón) es un diseño de montaña rusa en el que la vía espirala, se pliega sobre sí misma y se cruza repetidamente, tejiendo una estructura intrincada en lugar de seguir el camino de dos tramos del out-and-back. El rasgo definitorio es que el tren pasa frecuentemente muy cerca de otras secciones de la misma vía — a menudo en distintas direcciones y alturas — creando efectos head-chopper y una complejidad visual característica.\n\nLos trazados twister son eficientes en cuanto a espacio: mucha longitud de vía y desnivel caben en una huella compacta, lo que los convierte en una opción popular en parques con espacio limitado. Los twisters de madera incluyen clásicos como el Twister de Gröna Lund en Estocolmo; los twisters de acero abarcan muchos diseños de B&M e Intamin.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['twister layout', 'ciclón', 'trazado twister'],
+  },
 ];
 
 export default translations;

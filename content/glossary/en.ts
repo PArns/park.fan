@@ -1605,6 +1605,86 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
     aliases: ['interlocking loops', 'crossing loops', 'linked loops'],
   },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'The ratcheting safety device on a lift hill that prevents the train from rolling backwards — the source of the iconic click-clack sound.',
+    definition:
+      'An anti-rollback device (also called a rollback dog or anti-rollback dog) is a mechanical safety mechanism fitted along the underside of a lift hill. As the train climbs, spring-loaded metal pawls — sometimes called "dogs" — ratchet over a series of teeth embedded in the lift hill structure. If the chain or drive mechanism were to fail, the pawls would catch on the teeth and lock the train in place, preventing it from rolling back down. The ratcheting action of the pawls over the teeth is the source of the rhythmic clicking sound that has become one of the most recognisable audio signatures of traditional roller coasters.\n\nOn modern coasters with smooth elevator-cable or LSM-powered lift hills, anti-rollback dogs are often eliminated or replaced with quiet electromagnetic braking systems, which is why some newer lift hills are noticeably quieter. Enthusiasts sometimes lament this change as the loss of a classic sensory element of the coaster experience — the building tension of the click-clack soundtrack as the train climbs before the drop.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['anti-rollback device', 'rollback dog', 'click-clack', 'anti-rollback system'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Structural elements or track sections designed to pass just above riders\' heads at speed — creating a thrilling near-miss illusion.',
+    definition:
+      'Head choppers are deliberate design features in which a coaster\'s support structure, cross-bracing, tunnels, or sections of track pass immediately above riders\' heads at the moment the train is travelling at speed. The proximity and timing create a powerful illusion that something is about to strike the riders — an adrenaline spike with no actual danger, since the clearance is precisely engineered. The sensation is sharpest when riders have no warning: a train exiting a banked turn might sweep under a low beam just as it accelerates, leaving barely enough time to register what just happened.\n\nHead choppers are particularly associated with tightly spaced wooden coasters and with inverted coasters, where the dangling legs of riders and the low-slung profile of the hanging trains bring them close to supports, station buildings, and other track sections. Designers of compact twister coasters often route different sections of the track to pass within centimetres of each other at speed, maximising these near-miss moments. For many enthusiasts, well-designed head choppers are a sign of creative layout work and contribute significantly to the perceived intensity of a ride.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['head chopper', 'near miss', 'head-chopper element'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'When a ride operator presses lap bars or restraints too tightly against riders — reducing comfort and eliminating the airtime the ride was designed to deliver.',
+    definition:
+      'Stapling refers to the practice — intentional or over-cautious — of an operator pushing a lap bar or shoulder harness so firmly against a rider that it is significantly tighter than the minimum required safe position. The term comes from the sensation of being pinned or "stapled" into the seat. On airtime-focused coasters, lap bars are supposed to sit loosely enough for riders to actually lift slightly off the seat at the crests of hills — that\'s what delivers airtime. A stapled rider is held flat against the seat throughout and cannot experience the intended floating sensation, regardless of how well-designed the hills are.\n\nStapling is a common source of frustration in the enthusiast community, particularly on wooden coasters and hybrid coasters where airtime is the primary attraction. The degree of stapling varies by park, by operator, by time of day, and sometimes by the visible size of the rider being restrained. Some parks are known for consistently loose, rider-friendly policies; others are criticised for systematically over-restraining. Riders who want to maximise airtime often board as late as possible to avoid early check-by operators, and position the bar themselves before operators come to check it.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['stapled', 'over-stapled', 'over-tightened restraint'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'When a coaster train loses enough speed mid-ride that it becomes stranded in a low point of the track and cannot complete the course.',
+    definition:
+      'Valleying occurs when a coaster train, having lost too much kinetic energy during the ride, fails to have sufficient momentum to crest the next hill or complete the next element and comes to a stop — or rolls back — in a valley between two high points on the track. Because the train is now sitting at a low point rather than at a brake run or station, it cannot be moved by the normal operating systems. Recovering a valleyed train typically requires maintenance personnel to physically push or winch the train over the next high point, or disembark riders and pull the train back.\n\nValleying is rare under normal operating conditions, since rides are designed with substantial speed margins. It is more likely to occur in unusually cold weather (when wheel bearings run sluggish and friction increases), on an underpowered train running with fewer passengers than designed for, after excessive trim braking, or on rides that were originally designed for different wheel and axle specifications than are currently installed. Valleying incidents occasionally occur on ageing wooden coasters whose track geometry has shifted over time. When a coaster is reported to have "valleyed," it typically takes the ride out of operation for hours while recovery work is completed.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['valley', 'valleyed', 'stalled train', 'stranded train'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wild Mouse',
+    shortDefinition:
+      'A coaster style using small individual cars and a compact layout of tight flat turns at the edges of elevated platforms — creating the sensation the car is about to fly off.',
+    definition:
+      'A wild mouse coaster (also simply "mouse coaster") uses small cars seating two to four riders rather than the long trains of conventional coasters. The hallmark of the design is a series of tight, flat-banked hairpin turns executed at the very edges of the track, where the car travels perpendicular to the curve before turning sharply. Because the turns are not steeply banked — unlike the smooth banked curves of other coasters — riders are thrown laterally against the side of the car, and the momentum of the approach makes the turn feel later than expected, creating a convincing sensation that the car is about to slide off the track.\n\nWild mouse coasters are among the most space-efficient designs available, fitting a surprising amount of ride into a compact footprint by layering the hairpin turns on elevated platforms above the track below. Steel wild mouse models appear at parks around the world from manufacturers including Mack Rides, Maurer, and Gerstlauer; wooden wild mouse coasters exist but are rare. The ride profile appeals broadly — the cars are accessible to riders of many heights and ages, the speed is moderate, and the hairpin-turn sensation is reliably surprising regardless of how many times a rider has experienced it.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['wild mouse coaster', 'mouse coaster', 'Wilde Maus'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: 'Fourth Dimension Coaster',
+    shortDefinition:
+      'A coaster type where seats are mounted on rotating arms extending beyond the sides of the train — spinning independently of the train\'s direction of travel.',
+    definition:
+      'A fourth dimension coaster (4D coaster) is a coaster design in which the passenger seats are not fixed to the train but are instead mounted on pivoting arms extending to the left and right of each car. The seats can rotate forward or backward independently of the direction the train is travelling — controlled either by a fixed rail running alongside the track (which forces the seat to a predetermined position at each moment in the layout) or by allowing free rotation driven by gravity and rider weight distribution. The result is that passengers may be facing downward during a drop, inverted during a turn, or rotating through multiple axes simultaneously during inversions.\n\nThe concept was developed by Arrow Dynamics and later refined by S&S Worldwide. X2 at Six Flags Magic Mountain in California is the most famous example and the world\'s first 4D coaster, having opened in 2002 — its redesign in 2008 added fire effects and an audio system. Eejanaika at Fuji-Q Highland in Japan features the most inversions of any coaster in the world partly because the seat rotation multiplies inversion count. The riding experience on a 4D coaster is highly variable and often disorientating in a way that conventional coasters cannot replicate.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D coaster', 'fourth dimension', '4th dimension coaster', 'free spin coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'A coaster layout that travels in a relatively straight line away from the station, turns around at the far end, and returns along a parallel path.',
+    definition:
+      'An out-and-back is one of the two foundational roller coaster layout types. The train departs the station, travels outward in a broadly linear direction — typically delivering a series of hills optimised for airtime — executes a turnaround at the far end of the property, and returns along a similar path roughly parallel to the outbound leg. The two legs rarely cross, giving the layout a long, narrow footprint compared to the alternative twister layout.\n\nOut-and-back designs are strongly associated with traditional wooden coasters, where the sustained speed built on the long outbound hills is best exploited through a returning sequence of progressively faster, lower hills that maximise floater airtime. The layout style rewards designers who can tune each hill for a specific speed: as the train is lightest (fastest) on the return, the return hills are shorter and more closely spaced to maintain the floating sensation. Famous out-and-back wooden coasters include The Voyage at Holiday World, Comet at The Great Escape, and the various versions of the Racer coaster type. Steel coasters can also follow out-and-back paths, though the style is less common in steel than in wood.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['out and back', 'out-and-back layout', 'out and back coaster'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'A coaster layout that loops, spirals, and crosses back over itself — packing maximum elements into a compact footprint.',
+    definition:
+      'A twister coaster (also called a cyclone layout) is a coaster design in which the track spirals, doubles back, and crosses over or under itself repeatedly, weaving an intricate structure rather than following the simple two-legged path of an out-and-back layout. The defining characteristic is that the train frequently passes within close range of other sections of the same track — often in different directions and at different heights — creating the head-chopper near-miss sensations and visual complexity that define the type.\n\nTwister layouts are efficient with land area: a great deal of track length and vertical displacement can be packed into a relatively compact, roughly square or rectangular footprint. This makes them a popular choice in space-constrained parks. Wooden twisters include classics like the Twister at Grona Lund in Stockholm and the Jack Rabbit at Seabreeze; steel twisters include many B&M and Intamin designs. Because the train is constantly changing direction — banking, turning, climbing and descending all within the same compact zone — twister layouts tend to feel more intense and visually complex than out-and-back designs, even if their top speeds or heights are comparable.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['twister layout', 'cyclone', 'twister coaster', 'cyclone layout'],
+  },
 ];
 
 export default translations;

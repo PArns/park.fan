@@ -1676,6 +1676,86 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
     aliases: ['Verschlungene Loops', 'Interlocking Loops', 'sich kreuzende Loops'],
   },
+  {
+    id: 'anti-rollback',
+    name: 'Anti-Rollback',
+    shortDefinition:
+      'Die Ratschensicherung am Liftberg, die verhindert, dass der Zug rückwärts rollt — Quelle des charakteristischen Click-Clack-Geräuschs.',
+    definition:
+      'Ein Anti-Rollback-System (auch Rollback-Sperrklinke oder Anti-Rollback-Dog) ist eine mechanische Sicherungsvorrichtung entlang der Unterseite eines Liftbergs. Während der Zug aufsteigt, rasten federbelastete Metallklinken — sogenannte „Dogs" — über eine Zahnreihe, die in die Liftberg-Struktur eingelassen ist. Falls die Kette oder der Antrieb versagen würde, würden die Klinken in den Zähnen einrasten und den Zug blockieren, sodass er nicht rückwärts abrutschen kann. Das Rasten der Klinken über die Zähne erzeugt das rhythmische Klick-Klack-Geräusch, das zu den bekanntesten akustischen Erkennungszeichen klassischer Achterbahnen gehört.\n\nBei modernen Bahnen mit lautlosen Kabelliften oder LSM-betriebenen Liftbergen werden Anti-Rollback-Klinken oft durch leise elektromagnetische Bremssysteme ersetzt — weshalb neuere Anlagen am Liftberg auffällig leiser sind. Enthusiasten vermissen dieses akustische Ritual manchmal als Teil des klassischen Achterbahn-Erlebnisses.',
+    relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
+    aliases: ['Anti-Rollback-System', 'Rollback-Sperre', 'Click-Clack', 'Sperrklinke'],
+  },
+  {
+    id: 'head-choppers',
+    name: 'Head Choppers',
+    shortDefinition:
+      'Konstruktionselemente, die so knapp über den Köpfen der Fahrgäste vorbeiziehen, dass der Eindruck einer unmittelbaren Kollision entsteht.',
+    definition:
+      'Head Choppers sind bewusst eingesetzte Gestaltungselemente, bei denen Träger, Querstreben, Tunnel oder andere Streckenabschnitte in dem Moment knapp über den Köpfen der Fahrgäste vorbeiziehen, in dem der Zug in Höchstgeschwindigkeit unterwegs ist. Die Nähe und das Timing erzeugen eine starke Illusion drohender Gefahr — obwohl die Abstände exakt berechnet sind und keine echte Gefahr besteht. Der Effekt ist besonders stark, wenn Fahrgäste unvorbereitet sind: Ein Zug, der aus einer geneigten Kurve herausbeschleunigt, kann unter einem tiefen Träger hindurchschießen, bevor das Gehirn die Situation einordnen kann.\n\nHead Choppers sind vor allem mit eng gebauten Holzachterbahnen und mit Inverted Coasters verbunden, wo die hängenden Beine der Fahrgäste und das tief liegende Profil der Züge besonders nahe an Stützen, Stationsgebäude und andere Streckenabschnitte heranführen. Für viele Enthusiasten sind gut gemachte Head Choppers ein Zeichen kreativer Streckenführung.',
+    relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
+    aliases: ['Head Chopper', 'Beinahe-Kollision', 'Near Miss'],
+  },
+  {
+    id: 'stapling',
+    name: 'Stapling',
+    shortDefinition:
+      'Wenn ein Ride-Operator Schulterbügel oder Schoßbügel zu fest anzieht — wodurch Komfort und Airtime verloren gehen.',
+    definition:
+      'Stapling bezeichnet die Praxis — ob absichtlich oder übervorsichtig — eines Operators, der einen Schoßbügel oder Schulterbügel so fest gegen den Fahrgast drückt, dass er deutlich enger sitzt als für die Sicherheit notwendig. Der Begriff leitet sich vom Gefühl ab, in den Sitz „geheftet" zu sein. Bei Airtime-orientierten Achterbahnen sollen Schoßbügel so locker sitzen, dass Fahrgäste an den Kammkuppen tatsächlich leicht vom Sitz abheben können — das ist Airtime. Wer gestapelt ist, wird während der gesamten Fahrt flach in den Sitz gepresst und kann das beabsichtigte Schwebebefühl nicht erleben, egal wie gut die Hügel gestaltet sind.\n\nStapling ist ein häufiger Kritikpunkt in der Enthusiasten-Community, insbesondere bei Holzachterbahnen und Hybrid-Coastern, wo Airtime die Hauptattraktion ist. Manche Parks sind für konsequent lockere, fahrerfreundliche Bügelpolitik bekannt; andere werden für systematisches Überzurren kritisiert.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
+    aliases: ['Stapled', 'Überstapeln', 'zu fester Bügel', 'Bügel zu eng'],
+  },
+  {
+    id: 'valleying',
+    name: 'Valleying',
+    shortDefinition:
+      'Wenn ein Achterbahn-Zug auf der Strecke so viel Schwung verliert, dass er in einem Tiefpunkt stecken bleibt und das Ziel nicht erreichen kann.',
+    definition:
+      'Valleying (deutsch: „im Tal stecken bleiben") tritt auf, wenn ein Zug während der Fahrt zu viel kinetische Energie verliert, keinen ausreichenden Schwung mehr hat, um den nächsten Hügel oder das nächste Element zu überwinden, und zum Stillstand kommt — oder zurückrollt — in einem Tiefpunkt zwischen zwei Hochpunkten der Strecke. Da der Zug nun an einem Tiefpunkt steht und nicht an einer Bremsstrecke oder im Bahnhof, kann er mit den normalen Betriebssystemen nicht bewegt werden. Die Bergung erfordert in der Regel Wartungspersonal, das den Zug manuell über den nächsten Hochpunkt schiebt oder windet und die Fahrgäste evakuiert.\n\nValleying ist unter normalen Betriebsbedingungen selten, da Anlagen mit erheblichen Geschwindigkeitspuffern ausgelegt werden. Wahrscheinlicher tritt es bei ungewöhnlich kaltem Wetter auf (wenn Radlager steif laufen), bei zu vielen Trimbremsen oder auf gealtertem Streckenbelag, dessen Geometrie sich verschoben hat.',
+    relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
+    aliases: ['Valleyed', 'im Tal feststecken', 'stecken gebliebener Zug'],
+  },
+  {
+    id: 'wild-mouse',
+    name: 'Wilde Maus',
+    shortDefinition:
+      'Ein Achterbahntyp mit kleinen Einzelwagen und engen, flachen Spitzkurven an den Kanten erhöhter Plattformen — das Gefühl, gleich herunterzufallen, ist Programm.',
+    definition:
+      'Eine Wilde Maus (englisch: Wild Mouse) nutzt kleine Wagen für zwei bis vier Personen statt langer Züge. Das Markenzeichen ist eine Reihe enger, kaum überhöhter Haarnadel-Kurven, die an den äußersten Kanten der Strecke ausgeführt werden. Da die Kurven nicht steil überhöht sind — anders als bei anderen Achterbahnen — werden Fahrgäste seitlich gegen die Wagenwand gedrückt, und die Trägheit der Anfahrt lässt die Kurve später als erwartet kommen. Dies erzeugt überzeugend das Gefühl, gleich von der Strecke zu rutschen.\n\nWilde-Maus-Achterbahnen gehören zu den platzsparendsten Designs überhaupt und verpacken erstaunlich viel Strecke in ein kompaktes Gelände, indem die Haarnadel-Ebenen übereinander gestapelt werden. Sie sind in ganz Europa und weltweit verbreitet — insbesondere in Deutschland ist der Begriff „Wilde Maus" vielen Parkkunden geläufig. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
+    relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
+    aliases: ['Wilde Maus', 'Wild Mouse', 'Mausbahn'],
+  },
+  {
+    id: 'fourth-dimension-coaster',
+    name: '4D-Coaster',
+    shortDefinition:
+      'Ein Achterbahntyp, bei dem die Sitze auf drehbaren Armen seitlich außerhalb des Zuges montiert sind und sich unabhängig von der Fahrtrichtung drehen können.',
+    definition:
+      'Ein Fourth-Dimension-Coaster (4D-Coaster) ist ein Achterbahn-Design, bei dem die Sitze nicht starr am Zug befestigt sind, sondern auf schwenkbaren Armen links und rechts vom Wagen sitzen. Die Sitze können sich vorwärts oder rückwärts drehen — entweder durch eine feste Steuerungsschiene neben der Hauptstrecke, die die Sitzposition zu jedem Moment des Layouts vorgibt, oder durch freie Rotation via Schwerkraft und Gewichtsverteilung der Fahrgäste. Das Ergebnis: Fahrgäste können während eines Abfalls nach unten zeigen, während einer Kurve auf dem Kopf stehen oder beim Durchfahren von Inversionen mehrere Achsen gleichzeitig rotieren.\n\nDas Konzept wurde von Arrow Dynamics entwickelt und später von S&S Worldwide verfeinert. X2 im Six Flags Magic Mountain (Kalifornien) ist der bekannteste 4D-Coaster weltweit, eröffnet 2002 als erster seiner Art. Eejanaika in Fuji-Q Highland, Japan, hält den Rekord für die meisten Inversionen einer Achterbahn — unter anderem dank der Sitzrotation, die die Inversionszählung vervielfacht.',
+    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    aliases: ['4D Coaster', '4D-Achterbahn', 'Fourth Dimension', 'Free Spin Coaster'],
+  },
+  {
+    id: 'out-and-back',
+    name: 'Out-and-Back',
+    shortDefinition:
+      'Ein Achterbahn-Layout, das von der Station geradeaus wegführt, am Ende des Geländes umdreht und parallel zurückführt.',
+    definition:
+      'Ein Out-and-Back ist einer der zwei grundlegenden Achterbahn-Layouttypen. Der Zug verlässt den Bahnhof, fährt in einer im Wesentlichen geraden Richtung heraus — typischerweise über eine Reihe von Hügeln, die für Airtime optimiert sind —, dreht am Ende des Geländes um und kehrt parallel zur Ausfahrtstrecke zurück. Die beiden Abschnitte kreuzen sich kaum und ergeben einen langen, schmalen Grundriss.\n\nOut-and-Back-Designs sind eng mit klassischen Holzachterbahnen verbunden, bei denen die auf der langen Ausfahrt aufgebaute Geschwindigkeit auf dem Rückweg durch eine Folge immer schnellerer, niedrigerer Hügel mit maximalem Floater-Airtime ausgenutzt wird. Zu den bekanntesten Beispielen zählen The Voyage im Holiday World und verschiedene Racer-Modelle. Stahlachterbahnen können ebenfalls Out-and-Back-Layouts folgen, obwohl dieser Stil im Stahlbereich weniger verbreitet ist.',
+    relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
+    aliases: ['Out and Back', 'Out-and-Back-Layout', 'Hin-und-Rück-Coaster'],
+  },
+  {
+    id: 'twister-coaster',
+    name: 'Twister',
+    shortDefinition:
+      'Ein Achterbahn-Layout, das sich spiralförmig über sich selbst zurückfaltet und viele Elemente auf kompaktem Grundriss verpackt.',
+    definition:
+      'Ein Twister-Coaster (auch Cyclone-Layout) ist ein Achterbahn-Design, bei dem die Strecke spiralförmig verläuft, zurückfaltet und sich immer wieder über oder unter sich selbst kreuzt, anstatt dem einfachen Zwei-Bein-Pfad eines Out-and-Back-Layouts zu folgen. Das Kennzeichen ist, dass der Zug häufig in unmittelbarer Nähe anderer Streckenabschnitte desselben Rides vorbeifährt — oft in verschiedene Richtungen und auf verschiedenen Höhen —, was Head-Chopper-Effekte und visuelle Komplexität erzeugt.\n\nTwister-Layouts nutzen das Gelände effizient: Viel Streckenlänge und Höhenunterschied passen in einen relativ kompakten, annähernd quadratischen oder rechteckigen Grundriss. Holz-Twister-Classics sind unter anderem der Twister im Gröna Lund in Stockholm; Stahl-Twister umfassen viele B&M- und Intamin-Designs. Da der Zug ständig die Richtung wechselt, wirken Twister-Layouts tendenziell intensiver und visuell komplexer als Out-and-Back-Designs.',
+    relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
+    aliases: ['Twister-Layout', 'Cyclone-Layout', 'Twister Coaster'],
+  },
 ];
 
 export default translations;
