@@ -1600,6 +1600,82 @@ const translations: GlossaryTermTranslation[] = [
       'Ausverkauft-Tag',
     ],
   },
+  {
+    id: 'zero-g-winder',
+    name: 'Zero-G Winder',
+    shortDefinition:
+      'Eine Zero-G-Roll-Variante mit integriertem Richtungswechsel — der Zug verlässt die Inversion auf einem anderen Kurs als er eingefahren ist.',
+    definition:
+      'Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal\'s Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.',
+    relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
+    aliases: ['Zero G Winder', 'Zero-G-Winder', 'Winder'],
+  },
+  {
+    id: 'banana-roll',
+    name: 'Banana Roll',
+    shortDefinition:
+      'Ein gestrecktes Doppel-Inversions-Element, bei dem zwei Inversionen durch einen langen geschwungenen Bogen verbunden sind — von oben betrachtet in der Form einer Banane.',
+    definition:
+      'Der Banana Roll ist eine gestreckte Variante des Doppel-Inversions-Konzepts: Die zwei Überschläge sind weiter auseinander positioniert und durch einen geschwungenen Bogen verbunden, anstatt wie beim Cobra Roll eng und symmetrisch aufeinanderzufolgen. Von oben betrachtet folgt die Strecke einem sanften Bogen durch beide Inversionen, der an die Form einer Banane erinnert. Durch die lockere Geometrie verteilen sich die zwei Inversionen über einen längeren Streckenabschnitt, was dem Fahrer ein fließenderes, ausgedehnteres Erlebnis durch beide Überschläge verschafft.\n\nDer Banana Roll wurde von S&S Worldwide entwickelt und erlangte internationale Bekanntheit durch Steel Curtain im Kennywood, das das Element als Teil seiner Rekord-Inversionsanzahl enthält. Da das Element erheblichen lateralen Raum benötigt, findet es sich meist in größeren, bodennah gebauten Anlagen, wo die Strecke weit ausschwingen kann.',
+    relatedTermIds: ['cobra-roll', 'inversion', 's-and-s-worldwide'],
+    aliases: ['Banana Roll'],
+  },
+  {
+    id: 'inclined-loop',
+    name: 'Geneigter Looping',
+    shortDefinition:
+      'Ein vertikaler Looping, der aus der Senkrechten gekippt ist — der Zug fährt schräg ein und aus statt geradeaus.',
+    definition:
+      'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer vertikaler Looping, der um seine Achse gedreht wurde — typischerweise um 45 bis 80 Grad relativ zur Fahrtrichtung. Statt dass der Zug den Looping geradeaus einleitet und verlässt, nähert er sich und verlässt das Element schräg, was sowohl ein asymmetrisches Erscheinungsbild als auch eine deutlich veränderte Fahrerfahrung erzeugt.\n\nDie gekippte Geometrie beeinflusst das Empfinden der Inversion: Die Einfahrt fühlt sich lateraler an als beim klassischen Looping, und die Ausleitung am Tiefstobjekt kommt aus einer anderen Richtung als erwartet — das kann sowohl orientierungsberaubend als auch aufregend sein. Für Zuschauer ist ein geneigter Looping sofort als ungewöhnlich erkennbar und wirkt visuell deutlich dramatischer als ein aufrechter Looping. Geneigte Loopings finden sich auf verschiedenen B&M- und Intamin-Coasters, oft im mittleren oder abschließenden Teil der Strecke.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
+    aliases: ['Tilted Loop', 'schräger Looping', 'geneigter Loop', 'inclined loop'],
+  },
+  {
+    id: 'sea-serpent',
+    name: 'Sea Serpent',
+    shortDefinition:
+      'Ein Vekoma-Doppel-Inversions-Element, bei dem der Zug in dieselbe Richtung ausfährt, in die er eingefahren ist.',
+    definition:
+      'Der Sea Serpent ist ein Doppel-Inversions-Element, das vor allem mit Vekomas Inverted-Coaster-Designs verbunden ist. Ähnlich wie der Cobra Roll besteht er aus zwei Inversionen, die durch einen mittleren Verbindungsabschnitt zusammengefügt sind — jedoch unterscheidet sich die Streckengeometrie wesentlich: Während der Cobra Roll den Zug um 180 Grad umdreht, verlässt der Zug beim Sea Serpent das Element in derselben allgemeinen Richtung, in der er es betreten hat. Die beiden Inversionen schwingen bogenförmig auf und über, ohne die Fahrtrichtung zu wechseln, was dem Element von der Seite ein langes, S-kurvenartiges Erscheinungsbild gibt — wie der Körper einer Seeschlange, der durch zwei Wellen aufsteigt.\n\nSea Serpents sind Bestandteil von Vekomas Suspended Looping Coaster (SLC) und einigen Sonderanlagen des Herstellers. Da der SLC in großer Stückzahl produziert wurde, ist der Sea Serpent eines der am weitesten verbreiteten Doppel-Inversions-Elemente weltweit — auch wenn er namentlich weniger bekannt ist als der Cobra Roll.',
+    relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
+    aliases: ['Sea Serpent', 'Roll Over'],
+  },
+  {
+    id: 'barrel-roll-drop',
+    name: 'Barrel Roll Drop',
+    shortDefinition:
+      'Ein RMC-Signaturelement, das ersten Abfall und vollständigen Barrel Roll zu einer einzigen Sequenz verschmilzt — der Zug überschlägt sich während er noch fällt.',
+    definition:
+      'Der Barrel Roll Drop ist eines der bekanntesten Signaturelemente von Rocky Mountain Construction und verbindet zwei normalerweise getrennte Erlebnisse — den ersten Sturz und eine vollständige Inversion — zu einer ununterbrochenen Sequenz. Nach dem Verlassen des Liftbergs dreht die Strecke den Zug durch einen kompletten Barrel Roll, während er gleichzeitig abfällt: Die Fahrgäste befinden sich nahe dem steilsten Punkt des Abfalls vollständig auf dem Kopf, bevor sie beim Erreichen des Tiefpunkts wieder aufgerichtet werden. Die Inversion ereignet sich bei hoher Geschwindigkeit, da der Zug im selben Moment beschleunigt, in dem er sich dreht.\n\nErmöglicht wurde das Element durch RMCs I-Box-Stahlschienensystem, das die engen Radien und komplexe dreidimensionale Geometrie für einen simultanen Roll und Abfall erlaubt — eine Kombination, die auf traditionellem Holzachterbahngleis strukturell unmöglich gewesen wäre. Medusa Steel Coaster im Six Flags Mexico gehörte zu den frühen Anlagen mit diesem Element; Steel Vengeance im Cedar Point und Zadra im Energylandia sind weitere gefeierte Beispiele.',
+    relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
+    aliases: ['Barrel Roll Drop', 'RMC Barrel Roll', 'Barrel Roll Downdrop'],
+  },
+  {
+    id: 'mcbr',
+    name: 'MCBR',
+    shortDefinition:
+      'Mittelstreckenbremse — eine Bremszone in der Mitte der Strecke, die den Zug vollständig anhalten kann, um den sicheren Mehrzugbetrieb zu ermöglichen.',
+    definition:
+      'Eine Mittelstreckenbremse (englisch: Mid-Course Brake Run, kurz MCBR) ist eine Bremsanlage, die irgendwo in der Mitte einer Achterbahn-Strecke installiert ist — nach den ersten großen Elementen, aber vor der Abschlusssequenz. Anders als Trimbremsen, die lediglich die Geschwindigkeit reduzieren und den Zug unmittelbar weiterfahren lassen, ist eine MCBR eine vollständige Blockabschnitts-Bremse: Sie kann den Zug vollständig anhalten und halten, bis der nächste Blockabschnitt davor als frei gemeldet wurde. Dies ermöglicht den gleichzeitigen Betrieb mehrerer Züge auf derselben Strecke ohne Kollisionsgefahr und steigert erheblich den Durchsatz der Anlage.\n\nAn einem betriebsreichen Tag mit voll ausgelasteten Zugfolgen gibt eine gut getimte MCBR den angehaltenen Zug fast sofort wieder frei, und die Fahrgäste bemerken kaum die kurze Verzögerung. An ruhigeren Betriebstagen mit weniger Zügen kann der Stopp länger andauern und abrupter wirken. MCBRs sind Standard auf den meisten großen Achterbahnen: B&M Inverted- und Floorless-Coaster, viele Intamin-Anlagen und andere Hochkapazitätsattraktionen nutzen sie routinemäßig.',
+    relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
+    aliases: [
+      'Mittelstreckenbremse',
+      'mid-course brake run',
+      'Zwischenbremse',
+      'Mittelbremse',
+      'MCBR',
+    ],
+  },
+  {
+    id: 'interlocking-loops',
+    name: 'Verschlungene Loops',
+    shortDefinition:
+      'Zwei vertikale Loops, deren Ebenen sich kreuzen — ein visuell spektakuläres Kettenglied- oder Acht-Muster.',
+    definition:
+      'Verschlungene Loops (englisch: Interlocking Loops) sind zwei vertikale Loops, die so angeordnet sind, dass sich ihre Strukturebenen schneiden — typischerweise nahezu rechtwinklig zueinander. Das Ergebnis ist eine beeindruckende visuelle Konfiguration, bei der ein Loop aus bestimmten Perspektiven scheinbar durch den anderen hindurch verläuft, wie ein Kettenglied oder eine überdimensionale Acht, die aus dem Boden aufsteigt. Der konstruktive Aufwand, zwei Loops so zu verschachteln, dass sich die Schienen nicht tatsächlich berühren, ist erheblich — der visuelle Effekt macht die Elemente jedoch zu einem markanten Blickfang im Parkpanorama.\n\nVerschlungene Loops werden am häufigsten mit B&M Inverted Coasters und Sitzachterbahnen mit hoher Inversionsanzahl assoziiert. Dragon Khan im PortAventura, lange einer der bekanntesten europäischen Coaster, weist verschlungene Loops als Teil seines acht-Inversions-Layouts auf, und der sich kreuzende Loops-Abschnitt gehört zu den meistfotografierten Streckenpassagen des Rides.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
+    aliases: ['Verschlungene Loops', 'Interlocking Loops', 'sich kreuzende Loops'],
+  },
 ];
 
 export default translations;

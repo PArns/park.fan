@@ -1593,6 +1593,81 @@ const translations: GlossaryTermTranslation[] = [
       'tutto esaurito',
     ],
   },
+  {
+    id: 'zero-g-winder',
+    name: 'Zero-G Winder',
+    shortDefinition:
+      'Una variante dello zero-G roll con un cambio di direzione integrato — il treno entra ed esce dall\'inversione su rotte diverse.',
+    definition:
+      'Lo zero-G winder combina il concetto centrale dello zero-G roll — una rotazione di 360 gradi su un arco parabolico che genera quasi assenza di gravità al vertice — aggiungendo un cambio di direzione nella geometria del binario. Mentre in uno zero-G roll classico il treno entra ed esce su rotte approssimativamente parallele, il winder curva il binario durante la rotazione in modo che il treno esca puntando in una direzione significativamente diversa da quella di ingresso. Questo rende l\'elemento uno strumento di progettazione del percorso oltre che un\'inversione: fornisce allo stesso tempo la sensazione fluttuante di uno zero-G roll e reindirizza la montagna russa verso la sezione successiva.\n\nGli zero-G winder sono strettamente associati ai design più moderni e tecnicamente ambiziosi di produttori come Intamin e B&M. Kondaa a Walibi Belgium e VelociCoaster agli Universal\'s Islands of Adventure sono due degli esempi più noti. La combinazione di airtime, inversione e transizione direzionale in un unico elemento conferisce allo zero-G winder una sensazione più complessa rispetto a uno zero-G roll standard.',
+    relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
+    aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
+  },
+  {
+    id: 'banana-roll',
+    name: 'Banana Roll',
+    shortDefinition:
+      'Un elemento a doppia inversione allungato e asimmetrico in cui le due inversioni sono collegate da un lungo arco curvo — che dall\'alto ricorda la forma di una banana.',
+    definition:
+      'Il banana roll è una variante allungata del concetto di doppia inversione, in cui le due inversioni sono più distanziate e collegate da una sezione in curva ampia, anziché dalla geometria stretta e simmetrica di un cobra roll classico. Visto dall\'alto, il binario segue un arco graduale attraverso entrambe le inversioni che ricorda la curvatura di una banana. La geometria più aperta distribuisce le due inversioni su un tratto di binario più lungo, offrendo al rider un\'esperienza più fluida e distesa rispetto all\'intensità rapida di un cobra roll convenzionale.\n\nIl banana roll è stato sviluppato da S&S Worldwide ed è diventato noto con Steel Curtain a Kennywood, che include l\'elemento come parte del suo numero record di inversioni. Poiché l\'elemento richiede considerevole spazio laterale, tende a comparire su installazioni più grandi, a raso del terreno, dove il binario può descrivere un\'ampia traiettoria tra le due inversioni.',
+    relatedTermIds: ['cobra-roll', 'inversion', 's-and-s-worldwide'],
+    aliases: ['banana roll'],
+  },
+  {
+    id: 'inclined-loop',
+    name: 'Looping Inclinato',
+    shortDefinition:
+      'Un looping verticale ruotato fuori dal suo asse perpendicolare — il treno lo affronta e lo abbandona di sbieco anziché frontalmente.',
+    definition:
+      'Un looping inclinato (in inglese inclined loop o tilted loop) è un looping verticale classico ruotato attorno al proprio asse, solitamente tra 45 e 80 gradi rispetto alla direzione di marcia del treno. Invece di entrare e uscire dal looping in linea retta — come in un looping verticale classico — il treno lo affronta e lo abbandona in diagonale, creando un profilo visivo asimmetrico e una sensazione di guida notevolmente diversa.\n\nLa geometria inclinata cambia il modo in cui i rider vivono l\'inversione: l\'approccio sembra più laterale rispetto a un looping standard, e il punto di uscita nella parte inferiore del cerchio proviene da una direzione inattesa, il che può essere sia disorientante che esaltante. Per gli spettatori, un looping inclinato appare visivamente molto diverso da uno dritto ed è immediatamente riconoscibile come insolito. I looping inclinati compaiono su diverse montagne russe di B&M e Intamin, spesso nella parte centrale o finale del percorso.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
+    aliases: ['tilted loop', 'looping storto', 'looping inclinato', 'inclined loop'],
+  },
+  {
+    id: 'sea-serpent',
+    name: 'Sea Serpent',
+    shortDefinition:
+      'Elemento Vekoma a doppia inversione in cui il treno esce nella stessa direzione in cui è entrato.',
+    definition:
+      'Il sea serpent è un elemento a doppia inversione strettamente associato ai design di montagne russe invertite di Vekoma. Come il cobra roll, è composto da due sequenze di inversione unite da una sezione centrale di collegamento, ma la geometria del binario differisce su un punto chiave: mentre il cobra roll fa ruotare il treno di 180 gradi, il sea serpent è progettato affinché il treno entri ed esca nella stessa direzione generale. Le due inversioni si alzano e ridiscendono in una sequenza fluida senza invertire la rotta del treno, conferendo all\'elemento, visto di lato, un aspetto lungo a forma di S — come il corpo di un serpente marino che emerge tra due onde.\n\nI sea serpent compaiono nel modello Suspended Looping Coaster (SLC) di Vekoma e in alcune installazioni personalizzate del produttore. Poiché lo SLC è stato prodotto in grande quantità per parchi di tutto il mondo, il sea serpent è uno degli elementi a doppia inversione più diffusi a livello globale, anche se è meno conosciuto per nome rispetto al cobra roll.',
+    relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
+    aliases: ['sea serpent', 'roll over'],
+  },
+  {
+    id: 'barrel-roll-drop',
+    name: 'Barrel Roll Drop',
+    shortDefinition:
+      'Elemento firma RMC che fonde la prima caduta e un barrel roll completo in un\'unica sequenza continua — i rider si trovano capovolti mentre stanno ancora scendendo.',
+    definition:
+      'Il barrel roll drop è uno degli elementi firma più celebrati di Rocky Mountain Construction e unisce due esperienze normalmente separate — la prima caduta e un\'inversione completa — in un\'unica sequenza ininterrotta. Dopo aver lasciato il lifthill, il binario fa ruotare il treno attraverso un barrel roll completo mentre scende simultaneamente: i rider si trovano completamente capovolti vicino al punto più ripido della caduta, per poi essere rimessi in posizione verticale man mano che il treno raggiunge il fondo e transita nel resto del percorso.\n\nL\'elemento è stato reso possibile dal sistema di binari in acciaio I-Box di RMC, che permette i raggi stretti e la complessa geometria tridimensionale necessari per un roll e una caduta simultanei — una combinazione impossibile sui binari tradizionali di montagne russe in legno. Medusa Steel Coaster al Six Flags Mexico è stata tra le prime attrazioni a presentarlo; Steel Vengeance al Cedar Point e Zadra all\'Energylandia sono altri esempi ampiamente apprezzati.',
+    relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
+    aliases: ['barrel roll drop', 'RMC barrel roll', 'barrel roll downdrop'],
+  },
+  {
+    id: 'mcbr',
+    name: 'MCBR',
+    shortDefinition:
+      'Mid-Course Brake Run — una zona frenante a metà percorso che può fermare completamente il treno per consentire un\'operazione sicura con più treni.',
+    definition:
+      'Un mid-course brake run (MCBR) è una sezione frenante installata da qualche parte nel mezzo del percorso di una montagna russa — dopo i primi grandi elementi ma prima della sequenza finale. A differenza dei trim brake, che si limitano a ridurre la velocità lasciando proseguire immediatamente il treno, un MCBR è un freno di blocco completo: può fermare il treno del tutto e tenerlo in attesa finché la successiva sezione di blocco non viene confermata libera. Questo consente di far circolare più treni contemporaneamente sullo stesso circuito senza rischio di collisione, aumentando considerevolmente la capacità dell\'attrazione.\n\nIn una giornata operativa intensa con treni a pieno carico, un MCBR ben sincronizzato rilascerà il treno fermo quasi immediatamente e i rider noteranno a malapena la breve decelerazione. Nelle giornate più tranquille con meno treni in circolazione, la sosta può durare più a lungo e sembrare più brusca. Gli MCBR sono standard sulla maggior parte delle grandi montagne russe: le B&M inverted e floorless, molte attrazioni Intamin e altre attrazioni ad alta capacità li utilizzano di routine.',
+    relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
+    aliases: [
+      'mid-course brake run',
+      'freno di metà percorso',
+      'freno intermedio',
+      'MCBR',
+    ],
+  },
+  {
+    id: 'interlocking-loops',
+    name: 'Loop Intrecciati',
+    shortDefinition:
+      'Due looping verticali i cui piani si incrociano — creando una struttura visivamente spettacolare a forma di anello di catena o di otto.',
+    definition:
+      'I loop intrecciati (in inglese interlocking loops) sono due looping verticali posizionati in modo che i loro piani strutturali si intersechino, tipicamente ad angoli quasi perpendicolari. Il risultato è una configurazione visiva sorprendente in cui un looping sembra attraversare l\'altro da certe angolazioni, come un anello di catena o un enorme otto che sorge dal terreno. La complessità strutturale necessaria per far incrociare due looping senza che i binari si tocchino davvero è considerevole, ma l\'impatto visivo rende l\'elemento un punto focale spettacolare nello skyline del parco.\n\nI loop intrecciati sono più spesso associati alle montagne russe B&M inverted e alle roller coaster con alto numero di inversioni. Dragon Khan a PortAventura, a lungo una delle montagne russe più famose d\'Europa, presenta loop intrecciati come parte del suo percorso a otto inversioni, e la sezione dei loop incrociati è una delle più fotografate dell\'attrazione.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
+    aliases: ['loop intrecciati', 'interlocking loops', 'loop incrociati'],
+  },
 ];
 
 export default translations;

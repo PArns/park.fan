@@ -327,7 +327,7 @@ const translations: GlossaryTermTranslation[] = [
       'The classic circular inversion taking riders through a complete 360-degree circle in the vertical plane.',
     definition:
       "The vertical loop is the most iconic inversion in roller coaster history — a complete 360-degree circle in the vertical plane that takes riders fully upside down at the apex. Modern loops use a clothoid (teardrop) shape rather than a perfect circle: the entry and exit sections of the loop are wider in radius, while the top is tighter. This geometry ensures smooth, sustained positive G-forces at the bottom and a brief negative-G moment at the top rather than the jarring spikes a perfect circle would produce.\n\nThe first modern loop coaster, Corkscrew at Knott's Berry Farm (1975), transformed the amusement industry. Today vertical loops anchor the inversion portfolios of coasters worldwide, from introductory looping coasters to record-breaking machines. Dragon Khan at PortAventura features eight loops — one of the highest counts on any European coaster. The sight of a train completing a loop remains one of the most immediately recognisable and crowd-drawing images in theme park marketing.",
-    relatedTermIds: ['inversion', 'immelmann', 'cobra-roll'],
+    relatedTermIds: ['inversion', 'immelmann', 'cobra-roll', 'interlocking-loops', 'inclined-loop'],
   },
   {
     id: 'immelmann',
@@ -345,7 +345,7 @@ const translations: GlossaryTermTranslation[] = [
       'A 360-degree roll following a parabolic arc where riders experience near-weightlessness while inverted at the apex.',
     definition:
       'The zero-G roll is an inversion element shaped so the train follows a parabolic arc through the rotation, similar in concept to a heartline roll but at higher speed and with greater vertical displacement. At the peak of the roll, riders experience momentary negative G-forces while upside down — the unique sensation of floating while inverted. This combination of inversion and airtime in a single element is what makes the zero-G roll one of the most celebrated elements in modern coaster design.\n\nZero-G rolls are strongly associated with B&M wing coasters and hyper coasters, where the open seating positions send riders dramatically sweeping through the sky with no track above, below, or beside them. On a wing coaster, the outside seats of a zero-G roll produce an extraordinarily open, exposed sensation unlike anything found on a conventional coaster. Shambhala at PortAventura and Fury 325 at Carowinds feature particularly celebrated zero-G rolls.',
-    relatedTermIds: ['inversion', 'heartline-roll', 'airtime', 'b-and-m'],
+    relatedTermIds: ['inversion', 'heartline-roll', 'airtime', 'b-and-m', 'zero-g-winder'],
   },
   {
     id: 'launch-coaster',
@@ -429,7 +429,7 @@ const translations: GlossaryTermTranslation[] = [
       'An Idaho-based manufacturer that invented the hybrid coaster concept, converting ageing wooden coasters into steel I-box track rides with unprecedented airtime and inversions.',
     definition:
       "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company based in Hayden, Idaho, best known for inventing the I-box steel track system that can be fitted onto wooden coaster support structures. This conversion technology allowed parks to transform rough, ageing wooden coasters into world-class hybrid rides featuring intense airtime, multiple inversions, beyond-vertical drops, and dramatic overbanked turns — all design features impossible on traditional wood track.\n\nRMC conversions quickly became some of the most acclaimed rides in the world: Steel Vengeance at Cedar Point, Wicked Cyclone at Six Flags New England, and Wildfire at Kolmården in Sweden all received immediate enthusiast acclaim after their openings. New-build RMC hybrids — built from scratch rather than converted from an existing coaster — include Untamed at Walibi Holland, which opened in 2019 and is consistently ranked as one of Europe's best coasters. RMC fundamentally changed the calculus for parks with ageing wooden coasters, offering a clear upgrade path without the loss of beloved heritage structures.",
-    relatedTermIds: ['hybrid-coaster', 'wooden-coaster', 'airtime'],
+    relatedTermIds: ['hybrid-coaster', 'wooden-coaster', 'airtime', 'barrel-roll-drop', 'stall'],
   },
   {
     id: 'vekoma',
@@ -525,7 +525,7 @@ const translations: GlossaryTermTranslation[] = [
       "A double-inversion B&M signature element shaped like a cobra's raised head — two inversions connected by a 180-degree twist at the apex.",
     definition:
       "The cobra roll is one of B&M's most recognisable signature elements, consisting of two inversions in rapid succession: the track curves upward into a half-loop, rotates 180 degrees at the top passing through a brief inverted section, then mirrors the movement to exit in the same direction as entry. Viewed from the side, the track outline resembles a cobra's raised and spread hood — the element is sometimes described as two Immelmanns placed back-to-back but entering from the same side.\n\nCobra rolls are a defining feature of B&M inverted coasters worldwide and appear on many of their sit-down looping coasters as well. Famous cobra rolls appear on Dragon Khan at PortAventura — one of the most recognised European coasters — as well as on B&M inverted coasters across the continent. The element delivers two full inversions in a compact space with smooth, predictable G-forces, making it a reliable crowd-pleaser that works well in the middle sections of a layout.",
-    relatedTermIds: ['inversion', 'immelmann', 'batwing', 'b-and-m'],
+    relatedTermIds: ['inversion', 'immelmann', 'batwing', 'b-and-m', 'banana-roll', 'sea-serpent'],
   },
   {
     id: 'corkscrew',
@@ -1528,6 +1528,82 @@ const translations: GlossaryTermTranslation[] = [
       'Park ausverkauft',
       'sold out day',
     ],
+  },
+  {
+    id: 'zero-g-winder',
+    name: 'Zero-G Winder',
+    shortDefinition:
+      'A zero-G roll variant that incorporates a built-in directional change, so the train enters and exits the inversion on different headings.',
+    definition:
+      'The zero-G winder takes the core concept of a zero-G roll — a 360-degree inversion with a parabolic arc that produces near-weightlessness at the apex — and adds a directional change into the geometry. While a standard zero-G roll has the train enter and exit on roughly parallel headings, the winder curves the track during the roll so the train exits pointing in a meaningfully different direction from where it entered. This makes the element a layout-planning tool as well as an inversion: it simultaneously delivers the floating sensation of a zero-G roll and redirects the coaster into the next section.\n\nZero-G winders are strongly associated with newer, more technically ambitious coaster designs and appear on rides built by manufacturers such as Intamin and B&M. Kondaa at Walibi Belgium and VelociCoaster at Universal\'s Islands of Adventure both feature zero-G winders as standout elements. The combination of airtime, inversion, and directional transition in a single element gives a zero-G winder a more complex, multi-phase sensation than a straight zero-G roll.',
+    relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
+    aliases: ['zero g winder', 'zero-G winder', 'winder'],
+  },
+  {
+    id: 'banana-roll',
+    name: 'Banana Roll',
+    shortDefinition:
+      'An extended, asymmetric double-inversion element in which two inversions are connected by a long curved arc — giving the element a banana-like shape.',
+    definition:
+      'The banana roll is a stretched variation of the double-inversion concept in which two inversions are spaced further apart and connected by a sweeping curved section rather than the tight, symmetrical back-to-back geometry of a standard cobra roll. Viewed from above, the track follows a gradual arc through both inversions, resembling the curve of a banana. The looser geometry spreads the two inversions over a longer section of track, giving riders a more drawn-out, flowing experience through both inversions compared to the rapid-fire intensity of a conventional cobra roll.\n\nThe banana roll was pioneered by S&S Worldwide and first appeared in public consciousness with Steel Curtain at Kennywood, which includes the element as part of its record-breaking inversion count. Because the element requires considerable lateral space, it tends to appear on larger, ground-level installations where the track can sweep broadly between inversions. The visual impact — a gently curving double-inversion rather than the angular shape of a cobra roll — is distinctive and immediately recognisable.',
+    relatedTermIds: ['cobra-roll', 'inversion', 's-and-s-worldwide'],
+    aliases: ['banana roll'],
+  },
+  {
+    id: 'inclined-loop',
+    name: 'Inclined Loop',
+    shortDefinition:
+      'A vertical loop rotated off its perpendicular axis, so the train approaches and exits at an angle rather than straight-on.',
+    definition:
+      'An inclined loop (also called a tilted loop) is a standard vertical loop that has been rotated around its axis, typically by 45 to 80 degrees relative to the track\'s direction of travel. Instead of the train entering and exiting the loop while traveling straight forward — as in a conventional upright loop — it approaches and leaves at an oblique angle, creating an asymmetric visual profile and a noticeably different on-ride sensation.\n\nThe tilted geometry changes how riders experience the inversion: the approach feels more lateral than a standard loop, and the pull-out at the bottom of the circle comes from a different direction than expected, which can be both disorienting and thrilling. From spectator viewpoints, an inclined loop looks dramatically different from a standard loop and is immediately recognisable as unusual. Inclined loops appear on several B&M and Intamin coasters, often in the mid or final sections of a layout where the track needs to change direction and designers incorporate the loop as a combined inversion and transition element.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
+    aliases: ['tilted loop', 'angled loop', 'tilted-loop'],
+  },
+  {
+    id: 'sea-serpent',
+    name: 'Sea Serpent',
+    shortDefinition:
+      'A Vekoma double-inversion element in which the train passes through two inversions and exits traveling in the same direction it entered.',
+    definition:
+      'The sea serpent is a double-inversion element most closely associated with Vekoma\'s inverted coaster designs. Like a cobra roll, it consists of two inversion sequences joined by a central connecting section, but the track geometry differs in a key way: while a cobra roll sends the train through a 180-degree direction reversal during the element, the sea serpent is laid out so the train enters and exits traveling in the same general direction. The two inversions arc up and over in a flowing sequence without reversing the train\'s heading, giving the element a longer, more S-curve-like appearance when viewed from the side — reminiscent of the body of a sea serpent arching through two peaks.\n\nSea serpents appear on Vekoma\'s Suspended Looping Coaster (SLC) model and on some of the manufacturer\'s custom installations. Because the SLC has been produced in large numbers for parks around the world, the sea serpent is one of the most widely distributed double-inversion elements globally, even if it is less well known by name than the cobra roll. The riding experience varies considerably across installations depending on track condition and wheel profile.',
+    relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
+    aliases: ['sea serpent', 'roll over'],
+  },
+  {
+    id: 'barrel-roll-drop',
+    name: 'Barrel Roll Drop',
+    shortDefinition:
+      'An RMC signature element that combines the first drop and a full barrel roll into one continuous sequence, inverting riders while they are still descending.',
+    definition:
+      'The barrel roll drop is one of Rocky Mountain Construction\'s most celebrated signature elements, merging what would normally be two separate experiences — the first drop and a full inversion — into a single, uninterrupted sequence. After departing the lift hill, the track rotates the train through a complete barrel roll while simultaneously descending: riders find themselves fully inverted near the steepest point of the drop, then are rotated back upright as the train reaches the bottom and transitions into the rest of the layout. The inversion happens at high speed because the train is accelerating through the drop at the same moment it is rolling.\n\nThe element was made possible by RMC\'s I-Box steel track system, which allows the tight radii and complex three-dimensional geometry required for a simultaneous roll and drop — a combination that would have been structurally impossible on traditional wooden coaster track. Medusa Steel Coaster at Six Flags Mexico was among the early coasters to feature a barrel roll drop; Steel Vengeance at Cedar Point and Zadra at Energylandia are other widely celebrated examples. The element has become one of the defining visual and experiential signatures of RMC\'s converted wooden coasters.',
+    relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
+    aliases: ['barrel roll drop', 'RMC barrel roll', 'barrel roll downdrop'],
+  },
+  {
+    id: 'mcbr',
+    name: 'MCBR',
+    shortDefinition:
+      'Mid-Course Brake Run — a set of brakes positioned partway through a coaster layout that can bring the train to a full stop to allow safe multi-train operation.',
+    definition:
+      'A mid-course brake run (MCBR) is a braking section installed somewhere in the middle of a coaster\'s layout — after the ride\'s initial major elements but before the closing sequence. Unlike trim brakes, which merely reduce speed and allow the train to continue immediately, an MCBR is a full block-section brake: it can stop the train completely and hold it until the next block section ahead is confirmed clear. This makes it possible to run multiple trains on the same track simultaneously without risk of collision, significantly increasing the ride\'s throughput capacity.\n\nOn a busy operating day with trains dispatched at full capacity, a well-timed MCBR will release a stopped train almost immediately, and riders may barely notice the brief deceleration before the ride continues. On quieter days with fewer trains running, the stop can last longer and feel more abrupt. MCBRs are standard on most large coasters: B&M inverted and floorless coasters, many Intamin rides, and other high-capacity attractions use them routinely. Riders sometimes note the way an MCBR can disrupt the pacing of a layout — slowing the train before a second half that was designed to run at higher speed.',
+    relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
+    aliases: [
+      'mid-course brake run',
+      'mid course brake',
+      'midcourse brake',
+      'mid-course brake',
+      'Mittelstreckenbremse',
+    ],
+  },
+  {
+    id: 'interlocking-loops',
+    name: 'Interlocking Loops',
+    shortDefinition:
+      'Two vertical loops whose planes cross each other — creating a visually dramatic chain-link or figure-eight structure.',
+    definition:
+      'Interlocking loops are two vertical loops positioned so their structural planes intersect, typically at roughly perpendicular angles. The result is a striking visual configuration in which one loop appears to pass through the other when seen from certain angles, resembling a chain link or an oversized figure-eight rising out of the ground. The structural engineering required to make two loops cross without the tracks actually touching is considerable, but the visual payoff makes the element a crowd-pleasing focal point in a park\'s skyline.\n\nInterlocking loops are most commonly associated with B&M inverted coasters and sit-down looping coasters designed for high inversion counts. Dragon Khan at PortAventura, long one of Europe\'s most famous coasters, features interlocking loops as part of its eight-inversion layout, and the crossing loops are one of the most photographed sections of the ride. The element appears on a number of other high-inversion coasters around the world. From a riding perspective, the experience of passing through an interlocking loop sequence is similar to two closely spaced vertical loops, though the compressed structural geometry can make the transitions feel unusually rapid.',
+    relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
+    aliases: ['interlocking loops', 'crossing loops', 'linked loops'],
   },
 ];
 
