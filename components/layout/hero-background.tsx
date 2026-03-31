@@ -66,7 +66,7 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       style={
         noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
       }
-      sizes="100vw"
+      sizes="(max-width: 768px) 100vw, 115vw"
     />
   );
 }
