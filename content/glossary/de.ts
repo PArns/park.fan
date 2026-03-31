@@ -1606,7 +1606,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Eine Zero-G-Roll-Variante mit integriertem Richtungswechsel — der Zug verlässt die Inversion auf einem anderen Kurs als er eingefahren ist.',
     definition:
-      'Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal\'s Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.',
+      "Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal's Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.",
     relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
     aliases: ['Zero G Winder', 'Zero-G-Winder', 'Winder'],
   },
@@ -1733,7 +1733,13 @@ const translations: GlossaryTermTranslation[] = [
       'Ein Achterbahntyp, bei dem die Sitze auf drehbaren Armen seitlich außerhalb des Zuges montiert sind und sich unabhängig von der Fahrtrichtung drehen können.',
     definition:
       'Ein Fourth-Dimension-Coaster (4D-Coaster) ist ein Achterbahn-Design, bei dem die Sitze nicht starr am Zug befestigt sind, sondern auf schwenkbaren Armen links und rechts vom Wagen sitzen. Die Sitze können sich vorwärts oder rückwärts drehen — entweder durch eine feste Steuerungsschiene neben der Hauptstrecke, die die Sitzposition zu jedem Moment des Layouts vorgibt, oder durch freie Rotation via Schwerkraft und Gewichtsverteilung der Fahrgäste. Das Ergebnis: Fahrgäste können während eines Abfalls nach unten zeigen, während einer Kurve auf dem Kopf stehen oder beim Durchfahren von Inversionen mehrere Achsen gleichzeitig rotieren.\n\nDas Konzept wurde von Arrow Dynamics entwickelt und später von S&S Worldwide verfeinert. X2 im Six Flags Magic Mountain (Kalifornien) ist der bekannteste 4D-Coaster weltweit, eröffnet 2002 als erster seiner Art. Eejanaika in Fuji-Q Highland, Japan, hält den Rekord für die meisten Inversionen einer Achterbahn — unter anderem dank der Sitzrotation, die die Inversionszählung vervielfacht.',
-    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    relatedTermIds: [
+      'inverted-coaster',
+      'spinning-coaster',
+      'arrow-dynamics',
+      's-and-s-worldwide',
+      'inversion',
+    ],
     aliases: ['4D Coaster', '4D-Achterbahn', 'Fourth Dimension', 'Free Spin Coaster'],
   },
   {

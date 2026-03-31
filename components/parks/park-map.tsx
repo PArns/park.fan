@@ -183,8 +183,8 @@ export function ParkMap({ park }: ParkMapProps) {
         const { latitude, longitude } = position.coords;
         setUserLocation({ lat: latitude, lng: longitude });
       },
-      (error) => {
-        console.error('Geolocation error:', error);
+      () => {
+        // User denied or position unavailable — expected, no action needed
       },
       {
         enableHighAccuracy: false,

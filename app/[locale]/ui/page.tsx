@@ -497,6 +497,81 @@ const MOCK_HISTORY_DAY_CLOSED_RIDE: DayDataProps = {
   } as unknown as ScheduleItem,
 };
 
+const MOCK_FORECAST_BASE = [
+  {
+    date: '2026-03-08',
+    dataType: 'forecast' as const,
+    temperatureMax: '15',
+    temperatureMin: '7',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 1,
+    weatherDescription: 'Mainly clear',
+    windSpeedMax: '10',
+  },
+  {
+    date: '2026-03-09',
+    dataType: 'forecast' as const,
+    temperatureMax: '12',
+    temperatureMin: '6',
+    precipitationSum: '3',
+    rainSum: '3',
+    snowfallSum: '0',
+    weatherCode: 61,
+    weatherDescription: 'Rain',
+    windSpeedMax: '18',
+  },
+  {
+    date: '2026-03-10',
+    dataType: 'forecast' as const,
+    temperatureMax: '16',
+    temperatureMin: '8',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 2,
+    weatherDescription: 'Partly cloudy',
+    windSpeedMax: '12',
+  },
+  {
+    date: '2026-03-11',
+    dataType: 'forecast' as const,
+    temperatureMax: '19',
+    temperatureMin: '10',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 0,
+    weatherDescription: 'Clear sky',
+    windSpeedMax: '8',
+  },
+  {
+    date: '2026-03-12',
+    dataType: 'forecast' as const,
+    temperatureMax: '11',
+    temperatureMin: '5',
+    precipitationSum: '8',
+    rainSum: '8',
+    snowfallSum: '0',
+    weatherCode: 63,
+    weatherDescription: 'Moderate rain',
+    windSpeedMax: '25',
+  },
+  {
+    date: '2026-03-13',
+    dataType: 'forecast' as const,
+    temperatureMax: '14',
+    temperatureMin: '7',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 3,
+    weatherDescription: 'Overcast',
+    windSpeedMax: '15',
+  },
+];
+
 const MOCK_WEATHER_SUNNY: WeatherData = {
   current: {
     date: '2026-03-07',
@@ -510,6 +585,7 @@ const MOCK_WEATHER_SUNNY: WeatherData = {
     weatherDescription: 'Clear sky',
     windSpeedMax: '12',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_PARTLY: WeatherData = {
   current: {
@@ -524,6 +600,7 @@ const MOCK_WEATHER_PARTLY: WeatherData = {
     weatherDescription: 'Partly cloudy',
     windSpeedMax: '18',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_RAINY: WeatherData = {
   current: {
@@ -538,6 +615,7 @@ const MOCK_WEATHER_RAINY: WeatherData = {
     weatherDescription: 'Moderate rain',
     windSpeedMax: '28',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_STORMY: WeatherData = {
   current: {
@@ -552,6 +630,7 @@ const MOCK_WEATHER_STORMY: WeatherData = {
     weatherDescription: 'Thunderstorm',
     windSpeedMax: '55',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_SNOWY: WeatherData = {
   current: {
@@ -566,6 +645,7 @@ const MOCK_WEATHER_SNOWY: WeatherData = {
     weatherDescription: 'Moderate snow',
     windSpeedMax: '20',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_FOG: WeatherData = {
   current: {
@@ -580,6 +660,7 @@ const MOCK_WEATHER_FOG: WeatherData = {
     weatherDescription: 'Fog',
     windSpeedMax: '5',
   },
+  forecast: MOCK_FORECAST_BASE,
 };
 
 const MOCK_CAL_OPERATING: CalendarDay = {

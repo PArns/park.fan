@@ -143,7 +143,7 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
     >
       {isBestDay && (
         <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
-          <span className="flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
+          <span className="flex items-center gap-1 rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide whitespace-nowrap text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
             <Star className="h-2.5 w-2.5" />
             {t('bestDay')}
           </span>

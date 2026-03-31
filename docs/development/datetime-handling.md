@@ -84,7 +84,7 @@ These are **UTC ISO strings** (e.g. `2026-03-30T07:00:00.000Z`). Always convert 
 import { formatInTimeZone } from 'date-fns-tz';
 
 // ✅ Correct — shows local park time (e.g. 09:00 for Europe/Berlin UTC+2)
-const open  = formatInTimeZone(day.hours.openingTime,  timezone, 'HH:mm');
+const open = formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm');
 const close = formatInTimeZone(day.hours.closingTime, timezone, 'HH:mm');
 
 // ❌ Wrong — renders UTC time on the server
@@ -98,13 +98,13 @@ The timezone comes from `IntegratedCalendarResponse.meta.timezone` (or `park.tim
 
 ## Where we use it
 
-| Place                   | Usage                                                                           |
-| ----------------------- | ------------------------------------------------------------------------------- |
-| Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`    |
-| FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                       |
+| Place                   | Usage                                                                                        |
+| ----------------------- | -------------------------------------------------------------------------------------------- |
+| Park page               | Today's schedule: `toLocaleDateString('en-CA', { timeZone: park.timezone })`                 |
+| FAQ / structured data   | `formatInTimeZone(now, timeZone, 'yyyy-MM-dd')` for today                                    |
 | Calendar (day cells)    | `formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')` — timezone from `meta.timezone` |
-| Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone` |
-| ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                      |
+| Calendar utils          | `lib/utils/calendar-utils.ts`: `getParkTime`, `toZonedTime`, `formatInTimeZone`              |
+| ParkTimeInfo, LocalTime | `timeZone={park.timezone}`                                                                   |
 
 ---
 

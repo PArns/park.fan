@@ -22,6 +22,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import { TrendIndicator } from '@/components/parks/trend-indicator';
+import { WeatherForecastStrip } from '@/components/parks/weather-forecast-strip';
 import {
   Search,
   Star,
@@ -369,7 +370,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
               : 'Recommended';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
-  const renderDay = (day: CalendarDay, i: number) => {
+  const renderDay = (day: CalendarDay, _i: number) => {
     const d = new Date(day.date + 'T12:00:00');
     const wd = dtFmt!.format(d);
     const dateStr = dateFmt!.format(d);
@@ -713,7 +714,7 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
                 {t.weatherLabel}
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="bg-muted rounded-full p-2">
@@ -738,6 +739,82 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
                   </div>
                 </div>
               </div>
+              <WeatherForecastStrip
+                forecast={[
+                  {
+                    date: '2026-04-07',
+                    dataType: 'forecast',
+                    temperatureMax: '21',
+                    temperatureMin: '14',
+                    precipitationSum: '0',
+                    rainSum: '0',
+                    snowfallSum: '0',
+                    weatherCode: 1,
+                    weatherDescription: '',
+                    windSpeedMax: '10',
+                  },
+                  {
+                    date: '2026-04-08',
+                    dataType: 'forecast',
+                    temperatureMax: '18',
+                    temperatureMin: '12',
+                    precipitationSum: '0',
+                    rainSum: '0',
+                    snowfallSum: '0',
+                    weatherCode: 3,
+                    weatherDescription: '',
+                    windSpeedMax: '14',
+                  },
+                  {
+                    date: '2026-04-09',
+                    dataType: 'forecast',
+                    temperatureMax: '14',
+                    temperatureMin: '9',
+                    precipitationSum: '8',
+                    rainSum: '8',
+                    snowfallSum: '0',
+                    weatherCode: 63,
+                    weatherDescription: '',
+                    windSpeedMax: '22',
+                  },
+                  {
+                    date: '2026-04-10',
+                    dataType: 'forecast',
+                    temperatureMax: '17',
+                    temperatureMin: '11',
+                    precipitationSum: '1.5',
+                    rainSum: '1.5',
+                    snowfallSum: '0',
+                    weatherCode: 2,
+                    weatherDescription: '',
+                    windSpeedMax: '12',
+                  },
+                  {
+                    date: '2026-04-11',
+                    dataType: 'forecast',
+                    temperatureMax: '24',
+                    temperatureMin: '15',
+                    precipitationSum: '0',
+                    rainSum: '0',
+                    snowfallSum: '0',
+                    weatherCode: 0,
+                    weatherDescription: '',
+                    windSpeedMax: '8',
+                  },
+                  {
+                    date: '2026-04-12',
+                    dataType: 'forecast',
+                    temperatureMax: '26',
+                    temperatureMin: '16',
+                    precipitationSum: '0',
+                    rainSum: '0',
+                    snowfallSum: '0',
+                    weatherCode: 0,
+                    weatherDescription: '',
+                    windSpeedMax: '7',
+                  },
+                ]}
+              />
             </CardContent>
           </Card>
         </div>

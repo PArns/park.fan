@@ -296,7 +296,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
           </div>
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
-          <h2 className="text-2xl font-semibold">{t('attractions')}</h2>
           <LiveParkData
             initialData={park}
             continent={continent}

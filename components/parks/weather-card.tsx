@@ -1,73 +1,12 @@
 import { useTranslations } from 'next-intl';
-import {
-  Sun,
-  CloudSun,
-  Cloud,
-  CloudRain,
-  CloudSnow,
-  CloudFog,
-  CloudLightning,
-  CloudDrizzle,
-  Wind,
-  Umbrella,
-} from 'lucide-react';
+import { Wind, Umbrella } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { getWeatherConfig, WeatherForecastStrip } from './weather-forecast-strip';
 import type { WeatherData } from '@/lib/api/types';
 
 interface WeatherCardProps {
   weather: WeatherData;
   className?: string;
-}
-
-// WMO Weather Codes grouping
-// https://open-meteo.com/en/docs
-function getWeatherConfig(code: number) {
-  switch (code) {
-    case 0:
-      return { icon: Sun, label: 'clear' };
-    case 1:
-      return { icon: CloudSun, label: 'mainlyClear' };
-    case 2:
-      return { icon: CloudSun, label: 'partlyCloudy' };
-    case 3:
-      return { icon: Cloud, label: 'overcast' };
-    case 45:
-    case 48:
-      return { icon: CloudFog, label: 'fog' };
-    case 51:
-    case 53:
-    case 55:
-      return { icon: CloudDrizzle, label: 'drizzle' };
-    case 56:
-    case 57:
-      return { icon: CloudDrizzle, label: 'freezingDrizzle' };
-    case 61:
-    case 63:
-    case 65:
-      return { icon: CloudRain, label: 'rain' };
-    case 66:
-    case 67:
-      return { icon: CloudRain, label: 'freezingRain' };
-    case 71:
-    case 73:
-    case 75:
-      return { icon: CloudSnow, label: 'snow' };
-    case 77:
-      return { icon: CloudSnow, label: 'snowGrains' };
-    case 80:
-    case 81:
-    case 82:
-      return { icon: CloudRain, label: 'rainShowers' };
-    case 85:
-    case 86:
-      return { icon: CloudSnow, label: 'snowShowers' };
-    case 95:
-    case 96:
-    case 99:
-      return { icon: CloudLightning, label: 'thunderstorm' };
-    default:
-      return { icon: Sun, label: 'clear' };
-  }
 }
 
 export function WeatherCard({ weather, className }: WeatherCardProps) {
@@ -77,12 +16,10 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
   if (!weather.current) return null;
 
   const current = weather.current;
-  const { icon: WeatherIcon, label } = getWeatherConfig(current.weatherCode);
+  const { icon: WeatherIcon, label, color } = getWeatherConfig(current.weatherCode);
 
-  // Parse and round temperatures
   const tempMax = Math.round(parseFloat(current.temperatureMax));
   const tempMin = Math.round(parseFloat(current.temperatureMin));
-
   const precipSum = parseFloat(current.precipitationSum || '0');
   const windSpeed = Math.round(parseFloat(current.windSpeedMax || '0'));
 
@@ -90,15 +27,15 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
     <Card className={className}>
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-base">
-          <WeatherIcon className="h-4 w-5" />
+          <WeatherIcon className={`h-4 w-4 ${color}`} />
           {tParks('weatherLabel')}
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="bg-muted rounded-full p-2">
-              <WeatherIcon className="h-8 w-8 text-sky-500" />
+              <WeatherIcon className={`h-8 w-8 ${color}`} />
             </div>
             <div>
               <div className="flex items-baseline gap-2">
@@ -120,6 +57,10 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
             </div>
           </div>
         </div>
+
+        {weather.forecast && weather.forecast.length > 0 && (
+          <WeatherForecastStrip forecast={weather.forecast} />
+        )}
       </CardContent>
     </Card>
   );

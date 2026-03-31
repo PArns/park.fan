@@ -1604,7 +1604,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Una variante del zero-G roll con un cambio de dirección integrado — el tren entra y sale de la inversión con rumbos diferentes.',
     definition:
-      'El zero-G winder toma el concepto central del zero-G roll — una rotación de 360 grados en un arco parabólico que genera casi ingravidez en el vértice — y añade un cambio de dirección en la geometría de la vía. Mientras que en un zero-G roll estándar el tren entra y sale en rumbos aproximadamente paralelos, el winder curva la vía durante la rotación de modo que el tren sale apuntando en una dirección diferente de la que tenía al entrar. Esto convierte el elemento en una herramienta de diseño de trazado y también en una inversión: al mismo tiempo ofrece la sensación flotante de un zero-G roll y redirige la montaña rusa hacia la siguiente sección.\n\nLos zero-G winders están fuertemente asociados a diseños más modernos y técnicamente ambiciosos de fabricantes como Intamin y B&M. Kondaa en Walibi Belgium y VelociCoaster en Universal\'s Islands of Adventure son dos ejemplos destacados. La combinación de airtime, inversión y transición de dirección en un único elemento dota al zero-G winder de una sensación más compleja que un zero-G roll convencional.',
+      "El zero-G winder toma el concepto central del zero-G roll — una rotación de 360 grados en un arco parabólico que genera casi ingravidez en el vértice — y añade un cambio de dirección en la geometría de la vía. Mientras que en un zero-G roll estándar el tren entra y sale en rumbos aproximadamente paralelos, el winder curva la vía durante la rotación de modo que el tren sale apuntando en una dirección diferente de la que tenía al entrar. Esto convierte el elemento en una herramienta de diseño de trazado y también en una inversión: al mismo tiempo ofrece la sensación flotante de un zero-G roll y redirige la montaña rusa hacia la siguiente sección.\n\nLos zero-G winders están fuertemente asociados a diseños más modernos y técnicamente ambiciosos de fabricantes como Intamin y B&M. Kondaa en Walibi Belgium y VelociCoaster en Universal's Islands of Adventure son dos ejemplos destacados. La combinación de airtime, inversión y transición de dirección en un único elemento dota al zero-G winder de una sensación más compleja que un zero-G roll convencional.",
     relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
     aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
   },
@@ -1656,12 +1656,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un mid-course brake run (MCBR) es una sección de frenos instalada en algún punto del centro del recorrido de una montaña rusa — después de los primeros elementos principales pero antes de la secuencia final. A diferencia de los trim brakes, que solo reducen la velocidad y dejan al tren continuar inmediatamente, un MCBR es un freno de bloque completo: puede detener el tren por completo y mantenerlo hasta que se confirme que la siguiente sección de bloque por delante está despejada. Esto permite operar múltiples trenes en el mismo circuito de forma simultánea sin riesgo de colisión, incrementando considerablemente la capacidad de la atracción.\n\nEn un día de operación concurrida con trenes a plena capacidad, un MCBR bien sincronizado liberará el tren detenido casi de inmediato y los riders apenas notarán la breve deceleración. En días más tranquilos con menos trenes en circulación, la parada puede durar más y resultar más brusca. Los MCBRs son estándar en la mayoría de las grandes montañas rusas: los B&M inverted y floorless, muchas atracciones Intamin y otras atracciones de alta capacidad los utilizan de forma rutinaria.',
     relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
-    aliases: [
-      'mid-course brake run',
-      'freno de mitad de recorrido',
-      'freno intermedio',
-      'MCBR',
-    ],
+    aliases: ['mid-course brake run', 'freno de mitad de recorrido', 'freno intermedio', 'MCBR'],
   },
   {
     id: 'interlocking-loops',
@@ -1730,8 +1725,19 @@ const translations: GlossaryTermTranslation[] = [
       'Un tipo de montaña rusa cuyos asientos están montados en brazos giratorios que sobresalen a ambos lados del tren — y pueden girar independientemente de la dirección de marcha.',
     definition:
       'Una montaña rusa 4D (cuarta dimensión) es un diseño en el que los asientos de pasajeros no están fijados rígidamente al tren, sino montados en brazos giratorios que se extienden a izquierda y derecha de cada coche. Los asientos pueden girar hacia delante o hacia atrás independientemente de la dirección del tren — controlados bien por un raíl guía fijo junto a la vía principal (que impone una posición de asiento precisa en cada momento del recorrido), bien mediante rotación libre impulsada por la gravedad y la distribución del peso de los riders. El resultado: los pasajeros pueden mirar hacia abajo durante una caída, quedar invertidos en una curva, o rotar en varios ejes simultáneamente durante las inversiones.\n\nEl concepto fue desarrollado por Arrow Dynamics y refinado posteriormente por S&S Worldwide. X2 en Six Flags Magic Mountain (California) es el ejemplo más famoso, inaugurado en 2002 como primera montaña rusa 4D del mundo. Eejanaika en Fuji-Q Highland, Japón, ostenta el récord mundial de inversiones de cualquier montaña rusa, en parte gracias a la rotación de los asientos, que multiplica el recuento de inversiones.',
-    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
-    aliases: ['4D coaster', 'cuarta dimensión', 'montaña rusa cuarta dimensión', 'free spin coaster'],
+    relatedTermIds: [
+      'inverted-coaster',
+      'spinning-coaster',
+      'arrow-dynamics',
+      's-and-s-worldwide',
+      'inversion',
+    ],
+    aliases: [
+      '4D coaster',
+      'cuarta dimensión',
+      'montaña rusa cuarta dimensión',
+      'free spin coaster',
+    ],
   },
   {
     id: 'out-and-back',

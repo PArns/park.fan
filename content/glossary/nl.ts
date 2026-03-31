@@ -1569,7 +1569,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een zero-G roll-variant met een ingebouwde richtingsverandering — de trein verlaat de inversie op een andere koers dan bij aanvang.',
     definition:
-      'De zero-G winder combineert het zweefgevoel van een zero-G roll — een 360-graden inversie langs een parabolische boog waarbij rijders bij de top bijna gewichtloosheid ervaren — met een richtingsverandering in de baangeometrie. Terwijl bij een standaard zero-G roll de trein parallel in- en uitrijdt, buigt de winder de baan tijdens de rotatie zodanig dat de trein in een duidelijk andere richting uitkomt dan hij het element betrad. Dit maakt het element tegelijk een inversie én een layoutovergang: het levert het zwevende gevoel van een inversie terwijl de coaster naar het volgende deel van het parcours geleid wordt.\n\nZero-G winders zijn sterk geassocieerd met nieuwere, technisch ambitieuze ontwerpen van fabrikanten als Intamin en B&M. Kondaa in Walibi Belgium en VelociCoaster in Universal\'s Islands of Adventure zijn twee van de bekendste voorbeelden. De combinatie van airtime, inversie en richtingsverandering in één enkel element maakt de zero-G winder tot een van de meest veelzijdige elementen in het moderne achterbaanontwerp.',
+      "De zero-G winder combineert het zweefgevoel van een zero-G roll — een 360-graden inversie langs een parabolische boog waarbij rijders bij de top bijna gewichtloosheid ervaren — met een richtingsverandering in de baangeometrie. Terwijl bij een standaard zero-G roll de trein parallel in- en uitrijdt, buigt de winder de baan tijdens de rotatie zodanig dat de trein in een duidelijk andere richting uitkomt dan hij het element betrad. Dit maakt het element tegelijk een inversie én een layoutovergang: het levert het zwevende gevoel van een inversie terwijl de coaster naar het volgende deel van het parcours geleid wordt.\n\nZero-G winders zijn sterk geassocieerd met nieuwere, technisch ambitieuze ontwerpen van fabrikanten als Intamin en B&M. Kondaa in Walibi Belgium en VelociCoaster in Universal's Islands of Adventure zijn twee van de bekendste voorbeelden. De combinatie van airtime, inversie en richtingsverandering in één enkel element maakt de zero-G winder tot een van de meest veelzijdige elementen in het moderne achterbaanontwerp.",
     relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
     aliases: ['zero g winder', 'Zero-G Winder', 'winder'],
   },
@@ -1599,7 +1599,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een Vekoma dubbel-inversie-element waarbij de trein in dezelfde richting uitrijdt als hij is ingereden.',
     definition:
-      'De sea serpent is een dubbel-inversie-element dat nauw verbonden is met de ontwerpen van Vekoma\'s inverted coasters. Net als de cobra roll bestaat het uit twee inversiesequenties die door een centrale verbindingssectie zijn samengevoegd, maar de baangeometrie verschilt op een belangrijk punt: terwijl de cobra roll de trein 180 graden van richting laat veranderen, is de sea serpent zo aangelegd dat de trein in dezelfde algemene richting het element verlaat als hij het betrad. De twee inversies zwaaien omhoog en over in een vloeiende reeks zonder de rijrichting te keren, wat het element van opzij een lang, S-bochtig aanzien geeft — als het lichaam van een zeeslang die door twee golven omhoogrijst.\n\nSea serpents zijn te vinden op Vekoma\'s Suspended Looping Coaster (SLC) en op enkele aangepaste installaties van de fabrikant. Omdat de SLC in grote aantallen is geproduceerd voor parken over de hele wereld, is de sea serpent een van de meest verspreide dubbel-inversie-elementen ter wereld, ook al is hij minder bekend bij naam dan de cobra roll.',
+      "De sea serpent is een dubbel-inversie-element dat nauw verbonden is met de ontwerpen van Vekoma's inverted coasters. Net als de cobra roll bestaat het uit twee inversiesequenties die door een centrale verbindingssectie zijn samengevoegd, maar de baangeometrie verschilt op een belangrijk punt: terwijl de cobra roll de trein 180 graden van richting laat veranderen, is de sea serpent zo aangelegd dat de trein in dezelfde algemene richting het element verlaat als hij het betrad. De twee inversies zwaaien omhoog en over in een vloeiende reeks zonder de rijrichting te keren, wat het element van opzij een lang, S-bochtig aanzien geeft — als het lichaam van een zeeslang die door twee golven omhoogrijst.\n\nSea serpents zijn te vinden op Vekoma's Suspended Looping Coaster (SLC) en op enkele aangepaste installaties van de fabrikant. Omdat de SLC in grote aantallen is geproduceerd voor parken over de hele wereld, is de sea serpent een van de meest verspreide dubbel-inversie-elementen ter wereld, ook al is hij minder bekend bij naam dan de cobra roll.",
     relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
     aliases: ['sea serpent', 'roll over'],
   },
@@ -1609,7 +1609,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Een RMC-signatuurelement dat de eerste val en een volledige barrel roll samenvoegt tot één aaneengesloten sequentie — rijders staan ondersteboven terwijl ze nog dalen.',
     definition:
-      'De barrel roll drop is een van de meest gevierde signatuurelementen van Rocky Mountain Construction en combineert twee normaal gesproken afzonderlijke ervaringen — de eerste val en een volledige inversie — tot één ononderbroken sequentie. Na het verlaten van de lifthill roteert de baan de trein door een volledige barrel roll terwijl hij tegelijkertijd daalt: rijders bevinden zich volledig ondersteboven nabij het steilste punt van de val, om vervolgens rechtop te worden gedraaid als de trein de onderkant bereikt en overgaat in de rest van het parcours.\n\nHet element werd mogelijk gemaakt door RMC\'s I-Box staalspoorsysteem, dat de strakke radii en complexe driedimensionale geometrie toestaat die nodig zijn voor een gelijktijdige rol en val — een combinatie die op traditioneel houten achterbaanspoor structureel onmogelijk zou zijn geweest. Medusa Steel Coaster in Six Flags Mexico behoorde tot de vroege achtbanen met een barrel roll drop; Steel Vengeance in Cedar Point en Zadra in Energylandia zijn andere gevierde voorbeelden.',
+      "De barrel roll drop is een van de meest gevierde signatuurelementen van Rocky Mountain Construction en combineert twee normaal gesproken afzonderlijke ervaringen — de eerste val en een volledige inversie — tot één ononderbroken sequentie. Na het verlaten van de lifthill roteert de baan de trein door een volledige barrel roll terwijl hij tegelijkertijd daalt: rijders bevinden zich volledig ondersteboven nabij het steilste punt van de val, om vervolgens rechtop te worden gedraaid als de trein de onderkant bereikt en overgaat in de rest van het parcours.\n\nHet element werd mogelijk gemaakt door RMC's I-Box staalspoorsysteem, dat de strakke radii en complexe driedimensionale geometrie toestaat die nodig zijn voor een gelijktijdige rol en val — een combinatie die op traditioneel houten achterbaanspoor structureel onmogelijk zou zijn geweest. Medusa Steel Coaster in Six Flags Mexico behoorde tot de vroege achtbanen met een barrel roll drop; Steel Vengeance in Cedar Point en Zadra in Energylandia zijn andere gevierde voorbeelden.",
     relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
     aliases: ['barrel roll drop', 'RMC barrel roll', 'barrel roll downdrop'],
   },
@@ -1621,12 +1621,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een mid-course brake run (MCBR) is een reminrichting ergens in het midden van het parcours van een achtbaan — na de eerste grote elementen maar vóór de slotsequentie. In tegenstelling tot trimremmen, die alleen de snelheid verminderen zodat de trein direct kan doorrijden, is een MCBR een volledige bloksectierem: hij kan de trein volledig stoppen en vasthouden totdat de volgende bloksectie voor hem vrij is gemeld. Dit maakt het mogelijk om meerdere treinen tegelijk op hetzelfde spoor te laten rijden zonder botsingsgevaar, wat de capaciteit van de attractie aanzienlijk vergroot.\n\nOp een drukke bedrijfsdag met volledig bezette treinstarters geeft een goed getimede MCBR een gestopte trein bijna onmiddellijk vrij en zullen rijders de korte vertraging nauwelijks opmerken. Op rustigere dagen met minder treinen in omloop kan de stop langer duren. MCBRs zijn standaard op de meeste grote achtbanen: B&M inverted- en floorless coasters, veel Intamin-attracties en andere hoogcapaciteitsattracties maken er routinematig gebruik van.',
     relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
-    aliases: [
-      'mid-course brake run',
-      'tussenbremssectie',
-      'middenrem',
-      'MCBR',
-    ],
+    aliases: ['mid-course brake run', 'tussenbremssectie', 'middenrem', 'MCBR'],
   },
   {
     id: 'interlocking-loops',
@@ -1695,7 +1690,13 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaantype waarbij stoelen op roterende armen buiten de trein zijn gemonteerd en onafhankelijk van de rijrichting kunnen draaien.',
     definition:
       'Een fourth dimension coaster (4D-coaster) is een ontwerp waarbij de passagiersstoelen niet vast aan de trein zijn bevestigd, maar op zwenkbare armen die links en rechts van elke wagen uitsteken. De stoelen kunnen naar voren of achteren draaien onafhankelijk van de rijrichting — aangestuurd door een vaste stuurrail naast de hoofdbaan (die de stoelpositie op elk moment van het parcours bepaalt) of door vrije rotatie aangedreven door zwaartekracht en gewichtsverdeling. Het resultaat: passagiers kunnen tijdens een afdaling naar beneden wijzen, in een bocht ondersteboven hangen of bij inversies tegelijkertijd om meerdere assen roteren.\n\nHet concept werd ontwikkeld door Arrow Dynamics en later verfijnd door S&S Worldwide. X2 in Six Flags Magic Mountain (Californië) is de bekendste 4D-coaster ter wereld, geopend in 2002 als de eerste van zijn soort. Eejanaika in Fuji-Q Highland, Japan, houdt het record voor het hoogste inversieaantal van elke achtbaan, mede dankzij de stoelrotatie die het inversionstelling verveelvoudigt.',
-    relatedTermIds: ['inverted-coaster', 'spinning-coaster', 'arrow-dynamics', 's-and-s-worldwide', 'inversion'],
+    relatedTermIds: [
+      'inverted-coaster',
+      'spinning-coaster',
+      'arrow-dynamics',
+      's-and-s-worldwide',
+      'inversion',
+    ],
     aliases: ['4D coaster', '4D-achtbaan', 'vierde dimensie achtbaan', 'free spin coaster'],
   },
   {

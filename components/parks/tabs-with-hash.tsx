@@ -244,18 +244,37 @@ export function TabsWithHash({
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
           <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
-            <TabsTrigger value="attractions">
+            <TabsTrigger
+              value="attractions"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               {t('attractions')} ({park.attractions?.length || 0})
             </TabsTrigger>
-            <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
-            <TabsTrigger value="map">{t('map')}</TabsTrigger>
+            <TabsTrigger
+              value="calendar"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              {t('calendar')}
+            </TabsTrigger>
+            <TabsTrigger
+              value="map"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              {t('map')}
+            </TabsTrigger>
             {showsAvailable && (
-              <TabsTrigger value="shows">
+              <TabsTrigger
+                value="shows"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 {t('shows')} ({park.shows?.length || 0})
               </TabsTrigger>
             )}
             {restaurantsAvailable && (
-              <TabsTrigger value="restaurants">
+              <TabsTrigger
+                value="restaurants"
+                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              >
                 {t('restaurants')} ({park.restaurants?.length || 0})
               </TabsTrigger>
             )}
@@ -282,24 +301,47 @@ export function TabsWithHash({
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
         <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
-          <TabsTrigger value="attractions">
+          <TabsTrigger
+            value="attractions"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
             {t('attractions')} ({park.attractions?.length || 0})
           </TabsTrigger>
-          <TabsTrigger value="calendar">{t('calendar')}</TabsTrigger>
-          <TabsTrigger value="map">{t('map')}</TabsTrigger>
+          <TabsTrigger
+            value="calendar"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            {t('calendar')}
+          </TabsTrigger>
+          <TabsTrigger
+            value="map"
+            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+          >
+            {t('map')}
+          </TabsTrigger>
           {showsAvailable && (
-            <TabsTrigger value="shows">
+            <TabsTrigger
+              value="shows"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               {t('shows')} ({park.shows?.length || 0})
             </TabsTrigger>
           )}
           {restaurantsAvailable && (
-            <TabsTrigger value="restaurants">
+            <TabsTrigger
+              value="restaurants"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
               {t('restaurants')} ({park.restaurants?.length || 0})
             </TabsTrigger>
           )}
         </TabsList>
 
-        <TabsContent value="attractions">
+        <TabsContent
+          value="attractions"
+          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+        >
+          <h2 className="mb-6 text-2xl font-semibold">{t('attractions')}</h2>
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
@@ -358,7 +400,11 @@ export function TabsWithHash({
         </TabsContent>
 
         {showsAvailable && (
-          <TabsContent value="shows">
+          <TabsContent
+            value="shows"
+            className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+          >
+            <h2 className="mb-6 text-2xl font-semibold">{t('shows')}</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.shows?.map((show) => {
                 const showHref =
@@ -381,7 +427,11 @@ export function TabsWithHash({
         )}
 
         {restaurantsAvailable && (
-          <TabsContent value="restaurants">
+          <TabsContent
+            value="restaurants"
+            className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+          >
+            <h2 className="mb-6 text-2xl font-semibold">{t('restaurants')}</h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
                 <RestaurantCard key={restaurant.id} restaurant={restaurant} />
@@ -390,7 +440,11 @@ export function TabsWithHash({
           </TabsContent>
         )}
 
-        <TabsContent value="calendar">
+        <TabsContent
+          value="calendar"
+          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+        >
+          <h2 className="mb-6 text-2xl font-semibold">{t('calendar')}</h2>
           <ParkCalendarGrid
             park={park}
             initialCalendarData={calendarData}
@@ -401,7 +455,11 @@ export function TabsWithHash({
           />
         </TabsContent>
 
-        <TabsContent value="map">
+        <TabsContent
+          value="map"
+          className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
+        >
+          <h2 className="mb-6 text-2xl font-semibold">{t('map')}</h2>
           <ParkMap park={park} />
         </TabsContent>
       </Tabs>
