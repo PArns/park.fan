@@ -328,7 +328,6 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
   let days: CalendarDay[] = [];
   let dtFmt: Intl.DateTimeFormat | null = null;
   let dateFmt: Intl.DateTimeFormat | null = null;
-  let bestIdx = -1;
   let timezone = 'Europe/Berlin';
 
   try {
@@ -348,13 +347,6 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
     if (days.length > 0) {
       dtFmt = new Intl.DateTimeFormat(locale, { weekday: 'short' });
       dateFmt = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' });
-      bestIdx = days.reduce((best, d, i) => {
-        if (d.status === 'CLOSED') return best;
-        const order = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme', 'closed'];
-        const cur = order.indexOf(d.crowdLevel);
-        const bestCur = order.indexOf(days[best]?.crowdLevel ?? 'closed');
-        return cur < bestCur ? i : best;
-      }, -1);
     }
   } catch {
     // Data fetch failed — fall through to MockCalendar
@@ -365,23 +357,23 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
 
   const bestLabel =
     locale === 'de'
-      ? '✓ Bester Tag'
+      ? 'Empfohlen'
       : locale === 'es'
-        ? '✓ Mejor Día'
+        ? 'Recomendado'
         : locale === 'fr'
-          ? '✓ Meilleur Jour'
+          ? 'Recommandé'
           : locale === 'it'
-            ? '✓ Miglior Giorno'
+            ? 'Consigliato'
             : locale === 'nl'
-              ? '✓ Beste Dag'
-              : '✓ Best Day';
+              ? 'Aanbevolen'
+              : 'Recommended';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
   const renderDay = (day: CalendarDay, i: number) => {
     const d = new Date(day.date + 'T12:00:00');
     const wd = dtFmt!.format(d);
     const dateStr = dateFmt!.format(d);
-    const isBest = i === bestIdx;
+    const isBest = day.recommendation === 'highly_recommended';
     const border = buildBorderColor(day);
     const crowd = day.status === 'CLOSED' ? 'closed' : day.crowdLevel;
     const crowdLabel =
@@ -411,11 +403,14 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
     return (
       <Card
         key={day.date}
-        className={`relative flex h-full flex-col gap-1 border-2 p-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
+        className={`flex h-full flex-col gap-1 border-2 p-2 ${border} ${day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
       >
         {isBest && (
-          <div className="bg-crowd-low absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-0.5 text-[9px] font-bold whitespace-nowrap text-white">
-            {bestLabel}
+          <div className="flex w-full justify-center">
+            <span className="flex items-center gap-1 rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
+              <Star className="h-2.5 w-2.5" />
+              {bestLabel}
+            </span>
           </div>
         )}
         <div className="mb-1 flex items-start justify-between">
@@ -1158,26 +1153,29 @@ function MockCalendar({ locale }: { locale: MockLocale }) {
   const li = locale === 'de' ? 0 : 1;
   const bestLabel =
     locale === 'de'
-      ? '✓ Bester Tag'
+      ? 'Empfohlen'
       : locale === 'es'
-        ? '✓ Mejor Día'
+        ? 'Recomendado'
         : locale === 'fr'
-          ? '✓ Meilleur Jour'
+          ? 'Recommandé'
           : locale === 'it'
-            ? '✓ Miglior Giorno'
+            ? 'Consigliato'
             : locale === 'nl'
-              ? '✓ Beste Dag'
-              : '✓ Best Day';
+              ? 'Aanbevolen'
+              : 'Recommended';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
 
   return (
     <div className="not-prose space-y-2">
       <div className="grid grid-cols-7 gap-1 sm:gap-2">
         {CALENDAR_DAYS.map(({ wd, date, crowd, tag, border, best, hours, temp, avg }) => (
-          <Card key={date} className={`relative flex h-full flex-col gap-1 border-2 p-2 ${border}`}>
+          <Card key={date} className={`flex h-full flex-col gap-1 border-2 p-2 ${border}`}>
             {best && (
-              <div className="bg-crowd-low absolute -top-4 left-1/2 z-10 -translate-x-1/2 rounded px-1 py-0.5 text-[9px] font-bold whitespace-nowrap text-white">
-                {bestLabel}
+              <div className="flex w-full justify-center">
+                <span className="flex items-center gap-1 rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
+                  <Star className="h-2.5 w-2.5" />
+                  {bestLabel}
+                </span>
               </div>
             )}
             {/* Header: weekday + date + schedule icon */}

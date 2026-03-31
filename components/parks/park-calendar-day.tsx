@@ -17,6 +17,7 @@ import {
 export interface ParkCalendarDayProps {
   day: CalendarDay;
   isToday: boolean;
+  isBest?: boolean;
 }
 
 // Map crowd level to specific styling for the badge component usage
@@ -26,9 +27,10 @@ export interface ParkCalendarDayProps {
 // The `CrowdLevelBadge` has its own styles.
 // Let's check if we want to replacing the DIV with the Component.
 
+import { Star } from 'lucide-react';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 
-function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
+function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -131,12 +133,22 @@ function ParkCalendarDayComponent({ day, isToday }: ParkCalendarDayProps) {
 
   // getCrowdLevelStyle was removed in favor of CrowdLevelBadge component
 
+  const isBestDay = isBest ?? day.recommendation === 'highly_recommended';
+
   return (
     <Card
-      className={`flex h-full flex-col gap-1 p-2 ${getBorderColor()} ${
+      className={`relative flex h-full flex-col gap-1 p-2 ${getBorderColor()} ${
         day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''
       } ${day.status === 'UNKNOWN' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
     >
+      {isBestDay && (
+        <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+          <span className="flex items-center gap-1 whitespace-nowrap rounded-full border border-green-500/80 bg-green-500/65 px-2 py-0.5 text-[9px] font-bold tracking-wide text-white uppercase backdrop-blur-md dark:border-green-500/40 dark:bg-green-500/25">
+            <Star className="h-2.5 w-2.5" />
+            {t('bestDay')}
+          </span>
+        </div>
+      )}
       {/* Header: Stacked Layout */}
       <div className="mb-1 flex items-start justify-between">
         <div className="flex flex-col">

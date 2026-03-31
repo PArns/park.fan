@@ -174,6 +174,24 @@ export function ParkCalendarGrid({
     return map;
   }, [calendarData]);
 
+  // Compute best-day set — lowest crowd level among OPERATING days without school/public holidays.
+  // Falls back to backend recommendation field once the API provides it.
+  const bestDayDates = useMemo(() => {
+    const crowdOrder = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme'];
+    const candidates = Array.from(calendarMap.values()).filter(
+      (d) =>
+        d.status === 'OPERATING' &&
+        !d.isSchoolVacation &&
+        !d.isSchoolHoliday &&
+        !d.isHoliday &&
+        !d.isPublicHoliday
+    );
+    if (candidates.length === 0) return new Set<string>();
+    const minIdx = Math.min(...candidates.map((d) => crowdOrder.indexOf(d.crowdLevel)).filter((i) => i >= 0));
+    if (minIdx < 0) return new Set<string>();
+    return new Set<string>(candidates.filter((d) => crowdOrder.indexOf(d.crowdLevel) === minIdx).map((d) => d.date));
+  }, [calendarMap]);
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -280,7 +298,7 @@ export function ParkCalendarGrid({
               </div>
 
               {/* Mobile View: Reversed List (Newest First) */}
-              <div className="grid grid-cols-2 gap-3 md:hidden">
+              <div className="grid grid-cols-2 gap-6 pt-3 md:hidden">
                 {reversedDays.map((day) => {
                   const dateStr = format(day, 'yyyy-MM-dd');
                   const dayData = calendarMap.get(dateStr);
@@ -292,12 +310,12 @@ export function ParkCalendarGrid({
                     day.getMonth() === today.getMonth() &&
                     day.getDate() === today.getDate();
 
-                  return <ParkCalendarDay key={dateStr} day={dayData} isToday={isToday} />;
+                  return <ParkCalendarDay key={dateStr} day={dayData} isToday={isToday} isBest={bestDayDates.has(dateStr)} />;
                 })}
               </div>
 
               {/* Desktop View: Standard Weeks */}
-              <div className="hidden space-y-2 md:block">
+              <div className="hidden space-y-6 pt-3 md:block">
                 {weeks.map((week, weekIdx) => (
                   <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
                     {week.map((day, dayIdx) => {
@@ -317,7 +335,7 @@ export function ParkCalendarGrid({
                         day.getMonth() === today.getMonth() &&
                         day.getDate() === today.getDate();
 
-                      return <ParkCalendarDay key={dateStr} day={dayData} isToday={isToday} />;
+                      return <ParkCalendarDay key={dateStr} day={dayData} isToday={isToday} isBest={bestDayDates.has(dateStr)} />;
                     })}
                   </div>
                 ))}
