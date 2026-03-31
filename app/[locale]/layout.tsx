@@ -8,6 +8,7 @@ import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
+import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
 import {
   OrganizationStructuredData,
@@ -118,19 +119,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      {/* Umami Analytics - async in <head> so PerformanceObserver captures Web Vitals */}
-      <head>
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
-          <script
-            async
+          <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
             data-domains="park.fan"
             data-do-not-track="true"
+            strategy="afterInteractive"
           />
         )}
-      </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <OrganizationStructuredData description={tSeo('description')} />
         <WebSiteStructuredData locale={locale} description={tSeo('description')} />
         <Providers>
