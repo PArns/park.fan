@@ -6,6 +6,16 @@ import { ChevronRight } from 'lucide-react';
 import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
 
+// Server-side only — avoids bundling `fs` into any client chunk
+/* eslint-disable @typescript-eslint/no-require-imports */
+const serverAssets =
+  typeof window === 'undefined'
+    ? (require('@/lib/utils/park-assets') as {
+        getParkBackgroundImage: (slug: string) => string | null;
+      })
+    : null;
+/* eslint-enable @typescript-eslint/no-require-imports */
+
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
  * Ordered by visit relevance for each language audience.
@@ -72,6 +82,7 @@ interface FeaturedPark {
   countrySlug: string;
   countryName: string; // raw name, translated in component
   href: string;
+  backgroundImage?: string | null;
   // Live data from ParkReference
   status?: ParkStatus;
   crowdLevel?: CrowdLevel;
@@ -105,6 +116,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               countrySlug: country.slug,
               countryName: country.name,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+              backgroundImage: serverAssets?.getParkBackgroundImage(park.slug) ?? null,
               status: park.status,
               crowdLevel: park.currentLoad?.crowdLevel,
               averageWaitTime: park.analytics?.statistics?.avgWaitTime,
@@ -162,6 +174,7 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
                 city={park.city}
                 country={translatedCountry}
                 href={park.href as '/'}
+                backgroundImage={park.backgroundImage}
                 status={park.status}
                 crowdLevel={park.crowdLevel}
                 averageWaitTime={park.averageWaitTime}

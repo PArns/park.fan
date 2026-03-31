@@ -85,6 +85,7 @@ export function PopularParksGridClient() {
             city={park.city}
             country={translateCountry(tGeo, park)}
             href={park.href as '/'}
+            backgroundImage={park.backgroundImage}
             status={park.status}
             crowdLevel={park.crowdLevel}
             averageWaitTime={park.averageWaitTime}
@@ -155,6 +156,7 @@ export function FeaturedParksSectionClient({
                 city={park.city}
                 country={translateCountry(tGeo, park)}
                 href={park.href as '/'}
+                backgroundImage={park.backgroundImage}
                 status={park.status}
                 crowdLevel={park.crowdLevel}
                 averageWaitTime={park.averageWaitTime}
