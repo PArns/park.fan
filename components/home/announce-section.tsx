@@ -65,7 +65,7 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
             className="object-cover object-top"
             sizes="100vw"
             priority={true}
-            quality={75}
+            quality={85}
           />
           <div className="from-background via-background/90 to-muted/50 absolute inset-0 bg-gradient-to-br" />
           <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
