@@ -136,8 +136,8 @@ function getWaitTime(attraction: ParkAttraction): number | null {
   return standbyQueue?.waitTime ?? null;
 }
 
-// Helper function to get next show time
-function getNextShowTime(show: ParkShow): string | null {
+// Returns the next future showtime as a Date, or null if none remain
+function getNextShowtimeDate(show: ParkShow): Date | null {
   if (!show.showtimes || show.showtimes.length === 0) return null;
 
   const now = new Date();
@@ -146,11 +146,15 @@ function getNextShowTime(show: ParkShow): string | null {
     .filter((time: Date) => time > now)
     .sort((a: Date, b: Date) => a.getTime() - b.getTime());
 
-  if (futureShowtimes.length === 0) return null;
+  return futureShowtimes[0] ?? null;
+}
 
-  const nextShow = futureShowtimes[0];
-  const diffMs = nextShow.getTime() - now.getTime();
-  const diffMins = Math.floor(diffMs / 60000);
+// Returns the next show time as a relative string (e.g. "45 min"), used in the in-park panel
+function getNextShowTime(show: ParkShow): string | null {
+  const nextShow = getNextShowtimeDate(show);
+  if (!nextShow) return null;
+
+  const diffMins = Math.floor((nextShow.getTime() - Date.now()) / 60000);
 
   if (diffMins < 60) {
     return `${diffMins} min`;
@@ -440,16 +444,19 @@ export function ParkMap({ park }: ParkMapProps) {
               <div>
                 <div className="font-semibold">{stripNewPrefix(show.name)}</div>
                 <div className="text-muted-foreground text-xs">{t('show')}</div>
-                {show.showtimes && show.showtimes.length > 0 && (
-                  <div className="mt-1 text-xs">
-                    {t('nextShowtime')}:{' '}
-                    {new Date(show.showtimes[0].startTime).toLocaleTimeString(locale, {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      timeZone: park.timezone,
-                    })}
-                  </div>
-                )}
+                {(() => {
+                  const nextShowtime = getNextShowtimeDate(show);
+                  return nextShowtime ? (
+                    <div className="mt-1 text-xs">
+                      {t('nextShowtime')}:{' '}
+                      {nextShowtime.toLocaleTimeString(locale, {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        timeZone: park.timezone,
+                      })}
+                    </div>
+                  ) : null;
+                })()}
               </div>
             </Popup>
           </Marker>
