@@ -440,16 +440,23 @@ export function ParkMap({ park }: ParkMapProps) {
               <div>
                 <div className="font-semibold">{stripNewPrefix(show.name)}</div>
                 <div className="text-muted-foreground text-xs">{t('show')}</div>
-                {show.showtimes && show.showtimes.length > 0 && (
-                  <div className="mt-1 text-xs">
-                    {t('nextShowtime')}:{' '}
-                    {new Date(show.showtimes[0].startTime).toLocaleTimeString(locale, {
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      timeZone: park.timezone,
-                    })}
-                  </div>
-                )}
+                {show.showtimes && show.showtimes.length > 0 && (() => {
+                  const now = new Date();
+                  const nextShowtime = show.showtimes
+                    .map((st) => new Date(st.startTime))
+                    .filter((time) => time > now)
+                    .sort((a, b) => a.getTime() - b.getTime())[0];
+                  return nextShowtime ? (
+                    <div className="mt-1 text-xs">
+                      {t('nextShowtime')}:{' '}
+                      {nextShowtime.toLocaleTimeString(locale, {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        timeZone: park.timezone,
+                      })}
+                    </div>
+                  ) : null;
+                })()}
               </div>
             </Popup>
           </Marker>
