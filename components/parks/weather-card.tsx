@@ -16,8 +16,15 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
   if (!weather.current) return null;
 
   const current = weather.current;
-  const { icon: WeatherIcon, label, color } = getWeatherConfig(current.weatherCode);
+  const now = weather.now ?? null;
 
+  const isDay = now?.isDay ?? true;
+  const weatherCode = now?.weatherCode ?? current.weatherCode;
+  const { icon: WeatherIcon, label, color } = getWeatherConfig(weatherCode, isDay);
+
+  const displayTemp =
+    now != null ? Math.round(now.temperature) : Math.round(parseFloat(current.temperatureMax));
+  const feelsLike = now != null ? Math.round(now.apparentTemperature) : null;
   const tempMax = Math.round(parseFloat(current.temperatureMax));
   const tempMin = Math.round(parseFloat(current.temperatureMin));
   const precipSum = parseFloat(current.precipitationSum || '0');
@@ -38,11 +45,16 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
               <WeatherIcon className={`h-8 w-8 ${color}`} />
             </div>
             <div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-bold">{tempMax}°</span>
-                <span className="text-muted-foreground text-sm">/ {tempMin}°</span>
-              </div>
-              <p className="text-muted-foreground text-sm font-medium">{t(label)}</p>
+              <span className="text-3xl font-bold">{displayTemp}°</span>
+              <p className="text-muted-foreground text-xs">
+                {tempMin}° – {tempMax}°
+              </p>
+              {feelsLike !== null && feelsLike !== displayTemp && (
+                <p className="text-muted-foreground text-xs">
+                  {t('feelsLike')} {feelsLike}°
+                </p>
+              )}
+              <p className="text-muted-foreground mt-0.5 text-sm font-medium">{t(label)}</p>
             </div>
           </div>
 

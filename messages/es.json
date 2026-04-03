@@ -359,7 +359,8 @@
       "snowShowers": "Nevadas",
       "thunderstorm": "Tormenta",
       "cloudy": "Nublado",
-      "mist": "Neblina"
+      "mist": "Neblina",
+      "feelsLike": "Sensación"
     },
     "h1Suffix": "Tiempos de espera en vivo"
   },

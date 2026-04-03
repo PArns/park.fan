@@ -359,7 +359,8 @@
       "snowShowers": "Rovesci di neve",
       "thunderstorm": "Temporale",
       "cloudy": "Nuvoloso",
-      "mist": "Foschia"
+      "mist": "Foschia",
+      "feelsLike": "Percepita"
     },
     "h1Suffix": "Tempi di attesa in diretta"
   },

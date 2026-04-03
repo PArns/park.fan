@@ -97,8 +97,18 @@ export interface WeatherDay {
   windSpeedMax: string;
 }
 
+export interface WeatherNow {
+  temperature: number;
+  apparentTemperature: number;
+  humidity: number;
+  weatherCode: number;
+  weatherDescription: string;
+  isDay: boolean;
+}
+
 export interface WeatherData {
   current?: WeatherDay;
+  now?: WeatherNow | null;
   forecast?: WeatherDay[];
 }
 

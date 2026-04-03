@@ -220,7 +220,8 @@
       "snowShowers": "Schneeschauer",
       "thunderstorm": "Gewitter",
       "cloudy": "Bewölkt",
-      "mist": "Nebel"
+      "mist": "Nebel",
+      "feelsLike": "Gefühlt"
     },
     "crowdLevel": "Auslastung",
     "crowdLevels": {

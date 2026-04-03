@@ -359,7 +359,8 @@
       "snowShowers": "Snow Showers",
       "thunderstorm": "Thunderstorm",
       "cloudy": "Cloudy",
-      "mist": "Mist"
+      "mist": "Mist",
+      "feelsLike": "Feels like"
     },
     "h1Suffix": "Live Wait Times"
   },

@@ -1,7 +1,9 @@
 import { useLocale } from 'next-intl';
 import {
   Sun,
+  Moon,
   CloudSun,
+  CloudMoon,
   Cloud,
   CloudRain,
   CloudSnow,
@@ -22,14 +24,20 @@ interface WeatherForecastStripProps {
 
 // WMO Weather Codes grouping
 // https://open-meteo.com/en/docs
-export function getWeatherConfig(code: number) {
+export function getWeatherConfig(code: number, isDay = true) {
   switch (code) {
     case 0:
-      return { icon: Sun, label: 'clear', color: 'text-amber-400' };
+      return isDay
+        ? { icon: Sun, label: 'clear', color: 'text-amber-400' }
+        : { icon: Moon, label: 'clear', color: 'text-slate-300' };
     case 1:
-      return { icon: CloudSun, label: 'mainlyClear', color: 'text-amber-400' };
+      return isDay
+        ? { icon: CloudSun, label: 'mainlyClear', color: 'text-amber-400' }
+        : { icon: CloudMoon, label: 'mainlyClear', color: 'text-slate-300' };
     case 2:
-      return { icon: CloudSun, label: 'partlyCloudy', color: 'text-sky-400' };
+      return isDay
+        ? { icon: CloudSun, label: 'partlyCloudy', color: 'text-sky-400' }
+        : { icon: CloudMoon, label: 'partlyCloudy', color: 'text-slate-400' };
     case 3:
       return { icon: Cloud, label: 'overcast', color: 'text-muted-foreground' };
     case 45:
@@ -67,7 +75,9 @@ export function getWeatherConfig(code: number) {
     case 99:
       return { icon: CloudLightning, label: 'thunderstorm', color: 'text-yellow-400' };
     default:
-      return { icon: Sun, label: 'clear', color: 'text-amber-400' };
+      return isDay
+        ? { icon: Sun, label: 'clear', color: 'text-amber-400' }
+        : { icon: Moon, label: 'clear', color: 'text-slate-300' };
   }
 }
 

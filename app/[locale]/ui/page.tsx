@@ -585,6 +585,14 @@ const MOCK_WEATHER_SUNNY: WeatherData = {
     weatherDescription: 'Clear sky',
     windSpeedMax: '12',
   },
+  now: {
+    temperature: 15,
+    apparentTemperature: 14,
+    humidity: 48,
+    weatherCode: 0,
+    weatherDescription: 'Clear sky',
+    isDay: true,
+  },
   forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_PARTLY: WeatherData = {
@@ -599,6 +607,14 @@ const MOCK_WEATHER_PARTLY: WeatherData = {
     weatherCode: 2,
     weatherDescription: 'Partly cloudy',
     windSpeedMax: '18',
+  },
+  now: {
+    temperature: 11,
+    apparentTemperature: 9,
+    humidity: 62,
+    weatherCode: 2,
+    weatherDescription: 'Partly cloudy',
+    isDay: true,
   },
   forecast: MOCK_FORECAST_BASE,
 };
@@ -615,6 +631,14 @@ const MOCK_WEATHER_RAINY: WeatherData = {
     weatherDescription: 'Moderate rain',
     windSpeedMax: '28',
   },
+  now: {
+    temperature: 8,
+    apparentTemperature: 5,
+    humidity: 91,
+    weatherCode: 63,
+    weatherDescription: 'Moderate rain',
+    isDay: true,
+  },
   forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_STORMY: WeatherData = {
@@ -629,6 +653,14 @@ const MOCK_WEATHER_STORMY: WeatherData = {
     weatherCode: 95,
     weatherDescription: 'Thunderstorm',
     windSpeedMax: '55',
+  },
+  now: {
+    temperature: 6,
+    apparentTemperature: 1,
+    humidity: 96,
+    weatherCode: 95,
+    weatherDescription: 'Thunderstorm',
+    isDay: true,
   },
   forecast: MOCK_FORECAST_BASE,
 };
@@ -645,6 +677,14 @@ const MOCK_WEATHER_SNOWY: WeatherData = {
     weatherDescription: 'Moderate snow',
     windSpeedMax: '20',
   },
+  now: {
+    temperature: -3,
+    apparentTemperature: -8,
+    humidity: 85,
+    weatherCode: 73,
+    weatherDescription: 'Moderate snow',
+    isDay: true,
+  },
   forecast: MOCK_FORECAST_BASE,
 };
 const MOCK_WEATHER_FOG: WeatherData = {
@@ -659,6 +699,14 @@ const MOCK_WEATHER_FOG: WeatherData = {
     weatherCode: 45,
     weatherDescription: 'Fog',
     windSpeedMax: '5',
+  },
+  now: {
+    temperature: 4,
+    apparentTemperature: 3,
+    humidity: 97,
+    weatherCode: 45,
+    weatherDescription: 'Fog',
+    isDay: false,
   },
   forecast: MOCK_FORECAST_BASE,
 };

@@ -718,14 +718,15 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="bg-muted rounded-full p-2">
-                    <Sun className="h-8 w-8 text-sky-400" />
+                    <Sun className="h-8 w-8 text-amber-400" />
                   </div>
                   <div>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold">23°</span>
-                      <span className="text-muted-foreground text-sm">/ 16°</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm font-medium">{t.weatherDesc}</p>
+                    <span className="text-3xl font-bold">21°</span>
+                    <p className="text-muted-foreground text-xs">16° – 26°</p>
+                    <p className="text-muted-foreground text-xs">Feels like 19°</p>
+                    <p className="text-muted-foreground mt-0.5 text-sm font-medium">
+                      {t.weatherDesc}
+                    </p>
                   </div>
                 </div>
                 <div className="text-muted-foreground space-y-1 text-xs">

@@ -359,7 +359,8 @@
       "snowShowers": "Averses de neige",
       "thunderstorm": "Orage",
       "cloudy": "Nuageux",
-      "mist": "Brume"
+      "mist": "Brume",
+      "feelsLike": "Ressenti"
     },
     "h1Suffix": "Temps d'attente en direct"
   },

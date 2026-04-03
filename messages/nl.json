@@ -359,7 +359,8 @@
       "snowShowers": "Sneeuwbuien",
       "thunderstorm": "Onweer",
       "cloudy": "Bewolkt",
-      "mist": "Nevel"
+      "mist": "Nevel",
+      "feelsLike": "Voelt als"
     },
     "h1Suffix": "Live wachttijden"
   },
