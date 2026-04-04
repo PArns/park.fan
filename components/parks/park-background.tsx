@@ -35,7 +35,7 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
   }
 
   return (
-    <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none">
+    <div className="pointer-events-none fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none">
       <div className="relative h-full w-full">
         <Image
           src={imageSrc}
