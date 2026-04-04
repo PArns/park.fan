@@ -12,6 +12,7 @@ import { HeroBackground } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
+import { RefractivePanel } from '@/components/common/refractive-panel';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -136,7 +137,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <div className="mx-auto flex w-full max-w-5xl flex-col items-center rounded-2xl bg-white/50 px-6 py-4 shadow-2xl backdrop-blur-md sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
+            <RefractivePanel className="mx-auto flex w-full max-w-5xl flex-col items-center bg-white/25 px-6 py-4 shadow-2xl sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
               {/* Logo – light/dark variant based on theme */}
               <div className="relative h-20 w-20 shrink-0 sm:h-36 sm:w-36 lg:h-72 lg:w-72">
                 {/* SVGs don't benefit from next/image optimization — use <img> directly */}
@@ -181,7 +182,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   </Link>
                 </div>
               </div>
-            </div>
+            </RefractivePanel>
           </div>
         </div>
 

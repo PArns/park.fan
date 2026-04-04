@@ -7,10 +7,32 @@ const PARK_BLUR_DATA_URL =
 interface ParkBackgroundProps {
   imageSrc: string | null;
   alt: string;
+  /** Fix the background so it stays in place while content scrolls over it. */
+  fixed?: boolean;
 }
 
-export function ParkBackground({ imageSrc, alt }: ParkBackgroundProps) {
+export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundProps) {
   if (!imageSrc) return null;
+
+  if (fixed) {
+    return (
+      <div className="pointer-events-none fixed inset-0 -z-10 select-none">
+        <Image
+          src={imageSrc}
+          alt={alt}
+          fill
+          priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL={PARK_BLUR_DATA_URL}
+          className="object-cover object-center"
+          sizes="100vw"
+          fetchPriority="high"
+        />
+        <div className="bg-background/70 absolute inset-0" />
+      </div>
+    );
+  }
 
   return (
     <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none">
