@@ -4,6 +4,7 @@ import { refractive } from '@hashintel/refractive';
 import { cn } from '@/lib/utils';
 import { REFRACTIVE_DEFAULTS } from '@/lib/refractive-defaults';
 import { useMounted } from '@/lib/use-mounted';
+import { useState, useEffect } from 'react';
 
 const RefractiveDiv = refractive.div;
 
@@ -31,13 +32,21 @@ export function RefractivePanel({
   specularAngle = REFRACTIVE_DEFAULTS.specularAngle,
 }: RefractivePanelProps) {
   const mounted = useMounted();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 639px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const base = cn('p-6', className);
+  const fallback = cn('bg-background/60 rounded-xl backdrop-blur-md', base);
 
-  if (!mounted) {
-    return (
-      <div className={cn('bg-background/60 rounded-xl backdrop-blur-md', base)}>{children}</div>
-    );
+  if (!mounted || isMobile) {
+    return <div className={fallback}>{children}</div>;
   }
 
   return (
