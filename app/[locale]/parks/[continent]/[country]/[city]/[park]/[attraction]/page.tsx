@@ -10,6 +10,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -348,6 +349,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       {parkName}
                     </Link>
                     {attraction.land && <Badge variant="outline">{attraction.land}</Badge>}
+                    {attraction.isSeasonal && (
+                      <SeasonalBadge
+                        seasonMonths={attraction.seasonMonths}
+                        isCurrentlyInSeason={attraction.isCurrentlyInSeason}
+                      />
+                    )}
                   </div>
                 </div>
               </div>

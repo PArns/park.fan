@@ -1799,6 +1799,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
     aliases: ['R-squared', 'coefficient de détermination'],
   },
+  {
+    id: 'seasonal-attraction',
+    name: 'Attraction saisonnière',
+    shortDefinition:
+      "Une attraction, un show ou une expérience qui ne fonctionne que pendant certains mois de l'année — comme une patinoire en hiver ou un toboggan aquatique en été.",
+    definition:
+      "Une attraction saisonnière est un manège, un show ou une expérience que le parc ne propose que pendant une période définie de l'année. Les patinoires, les pistes de luge et les shows hivernaux fonctionnent généralement de novembre à février ; les toboggans aquatiques, les zones de jeux d'eau et les spectacles en plein air de mai à septembre. Certaines attractions saisonnières sont liées à des événements spécifiques comme Halloween ou Noël.\n\nSur park.fan, les attractions et shows saisonniers sont automatiquement identifiés à partir des données historiques d'exploitation et masqués dans les onglets du parc et sur la carte lorsqu'ils sont hors de leurs mois actifs — pour réduire l'encombrement visuel et t'aider à te concentrer sur ce qui est réellement ouvert aujourd'hui. Un badge saisonnier (❄️ Hiver, ☀️ Été ou 🍃 générique) apparaît sur chaque carte concernée. Lorsque l'attraction est hors saison, le badge est atténué. Un bouton de filtre dans les onglets permet d'afficher les entrées masquées si nécessaire.",
+    relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
+    aliases: ['attraction temporaire', 'manège saisonnier', 'show saisonnier'],
+  },
 ];
 
 export default translations;

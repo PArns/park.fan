@@ -285,6 +285,9 @@ export interface ParkAttraction {
   statistics?: AttractionStatistics;
   history?: AttractionHistoryDay[];
   isHeadliner?: boolean;
+  isSeasonal?: boolean;
+  seasonMonths?: number[] | null;
+  isCurrentlyInSeason?: boolean | null;
   // Only present on attraction detail page (merged from dedicated endpoint)
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
@@ -303,6 +306,9 @@ export interface ParkShow {
   longitude: number | null;
   status?: string;
   showtimes?: { startTime: string }[];
+  isSeasonal?: boolean;
+  seasonMonths?: number[] | null;
+  isCurrentlyInSeason?: boolean | null;
 }
 
 export interface ParkRestaurant {
@@ -385,6 +391,9 @@ export interface AttractionResponse {
   predictionAccuracy?: PredictionAccuracy | null;
   history?: AttractionHistoryDay[];
   schedule?: ScheduleItem[];
+  isSeasonal?: boolean;
+  seasonMonths?: number[] | null;
+  isCurrentlyInSeason?: boolean | null;
 }
 
 export interface AttractionHistoryDay {
@@ -464,6 +473,8 @@ export interface SearchResultItem {
   shortDefinition?: string;
   showTimes?: string[];
   parentPark?: { id: string; name: string; slug: string; url: string };
+  isSeasonal?: boolean;
+  isCurrentlyInSeason?: boolean | null;
 }
 
 export interface SearchResult {

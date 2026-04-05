@@ -214,12 +214,17 @@ export function ParkMap({ park }: ParkMapProps) {
     return () => clearInterval(intervalId);
   }, []);
 
-  // Add attractions
+  // Add attractions (exclude off-season items)
   const validAttractions =
-    park.attractions?.filter((a) => a.latitude != null && a.longitude != null) || [];
+    park.attractions?.filter(
+      (a) => a.latitude != null && a.longitude != null && a.isCurrentlyInSeason !== false
+    ) || [];
 
-  // Add shows
-  const validShows = park.shows?.filter((s) => s.latitude != null && s.longitude != null) || [];
+  // Add shows (exclude off-season items)
+  const validShows =
+    park.shows?.filter(
+      (s) => s.latitude != null && s.longitude != null && s.isCurrentlyInSeason !== false
+    ) || [];
 
   // Add restaurants
   const validRestaurants =

@@ -265,6 +265,10 @@
     "searchAttractions": "Filtra attrazioni...",
     "noAttractionsFound": "Nessuna attrazione trovata",
     "clearSearch": "Cancella ricerca",
+    "seasonal": "Stagionale",
+    "seasonalWinter": "Inverno",
+    "seasonalSummer": "Estate",
+    "offSeasonCount": "{count} fuori stagione",
     "mapMarkers": {
       "noMapData": "Nessun dato cartografico disponibile per questo parco.",
       "parkCenter": "Centro del parco",

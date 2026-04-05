@@ -1731,6 +1731,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
     aliases: ['R-squared', 'coefficient of determination'],
   },
+  {
+    id: 'seasonal-attraction',
+    name: 'Seasonal Attraction',
+    shortDefinition:
+      'A ride, show, or experience that only operates during specific months of the year — such as an ice rink in winter or a water ride in summer.',
+    definition:
+      "A seasonal attraction is a ride, show, or experience that the park only runs during a defined part of the calendar year. Ice skating rinks, sled rides, and holiday-themed shows typically run in winter (November to February); log flumes, water play areas, and outdoor spectaculars tend to run in summer (May to September). Some seasonal attractions are tied to specific events such as Halloween or Christmas seasons.\n\nOn park.fan, seasonal attractions and shows are automatically identified based on historical operating data and hidden from the park's tab view and map when they are outside their active months — reducing visual clutter and helping you focus on what is actually open today. A seasonal badge (❄️ Winter, ☀️ Summer, or 🍃 generic) appears on every such attraction's card. When the attraction is currently out of season, the badge is dimmed to indicate it is inactive. An off-season toggle button in the Attractions and Shows tabs lets you reveal hidden entries when needed — for example, to plan a future winter visit.",
+    relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
+    aliases: ['seasonal ride', 'seasonal show', 'seasonal experience'],
+  },
 ];
 
 export default translations;

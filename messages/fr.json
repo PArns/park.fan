@@ -265,6 +265,10 @@
     "searchAttractions": "Filtrer attractions...",
     "noAttractionsFound": "Aucune attraction trouvée",
     "clearSearch": "Effacer recherche",
+    "seasonal": "Saisonnier",
+    "seasonalWinter": "Hiver",
+    "seasonalSummer": "Été",
+    "offSeasonCount": "{count} hors saison",
     "mapMarkers": {
       "noMapData": "Aucune donnée de carte disponible pour ce parc.",
       "parkCenter": "Centre du Parc",

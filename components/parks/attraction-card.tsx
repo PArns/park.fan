@@ -11,6 +11,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkStatusBadge } from './park-status-badge';
+import { SeasonalBadge } from './seasonal-badge';
 import { TrendIndicator } from './trend-indicator';
 import { QueueTypeBadge } from './queue-type-badge';
 import { WaitTimeSparkline } from './wait-time-sparkline';
@@ -219,6 +220,17 @@ export function AttractionCard({
 
             <div className="flex flex-col items-end gap-2">
               <ParkStatusBadge status={status} className="shrink-0" />
+
+              {/* Seasonal Badge */}
+              {'isSeasonal' in attraction && attraction.isSeasonal && (
+                <SeasonalBadge
+                  seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}
+                  isCurrentlyInSeason={
+                    'isCurrentlyInSeason' in attraction ? attraction.isCurrentlyInSeason : null
+                  }
+                  className="h-5 px-1.5 text-[10px]"
+                />
+              )}
 
               {/* Crowd Level Badge */}
               {status === 'OPERATING' && crowdLevel && (

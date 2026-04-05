@@ -1789,6 +1789,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
     aliases: ['R-squared', 'coefficiente di determinazione'],
   },
+  {
+    id: 'seasonal-attraction',
+    name: 'Attrazione stagionale',
+    shortDefinition:
+      "Un'attrazione, uno show o un'esperienza che funziona solo in determinati mesi dell'anno — come una pista di pattinaggio in inverno o uno scivolo d'acqua in estate.",
+    definition:
+      "Un'attrazione stagionale è un'attrazione, uno show o un'esperienza che il parco propone solo in un periodo definito dell'anno. Le piste di pattinaggio, le piste di slittamento e gli show invernali funzionano tipicamente da novembre a febbraio; i rapid river, le zone giochi d'acqua e gli spettacoli all'aperto da maggio a settembre. Alcune attrazioni stagionali sono legate a eventi specifici come Halloween o il Natale.\n\nSu park.fan, le attrazioni e gli show stagionali vengono identificati automaticamente in base ai dati storici e nascosti nelle schede del parco e sulla mappa quando si trovano al di fuori dei loro mesi attivi — per ridurre il disordine visivo e aiutarti a concentrarti su ciò che è effettivamente aperto oggi. Un badge stagionale (❄️ Inverno, ☀️ Estate o 🍃 generico) appare su ogni scheda interessata. Quando l'attrazione è fuori stagione, il badge è attenuato. Un pulsante di filtro nelle schede consente di mostrare le voci nascoste quando necessario.",
+    relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
+    aliases: ['giostra stagionale', 'show stagionale', 'esperienza stagionale'],
+  },
 ];
 
 export default translations;

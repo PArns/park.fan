@@ -265,6 +265,10 @@
     "searchAttractions": "Filter attracties...",
     "noAttractionsFound": "Geen attracties gevonden",
     "clearSearch": "Zoekopdracht wissen",
+    "seasonal": "Seizoensgebonden",
+    "seasonalWinter": "Winter",
+    "seasonalSummer": "Zomer",
+    "offSeasonCount": "{count} buiten seizoen",
     "mapMarkers": {
       "noMapData": "Geen kaartgegevens beschikbaar voor dit park.",
       "parkCenter": "Park Centrum",

@@ -2076,4 +2076,16 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'twister-coaster',
     },
   },
+  {
+    id: 'seasonal-attraction',
+    category: 'attractions',
+    slugs: {
+      en: 'seasonal-attraction',
+      de: 'saisonale-attraktion',
+      fr: 'attraction-saisonniere',
+      it: 'attrazione-stagionale',
+      nl: 'seizoensattractie',
+      es: 'atraccion-de-temporada',
+    },
+  },
 ];

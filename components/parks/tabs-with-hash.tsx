@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search } from 'lucide-react';
+import { Search, EyeOff, Eye } from 'lucide-react';
 import Fuse from 'fuse.js';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -12,6 +12,7 @@ import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { stripNewPrefix } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 
 import type {
@@ -65,6 +66,8 @@ export function TabsWithHash({
   const [activeTab, setActiveTab] = useState(defaultValue);
   const [searchQuery, setSearchQuery] = useState('');
   const [isFocused, setIsFocused] = useState(false);
+  const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
+  const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Avoid hydration mismatch by only rendering after mount
@@ -194,7 +197,9 @@ export function TabsWithHash({
   const headliners = useMemo(() => {
     const all = Object.values(attractionsByLand)
       .flat()
-      .filter((a) => a.isHeadliner);
+      .filter(
+        (a) => a.isHeadliner && (showOffSeasonAttractions || a.isCurrentlyInSeason !== false)
+      );
     return all.sort((a, b) => {
       const waitA = a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
       const waitB = b.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
@@ -203,7 +208,7 @@ export function TabsWithHash({
       if (waitB !== null) return 1;
       return 0;
     });
-  }, [attractionsByLand]);
+  }, [attractionsByLand, showOffSeasonAttractions]);
 
   // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
   const attractionLandKey = useMemo(() => {
@@ -232,13 +237,43 @@ export function TabsWithHash({
     });
   }, [attractionsByLand]);
 
-  // Filter attractions based on search query
+  // Off-season filtering
+  const offSeasonAttractionCount = useMemo(
+    () =>
+      Object.values(attractionsByLand)
+        .flat()
+        .filter((a) => a.isCurrentlyInSeason === false).length,
+    [attractionsByLand]
+  );
+
+  const offSeasonShowCount = useMemo(
+    () => (park.shows ?? []).filter((s) => s.isCurrentlyInSeason === false).length,
+    [park.shows]
+  );
+
+  const inSeasonAttractionsByLand = useMemo(() => {
+    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return attractionsByLand;
+    const result: Record<string, ParkAttraction[]> = {};
+    for (const [land, attractions] of Object.entries(attractionsByLand)) {
+      const filtered = attractions.filter((a) => a.isCurrentlyInSeason !== false);
+      if (filtered.length > 0) result[land] = filtered;
+    }
+    return result;
+  }, [attractionsByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
+
+  const visibleShows = useMemo(() => {
+    if (showOffSeasonShows || offSeasonShowCount === 0) return park.shows ?? [];
+    return (park.shows ?? []).filter((s) => s.isCurrentlyInSeason !== false);
+  }, [park.shows, showOffSeasonShows, offSeasonShowCount]);
+
+  // Filter attractions based on search query (and off-season filter)
   const filteredAttractionsByLand =
     searchQuery.trim() === ''
-      ? attractionsByLand
+      ? inSeasonAttractionsByLand
       : fuse
           .search(searchQuery)
           .map((result) => result.item)
+          .filter((a) => showOffSeasonAttractions || a.isCurrentlyInSeason !== false)
           .reduce(
             (acc, attraction) => {
               const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
@@ -356,7 +391,27 @@ export function TabsWithHash({
           value="attractions"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <h2 className="mb-6 text-2xl font-semibold">{t('attractions')}</h2>
+          <div className="mb-6 flex flex-wrap items-center gap-3">
+            <h2 className="text-2xl font-semibold">{t('attractions')}</h2>
+            {offSeasonAttractionCount > 0 && (
+              <button
+                onClick={() => setShowOffSeasonAttractions((v) => !v)}
+                className={cn(
+                  'flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md transition-colors',
+                  showOffSeasonAttractions
+                    ? 'border-primary/30 bg-primary/15 text-primary dark:bg-primary/10'
+                    : 'border-border/60 bg-background/60 text-muted-foreground hover:border-primary/30 hover:text-foreground dark:bg-[oklch(0.12_0.025_241_/_0.55)]'
+                )}
+              >
+                {showOffSeasonAttractions ? (
+                  <Eye className="h-3 w-3" />
+                ) : (
+                  <EyeOff className="h-3 w-3" />
+                )}
+                {t('offSeasonCount', { count: offSeasonAttractionCount })}
+              </button>
+            )}
+          </div>
           {/* Attractions grouped by Land */}
           <div className="relative space-y-8">
             <div className="relative z-10 mb-4 md:absolute md:top-0 md:right-0 md:mb-0">
@@ -412,14 +467,16 @@ export function TabsWithHash({
                 );
               })
             ) : (
-              <div className="py-12 text-center">
-                <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
-                <button
-                  className="text-primary mt-2 text-sm underline hover:no-underline"
-                  onClick={() => setSearchQuery('')}
-                >
-                  {t('clearSearch')}
-                </button>
+              <div className="flex justify-center pt-14">
+                <div className="border-border/50 bg-background/60 inline-flex flex-col items-center rounded-xl border px-10 py-8 shadow-md backdrop-blur-md dark:bg-[oklch(0.12_0.025_241_/_0.55)]">
+                  <p className="text-muted-foreground">{t('noAttractionsFound')}</p>
+                  <button
+                    className="text-primary mt-2 text-sm underline hover:no-underline"
+                    onClick={() => setSearchQuery('')}
+                  >
+                    {t('clearSearch')}
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -430,9 +487,29 @@ export function TabsWithHash({
             value="shows"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <h2 className="mb-6 text-2xl font-semibold">{t('shows')}</h2>
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              <h2 className="text-2xl font-semibold">{t('shows')}</h2>
+              {offSeasonShowCount > 0 && (
+                <button
+                  onClick={() => setShowOffSeasonShows((v) => !v)}
+                  className={cn(
+                    'flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md transition-colors',
+                    showOffSeasonShows
+                      ? 'border-primary/30 bg-primary/15 text-primary dark:bg-primary/10'
+                      : 'border-border/60 bg-background/60 text-muted-foreground hover:border-primary/30 hover:text-foreground dark:bg-[oklch(0.12_0.025_241_/_0.55)]'
+                  )}
+                >
+                  {showOffSeasonShows ? (
+                    <Eye className="h-3 w-3" />
+                  ) : (
+                    <EyeOff className="h-3 w-3" />
+                  )}
+                  {t('offSeasonCount', { count: offSeasonShowCount })}
+                </button>
+              )}
+            </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {park.shows?.map((show) => {
+              {visibleShows.map((show) => {
                 const showHref =
                   `/parks/${continent}/${country}/${city}/${parkSlug}#shows` as '/parks/europe/germany/rust/europa-park';
                 return (
@@ -445,6 +522,9 @@ export function TabsWithHash({
                     showtimes={show.showtimes}
                     timezone={park.timezone}
                     href={showHref}
+                    isSeasonal={show.isSeasonal}
+                    seasonMonths={show.seasonMonths}
+                    isCurrentlyInSeason={show.isCurrentlyInSeason}
                   />
                 );
               })}

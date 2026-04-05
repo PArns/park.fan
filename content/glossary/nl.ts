@@ -1759,6 +1759,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
     aliases: ['R-squared'],
   },
+  {
+    id: 'seasonal-attraction',
+    name: 'Seizoensattractie',
+    shortDefinition:
+      'Een attractie, show of beleving die alleen gedurende bepaalde maanden van het jaar in gebruik is — zoals een ijsbaan in de winter of een waterbaan in de zomer.',
+    definition:
+      "Een seizoensattractie is een rit, show of beleving die het park alleen in een bepaalde periode van het jaar aanbiedt. Ijsbanen, rodelbanen en winterse shows draaien doorgaans van november tot februari; wildwaterbanen, waterspeelgebieden en openluchtspectakels van mei tot september. Sommige seizoensattracties zijn gekoppeld aan specifieke evenementen zoals Halloween of Kerst.\n\nOp park.fan worden seizoensattracties en shows automatisch herkend op basis van historische bedrijfsgegevens en verborgen in de tabbladen van het park en op de kaart wanneer ze buiten hun actieve maanden vallen — om de overzichtelijkheid te bewaren en je te helpen focussen op wat er vandaag daadwerkelijk open is. Een seizoensbadge (❄️ Winter, ☀️ Zomer of 🍃 generiek) verschijnt op elke betreffende kaart. Als de attractie buiten seizoen is, wordt het badge gedempt weergegeven. Een filterknop in de tabbladen laat verborgen items zien wanneer dat nodig is.",
+    relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
+    aliases: ['seizoensrit', 'seizoensshow', 'tijdelijke attractie'],
+  },
 ];
 
 export default translations;

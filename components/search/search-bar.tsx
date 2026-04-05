@@ -5,7 +5,17 @@ import type { ReactNode } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen } from 'lucide-react';
+import {
+  Search,
+  TreePalm,
+  Cog,
+  Utensils,
+  Music,
+  MapPin,
+  Clock,
+  BookOpen,
+  Leaf,
+} from 'lucide-react';
 import {
   CommandDialog,
   CommandEmpty,
@@ -390,6 +400,10 @@ export function SearchCommand({
 
             {/* Right: Wait Time + Crowd + Distance */}
             <div className="flex shrink-0 items-center gap-2">
+              {result.isSeasonal && result.isCurrentlyInSeason === true && (
+                <Leaf className="h-3.5 w-3.5 shrink-0 text-violet-400" />
+              )}
+
               {result.type === 'attraction' && result.waitTime != null && (
                 <span className="text-foreground/70 flex items-center gap-1 text-xs font-semibold">
                   <Clock className="h-3 w-3" />

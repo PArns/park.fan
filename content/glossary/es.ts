@@ -1799,6 +1799,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
     aliases: ['R-squared', 'coeficiente de determinación'],
   },
+  {
+    id: 'seasonal-attraction',
+    name: 'Atracción de temporada',
+    shortDefinition:
+      'Una atracción, show o experiencia que solo funciona durante ciertos meses del año — como una pista de hielo en invierno o una atracción acuática en verano.',
+    definition:
+      "Una atracción de temporada es una atracción, show o experiencia que el parque solo ofrece durante un período definido del año. Las pistas de hielo, las pistas de trineo y los shows invernales suelen funcionar de noviembre a febrero; los toboganes acuáticos, las zonas de juegos con agua y los espectáculos al aire libre de mayo a septiembre. Algunas atracciones de temporada están vinculadas a eventos específicos como Halloween o Navidad.\n\nEn park.fan, las atracciones y shows de temporada se identifican automáticamente a partir de datos históricos de operación y se ocultan en las pestañas del parque y en el mapa cuando están fuera de sus meses activos — para reducir el desorden visual y ayudarte a centrarte en lo que realmente está abierto hoy. Un badge de temporada (❄️ Invierno, ☀️ Verano o 🍃 genérico) aparece en cada tarjeta correspondiente. Cuando la atracción está fuera de temporada, el badge aparece atenuado. Un botón de filtro en las pestañas permite mostrar las entradas ocultas cuando sea necesario.",
+    relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
+    aliases: ['atracción estacional', 'show de temporada', 'experiencia temporal'],
+  },
 ];
 
 export default translations;

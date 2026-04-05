@@ -36,6 +36,25 @@ Reminders and context for AI or human sessions working on the codebase.
 12. **Glossary** – 90 terms across 7 categories. Term data (slugs) in `lib/glossary/data.ts`; per-locale definitions in `content/glossary/XX.ts` — use `\n\n` to separate paragraphs in `definition` fields. Localized URLs (`/de/glossar/wartezeit`) handled via Next.js `rewrites()` in `next.config.ts` — file-system path stays `app/[locale]/glossary/[term]`. Add new terms to both `data.ts` and all 6 locale content files.
     → [Glossary System](../features/glossary.md)
 
+13. **Seasonal attractions & shows** – The API returns three fields on `ParkAttraction`, `ParkShow`, `AttractionResponse`, and `SearchResultItem`:
+    - `isSeasonal: boolean` — attraction/show is known to be seasonal
+    - `seasonMonths: number[] | null` — months active (1–12); `null` = seasonal but months unknown
+    - `isCurrentlyInSeason: boolean | null` — `false` = hide by default; `null` = don't hide (unknown months or not seasonal)
+
+    **Filter logic** — hide when `isCurrentlyInSeason === false`; never hide when `null`.
+
+    **Frontend behaviour:**
+    - `SeasonalBadge` (`components/parks/seasonal-badge.tsx`) — shows ❄️ Winter / ☀️ Summer / 🍃 generic based on `seasonMonths`. Always rendered when `isSeasonal === true`; dimmed (`opacity-50`) when `isCurrentlyInSeason === false`.
+    - `AttractionCard` + `ShowCard` — badge shown whenever `isSeasonal === true`.
+    - Attraction detail page (`[attraction]/page.tsx`) — badge shown in the title meta row next to the land badge.
+    - Search (`search-bar.tsx`) — small `🍃` Leaf icon when `isSeasonal && isCurrentlyInSeason === true`.
+    - Park tabs (`tabs-with-hash.tsx`) — off-season items hidden by default (attractions + shows + headliners). A glass toggle button **"N außer Saison"** (with `EyeOff`/`Eye` icon, `backdrop-blur-md` glass style) appears next to the section heading when any off-season items exist; clicking it reveals them.
+    - Park map (`park-map.tsx`) — off-season attractions and shows are excluded from markers by default (no toggle on the map, by design).
+
+    **Translations** — keys `seasonal`, `seasonalWinter`, `seasonalSummer`, `offSeasonCount` added to all 6 locale files (`messages/`).
+
+    **API population timing** — bootstrap job runs 90 s after server start, then daily cron at 02:30. Fields absent from API response = not yet populated, treat as non-seasonal.
+
 ---
 
 ## Related

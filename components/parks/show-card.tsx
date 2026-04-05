@@ -5,6 +5,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { DistanceBadge } from '@/components/common/distance-badge';
 import { LocalTime } from '@/components/ui/local-time';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
@@ -20,6 +21,9 @@ interface ShowCardProps {
   href: string;
   parkName?: string; // Optional park name (for favorites section)
   distance?: number; // Optional distance (for favorites section)
+  isSeasonal?: boolean;
+  seasonMonths?: number[] | null;
+  isCurrentlyInSeason?: boolean | null;
 }
 
 export function ShowCard({
@@ -31,6 +35,9 @@ export function ShowCard({
   href,
   parkName,
   distance,
+  isSeasonal,
+  seasonMonths,
+  isCurrentlyInSeason,
 }: ShowCardProps) {
   const tCommon = useTranslations('common');
 
@@ -60,7 +67,16 @@ export function ShowCard({
           <FavoriteStar type="show" id={id} />
         </div>
         <CardContent className="p-4">
-          <h3 className={cn('font-semibold', parkName ? 'line-clamp-2' : '')}>{name}</h3>
+          <div className="flex items-start justify-between gap-2">
+            <h3 className={cn('font-semibold', parkName ? 'line-clamp-2' : '')}>{name}</h3>
+            {isSeasonal && (
+              <SeasonalBadge
+                seasonMonths={seasonMonths}
+                isCurrentlyInSeason={isCurrentlyInSeason}
+                className="h-5 shrink-0 px-1.5 text-[10px]"
+              />
+            )}
+          </div>
 
           {/* Park Name (for favorites) */}
           {parkName && <p className="text-muted-foreground mt-1 truncate text-xs">{parkName}</p>}

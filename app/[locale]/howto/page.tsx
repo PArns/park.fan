@@ -47,6 +47,8 @@ import {
   Snowflake,
   Wind,
   Sun,
+  Leaf,
+  EyeOff,
   Info,
   Lightbulb,
 } from 'lucide-react';
@@ -1646,6 +1648,70 @@ function ContentDE() {
           </p>
           <MockShowCards />
         </SubSection>
+
+        <SubSection title="Saisonale Attraktionen & Shows">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Manche Attraktionen und Shows sind nur zu bestimmten Jahreszeiten in Betrieb – zum
+              Beispiel Eislaufbahnen im Winter oder Wasserbahnen im Sommer. park.fan erkennt das
+              automatisch und blendet diese saisonalen Attraktionen außerhalb ihrer Saison
+              standardmäßig aus.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            {/* Badge examples */}
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Winter',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: 'Attraktion ist aktuell in Saison (z. B. Winter-Event). Badge erscheint auf der Karte.',
+                },
+                {
+                  icon: Sun,
+                  label: 'Sommer',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: 'Sommer-Attraktion – z. B. Wildwasserbahn. Aktiv von Mai bis September.',
+                },
+                {
+                  icon: Leaf,
+                  label: 'Saisonal',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Außerhalb der Saison: Badge gedimmt. Attraktion in den Tabs und auf der Karte standardmäßig ausgeblendet.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            {/* Toggle button demo */}
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 außer Saison
+              </button>
+              <p className="text-muted-foreground text-sm">
+                Wenn Off-Season-Einträge versteckt sind, erscheint dieser Button neben der
+                Abschnittsüberschrift. Klick darauf, um sie einzublenden – z. B. um eine
+                Winter-Attraktion im Sommer zu finden.
+              </p>
+            </div>
+          </div>
+        </SubSection>
       </Section>
 
       {/* ── 5. Badges ───────────────────────────────────────────────────────── */}
@@ -2866,6 +2932,67 @@ function ContentENSections() {
           </p>
           <MockShowCards />
         </SubSection>
+
+        <SubSection title="Seasonal Attractions & Shows">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Some seasonal attractions and shows only operate during certain months — like ice
+              rinks in winter or water rides in summer. park.fan detects this automatically and
+              hides those entries outside their season by default.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Winter',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: 'Attraction is currently in season (e.g. a winter event). Badge appears on the card.',
+                },
+                {
+                  icon: Sun,
+                  label: 'Summer',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: 'Summer attraction – e.g. a water ride. Active from May to September.',
+                },
+                {
+                  icon: Leaf,
+                  label: 'Seasonal',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Off-season: badge is dimmed. Attraction hidden in tabs and on the map by default.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 off-season
+              </button>
+              <p className="text-muted-foreground text-sm">
+                When off-season entries are hidden, this button appears next to the section heading.
+                Click it to reveal them — useful if you want to find a winter attraction in summer,
+                for example.
+              </p>
+            </div>
+          </div>
+        </SubSection>
       </Section>
 
       {/* ── 5. Badges ───────────────────────────────────────────────────────── */}
@@ -3684,6 +3811,66 @@ function ContentESSections() {
             que siempre sepas cuándo y dónde estar.
           </p>
           <MockShowCards />
+        </SubSection>
+
+        <SubSection title="Atracciones y Shows de Temporada">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Algunas atracciones de temporada y shows solo funcionan en ciertas épocas del año –
+              como pistas de hielo en invierno o atracciones acuáticas en verano. park.fan lo
+              detecta automáticamente y oculta esas entradas fuera de temporada por defecto.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Invierno',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: 'La atracción está en temporada (p. ej. evento de invierno). El badge aparece en la tarjeta.',
+                },
+                {
+                  icon: Sun,
+                  label: 'Verano',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: 'Atracción de verano – p. ej. atracciones acuáticas. Activa de mayo a septiembre.',
+                },
+                {
+                  icon: Leaf,
+                  label: 'Temporada',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Fuera de temporada: badge atenuado. Atracción oculta en pestañas y mapa por defecto.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 fuera de temporada
+              </button>
+              <p className="text-muted-foreground text-sm">
+                Cuando hay entradas fuera de temporada ocultas, este botón aparece junto al título
+                de la sección. Haz clic para mostrarlas.
+              </p>
+            </div>
+          </div>
         </SubSection>
       </Section>
 
@@ -4520,6 +4707,67 @@ function ContentFRSections() {
             évidence en vert – pour que tu saches toujours quand et où être.
           </p>
           <MockShowCards />
+        </SubSection>
+
+        <SubSection title="Attractions et spectacles saisonniers">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Certaines attractions saisonnières et shows ne fonctionnent qu&apos;à certaines
+              saisons — comme les patinoires en hiver ou les attractions aquatiques en été.
+              park.fan le détecte automatiquement et masque ces entrées en dehors de leur saison
+              par défaut.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Hiver',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: "L'attraction est actuellement en saison (ex. événement hivernal). Le badge s'affiche sur la carte.",
+                },
+                {
+                  icon: Sun,
+                  label: 'Été',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: "Attraction estivale – ex. toboggan aquatique. Active de mai à septembre.",
+                },
+                {
+                  icon: Leaf,
+                  label: 'Saisonnier',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Hors saison : badge atténué. Attraction masquée dans les onglets et sur la carte par défaut.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 hors saison
+              </button>
+              <p className="text-muted-foreground text-sm">
+                Quand des entrées hors saison sont masquées, ce bouton apparaît à côté du titre de
+                la section. Clique dessus pour les afficher.
+              </p>
+            </div>
+          </div>
         </SubSection>
       </Section>
 
@@ -5366,6 +5614,67 @@ function ContentITSections() {
           </p>
           <MockShowCards />
         </SubSection>
+
+        <SubSection title="Attrazioni e spettacoli stagionali">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Alcune attrazioni stagionali e show funzionano solo in certi periodi dell&apos;anno —
+              come le piste di pattinaggio in inverno o le attrazioni acquatiche in estate.
+              park.fan lo rileva automaticamente e nasconde queste voci fuori stagione per
+              impostazione predefinita.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Inverno',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: "L'attrazione è attualmente in stagione (es. evento invernale). Il badge appare sulla scheda.",
+                },
+                {
+                  icon: Sun,
+                  label: 'Estate',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: "Attrazione estiva – es. scivolo d'acqua. Attiva da maggio a settembre.",
+                },
+                {
+                  icon: Leaf,
+                  label: 'Stagionale',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Fuori stagione: badge attenuato. Attrazione nascosta nei tab e nella mappa di default.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 fuori stagione
+              </button>
+              <p className="text-muted-foreground text-sm">
+                Quando ci sono voci fuori stagione nascoste, questo pulsante appare accanto al
+                titolo della sezione. Cliccaci sopra per mostrarle.
+              </p>
+            </div>
+          </div>
+        </SubSection>
       </Section>
 
       {/* ── 5. Badge ─────────────────────────────────────────────────────────── */}
@@ -6186,6 +6495,66 @@ function ContentNLSections() {
             altijd weet wanneer en waar je moet zijn.
           </p>
           <MockShowCards />
+        </SubSection>
+
+        <SubSection title="Seizoensgebonden attracties & shows">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>
+              Sommige seizoensattracties en shows zijn alleen actief in bepaalde seizoenen — zoals
+              ijsbanen in de winter of waterattracties in de zomer. park.fan detecteert dit
+              automatisch en verbergt deze items buiten hun seizoen standaard.
+            </GlossaryInject>
+          </p>
+          <div className="not-prose space-y-4">
+            <div className="space-y-2">
+              {[
+                {
+                  icon: Snowflake,
+                  label: 'Winter',
+                  color: 'border border-sky-500/30 bg-sky-500/15 text-sky-400',
+                  opacity: '',
+                  desc: 'Attractie is momenteel in seizoen (bijv. winterevenement). Badge verschijnt op de kaart.',
+                },
+                {
+                  icon: Sun,
+                  label: 'Zomer',
+                  color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
+                  opacity: '',
+                  desc: 'Zomerattractie – bijv. wildwaterbaan. Actief van mei tot september.',
+                },
+                {
+                  icon: Leaf,
+                  label: 'Seizoensgebonden',
+                  color: 'border border-violet-500/30 bg-violet-500/15 text-violet-500',
+                  opacity: 'opacity-50',
+                  desc: 'Buiten seizoen: badge gedempt. Attractie standaard verborgen in tabbladen en op de kaart.',
+                },
+              ].map(({ icon: Icon, label, color, opacity, desc }) => (
+                <div key={label} className="flex items-start gap-3">
+                  <span
+                    className={cn(
+                      'inline-flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs font-semibold backdrop-blur-md',
+                      color,
+                      opacity
+                    )}
+                  >
+                    <Icon className="h-3 w-3" />
+                    {label}
+                  </span>
+                  <p className="text-muted-foreground text-sm">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex items-start gap-3">
+              <button className="border-border/60 bg-background/60 inline-flex shrink-0 items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md">
+                <EyeOff className="h-3 w-3" />3 buiten seizoen
+              </button>
+              <p className="text-muted-foreground text-sm">
+                Wanneer er verborgen items buiten seizoen zijn, verschijnt deze knop naast de
+                sectietitel. Klik erop om ze te tonen.
+              </p>
+            </div>
+          </div>
         </SubSection>
       </Section>
 
