@@ -69,7 +69,7 @@ export function MLSparkline({ history, metric, height = 140, unit, decimals = 1 
   const padding = (max - min) * 0.2 || 1;
 
   return (
-    <div style={{ height }}>
+    <div style={{ height: height ?? '100%' }}>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
           <YAxis domain={[min - padding, max + padding]} hide />

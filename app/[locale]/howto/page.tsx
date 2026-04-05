@@ -4713,9 +4713,8 @@ function ContentFRSections() {
           <p className="text-muted-foreground mb-3 text-sm">
             <GlossaryInject>
               Certaines attractions saisonnières et shows ne fonctionnent qu&apos;à certaines
-              saisons — comme les patinoires en hiver ou les attractions aquatiques en été.
-              park.fan le détecte automatiquement et masque ces entrées en dehors de leur saison
-              par défaut.
+              saisons — comme les patinoires en hiver ou les attractions aquatiques en été. park.fan
+              le détecte automatiquement et masque ces entrées en dehors de leur saison par défaut.
             </GlossaryInject>
           </p>
           <div className="not-prose space-y-4">
@@ -4733,7 +4732,7 @@ function ContentFRSections() {
                   label: 'Été',
                   color: 'border border-amber-500/30 bg-amber-500/15 text-amber-500',
                   opacity: '',
-                  desc: "Attraction estivale – ex. toboggan aquatique. Active de mai à septembre.",
+                  desc: 'Attraction estivale – ex. toboggan aquatique. Active de mai à septembre.',
                 },
                 {
                   icon: Leaf,
@@ -5619,9 +5618,9 @@ function ContentITSections() {
           <p className="text-muted-foreground mb-3 text-sm">
             <GlossaryInject>
               Alcune attrazioni stagionali e show funzionano solo in certi periodi dell&apos;anno —
-              come le piste di pattinaggio in inverno o le attrazioni acquatiche in estate.
-              park.fan lo rileva automaticamente e nasconde queste voci fuori stagione per
-              impostazione predefinita.
+              come le piste di pattinaggio in inverno o le attrazioni acquatiche in estate. park.fan
+              lo rileva automaticamente e nasconde queste voci fuori stagione per impostazione
+              predefinita.
             </GlossaryInject>
           </p>
           <div className="not-prose space-y-4">

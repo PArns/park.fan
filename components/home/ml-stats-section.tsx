@@ -1,9 +1,10 @@
 import { getTranslations } from 'next-intl/server';
 import { Brain, Database, RefreshCw } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { getMLDashboard, getMLMetricsHistory } from '@/lib/api/ml';
 import { MLSparklineLoader } from './ml-sparkline-loader';
+import { MLTrainingCountdown } from './ml-training-countdown';
 import { cn } from '@/lib/utils';
 import type { AccuracyBadge } from '@/lib/api/types';
 
@@ -96,7 +97,7 @@ export async function MLStatsSection() {
               'flex flex-col justify-between'
             )}
           >
-            <CardContent className="flex flex-col gap-4 p-5">
+            <CardContent className="flex flex-1 flex-col p-5">
               {/* Live badge pill */}
               <div className="flex items-center gap-2">
                 <span className={cn('h-2.5 w-2.5 animate-pulse rounded-full', styles.dot)} />
@@ -106,8 +107,8 @@ export async function MLStatsSection() {
                 </span>
               </div>
 
-              {/* Primary metric: MAE */}
-              <div>
+              {/* Primary metric: MAE — grows to fill available space */}
+              <div className="mt-4 flex flex-1 flex-col">
                 <div className="flex items-baseline gap-2">
                   <span className="text-6xl font-bold tabular-nums">±{fmt1(live.mae)}</span>
                   <span className="text-muted-foreground text-2xl font-light">
@@ -118,13 +119,15 @@ export async function MLStatsSection() {
                   <GlossaryInject>{t('ai.avgErrorDesc')}</GlossaryInject>
                 </p>
                 {history.length >= 2 && (
-                  <div className="-mx-2 mt-3">
-                    <MLSparklineLoader history={history} metric="mae" unit="min" height={140} />
+                  <div className="relative -mx-2 mt-3 flex-1">
+                    <div className="absolute inset-0">
+                      <MLSparklineLoader history={history} metric="mae" unit="min" />
+                    </div>
                   </div>
                 )}
               </div>
 
-              {/* Sub-metrics: RMSE + MAPE */}
+              {/* Sub-metrics: RMSE + MAPE — flush at bottom */}
               <div className="grid grid-cols-2 gap-x-4 gap-y-3 border-t pt-3">
                 <div>
                   <div className="text-lg font-semibold tabular-nums">
@@ -147,49 +150,36 @@ export async function MLStatsSection() {
                   </p>
                 </div>
               </div>
-
-              {/* Model age */}
-              <p className="text-muted-foreground mt-auto border-t pt-3 text-xs">
-                {system.modelAge.days === 0
-                  ? t('ai.modelAgeHours', {
-                      time: `${system.modelAge.hours}:${String(system.modelAge.minutes).padStart(2, '0')}`,
-                    })
-                  : t('ai.modelAge', { days: system.modelAge.days })}
-              </p>
             </CardContent>
           </Card>
 
           {/* 2×2 stats grid */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 content-start gap-4">
             <Card className="py-0">
-              <CardHeader className="px-4 pt-4 pb-1">
-                <CardTitle className="text-muted-foreground text-sm font-medium">
+              <div className="px-4 pt-3 pb-3">
+                <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                   {t('ai.totalPredictions')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-4 pb-4">
+                </p>
                 <div className="text-3xl font-bold">{formatCompact(live.totalPredictions)}</div>
-                <p className="text-muted-foreground text-xs">{t('ai.totalPredictionsDesc')}</p>
-              </CardContent>
+                <p className="text-muted-foreground mt-0.5 text-xs">
+                  {t('ai.totalPredictionsDesc')}
+                </p>
+              </div>
             </Card>
             <Card className="py-0">
-              <CardHeader className="px-4 pt-4 pb-1">
-                <CardTitle className="text-muted-foreground text-sm font-medium">
+              <div className="px-4 pt-3 pb-3">
+                <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                   {t('ai.coverage')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-4 pb-4">
+                </p>
                 <div className="text-3xl font-bold">{fmtPct(live.coveragePercent)}</div>
-                <p className="text-muted-foreground text-xs">{t('ai.coverageDesc')}</p>
-              </CardContent>
+                <p className="text-muted-foreground mt-0.5 text-xs">{t('ai.coverageDesc')}</p>
+              </div>
             </Card>
             <Card className="py-0">
-              <CardHeader className="px-4 pt-4 pb-1">
-                <CardTitle className="text-muted-foreground text-sm font-medium">
+              <div className="px-4 pt-3 pb-3">
+                <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                   {t('ai.parksCoverage')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-4 pb-4">
+                </p>
                 <div className="mb-1 flex items-baseline gap-1.5">
                   <span className="text-3xl font-bold">{live.uniqueParks}</span>
                   <span className="text-muted-foreground text-sm">{tCommon('parks')}</span>
@@ -198,21 +188,20 @@ export async function MLStatsSection() {
                   <span className="text-xl font-semibold">{live.uniqueAttractions}</span>
                   <span className="text-muted-foreground text-sm">{tCommon('rides')}</span>
                 </div>
-              </CardContent>
+              </div>
             </Card>
             <Card className="py-0">
-              <CardHeader className="px-4 pt-4 pb-1">
-                <CardTitle className="text-muted-foreground text-sm font-medium">
+              <div className="px-4 pt-3 pb-3">
+                <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                   {t('ai.r2Score')}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="px-4 pb-4">
+                </p>
                 <div className="text-3xl font-bold">{fmt2(live.r2Score)}</div>
-                <p className="text-muted-foreground text-xs">
+                <p className="text-muted-foreground mt-0.5 text-xs">
                   <GlossaryInject>{t('ai.r2ScoreDesc')}</GlossaryInject>
                 </p>
-              </CardContent>
+              </div>
             </Card>
+            <MLTrainingCountdown modelAge={system.modelAge} />
           </div>
         </div>
 
