@@ -107,6 +107,7 @@ import { SearchCommand } from '@/components/search/search-bar';
 // Refractive
 import { RefractivePanel } from '@/components/common/refractive-panel';
 import { RefractivePlayground } from '@/components/common/refractive-playground';
+import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
 
 import type {
   ParkResponse,
@@ -1447,6 +1448,51 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <code className="font-mono text-xs font-semibold">{cls}</code>
                 </div>
               ))}
+            </div>
+          </Sub>
+
+          <ComponentLabel name="WaitTimeInfoCard" file="components/parks/wait-time-info-card.tsx" />
+          <Sub title="WaitTimeInfoCard — operating / closed / no data">
+            <div className="grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+              <WaitTimeInfoCard
+                waitTime={45}
+                trend="up"
+                minWaitToday={15}
+                maxWaitToday={70}
+                labels={{
+                  title: 'Wait Time',
+                  minutes: 'Minutes',
+                  todayMin: 'Min.',
+                  todayMax: 'Max.',
+                  min: 'min.',
+                  trendLabel: 'Rising',
+                }}
+              />
+              <WaitTimeInfoCard
+                waitTime={20}
+                trend="down"
+                minWaitToday={10}
+                maxWaitToday={55}
+                labels={{
+                  title: 'Wait Time',
+                  minutes: 'Minutes',
+                  todayMin: 'Min.',
+                  todayMax: 'Max.',
+                  min: 'min.',
+                  trendLabel: 'Falling',
+                }}
+              />
+              <WaitTimeInfoCard
+                waitTime={null}
+                statusLabel="Closed"
+                labels={{
+                  title: 'Wait Time',
+                  minutes: 'Minutes',
+                  todayMin: 'Min.',
+                  todayMax: 'Max.',
+                  min: 'min.',
+                }}
+              />
             </div>
           </Sub>
 

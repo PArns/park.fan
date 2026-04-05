@@ -4,17 +4,7 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import {
-  Clock,
-  MapPin,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  AlertTriangle,
-  Wrench,
-  XCircle,
-  BarChart3,
-} from 'lucide-react';
+import { Clock, MapPin, AlertTriangle, Wrench, XCircle, BarChart3 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
 import { LocalTime } from '@/components/ui/local-time';
@@ -80,7 +70,8 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
-import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
+import { DailyWaitTimeChartServer } from '@/components/parks/daily-wait-time-chart-server';
+import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -356,77 +347,32 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Status & Wait Time */}
           <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Current Wait Time */}
-            <StatusInfoCard
-              title={t('waitTime')}
-              icon={Clock}
-              className="relative min-h-[160px] gap-1 overflow-hidden"
-            >
-              <div className="relative z-10 pb-12">
-                {status === 'OPERATING' &&
-                !isParkClosed &&
-                mainQueue &&
-                'waitTime' in mainQueue &&
-                mainQueue.waitTime !== null ? (
-                  <div className="flex flex-row items-center gap-8">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-bold">
-                        {(mainQueue as StandbyQueue).waitTime}
-                      </span>
-                      <span className="text-muted-foreground text-xl">{tCommon('minutes')}</span>
-                    </div>
-                    {attraction.trend && (
-                      <div
-                        className={cn(
-                          'text-muted-foreground flex items-center gap-1.5 text-sm font-medium',
-                          {
-                            'text-emerald-500':
-                              attraction.trend.toLowerCase() === 'down' ||
-                              attraction.trend.toLowerCase() === 'decreasing',
-                            'text-rose-500':
-                              attraction.trend.toLowerCase() === 'up' ||
-                              attraction.trend.toLowerCase() === 'increasing',
-                          }
-                        )}
-                      >
-                        {attraction.trend.toLowerCase() === 'down' ||
-                        attraction.trend.toLowerCase() === 'decreasing' ? (
-                          <TrendingDown className="h-5 w-5" />
-                        ) : attraction.trend.toLowerCase() === 'up' ||
-                          attraction.trend.toLowerCase() === 'increasing' ? (
-                          <TrendingUp className="h-5 w-5" />
-                        ) : (
-                          <Minus className="h-5 w-5" />
-                        )}
-                        {}
-                        <span className="capitalize">
-                          {tCommon(attraction.trend.toLowerCase() as string)}
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <StatusIcon className={`h-6 w-6 ${config.color}`} />
-                    <span className="text-lg font-medium">{config.label}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Sparkline Background */}
-              {status === 'OPERATING' &&
-                attraction.statistics?.history &&
-                attraction.statistics.history.length > 0 && (
-                  <div className="mask-linear-gradient-to-t absolute right-0 bottom-0 left-0 h-16 w-full opacity-30">
-                    <WaitTimeSparkline
-                      history={attraction.statistics.history}
-                      className="text-primary"
-                    />
-                  </div>
-                )}
-            </StatusInfoCard>
+            <WaitTimeInfoCard
+              waitTime={
+                status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
+                  ? ((mainQueue as StandbyQueue).waitTime ?? null)
+                  : null
+              }
+              trend={attraction.trend ?? undefined}
+              minWaitToday={attraction.statistics?.minWaitToday}
+              maxWaitToday={attraction.statistics?.maxWaitToday}
+              sparklineHistory={attraction.statistics?.history}
+              statusIcon={StatusIcon}
+              statusLabel={config.label}
+              labels={{
+                title: t('waitTime'),
+                minutes: tCommon('minutes'),
+                todayMin: t('todayChart.todayMin'),
+                todayMax: t('todayChart.todayMax'),
+                min: t('todayChart.min'),
+                trendLabel: attraction.trend
+                  ? tCommon(attraction.trend.toLowerCase() as string)
+                  : undefined,
+              }}
+            />
 
             {/* Status */}
-            <StatusInfoCard title={tCommon('status')} icon={StatusIcon}>
+            <StatusInfoCard title={tCommon('status')} icon={StatusIcon} className="gap-3">
               <ParkStatusBadge status={status} className="text-base" />
               {mainQueue?.lastUpdated && (
                 <p className="text-muted-foreground mt-2 text-xs">
@@ -438,7 +384,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
             {/* Prediction Accuracy */}
             {attraction.predictionAccuracy && (
-              <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3}>
+              <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3} className="gap-3">
                 <Badge
                   className={cn('text-base', {
                     'bg-status-closed/15 text-status-closed':
@@ -462,29 +408,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           <Separator className="my-8" />
 
-          {/* Hourly Forecast */}
-          {attraction.hourlyForecast && attraction.hourlyForecast.length > 0 && (
+          {/* Daily Wait Time Chart */}
+          {(attraction.hourlyForecast?.length || attraction.history?.length) && (
             <section className="mb-8">
-              <Card className="p-6">
-                <div className="space-y-4">
-                  <h2 className="text-2xl font-bold">{t('predictions')}</h2>
-
-                  <div className="flex gap-4 overflow-x-auto pb-2">
-                    {attraction.hourlyForecast.slice(0, 12).map((forecast, i) => (
-                      <div
-                        key={i}
-                        className="bg-muted/50 flex min-w-[80px] flex-col items-center rounded-lg p-3"
-                      >
-                        <span className="text-muted-foreground text-xs">
-                          <LocalTime time={forecast.predictedTime} timeZone={park.timezone} />
-                        </span>
-                        <span className="mt-1 text-lg font-bold">{forecast.predictedWaitTime}</span>
-                        <span className="text-muted-foreground text-xs">{tCommon('minutes')}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </Card>
+              <DailyWaitTimeChartServer
+                history={attraction.history}
+                hourlyForecast={attraction.hourlyForecast}
+                timezone={park.timezone}
+                schedule={attraction.schedule}
+              />
             </section>
           )}
 

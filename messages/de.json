@@ -337,6 +337,7 @@
     "predictions": "Wartezeit-Prognose",
     "nextPredicted": "Nächste: {time} Min prognostiziert",
     "otherAttractions": "Weitere Attraktionen",
+    "headlinersSection": "Highlights",
     "operatingCount": "{count}/{total} in Betrieb",
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
@@ -461,6 +462,14 @@
     "headliner": {
       "title": "Headliner",
       "description": "Highlight-Attraktion dieses Parks"
+    },
+    "todayChart": {
+      "title": "Wartezeiten heute",
+      "now": "Jetzt",
+      "bestSlots": "Beste Zeiten: {hours}",
+      "min": "min.",
+      "todayMin": "Min.",
+      "todayMax": "Max."
     }
   },
   "calendar": {

@@ -220,6 +220,7 @@
     "predictions": "Previsione tempi di attesa",
     "nextPredicted": "Prossimo: {time} min previsti",
     "otherAttractions": "Altre attrazioni",
+    "headlinersSection": "Attrazioni principali",
     "operatingCount": "{count}/{total} operative",
     "restaurants": "Ristoranti",
     "viewPark": "Vedi parco",
@@ -457,7 +458,15 @@
         "return": "Ritorno: {start} - {end}"
       }
     },
-    "h1Suffix": "Tempo di attesa in diretta"
+    "h1Suffix": "Tempo di attesa in diretta",
+    "todayChart": {
+      "title": "Tempi di attesa oggi",
+      "now": "Ora",
+      "bestSlots": "Orari migliori: {hours}",
+      "min": "min.",
+      "todayMin": "Min.",
+      "todayMax": "Max."
+    }
   },
   "calendar": {
     "legend": "Legenda",

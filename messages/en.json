@@ -220,6 +220,7 @@
     "predictions": "Wait Time Forecast",
     "nextPredicted": "Next: {time} min predicted",
     "otherAttractions": "Other Attractions",
+    "headlinersSection": "Headliners",
     "operatingCount": "{count}/{total} operating",
     "restaurants": "Restaurants",
     "viewPark": "View Park",
@@ -461,6 +462,14 @@
     "headliner": {
       "title": "Headliner",
       "description": "Must-see attraction at this park"
+    },
+    "todayChart": {
+      "title": "Today's Wait Times",
+      "now": "Now",
+      "bestSlots": "Best times: {hours}",
+      "min": "min.",
+      "todayMin": "Min.",
+      "todayMax": "Max."
     }
   },
   "calendar": {

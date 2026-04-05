@@ -6,8 +6,7 @@
 
 import { logMissingTranslation } from './logger';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type TranslationFunction = (key: string, values?: any) => string;
+type TranslationFunction = (key: string, values?: Record<string, unknown>) => string;
 
 /**
  * Translate a country by its slug with logging

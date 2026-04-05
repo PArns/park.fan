@@ -220,6 +220,7 @@
     "predictions": "Prévisions d'Attente",
     "nextPredicted": "Suivant: {time} min prévu",
     "otherAttractions": "Autres Attractions",
+    "headlinersSection": "Phares du parc",
     "operatingCount": "{count}/{total} ouverts",
     "restaurants": "Restaurants",
     "viewPark": "Voir le Parc",
@@ -364,7 +365,6 @@
     },
     "h1Suffix": "Temps d'attente en direct"
   },
-
   "attractions": {
     "title": "Attractions",
     "waitTime": "Attente",
@@ -462,6 +462,14 @@
     "headliner": {
       "title": "Headliner",
       "description": "Attraction incontournable de ce parc"
+    },
+    "todayChart": {
+      "title": "Temps d'attente aujourd'hui",
+      "now": "Maintenant",
+      "bestSlots": "Meilleurs créneaux : {hours}",
+      "min": "min.",
+      "todayMin": "Min.",
+      "todayMax": "Max."
     }
   },
   "calendar": {

@@ -220,6 +220,7 @@
     "predictions": "Wachttijd Voorspelling",
     "nextPredicted": "Volgende: {time} min voorspeld",
     "otherAttractions": "Andere Attracties",
+    "headlinersSection": "Highlights",
     "operatingCount": "{count}/{total} open",
     "restaurants": "Restaurants",
     "viewPark": "Bekijk Park",
@@ -461,6 +462,14 @@
     "headliner": {
       "title": "Headliner",
       "description": "Topattratie van dit park"
+    },
+    "todayChart": {
+      "title": "Wachttijden vandaag",
+      "now": "Nu",
+      "bestSlots": "Beste tijden: {hours}",
+      "min": "min.",
+      "todayMin": "Min.",
+      "todayMax": "Max."
     }
   },
   "calendar": {

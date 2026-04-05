@@ -190,6 +190,21 @@ export function TabsWithHash({
     window.history.replaceState(null, '', `${pathname}#${newHash}`);
   };
 
+  // Headliner attractions sorted by wait time (operating first, then no-wait, then closed)
+  const headliners = useMemo(() => {
+    const all = Object.values(attractionsByLand)
+      .flat()
+      .filter((a) => a.isHeadliner);
+    return all.sort((a, b) => {
+      const waitA = a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
+      const waitB = b.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
+      if (waitA !== null && waitB !== null) return waitB - waitA;
+      if (waitA !== null) return -1;
+      if (waitB !== null) return 1;
+      return 0;
+    });
+  }, [attractionsByLand]);
+
   // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
   const attractionLandKey = useMemo(() => {
     const map: Record<string, string> = {};
@@ -367,6 +382,17 @@ export function TabsWithHash({
                 )}
               </div>
             </div>
+
+            {headliners.length > 0 && !searchQuery.trim() && (
+              <LandSection
+                landName={t('headlinersSection')}
+                attractions={headliners}
+                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                parkSlug={parkSlug}
+                parkStatus={park.status}
+                timezone={park.timezone}
+              />
+            )}
 
             {hasSearchResults ? (
               landNames.map((landName) => {
