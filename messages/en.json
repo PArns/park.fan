@@ -114,6 +114,41 @@
         "description": "Find the best days with our crowd calendar and navigate the park live."
       }
     },
+    "ai": {
+      "title": "AI-Powered Predictions — How Accurate Are We?",
+      "subtitle": "park.fan uses its own AI model trained on millions of real queue records to forecast crowd levels and wait times at theme parks worldwide. The model factors in weather forecasts, school holiday calendars, and known events — and retrains automatically as fresh data arrives.",
+      "avgError": "Average Error",
+      "avgErrorDesc": "MAE — how many minutes off our predictions are on average",
+      "rmseDesc": "RMSE — how bad the worst misses are, outliers weighted more",
+      "mapeDesc": "MAPE — percentage error relative to actual wait time",
+      "totalPredictions": "Predictions Made",
+      "totalPredictionsDesc": "verified against real recorded wait times",
+      "coverage": "Verified Coverage",
+      "coverageDesc": "of all predictions cross-checked with actual data",
+      "parksCoverage": "Coverage",
+      "r2Score": "Model Fit",
+      "r2ScoreDesc": "R² — how well the model explains wait time variance",
+      "modelAge": "Model trained {days} days ago · automatically retrained on new data",
+      "modelAgeHours": "Model trained {time} hours ago · automatically retrained on new data",
+      "howTitle": "How Predictions Are Made",
+      "howText": "Every wait time forecast is built from three layers of data: historical queue records collected from parks over years, external signals like weather forecasts and school holiday calendars, and contextual factors such as special events and seasonal patterns. The model generates both hourly wait time forecasts for individual rides and daily crowd level ratings for full park visits — available up to 365 days ahead.",
+      "improvingTitle": "Actively Developed — Improving Every Day",
+      "improvingText": "park.fan is a living platform, still in active development. Every day the system automatically compares its earlier predictions against the wait times actually recorded at the parks, feeding those comparisons back into the next training cycle. The accuracy metrics above reflect this real-world performance — not synthetic benchmarks. New parks and attractions are added regularly, and the model becomes more accurate as it accumulates more verified data for each destination.",
+      "badge": {
+        "excellent": "Excellent Accuracy",
+        "good": "Good Accuracy",
+        "fair": "Fair Accuracy",
+        "poor": "Below Target",
+        "insufficient_data": "Collecting Data"
+      },
+      "badgeDesc": {
+        "excellent": "Predictions are highly accurate",
+        "good": "Predictions are reliable",
+        "fair": "Predictions are reasonable",
+        "poor": "Model accuracy is below target",
+        "insufficient_data": "Gathering comparison data"
+      }
+    },
     "about": {
       "title": "What Is park.fan?",
       "p1": "park.fan was born from a frustration every theme park fan knows: standing in a 90-minute queue and wondering whether smarter planning could have avoided it. What started as a side project—\"let me just track some wait times\"—grew into a full platform now covering 151 parks, 5,253 attractions, and millions of queue data records processed every day. The goal has always been the same: take the guesswork out of planning a theme park visit.",

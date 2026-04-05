@@ -1759,6 +1759,46 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
     aliases: ['twister layout', 'cyclone', 'tracé twister'],
   },
+  {
+    id: 'mae',
+    name: 'MAE',
+    shortDefinition:
+      "Mean Absolute Error — l'écart moyen en minutes entre le temps d'attente prédit et le temps réel.",
+    definition:
+      'Le MAE (Mean Absolute Error, erreur absolue moyenne) est la mesure de précision standard utilisée par park.fan. Il calcule la différence moyenne — en minutes — entre chaque temps d\'attente prédit et le temps réel enregistré à l\'attraction. Un MAE de 8 minutes signifie que les prédictions sont en moyenne à 8 minutes de la réalité.\n\nLe MAE traite chaque erreur de manière égale : une erreur de 5 minutes et une de 15 minutes sont moyennées linéairement. Cela le rend intuitif — MAE = 10 signifie "les prédictions sont généralement à 10 minutes près." Un MAE plus faible signifie toujours des prédictions plus précises.',
+    relatedTermIds: ['rmse', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Error'],
+  },
+  {
+    id: 'rmse',
+    name: 'RMSE',
+    shortDefinition:
+      'Root Mean Square Error — similaire au MAE mais pénalise davantage les grandes erreurs de prédiction.',
+    definition:
+      "Le RMSE (Root Mean Square Error, racine de l'erreur quadratique moyenne) mesure la précision en mettant au carré chaque erreur avant de les moyenner. Les grandes erreurs — une file d'attente prédite avec 40 minutes de décalage — contribuent donc bien plus au RMSE qu'une erreur de 5 minutes. Le RMSE est toujours supérieur ou égal au MAE.\n\nUn grand écart entre RMSE et MAE indique que le modèle produit parfois de grosses erreurs ponctuelles, même si la plupart des prédictions sont proches. Les deux métriques sont affichées en direct sur la page d'accueil de park.fan.",
+    relatedTermIds: ['mae', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Root Mean Square Error'],
+  },
+  {
+    id: 'mape',
+    name: 'MAPE',
+    shortDefinition:
+      "Mean Absolute Percentage Error — l'erreur de prédiction exprimée en pourcentage du temps d'attente réel.",
+    definition:
+      "Le MAPE (Mean Absolute Percentage Error, erreur absolue moyenne en pourcentage) exprime la précision en pourcentage plutôt qu'en minutes. Au lieu de \"8 minutes d'écart\", il indique \"15 % du temps d'attente réel d'écart\". Cela facilite la comparaison entre attractions aux temps d'attente très différents — une erreur de 10 minutes est bien plus significative pour une attraction habituellement à 15 minutes que pour une à 90 minutes.\n\nLe MAPE peut être trompeusement élevé quand les temps d'attente réels sont très courts. C'est pourquoi park.fan l'affiche toujours avec le MAE et le RMSE.",
+    relatedTermIds: ['mae', 'rmse', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Percentage Error'],
+  },
+  {
+    id: 'r-squared',
+    name: 'R²',
+    shortDefinition:
+      "R-carré — mesure dans quelle proportion le modèle IA explique les variations des temps d'attente réels (0–1, plus haut = mieux).",
+    definition:
+      "Le R² (R-carré, ou coefficient de détermination) mesure quelle part de la variation des temps d'attente réels le modèle parvient à expliquer. Une valeur de 1,0 signifierait des prédictions parfaites ; 0,0 signifie que le modèle n'explique rien au-delà d'une simple moyenne. En pratique, des valeurs supérieures à 0,7 indiquent un bon modèle ; au-dessus de 0,9, excellent.\n\nPour les prédictions de temps d'attente, atteindre un R² élevé est difficile car les files sont influencées par des facteurs imprévisibles. Le score R² de park.fan reflète les performances réelles sur toutes les prédictions suivies, mis à jour quotidiennement.",
+    relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
+    aliases: ['R-squared', 'coefficient de détermination'],
+  },
 ];
 
 export default translations;

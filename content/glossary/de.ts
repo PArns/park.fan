@@ -1762,6 +1762,46 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
     aliases: ['Twister-Layout', 'Cyclone-Layout', 'Twister Coaster'],
   },
+  {
+    id: 'mae',
+    name: 'MAE',
+    shortDefinition:
+      'Mean Absolute Error — die durchschnittliche Abweichung in Minuten zwischen Vorhersage und tatsächlicher Wartezeit.',
+    definition:
+      'MAE (Mean Absolute Error, mittlerer absoluter Fehler) ist das Standardmaß für die Vorhersagegenauigkeit bei park.fan. Er berechnet die durchschnittliche Differenz – in Minuten – zwischen jeder vorhergesagten Wartezeit und der tatsächlich an der Attraktion gemessenen Wartezeit. Ein MAE von 8 Minuten bedeutet, dass die Vorhersagen im Schnitt 8 Minuten daneben liegen.\n\nDer MAE gewichtet jeden Fehler gleich: Ein 5-Minuten-Fehler und ein 15-Minuten-Fehler gehen linear in den Durchschnitt ein. Das macht ihn intuitiv verständlich – ein MAE von 10 bedeutet: „Die Vorhersagen liegen typischerweise innerhalb von 10 Minuten an der Realität." Ein niedrigerer MAE bedeutet immer genauere Vorhersagen.',
+    relatedTermIds: ['rmse', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Error'],
+  },
+  {
+    id: 'rmse',
+    name: 'RMSE',
+    shortDefinition:
+      'Root Mean Square Error — wie der MAE, bestraft aber große Vorhersagefehler stärker.',
+    definition:
+      'RMSE (Root Mean Square Error, mittlere quadratische Abweichung) misst die Vorhersagegenauigkeit, indem jeder Fehler vor der Mittelung quadriert wird. Dadurch tragen große Ausreißer – z. B. eine Wartezeit, die 40 Minuten falsch vorhergesagt wurde – viel stärker zum RMSE bei als ein kleiner 5-Minuten-Fehler. Der RMSE ist immer gleich oder größer als der MAE für denselben Datensatz.\n\nEin großer Unterschied zwischen RMSE und MAE zeigt an, dass das Modell gelegentlich starke Ausreißer produziert, auch wenn die meisten Vorhersagen nah an der Realität sind. Beide Kennzahlen sind live auf der Startseite von park.fan einsehbar.',
+    relatedTermIds: ['mae', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Root Mean Square Error'],
+  },
+  {
+    id: 'mape',
+    name: 'MAPE',
+    shortDefinition:
+      'Mean Absolute Percentage Error — der Vorhersagefehler als prozentualer Anteil der tatsächlichen Wartezeit.',
+    definition:
+      'MAPE (Mean Absolute Percentage Error, mittlerer absoluter prozentualer Fehler) drückt die Vorhersagegenauigkeit als Prozentzahl aus, nicht als absolute Minutenzahl. Statt „8 Minuten daneben" lautet die Aussage „15 % der tatsächlichen Wartezeit daneben". Das ist nützlich, um die Genauigkeit bei Attraktionen mit sehr unterschiedlichen Wartezeiten zu vergleichen – ein 10-Minuten-Fehler bei einer Attraktion mit normalerweise 15 Minuten Wartezeit ist viel gravierender als bei einer mit 90 Minuten.\n\nDer MAPE kann irreführend hoch sein, wenn die tatsächlichen Wartezeiten sehr kurz sind. Deshalb zeigt park.fan ihn immer zusammen mit MAE und RMSE.',
+    relatedTermIds: ['mae', 'rmse', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Percentage Error'],
+  },
+  {
+    id: 'r-squared',
+    name: 'R²',
+    shortDefinition:
+      'Bestimmtheitsmaß — misst, wie gut das KI-Modell die Muster in echten Wartezeiten erklärt (0–1, höher ist besser).',
+    definition:
+      'R² (R-Quadrat, auch Bestimmtheitsmaß) misst, wie viel der Schwankungen in echten Wartezeiten das Modell erfolgreich erklären kann. Ein Wert von 1,0 würde bedeuten, dass das Modell jede Warteschlange perfekt vorhersagt; 0,0 bedeutet, dass es nichts über einen einfachen Durchschnitt hinaus erklärt. In der Praxis gelten Werte über 0,7 als stark, Werte über 0,9 als ausgezeichnet.\n\nFür Wartezeit-Prognosen ist ein hoher R²-Wert schwer zu erreichen, da Warteschlangen von unvorhersehbaren Ereignissen beeinflusst werden – Attraktionsausfälle, plötzliche Wetteränderungen, spontane Veranstaltungen. Der park.fan-R²-Wert spiegelt die reale Performance über alle verfolgten Vorhersagen wider und wird täglich aktualisiert.',
+    relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
+    aliases: ['R-squared', 'Bestimmtheitsmaß'],
+  },
 ];
 
 export default translations;

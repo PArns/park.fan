@@ -114,6 +114,41 @@
         "description": "Trouvez les meilleurs jours avec notre calendrier d'affluence et naviguez dans le parc."
       }
     },
+    "ai": {
+      "title": "Prédictions IA — Quelle Est Notre Précision ?",
+      "subtitle": "park.fan utilise son propre modèle d'IA entraîné sur des millions de données de files d'attente réelles pour prévoir les niveaux d'affluence et les temps d'attente dans les parcs à thème du monde entier. Le modèle tient compte des prévisions météo, des calendriers de vacances scolaires et des événements connus — et se réentraîne automatiquement dès que de nouvelles données arrivent.",
+      "avgError": "Erreur Moyenne",
+      "avgErrorDesc": "MAE — de combien de minutes nos prédictions se trompent en moyenne",
+      "rmseDesc": "RMSE — l'impact des plus grandes erreurs sur la note globale",
+      "mapeDesc": "MAPE — écart en pourcentage par rapport au temps d'attente réel",
+      "totalPredictions": "Prédictions Effectuées",
+      "totalPredictionsDesc": "vérifiées par rapport aux données de files d'attente réelles",
+      "coverage": "Couverture Vérifiée",
+      "coverageDesc": "de toutes les prédictions croisées avec les données réelles",
+      "parksCoverage": "Couverture",
+      "r2Score": "Ajustement Modèle",
+      "r2ScoreDesc": "R² — dans quelle mesure le modèle explique la variance des temps d'attente",
+      "modelAge": "Modèle entraîné il y a {days} jours · réentraîné automatiquement sur de nouvelles données",
+      "modelAgeHours": "Modèle entraîné il y a {time} heures · réentraîné automatiquement sur de nouvelles données",
+      "howTitle": "Comment Les Prédictions Sont Calculées",
+      "howText": "Chaque prévision de temps d'attente repose sur trois couches de données : des historiques de files d'attente collectés dans les parcs sur plusieurs années, des signaux externes comme les prévisions météo et les calendriers de vacances scolaires, et des facteurs contextuels tels que les événements spéciaux et les tendances saisonnières. Le modèle génère à la fois des prévisions horaires pour chaque attraction et des niveaux d'affluence journaliers — disponibles jusqu'à 365 jours à l'avance.",
+      "improvingTitle": "En Développement Actif — Meilleur Chaque Jour",
+      "improvingText": "park.fan est une plateforme vivante, encore en développement actif. Chaque jour, le système compare automatiquement ses prédictions passées aux temps d'attente réellement enregistrés dans les parcs, et réintègre ces comparaisons dans le prochain cycle d'entraînement. Les métriques de précision présentées ci-dessus reflètent ces performances réelles — pas des benchmarks synthétiques. De nouveaux parcs et attractions sont ajoutés régulièrement, et le modèle gagne en précision à mesure que les données vérifiées s'accumulent.",
+      "badge": {
+        "excellent": "Excellente Précision",
+        "good": "Bonne Précision",
+        "fair": "Précision Correcte",
+        "poor": "En Dessous de l'Objectif",
+        "insufficient_data": "Collecte de Données"
+      },
+      "badgeDesc": {
+        "excellent": "Les prédictions sont très précises",
+        "good": "Les prédictions sont fiables",
+        "fair": "Les prédictions sont raisonnables",
+        "poor": "La précision du modèle est en dessous de l'objectif",
+        "insufficient_data": "Collecte des données de comparaison en cours"
+      }
+    },
     "about": {
       "title": "Qu'est-ce que park.fan ?",
       "p1": "park.fan est né d'une frustration que tout fan de parcs d'attractions connaît bien : faire la queue 90 minutes en se demandant si une meilleure planification aurait pu l'éviter. Ce qui a commencé comme un projet personnel — « je vais juste suivre quelques temps d'attente » — est devenu une plateforme complète couvrant aujourd'hui 151 parcs, 5 253 attractions et des millions d'enregistrements de files d'attente traités chaque jour. L'objectif a toujours été le même : mettre fin aux suppositions lors de la planification d'une visite.",

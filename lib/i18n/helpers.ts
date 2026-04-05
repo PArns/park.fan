@@ -6,7 +6,7 @@
 
 import { logMissingTranslation } from './logger';
 
-type TranslationFunction = (key: string, values?: Record<string, unknown>) => string;
+type TranslationFunction = (key: string, values?: Record<string, string | number | Date>) => string;
 
 /**
  * Translate a country by its slug with logging

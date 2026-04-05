@@ -72,11 +72,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Import lazily to avoid circular dependencies
   const { getGlossaryTerms } = await import('@/lib/glossary/translations');
 
-  // Fetch all locale terms once; use slugs map for cross-locale alternates
+  // Fetch all locale terms in parallel
   const termsByLocale = new Map<string, GlossaryTerm[]>();
-  for (const locale of locales) {
-    termsByLocale.set(locale, await getGlossaryTerms(locale as import('@/i18n/config').Locale));
-  }
+  await Promise.all(
+    locales.map(async (locale) => {
+      const terms = await getGlossaryTerms(locale as import('@/i18n/config').Locale);
+      termsByLocale.set(locale, terms);
+    })
+  );
 
   // Use EN terms as the canonical set (all locales share the same term IDs)
   const enTerms = termsByLocale.get('en')!;

@@ -114,6 +114,41 @@
         "description": "Encuentra los mejores días con nuestro calendario de afluencia y navega por el parque."
       }
     },
+    "ai": {
+      "title": "Predicciones IA — ¿Qué Tan Precisos Somos?",
+      "subtitle": "park.fan utiliza su propio modelo de IA entrenado con millones de registros de colas reales para predecir niveles de afluencia y tiempos de espera en parques temáticos de todo el mundo. El modelo considera pronósticos meteorológicos, calendarios de vacaciones escolares y eventos conocidos — y se vuelve a entrenar automáticamente cuando llegan nuevos datos.",
+      "avgError": "Error Medio",
+      "avgErrorDesc": "MAE — cuántos minutos se equivocan nuestras predicciones de media",
+      "rmseDesc": "RMSE — cómo de grandes son los peores errores",
+      "mapeDesc": "MAPE — error en porcentaje sobre el tiempo de espera real",
+      "totalPredictions": "Predicciones Realizadas",
+      "totalPredictionsDesc": "verificadas con datos de colas reales",
+      "coverage": "Cobertura Verificada",
+      "coverageDesc": "de todas las predicciones comprobadas con datos reales",
+      "parksCoverage": "Cobertura",
+      "r2Score": "Ajuste del Modelo",
+      "r2ScoreDesc": "R² — en qué medida el modelo explica la varianza de los tiempos de espera",
+      "modelAge": "Modelo entrenado hace {days} días · reentrenado automáticamente con nuevos datos",
+      "modelAgeHours": "Modelo entrenado hace {time} horas · reentrenado automáticamente con nuevos datos",
+      "howTitle": "Cómo Se Generan Las Predicciones",
+      "howText": "Cada predicción de tiempo de espera se construye a partir de tres capas de datos: registros históricos de colas recopilados en parques durante años, señales externas como pronósticos del tiempo y calendarios de vacaciones escolares, y factores contextuales como eventos especiales y patrones estacionales. El modelo genera tanto predicciones horarias para cada atracción como valoraciones diarias del nivel de afluencia — disponibles hasta 365 días por adelantado.",
+      "improvingTitle": "En Desarrollo Activo — Mejora Cada Día",
+      "improvingText": "park.fan es una plataforma viva, todavía en desarrollo activo. Cada día, el sistema compara automáticamente sus predicciones anteriores con los tiempos de espera realmente registrados en los parques, y retroalimenta esas comparaciones en el siguiente ciclo de entrenamiento. Las métricas de precisión mostradas arriba reflejan este rendimiento real — no benchmarks sintéticos. Nuevos parques y atracciones se añaden regularmente, y el modelo se vuelve más preciso a medida que acumula más datos verificados.",
+      "badge": {
+        "excellent": "Precisión Excelente",
+        "good": "Buena Precisión",
+        "fair": "Precisión Aceptable",
+        "poor": "Por Debajo del Objetivo",
+        "insufficient_data": "Recopilando Datos"
+      },
+      "badgeDesc": {
+        "excellent": "Las predicciones son muy precisas",
+        "good": "Las predicciones son fiables",
+        "fair": "Las predicciones son razonables",
+        "poor": "La precisión del modelo está por debajo del objetivo",
+        "insufficient_data": "Recopilando datos de comparación"
+      }
+    },
     "about": {
       "title": "¿Qué es park.fan?",
       "p1": "park.fan nació de una frustración que todo fanático de los parques temáticos conoce bien: hacer cola 90 minutos preguntándose si una mejor planificación lo habría evitado. Lo que comenzó como un proyecto personal — «solo voy a rastrear algunos tiempos de espera» — se convirtió en una plataforma completa que hoy cubre 151 parques, 5.253 atracciones y procesa millones de registros de colas cada día. El objetivo siempre fue el mismo: eliminar las conjeturas al planificar una visita a un parque temático.",

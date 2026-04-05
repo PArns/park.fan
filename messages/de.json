@@ -114,6 +114,41 @@
         "description": "Finde den besten Tag mit unserem Crowd-Kalender und navigiere live durch den Park."
       }
     },
+    "ai": {
+      "title": "KI-gestützte Vorhersagen — Wie genau sind wir?",
+      "subtitle": "park.fan nutzt ein eigenes KI-Modell, das auf Millionen echter Warteschlangendaten aus Parks weltweit trainiert wurde. Das Modell berücksichtigt Wetterprognosen, Schulferienkalender und bekannte Events — und trainiert sich automatisch neu, sobald frische Daten eintreffen.",
+      "avgError": "Durchschnittsfehler",
+      "avgErrorDesc": "MAE — um wie viele Minuten unsere Vorhersagen im Schnitt daneben liegen",
+      "rmseDesc": "RMSE — wie stark einzelne Ausreißer ins Gewicht fallen",
+      "mapeDesc": "MAPE — prozentualer Fehler gemessen an der echten Wartezeit",
+      "totalPredictions": "Vorhersagen erstellt",
+      "totalPredictionsDesc": "mit echten Warteschlangendaten abgeglichen",
+      "coverage": "Verifizierte Abdeckung",
+      "coverageDesc": "aller Vorhersagen mit echten Daten gegengeprüft",
+      "parksCoverage": "Abdeckung",
+      "r2Score": "Modell-Fit",
+      "r2ScoreDesc": "R² — wie gut das Modell die Wartezeit-Schwankungen erklärt",
+      "modelAge": "Modell vor {days} Tagen trainiert · wird automatisch mit neuen Daten aktualisiert",
+      "modelAgeHours": "Modell vor {time} Stunden trainiert · wird automatisch mit neuen Daten aktualisiert",
+      "howTitle": "Wie Vorhersagen entstehen",
+      "howText": "Jede Wartezeit-Vorhersage basiert auf drei Datenschichten: historischen Warteschlangendaten aus Jahren der Park-Beobachtung, externen Signalen wie Wetterprognosen und Schulferienkalendern sowie kontextuellen Faktoren wie Sonderveranstaltungen und saisonalen Mustern. Das Modell erstellt sowohl stündliche Wartezeit-Prognosen für einzelne Attraktionen als auch tagesbasierte Crowd-Level-Bewertungen — bis zu 365 Tage im Voraus.",
+      "improvingTitle": "Aktiv in Entwicklung — täglich besser",
+      "improvingText": "park.fan ist eine lebendige Plattform, die sich noch aktiv in der Entwicklung befindet. Jeden Tag vergleicht das System seine früheren Vorhersagen automatisch mit den tatsächlich an den Parks erfassten Wartezeiten und speist diese Vergleiche in den nächsten Trainingszyklus ein. Die oben gezeigten Genauigkeitskennzahlen spiegeln diese reale Performance wider — keine synthetischen Benchmarks. Neue Parks und Attraktionen werden regelmäßig hinzugefügt, und das Modell wird mit wachsender Datenmenge präziser.",
+      "badge": {
+        "excellent": "Ausgezeichnete Genauigkeit",
+        "good": "Gute Genauigkeit",
+        "fair": "Ausreichende Genauigkeit",
+        "poor": "Unter Zielwert",
+        "insufficient_data": "Daten werden gesammelt"
+      },
+      "badgeDesc": {
+        "excellent": "Vorhersagen sind sehr präzise",
+        "good": "Vorhersagen sind zuverlässig",
+        "fair": "Vorhersagen sind vertretbar",
+        "poor": "Modellgenauigkeit unter Zielwert",
+        "insufficient_data": "Vergleichsdaten werden gesammelt"
+      }
+    },
     "about": {
       "title": "Was ist park.fan?",
       "p1": "park.fan entstand aus einer Frustration, die wohl jeder Freizeitpark-Fan kennt: 90 Minuten in einer Warteschlange stehen und sich fragen, ob clevere Planung das hätte verhindern können. Was als Nebenprojekt begann – «lass mich einfach ein paar Wartezeiten tracken» – wuchs zu einer vollständigen Plattform, die heute 151 Parks, 5.253 Attraktionen und täglich Millionen von Warteschlangendatensätzen verarbeitet. Das Ziel war und ist: das Rätselraten bei der Planung eines Freizeitpark-Besuchs ein für alle Mal beenden.",

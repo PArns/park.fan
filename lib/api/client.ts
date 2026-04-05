@@ -10,6 +10,8 @@ const getApiBaseUrl = () => {
 
 export interface FetchOptions extends RequestInit {
   params?: Record<string, string | number | boolean | undefined>;
+  /** Next.js server-side fetch extensions (revalidate, tags). Server components only. */
+  next?: { revalidate?: number | false; tags?: string[] };
 }
 
 export class ApiError extends Error {

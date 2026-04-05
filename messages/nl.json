@@ -114,6 +114,41 @@
         "description": "Vind de beste dagen met onze drukteskalender en navigeer live in het park."
       }
     },
+    "ai": {
+      "title": "AI-gestuurde Voorspellingen — Hoe Nauwkeurig Zijn We?",
+      "subtitle": "park.fan gebruikt een eigen AI-model dat is getraind op miljoenen echte wachtrij-records om drukte en wachttijden bij pretparken wereldwijd te voorspellen. Het model houdt rekening met weersvoorspellingen, schoolvakantieschema's en bekende evenementen — en hertraint automatisch zodra nieuwe data beschikbaar is.",
+      "avgError": "Gemiddelde Fout",
+      "avgErrorDesc": "MAE — hoeveel minuten onze voorspellingen gemiddeld afwijken",
+      "rmseDesc": "RMSE — hoe zwaar grote uitschieters meetellen",
+      "mapeDesc": "MAPE — procentuele fout ten opzichte van de werkelijke wachttijd",
+      "totalPredictions": "Voorspellingen Gemaakt",
+      "totalPredictionsDesc": "geverifieerd met echte wachtrij-data",
+      "coverage": "Geverifieerde Dekking",
+      "coverageDesc": "van alle voorspellingen gecheckt met werkelijke data",
+      "parksCoverage": "Dekking",
+      "r2Score": "Model Fit",
+      "r2ScoreDesc": "R² — hoe goed het model wachttijdvariatie verklaart",
+      "modelAge": "Model {days} dagen geleden getraind · automatisch hertraind met nieuwe gegevens",
+      "modelAgeHours": "Model {time} uur geleden getraind · automatisch hertraind met nieuwe gegevens",
+      "howTitle": "Hoe Voorspellingen Tot Stand Komen",
+      "howText": "Elke wachttijdvoorspelling is opgebouwd uit drie lagen data: historische wachtrij-records die jarenlang in parken zijn verzameld, externe signalen zoals weersvoorspellingen en schoolvakantieschema's, en contextuele factoren zoals speciale evenementen en seizoenspatronen. Het model genereert zowel uurlijkse wachttijdprognoses voor individuele attracties als dagelijkse drukte-beoordelingen — tot 365 dagen vooruit.",
+      "improvingTitle": "Actief in Ontwikkeling — Elke Dag Beter",
+      "improvingText": "park.fan is een levend platform, nog altijd in actieve ontwikkeling. Elke dag vergelijkt het systeem automatisch zijn eerdere voorspellingen met de werkelijk geregistreerde wachttijden bij de parken, en voert die vergelijkingen terug in de volgende trainingscyclus. De nauwkeurigheidsstatistieken hierboven weerspiegelen deze echte prestaties — geen synthetische benchmarks. Nieuwe parken en attracties worden regelmatig toegevoegd, en het model wordt nauwkeuriger naarmate er meer geverifieerde data beschikbaar komt.",
+      "badge": {
+        "excellent": "Uitstekende Nauwkeurigheid",
+        "good": "Goede Nauwkeurigheid",
+        "fair": "Redelijke Nauwkeurigheid",
+        "poor": "Onder Doelwaarde",
+        "insufficient_data": "Gegevens Verzamelen"
+      },
+      "badgeDesc": {
+        "excellent": "Voorspellingen zijn zeer nauwkeurig",
+        "good": "Voorspellingen zijn betrouwbaar",
+        "fair": "Voorspellingen zijn redelijk",
+        "poor": "Modelnauwkeurigheid onder doelwaarde",
+        "insufficient_data": "Vergelijkingsgegevens worden verzameld"
+      }
+    },
     "about": {
       "title": "Wat is park.fan?",
       "p1": "park.fan is ontstaan uit een frustratie die elke pretparkfan kent: 90 minuten in de rij staan en je afvragen of slimmer plannen dit had kunnen voorkomen. Wat begon als een zijproject — «ik ga gewoon wat wachttijden bijhouden» — groeide uit tot een volledig platform dat nu 151 parken, 5.253 attracties dekt en dagelijks miljoenen wachtrij-records verwerkt. Het doel was en is: het giswerk bij het plannen van een pretparkbezoek voorgoed elimineren.",

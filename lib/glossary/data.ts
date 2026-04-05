@@ -402,6 +402,54 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'mae',
+    category: 'planning',
+    slugs: {
+      en: 'mae',
+      de: 'mae',
+      fr: 'mae',
+      it: 'mae',
+      nl: 'mae',
+      es: 'mae',
+    },
+  },
+  {
+    id: 'rmse',
+    category: 'planning',
+    slugs: {
+      en: 'rmse',
+      de: 'rmse',
+      fr: 'rmse',
+      it: 'rmse',
+      nl: 'rmse',
+      es: 'rmse',
+    },
+  },
+  {
+    id: 'mape',
+    category: 'planning',
+    slugs: {
+      en: 'mape',
+      de: 'mape',
+      fr: 'mape',
+      it: 'mape',
+      nl: 'mape',
+      es: 'mape',
+    },
+  },
+  {
+    id: 'r-squared',
+    category: 'planning',
+    slugs: {
+      en: 'r-squared',
+      de: 'r-squared',
+      fr: 'r-squared',
+      it: 'r-squared',
+      nl: 'r-squared',
+      es: 'r-squared',
+    },
+  },
+  {
     id: 'opening-hours',
     category: 'park-operations',
     slugs: {

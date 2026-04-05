@@ -26,6 +26,20 @@ function buildMatchEntries(terms: GlossaryTerm[]): MatchEntry[] {
   return entries.sort((a, b) => b.pattern.length - a.pattern.length);
 }
 
+/**
+ * Build a regex fragment for a single pattern.
+ * - Leading `\b` anchors the start (pattern always begins with a word char).
+ * - Trailing boundary: use `\b` when the pattern ends with a word char (\w),
+ *   otherwise use `(?=\W|$)` — needed for patterns like "R²" where the
+ *   superscript `²` is not a \w character and `\b` would never match after it.
+ */
+function buildPatternFragment(pattern: string): string {
+  const escaped = escapeRegex(pattern);
+  const lastChar = pattern[pattern.length - 1];
+  const trailingBoundary = /\w/.test(lastChar) ? '\\b' : '(?=\\W|$)';
+  return `\\b${escaped}${trailingBoundary}`;
+}
+
 type Segment =
   | { type: 'text'; content: string }
   | {
@@ -41,7 +55,7 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
   const entries = buildMatchEntries(terms);
   if (entries.length === 0) return [{ type: 'text', content: text }];
 
-  const pattern = entries.map((e) => `\\b${escapeRegex(e.pattern)}\\b`).join('|');
+  const pattern = entries.map((e) => buildPatternFragment(e.pattern)).join('|');
   const regex = new RegExp(`(${pattern})`, 'gi');
 
   const segments: Segment[] = [];

@@ -1691,6 +1691,46 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
     aliases: ['twister layout', 'cyclone', 'twister coaster', 'cyclone layout'],
   },
+  {
+    id: 'mae',
+    name: 'MAE',
+    shortDefinition:
+      'Mean Absolute Error — the average number of minutes by which a wait time prediction misses the actual queue.',
+    definition:
+      'MAE (Mean Absolute Error) is the standard measure of prediction accuracy used by park.fan. It calculates the average difference — in minutes — between each predicted wait time and the actual wait time recorded at the park gate. An MAE of 8 minutes means the model\'s predictions are off by 8 minutes on average across all tracked predictions.\n\nMAE treats every error equally: a 5-minute miss and a 15-minute miss are averaged together linearly. This makes it intuitive to interpret — if you see MAE = 10, you can think of it as "predictions are typically within 10 minutes of reality." A lower MAE always means more accurate predictions.',
+    relatedTermIds: ['rmse', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Error'],
+  },
+  {
+    id: 'rmse',
+    name: 'RMSE',
+    shortDefinition:
+      'Root Mean Square Error — like MAE but penalises large prediction errors more heavily.',
+    definition:
+      'RMSE (Root Mean Square Error) measures prediction accuracy by squaring each error before averaging, then taking the square root. This means large errors — say, being 40 minutes off on a queue — contribute far more to the RMSE than a 5-minute miss would. RMSE is always equal to or larger than MAE for the same dataset.\n\nFor park.fan, a large gap between RMSE and MAE signals that the model occasionally has big misses on specific rides or days, even if most predictions are close. A small gap means errors are consistently spread without extreme outliers. Both metrics are shown live on the homepage so you can see exactly how the model is performing right now.',
+    relatedTermIds: ['mae', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Root Mean Square Error'],
+  },
+  {
+    id: 'mape',
+    name: 'MAPE',
+    shortDefinition:
+      'Mean Absolute Percentage Error — prediction error expressed as a share of the actual wait time.',
+    definition:
+      'MAPE (Mean Absolute Percentage Error) expresses prediction accuracy as a percentage rather than an absolute number of minutes. Instead of saying "off by 8 minutes," it says "off by 15% of the actual wait time." This makes it useful for comparing accuracy across attractions with very different typical queues — a 10-minute error means something very different on a ride that usually has a 15-minute wait versus one that usually has 90 minutes.\n\nMAPE can be misleadingly high when actual wait times are very short (e.g., a 2-minute wait where even a 1-minute error is 50%). For this reason, park.fan shows MAPE alongside MAE and RMSE rather than as the sole accuracy metric.',
+    relatedTermIds: ['mae', 'rmse', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Percentage Error'],
+  },
+  {
+    id: 'r-squared',
+    name: 'R²',
+    shortDefinition:
+      'R-squared — a measure of how well the AI model explains the patterns in actual wait times (0–1, higher is better).',
+    definition:
+      "R² (R-squared, also called the coefficient of determination) measures how much of the variation in real wait times the model successfully captures. A value of 1.0 would mean the model perfectly predicts every queue; 0.0 means it explains nothing beyond a simple average. In practice, values above 0.7 indicate a strong model; values above 0.9 are excellent.\n\nFor wait time prediction, achieving high R² is challenging because queues are influenced by unpredictable factors — ride breakdowns, sudden weather changes, viral social media moments — that no model can foresee. park.fan's R² score reflects real-world performance across all tracked predictions, updated daily.",
+    relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
+    aliases: ['R-squared', 'coefficient of determination'],
+  },
 ];
 
 export default translations;

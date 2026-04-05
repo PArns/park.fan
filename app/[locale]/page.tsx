@@ -50,6 +50,7 @@ import { StatsCard } from '@/components/common/stats-card';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
+import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { ParkStatCard } from '@/components/home/park-stat-card';
 import { AttractionStatCard } from '@/components/home/attraction-stat-card';
 import { ScrollIndicator } from '@/components/home/scroll-indicator';
@@ -110,7 +111,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // eslint-disable-next-line react-hooks/purity -- intentional per-request randomization
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 
-  // Fetch data in parallel
+  // Fetch data in parallel (ML dashboard fetched inside MLStatsSection to keep Suspense boundaries clean)
   const [stats, geoData, liveStats] = await Promise.all([
     getGlobalStats().catch(() => null),
     getGeoStructure().catch(() => null),
@@ -371,6 +372,9 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </section>
       )}
+      {/* ML / AI Stats */}
+      <MLStatsSection />
+
       {/* Live Activity - Parks Open Now */}
       {continents.length > 0 && (
         <section className="border-b px-4 py-12">

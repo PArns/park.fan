@@ -676,6 +676,125 @@ export interface DiscoveryCityResponse {
 }
 
 // ============================================================================
+// ML Dashboard Types
+// ============================================================================
+
+export type DriftStatus = 'healthy' | 'warning' | 'critical';
+
+export interface MLDashboardDto {
+  model: {
+    current: {
+      version: string;
+      trainedAt: string;
+      trainingDurationSeconds: number | null;
+      modelType: string;
+      fileSizeMB: number | null;
+    };
+    previous: {
+      version: string;
+      mae: number;
+      r2: number;
+      trainedAt: string;
+    } | null;
+    configuration: {
+      featuresUsed: string[];
+      featureCount: number;
+      hyperparameters: Record<string, string | number | boolean>;
+    };
+    trainingData: {
+      startDate: string;
+      endDate: string;
+      totalSamples: number;
+      trainSamples: number;
+      validationSamples: number;
+      dataDurationDays: number;
+    };
+  };
+  performance: {
+    training: {
+      mae: number;
+      rmse: number;
+      mape: number;
+      r2Score: number;
+    };
+    live: {
+      mae: number;
+      rmse: number;
+      mape: number;
+      r2Score: number;
+      badge: AccuracyBadge;
+      totalPredictions: number;
+      matchedPredictions: number;
+      coveragePercent: number;
+      uniqueAttractions: number;
+      uniqueParks: number;
+    };
+    drift: {
+      currentDrift: number;
+      threshold: number;
+      status: DriftStatus;
+      trainingMae: number;
+      liveMae: number;
+      dailyMetrics: Array<{ date: string; mae: number; predictionsCount: number }>;
+    } | null;
+    improvement: {
+      maeDelta: number;
+      maePercentChange: number;
+      isImproving: boolean;
+    } | null;
+  };
+  insights: {
+    topPerformers: Array<{
+      attractionId: string;
+      attractionName: string;
+      parkName: string;
+      mae: number;
+      predictionsCount: number;
+    }>;
+    bottomPerformers: Array<{
+      attractionId: string;
+      attractionName: string;
+      parkName: string;
+      mae: number;
+      predictionsCount: number;
+    }>;
+    byPredictionType: {
+      HOURLY: { mae: number; totalPredictions: number; coveragePercent: number };
+      DAILY: { mae: number; totalPredictions: number; coveragePercent: number };
+    };
+    patterns: {
+      hourly: Array<{ hour: number; mae: number; predictionsCount: number }>;
+      weekday: Array<{ dayOfWeek: number; dayName: string; mae: number; predictionsCount: number }>;
+    };
+  };
+  system: {
+    nextTraining: string;
+    modelAge: { days: number; hours: number; minutes: number };
+    lastAccuracyCheck: { completedAt: string; newComparisonsAdded: number };
+  };
+}
+
+// ============================================================================
+// ML Metrics History
+// ============================================================================
+
+export interface ModelMetricsSnapshot {
+  version: string;
+  trainedAt: string;
+  mae: number | null;
+  rmse: number | null;
+  mape: number | null;
+  r2Score: number | null;
+  trainSamples: number;
+  isActive: boolean;
+}
+
+export interface ModelMetricsHistoryResponse {
+  history: ModelMetricsSnapshot[];
+  total: number;
+}
+
+// ============================================================================
 // Health Types
 // ============================================================================
 

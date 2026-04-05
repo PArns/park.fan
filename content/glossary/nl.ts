@@ -1719,6 +1719,46 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
     aliases: ['twister layout', 'cyclone', 'twister achtbaan'],
   },
+  {
+    id: 'mae',
+    name: 'MAE',
+    shortDefinition:
+      'Mean Absolute Error — de gemiddelde afwijking in minuten tussen voorspelde en werkelijke wachttijd.',
+    definition:
+      'MAE (Mean Absolute Error, gemiddelde absolute fout) is de standaard nauwkeurigheidsmaatstaf bij park.fan. Het berekent het gemiddelde verschil — in minuten — tussen elke voorspelde wachttijd en de werkelijk gemeten wachttijd bij de attractie. Een MAE van 8 minuten betekent dat de voorspellingen gemiddeld 8 minuten afwijken.\n\nDe MAE weegt elke fout even zwaar: een fout van 5 minuten en een fout van 15 minuten worden lineair gemiddeld. Dat maakt het intuïtief — MAE = 10 betekent "voorspellingen liggen doorgaans binnen 10 minuten van de werkelijkheid." Een lagere MAE betekent altijd nauwkeurigere voorspellingen.',
+    relatedTermIds: ['rmse', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Error'],
+  },
+  {
+    id: 'rmse',
+    name: 'RMSE',
+    shortDefinition:
+      'Root Mean Square Error — vergelijkbaar met MAE maar straft grote voorspellingsfouten zwaarder af.',
+    definition:
+      'RMSE (Root Mean Square Error, kwadratische gemiddelde fout) meet de nauwkeurigheid door elke fout te kwadrateren voor het middelen, waarna de vierkantswortel wordt genomen. Grote uitschieters — een wachttijd die 40 minuten te hoog of te laag wordt voorspeld — wegen daardoor veel zwaarder dan kleine fouten van 5 minuten. De RMSE is altijd gelijk aan of groter dan de MAE.\n\nEen groot verschil tussen RMSE en MAE wijst erop dat het model soms flink de mist in gaat, ook al zijn de meeste voorspellingen nauwkeurig. Beide maatstaven zijn live te zien op de park.fan-startpagina.',
+    relatedTermIds: ['mae', 'mape', 'r-squared', 'ai-forecast'],
+    aliases: ['Root Mean Square Error'],
+  },
+  {
+    id: 'mape',
+    name: 'MAPE',
+    shortDefinition:
+      'Mean Absolute Percentage Error — de voorspellingsfout uitgedrukt als percentage van de werkelijke wachttijd.',
+    definition:
+      'MAPE (Mean Absolute Percentage Error, gemiddelde absolute procentuele fout) drukt de nauwkeurigheid uit als percentage in plaats van minuten. In plaats van "8 minuten naast" zegt het "15% van de werkelijke wachttijd naast". Dat is handig om nauwkeurigheid te vergelijken tussen attracties met zeer verschillende wachttijden — een fout van 10 minuten is veel ernstiger bij een attractie met normaal 15 minuten dan bij een met 90 minuten.\n\nDe MAPE kan misleidend hoog zijn bij zeer korte wachttijden. Daarom toont park.fan hem altijd samen met MAE en RMSE.',
+    relatedTermIds: ['mae', 'rmse', 'r-squared', 'ai-forecast'],
+    aliases: ['Mean Absolute Percentage Error'],
+  },
+  {
+    id: 'r-squared',
+    name: 'R²',
+    shortDefinition:
+      'R-kwadraat — meet hoe goed het AI-model de patronen in echte wachttijden verklaart (0–1, hoger is beter).',
+    definition:
+      'R² (R-kwadraat, ook determinatiecoëfficiënt) meet hoeveel van de variatie in echte wachttijden het model succesvol verklaart. Een waarde van 1,0 betekent perfecte voorspellingen; 0,0 betekent dat het model niets verklaart boven een eenvoudig gemiddelde. Waarden boven 0,7 zijn sterk; boven 0,9 uitstekend.\n\nBij wachttijdprognoses is een hoge R² moeilijk te behalen, omdat wachtrijen beïnvloed worden door onvoorspelbare factoren. De park.fan R²-waarde weerspiegelt de werkelijke prestaties over alle bijgehouden voorspellingen en wordt dagelijks bijgewerkt.',
+    relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
+    aliases: ['R-squared'],
+  },
 ];
 
 export default translations;
