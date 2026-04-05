@@ -480,7 +480,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* About Section – editorial content for SEO word count */}
       <section className="border-t px-4 py-16">
-        <div className="container mx-auto max-w-3xl">
+        <div className="container mx-auto">
           <h2 className="mb-6 text-2xl font-semibold">{tHome('about.title')}</h2>
           <p className="text-muted-foreground mb-4 leading-relaxed">
             <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
