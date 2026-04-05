@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { format, eachDayOfInterval, startOfWeek, getDay } from 'date-fns';
+import { format, eachDayOfInterval } from 'date-fns';
 import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
 import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
@@ -96,55 +96,6 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
     };
   });
 
-  // Group days into weeks (7 columns, Monday to Sunday)
-  const weeks: (GridDayData | null)[][] = [];
-  let currentWeek: (GridDayData | null)[] = [];
-
-  // Find the start of the week (Monday) for the first day
-  const firstDay = days[0];
-  const weekStart = startOfWeek(firstDay.date, { weekStartsOn: 1, locale: dateLocale }); // 1 = Monday
-  const daysBeforeFirst = Math.floor(
-    (firstDay.date.getTime() - weekStart.getTime()) / (1000 * 60 * 60 * 24)
-  );
-
-  // Add empty cells for days before the first day in our range
-  for (let i = 0; i < daysBeforeFirst; i++) {
-    currentWeek.push(null);
-  }
-
-  days.forEach((day) => {
-    const dayOfWeek = getDay(day.date);
-    // Convert to Monday-based (0 = Monday, 6 = Sunday)
-    const mondayBasedDay = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-
-    if (mondayBasedDay === 0 && currentWeek.length > 0) {
-      // Monday - start new week (but only if we already have days)
-      weeks.push(currentWeek);
-      currentWeek = [day];
-    } else {
-      currentWeek.push(day);
-    }
-  });
-
-  // Add the last week if it has days
-  if (currentWeek.length > 0) {
-    // Fill remaining days of the week with null
-    while (currentWeek.length < 7) {
-      currentWeek.push(null);
-    }
-    weeks.push(currentWeek);
-  }
-
-  // Weekday headers (Monday to Sunday)
-  const weekdayHeaders: string[] = [];
-  // Start with Monday (2024-01-01 is a Monday)
-  const monday = new Date(2024, 0, 1);
-  for (let i = 0; i < 7; i++) {
-    const date = new Date(monday);
-    date.setDate(monday.getDate() + i);
-    weekdayHeaders.push(format(date, 'EEE', { locale: dateLocale }));
-  }
-
   if (!attraction.history || attraction.history.length === 0) {
     return (
       <Card className="relative p-6">
@@ -187,48 +138,15 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <div className="inline-block min-w-full">
-            {/* Weekday Headers - Desktop Only */}
-            <div className="mb-2 hidden grid-cols-7 gap-2 md:grid">
-              {weekdayHeaders.map((header, idx) => (
-                <div key={idx} className="text-muted-foreground text-center text-sm font-medium">
-                  {header}
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile View: Reversed List (Today -> Past) */}
-            <div className="grid grid-cols-2 gap-2 md:hidden">
-              {days
-                .slice()
-                .reverse()
-                .map((day) => {
-                  // Strict props passing to avoid passing Date object to client component
-
-                  const { date: _date, ...dayProps } = day;
-                  return <HistoryDay key={day.dateStr} day={dayProps} />;
-                })}
-            </div>
-
-            {/* Desktop View: Standard Weeks */}
-            <div className="hidden space-y-2 md:block">
-              {weeks.map((week, weekIdx) => (
-                <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
-                  {week.map((day, dayIdx) => {
-                    if (!day) {
-                      return <div key={`empty-${weekIdx}-${dayIdx}`} className="h-full"></div>;
-                    }
-
-                    // Strict props passing to avoid passing Date object to client component
-
-                    const { date: _date, ...dayProps } = day;
-                    return <HistoryDay key={day.dateStr} day={dayProps} />;
-                  })}
-                </div>
-              ))}
-            </div>
-          </div>
+        {/* Reversed List (Today -> Past) */}
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-7">
+          {days
+            .slice()
+            .reverse()
+            .map((day) => {
+              const { date: _date, ...dayProps } = day;
+              return <HistoryDay key={day.dateStr} day={dayProps} />;
+            })}
         </div>
       </div>
     </Card>

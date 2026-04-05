@@ -225,6 +225,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         schedule: attractionData?.schedule,
         hourlyForecast: attractionData?.hourlyForecast,
         predictionAccuracy: attractionData?.predictionAccuracy,
+        statistics: attractionData?.statistics || parkAttraction.statistics,
       }
     : null;
 
@@ -237,6 +238,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // Force closed status if park is not operating
   const isParkClosed = park.status !== 'OPERATING';
   const status = isParkClosed ? 'CLOSED' : mainQueue?.status || attraction.status || 'CLOSED';
+
+  // Calculate min/max from history if API doesn't provide them
+  const history = attraction.statistics?.history;
+  const calculatedMinWaitToday = history?.length
+    ? Math.min(...history.map((h) => h.waitTime))
+    : null;
+  const calculatedMaxWaitToday = history?.length
+    ? Math.max(...history.map((h) => h.waitTime))
+    : null;
 
   // Create status config with translations
   const statusConfig: Record<
@@ -354,8 +364,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   : null
               }
               trend={attraction.trend ?? undefined}
-              minWaitToday={attraction.statistics?.minWaitToday}
-              maxWaitToday={attraction.statistics?.maxWaitToday}
+              minWaitToday={calculatedMinWaitToday}
+              maxWaitToday={calculatedMaxWaitToday}
               sparklineHistory={attraction.statistics?.history}
               statusIcon={StatusIcon}
               statusLabel={config.label}
