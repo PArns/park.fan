@@ -395,7 +395,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     prefetch={false}
                     className="group block"
                   >
-                    <Card className="bg-muted/50 hover:bg-muted/70 border-border hover:border-primary/50 h-full transition-all hover:shadow-lg">
+                    <Card className="bg-muted/50 hover:bg-muted/70 border-border hover:border-primary/50 h-full transition-all duration-200 hover:scale-[1.02] hover:shadow-lg">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-lg font-medium">{continentName}</CardTitle>

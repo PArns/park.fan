@@ -108,7 +108,7 @@ export async function MLStatsSection() {
               </div>
 
               {/* Primary metric: MAE — grows to fill available space */}
-              <div className="mt-4 flex flex-1 flex-col">
+              <div className="mt-4 flex flex-col">
                 <div className="flex items-baseline gap-2">
                   <span className="text-6xl font-bold tabular-nums">±{fmt1(live.mae)}</span>
                   <span className="text-muted-foreground text-2xl font-light">
@@ -119,10 +119,8 @@ export async function MLStatsSection() {
                   <GlossaryInject>{t('ai.avgErrorDesc')}</GlossaryInject>
                 </p>
                 {history.length >= 2 && (
-                  <div className="relative -mx-2 mt-3 flex-1">
-                    <div className="absolute inset-0">
-                      <MLSparklineLoader history={history} metric="mae" unit="min" />
-                    </div>
+                  <div className="mt-3 h-[120px] overflow-hidden">
+                    <MLSparklineLoader history={history} metric="mae" unit="min" />
                   </div>
                 )}
               </div>

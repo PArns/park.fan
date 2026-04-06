@@ -29,7 +29,7 @@ export function AttractionStatCard({ label, variant, attraction }: AttractionSta
 
   return (
     <Link href={attraction.url} prefetch={false} className="group block min-w-0">
-      <Card className="hover:border-primary/50 relative h-full pt-5 transition-all hover:shadow-lg">
+      <Card className="hover:border-primary/50 relative h-full pt-5 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg">
         {attraction.id && (
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
             <FavoriteStar type="attraction" id={attraction.id} />

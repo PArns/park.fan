@@ -283,7 +283,7 @@
 
   /* Interactive Card Utilities - Hover effects */
   .interactive-card {
-    @apply hover:border-primary/50 transition-all hover:shadow-lg;
+    @apply hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
   }
 
   .interactive-link {
