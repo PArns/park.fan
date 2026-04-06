@@ -211,7 +211,16 @@
       "city": "{count, plural, =1 {Stadt} other {Städte}}",
       "more": "+{count} weitere"
     },
-    "countries": "Länder"
+    "countries": "Länder",
+    "countrySummary": {
+      "topParksTitle": "Beliebteste Parks",
+      "bestMonthsTitle": "Beste Besuchsmonate",
+      "peakMonthsLabel": "Stärkste Monate",
+      "quietMonthsLabel": "Ruhigste Monate",
+      "crowdScoreLabel": "Ø Andrang",
+      "introSingle": "{country} hat {parkCount} Freizeitpark auf park.fan.",
+      "introPlural": "{country} hat {parkCount} Freizeitparks auf park.fan in {cityCount} Städten."
+    }
   },
   "navigation": {
     "home": "Startseite",
@@ -409,7 +418,27 @@
       "nearest": "In deiner Nähe",
       "away": "entfernt"
     },
-    "h1Suffix": "Wartezeiten live"
+    "h1Suffix": "Wartezeiten live",
+    "stats": {
+      "title": "Historische Wartezeit-Statistiken",
+      "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",
+      "byMonthTitle": "Durchschnittlicher Besucherandrang nach Monat",
+      "byDowTitle": "Durchschnittlicher Besucherandrang nach Wochentag",
+      "topAttractionsTitle": "Attraktionen mit längsten Wartezeiten",
+      "avgWait": "Ø Wartezeit",
+      "p50": "Typisch",
+      "p90": "Spitze",
+      "noData": "Noch nicht genug historische Daten verfügbar."
+    },
+    "bestDays": {
+      "title": "Beste Reisezeit für {park}",
+      "subtitle": "Basierend auf KI-Crowd-Prognosen für die nächsten 3 Monate",
+      "quietestDaysTitle": "Ruhigste Wochentage",
+      "upcomingQuietTitle": "Kommende ruhige Tage",
+      "schoolHolidayWarning": "Schulferien sind am {park} typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
+      "noUpcomingQuiet": "In den nächsten 30 Tagen keine besonders ruhigen Tage.",
+      "noData": "Noch nicht genug Crowd-Daten verfügbar."
+    }
   },
   "attractions": {
     "title": "Attraktionen",
@@ -712,7 +741,10 @@
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
       "titleTemplate": "{park} Wartezeiten – {city}",
       "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage",
-      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick."
+      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
+      "keywordWaitTimes": "Wartezeiten",
+      "keywordCrowdCalendar": "Crowd-Kalender",
+      "keywordBestTime": "beste Besuchszeit"
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
@@ -760,6 +792,9 @@
       "diningA": "{park} bietet {count} Restaurants und Imbissstände:",
       "crowdCalendarQ": "Hat {park} einen Crowd-Kalender?",
       "crowdCalendarA": "Ja! park.fan bietet einen detaillierten Crowd-Kalender für {park} mit vorhergesagten Besucherandrang-Leveln für die nächsten 30 Tage, damit du die besten Besuchstage mit kürzeren Wartezeiten auswählen kannst.",
+      "leastCrowdedQ": "Wann ist {parkLoc} am wenigsten los?",
+      "leastCrowdedA": "{park} ist typischerweise am ruhigsten am {days}. Schau oben in den <calendar>Crowd-Kalender</calendar> für die nächsten ruhigen Tage und plane deinen Besuch entsprechend.",
+      "leastCrowdedNoDataA": "Schau in den <calendar>Crowd-Kalender</calendar> auf dieser Seite für ruhige Tage. Grüne Tage stehen für kurze Wartezeiten und weniger Besucher.",
       "attraction": {
         "title": "Häufig gestellte Fragen",
         "locationQ": "Wo befindet sich {attraction}?",

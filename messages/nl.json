@@ -211,7 +211,16 @@
       "city": "{count, plural, =1 {stad} other {steden}}",
       "more": "+{count} meer"
     },
-    "countries": "Landen"
+    "countries": "Landen",
+    "countrySummary": {
+      "topParksTitle": "Populairste parken",
+      "bestMonthsTitle": "Beste maanden om te bezoeken",
+      "peakMonthsLabel": "Drukste maanden",
+      "quietMonthsLabel": "Rustigste maanden",
+      "crowdScoreLabel": "gem. drukte",
+      "introSingle": "{country} heeft {parkCount} pretpark op park.fan.",
+      "introPlural": "{country} heeft {parkCount} pretparken op park.fan in {cityCount} steden."
+    }
   },
   "navigation": {
     "home": "Home",
@@ -409,7 +418,27 @@
       "mist": "Nevel",
       "feelsLike": "Voelt als"
     },
-    "h1Suffix": "Live wachttijden"
+    "h1Suffix": "Live wachttijden",
+    "stats": {
+      "title": "Historische wachttijdstatistieken",
+      "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",
+      "byMonthTitle": "Gemiddelde drukte per maand",
+      "byDowTitle": "Gemiddelde drukte per dag van de week",
+      "topAttractionsTitle": "Attracties met langste wachtrijen gemiddeld",
+      "avgWait": "Gem. wacht",
+      "p50": "Typisch",
+      "p90": "Piek",
+      "noData": "Nog niet genoeg historische data beschikbaar."
+    },
+    "bestDays": {
+      "title": "Beste tijd om {park} te bezoeken",
+      "subtitle": "Gebaseerd op AI-drukte-voorspellingen voor de komende 3 maanden",
+      "quietestDaysTitle": "Rustigste dagen van de week",
+      "upcomingQuietTitle": "Komende rustige dagen",
+      "schoolHolidayWarning": "Schoolvakanties zijn doorgaans veel drukker bij {park} — check de druktekalender voor je boeking.",
+      "noUpcomingQuiet": "Geen bijzonder rustige dagen in de komende 30 dagen.",
+      "noData": "Nog niet genoeg voorspellingsdata beschikbaar."
+    }
   },
   "attractions": {
     "title": "Attracties",
@@ -712,7 +741,10 @@
       "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
       "titleTemplate": "{park} Wachttijden – {city}",
       "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen",
-      "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden."
+      "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "keywordWaitTimes": "wachttijden",
+      "keywordCrowdCalendar": "druktekalender",
+      "keywordBestTime": "beste tijd om te bezoeken"
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
@@ -760,6 +792,9 @@
       "diningA": "{park} biedt {count} restaurants en snackbars:",
       "crowdCalendarQ": "Heeft {park} een druktekalender?",
       "crowdCalendarA": "Ja! park.fan biedt een gedetailleerde druktekalender voor {park} met voorspelde drukte-niveaus voor de komende 30 dagen, zodat je de beste bezoekdagen kunt kiezen met kortere wachttijden.",
+      "leastCrowdedQ": "Wanneer is {park} het minst druk?",
+      "leastCrowdedA": "{park} is doorgaans het rustigst op {days}. Bekijk de <calendar>druktekalender</calendar> hierboven voor komende rustige dagen en plan je bezoek dienovereenkomstig.",
+      "leastCrowdedNoDataA": "Bekijk de <calendar>druktekalender</calendar> op deze pagina voor rustige dagen. Groene dagen duiden op korte wachtrijen en minder bezoekers.",
       "attraction": {
         "title": "Veelgestelde Vragen",
         "locationQ": "Waar bevindt {attraction} zich?",

@@ -5,7 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
-import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
+import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
@@ -13,6 +13,7 @@ import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/s
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { CountrySummarySection } from '@/components/parks/country-summary-section';
 import type { Metadata } from 'next';
 
 interface CountryPageProps {
@@ -79,8 +80,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
   const tCommon = await getTranslations('common');
   const tExplore = await getTranslations('explore');
 
-  // Fetch cities with full park data
-  const response = await getCitiesWithParks(continent, country).catch(() => null);
+  // Fetch cities and summary in parallel — summary failure is non-fatal
+  const [response, summary] = await Promise.all([
+    getCitiesWithParks(continent, country).catch(() => null),
+    getCountrySummary(continent, country).catch(() => null),
+  ]);
 
   if (!response || !response.data || response.data.length === 0) {
     notFound();
@@ -130,6 +134,11 @@ export default async function CountryPage({ params }: CountryPageProps) {
           </>
         }
       />
+
+      {/* Country summary — top parks + best months */}
+      {summary && (
+        <CountrySummarySection summary={summary} countryName={countryName} locale={locale} />
+      )}
 
       {/* Cities with Parks */}
       <div className="space-y-8">

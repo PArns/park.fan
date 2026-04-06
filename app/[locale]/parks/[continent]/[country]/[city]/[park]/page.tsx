@@ -30,6 +30,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
+import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 
@@ -95,8 +97,9 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     parkName,
     `${parkName} ${cityName}`,
     `${parkName} ${countryName}`,
-    `${parkName} wait times`,
-    `${parkName} crowd calendar`,
+    `${parkName} ${t('keywordWaitTimes')}`,
+    `${parkName} ${t('keywordCrowdCalendar')}`,
+    `${parkName} ${t('keywordBestTime')}`,
     cityName,
     countryName,
     tGlobal('keywords'),
@@ -307,9 +310,26 @@ export default async function ParkPage({ params }: ParkPageProps) {
             attractionsByLand={attractionsByLand}
           />
 
+          {/* Historical statistics */}
+          <ParkStatsSection
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            locale={locale}
+          />
+
+          {/* Best Days to Visit */}
+          <ParkBestDaysSection
+            calendarData={calendarData}
+            parkName={parkName}
+            parkSlug={parkSlug}
+            locale={locale}
+          />
+
           {/* FAQ Section */}
           <Separator className="my-8" />
-          <ParkFAQSection park={park} locale={locale} />
+          <ParkFAQSection park={park} locale={locale} calendarData={calendarData} />
         </article>
       </PageContainer>
     </>

@@ -211,7 +211,16 @@
       "city": "{count, plural, =1 {città} other {città}}",
       "more": "+{count} altri"
     },
-    "countries": "Paesi"
+    "countries": "Paesi",
+    "countrySummary": {
+      "topParksTitle": "Parchi più popolari",
+      "bestMonthsTitle": "Mesi migliori per visitare",
+      "peakMonthsLabel": "Mesi più affollati",
+      "quietMonthsLabel": "Mesi più tranquilli",
+      "crowdScoreLabel": "affluenza media",
+      "introSingle": "{country} ha {parkCount} parco a tema su park.fan.",
+      "introPlural": "{country} ha {parkCount} parchi a tema su park.fan in {cityCount} città."
+    }
   },
   "navigation": {
     "home": "Home",
@@ -409,7 +418,27 @@
       "mist": "Foschia",
       "feelsLike": "Percepita"
     },
-    "h1Suffix": "Tempi di attesa in diretta"
+    "h1Suffix": "Tempi di attesa in diretta",
+    "stats": {
+      "title": "Statistiche storiche sui tempi di attesa",
+      "subtitle": "Basato su {days} giorni di dati registrati · Ultimi {years} anni",
+      "byMonthTitle": "Livello di affluenza medio per mese",
+      "byDowTitle": "Livello di affluenza medio per giorno della settimana",
+      "topAttractionsTitle": "Code più lunghe in media",
+      "avgWait": "Attesa media",
+      "p50": "Tipico",
+      "p90": "Picco",
+      "noData": "Dati storici insufficienti al momento."
+    },
+    "bestDays": {
+      "title": "Quando visitare {park}",
+      "subtitle": "Basato sulle previsioni di affluenza IA per i prossimi 3 mesi",
+      "quietestDaysTitle": "Giorni più tranquilli della settimana",
+      "upcomingQuietTitle": "Prossimi giorni tranquilli",
+      "schoolHolidayWarning": "Le vacanze scolastiche sono tipicamente molto più affollate a {park} — controlla il calendario prima di prenotare.",
+      "noUpcomingQuiet": "Nessun giorno particolarmente tranquillo nei prossimi 30 giorni.",
+      "noData": "Dati di previsione insufficienti al momento."
+    }
   },
   "attractions": {
     "title": "Attrazioni",
@@ -708,7 +737,10 @@
       "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
       "titleTemplate": "{park} Tempi di attesa – {city}",
       "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare",
-      "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura."
+      "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
+      "keywordWaitTimes": "tempi di attesa",
+      "keywordCrowdCalendar": "calendario affluenze",
+      "keywordBestTime": "quando visitare"
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
@@ -756,6 +788,9 @@
       "diningA": "{park} offre {count} ristoranti e punti ristoro:",
       "crowdCalendarQ": "{park} ha un calendario delle affluenze?",
       "crowdCalendarA": "Sì! park.fan fornisce un calendario dettagliato delle affluenze per {park}, con i livelli di affluenza previsti per i prossimi 30 giorni, per aiutarti a scegliere i giorni migliori con tempi di attesa più brevi.",
+      "leastCrowdedQ": "Quando è meno affollato {park}?",
+      "leastCrowdedA": "{park} è solitamente più tranquillo il {days}. Controlla il <calendar>calendario delle affluenze</calendar> per i prossimi giorni con meno code.",
+      "leastCrowdedNoDataA": "Controlla il <calendar>calendario delle affluenze</calendar> su questa pagina per i prossimi giorni tranquilli. I giorni verdi indicano code brevi e poca gente.",
       "attraction": {
         "title": "Domande frequenti",
         "locationQ": "Dove si trova {attraction}?",

@@ -932,3 +932,64 @@ export interface IntegratedCalendarResponse {
   meta: CalendarMeta;
   days: CalendarDay[];
 }
+
+// ============================================================================
+// Park Historical Stats  (GET /v1/parks/.../stats)
+// ============================================================================
+
+export interface MonthStat {
+  month: number; // 1–12
+  avgCrowdScore: number;
+  avgWaitP50: number;
+  avgWaitP90: number;
+  sampleDays: number;
+}
+
+export interface DayOfWeekStat {
+  dayOfWeek: number; // 0=Sunday, 6=Saturday
+  avgCrowdScore: number;
+  avgWaitP50: number;
+  avgWaitP90: number;
+  sampleDays: number;
+}
+
+export interface TopAttractionStat {
+  attractionSlug: string;
+  attractionName: string;
+  avgWaitP50: number;
+  avgWaitP90: number;
+  sampleDays: number;
+}
+
+export interface ParkHistoricalStats {
+  byMonth: MonthStat[];
+  byDayOfWeek: DayOfWeekStat[];
+  topAttractions: TopAttractionStat[];
+  meta: {
+    parkSlug: string;
+    dataFrom: string;
+    dataTo: string;
+    totalSampleDays: number;
+  };
+}
+
+// ============================================================================
+// Country Summary  (GET /v1/discovery/continents/:continent/:country/summary)
+// ============================================================================
+
+export interface TopParkSummary {
+  name: string;
+  slug: string;
+  city: string;
+  path: string;
+  avgAnnualCrowdScore: number;
+}
+
+export interface CountrySummary {
+  countrySlug: string;
+  parkCount: number;
+  cityCount: number;
+  topParks: TopParkSummary[];
+  avgPeakMonths: number[];
+  avgQuietMonths: number[];
+}

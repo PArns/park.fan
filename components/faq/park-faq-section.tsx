@@ -1,27 +1,57 @@
-import { ParkWithAttractions } from '@/lib/api/types';
+import type { ReactNode } from 'react';
+import { ParkWithAttractions, IntegratedCalendarResponse } from '@/lib/api/types';
 import { getTranslations } from 'next-intl/server';
 import { formatInTimeZone } from 'date-fns-tz';
-import { ChevronDown, MapPin, Calendar, Ticket, Map, Theater, UtensilsCrossed } from 'lucide-react';
+import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
+import {
+  ChevronDown,
+  MapPin,
+  Calendar,
+  Ticket,
+  Map,
+  Theater,
+  UtensilsCrossed,
+  Clock2,
+} from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
   locale: string;
+  calendarData?: IntegratedCalendarResponse;
 }
 
 interface FAQItem {
   icon: LucideIcon;
   question: string;
-  answer: string | { text: string; list: (string | null)[] };
+  answer: string | { text: string; list: (string | null)[] } | ReactNode;
 }
 
-export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
+function isFaqListAnswer(
+  answer: FAQItem['answer']
+): answer is { text: string; list: (string | null)[] } {
+  return (
+    answer !== null &&
+    typeof answer === 'object' &&
+    'list' in answer &&
+    Array.isArray((answer as { list: unknown }).list)
+  );
+}
+
+export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSectionProps) {
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
+
+  const crowdCalendarLink = (chunks: ReactNode) => (
+    <CrowdCalendarFaqLink className="text-primary decoration-primary/50 hover:decoration-primary font-medium underline underline-offset-2">
+      {chunks}
+    </CrowdCalendarFaqLink>
+  );
   const parkName = stripNewPrefix(park.name);
 
   // German article forms (only for parks whose name contains "Park", e.g. "Europa-Park")
@@ -30,6 +60,8 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
   const parkNomCap = article
     ? `${article.charAt(0).toUpperCase()}${article.slice(1)} ${parkName}`
     : parkName;
+  // DE FAQ question only: "Wann ist im Phantasialand …" (locative, no article)
+  const parkLoc = locale === 'de' ? `im ${parkName}` : parkName;
 
   // Get current date in park's timezone
   const timeZone = park.timezone || 'UTC';
@@ -147,6 +179,51 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
     });
   }
 
+  // Question 7: Least crowded
+  if (calendarData) {
+    const analysis = analyzeBestDays(calendarData.days);
+    if (analysis.totalDays >= 7) {
+      if (analysis.bestDaysOfWeek.length >= 2) {
+        // Monday-first order in prose (e.g. DE: "Montag und Dienstag", not "Dienstag und Montag")
+        const mondayFirstOrder = (dayIndex: number) => (dayIndex + 6) % 7;
+        const dayNames = [...analysis.bestDaysOfWeek.slice(0, 2)]
+          .sort((a, b) => mondayFirstOrder(a.dayIndex) - mondayFirstOrder(b.dayIndex))
+          .map((s) => {
+            const refMonday = new Date(2025, 0, 6);
+            const date = new Date(refMonday);
+            date.setDate(refMonday.getDate() + ((s.dayIndex - 1 + 7) % 7));
+            return new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
+          })
+          .join(
+            locale === 'de'
+              ? ' und '
+              : locale === 'fr'
+                ? ' et '
+                : locale === 'nl'
+                  ? ' en '
+                  : locale === 'es'
+                    ? ' y '
+                    : ' and '
+          );
+        faqs.push({
+          icon: Clock2,
+          question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
+          answer: t.rich('leastCrowdedA', {
+            park: parkNomCap,
+            days: dayNames,
+            calendar: crowdCalendarLink,
+          }),
+        });
+      } else {
+        faqs.push({
+          icon: Clock2,
+          question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
+          answer: t.rich('leastCrowdedNoDataA', { calendar: crowdCalendarLink }),
+        });
+      }
+    }
+  }
+
   if (faqs.length === 0) return null;
 
   return (
@@ -167,9 +244,9 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
                   <ChevronDown className="text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
                 </summary>
                 <div className="text-muted-foreground border-t px-4 pt-2 pb-4">
-                  {typeof faq.answer === 'object' &&
-                  'text' in faq.answer &&
-                  'list' in faq.answer ? (
+                  {typeof faq.answer === 'string' ? (
+                    <GlossaryInject>{faq.answer}</GlossaryInject>
+                  ) : isFaqListAnswer(faq.answer) ? (
                     <>
                       <p className="mb-2">{faq.answer.text}</p>
                       <ul className="list-disc space-y-1 pl-5">
@@ -179,7 +256,7 @@ export async function ParkFAQSection({ park, locale }: ParkFAQSectionProps) {
                       </ul>
                     </>
                   ) : (
-                    <GlossaryInject>{faq.answer as string}</GlossaryInject>
+                    <>{faq.answer as ReactNode}</>
                   )}
                 </div>
               </details>

@@ -31,6 +31,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const homepageAlternates = buildAlternates(() => '');
   const parksListingAlternates = buildAlternates(() => '/parks');
   const howtoAlternates = buildAlternates(() => '/howto');
+  const searchAlternates = buildAlternates(() => '/search');
+  const impressumAlternates = buildAlternates(() => '/impressum');
+  const datenschutzAlternates = buildAlternates(() => '/datenschutz');
 
   for (const locale of locales) {
     routes.push(
@@ -51,6 +54,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: howtoAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/search`,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+        alternates: searchAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/impressum`,
+        changeFrequency: 'yearly',
+        priority: 0.4,
+        alternates: impressumAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/datenschutz`,
+        changeFrequency: 'yearly',
+        priority: 0.4,
+        alternates: datenschutzAlternates,
       }
     );
   }

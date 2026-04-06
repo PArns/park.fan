@@ -8,6 +8,7 @@ import type {
   DiscoveryCountryResponse,
   DiscoveryCityResponse,
   SitemapAttraction,
+  CountrySummary,
 } from './types';
 
 /**
@@ -83,3 +84,16 @@ export async function getCountriesInContinent(continentSlug: string): Promise<Co
   }
   return response.data || response.countries || [];
 }
+
+/**
+ * Get country summary with top parks, peak/quiet months — for SEO landing pages.
+ * Cached 24h — data is aggregated from ParkDailyStats, changes daily at most.
+ */
+export const getCountrySummary = cache(
+  async (continentSlug: string, countrySlug: string): Promise<CountrySummary> => {
+    return api.get<CountrySummary>(
+      `/v1/discovery/continents/${continentSlug}/${countrySlug}/summary`,
+      { next: { revalidate: 86400 } }
+    );
+  }
+);

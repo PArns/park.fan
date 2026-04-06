@@ -211,7 +211,16 @@
       "city": "{count, plural, =1 {city} other {cities}}",
       "more": "+{count} more"
     },
-    "countries": "Countries"
+    "countries": "Countries",
+    "countrySummary": {
+      "topParksTitle": "Most Popular Parks",
+      "bestMonthsTitle": "Best Months to Visit",
+      "peakMonthsLabel": "Busiest months",
+      "quietMonthsLabel": "Quietest months",
+      "crowdScoreLabel": "avg. crowd",
+      "introSingle": "{country} has {parkCount} theme park tracked on park.fan.",
+      "introPlural": "{country} has {parkCount} theme parks tracked on park.fan across {cityCount} cities."
+    }
   },
   "navigation": {
     "home": "Home",
@@ -409,7 +418,27 @@
       "mist": "Mist",
       "feelsLike": "Feels like"
     },
-    "h1Suffix": "Live Wait Times"
+    "h1Suffix": "Live Wait Times",
+    "stats": {
+      "title": "Historical Wait Time Statistics",
+      "subtitle": "Based on {days} days of recorded data · Last {years} years",
+      "byMonthTitle": "Average Crowd Level by Month",
+      "byDowTitle": "Average Crowd Level by Day of Week",
+      "topAttractionsTitle": "Longest Queues on Average",
+      "avgWait": "Avg wait",
+      "p50": "Typical",
+      "p90": "Peak",
+      "noData": "Not enough historical data available yet."
+    },
+    "bestDays": {
+      "title": "Best Time to Visit {park}",
+      "subtitle": "Based on AI crowd forecasts for the next 3 months",
+      "quietestDaysTitle": "Quietest Days of the Week",
+      "upcomingQuietTitle": "Upcoming Quiet Days",
+      "schoolHolidayWarning": "School holidays are typically much busier at {park} — check the crowd calendar before booking.",
+      "noUpcomingQuiet": "No particularly quiet days in the next 30 days.",
+      "noData": "Not enough crowd forecast data available yet."
+    }
   },
   "attractions": {
     "title": "Attractions",
@@ -712,7 +741,10 @@
       "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
       "titleTemplate": "{park} Wait Times – {city}",
       "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit",
-      "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours."
+      "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
+      "keywordWaitTimes": "wait times",
+      "keywordCrowdCalendar": "crowd calendar",
+      "keywordBestTime": "best time to visit"
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
@@ -760,6 +792,9 @@
       "diningA": "{park} offers {count} restaurants and snack stands:",
       "crowdCalendarQ": "Does {park} have a crowd calendar?",
       "crowdCalendarA": "Yes! park.fan provides a detailed crowd calendar for {park} showing predicted crowd levels for the next 30 days, helping you choose the best days to visit with shorter wait times.",
+      "leastCrowdedQ": "When is {park} least crowded?",
+      "leastCrowdedA": "{park} is typically quietest on {days}. Check the <calendar>crowd calendar</calendar> above for upcoming low-crowd days and plan your visit accordingly.",
+      "leastCrowdedNoDataA": "Check the <calendar>crowd calendar</calendar> on this page for upcoming quiet days. Green days signal short queues and smaller crowds.",
       "attraction": {
         "title": "Frequently Asked Questions",
         "locationQ": "Where is {attraction} located?",
