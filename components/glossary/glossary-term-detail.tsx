@@ -43,40 +43,36 @@ export function GlossaryTermDetail({
       <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
         {/* ── Left column ───────────────────────────────────────────────── */}
         <div className="flex flex-col gap-4">
-          {/* Header card: title → short definition → category badge */}
-          <Card className="border-primary/20 shadow-md">
-            <div className="px-6 pt-4 pb-4">
-              <h1 className="mb-3 text-3xl leading-tight font-bold">
+          {/* Combined card: header + definition */}
+          <Card className="border-primary/20 gap-0 py-0 shadow-md">
+            {/* Header section */}
+            <div className="px-6 pt-5 pb-4">
+              <div className="mb-1 flex items-center gap-2">
+                <Tag className="text-primary h-3 w-3 shrink-0" />
+                <span className="text-primary text-xs font-medium">{labels.category}</span>
+              </div>
+              <h1 className="mb-1.5 text-3xl leading-tight font-bold">
                 {term.name}{' '}
                 <span className="text-muted-foreground text-xl font-normal">
                   {labels.termH1Suffix}
                 </span>
               </h1>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                <GlossaryInject locale={locale}>{term.shortDefinition}</GlossaryInject>
-              </p>
-              {term.aliases && term.aliases.length > 0 && (
-                <p className="text-muted-foreground mt-2 text-sm">
+              {term.alternateNames && term.alternateNames.length > 0 && (
+                <p className="text-muted-foreground mt-1.5 text-sm">
                   <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
-                  {term.aliases.join(' · ')}
+                  {term.alternateNames.join(' · ')}
                 </p>
               )}
             </div>
-            {/* Category footer strip */}
-            <div className="border-primary/10 flex items-center gap-1.5 border-t px-6 py-3">
-              <Tag className="text-primary h-3.5 w-3.5 shrink-0" />
-              <span className="text-primary text-xs font-medium">{labels.category}</span>
-            </div>
-          </Card>
-
-          {/* Definition card */}
-          <Card className="border-primary/10 px-6 py-4 shadow-sm">
-            <div className="text-foreground/85 space-y-3 leading-relaxed">
-              {term.definition.split('\n\n').map((para, i) => (
-                <p key={i}>
-                  <GlossaryInject locale={locale}>{para}</GlossaryInject>
-                </p>
-              ))}
+            {/* Definition section */}
+            <div className="border-primary/10 border-t px-6 py-6">
+              <div className="text-foreground space-y-4 text-base leading-relaxed">
+                {term.definition.split('\n\n').map((para, i) => (
+                  <p key={i}>
+                    <GlossaryInject locale={locale}>{para}</GlossaryInject>
+                  </p>
+                ))}
+              </div>
             </div>
           </Card>
 
@@ -95,8 +91,8 @@ export function GlossaryTermDetail({
         {relatedTerms.length > 0 && (
           <aside aria-label={labels.relatedTerms}>
             {/* Sidebar wrapped in its own glass card so the heading is readable */}
-            <Card className="border-primary/15 shadow-sm">
-              <div className="border-primary/10 border-b px-4 py-2">
+            <Card className="border-primary/15 gap-0 py-0 shadow-sm">
+              <div className="border-primary/10 border-b px-4 py-2.5">
                 <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
                   {labels.relatedTerms}
                 </p>
@@ -106,7 +102,7 @@ export function GlossaryTermDetail({
                   <Link
                     key={related.id}
                     href={`/${locale}/${segment}/${related.slug}`}
-                    className="hover:bg-primary/5 group block px-4 py-2.5 transition-colors"
+                    className="hover:bg-primary/5 group block px-4 py-2 transition-colors"
                   >
                     <p className="text-sm font-medium">{related.name}</p>
                     <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">

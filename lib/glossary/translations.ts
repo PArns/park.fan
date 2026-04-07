@@ -34,6 +34,7 @@ export const getGlossaryTerms = cache(async (locale: Locale): Promise<GlossaryTe
         slug: termData.slugs[locale],
         relatedTermIds: translation.relatedTermIds,
         aliases: translation.aliases,
+        alternateNames: translation.alternateNames,
       },
     ];
   });

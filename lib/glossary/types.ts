@@ -27,6 +27,8 @@ export interface GlossaryTermTranslation {
   relatedTermIds?: string[];
   /** Additional strings (plural forms, alternate names) that should also link to this term. */
   aliases?: string[];
+  /** Genuinely different names for this term — displayed as "Also known as". Excludes inflections/plurals. */
+  alternateNames?: string[];
 }
 
 export interface GlossaryTerm extends GlossaryTermData {
@@ -37,6 +39,8 @@ export interface GlossaryTerm extends GlossaryTermData {
   relatedTermIds?: string[];
   /** Additional strings (plural forms, alternate names) that also match this term. */
   aliases?: string[];
+  /** Genuinely different names for this term — displayed as "Also known as". Excludes inflections/plurals. */
+  alternateNames?: string[];
 }
 
 export interface GlossaryTermWithEnName extends GlossaryTerm {

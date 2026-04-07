@@ -9,7 +9,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Wartezeit (auch Wartezeit in der Warteschlange) ist die geschätzte Dauer, die ein Besucher in der Warteschlange verbringt, bevor er eine Attraktion besteigen kann. Parks zeigen Wartezeiten an Attraktionseingängen und in ihren Apps an. park.fan erfasst live Wartezeiten, die jede Minute aktualisiert werden, damit du die aktuellen Bedingungen für alle Attraktionen einsehen kannst.',
     relatedTermIds: ['posted-wait-time', 'virtual-queue', 'single-rider', 'express-pass'],
-    aliases: ['Wartezeiten', 'Queue Time', 'Queue Times'],
+    aliases: ['Wartezeiten'],
+    alternateNames: ['Wartezeit in der Warteschlange', 'Queue Time', 'Queue Times'],
   },
   {
     id: 'single-rider',
@@ -18,7 +19,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine separate Warteschlangenspur für Besucher, die bereit sind, allein zu fahren, um freie Plätze zu füllen.',
     definition:
       'Einzelfahrer-Warteschlangen ermöglichen es Besuchern, die bereit sind, allein (oder getrennt von ihrer Gruppe) zu fahren, freie Plätze in Fahrzeugserien zu belegen. Da Einzelfahrer in Lücken eingeschoben werden, bewegt sich die Warteschlange deutlich schneller als die normale Reihe — oft 50–70 % kürzere Wartezeiten. Nicht alle Attraktionen bieten Einzelfahrerzugang an.',
-    aliases: ['Single Rider', 'Single Rider Lane'],
+    alternateNames: ['Single Rider Lane', 'Einzelfahrer', 'Single-Spur'],
 
     relatedTermIds: ['wait-time', 'express-pass', 'virtual-queue'],
   },
@@ -38,7 +39,7 @@ const translations: GlossaryTermTranslation[] = [
       'Ein kostenpflichtiges oder inklusive Ticket-Upgrade, das Zugang zu einer kürzeren Prioritätswarteschlange gewährt.',
     definition:
       'Ein Express Pass (der genaue Name variiert je nach Park — Universal Express, Disney Lightning Lane usw.) ist ein Ticket-Upgrade, das Inhabern erlaubt, einen dedizierten Prioritätseingang mit deutlich kürzeren Wartezeiten zu nutzen. Einige Parks bieten Express-Zugang in Premium-Hotelpaketen an; andere verkaufen ihn separat. Nutze den Besucherkalender von park.fan, um deinen Besuch zu planen und zu entscheiden, ob ein Express Pass den Preis wert ist.',
-    aliases: ['Flash Pass', 'Express Pass'],
+    alternateNames: ['Flash Pass'],
 
     relatedTermIds: ['virtual-queue', 'single-rider', 'wait-time'],
   },
@@ -58,7 +59,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Crowd-Level', 'Crowd-Levels', 'Besucherdichten', 'Besucherandrang'],
+    aliases: ['Besucherdichten'],
+    alternateNames: ['Crowd Level', 'Crowd Levels', 'Besucherandrang'],
   },
   {
     id: 'crowd-calendar',
@@ -68,7 +70,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Besucherkalender ist ein Monats- oder Jahreskalender, der vorhergesagte Besucherdichten für jeden Tag zeigt. park.fan erstellt Besucherkalender mit KI-Modellen, die auf jahrelangen historischen Wartezeitdaten, kombinierten Schulferienkalendern, bevorstehenden Veranstaltungen und saisonalen Trends trainiert wurden. Grüne Tage zeigen niedrige Besucherzahlen an; orange und rote Tage zeigen hohe Besucherzahlen an.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['Crowd-Kalender', 'Besucherkalender'],
+    aliases: ['Besucherkalender'],
   },
   {
     id: 'peak-day',
@@ -77,7 +79,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein Tag mit maximalen Besucherzahlen, typischerweise während Feiertagen oder Sonderveranstaltungen.',
     definition:
       'Ein Spitzentag ist jeder Tag, an dem die Besucherzahlen auf oder nahe der maximalen Kapazität eines Parks sind. Häufige Spitzentage sind große gesetzliche Feiertage (Weihnachten, Ostern, Sommerferien), Sonderveranstaltungstage (Halloween-Nächte, Feuerwerke) und Schulferienwochen. park.fan hebt Spitzentage im Besucherkalender hervor, damit du sie gezielt einplanst oder meidest.',
-    aliases: ['Spitzentage', 'Stoßzeiten', 'Hochbetrieb'],
+    aliases: ['Spitzentage'],
+    alternateNames: ['Stoßzeiten', 'Hochbetrieb'],
 
     relatedTermIds: ['crowd-level', 'crowd-calendar', 'rope-drop'],
   },
@@ -88,7 +91,8 @@ const translations: GlossaryTermTranslation[] = [
       'Eine geplante Schließungszeit, in der eine Attraktion oder ein Bereich gewartet oder modernisiert wird.',
     definition:
       'Eine Renovierung (von Enthusiasten oft als "Rehab" abgekürzt) ist ein geplanter Wartungs- oder Renovierungszeitraum, in dem eine Attraktion, eine Show oder ein Parkbereich vorübergehend geschlossen ist. Renovierungen können von einigen Tagen bis zu mehreren Monaten dauern und werden in der Regel für die Nebensaison geplant. park.fan markiert Attraktionen, die derzeit renoviert werden.',
-    aliases: ['Revisions', 'Rehab', 'Wartungsschließung'],
+    aliases: ['Revisions'],
+    alternateNames: ['Rehab', 'Wartungsschließung'],
 
     relatedTermIds: ['downtime', 'ride-capacity'],
   },
@@ -99,7 +103,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine ungeplante, vorübergehende Schließung einer Attraktion aufgrund eines technischen Defekts oder Sicherheitsprüfung.',
     definition:
       'Eine Betriebsstörung bezeichnet die ungeplante, vorübergehende Schließung einer Attraktion — im Gegensatz zur geplanten Renovierung. Ursachen sind technische Defekte, Sicherheitsüberprüfungen, Vorfälle mit Besuchern oder schlechtes Wetter. Die meisten Störungen dauern wenige Minuten bis einige Stunden. park.fan zeigt den aktuellen Betriebsstatus jeder Attraktion in Echtzeit an und unterscheidet zwischen "In Betrieb", "Störung", "Geschlossen" und "Renovierung".',
-    aliases: ['Betriebsstörung', 'Außer Betrieb', 'Technische Störung'],
+    alternateNames: ['Außer Betrieb', 'Technische Störung'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
   },
@@ -118,7 +122,7 @@ const translations: GlossaryTermTranslation[] = [
       'Der Moment der Parköffnung, wenn die Absperrung fällt und die Warteschlangen für beliebte Attraktionen am kürzesten sind.',
     definition:
       'Rope Drop bezeichnet den Moment, in dem ein Freizeitpark für den Tag öffnet — benannt nach dem buchstäblichen Seil (oder Absperrband), das Parkmitarbeiter absenken, um die ersten Besucher einzulassen. Unter Freizeitpark-Fans ist das frühe Ankommen beim Rope Drop eine beliebte Strategie, da beliebte Attraktionen morgens die kürzesten Schlangen haben, bevor die Massen einströmen. Viele Parks bieten Hotelgästen zusätzlich einen Early Entry an, um bestimmte Attraktionen noch vor dem regulären Einlass zu nutzen. Der Zeitplan von park.fan zeigt genaue Öffnungszeiten.',
-    aliases: ['Rope Drop'],
+    aliases: ['Rope-Drop'],
 
     relatedTermIds: ['crowd-calendar', 'wait-time', 'early-entry'],
   },
@@ -129,7 +133,7 @@ const translations: GlossaryTermTranslation[] = [
       'Ein exklusiver Vorteil für Hotelgäste, der den Parkeintritt vor der regulären Öffnung erlaubt.',
     definition:
       'Früheinlass (auch "Extra Zauberzeit" bei Disney oder "Early Park Entry") ist ein Vorteil, der Gästen von Partnerhotels oder bestimmten Ticketkategorien ermöglicht, den Park eine halbe bis eine Stunde früher zu betreten. In dieser Zeit sind die Warteschlangen deutlich kürzer, da der Großteil der Besucher noch nicht eingelassen wird. Besonders an Spitzentagen ist der Früheinlass eine der wirkungsvollsten Strategien, um beliebte Attraktionen ohne langes Warten zu erleben.',
-    aliases: ['Früheinlass', 'Extra Magic Hours', 'Magic Hours'],
+    alternateNames: ['Extra Magic Hours', 'Magic Hours', 'Early Park Entry', 'Extra Zauberzeit'],
 
     relatedTermIds: ['rope-drop', 'express-pass', 'peak-day'],
   },
@@ -140,7 +144,7 @@ const translations: GlossaryTermTranslation[] = [
       'Ein Ticket-Upgrade, das den Besuch mehrerer Parks desselben Betreibers an einem Tag ermöglicht.',
     definition:
       'Ein Park-Hopper-Ticket erlaubt es, an einem Tag zwischen zwei oder mehr Parks desselben Betreibers zu wechseln. Disney bietet etwa den klassischen Park Hopper an, mit dem man täglich zwischen Magic Kingdom, EPCOT, Hollywood Studios und Animal Kingdom wechseln kann. Das Upgrade kostet mehr als ein einfaches Tagesticket, lohnt sich aber bei kurzen Aufenthalten oder wenn begehrte Attraktionen über mehrere Parks verteilt sind.',
-    aliases: ['Park Hopper', 'Park Hopping'],
+    alternateNames: ['Park Hopping', 'Multi-Park-Ticket', 'Park-Hopper-Ticket'],
 
     relatedTermIds: ['season-pass', 'rope-drop', 'crowd-calendar'],
   },
@@ -150,7 +154,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Ein Ticket, das unbegrenzte Parkbesuche innerhalb eines Jahres ermöglicht.',
     definition:
       'Ein Jahrespass (auch Saisonkarte oder Annual Pass) gewährt unbegrenzte Eintritte in einen oder mehrere Parks über einen Zeitraum von üblicherweise zwölf Monaten. Viele Jahrespässe enthalten Zusatzleistungen wie Rabatte auf Gastronomie, Merchandise oder Parken. Je nach Stufe können Sperrdaten (Blockout-Dates) an Spitzentagen gelten. Für regelmäßige Besucher — mehr als drei bis vier Mal jährlich — rechnet sich ein Jahrespass in der Regel gegenüber Einzeltickets.',
-    aliases: ['Annual Pass', 'Season Pass', 'Jahrespass', 'Jahreskarte'],
+    aliases: ['Jahreskarte', 'Jahrespässe'],
+    alternateNames: ['Annual Pass', 'Season Pass', 'Saisonkarte', 'Saisonpass'],
 
     relatedTermIds: ['park-hopper', 'peak-day', 'express-pass'],
   },
@@ -161,7 +166,8 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Mindestkörpergröße, die Besucher erfüllen müssen, um eine bestimmte Attraktion nutzen zu dürfen.',
     definition:
       'Die Mindestgröße ist eine Sicherheitsanforderung, die Parks für bestimmte Attraktionen festlegen. Sie stellt sicher, dass Sicherheitsgurte und Rückhaltesysteme korrekt sitzen. Typische Mindestgrößen liegen zwischen 90 und 140 cm. Einige Attraktionen haben auch eine maximale Größe oder ein Gewichtslimit. Bei Familienbesuchen empfiehlt es sich, die Mindestgrößen vorab zu prüfen, um Enttäuschungen vor Ort zu vermeiden.',
-    aliases: ['Mindestgröße', 'Mindestgrößen', 'Körpergrößenanforderung'],
+    aliases: ['Mindestgrößen'],
+    alternateNames: ['Körpergrößenanforderung', 'Größenbeschränkung', 'Größenanforderung'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
   },
@@ -172,7 +178,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein eigenständig gestalteter Bereich innerhalb eines Freizeitparks mit durchgehendem Thema.',
     definition:
       'Ein Themenbereich (englisch: Themed Land) ist eine abgegrenzte Zone innerhalb eines Freizeitparks, die ein einheitliches Design, eine Hintergrundgeschichte (Storyline) und passende Attraktionen, Gastronomie und Shops vereint. Bekannte Beispiele sind Hogsmeade in den Universal-Parks, Fantasyland in Disney-Parks oder Scandinavica in Europa-Park. Theemenbereiche sorgen für ein immersives Erlebnis und leiten Besucher durch den Park.',
-    aliases: ['Themenbereich', 'Themenzone', 'Bereich'],
+    aliases: ['Themenbereiche'],
+    alternateNames: ['Themenzone', 'Land', 'Theming Area'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment', 'soft-opening'],
   },
@@ -183,7 +190,7 @@ const translations: GlossaryTermTranslation[] = [
       'Die inoffizielle, vorzeitige Öffnung einer Attraktion vor dem offiziellen Eröffnungsdatum.',
     definition:
       'Ein Soft Opening bezeichnet die vorzeitige, inoffizielle Öffnung einer neuen Attraktion oder eines Themenbereichs — oft ohne jede Ankündigung. Parks nutzen Soft Openings, um Systeme unter echten Besucherbedingungen zu testen und Kapazitätsprobleme zu identifizieren. In der Freizeitpark-Community wird der Begriff unverändert auf Englisch verwendet. Da Soft Openings jederzeit unterbrochen werden können, sind sie ein Bonus für glückliche Besucher — aber keine verlässliche Planungsgrundlage. Fan-Foren und Social Media berichten üblicherweise als erste davon.',
-    aliases: ['Soft Launch', 'Soft Opening'],
+    alternateNames: ['Soft Launch'],
 
     relatedTermIds: ['refurbishment', 'downtime', 'themed-land'],
   },
@@ -194,7 +201,7 @@ const translations: GlossaryTermTranslation[] = [
       'Die normale Warteschlange einer Attraktion, ohne Reservierung oder besonderes Ticket.',
     definition:
       'Die Standby-Warteschlange ist die reguläre physische Warteschlange, die alle Besucher ohne zusätzliches Ticket oder Upgrade nutzen können. Wer in der Standby-Schlange steht, wartet in der Reihenfolge des Eintreffens — die angezeigte Wartezeit spiegelt direkt die aktuelle Auslastung der Attraktion wider. An vollen Tagen können Standby-Zeiten bei Hauptattraktionen 90 Minuten und mehr erreichen. park.fan verfolgt Standby-Wartezeiten in Echtzeit, damit du jederzeit die kürzeste Schlange findest.',
-    aliases: ['Standby', 'Normale Warteschlange', 'Reguläre Warteschlange'],
+    alternateNames: ['Normale Warteschlange', 'Reguläre Warteschlange', 'Standby-Warteschlange'],
 
     relatedTermIds: ['wait-time', 'single-rider', 'virtual-queue', 'express-pass'],
   },
@@ -205,7 +212,13 @@ const translations: GlossaryTermTranslation[] = [
       'Disneys kostenpflichtiges Vorrangwarteschlangen-System als Nachfolger des früheren FastPass+-Programms.',
     definition:
       'Lightning Lane ist Disneys Bezeichnung für sein Priority-Queue-System, das 2021 als Nachfolger des kostenlosen FastPass+-Programms eingeführt wurde. Es gibt zwei Varianten: Individual Lightning Lane (ILL) für die gefragtesten Attraktionen, die separat erworben werden muss, und Lightning Lane Multi Pass (LLMP), ein tägliches Abo, das Rückkehrzeitfenster für eine Auswahl an Attraktionen ermöglicht. Da Lightning Lane ein vormals kostenloses Angebot in ein kostenpflichtiges umgewandelt hat, wird es in der Community kontrovers diskutiert. Der Besucherkalender von park.fan hilft dir einzuschätzen, an welchen Tagen Lightning Lane den Preis wert ist.',
-    aliases: ['LLMP', 'ILL', 'Lightning Lane Multi Pass', 'Individual Lightning Lane'],
+    alternateNames: [
+      'Lightning Lane Multi Pass',
+      'Individual Lightning Lane',
+      'LLMP',
+      'ILL',
+      'Lightning Lanes',
+    ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
   },
@@ -216,7 +229,8 @@ const translations: GlossaryTermTranslation[] = [
       'Disneys ehemaliges tägliches Zusatzabo für Lightning-Lane-Zugang zu den meisten Attraktionen.',
     definition:
       'Genie+ (heute umbenannt in Lightning Lane Multi Pass) war Disneys kostenpflichtiges Tages-Add-on, das FastPass+ ersetzte. Für eine personenbezogene Tagesgebühr konnten Gäste jeweils ein Lightning-Lane-Rückkehrzeitfenster für eine breite Auswahl an Attraktionen buchen. Die begehrtesten Highlights wurden als Individual Lightning Lane separat verkauft. Der Preis von Genie+ war dynamisch und stieg an den besucherstärksten Tagen. park.fan zeigt dir die aktuellen Besucherdichten, damit du entscheiden kannst, ob sich das Zusatzabo lohnt.',
-    aliases: ['Genie Plus', 'Disney Genie'],
+    aliases: ['Genie Plus'],
+    alternateNames: ['Disney Genie', 'Lightning Lane Multi Pass'],
 
     relatedTermIds: ['lightning-lane', 'express-pass', 'virtual-queue'],
   },
@@ -227,7 +241,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine nummerierte Zuteilung im virtuellen Warteschlangensystem, die den Zugang zu einer Attraktion bei Aufruf ermöglicht.',
     definition:
       'Eine Boarding Group ist eine nummerierte Zuteilung innerhalb eines virtuellen Warteschlangensystems, das vor allem bei den begehrtesten neuen Attraktionen eingesetzt wird. Besucher melden sich über die Park-App an — oft direkt bei Parköffnung — und erhalten eine Gruppennummer. Wird diese Nummer aufgerufen, haben sie ein begrenztes Zeitfenster, um zur Attraktion zu kommen. An besonders vollen Tagen sind alle Boarding Groups innerhalb von Minuten vergeben. Disneys System bei Attraktionen wie Tron Lightcycle Run oder Star Wars: Rise of the Resistance hat den Begriff in der gesamten Freizeitpark-Community bekannt gemacht.',
-    aliases: ['Boarding Groups', 'Boarding Group'],
+    alternateNames: ['Boarding Groups', 'Boarding-Gruppen'],
 
     relatedTermIds: ['virtual-queue', 'wait-time', 'lightning-lane'],
   },
@@ -238,7 +252,7 @@ const translations: GlossaryTermTranslation[] = [
       'Zeiträume mit geringerer Besucherauslastung, kürzeren Wartezeiten und günstigeren Preisen.',
     definition:
       'Als Nebensaison gelten die ruhigeren Perioden im Kalender, in denen Schule ist und keine großen Feiertage fallen — typischerweise Januar bis Anfang Februar, Mitte September bis Oktober (außerhalb von Halloween-Events) und die ersten Novemberwochen. In der Nebensaison sind Wartezeiten für beliebte Attraktionen oft deutlich kürzer, Ticketpreise häufig am günstigsten und der Park spürbar entspannter. Für Besucher mit flexiblem Zeitplan ist der Besuch in der Nebensaison eine der wirkungsvollsten Strategien. Der Besucherkalender von park.fan markiert Nebensaison-Fenster, damit du deinen Besuch optimal planen kannst.',
-    aliases: ['Ruhige Zeiten', 'Schwache Saison'],
+    alternateNames: ['Ruhige Zeiten', 'Schwache Saison', 'Off-Peak', 'Quieter Season'],
 
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
   },
@@ -249,7 +263,7 @@ const translations: GlossaryTermTranslation[] = [
       'Saisonale Schließungsperiode, in der der Park für Wartungsarbeiten, Umbauten oder die Winterpause vollständig geschlossen und nicht für Besucher zugänglich ist.',
     definition:
       'Die OffSeason bezeichnet den Zeitraum, in dem ein Freizeitpark seine Tore vollständig schließt — nicht bloß eine ruhigere Besuchsphase, sondern eine echte Betriebspause. Parks nutzen dieses Fenster für notwendige Wartungsarbeiten an Attraktionen und Anlagen, umfangreichere Umbauten, die während des laufenden Betriebs nicht möglich wären, sowie zur Erholung des Personals vor der neuen Saison. OffSeason-Schließungen finden am häufigsten in den Wintermonaten statt und dauern je nach Park und Klima einige Wochen bis mehrere Monate. In dieser Zeit sind keinerlei Attraktionen, Restaurants oder Shows zugänglich.\n\nZeigt park.fan den Status OffSeason für einen Park an, bedeutet das: Für den aktuellen Zeitraum liegt kein Öffnungsplan vor und das nächste bestätigte Öffnungsdatum liegt noch einige Wochen entfernt. Prüfe die offizielle Park-Website für das genaue Wiedereröffnungsdatum — beliebte Parks verkaufen die ersten Tage nach der OffSeason erfahrungsgemäß schnell aus.',
-    aliases: ['Off-Season', 'Wintersaison', 'Saisonende'],
+    alternateNames: ['Wintersaison', 'Saisonpause', 'Geschlossene Saison', 'Off Season'],
 
     relatedTermIds: ['refurbishment', 'soft-opening', 'crowd-calendar'],
   },
@@ -260,7 +274,8 @@ const translations: GlossaryTermTranslation[] = [
       'Automatisch aufgenommenes Foto oder Video der Besucher während einer Attraktion, das nach der Fahrt käuflich erworben werden kann.',
     definition:
       'Das Fahrfoto ist ein automatisch von einer fest installierten Kamera aufgenommenes Bild — typischerweise an einem dramatischen Punkt wie dem Abfall einer Wasserbahn oder dem Scheitelpunkt einer Achterbahn. Nach der Fahrt können Besucher ihr Foto an Kiosks oder in der Park-App einsehen und entscheiden, ob sie es kaufen möchten. Viele Parks bieten Foto-Tagespakete an, die unbegrenzte Fahrfotos aller Attraktionen einschließen. Das Fahrfoto ist ein beliebtes Souvenir und ein klassischer Social-Media-Moment.',
-    aliases: ['Fahrfoto', 'On-Ride-Foto', 'Onride-Foto'],
+    aliases: ['Fahrfotos'],
+    alternateNames: ['On-Ride-Foto', 'Onride-Foto', 'On-Ride-Bild', 'Ride Photo'],
 
     relatedTermIds: ['themed-land'],
   },
@@ -272,7 +287,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Warteschlange ist der physische Raum — Gänge, Außenbereiche mit Absperrungen oder thematisch gestaltete Innenräume —, den Besucher durchqueren, bevor sie eine Attraktion betreten. In modernen Freizeitparks ist die Warteschlange oft selbst Teil des Erlebnisses: Disney gestaltet sie als Einstimmung auf die Geschichte, Universal taucht die Wartenden bereits in die Welt der Attraktion ein. Eine gut gestaltete Warteschlange macht auch längere Wartezeiten erträglicher. park.fan zeigt dir die aktuellen Wartezeiten aller Attraktionen, damit du die Planung deines Parkbesuchs optimal anpassen kannst.',
     relatedTermIds: ['wait-time', 'standby-queue', 'single-rider'],
-    aliases: ['Warteschlangen', 'Schlange', 'Schlangen', 'Warteschlange'],
+    aliases: ['Warteschlangen', 'Schlange', 'Schlangen'],
   },
   {
     id: 'opening-day',
@@ -290,7 +305,7 @@ const translations: GlossaryTermTranslation[] = [
       'System, bei dem sich Erwachsene beim Fahren abwechseln, während der andere bei Kindern bleibt, die die Mindestgröße nicht erfüllen.',
     definition:
       'Rider Switch (auch Kindertausch oder Child Swap genannt) ermöglicht Gruppen, sich bei einer Attraktion abzuwechseln, wenn ein Mitglied — in der Regel ein Kind, das die Mindestgröße nicht erfüllt — nicht mitfahren kann. Ein Erwachsener fährt, während der andere mit dem Kind am Eingang wartet. Wenn der erste zurückkommt, darf der zweite sofort einsteigen — ohne erneut in der Standby-Schlange zu warten. Bei Disney heißt das System offiziell Rider Switch, bei Universal Child Swap. An Spitzentagen ist das ein erheblicher Vorteil für Familien mit kleinen Kindern. Einfach das Personal am Attraktionseingang ansprechen.',
-    aliases: ['Child Swap', 'Rider Switch'],
+    alternateNames: ['Child Swap', 'Kindertausch', 'Baby Switch'],
 
     relatedTermIds: ['height-requirement', 'standby-queue', 'wait-time'],
   },
@@ -301,7 +316,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein Kalendertag, an dem bestimmte Jahrespass-Stufen nicht für den Parkeintritt gültig sind — meist an Spitzentagen.',
     definition:
       'Ein Sperrtag (englisch: Blockout Date oder Blackout Date) ist ein bestimmter Kalendertag, an dem Jahrespässe niedrigerer Stufen nicht eingelöst werden können. Parks setzen Sperrtage ein, um die Besucherzahlen an den stärksten Tagen zu steuern. Hochwertige Pässe haben wenige oder keine Sperrtage; günstige Einsteigerpässe können an 30–60 Tagen pro Jahr gesperrt sein. Vor dem Besuch unbedingt den Sperrtagkalender prüfen. Der Besucherkalender von park.fan hebt typische Spitzentage hervor, damit du deine Jahrespass-Stufe entsprechend planen kannst.',
-    aliases: ['Sperrtage', 'Blackout-Tage', 'Blackout-Datum'],
+    aliases: ['Sperrtage'],
+    alternateNames: ['Blackout-Tage', 'Blackout-Datum', 'Blockout Date'],
 
     relatedTermIds: ['season-pass', 'peak-day', 'crowd-calendar'],
   },
@@ -312,7 +328,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein separat ticketpflichtiges Abendevent — wie Halloween- oder Weihnachtspartys — das über den normalen Tageseintritt hinausgeht.',
     definition:
       "Eine Sonderveranstaltung (englisch: Hard Ticket Event) ist ein separat buchbares Abend-Event mit eigenem Eintrittsticket. Diese Events bieten exklusive Unterhaltung, thematische Dekorationen und Erlebnisse, die beim regulären Parkbesuch nicht verfügbar sind. Bekannte Beispiele sind Halloween Horror Nights bei Universal, Mickey's Not-So-Scary Halloween Party in Walt Disney World, die Weihnachtsgala im Europa-Park oder die Halloween-Events in Phantasialand. An Sonderveranstaltungstagen werden reguläre Tagesbesucher oft ab 17–18 Uhr gebeten, den Park zu verlassen. Tickets sind meist Wochen im Voraus ausverkauft.",
-    aliases: ['Sonderveranstaltung', 'Halloween-Party', 'After-Hours-Event'],
+    aliases: ['Sonderveranstaltungen'],
+    alternateNames: ['After-Hours-Event', 'Hard-Ticket-Event', 'Exklusivangebot'],
 
     relatedTermIds: ['season-pass', 'peak-day', 'early-entry'],
   },
@@ -323,7 +340,7 @@ const translations: GlossaryTermTranslation[] = [
       'Disneys ehemaliges kostenloses Vorrang-Warteschlangen-System, das 2021 durch das kostenpflichtige Lightning Lane ersetzt wurde.',
     definition:
       'FastPass+ (ursprünglich FastPass, eingeführt 1999) war Disneys kostenloses Priority-Queue-System. In Walt Disney World konnten Gäste täglich bis zu drei FastPass+-Reservierungen über die My Disney Experience App buchen und damit Rückkehrzeitfenster für Attraktionen kostenlos sichern. Nach der COVID-19-Schließung 2020 wurde das System nicht reaktiviert und Ende 2021 durch das kostenpflichtige Lightning Lane ersetzt. FastPass+ ist bis heute eines der meistdiskutierten Themen in der Disney-Community, da es ein zuvor kostenloses Angebot in ein bezahltes umwandelte. Wer ältere Reiseberichte liest, stößt häufig auf den Begriff.',
-    aliases: ['FastPass+', 'FastPass Plus'],
+    aliases: ['FastPass Plus'],
 
     relatedTermIds: ['lightning-lane', 'genie-plus', 'express-pass', 'return-time'],
   },
@@ -334,7 +351,8 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Indoor-Attraktion, bei der Besucher in geführten Fahrzeugen durch thematisch gestaltete Szenen fahren.',
     definition:
       "Ein Dark Ride ist eine Indoor-Attraktion, bei der Besucher in Fahrzeugen — Waggons, Booten oder Gondeln auf einem festen Schienensystem — durch thematisch gestaltete Szenen fahren. Das 'Dunkle' bezieht sich auf die gesteuerte Lichtumgebung, die Animatronics, Projektionen und Kulissen wirkungsvoll inszeniert. In der Freizeitpark-Community wird der Begriff 'Dark Ride' durchgängig auf Englisch verwendet. Dark Rides reichen von sanften Familienerlebnissen ('it's a small world') bis zu intensiven Erzählattraktionen (Star Wars: Rise of the Resistance). Trackless Dark Rides bewegen sich ohne feste Schiene frei im Raum und ermöglichen dynamischere Szenengestaltung. Dark Rides gehören zu den kapazitätsstärksten und beliebtesten Attraktionen.",
-    aliases: ['Dark Ride', 'Dark Rides', 'Indoor-Attraktion', 'Innenfahrt'],
+    aliases: ['Dark Rides'],
+    alternateNames: ['Dark Ride', 'Indoor-Attraktion', 'Innenfahrt', 'Geisterbahn'],
 
     relatedTermIds: ['themed-land', 'ride-capacity', 'height-requirement'],
   },
@@ -346,7 +364,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Rückkehrzeit (oder Returntime) ist ein konkretes Zeitfenster — meist ein Ein-Stunden-Block —, in dem Besucher mit gebuchtem Vorrangzugang (über Lightning Lane, virtuelle Warteschlange oder ähnliche Systeme) am dedizierten Eingang der Attraktion einsteigen können. Die Rückkehrzeit gibt die Freiheit, die Zwischenzeit in anderen Parkbereichen zu genießen, anstatt in einer Schlange zu stehen. Wer das Zeitfenster verpasst — nach einer kurzen Toleranzzeit —, verliert die Reservierung. Mit den Live-Wartezeiten und Besucherdichte-Daten von park.fan kannst du gezielt entscheiden, welche Attraktionen du für Rückkehrzeiten einplanen möchtest.',
     relatedTermIds: ['lightning-lane', 'virtual-queue', 'fastpass', 'boarding-group'],
-    aliases: ['Rückkehrzeiten', 'Returntime', 'Returntimes'],
+    aliases: ['Rückkehrzeiten'],
+    alternateNames: ['Returntime', 'Return Time', 'Rückkehrfenster', 'Rückkehrzeit'],
   },
   {
     id: 'airtime',
@@ -365,6 +384,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Inversion ist jedes Element, bei dem die Achterbahnstrecke die Fahrgäste jenseits der vertikalen Ebene dreht — also zumindest teilweise auf den Kopf stellt. Häufige Inversionen: Looping, Cobra Roll, Korkenzieher, Immelmann, Dive Loop, Inline Twist, Heartline Roll und Zero-G Roll. Moderne Achterbahnen bieten routinemäßig sechs bis vierzehn Inversionen in einem einzigen Layout. Die Anzahl der Inversionen ist eine der wichtigsten Kennzahlen für die Intensität einer Bahn. Inversionen erzeugen sowohl positive G-Kräfte (am Boden von Loopings) als auch negative G-Kräfte (am Scheitelpunkt), was für abwechslungsreiche Empfindungen sorgt.',
     relatedTermIds: ['vertical-loop', 'cobra-roll', 'immelmann', 'zero-g-roll', 'corkscrew'],
+    aliases: ['Inversionen'],
+    alternateNames: ['Inversion', 'Überkopfelement', 'Kopf-über-Element'],
   },
   {
     id: 'vertical-loop',
@@ -373,7 +394,8 @@ const translations: GlossaryTermTranslation[] = [
       'Die klassische kreisförmige Inversion, bei der die Strecke einen vollständigen vertikalen Kreis beschreibt und die Fahrgäste am Scheitelpunkt auf den Kopf stellt.',
     definition:
       "Der Looping (englisch: Vertical Loop) ist die bekannteste Inversion der Achterbahngeschichte — ein vollständiger 360-Grad-Kreis in der vertikalen Ebene. Moderne Loopings haben eine Klothoiden-Form (Tropfenform) statt eines perfekten Kreises: Einfahrt und Ausfahrt sind weit, die Spitze eng. Diese Geometrie sorgt für gleichmäßige, anhaltende G-Kräfte statt extremer Spitzen. Der erste moderne Loop-Coaster (Corkscrew, Knott's Berry Farm, 1975) revolutionierte die Branche. Heute ist der Looping auf Achterbahnen weltweit verbreitet, von Einstiegsbahnen bis zu Weltrekordmaschinen.",
-    aliases: ['Looping', 'Loop', 'Vertikaler Loop'],
+    aliases: ['Loopings'],
+    alternateNames: ['Loop', 'Vertical Loop', 'Vertikaler Loop'],
 
     relatedTermIds: ['inversion', 'immelmann', 'cobra-roll'],
   },
@@ -402,7 +424,13 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Achterbahn, die die Fahrgäste per Magnetantrieb, Hydraulik oder Druckluft aus dem Stand auf Höchstgeschwindigkeit beschleunigt — statt eines klassischen Kettenlift-Hügels.',
     definition:
       'Ein Launch Coaster (Katapultachterbahn) ersetzt den traditionellen Kettenlift durch ein Antriebssystem, das den Zug in wenigen Sekunden von 0 auf Höchstgeschwindigkeit bringt. Die wichtigsten Technologien: LSM (Linear Synchronous Motor) — elektromagnetische Spulen beschleunigen eine Lamelle am Zug; LIM (Linear Induction Motor) — ähnlich, aber weniger effizient; Hydraulik-Launches — Intamins kolbengetriebenes Seilsystem für Weltrekord-Coaster wie Kingda Ka; Druckluft-Launches. Manche Bahnen haben mehrere Launches im Streckenverlauf. Die plötzliche, kraftvolle Beschleunigung ist ein charakteristisches Erlebnis, das ein Kettenlift nie reproduzieren kann.',
-    aliases: ['LSM Coaster', 'LIM Coaster', 'Katapultbahn', 'Launcher'],
+    alternateNames: [
+      'LSM Coaster',
+      'LIM Coaster',
+      'Katapultbahn',
+      'Launcher',
+      'Katapultachterbahn',
+    ],
 
     relatedTermIds: ['lifthill', 'top-hat', 'intamin', 'horseshoe'],
   },
@@ -414,7 +442,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Holzachterbahn ist eine Bahn mit hölzerner Strecke und Struktur. Anders als Stahlbahnen hat Holz eine natürliche Flexibilität und Ungenauigkeit, die das charakteristische Rumpeln, seitliche Schaukeln und unberechenbare Airtime erzeugt, das Enthusiasten lieben. Berühmte Holzachterbahnen sind Balder in Liseberg, Colossos in Heide-Park und Wodan im Europa-Park. Holzachterbahnen erfordern intensive Wartung — das Schienenprofil muss regelmäßig erneuert werden. Das RMC (Rocky Mountain Construction)-Konvertierungsverfahren kann alte Holzachterbahnen in Hybrid-Coaster verwandeln, die die Holzstruktur behalten, aber einen Stahlschieneneinsatz erhalten.',
     relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
-    aliases: ['Holzachterbahnen', 'Holzbahn', 'Woodie', 'Woodies'],
+    aliases: ['Holzachterbahnen', 'Holzbahn'],
+    alternateNames: ['Woodie', 'Woodies', 'Holzcoaster'],
   },
   {
     id: 'steel-coaster',
@@ -424,7 +453,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Stahlachterbahn wird mit Stahlschiene und Stahlstützgerüst gebaut. Anders als Holzachterbahnen mit ihrer natürlichen Flexibilität bietet Stahl Ingenieuren präzise Kontrolle über G-Kräfte, Übergänge und Inversionen. Die glatte, vorhersagbare Fahrt einer Stahlachterbahn ermöglicht komplexe Layouts mit mehreren Inversionen, engen Kurvenradien und hohen Geschwindigkeiten.\n\nStahlachterbahnen dominieren die moderne Achterbahnentwicklung, weil Designer damit fast jede Form verwirklichen können — Überkopf-Drops, vollständige Inversionen und schnelle Richtungswechsel. Berühmte Stahlachterbahnen in Europa sind Shambhala in PortAventura, Nemesis in Alton Towers und Silver Star im Europa-Park. Stahlachterbahnen reichen von kleinen Familienbahnen bis zu Rekord-Mega-Coastern. Die Präzision von Stahl erfordert regelmäßige Kontrolle und Wartung, ist aber weniger fehleranfällig als die flexible Holzkonstruktion.',
     relatedTermIds: ['wooden-coaster', 'inversion', 'launch-coaster', 'hyper-coaster'],
-    aliases: ['Stahlachterbahnen', 'Stahlschiene', 'Stahlbahn'],
+    aliases: ['Stahlachterbahnen'],
   },
   {
     id: 'suspended-coaster',
@@ -434,7 +463,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Suspended Coaster ist ein spezieller Achterbahntyp, bei dem der Zug von oben an einem Pivot aufgehängt ist und seitlich unabhängig von der Schienenbahn schwingen kann. Während der Zug durch Kurven navigiert, schwingt er wie ein Pendel — eine Bewegung, die die charakteristische "Whip"-Sensation erzeugt. Diese Schwingbewegung unterscheidet sich von einer Inverted Coaster, wo der Zug starr an der Schiene befestigt ist.\n\nSuspended Coasters sind seltener als Inverted Coasters, bieten aber ein einzigartiges Erlebnis. Die Schwingbewegung macht selbst moderate Kurven dramatisch wirken, und das Gefühl des Fliegens erzeugt eine spannende Exposition. Vekoma entwickelte in den 1990er Jahren die Suspended Looping Coaster (SLC), von denen weltweit hunderte gebaut wurden. Die Schwingbewegung kann chaotisch wirken im Vergleich zur Präzision moderner Inversionen — manche Enthusiasten lieben sie für ihre rohe, unvorhersagbare Natur, während andere sie weniger mochten.',
     relatedTermIds: ['inverted-coaster', 'b-and-m', 'vekoma'],
-    aliases: ['Suspended', 'Hängende Achterbahn'],
+    alternateNames: ['Suspended Coaster', 'Hängende Achterbahn', 'Schwingende Achterbahn'],
   },
   {
     id: 'hybrid-coaster',
@@ -443,7 +472,8 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Achterbahn, die eine klassische Holzkonstruktion mit einer präzisen Stahlschiene (I-Box) kombiniert — Pionierarbeit von Rocky Mountain Construction (RMC).',
     definition:
       'Ein Hybrid Coaster verbindet die Holzstruktur einer traditionellen Achterbahn mit einer Stahl-I-Box-Schiene von Rocky Mountain Construction (RMC). Die I-Box-Schiene ist extrem präzise und ermöglicht Inversionen, die auf traditionellen Holzbahnen unmöglich wären. RMC entwickelte diese Technologie primär zur Sanierung alter Holzachterbahnen — Inversionen, steilere Abfälle und Airtime-Hügel werden in Layouts eingefügt, die zuvor zu rau zum Genießen waren. Berühmte RMC-Hybrids: Steel Vengeance in Cedar Point, Untamed in Walibi Holland und Wildfire im Kolmården Zoo. Das Ergebnis sind oft die bestbewerteten Achterbahnen der Welt.',
-    aliases: ['Hybrid', 'I-Box Coaster', 'RMC Hybrid', 'Hybrid-Achterbahn'],
+    aliases: ['Hybrid-Achterbahnen'],
+    alternateNames: ['RMC Hybrid', 'I-Box Coaster', 'Stahl-Holz-Hybrid'],
 
     relatedTermIds: ['wooden-coaster', 'rmc', 'airtime'],
   },
@@ -454,8 +484,6 @@ const translations: GlossaryTermTranslation[] = [
       'Bolliger & Mabillard, ein Schweizer Achterbahn-Hersteller, bekannt für ruhige, zuverlässige Bahnen und Signature-Elemente wie Immelmann, Cobra Roll und Zero-G Roll.',
     definition:
       'B&M (Bolliger & Mabillard) ist ein Schweizer Achterbahn-Hersteller, 1988 von Walter Bolliger und Claude Mabillard gegründet. Das Unternehmen ist für außergewöhnlich ruhige, zuverlässige Bahnen mit einem charakteristischen Fahrerlebnis bekannt: starke positive G-Kräfte, Signature-Inversionen (Immelmann, Cobra Roll, Zero-G Roll) und hoher Durchsatz. B&M spezialisiert sich auf Inverted Coaster, Sit-Down-Looper, Hypercoaster (über 61 m), Gigacoaster (über 91 m), Wing Coaster und Dive Machines. Nahezu jeder große europäische Park beherbergt mindestens eine B&M-Anlage: Shambhala und Dragon Khan in PortAventura, Silver Star im Europa-Park, Nemesis in Alton Towers.',
-    aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
-
     relatedTermIds: ['immelmann', 'cobra-roll', 'zero-g-roll', 'dive-coaster'],
   },
   {
@@ -474,7 +502,7 @@ const translations: GlossaryTermTranslation[] = [
       'Deutsches Familienunternehmen aus Waldkirch nahe dem Europa-Park, das Wasserfahrten, Dark Rides und zunehmend spektakuläre Stahlachterbahnen herstellt.',
     definition:
       "Mack Rides ist ein deutsches Fahrgeschäft-Unternehmen aus Waldkirch in Baden-Württemberg — wenige Kilometer vom Europa-Park, dem Vorzeigepark der Mack-Familie, entfernt. 1921 gegründet, stellt Mack Wasserfahrten, Dark Rides (darunter Disney's Test Track und Radiator Springs Racers) und ein wachsendes Portfolio an Hochleistungs-Coastern her. Blue Fire Megacoaster im Europa-Park (2009) war die erste Bahn mit einem Stengel-Dive-Element. Macks neuere Hypercoaster (Ride to Happiness in Plopsaland, Kondaa in Walibi Belgien) haben von der Enthusiasten-Community Höchstnoten erhalten.",
-    aliases: ['Mack'],
+    alternateNames: ['Mack'],
 
     relatedTermIds: ['stengel-dive', 'b-and-m', 'intamin', 'launch-coaster'],
   },
@@ -485,7 +513,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikanischer Hersteller, der das Hybrid-Coaster-Konzept mit dem I-Box-Stahlschienenverfahren für Holzachterbahnen erfunden hat — und damit die bestbewerteten Bahnen der Welt schafft.',
     definition:
       'Rocky Mountain Construction (RMC) ist ein amerikanischer Achterbahn-Hersteller aus Hayden, Idaho, bekannt für die Erfindung des I-Box-Stahlschienensystems für Holzstrukturen. Diese Technologie erlaubt Parks, alte rumpelige Holzachterbahnen in Weltklasse-Hybrid-Coaster zu verwandeln — mit intensivem Airtime, Inversionen und Überkopf-Abfällen. RMC-Konversionen wie Steel Vengeance (Cedar Point), Untamed (Walibi Holland) und Wildfire (Kolmården Zoo) gelten als die besten Achterbahnen ihrer jeweiligen Parks. In Europa ist RMCs neuer Hybrid-Bau Untamed in Walibi Holland weitgehend als eine der besten Bahnen des Kontinents anerkannt.',
-    aliases: ['Rocky Mountain Construction'],
+    alternateNames: ['Rocky Mountain Construction'],
 
     relatedTermIds: ['hybrid-coaster', 'wooden-coaster', 'airtime'],
   },
@@ -496,7 +524,7 @@ const translations: GlossaryTermTranslation[] = [
       'Niederländischer Achterbahn-Hersteller und einer der größten der Welt — bekannt für den allgegenwärtigen Boomerang sowie eine umfangreiche Palette an modernen Familien- und Thrill-Coasern in europäischen Parks.',
     definition:
       'Vekoma Rides Manufacturing ist ein niederländischer Achterbahn-Hersteller mit Sitz in Vlodrop und einer der weltweit produktivsten nach Gesamtanlagen. 1926 als Maschinenbauunternehmen gegründet, stieg Vekoma in den 1970er Jahren auf Freizeitattraktionen um. Weltweite Bekanntheit erlangte das Unternehmen mit dem Boomerang — einem kompakten Shuttle-Coaster mit drei Inversionen, der günstig lizenziert und rund um den Globus aufgestellt wurde. Weitere ikonische Modelle sind der Suspended Looping Coaster (SLC), der Giant Inverted Boomerang und der Mine Train. Ab den 2010er Jahren erfand sich Vekoma mit einer modernen „New Generation"-Produktlinie neu: sanftere Fahrsysteme, innovative Layouts und verbesserte Familienattraktionen. Neue Modelle wie der Family Boomerang, der Tilt Coaster und hängende Familiencoaster tauchen zunehmend in europäischen Parks auf. Auch Disney hat maßgeschneiderte Vekoma-Anlagen für seine Resorts in Auftrag gegeben.',
-    aliases: ['Vekoma Rides'],
+    alternateNames: ['Vekoma Rides'],
 
     relatedTermIds: ['boomerang', 'b-and-m', 'intamin', 'gerstlauer'],
   },
@@ -507,7 +535,7 @@ const translations: GlossaryTermTranslation[] = [
       'Deutscher Hersteller, vor allem bekannt für den Euro-Fighter mit seinem über-vertikalen Abfall sowie für Spinning Coaster und kompakte Familienbahnen.',
     definition:
       'Gerstlauer Amusement Rides GmbH ist ein deutscher Achterbahn-Hersteller aus Münsterhausen in Bayern. 1946 als metallverarbeitendes Unternehmen gegründet, stieg es in den 1980er Jahren in den Attraktionsmarkt ein und baute seinen Ruf mit dem Euro-Fighter-Modell aus — einem kompakten Elektro-Launch-Coaster mit berühmtem 97-Grad-Abfall über die Vertikale. Euro-Fighter lassen sich auf engem Raum installieren und sind damit attraktiv für Stadtparks und kleinere Veranstaltungsorte; Beispiele sind Rage im Adventure Island und Speed im Oakwood. Gerstlauer produziert außerdem das Infinity-Coaster-Modell, Spinning Coaster und den SkyRoller, bei dem die Fahrgäste ihr eigenes Drehen steuern können. In der Enthusiasten-Szene werden Gerstlauer-Bahnen für ihre Intensität auf kleinem Footprint geschätzt.',
-    aliases: ['Gerstlauer Rides'],
+    alternateNames: ['Gerstlauer Rides'],
 
     relatedTermIds: [
       'euro-fighter',
@@ -533,7 +561,8 @@ const translations: GlossaryTermTranslation[] = [
       'Der mechanisch angetriebene Aufstieg einer Achterbahn, der den Zug auf den höchsten Punkt bringt und dabei Lageenergie für die restliche Fahrt aufbaut.',
     definition:
       "Der Lifthill ist der Abschnitt, an dem ein externes Antriebssystem — meistens eine Kette entlang der Gleismitte — den Zug von Bodenniveau auf den Scheitelpunkt der Bahn zieht. Der bekannte 'Klack-Klack-Klack'-Sound ist der Rückrollsperr-Ratschen. Alternativen zum Kettenlift: Seil-/Kabellift (leiser und weicher), Reibrollen-Lift (bei manchen modernen B&M-Coaster) und magnetischer Antrieb. Die Höhe des Lifthills bestimmt die maximal mögliche Geschwindigkeit der Bahn. Manche Designs nutzen mehrere Lifthills oder kombinieren einen Lift mit Launch-Segmenten. Der Lifthill ist typischerweise der langsamste, erwartungsgeladenste Moment der Fahrt.",
-    aliases: ['Lift Hill', 'Chain Lift', 'Kettenlift', 'Aufzughügel'],
+    aliases: ['Lifthills'],
+    alternateNames: ['Kettenlift', 'Aufzughügel', 'Chain Lift', 'Lift Hill'],
 
     relatedTermIds: ['first-drop', 'launch-coaster', 'block-brake'],
   },
@@ -553,7 +582,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein kuppelförmiges Element, das negative G-Kräfte erzeugt und die Fahrgäste aus dem Sitz hebt — das Herzstück jeder guten Hypercoaster-Strecke.',
     definition:
       'Ein Airtime-Hügel (englisch: Camelback) ist ein kurvenförmiger Auf-Ab-Abschnitt, der negative G-Kräfte erzeugt — das Gefühl zu schweben oder aus dem Sitz gehoben zu werden. Floater Airtime: sanfte negative G, weiches Schweben. Ejector Airtime: intensiv, der Schoßbügel ist das Einzige was den Fahrer hält. Stahlbahnen nutzen präzise geformte Parabelkurven für gleichmäßigen, vorhersehbaren Airtime; Holzbahnen liefern unberechenbares, raues Airtime durch Schienenflex. Airtime-Hügel gelten in Enthusiasten-Rankings als die wichtigsten Qualitätselemente und sind das charakteristische Merkmal von Hyper- und Gigacoastern.',
-    aliases: ['Camelback', 'Camelback Hill', 'Airtime-Hügel'],
+    aliases: ['Airtime-Hügel'],
+    alternateNames: ['Camelback', 'Bunny Hill', 'Airtimehügel', 'Airtime Hills'],
 
     relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 'stengel-dive'],
   },
@@ -564,7 +594,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein kontinuierlicher Spiralabschnitt, bei dem die Strecke um eine Mittelachse wickelt und anhaltende Seitwärts-G-Kräfte erzeugt.',
     definition:
       'Eine Helix ist ein Streckenabschnitt, der kontinuierlich spiralförmig um eine Mittelachse verläuft — ähnlich wie eine Schraube, aber ohne Überschlag. Helices erzeugen anhaltende Seitwärts-G-Kräfte, die Fahrgäste in die Außenkurve drücken. Eine abwärts führende Helix beschleunigt den Zug beim Kurvenfahren; eine aufwärts führende verzögert ihn. Helices werden häufig am Ende einer Strecke eingesetzt, um die verbleibende kinetische Energie zu nutzen und gleichzeitig ein aufregendes Dreherlebnis zu liefern. Berühmte Helices: die unterirdische Abschlusshelix von Nemesis in Alton Towers und die Schlusshelix von Expedition GeForce in Holiday Park.',
-    aliases: ['Helices', 'Spirale'],
+    aliases: ['Helices'],
+    alternateNames: ['Helix', 'Spirale', 'Schraubenkurve'],
 
     relatedTermIds: ['horseshoe', 'first-drop'],
   },
@@ -782,7 +813,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine gefahrene Achterbahn, die ein Enthusiast in seine persönliche Gesamtzahl aufnimmt — Credits zu sammeln ist eine der Kernaktivitäten der Coaster-Enthusiasten-Community.',
     definition:
       "Ein Credit (auch Cred) ist eine Achterbahn, die ein Enthusiast gefahren ist und offiziell in seine persönliche Anzahl aufnimmt. Das 'Credits sammeln' — so viele verschiedene Achterbahnen wie möglich zu fahren — ist eine der zentralen Aktivitäten der Coaster-Enthusiasten-Community. Regeln dazu variieren: Manche zählen nur Sitzcoaster, andere alle Schienenbahnen; manche brauchen jeden Zugtyp einer Bahn nicht separat zu zählen, andere schon. Websites wie die Roller Coaster Database (RCDB) erlauben das Protokollieren der Credit-Zahlen. Der Credit-Erwerb motiviert viele Enthusiasten zu internationalen Reisen und Besuchen abgelegener Parks.",
-    aliases: ['Credits', 'Cred', 'Creds'],
+    alternateNames: ['Cred', 'Creds', 'Credit', 'Zähler'],
 
     relatedTermIds: ['pov', 'wooden-coaster', 'hybrid-coaster'],
   },
@@ -793,7 +824,7 @@ const translations: GlossaryTermTranslation[] = [
       'Point-of-View-Aufnahme aus der Perspektive der ersten Reihe einer Achterbahn — das wichtigste Videoformat der Coaster-Enthusiasten-Community auf YouTube.',
     definition:
       'POV (Point of View) bezeichnet Onride-Videoaufnahmen aus der Perspektive eines Frontreihensitzers, typischerweise von einer am Zug befestigten Kamera. POV-Videos sind eines der populärsten Content-Formate in der Freizeitpark-Enthusiasten-Community und werden von Besuchern genutzt, um eine Achterbahn vor dem Parkbesuch virtuell zu erkunden. Parks produzieren manchmal offizielle POVs für Werbezwecke; häufiger werden sie von Gästen oder Medienvertretern aufgenommen. Ein gut produzierter POV zeigt jedes Element, jeden Abfall und jede Inversion in Reihenfolge. YouTube beherbergt zehntausende Coaster-POV-Videos. Der Begriff wird auch allgemein für Ich-Perspektive-Aufnahmen von Parkattraktionen verwendet.',
-    aliases: ['Point of View', 'On-Ride POV', 'On-Ride Video'],
+    alternateNames: ['Point of View', 'On-Ride Video', 'Onboard Video', 'Fahrperspektive'],
 
     relatedTermIds: ['credit', 'dark-ride'],
   },
@@ -813,7 +844,7 @@ const translations: GlossaryTermTranslation[] = [
       'Exclusive Ride Time — eine Session mit exklusivem Zugang zu einer oder mehreren Attraktionen für Enthusiasten-Clubs oder Hotelgäste, ohne normales Publikum.',
     definition:
       'ERT (Exclusive Ride Time, auf Deutsch auch EFZ: Exklusive Fahrzeit) ist ein Zeitraum, in dem eine ausgewählte Gruppe — typischerweise Mitglieder eines Coaster-Enthusiasten-Clubs (wie European Coaster Club oder Coasterfriends), Hotelgäste oder Jahrespass-Inhaber — exklusiven Zugang zu einer oder mehreren Attraktionen erhält, ohne normales Publikum. Während ERT können Teilnehmer die Bahn mit minimalen Wartezeiten wiederholt fahren und dabei oft Dutzende Fahrten in einer einzigen Session erleben. Für Enthusiasten ist ERT eines der wertvollsten Park-Erlebnisse überhaupt — es offenbart den wahren Charakter einer Bahn ohne Warteschlangen-Druck.',
-    aliases: ['Exclusive Ride Time', 'ERT'],
+    alternateNames: ['ERT', 'Exclusive Ride Time', 'Exklusive Fahrzeit', 'EFZ'],
 
     relatedTermIds: ['hard-ticket-event', 'early-entry', 'rope-drop', 'credit'],
   },
@@ -824,7 +855,8 @@ const translations: GlossaryTermTranslation[] = [
       'Ein detaillierter, optimierter Besuchsplan für einen Freizeitparkbesuch, der die Abfolge der Attraktionen so ordnet, dass Wartezeiten minimiert und möglichst viele Fahrten erreicht werden.',
     definition:
       'Ein Touringplan ist eine vorbereitete Abfolge von Attraktionen, Mahlzeiten und Parkbewegungen, die darauf ausgelegt ist, die Gesamtwartezeit über den Tag zu minimieren. Effektive Touringpläne berücksichtigen Besuchermuster (welche Parkbereiche sich zuerst füllen), Attraktionskapazitäten, Schlangenverhalten, Showpläne und Wetter. Seiten wie TouringPlans.com (heute Thrill-Data) veröffentlichen detaillierte Pläne für große Parks. Die Live-Wartezeiten und der Besucherkalender von park.fan sind komplementäre Werkzeuge: Echtzeit-Wartezeiten ermöglichen spontane Anpassungen des Plans. An belebten Tagen kann ein guter Touringplan die Gesamtwartezeit um 30–50 % gegenüber einem spontanen Ansatz reduzieren.',
-    aliases: ['Touring Plan', 'Besuchsplan', 'Parkplan'],
+    aliases: ['Touringpläne'],
+    alternateNames: ['Touring Plan', 'Besuchsplan', 'Parkplan', 'Besuchsstrategie'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'wait-time', 'early-entry'],
   },
@@ -835,7 +867,7 @@ const translations: GlossaryTermTranslation[] = [
       'Situation, bei der mehrere Züge in der Bremssektion aufeinander warten, weil das Be- und Entladen langsamer als der Fahrzyklus ist — reduziert die Kapazität und verlängert Wartezeiten.',
     definition:
       "Stacking (Aufstapeln) tritt auf, wenn der Be- und Entladevorgang einer Achterbahn langsamer als die Fahrtzykluszeit ist, sodass Züge in der Bremssektion auf die Freigabe der Station warten müssen. Statt einen Zug abzufertigen, wenn der vorherige zurückkommt, muss der Betreiber mehrere Züge in der Bremssektion halten — was die Bahn zwischen den Zügen kurz anhalten kann. Stacking reduziert die Kapazität direkt und verlängert die Wartezeiten. Häufige Ursachen: langsames Be- und Entladen (oft durch komplexe Rückhaltesysteme), Gepäckpflicht-Checks oder Personalmangel. Erfahrene Parkbesucher können während des Wartens beobachten, ob eine Bahn 'stackt', und dies in ihre Entscheidungen einbeziehen.",
-    aliases: ['Train Stacking'],
+    alternateNames: ['Train Stacking', 'Zugstau'],
 
     relatedTermIds: ['block-brake', 'ride-capacity', 'wait-time'],
   },
@@ -846,7 +878,7 @@ const translations: GlossaryTermTranslation[] = [
       'Achterbahntyp, bei dem der Zug unter der Schiene hängt und die Beine der Fahrgäste frei in der Luft baumeln.',
     definition:
       'Ein Inverted Coaster (auch Invert) ist eine Achterbahn, bei der der Zug starr unterhalb der Schiene befestigt ist — anders als ein Swinging Coaster, der sich seitlich bewegen kann. Die Fahrgäste sitzen mit frei hängenden Beinen über dem Zug. B&M entwickelte das moderne Inverted-Konzept 1992 mit Batman The Ride und ist bis heute der dominierende Hersteller. Inverted Coasters sind bekannt für intensive Head-Chopper-Nahbegegnungen, Zero-G Rolls und Cobra Rolls. Bekannte europäische Beispiele: Nemesis (Alton Towers), Katun (Mirabilandia), Oziris (Parc Astérix) und Banshee (Kings Island).',
-    aliases: ['Inverted', 'Invert', 'Hängebahn', 'Inverted Coaster'],
+    alternateNames: ['Inverted Coaster', 'Inverted', 'Invert', 'Hängebahn', 'Invert Coaster'],
 
     relatedTermIds: ['b-and-m', 'inversion', 'wing-coaster'],
   },
@@ -857,7 +889,7 @@ const translations: GlossaryTermTranslation[] = [
       'Achterbahntyp mit seitlich an der Schiene platzierten Sitzen — über, unter und neben den Fahrgästen ist nichts als Luft.',
     definition:
       'Ein Wing Coaster (auch Wing Rider) platziert jeweils zwei Sitze links und rechts neben der Schiene, sodass die Fahrgäste keinerlei Struktur über, unter oder neben sich haben. Das Design maximiert das Flugerleben und ermöglicht spektakuläre Nahbegegnungen mit Theming und Konstruktionsteilen. B&M ist der primäre Hersteller von Wing Coastern. Herausragende europäische Beispiele: Flug der Dämonen in Europa-Park — oft als einer der besten Coaster Europas bezeichnet — sowie The Swarm in Thorpe Park. Mit park.fan findest du aktuelle Wartezeiten für alle Wing Coaster.',
-    aliases: ['Wing Rider', 'Wing Coasters', 'Wingcoaster', 'Wing Coaster'],
+    alternateNames: ['Wing Coaster', 'Wing Rider', 'Wingcoaster', 'Flügelachterbahn'],
 
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'dive-coaster'],
   },
@@ -868,7 +900,7 @@ const translations: GlossaryTermTranslation[] = [
       'Achterbahn mit frei drehbaren Fahrzeugen — jede Fahrt bietet eine andere Perspektive.',
     definition:
       'Ein Spinning Coaster (auch Drehachterbahn) verwendet Fahrzeuge, die sich auf einer vertikalen Achse frei drehen. Da die Rotation nicht gesteuert wird, erlebt jedes Fahrzeug eine andere Abfolge von Vorwärts-, Rückwärts- und Seitwärtsfahrten. Mack Rides aus dem deutschen Waldkirch ist der führende Hersteller; ihre Modelle sind in Phantasialand, Efteling und Alton Towers zu finden. Spinning Coaster gelten als hervorragende Familienbahnen — aufregend genug für Enthusiasten, aber ohne extreme Größenanforderungen.',
-    aliases: ['Spinner'],
+    alternateNames: ['Spinning Coaster', 'Spinner', 'Drehachterbahn'],
 
     relatedTermIds: ['mack-rides', 'launch-coaster', 'credit'],
   },
@@ -879,7 +911,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauers Hochintensitäts-Spinning-Coaster-Modell — schneller, höher und mit aggressiverer Rotation als ein Standard-Spinning Coaster.',
     definition:
       'Der Xtreme Spinning Coaster (XSC) ist Gerstlauers Top-Modell unter den Spinning Coastern und treibt das Konzept auf die Spitze. Wo ein normaler Spinning Coaster eher familienfreundlich ausgelegt ist, bietet der XSC eine größere Struktur, steilere Abfälle, höhere Spitzengeschwindigkeiten und einen auf ausgeprägtere Rotation ausgelegten Drehmechanismus — die Fahrzeuge drehen sich kräftiger und häufiger durch jedes Streckenelement.\n\nDie Unvorhersehbarkeit des Drehens wird durch das höhere Tempo noch verstärkt: Die Fahrtrichtung ändert sich schneller, sodass dieselbe Strecke von Fahrt zu Fahrt völlig unterschiedlich wirken kann. Das XSC-Modell positioniert Gerstlauer zwischen familienfreundlichen Spinners und ausgewachsenen Thrill-Coastern — intensive Erlebnisse bei gleichzeitiger Wiederspielbarkeit.',
-    aliases: ['XSC'],
+    alternateNames: ['XSC'],
     relatedTermIds: ['spinning-coaster', 'gerstlauer', 'credit'],
   },
   {
@@ -889,7 +921,8 @@ const translations: GlossaryTermTranslation[] = [
       'Achterbahn mit mehr als 61 m Höhe — ohne Inversionen, dafür mit Fokus auf Geschwindigkeit und Airtime.',
     definition:
       'Hyper Coaster ist die Klassifikation für Achterbahnen zwischen 61 und 91 m Höhe. B&M nennt ihre Modelle "Hyper Coaster"; Intamin verwendet für vergleichbare Bahnen den Begriff "Mega Coaster". Beide Typen setzen auf ausgedehnte Airtime-Hügel bei hoher Geschwindigkeit statt auf Inversionen. Shambhala in PortAventura (Spanien) ist mit 76 m Europas höchster und schnellster Hyper Coaster. Weitere bekannte Beispiele: Goliath in Walibi Holland und Mako in SeaWorld Orlando.',
-    aliases: ['Hyper', 'Mega Coaster', 'Hyper-Achterbahn', 'Mega-Achterbahn'],
+    aliases: ['Hyper Coasters'],
+    alternateNames: ['Hyper Coaster', 'Mega Coaster', 'Mega-Achterbahn', 'Hypercoaster'],
 
     relatedTermIds: ['giga-coaster', 'airtime', 'b-and-m', 'intamin', 'airtime-hill'],
   },
@@ -899,7 +932,8 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Achterbahn mit mehr als 91 m Höhe — eine Stufe über dem Hyper Coaster.',
     definition:
       'Giga Coaster ist die Klassifikation für Achterbahnen zwischen 91 und 121 m Höhe. Der Begriff wurde 2000 von Cedar Fair und Intamin für Millennium Force in Cedar Point geprägt. Giga Coaster betonen extreme Höhe, lange Layouts und massive Airtime-Momente. Fury 325 in Carowinds gilt vielen Enthusiasten als der beste Stahlcoaster der Welt. In Europa gibt es Stand 2025 noch keinen echten Giga Coaster; Hyperion in Energylandia (Polen) mit 77 m fällt technisch noch in die Hyper-Kategorie.',
-    aliases: ['Giga', 'Giga-Achterbahn'],
+    aliases: ['Giga Coasters'],
+    alternateNames: ['Giga Coaster', 'Gigacoaster'],
 
     relatedTermIds: ['hyper-coaster', 'airtime', 'first-drop'],
   },
@@ -910,7 +944,7 @@ const translations: GlossaryTermTranslation[] = [
       'Kurve, bei der die Schiene über 90° geneigt ist — die Fahrgäste werden kurzzeitig über die Senkrechte hinaus gekippt.',
     definition:
       'Eine übergeneigte Kurve (englisch: Overbanked Turn) ist eine Kurve mit einer Querneigung von mehr als 90 Grad — die äußere Schiene liegt dabei höher als die Senkrechte, sodass die Fahrgäste kurzzeitig über die Kopf-über-Position hinaus geneigt werden, ohne eine vollständige Inversion zu durchfahren. Das Element erzeugt eine ungewöhnliche Mischung aus Seitenkräften und leicht negativen G-Kräften. Übergeneigte Kurven sind charakteristisch für moderne B&M-Hyper und Intamin-Mega Coaster sowie allgegenwärtig auf RMC-Layouts. Sie werden manchmal mit Inversionen verwechselt, da sie von außen dramatisch wirken.',
-    aliases: ['Overbanked', 'Overbanked Turn'],
+    alternateNames: ['Overbanked', 'Übergeneigte Kurve', 'Banked Turn'],
 
     relatedTermIds: ['inversion', 'airtime', 'b-and-m', 'rmc', 'intamin'],
   },
@@ -939,7 +973,7 @@ const translations: GlossaryTermTranslation[] = [
       'Elektromechanische Roboterfiguren in Themenfahrten und Shows, die Charaktere oder Szenen lebendig wirken lassen.',
     definition:
       'Animatronics (Singular: Animatronic, auch Animatronik) sind elektromechanische Roboterfiguren, die in Themenfahrten und Live-Shows eingesetzt werden, um Charaktere oder Szenenbewohner realistisch darzustellen. Disney prägte den Begriff "Audio-Animatronics" 1964 auf der Weltausstellung. Moderne Animatronics reichen von einfachen Zyklus-Figuren bis zu hochentwickelten Servo- und Pneumatik-Robotern mit komplexen Gesichtsausdrücken und ganzkörperlichen Bewegungsabläufen. Der Schamane in Disneys Pandora – The World of Avatar und die Dinosaurier der Jurassic World-Fahrt bei Universal sind Meilensteine der Technik.',
-    aliases: ['Animatronic', 'Audio-Animatronics', 'Animatroniken'],
+    alternateNames: ['Animatronics', 'Audio-Animatronics', 'Roboterfigur'],
 
     relatedTermIds: ['dark-ride', 'themed-land', 'trackless-ride'],
   },
@@ -951,7 +985,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 30+ Tage im Voraus.\n\nDie Vorhersagen werden kontinuierlich aktualisiert, wenn neue Daten eintreffen. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'crowd-level'],
-    aliases: ['KI-Prognosen', 'AI Forecast', 'AI Forecasts'],
+    alternateNames: ['AI Forecast', 'AI Forecasts'],
   },
   {
     id: 'ki',
@@ -961,7 +995,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'KI (Künstliche Intelligenz) bezeichnet Machine-Learning-Algorithmen, die Muster in großen Datensätzen erkennen und Vorhersagen treffen. park.fan setzt KI-Modelle ein, die auf jahrelangen historischen Wartezeitdaten, Schulferienkalendern, Wetterdaten und Veranstaltungsankündigungen trainiert wurden. Diese Modelle berechnen täglich neue Prognosen für Besucherdichte und erwartete Wartezeiten – für jeden Park, jeden Tag, bis zu 30+ Tage im Voraus.',
     relatedTermIds: ['ai-forecast', 'crowd-forecast', 'crowd-calendar'],
-    aliases: ['Künstliche Intelligenz'],
+    alternateNames: ['Künstliche Intelligenz'],
   },
   {
     id: 'realtime-wait-time',
@@ -971,7 +1005,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit — kein historischer Durchschnitt, sondern der tatsächliche Stand von heute, jetzt, auf die Minute genau. park.fan ruft Echtzeit-Wartezeiten aus offiziellen Park-APIs und Drittquellen ab und aktualisiert die Daten im Minutentakt. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
     relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-forecast'],
-    aliases: ['Echtzeit-Wartezeiten', 'Live-Wartezeit', 'Live-Wartezeiten'],
+    alternateNames: ['Live-Wartezeit', 'Live-Wartezeiten'],
   },
   {
     id: 'crowd-forecast',
@@ -981,7 +1015,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Crowd-Prognose (auch Besucherprognose) ist eine datengestützte Vorhersage, wie voll ein Freizeitpark an einem bestimmten Tag oder zu einer bestimmten Uhrzeit sein wird. park.fan berechnet Crowd-Prognosen täglich neu auf Basis historischer Besuchszahlen, Schulferienkalender, Wetterdaten und Sonderveranstaltungen. Die Ergebnisse fließen direkt in den Besucherkalender ein: Grüne Tage bedeuten kurze Warteschlangen, rote Tage stehen für Spitzenbetrieb mit langen Wartezeiten.',
     relatedTermIds: ['crowd-calendar', 'ai-forecast', 'peak-day', 'crowd-level'],
-    aliases: ['Crowd-Prognosen', 'Besucherprognose', 'Besucherprognosen'],
+    alternateNames: ['Besucherprognose', 'Besucherprognosen'],
   },
   {
     id: 'opening-hours',
@@ -990,7 +1024,7 @@ const translations: GlossaryTermTranslation[] = [
       'Der offizielle Tagesplan mit den Öffnungs- und Schließzeiten eines Freizeitparks oder einer Attraktion.',
     definition:
       "Die Öffnungszeiten sind der veröffentlichte Tagesplan für einen Freizeitpark oder eine einzelne Attraktion – er gibt an, wann der Einlass beginnt und wann der Betrieb endet. Die meisten großen Parks veröffentlichen einen rollierenden Fahrplan Wochen oder Monate im Voraus, obwohl sich die Zeiten kurzfristig aufgrund von Sonderveranstaltungen, saisonalen Anpassungen oder betrieblichen Problemen ändern können.\n\npark.fan zeigt Öffnungszeiten für jeden Park an. Zeiten, die als 'Est.' (Estimated / Geschätzt) gekennzeichnet sind, wurden aus historischen Mustern abgeleitet und nicht vom Park offiziell bestätigt – sie sollten vor einem geplanten Besuch überprüft werden.\n\nÖffnungszeiten sind strategisch äußerst wichtig: Parks, die früh öffnen, belohnen Rope-Drop-Besucher mit kürzeren Warteschlangen, bevor sich die Massen aufbauen; Parks, die spät schließen, bieten ein zweites Fenster kürzerer Wartezeiten in der letzten Betriebsstunde.",
-    aliases: ['Betriebszeiten', 'Park-Öffnungszeiten'],
+    alternateNames: ['Betriebszeiten', 'Park-Öffnungszeiten'],
 
     relatedTermIds: ['rope-drop', 'crowd-calendar', 'soft-opening'],
   },
@@ -1001,7 +1035,7 @@ const translations: GlossaryTermTranslation[] = [
       'Die Entwicklungsrichtung der Warteschlangenlänge in den letzten 30 Minuten – steigend, fallend oder stabil.',
     definition:
       'Der Trend zeigt an, ob die Warteschlange einer Attraktion im Vergleich zu vor 30 Minuten länger, kürzer oder gleich geblieben ist. park.fan stellt dies als Pfeil dar: aufwärts (Warteschlange wächst), abwärts (Warteschlange schrumpft) oder horizontal (stabil).\n\nDer Trend ist oft aussagekräftiger als die reine Wartezeit. Eine Attraktion mit 45 Minuten und fallendem Trend ist eine bessere Wahl als eine mit 40 Minuten und stark steigendem Trend – bis man ankommt, kann die erste Schlange auf 30 Minuten gesunken sein, während die zweite bereits bei 55 Minuten liegt.\n\nTrend-Daten sind besonders wertvoll in den Übergangsphasen des Parks am späten Vormittag und frühen Nachmittag, wenn sich die Besucher schnell durch den Park verteilen.',
-    aliases: ['Queue Trend', 'Wait Trend'],
+    alternateNames: ['Queue Trend', 'Wait Trend'],
 
     relatedTermIds: ['wait-time', 'posted-wait-time', 'crowd-level'],
   },
@@ -1012,7 +1046,8 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Themenfahrt ohne feste Schiene — die Fahrzeuge navigieren frei durch den Raum, geführt von in den Boden eingelassener Technologie.',
     definition:
       "Eine Trackless Ride (schienenlose Themenfahrt) ist eine Dark-Ride-Variante, bei der die Fahrzeuge nicht an eine feste Schiene gebunden sind, sondern autonom durch den Attractionsraum navigieren — geführt durch Induktionsschleifen, WLAN oder Lasertechnik im Boden. Die freie Beweglichkeit ermöglicht wesentlich komplexere Szenengestaltung und nichtlineare Narrative: Fahrzeuge können drehen, kreisen und Szenen aus verschiedenen Winkeln anfahren. Bekannte Beispiele: Star Wars: Rise of the Resistance (Disney), Ratatouille: L'Aventure Totalement Toquée de Rémy (Disneyland Paris) und Symbolica (Efteling, Niederlande).",
-    aliases: ['Trackless', 'Trackless Dark Ride', 'Gleislose Attraktion'],
+    aliases: ['Trackless'],
+    alternateNames: ['Trackless Dark Ride', 'Gleislose Attraktion'],
 
     relatedTermIds: ['dark-ride', 'animatronics', 'themed-land'],
   },
@@ -1024,7 +1059,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'G-Kraft (Erdbeschleunigungsäquivalent) misst die Beschleunigung, die ein Fahrgast im Vergleich zur normalen Schwerkraft der Erde erlebt. Positive G-Kräfte (über 1G) drücken Fahrgäste in ihre Sitze, wenn der Zug durch ein Tal oder eine enge Kurve zieht. Negative G-Kräfte (unter 0G) heben Fahrgäste aus ihren Sitzen und erzeugen Airtime. Seitliche G-Kräfte (Laterals) wirken quer zur Fahrtrichtung und schieben Fahrgäste auf Kurven und Übergängen seitlich.\n\nAchterbahnen sind so konstruiert, dass diese Kräfte gezielt sequenziert werden. 4–5G in einem Talboden sind das Merkmal einer kraftvollen First-Drop-Einleitung. Ein kurzer Moment von −0,5G bis −1G auf einem Airtime-Hügel erzeugt das typische Schwebegefühl. Die meisten Bahnen zielen auf 0–5G anhaltende positive Kräfte ab, mit kurzen Spitzen für dramatische Effekte. Anhaltend hohe G-Belastungen über mehrere Sekunden können zu Unbehagen oder Greyout führen; gut gestaltete Coaster balancieren Intensitätspitzen mit Erholungsabschnitten.',
     relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
-    aliases: ['G-Kräfte', 'G-Force', 'G-Forces'],
   },
   {
     id: 'lateral-gs',
@@ -1034,7 +1068,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Seitliche G-Kräfte (Laterals) entstehen, wenn sich eine Achterbahn in der horizontalen Ebene ändert – auf überhöhten und nichtüberhöhten Kurven, Helices und Richtungswechseln. Gut gestaltete Laterals sind weich und kontrolliert und tragen zu einem energetischen Fahrerlebnis bei. Schlecht konstruierte oder raue Laterals fühlen sich an, als würde man brutal gegen den Rückhalt oder die Sitzlehne geworfen – unangenehm und oft schmerzhaft.\n\nEnthusiasten unterscheiden zwischen glatten, beabsichtigten Laterals – wie in den weiten Tiefkurven einer klassischen Holzachterbahn – und harten, unbeabsichtigten Laterals durch Gleisverschleiß oder mangelhaftes Engineering. Holzachterbahnen sind besonders für Laterals bekannt: das Spiel im Gleis und die seitliche Energie nichtüberhöhter Kurven gelten als Teil des authentischen Holzachterbahn-Erlebnisses. Sanfte Lateral-Sequenzen in Helix-Passagen – wie bei Balder in Liseberg – werden von Coaster-Enthusiasten oft als Highlights genannt.',
     relatedTermIds: ['g-force', 'airtime', 'helix', 'wooden-coaster'],
-    aliases: ['Laterals', 'Lateral-G-Kräfte', 'Lateral G', 'Laterale G-Kräfte'],
+    alternateNames: ['Lateral G', 'Lateral-G-Kräfte', 'Laterale G-Kräfte'],
   },
   {
     id: 'ejector-airtime',
@@ -1044,7 +1078,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ejector Airtime bezeichnet die intensivste Form negativer G-Kräfte: Die Bahn verlässt die freie Fallbahn so abrupt, dass Fahrgäste schlagartig aus ihren Sitzen gerissen werden – einzig der Schoßbügel hält sie im Fahrzeug. Der Name beschreibt genau das Gefühl: Es wirkt, als wolle der Sitz die Fahrgäste aktiv herausschleudern. Das unterscheidet sich fundamental vom sanften, langen Schweben beim Floater Airtime; Ejector ist scharf, plötzlich und kann bei abrupten Übergängen fast gewaltsam wirken.\n\nEjector Airtime ist am häufigsten mit RMC-Hybridachterbahnen, bestimmten Intamin-Hyper-Coastern und modernen Holzachterbahnen mit steilen, parabolischen Hügeln verbunden. Enthusiasten beschreiben die intensivsten Ejector-Momente als Höhepunkt eines Fahrprofils – ein kurzer, herzstockender Augenblick echter Schwerelosigkeit. Untamed in Walibi Holland, Wildfire in Kolmården und Steel Vengeance in Cedar Point gelten als Maßstab für intensive Ejector-Sequenzen.',
     relatedTermIds: ['airtime', 'floater-airtime', 'airtime-hill', 'rmc', 'g-force'],
-    aliases: ['Ejector'],
+    alternateNames: ['Ejector'],
   },
   {
     id: 'floater-airtime',
@@ -1054,7 +1088,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Floater Airtime beschreibt das sanfte Ende des negativen G-Kraft-Spektrums: ein langsames, anhaltendes Schwebegefühl, bei dem Fahrgäste leicht aus dem Sitz aufsteigen und für einen ausgedehnten Moment schwerelos schweben, während der Zug einen Hügel auf einem flachen Parabelbogen überquert. Die Kraft ist mild – typischerweise etwa −0,1G bis −0,3G – und damit auch für Fahrgäste zugänglich, die den intensiven Ejector Airtime als zu viel empfinden.\n\nFloater Airtime ist am stärksten mit B&M-Hyper- und Giga-Coastern verbunden, die große, sanft gerundete Hügel nutzen, um lange Schwebeabschnitte zu erzeugen. Shambhala in PortAventura, Silver Star in Europa-Park und Goliath in Walibi Holland sind europäische Beispiele, die für ihre langen Floater-Sequenzen gefeiert werden. Viele Enthusiasten empfinden die entspannte Qualität des Floater Airtime als angenehmer und wiederholfähiger als den schroffen Ejector – die Gemeinschaft ist jedoch gespalten, welcher Stil vorzuziehen ist.',
     relatedTermIds: ['airtime', 'ejector-airtime', 'airtime-hill', 'b-and-m', 'g-force'],
-    aliases: ['Floater'],
+    alternateNames: ['Floater'],
   },
   {
     id: 'hangtime',
@@ -1064,7 +1098,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Hangtime beschreibt die besondere Erfahrung negativer G-Kräfte während einer Inversion: Der Zug verweilt lange genug an der Spitze einer Überschlagsfigur, dass negative G-Kräfte wirksam werden – Fahrgäste hängen buchstäblich im Rückhalt. Anders als der kurze Kopf-unten-Moment eines schnellen Loopings entsteht Hangtime, wenn der Zug in der Nähe des Inversionsapex verlangsamt und ein ausgedehntes Hängegefühl erzeugt. Das Gewicht verlagert sich vollständig in die Schulterbügel oder den Schoßbügel, was eine einzigartig desorientierende Empfindung erzeugt.\n\nHangtime tritt am ausgeprägtesten bei Elementen auf, bei denen der Zug an der Inversions-Spitze stark verlangsamt – der Pretzel Loop auf Flying Coastern ist das klassische Beispiel, da die Geschwindigkeit so gering ist, dass anhaltende negative G-Kräfte im voll invertierten Zustand entstehen. Der Heartline Roll mancher moderner Bahnen kann ebenfalls Hangtime erzeugen. Enthusiasten betrachten Hangtime als eine der aufregendsten Inversionsempfindungen überhaupt.',
     relatedTermIds: ['inversion', 'pretzel-loop', 'heartline-roll', 'g-force', 'airtime'],
-    aliases: ['Hang Time'],
+    alternateNames: ['Hang Time'],
   },
   {
     id: 'roller-coaster-element',
@@ -1074,7 +1108,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Achterbahn-Element bezeichnet einen eigenständigen, benannten Teil einer Achterbahn-Strecke – von klassischen Inversionen wie Looping und Korkenzieher bis hin zu nicht-invertierenden Elementen wie Airtime-Hügeln, Helices und überneigten Kurven (Overbanks). Ingenieure gestalten jedes Element gezielt, um ein bestimmtes körperliches Erlebnis zu erzeugen: Schwerelosigkeit (Airtime), seitliche G-Kräfte oder die Desorientierung beim Kopf-über-Fahren. Enthusiasten und Hersteller weltweit verwenden präzise Begriffe für diese Elemente, um Coaster-Designs zu beschreiben und zu vergleichen.\n\nDas park.fan-Glossar erklärt Dutzende solcher Elemente – vom ersten Drop und Lifthill bis hin zu modernen Spezialformen wie dem Stengel Dive, Norwegian Loop und Heartline Roll.',
     relatedTermIds: ['airtime', 'inversion', 'vertical-loop', 'helix', 'first-drop'],
-    aliases: ['Achterbahn-Elemente', 'Achterbahn-Elementen'],
+    aliases: ['Achterbahn-Elemente'],
+    alternateNames: ['Achterbahn-Figur', 'Coaster-Element'],
   },
   // ── Ride Experience ────────────────────────────────────────────────────────
   {
@@ -1085,7 +1120,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die erste Reihe eines Achterbahn-Zugs bietet einen freien Blick nach vorne und gilt unter Gästen als begehrte Position. Bei Hypercoastern und Gigacoastern erleben Fahrgäste in der ersten Reihe beim ersten Drop intensives Airtime, da sie ungehindert sehen, wie der Drop näher kommt – und dann ins Leere stürzen. Der psychologische Effekt dieses ungehinderten Ausblicks vor dem Absturz verstärkt den Thrill deutlich.\n\nAuf vielen Achterbahnen ist die erste Reihe so begehrt, dass Parks separate Warteschlangen oder Express-Plätze nur für diese Sitzposition anbieten. Der längere Wartezeitraum kann sich für viele Fahrgäste lohnen, besonders beim ersten Mal, um die maximale psychologische Intensität zu erleben.',
     relatedTermIds: ['back-row', 'middle-row', 'airtime', 'first-drop'],
-    aliases: ['Erster Platz'],
   },
   {
     id: 'back-row',
@@ -1095,7 +1129,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die letzte Reihe eines Achterbahn-Zugs ist bei Enthusiasten für intensive Airtime-Empfindungen berühmt. Bei jeder Airtime-Kuppe erlebt die letzte Reihe den stärksten Effekt: Fahrgäste werden intensiv aus den Sitzen gehoben und von den Bügeln gehalten (Ejector Airtime). Dieser Effekt verstärkt sich über mehrere Hügel hinweg – das intensive, anhaltende Schwebelosigkeitsgefühl macht die letzte Reihe auf Airtime-Achterbahnen zur bevorzugten Position.\n\nBei Coastern wie Goliath oder Shambhala gilt die letzte Reihe als die beste Position für Enthusiasten. Der Nachteil: Letzte Reihen können auf älteren Achterbahnen rauer wirken, und bei steilen Drops sitzt man mit dem Blick auf die Kehre statt ins Leere. Enthusiasten-Rankings platzieren die letzte Reihe dennoch konsistent oben bei der Intensität des Airtime-Erlebnisses.',
     relatedTermIds: ['front-row', 'middle-row', 'airtime', 'ejector-airtime'],
-    aliases: ['Letzter Platz'],
   },
   {
     id: 'middle-row',
@@ -1105,7 +1138,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die mittleren Reihen sitzen zwischen der intensiven psychologischen Wirkung der ersten Reihe und dem starken Ejector Airtime der letzten Reihe. Sie bieten ein ausgewogenes Erlebnis: genügend Ausblick auf die kommenden Elemente, moderates Airtime, aber ohne die Extreme der Randreihen. Für Familien oder erste Besucher sind mittlere Reihen eine zugänglichere Wahl.\n\nMittlere Reihen erhalten weniger Aufmerksamkeit von Enthusiasten, weil sie weder extreme Intensität noch spezielle Sensationen bieten. Auf Achterbahnen mit starken Seitenkräften können mittlere Reihen aber bemerkenswerte G-Effekte erzeugen. Sie sind eine verlässliche Wahl, wenn erste oder letzte Reihe nicht verfügbar sind.',
     relatedTermIds: ['front-row', 'back-row', 'airtime', 'ride-cart'],
-    aliases: ['Mittlerer Platz'],
   },
   {
     id: 'ride-cart',
@@ -1115,7 +1147,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Fahrwagen (auch Auto, Wagen oder einfach Teil eines Zuges genannt) ist das einzelne Fahrzeug-Segment, das Fahrgäste auf einer Achterbahn hält. Ein typischer Achterbahn-Zug besteht aus mehreren Wagen, die aneinander gekoppelt sind und jeweils Fahrgäste in einer oder mehreren Reihen aufnehmen. Die Hersteller gestalten Wagengröße, Sitzbeschaffenheit und Bügel-Geometrie, um Komfort und Sensation zu optimieren.\n\nDie Wagenkonstruktion variiert dramatisch: Hypercoaster nutzen schlanke, niedrige Wagen zur Minderung von Luftwiderstand; Inverted Coaster hängen Fahrgäste unter der Schiene; Wing Coaster positionieren Fahrgäste seitlich mit nichts unter sich. Hersteller wie B&M, Intamin und Mack prägen mit ihren Designs die Fahrqualität erheblich. Der Hersteller gibt oft Hinweise auf Komfort, Bügel-Straffer und G-Kraft-Art.',
     relatedTermIds: ['lap-bar', 'shoulder-harness', 'front-row', 'back-row'],
-    aliases: ['Wagen', 'Auto'],
   },
   {
     id: 'lap-bar',
@@ -1125,7 +1156,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Schoßbügel ist ein horizontaler Sicherheitsbügel, der Fahrgäste über den Oberschenkeln festklemmt. Anders als Schulterbügel, die den ganzen Oberkörper umschließen, ermöglichen Schoßbügel mehr freie Bewegung – eine offenere, weniger eingeschränkte Empfindung. Schoßbügel sind Standard auf modernen Hypercoastern, Gigacoastern und vielen Stahl- und Holzachterbahnen. Während Airtime-Momenten ermöglichen Schoßbügel das volle Aufschwebensgefühl – Fahrgäste spüren deutlich den Abstand zwischen Sitz und Körper.\n\nSchoßbügel werden von Enthusiasten für Airtime-Achterbahnen bevorzugt, weil sie das intensivste Airtime-Gefühl bieten. Allerdings können sie bei bestimmten Körperformen unbequem sein. Moderne Schoßbügel sind deutlich bequemer als frühere Generationen. Bei Achterbahnen mit starken Seitenkräften können Schoßbügel leicht vor- und zurück gleiten – was manche Fahrgäste störend, andere aufregend finden.',
     relatedTermIds: ['shoulder-harness', 'airtime', 'ride-cart'],
-    aliases: ['Schoss-Bügel'],
   },
   {
     id: 'shoulder-harness',
@@ -1135,7 +1165,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Schulterbügel ist ein Sicherheitssystem, das über beide Schultern und über den Schoß kommt und den Oberkörper vollständig umhüllt. Schulterbügel waren Standard auf Achterbahnen der 1980er und 2000er und bleiben verbreitet auf Inverted Coastern, manchen Suspended Coastern und Family-Rides, wo maximale Sicherheit Vorrang hat. Moderne Bügel haben Ratschenmechanismen, die unterschiedliche Engstellung ermöglichen.\n\nWenn man mit Schulterbügel auf einer Airtime-Achterbahn sitzt, fühlt sich das Erlebnis anders an: Fahrgäste können nicht so dramativ aus dem Sitz aufstehen, weil der Bügel sie festhält. Dieser Kompromiss – bessere Sicherheit gegen weniger intensive Airtime-Empfindung – ist ein bewusster Designentscheid. Enthusiasten bevorzugen Schoßbügel für Airtime-Achterbahnen, aber Schulterbügel fühlen sich für nervöse Fahrgäste sicherer an.',
     relatedTermIds: ['lap-bar', 'airtime', 'ride-cart'],
-    aliases: ['OTS-Bügel'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
   {
@@ -1146,7 +1175,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Andenken ist ein physisches Erinnerungsstück – Merchandise, Kleidung oder Sammelobjekt – das Besucher kaufen, um ihren Parkbesuch zu erinnern. Häufige Andenken sind T-Shirts mit Park-Logos, Kappen, Pins, Postkarten, Plüschtiere und thematische Sammelobjekte. Andenken erfüllen zwei Funktionen: praktisch (tragbare Kleidung) und emotional (Erinnerungen verankern).\n\nFreizeitparks verdienen beträchtlich mit Andenken-Verkäufen; die Gewinnspanne beträgt typischerweise 2–3x Einzelhandelspreis. Parks inszenieren Andenken-Foto-Momente gezielt, um Impulskäufe zu fördern. Limitierte oder saisonale Andenken erzeugen Dringlichkeit, während Park-Exklusiv-Artikel höhere Preise ermöglichen. Für viele Gäste ist das Sammeln von Andenken aus mehreren Parks Teil des Erlebnisses.',
     relatedTermIds: ['merchandise', 'gift-shop', 'park-exclusive'],
-    aliases: ['Erinnerungsstück', 'Souvenir'],
   },
   {
     id: 'merchandise',
@@ -1156,7 +1184,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Merchandise umfasst alle Waren eines Freizeitparks – von Markenbekleidung (T-Shirts, Hoodies, Kappen) über Sammelobjekte (Pins, Figuren, Plüschtiere) bis hin zu Spezial- und themengebundenen Artikeln. Parks betreiben umfangreiche Merchandise-Operationen über Dutzende Läden, mobile Verkaufswagen und spezialisierte Boutiquen. Merchandise ist eine kritische Einnahmequelle, oft 15–25% der Besucherausgaben.\n\nModerne Parks nutzen strategische Merchandising-Methoden: Limitierte saisonale Artikel, Kooperations-Merchandise mit beliebten Franchises, Park-exklusive Designs und Spezial-Releases zu neuen Eröffnungen. Merchandise-Design wird zunehmend datengesteuert – Parks verfolgen, welche Artikel am schnellsten verkaufen und am meisten auf Social Media funktionieren. Für dedizierte Fans wird Merchandise-Sammlung Teil ihrer Park-Erfahrung, und Sekundärmärkte existieren für seltene, ausverkaufte Artikel.',
     relatedTermIds: ['souvenir', 'gift-shop', 'park-exclusive'],
-    aliases: ['Merch'],
+    alternateNames: ['Merch'],
   },
   {
     id: 'gift-shop',
@@ -1166,7 +1194,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Geschenkeladen ist ein Einzelhandelspace innerhalb eines Freizeitparks für Andenken und thematische Produkte – entweder zentral oder integriert in thematische Bereiche. Große Parks betreiben Dutzende Läden von kleinen Verkaufswagen bis zu großen Abteilungsgeschäften. Geschenkeläden positionieren sich strategisch an Hochverkehrspunkten: Ausstiegsschlangen von Attraktionen, Hotelkorridore, Eingang/Ausgang.\n\nModerne Geschenkeläden nutzen Retail-Design: Eingangspositionierung, thematische Umgebung und geschickte Produktplatzierung. Viele Attraktionen führen Gäste direkt durch Merchandise-Bereiche – eine bewährte Strategie für Impulskäufe. Parks nutzen zunehmend lizenziertes IP-Merchandise zu Premium-Preisen. Sammler-fokussierte Läden in Premium-Resorts verkaufen exklusive Artikel zu deutlich höheren Preisen.',
     relatedTermIds: ['merchandise', 'souvenir', 'park-exclusive'],
-    aliases: ['Souvenir-Laden', 'Laden'],
   },
   {
     id: 'park-exclusive',
@@ -1176,7 +1203,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Park-exklusive Merchandise sind Produkte, die nur in einem bestimmten Park oder Parksystem verkauft werden – nirgendwo sonst erhältlich. Park-Exklusiva erzeugen Knappheit, fördern Impulskäufe durch das Gefühl der Nicht-Verfügbarkeit anderswo, und ermöglichen 2–3x höhere Preismargen. Häufige Exklusiva sind limitierte Kleidung, Sammel-Pins, thematische Artikel zu neuen Attraktionen und Novelty-Lebensmittel.\n\nDie Park-Exklusiv-Strategie ist psychologisch zentral: Gäste, die weit gereist sind und viel für Eintritt gezahlt haben, kaufen eher Artikel, die sie daheim nicht bekommen. Sekundärmärkte zeigen, dass begehrte, limitierte Park-Exklusiva an Wert gewinnen und sammlerische Verhaltensweisen fördern. Parks betonen strategisch „Park Exklusiv" auf Verpackungen. Online-Foren und Social Media zeigen ständig Diskussionen über die begehrtesten oder rärsten Exklusiva.',
     relatedTermIds: ['merchandise', 'souvenir', 'gift-shop'],
-    aliases: ['Exklusiv'],
   },
   {
     id: 'flying-coaster',
@@ -1185,7 +1211,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Flying Coaster transportiert die Fahrgäste in horizontaler Bauchlage, sodass das Gefühl des Fliegens entsteht. Die Züge schwenken von der sitzenden Position am Bahnhof in die horizontale Lage, bevor die Fahrt beginnt. Bekannte Beispiele sind Manta (SeaWorld Orlando) und Tatsu (Six Flags Magic Mountain) von B&M.',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster'],
-    aliases: ['Flyer', 'fliegender Achterbahn', 'Superman-Ride', 'prone coaster', 'flying coaster'],
+    alternateNames: ['Flying Coaster', 'Flyer', 'Superman-Ride', 'prone coaster'],
   },
   {
     id: 'mine-train',
@@ -1194,7 +1220,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Mine Train Coaster ist eine familienfreundliche Stahlachterbahn, die als entlaufener Minenkarren gestaltet ist. Typischerweise moderate Geschwindigkeiten, kleine Drops und enge Kurven durch thematisierte Tunnel und Felsformationen. Geeignet für ein breites Altersspektrum. Beispiele: Big Thunder Mountain Railroad (Disney Parks) und Gold Rush (Plopsaland).',
     relatedTermIds: ['steel-coaster', 'themed-land'],
-    aliases: ['Minenzug', 'Mine Coaster', 'mine train', 'Familienachterbahn', 'mine car coaster'],
+    alternateNames: ['Mine Train', 'Minenzug', 'Mine Coaster', 'Familienachterbahn'],
   },
   {
     id: 'terrain-coaster',
@@ -1203,7 +1229,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Terrain Coaster wird so gebaut, dass er die natürliche Topographie – Hügel, Täler und Schluchten – intensiv nutzt, anstatt vollständig auf künstliche Struktur angewiesen zu sein. Die Strecke interagiert eng mit dem Boden und erzeugt ein starkes Geschwindigkeitsgefühl. Klassische Beispiele: The Beast (Kings Island) und Ravine Flyer II (Waldameer).',
     relatedTermIds: ['wooden-coaster', 'steel-coaster', 'airtime'],
-    aliases: ['terrain coaster', 'Landschaftsachterbahn', 'bodennahe Achterbahn'],
+    alternateNames: ['Terrain Coaster', 'Landschaftsachterbahn'],
   },
   {
     id: 'floorless-coaster',
@@ -1212,7 +1238,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Bei einem Floorless Coaster klappt der Wagenboden weg, sobald die Fahrgäste gesichert sind, sodass die Beine frei über dem Schienenstrang hängen. Im Gegensatz zum Inverted Coaster verläuft die Schiene unterhalb des Wagens. B&M war mit Medusa (1999) Pionier dieser Bauform. Europäisches Beispiel: Goliath (Walibi Holland).',
     relatedTermIds: ['b-and-m', 'inverted-coaster', 'steel-coaster', 'dive-coaster'],
-    aliases: ['Floorless', 'open floor coaster', 'floorless coaster'],
+    alternateNames: ['Floorless', 'Floorless Coaster', 'open floor coaster'],
   },
   {
     id: 'arrow-dynamics',
@@ -1221,7 +1247,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Arrow Dynamics (gegründet 1945) war ein Pionier des modernen Achterbahnbaus und führte die gebogenen Stahlrohre sowie den ersten modernen Loop auf Corkscrew (Knott's Berry Farm, 1975) ein. Arrow-Bahnen sind bekannt für Korkenzieher und hängende Loopingbahnen. Das Unternehmen meldete 2001 Insolvenz an; die Vermögenswerte wurden von S&S übernommen.",
     relatedTermIds: ['steel-coaster', 'corkscrew', 'suspended-coaster', 'vertical-loop'],
-    aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
+    alternateNames: ['Arrow', 'Arrow Development', 'S&S Arrow'],
   },
   {
     id: 'gci',
@@ -1231,7 +1257,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Great Coasters International (GCI) ist ein amerikanischer Hersteller, der auf Holzachterbahnen spezialisiert ist. Gegründet 1994 ist GCI bekannt für die Millennium-Flyer-Züge und Layouts mit raschen Richtungswechseln und anhaltendem Airtime. Bekannte Installationen: Wodan (Europa-Park), Thunderhead (Dollywood) und Troy (Toverland).',
     relatedTermIds: ['wooden-coaster', 'airtime', 'rmc', 'terrain-coaster'],
-    aliases: ['Great Coasters International', 'GCI Coaster', 'Millennium Flyer', 'gci'],
+    alternateNames: ['Great Coasters International', 'GCI Coaster', 'Millennium Flyer'],
   },
   {
     id: 'premier-rides',
@@ -1240,7 +1266,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikanischer Hersteller, spezialisiert auf LSM/LIM-Katapultachterbahnen — in Europa bekannt durch Sky Scream im Holiday Park.',
     definition:
       "Premier Rides (gegründet 1995, Baltimore, Maryland) ist ein amerikanischer Achterbahnhersteller, der sich auf Linear-Synchron-Motor (LSM)- und Linear-Induktions-Motor (LIM)-Abschusstechnologien spezialisiert hat. Das Sky Rocket II-Modell — ein kompakter, einsliniger Katapultcoaster — hat sich weltweit in mittelgroßen Parks etabliert.\n\nIn Europa ist Premier Rides vor allem durch Sky Scream im Holiday Park (Haßloch, Deutschland) bekannt, einem invertierten Familienkatapultcoaster. Auch Hagrid's Magical Creatures Motorbike Adventure in Universal Orlando nutzt Premier's LSM-Technologie und zeigt die Vielseitigkeit des Systems.",
-    aliases: ['Premier'],
+    alternateNames: ['Premier'],
     relatedTermIds: ['launch-coaster', 'gerstlauer', 'intamin'],
   },
   {
@@ -1250,7 +1276,7 @@ const translations: GlossaryTermTranslation[] = [
       'Münchner Hersteller bekannt für Spinning Coaster mit Trick Track, die X-Car-Plattform und den Vertikallooping Sky Loop.',
     definition:
       "Maurer Rides (Maurer AG, Metallbau seit 1876, Freizeitanlagen ab 1993) ist ein Münchner Hersteller. Das Unternehmen entwickelte die SC-Spinning-Coaster-Serie mit dem charakteristischen Trick Track — einem Abschnitt, bei dem sich der Wagen seitlich neigt — sowie die X-Car-Plattform für individuelle Kompaktlayouts mit Katapultstarts und Inversionen.\n\nDer Sky Loop ist ein eigenständiges Vertikallooping-Modell, das platzsparend in vielen europäischen Parks steht. Bekannte europäische Installationen: Winja's Fear und Winja's Force im Phantasialand (Deutschland), Indoor-Spinning-Coaster mit Trick Track, sowie X-Car-Installationen in europäischen Parks.",
-    aliases: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
+    alternateNames: ['Maurer', 'Maurer Söhne', 'Maurer AG'],
     relatedTermIds: ['spinning-coaster', 'xtreme-spinning-coaster', 'launch-coaster', 'gerstlauer'],
   },
   {
@@ -1260,7 +1286,7 @@ const translations: GlossaryTermTranslation[] = [
       'Italienischer Hersteller mit einem der größten Portfolios familienfreundlicher Achterbahnen und Fahrgeschäfte weltweit — über 250 Achterbahnen installiert.',
     definition:
       "Zamperla (gegründet 1966, Altavilla Vicentina, Italien) ist einer der produktivsten Freizeitattraktionshersteller weltweit. Während Intamin, B&M und Mack auf große Thrill-Installationen abzielen, fokussiert sich Zamperla auf Zugänglichkeit und Volumen — Family Coaster, Mini Coaster, Twister und Disk'O Coaster sind Standardattraktionen kleinerer Parks und Resort-Midways weltweit.\n\nKompakte Grundrisse und moderate Mindestgrößen machen Zamperla-Bahnen besonders in europäischen Stadtparks, Ferienresorts und Innenbereichen verbreitet. Das Unternehmen baute auch Thunderbolt auf Coney Island (New York) und zeigt damit auch Kapazität für größere Projekte.",
-    aliases: ['Zamperla rides', 'Antonio Zamperla'],
+    alternateNames: ['Zamperla rides', 'Antonio Zamperla'],
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
@@ -1270,7 +1296,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikanischer Hersteller bekannt für pneumatische Drop-Tower, den kompakten El Loco und Free-Fly-4D-Coaster.',
     definition:
       'S&S Worldwide (gegründet 1994, Logan, Utah; übernommen von Sansei Technologies 2012) entwickelte ursprünglich pneumatische Drop-Türme — Space Shot und Turbo Drop — bevor das Unternehmen auf Achterbahnen ausweitete. Der El Loco ist ein kompakter Extremcoaster mit jenseits-vertikalem Erstabfall und Inversion auf kleinstem Grundriss. Der Free Fly ist ein 4D-Coaster mit frei schwenkendem Sitz.\n\nS&S übernahm außerdem die Vermögenswerte des historisch bedeutenden Arrow Dynamics nach dessen Insolvenz 2001. In Europa sind S&S-Installationen seltener als in Nordamerika, die Luftkatapult-Technologie hat jedoch die Branche beeinflusst.',
-    aliases: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
+    alternateNames: ['S&S', 'S&S-Sansei', 'S&S Power', 'S&S Sansei'],
     relatedTermIds: ['launch-coaster', 'arrow-dynamics', 'gerstlauer'],
   },
   {
@@ -1280,7 +1306,7 @@ const translations: GlossaryTermTranslation[] = [
       'Bayerischer Hersteller aus Deggendorf, spezialisiert auf familienfreundliche Achterbahnen — über 190 gebaute Anlagen weltweit.',
     definition:
       'Zierer (gegründet 1930, Deggendorf, Bayern) ist ein bayerischer Hersteller für familienfreundliche Achterbahnen und klassische Parkattraktionen. Die Force-Coaster-Reihe umfasst mehrere Stufen: von kompakten Junior-Modellen bis zu schnelleren Force-Custom-Installationen. Zierer-Bahnen zeichnen sich durch Stahlrohrschienenführung, sanften Fahrkomfort und moderate Mindestgrößenanforderungen aus — ideal für Parks mit breitem demografischen Zielpublikum.\n\nMit über 190 weltweit ausgelieferten Achterbahnen ist Zierer einer der produktivsten europäischen Achterbahnbauer nach Stückzahl. Bekannte Installationen: Feuerdrache im Legoland Deutschland sowie Familienachterbahnen in deutschen, niederländischen und skandinavischen Parks.',
-    aliases: ['Zierer GmbH', 'Zierer rides'],
+    alternateNames: ['Zierer GmbH', 'Zierer rides'],
     relatedTermIds: ['credit', 'mack-rides', 'gerstlauer'],
   },
   {
@@ -1290,7 +1316,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Stall (auch Zero-G-Stall) ist ein Element, bei dem der Zug in eine Inversion fährt und am höchsten Punkt kurzzeitig fast anhält – die Fahrgäste hängen kopfüber. Entwickelt von Rocky Mountain Construction (RMC), erzeugt das Element langen Hangtime. Bekannte Beispiele: Zadra (Energylandia) und Steel Vengeance (Cedar Point).',
     relatedTermIds: ['inversion', 'hangtime', 'rmc', 'zero-g-roll'],
-    aliases: ['Zero-G-Stall', 'RMC Stall', 'Hangtime-Element', 'stall element'],
+    alternateNames: ['Stall', 'Zero-G-Stall', 'RMC Stall', 'Hangtime-Element'],
   },
   {
     id: 'wave-turn',
@@ -1299,7 +1325,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Wave Turn ist eine schnelle, überneigte Kurve, die kurzzeitig negative oder seitliche G-Kräfte erzeugt, was ein Airtime-Gefühl mitten in der Kurve entsteht. Häufig auf RMC-Bahnen eingesetzt, verbindet das Element Richtungsänderung mit Ejector- oder Floater-Airtime. Zu finden auf Wildfire (Kolmården) und Untamed (Walibi Holland).',
     relatedTermIds: ['airtime', 'overbank', 'ejector-airtime', 'rmc', 'lateral-gs'],
-    aliases: ['wave turn', 'Airtime-Kurve', 'überneigte Kurve'],
+    alternateNames: ['Wave Turn', 'Airtime-Kurve', 'überneigte Kurve'],
   },
   {
     id: 'shoulder-season',
@@ -1308,7 +1334,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Zwischensaison bezeichnet die Übergangszeiten zwischen der Hauptsaison und den ruhigsten Zeiten eines Freizeitparks. In europäischen Parks typischerweise Frühling (März–Mai) und früher Herbst (September–Oktober). Der Andrang ist moderat, Preise oft günstiger und die meisten Attraktionen geöffnet – ein beliebter Zeitraum für Enthusiasten, die ein gutes Verhältnis von Erlebnis und Aufwand suchen.',
     relatedTermIds: ['crowd-forecast', 'school-holiday', 'crowd-level'],
-    aliases: ['Nebensaison', 'shoulder season', 'ruhige Saison', 'Vor-/Nachsaison', 'off-peak'],
+    alternateNames: ['Zwischensaison', 'shoulder season', 'ruhige Saison', 'Vor-/Nachsaison'],
   },
   {
     id: 'school-holiday',
@@ -1317,8 +1343,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Schulferien – Sommerferien, Weihnachtsferien, Osterferien und Herbstferien – sind der wichtigste Treiber für Besucherspitzen in Freizeitparks. Familien mit Kindern sind das größte Besuchersegment und konzentrieren ihre Besuche auf diese Zeitfenster. Parks verlängern oft die Öffnungszeiten, erweitern das Unterhaltungsangebot und erhöhen die Preise. Das Meiden der Schulferien ist die effektivste Strategie zur Wartezeit-Reduzierung.',
     relatedTermIds: ['crowd-forecast', 'shoulder-season', 'crowd-level'],
-    aliases: [
-      'Ferien',
+    aliases: ['Ferien', 'Schulferien'],
+    alternateNames: [
       'Sommerferien',
       'Osterferien',
       'Herbstferien',
@@ -1334,7 +1360,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Fotopass (oder Memory Maker) ist ein optionales Zusatzangebot, das digitalen Zugang zu allen professionell aufgenommenen Fotos und Videos eines Parkbesuchs gewährt – einschließlich Fahrfotos, Charaktertreffen und Roaming-Fotografen. Als Pauschalpaket verkauft, kann es für Familien, die ansonsten viele Einzelfotos kaufen würden, wirtschaftlich sinnvoll sein. Bekannte Beispiele: Disneys Memory Maker und Universals Photo Pass.',
     relatedTermIds: ['ride-photo', 'character-meet-and-greet', 'season-pass'],
-    aliases: ['Memory Maker', 'Fotopaket', 'Parkfotos', 'photo pass', 'photopass'],
+    alternateNames: ['Fotopass', 'Memory Maker', 'Fotopaket', 'Parkfotos', 'photo pass'],
   },
   {
     id: 'accessibility-pass',
@@ -1344,10 +1370,10 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Barrierefreiheits-Pass (je nach Park auch DAS – Disability Access Service, Zugänglichkeitskarte oder Attraktionszugangspass) wird Gästen ausgestellt, die aufgrund einer Behinderung nicht in der regulären Warteschlange warten können. Er ermöglicht es dem Gast und einer Begleitgruppe, zu einem bestimmten Zeitpunkt zurückzukehren, anstatt physisch zu warten. Berechtigung und Prozesse variieren je nach Park und Land.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: [
+    aliases: ['Behindertenpass'],
+    alternateNames: [
       'DAS',
       'Disability Access Service',
-      'Behindertenpass',
       'Rollstuhlpass',
       'accessibility pass',
       'Attraktionszugangspass',
@@ -1360,13 +1386,13 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Simulator-Attraktion kombiniert eine hydraulisch oder elektrisch angetriebene Bewegungsplattform mit einer Großleinwand, die physische Bewegungen mit dem Filmgeschehen synchronisiert. Es wird ein immersives Erlebnis ohne klassische Schiene erzeugt. Die Kapazität ist oft hoch, und die Erfahrung kann durch Filmwechsel aktualisiert werden. Bekannte Beispiele: Star Tours (Disney), Mystic Manor (HKDL).',
     relatedTermIds: ['dark-ride', 'trackless-ride', 'pre-show', 'animatronics'],
-    aliases: [
+    alternateNames: [
+      'Simulator-Attraktion',
       'Simulatorfahrt',
       'Simulator',
       '4D-Kino',
       'Flugsimulator',
       'motion simulator',
-      'motion base',
     ],
   },
   {
@@ -1376,12 +1402,11 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Charaktertreffen (Character Meet & Greet) ist ein ausgewiesener Bereich oder ein geplantes Event, bei dem Gäste Kostümcharakteren begegnen, für Fotos posieren und Autogramme erhalten können. Besonders beliebt in Disney- und Universal-Parks; populäre Charaktere haben oft eigene Meet-&-Greet-Bereiche mit eigenem Wartesystem. Besonders bei Familien mit Kindern sehr beliebt.',
     relatedTermIds: ['photo-pass', 'character-dining', 'themed-land'],
-    aliases: [
+    alternateNames: [
       'Meet & Greet',
+      'Character Meet & Greet',
       'Charakterbegegnung',
       'Charakter-Auftritt',
-      'character meet and greet',
-      'character encounter',
     ],
   },
   {
@@ -1392,7 +1417,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Vorshow ist ein Vorbereitungsbereich bei thematisierten Attraktionen, in dem sich Gäste vor der eigentlichen Fahrt oder dem Haupterlebnis versammeln, um Handlungskontext, Sicherheitshinweise oder Unterhaltung zu erhalten, die die Atmosphäre aufbaut. Vorshows dienen sowohl narrativen als auch operativen Funktionen. Bekannte Beispiele: Der Dehnraum im Haunted Mansion und das Sicherheitsvideo auf Guardians of the Galaxy – Mission: BREAKOUT!.',
     relatedTermIds: ['dark-ride', 'motion-simulator', 'animatronics', 'themed-land'],
-    aliases: ['Pre-Show', 'Warteschlangenunterhaltung', 'Staging-Bereich', 'pre show'],
+    alternateNames: ['Pre-Show', 'Vorshow', 'Warteschlangenunterhaltung', 'Staging-Bereich'],
   },
   {
     id: 'flat-ride',
@@ -1402,7 +1427,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Frisbees, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen. Im Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
-    aliases: ['Flat Rides', 'Fahrgeschäft', 'Kirmesspiel', 'flat ride'],
+    aliases: ['Flat Rides'],
   },
   {
     id: 'water-ride',
@@ -1412,7 +1437,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Als Wasserfahrt bezeichnet man Attraktionen, bei denen Wasser ein zentraler Bestandteil des Erlebnisses ist – entweder fahren die Fahrzeuge durch einen Wasserkanal, oder Wasser wird als gezielter Effekt eingesetzt. Die drei häufigsten Typen sind: Wildwasserbahnen (Bootsfahrten durch Kanäle mit Steilabfall), Wildwasser-Rafting-Bahnen (kreisförmige Boote durch künstliche Stromschnellen) und Spritz-Battles (Gäste beschießen sich gegenseitig mit Wasserkanonen). Wasserfahrten haben in der Regel niedrige Mindestgrößenanforderungen und eine sehr breite Zielgruppe. An heißen Sommertagen können die Wartezeiten extrem lang werden.',
     relatedTermIds: ['log-flume', 'river-rapids', 'ride-capacity', 'height-requirement'],
-    aliases: ['Wasserattraktion', 'Nassattraktion', 'Aquattraktion', 'water ride'],
+    alternateNames: ['Water Ride', 'Wasserattraktion', 'Nassattraktion'],
   },
   {
     id: 'live-show',
@@ -1422,7 +1447,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Live-Show ist ein zu festen Zeiten stattfindendes Unterhaltungsprogramm, das von menschlichen Cast-Mitgliedern aufgeführt wird – im Gegensatz zu Fahrattraktionen oder festen Exponaten. Spielorte sind offene Amphitheater, geschlossene Theater oder Straßenauftrittsflächen. Das Spektrum reicht von Broadway-ähnlichen Bühnenshows und Stuntshows über Charakter-Paraden und 4D-Erlebnisse mit Live-Elementen bis hin zu Laser- und Feuerwerksshows. Im Gegensatz zu Attraktionen finden Live-Shows zu festen Uhrzeiten statt und haben begrenzte Zuschauerkapazitäten. Strategisch sind Shows eine willkommene Pause in ruhigeren Zeiten – insbesondere mittags, wenn die Wartezeiten an Attraktionen am längsten sind.',
     relatedTermIds: ['themed-land', 'pre-show', 'ride-capacity'],
-    aliases: ['Show', 'Live-Entertainment', 'Bühnenshow', 'Stuntshow', 'Vorstellung', 'Liveshow'],
+    alternateNames: ['Show', 'Live-Entertainment', 'Bühnenshow', 'Stuntshow', 'Vorstellung'],
   },
   {
     id: 'quick-service',
@@ -1431,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Schnellrestaurant (auch Counter Service oder Fast Casual) bezeichnet Parkrestaurants, bei denen Gäste an einer Theke bestellen und ihr Essen selbst zum Tisch tragen. Es ist die häufigste Restaurantform in Freizeitparks und bietet Schnelligkeit und Komfort. Disney popularisierte den Begriff „Quick Service" zur Unterscheidung vom „Table Service" in seinem Dining-Reservierungssystem.',
     relatedTermIds: ['table-service', 'character-dining'],
-    aliases: ['Counter Service', 'Fast Food', 'Selbstbedienung', 'quick service', 'Imbiss'],
+    alternateNames: ['Schnellrestaurant', 'Counter Service', 'Fast Food', 'Selbstbedienung'],
   },
   {
     id: 'table-service',
@@ -1440,13 +1465,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Tischservice-Restaurants in Freizeitparks bieten ein vollständiges Sitzessen mit Bedienung. Reservierungen (bei Disney-Parks oft 60–180 Tage im Voraus buchbar) sind dringend empfohlen, da beliebte Restaurants, besonders in der Hochsaison, schnell ausgebucht sind. Tischservice ist deutlich teurer als Schnellrestaurants, bietet aber höhere Qualität und eine entspannte Atmosphäre.',
     relatedTermIds: ['quick-service', 'character-dining', 'peak-season'],
-    aliases: [
-      'Table Service',
-      'Sitzrestaurant',
-      'Restaurant mit Bedienung',
-      'Reservierungsrestaurant',
-      'table service',
-    ],
+    alternateNames: ['Tischservice', 'Table Service', 'Sitzrestaurant', 'Restaurant mit Bedienung'],
   },
   {
     id: 'character-dining',
@@ -1455,12 +1474,11 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Character Dining ist ein Tischservice- (oder gelegentlich Buffet-)Restauranterlebnis, bei dem Kostümcharaktere jeden Tisch besuchen, mit Gästen interagieren, Fotos machen und Autogramme geben. Es garantiert Charakterbegegnungen ohne separates Warteschlangenanstehen, was es bei Familien besonders beliebt macht. Beispiele: Chef Mickey's (Disney World) und das Prinzessinnen-Dinner in der Auberge de Cendrillon (Disneyland Paris).",
     relatedTermIds: ['table-service', 'character-meet-and-greet', 'quick-service'],
-    aliases: [
+    alternateNames: [
       'Character Dining',
       'Character Meal',
       'Frühstück mit Charakteren',
       'Dinner mit Charakteren',
-      'character dining',
     ],
   },
   {
@@ -1471,7 +1489,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Drop Tower (auch Freifallturm oder Free-Fall-Tower) ist eine Attraktion, bei der Fahrgäste in einer Gondel oder einzelnen Sitzen rund um einen zentralen Turmaufbau in die Höhe gefahren und dann in einem raschen Sturz nach unten entlassen werden. Der Absturz kann nahezu schwerelos (echter freier Fall), gebremst oder in Kombination mit einem Katapultstart nach oben erfolgen. Am unteren Ende bremst das System die Gondel sanft ab. Varianten umfassen rotierende Drop Towers, Mehrachsen-Modelle und Hybrid-Versionen. Drop Towers bieten intensive Erlebnisse auf kleiner Grundfläche und sind weltweit verbreitet. Bekannte Hersteller sind Intamin, Mondial und S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['Freifallturm', 'Free-Fall-Tower', 'Freefall', 'Drop Ride', 'Freifall-Attraktion'],
+    alternateNames: ['Drop Tower', 'Freifallturm', 'Free-Fall-Tower', 'Freefall', 'Drop Ride'],
   },
   {
     id: 'log-flume',
@@ -1481,7 +1499,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Wildwasserbahn (auch Flossfahrt oder Logflume) ist eine Wasserattraktion, bei der Gäste in bootförmigen Fahrzeugen – traditionell Baumstamm-förmigen Kunststoffbooten – durch einen wasserführenden Kanal gleiten. Nach mehreren ruhigeren Abschnitten folgt ein steiler Abfall, bei dem das Boot in einen Wassertrog eintaucht und Fahrgäste garantiert nass macht. Wildwasserbahnen wurden in den 1960er Jahren eingeführt und sind heute in fast jedem Freizeitpark zu finden. Sie gelten als familienfreundlich, haben moderate Stundendurchsätze und sind klassische Sommerattraktionen. Bekannte europäische Beispiele: Poseidon im Europa-Park sowie zahlreiche Wildwasserbahn-Anlagen in deutschsprachigen Parks.',
     relatedTermIds: ['water-ride', 'river-rapids', 'height-requirement'],
-    aliases: ['Flossfahrt', 'Logflume', 'Log Flume', 'Bootsfahrt', 'wildwasserbahn'],
+    aliases: ['Logflume'],
+    alternateNames: ['Log Flume', 'Flossfahrt', 'Bootsfahrt'],
   },
   {
     id: 'river-rapids',
@@ -1491,11 +1510,11 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Wildwasser-Rafting-Bahn (auch Wild-Water-Ride oder River-Rapids-Bahn) befördert Gäste in kreisförmigen aufblasbaren oder Kunststoffbooten durch einen künstlich angelegten Kanal, der Wildwasser-Stromschnellen simuliert. Da das kreisförmige Boot frei auf der Strömung rotiert, ist jede Fahrt unvorhersehbar: Je nach Position des Bootes werden manche Mitfahrer komplett durchnässt, andere bleiben relativ trocken. Wildwasser-Rafting-Bahnen bieten hohen Stundendurchsatz und große Familieneignung bei meist niedrigen Mindestgrößen. Bekannte europäische Beispiele sind die Wildwasser-Attraktionen im Phantasialand sowie Anlagen in Efteling, Europa-Park und Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
-    aliases: [
+    alternateNames: [
+      'River Rapids',
       'Wildwasserfahrt',
       'Wild Water Ride',
       'Rafting-Bahn',
-      'River Rapids',
       'Rundboot-Bahn',
     ],
   },
@@ -1507,13 +1526,12 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Kettenkarussell (auch Kettenflieger oder Wellenflieger) ist eine rotierende Attraktion, bei der Sitze an Ketten von einer zentralen Drehstruktur aufgehängt sind. Beim Drehen werden die Sitze durch die Fliehkraft nach außen und oben geschleudert und vermitteln Fahrgästen das Gefühl des Fliegens. Kettenkarussells gehören zu den ältesten noch verbreiteten Jahrmarktsfahrgeschäften und gehen bis ins frühe 20. Jahrhundert zurück. Moderne Versionen reichen von sanften Kinderkarussells bis hin zu riesigen Kettenturm-Anlagen (Starflyer), die Fahrgäste auf beachtliche Höhen heben. Sie sind in nahezu jedem Freizeitpark und auf Jahrmärkten weltweit anzutreffen.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: [
+    alternateNames: [
+      'Swing Ride',
       'Kettenflieger',
       'Wellenflieger',
       'Hängekarussell',
-      'Swing Ride',
       'Chairoplane',
-      'Kettenflug',
     ],
   },
   {
@@ -1524,13 +1542,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Racing Coaster verfügt über zwei separate, aber spiegelbildliche Achterbahn-Strecken, die parallel zueinander verlaufen. Züge werden gleichzeitig losgeschickt, sodass Fahrgäste das Gefühl haben, gegen den anderen Zug zu rennen. Die Strecken überkreuzen sich oder verlaufen an mehreren Punkten extrem nah aneinander, um die Wettbewerbsspannung zu maximieren. Einige Racing Coaster sind als Möbius-Loop konzipiert: Beide Strecken bilden eine einzige zusammenhängende Schleife, sodass Fahrgäste automatisch die Seite wechseln. Das Format funktioniert sowohl mit Holz- als auch mit Stahlachterbahnen. Bekannte europäische Beispiele sind Piraten im Djurs Sommerland und Dwervelwind im Plopsaland.',
     relatedTermIds: ['wooden-coaster', 'steel-coaster', 'credit'],
-    aliases: [
-      'Paarachterbahn',
-      'Twin Coaster',
-      'Dueling Coaster',
-      'Rennachterbahn',
-      'racing coaster',
-    ],
+    alternateNames: ['Racing Coaster', 'Paarachterbahn', 'Twin Coaster', 'Dueling Coaster'],
   },
   {
     id: 'high-five',
@@ -1540,13 +1552,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein High Five ist ein Beinahekollisions-Element bei Achterbahnen, bei dem zwei Züge auf separaten, aber eng benachbarten Strecken in extremer Nähe – manchmal in Armreichweite – aneinander vorbeifahren. Der Name leitet sich von der Empfindung ab, dass Fahrgäste die Insassen des anderen Zuges „abklatschen" könnten. Das Element erfordert präzise Abfahrtssteuerung, um beide Züge zur richtigen Zeit am Kreuzungspunkt zusammenzuführen. Wing Coaster und Inverted Coaster eignen sich besonders gut für High-Five-Elemente, da die außenliegenden Sitze den Nahbereichseffekt verstärken. Duelling Dragons / Dragon Challenge in Universal\'s Islands of Adventure war ein bekanntes frühes Beispiel; das Element findet sich heute an verschiedenen B&M-Wing-Coastern weltweit.',
     relatedTermIds: ['wing-coaster', 'inverted-coaster', 'b-and-m'],
-    aliases: [
-      'Beinahe-Kollisions-Element',
-      'Near Miss',
-      'Near-Miss-Element',
-      'high five',
-      'Nearfly',
-    ],
+    alternateNames: ['High Five', 'Beinahe-Kollisions-Element', 'Near Miss', 'Near-Miss-Element'],
   },
   {
     id: 'dining-reservation',
@@ -1556,12 +1562,11 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Tischreservierung ist die Vorab-Buchung eines Platzes in einem Tischservice- oder Charakter-Dinner-Restaurant in einem Freizeitpark, Resort-Hotel oder angeschlossenen Unterhaltungskomplex. Bei Disney-Parks sind Reservierungen bis zu 60 Tage im Voraus möglich (für Resort-Hotel-Gäste mit bis zu 10 Tagen Vorsprung) und für die beliebtesten Restaurants praktisch unerlässlich – wer nicht rechtzeitig bucht, findet in Stoßzeiten oft keine Plätze mehr. Reservierungen werden meist mit einer Kreditkarte gesichert; bei Disney gilt eine Stornierungsgebühr bei Nichterscheinen oder zu kurzfristiger Absage. In der Enthusiasten-Community wird die Vorabreservierung häufig mit ADR (Advance Dining Reservation) abgekürzt.',
     relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
-    aliases: [
+    alternateNames: [
+      'Tischreservierung',
       'ADR',
       'Advance Dining Reservation',
       'Restaurantreservierung',
-      'dining reservation',
-      'Tischbuchung',
     ],
   },
   {
@@ -1572,7 +1577,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die mobile Bestellung ermöglicht es Gästen, über die offizielle Park-App ein Restaurantmenü zu durchsuchen, eine Bestellung aufzugeben, zu bezahlen und ein Abholzeitfenster zu wählen – ohne an der Theke anstehen zu müssen. Disney hat das System in seinen Schnellrestaurants eingeführt; Universal, Six Flags, Merlin-Parks und viele weitere Betreiber haben inzwischen eigene Varianten entwickelt. Wenn das gewählte Zeitfenster erreicht ist, erhalten Gäste eine App-Benachrichtigung und holen ihre Bestellung am Mobile-Order-Abholschalter ab. Besonders zu Mittagsstoßzeiten spart die mobile Bestellung erheblich Zeit. Voraussetzung sind ein geladenes Smartphone und ausreichende Netzabdeckung im Park.',
     relatedTermIds: ['quick-service', 'dining-reservation'],
-    aliases: ['Mobile Order', 'App-Bestellung', 'mobile ordering', 'Mobile-Bestellung'],
+    alternateNames: ['Mobile Order', 'App-Bestellung', 'Mobile Bestellung'],
   },
   {
     id: 'food-court',
@@ -1582,7 +1587,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Food Court ist ein gemeinsamer Gastronomiebereich mit mehreren eigenständigen Schnellrestaurant-Theken oder Imbissständen, die verschiedene Küchen anbieten und einen gemeinsamen Sitzbereich teilen. In Freizeitparks sind Food Courts in der Regel die gastronomiestärksten Bereiche und darauf ausgelegt, das mittägliche Besuchervolumen zu bewältigen. Verschiedene Mitglieder einer Gruppe können an unterschiedlichen Theken bestellen und trotzdem zusammensitzen. Die thematische Gestaltung variiert: Disney und Universal integrieren Food Courts oft in die Landthematik, während andere Parks sie als rein funktionale Rastbereiche nahe Eingangsbereichen betreiben. Food Courts sind in der Regel die günstigste Verpflegungsoption innerhalb eines Parks.',
     relatedTermIds: ['quick-service', 'table-service', 'mobile-ordering'],
-    aliases: ['Gastronomiehof', 'Essensbereich', 'food court', 'Fressmeile', 'Speisehalle'],
+    alternateNames: ['Food Court', 'Gastronomiehof', 'Essensbereich', 'Speisehalle'],
   },
   {
     id: 'capacity-closure',
@@ -1592,13 +1597,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Kapazitätsschließung (auch Ausverkauf oder Kapazitätsobergrenze) tritt auf, wenn ein Freizeitpark seine maximal zulässige oder betrieblich sichere Besucherzahl erreicht und vorübergehend keine Tagestickets mehr verkauft oder keine neuen Gäste einlässt. Parks steuern die Kapazität über zeitgebundene Eintrittsbuchungen, Echtzeit-Besucherzählung und temporäre Eingangsschließungen. Inhaber von Jahreskarten können an Kapazitätstagen je nach Park-Regelung vom Einlass ausgeschlossen sein; andere Parks nutzen Reservierungssysteme, die Überfüllung bereits im Voraus verhindern. Kapazitätsschließungen sind am häufigsten in Schulferienspitzen, bei Sonderveranstaltungen und an Feiertagen. Ein Blick in die Park-App oder die sozialen Medien am Morgen des Besuchs kann Überraschungen vermeiden.',
     relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
-    aliases: [
-      'Park ausverkauft',
-      'Kapazitätsgrenze',
-      'capacity closure',
-      'Park voll',
-      'Ausverkauft-Tag',
-    ],
+    alternateNames: ['Kapazitätsschließung', 'Park ausverkauft', 'Kapazitätsgrenze', 'Park voll'],
   },
   {
     id: 'zero-g-winder',
@@ -1608,7 +1607,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Der Zero-G Winder verbindet die schwebende Sensation eines Zero-G Rolls mit einem Richtungswechsel in der Streckengeometrie. Während beim klassischen Zero-G Roll der Zug parallel ein- und ausfährt, kurven beim Winder die Schienen während der Drehung so, dass der Zug in eine deutlich andere Richtung zeigt, als er das Element begonnen hat. Damit erfüllt das Element zwei Funktionen gleichzeitig: Es liefert die Schwerelosigkeit einer Inversion und leitet den Coaster gleichzeitig in den nächsten Streckenabschnitt über.\n\nZero-G Winder sind vor allem auf moderneren, technisch anspruchsvollen Coaster-Designs zu finden, die von Herstellern wie Intamin und B&M gebaut werden. Kondaa im Walibi Belgium und VelociCoaster in Universal's Islands of Adventure zählen zu den bekanntesten Beispielen. Die Kombination aus Airtime, Inversion und Richtungsänderung in einem einzigen Element macht den Zero-G Winder zu einem der vielschichtigsten Elemente im modernen Achterbahnbau.",
     relatedTermIds: ['zero-g-roll', 'inversion', 'airtime', 'intamin'],
-    aliases: ['Zero G Winder', 'Zero-G-Winder', 'Winder'],
+    aliases: ['Zero-G-Winder'],
+    alternateNames: ['Zero G Winder', 'Winder'],
   },
   {
     id: 'banana-roll',
@@ -1618,7 +1618,6 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Der Banana Roll ist eine gestreckte Variante des Doppel-Inversions-Konzepts: Die zwei Überschläge sind weiter auseinander positioniert und durch einen geschwungenen Bogen verbunden, anstatt wie beim Cobra Roll eng und symmetrisch aufeinanderzufolgen. Von oben betrachtet folgt die Strecke einem sanften Bogen durch beide Inversionen, der an die Form einer Banane erinnert. Durch die lockere Geometrie verteilen sich die zwei Inversionen über einen längeren Streckenabschnitt, was dem Fahrer ein fließenderes, ausgedehnteres Erlebnis durch beide Überschläge verschafft.\n\nDer Banana Roll wurde erstmals 2011 auf Takabisha in Fuji-Q Highland, Japan von Gerstlauer realisiert. S&S Worldwide entwickelte später eine eigene, doppelt invertierende Variante für Steel Curtain im Kennywood. Da das Element erheblichen lateralen Raum benötigt, findet es sich meist in größeren, bodennah gebauten Anlagen, wo die Strecke weit ausschwingen kann.',
     relatedTermIds: ['cobra-roll', 'inversion', 'gerstlauer', 's-and-s-worldwide'],
-    aliases: ['Banana Roll'],
   },
   {
     id: 'inclined-loop',
@@ -1628,7 +1627,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein geneigter Looping (englisch: Inclined Loop oder Tilted Loop) ist ein klassischer vertikaler Looping, der um seine Achse gedreht wurde — typischerweise um 45 bis 80 Grad relativ zur Fahrtrichtung. Statt dass der Zug den Looping geradeaus einleitet und verlässt, nähert er sich und verlässt das Element schräg, was sowohl ein asymmetrisches Erscheinungsbild als auch eine deutlich veränderte Fahrerfahrung erzeugt.\n\nDie gekippte Geometrie beeinflusst das Empfinden der Inversion: Die Einfahrt fühlt sich lateraler an als beim klassischen Looping, und die Ausleitung am Tiefstobjekt kommt aus einer anderen Richtung als erwartet — das kann sowohl orientierungsberaubend als auch aufregend sein. Für Zuschauer ist ein geneigter Looping sofort als ungewöhnlich erkennbar und wirkt visuell deutlich dramatischer als ein aufrechter Looping. Geneigte Loopings finden sich auf verschiedenen B&M- und Intamin-Coasters, oft im mittleren oder abschließenden Teil der Strecke.',
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m', 'intamin'],
-    aliases: ['Tilted Loop', 'schräger Looping', 'geneigter Loop', 'inclined loop'],
+    aliases: ['geneigter Looping'],
+    alternateNames: ['Tilted Loop', 'Inclined Loop'],
   },
   {
     id: 'sea-serpent',
@@ -1638,7 +1638,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Der Sea Serpent ist ein Doppel-Inversions-Element, das vor allem mit Vekomas Inverted-Coaster-Designs verbunden ist. Ähnlich wie der Cobra Roll besteht er aus zwei Inversionen, die durch einen mittleren Verbindungsabschnitt zusammengefügt sind — jedoch unterscheidet sich die Streckengeometrie wesentlich: Während der Cobra Roll den Zug um 180 Grad umdreht, verlässt der Zug beim Sea Serpent das Element in derselben allgemeinen Richtung, in der er es betreten hat. Die beiden Inversionen schwingen bogenförmig auf und über, ohne die Fahrtrichtung zu wechseln, was dem Element von der Seite ein langes, S-kurvenartiges Erscheinungsbild gibt — wie der Körper einer Seeschlange, der durch zwei Wellen aufsteigt.\n\nSea Serpents sind Bestandteil von Vekomas Suspended Looping Coaster (SLC) und einigen Sonderanlagen des Herstellers. Da der SLC in großer Stückzahl produziert wurde, ist der Sea Serpent eines der am weitesten verbreiteten Doppel-Inversions-Elemente weltweit — auch wenn er namentlich weniger bekannt ist als der Cobra Roll.',
     relatedTermIds: ['inversion', 'cobra-roll', 'batwing', 'vekoma'],
-    aliases: ['Sea Serpent', 'Roll Over'],
+    alternateNames: ['Sea Serpent', 'Roll Over'],
   },
   {
     id: 'barrel-roll-drop',
@@ -1648,7 +1648,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Der Barrel Roll Drop ist eines der bekanntesten Signaturelemente von Rocky Mountain Construction und verbindet zwei normalerweise getrennte Erlebnisse — den ersten Sturz und eine vollständige Inversion — zu einer ununterbrochenen Sequenz. Nach dem Verlassen des Liftbergs dreht die Strecke den Zug durch einen kompletten Barrel Roll, während er gleichzeitig abfällt: Die Fahrgäste befinden sich nahe dem steilsten Punkt des Abfalls vollständig auf dem Kopf, bevor sie beim Erreichen des Tiefpunkts wieder aufgerichtet werden. Die Inversion ereignet sich bei hoher Geschwindigkeit, da der Zug im selben Moment beschleunigt, in dem er sich dreht.\n\nErmöglicht wurde das Element durch RMCs I-Box-Stahlschienensystem, das die engen Radien und komplexe dreidimensionale Geometrie für einen simultanen Roll und Abfall erlaubt — eine Kombination, die auf traditionellem Holzachterbahngleis strukturell unmöglich gewesen wäre. Medusa Steel Coaster im Six Flags Mexico gehörte zu den frühen Anlagen mit diesem Element; Steel Vengeance im Cedar Point und Zadra im Energylandia sind weitere gefeierte Beispiele.',
     relatedTermIds: ['inversion', 'rmc', 'first-drop', 'hybrid-coaster', 'stall'],
-    aliases: ['Barrel Roll Drop', 'RMC Barrel Roll', 'Barrel Roll Downdrop'],
+    alternateNames: ['Barrel Roll Drop', 'RMC Barrel Roll'],
   },
   {
     id: 'mcbr',
@@ -1658,13 +1658,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Mittelstreckenbremse (englisch: Mid-Course Brake Run, kurz MCBR) ist eine Bremsanlage, die irgendwo in der Mitte einer Achterbahn-Strecke installiert ist — nach den ersten großen Elementen, aber vor der Abschlusssequenz. Anders als Trimbremsen, die lediglich die Geschwindigkeit reduzieren und den Zug unmittelbar weiterfahren lassen, ist eine MCBR eine vollständige Blockabschnitts-Bremse: Sie kann den Zug vollständig anhalten und halten, bis der nächste Blockabschnitt davor als frei gemeldet wurde. Dies ermöglicht den gleichzeitigen Betrieb mehrerer Züge auf derselben Strecke ohne Kollisionsgefahr und steigert erheblich den Durchsatz der Anlage.\n\nAn einem betriebsreichen Tag mit voll ausgelasteten Zugfolgen gibt eine gut getimte MCBR den angehaltenen Zug fast sofort wieder frei, und die Fahrgäste bemerken kaum die kurze Verzögerung. An ruhigeren Betriebstagen mit weniger Zügen kann der Stopp länger andauern und abrupter wirken. MCBRs sind Standard auf den meisten großen Achterbahnen: B&M Inverted- und Floorless-Coaster, viele Intamin-Anlagen und andere Hochkapazitätsattraktionen nutzen sie routinemäßig.',
     relatedTermIds: ['block-brake', 'brake-run', 'trim-brake', 'stacking', 'ride-capacity'],
-    aliases: [
-      'Mittelstreckenbremse',
-      'mid-course brake run',
-      'Zwischenbremse',
-      'Mittelbremse',
-      'MCBR',
-    ],
+    alternateNames: ['Mittelstreckenbremse', 'Zwischenbremse', 'Mittelbremse'],
   },
   {
     id: 'interlocking-loops',
@@ -1674,7 +1668,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Verschlungene Loops (englisch: Interlocking Loops) sind zwei vertikale Loops, die so angeordnet sind, dass sich ihre Strukturebenen schneiden — typischerweise nahezu rechtwinklig zueinander. Das Ergebnis ist eine beeindruckende visuelle Konfiguration, bei der ein Loop aus bestimmten Perspektiven scheinbar durch den anderen hindurch verläuft, wie ein Kettenglied oder eine überdimensionale Acht, die aus dem Boden aufsteigt. Der konstruktive Aufwand, zwei Loops so zu verschachteln, dass sich die Schienen nicht tatsächlich berühren, ist erheblich — der visuelle Effekt macht die Elemente jedoch zu einem markanten Blickfang im Parkpanorama.\n\nVerschlungene Loops werden am häufigsten mit B&M Inverted Coasters und Sitzachterbahnen mit hoher Inversionsanzahl assoziiert. Dragon Khan im PortAventura, lange einer der bekanntesten europäischen Coaster, weist verschlungene Loops als Teil seines acht-Inversions-Layouts auf, und der sich kreuzende Loops-Abschnitt gehört zu den meistfotografierten Streckenpassagen des Rides.',
     relatedTermIds: ['vertical-loop', 'inversion', 'b-and-m'],
-    aliases: ['Verschlungene Loops', 'Interlocking Loops', 'sich kreuzende Loops'],
+    alternateNames: ['Verschlungene Loops', 'Interlocking Loops', 'sich kreuzende Loops'],
   },
   {
     id: 'anti-rollback',
@@ -1684,7 +1678,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Anti-Rollback-System (auch Rollback-Sperrklinke oder Anti-Rollback-Dog) ist eine mechanische Sicherungsvorrichtung entlang der Unterseite eines Liftbergs. Während der Zug aufsteigt, rasten federbelastete Metallklinken — sogenannte „Dogs" — über eine Zahnreihe, die in die Liftberg-Struktur eingelassen ist. Falls die Kette oder der Antrieb versagen würde, würden die Klinken in den Zähnen einrasten und den Zug blockieren, sodass er nicht rückwärts abrutschen kann. Das Rasten der Klinken über die Zähne erzeugt das rhythmische Klick-Klack-Geräusch, das zu den bekanntesten akustischen Erkennungszeichen klassischer Achterbahnen gehört.\n\nBei modernen Bahnen mit lautlosen Kabelliften oder LSM-betriebenen Liftbergen werden Anti-Rollback-Klinken oft durch leise elektromagnetische Bremssysteme ersetzt — weshalb neuere Anlagen am Liftberg auffällig leiser sind. Enthusiasten vermissen dieses akustische Ritual manchmal als Teil des klassischen Achterbahn-Erlebnisses.',
     relatedTermIds: ['lifthill', 'rollback', 'launch-coaster'],
-    aliases: ['Anti-Rollback-System', 'Rollback-Sperre', 'Click-Clack', 'Sperrklinke'],
+    alternateNames: ['Anti-Rollback', 'Rollback-Sperre', 'Click-Clack', 'Sperrklinke'],
   },
   {
     id: 'head-choppers',
@@ -1694,7 +1688,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Head Choppers sind bewusst eingesetzte Gestaltungselemente, bei denen Träger, Querstreben, Tunnel oder andere Streckenabschnitte in dem Moment knapp über den Köpfen der Fahrgäste vorbeiziehen, in dem der Zug in Höchstgeschwindigkeit unterwegs ist. Die Nähe und das Timing erzeugen eine starke Illusion drohender Gefahr — obwohl die Abstände exakt berechnet sind und keine echte Gefahr besteht. Der Effekt ist besonders stark, wenn Fahrgäste unvorbereitet sind: Ein Zug, der aus einer geneigten Kurve herausbeschleunigt, kann unter einem tiefen Träger hindurchschießen, bevor das Gehirn die Situation einordnen kann.\n\nHead Choppers sind vor allem mit eng gebauten Holzachterbahnen und mit Inverted Coasters verbunden, wo die hängenden Beine der Fahrgäste und das tief liegende Profil der Züge besonders nahe an Stützen, Stationsgebäude und andere Streckenabschnitte heranführen. Für viele Enthusiasten sind gut gemachte Head Choppers ein Zeichen kreativer Streckenführung.',
     relatedTermIds: ['roller-coaster-element', 'inverted-coaster', 'twister-coaster'],
-    aliases: ['Head Chopper', 'Beinahe-Kollision', 'Near Miss'],
+    alternateNames: ['Head Chopper', 'Beinahe-Kollision', 'Near Miss'],
   },
   {
     id: 'stapling',
@@ -1704,7 +1698,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Stapling bezeichnet die Praxis — ob absichtlich oder übervorsichtig — eines Operators, der einen Schoßbügel oder Schulterbügel so fest gegen den Fahrgast drückt, dass er deutlich enger sitzt als für die Sicherheit notwendig. Der Begriff leitet sich vom Gefühl ab, in den Sitz „geheftet" zu sein. Bei Airtime-orientierten Achterbahnen sollen Schoßbügel so locker sitzen, dass Fahrgäste an den Kammkuppen tatsächlich leicht vom Sitz abheben können — das ist Airtime. Wer gestapelt ist, wird während der gesamten Fahrt flach in den Sitz gepresst und kann das beabsichtigte Schwebebefühl nicht erleben, egal wie gut die Hügel gestaltet sind.\n\nStapling ist ein häufiger Kritikpunkt in der Enthusiasten-Community, insbesondere bei Holzachterbahnen und Hybrid-Coastern, wo Airtime die Hauptattraktion ist. Manche Parks sind für konsequent lockere, fahrerfreundliche Bügelpolitik bekannt; andere werden für systematisches Überzurren kritisiert.',
     relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'ejector-airtime'],
-    aliases: ['Stapled', 'Überstapeln', 'zu fester Bügel', 'Bügel zu eng'],
+    aliases: ['Stapled'],
+    alternateNames: ['Überstapeln', 'zu fester Bügel', 'Bügel zu eng'],
   },
   {
     id: 'valleying',
@@ -1714,7 +1709,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Valleying (deutsch: „im Tal stecken bleiben") tritt auf, wenn ein Zug während der Fahrt zu viel kinetische Energie verliert, keinen ausreichenden Schwung mehr hat, um den nächsten Hügel oder das nächste Element zu überwinden, und zum Stillstand kommt — oder zurückrollt — in einem Tiefpunkt zwischen zwei Hochpunkten der Strecke. Da der Zug nun an einem Tiefpunkt steht und nicht an einer Bremsstrecke oder im Bahnhof, kann er mit den normalen Betriebssystemen nicht bewegt werden. Die Bergung erfordert in der Regel Wartungspersonal, das den Zug manuell über den nächsten Hochpunkt schiebt oder windet und die Fahrgäste evakuiert.\n\nValleying ist unter normalen Betriebsbedingungen selten, da Anlagen mit erheblichen Geschwindigkeitspuffern ausgelegt werden. Wahrscheinlicher tritt es bei ungewöhnlich kaltem Wetter auf (wenn Radlager steif laufen), bei zu vielen Trimbremsen oder auf gealtertem Streckenbelag, dessen Geometrie sich verschoben hat.',
     relatedTermIds: ['rollback', 'trim-brake', 'brake-run', 'downtime'],
-    aliases: ['Valleyed', 'im Tal feststecken', 'stecken gebliebener Zug'],
+    alternateNames: ['Valleying', 'im Tal feststecken', 'stecken gebliebener Zug'],
   },
   {
     id: 'wild-mouse',
@@ -1724,7 +1719,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine Wilde Maus (englisch: Wild Mouse) nutzt kleine Wagen für zwei bis vier Personen statt langer Züge. Das Markenzeichen ist eine Reihe enger, kaum überhöhter Haarnadel-Kurven, die an den äußersten Kanten der Strecke ausgeführt werden. Da die Kurven nicht steil überhöht sind — anders als bei anderen Achterbahnen — werden Fahrgäste seitlich gegen die Wagenwand gedrückt, und die Trägheit der Anfahrt lässt die Kurve später als erwartet kommen. Dies erzeugt überzeugend das Gefühl, gleich von der Strecke zu rutschen.\n\nWilde-Maus-Achterbahnen gehören zu den platzsparendsten Designs überhaupt und verpacken erstaunlich viel Strecke in ein kompaktes Gelände, indem die Haarnadel-Ebenen übereinander gestapelt werden. Sie sind in ganz Europa und weltweit verbreitet — insbesondere in Deutschland ist der Begriff „Wilde Maus" vielen Parkkunden geläufig. Hersteller sind unter anderem Mack Rides, Maurer und Gerstlauer.',
     relatedTermIds: ['spinning-coaster', 'steel-coaster', 'mack-rides', 'gerstlauer'],
-    aliases: ['Wilde Maus', 'Wild Mouse', 'Mausbahn'],
+    alternateNames: ['Wilde Maus', 'Wild Mouse', 'Mausbahn'],
   },
   {
     id: 'fourth-dimension-coaster',
@@ -1740,7 +1735,12 @@ const translations: GlossaryTermTranslation[] = [
       's-and-s-worldwide',
       'inversion',
     ],
-    aliases: ['4D Coaster', '4D-Achterbahn', 'Fourth Dimension', 'Free Spin Coaster'],
+    alternateNames: [
+      '4D Coaster',
+      '4D-Achterbahn',
+      'Fourth Dimension Coaster',
+      'Free Spin Coaster',
+    ],
   },
   {
     id: 'out-and-back',
@@ -1750,7 +1750,12 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Out-and-Back ist einer der zwei grundlegenden Achterbahn-Layouttypen. Der Zug verlässt den Bahnhof, fährt in einer im Wesentlichen geraden Richtung heraus — typischerweise über eine Reihe von Hügeln, die für Airtime optimiert sind —, dreht am Ende des Geländes um und kehrt parallel zur Ausfahrtstrecke zurück. Die beiden Abschnitte kreuzen sich kaum und ergeben einen langen, schmalen Grundriss.\n\nOut-and-Back-Designs sind eng mit klassischen Holzachterbahnen verbunden, bei denen die auf der langen Ausfahrt aufgebaute Geschwindigkeit auf dem Rückweg durch eine Folge immer schnellerer, niedrigerer Hügel mit maximalem Floater-Airtime ausgenutzt wird. Zu den bekanntesten Beispielen zählen The Voyage im Holiday World und verschiedene Racer-Modelle. Stahlachterbahnen können ebenfalls Out-and-Back-Layouts folgen, obwohl dieser Stil im Stahlbereich weniger verbreitet ist.',
     relatedTermIds: ['twister-coaster', 'airtime', 'wooden-coaster', 'airtime-hill'],
-    aliases: ['Out and Back', 'Out-and-Back-Layout', 'Hin-und-Rück-Coaster'],
+    alternateNames: [
+      'Out and Back',
+      'Out-and-Back-Layout',
+      'Out-and-Back Coaster',
+      'Hin-und-Rück-Coaster',
+    ],
   },
   {
     id: 'twister-coaster',
@@ -1760,7 +1765,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Twister-Coaster (auch Cyclone-Layout) ist ein Achterbahn-Design, bei dem die Strecke spiralförmig verläuft, zurückfaltet und sich immer wieder über oder unter sich selbst kreuzt, anstatt dem einfachen Zwei-Bein-Pfad eines Out-and-Back-Layouts zu folgen. Das Kennzeichen ist, dass der Zug häufig in unmittelbarer Nähe anderer Streckenabschnitte desselben Rides vorbeifährt — oft in verschiedene Richtungen und auf verschiedenen Höhen —, was Head-Chopper-Effekte und visuelle Komplexität erzeugt.\n\nTwister-Layouts nutzen das Gelände effizient: Viel Streckenlänge und Höhenunterschied passen in einen relativ kompakten, annähernd quadratischen oder rechteckigen Grundriss. Holz-Twister-Classics sind unter anderem der Twister im Gröna Lund in Stockholm; Stahl-Twister umfassen viele B&M- und Intamin-Designs. Da der Zug ständig die Richtung wechselt, wirken Twister-Layouts tendenziell intensiver und visuell komplexer als Out-and-Back-Designs.',
     relatedTermIds: ['out-and-back', 'wooden-coaster', 'head-choppers', 'helix'],
-    aliases: ['Twister-Layout', 'Cyclone-Layout', 'Twister Coaster'],
+    aliases: ['Twister-Layout'],
+    alternateNames: ['Twister Coaster', 'Cyclone-Layout', 'Twister'],
   },
   {
     id: 'mae',
@@ -1770,7 +1776,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'MAE (Mean Absolute Error, mittlerer absoluter Fehler) ist das Standardmaß für die Vorhersagegenauigkeit bei park.fan. Er berechnet die durchschnittliche Differenz – in Minuten – zwischen jeder vorhergesagten Wartezeit und der tatsächlich an der Attraktion gemessenen Wartezeit. Ein MAE von 8 Minuten bedeutet, dass die Vorhersagen im Schnitt 8 Minuten daneben liegen.\n\nDer MAE gewichtet jeden Fehler gleich: Ein 5-Minuten-Fehler und ein 15-Minuten-Fehler gehen linear in den Durchschnitt ein. Das macht ihn intuitiv verständlich – ein MAE von 10 bedeutet: „Die Vorhersagen liegen typischerweise innerhalb von 10 Minuten an der Realität." Ein niedrigerer MAE bedeutet immer genauere Vorhersagen.',
     relatedTermIds: ['rmse', 'mape', 'r-squared', 'ai-forecast'],
-    aliases: ['Mean Absolute Error'],
+    alternateNames: ['Mean Absolute Error'],
   },
   {
     id: 'rmse',
@@ -1780,7 +1786,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'RMSE (Root Mean Square Error, mittlere quadratische Abweichung) misst die Vorhersagegenauigkeit, indem jeder Fehler vor der Mittelung quadriert wird. Dadurch tragen große Ausreißer – z. B. eine Wartezeit, die 40 Minuten falsch vorhergesagt wurde – viel stärker zum RMSE bei als ein kleiner 5-Minuten-Fehler. Der RMSE ist immer gleich oder größer als der MAE für denselben Datensatz.\n\nEin großer Unterschied zwischen RMSE und MAE zeigt an, dass das Modell gelegentlich starke Ausreißer produziert, auch wenn die meisten Vorhersagen nah an der Realität sind. Beide Kennzahlen sind live auf der Startseite von park.fan einsehbar.',
     relatedTermIds: ['mae', 'mape', 'r-squared', 'ai-forecast'],
-    aliases: ['Root Mean Square Error'],
+    alternateNames: ['Root Mean Square Error'],
   },
   {
     id: 'mape',
@@ -1790,7 +1796,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'MAPE (Mean Absolute Percentage Error, mittlerer absoluter prozentualer Fehler) drückt die Vorhersagegenauigkeit als Prozentzahl aus, nicht als absolute Minutenzahl. Statt „8 Minuten daneben" lautet die Aussage „15 % der tatsächlichen Wartezeit daneben". Das ist nützlich, um die Genauigkeit bei Attraktionen mit sehr unterschiedlichen Wartezeiten zu vergleichen – ein 10-Minuten-Fehler bei einer Attraktion mit normalerweise 15 Minuten Wartezeit ist viel gravierender als bei einer mit 90 Minuten.\n\nDer MAPE kann irreführend hoch sein, wenn die tatsächlichen Wartezeiten sehr kurz sind. Deshalb zeigt park.fan ihn immer zusammen mit MAE und RMSE.',
     relatedTermIds: ['mae', 'rmse', 'r-squared', 'ai-forecast'],
-    aliases: ['Mean Absolute Percentage Error'],
+    alternateNames: ['Mean Absolute Percentage Error'],
   },
   {
     id: 'r-squared',
@@ -1800,7 +1806,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'R² (R-Quadrat, auch Bestimmtheitsmaß) misst, wie viel der Schwankungen in echten Wartezeiten das Modell erfolgreich erklären kann. Ein Wert von 1,0 würde bedeuten, dass das Modell jede Warteschlange perfekt vorhersagt; 0,0 bedeutet, dass es nichts über einen einfachen Durchschnitt hinaus erklärt. In der Praxis gelten Werte über 0,7 als stark, Werte über 0,9 als ausgezeichnet.\n\nFür Wartezeit-Prognosen ist ein hoher R²-Wert schwer zu erreichen, da Warteschlangen von unvorhersehbaren Ereignissen beeinflusst werden – Attraktionsausfälle, plötzliche Wetteränderungen, spontane Veranstaltungen. Der park.fan-R²-Wert spiegelt die reale Performance über alle verfolgten Vorhersagen wider und wird täglich aktualisiert.',
     relatedTermIds: ['mae', 'rmse', 'mape', 'ai-forecast'],
-    aliases: ['R-squared', 'Bestimmtheitsmaß'],
+    alternateNames: ['R-squared', 'Bestimmtheitsmaß'],
   },
   {
     id: 'seasonal-attraction',
@@ -1810,7 +1816,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine saisonale Attraktion ist eine Fahrt, Show oder ein Erlebnis, das der Park nur in einem definierten Teil des Jahres anbietet. Eislaufflächen, Rodelstrecken und winterliche Shows laufen typischerweise von November bis Februar; Wildwasserbahnen, Wasserabenteuer und Open-Air-Spektakel von Mai bis September. Manche saisonalen Angebote sind an spezifische Events wie Halloween oder Weihnachten gebunden.\n\npark.fan erkennt saisonale Attraktionen und Shows automatisch anhand historischer Betriebsdaten und blendet sie in der Parkübersicht und auf der Karte aus, sobald sie außerhalb ihrer aktiven Monate sind – um die Ansicht übersichtlich zu halten und den Fokus auf das zu lenken, was heute tatsächlich geöffnet ist. Ein saisonales Badge (❄️ Winter, ☀️ Sommer oder 🍃 generisch) erscheint auf jeder betroffenen Karte. Ist die Attraktion gerade nicht in Saison, wird das Badge gedimmt dargestellt. Ein Toggle-Button in den Tabs lässt die versteckten Einträge bei Bedarf einblenden – z. B. für die Vorausplanung eines Winterbesuchs.',
     relatedTermIds: ['offseason', 'refurbishment', 'crowd-calendar'],
-    aliases: ['Saisonfahrt', 'saisonale Show', 'Saisonangebot'],
+    alternateNames: ['Saisonfahrt', 'saisonale Show', 'Saisonangebot'],
   },
 ];
 
