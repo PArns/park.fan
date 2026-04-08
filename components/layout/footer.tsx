@@ -4,6 +4,8 @@ import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
   locale: string;
@@ -11,6 +13,7 @@ interface FooterProps {
 
 export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
+  const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = new Date().getFullYear();
 
@@ -359,7 +362,7 @@ export async function Footer({ locale }: FooterProps) {
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link
-              href="/glossary"
+              href={glossaryPath}
               prefetch={false}
               className="hover:text-foreground text-sm transition-colors"
             >

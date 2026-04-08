@@ -89,7 +89,7 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "howto": "How do I use park.fan?",
-      "glossary": "Theme Park Glossary"
+      "glossary": "Theme Park Dictionary"
     },
     "sections": {
       "explore": "Explore by Region",
@@ -187,7 +187,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "How it works",
-    "glossaryLink": "Glossary",
+    "glossaryLink": "Dictionary",
     "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
     "howto": "Guide",
-    "glossary": "Glossary"
+    "glossary": "Dictionary"
   },
   "theme": {
     "light": "Light",
@@ -627,7 +627,8 @@
       "south-korea": "South Korea",
       "singapore": "Singapore",
       "australia": "Australia",
-      "brazil": "Brazil"
+      "brazil": "Brazil",
+      "singapore": "Singapore"
     },
     "parksIn": "Theme Parks in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
@@ -692,7 +693,7 @@
       "location": "Locations ({count})",
       "nearby": "Nearby Parks",
       "inPark": "You're at {park}",
-      "glossary": "Glossary ({count})"
+      "glossary": "Dictionary ({count})"
     },
     "keyboard": {
       "navigate": "Navigate",
@@ -841,15 +842,15 @@
     "removeFromFavorites": "Remove from favorites"
   },
   "glossary": {
-    "overviewTitle": "Theme Park Glossary",
-    "overviewDescription": "Theme park jargon can be confusing — what exactly is a crowd level, what does 'refurbishment' mean, and what's the difference between a virtual queue and a Lightning Lane? This glossary explains over {count} terms covering wait times, crowd levels, ride elements, single rider, fast pass, soft openings, and more — in plain language.",
-    "overviewKeywords": "theme park glossary, wait time definition, crowd level meaning, roller coaster terms, virtual queue, theme park vocabulary, amusement park terms",
-    "termTitleSuffix": "Theme Park Glossary",
+    "overviewTitle": "Theme Park Dictionary",
+    "overviewDescription": "Theme park jargon can be confusing — what exactly is a crowd level, what does 'refurbishment' mean, and what's the difference between a virtual queue and a Lightning Lane? This dictionary explains over {count} terms covering wait times, crowd levels, ride elements, single rider, fast pass, soft openings, and more — in plain language.",
+    "overviewKeywords": "theme park dictionary, wait time definition, crowd level meaning, roller coaster terms, virtual queue, theme park vocabulary, amusement park terms",
+    "termTitleSuffix": "Theme Park Dictionary",
     "termH1Suffix": "Explained – Theme Park Definition",
-    "overviewH1": "Theme Park Glossary – All Terms & Definitions",
+    "overviewH1": "Theme Park Dictionary – All Terms & Definitions",
     "relatedTerms": "Related Terms",
     "alsoKnownAs": "Also known as",
-    "backToGlossary": "Back to Glossary",
+    "backToGlossary": "Back to Dictionary",
     "category": {
       "wait-times": "Wait Times",
       "crowd-levels": "Crowd Levels",

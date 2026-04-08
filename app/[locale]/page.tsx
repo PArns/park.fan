@@ -2,6 +2,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import type { Locale } from '@/i18n/config';
 import { Clock, TrendingUp, ChevronRight, Map as MapIcon, BookOpen, Tag } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
@@ -100,6 +102,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
 
   const t = await getTranslations('stats');
   const tHome = await getTranslations('home');
@@ -174,7 +177,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     {tHome('hero.howto')}
                   </Link>
                   <Link
-                    href="/glossary"
+                    href={glossaryPath}
                     prefetch={false}
                     className="text-primary/70 hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:underline"
                   >

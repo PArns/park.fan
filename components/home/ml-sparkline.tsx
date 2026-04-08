@@ -69,41 +69,39 @@ export function MLSparkline({ history, metric, height = 140, unit, decimals = 1 
   const padding = (max - min) * 0.2 || 1;
 
   return (
-    <div style={{ height: height ?? '100%' }}>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
-          <YAxis domain={[min - padding, max + padding]} hide />
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke={BRAND_BLUE}
-            strokeWidth={2}
-            dot={false}
-            isAnimationActive={false}
+    <ResponsiveContainer width="100%" height={height}>
+      <LineChart data={data} margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
+        <YAxis domain={[min - padding, max + padding]} hide />
+        <Line
+          type="monotone"
+          dataKey="value"
+          stroke={BRAND_BLUE}
+          strokeWidth={2}
+          dot={false}
+          isAnimationActive={false}
+        />
+        {activeDot && (
+          <ReferenceDot
+            x={activeDot.label}
+            y={activeDot.value}
+            r={4}
+            fill={BRAND_BLUE}
+            stroke="#fff"
+            strokeWidth={1.5}
+            label={{
+              value: `${activeDot.value.toFixed(decimals)}${unit ? ` ${unit}` : ''}`,
+              position: 'top',
+              fill: BRAND_BLUE,
+              fontSize: 11,
+              fontWeight: 600,
+            }}
           />
-          {activeDot && (
-            <ReferenceDot
-              x={activeDot.label}
-              y={activeDot.value}
-              r={4}
-              fill={BRAND_BLUE}
-              stroke="#fff"
-              strokeWidth={1.5}
-              label={{
-                value: `${activeDot.value.toFixed(decimals)}${unit ? ` ${unit}` : ''}`,
-                position: 'top',
-                fill: BRAND_BLUE,
-                fontSize: 11,
-                fontWeight: 600,
-              }}
-            />
-          )}
-          <Tooltip
-            content={<SparklineTooltip unit={unit} decimals={decimals} />}
-            cursor={{ stroke: '#888', strokeWidth: 1, strokeDasharray: '3 3' }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+        )}
+        <Tooltip
+          content={<SparklineTooltip unit={unit} decimals={decimals} />}
+          cursor={{ stroke: '#888', strokeWidth: 1, strokeDasharray: '3 3' }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }

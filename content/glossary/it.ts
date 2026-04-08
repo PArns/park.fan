@@ -1051,8 +1051,30 @@ const translations: GlossaryTermTranslation[] = [
       "L'unità di accelerazione sperimentata dai passeggeri, misurata come multipli dell'accelerazione gravitazionale terrestre (9,81 m/s²).",
     definition:
       "La forza G (equivalente gravitazionale) misura l'accelerazione che un passeggero sperimenta rispetto alla gravità normale della Terra. Le forze G positive (sopra 1G) schiacciano i passeggeri nel sedile durante passaggi in avvallamenti o curve strette. Le forze G negative (sotto 0G) sollevano i passeggeri dal sedile, creando airtime. Le forze G laterali agiscono orizzontalmente, spingendo i passeggeri di lato nelle curve e nelle transizioni.\n\nLe montagne russe sono progettate per sequenziare queste forze deliberatamente. Un avvallamento che genera 4–5G è il marchio di un primo drop potente. Un breve momento a −0,5G su una collina di airtime produce la caratteristica sensazione di galleggiamento. La maggior parte delle attrazioni mira a 0–5G di forze positive sostenute, con brevi picchi per effetti drammatici. Un'esposizione prolungata a forze G elevate può causare disagio o greyout; le montagne russe ben progettate bilanciano picchi di intensità con sezioni di recupero.",
-    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime', 'greyout'],
     aliases: ['Forze G', 'G-Forces'],
+  },
+  {
+    id: 'greyout',
+    name: 'Greyout',
+    shortDefinition:
+      'Oscuramento temporaneo della visione causato dalle forze G positive che riducono il flusso sanguigno al cervello.',
+    definition:
+      "Il greyout (anche grey-out) è un fenomeno fisiologico in cui un passeggero soggetto a forti forze G positive prolungate sperimenta temporaneamente un campo visivo grigio o velato. Il meccanismo: le forze G positive spingono il sangue verso il basso, nelle estremità, riducendo l'afflusso di sangue agli occhi e al cervello. Il campo visivo comincia a restringersi dalla periferia e diventa grigio — il passeggero rimane cosciente, ma con la visione significativamente compromessa.\n\nOltre al greyout, un'esposizione più intensa o prolungata alle forze G può portare al blackout (visione completamente buia) o al G-LOC (perdita di coscienza indotta dalle forze G). Le montagne russe ben progettate mantengono i picchi di G elevati brevi e alternano sezioni intense con sezioni di recupero.",
+    aliases: ['Greyouts', 'grey-out'],
+    alternateNames: ['visione grigia', 'velo grigio', 'oscuramento da G'],
+    relatedTermIds: ['g-force', 'lateral-gs', 'hangtime', 'airtime'],
+  },
+  {
+    id: 'grey-zone',
+    name: 'Zona grigia',
+    shortDefinition:
+      'Un elemento di montagna russa al confine della definizione di inversione — contato o meno secondo il metodo di conteggio utilizzato.',
+    definition:
+      "La zona grigia designa gli elementi di montagna russa situati al confine tra un'inversione completa e un elemento non-invertente. Le inversioni classiche — come i looping verticali e i cavatappi — sono inequivocabili: il treno ruota il passeggero completamente a testa in giù. Gli elementi in zona grigia raggiungono appena o non raggiungono la soglia dei 180° overhead, mettendo i passeggeri in una posizione estrema, quasi invertita.\n\nGli elementi tipici in zona grigia includono gli stall (posizioni a testa in giù mantenute senza rotazione completa), i virages fortemente sovrainclinati oltre 90° e alcune varianti di wave turn. Produttori come RMC e Intamin utilizzano deliberatamente questi elementi come alternativa alle inversioni classiche. A seconda del metodo di conteggio — stretto (solo rotazioni complete) o ampio (qualsiasi posizione overhead) — il numero ufficiale di inversioni di un'attrazione può variare.",
+    aliases: ['Zone grigie', 'zona-grigia'],
+    alternateNames: ['inversione borderline', 'quasi-inversione'],
+    relatedTermIds: ['inversion', 'stall', 'overbank', 'roller-coaster-element'],
   },
   {
     id: 'lateral-gs',

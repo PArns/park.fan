@@ -187,7 +187,7 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "howto": "Anleitung",
-    "glossaryLink": "Glossar",
+    "glossaryLink": "Wörterbuch",
     "datenschutz": "Datenschutzerklärung",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
     "howto": "Anleitung",
-    "glossary": "Glossar"
+    "glossary": "Wörterbuch"
   },
   "theme": {
     "light": "Hell",
@@ -627,7 +627,8 @@
       "south-korea": "Südkorea",
       "singapore": "Singapur",
       "australia": "Australien",
-      "brazil": "Brasilien"
+      "brazil": "Brasilien",
+      "singapore": "Singapur"
     },
     "parksIn": "Freizeitparks in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
@@ -692,7 +693,7 @@
       "location": "Orte ({count})",
       "nearby": "Parks in der Nähe",
       "inPark": "Du bist in {park}",
-      "glossary": "Glossar ({count})"
+      "glossary": "Wörterbuch ({count})"
     },
     "keyboard": {
       "navigate": "Navigieren",
@@ -841,15 +842,15 @@
     "removeFromFavorites": "Aus Favoriten entfernen"
   },
   "glossary": {
-    "overviewTitle": "Freizeitpark-Glossar",
-    "overviewDescription": "Freizeitparkjargon versteht ja keiner – was genau ist ein Crowd Level, was bedeutet Refurbishment, und was hat ein ILL mit der Warteschlange zu tun? Dieses Glossar erklärt über {count} Fachbegriffe rund um Wartezeiten, Besucherdichte, Achterbahnelemente, virtuelle Warteschlangen, Single Rider, Fast Pass, Soft Opening und vieles mehr – einfach und auf den Punkt.",
-    "overviewKeywords": "Freizeitpark Glossar, Wartezeit Bedeutung, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe, Freizeitpark Lexikon",
-    "termTitleSuffix": "Themenpark-Glossar",
+    "overviewTitle": "Freizeitpark-Wörterbuch",
+    "overviewDescription": "Freizeitparkjargon versteht ja keiner – was genau ist ein Crowd Level, was bedeutet Refurbishment, und was hat ein ILL mit der Warteschlange zu tun? Dieses Wörterbuch erklärt über {count} Fachbegriffe rund um Wartezeiten, Besucherdichte, Achterbahnelemente, virtuelle Warteschlangen, Single Rider, Fast Pass, Soft Opening und vieles mehr – einfach und auf den Punkt.",
+    "overviewKeywords": "Freizeitpark Wörterbuch, Wartezeit Bedeutung, Besucherdichte, Achterbahn Begriffe, virtuelle Warteschlange, Freizeitpark Fachbegriffe, Freizeitpark Lexikon",
+    "termTitleSuffix": "Freizeitpark-Wörterbuch",
     "termH1Suffix": "erklärt – Wortbedeutung",
-    "overviewH1": "Freizeitpark-Glossar – Alle Begriffe & Definitionen",
+    "overviewH1": "Freizeitpark-Wörterbuch – Alle Begriffe & Definitionen",
     "relatedTerms": "Verwandte Begriffe",
     "alsoKnownAs": "Auch bekannt als",
-    "backToGlossary": "Zurück zum Glossar",
+    "backToGlossary": "Zurück zum Wörterbuch",
     "category": {
       "wait-times": "Wartezeiten",
       "crowd-levels": "Besucherdichte",

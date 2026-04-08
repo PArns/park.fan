@@ -1054,7 +1054,29 @@ const translations: GlossaryTermTranslation[] = [
       'La fuerza G (equivalente gravitacional) mide la aceleración que experimenta un pasajero en relación con la gravedad normal de la Tierra. Las fuerzas G positivas (por encima de 1G) presionan a los pasajeros contra sus asientos al pasar por valles o curvas cerradas. Las fuerzas G negativas (por debajo de 0G) levantan a los pasajeros de sus asientos y crean airtime. Las fuerzas G laterales actúan horizontalmente, empujando a los pasajeros hacia los lados en curvas y transiciones.\n\nLas montañas rusas están diseñadas para secuenciar estas fuerzas de forma deliberada. Un valle que genera 4–5G es la marca de una transición del primer descenso potente. Un breve momento de −0,5G en una colina de airtime produce la característica sensación de flotación. La mayoría de las atracciones apuntan a 0–5G de fuerzas positivas sostenidas, con picos breves para efectos dramáticos. Una exposición prolongada a fuerzas G elevadas puede causar malestar o greyout; las montañas rusas bien diseñadas equilibran los picos de intensidad con secciones de recuperación.',
     aliases: ['Fuerzas G', 'G-Forces'],
     alternateNames: ['G-Force'],
-    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime', 'greyout'],
+  },
+  {
+    id: 'greyout',
+    name: 'Greyout',
+    shortDefinition:
+      'Oscurecimiento temporal de la visión causado por las fuerzas G positivas que reducen el flujo sanguíneo al cerebro.',
+    definition:
+      'El greyout (también grey-out) es un fenómeno fisiológico en el que un pasajero sometido a fuerzas G positivas intensas experimenta temporalmente un campo visual grisáceo o velado. El mecanismo: las fuerzas G positivas empujan la sangre hacia abajo, a las extremidades, reduciendo el riego sanguíneo de los ojos y el cerebro. El campo visual comienza a cerrarse desde los bordes y se vuelve gris — el pasajero permanece consciente, pero con la visión significativamente reducida.\n\nMás allá del greyout, una exposición mayor o prolongada a las fuerzas G puede provocar un blackout (visión completamente oscura) o G-LOC (pérdida de conciencia inducida por fuerzas G). Las montañas rusas bien diseñadas mantienen los picos de G elevados breves y alternan secciones intensas con secciones de recuperación.',
+    aliases: ['Greyouts', 'grey-out', 'visión gris'],
+    alternateNames: ['velo gris', 'oscurecimiento por G'],
+    relatedTermIds: ['g-force', 'lateral-gs', 'hangtime', 'airtime'],
+  },
+  {
+    id: 'grey-zone',
+    name: 'Zona gris',
+    shortDefinition:
+      'Un elemento de montaña rusa en el límite de la definición de inversión — contado o no según el método de recuento utilizado.',
+    definition:
+      'La zona gris designa los elementos de montaña rusa situados en la frontera entre una inversión completa y un elemento no invertido. Las inversiones clásicas — como los loopings verticales y los tirabuzones — son inequívocas: el tren gira al pasajero completamente boca abajo. Los elementos de zona gris alcanzan apenas o no alcanzan el umbral de 180° overhead, colocando a los pasajeros en una posición extrema, casi invertida.\n\nLos elementos típicos de zona gris incluyen los stalls (posiciones boca abajo mantenidas sin rotación completa), los virages fuertemente sobreinclinados más allá de 90° y ciertas variaciones de wave turns. Fabricantes como RMC e Intamin utilizan deliberadamente estos elementos como alternativa a las inversiones clásicas. Según el método de recuento — estricto (solo rotaciones completas) o amplio (cualquier posición overhead) — el número oficial de inversiones de una atracción puede variar.',
+    aliases: ['Zonas grises', 'zona-gris'],
+    alternateNames: ['inversión borderline', 'cuasi-inversión'],
+    relatedTermIds: ['inversion', 'stall', 'overbank', 'roller-coaster-element'],
   },
   {
     id: 'lateral-gs',

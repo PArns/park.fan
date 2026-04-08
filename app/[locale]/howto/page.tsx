@@ -2398,7 +2398,7 @@ function ContentDE() {
       <Section id="glossar" title="Das Glossar & Fachbegriff-Hervorhebung">
         <p className="text-muted-foreground mb-4">
           park.fan pflegt ein vollständiges{' '}
-          <Link href="/glossary" className="text-primary underline">
+          <Link href="/glossar" className="text-primary underline">
             Glossar der Freizeitpark-Fachbegriffe
           </Link>{' '}
           –{' '}
@@ -2431,7 +2431,7 @@ function ContentDE() {
 
         <TipBox label="Tipp">
           Das vollständige Glossar ist unter{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
+          <Link href="/glossar" className="text-primary font-medium underline">
             park.fan/glossar
           </Link>{' '}
           <GlossaryInject>
@@ -4439,7 +4439,7 @@ function ContentESSections() {
       <Section id="glossar" title="El Glosario y Resaltado de Términos">
         <p className="text-muted-foreground mb-4">
           park.fan mantiene un{' '}
-          <Link href="/glossary" className="text-primary underline">
+          <Link href="/glosario" className="text-primary underline">
             glosario completo de términos de parques temáticos
           </Link>{' '}
           –{' '}
@@ -4468,7 +4468,7 @@ function ContentESSections() {
 
         <TipBox label="Consejo">
           El glosario completo está disponible en{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
+          <Link href="/glosario" className="text-primary font-medium underline">
             park.fan/glosario
           </Link>{' '}
           con términos organizados en 7 categorías.
@@ -5345,7 +5345,7 @@ function ContentFRSections() {
       <Section id="glossar" title="Le Glossaire et la Mise en Évidence des Termes">
         <p className="text-muted-foreground mb-4">
           park.fan maintient un{' '}
-          <Link href="/glossary" className="text-primary underline">
+          <Link href="/glossaire" className="text-primary underline">
             glossaire complet des termes des parcs à thème
           </Link>{' '}
           –{' '}
@@ -5374,7 +5374,7 @@ function ContentFRSections() {
 
         <TipBox label="Conseil">
           Le glossaire complet est disponible sur{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
+          <Link href="/glossaire" className="text-primary font-medium underline">
             park.fan/glossaire
           </Link>{' '}
           avec des termes organisés en 7 catégories.
@@ -6233,7 +6233,7 @@ function ContentITSections() {
       <Section id="glossar" title="Il Glossario e l'Evidenziazione dei Termini">
         <p className="text-muted-foreground mb-4">
           park.fan mantiene un{' '}
-          <Link href="/glossary" className="text-primary underline">
+          <Link href="/glossario" className="text-primary underline">
             glossario completo dei termini dei parchi a tema
           </Link>{' '}
           –{' '}
@@ -6262,7 +6262,7 @@ function ContentITSections() {
 
         <TipBox label="Suggerimento">
           Il glossario completo è disponibile su{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
+          <Link href="/glossario" className="text-primary font-medium underline">
             park.fan/glossario
           </Link>{' '}
           con termini organizzati in 7 categorie.
@@ -7101,7 +7101,7 @@ function ContentNLSections() {
       <Section id="glossar" title="De Woordenlijst & Termijn-Markering">
         <p className="text-muted-foreground mb-4">
           park.fan beheert een volledige{' '}
-          <Link href="/glossary" className="text-primary underline">
+          <Link href="/woordenboek" className="text-primary underline">
             woordenlijst van pretparkbegrippen
           </Link>{' '}
           –{' '}
@@ -7130,7 +7130,7 @@ function ContentNLSections() {
 
         <TipBox label="Tip">
           De volledige woordenlijst is beschikbaar op{' '}
-          <Link href="/glossary" className="text-primary font-medium underline">
+          <Link href="/woordenboek" className="text-primary font-medium underline">
             park.fan/woordenlijst
           </Link>{' '}
           met termen in 7 categorieën.

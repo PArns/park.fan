@@ -929,8 +929,30 @@ const translations: GlossaryTermTranslation[] = [
       "The unit of acceleration experienced by riders, measured as multiples of Earth's gravitational acceleration (9.81 m/s²).",
     definition:
       "G-force (gravitational force equivalent) measures the acceleration a rider's body experiences relative to Earth's gravity. Positive G-forces (above 1G) press riders into their seats as the train pulls through a valley or tight curve — the same force that makes you feel heavy in a fast car. Negative G-forces (below 0G) lift riders from their seats, creating airtime. Lateral G-forces act sideways, pushing riders across their seat on turns and transitions.\n\nRoller coasters are designed to sequence these forces deliberately. A sustained 4–5G valley is the hallmark of a powerful first drop transition. A brief −0.5G to −1G moment on an airtime hill produces the signature floating sensation. Most coasters target a range of 0–5G of sustained positive G-force, with brief spikes above this for dramatic effect. Sustained high-G exposure beyond a few seconds can cause discomfort or greyout; well-designed coasters balance intensity peaks with recovery sections.",
-    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime', 'greyout'],
     aliases: ['G-Forces', 'G Force', 'G Forces'],
+  },
+  {
+    id: 'greyout',
+    name: 'Greyout',
+    shortDefinition:
+      'A temporary greying of vision caused by positive G-forces reducing blood flow to the brain.',
+    definition:
+      'A greyout (also grey-out) is a physiological state in which a rider experiencing strong sustained positive G-forces temporarily sees a grey or washed-out visual field. The mechanism: positive G-forces pull blood downward toward the extremities, reducing circulation to the eyes and brain. The visual field begins to close in from the periphery and turns grey — the rider remains conscious and in control, but vision is significantly impaired.\n\nBeyond greyout, progressively stronger or longer G-exposure can lead to blackout (vision goes completely dark) or G-LOC (G-Force Induced Loss of Consciousness). Well-engineered coasters keep high-G peaks brief and follow intense sections with recovery elements to prevent greyout build-up.',
+    aliases: ['Greyouts', 'grey-out', 'gray-out', 'grayout'],
+    alternateNames: ['positive G blackout', 'G-force greying'],
+    relatedTermIds: ['g-force', 'lateral-gs', 'hangtime', 'airtime'],
+  },
+  {
+    id: 'grey-zone',
+    name: 'Grey Zone',
+    shortDefinition:
+      'A roller coaster element on the borderline of inversion classification — counted or not depending on the counting method used.',
+    definition:
+      "The grey zone (also gray zone) refers to roller coaster elements that sit at the boundary between a full inversion and a non-inverting element. Classic inversions — like vertical loops and corkscrews — are unambiguous: the train rotates the rider completely upside down. Grey zone elements either narrowly reach or fall just short of the 180° overhead threshold, placing riders in an extreme near-inverted position.\n\nTypical grey zone elements include stalls (sustained head-chopper holds without full rotation), heavily overbanked turns beyond 90°, and certain wave turn variations. Manufacturers like RMC and Intamin deliberately use these elements as an alternative to classic inversions. Depending on the counting method — strict (full rotations only) or broad (any overhead position) — a coaster's official inversion count can vary by several elements.",
+    aliases: ['Grey Zones', 'gray zone', 'gray zones'],
+    alternateNames: ['borderline inversion', 'near-inversion'],
+    relatedTermIds: ['inversion', 'stall', 'overbank', 'roller-coaster-element'],
   },
   {
     id: 'lateral-gs',

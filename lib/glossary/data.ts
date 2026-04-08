@@ -1247,6 +1247,30 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'greyout',
+    category: 'ride-experience',
+    slugs: {
+      en: 'greyout',
+      de: 'greyout',
+      fr: 'greyout',
+      it: 'greyout',
+      nl: 'greyout',
+      es: 'greyout',
+    },
+  },
+  {
+    id: 'grey-zone',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'grey-zone',
+      de: 'grauzone',
+      fr: 'zone-grise',
+      it: 'zona-grigia',
+      nl: 'grijze-zone',
+      es: 'zona-gris',
+    },
+  },
+  {
     id: 'lateral-gs',
     category: 'coaster-elements',
     slugs: {

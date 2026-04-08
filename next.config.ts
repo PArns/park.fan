@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
       de: 'glossar',
       fr: 'glossaire',
       it: 'glossario',
-      nl: 'woordenlijst',
+      nl: 'woordenboek',
       es: 'glosario',
     };
     const allSegments = Object.values(localeSegments);
@@ -92,7 +92,7 @@ const nextConfig: NextConfig = {
       de: 'glossar',
       fr: 'glossaire',
       it: 'glossario',
-      nl: 'woordenlijst',
+      nl: 'woordenboek',
       es: 'glosario',
     };
     const rules: { source: string; destination: string }[] = [];

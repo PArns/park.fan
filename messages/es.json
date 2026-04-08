@@ -89,7 +89,7 @@
       "cta": "Explorar Parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "howto": "¿Cómo uso park.fan?",
-      "glossary": "Glosario de parques temáticos"
+      "glossary": "Diccionario de parques temáticos"
     },
     "sections": {
       "explore": "Explorar por Región",
@@ -187,7 +187,7 @@
     "api": "Documentación API",
     "impressum": "Aviso Legal",
     "howto": "Cómo funciona",
-    "glossaryLink": "Glosario",
+    "glossaryLink": "Diccionario",
     "datenschutz": "Privacidad",
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "Cerca: {parkName}",
     "howto": "Guía",
-    "glossary": "Glosario"
+    "glossary": "Diccionario"
   },
   "theme": {
     "light": "Claro",
@@ -627,7 +627,8 @@
       "south-korea": "Corea del Sur",
       "singapore": "Singapur",
       "australia": "Australia",
-      "brazil": "Brasil"
+      "brazil": "Brasil",
+      "singapore": "Singapur"
     },
     "parksIn": "Parques temáticos en {location}",
     "parkCount": "{count, plural, =1 {1 parque} other {# parques}}",
@@ -692,7 +693,7 @@
       "location": "Ubicaciones ({count})",
       "nearby": "Parques cercanos",
       "inPark": "Estás en {park}",
-      "glossary": "Glosario ({count})"
+      "glossary": "Diccionario ({count})"
     },
     "keyboard": {
       "navigate": "Navegar",
@@ -841,15 +842,15 @@
     "removeFromFavorites": "Quitar de favoritos"
   },
   "glossary": {
-    "overviewTitle": "Glosario de Parques Temáticos",
-    "overviewDescription": "La jerga de los parques temáticos puede ser confusa — ¿qué es exactamente un crowd level, qué significa 'refurbishment' y cuál es la diferencia entre una cola virtual y un Lightning Lane? Este glosario explica más de {count} términos sobre tiempos de espera, afluencia, elementos de montaña rusa, single rider, fast pass, soft openings y más — explicados con claridad.",
-    "overviewKeywords": "glosario parque temático, definición tiempo de espera, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",
-    "termTitleSuffix": "Glosario de Parques Temáticos",
+    "overviewTitle": "Diccionario de Parques Temáticos",
+    "overviewDescription": "La jerga de los parques temáticos puede ser confusa — ¿qué es exactamente un crowd level, qué significa 'refurbishment' y cuál es la diferencia entre una cola virtual y un Lightning Lane? Este diccionario explica más de {count} términos sobre tiempos de espera, afluencia, elementos de montaña rusa, single rider, fast pass, soft openings y más — explicados con claridad.",
+    "overviewKeywords": "diccionario parque temático, definición tiempo de espera, nivel de afluencia, términos montaña rusa, cola virtual, vocabulario parque atracciones",
+    "termTitleSuffix": "Diccionario de Parques Temáticos",
     "termH1Suffix": "explicado – Definición",
-    "overviewH1": "Glosario de Parques Temáticos – Todos los términos y definiciones",
+    "overviewH1": "Diccionario de Parques Temáticos – Todos los términos y definiciones",
     "relatedTerms": "Términos relacionados",
     "alsoKnownAs": "También conocido como",
-    "backToGlossary": "Volver al glosario",
+    "backToGlossary": "Volver al diccionario",
     "category": {
       "wait-times": "Tiempos de espera",
       "crowd-levels": "Niveles de afluencia",

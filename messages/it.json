@@ -89,7 +89,7 @@
       "cta": "Esplora i parchi",
       "searchPlaceholder": "Cerca parchi, attrazioni, spettacoli e ristoranti...",
       "howto": "Come uso park.fan?",
-      "glossary": "Glossario dei parchi divertimento"
+      "glossary": "Dizionario dei parchi divertimento"
     },
     "sections": {
       "explore": "Esplora per regione",
@@ -187,7 +187,7 @@
     "api": "Documentazione API",
     "impressum": "Impressum",
     "howto": "Come funziona",
-    "glossaryLink": "Glossario",
+    "glossaryLink": "Dizionario",
     "datenschutz": "Informativa sulla privacy",
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di servizio",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "Vicino: {parkName}",
     "howto": "Guida",
-    "glossary": "Glossario"
+    "glossary": "Dizionario"
   },
   "theme": {
     "light": "Chiaro",
@@ -623,7 +623,8 @@
       "south-korea": "Corea del Sud",
       "singapore": "Singapore",
       "australia": "Australia",
-      "brazil": "Brasile"
+      "brazil": "Brasile",
+      "singapore": "Singapore"
     },
     "parksIn": "Parchi a tema in {location}",
     "parkCount": "{count, plural, =1 {1 parco} other {# parchi}}",
@@ -688,7 +689,7 @@
       "location": "Posizioni ({count})",
       "nearby": "Parchi vicini",
       "inPark": "Sei a {park}",
-      "glossary": "Glossario ({count})"
+      "glossary": "Dizionario ({count})"
     },
     "keyboard": {
       "navigate": "Navigare",
@@ -837,15 +838,15 @@
     "removeFromFavorites": "Rimuovi dai preferiti"
   },
   "glossary": {
-    "overviewTitle": "Glossario dei Parchi a Tema",
+    "overviewTitle": "Dizionario dei Parchi a Tema",
     "overviewDescription": "Definizioni di tutti i termini dei parchi a tema: tempi di attesa, livelli di affluenza, elementi delle montagne russe, code virtuali e molto altro — spiegati in modo semplice.",
-    "overviewKeywords": "glossario parco a tema, definizione tempo di attesa, livello di affluenza, termini montagne russe, coda virtuale, vocabolario parco divertimenti",
-    "termTitleSuffix": "Glossario Parchi a Tema",
+    "overviewKeywords": "dizionario parco a tema, definizione tempo di attesa, livello di affluenza, termini montagne russe, coda virtuale, vocabolario parco divertimenti",
+    "termTitleSuffix": "Dizionario Parchi a Tema",
     "termH1Suffix": "spiegato – Definizione",
-    "overviewH1": "Glossario dei Parchi a Tema – Tutti i termini e le definizioni",
+    "overviewH1": "Dizionario dei Parchi a Tema – Tutti i termini e le definizioni",
     "relatedTerms": "Termini correlati",
     "alsoKnownAs": "Conosciuto anche come",
-    "backToGlossary": "Torna al glossario",
+    "backToGlossary": "Torna al dizionario",
     "category": {
       "wait-times": "Tempi di attesa",
       "crowd-levels": "Livelli di affluenza",

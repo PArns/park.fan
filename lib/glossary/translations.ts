@@ -9,7 +9,7 @@ export const GLOSSARY_SEGMENTS: Record<Locale, string> = {
   de: 'glossar',
   fr: 'glossaire',
   it: 'glossario',
-  nl: 'woordenlijst',
+  nl: 'woordenboek',
   es: 'glosario',
 };
 

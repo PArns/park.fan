@@ -1056,9 +1056,31 @@ const translations: GlossaryTermTranslation[] = [
       'De eenheid van versnelling die passagiers ervaren, gemeten als veelvouden van de zwaartekrachtversnelling op Aarde (9,81 m/s²).',
     definition:
       'G-kracht (gravitationeel equivalent) meet de versnelling die een passagier ervaart ten opzichte van de normale zwaartekracht van de Aarde. Positieve G-krachten (boven 1G) drukken passagiers in hun stoel tijdens dalen of scherpe bochten. Negatieve G-krachten (onder 0G) heffen passagiers uit hun stoel en creëren airtime. Laterale G-krachten werken zijdelings en duwen passagiers opzij in bochten en overgangen.\n\nAchtbanen zijn ontworpen om deze krachten doelgericht te rangschikken. Een dal dat 4–5G genereert is het kenmerk van een krachtige first drop-overgang. Een kort moment van −0,5G op een airtime-heuvel produceert het typische zweefgevoel. De meeste attracties richten zich op 0–5G aanhoudende positieve krachten, met korte pieken voor dramatisch effect. Langdurige hoge G-belasting boven enkele seconden kan ongemak of greyout veroorzaken; goed ontworpen achtbanen balanceren intensiteitspieken met herstelsecties.',
-    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime', 'greyout'],
     aliases: ['G-Krachten'],
     alternateNames: ['G-Force', 'G-Forces'],
+  },
+  {
+    id: 'greyout',
+    name: 'Greyout',
+    shortDefinition:
+      'Tijdelijke verduistering van het gezichtsveld door positieve G-krachten die de bloedtoevoer naar de hersenen verminderen.',
+    definition:
+      'Een greyout (ook: grey-out) is een fysiologisch fenomeen waarbij een passagier die blootgesteld wordt aan sterke aanhoudende positieve G-krachten tijdelijk een grijs of wazig gezichtsveld ervaart. Het mechanisme: positieve G-krachten duwen bloed naar beneden, naar de ledematen, waardoor de bloedtoevoer naar de ogen en hersenen vermindert. Het gezichtsveld begint zich vanuit de periferie te vernauwen en wordt grijs — de passagier blijft bij bewustzijn, maar het zicht is aanzienlijk verminderd.\n\nVoorbij het greyout-stadium kan bij nog hogere of langduriger G-belasting een blackout optreden (gezichtsveld wordt volledig zwart) of in extreme gevallen G-LOC (G-Force Induced Loss of Consciousness). Goed ontworpen achtbanen houden hoge G-pieken kort en wisselen intensieve secties af met herstelstukken om aanhoudend greyout te voorkomen.',
+    aliases: ['Greyouts', 'grey-out'],
+    alternateNames: ['grijs waas', 'G-kracht verduistering'],
+    relatedTermIds: ['g-force', 'lateral-gs', 'hangtime', 'airtime'],
+  },
+  {
+    id: 'grey-zone',
+    name: 'Grijze zone',
+    shortDefinition:
+      'Een achtbaanelement op de grens van de inversiedefinitie — al dan niet geteld afhankelijk van de gebruikte telmethode.',
+    definition:
+      'De grijze zone verwijst naar achtbaanelementen die zich bevinden op de grens tussen een volledige inversie en een niet-inverterend element. Klassieke inversies — zoals verticale loops en kurketrekkers — zijn ondubbelzinnig: de trein draait de passagier volledig ondersteboven. Grijze zone-elementen bereiken net wel of net niet de overhead drempelwaarde van 180°, waarbij passagiers in een extreme, bijna-geïnverteerde positie terechtkomen.\n\nTypische grijze zone-elementen zijn stalls (gehandhaafde ondersteboven posities zonder volledige rotatie), sterk overcantelde bochten voorbij 90° en bepaalde wave turn-varianten. Fabrikanten zoals RMC en Intamin gebruiken deze elementen bewust als alternatief voor klassieke inversies. Afhankelijk van de telmethode — strikt (alleen volledige rotaties) of breed (elke overheadpositie) — kan het officiële inversieaantal van een attractie variëren.',
+    aliases: ['Grijze zones', 'grijze-zone'],
+    alternateNames: ['borderline inversie', 'quasi-inversie'],
+    relatedTermIds: ['inversion', 'stall', 'overbank', 'roller-coaster-element'],
   },
   {
     id: 'lateral-gs',

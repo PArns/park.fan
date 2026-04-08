@@ -573,6 +573,7 @@ const translations: GlossaryTermTranslation[] = [
       'Der erste Abfall nach dem Lifthill — meist der höchste und schnellste Punkt der Bahn, der den Charakter des Coasters prägt.',
     definition:
       'Der First Drop ist der Hauptabfall unmittelbar nach dem Lifthill oder dem Launch. Bei den meisten traditionellen Achterbahnen ist er der höchste Hügel und erzeugt die maximale Geschwindigkeit der Bahn. Winkel, Höhe und Profil prägen das Gesamterlebnis stark: Steilabfälle über 80–90 Grad erzeugen intensive Beschleunigungsgefühle; parabolische Abfälle können trotz sanfterem Winkel starken Airtime erzeugen. Dive Coaster haben Abfälle von über 90 Grad (Überkopf-Abfall), was die Fahrgäste zwingt, sich über die Kante zu lehnen. Der First Drop ist oft der meisterwartete Moment auf einer neuen Achterbahn.',
+    aliases: ['ersten Drop', 'erster Drop', 'erste Drop', 'First Drops'],
     relatedTermIds: ['lifthill', 'airtime', 'airtime-hill', 'dive-coaster'],
   },
   {
@@ -1058,7 +1059,29 @@ const translations: GlossaryTermTranslation[] = [
       'Die Beschleunigungseinheit, die Fahrgäste erleben, gemessen in Vielfachen der Erdgravitation (9,81 m/s²).',
     definition:
       'G-Kraft (Erdbeschleunigungsäquivalent) misst die Beschleunigung, die ein Fahrgast im Vergleich zur normalen Schwerkraft der Erde erlebt. Positive G-Kräfte (über 1G) drücken Fahrgäste in ihre Sitze, wenn der Zug durch ein Tal oder eine enge Kurve zieht. Negative G-Kräfte (unter 0G) heben Fahrgäste aus ihren Sitzen und erzeugen Airtime. Seitliche G-Kräfte (Laterals) wirken quer zur Fahrtrichtung und schieben Fahrgäste auf Kurven und Übergängen seitlich.\n\nAchterbahnen sind so konstruiert, dass diese Kräfte gezielt sequenziert werden. 4–5G in einem Talboden sind das Merkmal einer kraftvollen First-Drop-Einleitung. Ein kurzer Moment von −0,5G bis −1G auf einem Airtime-Hügel erzeugt das typische Schwebegefühl. Die meisten Bahnen zielen auf 0–5G anhaltende positive Kräfte ab, mit kurzen Spitzen für dramatische Effekte. Anhaltend hohe G-Belastungen über mehrere Sekunden können zu Unbehagen oder Greyout führen; gut gestaltete Coaster balancieren Intensitätspitzen mit Erholungsabschnitten.',
-    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime'],
+    relatedTermIds: ['airtime', 'inversion', 'lateral-gs', 'hangtime', 'greyout'],
+  },
+  {
+    id: 'greyout',
+    name: 'Greyout',
+    shortDefinition:
+      'Vorübergehende Verdunkelung des Sichtfelds durch positive G-Kräfte, die Blut aus dem Gehirn nach unten drücken.',
+    definition:
+      'Greyout (auch: Grey-out) bezeichnet einen physiologischen Zustand, bei dem ein Fahrgast unter starken positiven G-Kräften vorübergehend ein grauschleieriges Sichtfeld erlebt. Die Ursache: Positive G-Kräfte drücken Blut aus dem Gehirn nach unten in die Extremitäten, was die Blutversorgung der Augen und des Gehirns reduziert. Das Sichtfeld beginnt sich von den Rändern einzuengen und wird grau — der Körper bleibt handlungsfähig, das Bewusstsein unbeeinträchtigt.\n\nBei noch höheren oder länger anhaltenden G-Kräften kann aus einem Greyout ein Blackout werden (Sichtfeld wird komplett schwarz) oder in extremen Fällen ein G-LOC (G-Force Induced Loss of Consciousness) auftreten. Gut gestaltete Achterbahnen halten G-Kraft-Spitzen kurz und wechseln zwischen belastenden und entlastenden Abschnitten, damit sich kein anhaltender Greyout-Zustand aufbaut.',
+    aliases: ['Greyouts', 'Grey-out'],
+    alternateNames: ['Grauschleier', 'positives G-Phänomen'],
+    relatedTermIds: ['g-force', 'lateral-gs', 'hangtime', 'airtime'],
+  },
+  {
+    id: 'grey-zone',
+    name: 'Grauzone',
+    shortDefinition:
+      'Ein Achterbahn-Element, das sich am Rand der Inversionsdefinition bewegt und je nach Zählmethode als Inversion gewertet wird oder nicht.',
+    definition:
+      'Als Grauzone bezeichnet die Enthusiasten-Community Achterbahn-Elemente, die sich an der Grenze zwischen Inversion und Nicht-Inversion bewegen. Klassische Inversionen — wie der vertikale Loop oder der Korkenzieher — sind eindeutig: der Zug dreht den Fahrgast vollständig kopf-über. Grauzone-Elemente hingegen erreichen entweder knapp oder gar nicht den 180°-Überkopfpunkt, bringen Fahrgäste aber in eine extreme, fast-invertierte Lage.\n\nTypische Grauzone-Elemente sind Stalls (gehaltene Kopf-über-Positionen ohne vollständige Drehbewegung), stark überneigter Kurven (Overbanks jenseits 90°) und bestimmte Varianten von Wave Turns. Hersteller wie RMC und Intamin nutzen diese Elemente bewusst als Variante zur klassischen Inversion. Je nach Zählmethode — streng (nur vollständige Rotationen) oder weit (alle Kopf-über-Positionen) — variiert die offizielle Inversionszahl einer Bahn.',
+    aliases: ['Grauzonen', 'Grauzone-Element', 'Grauzone-Elemente'],
+    alternateNames: ['Inversions-Grauzone', 'Borderline-Inversion'],
+    relatedTermIds: ['inversion', 'stall', 'overbank', 'roller-coaster-element'],
   },
   {
     id: 'lateral-gs',

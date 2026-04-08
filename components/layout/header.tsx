@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import type { Locale } from '@/i18n/config';
 import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -20,6 +22,8 @@ const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
 export function Header() {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const pathname = usePathname();
   const { data: nearbyData } = useNearbyParks({ radiusInMeters: 200, limit: 6 });
   const parks =
@@ -134,7 +138,7 @@ export function Header() {
             {t('explore')}
           </Link>
           <Link
-            href="/glossary"
+            href={glossaryPath}
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
             tabIndex={isTransparent ? -1 : 0}
@@ -222,7 +226,7 @@ export function Header() {
                     {t('explore')}
                   </Link>
                   <Link
-                    href="/glossary"
+                    href={glossaryPath}
                     prefetch={false}
                     className="hover:text-primary text-lg font-medium transition-colors"
                   >

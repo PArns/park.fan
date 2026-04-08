@@ -89,7 +89,7 @@
       "cta": "Explorer les Parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
       "howto": "Comment utiliser park.fan ?",
-      "glossary": "Glossaire des parcs d'attractions"
+      "glossary": "Dictionnaire des parcs d'attractions"
     },
     "sections": {
       "explore": "Explorer par Région",
@@ -187,7 +187,7 @@
     "api": "Documentation API",
     "impressum": "Mentions Légales",
     "howto": "Comment ça marche",
-    "glossaryLink": "Glossaire",
+    "glossaryLink": "Dictionnaire",
     "datenschutz": "Confidentialité",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
     "howto": "Guide",
-    "glossary": "Glossaire"
+    "glossary": "Dictionnaire"
   },
   "theme": {
     "light": "Clair",
@@ -627,7 +627,8 @@
       "south-korea": "Corée du Sud",
       "singapore": "Singapour",
       "australia": "Australie",
-      "brazil": "Brésil"
+      "brazil": "Brésil",
+      "singapore": "Singapour"
     },
     "parksIn": "Parcs d'attractions à {location}",
     "parkCount": "{count, plural, =1 {1 parc} other {# parcs}}",
@@ -692,7 +693,7 @@
       "location": "Lieux ({count})",
       "nearby": "Parcs à proximité",
       "inPark": "Vous êtes à {park}",
-      "glossary": "Glossaire ({count})"
+      "glossary": "Dictionnaire ({count})"
     },
     "keyboard": {
       "navigate": "Naviguer",
@@ -841,15 +842,15 @@
     "removeFromFavorites": "Retirer des favoris"
   },
   "glossary": {
-    "overviewTitle": "Glossaire des Parcs à Thème",
-    "overviewDescription": "Le jargon des parcs à thème n'est pas toujours clair — qu'est-ce qu'un crowd level, que signifie « refurbishment » et quelle est la différence entre une file virtuelle et un Lightning Lane ? Ce glossaire explique plus de {count} termes sur les temps d'attente, l'affluence, les éléments de montagnes russes, le single rider, le fast pass, les soft openings et plus encore — en langage simple.",
-    "overviewKeywords": "glossaire parc à thème, définition temps d'attente, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",
-    "termTitleSuffix": "Glossaire Parcs d'Attractions",
+    "overviewTitle": "Dictionnaire des Parcs à Thème",
+    "overviewDescription": "Le jargon des parcs à thème n'est pas toujours clair — qu'est-ce qu'un crowd level, que signifie « refurbishment » et quelle est la différence entre une file virtuelle et un Lightning Lane ? Ce dictionnaire explique plus de {count} termes sur les temps d'attente, l'affluence, les éléments de montagnes russes, le single rider, le fast pass, les soft openings et plus encore — en langage simple.",
+    "overviewKeywords": "dictionnaire parc à thème, définition temps d'attente, niveau affluence, termes montagnes russes, file d'attente virtuelle, vocabulaire parc loisirs",
+    "termTitleSuffix": "Dictionnaire Parcs d'Attractions",
     "termH1Suffix": "expliqué – Définition",
-    "overviewH1": "Glossaire des Parcs à Thème – Tous les termes & définitions",
+    "overviewH1": "Dictionnaire des Parcs à Thème – Tous les termes & définitions",
     "relatedTerms": "Termes associés",
     "alsoKnownAs": "Aussi connu sous",
-    "backToGlossary": "Retour au glossaire",
+    "backToGlossary": "Retour au dictionnaire",
     "category": {
       "wait-times": "Temps d'attente",
       "crowd-levels": "Niveaux d'affluence",

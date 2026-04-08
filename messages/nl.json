@@ -187,7 +187,7 @@
     "api": "API Documentatie",
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
-    "glossaryLink": "Woordenlijst",
+    "glossaryLink": "Woordenboek",
     "datenschutz": "Privacybeleid",
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden",
@@ -231,7 +231,7 @@
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Gids",
-    "glossary": "Woordenlijst"
+    "glossary": "Woordenboek"
   },
   "theme": {
     "light": "Licht",
@@ -627,7 +627,8 @@
       "south-korea": "Zuid-Korea",
       "singapore": "Singapore",
       "australia": "Australië",
-      "brazil": "Brazilië"
+      "brazil": "Brazilië",
+      "singapore": "Singapore"
     },
     "parksIn": "Attractieparken in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
@@ -692,7 +693,7 @@
       "location": "Locaties ({count})",
       "nearby": "Parken in de buurt",
       "inPark": "Je bent bij {park}",
-      "glossary": "Woordenlijst ({count})"
+      "glossary": "Woordenboek ({count})"
     },
     "keyboard": {
       "navigate": "Navigeren",
@@ -841,15 +842,15 @@
     "removeFromFavorites": "Verwijderen uit favorieten"
   },
   "glossary": {
-    "overviewTitle": "Pretpark Woordenlijst",
-    "overviewDescription": "Pretparkjargon begrijpt niemand zomaar – wat is precies een crowd level, wat betekent refurbishment, en wat is het verschil tussen een virtuele wachtrij en een Lightning Lane? Dit glossarium legt meer dan {count} begrippen uit over wachttijden, drukte, achtbaanelementen, single rider, fast pass, soft openings en meer – helder uitgelegd.",
-    "overviewKeywords": "pretpark woordenlijst, wachttijd betekenis, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen, achtbaan lexicon",
-    "termTitleSuffix": "Pretpark Woordenlijst",
+    "overviewTitle": "Pretpark Woordenboek",
+    "overviewDescription": "Pretparkjargon begrijpt niemand zomaar – wat is precies een crowd level, wat betekent refurbishment, en wat is het verschil tussen een virtuele wachtrij en een Lightning Lane? Dit woordenboek legt meer dan {count} begrippen uit over wachttijden, drukte, achtbaanelementen, single rider, fast pass, soft openings en meer – helder uitgelegd.",
+    "overviewKeywords": "pretpark woordenboek, wachttijd betekenis, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen, achtbaan lexicon",
+    "termTitleSuffix": "Pretpark Woordenboek",
     "termH1Suffix": "uitgelegd – Betekenis",
-    "overviewH1": "Pretpark Woordenlijst – Alle begrippen & definities",
+    "overviewH1": "Pretpark Woordenboek – Alle begrippen & definities",
     "relatedTerms": "Gerelateerde begrippen",
     "alsoKnownAs": "Ook bekend als",
-    "backToGlossary": "Terug naar woordenlijst",
+    "backToGlossary": "Terug naar woordenboek",
     "category": {
       "wait-times": "Wachttijden",
       "crowd-levels": "Drukteniveaus",
