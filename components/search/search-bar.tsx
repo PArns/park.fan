@@ -300,6 +300,8 @@ export function SearchCommand({
       queryLength: query.trim().length,
     });
 
+    window.scrollTo(0, 0);
+
     if (result.url) {
       // Use centralized utility for URL conversion
       const cleanUrl = convertApiUrlToFrontendUrl(result.url);
