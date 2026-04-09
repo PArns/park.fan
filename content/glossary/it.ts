@@ -1316,9 +1316,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l'Enterprise, il Ranger e il Condor.',
+      `Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l'Enterprise, il Ranger e il Condor.`,
     definition:
-      'Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L'azienda ha prodotto alcuni dei modelli di flat ride più riconoscibili della fine del XX secolo, presenti in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l'Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono diventati standard del settore e ampiamente imitati. Le attrazioni Huss sono particolarmente associate all'epoca d'oro dei flat ride nei parchi europei degli anni ottanta e novanta.',
+      `Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L'azienda ha prodotto alcuni dei modelli di flat ride più riconoscibili della fine del XX secolo, presenti in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l'Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono diventati standard del settore e ampiamente imitati. Le attrazioni Huss sono particolarmente associate all'epoca d'oro dei flat ride nei parchi europei degli anni ottanta e novanta.`,
     relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },

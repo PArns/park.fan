@@ -1312,9 +1312,9 @@ const translations: GlossaryTermTranslation[] = [
     id: 'huss-rides',
     name: 'Huss Rides',
     shortDefinition:
-      'Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.',
+      `Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.`,
     definition:
-      'Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.',
+      `Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.`,
     relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
