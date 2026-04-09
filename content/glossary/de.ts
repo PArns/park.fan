@@ -1313,6 +1313,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Deutscher Flat-Ride-Hersteller, gegründet 1961, bekannt für Top Spin, Break Dance, Enterprise, Ranger und Condor.',
+    definition:
+      'Huss Rides GmbH ist ein deutsches Unternehmen für Fahrgeschäfte, gegründet 1961 von Paul Huss mit Sitz in Bremen. Das Unternehmen entwickelte einige der bekanntesten Flat-Ride-Modelle des späten 20. Jahrhunderts, die in Freizeitparks und auf Jahrmärkten weltweit zu finden sind.\n\nWichtige Huss-Modelle sind der Top Spin, der Break Dance (rotierende Fahrzeuge auf einer drehenden Scheibe), das Enterprise (zentrifugales Gondel-Rad), der Ranger (schwingendes Pendelschiff), der Condor (rotierender Sitzturm) und die Troika. Viele dieser Designs wurden zu Branchenstandards und vielfach imitiert. Huss-Attraktionen sind besonders mit der Blütezeit der Flat Rides in europäischen Parks in den 1980er und 1990er Jahren verbunden.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1549,7 +1559,7 @@ const translations: GlossaryTermTranslation[] = [
       'Flat Ride von Huss, bei dem eine Gondel mit Fahrgästen frei in alle Richtungen rotiert, während der Trägerrahmen auf und ab schwingt.',
     definition:
       'Der Top Spin ist ein Fahrgeschäft des Herstellers Huss Rides. Eine Gondel mit bis zu 40 Fahrgästen ist an einem schwenkbaren Rahmen befestigt; die Gondel kann während des Schwingens des Rahmens kontinuierlich in beliebige Richtungen rotiert werden – das ergibt eine unvorhersehbare Kombination aus Schwung- und Drehkräften. Das Gerät lässt sich von sanftem Schaukeln bis zu nonstop-Rotation programmieren.\n\nTop Spins waren von den 1990er bis in die 2010er Jahre in Freizeitparks und auf Jahrmärkten weit verbreitet und sind noch heute in vielen Parks ein vertrauter Anblick. Obwohl der Rahmen schwingt, ist der Top Spin kein Pendelfahrgeschäft im eigentlichen Sinne – die Gondel hängt nicht an einem langen Pendelarm, sondern ist zwischen zwei seitlichen Dreharmen eingespannt.',
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },

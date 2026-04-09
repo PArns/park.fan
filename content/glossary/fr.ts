@@ -1309,6 +1309,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.',
+    definition:
+      'Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1517,7 +1527,7 @@ const translations: GlossaryTermTranslation[] = [
       'Attraction de Huss dans laquelle une nacelle de passagers tourne librement dans toutes les directions pendant que le bâti oscillant se balance.',
     definition:
       "Le Top Spin est un modèle d'attraction fabriqué par Huss Rides. Une nacelle pouvant accueillir jusqu'à 40 passagers est montée sur un bâti pivotant ; la nacelle peut être tournée en continu dans n'importe quelle direction pendant que le bâti se balance, créant une combinaison imprévisible de forces d'oscillation et de rotation. L'attraction peut être programmée de la simple oscillation douce aux rotations continues les plus intenses.\n\nLes Top Spins ont été omniprésents dans les parcs d'attractions et les fêtes foraines des années 1990 aux années 2010. Malgré le mouvement d'oscillation, le Top Spin n'est pas une attraction pendulaire : la nacelle n'est pas suspendue à un long bras mais est enserrée entre deux cadres latéraux rotatifs.",
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },

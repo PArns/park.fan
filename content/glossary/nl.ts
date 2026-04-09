@@ -1325,6 +1325,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Duits fabrikant van attracties opgericht in 1961, bekend van de Top Spin, Break Dance, Enterprise, Ranger en Condor.',
+    definition:
+      'Huss Rides GmbH is een Duits attractiefabrikant opgericht in 1961 door Paul Huss, gevestigd in Bremen. Het bedrijf produceerde enkele van de meest herkenbare flat ride-modellen van de late 20e eeuw, die te vinden zijn in pretparken en op kermissen wereldwijd.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (roterende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondolwiel), de Ranger (slingerend pendelschip), de Condor (roterende stoelentoren) en de Troïka. Veel van deze ontwerpen werden industrie-standaarden en werden veelvuldig geïmiteerd. Huss-attracties worden vooral geassocieerd met het hoogtepunt van flat rides in Europese parken in de jaren tachtig en negentig.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1561,7 +1571,7 @@ const translations: GlossaryTermTranslation[] = [
       'Flat ride van Huss waarbij een gondel met passagiers vrij in alle richtingen kan draaien terwijl het draagframe op en neer slingert.',
     definition:
       'De Top Spin is een attractiemodel van fabrikant Huss Rides. Een gondel met doorgaans 40 passagiers is bevestigd aan een draaibaar frame; de gondel kan continu in elke richting worden gedraaid terwijl het frame slingert, wat een onvoorspelbare combinatie van slingerkrachten en rotatie oplevert. De attractie is programmeerbaar van zacht schommelen tot doorlopende rotaties.\n\nTop Spins waren van de jaren negentig tot de jaren 2010 alomtegenwoordig in pretparken en op kermissen. Ondanks de slingerbeweging is de Top Spin geen pendelattractie: de gondel hangt niet aan een lange pendelarm, maar is ingeklemd tussen twee zijdelingse draaiarmen.',
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },

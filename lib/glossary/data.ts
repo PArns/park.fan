@@ -1588,6 +1588,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
+    id: 'huss-rides',
+    category: 'manufacturers',
+    slugs: {
+      en: 'huss-rides',
+      de: 'huss-rides',
+      fr: 'huss-rides',
+      it: 'huss-rides',
+      nl: 'huss-rides',
+      es: 'huss-rides',
+    },
+  },
+  {
     id: 's-and-s-worldwide',
     category: 'manufacturers',
     slugs: {

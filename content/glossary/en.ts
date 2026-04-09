@@ -1196,6 +1196,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'German flat ride manufacturer founded in 1961, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
+    definition:
+      'Huss Rides GmbH is a German amusement ride manufacturer founded in 1961 by Paul Huss and based in Bremen. The company produced some of the most recognisable flat ride models of the late 20th century, which can be found in theme parks and travelling fairs worldwide.\n\nKey Huss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Many of these designs became industry staples widely copied by other manufacturers. Huss rides are particularly associated with the peak era of flat rides in European parks during the 1980s and 1990s.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1424,7 +1434,7 @@ const translations: GlossaryTermTranslation[] = [
       'A flat ride by Huss in which a gondola of riders is freely rotated in any direction while its supporting frame swings up and down.',
     definition:
       'The Top Spin is a flat ride model manufactured by Huss Rides. A gondola holding typically 40 riders is mounted on a pivoting frame; the gondola can be rotated continuously in any direction as the frame swings, creating an unpredictable combination of swinging and spinning forces. The ride can be programmed from gentle rocking to relentless full rotations, making it adaptable to different intensity levels.\n\nTop Spins were ubiquitous in theme parks and travelling fairs from the 1990s through the 2010s and remain a recognisable sight in many parks worldwide. Despite the swinging motion, the Top Spin is not a pendulum ride — the gondola is not suspended from a long arm but rather clamped between two rotating side frames.',
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },

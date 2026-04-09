@@ -1317,6 +1317,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Fabricante alemán de atracciones fundado en 1961, conocido por el Top Spin, el Break Dance, el Enterprise, el Ranger y el Condor.',
+    definition:
+      'Huss Rides GmbH es un fabricante alemán de atracciones fundado en 1961 por Paul Huss, con sede en Bremen. La empresa produjo algunos de los modelos de flat rides más reconocibles de finales del siglo XX, presentes en parques temáticos y ferias de todo el mundo.\n\nLos modelos más conocidos de Huss son el Top Spin, el Break Dance (vehículos giratorios sobre una plataforma rotatoria), el Enterprise (rueda centrífuga de góndolas), el Ranger (barco péndulo oscilante), el Condor (torre de sillas rotativa) y la Troika. Muchos de estos diseños se convirtieron en estándares del sector y fueron ampliamente imitados. Las atracciones Huss están especialmente asociadas con la época de esplendor de los flat rides en los parques europeos de los años ochenta y noventa.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1579,7 +1589,7 @@ const translations: GlossaryTermTranslation[] = [
       'Atracción de Huss en la que una góndola con pasajeros gira libremente en cualquier dirección mientras el marco de soporte oscila arriba y abajo.',
     definition:
       'El Top Spin es un modelo de atracción fabricado por Huss Rides. Una góndola con capacidad para unos 40 pasajeros está montada en un marco pivotante; la góndola puede rotar continuamente en cualquier dirección mientras el marco oscila, creando una combinación impredecible de fuerzas de oscilación y rotación. La atracción puede programarse desde un suave balanceo hasta rotaciones continuas de alta intensidad.\n\nLos Top Spins fueron omnipresentes en parques temáticos y ferias durante los años 1990 y 2000. A pesar del movimiento oscilante, el Top Spin no es una atracción pendular: la góndola no cuelga de un brazo largo, sino que está sujeta entre dos brazos laterales rotativos.',
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },

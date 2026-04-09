@@ -1313,6 +1313,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l'Enterprise, il Ranger e il Condor.',
+    definition:
+      'Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L'azienda ha prodotto alcuni dei modelli di flat ride più riconoscibili della fine del XX secolo, presenti in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l'Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono diventati standard del settore e ampiamente imitati. Le attrazioni Huss sono particolarmente associate all'epoca d'oro dei flat ride nei parchi europei degli anni ottanta e novanta.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1563,7 +1573,7 @@ const translations: GlossaryTermTranslation[] = [
       "Attrazione di Huss in cui una gondola di passeggeri ruota liberamente in qualsiasi direzione mentre il telaio di supporto oscilla su e giù.",
     definition:
       "Il Top Spin è un modello di attrazione prodotto da Huss Rides. Una gondola con circa 40 passeggeri è montata su un telaio oscillante; la gondola può essere ruotata continuamente in qualsiasi direzione mentre il telaio oscilla, creando una combinazione imprevedibile di forze oscillatorie e rotative. L'attrazione è programmabile dal semplice dondolio alle rotazioni continue ad alta intensità.\n\nI Top Spin erano onnipresenti nei parchi a tema e nelle fiere dagli anni novanta agli anni 2010. Nonostante il movimento oscillante, il Top Spin non è un'attrazione a pendolo: la gondola non è appesa a un lungo braccio, ma è incastrata tra due bracci laterali rotanti.",
-    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Top Spins'],
     alternateNames: ['Huss Top Spin'],
   },
