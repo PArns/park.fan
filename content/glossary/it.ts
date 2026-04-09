@@ -169,7 +169,7 @@ const translations: GlossaryTermTranslation[] = [
       "Un'altezza minima che gli ospiti devono raggiungere per accedere a un'attrazione specifica.",
     definition:
       "L'altezza minima è una regola di sicurezza stabilita dai parchi per garantire che i sistemi di ritenuta — barre di sicurezza, spallacci, cinture — funzionino correttamente per ogni passeggero. Varia generalmente tra 90 e 140 cm a seconda dell'intensità dell'attrazione. Alcune attrazioni hanno anche un'altezza o un peso massimo. Verificate sempre i requisiti di altezza prima di visitare con bambini piccoli.",
-    aliases: ['Altezze minime'],
+    aliases: ['Altezze minime', 'requisiti minimi di altezza'],
     alternateNames: ['Requisito di Altezza', 'Limite di Altezza', 'Altezza richiesta'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1446,7 +1446,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attrazione a livello del suolo che ruota, oscilla o si inclina senza un circuito di binari sopraelevato.',
     definition:
-      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, Frisbee, seggiolini volanti), torri di caduta e piattaforme rotanti. A differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
+      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, Frisbee, seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'giostra da fiera', 'attrazione di terra'],
   },
@@ -1517,7 +1517,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Una torre di caduta (drop tower o free-fall tower) è un'attrazione in cui i visitatori vengono sollevati in una gondola o su sedili individuali intorno a una struttura centrale a torre e poi rilasciati in una rapida caduta verso il basso. La caduta può essere quasi in caduta libera (vicina all'assenza di peso), frenata o combinata con un lancio verso l'alto. Una fase di decelerazione progressiva frena dolcemente la gondola in basso. Le varianti includono torri rotanti, modelli multidirezionali e versioni ibride. Le torri di caduta offrono emozioni intense su un'impronta ridotta e si trovano in tutto il mondo. Produttori notevoli: Intamin, Mondial e S&S Worldwide.",
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['torre caduta libera', 'free fall tower', 'drop ride', 'caduta libera'],
+    aliases: ['torre caduta libera', 'free fall tower', 'drop ride', 'caduta libera', 'torri di caduta'],
   },
   {
     id: 'log-flume',
@@ -1560,6 +1560,7 @@ const translations: GlossaryTermTranslation[] = [
       'swing ride',
       'chairoplane',
       'giostra volante',
+      'giostre a catene',
     ],
   },
   {

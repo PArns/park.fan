@@ -167,6 +167,7 @@ const translations: GlossaryTermTranslation[] = [
       'Une taille minimale que les visiteurs doivent atteindre pour accéder à une attraction.',
     definition:
       "La taille minimale est une règle de sécurité imposée par les parcs pour garantir que les systèmes de retenue — harnais, barres de maintien, ceintures — fonctionnent correctement pour chaque passager. Elle varie généralement entre 90 et 140 cm selon l'intensité de l'attraction. Certaines attractions ont également une taille ou un poids maximal. Vérifiez toujours les tailles minimales avant de visiter avec de jeunes enfants pour éviter les déceptions.",
+    aliases: ['tailles minimales'],
     alternateNames: ['Restriction de Taille', 'Hauteur requise', 'Condition de taille'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1417,7 +1418,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives. Contrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine'],
   },
@@ -1476,7 +1477,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Une tour de chute (ou free-fall tower) est une attraction où les visiteurs sont hissés dans une nacelle ou sur des sièges individuels autour d'une tour centrale, puis relâchés pour plonger rapidement vers le sol. La descente peut être une quasi-chute libre (approchant l'apesanteur), freinée, ou même combinée avec un éjection vers le haut. Une phase de décélération progressive amortit l'arrivée au bas. Les variantes incluent les tours rotatives, les modèles multi-directionnels et les versions hybrides avec éjection. Les tours de chute offrent des sensations intenses sur une emprise réduite ; parmi les fabricants notables : Intamin, Mondial et S&S Worldwide.",
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['chute libre', 'tour de chute libre'],
+    aliases: ['chute libre', 'tour de chute libre', 'tours de chute'],
   },
   {
     id: 'log-flume',
@@ -1506,7 +1507,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Les chaises volantes (aussi appelées wave swinger ou Kettenflieger) sont des attractions rotatives où des sièges suspendus à des chaînes sont accrochés à une structure centrale tournante. À mesure que la structure accélère, la force centrifuge projette les sièges vers l'extérieur et vers le haut, procurant une sensation de vol. Les chaises volantes comptent parmi les plus anciennes attractions foraines encore en service ; les versions modernes vont du petit manège pour enfants aux gigantesques tours à chaînes (starflyers) qui hissent les passagers à de grandes hauteurs. On les retrouve dans pratiquement tous les parcs d'attractions et fêtes foraines du monde.",
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['manège à chaînes', 'chaises tournantes'],
+    aliases: ['manège à chaînes', 'chaises tournantes', 'vagues volantes'],
   },
   {
     id: 'racing-coaster',

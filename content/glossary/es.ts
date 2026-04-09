@@ -167,7 +167,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una estatura mínima que los visitantes deben tener para acceder a una atracción específica.',
     definition:
       'La talla mínima es una norma de seguridad establecida por los parques para garantizar que los sistemas de retención — barras de seguridad, arneses, cinturones — funcionen correctamente para cada pasajero. Suele oscilar entre 90 y 140 cm dependiendo de la intensidad de la atracción. Algunas atracciones también tienen una altura o peso máximo. Comprueba siempre los requisitos de talla antes de visitar con niños pequeños para evitar decepciones.',
-    aliases: ['Tallas mínimas'],
+    aliases: ['Tallas mínimas', 'requisitos mínimos de talla'],
     alternateNames: ['Requisito de Estatura', 'Restricción de Altura', 'Altura mínima requerida'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1457,7 +1457,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Atracción a nivel del suelo que gira, oscila o rota sin un circuito de vía elevado.',
     definition:
-      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Top Spin, Frisbee, sillas voladoras), torres de caída y plataformas giratorias. A diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
+      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Top Spin, Frisbee, sillas voladoras), torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'atracción de feria', 'ride plano'],
   },
@@ -1539,7 +1539,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una torre de caída (drop tower o free-fall tower) es una atracción en la que los visitantes son elevados en una góndola o asientos individuales alrededor de una estructura central de torre y después soltados para caer rápidamente hacia el suelo. La caída puede ser casi en caída libre (rozando la ingravidez), frenada, o combinada con un impulso hacia arriba. Una fase de deceleración progresiva frena la góndola suavemente al final. Las variantes incluyen torres rotativas, modelos multidireccionales y versiones híbridas. Las torres de caída ofrecen experiencias intensas en un espacio reducido y se encuentran en todo el mundo. Fabricantes destacados: Intamin, Mondial y S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['torre de caída libre', 'drop ride', 'caída libre', 'free fall tower'],
+    aliases: ['torre de caída libre', 'drop ride', 'caída libre', 'free fall tower', 'torres de caída'],
   },
   {
     id: 'log-flume',

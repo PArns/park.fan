@@ -166,7 +166,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Mindestkörpergröße, die Besucher erfüllen müssen, um eine bestimmte Attraktion nutzen zu dürfen.',
     definition:
       'Die Mindestgröße ist eine Sicherheitsanforderung, die Parks für bestimmte Attraktionen festlegen. Sie stellt sicher, dass Sicherheitsgurte und Rückhaltesysteme korrekt sitzen. Typische Mindestgrößen liegen zwischen 90 und 140 cm. Einige Attraktionen haben auch eine maximale Größe oder ein Gewichtslimit. Bei Familienbesuchen empfiehlt es sich, die Mindestgrößen vorab zu prüfen, um Enttäuschungen vor Ort zu vermeiden.',
-    aliases: ['Mindestgrößen'],
+    aliases: ['Mindestgrößen', 'Mindestgrößenanforderungen', 'Mindestgrößenanforderung'],
     alternateNames: ['Körpergrößenanforderung', 'Größenbeschränkung', 'Größenanforderung'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1448,7 +1448,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bodennahe Attraktion, die dreht, schwingt oder rotiert – ohne klassische Achterbahnstrecke.',
     definition:
-      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Frisbees, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen. Im Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
+      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Frisbees, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen.\n\nIm Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['Flat Rides'],
   },
@@ -1512,6 +1512,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Drop Tower (auch Freifallturm oder Free-Fall-Tower) ist eine Attraktion, bei der Fahrgäste in einer Gondel oder einzelnen Sitzen rund um einen zentralen Turmaufbau in die Höhe gefahren und dann in einem raschen Sturz nach unten entlassen werden. Der Absturz kann nahezu schwerelos (echter freier Fall), gebremst oder in Kombination mit einem Katapultstart nach oben erfolgen. Am unteren Ende bremst das System die Gondel sanft ab. Varianten umfassen rotierende Drop Towers, Mehrachsen-Modelle und Hybrid-Versionen. Drop Towers bieten intensive Erlebnisse auf kleiner Grundfläche und sind weltweit verbreitet. Bekannte Hersteller sind Intamin, Mondial und S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
+    aliases: ['Freifallturm', 'Drop Towers'],
     alternateNames: ['Drop Tower', 'Freifallturm', 'Free-Fall-Tower', 'Freefall', 'Drop Ride'],
   },
   {
@@ -1549,6 +1550,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Kettenkarussell (auch Kettenflieger oder Wellenflieger) ist eine rotierende Attraktion, bei der Sitze an Ketten von einer zentralen Drehstruktur aufgehängt sind. Beim Drehen werden die Sitze durch die Fliehkraft nach außen und oben geschleudert und vermitteln Fahrgästen das Gefühl des Fliegens. Kettenkarussells gehören zu den ältesten noch verbreiteten Jahrmarktsfahrgeschäften und gehen bis ins frühe 20. Jahrhundert zurück. Moderne Versionen reichen von sanften Kinderkarussells bis hin zu riesigen Kettenturm-Anlagen (Starflyer), die Fahrgäste auf beachtliche Höhen heben. Sie sind in nahezu jedem Freizeitpark und auf Jahrmärkten weltweit anzutreffen.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['Wellenflieger', 'Kettenflieger', 'Kettenkarussells'],
     alternateNames: [
       'Swing Ride',
       'Kettenflieger',

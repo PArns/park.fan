@@ -146,6 +146,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Height requirements are safety rules set by parks to ensure that restraint systems — lap bars, over-the-shoulder harnesses, seat belts — fit and function correctly for every rider. They typically range from 90 cm (about 35 inches) for gentler family coasters to 140 cm (55 inches) for the most intense high-speed rides. Some rides also have maximum height limits or weight restrictions, though these are less common.\n\nFor families visiting with young children, checking height requirements before arriving at a park is essential planning. Being turned away at a ride entrance after a long queue is one of the most common sources of frustration at theme parks. Most park websites and apps publish height charts for every ride. Carrying a printed copy or saving a screenshot can save time on the day. Some parks offer \"rider switch\" systems so that accompanying adults can take turns riding without re-queuing.',
     relatedTermIds: ['ride-capacity', 'refurbishment'],
+    aliases: ['height requirements'],
   },
   {
     id: 'themed-land',
@@ -1326,7 +1327,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
     definition:
-      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Frisbees, wave swingers), drop and launch towers, and circular spinning platforms. Unlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
+      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Frisbees, wave swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides'],
     alternateNames: ['carnival ride', 'midway ride'],
@@ -1393,7 +1394,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to plummet rapidly toward the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. Drop towers offer intense thrills with a very compact footprint, making them popular worldwide. Well-known examples include the Tower of Terror installations at Disney parks and numerous models from manufacturers such as Intamin, Mondial, and S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['free-fall'],
+    aliases: ['free-fall', 'drop towers'],
     alternateNames: ['free fall tower', 'drop ride', 'free fall ride'],
   },
   {
@@ -1424,6 +1425,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A swing ride (also called a chair swing, wave swinger, or Kettenflieger) is a rotating attraction in which chairs suspended from chains are attached to a revolving central structure. As the ride spins, centrifugal force causes the chairs to swing outward and upward, giving riders a sensation of flying. Swing rides are among the oldest surviving fairground ride types, with roots in early 20th-century carnivals; modern theme park versions range from gentle low-speed models designed for young children to enormous tower versions (chain towers or starflyers) that lift riders dozens of metres into the air. They are a near-universal presence in both major theme parks and travelling funfairs worldwide.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['wave swingers', 'wave swinger'],
     alternateNames: ['chair swing', 'wave swinger', 'chain swing', 'Chairoplane'],
   },
   {

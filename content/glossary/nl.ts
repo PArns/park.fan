@@ -170,7 +170,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een minimumlengte die bezoekers moeten hebben om een specifieke attractie te mogen betreden.',
     definition:
       'De minimumlengte is een veiligheidsregel die parken instellen om te garanderen dat veiligheidssystemen — heupbeugelsloten, schouderbanden, gordels — correct werken voor elke bezoeker. Ze variëren doorgaans tussen 90 en 140 cm, afhankelijk van de intensiteit van de attractie. Sommige attracties hebben ook een maximum lengte of gewichtslimiet. Controleer altijd de minimumlengte voordat je met jonge kinderen op bezoek gaat.',
-    aliases: ['Minimumlengtes'],
+    aliases: ['Minimumlengtes', 'minimumlengte-eisen'],
     alternateNames: ['Lengtebeperking', 'Lengteeis', 'Vereiste lengte'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1456,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
     definition:
-      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, Frisbee, zweefmolens), drop towers en rondedraaiplatforms. In tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, Frisbee, zweefmolens), drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
   },
@@ -1521,7 +1521,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een drop tower (ook vrije-val-toren of free-fall tower) is een attractie waarbij bezoekers in een gondel of individuele stoelen rondom een centrale torenkonstruktie worden omhooggebracht en vervolgens in een snelle val naar beneden worden losgelaten. De val kan nagenoeg gewichtloos zijn (echte vrije val), geremd, of gecombineerd met een katapultimpuls omhoog. Onderin remt het systeem de gondel geleidelijk af. Varianten zijn roterende drop towers, meerdimensionale modellen en hybride versies. Drop towers bieden intense ervaringen op een compact grondoppervlak en zijn wereldwijd te vinden. Bekende fabrikanten: Intamin, Mondial en S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['vrije-val-toren', 'free fall tower', 'drop ride', 'vrijeval'],
+    aliases: ['vrije-val-toren', 'free fall tower', 'drop ride', 'vrijeval', 'drop towers'],
   },
   {
     id: 'log-flume',
@@ -1551,7 +1551,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een zweefmolen (ook kettingcarrousel of Kettenflieger) is een ronddraaiende attractie waarbij stoeltjes aan kettingen aan een centrale draaiende structuur hangen. Bij het ronddraaien worden de stoeltjes door de middelpuntvliedende kracht naar buiten en omhoog geslingerd, wat passagiers het gevoel van vliegen geeft. Zweefmolens zijn een van de oudste nog bestaande kermisattracties en stammen uit het begin van de 20e eeuw. Moderne versies variëren van zachte kinderdraaimolens tot enorme kettingtorens (starflyers) die passagiers tientallen meters omhoogbrengen. Ze zijn in vrijwel elk pretpark en op kermissen wereldwijd te vinden.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane'],
+    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane', 'zweefmolens'],
   },
   {
     id: 'racing-coaster',
