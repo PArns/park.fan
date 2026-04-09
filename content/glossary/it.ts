@@ -1446,7 +1446,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attrazione a livello del suolo che ruota, oscilla o si inclina senza un circuito di binari sopraelevato.',
     definition:
-      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
+      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo (Frisbees), Top Spins e giostre a catene (seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'giostra da fiera', 'attrazione di terra'],
   },
@@ -1551,10 +1551,21 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       "Flat ride in cui una gondola oscilla in un ampio arco a pendolo, spesso mentre ruota simultaneamente.",
     definition:
-      "Un'attrazione a pendolo è un tipo di flat ride in cui una gondola o una fila di sedili è montata su un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. Molte attrazioni a pendolo fanno anche ruotare la gondola attorno al proprio asse, combinando il moto pendolare con la rotazione assiale per una maggiore intensità.\n\nGli esempi più noti sono il Top Spin (Huss), dove una barra orizzontale di sedili oscilla e ruota contemporaneamente, e il Frisbee (Mondial), dove una gondola a forma di disco oscilla come un pendolo girando su se stessa. Le attrazioni a pendolo sono diffuse nei parchi a tema e nelle fiere di tutto il mondo grazie al loro forte impatto visivo e all'ingombro relativamente contenuto.",
+      "Un'attrazione a pendolo è un tipo di flat ride in cui una gondola è appesa a un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. La gondola ruota anche attorno al proprio asse, combinando il moto pendolare con la rotazione assiale per un'esperienza ad alta intensità.\n\nL'esempio più iconico è il Frisbee (Mondial): una gondola a forma di disco che oscilla come un pendolo girando su se stessa. Altre attrazioni a pendolo diffuse sono il KMG Afterburner e l'Intamin Giant Frisbee. Le attrazioni a pendolo sono molto apprezzate nei parchi a tema e nelle fiere di tutto il mondo per il loro forte impatto visivo e l'ingombro relativamente contenuto.",
     relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
-    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'attrazioni a pendolo'],
+    aliases: ['Frisbee', 'Frisbees', 'attrazioni a pendolo'],
     alternateNames: ['giostra a pendolo', 'attrazione oscillante'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      "Attrazione di Huss in cui una gondola di passeggeri ruota liberamente in qualsiasi direzione mentre il telaio di supporto oscilla su e giù.",
+    definition:
+      "Il Top Spin è un modello di attrazione prodotto da Huss Rides. Una gondola con circa 40 passeggeri è montata su un telaio oscillante; la gondola può essere ruotata continuamente in qualsiasi direzione mentre il telaio oscilla, creando una combinazione imprevedibile di forze oscillatorie e rotative. L'attrazione è programmabile dal semplice dondolio alle rotazioni continue ad alta intensità.\n\nI Top Spin erano onnipresenti nei parchi a tema e nelle fiere dagli anni novanta agli anni 2010. Nonostante il movimento oscillante, il Top Spin non è un'attrazione a pendolo: la gondola non è appesa a un lungo braccio, ma è incastrata tra due bracci laterali rotanti.",
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
   },
   {
     id: 'swing-ride',

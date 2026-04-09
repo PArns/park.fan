@@ -1869,6 +1869,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'atraccion-pendular',
     },
   },
+  {
+    id: 'top-spin',
+    category: 'attractions',
+    slugs: {
+      en: 'top-spin',
+      de: 'top-spin',
+      fr: 'top-spin',
+      it: 'top-spin',
+      nl: 'top-spin',
+      es: 'top-spin',
+    },
+  },
   // ── New Coasters (P2) ─────────────────────────────────────────────────────
   {
     id: 'racing-coaster',

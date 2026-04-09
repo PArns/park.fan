@@ -1418,7 +1418,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires (Frisbees), les Top Spins et les manèges à chaînes (vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine'],
   },
@@ -1505,10 +1505,21 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de type flat ride où une nacelle oscille en arc de pendule, souvent en tournant simultanément.',
     definition:
-      "Une attraction pendulaire est un type de flat ride dans lequel une nacelle ou une rangée de sièges est fixée à un long bras qui oscille dans un arc de plus en plus large, atteignant souvent une position presque verticale. Beaucoup de ces attractions font également tourner la nacelle sur elle-même, combinant ainsi le mouvement de pendule avec une rotation axiale pour une expérience plus intense.\n\nLes exemples les plus courants sont le Top Spin (Huss), où une barre horizontale de sièges oscille et tourne simultanément, et le Frisbee (Mondial), où une nacelle en forme de disque décrit un arc de pendule en tournant. Ces attractions sont très répandues dans les parcs d'attractions et les fêtes foraines grâce à leur fort impact visuel et leur encombrement relativement réduit.",
+      "Une attraction pendulaire est un type de flat ride dans lequel une nacelle est suspendue à un long bras qui oscille dans un arc de plus en plus large, atteignant souvent une position presque verticale. La nacelle tourne également sur elle-même, combinant le mouvement de pendule avec une rotation axiale pour une expérience très intense.\n\nL'exemple le plus emblématique est le Frisbee (Mondial) : une nacelle en forme de disque qui décrit un arc de pendule en tournant. D'autres attractions pendulaires répandues sont le KMG Afterburner et l'Intamin Giant Frisbee. Ces attractions sont très prisées dans les parcs d'attractions et les fêtes foraines grâce à leur fort impact visuel et leur encombrement relativement réduit.",
     relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
-    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'attractions pendulaires'],
+    aliases: ['Frisbee', 'Frisbees', 'attractions pendulaires'],
     alternateNames: ['manège pendulaire', 'attraction à balancement'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'Attraction de Huss dans laquelle une nacelle de passagers tourne librement dans toutes les directions pendant que le bâti oscillant se balance.',
+    definition:
+      "Le Top Spin est un modèle d'attraction fabriqué par Huss Rides. Une nacelle pouvant accueillir jusqu'à 40 passagers est montée sur un bâti pivotant ; la nacelle peut être tournée en continu dans n'importe quelle direction pendant que le bâti se balance, créant une combinaison imprévisible de forces d'oscillation et de rotation. L'attraction peut être programmée de la simple oscillation douce aux rotations continues les plus intenses.\n\nLes Top Spins ont été omniprésents dans les parcs d'attractions et les fêtes foraines des années 1990 aux années 2010. Malgré le mouvement d'oscillation, le Top Spin n'est pas une attraction pendulaire : la nacelle n'est pas suspendue à un long bras mais est enserrée entre deux cadres latéraux rotatifs.",
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
   },
   {
     id: 'swing-ride',

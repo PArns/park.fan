@@ -1327,7 +1327,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
     definition:
-      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
+      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum rides (Frisbees), Top Spins, and swing rides (Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides'],
     alternateNames: ['carnival ride', 'midway ride'],
@@ -1394,8 +1394,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to plummet rapidly toward the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. Drop towers offer intense thrills with a very compact footprint, making them popular worldwide. Well-known examples include the Tower of Terror installations at Disney parks and numerous models from manufacturers such as Intamin, Mondial, and S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['free-fall', 'drop towers'],
-    alternateNames: ['free fall tower', 'drop ride', 'free fall ride'],
+    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers'],
+    alternateNames: ['free fall tower', 'drop ride', 'free fall ride', 'launch ride'],
   },
   {
     id: 'log-flume',
@@ -1418,15 +1418,26 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['rapids ride', 'raft ride', 'white water rapids', 'white-water ride'],
   },
   {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'A flat ride by Huss in which a gondola of riders is freely rotated in any direction while its supporting frame swings up and down.',
+    definition:
+      'The Top Spin is a flat ride model manufactured by Huss Rides. A gondola holding typically 40 riders is mounted on a pivoting frame; the gondola can be rotated continuously in any direction as the frame swings, creating an unpredictable combination of swinging and spinning forces. The ride can be programmed from gentle rocking to relentless full rotations, making it adaptable to different intensity levels.\n\nTop Spins were ubiquitous in theme parks and travelling fairs from the 1990s through the 2010s and remain a recognisable sight in many parks worldwide. Despite the swinging motion, the Top Spin is not a pendulum ride — the gondola is not suspended from a long arm but rather clamped between two rotating side frames.',
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
+  },
+  {
     id: 'pendulum-ride',
     name: 'Pendulum Ride',
     shortDefinition:
-      'A flat ride where a gondola swings in a wide pendulum arc, often while also rotating riders.',
+      'A flat ride where a gondola hangs from a long arm and swings in a wide pendulum arc, often while spinning.',
     definition:
-      'A pendulum ride is a type of flat ride in which a gondola or set of seats is mounted on a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. Many pendulum rides also spin the gondola as it swings, combining pendulum motion with axial rotation for added intensity.\n\nCommon examples include the Top Spin (by Huss), where a horizontal bar of seats swings and rotates simultaneously, and the Frisbee (by Mondial), where a disc-shaped gondola swings in a pendulum arc while spinning. Pendulum rides are popular fixtures in theme parks and travelling fairs worldwide thanks to their strong visual impact and relatively compact footprint.',
+      'A pendulum ride is a type of flat ride in which a gondola is suspended from a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. As the arm swings, the gondola also rotates, combining the pendulum motion with axial spin for a highly intense experience.\n\nThe most iconic example is the Frisbee (Mondial), a disc-shaped gondola that swings like a pendulum while rotating. Other well-known pendulum rides include the KMG Afterburner and Intamin Giant Frisbee. Pendulum rides are a popular fixture in theme parks and travelling fairs worldwide, valued for their dramatic visual spectacle and relatively compact footprint.',
     relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
-    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'pendulum rides'],
-    alternateNames: ['thrill swing', 'swinging flat ride'],
+    aliases: ['Frisbee', 'Frisbees', 'pendulum rides'],
+    alternateNames: ['giant frisbee', 'swinging gondola ride'],
   },
   {
     id: 'swing-ride',

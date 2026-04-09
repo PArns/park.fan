@@ -1456,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
     definition:
-      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, zweefmolens), drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), pendelattracties (Frisbees), Top Spins en zweefmolens, drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
   },
@@ -1549,10 +1549,21 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Flat ride waarbij een gondel in een wijde pendelboog slingert, vaak terwijl de gondel ook ronddraait.',
     definition:
-      'Een pendelattractie is een type flat ride waarbij een gondel of stoelrij bevestigd is aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Veel pendelattracties draaien de gondel ook om haar eigen as, waardoor de slingerbeweging gecombineerd wordt met rotatie voor extra intensiteit.\n\nBekende voorbeelden zijn de Top Spin (Huss), waarbij een horizontale rij stoelen slingert en tegelijk roteert, en de Frisbee (Mondial), waarbij een schijfvormige gondel slingerend rondspint. Pendelattracties zijn populair in pretparken en op kermissen vanwege hun spectaculaire uitstraling en relatief compact grondoppervlak.',
+      'Een pendelattractie is een type flat ride waarbij een gondel hangt aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Tegelijkertijd draait de gondel om haar eigen as, waardoor de slingerbeweging gecombineerd wordt met rotatie voor een intense beleving.\n\nHet bekendste voorbeeld is de Frisbee (Mondial): een schijfvormige gondel die slingerend rondspint. Andere veelvoorkomende pendelattracties zijn de KMG Afterburner en de Intamin Giant Frisbee. Pendelattracties zijn populair in pretparken en op kermissen vanwege hun spectaculaire uitstraling en relatief compact grondoppervlak.',
     relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
-    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'pendelattracties'],
+    aliases: ['Frisbee', 'Frisbees', 'pendelattracties'],
     alternateNames: ['slingerattractie', 'pendelschommel'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'Flat ride van Huss waarbij een gondel met passagiers vrij in alle richtingen kan draaien terwijl het draagframe op en neer slingert.',
+    definition:
+      'De Top Spin is een attractiemodel van fabrikant Huss Rides. Een gondel met doorgaans 40 passagiers is bevestigd aan een draaibaar frame; de gondel kan continu in elke richting worden gedraaid terwijl het frame slingert, wat een onvoorspelbare combinatie van slingerkrachten en rotatie oplevert. De attractie is programmeerbaar van zacht schommelen tot doorlopende rotaties.\n\nTop Spins waren van de jaren negentig tot de jaren 2010 alomtegenwoordig in pretparken en op kermissen. Ondanks de slingerbeweging is de Top Spin geen pendelattractie: de gondel hangt niet aan een lange pendelarm, maar is ingeklemd tussen twee zijdelingse draaiarmen.',
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
   },
   {
     id: 'swing-ride',
