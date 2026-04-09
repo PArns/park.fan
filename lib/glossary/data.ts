@@ -1857,6 +1857,18 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'sillas-voladoras',
     },
   },
+  {
+    id: 'pendulum-ride',
+    category: 'attractions',
+    slugs: {
+      en: 'pendulum-ride',
+      de: 'pendelfahrgeschaeft',
+      fr: 'attraction-pendulaire',
+      it: 'attrazione-pendolo',
+      nl: 'pendelattractie',
+      es: 'atraccion-pendular',
+    },
+  },
   // ── New Coasters (P2) ─────────────────────────────────────────────────────
   {
     id: 'racing-coaster',

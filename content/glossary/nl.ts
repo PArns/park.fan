@@ -1456,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
     definition:
-      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, Frisbee, zweefmolens), drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, zweefmolens), drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
   },
@@ -1542,6 +1542,17 @@ const translations: GlossaryTermTranslation[] = [
       'Een wildwaterrit (ook river rapids of vlottenrit) vervoert gasten in ronde opblaasbare of kunststof vlotten door een kunstmatig kanaal dat stroomversnellingen simuleert. Doordat het ronde vlot vrij draait op de stroom, is elke rit onvoorspelbaar: afhankelijk van de positie van het vlot worden sommige inzittenden doorweekt, anderen blijven relatief droog. Wildwaterritten hebben doorgaans een hoge capaciteit, een brede gezinsaantrekkingskracht en lage minimumlengte-eisen. Ze zijn bijzonder populair op warme dagen. Bekende Europese voorbeelden: de Wildwasser-attracties in Phantasialand en diverse ritten in Efteling, Europa-Park en Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     aliases: ['vlottenrit', 'river rapids', 'wildwater', 'stroomversnellingenrit', 'raftingrit'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Pendelattractie',
+    shortDefinition:
+      'Flat ride waarbij een gondel in een wijde pendelboog slingert, vaak terwijl de gondel ook ronddraait.',
+    definition:
+      'Een pendelattractie is een type flat ride waarbij een gondel of stoelrij bevestigd is aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Veel pendelattracties draaien de gondel ook om haar eigen as, waardoor de slingerbeweging gecombineerd wordt met rotatie voor extra intensiteit.\n\nBekende voorbeelden zijn de Top Spin (Huss), waarbij een horizontale rij stoelen slingert en tegelijk roteert, en de Frisbee (Mondial), waarbij een schijfvormige gondel slingerend rondspint. Pendelattracties zijn populair in pretparken en op kermissen vanwege hun spectaculaire uitstraling en relatief compact grondoppervlak.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'pendelattracties'],
+    alternateNames: ['slingerattractie', 'pendelschommel'],
   },
   {
     id: 'swing-ride',

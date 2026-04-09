@@ -1327,7 +1327,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
     definition:
-      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Frisbees, wave swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
+      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides'],
     alternateNames: ['carnival ride', 'midway ride'],
@@ -1416,6 +1416,17 @@ const translations: GlossaryTermTranslation[] = [
       'A river rapids ride (also called a white-water rafting ride or wild-water ride) puts guests in circular inflatable or fibreglass rafts that drift and spin along an artificially created channel designed to simulate the chaos of white-water rapids. Because the circular raft rotates freely on the current, each ride-through is unpredictable: depending on raft position at each water feature, some riders get completely drenched while others stay relatively dry. River rapids rides tend to have high hourly capacity and strong family appeal, with typically low height requirements. They are especially popular on hot days. Prominent European examples include the Wildwasser rides at Phantasialand and the various rapids attractions at Efteling, Europa-Park, and Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     alternateNames: ['rapids ride', 'raft ride', 'white water rapids', 'white-water ride'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Pendulum Ride',
+    shortDefinition:
+      'A flat ride where a gondola swings in a wide pendulum arc, often while also rotating riders.',
+    definition:
+      'A pendulum ride is a type of flat ride in which a gondola or set of seats is mounted on a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. Many pendulum rides also spin the gondola as it swings, combining pendulum motion with axial rotation for added intensity.\n\nCommon examples include the Top Spin (by Huss), where a horizontal bar of seats swings and rotates simultaneously, and the Frisbee (by Mondial), where a disc-shaped gondola swings in a pendulum arc while spinning. Pendulum rides are popular fixtures in theme parks and travelling fairs worldwide thanks to their strong visual impact and relatively compact footprint.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'pendulum rides'],
+    alternateNames: ['thrill swing', 'swinging flat ride'],
   },
   {
     id: 'swing-ride',

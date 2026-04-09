@@ -1457,7 +1457,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Atracción a nivel del suelo que gira, oscila o rota sin un circuito de vía elevado.',
     definition:
-      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Top Spin, Frisbee, sillas voladoras), torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
+      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Top Spin, sillas voladoras), torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'atracción de feria', 'ride plano'],
   },
@@ -1560,6 +1560,17 @@ const translations: GlossaryTermTranslation[] = [
       'Una atracción de rápidos (river rapids) coloca a los visitantes en balsas circulares inflables o de plástico que derivan y giran por un canal artificial diseñado para simular aguas bravas. Como la balsa circular rota libremente sobre la corriente, cada viaje es impredecible: según la posición de la balsa, algunos visitantes se empapan por completo mientras otros quedan relativamente secos. Las atracciones de rápidos tienen una alta capacidad horaria, gran atractivo familiar y requisitos de talla generalmente bajos. Son especialmente populares con el calor del verano. Ejemplos europeos: las atracciones Wildwasser de Phantasialand y diversas instalaciones en Efteling, Europa-Park y Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     aliases: ['aguas bravas', 'rapids', 'river rapids', 'rafting', 'rápidos de río'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Atracción Pendular',
+    shortDefinition:
+      'Atracción plana en la que una góndola oscila en un amplio arco de péndulo, a menudo mientras gira simultáneamente.',
+    definition:
+      'Una atracción pendular es un tipo de atracción plana (flat ride) en la que una góndola o fila de asientos está montada en un largo brazo que oscila en un arco cada vez más amplio, alcanzando a menudo posiciones casi verticales. Muchas atracciones pendulares también hacen girar la góndola sobre su propio eje, combinando el movimiento de péndulo con la rotación axial para una mayor intensidad.\n\nLos ejemplos más conocidos son el Top Spin (Huss), donde una barra horizontal de asientos oscila y gira simultáneamente, y el Frisbee (Mondial), donde una góndola en forma de disco oscila como un péndulo mientras gira. Las atracciones pendulares son habituales en parques temáticos y ferias de todo el mundo gracias a su gran impacto visual y su huella relativamente compacta.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'atracciones pendulares'],
+    alternateNames: ['atracción de péndulo', 'columpio pendular'],
   },
   {
     id: 'swing-ride',

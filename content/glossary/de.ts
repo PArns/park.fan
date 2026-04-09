@@ -1448,7 +1448,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bodennahe Attraktion, die dreht, schwingt oder rotiert – ohne klassische Achterbahnstrecke.',
     definition:
-      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Frisbees, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen.\n\nIm Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
+      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendel- und Schwingattraktionen (Top Spins, Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen.\n\nIm Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['Flat Rides'],
   },
@@ -1541,6 +1541,17 @@ const translations: GlossaryTermTranslation[] = [
       'Rafting-Bahn',
       'Rundboot-Bahn',
     ],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Pendelfahrgeschäft',
+    shortDefinition:
+      'Fahrgeschäft, bei dem eine Gondel in einem weiten Pendelbogen schwingt, oft kombiniert mit einer Rotationsbewegung.',
+    definition:
+      'Ein Pendelfahrgeschäft ist eine Art Flat Ride, bei dem eine Gondel oder eine Sitzreihe an einem langen Arm befestigt ist, der in einem immer größer werdenden Bogen vor- und zurückschwingt – oft bis nahezu senkrechter Stellung. Viele Pendelfahrgeschäfte drehen die Gondel zusätzlich um ihre eigene Achse, was die Intensität des Erlebnisses deutlich steigert.\n\nBekannteste Beispiele: der Top Spin (Huss), bei dem eine waagrechte Sitzreihe schwingt und gleichzeitig rotiert, sowie der Frisbee (Mondial), bei dem eine scheibenförmige Gondel im Pendelbogen kreist. Pendelfahrgeschäfte sind dank ihrer starken Schaukästen und ihres vergleichsweise kompakten Platzbedarfs weit verbreitete Attraktionen in Freizeitparks und auf Jahrmärkten.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'Pendelfahrgeschäfte', 'Pendelanlage', 'Pendelbahn'],
+    alternateNames: ['Pendelanlage', 'Schwingattraktion'],
   },
   {
     id: 'swing-ride',

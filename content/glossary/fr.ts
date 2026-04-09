@@ -1418,7 +1418,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine'],
   },
@@ -1498,6 +1498,17 @@ const translations: GlossaryTermTranslation[] = [
       "Les rapides (ou white-water ride) font prendre place aux visiteurs dans des radeaux circulaires en PVC ou en polyester qui dérivent et tournent sur un canal artificiel imitant des rapides. Comme le radeau tourne librement, chaque trajet est imprévisible : selon la position à chaque élément d'eau, certains riders sont complètement trempés, d'autres restent relativement secs. Les rapides ont généralement une forte capacité horaire, une grande accessibilité familiale et peu de restrictions de taille. Ils sont particulièrement populaires lors des fortes chaleurs. Parmi les exemples européens : les Wildwasser de Phantasialand et diverses installations à Efteling, Europa-Park et Thorpe Park.",
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     aliases: ['rapides de rivière'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Attraction pendulaire',
+    shortDefinition:
+      'Attraction de type flat ride où une nacelle oscille en arc de pendule, souvent en tournant simultanément.',
+    definition:
+      "Une attraction pendulaire est un type de flat ride dans lequel une nacelle ou une rangée de sièges est fixée à un long bras qui oscille dans un arc de plus en plus large, atteignant souvent une position presque verticale. Beaucoup de ces attractions font également tourner la nacelle sur elle-même, combinant ainsi le mouvement de pendule avec une rotation axiale pour une expérience plus intense.\n\nLes exemples les plus courants sont le Top Spin (Huss), où une barre horizontale de sièges oscille et tourne simultanément, et le Frisbee (Mondial), où une nacelle en forme de disque décrit un arc de pendule en tournant. Ces attractions sont très répandues dans les parcs d'attractions et les fêtes foraines grâce à leur fort impact visuel et leur encombrement relativement réduit.",
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'attractions pendulaires'],
+    alternateNames: ['manège pendulaire', 'attraction à balancement'],
   },
   {
     id: 'swing-ride',

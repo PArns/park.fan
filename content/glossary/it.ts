@@ -1446,7 +1446,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attrazione a livello del suolo che ruota, oscilla o si inclina senza un circuito di binari sopraelevato.',
     definition:
-      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, Frisbee, seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
+      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo e oscillanti (Top Spin, seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'giostra da fiera', 'attrazione di terra'],
   },
@@ -1544,6 +1544,17 @@ const translations: GlossaryTermTranslation[] = [
       "Le rapide del fiume (river rapids) mettono gli ospiti su zattere circolari gonfiabili o in plastica che derivano e ruotano lungo un canale artificiale progettato per simulare le acque bianche. Poiché la zattera circolare ruota liberamente sulla corrente, ogni percorso è imprevedibile: a seconda della posizione della zattera, alcuni passeggeri vengono completamente bagnati, altri rimangono relativamente asciutti. Le rapide hanno in genere un'alta capacità oraria, un ampio appeal familiare e requisiti di altezza generalmente bassi. Sono particolarmente popolari nelle giornate calde. Esempi europei notevoli: le Wildwasser di Phantasialand e varie installazioni a Efteling, Europa-Park e Thorpe Park.",
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     aliases: ['rapide', 'river rapids', 'giro in zattera', 'acque bianche', 'rafting'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Attrazione a Pendolo',
+    shortDefinition:
+      "Flat ride in cui una gondola oscilla in un ampio arco a pendolo, spesso mentre ruota simultaneamente.",
+    definition:
+      "Un'attrazione a pendolo è un tipo di flat ride in cui una gondola o una fila di sedili è montata su un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. Molte attrazioni a pendolo fanno anche ruotare la gondola attorno al proprio asse, combinando il moto pendolare con la rotazione assiale per una maggiore intensità.\n\nGli esempi più noti sono il Top Spin (Huss), dove una barra orizzontale di sedili oscilla e ruota contemporaneamente, e il Frisbee (Mondial), dove una gondola a forma di disco oscilla come un pendolo girando su se stessa. Le attrazioni a pendolo sono diffuse nei parchi a tema e nelle fiere di tutto il mondo grazie al loro forte impatto visivo e all'ingombro relativamente contenuto.",
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Top Spin', 'Top Spins', 'Frisbee', 'Frisbees', 'attrazioni a pendolo'],
+    alternateNames: ['giostra a pendolo', 'attrazione oscillante'],
   },
   {
     id: 'swing-ride',
