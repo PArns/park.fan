@@ -167,6 +167,7 @@ const translations: GlossaryTermTranslation[] = [
       'Une taille minimale que les visiteurs doivent atteindre pour accéder à une attraction.',
     definition:
       "La taille minimale est une règle de sécurité imposée par les parcs pour garantir que les systèmes de retenue — harnais, barres de maintien, ceintures — fonctionnent correctement pour chaque passager. Elle varie généralement entre 90 et 140 cm selon l'intensité de l'attraction. Certaines attractions ont également une taille ou un poids maximal. Vérifiez toujours les tailles minimales avant de visiter avec de jeunes enfants pour éviter les déceptions.",
+    aliases: ['tailles minimales'],
     alternateNames: ['Restriction de Taille', 'Hauteur requise', 'Condition de taille'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1308,6 +1309,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      `Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.`,
+    definition:
+      `Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.`,
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1417,7 +1428,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires et oscillantes (Top Spin, Frisbee, vagues volantes), les tours de chute et les plateformes rotatives. Contrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les Frisbees (attractions pendulaires), les Top Spins et les manèges à chaînes (vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine'],
   },
@@ -1476,7 +1487,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Une tour de chute (ou free-fall tower) est une attraction où les visiteurs sont hissés dans une nacelle ou sur des sièges individuels autour d'une tour centrale, puis relâchés pour plonger rapidement vers le sol. La descente peut être une quasi-chute libre (approchant l'apesanteur), freinée, ou même combinée avec un éjection vers le haut. Une phase de décélération progressive amortit l'arrivée au bas. Les variantes incluent les tours rotatives, les modèles multi-directionnels et les versions hybrides avec éjection. Les tours de chute offrent des sensations intenses sur une emprise réduite ; parmi les fabricants notables : Intamin, Mondial et S&S Worldwide.",
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['chute libre', 'tour de chute libre'],
+    aliases: ['chute libre', 'tour de chute libre', 'tours de chute'],
   },
   {
     id: 'log-flume',
@@ -1499,6 +1510,79 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['rapides de rivière'],
   },
   {
+    id: 'pendulum-ride',
+    name: 'Attraction pendulaire',
+    shortDefinition:
+      'Attraction de type flat ride où une nacelle oscille en arc de pendule, souvent en tournant simultanément.',
+    definition:
+      "Une attraction pendulaire est un type de flat ride dans lequel une nacelle est suspendue à un long bras qui oscille dans un arc de plus en plus large, atteignant souvent une position presque verticale. La nacelle tourne également sur elle-même, combinant le mouvement de pendule avec une rotation axiale pour une expérience très intense.\n\nL'exemple le plus emblématique est le Frisbee (Mondial) : une nacelle en forme de disque qui décrit un arc de pendule en tournant. D'autres attractions pendulaires répandues sont le KMG Afterburner et l'Intamin Giant Frisbee. Ces attractions sont très prisées dans les parcs d'attractions et les fêtes foraines grâce à leur fort impact visuel et leur encombrement relativement réduit.",
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Frisbee', 'Frisbees', 'attractions pendulaires'],
+    alternateNames: ['manège pendulaire', 'attraction à balancement'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'Attraction de Huss dans laquelle une nacelle de passagers tourne librement dans toutes les directions pendant que le bâti oscillant se balance.',
+    definition:
+      "Le Top Spin est un modèle d'attraction fabriqué par Huss Rides. Une nacelle pouvant accueillir jusqu'à 40 passagers est montée sur un bâti pivotant ; la nacelle peut être tournée en continu dans n'importe quelle direction pendant que le bâti se balance, créant une combinaison imprévisible de forces d'oscillation et de rotation. L'attraction peut être programmée de la simple oscillation douce aux rotations continues les plus intenses.\n\nLes Top Spins ont été omniprésents dans les parcs d'attractions et les fêtes foraines des années 1990 aux années 2010. Malgré le mouvement d'oscillation, le Top Spin n'est pas une attraction pendulaire : la nacelle n'est pas suspendue à un long bras mais est enserrée entre deux cadres latéraux rotatifs.",
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
+  },
+  {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      `Un manège Huss avec plusieurs voitures montées sur un grand disque tournant, chaque voiture tournant librement sur son propre axe.`,
+    definition:
+      `Le Break Dance est un modèle de manège plat de Huss Rides dans lequel de petites voitures — chacune pouvant accueillir deux à quatre passagers — sont disposées autour d'un grand disque tournant. Les voitures sont libres de tourner sur leurs propres axes pendant que le disque tourne, produisant des forces de rotation et d'inclinaison chaotiques et imprévisibles qui varient à chaque cycle.\n\nLe Break Dance est devenu l'un des modèles de manèges plats itinérants et permanents les plus populaires à partir des années 1980, reconnaissable par son disque tournant illuminé et son programme musical énergique. De nombreuses variantes et imitations d'autres fabricants existent sous différents noms.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      `Un manège centrifuge dans lequel des gondoles sur un grand anneau rotatif sont maintenues en place par la force G tandis que l'anneau s'incline à la verticale.`,
+    definition:
+      `L'Enterprise est un manège dans lequel des gondoles sont disposées autour de la circonférence d'un grand anneau rotatif. Lorsque l'anneau accélère, la force centrifuge plaque les passagers fermement dans leurs sièges ; à pleine vitesse, l'ensemble de l'anneau s'incline progressivement vers une position presque verticale, laissant les passagers tourner à l'envers.\n\nOriginellement créée par Huss Rides et ensuite produite par plusieurs autres fabricants, l'Enterprise est devenue un élément incontournable des parcs permanents et des fêtes foraines itinérantes à partir des années 1970. Son inclinaison verticale spectaculaire en fait l'une des silhouettes de manèges les plus impressionnantes visuellement.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      `Un manège à bateau oscillant — une grande nacelle en forme de navire viking ou pirate qui oscille en un arc de pendule de plus en plus large.`,
+    definition:
+      `Le Ranger est le modèle de bateau oscillant de Huss Rides : une grande nacelle en forme de drakkar viking ou de navire pirate qui oscille d'avant en arrière en arc, montant progressivement à chaque oscillation. Les passagers s'assoient le long des côtés du navire, face vers l'intérieur. À pleine oscillation, la nacelle atteint des angles élevés, produisant de fortes forces G négatives au sommet.\n\nLes manèges à bateau oscillant sont produits par de nombreux fabricants dans le monde entier sous divers noms (Viking, Pirate Ship, Sea Monster). Le Ranger est l'un des modèles de manèges Huss les plus largement installés, présent dans les parcs permanents et les fêtes foraines itinérantes à travers l'Europe et au-delà.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'bateau pirate', 'bateau viking'],
+    alternateNames: ['Huss Ranger', 'bateau viking', 'bateau pirate'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      `Un manège Huss avec des bras à gondoles qui s'étendent vers l'extérieur depuis une colonne centrale pendant que le manège tourne et monte.`,
+    definition:
+      `Le Condor est un modèle de manège de Huss Rides composé d'une haute colonne centrale avec plusieurs bras à gondoles. Pendant le fonctionnement, les bras s'étendent vers l'extérieur et les gondoles montent pendant que toute la structure tourne. Les passagers vivent une combinaison de rotation, d'élévation et d'inclinaison vers l'extérieur — offrant des vues sur le parc depuis une hauteur modérée.\n\nLe Condor était une attraction courante dans les parcs européens des années 1970 aux années 1990 et peut encore être trouvé dans de nombreux endroits permanents. Il est parfois confondu avec les attractions à chaises volantes (manèges à chaînes) mais dispose de gondoles fermées plutôt que de chaises ouvertes suspendues.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      `Un manège Huss à trois bras rotatifs, chacun portant une nacelle dont les voitures tournent simultanément avec la plateforme principale.`,
+    definition:
+      `La Troika est un modèle de manège de Huss Rides dans lequel trois bras s'étendent depuis un moyeu central ; chaque bras porte une nacelle avec plusieurs voitures qui peuvent tourner. Pendant que la plateforme principale tourne, les nacelles tournent également et les voitures pivotent, créant plusieurs axes de rotation simultanés. Le mouvement résultant est très imprévisible et désorientant.\n\nLa Troika était un ajout populaire dans les parcs d'attractions européens et les fêtes foraines à partir des années 1970. Sa symétrie à trois voies lui confère une apparence visuelle distinctive. Les variantes et imitations d'autres fabricants sont parfois connues sous le nom de Trabant ou Walzer.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'swing-ride',
     name: 'Chaises volantes',
     shortDefinition:
@@ -1506,7 +1590,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Les chaises volantes (aussi appelées wave swinger ou Kettenflieger) sont des attractions rotatives où des sièges suspendus à des chaînes sont accrochés à une structure centrale tournante. À mesure que la structure accélère, la force centrifuge projette les sièges vers l'extérieur et vers le haut, procurant une sensation de vol. Les chaises volantes comptent parmi les plus anciennes attractions foraines encore en service ; les versions modernes vont du petit manège pour enfants aux gigantesques tours à chaînes (starflyers) qui hissent les passagers à de grandes hauteurs. On les retrouve dans pratiquement tous les parcs d'attractions et fêtes foraines du monde.",
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['manège à chaînes', 'chaises tournantes'],
+    aliases: ['manège à chaînes', 'chaises tournantes', 'vagues volantes'],
   },
   {
     id: 'racing-coaster',

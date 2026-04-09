@@ -67,12 +67,12 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
   while ((match = regex.exec(text)) !== null) {
     const matched = match[0];
     const entry = entries.find((e) => e.pattern.toLowerCase() === matched.toLowerCase());
-    if (!entry || used.has(entry.term.id)) continue;
+    if (!entry || used.has(matched.toLowerCase())) continue;
 
     // Short patterns (≤ 4 chars) must match exactly — avoids matching common words
     // as acronym aliases (e.g. alias "DAS" case-insensitively matching article "das")
     if (entry.pattern.length <= 4 && entry.pattern !== matched) continue;
-    used.add(entry.term.id);
+    used.add(matched.toLowerCase());
 
     if (match.index > lastIndex) {
       segments.push({ type: 'text', content: text.slice(lastIndex, match.index) });

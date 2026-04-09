@@ -170,7 +170,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een minimumlengte die bezoekers moeten hebben om een specifieke attractie te mogen betreden.',
     definition:
       'De minimumlengte is een veiligheidsregel die parken instellen om te garanderen dat veiligheidssystemen — heupbeugelsloten, schouderbanden, gordels — correct werken voor elke bezoeker. Ze variëren doorgaans tussen 90 en 140 cm, afhankelijk van de intensiteit van de attractie. Sommige attracties hebben ook een maximum lengte of gewichtslimiet. Controleer altijd de minimumlengte voordat je met jonge kinderen op bezoek gaat.',
-    aliases: ['Minimumlengtes'],
+    aliases: ['Minimumlengtes', 'minimumlengte-eisen'],
     alternateNames: ['Lengtebeperking', 'Lengteeis', 'Vereiste lengte'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1325,6 +1325,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Duits fabrikant van attracties opgericht in 1961, bekend van de Top Spin, Break Dance, Enterprise, Ranger en Condor.',
+    definition:
+      'Huss Rides GmbH is een Duits attractiefabrikant opgericht in 1961 door Paul Huss, gevestigd in Bremen. Het bedrijf produceerde enkele van de meest herkenbare flat ride-modellen van de late 20e eeuw, die te vinden zijn in pretparken en op kermissen wereldwijd.\n\nBekende Huss-modellen zijn de Top Spin, de Break Dance (roterende voertuigen op een draaiend platform), de Enterprise (centrifugaal gondolwiel), de Ranger (slingerend pendelschip), de Condor (roterende stoelentoren) en de Troïka. Veel van deze ontwerpen werden industrie-standaarden en werden veelvuldig geïmiteerd. Huss-attracties worden vooral geassocieerd met het hoogtepunt van flat rides in Europese parken in de jaren tachtig en negentig.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1456,7 +1466,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
     definition:
-      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), slingerattracties (Top Spin, Frisbee, zweefmolens), drop towers en rondedraaiplatforms. In tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), Frisbees (pendelattracties), Top Spins en zweefmolens, drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
   },
@@ -1521,7 +1531,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een drop tower (ook vrije-val-toren of free-fall tower) is een attractie waarbij bezoekers in een gondel of individuele stoelen rondom een centrale torenkonstruktie worden omhooggebracht en vervolgens in een snelle val naar beneden worden losgelaten. De val kan nagenoeg gewichtloos zijn (echte vrije val), geremd, of gecombineerd met een katapultimpuls omhoog. Onderin remt het systeem de gondel geleidelijk af. Varianten zijn roterende drop towers, meerdimensionale modellen en hybride versies. Drop towers bieden intense ervaringen op een compact grondoppervlak en zijn wereldwijd te vinden. Bekende fabrikanten: Intamin, Mondial en S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['vrije-val-toren', 'free fall tower', 'drop ride', 'vrijeval'],
+    aliases: ['vrije-val-toren', 'free fall tower', 'drop ride', 'vrijeval', 'drop towers'],
   },
   {
     id: 'log-flume',
@@ -1544,6 +1554,79 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['vlottenrit', 'river rapids', 'wildwater', 'stroomversnellingenrit', 'raftingrit'],
   },
   {
+    id: 'pendulum-ride',
+    name: 'Pendelattractie',
+    shortDefinition:
+      'Flat ride waarbij een gondel in een wijde pendelboog slingert, vaak terwijl de gondel ook ronddraait.',
+    definition:
+      'Een pendelattractie is een type flat ride waarbij een gondel hangt aan een lange arm die in een steeds grotere boog heen en weer slingert, vaak tot bijna loodrecht. Tegelijkertijd draait de gondel om haar eigen as, waardoor de slingerbeweging gecombineerd wordt met rotatie voor een intense beleving.\n\nHet bekendste voorbeeld is de Frisbee (Mondial): een schijfvormige gondel die slingerend rondspint. Andere veelvoorkomende pendelattracties zijn de KMG Afterburner en de Intamin Giant Frisbee. Pendelattracties zijn populair in pretparken en op kermissen vanwege hun spectaculaire uitstraling en relatief compact grondoppervlak.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Frisbee', 'Frisbees', 'pendelattracties'],
+    alternateNames: ['slingerattractie', 'pendelschommel'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'Flat ride van Huss waarbij een gondel met passagiers vrij in alle richtingen kan draaien terwijl het draagframe op en neer slingert.',
+    definition:
+      'De Top Spin is een attractiemodel van fabrikant Huss Rides. Een gondel met doorgaans 40 passagiers is bevestigd aan een draaibaar frame; de gondel kan continu in elke richting worden gedraaid terwijl het frame slingert, wat een onvoorspelbare combinatie van slingerkrachten en rotatie oplevert. De attractie is programmeerbaar van zacht schommelen tot doorlopende rotaties.\n\nTop Spins waren van de jaren negentig tot de jaren 2010 alomtegenwoordig in pretparken en op kermissen. Ondanks de slingerbeweging is de Top Spin geen pendelattractie: de gondel hangt niet aan een lange pendelarm, maar is ingeklemd tussen twee zijdelingse draaiarmen.',
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
+  },
+  {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'Een Huss-attractie met meerdere wagentjes op een grote ronddraaiende schijf, waarbij elk wagentje vrij om zijn eigen as draait.',
+    definition:
+      'De Break Dance is een plat-attractiemodel van Huss Rides waarbij kleine wagentjes — elk voor twee tot vier passagiers — zijn gerangschikt rond een grote ronddraaiende schijf. De wagentjes kunnen vrij om hun eigen assen draaien terwijl de schijf roteert, waardoor chaotische en onvoorspelbare draai- en kantelkrachten ontstaan die per ritcyclus variëren.\n\nDe Break Dance werd vanaf de jaren 1980 een van de populairste reizende en permanente platte attractiemodellen, herkenbaar aan de verlichte draaiende schijf en het hoogenergetische muziekprogramma. Talrijke varianten en imitaties van andere fabrikanten bestaan onder verschillende namen.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'Een centrifugale attractie waarbij gondels op een grote roterende ring op hun plaats worden gehouden door G-kracht terwijl de ring naar verticaal kantelt.',
+    definition:
+      'De Enterprise is een attractie waarbij gondels zijn gerangschikt rond de omtrek van een grote roterende ring. Naarmate de ring versnelt, drukt de centrifugale kracht de passagiers stevig in hun stoelen; bij maximale snelheid kantelt de hele ring geleidelijk naar een bijna verticale positie, waardoor passagiers boven hun hoofd roteren.\n\nOorspronkelijk ontwikkeld door Huss Rides en later door meerdere andere fabrikanten geproduceerd, werd de Enterprise vanaf de jaren 1970 een vaste waarde in zowel permanente parken als reizende kermissen. Door de dramatische verticale kanteling is het een van de visueel meest indrukwekkende attractiesilhouetten.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'Een schommelbootattractie — een grote gondel in de vorm van een Vikingschip of piratenschip dat in een steeds breder slingerend boog schommelt.',
+    definition:
+      'De Ranger is het schommelbootmodel van Huss Rides: een grote gondel in de vorm van een Vikingschip of piratenschip dat heen en weer schommelt in een boog, waarbij elke schommel hoger wordt. Passagiers zitten langs de zijkanten van het schip, naar binnen gericht. Op de hoogste uitslag bereikt de gondel grote hoeken, wat sterke negatieve G-krachten produceert aan de top.\n\nSchommelbootattracties worden wereldwijd door veel fabrikanten geproduceerd onder verschillende namen (Viking, Pirate Ship, Sea Monster). De Ranger behoort tot de meest wijdverspreide Huss-attractiemodellen, te vinden in permanente parken en op reizende kermissen door heel Europa en daarbuiten.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'schommelboot', 'piratenschip', 'Vikingschip'],
+    alternateNames: ['Huss Ranger', 'Vikingschip', 'piratenschip'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'Een Huss-attractie met gondelarms die naar buiten strekken vanuit een centrale kolom terwijl de attractie draait en stijgt.',
+    definition:
+      'De Condor is een attractiemodel van Huss Rides bestaande uit een hoge centrale kolom met verschillende gondelarms. Tijdens de rit strekken de arms naar buiten en stijgen de gondels terwijl de hele constructie roteert. Passagiers ervaren een combinatie van rotatie, hoogtestijging en buitenwaartse kanteling — met uitzicht over het park vanuit een matige hoogte.\n\nDe Condor was van de jaren 1970 tot de jaren 1990 een veel geziene attractie in Europese parken en is nog steeds te vinden op veel vaste locaties. Het wordt soms verward met zweefmolens (schommelstoelenattracties) maar heeft gesloten gondels in plaats van open hangende stoelen.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'Een Huss-attractie met drie roterende armen, elk met een gondel waarvan de wagentjes gelijktijdig met het hoofdplatform draaien.',
+    definition:
+      'De Troika is een attractiemodel van Huss Rides waarbij drie armen zich uitstrekken vanuit een centrale naaf; elke arm draagt een gondel met meerdere wagentjes die kunnen roteren. Terwijl het hoofdplatform rondgaat, draaien de gondels ook en tollen de wagentjes, wat meerdere gelijktijdige rotatie-assen creëert. De resulterende beweging is zeer onvoorspelbaar en desoriënterend.\n\nDe Troika was vanaf de jaren 1970 een populaire toevoeging aan Europese pretparken en kermissen. De drievoudige symmetrie geeft het een onderscheidend visueel uiterlijk. Varianten en imitaties van andere fabrikanten staan soms bekend als Trabant of Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'swing-ride',
     name: 'Zweefmolen',
     shortDefinition:
@@ -1551,7 +1634,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een zweefmolen (ook kettingcarrousel of Kettenflieger) is een ronddraaiende attractie waarbij stoeltjes aan kettingen aan een centrale draaiende structuur hangen. Bij het ronddraaien worden de stoeltjes door de middelpuntvliedende kracht naar buiten en omhoog geslingerd, wat passagiers het gevoel van vliegen geeft. Zweefmolens zijn een van de oudste nog bestaande kermisattracties en stammen uit het begin van de 20e eeuw. Moderne versies variëren van zachte kinderdraaimolens tot enorme kettingtorens (starflyers) die passagiers tientallen meters omhoogbrengen. Ze zijn in vrijwel elk pretpark en op kermissen wereldwijd te vinden.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane'],
+    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane', 'zweefmolens'],
   },
   {
     id: 'racing-coaster',

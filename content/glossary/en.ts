@@ -146,6 +146,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Height requirements are safety rules set by parks to ensure that restraint systems — lap bars, over-the-shoulder harnesses, seat belts — fit and function correctly for every rider. They typically range from 90 cm (about 35 inches) for gentler family coasters to 140 cm (55 inches) for the most intense high-speed rides. Some rides also have maximum height limits or weight restrictions, though these are less common.\n\nFor families visiting with young children, checking height requirements before arriving at a park is essential planning. Being turned away at a ride entrance after a long queue is one of the most common sources of frustration at theme parks. Most park websites and apps publish height charts for every ride. Carrying a printed copy or saving a screenshot can save time on the day. Some parks offer \"rider switch\" systems so that accompanying adults can take turns riding without re-queuing.',
     relatedTermIds: ['ride-capacity', 'refurbishment'],
+    aliases: ['height requirements'],
   },
   {
     id: 'themed-land',
@@ -1195,6 +1196,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'German flat ride manufacturer founded in 1961, known for the Top Spin, Break Dance, Enterprise, Ranger, and Condor.',
+    definition:
+      'Huss Rides GmbH is a German amusement ride manufacturer founded in 1961 by Paul Huss and based in Bremen. The company produced some of the most recognisable flat ride models of the late 20th century, which can be found in theme parks and travelling fairs worldwide.\n\nKey Huss models include the Top Spin, Break Dance (rotating cars on a spinning disc), Enterprise (centrifugal gondola wheel), Ranger (swinging pendulum ship), Condor (rotating chair tower), and Troika. Many of these designs became industry staples widely copied by other manufacturers. Huss rides are particularly associated with the peak era of flat rides in European parks during the 1980s and 1990s.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1326,7 +1337,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
     definition:
-      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum and swinging rides (Top Spins, Frisbees, wave swingers), drop and launch towers, and circular spinning platforms. Unlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
+      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), Frisbees (pendulum rides), Top Spins, and swing rides (Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides'],
     alternateNames: ['carnival ride', 'midway ride'],
@@ -1393,8 +1404,8 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A drop tower (also called a free-fall tower or drop ride) is an attraction in which riders are lifted in a gondola or individual seats arranged around a central tower structure, then released to plummet rapidly toward the ground. The drop may be near-true free-fall (approaching weightlessness), progressively braked, or in some models an ejector-style launch element fires riders upward first before the drop. A deceleration phase near the bottom brings the gondola to a smooth stop. Variants include rotating drop towers, multi-directional models, and hybrids that combine a drop with a launch sequence. Drop towers offer intense thrills with a very compact footprint, making them popular worldwide. Well-known examples include the Tower of Terror installations at Disney parks and numerous models from manufacturers such as Intamin, Mondial, and S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['free-fall'],
-    alternateNames: ['free fall tower', 'drop ride', 'free fall ride'],
+    aliases: ['free-fall', 'drop towers', 'launch tower', 'launch towers'],
+    alternateNames: ['free fall tower', 'drop ride', 'free fall ride', 'launch ride'],
   },
   {
     id: 'log-flume',
@@ -1417,6 +1428,79 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['rapids ride', 'raft ride', 'white water rapids', 'white-water ride'],
   },
   {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'A flat ride by Huss in which a gondola of riders is freely rotated in any direction while its supporting frame swings up and down.',
+    definition:
+      'The Top Spin is a flat ride model manufactured by Huss Rides. A gondola holding typically 40 riders is mounted on a pivoting frame; the gondola can be rotated continuously in any direction as the frame swings, creating an unpredictable combination of swinging and spinning forces. The ride can be programmed from gentle rocking to relentless full rotations, making it adaptable to different intensity levels.\n\nTop Spins were ubiquitous in theme parks and travelling fairs from the 1990s through the 2010s and remain a recognisable sight in many parks worldwide. Despite the swinging motion, the Top Spin is not a pendulum ride — the gondola is not suspended from a long arm but rather clamped between two rotating side frames.',
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
+  },
+  {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'A Huss flat ride with multiple cars mounted on a large spinning disc, each car rotating freely on its own axis.',
+    definition:
+      'The Break Dance is a flat ride model by Huss Rides in which a set of small cars — each holding two to four riders — is arranged around a large spinning disc. The cars are free to rotate on their own axes as the disc rotates, producing chaotic and unpredictable spinning and tilting forces that vary with each ride cycle.\n\nThe Break Dance became one of the most popular travelling and permanent flat ride models from the 1980s onward, recognisable by its illuminated spinning disc and high-energy music programme. Numerous variants and imitations from other manufacturers exist under different names.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'A centrifugal flat ride where gondolas on a large rotating ring are held in place by G-force as the ring tilts to vertical.',
+    definition:
+      'The Enterprise is a flat ride in which gondolas are arranged around the circumference of a large rotating ring. As the ring accelerates, centrifugal force pins riders firmly into their seats; once at full speed, the entire ring tilts progressively to a near-vertical position, leaving riders rotating overhead.\n\nOriginated by Huss Rides and subsequently produced by multiple other manufacturers, the Enterprise became a staple of both permanent parks and travelling fairs from the 1970s onward. Its dramatic vertical tilt makes it one of the most visually striking flat ride silhouettes.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'A swinging ship flat ride — a large gondola shaped like a Viking or pirate vessel that swings in an increasingly wide pendulum arc.',
+    definition:
+      'The Ranger is Huss Rides\' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, producing strong negative G-forces at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride'],
+    alternateNames: ['Huss Ranger', 'Viking ship', 'pirate ship'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'A Huss flat ride with gondola arms that extend outward from a central column as the ride rotates and rises.',
+    definition:
+      'The Condor is a flat ride model by Huss Rides consisting of a tall central column with several gondola arms. As the ride operates, the arms extend outward and the gondolas rise while the entire structure rotates. Riders experience a combination of rotation, elevation, and outward lean — giving views across the park from a moderate height.\n\nThe Condor was a common sight in European parks from the 1970s through the 1990s and can still be found in many permanent locations. It is sometimes confused with chair tower (swing ride) attractions but has enclosed gondolas rather than open suspended chairs.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'A Huss flat ride with three rotating arms, each carrying a gondola whose cars spin simultaneously with the main platform.',
+    definition:
+      'The Troika is a flat ride model by Huss Rides in which three arms extend from a central hub; each arm carries a gondola with several cars that can rotate. As the main platform revolves, the gondolas also rotate and the cars spin, creating multiple simultaneous rotation axes. The resulting motion is highly unpredictable and disorienting.\n\nThe Troika was a popular addition to European amusement parks and fairs from the 1970s onward. Its three-fold symmetry gives it a distinctive visual appearance. Variants and imitations from other manufacturers are sometimes known as Trabant or Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Pendulum Ride',
+    shortDefinition:
+      'A flat ride where a gondola hangs from a long arm and swings in a wide pendulum arc, often while spinning.',
+    definition:
+      'A pendulum ride is a type of flat ride in which a gondola is suspended from a long arm that swings back and forth in an increasingly wide arc, often reaching near-vertical heights. As the arm swings, the gondola also rotates, combining the pendulum motion with axial spin for a highly intense experience.\n\nThe most iconic example is the Frisbee (Mondial), a disc-shaped gondola that swings like a pendulum while rotating. Other well-known pendulum rides include the KMG Afterburner and Intamin Giant Frisbee. Pendulum rides are a popular fixture in theme parks and travelling fairs worldwide, valued for their dramatic visual spectacle and relatively compact footprint.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Frisbee', 'Frisbees', 'pendulum rides'],
+    alternateNames: ['giant frisbee', 'swinging gondola ride'],
+  },
+  {
     id: 'swing-ride',
     name: 'Swing Ride',
     shortDefinition:
@@ -1424,6 +1508,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A swing ride (also called a chair swing, wave swinger, or Kettenflieger) is a rotating attraction in which chairs suspended from chains are attached to a revolving central structure. As the ride spins, centrifugal force causes the chairs to swing outward and upward, giving riders a sensation of flying. Swing rides are among the oldest surviving fairground ride types, with roots in early 20th-century carnivals; modern theme park versions range from gentle low-speed models designed for young children to enormous tower versions (chain towers or starflyers) that lift riders dozens of metres into the air. They are a near-universal presence in both major theme parks and travelling funfairs worldwide.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
+    aliases: ['wave swingers', 'wave swinger'],
     alternateNames: ['chair swing', 'wave swinger', 'chain swing', 'Chairoplane'],
   },
   {

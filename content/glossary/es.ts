@@ -167,7 +167,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una estatura mínima que los visitantes deben tener para acceder a una atracción específica.',
     definition:
       'La talla mínima es una norma de seguridad establecida por los parques para garantizar que los sistemas de retención — barras de seguridad, arneses, cinturones — funcionen correctamente para cada pasajero. Suele oscilar entre 90 y 140 cm dependiendo de la intensidad de la atracción. Algunas atracciones también tienen una altura o peso máximo. Comprueba siempre los requisitos de talla antes de visitar con niños pequeños para evitar decepciones.',
-    aliases: ['Tallas mínimas'],
+    aliases: ['Tallas mínimas', 'requisitos mínimos de talla'],
     alternateNames: ['Requisito de Estatura', 'Restricción de Altura', 'Altura mínima requerida'],
 
     relatedTermIds: ['ride-capacity', 'refurbishment'],
@@ -1317,6 +1317,16 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['credit', 'mine-train', 'gerstlauer'],
   },
   {
+    id: 'huss-rides',
+    name: 'Huss Rides',
+    shortDefinition:
+      'Fabricante alemán de atracciones fundado en 1961, conocido por el Top Spin, el Break Dance, el Enterprise, el Ranger y el Condor.',
+    definition:
+      'Huss Rides GmbH es un fabricante alemán de atracciones fundado en 1961 por Paul Huss, con sede en Bremen. La empresa produjo algunos de los modelos de flat rides más reconocibles de finales del siglo XX, presentes en parques temáticos y ferias de todo el mundo.\n\nLos modelos más conocidos de Huss son el Top Spin, el Break Dance (vehículos giratorios sobre una plataforma rotatoria), el Enterprise (rueda centrífuga de góndolas), el Ranger (barco péndulo oscilante), el Condor (torre de sillas rotativa) y la Troika. Muchos de estos diseños se convirtieron en estándares del sector y fueron ampliamente imitados. Las atracciones Huss están especialmente asociadas con la época de esplendor de los flat rides en los parques europeos de los años ochenta y noventa.',
+    relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
+    aliases: ['Huss', 'Huss Park Attractions'],
+  },
+  {
     id: 's-and-s-worldwide',
     name: 'S&S Worldwide',
     shortDefinition:
@@ -1457,7 +1467,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Atracción a nivel del suelo que gira, oscila o rota sin un circuito de vía elevado.',
     definition:
-      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Top Spin, Frisbee, sillas voladoras), torres de caída y plataformas giratorias. A diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
+      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), Frisbees (atracciones pendulares), Top Spins y sillas voladoras, torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'atracción de feria', 'ride plano'],
   },
@@ -1539,7 +1549,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una torre de caída (drop tower o free-fall tower) es una atracción en la que los visitantes son elevados en una góndola o asientos individuales alrededor de una estructura central de torre y después soltados para caer rápidamente hacia el suelo. La caída puede ser casi en caída libre (rozando la ingravidez), frenada, o combinada con un impulso hacia arriba. Una fase de deceleración progresiva frena la góndola suavemente al final. Las variantes incluyen torres rotativas, modelos multidireccionales y versiones híbridas. Las torres de caída ofrecen experiencias intensas en un espacio reducido y se encuentran en todo el mundo. Fabricantes destacados: Intamin, Mondial y S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['torre de caída libre', 'drop ride', 'caída libre', 'free fall tower'],
+    aliases: ['torre de caída libre', 'drop ride', 'caída libre', 'free fall tower', 'torres de caída'],
   },
   {
     id: 'log-flume',
@@ -1560,6 +1570,79 @@ const translations: GlossaryTermTranslation[] = [
       'Una atracción de rápidos (river rapids) coloca a los visitantes en balsas circulares inflables o de plástico que derivan y giran por un canal artificial diseñado para simular aguas bravas. Como la balsa circular rota libremente sobre la corriente, cada viaje es impredecible: según la posición de la balsa, algunos visitantes se empapan por completo mientras otros quedan relativamente secos. Las atracciones de rápidos tienen una alta capacidad horaria, gran atractivo familiar y requisitos de talla generalmente bajos. Son especialmente populares con el calor del verano. Ejemplos europeos: las atracciones Wildwasser de Phantasialand y diversas instalaciones en Efteling, Europa-Park y Thorpe Park.',
     relatedTermIds: ['water-ride', 'log-flume', 'height-requirement'],
     aliases: ['aguas bravas', 'rapids', 'river rapids', 'rafting', 'rápidos de río'],
+  },
+  {
+    id: 'pendulum-ride',
+    name: 'Atracción Pendular',
+    shortDefinition:
+      'Atracción plana en la que una góndola oscila en un amplio arco de péndulo, a menudo mientras gira simultáneamente.',
+    definition:
+      'Una atracción pendular es un tipo de atracción plana (flat ride) en la que una góndola cuelga de un largo brazo que oscila en un arco cada vez más amplio, alcanzando a menudo posiciones casi verticales. La góndola también gira sobre su propio eje, combinando el movimiento de péndulo con la rotación axial para una experiencia muy intensa.\n\nEl ejemplo más emblemático es el Frisbee (Mondial), una góndola en forma de disco que oscila como un péndulo mientras gira. Otras atracciones pendulares habituales son el KMG Afterburner y el Intamin Giant Frisbee. Las atracciones pendulares son muy populares en parques temáticos y ferias de todo el mundo gracias a su gran impacto visual y su huella relativamente compacta.',
+    relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
+    aliases: ['Frisbee', 'Frisbees', 'atracciones pendulares'],
+    alternateNames: ['atracción de péndulo', 'columpio pendular'],
+  },
+  {
+    id: 'top-spin',
+    name: 'Top Spin',
+    shortDefinition:
+      'Atracción de Huss en la que una góndola con pasajeros gira libremente en cualquier dirección mientras el marco de soporte oscila arriba y abajo.',
+    definition:
+      'El Top Spin es un modelo de atracción fabricado por Huss Rides. Una góndola con capacidad para unos 40 pasajeros está montada en un marco pivotante; la góndola puede rotar continuamente en cualquier dirección mientras el marco oscila, creando una combinación impredecible de fuerzas de oscilación y rotación. La atracción puede programarse desde un suave balanceo hasta rotaciones continuas de alta intensidad.\n\nLos Top Spins fueron omnipresentes en parques temáticos y ferias durante los años 1990 y 2000. A pesar del movimiento oscilante, el Top Spin no es una atracción pendular: la góndola no cuelga de un brazo largo, sino que está sujeta entre dos brazos laterales rotativos.',
+    relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Top Spins'],
+    alternateNames: ['Huss Top Spin'],
+  },
+  {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'Una atracción plana de Huss con varios coches montados en un gran disco giratorio, donde cada coche gira libremente sobre su propio eje.',
+    definition:
+      'El Break Dance es un modelo de atracción plana de Huss Rides en el que pequeños coches — cada uno con capacidad para dos a cuatro pasajeros — están dispuestos alrededor de un gran disco giratorio. Los coches pueden girar libremente sobre sus propios ejes mientras el disco rota, produciendo fuerzas de giro e inclinación caóticas e impredecibles que varían en cada ciclo.\n\nEl Break Dance se convirtió en uno de los modelos de atracciones planas itinerantes y permanentes más populares a partir de la década de 1980, reconocible por su disco giratorio iluminado y su programa musical de alta energía. Existen numerosas variantes e imitaciones de otros fabricantes bajo diferentes nombres.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'Una atracción centrífuga donde las góndolas en un gran anillo giratorio son mantenidas en su lugar por la fuerza G mientras el anillo se inclina hacia la vertical.',
+    definition:
+      'La Enterprise es una atracción en la que las góndolas están dispuestas alrededor de la circunferencia de un gran anillo giratorio. A medida que el anillo acelera, la fuerza centrífuga mantiene a los pasajeros firmemente en sus asientos; a plena velocidad, todo el anillo se inclina progresivamente hacia una posición casi vertical, dejando a los pasajeros girando boca arriba.\n\nOriginada por Huss Rides y posteriormente producida por múltiples otros fabricantes, la Enterprise se convirtió en un elemento habitual tanto de parques permanentes como de ferias itinerantes desde la década de 1970. Su dramática inclinación vertical la convierte en una de las siluetas de atracción plana más llamativas visualmente.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'Una atracción de barco oscilante — una gran góndola con forma de barco vikingo o pirata que oscila en un arco de péndulo cada vez más amplio.',
+    definition:
+      'El Ranger es el modelo de barco oscilante de Huss Rides: una gran góndola con forma de drakkar vikingo o barco pirata que oscila hacia adelante y hacia atrás en arco, ganando altura con cada oscilación. Los pasajeros se sientan a lo largo de los lados del barco, mirando hacia el interior. En la oscilación máxima, la góndola alcanza ángulos elevados, produciendo fuertes fuerzas G negativas en el punto más alto.\n\nLas atracciones de barco oscilante son producidas por muchos fabricantes en todo el mundo bajo varios nombres (Viking, Pirate Ship, Sea Monster). El Ranger es uno de los modelos de atracción plana de Huss más ampliamente instalados, presente en parques permanentes y en ferias itinerantes por toda Europa y más allá.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'barco pirata', 'barco vikingo'],
+    alternateNames: ['Huss Ranger', 'barco vikingo', 'barco pirata'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'Una atracción plana de Huss con brazos de góndola que se extienden hacia afuera desde una columna central mientras la atracción gira y asciende.',
+    definition:
+      'El Condor es un modelo de atracción de Huss Rides que consiste en una alta columna central con varios brazos de góndola. Durante el funcionamiento, los brazos se extienden hacia afuera y las góndolas ascienden mientras toda la estructura gira. Los pasajeros experimentan una combinación de rotación, elevación e inclinación hacia afuera — ofreciendo vistas del parque desde una altura moderada.\n\nEl Condor fue un elemento habitual en los parques europeos desde la década de 1970 hasta los años 1990 y todavía se puede encontrar en muchas ubicaciones permanentes. A veces se confunde con las atracciones de sillas voladoras (columpios de cadenas) pero tiene góndolas cerradas en lugar de sillas abiertas suspendidas.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'Una atracción plana de Huss con tres brazos giratorios, cada uno con una góndola cuyos coches giran simultáneamente con la plataforma principal.',
+    definition:
+      'La Troika es un modelo de atracción de Huss Rides en el que tres brazos se extienden desde un cubo central; cada brazo lleva una góndola con varios coches que pueden rotar. Mientras la plataforma principal gira, las góndolas también rotan y los coches giran, creando múltiples ejes de rotación simultáneos. El movimiento resultante es muy impredecible y desorientador.\n\nLa Troika fue una adición popular a los parques de atracciones europeos y ferias desde la década de 1970. Su simetría triple le da una apariencia visual distintiva. Las variantes e imitaciones de otros fabricantes a veces se conocen como Trabant o Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
   },
   {
     id: 'swing-ride',
