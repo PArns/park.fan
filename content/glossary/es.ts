@@ -1594,6 +1594,57 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Huss Top Spin'],
   },
   {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'Una atracción plana de Huss con varios coches montados en un gran disco giratorio, donde cada coche gira libremente sobre su propio eje.',
+    definition:
+      'El Break Dance es un modelo de atracción plana de Huss Rides en el que pequeños coches — cada uno con capacidad para dos a cuatro pasajeros — están dispuestos alrededor de un gran disco giratorio. Los coches pueden girar libremente sobre sus propios ejes mientras el disco rota, produciendo fuerzas de giro e inclinación caóticas e impredecibles que varían en cada ciclo.\n\nEl Break Dance se convirtió en uno de los modelos de atracciones planas itinerantes y permanentes más populares a partir de la década de 1980, reconocible por su disco giratorio iluminado y su programa musical de alta energía. Existen numerosas variantes e imitaciones de otros fabricantes bajo diferentes nombres.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'Una atracción centrífuga donde las góndolas en un gran anillo giratorio son mantenidas en su lugar por la fuerza G mientras el anillo se inclina hacia la vertical.',
+    definition:
+      'La Enterprise es una atracción en la que las góndolas están dispuestas alrededor de la circunferencia de un gran anillo giratorio. A medida que el anillo acelera, la fuerza centrífuga mantiene a los pasajeros firmemente en sus asientos; a plena velocidad, todo el anillo se inclina progresivamente hacia una posición casi vertical, dejando a los pasajeros girando boca arriba.\n\nOriginada por Huss Rides y posteriormente producida por múltiples otros fabricantes, la Enterprise se convirtió en un elemento habitual tanto de parques permanentes como de ferias itinerantes desde la década de 1970. Su dramática inclinación vertical la convierte en una de las siluetas de atracción plana más llamativas visualmente.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'Una atracción de barco oscilante — una gran góndola con forma de barco vikingo o pirata que oscila en un arco de péndulo cada vez más amplio.',
+    definition:
+      'El Ranger es el modelo de barco oscilante de Huss Rides: una gran góndola con forma de drakkar vikingo o barco pirata que oscila hacia adelante y hacia atrás en arco, ganando altura con cada oscilación. Los pasajeros se sientan a lo largo de los lados del barco, mirando hacia el interior. En la oscilación máxima, la góndola alcanza ángulos elevados, produciendo fuertes fuerzas G negativas en el punto más alto.\n\nLas atracciones de barco oscilante son producidas por muchos fabricantes en todo el mundo bajo varios nombres (Viking, Pirate Ship, Sea Monster). El Ranger es uno de los modelos de atracción plana de Huss más ampliamente instalados, presente en parques permanentes y en ferias itinerantes por toda Europa y más allá.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'barco pirata', 'barco vikingo'],
+    alternateNames: ['Huss Ranger', 'barco vikingo', 'barco pirata'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'Una atracción plana de Huss con brazos de góndola que se extienden hacia afuera desde una columna central mientras la atracción gira y asciende.',
+    definition:
+      'El Condor es un modelo de atracción de Huss Rides que consiste en una alta columna central con varios brazos de góndola. Durante el funcionamiento, los brazos se extienden hacia afuera y las góndolas ascienden mientras toda la estructura gira. Los pasajeros experimentan una combinación de rotación, elevación e inclinación hacia afuera — ofreciendo vistas del parque desde una altura moderada.\n\nEl Condor fue un elemento habitual en los parques europeos desde la década de 1970 hasta los años 1990 y todavía se puede encontrar en muchas ubicaciones permanentes. A veces se confunde con las atracciones de sillas voladoras (columpios de cadenas) pero tiene góndolas cerradas en lugar de sillas abiertas suspendidas.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'Una atracción plana de Huss con tres brazos giratorios, cada uno con una góndola cuyos coches giran simultáneamente con la plataforma principal.',
+    definition:
+      'La Troika es un modelo de atracción de Huss Rides en el que tres brazos se extienden desde un cubo central; cada brazo lleva una góndola con varios coches que pueden rotar. Mientras la plataforma principal gira, las góndolas también rotan y los coches giran, creando múltiples ejes de rotación simultáneos. El movimiento resultante es muy impredecible y desorientador.\n\nLa Troika fue una adición popular a los parques de atracciones europeos y ferias desde la década de 1970. Su simetría triple le da una apariencia visual distintiva. Las variantes e imitaciones de otros fabricantes a veces se conocen como Trabant o Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'swing-ride',
     name: 'Sillas Voladoras',
     shortDefinition:

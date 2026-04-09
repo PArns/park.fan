@@ -1564,6 +1564,57 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Huss Top Spin'],
   },
   {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'Ein Huss-Fahrgeschäft mit mehreren Wagen auf einer großen rotierenden Scheibe, wobei sich jeder Wagen frei um seine eigene Achse dreht.',
+    definition:
+      'Der Break Dance ist ein Flachfahrgeschäft-Modell von Huss Rides, bei dem kleine Wagen — jeder für zwei bis vier Fahrgäste — um eine große rotierende Scheibe angeordnet sind. Die Wagen können sich frei um ihre eigenen Achsen drehen, während sich die Scheibe dreht, was chaotische und unvorhersehbare Dreh- und Kippkräfte erzeugt.\n\nDer Break Dance wurde ab den 1980er Jahren zu einem der beliebtesten Reise- und stationären Flachfahrgeschäfts-Modelle, erkennbar an seiner beleuchteten Drehscheibe und dem hochenergetischen Musikprogramm. Zahlreiche Varianten und Imitationen anderer Hersteller existieren unter verschiedenen Namen.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'Ein Zentrifugal-Flachfahrgeschäft, bei dem Gondeln an einem großen rotierenden Ring durch die Fliehkraft gehalten werden, während sich der Ring senkrecht stellt.',
+    definition:
+      'Die Enterprise ist ein Flachfahrgeschäft, bei dem Gondeln rund um den Umfang eines großen rotierenden Rings angeordnet sind. Wenn der Ring beschleunigt, drückt die Fliehkraft die Fahrgäste fest in ihre Sitze; bei voller Geschwindigkeit kippt der gesamte Ring zunehmend in eine nahezu senkrechte Position, sodass die Fahrgäste kopfüber rotieren.\n\nUrsprünglich von Huss Rides entwickelt und anschließend von mehreren anderen Herstellern produziert, wurde die Enterprise ab den 1970er Jahren zu einem festen Bestandteil sowohl stationärer Parks als auch Reisekarneval. Ihre dramatische vertikale Neigung macht sie zu einer der visuell eindrucksvollsten Fahrgeschäfts-Silhouetten.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'Ein Schaukelschiff-Flachfahrgeschäft — eine große Gondel in Form eines Wikinger- oder Piratenschiffs, die in einem immer größer werdenden Pendelbogen schwingt.',
+    definition:
+      'Der Ranger ist das Schaukelschiff-Modell von Huss Rides: eine große Gondel in Form eines Wikinger-Langschiffs oder Piratenschiffs, die vor und zurück in einem Bogen schwingt und mit jedem Schwung höher wird. Die Fahrgäste sitzen entlang der Seiten des Schiffs und schauen nach innen. Am höchsten Punkt erreicht die Gondel große Winkel, die starke negative G-Kräfte erzeugen.\n\nSchaukelschiff-Fahrgeschäfte werden weltweit von vielen Herstellern unter verschiedenen Namen produziert (Viking, Pirate Ship, Sea Monster). Der Ranger gehört zu den am weitesten verbreiteten Huss-Flachfahrgeschäfts-Modellen, die in stationären Parks und auf Reisekarneval in ganz Europa und darüber hinaus zu finden sind.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'Schaukelschiff', 'Piratenschiff', 'Wikingerschiff'],
+    alternateNames: ['Huss Ranger', 'Wikingerschiff', 'Piratenschiff'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'Ein Huss-Flachfahrgeschäft mit Gondelarmen, die sich während des Betriebs nach außen erstrecken, rotieren und aufsteigen.',
+    definition:
+      'Der Condor ist ein Flachfahrgeschäft-Modell von Huss Rides, das aus einer hohen Mittelsäule mit mehreren Gondelarmen besteht. Während des Betriebs erstrecken sich die Arme nach außen und die Gondeln steigen auf, während sich die gesamte Struktur dreht. Die Fahrgäste erleben eine Kombination aus Rotation, Aufstieg und Außenneigung — mit Blick über den Park aus einer mittleren Höhe.\n\nDer Condor war von den 1970er bis in die 1990er Jahre ein häufiger Anblick in europäischen Parks und ist noch immer an vielen festen Standorten zu finden. Er wird manchmal mit Kettenkarussell-Attraktionen verwechselt, hat aber geschlossene Gondeln statt offener hängender Stühle.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'Ein Huss-Flachfahrgeschäft mit drei rotierenden Armen, jeder trägt eine Gondel, deren Wagen sich gleichzeitig mit der Hauptplattform drehen.',
+    definition:
+      'Die Troika ist ein Flachfahrgeschäft-Modell von Huss Rides, bei dem sich drei Arme von einer zentralen Nabe erstrecken; jeder Arm trägt eine Gondel mit mehreren Wagen, die sich drehen können. Während sich die Hauptplattform dreht, rotieren auch die Gondeln und die Wagen drehen sich, wodurch mehrere gleichzeitige Rotationsachsen entstehen. Die daraus resultierende Bewegung ist sehr unvorhersehbar und desorientierend.\n\nDie Troika war ab den 1970er Jahren eine beliebte Ergänzung für europäische Vergnügungsparks und Jahrmärkte. Ihre Dreifach-Symmetrie gibt ihr ein markantes visuelles Erscheinungsbild. Varianten und Imitationen anderer Hersteller sind manchmal als Trabant oder Walzer bekannt.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'pendulum-ride',
     name: 'Pendelfahrgeschäft',
     shortDefinition:

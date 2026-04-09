@@ -1576,6 +1576,57 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Huss Top Spin'],
   },
   {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'Een Huss-attractie met meerdere wagentjes op een grote ronddraaiende schijf, waarbij elk wagentje vrij om zijn eigen as draait.',
+    definition:
+      'De Break Dance is een plat-attractiemodel van Huss Rides waarbij kleine wagentjes — elk voor twee tot vier passagiers — zijn gerangschikt rond een grote ronddraaiende schijf. De wagentjes kunnen vrij om hun eigen assen draaien terwijl de schijf roteert, waardoor chaotische en onvoorspelbare draai- en kantelkrachten ontstaan die per ritcyclus variëren.\n\nDe Break Dance werd vanaf de jaren 1980 een van de populairste reizende en permanente platte attractiemodellen, herkenbaar aan de verlichte draaiende schijf en het hoogenergetische muziekprogramma. Talrijke varianten en imitaties van andere fabrikanten bestaan onder verschillende namen.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'Een centrifugale attractie waarbij gondels op een grote roterende ring op hun plaats worden gehouden door G-kracht terwijl de ring naar verticaal kantelt.',
+    definition:
+      'De Enterprise is een attractie waarbij gondels zijn gerangschikt rond de omtrek van een grote roterende ring. Naarmate de ring versnelt, drukt de centrifugale kracht de passagiers stevig in hun stoelen; bij maximale snelheid kantelt de hele ring geleidelijk naar een bijna verticale positie, waardoor passagiers boven hun hoofd roteren.\n\nOorspronkelijk ontwikkeld door Huss Rides en later door meerdere andere fabrikanten geproduceerd, werd de Enterprise vanaf de jaren 1970 een vaste waarde in zowel permanente parken als reizende kermissen. Door de dramatische verticale kanteling is het een van de visueel meest indrukwekkende attractiesilhouetten.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'Een schommelbootattractie — een grote gondel in de vorm van een Vikingschip of piratenschip dat in een steeds breder slingerend boog schommelt.',
+    definition:
+      'De Ranger is het schommelbootmodel van Huss Rides: een grote gondel in de vorm van een Vikingschip of piratenschip dat heen en weer schommelt in een boog, waarbij elke schommel hoger wordt. Passagiers zitten langs de zijkanten van het schip, naar binnen gericht. Op de hoogste uitslag bereikt de gondel grote hoeken, wat sterke negatieve G-krachten produceert aan de top.\n\nSchommelbootattracties worden wereldwijd door veel fabrikanten geproduceerd onder verschillende namen (Viking, Pirate Ship, Sea Monster). De Ranger behoort tot de meest wijdverspreide Huss-attractiemodellen, te vinden in permanente parken en op reizende kermissen door heel Europa en daarbuiten.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'schommelboot', 'piratenschip', 'Vikingschip'],
+    alternateNames: ['Huss Ranger', 'Vikingschip', 'piratenschip'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'Een Huss-attractie met gondelarms die naar buiten strekken vanuit een centrale kolom terwijl de attractie draait en stijgt.',
+    definition:
+      'De Condor is een attractiemodel van Huss Rides bestaande uit een hoge centrale kolom met verschillende gondelarms. Tijdens de rit strekken de arms naar buiten en stijgen de gondels terwijl de hele constructie roteert. Passagiers ervaren een combinatie van rotatie, hoogtestijging en buitenwaartse kanteling — met uitzicht over het park vanuit een matige hoogte.\n\nDe Condor was van de jaren 1970 tot de jaren 1990 een veel geziene attractie in Europese parken en is nog steeds te vinden op veel vaste locaties. Het wordt soms verward met zweefmolens (schommelstoelenattracties) maar heeft gesloten gondels in plaats van open hangende stoelen.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'Een Huss-attractie met drie roterende armen, elk met een gondel waarvan de wagentjes gelijktijdig met het hoofdplatform draaien.',
+    definition:
+      'De Troika is een attractiemodel van Huss Rides waarbij drie armen zich uitstrekken vanuit een centrale naaf; elke arm draagt een gondel met meerdere wagentjes die kunnen roteren. Terwijl het hoofdplatform rondgaat, draaien de gondels ook en tollen de wagentjes, wat meerdere gelijktijdige rotatie-assen creëert. De resulterende beweging is zeer onvoorspelbaar en desoriënterend.\n\nDe Troika was vanaf de jaren 1970 een populaire toevoeging aan Europese pretparken en kermissen. De drievoudige symmetrie geeft het een onderscheidend visueel uiterlijk. Varianten en imitaties van andere fabrikanten staan soms bekend als Trabant of Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'swing-ride',
     name: 'Zweefmolen',
     shortDefinition:

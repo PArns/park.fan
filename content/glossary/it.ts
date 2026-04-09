@@ -1578,6 +1578,57 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Huss Top Spin'],
   },
   {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      `Un flat ride Huss con diversi vagoni montati su un grande disco rotante, dove ogni vagone ruota liberamente sul proprio asse.`,
+    definition:
+      `Il Break Dance è un modello di flat ride di Huss Rides in cui piccoli vagoni — ciascuno per due o quattro passeggeri — sono disposti attorno a un grande disco rotante. I vagoni possono ruotare liberamente sui propri assi mentre il disco gira, producendo forze di rotazione e inclinazione caotiche e imprevedibili che variano a ogni ciclo.\n\nIl Break Dance è diventato uno dei modelli di flat ride itineranti e permanenti più popolari a partire dagli anni '80, riconoscibile per il suo disco illuminato in rotazione e il programma musicale ad alta energia. Numerose varianti e imitazioni di altri produttori esistono sotto diversi nomi.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      `Un flat ride centrifugo in cui le gondole su un grande anello rotante sono mantenute in posizione dalla forza G mentre l'anello si inclina verticalmente.`,
+    definition:
+      `L'Enterprise è un flat ride in cui le gondole sono disposte attorno alla circonferenza di un grande anello rotante. Man mano che l'anello accelera, la forza centrifuga spinge i passeggeri saldamente nei loro sedili; a piena velocità, l'intero anello si inclina progressivamente verso una posizione quasi verticale, lasciando i passeggeri ruotare al contrario.\n\nOriginata da Huss Rides e successivamente prodotta da altri produttori, l'Enterprise è diventata un elemento fisso sia dei parchi permanenti che delle fiere itineranti dagli anni '70. La sua drammatica inclinazione verticale la rende una delle silhouette di flat ride più spettacolari visivamente.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      `Un flat ride a barca oscillante — una grande gondola a forma di nave vichinga o pirata che oscilla in un arco pendolare sempre più ampio.`,
+    definition:
+      `Il Ranger è il modello di barca oscillante di Huss Rides: una grande gondola a forma di drakkar vichingo o nave pirata che oscilla avanti e indietro in un arco, aumentando progressivamente l'ampiezza ad ogni oscillazione. I passeggeri siedono lungo i lati della nave, rivolti verso l'interno. All'oscillazione massima la gondola raggiunge angoli elevati, producendo forti forze G negative all'apice.\n\nLe giostre a barca oscillante sono prodotte da molti produttori in tutto il mondo con vari nomi (Viking, Pirate Ship, Sea Monster). Il Ranger è tra i modelli di flat ride Huss più ampiamente installati, presente in parchi permanenti e fiere itineranti in tutta Europa e oltre.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'barca pirata', 'barca vichinga'],
+    alternateNames: ['Huss Ranger', 'nave vichinga', 'barca pirata'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      `Un flat ride Huss con bracci gondola che si estendono verso l'esterno da una colonna centrale mentre la giostra ruota e sale.`,
+    definition:
+      `Il Condor è un modello di flat ride di Huss Rides composto da un'alta colonna centrale con diversi bracci gondola. Durante il funzionamento, i bracci si estendono verso l'esterno e le gondole salgono mentre l'intera struttura ruota. I passeggeri vivono una combinazione di rotazione, elevazione e inclinazione verso l'esterno — con viste sul parco da un'altezza moderata.\n\nIl Condor era una presenza comune nei parchi europei dagli anni '70 agli anni '90 e può ancora essere trovato in molte sedi permanenti. A volte viene confuso con le attrazioni a sedie volanti (giostre a catene) ma ha gondole chiuse piuttosto che sedie aperte sospese.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      `Un flat ride Huss con tre bracci rotanti, ognuno portante una gondola i cui vagoni ruotano simultaneamente con la piattaforma principale.`,
+    definition:
+      `La Troika è un modello di flat ride di Huss Rides in cui tre bracci si estendono da un mozzo centrale; ogni braccio porta una gondola con diversi vagoni che possono ruotare. Mentre la piattaforma principale gira, le gondole ruotano anch'esse e i vagoni girano, creando molteplici assi di rotazione simultanei. Il movimento risultante è molto imprevedibile e disorientante.\n\nLa Troika era un'aggiunta popolare ai parchi di divertimenti europei e alle fiere dagli anni '70 in poi. La sua simmetria a tre vie le conferisce un aspetto visivo distintivo. Le varianti e le imitazioni di altri produttori sono talvolta conosciute come Trabant o Walzer.`,
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'swing-ride',
     name: 'Giostra a Catene',
     shortDefinition:

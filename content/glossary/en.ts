@@ -1439,6 +1439,57 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Huss Top Spin'],
   },
   {
+    id: 'break-dance',
+    name: 'Break Dance',
+    shortDefinition:
+      'A Huss flat ride with multiple cars mounted on a large spinning disc, each car rotating freely on its own axis.',
+    definition:
+      'The Break Dance is a flat ride model by Huss Rides in which a set of small cars — each holding two to four riders — is arranged around a large spinning disc. The cars are free to rotate on their own axes as the disc rotates, producing chaotic and unpredictable spinning and tilting forces that vary with each ride cycle.\n\nThe Break Dance became one of the most popular travelling and permanent flat ride models from the 1980s onward, recognisable by its illuminated spinning disc and high-energy music programme. Numerous variants and imitations from other manufacturers exist under different names.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Breakdance', 'Break Dancer'],
+  },
+  {
+    id: 'enterprise',
+    name: 'Enterprise',
+    shortDefinition:
+      'A centrifugal flat ride where gondolas on a large rotating ring are held in place by G-force as the ring tilts to vertical.',
+    definition:
+      'The Enterprise is a flat ride in which gondolas are arranged around the circumference of a large rotating ring. As the ring accelerates, centrifugal force pins riders firmly into their seats; once at full speed, the entire ring tilts progressively to a near-vertical position, leaving riders rotating overhead.\n\nOriginated by Huss Rides and subsequently produced by multiple other manufacturers, the Enterprise became a staple of both permanent parks and travelling fairs from the 1970s onward. Its dramatic vertical tilt makes it one of the most visually striking flat ride silhouettes.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
+    aliases: ['Enterprises'],
+  },
+  {
+    id: 'ranger',
+    name: 'Ranger',
+    shortDefinition:
+      'A swinging ship flat ride — a large gondola shaped like a Viking or pirate vessel that swings in an increasingly wide pendulum arc.',
+    definition:
+      'The Ranger is Huss Rides\' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, producing strong negative G-forces at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
+    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride'],
+    alternateNames: ['Huss Ranger', 'Viking ship', 'pirate ship'],
+  },
+  {
+    id: 'condor',
+    name: 'Condor',
+    shortDefinition:
+      'A Huss flat ride with gondola arms that extend outward from a central column as the ride rotates and rises.',
+    definition:
+      'The Condor is a flat ride model by Huss Rides consisting of a tall central column with several gondola arms. As the ride operates, the arms extend outward and the gondolas rise while the entire structure rotates. Riders experience a combination of rotation, elevation, and outward lean — giving views across the park from a moderate height.\n\nThe Condor was a common sight in European parks from the 1970s through the 1990s and can still be found in many permanent locations. It is sometimes confused with chair tower (swing ride) attractions but has enclosed gondolas rather than open suspended chairs.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
+  },
+  {
+    id: 'troika',
+    name: 'Troika',
+    shortDefinition:
+      'A Huss flat ride with three rotating arms, each carrying a gondola whose cars spin simultaneously with the main platform.',
+    definition:
+      'The Troika is a flat ride model by Huss Rides in which three arms extend from a central hub; each arm carries a gondola with several cars that can rotate. As the main platform revolves, the gondolas also rotate and the cars spin, creating multiple simultaneous rotation axes. The resulting motion is highly unpredictable and disorienting.\n\nThe Troika was a popular addition to European amusement parks and fairs from the 1970s onward. Its three-fold symmetry gives it a distinctive visual appearance. Variants and imitations from other manufacturers are sometimes known as Trabant or Walzer.',
+    relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
+    aliases: ['Troikas', 'Trojka'],
+    alternateNames: ['Huss Troika'],
+  },
+  {
     id: 'pendulum-ride',
     name: 'Pendulum Ride',
     shortDefinition:

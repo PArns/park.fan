@@ -1893,6 +1893,66 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       es: 'top-spin',
     },
   },
+  {
+    id: 'break-dance',
+    category: 'attractions',
+    slugs: {
+      en: 'break-dance',
+      de: 'break-dance',
+      fr: 'break-dance',
+      it: 'break-dance',
+      nl: 'break-dance',
+      es: 'break-dance',
+    },
+  },
+  {
+    id: 'enterprise',
+    category: 'attractions',
+    slugs: {
+      en: 'enterprise',
+      de: 'enterprise',
+      fr: 'enterprise',
+      it: 'enterprise',
+      nl: 'enterprise',
+      es: 'enterprise',
+    },
+  },
+  {
+    id: 'ranger',
+    category: 'attractions',
+    slugs: {
+      en: 'ranger',
+      de: 'ranger',
+      fr: 'ranger',
+      it: 'ranger',
+      nl: 'ranger',
+      es: 'ranger',
+    },
+  },
+  {
+    id: 'condor',
+    category: 'attractions',
+    slugs: {
+      en: 'condor',
+      de: 'condor',
+      fr: 'condor',
+      it: 'condor',
+      nl: 'condor',
+      es: 'condor',
+    },
+  },
+  {
+    id: 'troika',
+    category: 'attractions',
+    slugs: {
+      en: 'troika',
+      de: 'troika',
+      fr: 'troika',
+      it: 'troika',
+      nl: 'troika',
+      es: 'troika',
+    },
+  },
   // ── New Coasters (P2) ─────────────────────────────────────────────────────
   {
     id: 'racing-coaster',
