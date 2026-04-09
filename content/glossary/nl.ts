@@ -1466,7 +1466,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Grondgebonden attractie die draait, slingert of roteert – zonder traditioneel railscircuit.',
     definition:
-      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), pendelattracties (Frisbees), Top Spins en zweefmolens, drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
+      'Een flat ride is een categorie attracties die op een min of meer horizontaal vlak werkt, zonder verhoogde rails. De term omvat draaiattracties (carrousels, theekopjes), Frisbees (pendelattracties), Top Spins en zweefmolens, drop towers en rondedraaiplatforms.\n\nIn tegenstelling tot achtbanen hebben flat rides doorgaans een compact grondoppervlak en zijn ze ideaal voor kleinere parkdelen. Veel flat rides hebben een hoge capaciteit, lage of geen minimumlengte-eisen en een brede leeftijdsgeschiktheid – ze vormen vaak de ruggengraat van het gezins- en kinderprogramma van een park.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'kermisattractie', 'grondattractie'],
   },

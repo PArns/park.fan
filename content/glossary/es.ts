@@ -1467,7 +1467,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Atracción a nivel del suelo que gira, oscila o rota sin un circuito de vía elevado.',
     definition:
-      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), atracciones pendulares (Frisbees), Top Spins y sillas voladoras, torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
+      'Una atracción plana (flat ride) es una categoría de atracciones que funcionan en un plano aproximadamente horizontal sin vía elevada. El término abarca atracciones giratorias (carruseles, tazas locas), Frisbees (atracciones pendulares), Top Spins y sillas voladoras, torres de caída y plataformas giratorias.\n\nA diferencia de las montañas rusas, las flat rides suelen ocupar un espacio reducido, lo que las hace ideales para las zonas más pequeñas del parque. Muchas ofrecen una gran capacidad horaria, requisitos mínimos de talla bajos o nulos y amplio atractivo para todas las edades – son con frecuencia la columna vertebral de la oferta familiar e infantil de un parque.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'atracción de feria', 'ride plano'],
   },

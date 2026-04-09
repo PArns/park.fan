@@ -1337,7 +1337,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A ground-level ride that spins, swings, or rotates guests without a traditional coaster track.',
     definition:
-      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), pendulum rides (Frisbees), Top Spins, and swing rides (Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
+      "A flat ride is a category of amusement ride that operates on a roughly horizontal plane rather than a circuit of elevated track. The term covers a wide variety of types: spinning attractions (carousels, teacups, rotor rides), Frisbees (pendulum rides), Top Spins, and swing rides (Wave Swingers), drop and launch towers, and circular spinning platforms.\n\nUnlike roller coasters, flat rides typically have compact footprints, making them ideal for filling smaller park areas. Many flat rides have high hourly throughput, low or no height requirements, and broad age appeal — they are often the backbone of a park's family and children's ride lineup.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides'],
     alternateNames: ['carnival ride', 'midway ride'],

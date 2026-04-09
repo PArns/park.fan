@@ -1458,7 +1458,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Bodennahe Attraktion, die dreht, schwingt oder rotiert – ohne klassische Achterbahnstrecke.',
     definition:
-      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Pendelfahrgeschäfte (Frisbees), Top Spins und Schwingattraktionen (Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen.\n\nIm Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
+      'Als Flat Ride bezeichnet man eine Kategorie von Fahrgeschäften, die auf einer weitgehend horizontalen Ebene ohne erhöhte Fahrstrecke betrieben werden. Der Begriff umfasst Drehattraktionen (Karussells, Teacups, Drehscheiben), Frisbees (Pendelfahrgeschäfte), Top Spins und Schwingattraktionen (Wellenflieger), Drop Towers sowie kreisförmige Drehplattformen.\n\nIm Gegensatz zu Achterbahnen haben Flat Rides meist einen kompakten Platzbedarf und eignen sich hervorragend zur Ausfüllung kleinerer Parkbereiche. Viele Flat Rides bieten hohe Stundendurchsätze, niedrige oder keine Mindestgrößenanforderungen und eine breite Alterseignung – sie bilden häufig das Rückgrat des Familien- und Kinderangebots eines Parks.',
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['Flat Rides'],
   },

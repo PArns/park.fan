@@ -1456,7 +1456,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attrazione a livello del suolo che ruota, oscilla o si inclina senza un circuito di binari sopraelevato.',
     definition:
-      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), attrazioni a pendolo (Frisbees), Top Spins e giostre a catene (seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
+      "Un flat ride è una categoria di attrazioni che funzionano su un piano sostanzialmente orizzontale senza binari sopraelevati. Il termine comprende attrazioni rotanti (giostre, tazze pazze), Frisbees (attrazioni a pendolo), Top Spins e giostre a catene (seggiolini volanti), torri di caduta e piattaforme rotanti.\n\nA differenza delle montagne russe, i flat ride occupano in genere uno spazio ridotto, rendendoli ideali per le aree più piccole del parco. Molti offrono un'alta capacità oraria, requisiti minimi di altezza bassi o assenti e una vasta fascia di età – costituiscono spesso l'ossatura dell'offerta per famiglie e bambini di un parco.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['flat rides', 'giostra da fiera', 'attrazione di terra'],
   },

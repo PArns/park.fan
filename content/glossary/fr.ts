@@ -1428,7 +1428,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Attraction de plain-pied qui tourne, oscille ou pivote, sans circuit surélevé.',
     definition:
-      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les attractions pendulaires (Frisbees), les Top Spins et les manèges à chaînes (vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
+      "Un flat ride est une catégorie d'attractions foraines qui fonctionnent sur un plan sensiblement horizontal, sans voie surélevée. Le terme englobe les attractions tournantes (manèges, tasses à thé), les Frisbees (attractions pendulaires), les Top Spins et les manèges à chaînes (vagues volantes), les tours de chute et les plateformes rotatives.\n\nContrairement aux montagnes russes, les flat rides occupent en général un espace réduit, ce qui les rend idéaux pour remplir les espaces plus petits d'un parc. Beaucoup offrent un débit horaire élevé, peu ou pas de restrictions de taille, et conviennent à un large public – ils constituent souvent l'épine dorsale de l'offre familiale et enfantine d'un parc.",
     relatedTermIds: ['swing-ride', 'drop-tower', 'ride-capacity', 'height-requirement'],
     aliases: ['manège', 'attraction foraine'],
   },
