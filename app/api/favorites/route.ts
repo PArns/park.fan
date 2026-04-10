@@ -39,13 +39,13 @@ export async function GET(request: NextRequest) {
       apiUrl.searchParams.set('lng', lng);
     }
 
-    const cookieHeader = request.headers.get('cookie');
+    const favoritesCookie = request.cookies.get('favorites');
     const forwardedHeaders = getForwardedForHeaders(request);
 
     const response = await fetch(apiUrl.toString(), {
       headers: {
         'Content-Type': 'application/json',
-        ...(cookieHeader ? { Cookie: cookieHeader } : {}),
+        ...(favoritesCookie ? { Cookie: `${favoritesCookie.name}=${favoritesCookie.value}` } : {}),
         ...forwardedHeaders,
       },
       next: { revalidate: 0 },
