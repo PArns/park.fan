@@ -19,7 +19,7 @@ export async function GET(request: Request) {
   } catch (error) {
     console.error('Search API error:', error);
     return NextResponse.json(
-      { error: 'Search failed', results: [], counts: {}, query },
+      { error: 'Search failed', results: [], counts: {}, query: '' },
       { status: 500 }
     );
   }
