@@ -695,9 +695,11 @@ export function SearchCommand({
                   ? (['location', 'park', 'attraction', 'show', 'restaurant'] as const)
                   : (['park', 'attraction', 'show', 'restaurant', 'location'] as const);
 
+                const itemsByType = Object.groupBy(results.results, (r) => r.type);
+
                 mainTypes.forEach((type) => {
-                  const items = results.results.filter((r) => r.type === type);
-                  if (items.length === 0) return;
+                  const items = itemsByType[type];
+                  if (!items || items.length === 0) return;
                   const sortedItems = sortResultsByMatch(items);
                   const bestScore = Math.max(
                     ...sortedItems.map((item) => calcNameScore(item.name))
