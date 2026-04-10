@@ -3,63 +3,12 @@
  * Tests against actual 404 URLs from production logs
  */
 
-// Import our URL utilities (we'll simulate them here for testing)
-function convertApiUrlToFrontendUrl(apiUrl) {
-  if (!apiUrl) return '#';
-
-  // Convert /v1/parks/... URLs
-  if (apiUrl.startsWith('/v1/parks/')) {
-    let url = apiUrl.replace('/v1/parks/', '/parks/');
-    url = url.replace('/attractions/', '/');
-
-    if (url.includes('/shows/')) {
-      const showsIndex = url.indexOf('/shows/');
-      url = url.substring(0, showsIndex);
-    }
-    if (url.includes('/restaurants/')) {
-      const restaurantsIndex = url.indexOf('/restaurants/');
-      url = url.substring(0, restaurantsIndex);
-    }
-    return url;
-  }
-
-  // If already a frontend URL, clean it up
-  if (apiUrl.startsWith('/parks/')) {
-    let url = apiUrl;
-    url = url.replace('/attractions/', '/');
-
-    if (url.includes('/shows/')) {
-      const showsIndex = url.indexOf('/shows/');
-      url = url.substring(0, showsIndex);
-    }
-    if (url.includes('/restaurants/')) {
-      const restaurantsIndex = url.indexOf('/restaurants/');
-      url = url.substring(0, restaurantsIndex);
-    }
-    return url;
-  }
-
-  return '#';
-}
-
-function buildParkUrl(data) {
-  // Method 1: Build from geographic data (PREFERRED)
-  if (data.continent && data.country && data.city && data.slug) {
-    return `/parks/${data.continent}/${data.country}/${data.city}/${data.slug}`;
-  }
-
-  // Method 2: Fallback to URL conversion if we have a URL
-  if (data.url) {
-    const converted = convertApiUrlToFrontendUrl(data.url);
-    if (converted !== '#') {
-      return converted;
-    }
-  }
-
-  // Method 3: Failed - return fallback
-  console.warn('[buildParkUrl] Incomplete geographic data and no valid URL:', data);
-  return '#';
-}
+import {
+  convertApiUrlToFrontendUrl,
+  buildParkUrl,
+  buildAttractionUrl,
+  buildAttractionUrlFromGeo,
+} from '../lib/utils/url-utils.ts';
 
 // Test cases from actual 404 logs
 const test404Cases = [
@@ -143,6 +92,81 @@ const test404Cases = [
     expected: '/parks/europe/germany/bruhl/phantasialand',
     test: 'convertApiUrlToFrontendUrl',
   },
+
+  // 🧪 NEW: buildAttractionUrl tests
+  {
+    name: 'buildAttractionUrl - Basic API URL',
+    input: {
+      parkUrl: '/v1/parks/europe/germany/bruhl/phantasialand',
+      slug: 'taron',
+    },
+    expected: '/parks/europe/germany/bruhl/phantasialand/taron',
+    test: 'buildAttractionUrl',
+  },
+  {
+    name: 'buildAttractionUrl - Clean Frontend URL',
+    input: {
+      parkUrl: '/parks/europe/germany/bruhl/phantasialand',
+      slug: 'fly',
+    },
+    expected: '/parks/europe/germany/bruhl/phantasialand/fly',
+    test: 'buildAttractionUrl',
+  },
+  {
+    name: 'buildAttractionUrl - URL with attractions segment and trailing slash',
+    input: {
+      parkUrl: '/v1/parks/europe/germany/bruhl/phantasialand/attractions/',
+      slug: 'black-mamba',
+    },
+    expected: '/parks/europe/germany/bruhl/phantasialand/black-mamba',
+    test: 'buildAttractionUrl',
+  },
+  {
+    name: 'buildAttractionUrl - URL with trailing slash (checks for double slash)',
+    input: {
+      parkUrl: '/parks/europe/germany/bruhl/phantasialand/',
+      slug: 'taron',
+    },
+    expected: '/parks/europe/germany/bruhl/phantasialand/taron',
+    test: 'buildAttractionUrl',
+  },
+
+  // 🧪 NEW: buildAttractionUrlFromGeo tests
+  {
+    name: 'buildAttractionUrlFromGeo - Complete data',
+    input: {
+      slug: 'taron',
+      park: {
+        continent: 'europe',
+        country: 'germany',
+        city: 'bruehl',
+        slug: 'phantasialand',
+      },
+    },
+    expected: '/parks/europe/germany/bruehl/phantasialand/taron',
+    test: 'buildAttractionUrlFromGeo',
+  },
+  {
+    name: 'buildAttractionUrlFromGeo - Fallback to URL',
+    input: {
+      slug: 'taron',
+      url: '/v1/parks/europe/germany/bruehl/phantasialand/attractions/taron',
+    },
+    expected: '/parks/europe/germany/bruehl/phantasialand/taron',
+    test: 'buildAttractionUrlFromGeo',
+  },
+  {
+    name: 'buildAttractionUrlFromGeo - Incomplete park data, fallback to park URL',
+    input: {
+      slug: 'taron',
+      park: {
+        slug: 'phantasialand',
+        url: '/v1/parks/europe/germany/bruehl/phantasialand',
+      },
+    },
+    expected: '/parks/europe/germany/bruehl/phantasialand/taron',
+    test: 'buildAttractionUrlFromGeo',
+  },
 ];
 
 // Run tests
@@ -159,8 +183,12 @@ test404Cases.forEach((testCase, index) => {
   let result;
   if (testCase.test === 'convertApiUrlToFrontendUrl') {
     result = convertApiUrlToFrontendUrl(testCase.input.url);
-  } else {
+  } else if (testCase.test === 'buildParkUrl') {
     result = buildParkUrl(testCase.input);
+  } else if (testCase.test === 'buildAttractionUrl') {
+    result = buildAttractionUrl(testCase.input.parkUrl, testCase.input.slug);
+  } else if (testCase.test === 'buildAttractionUrlFromGeo') {
+    result = buildAttractionUrlFromGeo(testCase.input);
   }
 
   const success = result === testCase.expected;
