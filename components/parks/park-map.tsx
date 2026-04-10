@@ -176,8 +176,7 @@ export function ParkMap({ park }: ParkMapProps) {
   const locale = useLocale();
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [userHasZoomed, setUserHasZoomed] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [timeRefreshKey, setTimeRefreshKey] = useState(0); // Force re-render for time updates
+  const [, setTimeRefreshKey] = useState(0); // Force re-render for time updates
 
   const requestLocation = () => {
     if (!navigator.geolocation) return;
