@@ -408,27 +408,17 @@ export async function GET(
       if (countryName === `countries.${normalizedCountry}`)
         countryName = countryNode?.name || country.charAt(0).toUpperCase() + country.slice(1);
 
-      // Use park data if available (it was fetched in the block above, need to access it outside?)
-      // Refactoring issue: 'park' variable is scoped inside the block.
-      // Quick fix: Re-use the params for formatting since we don't have the park object in outer scope easily without more refactor.
-      // Actually, let's move the park fetch up? No, regions don't need distinct park fetch.
-      // Let's rely on params for generic location string if park object isn't available, OR just handle it in the render block.
+      const parkName = park?.name
+        ? stripNewPrefix(park.name)
+        : parkSlug
+            .split('-')
+            .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+            .join(' ');
 
-      const parkName =
-        park?.name ||
-        parkSlug
-          .split('-')
-          .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
-          .join(' ');
       locationString =
         type === 'ATTRACTION'
           ? `${parkName} • ${cityName}, ${countryName}`
           : `${cityName}, ${countryName}`;
-
-      // Wait, for Attraction we need Park Name. 'parkSlug' is available.
-      // We can just format parkSlug roughly or fetch it.
-      // Let's use a simpler approach: Just "City, Country" for both for now to avoid re-fetching or scoping issues,
-      // OR better: Move the logic variable definition up.
     }
 
     // Load fonts or use system fonts.
