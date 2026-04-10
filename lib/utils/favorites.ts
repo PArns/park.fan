@@ -35,29 +35,61 @@ function scheduleSyncToApi(): void {
 }
 
 /**
+ * Securely parse JSON to prevent prototype pollution
+ */
+function secureJsonParse(str: string): unknown {
+  return JSON.parse(str, (key, value) => {
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+      return undefined;
+    }
+    return value;
+  });
+}
+
+/**
+ * Validates that the input is an array containing only strings
+ */
+function validateStringArray(arr: unknown): string[] {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  return arr.filter((item): item is string => typeof item === 'string');
+}
+
+/**
  * Get favorites from cookies
  */
 export function getFavoritesFromCookies(): FavoritesData {
+  const defaultData: FavoritesData = { parks: [], attractions: [], shows: [], restaurants: [] };
+
   if (typeof window === 'undefined') {
-    return { parks: [], attractions: [], shows: [], restaurants: [] };
+    return defaultData;
   }
 
   try {
     const cookieValue = getCookie(FAVORITES_COOKIE_NAME);
     if (!cookieValue) {
-      return { parks: [], attractions: [], shows: [], restaurants: [] };
+      return defaultData;
     }
 
-    const parsed = typeof cookieValue === 'string' ? JSON.parse(cookieValue) : cookieValue;
+    const parsed = typeof cookieValue === 'string' ? secureJsonParse(cookieValue) : cookieValue;
+
+    // Ensure parsed is a non-null object to avoid crashes on parsed.parks etc.
+    if (typeof parsed !== 'object' || parsed === null) {
+      return defaultData;
+    }
+
+    const safeParsed = parsed as Record<string, unknown>;
+
     return {
-      parks: Array.isArray(parsed.parks) ? parsed.parks : [],
-      attractions: Array.isArray(parsed.attractions) ? parsed.attractions : [],
-      shows: Array.isArray(parsed.shows) ? parsed.shows : [],
-      restaurants: Array.isArray(parsed.restaurants) ? parsed.restaurants : [],
+      parks: validateStringArray(safeParsed.parks),
+      attractions: validateStringArray(safeParsed.attractions),
+      shows: validateStringArray(safeParsed.shows),
+      restaurants: validateStringArray(safeParsed.restaurants),
     };
   } catch (error) {
     console.error('[Favorites] Error reading favorites from cookies:', error);
-    return { parks: [], attractions: [], shows: [], restaurants: [] };
+    return defaultData;
   }
 }
 
