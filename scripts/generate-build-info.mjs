@@ -60,7 +60,6 @@ async function generateBuildInfo() {
     };
 
     fs.writeFileSync('build-info.json', JSON.stringify(buildInfo, null, 2));
-    console.log(`✅ Build info generated: ${JSON.stringify(buildInfo, null, 2)}`);
   } catch (err) {
     console.error('❌ Failed to generate build info:', err);
     // Create fallback build-info
