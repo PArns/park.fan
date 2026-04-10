@@ -130,7 +130,13 @@ export function buildRestaurantUrl(parkUrl: string): string {
  * Build attraction URL from park URL and attraction slug
  */
 export function buildAttractionUrl(parkUrl: string, attractionSlug: string): string {
-  const cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
+  let cleanParkUrl = convertApiUrlToFrontendUrl(parkUrl);
+
+  // Remove trailing slash if present to avoid double slashes
+  if (cleanParkUrl.endsWith('/')) {
+    cleanParkUrl = cleanParkUrl.slice(0, -1);
+  }
+
   return `${cleanParkUrl}/${attractionSlug}`;
 }
 
