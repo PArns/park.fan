@@ -1,6 +1,6 @@
 # park.fan Frontend
 
-Theme park wait times and statistics frontend for **[api.park.fan](https://api.park.fan)**. 
+Theme park wait times and statistics frontend for **[api.park.fan](https://api.park.fan)**.
 **Technology Stack:** Next.js 16 (App Router), React 19, TypeScript.
 **Routing:** This project uses **`proxy.ts`** for routing and i18n middleware, **not** a standard `middleware.ts`.
 Multilingual (EN/DE/NL/FR/ES/IT), Server Components by default. All detailed documentation lives in **`docs/`** - start at **[docs/README.md](docs/README.md)**.

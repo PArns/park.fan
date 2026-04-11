@@ -862,7 +862,9 @@
       "coaster-elements": "Éléments de coaster",
       "ride-experience": "Expérience de manège",
       "shopping": "Shopping",
-      "dining": "Restauration"
+      "dining": "Restauration",
+      "logistics": "Logistique",
+      "ai": "IA et Technologie"
     },
     "searchPlaceholder": "Rechercher un terme…",
     "noResults": "Aucun terme trouvé pour « {query} ».",
