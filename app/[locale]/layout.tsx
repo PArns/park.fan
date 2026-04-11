@@ -57,6 +57,10 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     },
     description: t('description'),
     keywords: t('keywords'),
+    icons: {
+      icon: '/favicon.ico',
+      apple: '/logo.png',
+    },
     alternates: {
       canonical: `${siteUrl}/${locale}`,
       languages: {

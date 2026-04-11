@@ -31,7 +31,7 @@ export async function generateMetadata({
   return {
     title: q ? t('titleTemplate', { query: q }) : t('title'),
     description: t('metaDescriptionTemplate'),
-    robots: { index: false, follow: true },
+    robots: { index: !q, follow: true },
     ...buildOpenGraphMetadata({
       locale,
       title: q ? t('titleTemplate', { query: q }) : t('title'),
@@ -40,12 +40,10 @@ export async function generateMetadata({
       ogImageUrl: getOgImageUrl([locale, 'search']),
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+      canonical: `https://park.fan/${locale}/search`,
       languages: {
-        ...generateAlternateLanguages(
-          (l) => `/${l}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`
-        ),
-        'x-default': `https://park.fan/en/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+        ...generateAlternateLanguages((l) => `/${l}/search`),
+        'x-default': `https://park.fan/en/search`,
       },
     },
   };

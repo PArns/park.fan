@@ -55,7 +55,7 @@ export function OrganizationStructuredData({ description }: { description?: stri
     '@type': 'Organization',
     name: 'park.fan',
     url: SITE_URL,
-    logo: `${SITE_URL}/icon.png`,
+    logo: `${SITE_URL}/logo.png`,
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
