@@ -1311,10 +1311,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'huss-rides',
     name: 'Huss Rides',
-    shortDefinition:
-      `Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.`,
-    definition:
-      `Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.`,
+    shortDefinition: `Fabricant allemand d'attractions foraines fondé en 1961, connu pour le Top Spin, le Break Dance, l'Enterprise, le Ranger et le Condor.`,
+    definition: `Huss Rides GmbH est un fabricant allemand d'attractions foraines fondé en 1961 par Paul Huss, basé à Brême. La société a produit certains des modèles de flat rides les plus emblématiques de la fin du XXe siècle, présents dans les parcs d'attractions et les fêtes foraines du monde entier.\n\nLes modèles Huss les plus connus sont le Top Spin, le Break Dance (voitures rotatives sur un plateau tournant), l'Enterprise (roue centrifuge à nacelles), le Ranger (navire pendulaire oscillant), le Condor (tour de chaises rotative) et la Troïka. Beaucoup de ces modèles sont devenus des références dans l'industrie et ont été largement copiés. Les attractions Huss sont particulièrement associées à l'âge d'or des flat rides dans les parcs européens des années 1980 et 1990.`,
     relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1534,50 +1532,47 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'break-dance',
     name: 'Break Dance',
-    shortDefinition:
-      `Un manège Huss avec plusieurs voitures montées sur un grand disque tournant, chaque voiture tournant librement sur son propre axe.`,
-    definition:
-      `Le Break Dance est un modèle de manège plat de Huss Rides dans lequel de petites voitures — chacune pouvant accueillir deux à quatre passagers — sont disposées autour d'un grand disque tournant. Les voitures sont libres de tourner sur leurs propres axes pendant que le disque tourne, produisant des forces de rotation et d'inclinaison chaotiques et imprévisibles qui varient à chaque cycle.\n\nLe Break Dance est devenu l'un des modèles de manèges plats itinérants et permanents les plus populaires à partir des années 1980, reconnaissable par son disque tournant illuminé et son programme musical énergique. De nombreuses variantes et imitations d'autres fabricants existent sous différents noms.`,
+    shortDefinition: `Un manège Huss avec plusieurs voitures montées sur un grand disque tournant, chaque voiture tournant librement sur son propre axe.`,
+    definition: `Le Break Dance est un modèle de manège plat de Huss Rides dans lequel de petites voitures — chacune pouvant accueillir deux à quatre passagers — sont disposées autour d'un grand disque tournant. Les voitures sont libres de tourner sur leurs propres axes pendant que le disque tourne, produisant des forces de rotation et d'inclinaison chaotiques et imprévisibles qui varient à chaque cycle.\n\nLe Break Dance est devenu l'un des modèles de manèges plats itinérants et permanents les plus populaires à partir des années 1980, reconnaissable par son disque tournant illuminé et son programme musical énergique. De nombreuses variantes et imitations d'autres fabricants existent sous différents noms.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Breakdance', 'Break Dancer'],
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    shortDefinition:
-      `Un manège centrifuge dans lequel des gondoles sur un grand anneau rotatif sont maintenues en place par la force G tandis que l'anneau s'incline à la verticale.`,
-    definition:
-      `L'Enterprise est un manège dans lequel des gondoles sont disposées autour de la circonférence d'un grand anneau rotatif. Lorsque l'anneau accélère, la force centrifuge plaque les passagers fermement dans leurs sièges ; à pleine vitesse, l'ensemble de l'anneau s'incline progressivement vers une position presque verticale, laissant les passagers tourner à l'envers.\n\nOriginellement créée par Huss Rides et ensuite produite par plusieurs autres fabricants, l'Enterprise est devenue un élément incontournable des parcs permanents et des fêtes foraines itinérantes à partir des années 1970. Son inclinaison verticale spectaculaire en fait l'une des silhouettes de manèges les plus impressionnantes visuellement.`,
+    shortDefinition: `Un manège centrifuge dans lequel des gondoles sur un grand anneau rotatif sont maintenues en place par la force G tandis que l'anneau s'incline à la verticale.`,
+    definition: `L'Enterprise est un manège dans lequel des gondoles sont disposées autour de la circonférence d'un grand anneau rotatif. Lorsque l'anneau accélère, la force centrifuge plaque les passagers fermement dans leurs sièges ; à pleine vitesse, l'ensemble de l'anneau s'incline progressivement vers une position presque verticale, laissant les passagers tourner à l'envers.\n\nOriginellement créée par Huss Rides et ensuite produite par plusieurs autres fabricants, l'Enterprise est devenue un élément incontournable des parcs permanents et des fêtes foraines itinérantes à partir des années 1970. Son inclinaison verticale spectaculaire en fait l'une des silhouettes de manèges les plus impressionnantes visuellement.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Enterprises'],
   },
   {
     id: 'ranger',
     name: 'Ranger',
-    shortDefinition:
-      `Un manège à bateau oscillant — une grande nacelle en forme de navire viking ou pirate qui oscille en un arc de pendule de plus en plus large.`,
-    definition:
-      `Le Ranger est le modèle de bateau oscillant de Huss Rides : une grande nacelle en forme de drakkar viking ou de navire pirate qui oscille d'avant en arrière en arc, montant progressivement à chaque oscillation. Les passagers s'assoient le long des côtés du navire, face vers l'intérieur. À pleine oscillation, la nacelle atteint des angles élevés, produisant de fortes forces G négatives au sommet.\n\nLes manèges à bateau oscillant sont produits par de nombreux fabricants dans le monde entier sous divers noms (Viking, Pirate Ship, Sea Monster). Le Ranger est l'un des modèles de manèges Huss les plus largement installés, présent dans les parcs permanents et les fêtes foraines itinérantes à travers l'Europe et au-delà.`,
+    shortDefinition: `Un manège à bateau oscillant — une grande nacelle en forme de navire viking ou pirate qui oscille en un arc de pendule de plus en plus large.`,
+    definition: `Le Ranger est le modèle de bateau oscillant de Huss Rides : une grande nacelle en forme de drakkar viking ou de navire pirate qui oscille d'avant en arrière en arc, montant progressivement à chaque oscillation. Les passagers s'assoient le long des côtés du navire, face vers l'intérieur. À pleine oscillation, la nacelle atteint des angles élevés, produisant de fortes forces G négatives au sommet.\n\nLes manèges à bateau oscillant sont produits par de nombreux fabricants dans le monde entier sous divers noms (Viking, Pirate Ship, Sea Monster). Le Ranger est l'un des modèles de manèges Huss les plus largement installés, présent dans les parcs permanents et les fêtes foraines itinérantes à travers l'Europe et au-delà.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'bateau pirate', 'bateau viking'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'bateau pirate',
+      'bateau viking',
+    ],
     alternateNames: ['Huss Ranger', 'bateau viking', 'bateau pirate'],
   },
   {
     id: 'condor',
     name: 'Condor',
-    shortDefinition:
-      `Un manège Huss avec des bras à gondoles qui s'étendent vers l'extérieur depuis une colonne centrale pendant que le manège tourne et monte.`,
-    definition:
-      `Le Condor est un modèle de manège de Huss Rides composé d'une haute colonne centrale avec plusieurs bras à gondoles. Pendant le fonctionnement, les bras s'étendent vers l'extérieur et les gondoles montent pendant que toute la structure tourne. Les passagers vivent une combinaison de rotation, d'élévation et d'inclinaison vers l'extérieur — offrant des vues sur le parc depuis une hauteur modérée.\n\nLe Condor était une attraction courante dans les parcs européens des années 1970 aux années 1990 et peut encore être trouvé dans de nombreux endroits permanents. Il est parfois confondu avec les attractions à chaises volantes (manèges à chaînes) mais dispose de gondoles fermées plutôt que de chaises ouvertes suspendues.`,
+    shortDefinition: `Un manège Huss avec des bras à gondoles qui s'étendent vers l'extérieur depuis une colonne centrale pendant que le manège tourne et monte.`,
+    definition: `Le Condor est un modèle de manège de Huss Rides composé d'une haute colonne centrale avec plusieurs bras à gondoles. Pendant le fonctionnement, les bras s'étendent vers l'extérieur et les gondoles montent pendant que toute la structure tourne. Les passagers vivent une combinaison de rotation, d'élévation et d'inclinaison vers l'extérieur — offrant des vues sur le parc depuis une hauteur modérée.\n\nLe Condor était une attraction courante dans les parcs européens des années 1970 aux années 1990 et peut encore être trouvé dans de nombreux endroits permanents. Il est parfois confondu avec les attractions à chaises volantes (manèges à chaînes) mais dispose de gondoles fermées plutôt que de chaises ouvertes suspendues.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
   },
   {
     id: 'troika',
     name: 'Troika',
-    shortDefinition:
-      `Un manège Huss à trois bras rotatifs, chacun portant une nacelle dont les voitures tournent simultanément avec la plateforme principale.`,
-    definition:
-      `La Troika est un modèle de manège de Huss Rides dans lequel trois bras s'étendent depuis un moyeu central ; chaque bras porte une nacelle avec plusieurs voitures qui peuvent tourner. Pendant que la plateforme principale tourne, les nacelles tournent également et les voitures pivotent, créant plusieurs axes de rotation simultanés. Le mouvement résultant est très imprévisible et désorientant.\n\nLa Troika était un ajout populaire dans les parcs d'attractions européens et les fêtes foraines à partir des années 1970. Sa symétrie à trois voies lui confère une apparence visuelle distinctive. Les variantes et imitations d'autres fabricants sont parfois connues sous le nom de Trabant ou Walzer.`,
+    shortDefinition: `Un manège Huss à trois bras rotatifs, chacun portant une nacelle dont les voitures tournent simultanément avec la plateforme principale.`,
+    definition: `La Troika est un modèle de manège de Huss Rides dans lequel trois bras s'étendent depuis un moyeu central ; chaque bras porte une nacelle avec plusieurs voitures qui peuvent tourner. Pendant que la plateforme principale tourne, les nacelles tournent également et les voitures pivotent, créant plusieurs axes de rotation simultanés. Le mouvement résultant est très imprévisible et désorientant.\n\nLa Troika était un ajout populaire dans les parcs d'attractions européens et les fêtes foraines à partir des années 1970. Sa symétrie à trois voies lui confère une apparence visuelle distinctive. Les variantes et imitations d'autres fabricants sont parfois connues sous le nom de Trabant ou Walzer.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
     aliases: ['Troikas', 'Trojka'],
     alternateNames: ['Huss Troika'],
@@ -1619,7 +1614,7 @@ const translations: GlossaryTermTranslation[] = [
       'Réservation anticipée pour un restaurant à service complet dans un parc ou un resort.',
     definition:
       "Une réservation restaurant est une réservation anticipée dans un restaurant à service complet ou à personnages dans un parc d'attractions, un hôtel de resort ou un complexe de divertissement associé. Dans les parcs Disney, les réservations sont possibles jusqu'à 60 jours à l'avance (avec 10 jours supplémentaires pour les clients des hôtels du resort) et sont indispensables pour les établissements les plus prisés : ne pas réserver à temps peut signifier l'impossibilité de dîner dans ces restaurants lors des périodes de forte fréquentation. Les réservations sont généralement garanties par une carte bancaire ; Disney facture des frais de non-présentation ou d'annulation tardive. Dans la communauté des passionnés, les réservations en avance sont souvent désignées par le sigle ADR (Advance Dining Reservation).",
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     aliases: ['ADR', 'réservation de table', 'résa restaurant'],
   },
   {
@@ -1649,7 +1644,7 @@ const translations: GlossaryTermTranslation[] = [
       "Situation où un parc cesse d'admettre de nouveaux visiteurs car sa fréquentation maximale est atteinte.",
     definition:
       "Une fermeture pour capacité maximale (aussi appelée parc complet ou plafond de fréquentation) survient quand un parc d'attractions atteint son seuil d'affluence maximum autorisé ou opérationnellement sûr et cesse temporairement de vendre des billets journée ou d'admettre de nouveaux visiteurs. Les parcs gèrent la capacité par des réservations d'entrée horaires, une surveillance en temps réel de la fréquentation et des fermetures temporaires d'entrée. Les détenteurs de pass annuel peuvent être bloqués certains jours selon les conditions du pass ; d'autres parcs utilisent des systèmes de réservation anticipée pour éviter la surpopulation avant qu'elle ne survienne. Les fermetures pour capacité sont les plus fréquentes lors des pics de vacances scolaires, des soirées de feux d'artifice et des événements spéciaux. Consulter l'appli du parc ou ses réseaux sociaux le matin du jour prévu peut éviter de mauvaises surprises.",
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     aliases: ['parc complet', 'parc plein', 'fermeture capacité'],
   },
   {

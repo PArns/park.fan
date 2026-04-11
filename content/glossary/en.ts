@@ -1123,7 +1123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Family steel coaster themed as a mine cart journey.',
     definition:
       'A mine train coaster is a family-friendly steel roller coaster styled as a runaway mining cart. Typically featuring moderate speeds, small drops, and tight turns through themed tunnels and rock formations. Suitable for a wide age range. Examples include Big Thunder Mountain Railroad (Disney parks) and Gold Rush (Plopsaland).',
-    relatedTermIds: ['steel-coaster', 'family-coaster', 'themed-land'],
+    relatedTermIds: ['steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'mine car coaster', 'mine ride'],
     alternateNames: ['family coaster'],
   },
@@ -1251,7 +1251,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Period between peak and off-season with moderate crowds and prices.',
     definition:
       "The shoulder season refers to the transitional periods between a theme park's busiest (peak) and quietest (off-season) periods. Typically spring (March–May) and early autumn (September–October) in European parks. Crowds are moderate, prices may be lower, and most attractions are open — making it a favoured time for enthusiasts seeking a good balance of experience and value.",
-    relatedTermIds: ['crowd-forecast', 'peak-season', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['crowd-forecast', 'peak-day', 'school-holiday', 'crowd-level'],
     alternateNames: ['off-peak', 'mid-season', 'quiet period', 'low season'],
   },
   {
@@ -1260,7 +1260,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'School vacation period that causes significant crowd spikes at theme parks.',
     definition:
       'School holidays — including summer break, Christmas/New Year, Easter, and half-term — are the primary driver of crowd spikes at theme parks. Families with children are the largest visitor segment, and their visits are concentrated in these windows. Parks often extend opening hours, add entertainment, and increase prices during these periods. Avoiding school holidays is the single most impactful crowd-reduction strategy.',
-    relatedTermIds: ['crowd-forecast', 'shoulder-season', 'peak-season', 'crowd-level'],
+    relatedTermIds: ['crowd-forecast', 'shoulder-season', 'peak-day', 'crowd-level'],
     aliases: ['summer holidays', 'Easter holidays', 'Christmas holidays'],
     alternateNames: ['school break', 'school vacation', 'half-term'],
   },
@@ -1378,7 +1378,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Sit-down restaurant with waitstaff where reservations are often required.',
     definition:
       'Table service restaurants inside theme parks provide a full sit-down dining experience with waitstaff. Reservations (often bookable 60–180 days in advance at Disney parks) are strongly recommended as popular venues fill quickly, especially during peak season. Table service typically costs significantly more than quick service but offers higher food quality and a relaxing atmosphere away from the park crowds.',
-    relatedTermIds: ['quick-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['quick-service', 'character-dining', 'peak-day'],
     alternateNames: [
       'sit-down dining',
       'full-service restaurant',
@@ -1464,7 +1464,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'A swinging ship flat ride — a large gondola shaped like a Viking or pirate vessel that swings in an increasingly wide pendulum arc.',
     definition:
-      'The Ranger is Huss Rides\' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, producing strong negative G-forces at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.',
+      "The Ranger is Huss Rides' swinging ship model: a large gondola shaped like a Viking longship or pirate vessel that swings back and forth in an arc, building progressively higher with each swing. Riders sit along the sides of the ship, facing inward. At full swing the gondola reaches high angles, producing strong negative G-forces at the apex.\n\nSwinging ship rides are produced by many manufacturers worldwide under various names (Viking, Pirate Ship, Sea Monster). The Ranger is among the most widely installed Huss flat ride models, found in permanent parks and on travelling fairs across Europe and beyond.",
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
     aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride'],
     alternateNames: ['Huss Ranger', 'Viking ship', 'pirate ship'],
@@ -1539,7 +1539,7 @@ const translations: GlossaryTermTranslation[] = [
       'An advance booking for a table-service restaurant inside a theme park or resort.',
     definition:
       'A dining reservation is an advance booking for a table-service or character-dining restaurant at a theme park, resort hotel, or associated entertainment complex. At Disney parks, reservations can be made up to 60 days in advance (with a 10-day head-start for resort hotel guests) and are considered essential for the most popular restaurants — failing to book in advance during busy periods can mean missing out entirely. Reservations typically require a credit card to hold; most Disney table-service venues charge a no-show fee if guests cancel within 24 hours or fail to arrive. In enthusiast communities, advance dining reservations are commonly abbreviated as ADRs. For parks other than Disney, the booking window is typically shorter and systems less formalised.',
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     alternateNames: [
       'ADR',
       'advance dining reservation',
@@ -1576,7 +1576,7 @@ const translations: GlossaryTermTranslation[] = [
       'When a park stops admitting new guests because its maximum safe attendance has been reached.',
     definition:
       "A capacity closure (also called a park sellout or capacity cap) occurs when a theme park reaches its maximum permitted or operationally safe attendance figure and temporarily stops selling day tickets or admitting new guests at the gate. Parks manage capacity through a combination of timed entry reservations, real-time attendance monitoring, and temporary gate closures. Annual passholders at some parks may be blocked from admission on capacity days; others use pre-sold reservation systems that prevent overcrowding before it starts. Capacity closures are most common during school holiday peaks, fireworks nights, and special event evenings. Some parks communicate real-time admission status via their apps; others provide limited advance warning. Checking a park's social media and app on the morning of a planned visit can help guests avoid an unexpected closure.",
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     alternateNames: ['park full', 'park sold out', 'sold out day', 'park sellout', 'capacity cap'],
   },
   {

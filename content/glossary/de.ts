@@ -1497,7 +1497,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Sitzrestaurant mit Bedienung, bei dem Reservierungen oft erforderlich sind.',
     definition:
       'Tischservice-Restaurants in Freizeitparks bieten ein vollständiges Sitzessen mit Bedienung. Reservierungen (bei Disney-Parks oft 60–180 Tage im Voraus buchbar) sind dringend empfohlen, da beliebte Restaurants, besonders in der Hochsaison, schnell ausgebucht sind. Tischservice ist deutlich teurer als Schnellrestaurants, bietet aber höhere Qualität und eine entspannte Atmosphäre.',
-    relatedTermIds: ['quick-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['quick-service', 'character-dining', 'peak-day'],
     alternateNames: ['Tischservice', 'Table Service', 'Sitzrestaurant', 'Restaurant mit Bedienung'],
   },
   {
@@ -1591,7 +1591,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Der Ranger ist das Schaukelschiff-Modell von Huss Rides: eine große Gondel in Form eines Wikinger-Langschiffs oder Piratenschiffs, die vor und zurück in einem Bogen schwingt und mit jedem Schwung höher wird. Die Fahrgäste sitzen entlang der Seiten des Schiffs und schauen nach innen. Am höchsten Punkt erreicht die Gondel große Winkel, die starke negative G-Kräfte erzeugen.\n\nSchaukelschiff-Fahrgeschäfte werden weltweit von vielen Herstellern unter verschiedenen Namen produziert (Viking, Pirate Ship, Sea Monster). Der Ranger gehört zu den am weitesten verbreiteten Huss-Flachfahrgeschäfts-Modellen, die in stationären Parks und auf Reisekarneval in ganz Europa und darüber hinaus zu finden sind.',
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'Schaukelschiff', 'Piratenschiff', 'Wikingerschiff'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'Schaukelschiff',
+      'Piratenschiff',
+      'Wikingerschiff',
+    ],
     alternateNames: ['Huss Ranger', 'Wikingerschiff', 'Piratenschiff'],
   },
   {
@@ -1669,7 +1677,7 @@ const translations: GlossaryTermTranslation[] = [
       'Vorab-Buchung für ein Tischservice-Restaurant in einem Freizeitpark oder Resort.',
     definition:
       'Eine Tischreservierung ist die Vorab-Buchung eines Platzes in einem Tischservice- oder Charakter-Dinner-Restaurant in einem Freizeitpark, Resort-Hotel oder angeschlossenen Unterhaltungskomplex. Bei Disney-Parks sind Reservierungen bis zu 60 Tage im Voraus möglich (für Resort-Hotel-Gäste mit bis zu 10 Tagen Vorsprung) und für die beliebtesten Restaurants praktisch unerlässlich – wer nicht rechtzeitig bucht, findet in Stoßzeiten oft keine Plätze mehr. Reservierungen werden meist mit einer Kreditkarte gesichert; bei Disney gilt eine Stornierungsgebühr bei Nichterscheinen oder zu kurzfristiger Absage. In der Enthusiasten-Community wird die Vorabreservierung häufig mit ADR (Advance Dining Reservation) abgekürzt.',
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     alternateNames: [
       'Tischreservierung',
       'ADR',
@@ -1704,7 +1712,7 @@ const translations: GlossaryTermTranslation[] = [
       'Wenn ein Park keine neuen Besucher mehr einlässt, weil die maximale Besucherzahl erreicht wurde.',
     definition:
       'Eine Kapazitätsschließung (auch Ausverkauf oder Kapazitätsobergrenze) tritt auf, wenn ein Freizeitpark seine maximal zulässige oder betrieblich sichere Besucherzahl erreicht und vorübergehend keine Tagestickets mehr verkauft oder keine neuen Gäste einlässt. Parks steuern die Kapazität über zeitgebundene Eintrittsbuchungen, Echtzeit-Besucherzählung und temporäre Eingangsschließungen. Inhaber von Jahreskarten können an Kapazitätstagen je nach Park-Regelung vom Einlass ausgeschlossen sein; andere Parks nutzen Reservierungssysteme, die Überfüllung bereits im Voraus verhindern. Kapazitätsschließungen sind am häufigsten in Schulferienspitzen, bei Sonderveranstaltungen und an Feiertagen. Ein Blick in die Park-App oder die sozialen Medien am Morgen des Besuchs kann Überraschungen vermeiden.',
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     alternateNames: ['Kapazitätsschließung', 'Park ausverkauft', 'Kapazitätsgrenze', 'Park voll'],
   },
   {

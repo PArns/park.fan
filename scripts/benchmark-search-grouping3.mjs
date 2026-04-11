@@ -18,8 +18,8 @@ const runBaselineFilter = () => {
   const start = performance.now();
 
   const mainTypes = results.results.some((r) => r.type === 'location')
-    ? (['location', 'park', 'attraction', 'show', 'restaurant'])
-    : (['park', 'attraction', 'show', 'restaurant', 'location']);
+    ? ['location', 'park', 'attraction', 'show', 'restaurant']
+    : ['park', 'attraction', 'show', 'restaurant', 'location'];
 
   const groups = [];
 
@@ -37,8 +37,8 @@ const runOptimizedGroupBy = () => {
   const start = performance.now();
 
   const mainTypes = results.results.some((r) => r.type === 'location')
-    ? (['location', 'park', 'attraction', 'show', 'restaurant'])
-    : (['park', 'attraction', 'show', 'restaurant', 'location']);
+    ? ['location', 'park', 'attraction', 'show', 'restaurant']
+    : ['park', 'attraction', 'show', 'restaurant', 'location'];
 
   const groups = [];
 
@@ -70,4 +70,4 @@ for (let i = 0; i < iterations; i++) {
 
 console.log(`Baseline Average: ${(baselineTotal / iterations).toFixed(3)} ms`);
 console.log(`GroupBy Average: ${(groupByTotal / iterations).toFixed(3)} ms`);
-console.log(`Improvement: ${((baselineTotal - groupByTotal) / baselineTotal * 100).toFixed(2)}%`);
+console.log(`Improvement: ${(((baselineTotal - groupByTotal) / baselineTotal) * 100).toFixed(2)}%`);

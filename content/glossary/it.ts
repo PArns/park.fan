@@ -1315,10 +1315,8 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'huss-rides',
     name: 'Huss Rides',
-    shortDefinition:
-      `Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l'Enterprise, il Ranger e il Condor.`,
-    definition:
-      `Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L'azienda ha prodotto alcuni dei modelli di flat ride più riconoscibili della fine del XX secolo, presenti in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l'Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono diventati standard del settore e ampiamente imitati. Le attrazioni Huss sono particolarmente associate all'epoca d'oro dei flat ride nei parchi europei degli anni ottanta e novanta.`,
+    shortDefinition: `Produttore tedesco di attrazioni fondato nel 1961, noto per il Top Spin, il Break Dance, l'Enterprise, il Ranger e il Condor.`,
+    definition: `Huss Rides GmbH è un produttore tedesco di attrazioni fondato nel 1961 da Paul Huss, con sede a Brema. L'azienda ha prodotto alcuni dei modelli di flat ride più riconoscibili della fine del XX secolo, presenti in parchi a tema e fiere di tutto il mondo.\n\nI modelli Huss più noti sono il Top Spin, il Break Dance (veicoli rotanti su una piattaforma girevole), l'Enterprise (ruota centrifuga a gondole), il Ranger (nave a pendolo oscillante), il Condor (torre di sedie rotante) e la Troika. Molti di questi modelli sono diventati standard del settore e ampiamente imitati. Le attrazioni Huss sono particolarmente associate all'epoca d'oro dei flat ride nei parchi europei degli anni ottanta e novanta.`,
     relatedTermIds: ['flat-ride', 'top-spin', 'pendulum-ride', 'drop-tower'],
     aliases: ['Huss', 'Huss Park Attractions'],
   },
@@ -1527,7 +1525,13 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Una torre di caduta (drop tower o free-fall tower) è un'attrazione in cui i visitatori vengono sollevati in una gondola o su sedili individuali intorno a una struttura centrale a torre e poi rilasciati in una rapida caduta verso il basso. La caduta può essere quasi in caduta libera (vicina all'assenza di peso), frenata o combinata con un lancio verso l'alto. Una fase di decelerazione progressiva frena dolcemente la gondola in basso. Le varianti includono torri rotanti, modelli multidirezionali e versioni ibride. Le torri di caduta offrono emozioni intense su un'impronta ridotta e si trovano in tutto il mondo. Produttori notevoli: Intamin, Mondial e S&S Worldwide.",
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['torre caduta libera', 'free fall tower', 'drop ride', 'caduta libera', 'torri di caduta'],
+    aliases: [
+      'torre caduta libera',
+      'free fall tower',
+      'drop ride',
+      'caduta libera',
+      'torri di caduta',
+    ],
   },
   {
     id: 'log-flume',
@@ -1559,7 +1563,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'pendulum-ride',
     name: 'Attrazione a Pendolo',
     shortDefinition:
-      "Flat ride in cui una gondola oscilla in un ampio arco a pendolo, spesso mentre ruota simultaneamente.",
+      'Flat ride in cui una gondola oscilla in un ampio arco a pendolo, spesso mentre ruota simultaneamente.',
     definition:
       "Un'attrazione a pendolo è un tipo di flat ride in cui una gondola è appesa a un lungo braccio che oscilla in un arco sempre più ampio, raggiungendo spesso posizioni quasi verticali. La gondola ruota anche attorno al proprio asse, combinando il moto pendolare con la rotazione assiale per un'esperienza ad alta intensità.\n\nL'esempio più iconico è il Frisbee (Mondial): una gondola a forma di disco che oscilla come un pendolo girando su se stessa. Altre attrazioni a pendolo diffuse sono il KMG Afterburner e l'Intamin Giant Frisbee. Le attrazioni a pendolo sono molto apprezzate nei parchi a tema e nelle fiere di tutto il mondo per il loro forte impatto visivo e l'ingombro relativamente contenuto.",
     relatedTermIds: ['flat-ride', 'swing-ride', 'drop-tower', 'height-requirement'],
@@ -1570,7 +1574,7 @@ const translations: GlossaryTermTranslation[] = [
     id: 'top-spin',
     name: 'Top Spin',
     shortDefinition:
-      "Attrazione di Huss in cui una gondola di passeggeri ruota liberamente in qualsiasi direzione mentre il telaio di supporto oscilla su e giù.",
+      'Attrazione di Huss in cui una gondola di passeggeri ruota liberamente in qualsiasi direzione mentre il telaio di supporto oscilla su e giù.',
     definition:
       "Il Top Spin è un modello di attrazione prodotto da Huss Rides. Una gondola con circa 40 passeggeri è montata su un telaio oscillante; la gondola può essere ruotata continuamente in qualsiasi direzione mentre il telaio oscilla, creando una combinazione imprevedibile di forze oscillatorie e rotative. L'attrazione è programmabile dal semplice dondolio alle rotazioni continue ad alta intensità.\n\nI Top Spin erano onnipresenti nei parchi a tema e nelle fiere dagli anni novanta agli anni 2010. Nonostante il movimento oscillante, il Top Spin non è un'attrazione a pendolo: la gondola non è appesa a un lungo braccio, ma è incastrata tra due bracci laterali rotanti.",
     relatedTermIds: ['flat-ride', 'pendulum-ride', 'huss-rides', 'height-requirement'],
@@ -1580,50 +1584,47 @@ const translations: GlossaryTermTranslation[] = [
   {
     id: 'break-dance',
     name: 'Break Dance',
-    shortDefinition:
-      `Un flat ride Huss con diversi vagoni montati su un grande disco rotante, dove ogni vagone ruota liberamente sul proprio asse.`,
-    definition:
-      `Il Break Dance è un modello di flat ride di Huss Rides in cui piccoli vagoni — ciascuno per due o quattro passeggeri — sono disposti attorno a un grande disco rotante. I vagoni possono ruotare liberamente sui propri assi mentre il disco gira, producendo forze di rotazione e inclinazione caotiche e imprevedibili che variano a ogni ciclo.\n\nIl Break Dance è diventato uno dei modelli di flat ride itineranti e permanenti più popolari a partire dagli anni '80, riconoscibile per il suo disco illuminato in rotazione e il programma musicale ad alta energia. Numerose varianti e imitazioni di altri produttori esistono sotto diversi nomi.`,
+    shortDefinition: `Un flat ride Huss con diversi vagoni montati su un grande disco rotante, dove ogni vagone ruota liberamente sul proprio asse.`,
+    definition: `Il Break Dance è un modello di flat ride di Huss Rides in cui piccoli vagoni — ciascuno per due o quattro passeggeri — sono disposti attorno a un grande disco rotante. I vagoni possono ruotare liberamente sui propri assi mentre il disco gira, producendo forze di rotazione e inclinazione caotiche e imprevedibili che variano a ogni ciclo.\n\nIl Break Dance è diventato uno dei modelli di flat ride itineranti e permanenti più popolari a partire dagli anni '80, riconoscibile per il suo disco illuminato in rotazione e il programma musicale ad alta energia. Numerose varianti e imitazioni di altri produttori esistono sotto diversi nomi.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Breakdance', 'Break Dancer'],
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    shortDefinition:
-      `Un flat ride centrifugo in cui le gondole su un grande anello rotante sono mantenute in posizione dalla forza G mentre l'anello si inclina verticalmente.`,
-    definition:
-      `L'Enterprise è un flat ride in cui le gondole sono disposte attorno alla circonferenza di un grande anello rotante. Man mano che l'anello accelera, la forza centrifuga spinge i passeggeri saldamente nei loro sedili; a piena velocità, l'intero anello si inclina progressivamente verso una posizione quasi verticale, lasciando i passeggeri ruotare al contrario.\n\nOriginata da Huss Rides e successivamente prodotta da altri produttori, l'Enterprise è diventata un elemento fisso sia dei parchi permanenti che delle fiere itineranti dagli anni '70. La sua drammatica inclinazione verticale la rende una delle silhouette di flat ride più spettacolari visivamente.`,
+    shortDefinition: `Un flat ride centrifugo in cui le gondole su un grande anello rotante sono mantenute in posizione dalla forza G mentre l'anello si inclina verticalmente.`,
+    definition: `L'Enterprise è un flat ride in cui le gondole sono disposte attorno alla circonferenza di un grande anello rotante. Man mano che l'anello accelera, la forza centrifuga spinge i passeggeri saldamente nei loro sedili; a piena velocità, l'intero anello si inclina progressivamente verso una posizione quasi verticale, lasciando i passeggeri ruotare al contrario.\n\nOriginata da Huss Rides e successivamente prodotta da altri produttori, l'Enterprise è diventata un elemento fisso sia dei parchi permanenti che delle fiere itineranti dagli anni '70. La sua drammatica inclinazione verticale la rende una delle silhouette di flat ride più spettacolari visivamente.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'height-requirement'],
     aliases: ['Enterprises'],
   },
   {
     id: 'ranger',
     name: 'Ranger',
-    shortDefinition:
-      `Un flat ride a barca oscillante — una grande gondola a forma di nave vichinga o pirata che oscilla in un arco pendolare sempre più ampio.`,
-    definition:
-      `Il Ranger è il modello di barca oscillante di Huss Rides: una grande gondola a forma di drakkar vichingo o nave pirata che oscilla avanti e indietro in un arco, aumentando progressivamente l'ampiezza ad ogni oscillazione. I passeggeri siedono lungo i lati della nave, rivolti verso l'interno. All'oscillazione massima la gondola raggiunge angoli elevati, producendo forti forze G negative all'apice.\n\nLe giostre a barca oscillante sono prodotte da molti produttori in tutto il mondo con vari nomi (Viking, Pirate Ship, Sea Monster). Il Ranger è tra i modelli di flat ride Huss più ampiamente installati, presente in parchi permanenti e fiere itineranti in tutta Europa e oltre.`,
+    shortDefinition: `Un flat ride a barca oscillante — una grande gondola a forma di nave vichinga o pirata che oscilla in un arco pendolare sempre più ampio.`,
+    definition: `Il Ranger è il modello di barca oscillante di Huss Rides: una grande gondola a forma di drakkar vichingo o nave pirata che oscilla avanti e indietro in un arco, aumentando progressivamente l'ampiezza ad ogni oscillazione. I passeggeri siedono lungo i lati della nave, rivolti verso l'interno. All'oscillazione massima la gondola raggiunge angoli elevati, producendo forti forze G negative all'apice.\n\nLe giostre a barca oscillante sono prodotte da molti produttori in tutto il mondo con vari nomi (Viking, Pirate Ship, Sea Monster). Il Ranger è tra i modelli di flat ride Huss più ampiamente installati, presente in parchi permanenti e fiere itineranti in tutta Europa e oltre.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'barca pirata', 'barca vichinga'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'barca pirata',
+      'barca vichinga',
+    ],
     alternateNames: ['Huss Ranger', 'nave vichinga', 'barca pirata'],
   },
   {
     id: 'condor',
     name: 'Condor',
-    shortDefinition:
-      `Un flat ride Huss con bracci gondola che si estendono verso l'esterno da una colonna centrale mentre la giostra ruota e sale.`,
-    definition:
-      `Il Condor è un modello di flat ride di Huss Rides composto da un'alta colonna centrale con diversi bracci gondola. Durante il funzionamento, i bracci si estendono verso l'esterno e le gondole salgono mentre l'intera struttura ruota. I passeggeri vivono una combinazione di rotazione, elevazione e inclinazione verso l'esterno — con viste sul parco da un'altezza moderata.\n\nIl Condor era una presenza comune nei parchi europei dagli anni '70 agli anni '90 e può ancora essere trovato in molte sedi permanenti. A volte viene confuso con le attrazioni a sedie volanti (giostre a catene) ma ha gondole chiuse piuttosto che sedie aperte sospese.`,
+    shortDefinition: `Un flat ride Huss con bracci gondola che si estendono verso l'esterno da una colonna centrale mentre la giostra ruota e sale.`,
+    definition: `Il Condor è un modello di flat ride di Huss Rides composto da un'alta colonna centrale con diversi bracci gondola. Durante il funzionamento, i bracci si estendono verso l'esterno e le gondole salgono mentre l'intera struttura ruota. I passeggeri vivono una combinazione di rotazione, elevazione e inclinazione verso l'esterno — con viste sul parco da un'altezza moderata.\n\nIl Condor era una presenza comune nei parchi europei dagli anni '70 agli anni '90 e può ancora essere trovato in molte sedi permanenti. A volte viene confuso con le attrazioni a sedie volanti (giostre a catene) ma ha gondole chiuse piuttosto che sedie aperte sospese.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'swing-ride'],
   },
   {
     id: 'troika',
     name: 'Troika',
-    shortDefinition:
-      `Un flat ride Huss con tre bracci rotanti, ognuno portante una gondola i cui vagoni ruotano simultaneamente con la piattaforma principale.`,
-    definition:
-      `La Troika è un modello di flat ride di Huss Rides in cui tre bracci si estendono da un mozzo centrale; ogni braccio porta una gondola con diversi vagoni che possono ruotare. Mentre la piattaforma principale gira, le gondole ruotano anch'esse e i vagoni girano, creando molteplici assi di rotazione simultanei. Il movimento risultante è molto imprevedibile e disorientante.\n\nLa Troika era un'aggiunta popolare ai parchi di divertimenti europei e alle fiere dagli anni '70 in poi. La sua simmetria a tre vie le conferisce un aspetto visivo distintivo. Le varianti e le imitazioni di altri produttori sono talvolta conosciute come Trabant o Walzer.`,
+    shortDefinition: `Un flat ride Huss con tre bracci rotanti, ognuno portante una gondola i cui vagoni ruotano simultaneamente con la piattaforma principale.`,
+    definition: `La Troika è un modello di flat ride di Huss Rides in cui tre bracci si estendono da un mozzo centrale; ogni braccio porta una gondola con diversi vagoni che possono ruotare. Mentre la piattaforma principale gira, le gondole ruotano anch'esse e i vagoni girano, creando molteplici assi di rotazione simultanei. Il movimento risultante è molto imprevedibile e disorientante.\n\nLa Troika era un'aggiunta popolare ai parchi di divertimenti europei e alle fiere dagli anni '70 in poi. La sua simmetria a tre vie le conferisce un aspetto visivo distintivo. Le varianti e le imitazioni di altri produttori sono talvolta conosciute come Trabant o Walzer.`,
     relatedTermIds: ['flat-ride', 'huss-rides', 'break-dance'],
     aliases: ['Troikas', 'Trojka'],
     alternateNames: ['Huss Troika'],
@@ -1679,7 +1680,7 @@ const translations: GlossaryTermTranslation[] = [
       'Prenotazione anticipata per un ristorante a servizio completo in un parco a tema o resort.',
     definition:
       "Una prenotazione ristorante è una prenotazione anticipata per un ristorante con servizio al tavolo o a tema con personaggi in un parco a tema, un hotel del resort o un complesso di intrattenimento associato. Nei parchi Disney, le prenotazioni sono possibili fino a 60 giorni in anticipo (con 10 giorni di vantaggio per gli ospiti dell'hotel del resort) e sono praticamente indispensabili per i ristoranti più gettonati – non prenotare in anticipo può significare non trovare posto nei periodi di punta. Le prenotazioni vengono in genere garantite con una carta di credito; Disney addebita una penale in caso di mancata presentazione o cancellazione tardiva. Nella comunità degli appassionati vengono spesso abbreviate come ADR (Advance Dining Reservation).",
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     aliases: [
       'ADR',
       'advance dining reservation',
@@ -1715,7 +1716,7 @@ const translations: GlossaryTermTranslation[] = [
       'Quando un parco smette di ammettere nuovi visitatori perché ha raggiunto la capienza massima.',
     definition:
       "Una chiusura per capacità (detta anche parco esaurito o tetto di capienza) si verifica quando un parco a tema raggiunge il numero massimo di visitatori consentito e smette temporaneamente di vendere biglietti giornalieri o di ammettere nuovi ospiti. I parchi gestiscono la capienza attraverso prenotazioni di ingresso a orario, monitoraggio in tempo reale degli afflussi e chiusure temporanee degli accessi. I titolari di abbonamento annuale possono essere bloccati in certi giorni a seconda delle condizioni del parco; altri parchi usano sistemi di prenotazione anticipata per prevenire il sovraffollamento. Le chiusure per capacità sono più frequenti durante i picchi delle vacanze scolastiche, le serate di fuochi d'artificio e gli eventi speciali. Consultare l'app del parco o i social media la mattina della visita può evitare spiacevoli sorprese.",
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     aliases: [
       'parco esaurito',
       'parco pieno',

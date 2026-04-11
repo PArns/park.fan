@@ -18,8 +18,8 @@ const runOptimizedReduce = () => {
   const start = performance.now();
 
   const mainTypes = results.results.some((r) => r.type === 'location')
-    ? (['location', 'park', 'attraction', 'show', 'restaurant'])
-    : (['park', 'attraction', 'show', 'restaurant', 'location']);
+    ? ['location', 'park', 'attraction', 'show', 'restaurant']
+    : ['park', 'attraction', 'show', 'restaurant', 'location'];
 
   const groups = [];
 
@@ -43,8 +43,8 @@ const runOptimizedGroupBy = () => {
   const start = performance.now();
 
   const mainTypes = results.results.some((r) => r.type === 'location')
-    ? (['location', 'park', 'attraction', 'show', 'restaurant'])
-    : (['park', 'attraction', 'show', 'restaurant', 'location']);
+    ? ['location', 'park', 'attraction', 'show', 'restaurant']
+    : ['park', 'attraction', 'show', 'restaurant', 'location'];
 
   const groups = [];
 

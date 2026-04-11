@@ -1549,7 +1549,13 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Una torre de caída (drop tower o free-fall tower) es una atracción en la que los visitantes son elevados en una góndola o asientos individuales alrededor de una estructura central de torre y después soltados para caer rápidamente hacia el suelo. La caída puede ser casi en caída libre (rozando la ingravidez), frenada, o combinada con un impulso hacia arriba. Una fase de deceleración progresiva frena la góndola suavemente al final. Las variantes incluyen torres rotativas, modelos multidireccionales y versiones híbridas. Las torres de caída ofrecen experiencias intensas en un espacio reducido y se encuentran en todo el mundo. Fabricantes destacados: Intamin, Mondial y S&S Worldwide.',
     relatedTermIds: ['flat-ride', 'height-requirement', 's-and-s-worldwide', 'intamin'],
-    aliases: ['torre de caída libre', 'drop ride', 'caída libre', 'free fall tower', 'torres de caída'],
+    aliases: [
+      'torre de caída libre',
+      'drop ride',
+      'caída libre',
+      'free fall tower',
+      'torres de caída',
+    ],
   },
   {
     id: 'log-flume',
@@ -1621,7 +1627,14 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El Ranger es el modelo de barco oscilante de Huss Rides: una gran góndola con forma de drakkar vikingo o barco pirata que oscila hacia adelante y hacia atrás en arco, ganando altura con cada oscilación. Los pasajeros se sientan a lo largo de los lados del barco, mirando hacia el interior. En la oscilación máxima, la góndola alcanza ángulos elevados, produciendo fuertes fuerzas G negativas en el punto más alto.\n\nLas atracciones de barco oscilante son producidas por muchos fabricantes en todo el mundo bajo varios nombres (Viking, Pirate Ship, Sea Monster). El Ranger es uno de los modelos de atracción plana de Huss más ampliamente instalados, presente en parques permanentes y en ferias itinerantes por toda Europa y más allá.',
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'barco pirata', 'barco vikingo'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'barco pirata',
+      'barco vikingo',
+    ],
     alternateNames: ['Huss Ranger', 'barco vikingo', 'barco pirata'],
   },
   {
@@ -1694,7 +1707,7 @@ const translations: GlossaryTermTranslation[] = [
       'Reserva anticipada para un restaurante de servicio de mesa en un parque temático o resort.',
     definition:
       'Una reserva de restaurante es una reserva anticipada para un restaurante de servicio de mesa o de cena con personajes en un parque temático, hotel del resort o complejo de entretenimiento asociado. En los parques Disney, las reservas se pueden hacer hasta 60 días de antelación (con 10 días más para los huéspedes del hotel del resort) y son indispensables para los restaurantes más populares: no reservar a tiempo puede significar quedarse sin mesa. Las reservas suelen garantizarse con una tarjeta de crédito; Disney cobra un cargo en caso de no presentarse o cancelar con poca antelación. En la comunidad de entusiastas se abrevia habitualmente como ADR (Advance Dining Reservation).',
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     aliases: [
       'ADR',
       'advance dining reservation',
@@ -1730,7 +1743,7 @@ const translations: GlossaryTermTranslation[] = [
       'Cuando un parque deja de admitir nuevos visitantes porque ha alcanzado su aforo máximo.',
     definition:
       'Un cierre por capacidad (también llamado parque completo o agotado) ocurre cuando un parque temático alcanza su número máximo de visitantes permitido y deja temporalmente de vender entradas de día o de admitir nuevos visitantes. Los parques gestionan la capacidad mediante reservas de entrada programadas, seguimiento en tiempo real de la asistencia y cierres temporales de acceso. Los titulares de abono anual pueden ser bloqueados en días de capacidad según las normas del parque; otros parques usan sistemas de reserva anticipada que evitan el aforo excesivo antes de que se produzca. Los cierres por capacidad son más frecuentes en los picos de vacaciones escolares, noches de fuegos artificiales y eventos especiales. Consultar la app del parque o sus redes sociales la mañana de la visita puede evitar sorpresas desagradables.',
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     aliases: ['parque completo', 'parque lleno', 'capacity closure', 'aforo máximo', 'agotado'],
   },
   {
