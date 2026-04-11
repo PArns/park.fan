@@ -1123,7 +1123,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Family steel coaster themed as a mine cart journey.',
     definition:
       'A mine train coaster is a family-friendly steel roller coaster styled as a runaway mining cart. Typically featuring moderate speeds, small drops, and tight turns through themed tunnels and rock formations. Suitable for a wide age range. Examples include Big Thunder Mountain Railroad (Disney parks) and Gold Rush (Plopsaland).',
-    relatedTermIds: ['steel-coaster', 'steel-coaster', 'themed-land'],
+    relatedTermIds: ['steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'mine car coaster', 'mine ride'],
     alternateNames: ['family coaster'],
   },
