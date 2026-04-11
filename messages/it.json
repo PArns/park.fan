@@ -541,6 +541,10 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."
+    },
+    "headliner": {
+      "title": "Attrazione principale",
+      "description": "Da non perdere in questo parco"
     }
   },
   "calendar": {
@@ -623,8 +627,7 @@
       "south-korea": "Corea del Sud",
       "singapore": "Singapore",
       "australia": "Australia",
-      "brazil": "Brasile",
-      "singapore": "Singapore"
+      "brazil": "Brasile"
     },
     "parksIn": "Parchi a tema in {location}",
     "parkCount": "{count, plural, =1 {1 parco} other {# parchi}}",

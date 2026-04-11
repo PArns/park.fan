@@ -1603,7 +1603,15 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'De Ranger is het schommelbootmodel van Huss Rides: een grote gondel in de vorm van een Vikingschip of piratenschip dat heen en weer schommelt in een boog, waarbij elke schommel hoger wordt. Passagiers zitten langs de zijkanten van het schip, naar binnen gericht. Op de hoogste uitslag bereikt de gondel grote hoeken, wat sterke negatieve G-krachten produceert aan de top.\n\nSchommelbootattracties worden wereldwijd door veel fabrikanten geproduceerd onder verschillende namen (Viking, Pirate Ship, Sea Monster). De Ranger behoort tot de meest wijdverspreide Huss-attractiemodellen, te vinden in permanente parken en op reizende kermissen door heel Europa en daarbuiten.',
     relatedTermIds: ['flat-ride', 'huss-rides', 'pendulum-ride', 'height-requirement'],
-    aliases: ['swinging ship', 'swinging ships', 'pirate ship ride', 'Viking ship ride', 'schommelboot', 'piratenschip', 'Vikingschip'],
+    aliases: [
+      'swinging ship',
+      'swinging ships',
+      'pirate ship ride',
+      'Viking ship ride',
+      'schommelboot',
+      'piratenschip',
+      'Vikingschip',
+    ],
     alternateNames: ['Huss Ranger', 'Vikingschip', 'piratenschip'],
   },
   {
@@ -1634,7 +1642,14 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een zweefmolen (ook kettingcarrousel of Kettenflieger) is een ronddraaiende attractie waarbij stoeltjes aan kettingen aan een centrale draaiende structuur hangen. Bij het ronddraaien worden de stoeltjes door de middelpuntvliedende kracht naar buiten en omhoog geslingerd, wat passagiers het gevoel van vliegen geeft. Zweefmolens zijn een van de oudste nog bestaande kermisattracties en stammen uit het begin van de 20e eeuw. Moderne versies variëren van zachte kinderdraaimolens tot enorme kettingtorens (starflyers) die passagiers tientallen meters omhoogbrengen. Ze zijn in vrijwel elk pretpark en op kermissen wereldwijd te vinden.',
     relatedTermIds: ['flat-ride', 'ride-capacity', 'height-requirement'],
-    aliases: ['kettingcarrousel', 'kettingvlieger', 'Kettenflieger', 'swing ride', 'chairoplane', 'zweefmolens'],
+    aliases: [
+      'kettingcarrousel',
+      'kettingvlieger',
+      'Kettenflieger',
+      'swing ride',
+      'chairoplane',
+      'zweefmolens',
+    ],
   },
   {
     id: 'racing-coaster',
@@ -1668,7 +1683,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Vooruitboeking voor een tafelservice-restaurant in een pretpark of resort.',
     definition:
       'Een tafelreservering is een vooruitboeking voor een tafelservice- of karakterdiner-restaurant in een pretpark, resorthotel of aanverwant entertainmentcomplex. Bij Disney-parken zijn reserveringen tot 60 dagen van tevoren mogelijk (met 10 dagen voorsprong voor resorthotelgasten) en zijn ze onmisbaar voor de populairste restaurants – wie niet op tijd boekt kan er tijdens drukke periodes simpelweg niet in. Reserveringen worden gewoonlijk gegarandeerd met een creditcard; Disney brengt kosten in rekening bij een no-show of late annulering. In de enthousiastengemeenschap worden tafelreserveringen ook wel aangeduid als ADR (Advance Dining Reservation).',
-    relatedTermIds: ['table-service', 'character-dining', 'peak-season'],
+    relatedTermIds: ['table-service', 'character-dining', 'peak-day'],
     aliases: [
       'ADR',
       'advance dining reservation',
@@ -1704,7 +1719,7 @@ const translations: GlossaryTermTranslation[] = [
       'Wanneer een park geen nieuwe bezoekers meer toelaat omdat de maximumcapaciteit is bereikt.',
     definition:
       'Een capaciteitssluiting (ook: uitverkocht park of capaciteitsplafond) treedt op wanneer een pretpark zijn maximaal toegestane of operationeel veilige bezoekersaantal bereikt en tijdelijk stopt met het verkopen van dagtickets of het toelaten van nieuwe bezoekers. Parken sturen capaciteit bij via tijdgebonden toegangsboekingen, realtime bezoekerstellingen en tijdelijke ingangssluitingen. Jaarkaarthouders kunnen op capaciteitsdagen afhankelijk van de parkregels worden geweigerd; andere parken gebruiken reserveringssystemen die overbezetting van tevoren voorkomen. Capaciteitssluitingen zijn het meest voorkomend tijdens schoolvakantiepieken, vuurwerkevenementen en speciale evenementenavonden. Even de park-app of sociale media raadplegen op de ochtend van je bezoek kan onaangename verrassingen voorkomen.',
-    relatedTermIds: ['peak-season', 'annual-pass', 'school-holiday', 'crowd-level'],
+    relatedTermIds: ['peak-day', 'season-pass', 'school-holiday', 'crowd-level'],
     aliases: ['park vol', 'park uitverkocht', 'capacity closure', 'capaciteitsgrens', 'volzit'],
   },
   {
