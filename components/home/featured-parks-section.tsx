@@ -42,7 +42,7 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   ],
   fr: [
     'disneyland-park', // Paris — 10.2M, #1 Europe, dominant FR query
-    'walt-disney-studios-park', // 5.6M, same resort
+    'disney-adventure-world', // 5.6M, same resort
     'parc-asterix', // 2.84M, 2024 record, #1 French domestic after Disney
     'europa-park', // 6M, very popular with French-Swiss and Alsace visitors
     'futuroscope', // 2.05M, France's 3rd most visited domestic park

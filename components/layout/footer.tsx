@@ -263,12 +263,12 @@ export async function Footer({ locale }: FooterProps) {
                     Parc Asterix
                   </Link>
                   <Link
-                    href="/parks/europe/france/paris/walt-disney-studios-park"
+                    href="/parks/europe/france/paris/disney-adventure-world"
                     prefetch={false}
                     className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label="Walt Disney Studios Park - Wait Times"
+                    aria-label="Disney Adventure World - Wait Times"
                   >
-                    Walt Disney Studios
+                    Disney Adventure World
                   </Link>
                   <Link
                     href="/parks/europe/france/chasseneuil-du-poitou/futuroscope"
