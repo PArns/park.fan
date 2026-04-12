@@ -83,6 +83,20 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // 3. Renamed parks
+    rules.push(
+      {
+        source: '/:locale/parks/europe/france/paris/walt-disney-studios-park',
+        destination: '/:locale/parks/europe/france/paris/disney-adventure-world',
+        permanent: true,
+      },
+      {
+        source: '/parks/europe/france/paris/walt-disney-studios-park',
+        destination: '/parks/europe/france/paris/disney-adventure-world',
+        permanent: true,
+      }
+    );
+
     return rules;
   },
   async rewrites() {
