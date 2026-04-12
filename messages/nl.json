@@ -626,9 +626,11 @@
       "hong-kong": "Hongkong",
       "south-korea": "Zuid-Korea",
       "singapore": "Singapore",
+      "saudi-arabia": "Saudi Arabia",
       "australia": "Australië",
       "brazil": "Brazilië",
-      "singapore": "Singapore"
+      "singapore": "Singapore",
+      "saudi-arabia": "Saudi Arabia"
     },
     "parksIn": "Attractieparken in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",

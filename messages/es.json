@@ -626,9 +626,11 @@
       "hong-kong": "Hong Kong",
       "south-korea": "Corea del Sur",
       "singapore": "Singapur",
+      "saudi-arabia": "Saudi Arabia",
       "australia": "Australia",
       "brazil": "Brasil",
-      "singapore": "Singapur"
+      "singapore": "Singapur",
+      "saudi-arabia": "Saudi Arabia"
     },
     "parksIn": "Parques temáticos en {location}",
     "parkCount": "{count, plural, =1 {1 parque} other {# parques}}",

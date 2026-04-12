@@ -1,7 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { ExternalLink } from 'lucide-react';
-import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
@@ -28,35 +27,43 @@ export async function Footer({ locale }: FooterProps) {
               className="inline-flex items-center gap-1.5"
               aria-label={`park.fan - ${locale === 'de' ? 'Startseite' : 'Home'}`}
             >
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/logo.svg"
                 width={27}
                 height={32}
                 alt="park.fan"
                 className="h-8 w-auto shrink-0 md:h-12 dark:hidden"
+                loading="lazy"
                 aria-hidden="true"
               />
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/logo-dark.svg"
                 width={27}
                 height={32}
                 alt="park.fan"
                 className="hidden h-8 w-auto shrink-0 md:h-12 dark:block"
+                loading="lazy"
                 aria-hidden="true"
               />
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/parkfan.svg"
                 width={84}
                 height={24}
                 alt="park.fan"
                 className="h-8 w-auto md:h-12 dark:hidden"
+                loading="lazy"
               />
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src="/parkfan-dark.svg"
                 width={84}
                 height={24}
                 alt="park.fan"
                 className="hidden h-8 w-auto md:h-12 dark:block"
+                loading="lazy"
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>

@@ -6,7 +6,6 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin } from 'lucide-react';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/common/theme-toggle';
@@ -75,39 +74,43 @@ export function Header() {
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? -1 : 0}
         >
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/logo-small.svg"
             width={26}
             height={30}
             alt="park.fan"
             className="h-7 w-auto md:h-9 dark:hidden"
-            priority
+            fetchPriority="high"
             aria-hidden="true"
           />
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/logo-small-dark.svg"
             width={26}
             height={30}
             alt="park.fan"
             className="hidden h-7 w-auto md:h-9 dark:block"
-            priority
+            fetchPriority="high"
             aria-hidden="true"
           />
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/parkfan.svg"
             width={84}
             height={24}
             alt="park.fan"
             className="h-7 w-auto md:h-9 dark:hidden"
-            priority
+            fetchPriority="high"
           />
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="/parkfan-dark.svg"
             width={84}
             height={24}
             alt="park.fan"
             className="hidden h-7 w-auto md:h-9 dark:block"
-            priority
+            fetchPriority="high"
           />
         </Link>
 
