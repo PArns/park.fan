@@ -3,6 +3,7 @@ import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { MapPin } from 'lucide-react';
 import { stripNewPrefix } from '@/lib/utils';
 import { getCountriesWithParks } from '@/lib/api/discovery';
+import type { ParkReference } from '@/lib/api/types';
 
 interface NearbyParksSectionProps {
   parkId: string;
@@ -20,8 +21,6 @@ export async function NearbyParksSection({
   className,
 }: NearbyParksSectionProps) {
   const t = await getTranslations('nearby');
-
-  import type { ParkReference } from '@/lib/api/types';
 
   let parks: (ParkReference & { citySlug: string; cityName: string })[] = [];
   let countryName = '';
