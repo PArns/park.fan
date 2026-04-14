@@ -741,16 +741,16 @@
     "parks": {
       "title": "Parques Temáticos Mundiales",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
-      "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, mejores días y horarios de apertura.",
-      "titleTemplate": "{park} Tiempos de Espera – {city}",
-      "titleTemplateNoCity": "{park} – Tiempos de Espera & Mejores Días",
-      "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
+      "metaDescriptionTemplate": "Tiempos de espera & afluencia para {park} en {city}. Previsiones & horarios de apertura.",
+      "titleTemplate": "Tiempos de espera {park} – {city} | park.fan",
+      "titleTemplateNoCity": "Tiempos de espera {park} & Mejores días | park.fan",
+      "metaDescriptionTemplateNoCity": "Tiempos de espera & afluencia para {park}. Previsiones & horarios de apertura.",
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",
       "keywordBestTime": "mejor época para visitar"
     },
     "attraction": {
-      "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
+      "titleTemplate": "{attraction} @ {park} – Espera en vivo | park.fan",
       "metaDescriptionTemplate": "Tiempos de espera actuales para {attraction} en {park}. Revisa la cola en vivo y el nivel de afluencia."
     },
     "continent": {
