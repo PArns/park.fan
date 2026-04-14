@@ -253,13 +253,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
             <GlassCard variant="medium">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
-                  <div className="mb-2">
-                    <h1 className="text-3xl font-bold md:text-4xl">
-                      {parkName}
-                      <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
-                        – {t('h1Suffix')}
-                      </span>
-                    </h1>
+                  <div className="mb-2 flex flex-wrap items-baseline">
+                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
+                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
+                      – {t('h1Suffix')}
+                    </span>
                   </div>
                   <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                     <address className="flex items-center gap-1 not-italic">

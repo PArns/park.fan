@@ -198,9 +198,9 @@
     "disclaimer": "Tutte le informazioni sono fornite senza garanzia. I tempi di attesa e le informazioni sullo stato visualizzati sono forniti automaticamente e possono differire dalla situazione reale sul posto."
   },
   "explore": {
-    "title": "Parchi a tema in {location}",
+    "title": "Tempi di attesa dei Parchi a tema in {location}",
     "parks": "Parchi",
-    "parksTitle": "Parchi nel mondo",
+    "parksTitle": "Tempi di attesa dei Parchi a tema nel mondo",
     "description": "Esplora i parchi a tema in {location} con tempi di attesa in tempo reale e previsioni di affluenza.",
     "breadcrumbs": {
       "home": "Home"
@@ -627,9 +627,10 @@
       "south-korea": "Corea del Sud",
       "singapore": "Singapore",
       "australia": "Australia",
-      "brazil": "Brasile"
+      "brazil": "Brasile",
+      "saudi-arabia": "Arabia Saudita"
     },
-    "parksIn": "Parchi a tema in {location}",
+    "parksIn": "Tempi di attesa dei Parchi a tema in {location}",
     "parkCount": "{count, plural, =1 {1 parco} other {# parchi}}",
     "exploreByRegion": "Esplora per regione"
   },

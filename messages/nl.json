@@ -198,9 +198,9 @@
     "disclaimer": "Alle informatie wordt verstrekt zonder garantie. De getoonde wachttijden en statusinformatie worden automatisch verstrekt en kunnen afwijken van de actuele situatie ter plaatse."
   },
   "explore": {
-    "title": "Attractieparken in {location}",
+    "title": "Attractiepark Wachttijden in {location}",
     "parks": "Parken",
-    "parksTitle": "Parken Wereldwijd",
+    "parksTitle": "Attractiepark Wachttijden Wereldwijd",
     "description": "Ontdek pretparken in {location} met realtime wachttijden en druktevoorspellingen.",
     "breadcrumbs": {
       "home": "Home"
@@ -627,9 +627,11 @@
       "south-korea": "Zuid-Korea",
       "singapore": "Singapore",
       "australia": "Australië",
-      "brazil": "Brazilië"
+      "brazil": "Brazilië",
+      "singapore": "Singapore",
+      "saudi-arabia": "Saoedi-Arabië"
     },
-    "parksIn": "Attractieparken in {location}",
+    "parksIn": "Attractiepark Wachttijden in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
     "exploreByRegion": "Verkennen per Regio"
   },
