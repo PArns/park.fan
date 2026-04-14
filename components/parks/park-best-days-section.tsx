@@ -1,13 +1,15 @@
 import { getTranslations } from 'next-intl/server';
 import { CalendarDays, TrendingDown, AlertTriangle } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
-import type { IntegratedCalendarResponse, CrowdLevel } from '@/lib/api/types';
+import type { IntegratedCalendarResponse, CrowdLevel, DayOfWeekStat } from '@/lib/api/types';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 
 interface ParkBestDaysSectionProps {
   calendarData: IntegratedCalendarResponse;
+  /** Historical day-of-week stats from /stats endpoint — more accurate than calendar analysis */
+  statsByDayOfWeek?: DayOfWeekStat[];
   parkName: string;
   parkSlug: string;
   locale: string;
@@ -47,6 +49,7 @@ function localizedParkName(parkName: string, parkSlug: string, locale: string): 
 
 export async function ParkBestDaysSection({
   calendarData,
+  statsByDayOfWeek,
   parkName,
   parkSlug,
   locale,
@@ -54,11 +57,27 @@ export async function ParkBestDaysSection({
   const t = await getTranslations('parks.bestDays');
   const analysis = analyzeBestDays(calendarData.days);
 
-  if (analysis.totalDays < 7) return null;
+  // Derive best days of week from historical stats if available (2+ years of data),
+  // falling back to calendar-derived analysis (90 days).
+  const bestDaysOfWeek =
+    statsByDayOfWeek && statsByDayOfWeek.length > 0
+      ? [...statsByDayOfWeek]
+          .sort((a, b) => a.avgCrowdScore - b.avgCrowdScore)
+          .slice(0, 3)
+          .map((d) => ({
+            dayIndex: d.dayOfWeek,
+            avgScore: d.avgCrowdScore,
+            sampleSize: d.sampleDays,
+          }))
+      : analysis.bestDaysOfWeek;
 
-  const hasBestDays = analysis.bestDaysOfWeek.length > 0;
+  const hasBestDays = bestDaysOfWeek.length > 0;
   const hasUpcoming = analysis.upcomingQuietDays.length > 0;
-  if (!hasBestDays && !hasUpcoming) return null;
+
+  // Need either historical stats or sufficient calendar data to show this section
+  const hasEnoughData =
+    (statsByDayOfWeek && statsByDayOfWeek.length > 0) || analysis.totalDays >= 7;
+  if (!hasEnoughData || (!hasBestDays && !hasUpcoming)) return null;
 
   const displayName = localizedParkName(parkName, parkSlug, locale);
 
@@ -83,7 +102,7 @@ export async function ParkBestDaysSection({
               {t('quietestDaysTitle')}
             </p>
             <div className="flex flex-wrap gap-2">
-              {analysis.bestDaysOfWeek.map((stat) => {
+              {bestDaysOfWeek.map((stat) => {
                 const level = scoreToCrowdLevel(stat.avgScore);
                 return (
                   <span

@@ -9,7 +9,8 @@ import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
-import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import { getParkHistoricalStats } from '@/lib/api/stats';
+import type { IntegratedCalendarResponse, ParkHistoricalStats } from '@/lib/api/types';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
@@ -32,6 +33,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 
@@ -155,26 +157,26 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Pre-fetch calendar for current month + next 2 months so opening hours
-  // are available in advance (API limit: 90 days max — cap to avoid 400)
+  // Pre-fetch calendar + historical stats in parallel.
+  // Calendar: current month + next 2 months (API limit: 90 days max — cap to avoid 400)
   const calendarFrom = startOfMonth(new Date());
   const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
-  let calendarData: IntegratedCalendarResponse;
-  try {
-    calendarData = await getIntegratedCalendar(continent, country, city, parkSlug, {
+
+  const [calendarData, parkStats] = await Promise.all([
+    getIntegratedCalendar(continent, country, city, parkSlug, {
       from: format(calendarFrom, 'yyyy-MM-dd'),
       to: format(calendarTo, 'yyyy-MM-dd'),
       includeHourly: 'none',
-    });
-  } catch {
-    calendarData = {
-      meta: {
-        slug: parkSlug,
-        timezone: park.timezone,
-      },
-      days: [],
-    };
-  }
+    }).catch(
+      (): IntegratedCalendarResponse => ({
+        meta: { slug: parkSlug, timezone: park.timezone },
+        days: [],
+      })
+    ),
+    getParkHistoricalStats(continent, country, city, parkSlug).catch(
+      (): ParkHistoricalStats | null => null
+    ),
+  ]);
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
@@ -308,8 +310,19 @@ export default async function ParkPage({ params }: ParkPageProps) {
             attractionsByLand={attractionsByLand}
           />
 
+          {/* Nearby Parks */}
+          {park.latitude != null && park.longitude != null && (
+            <NearbyParksSection
+              parkId={park.id}
+              lat={park.latitude}
+              lng={park.longitude}
+              className="mt-8"
+            />
+          )}
+
           {/* Historical statistics */}
           <ParkStatsSection
+            stats={parkStats}
             continent={continent}
             country={country}
             city={city}
@@ -320,6 +333,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           {/* Best Days to Visit */}
           <ParkBestDaysSection
             calendarData={calendarData}
+            statsByDayOfWeek={parkStats?.byDayOfWeek}
             parkName={parkName}
             parkSlug={parkSlug}
             locale={locale}

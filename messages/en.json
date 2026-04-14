@@ -590,7 +590,8 @@
     "closesIn": "Closes in",
     "day": "{count, plural, =1 {day} other {days}}",
     "week": "{count, plural, =1 {week} other {weeks}}",
-    "offseason": "OffSeason"
+    "offseason": "OffSeason",
+    "nearbyParksArea": "In the area"
   },
   "geo": {
     "continent": "Continent",
@@ -628,7 +629,6 @@
       "singapore": "Singapore",
       "australia": "Australia",
       "brazil": "Brazil",
-      "singapore": "Singapore",
       "saudi-arabia": "Saudi Arabia"
     },
     "parksIn": "Theme Park Wait Times in {location}",

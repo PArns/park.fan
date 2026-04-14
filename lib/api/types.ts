@@ -974,6 +974,31 @@ export interface ParkHistoricalStats {
 }
 
 // ============================================================================
+// Nearby Parks (discovery/nearby endpoint)
+// ============================================================================
+
+export interface NearbyParkItem {
+  id: string;
+  name: string;
+  slug: string;
+  distance: number;
+  city: string | null;
+  country: string | null;
+  status: string;
+  totalAttractions: number;
+  operatingAttractions: number;
+  analytics?: {
+    avgWaitTime?: number;
+    crowdLevel?: string;
+    occupancy?: number;
+  };
+  url: string | null;
+  timezone: string;
+  todaySchedule?: ScheduleSummary | null;
+  nextSchedule?: ScheduleSummary | null;
+}
+
+// ============================================================================
 // Country Summary  (GET /v1/discovery/continents/:continent/:country/summary)
 // ============================================================================
 

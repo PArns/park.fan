@@ -590,7 +590,8 @@
     "closesIn": "Sluit over",
     "day": "{count, plural, =1 {dag} other {dagen}}",
     "week": "{count, plural, =1 {week} other {weken}}",
-    "offseason": "Buiten Seizoen"
+    "offseason": "Buiten Seizoen",
+    "nearbyParksArea": "In de omgeving"
   },
   "geo": {
     "continent": "Continent",
@@ -628,7 +629,6 @@
       "singapore": "Singapore",
       "australia": "Australië",
       "brazil": "Brazilië",
-      "singapore": "Singapore",
       "saudi-arabia": "Saoedi-Arabië"
     },
     "parksIn": "Attractiepark Wachttijden in {location}",

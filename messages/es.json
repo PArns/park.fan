@@ -590,7 +590,8 @@
     "closesIn": "Cierra en",
     "day": "{count, plural, =1 {día} other {días}}",
     "week": "{count, plural, =1 {semana} other {semanas}}",
-    "offseason": "Fuera de Temporada"
+    "offseason": "Fuera de Temporada",
+    "nearbyParksArea": "En los alrededores"
   },
   "geo": {
     "continent": "Continente",
@@ -628,7 +629,6 @@
       "singapore": "Singapur",
       "australia": "Australia",
       "brazil": "Brasil",
-      "singapore": "Singapur",
       "saudi-arabia": "Arabia Saudita"
     },
     "parksIn": "Tiempos de espera de Parques Temáticos en {location}",

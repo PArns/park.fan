@@ -578,7 +578,7 @@
     "awayFrom": "entfernt",
     "nearestAttractions": "Attraktionen in deiner Nähe",
     "noParksNearby": "Keine Parks in deiner Nähe gefunden.",
-    "nearbyParks": "Parks in deiner Nähe",
+    "nearbyParks": "Parks in der Nähe",
     "nearestOpenTitle": "Nächster geöffneter Park",
     "nearbyParksClosedTitle": "Parks in deiner Nähe",
     "noOpenNearbyFocus": "Keine Parks in der Nähe geöffnet – hier die nächsten.",
@@ -590,7 +590,8 @@
     "closesIn": "Schließt in",
     "day": "{count, plural, =1 {Tag} other {Tagen}}",
     "week": "{count, plural, =1 {Woche} other {Wochen}}",
-    "offseason": "OffSeason"
+    "offseason": "OffSeason",
+    "nearbyParksArea": "In der Umgebung"
   },
   "geo": {
     "continent": "Kontinent",
@@ -628,7 +629,6 @@
       "singapore": "Singapur",
       "australia": "Australien",
       "brazil": "Brasilien",
-      "singapore": "Singapur",
       "saudi-arabia": "Saudi-Arabien"
     },
     "parksIn": "Freizeitpark Wartezeiten in {location}",

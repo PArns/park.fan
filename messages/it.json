@@ -590,7 +590,8 @@
     "closesIn": "Chiude tra",
     "day": "{count, plural, =1 {giorno} other {giorni}}",
     "week": "{count, plural, =1 {settimana} other {settimane}}",
-    "offseason": "Fuori stagione"
+    "offseason": "Fuori stagione",
+    "nearbyParksArea": "Nei dintorni"
   },
   "geo": {
     "continent": "Continente",
