@@ -3,13 +3,13 @@ import { api } from '@/lib/api/client';
 import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { MapPin } from 'lucide-react';
 import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
-import { stripNewPrefix } from '@/lib/utils/string-utils';
+import { stripNewPrefix } from '@/lib/utils';
 
 interface NearbyParksSectionProps {
   parkId: string;
   parkName: string;
-  latitude: string;
-  longitude: string;
+  latitude: number | string;
+  longitude: number | string;
   className?: string;
 }
 
