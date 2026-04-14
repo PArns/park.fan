@@ -1,60 +1,67 @@
 import { getTranslations } from 'next-intl/server';
-import { api } from '@/lib/api/client';
 import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { MapPin } from 'lucide-react';
-import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
 import { stripNewPrefix } from '@/lib/utils';
+import { getCountriesWithParks } from '@/lib/api/discovery';
 
 interface NearbyParksSectionProps {
   parkId: string;
   parkName: string;
-  latitude: number | string;
-  longitude: number | string;
+  continentSlug: string;
+  countrySlug: string;
   className?: string;
 }
 
 export async function NearbyParksSection({
   parkId,
   parkName,
-  latitude,
-  longitude,
+  continentSlug,
+  countrySlug,
   className,
 }: NearbyParksSectionProps) {
   const t = await getTranslations('nearby');
 
-  let response: NearbyResponse | null = null;
+  import type { ParkReference } from '@/lib/api/types';
+
+  let parks: (ParkReference & { citySlug: string; cityName: string })[] = [];
+  let countryName = '';
+
   try {
-    response = await api.get<NearbyResponse>(
-      `/v1/discovery/nearby?lat=${latitude}&lng=${longitude}&radius=50000&limit=4`,
-      { next: { revalidate: 3600 } }
-    );
+    const countryData = await getCountriesWithParks(continentSlug);
+    if (!countryData || !countryData.data) return null;
+
+    const country = countryData.data.find((c) => c.slug === countrySlug);
+    if (!country) return null;
+    countryName = country.name;
+
+    const allParks = [];
+    for (const city of country.cities) {
+      for (const park of city.parks) {
+        if (park.id === parkId) continue;
+        allParks.push({
+          ...park,
+          citySlug: city.slug,
+          cityName: city.name,
+        });
+      }
+    }
+
+    if (allParks.length === 0) return null;
+
+    parks = allParks
+      .sort((a, b) => {
+        const aOpen = a.status === 'OPERATING' ? 1 : 0;
+        const bOpen = b.status === 'OPERATING' ? 1 : 0;
+        if (bOpen !== aOpen) return bOpen - aOpen;
+        return a.name.localeCompare(b.name);
+      })
+      .slice(0, 3);
   } catch (error) {
     console.error('[NearbyParksSection] Error fetching nearby parks:', error);
     return null;
   }
 
-  if (
-    !response ||
-    response.type !== 'nearby_parks' ||
-    !response.data ||
-    !('parks' in response.data)
-  ) {
-    return null;
-  }
-
-  const data = response.data as NearbyParksData;
-  const rawParks = data.parks.filter((p) => p.id !== parkId).slice(0, 3);
-
-  if (rawParks.length === 0) {
-    return null;
-  }
-
-  const parks = [...rawParks].sort((a, b) => {
-    const aOpen = a.status === 'OPERATING' ? 1 : 0;
-    const bOpen = b.status === 'OPERATING' ? 1 : 0;
-    if (bOpen !== aOpen) return bOpen - aOpen;
-    return a.distance - b.distance;
-  });
+  if (parks.length === 0) return null;
 
   return (
     <section className={className}>
@@ -67,30 +74,27 @@ export async function NearbyParksSection({
       </p>
 
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {parks.map((park) => {
-          const continent = park.url?.split('/')?.[3];
-          return (
-            <li key={park.id}>
-              <ParkCardNearby
-                id={park.id}
-                name={stripNewPrefix(park.name)}
-                city={park.city}
-                country={park.country}
-                continent={continent}
-                distance={park.distance}
-                status={park.status}
-                timezone={park.timezone}
-                totalAttractions={park.totalAttractions}
-                operatingAttractions={park.operatingAttractions}
-                analytics={park.analytics}
-                todaySchedule={park.todaySchedule}
-                nextSchedule={park.nextSchedule}
-                backgroundImage={park.backgroundImage}
-                url={park.url}
-              />
-            </li>
-          );
-        })}
+        {parks.map((park) => (
+          <li key={park.id}>
+            <ParkCardNearby
+              id={park.id}
+              name={stripNewPrefix(park.name)}
+              city={park.cityName}
+              country={countryName}
+              continent={continentSlug}
+              distance={0}
+              status={park.status || 'CLOSED'}
+              timezone={'UTC'}
+              totalAttractions={park.analytics?.statistics?.totalAttractions || 0}
+              operatingAttractions={park.analytics?.statistics?.operatingAttractions || 0}
+              analytics={{
+                avgWaitTime: park.analytics?.statistics?.avgWaitTime,
+                crowdLevel: park.currentLoad?.crowdLevel,
+              }}
+              url={`/v1/parks/${continentSlug}/${countrySlug}/${park.citySlug}/${park.slug}`}
+            />
+          </li>
+        ))}
       </ul>
     </section>
   );

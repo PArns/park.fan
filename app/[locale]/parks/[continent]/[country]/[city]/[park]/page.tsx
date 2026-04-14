@@ -311,12 +311,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
           {/* Historical statistics */}
           {/* Nearby Parks */}
-          {park.latitude && park.longitude && (
+          {park.id && (
             <NearbyParksSection
               parkId={park.id}
               parkName={parkName}
-              latitude={park.latitude}
-              longitude={park.longitude}
+              continentSlug={continent}
+              countrySlug={country}
               className="mt-8"
             />
           )}
