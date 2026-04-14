@@ -198,9 +198,9 @@
     "disclaimer": "Alle Angaben ohne Gewähr. Die angezeigten Wartezeiten und Statusinformationen werden automatisiert bereitgestellt und können von der tatsächlichen Situation vor Ort abweichen."
   },
   "explore": {
-    "title": "Freizeitparks in {location}",
+    "title": "Freizeitpark Wartezeiten in {location}",
     "parks": "Parks",
-    "parksTitle": "Parks weltweit",
+    "parksTitle": "Freizeitpark Wartezeiten weltweit",
     "description": "Entdecke Freizeitparks in {location} mit Echtzeit-Wartezeiten und Andrangsprognosen.",
     "breadcrumbs": {
       "home": "Startseite"
@@ -628,9 +628,10 @@
       "singapore": "Singapur",
       "australia": "Australien",
       "brazil": "Brasilien",
-      "singapore": "Singapur"
+      "singapore": "Singapur",
+      "saudi-arabia": "Saudi-Arabien"
     },
-    "parksIn": "Freizeitparks in {location}",
+    "parksIn": "Freizeitpark Wartezeiten in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
     "exploreByRegion": "Nach Region entdecken"
   },

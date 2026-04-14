@@ -198,9 +198,9 @@
     "disclaimer": "Toutes les informations sont fournies sans garantie. Les temps d'attente et statuts affichés sont fournis automatiquement et peuvent différer de la situation réelle sur place."
   },
   "explore": {
-    "title": "Parcs d'attractions à {location}",
+    "title": "Temps d'attente des Parcs d'attractions à {location}",
     "parks": "Parcs",
-    "parksTitle": "Parcs dans le Monde",
+    "parksTitle": "Temps d'attente des Parcs d'attractions dans le Monde",
     "description": "Explorez les parcs d'attractions à {location} avec temps d'attente et prédictions d'affluence en temps réel.",
     "breadcrumbs": {
       "home": "Accueil"
@@ -628,9 +628,10 @@
       "singapore": "Singapour",
       "australia": "Australie",
       "brazil": "Brésil",
-      "singapore": "Singapour"
+      "singapore": "Singapour",
+      "saudi-arabia": "Arabie Saoudite"
     },
-    "parksIn": "Parcs d'attractions à {location}",
+    "parksIn": "Temps d'attente des Parcs d'attractions à {location}",
     "parkCount": "{count, plural, =1 {1 parc} other {# parcs}}",
     "exploreByRegion": "Explorer par Région"
   },
