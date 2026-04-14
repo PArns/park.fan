@@ -627,8 +627,7 @@
       "south-korea": "Zuid-Korea",
       "singapore": "Singapore",
       "australia": "Australië",
-      "brazil": "Brazilië",
-      "singapore": "Singapore"
+      "brazil": "Brazilië"
     },
     "parksIn": "Attractieparken in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parken}}",
@@ -740,16 +739,16 @@
     "parks": {
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
-      "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
-      "titleTemplate": "{park} Wachttijden – {city}",
-      "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen",
-      "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "metaDescriptionTemplate": "Live wachttijden & drukte kalender voor {park} in {city}. Voorspellingen & openingstijden.",
+      "titleTemplate": "{park} Wachttijden – {city} | park.fan",
+      "titleTemplateNoCity": "{park} Wachttijden & Beste Bezoekdagen | park.fan",
+      "metaDescriptionTemplateNoCity": "Live wachttijden & drukte kalender voor {park}. Voorspellingen & openingstijden.",
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
       "keywordBestTime": "beste tijd om te bezoeken"
     },
     "attraction": {
-      "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
+      "titleTemplate": "{attraction} @ {park} – Live Wachttijden | park.fan",
       "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
     },
     "continent": {

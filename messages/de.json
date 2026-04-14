@@ -627,8 +627,7 @@
       "south-korea": "Südkorea",
       "singapore": "Singapur",
       "australia": "Australien",
-      "brazil": "Brasilien",
-      "singapore": "Singapur"
+      "brazil": "Brasilien"
     },
     "parksIn": "Freizeitparks in {location}",
     "parkCount": "{count, plural, =1 {1 Park} other {# Parks}}",
@@ -740,16 +739,16 @@
     "parks": {
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage",
-      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
+      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Prognosen & Öffnungszeiten auf einen Blick.",
+      "titleTemplate": "{park} Wartezeiten – {city} | park.fan",
+      "titleTemplateNoCity": "{park} Wartezeiten & Besuchstage | park.fan",
+      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Prognosen & Öffnungszeiten auf einen Blick.",
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit"
     },
     "attraction": {
-      "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
+      "titleTemplate": "{attraction} @ {park} – Live-Wartezeiten | park.fan",
       "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {

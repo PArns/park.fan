@@ -32,6 +32,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 
@@ -311,6 +312,17 @@ export default async function ParkPage({ params }: ParkPageProps) {
           />
 
           {/* Historical statistics */}
+          {/* Nearby Parks */}
+          {park.latitude && park.longitude && (
+            <NearbyParksSection
+              parkId={park.id}
+              parkName={parkName}
+              latitude={park.latitude}
+              longitude={park.longitude}
+              className="mt-8"
+            />
+          )}
+
           <ParkStatsSection
             continent={continent}
             country={country}
