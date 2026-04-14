@@ -198,9 +198,9 @@
     "disclaimer": "All information provided without warranty. The displayed wait times and status information are automatically provided and may differ from the actual situation on site."
   },
   "explore": {
-    "title": "Theme Parks in {location}",
+    "title": "Theme Park Wait Times in {location}",
     "parks": "Parks",
-    "parksTitle": "Parks Worldwide",
+    "parksTitle": "Theme Park Wait Times Worldwide",
     "description": "Explore theme parks in {location} with real-time wait times and crowd predictions.",
     "breadcrumbs": {
       "home": "Home"
@@ -628,9 +628,10 @@
       "singapore": "Singapore",
       "australia": "Australia",
       "brazil": "Brazil",
-      "singapore": "Singapore"
+      "singapore": "Singapore",
+      "saudi-arabia": "Saudi Arabia"
     },
-    "parksIn": "Theme Parks in {location}",
+    "parksIn": "Theme Park Wait Times in {location}",
     "parkCount": "{count, plural, =1 {1 park} other {# parks}}",
     "exploreByRegion": "Explore by Region"
   },

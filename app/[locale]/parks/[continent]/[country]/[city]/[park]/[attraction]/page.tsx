@@ -331,12 +331,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               )}
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                    {attractionName}
+                  <div className="mb-2 flex flex-wrap items-baseline">
+                    <h1 className="text-3xl font-bold md:text-4xl">{attractionName}</h1>
                     <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
                       – {t('h1Suffix')}
                     </span>
-                  </h1>
+                  </div>
                   <div className="text-foreground flex flex-wrap items-center gap-3">
                     <Link
                       href={
