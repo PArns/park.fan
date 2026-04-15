@@ -27,7 +27,7 @@ export function ParkStatsCrowdCard({
   labelP90,
 }: ParkStatsCrowdCardProps) {
   return (
-    <GlassCard variant="light" className="space-y-2 p-4">
+    <GlassCard variant="strong" className="space-y-2 p-4">
       <h3 className="flex items-center gap-2 text-sm font-semibold">
         {iconType === 'calendar' ? (
           <CalendarDays className="text-primary h-4 w-4" aria-hidden="true" />
