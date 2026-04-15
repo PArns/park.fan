@@ -32,7 +32,7 @@ export function ParkStatsAttractionsCard({
   parkSlug,
 }: ParkStatsAttractionsCardProps) {
   return (
-    <GlassCard variant="strong" className="space-y-2 p-4">
+    <GlassCard variant="medium" className="space-y-2 p-4">
       <h3 className="flex items-center gap-2 text-sm font-semibold">
         <Clock className="text-primary h-4 w-4" aria-hidden="true" />
         {title}
