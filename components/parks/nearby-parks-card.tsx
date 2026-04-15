@@ -387,7 +387,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                     <li key={attraction.id}>
                       <Link
                         href={convertApiUrlToFrontendUrl(attraction.url)}
-                        prefetch={attraction.status === 'OPERATING'}
+                        prefetch={false}
                         className="group block"
                       >
                         <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
