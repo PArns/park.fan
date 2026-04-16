@@ -1,6 +1,5 @@
 'use client';
 
-import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { GeolocationProvider } from '@/lib/contexts/geolocation-context';
@@ -12,7 +11,8 @@ interface ProvidersProps {
 
 /**
  * Client-side providers wrapper.
- * Includes theme, geolocation, and data fetching (React Query).
+ * Includes geolocation and data fetching (React Query).
+ * Note: ThemeProvider (next-themes) is handled in the root layout to avoid React 19 script injection warnings.
  */
 export function Providers({ children }: ProvidersProps) {
   // Create QueryClient with optimized defaults
@@ -36,14 +36,7 @@ export function Providers({ children }: ProvidersProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <NextThemesProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <GeolocationProvider>{children}</GeolocationProvider>
-      </NextThemesProvider>
+      <GeolocationProvider>{children}</GeolocationProvider>
       {/* React Query DevTools - only in development */}
       {process.env.NODE_ENV === 'development' && (
         <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-right" />

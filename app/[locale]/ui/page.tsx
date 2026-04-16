@@ -576,6 +576,126 @@ const MOCK_FORECAST_BASE = [
     weatherDescription: 'Overcast',
     windSpeedMax: '15',
   },
+  {
+    date: '2026-03-14',
+    dataType: 'forecast' as const,
+    temperatureMax: '17',
+    temperatureMin: '9',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 1,
+    weatherDescription: 'Mainly clear',
+    windSpeedMax: '12',
+  },
+  {
+    date: '2026-03-15',
+    dataType: 'forecast' as const,
+    temperatureMax: '18',
+    temperatureMin: '10',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 0,
+    weatherDescription: 'Clear sky',
+    windSpeedMax: '10',
+  },
+  {
+    date: '2026-03-16',
+    dataType: 'forecast' as const,
+    temperatureMax: '13',
+    temperatureMin: '7',
+    precipitationSum: '4',
+    rainSum: '4',
+    snowfallSum: '0',
+    weatherCode: 80,
+    weatherDescription: 'Showers',
+    windSpeedMax: '20',
+  },
+  {
+    date: '2026-03-17',
+    dataType: 'forecast' as const,
+    temperatureMax: '10',
+    temperatureMin: '4',
+    precipitationSum: '2',
+    rainSum: '2',
+    snowfallSum: '0',
+    weatherCode: 71,
+    weatherDescription: 'Snow',
+    windSpeedMax: '15',
+  },
+  {
+    date: '2026-03-18',
+    dataType: 'forecast' as const,
+    temperatureMax: '12',
+    temperatureMin: '5',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 2,
+    weatherDescription: 'Partly cloudy',
+    windSpeedMax: '10',
+  },
+  {
+    date: '2026-03-19',
+    dataType: 'forecast' as const,
+    temperatureMax: '15',
+    temperatureMin: '7',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 1,
+    weatherDescription: 'Mainly clear',
+    windSpeedMax: '8',
+  },
+  {
+    date: '2026-03-20',
+    dataType: 'forecast' as const,
+    temperatureMax: '18',
+    temperatureMin: '9',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 0,
+    weatherDescription: 'Clear sky',
+    windSpeedMax: '12',
+  },
+  {
+    date: '2026-03-21',
+    dataType: 'forecast' as const,
+    temperatureMax: '16',
+    temperatureMin: '8',
+    precipitationSum: '1',
+    rainSum: '1',
+    snowfallSum: '0',
+    weatherCode: 51,
+    weatherDescription: 'Drizzle',
+    windSpeedMax: '14',
+  },
+  {
+    date: '2026-03-22',
+    dataType: 'forecast' as const,
+    temperatureMax: '14',
+    temperatureMin: '6',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 3,
+    weatherDescription: 'Overcast',
+    windSpeedMax: '16',
+  },
+  {
+    date: '2026-03-23',
+    dataType: 'forecast' as const,
+    temperatureMax: '19',
+    temperatureMin: '11',
+    precipitationSum: '0',
+    rainSum: '0',
+    snowfallSum: '0',
+    weatherCode: 0,
+    weatherDescription: 'Clear sky',
+    windSpeedMax: '10',
+  },
 ];
 
 const MOCK_WEATHER_SUNNY: WeatherData = {
@@ -2413,9 +2533,36 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
         ================================================================ */}
         <Section title="Weather Card" icon={CloudSun}>
           <ComponentLabel name="WeatherCard" file="components/parks/weather-card.tsx" />
-          <Sub title="WeatherCard — Clear (0) / Partly Cloudy (2) / Rain (63) / Storm (95) / Snow (73) / Fog (45)">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-              <WeatherCard weather={MOCK_WEATHER_SUNNY} />
+          <Sub title="WeatherCard — As seen on Park Page (with Glass effect)">
+            <div
+              className="relative overflow-hidden rounded-xl bg-cover bg-center p-8"
+              style={{
+                backgroundImage:
+                  'url(https://images.unsplash.com/photo-1513889953751-09e9a5fc1c0c?auto=format&fit=crop&q=80&w=2000)',
+              }}
+            >
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
+              <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+                <ParkTimeInfo
+                  timezone="Europe/Berlin"
+                  status="OPERATING"
+                  todaySchedule={{
+                    date: '2026-03-07',
+                    openingTime: '09:00',
+                    closingTime: '20:00',
+                    scheduleType: 'OPERATING',
+                    description: null,
+                    purchases: null,
+                    holidayName: null,
+                  }}
+                />
+                <WeatherCard weather={MOCK_WEATHER_SUNNY} />
+              </div>
+            </div>
+          </Sub>
+
+          <Sub title="WeatherCard — Different Conditions">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <WeatherCard weather={MOCK_WEATHER_PARTLY} />
               <WeatherCard weather={MOCK_WEATHER_RAINY} />
               <WeatherCard weather={MOCK_WEATHER_STORMY} />

@@ -16,31 +16,31 @@ function getBadgeStyles(badge: AccuracyBadge) {
   switch (badge) {
     case 'excellent':
       return {
-        dot: 'bg-emerald-500',
-        text: 'text-emerald-600 dark:text-emerald-400',
-        border: 'border-emerald-500/40',
-        glow: 'shadow-emerald-500/10',
+        dot: 'bg-status-operating',
+        text: 'text-status-operating',
+        border: 'border-status-operating/40',
+        glow: 'shadow-status-operating/10',
       };
     case 'good':
       return {
-        dot: 'bg-primary',
-        text: 'text-primary',
-        border: 'border-primary/40',
-        glow: 'shadow-primary/10',
+        dot: 'bg-status-operating',
+        text: 'text-status-operating',
+        border: 'border-status-operating/40',
+        glow: 'shadow-status-operating/10',
       };
     case 'fair':
       return {
-        dot: 'bg-amber-500',
-        text: 'text-amber-600 dark:text-amber-400',
-        border: 'border-amber-500/40',
-        glow: 'shadow-amber-500/10',
+        dot: 'bg-status-down',
+        text: 'text-status-down',
+        border: 'border-status-down/40',
+        glow: 'shadow-status-down/10',
       };
     case 'poor':
       return {
-        dot: 'bg-red-500',
-        text: 'text-red-600 dark:text-red-400',
-        border: 'border-red-500/40',
-        glow: 'shadow-red-500/10',
+        dot: 'bg-destructive',
+        text: 'text-destructive',
+        border: 'border-destructive/40',
+        glow: 'shadow-destructive/10',
       };
     default:
       return {
@@ -50,6 +50,13 @@ function getBadgeStyles(badge: AccuracyBadge) {
         glow: '',
       };
   }
+}
+
+function getR2Color(r2: number | null | undefined) {
+  if (r2 == null || !isFinite(r2)) return 'text-foreground';
+  if (r2 > 0.8) return 'text-status-operating';
+  if (r2 > 0.6) return 'text-status-down';
+  return 'text-destructive';
 }
 
 export async function MLStatsSection() {
@@ -110,7 +117,9 @@ export async function MLStatsSection() {
               {/* Primary metric: MAE — grows to fill available space */}
               <div className="mt-4 flex flex-col">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-6xl font-bold tabular-nums">±{fmt1(live.mae)}</span>
+                  <span className={cn('text-6xl font-bold tabular-nums', styles.text)}>
+                    ±{fmt1(live.mae)}
+                  </span>
                   <span className="text-muted-foreground text-2xl font-light">
                     {tCommon('minutes')}
                   </span>
@@ -141,7 +150,7 @@ export async function MLStatsSection() {
                 <div>
                   <div className="text-lg font-semibold tabular-nums">
                     {fmt1(live.mape)}
-                    <span className="text-muted-foreground text-sm font-normal">%</span>
+                    <span className="text-muted-foreground text-sm font-normal"> %</span>
                   </div>
                   <p className="text-muted-foreground text-xs">
                     <GlossaryInject>{t('ai.mapeDesc')}</GlossaryInject>
@@ -193,7 +202,9 @@ export async function MLStatsSection() {
                 <p className="text-muted-foreground mb-1.5 text-sm font-medium">
                   {t('ai.r2Score')}
                 </p>
-                <div className="text-3xl font-bold">{fmt2(live.r2Score)}</div>
+                <div className={cn('text-3xl font-bold', getR2Color(live.r2Score))}>
+                  {fmt2(live.r2Score)}
+                </div>
                 <p className="text-muted-foreground mt-0.5 text-xs">
                   <GlossaryInject>{t('ai.r2ScoreDesc')}</GlossaryInject>
                 </p>

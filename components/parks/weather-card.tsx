@@ -1,15 +1,18 @@
 import { useTranslations } from 'next-intl';
 import { Wind, Umbrella } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getWeatherConfig, WeatherForecastStrip } from './weather-forecast-strip';
-import type { WeatherData } from '@/lib/api/types';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard } from '@/components/common/glass-card';
+import { WeatherForecastStrip } from './weather-forecast-strip';
+import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import type { WeatherData, WeatherDay } from '@/lib/api/types';
 
 interface WeatherCardProps {
   weather: WeatherData;
+  forecast?: WeatherDay[];
   className?: string;
 }
 
-export function WeatherCard({ weather, className }: WeatherCardProps) {
+export function WeatherCard({ weather, forecast, className }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
 
@@ -31,7 +34,7 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
   const windSpeed = Math.round(parseFloat(current.windSpeedMax || '0'));
 
   return (
-    <Card className={className}>
+    <GlassCard variant="medium" className={className}>
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-base">
           <WeatherIcon className={`h-4 w-4 ${color}`} />
@@ -70,10 +73,10 @@ export function WeatherCard({ weather, className }: WeatherCardProps) {
           </div>
         </div>
 
-        {weather.forecast && weather.forecast.length > 0 && (
-          <WeatherForecastStrip forecast={weather.forecast} />
+        {(forecast || (weather.forecast && weather.forecast.length > 0)) && (
+          <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
         )}
       </CardContent>
-    </Card>
+    </GlassCard>
   );
 }

@@ -5,8 +5,8 @@ const results = {
   results: Array.from({ length: 10000 }, (_, i) => ({
     id: i,
     type: mainTypes[Math.floor(Math.random() * mainTypes.length)],
-    name: `Item ${i}`
-  }))
+    name: `Item ${i}`,
+  })),
 };
 
 function testGroupBy() {
@@ -14,7 +14,7 @@ function testGroupBy() {
   for (let i = 0; i < 1000; i++) {
     const itemsByType = Object.groupBy(results.results, (r) => r.type);
     mainTypes.forEach((type) => {
-      const items = itemsByType[type];
+      void itemsByType[type];
     });
   }
   return performance.now() - start;
@@ -29,7 +29,7 @@ function testReduce() {
       return acc;
     }, {});
     mainTypes.forEach((type) => {
-      const items = itemsByType[type];
+      void itemsByType[type];
     });
   }
   return performance.now() - start;
@@ -44,7 +44,7 @@ function testForLoop() {
       itemsByType[r.type].push(r);
     }
     mainTypes.forEach((type) => {
-      const items = itemsByType[type];
+      void itemsByType[type];
     });
   }
   return performance.now() - start;

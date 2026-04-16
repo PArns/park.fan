@@ -15,6 +15,7 @@ import {
   WebSiteStructuredData,
 } from '@/components/seo/structured-data';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -135,17 +136,24 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         )}
         <OrganizationStructuredData description={tSeo('description')} />
         <WebSiteStructuredData locale={locale} description={tSeo('description')} />
-        <Providers>
-          <NextIntlClientProvider messages={messages} locale={locale}>
-            <AnalyticsIdentify locale={locale} />
-            <LanguageBanner currentLocale={locale as Locale} />
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer locale={locale} />
-            </div>
-          </NextIntlClientProvider>
-        </Providers>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Providers>
+            <NextIntlClientProvider messages={messages} locale={locale}>
+              <AnalyticsIdentify locale={locale} />
+              <LanguageBanner currentLocale={locale as Locale} />
+              <div className="flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer locale={locale} />
+              </div>
+            </NextIntlClientProvider>
+          </Providers>
+        </ThemeProvider>
       </body>
     </html>
   );

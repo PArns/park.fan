@@ -57,6 +57,14 @@ const ACCURACY_BADGE_KEYS = {
   poor: 'accuracy.poor',
   insufficient_data: 'accuracy.insufficient_data',
 } as const satisfies Record<AccuracyBadge, string>;
+
+const ACCURACY_BORDER: Record<AccuracyBadge, string> = {
+  excellent: 'border-status-operating/40',
+  good: 'border-status-operating/40',
+  fair: 'border-status-down/40',
+  poor: 'border-destructive/40',
+  insufficient_data: 'border-border',
+};
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -401,16 +409,22 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
             {/* Prediction Accuracy */}
             {attraction.predictionAccuracy && (
-              <StatusInfoCard title={t('predictionAccuracy')} icon={BarChart3} className="gap-3">
+              <StatusInfoCard
+                title={t('predictionAccuracy')}
+                icon={BarChart3}
+                className={cn(
+                  'gap-3 border-2',
+                  ACCURACY_BORDER[attraction.predictionAccuracy.badge]
+                )}
+              >
                 <Badge
                   className={cn('text-base', {
-                    'bg-status-closed/15 text-status-closed':
+                    'bg-destructive/15 text-destructive':
                       attraction.predictionAccuracy.badge === 'poor',
                     'bg-status-down/15 text-status-down':
                       attraction.predictionAccuracy.badge === 'fair',
                     'bg-status-operating/15 text-status-operating':
-                      attraction.predictionAccuracy.badge === 'good',
-                    'bg-status-refurbishment/15 text-status-refurbishment':
+                      attraction.predictionAccuracy.badge === 'good' ||
                       attraction.predictionAccuracy.badge === 'excellent',
                   })}
                 >
