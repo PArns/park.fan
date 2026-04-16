@@ -64,6 +64,7 @@ export function GlossaryTermLink({
   const link = (
     <Link
       href={`/${locale}/${segment}/${slug}`}
+      prefetch={false}
       className={
         className ??
         'cursor-help border-b border-dashed border-current/40 font-[inherit] no-underline'

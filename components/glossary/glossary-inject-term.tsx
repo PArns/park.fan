@@ -28,6 +28,7 @@ export function GlossaryInjectTerm({
       <TooltipTrigger asChild>
         <Link
           href={`/${locale}/${segment}/${slug}`}
+          prefetch={false}
           className={
             noUnderline
               ? 'cursor-help font-[inherit] decoration-0'

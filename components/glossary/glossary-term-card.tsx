@@ -11,7 +11,7 @@ interface GlossaryTermCardProps {
 
 export function GlossaryTermCard({ term, locale, segment }: GlossaryTermCardProps) {
   return (
-    <Link href={`/${locale}/${segment}/${term.slug}`} className="group block">
+    <Link href={`/${locale}/${segment}/${term.slug}`} prefetch={false} className="group block">
       <Card className="border-primary/10 group-hover:border-primary/30 h-full transition-all group-hover:shadow-md">
         <CardHeader className="pb-2">
           <CardTitle className="text-base">{term.name}</CardTitle>
