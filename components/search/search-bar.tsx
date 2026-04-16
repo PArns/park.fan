@@ -474,15 +474,19 @@ export function SearchCommand({
   };
 
   // Sort results within each category by match score (exact matches first), then by status (OPERATING first)
-  const sortResultsByMatch = (items: SearchResultItem[]): SearchResultItem[] => {
-    return [...items].sort((a, b) => {
-      const scoreDiff = calculateMatchScore(b) - calculateMatchScore(a);
-      if (scoreDiff !== 0) return scoreDiff;
-      // Prefer OPERATING over non-OPERATING when scores are equal
-      const aOperating = a.status === 'OPERATING' ? 0 : 1;
-      const bOperating = b.status === 'OPERATING' ? 0 : 1;
-      return aOperating - bOperating;
-    });
+  const sortResultsByMatch = (
+    items: SearchResultItem[]
+  ): { item: SearchResultItem; score: number }[] => {
+    return items
+      .map((item) => ({ item, score: calculateMatchScore(item) }))
+      .sort((a, b) => {
+        const scoreDiff = b.score - a.score;
+        if (scoreDiff !== 0) return scoreDiff;
+        // Prefer OPERATING over non-OPERATING when scores are equal
+        const aOperating = a.item.status === 'OPERATING' ? 0 : 1;
+        const bOperating = b.item.status === 'OPERATING' ? 0 : 1;
+        return aOperating - bOperating;
+      });
   };
 
   return (
@@ -680,15 +684,6 @@ export function SearchCommand({
             <>
               {/* Build all category groups (including glossary), sort by best match score */}
               {(() => {
-                const lowerQuery = debouncedQuery.toLowerCase();
-                const calcNameScore = (name: string): number => {
-                  const lower = name.toLowerCase();
-                  if (lower === lowerQuery) return 100;
-                  if (lower.startsWith(lowerQuery)) return 50;
-                  if (lower.includes(lowerQuery)) return 30;
-                  return 0;
-                };
-
                 const groups: { key: string; score: number; node: ReactNode }[] = [];
 
                 const mainTypes = results.results.some((r) => r.type === 'location')
@@ -700,10 +695,8 @@ export function SearchCommand({
                 mainTypes.forEach((type) => {
                   const items = itemsByType[type];
                   if (!items || items.length === 0) return;
-                  const sortedItems = sortResultsByMatch(items);
-                  const bestScore = Math.max(
-                    ...sortedItems.map((item) => calcNameScore(item.name))
-                  );
+                  const scoredSortedItems = sortResultsByMatch(items);
+                  const bestScore = scoredSortedItems.length > 0 ? scoredSortedItems[0].score : 0;
                   groups.push({
                     key: type,
                     score: bestScore,
@@ -712,9 +705,9 @@ export function SearchCommand({
                         key={type}
                         heading={tSearch(`headings.${type}`, { count: items.length })}
                       >
-                        {sortedItems
+                        {scoredSortedItems
                           .slice(0, 5)
-                          .map((item, index) => renderResultItem(item, index))}
+                          .map(({ item }, index) => renderResultItem(item, index))}
                       </CommandGroup>
                     ),
                   });
