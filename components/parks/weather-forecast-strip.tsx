@@ -47,10 +47,14 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
     };
   }, [forecast]);
 
-  if (forecast.length === 0) return null;
+  const validForecast = forecast.filter(
+    (day) => !isNaN(parseFloat(day.temperatureMax)) && !isNaN(parseFloat(day.temperatureMin)),
+  );
+
+  if (validForecast.length === 0) return null;
 
   const cellMinWidth =
-    forecast.length <= 7 ? 'min-w-16' : forecast.length <= 12 ? 'min-w-[72px]' : 'min-w-20';
+    validForecast.length <= 7 ? 'min-w-16' : validForecast.length <= 12 ? 'min-w-[72px]' : 'min-w-20';
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {
@@ -97,7 +101,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         className="bg-muted/30 no-scrollbar border-border/20 overflow-x-auto border-y"
       >
         <div className="flex w-full min-w-max">
-          {forecast.map((day, i) => {
+          {validForecast.map((day, i) => {
             const { icon: ForecastIcon, color } = getWeatherConfig(day.weatherCode);
             const max = Math.round(parseFloat(day.temperatureMax));
             const min = Math.round(parseFloat(day.temperatureMin));
@@ -111,7 +115,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                 : precip > 0
                   ? `${precip.toFixed(1)}mm`
                   : null;
-            const isLast = i === forecast.length - 1;
+            const isLast = i === validForecast.length - 1;
 
             return (
               <div
