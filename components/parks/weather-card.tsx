@@ -2,6 +2,7 @@ import { useTranslations } from 'next-intl';
 import { Wind, Umbrella } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
+import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { WeatherData, WeatherDay } from '@/lib/api/types';
@@ -34,7 +35,7 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
   const windSpeed = Math.round(parseFloat(current.windSpeedMax || '0'));
 
   return (
-    <GlassCard variant="medium" className={className}>
+    <GlassCard variant="medium" className={cn('min-w-0 overflow-x-clip', className)}>
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-base">
           <WeatherIcon className={`h-4 w-4 ${color}`} />
