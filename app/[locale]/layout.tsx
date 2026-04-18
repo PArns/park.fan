@@ -10,6 +10,7 @@ import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
+import { ScrollToTop } from '@/components/common/scroll-to-top';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -144,6 +145,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         >
           <Providers>
             <NextIntlClientProvider messages={messages} locale={locale}>
+              <ScrollToTop />
               <AnalyticsIdentify locale={locale} />
               <LanguageBanner currentLocale={locale as Locale} />
               <div className="flex min-h-screen flex-col">
