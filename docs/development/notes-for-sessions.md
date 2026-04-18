@@ -55,6 +55,13 @@ Reminders and context for AI or human sessions working on the codebase.
 
     **API population timing** — bootstrap job runs 90 s after server start, then daily cron at 02:30. Fields absent from API response = not yet populated, treat as non-seasonal.
 
+14. **Redirects bei Routen-Änderungen** — Bei jeder Umbenennung oder Verschiebung einer Route (Park-Slug, Attraction-Slug, URL-Segment, Locale-Segment) **muss** ein permanenter Redirect (301/308) in `next.config.ts` unter `redirects()` angelegt werden. Ohne Redirect entstehen 404s, die Google im Index behält und die Crawl-Budget verschwenden.
+    - Glossary-Locale-Segmente (`/de/glossar`, `/fr/glossaire` etc.) → Rewrites in `rewrites()`, Cross-Locale-Fehler → `redirects()`
+    - Umbenannte Parks → `redirects()` mit `/:locale/parks/…` und `/parks/…` (ohne Locale, Middleware übernimmt Locale-Erkennung)
+    - Neue Locale-Segmente → zu `localeSegments` in BEIDEN Blöcken (`redirects` + `rewrites`) hinzufügen
+    - Kein Hardcoding von Locales in Redirect-Destinations (z.B. `/en/parks/…`); stattdessen ohne Locale-Prefix damit next-intl die Locale per Accept-Language erkennt
+    → [Routing & URLs](../architecture/routing-and-urls.md)
+
 ---
 
 ## Related

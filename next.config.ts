@@ -43,19 +43,21 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    // Localized glossary segments per non-EN locale (EN uses /glossary directly)
+    // All locale → canonical glossary URL segment mappings (including EN)
     const localeSegments: Record<string, string> = {
+      en: 'glossary',
       de: 'glossar',
       fr: 'glossaire',
       it: 'glossario',
       nl: 'woordenboek',
       es: 'glosario',
     };
-    const allSegments = Object.values(localeSegments);
+    // All known segments including legacy woordenlijst (old NL segment before rename to woordenboek)
+    const allSegments = [...new Set([...Object.values(localeSegments), 'woordenlijst'])];
     const rules: { source: string; destination: string; permanent: boolean }[] = [];
 
     // 1. Cross-locale wrong segments: /[locale]/[wrong-segment] → /[locale]/[correct-segment]
-    //    e.g. /nl/glossaire/:term → /nl/woordenlijst/:term  (Google indexed from stale hreflang)
+    //    Covers: EN locale (was missing), /de/glossary (EN segment under DE), old woordenlijst
     for (const [locale, correctSegment] of Object.entries(localeSegments)) {
       for (const wrongSegment of allSegments) {
         if (wrongSegment === correctSegment) continue;
@@ -75,15 +77,36 @@ const nextConfig: NextConfig = {
     }
 
     // 2. Missing locale prefix: /[segment]/:term → /[locale]/[segment]/:term
-    //    e.g. /glossar/top-hat → /de/glossar/top-hat  (indexed before localePrefix: 'always')
+    //    e.g. /glossar/top-hat → /de/glossar/top-hat, /glossary/dark-ride → /en/glossary/dark-ride
     for (const [locale, segment] of Object.entries(localeSegments)) {
       rules.push(
         { source: `/${segment}`, destination: `/${locale}/${segment}`, permanent: true },
         { source: `/${segment}/:term`, destination: `/${locale}/${segment}/:term`, permanent: true }
       );
     }
+    // Old NL segment without locale prefix
+    rules.push(
+      { source: '/woordenlijst', destination: '/nl/woordenboek', permanent: true },
+      { source: '/woordenlijst/:term', destination: '/nl/woordenboek/:term', permanent: true }
+    );
 
-    // 3. Renamed parks
+    // 3. Old /v1/parks/ API URLs → current frontend URLs (no locale prefix — middleware detects it)
+    rules.push(
+      {
+        source: '/v1/parks/:continent/:country/:city/:park/attractions/:slug',
+        destination: '/parks/:continent/:country/:city/:park/:slug',
+        permanent: true,
+      },
+      {
+        source: '/v1/parks/:continent/:country/:city/:park',
+        destination: '/parks/:continent/:country/:city/:park',
+        permanent: true,
+      }
+    );
+    // Note: /parks/:path* without locale is handled by the next-intl middleware (locale detection)
+    // No explicit redirect needed here.
+
+    // 4. Renamed parks
     rules.push(
       {
         source: '/:locale/parks/europe/france/paris/walt-disney-studios-park',
