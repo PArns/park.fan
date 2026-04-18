@@ -311,9 +311,10 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       {t('youAreIn')} · {park.status}
                     </p>
                   </div>
-                  {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
-                    <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
-                  )}
+                  {park.analytics?.crowdLevel &&
+                    (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
+                      <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                    )}
                 </article>
 
                 {/* Park Analytics - Inside Link */}
@@ -347,9 +348,10 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       {t('youAreIn')} · {park.status}
                     </p>
                   </div>
-                  {park.analytics?.crowdLevel && park.status === 'OPERATING' && (
-                    <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
-                  )}
+                  {park.analytics?.crowdLevel &&
+                    (park.status === 'OPERATING' || park.status === 'UNKNOWN') && (
+                      <CrowdLevelBadge level={park.analytics.crowdLevel as CrowdLevel} />
+                    )}
                 </article>
 
                 {/* Park Analytics */}
@@ -440,14 +442,15 @@ export function NearbyParksCard({ className }: { className?: string }) {
     const data = nearbyData.data as NearbyParksData;
     const rawParks = data.parks;
 
-    // Sort: open (OPERATING) first, then by distance – so "nearest open" is first open
+    // Sort: open (OPERATING/UNKNOWN) first, then by distance – so "nearest open" is first open
     const parks = [...rawParks].sort((a, b) => {
-      const aOpen = a.status === 'OPERATING' ? 1 : 0;
-      const bOpen = b.status === 'OPERATING' ? 1 : 0;
+      const aOpen = a.status === 'OPERATING' || a.status === 'UNKNOWN' ? 1 : 0;
+      const bOpen = b.status === 'OPERATING' || b.status === 'UNKNOWN' ? 1 : 0;
       if (bOpen !== aOpen) return bOpen - aOpen;
       return a.distance - b.distance;
     });
-    const nearestOpenPark = parks.find((p) => p.status === 'OPERATING') ?? null;
+    const nearestOpenPark =
+      parks.find((p) => p.status === 'OPERATING' || p.status === 'UNKNOWN') ?? null;
     const hasNoOpenNearby = parks.length > 0 && nearestOpenPark === null;
 
     if (parks.length === 0) {
@@ -528,6 +531,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                     nextSchedule={park.nextSchedule}
                     backgroundImage={park.backgroundImage}
                     url={park.url}
+                    hasOperatingSchedule={park.hasOperatingSchedule}
                     highlightAsNearestOpen={nearestOpenPark?.id === park.id}
                   />
                 </li>

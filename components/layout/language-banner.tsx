@@ -50,13 +50,17 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
     };
 
     const detected = detectBrowserLanguage();
-    setBrowserLocale(detected);
+    setTimeout(() => {
+      setBrowserLocale(detected);
+    }, 0);
 
     // Load translations for the browser's language
     if (detected && detected !== currentLocale) {
       const dismissKey = `language-banner-dismissed-${detected}-${currentLocale}`;
       const wasDismissed = localStorage.getItem(dismissKey) === 'true';
-      setIsDismissed(wasDismissed);
+      setTimeout(() => {
+        setIsDismissed(wasDismissed);
+      }, 0);
 
       // Dynamically import the translation file for the browser's language
       import(`@/messages/${detected}.json`)

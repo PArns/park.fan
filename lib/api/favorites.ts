@@ -23,6 +23,7 @@ export interface FavoritePark {
   };
   url: string;
   timezone: string;
+  hasOperatingSchedule: boolean;
   backgroundImage?: string | null; // Added by proxy route
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;

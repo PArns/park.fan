@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "2.7.11",
+  "version": "2.7.12",
   "private": true,
   "license": "GPL-3.0-only",
   "author": "Patrick Arns",
@@ -70,7 +70,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "cross-env": "^10.1.0",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "eslint-config-next": "16.2.4",
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.8.3",

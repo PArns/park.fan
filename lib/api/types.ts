@@ -67,6 +67,7 @@ export interface ScheduleItem {
   isSchoolVacation?: boolean;
   isPublicHoliday?: boolean;
   isSchoolHoliday?: boolean;
+  isInferred?: boolean;
   influencingHolidays?: InfluencingHoliday[];
 }
 
@@ -352,6 +353,7 @@ export interface ParkResponse extends ParkBase {
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
+  hasOperatingSchedule: boolean;
 }
 
 export interface ParkWithAttractions extends ParkBase {
@@ -364,6 +366,7 @@ export interface ParkWithAttractions extends ParkBase {
   analytics?: ParkAnalytics | null;
   schedule?: ScheduleItem[];
   nextSchedule?: NextScheduleItem | null;
+  hasOperatingSchedule: boolean;
 }
 
 // ============================================================================
@@ -507,6 +510,7 @@ export interface ParkReference {
     };
   };
   timezone?: string;
+  hasOperatingSchedule: boolean;
   todaySchedule?: {
     openingTime: string;
     closingTime: string;
@@ -861,6 +865,7 @@ export interface CalendarEvent {
 export interface CalendarMeta {
   slug: string;
   timezone: string;
+  hasOperatingSchedule: boolean;
 }
 
 export interface OperatingHours {
@@ -908,6 +913,7 @@ export interface CalendarDay {
   status: ParkStatus;
   isToday: boolean;
   isTomorrow?: boolean;
+  isEstimated?: boolean;
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
   avgWaitTime?: number;
@@ -994,6 +1000,7 @@ export interface NearbyParkItem {
   };
   url: string | null;
   timezone: string;
+  hasOperatingSchedule: boolean;
   todaySchedule?: ScheduleSummary | null;
   nextSchedule?: ScheduleSummary | null;
 }

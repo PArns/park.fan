@@ -90,6 +90,7 @@ interface FeaturedPark {
   operatingAttractions?: number;
   totalAttractions?: number;
   timezone?: string;
+  hasOperatingSchedule: boolean;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
 }
@@ -123,6 +124,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               operatingAttractions: park.analytics?.statistics?.operatingAttractions,
               totalAttractions: park.analytics?.statistics?.totalAttractions,
               timezone: park.timezone,
+              hasOperatingSchedule: park.hasOperatingSchedule,
               todaySchedule: park.todaySchedule,
               nextSchedule: park.nextSchedule,
             });
@@ -181,6 +183,7 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
                 operatingAttractions={park.operatingAttractions}
                 totalAttractions={park.totalAttractions}
                 timezone={park.timezone}
+                hasOperatingSchedule={park.hasOperatingSchedule}
                 todaySchedule={park.todaySchedule}
                 nextSchedule={park.nextSchedule}
                 variant="detailed"

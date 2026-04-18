@@ -33,6 +33,11 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
         'bg-status-refurbishment/65 text-white border border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
       icon: Wrench,
     },
+    UNKNOWN: {
+      color:
+        'bg-gray-500/65 text-white border border-gray-500/80 dark:bg-gray-500/25 dark:border-gray-500/40',
+      icon: Clock,
+    },
   };
 
   const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.CLOSED;

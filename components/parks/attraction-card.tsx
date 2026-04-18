@@ -41,7 +41,10 @@ function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | 
 function getStatus(
   attraction: ParkAttraction | FavoriteAttraction,
   parkStatus?: ParkStatus
-): AttractionStatus {
+): AttractionStatus | 'UNKNOWN' {
+  if (parkStatus && parkStatus === 'UNKNOWN') {
+    return 'UNKNOWN';
+  }
   if (parkStatus && parkStatus !== 'OPERATING') {
     return 'CLOSED';
   }
@@ -97,7 +100,10 @@ export function AttractionCard({
 
   const status = getStatus(attraction, parkStatus);
   // If park is closed, force wait time to null
-  const waitTime = parkStatus && parkStatus !== 'OPERATING' ? null : getWaitTime(attraction);
+  const waitTime =
+    parkStatus && parkStatus !== 'OPERATING' && parkStatus !== 'UNKNOWN'
+      ? null
+      : getWaitTime(attraction);
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
@@ -108,6 +114,8 @@ export function AttractionCard({
   // Use provided backgroundImage or try to get from attraction
   const backgroundImage =
     propBackgroundImage ?? ('backgroundImage' in attraction ? attraction.backgroundImage : null);
+
+  const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
 
   return (
     <Link href={href} prefetch={false} className="group block h-full">
@@ -164,14 +172,14 @@ export function AttractionCard({
                 )}
 
               {/* Status description for non-operating attractions */}
-              {status !== 'OPERATING' && (
+              {!isOperatingOrUnknown && (
                 <p className="text-muted-foreground mt-1 text-sm">
                   {t(`status.${status.toLowerCase()}`)}
                 </p>
               )}
 
               {/* Wait Time & Trend */}
-              {status === 'OPERATING' && waitTime !== null && (
+              {isOperatingOrUnknown && waitTime !== null && (
                 <div className="mt-1 flex items-baseline gap-2">
                   <div className="flex items-center gap-1.5 text-lg font-bold">
                     <Clock className="h-4 w-4" />
@@ -182,7 +190,7 @@ export function AttractionCard({
               )}
 
               {/* Queue Types */}
-              {status === 'OPERATING' && (
+              {isOperatingOrUnknown && (
                 <div className="mt-2 flex max-w-full flex-wrap gap-1">
                   {attraction.queues
                     ?.filter((q) => {
@@ -205,7 +213,7 @@ export function AttractionCard({
               )}
 
               {/* Peak Wait Time */}
-              {status === 'OPERATING' &&
+              {isOperatingOrUnknown &&
                 attraction.statistics?.peakWaitToday !== null &&
                 attraction.statistics?.peakWaitToday !== undefined && (
                   <div className="text-muted-foreground mt-1 text-xs">
@@ -215,7 +223,10 @@ export function AttractionCard({
             </div>
 
             <div className="flex flex-col items-end gap-2">
-              <ParkStatusBadge status={status} className="shrink-0" />
+              <ParkStatusBadge
+                status={status as import('@/lib/api/types').ParkStatus}
+                className="shrink-0"
+              />
 
               {/* Seasonal Badge */}
               {'isSeasonal' in attraction && attraction.isSeasonal && (
@@ -229,7 +240,7 @@ export function AttractionCard({
               )}
 
               {/* Crowd Level Badge */}
-              {status === 'OPERATING' && crowdLevel && (
+              {isOperatingOrUnknown && crowdLevel && (
                 <CrowdLevelBadge
                   level={
                     crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
@@ -246,7 +257,7 @@ export function AttractionCard({
           )}
 
           {/* Sparkline */}
-          {status === 'OPERATING' &&
+          {isOperatingOrUnknown &&
             attraction.statistics?.history &&
             attraction.statistics.history.length > 0 && (
               <div className="mt-auto h-16 w-full overflow-hidden pt-4 opacity-50 transition-opacity group-hover:opacity-100">

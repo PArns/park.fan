@@ -44,6 +44,7 @@ interface ParkCardProps {
   timezone?: string;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
+  hasOperatingSchedule?: boolean;
 }
 
 export function ParkCard({
@@ -66,6 +67,7 @@ export function ParkCard({
   timezone,
   todaySchedule,
   nextSchedule,
+  hasOperatingSchedule = true,
 }: ParkCardProps) {
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
@@ -79,7 +81,9 @@ export function ParkCard({
     backgroundImage = serverAssets.getParkBackgroundImage(slug);
   }
   const isOpen = status === 'OPERATING';
-  const isInMaintenance = !!status && status !== 'OPERATING' && status !== 'CLOSED';
+  const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
+  const isInMaintenance =
+    !!status && status !== 'OPERATING' && status !== 'CLOSED' && status !== 'UNKNOWN';
   const scheduleInfo = getScheduleMessage(
     todaySchedule,
     nextSchedule,
@@ -88,13 +92,14 @@ export function ParkCard({
     isInMaintenance,
     locale,
     tNearby,
-    tCommon
+    tCommon,
+    hasOperatingSchedule
   );
 
   return (
     <Link
       href={href as '/europe/germany/rust/europa-park'}
-      prefetch={status === 'OPERATING'} // Only prefetch open parks
+      prefetch={isOperatingOrUnknown} // Only prefetch open/unknown parks
       className="group h-full"
     >
       <Card className={cn('interactive-card relative h-full overflow-hidden', className)}>
@@ -140,7 +145,7 @@ export function ParkCard({
 
               {/* Wait Time + Crowd Level (matching NearbyParksCard layout) */}
               <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
-                {isOpen && (averageWaitTime !== undefined || crowdLevel) ? (
+                {isOperatingOrUnknown && (averageWaitTime !== undefined || crowdLevel) ? (
                   <div className="flex items-center gap-2.5 text-sm">
                     {averageWaitTime !== undefined && averageWaitTime > 0 && (
                       <WaitTimeBadge waitTime={averageWaitTime} size="sm" />
@@ -184,7 +189,7 @@ export function ParkCard({
                         <GlossaryTermLink termId="offseason" tooltipOnly>
                           {tNearby('offseason')}
                         </GlossaryTermLink>
-                        {scheduleInfo.message.slice(tNearby('offseason').length)}
+                        {scheduleInfo.offseasonDetails}
                       </>
                     ) : (
                       scheduleInfo.message

@@ -15,8 +15,13 @@ export function getScheduleMessage(
   isInMaintenance: boolean,
   locale: string,
   t: ReturnType<typeof useTranslations<'nearby'>>,
-  tCommon: ReturnType<typeof useTranslations<'common'>>
-): { message: string; icon: 'opening' | 'closing' | 'offseason' } | null {
+  tCommon: ReturnType<typeof useTranslations<'common'>>,
+  hasOperatingSchedule: boolean = true
+): {
+  message: string;
+  icon: 'opening' | 'closing' | 'offseason';
+  offseasonDetails?: string;
+} | null {
   if (isInMaintenance) return null;
   if (!todaySchedule && !nextSchedule) return null;
 
@@ -44,7 +49,7 @@ export function getScheduleMessage(
       return { message: `${t('closesIn')} ${minutes} Min.`, icon: 'closing' };
     }
 
-    if (effectiveStatus === 'CLOSED') {
+    if (effectiveStatus === 'CLOSED' || effectiveStatus === 'UNKNOWN') {
       if (todaySchedule?.scheduleType === 'OPERATING' && todaySchedule.openingTime) {
         const opening = new Date(todaySchedule.openingTime);
         const diff = opening.getTime() - now.getTime();
@@ -60,14 +65,20 @@ export function getScheduleMessage(
                 minute: '2-digit',
                 ...tzOptions,
               });
+
+              // Check if it's "tomorrow" in the park's timezone
+              const todayInParkTz = now.toLocaleDateString('en-CA', tzOptions);
+              const openingInParkTz = opening.toLocaleDateString('en-CA', tzOptions);
+              const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
+
               if (hours > 0) {
                 return {
-                  message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
                   icon: 'opening',
                 };
               }
               return {
-                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
+                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
               };
             } else {
@@ -103,14 +114,20 @@ export function getScheduleMessage(
                 minute: '2-digit',
                 ...tzOptions,
               });
+
+              // Check if it's "tomorrow" in the park's timezone
+              const todayInParkTz = now.toLocaleDateString('en-CA', tzOptions);
+              const openingInParkTz = nextOpening.toLocaleDateString('en-CA', tzOptions);
+              const dayPrefix = todayInParkTz !== openingInParkTz ? `${tCommon('tomorrow')}, ` : '';
+
               if (hours > 0) {
                 return {
-                  message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
+                  message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
                   icon: 'opening',
                 };
               }
               return {
-                message: `${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
+                message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
               };
             } else {
@@ -146,7 +163,7 @@ export function getScheduleMessage(
               message: `${weekday} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
               icon: 'opening',
             };
-          } else {
+          } else if (hasOperatingSchedule) {
             const dateFormatted = nextOpening.toLocaleDateString(locale, {
               day: 'numeric',
               month: 'long',
@@ -155,14 +172,15 @@ export function getScheduleMessage(
             const weeks = Math.ceil(totalWeeks);
 
             return {
-              message: `${t('offseason')} (${t('opensOn')} ${dateFormatted} - ${tCommon('in')} ${weeks} ${t('week', { count: weeks })})`,
+              message: t('offseason'),
               icon: 'offseason',
+              offseasonDetails: ` (${t('opensOn')} ${dateFormatted} - ${tCommon('in')} ${weeks} ${t('week', { count: weeks })})`,
             };
           }
         }
       }
 
-      if (!nextSchedule || nextSchedule.scheduleType !== 'OPERATING') {
+      if (hasOperatingSchedule && (!nextSchedule || nextSchedule.scheduleType !== 'OPERATING')) {
         return { message: t('offseason'), icon: 'offseason' };
       }
     }

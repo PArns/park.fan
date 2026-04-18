@@ -32,7 +32,9 @@ export function FavoriteStar({
 
   // Initialize state from cookies
   useEffect(() => {
-    setIsFav(isFavorite(type, id));
+    setTimeout(() => {
+      setIsFav(isFavorite(type, id));
+    }, 0);
   }, [type, id]);
 
   // Listen for favorites-changed events

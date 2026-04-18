@@ -33,6 +33,7 @@ interface ParkCardNearbyProps {
   nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
   url: string;
+  hasOperatingSchedule?: boolean;
   /** Show a "Nearest open" badge (homepage focus). */
   highlightAsNearestOpen?: boolean;
 }
@@ -52,6 +53,7 @@ export function ParkCardNearby({
   nextSchedule,
   backgroundImage,
   url,
+  hasOperatingSchedule = true,
   highlightAsNearestOpen = false,
 }: ParkCardNearbyProps) {
   const t = useTranslations('nearby');
@@ -60,7 +62,8 @@ export function ParkCardNearby({
   const locale = useLocale();
 
   const isOpen = status === 'OPERATING';
-  const isInMaintenance = status !== 'OPERATING' && status !== 'CLOSED';
+  const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
+  const isInMaintenance = status !== 'OPERATING' && status !== 'CLOSED' && status !== 'UNKNOWN';
   const scheduleInfo = getScheduleMessage(
     todaySchedule,
     nextSchedule,
@@ -69,13 +72,14 @@ export function ParkCardNearby({
     isInMaintenance,
     locale,
     t,
-    tCommon
+    tCommon,
+    hasOperatingSchedule
   );
 
   return (
     <Link
       href={convertApiUrlToFrontendUrl(url)}
-      prefetch={status === 'OPERATING'} // Only prefetch open parks
+      prefetch={isOperatingOrUnknown} // Only prefetch open/unknown parks
       className="group h-full"
     >
       <article className="hover:border-primary/50 bg-card relative h-full overflow-hidden rounded-xl border py-4 transition-all duration-200 hover:scale-[1.02] hover:shadow-md md:py-6">
@@ -127,7 +131,7 @@ export function ParkCardNearby({
 
               <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
                 {/* Wait Time + Crowd Level (only for open parks) */}
-                {isOpen && analytics ? (
+                {isOperatingOrUnknown && analytics ? (
                   <div className="flex items-center gap-2.5 text-sm">
                     {analytics.avgWaitTime !== undefined && analytics.avgWaitTime > 0 && (
                       <WaitTimeBadge waitTime={analytics.avgWaitTime} size="sm" />
@@ -144,7 +148,7 @@ export function ParkCardNearby({
                 )}
 
                 {/* Attractions (only for open parks) */}
-                {isOpen ? (
+                {isOperatingOrUnknown ? (
                   <div className="flex items-center justify-between pt-0.5 text-sm">
                     <div className="text-muted-foreground flex items-center gap-1.5">
                       <TrendingUp className="h-4 w-4" />
@@ -176,7 +180,7 @@ export function ParkCardNearby({
                         <GlossaryTermLink termId="offseason" tooltipOnly>
                           {t('offseason')}
                         </GlossaryTermLink>
-                        {scheduleInfo.message.slice(t('offseason').length)}
+                        {scheduleInfo.offseasonDetails}
                       </>
                     ) : (
                       scheduleInfo.message

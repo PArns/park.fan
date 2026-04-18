@@ -46,7 +46,8 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
               nextSchedule={park.nextSchedule ?? undefined}
               backgroundImage={getParkBackgroundImage(park.slug)}
               url={park.url ?? ''}
-            />
+              hasOperatingSchedule={park.hasOperatingSchedule}
+            />{' '}
           </li>
         ))}
       </ul>

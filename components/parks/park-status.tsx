@@ -32,7 +32,7 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
     return (
       <div className={cn('flex items-center gap-2', className)}>
         {status && <ParkStatusBadge status={status} />}
-        {currentLoad && status === 'OPERATING' && (
+        {currentLoad && (status === 'OPERATING' || status === 'UNKNOWN') && (
           <CrowdLevelBadge level={currentLoad.crowdLevel} />
         )}
       </div>
@@ -45,7 +45,7 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
       <div className={cn('space-y-3', className)}>
         <div className="flex items-center gap-2">
           {status && <ParkStatusBadge status={status} />}
-          {currentLoad && status === 'OPERATING' && (
+          {currentLoad && (status === 'OPERATING' || status === 'UNKNOWN') && (
             <CrowdLevelBadge level={currentLoad.crowdLevel} />
           )}
         </div>
@@ -74,7 +74,7 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
     return (
       <div className={cn('flex flex-wrap items-center gap-4', className)}>
         {status && <ParkStatusBadge status={status} className="px-4 py-1 text-base" />}
-        {currentLoad && status === 'OPERATING' && (
+        {currentLoad && (status === 'OPERATING' || status === 'UNKNOWN') && (
           <CrowdLevelBadge level={currentLoad.crowdLevel} className="px-4 py-1 text-base" />
         )}
         {analytics?.statistics && (
@@ -102,7 +102,7 @@ export function ParkStatus({ park, variant, className }: ParkStatusProps) {
     return (
       <div className={cn('space-y-4', className)}>
         {/* Main Stats Grid */}
-        {status === 'OPERATING' && (stats || occupancy) && (
+        {(status === 'OPERATING' || status === 'UNKNOWN') && (stats || occupancy) && (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {/* Status & Crowd Card */}
             {crowdLevel && status && (

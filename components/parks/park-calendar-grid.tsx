@@ -13,7 +13,15 @@ import {
   subMonths,
 } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
+import {
+  ChevronLeft,
+  ChevronRight,
+  Ban,
+  PartyPopper,
+  Backpack,
+  Calendar,
+  Info,
+} from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
@@ -75,8 +83,31 @@ export function ParkCalendarGrid({
     enabled: true, // Always fetch for current month
   });
 
-  // Use fetched data if available, otherwise fall back to initial data
-  const calendarData = fetchedCalendarData || initialCalendarData;
+  // Today-only patch: fetches just today with a short staleTime (5 min) so the crowd level
+  // stays in sync with the park overview even when the full-month SSR cache (1h) is stale.
+  const todayStr = format(new Date(), 'yyyy-MM-dd');
+  const { data: todayData } = useCalendarData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from: todayStr,
+    to: todayStr,
+    staleTime: 5 * 60_000,
+  });
+
+  // Merge: start from fetched month data (or SSR fallback), then overlay today's fresh day.
+  const calendarData = useMemo(() => {
+    const base = fetchedCalendarData || initialCalendarData;
+    const todayDay = todayData?.days?.[0];
+    if (!todayDay) return base;
+    return {
+      ...base,
+      days: base.days.map((d) =>
+        d.date === todayStr ? { ...d, crowdLevel: todayDay.crowdLevel } : d
+      ),
+    };
+  }, [fetchedCalendarData, initialCalendarData, todayData, todayStr]);
 
   // Read month from URL hash on mount (e.g., #calendar-2026-01)
   useEffect(() => {
@@ -86,7 +117,9 @@ export function ParkCalendarGrid({
       const [, year, month] = match;
       const parsedDate = new Date(parseInt(year), parseInt(month) - 1, 1);
       if (!isNaN(parsedDate.getTime())) {
-        setCurrentMonth(parsedDate);
+        setTimeout(() => {
+          setCurrentMonth(parsedDate);
+        }, 0);
         // React Query will automatically fetch when currentMonth changes
       }
     } else {
@@ -174,13 +207,13 @@ export function ParkCalendarGrid({
     return map;
   }, [calendarData]);
 
-  // Compute best-day set — lowest crowd level among OPERATING days without school/public holidays.
+  // Compute best-day set — lowest crowd level among OPERATING/UNKNOWN days without school/public holidays.
   // Falls back to backend recommendation field once the API provides it.
   const bestDayDates = useMemo(() => {
     const crowdOrder = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme'];
     const candidates = Array.from(calendarMap.values()).filter(
       (d) =>
-        d.status === 'OPERATING' &&
+        (d.status === 'OPERATING' || d.status === 'UNKNOWN') &&
         !d.isSchoolVacation &&
         !d.isSchoolHoliday &&
         !d.isHoliday &&
@@ -236,6 +269,18 @@ export function ParkCalendarGrid({
             <p className="text-sm text-red-600 dark:text-red-400">
               {tCommon('failedToLoadCalendar')}
             </p>
+          </div>
+        )}
+
+        {/* Disclaimer for parks without official schedule */}
+        {!isLoading && calendarData?.meta?.hasOperatingSchedule === false && (
+          <div className="rounded-lg border border-blue-200 bg-blue-50 p-3 dark:border-blue-900/30 dark:bg-blue-950/20">
+            <div className="flex items-start gap-2 text-blue-700 dark:text-blue-300">
+              <Info className="mt-0.5 h-4 w-4 shrink-0" />
+              <p className="text-sm">
+                {t('calendarView.details.schedule.noOfficialScheduleDisclaimer')}
+              </p>
+            </div>
           </div>
         )}
 

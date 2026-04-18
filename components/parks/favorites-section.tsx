@@ -174,6 +174,7 @@ export function FavoritesSection() {
                         nextSchedule={park.nextSchedule}
                         backgroundImage={park.backgroundImage}
                         url={park.url}
+                        hasOperatingSchedule={park.hasOperatingSchedule}
                       />
                     ))}
                   </div>

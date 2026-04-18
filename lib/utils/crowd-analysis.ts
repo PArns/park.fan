@@ -36,7 +36,7 @@ export function analyzeBestDays(days: CalendarDay[]): BestDaysAnalysis {
   const futureDays = days.filter(
     (d) =>
       d.date >= today &&
-      d.status === 'OPERATING' &&
+      (d.status === 'OPERATING' || d.status === 'UNKNOWN') &&
       d.crowdLevel &&
       d.crowdLevel !== 'closed' &&
       CROWD_SCORE[d.crowdLevel] !== undefined

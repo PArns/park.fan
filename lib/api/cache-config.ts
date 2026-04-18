@@ -27,7 +27,7 @@ export const CACHE_TTL = {
   waitTimes: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
 
   // Static data (still using revalidate)
-  calendar: 3600, // /v1/parks/:slug/calendar - API: 300s (past) / 3600s (future)
+  calendar: 3600, // /v1/parks/:slug/calendar - API: 300s (past/today) / 1800s (future); today crowdLevel is patched client-side
   weather: 3600, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s
   holidays: 86400, // Holiday data - API: 86400s

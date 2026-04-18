@@ -346,14 +346,17 @@
       "today": "Today",
       "details": {
         "schedule": {
-          "title": "Park Schedule",
-          "closed": "Park is Closed",
+          "title": "Operating Hours",
+          "closed": "Park closed",
           "scheduleNotYetAvailable": "Opening hours not yet available",
+          "noOfficialScheduleDisclaimer": "Official hours aren't available for this park. The times shown are estimates calculated from actual park activity.",
+          "estimatedHours": "Estimated hours",
+          "tba": "TBA",
           "open": "Open",
-          "openingHours": "Operating Hours",
-          "ticketPrice": "Ticket Price: {price}",
+          "openingHours": "Operating hours",
+          "ticketPrice": "Ticket price: {price}",
           "holiday": "Holiday: {name}",
-          "bridgeDay": "Likely Bridge Day"
+          "bridgeDay": "Bridge day"
         },
         "weather": {
           "title": "Weather Forecast",

@@ -9,6 +9,7 @@ interface UseCalendarDataParams {
   from: string; // YYYY-MM-DD
   to: string; // YYYY-MM-DD
   enabled?: boolean;
+  staleTime?: number; // ms; defaults to 5 min
 }
 
 /**
@@ -25,6 +26,7 @@ export function useCalendarData({
   from,
   to,
   enabled = true,
+  staleTime = 5 * 60_000,
 }: UseCalendarDataParams) {
   return useQuery<IntegratedCalendarResponse>({
     queryKey: ['calendar', continent, country, city, parkSlug, from, to],
@@ -40,8 +42,8 @@ export function useCalendarData({
       return response.json();
     },
     enabled,
-    staleTime: 5 * 60_000, // 5 min cache
-    gcTime: 10 * 60_000, // 10 min garbage collection
+    staleTime,
+    gcTime: 10 * 60_000,
     retry: 2,
   });
 }

@@ -8,8 +8,7 @@
  */
 export const ATTRACTION_IMAGES: Record<string, string> = {
   'attractiepark-toverland/fenix': '/images/parks/attractiepark-toverland/fenix.jpg',
-  'attractiepark-toverland/maximus-blitzbahn':
-    '/images/parks/attractiepark-toverland/maximus-blitzbahn.jpeg',
+  'attractiepark-toverland/maximus-blitzbahn': '/images/parks/attractiepark-toverland/maximus-blitzbahn.jpeg',
   'attractiepark-toverland/troy': '/images/parks/attractiepark-toverland/troy.jpg',
   'attractiepark-toverland/villa-fiasko': '/images/parks/attractiepark-toverland/villa-fiasko.jpg',
   'bobbejaanland/fury': '/images/parks/bobbejaanland/fury.jpg',
@@ -29,23 +28,17 @@ export const ATTRACTION_IMAGES: Record<string, string> = {
   'europa-park/castello-dei-medici': '/images/parks/europa-park/castello-dei-medici.jpg',
   'europa-park/eurosat-cancan-coaster': '/images/parks/europa-park/eurosat-cancan-coaster.jpg',
   'europa-park/eurosat-coastiality': '/images/parks/europa-park/eurosat-coastiality.jpg',
-  'europa-park/madame-freudenreich-curiosites':
-    '/images/parks/europa-park/madame-freudenreich-curiosites.jpg',
+  'europa-park/madame-freudenreich-curiosites': '/images/parks/europa-park/madame-freudenreich-curiosites.jpg',
   'europa-park/matterhorn-blitz': '/images/parks/europa-park/matterhorn-blitz.jpg',
   'europa-park/pirates-in-batavia': '/images/parks/europa-park/pirates-in-batavia.jpg',
   'europa-park/silver-star': '/images/parks/europa-park/silver-star.jpg',
-  'europa-park/voltron-nevera-powered-by-rimac':
-    '/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg',
-  'europa-park/water-rollercoaster-poseidon':
-    '/images/parks/europa-park/water-rollercoaster-poseidon.jpg',
+  'europa-park/voltron-nevera-powered-by-rimac': '/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg',
+  'europa-park/water-rollercoaster-poseidon': '/images/parks/europa-park/water-rollercoaster-poseidon.jpg',
   'europa-park/wodan-timburcoaster': '/images/parks/europa-park/wodan-timburcoaster.jpg',
-  'movie-park-germany/area-51-top-secret':
-    '/images/parks/movie-park-germany/area-51-top-secret.jpg',
+  'movie-park-germany/area-51-top-secret': '/images/parks/movie-park-germany/area-51-top-secret.jpg',
   'movie-park-germany/iron-claw': '/images/parks/movie-park-germany/iron-claw.jpg',
-  'movie-park-germany/movie-park-studio-tour':
-    '/images/parks/movie-park-germany/movie-park-studio-tour.jpg',
-  'movie-park-germany/star-trek-operation-enterprise':
-    '/images/parks/movie-park-germany/star-trek-operation-enterprise.jpg',
+  'movie-park-germany/movie-park-studio-tour': '/images/parks/movie-park-germany/movie-park-studio-tour.jpg',
+  'movie-park-germany/star-trek-operation-enterprise': '/images/parks/movie-park-germany/star-trek-operation-enterprise.jpg',
   'phantasialand/black-mamba': '/images/parks/phantasialand/black-mamba.jpg',
   'phantasialand/chiapas-die-wasserbahn': '/images/parks/phantasialand/chiapas-die-wasserbahn.jpg',
   'phantasialand/fly': '/images/parks/phantasialand/fly.jpg',

@@ -169,7 +169,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
       includeHourly: 'none',
     }).catch(
       (): IntegratedCalendarResponse => ({
-        meta: { slug: parkSlug, timezone: park.timezone },
+        meta: {
+          slug: parkSlug,
+          timezone: park.timezone,
+          hasOperatingSchedule: park.hasOperatingSchedule,
+        },
         days: [],
       })
     ),
@@ -289,6 +293,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               todaySchedule={todaySchedule}
               nextSchedule={park.nextSchedule}
               status={park.status}
+              hasOperatingSchedule={park.hasOperatingSchedule}
               className="border-primary/10"
             />
 

@@ -1,7 +1,16 @@
 'use client';
 
 import { createElement, memo } from 'react';
-import { PartyPopper, Calendar, Backpack, Ban, Ticket, Clock, HelpCircle } from 'lucide-react';
+import {
+  PartyPopper,
+  Calendar,
+  Backpack,
+  Ban,
+  Ticket,
+  Clock,
+  HelpCircle,
+  Info,
+} from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
@@ -181,7 +190,7 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
       </div>
 
       {/* Content */}
-      {day.status === 'OPERATING' ? (
+      {day.status === 'OPERATING' || day.status === 'UNKNOWN' ? (
         <div className="flex flex-1 flex-col gap-2">
           {/* Crowd Level Badge */}
           {day.crowdLevel && day.crowdLevel !== 'closed' && (
@@ -194,7 +203,7 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
           )}
 
           {/* Opening Hours */}
-          {day.hours && (
+          {day.status === 'OPERATING' && day.hours ? (
             <div className="text-muted-foreground flex flex-col items-center gap-0.5 text-[10px]">
               <div className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
@@ -202,12 +211,19 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
                   {format(parseISO(day.hours.openingTime), 'HH:mm')} -{' '}
                   {format(parseISO(day.hours.closingTime), 'HH:mm')}
                 </span>
+                {(day.isEstimated || day.hours.isInferred) && (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Info className="text-muted-foreground/60 h-2.5 w-2.5 cursor-help" />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{t('calendarView.details.schedule.estimatedHours')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                )}
               </div>
-              {day.hours.isInferred && (
-                <span className="text-muted-foreground/70 text-[9px]">(Est.)</span>
-              )}
             </div>
-          )}
+          ) : null}
 
           {/* Weather */}
           {day.weather && (
@@ -250,21 +266,12 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
             </div>
           )}
         </div>
-      ) : day.status === 'CLOSED' ? (
+      ) : (
         <div className="flex flex-1 flex-col items-center justify-center p-2 text-center">
           <div className="flex flex-col items-center gap-1">
             <Ban className="h-4 w-4 text-red-500 opacity-50" />
             <span className="text-muted-foreground text-[10px] font-medium text-red-500/80">
               {tCommon('closed')}
-            </span>
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-1 flex-col items-center justify-center p-2 text-center">
-          <div className="flex flex-col items-center gap-1">
-            <HelpCircle className="h-4 w-4 text-gray-500 opacity-70 dark:text-gray-400" />
-            <span className="text-[10px] font-medium text-gray-500 dark:text-gray-400">
-              {t('calendarView.details.schedule.scheduleNotYetAvailable')}
             </span>
           </div>
         </div>

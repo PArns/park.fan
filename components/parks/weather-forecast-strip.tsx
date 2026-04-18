@@ -48,13 +48,17 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
   }, [forecast]);
 
   const validForecast = forecast.filter(
-    (day) => !isNaN(parseFloat(day.temperatureMax)) && !isNaN(parseFloat(day.temperatureMin)),
+    (day) => !isNaN(parseFloat(day.temperatureMax)) && !isNaN(parseFloat(day.temperatureMin))
   );
 
   if (validForecast.length === 0) return null;
 
   const cellMinWidth =
-    validForecast.length <= 7 ? 'min-w-16' : validForecast.length <= 12 ? 'min-w-[72px]' : 'min-w-20';
+    validForecast.length <= 7
+      ? 'min-w-16'
+      : validForecast.length <= 12
+        ? 'min-w-[72px]'
+        : 'min-w-20';
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollRef.current) {

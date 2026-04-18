@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Clock, Calendar, DoorOpen, Snowflake } from 'lucide-react';
+import { Clock, Calendar, DoorOpen, Snowflake, Info } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import type { ParkStatus } from '@/lib/api/types';
 import { LocalTimeRange } from '@/components/ui/local-time';
@@ -16,6 +17,7 @@ interface ParkTimeInfoProps {
   todaySchedule?: ScheduleItem | null;
   nextSchedule?: NextScheduleItem | null;
   status?: ParkStatus | null;
+  hasOperatingSchedule?: boolean;
   className?: string;
 }
 
@@ -30,6 +32,7 @@ export function ParkTimeInfo({
   todaySchedule,
   nextSchedule,
   status,
+  hasOperatingSchedule = true,
   className,
 }: ParkTimeInfoProps) {
   const t = useTranslations('parks');
@@ -146,13 +149,14 @@ export function ParkTimeInfo({
   // Format opening/closing times
 
   // Don't show the card if park is not operating today or no schedule data,
-  // UNLESS we have a nextSchedule to show (OffSeason case)
+  // UNLESS we have a nextSchedule to show (OffSeason case) or we are in UNKNOWN state
   const isOperatingToday = todaySchedule && todaySchedule.scheduleType === 'OPERATING';
+  const isUnknown = status === 'UNKNOWN' || (!isOperatingToday && !hasOperatingSchedule);
 
-  if (!isOperatingToday) {
+  if (!isOperatingToday && !isUnknown) {
     // API may send nextSchedule with only openingTime/closingTime (no date)
     const nextOpeningRaw = nextSchedule?.date ?? nextSchedule?.openingTime;
-    if (!nextOpeningRaw) return null;
+    if (!nextOpeningRaw || !hasOperatingSchedule) return null;
 
     const nextOpening = new Date(nextOpeningRaw);
     if (Number.isNaN(nextOpening.getTime())) return null;
@@ -166,15 +170,6 @@ export function ParkTimeInfo({
       month: 'long',
       timeZone: timezone,
     });
-    // But the component uses `toLocaleTimeString` later with hardcoded de-DE in `formatCurrentTime`.
-    // We should arguably use the user's locale.
-    // `ParkTimeInfo` doesn't currently receive locale.
-    // `park-card-nearby` received `locale`.
-    // I should probably stick to `t` translation values mostly.
-
-    // Wait, `ParkTimeInfo` uses `useTranslations`.
-
-    // Let's rely on `nextSchedule` display.
 
     // If > 7 days – same icon/logic as nearby cards (offseason)
     if (totalWeeks >= 1) {
@@ -232,40 +227,53 @@ export function ParkTimeInfo({
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />
-          {t('todaySchedule')}
+          {isUnknown ? t('schedule') : t('todaySchedule')}
           {status && <ParkStatusBadge status={status} className="ml-auto" />}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {/* Opening Hours with Countdown FIRST */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-muted-foreground text-sm font-medium">{t('openingHours')}</span>
-            {todaySchedule.openingTime && todaySchedule.closingTime ? (
-              <span className="text-lg font-semibold tabular-nums">
-                <LocalTimeRange
-                  start={todaySchedule.openingTime}
-                  end={todaySchedule.closingTime}
-                  timeZone={timezone}
-                />
-              </span>
-            ) : (
-              <span className="text-lg font-semibold tabular-nums">—</span>
+        {!isUnknown && (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-muted-foreground text-sm font-medium">{t('openingHours')}</span>
+              {todaySchedule?.openingTime && todaySchedule?.closingTime ? (
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg font-semibold tabular-nums">
+                    <LocalTimeRange
+                      start={todaySchedule.openingTime}
+                      end={todaySchedule.closingTime}
+                      timeZone={timezone}
+                    />
+                  </span>
+                  {todaySchedule.isInferred && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Info className="text-muted-foreground/60 h-3.5 w-3.5 cursor-help" />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>{tNearby('estimatedHours')}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  )}
+                </div>
+              ) : (
+                <span className="text-lg font-semibold tabular-nums">—</span>
+              )}
+            </div>
+            {/* Inline Countdown Badge */}
+            {timeUntil && (
+              <div className="flex items-center justify-end overflow-hidden">
+                <Badge
+                  variant={timeUntil.variant === 'opening' ? 'default' : 'secondary'}
+                  className="max-w-full text-xs font-medium"
+                >
+                  <span className="min-w-0 truncate">{timeUntil.message}</span>
+                </Badge>
+              </div>
             )}
           </div>
-
-          {/* Inline Countdown Badge */}
-          {timeUntil && (
-            <div className="flex items-center justify-end overflow-hidden">
-              <Badge
-                variant={timeUntil.variant === 'opening' ? 'default' : 'secondary'}
-                className="max-w-full text-xs font-medium"
-              >
-                <span className="min-w-0 truncate">{timeUntil.message}</span>
-              </Badge>
-            </div>
-          )}
-        </div>
+        )}
 
         {/* Current Time - Below opening hours */}
         <div className="flex items-center justify-between">
@@ -283,10 +291,10 @@ export function ParkTimeInfo({
         </div>
 
         {/* Holiday/Bridge Day/School Vacation Badges */}
-        {(todaySchedule.isHoliday ||
-          todaySchedule.isBridgeDay ||
-          todaySchedule.isSchoolVacation ||
-          todaySchedule.influencingHolidays) &&
+        {(todaySchedule?.isHoliday ||
+          todaySchedule?.isBridgeDay ||
+          todaySchedule?.isSchoolVacation ||
+          todaySchedule?.influencingHolidays) &&
           (() => {
             const shownNames = new Set<string>();
             const publicHolidayName = todaySchedule.isHoliday ? todaySchedule.holidayName : null;

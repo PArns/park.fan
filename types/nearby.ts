@@ -38,6 +38,7 @@ export interface NearbyParkInfo {
     operatingAttractions?: number;
   };
   timezone: string;
+  hasOperatingSchedule: boolean;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
@@ -66,6 +67,7 @@ export interface ParkWithDistance {
   };
   url: string;
   timezone: string;
+  hasOperatingSchedule: boolean;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   backgroundImage?: string | null;
