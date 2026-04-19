@@ -45,12 +45,12 @@ export function ParkStatsCrowdCard({
             <span className="w-24 min-w-0 shrink-0 font-medium capitalize">{row.label}</span>
             <CrowdLevelBadge level={row.crowdLevel} className="text-xs" />
             <div className="ml-auto flex shrink-0 items-center gap-1.5">
-              <span className="text-muted-foreground/70 flex items-center gap-1 text-xs tabular-nums">
+              <span className="text-muted-foreground/70 hidden items-center gap-1 text-xs tabular-nums sm:flex">
                 <Clock className="h-3 w-3 shrink-0" aria-hidden="true" />
                 <span className="text-muted-foreground/50">{labelP50}</span>
                 <span className="text-foreground/70 font-medium">{row.p50} min</span>
               </span>
-              <span className="text-border/60 text-xs">/</span>
+              <span className="text-border/60 hidden text-xs sm:inline">/</span>
               <span className="text-muted-foreground/70 flex items-center gap-1 text-xs tabular-nums">
                 <TrendingUp className="h-3 w-3 shrink-0" aria-hidden="true" />
                 <span className="text-muted-foreground/50">{labelP90}</span>

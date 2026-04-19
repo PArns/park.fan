@@ -60,7 +60,7 @@ Reminders and context for AI or human sessions working on the codebase.
     - Umbenannte Parks → `redirects()` mit `/:locale/parks/…` und `/parks/…` (ohne Locale, Middleware übernimmt Locale-Erkennung)
     - Neue Locale-Segmente → zu `localeSegments` in BEIDEN Blöcken (`redirects` + `rewrites`) hinzufügen
     - Kein Hardcoding von Locales in Redirect-Destinations (z.B. `/en/parks/…`); stattdessen ohne Locale-Prefix damit next-intl die Locale per Accept-Language erkennt
-    → [Routing & URLs](../architecture/routing-and-urls.md)
+      → [Routing & URLs](../architecture/routing-and-urls.md)
 
 ---
 
