@@ -19,6 +19,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate:translations": "node scripts/validate-translations.js",
+    "test:calendar": "node --experimental-strip-types scripts/test-calendar-utils.mjs",
     "crawl:translations": "node scripts/crawl-translations.js",
     "crawl:translations:live": "node scripts/crawl-translations.js --live",
     "test:translations": "npm run validate:translations && npm run build && npm run crawl:translations",
