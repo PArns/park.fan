@@ -1,5 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import type { AttractionHistoryDay, ForecastItem, ScheduleItem } from '@/lib/api/types';
+import type {
+  AttractionHistoryDay,
+  ForecastItem,
+  ScheduleItem,
+  BestVisitSlot,
+} from '@/lib/api/types';
 import { DailyWaitTimeChart, type DailyWaitTimeChartData } from './daily-wait-time-chart';
 
 interface DailyWaitTimeChartServerProps {
@@ -7,6 +12,7 @@ interface DailyWaitTimeChartServerProps {
   hourlyForecast?: ForecastItem[];
   timezone: string;
   schedule?: ScheduleItem[];
+  bestVisitTimes?: BestVisitSlot[] | null;
 }
 
 /** Returns the time string (HH:mm) in the given IANA timezone from an ISO string, rounded to 15m. */
@@ -34,6 +40,7 @@ export async function DailyWaitTimeChartServer({
   hourlyForecast,
   timezone,
   schedule,
+  bestVisitTimes,
 }: DailyWaitTimeChartServerProps) {
   const t = await getTranslations('attractions.todayChart');
 
@@ -116,6 +123,13 @@ export async function DailyWaitTimeChartServer({
     startTime = historyKeys[0];
   }
 
+  // Track last real data point to trim trailing empty slots later
+  const lastHistoryTime = historyKeys.length > 0 ? historyKeys[historyKeys.length - 1] : null;
+  const forecastKeys = [...forecastMap.keys()].sort();
+  const lastForecastTime = forecastKeys.length > 0 ? forecastKeys[forecastKeys.length - 1] : null;
+  const lastActualTime =
+    [lastHistoryTime, lastForecastTime].filter((t): t is string => t !== null).sort().pop() ?? null;
+
   // Build 15-minute slots
   const slots: DailyWaitTimeChartData['slots'] = [];
   const [startH, startM] = startTime.split(':').map(Number);
@@ -139,20 +153,19 @@ export async function DailyWaitTimeChartServer({
     }
   }
 
-  // Linear interpolation for null history values between two known points.
-  // Handles gaps where no rides were polled in a 15-min window.
+  // Trim trailing slots past last actual data point (schedule may extend beyond predictions)
+  if (lastActualTime) {
+    while (slots.length > 0 && slots[slots.length - 1].time > lastActualTime) {
+      slots.pop();
+    }
+  }
+
+  // Fill null history slots using carry-forward from last known value.
+  // This avoids fake sloping lines between two real data points.
   for (let i = 0; i < slots.length; i++) {
     if (slots[i].historyValue !== null) continue;
-    let prev = i - 1;
-    while (prev >= 0 && slots[prev].historyValue === null) prev--;
-    let next = i + 1;
-    while (next < slots.length && slots[next].historyValue === null) next++;
-    if (prev >= 0 && next < slots.length) {
-      const a = slots[prev].historyValue!;
-      const b = slots[next].historyValue!;
-      slots[i].historyValue = Math.round(a + (b - a) * ((i - prev) / (next - prev)));
-    } else if (prev >= 0) {
-      // Trailing slots after last known value: carry-forward
+    const prev = i - 1;
+    if (prev >= 0 && slots[prev].historyValue !== null) {
       slots[i].historyValue = slots[prev].historyValue;
     }
     // Leading nulls (before first data point) remain null — park not open yet
@@ -161,14 +174,27 @@ export async function DailyWaitTimeChartServer({
   // Skip render if there's no data at all
   if (slots.every((s) => s.historyValue === null && s.forecastValue === null)) return null;
 
+  // Convert bestVisitTimes ISO timestamps → "HH:mm" in park timezone
+  const bestSlots = bestVisitTimes
+    ?.map((s) => ({
+      time: getTimeSlotInTimezone(s.time, timezone),
+      rating: s.rating,
+    }))
+    .filter((s) => s.time >= startTime && s.time <= endTime);
+
   const data: DailyWaitTimeChartData = {
     slots,
     timezone,
+    bestSlots: bestSlots?.length ? bestSlots : undefined,
     translations: {
       title: t('title'),
       now: t('now'),
       bestSlots: t('bestSlots', { hours: '{hours}' }),
+      bestSlotsGood: t('bestSlotsGood', { hours: '{hours}' }),
+      timeSuffix: t('timeSuffix'),
       min: t('min'),
+      ratingOptimal: t('ratingOptimal'),
+      ratingGood: t('ratingGood'),
     },
   };
 

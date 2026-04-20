@@ -4,6 +4,12 @@
 
 export type ParkStatus = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type AttractionStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
+
+export interface BestVisitSlot {
+  time: string; // ISO 8601
+  predictedWaitTime: number;
+  rating: 'optimal' | 'good';
+}
 // Queue types moved to QueueDataItem definition area
 export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
@@ -289,6 +295,7 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  bestVisitTimes?: BestVisitSlot[] | null;
   // Only present on attraction detail page (merged from dedicated endpoint)
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
@@ -397,6 +404,7 @@ export interface AttractionResponse {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  bestVisitTimes?: BestVisitSlot[] | null;
 }
 
 export interface AttractionHistoryDay {

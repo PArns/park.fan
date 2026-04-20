@@ -484,6 +484,7 @@
     "otherQueues": "Altre opzioni di coda",
     "returnTime": "Ritorno",
     "peak": "Picco di oggi: {time} min",
+    "bestVisit": "Migliore: {time}",
     "return": "Ritorno: {start} - {end}",
     "crowdLevels": {
       "very_low": "Molto bassa",
@@ -541,6 +542,10 @@
       "title": "Tempi di attesa oggi",
       "now": "Ora",
       "bestSlots": "Orari migliori: {hours}",
+      "bestSlotsGood": "Buoni orari: {hours}",
+      "timeSuffix": "",
+      "ratingOptimal": "Consigliato",
+      "ratingGood": "Buon orario",
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."

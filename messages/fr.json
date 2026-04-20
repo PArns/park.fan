@@ -484,6 +484,7 @@
     "otherQueues": "Autres Options de File",
     "returnTime": "Retour",
     "peak": "Pic Aujourd'hui: {time} min",
+    "bestVisit": "Meilleur: {time}",
     "return": "Retour: {start} - {end}",
     "crowdLevels": {
       "very_low": "Très Faible",
@@ -545,6 +546,10 @@
       "title": "Temps d'attente aujourd'hui",
       "now": "Maintenant",
       "bestSlots": "Meilleurs créneaux : {hours}",
+      "bestSlotsGood": "Bons créneaux : {hours}",
+      "timeSuffix": "h",
+      "ratingOptimal": "Recommandé",
+      "ratingGood": "Bon créneau",
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."

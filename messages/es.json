@@ -484,6 +484,7 @@
     "otherQueues": "Otras Opciones de Cola",
     "returnTime": "Regreso",
     "peak": "Pico Hoy: {time} min",
+    "bestVisit": "Mejor: {time}",
     "return": "Regreso: {start} - {end}",
     "crowdLevels": {
       "very_low": "Muy Baja",
@@ -545,6 +546,10 @@
       "title": "Tiempos de espera hoy",
       "now": "Ahora",
       "bestSlots": "Mejores horarios: {hours}",
+      "bestSlotsGood": "Buenos horarios: {hours}",
+      "timeSuffix": "h",
+      "ratingOptimal": "Recomendado",
+      "ratingGood": "Buen momento",
       "min": "min.",
       "todayMin": "Mín.",
       "todayMax": "Máx."

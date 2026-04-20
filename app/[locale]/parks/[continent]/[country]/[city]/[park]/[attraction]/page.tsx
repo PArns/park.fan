@@ -235,6 +235,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         hourlyForecast: attractionData?.hourlyForecast,
         predictionAccuracy: attractionData?.predictionAccuracy,
         statistics: attractionData?.statistics || parkAttraction.statistics,
+        bestVisitTimes: attractionData?.bestVisitTimes ?? parkAttraction.bestVisitTimes,
       }
     : null;
 
@@ -248,7 +249,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const isParkClosed = park.status !== 'OPERATING';
   const status = isParkClosed ? 'CLOSED' : mainQueue?.status || attraction.status || 'CLOSED';
 
-  // Calculate min/max from history if API doesn't provide them
+  // Calculate min/max from raw history (same source as sparkline)
   const history = attraction.statistics?.history;
   const calculatedMinWaitToday = history?.length
     ? Math.min(...history.map((h) => h.waitTime))
@@ -447,6 +448,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 hourlyForecast={attraction.hourlyForecast}
                 timezone={park.timezone}
                 schedule={attraction.schedule}
+                bestVisitTimes={attraction.bestVisitTimes}
               />
             </section>
           )}

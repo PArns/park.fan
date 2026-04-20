@@ -916,6 +916,7 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
       favorited: true,
       spark: [15, 22, 28, 38, 47, 55],
       extra: 'Single Rider',
+      optimalTime: '16:30',
     },
     {
       name: 'Black Mamba',
@@ -924,6 +925,7 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
       crowd: 'low',
       favorited: true,
       spark: [40, 33, 26, 20, 15, 12],
+      optimalTime: '17:45',
     },
     {
       name: 'Klugheim',
@@ -937,7 +939,7 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
 
   return (
     <div className="not-prose grid gap-3 sm:grid-cols-3">
-      {cards.map(({ name, wait, trend, crowd, favorited, spark, extra }) => (
+      {cards.map(({ name, wait, trend, crowd, favorited, spark, extra, optimalTime }) => (
         <Card key={name} className="relative overflow-hidden">
           {/* Favorite star — top right, matching real attraction card */}
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
@@ -964,6 +966,14 @@ function MockAttractionCards({ locale }: { locale: MockLocale }) {
                       label={extra}
                       icon={User}
                     />
+                  </div>
+                )}
+                {optimalTime && (
+                  <div className="mt-1 flex items-center gap-1 text-xs text-amber-400">
+                    <Star className="h-3 w-3 shrink-0 fill-current" />
+                    <span className="font-medium">
+                      {isDE ? `Beste Zeit: ${optimalTime}` : `Best: ${optimalTime}`}
+                    </span>
                   </div>
                 )}
               </div>

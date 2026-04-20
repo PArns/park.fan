@@ -12,7 +12,7 @@ interface WaitTimeInfoCardProps {
   minWaitToday?: number | null;
   /** Today's maximum observed wait time. Falls back to waitTime if not yet set. */
   maxWaitToday?: number | null;
-  /** Sparkline history entries */
+  /** Raw wait time history for today — precise step jumps */
   sparklineHistory?: { timestamp: string; waitTime: number }[];
   /** Icon and label to show when not operating */
   statusIcon?: LucideIcon;

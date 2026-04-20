@@ -484,6 +484,7 @@
     "otherQueues": "Weitere Warteschlangen",
     "returnTime": "Rückkehr",
     "peak": "Tageshoch: {time} min",
+    "bestVisit": "Beste Zeit: {time}",
     "return": "Rückkehr: {start} - {end}",
     "crowdLevels": {
       "very_low": "Sehr niedrig",
@@ -545,6 +546,10 @@
       "title": "Wartezeiten heute",
       "now": "Jetzt",
       "bestSlots": "Beste Zeiten: {hours}",
+      "bestSlotsGood": "Gute Zeiten: {hours}",
+      "timeSuffix": " Uhr",
+      "ratingOptimal": "Empfohlen",
+      "ratingGood": "Gute Zeit",
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."

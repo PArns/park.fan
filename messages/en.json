@@ -484,6 +484,7 @@
     "otherQueues": "Other Queue Options",
     "returnTime": "Return",
     "peak": "Today's Peak: {time} min",
+    "bestVisit": "Best: {time}",
     "return": "Return: {start} - {end}",
     "crowdLevels": {
       "very_low": "Very Low",
@@ -545,6 +546,10 @@
       "title": "Today's Wait Times",
       "now": "Now",
       "bestSlots": "Best times: {hours}",
+      "bestSlotsGood": "Good times: {hours}",
+      "timeSuffix": "",
+      "ratingOptimal": "Recommended",
+      "ratingGood": "Good time",
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."

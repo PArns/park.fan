@@ -1,10 +1,10 @@
 import { Link } from '@/i18n/navigation';
-import { Clock, Crown } from 'lucide-react';
+import { Clock, Crown, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { DistanceBadge } from '@/components/common/distance-badge';
-import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
+import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { useTranslations } from 'next-intl';
 import { stripNewPrefix } from '@/lib/utils';
@@ -67,6 +67,21 @@ function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string 
     return attraction.currentLoad.crowdLevel;
   }
   return undefined;
+}
+
+function formatBestVisitTime(isoStr: string, timezone?: string): string {
+  return new Intl.DateTimeFormat('en', {
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    hourCycle: 'h23',
+    timeZone: timezone ?? 'UTC',
+  }).format(new Date(isoStr));
+}
+
+function getOptimalSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisitSlot | null {
+  if (!('bestVisitTimes' in attraction) || !attraction.bestVisitTimes) return null;
+  return attraction.bestVisitTimes.find((s) => s.rating === 'optimal') ?? null;
 }
 
 function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
@@ -220,6 +235,20 @@ export function AttractionCard({
                     {t('peak', { time: attraction.statistics.peakWaitToday })}
                   </div>
                 )}
+
+              {/* Best visit time — only for open rides */}
+              {status === 'OPERATING' &&
+                (() => {
+                  const slot = getOptimalSlot(attraction);
+                  if (!slot) return null;
+                  const time = formatBestVisitTime(slot.time, effectiveTimezone);
+                  return (
+                    <div className="mt-1 flex items-center gap-1 text-xs text-emerald-700 dark:text-amber-400">
+                      <Star className="h-3 w-3 shrink-0 fill-current" />
+                      <span className="font-medium">{t('bestVisit', { time })}</span>
+                    </div>
+                  );
+                })()}
             </div>
 
             <div className="flex flex-col items-end gap-2">

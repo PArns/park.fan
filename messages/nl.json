@@ -484,6 +484,7 @@
     "otherQueues": "Andere Wachtrij Opties",
     "returnTime": "Terug",
     "peak": "Piek Vandaag: {time} min",
+    "bestVisit": "Beste tijd: {time}",
     "return": "Terug: {start} - {end}",
     "crowdLevels": {
       "very_low": "Zeer Laag",
@@ -545,6 +546,10 @@
       "title": "Wachttijden vandaag",
       "now": "Nu",
       "bestSlots": "Beste tijden: {hours}",
+      "bestSlotsGood": "Goede tijden: {hours}",
+      "timeSuffix": " uur",
+      "ratingOptimal": "Aanbevolen",
+      "ratingGood": "Goed moment",
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."

@@ -185,6 +185,14 @@ const show3HAhead = new Date(NOW_MS + 10800000).toISOString();
 const showYesterday = new Date(NOW_MS - 86400000 + 3600000).toISOString();
 const returnStart = new Date(NOW_MS + 3600000).toISOString();
 const returnEnd = new Date(NOW_MS + 5400000).toISOString();
+// Best visit mock: fixed times within operating hours (10–18), 15-min slots
+const _todayAt = (h: number, m: number) => {
+  const d = new Date(NOW_MS);
+  d.setUTCHours(h, m, 0, 0);
+  return d.toISOString();
+};
+const bestVisitOptimal = _todayAt(14, 15);
+const bestVisitGood = _todayAt(16, 30);
 
 const MOCK_PARK = {
   id: 'phantasialand',
@@ -269,6 +277,10 @@ const MOCK_ATTRACTION_OPERATING = {
     peakWaitTimestamp: null,
     history: SPARKLINE_HISTORY,
   },
+  bestVisitTimes: [
+    { time: bestVisitOptimal, predictedWaitTime: 15, rating: 'optimal' as const },
+    { time: bestVisitGood, predictedWaitTime: 20, rating: 'good' as const },
+  ],
 } as unknown as ParkAttraction;
 
 const MOCK_ATTRACTION_VRT = {
@@ -358,6 +370,7 @@ const MOCK_ATTRACTION_TREND_DOWN = {
     peakWaitTimestamp: null,
     history: SPARKLINE_HISTORY,
   },
+  bestVisitTimes: [{ time: bestVisitOptimal, predictedWaitTime: 10, rating: 'optimal' as const }],
 } as unknown as ParkAttraction;
 
 const MOCK_ATTRACTION_TREND_STABLE = {
@@ -379,6 +392,7 @@ const MOCK_ATTRACTION_TREND_STABLE = {
     peakWaitTimestamp: null,
     history: SPARKLINE_HISTORY,
   },
+  bestVisitTimes: [{ time: bestVisitGood, predictedWaitTime: 20, rating: 'good' as const }],
 } as unknown as ParkAttraction;
 
 // Operating but no wait time in standby

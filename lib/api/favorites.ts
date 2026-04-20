@@ -4,6 +4,7 @@ import type {
   TrendDirection,
   ComparisonStatus,
   AccuracyBadge,
+  BestVisitSlot,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -110,6 +111,7 @@ export interface FavoriteAttraction {
   } | null;
   url: string;
   backgroundImage?: string | null; // Added by proxy route
+  bestVisitTimes?: BestVisitSlot[] | null;
 }
 
 export interface FavoriteShow {
