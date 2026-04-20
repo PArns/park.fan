@@ -30,9 +30,11 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
       return { points: [], maxValue: 0, minHour: 0, maxHour: 24 };
 
     const processedData = hourlyP90.map((point) => {
-      const [hourStr] = point.hour.split(':');
-      const hour = parseInt(hourStr, 10);
-      return { hour: point.hour, hourNum: hour, value: point.value };
+      const [hStr, mStr] = point.hour.split(':');
+      const h = parseInt(hStr, 10);
+      const m = parseInt(mStr || '0', 10);
+      const hourNum = h + m / 60;
+      return { hour: point.hour, hourNum, value: point.value };
     });
 
     processedData.sort((a, b) => a.hourNum - b.hourNum);
@@ -101,6 +103,7 @@ export function HourlyP90Sparkline({ hourlyP90, className }: HourlyP90SparklineP
       pathD += `M ${x},${y}`;
     } else {
       const prevY = getY(points[i - 1].value);
+      // Step: horizontal line to the next X, then vertical to the next Y
       pathD += ` L ${x},${prevY}`;
       pathD += ` L ${x},${y}`;
     }

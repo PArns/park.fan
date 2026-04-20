@@ -9,14 +9,14 @@ import { cn } from '@/lib/utils';
 
 type SlotType = 'past' | 'current' | 'forecast';
 
-interface HourSlot {
-  hour: number;
+interface TimeSlot {
+  time: string; // "HH:mm"
   historyValue: number | null;
   forecastValue: number | null;
 }
 
 export interface DailyWaitTimeChartData {
-  slots: HourSlot[];
+  slots: TimeSlot[];
   timezone: string;
   translations: {
     title: string;
@@ -36,28 +36,32 @@ function barColorClass(w: number): string {
   return 'bg-crowd-very-high';
 }
 
-function getCurrentHourInTimezone(timezone: string): number {
+function getCurrentTimeSlotInTimezone(timezone: string): string {
   const parts = new Intl.DateTimeFormat('en', {
     hour: 'numeric',
+    minute: 'numeric',
     hour12: false,
     hourCycle: 'h23',
     timeZone: timezone,
   }).formatToParts(new Date());
-  const hourPart = parts.find((p) => p.type === 'hour');
-  return hourPart ? parseInt(hourPart.value, 10) : new Date().getHours();
+  const hour = parts.find((p) => p.type === 'hour')?.value || '00';
+  const minute = parts.find((p) => p.type === 'minute')?.value || '00';
+  // Round to nearest 15m slot
+  const roundedMinute = Math.floor(parseInt(minute, 10) / 15) * 15;
+  return `${hour.padStart(2, '0')}:${roundedMinute.toString().padStart(2, '0')}`;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitTimeChartData) {
-  const currentHour = useMemo(() => getCurrentHourInTimezone(timezone), [timezone]);
+  const currentTimeSlot = useMemo(() => getCurrentTimeSlotInTimezone(timezone), [timezone]);
 
   const typedSlots = useMemo(
     () =>
       slots.map((slot) => {
         let type: SlotType;
-        if (slot.hour < currentHour) type = 'past';
-        else if (slot.hour === currentHour) type = 'current';
+        if (slot.time < currentTimeSlot) type = 'past';
+        else if (slot.time === currentTimeSlot) type = 'current';
         else type = 'forecast';
 
         const value =
@@ -67,9 +71,9 @@ export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitT
               ? (slot.historyValue ?? slot.forecastValue ?? null)
               : (slot.forecastValue ?? null);
 
-        return { hour: slot.hour, value, type };
+        return { time: slot.time, value, type };
       }),
-    [slots, currentHour]
+    [slots, currentTimeSlot]
   );
 
   const hasData = typedSlots.some((s) => s.value !== null);
@@ -77,20 +81,27 @@ export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitT
 
   const maxValue = Math.max(...typedSlots.map((s) => s.value ?? 0), 10);
 
-  // Best upcoming slot: lowest wait time among future hours only.
-  // If the overall best was in the past, this naturally returns the next best future slot.
+  // Best upcoming slot: lowest wait time among future slots only.
   const futureSlots = typedSlots.filter((s) => s.type === 'forecast' && s.value !== null);
   const minForecast = futureSlots.length > 0 ? Math.min(...futureSlots.map((s) => s.value!)) : null;
-  const bestHours =
+  const bestTimes =
     minForecast !== null
-      ? futureSlots.filter((s) => s.value === minForecast).map((s) => `${s.hour}:00`)
+      ? futureSlots.filter((s) => s.value === minForecast).map((s) => s.time)
       : [];
   const bestSlotsLabel =
-    bestHours.length > 0 ? translations.bestSlots.replace('{hours}', bestHours.join(', ')) : null;
+    bestTimes.length > 0 ? translations.bestSlots.replace('{hours}', bestTimes.join(', ')) : null;
 
-  // Show every label if ≤ 12 slots; otherwise every other, always show current
-  const showLabel = (i: number, type: SlotType) =>
-    typedSlots.length <= 12 || i % 2 === 0 || type === 'current';
+  // Show hour labels (HH:00)
+  // If we have many slots, show every 2nd hour
+  const showLabel = (slot: { time: string; type: SlotType }) => {
+    if (slot.type === 'current') return true;
+    const [h, m] = slot.time.split(':');
+    if (m !== '00') return false;
+    const hour = parseInt(h, 10);
+    // If > 48 slots (12 hours), only show even hours
+    if (typedSlots.length > 48) return hour % 2 === 0;
+    return true;
+  };
 
   return (
     <Card className="p-4 sm:p-6">
@@ -103,16 +114,16 @@ export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitT
           <div className="mb-2 flex gap-0.5">
             {typedSlots.map((slot) => (
               <div
-                key={slot.hour}
+                key={slot.time}
                 className={cn(
                   'flex-1 text-center leading-none',
                   slot.type === 'past' ? 'text-muted-foreground/60' : 'text-foreground/80'
                 )}
               >
                 {slot.value !== null && (
-                  <span className="text-[11px] font-semibold sm:text-xs">
+                  <span className="text-[10px] font-semibold sm:text-[11px]">
                     {slot.value}
-                    <span className="text-[10px] font-normal sm:text-[11px]">
+                    <span className="text-[9px] font-normal sm:text-[10px]">
                       {' '}
                       {translations.min}
                     </span>
@@ -125,7 +136,7 @@ export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitT
           {/* Bars */}
           <div className="flex h-28 items-stretch gap-0.5 sm:h-32">
             {typedSlots.map((slot) => (
-              <div key={slot.hour} className="relative flex flex-1 flex-col justify-end">
+              <div key={slot.time} className="relative flex flex-1 flex-col justify-end">
                 {slot.value !== null ? (
                   <div
                     className={cn(
@@ -142,24 +153,24 @@ export function DailyWaitTimeChart({ slots, timezone, translations }: DailyWaitT
             ))}
           </div>
 
-          {/* Hour labels + current dot below bars */}
+          {/* Time labels + current dot below bars */}
           <div className="mt-2 flex gap-0.5">
-            {typedSlots.map((slot, i) => (
+            {typedSlots.map((slot) => (
               <div
-                key={slot.hour}
+                key={slot.time}
                 className={cn(
                   'flex flex-1 flex-col items-center gap-0.5',
-                  !showLabel(i, slot.type) && 'invisible'
+                  !showLabel(slot) && 'invisible'
                 )}
               >
                 {slot.type === 'current' && <div className="bg-primary h-1.5 w-1.5 rounded-full" />}
                 <span
                   className={cn(
-                    'text-[11px] font-medium sm:text-xs',
+                    'text-[11px] font-medium whitespace-nowrap sm:text-xs',
                     slot.type === 'current' ? 'text-primary font-semibold' : 'text-muted-foreground'
                   )}
                 >
-                  {slot.type === 'current' ? translations.now : `${slot.hour}h`}
+                  {slot.type === 'current' ? translations.now : `${slot.time.split(':')[0]}h`}
                 </span>
               </div>
             ))}
