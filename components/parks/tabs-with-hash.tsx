@@ -200,14 +200,20 @@ export function TabsWithHash({
       .filter(
         (a) => a.isHeadliner && (showOffSeasonAttractions || a.isCurrentlyInSeason !== false)
       );
-    return all.sort((a, b) => {
-      const waitA = a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
-      const waitB = b.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null;
-      if (waitA !== null && waitB !== null) return waitB - waitA;
-      if (waitA !== null) return -1;
-      if (waitB !== null) return 1;
-      return 0;
-    });
+
+    // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
+    return all
+      .map((a) => ({
+        a,
+        wait: a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null,
+      }))
+      .sort((a, b) => {
+        if (a.wait !== null && b.wait !== null) return b.wait - a.wait;
+        if (a.wait !== null) return -1;
+        if (b.wait !== null) return 1;
+        return 0;
+      })
+      .map((item) => item.a);
   }, [attractionsByLand, showOffSeasonAttractions]);
 
   // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
