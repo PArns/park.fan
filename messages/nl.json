@@ -484,7 +484,7 @@
     "otherQueues": "Andere Wachtrij Opties",
     "returnTime": "Terug",
     "peak": "Piek Vandaag: {time} min",
-    "bestVisit": "Beste tijd: {time}",
+    "bestVisit": "Beste tijd: {time} uur",
     "return": "Terug: {start} - {end}",
     "crowdLevels": {
       "very_low": "Zeer Laag",

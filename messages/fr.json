@@ -547,7 +547,7 @@
       "now": "Maintenant",
       "bestSlots": "Meilleurs créneaux : {hours}",
       "bestSlotsGood": "Bons créneaux : {hours}",
-      "timeSuffix": "h",
+      "timeSuffix": "",
       "ratingOptimal": "Recommandé",
       "ratingGood": "Bon créneau",
       "min": "min.",

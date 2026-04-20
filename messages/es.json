@@ -547,7 +547,7 @@
       "now": "Ahora",
       "bestSlots": "Mejores horarios: {hours}",
       "bestSlotsGood": "Buenos horarios: {hours}",
-      "timeSuffix": "h",
+      "timeSuffix": "",
       "ratingOptimal": "Recomendado",
       "ratingGood": "Buen momento",
       "min": "min.",

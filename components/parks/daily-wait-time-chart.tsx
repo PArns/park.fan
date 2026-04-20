@@ -1,6 +1,7 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useRef, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 import { Clock } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
@@ -43,6 +44,21 @@ function barColorClass(w: number): string {
   return 'bg-crowd-very-high';
 }
 
+/** Format "HH:mm" for display: 12h AM/PM for EN, otherwise HH:mm + suffix. */
+function formatSlotTime(hhmm: string, locale: string, timeSuffix: string): string {
+  if (locale === 'en') {
+    const [h, m] = hhmm.split(':').map(Number);
+    const date = new Date();
+    date.setHours(h, m, 0, 0);
+    return new Intl.DateTimeFormat('en', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    }).format(date);
+  }
+  return `${hhmm}${timeSuffix}`;
+}
+
 function getCurrentTimeSlotInTimezone(timezone: string): string {
   const parts = new Intl.DateTimeFormat('en', {
     hour: 'numeric',
@@ -66,6 +82,8 @@ export function DailyWaitTimeChart({
   bestSlots,
   translations,
 }: DailyWaitTimeChartData) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
   const currentTimeSlot = useMemo(() => getCurrentTimeSlotInTimezone(timezone), [timezone]);
 
   const typedSlots = useMemo(
@@ -95,14 +113,28 @@ export function DailyWaitTimeChart({
     return map;
   }, [bestSlots]);
 
+  const currentIndex = useMemo(
+    () => typedSlots.findIndex((s) => s.type === 'current'),
+    [typedSlots]
+  );
+
+  // Scroll the current-time slot to the center of the visible area on mount
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || currentIndex < 0 || typedSlots.length === 0) return;
+    const itemWidth = el.scrollWidth / typedSlots.length;
+    const targetScroll = currentIndex * itemWidth - el.clientWidth / 2 + itemWidth / 2;
+    el.scrollLeft = Math.max(0, targetScroll);
+  }, [currentIndex, typedSlots.length]);
+
   const hasData = typedSlots.some((s) => s.value !== null);
   if (!hasData) return null;
 
   const maxValue = Math.max(...typedSlots.map((s) => s.value ?? 0), 10);
 
-  // Bottom hint: show optimal and good times with time suffix
+  // Bottom hint: show optimal and good times with locale-aware formatting
   const fmt = (times: string[]) =>
-    times.map((t) => `${t}${translations.timeSuffix}`).join(', ');
+    times.map((t) => formatSlotTime(t, locale, translations.timeSuffix)).join(', ');
   const optimalTimes = bestSlots?.filter((s) => s.rating === 'optimal').map((s) => s.time) ?? [];
   const goodTimes = bestSlots?.filter((s) => s.rating === 'good').map((s) => s.time) ?? [];
   const bestSlotsLabel =
@@ -139,23 +171,23 @@ export function DailyWaitTimeChart({
     <Card className="p-4 sm:p-6">
       <h2 className="mb-4 text-xl font-semibold">{translations.title}</h2>
 
-      {/* Horizontal scroll on small screens */}
-      <div className="-mx-1 overflow-x-auto px-1">
-        <div className="min-w-[320px]">
-          {/* Value labels above bars */}
-          <div className="mb-2 flex gap-0.5">
+      {/* Horizontally scrollable chart — current time centered on mount */}
+      <div ref={scrollRef} className="no-scrollbar -mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6">
+        <div style={{ minWidth: `${Math.max(320, typedSlots.length * 15)}px` }}>
+          {/* Value labels above bars — hidden on small screens */}
+          <div className="mb-2 hidden gap-0.5 md:flex">
             {typedSlots.map((slot) => (
               <div
                 key={slot.time}
                 className={cn(
-                  'flex-1 text-center leading-none',
+                  'min-w-[15px] flex-1 text-center leading-none',
                   slot.type === 'past' ? 'text-muted-foreground/60' : 'text-foreground/80'
                 )}
               >
                 {slot.value !== null && (
                   <span className="flex flex-col items-center leading-none">
                     <span className="text-[10px] font-semibold sm:text-[11px]">{slot.value}</span>
-                    <span className="text-[9px] font-normal sm:text-[10px]">{translations.min}</span>
+                    <span className="hidden text-[9px] font-normal sm:text-[10px] xl:block">{translations.min}</span>
                   </span>
                 )}
               </div>
@@ -168,33 +200,31 @@ export function DailyWaitTimeChart({
               const bestRating = bestSlotsMap.get(slot.time);
               const barPct = slot.value !== null ? (slot.value / maxValue) * 100 : 0;
               return (
-                <div key={slot.time} className="relative flex flex-1 flex-col justify-end">
+                <div key={slot.time} className="relative flex min-w-[15px] flex-1 flex-col justify-end">
                   {/* Best-time dot above bar */}
                   {bestRating && slot.value !== null && (
                     <Tooltip>
-                      <TooltipTrigger asChild>
-                        <div
-                          className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default"
-                          style={{ bottom: `calc(${barPct}% + 3px)` }}
-                        >
-                          {/* Pulsing ring */}
-                          <span
-                            className={cn(
-                              'absolute -inset-0.5 animate-ping rounded-full opacity-50 [animation-duration:2s]',
-                              bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
-                            )}
-                          />
-                          {/* Solid dot */}
-                          <span
-                            className={cn(
-                              'relative block h-2 w-2 rounded-full',
-                              bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
-                            )}
-                          />
-                        </div>
+                      <TooltipTrigger
+                        className="absolute left-1/2 z-10 -translate-x-1/2 cursor-default bg-transparent p-0"
+                        style={{ bottom: `calc(${barPct}% + 3px)` }}
+                      >
+                        {/* Pulsing ring */}
+                        <span
+                          className={cn(
+                            'absolute -inset-0.5 animate-ping rounded-full opacity-50 [animation-duration:2s]',
+                            bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
+                          )}
+                        />
+                        {/* Solid dot */}
+                        <span
+                          className={cn(
+                            'relative block h-2 w-2 rounded-full',
+                            bestRating === 'optimal' ? 'bg-emerald-400' : 'bg-emerald-700'
+                          )}
+                        />
                       </TooltipTrigger>
                       <TooltipContent side="top" className="text-xs">
-                        <p className="font-semibold">{slot.time}{translations.timeSuffix}</p>
+                        <p className="font-semibold">{formatSlotTime(slot.time, locale, translations.timeSuffix)}</p>
                         <p className="text-muted-foreground">
                           {bestRating === 'optimal'
                             ? translations.ratingOptimal
@@ -228,7 +258,7 @@ export function DailyWaitTimeChart({
                 <div
                   key={slot.time}
                   className={cn(
-                    'flex flex-1 flex-col items-center gap-0.5',
+                    'flex min-w-[15px] flex-1 flex-col items-center gap-0.5',
                     !showLabel(slot, isLast) && 'invisible'
                   )}
                 >

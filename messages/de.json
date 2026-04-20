@@ -484,7 +484,7 @@
     "otherQueues": "Weitere Warteschlangen",
     "returnTime": "Rückkehr",
     "peak": "Tageshoch: {time} min",
-    "bestVisit": "Beste Zeit: {time}",
+    "bestVisit": "Beste Zeit: {time} Uhr",
     "return": "Rückkehr: {start} - {end}",
     "crowdLevels": {
       "very_low": "Sehr niedrig",

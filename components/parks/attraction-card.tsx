@@ -6,7 +6,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { DistanceBadge } from '@/components/common/distance-badge';
 import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -69,12 +69,13 @@ function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string 
   return undefined;
 }
 
-function formatBestVisitTime(isoStr: string, timezone?: string): string {
-  return new Intl.DateTimeFormat('en', {
-    hour: '2-digit',
+function formatBestVisitTime(isoStr: string, timezone?: string, locale = 'en'): string {
+  const hour12 = locale === 'en';
+  return new Intl.DateTimeFormat(locale, {
+    hour: hour12 ? 'numeric' : '2-digit',
     minute: '2-digit',
-    hour12: false,
-    hourCycle: 'h23',
+    hour12,
+    ...(hour12 ? {} : { hourCycle: 'h23' }),
     timeZone: timezone ?? 'UTC',
   }).format(new Date(isoStr));
 }
@@ -112,6 +113,7 @@ export function AttractionCard({
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
 
   const status = getStatus(attraction, parkStatus);
   // If park is closed, force wait time to null
@@ -241,7 +243,7 @@ export function AttractionCard({
                 (() => {
                   const slot = getOptimalSlot(attraction);
                   if (!slot) return null;
-                  const time = formatBestVisitTime(slot.time, effectiveTimezone);
+                  const time = formatBestVisitTime(slot.time, effectiveTimezone, locale);
                   return (
                     <div className="mt-1 flex items-center gap-1 text-xs text-emerald-700 dark:text-amber-400">
                       <Star className="h-3 w-3 shrink-0 fill-current" />
@@ -292,6 +294,7 @@ export function AttractionCard({
               <div className="mt-auto h-16 w-full overflow-hidden pt-4 opacity-50 transition-opacity group-hover:opacity-100">
                 <WaitTimeSparkline
                   history={attraction.statistics.history}
+                  timezone={effectiveTimezone}
                   className="text-primary"
                 />
               </div>

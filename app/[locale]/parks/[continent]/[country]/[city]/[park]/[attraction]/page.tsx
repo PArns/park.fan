@@ -383,6 +383,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               minWaitToday={calculatedMinWaitToday}
               maxWaitToday={calculatedMaxWaitToday}
               sparklineHistory={attraction.statistics?.history}
+              timezone={park.timezone}
               statusIcon={StatusIcon}
               statusLabel={config.label}
               labels={{

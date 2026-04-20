@@ -7,10 +7,11 @@ import type { AttractionStatistics } from '@/lib/api/types';
 
 interface WaitTimeSparklineProps {
   history: AttractionStatistics['history'];
+  timezone?: string;
   className?: string;
 }
 
-export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps) {
+export function WaitTimeSparkline({ history, timezone, className }: WaitTimeSparklineProps) {
   const locale = useLocale();
   const [activePoint, setActivePoint] = useState<{
     time: number;
@@ -120,7 +121,11 @@ export function WaitTimeSparkline({ history, className }: WaitTimeSparklineProps
   });
 
   const formatTime = (ms: number) =>
-    new Date(ms).toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+    new Date(ms).toLocaleTimeString(locale, {
+      hour: '2-digit',
+      minute: '2-digit',
+      ...(timezone ? { timeZone: timezone } : {}),
+    });
 
   return (
     <div ref={containerRef} className={`relative h-full w-full ${className}`}>

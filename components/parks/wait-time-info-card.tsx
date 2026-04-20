@@ -14,6 +14,8 @@ interface WaitTimeInfoCardProps {
   maxWaitToday?: number | null;
   /** Raw wait time history for today — precise step jumps */
   sparklineHistory?: { timestamp: string; waitTime: number }[];
+  /** IANA timezone for sparkline tooltip times */
+  timezone?: string;
   /** Icon and label to show when not operating */
   statusIcon?: LucideIcon;
   statusLabel?: string;
@@ -42,6 +44,7 @@ export function WaitTimeInfoCard({
   minWaitToday,
   maxWaitToday,
   sparklineHistory,
+  timezone,
   statusIcon: StatusIcon,
   statusLabel,
   labels,
@@ -131,7 +134,7 @@ export function WaitTimeInfoCard({
           so it sits flush at the card's bottom edge without needing absolute positioning */}
       {hasSparkline && (
         <div className="mask-linear-gradient-to-t -mb-6 h-16 w-full opacity-30">
-          <WaitTimeSparkline history={sparklineHistory!} className="text-primary" />
+          <WaitTimeSparkline history={sparklineHistory!} timezone={timezone} className="text-primary" />
         </div>
       )}
     </Card>
