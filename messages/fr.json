@@ -487,6 +487,9 @@
     "bestVisit": "Meilleur: {time}",
     "bestVisitNow": "Meilleur moment : Maintenant",
     "bestVisitInMin": "Meilleur: {time} (dans {minutes} min)",
+    "bestVisitGood": "Bon moment: {time}",
+    "bestVisitGoodNow": "Bon moment : Maintenant",
+    "bestVisitGoodInMin": "Bon moment: {time} (dans {minutes} min)",
     "return": "Retour: {start} - {end}",
     "crowdLevels": {
       "very_low": "Très Faible",

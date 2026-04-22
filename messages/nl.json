@@ -487,6 +487,9 @@
     "bestVisit": "Beste tijd: {time} uur",
     "bestVisitNow": "Beste tijd: Nu",
     "bestVisitInMin": "Beste tijd: {time} uur (over {minutes} min)",
+    "bestVisitGood": "Goed moment: {time} uur",
+    "bestVisitGoodNow": "Goed moment: Nu",
+    "bestVisitGoodInMin": "Goed moment: {time} uur (over {minutes} min)",
     "return": "Terug: {start} - {end}",
     "crowdLevels": {
       "very_low": "Zeer Laag",

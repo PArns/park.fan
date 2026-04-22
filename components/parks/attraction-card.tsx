@@ -93,9 +93,13 @@ function minutesUntilSlot(isoStr: string): number {
   return Math.round((new Date(isoStr).getTime() - Date.now()) / 60000);
 }
 
-function getOptimalSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisitSlot | null {
+function getBestSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisitSlot | null {
   if (!('bestVisitTimes' in attraction) || !attraction.bestVisitTimes) return null;
-  return attraction.bestVisitTimes.find((s) => s.rating === 'optimal') ?? null;
+  return (
+    attraction.bestVisitTimes.find((s) => s.rating === 'optimal') ??
+    attraction.bestVisitTimes.find((s) => s.rating === 'good') ??
+    null
+  );
 }
 
 function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
@@ -254,21 +258,29 @@ export function AttractionCard({
               {/* Best visit time — only for open rides */}
               {status === 'OPERATING' &&
                 (() => {
-                  const slot = getOptimalSlot(attraction);
+                  const slot = getBestSlot(attraction);
                   if (!slot) return null;
+                  const isOptimal = slot.rating === 'optimal';
                   const slotStatus = getBestVisitSlotStatus(slot.time);
                   const time = formatBestVisitTime(slot.time, effectiveTimezone, locale);
                   let label: string;
                   if (slotStatus === 'now') {
-                    label = t('bestVisitNow');
+                    label = t(isOptimal ? 'bestVisitNow' : 'bestVisitGoodNow');
                   } else if (slotStatus === 'future') {
-                    label = t('bestVisitInMin', { time, minutes: minutesUntilSlot(slot.time) });
+                    label = t(isOptimal ? 'bestVisitInMin' : 'bestVisitGoodInMin', {
+                      time,
+                      minutes: minutesUntilSlot(slot.time),
+                    });
                   } else {
-                    label = t('bestVisit', { time });
+                    label = t(isOptimal ? 'bestVisit' : 'bestVisitGood', { time });
                   }
                   return (
                     <div className="mt-1 flex items-center gap-1 text-xs text-emerald-700 dark:text-amber-400">
-                      <Star className="h-3 w-3 shrink-0 fill-current" />
+                      {isOptimal ? (
+                        <Star className="h-3 w-3 shrink-0 fill-current" />
+                      ) : (
+                        <Clock className="h-3 w-3 shrink-0" />
+                      )}
                       <span className="font-medium">{label}</span>
                     </div>
                   );
