@@ -485,6 +485,8 @@
     "returnTime": "Return",
     "peak": "Today's Peak: {time} min",
     "bestVisit": "Best: {time}",
+    "bestVisitNow": "Best time: Now",
+    "bestVisitInMin": "Best: {time} (in {minutes} min)",
     "return": "Return: {start} - {end}",
     "crowdLevels": {
       "very_low": "Very Low",

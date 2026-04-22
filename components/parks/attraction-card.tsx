@@ -80,6 +80,19 @@ function formatBestVisitTime(isoStr: string, timezone?: string, locale = 'en'): 
   }).format(new Date(isoStr));
 }
 
+function getBestVisitSlotStatus(isoStr: string): 'now' | 'future' | 'past' {
+  const slotStart = new Date(isoStr);
+  const slotEnd = new Date(slotStart.getTime() + 15 * 60 * 1000);
+  const now = new Date();
+  if (now >= slotStart && now < slotEnd) return 'now';
+  if (now < slotStart) return 'future';
+  return 'past';
+}
+
+function minutesUntilSlot(isoStr: string): number {
+  return Math.round((new Date(isoStr).getTime() - Date.now()) / 60000);
+}
+
 function getOptimalSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisitSlot | null {
   if (!('bestVisitTimes' in attraction) || !attraction.bestVisitTimes) return null;
   return attraction.bestVisitTimes.find((s) => s.rating === 'optimal') ?? null;
@@ -243,11 +256,20 @@ export function AttractionCard({
                 (() => {
                   const slot = getOptimalSlot(attraction);
                   if (!slot) return null;
+                  const slotStatus = getBestVisitSlotStatus(slot.time);
                   const time = formatBestVisitTime(slot.time, effectiveTimezone, locale);
+                  let label: string;
+                  if (slotStatus === 'now') {
+                    label = t('bestVisitNow');
+                  } else if (slotStatus === 'future') {
+                    label = t('bestVisitInMin', { time, minutes: minutesUntilSlot(slot.time) });
+                  } else {
+                    label = t('bestVisit', { time });
+                  }
                   return (
                     <div className="mt-1 flex items-center gap-1 text-xs text-emerald-700 dark:text-amber-400">
                       <Star className="h-3 w-3 shrink-0 fill-current" />
-                      <span className="font-medium">{t('bestVisit', { time })}</span>
+                      <span className="font-medium">{label}</span>
                     </div>
                   );
                 })()}

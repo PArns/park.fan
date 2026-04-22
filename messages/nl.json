@@ -485,6 +485,8 @@
     "returnTime": "Terug",
     "peak": "Piek Vandaag: {time} min",
     "bestVisit": "Beste tijd: {time} uur",
+    "bestVisitNow": "Beste tijd: Nu",
+    "bestVisitInMin": "Beste tijd: {time} uur (over {minutes} min)",
     "return": "Terug: {start} - {end}",
     "crowdLevels": {
       "very_low": "Zeer Laag",
