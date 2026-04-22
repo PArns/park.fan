@@ -128,7 +128,10 @@ export async function DailyWaitTimeChartServer({
   const forecastKeys = [...forecastMap.keys()].sort();
   const lastForecastTime = forecastKeys.length > 0 ? forecastKeys[forecastKeys.length - 1] : null;
   const lastActualTime =
-    [lastHistoryTime, lastForecastTime].filter((t): t is string => t !== null).sort().pop() ?? null;
+    [lastHistoryTime, lastForecastTime]
+      .filter((t): t is string => t !== null)
+      .sort()
+      .pop() ?? null;
 
   // Build 15-minute slots
   const slots: DailyWaitTimeChartData['slots'] = [];

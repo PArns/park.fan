@@ -754,17 +754,17 @@
     "parks": {
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
-      "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Druktevoorspelling & openingstijden.",
       "titleTemplate": "{park} Wachttijden – {city}",
-      "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen",
-      "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
+      "titleTemplateNoCity": "{park} – Wachttijden & Drukte",
+      "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Druktevoorspelling & openingstijden.",
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
       "keywordBestTime": "beste tijd om te bezoeken"
     },
     "attraction": {
-      "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
-      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
+      "titleTemplate": "{attraction} @ {park} – Wachttijden",
+      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live data en drukte."
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",

@@ -754,17 +754,17 @@
     "parks": {
       "title": "Parchi a tema nel mondo",
       "description": "Confronta i tempi di coda in diretta e l'affluenza dei principali parchi: Disney, Universal Studios ed Europa-Park.",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
+      "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Previsioni di oggi e orari.",
       "titleTemplate": "{park} Tempi di attesa – {city}",
-      "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare",
-      "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
+      "titleTemplateNoCity": "{park} – Tempi di attesa e affluenza",
+      "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Previsioni di oggi e orari.",
       "keywordWaitTimes": "tempi di attesa",
       "keywordCrowdCalendar": "calendario affluenze",
       "keywordBestTime": "quando visitare"
     },
     "attraction": {
-      "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza."
+      "titleTemplate": "{attraction} @ {park} – Attesa",
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla code e affluenza."
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",

@@ -177,18 +177,18 @@ Then generate `canonical` and `languages` values with this base URL in all `gene
 
 ## Prioritization
 
-| Priority | Action                                              | Effort     | Benefit                                 | Status              |
-| -------- | --------------------------------------------------- | ---------- | --------------------------------------- | ------------------- |
-| High     | Extend sitemap with Impressum, Privacy, /search     | Low        | Index legal pages + search entry        | ✅ Done             |
-| High     | Set search pages with `?q=...` to noindex, follow   | Low        | Avoid duplicate content                 | ✅ Done             |
-| High     | Nearby Parks section on park detail pages           | Medium     | Cross-linking between parks             | Planned (needs API) |
-| Medium   | Shorten title templates (Park/Attraction)           | Medium     | Better SERP display                     | Open                |
-| Medium   | Check/shorten meta description lengths              | Low        | Better SERP display                     | Open                |
-| Medium   | Web app manifest + icons                            | Low        | Completeness, Add-to-Homescreen         | ✅ Done             |
-| Low      | hreflang absolute URLs (only if currently relative) | Low        | Best practice                           | ✅ Done             |
-| ~~Low~~  | ~~ItemList for Continent/Country/City~~             | ~~Medium~~ | ~~Optional better list interpretation~~ | ✅ Done v2.6.4      |
-| ~~High~~ | ~~Homepage direct park links (FeaturedParks)~~      | ~~Medium~~ | ~~Internal linking, click depth~~       | ✅ Done v2.6.4      |
-| ~~High~~ | ~~Split sitemap into separate files~~               | ~~Medium~~ | ~~Crawl budget, geo hub pages~~         | ✅ Done v2.6.4      |
+| Priority   | Action                                              | Effort     | Benefit                                 | Status         |
+| ---------- | --------------------------------------------------- | ---------- | --------------------------------------- | -------------- |
+| High       | Extend sitemap with Impressum, Privacy, /search     | Low        | Index legal pages + search entry        | ✅ Done        |
+| High       | Set search pages with `?q=...` to noindex, follow   | Low        | Avoid duplicate content                 | ✅ Done        |
+| ~~High~~   | ~~Nearby Parks section on park detail pages~~       | ~~Medium~~ | ~~Cross-linking between parks~~         | ✅ Done        |
+| ~~Medium~~ | ~~Shorten title templates (Park/Attraction)~~       | ~~Medium~~ | ~~Better SERP display~~                 | ✅ Done        |
+| ~~Medium~~ | ~~Check/shorten meta description lengths~~          | ~~Low~~    | ~~Better SERP display~~                 | ✅ Done        |
+| Medium     | Web app manifest + icons                            | Low        | Completeness, Add-to-Homescreen         | ✅ Done        |
+| Low        | hreflang absolute URLs (only if currently relative) | Low        | Best practice                           | ✅ Done        |
+| ~~Low~~    | ~~ItemList for Continent/Country/City~~             | ~~Medium~~ | ~~Optional better list interpretation~~ | ✅ Done v2.6.4 |
+| ~~High~~   | ~~Homepage direct park links (FeaturedParks)~~      | ~~Medium~~ | ~~Internal linking, click depth~~       | ✅ Done v2.6.4 |
+| ~~High~~   | ~~Split sitemap into separate files~~               | ~~Medium~~ | ~~Crawl budget, geo hub pages~~         | ✅ Done v2.6.4 |
 
 ---
 
