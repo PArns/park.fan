@@ -485,6 +485,11 @@
     "returnTime": "Rückkehr",
     "peak": "Tageshoch: {time} min",
     "bestVisit": "Beste Zeit: {time} Uhr",
+    "bestVisitNow": "Beste Zeit: Jetzt",
+    "bestVisitInMin": "Beste Zeit: {time} Uhr (in {minutes} min.)",
+    "bestVisitGood": "Gute Zeit: {time} Uhr",
+    "bestVisitGoodNow": "Gute Zeit: Jetzt",
+    "bestVisitGoodInMin": "Gute Zeit: {time} Uhr (in {minutes} min.)",
     "return": "Rückkehr: {start} - {end}",
     "crowdLevels": {
       "very_low": "Sehr niedrig",
