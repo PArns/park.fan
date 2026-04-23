@@ -44,6 +44,14 @@ export default async function sitemap({
     const impressumAlternates = buildAlternates(() => '/impressum');
     const datenschutzAlternates = buildAlternates(() => '/datenschutz');
 
+    // Explicit root x-default URL
+    routes.push({
+      url: BASE_URL,
+      changeFrequency: 'daily',
+      priority: 1.0,
+      alternates: homepageAlternates,
+    });
+
     for (const locale of locales) {
       routes.push(
         {
