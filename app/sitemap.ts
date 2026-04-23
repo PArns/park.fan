@@ -26,7 +26,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // ── Static pages ──────────────────────────────────────────────────────────
   const homepageAlternates = buildAlternates(() => '');
   const howtoAlternates = buildAlternates(() => '/howto');
-  const searchAlternates = buildAlternates(() => '/search');
   const impressumAlternates = buildAlternates(() => '/impressum');
   const datenschutzAlternates = buildAlternates(() => '/datenschutz');
 
@@ -43,12 +42,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.6,
         alternates: howtoAlternates,
-      },
-      {
-        url: `${BASE_URL}/${locale}/search`,
-        changeFrequency: 'monthly',
-        priority: 0.5,
-        alternates: searchAlternates,
       },
       {
         url: `${BASE_URL}/${locale}/impressum`,
