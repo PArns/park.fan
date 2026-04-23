@@ -24,13 +24,18 @@ function buildAlternates(pathFn: (locale: string) => string): {
 }
 
 export async function generateSitemaps() {
-  return [{ id: '0' }, { id: '1' }, { id: '2' }];
+  return [{ id: 0 }, { id: 1 }, { id: 2 }];
 }
 
-export default async function sitemap({ id }: { id: string }): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap({
+  id,
+}: {
+  id: Promise<string | number> | string | number;
+}): Promise<MetadataRoute.Sitemap> {
+  const resolvedId = String(await id);
   const routes: MetadataRoute.Sitemap = [];
 
-  if (id === '0') {
+  if (resolvedId === '0') {
     // ── Static pages ──────────────────────────────────────────────────────────
     const homepageAlternates = buildAlternates(() => '');
     const parksListingAlternates = buildAlternates(() => '/parks');
@@ -156,7 +161,7 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
         }
       }
     }
-  } else if (id === '1') {
+  } else if (resolvedId === '1') {
     // ── Attraction pages (long-tail SEO) ──────────────────────────────────────
     const attractions = await getSitemapAttractions();
     for (const attraction of attractions) {
@@ -175,7 +180,7 @@ export default async function sitemap({ id }: { id: string }): Promise<MetadataR
         });
       }
     }
-  } else if (id === '2') {
+  } else if (resolvedId === '2') {
     // ── Hub Pages (Continents, Countries, Cities) ─────────────────────────────
     const geo = await getGeoStructure(86400);
     for (const continent of geo.continents) {
