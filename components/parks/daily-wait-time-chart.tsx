@@ -138,13 +138,9 @@ export function DailyWaitTimeChart({
   const optimalTimes = bestSlots?.filter((s) => s.rating === 'optimal').map((s) => s.time) ?? [];
   const goodTimes = bestSlots?.filter((s) => s.rating === 'good').map((s) => s.time) ?? [];
   const bestSlotsLabel =
-    optimalTimes.length > 0
-      ? translations.bestSlots.replace('{hours}', fmt(optimalTimes))
-      : null;
+    optimalTimes.length > 0 ? translations.bestSlots.replace('{hours}', fmt(optimalTimes)) : null;
   const bestSlotsGoodLabel =
-    goodTimes.length > 0
-      ? translations.bestSlotsGood.replace('{hours}', fmt(goodTimes))
-      : null;
+    goodTimes.length > 0 ? translations.bestSlotsGood.replace('{hours}', fmt(goodTimes)) : null;
 
   // Show hour labels (HH:00), always show last slot
   const showLabel = (slot: { time: string; type: SlotType }, isLast: boolean) => {
@@ -187,7 +183,9 @@ export function DailyWaitTimeChart({
                 {slot.value !== null && (
                   <span className="flex flex-col items-center leading-none">
                     <span className="text-[10px] font-semibold sm:text-[11px]">{slot.value}</span>
-                    <span className="hidden text-[9px] font-normal sm:text-[10px] xl:block">{translations.min}</span>
+                    <span className="hidden text-[9px] font-normal sm:text-[10px] xl:block">
+                      {translations.min}
+                    </span>
                   </span>
                 )}
               </div>
@@ -200,7 +198,10 @@ export function DailyWaitTimeChart({
               const bestRating = bestSlotsMap.get(slot.time);
               const barPct = slot.value !== null ? (slot.value / maxValue) * 100 : 0;
               return (
-                <div key={slot.time} className="relative flex min-w-[15px] flex-1 flex-col justify-end">
+                <div
+                  key={slot.time}
+                  className="relative flex min-w-[15px] flex-1 flex-col justify-end"
+                >
                   {/* Best-time dot above bar */}
                   {bestRating && slot.value !== null && (
                     <Tooltip>
@@ -224,7 +225,9 @@ export function DailyWaitTimeChart({
                         />
                       </TooltipTrigger>
                       <TooltipContent side="top" className="text-xs">
-                        <p className="font-semibold">{formatSlotTime(slot.time, locale, translations.timeSuffix)}</p>
+                        <p className="font-semibold">
+                          {formatSlotTime(slot.time, locale, translations.timeSuffix)}
+                        </p>
                         <p className="text-muted-foreground">
                           {bestRating === 'optimal'
                             ? translations.ratingOptimal
@@ -238,7 +241,7 @@ export function DailyWaitTimeChart({
                       className={cn(
                         'w-full rounded-t',
                         barColorClass(slot.value),
-                        slot.type === 'past' && 'opacity-40',
+                        slot.type === 'past' && 'opacity-40'
                       )}
                       style={{ height: `${barPct}%` }}
                     />
@@ -262,11 +265,15 @@ export function DailyWaitTimeChart({
                     !showLabel(slot, isLast) && 'invisible'
                   )}
                 >
-                  {slot.type === 'current' && <div className="bg-primary h-1.5 w-1.5 rounded-full" />}
+                  {slot.type === 'current' && (
+                    <div className="bg-primary h-1.5 w-1.5 rounded-full" />
+                  )}
                   <span
                     className={cn(
                       'text-[11px] font-medium whitespace-nowrap sm:text-xs',
-                      slot.type === 'current' ? 'text-primary font-semibold' : 'text-muted-foreground'
+                      slot.type === 'current'
+                        ? 'text-primary font-semibold'
+                        : 'text-muted-foreground'
                     )}
                   >
                     {slot.type === 'current'
