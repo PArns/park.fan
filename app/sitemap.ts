@@ -102,7 +102,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
       routes.push({
         url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`,
-        changeFrequency: 'weekly',
+        changeFrequency: 'monthly',
         priority: 0.5,
         alternates: { languages: termAlternates },
       });
