@@ -139,7 +139,6 @@ const nextConfig: NextConfig = {
         { source: `/${locale}/${segment}/:term`, destination: `/${locale}/glossary/:term` }
       );
     }
-    rules.push({ source: '/sitemap.xml', destination: '/sitemap_index.xml' });
     return rules;
   },
   async headers() {
