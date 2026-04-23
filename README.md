@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# park.fan — Never Wait in Line Again
 
-## Getting Started
+**[park.fan](https://park.fan)** is the free, real-time crowd intelligence platform for theme park fans worldwide. We track live wait times, crowd levels, and visit patterns across hundreds of parks — so you can plan smarter, skip the queues, and spend more time on the rides.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## The Problem We're Solving
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visiting a theme park is expensive. A family of four can easily spend €500 on tickets, travel, and accommodation — only to spend half the day standing in line. The information to avoid this exists, but it's scattered, paywalled, or simply not real-time.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**park.fan is built on a simple belief:** crowd intelligence should be free, accurate, and available to everyone.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## What You Get
 
-To learn more about Next.js, take a look at the following resources:
+### Live Wait Times
+See exactly how long the queue is for every major attraction — updated in real time, straight from the park. No guessing, no outdated blog posts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Crowd Calendar
+Planning a trip weeks in advance? Our crowd calendar shows historical patterns and predictions so you can pick the quietest days of the year — before you even book your hotel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Best Time to Visit
+Every park page shows you the optimal time slots for each day. We analyze wait time curves to tell you exactly when to hit the most popular rides with the shortest queues.
 
-## Deploy on Vercel
+### Global Coverage
+From Europa-Park and Phantasialand to Disney World and Universal Studios — we cover theme parks across Europe, North America, and beyond. If it has queues, we track it.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Theme Park Glossary
+New to the world of theme parks? Our [glossary](https://park.fan/en/glossary) explains everything from ride types to park terminology in plain language — in six languages. No prior knowledge required.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Our Vision
+
+Theme parks are one of the few places where people genuinely disconnect from the everyday. We want every visit to be as good as it can be — less time queuing, more time experiencing.
+
+We're building the go-to platform for theme park planning: the place you check before you book, the morning of your visit, and while you're standing at the park gates deciding where to go first.
+
+No subscriptions. No paywalls. Just the data you need.
+
+---
+
+## Available In
+
+English · Deutsch · Nederlands · Français · Español · Italiano
+
+---
+
+## Tech
+
+Built with Next.js 16, React 19, and TypeScript. Real-time data from [api.park.fan](https://api.park.fan). Deployed globally on Vercel.
+
+---
+
+*Made with love for theme park fans. Visit us at [park.fan](https://park.fan).*
