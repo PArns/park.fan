@@ -53,4 +53,4 @@ Built with Next.js 16, React 19, and TypeScript. Real-time data from [api.park.f
 
 ---
 
-*Made with love for theme park fans. Visit us at [park.fan](https://park.fan).*
+*Made with love for theme park fans by [arns.dev](https://arns.dev). Visit us at [park.fan](https://park.fan).*
