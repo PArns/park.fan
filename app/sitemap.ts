@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     routes.push({
       url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}`,
       changeFrequency: 'weekly',
-      priority: 0.4,
+      priority: 0.5,
       alternates: glossaryIndexAlternates,
     });
   }
@@ -103,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       routes.push({
         url: `${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`,
         changeFrequency: 'monthly',
-        priority: 0.3,
+        priority: 0.8,
         alternates: { languages: termAlternates },
       });
     }
