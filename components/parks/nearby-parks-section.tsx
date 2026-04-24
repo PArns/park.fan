@@ -1,9 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import { MapPin } from 'lucide-react';
-import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCard } from '@/components/parks/park-card';
 import { getParksNearLocation } from '@/lib/api/discovery';
 import { stripNewPrefix } from '@/lib/utils';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 interface NearbyParksSectionProps {
   parkId: string;
@@ -31,22 +30,23 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {parks.map((park) => (
           <li key={park.id}>
-            <ParkCardNearby
+            <ParkCard
               id={park.id}
+              slug={park.slug}
               name={stripNewPrefix(park.name)}
               city={park.city ?? ''}
               country={park.country ?? ''}
               distance={park.distance}
-              status={park.status}
+              status={park.status as import('@/lib/api/types').ParkStatus}
               timezone={park.timezone}
               totalAttractions={park.totalAttractions}
               operatingAttractions={park.operatingAttractions}
               analytics={park.analytics}
               todaySchedule={park.todaySchedule ?? undefined}
               nextSchedule={park.nextSchedule ?? undefined}
-              backgroundImage={getParkBackgroundImage(park.slug)}
               url={park.url ?? ''}
               hasOperatingSchedule={park.hasOperatingSchedule}
+              translateCountry
             />{' '}
           </li>
         ))}

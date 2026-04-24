@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/navigation';
 import { Clock, TrendingUp, ChevronRight, DoorOpen, Snowflake } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
@@ -23,28 +24,48 @@ const serverAssets =
 import { getScheduleMessage } from '@/lib/utils/schedule-utils';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 interface ParkCardProps {
   name: string;
   slug: string;
   city: string;
   country: string;
-  href: string;
+  /** Direct frontend URL. Optional when `url` is provided. */
+  href?: string;
+  /** API URL (e.g. /v1/parks/…) — auto-converted to a frontend URL. */
+  url?: string;
   status?: ParkStatus;
   crowdLevel?: CrowdLevel;
   averageWaitTime?: number;
+  /** Analytics object — alternative to averageWaitTime + crowdLevel as direct props. */
+  analytics?: {
+    avgWaitTime?: number;
+    crowdLevel?: string;
+    occupancy?: number;
+  };
   operatingAttractions?: number;
   totalAttractions?: number;
   variant?: 'compact' | 'detailed' | 'hero';
   showBackground?: boolean;
-  distance?: string; // Optional distance
+  /** Distance as a number (meters, auto-formatted) or pre-formatted string. */
+  distance?: number | string;
   className?: string;
-  parkId?: string; // UUID for favorites
-  backgroundImage?: string | null; // Optional background image URL (to avoid fs in client)
+  /** Park UUID for the favorites star. */
+  parkId?: string;
+  /** Alias for parkId — accepted for callers using the nearby/favorites data shape. */
+  id?: string;
+  backgroundImage?: string | null;
   timezone?: string;
   todaySchedule?: ScheduleSummary;
   nextSchedule?: ScheduleSummary;
   hasOperatingSchedule?: boolean;
+  /** Show a "Nearest open" badge. Only rendered when the park is OPERATING. */
+  highlightAsNearestOpen?: boolean;
+  /** Translate the raw country name via geo translations (for nearby/favorites data). */
+  translateCountry?: boolean;
+  /** Accepted for API-shape compatibility — not used in rendering. */
+  continent?: string;
 }
 
 export function ParkCard({
@@ -53,9 +74,11 @@ export function ParkCard({
   city,
   country,
   href,
+  url,
   status,
   crowdLevel,
   averageWaitTime,
+  analytics,
   operatingAttractions,
   totalAttractions,
   variant = 'detailed',
@@ -63,23 +86,48 @@ export function ParkCard({
   distance,
   className,
   parkId,
+  id,
   backgroundImage: propBackgroundImage,
   timezone,
   todaySchedule,
   nextSchedule,
   hasOperatingSchedule = true,
+  highlightAsNearestOpen = false,
+  translateCountry = false,
+  continent: _continent,
 }: ParkCardProps) {
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
+  const tGeo = useTranslations('geo');
   const locale = useLocale();
+
+  // Resolve href: use direct href, or convert API url, falling back to root
+  const effectiveHref = href ?? (url ? convertApiUrlToFrontendUrl(url) : '/');
+
+  // Resolve park UUID for favorites star
+  const effectiveParkId = parkId ?? id;
+
+  // Resolve wait time + crowd level — accept both direct props and analytics object
+  const effectiveWaitTime = averageWaitTime ?? analytics?.avgWaitTime;
+  const effectiveCrowdLevel = crowdLevel ?? (analytics?.crowdLevel as CrowdLevel | undefined);
+
+  // Optionally translate raw country name (e.g. "Germany" → locale-specific label)
+  const displayCountry = translateCountry
+    ? (() => {
+        const normalized = country.toLowerCase().replace(/\s+/g, '-');
+        const translated = tGeo(`countries.${normalized}` as string);
+        return translated !== `countries.${normalized}` ? translated : country;
+      })()
+    : country;
+
   // Use provided backgroundImage or fallback to getParkBackgroundImage (server-side only)
   let backgroundImage: string | null = null;
   if (propBackgroundImage !== undefined) {
-    // Use provided backgroundImage (from API/proxy)
     backgroundImage = propBackgroundImage;
   } else if (showBackground && serverAssets) {
     backgroundImage = serverAssets.getParkBackgroundImage(slug);
   }
+
   const isOpen = status === 'OPERATING';
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
   const isInMaintenance =
@@ -98,18 +146,27 @@ export function ParkCard({
 
   return (
     <Link
-      href={href as '/europe/germany/rust/europa-park'}
-      prefetch={isOperatingOrUnknown} // Only prefetch open/unknown parks
+      href={effectiveHref as '/europe/germany/rust/europa-park'}
+      prefetch={isOperatingOrUnknown}
       className="group h-full"
     >
       <Card className={cn('interactive-card relative h-full overflow-hidden', className)}>
         {/* Background Image */}
         {backgroundImage && <BackgroundOverlay imageSrc={backgroundImage} alt={name} hoverEffect />}
 
+        {/* Nearest open park badge */}
+        {highlightAsNearestOpen && isOpen && (
+          <div className="absolute top-2 left-2 z-20">
+            <Badge className="bg-primary text-primary-foreground border-0 text-xs font-medium shadow-md">
+              {tNearby('nearestOpenBadge')}
+            </Badge>
+          </div>
+        )}
+
         {/* Favorite Star */}
-        {parkId && (
+        {effectiveParkId && (
           <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-            <FavoriteStar type="park" id={parkId} name={name} />
+            <FavoriteStar type="park" id={effectiveParkId} name={name} />
           </div>
         )}
 
@@ -124,15 +181,15 @@ export function ParkCard({
                 <ChevronRight className="group-interactive-icon mt-0.5 h-4 w-4 flex-shrink-0" />
               </div>
               <address className="text-muted-foreground mt-1 truncate text-xs not-italic">
-                <span>{city}</span>, <span>{country}</span>
+                <span>{city}</span>, <span>{displayCountry}</span>
               </address>
             </div>
 
             {/* Stats section */}
             <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-              {/* Distance + Status Badge (matching NearbyParksCard) */}
+              {/* Distance + Status Badge */}
               <div className="flex items-center justify-between text-sm">
-                {distance ? (
+                {distance != null ? (
                   <DistanceBadge distance={distance} size="md" />
                 ) : (
                   <div className="text-muted-foreground text-xs">
@@ -143,17 +200,19 @@ export function ParkCard({
                 {status && <ParkStatusBadge status={status} />}
               </div>
 
-              {/* Wait Time + Crowd Level (matching NearbyParksCard layout) */}
+              {/* Wait Time + Crowd Level */}
               <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
-                {isOperatingOrUnknown && (averageWaitTime !== undefined || crowdLevel) ? (
+                {isOperatingOrUnknown && (effectiveWaitTime !== undefined || effectiveCrowdLevel) ? (
                   <div className="flex items-center gap-2.5 text-sm">
-                    {averageWaitTime !== undefined && averageWaitTime > 0 && (
-                      <WaitTimeBadge waitTime={averageWaitTime} size="sm" />
+                    {effectiveWaitTime !== undefined && effectiveWaitTime > 0 && (
+                      <WaitTimeBadge waitTime={effectiveWaitTime} size="sm" />
                     )}
-                    {crowdLevel && <CrowdLevelBadge level={crowdLevel} className="text-xs" />}
+                    {effectiveCrowdLevel && (
+                      <CrowdLevelBadge level={effectiveCrowdLevel} className="text-xs" />
+                    )}
                   </div>
                 ) : (
-                  <div className="h-5" /> /* Spacer for closed parks */
+                  <div className="h-5" />
                 )}
 
                 {/* Operating Attractions */}
@@ -168,7 +227,7 @@ export function ParkCard({
                     <span className="text-muted-foreground text-xs">{tCommon('operating')}</span>
                   </div>
                 ) : (
-                  <div className="h-5" /> /* Spacer for closed parks */
+                  <div className="h-5" />
                 )}
               </div>
 

@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
@@ -18,7 +18,7 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
-import type { CrowdLevel } from '@/lib/api/types';
+import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import {
   trackNearbyPermissionGranted,
   trackNearbyPermissionDenied,
@@ -510,19 +510,16 @@ export function NearbyParksCard({ className }: { className?: string }) {
               // Hide items > 1 (index 2+) on mobile if not expanded
               const hiddenClass = !isExpanded && index >= 2 ? 'hidden md:block' : '';
 
-              // Extract continent from URL if available for robust URL building
-              const continent = park.url?.split('/')?.[3]; // /v1/parks/[continent]/...
-
               return (
                 <li key={park.id} className={hiddenClass}>
-                  <ParkCardNearby
+                  <ParkCard
                     id={park.id}
                     name={stripNewPrefix(park.name)}
+                    slug={park.slug}
                     city={park.city}
                     country={park.country}
-                    continent={continent}
                     distance={park.distance}
-                    status={park.status}
+                    status={park.status as ParkStatus}
                     timezone={park.timezone}
                     totalAttractions={park.totalAttractions}
                     operatingAttractions={park.operatingAttractions}
@@ -533,6 +530,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                     url={park.url}
                     hasOperatingSchedule={park.hasOperatingSchedule}
                     highlightAsNearestOpen={nearestOpenPark?.id === park.id}
+                    translateCountry
                   />
                 </li>
               );

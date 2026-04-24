@@ -139,7 +139,7 @@ export default async function CityPage({ params }: CityPageProps) {
               country={countryName}
               href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
               status={park.status}
-              crowdLevel={park.currentLoad?.crowdLevel}
+              crowdLevel={park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel}
               averageWaitTime={park.analytics?.statistics?.avgWaitTime}
               operatingAttractions={park.analytics?.statistics?.operatingAttractions}
               totalAttractions={park.analytics?.statistics?.totalAttractions}

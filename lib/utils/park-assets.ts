@@ -63,3 +63,21 @@ export function getAttractionBackgroundImage(
   attractionImageCache.set(cacheKey, null);
   return null;
 }
+
+/** Adds `backgroundImage` to each park in an array (mutates a shallow copy). */
+export function enrichParksWithImages<T extends { slug: string }>(parks: T[]): (T & { backgroundImage: string | null })[] {
+  return parks.map((park) => ({ ...park, backgroundImage: getParkBackgroundImage(park.slug) }));
+}
+
+/** Adds `backgroundImage` to each attraction, falling back to the park's background image. */
+export function enrichAttractionsWithImages<T extends { slug: string; park?: { slug: string } }>(
+  attractions: T[]
+): (T & { backgroundImage: string | null })[] {
+  return attractions.map((attraction) => {
+    const image = attraction.park?.slug
+      ? (getAttractionBackgroundImage(attraction.park.slug, attraction.slug) ??
+        getParkBackgroundImage(attraction.park.slug))
+      : null;
+    return { ...attraction, backgroundImage: image };
+  });
+}

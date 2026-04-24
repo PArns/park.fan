@@ -5,16 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
-
-// Server-side only — avoids bundling `fs` into any client chunk
-/* eslint-disable @typescript-eslint/no-require-imports */
-const serverAssets =
-  typeof window === 'undefined'
-    ? (require('@/lib/utils/park-assets') as {
-        getParkBackgroundImage: (slug: string) => string | null;
-      })
-    : null;
-/* eslint-enable @typescript-eslint/no-require-imports */
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
@@ -117,9 +108,9 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               countrySlug: country.slug,
               countryName: country.name,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-              backgroundImage: serverAssets?.getParkBackgroundImage(park.slug) ?? null,
+              backgroundImage: getParkBackgroundImage(park.slug),
               status: park.status,
-              crowdLevel: park.currentLoad?.crowdLevel,
+              crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
               averageWaitTime: park.analytics?.statistics?.avgWaitTime,
               operatingAttractions: park.analytics?.statistics?.operatingAttractions,
               totalAttractions: park.analytics?.statistics?.totalAttractions,

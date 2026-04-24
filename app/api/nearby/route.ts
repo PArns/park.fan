@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { enrichParksWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 
 /** Response depends on client IP (GeoIP when no coords); must not be cached. */
@@ -105,15 +105,9 @@ export async function GET(request: NextRequest) {
     const data = await response.json();
 
     if (data.type === 'nearby_parks' && data.data?.parks) {
-      data.data.parks = data.data.parks.map((park: { slug: string }) => ({
-        ...park,
-        backgroundImage: getParkBackgroundImage(park.slug),
-      }));
+      data.data.parks = enrichParksWithImages(data.data.parks);
     } else if (data.type === 'in_park' && data.data?.park) {
-      data.data.park = {
-        ...data.data.park,
-        backgroundImage: getParkBackgroundImage(data.data.park.slug),
-      };
+      data.data.park = enrichParksWithImages([data.data.park])[0];
     }
 
     return NextResponse.json(data);

@@ -515,6 +515,7 @@ export interface ParkReference {
       operatingAttractions: number;
       closedAttractions: number;
       totalAttractions: number;
+      crowdLevel?: CrowdLevel;
     };
   };
   timezone?: string;
