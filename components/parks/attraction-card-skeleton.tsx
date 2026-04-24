@@ -1,63 +1,68 @@
-import { Card, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export function AttractionCardSkeleton() {
   return (
-    <Card className="relative h-full overflow-hidden transition-colors">
-      {/* Background Image Skeleton */}
-      <div className="absolute inset-0">
+    <article
+      className="relative isolate flex min-h-[420px] flex-col overflow-hidden rounded-[20px] border border-black/[0.12] dark:border-white/10"
+      style={{ boxShadow: 'var(--pk-card-shadow)' }}
+    >
+      {/* Background */}
+      <div className="absolute inset-0 z-0">
         <Skeleton className="h-full w-full" />
       </div>
 
-      {/* Favorite Star Position Skeleton */}
-      <div className="absolute top-2 right-2 z-20">
-        <Skeleton className="h-5 w-5 rounded-full" />
+      {/* Favorite */}
+      <div className="absolute top-3 right-3 z-[4]">
+        <Skeleton className="h-[34px] w-[34px] rounded-full" />
       </div>
 
-      <CardContent className="relative z-10 flex h-full flex-col p-4">
-        <div className="flex items-start justify-between gap-2">
-          <div className="min-w-0 flex-1">
-            {/* Title */}
-            <Skeleton className="h-5 w-3/4" />
+      {/* Top glass panel */}
+      <div
+        className="relative z-[3] shrink-0 overflow-hidden"
+        style={{
+          padding: '14px 52px 13px 16px',
+          background: 'var(--pk-panel)',
+          backdropFilter: 'blur(24px) saturate(1.6)',
+          WebkitBackdropFilter: 'blur(24px) saturate(1.6)',
+          borderBottom: '1px solid var(--pk-panel-border)',
+        }}
+      >
+        <Skeleton className="h-4 w-3/4" />
+        <div className="mt-[9px] flex gap-[6px]">
+          <Skeleton className="h-5 w-20 rounded-full" />
+          <Skeleton className="h-5 w-16 rounded-full" />
+        </div>
+      </div>
 
-            {/* Park Name (optional, for favorites) */}
-            <Skeleton className="mt-1 h-3 w-1/2" />
+      {/* Spacer */}
+      <div className="relative z-[2] flex-1" />
 
-            {/* Wait Time & Trend */}
-            <div className="mt-1 flex items-baseline gap-2">
-              <Skeleton className="h-6 w-20" />
-              <Skeleton className="h-3 w-3 rounded-full" />
-            </div>
-
-            {/* Queue Types */}
-            <div className="mt-2 flex flex-wrap gap-1">
-              <Skeleton className="h-5 w-24 rounded-full" />
-              <Skeleton className="h-5 w-20 rounded-full" />
-            </div>
-
-            {/* Peak Wait Time */}
-            <Skeleton className="mt-1 h-3 w-32" />
+      {/* Bottom glass panel */}
+      <div
+        className="relative z-[3] shrink-0 overflow-hidden"
+        style={{
+          padding: '12px 14px 13px',
+          background: 'var(--pk-panel)',
+          backdropFilter: 'blur(28px) saturate(1.6)',
+          WebkitBackdropFilter: 'blur(28px) saturate(1.6)',
+          borderTop: '1px solid var(--pk-panel-border)',
+        }}
+      >
+        <div className="flex gap-3">
+          <div className="flex flex-col gap-1" style={{ width: 88 }}>
+            <Skeleton className="h-7 w-16" />
+            <Skeleton className="h-3 w-12" />
+            <Skeleton className="h-4 w-14 rounded-full" />
           </div>
-
-          <div className="flex flex-col items-end gap-2">
-            {/* Status Badge */}
-            <Skeleton className="h-6 w-20 rounded-full" />
-            {/* Crowd Level Badge */}
-            <Skeleton className="h-5 w-16 rounded-full" />
+          <div className="flex-1">
+            <Skeleton className="h-10 w-full" />
+            <Skeleton className="mt-1 h-2.5 w-full" />
           </div>
         </div>
-
-        {/* Distance (for favorites) */}
-        <div className="mt-2 flex items-center gap-1.5">
-          <Skeleton className="h-3.5 w-3.5" />
-          <Skeleton className="h-3 w-16" />
-        </div>
-
-        {/* Sparkline */}
-        <div className="mt-auto h-16 w-full pt-4">
-          <Skeleton className="h-full w-full" />
-        </div>
-      </CardContent>
-    </Card>
+        <div className="mt-2 h-px w-full" style={{ background: 'var(--pk-panel-border)' }} />
+        <Skeleton className="mt-2 h-3 w-2/3" />
+        <Skeleton className="mt-1.5 h-3 w-1/2" />
+      </div>
+    </article>
   );
 }

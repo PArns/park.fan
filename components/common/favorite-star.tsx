@@ -16,6 +16,8 @@ interface FavoriteStarProps {
   onToggle?: (isFavorite: boolean) => void;
   size?: 'sm' | 'md' | 'lg'; // Size variant
   noCircle?: boolean; // Remove circle background/border
+  /** Glass variant: uses theme-aware translucent icon colors for glass/photo backgrounds. */
+  variant?: 'default' | 'glass';
 }
 
 export function FavoriteStar({
@@ -26,6 +28,7 @@ export function FavoriteStar({
   onToggle,
   size = 'md',
   noCircle = true,
+  variant = 'default',
 }: FavoriteStarProps) {
   const [isFav, setIsFav] = useState(false);
   const t = useTranslations('favorites');
@@ -97,7 +100,9 @@ export function FavoriteStar({
               'transition-all',
               isFav
                 ? 'fill-amber-400 text-amber-500'
-                : 'fill-muted-foreground/20 text-muted-foreground'
+                : variant === 'glass'
+                  ? 'fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45'
+                  : 'fill-muted-foreground/20 text-muted-foreground'
             )}
           />
         </button>

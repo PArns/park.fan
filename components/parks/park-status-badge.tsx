@@ -15,27 +15,26 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const statusConfig = {
     OPERATING: {
       color:
-        'bg-status-operating/65 text-white border border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+        'bg-status-operating/20 text-status-operating border border-status-operating/35 backdrop-blur-[10px]',
       icon: Clock,
     },
     DOWN: {
-      color:
-        'bg-status-down/65 text-white border border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+      color: 'bg-status-down/20 text-status-down border border-status-down/35 backdrop-blur-[10px]',
       icon: AlertTriangle,
     },
     CLOSED: {
       color:
-        'bg-status-closed/65 text-white border border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+        'bg-status-closed/20 text-status-closed border border-status-closed/35 backdrop-blur-[10px]',
       icon: XCircle,
     },
     REFURBISHMENT: {
       color:
-        'bg-status-refurbishment/65 text-white border border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+        'bg-status-refurbishment/20 text-status-refurbishment border border-status-refurbishment/35 backdrop-blur-[10px]',
       icon: Wrench,
     },
     UNKNOWN: {
       color:
-        'bg-gray-500/65 text-white border border-gray-500/80 dark:bg-gray-500/25 dark:border-gray-500/40',
+        'bg-muted-foreground/20 text-muted-foreground border border-muted-foreground/35 backdrop-blur-[10px]',
       icon: Clock,
     },
   };
@@ -44,9 +43,7 @@ export function ParkStatusBadge({ status, className }: ParkStatusBadgeProps) {
   const Icon = config.icon;
 
   return (
-    <Badge
-      className={cn('font-bold tracking-wide uppercase backdrop-blur-md', config.color, className)}
-    >
+    <Badge className={cn('font-bold tracking-wide uppercase', config.color, className)}>
       <Icon className="h-3 w-3 text-inherit" />
       {t(status)}
     </Badge>

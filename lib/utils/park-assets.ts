@@ -65,7 +65,9 @@ export function getAttractionBackgroundImage(
 }
 
 /** Adds `backgroundImage` to each park in an array (mutates a shallow copy). */
-export function enrichParksWithImages<T extends { slug: string }>(parks: T[]): (T & { backgroundImage: string | null })[] {
+export function enrichParksWithImages<T extends { slug: string }>(
+  parks: T[]
+): (T & { backgroundImage: string | null })[] {
   return parks.map((park) => ({ ...park, backgroundImage: getParkBackgroundImage(park.slug) }));
 }
 

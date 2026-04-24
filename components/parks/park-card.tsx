@@ -1,16 +1,19 @@
+import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { Clock, TrendingUp, ChevronRight, DoorOpen, Snowflake } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { MapPin, Activity, Clock, Calendar } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { WaitTimeBadge } from '@/components/parks/wait-time-badge';
-import { BackgroundOverlay } from '@/components/common/background-overlay';
-import { DistanceBadge } from '@/components/common/distance-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { ParkTime } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
+import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
 import { useTranslations, useLocale } from 'next-intl';
+import { getScheduleMessage } from '@/lib/utils/schedule-utils';
+import type { ScheduleSummary } from '@/lib/api/types';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
+import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 // Lazily loaded server-side only — avoids bundling `fs` into the client
 /* eslint-disable @typescript-eslint/no-require-imports */
@@ -21,10 +24,6 @@ const serverAssets =
       })
     : null;
 /* eslint-enable @typescript-eslint/no-require-imports */
-import { getScheduleMessage } from '@/lib/utils/schedule-utils';
-import type { ScheduleSummary } from '@/lib/api/types';
-import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
-import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 
 interface ParkCardProps {
   name: string;
@@ -77,11 +76,11 @@ export function ParkCard({
   url,
   status,
   crowdLevel,
-  averageWaitTime,
+  averageWaitTime: _averageWaitTime,
   analytics,
   operatingAttractions,
   totalAttractions,
-  variant = 'detailed',
+  variant: _variant,
   showBackground = true,
   distance,
   className,
@@ -99,19 +98,13 @@ export function ParkCard({
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
   const tGeo = useTranslations('geo');
+  const tCard = useTranslations('parkCard');
   const locale = useLocale();
 
-  // Resolve href: use direct href, or convert API url, falling back to root
   const effectiveHref = href ?? (url ? convertApiUrlToFrontendUrl(url) : '/');
-
-  // Resolve park UUID for favorites star
   const effectiveParkId = parkId ?? id;
-
-  // Resolve wait time + crowd level — accept both direct props and analytics object
-  const effectiveWaitTime = averageWaitTime ?? analytics?.avgWaitTime;
   const effectiveCrowdLevel = crowdLevel ?? (analytics?.crowdLevel as CrowdLevel | undefined);
 
-  // Optionally translate raw country name (e.g. "Germany" → locale-specific label)
   const displayCountry = translateCountry
     ? (() => {
         const normalized = country.toLowerCase().replace(/\s+/g, '-');
@@ -120,7 +113,6 @@ export function ParkCard({
       })()
     : country;
 
-  // Use provided backgroundImage or fallback to getParkBackgroundImage (server-side only)
   let backgroundImage: string | null = null;
   if (propBackgroundImage !== undefined) {
     backgroundImage = propBackgroundImage;
@@ -132,6 +124,7 @@ export function ParkCard({
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
   const isInMaintenance =
     !!status && status !== 'OPERATING' && status !== 'CLOSED' && status !== 'UNKNOWN';
+
   const scheduleInfo = getScheduleMessage(
     todaySchedule,
     nextSchedule,
@@ -144,122 +137,320 @@ export function ParkCard({
     hasOperatingSchedule
   );
 
+  // Closing time for open parks: remaining duration only (absolute time rendered
+  // by ParkTime). `Date.now()` here is the server render timestamp, which is
+  // what we want — this component is server-rendered and the value is fresh
+  // on every request.
+  // eslint-disable-next-line react-hooks/purity
+  const nowMs = Date.now();
+  const closingRemaining =
+    isOpen && todaySchedule?.closingTime
+      ? (() => {
+          try {
+            const diff = new Date(todaySchedule.closingTime).getTime() - nowMs;
+            if (diff <= 0) return null;
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            return hours > 0 ? `${hours} ${tCommon('hours')}. ${minutes} min.` : `${minutes} min.`;
+          } catch {
+            return null;
+          }
+        })()
+      : null;
+
+  const hasClosingTime = !!(todaySchedule?.closingTime && timezone && closingRemaining);
+  const hasStats = (operatingAttractions != null && totalAttractions != null) || hasClosingTime;
+
   return (
     <Link
       href={effectiveHref as '/europe/germany/rust/europa-park'}
       prefetch={isOperatingOrUnknown}
-      className="group h-full"
+      className={cn('block h-full', className)}
     >
-      <Card className={cn('interactive-card relative h-full overflow-hidden', className)}>
-        {/* Background Image */}
-        {backgroundImage && <BackgroundOverlay imageSrc={backgroundImage} alt={name} hoverEffect />}
-
-        {/* Nearest open park badge */}
-        {highlightAsNearestOpen && isOpen && (
-          <div className="absolute top-2 left-2 z-20">
-            <Badge className="bg-primary text-primary-foreground border-0 text-xs font-medium shadow-md">
-              {tNearby('nearestOpenBadge')}
-            </Badge>
-          </div>
+      <article
+        className={cn(
+          'group relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10',
+          backgroundImage && 'min-h-[400px]'
         )}
-
-        {/* Favorite Star */}
-        {effectiveParkId && (
-          <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-            <FavoriteStar type="park" id={effectiveParkId} name={name} />
-          </div>
-        )}
-
-        {/* Content */}
-        <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
-          <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
-            <div>
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="group-interactive-text line-clamp-2 text-base font-semibold">
-                  {name}
-                </h3>
-                <ChevronRight className="group-interactive-icon mt-0.5 h-4 w-4 flex-shrink-0" />
-              </div>
-              <address className="text-muted-foreground mt-1 truncate text-xs not-italic">
-                <span>{city}</span>, <span>{displayCountry}</span>
-              </address>
-            </div>
-
-            {/* Stats section */}
-            <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-              {/* Distance + Status Badge */}
-              <div className="flex items-center justify-between text-sm">
-                {distance != null ? (
-                  <DistanceBadge distance={distance} size="md" />
-                ) : (
-                  <div className="text-muted-foreground text-xs">
-                    {variant === 'hero' ? 'Featured' : city}
-                  </div>
-                )}
-
-                {status && <ParkStatusBadge status={status} />}
-              </div>
-
-              {/* Wait Time + Crowd Level */}
-              <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
-                {isOperatingOrUnknown && (effectiveWaitTime !== undefined || effectiveCrowdLevel) ? (
-                  <div className="flex items-center gap-2.5 text-sm">
-                    {effectiveWaitTime !== undefined && effectiveWaitTime > 0 && (
-                      <WaitTimeBadge waitTime={effectiveWaitTime} size="sm" />
-                    )}
-                    {effectiveCrowdLevel && (
-                      <CrowdLevelBadge level={effectiveCrowdLevel} className="text-xs" />
-                    )}
-                  </div>
-                ) : (
-                  <div className="h-5" />
-                )}
-
-                {/* Operating Attractions */}
-                {isOpen && operatingAttractions !== undefined && totalAttractions !== undefined ? (
-                  <div className="flex items-center justify-between pt-0.5 text-sm">
-                    <div className="text-muted-foreground flex items-center gap-1.5">
-                      <TrendingUp className="h-4 w-4" />
-                      <span className="font-medium">
-                        {operatingAttractions}/{totalAttractions}
-                      </span>
-                    </div>
-                    <span className="text-muted-foreground text-xs">{tCommon('operating')}</span>
-                  </div>
-                ) : (
-                  <div className="h-5" />
-                )}
-              </div>
-
-              {/* Park Schedule */}
-              {scheduleInfo && (
-                <div className="text-muted-foreground border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
-                  {scheduleInfo.icon === 'opening' ? (
-                    <DoorOpen className="h-3.5 w-3.5" />
-                  ) : scheduleInfo.icon === 'offseason' ? (
-                    <Snowflake className="h-3.5 w-3.5" />
-                  ) : (
-                    <Clock className="h-3.5 w-3.5" />
-                  )}
-                  <span>
-                    {scheduleInfo.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
-                    {scheduleInfo.icon === 'offseason' ? (
-                      <>
-                        <GlossaryTermLink termId="offseason" tooltipOnly>
-                          {tNearby('offseason')}
-                        </GlossaryTermLink>
-                        {scheduleInfo.offseasonDetails}
-                      </>
-                    ) : (
-                      scheduleInfo.message
-                    )}
-                  </span>
+        style={{
+          boxShadow: 'var(--pk-card-shadow)',
+        }}
+      >
+        {/* Photo — z-0, inner div carries the hover scale */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {backgroundImage ? (
+            <div className="pk-photo-zoom relative h-full w-full overflow-hidden">
+              {/*
+                Photo container starts exactly at glass-header bottom (~100px).
+                The photo's TOP edge is the seam. The reflection (scaleY-1 around
+                the container top = seam) extends upward through the glass area.
+              */}
+              <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
+                {/* Main photo — top edge at seam, fills downward */}
+                <Image
+                  src={backgroundImage}
+                  alt={name}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  priority={false}
+                />
+                {/* Reflection — same image flipped around the container top (= seam).
+                   Mask applies BEFORE the flip: opaque at element top (= seam after flip)
+                   fading to transparent toward the bottom (= top of card after flip). */}
+                <div
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    transform: 'scaleY(-1)',
+                    transformOrigin: 'center top',
+                    maskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
+                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
+                  }}
+                >
+                  <Image
+                    src={backgroundImage}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={false}
+                  />
                 </div>
-              )}
+              </div>
             </div>
+          ) : (
+            <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
+          )}
+        </div>
+
+        {/* Scrim — z-1 */}
+        <div
+          className="pointer-events-none absolute inset-0 z-[1]"
+          style={{
+            background:
+              'linear-gradient(180deg, var(--pk-scrim-top) 0%, transparent 32%, transparent 56%, var(--pk-scrim-bot) 100%)',
+          }}
+        />
+
+        {/* Favorite button — z-4 */}
+        {effectiveParkId && (
+          <div
+            className="absolute top-3 right-3 z-[4] h-[34px] w-[34px] rounded-full"
+            style={{
+              background: 'var(--pk-fav-bg)',
+              border: '1px solid var(--pk-fav-border)',
+              boxShadow: 'var(--pk-fav-shadow)',
+            }}
+          >
+            <FavoriteStar
+              type="park"
+              id={effectiveParkId}
+              name={name}
+              size="md"
+              noCircle
+              variant="glass"
+              className="h-full w-full"
+            />
+          </div>
+        )}
+
+        {/* Top glass panel — z-3 */}
+        <div
+          className="relative z-[3] shrink-0 overflow-hidden"
+          style={{
+            padding: '14px 52px 13px 16px',
+            background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            borderBottom: '1px solid var(--pk-panel-border)',
+            boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.06)',
+          }}
+        >
+          {/* Diagonal shine overlay */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.18) 0%, transparent 36%)',
+              mixBlendMode: 'overlay',
+            }}
+          />
+
+          {/* Park name with coaster track icon */}
+          <div
+            className="relative text-[17px] leading-[1.2] font-extrabold tracking-[-0.022em]"
+            style={{ color: 'var(--pk-text-1)' }}
+          >
+            <span
+              className="overflow-hidden"
+              style={{
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+              }}
+            >
+              {name}
+            </span>
+          </div>
+
+          {/* Location + optional distance */}
+          <div
+            className="relative mt-[3px] flex items-center gap-1 text-[12px]"
+            style={{ color: 'var(--pk-text-2)' }}
+          >
+            <MapPin
+              className="h-[11px] w-[11px] shrink-0"
+              style={{ color: 'var(--pk-text-3)' }}
+              aria-hidden="true"
+            />
+            <span>
+              {city}, {displayCountry}
+            </span>
+            {distance != null && (
+              <>
+                <span style={{ color: 'var(--pk-text-3)' }}>·</span>
+                <span>{typeof distance === 'number' ? formatDistance(distance) : distance}</span>
+              </>
+            )}
+          </div>
+
+          {/* Badges row */}
+          <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">
+            {status && <ParkStatusBadge status={status} />}
+            {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
+            {highlightAsNearestOpen && isOpen && (
+              <Badge className="bg-primary/20 text-primary border-primary/35 border text-xs font-medium">
+                {tNearby('nearestOpenBadge')}
+              </Badge>
+            )}
           </div>
         </div>
-      </Card>
+
+        {/* Photo spacer — flex-1 fills the card body and pushes the footer
+           down. Reserves at least 60px when an image is present to give the
+           photo room; otherwise collapses so the card can shrink. */}
+        <div className={cn('relative z-[2] flex-1', backgroundImage && 'min-h-[60px]')} />
+
+        {/* Footer glass panel — z-3 */}
+        <div
+          className="relative z-[3] shrink-0 overflow-hidden"
+          style={{
+            padding: '13px 16px 14px',
+            background: 'var(--pk-panel-highlight-bot), var(--pk-panel)',
+            backdropFilter: 'blur(18px)',
+            WebkitBackdropFilter: 'blur(18px)',
+            borderTop: '1px solid var(--pk-panel-border)',
+            boxShadow: 'inset 0 1px 0 var(--pk-panel-shine), inset 0 -1px 0 rgba(0,0,0,0.03)',
+          }}
+        >
+          {/* Diagonal shine overlay */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background: 'linear-gradient(225deg, rgba(255,255,255,0.14) 0%, transparent 40%)',
+              mixBlendMode: 'overlay',
+            }}
+          />
+
+          {isOpen ? (
+            /* Open footer — stats strip only */
+            hasStats ? (
+              <div
+                className="relative flex items-center gap-[10px] overflow-hidden text-[11.5px] font-medium"
+                style={{
+                  color: 'var(--pk-text-2)',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {operatingAttractions != null && totalAttractions != null && (
+                  <span className="flex items-center gap-1">
+                    <Activity
+                      className="h-[11px] w-[11px] shrink-0"
+                      style={{ color: 'var(--pk-text-3)' }}
+                      aria-hidden="true"
+                    />
+                    <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
+                      {operatingAttractions}
+                    </b>
+                    /{totalAttractions} {tCommon('operating')}
+                  </span>
+                )}
+
+                {operatingAttractions != null && hasClosingTime && (
+                  <span style={{ color: 'var(--pk-text-3)' }} aria-hidden="true">
+                    ·
+                  </span>
+                )}
+
+                {hasClosingTime && todaySchedule?.closingTime && timezone && (
+                  <span className="flex items-center gap-1">
+                    <Clock
+                      className="h-[11px] w-[11px] shrink-0"
+                      style={{ color: 'var(--pk-text-3)' }}
+                      aria-hidden="true"
+                    />
+                    {tCard('until')}{' '}
+                    <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
+                      <ParkTime
+                        isoTime={todaySchedule.closingTime}
+                        parkTimezone={timezone}
+                        locale={locale}
+                        showSuffix
+                      />
+                    </b>
+                    <span style={{ color: 'var(--pk-text-3)' }}>
+                      ({tCard('closingIn')} {closingRemaining})
+                    </span>
+                  </span>
+                )}
+              </div>
+            ) : null
+          ) : (
+            /* Closed footer */
+            <div
+              className="relative flex items-center gap-[6px] text-[12px]"
+              style={{ color: 'var(--pk-text-2)' }}
+            >
+              <Calendar
+                className="h-[13px] w-[13px] shrink-0"
+                style={{ color: 'var(--pk-text-3)' }}
+                aria-hidden="true"
+              />
+              <span>
+                {scheduleInfo?.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
+                {scheduleInfo?.icon === 'offseason' ? (
+                  <>
+                    <GlossaryTermLink termId="offseason" tooltipOnly>
+                      {tNearby('offseason')}
+                    </GlossaryTermLink>
+                    {scheduleInfo.offseasonDetails}
+                  </>
+                ) : scheduleInfo?.icon === 'opening' && scheduleInfo.openingTimeISO && timezone ? (
+                  <>
+                    {scheduleInfo.dayPrefix}
+                    <strong className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
+                      <ParkTime
+                        isoTime={scheduleInfo.openingTimeISO}
+                        parkTimezone={timezone}
+                        locale={locale}
+                        showSuffix
+                      />
+                    </strong>
+                    {scheduleInfo.remainingText && (
+                      <span style={{ color: 'var(--pk-text-3)' }}>
+                        {' '}
+                        ({scheduleInfo.remainingText})
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  (scheduleInfo?.message ?? tCommon('closed'))
+                )}
+              </span>
+            </div>
+          )}
+        </div>
+      </article>
     </Link>
   );
 }

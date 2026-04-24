@@ -53,8 +53,9 @@ import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { AnnounceSection } from '@/components/home/announce-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
-import { ParkStatCard } from '@/components/home/park-stat-card';
-import { AttractionStatCard } from '@/components/home/attraction-stat-card';
+import { ParkCard } from '@/components/parks/park-card';
+import { AttractionCard } from '@/components/parks/attraction-card';
+import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { ScrollIndicator } from '@/components/home/scroll-indicator';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -267,55 +268,140 @@ export default async function HomePage({ params }: HomePageProps) {
             {/* Grid Layout: Second row - Parks */}
             <div className="mb-3 grid gap-4 sm:grid-cols-2">
               {stats.mostCrowdedPark && (
-                <ParkStatCard
-                  label={t('mostCrowded')}
-                  variant="high"
-                  park={{
-                    ...stats.mostCrowdedPark,
-                    url: convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url),
-                    countryName: tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string),
-                  }}
-                />
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-muted-foreground text-sm font-medium">
+                    {t('mostCrowded')}
+                  </h3>
+                  <ParkCard
+                    name={stats.mostCrowdedPark.name}
+                    slug={stats.mostCrowdedPark.slug}
+                    parkId={stats.mostCrowdedPark.id}
+                    city={stats.mostCrowdedPark.city}
+                    country={
+                      tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string) ||
+                      stats.mostCrowdedPark.country
+                    }
+                    href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
+                    backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
+                    status="OPERATING"
+                    crowdLevel={stats.mostCrowdedPark.crowdLevel ?? undefined}
+                    averageWaitTime={stats.mostCrowdedPark.averageWaitTime ?? undefined}
+                    operatingAttractions={stats.mostCrowdedPark.operatingAttractions}
+                    totalAttractions={stats.mostCrowdedPark.totalAttractions}
+                  />
+                </div>
               )}
               {stats.leastCrowdedPark && (
-                <ParkStatCard
-                  label={t('leastCrowded')}
-                  park={{
-                    ...stats.leastCrowdedPark,
-                    url: convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url),
-                    countryName: tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string),
-                  }}
-                />
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-muted-foreground text-sm font-medium">
+                    {t('leastCrowded')}
+                  </h3>
+                  <ParkCard
+                    name={stats.leastCrowdedPark.name}
+                    slug={stats.leastCrowdedPark.slug}
+                    parkId={stats.leastCrowdedPark.id}
+                    city={stats.leastCrowdedPark.city}
+                    country={
+                      tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string) ||
+                      stats.leastCrowdedPark.country
+                    }
+                    href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
+                    backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
+                    status="OPERATING"
+                    crowdLevel={stats.leastCrowdedPark.crowdLevel ?? undefined}
+                    averageWaitTime={stats.leastCrowdedPark.averageWaitTime ?? undefined}
+                    operatingAttractions={stats.leastCrowdedPark.operatingAttractions}
+                    totalAttractions={stats.leastCrowdedPark.totalAttractions}
+                  />
+                </div>
               )}
             </div>
 
             {/* Grid Layout: Third row - Attractions */}
             <div className="grid gap-4 sm:grid-cols-2">
               {stats.longestWaitRide && (
-                <AttractionStatCard
-                  label={t('longestWait')}
-                  variant="high"
-                  attraction={{
-                    ...stats.longestWaitRide,
-                    url: convertApiUrlToFrontendUrl(stats.longestWaitRide.url),
-                    countryName:
-                      tGeo(`countries.${stats.longestWaitRide.parkCountrySlug}` as string) ||
-                      stats.longestWaitRide.parkCountry,
-                  }}
-                />
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-muted-foreground text-sm font-medium">
+                    {t('longestWait')}
+                  </h3>
+                  <AttractionCard
+                    parkStatus="OPERATING"
+                    showParkName
+                    backgroundImage={
+                      getAttractionBackgroundImage(
+                        stats.longestWaitRide.parkSlug,
+                        stats.longestWaitRide.slug
+                      ) ?? getParkBackgroundImage(stats.longestWaitRide.parkSlug)
+                    }
+                    attraction={{
+                      id: stats.longestWaitRide.id,
+                      name: stats.longestWaitRide.name,
+                      slug: stats.longestWaitRide.slug,
+                      url: convertApiUrlToFrontendUrl(stats.longestWaitRide.url),
+                      latitude: null,
+                      longitude: null,
+                      crowdLevel: stats.longestWaitRide.crowdLevel ?? undefined,
+                      queues: [
+                        {
+                          queueType: 'STANDBY',
+                          waitTime: stats.longestWaitRide.waitTime,
+                          status: 'OPERATING',
+                        },
+                      ],
+                      park: {
+                        id: '',
+                        name: stats.longestWaitRide.parkName,
+                        slug: stats.longestWaitRide.parkSlug,
+                        timezone: '',
+                        continent: null,
+                        country: stats.longestWaitRide.parkCountrySlug,
+                        city: stats.longestWaitRide.parkCity,
+                      },
+                    }}
+                  />
+                </div>
               )}
               {stats.shortestWaitRide && (
-                <AttractionStatCard
-                  label={t('shortestWait')}
-                  variant="low"
-                  attraction={{
-                    ...stats.shortestWaitRide,
-                    url: convertApiUrlToFrontendUrl(stats.shortestWaitRide.url),
-                    countryName:
-                      tGeo(`countries.${stats.shortestWaitRide.parkCountrySlug}` as string) ||
-                      stats.shortestWaitRide.parkCountry,
-                  }}
-                />
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-muted-foreground text-sm font-medium">
+                    {t('shortestWait')}
+                  </h3>
+                  <AttractionCard
+                    parkStatus="OPERATING"
+                    showParkName
+                    backgroundImage={
+                      getAttractionBackgroundImage(
+                        stats.shortestWaitRide.parkSlug,
+                        stats.shortestWaitRide.slug
+                      ) ?? getParkBackgroundImage(stats.shortestWaitRide.parkSlug)
+                    }
+                    attraction={{
+                      id: stats.shortestWaitRide.id,
+                      name: stats.shortestWaitRide.name,
+                      slug: stats.shortestWaitRide.slug,
+                      url: convertApiUrlToFrontendUrl(stats.shortestWaitRide.url),
+                      latitude: null,
+                      longitude: null,
+                      crowdLevel: stats.shortestWaitRide.crowdLevel ?? undefined,
+                      queues: [
+                        {
+                          queueType: 'STANDBY',
+                          waitTime: stats.shortestWaitRide.waitTime,
+                          status: 'OPERATING',
+                        },
+                      ],
+                      park: {
+                        id: '',
+                        name: stats.shortestWaitRide.parkName,
+                        slug: stats.shortestWaitRide.parkSlug,
+                        timezone: '',
+                        continent: null,
+                        country: stats.shortestWaitRide.parkCountrySlug,
+                        city: stats.shortestWaitRide.parkCity,
+                      },
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>
