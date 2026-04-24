@@ -3,7 +3,6 @@ import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
 import { getParksNearLocation } from '@/lib/api/discovery';
 import { stripNewPrefix } from '@/lib/utils';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 
 interface NearbyParksSectionProps {
   parkId: string;
@@ -45,7 +44,6 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
               analytics={park.analytics}
               todaySchedule={park.todaySchedule ?? undefined}
               nextSchedule={park.nextSchedule ?? undefined}
-              backgroundImage={getParkBackgroundImage(park.slug)}
               url={park.url ?? ''}
               hasOperatingSchedule={park.hasOperatingSchedule}
               translateCountry
