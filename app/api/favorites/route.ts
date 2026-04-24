@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /** Response depends on cookies and optionally IP; must not be cached. */
@@ -60,31 +60,12 @@ export async function GET(request: NextRequest) {
 
     const data = await response.json();
 
-    // Enrich parks with background images (like nearby route)
     if (data.parks && Array.isArray(data.parks)) {
-      data.parks = data.parks.map((park: { slug: string }) => ({
-        ...park,
-        backgroundImage: getParkBackgroundImage(park.slug),
-      }));
+      data.parks = enrichParksWithImages(data.parks);
     }
 
-    // Enrich attractions with background images (fallback to park background if no attraction image)
     if (data.attractions && Array.isArray(data.attractions)) {
-      data.attractions = data.attractions.map(
-        (attraction: { slug: string; park?: { slug: string } }) => {
-          const attractionImage = attraction.park?.slug
-            ? getAttractionBackgroundImage(attraction.park.slug, attraction.slug)
-            : null;
-          // Fallback to park background if no attraction image
-          const parkImage = attraction.park?.slug
-            ? getParkBackgroundImage(attraction.park.slug)
-            : null;
-          return {
-            ...attraction,
-            backgroundImage: attractionImage || parkImage,
-          };
-        }
-      );
+      data.attractions = enrichAttractionsWithImages(data.attractions);
     }
 
     return NextResponse.json(data);
