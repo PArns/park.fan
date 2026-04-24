@@ -90,7 +90,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const localTerms = termsByLocale.get(l)!;
       const localTerm = localTerms.find((term) => term.id === enTerm.id);
       if (localTerm) {
-        termAlternates[l] = `${BASE_URL}/${l}/${GLOSSARY_SEGMENTS[l as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`;
+        termAlternates[l] =
+          `${BASE_URL}/${l}/${GLOSSARY_SEGMENTS[l as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`;
       }
     }
     termAlternates['x-default'] = termAlternates['en'];

@@ -490,6 +490,12 @@
     "bestVisitGood": "Bon moment: {time}",
     "bestVisitGoodNow": "Bon moment : Maintenant",
     "bestVisitGoodInMin": "Bon moment: {time} (dans {minutes} min)",
+    "now": "Maintenant",
+    "cardHigh": "Max : {time} min",
+    "cardAvgToday": "Ø {time} min aujourd'hui",
+    "cardBestTimeIn": "Meilleur moment : <time></time> (dans {hours} h {minutes} min)",
+    "cardBestTimeInHoursOnly": "Meilleur moment : <time></time> (dans {hours} h)",
+    "cardBestTimeInMinutesOnly": "Meilleur moment : <time></time> (dans {minutes} min)",
     "return": "Retour: {start} - {end}",
     "crowdLevels": {
       "very_low": "Très Faible",
@@ -904,5 +910,9 @@
       "statusIncluded": "Vos visites sont actuellement incluses dans nos statistiques.",
       "loading": "…"
     }
+  },
+  "parkCard": {
+    "until": "Jusqu'à",
+    "closingIn": "dans"
   }
 }

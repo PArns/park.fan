@@ -490,6 +490,12 @@
     "bestVisitGood": "Goed moment: {time} uur",
     "bestVisitGoodNow": "Goed moment: Nu",
     "bestVisitGoodInMin": "Goed moment: {time} uur (over {minutes} min)",
+    "now": "Nu",
+    "cardHigh": "Hoog: {time} min",
+    "cardAvgToday": "Ø {time} min vandaag",
+    "cardBestTimeIn": "Beste tijd: <time></time> (over {hours} u. {minutes} min.)",
+    "cardBestTimeInHoursOnly": "Beste tijd: <time></time> (over {hours} u.)",
+    "cardBestTimeInMinutesOnly": "Beste tijd: <time></time> (over {minutes} min.)",
     "return": "Terug: {start} - {end}",
     "crowdLevels": {
       "very_low": "Zeer Laag",
@@ -904,5 +910,9 @@
       "statusIncluded": "Uw bezoeken worden momenteel wel in onze statistieken meegenomen.",
       "loading": "…"
     }
+  },
+  "parkCard": {
+    "until": "Tot",
+    "closingIn": "nog"
   }
 }

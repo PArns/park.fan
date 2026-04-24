@@ -21,6 +21,12 @@ export function getScheduleMessage(
   message: string;
   icon: 'opening' | 'closing' | 'offseason';
   offseasonDetails?: string;
+  /** Present when icon === 'opening' and timezone is known: raw ISO for ParkTime rendering. */
+  openingTimeISO?: string;
+  /** Present when icon === 'opening': day/weekday prefix already translated, e.g. "Morgen, ". */
+  dayPrefix?: string;
+  /** Present when icon === 'opening': formatted remaining text, e.g. "in 8 Std. 30 Min." */
+  remainingText?: string;
 } | null {
   if (isInMaintenance) return null;
   if (!todaySchedule && !nextSchedule) return null;
@@ -75,11 +81,17 @@ export function getScheduleMessage(
                 return {
                   message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
                   icon: 'opening',
+                  openingTimeISO: opening.toISOString(),
+                  dayPrefix,
+                  remainingText: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
                 };
               }
               return {
                 message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
+                openingTimeISO: opening.toISOString(),
+                dayPrefix,
+                remainingText: `in ${minutes} Min.`,
               };
             } else {
               // No timezone available — show only relative time to avoid displaying wrong UTC time
@@ -124,11 +136,17 @@ export function getScheduleMessage(
                 return {
                   message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${hours} ${tCommon('hours')}. ${minutes} Min.)`,
                   icon: 'opening',
+                  openingTimeISO: nextOpening.toISOString(),
+                  dayPrefix,
+                  remainingText: `in ${hours} ${tCommon('hours')}. ${minutes} Min.`,
                 };
               }
               return {
                 message: `${dayPrefix}${openingTimeFormatted}${tCommon('timeSuffix')} (in ${minutes} Min.)`,
                 icon: 'opening',
+                openingTimeISO: nextOpening.toISOString(),
+                dayPrefix,
+                remainingText: `in ${minutes} Min.`,
               };
             } else {
               // No timezone available — show only relative time to avoid displaying wrong UTC time
@@ -157,6 +175,9 @@ export function getScheduleMessage(
               return {
                 message: `${weekday}, ${openingTimeFormatted}${tCommon('timeSuffix')} (in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.)`,
                 icon: 'opening',
+                openingTimeISO: nextOpening.toISOString(),
+                dayPrefix: `${weekday}, `,
+                remainingText: `in ${days} ${t('day', { count: days })}, ${remainingHours} ${tCommon('hours')}.`,
               };
             }
             return {

@@ -8,7 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import type { ParkStatus } from '@/lib/api/types';
-import { LocalTimeRange } from '@/components/ui/local-time';
+import { ParkTimeRange } from '@/components/common/park-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import type { ScheduleItem, NextScheduleItem, InfluencingHoliday } from '@/lib/api/types';
 
@@ -239,11 +239,13 @@ export function ParkTimeInfo({
               <span className="text-muted-foreground text-sm font-medium">{t('openingHours')}</span>
               {todaySchedule?.openingTime && todaySchedule?.closingTime ? (
                 <div className="flex items-center gap-1.5">
-                  <span className="text-lg font-semibold tabular-nums">
-                    <LocalTimeRange
-                      start={todaySchedule.openingTime}
-                      end={todaySchedule.closingTime}
-                      timeZone={timezone}
+                  <span className="text-lg font-semibold">
+                    <ParkTimeRange
+                      openingTime={todaySchedule.openingTime}
+                      closingTime={todaySchedule.closingTime}
+                      parkTimezone={timezone}
+                      locale={locale}
+                      showSuffix
                     />
                   </span>
                   {todaySchedule.isInferred && (

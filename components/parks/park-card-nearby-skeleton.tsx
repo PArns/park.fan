@@ -2,56 +2,46 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 export function ParkCardNearbySkeleton() {
   return (
-    <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
-      {/* Background Image Skeleton */}
-      <div className="absolute inset-0">
-        <Skeleton className="h-full w-full" />
+    <article className="relative flex min-h-[340px] flex-col overflow-hidden rounded-[20px] border border-white/10">
+      {/* Full-bleed photo skeleton */}
+      <div className="absolute inset-0 z-0">
+        <Skeleton className="h-full w-full rounded-none" />
       </div>
 
-      {/* Favorite Star Position Skeleton */}
-      <div className="absolute top-2 right-2 z-20">
-        <Skeleton className="h-5 w-5 rounded-full" />
+      {/* Fav button skeleton */}
+      <div className="absolute top-3 right-3 z-[4]">
+        <Skeleton className="h-[34px] w-[34px] rounded-full" />
       </div>
 
-      <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
-        <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
-          <div>
-            {/* Title and Chevron */}
-            <div className="flex items-start justify-between gap-2">
-              <Skeleton className="h-5 w-3/4" />
-              <Skeleton className="mt-0.5 h-4 w-4 flex-shrink-0" />
-            </div>
-            {/* City, Country */}
-            <Skeleton className="mt-1 h-3 w-2/3" />
+      {/* Top panel skeleton */}
+      <div className="relative z-[3] shrink-0 bg-black/30 px-4 py-3.5">
+        <div className="flex items-center gap-1.5">
+          <Skeleton className="h-[15px] w-[15px] rounded opacity-60" />
+          <Skeleton className="h-4 w-36 opacity-60" />
+        </div>
+        <Skeleton className="mt-2 h-3 w-24 opacity-40" />
+        <div className="mt-2.5 flex gap-1.5">
+          <Skeleton className="h-5 w-20 rounded-full opacity-60" />
+          <Skeleton className="h-5 w-16 rounded-full opacity-40" />
+        </div>
+      </div>
+
+      {/* Spacer */}
+      <div className="relative z-[2] min-h-[60px] flex-1" />
+
+      {/* Footer panel skeleton */}
+      <div className="relative z-[3] shrink-0 bg-black/30 px-4 py-3">
+        <div className="flex items-end justify-between gap-3">
+          <Skeleton className="h-3 w-20 opacity-40" />
+          <div className="text-right">
+            <Skeleton className="h-9 w-12 opacity-60" />
+            <Skeleton className="mt-1 h-2.5 w-16 opacity-40" />
           </div>
-
-          <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-            {/* Distance + Status */}
-            <div className="flex items-center justify-between text-sm">
-              <Skeleton className="h-4 w-20" />
-              <Skeleton className="h-5 w-16 rounded-full" />
-            </div>
-
-            <div className="min-h-[4.5rem] space-y-2 md:space-y-3">
-              {/* Wait Time + Crowd Level */}
-              <div className="flex items-center gap-2.5">
-                <Skeleton className="h-4 w-16" />
-                <Skeleton className="h-5 w-12 rounded-full" />
-              </div>
-
-              {/* Attractions */}
-              <div className="flex items-center justify-between pt-0.5">
-                <Skeleton className="h-4 w-20" />
-                <Skeleton className="h-3 w-16" />
-              </div>
-            </div>
-
-            {/* Schedule (optional, sometimes shown) */}
-            <div className="border-border/50 mt-2 flex items-center gap-1.5 border-t pt-2">
-              <Skeleton className="h-3.5 w-3.5" />
-              <Skeleton className="h-3 w-32" />
-            </div>
-          </div>
+        </div>
+        <div className="mt-2.5 flex items-center gap-2 border-t border-white/10 pt-2.5">
+          <Skeleton className="h-3 w-24 opacity-40" />
+          <Skeleton className="h-3 w-16 opacity-40" />
+          <Skeleton className="h-3 w-12 opacity-40" />
         </div>
       </div>
     </article>

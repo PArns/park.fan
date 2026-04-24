@@ -1,7 +1,8 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { LocalTimeRange } from '@/components/ui/local-time';
+import { useLocale } from 'next-intl';
+import { ParkTimeRange } from '@/components/common/park-time';
 
 interface OperatingHoursDisplayProps {
   openingTime: string;
@@ -17,15 +18,22 @@ export function OperatingHoursDisplay({
   timeZone,
   className,
 }: OperatingHoursDisplayProps) {
+  const locale = useLocale();
+
   if (timeZone) {
     return (
-      <span className={cn('tabular-nums', className)}>
-        <LocalTimeRange start={openingTime} end={closingTime} timeZone={timeZone} />
-      </span>
+      <ParkTimeRange
+        openingTime={openingTime}
+        closingTime={closingTime}
+        parkTimezone={timeZone}
+        locale={locale}
+        showSuffix
+        className={cn('tabular-nums', className)}
+      />
     );
   }
 
-  // Fallback: extract HH:mm directly from ISO string (e.g. "2025-06-01T09:00:00")
+  // Fallback when no timezone: extract HH:mm directly from ISO string
   const openHHmm =
     openingTime.length >= 16 ? openingTime.substring(11, 16) : openingTime.substring(0, 5);
   const closeHHmm =
