@@ -37,7 +37,7 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
               city={park.city ?? ''}
               country={park.country ?? ''}
               distance={park.distance}
-              status={park.status}
+              status={park.status as import('@/lib/api/types').ParkStatus}
               timezone={park.timezone}
               totalAttractions={park.totalAttractions}
               operatingAttractions={park.operatingAttractions}

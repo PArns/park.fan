@@ -166,7 +166,7 @@ export function FavoritesSection() {
                         city={park.city}
                         country={park.country}
                         distance={park.distance || 0}
-                        status={park.status}
+                        status={park.status as import('@/lib/api/types').ParkStatus}
                         timezone={park.timezone}
                         totalAttractions={park.totalAttractions}
                         operatingAttractions={park.operatingAttractions}
