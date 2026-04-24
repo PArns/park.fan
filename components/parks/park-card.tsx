@@ -193,7 +193,7 @@ export function ParkCard({
                   <DistanceBadge distance={distance} size="md" />
                 ) : (
                   <div className="text-muted-foreground text-xs">
-                    {variant === 'hero' ? 'Featured' : ''}
+                    {variant === 'hero' ? 'Featured' : city}
                   </div>
                 )}
 

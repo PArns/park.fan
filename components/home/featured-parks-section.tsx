@@ -110,6 +110,7 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
               backgroundImage: getParkBackgroundImage(park.slug),
               status: park.status,
+              // currentLoad is real-time; analytics.statistics is cached — they may be independently null
               crowdLevel: park.currentLoad?.crowdLevel,
               averageWaitTime: park.analytics?.statistics?.avgWaitTime,
               operatingAttractions: park.analytics?.statistics?.operatingAttractions,
