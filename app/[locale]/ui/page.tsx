@@ -46,7 +46,6 @@ import { PeakHourBadge } from '@/components/parks/peak-hour-badge';
 
 // Park Cards
 import { ParkCard } from '@/components/parks/park-card';
-import { ParkCardNearby } from '@/components/parks/park-card-nearby';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 
 // Attraction / Show / Restaurant Cards
@@ -1872,15 +1871,15 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             />
           </Sub>
 
-          <ComponentLabel name="ParkCardNearby" file="components/parks/park-card-nearby.tsx" />
-          <Sub title="ParkCardNearby — OPERATING (nearest open) / CLOSED / REFURBISHMENT / OPERATING (no analytics)">
+          <ComponentLabel name="ParkCard (nearby/favorites variant)" file="components/parks/park-card.tsx" />
+          <Sub title="ParkCard with url+analytics — OPERATING (nearest open) / CLOSED / REFURBISHMENT / OPERATING (no analytics)">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <ParkCardNearby
+              <ParkCard
                 id="phantasialand"
+                slug="phantasialand"
                 name="Phantasialand"
                 city="Brühl"
                 country="Germany"
-                continent="Europe"
                 distance={3200}
                 status="OPERATING"
                 timezone="Europe/Berlin"
@@ -1890,54 +1889,57 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 url="/europe/germany/bruhl/phantasialand"
                 backgroundImage="/images/parks/phantasialand/background.jpg"
                 highlightAsNearestOpen
+                translateCountry
                 todaySchedule={{
                   openingTime: '2026-03-07T09:00:00+01:00',
                   closingTime: '2026-03-07T18:00:00+01:00',
                   scheduleType: 'OPERATING',
                 }}
               />
-              <ParkCardNearby
+              <ParkCard
                 id="efteling"
+                slug="efteling"
                 name="Efteling"
                 city="Kaatsheuvel"
                 country="Netherlands"
-                continent="Europe"
                 distance={120000}
                 status="CLOSED"
                 timezone="Europe/Amsterdam"
                 totalAttractions={40}
                 operatingAttractions={0}
                 url="/europe/netherlands/kaatsheuvel/efteling"
+                translateCountry
                 nextSchedule={{
                   openingTime: '2026-03-08T10:00:00+01:00',
                   closingTime: '2026-03-08T18:00:00+01:00',
                   scheduleType: 'OPERATING',
                 }}
               />
-              <ParkCardNearby
+              <ParkCard
                 id="heide-park"
+                slug="heide-park"
                 name="Heide-Park"
                 city="Soltau"
                 country="Germany"
-                continent="Europe"
                 distance={95000}
                 status="REFURBISHMENT"
                 timezone="Europe/Berlin"
                 totalAttractions={30}
                 operatingAttractions={0}
                 url="/europe/germany/soltau/heide-park"
+                translateCountry
                 nextSchedule={{
                   openingTime: '2026-04-01T10:00:00+02:00',
                   closingTime: '2026-04-01T18:00:00+02:00',
                   scheduleType: 'OPERATING',
                 }}
               />
-              <ParkCardNearby
+              <ParkCard
                 id="walibi-belgium"
+                slug="walibi-belgium"
                 name="Walibi Belgium"
                 city="Wavre"
                 country="Belgium"
-                continent="Europe"
                 distance={85000}
                 status="OPERATING"
                 timezone="Europe/Brussels"
@@ -1945,6 +1947,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 operatingAttractions={28}
                 analytics={{ avgWaitTime: 18, crowdLevel: 'low', occupancy: 30 }}
                 url="/europe/belgium/wavre/walibi-belgium"
+                translateCountry
               />
             </div>
           </Sub>

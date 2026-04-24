@@ -4,7 +4,7 @@ import { useEffect, useCallback, useMemo, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Separator } from '@/components/ui/separator';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
@@ -158,9 +158,10 @@ export function FavoritesSection() {
                   <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {sortedFavorites.parks.map((park) => (
-                      <ParkCardNearby
+                      <ParkCard
                         key={park.id}
                         id={park.id}
+                        slug={park.slug}
                         name={stripNewPrefix(park.name)}
                         city={park.city}
                         country={park.country}
@@ -175,6 +176,7 @@ export function FavoritesSection() {
                         backgroundImage={park.backgroundImage}
                         url={park.url}
                         hasOperatingSchedule={park.hasOperatingSchedule}
+                        translateCountry
                       />
                     ))}
                   </div>

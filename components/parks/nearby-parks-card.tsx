@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { ParkCardNearby } from '@/components/parks/park-card-nearby';
+import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
@@ -515,14 +515,14 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
               return (
                 <li key={park.id} className={hiddenClass}>
-                  <ParkCardNearby
+                  <ParkCard
                     id={park.id}
                     name={stripNewPrefix(park.name)}
+                    slug={park.slug}
                     city={park.city}
                     country={park.country}
-                    continent={continent}
                     distance={park.distance}
-                    status={park.status}
+                    status={park.status as import('@/lib/api/types').ParkStatus}
                     timezone={park.timezone}
                     totalAttractions={park.totalAttractions}
                     operatingAttractions={park.operatingAttractions}
@@ -533,6 +533,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                     url={park.url}
                     hasOperatingSchedule={park.hasOperatingSchedule}
                     highlightAsNearestOpen={nearestOpenPark?.id === park.id}
+                    translateCountry
                   />
                 </li>
               );
