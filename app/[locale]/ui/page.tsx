@@ -1872,7 +1872,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
           </Sub>
 
           <ComponentLabel name="ParkCard (nearby/favorites variant)" file="components/parks/park-card.tsx" />
-          <Sub title="ParkCard with url+analytics — OPERATING (nearest open) / CLOSED / REFURBISHMENT / OPERATING (no analytics)">
+          <Sub title="ParkCard with url+analytics — OPERATING (nearest open) / CLOSED / CLOSED (offseason) / OPERATING (no analytics)">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               <ParkCard
                 id="phantasialand"
@@ -1922,7 +1922,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 city="Soltau"
                 country="Germany"
                 distance={95000}
-                status="REFURBISHMENT"
+                status="CLOSED"
                 timezone="Europe/Berlin"
                 totalAttractions={30}
                 operatingAttractions={0}
