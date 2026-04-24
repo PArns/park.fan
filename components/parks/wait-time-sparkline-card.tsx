@@ -1,4 +1,7 @@
-import { useLocale, useTranslations } from 'next-intl';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
 
 interface HistoryPoint {
   timestamp: string;
@@ -12,13 +15,13 @@ interface WaitTimeSparklineCardProps {
 }
 
 /**
- * Non-interactive, card-sized sparkline showing wait-time history with:
- *   - a "now" vertical line with label
- *   - start / end time labels
+ * Card-sized sparkline showing wait-time history.
  *
- * Server-rendered — no client JS, no hydration, no timers. The `now` marker is
- * frozen to the server render timestamp; the surrounding page revalidates
- * frequently enough that the line stays roughly current.
+ * Client-rendered so the right edge of the chart always reaches *now* in the
+ * park's timezone. After the last real data point the line is continued flat
+ * at the last known value — there are no predictions in this view.
+ *
+ * Refreshes every minute to keep the axis labels and the flat tail current.
  */
 export function WaitTimeSparklineCard({
   history,
@@ -26,7 +29,18 @@ export function WaitTimeSparklineCard({
   className,
 }: WaitTimeSparklineCardProps) {
   const locale = useLocale();
-  const t = useTranslations('attractions');
+  const [nowMs, setNowMs] = useState(() => Date.now());
+
+  useEffect(() => {
+    // Defer the first update so we don't trigger a cascading render inside
+    // the effect body (lint: react-hooks/set-state-in-effect).
+    const sync = setTimeout(() => setNowMs(Date.now()), 0);
+    const interval = setInterval(() => setNowMs(Date.now()), 60_000);
+    return () => {
+      clearTimeout(sync);
+      clearInterval(interval);
+    };
+  }, []);
 
   if (!history || history.length < 2) return null;
 
@@ -36,14 +50,17 @@ export function WaitTimeSparklineCard({
   if (data.length < 2) return null;
 
   const minTime = data[0].time;
-  const maxTime = data[data.length - 1].time;
+  const lastPoint = data[data.length - 1];
+  // Extend the x-axis to "now" so the chart always reaches the right edge.
+  const maxTime = Math.max(lastPoint.time, nowMs);
   const range = maxTime - minTime;
   if (range <= 0) return null;
 
   const maxWait = Math.max(...data.map((p) => p.value), 10);
   const getX = (time: number) => ((time - minTime) / range) * 100;
-  const getY = (value: number) => 10 + (1 - value / maxWait) * 80; // 10% padding top/bottom
+  const getY = (value: number) => 10 + (1 - value / maxWait) * 80;
 
+  // Smooth curve through the real data points, then a flat tail to "now".
   let pathD = '';
   data.forEach((p, i) => {
     const x = getX(p.time);
@@ -57,13 +74,11 @@ export function WaitTimeSparklineCard({
       pathD += ` C ${midX},${prevY} ${midX},${y.toFixed(2)} ${x.toFixed(2)},${y.toFixed(2)}`;
     }
   });
-
-  // Server render time — page revalidation keeps this fresh enough for the
-  // "now" marker. No client-side updating.
-  // eslint-disable-next-line react-hooks/purity
-  const nowMs = Date.now();
-  const nowX = nowMs >= minTime && nowMs <= maxTime ? getX(nowMs) : null;
-  const showNowLabel = nowX !== null && nowX > 15 && nowX < 85;
+  if (nowMs > lastPoint.time) {
+    const x = getX(nowMs);
+    const y = getY(lastPoint.value);
+    pathD += ` L ${x.toFixed(2)},${y.toFixed(2)}`;
+  }
 
   const fmt = (ms: number) =>
     new Date(ms).toLocaleTimeString(locale, {
@@ -73,15 +88,21 @@ export function WaitTimeSparklineCard({
       ...(timezone ? { timeZone: timezone } : {}),
     });
 
-  const startLabel = fmt(minTime);
-  const endLabel = fmt(maxTime);
+  // Show ~4 evenly spaced time labels across the axis — start, two interior
+  // ticks, and the current time on the right.
+  const TICK_COUNT = 4;
+  const ticks = Array.from({ length: TICK_COUNT }, (_, i) => {
+    const t = minTime + (range * i) / (TICK_COUNT - 1);
+    const x = (i / (TICK_COUNT - 1)) * 100;
+    return { label: fmt(t), x };
+  });
 
   return (
     <div className={`relative h-full w-full ${className ?? ''}`}>
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        className="absolute inset-0 h-[calc(100%-14px)] w-full overflow-visible"
+        className="absolute inset-x-0 top-0 h-[calc(100%-20px)] w-full overflow-visible"
         aria-hidden="true"
       >
         <path
@@ -94,29 +115,26 @@ export function WaitTimeSparklineCard({
           strokeLinejoin="round"
           className="opacity-70"
         />
-        {nowX !== null && (
-          <line
-            x1={nowX}
-            x2={nowX}
-            y1="6"
-            y2="94"
-            stroke="currentColor"
-            strokeWidth="1"
-            strokeDasharray="2 2"
-            vectorEffect="non-scaling-stroke"
-            className="opacity-30"
-          />
-        )}
       </svg>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-between text-[10px] font-medium tabular-nums opacity-60">
-        <span>{startLabel}</span>
-        {showNowLabel && nowX !== null && (
-          <span className="absolute -translate-x-1/2" style={{ left: `${nowX}%` }}>
-            {t('now')}
+      <div className="pointer-events-none absolute inset-x-0 bottom-1 text-[10px] leading-none font-medium tabular-nums opacity-60">
+        {ticks.map((tick, i) => (
+          <span
+            key={i}
+            className="absolute"
+            style={{
+              left: `${tick.x}%`,
+              transform:
+                i === 0
+                  ? 'translateX(0)'
+                  : i === ticks.length - 1
+                    ? 'translateX(-100%)'
+                    : 'translateX(-50%)',
+            }}
+          >
+            {tick.label}
           </span>
-        )}
-        <span>{endLabel}</span>
+        ))}
       </div>
     </div>
   );

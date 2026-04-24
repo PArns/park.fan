@@ -170,14 +170,10 @@ export function ParkCard({
       <article
         className={cn(
           'group relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10',
-          // Tall min-height only when the card has an image. Rows without any
-          // image card collapse naturally via CSS grid row sizing.
           backgroundImage && 'min-h-[400px]'
         )}
         style={{
           boxShadow: 'var(--pk-card-shadow)',
-          contentVisibility: 'auto',
-          containIntrinsicSize: backgroundImage ? 'auto 400px' : 'auto 140px',
         }}
       >
         {/* Photo — z-0, inner div carries the hover scale */}
@@ -330,7 +326,9 @@ export function ParkCard({
           </div>
         </div>
 
-        {/* Photo spacer — z-2 */}
+        {/* Photo spacer — flex-1 fills the card body and pushes the footer
+           down. Reserves at least 60px when an image is present to give the
+           photo room; otherwise collapses so the card can shrink. */}
         <div className={cn('relative z-[2] flex-1', backgroundImage && 'min-h-[60px]')} />
 
         {/* Footer glass panel — z-3 */}

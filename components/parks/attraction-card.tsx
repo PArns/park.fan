@@ -1,7 +1,16 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations, useLocale } from 'next-intl';
-import { Crown, TrendingUp, TrendingDown, ChartColumn, Clock, Star, MapPin } from 'lucide-react';
+import {
+  Crown,
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  ChartColumn,
+  Clock,
+  Star,
+  MapPin,
+} from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -95,6 +104,7 @@ export function AttractionCard({
   timezone,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
+  const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
   const locale = useLocale();
 
@@ -112,15 +122,25 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  // Short-term trend: delta between the last two history points (same interval
-  // as the sparkline shows). Falls back to null when history is too short.
-  const trendDelta = (() => {
+  // Short-term trend — direction + delta.
+  // Compares the mean of the most recent window (last ~5 points) against the
+  // mean of the window before it. This smooths out single-point jitter so a
+  // brief spike doesn't flip the indicator. A sub-3-min change counts as
+  // stable — relevant for short waits where a couple of minutes is noise.
+  const trend: { direction: 'up' | 'down' | 'stable'; delta: number } | null = (() => {
     if (!isOperatingOrUnknown || waitTime === null) return null;
-    if (!history || history.length < 2) return null;
-    const last = history[history.length - 1];
-    const prev = history[history.length - 2];
-    if (typeof last?.waitTime !== 'number' || typeof prev?.waitTime !== 'number') return null;
-    return last.waitTime - prev.waitTime;
+    if (!history || history.length < 4) return null;
+    const WINDOW = Math.min(5, Math.floor(history.length / 2));
+    const recent = history.slice(-WINDOW);
+    const prior = history.slice(-WINDOW * 2, -WINDOW);
+    const avg = (pts: typeof history) =>
+      pts.reduce((s, p) => s + (typeof p.waitTime === 'number' ? p.waitTime : 0), 0) / pts.length;
+    const delta = Math.round(avg(recent) - avg(prior));
+    const STABLE_THRESHOLD = 3;
+    if (Math.abs(delta) < STABLE_THRESHOLD) {
+      return { direction: 'stable', delta: 0 };
+    }
+    return { direction: delta > 0 ? 'up' : 'down', delta };
   })();
 
   // Best-visit slot (only for OPERATING)
@@ -165,24 +185,15 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className="group block h-full"
+      className="group flex h-full flex-col"
     >
       <article
         className={cn(
           'relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10',
-          // Tall min-height only when the card has an image. In a CSS grid row
-          // where *no* card has an image, no card provides this stretcher — so
-          // the row collapses to the natural (short) height of its content.
-          // h-full above keeps borders aligned in mixed rows.
           backgroundImage && 'min-h-[420px]'
         )}
         style={{
           boxShadow: 'var(--pk-card-shadow)',
-          // Skip rendering/painting when the card is far off-screen.
-          // contain-intrinsic-size: auto <height> keeps scrollbar stable
-          // without locking the width (which the grid sets).
-          contentVisibility: 'auto',
-          containIntrinsicSize: backgroundImage ? 'auto 420px' : 'auto 120px',
         }}
       >
         {/* Photo */}
@@ -337,8 +348,10 @@ export function AttractionCard({
             );
           })()}
 
-          {/* Badges */}
-          <div className="relative mt-[9px] flex flex-wrap items-center gap-[6px]">
+          {/* Badges — single row with overflow fade. Keeps all headers the
+              same height across a grid row so cards line up without needing
+              a flex-1 spacer to absorb differences. */}
+          <div className="relative mt-[9px] flex flex-nowrap items-center gap-[6px] overflow-hidden [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)]">
             <ParkStatusBadge status={status as ParkStatus} />
             {isOperatingOrUnknown && crowdLevel && (
               <CrowdLevelBadge
@@ -376,8 +389,10 @@ export function AttractionCard({
           </div>
         </div>
 
-        {/* Photo spacer — gives the image room to breathe when there is one;
-           collapses to 0 when there's no image so rows without images shrink. */}
+        {/* Photo spacer — flex-1 so it fills the middle and pushes the footer
+           to the bottom of the card. With an image it reserves extra height
+           so the photo has room to breathe; without, it collapses until the
+           grid stretches the card to match its tallest sibling. */}
         <div className={cn('relative z-[2] flex-1', backgroundImage && 'min-h-[80px]')} />
 
         {/* Bottom glass panel — only rendered when we have a live wait time */}
@@ -404,7 +419,9 @@ export function AttractionCard({
             <div className="relative flex flex-col gap-2">
               {/* Top row: wait time column + sparkline */}
               <div className="flex items-stretch gap-3">
-                {/* Wait-time column */}
+                {/* Wait-time column — always reserves a trend-pill slot so
+                    cards with and without live trend data share the same
+                    column height (keeps sparkline row heights aligned). */}
                 <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
                   <div className="flex items-baseline gap-1 leading-none">
                     <span
@@ -417,24 +434,30 @@ export function AttractionCard({
                       min
                     </span>
                   </div>
-                  {trendDelta !== null && trendDelta !== 0 && (
-                    <span
-                      className={cn(
-                        'mt-1 inline-flex w-fit items-center gap-0.5 rounded-full px-1.5 py-[2px] text-[10.5px] leading-none font-semibold',
-                        trendDelta > 0
-                          ? 'bg-trend-up/20 text-trend-up border-trend-up/35 border'
-                          : 'bg-trend-down/20 text-trend-down border-trend-down/35 border'
-                      )}
-                    >
-                      {trendDelta > 0 ? (
-                        <TrendingUp className="h-[11px] w-[11px]" />
-                      ) : (
-                        <TrendingDown className="h-[11px] w-[11px]" />
-                      )}
-                      {trendDelta > 0 ? '+' : ''}
-                      {trendDelta} min
-                    </span>
-                  )}
+                  <div className="mt-1 min-h-[24px]">
+                    {trend && (
+                      <span
+                        className={cn(
+                          'inline-flex w-fit items-center gap-0.5 rounded-full border px-1.5 py-[2px] text-[10.5px] leading-none font-semibold',
+                          trend.direction === 'up' &&
+                            'bg-trend-up/20 text-trend-up border-trend-up/35',
+                          trend.direction === 'down' &&
+                            'bg-trend-down/20 text-trend-down border-trend-down/35',
+                          trend.direction === 'stable' &&
+                            'bg-trend-stable/20 text-trend-stable border-trend-stable/35'
+                        )}
+                      >
+                        {trend.direction === 'up' && <TrendingUp className="h-[11px] w-[11px]" />}
+                        {trend.direction === 'down' && (
+                          <TrendingDown className="h-[11px] w-[11px]" />
+                        )}
+                        {trend.direction === 'stable' && <Minus className="h-[11px] w-[11px]" />}
+                        {trend.direction === 'stable'
+                          ? tCommon('stable')
+                          : `${trend.delta > 0 ? '+' : ''}${trend.delta} min`}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {/* Sparkline */}
