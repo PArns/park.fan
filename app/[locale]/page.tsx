@@ -15,7 +15,7 @@ import { HeroBackground } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
-import { RefractivePanel } from '@/components/common/refractive-panel';
+import { GlassCard } from '@/components/common/glass-card';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -140,14 +140,14 @@ export default async function HomePage({ params }: HomePageProps) {
       <link rel="preload" as="image" href="/logo-big.svg" />
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative isolate -mt-16 overflow-hidden px-4 pt-16 pb-4 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
+      <section className="relative isolate -mt-16 overflow-hidden px-6 pt-16 pb-14 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
         <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto">
           <div className="flex flex-col">
             {/* Row 1: Logo left + Title/Description right */}
-            <RefractivePanel className="mx-auto flex w-full max-w-5xl flex-col items-center bg-white/25 px-6 py-4 shadow-2xl sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:bg-black/40">
+            <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/20 bg-white/25 px-6 py-4 shadow-2xl sm:py-8 lg:mb-16 lg:flex-row lg:items-center lg:px-12 lg:py-10 dark:border-white/10 dark:bg-black/40">
               {/* Logo – light/dark variant based on theme */}
-              <div className="relative h-20 w-20 shrink-0 sm:h-36 sm:w-36 lg:h-72 lg:w-72">
+              <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-72 lg:w-72">
                 {/* SVGs don't benefit from next/image optimization — use <img> directly */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -190,7 +190,7 @@ export default async function HomePage({ params }: HomePageProps) {
                   </Link>
                 </div>
               </div>
-            </RefractivePanel>
+            </GlassCard>
           </div>
         </div>
 
