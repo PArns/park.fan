@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMounted } from '@/lib/hooks/use-mounted';
 
 interface ObfuscatedEmailProps {
   local: string;
@@ -44,34 +44,16 @@ export function rot13(text: string): string {
  * The initial HTML shows ROT13-encrypted text, and after hydration it becomes a clickable mailto link.
  */
 export function ObfuscatedEmail({ local, domain, displayText }: ObfuscatedEmailProps) {
-  const [email, setEmail] = useState<string | null>(null);
-  const [href, setHref] = useState<string | null>(null);
+  const mounted = useMounted();
 
-  useEffect(() => {
-    // Assemble email and create mailto link only after hydration
-    // This ensures the plain text email is never in the initial HTML
-    // We use setTimeout to avoid synchronous state updates in effect (lint fix)
-    const timer = setTimeout(() => {
-      const fullEmail = `${local}@${domain}`;
-      setEmail(fullEmail);
-      setHref(`mailto:${fullEmail}`);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [local, domain]);
-
-  if (!email || !href) {
-    // Show ROT13-encrypted version during SSR (before hydration)
-    // This obfuscates the email in the initial HTML - never show displayText or plain text here!
-    // Also encrypt the @ symbol
-    const encryptedLocal = rot13(local);
-    const encryptedDomain = rot13(domain);
-    const encryptedAt = 'M'; // @ -> M (rot13 of @)
-    return <span>{`${encryptedLocal}${encryptedAt}${encryptedDomain}`}</span>;
+  if (!mounted) {
+    // SSR: show ROT13-encrypted so bots can't scrape the address from initial HTML
+    return <span>{`${rot13(local)}M${rot13(domain)}`}</span>;
   }
 
-  // After hydration, show clickable mailto link with displayText or plain email
+  const email = `${local}@${domain}`;
   return (
-    <a href={href} className="break-all">
+    <a href={`mailto:${email}`} className="break-all">
       {displayText || email}
     </a>
   );

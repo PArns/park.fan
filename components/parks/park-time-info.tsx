@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { formatDuration } from '@/lib/i18n/time';
 import { useTranslations, useLocale } from 'next-intl';
 import { Clock, Calendar, DoorOpen, Snowflake, Info } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -39,24 +40,7 @@ export function ParkTimeInfo({
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
   const locale = useLocale();
-  const [currentTime, setCurrentTime] = useState<Date | null>(null);
-
-  // Update current time every minute
-  useEffect(() => {
-    // Avoid hydration mismatch by setting time after mount
-    const initialTimer = setTimeout(() => {
-      setCurrentTime(new Date());
-    }, 0);
-
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000); // Update every minute
-
-    return () => {
-      clearTimeout(initialTimer);
-      clearInterval(timer);
-    };
-  }, []);
+  const currentTime = useBrowserNow(60_000);
 
   // Format current time in park timezone
   const formatCurrentTime = () => {
@@ -95,50 +79,18 @@ export function ParkTimeInfo({
 
     // If park hasn't opened yet
     if (now < opening) {
-      const diffMs = opening.getTime() - now.getTime();
-      const hours = Math.floor(diffMs / (1000 * 60 * 60));
-      const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
-      if (hours > 0 && minutes > 0) {
-        return {
-          message: `${t('opensIn')} ${hours} ${tCommon('hour', { count: hours })} ${minutes} ${tCommon('minute', { count: minutes })}`,
-          variant: 'opening',
-        };
-      } else if (hours > 0) {
-        return {
-          message: `${t('opensIn')} ${hours} ${tCommon('hour', { count: hours })}`,
-          variant: 'opening',
-        };
-      } else {
-        return {
-          message: `${t('opensIn')} ${minutes} ${tCommon('minute', { count: minutes })}`,
-          variant: 'opening',
-        };
-      }
+      return {
+        message: `${t('opensIn')} ${formatDuration(opening.getTime() - now.getTime(), tCommon)}`,
+        variant: 'opening',
+      };
     }
 
     // If park is open and will close soon
     if (now >= opening && now < closing) {
-      const diffMs = closing.getTime() - now.getTime();
-      const hours = Math.floor(diffMs / (1000 * 60 * 60));
-      const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-
-      if (hours > 0 && minutes > 0) {
-        return {
-          message: `${t('closesIn')} ${hours} ${tCommon('hour', { count: hours })} ${minutes} ${tCommon('minute', { count: minutes })}`,
-          variant: 'closing',
-        };
-      } else if (hours > 0) {
-        return {
-          message: `${t('closesIn')} ${hours} ${tCommon('hour', { count: hours })}`,
-          variant: 'closing',
-        };
-      } else {
-        return {
-          message: `${t('closesIn')} ${minutes} ${tCommon('minute', { count: minutes })}`,
-          variant: 'closing',
-        };
-      }
+      return {
+        message: `${t('closesIn')} ${formatDuration(closing.getTime() - now.getTime(), tCommon)}`,
+        variant: 'closing',
+      };
     }
 
     return null;

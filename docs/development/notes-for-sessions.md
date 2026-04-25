@@ -55,7 +55,24 @@ Reminders and context for AI or human sessions working on the codebase.
 
     **API population timing** — bootstrap job runs 90 s after server start, then daily cron at 02:30. Fields absent from API response = not yet populated, treat as non-seasonal.
 
-14. **Redirects bei Routen-Änderungen** — Bei jeder Umbenennung oder Verschiebung einer Route (Park-Slug, Attraction-Slug, URL-Segment, Locale-Segment) **muss** ein permanenter Redirect (301/308) in `next.config.ts` unter `redirects()` angelegt werden. Ohne Redirect entstehen 404s, die Google im Index behält und die Crawl-Budget verschwenden.
+14. **Shared hooks (`lib/hooks/use-mounted.ts`)** — Use these instead of raw `useState + useEffect` for hydration-safe client state:
+    - `useMounted()` → `boolean`, true after hydration
+    - `useBrowserTimezone()` → browser timezone string after mount
+    - `useBrowserNow(intervalMs | null)` → `Date | null`, refreshed every interval. Pass `null` for one-shot (no polling).
+
+    **`lib/i18n/helpers.ts` is server-only** — it transitively imports `fs` via `lib/i18n/logger.ts`. Never import it in client components; use local inline helpers or `useTranslations()` instead.
+
+15. **FAQ helpers (`lib/faq/`)** — Shared logic for building FAQ items:
+    - `lib/faq/attraction-faq.ts` → `buildAttractionFaqItems(attraction, park, t)`
+    - `lib/faq/park-faq.ts` → `buildParkFaqItems(park, locale, t, tGeo)` (Q1–Q6), `getParkArticleForms(park, locale)`
+
+    FAQ sections use these builders; Q7 (leastCrowded, requires `calendarData`) is still added locally in `ParkFAQSection`.
+
+16. **Generic Sparkline (`components/parks/sparkline.tsx`)** — Use `<Sparkline points formatTooltip />` for any step-after chart. `WaitTimeSparkline` and `HourlyP90Sparkline` are thin wrappers that transform domain data to `SparklinePoint[]`.
+
+17. **Howto page structure** — `app/[locale]/howto/` is split into multiple files. When editing howto content, work in `content/[locale].tsx`. Shared UI primitives are in `_howto-ui.tsx`; mock demo components in `_mock-components.tsx`. The top-level `page.tsx` only handles metadata and dispatches by locale.
+
+18. **Redirects bei Routen-Änderungen** — Bei jeder Umbenennung oder Verschiebung einer Route (Park-Slug, Attraction-Slug, URL-Segment, Locale-Segment) **muss** ein permanenter Redirect (301/308) in `next.config.ts` unter `redirects()` angelegt werden. Ohne Redirect entstehen 404s, die Google im Index behält und die Crawl-Budget verschwenden.
     - Glossary-Locale-Segmente (`/de/glossar`, `/fr/glossaire` etc.) → Rewrites in `rewrites()`, Cross-Locale-Fehler → `redirects()`
     - Umbenannte Parks → `redirects()` mit `/:locale/parks/…` und `/parks/…` (ohne Locale, Middleware übernimmt Locale-Erkennung)
     - Neue Locale-Segmente → zu `localeSegments` in BEIDEN Blöcken (`redirects` + `rewrites`) hinzufügen

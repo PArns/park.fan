@@ -4,6 +4,46 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.8.0 (2026-04-25) – Codebase Refactoring
+
+### Shared Hooks (`lib/hooks/use-mounted.ts`)
+
+- **`useMounted()`** — returns `true` after hydration (replaces `useState + useEffect` pattern across 5 components).
+- **`useBrowserTimezone()`** — returns browser timezone string after mount.
+- **`useBrowserNow(intervalMs)`** — returns a `Date` refreshed every `intervalMs` ms; pass `null` for one-shot (no interval). Replaces `setInterval` in `PeakHourBadge` and `ParkTimeInfo`.
+
+### FAQ Helpers (`lib/faq/`)
+
+- **`lib/faq/attraction-faq.ts`** — `buildAttractionFaqItems()` extracts FAQ Q1–Q4 logic from `AttractionFaqSection` and `AttractionFaqStructuredData`.
+- **`lib/faq/park-faq.ts`** — `buildParkFaqItems()` (Q1–Q6) and `getParkArticleForms()` shared by `ParkFAQSection` and `faq-structured-data`.
+
+### Shared Sparkline (`components/parks/sparkline.tsx`)
+
+- Generic `<Sparkline points[] formatTooltip />` component with global-mousemove tooltip (portal to `document.body`).
+- `WaitTimeSparkline` and `HourlyP90Sparkline` are now thin wrappers.
+
+### Duration Formatting (`lib/i18n/time.ts`)
+
+- **`formatDuration(diffMs, t)`** — formats milliseconds as `"Xh Ym"` / `"Xh"` / `"Ym"`. Used in `PeakHourBadge` and `ParkTimeInfo`.
+
+### Howto Page Split (`app/[locale]/howto/`)
+
+- `page.tsx` — metadata shell only (~236 lines).
+- `_howto-ui.tsx` — shared UI atoms: `Section`, `SubSection`, `DemoBadge`, `InfoBox`, `TipBox`, `PersonaCard`, `Li`.
+- `_mock-components.tsx` — demo components: `MockParkHeader`, `MockAttractionCards`, etc.
+- `_live-calendar.tsx` — async server component that fetches live Phantasialand calendar data.
+- `content/[locale].tsx` — per-locale content (de/en/es/fr/it/nl).
+
+### Dead Code Removed
+
+- `components/search/hero-search-button.tsx` — unused
+- `components/home/scroll-indicator.tsx` — unused
+- `components/common/truncated-text.tsx` — unused
+- Removed dead `FeaturedParksSection` async function from `featured-parks-section.tsx`
+- Removed `'use client'` from `glossary-background.tsx` and `glossary-inject-term.tsx`
+
+---
+
 ## 2.7.0 (2026-03-15) – Glossary System
 
 ### Complete Glossary Launch

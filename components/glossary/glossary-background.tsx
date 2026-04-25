@@ -1,5 +1,3 @@
-'use client';
-
 import { RandomHeroImage } from '@/components/layout/hero-background';
 
 /**

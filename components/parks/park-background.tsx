@@ -22,7 +22,7 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           alt={alt}
           fill
           priority
-          quality={85}
+          quality={90}
           placeholder="blur"
           blurDataURL={PARK_BLUR_DATA_URL}
           className="object-cover object-center"
@@ -42,7 +42,7 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           alt={alt}
           fill
           priority
-          quality={85}
+          quality={90}
           placeholder="blur"
           blurDataURL={PARK_BLUR_DATA_URL}
           className="object-cover"

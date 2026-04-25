@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { useBrowserTimezone } from '@/lib/hooks/use-mounted';
 
 interface ParkTimeProps {
   /** ISO datetime string from the API */
@@ -30,16 +30,7 @@ export function ParkTime({
   showSuffix = false,
 }: ParkTimeProps) {
   const tCommon = useTranslations('common');
-  const [browserTimezone, setBrowserTimezone] = useState<string | null>(null);
-
-  useEffect(() => {
-    // Defer to the next tick so we don't trigger a cascading render inside
-    // the effect body (lint rule: react-hooks/set-state-in-effect).
-    const t = setTimeout(() => {
-      setBrowserTimezone(Intl.DateTimeFormat().resolvedOptions().timeZone);
-    }, 0);
-    return () => clearTimeout(t);
-  }, []);
+  const browserTimezone = useBrowserTimezone();
 
   const date = new Date(isoTime);
   const suffix = showSuffix ? tCommon('timeSuffix') : '';

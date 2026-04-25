@@ -4,6 +4,15 @@ import { ChevronDown, MapPin, Clock, Users, Zap } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { buildAttractionFaqItems, type AttractionFaqIconName } from '@/lib/faq/attraction-faq';
+import type { LucideIcon } from 'lucide-react';
+
+const ICON_MAP: Record<AttractionFaqIconName, LucideIcon> = {
+  MapPin,
+  Clock,
+  Users,
+  Zap,
+};
 
 interface AttractionFAQSectionProps {
   attraction: ParkAttraction;
@@ -13,56 +22,11 @@ interface AttractionFAQSectionProps {
 export async function AttractionFAQSection({ attraction, park }: AttractionFAQSectionProps) {
   const t = await getTranslations('seo.faq.attraction');
   const attractionName = stripNewPrefix(attraction.name);
-  const parkName = stripNewPrefix(park.name);
-
-  const faqs = [];
-
-  // Question 1: Location
-  if (park.name) {
-    faqs.push({
-      icon: MapPin,
-      question: t('locationQ', { attraction: attractionName }),
-      answer: t('locationA', {
-        attraction: attractionName,
-        park: parkName,
-        land: attraction.land ? t('inLand', { land: attraction.land }) : '',
-      }),
-    });
-  }
-
-  // Question 2: Wait Time
-  faqs.push({
-    icon: Clock,
-    question: t('waitTimeQ', { attraction: attractionName }),
-    answer: t('waitTimeA', { attraction: attractionName }),
-  });
-
-  // Question 3: Single Rider
-  const singleRiderQueue = attraction.queues?.find((q) => q.queueType === 'SINGLE_RIDER');
-  if (singleRiderQueue) {
-    faqs.push({
-      icon: Users,
-      question: t('singleRiderQ', { attraction: attractionName }),
-      answer: t('singleRiderA', { attraction: attractionName }),
-    });
-  }
-
-  // Question 4: Paid Queue / Premier Access
-  const paidQueue = attraction.queues?.find(
-    (q) => q.queueType === 'PAID_RETURN_TIME' || q.queueType === 'PAID_STANDBY'
+  const faqs = buildAttractionFaqItems(
+    attraction,
+    park,
+    t as Parameters<typeof buildAttractionFaqItems>[2]
   );
-
-  if (paidQueue) {
-    const typeName = 'Express Pass / Premier Access';
-    faqs.push({
-      icon: Zap,
-      question: t('paidQueueQ', { attraction: attractionName }),
-      answer: t('paidQueueA', {
-        attraction: attractionName,
-        type: typeName,
-      }),
-    });
-  }
 
   if (faqs.length === 0) return null;
 
@@ -71,7 +35,7 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
       <h2 className="text-2xl font-bold">{t('title', { attraction: attractionName })}</h2>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
-          const Icon = faq.icon;
+          const Icon = ICON_MAP[faq.iconName];
           return (
             <Card key={index} className="overflow-hidden">
               <details className="group">

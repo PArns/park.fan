@@ -1,12 +1,11 @@
 import type { ReactNode } from 'react';
 import { ParkWithAttractions, IntegratedCalendarResponse } from '@/lib/api/types';
 import { getTranslations } from 'next-intl/server';
-import { formatInTimeZone } from 'date-fns-tz';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import {
   ChevronDown,
-  MapPin,
   Calendar,
+  MapPin,
   Ticket,
   Map,
   Theater,
@@ -14,11 +13,11 @@ import {
   Clock2,
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { translateCountry } from '@/lib/i18n/helpers';
-import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
+import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { buildParkFaqItems, getParkArticleForms, type ParkFaqIconName } from '@/lib/faq/park-faq';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
@@ -27,10 +26,20 @@ interface ParkFAQSectionProps {
 }
 
 interface FAQItem {
-  icon: LucideIcon;
+  iconName: ParkFaqIconName | 'Clock2';
   question: string;
   answer: string | { text: string; list: (string | null)[] } | ReactNode;
 }
+
+const ICON_MAP: Record<ParkFaqIconName | 'Clock2', LucideIcon> = {
+  Calendar,
+  MapPin,
+  Ticket,
+  Map,
+  Theater,
+  UtensilsCrossed,
+  Clock2,
+};
 
 function isFaqListAnswer(
   answer: FAQItem['answer']
@@ -45,146 +54,37 @@ function isFaqListAnswer(
 
 export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSectionProps) {
   const t = await getTranslations('seo.faq');
+
   const tGeo = await getTranslations('geo');
+  const faqs: FAQItem[] = buildParkFaqItems(
+    park,
+    locale,
+    t as Parameters<typeof buildParkFaqItems>[2],
+    tGeo as Parameters<typeof buildParkFaqItems>[3]
+  );
+
+  const { parkNom, parkNomCap, parkLoc } = getParkArticleForms(park, locale);
+  const parkName = stripNewPrefix(park.name);
 
   const crowdCalendarLink = (chunks: ReactNode) => (
     <CrowdCalendarFaqLink className="text-primary decoration-primary/50 hover:decoration-primary font-medium underline underline-offset-2">
       {chunks}
     </CrowdCalendarFaqLink>
   );
-  const parkName = stripNewPrefix(park.name);
 
-  // German article forms (only for parks whose name contains "Park", e.g. "Europa-Park")
-  const article = locale === 'de' ? getGermanArticle(parkName, park.slug) : undefined;
-  const parkNom = article ? `${article} ${parkName}` : parkName;
-  const parkNomCap = article
-    ? `${article.charAt(0).toUpperCase()}${article.slice(1)} ${parkName}`
-    : parkName;
-  // DE FAQ question only: "Wann ist im Phantasialand …" (locative, no article)
-  const parkLoc = locale === 'de' ? `im ${parkName}` : parkName;
-
-  // Get current date in park's timezone
-  const timeZone = park.timezone || 'UTC';
-  const now = new Date();
-  const parkDate = formatInTimeZone(now, timeZone, 'yyyy-MM-dd');
-
-  // Find today's schedule
-  const todaySchedule = park.schedule?.find((s) => s.date === parkDate);
-
-  // Format localized date
-  const localizedDate = new Intl.DateTimeFormat(locale, {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(now);
-
-  const faqs: FAQItem[] = [];
-
-  // Question 1: Opening Hours
-  let openingHoursAnswer = '';
-  if (
-    todaySchedule?.scheduleType === 'OPERATING' &&
-    todaySchedule.openingTime &&
-    todaySchedule.closingTime
-  ) {
-    const open = formatInTimeZone(new Date(todaySchedule.openingTime), timeZone, 'HH:mm');
-    const close = formatInTimeZone(new Date(todaySchedule.closingTime), timeZone, 'HH:mm');
-    openingHoursAnswer = t('openingHoursA', {
-      date: localizedDate,
-      park: parkNom,
-      open,
-      close,
-    });
-  } else {
-    openingHoursAnswer = t('openingHoursClosed', {
-      date: localizedDate,
-      park: parkNom,
-    });
-  }
-
-  faqs.push({
-    icon: Calendar,
-    question: t('openingHoursQ', { park: parkNom }),
-    answer: openingHoursAnswer,
-  });
-
-  // Question 2: Location
-  if (park.city && park.country) {
-    const countrySlug = park.country.toLowerCase().replace(/\s+/g, '-');
-    const translatedCountry = translateCountry(tGeo, countrySlug, locale, park.country);
-
-    faqs.push({
-      icon: MapPin,
-      question: t('locationQ', { park: parkNom }),
-      answer: t('locationA', {
-        park: parkNomCap,
-        city: park.city,
-        country: translatedCountry,
-      }),
-    });
-  }
-
-  // Question 3: Attraction Count
-  const totalAttractions = park.analytics?.statistics?.totalAttractions || park.attractions?.length;
-
-  if (totalAttractions) {
-    faqs.push({
-      icon: Ticket,
-      question: t('attractionCountQ', { park: parkName }),
-      answer: t('attractionCountA', {
-        park: parkName,
-        count: totalAttractions,
-      }),
-    });
-  }
-
-  // Question 4: Themed Areas
-  const uniqueLands = Array.from(new Set(park.attractions?.map((a) => a.land).filter(Boolean)));
-
-  if (uniqueLands.length > 0) {
-    faqs.push({
-      icon: Map,
-      question: t('themedAreasQ', { park: parkName }),
-      answer: {
-        text: t('themedAreasA', { park: parkNomCap, count: uniqueLands.length }),
-        list: uniqueLands,
-      },
-    });
-  }
-
-  // Question 5: Shows
-  if (park.shows && park.shows.length > 0) {
-    const showNames = park.shows.map((s) => stripNewPrefix(s.name));
-    faqs.push({
-      icon: Theater,
-      question: t('showsQ', { park: parkName }),
-      answer: {
-        text: t('showsA', { park: parkNom, count: park.shows.length }),
-        list: showNames,
-      },
-    });
-  }
-
-  // Question 6: Dining
-  if (park.restaurants && park.restaurants.length > 0) {
-    const restaurantNames = park.restaurants.map((r) => stripNewPrefix(r.name));
-    faqs.push({
-      icon: UtensilsCrossed,
-      question: t('diningQ', { park: parkName }),
-      answer: {
-        text: t('diningA', { park: parkNomCap, count: park.restaurants.length }),
-        list: restaurantNames,
-      },
-    });
-  }
-
-  // Question 7: Least crowded
+  // Q7: Least crowded (requires calendar data, uses rich text)
   if (calendarData) {
     const analysis = analyzeBestDays(calendarData.days);
     if (analysis.totalDays >= 7) {
+      const conjunctions: Record<string, string> = {
+        de: ' und ',
+        fr: ' et ',
+        nl: ' en ',
+        es: ' y ',
+      };
+      const conjunction = conjunctions[locale] ?? ' and ';
+
       if (analysis.bestDaysOfWeek.length >= 2) {
-        // Monday-first order in prose (e.g. DE: "Montag und Dienstag", not "Dienstag und Montag")
         const mondayFirstOrder = (dayIndex: number) => (dayIndex + 6) % 7;
         const dayNames = [...analysis.bestDaysOfWeek.slice(0, 2)]
           .sort((a, b) => mondayFirstOrder(a.dayIndex) - mondayFirstOrder(b.dayIndex))
@@ -194,19 +94,9 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
             date.setDate(refMonday.getDate() + ((s.dayIndex - 1 + 7) % 7));
             return new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
           })
-          .join(
-            locale === 'de'
-              ? ' und '
-              : locale === 'fr'
-                ? ' et '
-                : locale === 'nl'
-                  ? ' en '
-                  : locale === 'es'
-                    ? ' y '
-                    : ' and '
-          );
+          .join(conjunction);
         faqs.push({
-          icon: Clock2,
+          iconName: 'Clock2' as ParkFaqIconName,
           question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
           answer: t.rich('leastCrowdedA', {
             park: parkNomCap,
@@ -216,7 +106,7 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
         });
       } else {
         faqs.push({
-          icon: Clock2,
+          iconName: 'Clock2' as ParkFaqIconName,
           question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
           answer: t.rich('leastCrowdedNoDataA', { calendar: crowdCalendarLink }),
         });
@@ -231,7 +121,7 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
       <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
-          const Icon = faq.icon;
+          const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];
 
           return (
             <Card key={index} className="overflow-hidden">

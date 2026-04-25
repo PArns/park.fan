@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { rot13 } from '@/components/common/obfuscated-email';
 
 interface ObfuscatedPhoneProps {
@@ -15,32 +15,16 @@ interface ObfuscatedPhoneProps {
  * The initial HTML shows ROT13-encrypted text, and after hydration it becomes a clickable tel link.
  */
 export function ObfuscatedPhone({ number, displayText, className }: ObfuscatedPhoneProps) {
-  const [phoneNumber, setPhoneNumber] = useState<string | null>(null);
-  const [href, setHref] = useState<string | null>(null);
+  const mounted = useMounted();
 
-  useEffect(() => {
-    // Assemble phone number and create tel link only after hydration
-    // This ensures the plain text number is never in the initial HTML
-    const timer = setTimeout(() => {
-      // Remove spaces for the link
-      const cleanNumber = number.replace(/\s/g, '');
-      setPhoneNumber(number);
-      setHref(`tel:${cleanNumber}`);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [number]);
-
-  if (!phoneNumber || !href) {
-    // Show ROT13-encrypted version during SSR (before hydration)
-    // This obfuscates the number in the initial HTML
-    const encryptedNumber = rot13(displayText || number);
-    return <span className={className}>{encryptedNumber}</span>;
+  if (!mounted) {
+    // SSR: show ROT13-encrypted so bots can't scrape the number from initial HTML
+    return <span className={className}>{rot13(displayText || number)}</span>;
   }
 
-  // After hydration, show clickable tel link with displayText or plain number
   return (
-    <a href={href} className={className}>
-      {displayText || phoneNumber}
+    <a href={`tel:${number.replace(/\s/g, '')}`} className={className}>
+      {displayText || number}
     </a>
   );
 }

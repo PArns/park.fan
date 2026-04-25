@@ -1,6 +1,6 @@
 # park.fan Frontend – Documentation
 
-**park.fan** is the frontend for the [api.park.fan](https://api.park.fan) backend API. The app displays real-time wait times, ML predictions, park analytics, and comprehensive theme park information – multilingual (DE/EN/NL/FR/ES) and responsive.
+**park.fan** is the frontend for the [api.park.fan](https://api.park.fan) backend API. The app displays real-time wait times, ML predictions, park analytics, and comprehensive theme park information – multilingual (DE/EN/NL/FR/ES/IT) and responsive.
 
 ---
 

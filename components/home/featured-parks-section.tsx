@@ -1,11 +1,5 @@
-import { getTranslations } from 'next-intl/server';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
-import { ParkCard } from '@/components/parks/park-card';
-import { Link } from '@/i18n/navigation';
-import { ChevronRight } from 'lucide-react';
-import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
-import type { Locale } from '@/i18n/config';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
@@ -127,73 +121,4 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
 
   // Return in the defined locale order (preserves relevance ranking)
   return slugs.map((slug) => slugMap.get(slug)).filter((p): p is FeaturedPark => !!p);
-}
-
-interface FeaturedParksSectionProps {
-  locale: Locale;
-  geoData: GeoStructure | null;
-}
-
-export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSectionProps) {
-  const tHome = await getTranslations('home');
-  const tGeo = await getTranslations('geo');
-
-  const parks = extractFeaturedParks(geoData, locale);
-  if (parks.length === 0) return null;
-
-  return (
-    <section className="border-b px-4 py-12">
-      <div className="container mx-auto">
-        <h2 className="mb-2 text-center text-2xl font-semibold">
-          {tHome('sections.featuredParks')}
-        </h2>
-        <p className="text-muted-foreground mb-8 text-center text-sm">
-          <GlossaryInject locale={locale}>{tHome('sections.featuredParksIntro')}</GlossaryInject>
-        </p>
-
-        <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {parks.map((park) => {
-            // Translate country name using geo translations (same pattern as ParkCardNearby)
-            const normalizedCountry = park.countrySlug.toLowerCase().replace(/\s+/g, '-');
-            const translatedCountry =
-              tGeo(`countries.${normalizedCountry}` as string) || park.countryName;
-
-            return (
-              <ParkCard
-                key={park.slug}
-                name={park.name}
-                slug={park.slug}
-                parkId={park.parkId}
-                city={park.city}
-                country={translatedCountry}
-                href={park.href as '/'}
-                backgroundImage={park.backgroundImage}
-                status={park.status}
-                crowdLevel={park.crowdLevel}
-                averageWaitTime={park.averageWaitTime}
-                operatingAttractions={park.operatingAttractions}
-                totalAttractions={park.totalAttractions}
-                timezone={park.timezone}
-                hasOperatingSchedule={park.hasOperatingSchedule}
-                todaySchedule={park.todaySchedule}
-                nextSchedule={park.nextSchedule}
-                variant="detailed"
-              />
-            );
-          })}
-        </div>
-
-        <div className="mt-6 flex justify-center">
-          <Link
-            href="/parks"
-            prefetch={false}
-            className="text-muted-foreground hover:text-foreground flex items-center gap-1 text-sm transition-colors"
-          >
-            {tHome('hero.cta')}
-            <ChevronRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
 }

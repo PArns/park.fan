@@ -13,11 +13,13 @@ async function fetchFeaturedParks(locale: string): Promise<FeaturedPark[]> {
   return res.json();
 }
 
-function translateCountry(tGeo: ReturnType<typeof useTranslations>, park: FeaturedPark): string {
-  return (
-    tGeo(`countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}` as string) ||
-    park.countryName
-  );
+function getTranslatedCountry(
+  tGeo: ReturnType<typeof useTranslations>,
+  park: FeaturedPark
+): string {
+  const key = `countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}`;
+  const result = tGeo(key as Parameters<typeof tGeo>[0]);
+  return result === key ? park.countryName : result;
 }
 
 /** Skeleton placeholder while parks load */
@@ -83,7 +85,7 @@ export function PopularParksGridClient() {
             slug={park.slug}
             parkId={park.parkId}
             city={park.city}
-            country={translateCountry(tGeo, park)}
+            country={getTranslatedCountry(tGeo, park)}
             href={park.href as '/'}
             backgroundImage={park.backgroundImage}
             status={park.status}
@@ -154,7 +156,7 @@ export function FeaturedParksSectionClient({
                 slug={park.slug}
                 parkId={park.parkId}
                 city={park.city}
-                country={translateCountry(tGeo, park)}
+                country={getTranslatedCountry(tGeo, park)}
                 href={park.href as '/'}
                 backgroundImage={park.backgroundImage}
                 status={park.status}
