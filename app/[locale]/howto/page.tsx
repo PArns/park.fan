@@ -238,7 +238,7 @@ function DemoBadge({
   termId?: string;
 }) {
   return (
-    <Badge className={cn('font-bold tracking-wide text-white uppercase backdrop-blur-md', color)}>
+    <Badge className={cn('backdrop-blur-md', color)}>
       {Icon && <Icon className="h-3 w-3 text-inherit" />}
       {termId ? (
         <GlossaryTermLink
@@ -389,7 +389,7 @@ async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
         : (CROWD_LABELS[locale][crowd] ?? crowd);
     const crowdColor =
       crowd === 'closed'
-        ? 'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40'
+        ? 'badge-status-closed'
         : (CROWD_COLORS[crowd] ?? 'bg-muted border-border');
     const hoursStr = day.hours
       ? `${formatInTimeZone(day.hours.openingTime, timezone, 'HH:mm')}–${formatInTimeZone(day.hours.closingTime, timezone, 'HH:mm')}`
@@ -525,16 +525,12 @@ const CROWD_LABELS: Record<MockLocale, Record<string, string>> = {
 };
 
 const CROWD_COLORS: Record<string, string> = {
-  very_low:
-    'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
-  low: 'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
-  moderate:
-    'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
-  high: 'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
-  very_high:
-    'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
-  extreme:
-    'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+  very_low: 'badge-crowd-very-low',
+  low: 'badge-crowd-low',
+  moderate: 'badge-crowd-moderate',
+  high: 'badge-crowd-high',
+  very_high: 'badge-crowd-very-high',
+  extreme: 'badge-crowd-extreme',
 };
 
 const CROWD_ICONS: Record<string, React.ElementType> = {
@@ -636,11 +632,7 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
                     – {t.suffix}
                   </span>
                 </h3>
-                <DemoBadge
-                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-                  label={t.operating}
-                  icon={Clock}
-                />
+                <DemoBadge color="badge-status-operating" label={t.operating} icon={Clock} />
               </div>
               <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
                 <address className="flex items-center gap-1 not-italic">
@@ -1089,7 +1081,6 @@ function MockNearbyCards(_props: { locale: MockLocale }) {
   return (
     <div className="not-prose grid items-stretch gap-4 sm:grid-cols-2">
       <ParkCard
-        parkId="howto-phantasialand"
         slug="phantasialand"
         name="Phantasialand"
         city="Brühl"
@@ -1113,7 +1104,6 @@ function MockNearbyCards(_props: { locale: MockLocale }) {
         }}
       />
       <ParkCard
-        parkId="howto-europa-park"
         slug="europa-park"
         name="Europa-Park"
         city="Rust"
@@ -1718,29 +1708,25 @@ function ContentDE() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'Geöffnet',
                 desc: 'Attraktion / Park ist in Betrieb. Wartezeiten werden live aktualisiert.',
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'Störung',
                 desc: 'Vorübergehend geschlossen – z. B. technische Störung oder Sicherheitspause. Meist kurzfristig, kann sich innerhalb von Minuten ändern.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Geschlossen',
                 desc: 'Heute nicht in Betrieb – saisonale Schließung oder planmäßige Ruhezeit.',
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Wartung',
                 desc: 'Längere Wartungsphase. Diese Attraktionen sind für mehrere Tage oder Wochen geschlossen.',
               },
@@ -1765,48 +1751,42 @@ function ContentDE() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Sehr Niedrig',
                 icon: User,
                 threshold: '≤ 60 % des P50',
                 desc: 'Kaum Betrieb – kurze bis keine Warteschlangen. Idealer Besuchstag.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Niedrig',
                 icon: User,
                 threshold: '61–89 % des P50',
                 desc: 'Wenig los – die meisten Attraktionen laufen mit kurzen Wartezeiten.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Normal',
                 icon: Users,
                 threshold: '90–110 % des P50',
                 desc: 'Typischer Tag – Wartezeiten im erwarteten Rahmen (±10 % des Medians).',
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Hoch',
                 icon: Users,
                 threshold: '111–150 % des P50',
                 desc: 'Viel los – Wartezeiten spürbar über dem Durchschnitt.',
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Sehr Hoch',
                 icon: Users,
                 threshold: '151–200 % des P50',
                 desc: 'Sehr voll – Wartezeiten fast doppelt so lang wie üblich. Früh anreisen lohnt sich.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Extrem',
                 icon: AlertTriangle,
                 threshold: '> 200 % des P50',
@@ -1883,36 +1863,31 @@ function ContentDE() {
           <div className="space-y-2">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Viel Niedriger',
                 icon: Activity,
                 desc: 'Deutlich weniger los als typischerweise – ideale Bedingungen.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Niedriger',
                 icon: Activity,
                 desc: 'Etwas weniger Betrieb als üblich.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Typisch',
                 icon: Activity,
                 desc: 'Wie erwartet für diese Zeit – keine Überraschungen.',
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Höher',
                 icon: Activity,
                 desc: 'Mehr los als normalerweise – Wartezeiten etwas länger.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Viel Höher',
                 icon: Activity,
                 desc: 'Ungewöhnlich voll – außergewöhnliche Situation (Sonderevent, Schulferien-Peak).',
@@ -1943,8 +1918,7 @@ function ContentDE() {
                 desc: 'Einzelfahrer-Schlange. Oft deutlich kürzer als die reguläre Schlange, aber du kannst nicht mit Begleitern fahren.',
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',
@@ -2994,29 +2968,25 @@ function ContentENSections() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'Operating',
                 desc: 'Attraction / park is running. Wait times are updated live.',
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'Down',
                 desc: 'Temporarily closed – e.g. technical issue or safety pause. Usually brief.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Closed',
                 desc: 'Not operating today – seasonal closure or scheduled rest day.',
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Refurbishment',
                 desc: 'Extended maintenance. Closed for days or weeks.',
               },
@@ -3040,48 +3010,42 @@ function ContentENSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Very Low',
                 icon: User,
                 threshold: '≤ 60% of P50',
                 desc: 'Noticeably quieter than usual. Almost no queues – ideal visit day.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Low',
                 icon: User,
                 threshold: '61–89% of P50',
                 desc: 'Below average – short wait times at most attractions.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Moderate',
                 icon: Users,
                 threshold: '90–110% of P50',
                 desc: 'Typical day – wait times within the expected range (±10% of median).',
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'High',
                 icon: Users,
                 threshold: '111–150% of P50',
                 desc: 'Busier than average – noticeably longer wait times.',
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Very High',
                 icon: Users,
                 threshold: '151–200% of P50',
                 desc: 'Very crowded – waits nearly twice as long as usual. Arrive early.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Extreme',
                 icon: AlertTriangle,
                 threshold: '> 200% of P50',
@@ -3155,8 +3119,7 @@ function ContentENSections() {
                 desc: "Often much shorter than regular queue – but you can't ride with your group.",
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',
@@ -3874,29 +3837,25 @@ function ContentESSections() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'Operativo',
                 desc: 'La atracción / el parque está en funcionamiento. Los tiempos de espera se actualizan en vivo.',
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'Avería',
                 desc: 'Cerrado temporalmente – p. ej. problema técnico o parada de seguridad. Normalmente breve.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Cerrado',
                 desc: 'Sin operación hoy – cierre de temporada o día de descanso programado.',
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Renovación',
                 desc: 'Mantenimiento prolongado. Cerrado durante días o semanas.',
               },
@@ -3920,48 +3879,42 @@ function ContentESSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Muy Baja',
                 icon: User,
                 threshold: '≤ 60% de P50',
                 desc: 'Notablemente más tranquilo de lo habitual. Casi sin colas – día ideal para visitar.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Baja',
                 icon: User,
                 threshold: '61–89% de P50',
                 desc: 'Por debajo de la media – tiempos de espera cortos en la mayoría de atracciones.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Moderada',
                 icon: Users,
                 threshold: '90–110% de P50',
                 desc: 'Día típico – tiempos de espera dentro del rango esperado (±10% de la mediana).',
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Alta',
                 icon: Users,
                 threshold: '111–150% de P50',
                 desc: 'Más concurrido que la media – tiempos de espera notablemente más largos.',
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Muy Alta',
                 icon: Users,
                 threshold: '151–200% de P50',
                 desc: 'Muy concurrido – esperas casi el doble de lo habitual. Llega temprano.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Extrema',
                 icon: AlertTriangle,
                 threshold: '> 200% de P50',
@@ -4035,8 +3988,7 @@ function ContentESSections() {
                 desc: 'A menudo mucho más corta que la fila normal – pero no puedes ir con tu grupo.',
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',
@@ -4770,29 +4722,25 @@ function ContentFRSections() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'En service',
                 desc: "L'attraction / le parc est en fonctionnement. Les temps d'attente sont mis à jour en direct.",
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'En panne',
                 desc: 'Fermé temporairement – p. ex. problème technique ou arrêt de sécurité. Généralement bref.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Fermé',
                 desc: "Pas d'opération aujourd'hui – fermeture saisonnière ou jour de repos prévu.",
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Rénovation',
                 desc: 'Maintenance prolongée. Fermé pendant des jours ou des semaines.',
               },
@@ -4816,48 +4764,42 @@ function ContentFRSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Très Faible',
                 icon: User,
                 threshold: '≤ 60% de P50',
                 desc: "Nettement plus calme que d'habitude. Presque pas de files – jour idéal pour visiter.",
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Faible',
                 icon: User,
                 threshold: '61–89% de P50',
                 desc: "En dessous de la moyenne – courtes files d'attente pour la plupart des attractions.",
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Modéré',
                 icon: Users,
                 threshold: '90–110% de P50',
                 desc: "Jour typique – temps d'attente dans la plage attendue (±10% de la médiane).",
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Élevé',
                 icon: Users,
                 threshold: '111–150% de P50',
                 desc: "Plus fréquenté que la moyenne – temps d'attente nettement plus longs.",
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Très Élevé',
                 icon: Users,
                 threshold: '151–200% de P50',
                 desc: "Très fréquenté – attentes presque deux fois plus longues que d'habitude. Arrive tôt.",
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Extrême',
                 icon: AlertTriangle,
                 threshold: '> 200% de P50',
@@ -4931,8 +4873,7 @@ function ContentFRSections() {
                 desc: 'Souvent bien plus courte que la file normale – mais tu ne peux pas y aller avec ton groupe.',
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',
@@ -5676,29 +5617,25 @@ function ContentITSections() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'In funzione',
                 desc: "L'attrazione / il parco è operativo. I tempi di attesa vengono aggiornati in diretta.",
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'Guasto',
                 desc: 'Chiuso temporaneamente – p. es. problema tecnico o pausa di sicurezza. Di solito breve.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Chiuso',
                 desc: 'Nessuna operazione oggi – chiusura stagionale o giorno di riposo programmato.',
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Ristrutturazione',
                 desc: 'Manutenzione prolungata. Chiuso per giorni o settimane.',
               },
@@ -5722,48 +5659,42 @@ function ContentITSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Molto Bassa',
                 icon: User,
                 threshold: '≤ 60% di P50',
                 desc: 'Notevolmente più tranquillo del solito. Quasi nessuna coda – giorno ideale per visitare.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Bassa',
                 icon: User,
                 threshold: '61–89% di P50',
                 desc: 'Sotto la media – brevi tempi di attesa per la maggior parte delle attrazioni.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Moderata',
                 icon: Users,
                 threshold: '90–110% di P50',
                 desc: "Giorno tipico – tempi di attesa nell'intervallo previsto (±10% della mediana).",
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Alta',
                 icon: Users,
                 threshold: '111–150% di P50',
                 desc: 'Più affollato della media – tempi di attesa notevolmente più lunghi.',
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Molto Alta',
                 icon: Users,
                 threshold: '151–200% di P50',
                 desc: 'Molto affollato – attese quasi il doppio del solito. Arriva presto.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Estrema',
                 icon: AlertTriangle,
                 threshold: '> 200% di P50',
@@ -5837,8 +5768,7 @@ function ContentITSections() {
                 desc: 'Spesso molto più breve della fila normale – ma non puoi andarci con il tuo gruppo.',
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',
@@ -6556,29 +6486,25 @@ function ContentNLSections() {
             {[
               {
                 icon: Clock,
-                color:
-                  'bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40',
+                color: 'badge-status-operating',
                 label: 'In bedrijf',
                 desc: 'Attractie / park is in werking. Wachttijden worden live bijgewerkt.',
               },
               {
                 icon: AlertTriangle,
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 label: 'Storing',
                 desc: 'Tijdelijk gesloten – bijv. technisch probleem of veiligheidspauze. Meestal kort.',
               },
               {
                 icon: XCircle,
-                color:
-                  'bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40',
+                color: 'badge-status-closed',
                 label: 'Gesloten',
                 desc: 'Vandaag niet in bedrijf – seizoensluiting of geplande rustdag.',
               },
               {
                 icon: Wrench,
-                color:
-                  'bg-status-refurbishment/65 border-status-refurbishment/80 dark:bg-status-refurbishment/25 dark:border-status-refurbishment/40',
+                color: 'badge-status-refurbishment',
                 label: 'Onderhoud',
                 desc: 'Uitgebreid onderhoud. Gesloten voor dagen of weken.',
               },
@@ -6601,48 +6527,42 @@ function ContentNLSections() {
           <div className="space-y-3">
             {[
               {
-                color:
-                  'bg-crowd-very-low/65 border-crowd-very-low/80 dark:bg-crowd-very-low/25 dark:border-crowd-very-low/40',
+                color: 'badge-crowd-very-low',
                 label: 'Zeer Laag',
                 icon: User,
                 threshold: '≤ 60% van P50',
                 desc: 'Merkbaar rustiger dan gewoonlijk. Bijna geen wachtrijen – ideale bezoekdag.',
               },
               {
-                color:
-                  'bg-crowd-low/65 border-crowd-low/80 dark:bg-crowd-low/25 dark:border-crowd-low/40',
+                color: 'badge-crowd-low',
                 label: 'Laag',
                 icon: User,
                 threshold: '61–89% van P50',
                 desc: 'Onder gemiddeld – korte wachttijden bij de meeste attracties.',
               },
               {
-                color:
-                  'bg-crowd-moderate/65 border-crowd-moderate/80 dark:bg-crowd-moderate/25 dark:border-crowd-moderate/40',
+                color: 'badge-crowd-moderate',
                 label: 'Matig',
                 icon: Users,
                 threshold: '90–110% van P50',
                 desc: 'Typische dag – wachttijden binnen het verwachte bereik (±10% van mediaan).',
               },
               {
-                color:
-                  'bg-crowd-high/65 border-crowd-high/80 dark:bg-crowd-high/25 dark:border-crowd-high/40',
+                color: 'badge-crowd-high',
                 label: 'Hoog',
                 icon: Users,
                 threshold: '111–150% van P50',
                 desc: 'Drukker dan gemiddeld – merkbaar langere wachttijden.',
               },
               {
-                color:
-                  'bg-crowd-very-high/65 border-crowd-very-high/80 dark:bg-crowd-very-high/25 dark:border-crowd-very-high/40',
+                color: 'badge-crowd-very-high',
                 label: 'Zeer Hoog',
                 icon: Users,
                 threshold: '151–200% van P50',
                 desc: 'Zeer druk – wachttijden bijna twee keer zo lang als gewoonlijk. Kom vroeg aan.',
               },
               {
-                color:
-                  'bg-crowd-extreme/65 border-crowd-extreme/80 dark:bg-crowd-extreme/25 dark:border-crowd-extreme/40',
+                color: 'badge-crowd-extreme',
                 label: 'Extreem',
                 icon: AlertTriangle,
                 threshold: '> 200% van P50',
@@ -6715,8 +6635,7 @@ function ContentNLSections() {
                 desc: 'Vaak veel korter dan de gewone rij – maar je kunt niet met je groep meerijden.',
               },
               {
-                color:
-                  'bg-status-down/65 border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40',
+                color: 'badge-status-down',
                 icon: Zap,
                 label: 'Lightning Lane',
                 termId: 'lightning-lane',

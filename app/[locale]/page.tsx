@@ -6,7 +6,8 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
 import { Clock, TrendingUp, ChevronRight, Map as MapIcon, BookOpen, Tag } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { getGlobalStats, getGeoLiveStats } from '@/lib/api/analytics';
+import { getGlobalStats, getGeoLiveStats, getTickerData } from '@/lib/api/analytics';
+import { LiveWaitTicker } from '@/components/home/live-wait-ticker';
 import { getGeoStructure } from '@/lib/api/discovery';
 
 import nextDynamic from 'next/dynamic';
@@ -56,7 +57,8 @@ import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { ParkCard } from '@/components/parks/park-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
-import { ScrollIndicator } from '@/components/home/scroll-indicator';
+import { HeroImageInfo } from '@/components/layout/hero-image-info';
+import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { FeaturedParksSectionClient } from '@/components/home/featured-parks-section-client';
@@ -116,10 +118,11 @@ export default async function HomePage({ params }: HomePageProps) {
   const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 
   // Fetch data in parallel (ML dashboard fetched inside MLStatsSection to keep Suspense boundaries clean)
-  const [stats, geoData, liveStats] = await Promise.all([
+  const [stats, geoData, liveStats, tickerData] = await Promise.all([
     getGlobalStats().catch(() => null),
     getGeoStructure().catch(() => null),
     getGeoLiveStats().catch(() => null),
+    getTickerData().catch(() => null),
   ]);
 
   const continents =
@@ -194,8 +197,17 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* Row 2: Search bar centered */}
         <HeroSearchInput placeholder={tHome('hero.searchPlaceholder')} />
 
-        {/* Scroll indicator – desktop fullscreen only, fades out on scroll */}
-        <ScrollIndicator />
+        {/* Hero image attribution – park, city, country (+ attraction & area if known) */}
+        {HERO_IMAGE_META[randomHeroImage] && (
+          <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+        )}
+
+        {/* Live wait times ticker */}
+        {tickerData && tickerData.items.length > 0 && (
+          <div className="absolute right-0 bottom-0 left-0">
+            <LiveWaitTicker initialItems={tickerData.items} />
+          </div>
+        )}
       </section>
 
       {/* Announcement Section */}

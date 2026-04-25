@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect, startTransition } from 'react';
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
 import { Moon, Sun, Monitor } from 'lucide-react';
@@ -13,15 +14,29 @@ import {
 import { trackThemeToggled } from '@/lib/analytics/umami';
 
 export function ThemeToggle() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, resolvedTheme, theme } = useTheme();
   const t = useTranslations('theme');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    startTransition(() => setMounted(true));
+  }, []);
+
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" suppressHydrationWarning>
-          <Sun className="h-5 w-5 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
-          <Moon className="absolute h-5 w-5 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+        <Button variant="ghost" size="icon" className="size-8">
+          {mounted ? (
+            isDark ? (
+              <Moon className="size-3.5 shrink-0" />
+            ) : (
+              <Sun className="size-3.5 shrink-0" />
+            )
+          ) : (
+            <span className="size-3.5" />
+          )}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -31,8 +46,9 @@ export function ThemeToggle() {
             setTheme('light');
             trackThemeToggled('light');
           }}
+          className="flex items-center gap-2"
         >
-          <Sun className="mr-2 h-4 w-4" />
+          <Sun className="size-4 shrink-0" />
           {t('light')}
           {theme === 'light' && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>
@@ -41,8 +57,9 @@ export function ThemeToggle() {
             setTheme('dark');
             trackThemeToggled('dark');
           }}
+          className="flex items-center gap-2"
         >
-          <Moon className="mr-2 h-4 w-4" />
+          <Moon className="size-4 shrink-0" />
           {t('dark')}
           {theme === 'dark' && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>
@@ -51,8 +68,9 @@ export function ThemeToggle() {
             setTheme('system');
             trackThemeToggled('system');
           }}
+          className="flex items-center gap-2"
         >
-          <Monitor className="mr-2 h-4 w-4" />
+          <Monitor className="size-4 shrink-0" />
           {t('system')}
           {theme === 'system' && <span className="ml-auto">✓</span>}
         </DropdownMenuItem>

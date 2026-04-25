@@ -625,6 +625,24 @@ export interface GlobalStats {
   shortestWaitRide: AttractionStatsItem | null;
 }
 
+export interface TickerItem {
+  parkName: string;
+  parkSlug: string;
+  continentSlug: string;
+  countrySlug: string;
+  citySlug: string;
+  attractionName: string;
+  attractionSlug: string;
+  waitTime: number;
+  crowdLevel: CrowdLevel | null;
+  url: string | null;
+}
+
+export interface TickerResponse {
+  items: TickerItem[];
+  generatedAt: string;
+}
+
 export interface GeoLiveStatsDto {
   continents: ContinentLiveStats[];
 }

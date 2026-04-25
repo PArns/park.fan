@@ -60,45 +60,86 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 h-16 border-b transition-all duration-500 ${
+      className={`relative sticky top-0 z-50 h-16 border-b transition-all duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-0">
-        {/* Logo – fades in on scroll */}
+        {/* Corner logo – absolute, visible only when transparent (hero top).
+            Same left-6 offset as the hero image info text below. Fades out on scroll. */}
         <Link
           href="/"
           prefetch={false}
-          className={`flex shrink-0 items-center gap-1.5 ${fadeClass}`}
+          className={`absolute top-1/2 left-6 flex -translate-y-1/2 items-center gap-1 transition-opacity duration-500 ${
+            isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
+          }`}
           aria-label="park.fan - Home"
-          tabIndex={isTransparent ? -1 : 0}
+          tabIndex={isTransparent ? 0 : -1}
         >
-          <Image
-            src="/logo-small.svg"
-            width={26}
-            height={30}
-            alt="park.fan"
-            className="h-7 w-auto md:h-9 dark:hidden"
-            priority
-            aria-hidden="true"
-          />
           <Image
             src="/logo-small-dark.svg"
             width={26}
             height={30}
-            alt="park.fan"
-            className="hidden h-7 w-auto md:h-9 dark:block"
-            priority
+            alt=""
             aria-hidden="true"
+            className="hidden h-6 w-auto dark:block"
+            priority
+          />
+          <Image
+            src="/logo-small.svg"
+            width={26}
+            height={30}
+            alt=""
+            aria-hidden="true"
+            className="block h-6 w-auto dark:hidden"
+            priority
+          />
+          <Image
+            src="/parkfan-dark.svg"
+            width={84}
+            height={24}
+            alt="park.fan"
+            className="hidden h-5 w-auto dark:block"
+            priority
           />
           <Image
             src="/parkfan.svg"
             width={84}
             height={24}
             alt="park.fan"
-            className="h-7 w-auto md:h-9 dark:hidden"
+            className="block h-5 w-auto dark:hidden"
+            priority
+          />
+        </Link>
+
+        {/* Header logo – in flex flow, fades in on scroll. Keeps justify-between anchor when invisible. */}
+        <Link
+          href="/"
+          prefetch={false}
+          className={`flex shrink-0 items-center gap-1.5 transition-opacity duration-500 ${
+            isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
+          }`}
+          aria-label="park.fan - Home"
+          tabIndex={isTransparent ? -1 : 0}
+        >
+          <Image
+            src="/logo-small-dark.svg"
+            width={26}
+            height={30}
+            alt=""
+            aria-hidden="true"
+            className="hidden h-7 w-auto md:h-9 dark:block"
+            priority
+          />
+          <Image
+            src="/logo-small.svg"
+            width={26}
+            height={30}
+            alt="park.fan"
+            aria-hidden="true"
+            className="block h-7 w-auto md:h-9 dark:hidden"
             priority
           />
           <Image
@@ -107,6 +148,15 @@ export function Header() {
             height={24}
             alt="park.fan"
             className="hidden h-7 w-auto md:h-9 dark:block"
+            priority
+          />
+          <Image
+            src="/parkfan.svg"
+            width={84}
+            height={24}
+            alt=""
+            aria-hidden="true"
+            className="block h-7 w-auto md:h-9 dark:hidden"
             priority
           />
         </Link>
@@ -165,6 +215,16 @@ export function Header() {
           />
         </div>
 
+        {/* Corner pill – absolute right-6, mirrors the corner logo on the left. Fades out on scroll. */}
+        <div
+          className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
+            isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
+          }`}
+        >
+          <LocaleSwitcher />
+          <ThemeToggle />
+        </div>
+
         {/* Actions */}
         <div className="flex items-center gap-2">
           {/* Search Button Mobile – fades in on scroll */}
@@ -172,12 +232,11 @@ export function Header() {
             <SearchCommand trigger="button" />
           </div>
 
-          {/* Always visible: locale switcher + theme toggle — glass pill on transparent hero.
-              On mobile in transparent mode, offset right by the width of the invisible menu button
-              (size-9 = 36px) + gap-2 (8px) = 44px so the pill aligns with the hero card edge.
-              On md+ the menu button is display:none and needs no offset (md:translate-x-0). */}
+          {/* In-flow locale + theme – fades in on scroll, keeps flex anchor when invisible */}
           <div
-            className={`flex items-center gap-1 rounded-lg transition-all duration-500 ${isTransparent ? 'translate-x-11 bg-white/60 px-1 py-0.5 backdrop-blur-md md:translate-x-0 dark:bg-black/40' : 'translate-x-0'}`}
+            className={`flex items-center gap-1 transition-opacity duration-500 ${
+              isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
+            }`}
           >
             <LocaleSwitcher />
             <ThemeToggle />

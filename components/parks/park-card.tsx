@@ -319,9 +319,7 @@ export function ParkCard({
             {status && <ParkStatusBadge status={status} />}
             {isOpen && effectiveCrowdLevel && <CrowdLevelBadge level={effectiveCrowdLevel} />}
             {highlightAsNearestOpen && isOpen && (
-              <Badge className="bg-primary/20 text-primary border-primary/35 border text-xs font-medium">
-                {tNearby('nearestOpenBadge')}
-              </Badge>
+              <Badge className="badge-primary text-xs">{tNearby('nearestOpenBadge')}</Badge>
             )}
           </div>
         </div>

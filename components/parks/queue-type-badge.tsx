@@ -13,10 +13,8 @@ const QUEUE_GLOSSARY_TERMS: Partial<Record<string, string>> = {
   PAID_STANDBY: 'express-pass',
 };
 
-const colorPrimary =
-  'bg-primary/65 text-white border border-primary/80 dark:bg-primary/25 dark:border-primary/40';
-const colorPaid =
-  'bg-status-down/65 text-white border border-status-down/80 dark:bg-status-down/25 dark:border-status-down/40';
+const colorPrimary = 'badge-primary';
+const colorPaid = 'badge-status-down';
 
 interface QueueTypeBadgeProps {
   queue: QueueDataItem;
@@ -119,8 +117,8 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
 
   const termId = QUEUE_GLOSSARY_TERMS[queue.queueType];
   const badge = (
-    <Badge className={cn('font-bold tracking-wide uppercase backdrop-blur-md', colorClass)}>
-      <Icon className="h-3 w-3 shrink-0 text-inherit" />
+    <Badge className={cn(colorClass)}>
+      <Icon className="h-3 w-3 shrink-0 text-white" />
       <span className="min-w-0 truncate">{label}</span>
     </Badge>
   );

@@ -185,7 +185,7 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className="group flex h-full flex-col"
+      className="group block h-full"
     >
       <article
         className={cn(
@@ -351,7 +351,7 @@ export function AttractionCard({
           {/* Badges — single row with overflow fade. Keeps all headers the
               same height across a grid row so cards line up without needing
               a flex-1 spacer to absorb differences. */}
-          <div className="relative mt-[9px] flex flex-nowrap items-center gap-[6px] overflow-hidden [mask-image:linear-gradient(to_right,black_calc(100%-24px),transparent)]">
+          <div className="relative mt-[9px] flex min-h-[52px] flex-wrap items-start gap-[6px]">
             <ParkStatusBadge status={status as ParkStatus} />
             {isOperatingOrUnknown && crowdLevel && (
               <CrowdLevelBadge
@@ -435,28 +435,27 @@ export function AttractionCard({
                     </span>
                   </div>
                   <div className="mt-1 min-h-[24px]">
-                    {trend && (
-                      <span
-                        className={cn(
-                          'inline-flex w-fit items-center gap-0.5 rounded-full border px-1.5 py-[2px] text-[10.5px] leading-none font-semibold',
-                          trend.direction === 'up' &&
-                            'bg-trend-up/20 text-trend-up border-trend-up/35',
-                          trend.direction === 'down' &&
-                            'bg-trend-down/20 text-trend-down border-trend-down/35',
-                          trend.direction === 'stable' &&
-                            'bg-trend-stable/20 text-trend-stable border-trend-stable/35'
-                        )}
-                      >
-                        {trend.direction === 'up' && <TrendingUp className="h-[11px] w-[11px]" />}
-                        {trend.direction === 'down' && (
-                          <TrendingDown className="h-[11px] w-[11px]" />
-                        )}
-                        {trend.direction === 'stable' && <Minus className="h-[11px] w-[11px]" />}
-                        {trend.direction === 'stable'
-                          ? tCommon('stable')
-                          : `${trend.delta > 0 ? '+' : ''}${trend.delta} min`}
-                      </span>
-                    )}
+                    {(() => {
+                      const t = trend ?? { direction: 'stable' as const, delta: 0 };
+                      return (
+                        <span
+                          className={cn(
+                            'inline-flex w-fit items-center gap-0.5 rounded-full border px-1.5 py-[2px] text-[10.5px] leading-none font-semibold text-white',
+                            t.direction === 'up' && 'bg-badge-trend-up/60 border-trend-up/25',
+                            t.direction === 'down' && 'bg-badge-trend-down/60 border-trend-down/25',
+                            t.direction === 'stable' &&
+                              'bg-badge-trend-stable/60 border-trend-stable/25'
+                          )}
+                        >
+                          {t.direction === 'up' && <TrendingUp className="h-[11px] w-[11px]" />}
+                          {t.direction === 'down' && <TrendingDown className="h-[11px] w-[11px]" />}
+                          {t.direction === 'stable' && <Minus className="h-[11px] w-[11px]" />}
+                          {t.direction === 'stable'
+                            ? tCommon('stable')
+                            : `${t.delta > 0 ? '+' : ''}${t.delta} min`}
+                        </span>
+                      );
+                    })()}
                   </div>
                 </div>
 
@@ -511,7 +510,7 @@ export function AttractionCard({
                     </div>
                   )}
                   {bestTimeNode && (
-                    <div className="flex items-center gap-1 text-[11.5px] font-medium text-amber-500 dark:text-amber-400">
+                    <div className="flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
                       <Star
                         className="h-[11px] w-[11px] shrink-0 fill-current"
                         aria-hidden="true"

@@ -37,13 +37,9 @@ export function TrendIndicator({
     return (
       <Badge
         className={cn(
-          'font-bold tracking-wide uppercase backdrop-blur-md',
-          isUp &&
-            'bg-trend-up/65 border-trend-up/80 dark:bg-trend-up/25 dark:border-trend-up/40 border text-white',
-          isDown &&
-            'bg-trend-down/65 border-trend-down/80 dark:bg-trend-down/25 dark:border-trend-down/40 border text-white',
-          trend === 'stable' &&
-            'bg-trend-stable/65 border-trend-stable/80 dark:bg-trend-stable/25 dark:border-trend-stable/40 border text-white',
+          isUp && 'badge-trend-up',
+          isDown && 'badge-trend-down',
+          trend === 'stable' && 'badge-trend-stable',
           size === 'md' && 'px-3 py-1 text-sm',
           className
         )}

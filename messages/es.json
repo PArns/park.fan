@@ -89,7 +89,8 @@
       "cta": "Explorar Parques",
       "searchPlaceholder": "Buscar parques, atracciones, espectáculos y restaurantes...",
       "howto": "¿Cómo uso park.fan?",
-      "glossary": "Diccionario de parques temáticos"
+      "glossary": "Diccionario de parques temáticos",
+      "liveWaitTimes": "Esperas en Directo"
     },
     "sections": {
       "explore": "Explorar por Región",

@@ -52,7 +52,7 @@ export function LandSection({
           const backgroundImage = getAttractionImage(parkSlug, attraction.slug);
 
           return (
-            <li key={attraction.id} className="min-w-0">
+            <li key={attraction.id}>
               <AttractionCard
                 attraction={attraction}
                 parkPath={parkPath}

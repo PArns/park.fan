@@ -89,7 +89,8 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "howto": "How do I use park.fan?",
-      "glossary": "Theme Park Dictionary"
+      "glossary": "Theme Park Dictionary",
+      "liveWaitTimes": "Live Wait Times"
     },
     "sections": {
       "explore": "Explore by Region",

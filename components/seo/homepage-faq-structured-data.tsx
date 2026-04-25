@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
 
-export function HomepageFAQStructuredData() {
-  const t = useTranslations('seo.homepage.faq');
+export async function HomepageFAQStructuredData() {
+  const t = await getTranslations('seo.homepage.faq');
 
   const faqSchema: WithContext<Thing> = {
     '@context': 'https://schema.org',

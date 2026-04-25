@@ -13,22 +13,40 @@ import { localeNames } from '@/i18n/config';
 import { FlagDE, FlagUS, FlagNL, FlagFR, FlagES, FlagIT } from '@/components/common/icons/flags';
 import { trackLanguageSwitched } from '@/lib/analytics/umami';
 
-const LocaleFlag = ({ locale }: { locale: Locale }) => {
+const LOCALE_CODES: Record<Locale, string> = {
+  de: 'DE',
+  en: 'EN',
+  nl: 'NL',
+  fr: 'FR',
+  es: 'ES',
+  it: 'IT',
+};
+
+function LocaleFlag({ locale, className }: { locale: Locale; className?: string }) {
+  const props = { className: className ?? 'h-full w-auto' };
   switch (locale) {
     case 'de':
-      return <FlagDE className="h-4 w-6" />;
+      return <FlagDE {...props} />;
     case 'en':
-      return <FlagUS className="h-4 w-6" />;
+      return <FlagUS {...props} />;
     case 'nl':
-      return <FlagNL className="h-4 w-6" />;
+      return <FlagNL {...props} />;
     case 'fr':
-      return <FlagFR className="h-4 w-6" />;
+      return <FlagFR {...props} />;
     case 'es':
-      return <FlagES className="h-4 w-6" />;
+      return <FlagES {...props} />;
     case 'it':
-      return <FlagIT className="h-4 w-6" />;
+      return <FlagIT {...props} />;
   }
-};
+}
+
+function RoundFlag({ locale }: { locale: Locale }) {
+  return (
+    <span className="size-[18px] shrink-0 overflow-hidden rounded-full">
+      <LocaleFlag locale={locale} className="h-full w-auto" />
+    </span>
+  );
+}
 
 export function LocaleSwitcher() {
   const locale = useLocale() as Locale;
@@ -38,14 +56,10 @@ export function LocaleSwitcher() {
   const handleLocaleChange = (newLocale: Locale) => {
     trackLanguageSwitched(locale, newLocale);
 
-    // Pages with localized URL segments (e.g. /de/glossar/wartezeit → /en/glossary/wait-time)
-    // publish hreflang <link> tags with the correct per-locale URL. Use those when available
-    // so the user lands on the right localized path instead of a 404.
     const hreflangEl = document.querySelector<HTMLLinkElement>(
       `link[rel="alternate"][hreflang="${newLocale}"]`
     );
     if (hreflangEl?.href) {
-      // Use only the pathname so it works on localhost and production alike
       const { pathname: hreflangPath } = new URL(hreflangEl.href);
       window.location.replace(hreflangPath);
       return;
@@ -57,8 +71,14 @@ export function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" suppressHydrationWarning>
-          <LocaleFlag locale={locale} />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="h-8 gap-1.5 px-2 text-xs font-medium"
+          suppressHydrationWarning
+        >
+          <RoundFlag locale={locale} />
+          <span>{LOCALE_CODES[locale]}</span>
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
@@ -69,8 +89,9 @@ export function LocaleSwitcher() {
             onClick={() => handleLocaleChange(loc)}
             className="flex items-center gap-2"
           >
-            <LocaleFlag locale={loc} />
-            <span>{localeNames[loc]}</span>
+            <RoundFlag locale={loc} />
+            <span className="text-xs font-medium">{LOCALE_CODES[loc]}</span>
+            <span className="text-muted-foreground">{localeNames[loc]}</span>
             {locale === loc && <span className="ml-auto">✓</span>}
           </DropdownMenuItem>
         ))}

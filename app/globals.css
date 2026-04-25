@@ -62,6 +62,22 @@
   --color-trend-up: var(--trend-up);
   --color-trend-down: var(--trend-down);
   --color-trend-stable: var(--trend-stable);
+  /* Badge background colors — theme-aware (darker in dark mode for white text on dark panels) */
+  --color-badge-status-operating: var(--badge-status-operating);
+  --color-badge-status-down: var(--badge-status-down);
+  --color-badge-status-closed: var(--badge-status-closed);
+  --color-badge-status-refurbishment: var(--badge-status-refurbishment);
+  --color-badge-crowd-very-low: var(--badge-crowd-very-low);
+  --color-badge-crowd-low: var(--badge-crowd-low);
+  --color-badge-crowd-moderate: var(--badge-crowd-moderate);
+  --color-badge-crowd-high: var(--badge-crowd-high);
+  --color-badge-crowd-very-high: var(--badge-crowd-very-high);
+  --color-badge-crowd-extreme: var(--badge-crowd-extreme);
+  --color-badge-primary: var(--badge-primary);
+  --color-badge-muted: var(--badge-muted);
+  --color-badge-trend-up: var(--badge-trend-up);
+  --color-badge-trend-down: var(--badge-trend-down);
+  --color-badge-trend-stable: var(--badge-trend-stable);
 }
 
 :root {
@@ -143,6 +159,20 @@
   }
 }
 
+/* Live wait ticker — scrolls left, duplicate content for seamless loop */
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-animate {
+  animation: ticker-scroll var(--ticker-dur, 60s) linear infinite;
+  will-change: transform;
+}
+
 /* Hero background: Ken Burns slow zoom + pan */
 @keyframes ken-burns {
   0% {
@@ -192,6 +222,23 @@
   --status-down: oklch(0.705 0.213 47.604);
   --status-closed: oklch(0.577 0.245 27.325); /* red – same as destructive */
   --status-refurbishment: oklch(0.623 0.214 259.815);
+
+  /* Badge background colors — light mode mirrors status/crowd (already dark enough for /60 on white) */
+  --badge-status-operating: var(--status-operating);
+  --badge-status-down: var(--status-down);
+  --badge-status-closed: var(--status-closed);
+  --badge-status-refurbishment: var(--status-refurbishment);
+  --badge-crowd-very-low: var(--crowd-very-low);
+  --badge-crowd-low: var(--crowd-low);
+  --badge-crowd-moderate: var(--crowd-moderate);
+  --badge-crowd-high: var(--crowd-high);
+  --badge-crowd-very-high: var(--crowd-very-high);
+  --badge-crowd-extreme: var(--crowd-extreme);
+  --badge-primary: var(--primary);
+  --badge-muted: var(--muted-foreground);
+  --badge-trend-up: var(--trend-up);
+  --badge-trend-down: var(--trend-down);
+  --badge-trend-stable: var(--trend-stable);
 
   /* Accent - Theme Park Purple/Blue */
   --park-primary: oklch(90.1% 0.058 230.902);
@@ -253,6 +300,23 @@
   --status-down: oklch(0.78 0.188 56.113);
   --status-closed: oklch(0.704 0.191 22.216); /* red – same as dark destructive */
   --status-refurbishment: oklch(0.707 0.165 254.624);
+
+  /* Badge background colors — darker for dark mode (white text on near-black panels) */
+  --badge-status-operating: oklch(0.46 0.17 142);
+  --badge-status-down: oklch(0.5 0.18 47);
+  --badge-status-closed: oklch(0.46 0.22 27);
+  --badge-status-refurbishment: oklch(0.48 0.16 259);
+  --badge-crowd-very-low: oklch(0.42 0.12 192);
+  --badge-crowd-low: oklch(0.48 0.17 158);
+  --badge-crowd-moderate: oklch(0.48 0.16 142);
+  --badge-crowd-high: oklch(0.5 0.17 55);
+  --badge-crowd-very-high: oklch(0.46 0.2 15);
+  --badge-crowd-extreme: oklch(0.42 0.2 27);
+  --badge-primary: oklch(0.46 0.13 241);
+  --badge-muted: oklch(0.46 0.02 238);
+  --badge-trend-up: oklch(0.46 0.22 27);
+  --badge-trend-down: oklch(0.48 0.16 142);
+  --badge-trend-stable: oklch(0.46 0.02 238);
 
   /* Accent */
   --park-primary: oklch(39.1% 0.09 240.876);
@@ -426,6 +490,64 @@
   }
   .text-trend-stable {
     color: var(--trend-stable);
+  }
+
+  /* ── Badge utility classes ───────────────────────────────────────────────
+     Each class bundles bg/border/text-white/font so badge components only
+     need a single class name. The inline trend pill in attraction-card uses
+     its own sizing and does NOT use these classes. */
+
+  /* Status */
+  .badge-status-operating {
+    @apply bg-badge-status-operating/60 border-status-operating/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-status-down {
+    @apply bg-badge-status-down/60 border-status-down/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-status-closed {
+    @apply bg-badge-status-closed/60 border-status-closed/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-status-refurbishment {
+    @apply bg-badge-status-refurbishment/60 border-status-refurbishment/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-status-unknown {
+    @apply bg-badge-muted/60 border-muted-foreground/25 border font-bold tracking-wide text-white uppercase;
+  }
+
+  /* Crowd level */
+  .badge-crowd-very-low {
+    @apply bg-badge-crowd-very-low/60 border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-crowd-low {
+    @apply bg-badge-crowd-low/60 border-crowd-low/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-crowd-moderate {
+    @apply bg-badge-crowd-moderate/60 border-crowd-moderate/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-crowd-high {
+    @apply bg-badge-crowd-high/60 border-crowd-high/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-crowd-very-high {
+    @apply bg-badge-crowd-very-high/60 border-crowd-very-high/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-crowd-extreme {
+    @apply bg-badge-crowd-extreme/60 border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase;
+  }
+
+  /* Primary / Queue */
+  .badge-primary {
+    @apply bg-badge-primary/60 border-primary/25 border font-bold tracking-wide text-white uppercase;
+  }
+
+  /* Trend */
+  .badge-trend-up {
+    @apply bg-badge-trend-up/60 border-trend-up/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-trend-down {
+    @apply bg-badge-trend-down/60 border-trend-down/25 border font-bold tracking-wide text-white uppercase;
+  }
+  .badge-trend-stable {
+    @apply bg-badge-trend-stable/60 border-trend-stable/25 border font-bold tracking-wide text-white uppercase;
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
