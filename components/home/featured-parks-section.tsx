@@ -151,7 +151,7 @@ export async function FeaturedParksSection({ locale, geoData }: FeaturedParksSec
           <GlossaryInject locale={locale}>{tHome('sections.featuredParksIntro')}</GlossaryInject>
         </p>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {parks.map((park) => {
             // Translate country name using geo translations (same pattern as ParkCardNearby)
             const normalizedCountry = park.countrySlug.toLowerCase().replace(/\s+/g, '-');

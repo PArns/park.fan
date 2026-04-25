@@ -152,7 +152,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <ul className="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <li>
               <ParkCardNearbySkeleton />
             </li>
@@ -505,13 +505,18 @@ export function NearbyParksCard({ className }: { className?: string }) {
               </Button>
             </div>
           )}
-          <ul className="grid gap-3 sm:grid-cols-2 md:gap-4 lg:grid-cols-3">
+          <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {parks.map((park, index) => {
-              // Hide items > 1 (index 2+) on mobile if not expanded
-              const hiddenClass = !isExpanded && index >= 2 ? 'hidden md:block' : '';
+              const hidden = !isExpanded && index >= 2;
 
               return (
-                <li key={park.id} className={hiddenClass}>
+                <li
+                  key={park.id}
+                  className={cn(
+                    'row-span-3 grid [grid-template-rows:subgrid]',
+                    hidden && 'hidden md:grid'
+                  )}
+                >
                   <ParkCard
                     id={park.id}
                     name={stripNewPrefix(park.name)}

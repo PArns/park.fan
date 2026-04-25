@@ -129,7 +129,7 @@ export default async function CityPage({ params }: CityPageProps) {
       {/* Parks Grid */}
       <section aria-label={tExplore('parks')}>
         <h2 className="sr-only">{tExplore('parks')}</h2>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2">
           {parks.map((park) => (
             <ParkCard
               key={park.id}

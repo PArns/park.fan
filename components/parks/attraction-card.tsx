@@ -185,12 +185,11 @@ export function AttractionCard({
     <Link
       href={href as '/europe/germany/rust/europa-park'}
       prefetch={false}
-      className="group block h-full"
+      className="group row-span-3 grid [grid-template-rows:subgrid]"
     >
       <article
         className={cn(
-          'relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10',
-          backgroundImage && 'min-h-[420px]'
+          'relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10'
         )}
         style={{
           boxShadow: 'var(--pk-card-shadow)',
@@ -270,7 +269,7 @@ export function AttractionCard({
 
         {/* Top glass panel */}
         <div
-          className="relative z-[3] shrink-0 overflow-hidden"
+          className="relative z-[3] -mb-4 overflow-hidden"
           style={{
             padding: '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
@@ -348,10 +347,9 @@ export function AttractionCard({
             );
           })()}
 
-          {/* Badges — single row with overflow fade. Keeps all headers the
-              same height across a grid row so cards line up without needing
-              a flex-1 spacer to absorb differences. */}
-          <div className="relative mt-[9px] flex min-h-[52px] flex-wrap items-start gap-[6px]">
+          {/* Badges — CSS subgrid on the outer grid equalizes header heights
+              across all cards in a row; no artificial min-h needed. */}
+          <div className="relative mt-[9px] flex flex-wrap items-start gap-[6px]">
             <ParkStatusBadge status={status as ParkStatus} />
             {isOperatingOrUnknown && crowdLevel && (
               <CrowdLevelBadge
@@ -389,16 +387,14 @@ export function AttractionCard({
           </div>
         </div>
 
-        {/* Photo spacer — flex-1 so it fills the middle and pushes the footer
-           to the bottom of the card. With an image it reserves extra height
-           so the photo has room to breathe; without, it collapses until the
-           grid stretches the card to match its tallest sibling. */}
-        <div className={cn('relative z-[2] flex-1', backgroundImage && 'min-h-[80px]')} />
+        {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
+           container; min-h forces it open when there is a background image. */}
+        <div className={cn('relative z-[2]', backgroundImage && 'min-h-[220px]')} />
 
         {/* Bottom glass panel — only rendered when we have a live wait time */}
         {isOperatingOrUnknown && waitTime !== null && (
           <div
-            className="relative z-[3] shrink-0 overflow-hidden"
+            className="relative z-[3] -mt-4 overflow-hidden"
             style={{
               padding: '12px 14px 13px',
               background: 'var(--pk-panel-highlight-bot), var(--pk-panel)',

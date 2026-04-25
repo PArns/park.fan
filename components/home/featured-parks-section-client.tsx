@@ -75,7 +75,7 @@ export function PopularParksGridClient() {
 
   return (
     <div className="space-y-4">
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {parks.map((park) => (
           <ParkCard
             key={park.slug}
@@ -146,7 +146,7 @@ export function FeaturedParksSectionClient({
         {isLoading ? (
           <FeaturedParksSkeleton />
         ) : (
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {parks!.map((park) => (
               <ParkCard
                 key={park.slug}

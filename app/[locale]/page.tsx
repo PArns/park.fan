@@ -280,7 +280,7 @@ export default async function HomePage({ params }: HomePageProps) {
             {/* Grid Layout: Second row - Parks */}
             <div className="mb-3 grid gap-4 sm:grid-cols-2">
               {stats.mostCrowdedPark && (
-                <div className="flex flex-col gap-2">
+                <div className="grid [grid-template-rows:auto_auto_1fr_auto] gap-4">
                   <h3 className="text-muted-foreground text-sm font-medium">{t('mostCrowded')}</h3>
                   <ParkCard
                     name={stats.mostCrowdedPark.name}
@@ -302,7 +302,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               )}
               {stats.leastCrowdedPark && (
-                <div className="flex flex-col gap-2">
+                <div className="grid [grid-template-rows:auto_auto_1fr_auto] gap-4">
                   <h3 className="text-muted-foreground text-sm font-medium">{t('leastCrowded')}</h3>
                   <ParkCard
                     name={stats.leastCrowdedPark.name}
@@ -328,7 +328,7 @@ export default async function HomePage({ params }: HomePageProps) {
             {/* Grid Layout: Third row - Attractions */}
             <div className="grid gap-4 sm:grid-cols-2">
               {stats.longestWaitRide && (
-                <div className="flex flex-col gap-2">
+                <div className="grid [grid-template-rows:auto_auto_1fr_auto] gap-4">
                   <h3 className="text-muted-foreground text-sm font-medium">{t('longestWait')}</h3>
                   <AttractionCard
                     parkStatus="OPERATING"
@@ -368,7 +368,7 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               )}
               {stats.shortestWaitRide && (
-                <div className="flex flex-col gap-2">
+                <div className="grid [grid-template-rows:auto_auto_1fr_auto] gap-4">
                   <h3 className="text-muted-foreground text-sm font-medium">{t('shortestWait')}</h3>
                   <AttractionCard
                     parkStatus="OPERATING"

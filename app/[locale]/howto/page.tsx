@@ -996,7 +996,7 @@ function MockAttractionCards(_props: { locale: MockLocale }) {
   };
 
   return (
-    <div className="not-prose grid items-stretch gap-4 sm:grid-cols-3">
+    <div className="not-prose grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-3">
       {attractions.map((attraction) => (
         <AttractionCard
           key={attraction.id}
@@ -1079,7 +1079,7 @@ function MockNearbyCards(_props: { locale: MockLocale }) {
   const futureClosingIso = `${fYyyy}-${fMm}-${fDd}T18:00:00+02:00`;
 
   return (
-    <div className="not-prose grid items-stretch gap-4 sm:grid-cols-2">
+    <div className="not-prose grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2">
       <ParkCard
         slug="phantasialand"
         name="Phantasialand"

@@ -165,12 +165,11 @@ export function ParkCard({
     <Link
       href={effectiveHref as '/europe/germany/rust/europa-park'}
       prefetch={isOperatingOrUnknown}
-      className={cn('block h-full', className)}
+      className={cn('row-span-3 grid [grid-template-rows:subgrid]', className)}
     >
       <article
         className={cn(
-          'group relative isolate flex h-full cursor-pointer flex-col overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10',
-          backgroundImage && 'min-h-[400px]'
+          'group relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10'
         )}
         style={{
           boxShadow: 'var(--pk-card-shadow)',
@@ -257,7 +256,7 @@ export function ParkCard({
 
         {/* Top glass panel — z-3 */}
         <div
-          className="relative z-[3] shrink-0 overflow-hidden"
+          className="relative z-[3] -mb-4 overflow-hidden"
           style={{
             padding: '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
@@ -324,14 +323,13 @@ export function ParkCard({
           </div>
         </div>
 
-        {/* Photo spacer — flex-1 fills the card body and pushes the footer
-           down. Reserves at least 60px when an image is present to give the
-           photo room; otherwise collapses so the card can shrink. */}
-        <div className={cn('relative z-[2] flex-1', backgroundImage && 'min-h-[60px]')} />
+        {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
+           container; min-h forces it open when there is a background image. */}
+        <div className={cn('relative z-[2]', backgroundImage && 'min-h-[220px]')} />
 
         {/* Footer glass panel — z-3 */}
         <div
-          className="relative z-[3] shrink-0 overflow-hidden"
+          className="relative z-[3] -mt-4 overflow-hidden"
           style={{
             padding: '13px 16px 14px',
             background: 'var(--pk-panel-highlight-bot), var(--pk-panel)',

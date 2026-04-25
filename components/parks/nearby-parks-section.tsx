@@ -27,9 +27,9 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
       </div>
       <p className="text-muted-foreground mb-4 text-sm">{t('nearbyParksArea')}</p>
 
-      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {parks.map((park) => (
-          <li key={park.id}>
+          <li key={park.id} className="row-span-3 grid [grid-template-rows:subgrid]">
             <ParkCard
               id={park.id}
               slug={park.slug}
