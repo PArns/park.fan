@@ -159,20 +159,6 @@
   }
 }
 
-/* Live wait ticker — scrolls left, duplicate content for seamless loop */
-@keyframes ticker-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.ticker-animate {
-  animation: ticker-scroll var(--ticker-dur, 60s) linear infinite;
-  will-change: transform;
-}
-
 /* Hero background: Ken Burns slow zoom + pan */
 @keyframes ken-burns {
   0% {

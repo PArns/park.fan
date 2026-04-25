@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -66,6 +66,8 @@ interface LiveWaitTickerProps {
 export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const t = useTranslations('home.hero');
   const [paused, setPaused] = useState(false);
+  const pausedRef = useRef(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const { data } = useQuery({
     queryKey: ['ticker'],
@@ -80,10 +82,39 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   });
 
   const items: TickerItem[] = data?.items ?? initialItems;
-  if (items.length === 0) return null;
 
-  // Duration scales with item count so each item spends ~4s on screen
-  const durationS = Math.max(30, items.length * 4);
+  const posXRef = useRef(0);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+  }, [paused]);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el || items.length === 0) return;
+
+    // Duration scales with item count so each item spends ~4s on screen
+    const durationS = Math.max(30, items.length * 4);
+    let lastTs: number | null = null;
+    let raf: number;
+
+    const step = (ts: number) => {
+      const singleWidth = el.scrollWidth / 2;
+      if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
+        const dt = (ts - lastTs) / 1000;
+        const speed = singleWidth / durationS;
+        posXRef.current = (posXRef.current + speed * dt) % singleWidth;
+        el.style.transform = `translateX(${-posXRef.current}px)`;
+      }
+      lastTs = ts;
+      raf = requestAnimationFrame(step);
+    };
+
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [items]);
+
+  if (items.length === 0) return null;
 
   return (
     <div
@@ -102,13 +133,9 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
       {/* Scrolling area */}
       <div className="relative min-w-0 flex-1 overflow-hidden">
         <div
-          className="ticker-animate inline-flex h-full items-center"
-          style={
-            {
-              '--ticker-dur': `${durationS}s`,
-              animationPlayState: paused ? 'paused' : 'running',
-            } as React.CSSProperties
-          }
+          ref={trackRef}
+          className="inline-flex h-full items-center"
+          style={{ willChange: 'transform' }}
         >
           {[...items, ...items].map((item, i) => (
             <span key={i} className="flex shrink-0 items-center">

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@hashintel/refractive':
-        specifier: ^0.0.3
-        version: 0.0.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
       '@radix-ui/react-avatar':
         specifier: ^1.1.11
         version: 1.1.11(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
@@ -311,12 +308,6 @@ packages:
 
   '@formatjs/intl-localematcher@0.8.4':
     resolution: {integrity: sha512-J51dAnynnqJdVUEXidHoIWn+qYve+yNQEgmFk9Dyfr3p0okzm+5QhQ+9QmsMz08+BeWTVpc1HadIiLfZmRYbAQ==}
-
-  '@hashintel/refractive@0.0.3':
-    resolution: {integrity: sha512-f/7QK+6IiHyivl1RDHXme5VGhxindl7yOxU8MwU+gKqiYVgMjK0kiNPI/Rnc/EpHSPM6NZ9gkwwqdQ/lUz0dhQ==}
-    peerDependencies:
-      react: ^19.0.0
-      react-dom: ^19.0.0
 
   '@humanfs/core@0.19.2':
     resolution: {integrity: sha512-UhXNm+CFMWcbChXywFwkmhqjs3PRCmcSa/hfBgLIb7oQ5HNb1wS0icWsGtSAUNgefHeI+eBrA8I1fxmbHsGdvA==}
@@ -3683,11 +3674,6 @@ snapshots:
   '@formatjs/intl-localematcher@0.8.4':
     dependencies:
       '@formatjs/fast-memoize': 3.1.2
-
-  '@hashintel/refractive@0.0.3(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
-    dependencies:
-      react: 19.2.5
-      react-dom: 19.2.5(react@19.2.5)
 
   '@humanfs/core@0.19.2':
     dependencies:

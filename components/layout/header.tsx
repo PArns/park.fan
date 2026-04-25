@@ -56,11 +56,11 @@ export function Header() {
   const isTransparent = isHomePage && !scrolled;
 
   // Shared fade class for elements that hide on the transparent homepage header
-  const fadeClass = `transition-all duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
+  const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
 
   return (
     <header
-      className={`relative sticky top-0 z-50 h-16 border-b transition-all duration-500 ${
+      className={`relative sticky top-0 z-50 h-16 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'
