@@ -25,7 +25,6 @@ import {
   BarChart2,
   Wrench,
   BookOpen,
-  Sparkles,
 } from 'lucide-react';
 
 // Base UI

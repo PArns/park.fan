@@ -37,6 +37,10 @@ interface AttractionCardProps {
 
 // ---------- helpers ----------
 
+function roundTo5(n: number): number {
+  return Math.round(n / 5) * 5;
+}
+
 function getWaitTime(attraction: ParkAttraction | FavoriteAttraction): number | null {
   const standby = attraction.queues?.find((q) => q.queueType === 'STANDBY');
   if (!standby) return null;
@@ -122,22 +126,20 @@ export function AttractionCard({
   const stats = attraction.statistics;
   const history = stats?.history;
 
-  // Short-term trend — direction + delta.
-  // Compares the mean of the most recent window (last ~5 points) against the
-  // mean of the window before it. This smooths out single-point jitter so a
-  // brief spike doesn't flip the indicator. A sub-3-min change counts as
-  // stable — relevant for short waits where a couple of minutes is noise.
+  // Short-term trend — compares last 2 data points against the 2 before them.
+  // Fixed window of 2 prevents comparing against hours-old data when history
+  // is sparse (e.g. 8 points over 100 minutes would otherwise show total
+  // change rather than recent movement).
   const trend: { direction: 'up' | 'down' | 'stable'; delta: number } | null = (() => {
     if (!isOperatingOrUnknown || waitTime === null) return null;
     if (!history || history.length < 4) return null;
-    const WINDOW = Math.min(5, Math.floor(history.length / 2));
+    const WINDOW = 2;
     const recent = history.slice(-WINDOW);
     const prior = history.slice(-WINDOW * 2, -WINDOW);
     const avg = (pts: typeof history) =>
       pts.reduce((s, p) => s + (typeof p.waitTime === 'number' ? p.waitTime : 0), 0) / pts.length;
-    const delta = Math.round(avg(recent) - avg(prior));
-    const STABLE_THRESHOLD = 3;
-    if (Math.abs(delta) < STABLE_THRESHOLD) {
+    const delta = roundTo5(avg(recent) - avg(prior));
+    if (delta === 0) {
       return { direction: 'stable', delta: 0 };
     }
     return { direction: delta > 0 ? 'up' : 'down', delta };
@@ -424,7 +426,7 @@ export function AttractionCard({
                       className="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
                       style={{ color: 'var(--pk-text-1)' }}
                     >
-                      {waitTime}
+                      {roundTo5(waitTime)}
                     </span>
                     <span className="text-[12px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
                       min
@@ -481,7 +483,7 @@ export function AttractionCard({
                             style={{ color: 'var(--pk-text-3)' }}
                             aria-hidden="true"
                           />
-                          <span>{t('cardHigh', { time: stats.peakWaitToday })}</span>
+                          <span>{t('cardHigh', { time: roundTo5(stats.peakWaitToday) })}</span>
                         </span>
                       )}
                       {stats?.peakWaitToday != null && stats?.avgWaitToday != null && (
@@ -498,7 +500,7 @@ export function AttractionCard({
                           />
                           <span>
                             {t('cardAvgToday', {
-                              time: Math.round(stats.avgWaitToday),
+                              time: roundTo5(stats.avgWaitToday),
                             })}
                           </span>
                         </span>
