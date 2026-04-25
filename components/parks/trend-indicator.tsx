@@ -9,6 +9,8 @@ const trendIconMap: Record<TrendDirection, typeof TrendingUp> = {
   down: TrendingDown,
   increasing: TrendingUp,
   decreasing: TrendingDown,
+  rising: TrendingUp,
+  falling: TrendingDown,
 };
 
 interface TrendIndicatorProps {
@@ -29,8 +31,8 @@ export function TrendIndicator({
   className,
 }: TrendIndicatorProps) {
   const Icon = trendIconMap[trend];
-  const isUp = trend === 'up' || trend === 'increasing';
-  const isDown = trend === 'down' || trend === 'decreasing';
+  const isUp = trend === 'up' || trend === 'increasing' || trend === 'rising';
+  const isDown = trend === 'down' || trend === 'decreasing' || trend === 'falling';
   const iconClass = cn(size === 'sm' ? 'h-3 w-3' : 'h-4 w-4', 'text-inherit');
 
   if (variant === 'pill') {

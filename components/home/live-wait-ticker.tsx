@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { TrendingUp, TrendingDown } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { TickerItem } from '@/lib/api/types';
 
@@ -16,16 +17,29 @@ const crowdBorderColor: Record<string, string> = {
   extreme: 'border-crowd-extreme/60 text-crowd-extreme',
 };
 
-function WaitBadge({ waitTime, crowdLevel }: { waitTime: number; crowdLevel: string | null }) {
+function WaitBadge({
+  waitTime,
+  crowdLevel,
+  trend,
+}: {
+  waitTime: number;
+  crowdLevel: string | null;
+  trend?: TickerItem['trend'];
+}) {
   const colors = crowdLevel
     ? (crowdBorderColor[crowdLevel] ??
       'border-border text-muted-foreground dark:border-white/30 dark:text-white/70')
     : 'border-border text-muted-foreground dark:border-white/30 dark:text-white/70';
   return (
     <span
-      className={`shrink-0 rounded border px-1.5 py-0.5 text-[11px] font-bold tabular-nums ${colors}`}
+      className={`flex shrink-0 items-center gap-0.5 rounded border px-1.5 py-0.5 text-[11px] font-bold tabular-nums ${colors}`}
     >
       {waitTime} min
+      {trend === 'up' || trend === 'increasing' || trend === 'rising' ? (
+        <TrendingUp className="text-trend-up h-2.5 w-2.5" />
+      ) : trend === 'down' || trend === 'decreasing' || trend === 'falling' ? (
+        <TrendingDown className="text-trend-down h-2.5 w-2.5" />
+      ) : null}
     </span>
   );
 }
@@ -46,7 +60,7 @@ function TickerItemLink({ item }: { item: TickerItem }) {
       <span className="text-foreground text-sm font-semibold dark:text-white">
         {item.attractionName}
       </span>
-      <WaitBadge waitTime={item.waitTime} crowdLevel={item.crowdLevel} />
+      <WaitBadge waitTime={item.waitTime} crowdLevel={item.crowdLevel} trend={item.trend} />
     </Link>
   );
 }
@@ -126,7 +140,8 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
       <div className="border-border/60 flex shrink-0 items-center gap-1.5 border-r px-3 dark:border-white/10">
         <span className="size-1.5 shrink-0 animate-pulse rounded-full bg-green-500" />
         <span className="font-mono text-[10px] font-bold tracking-wide whitespace-nowrap text-green-600 uppercase dark:text-green-400">
-          {t('liveWaitTimes')}
+          <span className="sm:hidden">LIVE</span>
+          <span className="hidden sm:inline">{t('liveWaitTimes')}</span>
         </span>
       </div>
 

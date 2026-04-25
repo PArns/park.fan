@@ -21,7 +21,14 @@ export type Recommendation =
   | 'strongly_avoid'
   | 'closed';
 export type ScheduleType = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
-export type TrendDirection = 'up' | 'stable' | 'down' | 'increasing' | 'decreasing';
+export type TrendDirection =
+  | 'up'
+  | 'stable'
+  | 'down'
+  | 'increasing'
+  | 'decreasing'
+  | 'rising'
+  | 'falling';
 export type ComparisonStatus =
   | 'much_lower'
   | 'lower'
@@ -635,6 +642,7 @@ export interface TickerItem {
   attractionSlug: string;
   waitTime: number;
   crowdLevel: CrowdLevel | null;
+  trend?: TrendDirection;
   url: string | null;
 }
 
