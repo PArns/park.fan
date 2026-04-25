@@ -269,9 +269,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="mb-3 grid gap-4 sm:grid-cols-2">
               {stats.mostCrowdedPark && (
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-muted-foreground text-sm font-medium">
-                    {t('mostCrowded')}
-                  </h3>
+                  <h3 className="text-muted-foreground text-sm font-medium">{t('mostCrowded')}</h3>
                   <ParkCard
                     name={stats.mostCrowdedPark.name}
                     slug={stats.mostCrowdedPark.slug}
@@ -293,9 +291,7 @@ export default async function HomePage({ params }: HomePageProps) {
               )}
               {stats.leastCrowdedPark && (
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-muted-foreground text-sm font-medium">
-                    {t('leastCrowded')}
-                  </h3>
+                  <h3 className="text-muted-foreground text-sm font-medium">{t('leastCrowded')}</h3>
                   <ParkCard
                     name={stats.leastCrowdedPark.name}
                     slug={stats.leastCrowdedPark.slug}
@@ -321,9 +317,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid gap-4 sm:grid-cols-2">
               {stats.longestWaitRide && (
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-muted-foreground text-sm font-medium">
-                    {t('longestWait')}
-                  </h3>
+                  <h3 className="text-muted-foreground text-sm font-medium">{t('longestWait')}</h3>
                   <AttractionCard
                     parkStatus="OPERATING"
                     showParkName
@@ -363,9 +357,7 @@ export default async function HomePage({ params }: HomePageProps) {
               )}
               {stats.shortestWaitRide && (
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-muted-foreground text-sm font-medium">
-                    {t('shortestWait')}
-                  </h3>
+                  <h3 className="text-muted-foreground text-sm font-medium">{t('shortestWait')}</h3>
                   <AttractionCard
                     parkStatus="OPERATING"
                     showParkName

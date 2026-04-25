@@ -21,6 +21,9 @@ import { GlassCard } from '@/components/common/glass-card';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
+import { ParkCard } from '@/components/parks/park-card';
+import { AttractionCard } from '@/components/parks/attraction-card';
+import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { TrendIndicator } from '@/components/parks/trend-indicator';
 import { WeatherForecastStrip } from '@/components/parks/weather-forecast-strip';
 import {
@@ -43,7 +46,6 @@ import {
   Calendar,
   ChevronRight,
   MapPin,
-  Navigation,
   Snowflake,
   Wind,
   Sun,
@@ -555,33 +557,6 @@ function CrowdBadge({ level, locale }: { level: string; locale: MockLocale }) {
   );
 }
 
-function MockSparkline({ data }: { data: number[] }) {
-  const max = Math.max(...data);
-  const min = Math.min(...data);
-  const range = max - min || 1;
-  const W = 200;
-  const H = 36;
-  const pts = data
-    .map((v, i) => {
-      const x = (i / (data.length - 1)) * W;
-      const y = H - ((v - min) / range) * (H - 6) - 3;
-      return `${x},${y}`;
-    })
-    .join(' ');
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} className="h-9 w-full" preserveAspectRatio="none">
-      <polyline
-        points={pts}
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 function MockParkHeader({ locale }: { locale: MockLocale }) {
   const isDE = locale === 'de';
   const t = isDE
@@ -905,94 +880,138 @@ function MockParkHeader({ locale }: { locale: MockLocale }) {
   );
 }
 
-function MockAttractionCards({ locale }: { locale: MockLocale }) {
-  const isDE = locale === 'de';
-  const cards = [
+function MockAttractionCards(_props: { locale: MockLocale }) {
+  // Distribute 6 history points across today's park hours (10:00 → 17:30
+  // Europe/Berlin) so the sparkline axis always renders a sensible daytime range,
+  // independent of when the cached howto page is served.
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const HOUR_SLOTS = [10, 11.5, 13, 14.5, 16, 17.5] as const;
+  const hist = (values: number[]) =>
+    values.map((waitTime, i) => {
+      const slot = HOUR_SLOTS[i] ?? 17.5;
+      const h = Math.floor(slot);
+      const min = Math.round((slot - h) * 60);
+      return {
+        timestamp: `${yyyy}-${mm}-${dd}T${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}:00+02:00`,
+        waitTime,
+      };
+    });
+
+  // "Beste Zeit" anchored to today's date so the card reads as a real time
+  // (e.g. "Beste Zeit: 11:30").
+  const bestVisitAt = (hours: number, minutes: number): string => {
+    const hh = String(hours).padStart(2, '0');
+    const mmStr = String(minutes).padStart(2, '0');
+    return `${yyyy}-${mm}-${dd}T${hh}:${mmStr}:00+02:00`;
+  };
+  const statsTimestamp = `${yyyy}-${mm}-${dd}T17:30:00+02:00`;
+
+  const phantasialand = {
+    id: 'phantasialand',
+    name: 'Phantasialand',
+    slug: 'phantasialand',
+    timezone: 'Europe/Berlin',
+    continent: 'europe',
+    country: 'Germany',
+    city: 'Brühl',
+  } as const;
+
+  const attractions: FavoriteAttraction[] = [
     {
+      id: 'mock-taron',
       name: 'Taron',
-      wait: 55,
-      trend: 'up' as const,
-      crowd: 'high',
-      favorited: true,
-      spark: [15, 22, 28, 38, 47, 55],
-      extra: 'Single Rider',
-      optimalTime: '16:30',
+      slug: 'taron',
+      url: '/europe/germany/bruhl/phantasialand/taron',
+      latitude: null,
+      longitude: null,
+      park: { ...phantasialand },
+      queues: [
+        { queueType: 'STANDBY', waitTime: 55, status: 'OPERATING' },
+        { queueType: 'SINGLE_RIDER', waitTime: 10, status: 'OPERATING' },
+      ],
+      crowdLevel: 'high',
+      statistics: {
+        avgWaitToday: 42,
+        peakWaitToday: 60,
+        peakWaitTimestamp: null,
+        minWaitToday: 15,
+        typicalWaitThisHour: null,
+        percentile95ThisHour: null,
+        currentVsTypical: null,
+        dataPoints: 6,
+        history: hist([15, 22, 28, 38, 47, 55]),
+        timestamp: statsTimestamp,
+      },
+      bestVisitTimes: [{ time: bestVisitAt(11, 30), rating: 'optimal', predictedWaitTime: 20 }],
     },
     {
+      id: 'mock-black-mamba',
       name: 'Black Mamba',
-      wait: 12,
-      trend: 'down' as const,
-      crowd: 'low',
-      favorited: true,
-      spark: [40, 33, 26, 20, 15, 12],
-      optimalTime: '17:45',
+      slug: 'black-mamba',
+      url: '/europe/germany/bruhl/phantasialand/black-mamba',
+      latitude: null,
+      longitude: null,
+      park: { ...phantasialand },
+      queues: [{ queueType: 'STANDBY', waitTime: 12, status: 'OPERATING' }],
+      crowdLevel: 'low',
+      statistics: {
+        avgWaitToday: 25,
+        peakWaitToday: 40,
+        peakWaitTimestamp: null,
+        minWaitToday: 8,
+        typicalWaitThisHour: null,
+        percentile95ThisHour: null,
+        currentVsTypical: null,
+        dataPoints: 6,
+        history: hist([40, 33, 26, 20, 15, 12]),
+        timestamp: statsTimestamp,
+      },
+      bestVisitTimes: [{ time: bestVisitAt(14, 45), rating: 'optimal', predictedWaitTime: 8 }],
     },
     {
-      name: 'Klugheim',
-      wait: 30,
-      trend: 'stable' as const,
-      crowd: 'moderate',
-      favorited: false,
-      spark: [28, 32, 30, 33, 29, 30],
+      id: 'mock-raik',
+      name: 'Raik',
+      slug: 'raik',
+      url: '/europe/germany/bruhl/phantasialand/raik',
+      latitude: null,
+      longitude: null,
+      park: { ...phantasialand },
+      queues: [{ queueType: 'STANDBY', waitTime: 30, status: 'OPERATING' }],
+      crowdLevel: 'moderate',
+      statistics: {
+        avgWaitToday: 30,
+        peakWaitToday: 35,
+        peakWaitTimestamp: null,
+        minWaitToday: 25,
+        typicalWaitThisHour: null,
+        percentile95ThisHour: null,
+        currentVsTypical: null,
+        dataPoints: 6,
+        history: hist([28, 32, 30, 33, 29, 30]),
+        timestamp: statsTimestamp,
+      },
+      bestVisitTimes: null,
     },
   ];
 
+  const backgrounds: Record<string, string> = {
+    taron: '/images/parks/phantasialand/taron.jpg',
+    'black-mamba': '/images/parks/phantasialand/black-mamba.jpg',
+    raik: '/images/parks/phantasialand/raik.jpg',
+  };
+
   return (
-    <div className="not-prose grid gap-3 sm:grid-cols-3">
-      {cards.map(({ name, wait, trend, crowd, favorited, spark, extra, optimalTime }) => (
-        <Card key={name} className="relative overflow-hidden">
-          {/* Favorite star — top right, matching real attraction card */}
-          <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-            <Star
-              className={`h-4 w-4 ${favorited ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground'}`}
-            />
-          </div>
-          <CardContent className="relative z-10 flex h-full flex-col p-4">
-            <div className="flex items-start justify-between gap-2">
-              {/* Left: name + wait time + queue type */}
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate pr-6 leading-tight font-medium">{name}</h3>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <div className="flex items-center gap-1.5 text-lg font-bold">
-                    <Clock className="h-4 w-4" />
-                    {wait} min
-                  </div>
-                  <TrendIndicator trend={trend} />
-                </div>
-                {extra && (
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    <DemoBadge
-                      color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
-                      label={extra}
-                      icon={User}
-                    />
-                  </div>
-                )}
-                {optimalTime && (
-                  <div className="mt-1 flex items-center gap-1 text-xs text-amber-400">
-                    <Star className="h-3 w-3 shrink-0 fill-current" />
-                    <span className="font-medium">
-                      {isDE ? `Beste Zeit: ${optimalTime}` : `Best: ${optimalTime}`}
-                    </span>
-                  </div>
-                )}
-              </div>
-              {/* Right: status + crowd badges */}
-              <div className="flex shrink-0 flex-col items-end gap-2">
-                <DemoBadge
-                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-                  label={isDE ? 'GEÖFFNET' : 'OPERATING'}
-                  icon={Clock}
-                />
-                <CrowdBadge level={crowd} locale={locale} />
-              </div>
-            </div>
-            {/* Sparkline — bottom, matching opacity-50 style */}
-            <div className="mt-auto h-16 w-full overflow-hidden pt-4 opacity-50">
-              <MockSparkline data={spark} />
-            </div>
-          </CardContent>
-        </Card>
+    <div className="not-prose grid items-stretch gap-4 sm:grid-cols-3">
+      {attractions.map((attraction) => (
+        <AttractionCard
+          key={attraction.id}
+          attraction={attraction}
+          parkStatus="OPERATING"
+          backgroundImage={backgrounds[attraction.slug]}
+        />
       ))}
     </div>
   );
@@ -1051,108 +1070,67 @@ function MockShowCards() {
   );
 }
 
-function MockNearbyCards({ locale }: { locale: MockLocale }) {
-  const isDE = locale === 'de';
-  return (
-    <div className="not-prose grid items-stretch gap-3 sm:grid-cols-2">
-      {/* Card 1: favorited, nearest open — matches ParkCardNearby structure */}
-      <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
-        <BackgroundOverlay
-          imageSrc="/images/parks/phantasialand/background.jpg"
-          alt="Phantasialand"
-          intensity="medium"
-          hoverEffect
-        />
-        <div className="absolute top-2 right-2 z-20">
-          <Star className="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow" />
-        </div>
-        <div className="absolute top-2 left-2 z-20">
-          <Badge className="bg-primary text-primary-foreground border-0 text-xs font-medium shadow-md">
-            {isDE ? 'Nächster geöffneter Park' : 'Nearest Open Park'}
-          </Badge>
-        </div>
-        <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
-          <div className="bg-background/20 mt-6 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
-            <div>
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="line-clamp-2 text-base font-semibold">Phantasialand</h3>
-                <ChevronRight className="text-muted-foreground mt-0.5 h-4 w-4 flex-shrink-0" />
-              </div>
-              <p className="text-muted-foreground mt-1 truncate text-xs">
-                Brühl, {isDE ? 'Deutschland' : 'Germany'}
-              </p>
-            </div>
-            <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-              <div className="flex items-center justify-between text-sm">
-                <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
-                  <Navigation className="h-4 w-4" />
-                  <span className="font-medium">8.4 km</span>
-                </div>
-                <DemoBadge
-                  color="bg-status-operating/65 border-status-operating/80 dark:bg-status-operating/25 dark:border-status-operating/40"
-                  label={isDE ? 'GEÖFFNET' : 'OPERATING'}
-                  icon={Clock}
-                />
-              </div>
-              <div className="flex items-center gap-2.5 text-sm">
-                <span className="text-sm font-semibold">{isDE ? 'Ø 45 min' : 'avg 45 min'}</span>
-                <CrowdBadge level="high" locale={locale} />
-              </div>
-              <div className="border-border/50 text-muted-foreground mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
-                <Clock className="h-3.5 w-3.5" />
-                <span>{isDE ? 'Schließt heute um 22:00' : 'Closes today at 22:00'}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+function MockNearbyCards(_props: { locale: MockLocale }) {
+  // Fixed hours (09:00 / 22:00) with today's date so the card always shows
+  // clean, natural-looking times even though the page is cached for 24h.
+  const now = new Date();
+  const yyyy = now.getFullYear();
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const todayOpening = `${yyyy}-${mm}-${dd}T09:00:00+02:00`;
+  const todayClosing = `${yyyy}-${mm}-${dd}T22:00:00+02:00`;
+  const futureOpening = new Date(now.getTime() + 21 * 24 * 60 * 60 * 1000);
+  const fYyyy = futureOpening.getFullYear();
+  const fMm = String(futureOpening.getMonth() + 1).padStart(2, '0');
+  const fDd = String(futureOpening.getDate()).padStart(2, '0');
+  const futureOpeningIso = `${fYyyy}-${fMm}-${fDd}T10:00:00+02:00`;
+  const futureClosingIso = `${fYyyy}-${fMm}-${fDd}T18:00:00+02:00`;
 
-      {/* Card 2: not favorited, offseason closed */}
-      <article className="bg-card relative h-full overflow-hidden rounded-xl border py-4 md:py-6">
-        <BackgroundOverlay
-          imageSrc="/images/parks/europa-park/background.jpg"
-          alt="Europa-Park"
-          intensity="medium"
-        />
-        <div className="absolute top-2 right-2 z-20">
-          <Star className="text-muted-foreground h-5 w-5" />
-        </div>
-        <div className="relative z-10 flex h-full flex-col p-3 md:p-4">
-          <div className="bg-background/20 flex flex-1 flex-col justify-between rounded-xl p-3 shadow-sm backdrop-blur-md md:p-4">
-            <div>
-              <div className="flex items-start justify-between gap-2">
-                <h3 className="line-clamp-2 text-base font-semibold">Europa-Park</h3>
-                <ChevronRight className="text-muted-foreground mt-0.5 h-4 w-4 flex-shrink-0" />
-              </div>
-              <p className="text-muted-foreground mt-1 truncate text-xs">
-                Rust, {isDE ? 'Deutschland' : 'Germany'}
-              </p>
-            </div>
-            <div className="mt-3 flex flex-1 flex-col justify-end space-y-2 md:space-y-3">
-              <div className="flex items-center justify-between text-sm">
-                <div className="text-muted-foreground flex items-center gap-1.5 text-sm">
-                  <Navigation className="h-4 w-4" />
-                  <span className="font-medium">124 km</span>
-                </div>
-                <DemoBadge
-                  color="bg-status-closed/65 border-status-closed/80 dark:bg-status-closed/25 dark:border-status-closed/40"
-                  label={isDE ? 'GESCHLOSSEN' : 'CLOSED'}
-                  icon={XCircle}
-                />
-              </div>
-              <div className="h-5" />
-              <div className="border-border/50 text-muted-foreground mt-2 flex items-center gap-1.5 border-t pt-2 text-xs">
-                <Snowflake className="h-3.5 w-3.5" />
-                <span>
-                  {isDE
-                    ? 'OffSeason (Öffnet am 28. März – in 3 Wochen)'
-                    : 'OffSeason (Opens March 28 – in 3 weeks)'}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+  return (
+    <div className="not-prose grid items-stretch gap-4 sm:grid-cols-2">
+      <ParkCard
+        parkId="howto-phantasialand"
+        slug="phantasialand"
+        name="Phantasialand"
+        city="Brühl"
+        country="Germany"
+        translateCountry
+        href={'/europe/germany/bruhl/phantasialand' as '/'}
+        backgroundImage="/images/parks/phantasialand/background.jpg"
+        status="OPERATING"
+        crowdLevel="high"
+        averageWaitTime={45}
+        operatingAttractions={38}
+        totalAttractions={42}
+        distance={8400}
+        timezone="Europe/Berlin"
+        highlightAsNearestOpen
+        hasOperatingSchedule
+        todaySchedule={{
+          openingTime: todayOpening,
+          closingTime: todayClosing,
+          scheduleType: 'OPERATING',
+        }}
+      />
+      <ParkCard
+        parkId="howto-europa-park"
+        slug="europa-park"
+        name="Europa-Park"
+        city="Rust"
+        country="Germany"
+        translateCountry
+        href={'/europe/germany/rust/europa-park' as '/'}
+        backgroundImage="/images/parks/europa-park/background.jpg"
+        status="CLOSED"
+        distance={124000}
+        timezone="Europe/Berlin"
+        hasOperatingSchedule
+        nextSchedule={{
+          openingTime: futureOpeningIso,
+          closingTime: futureClosingIso,
+          scheduleType: 'OPERATING',
+        }}
+      />
     </div>
   );
 }

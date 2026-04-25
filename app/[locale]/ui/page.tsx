@@ -74,10 +74,6 @@ import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 // Background overlay
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 
-// Home stat cards
-import { ParkStatCard } from '@/components/home/park-stat-card';
-import { AttractionStatCard } from '@/components/home/attraction-stat-card';
-
 // Common Components
 import { StatsCard } from '@/components/common/stats-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -1964,77 +1960,6 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               <ParkCardNearbySkeleton />
               <ParkCardNearbySkeleton />
               <ParkCardNearbySkeleton />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="ParkStatCard" file="components/home/park-stat-card.tsx" />
-          <Sub title="ParkStatCard — highest crowds / lowest wait">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <ParkStatCard
-                label="Highest crowds right now"
-                park={{
-                  id: 'phantasialand',
-                  name: 'Phantasialand',
-                  city: 'Brühl',
-                  countryName: 'Germany',
-                  url: '/europe/germany/bruhl/phantasialand',
-                  averageWaitTime: 68,
-                  crowdLevel: 'very_high',
-                  operatingAttractions: 38,
-                  totalAttractions: 42,
-                }}
-              />
-              <ParkStatCard
-                label="Lowest wait times right now"
-                park={{
-                  id: 'walibi-belgium',
-                  name: 'Walibi Belgium',
-                  city: 'Wavre',
-                  countryName: 'Belgium',
-                  url: '/europe/belgium/wavre/walibi-belgium',
-                  averageWaitTime: 8,
-                  crowdLevel: 'very_low',
-                  operatingAttractions: 28,
-                  totalAttractions: 32,
-                }}
-              />
-            </div>
-          </Sub>
-
-          <ComponentLabel
-            name="AttractionStatCard"
-            file="components/home/attraction-stat-card.tsx"
-          />
-          <Sub title='AttractionStatCard — variant="high" (red) / variant="low" (green)'>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <AttractionStatCard
-                label="Longest wait right now"
-                variant="high"
-                attraction={{
-                  id: 'taron',
-                  name: 'Taron',
-                  parkName: 'Phantasialand',
-                  parkCity: 'Brühl',
-                  countryName: 'Germany',
-                  url: '/europe/germany/bruhl/phantasialand/attractions/taron',
-                  waitTime: 90,
-                  crowdLevel: 'extreme',
-                }}
-              />
-              <AttractionStatCard
-                label="Shortest wait right now"
-                variant="low"
-                attraction={{
-                  id: 'river-quest',
-                  name: 'River Quest',
-                  parkName: 'Phantasialand',
-                  parkCity: 'Brühl',
-                  countryName: 'Germany',
-                  url: '/europe/germany/bruhl/phantasialand/attractions/river-quest',
-                  waitTime: 5,
-                  crowdLevel: 'very_low',
-                }}
-              />
             </div>
           </Sub>
         </Section>

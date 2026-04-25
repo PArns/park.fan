@@ -44,7 +44,7 @@ console.log('='.repeat(80) + '\n');
 let passed = 0;
 let failed = 0;
 
-testCases.forEach((testCase, index) => {
+testCases.forEach((testCase, _index) => {
   const result = getWeatherEmoji(testCase.input);
   const success = result === testCase.expected;
 
