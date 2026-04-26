@@ -19,6 +19,7 @@ import type { ReactNode } from 'react';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkTime } from '@/components/common/park-time';
+import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { SeasonalBadge } from './seasonal-badge';
@@ -181,7 +182,7 @@ export function AttractionCard({
     }
   }
 
-  const hasSparkline = !!history && history.length >= 2;
+  const hasSparkline = isOperatingOrUnknown && waitTime !== null;
 
   return (
     <Link
@@ -422,12 +423,10 @@ export function AttractionCard({
                     column height (keeps sparkline row heights aligned). */}
                 <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
                   <div className="flex items-baseline gap-1 leading-none">
-                    <span
+                    <WaitTimeValue
+                      minutes={roundTo5(waitTime)}
                       className="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
-                      style={{ color: 'var(--pk-text-1)' }}
-                    >
-                      {roundTo5(waitTime)}
-                    </span>
+                    />
                     <span className="text-[12px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
                       min
                     </span>
@@ -460,7 +459,11 @@ export function AttractionCard({
                 {/* Sparkline */}
                 {hasSparkline ? (
                   <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
-                    <WaitTimeSparklineCard history={history!} timezone={effectiveTimezone} />
+                    <WaitTimeSparklineCard
+                      history={history ?? []}
+                      timezone={effectiveTimezone}
+                      fallbackWaitTime={waitTime}
+                    />
                   </div>
                 ) : (
                   <div className="flex-1" />

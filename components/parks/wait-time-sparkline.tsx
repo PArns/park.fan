@@ -28,7 +28,7 @@ export function WaitTimeSparkline({ history, timezone, className }: WaitTimeSpar
 
     if (data.length > 0 && now > 0) {
       const last = data[data.length - 1];
-      if (now - last.x > 15 * 60 * 1000) {
+      if (last.x < now) {
         data.push({ x: now, label: '', value: last.value });
       }
     }

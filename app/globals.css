@@ -196,12 +196,12 @@
 /* Theme Park Specific Colors */
 :root {
   /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
-  --crowd-very-low: oklch(0.52 0.14 192); /* teal – "very low" */
-  --crowd-low: oklch(0.65 0.19 158); /* emerald */
-  --crowd-moderate: oklch(0.68 0.18 142); /* green (yellow-green) – "Normal" (P50) */
-  --crowd-high: oklch(0.68 0.18 55);
-  --crowd-very-high: oklch(0.58 0.22 15);
-  --crowd-extreme: oklch(0.52 0.22 27);
+  --crowd-very-low: oklch(0.58 0.13 192);
+  --crowd-low: oklch(0.60 0.18 162);
+  --crowd-moderate: oklch(0.58 0.20 145);
+  --crowd-high: oklch(0.62 0.20 78);
+  --crowd-very-high: oklch(0.58 0.22 52);
+  --crowd-extreme: oklch(0.55 0.24 25);
 
   /* Status Colors */
   --status-operating: oklch(0.55 0.21 142.136);
@@ -273,13 +273,13 @@
 }
 
 .dark {
-  /* Crowd Level Colors – same hues, brighter for dark backgrounds */
-  --crowd-very-low: oklch(0.76 0.16 192); /* teal */
-  --crowd-low: oklch(0.84 0.16 158); /* emerald */
-  --crowd-moderate: oklch(0.84 0.15 142); /* green */
-  --crowd-high: oklch(0.82 0.16 55);
-  --crowd-very-high: oklch(0.78 0.18 15);
-  --crowd-extreme: oklch(0.72 0.2 27);
+  /* Crowd Level Colors – same hues, vivid for dark backgrounds */
+  --crowd-very-low: oklch(0.80 0.14 192);
+  --crowd-low: oklch(0.84 0.18 162);
+  --crowd-moderate: oklch(0.84 0.20 145);
+  --crowd-high: oklch(0.86 0.18 78);
+  --crowd-very-high: oklch(0.80 0.20 52);
+  --crowd-extreme: oklch(0.74 0.22 25);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);
@@ -292,12 +292,12 @@
   --badge-status-down: oklch(0.5 0.18 47);
   --badge-status-closed: oklch(0.46 0.22 27);
   --badge-status-refurbishment: oklch(0.48 0.16 259);
-  --badge-crowd-very-low: oklch(0.42 0.12 192);
-  --badge-crowd-low: oklch(0.48 0.17 158);
-  --badge-crowd-moderate: oklch(0.48 0.16 142);
-  --badge-crowd-high: oklch(0.5 0.17 55);
-  --badge-crowd-very-high: oklch(0.46 0.2 15);
-  --badge-crowd-extreme: oklch(0.42 0.2 27);
+  --badge-crowd-very-low: oklch(0.42 0.14 192);
+  --badge-crowd-low: oklch(0.48 0.19 162);
+  --badge-crowd-moderate: oklch(0.48 0.20 145);
+  --badge-crowd-high: oklch(0.50 0.20 78);
+  --badge-crowd-very-high: oklch(0.46 0.22 52);
+  --badge-crowd-extreme: oklch(0.42 0.23 25);
   --badge-primary: oklch(0.46 0.13 241);
   --badge-muted: oklch(0.46 0.02 238);
   --badge-trend-up: oklch(0.46 0.22 27);
@@ -485,39 +485,39 @@
 
   /* Status */
   .badge-status-operating {
-    @apply bg-badge-status-operating/60 border-status-operating/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-status-operating/60 border-status-operating/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-down {
-    @apply bg-badge-status-down/60 border-status-down/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-status-down/60 border-status-down/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-closed {
-    @apply bg-badge-status-closed/60 border-status-closed/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-status-closed/60 border-status-closed/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-refurbishment {
-    @apply bg-badge-status-refurbishment/60 border-status-refurbishment/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-status-refurbishment/60 border-status-refurbishment/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-status-unknown {
-    @apply bg-badge-muted/60 border-muted-foreground/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-muted/60 border-muted-foreground/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
   /* Crowd level */
   .badge-crowd-very-low {
-    @apply bg-badge-crowd-very-low/60 border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-very-low/60 border-crowd-very-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-low {
-    @apply bg-badge-crowd-low/60 border-crowd-low/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-low/60 border-crowd-low/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-moderate {
-    @apply bg-badge-crowd-moderate/60 border-crowd-moderate/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-moderate/60 border-crowd-moderate/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-high {
-    @apply bg-badge-crowd-high/60 border-crowd-high/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-high/60 border-crowd-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-very-high {
-    @apply bg-badge-crowd-very-high/60 border-crowd-very-high/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-very-high/60 border-crowd-very-high/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
   .badge-crowd-extreme {
-    @apply bg-badge-crowd-extreme/60 border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase;
+    @apply bg-badge-crowd-extreme/60 border-crowd-extreme/25 border font-bold tracking-wide text-white uppercase shadow-md;
   }
 
   /* Primary / Queue */

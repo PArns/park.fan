@@ -12,28 +12,19 @@ interface WaitTimeSparklineCardProps {
   history: HistoryPoint[];
   timezone?: string;
   className?: string;
+  fallbackWaitTime?: number;
 }
 
-/**
- * Card-sized sparkline showing wait-time history.
- *
- * Client-rendered so the right edge of the chart always reaches *now* in the
- * park's timezone. After the last real data point the line is continued flat
- * at the last known value — there are no predictions in this view.
- *
- * Refreshes every minute to keep the axis labels and the flat tail current.
- */
 export function WaitTimeSparklineCard({
   history,
   timezone,
   className,
+  fallbackWaitTime,
 }: WaitTimeSparklineCardProps) {
   const locale = useLocale();
   const [nowMs, setNowMs] = useState(() => Date.now());
 
   useEffect(() => {
-    // Defer the first update so we don't trigger a cascading render inside
-    // the effect body (lint: react-hooks/set-state-in-effect).
     const sync = setTimeout(() => setNowMs(Date.now()), 0);
     const interval = setInterval(() => setNowMs(Date.now()), 60_000);
     return () => {
@@ -42,12 +33,18 @@ export function WaitTimeSparklineCard({
     };
   }, []);
 
-  if (!history || history.length < 2) return null;
-
-  const data = history
+  const rawData = history
     .map((p) => ({ time: new Date(p.timestamp).getTime(), value: p.waitTime }))
     .filter((p) => Number.isFinite(p.time));
-  if (data.length < 2) return null;
+
+  const data =
+    rawData.length > 0
+      ? rawData
+      : fallbackWaitTime !== undefined
+        ? [{ time: nowMs - 60 * 60 * 1000, value: fallbackWaitTime }]
+        : null;
+
+  if (!data) return null;
 
   const minTime = data[0].time;
   const lastPoint = data[data.length - 1];
