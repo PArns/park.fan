@@ -354,11 +354,25 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
+                      statistics: stats.longestWaitRide.sparkline?.length
+                        ? {
+                            avgWaitToday: stats.longestWaitRide.avgWaitToday ?? null,
+                            minWaitToday: stats.longestWaitRide.minWaitToday ?? null,
+                            peakWaitToday: stats.longestWaitRide.peakWaitToday ?? null,
+                            peakWaitTimestamp: stats.longestWaitRide.peakWaitTimestamp ?? null,
+                            typicalWaitThisHour: stats.longestWaitRide.typicalWaitThisHour ?? null,
+                            percentile95ThisHour: null,
+                            currentVsTypical: stats.longestWaitRide.currentVsTypical ?? null,
+                            dataPoints: stats.longestWaitRide.sparkline.length,
+                            history: stats.longestWaitRide.sparkline,
+                            timestamp: new Date().toISOString(),
+                          }
+                        : undefined,
                       park: {
                         id: '',
                         name: stats.longestWaitRide.parkName,
                         slug: stats.longestWaitRide.parkSlug,
-                        timezone: '',
+                        timezone: stats.longestWaitRide.parkTimezone ?? '',
                         continent: null,
                         country: stats.longestWaitRide.parkCountrySlug,
                         city: stats.longestWaitRide.parkCity,
@@ -394,11 +408,25 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
+                      statistics: stats.shortestWaitRide.sparkline?.length
+                        ? {
+                            avgWaitToday: stats.shortestWaitRide.avgWaitToday ?? null,
+                            minWaitToday: stats.shortestWaitRide.minWaitToday ?? null,
+                            peakWaitToday: stats.shortestWaitRide.peakWaitToday ?? null,
+                            peakWaitTimestamp: stats.shortestWaitRide.peakWaitTimestamp ?? null,
+                            typicalWaitThisHour: stats.shortestWaitRide.typicalWaitThisHour ?? null,
+                            percentile95ThisHour: null,
+                            currentVsTypical: stats.shortestWaitRide.currentVsTypical ?? null,
+                            dataPoints: stats.shortestWaitRide.sparkline.length,
+                            history: stats.shortestWaitRide.sparkline,
+                            timestamp: new Date().toISOString(),
+                          }
+                        : undefined,
                       park: {
                         id: '',
                         name: stats.shortestWaitRide.parkName,
                         slug: stats.shortestWaitRide.parkSlug,
-                        timezone: '',
+                        timezone: stats.shortestWaitRide.parkTimezone ?? '',
                         continent: null,
                         country: stats.shortestWaitRide.parkCountrySlug,
                         city: stats.shortestWaitRide.parkCity,
