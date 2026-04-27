@@ -623,6 +623,12 @@ export interface AttractionStatsItem {
   url: string;
   crowdLevel: CrowdLevel | null;
   sparkline?: { timestamp: string; waitTime: number }[];
+  avgWaitToday?: number | null;
+  minWaitToday?: number | null;
+  peakWaitToday?: number | null;
+  peakWaitTimestamp?: string | null;
+  typicalWaitThisHour?: number | null;
+  currentVsTypical?: number | null;
 }
 
 export interface GlobalStats {
