@@ -22,7 +22,7 @@
  * @param apiUrl - The API URL to convert (e.g., from attraction.url, park.url, etc.)
  * @returns The converted frontend URL, or '#' if conversion fails
  */
-export function convertApiUrlToFrontendUrl(apiUrl: string): string {
+export function convertApiUrlToFrontendUrl(apiUrl: string | null | undefined): string {
   if (!apiUrl) return '#';
 
   // Convert /v1/parks/... URLs
