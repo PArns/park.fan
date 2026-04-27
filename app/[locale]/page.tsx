@@ -294,6 +294,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
                     status="OPERATING"
+                    timezone={stats.mostCrowdedPark.timezone}
                     crowdLevel={stats.mostCrowdedPark.crowdLevel ?? undefined}
                     averageWaitTime={stats.mostCrowdedPark.averageWaitTime ?? undefined}
                     operatingAttractions={stats.mostCrowdedPark.operatingAttractions}
@@ -316,6 +317,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
                     status="OPERATING"
+                    timezone={stats.leastCrowdedPark.timezone}
                     crowdLevel={stats.leastCrowdedPark.crowdLevel ?? undefined}
                     averageWaitTime={stats.leastCrowdedPark.averageWaitTime ?? undefined}
                     operatingAttractions={stats.leastCrowdedPark.operatingAttractions}
@@ -354,15 +356,15 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
-                      statistics: stats.longestWaitRide.sparkline?.length
+                      statistics: stats.longestWaitRide.sparkline.length
                         ? {
-                            avgWaitToday: stats.longestWaitRide.avgWaitToday ?? null,
-                            minWaitToday: stats.longestWaitRide.minWaitToday ?? null,
-                            peakWaitToday: stats.longestWaitRide.peakWaitToday ?? null,
-                            peakWaitTimestamp: stats.longestWaitRide.peakWaitTimestamp ?? null,
-                            typicalWaitThisHour: stats.longestWaitRide.typicalWaitThisHour ?? null,
+                            avgWaitToday: stats.longestWaitRide.avgWaitToday,
+                            minWaitToday: stats.longestWaitRide.minWaitToday,
+                            peakWaitToday: stats.longestWaitRide.peakWaitToday,
+                            peakWaitTimestamp: stats.longestWaitRide.peakWaitTimestamp,
+                            typicalWaitThisHour: stats.longestWaitRide.typicalWaitThisHour,
                             percentile95ThisHour: null,
-                            currentVsTypical: stats.longestWaitRide.currentVsTypical ?? null,
+                            currentVsTypical: stats.longestWaitRide.currentVsTypical,
                             dataPoints: stats.longestWaitRide.sparkline.length,
                             history: stats.longestWaitRide.sparkline,
                             timestamp: new Date().toISOString(),
@@ -372,7 +374,7 @@ export default async function HomePage({ params }: HomePageProps) {
                         id: '',
                         name: stats.longestWaitRide.parkName,
                         slug: stats.longestWaitRide.parkSlug,
-                        timezone: stats.longestWaitRide.parkTimezone ?? '',
+                        timezone: stats.longestWaitRide.parkTimezone,
                         continent: null,
                         country: stats.longestWaitRide.parkCountrySlug,
                         city: stats.longestWaitRide.parkCity,
@@ -408,15 +410,15 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
-                      statistics: stats.shortestWaitRide.sparkline?.length
+                      statistics: stats.shortestWaitRide.sparkline.length
                         ? {
-                            avgWaitToday: stats.shortestWaitRide.avgWaitToday ?? null,
-                            minWaitToday: stats.shortestWaitRide.minWaitToday ?? null,
-                            peakWaitToday: stats.shortestWaitRide.peakWaitToday ?? null,
-                            peakWaitTimestamp: stats.shortestWaitRide.peakWaitTimestamp ?? null,
-                            typicalWaitThisHour: stats.shortestWaitRide.typicalWaitThisHour ?? null,
+                            avgWaitToday: stats.shortestWaitRide.avgWaitToday,
+                            minWaitToday: stats.shortestWaitRide.minWaitToday,
+                            peakWaitToday: stats.shortestWaitRide.peakWaitToday,
+                            peakWaitTimestamp: stats.shortestWaitRide.peakWaitTimestamp,
+                            typicalWaitThisHour: stats.shortestWaitRide.typicalWaitThisHour,
                             percentile95ThisHour: null,
-                            currentVsTypical: stats.shortestWaitRide.currentVsTypical ?? null,
+                            currentVsTypical: stats.shortestWaitRide.currentVsTypical,
                             dataPoints: stats.shortestWaitRide.sparkline.length,
                             history: stats.shortestWaitRide.sparkline,
                             timestamp: new Date().toISOString(),
@@ -426,7 +428,7 @@ export default async function HomePage({ params }: HomePageProps) {
                         id: '',
                         name: stats.shortestWaitRide.parkName,
                         slug: stats.shortestWaitRide.parkSlug,
-                        timezone: stats.shortestWaitRide.parkTimezone ?? '',
+                        timezone: stats.shortestWaitRide.parkTimezone,
                         continent: null,
                         country: stats.shortestWaitRide.parkCountrySlug,
                         city: stats.shortestWaitRide.parkCity,

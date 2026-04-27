@@ -608,6 +608,7 @@ export interface ParkStatsItem {
   crowdLevel: CrowdLevel | null;
   totalAttractions: number;
   operatingAttractions: number;
+  timezone: string;
 }
 
 export interface AttractionStatsItem {
@@ -619,17 +620,17 @@ export interface AttractionStatsItem {
   parkCity: string;
   parkCountry: string;
   parkCountrySlug: string;
-  parkTimezone?: string;
+  parkTimezone: string;
   waitTime: number;
-  url: string;
+  url: string | null;
   crowdLevel: CrowdLevel | null;
-  sparkline?: { timestamp: string; waitTime: number }[];
-  avgWaitToday?: number | null;
-  minWaitToday?: number | null;
-  peakWaitToday?: number | null;
-  peakWaitTimestamp?: string | null;
-  typicalWaitThisHour?: number | null;
-  currentVsTypical?: number | null;
+  sparkline: { timestamp: string; waitTime: number }[];
+  avgWaitToday: number | null;
+  minWaitToday: number | null;
+  peakWaitToday: number | null;
+  peakWaitTimestamp: string | null;
+  typicalWaitThisHour: number | null;
+  currentVsTypical: number | null;
 }
 
 export interface GlobalStats {
