@@ -619,6 +619,7 @@ export interface AttractionStatsItem {
   parkCity: string;
   parkCountry: string;
   parkCountrySlug: string;
+  parkTimezone?: string;
   waitTime: number;
   url: string;
   crowdLevel: CrowdLevel | null;
