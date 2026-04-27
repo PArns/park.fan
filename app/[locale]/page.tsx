@@ -358,10 +358,14 @@ export default async function HomePage({ params }: HomePageProps) {
                         ? {
                             avgWaitToday: null,
                             minWaitToday: null,
-                            maxWaitToday: null,
                             peakWaitToday: null,
                             peakWaitTimestamp: null,
+                            typicalWaitThisHour: null,
+                            percentile95ThisHour: null,
+                            currentVsTypical: null,
+                            dataPoints: stats.longestWaitRide.sparkline.length,
                             history: stats.longestWaitRide.sparkline,
+                            timestamp: new Date().toISOString(),
                           }
                         : undefined,
                       park: {
@@ -408,10 +412,14 @@ export default async function HomePage({ params }: HomePageProps) {
                         ? {
                             avgWaitToday: null,
                             minWaitToday: null,
-                            maxWaitToday: null,
                             peakWaitToday: null,
                             peakWaitTimestamp: null,
+                            typicalWaitThisHour: null,
+                            percentile95ThisHour: null,
+                            currentVsTypical: null,
+                            dataPoints: stats.shortestWaitRide.sparkline.length,
                             history: stats.shortestWaitRide.sparkline,
+                            timestamp: new Date().toISOString(),
                           }
                         : undefined,
                       park: {
