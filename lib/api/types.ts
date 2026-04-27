@@ -622,6 +622,7 @@ export interface AttractionStatsItem {
   waitTime: number;
   url: string;
   crowdLevel: CrowdLevel | null;
+  sparkline?: { timestamp: string; waitTime: number }[];
 }
 
 export interface GlobalStats {

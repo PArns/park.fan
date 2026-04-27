@@ -354,6 +354,16 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
+                      statistics: stats.longestWaitRide.sparkline?.length
+                        ? {
+                            avgWaitToday: null,
+                            minWaitToday: null,
+                            maxWaitToday: null,
+                            peakWaitToday: null,
+                            peakWaitTimestamp: null,
+                            history: stats.longestWaitRide.sparkline,
+                          }
+                        : undefined,
                       park: {
                         id: '',
                         name: stats.longestWaitRide.parkName,
@@ -394,6 +404,16 @@ export default async function HomePage({ params }: HomePageProps) {
                           status: 'OPERATING',
                         },
                       ],
+                      statistics: stats.shortestWaitRide.sparkline?.length
+                        ? {
+                            avgWaitToday: null,
+                            minWaitToday: null,
+                            maxWaitToday: null,
+                            peakWaitToday: null,
+                            peakWaitTimestamp: null,
+                            history: stats.shortestWaitRide.sparkline,
+                          }
+                        : undefined,
                       park: {
                         id: '',
                         name: stats.shortestWaitRide.parkName,
