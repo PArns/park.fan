@@ -14,6 +14,7 @@ import { getScheduleMessage } from '@/lib/utils/schedule-utils';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 // Lazily loaded server-side only — avoids bundling `fs` into the client
 /* eslint-disable @typescript-eslint/no-require-imports */
@@ -107,9 +108,7 @@ export function ParkCard({
 
   const displayCountry = translateCountry
     ? (() => {
-        const normalized = country.toLowerCase().replace(/\s+/g, '-');
-        const translated = tGeo(`countries.${normalized}` as string);
-        return translated !== `countries.${normalized}` ? translated : country;
+        return translateGeoSlug(tGeo, 'countries', country, country);
       })()
     : country;
 

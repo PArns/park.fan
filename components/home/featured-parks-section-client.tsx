@@ -3,6 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useTranslations, useLocale } from 'next-intl';
 import { ParkCard } from '@/components/parks/park-card';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
 import type { FeaturedPark } from './featured-parks-section';
@@ -17,9 +18,7 @@ function getTranslatedCountry(
   tGeo: ReturnType<typeof useTranslations>,
   park: FeaturedPark
 ): string {
-  const key = `countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}`;
-  const result = tGeo(key as Parameters<typeof tGeo>[0]);
-  return result === key ? park.countryName : result;
+  return translateGeoSlug(tGeo, 'countries', park.countrySlug, park.countryName);
 }
 
 /** Skeleton placeholder while parks load */

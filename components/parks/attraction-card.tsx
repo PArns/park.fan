@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from '@/lib/api/types';
 import type { ReactNode } from 'react';
@@ -323,9 +324,7 @@ export function AttractionCard({
             const rawCountry = park && 'country' in park ? park.country : null;
             const country = rawCountry
               ? (() => {
-                  const key = `countries.${rawCountry.toLowerCase().replace(/\s+/g, '-')}`;
-                  const translated = tGeo(key);
-                  return translated !== key ? translated : rawCountry;
+                  return translateGeoSlug(tGeo, 'countries', rawCountry, rawCountry);
                 })()
               : null;
             const place = [city, country].filter(Boolean).join(', ');

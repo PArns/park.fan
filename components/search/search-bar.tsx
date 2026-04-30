@@ -29,6 +29,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
 import {
   trackSearchOpened,
@@ -381,7 +382,7 @@ export function SearchCommand({
                     {[
                       result.city,
                       result.country
-                        ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`)
+                        ? translateGeoSlug(tGeo, 'countries', result.country, result.country)
                         : null,
                     ]
                       .filter(Boolean)
