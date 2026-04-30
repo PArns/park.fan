@@ -201,9 +201,9 @@
 :root {
   /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
   --crowd-very-low: oklch(0.58 0.13 192);
-  --crowd-low: oklch(0.60 0.18 162);
-  --crowd-moderate: oklch(0.58 0.20 145);
-  --crowd-high: oklch(0.62 0.20 78);
+  --crowd-low: oklch(0.6 0.18 162);
+  --crowd-moderate: oklch(0.58 0.2 145);
+  --crowd-high: oklch(0.62 0.2 78);
   --crowd-very-high: oklch(0.58 0.22 52);
   --crowd-extreme: oklch(0.55 0.24 25);
 
@@ -278,11 +278,11 @@
 
 .dark {
   /* Crowd Level Colors – same hues, vivid for dark backgrounds */
-  --crowd-very-low: oklch(0.80 0.14 192);
+  --crowd-very-low: oklch(0.8 0.14 192);
   --crowd-low: oklch(0.84 0.18 162);
-  --crowd-moderate: oklch(0.84 0.20 145);
+  --crowd-moderate: oklch(0.84 0.2 145);
   --crowd-high: oklch(0.86 0.18 78);
-  --crowd-very-high: oklch(0.80 0.20 52);
+  --crowd-very-high: oklch(0.8 0.2 52);
   --crowd-extreme: oklch(0.74 0.22 25);
 
   /* Status Colors - Brighter for dark mode */
@@ -298,8 +298,8 @@
   --badge-status-refurbishment: oklch(0.48 0.16 259);
   --badge-crowd-very-low: oklch(0.42 0.14 192);
   --badge-crowd-low: oklch(0.48 0.19 162);
-  --badge-crowd-moderate: oklch(0.48 0.20 145);
-  --badge-crowd-high: oklch(0.50 0.20 78);
+  --badge-crowd-moderate: oklch(0.48 0.2 145);
+  --badge-crowd-high: oklch(0.5 0.2 78);
   --badge-crowd-very-high: oklch(0.46 0.22 52);
   --badge-crowd-extreme: oklch(0.42 0.23 25);
   --badge-primary: oklch(0.46 0.13 241);
@@ -398,10 +398,18 @@
 
   /* Park card v2 — photo zoom on card hover */
   .pk-photo-zoom {
-    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition:
+      transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 400ms ease;
   }
   .group:hover .pk-photo-zoom {
     transform: scale(1.04);
+  }
+  .pk-photo-zoom.pk-photo-closed {
+    filter: grayscale(1);
+  }
+  .group:hover .pk-photo-zoom.pk-photo-closed {
+    filter: grayscale(0);
   }
 
   .interactive-link {

@@ -177,7 +177,12 @@ export function ParkCard({
         {/* Photo — z-0, inner div carries the hover scale */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
-            <div className="pk-photo-zoom relative h-full w-full overflow-hidden">
+            <div
+              className={cn(
+                'pk-photo-zoom relative h-full w-full overflow-hidden',
+                !isOperatingOrUnknown && 'pk-photo-closed'
+              )}
+            >
               {/*
                 Photo container starts exactly at glass-header bottom (~100px).
                 The photo's TOP edge is the seam. The reflection (scaleY-1 around

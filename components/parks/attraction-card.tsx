@@ -202,7 +202,12 @@ export function AttractionCard({
         {/* Photo */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
-            <div className="pk-photo-zoom relative h-full w-full overflow-hidden">
+            <div
+              className={cn(
+                'pk-photo-zoom relative h-full w-full overflow-hidden',
+                !isOperatingOrUnknown && 'pk-photo-closed'
+              )}
+            >
               <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
                 <Image
                   src={backgroundImage}
