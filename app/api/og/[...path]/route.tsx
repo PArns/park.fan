@@ -260,6 +260,7 @@ export async function GET(
       const randomIndex = Math.floor(Math.random() * HERO_IMAGES.length);
       backgroundImagePath = HERO_IMAGES[randomIndex];
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
+      const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
       // Resolve Name & Stats based on Type
       if (type === 'CONTINENT' && continentNode) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -274,7 +275,6 @@ export async function GET(
           .filter((c) => continent !== 'europe' || c.code !== 'RU')
           .flatMap((c) => [c.code, c.name].filter(Boolean));
 
-        const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
         geoSvg = getRegionGeoSVG(identifiers);
       } else if (type === 'COUNTRY' && countryNode) {
         const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
@@ -284,7 +284,6 @@ export async function GET(
         totalParks = countryNode.parkCount;
         openParksCount = countryNode.openParkCount;
 
-        const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
         geoSvg = getRegionGeoSVG([countryNode.code, countryNode.name]);
       } else if (type === 'CITY' && cityNode) {
         name = cityNode.name;
@@ -297,7 +296,6 @@ export async function GET(
         // Let's reuse the country map for context, maybe highlights?
         // For now: Country Map.
         if (countryNode) {
-          const { getRegionGeoSVG } = await import('@/lib/utils/geo-svg');
           geoSvg = getRegionGeoSVG([countryNode.code, countryNode.name]);
         }
       }

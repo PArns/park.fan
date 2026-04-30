@@ -83,12 +83,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
+  const termMapsByLocale = new Map<string, Map<string, GlossaryTerm>>();
+  for (const [locale, terms] of termsByLocale) {
+    termMapsByLocale.set(locale, new Map(terms.map((t) => [t.id, t])));
+  }
+
   const enTerms = termsByLocale.get('en')!;
   for (const enTerm of enTerms) {
     const termAlternates: Record<string, string> = {};
     for (const l of locales) {
-      const localTerms = termsByLocale.get(l)!;
-      const localTerm = localTerms.find((term) => term.id === enTerm.id);
+      const localTerm = termMapsByLocale.get(l)!.get(enTerm.id);
       if (localTerm) {
         termAlternates[l] =
           `${BASE_URL}/${l}/${GLOSSARY_SEGMENTS[l as keyof typeof GLOSSARY_SEGMENTS]}/${localTerm.slug}`;
@@ -97,8 +101,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     termAlternates['x-default'] = termAlternates['en'];
 
     for (const locale of locales) {
-      const localTerms = termsByLocale.get(locale)!;
-      const localTerm = localTerms.find((term) => term.id === enTerm.id);
+      const localTerm = termMapsByLocale.get(locale)!.get(enTerm.id);
       if (!localTerm) continue;
 
       routes.push({

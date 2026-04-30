@@ -55,6 +55,7 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
   const entries = buildMatchEntries(terms);
   if (entries.length === 0) return [{ type: 'text', content: text }];
 
+  const entryByPattern = new Map(entries.map((e) => [e.pattern.toLowerCase(), e]));
   const pattern = entries.map((e) => buildPatternFragment(e.pattern)).join('|');
   const regex = new RegExp(`(${pattern})`, 'gi');
 
@@ -66,7 +67,7 @@ function parseSegments(text: string, terms: GlossaryTerm[]): Segment[] {
 
   while ((match = regex.exec(text)) !== null) {
     const matched = match[0];
-    const entry = entries.find((e) => e.pattern.toLowerCase() === matched.toLowerCase());
+    const entry = entryByPattern.get(matched.toLowerCase());
     if (!entry || used.has(matched.toLowerCase())) continue;
 
     // Short patterns (≤ 4 chars) must match exactly — avoids matching common words

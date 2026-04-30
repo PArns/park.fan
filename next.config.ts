@@ -58,7 +58,8 @@ const nextConfig: NextConfig = {
 
     // 1. Cross-locale wrong segments: /[locale]/[wrong-segment] → /[locale]/[correct-segment]
     //    Covers: EN locale (was missing), /de/glossary (EN segment under DE), old woordenlijst
-    for (const [locale, correctSegment] of Object.entries(localeSegments)) {
+    const localeSegmentEntries = Object.entries(localeSegments);
+    for (const [locale, correctSegment] of localeSegmentEntries) {
       for (const wrongSegment of allSegments) {
         if (wrongSegment === correctSegment) continue;
         rules.push(
