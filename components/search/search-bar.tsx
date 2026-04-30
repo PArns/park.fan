@@ -603,7 +603,7 @@ export function SearchCommand({
         />
         <CommandList>
           {isPending && (
-            <div className="max-h-[calc(100svh-14rem)] overflow-hidden p-1 sm:max-h-[420px]">
+            <div className="max-h-[calc(100svh-6rem)] overflow-hidden p-1 sm:max-h-[420px]">
               {/* Fake section header */}
               <div className="px-3 pt-4 pb-1.5">
                 <div className="h-2 w-16 animate-pulse rounded-full bg-white/[8%]" />
