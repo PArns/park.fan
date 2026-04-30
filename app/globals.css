@@ -157,6 +157,10 @@
     @apply bg-background text-foreground;
     overflow-x: clip;
   }
+  /* Prevent background scroll when a Radix dialog/command palette is open */
+  body[data-scroll-locked] {
+    overflow: hidden !important;
+  }
 }
 
 /* Hero background: Ken Burns slow zoom + pan */
