@@ -51,7 +51,7 @@ const typeIcons = {
 
 function SkeletonItem({ width }: { width: string }) {
   return (
-    <div className="flex items-center gap-4 rounded-lg px-3 py-3.5">
+    <div className="flex items-center gap-4 rounded-lg px-3 py-2 sm:py-3.5">
       <div className="bg-foreground/10 h-11 w-11 shrink-0 animate-pulse rounded-xl" />
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-center justify-between gap-3">
