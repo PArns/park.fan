@@ -324,8 +324,7 @@ export function AttractionCard({
             const country = rawCountry
               ? (() => {
                   const key = `countries.${rawCountry.toLowerCase().replace(/\s+/g, '-')}`;
-                  const translated = tGeo(key);
-                  return translated !== key ? translated : rawCountry;
+                  return tGeo.has(key) ? tGeo(key) : rawCountry;
                 })()
               : null;
             const place = [city, country].filter(Boolean).join(', ');

@@ -288,8 +288,9 @@ export default async function HomePage({ params }: HomePageProps) {
                     parkId={stats.mostCrowdedPark.id}
                     city={stats.mostCrowdedPark.city}
                     country={
-                      tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string) ||
-                      stats.mostCrowdedPark.country
+                      (tGeo.has(`countries.${stats.mostCrowdedPark.countrySlug}`)
+                        ? tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)
+                        : null) ?? stats.mostCrowdedPark.country
                     }
                     href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
@@ -311,8 +312,9 @@ export default async function HomePage({ params }: HomePageProps) {
                     parkId={stats.leastCrowdedPark.id}
                     city={stats.leastCrowdedPark.city}
                     country={
-                      tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string) ||
-                      stats.leastCrowdedPark.country
+                      (tGeo.has(`countries.${stats.leastCrowdedPark.countrySlug}`)
+                        ? tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)
+                        : null) ?? stats.leastCrowdedPark.country
                     }
                     href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
@@ -509,7 +511,9 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {continents.map((continent) => {
                 const continentName =
-                  tGeo(`continents.${continent.slug}` as string) || continent.name;
+                  tGeo.has(`continents.${continent.slug}`)
+                    ? tGeo(`continents.${continent.slug}` as string)
+                    : continent.name;
 
                 return (
                   <Link

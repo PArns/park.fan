@@ -262,9 +262,10 @@ export async function GET(
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
       // Resolve Name & Stats based on Type
       if (type === 'CONTINENT' && continentNode) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        name = tGeo(`continents.${continent}` as any);
-        if (name === `continents.${continent}`) name = continentNode.name;
+        name = tGeo.has(`continents.${continent}`)
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            tGeo(`continents.${continent}` as any)
+          : continentNode.name;
         totalParks = continentNode.parkCount;
         openParksCount = continentNode.openParkCount;
 
@@ -278,9 +279,10 @@ export async function GET(
         geoSvg = getRegionGeoSVG(identifiers);
       } else if (type === 'COUNTRY' && countryNode) {
         const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        name = tGeo(`countries.${normalizedCountry}` as any);
-        if (name === `countries.${normalizedCountry}`) name = countryNode.name;
+        name = tGeo.has(`countries.${normalizedCountry}`)
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            tGeo(`countries.${normalizedCountry}` as any)
+          : countryNode.name;
         totalParks = countryNode.parkCount;
         openParksCount = countryNode.openParkCount;
 

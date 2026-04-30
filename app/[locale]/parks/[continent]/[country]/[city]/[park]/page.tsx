@@ -269,7 +269,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <MapPin className="h-4 w-4" aria-hidden="true" />
                       <span>{cityName}</span>,{' '}
                       <span>
-                        {tGeo(`countries.${country}` as 'countries.germany') || countryName}
+                        {tGeo.has(`countries.${country}`)
+                          ? tGeo(`countries.${country}` as 'countries.germany')
+                          : countryName}
                       </span>
                     </address>
                     {park.timezone && (

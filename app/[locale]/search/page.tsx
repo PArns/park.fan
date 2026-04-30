@@ -140,8 +140,10 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
               {[
                 result.city,
                 result.country
-                  ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`) ||
-                    result.country
+                  ? (() => {
+                      const key = `countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`;
+                      return tGeo.has(key) ? tGeo(key) : result.country;
+                    })()
                   : null,
               ]
                 .filter(Boolean)

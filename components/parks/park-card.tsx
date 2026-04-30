@@ -108,8 +108,8 @@ export function ParkCard({
   const displayCountry = translateCountry
     ? (() => {
         const normalized = country.toLowerCase().replace(/\s+/g, '-');
-        const translated = tGeo(`countries.${normalized}` as string);
-        return translated !== `countries.${normalized}` ? translated : country;
+        const key = `countries.${normalized}`;
+        return tGeo.has(key) ? tGeo(key as string) : country;
       })()
     : country;
 

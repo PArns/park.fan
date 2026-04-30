@@ -381,7 +381,10 @@ export function SearchCommand({
                     {[
                       result.city,
                       result.country
-                        ? tGeo(`countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`)
+                        ? (() => {
+                            const key = `countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`;
+                            return tGeo.has(key) ? tGeo(key) : result.country;
+                          })()
                         : null,
                     ]
                       .filter(Boolean)

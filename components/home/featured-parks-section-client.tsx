@@ -18,8 +18,9 @@ function getTranslatedCountry(
   park: FeaturedPark
 ): string {
   const key = `countries.${park.countrySlug.toLowerCase().replace(/\s+/g, '-')}`;
-  const result = tGeo(key as Parameters<typeof tGeo>[0]);
-  return result === key ? park.countryName : result;
+  return tGeo.has(key as Parameters<typeof tGeo>[0])
+    ? tGeo(key as Parameters<typeof tGeo>[0])
+    : park.countryName;
 }
 
 /** Skeleton placeholder while parks load */
