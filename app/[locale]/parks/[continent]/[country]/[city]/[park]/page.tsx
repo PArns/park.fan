@@ -36,6 +36,7 @@ import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 interface ParkPageProps {
   params: Promise<{
@@ -269,9 +270,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <MapPin className="h-4 w-4" aria-hidden="true" />
                       <span>{cityName}</span>,{' '}
                       <span>
-                        {tGeo.has(`countries.${country}`)
-                          ? tGeo(`countries.${country}` as 'countries.germany')
-                          : countryName}
+                        {translateGeoSlug(tGeo, 'countries', country, countryName)}
                       </span>
                     </address>
                     {park.timezone && (

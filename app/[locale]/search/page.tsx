@@ -73,6 +73,7 @@ const typeLabels = {
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 function SearchResultCard({ result }: { result: SearchResultItem; locale: string }) {
   const t = useTranslations('common');
@@ -140,10 +141,7 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
               {[
                 result.city,
                 result.country
-                  ? (() => {
-                      const key = `countries.${result.country.toLowerCase().replace(/\s+/g, '-')}`;
-                      return tGeo.has(key) ? tGeo(key) : result.country;
-                    })()
+                  ? translateGeoSlug(tGeo, 'countries', result.country, result.country)
                   : null,
               ]
                 .filter(Boolean)

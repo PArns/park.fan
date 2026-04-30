@@ -5,9 +5,11 @@ import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale } from '@/i18n/config';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import {
   FlagDE,
   FlagGB,
@@ -153,6 +155,12 @@ export async function GET(
     }
 
     // Generic pages configuration
+    const glossaryEntries = Object.fromEntries(
+      Object.values(GLOSSARY_SEGMENTS).map((seg) => [
+        seg,
+        { namespace: 'glossary', key: 'overviewTitle' },
+      ])
+    );
     const genericPages = {
       search: { namespace: 'common', key: 'search' },
       datenschutz: { namespace: 'datenschutz', key: 'title' },
@@ -160,6 +168,7 @@ export async function GET(
       impressum: { namespace: 'impressum', key: 'title' },
       imprint: { namespace: 'impressum', key: 'title' },
       parks: { namespace: 'explore', key: 'parksTitle' },
+      ...glossaryEntries,
     };
 
     const [localeParam, secondSegment] = path;
@@ -262,10 +271,7 @@ export async function GET(
     } else if (['CONTINENT', 'COUNTRY', 'CITY'].includes(type)) {
       // Resolve Name & Stats based on Type
       if (type === 'CONTINENT' && continentNode) {
-        name = tGeo.has(`continents.${continent}`)
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            tGeo(`continents.${continent}` as any)
-          : continentNode.name;
+        name = translateGeoSlug(tGeo, 'continents', continent, continentNode.name);
         totalParks = continentNode.parkCount;
         openParksCount = continentNode.openParkCount;
 
@@ -279,10 +285,7 @@ export async function GET(
         geoSvg = getRegionGeoSVG(identifiers);
       } else if (type === 'COUNTRY' && countryNode) {
         const normalizedCountry = country.toLowerCase().replace(/\s+/g, '-');
-        name = tGeo.has(`countries.${normalizedCountry}`)
-          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            tGeo(`countries.${normalizedCountry}` as any)
-          : countryNode.name;
+        name = translateGeoSlug(tGeo, 'countries', normalizedCountry, countryNode.name);
         totalParks = countryNode.parkCount;
         openParksCount = countryNode.openParkCount;
 

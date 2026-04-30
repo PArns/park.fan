@@ -16,6 +16,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { GlassCard } from '@/components/common/glass-card';
+import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -287,11 +288,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     slug={stats.mostCrowdedPark.slug}
                     parkId={stats.mostCrowdedPark.id}
                     city={stats.mostCrowdedPark.city}
-                    country={
-                      (tGeo.has(`countries.${stats.mostCrowdedPark.countrySlug}`)
-                        ? tGeo(`countries.${stats.mostCrowdedPark.countrySlug}` as string)
-                        : null) ?? stats.mostCrowdedPark.country
-                    }
+                    country={translateGeoSlug(tGeo, 'countries', stats.mostCrowdedPark.countrySlug, stats.mostCrowdedPark.country)}
                     href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
                     status="OPERATING"
@@ -311,11 +308,7 @@ export default async function HomePage({ params }: HomePageProps) {
                     slug={stats.leastCrowdedPark.slug}
                     parkId={stats.leastCrowdedPark.id}
                     city={stats.leastCrowdedPark.city}
-                    country={
-                      (tGeo.has(`countries.${stats.leastCrowdedPark.countrySlug}`)
-                        ? tGeo(`countries.${stats.leastCrowdedPark.countrySlug}` as string)
-                        : null) ?? stats.leastCrowdedPark.country
-                    }
+                    country={translateGeoSlug(tGeo, 'countries', stats.leastCrowdedPark.countrySlug, stats.leastCrowdedPark.country)}
                     href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
                     status="OPERATING"
@@ -511,9 +504,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {continents.map((continent) => {
                 const continentName =
-                  tGeo.has(`continents.${continent.slug}`)
-                    ? tGeo(`continents.${continent.slug}` as string)
-                    : continent.name;
+                  translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
 
                 return (
                   <Link
