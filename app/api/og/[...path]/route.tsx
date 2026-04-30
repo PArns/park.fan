@@ -168,6 +168,7 @@ export async function GET(
       impressum: { namespace: 'impressum', key: 'title' },
       imprint: { namespace: 'impressum', key: 'title' },
       parks: { namespace: 'explore', key: 'parksTitle' },
+      howto: { namespace: 'howto', key: 'title' },
       ...glossaryEntries,
     };
 
