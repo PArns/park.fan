@@ -87,13 +87,14 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
   if (!geoData) return [];
 
   const slugs = FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS['en'];
+  const slugSet = new Set(slugs);
   const slugMap = new Map<string, FeaturedPark>();
 
   for (const continent of geoData.continents) {
     for (const country of continent.countries) {
       for (const city of country.cities) {
         for (const park of city.parks) {
-          if (slugMap.size < slugs.length && slugs.includes(park.slug) && !slugMap.has(park.slug)) {
+          if (slugMap.size < slugSet.size && slugSet.has(park.slug) && !slugMap.has(park.slug)) {
             slugMap.set(park.slug, {
               name: park.name,
               slug: park.slug,

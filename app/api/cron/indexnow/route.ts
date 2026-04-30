@@ -31,18 +31,18 @@ export async function GET(request: Request) {
   try {
     const geo = await getGeoStructure(86400);
 
-    for (const continent of geo.continents) {
-      for (const country of continent.countries) {
-        for (const city of country.cities) {
-          for (const park of city.parks) {
-            const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
-            for (const locale of locales) {
-              urls.push(`${BASE_URL}/${locale}${parkPath}`);
-            }
-          }
-        }
-      }
-    }
+    urls.push(
+      ...geo.continents.flatMap((continent) =>
+        continent.countries.flatMap((country) =>
+          country.cities.flatMap((city) =>
+            city.parks.flatMap((park) => {
+              const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
+              return locales.map((locale) => `${BASE_URL}/${locale}${parkPath}`);
+            })
+          )
+        )
+      )
+    );
   } catch (error) {
     console.error('[IndexNow] Failed to fetch geo structure:', error);
     return NextResponse.json({ error: 'Failed to fetch geo structure' }, { status: 500 });
@@ -67,9 +67,11 @@ export async function GET(request: Request) {
 
   // IndexNow accepts up to 10 000 URLs per request
   const BATCH_SIZE = 10_000;
+  const batches: Promise<void>[] = [];
   for (let i = 0; i < urls.length; i += BATCH_SIZE) {
-    await submitUrlsToIndexNow(urls.slice(i, i + BATCH_SIZE));
+    batches.push(submitUrlsToIndexNow(urls.slice(i, i + BATCH_SIZE)));
   }
+  await Promise.all(batches);
 
   return NextResponse.json({ submitted: urls.length });
 }

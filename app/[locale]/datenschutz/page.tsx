@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
-import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { AnalyticsOptOut } from '@/components/common/analytics-opt-out';
