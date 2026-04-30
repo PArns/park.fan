@@ -373,7 +373,7 @@ export function SearchCommand({
 
           {/* Row 2: Location (left) + Crowd / Wait / Distance (right) */}
           <div className="flex items-center justify-between gap-3">
-            <div className="text-foreground/45 flex min-w-0 items-center gap-2 text-xs">
+            <div className="text-foreground/45 flex min-w-0 items-center gap-1 text-xs sm:gap-2">
               {/* Location */}
               {(result.city || result.country) && (
                 <span className="flex min-w-0 items-center gap-1">
