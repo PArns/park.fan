@@ -95,8 +95,8 @@
     "sections": {
       "explore": "Explore by Region",
       "plan": "Plan Your Perfect Visit",
-      "liveNow": "Parks Open Right Now",
-      "liveNowIntro": "Theme parks and amusement parks by region with current open status and live wait times.",
+      "liveNow": "Parks Open Worldwide",
+      "liveNowIntro": "Live count of open theme parks per continent.",
       "featuresIntro": "Use real-time wait times, crowd predictions, and park calendars to choose the best day and navigate queues at Disney, Universal, Europa-Park, and more.",
       "featuredParks": "Popular Parks",
       "featuredParksIntro": "The most-visited theme parks in your region — with real-time wait times and crowd predictions."
@@ -860,7 +860,8 @@
     "tooltip": "Add to favorites to see it on the homepage",
     "locationHint": "Enable location access to sort by distance",
     "addToFavorites": "Add to favorites",
-    "removeFromFavorites": "Remove from favorites"
+    "removeFromFavorites": "Remove from favorites",
+    "emptyHint": "Tap the star ★ on any park, attraction, show, or restaurant to save it here."
   },
   "glossary": {
     "overviewTitle": "Theme Park Dictionary",

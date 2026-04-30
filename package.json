@@ -82,7 +82,10 @@
   "pnpm": {
     "overrides": {
       "postcss": "^8.5.10"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@swc/core"
+    ]
   },
   "browserslist": [
     "chrome >= 109",

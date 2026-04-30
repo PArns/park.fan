@@ -1,10 +1,21 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
-import { Clock, TrendingUp, ChevronRight, Map as MapIcon, BookOpen, Tag } from 'lucide-react';
+import {
+  Clock,
+  TrendingUp,
+  ChevronRight,
+  Map as MapIcon,
+  BookOpen,
+  Tag,
+  BarChart3,
+  Database,
+  Globe,
+  Sparkles,
+} from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getGlobalStats, getGeoLiveStats, getTickerData } from '@/lib/api/analytics';
 import { LiveWaitTicker } from '@/components/home/live-wait-ticker';
@@ -28,7 +39,7 @@ const FavoritesSection = nextDynamic(
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
   {
     loading: () => (
-      <section className="border-b px-4 py-8">
+      <section className="bg-muted/30 px-4 py-8">
         <div className="container mx-auto">
           <div className="bg-muted h-48 animate-pulse rounded-xl" />
         </div>
@@ -70,7 +81,11 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
-export const revalidate = 3600;
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -215,19 +230,10 @@ export default async function HomePage({ params }: HomePageProps) {
       <AnnounceSection locale={locale} />
 
       {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
-      <section
-        className="border-b px-4 py-4"
-        aria-label={tCommon('locationBannerLabel')}
-        data-nosnippet
-        data-noindex
-      >
-        <div className="container mx-auto">
-          <LocationBanner />
-        </div>
-      </section>
+      <LocationBanner />
 
       {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park */}
-      <section className="border-b px-4 py-8">
+      <section className="px-4 py-8">
         <div className="container mx-auto">
           <NearbyParksCard />
         </div>
@@ -246,12 +252,13 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Global Stats */}
       {stats && (
-        <section className="bg-muted/30 border-b px-4 py-12">
+        <section className="bg-muted/30 px-4 py-12">
           <div className="container mx-auto">
-            <h2 className="mb-2 text-center text-2xl font-semibold">{t('globalStats')}</h2>
-            <p className="text-muted-foreground mb-8 text-center text-sm">
-              {t('globalStatsIntro')}
-            </p>
+            <div className="mb-2 flex items-center gap-2">
+              <BarChart3 className="text-primary h-5 w-5" />
+              <h2 className="text-xl font-bold">{t('globalStats')}</h2>
+            </div>
+            <p className="text-muted-foreground mb-8 text-sm">{t('globalStatsIntro')}</p>
 
             {/* Grid Layout: First row - 2 static cards */}
             <div className="mb-4 grid gap-4 sm:grid-cols-2">
@@ -288,7 +295,12 @@ export default async function HomePage({ params }: HomePageProps) {
                     slug={stats.mostCrowdedPark.slug}
                     parkId={stats.mostCrowdedPark.id}
                     city={stats.mostCrowdedPark.city}
-                    country={translateGeoSlug(tGeo, 'countries', stats.mostCrowdedPark.countrySlug, stats.mostCrowdedPark.country)}
+                    country={translateGeoSlug(
+                      tGeo,
+                      'countries',
+                      stats.mostCrowdedPark.countrySlug,
+                      stats.mostCrowdedPark.country
+                    )}
                     href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
                     status="OPERATING"
@@ -308,7 +320,12 @@ export default async function HomePage({ params }: HomePageProps) {
                     slug={stats.leastCrowdedPark.slug}
                     parkId={stats.leastCrowdedPark.id}
                     city={stats.leastCrowdedPark.city}
-                    country={translateGeoSlug(tGeo, 'countries', stats.leastCrowdedPark.countrySlug, stats.leastCrowdedPark.country)}
+                    country={translateGeoSlug(
+                      tGeo,
+                      'countries',
+                      stats.leastCrowdedPark.countrySlug,
+                      stats.leastCrowdedPark.country
+                    )}
                     href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
                     backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
                     status="OPERATING"
@@ -439,12 +456,13 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Platform Statistics */}
       {stats && (
-        <section className="border-b px-4 py-12">
+        <section className="px-4 py-12">
           <div className="container mx-auto">
-            <h2 className="mb-2 text-center text-2xl font-semibold">{t('platformStats')}</h2>
-            <p className="text-muted-foreground mb-8 text-center text-sm">
-              {t('platformStatsDescription')}
-            </p>
+            <div className="mb-2 flex items-center gap-2">
+              <Database className="text-primary h-5 w-5" />
+              <h2 className="text-xl font-bold">{t('platformStats')}</h2>
+            </div>
+            <p className="text-muted-foreground mb-8 text-sm">{t('platformStatsDescription')}</p>
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {/* Total Wait Time */}
@@ -495,16 +513,21 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Live Activity - Parks Open Now */}
       {continents.length > 0 && (
-        <section className="border-b px-4 py-12">
+        <section className="px-4 py-12">
           <div className="container mx-auto">
-            <h2 className="mb-2 text-center text-2xl font-semibold">{tHome('sections.liveNow')}</h2>
-            <p className="text-muted-foreground mb-8 text-center text-sm">
-              {tHome('sections.liveNowIntro')}
-            </p>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mb-2 flex items-center gap-2">
+              <Globe className="text-primary h-5 w-5" />
+              <h2 className="text-xl font-bold">{tHome('sections.liveNow')}</h2>
+            </div>
+            <p className="text-muted-foreground mb-8 text-sm">{tHome('sections.liveNowIntro')}</p>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {continents.map((continent) => {
-                const continentName =
-                  translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
+                const continentName = translateGeoSlug(
+                  tGeo,
+                  'continents',
+                  continent.slug,
+                  continent.name
+                );
 
                 return (
                   <Link
@@ -550,12 +573,15 @@ export default async function HomePage({ params }: HomePageProps) {
       )}
 
       {/* Features Section */}
-      <section className="bg-muted/30 border-t px-4 py-16">
+      <section className="bg-muted/30 px-4 py-16">
         <div className="container mx-auto">
-          <h2 className="mb-2 text-center text-2xl font-semibold">
-            <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
-          </h2>
-          <p className="text-muted-foreground mx-auto mb-12 max-w-2xl text-center text-sm leading-relaxed">
+          <div className="mb-2 flex items-center gap-2">
+            <Sparkles className="text-primary h-5 w-5" />
+            <h2 className="text-xl font-bold">
+              <GlossaryInject>{tHome('sections.plan')}</GlossaryInject>
+            </h2>
+          </div>
+          <p className="text-muted-foreground mb-12 text-sm leading-relaxed">
             <GlossaryInject>{tHome('sections.featuresIntro')}</GlossaryInject>
           </p>
           <div className="grid gap-8 md:grid-cols-3">
@@ -597,9 +623,12 @@ export default async function HomePage({ params }: HomePageProps) {
       </section>
 
       {/* About Section – editorial content for SEO word count */}
-      <section className="border-t px-4 py-16">
+      <section className="px-4 py-16">
         <div className="container mx-auto">
-          <h2 className="mb-6 text-2xl font-semibold">{tHome('about.title')}</h2>
+          <div className="mb-6 flex items-center gap-2">
+            <BookOpen className="text-primary h-5 w-5" />
+            <h2 className="text-xl font-bold">{tHome('about.title')}</h2>
+          </div>
           <p className="text-muted-foreground mb-4 leading-relaxed">
             <GlossaryInject>{tHome('about.p1')}</GlossaryInject>
           </p>

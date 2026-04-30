@@ -5,7 +5,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { ParkCard } from '@/components/parks/park-card';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { Link } from '@/i18n/navigation';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
 import type { FeaturedPark } from './featured-parks-section';
 
 async function fetchFeaturedParks(locale: string): Promise<FeaturedPark[]> {
@@ -139,10 +139,13 @@ export function FeaturedParksSectionClient({
   if (!isLoading && (!parks || parks.length === 0)) return null;
 
   return (
-    <section className="border-b px-4 py-12">
+    <section className="px-4 py-12">
       <div className="container mx-auto">
-        <h2 className="mb-2 text-center text-2xl font-semibold">{headingText}</h2>
-        <p className="text-muted-foreground mb-8 text-center text-sm">{introText}</p>
+        <div className="mb-2 flex items-center gap-2">
+          <Star className="text-primary h-5 w-5" />
+          <h2 className="text-xl font-bold">{headingText}</h2>
+        </div>
+        <p className="text-muted-foreground mb-8 text-sm">{introText}</p>
 
         {isLoading ? (
           <FeaturedParksSkeleton />

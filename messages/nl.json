@@ -95,8 +95,8 @@
     "sections": {
       "explore": "Verkennen per Regio",
       "plan": "Plan je perfecte bezoek",
-      "liveNow": "Parken nu open",
-      "liveNowIntro": "Pretparken per regio met actuele openstelling en live wachttijden.",
+      "liveNow": "Parken open wereldwijd",
+      "liveNowIntro": "Actueel aantal open pretparken per continent.",
       "featuresIntro": "Gebruik realtime wachttijden, druktevoorspellingen en parkkalenders om de beste dag te kiezen en wachtrijen bij Disney, Universal, Europa-Park en meer te plannen.",
       "featuredParks": "Populaire parken",
       "featuredParksIntro": "De meest bezochte pretparken in jouw regio — met realtime wachttijden en drukteverwachtingen."
@@ -860,7 +860,8 @@
     "tooltip": "Voeg toe aan favorieten om het op de homepage te zien",
     "locationHint": "Schakel locatie in om op afstand te sorteren",
     "addToFavorites": "Toevoegen aan favorieten",
-    "removeFromFavorites": "Verwijderen uit favorieten"
+    "removeFromFavorites": "Verwijderen uit favorieten",
+    "emptyHint": "Tik op de ster ★ bij een park, attractie, show of restaurant om het hier op te slaan."
   },
   "glossary": {
     "overviewTitle": "Pretpark Woordenboek",

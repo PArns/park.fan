@@ -83,13 +83,16 @@ export async function MLStatsSection() {
   const badgeKey = live.badge as string;
 
   return (
-    <section className="bg-muted/30 border-b px-4 py-14">
+    <section className="bg-muted/30 px-4 py-14">
       <div className="container mx-auto">
         {/* Header */}
-        <h2 className="mb-3 text-center text-2xl font-semibold">
-          <GlossaryInject noUnderline>{t('ai.title')}</GlossaryInject>
-        </h2>
-        <p className="text-muted-foreground mx-auto mb-10 max-w-2xl text-center text-sm leading-relaxed">
+        <div className="mb-3 flex items-center gap-2">
+          <Brain className="text-primary h-5 w-5" />
+          <h2 className="text-xl font-bold">
+            <GlossaryInject noUnderline>{t('ai.title')}</GlossaryInject>
+          </h2>
+        </div>
+        <p className="text-muted-foreground mb-10 text-sm leading-relaxed">
           <GlossaryInject>{t('ai.subtitle')}</GlossaryInject>
         </p>
 

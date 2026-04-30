@@ -16,7 +16,7 @@ export const getParkByGeoPath = cache(
     parkSlug: string
   ): Promise<ParkWithAttractions> => {
     return api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-      cache: 'no-store',
+      next: { revalidate: 300 },
     });
   }
 );
@@ -38,7 +38,7 @@ export const getAttractionByGeoPath = cache(
     return api.get<AttractionResponse>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
       {
-        cache: 'no-store',
+        next: { revalidate: 300 },
       }
     );
   }

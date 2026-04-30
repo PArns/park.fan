@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
+export const revalidate = false; // filesystem-only, never changes between deploys
+
 const PARKS_IMAGE_DIR = path.join(process.cwd(), 'public', 'images', 'parks');
 
 function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {

@@ -1,10 +1,10 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
-import { getCitiesWithParks } from '@/lib/api/discovery';
+import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
@@ -53,7 +53,24 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 3600; // 1 hour — live data via React Query on client
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  const geoData = await getGeoStructure().catch(() => null);
+  if (!geoData) return [];
+  return locales.flatMap((locale) =>
+    geoData.continents.flatMap((continent) =>
+      continent.countries.flatMap((country) =>
+        country.cities.map((city) => ({
+          locale,
+          continent: continent.slug,
+          country: country.slug,
+          city: city.slug,
+        }))
+      )
+    )
+  );
+}
 
 export default async function CityPage({ params }: CityPageProps) {
   const { locale, continent, country, city: citySlug } = await params;

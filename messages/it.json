@@ -95,8 +95,8 @@
     "sections": {
       "explore": "Esplora per regione",
       "plan": "Pianifica la tua visita perfetta",
-      "liveNow": "Parchi aperti adesso",
-      "liveNowIntro": "Parchi a tema e parchi divertimento per regione con stato di apertura attuale e tempi di attesa in diretta.",
+      "liveNow": "Parchi aperti nel mondo",
+      "liveNowIntro": "Numero di parchi a tema aperti per continente in tempo reale.",
       "featuresIntro": "Utilizza i tempi di attesa in tempo reale, le previsioni sull'affluenza e i calendari dei parchi per scegliere il giorno migliore e navigare le code a Disney, Universal, Europa-Park e altri.",
       "featuredParks": "Parchi popolari",
       "featuredParksIntro": "I parchi divertimenti più visitati nella tua regione — con tempi di attesa in tempo reale e previsioni di affluenza."
@@ -860,7 +860,8 @@
     "tooltip": "Aggiungi ai preferiti per vederlo sulla homepage",
     "locationHint": "Abilita l'accesso alla posizione per ordinare per distanza",
     "addToFavorites": "Aggiungi ai preferiti",
-    "removeFromFavorites": "Rimuovi dai preferiti"
+    "removeFromFavorites": "Rimuovi dai preferiti",
+    "emptyHint": "Tocca la stella ★ su qualsiasi parco, attrazione, spettacolo o ristorante per salvarlo qui."
   },
   "glossary": {
     "overviewTitle": "Dizionario dei Parchi a Tema",

@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
   };
 }
 
-export const revalidate = 3600; // 1 hour
+export const revalidate = 300; // 1 hour
 
 export default async function ParksPage({ params }: ParksPageProps) {
   const { locale } = await params;

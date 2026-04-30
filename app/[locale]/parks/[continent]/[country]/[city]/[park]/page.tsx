@@ -132,7 +132,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 3600; // 1 hour — live data via React Query on client
+export const revalidate = 300;
 
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
@@ -269,9 +269,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     <address className="flex items-center gap-1 not-italic">
                       <MapPin className="h-4 w-4" aria-hidden="true" />
                       <span>{cityName}</span>,{' '}
-                      <span>
-                        {translateGeoSlug(tGeo, 'countries', country, countryName)}
-                      </span>
+                      <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
                     {park.timezone && (
                       <Badge variant="outline" className="gap-1 font-mono text-xs">

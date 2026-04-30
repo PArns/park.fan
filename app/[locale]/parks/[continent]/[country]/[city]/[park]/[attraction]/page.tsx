@@ -192,7 +192,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-export const revalidate = 3600; // 1 hour — live data via React Query on client
+export const revalidate = 300; // 1 hour — live data via React Query on client
 
 // Status config will be created inside the component to use translations
 

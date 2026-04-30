@@ -95,8 +95,8 @@
     "sections": {
       "explore": "Nach Region entdecken",
       "plan": "Plane deinen perfekten Besuch",
-      "liveNow": "Parks jetzt geöffnet",
-      "liveNowIntro": "Freizeitparks nach Region mit aktuellem Öffnungsstatus und Live-Wartezeiten.",
+      "liveNow": "Parks weltweit im Überblick",
+      "liveNowIntro": "Anzahl geöffneter Freizeitparks pro Kontinent in Echtzeit.",
       "featuresIntro": "Nutze Echtzeit-Wartezeiten, Besucherprognosen und Park-Kalender, um den besten Tag zu wählen und Warteschlangen bei Disney, Universal, Europa-Park und mehr zu planen.",
       "featuredParks": "Beliebte Parks",
       "featuredParksIntro": "Die meistbesuchten Freizeitparks in deiner Region – mit Echtzeit-Wartezeiten und Crowd-Prognosen."
@@ -860,7 +860,8 @@
     "tooltip": "Zu Favoriten hinzufügen, um es auf der Startseite zu sehen",
     "locationHint": "Standortzugriff aktivieren, um nach Entfernung zu sortieren",
     "addToFavorites": "Zu Favoriten hinzufügen",
-    "removeFromFavorites": "Aus Favoriten entfernen"
+    "removeFromFavorites": "Aus Favoriten entfernen",
+    "emptyHint": "Klicke auf den Stern ★ bei einem Park, einer Attraktion, Show oder Restaurant, um sie hier zu speichern."
   },
   "glossary": {
     "overviewTitle": "Freizeitpark-Wörterbuch",

@@ -7,7 +7,7 @@ import type { MLDashboardDto, ModelMetricsHistoryResponse } from './types';
  */
 export async function getMLDashboard(): Promise<MLDashboardDto> {
   return api.get<MLDashboardDto>('/v1/ml/dashboard', {
-    next: { revalidate: 3600 },
+    next: { revalidate: 1800 },
   });
 }
 
@@ -19,6 +19,6 @@ export async function getMLDashboard(): Promise<MLDashboardDto> {
 export async function getMLMetricsHistory(limit = 50): Promise<ModelMetricsHistoryResponse> {
   return api.get<ModelMetricsHistoryResponse>('/v1/ml/models/metrics-history', {
     params: { limit },
-    next: { revalidate: 3600 },
+    next: { revalidate: 1800 },
   });
 }

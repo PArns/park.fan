@@ -20,15 +20,15 @@ export const CACHE_TTL = {
   realtime: 120, // ⚠️ Using cache: 'no-store' - respects API 120s cache
 
   // Discovery & Park data - Using cache: 'no-store' for live data
-  geo: 3600, // geo structure changes rarely — matches page revalidate
+  geo: 3600, // geo structure changes rarely
   continents: 3600, // same as geo
   parks: 300, // ⚠️ Using cache: 'no-store' for live park lists - respects API 300s cache
   parkDetail: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
   waitTimes: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
 
   // Static data (still using revalidate)
-  calendar: 3600, // /v1/parks/:slug/calendar - API: 300s (past/today) / 1800s (future); today crowdLevel is patched client-side
-  weather: 3600, // /v1/parks/:slug/weather - API: 3600s
+  calendar: 300, // /v1/parks/:slug/calendar - API: 300s (past/today) / 1800s (future); today crowdLevel is patched client-side
+  weather: 300, // /v1/parks/:slug/weather - API: 3600s
   predictions: 86400, // /v1/parks/:slug/predictions/yearly - API: 86400s
   holidays: 86400, // Holiday data - API: 86400s
 } as const;
