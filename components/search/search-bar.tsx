@@ -51,8 +51,8 @@ const typeIcons = {
 
 function SkeletonItem({ width }: { width: string }) {
   return (
-    <div className="flex items-center gap-4 rounded-lg px-3 py-2 sm:py-3.5">
-      <div className="bg-foreground/10 h-11 w-11 shrink-0 animate-pulse rounded-xl" />
+    <div className="flex items-center gap-2.5 rounded-lg px-3 py-2 sm:gap-4 sm:py-3.5">
+      <div className="bg-foreground/10 h-9 w-9 shrink-0 animate-pulse rounded-lg sm:h-11 sm:w-11 sm:rounded-xl" />
       <div className="flex min-w-0 flex-1 flex-col gap-2">
         <div className="flex items-center justify-between gap-3">
           <div className="bg-foreground/10 h-3.5 animate-pulse rounded-full" style={{ width }} />
@@ -354,18 +354,18 @@ export function SearchCommand({
         key={result.id}
         value={`${stripNewPrefix(result.name)} ${result.type} ${result.id}`}
         onSelect={() => handleSelect(result, position)}
-        className="flex cursor-pointer items-center gap-4"
+        className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
       >
         {/* Icon */}
-        <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-          <Icon className="text-foreground/65 h-5 w-5" />
+        <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+          <Icon className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
         </div>
 
         {/* Content */}
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+        <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
           {/* Row 1: Name + Status */}
           <div className="flex items-center justify-between gap-3">
-            <span className="truncate text-[15px] leading-none font-semibold">
+            <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
               {stripNewPrefix(result.name)}
             </span>
             {result.status && <ParkStatusBadge status={result.status} className="text-[11px]" />}
@@ -660,13 +660,13 @@ export function SearchCommand({
                         });
                         router.push(`/${seg}/${item.slug}` as '/parks/europe');
                       }}
-                      className="flex cursor-pointer items-center gap-4"
+                      className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
                     >
-                      <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-                        <BookOpen className="text-foreground/65 h-5 w-5" />
+                      <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+                        <BookOpen className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
                       </div>
-                      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                        <span className="truncate text-[15px] leading-none font-semibold">
+                      <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+                        <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
                           {item.name}
                         </span>
                         <span className="text-foreground/45 truncate text-xs">
@@ -749,13 +749,13 @@ export function SearchCommand({
                               });
                               router.push(`/${seg}/${item.slug}` as '/parks/europe');
                             }}
-                            className="flex cursor-pointer items-center gap-4"
+                            className="flex cursor-pointer items-center gap-2.5 sm:gap-4"
                           >
-                            <div className="bg-foreground/10 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
-                              <BookOpen className="text-foreground/65 h-5 w-5" />
+                            <div className="bg-foreground/10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg sm:h-11 sm:w-11 sm:rounded-xl">
+                              <BookOpen className="text-foreground/65 h-4 w-4 sm:h-5 sm:w-5" />
                             </div>
-                            <div className="flex min-w-0 flex-1 flex-col gap-1.5">
-                              <span className="truncate text-[15px] leading-none font-semibold">
+                            <div className="flex min-w-0 flex-1 flex-col gap-1 sm:gap-1.5">
+                              <span className="truncate text-sm leading-none font-semibold sm:text-[15px]">
                                 {item.name}
                               </span>
                               <span className="text-foreground/45 truncate text-xs">
