@@ -278,7 +278,7 @@ export function AttractionCard({
 
         {/* Top glass panel */}
         <div
-          className="relative z-[3] -mb-4 overflow-hidden"
+          className="pk-panel-top relative z-[3] -mb-4 overflow-hidden"
           style={{
             padding: '14px 52px 13px 16px',
             background: 'var(--pk-panel-highlight-top), var(--pk-panel)',
@@ -396,12 +396,12 @@ export function AttractionCard({
 
         {/* Photo spacer — the 1fr row resolves to 0 in an intrinsic-height
            container; min-h forces it open when there is a background image. */}
-        <div className={cn('relative z-[2]', backgroundImage && 'min-h-[220px]')} />
+        <div className={cn('relative z-[2]', backgroundImage && 'sm:min-h-[220px]')} />
 
         {/* Bottom glass panel — only rendered when we have a live wait time */}
         {isOperatingOrUnknown && waitTime !== null && (
           <div
-            className="relative z-[3] -mt-4 overflow-hidden"
+            className="pk-panel-bot relative z-[3] -mt-4 overflow-hidden"
             style={{
               padding: '12px 14px 13px',
               background: 'var(--pk-panel-highlight-bot), var(--pk-panel)',

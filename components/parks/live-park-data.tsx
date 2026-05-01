@@ -82,6 +82,22 @@ export function LiveParkData({
     });
   }, [currentAttractionsByLand, park, initialData.attractions, landNames]);
 
+  const tabsWithHash = (
+    <TabsWithHash
+      defaultValue="attractions"
+      showsAvailable={currentPark.shows && currentPark.shows.length > 0}
+      restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
+      park={currentPark}
+      calendarData={calendarData}
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      landNames={currentLandNames}
+      attractionsByLand={currentAttractionsByLand}
+    />
+  );
+
   return (
     <>
       {/* Error State - Still show data but warn user */}
@@ -110,27 +126,15 @@ export function LiveParkData({
         </div>
       )}
 
-      {/* Park Status Component */}
-      <ParkStatus park={currentPark} variant="detailed" />
+      {/* Park Status Component — on mobile receives the tabs between WaitTime and Attractions */}
+      <ParkStatus park={currentPark} variant="detailed" midSlot={tabsWithHash} />
 
       {bestDaysSlot}
 
       <Separator className="my-8" />
 
-      {/* Tabs for Attractions, Shows, Restaurants */}
-      <TabsWithHash
-        defaultValue="attractions"
-        showsAvailable={currentPark.shows && currentPark.shows.length > 0}
-        restaurantsAvailable={currentPark.restaurants && currentPark.restaurants.length > 0}
-        park={currentPark}
-        calendarData={calendarData}
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        landNames={currentLandNames}
-        attractionsByLand={currentAttractionsByLand}
-      />
+      {/* Tabs on desktop (hidden on mobile — already shown inside ParkStatus grid) */}
+      <div className="hidden sm:block">{tabsWithHash}</div>
     </>
   );
 }

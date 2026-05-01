@@ -396,6 +396,19 @@
     @apply hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
   }
 
+  /* Park card v2 — backdrop-filter fallback for browsers that block it (e.g. Brave Shields).
+     Without blur the panels are just rgba overlays — make them opaque enough to look like cards. */
+  @supports not (backdrop-filter: blur(1px)) {
+    .pk-panel-top,
+    .pk-panel-bot {
+      background: rgba(220, 235, 250, 0.92) !important;
+    }
+    .dark .pk-panel-top,
+    .dark .pk-panel-bot {
+      background: rgba(12, 18, 32, 0.92) !important;
+    }
+  }
+
   /* Park card v2 — photo zoom on card hover */
   .pk-photo-zoom {
     transition:
