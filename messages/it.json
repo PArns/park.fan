@@ -441,7 +441,9 @@
       "upcomingQuietTitle": "Prossimi giorni tranquilli",
       "schoolHolidayWarning": "Le vacanze scolastiche sono tipicamente molto più affollate a {park} — controlla il calendario prima di prenotare.",
       "noUpcomingQuiet": "Nessun giorno particolarmente tranquillo nei prossimi 30 giorni.",
-      "noData": "Dati di previsione insufficienti al momento."
+      "noData": "Dati di previsione insufficienti al momento.",
+      "bestWeekendDayTitle": "Miglior giorno del fine settimana",
+      "titleCompact": "Periodo migliore"
     }
   },
   "attractions": {

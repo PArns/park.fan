@@ -441,7 +441,9 @@
       "upcomingQuietTitle": "Upcoming Quiet Days",
       "schoolHolidayWarning": "School holidays are typically much busier at {park} — check the crowd calendar before booking.",
       "noUpcomingQuiet": "No particularly quiet days in the next 30 days.",
-      "noData": "Not enough crowd forecast data available yet."
+      "noData": "Not enough crowd forecast data available yet.",
+      "bestWeekendDayTitle": "Best Weekend Day",
+      "titleCompact": "Best Time to Visit"
     }
   },
   "attractions": {

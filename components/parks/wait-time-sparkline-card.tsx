@@ -25,9 +25,13 @@ export function WaitTimeSparklineCard({
   const [nowMs, setNowMs] = useState<number | null>(null);
 
   useEffect(() => {
-    setNowMs(Date.now());
-    const interval = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => clearInterval(interval);
+    const update = () => setNowMs(Date.now());
+    const timeout = setTimeout(update, 0);
+    const interval = setInterval(update, 60_000);
+    return () => {
+      clearTimeout(timeout);
+      clearInterval(interval);
+    };
   }, []);
 
   const rawData = history

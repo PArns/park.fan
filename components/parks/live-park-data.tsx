@@ -24,6 +24,7 @@ interface LiveParkDataProps {
   calendarData: IntegratedCalendarResponse;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
+  bestDaysSlot?: React.ReactNode;
 }
 
 /**
@@ -42,6 +43,7 @@ export function LiveParkData({
   calendarData,
   landNames,
   attractionsByLand,
+  bestDaysSlot,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
 
@@ -110,6 +112,8 @@ export function LiveParkData({
 
       {/* Park Status Component */}
       <ParkStatus park={currentPark} variant="detailed" />
+
+      {bestDaysSlot}
 
       <Separator className="my-8" />
 

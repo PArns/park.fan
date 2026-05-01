@@ -312,6 +312,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
             calendarData={calendarData}
             landNames={landNames}
             attractionsByLand={attractionsByLand}
+            bestDaysSlot={
+              <ParkBestDaysSection
+                calendarData={calendarData}
+                statsByDayOfWeek={parkStats?.byDayOfWeek}
+                parkName={parkName}
+                parkSlug={parkSlug}
+                locale={locale}
+              />
+            }
           />
 
           {/* Nearby Parks */}
@@ -330,15 +339,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
             continent={continent}
             country={country}
             city={city}
-            parkSlug={parkSlug}
-            locale={locale}
-          />
-
-          {/* Best Days to Visit */}
-          <ParkBestDaysSection
-            calendarData={calendarData}
-            statsByDayOfWeek={parkStats?.byDayOfWeek}
-            parkName={parkName}
             parkSlug={parkSlug}
             locale={locale}
           />

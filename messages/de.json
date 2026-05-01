@@ -441,7 +441,9 @@
       "upcomingQuietTitle": "Kommende ruhige Tage",
       "schoolHolidayWarning": "Schulferien sind am {park} typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
       "noUpcomingQuiet": "In den nächsten 30 Tagen keine besonders ruhigen Tage.",
-      "noData": "Noch nicht genug Crowd-Daten verfügbar."
+      "noData": "Noch nicht genug Crowd-Daten verfügbar.",
+      "bestWeekendDayTitle": "Bester Wochenendtag",
+      "titleCompact": "Beste Reisezeit"
     }
   },
   "attractions": {

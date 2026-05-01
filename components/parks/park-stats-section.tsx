@@ -50,29 +50,35 @@ export async function ParkStatsSection({
   }));
 
   const refMonday = new Date(2025, 0, 6);
-  const dowRows = stats.byDayOfWeek.map((d) => {
-    const date = new Date(refMonday);
-    date.setDate(refMonday.getDate() + ((d.dayOfWeek - 1 + 7) % 7));
-    return {
-      key: d.dayOfWeek,
-      label: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
-      crowdLevel: CROWD_SCORE_TO_LEVEL(d.avgCrowdScore),
-      p50: d.avgWaitP50,
-      p90: d.avgWaitP90,
-    };
-  });
+  const dowRows = stats.byDayOfWeek
+    .map((d) => {
+      const offset = (d.dayOfWeek - 1 + 7) % 7;
+      const date = new Date(refMonday);
+      date.setDate(refMonday.getDate() + offset);
+      return {
+        key: d.dayOfWeek,
+        sortKey: offset,
+        label: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
+        crowdLevel: CROWD_SCORE_TO_LEVEL(d.avgCrowdScore),
+        p50: d.avgWaitP50,
+        p90: d.avgWaitP90,
+      };
+    })
+    .sort((a, b) => a.sortKey - b.sortKey);
 
   return (
     <section aria-labelledby="stats-heading" className="mt-8 space-y-4">
-      <div className="flex items-center gap-2">
-        <BarChart3 className="text-primary h-5 w-5" aria-hidden="true" />
-        <h2 id="stats-heading" className="text-xl font-bold">
-          {t('title')}
-        </h2>
+      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <BarChart3 className="text-primary h-5 w-5" aria-hidden="true" />
+          <h2 id="stats-heading" className="text-xl font-bold">
+            {t('title')}
+          </h2>
+        </div>
+        <p className="text-muted-foreground mt-1 text-sm">
+          {t('subtitle', { days: stats.meta.totalSampleDays, years: Math.max(years, 1) })}
+        </p>
       </div>
-      <p className="text-muted-foreground text-sm">
-        {t('subtitle', { days: stats.meta.totalSampleDays, years: Math.max(years, 1) })}
-      </p>
 
       {stats.topAttractions.length > 0 && (
         <ParkStatsAttractionsCard

@@ -441,7 +441,9 @@
       "upcomingQuietTitle": "Prochains jours calmes",
       "schoolHolidayWarning": "Les vacances scolaires sont généralement beaucoup plus fréquentées à {park} — vérifiez le calendrier avant de réserver.",
       "noUpcomingQuiet": "Aucun jour particulièrement calme dans les 30 prochains jours.",
-      "noData": "Pas encore assez de données de prévision disponibles."
+      "noData": "Pas encore assez de données de prévision disponibles.",
+      "bestWeekendDayTitle": "Meilleur jour de week-end",
+      "titleCompact": "Meilleure période"
     }
   },
   "attractions": {

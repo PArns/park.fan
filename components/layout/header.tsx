@@ -60,13 +60,13 @@ export function Header() {
 
   return (
     <header
-      className={`relative sticky top-0 z-50 h-16 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+      className={`relative sticky top-0 z-50 h-14 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
         isTransparent
           ? 'border-transparent bg-transparent'
           : 'border-border/50 bg-background/80 backdrop-blur-md'
       }`}
     >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-0">
+      <div className="container mx-auto flex h-14 items-center justify-between px-4 md:px-0">
         {/* Corner logo – absolute, visible only when transparent (hero top).
             Same left-6 offset as the hero image info text below. Fades out on scroll. */}
         <Link
@@ -118,7 +118,7 @@ export function Header() {
         <Link
           href="/"
           prefetch={false}
-          className={`flex shrink-0 items-center gap-1.5 transition-opacity duration-500 ${
+          className={`flex shrink-0 items-center gap-0.5 transition-opacity duration-500 ${
             isTransparent ? 'pointer-events-none opacity-0' : 'opacity-100'
           }`}
           aria-label="park.fan - Home"
@@ -147,7 +147,7 @@ export function Header() {
             width={84}
             height={24}
             alt="park.fan"
-            className="hidden h-7 w-auto md:h-9 dark:block"
+            className="hidden h-5 w-auto md:h-6 dark:block"
             priority
           />
           <Image
@@ -156,7 +156,7 @@ export function Header() {
             height={24}
             alt=""
             aria-hidden="true"
-            className="block h-7 w-auto md:h-9 dark:hidden"
+            className="block h-5 w-auto md:h-6 dark:hidden"
             priority
           />
         </Link>

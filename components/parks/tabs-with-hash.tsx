@@ -4,7 +4,16 @@ import { useEffect, useState, useRef, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import { Search, EyeOff, Eye } from 'lucide-react';
+import {
+  Search,
+  EyeOff,
+  Eye,
+  Zap,
+  Sparkles,
+  UtensilsCrossed,
+  CalendarDays,
+  Map,
+} from 'lucide-react';
 import Fuse from 'fuse.js';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -398,7 +407,10 @@ export function TabsWithHash({
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
           <div className="mb-6 flex flex-wrap items-center gap-3">
-            <h2 className="text-2xl font-semibold">{t('attractions')}</h2>
+            <h2 className="bg-background/70 flex w-fit items-center gap-2 rounded-lg px-3 py-1.5 text-2xl font-semibold backdrop-blur-md">
+              <Zap className="h-5 w-5 shrink-0" aria-hidden="true" />
+              {t('attractions')}
+            </h2>
             {offSeasonAttractionCount > 0 && (
               <button
                 onClick={() => setShowOffSeasonAttractions((v) => !v)}
@@ -494,7 +506,10 @@ export function TabsWithHash({
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
             <div className="mb-6 flex flex-wrap items-center gap-3">
-              <h2 className="text-2xl font-semibold">{t('shows')}</h2>
+              <h2 className="bg-background/70 flex w-fit items-center gap-2 rounded-lg px-3 py-1.5 text-2xl font-semibold backdrop-blur-md">
+                <Sparkles className="h-5 w-5 shrink-0" aria-hidden="true" />
+                {t('shows')}
+              </h2>
               {offSeasonShowCount > 0 && (
                 <button
                   onClick={() => setShowOffSeasonShows((v) => !v)}
@@ -543,7 +558,10 @@ export function TabsWithHash({
             value="restaurants"
             className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
           >
-            <h2 className="mb-6 text-2xl font-semibold">{t('restaurants')}</h2>
+            <h2 className="bg-background/70 mb-6 flex w-fit items-center gap-2 rounded-lg px-3 py-1.5 text-2xl font-semibold backdrop-blur-md">
+              <UtensilsCrossed className="h-5 w-5 shrink-0" aria-hidden="true" />
+              {t('restaurants')}
+            </h2>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {park.restaurants?.map((restaurant) => (
                 <RestaurantCard key={restaurant.id} restaurant={restaurant} />
@@ -556,7 +574,10 @@ export function TabsWithHash({
           value="calendar"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <h2 className="mb-6 text-2xl font-semibold">{t('calendar')}</h2>
+          <h2 className="bg-background/70 mb-6 flex w-fit items-center gap-2 rounded-lg px-3 py-1.5 text-2xl font-semibold backdrop-blur-md">
+            <CalendarDays className="h-5 w-5 shrink-0" aria-hidden="true" />
+            {t('calendar')}
+          </h2>
           <ParkCalendarGrid
             park={park}
             initialCalendarData={calendarData}
@@ -571,7 +592,10 @@ export function TabsWithHash({
           value="map"
           className="animate-in fade-in-0 slide-in-from-bottom-2 duration-200"
         >
-          <h2 className="mb-6 text-2xl font-semibold">{t('map')}</h2>
+          <h2 className="bg-background/70 mb-6 flex w-fit items-center gap-2 rounded-lg px-3 py-1.5 text-2xl font-semibold backdrop-blur-md">
+            <Map className="h-5 w-5 shrink-0" aria-hidden="true" />
+            {t('map')}
+          </h2>
           <ParkMap park={park} />
         </TabsContent>
       </Tabs>

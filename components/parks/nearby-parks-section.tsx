@@ -21,11 +21,13 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
 
   return (
     <section className={className}>
-      <div className="mb-4 flex items-center gap-2">
-        <MapPin className="text-primary h-5 w-5" />
-        <h2 className="text-xl font-bold">{t('nearbyParks')}</h2>
+      <div className="bg-background/70 mb-4 rounded-xl px-4 py-3 backdrop-blur-md">
+        <div className="flex items-center gap-2">
+          <MapPin className="text-primary h-5 w-5" />
+          <h2 className="text-xl font-bold">{t('nearbyParks')}</h2>
+        </div>
+        <p className="text-muted-foreground mt-1 text-sm">{t('nearbyParksArea')}</p>
       </div>
-      <p className="text-muted-foreground mb-4 text-sm">{t('nearbyParksArea')}</p>
 
       <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {parks.map((park) => (

@@ -441,7 +441,9 @@
       "upcomingQuietTitle": "Komende rustige dagen",
       "schoolHolidayWarning": "Schoolvakanties zijn doorgaans veel drukker bij {park} — check de druktekalender voor je boeking.",
       "noUpcomingQuiet": "Geen bijzonder rustige dagen in de komende 30 dagen.",
-      "noData": "Nog niet genoeg voorspellingsdata beschikbaar."
+      "noData": "Nog niet genoeg voorspellingsdata beschikbaar.",
+      "bestWeekendDayTitle": "Beste weekenddag",
+      "titleCompact": "Beste reistijd"
     }
   },
   "attractions": {

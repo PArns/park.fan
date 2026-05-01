@@ -34,8 +34,8 @@ export function LandSection({
 
   return (
     <section>
-      <div className="mb-4 flex items-center gap-3">
-        <div className="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-lg">
+      <div className="bg-background/70 mb-4 flex w-fit items-center gap-3 rounded-lg px-3 py-1.5 backdrop-blur-md">
+        <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg">
           <LayoutGrid className="text-primary h-5 w-5" />
         </div>
         <div>

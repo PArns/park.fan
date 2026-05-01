@@ -118,7 +118,9 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
 
   return (
     <section className="space-y-4">
-      <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
+      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
+        <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
+      </div>
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];
