@@ -17,6 +17,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { getGlobalStats, getGeoLiveStats, getTickerData } from '@/lib/api/analytics';
 import { LiveWaitTicker } from '@/components/home/live-wait-ticker';
 import { getGeoStructure } from '@/lib/api/discovery';
@@ -187,23 +188,19 @@ export default async function HomePage({ params }: HomePageProps) {
                   titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
                   introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
                 />
-                <div className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2">
-                  <Link
-                    href="/howto"
-                    prefetch={false}
-                    className="text-primary/70 hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:underline"
-                  >
-                    <BookOpen className="h-3.5 w-3.5 shrink-0" />
-                    {tHome('hero.howto')}
-                  </Link>
-                  <Link
-                    href={glossaryPath}
-                    prefetch={false}
-                    className="text-primary/70 hover:text-primary inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 transition-colors hover:underline"
-                  >
-                    <Tag className="h-3.5 w-3.5 shrink-0" />
-                    {tHome('hero.glossary')}
-                  </Link>
+                <div className="mt-4 flex flex-wrap justify-center gap-3">
+                  <Button asChild variant="outline" size="sm" className="rounded-full">
+                    <Link href="/howto" prefetch={false}>
+                      <BookOpen className="h-3.5 w-3.5 shrink-0" />
+                      {tHome('hero.howto')}
+                    </Link>
+                  </Button>
+                  <Button asChild variant="outline" size="sm" className="rounded-full">
+                    <Link href={glossaryPath} prefetch={false}>
+                      <Tag className="h-3.5 w-3.5 shrink-0" />
+                      {tHome('hero.glossary')}
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </GlassCard>

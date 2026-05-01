@@ -22,15 +22,12 @@ export function WaitTimeSparklineCard({
   fallbackWaitTime,
 }: WaitTimeSparklineCardProps) {
   const locale = useLocale();
-  const [nowMs, setNowMs] = useState(() => Date.now());
+  const [nowMs, setNowMs] = useState<number | null>(null);
 
   useEffect(() => {
-    const sync = setTimeout(() => setNowMs(Date.now()), 0);
+    setNowMs(Date.now());
     const interval = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => {
-      clearTimeout(sync);
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   const rawData = history
@@ -40,7 +37,7 @@ export function WaitTimeSparklineCard({
   const data =
     rawData.length > 0
       ? rawData
-      : fallbackWaitTime !== undefined
+      : fallbackWaitTime !== undefined && nowMs !== null
         ? [{ time: nowMs - 60 * 60 * 1000, value: fallbackWaitTime }]
         : null;
 
@@ -49,7 +46,8 @@ export function WaitTimeSparklineCard({
   const minTime = data[0].time;
   const lastPoint = data[data.length - 1];
   // Extend the x-axis to "now" so the chart always reaches the right edge.
-  const maxTime = Math.max(lastPoint.time, nowMs);
+  // Use lastPoint.time during SSR (nowMs is null) to match server/client output.
+  const maxTime = nowMs !== null ? Math.max(lastPoint.time, nowMs) : lastPoint.time;
   const range = maxTime - minTime;
   if (range <= 0) return null;
 
@@ -71,7 +69,7 @@ export function WaitTimeSparklineCard({
       pathD += ` C ${midX},${prevY} ${midX},${y.toFixed(2)} ${x.toFixed(2)},${y.toFixed(2)}`;
     }
   });
-  if (nowMs > lastPoint.time) {
+  if (nowMs !== null && nowMs > lastPoint.time) {
     const x = getX(nowMs);
     const y = getY(lastPoint.value);
     pathD += ` L ${x.toFixed(2)},${y.toFixed(2)}`;
