@@ -165,6 +165,7 @@ function generateMetaFile(meta) {
         `    parkName: ${serializeValue(m.parkName)},`,
         `    city: ${serializeValue(m.city)},`,
         `    countrySlug: ${serializeValue(m.countrySlug)},`,
+        m.parkUrl ? `    parkUrl: ${serializeValue(m.parkUrl)},` : null,
         m.attractionName ? `    attractionName: ${serializeValue(m.attractionName)},` : null,
         m.area ? `    area: ${serializeValue(m.area)},` : null,
       ].filter(Boolean);
@@ -180,6 +181,8 @@ export interface HeroImageMeta {
   city: string;
   /** Matches the 'geo.countries.*' translation key */
   countrySlug: string;
+  /** Frontend URL of the park page — used to make the hero image info panel clickable */
+  parkUrl?: string;
   attractionName?: string;
   /** Themed area within the park — maintained manually in AREA_OVERRIDES (not in API) */
   area?: string;
@@ -234,6 +237,7 @@ async function main() {
         parkName: parkInfo.name,
         city: parkInfo.city,
         countrySlug: parkInfo.countrySlug,
+        parkUrl: parkInfo.url.replace('/v1/parks/', '/parks/'),
         ...(attractionName !== undefined && { attractionName }),
         ...(area !== undefined && { area }),
       };
