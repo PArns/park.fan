@@ -137,7 +137,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // Fetch data in parallel (ML dashboard fetched inside MLStatsSection to keep Suspense boundaries clean)
   const [stats, geoData, liveStats, tickerData] = await Promise.all([
     getGlobalStats().catch(() => null),
-    getGeoStructure().catch(() => null),
+    getGeoStructure(300).catch(() => null),
     getGeoLiveStats().catch(() => null),
     getTickerData().catch(() => null),
   ]);

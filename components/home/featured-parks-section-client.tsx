@@ -59,6 +59,7 @@ export function PopularParksGridClient() {
     queryKey: ['featured-parks', locale],
     queryFn: () => fetchFeaturedParks(locale),
     staleTime: 5 * 60_000,
+    refetchInterval: 5 * 60_000,
     refetchOnWindowFocus: true,
   });
 
@@ -131,7 +132,8 @@ export function FeaturedParksSectionClient({
   const { data: parks, isLoading } = useQuery({
     queryKey: ['featured-parks', locale],
     queryFn: () => fetchFeaturedParks(locale),
-    staleTime: 5 * 60_000, // 5 min — matches API TTL
+    staleTime: 5 * 60_000,
+    refetchInterval: 5 * 60_000,
     refetchOnWindowFocus: true,
     initialData: initialParks,
   });
