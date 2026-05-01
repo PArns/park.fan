@@ -34,7 +34,7 @@ export function FavoritesSection() {
   const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
 
   const { position } = useGeolocation();
-  const { data: favoritesData, isLoading: loading } = useFavorites();
+  const { data: favoritesData, isLoading: loading, isPending } = useFavorites();
 
   const queryClient = useQueryClient();
 
@@ -101,7 +101,9 @@ export function FavoritesSection() {
   if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) return null;
 
   // Favorites exist in cookies (or count unknown) and API is still loading → show skeleton.
-  if (loading) {
+  // isPending covers the case where the query is disabled (geoLoading=true) but hasn't started yet —
+  // isLoading alone misses this and would fall through to the empty state.
+  if (loading || isPending) {
     const showParkSkeletons = !cookieCounts || cookieCounts.parks > 0;
     const showAttractionSkeletons = !cookieCounts || cookieCounts.attractions > 0;
     return (
