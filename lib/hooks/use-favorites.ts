@@ -72,7 +72,12 @@ export function useFavorites() {
       return response.json();
     },
     enabled: !geoLoading,
-    staleTime: 60 * 1000, // 1 minute
-    gcTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 5 * 60 * 1000, // 5 minutes — matches refetch interval
+    gcTime: 10 * 60 * 1000, // 10 minutes
+    refetchOnWindowFocus: true, // refresh when user returns to tab (live status can change)
+    refetchInterval: 5 * 60 * 1000, // poll every 5 min — attraction status changes during the day
+    // When geo resolves the queryKey gains lat/lng (new cache entry). Keep showing the
+    // no-coords result while the coords-query loads instead of flashing a skeleton.
+    placeholderData: (previousData: FavoritesResponse | undefined) => previousData,
   });
 }
