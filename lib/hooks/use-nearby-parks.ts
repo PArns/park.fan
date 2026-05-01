@@ -10,7 +10,17 @@ export interface UseNearbyParksOptions {
   limit?: number;
 }
 
-const CACHE_KEY = 'nearby-parks-v1';
+const CACHE_KEY = 'nearby-parks-v2';
+const CACHE_MAX_AGE_MS = 5 * 60 * 1000; // matches staleTime
+// Skip placeholder if user has moved more than this distance since the cache was written.
+const CACHE_COORD_MAX_DIST_KM = 10;
+
+interface CachedNearby {
+  data: NearbyResponse;
+  cachedAt: number;
+  lat: number | null;
+  lng: number | null;
+}
 
 /** Only count results that are worth showing — in_park always qualifies, nearby_parks needs ≥1 park. */
 function isMeaningful(data: NearbyResponse): boolean {
@@ -19,19 +29,54 @@ function isMeaningful(data: NearbyResponse): boolean {
   return false;
 }
 
-function readCache(): NearbyResponse | undefined {
+function haversineKm(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLng = ((lng2 - lng1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+/**
+ * Read from localStorage. Returns undefined when:
+ * - No entry exists
+ * - Entry is older than CACHE_MAX_AGE_MS
+ * - Both current and cached coords are present and user has moved > CACHE_COORD_MAX_DIST_KM
+ *
+ * Pass null for both coords to skip the distance check (used at init time before GPS resolves).
+ */
+function readCache(
+  currentLat: number | null,
+  currentLng: number | null
+): NearbyResponse | undefined {
   if (typeof window === 'undefined') return undefined;
   try {
     const raw = localStorage.getItem(CACHE_KEY);
-    return raw ? (JSON.parse(raw) as NearbyResponse) : undefined;
+    if (!raw) return undefined;
+    const cached: CachedNearby = JSON.parse(raw);
+    if (!cached?.data || !cached.cachedAt) return undefined;
+    if (Date.now() - cached.cachedAt > CACHE_MAX_AGE_MS) return undefined;
+    if (
+      currentLat != null &&
+      currentLng != null &&
+      cached.lat != null &&
+      cached.lng != null &&
+      haversineKm(currentLat, currentLng, cached.lat, cached.lng) > CACHE_COORD_MAX_DIST_KM
+    ) {
+      return undefined;
+    }
+    return cached.data;
   } catch {
     return undefined;
   }
 }
 
-function writeCache(data: NearbyResponse): void {
+function writeCache(data: NearbyResponse, lat: number | null, lng: number | null): void {
   try {
-    localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    const entry: CachedNearby = { data, cachedAt: Date.now(), lat, lng };
+    localStorage.setItem(CACHE_KEY, JSON.stringify(entry));
   } catch {}
 }
 
@@ -54,7 +99,8 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   // If there's no cached data at all, fire immediately with IP fallback so the user
   // sees results right away instead of waiting for GPS on first visit.
   // If cached data exists, wait for GPS so the refetch uses accurate coords.
-  const [initiallyHadCache] = useState(() => readCache() !== undefined);
+  // TTL-only check at init time (no coords available yet).
+  const [initiallyHadCache] = useState(() => readCache(null, null) !== undefined);
 
   const hasCoords = position != null;
   const canRun = !initiallyHadCache || (initialCheckDone && (hasCoords || !geoLoading));
@@ -76,7 +122,7 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
       if (!response.ok) {
         // On API error (e.g. 400 location unavailable): return cached data if available
         // so the user keeps seeing their last known results instead of an error state.
-        const cached = readCache();
+        const cached = readCache(position?.lat ?? null, position?.lng ?? null);
         if (cached) return cached;
 
         const body = await response.json().catch(() => ({}));
@@ -92,16 +138,18 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
       // Only persist and return meaningful results. Empty parks array or unknown types
       // fall back to the last cached result so stale-but-good data isn't replaced.
       if (isMeaningful(data)) {
-        writeCache(data);
+        writeCache(data, position?.lat ?? null, position?.lng ?? null);
         return data;
       }
 
-      return readCache() ?? data;
+      return readCache(position?.lat ?? null, position?.lng ?? null) ?? data;
     },
     enabled: canRun,
-    // Show last successful response immediately while fresh data loads in the background.
-    placeholderData: readCache,
-    staleTime: 5 * 60 * 1000,
+    // Show last cached response immediately while fresh data loads in the background.
+    // The closure captures the current position so stale data from a different
+    // location (> 10 km away or > 5 min old) is silently dropped.
+    placeholderData: () => readCache(position?.lat ?? null, position?.lng ?? null),
+    staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
   });
 }

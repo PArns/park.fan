@@ -38,16 +38,7 @@ const LocationBanner = nextDynamic(
 const FavoritesSection = nextDynamic(
   () =>
     import('@/components/parks/favorites-section').then((m) => ({ default: m.FavoritesSection })),
-  {
-    loading: () => (
-      <section className="bg-muted/30 px-4 py-8">
-        <div className="container mx-auto">
-          <div className="bg-muted h-48 animate-pulse rounded-xl" />
-        </div>
-      </section>
-    ),
-    ssr: true,
-  }
+  { loading: () => null, ssr: true }
 );
 
 const NearbyParksCard = nextDynamic(

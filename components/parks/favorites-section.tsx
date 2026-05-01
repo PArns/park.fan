@@ -15,6 +15,7 @@ import { useFavorites } from '@/lib/hooks/use-favorites';
 import { useQueryClient } from '@tanstack/react-query';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { getFavoritesFromCookies } from '@/lib/utils/favorites';
 import {
   buildShowUrl,
   buildRestaurantUrl,
@@ -36,6 +37,20 @@ export function FavoritesSection() {
   const { data: favoritesData, isLoading: loading } = useFavorites();
 
   const queryClient = useQueryClient();
+
+  // Read cookie counts once after mount — avoids showing a skeleton for users with no favorites.
+  // Returns -1 on the server (cookies not readable); after mount the real count is used.
+  const cookieCounts = useMemo(() => {
+    if (!mounted) return null;
+    const f = getFavoritesFromCookies();
+    return {
+      parks: f.parks.length,
+      attractions: f.attractions.length,
+      shows: f.shows.length,
+      restaurants: f.restaurants.length,
+      total: f.parks.length + f.attractions.length + f.shows.length + f.restaurants.length,
+    };
+  }, [mounted]);
 
   // Sort by distance (nearest first) or alphabetically if no distance available
   const sortByDistanceOrName = useCallback(
@@ -78,8 +93,17 @@ export function FavoritesSection() {
     };
   }, [queryClient]);
 
-  // Same structure on server and initial client to avoid hydration mismatch (React Query state differs)
-  if (!mounted || loading) {
+  // Server / first hydration: cookies aren't readable → render nothing and let the client take over.
+  // The nextDynamic loading prop covers the visual placeholder during this phase.
+  if (!mounted) return null;
+
+  // Cookies say no favorites → skip the skeleton and go straight to the empty state.
+  if (cookieCounts !== null && cookieCounts.total === 0 && !favoritesData) return null;
+
+  // Favorites exist in cookies (or count unknown) and API is still loading → show skeleton.
+  if (loading) {
+    const showParkSkeletons = !cookieCounts || cookieCounts.parks > 0;
+    const showAttractionSkeletons = !cookieCounts || cookieCounts.attractions > 0;
     return (
       <section className="bg-muted/30 px-4 py-8">
         <div className="container mx-auto">
@@ -88,22 +112,28 @@ export function FavoritesSection() {
             {t('title')}
           </h2>
           <div className="space-y-6">
-            <div>
-              <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <ParkCardNearbySkeleton />
-                <ParkCardNearbySkeleton />
-                <ParkCardNearbySkeleton />
+            {showParkSkeletons && (
+              <div>
+                <div className="bg-muted mb-4 h-6 w-24 rounded" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {Array.from({ length: Math.min(cookieCounts?.parks ?? 3, 3) }).map((_, i) => (
+                    <ParkCardNearbySkeleton key={i} />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="bg-muted mb-4 h-6 w-24 rounded" />
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                <AttractionCardSkeleton />
-                <AttractionCardSkeleton />
-                <AttractionCardSkeleton />
+            )}
+            {showAttractionSkeletons && (
+              <div>
+                <div className="bg-muted mb-4 h-6 w-24 rounded" />
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {Array.from({ length: Math.min(cookieCounts?.attractions ?? 3, 3) }).map(
+                    (_, i) => (
+                      <AttractionCardSkeleton key={i} />
+                    )
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
