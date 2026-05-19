@@ -548,7 +548,8 @@
         "boardingGroupsAvailable": "Gruppi di imbarco disponibili",
         "boardingGroupsDistributed": "Gruppi distribuiti",
         "boardingGroupsPaused": "Gruppi di imbarco in pausa",
-        "return": "Ritorno: {start} - {end}"
+        "return": "Ritorno: {start} - {end}",
+        "returnNoEnd": "Ritorno: {start}"
       }
     },
     "h1Suffix": "Tempo di attesa in diretta",

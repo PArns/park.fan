@@ -548,7 +548,8 @@
         "boardingGroupsAvailable": "Boarding Groups Available",
         "boardingGroupsDistributed": "Groups Distributed",
         "boardingGroupsPaused": "Boarding Groups Paused",
-        "return": "Return: {start} - {end}"
+        "return": "Return: {start} - {end}",
+        "returnNoEnd": "Return: {start}"
       }
     },
     "h1Suffix": "Live Wait Time",

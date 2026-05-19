@@ -548,7 +548,8 @@
         "boardingGroupsAvailable": "Groups Beschikbaar",
         "boardingGroupsDistributed": "Groups Uitgedeeld",
         "boardingGroupsPaused": "Boarding Groups Gepauzeerd",
-        "return": "Terug: {start} - {end}"
+        "return": "Terug: {start} - {end}",
+        "returnNoEnd": "Terug: {start}"
       }
     },
     "h1Suffix": "Live wachttijd",

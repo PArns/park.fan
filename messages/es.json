@@ -548,7 +548,8 @@
         "boardingGroupsAvailable": "Grupos Disponibles",
         "boardingGroupsDistributed": "Grupos Distribuidos",
         "boardingGroupsPaused": "Grupos Pausados",
-        "return": "Regreso: {start} - {end}"
+        "return": "Regreso: {start} - {end}",
+        "returnNoEnd": "Regreso: {start}"
       }
     },
     "h1Suffix": "Tiempo de espera en vivo",

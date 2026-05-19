@@ -548,7 +548,8 @@
         "boardingGroupsAvailable": "Groupes Disponibles",
         "boardingGroupsDistributed": "Groupes Distribués",
         "boardingGroupsPaused": "Groupes Suspendus",
-        "return": "Retour: {start} - {end}"
+        "return": "Retour: {start} - {end}",
+        "returnNoEnd": "Retour: {start}"
       }
     },
     "h1Suffix": "Temps d'attente en direct",

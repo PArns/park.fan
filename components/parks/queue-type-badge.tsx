@@ -84,8 +84,10 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
         const end =
           'returnEnd' in queue && queue.returnEnd
             ? new Date(queue.returnEnd).toLocaleTimeString(locale, timeFormat)
-            : '';
-        label = t('queue.details.return', { start, end });
+            : null;
+        label = end
+          ? t('queue.details.return', { start, end })
+          : t('queue.details.returnNoEnd', { start });
       } else {
         label =
           'state' in queue && queue.state === 'FULL'
