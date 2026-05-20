@@ -4,67 +4,13 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { Clock, MapPin, AlertTriangle, Wrench, XCircle, BarChart3 } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Card, CardContent } from '@/components/ui/card';
-import { LocalTime } from '@/components/ui/local-time';
+import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
-import type {
-  AttractionStatus,
-  QueueDataItem,
-  QueueType,
-  QueueStatus,
-  AccuracyBadge,
-  StandbyQueue,
-} from '@/lib/api/types';
-
-// Typed lookup maps — avoid `as any` when translating dynamic enum values
-const QUEUE_TYPE_KEYS = {
-  STANDBY: 'queue.STANDBY',
-  SINGLE_RIDER: 'queue.SINGLE_RIDER',
-  RETURN_TIME: 'queue.RETURN_TIME',
-  PAID_RETURN_TIME: 'queue.PAID_RETURN_TIME',
-  BOARDING_GROUP: 'queue.BOARDING_GROUP',
-  PAID_STANDBY: 'queue.PAID_STANDBY',
-} as const satisfies Record<QueueType, string>;
-
-/** Maps API queue types to their glossary term IDs for tooltip linking. */
-const QUEUE_TYPE_TERM: Partial<Record<QueueType, string>> = {
-  SINGLE_RIDER: 'single-rider',
-  RETURN_TIME: 'virtual-queue',
-  PAID_RETURN_TIME: 'lightning-lane',
-  PAID_STANDBY: 'express-pass',
-  BOARDING_GROUP: 'boarding-group',
-};
-
-const QUEUE_STATUS_KEYS = {
-  OPERATING: 'queue.status.OPERATING',
-  DOWN: 'queue.status.DOWN',
-  CLOSED: 'queue.status.CLOSED',
-  REFURBISHMENT: 'queue.status.REFURBISHMENT',
-} as const satisfies Record<QueueStatus, string>;
-
-const ACCURACY_BADGE_KEYS = {
-  excellent: 'accuracy.excellent',
-  good: 'accuracy.good',
-  fair: 'accuracy.fair',
-  poor: 'accuracy.poor',
-  insufficient_data: 'accuracy.insufficient_data',
-} as const satisfies Record<AccuracyBadge, string>;
-
-const ACCURACY_BORDER: Record<AccuracyBadge, string> = {
-  excellent: 'border-status-operating/40',
-  good: 'border-status-operating/40',
-  fair: 'border-status-down/40',
-  poor: 'border-destructive/40',
-  insufficient_data: 'border-border',
-};
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
@@ -74,13 +20,11 @@ import {
 } from '@/components/seo/structured-data';
 import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-structured-data';
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
-import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
-import { StatusInfoCard } from '@/components/common/status-info-card';
 import { AttractionCalendar } from '@/components/parks/attraction-calendar';
 import { DailyWaitTimeChartServer } from '@/components/parks/daily-wait-time-chart-server';
-import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
+import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -192,14 +136,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-export const revalidate = 300; // 1 hour — live data via React Query on client
-
-// Status config will be created inside the component to use translations
-
-function getMainQueue(queues?: QueueDataItem[]): QueueDataItem | null {
-  if (!queues || queues.length === 0) return null;
-  return queues.find((q) => q.queueType === 'STANDBY') || queues[0];
-}
+export const revalidate = 300;
 
 export default async function AttractionPage({ params }: AttractionPageProps) {
   const {
@@ -217,16 +154,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const tGeo = await getTranslations('geo');
   const tSeo = await getTranslations('seo.attraction');
 
-  // Fetch park and attraction data
+  // Fetch park and attraction data in parallel
   const [park, attractionData] = await Promise.all([
     getParkByGeoPath(continent, country, city, parkSlug).catch(() => null),
     getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug).catch(() => null),
   ]);
 
-  // Find attraction in park data and merge with full attraction data (including history)
+  // Find attraction in park data and merge static fields from the detail endpoint
   const parkAttraction = park?.attractions?.find((a) => a.slug === attractionSlug);
 
-  // Merge history, schedule and forecast data from attractionData into parkAttraction
   const attraction = parkAttraction
     ? {
         ...parkAttraction,
@@ -243,46 +179,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     notFound();
   }
 
-  // Get queue data
-  const mainQueue = getMainQueue(attraction.queues);
-  // Force closed status if park is not operating
-  const isParkClosed = park.status !== 'OPERATING';
-  const status = isParkClosed ? 'CLOSED' : mainQueue?.status || attraction.status || 'CLOSED';
-
-  // Calculate min/max from raw history (same source as sparkline)
-  const history = attraction.statistics?.history;
-  const calculatedMinWaitToday = history?.length
-    ? Math.min(...history.map((h) => h.waitTime))
-    : null;
-  const calculatedMaxWaitToday = history?.length
-    ? Math.max(...history.map((h) => h.waitTime))
-    : null;
-
-  // Create status config with translations
-  const statusConfig: Record<
-    AttractionStatus,
-    { icon: typeof Clock; color: string; label: string }
-  > = {
-    OPERATING: { icon: Clock, color: 'text-status-operating', label: t('status.operating') },
-    DOWN: { icon: AlertTriangle, color: 'text-status-down', label: t('status.down') },
-    CLOSED: { icon: XCircle, color: 'text-status-closed', label: t('status.closed') },
-    REFURBISHMENT: {
-      icon: Wrench,
-      color: 'text-status-refurbishment',
-      label: t('status.refurbishment'),
-    },
-  };
-  const config = statusConfig[status];
-  const StatusIcon = config.icon;
-
-  // Format names - use actual names from park data (proper umlauts)
+  // Format names
   const continentName = translateContinent(tGeo, continent, locale);
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
 
-  // Construct breadcrumbs using utility
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: attractionCurrentPage } = generateAttractionBreadcrumbs({
     continent,
@@ -300,7 +203,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
 
-  // Get background image with fallback: attraction → park → null
   const backgroundImage =
     getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
 
@@ -321,7 +223,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
       <ParkBackground imageSrc={backgroundImage} alt={attractionName} />
       <PageContainer>
-        {/* Breadcrumb */}
         <BreadcrumbNav
           breadcrumbs={breadcrumbs}
           currentPage={attractionCurrentPage}
@@ -332,7 +233,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Header */}
           <div className="mb-8">
             <GlassCard variant="medium" className="relative">
-              {/* Favorite Star */}
               {attraction.id && (
                 <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
                   <FavoriteStar type="attraction" id={attraction.id} size="lg" />
@@ -370,78 +270,20 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             </GlassCard>
           </div>
 
-          {/* Status & Wait Time */}
-          <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {/* Current Wait Time */}
-            <WaitTimeInfoCard
-              waitTime={
-                status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
-                  ? ((mainQueue as StandbyQueue).waitTime ?? null)
-                  : null
-              }
-              trend={attraction.trend ?? undefined}
-              minWaitToday={calculatedMinWaitToday}
-              maxWaitToday={calculatedMaxWaitToday}
-              sparklineHistory={attraction.statistics?.history}
-              timezone={park.timezone}
-              statusIcon={StatusIcon}
-              statusLabel={config.label}
-              labels={{
-                title: t('waitTime'),
-                minutes: tCommon('minutes'),
-                todayMin: t('todayChart.todayMin'),
-                todayMax: t('todayChart.todayMax'),
-                min: t('todayChart.min'),
-                trendLabel: attraction.trend
-                  ? tCommon(attraction.trend.toLowerCase() as string)
-                  : undefined,
-              }}
-            />
-
-            {/* Status */}
-            <StatusInfoCard title={tCommon('status')} icon={StatusIcon} className="gap-3">
-              <ParkStatusBadge status={status} className="text-base" />
-              {mainQueue?.lastUpdated && (
-                <p className="text-muted-foreground mt-2 text-xs">
-                  {tCommon('updated')}{' '}
-                  <LocalTime time={mainQueue.lastUpdated} timeZone={park.timezone} />
-                </p>
-              )}
-            </StatusInfoCard>
-
-            {/* Prediction Accuracy */}
-            {attraction.predictionAccuracy && (
-              <StatusInfoCard
-                title={t('predictionAccuracy')}
-                icon={BarChart3}
-                className={cn(
-                  'gap-3 border-2',
-                  ACCURACY_BORDER[attraction.predictionAccuracy.badge]
-                )}
-              >
-                <Badge
-                  className={cn('text-base', {
-                    'bg-destructive/15 text-destructive':
-                      attraction.predictionAccuracy.badge === 'poor',
-                    'bg-status-down/15 text-status-down':
-                      attraction.predictionAccuracy.badge === 'fair',
-                    'bg-status-operating/15 text-status-operating':
-                      attraction.predictionAccuracy.badge === 'good' ||
-                      attraction.predictionAccuracy.badge === 'excellent',
-                  })}
-                >
-                  {t(ACCURACY_BADGE_KEYS[attraction.predictionAccuracy.badge])}{' '}
-                </Badge>
-                <p className="text-muted-foreground mt-2 text-sm">
-                  {attraction.predictionAccuracy.message}
-                </p>
-              </StatusInfoCard>
-            )}
-          </div>
+          {/* Live: status, wait time, queues — auto-refreshes every 5 min */}
+          <LiveAttractionData
+            initialPark={park}
+            attractionSlug={attractionSlug}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            predictionAccuracy={attractionData?.predictionAccuracy}
+          />
 
           <Separator className="my-8" />
 
-          {/* Daily Wait Time Chart */}
+          {/* Static: daily chart and historical calendar */}
           {(attraction.hourlyForecast?.length || attraction.history?.length) && (
             <section className="mb-8">
               <DailyWaitTimeChartServer
@@ -454,57 +296,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             </section>
           )}
 
-          {/* Other Queue Types */}
-          {attraction.queues && attraction.queues.length > 1 && (
-            <section className="mb-8">
-              <h2 className="mb-4 text-xl font-semibold">{t('otherQueues')}</h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {attraction.queues
-                  .filter((q) => q.queueType !== 'STANDBY')
-                  .map((queue, i) => (
-                    <Card key={i}>
-                      <CardContent className="p-4">
-                        <div className="mb-2 flex items-center justify-between">
-                          <span className="font-medium">
-                            {QUEUE_TYPE_TERM[queue.queueType] ? (
-                              <GlossaryTermLink termId={QUEUE_TYPE_TERM[queue.queueType]!}>
-                                {t(QUEUE_TYPE_KEYS[queue.queueType])}
-                              </GlossaryTermLink>
-                            ) : (
-                              t(QUEUE_TYPE_KEYS[queue.queueType])
-                            )}{' '}
-                          </span>
-                          <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
-                        </div>
-                        {'waitTime' in queue && queue.waitTime !== null && (
-                          <p className="text-2xl font-bold">
-                            {queue.waitTime}{' '}
-                            <span className="text-muted-foreground text-sm">min</span>
-                          </p>
-                        )}
-                        {'returnStart' in queue &&
-                          queue.returnStart &&
-                          'returnEnd' in queue &&
-                          queue.returnEnd && (
-                            <p className="text-muted-foreground text-sm">
-                              {t('returnTime')}:{' '}
-                              <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} />{' '}
-                              - <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
-                            </p>
-                          )}
-                      </CardContent>
-                    </Card>
-                  ))}
-              </div>
-            </section>
-          )}
-
-          {/* History Calendar */}
           <section className="mb-8">
             <AttractionCalendar attraction={attraction} park={park} />
           </section>
 
-          {/* FAQ Section */}
           <Separator className="my-8" />
           <AttractionFAQSection attraction={attraction} park={park} />
         </article>

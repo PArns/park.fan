@@ -151,5 +151,7 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     placeholderData: () => readCache(position?.lat ?? null, position?.lng ?? null),
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: true,
+    refetchInterval: 5 * 60 * 1000,
   });
 }
