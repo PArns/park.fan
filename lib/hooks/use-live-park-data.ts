@@ -11,11 +11,10 @@ interface UseLiveParkDataParams {
 
 /**
  * Hook to fetch live park data with React Query
- * - Uses initial SSR data for instant render
- * - Refreshes on window focus (when user returns to tab)
- * - Refreshes on network reconnect
- * - Smart staleTime: 5min for open parks, 1h for closed parks
- * - No automatic polling (cost optimization)
+ * - Page HTML served from Full Route Cache (ISR); this hook provides live updates on top
+ * - Refetches immediately on mount (initialData has no updatedAt → always stale)
+ * - Auto-polls every 5 min regardless of park status (catches opening/closing)
+ * - staleTime 5 min prevents redundant focus-triggered refetches within the poll window
  */
 export function useLiveParkData({
   continent,
@@ -24,12 +23,6 @@ export function useLiveParkData({
   parkSlug,
   initialData,
 }: UseLiveParkDataParams) {
-  // Smart staleTime based on park status
-  // Open parks: 5 min (live wait times change frequently)
-  // Closed parks: 1 hour (no live updates needed)
-  const isOpen = initialData?.status === 'OPERATING';
-  const staleTime = isOpen ? 5 * 60_000 : 60 * 60_000;
-
   return useQuery<ParkWithAttractions>({
     queryKey: ['park-live', continent, country, city, parkSlug],
     queryFn: async () => {
@@ -44,10 +37,11 @@ export function useLiveParkData({
       return response.json();
     },
     initialData,
-    staleTime, // Dynamic: 5min (open) or 1h (closed)
-    gcTime: 10 * 60_000, // 10 min garbage collection
-    refetchOnWindowFocus: true, // Refresh when user returns to tab
-    refetchOnReconnect: true, // Refresh on network reconnect
+    staleTime: 5 * 60_000,
+    gcTime: 10 * 60_000,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchInterval: 5 * 60_000,
     retry: 2,
   });
 }
