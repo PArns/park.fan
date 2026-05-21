@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { Cloud, ExternalLink } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
+import { WeatherBackground } from './weather-background';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatTemp, formatWindSpeed, formatPrecip } from '@/lib/utils/temperature';
@@ -67,7 +67,20 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   const tempMin = formatTemp(tempMinC, unit);
 
   return (
-    <GlassCard variant="medium" className={cn('min-w-0 overflow-x-clip', className)}>
+    <div
+      className={cn(
+        'relative isolate min-w-0 overflow-hidden overflow-x-clip rounded-xl border shadow-sm',
+        className
+      )}
+    >
+      <WeatherBackground
+        code={weatherCode}
+        isDay={isDay}
+        glass
+        glassBlur={2}
+        glassOpacity={0.4}
+      />
+      <div className="relative z-10">
       <CardHeader className="pb-2">
         <div className="flex items-center justify-between gap-2">
           <CardTitle className="flex items-center gap-2 text-base">
@@ -149,6 +162,7 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
           </span>
         </p>
       </CardContent>
-    </GlassCard>
+      </div>
+    </div>
   );
 }
