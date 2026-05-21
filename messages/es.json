@@ -420,7 +420,8 @@
       "thunderstorm": "Tormenta",
       "cloudy": "Nublado",
       "mist": "Neblina",
-      "feelsLike": "Sensación"
+      "feelsLike": "Sensación",
+      "dataBy": "Datos meteorológicos de"
     },
     "h1Suffix": "Tiempos de espera en vivo",
     "stats": {

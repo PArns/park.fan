@@ -420,7 +420,8 @@
       "thunderstorm": "Orage",
       "cloudy": "Nuageux",
       "mist": "Brume",
-      "feelsLike": "Ressenti"
+      "feelsLike": "Ressenti",
+      "dataBy": "Données météo par"
     },
     "h1Suffix": "Temps d'attente en direct",
     "stats": {

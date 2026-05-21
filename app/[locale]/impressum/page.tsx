@@ -227,6 +227,25 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                     />
                   </a>
                 </li>
+                <li>
+                  <a
+                    href="https://open-meteo.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="group-hover:text-primary font-medium">Open-Meteo.com</span>
+                      <p className="text-muted-foreground text-sm">
+                        Wetterdaten und Vorhersagen (CC-BY 4.0)
+                      </p>
+                    </div>
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
               </ul>
 
               <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">
@@ -405,6 +424,25 @@ export default async function ImpressumPage({ params }: ImpressumPageProps) {
                       <span className="group-hover:text-primary font-medium">Wartezeiten.app</span>
                       <p className="text-muted-foreground text-sm">
                         Wait times for German-speaking parks
+                      </p>
+                    </div>
+                    <ExternalLink
+                      className="text-muted-foreground group-hover:text-primary h-4 w-4 shrink-0"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://open-meteo.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-between py-3"
+                  >
+                    <div>
+                      <span className="group-hover:text-primary font-medium">Open-Meteo.com</span>
+                      <p className="text-muted-foreground text-sm">
+                        Weather data and forecasts (CC-BY 4.0)
                       </p>
                     </div>
                     <ExternalLink

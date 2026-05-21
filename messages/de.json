@@ -273,7 +273,8 @@
       "thunderstorm": "Gewitter",
       "cloudy": "Bewölkt",
       "mist": "Nebel",
-      "feelsLike": "Gefühlt"
+      "feelsLike": "Gefühlt",
+      "dataBy": "Wetterdaten von"
     },
     "crowdLevel": "Auslastung",
     "crowdLevels": {
