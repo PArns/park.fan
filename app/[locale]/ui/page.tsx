@@ -66,10 +66,7 @@ import { AttractionHistoryDay } from '@/components/parks/attraction-history-day'
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 // Weather + Calendar
-import {
-  WeatherCardShowcase,
-  ParkTimeInfoShowcase,
-} from '@/components/parks/weather-card-demo';
+import { WeatherCardShowcase, ParkTimeInfoShowcase } from '@/components/parks/weather-card-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 

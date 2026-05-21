@@ -81,12 +81,7 @@ export async function GET(
   }
 
   // Handle weather nowcast: [continent, country, city, park, 'weather', 'nowcast'] (6 segments)
-  if (
-    path &&
-    path.length === 6 &&
-    path[4] === 'weather' &&
-    path[5] === 'nowcast'
-  ) {
+  if (path && path.length === 6 && path[4] === 'weather' && path[5] === 'nowcast') {
     const [continent, country, city, park] = path;
 
     try {

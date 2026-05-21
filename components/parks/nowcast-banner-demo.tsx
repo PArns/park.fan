@@ -17,8 +17,7 @@ const DEMO_ATTRIBUTION = {
   attribution: 'Weather data by Open-Meteo.com',
 };
 
-const inMinIso = (base: number, minutes: number) =>
-  new Date(base + minutes * 60_000).toISOString();
+const inMinIso = (base: number, minutes: number) => new Date(base + minutes * 60_000).toISOString();
 
 function buildMocks(now: number): Record<string, WeatherNowcast> {
   const base = {
