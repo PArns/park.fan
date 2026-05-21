@@ -422,7 +422,8 @@
       "mist": "Mist",
       "feelsLike": "Feels like",
       "dataBy": "Weather data by",
-      "liveLabel": "Live value"
+      "liveLabel": "Live",
+      "liveValueHint": "Live value from the short-term weather nowcast — refreshed every ~15 min."
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

@@ -422,7 +422,8 @@
       "mist": "Neblina",
       "feelsLike": "Sensación",
       "dataBy": "Datos meteorológicos de",
-      "liveLabel": "Valor en directo"
+      "liveLabel": "Live",
+      "liveValueHint": "Valor en directo del pronóstico meteorológico inmediato — se actualiza cada ~15 min."
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",

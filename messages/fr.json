@@ -422,7 +422,8 @@
       "mist": "Brume",
       "feelsLike": "Ressenti",
       "dataBy": "Données météo par",
-      "liveLabel": "Valeur en direct"
+      "liveLabel": "Live",
+      "liveValueHint": "Valeur en direct issue des prévisions à court terme — actualisée toutes les ~15 min."
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",

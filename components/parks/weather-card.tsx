@@ -1,10 +1,11 @@
 import { useTranslations } from 'next-intl';
-import { Wind, Umbrella, Cloud, ExternalLink, Radio } from 'lucide-react';
+import { Wind, Umbrella, Cloud, ExternalLink } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
+import { LiveValueDot } from './live-value-dot';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
@@ -52,10 +53,30 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   return (
     <GlassCard variant="medium" className={cn('min-w-0 overflow-x-clip', className)}>
       <CardHeader className="pb-2">
-        <CardTitle className="flex items-center gap-2 text-base">
-          <WeatherIcon className={`h-4 w-4 ${color}`} />
-          {tParks('weatherLabel')}
-        </CardTitle>
+        <div className="flex items-center justify-between gap-2">
+          <CardTitle className="flex items-center gap-2 text-base">
+            <WeatherIcon className={`h-4 w-4 ${color}`} />
+            {tParks('weatherLabel')}
+            {nowcast && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                <span className="relative inline-flex h-1.5 w-1.5">
+                  <span
+                    className="bg-emerald-500/60 absolute inline-flex h-full w-full animate-ping rounded-full"
+                    aria-hidden="true"
+                  />
+                  <span className="bg-emerald-500 relative inline-flex h-1.5 w-1.5 rounded-full" />
+                </span>
+                {t('liveLabel')}
+              </span>
+            )}
+          </CardTitle>
+          {nowcast?.nextUpdateAt && (
+            <NowcastUpdateCountdown
+              nextUpdateAt={nowcast.nextUpdateAt}
+              className="text-muted-foreground/70 m-0"
+            />
+          )}
+        </div>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
@@ -83,32 +104,18 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
               <span>
                 {showLivePrecip ? `${livePrecip!.toFixed(1)}mm` : `${precipSum}mm`}
               </span>
-              {showLivePrecip && (
-                <Radio
-                  className="text-emerald-500 h-2.5 w-2.5 shrink-0"
-                  aria-label={t('liveLabel')}
-                />
-              )}
+              {showLivePrecip && <LiveValueDot />}
             </div>
             <div className="flex items-center gap-1.5">
               <Wind className="h-3.5 w-3.5" />
               <span>{windSpeed} km/h</span>
-              {liveWind != null && (
-                <Radio
-                  className="text-emerald-500 h-2.5 w-2.5 shrink-0"
-                  aria-label={t('liveLabel')}
-                />
-              )}
+              {liveWind != null && <LiveValueDot />}
             </div>
           </div>
         </div>
 
         {(forecast || (weather.forecast && weather.forecast.length > 0)) && (
           <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
-        )}
-
-        {nowcast?.nextUpdateAt && (
-          <NowcastUpdateCountdown nextUpdateAt={nowcast.nextUpdateAt} className="text-muted-foreground" />
         )}
 
         <p className="text-muted-foreground/70 -mx-6 flex items-center gap-1 text-[10px]">

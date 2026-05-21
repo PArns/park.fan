@@ -275,7 +275,8 @@
       "mist": "Nebel",
       "feelsLike": "Gefühlt",
       "dataBy": "Wetterdaten von",
-      "liveLabel": "Live-Wert"
+      "liveLabel": "Live",
+      "liveValueHint": "Live-Wert aus dem Kurzfristvorhersage-Nowcast — wird alle ~15 Min aktualisiert."
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
