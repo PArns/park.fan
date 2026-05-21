@@ -423,6 +423,35 @@
       "feelsLike": "Sensación",
       "dataBy": "Datos meteorológicos de"
     },
+    "weatherNowcast": {
+      "nextUpdate": "Próxima actualización: {time}",
+      "intensity": {
+        "light": "ligera",
+        "moderate": "moderada",
+        "heavy": "fuerte"
+      },
+      "rain": {
+        "heading": "Lluvia esperada",
+        "bodyNow": "Está lloviendo en el parque ahora mismo.",
+        "bodyStartsInMin": "Lluvia en unos {minutes} min ({intensity}).",
+        "bodyEndsAt": "La lluvia debería parar hacia las {time}."
+      },
+      "thunderstorm": {
+        "heading": "Aviso de tormenta",
+        "bodyNow": "Tormenta en curso — busca un lugar resguardado.",
+        "bodyInMin": "Tormenta en unos {minutes} min — busca un lugar resguardado."
+      },
+      "hail": {
+        "heading": "Aviso de granizo",
+        "bodyNow": "Granizo en curso — busca un lugar resguardado.",
+        "bodyInMin": "Granizo en unos {minutes} min — busca un lugar resguardado."
+      },
+      "storm": {
+        "heading": "Aviso de tormenta de viento",
+        "bodyNow": "Rachas de viento de hasta {gusts} km/h en este momento.",
+        "bodyInMin": "Rachas de viento de hasta {gusts} km/h previstas en unos {minutes} min."
+      }
+    },
     "h1Suffix": "Tiempos de espera en vivo",
     "stats": {
       "title": "Estadísticas históricas de tiempos de espera",

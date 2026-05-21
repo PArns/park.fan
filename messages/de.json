@@ -276,6 +276,35 @@
       "feelsLike": "Gefühlt",
       "dataBy": "Wetterdaten von"
     },
+    "weatherNowcast": {
+      "nextUpdate": "Nächstes Update: {time}",
+      "intensity": {
+        "light": "leicht",
+        "moderate": "mäßig",
+        "heavy": "stark"
+      },
+      "rain": {
+        "heading": "Regen im Park",
+        "bodyNow": "Es regnet gerade im Park.",
+        "bodyStartsInMin": "Regen in ca. {minutes} Min ({intensity}).",
+        "bodyEndsAt": "Regen vorbei gegen {time} Uhr."
+      },
+      "thunderstorm": {
+        "heading": "Gewitter-Warnung",
+        "bodyNow": "Gewitter im Park — bitte geschützten Bereich aufsuchen.",
+        "bodyInMin": "Gewitter in ca. {minutes} Min — geschützten Bereich aufsuchen."
+      },
+      "hail": {
+        "heading": "Hagel-Warnung",
+        "bodyNow": "Hagel im Park — geschützten Bereich aufsuchen.",
+        "bodyInMin": "Hagel in ca. {minutes} Min — geschützten Bereich aufsuchen."
+      },
+      "storm": {
+        "heading": "Sturm-Warnung",
+        "bodyNow": "Sturmböen bis {gusts} km/h aktuell.",
+        "bodyInMin": "Sturmböen bis {gusts} km/h in ca. {minutes} Min erwartet."
+      }
+    },
     "crowdLevel": "Auslastung",
     "crowdLevels": {
       "very_low": "Sehr niedrig",

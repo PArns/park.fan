@@ -423,6 +423,35 @@
       "feelsLike": "Feels like",
       "dataBy": "Weather data by"
     },
+    "weatherNowcast": {
+      "nextUpdate": "Next update: {time}",
+      "intensity": {
+        "light": "light",
+        "moderate": "moderate",
+        "heavy": "heavy"
+      },
+      "rain": {
+        "heading": "Rain expected",
+        "bodyNow": "It's raining at the park right now.",
+        "bodyStartsInMin": "Rain expected in about {minutes} min ({intensity}).",
+        "bodyEndsAt": "Rain should stop around {time}."
+      },
+      "thunderstorm": {
+        "heading": "Thunderstorm warning",
+        "bodyNow": "Thunderstorm at the park right now — head to a sheltered area.",
+        "bodyInMin": "Thunderstorm expected in about {minutes} min."
+      },
+      "hail": {
+        "heading": "Hail warning",
+        "bodyNow": "Hail at the park right now — find a sheltered area.",
+        "bodyInMin": "Hail expected in about {minutes} min — find a sheltered area."
+      },
+      "storm": {
+        "heading": "Storm warning",
+        "bodyNow": "Strong wind gusts up to {gusts} km/h right now.",
+        "bodyInMin": "Strong wind gusts up to {gusts} km/h expected in about {minutes} min."
+      }
+    },
     "h1Suffix": "Live Wait Times",
     "stats": {
       "title": "Historical Wait Time Statistics",

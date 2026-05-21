@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 
 export async function GET(
   request: NextRequest,
@@ -79,11 +80,39 @@ export async function GET(
     }
   }
 
+  // Handle weather nowcast: [continent, country, city, park, 'weather', 'nowcast'] (6 segments)
+  if (
+    path &&
+    path.length === 6 &&
+    path[4] === 'weather' &&
+    path[5] === 'nowcast'
+  ) {
+    const [continent, country, city, park] = path;
+
+    try {
+      const data = await getParkWeatherNowcast(continent, country, city, park);
+
+      if (!data) {
+        return NextResponse.json({ error: 'Nowcast not available' }, { status: 404 });
+      }
+
+      // Mirror upstream cache: 15 min max-age, with short SWR window for the CDN
+      return NextResponse.json(data, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=300',
+        },
+      });
+    } catch (error) {
+      console.error('[Nowcast API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch nowcast data' }, { status: 500 });
+    }
+  }
+
   // Invalid path format
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park} or /api/parks/{continent}/{country}/{city}/{park}/calendar',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, or /weather/nowcast',
     },
     { status: 400 }
   );

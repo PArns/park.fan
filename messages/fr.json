@@ -423,6 +423,35 @@
       "feelsLike": "Ressenti",
       "dataBy": "Données météo par"
     },
+    "weatherNowcast": {
+      "nextUpdate": "Prochaine mise à jour : {time}",
+      "intensity": {
+        "light": "léger",
+        "moderate": "modéré",
+        "heavy": "fort"
+      },
+      "rain": {
+        "heading": "Pluie attendue",
+        "bodyNow": "Il pleut actuellement dans le parc.",
+        "bodyStartsInMin": "Pluie dans environ {minutes} min ({intensity}).",
+        "bodyEndsAt": "La pluie devrait s'arrêter vers {time}."
+      },
+      "thunderstorm": {
+        "heading": "Alerte orage",
+        "bodyNow": "Orage en cours — rejoignez un endroit abrité.",
+        "bodyInMin": "Orage prévu dans environ {minutes} min."
+      },
+      "hail": {
+        "heading": "Alerte grêle",
+        "bodyNow": "Grêle en cours — rejoignez un endroit abrité.",
+        "bodyInMin": "Grêle prévue dans environ {minutes} min — rejoignez un endroit abrité."
+      },
+      "storm": {
+        "heading": "Alerte tempête",
+        "bodyNow": "Rafales jusqu'à {gusts} km/h en cours.",
+        "bodyInMin": "Rafales jusqu'à {gusts} km/h prévues dans environ {minutes} min."
+      }
+    },
     "h1Suffix": "Temps d'attente en direct",
     "stats": {
       "title": "Statistiques historiques des temps d'attente",

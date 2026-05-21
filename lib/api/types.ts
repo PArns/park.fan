@@ -127,6 +127,52 @@ export interface WeatherData {
 }
 
 // ============================================================================
+// Weather Nowcast (15-min precipitation/storm short-term forecast)
+// ============================================================================
+
+export type RainIntensity = 'light' | 'moderate' | 'heavy';
+
+export interface WeatherNowcastStep {
+  time: string;
+  precipitation: number | null;
+  precipitationProbability: number | null;
+  weatherCode: number | null;
+  windSpeed: number | null;
+  windGusts: number | null;
+}
+
+export interface WeatherNowcastAttribution {
+  url: string;
+  license: string;
+  attribution: string;
+}
+
+export interface WeatherNowcast {
+  park: { id: string; name: string; slug: string; timezone: string };
+  observedAt: string;
+  nextUpdateAt: string;
+  currentlyRaining: boolean;
+  currentPrecipitationMm: number | null;
+  currentWeatherCode: number | null;
+  currentWeatherDescription: string | null;
+  currentWindSpeedKmh: number | null;
+  currentWindGustsKmh: number | null;
+  rainStartsAt: string | null;
+  rainStartsIntensityMm: number | null;
+  rainStartsIntensity: RainIntensity | null;
+  rainEndsAt: string | null;
+  thunderstormStartsAt: string | null;
+  thunderstormEndsAt: string | null;
+  hailStartsAt: string | null;
+  hailEndsAt: string | null;
+  stormStartsAt: string | null;
+  stormEndsAt: string | null;
+  peakWindGustsKmh: number | null;
+  steps: WeatherNowcastStep[];
+  attribution: WeatherNowcastAttribution;
+}
+
+// ============================================================================
 // Queue Data
 // ============================================================================
 
