@@ -1,17 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useLocale, useTranslations } from 'next-intl';
-import {
-  AlertTriangle,
-  CloudHail,
-  CloudLightning,
-  CloudRain,
-  ExternalLink,
-  Wind,
-} from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import type { WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherNowcastBannerProps {
@@ -27,15 +21,24 @@ interface WeatherNowcastBannerProps {
 
 type BannerKind = 'storm' | 'hail' | 'thunderstorm' | 'rain';
 
+type BannerState = 'starting' | 'active';
+
 interface BannerSpec {
   kind: BannerKind;
-  /** When the event starts. Null if it's already happening (currently raining). */
+  state: BannerState;
+  /** When the event starts. Used for "starting" state. */
   startsAt: string | null;
-  /** When the event ends (only set when it's already happening). */
+  /** When the event ends. Used for "active" state to show "ends in N min". */
   endsAt: string | null;
   /** Optional rain intensity (only for rain banner). */
   intensity?: 'light' | 'moderate' | 'heavy' | null;
 }
+
+const isInPast = (iso: string | null, now: number): boolean => {
+  if (!iso) return false;
+  const ts = Date.parse(iso);
+  return !Number.isNaN(ts) && ts <= now;
+};
 
 const minutesUntil = (iso: string | null, now: number): number | null => {
   if (!iso) return null;
@@ -53,14 +56,25 @@ const minutesUntil = (iso: string | null, now: number): number | null => {
  */
 function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
   if (data.stormStartsAt) {
-    return { kind: 'storm', startsAt: data.stormStartsAt, endsAt: data.stormEndsAt };
+    return {
+      kind: 'storm',
+      state: isInPast(data.stormStartsAt, now) ? 'active' : 'starting',
+      startsAt: data.stormStartsAt,
+      endsAt: data.stormEndsAt,
+    };
   }
   if (data.hailStartsAt) {
-    return { kind: 'hail', startsAt: data.hailStartsAt, endsAt: data.hailEndsAt };
+    return {
+      kind: 'hail',
+      state: isInPast(data.hailStartsAt, now) ? 'active' : 'starting',
+      startsAt: data.hailStartsAt,
+      endsAt: data.hailEndsAt,
+    };
   }
   if (data.thunderstormStartsAt) {
     return {
       kind: 'thunderstorm',
+      state: isInPast(data.thunderstormStartsAt, now) ? 'active' : 'starting',
       startsAt: data.thunderstormStartsAt,
       endsAt: data.thunderstormEndsAt,
     };
@@ -79,7 +93,8 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
   if (liveRaining) {
     return {
       kind: 'rain',
-      startsAt: null,
+      state: 'active',
+      startsAt: data.rainStartsAt,
       endsAt: data.rainEndsAt,
       intensity: data.rainStartsIntensity,
     };
@@ -90,6 +105,7 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
   if (minsToRain !== null && minsToRain <= 30) {
     return {
       kind: 'rain',
+      state: 'starting',
       startsAt: data.rainStartsAt,
       endsAt: null,
       intensity: data.rainStartsIntensity,
@@ -133,21 +149,6 @@ const BANNER_STYLES: Record<
   },
 };
 
-function formatTime(iso: string, locale: string, timezone: string): string {
-  try {
-    return new Intl.DateTimeFormat(locale, {
-      hour: '2-digit',
-      minute: '2-digit',
-      timeZone: timezone,
-    }).format(new Date(iso));
-  } catch {
-    return new Intl.DateTimeFormat(locale, {
-      hour: '2-digit',
-      minute: '2-digit',
-    }).format(new Date(iso));
-  }
-}
-
 export function WeatherNowcastBanner({
   continent,
   country,
@@ -158,7 +159,6 @@ export function WeatherNowcastBanner({
   enabled = true,
 }: WeatherNowcastBannerProps) {
   const t = useTranslations('parks.weatherNowcast');
-  const locale = useLocale();
 
   const { data } = useWeatherNowcast({
     continent,
@@ -169,8 +169,7 @@ export function WeatherNowcastBanner({
     enabled,
   });
 
-  // Live clock so countdowns recompute every second (drives the mm:ss
-  // "next update" countdown; the per-minute body text just re-renders harmlessly).
+  // Live clock so countdowns recompute every second.
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 1_000);
@@ -184,7 +183,6 @@ export function WeatherNowcastBanner({
 
   const styles = BANNER_STYLES[banner.kind];
   const Icon = styles.icon;
-  const timezone = data.park.timezone;
 
   // Build heading + body per banner kind
   let heading: string;
@@ -192,58 +190,65 @@ export function WeatherNowcastBanner({
 
   switch (banner.kind) {
     case 'storm': {
-      const mins = minutesUntil(banner.startsAt, now);
       heading = t('storm.heading');
       const gusts = data.peakWindGustsKmh;
-      body =
-        mins !== null && mins > 0
-          ? t('storm.bodyInMin', { minutes: mins, gusts: gusts ?? '?' })
-          : t('storm.bodyNow', { gusts: gusts ?? '?' });
+      if (banner.state === 'starting') {
+        const mins = minutesUntil(banner.startsAt, now) ?? 0;
+        body = t('storm.bodyInMin', { minutes: mins, gusts: gusts ?? '?' });
+      } else {
+        const endsIn = minutesUntil(banner.endsAt, now);
+        body =
+          endsIn !== null && endsIn > 0
+            ? t('storm.bodyEndsInMin', { minutes: endsIn, gusts: gusts ?? '?' })
+            : t('storm.bodyNow', { gusts: gusts ?? '?' });
+      }
       break;
     }
     case 'hail': {
-      const mins = minutesUntil(banner.startsAt, now);
       heading = t('hail.heading');
-      body = mins !== null && mins > 0 ? t('hail.bodyInMin', { minutes: mins }) : t('hail.bodyNow');
+      if (banner.state === 'starting') {
+        const mins = minutesUntil(banner.startsAt, now) ?? 0;
+        body = t('hail.bodyInMin', { minutes: mins });
+      } else {
+        const endsIn = minutesUntil(banner.endsAt, now);
+        body =
+          endsIn !== null && endsIn > 0
+            ? t('hail.bodyEndsInMin', { minutes: endsIn })
+            : t('hail.bodyNow');
+      }
       break;
     }
     case 'thunderstorm': {
-      const mins = minutesUntil(banner.startsAt, now);
       heading = t('thunderstorm.heading');
-      body =
-        mins !== null && mins > 0
-          ? t('thunderstorm.bodyInMin', { minutes: mins })
-          : t('thunderstorm.bodyNow');
+      if (banner.state === 'starting') {
+        const mins = minutesUntil(banner.startsAt, now) ?? 0;
+        body = t('thunderstorm.bodyInMin', { minutes: mins });
+      } else {
+        const endsIn = minutesUntil(banner.endsAt, now);
+        body =
+          endsIn !== null && endsIn > 0
+            ? t('thunderstorm.bodyEndsInMin', { minutes: endsIn })
+            : t('thunderstorm.bodyNow');
+      }
       break;
     }
     case 'rain': {
       heading = t('rain.heading');
-      if (banner.startsAt) {
-        // Starting soon
+      if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
         const intensityKey = banner.intensity ?? 'light';
         body = t('rain.bodyStartsInMin', {
           minutes: mins,
           intensity: t(`intensity.${intensityKey}`),
         });
-      } else if (banner.endsAt) {
-        body = t('rain.bodyEndsAt', { time: formatTime(banner.endsAt, locale, timezone) });
       } else {
-        body = t('rain.bodyNow');
+        const endsIn = minutesUntil(banner.endsAt, now);
+        body =
+          endsIn !== null && endsIn > 0
+            ? t('rain.bodyEndsInMin', { minutes: endsIn })
+            : t('rain.bodyNow');
       }
       break;
-    }
-  }
-
-  // Live mm:ss countdown until the next backend refresh.
-  let nextUpdateCountdown: string | null = null;
-  if (data.nextUpdateAt) {
-    const ms = Date.parse(data.nextUpdateAt) - now;
-    if (!Number.isNaN(ms) && ms > 0) {
-      const totalSec = Math.floor(ms / 1000);
-      const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
-      const ss = String(totalSec % 60).padStart(2, '0');
-      nextUpdateCountdown = `${mm}:${ss}`;
     }
   }
 
@@ -265,26 +270,14 @@ export function WeatherNowcastBanner({
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <AlertTriangle className={cn('h-3.5 w-3.5 shrink-0', styles.iconColor)} aria-hidden="true" />
+            <AlertTriangle
+              className={cn('h-3.5 w-3.5 shrink-0', styles.iconColor)}
+              aria-hidden="true"
+            />
             <h3 className="text-sm font-semibold">{heading}</h3>
           </div>
           <p className="mt-1 text-sm leading-relaxed">{body}</p>
-          {nextUpdateCountdown && (
-            <p className="mt-1.5 font-mono text-[11px] opacity-60">
-              {t('updateIn', { countdown: nextUpdateCountdown })}
-            </p>
-          )}
-          <p className="mt-2 text-[10px] opacity-70">
-            <a
-              href={data.attribution.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-0.5 underline-offset-2 hover:underline"
-            >
-              {data.attribution.attribution}
-              <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
-            </a>
-          </p>
+          <NowcastUpdateCountdown nextUpdateAt={data.nextUpdateAt} now={now} className="mt-1.5" />
         </div>
       </div>
     </section>

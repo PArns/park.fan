@@ -274,7 +274,8 @@
       "cloudy": "Bewölkt",
       "mist": "Nebel",
       "feelsLike": "Gefühlt",
-      "dataBy": "Wetterdaten von"
+      "dataBy": "Wetterdaten von",
+      "liveLabel": "Live-Wert"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
@@ -287,22 +288,25 @@
         "heading": "Regen im Park",
         "bodyNow": "Es regnet gerade im Park.",
         "bodyStartsInMin": "Regen in ca. {minutes} Min ({intensity}).",
-        "bodyEndsAt": "Regen vorbei gegen {time} Uhr."
+        "bodyEndsInMin": "Es regnet — vorbei in ca. {minutes} Min."
       },
       "thunderstorm": {
         "heading": "Gewitter-Warnung",
         "bodyNow": "Gewitter im Park — bitte geschützten Bereich aufsuchen.",
-        "bodyInMin": "Gewitter in ca. {minutes} Min — geschützten Bereich aufsuchen."
+        "bodyInMin": "Gewitter in ca. {minutes} Min — geschützten Bereich aufsuchen.",
+        "bodyEndsInMin": "Gewitter aktiv — vorbei in ca. {minutes} Min."
       },
       "hail": {
         "heading": "Hagel-Warnung",
         "bodyNow": "Hagel im Park — geschützten Bereich aufsuchen.",
-        "bodyInMin": "Hagel in ca. {minutes} Min — geschützten Bereich aufsuchen."
+        "bodyInMin": "Hagel in ca. {minutes} Min — geschützten Bereich aufsuchen.",
+        "bodyEndsInMin": "Hagel aktiv — vorbei in ca. {minutes} Min."
       },
       "storm": {
         "heading": "Sturm-Warnung",
         "bodyNow": "Sturmböen bis {gusts} km/h aktuell.",
-        "bodyInMin": "Sturmböen bis {gusts} km/h in ca. {minutes} Min erwartet."
+        "bodyInMin": "Sturmböen bis {gusts} km/h in ca. {minutes} Min erwartet.",
+        "bodyEndsInMin": "Sturmböen bis {gusts} km/h — vorbei in ca. {minutes} Min."
       }
     },
     "crowdLevel": "Auslastung",

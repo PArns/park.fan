@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { format, addDays } from 'date-fns';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
-import type { WeatherData, WeatherDay, ScheduleItem } from '@/lib/api/types';
+import type { WeatherData, WeatherDay, WeatherNowcast, ScheduleItem } from '@/lib/api/types';
 
 const FORECAST_TEMPLATE: Omit<WeatherDay, 'date' | 'dataType'>[] = [
   { temperatureMax: '15', temperatureMin: '7', precipitationSum: '0', rainSum: '0', snowfallSum: '0', weatherCode: 1, weatherDescription: 'Mainly clear', windSpeedMax: '10' },
@@ -100,6 +100,89 @@ function buildTodaySchedule(today: Date): ScheduleItem {
   };
 }
 
+function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
+  const iso = (offsetMin: number) => new Date(now + offsetMin * 60_000).toISOString();
+  const base = {
+    park: { id: 'demo-park', name: 'Demo Park', slug: 'demo-park', timezone: 'Europe/Berlin' },
+    observedAt: iso(-2),
+    nextUpdateAt: iso(13),
+    steps: [],
+    attribution: {
+      url: 'https://open-meteo.com/',
+      license: 'CC-BY-4.0',
+      attribution: 'Weather data by Open-Meteo.com',
+    },
+  };
+
+  switch (variant) {
+    case 'sunny':
+      return {
+        ...base,
+        currentlyRaining: false,
+        currentPrecipitationMm: 0,
+        currentWeatherCode: 0,
+        currentWeatherDescription: 'Clear sky',
+        currentWindSpeedKmh: 8,
+        currentWindGustsKmh: 14,
+        rainStartsAt: null,
+        rainStartsIntensityMm: null,
+        rainStartsIntensity: null,
+        rainEndsAt: null,
+        thunderstormStartsAt: null,
+        thunderstormEndsAt: null,
+        hailStartsAt: null,
+        hailEndsAt: null,
+        stormStartsAt: null,
+        stormEndsAt: null,
+        peakWindGustsKmh: 18,
+      };
+    case 'rainy':
+      return {
+        ...base,
+        currentlyRaining: true,
+        currentPrecipitationMm: 0.8,
+        currentWeatherCode: 63,
+        currentWeatherDescription: 'Moderate rain',
+        currentWindSpeedKmh: 20,
+        currentWindGustsKmh: 32,
+        rainStartsAt: iso(-18),
+        rainStartsIntensityMm: 0.6,
+        rainStartsIntensity: 'moderate',
+        rainEndsAt: iso(25),
+        thunderstormStartsAt: null,
+        thunderstormEndsAt: null,
+        hailStartsAt: null,
+        hailEndsAt: null,
+        stormStartsAt: null,
+        stormEndsAt: null,
+        peakWindGustsKmh: 38,
+      };
+    case 'stormy':
+      return {
+        ...base,
+        currentlyRaining: true,
+        currentPrecipitationMm: 2.4,
+        currentWeatherCode: 95,
+        currentWeatherDescription: 'Thunderstorm',
+        currentWindSpeedKmh: 48,
+        currentWindGustsKmh: 82,
+        rainStartsAt: iso(-12),
+        rainStartsIntensityMm: 1.8,
+        rainStartsIntensity: 'heavy',
+        rainEndsAt: iso(45),
+        thunderstormStartsAt: iso(-8),
+        thunderstormEndsAt: iso(40),
+        hailStartsAt: null,
+        hailEndsAt: null,
+        stormStartsAt: iso(-2),
+        stormEndsAt: iso(35),
+        peakWindGustsKmh: 95,
+      };
+    default:
+      return null; // partly / snowy / fog: no nowcast badges
+  }
+}
+
 function buildScheduleForOffset(
   today: Date,
   dayOffset: number,
@@ -148,7 +231,7 @@ interface WeatherCardShowcaseProps {
 }
 
 export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
-  const [today] = useState(() => new Date());
+  const [{ today, mountedAt }] = useState(() => ({ today: new Date(), mountedAt: Date.now() }));
 
   if (variant === 'glass-pair') {
     return (
@@ -166,7 +249,10 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
             status="OPERATING"
             todaySchedule={buildTodaySchedule(today)}
           />
-          <WeatherCard weather={buildWeather(today, 'sunny')} />
+          <WeatherCard
+            weather={buildWeather(today, 'sunny')}
+            nowcast={buildNowcastFor('sunny', mountedAt)}
+          />
         </div>
       </div>
     );
@@ -175,8 +261,14 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <WeatherCard weather={buildWeather(today, 'partly')} />
-      <WeatherCard weather={buildWeather(today, 'rainy')} />
-      <WeatherCard weather={buildWeather(today, 'stormy')} />
+      <WeatherCard
+        weather={buildWeather(today, 'rainy')}
+        nowcast={buildNowcastFor('rainy', mountedAt)}
+      />
+      <WeatherCard
+        weather={buildWeather(today, 'stormy')}
+        nowcast={buildNowcastFor('stormy', mountedAt)}
+      />
       <WeatherCard weather={buildWeather(today, 'snowy')} />
       <WeatherCard weather={buildWeather(today, 'fog')} />
     </div>

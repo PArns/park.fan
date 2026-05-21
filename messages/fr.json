@@ -421,7 +421,8 @@
       "cloudy": "Nuageux",
       "mist": "Brume",
       "feelsLike": "Ressenti",
-      "dataBy": "Données météo par"
+      "dataBy": "Données météo par",
+      "liveLabel": "Valeur en direct"
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",
@@ -434,22 +435,25 @@
         "heading": "Pluie attendue",
         "bodyNow": "Il pleut actuellement dans le parc.",
         "bodyStartsInMin": "Pluie dans environ {minutes} min ({intensity}).",
-        "bodyEndsAt": "La pluie devrait s'arrêter vers {time}."
+        "bodyEndsInMin": "Il pleut — fin dans environ {minutes} min."
       },
       "thunderstorm": {
         "heading": "Alerte orage",
         "bodyNow": "Orage en cours — rejoignez un endroit abrité.",
-        "bodyInMin": "Orage prévu dans environ {minutes} min."
+        "bodyInMin": "Orage prévu dans environ {minutes} min.",
+        "bodyEndsInMin": "Orage en cours — fin dans environ {minutes} min."
       },
       "hail": {
         "heading": "Alerte grêle",
         "bodyNow": "Grêle en cours — rejoignez un endroit abrité.",
-        "bodyInMin": "Grêle prévue dans environ {minutes} min — rejoignez un endroit abrité."
+        "bodyInMin": "Grêle prévue dans environ {minutes} min — rejoignez un endroit abrité.",
+        "bodyEndsInMin": "Grêle en cours — fin dans environ {minutes} min."
       },
       "storm": {
         "heading": "Alerte tempête",
         "bodyNow": "Rafales jusqu'à {gusts} km/h en cours.",
-        "bodyInMin": "Rafales jusqu'à {gusts} km/h prévues dans environ {minutes} min."
+        "bodyInMin": "Rafales jusqu'à {gusts} km/h prévues dans environ {minutes} min.",
+        "bodyEndsInMin": "Rafales jusqu'à {gusts} km/h — fin dans environ {minutes} min."
       }
     },
     "h1Suffix": "Temps d'attente en direct",

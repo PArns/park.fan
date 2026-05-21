@@ -1,19 +1,22 @@
 import { useTranslations } from 'next-intl';
-import { Wind, Umbrella, Cloud, ExternalLink } from 'lucide-react';
+import { Wind, Umbrella, Cloud, ExternalLink, Radio } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
+import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
-import type { WeatherData, WeatherDay } from '@/lib/api/types';
+import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherCardProps {
   weather: WeatherData;
   forecast?: WeatherDay[];
+  /** Optional live nowcast: overrides icon/description with current observed conditions. */
+  nowcast?: WeatherNowcast | null;
   className?: string;
 }
 
-export function WeatherCard({ weather, forecast, className }: WeatherCardProps) {
+export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
 
@@ -23,7 +26,9 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
   const now = weather.now ?? null;
 
   const isDay = now?.isDay ?? true;
-  const weatherCode = now?.weatherCode ?? current.weatherCode;
+  // Nowcast (~15 min freshness) wins over the daily "now" snapshot, which can be hours old.
+  const weatherCode =
+    nowcast?.currentWeatherCode ?? now?.weatherCode ?? current.weatherCode;
   const { icon: WeatherIcon, label, color } = getWeatherConfig(weatherCode, isDay);
 
   const displayTemp =
@@ -31,8 +36,18 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
   const feelsLike = now != null ? Math.round(now.apparentTemperature) : null;
   const tempMax = Math.round(parseFloat(current.temperatureMax));
   const tempMin = Math.round(parseFloat(current.temperatureMin));
+
+  // Prefer live nowcast wind when available; fall back to daily max.
+  const liveWind = nowcast?.currentWindSpeedKmh ?? null;
+  const windSpeed =
+    liveWind != null ? Math.round(liveWind) : Math.round(parseFloat(current.windSpeedMax || '0'));
+
+  // Live precip is the 15-min slot intensity; daily precipitationSum is total. Show the live
+  // value when nowcast says it's actively precipitating so the card reflects "right now".
+  const liveRaining = nowcast?.currentlyRaining ?? false;
+  const livePrecip = nowcast?.currentPrecipitationMm ?? null;
+  const showLivePrecip = liveRaining && livePrecip != null && livePrecip > 0;
   const precipSum = parseFloat(current.precipitationSum || '0');
-  const windSpeed = Math.round(parseFloat(current.windSpeedMax || '0'));
 
   return (
     <GlassCard variant="medium" className={cn('min-w-0 overflow-x-clip', className)}>
@@ -65,17 +80,35 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
           <div className="text-muted-foreground space-y-1 text-xs">
             <div className="flex items-center gap-1.5">
               <Umbrella className="h-3.5 w-3.5" />
-              <span>{precipSum}mm</span>
+              <span>
+                {showLivePrecip ? `${livePrecip!.toFixed(1)}mm` : `${precipSum}mm`}
+              </span>
+              {showLivePrecip && (
+                <Radio
+                  className="text-emerald-500 h-2.5 w-2.5 shrink-0"
+                  aria-label={t('liveLabel')}
+                />
+              )}
             </div>
             <div className="flex items-center gap-1.5">
               <Wind className="h-3.5 w-3.5" />
               <span>{windSpeed} km/h</span>
+              {liveWind != null && (
+                <Radio
+                  className="text-emerald-500 h-2.5 w-2.5 shrink-0"
+                  aria-label={t('liveLabel')}
+                />
+              )}
             </div>
           </div>
         </div>
 
         {(forecast || (weather.forecast && weather.forecast.length > 0)) && (
           <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
+        )}
+
+        {nowcast?.nextUpdateAt && (
+          <NowcastUpdateCountdown nextUpdateAt={nowcast.nextUpdateAt} className="text-muted-foreground" />
         )}
 
         <p className="text-muted-foreground/70 -mx-6 flex items-center gap-1 text-[10px]">

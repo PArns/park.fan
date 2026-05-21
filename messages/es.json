@@ -421,7 +421,8 @@
       "cloudy": "Nublado",
       "mist": "Neblina",
       "feelsLike": "Sensación",
-      "dataBy": "Datos meteorológicos de"
+      "dataBy": "Datos meteorológicos de",
+      "liveLabel": "Valor en directo"
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",
@@ -434,22 +435,25 @@
         "heading": "Lluvia esperada",
         "bodyNow": "Está lloviendo en el parque ahora mismo.",
         "bodyStartsInMin": "Lluvia en unos {minutes} min ({intensity}).",
-        "bodyEndsAt": "La lluvia debería parar hacia las {time}."
+        "bodyEndsInMin": "Está lloviendo — termina en unos {minutes} min."
       },
       "thunderstorm": {
         "heading": "Aviso de tormenta",
         "bodyNow": "Tormenta en curso — busca un lugar resguardado.",
-        "bodyInMin": "Tormenta en unos {minutes} min — busca un lugar resguardado."
+        "bodyInMin": "Tormenta en unos {minutes} min — busca un lugar resguardado.",
+        "bodyEndsInMin": "Tormenta en curso — termina en unos {minutes} min."
       },
       "hail": {
         "heading": "Aviso de granizo",
         "bodyNow": "Granizo en curso — busca un lugar resguardado.",
-        "bodyInMin": "Granizo en unos {minutes} min — busca un lugar resguardado."
+        "bodyInMin": "Granizo en unos {minutes} min — busca un lugar resguardado.",
+        "bodyEndsInMin": "Granizo en curso — termina en unos {minutes} min."
       },
       "storm": {
         "heading": "Aviso de tormenta de viento",
         "bodyNow": "Rachas de viento de hasta {gusts} km/h en este momento.",
-        "bodyInMin": "Rachas de viento de hasta {gusts} km/h previstas en unos {minutes} min."
+        "bodyInMin": "Rachas de viento de hasta {gusts} km/h previstas en unos {minutes} min.",
+        "bodyEndsInMin": "Rachas de viento de hasta {gusts} km/h — terminan en unos {minutes} min."
       }
     },
     "h1Suffix": "Tiempos de espera en vivo",
