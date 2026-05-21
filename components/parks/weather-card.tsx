@@ -1,11 +1,10 @@
 import { useTranslations } from 'next-intl';
-import { Wind, Umbrella, Cloud, ExternalLink } from 'lucide-react';
+import { Cloud, ExternalLink } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
-import { LiveValueDot } from './live-value-dot';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
@@ -26,17 +25,35 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   const current = weather.current;
   const now = weather.now ?? null;
 
-  const isDay = now?.isDay ?? true;
   // Nowcast (~15 min freshness) wins over the daily "now" snapshot, which can be hours old.
+  // It now also carries temperature, apparent-temperature, min/max, and isDay — so when a
+  // nowcast is supplied the entire "current" block is sourced from it.
+  const isDay = nowcast?.isDay ?? now?.isDay ?? true;
   const weatherCode =
     nowcast?.currentWeatherCode ?? now?.weatherCode ?? current.weatherCode;
   const { icon: WeatherIcon, label, color } = getWeatherConfig(weatherCode, isDay);
 
+  const liveTemp = nowcast?.currentTemperatureC ?? null;
+  const liveFeels = nowcast?.currentApparentTemperatureC ?? null;
+  const liveMax = nowcast?.temperatureMaxC ?? null;
+  const liveMin = nowcast?.temperatureMinC ?? null;
+
   const displayTemp =
-    now != null ? Math.round(now.temperature) : Math.round(parseFloat(current.temperatureMax));
-  const feelsLike = now != null ? Math.round(now.apparentTemperature) : null;
-  const tempMax = Math.round(parseFloat(current.temperatureMax));
-  const tempMin = Math.round(parseFloat(current.temperatureMin));
+    liveTemp != null
+      ? Math.round(liveTemp)
+      : now != null
+        ? Math.round(now.temperature)
+        : Math.round(parseFloat(current.temperatureMax));
+  const feelsLike =
+    liveFeels != null
+      ? Math.round(liveFeels)
+      : now != null
+        ? Math.round(now.apparentTemperature)
+        : null;
+  const tempMax =
+    liveMax != null ? Math.round(liveMax) : Math.round(parseFloat(current.temperatureMax));
+  const tempMin =
+    liveMin != null ? Math.round(liveMin) : Math.round(parseFloat(current.temperatureMin));
 
   // Prefer live nowcast wind when available; fall back to daily max.
   const liveWind = nowcast?.currentWindSpeedKmh ?? null;
@@ -59,7 +76,13 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
             {tParks('weatherLabel')}
             {nowcast && (
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                <span className="bg-emerald-500 inline-flex h-1.5 w-1.5 rounded-full" />
+                <span className="relative inline-flex h-1.5 w-1.5">
+                  <span
+                    className="bg-emerald-500/50 absolute inline-flex h-full w-full animate-ping rounded-full"
+                    aria-hidden="true"
+                  />
+                  <span className="bg-emerald-500 relative inline-flex h-1.5 w-1.5 rounded-full" />
+                </span>
                 {t('liveLabel')}
               </span>
             )}
@@ -92,18 +115,14 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
             </div>
           </div>
 
-          <div className="text-muted-foreground space-y-1 text-xs">
-            <div className="flex items-center gap-1.5">
-              <Umbrella className="h-3.5 w-3.5" />
-              <span>
-                {showLivePrecip ? `${livePrecip!.toFixed(1)}mm` : `${precipSum}mm`}
-              </span>
-              {showLivePrecip && <LiveValueDot />}
+          <div className="text-muted-foreground space-y-0.5 text-right text-xs">
+            <div>
+              <span className="opacity-70">{t('precipLabel')}: </span>
+              {showLivePrecip ? `${livePrecip!.toFixed(1)}mm` : `${precipSum}mm`}
             </div>
-            <div className="flex items-center gap-1.5">
-              <Wind className="h-3.5 w-3.5" />
-              <span>{windSpeed} km/h</span>
-              {liveWind != null && <LiveValueDot />}
+            <div>
+              <span className="opacity-70">{t('windLabel')}: </span>
+              {windSpeed} km/h
             </div>
           </div>
         </div>

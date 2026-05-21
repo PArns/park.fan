@@ -423,7 +423,9 @@
       "feelsLike": "Sensación",
       "dataBy": "Datos meteorológicos de",
       "liveLabel": "Live",
-      "liveValueHint": "Valor en directo – actualizado cada 15 min."
+      "liveValueHint": "Valor en directo – actualizado cada 15 min.",
+      "precipLabel": "Precip.",
+      "windLabel": "Viento"
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",

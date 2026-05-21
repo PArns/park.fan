@@ -423,7 +423,9 @@
       "feelsLike": "Feels like",
       "dataBy": "Weather data by",
       "liveLabel": "Live",
-      "liveValueHint": "Live value – updated every 15 min."
+      "liveValueHint": "Live value – updated every 15 min.",
+      "precipLabel": "Precip",
+      "windLabel": "Wind"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

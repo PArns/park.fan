@@ -276,7 +276,9 @@
       "feelsLike": "Gefühlt",
       "dataBy": "Wetterdaten von",
       "liveLabel": "Live",
-      "liveValueHint": "Live-Wert – alle 15 Min aktualisiert."
+      "liveValueHint": "Live-Wert – alle 15 Min aktualisiert.",
+      "precipLabel": "Niederschlag",
+      "windLabel": "Wind"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

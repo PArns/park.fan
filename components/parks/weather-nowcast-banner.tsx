@@ -27,20 +27,20 @@ interface BannerSpec {
   kind: BannerKind;
   state: BannerState;
   /** When the event starts. Used for "starting" state. */
-  startsAt: string | null;
+  startsAt: string | null | undefined;
   /** When the event ends. Used for "active" state to show "ends in N min". */
-  endsAt: string | null;
+  endsAt: string | null | undefined;
   /** Optional rain intensity (only for rain banner). */
   intensity?: 'light' | 'moderate' | 'heavy' | null;
 }
 
-const isInPast = (iso: string | null, now: number): boolean => {
+const isInPast = (iso: string | null | undefined, now: number): boolean => {
   if (!iso) return false;
   const ts = Date.parse(iso);
   return !Number.isNaN(ts) && ts <= now;
 };
 
-const minutesUntil = (iso: string | null, now: number): number | null => {
+const minutesUntil = (iso: string | null | undefined, now: number): number | null => {
   if (!iso) return null;
   const ts = Date.parse(iso);
   if (Number.isNaN(ts)) return null;

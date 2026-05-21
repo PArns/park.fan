@@ -423,7 +423,9 @@
       "feelsLike": "Voelt als",
       "dataBy": "Weergegevens van",
       "liveLabel": "Live",
-      "liveValueHint": "Live-waarde – elke 15 min ververst."
+      "liveValueHint": "Live-waarde – elke 15 min ververst.",
+      "precipLabel": "Neerslag",
+      "windLabel": "Wind"
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",
@@ -436,25 +438,25 @@
         "heading": "Regen in het park",
         "bodyNow": "Het regent nu in het park.",
         "bodyStartsInMin": "Regen over ongeveer {minutes} min ({intensity}).",
-        "bodyEndsInMin": "Het regent — voorbij over ongeveer {minutes} min."
+        "bodyEndsInMin": "Het regent — stopt over ongeveer {minutes} min."
       },
       "thunderstorm": {
         "heading": "Onweerswaarschuwing",
         "bodyNow": "Onweer in het park — zoek een beschutte plek.",
         "bodyInMin": "Onweer over ongeveer {minutes} min — zoek een beschutte plek.",
-        "bodyEndsInMin": "Onweer actief — voorbij over ongeveer {minutes} min."
+        "bodyEndsInMin": "Onweer actief — stopt over ongeveer {minutes} min."
       },
       "hail": {
         "heading": "Hagelwaarschuwing",
         "bodyNow": "Hagel in het park — zoek een beschutte plek.",
         "bodyInMin": "Hagel over ongeveer {minutes} min — zoek een beschutte plek.",
-        "bodyEndsInMin": "Hagel actief — voorbij over ongeveer {minutes} min."
+        "bodyEndsInMin": "Hagel actief — stopt over ongeveer {minutes} min."
       },
       "storm": {
         "heading": "Stormwaarschuwing",
         "bodyNow": "Windstoten tot {gusts} km/u op dit moment.",
         "bodyInMin": "Windstoten tot {gusts} km/u verwacht over ongeveer {minutes} min.",
-        "bodyEndsInMin": "Windstoten tot {gusts} km/u — voorbij over ongeveer {minutes} min."
+        "bodyEndsInMin": "Windstoten tot {gusts} km/u — stopt over ongeveer {minutes} min."
       }
     },
     "h1Suffix": "Live wachttijden",
