@@ -6,6 +6,8 @@ import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucid
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
+import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
+import { formatWindSpeed } from '@/lib/utils/temperature';
 import type { WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherNowcastBannerProps {
@@ -159,6 +161,7 @@ export function WeatherNowcastBanner({
   enabled = true,
 }: WeatherNowcastBannerProps) {
   const t = useTranslations('parks.weatherNowcast');
+  const { unit } = useTemperatureUnit();
 
   const { data } = useWeatherNowcast({
     continent,
@@ -191,16 +194,17 @@ export function WeatherNowcastBanner({
   switch (banner.kind) {
     case 'storm': {
       heading = t('storm.heading');
-      const gusts = data.peakWindGustsKmh;
+      const gusts =
+        data.peakWindGustsKmh != null ? formatWindSpeed(data.peakWindGustsKmh, unit) : '?';
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('storm.bodyInMin', { minutes: mins, gusts: gusts ?? '?' });
+        body = t('storm.bodyInMin', { minutes: mins, gusts });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
           endsIn !== null && endsIn > 0
-            ? t('storm.bodyEndsInMin', { minutes: endsIn, gusts: gusts ?? '?' })
-            : t('storm.bodyNow', { gusts: gusts ?? '?' });
+            ? t('storm.bodyEndsInMin', { minutes: endsIn, gusts })
+            : t('storm.bodyNow', { gusts });
       }
       break;
     }

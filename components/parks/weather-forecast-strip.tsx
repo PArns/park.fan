@@ -7,6 +7,8 @@ import { de, enUS, es, fr, nl, type Locale } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { useEffect, useRef, useState } from 'react';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
+import { formatTemp, formatPrecip } from '@/lib/utils/temperature';
 import type { WeatherDay } from '@/lib/api/types';
 
 interface WeatherForecastStripProps {
@@ -18,6 +20,7 @@ const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
 
 export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
   const locale = useLocale();
+  const { unit } = useTemperatureUnit();
   const dateFnsLocale = LOCALE_MAP[locale] ?? enUS;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -107,18 +110,12 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         <div className="flex w-full min-w-max">
           {validForecast.map((day, i) => {
             const { icon: ForecastIcon, color } = getWeatherConfig(day.weatherCode);
-            const max = Math.round(parseFloat(day.temperatureMax));
-            const min = Math.round(parseFloat(day.temperatureMin));
+            const max = formatTemp(parseFloat(day.temperatureMax), unit);
+            const min = formatTemp(parseFloat(day.temperatureMin), unit);
             const date = parseISO(day.date);
             const dayLabel = format(date, 'EEE', { locale: dateFnsLocale });
             const precip = parseFloat(day.precipitationSum || '0');
-
-            const precipDisplay =
-              precip >= 10
-                ? `${Math.round(precip)}mm`
-                : precip > 0
-                  ? `${precip.toFixed(1)}mm`
-                  : null;
+            const precipDisplay = precip > 0 ? formatPrecip(precip, unit) : null;
             const isLast = i === validForecast.length - 1;
 
             return (
@@ -134,8 +131,8 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                 </span>
                 <ForecastIcon className={`h-4 w-4 ${color}`} />
                 <div className="flex flex-col items-center leading-none">
-                  <span className="text-sm font-bold">{max}°</span>
-                  <span className="text-muted-foreground mt-0.5 text-[10px]">{min}°</span>
+                  <span className="text-sm font-bold">{max}</span>
+                  <span className="text-muted-foreground mt-0.5 text-[10px]">{min}</span>
                 </div>
                 {precipDisplay ? (
                   <div className="mt-0.5 flex items-center gap-0.5 leading-none">

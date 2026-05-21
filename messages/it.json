@@ -425,7 +425,8 @@
       "liveLabel": "Live",
       "liveValueHint": "Valore in diretta – aggiornato ogni 15 min.",
       "precipLabel": "Precip.",
-      "windLabel": "Vento"
+      "windLabel": "Vento",
+      "unitToggleLabel": "Unità di temperatura"
     },
     "weatherNowcast": {
       "updateIn": "Aggiornamento tra {countdown}",
@@ -454,9 +455,9 @@
       },
       "storm": {
         "heading": "Allerta tempesta",
-        "bodyNow": "Raffiche fino a {gusts} km/h in corso.",
-        "bodyInMin": "Raffiche fino a {gusts} km/h previste tra circa {minutes} min.",
-        "bodyEndsInMin": "Raffiche fino a {gusts} km/h — finiscono tra circa {minutes} min."
+        "bodyNow": "Raffiche fino a {gusts} in corso.",
+        "bodyInMin": "Raffiche fino a {gusts} previste tra circa {minutes} min.",
+        "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {minutes} min."
       }
     },
     "h1Suffix": "Tempi di attesa in diretta",

@@ -425,7 +425,8 @@
       "liveLabel": "Live",
       "liveValueHint": "Live value – updated every 15 min.",
       "precipLabel": "Precip",
-      "windLabel": "Wind"
+      "windLabel": "Wind",
+      "unitToggleLabel": "Temperature unit"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
@@ -454,9 +455,9 @@
       },
       "storm": {
         "heading": "Storm warning",
-        "bodyNow": "Strong wind gusts up to {gusts} km/h right now.",
-        "bodyInMin": "Strong wind gusts up to {gusts} km/h expected in about {minutes} min.",
-        "bodyEndsInMin": "Strong wind gusts up to {gusts} km/h — ends in about {minutes} min."
+        "bodyNow": "Strong wind gusts up to {gusts} right now.",
+        "bodyInMin": "Strong wind gusts up to {gusts} expected in about {minutes} min.",
+        "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {minutes} min."
       }
     },
     "h1Suffix": "Live Wait Times",

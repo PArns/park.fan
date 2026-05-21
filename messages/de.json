@@ -278,7 +278,8 @@
       "liveLabel": "Live",
       "liveValueHint": "Live-Wert – alle 15 Min aktualisiert.",
       "precipLabel": "Niederschlag",
-      "windLabel": "Wind"
+      "windLabel": "Wind",
+      "unitToggleLabel": "Temperatureinheit"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
@@ -307,9 +308,9 @@
       },
       "storm": {
         "heading": "Sturm-Warnung",
-        "bodyNow": "Sturmböen bis {gusts} km/h aktuell.",
-        "bodyInMin": "Sturmböen bis {gusts} km/h in ca. {minutes} Min erwartet.",
-        "bodyEndsInMin": "Sturmböen bis {gusts} km/h — vorbei in ca. {minutes} Min."
+        "bodyNow": "Sturmböen bis {gusts} aktuell.",
+        "bodyInMin": "Sturmböen bis {gusts} in ca. {minutes} Min erwartet.",
+        "bodyEndsInMin": "Sturmböen bis {gusts} — vorbei in ca. {minutes} Min."
       }
     },
     "crowdLevel": "Auslastung",

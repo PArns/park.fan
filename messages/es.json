@@ -425,7 +425,8 @@
       "liveLabel": "Live",
       "liveValueHint": "Valor en directo – actualizado cada 15 min.",
       "precipLabel": "Precip.",
-      "windLabel": "Viento"
+      "windLabel": "Viento",
+      "unitToggleLabel": "Unidad de temperatura"
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",
@@ -454,9 +455,9 @@
       },
       "storm": {
         "heading": "Aviso de tormenta de viento",
-        "bodyNow": "Rachas de viento de hasta {gusts} km/h en este momento.",
-        "bodyInMin": "Rachas de viento de hasta {gusts} km/h previstas en unos {minutes} min.",
-        "bodyEndsInMin": "Rachas de viento de hasta {gusts} km/h — terminan en unos {minutes} min."
+        "bodyNow": "Rachas de viento de hasta {gusts} en este momento.",
+        "bodyInMin": "Rachas de viento de hasta {gusts} previstas en unos {minutes} min.",
+        "bodyEndsInMin": "Rachas de viento de hasta {gusts} — terminan en unos {minutes} min."
       }
     },
     "h1Suffix": "Tiempos de espera en vivo",

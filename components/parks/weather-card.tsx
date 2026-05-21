@@ -1,3 +1,5 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 import { Cloud, ExternalLink } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -5,6 +7,9 @@ import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
+import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
+import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
+import { formatTemp, formatWindSpeed, formatPrecip } from '@/lib/utils/temperature';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
@@ -19,6 +24,7 @@ interface WeatherCardProps {
 export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
+  const { unit } = useTemperatureUnit();
 
   if (!weather.current) return null;
 
@@ -38,34 +44,27 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   const liveMax = nowcast?.temperatureMaxC ?? null;
   const liveMin = nowcast?.temperatureMinC ?? null;
 
-  const displayTemp =
-    liveTemp != null
-      ? Math.round(liveTemp)
-      : now != null
-        ? Math.round(now.temperature)
-        : Math.round(parseFloat(current.temperatureMax));
-  const feelsLike =
-    liveFeels != null
-      ? Math.round(liveFeels)
-      : now != null
-        ? Math.round(now.apparentTemperature)
-        : null;
-  const tempMax =
-    liveMax != null ? Math.round(liveMax) : Math.round(parseFloat(current.temperatureMax));
-  const tempMin =
-    liveMin != null ? Math.round(liveMin) : Math.round(parseFloat(current.temperatureMin));
+  const displayTempC =
+    liveTemp ?? now?.temperature ?? parseFloat(current.temperatureMax);
+  const feelsLikeC = liveFeels ?? now?.apparentTemperature ?? null;
+  const tempMaxC = liveMax ?? parseFloat(current.temperatureMax);
+  const tempMinC = liveMin ?? parseFloat(current.temperatureMin);
 
   // Prefer live nowcast wind when available; fall back to daily max.
-  const liveWind = nowcast?.currentWindSpeedKmh ?? null;
-  const windSpeed =
-    liveWind != null ? Math.round(liveWind) : Math.round(parseFloat(current.windSpeedMax || '0'));
+  const windKmh =
+    nowcast?.currentWindSpeedKmh ?? parseFloat(current.windSpeedMax || '0');
 
   // Live precip is the 15-min slot intensity; daily precipitationSum is total. Show the live
   // value when nowcast says it's actively precipitating so the card reflects "right now".
   const liveRaining = nowcast?.currentlyRaining ?? false;
   const livePrecip = nowcast?.currentPrecipitationMm ?? null;
   const showLivePrecip = liveRaining && livePrecip != null && livePrecip > 0;
-  const precipSum = parseFloat(current.precipitationSum || '0');
+  const precipMm = showLivePrecip ? livePrecip! : parseFloat(current.precipitationSum || '0');
+
+  const displayTemp = formatTemp(displayTempC, unit);
+  const feelsLike = feelsLikeC != null ? formatTemp(feelsLikeC, unit) : null;
+  const tempMax = formatTemp(tempMaxC, unit);
+  const tempMin = formatTemp(tempMinC, unit);
 
   return (
     <GlassCard variant="medium" className={cn('min-w-0 overflow-x-clip', className)}>
@@ -87,12 +86,15 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
               </span>
             )}
           </CardTitle>
-          {nowcast?.nextUpdateAt && (
-            <NowcastUpdateCountdown
-              nextUpdateAt={nowcast.nextUpdateAt}
-              className="text-muted-foreground/70 m-0"
-            />
-          )}
+          <div className="flex items-center gap-2">
+            {nowcast?.nextUpdateAt && (
+              <NowcastUpdateCountdown
+                nextUpdateAt={nowcast.nextUpdateAt}
+                className="text-muted-foreground/70 m-0"
+              />
+            )}
+            <TemperatureUnitToggle />
+          </div>
         </div>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -102,13 +104,13 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
               <WeatherIcon className={`h-8 w-8 ${color}`} />
             </div>
             <div>
-              <span className="text-3xl font-bold">{displayTemp}°</span>
+              <span className="text-3xl font-bold">{displayTemp}</span>
               <p className="text-muted-foreground text-xs">
-                {tempMin}° – {tempMax}°
+                {tempMin} – {tempMax}
               </p>
               {feelsLike !== null && feelsLike !== displayTemp && (
                 <p className="text-muted-foreground text-xs">
-                  {t('feelsLike')} {feelsLike}°
+                  {t('feelsLike')} {feelsLike}
                 </p>
               )}
               <p className="text-muted-foreground mt-0.5 text-sm font-medium">{t(label)}</p>
@@ -118,11 +120,11 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
           <div className="text-muted-foreground space-y-0.5 text-right text-xs">
             <div>
               <span className="opacity-70">{t('precipLabel')}: </span>
-              {showLivePrecip ? `${livePrecip!.toFixed(1)}mm` : `${precipSum}mm`}
+              {formatPrecip(precipMm, unit)}
             </div>
             <div>
               <span className="opacity-70">{t('windLabel')}: </span>
-              {windSpeed} km/h
+              {formatWindSpeed(windKmh, unit)}
             </div>
           </div>
         </div>

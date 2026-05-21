@@ -425,7 +425,8 @@
       "liveLabel": "Live",
       "liveValueHint": "Valeur en direct – mise à jour toutes les 15 min.",
       "precipLabel": "Précip.",
-      "windLabel": "Vent"
+      "windLabel": "Vent",
+      "unitToggleLabel": "Unité de température"
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",
@@ -454,9 +455,9 @@
       },
       "storm": {
         "heading": "Alerte tempête",
-        "bodyNow": "Rafales jusqu'à {gusts} km/h en cours.",
-        "bodyInMin": "Rafales jusqu'à {gusts} km/h prévues dans environ {minutes} min.",
-        "bodyEndsInMin": "Rafales jusqu'à {gusts} km/h — se terminent dans environ {minutes} min."
+        "bodyNow": "Rafales jusqu'à {gusts} en cours.",
+        "bodyInMin": "Rafales jusqu'à {gusts} prévues dans environ {minutes} min.",
+        "bodyEndsInMin": "Rafales jusqu'à {gusts} — se terminent dans environ {minutes} min."
       }
     },
     "h1Suffix": "Temps d'attente en direct",
