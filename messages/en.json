@@ -421,7 +421,44 @@
       "cloudy": "Cloudy",
       "mist": "Mist",
       "feelsLike": "Feels like",
-      "dataBy": "Weather data by"
+      "dataBy": "Weather data by",
+      "liveLabel": "Live",
+      "liveValueHint": "Live value – updated every 15 min.",
+      "precipLabel": "Precip",
+      "windLabel": "Wind",
+      "unitToggleLabel": "Temperature unit"
+    },
+    "weatherNowcast": {
+      "updateIn": "Update in {countdown}",
+      "intensity": {
+        "light": "light",
+        "moderate": "moderate",
+        "heavy": "heavy"
+      },
+      "rain": {
+        "heading": "Rain expected",
+        "bodyNow": "It's raining at the park right now.",
+        "bodyStartsInMin": "Rain expected in about {duration} ({intensity}).",
+        "bodyEndsInMin": "It's raining — ends in about {duration}."
+      },
+      "thunderstorm": {
+        "heading": "Thunderstorm warning",
+        "bodyNow": "Thunderstorm at the park right now — head to a sheltered area.",
+        "bodyInMin": "Thunderstorm expected in about {duration}.",
+        "bodyEndsInMin": "Thunderstorm in progress — ends in about {duration}."
+      },
+      "hail": {
+        "heading": "Hail warning",
+        "bodyNow": "Hail at the park right now — find a sheltered area.",
+        "bodyInMin": "Hail expected in about {duration} — find a sheltered area.",
+        "bodyEndsInMin": "Hail in progress — ends in about {duration}."
+      },
+      "storm": {
+        "heading": "Storm warning",
+        "bodyNow": "Strong wind gusts up to {gusts} right now.",
+        "bodyInMin": "Strong wind gusts up to {gusts} expected in about {duration}.",
+        "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
+      }
     },
     "h1Suffix": "Live Wait Times",
     "stats": {

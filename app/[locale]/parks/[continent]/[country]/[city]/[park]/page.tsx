@@ -10,8 +10,10 @@ import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { getParkHistoricalStats } from '@/lib/api/stats';
+import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import type { IntegratedCalendarResponse, ParkHistoricalStats } from '@/lib/api/types';
 import { WeatherCard } from '@/components/parks/weather-card';
+import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import {
@@ -163,7 +165,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const calendarFrom = startOfMonth(new Date());
   const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
 
-  const [calendarData, parkStats] = await Promise.all([
+  const [calendarData, parkStats, nowcast] = await Promise.all([
     getIntegratedCalendar(continent, country, city, parkSlug, {
       from: format(calendarFrom, 'yyyy-MM-dd'),
       to: format(calendarTo, 'yyyy-MM-dd'),
@@ -181,6 +183,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
     getParkHistoricalStats(continent, country, city, parkSlug).catch(
       (): ParkHistoricalStats | null => null
     ),
+    getParkWeatherNowcast(continent, country, city, parkSlug).catch(() => null),
   ]);
 
   // Group attractions by land
@@ -284,6 +287,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
             </GlassCard>
           </div>
 
+          {/* Weather warning banner (rain / storm / hail / thunderstorm) */}
+          <WeatherNowcastBanner
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            initialData={nowcast}
+            className="mb-6"
+          />
+
           {/* Schedule & Weather Row */}
           <div className="mb-8 grid gap-4 md:grid-cols-2">
             {/* Today's Schedule with Current Time */}
@@ -298,7 +311,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
             {/* Weather */}
             {park.weather?.current && (
-              <WeatherCard weather={park.weather} className="border-primary/10" />
+              <WeatherCard weather={park.weather} nowcast={nowcast} className="border-primary/10" />
             )}
           </div>
 

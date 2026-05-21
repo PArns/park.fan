@@ -2,9 +2,11 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { cookies } from 'next/headers';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
 import { Providers } from '@/lib/providers';
+import type { TemperatureUnit } from '@/lib/utils/temperature';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
@@ -122,6 +124,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
+  // Read the saved temperature-unit preference so we hydrate with the right unit
+  // and avoid a flash of "° C → ° F" for Fahrenheit users on first paint.
+  const tempUnitCookie = (await cookies()).get('temp_unit')?.value;
+  const initialTemperatureUnit: TemperatureUnit | undefined =
+    tempUnitCookie === 'C' || tempUnitCookie === 'F' ? tempUnitCookie : undefined;
+
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -143,7 +151,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           enableSystem
           disableTransitionOnChange
         >
-          <Providers>
+          <Providers initialTemperatureUnit={initialTemperatureUnit}>
             <NextIntlClientProvider messages={messages} locale={locale}>
               <ScrollToTop />
               <AnalyticsIdentify locale={locale} />

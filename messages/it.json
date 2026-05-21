@@ -421,7 +421,44 @@
       "cloudy": "Nuvoloso",
       "mist": "Foschia",
       "feelsLike": "Percepita",
-      "dataBy": "Dati meteo da"
+      "dataBy": "Dati meteo da",
+      "liveLabel": "Live",
+      "liveValueHint": "Valore in diretta – aggiornato ogni 15 min.",
+      "precipLabel": "Precip.",
+      "windLabel": "Vento",
+      "unitToggleLabel": "Unità di temperatura"
+    },
+    "weatherNowcast": {
+      "updateIn": "Aggiornamento tra {countdown}",
+      "intensity": {
+        "light": "leggera",
+        "moderate": "moderata",
+        "heavy": "forte"
+      },
+      "rain": {
+        "heading": "Pioggia in arrivo",
+        "bodyNow": "Sta piovendo al parco in questo momento.",
+        "bodyStartsInMin": "Pioggia tra circa {duration} ({intensity}).",
+        "bodyEndsInMin": "Sta piovendo — finisce tra circa {duration}."
+      },
+      "thunderstorm": {
+        "heading": "Allerta temporale",
+        "bodyNow": "Temporale in corso — cerca un'area riparata.",
+        "bodyInMin": "Temporale tra circa {duration}.",
+        "bodyEndsInMin": "Temporale in corso — finisce tra circa {duration}."
+      },
+      "hail": {
+        "heading": "Allerta grandine",
+        "bodyNow": "Grandine in corso — cerca un'area riparata.",
+        "bodyInMin": "Grandine tra circa {duration} — cerca un'area riparata.",
+        "bodyEndsInMin": "Grandine in corso — finisce tra circa {duration}."
+      },
+      "storm": {
+        "heading": "Allerta tempesta",
+        "bodyNow": "Raffiche fino a {gusts} in corso.",
+        "bodyInMin": "Raffiche fino a {gusts} previste tra circa {duration}.",
+        "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {duration}."
+      }
     },
     "h1Suffix": "Tempi di attesa in diretta",
     "stats": {

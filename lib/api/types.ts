@@ -127,6 +127,60 @@ export interface WeatherData {
 }
 
 // ============================================================================
+// Weather Nowcast (15-min precipitation/storm short-term forecast)
+// ============================================================================
+
+export type RainIntensity = 'light' | 'moderate' | 'heavy';
+
+export interface WeatherNowcastStep {
+  time: string;
+  precipitation: number | null;
+  precipitationProbability: number | null;
+  weatherCode: number | null;
+  windSpeed: number | null;
+  windGusts: number | null;
+}
+
+export interface WeatherNowcastAttribution {
+  url: string;
+  license: string;
+  attribution: string;
+}
+
+export interface WeatherNowcast {
+  park: { id: string; name: string; slug: string; timezone: string };
+  observedAt: string;
+  nextUpdateAt: string;
+  currentlyRaining: boolean;
+  currentTemperatureC: number | null;
+  currentApparentTemperatureC: number | null;
+  currentHumidity: number | null;
+  currentPrecipitationMm: number | null;
+  currentWeatherCode: number | null;
+  currentWeatherDescription: string | null;
+  isDay: boolean;
+  temperatureMaxC: number | null;
+  temperatureMinC: number | null;
+  currentWindSpeedKmh: number | null;
+  currentWindGustsKmh: number | null;
+  // Event timestamps — the backend omits these when no event is forecast,
+  // so they may be absent on the wire even though the spec lists them.
+  rainStartsAt?: string | null;
+  rainStartsIntensityMm?: number | null;
+  rainStartsIntensity?: RainIntensity | null;
+  rainEndsAt?: string | null;
+  thunderstormStartsAt?: string | null;
+  thunderstormEndsAt?: string | null;
+  hailStartsAt?: string | null;
+  hailEndsAt?: string | null;
+  stormStartsAt?: string | null;
+  stormEndsAt?: string | null;
+  peakWindGustsKmh: number | null;
+  steps: WeatherNowcastStep[];
+  attribution: WeatherNowcastAttribution;
+}
+
+// ============================================================================
 // Queue Data
 // ============================================================================
 
