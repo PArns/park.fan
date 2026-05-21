@@ -8,23 +8,38 @@
  */
 export type TemperatureUnit = 'C' | 'F';
 
-/** Locales where Fahrenheit / imperial units are the cultural default. */
-const FAHRENHEIT_LOCALE_PREFIXES = ['en-us', 'my', 'lr', 'bs', 'ky', 'pw'];
+/**
+ * ISO 3166-1 alpha-2 region codes whose country uses Fahrenheit for
+ * everyday weather. Anything else (incl. locales with no region tag
+ * like plain "en" or "de") falls back to Celsius.
+ */
+const FAHRENHEIT_REGIONS = new Set(['US', 'MM', 'LR', 'BS', 'KY', 'PW']);
 
 /**
- * Pick a sensible default temperature unit based on the user's browser locale.
+ * Pick a sensible default temperature unit based on the region tag of the
+ * user's *primary* browser language. We parse the region from the locale
+ * (`en-US` → `US`) and only flip to Fahrenheit when that region is in the
+ * known-Fahrenheit list. A locale without a region (`en`, `de`) and the
+ * rest of `navigator.languages` are ignored on purpose — using the full
+ * preference list produces too many false positives.
+ *
  * SSR-safe: returns 'C' when navigator is unavailable.
  */
 export function detectDefaultUnit(): TemperatureUnit {
   if (typeof navigator === 'undefined') return 'C';
-  const langs = [navigator.language, ...(navigator.languages ?? [])].filter(Boolean);
-  const isFahrenheit = langs.some((lang) => {
-    const lower = lang.toLowerCase();
-    return FAHRENHEIT_LOCALE_PREFIXES.some(
-      (prefix) => lower === prefix || lower.startsWith(`${prefix}-`)
-    );
-  });
-  return isFahrenheit ? 'F' : 'C';
+  const primary = navigator.language;
+  if (!primary) return 'C';
+
+  let region: string | undefined;
+  try {
+    region = new Intl.Locale(primary).region;
+  } catch {
+    // Malformed locale tag: fall back to a quick split on the first '-'.
+    const parts = primary.split('-');
+    if (parts.length > 1) region = parts[1];
+  }
+
+  return region && FAHRENHEIT_REGIONS.has(region.toUpperCase()) ? 'F' : 'C';
 }
 
 // ---- Temperature ----------------------------------------------------------
