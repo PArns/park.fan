@@ -420,7 +420,8 @@
       "thunderstorm": "Temporale",
       "cloudy": "Nuvoloso",
       "mist": "Foschia",
-      "feelsLike": "Percepita"
+      "feelsLike": "Percepita",
+      "dataBy": "Dati meteo da"
     },
     "h1Suffix": "Tempi di attesa in diretta",
     "stats": {

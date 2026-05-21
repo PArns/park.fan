@@ -420,7 +420,8 @@
       "thunderstorm": "Onweer",
       "cloudy": "Bewolkt",
       "mist": "Nevel",
-      "feelsLike": "Voelt als"
+      "feelsLike": "Voelt als",
+      "dataBy": "Weergegevens van"
     },
     "h1Suffix": "Live wachttijden",
     "stats": {

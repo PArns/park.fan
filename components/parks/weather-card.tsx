@@ -77,6 +77,18 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
         {(forecast || (weather.forecast && weather.forecast.length > 0)) && (
           <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
         )}
+
+        <p className="text-muted-foreground/70 text-[10px]">
+          {t('dataBy')}{' '}
+          <a
+            href="https://open-meteo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-primary underline-offset-2 hover:underline"
+          >
+            Open-Meteo.com
+          </a>
+        </p>
       </CardContent>
     </GlassCard>
   );
