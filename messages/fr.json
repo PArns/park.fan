@@ -424,7 +424,7 @@
       "dataBy": "Données météo par"
     },
     "weatherNowcast": {
-      "nextUpdate": "Prochaine mise à jour : {time}",
+      "updateIn": "Mise à jour dans {countdown}",
       "intensity": {
         "light": "léger",
         "moderate": "modéré",

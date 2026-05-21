@@ -424,7 +424,7 @@
       "dataBy": "Weather data by"
     },
     "weatherNowcast": {
-      "nextUpdate": "Next update: {time}",
+      "updateIn": "Update in {countdown}",
       "intensity": {
         "light": "light",
         "moderate": "moderate",

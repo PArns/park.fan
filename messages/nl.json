@@ -424,7 +424,7 @@
       "dataBy": "Weergegevens van"
     },
     "weatherNowcast": {
-      "nextUpdate": "Volgende update: {time}",
+      "updateIn": "Update over {countdown}",
       "intensity": {
         "light": "licht",
         "moderate": "matig",

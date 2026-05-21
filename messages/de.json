@@ -277,7 +277,7 @@
       "dataBy": "Wetterdaten von"
     },
     "weatherNowcast": {
-      "nextUpdate": "Nächstes Update: {time}",
+      "updateIn": "Update in {countdown}",
       "intensity": {
         "light": "leicht",
         "moderate": "mäßig",

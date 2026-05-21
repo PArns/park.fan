@@ -21,6 +21,8 @@ interface WeatherNowcastBannerProps {
   parkSlug: string;
   initialData: WeatherNowcast | null;
   className?: string;
+  /** Disable the polling query (e.g. on the /ui showcase page). */
+  enabled?: boolean;
 }
 
 type BannerKind = 'storm' | 'hail' | 'thunderstorm' | 'rain';
@@ -153,6 +155,7 @@ export function WeatherNowcastBanner({
   parkSlug,
   initialData,
   className,
+  enabled = true,
 }: WeatherNowcastBannerProps) {
   const t = useTranslations('parks.weatherNowcast');
   const locale = useLocale();
@@ -163,12 +166,14 @@ export function WeatherNowcastBanner({
     city,
     parkSlug,
     initialData,
+    enabled,
   });
 
-  // Live clock so countdowns recompute every minute even without a refetch.
+  // Live clock so countdowns recompute every second (drives the mm:ss
+  // "next update" countdown; the per-minute body text just re-renders harmlessly).
   const [now, setNow] = useState(() => Date.now());
   useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 60_000);
+    const id = window.setInterval(() => setNow(Date.now()), 1_000);
     return () => window.clearInterval(id);
   }, []);
 
@@ -230,7 +235,17 @@ export function WeatherNowcastBanner({
     }
   }
 
-  const nextUpdate = data.nextUpdateAt ? formatTime(data.nextUpdateAt, locale, timezone) : null;
+  // Live mm:ss countdown until the next backend refresh.
+  let nextUpdateCountdown: string | null = null;
+  if (data.nextUpdateAt) {
+    const ms = Date.parse(data.nextUpdateAt) - now;
+    if (!Number.isNaN(ms) && ms > 0) {
+      const totalSec = Math.floor(ms / 1000);
+      const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
+      const ss = String(totalSec % 60).padStart(2, '0');
+      nextUpdateCountdown = `${mm}:${ss}`;
+    }
+  }
 
   return (
     <section
@@ -254,8 +269,10 @@ export function WeatherNowcastBanner({
             <h3 className="text-sm font-semibold">{heading}</h3>
           </div>
           <p className="mt-1 text-sm leading-relaxed">{body}</p>
-          {nextUpdate && (
-            <p className="mt-1.5 text-xs opacity-70">{t('nextUpdate', { time: nextUpdate })}</p>
+          {nextUpdateCountdown && (
+            <p className="mt-1.5 font-mono text-[11px] opacity-60">
+              {t('updateIn', { countdown: nextUpdateCountdown })}
+            </p>
           )}
           <p className="mt-2 text-[10px] opacity-70">
             <a

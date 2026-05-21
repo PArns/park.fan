@@ -68,6 +68,7 @@ import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 // Weather + Calendar
 import { WeatherCard } from '@/components/parks/weather-card';
+import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 
 // Background overlay
@@ -104,6 +105,7 @@ import type {
   ParkResponse,
   ParkAttraction,
   WeatherData,
+  WeatherNowcast,
   CalendarDay,
   CrowdLevel,
   AttractionHistoryDay as AttractionHistoryDayType,
@@ -840,6 +842,179 @@ const MOCK_WEATHER_FOG: WeatherData = {
     isDay: false,
   },
   forecast: MOCK_FORECAST_BASE,
+};
+
+// ---- Weather Nowcast mocks --------------------------------------------------
+// Timestamps are computed at render time so demo countdowns look fresh.
+// The banner picks the highest-priority warning: storm > hail > thunderstorm > rain.
+
+const NOWCAST_DEMO_PARK = {
+  id: 'demo-park',
+  name: 'Demo Park',
+  slug: 'demo-park',
+  timezone: 'Europe/Berlin',
+};
+
+const NOWCAST_DEMO_ATTRIBUTION = {
+  url: 'https://open-meteo.com/',
+  license: 'CC-BY-4.0',
+  attribution: 'Weather data by Open-Meteo.com',
+};
+
+const inMinIso = (minutes: number) =>
+  new Date(Date.now() + minutes * 60_000).toISOString();
+
+const buildNowcastBase = (): Omit<
+  WeatherNowcast,
+  | 'currentlyRaining'
+  | 'currentPrecipitationMm'
+  | 'currentWeatherCode'
+  | 'currentWeatherDescription'
+  | 'currentWindSpeedKmh'
+  | 'currentWindGustsKmh'
+  | 'rainStartsAt'
+  | 'rainStartsIntensityMm'
+  | 'rainStartsIntensity'
+  | 'rainEndsAt'
+  | 'thunderstormStartsAt'
+  | 'thunderstormEndsAt'
+  | 'hailStartsAt'
+  | 'hailEndsAt'
+  | 'stormStartsAt'
+  | 'stormEndsAt'
+  | 'peakWindGustsKmh'
+> => ({
+  park: NOWCAST_DEMO_PARK,
+  observedAt: new Date(Date.now() - 2 * 60_000).toISOString(),
+  nextUpdateAt: inMinIso(13),
+  steps: [],
+  attribution: NOWCAST_DEMO_ATTRIBUTION,
+});
+
+const MOCK_NOWCAST_STORM: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: true,
+  currentPrecipitationMm: 1.8,
+  currentWeatherCode: 95,
+  currentWeatherDescription: 'Thunderstorm',
+  currentWindSpeedKmh: 52,
+  currentWindGustsKmh: 88,
+  rainStartsAt: inMinIso(-10),
+  rainStartsIntensityMm: 1.5,
+  rainStartsIntensity: 'heavy',
+  rainEndsAt: inMinIso(40),
+  thunderstormStartsAt: inMinIso(-5),
+  thunderstormEndsAt: inMinIso(35),
+  hailStartsAt: null,
+  hailEndsAt: null,
+  stormStartsAt: inMinIso(8),
+  stormEndsAt: inMinIso(50),
+  peakWindGustsKmh: 92,
+};
+
+const MOCK_NOWCAST_HAIL: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: false,
+  currentPrecipitationMm: 0,
+  currentWeatherCode: 3,
+  currentWeatherDescription: 'Overcast',
+  currentWindSpeedKmh: 22,
+  currentWindGustsKmh: 38,
+  rainStartsAt: inMinIso(6),
+  rainStartsIntensityMm: 2.1,
+  rainStartsIntensity: 'heavy',
+  rainEndsAt: null,
+  thunderstormStartsAt: inMinIso(8),
+  thunderstormEndsAt: inMinIso(45),
+  hailStartsAt: inMinIso(10),
+  hailEndsAt: inMinIso(25),
+  stormStartsAt: null,
+  stormEndsAt: null,
+  peakWindGustsKmh: 58,
+};
+
+const MOCK_NOWCAST_THUNDERSTORM: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: false,
+  currentPrecipitationMm: 0,
+  currentWeatherCode: 2,
+  currentWeatherDescription: 'Partly cloudy',
+  currentWindSpeedKmh: 14,
+  currentWindGustsKmh: 28,
+  rainStartsAt: inMinIso(15),
+  rainStartsIntensityMm: 0.8,
+  rainStartsIntensity: 'moderate',
+  rainEndsAt: null,
+  thunderstormStartsAt: inMinIso(20),
+  thunderstormEndsAt: inMinIso(55),
+  hailStartsAt: null,
+  hailEndsAt: null,
+  stormStartsAt: null,
+  stormEndsAt: null,
+  peakWindGustsKmh: 48,
+};
+
+const MOCK_NOWCAST_RAIN_NOW: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: true,
+  currentPrecipitationMm: 0.6,
+  currentWeatherCode: 61,
+  currentWeatherDescription: 'Rain, slight intensity',
+  currentWindSpeedKmh: 12,
+  currentWindGustsKmh: 24,
+  rainStartsAt: inMinIso(-25),
+  rainStartsIntensityMm: 0.4,
+  rainStartsIntensity: 'light',
+  rainEndsAt: inMinIso(35),
+  thunderstormStartsAt: null,
+  thunderstormEndsAt: null,
+  hailStartsAt: null,
+  hailEndsAt: null,
+  stormStartsAt: null,
+  stormEndsAt: null,
+  peakWindGustsKmh: 30,
+};
+
+const MOCK_NOWCAST_RAIN_SOON: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: false,
+  currentPrecipitationMm: 0,
+  currentWeatherCode: 3,
+  currentWeatherDescription: 'Overcast',
+  currentWindSpeedKmh: 10,
+  currentWindGustsKmh: 20,
+  rainStartsAt: inMinIso(12),
+  rainStartsIntensityMm: 0.9,
+  rainStartsIntensity: 'moderate',
+  rainEndsAt: null,
+  thunderstormStartsAt: null,
+  thunderstormEndsAt: null,
+  hailStartsAt: null,
+  hailEndsAt: null,
+  stormStartsAt: null,
+  stormEndsAt: null,
+  peakWindGustsKmh: 26,
+};
+
+const MOCK_NOWCAST_CLEAR: WeatherNowcast = {
+  ...buildNowcastBase(),
+  currentlyRaining: false,
+  currentPrecipitationMm: 0,
+  currentWeatherCode: 0,
+  currentWeatherDescription: 'Clear sky',
+  currentWindSpeedKmh: 8,
+  currentWindGustsKmh: 14,
+  rainStartsAt: null,
+  rainStartsIntensityMm: null,
+  rainStartsIntensity: null,
+  rainEndsAt: null,
+  thunderstormStartsAt: null,
+  thunderstormEndsAt: null,
+  hailStartsAt: null,
+  hailEndsAt: null,
+  stormStartsAt: null,
+  stormEndsAt: null,
+  peakWindGustsKmh: 18,
 };
 
 const MOCK_CAL_OPERATING: CalendarDay = {
@@ -2509,6 +2684,68 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               <WeatherCard weather={MOCK_WEATHER_STORMY} />
               <WeatherCard weather={MOCK_WEATHER_SNOWY} />
               <WeatherCard weather={MOCK_WEATHER_FOG} />
+            </div>
+          </Sub>
+
+          <ComponentLabel
+            name="WeatherNowcastBanner"
+            file="components/parks/weather-nowcast-banner.tsx"
+          />
+          <Sub title="WeatherNowcastBanner — Priority: storm > hail > thunderstorm > rain">
+            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+              <WeatherNowcastBanner
+                continent="demo"
+                country="demo"
+                city="demo"
+                parkSlug="storm"
+                initialData={MOCK_NOWCAST_STORM}
+                enabled={false}
+              />
+              <WeatherNowcastBanner
+                continent="demo"
+                country="demo"
+                city="demo"
+                parkSlug="hail"
+                initialData={MOCK_NOWCAST_HAIL}
+                enabled={false}
+              />
+              <WeatherNowcastBanner
+                continent="demo"
+                country="demo"
+                city="demo"
+                parkSlug="thunderstorm"
+                initialData={MOCK_NOWCAST_THUNDERSTORM}
+                enabled={false}
+              />
+              <WeatherNowcastBanner
+                continent="demo"
+                country="demo"
+                city="demo"
+                parkSlug="rain-now"
+                initialData={MOCK_NOWCAST_RAIN_NOW}
+                enabled={false}
+              />
+              <WeatherNowcastBanner
+                continent="demo"
+                country="demo"
+                city="demo"
+                parkSlug="rain-soon"
+                initialData={MOCK_NOWCAST_RAIN_SOON}
+                enabled={false}
+              />
+              <div className="text-muted-foreground bg-muted/40 flex items-center justify-center rounded-xl border border-dashed p-4 text-center text-xs">
+                Clear weather → banner hides itself (no rendering when no warning is active).
+                <span className="sr-only">
+                  <WeatherNowcastBanner
+                    continent="demo"
+                    country="demo"
+                    city="demo"
+                    parkSlug="clear"
+                    initialData={MOCK_NOWCAST_CLEAR}
+                    enabled={false}
+                  />
+                </span>
+              </div>
             </div>
           </Sub>
         </Section>
