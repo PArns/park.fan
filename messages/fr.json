@@ -423,7 +423,7 @@
       "feelsLike": "Ressenti",
       "dataBy": "Données météo par",
       "liveLabel": "Live",
-      "liveValueHint": "Valeur en direct issue des prévisions à court terme — actualisée toutes les ~15 min."
+      "liveValueHint": "Valeur en direct – mise à jour toutes les 15 min."
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",

@@ -423,7 +423,7 @@
       "feelsLike": "Voelt als",
       "dataBy": "Weergegevens van",
       "liveLabel": "Live",
-      "liveValueHint": "Live-waarde uit de korte-termijn weersverwachting — elke ~15 min ververst."
+      "liveValueHint": "Live-waarde – elke 15 min ververst."
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",

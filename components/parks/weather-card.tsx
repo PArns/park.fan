@@ -59,13 +59,7 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
             {tParks('weatherLabel')}
             {nowcast && (
               <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                <span className="relative inline-flex h-1.5 w-1.5">
-                  <span
-                    className="bg-emerald-500/60 absolute inline-flex h-full w-full animate-ping rounded-full"
-                    aria-hidden="true"
-                  />
-                  <span className="bg-emerald-500 relative inline-flex h-1.5 w-1.5 rounded-full" />
-                </span>
+                <span className="bg-emerald-500 inline-flex h-1.5 w-1.5 rounded-full" />
                 {t('liveLabel')}
               </span>
             )}

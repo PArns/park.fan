@@ -276,7 +276,7 @@
       "feelsLike": "Gefühlt",
       "dataBy": "Wetterdaten von",
       "liveLabel": "Live",
-      "liveValueHint": "Live-Wert aus dem Kurzfristvorhersage-Nowcast — wird alle ~15 Min aktualisiert."
+      "liveValueHint": "Live-Wert – alle 15 Min aktualisiert."
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
