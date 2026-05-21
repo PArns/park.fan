@@ -79,7 +79,7 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
         )}
 
         <p className="text-muted-foreground/70 flex items-center gap-1 text-[10px]">
-          <Cloud className="h-2.5 w-2.5 shrink-0" aria-hidden="true" />
+          <Cloud className="h-3 w-3 shrink-0" aria-hidden="true" />
           <span>
             {t('dataBy')}{' '}
             <a
