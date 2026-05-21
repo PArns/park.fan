@@ -56,7 +56,6 @@ import { RestaurantCardSkeleton } from '@/components/parks/restaurant-card-skele
 
 // Park Status + sparklines
 import { ParkStatus } from '@/components/parks/park-status';
-import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import { WaitTimeSparkline } from '@/components/parks/wait-time-sparkline';
 import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 
@@ -67,7 +66,10 @@ import { AttractionHistoryDay } from '@/components/parks/attraction-history-day'
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 // Weather + Calendar
-import { WeatherCard } from '@/components/parks/weather-card';
+import {
+  WeatherCardShowcase,
+  ParkTimeInfoShowcase,
+} from '@/components/parks/weather-card-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 
@@ -104,7 +106,6 @@ import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
 import type {
   ParkResponse,
   ParkAttraction,
-  WeatherData,
   CalendarDay,
   CrowdLevel,
   AttractionHistoryDay as AttractionHistoryDayType,
@@ -507,340 +508,6 @@ const MOCK_HISTORY_DAY_CLOSED_RIDE: DayDataProps = {
     closingTime: '2026-03-08T18:00:00+01:00',
     scheduleType: 'OPERATING',
   } as unknown as ScheduleItem,
-};
-
-const MOCK_FORECAST_BASE = [
-  {
-    date: '2026-03-08',
-    dataType: 'forecast' as const,
-    temperatureMax: '15',
-    temperatureMin: '7',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 1,
-    weatherDescription: 'Mainly clear',
-    windSpeedMax: '10',
-  },
-  {
-    date: '2026-03-09',
-    dataType: 'forecast' as const,
-    temperatureMax: '12',
-    temperatureMin: '6',
-    precipitationSum: '3',
-    rainSum: '3',
-    snowfallSum: '0',
-    weatherCode: 61,
-    weatherDescription: 'Rain',
-    windSpeedMax: '18',
-  },
-  {
-    date: '2026-03-10',
-    dataType: 'forecast' as const,
-    temperatureMax: '16',
-    temperatureMin: '8',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 2,
-    weatherDescription: 'Partly cloudy',
-    windSpeedMax: '12',
-  },
-  {
-    date: '2026-03-11',
-    dataType: 'forecast' as const,
-    temperatureMax: '19',
-    temperatureMin: '10',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    windSpeedMax: '8',
-  },
-  {
-    date: '2026-03-12',
-    dataType: 'forecast' as const,
-    temperatureMax: '11',
-    temperatureMin: '5',
-    precipitationSum: '8',
-    rainSum: '8',
-    snowfallSum: '0',
-    weatherCode: 63,
-    weatherDescription: 'Moderate rain',
-    windSpeedMax: '25',
-  },
-  {
-    date: '2026-03-13',
-    dataType: 'forecast' as const,
-    temperatureMax: '14',
-    temperatureMin: '7',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 3,
-    weatherDescription: 'Overcast',
-    windSpeedMax: '15',
-  },
-  {
-    date: '2026-03-14',
-    dataType: 'forecast' as const,
-    temperatureMax: '17',
-    temperatureMin: '9',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 1,
-    weatherDescription: 'Mainly clear',
-    windSpeedMax: '12',
-  },
-  {
-    date: '2026-03-15',
-    dataType: 'forecast' as const,
-    temperatureMax: '18',
-    temperatureMin: '10',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    windSpeedMax: '10',
-  },
-  {
-    date: '2026-03-16',
-    dataType: 'forecast' as const,
-    temperatureMax: '13',
-    temperatureMin: '7',
-    precipitationSum: '4',
-    rainSum: '4',
-    snowfallSum: '0',
-    weatherCode: 80,
-    weatherDescription: 'Showers',
-    windSpeedMax: '20',
-  },
-  {
-    date: '2026-03-17',
-    dataType: 'forecast' as const,
-    temperatureMax: '10',
-    temperatureMin: '4',
-    precipitationSum: '2',
-    rainSum: '2',
-    snowfallSum: '0',
-    weatherCode: 71,
-    weatherDescription: 'Snow',
-    windSpeedMax: '15',
-  },
-  {
-    date: '2026-03-18',
-    dataType: 'forecast' as const,
-    temperatureMax: '12',
-    temperatureMin: '5',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 2,
-    weatherDescription: 'Partly cloudy',
-    windSpeedMax: '10',
-  },
-  {
-    date: '2026-03-19',
-    dataType: 'forecast' as const,
-    temperatureMax: '15',
-    temperatureMin: '7',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 1,
-    weatherDescription: 'Mainly clear',
-    windSpeedMax: '8',
-  },
-  {
-    date: '2026-03-20',
-    dataType: 'forecast' as const,
-    temperatureMax: '18',
-    temperatureMin: '9',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    windSpeedMax: '12',
-  },
-  {
-    date: '2026-03-21',
-    dataType: 'forecast' as const,
-    temperatureMax: '16',
-    temperatureMin: '8',
-    precipitationSum: '1',
-    rainSum: '1',
-    snowfallSum: '0',
-    weatherCode: 51,
-    weatherDescription: 'Drizzle',
-    windSpeedMax: '14',
-  },
-  {
-    date: '2026-03-22',
-    dataType: 'forecast' as const,
-    temperatureMax: '14',
-    temperatureMin: '6',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 3,
-    weatherDescription: 'Overcast',
-    windSpeedMax: '16',
-  },
-  {
-    date: '2026-03-23',
-    dataType: 'forecast' as const,
-    temperatureMax: '19',
-    temperatureMin: '11',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    windSpeedMax: '10',
-  },
-];
-
-const MOCK_WEATHER_SUNNY: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '18',
-    temperatureMin: '9',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    windSpeedMax: '12',
-  },
-  now: {
-    temperature: 15,
-    apparentTemperature: 14,
-    humidity: 48,
-    weatherCode: 0,
-    weatherDescription: 'Clear sky',
-    isDay: true,
-  },
-  forecast: MOCK_FORECAST_BASE,
-};
-const MOCK_WEATHER_PARTLY: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '14',
-    temperatureMin: '8',
-    precipitationSum: '2',
-    rainSum: '2',
-    snowfallSum: '0',
-    weatherCode: 2,
-    weatherDescription: 'Partly cloudy',
-    windSpeedMax: '18',
-  },
-  now: {
-    temperature: 11,
-    apparentTemperature: 9,
-    humidity: 62,
-    weatherCode: 2,
-    weatherDescription: 'Partly cloudy',
-    isDay: true,
-  },
-  forecast: MOCK_FORECAST_BASE,
-};
-const MOCK_WEATHER_RAINY: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '10',
-    temperatureMin: '6',
-    precipitationSum: '14',
-    rainSum: '14',
-    snowfallSum: '0',
-    weatherCode: 63,
-    weatherDescription: 'Moderate rain',
-    windSpeedMax: '28',
-  },
-  now: {
-    temperature: 8,
-    apparentTemperature: 5,
-    humidity: 91,
-    weatherCode: 63,
-    weatherDescription: 'Moderate rain',
-    isDay: true,
-  },
-  forecast: MOCK_FORECAST_BASE,
-};
-const MOCK_WEATHER_STORMY: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '8',
-    temperatureMin: '4',
-    precipitationSum: '25',
-    rainSum: '25',
-    snowfallSum: '0',
-    weatherCode: 95,
-    weatherDescription: 'Thunderstorm',
-    windSpeedMax: '55',
-  },
-  now: {
-    temperature: 6,
-    apparentTemperature: 1,
-    humidity: 96,
-    weatherCode: 95,
-    weatherDescription: 'Thunderstorm',
-    isDay: true,
-  },
-  forecast: MOCK_FORECAST_BASE,
-};
-const MOCK_WEATHER_SNOWY: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '-1',
-    temperatureMin: '-6',
-    precipitationSum: '8',
-    rainSum: '0',
-    snowfallSum: '8',
-    weatherCode: 73,
-    weatherDescription: 'Moderate snow',
-    windSpeedMax: '20',
-  },
-  now: {
-    temperature: -3,
-    apparentTemperature: -8,
-    humidity: 85,
-    weatherCode: 73,
-    weatherDescription: 'Moderate snow',
-    isDay: true,
-  },
-  forecast: MOCK_FORECAST_BASE,
-};
-const MOCK_WEATHER_FOG: WeatherData = {
-  current: {
-    date: '2026-03-07',
-    dataType: 'current',
-    temperatureMax: '6',
-    temperatureMin: '3',
-    precipitationSum: '0',
-    rainSum: '0',
-    snowfallSum: '0',
-    weatherCode: 45,
-    weatherDescription: 'Fog',
-    windSpeedMax: '5',
-  },
-  now: {
-    temperature: 4,
-    apparentTemperature: 3,
-    humidity: 97,
-    weatherCode: 45,
-    weatherDescription: 'Fog',
-    isDay: false,
-  },
-  forecast: MOCK_FORECAST_BASE,
 };
 
 const MOCK_CAL_OPERATING: CalendarDay = {
@@ -2250,35 +1917,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
 
           <ComponentLabel name="ParkTimeInfo" file="components/parks/park-time-info.tsx" />
           <Sub title="ParkTimeInfo — with today schedule (live clock + opens/closes in countdown)">
-            <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
-              <ParkTimeInfo
-                timezone="Europe/Berlin"
-                todaySchedule={
-                  {
-                    openingTime: '2026-03-07T09:00:00+01:00',
-                    closingTime: '2026-03-07T22:00:00+01:00',
-                    scheduleType: 'OPERATING',
-                  } as unknown as ScheduleItem
-                }
-              />
-              <ParkTimeInfo
-                timezone="America/New_York"
-                todaySchedule={
-                  {
-                    openingTime: '2026-03-07T09:00:00-05:00',
-                    closingTime: '2026-03-07T20:00:00-05:00',
-                    scheduleType: 'OPERATING',
-                  } as unknown as ScheduleItem
-                }
-                nextSchedule={
-                  {
-                    openingTime: '2026-03-08T09:00:00-05:00',
-                    closingTime: '2026-03-08T20:00:00-05:00',
-                    scheduleType: 'OPERATING',
-                  } as unknown as ScheduleItem
-                }
-              />
-            </div>
+            <ParkTimeInfoShowcase />
           </Sub>
         </Section>
 
@@ -2476,41 +2115,11 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
         <Section title="Weather Card" icon={CloudSun}>
           <ComponentLabel name="WeatherCard" file="components/parks/weather-card.tsx" />
           <Sub title="WeatherCard — As seen on Park Page (with Glass effect)">
-            <div
-              className="relative overflow-hidden rounded-xl bg-cover bg-center p-8"
-              style={{
-                backgroundImage:
-                  'url(https://images.unsplash.com/photo-1513889953751-09e9a5fc1c0c?auto=format&fit=crop&q=80&w=2000)',
-              }}
-            >
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
-              <div className="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
-                <ParkTimeInfo
-                  timezone="Europe/Berlin"
-                  status="OPERATING"
-                  todaySchedule={{
-                    date: '2026-03-07',
-                    openingTime: '09:00',
-                    closingTime: '20:00',
-                    scheduleType: 'OPERATING',
-                    description: null,
-                    purchases: null,
-                    holidayName: null,
-                  }}
-                />
-                <WeatherCard weather={MOCK_WEATHER_SUNNY} />
-              </div>
-            </div>
+            <WeatherCardShowcase variant="glass-pair" />
           </Sub>
 
           <Sub title="WeatherCard — Different Conditions">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <WeatherCard weather={MOCK_WEATHER_PARTLY} />
-              <WeatherCard weather={MOCK_WEATHER_RAINY} />
-              <WeatherCard weather={MOCK_WEATHER_STORMY} />
-              <WeatherCard weather={MOCK_WEATHER_SNOWY} />
-              <WeatherCard weather={MOCK_WEATHER_FOG} />
-            </div>
+            <WeatherCardShowcase variant="conditions-grid" />
           </Sub>
 
           <ComponentLabel
