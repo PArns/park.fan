@@ -78,7 +78,7 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
           <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
         )}
 
-        <p className="text-muted-foreground/70 flex items-center gap-1 text-[10px]">
+        <p className="text-muted-foreground/70 -mx-6 flex items-center gap-1 text-[10px]">
           <Cloud className="h-3 w-3 shrink-0" aria-hidden="true" />
           <span>
             {t('dataBy')}{' '}
