@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { Wind, Umbrella, Cloud } from 'lucide-react';
+import { Wind, Umbrella, Cloud, ExternalLink } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
@@ -86,9 +86,10 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
               href="https://open-meteo.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary underline-offset-2 hover:underline"
+              className="hover:text-primary inline-flex items-center gap-0.5 underline-offset-2 hover:underline"
             >
               Open-Meteo.com
+              <ExternalLink className="h-2.5 w-2.5" aria-hidden="true" />
             </a>
           </span>
         </p>
