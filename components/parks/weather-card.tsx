@@ -69,7 +69,7 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   return (
     <div
       className={cn(
-        'relative isolate min-w-0 overflow-hidden overflow-x-clip rounded-xl border py-6 shadow-sm',
+        'relative isolate min-w-0 overflow-hidden overflow-x-clip rounded-xl border p-6 shadow-sm',
         className
       )}
     >
