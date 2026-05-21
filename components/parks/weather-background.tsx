@@ -16,7 +16,7 @@
  * plausible regardless of theme — a sunny sky should look sunny.
  */
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
+import { memo, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import { weatherCodeToScene, type WeatherScene } from './weather-scene';
 
 export interface WeatherBackgroundProps {
@@ -55,7 +55,7 @@ const HAS_CELESTIAL: WeatherScene[] = ['clear', 'partly-cloudy'];
 
 const STAR_COUNT = 38;
 
-export function WeatherBackground({
+export const WeatherBackground = memo(function WeatherBackground({
   code,
   isDay = true,
   className,
@@ -65,10 +65,7 @@ export function WeatherBackground({
 }: WeatherBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const { scene, intensity, precipitation } = useMemo(
-    () => weatherCodeToScene(code),
-    [code]
-  );
+  const { scene, intensity, precipitation } = useMemo(() => weatherCodeToScene(code), [code]);
 
   const day = Boolean(isDay);
   const cloudCount = CLOUD_COUNT[scene];
@@ -235,7 +232,11 @@ export function WeatherBackground({
         <div className="weather-bg__fog">
           <span style={{ top: '32%', animationDuration: '9s' }} />
           <span
-            style={{ top: '55%', animationDuration: '12s', animationDirection: 'alternate-reverse' }}
+            style={{
+              top: '55%',
+              animationDuration: '12s',
+              animationDirection: 'alternate-reverse',
+            }}
           />
           <span style={{ top: '76%', animationDuration: '10.5s' }} />
         </div>
@@ -246,12 +247,7 @@ export function WeatherBackground({
       {scene === 'thunderstorm' && (
         <>
           <div className="weather-bg__flash" />
-          <svg
-            className="weather-bg__bolt"
-            viewBox="0 0 26 44"
-            width="26"
-            height="44"
-          >
+          <svg className="weather-bg__bolt" viewBox="0 0 26 44" width="26" height="44">
             <polygon points="15,1 3,24 12,24 9,43 24,17 14,17" fill="#FFF7CE" />
           </svg>
         </>
@@ -285,7 +281,13 @@ export function WeatherBackground({
         /* --- Sky gradients (day) --- */
         .weather-bg[data-day='day'][data-scene='clear'],
         .weather-bg[data-day='day'][data-scene='partly-cloudy'] {
-          background: radial-gradient(135% 105% at 50% 4%, #cdeafb 0%, #80bdec 42%, #4b91d6 80%, #3f84cd 100%);
+          background: radial-gradient(
+            135% 105% at 50% 4%,
+            #cdeafb 0%,
+            #80bdec 42%,
+            #4b91d6 80%,
+            #3f84cd 100%
+          );
         }
         .weather-bg[data-day='day'][data-scene='cloudy'] {
           background: radial-gradient(135% 105% at 50% 8%, #bac6d2 0%, #8c9aa9 52%, #6b7886 100%);
@@ -303,7 +305,13 @@ export function WeatherBackground({
         /* --- Sky gradients (night) --- */
         .weather-bg[data-day='night'][data-scene='clear'],
         .weather-bg[data-day='night'][data-scene='partly-cloudy'] {
-          background: radial-gradient(135% 112% at 50% 2%, #34486f 0%, #1b2a49 40%, #0c152a 78%, #070c18 100%);
+          background: radial-gradient(
+            135% 112% at 50% 2%,
+            #34486f 0%,
+            #1b2a49 40%,
+            #0c152a 78%,
+            #070c18 100%
+          );
         }
         .weather-bg[data-day='night'][data-scene='cloudy'] {
           background: radial-gradient(135% 105% at 50% 8%, #3c4653 0%, #2a323d 55%, #1d232b 100%);
@@ -323,15 +331,33 @@ export function WeatherBackground({
         }
 
         /* --- Cloud color token per scene --- */
-        .weather-bg[data-day='day'][data-scene='partly-cloudy'] { --cloud: #fbfdff; }
-        .weather-bg[data-day='night'][data-scene='partly-cloudy'] { --cloud: #7c8699; }
-        .weather-bg[data-day='day'][data-scene='cloudy'] { --cloud: #e7ecf2; }
-        .weather-bg[data-day='night'][data-scene='cloudy'] { --cloud: #4c5662; }
-        .weather-bg[data-day='day'][data-scene='rain'] { --cloud: #525c66; }
-        .weather-bg[data-day='night'][data-scene='rain'] { --cloud: #3b444f; }
-        .weather-bg[data-scene='thunderstorm'] { --cloud: #333a45; }
-        .weather-bg[data-day='day'][data-scene='snow'] { --cloud: #dfe5ec; }
-        .weather-bg[data-day='night'][data-scene='snow'] { --cloud: #535d69; }
+        .weather-bg[data-day='day'][data-scene='partly-cloudy'] {
+          --cloud: #fbfdff;
+        }
+        .weather-bg[data-day='night'][data-scene='partly-cloudy'] {
+          --cloud: #7c8699;
+        }
+        .weather-bg[data-day='day'][data-scene='cloudy'] {
+          --cloud: #e7ecf2;
+        }
+        .weather-bg[data-day='night'][data-scene='cloudy'] {
+          --cloud: #4c5662;
+        }
+        .weather-bg[data-day='day'][data-scene='rain'] {
+          --cloud: #525c66;
+        }
+        .weather-bg[data-day='night'][data-scene='rain'] {
+          --cloud: #3b444f;
+        }
+        .weather-bg[data-scene='thunderstorm'] {
+          --cloud: #333a45;
+        }
+        .weather-bg[data-day='day'][data-scene='snow'] {
+          --cloud: #dfe5ec;
+        }
+        .weather-bg[data-day='night'][data-scene='snow'] {
+          --cloud: #535d69;
+        }
 
         /* --- Sun and moon --- */
         .weather-bg__sun,
@@ -346,8 +372,16 @@ export function WeatherBackground({
           height: 80px;
           margin-left: -40px;
           border-radius: 50%;
-          background: radial-gradient(circle at 37% 33%, #fffef4 0%, #ffe7a2 37%, #ffc44e 70%, #f6a92c 100%);
-          box-shadow: 0 0 40px 12px rgba(255, 196, 80, 0.55), 0 0 96px 34px rgba(255, 176, 58, 0.28);
+          background: radial-gradient(
+            circle at 37% 33%,
+            #fffef4 0%,
+            #ffe7a2 37%,
+            #ffc44e 70%,
+            #f6a92c 100%
+          );
+          box-shadow:
+            0 0 40px 12px rgba(255, 196, 80, 0.55),
+            0 0 96px 34px rgba(255, 176, 58, 0.28);
           animation: weather-pulse 6s ease-in-out infinite;
         }
         .weather-bg__moon {
@@ -356,7 +390,9 @@ export function WeatherBackground({
           margin-left: -32px;
           border-radius: 50%;
           background: radial-gradient(circle at 36% 32%, #fbfcff 0%, #dde4ef 56%, #b4bfd2 100%);
-          box-shadow: 0 0 32px 9px rgba(202, 216, 242, 0.42), 0 0 76px 28px rgba(150, 170, 210, 0.2);
+          box-shadow:
+            0 0 32px 9px rgba(202, 216, 242, 0.42),
+            0 0 76px 28px rgba(150, 170, 210, 0.2);
         }
         .weather-bg__moon::before,
         .weather-bg__moon::after {
@@ -365,8 +401,18 @@ export function WeatherBackground({
           border-radius: 50%;
           background: rgba(120, 134, 160, 0.3);
         }
-        .weather-bg__moon::before { width: 15px; height: 15px; top: 16px; left: 34px; }
-        .weather-bg__moon::after { width: 10px; height: 10px; top: 38px; left: 20px; }
+        .weather-bg__moon::before {
+          width: 15px;
+          height: 15px;
+          top: 16px;
+          left: 34px;
+        }
+        .weather-bg__moon::after {
+          width: 10px;
+          height: 10px;
+          top: 38px;
+          left: 20px;
+        }
 
         /* --- Stars --- */
         .weather-bg__stars {
@@ -397,7 +443,9 @@ export function WeatherBackground({
           background: var(--cloud);
           transform: scale(var(--scale));
           transform-origin: center;
-          box-shadow: inset 0 10px 11px -7px rgba(255, 255, 255, 0.55), 0 12px 26px rgba(16, 22, 34, 0.3);
+          box-shadow:
+            inset 0 10px 11px -7px rgba(255, 255, 255, 0.55),
+            0 12px 26px rgba(16, 22, 34, 0.3);
           animation: weather-drift var(--duration) linear infinite;
           animation-delay: var(--delay);
         }
@@ -409,8 +457,18 @@ export function WeatherBackground({
           border-radius: 50%;
           box-shadow: inset 0 9px 9px -6px rgba(255, 255, 255, 0.5);
         }
-        .weather-bg__cloud::before { width: 50px; height: 50px; top: -24px; left: 15px; }
-        .weather-bg__cloud::after { width: 36px; height: 36px; top: -17px; right: 17px; }
+        .weather-bg__cloud::before {
+          width: 50px;
+          height: 50px;
+          top: -24px;
+          left: 15px;
+        }
+        .weather-bg__cloud::after {
+          width: 36px;
+          height: 36px;
+          top: -17px;
+          right: 17px;
+        }
 
         /* --- Fog --- */
         .weather-bg__fog {
@@ -491,25 +549,53 @@ export function WeatherBackground({
         }
 
         @keyframes weather-pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.07); }
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.07);
+          }
         }
         @keyframes weather-drift {
-          from { left: -30%; }
-          to { left: 118%; }
+          from {
+            left: -30%;
+          }
+          to {
+            left: 118%;
+          }
         }
         @keyframes weather-fog {
-          from { transform: translateX(-7%); }
-          to { transform: translateX(7%); }
+          from {
+            transform: translateX(-7%);
+          }
+          to {
+            transform: translateX(7%);
+          }
         }
         @keyframes weather-flash {
-          0%, 11%, 13.5%, 16.5%, 100% { opacity: 0; }
-          12% { opacity: 0.92; }
-          15% { opacity: 0.62; }
+          0%,
+          11%,
+          13.5%,
+          16.5%,
+          100% {
+            opacity: 0;
+          }
+          12% {
+            opacity: 0.92;
+          }
+          15% {
+            opacity: 0.62;
+          }
         }
         @keyframes weather-twinkle {
-          0%, 100% { opacity: 0.25; }
-          50% { opacity: 1; }
+          0%,
+          100% {
+            opacity: 0.25;
+          }
+          50% {
+            opacity: 1;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -525,4 +611,4 @@ export function WeatherBackground({
       `}</style>
     </div>
   );
-}
+});

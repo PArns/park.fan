@@ -46,7 +46,7 @@ export function detectDefaultUnit(): TemperatureUnit {
 
 /** Convert a Celsius value into the user's chosen unit. */
 export function convertTemp(celsius: number, unit: TemperatureUnit): number {
-  return unit === 'F' ? celsius * 9 / 5 + 32 : celsius;
+  return unit === 'F' ? (celsius * 9) / 5 + 32 : celsius;
 }
 
 /** Format a Celsius value as a rounded "15°" / "59°" string in the chosen unit. */
@@ -80,7 +80,7 @@ export function convertPrecip(mm: number, unit: TemperatureUnit): number {
  */
 export function formatPrecip(mm: number, unit: TemperatureUnit): string {
   if (unit === 'F') {
-    return `${convertPrecip(mm, unit).toFixed(2)}in`;
+    return `${convertPrecip(mm, unit).toFixed(2)} in`;
   }
-  return `${mm}mm`;
+  return `${mm} mm`;
 }

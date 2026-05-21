@@ -74,15 +74,15 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
   };
 
   return (
-    <div className={`group/weather relative -mx-6 ${className ?? ''}`}>
+    <div className={`group/weather relative ${className ?? ''}`}>
       {/* Left indicator / gradient */}
       <div
-        className={`from-background/60 pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r to-transparent transition-opacity duration-300 ${showLeft ? 'opacity-100' : 'opacity-0'}`}
+        className={`from-background/60 pointer-events-none absolute inset-y-0 left-0 z-10 w-12 rounded-l-2xl bg-gradient-to-r to-transparent transition-opacity duration-300 ${showLeft ? 'opacity-100' : 'opacity-0'}`}
       />
       {showLeft && (
         <button
           onClick={() => scroll('left')}
-          className="bg-background/80 hover:bg-background absolute top-1/2 left-2 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
+          className="bg-background/80 hover:bg-background absolute top-1/2 left-3 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
           aria-label="Scroll left"
         >
           <ChevronLeft className="h-4 w-4" />
@@ -91,12 +91,12 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
 
       {/* Right indicator / gradient */}
       <div
-        className={`from-background/60 pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l to-transparent transition-opacity duration-300 ${showRight ? 'opacity-100' : 'opacity-0'}`}
+        className={`from-background/60 pointer-events-none absolute inset-y-0 right-0 z-10 w-12 rounded-r-2xl bg-gradient-to-l to-transparent transition-opacity duration-300 ${showRight ? 'opacity-100' : 'opacity-0'}`}
       />
       {showRight && (
         <button
           onClick={() => scroll('right')}
-          className="bg-background/80 hover:bg-background absolute top-1/2 right-2 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
+          className="bg-background/80 hover:bg-background absolute top-1/2 right-3 z-20 -translate-y-1/2 rounded-full p-1.5 shadow-md backdrop-blur-sm transition-colors"
           aria-label="Scroll right"
         >
           <ChevronRight className="h-4 w-4" />
@@ -105,7 +105,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
 
       <div
         ref={scrollRef}
-        className="bg-muted/30 no-scrollbar border-border/20 overflow-x-auto border-y"
+        className="bg-muted/30 no-scrollbar border-border/20 overflow-x-auto rounded-2xl border backdrop-blur-md"
       >
         <div className="flex w-full min-w-max">
           {validForecast.map((day, i) => {
@@ -121,7 +121,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
             return (
               <div
                 key={day.date}
-                className={`flex flex-1 flex-col items-center gap-1.5 py-4 text-center ${cellMinWidth} ${!isLast ? 'border-border/30 border-r' : ''}`}
+                className={`flex flex-1 flex-col items-center gap-1.5 py-5 text-center ${cellMinWidth} ${!isLast ? 'border-border/30 border-r' : ''}`}
               >
                 <span className="text-muted-foreground text-[10px] leading-none font-medium capitalize">
                   {dayLabel}
