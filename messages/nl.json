@@ -438,26 +438,26 @@
       "rain": {
         "heading": "Regen in het park",
         "bodyNow": "Het regent nu in het park.",
-        "bodyStartsInMin": "Regen over ongeveer {minutes} min ({intensity}).",
-        "bodyEndsInMin": "Het regent — stopt over ongeveer {minutes} min."
+        "bodyStartsInMin": "Regen over ongeveer {duration} ({intensity}).",
+        "bodyEndsInMin": "Het regent — stopt over ongeveer {duration}."
       },
       "thunderstorm": {
         "heading": "Onweerswaarschuwing",
         "bodyNow": "Onweer in het park — zoek een beschutte plek.",
-        "bodyInMin": "Onweer over ongeveer {minutes} min — zoek een beschutte plek.",
-        "bodyEndsInMin": "Onweer actief — stopt over ongeveer {minutes} min."
+        "bodyInMin": "Onweer over ongeveer {duration} — zoek een beschutte plek.",
+        "bodyEndsInMin": "Onweer actief — stopt over ongeveer {duration}."
       },
       "hail": {
         "heading": "Hagelwaarschuwing",
         "bodyNow": "Hagel in het park — zoek een beschutte plek.",
-        "bodyInMin": "Hagel over ongeveer {minutes} min — zoek een beschutte plek.",
-        "bodyEndsInMin": "Hagel actief — stopt over ongeveer {minutes} min."
+        "bodyInMin": "Hagel over ongeveer {duration} — zoek een beschutte plek.",
+        "bodyEndsInMin": "Hagel actief — stopt over ongeveer {duration}."
       },
       "storm": {
         "heading": "Stormwaarschuwing",
         "bodyNow": "Windstoten tot {gusts} op dit moment.",
-        "bodyInMin": "Windstoten tot {gusts} verwacht over ongeveer {minutes} min.",
-        "bodyEndsInMin": "Windstoten tot {gusts} — stopt over ongeveer {minutes} min."
+        "bodyInMin": "Windstoten tot {gusts} verwacht over ongeveer {duration}.",
+        "bodyEndsInMin": "Windstoten tot {gusts} — stopt over ongeveer {duration}."
       }
     },
     "h1Suffix": "Live wachttijden",

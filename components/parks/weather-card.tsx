@@ -69,7 +69,7 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   return (
     <div
       className={cn(
-        'relative isolate min-w-0 overflow-hidden overflow-x-clip rounded-xl border shadow-sm',
+        'relative isolate min-w-0 overflow-hidden overflow-x-clip rounded-xl border py-6 shadow-sm',
         className
       )}
     >
@@ -80,8 +80,8 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
         glassBlur={2}
         glassOpacity={0.4}
       />
-      <div className="relative z-10">
-      <CardHeader className="pb-2">
+      <div className="relative z-10 flex flex-col gap-4">
+      <CardHeader className="pb-0">
         <div className="flex items-center justify-between gap-2">
           <CardTitle className="flex items-center gap-2 text-base">
             <WeatherIcon className={`h-4 w-4 ${color}`} />
@@ -113,8 +113,8 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
       <CardContent className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="bg-muted rounded-full p-2">
-              <WeatherIcon className={`h-8 w-8 ${color}`} />
+            <div className="bg-foreground/10 rounded-full p-2.5 backdrop-blur-sm">
+              <WeatherIcon className={`h-9 w-9 ${color}`} />
             </div>
             <div>
               <span className="text-3xl font-bold">{displayTemp}</span>

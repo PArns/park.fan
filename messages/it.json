@@ -438,26 +438,26 @@
       "rain": {
         "heading": "Pioggia in arrivo",
         "bodyNow": "Sta piovendo al parco in questo momento.",
-        "bodyStartsInMin": "Pioggia tra circa {minutes} min ({intensity}).",
-        "bodyEndsInMin": "Sta piovendo — finisce tra circa {minutes} min."
+        "bodyStartsInMin": "Pioggia tra circa {duration} ({intensity}).",
+        "bodyEndsInMin": "Sta piovendo — finisce tra circa {duration}."
       },
       "thunderstorm": {
         "heading": "Allerta temporale",
         "bodyNow": "Temporale in corso — cerca un'area riparata.",
-        "bodyInMin": "Temporale tra circa {minutes} min.",
-        "bodyEndsInMin": "Temporale in corso — finisce tra circa {minutes} min."
+        "bodyInMin": "Temporale tra circa {duration}.",
+        "bodyEndsInMin": "Temporale in corso — finisce tra circa {duration}."
       },
       "hail": {
         "heading": "Allerta grandine",
         "bodyNow": "Grandine in corso — cerca un'area riparata.",
-        "bodyInMin": "Grandine tra circa {minutes} min — cerca un'area riparata.",
-        "bodyEndsInMin": "Grandine in corso — finisce tra circa {minutes} min."
+        "bodyInMin": "Grandine tra circa {duration} — cerca un'area riparata.",
+        "bodyEndsInMin": "Grandine in corso — finisce tra circa {duration}."
       },
       "storm": {
         "heading": "Allerta tempesta",
         "bodyNow": "Raffiche fino a {gusts} in corso.",
-        "bodyInMin": "Raffiche fino a {gusts} previste tra circa {minutes} min.",
-        "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {minutes} min."
+        "bodyInMin": "Raffiche fino a {gusts} previste tra circa {duration}.",
+        "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {duration}."
       }
     },
     "h1Suffix": "Tempi di attesa in diretta",

@@ -291,26 +291,26 @@
       "rain": {
         "heading": "Regen im Park",
         "bodyNow": "Es regnet gerade im Park.",
-        "bodyStartsInMin": "Regen in ca. {minutes} Min ({intensity}).",
-        "bodyEndsInMin": "Es regnet — vorbei in ca. {minutes} Min."
+        "bodyStartsInMin": "Regen in ca. {duration} ({intensity}).",
+        "bodyEndsInMin": "Es regnet — vorbei in ca. {duration}."
       },
       "thunderstorm": {
         "heading": "Gewitter-Warnung",
         "bodyNow": "Gewitter im Park — bitte geschützten Bereich aufsuchen.",
-        "bodyInMin": "Gewitter in ca. {minutes} Min — geschützten Bereich aufsuchen.",
-        "bodyEndsInMin": "Gewitter aktiv — vorbei in ca. {minutes} Min."
+        "bodyInMin": "Gewitter in ca. {duration} — geschützten Bereich aufsuchen.",
+        "bodyEndsInMin": "Gewitter aktiv — vorbei in ca. {duration}."
       },
       "hail": {
         "heading": "Hagel-Warnung",
         "bodyNow": "Hagel im Park — geschützten Bereich aufsuchen.",
-        "bodyInMin": "Hagel in ca. {minutes} Min — geschützten Bereich aufsuchen.",
-        "bodyEndsInMin": "Hagel aktiv — vorbei in ca. {minutes} Min."
+        "bodyInMin": "Hagel in ca. {duration} — geschützten Bereich aufsuchen.",
+        "bodyEndsInMin": "Hagel aktiv — vorbei in ca. {duration}."
       },
       "storm": {
         "heading": "Sturm-Warnung",
         "bodyNow": "Sturmböen bis {gusts} aktuell.",
-        "bodyInMin": "Sturmböen bis {gusts} in ca. {minutes} Min erwartet.",
-        "bodyEndsInMin": "Sturmböen bis {gusts} — vorbei in ca. {minutes} Min."
+        "bodyInMin": "Sturmböen bis {gusts} in ca. {duration} erwartet.",
+        "bodyEndsInMin": "Sturmböen bis {gusts} — vorbei in ca. {duration}."
       }
     },
     "crowdLevel": "Auslastung",

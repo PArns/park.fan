@@ -1,13 +1,14 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
+import { formatShortDuration } from '@/lib/utils/duration';
 import type { WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherNowcastBannerProps {
@@ -161,6 +162,7 @@ export function WeatherNowcastBanner({
   enabled = true,
 }: WeatherNowcastBannerProps) {
   const t = useTranslations('parks.weatherNowcast');
+  const locale = useLocale();
   const { unit } = useTemperatureUnit();
 
   const { data } = useWeatherNowcast({
@@ -198,12 +200,12 @@ export function WeatherNowcastBanner({
         data.peakWindGustsKmh != null ? formatWindSpeed(data.peakWindGustsKmh, unit) : '?';
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('storm.bodyInMin', { minutes: mins, gusts });
+        body = t('storm.bodyInMin', { duration: formatShortDuration(mins, locale), gusts });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
           endsIn !== null && endsIn > 0
-            ? t('storm.bodyEndsInMin', { minutes: endsIn, gusts })
+            ? t('storm.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale), gusts })
             : t('storm.bodyNow', { gusts });
       }
       break;
@@ -212,12 +214,12 @@ export function WeatherNowcastBanner({
       heading = t('hail.heading');
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('hail.bodyInMin', { minutes: mins });
+        body = t('hail.bodyInMin', { duration: formatShortDuration(mins, locale) });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
           endsIn !== null && endsIn > 0
-            ? t('hail.bodyEndsInMin', { minutes: endsIn })
+            ? t('hail.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) })
             : t('hail.bodyNow');
       }
       break;
@@ -226,12 +228,12 @@ export function WeatherNowcastBanner({
       heading = t('thunderstorm.heading');
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('thunderstorm.bodyInMin', { minutes: mins });
+        body = t('thunderstorm.bodyInMin', { duration: formatShortDuration(mins, locale) });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
           endsIn !== null && endsIn > 0
-            ? t('thunderstorm.bodyEndsInMin', { minutes: endsIn })
+            ? t('thunderstorm.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) })
             : t('thunderstorm.bodyNow');
       }
       break;
@@ -242,14 +244,14 @@ export function WeatherNowcastBanner({
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
         const intensityKey = banner.intensity ?? 'light';
         body = t('rain.bodyStartsInMin', {
-          minutes: mins,
+          duration: formatShortDuration(mins, locale),
           intensity: t(`intensity.${intensityKey}`),
         });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
           endsIn !== null && endsIn > 0
-            ? t('rain.bodyEndsInMin', { minutes: endsIn })
+            ? t('rain.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) })
             : t('rain.bodyNow');
       }
       break;

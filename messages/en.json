@@ -438,26 +438,26 @@
       "rain": {
         "heading": "Rain expected",
         "bodyNow": "It's raining at the park right now.",
-        "bodyStartsInMin": "Rain expected in about {minutes} min ({intensity}).",
-        "bodyEndsInMin": "It's raining — ends in about {minutes} min."
+        "bodyStartsInMin": "Rain expected in about {duration} ({intensity}).",
+        "bodyEndsInMin": "It's raining — ends in about {duration}."
       },
       "thunderstorm": {
         "heading": "Thunderstorm warning",
         "bodyNow": "Thunderstorm at the park right now — head to a sheltered area.",
-        "bodyInMin": "Thunderstorm expected in about {minutes} min.",
-        "bodyEndsInMin": "Thunderstorm in progress — ends in about {minutes} min."
+        "bodyInMin": "Thunderstorm expected in about {duration}.",
+        "bodyEndsInMin": "Thunderstorm in progress — ends in about {duration}."
       },
       "hail": {
         "heading": "Hail warning",
         "bodyNow": "Hail at the park right now — find a sheltered area.",
-        "bodyInMin": "Hail expected in about {minutes} min — find a sheltered area.",
-        "bodyEndsInMin": "Hail in progress — ends in about {minutes} min."
+        "bodyInMin": "Hail expected in about {duration} — find a sheltered area.",
+        "bodyEndsInMin": "Hail in progress — ends in about {duration}."
       },
       "storm": {
         "heading": "Storm warning",
         "bodyNow": "Strong wind gusts up to {gusts} right now.",
-        "bodyInMin": "Strong wind gusts up to {gusts} expected in about {minutes} min.",
-        "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {minutes} min."
+        "bodyInMin": "Strong wind gusts up to {gusts} expected in about {duration}.",
+        "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
       }
     },
     "h1Suffix": "Live Wait Times",
