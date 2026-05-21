@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { Wind, Umbrella } from 'lucide-react';
+import { Wind, Umbrella, Cloud } from 'lucide-react';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { cn } from '@/lib/utils';
@@ -78,16 +78,19 @@ export function WeatherCard({ weather, forecast, className }: WeatherCardProps) 
           <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
         )}
 
-        <p className="text-muted-foreground/70 text-[10px]">
-          {t('dataBy')}{' '}
-          <a
-            href="https://open-meteo.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-primary underline-offset-2 hover:underline"
-          >
-            Open-Meteo.com
-          </a>
+        <p className="text-muted-foreground/70 flex items-center justify-center gap-1 text-center text-[10px]">
+          <Cloud className="h-3 w-3" aria-hidden="true" />
+          <span>
+            {t('dataBy')}{' '}
+            <a
+              href="https://open-meteo.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary underline-offset-2 hover:underline"
+            >
+              Open-Meteo.com
+            </a>
+          </span>
         </p>
       </CardContent>
     </GlassCard>
