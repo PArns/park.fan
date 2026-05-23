@@ -49,10 +49,16 @@ export function MLTrainingCountdown({ modelAge }: Props) {
   const [localTime, setLocalTime] = useState<string | null>(null);
 
   useEffect(() => {
+    // Capture `next` once; recompute only when it rolls over (once per day).
+    // setLocalTime is called every tick but React 18 bails out when the string
+    // is unchanged, so there's no extra re-render cost.
+    let next = getNextTrainingUTC();
+
     const tick = () => {
-      const next = getNextTrainingUTC();
-      setRemaining(next - Date.now());
+      const now = Date.now();
+      if (now >= next) next = getNextTrainingUTC();
       setLocalTime(new Date(next).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      setRemaining(next - now);
     };
     const timeoutId = setTimeout(tick, 0);
     const intervalId = setInterval(tick, 1000);

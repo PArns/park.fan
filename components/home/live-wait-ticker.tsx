@@ -103,6 +103,21 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     pausedRef.current = paused;
   }, [paused]);
 
+  const visibleRef = useRef(true);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        visibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     const el = trackRef.current;
     if (!el || items.length === 0) return;
@@ -113,14 +128,18 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     let raf: number;
 
     const step = (ts: number) => {
-      const singleWidth = el.scrollWidth / 2;
-      if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
-        const dt = (ts - lastTs) / 1000;
-        const speed = singleWidth / durationS;
-        posXRef.current = (posXRef.current + speed * dt) % singleWidth;
-        el.style.transform = `translateX(${-posXRef.current}px)`;
+      if (visibleRef.current) {
+        const singleWidth = el.scrollWidth / 2;
+        if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
+          const dt = (ts - lastTs) / 1000;
+          const speed = singleWidth / durationS;
+          posXRef.current = (posXRef.current + speed * dt) % singleWidth;
+          el.style.transform = `translateX(${-posXRef.current}px)`;
+        }
+        lastTs = ts;
+      } else {
+        lastTs = null; // reset so first visible frame doesn't jump
       }
-      lastTs = ts;
       raf = requestAnimationFrame(step);
     };
 

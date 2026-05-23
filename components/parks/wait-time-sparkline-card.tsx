@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale } from 'next-intl';
 
 interface HistoryPoint {
@@ -34,9 +34,13 @@ export function WaitTimeSparklineCard({
     };
   }, []);
 
-  const rawData = history
-    .map((p) => ({ time: new Date(p.timestamp).getTime(), value: p.waitTime }))
-    .filter((p) => Number.isFinite(p.time));
+  const rawData = useMemo(
+    () =>
+      history
+        .map((p) => ({ time: new Date(p.timestamp).getTime(), value: p.waitTime }))
+        .filter((p) => Number.isFinite(p.time)),
+    [history]
+  );
 
   const data =
     rawData.length > 0
