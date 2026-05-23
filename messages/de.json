@@ -282,35 +282,35 @@
       "unitToggleLabel": "Temperatureinheit"
     },
     "weatherNowcast": {
-      "updateIn": "Update in {countdown}",
+      "updateIn": "Aktualisierung in {countdown}",
       "intensity": {
         "light": "leicht",
         "moderate": "mäßig",
         "heavy": "stark"
       },
       "rain": {
-        "heading": "Regen im Park",
-        "bodyNow": "Es regnet gerade im Park.",
+        "heading": "Regenwarnung",
+        "bodyNow": "Es regnet aktuell im Park.",
         "bodyStartsInMin": "Regen in ca. {duration} ({intensity}).",
-        "bodyEndsInMin": "Es regnet — vorbei in ca. {duration}."
+        "bodyEndsInMin": "Es regnet — noch ca. {duration}"
       },
       "thunderstorm": {
-        "heading": "Gewitter-Warnung",
+        "heading": "Gewitterwarnung",
         "bodyNow": "Gewitter im Park — bitte geschützten Bereich aufsuchen.",
-        "bodyInMin": "Gewitter in ca. {duration} — geschützten Bereich aufsuchen.",
-        "bodyEndsInMin": "Gewitter aktiv — vorbei in ca. {duration}."
+        "bodyInMin": "Gewitter in ca. {duration} — bitte Schutz aufsuchen.",
+        "bodyEndsInMin": "Gewitter aktiv — noch ca. {duration}"
       },
       "hail": {
-        "heading": "Hagel-Warnung",
-        "bodyNow": "Hagel im Park — geschützten Bereich aufsuchen.",
-        "bodyInMin": "Hagel in ca. {duration} — geschützten Bereich aufsuchen.",
-        "bodyEndsInMin": "Hagel aktiv — vorbei in ca. {duration}."
+        "heading": "Hagelwarnung",
+        "bodyNow": "Hagel im Park — bitte geschützten Bereich aufsuchen.",
+        "bodyInMin": "Hagel in ca. {duration} — bitte Schutz aufsuchen.",
+        "bodyEndsInMin": "Hagel aktiv — noch ca. {duration}"
       },
       "storm": {
-        "heading": "Sturm-Warnung",
+        "heading": "Sturmwarnung",
         "bodyNow": "Sturmböen bis {gusts} aktuell.",
         "bodyInMin": "Sturmböen bis {gusts} in ca. {duration} erwartet.",
-        "bodyEndsInMin": "Sturmböen bis {gusts} — vorbei in ca. {duration}."
+        "bodyEndsInMin": "Sturmböen bis {gusts} — noch ca. {duration}"
       }
     },
     "crowdLevel": "Auslastung",

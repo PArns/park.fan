@@ -49,7 +49,17 @@ export function useWeatherNowcast({
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: true,
     refetchOnReconnect: true,
-    refetchInterval: 5 * 60_000,
+    // Dynamically schedule the next refetch: fire as soon as nextUpdateAt is
+    // reached so the countdown and the actual fetch stay in sync. Fall back to
+    // a 5-min poll when the field is absent or already in the past.
+    refetchInterval: (query) => {
+      const data = query.state.data as WeatherNowcast | null | undefined;
+      if (data?.nextUpdateAt) {
+        const ms = Date.parse(data.nextUpdateAt) - Date.now();
+        if (ms > 0) return ms;
+      }
+      return 5 * 60_000;
+    },
     retry: 1,
   });
 }

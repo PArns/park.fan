@@ -281,9 +281,13 @@ export function WeatherNowcastBanner({
               aria-hidden="true"
             />
             <h3 className="text-sm font-semibold">{heading}</h3>
+            <NowcastUpdateCountdown
+              nextUpdateAt={data.nextUpdateAt}
+              now={now}
+              className="ml-auto"
+            />
           </div>
           <p className="mt-1 text-sm leading-relaxed">{body}</p>
-          <NowcastUpdateCountdown nextUpdateAt={data.nextUpdateAt} now={now} className="mt-1.5" />
         </div>
       </div>
     </section>

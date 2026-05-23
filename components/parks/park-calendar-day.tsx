@@ -237,7 +237,8 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
                     className: 'h-3.5 w-3.5',
                   })}
                   <span>
-                    {formatTemp(day.weather.tempMin, unit)} – {formatTemp(day.weather.tempMax, unit)}
+                    {formatTemp(day.weather.tempMin, unit)} –{' '}
+                    {formatTemp(day.weather.tempMax, unit)}
                   </span>
                 </div>
               </TooltipTrigger>
