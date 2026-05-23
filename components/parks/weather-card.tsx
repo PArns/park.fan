@@ -11,6 +11,7 @@ import { TemperatureUnitToggle } from '@/components/common/temperature-unit-togg
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatTemp, formatWindSpeed, formatPrecip } from '@/lib/utils/temperature';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherCardProps {
@@ -18,13 +19,39 @@ interface WeatherCardProps {
   forecast?: WeatherDay[];
   /** Optional live nowcast: overrides icon/description with current observed conditions. */
   nowcast?: WeatherNowcast | null;
+  /** Geo-routing params — when provided, enables live nowcast polling. */
+  continent?: string;
+  country?: string;
+  city?: string;
+  parkSlug?: string;
   className?: string;
 }
 
-export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCardProps) {
+export function WeatherCard({
+  weather,
+  forecast,
+  nowcast,
+  continent,
+  country,
+  city,
+  parkSlug,
+  className,
+}: WeatherCardProps) {
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
   const { unit } = useTemperatureUnit();
+
+  const hasParams = !!(continent && country && city && parkSlug);
+  const { data: liveNowcast } = useWeatherNowcast({
+    continent: continent ?? '',
+    country: country ?? '',
+    city: city ?? '',
+    parkSlug: parkSlug ?? '',
+    initialData: nowcast,
+    enabled: hasParams,
+  });
+  // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
+  const activeNowcast = hasParams ? liveNowcast : nowcast;
 
   if (!weather.current) return null;
 
@@ -34,14 +61,14 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   // Nowcast (~15 min freshness) wins over the daily "now" snapshot, which can be hours old.
   // It now also carries temperature, apparent-temperature, min/max, and isDay — so when a
   // nowcast is supplied the entire "current" block is sourced from it.
-  const isDay = nowcast?.isDay ?? now?.isDay ?? true;
-  const weatherCode = nowcast?.currentWeatherCode ?? now?.weatherCode ?? current.weatherCode;
+  const isDay = activeNowcast?.isDay ?? now?.isDay ?? true;
+  const weatherCode = activeNowcast?.currentWeatherCode ?? now?.weatherCode ?? current.weatherCode;
   const { icon: WeatherIcon, label, color } = getWeatherConfig(weatherCode, isDay);
 
-  const liveTemp = nowcast?.currentTemperatureC ?? null;
-  const liveFeels = nowcast?.currentApparentTemperatureC ?? null;
-  const liveMax = nowcast?.temperatureMaxC ?? null;
-  const liveMin = nowcast?.temperatureMinC ?? null;
+  const liveTemp = activeNowcast?.currentTemperatureC ?? null;
+  const liveFeels = activeNowcast?.currentApparentTemperatureC ?? null;
+  const liveMax = activeNowcast?.temperatureMaxC ?? null;
+  const liveMin = activeNowcast?.temperatureMinC ?? null;
 
   const displayTempC = liveTemp ?? now?.temperature ?? parseFloat(current.temperatureMax);
   const feelsLikeC = liveFeels ?? now?.apparentTemperature ?? null;
@@ -49,12 +76,12 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
   const tempMinC = liveMin ?? parseFloat(current.temperatureMin);
 
   // Prefer live nowcast wind when available; fall back to daily max.
-  const windKmh = nowcast?.currentWindSpeedKmh ?? parseFloat(current.windSpeedMax || '0');
+  const windKmh = activeNowcast?.currentWindSpeedKmh ?? parseFloat(current.windSpeedMax || '0');
 
   // Live precip is the 15-min slot intensity; daily precipitationSum is total. Show the live
   // value when nowcast says it's actively precipitating so the card reflects "right now".
-  const liveRaining = nowcast?.currentlyRaining ?? false;
-  const livePrecip = nowcast?.currentPrecipitationMm ?? null;
+  const liveRaining = activeNowcast?.currentlyRaining ?? false;
+  const livePrecip = activeNowcast?.currentPrecipitationMm ?? null;
   const showLivePrecip = liveRaining && livePrecip != null && livePrecip > 0;
   const precipMm = showLivePrecip ? livePrecip! : parseFloat(current.precipitationSum || '0');
 
@@ -77,7 +104,7 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
             <CardTitle className="flex items-center gap-2 text-base">
               <WeatherIcon className={`h-4 w-4 ${color}`} />
               {tParks('weatherLabel')}
-              {nowcast && (
+              {activeNowcast && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
                   <span className="relative inline-flex h-1.5 w-1.5">
                     <span
@@ -89,9 +116,9 @@ export function WeatherCard({ weather, forecast, nowcast, className }: WeatherCa
                   {t('liveLabel')}
                 </span>
               )}
-              {nowcast?.nextUpdateAt && (
+              {activeNowcast?.nextUpdateAt && (
                 <NowcastUpdateCountdown
-                  nextUpdateAt={nowcast.nextUpdateAt}
+                  nextUpdateAt={activeNowcast.nextUpdateAt}
                   className="m-0 text-emerald-600/80 dark:text-emerald-400/80"
                 />
               )}

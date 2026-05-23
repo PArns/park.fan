@@ -311,7 +311,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
             {/* Weather */}
             {park.weather?.current && (
-              <WeatherCard weather={park.weather} nowcast={nowcast} className="border-primary/10" />
+              <WeatherCard
+                weather={park.weather}
+                nowcast={nowcast}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                className="border-primary/10"
+              />
             )}
           </div>
 
