@@ -163,7 +163,7 @@ export function ParkCard({
   return (
     <Link
       href={effectiveHref as '/europe/germany/rust/europa-park'}
-      prefetch={isOperatingOrUnknown}
+      prefetch={false}
       className={cn('row-span-3 grid [grid-template-rows:subgrid]', className)}
     >
       <article

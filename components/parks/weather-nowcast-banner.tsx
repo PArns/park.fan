@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -181,10 +181,9 @@ export function WeatherNowcastBanner({
     return () => window.clearInterval(id);
   }, []);
 
-  if (!data) return null;
+  const banner = useMemo(() => (data ? pickBanner(data, now) : null), [data, now]);
 
-  const banner = pickBanner(data, now);
-  if (!banner) return null;
+  if (!data || !banner) return null;
 
   const styles = BANNER_STYLES[banner.kind];
   const Icon = styles.icon;

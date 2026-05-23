@@ -255,7 +255,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
             {/* Quick navigation: primary CTA to park page when user is in park */}
             {parkPageUrl && (
               <div className="mb-4">
-                <Link href={parkPageUrl} prefetch={park.status === 'OPERATING'}>
+                <Link href={parkPageUrl} prefetch={false}>
                   <Button className="w-full sm:w-auto" size="lg">
                     <ChevronRight className="mr-2 h-4 w-4" />
                     {t('goToParkPage')}

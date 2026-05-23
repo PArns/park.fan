@@ -88,9 +88,10 @@ function useTypewriter(
   }, []);
 
   useEffect(() => {
+    if (!started) return;
     const id = setInterval(() => dispatch({ type: 'toggle_cursor' }), 530);
     return () => clearInterval(id);
-  }, []);
+  }, [started]);
 
   useEffect(() => {
     if (!started) return;

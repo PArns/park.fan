@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
@@ -213,120 +213,117 @@ export function ParkMap({ park }: ParkMapProps) {
     return () => clearInterval(intervalId);
   }, []);
 
-  // Add attractions (exclude off-season items)
-  const validAttractions =
-    park.attractions?.filter(
-      (a) => a.latitude != null && a.longitude != null && a.isCurrentlyInSeason !== false
-    ) || [];
+  const validAttractions = useMemo(
+    () =>
+      park.attractions?.filter(
+        (a) => a.latitude != null && a.longitude != null && a.isCurrentlyInSeason !== false
+      ) || [],
+    [park.attractions]
+  );
 
-  // Add shows (exclude off-season items)
-  const validShows =
-    park.shows?.filter(
-      (s) => s.latitude != null && s.longitude != null && s.isCurrentlyInSeason !== false
-    ) || [];
+  const validShows = useMemo(
+    () =>
+      park.shows?.filter(
+        (s) => s.latitude != null && s.longitude != null && s.isCurrentlyInSeason !== false
+      ) || [],
+    [park.shows]
+  );
 
-  // Add restaurants
-  const validRestaurants =
-    park.restaurants?.filter((r) => r.latitude != null && r.longitude != null) || [];
+  const validRestaurants = useMemo(
+    () => park.restaurants?.filter((r) => r.latitude != null && r.longitude != null) || [],
+    [park.restaurants]
+  );
 
-  // Calculate nearby entities if user location is available
-  let nearbyEntities: EntityWithDistance[] = [];
-  let distanceToPark: number | null = null;
-  let isInPark = false;
+  const { nearbyEntities, distanceToPark, isInPark } = useMemo(() => {
+    if (!userLocation || !park.latitude || !park.longitude) {
+      return { nearbyEntities: [] as EntityWithDistance[], distanceToPark: null, isInPark: false };
+    }
 
-  if (userLocation && park.latitude && park.longitude) {
-    // Calculate distance to park center
-    distanceToPark = calculateDistance(
+    const dist = calculateDistance(
       userLocation.lat,
       userLocation.lng,
       park.latitude,
       park.longitude
     );
-    isInPark = distanceToPark < IN_PARK_THRESHOLD;
+    const inPark = dist < IN_PARK_THRESHOLD;
 
-    if (isInPark) {
-      // User is in park - collect all entities with distances
-      const entities: EntityWithDistance[] = [];
+    if (!inPark) {
+      return { nearbyEntities: [] as EntityWithDistance[], distanceToPark: dist, isInPark: false };
+    }
 
-      validAttractions.forEach((attraction) => {
-        if (attraction.latitude && attraction.longitude) {
-          const distance = calculateDistance(
+    const entities: EntityWithDistance[] = [];
+
+    validAttractions.forEach((attraction) => {
+      if (attraction.latitude && attraction.longitude) {
+        entities.push({
+          id: attraction.id,
+          name: stripNewPrefix(attraction.name),
+          type: 'attraction',
+          distance: calculateDistance(
             userLocation.lat,
             userLocation.lng,
             attraction.latitude,
             attraction.longitude
-          );
-          entities.push({
-            id: attraction.id,
-            name: stripNewPrefix(attraction.name),
-            type: 'attraction',
-            distance,
-            latitude: attraction.latitude,
-            longitude: attraction.longitude,
-            data: attraction,
-          });
-        }
-      });
+          ),
+          latitude: attraction.latitude,
+          longitude: attraction.longitude,
+          data: attraction,
+        });
+      }
+    });
 
-      validShows.forEach((show) => {
-        if (show.latitude && show.longitude) {
-          const distance = calculateDistance(
+    validShows.forEach((show) => {
+      if (show.latitude && show.longitude) {
+        entities.push({
+          id: show.id,
+          name: stripNewPrefix(show.name),
+          type: 'show',
+          distance: calculateDistance(
             userLocation.lat,
             userLocation.lng,
             show.latitude,
             show.longitude
-          );
-          entities.push({
-            id: show.id,
-            name: stripNewPrefix(show.name),
-            type: 'show',
-            distance,
-            latitude: show.latitude,
-            longitude: show.longitude,
-            data: show,
-          });
-        }
-      });
+          ),
+          latitude: show.latitude,
+          longitude: show.longitude,
+          data: show,
+        });
+      }
+    });
 
-      validRestaurants.forEach((restaurant) => {
-        if (restaurant.latitude && restaurant.longitude) {
-          const distance = calculateDistance(
+    validRestaurants.forEach((restaurant) => {
+      if (restaurant.latitude && restaurant.longitude) {
+        entities.push({
+          id: restaurant.id,
+          name: stripNewPrefix(restaurant.name),
+          type: 'restaurant',
+          distance: calculateDistance(
             userLocation.lat,
             userLocation.lng,
             restaurant.latitude,
             restaurant.longitude
-          );
-          entities.push({
-            id: restaurant.id,
-            name: stripNewPrefix(restaurant.name),
-            type: 'restaurant',
-            distance,
-            latitude: restaurant.latitude,
-            longitude: restaurant.longitude,
-            data: restaurant,
-          });
-        }
-      });
+          ),
+          latitude: restaurant.latitude,
+          longitude: restaurant.longitude,
+          data: restaurant,
+        });
+      }
+    });
 
-      // Sort by distance and take top 5
-      nearbyEntities = entities.sort((a, b) => a.distance - b.distance).slice(0, 5);
-    }
-  }
+    return {
+      nearbyEntities: entities.sort((a, b) => a.distance - b.distance).slice(0, 5),
+      distanceToPark: dist,
+      isInPark: true,
+    };
+  }, [userLocation, park.latitude, park.longitude, validAttractions, validShows, validRestaurants]);
 
-  // Auto-update location with dynamic interval: 5s in park, 60s outside
+  // When in-park, poll location every 5s for responsive nearby-entity updates.
+  // Outside the park the geolocation context already refreshes at 5-min intervals.
   useEffect(() => {
-    if (typeof navigator === 'undefined' || !navigator.geolocation) {
-      return;
-    }
-
-    // 5 seconds if in park, 60 seconds if outside
-    const updateInterval = isInPark ? 5000 : 60000;
-
-    const intervalId = setInterval(() => {
-      requestLocation();
-    }, updateInterval);
-
+    if (!isInPark || typeof navigator === 'undefined' || !navigator.geolocation) return;
+    const intervalId = setInterval(() => requestLocation(), 5000);
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInPark]);
 
   // Fallback center (use user location if in park, otherwise park center)
