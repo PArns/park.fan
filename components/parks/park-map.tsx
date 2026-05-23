@@ -323,7 +323,6 @@ export function ParkMap({ park }: ParkMapProps) {
     if (!isInPark || typeof navigator === 'undefined' || !navigator.geolocation) return;
     const intervalId = setInterval(() => requestLocation(), 5000);
     return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInPark]);
 
   // Fallback center (use user location if in park, otherwise park center)
