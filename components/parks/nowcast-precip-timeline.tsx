@@ -16,6 +16,17 @@ interface NowcastPrecipTimelineProps {
   className?: string;
 }
 
+// Rain intensity buckets in mm per 15-min slot — same thresholds the API uses.
+const LIGHT_MAX_MM = 0.625;
+const HEAVY_MIN_MM = 1.9;
+// mm mapped to a full-height bar; heavier slots cap at 100%. Sits just above the
+// "heavy" threshold so a heavy slot nearly fills the chart.
+const SCALE_TOP_MM = 2.25;
+
+// Threshold lines as a share of the chart height (the "scale" overlaid on the bars).
+const MODERATE_LINE_PCT = (LIGHT_MAX_MM / SCALE_TOP_MM) * 100;
+const HEAVY_LINE_PCT = (HEAVY_MIN_MM / SCALE_TOP_MM) * 100;
+
 /** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
 function toLocalIso(ms: number, timezone: string): string {
   return new Intl.DateTimeFormat('sv-SE', {
@@ -79,27 +90,43 @@ export function NowcastPrecipTimeline({
       role="img"
       aria-label={t('precipTimeline', { until, max: peakMm.toFixed(1) })}
     >
-      <div className="flex h-10 items-end gap-1">
-        {visible.map((s) => {
-          const mm = s.precipitation ?? 0;
-          // Height encodes the share of the peak; a floor keeps a trace visible.
-          const heightPct = mm > 0 ? Math.max(12, Math.round((mm / peakMm) * 100)) : 0;
-          const prob = s.precipitationProbability;
-          return (
-            <div
-              key={s.time}
-              className="flex h-full flex-1 items-end"
-              title={`${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`}
-            >
+      <div className="relative h-10">
+        {/* Threshold reference lines — the scale: above the upper line is "heavy",
+            between is "moderate", below is "light". */}
+        <div
+          className="border-foreground/25 pointer-events-none absolute inset-x-0 border-t border-dashed"
+          style={{ bottom: `${HEAVY_LINE_PCT}%` }}
+          title={t('intensity.heavy')}
+        />
+        <div
+          className="border-foreground/15 pointer-events-none absolute inset-x-0 border-t border-dashed"
+          style={{ bottom: `${MODERATE_LINE_PCT}%` }}
+          title={t('intensity.moderate')}
+        />
+        <div className="flex h-full items-end gap-1">
+          {visible.map((s) => {
+            const mm = s.precipitation ?? 0;
+            // Absolute height: mm against a fixed scale, so a bar's top relative to the
+            // threshold lines tells you light / moderate / heavy. Floor keeps a trace visible.
+            const heightPct =
+              mm > 0 ? Math.min(100, Math.max(14, Math.round((mm / SCALE_TOP_MM) * 100))) : 0;
+            const prob = s.precipitationProbability;
+            return (
               <div
-                className={cn('w-full rounded-sm bg-current', colorClass)}
-                style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
-              />
-            </div>
-          );
-        })}
+                key={s.time}
+                className="flex h-full flex-1 items-end"
+                title={`${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`}
+              >
+                <div
+                  className={cn('w-full rounded-sm bg-current', colorClass)}
+                  style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
-      <div className="mt-1 flex justify-between text-[10px] opacity-60">
+      <div className="mt-1 flex justify-between text-[10px] tabular-nums opacity-60">
         <span>{fmtTime(visible[0].time)}</span>
         <span>{until}</span>
       </div>
