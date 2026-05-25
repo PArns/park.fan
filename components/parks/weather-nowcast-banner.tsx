@@ -50,12 +50,16 @@ const minutesUntil = (iso: string | null | undefined, now: number): number | nul
   return Math.max(0, Math.round((ts - now) / 60_000));
 };
 
+/** How far ahead (minutes) to surface a rain pre-warning. Severe events
+ *  (storm/hail/thunderstorm) have no gate and show as soon as they're forecast. */
+const RAIN_LEAD_MINUTES = 60;
+
 /**
  * Pick the highest-priority warning to surface. Order (per spec):
  *  1. storm (gusts >= 75 km/h)
  *  2. hail
  *  3. thunderstorm
- *  4. rain — current or starting within 30 min
+ *  4. rain — current or starting within RAIN_LEAD_MINUTES
  */
 function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
   if (data.stormStartsAt) {
@@ -103,9 +107,9 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
     };
   }
 
-  // Rain starting soon (within 30 min)
+  // Rain starting soon (within the pre-warning window)
   const minsToRain = minutesUntil(data.rainStartsAt, now);
-  if (minsToRain !== null && minsToRain <= 30) {
+  if (minsToRain !== null && minsToRain <= RAIN_LEAD_MINUTES) {
     return {
       kind: 'rain',
       state: 'starting',
