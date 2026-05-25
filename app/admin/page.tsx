@@ -24,6 +24,12 @@ import {
   Trash2,
   RotateCcw,
   ListChecks,
+  Sparkles,
+  Wrench,
+  CalendarClock,
+  CalendarCheck,
+  Snowflake,
+  Sigma,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -379,6 +385,22 @@ function Dashboard({
     { key: 'flush', label: 'Flush Cache', icon: Trash2, path: 'flush-cache' },
     { key: 'train', label: 'Train ML', icon: Play, path: 'train-ml-model' },
     { key: 'sync', label: 'Sync Parks', icon: RotateCcw, path: 'sync-parks' },
+    { key: 'enrich', label: 'Enrich Parks', icon: Sparkles, path: 'enrich-parks' },
+    {
+      key: 'validate',
+      label: 'Validate & Repair',
+      icon: Wrench,
+      path: 'validate-and-repair-parks',
+    },
+    { key: 'gaps', label: 'Fill Schedule Gaps', icon: CalendarClock, path: 'fill-schedule-gaps' },
+    { key: 'holidays', label: 'Sync Holidays', icon: CalendarCheck, path: 'sync-holidays' },
+    { key: 'seasonal', label: 'Detect Seasonal', icon: Snowflake, path: 'detect-seasonal' },
+    {
+      key: 'accuracy',
+      label: 'Aggregate Accuracy',
+      icon: Sigma,
+      path: 'aggregate-accuracy-stats',
+    },
   ];
 
   return (
