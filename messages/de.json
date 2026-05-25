@@ -311,7 +311,8 @@
         "bodyNow": "Sturmböen bis {gusts} aktuell.",
         "bodyInMin": "Sturmböen bis {gusts} in ca. {duration} erwartet.",
         "bodyEndsInMin": "Sturmböen bis {gusts} — noch ca. {duration}"
-      }
+      },
+      "precipTimeline": "Niederschlagsverlauf bis {until}, Spitze {max} mm pro 15 Min."
     },
     "crowdLevel": "Auslastung",
     "crowdLevels": {

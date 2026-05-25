@@ -458,7 +458,8 @@
         "bodyNow": "Rafales jusqu'à {gusts} en cours.",
         "bodyInMin": "Rafales jusqu'à {gusts} prévues dans environ {duration}.",
         "bodyEndsInMin": "Rafales jusqu'à {gusts} — se terminent dans environ {duration}."
-      }
+      },
+      "precipTimeline": "Prévisions de précipitations jusquà {until}, pic de {max} mm par 15 min."
     },
     "h1Suffix": "Temps d'attente en direct",
     "stats": {

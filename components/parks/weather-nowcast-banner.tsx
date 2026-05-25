@@ -6,6 +6,7 @@ import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucid
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
+import { NowcastPrecipTimeline } from '@/components/parks/nowcast-precip-timeline';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
 import { formatWindSpeed } from '@/lib/utils/temperature';
 import { formatShortDuration } from '@/lib/utils/duration';
@@ -291,6 +292,12 @@ export function WeatherNowcastBanner({
             />
           </div>
           <p className="mt-1 text-sm leading-relaxed">{body}</p>
+          <NowcastPrecipTimeline
+            steps={data.steps}
+            now={now}
+            colorClass={styles.iconColor}
+            timezone={data.park.timezone}
+          />
         </div>
       </div>
     </section>

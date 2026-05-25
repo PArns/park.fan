@@ -458,7 +458,8 @@
         "bodyNow": "Raffiche fino a {gusts} in corso.",
         "bodyInMin": "Raffiche fino a {gusts} previste tra circa {duration}.",
         "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {duration}."
-      }
+      },
+      "precipTimeline": "Previsione di precipitazioni fino alle {until}, picco {max} mm ogni 15 min."
     },
     "h1Suffix": "Tempi di attesa in diretta",
     "stats": {

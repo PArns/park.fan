@@ -19,6 +19,17 @@ const DEMO_ATTRIBUTION = {
 
 const inMinIso = (base: number, minutes: number) => new Date(base + minutes * 60_000).toISOString();
 
+/** Build 15-min nowcast steps from a per-slot precipitation profile (mm). */
+const mkSteps = (now: number, mm: number[], code: number) =>
+  mm.map((p, i) => ({
+    time: inMinIso(now, i * 15),
+    precipitation: p,
+    precipitationProbability: p > 0 ? Math.min(100, Math.round(45 + p * 35)) : 10,
+    weatherCode: p > 0 ? code : 3,
+    windSpeed: 14,
+    windGusts: 28,
+  }));
+
 function buildMocks(now: number): Record<string, WeatherNowcast> {
   const base = {
     park: DEMO_PARK,
@@ -57,6 +68,7 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
       stormStartsAt: inMinIso(now, 8),
       stormEndsAt: inMinIso(now, 50),
       peakWindGustsKmh: 92,
+      steps: mkSteps(now, [1.8, 2.2, 1.5, 0.8, 0.3, 0, 0, 0], 95),
     },
     hail: {
       ...base,
@@ -79,6 +91,7 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
       hailStartsAt: inMinIso(now, 10),
       hailEndsAt: inMinIso(now, 25),
       peakWindGustsKmh: 58,
+      steps: mkSteps(now, [0, 0.6, 2.1, 1.8, 1.0, 0.4, 0, 0], 96),
     },
     thunderstorm: {
       ...base,
@@ -99,6 +112,7 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
       thunderstormStartsAt: inMinIso(now, 20),
       thunderstormEndsAt: inMinIso(now, 55),
       peakWindGustsKmh: 48,
+      steps: mkSteps(now, [0, 0.5, 1.0, 1.4, 0.9, 0.4, 0, 0], 95),
     },
     rainNow: {
       ...base,
@@ -118,6 +132,7 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
       rainStartsIntensity: 'light',
       rainEndsAt: inMinIso(now, 35),
       peakWindGustsKmh: 30,
+      steps: mkSteps(now, [0.6, 0.9, 1.2, 0.7, 0.3, 0, 0, 0], 61),
     },
     rainSoon: {
       ...base,
@@ -136,6 +151,7 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
       rainStartsIntensityMm: 0.9,
       rainStartsIntensity: 'moderate',
       peakWindGustsKmh: 26,
+      steps: mkSteps(now, [0, 0, 0.4, 0.8, 1.1, 0.6, 0.2, 0], 61),
     },
   };
 }

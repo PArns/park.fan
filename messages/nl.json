@@ -458,7 +458,8 @@
         "bodyNow": "Windstoten tot {gusts} op dit moment.",
         "bodyInMin": "Windstoten tot {gusts} verwacht over ongeveer {duration}.",
         "bodyEndsInMin": "Windstoten tot {gusts} — stopt over ongeveer {duration}."
-      }
+      },
+      "precipTimeline": "Neerslagverwachting tot {until}, piek {max} mm per 15 min."
     },
     "h1Suffix": "Live wachttijden",
     "stats": {
