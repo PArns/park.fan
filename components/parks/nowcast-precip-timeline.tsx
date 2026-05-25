@@ -50,19 +50,14 @@ export function NowcastPrecipTimeline({
 
   // Slot length derived from the series (the diff is timezone-independent).
   const slotMs =
-    steps.length >= 2
-      ? Date.parse(steps[1].time) - Date.parse(steps[0].time)
-      : 15 * 60_000;
+    steps.length >= 2 ? Date.parse(steps[1].time) - Date.parse(steps[0].time) : 15 * 60_000;
 
   // Drop slots whose 15-min window has fully passed, compared in park-local time.
   const cutoff = toLocalIso(Date.parse(observedAt) - slotMs, timezone);
   const upcoming = steps.filter((s) => s.time.slice(0, 16) >= cutoff);
 
   // Auto-size to the rain event: up to the last wet slot, plus one dry slot for context.
-  const lastWet = upcoming.reduce(
-    (idx, s, i) => ((s.precipitation ?? 0) > 0 ? i : idx),
-    -1
-  );
+  const lastWet = upcoming.reduce((idx, s, i) => ((s.precipitation ?? 0) > 0 ? i : idx), -1);
   if (lastWet < 0) return null;
   const visible = upcoming.slice(0, lastWet + 2);
 
@@ -84,7 +79,7 @@ export function NowcastPrecipTimeline({
       role="img"
       aria-label={t('precipTimeline', { until, max: peakMm.toFixed(1) })}
     >
-      <div className="flex h-10 items-end gap-0.5">
+      <div className="flex h-10 items-end gap-1">
         {visible.map((s) => {
           const mm = s.precipitation ?? 0;
           // Height encodes the share of the peak; a floor keeps a trace visible.

@@ -104,7 +104,9 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
       state: 'active',
       startsAt: data.rainStartsAt,
       endsAt: data.rainEndsAt,
-      intensity: data.rainStartsIntensity,
+      // During active rain the API leaves rainStartsIntensity null, so prefer the
+      // live currentRainIntensity to convey how hard it's actually coming down.
+      intensity: data.currentRainIntensity ?? data.rainStartsIntensity,
     };
   }
 
@@ -253,10 +255,19 @@ export function WeatherNowcastBanner({
         });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
-        body =
-          endsIn !== null && endsIn > 0
-            ? t('rain.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) })
+        const intensityLabel = banner.intensity ? t(`intensity.${banner.intensity}`) : null;
+        if (endsIn !== null && endsIn > 0) {
+          body = intensityLabel
+            ? t('rain.bodyEndsInMinIntensity', {
+                duration: formatShortDuration(endsIn, locale),
+                intensity: intensityLabel,
+              })
+            : t('rain.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) });
+        } else {
+          body = intensityLabel
+            ? t('rain.bodyNowIntensity', { intensity: intensityLabel })
             : t('rain.bodyNow');
+        }
       }
       break;
     }
@@ -291,14 +302,14 @@ export function WeatherNowcastBanner({
               className="ml-auto"
             />
           </div>
-          <div className="mt-1 flex items-end justify-between gap-4">
+          <div className="mt-1 flex items-start gap-4">
             <p className="text-sm leading-relaxed">{body}</p>
             <NowcastPrecipTimeline
               steps={data.steps}
               observedAt={data.observedAt}
               timezone={data.park.timezone}
               colorClass={styles.iconColor}
-              className="w-40 shrink-0"
+              className="min-w-0 flex-1"
             />
           </div>
         </div>

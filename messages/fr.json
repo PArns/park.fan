@@ -449,7 +449,9 @@
         "heading": "Pluie attendue",
         "bodyNow": "Il pleut actuellement dans le parc.",
         "bodyStartsInMin": "Pluie dans environ {duration} ({intensity}).",
-        "bodyEndsInMin": "Il pleut — se termine dans environ {duration}."
+        "bodyEndsInMin": "Il pleut — se termine dans environ {duration}.",
+        "bodyEndsInMinIntensity": "Il pleut ({intensity}) — se termine dans environ {duration}.",
+        "bodyNowIntensity": "Il pleut actuellement dans le parc ({intensity})."
       },
       "thunderstorm": {
         "heading": "Alerte orage",

@@ -10,7 +10,12 @@ import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { formatTemp, formatWindSpeed, convertWindSpeed, formatPrecip } from '@/lib/utils/temperature';
+import {
+  formatTemp,
+  formatWindSpeed,
+  convertWindSpeed,
+  formatPrecip,
+} from '@/lib/utils/temperature';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';

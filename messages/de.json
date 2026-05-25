@@ -302,7 +302,9 @@
         "heading": "Regenwarnung",
         "bodyNow": "Es regnet aktuell im Park.",
         "bodyStartsInMin": "Regen in ca. {duration} ({intensity}).",
-        "bodyEndsInMin": "Es regnet — noch ca. {duration}"
+        "bodyEndsInMin": "Es regnet — noch ca. {duration}",
+        "bodyEndsInMinIntensity": "Es regnet ({intensity}) — noch ca. {duration}",
+        "bodyNowIntensity": "Es regnet aktuell im Park ({intensity})."
       },
       "thunderstorm": {
         "heading": "Gewitterwarnung",

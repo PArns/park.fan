@@ -449,7 +449,9 @@
         "heading": "Rain expected",
         "bodyNow": "It's raining at the park right now.",
         "bodyStartsInMin": "Rain expected in about {duration} ({intensity}).",
-        "bodyEndsInMin": "It's raining — ends in about {duration}."
+        "bodyEndsInMin": "It's raining — ends in about {duration}.",
+        "bodyEndsInMinIntensity": "It's raining ({intensity}) — ends in about {duration}.",
+        "bodyNowIntensity": "It's raining at the park right now ({intensity})."
       },
       "thunderstorm": {
         "heading": "Thunderstorm warning",
