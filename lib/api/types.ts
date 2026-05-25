@@ -136,9 +136,12 @@ export interface WeatherNowcastStep {
   time: string;
   precipitation: number | null;
   precipitationProbability: number | null;
+  snowfall: number | null;
   weatherCode: number | null;
   windSpeed: number | null;
+  windDirection: number | null;
   windGusts: number | null;
+  visibility: number | null;
 }
 
 export interface WeatherNowcastAttribution {
@@ -156,13 +159,17 @@ export interface WeatherNowcast {
   currentApparentTemperatureC: number | null;
   currentHumidity: number | null;
   currentPrecipitationMm: number | null;
+  currentRainIntensity: RainIntensity | null;
   currentWeatherCode: number | null;
   currentWeatherDescription: string | null;
   isDay: boolean;
   temperatureMaxC: number | null;
   temperatureMinC: number | null;
   currentWindSpeedKmh: number | null;
+  currentWindDirectionDeg: number | null;
   currentWindGustsKmh: number | null;
+  currentSnowfallCm: number | null;
+  currentVisibilityM: number | null;
   // Event timestamps — the backend omits these when no event is forecast,
   // so they may be absent on the wire even though the spec lists them.
   rainStartsAt?: string | null;

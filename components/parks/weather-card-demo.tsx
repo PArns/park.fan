@@ -359,6 +359,10 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
         currentWeatherDescription: 'Clear sky',
         currentWindSpeedKmh: 8,
         currentWindGustsKmh: 14,
+        currentWindDirectionDeg: 225,
+        currentSnowfallCm: 0,
+        currentVisibilityM: 24140,
+        currentRainIntensity: null,
         peakWindGustsKmh: 18,
       };
     case 'rainy':
@@ -375,6 +379,10 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
         currentWeatherDescription: 'Moderate rain',
         currentWindSpeedKmh: 20,
         currentWindGustsKmh: 32,
+        currentWindDirectionDeg: 200,
+        currentSnowfallCm: 0,
+        currentVisibilityM: 5200,
+        currentRainIntensity: 'moderate',
         rainStartsAt: iso(-18),
         rainStartsIntensityMm: 0.6,
         rainStartsIntensity: 'moderate',
@@ -395,6 +403,10 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
         currentWeatherDescription: 'Thunderstorm',
         currentWindSpeedKmh: 48,
         currentWindGustsKmh: 82,
+        currentWindDirectionDeg: 250,
+        currentSnowfallCm: 0,
+        currentVisibilityM: 2400,
+        currentRainIntensity: 'heavy',
         rainStartsAt: iso(-12),
         rainStartsIntensityMm: 1.8,
         rainStartsIntensity: 'heavy',
@@ -405,8 +417,50 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
         stormEndsAt: iso(35),
         peakWindGustsKmh: 95,
       };
+    case 'snowy':
+      return {
+        ...base,
+        isDay: true,
+        currentTemperatureC: -3,
+        currentApparentTemperatureC: -8,
+        currentHumidity: 88,
+        temperatureMaxC: -1,
+        temperatureMinC: -6,
+        currentlyRaining: false,
+        currentPrecipitationMm: 0.5,
+        currentRainIntensity: null,
+        currentWeatherCode: 73,
+        currentWeatherDescription: 'Moderate snow',
+        currentWindSpeedKmh: 16,
+        currentWindDirectionDeg: 340,
+        currentWindGustsKmh: 30,
+        currentSnowfallCm: 0.8,
+        currentVisibilityM: 1200,
+        peakWindGustsKmh: 34,
+      };
+    case 'fog':
+      return {
+        ...base,
+        isDay: false,
+        currentTemperatureC: 4,
+        currentApparentTemperatureC: 3,
+        currentHumidity: 97,
+        temperatureMaxC: 6,
+        temperatureMinC: 3,
+        currentlyRaining: false,
+        currentPrecipitationMm: 0,
+        currentRainIntensity: null,
+        currentWeatherCode: 45,
+        currentWeatherDescription: 'Fog',
+        currentWindSpeedKmh: 4,
+        currentWindDirectionDeg: 90,
+        currentWindGustsKmh: 9,
+        currentSnowfallCm: 0,
+        currentVisibilityM: 400,
+        peakWindGustsKmh: 12,
+      };
     default:
-      return null; // partly / snowy / fog: no nowcast badges
+      return null; // partly: no nowcast badge
   }
 }
 

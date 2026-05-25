@@ -426,7 +426,17 @@
       "liveValueHint": "Valor en directo – actualizado cada 15 min.",
       "precipLabel": "Precip.",
       "windLabel": "Viento",
-      "unitToggleLabel": "Unidad de temperatura"
+      "unitToggleLabel": "Unidad de temperatura",
+      "compass": {
+        "n": "N",
+        "e": "E",
+        "s": "S",
+        "w": "O",
+        "aria": "Viento del {deg}°"
+      },
+      "gustsLabel": "Ráfagas",
+      "visibilityLabel": "Visibilidad",
+      "snowLabel": "Nieve"
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",

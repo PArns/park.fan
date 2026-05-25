@@ -1,15 +1,16 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Cloud, ExternalLink } from 'lucide-react';
+import { Cloud, ExternalLink, Snowflake, Eye, CloudFog } from 'lucide-react';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
+import { WindCompass } from './wind-compass';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { formatTemp, formatWindSpeed, formatPrecip } from '@/lib/utils/temperature';
+import { formatTemp, formatWindSpeed, convertWindSpeed, formatPrecip } from '@/lib/utils/temperature';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
@@ -90,6 +91,23 @@ export function WeatherCard({
   const tempMax = formatTemp(tempMaxC, unit);
   const tempMin = formatTemp(tempMinC, unit);
 
+  // Live conditions row (wind compass + visibility + snow) — only with a nowcast.
+  const windValue = String(Math.round(convertWindSpeed(windKmh, unit)));
+  const windUnitLabel = unit === 'F' ? 'mph' : 'km/h';
+  const gustsKmh = activeNowcast?.currentWindGustsKmh ?? null;
+  const visM = activeNowcast?.currentVisibilityM ?? null;
+  const isFog = visM != null && visM < 1000;
+  const snowCm = activeNowcast?.currentSnowfallCm ?? null;
+  const showSnow = snowCm != null && snowCm > 0;
+  const visLabel =
+    visM != null
+      ? unit === 'F'
+        ? `${(visM / 1609).toFixed(visM < 1609 ? 1 : 0)} mi`
+        : visM >= 1000
+          ? `${Math.round(visM / 1000)} km`
+          : `${visM} m`
+      : null;
+
   return (
     <div
       className={cn(
@@ -146,16 +164,55 @@ export function WeatherCard({
               </div>
             </div>
 
-            <div className="text-muted-foreground space-y-0.5 text-right text-xs">
-              <div>
-                <span className="opacity-70">{t('precipLabel')}: </span>
-                {formatPrecip(precipMm, unit)}
+            {activeNowcast ? (
+              <div className="flex items-center gap-3">
+                <div className="text-muted-foreground space-y-0.5 text-right text-xs">
+                  <div>
+                    <span className="opacity-70">{t('precipLabel')}: </span>
+                    {formatPrecip(precipMm, unit)}
+                  </div>
+                  {gustsKmh != null && (
+                    <div>
+                      <span className="opacity-70">{t('gustsLabel')}: </span>
+                      {formatWindSpeed(gustsKmh, unit)}
+                    </div>
+                  )}
+                  {visLabel && (
+                    <div className="flex items-center justify-end gap-1">
+                      {isFog ? (
+                        <CloudFog className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                      ) : (
+                        <Eye className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                      )}
+                      <span className="opacity-70">{isFog ? t('fog') : t('visibilityLabel')}:</span>{' '}
+                      {visLabel}
+                    </div>
+                  )}
+                  {showSnow && (
+                    <div className="flex items-center justify-end gap-1">
+                      <Snowflake className="h-3.5 w-3.5 shrink-0 text-sky-300" aria-hidden="true" />
+                      <span className="opacity-70">{t('snowLabel')}:</span> {snowCm!.toFixed(1)} cm
+                    </div>
+                  )}
+                </div>
+                <WindCompass
+                  directionDeg={activeNowcast.currentWindDirectionDeg}
+                  speedValue={windValue}
+                  unitLabel={windUnitLabel}
+                />
               </div>
-              <div>
-                <span className="opacity-70">{t('windLabel')}: </span>
-                {formatWindSpeed(windKmh, unit)}
+            ) : (
+              <div className="text-muted-foreground space-y-0.5 text-right text-xs">
+                <div>
+                  <span className="opacity-70">{t('precipLabel')}: </span>
+                  {formatPrecip(precipMm, unit)}
+                </div>
+                <div>
+                  <span className="opacity-70">{t('windLabel')}: </span>
+                  {formatWindSpeed(windKmh, unit)}
+                </div>
               </div>
-            </div>
+            )}
           </div>
 
           {(forecast || (weather.forecast && weather.forecast.length > 0)) && (

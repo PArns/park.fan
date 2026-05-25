@@ -426,7 +426,17 @@
       "liveValueHint": "Live-waarde – elke 15 min ververst.",
       "precipLabel": "Neerslag",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperatuureenheid"
+      "unitToggleLabel": "Temperatuureenheid",
+      "compass": {
+        "n": "N",
+        "e": "O",
+        "s": "Z",
+        "w": "W",
+        "aria": "Wind uit {deg}°"
+      },
+      "gustsLabel": "Windstoten",
+      "visibilityLabel": "Zicht",
+      "snowLabel": "Sneeuw"
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",

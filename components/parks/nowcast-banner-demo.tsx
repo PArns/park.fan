@@ -19,15 +19,32 @@ const DEMO_ATTRIBUTION = {
 
 const inMinIso = (base: number, minutes: number) => new Date(base + minutes * 60_000).toISOString();
 
+/** Naive park-local time ("YYYY-MM-DDTHH:MM") — matches the API's step time format. */
+const localIso = (base: number, minutes: number) =>
+  new Intl.DateTimeFormat('sv-SE', {
+    timeZone: DEMO_PARK.timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })
+    .format(base + minutes * 60_000)
+    .replace(' ', 'T');
+
 /** Build 15-min nowcast steps from a per-slot precipitation profile (mm). */
 const mkSteps = (now: number, mm: number[], code: number) =>
   mm.map((p, i) => ({
-    time: inMinIso(now, i * 15),
+    time: localIso(now, i * 15),
     precipitation: p,
     precipitationProbability: p > 0 ? Math.min(100, Math.round(45 + p * 35)) : 10,
+    snowfall: 0,
     weatherCode: p > 0 ? code : 3,
     windSpeed: 14,
+    windDirection: 220,
     windGusts: 28,
+    visibility: p > 0 ? 4000 : 20000,
   }));
 
 function buildMocks(now: number): Record<string, WeatherNowcast> {
@@ -41,6 +58,10 @@ function buildMocks(now: number): Record<string, WeatherNowcast> {
     currentHumidity: 70,
     temperatureMaxC: 17,
     temperatureMinC: 9,
+    currentRainIntensity: null,
+    currentWindDirectionDeg: 220,
+    currentSnowfallCm: 0,
+    currentVisibilityM: 20000,
     steps: [],
     attribution: DEMO_ATTRIBUTION,
   };

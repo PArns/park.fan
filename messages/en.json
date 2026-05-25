@@ -426,7 +426,17 @@
       "liveValueHint": "Live value – updated every 15 min.",
       "precipLabel": "Precip",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperature unit"
+      "unitToggleLabel": "Temperature unit",
+      "compass": {
+        "n": "N",
+        "e": "E",
+        "s": "S",
+        "w": "W",
+        "aria": "Wind from {deg}°"
+      },
+      "gustsLabel": "Gusts",
+      "visibilityLabel": "Visibility",
+      "snowLabel": "Snow"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

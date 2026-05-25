@@ -279,7 +279,17 @@
       "liveValueHint": "Live-Wert – alle 15 Min aktualisiert.",
       "precipLabel": "Niederschlag",
       "windLabel": "Wind",
-      "unitToggleLabel": "Temperatureinheit"
+      "unitToggleLabel": "Temperatureinheit",
+      "compass": {
+        "n": "N",
+        "e": "O",
+        "s": "S",
+        "w": "W",
+        "aria": "Wind aus {deg}°"
+      },
+      "gustsLabel": "Böen",
+      "visibilityLabel": "Sicht",
+      "snowLabel": "Schnee"
     },
     "weatherNowcast": {
       "updateIn": "Aktualisierung in {countdown}",

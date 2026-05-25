@@ -1,46 +1,64 @@
 'use client';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import type { WeatherNowcastStep } from '@/lib/api/types';
 
 interface NowcastPrecipTimelineProps {
   steps: WeatherNowcastStep[];
-  /** Live clock (ms) so past slots drop off as time passes. */
-  now: number;
+  /** Forecast snapshot time (UTC ISO). Used as the stable reference for "now". */
+  observedAt: string;
+  /** Park timezone — step times are naive park-local, so we compare in that zone. */
+  timezone: string;
   /** Tailwind text-color class for the bars (matches the banner kind). */
   colorClass: string;
-  timezone?: string;
   className?: string;
+}
+
+/** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
+function toLocalIso(ms: number, timezone: string): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })
+    .format(ms)
+    .replace(' ', 'T');
 }
 
 /**
  * Compact bar chart of upcoming precipitation (mm per slot) for the nowcast
- * banner. The slot length and the window are both derived from the data — the
- * chart auto-sizes to the actual rain event instead of a fixed look-ahead.
- * Renders nothing when no rain is forecast in the remaining series.
+ * banner. Step times are naive park-local strings, so we filter/label them in
+ * the park timezone and use `observedAt` (stable across SSR) as the reference
+ * time. The window auto-sizes to the actual rain event. Renders nothing when no
+ * rain is forecast in the remaining series.
  */
 export function NowcastPrecipTimeline({
   steps,
-  now,
-  colorClass,
+  observedAt,
   timezone,
+  colorClass,
   className,
 }: NowcastPrecipTimelineProps) {
   const locale = useLocale();
   const t = useTranslations('parks.weatherNowcast');
 
-  // Derive the slot length from the series rather than assuming 15 min.
+  // Slot length derived from the series (the diff is timezone-independent).
   const slotMs =
-    steps.length >= 2 ? Date.parse(steps[1].time) - Date.parse(steps[0].time) : 0;
+    steps.length >= 2
+      ? Date.parse(steps[1].time) - Date.parse(steps[0].time)
+      : 15 * 60_000;
 
-  const upcoming = steps.filter((s) => {
-    const ts = Date.parse(s.time);
-    return !Number.isNaN(ts) && ts + slotMs > now; // slot not fully in the past
-  });
+  // Drop slots whose 15-min window has fully passed, compared in park-local time.
+  const cutoff = toLocalIso(Date.parse(observedAt) - slotMs, timezone);
+  const upcoming = steps.filter((s) => s.time.slice(0, 16) >= cutoff);
 
-  // Auto-size to the rain event: everything up to the last wet slot, plus one
-  // trailing dry slot for context. No magic window length.
+  // Auto-size to the rain event: up to the last wet slot, plus one dry slot for context.
   const lastWet = upcoming.reduce(
     (idx, s, i) => ((s.precipitation ?? 0) > 0 ? i : idx),
     -1
@@ -51,18 +69,18 @@ export function NowcastPrecipTimeline({
   const peakMm = Math.max(...visible.map((s) => s.precipitation ?? 0));
   if (peakMm <= 0) return null;
 
-  const fmtTime = (iso: string) =>
-    new Date(iso).toLocaleTimeString(locale, {
+  const fmtTime = (localIso: string) =>
+    new Date(`${localIso}Z`).toLocaleTimeString(locale, {
       hour: '2-digit',
       minute: '2-digit',
-      ...(timezone ? { timeZone: timezone } : {}),
+      timeZone: 'UTC',
     });
 
   const until = fmtTime(visible[visible.length - 1].time);
 
   return (
     <div
-      className={cn('mt-3', className)}
+      className={cn(className)}
       role="img"
       aria-label={t('precipTimeline', { until, max: peakMm.toFixed(1) })}
     >

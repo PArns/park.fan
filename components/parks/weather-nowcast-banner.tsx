@@ -88,15 +88,15 @@ function pickBanner(data: WeatherNowcast, now: number): BannerSpec | null {
     };
   }
 
-  // Live rain: derive from absolute timestamps to stay drift-free even when `currentlyRaining`
-  // is up to 15 min stale.
+  // Live rain: the API only sets `rainStartsAt` while rain is still ahead (it's null once
+  // rain is already falling), so a future start means it is NOT raining yet — no matter when
+  // it ends. Without this guard, a forecast that ends hours from now reads as "raining now".
   const rainEndsTs = data.rainEndsAt ? Date.parse(data.rainEndsAt) : NaN;
   const rainStartsTs = data.rainStartsAt ? Date.parse(data.rainStartsAt) : NaN;
+  const rainStartsInFuture = !Number.isNaN(rainStartsTs) && rainStartsTs > now;
+  const rainEndsInFuture = !Number.isNaN(rainEndsTs) && rainEndsTs > now;
 
-  const liveRaining =
-    (!Number.isNaN(rainEndsTs) && rainEndsTs > now) ||
-    (!Number.isNaN(rainStartsTs) && rainStartsTs <= now) ||
-    data.currentlyRaining;
+  const liveRaining = !rainStartsInFuture && (data.currentlyRaining || rainEndsInFuture);
 
   if (liveRaining) {
     return {
@@ -291,13 +291,16 @@ export function WeatherNowcastBanner({
               className="ml-auto"
             />
           </div>
-          <p className="mt-1 text-sm leading-relaxed">{body}</p>
-          <NowcastPrecipTimeline
-            steps={data.steps}
-            now={now}
-            colorClass={styles.iconColor}
-            timezone={data.park.timezone}
-          />
+          <div className="mt-1 flex items-end justify-between gap-4">
+            <p className="text-sm leading-relaxed">{body}</p>
+            <NowcastPrecipTimeline
+              steps={data.steps}
+              observedAt={data.observedAt}
+              timezone={data.park.timezone}
+              colorClass={styles.iconColor}
+              className="w-40 shrink-0"
+            />
+          </div>
         </div>
       </div>
     </section>
