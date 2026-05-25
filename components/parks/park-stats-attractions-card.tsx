@@ -56,6 +56,7 @@ export function ParkStatsAttractionsCard({
               </span>
               <Link
                 href={`/parks/${continent}/${country}/${city}/${parkSlug}/${a.attractionSlug}`}
+                prefetch={false}
                 className="hover:text-primary min-w-0 flex-1 truncate font-medium transition-colors"
               >
                 {a.attractionName}
