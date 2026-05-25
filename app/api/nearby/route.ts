@@ -75,13 +75,14 @@ export async function GET(request: NextRequest) {
 
     const useIpFallback = !hasCoords && !(ipDebug != null && ipDebug !== '');
     if (useIpFallback && isLocalOrUnusableIp(clientIp)) {
-      return NextResponse.json(
-        {
-          error:
-            'Location required. Provide lat and lng, or ensure your request is forwarded with a public client IP (X-Forwarded-For).',
-        },
-        { status: 400 }
-      );
+      // No coords and no usable client IP to geolocate (bots, local/IPv6, privacy proxies).
+      // Return an empty result (200) rather than 400 — the client renders nothing for an
+      // empty list anyway, and a 4xx here only inflates the error-rate metric.
+      return NextResponse.json({
+        type: 'nearby_parks',
+        userLocation: { latitude: 0, longitude: 0 },
+        data: { parks: [], count: 0 },
+      });
     }
 
     const response = await fetch(apiUrl.toString(), {
