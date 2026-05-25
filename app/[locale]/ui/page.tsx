@@ -86,6 +86,8 @@ import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { DistanceBadge } from '@/components/common/distance-badge';
 import { OperatingHoursDisplay } from '@/components/common/operating-hours-display';
+import { MetricBar } from '@/components/common/metric-bar';
+import { TrainingStatusBadge } from '@/components/common/training-status-badge';
 
 // Gap components
 import { TrendIndicator } from '@/components/parks/trend-indicator';
@@ -2441,6 +2443,41 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 </span>
               </div>
             </Row>
+          </Sub>
+        </Section>
+
+        {/* ── Admin / System Components ───────────────────────────────── */}
+        <Section title="Admin / System Components" icon={Activity}>
+          <ComponentLabel name="MetricBar" file="components/common/metric-bar.tsx" />
+          <Sub title="MetricBar — auto-colors at 60% (amber) and 80% (red)">
+            <div className="w-full max-w-sm space-y-3">
+              <MetricBar label="CPU" value={18} max={28} unit=" GB" pct={64} />
+              <MetricBar label="Memory" value={18} max={28} unit=" GB" pct={64} />
+              <MetricBar
+                label="Disk"
+                value={101}
+                max={915}
+                unit=" GB"
+                pct={11}
+                thresholds={[75, 90]}
+              />
+              <MetricBar label="Connections" value={34} max={100} unit="" pct={34} />
+              <MetricBar label="Usage (high)" value={85} max={100} unit="%" />
+              <MetricBar label="Usage (critical)" value={97} max={100} unit="%" />
+            </div>
+          </Sub>
+
+          <ComponentLabel
+            name="TrainingStatusBadge"
+            file="components/common/training-status-badge.tsx"
+          />
+          <Sub title="TrainingStatusBadge — all states">
+            <div className="flex flex-wrap gap-4">
+              <TrainingStatusBadge state="training" label="v20260525_0824 · 4m 12s" />
+              <TrainingStatusBadge state="idle" label="v20260524_0600" />
+              <TrainingStatusBadge state="error" label="reset on startup" />
+              <TrainingStatusBadge state="unknown" />
+            </div>
           </Sub>
         </Section>
 
