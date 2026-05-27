@@ -3,10 +3,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  Loader2,
   MapPin,
   Pencil,
   Search,
@@ -17,9 +19,27 @@ import { CrowdBadge, EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_l
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import type { ParksListResponse, SearchResponse, SearchResult } from '@/lib/api/admin-stats';
+import type { ParkListItem, ParksListResponse, SearchResponse, SearchResult } from '@/lib/api/admin-stats';
 
 const PAGE_SIZE = 25;
+
+type SortKey = 'name' | 'location' | 'status' | 'avgWait' | 'rides';
+
+function sortValue(park: ParkListItem, key: SortKey): string | number {
+  const stats = park.analytics?.statistics;
+  switch (key) {
+    case 'name':
+      return park.name.toLowerCase();
+    case 'location':
+      return [park.country, park.city].filter(Boolean).join(' ').toLowerCase();
+    case 'status':
+      return park.status;
+    case 'avgWait':
+      return stats?.avgWaitTime ?? -1;
+    case 'rides':
+      return stats?.totalAttractions ?? -1;
+  }
+}
 
 const TYPE_STYLES: Record<string, string> = {
   park: 'bg-primary/15 text-primary',
@@ -89,11 +109,53 @@ function SearchResults({ results }: { results: SearchResult[] }) {
   );
 }
 
+function SortHeader({
+  label,
+  column,
+  active,
+  dir,
+  onSort,
+  align = 'left',
+}: {
+  label: string;
+  column: SortKey;
+  active: boolean;
+  dir: 'asc' | 'desc';
+  onSort: (key: SortKey) => void;
+  align?: 'left' | 'right';
+}) {
+  const Icon = !active ? ArrowUpDown : dir === 'asc' ? ArrowUp : ArrowDown;
+  return (
+    <th className={cn('px-4 py-2 font-medium', align === 'right' && 'text-right')}>
+      <button
+        onClick={() => onSort(column)}
+        className={cn(
+          'hover:text-foreground inline-flex items-center gap-1 transition-colors',
+          align === 'right' && 'flex-row-reverse',
+          active && 'text-foreground'
+        )}
+      >
+        {label}
+        <Icon className={cn('h-3 w-3', !active && 'opacity-40')} />
+      </button>
+    </th>
+  );
+}
+
 export default function ParksPage() {
   const [query, setQuery] = useState('');
   const [debounced, setDebounced] = useState('');
   const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<{ key: SortKey; dir: 'asc' | 'desc' }>({
+    key: 'name',
+    dir: 'asc',
+  });
   const [searchData, setSearchData] = useState<SearchResponse | null>(null);
+
+  function toggleSort(key: SortKey) {
+    setSort((s) => (s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'asc' }));
+    setPage(1);
+  }
 
   useEffect(() => {
     const id = setTimeout(() => setDebounced(query.trim()), 300);
@@ -120,11 +182,26 @@ export default function ParksPage() {
     };
   }, [debounced, searchActive]);
 
-  const listEndpoint = searchActive ? null : `/api/parks-list?page=${page}&limit=${PAGE_SIZE}`;
+  // The dataset is small (~155 parks), so load it all once and sort/paginate
+  // client-side — the API only supports sorting by name/openStatus.
+  const listEndpoint = searchActive ? null : '/api/parks-list?page=1&limit=500';
   const list = useAdminFetch<ParksListResponse>(listEndpoint);
 
   const totalParks = list.data?.pagination.total;
-  const totalPages = list.data?.pagination.totalPages ?? 1;
+
+  const sorted = useMemo(() => {
+    const rows = list.data?.data ?? [];
+    const factor = sort.dir === 'asc' ? 1 : -1;
+    return [...rows].sort((a, b) => {
+      const av = sortValue(a, sort.key);
+      const bv = sortValue(b, sort.key);
+      if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * factor;
+      return String(av).localeCompare(String(bv)) * factor;
+    });
+  }, [list.data, sort]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
+  const pageItems = sorted.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const searchCount = useMemo(
     () =>
@@ -185,16 +262,16 @@ export default function ParksPage() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-border/60 text-muted-foreground border-b text-left text-xs uppercase">
-                      <th className="px-4 py-2 font-medium">Park</th>
-                      <th className="px-4 py-2 font-medium">Location</th>
-                      <th className="px-4 py-2 font-medium">Status</th>
-                      <th className="px-4 py-2 text-right font-medium">Avg wait</th>
-                      <th className="px-4 py-2 text-right font-medium">Rides</th>
+                      <SortHeader label="Park" column="name" active={sort.key === 'name'} dir={sort.dir} onSort={toggleSort} />
+                      <SortHeader label="Location" column="location" active={sort.key === 'location'} dir={sort.dir} onSort={toggleSort} />
+                      <SortHeader label="Status" column="status" active={sort.key === 'status'} dir={sort.dir} onSort={toggleSort} />
+                      <SortHeader label="Avg wait" column="avgWait" active={sort.key === 'avgWait'} dir={sort.dir} onSort={toggleSort} align="right" />
+                      <SortHeader label="Rides" column="rides" active={sort.key === 'rides'} dir={sort.dir} onSort={toggleSort} align="right" />
                       <th className="px-4 py-2 text-right font-medium">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {list.data.data.map((park) => {
+                    {pageItems.map((park) => {
                       const stats = park.analytics?.statistics;
                       return (
                         <tr
@@ -246,17 +323,17 @@ export default function ParksPage() {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={!list.data.pagination.hasPrevious || list.loading}
+                disabled={page <= 1}
                 className="border-border/60 hover:border-primary/40 flex h-8 items-center gap-1 rounded-lg border px-3 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40"
               >
                 <ChevronLeft className="h-4 w-4" /> Prev
               </button>
               <button
-                onClick={() => setPage((p) => p + 1)}
-                disabled={!list.data.pagination.hasNext || list.loading}
+                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                disabled={page >= totalPages}
                 className="border-border/60 hover:border-primary/40 flex h-8 items-center gap-1 rounded-lg border px-3 text-sm transition-colors disabled:cursor-not-allowed disabled:opacity-40"
               >
-                {list.loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null} Next
+                Next
                 <ChevronRight className="h-4 w-4" />
               </button>
             </div>
