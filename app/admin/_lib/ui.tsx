@@ -148,10 +148,13 @@ export function CrowdBadge({ level }: { level: string }) {
 }
 
 export function StatusBadge({ status }: { status: string }) {
-  const ok = ['healthy', 'connected', 'operational', 'active', 'good'].includes(
-    status?.toLowerCase()
-  );
-  const warn = ['warning', 'degraded'].includes(status?.toLowerCase());
+  const lower = status?.toLowerCase() ?? '';
+  const warn = ['warning', 'degraded', 'pending'].some((k) => lower.includes(k));
+  const ok =
+    !warn &&
+    ['healthy', 'connected', 'operational', 'active', 'good', 'online', 'ok'].some((k) =>
+      lower.includes(k)
+    );
   const style = ok
     ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/20'
     : warn
