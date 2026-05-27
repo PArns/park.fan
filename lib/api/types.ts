@@ -1130,3 +1130,20 @@ export interface CountrySummary {
   avgPeakMonths: number[];
   avgQuietMonths: number[];
 }
+
+// ============================================================================
+// Popular Parks  (GET /v1/parks/popular)
+// Parks ranked by tracked request volume — mirrors the cache-prewarm signal.
+// ============================================================================
+
+export interface PopularPark {
+  rank: number;
+  requests: number;
+  id: string;
+  name: string;
+  slug: string;
+  url: string | null;
+  country: string | null;
+  city: string | null;
+  continent: string | null;
+}

@@ -30,6 +30,7 @@ import {
   CalendarCheck,
   Snowflake,
   Sigma,
+  Trophy,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -43,6 +44,7 @@ import type {
   QueueStatusResponse,
   QueueEntry,
 } from '@/lib/api/admin';
+import type { PopularPark } from '@/lib/api/types';
 
 const SESSION_KEY = 'parkfan_admin_pass';
 const REFRESH_INTERVAL = 5;
@@ -255,6 +257,31 @@ function StatusBar({
   );
 }
 
+function PopularParkRow({ park }: { park: PopularPark }) {
+  const location = [park.city, park.country].filter(Boolean).join(', ');
+  const content = (
+    <div className="border-border/60 bg-card hover:border-primary/40 flex items-center gap-3 rounded-lg border px-3 py-2 text-sm transition-colors">
+      <span className="bg-primary/15 text-primary flex h-6 w-6 shrink-0 items-center justify-center rounded-full font-mono text-xs font-semibold tabular-nums">
+        {park.rank}
+      </span>
+      <div className="min-w-0 flex-1">
+        <div className="text-foreground truncate font-medium">{park.name}</div>
+        {location && <div className="text-muted-foreground truncate text-xs">{location}</div>}
+      </div>
+      <span className="text-muted-foreground shrink-0 font-mono text-xs tabular-nums">
+        {park.requests.toLocaleString()}
+      </span>
+    </div>
+  );
+  return park.url ? (
+    <a href={park.url} target="_blank" rel="noopener noreferrer" className="block">
+      {content}
+    </a>
+  ) : (
+    content
+  );
+}
+
 // ─── section heading ──────────────────────────────────────────────────────────
 
 function Section({
@@ -334,6 +361,7 @@ function QueueRow({ q }: { q: QueueEntry }) {
 function Dashboard({
   data,
   queueData,
+  popularData,
   savedPass,
   onLogout,
   onRefresh,
@@ -343,6 +371,7 @@ function Dashboard({
 }: {
   data: SystemHealthResponse;
   queueData: QueueStatusResponse | null;
+  popularData: PopularPark[] | null;
   savedPass: string;
   onLogout: () => void;
   onRefresh: () => void;
@@ -896,6 +925,17 @@ function Dashboard({
           </Section>
         )}
 
+        {/* Popular Parks */}
+        {popularData && popularData.length > 0 && (
+          <Section icon={Trophy} title="Popular Parks">
+            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {popularData.map((park) => (
+                <PopularParkRow key={park.id} park={park} />
+              ))}
+            </div>
+          </Section>
+        )}
+
         {/* Quick Actions */}
         <Section icon={Activity} title="Quick Actions">
           <div className="flex flex-wrap gap-3">
@@ -943,6 +983,7 @@ export default function AdminPage() {
   );
   const [data, setData] = useState<SystemHealthResponse | null>(null);
   const [queueData, setQueueData] = useState<QueueStatusResponse | null>(null);
+  const [popularData, setPopularData] = useState<PopularPark[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -956,9 +997,10 @@ export default function AdminPage() {
 
     try {
       const passParam = encodeURIComponent(pass);
-      const [healthRes, queueRes] = await Promise.all([
+      const [healthRes, queueRes, popularRes] = await Promise.all([
         fetch(`/api/admin/system-health?pass=${passParam}`),
         fetch(`/api/admin/queue-status?pass=${passParam}`),
+        fetch(`/api/parks/popular?limit=20`),
       ]);
 
       if (healthRes.status === 401 || healthRes.status === 403) {
@@ -972,12 +1014,14 @@ export default function AdminPage() {
         if (!background) setError(`API error: ${healthRes.status}`);
         return;
       }
-      const [healthJson, queueJson] = await Promise.all([
+      const [healthJson, queueJson, popularJson] = await Promise.all([
         healthRes.json() as Promise<SystemHealthResponse>,
         queueRes.ok ? (queueRes.json() as Promise<QueueStatusResponse>) : Promise.resolve(null),
+        popularRes.ok ? (popularRes.json() as Promise<PopularPark[]>) : Promise.resolve(null),
       ]);
       setData(healthJson);
       setQueueData(queueJson);
+      setPopularData(popularJson);
       setLastUpdated(new Date());
     } catch {
       if (!background) setError('Connection error.');
@@ -1050,6 +1094,7 @@ export default function AdminPage() {
     <Dashboard
       data={data}
       queueData={queueData}
+      popularData={popularData}
       savedPass={savedPass}
       onLogout={handleLogout}
       onRefresh={handleRefresh}

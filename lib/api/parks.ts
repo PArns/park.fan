@@ -1,7 +1,7 @@
 import { cache } from 'react';
 import { api } from './client';
 import { withServerCache } from './server-cache';
-import type { ParkWithAttractions, AttractionResponse } from './types';
+import type { ParkWithAttractions, AttractionResponse, PopularPark } from './types';
 
 const PARK_MAX_AGE = 300; // 5 min — matches API Redis/Cloudflare cache
 
@@ -52,3 +52,15 @@ export const getAttractionByGeoPath = cache(
     );
   }
 );
+
+/**
+ * Get the most-requested parks, ranked by tracked request volume.
+ * Mirrors the popularity signal that drives cache prewarming.
+ * @param limit clamped to 1–100 by the API (default 20)
+ */
+export const getPopularParks = cache(async (limit = 20): Promise<PopularPark[]> => {
+  return api.get<PopularPark[]>('/v1/parks/popular', {
+    params: { limit },
+    cache: 'no-store',
+  });
+});
