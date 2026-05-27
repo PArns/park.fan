@@ -43,34 +43,47 @@ function StatusPill({ status }: { status: string }) {
   );
 }
 
+function SearchResultRow({ r }: { r: SearchResult }) {
+  // Shows/restaurants have no own page — fall back to the parent park.
+  const target = r.url ?? r.parentPark?.url ?? null;
+  const inner = (
+    <>
+      <span
+        className={cn(
+          'w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-xs font-medium capitalize',
+          TYPE_STYLES[r.type] ?? TYPE_STYLES.location
+        )}
+      >
+        {r.type}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium">{r.name}</p>
+        <p className="text-muted-foreground truncate text-xs">
+          {r.parentPark ? `${r.parentPark.name} · ` : ''}
+          {[r.city, r.country].filter(Boolean).join(', ')}
+        </p>
+      </div>
+      {r.status && <StatusPill status={r.status} />}
+      {target && <ExternalLink className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
+    </>
+  );
+  const className =
+    'flex items-center gap-3 rounded-lg border border-border/60 bg-card px-3 py-2';
+  return target ? (
+    <Link href={target} className={cn(className, 'hover:border-primary/40')}>
+      {inner}
+    </Link>
+  ) : (
+    <div className={className}>{inner}</div>
+  );
+}
+
 function SearchResults({ results }: { results: SearchResult[] }) {
   if (results.length === 0) return <EmptyPanel label="No matches." />;
   return (
     <div className="space-y-1">
       {results.map((r) => (
-        <Link
-          key={`${r.type}-${r.id}`}
-          href={r.url}
-          className="hover:border-primary/40 flex items-center gap-3 rounded-lg border border-border/60 bg-card px-3 py-2"
-        >
-          <span
-            className={cn(
-              'w-20 shrink-0 rounded-full px-2 py-0.5 text-center text-xs font-medium capitalize',
-              TYPE_STYLES[r.type] ?? TYPE_STYLES.location
-            )}
-          >
-            {r.type}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-medium">{r.name}</p>
-            <p className="text-muted-foreground truncate text-xs">
-              {r.parentPark ? `${r.parentPark.name} · ` : ''}
-              {[r.city, r.country].filter(Boolean).join(', ')}
-            </p>
-          </div>
-          {r.status && <StatusPill status={r.status} />}
-          <ExternalLink className="text-muted-foreground h-3.5 w-3.5 shrink-0" />
-        </Link>
+        <SearchResultRow key={`${r.type}-${r.id}`} r={r} />
       ))}
     </div>
   );

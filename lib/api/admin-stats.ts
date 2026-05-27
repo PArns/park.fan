@@ -234,7 +234,7 @@ export interface SearchResult {
   id: string;
   name: string;
   slug: string;
-  url: string;
+  url?: string;
   continent?: string;
   country?: string;
   city?: string;
