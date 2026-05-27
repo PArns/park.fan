@@ -31,20 +31,43 @@ interface NavItem {
   icon: LucideIcon;
 }
 
-const NAV: NavItem[] = [
-  { href: '/admin', label: 'Overview', icon: LayoutDashboard },
-  { href: '/admin/system', label: 'System', icon: Server },
-  { href: '/admin/queues', label: 'Queues', icon: ListChecks },
-  { href: '/admin/ml', label: 'ML Models', icon: Brain },
-  { href: '/admin/analytics', label: 'Analytics', icon: Activity },
-  { href: '/admin/parks', label: 'Parks', icon: MapPin },
-  { href: '/admin/actions', label: 'Maintenance', icon: Wrench },
+interface NavGroup {
+  label?: string;
+  items: NavItem[];
+}
+
+const NAV_GROUPS: NavGroup[] = [
+  {
+    items: [{ href: '/admin', label: 'Overview', icon: LayoutDashboard }],
+  },
+  {
+    label: 'Monitoring',
+    items: [
+      { href: '/admin/system', label: 'System', icon: Server },
+      { href: '/admin/queues', label: 'Queues', icon: ListChecks },
+      { href: '/admin/analytics', label: 'Analytics', icon: Activity },
+    ],
+  },
+  {
+    label: 'Machine Learning',
+    items: [{ href: '/admin/ml', label: 'ML Models', icon: Brain }],
+  },
+  {
+    label: 'Management',
+    items: [{ href: '/admin/parks', label: 'Parks', icon: MapPin }],
+  },
+  {
+    label: 'Operations',
+    items: [{ href: '/admin/actions', label: 'Maintenance', icon: Wrench }],
+  },
 ];
 
+const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((g) => g.items);
+
 function navTitle(pathname: string): string {
-  const match = [...NAV].sort((a, b) => b.href.length - a.href.length).find((n) =>
-    n.href === '/admin' ? pathname === '/admin' : pathname.startsWith(n.href)
-  );
+  const match = [...NAV_ITEMS]
+    .sort((a, b) => b.href.length - a.href.length)
+    .find((n) => (n.href === '/admin' ? pathname === '/admin' : pathname.startsWith(n.href)));
   return match?.label ?? 'Admin';
 }
 
@@ -137,25 +160,34 @@ function Sidebar() {
           <p className="text-sm font-semibold">Admin</p>
         </div>
       </div>
-      <nav className="flex-1 space-y-0.5 px-3 py-2">
-        {NAV.map(({ href, label, icon: Icon }) => {
-          const active = href === '/admin' ? pathname === '/admin' : pathname.startsWith(href);
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
-                active
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-foreground/70 hover:bg-card hover:text-foreground'
-              )}
-            >
-              <Icon className="h-4 w-4 shrink-0" />
-              {label}
-            </Link>
-          );
-        })}
+      <nav className="flex-1 space-y-4 overflow-y-auto px-3 py-2">
+        {NAV_GROUPS.map((group, i) => (
+          <div key={group.label ?? i} className="space-y-0.5">
+            {group.label && (
+              <p className="text-muted-foreground/70 px-3 pt-1 pb-1 text-[10px] font-semibold tracking-widest uppercase">
+                {group.label}
+              </p>
+            )}
+            {group.items.map(({ href, label, icon: Icon }) => {
+              const active = href === '/admin' ? pathname === '/admin' : pathname.startsWith(href);
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  className={cn(
+                    'flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                    active
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-foreground/70 hover:bg-card hover:text-foreground'
+                  )}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        ))}
       </nav>
     </aside>
   );
