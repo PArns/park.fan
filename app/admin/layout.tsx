@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
+import { AdminShell } from './_components/admin-shell';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,7 +26,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
       >
-        {children}
+        <AdminShell>{children}</AdminShell>
       </body>
     </html>
   );
