@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Content-heavy pages (e.g. /howto, which runs GlossaryInject over ~220 terms) can exceed
+  // the 60s default when the build host is under load generating thousands of static pages.
+  staticPageGenerationTimeout: 180,
   compiler: {
     // Remove React properties that are not needed in production
     reactRemoveProperties: process.env.NODE_ENV === 'production',

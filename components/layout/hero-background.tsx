@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HERO_IMAGES } from '@/lib/hero-images';
+import { backgroundImageLoader } from '@/lib/utils/image-loader';
 
 interface RandomHeroImageProps {
   imageSrc?: string;
@@ -30,9 +31,9 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       src={finalImage}
       alt="Park Background"
       fill
+      loader={backgroundImageLoader}
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
-      quality={90}
       className={`object-cover opacity-90 ${noAnimation ? '' : 'will-change-transform'}`}
       style={
         noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }

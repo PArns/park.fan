@@ -31,6 +31,30 @@ export interface GeolocationContextValue {
 
 const GeolocationContext = createContext<GeolocationContextValue | null>(null);
 
+/**
+ * Persists that the user has previously granted location. Lets us silently reuse a
+ * persisted grant on browsers whose Permissions API can't report geolocation state
+ * (notably Safari), instead of re-prompting via the banner every session.
+ */
+const GEO_OPT_IN_KEY = 'pf_geo_optin';
+
+function setGeoOptIn(value: boolean): void {
+  try {
+    if (value) localStorage.setItem(GEO_OPT_IN_KEY, '1');
+    else localStorage.removeItem(GEO_OPT_IN_KEY);
+  } catch {
+    // localStorage unavailable (private mode / blocked) — ignore.
+  }
+}
+
+function hasGeoOptIn(): boolean {
+  try {
+    return localStorage.getItem(GEO_OPT_IN_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+
 interface GeolocationProviderProps {
   children: ReactNode;
 }
@@ -73,20 +97,23 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
         setError(false);
         setPermissionDenied(false);
         setPermissionGranted(true);
+        setGeoOptIn(true);
       },
       (err) => {
         setLoading(false);
 
         if (err.code === 1) {
-          // User explicitly denied → clear granted flag
+          // User explicitly denied → clear granted flag and the persisted opt-in
           setPermissionDenied(true);
           setPermissionGranted(false);
           setError(true);
+          setGeoOptIn(false);
           console.warn('[Geolocation] Permission denied by user');
         } else {
           // code=2 (unavailable) or code=3 (timeout): the browser had permission but
           // couldn't get a fix. Mark as granted so banners don't reappear.
           setPermissionGranted(true);
+          setGeoOptIn(true);
           console.warn(
             '[Geolocation]',
             err.code === 3 ? 'Timeout' : 'Position unavailable',
@@ -108,17 +135,24 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     requestLocation();
   }, [requestLocation]);
 
-  // On mount: check if permission already granted, request silently if so.
+  // On mount: check the persisted permission state, request silently if usable.
   useEffect(() => {
     let cancelled = false;
 
-    isGeolocationGranted().then((granted) => {
+    queryGeolocationPermission().then((state) => {
       if (cancelled) return;
       setInitialCheckDone(true);
-      if (granted) {
+      if (state === 'granted') {
+        setPermissionGranted(true);
+        requestLocation();
+      } else if (state === null && hasGeoOptIn()) {
+        // Permissions API can't report geolocation state (e.g. Safari). The user opted
+        // in on a previous visit, so silently reuse a possibly-persisted grant: no-op if
+        // the browser kept it, native prompt only if the browser actually reset.
         setPermissionGranted(true);
         requestLocation();
       }
+      // 'denied' / 'prompt', or null without opt-in: stay not-granted (banner shows).
     });
 
     return () => {
@@ -153,16 +187,21 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
   return <GeolocationContext.Provider value={value}>{children}</GeolocationContext.Provider>;
 }
 
-async function isGeolocationGranted(): Promise<boolean> {
+/**
+ * Returns the persisted geolocation permission state, or `null` when the Permissions API
+ * can't report it (unsupported / throws — notably Safari for `geolocation`). Callers use
+ * `null` together with the opt-in flag to decide whether to attempt a silent reuse.
+ */
+async function queryGeolocationPermission(): Promise<PermissionState | null> {
   if (typeof navigator === 'undefined' || !navigator.permissions?.query) {
-    return false;
+    return null;
   }
   try {
     const status = await navigator.permissions.query({ name: 'geolocation' });
-    return status.state === 'granted';
+    return status.state;
   } catch (e) {
     console.warn('[Geolocation] Permissions API error:', e);
-    return false;
+    return null;
   }
 }
 
