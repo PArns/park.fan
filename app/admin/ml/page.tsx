@@ -296,7 +296,7 @@ export default function MlPage() {
                     </div>
                     {health.data.ml.comparison.rows.slice(0, 10).map((r, i) => (
                       <div key={i} className="grid grid-cols-4 gap-1 border-b border-border/40 py-1 text-xs last:border-0">
-                        <span className="text-muted-foreground">{r.targetDate?.slice(5)}</span>
+                        <span className="text-muted-foreground">{r.targetDate?.slice(5, 10)}</span>
                         <span className={`text-right font-mono ${r.model === 'tft' ? 'text-blue-400' : 'text-orange-400'}`}>{r.model}</span>
                         <span className={`text-right font-mono tabular-nums ${maeColor(Number(r.mae))}`}>{Number(r.mae).toFixed(1)}</span>
                         <span className="text-right font-mono tabular-nums text-muted-foreground">{Number(r.bias).toFixed(1)}</span>
