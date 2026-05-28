@@ -17,13 +17,9 @@ interface LocationBannerProps {
 export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const { permissionGranted, loading, refresh } = useGeolocation();
+  const { permissionGranted, loading, initialCheckDone, refresh } = useGeolocation();
 
-  // Render optimistically (shown) during SSR and the initial client render, before the
-  // async permission check resolves. This keeps the banner in the initial HTML so it
-  // doesn't get inserted afterwards and push the sections below it down (CLS). Once we
-  // know location is granted (or a request is in flight), it collapses away.
-  if (permissionGranted || loading) {
+  if (!initialCheckDone || permissionGranted || loading) {
     return null;
   }
 
