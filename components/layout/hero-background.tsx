@@ -43,7 +43,11 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       onLoad={noAnimation ? undefined : () => setAnimate(true)}
       className={`object-cover opacity-90 ${animating ? 'will-change-transform' : ''}`}
       style={animating ? { animation: 'ken-burns 22s ease-in-out infinite alternate' } : undefined}
-      sizes="(max-width: 768px) 100vw, 115vw"
+      // Decorative full-bleed background under two gradient overlays + opacity-90 + ken-burns,
+      // so a slightly smaller (upscaled) image is imperceptible. Under-declaring the mobile
+      // width pulls a smaller srcset candidate (lighter LCP on slow connections); desktop
+      // keeps the full 115vw rendition untouched.
+      sizes="(max-width: 768px) 80vw, 115vw"
     />
   );
 }
