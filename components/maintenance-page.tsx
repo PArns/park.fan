@@ -13,9 +13,9 @@ export function MaintenancePage({ onRetry }: MaintenancePageProps) {
   const handleRetry = onRetry ?? (() => window.location.reload());
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
+    <div className="bg-background fixed inset-0 z-[100] flex flex-col items-center justify-center px-4 text-center">
       {/* Hero logo – light/dark variant based on theme */}
-      <div className="relative mb-8 h-24 w-24 sm:h-32 sm:w-32">
+      <div className="relative mb-10 h-40 w-40 sm:h-56 sm:w-56">
         {/* SVGs don't benefit from next/image optimization — use <img> directly */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -31,7 +31,7 @@ export function MaintenancePage({ onRetry }: MaintenancePageProps) {
         />
       </div>
 
-      <h1 className="mb-2 text-2xl font-bold">{t('maintenanceTitle')}</h1>
+      <h1 className="mb-3 text-3xl font-bold">{t('maintenanceTitle')}</h1>
       <p className="text-muted-foreground mb-8 max-w-md text-base">
         {t('maintenanceDescription')}
       </p>
