@@ -32,7 +32,9 @@ const nextConfig: NextConfig = {
     // Inline the page CSS into the HTML <style> so the initial render no longer waits on a
     // separate render-blocking stylesheet request. Works with the Turbopack build (unlike
     // optimizeCss/Beasties, which is webpack-only and was a no-op here).
-    inlineCss: true,
+    // Disabled in development: Turbopack's HMR replaces the <style> block on each CSS
+    // update, causing a FOUC on all CSS-styled elements (hero card, park cards, etc.).
+    inlineCss: process.env.NODE_ENV === 'production',
   },
   images: {
     formats: ['image/avif', 'image/webp'],
