@@ -5,7 +5,7 @@ import type React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ChevronRight } from 'lucide-react';
-import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { trackHeroViewed } from '@/lib/analytics/umami';
@@ -123,7 +123,7 @@ export function HeroWithNearby({
   const tHome = useTranslations('home');
   const tCommon = useTranslations('common');
   const locale = useLocale();
-  const { data: nearbyData } = useNearbyParks({ radiusInMeters: 200, limit: 6 });
+  const { data: nearbyData } = useHomeNearbyParks();
 
   const inPark = nearbyData?.type === 'in_park' ? (nearbyData.data as NearbyAttractionsData) : null;
   let park = inPark?.park;

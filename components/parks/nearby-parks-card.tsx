@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
-import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useHomeNearbyParks, HOME_NEARBY_LIMIT } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
@@ -24,9 +24,6 @@ import {
   trackNearbyParksLoaded,
   trackNearbyInParkDetected,
 } from '@/lib/analytics/umami';
-
-/** Number of nearby parks requested — skeleton renders the same count to avoid layout shift. */
-const NEARBY_LIMIT = 6;
 
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
@@ -52,10 +49,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     data: nearbyData,
     isLoading: dataLoading,
     error: dataError,
-  } = useNearbyParks({
-    radiusInMeters: 200,
-    limit: NEARBY_LIMIT,
-  });
+  } = useHomeNearbyParks();
 
   const hasTrackedGranted = useRef(false);
   const hasTrackedDenied = useRef(false);
@@ -147,7 +141,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
           {t('loadingLocation')}
         </h2>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: NEARBY_LIMIT }).map((_, i) => (
+          {Array.from({ length: HOME_NEARBY_LIMIT }).map((_, i) => (
             <li key={i}>
               <ParkCardNearbySkeleton />
             </li>
