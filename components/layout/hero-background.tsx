@@ -12,6 +12,10 @@ interface RandomHeroImageProps {
 
 export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
+  // Defer the ken-burns transform until the image has painted. Animating (transforming)
+  // the LCP element during its initial render is a known LCP-delay anti-pattern, so we
+  // render it static first and start the effect on load.
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     if (imageSrc) return;
@@ -26,6 +30,8 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
 
   if (!finalImage) return null;
 
+  const animating = !noAnimation && animate;
+
   return (
     <Image
       src={finalImage}
@@ -34,10 +40,9 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       loader={backgroundImageLoader}
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
-      className={`object-cover opacity-90 ${noAnimation ? '' : 'will-change-transform'}`}
-      style={
-        noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
-      }
+      onLoad={noAnimation ? undefined : () => setAnimate(true)}
+      className={`object-cover opacity-90 ${animating ? 'will-change-transform' : ''}`}
+      style={animating ? { animation: 'ken-burns 22s ease-in-out infinite alternate' } : undefined}
       sizes="(max-width: 768px) 100vw, 115vw"
     />
   );

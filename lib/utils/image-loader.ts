@@ -9,6 +9,6 @@ import type { ImageLoaderProps } from 'next/image';
  * Quality values must be listed in next.config `images.qualities`.
  */
 export function backgroundImageLoader({ src, width }: ImageLoaderProps): string {
-  const quality = width <= 828 ? 75 : width <= 1200 ? 85 : 90;
+  const quality = width <= 828 ? 65 : width <= 1200 ? 85 : 90;
   return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
 }
