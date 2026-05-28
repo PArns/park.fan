@@ -83,8 +83,32 @@ function useTypewriter(
   const { displayText, phraseIndex, phase, started, cursorVisible } = state;
 
   useEffect(() => {
-    const id = setTimeout(() => dispatch({ type: 'start' }), 3000);
-    return () => clearTimeout(id);
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    // Start only once the page has loaded and the main thread is idle, so the typewriter
+    // (which re-renders the input every ~150ms) never competes with the critical render
+    // (LCP / hydration) on slow connections.
+    const begin = () => {
+      const ric = window.requestIdleCallback;
+      if (ric) {
+        idleId = ric(() => dispatch({ type: 'start' }), { timeout: 3000 });
+      } else {
+        timeoutId = setTimeout(() => dispatch({ type: 'start' }), 1500);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      begin();
+    } else {
+      window.addEventListener('load', begin, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', begin);
+      if (idleId !== undefined) window.cancelIdleCallback?.(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
   }, []);
 
   useEffect(() => {

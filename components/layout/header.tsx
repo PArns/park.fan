@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { LocaleSwitcher } from '@/components/common/locale-switcher';
 import { SearchCommand } from '@/components/search/search-bar';
-import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { NearbyParksData } from '@/types/nearby';
 
@@ -25,7 +25,7 @@ export function Header() {
   const locale = useLocale();
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const pathname = usePathname();
-  const { data: nearbyData } = useNearbyParks({ radiusInMeters: 200, limit: 6 });
+  const { data: nearbyData } = useHomeNearbyParks();
   const parks =
     nearbyData?.type === 'nearby_parks' ? (nearbyData.data as NearbyParksData).parks : [];
   const nearestPark = parks[0];

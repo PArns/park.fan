@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HERO_IMAGES } from '@/lib/hero-images';
+import { backgroundImageLoader } from '@/lib/utils/image-loader';
 
 interface RandomHeroImageProps {
   imageSrc?: string;
@@ -11,6 +12,10 @@ interface RandomHeroImageProps {
 
 export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
   const [randomImage, setRandomImage] = useState<string | null>(null);
+  // Defer the ken-burns transform until the image has painted. Animating (transforming)
+  // the LCP element during its initial render is a known LCP-delay anti-pattern, so we
+  // render it static first and start the effect on load.
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     if (imageSrc) return;
@@ -25,19 +30,24 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
 
   if (!finalImage) return null;
 
+  const animating = !noAnimation && animate;
+
   return (
     <Image
       src={finalImage}
       alt="Park Background"
       fill
+      loader={backgroundImageLoader}
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
-      quality={90}
-      className="object-cover opacity-90"
-      style={
-        noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
-      }
-      sizes="(max-width: 768px) 100vw, 115vw"
+      onLoad={noAnimation ? undefined : () => setAnimate(true)}
+      className={`object-cover opacity-90 ${animating ? 'will-change-transform' : ''}`}
+      style={animating ? { animation: 'ken-burns 22s ease-in-out infinite alternate' } : undefined}
+      // Decorative full-bleed background under two gradient overlays + opacity-90 + ken-burns,
+      // so a slightly smaller (upscaled) image is imperceptible. Under-declaring the mobile
+      // width pulls a smaller srcset candidate (lighter LCP on slow connections); desktop
+      // keeps the full 115vw rendition untouched.
+      sizes="(max-width: 768px) 80vw, 115vw"
     />
   );
 }

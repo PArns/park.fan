@@ -145,8 +145,10 @@ export default async function HomePage({ params }: HomePageProps) {
 
   return (
     <div className="flex flex-col">
-      {/* Preload LCP image — React 19 hoists <link> to <head> from Server Components */}
-      <link rel="preload" as="image" href="/logo-big.svg" />
+      {/* Preload LCP image — React 19 hoists <link> to <head> from Server Components.
+          Scoped to ≥640px: the logo is hidden on mobile, so preloading there only
+          competes with the real mobile LCP element (hero background / heading). */}
+      <link rel="preload" as="image" href="/logo-big.svg" media="(min-width: 640px)" />
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-14 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
@@ -208,9 +210,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
         )}
 
-        {/* Live wait times ticker */}
+        {/* Live wait times ticker — hidden on phones (decorative, absolute → no layout impact) */}
         {tickerData && tickerData.items.length > 0 && (
-          <div className="absolute right-0 bottom-0 left-0">
+          <div className="absolute right-0 bottom-0 left-0 hidden md:block">
             <LiveWaitTicker initialItems={tickerData.items} />
           </div>
         )}

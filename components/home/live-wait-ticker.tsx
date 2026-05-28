@@ -80,8 +80,20 @@ interface LiveWaitTickerProps {
 export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const t = useTranslations('home.hero');
   const [paused, setPaused] = useState(false);
+  // Only the >=md ticker is shown (see page.tsx). Gate data fetching on the same breakpoint
+  // so phones don't fetch/poll for a ticker they never see. Starts false on SSR + first client
+  // render (initialData still renders), flips to true on desktop after mount.
+  const [isDesktop, setIsDesktop] = useState(false);
   const pausedRef = useRef(false);
   const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   const { data } = useQuery({
     queryKey: ['ticker'],
@@ -91,6 +103,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
       return res.json() as Promise<{ items: TickerItem[] }>;
     },
     initialData: { items: initialItems },
+    enabled: isDesktop,
     refetchInterval: 300_000,
     staleTime: 300_000,
   });
@@ -98,6 +111,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const items: TickerItem[] = data?.items ?? initialItems;
 
   const posXRef = useRef(0);
+  const singleWidthRef = useRef(0);
 
   useEffect(() => {
     pausedRef.current = paused;
@@ -122,14 +136,24 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     const el = trackRef.current;
     if (!el || items.length === 0) return;
 
-    // Duration scales with item count so each item spends ~4s on screen
-    const durationS = Math.max(30, items.length * 4);
+    // Measure the loop width once (and on real size changes) rather than every frame:
+    // reading scrollWidth inside the rAF loop — right after the previous frame's transform
+    // write — forces a synchronous layout (reflow) on every frame.
+    const measure = () => {
+      singleWidthRef.current = el.scrollWidth / 2;
+    };
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(el);
+
+    // Duration scales with item count so each item spends ~6s on screen (slow, calm scroll)
+    const durationS = Math.max(45, items.length * 6);
     let lastTs: number | null = null;
     let raf: number;
 
     const step = (ts: number) => {
       if (visibleRef.current) {
-        const singleWidth = el.scrollWidth / 2;
+        const singleWidth = singleWidthRef.current;
         if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
           const dt = (ts - lastTs) / 1000;
           const speed = singleWidth / durationS;
@@ -144,7 +168,10 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     };
 
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+    };
   }, [items]);
 
   if (items.length === 0) return null;
