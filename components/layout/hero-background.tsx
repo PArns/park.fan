@@ -3,21 +3,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { HERO_IMAGES } from '@/lib/hero-images';
+import { backgroundImageLoader } from '@/lib/utils/image-loader';
 
 interface RandomHeroImageProps {
   imageSrc?: string;
   noAnimation?: boolean;
-}
-
-/**
- * Quality scales with the requested rendition width: small (mobile) widths get lower
- * quality where it's imperceptible and the LCP byte savings matter most on slow networks;
- * large (desktop) widths stay at full quality. Values must be listed in next.config
- * `images.qualities`.
- */
-function heroImageLoader({ src, width }: { src: string; width: number }): string {
-  const quality = width <= 828 ? 75 : width <= 1200 ? 85 : 90;
-  return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
 }
 
 export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps) {
@@ -41,7 +31,7 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       src={finalImage}
       alt="Park Background"
       fill
-      loader={heroImageLoader}
+      loader={backgroundImageLoader}
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
       className={`object-cover opacity-90 ${noAnimation ? '' : 'will-change-transform'}`}
