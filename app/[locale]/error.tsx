@@ -2,9 +2,11 @@
 
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { AlertTriangle, Home, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { MaintenancePage } from '@/components/maintenance-page';
+import { API_MAINTENANCE_DIGEST } from '@/lib/api/client';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -13,10 +15,28 @@ interface ErrorProps {
 
 export default function Error({ error, reset }: ErrorProps) {
   const t = useTranslations('common');
+  const router = useRouter();
+
+  // Cloudflare 1033 (Argo Tunnel down) → the whole backend is unreachable.
+  // `digest` is the reliable signal in production (Next.js redacts the message
+  // for server-thrown errors); the message check covers development.
+  const isMaintenance = error.digest === API_MAINTENANCE_DIGEST || /1033/.test(error.message);
 
   useEffect(() => {
     console.error(error);
   }, [error]);
+
+  // Redirect every failing route to the dedicated maintenance page.
+  useEffect(() => {
+    if (isMaintenance) {
+      router.replace('/maintenance');
+    }
+  }, [isMaintenance, router]);
+
+  // Render the maintenance UI immediately so there is no flash while redirecting.
+  if (isMaintenance) {
+    return <MaintenancePage onRetry={reset} />;
+  }
 
   return (
     <div className="flex flex-1 flex-col items-center justify-center px-4 py-24 text-center">
