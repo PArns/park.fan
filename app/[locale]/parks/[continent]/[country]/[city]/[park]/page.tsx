@@ -8,6 +8,7 @@ import { Clock, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { catchNonFatal } from '@/lib/api/client';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
@@ -67,7 +68,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
     };
   }
 
-  const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
+  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
 
   if (!park) {
     return { title: tNotFound('park') };
@@ -154,7 +155,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   }
 
   // Fetch park data and holidays (holidays are optional)
-  const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
+  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
 
   if (!park) {
     notFound();

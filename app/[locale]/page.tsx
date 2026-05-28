@@ -19,6 +19,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { getGlobalStats, getGeoLiveStats, getTickerData } from '@/lib/api/analytics';
+import { catchNonFatal } from '@/lib/api/client';
 import { LiveWaitTicker } from '@/components/home/live-wait-ticker';
 import { getGeoStructure } from '@/lib/api/discovery';
 
@@ -127,10 +128,10 @@ export default async function HomePage({ params }: HomePageProps) {
 
   // Fetch data in parallel (ML dashboard fetched inside MLStatsSection to keep Suspense boundaries clean)
   const [stats, geoData, liveStats, tickerData] = await Promise.all([
-    getGlobalStats().catch(() => null),
-    getGeoStructure(300).catch(() => null),
-    getGeoLiveStats().catch(() => null),
-    getTickerData().catch(() => null),
+    catchNonFatal(getGlobalStats()),
+    catchNonFatal(getGeoStructure(300)),
+    catchNonFatal(getGeoLiveStats()),
+    catchNonFatal(getTickerData()),
   ]);
 
   const continents =

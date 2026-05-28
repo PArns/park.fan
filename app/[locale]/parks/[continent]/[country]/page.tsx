@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
+import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { SectionHeader } from '@/components/common/section-header';
@@ -82,8 +83,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
 
   // Fetch cities and summary in parallel — summary failure is non-fatal
   const [response, summary] = await Promise.all([
-    getCitiesWithParks(continent, country).catch(() => null),
-    getCountrySummary(continent, country).catch(() => null),
+    catchNonFatal(getCitiesWithParks(continent, country)),
+    catchNonFatal(getCountrySummary(continent, country)),
   ]);
 
   if (!response || !response.data || response.data.length === 0) {

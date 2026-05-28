@@ -83,6 +83,17 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
   return response.json() as Promise<T>;
 }
 
+/**
+ * Like `.catch(() => null)` but re-throws maintenance errors so the error boundary
+ * can detect API outages and render the maintenance page.
+ */
+export function catchNonFatal<T>(promise: Promise<T>): Promise<T | null> {
+  return promise.catch((err: unknown) => {
+    if (err instanceof ApiError && err.isMaintenance) throw err;
+    return null;
+  });
+}
+
 // Convenience methods
 export const api = {
   get: <T>(endpoint: string, options?: FetchOptions) =>

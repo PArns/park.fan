@@ -5,6 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
+import { catchNonFatal } from '@/lib/api/client';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
@@ -63,8 +64,8 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
   // Fetch countries in this continent
   const [rawCountries, liveStats] = await Promise.all([
-    getCountriesInContinent(continent).catch(() => null),
-    getGeoLiveStats().catch(() => null),
+    catchNonFatal(getCountriesInContinent(continent)),
+    catchNonFatal(getGeoLiveStats()),
   ]);
 
   if (!rawCountries) {

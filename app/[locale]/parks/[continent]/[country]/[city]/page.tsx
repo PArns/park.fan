@@ -5,6 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
+import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
 
   // Try to get city name from API data, fallback to slug formatting
-  const response = await getCitiesWithParks(continent, country).catch(() => null);
+  const response = await catchNonFatal(getCitiesWithParks(continent, country));
   const city = response?.data?.find((c) => c.slug === citySlug);
   const cityName =
     city?.name || citySlug.charAt(0).toUpperCase() + citySlug.slice(1).replace(/-/g, ' ');
@@ -81,7 +82,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const tExplore = await getTranslations('explore');
 
   // Fetch cities with parks
-  const response = await getCitiesWithParks(continent, country).catch(() => null);
+  const response = await catchNonFatal(getCitiesWithParks(continent, country));
 
   if (!response || !response.data) {
     notFound();

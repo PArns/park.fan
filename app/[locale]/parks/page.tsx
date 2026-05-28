@@ -4,6 +4,7 @@ import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
+import { catchNonFatal } from '@/lib/api/client';
 import { GeoLocationCard } from '@/components/common/geo-location-card';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
@@ -52,8 +53,8 @@ export default async function ParksPage({ params }: ParksPageProps) {
 
   // Fetch continents and live stats
   const [continents, liveStats] = await Promise.all([
-    getContinents().catch(() => []),
-    getGeoLiveStats().catch(() => null),
+    catchNonFatal(getContinents()).then((r) => r ?? []),
+    catchNonFatal(getGeoLiveStats()),
   ]);
 
   const continentItems = continents.map((continent) => {

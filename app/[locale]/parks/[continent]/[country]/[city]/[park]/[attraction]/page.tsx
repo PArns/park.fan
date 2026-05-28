@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
+import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
@@ -156,8 +157,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   // Fetch park and attraction data in parallel
   const [park, attractionData] = await Promise.all([
-    getParkByGeoPath(continent, country, city, parkSlug).catch(() => null),
-    getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug).catch(() => null),
+    catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug)),
+    catchNonFatal(getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug)),
   ]);
 
   // Find attraction in park data and merge static fields from the detail endpoint
