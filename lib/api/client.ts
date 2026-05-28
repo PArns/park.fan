@@ -14,13 +14,35 @@ export interface FetchOptions extends RequestInit {
   next?: { revalidate?: number | false; tags?: string[] };
 }
 
+/**
+ * Digest forwarded to the error boundary so it can render the maintenance page.
+ * In production Next.js redacts `error.message` for server-thrown errors but
+ * preserves a custom `digest`, so this is the reliable cross-environment signal.
+ */
+export const API_MAINTENANCE_DIGEST = 'API_MAINTENANCE_1033';
+
+/**
+ * Detects a Cloudflare "Argo Tunnel error" (error code 1033), which is served as
+ * an HTML page (usually HTTP 530) when the API origin tunnel is unreachable.
+ */
+function isCloudflareTunnelDown(body: string): boolean {
+  if (!body) return false;
+  return /(error[\s_]*1033|error code:\s*1033)/i.test(body);
+}
+
 export class ApiError extends Error {
+  digest?: string;
+
   constructor(
     public status: number,
-    message: string
+    message: string,
+    public isMaintenance = false
   ) {
     super(message);
     this.name = 'ApiError';
+    if (isMaintenance) {
+      this.digest = API_MAINTENANCE_DIGEST;
+    }
   }
 }
 
@@ -51,7 +73,12 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
   });
 
   if (!response.ok) {
-    throw new ApiError(response.status, `API Error: ${response.statusText}`);
+    const body = await response.text().catch(() => '');
+    throw new ApiError(
+      response.status,
+      `API Error: ${response.statusText}`,
+      isCloudflareTunnelDown(body)
+    );
   }
 
   return response.json() as Promise<T>;

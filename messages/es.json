@@ -80,7 +80,9 @@
     "updating": "Actualizando...",
     "errorPageTitle": "Algo salió mal",
     "errorPageDescription": "Se produjo un error inesperado. Por favor, inténtalo de nuevo.",
-    "goHome": "Ir a la página de inicio"
+    "goHome": "Ir a la página de inicio",
+    "maintenanceTitle": "¡Volvemos pronto!",
+    "maintenanceDescription": "park.fan no está disponible temporalmente debido a tareas de mantenimiento. Inténtalo de nuevo en unos minutos."
   },
   "home": {
     "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",

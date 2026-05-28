@@ -197,6 +197,37 @@
   }
 }
 
+/* Maintenance page: slowly drifting aurora blobs for a living gradient */
+@keyframes maintenance-drift-1 {
+  0%,
+  100% {
+    transform: translate(-12%, -8%) scale(1);
+  }
+  50% {
+    transform: translate(14%, 12%) scale(1.25);
+  }
+}
+
+@keyframes maintenance-drift-2 {
+  0%,
+  100% {
+    transform: translate(10%, 6%) scale(1.1);
+  }
+  50% {
+    transform: translate(-16%, -12%) scale(0.9);
+  }
+}
+
+@keyframes maintenance-drift-3 {
+  0%,
+  100% {
+    transform: translate(0%, 10%) scale(1);
+  }
+  50% {
+    transform: translate(12%, -14%) scale(1.2);
+  }
+}
+
 /* Theme Park Specific Colors */
 :root {
   /* Crowd Level Colors – green band: teal → emerald → green; then orange → rose → red */
