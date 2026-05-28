@@ -28,15 +28,69 @@ interface ActionDef {
 }
 
 const ACTIONS: ActionDef[] = [
-  { key: 'flush', label: 'Flush Cache', icon: Trash2, path: 'flush-cache', description: 'Clear the Redis response cache.' },
-  { key: 'train', label: 'Train ML', icon: Play, path: 'train-ml-model', description: 'Kick off a CatBoost training run.' },
-  { key: 'sync', label: 'Sync Parks', icon: RotateCcw, path: 'sync-parks', description: 'Re-sync parks from upstream providers.' },
-  { key: 'enrich', label: 'Enrich Parks', icon: Sparkles, path: 'enrich-parks', description: 'Backfill park metadata and geocoding.' },
-  { key: 'validate', label: 'Validate & Repair', icon: Wrench, path: 'validate-and-repair-parks', description: 'Validate and repair park records.' },
-  { key: 'gaps', label: 'Fill Schedule Gaps', icon: CalendarClock, path: 'fill-schedule-gaps', description: 'Fill missing operating-schedule entries.' },
-  { key: 'holidays', label: 'Sync Holidays', icon: CalendarCheck, path: 'sync-holidays', description: 'Refresh public-holiday data.' },
-  { key: 'seasonal', label: 'Detect Seasonal', icon: Snowflake, path: 'detect-seasonal', description: 'Re-run seasonal pattern detection.' },
-  { key: 'accuracy', label: 'Aggregate Accuracy', icon: Sigma, path: 'aggregate-accuracy-stats', description: 'Recompute ML accuracy aggregates.' },
+  {
+    key: 'flush',
+    label: 'Flush Cache',
+    icon: Trash2,
+    path: 'flush-cache',
+    description: 'Clear the Redis response cache.',
+  },
+  {
+    key: 'train',
+    label: 'Train ML',
+    icon: Play,
+    path: 'train-ml-model',
+    description: 'Kick off a CatBoost training run.',
+  },
+  {
+    key: 'sync',
+    label: 'Sync Parks',
+    icon: RotateCcw,
+    path: 'sync-parks',
+    description: 'Re-sync parks from upstream providers.',
+  },
+  {
+    key: 'enrich',
+    label: 'Enrich Parks',
+    icon: Sparkles,
+    path: 'enrich-parks',
+    description: 'Backfill park metadata and geocoding.',
+  },
+  {
+    key: 'validate',
+    label: 'Validate & Repair',
+    icon: Wrench,
+    path: 'validate-and-repair-parks',
+    description: 'Validate and repair park records.',
+  },
+  {
+    key: 'gaps',
+    label: 'Fill Schedule Gaps',
+    icon: CalendarClock,
+    path: 'fill-schedule-gaps',
+    description: 'Fill missing operating-schedule entries.',
+  },
+  {
+    key: 'holidays',
+    label: 'Sync Holidays',
+    icon: CalendarCheck,
+    path: 'sync-holidays',
+    description: 'Refresh public-holiday data.',
+  },
+  {
+    key: 'seasonal',
+    label: 'Detect Seasonal',
+    icon: Snowflake,
+    path: 'detect-seasonal',
+    description: 'Re-run seasonal pattern detection.',
+  },
+  {
+    key: 'accuracy',
+    label: 'Aggregate Accuracy',
+    icon: Sigma,
+    path: 'aggregate-accuracy-stats',
+    description: 'Recompute ML accuracy aggregates.',
+  },
 ];
 
 export default function ActionsPage() {

@@ -76,9 +76,11 @@ function TrainingProgress({ startedAt }: { startedAt: string }) {
 
 function MetricsRow({ label, m }: { label: string; m: MlMetrics }) {
   return (
-    <div className="grid grid-cols-5 gap-2 border-b border-border/40 py-2 text-sm last:border-0">
+    <div className="border-border/40 grid grid-cols-5 gap-2 border-b py-2 text-sm last:border-0">
       <span className="text-muted-foreground">{label}</span>
-      <span className={`text-right font-mono tabular-nums ${maeColor(m.mae)}`}>{m.mae.toFixed(2)}</span>
+      <span className={`text-right font-mono tabular-nums ${maeColor(m.mae)}`}>
+        {m.mae.toFixed(2)}
+      </span>
       <span className="text-right font-mono tabular-nums">{m.rmse.toFixed(2)}</span>
       <span className="text-right font-mono tabular-nums">{m.mape.toFixed(1)}%</span>
       <span className="text-right font-mono tabular-nums">{m.r2Score.toFixed(3)}</span>
@@ -178,8 +180,16 @@ export default function MlPage() {
 
       <Section icon={Brain} title="Active model">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          <StatCard label="Version" value={<span className="text-xl">{model.current.version}</span>} sub={model.current.modelType} />
-          <StatCard label="Model age" value={formatAge(d.system.modelAge)} sub={`${model.current.fileSizeMB.toFixed(1)} MB`} />
+          <StatCard
+            label="Version"
+            value={<span className="text-xl">{model.current.version}</span>}
+            sub={model.current.modelType}
+          />
+          <StatCard
+            label="Model age"
+            value={formatAge(d.system.modelAge)}
+            sub={`${model.current.fileSizeMB.toFixed(1)} MB`}
+          />
           <StatCard
             label="Live MAE"
             value={perf.live.mae.toFixed(2)}
@@ -203,7 +213,7 @@ export default function MlPage() {
       <Section icon={GitCompare} title="Accuracy (training vs live)">
         <Card className="border-border/60">
           <CardContent className="pt-5">
-            <div className="grid grid-cols-5 gap-2 border-b border-border/60 pb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">
+            <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
               <span />
               <span className="text-right">MAE</span>
               <span className="text-right">RMSE</span>
@@ -213,13 +223,24 @@ export default function MlPage() {
             <MetricsRow label="Training" m={perf.training} />
             <MetricsRow
               label="Live"
-              m={{ mae: perf.live.mae, rmse: perf.live.rmse, mape: perf.live.mape, r2Score: perf.live.r2Score }}
+              m={{
+                mae: perf.live.mae,
+                rmse: perf.live.rmse,
+                mape: perf.live.mape,
+                r2Score: perf.live.r2Score,
+              }}
             />
             <div className="grid grid-cols-2 gap-3 pt-3 text-sm sm:grid-cols-4">
-              <KeyVal label="Predictions" value={perf.live.totalPredictions.toLocaleString('en-GB')} />
+              <KeyVal
+                label="Predictions"
+                value={perf.live.totalPredictions.toLocaleString('en-GB')}
+              />
               <KeyVal label="Unique parks" value={perf.live.uniqueParks} />
               <KeyVal label="Unique rides" value={perf.live.uniqueAttractions} />
-              <KeyVal label="Train samples" value={model.trainingData.trainSamples.toLocaleString('en-GB')} />
+              <KeyVal
+                label="Train samples"
+                value={model.trainingData.trainSamples.toLocaleString('en-GB')}
+              />
             </div>
           </CardContent>
         </Card>
@@ -238,12 +259,20 @@ export default function MlPage() {
           <div className="grid grid-cols-2 gap-3 sm:col-span-3 sm:grid-cols-3">
             <Card className="border-border/60">
               <CardContent className="pt-5">
-                <KeyVal label="Training MAE" value={perf.drift.trainingMae.toFixed(2)} valueClass={maeColor(perf.drift.trainingMae)} />
+                <KeyVal
+                  label="Training MAE"
+                  value={perf.drift.trainingMae.toFixed(2)}
+                  valueClass={maeColor(perf.drift.trainingMae)}
+                />
               </CardContent>
             </Card>
             <Card className="border-border/60">
               <CardContent className="pt-5">
-                <KeyVal label="Live MAE" value={perf.drift.liveMae.toFixed(2)} valueClass={maeColor(perf.drift.liveMae)} />
+                <KeyVal
+                  label="Live MAE"
+                  value={perf.drift.liveMae.toFixed(2)}
+                  valueClass={maeColor(perf.drift.liveMae)}
+                />
               </CardContent>
             </Card>
             <Card className="border-border/60">
@@ -262,7 +291,9 @@ export default function MlPage() {
             {/* TFT model info */}
             <Card className="border-border/60">
               <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">Active model</CardTitle>
+                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+                  Active model
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-1 text-sm">
                 {health.data.ml.tft.activeModel ? (
@@ -270,11 +301,15 @@ export default function MlPage() {
                     <p className="font-mono text-base">{health.data.ml.tft.activeModel.version}</p>
                     {health.data.ml.tft.activeModel.trainedAt && (
                       <p className="text-muted-foreground text-xs">
-                        trained {new Date(health.data.ml.tft.activeModel.trainedAt).toLocaleString('en-GB')}
+                        trained{' '}
+                        {new Date(health.data.ml.tft.activeModel.trainedAt).toLocaleString('en-GB')}
                       </p>
                     )}
                     {health.data.ml.tft.activeModel.horizon && (
-                      <p className="text-muted-foreground text-xs">horizon {health.data.ml.tft.activeModel.horizon}d · scope {health.data.ml.tft.activeModel.parkScope ?? 'all'}</p>
+                      <p className="text-muted-foreground text-xs">
+                        horizon {health.data.ml.tft.activeModel.horizon}d · scope{' '}
+                        {health.data.ml.tft.activeModel.parkScope ?? 'all'}
+                      </p>
                     )}
                   </>
                 ) : (
@@ -286,25 +321,45 @@ export default function MlPage() {
             {/* TFT vs CatBoost scoreboard */}
             <Card className="border-border/60">
               <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">vs CatBoost scoreboard</CardTitle>
+                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+                  vs CatBoost scoreboard
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 {health.data.ml.comparison?.rows?.length > 0 ? (
                   <div className="space-y-0">
-                    <div className="grid grid-cols-4 gap-1 border-b border-border/60 pb-1 text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                      <span>Date</span><span className="text-right">Model</span><span className="text-right">MAE</span><span className="text-right">Bias</span>
+                    <div className="border-border/60 text-muted-foreground grid grid-cols-4 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+                      <span>Date</span>
+                      <span className="text-right">Model</span>
+                      <span className="text-right">MAE</span>
+                      <span className="text-right">Bias</span>
                     </div>
                     {health.data.ml.comparison.rows.slice(0, 10).map((r, i) => (
-                      <div key={i} className="grid grid-cols-4 gap-1 border-b border-border/40 py-1 text-xs last:border-0">
+                      <div
+                        key={i}
+                        className="border-border/40 grid grid-cols-4 gap-1 border-b py-1 text-xs last:border-0"
+                      >
                         <span className="text-muted-foreground">{r.targetDate?.slice(5, 10)}</span>
-                        <span className={`text-right font-mono ${r.model === 'tft' ? 'text-blue-400' : 'text-orange-400'}`}>{r.model}</span>
-                        <span className={`text-right font-mono tabular-nums ${maeColor(Number(r.mae))}`}>{Number(r.mae).toFixed(1)}</span>
-                        <span className="text-right font-mono tabular-nums text-muted-foreground">{Number(r.bias).toFixed(1)}</span>
+                        <span
+                          className={`text-right font-mono ${r.model === 'tft' ? 'text-blue-400' : 'text-orange-400'}`}
+                        >
+                          {r.model}
+                        </span>
+                        <span
+                          className={`text-right font-mono tabular-nums ${maeColor(Number(r.mae))}`}
+                        >
+                          {Number(r.mae).toFixed(1)}
+                        </span>
+                        <span className="text-muted-foreground text-right font-mono tabular-nums">
+                          {Number(r.bias).toFixed(1)}
+                        </span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-muted-foreground text-xs">{health.data.ml.comparison?.note ?? 'No comparison data yet'}</p>
+                  <p className="text-muted-foreground text-xs">
+                    {health.data.ml.comparison?.note ?? 'No comparison data yet'}
+                  </p>
                 )}
               </CardContent>
             </Card>
@@ -314,8 +369,16 @@ export default function MlPage() {
 
       <Section icon={Sparkles} title="Per-attraction accuracy">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <PerformerList title="Best predictions" icon={TrendingUp} performers={insights.topPerformers} />
-          <PerformerList title="Worst predictions" icon={TrendingDown} performers={insights.bottomPerformers} />
+          <PerformerList
+            title="Best predictions"
+            icon={TrendingUp}
+            performers={insights.topPerformers}
+          />
+          <PerformerList
+            title="Worst predictions"
+            icon={TrendingDown}
+            performers={insights.bottomPerformers}
+          />
         </div>
       </Section>
 
@@ -330,7 +393,9 @@ export default function MlPage() {
             <CardContent className="space-y-2">
               {anomalies.data ? (
                 <>
-                  <span className="text-3xl font-bold tabular-nums">{anomalies.data.totalAnomalies}</span>
+                  <span className="text-3xl font-bold tabular-nums">
+                    {anomalies.data.totalAnomalies}
+                  </span>
                   <div className="flex flex-wrap gap-1.5">
                     {Object.entries(anomalies.data.bySeverity).map(([sev, n]) => (
                       <span key={sev} className="flex items-center gap-1">
@@ -360,7 +425,7 @@ export default function MlPage() {
                 <EmptyPanel label="No active alerts." />
               ) : (
                 activeAlerts.map((a) => (
-                  <div key={a.id} className="rounded-lg border border-border/60 bg-card px-3 py-2">
+                  <div key={a.id} className="border-border/60 bg-card rounded-lg border px-3 py-2">
                     <div className="flex items-center justify-between gap-2">
                       <span className="text-sm font-medium">{a.title}</span>
                       <SeverityBadge severity={a.severity} />

@@ -34,7 +34,9 @@ function QueueRow({ q }: { q: QueueEntry }) {
     <div
       className={`flex items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm transition-colors ${hasActivity ? 'border-border/60 bg-card' : 'border-border/30 bg-card/40'}`}
     >
-      <span className={`font-mono text-xs ${hasActivity ? 'text-foreground' : 'text-muted-foreground'}`}>
+      <span
+        className={`font-mono text-xs ${hasActivity ? 'text-foreground' : 'text-muted-foreground'}`}
+      >
         {q.name}
       </span>
       <div className="flex items-center gap-1">

@@ -45,11 +45,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     setIsInPark,
   } = useGeolocation();
 
-  const {
-    data: nearbyData,
-    isLoading: dataLoading,
-    error: dataError,
-  } = useHomeNearbyParks();
+  const { data: nearbyData, isLoading: dataLoading, error: dataError } = useHomeNearbyParks();
 
   const hasTrackedGranted = useRef(false);
   const hasTrackedDenied = useRef(false);

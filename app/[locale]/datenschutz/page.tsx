@@ -581,14 +581,14 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                 Rechtsgrundlage für die Verarbeitung präziser Standortdaten ist Ihre Einwilligung
                 (Art. 6 Abs. 1 lit. a DSGVO), die Sie jederzeit über die Standorteinstellungen Ihres
                 Browsers widerrufen können. Die IP-basierte Näherung sowie die Bereitstellung der
-                Funktion beruhen auf unserem berechtigten Interesse an einem nützlichen Angebot (Art.
-                6 Abs. 1 lit. f DSGVO).
+                Funktion beruhen auf unserem berechtigten Interesse an einem nützlichen Angebot
+                (Art. 6 Abs. 1 lit. f DSGVO).
               </p>
 
               <h3 className="mt-8 mb-4 text-2xl font-semibold">Lokaler Speicher (Local Storage)</h3>
               <p className="mb-4">
-                Für technisch notwendige und von Ihnen angeforderte Funktionen speichern wir Daten im
-                lokalen Speicher (Local Storage) Ihres Browsers – beispielsweise um Ihre
+                Für technisch notwendige und von Ihnen angeforderte Funktionen speichern wir Daten
+                im lokalen Speicher (Local Storage) Ihres Browsers – beispielsweise um Ihre
                 Einstellungen und Ihre Standortfreigabe zu merken oder abgerufene Ergebnisse
                 zwischenzuspeichern, damit wiederholte Anfragen vermieden werden. Dabei handelt es
                 sich ausschließlich um First-Party-Daten ohne Tracking, die auf Ihrem Endgerät
@@ -1119,17 +1119,15 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
                 collected.
               </p>
 
-              <h3 className="mt-8 mb-4 text-2xl font-semibold">
-                Location and "Parks Nearby"
-              </h3>
+              <h3 className="mt-8 mb-4 text-2xl font-semibold">Location and "Parks Nearby"</h3>
               <p className="mb-4">
                 To show you theme parks near you, we determine your approximate location. If you
                 explicitly allow location access in your browser, we use your device's precise GPS
                 coordinates. If you do not grant access, your approximate location is derived from
                 your IP address (GeoIP). The coordinates or the IP-based approximation are
-                transmitted exclusively to our own interface (api.park.fan) in order to calculate the
-                nearest parks. This location data is not permanently stored on our servers and is not
-                shared with third parties.
+                transmitted exclusively to our own interface (api.park.fan) in order to calculate
+                the nearest parks. This location data is not permanently stored on our servers and
+                is not shared with third parties.
               </p>
               <p className="mb-4">
                 The legal basis for processing precise location data is your consent (Art. 6 para. 1
@@ -1142,12 +1140,12 @@ export default async function DatenschutzPage({ params }: DatenschutzPageProps) 
               <p className="mb-4">
                 For technically necessary functions and functions you have requested, we store data
                 in your browser's local storage – for example, to remember your settings and your
-                location opt-in, or to cache retrieved results so repeated requests are avoided. This
-                is exclusively first-party data without tracking; it remains on your device and is
-                not transmitted to us or to third parties. You can delete this data at any time via
-                your browser settings. Because access to this storage is strictly necessary to
-                provide the functions you have requested, no consent is required for it (§ 25 para. 2
-                no. 2 TTDSG); processing is based on Art. 6 para. 1 lit. f GDPR.
+                location opt-in, or to cache retrieved results so repeated requests are avoided.
+                This is exclusively first-party data without tracking; it remains on your device and
+                is not transmitted to us or to third parties. You can delete this data at any time
+                via your browser settings. Because access to this storage is strictly necessary to
+                provide the functions you have requested, no consent is required for it (§ 25 para.
+                2 no. 2 TTDSG); processing is based on Art. 6 para. 1 lit. f GDPR.
               </p>
 
               <h2 className="border-border mt-12 mb-6 border-b pb-3 text-3xl font-bold">

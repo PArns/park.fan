@@ -53,10 +53,7 @@ export default function AnalyticsPage() {
                   .sort((a, b) => b.openParkCount - a.openParkCount)
                   .slice(0, 6)
                   .map((country) => (
-                    <div
-                      key={country.slug}
-                      className="flex items-center justify-between text-xs"
-                    >
+                    <div key={country.slug} className="flex items-center justify-between text-xs">
                       <span className="text-muted-foreground capitalize">
                         {country.slug.replace(/-/g, ' ')}
                       </span>

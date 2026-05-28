@@ -19,7 +19,12 @@ import { CrowdBadge, EmptyPanel, ErrorPanel, LoadingPanel, Section } from '../_l
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import type { ParkListItem, ParksListResponse, SearchResponse, SearchResult } from '@/lib/api/admin-stats';
+import type {
+  ParkListItem,
+  ParksListResponse,
+  SearchResponse,
+  SearchResult,
+} from '@/lib/api/admin-stats';
 
 const PAGE_SIZE = 25;
 
@@ -87,8 +92,7 @@ function SearchResultRow({ r }: { r: SearchResult }) {
       {target && <ExternalLink className="text-muted-foreground h-3.5 w-3.5 shrink-0" />}
     </>
   );
-  const className =
-    'flex items-center gap-3 rounded-lg border border-border/60 bg-card px-3 py-2';
+  const className = 'flex items-center gap-3 rounded-lg border border-border/60 bg-card px-3 py-2';
   return target ? (
     <Link href={target} className={cn(className, 'hover:border-primary/40')}>
       {inner}
@@ -153,7 +157,9 @@ export default function ParksPage() {
   const [searchData, setSearchData] = useState<SearchResponse | null>(null);
 
   function toggleSort(key: SortKey) {
-    setSort((s) => (s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'asc' }));
+    setSort((s) =>
+      s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'asc' }
+    );
     setPage(1);
   }
 
@@ -262,11 +268,43 @@ export default function ParksPage() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-border/60 text-muted-foreground border-b text-left text-xs uppercase">
-                      <SortHeader label="Park" column="name" active={sort.key === 'name'} dir={sort.dir} onSort={toggleSort} />
-                      <SortHeader label="Location" column="location" active={sort.key === 'location'} dir={sort.dir} onSort={toggleSort} />
-                      <SortHeader label="Status" column="status" active={sort.key === 'status'} dir={sort.dir} onSort={toggleSort} />
-                      <SortHeader label="Avg wait" column="avgWait" active={sort.key === 'avgWait'} dir={sort.dir} onSort={toggleSort} align="right" />
-                      <SortHeader label="Rides" column="rides" active={sort.key === 'rides'} dir={sort.dir} onSort={toggleSort} align="right" />
+                      <SortHeader
+                        label="Park"
+                        column="name"
+                        active={sort.key === 'name'}
+                        dir={sort.dir}
+                        onSort={toggleSort}
+                      />
+                      <SortHeader
+                        label="Location"
+                        column="location"
+                        active={sort.key === 'location'}
+                        dir={sort.dir}
+                        onSort={toggleSort}
+                      />
+                      <SortHeader
+                        label="Status"
+                        column="status"
+                        active={sort.key === 'status'}
+                        dir={sort.dir}
+                        onSort={toggleSort}
+                      />
+                      <SortHeader
+                        label="Avg wait"
+                        column="avgWait"
+                        active={sort.key === 'avgWait'}
+                        dir={sort.dir}
+                        onSort={toggleSort}
+                        align="right"
+                      />
+                      <SortHeader
+                        label="Rides"
+                        column="rides"
+                        active={sort.key === 'rides'}
+                        dir={sort.dir}
+                        onSort={toggleSort}
+                        align="right"
+                      />
                       <th className="px-4 py-2 text-right font-medium">Actions</th>
                     </tr>
                   </thead>
@@ -296,13 +334,15 @@ export default function ParksPage() {
                             {stats ? `${stats.avgWaitTime}'` : '—'}
                           </td>
                           <td className="text-muted-foreground px-4 py-2 text-right font-mono tabular-nums">
-                            {stats ? `${stats.operatingAttractions}/${stats.totalAttractions}` : '—'}
+                            {stats
+                              ? `${stats.operatingAttractions}/${stats.totalAttractions}`
+                              : '—'}
                           </td>
                           <td className="px-4 py-2 text-right">
                             <button
                               disabled
                               title="Editing requires backend write endpoints (coming soon)"
-                              className="text-muted-foreground/50 inline-flex cursor-not-allowed items-center gap-1 rounded-md border border-border/40 px-2 py-1 text-xs"
+                              className="text-muted-foreground/50 border-border/40 inline-flex cursor-not-allowed items-center gap-1 rounded-md border px-2 py-1 text-xs"
                             >
                               <Pencil className="h-3 w-3" /> Edit
                             </button>

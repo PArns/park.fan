@@ -50,9 +50,27 @@ export default function SystemPage() {
                 </p>
               </div>
               <div className="space-y-1.5">
-                <MetricBar label="1m" value={data.host.cpu.load['1m']} max={maxLoad} unit="" thresholds={[60, 80]} />
-                <MetricBar label="5m" value={data.host.cpu.load['5m']} max={maxLoad} unit="" thresholds={[60, 80]} />
-                <MetricBar label="15m" value={data.host.cpu.load['15m']} max={maxLoad} unit="" thresholds={[60, 80]} />
+                <MetricBar
+                  label="1m"
+                  value={data.host.cpu.load['1m']}
+                  max={maxLoad}
+                  unit=""
+                  thresholds={[60, 80]}
+                />
+                <MetricBar
+                  label="5m"
+                  value={data.host.cpu.load['5m']}
+                  max={maxLoad}
+                  unit=""
+                  thresholds={[60, 80]}
+                />
+                <MetricBar
+                  label="15m"
+                  value={data.host.cpu.load['15m']}
+                  max={maxLoad}
+                  unit=""
+                  thresholds={[60, 80]}
+                />
               </div>
             </CardContent>
           </Card>
@@ -164,7 +182,9 @@ export default function SystemPage() {
                 <KeyVal
                   label="Cache Hit"
                   value={`${data.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`}
-                  valueClass={(data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'}
+                  valueClass={
+                    (data.postgres.cacheHitPct ?? 0) >= 99 ? 'text-emerald-400' : 'text-amber-400'
+                  }
                 />
               </div>
             </CardContent>
@@ -198,7 +218,9 @@ export default function SystemPage() {
                 <KeyVal
                   label="Hit Rate"
                   value={`${data.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
-                  valueClass={(data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'}
+                  valueClass={
+                    (data.redis.hitRatePct ?? 0) >= 80 ? 'text-emerald-400' : 'text-amber-400'
+                  }
                 />
               </div>
             </CardContent>

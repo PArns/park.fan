@@ -219,7 +219,7 @@ function Topbar() {
         </button>
         <button
           onClick={logout}
-          className="border-border/60 hover:border-red-500/40 hover:text-red-400 text-foreground/70 flex h-8 items-center gap-1.5 rounded-lg border px-3 text-sm transition-colors"
+          className="border-border/60 text-foreground/70 flex h-8 items-center gap-1.5 rounded-lg border px-3 text-sm transition-colors hover:border-red-500/40 hover:text-red-400"
           title="Sign out"
         >
           <LogOut className="h-3.5 w-3.5" /> Logout

@@ -122,9 +122,12 @@ const SEVERITY_STYLES: Record<string, string> = {
 };
 
 export function SeverityBadge({ severity }: { severity: string }) {
-  const style = SEVERITY_STYLES[severity.toLowerCase()] ?? 'bg-zinc-500/15 text-zinc-400 border-zinc-500/20';
+  const style =
+    SEVERITY_STYLES[severity.toLowerCase()] ?? 'bg-zinc-500/15 text-zinc-400 border-zinc-500/20';
   return (
-    <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${style}`}>
+    <span
+      className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${style}`}
+    >
       {severity}
     </span>
   );
@@ -141,7 +144,9 @@ const CROWD_STYLES: Record<string, string> = {
 export function CrowdBadge({ level }: { level: string }) {
   const style = CROWD_STYLES[level?.toLowerCase()] ?? 'bg-zinc-500/15 text-zinc-400';
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${style}`}>
+    <span
+      className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${style}`}
+    >
       {level?.replace(/_/g, ' ') ?? '—'}
     </span>
   );
@@ -161,7 +166,9 @@ export function StatusBadge({ status }: { status: string }) {
       ? 'bg-amber-500/15 text-amber-400 border-amber-500/20'
       : 'bg-red-500/15 text-red-400 border-red-500/20';
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${style}`}>
+    <span
+      className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${style}`}
+    >
       {statusDot(ok)} {status}
     </span>
   );
@@ -171,7 +178,7 @@ export function StatusBadge({ status }: { status: string }) {
 
 export function LoadingPanel({ label = 'Loading…' }: { label?: string }) {
   return (
-    <div className="text-muted-foreground flex items-center justify-center gap-2 rounded-lg border border-border/40 bg-card/40 py-12 text-sm">
+    <div className="text-muted-foreground border-border/40 bg-card/40 flex items-center justify-center gap-2 rounded-lg border py-12 text-sm">
       <Loader2 className="h-4 w-4 animate-spin" /> {label}
     </div>
   );
@@ -188,7 +195,7 @@ export function ErrorPanel({ message }: { message: string }) {
 
 export function EmptyPanel({ label }: { label: string }) {
   return (
-    <div className="text-muted-foreground rounded-lg border border-border/40 bg-card/40 py-8 text-center text-sm">
+    <div className="text-muted-foreground border-border/40 bg-card/40 rounded-lg border py-8 text-center text-sm">
       {label}
     </div>
   );

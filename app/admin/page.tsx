@@ -173,14 +173,11 @@ export default function OverviewPage() {
       </Section>
 
       <Section icon={Zap} title="Throughput">
-        <div className="grid grid-cols-2 gap-3 rounded-lg border border-border/60 bg-card p-4 sm:grid-cols-4">
+        <div className="border-border/60 bg-card grid grid-cols-2 gap-3 rounded-lg border p-4 sm:grid-cols-4">
           <KeyVal label="Shows" value={counts.shows.toLocaleString('en-GB')} />
           <KeyVal label="Restaurants" value={counts.restaurants.toLocaleString('en-GB')} />
           <KeyVal label="DB Cache Hit" value={`${h.postgres.cacheHitPct?.toFixed(1) ?? '—'}%`} />
-          <KeyVal
-            label="Redis Hit Rate"
-            value={`${h.redis.hitRatePct?.toFixed(1) ?? '—'}%`}
-          />
+          <KeyVal label="Redis Hit Rate" value={`${h.redis.hitRatePct?.toFixed(1) ?? '—'}%`} />
         </div>
       </Section>
     </>
