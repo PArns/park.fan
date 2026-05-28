@@ -163,7 +163,7 @@ export default function MlPage() {
               <CardHeader className="pb-2">
                 <CardTitle className="flex items-center justify-between text-sm">
                   TFT
-                  <TrainingStatusBadge state={tftState} label={tft?.health?.status} />
+                  <TrainingStatusBadge state={tftState} label={tft?.activeModel?.version} />
                 </CardTitle>
               </CardHeader>
               {tft?.training.error && (

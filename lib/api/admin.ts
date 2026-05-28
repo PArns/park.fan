@@ -82,10 +82,18 @@ export interface CatBoostMetrics {
   activeModel: MlActiveModel | null;
 }
 
+export interface MlTftActiveModel {
+  version: string;
+  trainedAt: string | null;
+  horizon: number | null;
+  parkScope: string | null;
+}
+
 export interface TftMetrics {
   service: string;
   training: MlTrainingStatus;
   health: MlTftHealth;
+  activeModel: MlTftActiveModel | null;
 }
 
 export interface ComparisonRow {
