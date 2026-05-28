@@ -255,6 +255,63 @@ export default function MlPage() {
         </div>
       </Section>
 
+      {/* TFT model + comparison */}
+      {health.data?.ml.tft && (
+        <Section icon={GitCompare} title="TFT (NeuralForecast) — near-term daily">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {/* TFT model info */}
+            <Card className="border-border/60">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">Active model</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-1 text-sm">
+                {health.data.ml.tft.activeModel ? (
+                  <>
+                    <p className="font-mono text-base">{health.data.ml.tft.activeModel.version}</p>
+                    {health.data.ml.tft.activeModel.trainedAt && (
+                      <p className="text-muted-foreground text-xs">
+                        trained {new Date(health.data.ml.tft.activeModel.trainedAt).toLocaleString('en-GB')}
+                      </p>
+                    )}
+                    {health.data.ml.tft.activeModel.horizon && (
+                      <p className="text-muted-foreground text-xs">horizon {health.data.ml.tft.activeModel.horizon}d · scope {health.data.ml.tft.activeModel.parkScope ?? 'all'}</p>
+                    )}
+                  </>
+                ) : (
+                  <p className="text-muted-foreground text-xs">No model trained yet</p>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* TFT vs CatBoost scoreboard */}
+            <Card className="border-border/60">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">vs CatBoost scoreboard</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {health.data.ml.comparison?.rows?.length > 0 ? (
+                  <div className="space-y-0">
+                    <div className="grid grid-cols-4 gap-1 border-b border-border/60 pb-1 text-xs font-medium text-muted-foreground uppercase tracking-wide">
+                      <span>Date</span><span className="text-right">Model</span><span className="text-right">MAE</span><span className="text-right">Bias</span>
+                    </div>
+                    {health.data.ml.comparison.rows.slice(0, 10).map((r, i) => (
+                      <div key={i} className="grid grid-cols-4 gap-1 border-b border-border/40 py-1 text-xs last:border-0">
+                        <span className="text-muted-foreground">{r.targetDate?.slice(5)}</span>
+                        <span className={`text-right font-mono ${r.model === 'tft' ? 'text-blue-400' : 'text-orange-400'}`}>{r.model}</span>
+                        <span className={`text-right font-mono tabular-nums ${maeColor(Number(r.mae))}`}>{Number(r.mae).toFixed(1)}</span>
+                        <span className="text-right font-mono tabular-nums text-muted-foreground">{Number(r.bias).toFixed(1)}</span>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground text-xs">{health.data.ml.comparison?.note ?? 'No comparison data yet'}</p>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </Section>
+      )}
+
       <Section icon={Sparkles} title="Per-attraction accuracy">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <PerformerList title="Best predictions" icon={TrendingUp} performers={insights.topPerformers} />
