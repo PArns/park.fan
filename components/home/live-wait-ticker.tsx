@@ -98,6 +98,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const items: TickerItem[] = data?.items ?? initialItems;
 
   const posXRef = useRef(0);
+  const singleWidthRef = useRef(0);
 
   useEffect(() => {
     pausedRef.current = paused;
@@ -122,14 +123,24 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     const el = trackRef.current;
     if (!el || items.length === 0) return;
 
-    // Duration scales with item count so each item spends ~4s on screen
-    const durationS = Math.max(30, items.length * 4);
+    // Measure the loop width once (and on real size changes) rather than every frame:
+    // reading scrollWidth inside the rAF loop — right after the previous frame's transform
+    // write — forces a synchronous layout (reflow) on every frame.
+    const measure = () => {
+      singleWidthRef.current = el.scrollWidth / 2;
+    };
+    measure();
+    const resizeObserver = new ResizeObserver(measure);
+    resizeObserver.observe(el);
+
+    // Duration scales with item count so each item spends ~6s on screen (slow, calm scroll)
+    const durationS = Math.max(45, items.length * 6);
     let lastTs: number | null = null;
     let raf: number;
 
     const step = (ts: number) => {
       if (visibleRef.current) {
-        const singleWidth = el.scrollWidth / 2;
+        const singleWidth = singleWidthRef.current;
         if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
           const dt = (ts - lastTs) / 1000;
           const speed = singleWidth / durationS;
@@ -144,7 +155,10 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     };
 
     raf = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      resizeObserver.disconnect();
+    };
   }, [items]);
 
   if (items.length === 0) return null;
