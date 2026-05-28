@@ -25,6 +25,9 @@ import {
   trackNearbyInParkDetected,
 } from '@/lib/analytics/umami';
 
+/** Number of nearby parks requested — skeleton renders the same count to avoid layout shift. */
+const NEARBY_LIMIT = 6;
+
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
@@ -51,7 +54,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     error: dataError,
   } = useNearbyParks({
     radiusInMeters: 200,
-    limit: 6,
+    limit: NEARBY_LIMIT,
   });
 
   const hasTrackedGranted = useRef(false);
@@ -144,15 +147,11 @@ export function NearbyParksCard({ className }: { className?: string }) {
           {t('loadingLocation')}
         </h2>
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <li>
-            <ParkCardNearbySkeleton />
-          </li>
-          <li>
-            <ParkCardNearbySkeleton />
-          </li>
-          <li>
-            <ParkCardNearbySkeleton />
-          </li>
+          {Array.from({ length: NEARBY_LIMIT }).map((_, i) => (
+            <li key={i}>
+              <ParkCardNearbySkeleton />
+            </li>
+          ))}
         </ul>
       </div>
     );

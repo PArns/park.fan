@@ -32,7 +32,7 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
       fill
       priority={isServerImage}
       fetchPriority={isServerImage ? 'high' : undefined}
-      quality={90}
+      quality={75}
       className={`object-cover opacity-90 ${noAnimation ? '' : 'will-change-transform'}`}
       style={
         noAnimation ? undefined : { animation: 'ken-burns 22s ease-in-out infinite alternate' }
