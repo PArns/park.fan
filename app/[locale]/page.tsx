@@ -209,9 +209,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
         )}
 
-        {/* Live wait times ticker */}
+        {/* Live wait times ticker — hidden on phones (decorative, absolute → no layout impact) */}
         {tickerData && tickerData.items.length > 0 && (
-          <div className="absolute right-0 bottom-0 left-0">
+          <div className="absolute right-0 bottom-0 left-0 hidden md:block">
             <LiveWaitTicker initialItems={tickerData.items} />
           </div>
         )}
