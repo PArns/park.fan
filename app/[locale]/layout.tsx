@@ -133,7 +133,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}

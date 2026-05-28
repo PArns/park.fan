@@ -398,7 +398,7 @@ export function ParkCard({
                         showSuffix
                       />
                     </b>
-                    <span style={{ color: 'var(--pk-text-3)' }}>
+                    <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
                       ({tCard('closingIn')} {closingRemaining})
                     </span>
                   </span>
@@ -437,7 +437,7 @@ export function ParkCard({
                       />
                     </strong>
                     {scheduleInfo.remainingText && (
-                      <span style={{ color: 'var(--pk-text-3)' }}>
+                      <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
                         {' '}
                         ({scheduleInfo.remainingText})
                       </span>
