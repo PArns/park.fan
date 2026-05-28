@@ -74,11 +74,10 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
 
   if (!response.ok) {
     const body = await response.text().catch(() => '');
-    throw new ApiError(
-      response.status,
-      `API Error: ${response.statusText}`,
-      isCloudflareTunnelDown(body)
-    );
+    // 502 Bad Gateway means the API origin is unreachable, same as a 1033 tunnel
+    // outage, so both render the maintenance page.
+    const isMaintenance = response.status === 502 || isCloudflareTunnelDown(body);
+    throw new ApiError(response.status, `API Error: ${response.statusText}`, isMaintenance);
   }
 
   return response.json() as Promise<T>;

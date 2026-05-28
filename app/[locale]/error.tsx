@@ -17,7 +17,7 @@ export default function Error({ error, reset }: ErrorProps) {
   const t = useTranslations('common');
   const router = useRouter();
 
-  // Cloudflare 1033 (Argo Tunnel down) → the whole backend is unreachable.
+  // Backend unreachable (Cloudflare 1033 tunnel down or 502 Bad Gateway).
   // `digest` is the reliable signal in production (Next.js redacts the message
   // for server-thrown errors); the message check covers development.
   const isMaintenance = error.digest === API_MAINTENANCE_DIGEST || /1033/.test(error.message);
