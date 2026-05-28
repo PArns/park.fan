@@ -35,7 +35,7 @@ export default function Error({ error, reset }: ErrorProps) {
 
   // Render the maintenance UI immediately so there is no flash while redirecting.
   if (isMaintenance) {
-    return <MaintenancePage onRetry={reset} />;
+    return <MaintenancePage />;
   }
 
   return (
