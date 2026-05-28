@@ -1,5 +1,6 @@
 'use client';
 
+import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MapPin, Navigation } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,8 +19,16 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
   const { permissionGranted, loading, initialCheckDone, refresh } = useGeolocation();
+  // Server snapshot = false → always null during SSR and the hydration pass,
+  // matching what the server produced. Client snapshot = true, so after
+  // hydration the real geolocation state takes over.
+  const mounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
-  if (!initialCheckDone || permissionGranted || loading) {
+  if (!mounted || !initialCheckDone || permissionGranted || loading) {
     return null;
   }
 

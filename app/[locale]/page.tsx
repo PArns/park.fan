@@ -33,7 +33,7 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
-  { ssr: false }
+  { loading: () => null, ssr: true }
 );
 
 const FavoritesSection = nextDynamic(
