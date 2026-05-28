@@ -16,9 +16,9 @@ export function MaintenancePage({ onRetry }: MaintenancePageProps) {
     <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-slate-100 px-4 dark:bg-slate-950">
       {/* Living gradient: slowly drifting, blurred aurora blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 animate-[maintenance-drift-1_18s_ease-in-out_infinite] rounded-full bg-sky-400/45 blur-3xl motion-reduce:animate-none dark:bg-sky-500/30" />
-        <div className="absolute top-1/3 right-1/4 h-[32rem] w-[32rem] translate-x-1/2 animate-[maintenance-drift-2_22s_ease-in-out_infinite] rounded-full bg-violet-500/45 blur-3xl motion-reduce:animate-none dark:bg-violet-600/30" />
-        <div className="absolute bottom-1/4 left-1/3 h-[34rem] w-[34rem] animate-[maintenance-drift-3_26s_ease-in-out_infinite] rounded-full bg-fuchsia-400/40 blur-3xl motion-reduce:animate-none dark:bg-fuchsia-500/25" />
+        <div className="bg-primary/55 dark:bg-primary/40 absolute top-1/4 left-1/4 h-[36rem] w-[36rem] -translate-x-1/2 -translate-y-1/2 animate-[maintenance-drift-1_18s_ease-in-out_infinite] rounded-full blur-3xl motion-reduce:animate-none" />
+        <div className="bg-primary/40 dark:bg-primary/25 absolute top-1/3 right-1/4 h-[32rem] w-[32rem] translate-x-1/2 animate-[maintenance-drift-2_22s_ease-in-out_infinite] rounded-full blur-3xl motion-reduce:animate-none" />
+        <div className="bg-primary/30 dark:bg-primary/20 absolute bottom-1/4 left-1/3 h-[34rem] w-[34rem] animate-[maintenance-drift-3_26s_ease-in-out_infinite] rounded-full blur-3xl motion-reduce:animate-none" />
       </div>
 
       {/* Glass box with logo + text, centered */}
