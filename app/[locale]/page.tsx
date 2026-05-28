@@ -73,7 +73,10 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
-export const revalidate = 60;
+// Stale-while-revalidate: serve the cached page instantly and regenerate in the
+// background. 5 min matches the underlying analytics/geo fetch caches; the live
+// sections (ticker, featured parks, nearby) additionally poll client-side.
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
