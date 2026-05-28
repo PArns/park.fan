@@ -80,8 +80,20 @@ interface LiveWaitTickerProps {
 export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const t = useTranslations('home.hero');
   const [paused, setPaused] = useState(false);
+  // Only the >=md ticker is shown (see page.tsx). Gate data fetching on the same breakpoint
+  // so phones don't fetch/poll for a ticker they never see. Starts false on SSR + first client
+  // render (initialData still renders), flips to true on desktop after mount.
+  const [isDesktop, setIsDesktop] = useState(false);
   const pausedRef = useRef(false);
   const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   const { data } = useQuery({
     queryKey: ['ticker'],
@@ -91,6 +103,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
       return res.json() as Promise<{ items: TickerItem[] }>;
     },
     initialData: { items: initialItems },
+    enabled: isDesktop,
     refetchInterval: 300_000,
     staleTime: 300_000,
   });
