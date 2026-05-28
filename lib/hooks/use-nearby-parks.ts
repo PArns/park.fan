@@ -10,15 +10,6 @@ export interface UseNearbyParksOptions {
   limit?: number;
 }
 
-/**
- * Canonical params for the homepage nearby-parks query. All homepage consumers
- * (header, hero, nearby card) MUST share these so React Query dedupes them into a
- * single request (the query key is derived from these values). Use `useHomeNearbyParks`
- * rather than passing the literals inline so they can't silently drift apart.
- */
-export const HOME_NEARBY_RADIUS_M = 200;
-export const HOME_NEARBY_LIMIT = 6;
-
 const CACHE_KEY = 'nearby-parks-v2';
 const CACHE_MAX_AGE_MS = 5 * 60 * 1000; // matches staleTime
 // Skip placeholder if user has moved more than this distance since the cache was written.
@@ -163,12 +154,4 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     refetchOnWindowFocus: true,
     refetchInterval: 5 * 60 * 1000,
   });
-}
-
-/**
- * Homepage nearby-parks query with the shared canonical params. All homepage consumers
- * share one underlying request via React Query deduplication.
- */
-export function useHomeNearbyParks() {
-  return useNearbyParks({ radiusInMeters: HOME_NEARBY_RADIUS_M, limit: HOME_NEARBY_LIMIT });
 }

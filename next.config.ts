@@ -6,8 +6,6 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // Content-heavy pages (e.g. /howto, which runs GlossaryInject over ~220 terms) can exceed
-  // the 60s default when the build host is under load generating thousands of static pages.
   staticPageGenerationTimeout: 180,
   compiler: {
     // Remove React properties that are not needed in production
@@ -29,12 +27,14 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-slot',
       'recharts',
     ],
+    // Optimize CSS to reduce render-blocking
+    optimizeCss: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 828, 1080, 1200, 1920, 2560, 3840],
     imageSizes: [32, 48, 64, 96, 128, 256, 384],
-    qualities: [65, 75, 85, 90],
+    qualities: [75, 85, 90],
     minimumCacheTTL: 31536000, // 1 year
     remotePatterns: [
       {

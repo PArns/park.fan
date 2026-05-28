@@ -1,7 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { backgroundImageLoader } from '@/lib/utils/image-loader';
 
 // Brand-matched blur placeholder — same as hero-background.tsx
 const PARK_BLUR_DATA_URL =
@@ -24,8 +21,8 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           src={imageSrc}
           alt={alt}
           fill
-          loader={backgroundImageLoader}
           priority
+          quality={90}
           placeholder="blur"
           blurDataURL={PARK_BLUR_DATA_URL}
           className="object-cover object-center"
@@ -44,8 +41,8 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           src={imageSrc}
           alt={alt}
           fill
-          loader={backgroundImageLoader}
           priority
+          quality={90}
           placeholder="blur"
           blurDataURL={PARK_BLUR_DATA_URL}
           className="object-cover"
