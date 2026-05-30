@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { TrainingStatusBadge, type TrainingState } from '@/components/common/training-status-badge';
-import type { SystemHealthResponse } from '@/lib/api/admin';
+import type { SystemHealthResponse, TftTrainingProgress } from '@/lib/api/admin';
 import {
   EmptyPanel,
   ErrorPanel,
@@ -63,6 +63,28 @@ function TrainingProgress({ startedAt }: { startedAt: string }) {
             ~{Math.floor(remaining / 60)}m {remaining % 60}s left
           </span>
         )}
+      </div>
+      <div className="bg-secondary h-2 w-full overflow-hidden rounded-full">
+        <div
+          className="h-full rounded-full bg-blue-500 transition-all duration-1000"
+          style={{ width: `${pct}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function TftTrainingProgress({ p }: { p: TftTrainingProgress }) {
+  const pct = Math.min(Math.max(Math.round(p.pct), 0), 100);
+  return (
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between text-xs">
+        <span className="font-medium text-blue-400">
+          Chunk {p.chunk}/{p.n_chunks} · step {p.step}/{p.max_steps}
+        </span>
+        <span className="text-muted-foreground tabular-nums">
+          {pct}%{p.loss != null ? ` · loss ${p.loss.toFixed(3)}` : ''}
+        </span>
       </div>
       <div className="bg-secondary h-2 w-full overflow-hidden rounded-full">
         <div
@@ -168,6 +190,16 @@ export default function MlPage() {
                   <TrainingStatusBadge state={tftState} label={tft?.activeModel?.version} />
                 </CardTitle>
               </CardHeader>
+              {tft?.training.is_training && tft.training.progress && (
+                <CardContent>
+                  <TftTrainingProgress p={tft.training.progress} />
+                </CardContent>
+              )}
+              {tft?.training.is_training && !tft.training.progress && (
+                <CardContent>
+                  <p className="text-muted-foreground text-xs">Starting… (building panel)</p>
+                </CardContent>
+              )}
               {tft?.training.error && (
                 <CardContent>
                   <p className="text-xs text-red-400">{tft.training.error}</p>
