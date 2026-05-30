@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { TrainingStatusBadge, type TrainingState } from '@/components/common/training-status-badge';
-import type { SystemHealthResponse, TftTrainingProgress } from '@/lib/api/admin';
+import type { SystemHealthResponse, TftTrainingProgress, ComparisonRow } from '@/lib/api/admin';
 import {
   EmptyPanel,
   ErrorPanel,
@@ -359,35 +359,92 @@ export default function MlPage() {
               </CardHeader>
               <CardContent>
                 {health.data.ml.comparison?.rows?.length > 0 ? (
-                  <div className="space-y-0">
-                    <div className="border-border/60 text-muted-foreground grid grid-cols-4 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
-                      <span>Date</span>
-                      <span className="text-right">Model</span>
-                      <span className="text-right">MAE</span>
-                      <span className="text-right">Bias</span>
-                    </div>
-                    {health.data.ml.comparison.rows.slice(0, 10).map((r, i) => (
-                      <div
-                        key={i}
-                        className="border-border/40 grid grid-cols-4 gap-1 border-b py-1 text-xs last:border-0"
-                      >
-                        <span className="text-muted-foreground">{r.targetDate?.slice(5, 10)}</span>
-                        <span
-                          className={`text-right font-mono ${r.model === 'tft' ? 'text-blue-400' : 'text-orange-400'}`}
-                        >
-                          {r.model}
-                        </span>
-                        <span
-                          className={`text-right font-mono tabular-nums ${maeColor(Number(r.mae))}`}
-                        >
-                          {Number(r.mae).toFixed(1)}
-                        </span>
-                        <span className="text-muted-foreground text-right font-mono tabular-nums">
-                          {Number(r.bias).toFixed(1)}
-                        </span>
+                  (() => {
+                    // Pivot rows → one entry per (date, segment) holding both models,
+                    // so CatBoost vs TFT sit side by side (TFT's edge lives on busy/hdlnr).
+                    type Pivot = {
+                      date: string;
+                      segment: string;
+                      n: number;
+                      cat?: ComparisonRow;
+                      tft?: ComparisonRow;
+                    };
+                    const groups = new Map<string, Pivot>();
+                    for (const r of health.data.ml.comparison.rows) {
+                      const segment = r.segment ?? 'all';
+                      const key = `${r.targetDate}|${segment}`;
+                      const g = groups.get(key) ?? { date: r.targetDate, segment, n: r.n };
+                      if (r.model === 'tft') g.tft = r;
+                      else g.cat = r;
+                      groups.set(key, g);
+                    }
+                    const order: Record<string, number> = { all: 0, busy: 1, headliner: 2 };
+                    const list = [...groups.values()]
+                      .sort((a, b) =>
+                        a.date < b.date
+                          ? 1
+                          : a.date > b.date
+                            ? -1
+                            : (order[a.segment] ?? 9) - (order[b.segment] ?? 9)
+                      )
+                      .slice(0, 12);
+                    const segLabel: Record<string, string> = {
+                      all: 'all',
+                      busy: 'busy',
+                      headliner: 'hdlnr',
+                    };
+                    const segClass: Record<string, string> = {
+                      all: 'text-muted-foreground',
+                      busy: 'text-amber-400',
+                      headliner: 'text-violet-400',
+                    };
+                    return (
+                      <div className="space-y-0">
+                        <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+                          <span>Date</span>
+                          <span>Seg</span>
+                          <span className="text-right">n</span>
+                          <span className="text-right">CatB</span>
+                          <span className="text-right">TFT</span>
+                        </div>
+                        {list.map((g, i) => {
+                          const cm = g.cat ? Number(g.cat.mae) : NaN;
+                          const tm = g.tft ? Number(g.tft.mae) : NaN;
+                          const tftWins = Number.isFinite(cm) && Number.isFinite(tm) && tm < cm;
+                          return (
+                            <div
+                              key={i}
+                              className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
+                            >
+                              <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
+                              <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
+                                {segLabel[g.segment] ?? g.segment}
+                              </span>
+                              <span className="text-muted-foreground text-right font-mono tabular-nums">
+                                {g.n}
+                              </span>
+                              <span
+                                className={`text-right font-mono tabular-nums ${Number.isFinite(cm) ? maeColor(cm) : 'text-muted-foreground'}`}
+                              >
+                                {Number.isFinite(cm) ? cm.toFixed(1) : '—'}
+                              </span>
+                              <span
+                                className={`text-right font-mono tabular-nums ${
+                                  !Number.isFinite(tm)
+                                    ? 'text-muted-foreground'
+                                    : tftWins
+                                      ? 'font-semibold text-blue-400'
+                                      : maeColor(tm)
+                                }`}
+                              >
+                                {Number.isFinite(tm) ? tm.toFixed(1) : '—'}
+                              </span>
+                            </div>
+                          );
+                        })}
                       </div>
-                    ))}
-                  </div>
+                    );
+                  })()
                 ) : (
                   <p className="text-muted-foreground text-xs">
                     {health.data.ml.comparison?.note ?? 'No comparison data yet'}

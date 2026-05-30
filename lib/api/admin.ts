@@ -138,6 +138,8 @@ export interface TftMetrics {
 export interface ComparisonRow {
   targetDate: string;
   model: string;
+  /** Matched-population segment: all attractions / busy (realised P90>=40) / headliner. */
+  segment?: 'all' | 'busy' | 'headliner';
   n: number;
   mae: string | number;
   bias: string | number;
