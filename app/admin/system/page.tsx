@@ -1,7 +1,9 @@
 'use client';
 
 import {
+  Activity,
   Clock,
+  CloudSun,
   Cpu,
   Database,
   Gauge,
@@ -9,6 +11,7 @@ import {
   MemoryStick,
   Server,
   Thermometer,
+  Waves,
   Zap,
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
@@ -36,6 +39,36 @@ export default function SystemPage() {
   const maxLoad = data.host.cpu.cores;
   const pgOk = data.postgres.status === 'connected';
   const redisOk = data.redis.status === 'connected';
+  const cpuTemp = data.host.cpu.temperatureC;
+  const cpuTempClass =
+    (cpuTemp ?? 0) >= 85 ? 'text-red-400' : (cpuTemp ?? 0) >= 70 ? 'text-amber-400' : 'text-foreground';
+  const swap = data.host.swap;
+  const fresh = data.freshness;
+  // Wait-time ingestion: a stalled cron once ran 83 days unnoticed, so flag staleness loudly.
+  const queueStale = fresh?.queueStaleMinutes ?? null;
+  const queueClass =
+    queueStale == null
+      ? 'text-muted-foreground'
+      : queueStale >= 60
+        ? 'text-red-400'
+        : queueStale >= 20
+          ? 'text-amber-400'
+          : 'text-emerald-400';
+  // weather_data holds a ~16-day forecast, so MAX(date) is in the FUTURE: show how
+  // many days ahead we have weather (healthy = positive; <= 0 means ingestion stalled).
+  // Derived from the server-computed weatherStaleHours (negative for future dates) to
+  // avoid an impure Date.now() during render.
+  const weatherDate = fresh?.latestWeatherDate ?? null;
+  const weatherDaysAhead =
+    fresh?.weatherStaleHours != null ? Math.round(-fresh.weatherStaleHours / 24) : null;
+  const weatherClass =
+    weatherDaysAhead == null
+      ? 'text-muted-foreground'
+      : weatherDaysAhead <= 0
+        ? 'text-red-400'
+        : weatherDaysAhead < 7
+          ? 'text-amber-400'
+          : 'text-emerald-400';
 
   return (
     <>
@@ -48,17 +81,29 @@ export default function SystemPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <div>
-                <span
-                  className={`text-3xl font-bold tabular-nums ${(data.host.cpu.loadPct ?? 0) >= 80 ? 'text-red-400' : (data.host.cpu.loadPct ?? 0) >= 60 ? 'text-amber-400' : 'text-foreground'}`}
-                >
-                  {data.host.cpu.loadPct ?? '—'}%
-                </span>
-                <p className="text-muted-foreground mt-0.5 text-xs">{data.host.cpu.cores} Cores</p>
-                <p className="text-muted-foreground truncate text-xs" title={data.host.cpu.model}>
-                  {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
-                </p>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <span
+                    className={`text-3xl font-bold tabular-nums ${(data.host.cpu.loadPct ?? 0) >= 80 ? 'text-red-400' : (data.host.cpu.loadPct ?? 0) >= 60 ? 'text-amber-400' : 'text-foreground'}`}
+                  >
+                    {data.host.cpu.loadPct ?? '—'}%
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 text-xs">Load</p>
+                </div>
+                <div>
+                  <span
+                    className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${cpuTempClass}`}
+                  >
+                    <Thermometer className="h-5 w-5" />
+                    {cpuTemp ?? '—'}
+                    <span className="text-muted-foreground text-lg font-normal">°C</span>
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 text-xs">Temp</p>
+                </div>
               </div>
+              <p className="text-muted-foreground truncate text-xs" title={data.host.cpu.model}>
+                {data.host.cpu.cores} Cores · {data.host.cpu.model.split(' ').slice(0, 3).join(' ')}
+              </p>
               <div className="space-y-1.5">
                 <MetricBar
                   label="1m"
@@ -108,6 +153,16 @@ export default function SystemPage() {
                 unit=" GB"
                 pct={data.host.memory.usedPct}
               />
+              {swap ? (
+                <MetricBar
+                  label={`Swap (${swap.usedGB.toFixed(1)} / ${swap.totalGB.toFixed(0)} GB)`}
+                  value={swap.usedGB}
+                  max={swap.totalGB}
+                  unit=" GB"
+                  pct={swap.usedPct}
+                  thresholds={[50, 80]}
+                />
+              ) : null}
             </CardContent>
           </Card>
 
@@ -296,6 +351,78 @@ export default function SystemPage() {
           </Card>
         </div>
       </Section>
+
+      {fresh ? (
+        <Section icon={Activity} title="Data Ingestion">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <Card className="border-border/60">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center justify-between text-base">
+                  <span className="flex items-center gap-2">
+                    <Waves className="text-primary h-4 w-4" /> Wait Times
+                  </span>
+                  <span className="flex items-center gap-1.5 text-sm font-normal">
+                    {statusDot(queueStale != null && queueStale < 20)}
+                    <span className={queueClass}>
+                      {queueStale != null ? `${queueStale} min ago` : 'no data'}
+                    </span>
+                  </span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <span className={`text-3xl font-bold tabular-nums ${queueClass}`}>
+                    {fresh.queueRowsLastHour.toLocaleString('en-GB')}
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 text-xs">rows ingested · last hour</p>
+                </div>
+                <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                  <KeyVal
+                    label="Latest data point"
+                    value={
+                      fresh.latestQueueTime
+                        ? new Date(fresh.latestQueueTime).toLocaleString('en-GB')
+                        : '—'
+                    }
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-border/60">
+              <CardHeader className="pb-3">
+                <CardTitle className="flex items-center justify-between text-base">
+                  <span className="flex items-center gap-2">
+                    <CloudSun className="text-primary h-4 w-4" /> Weather Forecast
+                  </span>
+                  <span className="flex items-center gap-1.5 text-sm font-normal">
+                    {statusDot(weatherDaysAhead != null && weatherDaysAhead > 0)}
+                    <span className={weatherClass}>
+                      {weatherDaysAhead != null
+                        ? weatherDaysAhead > 0
+                          ? `+${weatherDaysAhead}d ahead`
+                          : 'stalled'
+                        : 'no data'}
+                    </span>
+                  </span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div>
+                  <span className={`text-3xl font-bold tabular-nums ${weatherClass}`}>
+                    {weatherDaysAhead ?? '—'}
+                    <span className="text-muted-foreground text-lg font-normal"> days</span>
+                  </span>
+                  <p className="text-muted-foreground mt-0.5 text-xs">forecast horizon</p>
+                </div>
+                <div className="grid grid-cols-1 gap-3 pt-1 text-sm">
+                  <KeyVal label="Forecast until" value={weatherDate ?? '—'} />
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </Section>
+      ) : null}
     </>
   );
 }

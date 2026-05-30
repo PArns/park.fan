@@ -9,6 +9,8 @@ export interface HostCpu {
   model: string;
   load: CpuLoad;
   loadPct: number | null;
+  // CPU package temperature (°C); null on non-Linux or when no sensor is exposed.
+  temperatureC: number | null;
 }
 
 export interface HostMemory {
@@ -23,11 +25,27 @@ export interface HostDisk {
   usedPct: number;
 }
 
+export interface HostSwap {
+  totalGB: number;
+  usedGB: number;
+  usedPct: number;
+}
+
 export interface HostMetrics {
   cpu: HostCpu;
   memory: HostMemory;
+  // null on non-Linux hosts or when no swap is configured.
+  swap: HostSwap | null;
   disk: HostDisk | { error: string };
   uptimeHours: number;
+}
+
+export interface FreshnessMetrics {
+  latestQueueTime: string | null;
+  queueStaleMinutes: number | null;
+  queueRowsLastHour: number;
+  latestWeatherDate: string | null;
+  weatherStaleHours: number | null;
 }
 
 export interface PostgresMetrics {
@@ -155,6 +173,7 @@ export interface SystemHealthResponse {
   gpu?: GpuMetrics;
   postgres: PostgresMetrics;
   redis: RedisMetrics;
+  freshness?: FreshnessMetrics;
   ml: MlMetrics;
 }
 
