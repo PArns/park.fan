@@ -50,6 +50,16 @@ export interface RedisMetrics {
   uptimeHours: number;
 }
 
+export interface TftTrainingProgress {
+  chunk: number;
+  n_chunks: number;
+  step: number;
+  max_steps: number;
+  pct: number;
+  loss: number | null;
+  updated_at: number;
+}
+
 export interface MlTrainingStatus {
   is_training: boolean;
   current_version?: string;
@@ -57,6 +67,9 @@ export interface MlTrainingStatus {
   status: string;
   version?: string;
   error?: string;
+  finished_at?: string | null;
+  // TFT (nf-service) reports live chunk/step progress while training; null otherwise.
+  progress?: TftTrainingProgress | null;
 }
 
 export interface MlActiveModel {
