@@ -382,32 +382,47 @@ export default function SystemPage() {
       {sensorEntries.length ? (
         <Section icon={Thermometer} title="Sensors">
           <div className="grid grid-cols-1 gap-3">
-            {sensorEntries.map(([chip, list]) => (
-              <Card key={chip} className="border-border/60">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                    <Thermometer className="h-3.5 w-3.5" /> {chipLabel(chip)}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-x-5 gap-y-1.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-                    {list.map((s, i) => (
-                      <div
-                        key={`${s.label}-${i}`}
-                        className="flex items-center justify-between gap-2 text-xs"
-                      >
-                        <span className="text-muted-foreground truncate" title={s.label}>
-                          {s.label}
+            {sensorEntries.map(([chip, list]) => {
+              const hot = Math.max(...list.map((s) => s.tempC));
+              return (
+                <Card key={chip} className="border-border/60">
+                  <CardHeader className="pb-3">
+                    <CardTitle className="flex items-center justify-between text-xs font-medium tracking-wide uppercase">
+                      <span className="text-muted-foreground flex items-center gap-2">
+                        <Thermometer className="h-3.5 w-3.5" /> {chipLabel(chip)}
+                        <span className="text-muted-foreground/60 normal-case">
+                          · {list.length} {list.length === 1 ? 'sensor' : 'sensors'}
                         </span>
-                        <span className={`font-medium tabular-nums ${sensorTempClass(s.tempC)}`}>
-                          {s.tempC}°
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                      </span>
+                      <span className={`tabular-nums ${sensorTempClass(hot)}`}>peak {hot}°C</span>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+                      {list.map((s, i) => (
+                        <div
+                          key={`${s.label}-${i}`}
+                          className="border-border/40 bg-muted/20 rounded-md border px-2.5 py-1.5"
+                        >
+                          <p
+                            className="text-muted-foreground truncate text-[10px] tracking-wide uppercase"
+                            title={s.label}
+                          >
+                            {s.label}
+                          </p>
+                          <p
+                            className={`text-lg font-bold tabular-nums ${sensorTempClass(s.tempC)}`}
+                          >
+                            {s.tempC}
+                            <span className="text-muted-foreground text-xs font-normal"> °C</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </Section>
       ) : null}
