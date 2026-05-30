@@ -31,12 +31,20 @@ export interface HostSwap {
   usedPct: number;
 }
 
+export interface HostSensor {
+  chip: string;
+  label: string;
+  tempC: number;
+}
+
 export interface HostMetrics {
   cpu: HostCpu;
   memory: HostMemory;
   // null on non-Linux hosts or when no swap is configured.
   swap: HostSwap | null;
   disk: HostDisk | { error: string };
+  // All hwmon temperature sensors (coretemp cores, NVMe, ACPI, NIC, Wi-Fi…).
+  sensors?: HostSensor[];
   uptimeHours: number;
 }
 

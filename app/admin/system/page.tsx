@@ -28,6 +28,24 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { MetricBar } from '@/components/common/metric-bar';
 import type { SystemHealthResponse } from '@/lib/api/admin';
 
+const CHIP_LABELS: Record<string, string> = {
+  coretemp: 'CPU · coretemp',
+  k10temp: 'CPU · k10temp',
+  zenpower: 'CPU · zenpower',
+  nvme: 'NVMe SSD',
+  acpitz: 'ACPI Thermal',
+  iwlwifi: 'Wi-Fi',
+  iwlwifi_1: 'Wi-Fi',
+};
+function chipLabel(chip: string): string {
+  if (CHIP_LABELS[chip]) return CHIP_LABELS[chip];
+  if (chip.startsWith('r816')) return 'Ethernet';
+  return chip;
+}
+function sensorTempClass(t: number): string {
+  return t >= 85 ? 'text-red-400' : t >= 70 ? 'text-amber-400' : 'text-emerald-400';
+}
+
 export default function SystemPage() {
   const { data, error } = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
 
@@ -69,6 +87,28 @@ export default function SystemPage() {
         : weatherDaysAhead < 7
           ? 'text-amber-400'
           : 'text-emerald-400';
+  // All hwmon sensors, grouped by chip (CPU first, then NVMe, then the rest) and
+  // sorted within a group (package/composite first, then by core/sensor number).
+  const sensors = data.host.sensors ?? [];
+  const sensorGroups = sensors.reduce<Record<string, typeof sensors>>((acc, s) => {
+    (acc[s.chip] ??= []).push(s);
+    return acc;
+  }, {});
+  const chipRank = (c: string) =>
+    /coretemp|k10temp|zenpower|cpu/i.test(c) ? 0 : /nvme/i.test(c) ? 1 : 2;
+  const sensorEntries = Object.entries(sensorGroups).sort(
+    (a, b) => chipRank(a[0]) - chipRank(b[0]) || a[0].localeCompare(b[0]),
+  );
+  for (const [, list] of sensorEntries) {
+    list.sort((a, b) => {
+      const pa = /package|tctl|tdie|composite/i.test(a.label) ? 0 : 1;
+      const pb = /package|tctl|tdie|composite/i.test(b.label) ? 0 : 1;
+      return (
+        pa - pb ||
+        Number(a.label.match(/\d+/)?.[0] ?? 0) - Number(b.label.match(/\d+/)?.[0] ?? 0)
+      );
+    });
+  }
 
   return (
     <>
@@ -336,6 +376,39 @@ export default function SystemPage() {
               </div>
             );
           })}
+        </Section>
+      ) : null}
+
+      {sensorEntries.length ? (
+        <Section icon={Thermometer} title="Sensors">
+          <div className="grid grid-cols-1 gap-3">
+            {sensorEntries.map(([chip, list]) => (
+              <Card key={chip} className="border-border/60">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                    <Thermometer className="h-3.5 w-3.5" /> {chipLabel(chip)}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-1.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                    {list.map((s, i) => (
+                      <div
+                        key={`${s.label}-${i}`}
+                        className="flex items-center justify-between gap-2 text-xs"
+                      >
+                        <span className="text-muted-foreground truncate" title={s.label}>
+                          {s.label}
+                        </span>
+                        <span className={`font-medium tabular-nums ${sensorTempClass(s.tempC)}`}>
+                          {s.tempC}°
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </Section>
       ) : null}
 
