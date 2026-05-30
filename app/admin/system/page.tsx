@@ -1,6 +1,16 @@
 'use client';
 
-import { Clock, Cpu, Database, HardDrive, MemoryStick, Server, Zap } from 'lucide-react';
+import {
+  Clock,
+  Cpu,
+  Database,
+  Gauge,
+  HardDrive,
+  MemoryStick,
+  Server,
+  Thermometer,
+  Zap,
+} from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import {
   ErrorPanel,
@@ -151,6 +161,65 @@ export default function SystemPage() {
           </Card>
         </div>
       </Section>
+
+      {data.gpu?.available && data.gpu.gpus?.length ? (
+        <Section icon={Gauge} title="GPU">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {data.gpu.gpus.map((g) => {
+              const temp = g.temperatureC ?? 0;
+              const tempClass =
+                temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
+              return (
+                <Card key={g.index ?? g.name} className="border-border/60 sm:col-span-2">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                      <Gauge className="h-3.5 w-3.5" /> {g.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="grid grid-cols-2 gap-3">
+                      <div>
+                        <span className="text-3xl font-bold tabular-nums">
+                          {g.utilizationGpuPct ?? '—'}
+                          <span className="text-muted-foreground text-lg font-normal">%</span>
+                        </span>
+                        <p className="text-muted-foreground mt-0.5 text-xs">GPU load</p>
+                      </div>
+                      <div>
+                        <span
+                          className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${tempClass}`}
+                        >
+                          <Thermometer className="h-5 w-5" />
+                          {g.temperatureC ?? '—'}
+                          <span className="text-muted-foreground text-lg font-normal">°C</span>
+                        </span>
+                        <p className="text-muted-foreground mt-0.5 text-xs">Temperature</p>
+                      </div>
+                    </div>
+                    {g.memoryTotalMB ? (
+                      <MetricBar
+                        label="VRAM"
+                        value={(g.memoryUsedMB ?? 0) / 1024}
+                        max={g.memoryTotalMB / 1024}
+                        unit=" GB"
+                        pct={g.memoryUsedPct ?? undefined}
+                        thresholds={[75, 90]}
+                      />
+                    ) : null}
+                    <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
+                      <KeyVal
+                        label="Power"
+                        value={`${g.powerW?.toFixed(0) ?? '—'}${g.powerLimitW ? ` / ${g.powerLimitW.toFixed(0)}` : ''} W`}
+                      />
+                      <KeyVal label="Mem I/O" value={`${g.utilizationMemPct ?? '—'}%`} />
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </Section>
+      ) : null}
 
       <Section icon={Database} title="Database & Cache">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">

@@ -115,9 +115,31 @@ export interface MlMetrics {
   };
 }
 
+export interface GpuDevice {
+  index: number | null;
+  name: string;
+  temperatureC: number | null;
+  utilizationGpuPct: number | null;
+  utilizationMemPct: number | null;
+  memoryUsedMB: number | null;
+  memoryTotalMB: number | null;
+  memoryUsedPct: number | null;
+  powerW: number | null;
+  powerLimitW: number | null;
+}
+
+export interface GpuMetrics {
+  available: boolean;
+  count?: number;
+  gpus?: GpuDevice[];
+  reason?: string;
+  error?: string;
+}
+
 export interface SystemHealthResponse {
   timestamp: string;
   host: HostMetrics;
+  gpu?: GpuMetrics;
   postgres: PostgresMetrics;
   redis: RedisMetrics;
   ml: MlMetrics;
