@@ -219,60 +219,123 @@ export default function SystemPage() {
 
       {data.gpu?.available && data.gpu.gpus?.length ? (
         <Section icon={Gauge} title="GPU">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {data.gpu.gpus.map((g) => {
-              const temp = g.temperatureC ?? 0;
-              const tempClass =
-                temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
-              return (
-                <Card key={g.index ?? g.name} className="border-border/60 sm:col-span-2">
+          {data.gpu.gpus.map((g) => {
+            const temp = g.temperatureC ?? 0;
+            const tempClass =
+              temp >= 85 ? 'text-red-400' : temp >= 70 ? 'text-amber-400' : 'text-foreground';
+            const vramTotal = g.memoryTotalMB ? g.memoryTotalMB / 1024 : 0;
+            const vramUsed = (g.memoryUsedMB ?? 0) / 1024;
+            return (
+              // 4 cards in the same grid as HOST so GPU lines up column-for-column.
+              <div
+                key={g.index ?? g.name}
+                className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+              >
+                <Card className="border-border/60">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
-                      <Gauge className="h-3.5 w-3.5" /> {g.name}
+                      <Gauge className="h-3.5 w-3.5" /> GPU Load
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
-                    <div className="grid grid-cols-2 gap-3">
-                      <div>
-                        <span className="text-3xl font-bold tabular-nums">
-                          {g.utilizationGpuPct ?? '—'}
-                          <span className="text-muted-foreground text-lg font-normal">%</span>
-                        </span>
-                        <p className="text-muted-foreground mt-0.5 text-xs">GPU load</p>
-                      </div>
-                      <div>
-                        <span
-                          className={`flex items-center gap-1 text-3xl font-bold tabular-nums ${tempClass}`}
-                        >
-                          <Thermometer className="h-5 w-5" />
-                          {g.temperatureC ?? '—'}
-                          <span className="text-muted-foreground text-lg font-normal">°C</span>
-                        </span>
-                        <p className="text-muted-foreground mt-0.5 text-xs">Temperature</p>
-                      </div>
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {g.utilizationGpuPct ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal">%</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 truncate text-xs" title={g.name}>
+                        {g.name.replace(/^NVIDIA\s+/i, '')}
+                      </p>
                     </div>
-                    {g.memoryTotalMB ? (
+                    <MetricBar
+                      label="Utilization"
+                      value={g.utilizationGpuPct ?? 0}
+                      max={100}
+                      unit="%"
+                      thresholds={[70, 90]}
+                    />
+                  </CardContent>
+                </Card>
+
+                <Card className="border-border/60">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                      <Thermometer className="h-3.5 w-3.5" /> Temperature
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div>
+                      <span className={`text-3xl font-bold tabular-nums ${tempClass}`}>
+                        {g.temperatureC ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal"> °C</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        Mem I/O {g.utilizationMemPct ?? '—'}%
+                      </p>
+                    </div>
+                    <MetricBar label="Temp" value={temp} max={100} unit=" °C" thresholds={[70, 85]} />
+                  </CardContent>
+                </Card>
+
+                <Card className="border-border/60">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                      <MemoryStick className="h-3.5 w-3.5" /> VRAM
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {vramUsed.toFixed(1)}
+                        <span className="text-muted-foreground text-lg font-normal"> GB</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        of {vramTotal.toFixed(0)} GB
+                      </p>
+                    </div>
+                    {vramTotal ? (
                       <MetricBar
-                        label="VRAM"
-                        value={(g.memoryUsedMB ?? 0) / 1024}
-                        max={g.memoryTotalMB / 1024}
+                        label="Used"
+                        value={vramUsed}
+                        max={vramTotal}
                         unit=" GB"
                         pct={g.memoryUsedPct ?? undefined}
                         thresholds={[75, 90]}
                       />
                     ) : null}
-                    <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
-                      <KeyVal
-                        label="Power"
-                        value={`${g.powerW?.toFixed(0) ?? '—'}${g.powerLimitW ? ` / ${g.powerLimitW.toFixed(0)}` : ''} W`}
-                      />
-                      <KeyVal label="Mem I/O" value={`${g.utilizationMemPct ?? '—'}%`} />
-                    </div>
                   </CardContent>
                 </Card>
-              );
-            })}
-          </div>
+
+                <Card className="border-border/60">
+                  <CardHeader className="pb-2">
+                    <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                      <Zap className="h-3.5 w-3.5" /> Power
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div>
+                      <span className="text-3xl font-bold tabular-nums">
+                        {g.powerW?.toFixed(0) ?? '—'}
+                        <span className="text-muted-foreground text-lg font-normal"> W</span>
+                      </span>
+                      <p className="text-muted-foreground mt-0.5 text-xs">
+                        of {g.powerLimitW?.toFixed(0) ?? '—'} W limit
+                      </p>
+                    </div>
+                    {g.powerLimitW ? (
+                      <MetricBar
+                        label="Draw"
+                        value={g.powerW ?? 0}
+                        max={g.powerLimitW}
+                        unit=" W"
+                        thresholds={[70, 90]}
+                      />
+                    ) : null}
+                  </CardContent>
+                </Card>
+              </div>
+            );
+          })}
         </Section>
       ) : null}
 
