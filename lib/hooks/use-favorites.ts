@@ -7,7 +7,7 @@ import type { FavoritesResponse } from '@/lib/api/favorites';
  * Hook to fetch favorites using React Query
  * - Reads favorite IDs from cookies inside queryFn so refetch after toggle uses current state
  * - Automatically uses geolocation from context
- * - Caches results for 1 minute (wait times should be relatively fresh)
+ * - Caches results for 5 minutes (matches the backend favorites TTL + the 5-min wait-times sync)
  */
 export function useFavorites() {
   const { position, loading: geoLoading } = useGeolocation();
