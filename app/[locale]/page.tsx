@@ -116,23 +116,29 @@ export default async function HomePage({ params }: HomePageProps) {
   setRequestLocale(locale);
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
 
-  const t = await getTranslations('stats');
-  const tHome = await getTranslations('home');
-  const tParks = await getTranslations('parks');
-  const tCommon = await getTranslations('common');
-  const tGeo = await getTranslations('geo');
-  const tExplore = await getTranslations('explore');
-
-  // eslint-disable-next-line react-hooks/purity -- intentional per-request randomization
-  const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
-
-  // Fetch data in parallel (ML dashboard fetched inside MLStatsSection to keep Suspense boundaries clean)
-  const [stats, geoData, liveStats, tickerData] = await Promise.all([
+  // Kick off the backend data fetch FIRST so the round-trips overlap with the (cheap, but
+  // previously 6× sequential) translation loading below instead of waiting behind it.
+  const dataPromise = Promise.all([
     catchNonFatal(getGlobalStats()),
     catchNonFatal(getGeoStructure(300)),
     catchNonFatal(getGeoLiveStats()),
     catchNonFatal(getTickerData()),
   ]);
+
+  const [t, tHome, tParks, tCommon, tGeo, tExplore] = await Promise.all([
+    getTranslations('stats'),
+    getTranslations('home'),
+    getTranslations('parks'),
+    getTranslations('common'),
+    getTranslations('geo'),
+    getTranslations('explore'),
+  ]);
+
+  // eslint-disable-next-line react-hooks/purity -- intentional per-request randomization
+  const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+
+  // ML dashboard is fetched inside MLStatsSection to keep Suspense boundaries clean.
+  const [stats, geoData, liveStats, tickerData] = await dataPromise;
 
   const continents =
     geoData?.continents.map((continent) => {
