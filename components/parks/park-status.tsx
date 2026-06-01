@@ -1,5 +1,4 @@
 import { useTranslations } from 'next-intl';
-import { fromZonedTime } from 'date-fns-tz';
 import { Clock, Users, TrendingUp, ActivitySquare } from 'lucide-react';
 import { LocalTime } from '@/components/ui/local-time';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -208,31 +207,17 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
                       </div>
                     </div>
                   )}
-                  {stats.peakHour && (
+                  {stats.peakHour && stats.peakHourSource && (
                     <div className="flex items-center justify-between border-t pt-3">
                       <span className="text-muted-foreground text-sm font-medium">
                         {t('peakHour')}
                       </span>
                       <div className="flex items-center">
                         <span className="text-foreground text-sm font-bold tabular-nums">
-                          <LocalTime
-                            time={
-                              stats.peakHour.includes('T')
-                                ? stats.peakHour
-                                : (() => {
-                                    const today = new Date().toLocaleDateString('en-CA', {
-                                      timeZone: park.timezone,
-                                    });
-                                    return fromZonedTime(
-                                      `${today}T${stats.peakHour}:00`,
-                                      park.timezone
-                                    ).toISOString();
-                                  })()
-                            }
-                            timeZone={park.timezone}
-                          />
+                          {stats.peakHourSource !== 'observed_today' && '≈ '}
+                          <LocalTime time={stats.peakHour} timeZone={park.timezone} />
                         </span>
-                        <PeakHourBadge peakHour={stats.peakHour} timezone={park.timezone} />
+                        <PeakHourBadge peakHour={stats.peakHour} />
                       </div>
                     </div>
                   )}

@@ -304,10 +304,18 @@ export interface ParkOccupancy {
   breakdown?: Record<string, unknown>;
 }
 
+export type PeakHourSource =
+  | 'observed_today'
+  | 'prediction'
+  | 'historical_fallback';
+
 export interface ParkStatistics {
   avgWaitTime: number;
   avgWaitToday: number;
   peakHour: string | null;
+  peakHourLocal: string | null;
+  peakHourConfidence: number;
+  peakHourSource: PeakHourSource | null;
   crowdLevel: CrowdLevel;
   totalAttractions: number;
   operatingAttractions: number;
@@ -1051,6 +1059,7 @@ export interface IntegratedCalendarResponse {
 export interface MonthStat {
   month: number; // 1–12
   avgCrowdScore: number;
+  avgCrowdLevel: CrowdLevel;
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
@@ -1059,6 +1068,7 @@ export interface MonthStat {
 export interface DayOfWeekStat {
   dayOfWeek: number; // 0=Sunday, 6=Saturday
   avgCrowdScore: number;
+  avgCrowdLevel: CrowdLevel;
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
@@ -1070,6 +1080,7 @@ export interface TopAttractionStat {
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
+  rank: number;
 }
 
 export interface ParkHistoricalStats {
@@ -1081,6 +1092,10 @@ export interface ParkHistoricalStats {
     dataFrom: string;
     dataTo: string;
     totalSampleDays: number;
+    windowYears: number;
+    displayable: boolean;
+    generatedAt: string;
+    schemaVersion: 2;
   };
 }
 
