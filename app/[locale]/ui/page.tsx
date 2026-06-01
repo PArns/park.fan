@@ -209,8 +209,6 @@ const MOCK_PARK = {
       avgWaitTime: 35,
       avgWaitToday: 40,
       peakHour: '2026-06-01T14:30:00+02:00',
-      peakHourLocal: '14:30',
-      peakHourConfidence: 0.6,
       peakHourSource: 'prediction' as const,
       crowdLevel: 'high' as CrowdLevel,
       totalAttractions: 42,

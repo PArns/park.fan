@@ -313,8 +313,6 @@ export interface ParkStatistics {
   avgWaitTime: number;
   avgWaitToday: number;
   peakHour: string | null;
-  peakHourLocal: string | null;
-  peakHourConfidence: number;
   peakHourSource: PeakHourSource | null;
   crowdLevel: CrowdLevel;
   totalAttractions: number;
@@ -1088,14 +1086,9 @@ export interface ParkHistoricalStats {
   byDayOfWeek: DayOfWeekStat[];
   topAttractions: TopAttractionStat[];
   meta: {
-    parkSlug: string;
-    dataFrom: string;
-    dataTo: string;
     totalSampleDays: number;
     windowYears: number;
     displayable: boolean;
-    generatedAt: string;
-    schemaVersion: 2;
   };
 }
 
