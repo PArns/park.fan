@@ -14,7 +14,7 @@ export async function getParkHistoricalStats(
   parkSlug: string,
   years = 2
 ): Promise<ParkHistoricalStats> {
-  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats?years=${years}&schema=2`;
+  const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats?years=${years}`;
   const res = await fetch(url, { next: { revalidate: 86400 } });
 
   if (!res.ok) {
