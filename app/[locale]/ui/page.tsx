@@ -208,7 +208,8 @@ const MOCK_PARK = {
     statistics: {
       avgWaitTime: 35,
       avgWaitToday: 40,
-      peakHour: '14:30',
+      peakHour: '2026-06-01T14:30:00+02:00',
+      peakHourSource: 'prediction' as const,
       crowdLevel: 'high' as CrowdLevel,
       totalAttractions: 42,
       operatingAttractions: 38,
@@ -1398,7 +1399,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
           <Sub title="PeakHourBadge — renders after hydration if peak is in future">
             <div className="flex items-center gap-2">
               <span className="text-muted-foreground text-sm">Peak at 23:59:</span>
-              <PeakHourBadge peakHour="23:59" timezone="Europe/Berlin" />
+              <PeakHourBadge peakHour="2099-12-31T23:59:00+01:00" />
             </div>
           </Sub>
         </Section>

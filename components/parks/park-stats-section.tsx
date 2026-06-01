@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { BarChart3 } from 'lucide-react';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
-import type { CrowdLevel, ParkHistoricalStats } from '@/lib/api/types';
+import type { ParkHistoricalStats } from '@/lib/api/types';
 
 interface ParkStatsSectionProps {
   stats: ParkHistoricalStats | null;
@@ -12,15 +12,6 @@ interface ParkStatsSectionProps {
   parkSlug: string;
   locale: string;
 }
-
-const CROWD_SCORE_TO_LEVEL = (score: number): CrowdLevel => {
-  if (score <= 1.5) return 'very_low';
-  if (score <= 2.5) return 'low';
-  if (score <= 3.5) return 'moderate';
-  if (score <= 4.5) return 'high';
-  if (score <= 5.5) return 'very_high';
-  return 'extreme';
-};
 
 export async function ParkStatsSection({
   stats,
@@ -32,19 +23,14 @@ export async function ParkStatsSection({
 }: ParkStatsSectionProps) {
   const t = await getTranslations('parks.stats');
 
-  if (!stats || stats.meta.totalSampleDays < 30) return null;
-
-  const years = Math.round(
-    (new Date(stats.meta.dataTo).getTime() - new Date(stats.meta.dataFrom).getTime()) /
-      (365.25 * 24 * 3600 * 1000)
-  );
+  if (!stats || !stats.meta.displayable) return null;
 
   const monthRows = stats.byMonth.map((m) => ({
     key: m.month,
     label: new Intl.DateTimeFormat(locale, { month: 'long' }).format(
       new Date(2024, m.month - 1, 1)
     ),
-    crowdLevel: CROWD_SCORE_TO_LEVEL(m.avgCrowdScore),
+    crowdLevel: m.avgCrowdLevel,
     p50: m.avgWaitP50,
     p90: m.avgWaitP90,
   }));
@@ -59,7 +45,7 @@ export async function ParkStatsSection({
         key: d.dayOfWeek,
         sortKey: offset,
         label: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
-        crowdLevel: CROWD_SCORE_TO_LEVEL(d.avgCrowdScore),
+        crowdLevel: d.avgCrowdLevel,
         p50: d.avgWaitP50,
         p90: d.avgWaitP90,
       };
@@ -76,7 +62,10 @@ export async function ParkStatsSection({
           </h2>
         </div>
         <p className="text-muted-foreground mt-1 text-sm">
-          {t('subtitle', { days: stats.meta.totalSampleDays, years: Math.max(years, 1) })}
+          {t('subtitle', {
+            days: stats.meta.totalSampleDays,
+            years: Math.max(stats.meta.windowYears, 1),
+          })}
         </p>
       </div>
 
