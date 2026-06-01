@@ -38,8 +38,9 @@ export function ParkStatsAttractionsCard({
         {title}
       </h3>
       <ul className="space-y-0.5">
-        {attractions.map((a) => {
-          const rankStyle = RANK_STYLES[a.rank] ?? 'bg-muted/40 text-muted-foreground';
+        {attractions.map((a, i) => {
+          const rank = a.rank ?? i + 1;
+          const rankStyle = RANK_STYLES[rank] ?? 'bg-muted/40 text-muted-foreground';
           return (
             <li
               key={a.attractionSlug}
@@ -51,7 +52,7 @@ export function ParkStatsAttractionsCard({
                   rankStyle
                 )}
               >
-                {a.rank}
+                {rank}
               </span>
               <Link
                 href={`/parks/${continent}/${country}/${city}/${parkSlug}/${a.attractionSlug}`}

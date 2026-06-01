@@ -207,14 +207,16 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
                       </div>
                     </div>
                   )}
-                  {stats.peakHour && stats.peakHourSource && (
+                  {stats.peakHour && stats.peakHourSource !== null && (
                     <div className="flex items-center justify-between border-t pt-3">
                       <span className="text-muted-foreground text-sm font-medium">
                         {t('peakHour')}
                       </span>
                       <div className="flex items-center">
                         <span className="text-foreground text-sm font-bold tabular-nums">
-                          {stats.peakHourSource !== 'observed_today' && '≈ '}
+                          {stats.peakHourSource &&
+                            stats.peakHourSource !== 'observed_today' &&
+                            '≈ '}
                           <LocalTime time={stats.peakHour} timeZone={park.timezone} />
                         </span>
                         <PeakHourBadge peakHour={stats.peakHour} />

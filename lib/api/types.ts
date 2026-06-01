@@ -1057,7 +1057,7 @@ export interface IntegratedCalendarResponse {
 export interface MonthStat {
   month: number; // 1–12
   avgCrowdScore: number;
-  avgCrowdLevel: CrowdLevel;
+  avgCrowdLevel?: CrowdLevel;
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
@@ -1066,7 +1066,7 @@ export interface MonthStat {
 export interface DayOfWeekStat {
   dayOfWeek: number; // 0=Sunday, 6=Saturday
   avgCrowdScore: number;
-  avgCrowdLevel: CrowdLevel;
+  avgCrowdLevel?: CrowdLevel;
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
@@ -1078,7 +1078,7 @@ export interface TopAttractionStat {
   avgWaitP50: number;
   avgWaitP90: number;
   sampleDays: number;
-  rank: number;
+  rank?: number;
 }
 
 export interface ParkHistoricalStats {
@@ -1086,9 +1086,11 @@ export interface ParkHistoricalStats {
   byDayOfWeek: DayOfWeekStat[];
   topAttractions: TopAttractionStat[];
   meta: {
+    dataFrom: string;
+    dataTo: string;
     totalSampleDays: number;
-    windowYears: number;
-    displayable: boolean;
+    windowYears?: number;
+    displayable?: boolean;
   };
 }
 

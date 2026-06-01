@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { BarChart3 } from 'lucide-react';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
-import type { ParkHistoricalStats } from '@/lib/api/types';
+import type { CrowdLevel, ParkHistoricalStats } from '@/lib/api/types';
 
 interface ParkStatsSectionProps {
   stats: ParkHistoricalStats | null;
@@ -12,6 +12,17 @@ interface ParkStatsSectionProps {
   parkSlug: string;
   locale: string;
 }
+
+// Fallback used until the backend ships avgCrowdLevel on every row.
+// Backend mapping is occupancy-relative; this is a coarser score→label proxy.
+const scoreToLevel = (score: number): CrowdLevel => {
+  if (score <= 1.5) return 'very_low';
+  if (score <= 2.5) return 'low';
+  if (score <= 3.5) return 'moderate';
+  if (score <= 4.5) return 'high';
+  if (score <= 5.5) return 'very_high';
+  return 'extreme';
+};
 
 export async function ParkStatsSection({
   stats,
@@ -23,14 +34,23 @@ export async function ParkStatsSection({
 }: ParkStatsSectionProps) {
   const t = await getTranslations('parks.stats');
 
-  if (!stats || !stats.meta.displayable) return null;
+  if (!stats) return null;
+  const displayable = stats.meta.displayable ?? stats.meta.totalSampleDays >= 30;
+  if (!displayable) return null;
+
+  const years =
+    stats.meta.windowYears ??
+    Math.round(
+      (new Date(stats.meta.dataTo).getTime() - new Date(stats.meta.dataFrom).getTime()) /
+        (365.25 * 24 * 3600 * 1000)
+    );
 
   const monthRows = stats.byMonth.map((m) => ({
     key: m.month,
     label: new Intl.DateTimeFormat(locale, { month: 'long' }).format(
       new Date(2024, m.month - 1, 1)
     ),
-    crowdLevel: m.avgCrowdLevel,
+    crowdLevel: m.avgCrowdLevel ?? scoreToLevel(m.avgCrowdScore),
     p50: m.avgWaitP50,
     p90: m.avgWaitP90,
   }));
@@ -45,7 +65,7 @@ export async function ParkStatsSection({
         key: d.dayOfWeek,
         sortKey: offset,
         label: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
-        crowdLevel: d.avgCrowdLevel,
+        crowdLevel: d.avgCrowdLevel ?? scoreToLevel(d.avgCrowdScore),
         p50: d.avgWaitP50,
         p90: d.avgWaitP90,
       };
@@ -64,7 +84,7 @@ export async function ParkStatsSection({
         <p className="text-muted-foreground mt-1 text-sm">
           {t('subtitle', {
             days: stats.meta.totalSampleDays,
-            years: Math.max(stats.meta.windowYears, 1),
+            years: Math.max(years, 1),
           })}
         </p>
       </div>
