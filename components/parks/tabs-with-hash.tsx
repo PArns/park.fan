@@ -46,7 +46,8 @@ interface TabsWithHashProps {
   showsAvailable: boolean | undefined;
   restaurantsAvailable: boolean | undefined;
   park: ParkWithAttractions;
-  calendarData: IntegratedCalendarResponse;
+  /** Optional SSR seed; the calendar grid client-fetches per visible month when omitted. */
+  calendarData?: IntegratedCalendarResponse;
   continent: string;
   country: string;
   city: string;

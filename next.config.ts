@@ -29,6 +29,9 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,
+    // Surface attribution on Web Vitals (metric.attribution) so the RUM reporter can pin
+    // the exact element/interaction behind a poor INP/LCP/CLS — e.g. the homepage INP>200ms.
+    webVitalsAttribution: ['INP', 'LCP', 'CLS'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],

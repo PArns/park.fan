@@ -12,6 +12,7 @@ import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
+import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import {
   OrganizationStructuredData,
@@ -158,6 +159,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             <NextIntlClientProvider messages={messages} locale={locale}>
               <ScrollToTop />
               <AnalyticsIdentify locale={locale} />
+              <WebVitalsReporter />
               <LanguageBanner currentLocale={locale as Locale} />
               <div className="flex min-h-screen flex-col">
                 <Header />

@@ -32,7 +32,9 @@ import { ParkCalendarDay } from './park-calendar-day';
 
 interface ParkCalendarGridProps {
   park: ParkWithAttractions;
-  initialCalendarData: IntegratedCalendarResponse;
+  /** Optional SSR seed. When omitted, the grid renders from its own per-month
+   *  useCalendarData fetch (calendarData?.days is already null-guarded below). */
+  initialCalendarData?: IntegratedCalendarResponse;
   continent: string;
   country: string;
   city: string;
@@ -100,7 +102,7 @@ export function ParkCalendarGrid({
   const calendarData = useMemo(() => {
     const base = fetchedCalendarData || initialCalendarData;
     const todayDay = todayData?.days?.[0];
-    if (!todayDay) return base;
+    if (!base || !todayDay) return base;
     return {
       ...base,
       days: base.days.map((d) =>

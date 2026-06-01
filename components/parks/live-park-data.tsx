@@ -21,7 +21,9 @@ interface LiveParkDataProps {
   country: string;
   city: string;
   parkSlug: string;
-  calendarData: IntegratedCalendarResponse;
+  /** Optional SSR seed for the calendar tab. Omitted now that the tab client-fetches per
+   *  visible month — keeps the cold calendar build off the park page's critical path. */
+  calendarData?: IntegratedCalendarResponse;
   landNames: string[];
   attractionsByLand: Record<string, ParkAttraction[]>;
   bestDaysSlot?: React.ReactNode;

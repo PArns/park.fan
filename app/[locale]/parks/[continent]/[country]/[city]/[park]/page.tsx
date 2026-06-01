@@ -1,3 +1,4 @@
+import { Suspense, type ComponentProps } from 'react';
 import { format, startOfMonth, endOfMonth, addMonths, addDays, min } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
@@ -166,21 +167,32 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const calendarFrom = startOfMonth(new Date());
   const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
 
-  const [calendarData, parkStats, nowcast] = await Promise.all([
-    getIntegratedCalendar(continent, country, city, parkSlug, {
+  // The calendar (up to ~15s on a cold build) feeds only below-the-fold / behind-tab UI:
+  // the best-days + FAQ sections (streamed via <Suspense> below) and the calendar tab —
+  // which client-fetches per visible month on its own (useCalendarData). So keep it OFF
+  // the blocking path: the page shell paints in ~0.4s instead of waiting on the calendar.
+  const calendarPromise: Promise<IntegratedCalendarResponse> = getIntegratedCalendar(
+    continent,
+    country,
+    city,
+    parkSlug,
+    {
       from: format(calendarFrom, 'yyyy-MM-dd'),
       to: format(calendarTo, 'yyyy-MM-dd'),
       includeHourly: 'none',
-    }).catch(
-      (): IntegratedCalendarResponse => ({
-        meta: {
-          slug: parkSlug,
-          timezone: park.timezone,
-          hasOperatingSchedule: park.hasOperatingSchedule,
-        },
-        days: [],
-      })
-    ),
+    }
+  ).catch(
+    (): IntegratedCalendarResponse => ({
+      meta: {
+        slug: parkSlug,
+        timezone: park.timezone,
+        hasOperatingSchedule: park.hasOperatingSchedule,
+      },
+      days: [],
+    })
+  );
+
+  const [parkStats, nowcast] = await Promise.all([
     getParkHistoricalStats(continent, country, city, parkSlug).catch(
       (): ParkHistoricalStats | null => null
     ),
@@ -331,17 +343,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
             country={country}
             city={city}
             parkSlug={parkSlug}
-            calendarData={calendarData}
             landNames={landNames}
             attractionsByLand={attractionsByLand}
             bestDaysSlot={
-              <ParkBestDaysSection
-                calendarData={calendarData}
-                statsByDayOfWeek={parkStats?.byDayOfWeek}
-                parkName={parkName}
-                parkSlug={parkSlug}
-                locale={locale}
-              />
+              <Suspense fallback={null}>
+                <StreamedBestDays
+                  calendarPromise={calendarPromise}
+                  statsByDayOfWeek={parkStats?.byDayOfWeek}
+                  parkName={parkName}
+                  parkSlug={parkSlug}
+                  locale={locale}
+                />
+              </Suspense>
             }
           />
 
@@ -367,9 +380,36 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
           {/* FAQ Section */}
           <Separator className="my-8" />
-          <ParkFAQSection park={park} locale={locale} calendarData={calendarData} />
+          <Suspense fallback={<ParkFAQSection park={park} locale={locale} />}>
+            <StreamedFaq park={park} locale={locale} calendarPromise={calendarPromise} />
+          </Suspense>
         </article>
       </PageContainer>
     </>
   );
+}
+
+/**
+ * Streams the "best days" widget: awaits the (non-blocking) calendar promise so the page
+ * shell never waits on a cold calendar build. Wrapped in <Suspense> by the caller.
+ */
+async function StreamedBestDays({
+  calendarPromise,
+  ...rest
+}: Omit<ComponentProps<typeof ParkBestDaysSection>, 'calendarData'> & {
+  calendarPromise: Promise<IntegratedCalendarResponse>;
+}) {
+  const calendarData = await calendarPromise;
+  return <ParkBestDaysSection calendarData={calendarData} {...rest} />;
+}
+
+/** Streams the FAQ section (calendar-derived crowd FAQ) the same way. */
+async function StreamedFaq({
+  calendarPromise,
+  ...rest
+}: Omit<ComponentProps<typeof ParkFAQSection>, 'calendarData'> & {
+  calendarPromise: Promise<IntegratedCalendarResponse>;
+}) {
+  const calendarData = await calendarPromise;
+  return <ParkFAQSection {...rest} calendarData={calendarData} />;
 }
