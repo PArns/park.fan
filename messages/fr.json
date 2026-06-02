@@ -460,18 +460,21 @@
         "heading": "Alerte orage",
         "bodyNow": "Orage en cours — rejoignez un endroit abrité.",
         "bodyInMin": "Orage prévu dans environ {duration}.",
+        "bodyInMinSoon": "Orage dans environ {duration} — rejoignez un endroit abrité.",
         "bodyEndsInMin": "Orage en cours — se termine dans environ {duration}."
       },
       "hail": {
         "heading": "Alerte grêle",
         "bodyNow": "Grêle en cours — rejoignez un endroit abrité.",
-        "bodyInMin": "Grêle prévue dans environ {duration} — rejoignez un endroit abrité.",
+        "bodyInMin": "Grêle prévue dans environ {duration}.",
+        "bodyInMinSoon": "Grêle dans environ {duration} — rejoignez un endroit abrité.",
         "bodyEndsInMin": "Grêle en cours — se termine dans environ {duration}."
       },
       "storm": {
         "heading": "Alerte tempête",
         "bodyNow": "Rafales jusqu'à {gusts} en cours.",
         "bodyInMin": "Rafales jusqu'à {gusts} prévues dans environ {duration}.",
+        "bodyInMinSoon": "Rafales jusqu'à {gusts} dans environ {duration} — rejoignez un endroit abrité.",
         "bodyEndsInMin": "Rafales jusqu'à {gusts} — se terminent dans environ {duration}."
       },
       "precipTimeline": "Prévisions de précipitations jusquà {until}, pic de {max} mm par 15 min.",

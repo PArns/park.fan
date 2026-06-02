@@ -459,19 +459,22 @@
       "thunderstorm": {
         "heading": "Onweerswaarschuwing",
         "bodyNow": "Onweer in het park — zoek een beschutte plek.",
-        "bodyInMin": "Onweer over ongeveer {duration} — zoek een beschutte plek.",
+        "bodyInMin": "Onweer verwacht over ongeveer {duration}.",
+        "bodyInMinSoon": "Onweer over ongeveer {duration} — zoek een beschutte plek.",
         "bodyEndsInMin": "Onweer actief — stopt over ongeveer {duration}."
       },
       "hail": {
         "heading": "Hagelwaarschuwing",
         "bodyNow": "Hagel in het park — zoek een beschutte plek.",
-        "bodyInMin": "Hagel over ongeveer {duration} — zoek een beschutte plek.",
+        "bodyInMin": "Hagel verwacht over ongeveer {duration}.",
+        "bodyInMinSoon": "Hagel over ongeveer {duration} — zoek een beschutte plek.",
         "bodyEndsInMin": "Hagel actief — stopt over ongeveer {duration}."
       },
       "storm": {
         "heading": "Stormwaarschuwing",
         "bodyNow": "Windstoten tot {gusts} op dit moment.",
         "bodyInMin": "Windstoten tot {gusts} verwacht over ongeveer {duration}.",
+        "bodyInMinSoon": "Windstoten tot {gusts} over ongeveer {duration} — zoek een beschutte plek.",
         "bodyEndsInMin": "Windstoten tot {gusts} — stopt over ongeveer {duration}."
       },
       "precipTimeline": "Neerslagverwachting tot {until}, piek {max} mm per 15 min.",
