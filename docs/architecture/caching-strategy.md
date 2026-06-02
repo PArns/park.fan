@@ -18,15 +18,21 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | revalidate | API Cache | Strategy                                           |
-| ---------- | ---------- | --------- | -------------------------------------------------- |
-| Homepage   | 3600 (1h)  | 120s      | Static shell; live stats via React Query on client |
-| Continent  | 3600 (1h)  | 120s      | Geo structure (rarely changes)                     |
-| Country    | 3600 (1h)  | 300s      | Static shell; live park stats via React Query      |
-| City       | 3600 (1h)  | 300s      | Static shell; live park stats via React Query      |
-| Park       | 3600 (1h)  | 300s      | Static shell; live wait times via React Query      |
-| Attraction | 3600 (1h)  | 300s      | Static shell; live wait times via React Query      |
-| Search     | Dynamic    | 60s       | Uses `cache: 'no-store'`                           |
+| Route      | Render      | revalidate | API Cache | Strategy                                                      |
+| ---------- | ----------- | ---------- | --------- | ------------------------------------------------------------- |
+| Homepage   | Static ISR  | 300 (5m)   | 120s      | Prerendered HTML; data sections via Suspense, live via RQ     |
+| Continent  | Static ISR  | 300 (5m)   | 120s      | Geo structure (rarely changes)                                |
+| Country    | Static ISR  | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                  |
+| City       | Static ISR  | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                  |
+| Park       | **Dynamic** | —          | 300s      | Reads `temp_unit` cookie (park layout) for flash-free weather |
+| Attraction | **Dynamic** | —          | 300s      | Under the park layout (inherits the cookie read)              |
+| Search     | Dynamic     | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                     |
+
+> **Why Park/Attraction are dynamic:** the temperature-unit cookie is read in
+> `app/[locale]/parks/.../[park]/layout.tsx` so server-rendered weather already
+> uses the visitor's unit (no °C→°F flash). The read is confined to that subtree
+> so the homepage and all geo pages stay static (CDN-cached). Reading cookies in
+> the root layout would opt the **entire** app into dynamic rendering.
 
 ---
 

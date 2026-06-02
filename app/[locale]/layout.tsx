@@ -2,11 +2,9 @@ import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { cookies } from 'next/headers';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
 import { Providers } from '@/lib/providers';
-import type { TemperatureUnit } from '@/lib/utils/temperature';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { LanguageBanner } from '@/components/layout/language-banner';
@@ -125,11 +123,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
-  // Read the saved temperature-unit preference so we hydrate with the right unit
-  // and avoid a flash of "° C → ° F" for Fahrenheit users on first paint.
-  const tempUnitCookie = (await cookies()).get('temp_unit')?.value;
-  const initialTemperatureUnit: TemperatureUnit | undefined =
-    tempUnitCookie === 'C' || tempUnitCookie === 'F' ? tempUnitCookie : undefined;
+  // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
+  // cookies() in the root layout would opt every route into dynamic rendering.
+  // The unit only matters for weather/calendar on park detail pages, so the
+  // cookie is read in the park-scoped layout instead — keeping the homepage and
+  // all geo pages statically prerenderable (ISR). The global provider below
+  // resolves the unit client-side for any other page.
 
   // Render html/body here to have access to locale for lang attribute
   return (
@@ -156,7 +155,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           enableSystem
           disableTransitionOnChange
         >
-          <Providers initialTemperatureUnit={initialTemperatureUnit}>
+          <Providers>
             <NextIntlClientProvider messages={messages} locale={locale}>
               <ScrollToTop />
               <AnalyticsIdentify locale={locale} />
