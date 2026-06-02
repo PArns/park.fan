@@ -31,7 +31,8 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
     // Surface attribution on Web Vitals (metric.attribution) so the RUM reporter can pin
     // the exact element/interaction behind a poor INP/LCP/CLS — e.g. the homepage INP>200ms.
-    webVitalsAttribution: ['INP', 'LCP', 'CLS'],
+    // TTFB/FCP attribution splits server wait vs client paint to track the streaming win.
+    webVitalsAttribution: ['INP', 'LCP', 'CLS', 'TTFB', 'FCP'],
   },
   images: {
     formats: ['image/avif', 'image/webp'],
