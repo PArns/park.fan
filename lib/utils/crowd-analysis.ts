@@ -1,3 +1,4 @@
+import { parseISO, getISOWeek, getISOWeekYear } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 
@@ -78,9 +79,44 @@ export function analyzeBestDays(
   in30Days.setDate(in30Days.getDate() + 30);
   const in30Str = in30Days.toISOString().slice(0, 10);
 
-  const upcomingQuietDays = futureDays
-    .filter((d) => d.date <= in30Str && ['very_low', 'low'].includes(d.crowdLevel as string))
-    .slice(0, 5);
+  // Show the 1–2 quietest days per calendar week, not every quiet day: adjacent
+  // quiet days in a stretch are redundant for trip planning, and a long flat list
+  // is noise. Group the next-30-day quiet days by ISO week, keep the quietest
+  // 1–2 each, then cap the overall list.
+  const MAX_QUIET_PER_WEEK = 2;
+  const MAX_QUIET_TOTAL = 8; // ~4-5 ISO weeks in 30d × up to 2/week, capped
+  const quietByWeek = new Map<string, CalendarDay[]>();
+  for (const d of futureDays) {
+    if (d.date > in30Str) continue;
+    if (!['very_low', 'low'].includes(d.crowdLevel as string)) continue;
+    const wd = parseISO(d.date);
+    const weekKey = `${getISOWeekYear(wd)}-${getISOWeek(wd)}`;
+    const bucket = quietByWeek.get(weekKey);
+    if (bucket) bucket.push(d);
+    else quietByWeek.set(weekKey, [d]);
+  }
+  // Quietest-first within each week, weeks in chronological order.
+  const weeksSorted = [...quietByWeek.values()]
+    .map((week) =>
+      [...week].sort(
+        (a, b) =>
+          (CROWD_SCORE[a.crowdLevel as string] ?? 3) -
+          (CROWD_SCORE[b.crowdLevel as string] ?? 3)
+      )
+    )
+    .sort((a, b) => (a[0].date < b[0].date ? -1 : 1));
+  // Coverage-first so the list spans the whole 30-day window instead of
+  // front-loading the first weeks: take the single quietest day of EVERY week
+  // first, then fill a 2nd day per week up to the cap. Round-1 entries come first
+  // in the array, so the cap can only ever trim 2nd-choice days.
+  const upcomingQuietDays = [
+    ...weeksSorted.map((week) => week[0]),
+    ...(MAX_QUIET_PER_WEEK >= 2
+      ? weeksSorted.map((week) => week[1]).filter((d): d is CalendarDay => !!d)
+      : []),
+  ]
+    .slice(0, MAX_QUIET_TOTAL)
+    .sort((a, b) => (a.date < b.date ? -1 : 1));
 
   // --- School holiday impact ---
   const schoolDays = futureDays.filter((d) => d.isSchoolHoliday || d.isSchoolVacation);
