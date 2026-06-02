@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
-/* Custom Tailwind variant for group */
-@variant group (&:where(.group) *);
-
+/* `group` / `group-*` (group-hover, group-focus, …) are built into Tailwind v4 — do
+   not redefine the `group` variant here: a custom `@variant group (…)` shadows the
+   built-in group-* family and silently drops every `group-hover:` utility app-wide. */
 @variant dark (&:where(.dark, .dark *));
 
 @theme inline {
