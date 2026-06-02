@@ -62,7 +62,8 @@ export function useWeatherNowcast({
       const data = query.state.data as WeatherNowcast | null | undefined;
       if (data?.nextUpdateAt) {
         const ms = Date.parse(data.nextUpdateAt) - Date.now();
-        if (ms > 0) return ms;
+        if (ms > 0) return ms; // schedule the refetch exactly when the backend says it updates
+        return 60_000; // update is overdue (backend lagging) → re-poll every 60s until it's fresh
       }
       return 5 * 60_000;
     },
