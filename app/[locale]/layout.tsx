@@ -144,6 +144,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
             data-domains="park.fan"
             data-do-not-track="true"
+            data-performance="true"
             strategy="afterInteractive"
           />
         )}
