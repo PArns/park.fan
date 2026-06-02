@@ -244,6 +244,14 @@ export function ParkTimeInfo({
           </div>
         </div>
 
+        {/* Timezone */}
+        {timezone && (
+          <div className="flex items-center justify-between">
+            <span className="text-muted-foreground text-sm font-medium">{t('timezone')}</span>
+            <span className="font-mono text-sm font-medium">{timezone}</span>
+          </div>
+        )}
+
         {/* Holiday/Bridge Day/School Vacation Badges */}
         {(todaySchedule?.isHoliday ||
           todaySchedule?.isBridgeDay ||

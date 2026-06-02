@@ -306,6 +306,7 @@
     },
     "todaySchedule": "Today's Schedule",
     "currentTime": "Current Time",
+    "timezone": "Timezone",
     "openingHours": "Opening Hours",
     "opensOn": "Opens on",
     "offseason": "OffSeason",
