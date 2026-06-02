@@ -1,13 +1,10 @@
 import { NextResponse } from 'next/server';
-import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 
 const BASE_URL = 'https://park.fan';
-
-// Variant slugs like "taron-2" are noindex pages — exclude from IndexNow
-const VARIANT_SLUG_RE = /^.+-\d+$/;
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -27,22 +24,9 @@ export async function GET(request: Request) {
     urls.push(`${BASE_URL}/${locale}/${GLOSSARY_SEGMENTS[locale]}`); // glossary overview
   }
 
-  // ── Park pages ─────────────────────────────────────────────────────────────
+  // ── Park pages (shared URL set with the prewarm crawler) ────────────────────
   try {
-    const geo = await getGeoStructure(86400);
-
-    urls.push(
-      ...geo.continents.flatMap((continent) =>
-        continent.countries.flatMap((country) =>
-          country.cities.flatMap((city) =>
-            city.parks.flatMap((park) => {
-              const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
-              return locales.map((locale) => `${BASE_URL}/${locale}${parkPath}`);
-            })
-          )
-        )
-      )
-    );
+    urls.push(...localizedUrls(await getParkPaths(), BASE_URL));
   } catch (error) {
     console.error('[IndexNow] Failed to fetch geo structure:', error);
     return NextResponse.json({ error: 'Failed to fetch geo structure' }, { status: 500 });
@@ -50,16 +34,7 @@ export async function GET(request: Request) {
 
   // ── Attraction pages (long-tail SEO, same filter as sitemap) ───────────────
   try {
-    const attractions = await getSitemapAttractions();
-    for (const attraction of attractions) {
-      if (VARIANT_SLUG_RE.test(attraction.slug)) continue;
-      const frontendPath = attraction.url
-        .replace(/^\/v1\/parks\//, '/parks/')
-        .replace(/\/attractions\//, '/');
-      for (const locale of locales) {
-        urls.push(`${BASE_URL}/${locale}${frontendPath}`);
-      }
-    }
+    urls.push(...localizedUrls(await getAttractionPaths(), BASE_URL));
   } catch (error) {
     console.error('[IndexNow] Failed to fetch attractions:', error);
     // Non-fatal — continue with what we have
