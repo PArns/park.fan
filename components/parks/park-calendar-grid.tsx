@@ -215,6 +215,7 @@ export function ParkCalendarGrid({
     const crowdOrder = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme'];
     const candidates = Array.from(calendarMap.values()).filter(
       (d) =>
+        d.date >= todayStr && // never recommend a day that has already passed
         (d.status === 'OPERATING' || d.status === 'UNKNOWN') &&
         !d.isSchoolVacation &&
         !d.isSchoolHoliday &&
@@ -229,7 +230,7 @@ export function ParkCalendarGrid({
     return new Set<string>(
       candidates.filter((d) => crowdOrder.indexOf(d.crowdLevel) === minIdx).map((d) => d.date)
     );
-  }, [calendarMap]);
+  }, [calendarMap, todayStr]);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
