@@ -205,9 +205,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   // best-days widget — keep them OFF the blocking path and stream via <Suspense> so a
   // cold, slow-to-compute stats response can't block the shell (or blank the section
   // until a reload, as it did when awaited inline on the first cold hit).
-  const nowcast = await getParkWeatherNowcast(continent, country, city, parkSlug).catch(
-    () => null
-  );
+  const nowcast = await getParkWeatherNowcast(continent, country, city, parkSlug).catch(() => null);
 
   const statsPromise: Promise<ParkHistoricalStats | null> = getParkHistoricalStats(
     continent,

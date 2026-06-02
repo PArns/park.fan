@@ -24,7 +24,7 @@ export interface BestDaysAnalysis {
   worstDaysOfWeek: DayOfWeekStat[];
   /** All days with data, sorted ascending by avg score */
   allDaysOfWeek: DayOfWeekStat[];
-  /** Next quiet days (crowd very_low or low) within 30 days, max 5 */
+  /** Quietest 1-2 days per week within the next 30 days (very_low/low), capped at 8 */
   upcomingQuietDays: CalendarDay[];
   /** Whether school holidays correlate with significantly higher crowds */
   schoolHolidaysAreBusy: boolean;
@@ -32,10 +32,7 @@ export interface BestDaysAnalysis {
   totalDays: number;
 }
 
-export function analyzeBestDays(
-  days: CalendarDay[],
-  timezone?: string,
-): BestDaysAnalysis {
+export function analyzeBestDays(days: CalendarDay[], timezone?: string): BestDaysAnalysis {
   // "Today" must be in the park's timezone, not the server/UTC day — otherwise a
   // park east/west of UTC can drop the current day (or keep a past one) for a few
   // hours around midnight, e.g. listing a day in "upcoming quiet days" that has
@@ -100,8 +97,7 @@ export function analyzeBestDays(
     .map((week) =>
       [...week].sort(
         (a, b) =>
-          (CROWD_SCORE[a.crowdLevel as string] ?? 3) -
-          (CROWD_SCORE[b.crowdLevel as string] ?? 3)
+          (CROWD_SCORE[a.crowdLevel as string] ?? 3) - (CROWD_SCORE[b.crowdLevel as string] ?? 3)
       )
     )
     .sort((a, b) => (a[0].date < b[0].date ? -1 : 1));
