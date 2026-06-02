@@ -443,6 +443,7 @@
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
+      "updating": "Updating…",
       "intensity": {
         "light": "light",
         "moderate": "moderate",
