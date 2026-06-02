@@ -35,7 +35,9 @@ import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
+import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -348,7 +350,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             landNames={landNames}
             attractionsByLand={attractionsByLand}
             bestDaysSlot={
-              <Suspense fallback={null}>
+              <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
                 <StreamedBestDays
                   calendarPromise={calendarPromise}
                   statsPromise={statsPromise}
@@ -372,7 +374,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
           {/* Historical statistics — streamed so a cold/slow stats response doesn't block
               the shell or blank the section until a reload. */}
-          <Suspense fallback={null}>
+          <Suspense fallback={<ParkStatsSectionSkeleton />}>
             <StreamedParkStats
               statsPromise={statsPromise}
               continent={continent}
