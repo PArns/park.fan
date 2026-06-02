@@ -137,6 +137,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        {/* Set the temperature unit on <html> before paint so weather/calendar values
+            (server-rendered in both units, toggled by CSS) show the visitor's unit with
+            no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,
+            else derives from the browser locale's region (mirrors detectDefaultUnit). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var m=document.cookie.match(/(?:^|; )temp_unit=([CF])/);var u=m&&m[1];if(!u){var r;try{r=new Intl.Locale(navigator.language).region}catch(e){r=(navigator.language||'').split('-')[1]}u=['US','MM','LR','BS','KY','PW'].indexOf((r||'').toUpperCase())>-1?'F':'C'}document.documentElement.setAttribute('data-temp-unit',u)}catch(e){document.documentElement.setAttribute('data-temp-unit','C')}})();",
+          }}
+        />
         {process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && process.env.NEXT_PUBLIC_UMAMI_URL && (
           <Script
             src={process.env.NEXT_PUBLIC_UMAMI_URL}

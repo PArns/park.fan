@@ -18,21 +18,25 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | Render      | revalidate | API Cache | Strategy                                                      |
-| ---------- | ----------- | ---------- | --------- | ------------------------------------------------------------- |
-| Homepage   | Static ISR  | 300 (5m)   | 120s      | Prerendered HTML; data sections via Suspense, live via RQ     |
-| Continent  | Static ISR  | 300 (5m)   | 120s      | Geo structure (rarely changes)                                |
-| Country    | Static ISR  | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                  |
-| City       | Static ISR  | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                  |
-| Park       | **Dynamic** | —          | 300s      | Reads `temp_unit` cookie (park layout) for flash-free weather |
-| Attraction | **Dynamic** | —          | 300s      | Under the park layout (inherits the cookie read)              |
-| Search     | Dynamic     | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                     |
+| Route      | Render     | revalidate | API Cache | Strategy                                                  |
+| ---------- | ---------- | ---------- | --------- | --------------------------------------------------------- |
+| Homepage   | Static ISR | 300 (5m)   | 120s      | Prerendered HTML; data sections via Suspense, live via RQ |
+| Continent  | Static ISR | 300 (5m)   | 120s      | Geo structure (rarely changes)                            |
+| Country    | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
+| City       | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
+| Park       | Static ISR | 300 (5m)   | 300s      | On-demand ISR; live wait times + weather via RQ on client |
+| Attraction | Static ISR | 300 (5m)   | 300s      | On-demand ISR; live wait times via React Query on client  |
+| Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                 |
 
-> **Why Park/Attraction are dynamic:** the temperature-unit cookie is read in
-> `app/[locale]/parks/.../[park]/layout.tsx` so server-rendered weather already
-> uses the visitor's unit (no °C→°F flash). The read is confined to that subtree
-> so the homepage and all geo pages stay static (CDN-cached). Reading cookies in
-> the root layout would opt the **entire** app into dynamic rendering.
+> **Temperature unit & static park pages:** weather/calendar values are server-rendered
+> in BOTH °C and °F and toggled purely by CSS (`.u-metric` / `.u-imperial`, driven by
+> `html[data-temp-unit]` which an inline script in the root layout sets before paint — see
+> `components/common/unit-display.tsx`). This removed the per-request `temp_unit` cookie
+> read, and the park/attraction fetches (`getParkByGeoPath`, `getAttractionByGeoPath`,
+> `getParkWeatherNowcast`, the `stats` retry) were switched from `cache: 'no-store'` to
+> `revalidate: 300` — together these let the park & attraction pages render as on-demand
+> ISR (edge-cached) with no unit flash. Live wait times/weather stay fresh via client-side
+> React Query (`LiveParkData` / `useWeatherNowcast`, 5-min poll).
 
 ---
 
@@ -78,8 +82,8 @@ In `next.config.ts`:
 | -------------------------- | -------------------- | --------- | ------------------------------ |
 | `/v1/search`               | `cache: 'no-store'`  | 60s       | Always fresh search results    |
 | `/v1/analytics/*`          | `cache: 'no-store'`  | 120s      | Real-time statistics           |
-| `/v1/parks/*` (detail)     | `cache: 'no-store'`  | 300s      | Live wait times and status     |
-| `/v1/parks/*/attractions`  | `cache: 'no-store'`  | 300s      | Live wait times                |
+| `/v1/parks/*` (detail)     | `revalidate: 300s`   | 300s      | ISR-cacheable; live via RQ     |
+| `/v1/parks/*/attractions`  | `revalidate: 300s`   | 300s      | ISR-cacheable; live via RQ     |
 | `/v1/discovery/geo`        | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | `/v1/discovery/continents` | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | Calendar                   | `revalidate: 3600s`  | 300-3600s | Schedule data (changes daily)  |

@@ -139,6 +139,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
 export const revalidate = 300;
 
+// Static-on-demand (ISR): we don't prebuild the long tail of attractions, but returning []
+// opts the route into static generation + edge caching (revalidate above) instead of
+// per-request dynamic rendering. Live wait times are refreshed client-side.
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function AttractionPage({ params }: AttractionPageProps) {
   const {
     locale,

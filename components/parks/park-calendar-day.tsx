@@ -15,8 +15,7 @@ import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useTranslations, useLocale } from 'next-intl';
-import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { formatTemp } from '@/lib/utils/temperature';
+import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import {
@@ -45,7 +44,6 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
-  const { unit } = useTemperatureUnit();
 
   // Map locale to date-fns locale
   const dateLocale =
@@ -237,8 +235,7 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
                     className: 'h-3.5 w-3.5',
                   })}
                   <span>
-                    {formatTemp(day.weather.tempMin, unit)} –{' '}
-                    {formatTemp(day.weather.tempMax, unit)}
+                    <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />
                   </span>
                 </div>
               </TooltipTrigger>

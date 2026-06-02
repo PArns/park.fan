@@ -38,13 +38,14 @@ export async function getParkHistoricalStats(
 
     try {
       // Attempt 0 uses the shared 24h data cache: warm parks resolve instantly with no
-      // extra origin load. Retries bypass both the data cache and fetch memoization (via a
-      // unique URL + no-store) so a still-computing backend is actually re-polled each
-      // round instead of replaying the first failed response.
+      // extra origin load. Retries use a unique URL (`_r=attempt`) so each round is a
+      // distinct cache entry — a still-computing backend is genuinely re-polled instead of
+      // replaying the first failed response. We keep a positive revalidate (not no-store) so
+      // the park page stays statically renderable (a no-store fetch would force dynamic).
       const res =
         attempt === 0
           ? await fetch(url, { next: { revalidate: 86400 } })
-          : await fetch(`${url}&_r=${attempt}`, { cache: 'no-store' });
+          : await fetch(`${url}&_r=${attempt}`, { next: { revalidate: 86400 } });
 
       if (res.ok) {
         // A successful response is authoritative: either the data is ready, or the park

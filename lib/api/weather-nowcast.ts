@@ -24,7 +24,7 @@ export const getParkWeatherNowcast = cache(
         () =>
           api.get<WeatherNowcast>(
             `/v1/parks/${continent}/${country}/${city}/${parkSlug}/weather/nowcast`,
-            { cache: 'no-store' }
+            { next: { revalidate: NOWCAST_MAX_AGE } }
           ),
         NOWCAST_MAX_AGE
       );

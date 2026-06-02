@@ -7,8 +7,9 @@ const PARK_MAX_AGE = 300; // 5 min — matches API Redis/Cloudflare cache
 
 /**
  * Get parks by geographic path.
- * In-process cache (max-age 300s, no SWR): serves cached data if fresh,
- * awaits a real fetch if stale. React.cache() deduplicates within one request.
+ * In-process cache (max-age 300s) + Next data cache (revalidate 300s) so the park
+ * page can be statically rendered (ISR). React.cache() deduplicates within one
+ * request; live wait times are refreshed client-side by LiveParkData.
  */
 export const getParkByGeoPath = cache(
   async (
@@ -21,7 +22,7 @@ export const getParkByGeoPath = cache(
       `park:${continent}/${country}/${city}/${parkSlug}`,
       () =>
         api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-          cache: 'no-store',
+          next: { revalidate: PARK_MAX_AGE },
         }),
       PARK_MAX_AGE
     );
@@ -30,8 +31,9 @@ export const getParkByGeoPath = cache(
 
 /**
  * Get a specific attraction by geographic path with full data including history.
- * In-process cache (max-age 300s, no SWR): serves cached data if fresh,
- * awaits a real fetch if stale. React.cache() deduplicates within one request.
+ * In-process cache (max-age 300s) + Next data cache (revalidate 300s) so the
+ * attraction page can be statically rendered (ISR). React.cache() deduplicates
+ * within one request; live wait times are refreshed client-side.
  */
 export const getAttractionByGeoPath = cache(
   async (
@@ -46,7 +48,7 @@ export const getAttractionByGeoPath = cache(
       () =>
         api.get<AttractionResponse>(
           `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-          { cache: 'no-store' }
+          { next: { revalidate: PARK_MAX_AGE } }
         ),
       PARK_MAX_AGE
     );
