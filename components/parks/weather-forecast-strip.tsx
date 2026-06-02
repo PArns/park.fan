@@ -7,8 +7,7 @@ import { de, enUS, es, fr, nl, type Locale } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { useEffect, useRef, useState } from 'react';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
-import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { formatTemp, formatPrecip } from '@/lib/utils/temperature';
+import { Temp, Precip } from '@/components/common/unit-display';
 import type { WeatherDay } from '@/lib/api/types';
 
 interface WeatherForecastStripProps {
@@ -20,7 +19,6 @@ const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
 
 export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
   const locale = useLocale();
-  const { unit } = useTemperatureUnit();
   const dateFnsLocale = LOCALE_MAP[locale] ?? enUS;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -110,12 +108,9 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
         <div className="flex w-full min-w-max">
           {validForecast.map((day, i) => {
             const { icon: ForecastIcon, color } = getWeatherConfig(day.weatherCode);
-            const max = formatTemp(parseFloat(day.temperatureMax), unit);
-            const min = formatTemp(parseFloat(day.temperatureMin), unit);
             const date = parseISO(day.date);
             const dayLabel = format(date, 'EEE', { locale: dateFnsLocale });
             const precip = parseFloat(day.precipitationSum || '0');
-            const precipDisplay = precip > 0 ? formatPrecip(precip, unit) : null;
             const isLast = i === validForecast.length - 1;
 
             return (
@@ -131,13 +126,19 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                 </span>
                 <ForecastIcon className={`h-4 w-4 ${color}`} />
                 <div className="flex flex-col items-center leading-none">
-                  <span className="text-sm font-bold">{max}</span>
-                  <span className="text-muted-foreground mt-0.5 text-[10px]">{min}</span>
+                  <span className="text-sm font-bold">
+                    <Temp celsius={parseFloat(day.temperatureMax)} />
+                  </span>
+                  <span className="text-muted-foreground mt-0.5 text-[10px]">
+                    <Temp celsius={parseFloat(day.temperatureMin)} />
+                  </span>
                 </div>
-                {precipDisplay ? (
+                {precip > 0 ? (
                   <div className="mt-0.5 flex items-center gap-0.5 leading-none">
                     <Droplets className="h-2.5 w-2.5 text-sky-400" />
-                    <span className="text-[9px] font-medium text-sky-400">{precipDisplay}</span>
+                    <span className="text-[9px] font-medium text-sky-400">
+                      <Precip mm={precip} />
+                    </span>
                   </div>
                 ) : (
                   <span className="mt-0.5 text-[9px] leading-none opacity-0">—</span>

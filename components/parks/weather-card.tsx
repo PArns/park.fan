@@ -9,13 +9,7 @@ import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
-import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import {
-  formatTemp,
-  formatWindSpeed,
-  convertWindSpeed,
-  formatPrecip,
-} from '@/lib/utils/temperature';
+import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
@@ -45,7 +39,6 @@ export function WeatherCard({
 }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
   const tParks = useTranslations('parks');
-  const { unit } = useTemperatureUnit();
 
   const hasParams = !!(continent && country && city && parkSlug);
   const { data: liveNowcast } = useWeatherNowcast({
@@ -91,27 +84,12 @@ export function WeatherCard({
   const showLivePrecip = liveRaining && livePrecip != null && livePrecip > 0;
   const precipMm = showLivePrecip ? livePrecip! : parseFloat(current.precipitationSum || '0');
 
-  const displayTemp = formatTemp(displayTempC, unit);
-  const feelsLike = feelsLikeC != null ? formatTemp(feelsLikeC, unit) : null;
-  const tempMax = formatTemp(tempMaxC, unit);
-  const tempMin = formatTemp(tempMinC, unit);
-
   // Live conditions row (wind compass + visibility + snow) — only with a nowcast.
-  const windValue = String(Math.round(convertWindSpeed(windKmh, unit)));
-  const windUnitLabel = unit === 'F' ? 'mph' : 'km/h';
   const gustsKmh = activeNowcast?.currentWindGustsKmh ?? null;
   const visM = activeNowcast?.currentVisibilityM ?? null;
   const isFog = visM != null && visM < 1000;
   const snowCm = activeNowcast?.currentSnowfallCm ?? null;
   const showSnow = snowCm != null && snowCm > 0;
-  const visLabel =
-    visM != null
-      ? unit === 'F'
-        ? `${(visM / 1609).toFixed(visM < 1609 ? 1 : 0)} mi`
-        : visM >= 1000
-          ? `${Math.round(visM / 1000)} km`
-          : `${visM} m`
-      : null;
 
   return (
     <div
@@ -156,13 +134,15 @@ export function WeatherCard({
                 <WeatherIcon className={`h-12 w-12 ${color}`} />
               </div>
               <div>
-                <span className="text-3xl font-bold">{displayTemp}</span>
+                <span className="text-3xl font-bold">
+                  <Temp celsius={displayTempC} />
+                </span>
                 <p className="text-muted-foreground text-xs">
-                  {tempMin} – {tempMax}
+                  <Temp celsius={tempMinC} /> – <Temp celsius={tempMaxC} />
                 </p>
-                {feelsLike !== null && (
+                {feelsLikeC != null && (
                   <p className="text-muted-foreground text-xs">
-                    {t('feelsLike')} {feelsLike}
+                    {t('feelsLike')} <Temp celsius={feelsLikeC} />
                   </p>
                 )}
                 <p className="text-muted-foreground mt-0.5 text-sm font-medium">{t(label)}</p>
@@ -174,15 +154,15 @@ export function WeatherCard({
                 <div className="text-muted-foreground space-y-0.5 text-right text-xs">
                   <div>
                     <span className="opacity-70">{t('precipLabel')}: </span>
-                    {formatPrecip(precipMm, unit)}
+                    <Precip mm={precipMm} />
                   </div>
                   {gustsKmh != null && (
                     <div>
                       <span className="opacity-70">{t('gustsLabel')}: </span>
-                      {formatWindSpeed(gustsKmh, unit)}
+                      <Wind kmh={gustsKmh} />
                     </div>
                   )}
-                  {visLabel && (
+                  {visM != null && (
                     <div className="flex items-center justify-end gap-1">
                       {isFog ? (
                         <CloudFog className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
@@ -190,7 +170,7 @@ export function WeatherCard({
                         <Eye className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
                       )}
                       <span className="opacity-70">{isFog ? t('fog') : t('visibilityLabel')}:</span>{' '}
-                      {visLabel}
+                      <Distance meters={visM} />
                     </div>
                   )}
                   {showSnow && (
@@ -202,19 +182,18 @@ export function WeatherCard({
                 </div>
                 <WindCompass
                   directionDeg={activeNowcast.currentWindDirectionDeg}
-                  speedValue={windValue}
-                  unitLabel={windUnitLabel}
+                  windKmh={windKmh}
                 />
               </div>
             ) : (
               <div className="text-muted-foreground space-y-0.5 text-right text-xs">
                 <div>
                   <span className="opacity-70">{t('precipLabel')}: </span>
-                  {formatPrecip(precipMm, unit)}
+                  <Precip mm={precipMm} />
                 </div>
                 <div>
                   <span className="opacity-70">{t('windLabel')}: </span>
-                  {formatWindSpeed(windKmh, unit)}
+                  <Wind kmh={windKmh} />
                 </div>
               </div>
             )}

@@ -3,6 +3,10 @@
     {
       "path": "/api/cron/indexnow",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/prewarm",
+      "schedule": "30 6 * * *"
     }
   ]
 }

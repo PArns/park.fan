@@ -139,6 +139,13 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
 
 export const revalidate = 300;
 
+// Static-on-demand (ISR): we don't prebuild the long tail of parks, but returning []
+// opts the route into static generation + edge caching (revalidate above) instead of
+// per-request dynamic rendering. Live wait times are refreshed client-side (LiveParkData).
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);

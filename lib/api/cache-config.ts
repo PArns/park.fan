@@ -23,8 +23,8 @@ export const CACHE_TTL = {
   geo: 3600, // geo structure changes rarely
   continents: 3600, // same as geo
   parks: 300, // ⚠️ Using cache: 'no-store' for live park lists - respects API 300s cache
-  parkDetail: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
-  waitTimes: 300, // ⚠️ Using cache: 'no-store' - respects API 300s cache
+  parkDetail: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
+  waitTimes: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
 
   // Static data (still using revalidate)
   calendar: 300, // /v1/parks/:slug/calendar - API: 300s (past/today) / 1800s (future); today crowdLevel is patched client-side

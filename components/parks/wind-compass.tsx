@@ -2,14 +2,13 @@
 
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { convertWindSpeed } from '@/lib/utils/temperature';
 
 interface WindCompassProps {
   /** Direction the wind comes FROM, in degrees (0 = N, 90 = E). Null hides the arrow. */
   directionDeg: number | null;
-  /** Pre-formatted speed shown in the dial centre, e.g. "12". */
-  speedValue: string;
-  /** Unit label shown under the speed, e.g. "km/h". */
-  unitLabel: string;
+  /** Wind speed in km/h. Rendered in both unit systems; CSS shows the active one. */
+  windKmh: number;
   className?: string;
 }
 
@@ -17,10 +16,16 @@ interface WindCompassProps {
  * Small SVG wind compass. The arrow sits at the bearing the wind comes FROM
  * and points inward, the convention most people read as "wind out of the NW".
  * Cardinal letters are localised; the arrow is hidden when direction is unknown.
+ *
+ * The speed + unit label are rendered in BOTH metric and imperial (as two SVG
+ * groups toggled by the global `.u-metric` / `.u-imperial` CSS) so the compass
+ * works on statically cached pages with no unit flash.
  */
-export function WindCompass({ directionDeg, speedValue, unitLabel, className }: WindCompassProps) {
+export function WindCompass({ directionDeg, windKmh, className }: WindCompassProps) {
   const t = useTranslations('parks.weather.compass');
   const hasDir = directionDeg != null && Number.isFinite(directionDeg);
+  const metricSpeed = String(Math.round(windKmh));
+  const imperialSpeed = String(Math.round(convertWindSpeed(windKmh, 'F')));
 
   return (
     <svg
@@ -55,12 +60,23 @@ export function WindCompass({ directionDeg, speedValue, unitLabel, className }: 
           transform={`rotate(${directionDeg!} 50 50)`}
         />
       )}
-      <text x="50" y="53" textAnchor="middle" className="fill-foreground text-[19px] font-bold">
-        {speedValue}
-      </text>
-      <text x="50" y="64" textAnchor="middle" className="fill-foreground/55 text-[8px]">
-        {unitLabel}
-      </text>
+      {/* Speed + unit label, dual-rendered (CSS picks the active unit) */}
+      <g className="u-metric">
+        <text x="50" y="53" textAnchor="middle" className="fill-foreground text-[19px] font-bold">
+          {metricSpeed}
+        </text>
+        <text x="50" y="64" textAnchor="middle" className="fill-foreground/55 text-[8px]">
+          km/h
+        </text>
+      </g>
+      <g className="u-imperial">
+        <text x="50" y="53" textAnchor="middle" className="fill-foreground text-[19px] font-bold">
+          {imperialSpeed}
+        </text>
+        <text x="50" y="64" textAnchor="middle" className="fill-foreground/55 text-[8px]">
+          mph
+        </text>
+      </g>
     </svg>
   );
 }

@@ -590,3 +590,19 @@
     scrollbar-width: none; /* Firefox */
   }
 }
+
+/* Unit system (°C / °F) — pure-CSS display toggle so weather/calendar values can be
+   server-rendered in BOTH units and the active one shown without a hydration flash.
+   The active unit is written to <html data-temp-unit> by an inline script before paint
+   (see app/[locale]/layout.tsx), so this works on statically cached (edge) pages too.
+   Default (attribute absent or "C") = metric; imperial is revealed only when F is active.
+   display:none keeps the hidden unit out of the a11y tree (screen readers read one unit). */
+.u-imperial {
+  display: none;
+}
+html[data-temp-unit='F'] .u-metric {
+  display: none;
+}
+html[data-temp-unit='F'] .u-imperial {
+  display: inline;
+}
