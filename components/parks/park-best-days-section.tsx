@@ -74,7 +74,7 @@ export async function ParkBestDaysSection({
   className,
 }: ParkBestDaysSectionProps) {
   const t = await getTranslations('parks.bestDays');
-  const analysis = analyzeBestDays(calendarData.days);
+  const analysis = analyzeBestDays(calendarData.days, calendarData.meta.timezone);
 
   const bestDaysOfWeek =
     statsByDayOfWeek && statsByDayOfWeek.length > 0

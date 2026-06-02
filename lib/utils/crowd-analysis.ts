@@ -1,3 +1,4 @@
+import { formatInTimeZone } from 'date-fns-tz';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 
 const CROWD_SCORE: Record<string, number> = {
@@ -30,8 +31,17 @@ export interface BestDaysAnalysis {
   totalDays: number;
 }
 
-export function analyzeBestDays(days: CalendarDay[]): BestDaysAnalysis {
-  const today = new Date().toISOString().slice(0, 10);
+export function analyzeBestDays(
+  days: CalendarDay[],
+  timezone?: string,
+): BestDaysAnalysis {
+  // "Today" must be in the park's timezone, not the server/UTC day — otherwise a
+  // park east/west of UTC can drop the current day (or keep a past one) for a few
+  // hours around midnight, e.g. listing a day in "upcoming quiet days" that has
+  // already started locally. Fall back to UTC only when no timezone is provided.
+  const today = timezone
+    ? formatInTimeZone(new Date(), timezone, 'yyyy-MM-dd')
+    : new Date().toISOString().slice(0, 10);
 
   const futureDays = days.filter(
     (d) =>

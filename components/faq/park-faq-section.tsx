@@ -74,7 +74,7 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
 
   // Q7: Least crowded (requires calendar data, uses rich text)
   if (calendarData) {
-    const analysis = analyzeBestDays(calendarData.days);
+    const analysis = analyzeBestDays(calendarData.days, calendarData.meta.timezone);
     if (analysis.totalDays >= 7) {
       const conjunctions: Record<string, string> = {
         de: ' und ',
