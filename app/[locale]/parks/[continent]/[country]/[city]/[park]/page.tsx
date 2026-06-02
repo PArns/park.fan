@@ -10,7 +10,7 @@ import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
-import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
+import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import type { IntegratedCalendarResponse, ParkHistoricalStats } from '@/lib/api/types';
@@ -175,11 +175,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const calendarFrom = startOfMonth(new Date());
   const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
 
-  // The calendar (up to ~15s on a cold build) feeds only below-the-fold / behind-tab UI:
-  // the best-days + FAQ sections (streamed via <Suspense> below) and the calendar tab —
-  // which client-fetches per visible month on its own (useCalendarData). So keep it OFF
-  // the blocking path: the page shell paints in ~0.4s instead of waiting on the calendar.
-  const calendarPromise: Promise<IntegratedCalendarResponse> = getIntegratedCalendar(
+  // This calendar feeds only the below-the-fold best-days + FAQ sections (streamed via
+  // <Suspense> below); the calendar tab client-fetches per visible month on its own
+  // (useCalendarData). Both consumers are derived from the daily crowd forecast, so it
+  // uses the dedicated 24h best-days cache (stale-while-revalidate) rather than the
+  // 15-min grid cache. Kept OFF the blocking path so the shell paints in ~0.4s.
+  const bestDaysCalendarPromise: Promise<IntegratedCalendarResponse> = getBestDaysCalendar(
     continent,
     country,
     city,
@@ -187,7 +188,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
     {
       from: format(calendarFrom, 'yyyy-MM-dd'),
       to: format(calendarTo, 'yyyy-MM-dd'),
-      includeHourly: 'none',
     }
   ).catch(
     (): IntegratedCalendarResponse => ({
@@ -359,7 +359,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             bestDaysSlot={
               <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
                 <StreamedBestDays
-                  calendarPromise={calendarPromise}
+                  calendarPromise={bestDaysCalendarPromise}
                   statsPromise={statsPromise}
                   parkName={parkName}
                   parkSlug={parkSlug}
@@ -395,7 +395,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           {/* FAQ Section */}
           <Separator className="my-8" />
           <Suspense fallback={<ParkFAQSection park={park} locale={locale} />}>
-            <StreamedFaq park={park} locale={locale} calendarPromise={calendarPromise} />
+            <StreamedFaq park={park} locale={locale} calendarPromise={bestDaysCalendarPromise} />
           </Suspense>
         </article>
       </PageContainer>

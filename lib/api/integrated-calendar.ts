@@ -34,6 +34,10 @@ export async function getIntegratedCalendar(
     from?: string;
     to?: string;
     includeHourly?: 'today+tomorrow' | 'today' | 'all' | 'none';
+    /** Override the data-cache revalidate window (seconds). Defaults to CACHE_TTL.calendar. */
+    revalidate?: number;
+    /** Cache tags for on-demand revalidation (revalidateTag). */
+    tags?: string[];
   } = {}
 ): Promise<IntegratedCalendarResponse> {
   const API_BASE_URL = getApiBaseUrl();
@@ -48,7 +52,10 @@ export async function getIntegratedCalendar(
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
   const response = await fetch(url, {
-    next: { revalidate: CACHE_TTL.calendar },
+    next: {
+      revalidate: options.revalidate ?? CACHE_TTL.calendar,
+      ...(options.tags ? { tags: options.tags } : {}),
+    },
     headers: {
       'Content-Type': 'application/json',
     },
@@ -68,4 +75,40 @@ export async function getIntegratedCalendar(
 
   const data: IntegratedCalendarResponse = await response.json();
   return data;
+}
+
+/** Dedicated 24h cache window for the "best travel time" / quiet-days derivation. */
+export const BEST_DAYS_REVALIDATE = 24 * 60 * 60; // 24h
+
+/**
+ * Calendar fetch dedicated to the "best travel time" derivation (best/quiet
+ * weekdays, upcoming quiet days) and the crowd FAQ.
+ *
+ * Cached for 24h, fully decoupled from the 15-min grid calendar:
+ * - The data it feeds (day-of-week aggregates + a multi-week quiet-day forecast)
+ *   only changes with the daily crowd forecast (~13h), so a day-old snapshot is
+ *   fine for trip planning.
+ * - `includeHourly: 'none'` keeps the payload light AND gives this fetch a cache
+ *   key distinct from the grid's, so the two never evict each other.
+ * - Next's classic data-cache revalidate is stale-while-revalidate: once the 24h
+ *   window lapses, the next request is served the STALE snapshot immediately and a
+ *   background refresh runs, so the following request gets fresher data — the
+ *   visitor never waits on a cold rebuild.
+ * - The date-sensitive "upcoming quiet days" stay correct because analyzeBestDays
+ *   re-filters against a freshly computed (park-timezone) "today" on every render.
+ */
+export async function getBestDaysCalendar(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  options: { from?: string; to?: string } = {}
+): Promise<IntegratedCalendarResponse> {
+  return getIntegratedCalendar(continent, country, city, parkSlug, {
+    from: options.from,
+    to: options.to,
+    includeHourly: 'none',
+    revalidate: BEST_DAYS_REVALIDATE,
+    tags: [`best-days:${parkSlug}`],
+  });
 }
