@@ -459,19 +459,22 @@
       "thunderstorm": {
         "heading": "Aviso de tormenta",
         "bodyNow": "Tormenta en curso — busca un lugar resguardado.",
-        "bodyInMin": "Tormenta en unos {duration} — busca un lugar resguardado.",
+        "bodyInMin": "Tormenta prevista en unos {duration}.",
+        "bodyInMinSoon": "Tormenta en unos {duration} — busca un lugar resguardado.",
         "bodyEndsInMin": "Tormenta en curso — termina en unos {duration}."
       },
       "hail": {
         "heading": "Aviso de granizo",
         "bodyNow": "Granizo en curso — busca un lugar resguardado.",
-        "bodyInMin": "Granizo en unos {duration} — busca un lugar resguardado.",
+        "bodyInMin": "Granizo previsto en unos {duration}.",
+        "bodyInMinSoon": "Granizo en unos {duration} — busca un lugar resguardado.",
         "bodyEndsInMin": "Granizo en curso — termina en unos {duration}."
       },
       "storm": {
         "heading": "Aviso de tormenta de viento",
         "bodyNow": "Rachas de viento de hasta {gusts} en este momento.",
         "bodyInMin": "Rachas de viento de hasta {gusts} previstas en unos {duration}.",
+        "bodyInMinSoon": "Rachas de viento de hasta {gusts} en unos {duration} — busca un lugar resguardado.",
         "bodyEndsInMin": "Rachas de viento de hasta {gusts} — terminan en unos {duration}."
       },
       "precipTimeline": "Pronóstico de precipitación hasta {until}, máximo {max} mm por 15 min.",

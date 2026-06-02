@@ -460,18 +460,21 @@
         "heading": "Thunderstorm warning",
         "bodyNow": "Thunderstorm at the park right now — head to a sheltered area.",
         "bodyInMin": "Thunderstorm expected in about {duration}.",
+        "bodyInMinSoon": "Thunderstorm in about {duration} — head to a sheltered area.",
         "bodyEndsInMin": "Thunderstorm in progress — ends in about {duration}."
       },
       "hail": {
         "heading": "Hail warning",
         "bodyNow": "Hail at the park right now — find a sheltered area.",
-        "bodyInMin": "Hail expected in about {duration} — find a sheltered area.",
+        "bodyInMin": "Hail expected in about {duration}.",
+        "bodyInMinSoon": "Hail in about {duration} — find a sheltered area.",
         "bodyEndsInMin": "Hail in progress — ends in about {duration}."
       },
       "storm": {
         "heading": "Storm warning",
         "bodyNow": "Strong wind gusts up to {gusts} right now.",
         "bodyInMin": "Strong wind gusts up to {gusts} expected in about {duration}.",
+        "bodyInMinSoon": "Strong wind gusts up to {gusts} in about {duration} — find a sheltered area.",
         "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
       },
       "precipTimeline": "Precipitation forecast until {until}, peak {max} mm per 15 min.",

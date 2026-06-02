@@ -311,19 +311,22 @@
       "thunderstorm": {
         "heading": "Gewitterwarnung",
         "bodyNow": "Gewitter im Park — bitte geschützten Bereich aufsuchen.",
-        "bodyInMin": "Gewitter in ca. {duration} — bitte Schutz aufsuchen.",
+        "bodyInMin": "Gewitter in ca. {duration} erwartet.",
+        "bodyInMinSoon": "Gewitter in ca. {duration} — bitte Schutz aufsuchen.",
         "bodyEndsInMin": "Gewitter aktiv — noch ca. {duration}"
       },
       "hail": {
         "heading": "Hagelwarnung",
         "bodyNow": "Hagel im Park — bitte geschützten Bereich aufsuchen.",
-        "bodyInMin": "Hagel in ca. {duration} — bitte Schutz aufsuchen.",
+        "bodyInMin": "Hagel in ca. {duration} erwartet.",
+        "bodyInMinSoon": "Hagel in ca. {duration} — bitte Schutz aufsuchen.",
         "bodyEndsInMin": "Hagel aktiv — noch ca. {duration}"
       },
       "storm": {
         "heading": "Sturmwarnung",
         "bodyNow": "Sturmböen bis {gusts} aktuell.",
         "bodyInMin": "Sturmböen bis {gusts} in ca. {duration} erwartet.",
+        "bodyInMinSoon": "Sturmböen bis {gusts} in ca. {duration} — bitte Schutz aufsuchen.",
         "bodyEndsInMin": "Sturmböen bis {gusts} — noch ca. {duration}"
       },
       "precipTimeline": "Niederschlagsverlauf bis {until}, Spitze {max} mm pro 15 Min.",

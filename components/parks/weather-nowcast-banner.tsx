@@ -55,6 +55,11 @@ const minutesUntil = (iso: string | null | undefined, now: number): number | nul
  *  (storm/hail/thunderstorm) have no gate and show as soon as they're forecast. */
 const RAIN_LEAD_MINUTES = 60;
 
+/** When a severe event (storm/hail/thunderstorm) is at most this many minutes
+ *  away we escalate from a calm pre-warning to the urgent "seek shelter" wording.
+ *  Beyond this lead time we keep it informational and drop the shelter advice. */
+const WARNING_LEAD_MINUTES = 30;
+
 /**
  * Pick the highest-priority warning to surface. Order (per spec):
  *  1. storm (gusts >= 75 km/h)
@@ -206,7 +211,8 @@ export function WeatherNowcastBanner({
         data.peakWindGustsKmh != null ? formatWindSpeed(data.peakWindGustsKmh, unit) : '?';
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('storm.bodyInMin', { duration: formatShortDuration(mins, locale), gusts });
+        const key = mins <= WARNING_LEAD_MINUTES ? 'storm.bodyInMinSoon' : 'storm.bodyInMin';
+        body = t(key, { duration: formatShortDuration(mins, locale), gusts });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
@@ -220,7 +226,8 @@ export function WeatherNowcastBanner({
       heading = t('hail.heading');
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('hail.bodyInMin', { duration: formatShortDuration(mins, locale) });
+        const key = mins <= WARNING_LEAD_MINUTES ? 'hail.bodyInMinSoon' : 'hail.bodyInMin';
+        body = t(key, { duration: formatShortDuration(mins, locale) });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =
@@ -234,7 +241,9 @@ export function WeatherNowcastBanner({
       heading = t('thunderstorm.heading');
       if (banner.state === 'starting') {
         const mins = minutesUntil(banner.startsAt, now) ?? 0;
-        body = t('thunderstorm.bodyInMin', { duration: formatShortDuration(mins, locale) });
+        const key =
+          mins <= WARNING_LEAD_MINUTES ? 'thunderstorm.bodyInMinSoon' : 'thunderstorm.bodyInMin';
+        body = t(key, { duration: formatShortDuration(mins, locale) });
       } else {
         const endsIn = minutesUntil(banner.endsAt, now);
         body =

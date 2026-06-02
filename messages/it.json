@@ -459,19 +459,22 @@
       "thunderstorm": {
         "heading": "Allerta temporale",
         "bodyNow": "Temporale in corso — cerca un'area riparata.",
-        "bodyInMin": "Temporale tra circa {duration}.",
+        "bodyInMin": "Temporale previsto tra circa {duration}.",
+        "bodyInMinSoon": "Temporale tra circa {duration} — cerca un'area riparata.",
         "bodyEndsInMin": "Temporale in corso — finisce tra circa {duration}."
       },
       "hail": {
         "heading": "Allerta grandine",
         "bodyNow": "Grandine in corso — cerca un'area riparata.",
-        "bodyInMin": "Grandine tra circa {duration} — cerca un'area riparata.",
+        "bodyInMin": "Grandine prevista tra circa {duration}.",
+        "bodyInMinSoon": "Grandine tra circa {duration} — cerca un'area riparata.",
         "bodyEndsInMin": "Grandine in corso — finisce tra circa {duration}."
       },
       "storm": {
         "heading": "Allerta tempesta",
         "bodyNow": "Raffiche fino a {gusts} in corso.",
         "bodyInMin": "Raffiche fino a {gusts} previste tra circa {duration}.",
+        "bodyInMinSoon": "Raffiche fino a {gusts} tra circa {duration} — cerca un'area riparata.",
         "bodyEndsInMin": "Raffiche fino a {gusts} — finiscono tra circa {duration}."
       },
       "precipTimeline": "Previsione di precipitazioni fino alle {until}, picco {max} mm ogni 15 min.",
