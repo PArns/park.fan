@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
+import { Clock, Droplets, Umbrella } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { WeatherNowcastStep } from '@/lib/api/types';
@@ -112,19 +113,36 @@ export function NowcastPrecipTimeline({
             const heightPct =
               mm > 0 ? Math.min(100, Math.max(14, Math.round((mm / SCALE_TOP_MM) * 100))) : 0;
             const prob = s.precipitationProbability;
-            const label = `${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`;
+            const ariaLabel = `${fmtTime(s.time)} · ${mm.toFixed(1)} mm${
+              prob != null ? ` · ${prob}% ${t('precipProbability')}` : ''
+            }`;
             return (
               <Tooltip key={s.time}>
                 <TooltipTrigger asChild>
-                  <div className="flex h-full flex-1 items-end" aria-label={label}>
+                  <div className="flex h-full flex-1 items-end" aria-label={ariaLabel}>
                     <div
                       className={cn('w-full rounded-sm bg-current', colorClass)}
                       style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
                     />
                   </div>
                 </TooltipTrigger>
-                <TooltipContent side="top" className="tabular-nums">
-                  {label}
+                <TooltipContent side="top">
+                  <div className="flex flex-col gap-1 tabular-nums">
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="size-3 shrink-0 opacity-70" aria-hidden="true" />
+                      {fmtTime(s.time)}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <Droplets className="size-3 shrink-0 opacity-70" aria-hidden="true" />
+                      {mm.toFixed(1)} mm
+                    </span>
+                    {prob != null && (
+                      <span className="flex items-center gap-1.5">
+                        <Umbrella className="size-3 shrink-0 opacity-70" aria-hidden="true" />
+                        {prob}% {t('precipProbability')}
+                      </span>
+                    )}
+                  </div>
                 </TooltipContent>
               </Tooltip>
             );

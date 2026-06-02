@@ -473,7 +473,8 @@
         "bodyInMin": "Rachas de viento de hasta {gusts} previstas en unos {duration}.",
         "bodyEndsInMin": "Rachas de viento de hasta {gusts} — terminan en unos {duration}."
       },
-      "precipTimeline": "Pronóstico de precipitación hasta {until}, máximo {max} mm por 15 min."
+      "precipTimeline": "Pronóstico de precipitación hasta {until}, máximo {max} mm por 15 min.",
+      "precipProbability": "probabilidad de lluvia"
     },
     "h1Suffix": "Tiempos de espera en vivo",
     "stats": {
