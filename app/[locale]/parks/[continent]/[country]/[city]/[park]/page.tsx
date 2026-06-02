@@ -5,8 +5,7 @@ import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { Clock, MapPin } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
@@ -296,12 +295,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{cityName}</span>,{' '}
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
-                    {park.timezone && (
-                      <Badge variant="outline" className="gap-1 font-mono text-xs">
-                        <Clock className="h-3 w-3" />
-                        {park.timezone}
-                      </Badge>
-                    )}
                   </div>
                 </div>
                 {park.id && <ParkFavoriteButton parkId={park.id} />}

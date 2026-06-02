@@ -306,6 +306,7 @@
     },
     "todaySchedule": "Horario de Hoy",
     "currentTime": "Hora Actual",
+    "timezone": "Zona horaria",
     "openingHours": "Horario de apertura",
     "opensOn": "Abre el",
     "offseason": "Fuera de Temporada",

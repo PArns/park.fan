@@ -306,6 +306,7 @@
     },
     "todaySchedule": "Programme du Jour",
     "currentTime": "Heure Actuelle",
+    "timezone": "Fuseau horaire",
     "openingHours": "Heures d'Ouverture",
     "opensOn": "Ouvre le",
     "offseason": "Hors Saison",
