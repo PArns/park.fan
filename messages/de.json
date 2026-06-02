@@ -326,7 +326,8 @@
         "bodyInMin": "Sturmböen bis {gusts} in ca. {duration} erwartet.",
         "bodyEndsInMin": "Sturmböen bis {gusts} — noch ca. {duration}"
       },
-      "precipTimeline": "Niederschlagsverlauf bis {until}, Spitze {max} mm pro 15 Min."
+      "precipTimeline": "Niederschlagsverlauf bis {until}, Spitze {max} mm pro 15 Min.",
+      "precipProbability": "Regenwahrscheinlichkeit"
     },
     "crowdLevel": "Auslastung",
     "crowdLevels": {

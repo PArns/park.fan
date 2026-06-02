@@ -192,12 +192,21 @@ export default async function ParkPage({ params }: ParkPageProps) {
     })
   );
 
-  const [parkStats, nowcast] = await Promise.all([
-    getParkHistoricalStats(continent, country, city, parkSlug).catch(
-      (): ParkHistoricalStats | null => null
-    ),
-    getParkWeatherNowcast(continent, country, city, parkSlug).catch(() => null),
-  ]);
+  // Nowcast feeds the header banner + weather card (above the fold), so it stays on the
+  // blocking path. Historical stats feed only the below-the-fold stats section and the
+  // best-days widget — keep them OFF the blocking path and stream via <Suspense> so a
+  // cold, slow-to-compute stats response can't block the shell (or blank the section
+  // until a reload, as it did when awaited inline on the first cold hit).
+  const nowcast = await getParkWeatherNowcast(continent, country, city, parkSlug).catch(
+    () => null
+  );
+
+  const statsPromise: Promise<ParkHistoricalStats | null> = getParkHistoricalStats(
+    continent,
+    country,
+    city,
+    parkSlug
+  ).catch((): ParkHistoricalStats | null => null);
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
@@ -349,7 +358,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <Suspense fallback={null}>
                 <StreamedBestDays
                   calendarPromise={calendarPromise}
-                  statsByDayOfWeek={parkStats?.byDayOfWeek}
+                  statsPromise={statsPromise}
                   parkName={parkName}
                   parkSlug={parkSlug}
                   locale={locale}
@@ -368,15 +377,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
             />
           )}
 
-          {/* Historical statistics */}
-          <ParkStatsSection
-            stats={parkStats}
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            locale={locale}
-          />
+          {/* Historical statistics — streamed so a cold/slow stats response doesn't block
+              the shell or blank the section until a reload. */}
+          <Suspense fallback={null}>
+            <StreamedParkStats
+              statsPromise={statsPromise}
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              locale={locale}
+            />
+          </Suspense>
 
           {/* FAQ Section */}
           <Separator className="my-8" />
@@ -395,12 +407,20 @@ export default async function ParkPage({ params }: ParkPageProps) {
  */
 async function StreamedBestDays({
   calendarPromise,
+  statsPromise,
   ...rest
-}: Omit<ComponentProps<typeof ParkBestDaysSection>, 'calendarData'> & {
+}: Omit<ComponentProps<typeof ParkBestDaysSection>, 'calendarData' | 'statsByDayOfWeek'> & {
   calendarPromise: Promise<IntegratedCalendarResponse>;
+  statsPromise: Promise<ParkHistoricalStats | null>;
 }) {
-  const calendarData = await calendarPromise;
-  return <ParkBestDaysSection calendarData={calendarData} {...rest} />;
+  const [calendarData, stats] = await Promise.all([calendarPromise, statsPromise]);
+  return (
+    <ParkBestDaysSection
+      calendarData={calendarData}
+      statsByDayOfWeek={stats?.byDayOfWeek}
+      {...rest}
+    />
+  );
 }
 
 /** Streams the FAQ section (calendar-derived crowd FAQ) the same way. */
@@ -412,4 +432,19 @@ async function StreamedFaq({
 }) {
   const calendarData = await calendarPromise;
   return <ParkFAQSection {...rest} calendarData={calendarData} />;
+}
+
+/**
+ * Streams the historical statistics section: awaits the (non-blocking) stats promise so
+ * a cold, slow-to-compute stats response never blocks the page shell — and the section
+ * renders whenever the data arrives instead of being blanked until the next reload.
+ */
+async function StreamedParkStats({
+  statsPromise,
+  ...rest
+}: Omit<ComponentProps<typeof ParkStatsSection>, 'stats'> & {
+  statsPromise: Promise<ParkHistoricalStats | null>;
+}) {
+  const stats = await statsPromise;
+  return <ParkStatsSection stats={stats} {...rest} />;
 }

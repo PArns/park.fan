@@ -473,7 +473,8 @@
         "bodyInMin": "Windstoten tot {gusts} verwacht over ongeveer {duration}.",
         "bodyEndsInMin": "Windstoten tot {gusts} — stopt over ongeveer {duration}."
       },
-      "precipTimeline": "Neerslagverwachting tot {until}, piek {max} mm per 15 min."
+      "precipTimeline": "Neerslagverwachting tot {until}, piek {max} mm per 15 min.",
+      "precipProbability": "regenkans"
     },
     "h1Suffix": "Live wachttijden",
     "stats": {

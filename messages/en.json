@@ -473,7 +473,8 @@
         "bodyInMin": "Strong wind gusts up to {gusts} expected in about {duration}.",
         "bodyEndsInMin": "Strong wind gusts up to {gusts} — ends in about {duration}."
       },
-      "precipTimeline": "Precipitation forecast until {until}, peak {max} mm per 15 min."
+      "precipTimeline": "Precipitation forecast until {until}, peak {max} mm per 15 min.",
+      "precipProbability": "rain probability"
     },
     "h1Suffix": "Live Wait Times",
     "stats": {
