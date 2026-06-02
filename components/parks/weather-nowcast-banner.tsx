@@ -276,8 +276,7 @@ export function WeatherNowcastBanner({
   return (
     <section
       className={cn(
-        'rounded-xl border p-4 shadow-sm',
-        styles.bg,
+        'relative rounded-xl border p-4 shadow-sm backdrop-blur-md',
         styles.border,
         styles.text,
         className
@@ -285,7 +284,17 @@ export function WeatherNowcastBanner({
       role="status"
       aria-live="polite"
     >
-      <div className="flex items-start gap-3">
+      {/* Frosted surface + semantic tint, layered so the banner stays legible over
+          any hero image — the bg tints alone are far too sheer on busy backgrounds. */}
+      <div
+        className="bg-background/85 pointer-events-none absolute inset-0 rounded-xl"
+        aria-hidden="true"
+      />
+      <div
+        className={cn('pointer-events-none absolute inset-0 rounded-xl', styles.bg)}
+        aria-hidden="true"
+      />
+      <div className="relative flex items-start gap-3">
         <div className={cn('mt-0.5 shrink-0', styles.iconColor)}>
           <Icon className="h-5 w-5" aria-hidden="true" />
         </div>

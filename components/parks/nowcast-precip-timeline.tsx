@@ -111,16 +111,24 @@ export function NowcastPrecipTimeline({
             const heightPct =
               mm > 0 ? Math.min(100, Math.max(14, Math.round((mm / SCALE_TOP_MM) * 100))) : 0;
             const prob = s.precipitationProbability;
+            const label = `${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`;
             return (
               <div
                 key={s.time}
-                className="flex h-full flex-1 items-end"
-                title={`${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`}
+                className="group relative flex h-full flex-1 items-end"
+                aria-label={label}
               >
                 <div
                   className={cn('w-full rounded-sm bg-current', colorClass)}
                   style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
                 />
+                {/* Time + mm on hover (styled so it reads over any banner background). */}
+                <div
+                  role="tooltip"
+                  className="bg-foreground text-background pointer-events-none absolute bottom-full left-1/2 z-20 mb-1 -translate-x-1/2 rounded px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap tabular-nums opacity-0 shadow-md transition-opacity group-hover:opacity-100"
+                >
+                  {label}
+                </div>
               </div>
             );
           })}
