@@ -44,6 +44,12 @@ export function useWeatherNowcast({
       return (await response.json()) as WeatherNowcast;
     },
     initialData,
+    // The park page is statically rendered (ISR), so this server `initialData` can already
+    // be older than its staleTime by the time the cached HTML reaches the browser. Anchor
+    // React Query's freshness to the nowcast's real observation time (not mount time) so a
+    // stale cached page refetches immediately on mount. Without this, RQ trusts initialData
+    // for the full staleTime → frozen banner with a past nextUpdateAt (update-countdown hidden).
+    initialDataUpdatedAt: initialData?.observedAt ? Date.parse(initialData.observedAt) : undefined,
     enabled: enabled && initialData !== null,
     staleTime: 5 * 60_000,
     gcTime: 15 * 60_000,

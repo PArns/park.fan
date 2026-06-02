@@ -103,6 +103,10 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
       return res.json() as Promise<{ items: TickerItem[] }>;
     },
     initialData: { items: initialItems },
+    // initialItems is baked into the statically cached homepage HTML and may be stale; anchor
+    // it to epoch so React Query refetches live ticker data on mount rather than trusting the
+    // cached seed for the full staleTime.
+    initialDataUpdatedAt: 0,
     enabled: isDesktop,
     refetchInterval: 300_000,
     staleTime: 300_000,

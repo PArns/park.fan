@@ -136,6 +136,10 @@ export function FeaturedParksSectionClient({
     refetchInterval: 5 * 60_000,
     refetchOnWindowFocus: true,
     initialData: initialParks,
+    // initialParks comes from the statically cached homepage HTML and may be stale; anchor it
+    // to epoch so React Query refetches the live wait times on mount instead of trusting the
+    // cached seed for the full staleTime.
+    initialDataUpdatedAt: initialParks ? 0 : undefined,
   });
 
   if (!isLoading && (!parks || parks.length === 0)) return null;
