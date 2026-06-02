@@ -4,20 +4,23 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { GeolocationProvider } from '@/lib/contexts/geolocation-context';
 import { TemperatureUnitProvider } from '@/lib/contexts/temperature-unit-context';
-import type { TemperatureUnit } from '@/lib/utils/temperature';
 import { useState, type ReactNode } from 'react';
 
 interface ProvidersProps {
   children: ReactNode;
-  initialTemperatureUnit?: TemperatureUnit;
 }
 
 /**
  * Client-side providers wrapper.
  * Includes geolocation and data fetching (React Query).
  * Note: ThemeProvider (next-themes) is handled in the root layout to avoid React 19 script injection warnings.
+ *
+ * The global TemperatureUnitProvider resolves the unit client-side (cookie or
+ * browser-locale detection on mount). Park detail pages nest their own
+ * cookie-seeded provider (see the park-scoped layout) to avoid a unit flash on
+ * server-rendered weather — without forcing the whole app into dynamic rendering.
  */
-export function Providers({ children, initialTemperatureUnit }: ProvidersProps) {
+export function Providers({ children }: ProvidersProps) {
   // Create QueryClient with optimized defaults
   const [queryClient] = useState(
     () =>
@@ -39,7 +42,7 @@ export function Providers({ children, initialTemperatureUnit }: ProvidersProps) 
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TemperatureUnitProvider initialUnit={initialTemperatureUnit}>
+      <TemperatureUnitProvider>
         <GeolocationProvider>{children}</GeolocationProvider>
       </TemperatureUnitProvider>
       {/* React Query DevTools - only in development */}
