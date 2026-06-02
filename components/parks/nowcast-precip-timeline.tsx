@@ -3,6 +3,7 @@
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { WeatherNowcastStep } from '@/lib/api/types';
 
 interface NowcastPrecipTimelineProps {
@@ -113,23 +114,19 @@ export function NowcastPrecipTimeline({
             const prob = s.precipitationProbability;
             const label = `${fmtTime(s.time)} · ${mm.toFixed(1)} mm${prob != null ? ` · ${prob}%` : ''}`;
             return (
-              <div
-                key={s.time}
-                className="group relative flex h-full flex-1 items-end"
-                aria-label={label}
-              >
-                <div
-                  className={cn('w-full rounded-sm bg-current', colorClass)}
-                  style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
-                />
-                {/* Time + mm on hover (styled so it reads over any banner background). */}
-                <div
-                  role="tooltip"
-                  className="bg-foreground text-background pointer-events-none absolute bottom-full left-1/2 z-20 mb-1 -translate-x-1/2 rounded px-1.5 py-0.5 text-[10px] font-medium whitespace-nowrap tabular-nums opacity-0 shadow-md transition-opacity group-hover:opacity-100"
-                >
+              <Tooltip key={s.time}>
+                <TooltipTrigger asChild>
+                  <div className="flex h-full flex-1 items-end" aria-label={label}>
+                    <div
+                      className={cn('w-full rounded-sm bg-current', colorClass)}
+                      style={{ height: `${heightPct}%`, opacity: mm > 0 ? 0.85 : 0 }}
+                    />
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="tabular-nums">
                   {label}
-                </div>
-              </div>
+                </TooltipContent>
+              </Tooltip>
             );
           })}
         </div>
