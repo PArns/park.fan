@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface NowcastUpdateCountdownProps {
@@ -38,7 +39,21 @@ export function NowcastUpdateCountdown({
   const target = Date.parse(nextUpdateAt);
   if (Number.isNaN(target)) return null;
   const ms = target - now;
-  if (ms <= 0) return null;
+
+  // The backend update is overdue (its CDN cache can outlive the stated nextUpdateAt by a few
+  // minutes). Rather than vanish — which looks broken — show an "updating…" hint; the hook
+  // re-polls every 60s in this state and the countdown returns once fresh data arrives.
+  if (ms <= 0) {
+    return (
+      <p
+        className={cn('flex items-center gap-1 font-mono text-[11px] opacity-60', className)}
+        aria-live="polite"
+      >
+        <Loader2 className="h-3 w-3 animate-spin" aria-hidden="true" />
+        {t('updating')}
+      </p>
+    );
+  }
 
   const totalSec = Math.floor(ms / 1000);
   const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');

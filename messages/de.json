@@ -295,6 +295,7 @@
     },
     "weatherNowcast": {
       "updateIn": "Aktualisierung in {countdown}",
+      "updating": "wird aktualisiert…",
       "intensity": {
         "light": "leicht",
         "moderate": "mäßig",

@@ -5,6 +5,7 @@ import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
+import { connection } from 'next/server';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
@@ -137,18 +138,17 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 300;
-
-// Static-on-demand (ISR): we don't prebuild the long tail of parks, but returning []
-// opts the route into static generation + edge caching (revalidate above) instead of
-// per-request dynamic rendering. Live wait times are refreshed client-side (LiveParkData).
-export function generateStaticParams() {
-  return [];
-}
+// Dynamic rendering (see connection() in the page): static generation would have to await the
+// slow calendar/stats <Suspense> boundaries before emitting any HTML (15-20s cold render).
+// Rendering dynamically streams the shell immediately and the slow sections after, while their
+// underlying fetches stay cached (revalidate) so we don't re-hit the backend on every request.
 
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
+  // Opt into dynamic rendering so the shell streams immediately and the calendar/stats/FAQ
+  // Suspense boundaries stream in, instead of static generation blocking on them (cold ~15s).
+  await connection();
 
   const t = await getTranslations('parks');
   const tCommon = await getTranslations('common');

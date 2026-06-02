@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { getParkByGeoPath } from '@/lib/api/parks';
-import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
+import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 
 export async function GET(
   request: NextRequest,
@@ -85,16 +85,18 @@ export async function GET(
     const [continent, country, city, park] = path;
 
     try {
-      const data = await getParkWeatherNowcast(continent, country, city, park);
+      // Fresh fetch: this is the live poll path, so we don't compound our own caches on top
+      // of the upstream CDN (that froze the banner / hid the update countdown). A small shared
+      // CDN window keeps repeated polls off the backend without re-introducing stale data.
+      const data = await getParkWeatherNowcastFresh(continent, country, city, park);
 
       if (!data) {
         return NextResponse.json({ error: 'Nowcast not available' }, { status: 404 });
       }
 
-      // Mirror upstream cache: 15 min max-age, with short SWR window for the CDN
       return NextResponse.json(data, {
         headers: {
-          'Cache-Control': 'public, s-maxage=900, stale-while-revalidate=300',
+          'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120',
         },
       });
     } catch (error) {
