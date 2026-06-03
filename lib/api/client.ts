@@ -8,6 +8,21 @@ const getApiBaseUrl = () => {
   return '';
 };
 
+/**
+ * Auth header for backend (api.park.fan) requests.
+ *
+ * The key lives in the server-only `API_AUTH_KEY` env var (NOT `NEXT_PUBLIC_`), so it
+ * is only available server-side. Returns the `x-auth-key` header when the key is
+ * configured, otherwise an empty object — on the client (where requests go through the
+ * Next.js proxy routes) and in unconfigured environments nothing extra is sent.
+ *
+ * Spread this into the `headers` of any fetch that targets the backend directly.
+ */
+export function getServerAuthHeaders(): Record<string, string> {
+  const key = process.env.API_AUTH_KEY;
+  return key ? { 'x-auth-key': key } : {};
+}
+
 export interface FetchOptions extends RequestInit {
   params?: Record<string, string | number | boolean | undefined>;
   /** Next.js server-side fetch extensions (revalidate, tags). Server components only. */
@@ -69,6 +84,7 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
     headers: {
       'Content-Type': 'application/json',
       ...fetchOptions.headers,
+      ...getServerAuthHeaders(),
     },
   });
 

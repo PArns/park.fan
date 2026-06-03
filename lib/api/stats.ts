@@ -1,3 +1,4 @@
+import { getServerAuthHeaders } from '@/lib/api/client';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
 const getApiBaseUrl = () =>
@@ -44,8 +45,11 @@ export async function getParkHistoricalStats(
       // the park page stays statically renderable (a no-store fetch would force dynamic).
       const res =
         attempt === 0
-          ? await fetch(url, { next: { revalidate: 86400 } })
-          : await fetch(`${url}&_r=${attempt}`, { next: { revalidate: 86400 } });
+          ? await fetch(url, { next: { revalidate: 86400 }, headers: getServerAuthHeaders() })
+          : await fetch(`${url}&_r=${attempt}`, {
+              next: { revalidate: 86400 },
+              headers: getServerAuthHeaders(),
+            });
 
       if (res.ok) {
         // A successful response is authoritative: either the data is ready, or the park

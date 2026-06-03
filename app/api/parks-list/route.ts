@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerAuthHeaders } from '@/lib/api/client';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,7 +26,10 @@ export async function GET(request: NextRequest) {
   });
 
   try {
-    const response = await fetch(apiUrl.toString(), { cache: 'no-store' });
+    const response = await fetch(apiUrl.toString(), {
+      cache: 'no-store',
+      headers: getServerAuthHeaders(),
+    });
     const data = await response.json();
     return NextResponse.json(data, {
       status: response.status,
