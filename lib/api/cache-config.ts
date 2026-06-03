@@ -15,14 +15,14 @@
 export const CACHE_TTL = {
   // Live data - NOW USING cache: 'no-store' to respect API headers
   // API cache: 60s (search), 120s (analytics), 300s (parks, wait times)
-  search: 60, // ⚠️ Using cache: 'no-store' - respects API 60s cache
-  nearby: 60, // ⚠️ Using cache: 'no-store' - respects API cache
-  realtime: 120, // ⚠️ Using cache: 'no-store' - respects API 120s cache
+  search: 300, // frontend data-cached 5 min - navigation metadata, not live data
+  nearby: 60, // ⚠️ Using cache: 'no-store' - IP/GeoIP-dependent, must not be cached
+  realtime: 120, // ⚠️ Using cache: 'no-store' - live ticker/realtime stats
 
-  // Discovery & Park data - Using cache: 'no-store' for live data
+  // Discovery & Park data
   geo: 3600, // geo structure changes rarely
   continents: 3600, // same as geo
-  parks: 300, // ⚠️ Using cache: 'no-store' for live park lists - respects API 300s cache
+  parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
   parkDetail: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
   waitTimes: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
 

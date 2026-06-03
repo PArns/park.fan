@@ -12,10 +12,12 @@ export async function search(query: string, types?: SearchType[]): Promise<Searc
     params.type = types.join(',');
   }
 
-  // Use cache: 'no-store' to respect API cache headers (60s)
-  // This prevents double-caching (Frontend + API)
+  // Frontend data-cached for 5 min (revalidate 300): search returns navigation
+  // metadata (park/attraction names + slugs), not live wait times, so it tolerates a
+  // few minutes of staleness. Caching keyed by the query string keeps repeated/popular
+  // searches off the backend.
   return api.get<SearchResult>('/v1/search', {
     params,
-    cache: 'no-store',
+    next: { revalidate: 300 },
   });
 }

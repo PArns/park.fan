@@ -58,11 +58,16 @@ export const getAttractionByGeoPath = cache(
 /**
  * Get the most-requested parks, ranked by tracked request volume.
  * Mirrors the popularity signal that drives cache prewarming.
+ *
+ * Frontend data-cached for 5 min (revalidate 300): the popularity ranking is an
+ * aggregate that drifts slowly, not live wait-time data, so a few minutes of staleness
+ * is fine and this keeps repeated reads off the backend. React.cache() still dedupes
+ * within a single request.
  * @param limit clamped to 1–100 by the API (default 20)
  */
 export const getPopularParks = cache(async (limit = 20): Promise<PopularPark[]> => {
   return api.get<PopularPark[]>('/v1/parks/popular', {
     params: { limit },
-    cache: 'no-store',
+    next: { revalidate: 300 },
   });
 });
