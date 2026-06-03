@@ -15,7 +15,7 @@
 export const CACHE_TTL = {
   // Live data - NOW USING cache: 'no-store' to respect API headers
   // API cache: 60s (search), 120s (analytics), 300s (parks, wait times)
-  search: 300, // frontend data-cached 5 min - navigation metadata, not live data
+  search: 60, // ⚠️ Using cache: 'no-store' - respects API 60s cache
   nearby: 60, // ⚠️ Using cache: 'no-store' - IP/GeoIP-dependent, must not be cached
   realtime: 120, // ⚠️ Using cache: 'no-store' - live ticker/realtime stats
 
