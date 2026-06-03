@@ -1,4 +1,5 @@
 import { unstable_cache } from 'next/cache';
+import { getServerAuthHeaders } from './client';
 import { CACHE_TTL } from './cache-config';
 import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
 
@@ -59,6 +60,7 @@ export async function getIntegratedCalendar(
     },
     headers: {
       'Content-Type': 'application/json',
+      ...getServerAuthHeaders(),
     },
   });
 

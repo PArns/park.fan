@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerAuthHeaders } from '@/lib/api/client';
 import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
@@ -47,6 +48,7 @@ export async function GET(request: NextRequest) {
         'Content-Type': 'application/json',
         ...(favoritesCookie ? { Cookie: `${favoritesCookie.name}=${favoritesCookie.value}` } : {}),
         ...forwardedHeaders,
+        ...getServerAuthHeaders(),
       },
       next: { revalidate: 0 },
     });

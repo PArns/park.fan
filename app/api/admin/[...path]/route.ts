@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerAuthHeaders } from '@/lib/api/client';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,7 +16,7 @@ async function proxyRequest(request: NextRequest, path: string[]) {
 
   const response = await fetch(apiUrl.toString(), {
     method: request.method,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...getServerAuthHeaders() },
     body: request.method !== 'GET' ? await request.text() : undefined,
     cache: 'no-store',
   });

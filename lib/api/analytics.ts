@@ -12,7 +12,9 @@ export async function getGlobalStats(): Promise<GlobalStats> {
 
 /**
  * Get live ticker data — top wait times across all open parks.
- * Uses cache: 'no-store' to respect API cache headers (120s)
+ * Frontend data-cached 5 min (revalidate 300): clients poll the ticker every 5 min, so
+ * this collapses concurrent visitors onto one backend call per window. Also reused by the
+ * /api/analytics/ticker proxy so the client poll shares the same cache.
  */
 export async function getTickerData(): Promise<TickerResponse> {
   return api.get<TickerResponse>('/v1/analytics/ticker', {
