@@ -1,5 +1,6 @@
+import { unstable_cache } from 'next/cache';
 import { CACHE_TTL } from './cache-config';
-import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
 const getApiBaseUrl = () => {
@@ -81,6 +82,38 @@ export async function getIntegratedCalendar(
 export const BEST_DAYS_REVALIDATE = 24 * 60 * 60; // 24h
 
 /**
+ * Project the full calendar response down to the handful of day fields the
+ * best-days/FAQ consumers actually touch. Shrinks the per-park snapshot from
+ * ~1.7 MB to ~13 KB.
+ *
+ * Kept fields:
+ * - `analyzeBestDays` reads date, status, crowdLevel, isSchoolVacation, isHoliday.
+ * - ParkBestDaysSection renders `upcomingQuietDays` reading only date + crowdLevel.
+ * - isToday/isBridgeDay are carried only to satisfy required CalendarDay fields.
+ *
+ * Dropped — most importantly `influencingHolidays`, which is ~98% of the raw
+ * payload (a per-day, heavily-duplicated list of every regional holiday) and is
+ * read by NO frontend consumer.
+ *
+ * This is what lets the result be cached at all: Next's fetch data-cache rejects
+ * bodies over 2 MB (the raw response sits right at that boundary and fluctuates
+ * with the holiday/forecast recompute), so the raw fetch was silently uncached.
+ * It also keeps the bulky raw payload out of the React render tree entirely.
+ */
+function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCalendarResponse {
+  const days: CalendarDay[] = data.days.map((d) => ({
+    date: d.date,
+    status: d.status,
+    crowdLevel: d.crowdLevel,
+    isToday: d.isToday,
+    isHoliday: d.isHoliday,
+    isBridgeDay: d.isBridgeDay,
+    isSchoolVacation: d.isSchoolVacation,
+  }));
+  return { meta: data.meta, days };
+}
+
+/**
  * Calendar fetch dedicated to the "best travel time" derivation (best/quiet
  * weekdays, upcoming quiet days) and the crowd FAQ.
  *
@@ -88,12 +121,15 @@ export const BEST_DAYS_REVALIDATE = 24 * 60 * 60; // 24h
  * - The data it feeds (day-of-week aggregates + a multi-week quiet-day forecast)
  *   only changes with the daily crowd forecast (~13h), so a day-old snapshot is
  *   fine for trip planning.
- * - `includeHourly: 'none'` keeps the payload light AND gives this fetch a cache
- *   key distinct from the grid's, so the two never evict each other.
- * - Next's classic data-cache revalidate is stale-while-revalidate: once the 24h
- *   window lapses, the next request is served the STALE snapshot immediately and a
- *   background refresh runs, so the following request gets fresher data — the
- *   visitor never waits on a cold rebuild.
+ * - The raw upstream response (~1.7 MB, dominated by an unused `influencingHolidays`
+ *   list) is too big for Next's fetch data-cache (2 MB cap), so the inner fetch runs
+ *   UNCACHED (`revalidate: 0`) and we instead cache the projected ~35 KB result via
+ *   `unstable_cache`. That both makes caching work and keeps the bulky payload out of
+ *   the renderer — consumers only ever receive the projected days.
+ * - `unstable_cache` is stale-while-revalidate: once the 24h window lapses, the next
+ *   request is served the STALE snapshot immediately while a background refresh runs,
+ *   so the visitor never waits on a cold rebuild. The `best-days:<slug>` tag still
+ *   supports on-demand `revalidateTag`.
  * - The date-sensitive "upcoming quiet days" stay correct because analyzeBestDays
  *   re-filters against a freshly computed (park-timezone) "today" on every render.
  */
@@ -104,11 +140,27 @@ export async function getBestDaysCalendar(
   parkSlug: string,
   options: { from?: string; to?: string } = {}
 ): Promise<IntegratedCalendarResponse> {
-  return getIntegratedCalendar(continent, country, city, parkSlug, {
-    from: options.from,
-    to: options.to,
-    includeHourly: 'none',
-    revalidate: BEST_DAYS_REVALIDATE,
-    tags: [`best-days:${parkSlug}`],
-  });
+  const from = options.from ?? '';
+  const to = options.to ?? '';
+
+  const cached = unstable_cache(
+    async () => {
+      const raw = await getIntegratedCalendar(continent, country, city, parkSlug, {
+        from: options.from,
+        to: options.to,
+        includeHourly: 'none',
+        // Don't let the inner fetch attempt to data-cache the ~2 MB body (it fails the
+        // 2 MB cap and re-fetches every time). The projected result below is the cache.
+        revalidate: 0,
+      });
+      return projectBestDaysCalendar(raw);
+    },
+    ['best-days-calendar', continent, country, city, parkSlug, from, to],
+    {
+      revalidate: BEST_DAYS_REVALIDATE,
+      tags: [`best-days:${parkSlug}`],
+    }
+  );
+
+  return cached();
 }
