@@ -98,7 +98,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   const { data } = useQuery({
     queryKey: ['ticker'],
     queryFn: async () => {
-      const res = await fetch('/v1/analytics/ticker');
+      const res = await fetch('/api/analytics/ticker');
       if (!res.ok) throw new Error('ticker fetch failed');
       return res.json() as Promise<{ items: TickerItem[] }>;
     },
