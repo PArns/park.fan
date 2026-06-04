@@ -54,15 +54,17 @@ export function WindCompass({ directionDeg, windKmh, className }: WindCompassPro
         {t('w')}
       </text>
       {hasDir && (
-        // Full arrow: a shaft from the rim plus a filled head pointing inward,
-        // so the bearing reads unambiguously instead of as a faint ">" caret.
-        // Sits at the FROM bearing and points toward the centre (wind travel).
+        // Full needle spanning the whole dial: a tail at the bearing the wind
+        // comes FROM and a filled arrowhead at the opposite (TO) side, so the
+        // direction reads unambiguously instead of as a faint ">" caret. The
+        // speed label nests in the centre gap so it stays legible over the
+        // glass background.
         <g
           transform={`rotate(${directionDeg!} 50 50)`}
           className="stroke-primary fill-primary"
         >
-          <line x1="50" y1="18" x2="50" y2="36" strokeWidth="3.5" strokeLinecap="round" />
-          <polygon points="50,43 42.5,30 57.5,30" className="stroke-none" />
+          <line x1="50" y1="17" x2="50" y2="42" strokeWidth="3.5" strokeLinecap="round" />
+          <polygon points="50,83 42,67 58,67" className="stroke-none" />
         </g>
       )}
       {/* Speed + unit label, dual-rendered (CSS picks the active unit) */}
