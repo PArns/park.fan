@@ -37,7 +37,7 @@ import {
   trackSearchViewAll,
   trackSearchNoResults,
 } from '@/lib/analytics/umami';
-import { useNearbyParks } from '@/lib/hooks/use-nearby-parks';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import type { NearbyParksData, NearbyAttractionsData } from '@/types/nearby';
 
 const typeIcons = {
@@ -151,8 +151,10 @@ export function SearchCommand({
     staleTime: 300_000,
   });
 
-  // Nearby parks for pre-populating the dialog when no query is entered
-  const { data: nearbyData } = useNearbyParks({ radiusInMeters: 50000, limit: 5 });
+  // Nearby parks for pre-populating the dialog when no query is entered. Shares the
+  // canonical homepage query (radius 200, limit 6) so header/hero/card/search-bar all
+  // dedupe into a single backend request instead of firing a separate limit-5 query.
+  const { data: nearbyData } = useHomeNearbyParks();
 
   const nearbyItems = useMemo((): (SearchResultItem & { distanceM?: number })[] => {
     if (!nearbyData) return [];

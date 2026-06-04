@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
 
@@ -105,14 +104,14 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
 
   const { position, loading: geoLoading, initialCheckDone } = useGeolocation();
 
-  // If there's no cached data at all, fire immediately with IP fallback so the user
-  // sees results right away instead of waiting for GPS on first visit.
-  // If cached data exists, wait for GPS so the refetch uses accurate coords.
-  // TTL-only check at init time (no coords available yet).
-  const [initiallyHadCache] = useState(() => readCache(null, null) !== undefined);
-
   const hasCoords = position != null;
-  const canRun = !initiallyHadCache || (initialCheckDone && (hasCoords || !geoLoading));
+  // Wait while a GPS lookup is pending (permission granted → coords imminent) instead of
+  // firing a throwaway IP-fallback request that the coords refetch would supersede ~1-2s
+  // later — that double-fire is what showed up as two backend requests per load. Once GPS
+  // resolves we run with coords; if it never starts (permission not granted) or fails
+  // (timeout/unavailable), `!geoLoading` lets us run with the GeoIP fallback. Cached
+  // results still show instantly via `placeholderData`, so waiting costs no perceived UX.
+  const canRun = hasCoords || (initialCheckDone && !geoLoading);
 
   return useQuery<NearbyResponse>({
     queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit],
