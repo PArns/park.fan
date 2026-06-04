@@ -54,11 +54,16 @@ export function WindCompass({ directionDeg, windKmh, className }: WindCompassPro
         {t('w')}
       </text>
       {hasDir && (
-        <polygon
-          points="44,18 56,18 50,32"
-          className="fill-primary"
+        // Full arrow: a shaft from the rim plus a filled head pointing inward,
+        // so the bearing reads unambiguously instead of as a faint ">" caret.
+        // Sits at the FROM bearing and points toward the centre (wind travel).
+        <g
           transform={`rotate(${directionDeg!} 50 50)`}
-        />
+          className="stroke-primary fill-primary"
+        >
+          <line x1="50" y1="18" x2="50" y2="36" strokeWidth="3.5" strokeLinecap="round" />
+          <polygon points="50,43 42.5,30 57.5,30" className="stroke-none" />
+        </g>
       )}
       {/* Speed + unit label, dual-rendered (CSS picks the active unit) */}
       <g className="u-metric">
