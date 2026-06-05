@@ -9,6 +9,7 @@ import { connection } from 'next/server';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
+import { getGeoStructure } from '@/lib/api/discovery';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
 import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
@@ -60,26 +61,40 @@ interface ParkPageProps {
 // param-less placeholder shell and `await params` there counts as dynamic data accessed outside
 // <Suspense>, which fails the build. Listing concrete params makes each prebuilt park a proper
 // PPR page (static shell + streamed Suspense holes). Every other park stays on-demand ISR
-// (dynamicParams defaults to true). Bounded to keep build time / API load in check; resilient to
-// a failed popular-parks fetch (mirrors the attraction route).
-const PREBUILD_PARK_LIMIT = 30;
+// (dynamicParams defaults to true). Kept small to bound build memory / API load — each entry is a
+// full park-page prerender against the live API, and the long tail is served on-demand anyway.
+const PREBUILD_PARK_LIMIT = 12;
+
+type ParkRouteParams = { continent: string; country: string; city: string; park: string };
 
 export async function generateStaticParams() {
   const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
 
-  const geoPaths = popular
+  const parks: ParkRouteParams[] = popular
     .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
-    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4);
+    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4)
+    .map(([continent, country, city, park]) => ({ continent, country, city, park }));
 
-  return locales.flatMap((locale) =>
-    geoPaths.map(([continent, country, city, park]) => ({
-      locale,
-      continent,
-      country,
-      city,
-      park,
-    }))
-  );
+  // Cache Components requires generateStaticParams to return ≥1 result — an empty array throws
+  // EmptyGenerateStaticParamsError and fails the whole build. The popular-parks endpoint can be
+  // briefly unavailable during a build (and a build environment may be flakier than local), so
+  // fall back to the geo structure — already relied on by the city/country routes — to guarantee
+  // we always enumerate at least one real park.
+  if (parks.length === 0) {
+    const geo = await getGeoStructure().catch(() => null);
+    outer: for (const c of geo?.continents ?? []) {
+      for (const co of c.countries) {
+        for (const ci of co.cities) {
+          for (const p of ci.parks) {
+            parks.push({ continent: c.slug, country: co.slug, city: ci.slug, park: p.slug });
+            if (parks.length >= PREBUILD_PARK_LIMIT) break outer;
+          }
+        }
+      }
+    }
+  }
+
+  return locales.flatMap((locale) => parks.map((p) => ({ locale, ...p })));
 }
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
