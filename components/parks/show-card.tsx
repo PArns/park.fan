@@ -1,12 +1,10 @@
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { DistanceBadge } from '@/components/common/distance-badge';
-import { LocalTime } from '@/components/ui/local-time';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
-import { useTranslations } from 'next-intl';
+import { ShowCardShowtimes } from '@/components/parks/show-card-showtimes';
 import { cn } from '@/lib/utils';
 
 interface ShowCardProps {
@@ -39,22 +37,6 @@ export function ShowCard({
   seasonMonths,
   isCurrentlyInSeason,
 }: ShowCardProps) {
-  const tCommon = useTranslations('common');
-
-  // Filter showtimes for today or future dates
-  const today = new Date();
-  const todayShowtimes =
-    showtimes?.filter((showtime) => {
-      const showtimeDate = new Date(showtime.startTime);
-      return showtimeDate >= today || showtimeDate.toDateString() === today.toDateString();
-    }) || [];
-
-  // Find next showtime
-  const nextShowtime = todayShowtimes.find((showtime) => {
-    const showtimeDate = new Date(showtime.startTime);
-    return showtimeDate > today;
-  });
-
   return (
     <Link href={href} prefetch={false} className="group block h-full">
       <Card className="hover:border-primary/50 relative h-full transition-all duration-200 hover:scale-[1.02] hover:shadow-md">
@@ -82,40 +64,10 @@ export function ShowCard({
             <DistanceBadge distance={distance} className="mt-2" />
           )}
 
-          {/* All showtimes */}
-          {status === 'OPERATING' && todayShowtimes.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1">
-              {todayShowtimes.map((showtime, i) => {
-                const showtimeDate = new Date(showtime.startTime);
-                const isPast = showtimeDate < today;
-                const isNext = nextShowtime && showtime.startTime === nextShowtime.startTime;
-
-                return (
-                  <Badge
-                    key={i}
-                    variant="outline"
-                    className={cn(
-                      'text-xs',
-                      isPast && 'line-through opacity-40',
-                      isNext &&
-                        'border-status-operating/40 bg-status-operating/15 text-status-operating',
-                      !isPast && !isNext && 'text-muted-foreground'
-                    )}
-                  >
-                    <LocalTime time={showtime.startTime} timeZone={timezone} />
-                  </Badge>
-                );
-              })}
-            </div>
+          {/* Today's showtimes — client-rendered (time-relative past/next highlighting) */}
+          {status === 'OPERATING' && (
+            <ShowCardShowtimes showtimes={showtimes} timezone={timezone} />
           )}
-
-          {/* No showtimes today message */}
-          {status === 'OPERATING' &&
-            todayShowtimes.length === 0 &&
-            showtimes &&
-            showtimes.length > 0 && (
-              <p className="text-muted-foreground mt-2 text-sm">{tCommon('noShowtimesToday')}</p>
-            )}
 
           {/* Status Badge for closed shows */}
           {status !== 'OPERATING' && (
