@@ -95,7 +95,7 @@ both surfacing as the same opaque error on the park route only —
    so Next prerendered a _param-less placeholder shell_ in which `await params`
    (`page.tsx`) counts as dynamic data outside `<Suspense>` → build fails. City / country /
    attraction routes built fine precisely because they already enumerate params. Fix: add
-   `generateStaticParams` returning the 30 most-popular parks × locales (mirrors the
+   `generateStaticParams` returning the top-N most-popular parks × locales (mirrors the
    attraction route); the long tail stays on-demand ISR via `dynamicParams` (default true).
    To get the real frame, `next build --debug-prerender` un-ignore-lists, but it OOMs on
    3062 pages — temporarily `.slice(0, 1)` the heavy `generateStaticParams` (note: returning

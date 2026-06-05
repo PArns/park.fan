@@ -437,9 +437,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
 }
 
 /**
- * Args for the below-the-fold best-days calendar fetch. Passed (not the promise) into the
- * dynamic Suspense holes so the ~2.25 MB fetch is invoked AFTER connection() — never in the
- * static shell, where it would surface as "uncached data outside <Suspense>".
+ * Args for the below-the-fold best-days calendar fetch. The Streamed* components take these
+ * args and run the fetch themselves (after connection()), so the ~2.25 MB uncacheable response
+ * is only ever requested inside a dynamic Suspense hole — never in the static shell, where it
+ * would surface as "uncached data outside <Suspense>".
  */
 interface CalendarArgs {
   continent: string;
@@ -531,9 +532,9 @@ async function StreamedFaq({
 }
 
 /**
- * Streams the historical statistics section: awaits the (non-blocking) stats promise so
- * a cold, slow-to-compute stats response never blocks the page shell — and the section
- * renders whenever the data arrives instead of being blanked until the next reload.
+ * Below-the-fold historical statistics. Fetched inside a dynamic Suspense hole (connection())
+ * so the cold, slow-to-compute (and potentially >2 MB, uncacheable) stats response never blocks
+ * the static shell; the skeleton shows until the data streams in.
  */
 async function StreamedParkStats({
   ...rest
