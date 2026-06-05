@@ -833,7 +833,7 @@
       "keywordBestTime": "beste Besuchszeit"
     },
     "attraction": {
-      "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
+      "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
       "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {
@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
+      "waitTimesQ": "Wie sind die Wartezeiten im {park} heute?",
+      "waitTimesA": "Aktuell liegt die durchschnittliche Wartezeit im {park} bei rund {avg} Minuten (Spitze {peak} Minuten) bei {operating} geöffneten Attraktionen. Die Live-Wartezeiten aller Fahrgeschäfte findest du oben auf dieser Seite.",
+      "waitTimesNoDataA": "Die Wartezeiten im {park} hängen von Tag, Saison und Andrang ab. Sieh dir die Live-Wartezeiten aller Fahrgeschäfte oben an – plus den Crowd-Kalender für die beste Besuchszeit.",
       "openingHoursQ": "Welche Öffnungszeiten hat {park} heute?",
       "openingHoursA": "Heute, {date}, hat {park} von {open} bis {close} Uhr geöffnet.",
       "openingHoursClosed": "Heute, {date}, ist {park} geschlossen.",

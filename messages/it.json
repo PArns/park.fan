@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Domande frequenti",
+      "waitTimesQ": "Quali sono i tempi di attesa a {park} oggi?",
+      "waitTimesA": "In questo momento il tempo di attesa medio a {park} è di circa {avg} minuti (picco {peak} minuti) su {operating} attrazioni aperte. I tempi di attesa in diretta di ogni attrazione sono mostrati qui sopra in questa pagina.",
+      "waitTimesNoDataA": "I tempi di attesa a {park} variano in base a giorno, stagione e affluenza. Controlla i tempi di attesa in diretta qui sopra e il calendario delle affluenze per il momento migliore per visitare.",
       "openingHoursQ": "Quali sono gli orari di apertura di {park} oggi?",
       "openingHoursA": "Oggi, {date}, {park} è aperto dalle {open} alle {close}.",
       "openingHoursClosed": "Oggi, {date}, {park} è chiuso.",
