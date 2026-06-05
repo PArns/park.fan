@@ -1,4 +1,5 @@
 import { setRequestLocale } from 'next-intl/server';
+import { connection } from 'next/server';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -850,6 +851,9 @@ interface UiPageProps {
 export default async function UiStyleGuidePage({ params }: UiPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Dev-only component gallery — render dynamically so its demo client components may read
+  // the current time freely (no static-prerender constraint; not user-facing/SEO content).
+  await connection();
 
   return (
     <div className="relative min-h-screen">
