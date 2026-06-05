@@ -182,7 +182,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   <Header />
                 </Suspense>
                 <main className="flex-1">{children}</main>
-                <Footer locale={locale} />
+                {/* Footer renders next-intl links (dynamic under Cache Components) — stream it
+                    as a below-the-fold dynamic hole so pages keep a static, cacheable shell. */}
+                <Suspense fallback={null}>
+                  <Footer locale={locale} />
+                </Suspense>
               </div>
             </NextIntlClientProvider>
           </Providers>

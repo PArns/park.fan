@@ -76,13 +76,15 @@ export const WeatherBackground = memo(function WeatherBackground({
   // initializer runs Math.random() outside of the render path, satisfying
   // React's purity rules while still giving us a per-mount layout.
   const [stars] = useState(() =>
-    Array.from({ length: STAR_COUNT }, () => ({
-      top: Math.random() * 58,
-      left: Math.random() * 100,
-      size: 1 + Math.random() * 1.8,
-      duration: 2.5 + Math.random() * 3,
-      delay: -Math.random() * 4,
-    }))
+    typeof window === 'undefined'
+      ? []
+      : Array.from({ length: STAR_COUNT }, () => ({
+          top: Math.random() * 58,
+          left: Math.random() * 100,
+          size: 1 + Math.random() * 1.8,
+          duration: 2.5 + Math.random() * 3,
+          delay: -Math.random() * 4,
+        }))
   );
 
   useEffect(() => {

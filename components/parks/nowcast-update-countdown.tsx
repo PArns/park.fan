@@ -27,7 +27,9 @@ export function NowcastUpdateCountdown({
 }: NowcastUpdateCountdownProps) {
   const t = useTranslations('parks.weatherNowcast');
 
-  const [internalNow, setInternalNow] = useState(() => Date.now());
+  const [internalNow, setInternalNow] = useState(() =>
+    typeof window === 'undefined' ? 0 : Date.now()
+  );
   useEffect(() => {
     if (externalNow !== undefined) return;
     const id = window.setInterval(() => setInternalNow(Date.now()), 1_000);

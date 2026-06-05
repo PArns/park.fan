@@ -278,8 +278,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
         )}
         <FAQStructuredData park={park} locale={locale} />
 
-        {/* Breadcrumb */}
-        <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
+        {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
+            Components); the BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
+        <Suspense fallback={<div className="h-6" />}>
+          <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={parkCurrentPage} />
+        </Suspense>
 
         <article itemScope itemType="https://schema.org/ThemePark">
           {/* Park Header */}
@@ -306,39 +309,46 @@ export default async function ParkPage({ params }: ParkPageProps) {
             </GlassCard>
           </div>
 
-          {/* Weather warning banner (rain / storm / hail / thunderstorm) */}
-          <WeatherNowcastBanner
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            initialData={nowcast}
-            className="mb-6"
-          />
+          {/* Weather warning banner (rain / storm / hail / thunderstorm) — client live query,
+              streamed as a dynamic hole under Cache Components. */}
+          <Suspense fallback={null}>
+            <WeatherNowcastBanner
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              initialData={nowcast}
+              className="mb-6"
+            />
+          </Suspense>
 
           {/* Schedule & Weather Row */}
           <div className="mb-8 grid gap-4 md:grid-cols-2">
             {/* Today's Schedule with Current Time */}
-            <ParkTimeInfo
-              timezone={park.timezone}
-              todaySchedule={todaySchedule}
-              nextSchedule={park.nextSchedule}
-              status={park.status}
-              hasOperatingSchedule={park.hasOperatingSchedule}
-              className="border-primary/10"
-            />
-
-            {/* Weather */}
-            {park.weather?.current && (
-              <WeatherCard
-                weather={park.weather}
-                nowcast={nowcast}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
+            <Suspense fallback={null}>
+              <ParkTimeInfo
+                timezone={park.timezone}
+                todaySchedule={todaySchedule}
+                nextSchedule={park.nextSchedule}
+                status={park.status}
+                hasOperatingSchedule={park.hasOperatingSchedule}
                 className="border-primary/10"
               />
+            </Suspense>
+
+            {/* Weather — client live nowcast query, streamed as a dynamic hole */}
+            {park.weather?.current && (
+              <Suspense fallback={null}>
+                <WeatherCard
+                  weather={park.weather}
+                  nowcast={nowcast}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  className="border-primary/10"
+                />
+              </Suspense>
             )}
           </div>
 
@@ -364,14 +374,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
             }
           />
 
-          {/* Nearby Parks */}
+          {/* Nearby Parks — streamed (geo proximity lookup + live park cards) */}
           {park.latitude != null && park.longitude != null && (
-            <NearbyParksSection
-              parkId={park.id}
-              lat={park.latitude}
-              lng={park.longitude}
-              className="mt-8"
-            />
+            <Suspense fallback={null}>
+              <NearbyParksSection
+                parkId={park.id}
+                lat={park.latitude}
+                lng={park.longitude}
+                className="mt-8"
+              />
+            </Suspense>
           )}
 
           {/* Historical statistics — streamed so a cold/slow stats response doesn't block

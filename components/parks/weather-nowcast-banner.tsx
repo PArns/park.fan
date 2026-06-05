@@ -186,8 +186,9 @@ export function WeatherNowcastBanner({
     enabled,
   });
 
-  // Live clock so countdowns recompute every second.
-  const [now, setNow] = useState(() => Date.now());
+  // Live clock so countdowns recompute every second. Avoid reading the clock during the
+  // static prerender (Cache Components) — the real value is set on mount by the effect below.
+  const [now, setNow] = useState(() => (typeof window === 'undefined' ? 0 : Date.now()));
   useEffect(() => {
     const id = window.setInterval(() => setNow(Date.now()), 1_000);
     return () => window.clearInterval(id);
