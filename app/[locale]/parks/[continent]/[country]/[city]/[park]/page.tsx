@@ -171,35 +171,25 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const nowMs = await getServerNowMs();
   const now = new Date(nowMs);
 
-  // Pre-fetch calendar + historical stats in parallel.
-  // Calendar: current month + next 2 months (API limit: 90 days max — cap to avoid 400)
+  // Calendar date range: current month + next 2 months (API limit: 90 days max — cap to avoid 400).
+  // The calendar feeds only the below-the-fold best-days + FAQ sections, which stream as dynamic
+  // <Suspense> holes (StreamedBestDays / StreamedFaq, after connection()). The ~2.25 MB fetch is
+  // therefore invoked INSIDE those holes (not here in the shell): it's too big for Next's fetch
+  // data-cache, so under Cache Components creating its promise in the static shell would surface
+  // as "uncached data outside <Suspense>". getBestDaysCalendar caches the projected ~13 KB result
+  // (unstable_cache, 24h SWR), so the two consumers share one cached snapshot.
   const calendarFrom = startOfMonth(now);
   const calendarTo = min([endOfMonth(addMonths(now, 2)), addDays(calendarFrom, 89)]);
-
-  // This calendar feeds only the below-the-fold best-days + FAQ sections (streamed via
-  // <Suspense> below); the calendar tab client-fetches per visible month on its own
-  // (useCalendarData). Both consumers are derived from the daily crowd forecast, so it
-  // uses the dedicated 24h best-days cache (stale-while-revalidate) rather than the
-  // 15-min grid cache. Kept OFF the blocking path so the shell paints in ~0.4s.
-  const bestDaysCalendarPromise: Promise<IntegratedCalendarResponse> = getBestDaysCalendar(
+  const calendarArgs: CalendarArgs = {
     continent,
     country,
     city,
     parkSlug,
-    {
-      from: format(calendarFrom, 'yyyy-MM-dd'),
-      to: format(calendarTo, 'yyyy-MM-dd'),
-    }
-  ).catch(
-    (): IntegratedCalendarResponse => ({
-      meta: {
-        slug: parkSlug,
-        timezone: park.timezone,
-        hasOperatingSchedule: park.hasOperatingSchedule,
-      },
-      days: [],
-    })
-  );
+    from: format(calendarFrom, 'yyyy-MM-dd'),
+    to: format(calendarTo, 'yyyy-MM-dd'),
+    timezone: park.timezone,
+    hasOperatingSchedule: park.hasOperatingSchedule,
+  };
 
   // Nowcast feeds the header banner + weather card (above the fold), so it stays on the
   // blocking path. Historical stats feed only the below-the-fold stats section and the
@@ -364,7 +354,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             bestDaysSlot={
               <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
                 <StreamedBestDays
-                  calendarPromise={bestDaysCalendarPromise}
+                  calendarArgs={calendarArgs}
                   statsPromise={statsPromise}
                   parkName={parkName}
                   parkSlug={parkSlug}
@@ -402,7 +392,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           {/* FAQ Section */}
           <Separator className="my-8" />
           <Suspense fallback={<ParkFAQSection park={park} locale={locale} />}>
-            <StreamedFaq park={park} locale={locale} calendarPromise={bestDaysCalendarPromise} />
+            <StreamedFaq park={park} locale={locale} calendarArgs={calendarArgs} />
           </Suspense>
         </article>
       </PageContainer>
@@ -411,20 +401,57 @@ export default async function ParkPage({ params }: ParkPageProps) {
 }
 
 /**
- * Streams the "best days" widget: awaits the (non-blocking) calendar promise so the page
- * shell never waits on a cold calendar build. Wrapped in <Suspense> by the caller.
+ * Args for the below-the-fold best-days calendar fetch. Passed (not the promise) into the
+ * dynamic Suspense holes so the ~2.25 MB fetch is invoked AFTER connection() — never in the
+ * static shell, where it would surface as "uncached data outside <Suspense>".
+ */
+interface CalendarArgs {
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+  from: string;
+  to: string;
+  timezone: string;
+  hasOperatingSchedule: boolean;
+}
+
+/**
+ * Fetch + project the best-days calendar (cached 24h via unstable_cache inside
+ * getBestDaysCalendar), falling back to an empty calendar on error so a failed fetch degrades
+ * the widget gracefully instead of taking down the streamed section.
+ */
+function loadBestDaysCalendar(a: CalendarArgs): Promise<IntegratedCalendarResponse> {
+  return getBestDaysCalendar(a.continent, a.country, a.city, a.parkSlug, {
+    from: a.from,
+    to: a.to,
+  }).catch(
+    (): IntegratedCalendarResponse => ({
+      meta: { slug: a.parkSlug, timezone: a.timezone, hasOperatingSchedule: a.hasOperatingSchedule },
+      days: [],
+    })
+  );
+}
+
+/**
+ * Streams the "best days" widget. The calendar fetch is kicked off HERE (inside the dynamic
+ * hole, after connection()) rather than in the page shell, so the bulky uncacheable calendar
+ * response never blocks or poisons the static prerender. Wrapped in <Suspense> by the caller.
  */
 async function StreamedBestDays({
-  calendarPromise,
+  calendarArgs,
   statsPromise,
   ...rest
 }: Omit<ComponentProps<typeof ParkBestDaysSection>, 'calendarData' | 'statsByDayOfWeek'> & {
-  calendarPromise: Promise<IntegratedCalendarResponse>;
+  calendarArgs: CalendarArgs;
   statsPromise: Promise<ParkHistoricalStats | null>;
 }) {
   // Dynamic PPR hole: keeps the slow calendar/stats out of the static shell prerender.
   await connection();
-  const [calendarData, stats] = await Promise.all([calendarPromise, statsPromise]);
+  const [calendarData, stats] = await Promise.all([
+    loadBestDaysCalendar(calendarArgs),
+    statsPromise,
+  ]);
   return (
     <ParkBestDaysSection
       calendarData={calendarData}
@@ -436,14 +463,14 @@ async function StreamedBestDays({
 
 /** Streams the FAQ section (calendar-derived crowd FAQ) the same way. */
 async function StreamedFaq({
-  calendarPromise,
+  calendarArgs,
   ...rest
 }: Omit<ComponentProps<typeof ParkFAQSection>, 'calendarData'> & {
-  calendarPromise: Promise<IntegratedCalendarResponse>;
+  calendarArgs: CalendarArgs;
 }) {
   // Dynamic PPR hole: the calendar-derived crowd FAQ streams; the static FAQ fallback is prerendered.
   await connection();
-  const calendarData = await calendarPromise;
+  const calendarData = await loadBestDaysCalendar(calendarArgs);
   return <ParkFAQSection {...rest} calendarData={calendarData} />;
 }
 
