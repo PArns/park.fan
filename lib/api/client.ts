@@ -61,6 +61,22 @@ export class ApiError extends Error {
   }
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// Transient upstream failures worth a short retry. A single 429/503/504 (or a dropped
+// connection) from the API during a build prerendered the whole route as an error and failed the
+// build — brief blips or short rate-limit bursts would turn green builds red at random. We retry
+// these on the server only; on the client React Query already handles retries, and the browser
+// talks to the same-origin proxy anyway. 502 is treated as maintenance and is NOT retried (it
+// surfaces the maintenance page).
+//
+// NOTE: the real fix for build-time rate-limiting (api.park.fan allows 300 req/60s) is to set the
+// server-only `API_AUTH_KEY` env var in the build environment (Vercel → Build), so build requests
+// are authenticated. Without it the whole build runs unauthenticated and can trip the limit; this
+// retry only smooths over brief bursts, it does not replace the key.
+const RETRYABLE_STATUS = new Set([429, 503, 504]);
+const RETRY_BACKOFF_MS = [300, 900];
+
 export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}): Promise<T> {
   const { params, ...fetchOptions } = options;
 
@@ -79,24 +95,54 @@ export async function apiFetch<T>(endpoint: string, options: FetchOptions = {}):
     });
   }
 
-  const response = await fetch(url.toString(), {
-    ...fetchOptions,
-    headers: {
-      'Content-Type': 'application/json',
-      ...fetchOptions.headers,
-      ...getServerAuthHeaders(),
-    },
-  });
+  // Retry transient upstream errors server-side only (build/SSR/ISR resilience).
+  const maxAttempts = typeof window === 'undefined' ? RETRY_BACKOFF_MS.length + 1 : 1;
 
-  if (!response.ok) {
-    const body = await response.text().catch(() => '');
-    // 502 Bad Gateway means the API origin is unreachable, same as a 1033 tunnel
-    // outage, so both render the maintenance page.
-    const isMaintenance = response.status === 502 || isCloudflareTunnelDown(body);
-    throw new ApiError(response.status, `API Error: ${response.statusText}`, isMaintenance);
+  let lastError: unknown;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    if (attempt > 0) await sleep(RETRY_BACKOFF_MS[attempt - 1]);
+
+    try {
+      const response = await fetch(url.toString(), {
+        ...fetchOptions,
+        headers: {
+          'Content-Type': 'application/json',
+          ...fetchOptions.headers,
+          ...getServerAuthHeaders(),
+        },
+      });
+
+      if (response.ok) {
+        return response.json() as Promise<T>;
+      }
+
+      const body = await response.text().catch(() => '');
+      // 502 Bad Gateway means the API origin is unreachable, same as a 1033 tunnel
+      // outage, so both render the maintenance page.
+      const isMaintenance = response.status === 502 || isCloudflareTunnelDown(body);
+      const error = new ApiError(
+        response.status,
+        `API Error: ${response.statusText}`,
+        isMaintenance
+      );
+
+      // Retry only transient upstream 5xx; surface 4xx (incl. 404) and maintenance immediately.
+      if (RETRYABLE_STATUS.has(response.status) && attempt < maxAttempts - 1) {
+        lastError = error;
+        continue;
+      }
+      throw error;
+    } catch (err) {
+      // Network-level failure (fetch threw): retry while attempts remain. A decided ApiError
+      // (non-retryable, or thrown on the final attempt) is rethrown as-is.
+      if (err instanceof ApiError) throw err;
+      lastError = err;
+      if (attempt < maxAttempts - 1) continue;
+      throw err;
+    }
   }
 
-  return response.json() as Promise<T>;
+  throw lastError;
 }
 
 /**

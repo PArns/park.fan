@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache';
 import { getServerAuthHeaders } from '@/lib/api/client';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
@@ -32,22 +33,24 @@ export async function getParkHistoricalStats(
   parkSlug: string,
   years = 2
 ): Promise<ParkHistoricalStats | null> {
+  'use cache';
+  // Cached (Cache Components): creating this promise in the park-page shell is allowed, while
+  // the StreamedParkStats <Suspense> hole still streams it off the critical path. Short window
+  // so a cold-compute miss (null) is re-attempted soon rather than stuck for a day.
+  cacheLife({ stale: 300, revalidate: 300, expire: 1800 });
+
   const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats?years=${years}`;
 
   for (let attempt = 0; attempt < RETRY_DELAYS_MS.length; attempt++) {
     if (RETRY_DELAYS_MS[attempt] > 0) await sleep(RETRY_DELAYS_MS[attempt]);
 
     try {
-      // Attempt 0 uses the shared 24h data cache: warm parks resolve instantly with no
-      // extra origin load. Retries use a unique URL (`_r=attempt`) so each round is a
-      // distinct cache entry — a still-computing backend is genuinely re-polled instead of
-      // replaying the first failed response. We keep a positive revalidate (not no-store) so
-      // the park page stays statically renderable (a no-store fetch would force dynamic).
+      // Retries use a unique URL (`_r=attempt`) so a still-computing cold backend is genuinely
+      // re-polled within this cache-fill instead of replaying the first failed response.
       const res =
         attempt === 0
-          ? await fetch(url, { next: { revalidate: 86400 }, headers: getServerAuthHeaders() })
+          ? await fetch(url, { headers: getServerAuthHeaders() })
           : await fetch(`${url}&_r=${attempt}`, {
-              next: { revalidate: 86400 },
               headers: getServerAuthHeaders(),
             });
 

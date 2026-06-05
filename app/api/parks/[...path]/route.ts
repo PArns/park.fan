@@ -18,6 +18,11 @@ export async function GET(
     try {
       const parkData = await getParkByGeoPath(continent, country, city, park);
 
+      // getParkByGeoPath resolves to null for a non-existent park (404) instead of throwing.
+      if (!parkData) {
+        return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+      }
+
       // No caching - we want fresh live data
       return NextResponse.json(parkData, {
         headers: {
@@ -116,4 +121,3 @@ export async function GET(
 }
 
 // No caching - we want fresh data on every request
-export const dynamic = 'force-dynamic';

@@ -18,7 +18,6 @@ import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-u
  * server fetch) and very numerous, so they're opt-in via ?include=attractions.
  */
 
-export const runtime = 'nodejs';
 export const maxDuration = 300; // warming cold parks resolves calendar/stats server-side
 
 const BASE_URL = process.env.PREWARM_BASE_URL || 'https://park.fan';

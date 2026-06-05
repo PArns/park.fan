@@ -50,7 +50,9 @@ export function useWeatherNowcast({
     // stale cached page refetches immediately on mount. Without this, RQ trusts initialData
     // for the full staleTime → frozen banner with a past nextUpdateAt (update-countdown hidden).
     initialDataUpdatedAt: initialData?.observedAt ? Date.parse(initialData.observedAt) : undefined,
-    enabled: enabled && initialData !== null,
+    // Client-only: under Cache Components, running the query during the static prerender would
+    // read Date.now() internally (React Query). The SSR shell renders from initialData.
+    enabled: enabled && initialData !== null && typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: true,
@@ -59,6 +61,9 @@ export function useWeatherNowcast({
     // reached so the countdown and the actual fetch stay in sync. Fall back to
     // a 5-min poll when the field is absent or already in the past.
     refetchInterval: (query) => {
+      // Never read the clock during the static prerender (Cache Components forbids it); polling
+      // only matters on the client anyway.
+      if (typeof window === 'undefined') return false;
       const data = query.state.data as WeatherNowcast | null | undefined;
       if (data?.nextUpdateAt) {
         const ms = Date.parse(data.nextUpdateAt) - Date.now();

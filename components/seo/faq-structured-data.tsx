@@ -1,23 +1,25 @@
 import { ParkWithAttractions } from '@/lib/api/types';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
 import { buildParkFaqItems, getParkArticleForms } from '@/lib/faq/park-faq';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
   locale: string;
 }
 
-export function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
-  const t = useTranslations('seo.faq');
-  const tGeo = useTranslations('geo');
+export async function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
+  const t = await getTranslations('seo.faq');
+  const tGeo = await getTranslations('geo');
 
   const items = buildParkFaqItems(
     park,
     locale,
     t as Parameters<typeof buildParkFaqItems>[2],
-    tGeo as Parameters<typeof buildParkFaqItems>[3]
+    tGeo as Parameters<typeof buildParkFaqItems>[3],
+    await getServerNowMs()
   );
 
   const { parkNom, parkAcc } = getParkArticleForms(park, locale);

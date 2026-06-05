@@ -54,8 +54,6 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
   };
 }
 
-export const revalidate = 300;
-
 export async function generateStaticParams() {
   const geoData = await getGeoStructure().catch(() => null);
   if (!geoData) return [];

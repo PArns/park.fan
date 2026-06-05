@@ -53,8 +53,6 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
   };
 }
 
-export const revalidate = 300; // 1 hour
-
 export default async function ContinentPage({ params }: ContinentPageProps) {
   const { locale, continent } = await params;
   setRequestLocale(locale);

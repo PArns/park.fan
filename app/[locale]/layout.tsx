@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -130,6 +131,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // all geo pages statically prerenderable (ISR). The global provider below
   // resolves the unit client-side for any other page.
 
+  // Umami is the only third-party origin the browser talks to (analytics script + beacons,
+  // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
+  // would compete with critical same-origin assets (HTML/CSS/fonts/JS/images are all same-origin).
+  let umamiOrigin: string | null = null;
+  try {
+    if (process.env.NEXT_PUBLIC_UMAMI_URL) {
+      umamiOrigin = new URL(process.env.NEXT_PUBLIC_UMAMI_URL).origin;
+    }
+  } catch {
+    umamiOrigin = null;
+  }
+
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -137,6 +150,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
         {/* Set the temperature unit on <html> before paint so weather/calendar values
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
             no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,
@@ -167,14 +181,25 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         >
           <Providers>
             <NextIntlClientProvider messages={messages} locale={locale}>
-              <ScrollToTop />
-              <AnalyticsIdentify locale={locale} />
-              <WebVitalsReporter />
-              <LanguageBanner currentLocale={locale as Locale} />
+              {/* Layout client components read request data (usePathname) / run live queries,
+                  which are dynamic under Cache Components — stream them as Suspense holes so the
+                  page shell stays statically prerenderable. */}
+              <Suspense fallback={null}>
+                <ScrollToTop />
+                <AnalyticsIdentify locale={locale} />
+                <WebVitalsReporter />
+                <LanguageBanner currentLocale={locale as Locale} />
+              </Suspense>
               <div className="flex min-h-screen flex-col">
-                <Header />
+                <Suspense fallback={<div className="h-14" />}>
+                  <Header />
+                </Suspense>
                 <main className="flex-1">{children}</main>
-                <Footer locale={locale} />
+                {/* Footer renders next-intl links (dynamic under Cache Components) — stream it
+                    as a below-the-fold dynamic hole so pages keep a static, cacheable shell. */}
+                <Suspense fallback={null}>
+                  <Footer locale={locale} />
+                </Suspense>
               </div>
             </NextIntlClientProvider>
           </Providers>

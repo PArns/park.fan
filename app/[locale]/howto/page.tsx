@@ -15,8 +15,6 @@ interface HowtoPageProps {
   params: Promise<{ locale: string }>;
 }
 
-export const revalidate = 86400; // 1 day — static content; live parks via React Query
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

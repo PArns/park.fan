@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerAuthHeaders } from '@/lib/api/client';
 
-export const dynamic = 'force-dynamic';
-
 const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
 
 // Read-only passthrough for the public /v1/ml/* stats endpoints, so the

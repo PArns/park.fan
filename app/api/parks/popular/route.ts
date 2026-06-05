@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPopularParks } from '@/lib/api/parks';
 
-export const dynamic = 'force-dynamic';
-
 export async function GET(request: NextRequest) {
   const limitParam = new URL(request.url).searchParams.get('limit');
   const parsed = limitParam ? Number.parseInt(limitParam, 10) : 20;

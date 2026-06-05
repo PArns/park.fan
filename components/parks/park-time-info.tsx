@@ -68,7 +68,9 @@ export function ParkTimeInfo({
     const { openingTime, closingTime } = todaySchedule;
     if (!openingTime || !closingTime) return null;
 
-    const now = new Date();
+    // Use the mounted-gated browser clock so the static prerender never reads the current time.
+    if (!currentTime) return null;
+    const now = currentTime;
     const opening = new Date(openingTime);
     const closing = new Date(closingTime);
 
@@ -113,7 +115,9 @@ export function ParkTimeInfo({
     const nextOpening = new Date(nextOpeningRaw);
     if (Number.isNaN(nextOpening.getTime())) return null;
 
-    const now = new Date();
+    // Mounted-gated clock (cacheComponents-safe); the offseason card fills in on the client.
+    if (!currentTime) return null;
+    const now = currentTime;
     const dayDiff = Math.ceil((nextOpening.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
     const totalWeeks = dayDiff / 7;
 

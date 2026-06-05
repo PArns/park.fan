@@ -18,6 +18,7 @@ import type { LucideIcon } from 'lucide-react';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { buildParkFaqItems, getParkArticleForms, type ParkFaqIconName } from '@/lib/faq/park-faq';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
@@ -56,11 +57,13 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
   const t = await getTranslations('seo.faq');
 
   const tGeo = await getTranslations('geo');
+  const nowMs = await getServerNowMs();
   const faqs: FAQItem[] = buildParkFaqItems(
     park,
     locale,
     t as Parameters<typeof buildParkFaqItems>[2],
-    tGeo as Parameters<typeof buildParkFaqItems>[3]
+    tGeo as Parameters<typeof buildParkFaqItems>[3],
+    nowMs
   );
 
   const { parkNom, parkNomCap, parkLoc } = getParkArticleForms(park, locale);
@@ -74,7 +77,7 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
 
   // Q7: Least crowded (requires calendar data, uses rich text)
   if (calendarData) {
-    const analysis = analyzeBestDays(calendarData.days, calendarData.meta.timezone);
+    const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
     if (analysis.totalDays >= 7) {
       const conjunctions: Record<string, string> = {
         de: ' und ',

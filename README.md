@@ -49,7 +49,7 @@ English · Deutsch · Nederlands · Français · Español · Italiano
 
 ## Tech
 
-Built with Next.js 16, React 19, and TypeScript. Real-time data from [api.park.fan](https://api.park.fan). Deployed globally on Vercel.
+Built with Next.js 16 (App Router) and React 19 in TypeScript, fully localized across six languages. Pages are statically prerendered and served from Vercel's edge, with live wait times and crowd data streamed in on top — so park pages load instantly while staying real-time. Real-time data from [api.park.fan](https://api.park.fan).
 
 ---
 

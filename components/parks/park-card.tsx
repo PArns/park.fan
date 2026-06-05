@@ -1,18 +1,18 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { MapPin, Activity, Clock, Calendar } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { ParkTime } from '@/components/common/park-time';
+import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
-import { useTranslations, useLocale } from 'next-intl';
-import { getScheduleMessage } from '@/lib/utils/schedule-utils';
+import { useTranslations } from 'next-intl';
 import type { ScheduleSummary } from '@/lib/api/types';
-import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
@@ -96,11 +96,8 @@ export function ParkCard({
   translateCountry = false,
   continent: _continent,
 }: ParkCardProps) {
-  const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
   const tGeo = useTranslations('geo');
-  const tCard = useTranslations('parkCard');
-  const locale = useLocale();
 
   const effectiveHref = href ?? (url ? convertApiUrlToFrontendUrl(url) : '/');
   const effectiveParkId = parkId ?? id;
@@ -123,42 +120,6 @@ export function ParkCard({
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
   const isInMaintenance =
     !!status && status !== 'OPERATING' && status !== 'CLOSED' && status !== 'UNKNOWN';
-
-  const scheduleInfo = getScheduleMessage(
-    todaySchedule,
-    nextSchedule,
-    timezone,
-    status,
-    isInMaintenance,
-    locale,
-    tNearby,
-    tCommon,
-    hasOperatingSchedule
-  );
-
-  // Closing time for open parks: remaining duration only (absolute time rendered
-  // by ParkTime). `Date.now()` here is the server render timestamp, which is
-  // what we want — this component is server-rendered and the value is fresh
-  // on every request.
-  // eslint-disable-next-line react-hooks/purity
-  const nowMs = Date.now();
-  const closingRemaining =
-    isOpen && todaySchedule?.closingTime
-      ? (() => {
-          try {
-            const diff = new Date(todaySchedule.closingTime).getTime() - nowMs;
-            if (diff <= 0) return null;
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            return hours > 0 ? `${hours} ${tCommon('hours')}. ${minutes} min.` : `${minutes} min.`;
-          } catch {
-            return null;
-          }
-        })()
-      : null;
-
-  const hasClosingTime = !!(todaySchedule?.closingTime && timezone && closingRemaining);
-  const hasStats = (operatingAttractions != null && totalAttractions != null) || hasClosingTime;
 
   return (
     <Link
@@ -352,103 +313,21 @@ export function ParkCard({
             }}
           />
 
-          {isOpen ? (
-            /* Open footer — stats strip only */
-            hasStats ? (
-              <div
-                className="relative flex items-center gap-[10px] overflow-hidden text-[11.5px] font-medium"
-                style={{
-                  color: 'var(--pk-text-2)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {operatingAttractions != null && totalAttractions != null && (
-                  <span className="flex items-center gap-1">
-                    <Activity
-                      className="h-[11px] w-[11px] shrink-0"
-                      style={{ color: 'var(--pk-text-3)' }}
-                      aria-hidden="true"
-                    />
-                    <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
-                      {operatingAttractions}
-                    </b>
-                    /{totalAttractions} {tCommon('operating')}
-                  </span>
-                )}
-
-                {operatingAttractions != null && hasClosingTime && (
-                  <span style={{ color: 'var(--pk-text-3)' }} aria-hidden="true">
-                    ·
-                  </span>
-                )}
-
-                {hasClosingTime && todaySchedule?.closingTime && timezone && (
-                  <span className="flex items-center gap-1">
-                    <Clock
-                      className="h-[11px] w-[11px] shrink-0"
-                      style={{ color: 'var(--pk-text-3)' }}
-                      aria-hidden="true"
-                    />
-                    {tCard('until')}{' '}
-                    <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
-                      <ParkTime
-                        isoTime={todaySchedule.closingTime}
-                        parkTimezone={timezone}
-                        locale={locale}
-                        showSuffix
-                      />
-                    </b>
-                    <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
-                      ({tCard('closingIn')} {closingRemaining})
-                    </span>
-                  </span>
-                )}
-              </div>
-            ) : null
-          ) : (
-            /* Closed footer */
-            <div
-              className="relative flex items-center gap-[6px] text-[12px]"
-              style={{ color: 'var(--pk-text-2)' }}
-            >
-              <Calendar
-                className="h-[13px] w-[13px] shrink-0"
-                style={{ color: 'var(--pk-text-3)' }}
-                aria-hidden="true"
-              />
-              <span>
-                {scheduleInfo?.icon === 'opening' ? `${tNearby('opens')}: ` : ''}
-                {scheduleInfo?.icon === 'offseason' ? (
-                  <>
-                    <GlossaryTermLink termId="offseason" tooltipOnly>
-                      {tNearby('offseason')}
-                    </GlossaryTermLink>
-                    {scheduleInfo.offseasonDetails}
-                  </>
-                ) : scheduleInfo?.icon === 'opening' && scheduleInfo.openingTimeISO && timezone ? (
-                  <>
-                    {scheduleInfo.dayPrefix}
-                    <strong className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
-                      <ParkTime
-                        isoTime={scheduleInfo.openingTimeISO}
-                        parkTimezone={timezone}
-                        locale={locale}
-                        showSuffix
-                      />
-                    </strong>
-                    {scheduleInfo.remainingText && (
-                      <span style={{ color: 'var(--pk-text-3)' }} suppressHydrationWarning>
-                        {' '}
-                        ({scheduleInfo.remainingText})
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  (scheduleInfo?.message ?? tCommon('closed'))
-                )}
-              </span>
-            </div>
-          )}
+          {/* Skeleton reserves the footer's single-line height so the client-rendered
+              schedule/countdown swaps in without shifting the card (cacheComponents defers it). */}
+          <Suspense fallback={<Skeleton className="h-4 w-32" />}>
+            <ParkCardScheduleFooter
+              isOpen={isOpen}
+              operatingAttractions={operatingAttractions}
+              totalAttractions={totalAttractions}
+              timezone={timezone}
+              status={status}
+              isInMaintenance={isInMaintenance}
+              todaySchedule={todaySchedule}
+              nextSchedule={nextSchedule}
+              hasOperatingSchedule={hasOperatingSchedule}
+            />
+          </Suspense>
         </div>
       </article>
     </Link>

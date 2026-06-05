@@ -10,6 +10,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 /**
  * Global real-time stats + platform statistics.
@@ -27,6 +28,9 @@ export async function GlobalStatsSection() {
   ]);
 
   if (!stats) return null;
+
+  // Cached "now" for the synthetic stat snapshot timestamps (cacheComponents-safe).
+  const nowIso = new Date(await getServerNowMs()).toISOString();
 
   return (
     <>
@@ -158,7 +162,7 @@ export async function GlobalStatsSection() {
                           currentVsTypical: stats.longestWaitRide.currentVsTypical,
                           dataPoints: stats.longestWaitRide.sparkline.length,
                           history: stats.longestWaitRide.sparkline,
-                          timestamp: new Date().toISOString(),
+                          timestamp: nowIso,
                         }
                       : undefined,
                     park: {
@@ -212,7 +216,7 @@ export async function GlobalStatsSection() {
                           currentVsTypical: stats.shortestWaitRide.currentVsTypical,
                           dataPoints: stats.shortestWaitRide.sparkline.length,
                           history: stats.shortestWaitRide.sparkline,
-                          timestamp: new Date().toISOString(),
+                          timestamp: nowIso,
                         }
                       : undefined,
                     park: {

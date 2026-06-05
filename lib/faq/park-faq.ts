@@ -45,12 +45,14 @@ export function buildParkFaqItems(
   park: ParkWithAttractions,
   locale: string,
   t: T,
-  tGeo: TGeo
+  tGeo: TGeo,
+  /** Epoch ms for "now" — pass a cached value (getServerNowMs) for cacheComponents safety. */
+  nowMs: number
 ): ParkFaqItem[] {
   const { parkName, parkNom, parkNomCap } = getParkArticleForms(park, locale);
 
   const timeZone = park.timezone || 'UTC';
-  const now = new Date();
+  const now = new Date(nowMs);
   const parkDate = formatInTimeZone(now, timeZone, 'yyyy-MM-dd');
   const todaySchedule = park.schedule?.find((s) => s.date === parkDate);
   const localizedDate = new Intl.DateTimeFormat(locale, {

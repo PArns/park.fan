@@ -43,6 +43,10 @@ export function useLiveParkData({
     // initialData comes from the statically cached page HTML and may be stale; anchor it to
     // epoch so React Query treats it as stale and refetches live data on mount (see docblock).
     initialDataUpdatedAt: 0,
+    // Run the query on the client only. During the static (Cache Components) prerender the
+    // component renders from `initialData`; activating React Query server-side would read
+    // Date.now() internally, which a static prerender forbids.
+    enabled: typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 10 * 60_000,
     refetchOnWindowFocus: true,

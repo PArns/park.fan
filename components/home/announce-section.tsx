@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 interface AnnounceSectionProps {
   locale: string;
@@ -40,10 +41,11 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
 
   const { countdownTo, background, title, subtitle, startAt, endAt } = data.frontmatter;
 
-  // Check visibility based on startAt and endAt
-  const now = new Date();
-  if (startAt && new Date(startAt) > now) return null;
-  if (endAt && new Date(endAt) < now) return null;
+  // Check visibility based on startAt and endAt. Cached "now" (cacheComponents-safe);
+  // a few minutes of staleness on an announcement window is irrelevant.
+  const nowMs = await getServerNowMs();
+  if (startAt && new Date(startAt).getTime() > nowMs) return null;
+  if (endAt && new Date(endAt).getTime() < nowMs) return null;
 
   // Strip /public prefix if present
   const cleanBackground = background?.startsWith('/public')

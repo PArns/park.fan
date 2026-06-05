@@ -92,8 +92,6 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
   };
 }
 
-export const dynamic = 'force-static'; // pure translations + local data; live parks via React Query
-
 export default async function GlossaryTermPage({ params }: TermPageProps) {
   const { locale, term: termSlug } = await params;
   setRequestLocale(locale);

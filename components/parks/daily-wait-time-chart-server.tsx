@@ -5,7 +5,9 @@ import type {
   ScheduleItem,
   BestVisitSlot,
 } from '@/lib/api/types';
+import { Suspense } from 'react';
 import { DailyWaitTimeChart, type DailyWaitTimeChartData } from './daily-wait-time-chart';
+import { getServerToday } from '@/lib/utils/server-time';
 
 interface DailyWaitTimeChartServerProps {
   history?: AttractionHistoryDay[];
@@ -30,11 +32,6 @@ function getTimeSlotInTimezone(isoStr: string, timezone: string): string {
   return `${hour.padStart(2, '0')}:${minute.padStart(2, '0')}`;
 }
 
-/** Returns today's date as YYYY-MM-DD in the given IANA timezone. */
-function getTodayInTimezone(timezone: string): string {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: timezone }).format(new Date());
-}
-
 export async function DailyWaitTimeChartServer({
   history,
   hourlyForecast,
@@ -44,7 +41,8 @@ export async function DailyWaitTimeChartServer({
 }: DailyWaitTimeChartServerProps) {
   const t = await getTranslations('attractions.todayChart');
 
-  const todayStr = getTodayInTimezone(timezone);
+  // Cached today-in-tz (cacheComponents-safe); the chart is a daily aggregate.
+  const todayStr = await getServerToday(timezone);
 
   // History P90 map: "HH:mm" → value
   const todayHistory = history?.find((h) => h.date === todayStr);
@@ -201,5 +199,11 @@ export async function DailyWaitTimeChartServer({
     },
   };
 
-  return <DailyWaitTimeChart {...data} />;
+  // The chart reads the current time (today marker) on the client; a Suspense boundary lets
+  // it render as a dynamic hole under Cache Components.
+  return (
+    <Suspense fallback={null}>
+      <DailyWaitTimeChart {...data} />
+    </Suspense>
+  );
 }

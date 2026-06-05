@@ -3,8 +3,6 @@ import { getGeoStructure } from '@/lib/api/discovery';
 import { extractFeaturedParks } from '@/components/home/featured-parks-section';
 import { locales } from '@/i18n/config';
 
-export const revalidate = 300;
-
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }

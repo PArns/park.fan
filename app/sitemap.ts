@@ -6,8 +6,6 @@ import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const BASE_URL = 'https://park.fan';
 
-export const revalidate = 86400; // 24h
-
 function buildAlternates(pathFn: (locale: string) => string): {
   languages: Record<string, string>;
 } {

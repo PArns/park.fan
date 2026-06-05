@@ -1,73 +1,71 @@
-import { cache } from 'react';
-import { api } from './client';
-import { withServerCache } from './server-cache';
+import { cacheLife } from 'next/cache';
+import { api, ApiError } from './client';
 import type { ParkWithAttractions, AttractionResponse, PopularPark } from './types';
 
 const PARK_MAX_AGE = 300; // 5 min — matches API Redis/Cloudflare cache
 
 /**
- * Get parks by geographic path.
- * In-process cache (max-age 300s) + Next data cache (revalidate 300s) so the park
- * page can be statically rendered (ISR). React.cache() deduplicates within one
- * request; live wait times are refreshed client-side by LiveParkData.
+ * Get parks by geographic path. Cached via Cache Components (`'use cache'`):
+ * the static shell of the park page captures this snapshot; live wait times are
+ * refreshed client-side by LiveParkData.
+ *
+ * Returns `null` for a non-existent park (API 404). The 404 MUST be caught inside this
+ * `'use cache'` boundary: an error thrown across a `'use cache'` boundary bypasses the caller's
+ * `try`/`catch` (and `catchNonFatal`) and surfaces as a 500 instead of letting the caller render
+ * `notFound()` — so a missing park would 500 rather than 404. Other errors (maintenance/network)
+ * still propagate.
  */
-export const getParkByGeoPath = cache(
-  async (
-    continent: string,
-    country: string,
-    city: string,
-    parkSlug: string
-  ): Promise<ParkWithAttractions> => {
-    return withServerCache(
-      `park:${continent}/${country}/${city}/${parkSlug}`,
-      () =>
-        api.get<ParkWithAttractions>(`/v1/parks/${continent}/${country}/${city}/${parkSlug}`, {
-          next: { revalidate: PARK_MAX_AGE },
-        }),
-      PARK_MAX_AGE
+export async function getParkByGeoPath(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWithAttractions | null> {
+  'use cache';
+  cacheLife({ stale: PARK_MAX_AGE, revalidate: PARK_MAX_AGE, expire: PARK_MAX_AGE * 4 });
+  try {
+    return await api.get<ParkWithAttractions>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`
     );
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
   }
-);
+}
 
 /**
  * Get a specific attraction by geographic path with full data including history.
- * In-process cache (max-age 300s) + Next data cache (revalidate 300s) so the
- * attraction page can be statically rendered (ISR). React.cache() deduplicates
- * within one request; live wait times are refreshed client-side.
+ * Cached via Cache Components; live wait times are refreshed client-side.
+ *
+ * Returns `null` on a 404 for the same reason as {@link getParkByGeoPath} (a throw across the
+ * `'use cache'` boundary would 500 instead of letting the caller render `notFound()`).
  */
-export const getAttractionByGeoPath = cache(
-  async (
-    continent: string,
-    country: string,
-    city: string,
-    parkSlug: string,
-    attractionSlug: string
-  ): Promise<AttractionResponse> => {
-    return withServerCache(
-      `attraction:${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
-      () =>
-        api.get<AttractionResponse>(
-          `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
-          { next: { revalidate: PARK_MAX_AGE } }
-        ),
-      PARK_MAX_AGE
+export async function getAttractionByGeoPath(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<AttractionResponse | null> {
+  'use cache';
+  cacheLife({ stale: PARK_MAX_AGE, revalidate: PARK_MAX_AGE, expire: PARK_MAX_AGE * 4 });
+  try {
+    return await api.get<AttractionResponse>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
     );
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
   }
-);
+}
 
 /**
  * Get the most-requested parks, ranked by tracked request volume.
- * Mirrors the popularity signal that drives cache prewarming.
- *
- * Frontend data-cached for 5 min (revalidate 300): the popularity ranking is an
- * aggregate that drifts slowly, not live wait-time data, so a few minutes of staleness
- * is fine and this keeps repeated reads off the backend. React.cache() still dedupes
- * within a single request.
+ * The popularity ranking drifts slowly, so a few minutes of staleness is fine.
  * @param limit clamped to 1–100 by the API (default 20)
  */
-export const getPopularParks = cache(async (limit = 20): Promise<PopularPark[]> => {
-  return api.get<PopularPark[]>('/v1/parks/popular', {
-    params: { limit },
-    next: { revalidate: 300 },
-  });
-});
+export async function getPopularParks(limit = 20): Promise<PopularPark[]> {
+  'use cache';
+  cacheLife({ stale: 300, revalidate: 300, expire: 1200 });
+  return api.get<PopularPark[]>('/v1/parks/popular', { params: { limit } });
+}

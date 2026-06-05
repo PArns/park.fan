@@ -51,8 +51,6 @@ export async function generateMetadata({ params }: GlossaryPageProps): Promise<M
   };
 }
 
-export const dynamic = 'force-static'; // pure translations + local data, no API calls
-
 const CATEGORY_ORDER: GlossaryCategory[] = [
   'wait-times',
   'crowd-levels',

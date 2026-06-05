@@ -137,8 +137,6 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-export const revalidate = 300;
-
 // Prebuild the headliner attractions of the most-requested parks (× all locales) so the
 // long tail's cold first render is eliminated; every other attraction stays on-demand ISR
 // (dynamicParams defaults to true). Bounded by the constants below to keep build time/API

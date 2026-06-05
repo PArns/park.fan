@@ -71,8 +71,6 @@ export async function generateMetadata({ params }: CountryPageProps): Promise<Me
   };
 }
 
-export const revalidate = 300; // 1 hour — live data via React Query on client
-
 export default async function CountryPage({ params }: CountryPageProps) {
   const { locale, continent, country } = await params;
   setRequestLocale(locale);

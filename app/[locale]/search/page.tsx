@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
@@ -50,7 +51,6 @@ export async function generateMetadata({
 }
 
 // No caching for search - always fresh results
-export const dynamic = 'force-dynamic';
 
 const typeIcons = {
   park: TreePalm,
@@ -200,9 +200,45 @@ function SearchResultCard({ result }: { result: SearchResultItem; locale: string
 
 export default async function SearchPage({ params, searchParams }: SearchPageProps) {
   const { locale } = await params;
-  const { q: query } = await searchParams;
   setRequestLocale(locale);
 
+  const t = await getTranslations('common');
+
+  return (
+    <PageContainer>
+      {/* Static shell — the query-dependent form + results stream below (Cache Components:
+          searchParams + the uncached search are dynamic and must sit behind <Suspense>). */}
+      <div className="mb-8">
+        <h1 className="mb-4 text-3xl font-bold">{t('search')}</h1>
+      </div>
+      <Suspense
+        fallback={
+          <form action="" method="get" className="relative max-w-xl">
+            <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
+            <Input
+              type="search"
+              name="q"
+              placeholder={t('searchPlaceholder')}
+              className="pl-10 text-lg"
+              autoFocus
+            />
+          </form>
+        }
+      >
+        <SearchBody searchParams={searchParams} locale={locale} />
+      </Suspense>
+    </PageContainer>
+  );
+}
+
+async function SearchBody({
+  searchParams,
+  locale,
+}: {
+  searchParams: Promise<{ q?: string }>;
+  locale: string;
+}) {
+  const { q: query } = await searchParams;
   const t = await getTranslations('common');
 
   // Perform search if query is provided
@@ -212,24 +248,19 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
   }
 
   return (
-    <PageContainer>
-      {/* Search Header */}
-      <div className="mb-8">
-        <h1 className="mb-4 text-3xl font-bold">{t('search')}</h1>
-
-        {/* Search Form */}
-        <form action="" method="get" className="relative max-w-xl">
-          <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
-          <Input
-            type="search"
-            name="q"
-            defaultValue={query || ''}
-            placeholder={t('searchPlaceholder')}
-            className="pl-10 text-lg"
-            autoFocus
-          />
-        </form>
-      </div>
+    <>
+      {/* Search Form */}
+      <form action="" method="get" className="relative mb-8 max-w-xl">
+        <Search className="text-muted-foreground absolute top-1/2 left-3 h-5 w-5 -translate-y-1/2" />
+        <Input
+          type="search"
+          name="q"
+          defaultValue={query || ''}
+          placeholder={t('searchPlaceholder')}
+          className="pl-10 text-lg"
+          autoFocus
+        />
+      </form>
 
       {/* Results */}
       {query && query.length >= 2 && (
@@ -273,6 +304,6 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
           <p className="text-muted-foreground text-lg">Enter at least 2 characters to search</p>
         </div>
       )}
-    </PageContainer>
+    </>
   );
 }

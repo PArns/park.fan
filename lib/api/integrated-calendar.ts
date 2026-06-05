@@ -1,6 +1,5 @@
 import { unstable_cache } from 'next/cache';
 import { getServerAuthHeaders } from './client';
-import { CACHE_TTL } from './cache-config';
 import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -36,10 +35,6 @@ export async function getIntegratedCalendar(
     from?: string;
     to?: string;
     includeHourly?: 'today+tomorrow' | 'today' | 'all' | 'none';
-    /** Override the data-cache revalidate window (seconds). Defaults to CACHE_TTL.calendar. */
-    revalidate?: number;
-    /** Cache tags for on-demand revalidation (revalidateTag). */
-    tags?: string[];
   } = {}
 ): Promise<IntegratedCalendarResponse> {
   const API_BASE_URL = getApiBaseUrl();
@@ -53,11 +48,12 @@ export async function getIntegratedCalendar(
   const queryString = params.toString();
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
+  // Uncached low-level fetch. The raw ~2.25 MB body exceeds Next's fetch data-cache cap (2 MB),
+  // so it can never be a cache unit; callers that want caching wrap the PROJECTED result in
+  // `unstable_cache` (see getBestDaysCalendar). The /api/calendar proxy and client polls want
+  // it live anyway.
   const response = await fetch(url, {
-    next: {
-      revalidate: options.revalidate ?? CACHE_TTL.calendar,
-      ...(options.tags ? { tags: options.tags } : {}),
-    },
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       ...getServerAuthHeaders(),
@@ -119,21 +115,28 @@ function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCa
  * Calendar fetch dedicated to the "best travel time" derivation (best/quiet
  * weekdays, upcoming quiet days) and the crowd FAQ.
  *
- * Cached for 24h, fully decoupled from the 15-min grid calendar:
+ * Cached for 24h via `unstable_cache`, fully decoupled from the 15-min grid calendar:
  * - The data it feeds (day-of-week aggregates + a multi-week quiet-day forecast)
  *   only changes with the daily crowd forecast (~13h), so a day-old snapshot is
  *   fine for trip planning.
- * - The raw upstream response (~1.7 MB, dominated by an unused `influencingHolidays`
- *   list) is too big for Next's fetch data-cache (2 MB cap), so the inner fetch runs
- *   UNCACHED (`revalidate: 0`) and we instead cache the projected ~35 KB result via
- *   `unstable_cache`. That both makes caching work and keeps the bulky payload out of
- *   the renderer — consumers only ever receive the projected days.
+ * - The raw upstream response (~2.25 MB, dominated by an unused `influencingHolidays`
+ *   list) is too big for Next's fetch data-cache (2 MB cap). This rules out a `'use cache'`
+ *   boundary entirely: a `'use cache'` fn whose inner fetch can't be cached (whether via
+ *   `no-store` or a `force-cache` that silently fails the 2 MB limit) becomes UNCACHED, and
+ *   under Cache Components that surfaces as "uncached data accessed outside <Suspense>".
+ *   `unstable_cache` sidesteps this — it caches the function's small PROJECTED return value
+ *   (~13 KB) directly, independent of the fetch data-cache, so the 2 MB body never needs to
+ *   be a cache unit. Consumers only ever receive the projected days.
  * - `unstable_cache` is stale-while-revalidate: once the 24h window lapses, the next
  *   request is served the STALE snapshot immediately while a background refresh runs,
  *   so the visitor never waits on a cold rebuild. The `best-days:<slug>` tag still
  *   supports on-demand `revalidateTag`.
  * - The date-sensitive "upcoming quiet days" stay correct because analyzeBestDays
  *   re-filters against a freshly computed (park-timezone) "today" on every render.
+ *
+ * Cache Components note: callers invoke this INSIDE a dynamic Suspense hole (after
+ * `connection()` — see the Streamed* components on the park page), never in the static
+ * shell, so the 2.25 MB fetch streams below the fold and never blocks the prerendered shell.
  */
 export async function getBestDaysCalendar(
   continent: string,
@@ -142,27 +145,21 @@ export async function getBestDaysCalendar(
   parkSlug: string,
   options: { from?: string; to?: string } = {}
 ): Promise<IntegratedCalendarResponse> {
-  const from = options.from ?? '';
-  const to = options.to ?? '';
-
-  const cached = unstable_cache(
-    async () => {
-      const raw = await getIntegratedCalendar(continent, country, city, parkSlug, {
-        from: options.from,
-        to: options.to,
+  const fetchAndProject = unstable_cache(
+    async (c: string, co: string, ci: string, p: string, from?: string, to?: string) => {
+      const raw = await getIntegratedCalendar(c, co, ci, p, {
+        from,
+        to,
         includeHourly: 'none',
-        // Don't let the inner fetch attempt to data-cache the ~2 MB body (it fails the
-        // 2 MB cap and re-fetches every time). The projected result below is the cache.
-        revalidate: 0,
       });
       return projectBestDaysCalendar(raw);
     },
-    ['best-days-calendar', continent, country, city, parkSlug, from, to],
+    ['best-days-calendar'],
     {
       revalidate: BEST_DAYS_REVALIDATE,
       tags: [`best-days:${parkSlug}`],
     }
   );
 
-  return cached();
+  return fetchAndProject(continent, country, city, parkSlug, options.from, options.to);
 }
