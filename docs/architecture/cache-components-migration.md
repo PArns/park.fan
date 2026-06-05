@@ -34,13 +34,43 @@ Convert the ~20 cached fetchers in `lib/api/*` (currently `withServerCache` /
 keyed off `CACHE_TTL`. Live endpoints (`cache: 'no-store'`) stay uncached → their
 callers must sit behind `<Suspense>`. Retire `server-cache.ts`.
 
-### Phase 3 — Dynamic holes & nondeterminism
-Enable the flag, build, and fix prerender errors route-by-route:
-- Wrap dynamic sections in `<Suspense>` (most park/geo pages already are).
-- `new Date()` / `Date.now()` / `Math.random()` in **server** render → move into a
-  `'use cache'` boundary (frozen per cacheLife) or a Suspense hole, or to the client.
-  Client-component usage is unaffected.
-- `connection()` (park page) → drop; replaced by the natural static-shell + Suspense model.
+### Phase 3 — Dynamic holes & nondeterminism (IN PROGRESS)
+Enable the flag, build, and fix prerender errors route-by-route. **Status: the build
+`✓ Compiled successfully` under the flag; the remaining work is the per-render `new Date()`
+/ `Date.now()` / `Math.random()` (3062 routes).** Two fix patterns:
+
+1. **Cached** (`lib/utils/server-time.ts` — done): `getCurrentYear` / `getServerNowMs` /
+   `getServerToday(tz)` read the clock inside `'use cache'`. Use for display values where a
+   few minutes of staleness is fine. Already used by the footer.
+2. **Client extraction** (preferred for the cards): the now-dependent bits of `ParkCard`,
+   `AttractionCard`, `ShowCard` are rendered in **both** server and client trees, so they
+   can't become `async`. Extract the now-using render (the `getScheduleMessage` /
+   `closingRemaining` / showtime-today blocks) into a small **Client Component** — client
+   renders may use `Date.now()` under cacheComponents, and the live value is already
+   client-refreshed (`ParkTime`), so this matches current behaviour exactly.
+
+Concrete remaining items (each is a `new Date()`/random in a server render):
+
+| File | Fix |
+| --- | --- |
+| `components/parks/park-card.tsx` (`getScheduleMessage`, `Date.now()` closing) | extract `<ParkCardSchedule>` client comp |
+| `components/parks/attraction-card.tsx` (`Date.now()` countdown) | extract client time bit |
+| `components/parks/show-card.tsx` (`new Date()` today) | extract client showtime bit |
+| `components/parks/attraction-history-grid.tsx` (async) | `getServerToday(tz)` |
+| `components/parks/daily-wait-time-chart-server.tsx` (async) | `getServerToday(tz)` |
+| `components/home/announce-section.tsx` (async) | `getServerNowMs()` |
+| `components/home/global-stats-section.tsx` | use data timestamp / `getServerNowMs()` |
+| `app/[locale]/page.tsx` (`Math.random()` hero) | cached picker or client |
+| `lib/faq/park-faq.ts` (`new Date()` today) | thread `today`; `FAQStructuredData` sync→async (`getTranslations`) |
+| `lib/utils/schedule-utils.ts` / `lib/utils/crowd-analysis.ts` | take `nowMs`/`today` param (callers: park-card client comp, best-days/faq sections await `getServerNowMs`) |
+| `app/[locale]/parks/.../[park]/page.tsx` | move calendar-range/today `new Date()` into the Suspense holes; drop `connection()` |
+| `lib/utils/redirect-utils.ts:32` (`Date.now()`) | verify — likely an in-process TTL, not render |
+
+**Validation:** because these touch live "open now"/countdown/showtime displays across 156
+parks, each card change must be checked in the running app (or preview), not just the build.
+
+### Phase 4 — Finalize
+Full build green, push, verify `x-vercel-cache: HIT`/`PRERENDER` on the park page (the core win).
 
 ### Phase 4 — Finalize
 Restore full `generateStaticParams`, full build green, push, draft PR, verify
