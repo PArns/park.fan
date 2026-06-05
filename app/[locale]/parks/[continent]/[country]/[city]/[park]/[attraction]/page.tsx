@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
@@ -8,7 +8,7 @@ import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath, getAttractionByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, getAttractionByGeoPath, getPopularParks } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -139,11 +139,32 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
 export const revalidate = 300;
 
-// Static-on-demand (ISR): we don't prebuild the long tail of attractions, but returning []
-// opts the route into static generation + edge caching (revalidate above) instead of
-// per-request dynamic rendering. Live wait times are refreshed client-side.
-export function generateStaticParams() {
-  return [];
+// Prebuild the headliner attractions of the most-requested parks (× all locales) so the
+// long tail's cold first render is eliminated; every other attraction stays on-demand ISR
+// (dynamicParams defaults to true). Bounded by the constants below to keep build time/API
+// load in check. Resilient: a failed park fetch just skips that park's prebuild.
+const PREBUILD_PARK_LIMIT = 15;
+const HEADLINERS_PER_PARK = 4;
+
+export async function generateStaticParams() {
+  const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
+
+  const geoPaths = popular
+    .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
+    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4);
+
+  const perPark = await Promise.all(
+    geoPaths.map(async ([continent, country, city, park]) => {
+      const data = await getParkByGeoPath(continent, country, city, park).catch(() => null);
+      return (data?.attractions ?? [])
+        .filter((a) => a.isHeadliner)
+        .slice(0, HEADLINERS_PER_PARK)
+        .map((a) => ({ continent, country, city, park, attraction: a.slug }));
+    })
+  );
+
+  const base = perPark.flat();
+  return locales.flatMap((locale) => base.map((p) => ({ locale, ...p })));
 }
 
 export default async function AttractionPage({ params }: AttractionPageProps) {
