@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
@@ -468,10 +469,12 @@ export function AttractionCard({
                     </div>
                   )}
                   {bestSlot && (
-                    <AttractionCardBestTime
-                      bestSlot={bestSlot}
-                      effectiveTimezone={effectiveTimezone}
-                    />
+                    <Suspense fallback={null}>
+                      <AttractionCardBestTime
+                        bestSlot={bestSlot}
+                        effectiveTimezone={effectiveTimezone}
+                      />
+                    </Suspense>
                   )}
                 </>
               )}

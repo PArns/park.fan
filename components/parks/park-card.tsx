@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { MapPin } from 'lucide-react';
@@ -311,17 +312,19 @@ export function ParkCard({
             }}
           />
 
-          <ParkCardScheduleFooter
-            isOpen={isOpen}
-            operatingAttractions={operatingAttractions}
-            totalAttractions={totalAttractions}
-            timezone={timezone}
-            status={status}
-            isInMaintenance={isInMaintenance}
-            todaySchedule={todaySchedule}
-            nextSchedule={nextSchedule}
-            hasOperatingSchedule={hasOperatingSchedule}
-          />
+          <Suspense fallback={null}>
+            <ParkCardScheduleFooter
+              isOpen={isOpen}
+              operatingAttractions={operatingAttractions}
+              totalAttractions={totalAttractions}
+              timezone={timezone}
+              status={status}
+              isInMaintenance={isInMaintenance}
+              todaySchedule={todaySchedule}
+              nextSchedule={nextSchedule}
+              hasOperatingSchedule={hasOperatingSchedule}
+            />
+          </Suspense>
         </div>
       </article>
     </Link>

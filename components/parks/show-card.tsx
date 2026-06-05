@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { FavoriteStar } from '@/components/common/favorite-star';
@@ -66,7 +67,9 @@ export function ShowCard({
 
           {/* Today's showtimes — client-rendered (time-relative past/next highlighting) */}
           {status === 'OPERATING' && (
-            <ShowCardShowtimes showtimes={showtimes} timezone={timezone} />
+            <Suspense fallback={null}>
+              <ShowCardShowtimes showtimes={showtimes} timezone={timezone} />
+            </Suspense>
           )}
 
           {/* Status Badge for closed shows */}
