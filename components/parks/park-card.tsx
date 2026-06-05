@@ -7,6 +7,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
@@ -312,7 +313,9 @@ export function ParkCard({
             }}
           />
 
-          <Suspense fallback={null}>
+          {/* Skeleton reserves the footer's single-line height so the client-rendered
+              schedule/countdown swaps in without shifting the card (cacheComponents defers it). */}
+          <Suspense fallback={<Skeleton className="h-4 w-32" />}>
             <ParkCardScheduleFooter
               isOpen={isOpen}
               operatingAttractions={operatingAttractions}

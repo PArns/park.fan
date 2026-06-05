@@ -6,6 +6,7 @@ import { DistanceBadge } from '@/components/common/distance-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { ShowCardShowtimes } from '@/components/parks/show-card-showtimes';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
 interface ShowCardProps {
@@ -65,9 +66,18 @@ export function ShowCard({
             <DistanceBadge distance={distance} className="mt-2" />
           )}
 
-          {/* Today's showtimes — client-rendered (time-relative past/next highlighting) */}
+          {/* Today's showtimes — client-rendered (time-relative past/next highlighting). The
+              skeleton fallback reserves one showtimes row so the badges swap in without shifting. */}
           {status === 'OPERATING' && (
-            <Suspense fallback={null}>
+            <Suspense
+              fallback={
+                <div className="mt-2 flex flex-wrap gap-1" aria-hidden="true">
+                  <Skeleton className="h-5 w-12 rounded-md" />
+                  <Skeleton className="h-5 w-12 rounded-md" />
+                  <Skeleton className="h-5 w-12 rounded-md" />
+                </div>
+              }
+            >
               <ShowCardShowtimes showtimes={showtimes} timezone={timezone} />
             </Suspense>
           )}

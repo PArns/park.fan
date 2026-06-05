@@ -11,6 +11,7 @@ import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
+import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -468,8 +469,10 @@ export function AttractionCard({
                       )}
                     </div>
                   )}
+                  {/* Skeleton reserves the single-line "best time in X" row so the
+                      client-rendered value (needs current time) swaps in without shifting. */}
                   {bestSlot && (
-                    <Suspense fallback={null}>
+                    <Suspense fallback={<Skeleton className="h-3.5 w-28" />}>
                       <AttractionCardBestTime
                         bestSlot={bestSlot}
                         effectiveTimezone={effectiveTimezone}
