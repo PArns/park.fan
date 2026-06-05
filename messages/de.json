@@ -891,6 +891,7 @@
         "inLand": " im Themenbereich {land}",
         "waitTimeQ": "Wie lange ist die Wartezeit für {attraction}?",
         "waitTimeA": "Die Wartezeiten für {attraction} variieren je nach Tag und Saison. Aktuelle Wartezeiten findest du auf park.fan.",
+        "waitTimeStatsA": "Heute liegt die Wartezeit für {attraction} im Schnitt bei {avg} Minuten und schwankt zwischen {min} und {max} Minuten. Die aktuelle Live-Wartezeit siehst du oben auf dieser Seite.",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja, {attraction} bietet eine Single Rider Warteschlange für einzelne Gäste, um leere Plätze zu füllen.",
         "paidQueueQ": "Gibt es eine Fast Pass Option für {attraction}?",

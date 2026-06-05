@@ -891,6 +891,7 @@
         "inLand": " dans la zone thématique {land}",
         "waitTimeQ": "Quel est le temps d'attente pour {attraction}?",
         "waitTimeA": "Les temps d'attente pour {attraction} varient selon le jour et la saison. Consultez les temps d'attente en direct sur park.fan.",
+        "waitTimeStatsA": "Aujourd'hui, le temps d'attente pour {attraction} est en moyenne de {avg} minutes, variant entre {min} et {max} minutes. Le temps d'attente en direct est affiché ci-dessus sur cette page.",
         "singleRiderQ": "Est-ce que {attraction} a une file Single Rider?",
         "singleRiderA": "Oui, {attraction} dispose d'une file Single Rider pour les visiteurs individuels afin de remplir les sièges vides.",
         "paidQueueQ": "Y a-t-il des options de coupe-file pour {attraction}?",

@@ -891,6 +891,7 @@
         "inLand": " in the {land} themed area",
         "waitTimeQ": "How long is the wait for {attraction}?",
         "waitTimeA": "Wait times for {attraction} vary by day and season. Check live wait times on park.fan.",
+        "waitTimeStatsA": "Today the wait for {attraction} averages {avg} minutes, ranging from {min} to {max} minutes. The current live wait time is shown above on this page.",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
         "singleRiderA": "Yes, {attraction} has a Single Rider line for individual guests to fill empty seats.",
         "paidQueueQ": "Is there a fast pass options for {attraction}?",

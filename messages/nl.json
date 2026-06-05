@@ -891,6 +891,7 @@
         "inLand": " in het themagebied {land}",
         "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
         "waitTimeA": "Wachttijden voor {attraction} variëren per dag en seizoen. Bekijk live wachttijden op park.fan.",
+        "waitTimeStatsA": "Vandaag is de wachttijd voor {attraction} gemiddeld {avg} minuten, variërend van {min} tot {max} minuten. De actuele live wachttijd staat hierboven op deze pagina.",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja, {attraction} heeft een Single Rider rij voor individuele gasten om lege stoelen te vullen.",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
