@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
+import { cacheLife } from 'next/cache';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
 
@@ -98,6 +99,15 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
+// Hero image rotates per cache window instead of per request: under Cache Components
+// the static shell can't read Math.random() directly, and a cached pick keeps the
+// hero server-rendered for LCP.
+async function pickHeroImage(): Promise<string> {
+  'use cache';
+  cacheLife({ stale: 300, revalidate: 300, expire: 900 });
+  return HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+}
+
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -108,8 +118,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
 
-  // eslint-disable-next-line react-hooks/purity -- intentional per-request randomization
-  const randomHeroImage = HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+  const randomHeroImage = await pickHeroImage();
 
   return (
     <div className="flex flex-col">

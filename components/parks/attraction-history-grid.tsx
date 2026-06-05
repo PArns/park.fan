@@ -5,6 +5,7 @@ import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { AttractionHistoryDay as HistoryDay, DayDataProps } from './attraction-history-day';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 interface AttractionHistoryGridProps {
   attraction: {
@@ -25,8 +26,8 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
   const dateLocaleMap: Record<string, Locale> = { de, en: enUS, fr, it, nl, es };
   const dateLocale: Locale = dateLocaleMap[locale] ?? enUS;
 
-  // Calculate date range: today to 30 days ago
-  const today = new Date();
+  // Calculate date range: today to 30 days ago. Cached "now" (cacheComponents-safe).
+  const today = new Date(await getServerNowMs());
   today.setHours(0, 0, 0, 0);
   const thirtyDaysAgo = new Date(today);
   thirtyDaysAgo.setDate(today.getDate() - 30);
