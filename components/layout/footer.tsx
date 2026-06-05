@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
@@ -15,7 +16,7 @@ export async function Footer({ locale }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
-  const currentYear = new Date().getFullYear();
+  const currentYear = await getCurrentYear();
 
   return (
     <footer className="bg-card border-t" role="contentinfo">
