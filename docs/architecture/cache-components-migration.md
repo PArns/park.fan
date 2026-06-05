@@ -79,3 +79,34 @@ Restore full `generateStaticParams`, full build green, push, draft PR, verify
 ## Dev aid
 During Phase 3, geo `generateStaticParams` may be temporarily reduced to speed up
 build iteration; restored in Phase 4.
+
+## Phase 4 — RESOLVED ✅
+Full production build is green under `cacheComponents: true`; the park route is `◐`
+(Partial Prerender — static shell + streamed Suspense holes). Two non-obvious blockers,
+both surfacing as the same opaque error on the park route only —
+`Uncached data was accessed outside of <Suspense>` with ignore-listed frames:
+
+1. **Every dynamic route must enumerate ≥1 param via `generateStaticParams`.**
+   This was the real park-page blocker. The park route had **no** `generateStaticParams`,
+   so Next prerendered a *param-less placeholder shell* in which `await params`
+   (`page.tsx`) counts as dynamic data outside `<Suspense>` → build fails. City / country /
+   attraction routes built fine precisely because they already enumerate params. Fix: add
+   `generateStaticParams` returning the 30 most-popular parks × locales (mirrors the
+   attraction route); the long tail stays on-demand ISR via `dynamicParams` (default true).
+   To get the real frame, `next build --debug-prerender` un-ignore-lists, but it OOMs on
+   3062 pages — temporarily `.slice(0, 1)` the heavy `generateStaticParams` (note: returning
+   `[]` throws `EmptyGenerateStaticParamsError`) to shrink the build and read the trace.
+
+2. **A `'use cache'` boundary whose inner fetch can't be cached becomes UNCACHED.**
+   The best-days calendar (~2.25 MB) and 2-year stats responses exceed Next's 2 MB fetch
+   data-cache cap. A `'use cache'` fn wrapping such a fetch — whether `no-store` or a
+   `force-cache` that silently fails the 2 MB limit — ends up uncached, and creating that
+   promise in the static shell trips the same error. Fixes: (a) `getBestDaysCalendar` caches
+   its small *projected* result via `unstable_cache` (independent of the fetch data-cache);
+   (b) both calendar and stats fetches are invoked **inside** the dynamic Suspense holes
+   (after `connection()`), never in the shell, so the bulky below-the-fold IO streams and
+   never poisons the prerender.
+
+**Diagnosing the opaque error:** the production build's owner stack stops at the layout
+providers (throwing frames are library-internal / ignore-listed). `next build
+--debug-prerender` is what actually named `ParkPage … await params`.
