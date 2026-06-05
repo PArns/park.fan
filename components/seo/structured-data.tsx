@@ -303,14 +303,25 @@ export function ShowsStructuredData({
 
   if (showsWithTimes.length === 0) return null;
 
-  // Generate Event schema for each show time
+  // One Event per show (not per showtime): a popular park can have 100+ daily
+  // showtimes, which previously emitted 100+ near-identical Event blocks (~100KB
+  // of JSON-LD). A single representative Event per show keeps the rich-result
+  // value; the remaining showtimes are preserved via eventSchedule.
   const parkBgImage = getParkBackgroundImage(park.slug);
-  const events = showsWithTimes.flatMap((show) =>
-    (show.showtimes || []).map((showtime) => ({
+  const events = showsWithTimes.map((show) => {
+    const startTimes = (show.showtimes || []).map((s) => s.startTime).filter(Boolean);
+    return {
       '@context': 'https://schema.org' as const,
       '@type': 'Event' as const,
       name: stripNewPrefix(show.name),
-      startDate: `${date}T${showtime.startTime}`,
+      startDate: `${date}T${startTimes[0]}`,
+      ...(startTimes.length > 1 && {
+        eventSchedule: {
+          '@type': 'Schedule' as const,
+          startDate: date,
+          byDayTime: startTimes,
+        },
+      }),
       image: parkBgImage ? `https://park.fan${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {
         '@type': 'Place' as const,
@@ -324,8 +335,8 @@ export function ShowsStructuredData({
       },
       eventStatus: 'https://schema.org/EventScheduled' as const,
       eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode' as const,
-    }))
-  );
+    };
+  });
 
   return (
     <>
