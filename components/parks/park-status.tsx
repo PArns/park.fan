@@ -225,9 +225,6 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
               </Card>
             )}
 
-            {/* Tabs with ride list — only on mobile (hidden sm+, shown in original position there) */}
-            {midSlot && stats && <div className="col-span-full sm:hidden">{midSlot}</div>}
-
             {/* Attractions Status Card */}
             {stats && (
               <Card>
@@ -267,6 +264,11 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
             )}
           </div>
         )}
+
+        {/* Ride list (tabs) on mobile — rendered for EVERY status, incl. closed parks (where the
+            open-parks stats grid above isn't rendered at all). Desktop shows the tabs via a
+            separate `hidden sm:block` block in LiveParkData, so this is mobile-only. */}
+        {midSlot && <div className="sm:hidden">{midSlot}</div>}
       </div>
     );
   }
