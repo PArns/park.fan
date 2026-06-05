@@ -14,6 +14,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 import { cacheLife } from 'next/cache';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
+import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -30,11 +31,7 @@ const NearbyParksCard = nextDynamic(
   () =>
     import('@/components/parks/nearby-parks-card').then((m) => ({ default: m.NearbyParksCard })),
   {
-    loading: () => (
-      <section className="bg-card min-h-[200px] rounded-xl border py-4">
-        <div className="bg-muted mx-4 h-40 animate-pulse rounded-lg" />
-      </section>
-    ),
+    loading: () => <NearbyParksCardSkeleton />,
     ssr: true,
   }
 );

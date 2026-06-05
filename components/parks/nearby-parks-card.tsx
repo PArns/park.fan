@@ -2,17 +2,17 @@
 
 import { useEffect, useSyncExternalStore, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Loader2 } from 'lucide-react';
+import { MapPin, Navigation, Clock, TrendingUp, ChevronRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ParkCard } from '@/components/parks/park-card';
-import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
+import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
-import { useHomeNearbyParks, HOME_NEARBY_LIMIT } from '@/lib/hooks/use-nearby-parks';
+import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
@@ -128,23 +128,10 @@ export function NearbyParksCard({ className }: { className?: string }) {
       (dataError as Error).message.toLowerCase().includes('geoip') ||
       (dataError as Error).message.includes('400'));
 
-  // Same structure on server and initial client to avoid hydration mismatch
+  // Same structure on server and initial client to avoid hydration mismatch. Mirrors the live
+  // "nearby parks" layout exactly (shared skeleton) so the swap to real parks doesn't shift layout.
   if (!mounted || isLoading) {
-    return (
-      <div className={cn('min-h-[200px]', className)}>
-        <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
-          <Loader2 className="text-muted-foreground h-5 w-5 animate-spin" />
-          {t('loadingLocation')}
-        </h2>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Array.from({ length: HOME_NEARBY_LIMIT }).map((_, i) => (
-            <li key={i}>
-              <ParkCardNearbySkeleton />
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+    return <NearbyParksCardSkeleton className={className} />;
   }
 
   // Prompt state: only when user hasn't granted location yet (or is still undecided).
