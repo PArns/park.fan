@@ -35,10 +35,6 @@ export async function getIntegratedCalendar(
     from?: string;
     to?: string;
     includeHourly?: 'today+tomorrow' | 'today' | 'all' | 'none';
-    /** Override the data-cache revalidate window (seconds). Defaults to CACHE_TTL.calendar. */
-    revalidate?: number;
-    /** Cache tags for on-demand revalidation (revalidateTag). */
-    tags?: string[];
   } = {}
 ): Promise<IntegratedCalendarResponse> {
   const API_BASE_URL = getApiBaseUrl();
