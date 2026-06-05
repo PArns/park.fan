@@ -39,6 +39,14 @@ export async function getIntegratedCalendar(
     revalidate?: number;
     /** Cache tags for on-demand revalidation (revalidateTag). */
     tags?: string[];
+    /**
+     * Fetch cache mode. Defaults to `'no-store'` for the live proxy/poll paths. Callers that
+     * wrap this in a `'use cache'` boundary (see getBestDaysCalendar) MUST pass `'force-cache'`:
+     * a `no-store` fetch inside `'use cache'` makes the whole boundary uncached, which — under
+     * Cache Components — turns the cached promise into "uncached data" the moment it's created
+     * in a static shell outside `<Suspense>`.
+     */
+    cache?: RequestCache;
   } = {}
 ): Promise<IntegratedCalendarResponse> {
   const API_BASE_URL = getApiBaseUrl();
@@ -52,10 +60,11 @@ export async function getIntegratedCalendar(
   const queryString = params.toString();
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
-  // Uncached low-level fetch. Callers that want caching wrap this in a `'use cache'`
-  // boundary (see getBestDaysCalendar); the /api/calendar proxy and client polls want it live.
+  // Low-level fetch. Defaults to `no-store` (the /api/calendar proxy and client polls want it
+  // live); callers that wrap this in a `'use cache'` boundary pass `cache: 'force-cache'` so the
+  // boundary stays cacheable (see getBestDaysCalendar).
   const response = await fetch(url, {
-    cache: 'no-store',
+    cache: options.cache ?? 'no-store',
     headers: {
       'Content-Type': 'application/json',
       ...getServerAuthHeaders(),
@@ -148,13 +157,16 @@ export async function getBestDaysCalendar(
   });
   cacheTag(`best-days:${parkSlug}`);
 
-  // The inner fetch is uncached (getIntegratedCalendar uses no-store); this `'use cache'`
-  // boundary caches only the projected ~13 KB result, keeping the raw ~1.7 MB body — which
-  // exceeds Next's fetch data-cache cap — out of the cache and the render tree entirely.
+  // This `'use cache'` boundary caches only the projected ~13 KB result, keeping the raw ~1.7 MB
+  // body — which exceeds Next's fetch data-cache cap — out of the cache and the render tree
+  // entirely. The inner fetch MUST be cacheable (`force-cache`): a `no-store` fetch here would
+  // make this whole boundary uncached, and under Cache Components creating that promise in the
+  // park-page shell (outside <Suspense>) would throw "uncached data accessed outside Suspense".
   const raw = await getIntegratedCalendar(continent, country, city, parkSlug, {
     from: options.from,
     to: options.to,
     includeHourly: 'none',
+    cache: 'force-cache',
   });
   return projectBestDaysCalendar(raw);
 }
