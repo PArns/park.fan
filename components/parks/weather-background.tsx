@@ -170,15 +170,39 @@ export const WeatherBackground = memo(function WeatherBackground({
       frameId = requestAnimationFrame(step);
     };
 
+    // Paint one static frame immediately so a reduced-motion or scrolled-out card still shows
+    // precipitation; the animation loop only runs while the canvas is actually on screen.
     render();
-    if (!reduceMotion) frameId = requestAnimationFrame(step);
 
-    const observer = new ResizeObserver(resize);
-    observer.observe(canvas);
+    let running = false;
+    const start = () => {
+      if (running || reduceMotion) return;
+      running = true;
+      frameId = requestAnimationFrame(step);
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(frameId);
+    };
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+
+    // Only animate while the canvas is in (or near) the viewport. Park/listing pages can mount
+    // many weather cards at once; running every rAF loop off-screen is wasted main-thread work.
+    const visibilityObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) start();
+        else stop();
+      },
+      { rootMargin: '100px' }
+    );
+    visibilityObserver.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(frameId);
-      observer.disconnect();
+      stop();
+      resizeObserver.disconnect();
+      visibilityObserver.disconnect();
     };
   }, [precipitation, intensity]);
 

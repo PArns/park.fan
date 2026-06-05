@@ -21,7 +21,9 @@ With `cacheComponents: true`, everything is dynamic unless wrapped in `'use cach
 ## Phases
 
 ### Phase 1 — Route config removal (compile gate) ✅ when build compiles
+
 Remove all 20 `export const dynamic` / `revalidate`:
+
 - 8 API route handlers `force-dynamic` → remove (handlers are dynamic by default).
 - `featured-parks` `revalidate=300`, `backgrounds` `revalidate=false` → remove (Cache-Control
   headers in next.config already drive the CDN).
@@ -29,12 +31,14 @@ Remove all 20 `export const dynamic` / `revalidate`:
 - 7 page `revalidate` + `sitemap.ts` → caching moves to the data layer (Phase 2).
 
 ### Phase 2 — Data layer → `'use cache'` + `cacheLife`
+
 Convert the ~20 cached fetchers in `lib/api/*` (currently `withServerCache` /
 `next: { revalidate }`) to `'use cache'` + `cacheLife({ revalidate, stale, expire })`
 keyed off `CACHE_TTL`. Live endpoints (`cache: 'no-store'`) stay uncached → their
 callers must sit behind `<Suspense>`. Retire `server-cache.ts`.
 
 ### Phase 3 — Dynamic holes & nondeterminism (IN PROGRESS)
+
 Enable the flag, build, and fix prerender errors route-by-route. **Status: the build
 `✓ Compiled successfully` under the flag; the remaining work is the per-render `new Date()`
 / `Date.now()` / `Math.random()` (3062 routes).** Two fix patterns:
@@ -51,36 +55,40 @@ Enable the flag, build, and fix prerender errors route-by-route. **Status: the b
 
 Concrete remaining items (each is a `new Date()`/random in a server render):
 
-| File | Fix |
-| --- | --- |
-| `components/parks/park-card.tsx` (`getScheduleMessage`, `Date.now()` closing) | extract `<ParkCardSchedule>` client comp |
-| `components/parks/attraction-card.tsx` (`Date.now()` countdown) | extract client time bit |
-| `components/parks/show-card.tsx` (`new Date()` today) | extract client showtime bit |
-| `components/parks/attraction-history-grid.tsx` (async) | `getServerToday(tz)` |
-| `components/parks/daily-wait-time-chart-server.tsx` (async) | `getServerToday(tz)` |
-| `components/home/announce-section.tsx` (async) | `getServerNowMs()` |
-| `components/home/global-stats-section.tsx` | use data timestamp / `getServerNowMs()` |
-| `app/[locale]/page.tsx` (`Math.random()` hero) | cached picker or client |
-| `lib/faq/park-faq.ts` (`new Date()` today) | thread `today`; `FAQStructuredData` sync→async (`getTranslations`) |
-| `lib/utils/schedule-utils.ts` / `lib/utils/crowd-analysis.ts` | take `nowMs`/`today` param (callers: park-card client comp, best-days/faq sections await `getServerNowMs`) |
-| `app/[locale]/parks/.../[park]/page.tsx` | move calendar-range/today `new Date()` into the Suspense holes; drop `connection()` |
-| `lib/utils/redirect-utils.ts:32` (`Date.now()`) | verify — likely an in-process TTL, not render |
+| File                                                                          | Fix                                                                                                        |
+| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `components/parks/park-card.tsx` (`getScheduleMessage`, `Date.now()` closing) | extract `<ParkCardSchedule>` client comp                                                                   |
+| `components/parks/attraction-card.tsx` (`Date.now()` countdown)               | extract client time bit                                                                                    |
+| `components/parks/show-card.tsx` (`new Date()` today)                         | extract client showtime bit                                                                                |
+| `components/parks/attraction-history-grid.tsx` (async)                        | `getServerToday(tz)`                                                                                       |
+| `components/parks/daily-wait-time-chart-server.tsx` (async)                   | `getServerToday(tz)`                                                                                       |
+| `components/home/announce-section.tsx` (async)                                | `getServerNowMs()`                                                                                         |
+| `components/home/global-stats-section.tsx`                                    | use data timestamp / `getServerNowMs()`                                                                    |
+| `app/[locale]/page.tsx` (`Math.random()` hero)                                | cached picker or client                                                                                    |
+| `lib/faq/park-faq.ts` (`new Date()` today)                                    | thread `today`; `FAQStructuredData` sync→async (`getTranslations`)                                         |
+| `lib/utils/schedule-utils.ts` / `lib/utils/crowd-analysis.ts`                 | take `nowMs`/`today` param (callers: park-card client comp, best-days/faq sections await `getServerNowMs`) |
+| `app/[locale]/parks/.../[park]/page.tsx`                                      | move calendar-range/today `new Date()` into the Suspense holes; drop `connection()`                        |
+| `lib/utils/redirect-utils.ts:32` (`Date.now()`)                               | verify — likely an in-process TTL, not render                                                              |
 
 **Validation:** because these touch live "open now"/countdown/showtime displays across 156
 parks, each card change must be checked in the running app (or preview), not just the build.
 
 ### Phase 4 — Finalize
+
 Full build green, push, verify `x-vercel-cache: HIT`/`PRERENDER` on the park page (the core win).
 
 ### Phase 4 — Finalize
+
 Restore full `generateStaticParams`, full build green, push, draft PR, verify
 `x-vercel-cache: HIT`/`PRERENDER` on the park page (the core win).
 
 ## Dev aid
+
 During Phase 3, geo `generateStaticParams` may be temporarily reduced to speed up
 build iteration; restored in Phase 4.
 
 ## Phase 4 — RESOLVED ✅
+
 Full production build is green under `cacheComponents: true`; the park route is `◐`
 (Partial Prerender — static shell + streamed Suspense holes). Two non-obvious blockers,
 both surfacing as the same opaque error on the park route only —
@@ -88,7 +96,7 @@ both surfacing as the same opaque error on the park route only —
 
 1. **Every dynamic route must enumerate ≥1 param via `generateStaticParams`.**
    This was the real park-page blocker. The park route had **no** `generateStaticParams`,
-   so Next prerendered a *param-less placeholder shell* in which `await params`
+   so Next prerendered a _param-less placeholder shell_ in which `await params`
    (`page.tsx`) counts as dynamic data outside `<Suspense>` → build fails. City / country /
    attraction routes built fine precisely because they already enumerate params. Fix: add
    `generateStaticParams` returning the 30 most-popular parks × locales (mirrors the
@@ -102,7 +110,7 @@ both surfacing as the same opaque error on the park route only —
    data-cache cap. A `'use cache'` fn wrapping such a fetch — whether `no-store` or a
    `force-cache` that silently fails the 2 MB limit — ends up uncached, and creating that
    promise in the static shell trips the same error. Fixes: (a) `getBestDaysCalendar` caches
-   its small *projected* result via `unstable_cache` (independent of the fetch data-cache);
+   its small _projected_ result via `unstable_cache` (independent of the fetch data-cache);
    (b) both calendar and stats fetches are invoked **inside** the dynamic Suspense holes
    (after `connection()`), never in the shell, so the bulky below-the-fold IO streams and
    never poisons the prerender.

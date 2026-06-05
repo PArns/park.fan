@@ -4,6 +4,41 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.9.0 (2026-06-05) – Next.js 16 Cache Components (PPR)
+
+Full migration to `cacheComponents: true` (Partial Prerendering). Pages now ship as a static,
+edge-cached shell with the slow/live data streamed in via `<Suspense>` holes — the park page
+serves `x-vercel-cache: PRERENDER` instead of dynamic SSR (TTFB drops from ~650 ms to the edge
+cache). Details: [cache-components-migration](architecture/cache-components-migration.md).
+
+### Caching
+
+- All API fetchers moved to `'use cache'` + `cacheLife`/`cacheTag` (replaces `withServerCache`,
+  `unstable_cache`, and `next: { revalidate }`). `lib/api/server-cache.ts` removed.
+- The best-days calendar keeps `unstable_cache` for its **projected** result — the raw upstream
+  response (~2.25 MB) exceeds Next's 2 MB fetch-cache cap, which would otherwise leave the
+  `'use cache'` boundary uncached.
+- Cached time helpers (`lib/utils/server-time.ts`); client-only `Date.now()`/`Math.random()`
+  guarded behind Suspense or `typeof window`.
+
+### Routing
+
+- Park route gains `generateStaticParams` (top parks prebuilt, long tail on-demand ISR) — under
+  Cache Components every dynamic route must enumerate ≥1 param, else `await params` in a
+  param-less placeholder shell counts as uncached data outside `<Suspense>`.
+
+### Fixes
+
+- Non-existent parks/attractions now return **404**, not 500 — a throw across a `'use cache'`
+  boundary bypasses the caller's `catch` and surfaced as a 500.
+- **Skeleton fallbacks** for the deferred, client-rendered card time bits (park-card
+  schedule/countdown, show-card showtimes, attraction-card best-time) — no layout shift.
+
+### Performance
+
+- Weather-background canvas animation pauses when off-screen (`IntersectionObserver`).
+- `dns-prefetch` for the analytics origin (the only third-party the browser contacts).
+
 ## 2.8.0 (2026-04-25) – Codebase Refactoring
 
 ### Shared Hooks (`lib/hooks/use-mounted.ts`)

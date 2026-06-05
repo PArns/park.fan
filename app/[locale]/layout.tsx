@@ -131,6 +131,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // all geo pages statically prerenderable (ISR). The global provider below
   // resolves the unit client-side for any other page.
 
+  // Umami is the only third-party origin the browser talks to (analytics script + beacons,
+  // loaded afterInteractive). A dns-prefetch warms the DNS lookup without a full preconnect that
+  // would compete with critical same-origin assets (HTML/CSS/fonts/JS/images are all same-origin).
+  let umamiOrigin: string | null = null;
+  try {
+    if (process.env.NEXT_PUBLIC_UMAMI_URL) {
+      umamiOrigin = new URL(process.env.NEXT_PUBLIC_UMAMI_URL).origin;
+    }
+  } catch {
+    umamiOrigin = null;
+  }
+
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -138,6 +150,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
+        {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
         {/* Set the temperature unit on <html> before paint so weather/calendar values
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
             no flash — and the pages stay statically cacheable. Reads the temp_unit cookie,

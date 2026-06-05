@@ -463,7 +463,11 @@ function loadBestDaysCalendar(a: CalendarArgs): Promise<IntegratedCalendarRespon
     to: a.to,
   }).catch(
     (): IntegratedCalendarResponse => ({
-      meta: { slug: a.parkSlug, timezone: a.timezone, hasOperatingSchedule: a.hasOperatingSchedule },
+      meta: {
+        slug: a.parkSlug,
+        timezone: a.timezone,
+        hasOperatingSchedule: a.hasOperatingSchedule,
+      },
       days: [],
     })
   );
