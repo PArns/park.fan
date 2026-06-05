@@ -75,12 +75,8 @@ parks, each card change must be checked in the running app (or preview), not jus
 
 ### Phase 4 — Finalize
 
-Full build green, push, verify `x-vercel-cache: HIT`/`PRERENDER` on the park page (the core win).
-
-### Phase 4 — Finalize
-
-Restore full `generateStaticParams`, full build green, push, draft PR, verify
-`x-vercel-cache: HIT`/`PRERENDER` on the park page (the core win).
+Full build green, push, draft PR, verify `x-vercel-cache: PRERENDER` on the park page (the core
+win). See **Phase 4 — RESOLVED** below for what actually unblocked it.
 
 ## Dev aid
 

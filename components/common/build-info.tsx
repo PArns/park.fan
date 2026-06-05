@@ -1,7 +1,5 @@
 import buildInfo from '@/build-info.json';
 
-export const dynamic = 'force-static';
-
 export function BuildInfo() {
   if (!buildInfo) return null;
 
