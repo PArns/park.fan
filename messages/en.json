@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Live wait times and AI-powered crowd predictions for 142+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
-    "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit",
+    "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
       "explore": "Parks Worldwide",
       "popularParks": "Popular Parks",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Theme Park Wait Times & Predictions",
       "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.",
-      "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit"
+      "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit"
     },
     "home": {
       "title": "Live Theme Park Wait Times & Crowd Predictions",
@@ -825,8 +825,8 @@
       "title": "Theme Parks Worldwide",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
       "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
-      "titleTemplate": "{park} Wait Times – {city}",
-      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit",
+      "titleTemplate": "{park} Wait Times LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Wait Times LIVE & Best Days",
       "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
       "keywordWaitTimes": "wait times",
       "keywordCrowdCalendar": "crowd calendar",
@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Frequently Asked Questions",
+      "waitTimesQ": "What are the wait times at {park} today?",
+      "waitTimesA": "Right now the average wait at {park} is about {avg} minutes (peak {peak} minutes) across {operating} open attractions. Live wait times for every ride are shown above on this page.",
+      "waitTimesNoDataA": "Wait times at {park} vary by day, season and crowd level. Check the live wait times for every ride above, plus the crowd calendar to find the best time to visit.",
       "openingHoursQ": "What are the opening hours for {park} today?",
       "openingHoursA": "Today, {date}, {park} is open from {open} to {close}.",
       "openingHoursClosed": "Today, {date}, {park} is closed.",
@@ -888,6 +891,7 @@
         "inLand": " in the {land} themed area",
         "waitTimeQ": "How long is the wait for {attraction}?",
         "waitTimeA": "Wait times for {attraction} vary by day and season. Check live wait times on park.fan.",
+        "waitTimeStatsA": "Today the wait for {attraction} averages {avg} minutes, ranging from {min} to {max} minutes. The current live wait time is shown above on this page.",
         "singleRiderQ": "Does {attraction} have a Single Rider line?",
         "singleRiderA": "Yes, {attraction} has a Single Rider line for individual guests to fill empty seats.",
         "paidQueueQ": "Is there a fast pass options for {attraction}?",

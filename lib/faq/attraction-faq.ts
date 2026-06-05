@@ -32,11 +32,26 @@ export function buildAttractionFaqItems(
     });
   }
 
-  items.push({
-    iconName: 'Clock',
-    question: t('waitTimeQ', { attraction: attractionName }),
-    answer: t('waitTimeA', { attraction: attractionName }),
-  });
+  // Use today's live aggregate stats when available, else an evergreen answer.
+  const s = attraction.statistics;
+  if (s && s.avgWaitToday != null && s.minWaitToday != null && s.maxWaitToday != null) {
+    items.push({
+      iconName: 'Clock',
+      question: t('waitTimeQ', { attraction: attractionName }),
+      answer: t('waitTimeStatsA', {
+        attraction: attractionName,
+        avg: Math.round(s.avgWaitToday),
+        min: Math.round(s.minWaitToday),
+        max: Math.round(s.maxWaitToday),
+      }),
+    });
+  } else {
+    items.push({
+      iconName: 'Clock',
+      question: t('waitTimeQ', { attraction: attractionName }),
+      answer: t('waitTimeA', { attraction: attractionName }),
+    });
+  }
 
   const singleRiderQueue = attraction.queues?.find((q) => q.queueType === 'SINGLE_RIDER');
   if (singleRiderQueue) {

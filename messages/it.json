@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Tempi di attesa in diretta e previsioni di affluenza basate sull'IA per oltre 142 parchi a tema nel mondo. Pianifica la visita perfetta con dati in tempo reale e navigazione nel parco.",
-    "keywords": "tempi di attesa parchi a tema, tempi di coda, previsioni affluenza, disponibilità giostre, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, calendario parco a tema, miglior momento per visitare",
+    "keywords": "tempi di attesa parchi a tema, tempi di attesa LIVE, tempi di attesa oggi, calendario affluenza, previsione IA, tempi di coda, previsioni affluenza, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, miglior momento per visitare",
     "sections": {
       "explore": "Parchi nel mondo",
       "popularParks": "Parchi popolari",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Tempi di attesa e previsioni per parchi a tema",
       "description": "Tempi di attesa in tempo reale e previsioni di affluenza per 142+ parchi a tema. Pianifica la visita con dati live.",
-      "keywords": "tempi di attesa parchi a tema, tempi di coda, previsioni affluenza, disponibilità giostre, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, calendario parco a tema, miglior momento per visitare"
+      "keywords": "tempi di attesa parchi a tema, tempi di attesa LIVE, tempi di attesa oggi, calendario affluenza, previsione IA, tempi di coda, previsioni affluenza, orari di apertura, parco divertimenti, montagna russa, tempi di attesa Disney, Universal Studios, Europa-Park, Phantasialand, miglior momento per visitare"
     },
     "home": {
       "title": "Tempi di attesa e previsioni di affluenza in tempo reale",
@@ -825,8 +825,8 @@
       "title": "Parchi a tema nel mondo",
       "description": "Confronta i tempi di coda in diretta e l'affluenza dei principali parchi: Disney, Universal Studios ed Europa-Park.",
       "metaDescriptionTemplate": "Tempi di attesa in diretta e calendario per {park} a {city}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
-      "titleTemplate": "{park} Tempi di attesa – {city}",
-      "titleTemplateNoCity": "{park} – Tempi di attesa e giorni migliori per visitare",
+      "titleTemplate": "{park} Tempi di attesa LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Tempi di attesa LIVE & Giorni Migliori",
       "metaDescriptionTemplateNoCity": "Tempi di attesa in diretta e calendario per {park}. Controlla le previsioni di oggi, giorni migliori e orari di apertura.",
       "keywordWaitTimes": "tempi di attesa",
       "keywordCrowdCalendar": "calendario affluenze",
@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Domande frequenti",
+      "waitTimesQ": "Quali sono i tempi di attesa a {park} oggi?",
+      "waitTimesA": "In questo momento il tempo di attesa medio a {park} è di circa {avg} minuti (picco {peak} minuti) su {operating} attrazioni aperte. I tempi di attesa in diretta di ogni attrazione sono mostrati qui sopra in questa pagina.",
+      "waitTimesNoDataA": "I tempi di attesa a {park} variano in base a giorno, stagione e affluenza. Controlla i tempi di attesa in diretta qui sopra e il calendario delle affluenze per il momento migliore per visitare.",
       "openingHoursQ": "Quali sono gli orari di apertura di {park} oggi?",
       "openingHoursA": "Oggi, {date}, {park} è aperto dalle {open} alle {close}.",
       "openingHoursClosed": "Oggi, {date}, {park} è chiuso.",
@@ -888,6 +891,7 @@
         "inLand": " nell'area tematica {land}",
         "waitTimeQ": "Quanto è lunga l'attesa per {attraction}?",
         "waitTimeA": "I tempi di attesa per {attraction} variano a seconda del giorno e della stagione. Controlla i tempi di attesa in diretta su park.fan.",
+        "waitTimeStatsA": "Oggi il tempo di attesa per {attraction} è in media di {avg} minuti, oscillando tra {min} e {max} minuti. Il tempo di attesa in diretta è mostrato qui sopra in questa pagina.",
         "singleRiderQ": "{attraction} ha una fila Single Rider?",
         "singleRiderA": "Sì, {attraction} ha una fila Single Rider per i visitatori singoli che possono riempire i posti vuoti.",
         "paidQueueQ": "Esiste un'opzione fast pass per {attraction}?",

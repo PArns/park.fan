@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
-    "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt",
+    "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit",
     "sections": {
       "explore": "Parks weltweit",
       "popularParks": "Beliebte Parks",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
       "description": "Live-Wartezeiten und KI-Prognosen für 142+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
-      "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
+      "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
       "title": "Live Freizeitpark Wartezeiten & Crowd-Prognosen",
@@ -824,16 +824,16 @@
     "parks": {
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage",
-      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
+      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
+      "titleTemplate": "{park} Wartezeiten LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
+      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit"
     },
     "attraction": {
-      "titleTemplate": "{attraction} im {park} – Wartezeiten & Status",
+      "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
       "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
     },
     "continent": {
@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Häufig gestellte Fragen",
+      "waitTimesQ": "Wie sind die Wartezeiten im {park} heute?",
+      "waitTimesA": "Aktuell liegt die durchschnittliche Wartezeit im {park} bei rund {avg} Minuten (Spitze {peak} Minuten) bei {operating} geöffneten Attraktionen. Die Live-Wartezeiten aller Fahrgeschäfte findest du oben auf dieser Seite.",
+      "waitTimesNoDataA": "Die Wartezeiten im {park} hängen von Tag, Saison und Andrang ab. Sieh dir die Live-Wartezeiten aller Fahrgeschäfte oben an – plus den Crowd-Kalender für die beste Besuchszeit.",
       "openingHoursQ": "Welche Öffnungszeiten hat {park} heute?",
       "openingHoursA": "Heute, {date}, hat {park} von {open} bis {close} Uhr geöffnet.",
       "openingHoursClosed": "Heute, {date}, ist {park} geschlossen.",
@@ -888,6 +891,7 @@
         "inLand": " im Themenbereich {land}",
         "waitTimeQ": "Wie lange ist die Wartezeit für {attraction}?",
         "waitTimeA": "Die Wartezeiten für {attraction} variieren je nach Tag und Saison. Aktuelle Wartezeiten findest du auf park.fan.",
+        "waitTimeStatsA": "Heute liegt die Wartezeit für {attraction} im Schnitt bei {avg} Minuten und schwankt zwischen {min} und {max} Minuten. Die aktuelle Live-Wartezeit siehst du oben auf dieser Seite.",
         "singleRiderQ": "Hat {attraction} eine Single Rider Warteschlange?",
         "singleRiderA": "Ja, {attraction} bietet eine Single Rider Warteschlange für einzelne Gäste, um leere Plätze zu füllen.",
         "paidQueueQ": "Gibt es eine Fast Pass Option für {attraction}?",

@@ -9,7 +9,8 @@ export type ParkFaqIconName =
   | 'Ticket'
   | 'Map'
   | 'Theater'
-  | 'UtensilsCrossed';
+  | 'UtensilsCrossed'
+  | 'Clock2';
 
 export interface ParkFaqItem {
   iconName: ParkFaqIconName;
@@ -60,6 +61,28 @@ export function buildParkFaqItems(
   }).format(now);
 
   const items: ParkFaqItem[] = [];
+
+  // Q0: Park-wide wait times today — targets the head query "{park} wait times (today)".
+  // Uses live aggregate stats when the park is operating, else a generic evergreen answer.
+  const stats = park.analytics?.statistics;
+  if (stats && stats.operatingAttractions > 0 && stats.avgWaitToday > 0) {
+    items.push({
+      iconName: 'Clock2',
+      question: t('waitTimesQ', { park: parkName }),
+      answer: t('waitTimesA', {
+        park: parkName,
+        avg: Math.round(stats.avgWaitToday),
+        peak: Math.round(stats.peakWaitToday),
+        operating: stats.operatingAttractions,
+      }),
+    });
+  } else {
+    items.push({
+      iconName: 'Clock2',
+      question: t('waitTimesQ', { park: parkName }),
+      answer: t('waitTimesNoDataA', { park: parkName }),
+    });
+  }
 
   // Q1: Opening Hours
   let openingHoursAnswer: string;

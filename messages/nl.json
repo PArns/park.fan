@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken wereldwijd. Plan je perfecte parkbezoek met realtime gegevens en navigatie in het park.",
-    "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd",
+    "keywords": "pretpark wachttijden, live wachttijden, wachttijden vandaag, druktekalender, AI-voorspelling, wachtrijtijden, druktevoorspellingen, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, beste bezoektijd",
     "sections": {
       "explore": "Parken Wereldwijd",
       "popularParks": "Populaire Parken",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Pretpark Wachttijden & Voorspellingen",
       "description": "Live wachttijden en AI-gestuurde druktevoorspellingen voor 142+ pretparken. Plan je bezoek met realtime gegevens en in-park navigatie.",
-      "keywords": "pretpark wachttijden, wachtrijtijden, druktevoorspellingen, attractie beschikbaarheid, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, pretpark kalender, beste bezoektijd"
+      "keywords": "pretpark wachttijden, live wachttijden, wachttijden vandaag, druktekalender, AI-voorspelling, wachtrijtijden, druktevoorspellingen, openingstijden, pretpark, achtbaan, Disney wachttijden, Universal Studios, Europa-Park, Phantasialand, beste bezoektijd"
     },
     "home": {
       "title": "Live Pretpark Wachttijden & Druktevoorspellingen",
@@ -825,8 +825,8 @@
       "title": "Pretparken Wereldwijd",
       "description": "Vergelijk live wachttijden, status en drukte voor topparken zoals Disney World, Disneyland, Universal Studios en Europa-Park.",
       "metaDescriptionTemplate": "Live wachttijden & druktekalender voor {park} in {city}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
-      "titleTemplate": "{park} Wachttijden – {city}",
-      "titleTemplateNoCity": "{park} – Wachttijden & Beste Bezoekdagen",
+      "titleTemplate": "{park} Wachttijden LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Wachttijden LIVE & Beste Dagen",
       "metaDescriptionTemplateNoCity": "Live wachttijden & druktekalender voor {park}. Bekijk de druktevoorspelling, beste bezoekdagen en openingstijden.",
       "keywordWaitTimes": "wachttijden",
       "keywordCrowdCalendar": "druktekalender",
@@ -863,6 +863,9 @@
     },
     "faq": {
       "title": "Veelgestelde Vragen",
+      "waitTimesQ": "Wat zijn de wachttijden in {park} vandaag?",
+      "waitTimesA": "Op dit moment is de gemiddelde wachttijd in {park} ongeveer {avg} minuten (piek {peak} minuten) bij {operating} geopende attracties. De live wachttijden van elke attractie staan hierboven op deze pagina.",
+      "waitTimesNoDataA": "De wachttijden in {park} variëren per dag, seizoen en drukte. Bekijk de live wachttijden hierboven, plus de druktekalender voor de beste bezoektijd.",
       "openingHoursQ": "Wat zijn de openingstijden van {park} vandaag?",
       "openingHoursA": "Vandaag, {date}, is {park} open van {open} tot {close}.",
       "openingHoursClosed": "Vandaag, {date}, is {park} gesloten.",
@@ -888,6 +891,7 @@
         "inLand": " in het themagebied {land}",
         "waitTimeQ": "Hoe lang is de wachttijd voor {attraction}?",
         "waitTimeA": "Wachttijden voor {attraction} variëren per dag en seizoen. Bekijk live wachttijden op park.fan.",
+        "waitTimeStatsA": "Vandaag is de wachttijd voor {attraction} gemiddeld {avg} minuten, variërend van {min} tot {max} minuten. De actuele live wachttijd staat hierboven op deze pagina.",
         "singleRiderQ": "Heeft {attraction} een Single Rider rij?",
         "singleRiderA": "Ja, {attraction} heeft een Single Rider rij voor individuele gasten om lege stoelen te vullen.",
         "paidQueueQ": "Zijn er fast pass opties voor {attraction}?",
