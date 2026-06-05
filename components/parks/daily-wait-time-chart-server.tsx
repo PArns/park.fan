@@ -5,6 +5,7 @@ import type {
   ScheduleItem,
   BestVisitSlot,
 } from '@/lib/api/types';
+import { Suspense } from 'react';
 import { DailyWaitTimeChart, type DailyWaitTimeChartData } from './daily-wait-time-chart';
 import { getServerToday } from '@/lib/utils/server-time';
 
@@ -198,5 +199,11 @@ export async function DailyWaitTimeChartServer({
     },
   };
 
-  return <DailyWaitTimeChart {...data} />;
+  // The chart reads the current time (today marker) on the client; a Suspense boundary lets
+  // it render as a dynamic hole under Cache Components.
+  return (
+    <Suspense fallback={null}>
+      <DailyWaitTimeChart {...data} />
+    </Suspense>
+  );
 }
