@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -167,12 +168,19 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         >
           <Providers>
             <NextIntlClientProvider messages={messages} locale={locale}>
-              <ScrollToTop />
-              <AnalyticsIdentify locale={locale} />
-              <WebVitalsReporter />
-              <LanguageBanner currentLocale={locale as Locale} />
+              {/* Layout client components read request data (usePathname) / run live queries,
+                  which are dynamic under Cache Components — stream them as Suspense holes so the
+                  page shell stays statically prerenderable. */}
+              <Suspense fallback={null}>
+                <ScrollToTop />
+                <AnalyticsIdentify locale={locale} />
+                <WebVitalsReporter />
+                <LanguageBanner currentLocale={locale as Locale} />
+              </Suspense>
               <div className="flex min-h-screen flex-col">
-                <Header />
+                <Suspense fallback={<div className="h-14" />}>
+                  <Header />
+                </Suspense>
                 <main className="flex-1">{children}</main>
                 <Footer locale={locale} />
               </div>
