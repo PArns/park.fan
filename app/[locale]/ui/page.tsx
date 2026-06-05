@@ -1,5 +1,5 @@
+import { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
-import { connection } from 'next/server';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -851,632 +851,678 @@ interface UiPageProps {
 export default async function UiStyleGuidePage({ params }: UiPageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  // Dev-only component gallery — render dynamically so its demo client components may read
-  // the current time freely (no static-prerender constraint; not user-facing/SEO content).
-  await connection();
 
+  // Dev-only component gallery. Its demo client components read the current time, so the whole
+  // body streams behind one Suspense boundary (dynamic hole) — not user-facing/SEO content.
   return (
-    <div className="relative min-h-screen">
-      {/* Fixed non-scrolling background — needed for glass effects */}
-      <div className="fixed inset-0 -z-10">
-        <Image
-          src="/images/parks/phantasialand/background.jpg"
-          alt="Phantasialand background"
-          fill
-          className="object-cover object-center"
-          priority
-        />
-        <div className="bg-background/65 absolute inset-0" />
-      </div>
-
-      {/* Scrollable content */}
-      <div className="mx-auto max-w-7xl space-y-16 px-4 py-12 pb-32">
-        {/* Page header */}
-        <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight">park.fan UI Style Guide</h1>
-          <p className="text-muted-foreground">
-            Background: Phantasialand (fixed, non-scrolling) — glass and transparency effects
-            visible while scrolling.
-          </p>
+    <Suspense fallback={null}>
+      <div className="relative min-h-screen">
+        {/* Fixed non-scrolling background — needed for glass effects */}
+        <div className="fixed inset-0 -z-10">
+          <Image
+            src="/images/parks/phantasialand/background.jpg"
+            alt="Phantasialand background"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div className="bg-background/65 absolute inset-0" />
         </div>
 
-        {/* ================================================================
+        {/* Scrollable content */}
+        <div className="mx-auto max-w-7xl space-y-16 px-4 py-12 pb-32">
+          {/* Page header */}
+          <div className="space-y-2">
+            <h1 className="text-4xl font-bold tracking-tight">park.fan UI Style Guide</h1>
+            <p className="text-muted-foreground">
+              Background: Phantasialand (fixed, non-scrolling) — glass and transparency effects
+              visible while scrolling.
+            </p>
+          </div>
+
+          {/* ================================================================
             1. FOUNDATION — Colors & Typography
         ================================================================ */}
-        <Section title="Foundation — Colors & Typography" icon={Palette}>
-          <Sub title="Complete Color Token Table">
-            <GlassCard variant="medium" className="overflow-hidden p-0">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-border/50 bg-muted/40 border-b">
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        Category
-                      </th>
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        CSS Variable
-                      </th>
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        Light
-                      </th>
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        Dark
-                      </th>
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        ~Hex
-                      </th>
-                      <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
-                        Used for
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {COLOR_CATEGORIES.map((cat) => {
-                      const rows = COLOR_TABLE.filter((r) => r.category === cat);
-                      return rows.map((row, i) => (
-                        <tr
-                          key={row.variable}
-                          className="border-border/30 hover:bg-muted/20 border-b transition-colors"
-                        >
-                          {i === 0 && (
-                            <td
-                              rowSpan={rows.length}
-                              className="text-foreground border-border/30 border-r px-4 py-2 align-top font-medium"
-                            >
-                              <Badge variant="outline" className="text-xs">
-                                {cat}
-                              </Badge>
+          <Section title="Foundation — Colors & Typography" icon={Palette}>
+            <Sub title="Complete Color Token Table">
+              <GlassCard variant="medium" className="overflow-hidden p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-border/50 bg-muted/40 border-b">
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          Category
+                        </th>
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          CSS Variable
+                        </th>
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          Light
+                        </th>
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          Dark
+                        </th>
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          ~Hex
+                        </th>
+                        <th className="text-muted-foreground px-4 py-3 text-left font-semibold">
+                          Used for
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {COLOR_CATEGORIES.map((cat) => {
+                        const rows = COLOR_TABLE.filter((r) => r.category === cat);
+                        return rows.map((row, i) => (
+                          <tr
+                            key={row.variable}
+                            className="border-border/30 hover:bg-muted/20 border-b transition-colors"
+                          >
+                            {i === 0 && (
+                              <td
+                                rowSpan={rows.length}
+                                className="text-foreground border-border/30 border-r px-4 py-2 align-top font-medium"
+                              >
+                                <Badge variant="outline" className="text-xs">
+                                  {cat}
+                                </Badge>
+                              </td>
+                            )}
+                            <td className="px-4 py-2">
+                              <div className="flex items-center gap-2">
+                                <span
+                                  className="border-border/30 inline-block h-4 w-4 flex-shrink-0 rounded-sm border shadow-sm"
+                                  style={{ backgroundColor: `var(${row.variable})` }}
+                                />
+                                <code className="text-primary font-mono text-xs">
+                                  {row.variable}
+                                </code>
+                              </div>
                             </td>
-                          )}
-                          <td className="px-4 py-2">
-                            <div className="flex items-center gap-2">
-                              <span
-                                className="border-border/30 inline-block h-4 w-4 flex-shrink-0 rounded-sm border shadow-sm"
-                                style={{ backgroundColor: `var(${row.variable})` }}
-                              />
-                              <code className="text-primary font-mono text-xs">{row.variable}</code>
-                            </div>
-                          </td>
-                          <td className="text-muted-foreground px-4 py-2 font-mono text-xs">
-                            {row.light}
-                          </td>
-                          <td className="text-muted-foreground px-4 py-2 font-mono text-xs">
-                            {row.dark}
-                          </td>
-                          <td className="px-4 py-2 font-mono text-xs">{row.hex}</td>
-                          <td className="text-muted-foreground px-4 py-2 text-xs">{row.usage}</td>
-                        </tr>
-                      ));
-                    })}
-                  </tbody>
-                </table>
+                            <td className="text-muted-foreground px-4 py-2 font-mono text-xs">
+                              {row.light}
+                            </td>
+                            <td className="text-muted-foreground px-4 py-2 font-mono text-xs">
+                              {row.dark}
+                            </td>
+                            <td className="px-4 py-2 font-mono text-xs">{row.hex}</td>
+                            <td className="text-muted-foreground px-4 py-2 text-xs">{row.usage}</td>
+                          </tr>
+                        ));
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </GlassCard>
+            </Sub>
+
+            <Sub title="Brand & UI Palette — Visual">
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { label: 'Primary', cssVar: '--primary' },
+                  { label: 'Secondary', cssVar: '--secondary' },
+                  { label: 'Muted', cssVar: '--muted' },
+                  { label: 'Accent', cssVar: '--accent' },
+                  { label: 'Background', cssVar: '--background' },
+                  { label: 'Card', cssVar: '--card' },
+                  { label: 'Destructive', cssVar: '--destructive' },
+                  { label: 'Warning', cssVar: '--warning' },
+                  { label: 'Border', cssVar: '--border' },
+                ].map(({ label, cssVar }) => (
+                  <div key={cssVar} className="flex flex-col gap-1">
+                    <div
+                      className="border-border/40 h-14 w-24 rounded-lg border shadow-sm"
+                      style={{ backgroundColor: `var(${cssVar})` }}
+                    />
+                    <span className="text-xs font-medium">{label}</span>
+                    <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
+                  </div>
+                ))}
               </div>
-            </GlassCard>
-          </Sub>
+            </Sub>
 
-          <Sub title="Brand & UI Palette — Visual">
-            <div className="flex flex-wrap gap-4">
-              {[
-                { label: 'Primary', cssVar: '--primary' },
-                { label: 'Secondary', cssVar: '--secondary' },
-                { label: 'Muted', cssVar: '--muted' },
-                { label: 'Accent', cssVar: '--accent' },
-                { label: 'Background', cssVar: '--background' },
-                { label: 'Card', cssVar: '--card' },
-                { label: 'Destructive', cssVar: '--destructive' },
-                { label: 'Warning', cssVar: '--warning' },
-                { label: 'Border', cssVar: '--border' },
-              ].map(({ label, cssVar }) => (
-                <div key={cssVar} className="flex flex-col gap-1">
-                  <div
-                    className="border-border/40 h-14 w-24 rounded-lg border shadow-sm"
-                    style={{ backgroundColor: `var(${cssVar})` }}
-                  />
-                  <span className="text-xs font-medium">{label}</span>
-                  <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
-                </div>
-              ))}
-            </div>
-          </Sub>
-
-          <Sub title="Status Colors — Visual">
-            <div className="flex flex-wrap gap-4">
-              {[
-                { label: 'OPERATING', cssVar: '--status-operating' },
-                { label: 'DOWN', cssVar: '--status-down' },
-                { label: 'CLOSED', cssVar: '--status-closed' },
-                { label: 'REFURBISHMENT', cssVar: '--status-refurbishment' },
-              ].map(({ label, cssVar }) => (
-                <div key={cssVar} className="flex flex-col gap-1">
-                  <div
-                    className="flex h-14 w-28 items-center justify-center rounded-lg shadow-sm"
-                    style={{ backgroundColor: `var(${cssVar})`, opacity: 0.85 }}
-                  >
-                    <span className="text-xs font-bold text-white">{label}</span>
+            <Sub title="Status Colors — Visual">
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { label: 'OPERATING', cssVar: '--status-operating' },
+                  { label: 'DOWN', cssVar: '--status-down' },
+                  { label: 'CLOSED', cssVar: '--status-closed' },
+                  { label: 'REFURBISHMENT', cssVar: '--status-refurbishment' },
+                ].map(({ label, cssVar }) => (
+                  <div key={cssVar} className="flex flex-col gap-1">
+                    <div
+                      className="flex h-14 w-28 items-center justify-center rounded-lg shadow-sm"
+                      style={{ backgroundColor: `var(${cssVar})`, opacity: 0.85 }}
+                    >
+                      <span className="text-xs font-bold text-white">{label}</span>
+                    </div>
+                    <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
                   </div>
-                  <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
-                </div>
-              ))}
-            </div>
-          </Sub>
+                ))}
+              </div>
+            </Sub>
 
-          <Sub title="Crowd Level Colors — Visual (very_low → extreme)">
-            <div className="flex flex-wrap gap-4">
-              {[
-                { label: 'very_low', cssVar: '--crowd-very-low' },
-                { label: 'low', cssVar: '--crowd-low' },
-                { label: 'moderate', cssVar: '--crowd-moderate' },
-                { label: 'high', cssVar: '--crowd-high' },
-                { label: 'very_high', cssVar: '--crowd-very-high' },
-                { label: 'extreme', cssVar: '--crowd-extreme' },
-              ].map(({ label, cssVar }) => (
-                <div key={cssVar} className="flex flex-col gap-1">
-                  <div
-                    className="flex h-14 w-24 items-center justify-center rounded-lg shadow-sm"
-                    style={{ backgroundColor: `var(${cssVar})`, opacity: 0.85 }}
-                  >
-                    <span className="text-[10px] font-bold text-white">{label}</span>
+            <Sub title="Crowd Level Colors — Visual (very_low → extreme)">
+              <div className="flex flex-wrap gap-4">
+                {[
+                  { label: 'very_low', cssVar: '--crowd-very-low' },
+                  { label: 'low', cssVar: '--crowd-low' },
+                  { label: 'moderate', cssVar: '--crowd-moderate' },
+                  { label: 'high', cssVar: '--crowd-high' },
+                  { label: 'very_high', cssVar: '--crowd-very-high' },
+                  { label: 'extreme', cssVar: '--crowd-extreme' },
+                ].map(({ label, cssVar }) => (
+                  <div key={cssVar} className="flex flex-col gap-1">
+                    <div
+                      className="flex h-14 w-24 items-center justify-center rounded-lg shadow-sm"
+                      style={{ backgroundColor: `var(${cssVar})`, opacity: 0.85 }}
+                    >
+                      <span className="text-[10px] font-bold text-white">{label}</span>
+                    </div>
+                    <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
                   </div>
-                  <code className="text-muted-foreground font-mono text-[10px]">{cssVar}</code>
-                </div>
-              ))}
-            </div>
-          </Sub>
+                ))}
+              </div>
+            </Sub>
 
-          <Sub title="Typography Scale">
-            <GlassCard variant="medium" className="space-y-3">
-              <h1 className="text-5xl font-bold">H1 — Page Title (5xl bold)</h1>
-              <h2 className="text-4xl font-bold">H2 — Section Title (4xl bold)</h2>
-              <h3 className="text-3xl font-semibold">H3 — Card Heading (3xl semibold)</h3>
-              <h4 className="text-2xl font-semibold">H4 — Sub-section (2xl semibold)</h4>
-              <h5 className="text-xl font-medium">H5 — Label (xl medium)</h5>
-              <h6 className="text-lg font-medium">H6 — Small Label (lg medium)</h6>
-              <Separator />
-              <p className="text-base">Body — Regular paragraph text at base (16px).</p>
-              <p className="text-muted-foreground">
-                Muted — Secondary text, descriptions, metadata.
-              </p>
-              <p className="text-sm">Small (sm) — 14px for compact UI elements.</p>
-              <p className="text-muted-foreground text-xs">
-                Extra Small (xs) — 12px for fine print and labels.
-              </p>
-              <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm">
-                Monospace — slugs, IDs, code snippets
-              </code>
-            </GlassCard>
-          </Sub>
-        </Section>
+            <Sub title="Typography Scale">
+              <GlassCard variant="medium" className="space-y-3">
+                <h1 className="text-5xl font-bold">H1 — Page Title (5xl bold)</h1>
+                <h2 className="text-4xl font-bold">H2 — Section Title (4xl bold)</h2>
+                <h3 className="text-3xl font-semibold">H3 — Card Heading (3xl semibold)</h3>
+                <h4 className="text-2xl font-semibold">H4 — Sub-section (2xl semibold)</h4>
+                <h5 className="text-xl font-medium">H5 — Label (xl medium)</h5>
+                <h6 className="text-lg font-medium">H6 — Small Label (lg medium)</h6>
+                <Separator />
+                <p className="text-base">Body — Regular paragraph text at base (16px).</p>
+                <p className="text-muted-foreground">
+                  Muted — Secondary text, descriptions, metadata.
+                </p>
+                <p className="text-sm">Small (sm) — 14px for compact UI elements.</p>
+                <p className="text-muted-foreground text-xs">
+                  Extra Small (xs) — 12px for fine print and labels.
+                </p>
+                <code className="bg-muted rounded px-1.5 py-0.5 font-mono text-sm">
+                  Monospace — slugs, IDs, code snippets
+                </code>
+              </GlassCard>
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             2. BASE UI COMPONENTS
         ================================================================ */}
-        <Section title="Base UI Components" icon={LayoutGrid}>
-          <ComponentLabel name="Badge" file="components/ui/badge.tsx" />
-          <Sub title="Badge — Variants">
-            <Row>
-              <Badge>Default</Badge>
-              <Badge variant="secondary">Secondary</Badge>
-              <Badge variant="destructive">Destructive</Badge>
-              <Badge variant="outline">Outline</Badge>
-            </Row>
-          </Sub>
+          <Section title="Base UI Components" icon={LayoutGrid}>
+            <ComponentLabel name="Badge" file="components/ui/badge.tsx" />
+            <Sub title="Badge — Variants">
+              <Row>
+                <Badge>Default</Badge>
+                <Badge variant="secondary">Secondary</Badge>
+                <Badge variant="destructive">Destructive</Badge>
+                <Badge variant="outline">Outline</Badge>
+              </Row>
+            </Sub>
 
-          <ComponentLabel name="Button" file="components/ui/button.tsx" />
-          <Sub title="Button — Variants">
-            <Row>
-              <Button>Default</Button>
-              <Button variant="destructive">Destructive</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="link">Link</Button>
-              <Button disabled>Disabled</Button>
-            </Row>
-          </Sub>
-          <Sub title="Button — Sizes">
-            <Row>
-              <Button size="lg">Large</Button>
-              <Button size="default">Default</Button>
-              <Button size="sm">Small</Button>
-              <Button size="icon">
-                <Star className="h-4 w-4" />
-              </Button>
-              <Button size="icon-sm">
-                <Star className="h-3 w-3" />
-              </Button>
-              <Button size="icon-lg">
-                <Star className="h-5 w-5" />
-              </Button>
-            </Row>
-          </Sub>
+            <ComponentLabel name="Button" file="components/ui/button.tsx" />
+            <Sub title="Button — Variants">
+              <Row>
+                <Button>Default</Button>
+                <Button variant="destructive">Destructive</Button>
+                <Button variant="outline">Outline</Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button variant="ghost">Ghost</Button>
+                <Button variant="link">Link</Button>
+                <Button disabled>Disabled</Button>
+              </Row>
+            </Sub>
+            <Sub title="Button — Sizes">
+              <Row>
+                <Button size="lg">Large</Button>
+                <Button size="default">Default</Button>
+                <Button size="sm">Small</Button>
+                <Button size="icon">
+                  <Star className="h-4 w-4" />
+                </Button>
+                <Button size="icon-sm">
+                  <Star className="h-3 w-3" />
+                </Button>
+                <Button size="icon-lg">
+                  <Star className="h-5 w-5" />
+                </Button>
+              </Row>
+            </Sub>
 
-          <ComponentLabel name="Separator" file="components/ui/separator.tsx" />
-          <Sub title="Separator — Horizontal &amp; Vertical">
-            <div className="space-y-4">
-              <Separator />
-              <div className="flex h-8 items-center gap-4">
-                <span className="text-sm">Left</span>
-                <Separator orientation="vertical" className="h-6" />
-                <span className="text-sm">Right</span>
-              </div>
-            </div>
-          </Sub>
-
-          <ComponentLabel name="Skeleton" file="components/ui/skeleton.tsx" />
-          <Sub title="Skeleton — Loading Shapes">
-            <div className="space-y-3">
-              <Skeleton className="h-4 w-64" />
-              <Skeleton className="h-4 w-48" />
-              <div className="flex items-center gap-3">
-                <Skeleton className="h-12 w-12 rounded-full" />
-                <div className="space-y-2">
-                  <Skeleton className="h-4 w-40" />
-                  <Skeleton className="h-3 w-28" />
+            <ComponentLabel name="Separator" file="components/ui/separator.tsx" />
+            <Sub title="Separator — Horizontal &amp; Vertical">
+              <div className="space-y-4">
+                <Separator />
+                <div className="flex h-8 items-center gap-4">
+                  <span className="text-sm">Left</span>
+                  <Separator orientation="vertical" className="h-6" />
+                  <span className="text-sm">Right</span>
                 </div>
               </div>
-              <Skeleton className="h-28 w-full rounded-xl" />
-            </div>
-          </Sub>
+            </Sub>
 
-          <ComponentLabel name="Tabs" file="components/ui/tabs.tsx" />
-          <Sub title="Tabs — Default (opaque bg-muted)">
-            <Tabs defaultValue="overview" className="w-full max-w-md">
-              <TabsList>
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="attractions">Attractions</TabsTrigger>
-                <TabsTrigger value="calendar">Calendar</TabsTrigger>
-              </TabsList>
-              <TabsContent value="overview" className="mt-3">
-                <div className="text-muted-foreground rounded-lg border p-4 text-sm">
-                  Overview tab content
-                </div>
-              </TabsContent>
-              <TabsContent value="attractions" className="mt-3">
-                <div className="text-muted-foreground rounded-lg border p-4 text-sm">
-                  Attractions tab content
-                </div>
-              </TabsContent>
-              <TabsContent value="calendar" className="mt-3">
-                <div className="text-muted-foreground rounded-lg border p-4 text-sm">
-                  Calendar tab content
-                </div>
-              </TabsContent>
-            </Tabs>
-          </Sub>
-          <Sub title="Tabs — Glass variant (as used on park page — bg-background/60 backdrop-blur-md)">
-            <Tabs defaultValue="attractions" className="w-full max-w-lg">
-              <TabsList className="border-border/50 bg-background/60 mb-2 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
-                <TabsTrigger value="attractions">Attractions (42)</TabsTrigger>
-                <TabsTrigger value="shows">Shows (8)</TabsTrigger>
-                <TabsTrigger value="calendar">Calendar</TabsTrigger>
-                <TabsTrigger value="map">Map</TabsTrigger>
-              </TabsList>
-              <TabsContent value="attractions" className="mt-3">
-                <div className="text-muted-foreground rounded-lg border p-4 text-sm">
-                  Attractions tab content
-                </div>
-              </TabsContent>
-              <TabsContent value="shows" className="mt-3">
-                <div className="text-muted-foreground rounded-lg border p-4 text-sm">
-                  Shows tab content
-                </div>
-              </TabsContent>
-            </Tabs>
-          </Sub>
-
-          <ComponentLabel name="Tooltip" file="components/ui/tooltip.tsx" />
-          <Sub title="Tooltip — Hover Demo">
-            <Row>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="outline">Hover me</Button>
-                </TooltipTrigger>
-                <TooltipContent>This is a tooltip with helpful info</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="secondary" size="sm">
-                    Top tooltip
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="top">Tooltip on top</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button variant="ghost" size="sm">
-                    Right tooltip
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="right">Tooltip on the right</TooltipContent>
-              </Tooltip>
-            </Row>
-          </Sub>
-
-          <ComponentLabel name="Input" file="components/ui/input.tsx" />
-          <Sub title="Input — States">
-            <div className="flex flex-wrap gap-3">
-              <Input placeholder="Default input..." className="max-w-xs" />
-              <Input placeholder="Disabled..." disabled className="max-w-xs" />
-              <Input defaultValue="With value" className="max-w-xs" />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="Progress" file="components/ui/progress.tsx" />
-          <Sub title="Progress — Values">
-            <div className="max-w-md space-y-3">
-              {[0, 25, 50, 75, 100].map((v) => (
-                <div key={v} className="flex items-center gap-3">
-                  <span className="text-muted-foreground w-10 text-right text-xs">{v}%</span>
-                  <Progress value={v} className="flex-1" />
-                </div>
-              ))}
-            </div>
-          </Sub>
-        </Section>
-
-        {/* ================================================================
-            3. GLASS UI
-        ================================================================ */}
-        <Section title="Glass UI" icon={Layers}>
-          <p className="text-muted-foreground -mt-4 text-sm">
-            The fixed background makes transparency effects visible while scrolling.
-          </p>
-
-          <ComponentLabel name="GlassCard" file="components/common/glass-card.tsx" />
-          <Sub title="GlassCard — light / medium / strong">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <GlassCard variant="light">
-                <p className="font-semibold">light</p>
-                <p className="text-muted-foreground text-sm">bg-background/40 + blur-sm</p>
-              </GlassCard>
-              <GlassCard variant="medium">
-                <p className="font-semibold">medium (default)</p>
-                <p className="text-muted-foreground text-sm">bg-background/60 + blur-md</p>
-              </GlassCard>
-              <GlassCard variant="strong">
-                <p className="font-semibold">strong</p>
-                <p className="text-muted-foreground text-sm">bg-background/80 + blur-lg</p>
-              </GlassCard>
-            </div>
-          </Sub>
-
-          <Sub title="CSS Glass Utility Classes — .glass-light / .glass / .glass-strong / .glass-heavy">
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {['.glass-light', '.glass', '.glass-strong', '.glass-heavy'].map((cls) => (
-                <div key={cls} className={`${cls.slice(1)} rounded-xl border p-4`}>
-                  <code className="font-mono text-xs font-semibold">{cls}</code>
-                </div>
-              ))}
-            </div>
-          </Sub>
-
-          <ComponentLabel name="WaitTimeInfoCard" file="components/parks/wait-time-info-card.tsx" />
-          <Sub title="WaitTimeInfoCard — operating / closed / no data">
-            <div className="grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
-              <WaitTimeInfoCard
-                waitTime={45}
-                trend="up"
-                minWaitToday={15}
-                maxWaitToday={70}
-                labels={{
-                  title: 'Wait Time',
-                  minutes: 'Minutes',
-                  todayMin: 'Min.',
-                  todayMax: 'Max.',
-                  min: 'min.',
-                  trendLabel: 'Rising',
-                }}
-              />
-              <WaitTimeInfoCard
-                waitTime={20}
-                trend="down"
-                minWaitToday={10}
-                maxWaitToday={55}
-                labels={{
-                  title: 'Wait Time',
-                  minutes: 'Minutes',
-                  todayMin: 'Min.',
-                  todayMax: 'Max.',
-                  min: 'min.',
-                  trendLabel: 'Falling',
-                }}
-              />
-              <WaitTimeInfoCard
-                waitTime={null}
-                statusLabel="Closed"
-                labels={{
-                  title: 'Wait Time',
-                  minutes: 'Minutes',
-                  todayMin: 'Min.',
-                  todayMax: 'Max.',
-                  min: 'min.',
-                }}
-              />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="StatusInfoCard" file="components/common/status-info-card.tsx" />
-          <Sub title="StatusInfoCard — glass=true / glass=false">
-            <div className="grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
-              <StatusInfoCard title="Wait Times" icon={Clock} glass={true}>
-                <p className="text-muted-foreground text-sm">
-                  Glass enabled (default) — blurred card.
-                </p>
-              </StatusInfoCard>
-              <StatusInfoCard title="Attractions" icon={Activity} glass={false}>
-                <p className="text-muted-foreground text-sm">
-                  Glass disabled — solid card background.
-                </p>
-              </StatusInfoCard>
-            </div>
-          </Sub>
-
-          <ComponentLabel
-            name="BackgroundOverlay"
-            file="components/common/background-overlay.tsx"
-          />
-          <Sub title="BackgroundOverlay — intensity: light / medium / heavy (used inside park + attraction cards)">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {(['light', 'medium', 'heavy'] as const).map((intensity) => (
-                <div key={intensity} className="relative h-36 overflow-hidden rounded-xl border">
-                  <BackgroundOverlay
-                    imageSrc="/images/parks/phantasialand/background.jpg"
-                    alt="Phantasialand"
-                    intensity={intensity}
-                    hoverEffect
-                  />
-                  <div className="relative z-10 flex h-full flex-col justify-end p-4">
-                    <code className="font-mono text-xs font-semibold">
-                      intensity=&quot;{intensity}&quot;
-                    </code>
-                    <p className="text-muted-foreground text-xs">Hover for brightness effect</p>
+            <ComponentLabel name="Skeleton" file="components/ui/skeleton.tsx" />
+            <Sub title="Skeleton — Loading Shapes">
+              <div className="space-y-3">
+                <Skeleton className="h-4 w-64" />
+                <Skeleton className="h-4 w-48" />
+                <div className="flex items-center gap-3">
+                  <Skeleton className="h-12 w-12 rounded-full" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-40" />
+                    <Skeleton className="h-3 w-28" />
                   </div>
                 </div>
-              ))}
-            </div>
-          </Sub>
-        </Section>
+                <Skeleton className="h-28 w-full rounded-xl" />
+              </div>
+            </Sub>
 
-        {/* ================================================================
+            <ComponentLabel name="Tabs" file="components/ui/tabs.tsx" />
+            <Sub title="Tabs — Default (opaque bg-muted)">
+              <Tabs defaultValue="overview" className="w-full max-w-md">
+                <TabsList>
+                  <TabsTrigger value="overview">Overview</TabsTrigger>
+                  <TabsTrigger value="attractions">Attractions</TabsTrigger>
+                  <TabsTrigger value="calendar">Calendar</TabsTrigger>
+                </TabsList>
+                <TabsContent value="overview" className="mt-3">
+                  <div className="text-muted-foreground rounded-lg border p-4 text-sm">
+                    Overview tab content
+                  </div>
+                </TabsContent>
+                <TabsContent value="attractions" className="mt-3">
+                  <div className="text-muted-foreground rounded-lg border p-4 text-sm">
+                    Attractions tab content
+                  </div>
+                </TabsContent>
+                <TabsContent value="calendar" className="mt-3">
+                  <div className="text-muted-foreground rounded-lg border p-4 text-sm">
+                    Calendar tab content
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </Sub>
+            <Sub title="Tabs — Glass variant (as used on park page — bg-background/60 backdrop-blur-md)">
+              <Tabs defaultValue="attractions" className="w-full max-w-lg">
+                <TabsList className="border-border/50 bg-background/60 mb-2 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
+                  <TabsTrigger value="attractions">Attractions (42)</TabsTrigger>
+                  <TabsTrigger value="shows">Shows (8)</TabsTrigger>
+                  <TabsTrigger value="calendar">Calendar</TabsTrigger>
+                  <TabsTrigger value="map">Map</TabsTrigger>
+                </TabsList>
+                <TabsContent value="attractions" className="mt-3">
+                  <div className="text-muted-foreground rounded-lg border p-4 text-sm">
+                    Attractions tab content
+                  </div>
+                </TabsContent>
+                <TabsContent value="shows" className="mt-3">
+                  <div className="text-muted-foreground rounded-lg border p-4 text-sm">
+                    Shows tab content
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </Sub>
+
+            <ComponentLabel name="Tooltip" file="components/ui/tooltip.tsx" />
+            <Sub title="Tooltip — Hover Demo">
+              <Row>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="outline">Hover me</Button>
+                  </TooltipTrigger>
+                  <TooltipContent>This is a tooltip with helpful info</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="secondary" size="sm">
+                      Top tooltip
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top">Tooltip on top</TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="sm">
+                      Right tooltip
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent side="right">Tooltip on the right</TooltipContent>
+                </Tooltip>
+              </Row>
+            </Sub>
+
+            <ComponentLabel name="Input" file="components/ui/input.tsx" />
+            <Sub title="Input — States">
+              <div className="flex flex-wrap gap-3">
+                <Input placeholder="Default input..." className="max-w-xs" />
+                <Input placeholder="Disabled..." disabled className="max-w-xs" />
+                <Input defaultValue="With value" className="max-w-xs" />
+              </div>
+            </Sub>
+
+            <ComponentLabel name="Progress" file="components/ui/progress.tsx" />
+            <Sub title="Progress — Values">
+              <div className="max-w-md space-y-3">
+                {[0, 25, 50, 75, 100].map((v) => (
+                  <div key={v} className="flex items-center gap-3">
+                    <span className="text-muted-foreground w-10 text-right text-xs">{v}%</span>
+                    <Progress value={v} className="flex-1" />
+                  </div>
+                ))}
+              </div>
+            </Sub>
+          </Section>
+
+          {/* ================================================================
+            3. GLASS UI
+        ================================================================ */}
+          <Section title="Glass UI" icon={Layers}>
+            <p className="text-muted-foreground -mt-4 text-sm">
+              The fixed background makes transparency effects visible while scrolling.
+            </p>
+
+            <ComponentLabel name="GlassCard" file="components/common/glass-card.tsx" />
+            <Sub title="GlassCard — light / medium / strong">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <GlassCard variant="light">
+                  <p className="font-semibold">light</p>
+                  <p className="text-muted-foreground text-sm">bg-background/40 + blur-sm</p>
+                </GlassCard>
+                <GlassCard variant="medium">
+                  <p className="font-semibold">medium (default)</p>
+                  <p className="text-muted-foreground text-sm">bg-background/60 + blur-md</p>
+                </GlassCard>
+                <GlassCard variant="strong">
+                  <p className="font-semibold">strong</p>
+                  <p className="text-muted-foreground text-sm">bg-background/80 + blur-lg</p>
+                </GlassCard>
+              </div>
+            </Sub>
+
+            <Sub title="CSS Glass Utility Classes — .glass-light / .glass / .glass-strong / .glass-heavy">
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {['.glass-light', '.glass', '.glass-strong', '.glass-heavy'].map((cls) => (
+                  <div key={cls} className={`${cls.slice(1)} rounded-xl border p-4`}>
+                    <code className="font-mono text-xs font-semibold">{cls}</code>
+                  </div>
+                ))}
+              </div>
+            </Sub>
+
+            <ComponentLabel
+              name="WaitTimeInfoCard"
+              file="components/parks/wait-time-info-card.tsx"
+            />
+            <Sub title="WaitTimeInfoCard — operating / closed / no data">
+              <div className="grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+                <WaitTimeInfoCard
+                  waitTime={45}
+                  trend="up"
+                  minWaitToday={15}
+                  maxWaitToday={70}
+                  labels={{
+                    title: 'Wait Time',
+                    minutes: 'Minutes',
+                    todayMin: 'Min.',
+                    todayMax: 'Max.',
+                    min: 'min.',
+                    trendLabel: 'Rising',
+                  }}
+                />
+                <WaitTimeInfoCard
+                  waitTime={20}
+                  trend="down"
+                  minWaitToday={10}
+                  maxWaitToday={55}
+                  labels={{
+                    title: 'Wait Time',
+                    minutes: 'Minutes',
+                    todayMin: 'Min.',
+                    todayMax: 'Max.',
+                    min: 'min.',
+                    trendLabel: 'Falling',
+                  }}
+                />
+                <WaitTimeInfoCard
+                  waitTime={null}
+                  statusLabel="Closed"
+                  labels={{
+                    title: 'Wait Time',
+                    minutes: 'Minutes',
+                    todayMin: 'Min.',
+                    todayMax: 'Max.',
+                    min: 'min.',
+                  }}
+                />
+              </div>
+            </Sub>
+
+            <ComponentLabel name="StatusInfoCard" file="components/common/status-info-card.tsx" />
+            <Sub title="StatusInfoCard — glass=true / glass=false">
+              <div className="grid max-w-xl grid-cols-1 gap-4 sm:grid-cols-2">
+                <StatusInfoCard title="Wait Times" icon={Clock} glass={true}>
+                  <p className="text-muted-foreground text-sm">
+                    Glass enabled (default) — blurred card.
+                  </p>
+                </StatusInfoCard>
+                <StatusInfoCard title="Attractions" icon={Activity} glass={false}>
+                  <p className="text-muted-foreground text-sm">
+                    Glass disabled — solid card background.
+                  </p>
+                </StatusInfoCard>
+              </div>
+            </Sub>
+
+            <ComponentLabel
+              name="BackgroundOverlay"
+              file="components/common/background-overlay.tsx"
+            />
+            <Sub title="BackgroundOverlay — intensity: light / medium / heavy (used inside park + attraction cards)">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                {(['light', 'medium', 'heavy'] as const).map((intensity) => (
+                  <div key={intensity} className="relative h-36 overflow-hidden rounded-xl border">
+                    <BackgroundOverlay
+                      imageSrc="/images/parks/phantasialand/background.jpg"
+                      alt="Phantasialand"
+                      intensity={intensity}
+                      hoverEffect
+                    />
+                    <div className="relative z-10 flex h-full flex-col justify-end p-4">
+                      <code className="font-mono text-xs font-semibold">
+                        intensity=&quot;{intensity}&quot;
+                      </code>
+                      <p className="text-muted-foreground text-xs">Hover for brightness effect</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Sub>
+          </Section>
+
+          {/* ================================================================
             4. DOMAIN BADGES
         ================================================================ */}
-        <Section title="Domain Badges" icon={Zap}>
-          <ComponentLabel name="CrowdLevelBadge" file="components/parks/crowd-level-badge.tsx" />
-          <Sub title="CrowdLevelBadge — All 7 Levels (incl. closed)">
-            <Row>
-              <CrowdLevelBadge level="very_low" />
-              <CrowdLevelBadge level="low" />
-              <CrowdLevelBadge level="moderate" />
-              <CrowdLevelBadge level="high" />
-              <CrowdLevelBadge level="very_high" />
-              <CrowdLevelBadge level="extreme" />
-              <CrowdLevelBadge level={'closed' as CrowdLevel} />
-            </Row>
-            <div className="mt-2">
-              <p className="text-muted-foreground mb-2 text-xs">showLabel=false</p>
+          <Section title="Domain Badges" icon={Zap}>
+            <ComponentLabel name="CrowdLevelBadge" file="components/parks/crowd-level-badge.tsx" />
+            <Sub title="CrowdLevelBadge — All 7 Levels (incl. closed)">
               <Row>
-                <CrowdLevelBadge level="very_low" showLabel={false} />
-                <CrowdLevelBadge level="low" showLabel={false} />
-                <CrowdLevelBadge level="moderate" showLabel={false} />
-                <CrowdLevelBadge level="high" showLabel={false} />
-                <CrowdLevelBadge level="very_high" showLabel={false} />
-                <CrowdLevelBadge level="extreme" showLabel={false} />
+                <CrowdLevelBadge level="very_low" />
+                <CrowdLevelBadge level="low" />
+                <CrowdLevelBadge level="moderate" />
+                <CrowdLevelBadge level="high" />
+                <CrowdLevelBadge level="very_high" />
+                <CrowdLevelBadge level="extreme" />
+                <CrowdLevelBadge level={'closed' as CrowdLevel} />
               </Row>
-            </div>
-          </Sub>
+              <div className="mt-2">
+                <p className="text-muted-foreground mb-2 text-xs">showLabel=false</p>
+                <Row>
+                  <CrowdLevelBadge level="very_low" showLabel={false} />
+                  <CrowdLevelBadge level="low" showLabel={false} />
+                  <CrowdLevelBadge level="moderate" showLabel={false} />
+                  <CrowdLevelBadge level="high" showLabel={false} />
+                  <CrowdLevelBadge level="very_high" showLabel={false} />
+                  <CrowdLevelBadge level="extreme" showLabel={false} />
+                </Row>
+              </div>
+            </Sub>
 
-          <ComponentLabel name="ParkStatusBadge" file="components/parks/park-status-badge.tsx" />
-          <Sub title="ParkStatusBadge — All 5 Statuses (AttractionStatus: OPERATING/DOWN/CLOSED/REFURBISHMENT + ParkStatus: UNKNOWN)">
-            <Row>
-              <ParkStatusBadge status="OPERATING" />
-              <ParkStatusBadge status="DOWN" />
-              <ParkStatusBadge status="CLOSED" />
-              <ParkStatusBadge status="REFURBISHMENT" />
-              <ParkStatusBadge status="UNKNOWN" />
-            </Row>
-            <p className="text-muted-foreground mt-1 text-xs">
-              UNKNOWN = park-level only (no schedule data), falls through to CLOSED styling
-            </p>
-          </Sub>
+            <ComponentLabel name="ParkStatusBadge" file="components/parks/park-status-badge.tsx" />
+            <Sub title="ParkStatusBadge — All 5 Statuses (AttractionStatus: OPERATING/DOWN/CLOSED/REFURBISHMENT + ParkStatus: UNKNOWN)">
+              <Row>
+                <ParkStatusBadge status="OPERATING" />
+                <ParkStatusBadge status="DOWN" />
+                <ParkStatusBadge status="CLOSED" />
+                <ParkStatusBadge status="REFURBISHMENT" />
+                <ParkStatusBadge status="UNKNOWN" />
+              </Row>
+              <p className="text-muted-foreground mt-1 text-xs">
+                UNKNOWN = park-level only (no schedule data), falls through to CLOSED styling
+              </p>
+            </Sub>
 
-          <ComponentLabel name="ComparisonBadge" file="components/parks/comparison-badge.tsx" />
-          <Sub title="ComparisonBadge — All ComparisonStatus values (much_lower / lower / typical / higher / much_higher / closed)">
-            <Row>
-              <ComparisonBadge comparison="much_lower" />
-              <ComparisonBadge comparison="lower" />
-              <ComparisonBadge comparison="typical" />
-              <ComparisonBadge comparison="higher" />
-              <ComparisonBadge comparison="much_higher" />
-              <ComparisonBadge comparison="closed" />
-            </Row>
-            <p className="text-muted-foreground mt-1 text-xs">
-              much_lower / much_higher / closed → fallthrough to outline (no color). Consider
-              extending the component.
-            </p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              <ComparisonBadge comparison="lower" showIcon={false} />
-              <ComparisonBadge comparison="typical" showIcon={false} />
-              <ComparisonBadge comparison="higher" showIcon={false} />
-              <span className="text-muted-foreground self-center text-xs">showIcon=false</span>
-            </div>
-          </Sub>
+            <ComponentLabel name="ComparisonBadge" file="components/parks/comparison-badge.tsx" />
+            <Sub title="ComparisonBadge — All ComparisonStatus values (much_lower / lower / typical / higher / much_higher / closed)">
+              <Row>
+                <ComparisonBadge comparison="much_lower" />
+                <ComparisonBadge comparison="lower" />
+                <ComparisonBadge comparison="typical" />
+                <ComparisonBadge comparison="higher" />
+                <ComparisonBadge comparison="much_higher" />
+                <ComparisonBadge comparison="closed" />
+              </Row>
+              <p className="text-muted-foreground mt-1 text-xs">
+                much_lower / much_higher / closed → fallthrough to outline (no color). Consider
+                extending the component.
+              </p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <ComparisonBadge comparison="lower" showIcon={false} />
+                <ComparisonBadge comparison="typical" showIcon={false} />
+                <ComparisonBadge comparison="higher" showIcon={false} />
+                <span className="text-muted-foreground self-center text-xs">showIcon=false</span>
+              </div>
+            </Sub>
 
-          <ComponentLabel name="PeakHourBadge" file="components/parks/peak-hour-badge.tsx" />
-          <Sub title="PeakHourBadge — renders after hydration if peak is in future">
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground text-sm">Peak at 23:59:</span>
-              <PeakHourBadge peakHour="2099-12-31T23:59:00+01:00" />
-            </div>
-          </Sub>
-        </Section>
+            <ComponentLabel name="PeakHourBadge" file="components/parks/peak-hour-badge.tsx" />
+            <Sub title="PeakHourBadge — renders after hydration if peak is in future">
+              <div className="flex items-center gap-2">
+                <span className="text-muted-foreground text-sm">Peak at 23:59:</span>
+                <PeakHourBadge peakHour="2099-12-31T23:59:00+01:00" />
+              </div>
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             5. PARK CARDS
         ================================================================ */}
-        <Section title="Park Cards" icon={TreePalm}>
-          <ComponentLabel name="ParkCard" file="components/parks/park-card.tsx" />
-          <Sub title='ParkCard variant="compact" — OPERATING with bg / CLOSED / UNKNOWN / OPERATING no bg'>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <ParkCard
-                name="Phantasialand"
-                slug="phantasialand"
-                city="Brühl"
-                country="Germany"
-                href="/parks/europe/germany/bruhl/phantasialand"
-                status="OPERATING"
-                crowdLevel="high"
-                averageWaitTime={35}
-                operatingAttractions={38}
-                totalAttractions={42}
-                variant="compact"
-                showBackground
-                backgroundImage="/images/parks/phantasialand/background.jpg"
-                timezone="Europe/Berlin"
-                parkId="phantasialand-id"
-              />
-              <ParkCard
-                name="Efteling"
-                slug="efteling"
-                city="Kaatsheuvel"
-                country="Netherlands"
-                href="/parks/europe/netherlands/kaatsheuvel/efteling"
-                status="CLOSED"
-                variant="compact"
-                showBackground={false}
-                timezone="Europe/Amsterdam"
-                parkId="efteling-id"
-              />
-              <ParkCard
-                name="Heide-Park"
-                slug="heide-park"
-                city="Soltau"
-                country="Germany"
-                href="/parks/europe/germany/soltau/heide-park"
-                status="UNKNOWN"
-                variant="compact"
-                showBackground={false}
-                timezone="Europe/Berlin"
-              />
-              <ParkCard
-                name="Europa-Park"
-                slug="europa-park"
-                city="Rust"
-                country="Germany"
-                href="/parks/europe/germany/rust/europa-park"
-                status="OPERATING"
-                crowdLevel="low"
-                averageWaitTime={12}
-                operatingAttractions={55}
-                totalAttractions={60}
-                variant="compact"
-                showBackground={false}
-                timezone="Europe/Berlin"
-              />
-            </div>
-          </Sub>
+          <Section title="Park Cards" icon={TreePalm}>
+            <ComponentLabel name="ParkCard" file="components/parks/park-card.tsx" />
+            <Sub title='ParkCard variant="compact" — OPERATING with bg / CLOSED / UNKNOWN / OPERATING no bg'>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <ParkCard
+                  name="Phantasialand"
+                  slug="phantasialand"
+                  city="Brühl"
+                  country="Germany"
+                  href="/parks/europe/germany/bruhl/phantasialand"
+                  status="OPERATING"
+                  crowdLevel="high"
+                  averageWaitTime={35}
+                  operatingAttractions={38}
+                  totalAttractions={42}
+                  variant="compact"
+                  showBackground
+                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  timezone="Europe/Berlin"
+                  parkId="phantasialand-id"
+                />
+                <ParkCard
+                  name="Efteling"
+                  slug="efteling"
+                  city="Kaatsheuvel"
+                  country="Netherlands"
+                  href="/parks/europe/netherlands/kaatsheuvel/efteling"
+                  status="CLOSED"
+                  variant="compact"
+                  showBackground={false}
+                  timezone="Europe/Amsterdam"
+                  parkId="efteling-id"
+                />
+                <ParkCard
+                  name="Heide-Park"
+                  slug="heide-park"
+                  city="Soltau"
+                  country="Germany"
+                  href="/parks/europe/germany/soltau/heide-park"
+                  status="UNKNOWN"
+                  variant="compact"
+                  showBackground={false}
+                  timezone="Europe/Berlin"
+                />
+                <ParkCard
+                  name="Europa-Park"
+                  slug="europa-park"
+                  city="Rust"
+                  country="Germany"
+                  href="/parks/europe/germany/rust/europa-park"
+                  status="OPERATING"
+                  crowdLevel="low"
+                  averageWaitTime={12}
+                  operatingAttractions={55}
+                  totalAttractions={60}
+                  variant="compact"
+                  showBackground={false}
+                  timezone="Europe/Berlin"
+                />
+              </div>
+            </Sub>
 
-          <Sub title='ParkCard variant="detailed" — OPERATING (with schedule) / CLOSED (with next schedule)'>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <Sub title='ParkCard variant="detailed" — OPERATING (with schedule) / CLOSED (with next schedule)'>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <ParkCard
+                  name="Phantasialand"
+                  slug="phantasialand"
+                  city="Brühl"
+                  country="Germany"
+                  href="/europe/germany/bruhl/phantasialand"
+                  status="OPERATING"
+                  crowdLevel="high"
+                  averageWaitTime={35}
+                  operatingAttractions={38}
+                  totalAttractions={42}
+                  variant="detailed"
+                  showBackground
+                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  timezone="Europe/Berlin"
+                  todaySchedule={{
+                    openingTime: '2026-03-07T09:00:00+01:00',
+                    closingTime: '2026-03-07T18:00:00+01:00',
+                    scheduleType: 'OPERATING',
+                  }}
+                />
+                <ParkCard
+                  name="Efteling"
+                  slug="efteling"
+                  city="Kaatsheuvel"
+                  country="Netherlands"
+                  href="/europe/netherlands/kaatsheuvel/efteling"
+                  status="CLOSED"
+                  variant="detailed"
+                  showBackground={false}
+                  timezone="Europe/Amsterdam"
+                  nextSchedule={{
+                    openingTime: '2026-03-08T10:00:00+01:00',
+                    closingTime: '2026-03-08T18:00:00+01:00',
+                    scheduleType: 'OPERATING',
+                  }}
+                />
+              </div>
+            </Sub>
+
+            <Sub title='ParkCard variant="hero" — OPERATING with distance'>
               <ParkCard
                 name="Phantasialand"
                 slug="phantasialand"
@@ -1484,387 +1530,366 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                 country="Germany"
                 href="/europe/germany/bruhl/phantasialand"
                 status="OPERATING"
-                crowdLevel="high"
-                averageWaitTime={35}
+                crowdLevel="very_high"
+                averageWaitTime={68}
                 operatingAttractions={38}
                 totalAttractions={42}
-                variant="detailed"
+                variant="hero"
                 showBackground
                 backgroundImage="/images/parks/phantasialand/background.jpg"
                 timezone="Europe/Berlin"
-                todaySchedule={{
-                  openingTime: '2026-03-07T09:00:00+01:00',
-                  closingTime: '2026-03-07T18:00:00+01:00',
-                  scheduleType: 'OPERATING',
-                }}
+                distance="3.2 km"
               />
-              <ParkCard
-                name="Efteling"
-                slug="efteling"
-                city="Kaatsheuvel"
-                country="Netherlands"
-                href="/europe/netherlands/kaatsheuvel/efteling"
-                status="CLOSED"
-                variant="detailed"
-                showBackground={false}
-                timezone="Europe/Amsterdam"
-                nextSchedule={{
-                  openingTime: '2026-03-08T10:00:00+01:00',
-                  closingTime: '2026-03-08T18:00:00+01:00',
-                  scheduleType: 'OPERATING',
-                }}
-              />
-            </div>
-          </Sub>
+            </Sub>
 
-          <Sub title='ParkCard variant="hero" — OPERATING with distance'>
-            <ParkCard
-              name="Phantasialand"
-              slug="phantasialand"
-              city="Brühl"
-              country="Germany"
-              href="/europe/germany/bruhl/phantasialand"
-              status="OPERATING"
-              crowdLevel="very_high"
-              averageWaitTime={68}
-              operatingAttractions={38}
-              totalAttractions={42}
-              variant="hero"
-              showBackground
-              backgroundImage="/images/parks/phantasialand/background.jpg"
-              timezone="Europe/Berlin"
-              distance="3.2 km"
+            <ComponentLabel
+              name="ParkCard (nearby/favorites variant)"
+              file="components/parks/park-card.tsx"
             />
-          </Sub>
+            <Sub title="ParkCard with url+analytics — OPERATING (nearest open) / CLOSED / CLOSED (offseason) / OPERATING (no analytics)">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <ParkCard
+                  id="phantasialand"
+                  slug="phantasialand"
+                  name="Phantasialand"
+                  city="Brühl"
+                  country="Germany"
+                  distance={3200}
+                  status="OPERATING"
+                  timezone="Europe/Berlin"
+                  totalAttractions={42}
+                  operatingAttractions={38}
+                  analytics={{ avgWaitTime: 35, crowdLevel: 'high', occupancy: 67 }}
+                  url="/europe/germany/bruhl/phantasialand"
+                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  highlightAsNearestOpen
+                  translateCountry
+                  todaySchedule={{
+                    openingTime: '2026-03-07T09:00:00+01:00',
+                    closingTime: '2026-03-07T18:00:00+01:00',
+                    scheduleType: 'OPERATING',
+                  }}
+                />
+                <ParkCard
+                  id="efteling"
+                  slug="efteling"
+                  name="Efteling"
+                  city="Kaatsheuvel"
+                  country="Netherlands"
+                  distance={120000}
+                  status="CLOSED"
+                  timezone="Europe/Amsterdam"
+                  totalAttractions={40}
+                  operatingAttractions={0}
+                  url="/europe/netherlands/kaatsheuvel/efteling"
+                  translateCountry
+                  nextSchedule={{
+                    openingTime: '2026-03-08T10:00:00+01:00',
+                    closingTime: '2026-03-08T18:00:00+01:00',
+                    scheduleType: 'OPERATING',
+                  }}
+                />
+                <ParkCard
+                  id="heide-park"
+                  slug="heide-park"
+                  name="Heide-Park"
+                  city="Soltau"
+                  country="Germany"
+                  distance={95000}
+                  status="CLOSED"
+                  timezone="Europe/Berlin"
+                  totalAttractions={30}
+                  operatingAttractions={0}
+                  url="/europe/germany/soltau/heide-park"
+                  translateCountry
+                  nextSchedule={{
+                    openingTime: '2026-04-01T10:00:00+02:00',
+                    closingTime: '2026-04-01T18:00:00+02:00',
+                    scheduleType: 'OPERATING',
+                  }}
+                />
+                <ParkCard
+                  id="walibi-belgium"
+                  slug="walibi-belgium"
+                  name="Walibi Belgium"
+                  city="Wavre"
+                  country="Belgium"
+                  distance={85000}
+                  status="OPERATING"
+                  timezone="Europe/Brussels"
+                  totalAttractions={32}
+                  operatingAttractions={28}
+                  analytics={{ avgWaitTime: 18, crowdLevel: 'low', occupancy: 30 }}
+                  url="/europe/belgium/wavre/walibi-belgium"
+                  translateCountry
+                />
+              </div>
+            </Sub>
 
-          <ComponentLabel
-            name="ParkCard (nearby/favorites variant)"
-            file="components/parks/park-card.tsx"
-          />
-          <Sub title="ParkCard with url+analytics — OPERATING (nearest open) / CLOSED / CLOSED (offseason) / OPERATING (no analytics)">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <ParkCard
-                id="phantasialand"
-                slug="phantasialand"
-                name="Phantasialand"
-                city="Brühl"
-                country="Germany"
-                distance={3200}
-                status="OPERATING"
-                timezone="Europe/Berlin"
-                totalAttractions={42}
-                operatingAttractions={38}
-                analytics={{ avgWaitTime: 35, crowdLevel: 'high', occupancy: 67 }}
-                url="/europe/germany/bruhl/phantasialand"
-                backgroundImage="/images/parks/phantasialand/background.jpg"
-                highlightAsNearestOpen
-                translateCountry
-                todaySchedule={{
-                  openingTime: '2026-03-07T09:00:00+01:00',
-                  closingTime: '2026-03-07T18:00:00+01:00',
-                  scheduleType: 'OPERATING',
-                }}
-              />
-              <ParkCard
-                id="efteling"
-                slug="efteling"
-                name="Efteling"
-                city="Kaatsheuvel"
-                country="Netherlands"
-                distance={120000}
-                status="CLOSED"
-                timezone="Europe/Amsterdam"
-                totalAttractions={40}
-                operatingAttractions={0}
-                url="/europe/netherlands/kaatsheuvel/efteling"
-                translateCountry
-                nextSchedule={{
-                  openingTime: '2026-03-08T10:00:00+01:00',
-                  closingTime: '2026-03-08T18:00:00+01:00',
-                  scheduleType: 'OPERATING',
-                }}
-              />
-              <ParkCard
-                id="heide-park"
-                slug="heide-park"
-                name="Heide-Park"
-                city="Soltau"
-                country="Germany"
-                distance={95000}
-                status="CLOSED"
-                timezone="Europe/Berlin"
-                totalAttractions={30}
-                operatingAttractions={0}
-                url="/europe/germany/soltau/heide-park"
-                translateCountry
-                nextSchedule={{
-                  openingTime: '2026-04-01T10:00:00+02:00',
-                  closingTime: '2026-04-01T18:00:00+02:00',
-                  scheduleType: 'OPERATING',
-                }}
-              />
-              <ParkCard
-                id="walibi-belgium"
-                slug="walibi-belgium"
-                name="Walibi Belgium"
-                city="Wavre"
-                country="Belgium"
-                distance={85000}
-                status="OPERATING"
-                timezone="Europe/Brussels"
-                totalAttractions={32}
-                operatingAttractions={28}
-                analytics={{ avgWaitTime: 18, crowdLevel: 'low', occupancy: 30 }}
-                url="/europe/belgium/wavre/walibi-belgium"
-                translateCountry
-              />
-            </div>
-          </Sub>
+            <ComponentLabel
+              name="ParkCardNearbySkeleton"
+              file="components/parks/park-card-nearby-skeleton.tsx"
+            />
+            <Sub title="ParkCardNearbySkeleton — Loading State">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <ParkCardNearbySkeleton />
+                <ParkCardNearbySkeleton />
+                <ParkCardNearbySkeleton />
+              </div>
+            </Sub>
+          </Section>
 
-          <ComponentLabel
-            name="ParkCardNearbySkeleton"
-            file="components/parks/park-card-nearby-skeleton.tsx"
-          />
-          <Sub title="ParkCardNearbySkeleton — Loading State">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <ParkCardNearbySkeleton />
-              <ParkCardNearbySkeleton />
-              <ParkCardNearbySkeleton />
-            </div>
-          </Sub>
-        </Section>
-
-        {/* ================================================================
+          {/* ================================================================
             6. ATTRACTION & SHOW CARDS
         ================================================================ */}
-        <Section title="Attraction & Show Cards" icon={Ticket}>
-          <ComponentLabel name="AttractionCard" file="components/parks/attraction-card.tsx" />
-          <Sub title="AttractionCard — OPERATING: trend=up (rose) / trend=down (emerald) / trend=stable (gray)">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_OPERATING}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_TREND_DOWN}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_TREND_STABLE}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-            </div>
-          </Sub>
-          <Sub title="AttractionCard — OPERATING + PAID_RETURN_TIME / OPERATING no wait time / DOWN / CLOSED / REFURBISHMENT">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_VRT}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_NO_WAIT}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_DOWN}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_CLOSED}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_REFURB}
-                parkPath="/parks/europe/germany/bruhl/phantasialand"
-                parkStatus="OPERATING"
-              />
-            </div>
-          </Sub>
-          <Sub title="AttractionCard — Favorites mode (backgroundImage + showParkName + distance)">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              <AttractionCard
-                attraction={MOCK_ATTRACTION_FAVORITES}
-                backgroundImage="/images/parks/phantasialand/background.jpg"
-                showParkName
-                distance={3200}
-              />
-            </div>
-          </Sub>
+          <Section title="Attraction & Show Cards" icon={Ticket}>
+            <ComponentLabel name="AttractionCard" file="components/parks/attraction-card.tsx" />
+            <Sub title="AttractionCard — OPERATING: trend=up (rose) / trend=down (emerald) / trend=stable (gray)">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_OPERATING}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_TREND_DOWN}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_TREND_STABLE}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+              </div>
+            </Sub>
+            <Sub title="AttractionCard — OPERATING + PAID_RETURN_TIME / OPERATING no wait time / DOWN / CLOSED / REFURBISHMENT">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_VRT}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_NO_WAIT}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_DOWN}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_CLOSED}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_REFURB}
+                  parkPath="/parks/europe/germany/bruhl/phantasialand"
+                  parkStatus="OPERATING"
+                />
+              </div>
+            </Sub>
+            <Sub title="AttractionCard — Favorites mode (backgroundImage + showParkName + distance)">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <AttractionCard
+                  attraction={MOCK_ATTRACTION_FAVORITES}
+                  backgroundImage="/images/parks/phantasialand/background.jpg"
+                  showParkName
+                  distance={3200}
+                />
+              </div>
+            </Sub>
 
-          <ComponentLabel
-            name="AttractionCardSkeleton"
-            file="components/parks/attraction-card-skeleton.tsx"
-          />
-          <Sub title="AttractionCardSkeleton — Loading State">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <AttractionCardSkeleton />
-              <AttractionCardSkeleton />
-              <AttractionCardSkeleton />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="ShowCard" file="components/parks/show-card.tsx" />
-          <Sub title="ShowCard — OPERATING (4 showtimes, 2 past) / OPERATING no showtimes today / DOWN / CLOSED / with distance">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-              <ShowCard
-                id="show-winjas"
-                name="Winjas Stunt Show"
-                slug="winjas-stunt-show"
-                status="OPERATING"
-                timezone="Europe/Berlin"
-                href="/parks/europe/germany/bruhl/phantasialand#shows"
-                parkName="Phantasialand"
-                showtimes={[
-                  { startTime: twoHoursAgo },
-                  { startTime: hourAgo },
-                  { startTime: show1HAhead },
-                  { startTime: show3HAhead },
-                ]}
-              />
-              <ShowCard
-                id="show-no-today"
-                name="Rookburgh Parade"
-                slug="rookburgh-parade"
-                status="OPERATING"
-                timezone="Europe/Berlin"
-                href="/parks/europe/germany/bruhl/phantasialand#shows"
-                parkName="Phantasialand"
-                showtimes={[{ startTime: showYesterday }]}
-              />
-              <ShowCard
-                id="show-down"
-                name="Mystery Show"
-                slug="mystery-show"
-                status="DOWN"
-                timezone="Europe/Berlin"
-                href="/parks/europe/germany/bruhl/phantasialand#shows"
-                parkName="Phantasialand"
-                showtimes={null}
-              />
-              <ShowCard
-                id="show-chiapas"
-                name="Chiapas Experience"
-                slug="chiapas-experience"
-                status="CLOSED"
-                timezone="Europe/Berlin"
-                href="/parks/europe/germany/bruhl/phantasialand#shows"
-                parkName="Phantasialand"
-                showtimes={null}
-              />
-              <ShowCard
-                id="show-fav"
-                name="Winjas Stunt Show"
-                slug="winjas-stunt-show"
-                status="OPERATING"
-                timezone="Europe/Berlin"
-                href="/parks/europe/germany/bruhl/phantasialand#shows"
-                parkName="Phantasialand"
-                distance={3200}
-                showtimes={[{ startTime: show1HAhead }]}
-              />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="ShowCardSkeleton" file="components/parks/show-card-skeleton.tsx" />
-          <Sub title="ShowCardSkeleton — Loading State">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <ShowCardSkeleton />
-              <ShowCardSkeleton />
-              <ShowCardSkeleton />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="RestaurantCard" file="components/parks/restaurant-card.tsx" />
-          <Sub title="RestaurantCard — various states">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <RestaurantCard
-                restaurant={{
-                  id: 'rest-1',
-                  name: 'Uhrwerk Restaurant',
-                  slug: 'uhrwerk-restaurant',
-                  cuisineType: 'German',
-                  latitude: null,
-                  longitude: null,
-                  requiresReservation: false,
-                  status: 'OPERATING',
-                  waitTime: 15,
-                }}
-              />
-              <RestaurantCard
-                restaurant={{
-                  id: 'rest-2',
-                  name: 'Rookburgh Café',
-                  slug: 'rookburgh-cafe',
-                  cuisineType: 'Café',
-                  latitude: null,
-                  longitude: null,
-                  requiresReservation: true,
-                  status: 'OPERATING',
-                  operatingHours: [{ type: 'OPERATING', startTime: '10:00', endTime: '20:00' }],
-                }}
-              />
-              <RestaurantCard
-                restaurant={{
-                  id: 'rest-3',
-                  name: 'La Cantina',
-                  slug: 'la-cantina',
-                  cuisineType: null,
-                  latitude: null,
-                  longitude: null,
-                  requiresReservation: false,
-                  status: 'CLOSED',
-                }}
-              />
-            </div>
-          </Sub>
-
-          <ComponentLabel
-            name="RestaurantCardSkeleton"
-            file="components/parks/restaurant-card-skeleton.tsx"
-          />
-          <Sub title="RestaurantCardSkeleton — Loading State">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <RestaurantCardSkeleton />
-              <RestaurantCardSkeleton />
-              <RestaurantCardSkeleton />
-            </div>
-          </Sub>
-
-          <ComponentLabel name="LandSection" file="components/parks/land-section.tsx" />
-          <Sub title="LandSection — land header + attraction grid (as used in park attractions tab)">
-            <LandSection
-              landName="Rookburgh"
-              attractions={[
-                MOCK_ATTRACTION_OPERATING,
-                MOCK_ATTRACTION_TREND_DOWN,
-                MOCK_ATTRACTION_REFURB,
-              ]}
-              parkPath="/parks/europe/germany/bruhl/phantasialand"
-              parkSlug="phantasialand"
-              parkStatus="OPERATING"
+            <ComponentLabel
+              name="AttractionCardSkeleton"
+              file="components/parks/attraction-card-skeleton.tsx"
             />
-          </Sub>
-        </Section>
+            <Sub title="AttractionCardSkeleton — Loading State">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <AttractionCardSkeleton />
+                <AttractionCardSkeleton />
+                <AttractionCardSkeleton />
+              </div>
+            </Sub>
 
-        {/* ================================================================
+            <ComponentLabel name="ShowCard" file="components/parks/show-card.tsx" />
+            <Sub title="ShowCard — OPERATING (4 showtimes, 2 past) / OPERATING no showtimes today / DOWN / CLOSED / with distance">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <ShowCard
+                  id="show-winjas"
+                  name="Winjas Stunt Show"
+                  slug="winjas-stunt-show"
+                  status="OPERATING"
+                  timezone="Europe/Berlin"
+                  href="/parks/europe/germany/bruhl/phantasialand#shows"
+                  parkName="Phantasialand"
+                  showtimes={[
+                    { startTime: twoHoursAgo },
+                    { startTime: hourAgo },
+                    { startTime: show1HAhead },
+                    { startTime: show3HAhead },
+                  ]}
+                />
+                <ShowCard
+                  id="show-no-today"
+                  name="Rookburgh Parade"
+                  slug="rookburgh-parade"
+                  status="OPERATING"
+                  timezone="Europe/Berlin"
+                  href="/parks/europe/germany/bruhl/phantasialand#shows"
+                  parkName="Phantasialand"
+                  showtimes={[{ startTime: showYesterday }]}
+                />
+                <ShowCard
+                  id="show-down"
+                  name="Mystery Show"
+                  slug="mystery-show"
+                  status="DOWN"
+                  timezone="Europe/Berlin"
+                  href="/parks/europe/germany/bruhl/phantasialand#shows"
+                  parkName="Phantasialand"
+                  showtimes={null}
+                />
+                <ShowCard
+                  id="show-chiapas"
+                  name="Chiapas Experience"
+                  slug="chiapas-experience"
+                  status="CLOSED"
+                  timezone="Europe/Berlin"
+                  href="/parks/europe/germany/bruhl/phantasialand#shows"
+                  parkName="Phantasialand"
+                  showtimes={null}
+                />
+                <ShowCard
+                  id="show-fav"
+                  name="Winjas Stunt Show"
+                  slug="winjas-stunt-show"
+                  status="OPERATING"
+                  timezone="Europe/Berlin"
+                  href="/parks/europe/germany/bruhl/phantasialand#shows"
+                  parkName="Phantasialand"
+                  distance={3200}
+                  showtimes={[{ startTime: show1HAhead }]}
+                />
+              </div>
+            </Sub>
+
+            <ComponentLabel
+              name="ShowCardSkeleton"
+              file="components/parks/show-card-skeleton.tsx"
+            />
+            <Sub title="ShowCardSkeleton — Loading State">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <ShowCardSkeleton />
+                <ShowCardSkeleton />
+                <ShowCardSkeleton />
+              </div>
+            </Sub>
+
+            <ComponentLabel name="RestaurantCard" file="components/parks/restaurant-card.tsx" />
+            <Sub title="RestaurantCard — various states">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <RestaurantCard
+                  restaurant={{
+                    id: 'rest-1',
+                    name: 'Uhrwerk Restaurant',
+                    slug: 'uhrwerk-restaurant',
+                    cuisineType: 'German',
+                    latitude: null,
+                    longitude: null,
+                    requiresReservation: false,
+                    status: 'OPERATING',
+                    waitTime: 15,
+                  }}
+                />
+                <RestaurantCard
+                  restaurant={{
+                    id: 'rest-2',
+                    name: 'Rookburgh Café',
+                    slug: 'rookburgh-cafe',
+                    cuisineType: 'Café',
+                    latitude: null,
+                    longitude: null,
+                    requiresReservation: true,
+                    status: 'OPERATING',
+                    operatingHours: [{ type: 'OPERATING', startTime: '10:00', endTime: '20:00' }],
+                  }}
+                />
+                <RestaurantCard
+                  restaurant={{
+                    id: 'rest-3',
+                    name: 'La Cantina',
+                    slug: 'la-cantina',
+                    cuisineType: null,
+                    latitude: null,
+                    longitude: null,
+                    requiresReservation: false,
+                    status: 'CLOSED',
+                  }}
+                />
+              </div>
+            </Sub>
+
+            <ComponentLabel
+              name="RestaurantCardSkeleton"
+              file="components/parks/restaurant-card-skeleton.tsx"
+            />
+            <Sub title="RestaurantCardSkeleton — Loading State">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <RestaurantCardSkeleton />
+                <RestaurantCardSkeleton />
+                <RestaurantCardSkeleton />
+              </div>
+            </Sub>
+
+            <ComponentLabel name="LandSection" file="components/parks/land-section.tsx" />
+            <Sub title="LandSection — land header + attraction grid (as used in park attractions tab)">
+              <LandSection
+                landName="Rookburgh"
+                attractions={[
+                  MOCK_ATTRACTION_OPERATING,
+                  MOCK_ATTRACTION_TREND_DOWN,
+                  MOCK_ATTRACTION_REFURB,
+                ]}
+                parkPath="/parks/europe/germany/bruhl/phantasialand"
+                parkSlug="phantasialand"
+                parkStatus="OPERATING"
+              />
+            </Sub>
+          </Section>
+
+          {/* ================================================================
             7. PARK STATUS & TIMING
         ================================================================ */}
-        <Section title="Park Status & Timing" icon={Map}>
-          <ComponentLabel name="ParkStatus" file="components/parks/park-status.tsx" />
+          <Section title="Park Status & Timing" icon={Map}>
+            <ComponentLabel name="ParkStatus" file="components/parks/park-status.tsx" />
 
-          <Sub title='variant="compact" — OPERATING / CLOSED'>
-            <Row>
-              <GlassCard variant="medium" className="inline-block">
-                <ParkStatus park={MOCK_PARK} variant="compact" />
-              </GlassCard>
-              <GlassCard variant="medium" className="inline-block">
+            <Sub title='variant="compact" — OPERATING / CLOSED'>
+              <Row>
+                <GlassCard variant="medium" className="inline-block">
+                  <ParkStatus park={MOCK_PARK} variant="compact" />
+                </GlassCard>
+                <GlassCard variant="medium" className="inline-block">
+                  <ParkStatus
+                    park={
+                      {
+                        ...MOCK_PARK,
+                        status: 'CLOSED' as const,
+                        currentLoad: null,
+                      } as unknown as ParkResponse
+                    }
+                    variant="compact"
+                  />
+                </GlassCard>
+              </Row>
+            </Sub>
+
+            <Sub title='variant="card" — OPERATING / CLOSED'>
+              <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
+                <ParkStatus park={MOCK_PARK} variant="card" />
                 <ParkStatus
                   park={
                     {
@@ -1873,683 +1898,669 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                       currentLoad: null,
                     } as unknown as ParkResponse
                   }
-                  variant="compact"
+                  variant="card"
                 />
+              </div>
+            </Sub>
+
+            <Sub title='variant="hero" — OPERATING'>
+              <ParkStatus park={MOCK_PARK} variant="hero" />
+            </Sub>
+
+            <Sub title='variant="detailed" — OPERATING (crowd + wait + attractions cards)'>
+              <ParkStatus park={MOCK_PARK} variant="detailed" />
+            </Sub>
+
+            <Sub title='variant="detailed" — CLOSED (renders nothing — expected)'>
+              <GlassCard variant="medium" className="inline-flex items-center gap-2 px-4 py-3">
+                <ParkStatus
+                  park={
+                    {
+                      ...MOCK_PARK,
+                      status: 'CLOSED' as const,
+                      currentLoad: null,
+                    } as unknown as ParkResponse
+                  }
+                  variant="detailed"
+                />
+                <span className="text-muted-foreground text-xs italic">
+                  — detailed returns null when CLOSED (no stats)
+                </span>
               </GlassCard>
-            </Row>
-          </Sub>
+            </Sub>
 
-          <Sub title='variant="card" — OPERATING / CLOSED'>
-            <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
-              <ParkStatus park={MOCK_PARK} variant="card" />
-              <ParkStatus
-                park={
-                  {
-                    ...MOCK_PARK,
-                    status: 'CLOSED' as const,
-                    currentLoad: null,
-                  } as unknown as ParkResponse
-                }
-                variant="card"
-              />
-            </div>
-          </Sub>
+            <ComponentLabel name="ParkTimeInfo" file="components/parks/park-time-info.tsx" />
+            <Sub title="ParkTimeInfo — with today schedule (live clock + opens/closes in countdown)">
+              <ParkTimeInfoShowcase />
+            </Sub>
+          </Section>
 
-          <Sub title='variant="hero" — OPERATING'>
-            <ParkStatus park={MOCK_PARK} variant="hero" />
-          </Sub>
-
-          <Sub title='variant="detailed" — OPERATING (crowd + wait + attractions cards)'>
-            <ParkStatus park={MOCK_PARK} variant="detailed" />
-          </Sub>
-
-          <Sub title='variant="detailed" — CLOSED (renders nothing — expected)'>
-            <GlassCard variant="medium" className="inline-flex items-center gap-2 px-4 py-3">
-              <ParkStatus
-                park={
-                  {
-                    ...MOCK_PARK,
-                    status: 'CLOSED' as const,
-                    currentLoad: null,
-                  } as unknown as ParkResponse
-                }
-                variant="detailed"
-              />
-              <span className="text-muted-foreground text-xs italic">
-                — detailed returns null when CLOSED (no stats)
-              </span>
-            </GlassCard>
-          </Sub>
-
-          <ComponentLabel name="ParkTimeInfo" file="components/parks/park-time-info.tsx" />
-          <Sub title="ParkTimeInfo — with today schedule (live clock + opens/closes in countdown)">
-            <ParkTimeInfoShowcase />
-          </Sub>
-        </Section>
-
-        {/* ================================================================
+          {/* ================================================================
             8. CHARTS & SPARKLINES
         ================================================================ */}
-        <Section title="Charts & Sparklines" icon={BarChart2}>
-          <ComponentLabel
-            name="WaitTimeSparkline"
-            file="components/parks/wait-time-sparkline.tsx"
-          />
-          <Sub title="WaitTimeSparkline — Hover for tooltip">
-            <GlassCard variant="medium" className="max-w-xs p-4">
-              <p className="text-muted-foreground mb-3 text-xs">Taron — last 2 hours</p>
-              <WaitTimeSparkline history={SPARKLINE_HISTORY} className="h-16 w-full" />
-            </GlassCard>
-          </Sub>
+          <Section title="Charts & Sparklines" icon={BarChart2}>
+            <ComponentLabel
+              name="WaitTimeSparkline"
+              file="components/parks/wait-time-sparkline.tsx"
+            />
+            <Sub title="WaitTimeSparkline — Hover for tooltip">
+              <GlassCard variant="medium" className="max-w-xs p-4">
+                <p className="text-muted-foreground mb-3 text-xs">Taron — last 2 hours</p>
+                <WaitTimeSparkline history={SPARKLINE_HISTORY} className="h-16 w-full" />
+              </GlassCard>
+            </Sub>
 
-          <ComponentLabel
-            name="HourlyP90Sparkline"
-            file="components/parks/hourly-p90-sparkline.tsx"
-          />
-          <Sub title="HourlyP90Sparkline — Daily wait curve (P90 per hour)">
-            <GlassCard variant="medium" className="max-w-sm p-4">
-              <p className="text-muted-foreground mb-3 text-xs">Taron — typical day (P90)</p>
-              <HourlyP90Sparkline hourlyP90={HOURLY_P90} className="h-16 w-full" />
-            </GlassCard>
-          </Sub>
-        </Section>
+            <ComponentLabel
+              name="HourlyP90Sparkline"
+              file="components/parks/hourly-p90-sparkline.tsx"
+            />
+            <Sub title="HourlyP90Sparkline — Daily wait curve (P90 per hour)">
+              <GlassCard variant="medium" className="max-w-sm p-4">
+                <p className="text-muted-foreground mb-3 text-xs">Taron — typical day (P90)</p>
+                <HourlyP90Sparkline hourlyP90={HOURLY_P90} className="h-16 w-full" />
+              </GlassCard>
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             9. COMMON COMPONENTS
         ================================================================ */}
-        <Section title="Common Components" icon={Star}>
-          <ComponentLabel name="StatsCard" file="components/common/stats-card.tsx" />
-          <Sub title="StatsCard — title / value / description / icon">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              <StatsCard
-                title="Total Visitors Today"
-                value="24,850"
-                description="↑ 12% vs last Saturday"
-                icon={Users}
-              />
-              <StatsCard
-                title="Average Wait Time"
-                value="35 min"
-                description="Peak: 75 min at Taron"
-                icon={Clock}
-              />
-              <StatsCard
-                title="Operating Attractions"
-                value="38 / 42"
-                description="4 closed for maintenance"
-                icon={TrendingUp}
-              />
-            </div>
-          </Sub>
+          <Section title="Common Components" icon={Star}>
+            <ComponentLabel name="StatsCard" file="components/common/stats-card.tsx" />
+            <Sub title="StatsCard — title / value / description / icon">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <StatsCard
+                  title="Total Visitors Today"
+                  value="24,850"
+                  description="↑ 12% vs last Saturday"
+                  icon={Users}
+                />
+                <StatsCard
+                  title="Average Wait Time"
+                  value="35 min"
+                  description="Peak: 75 min at Taron"
+                  icon={Clock}
+                />
+                <StatsCard
+                  title="Operating Attractions"
+                  value="38 / 42"
+                  description="4 closed for maintenance"
+                  icon={TrendingUp}
+                />
+              </div>
+            </Sub>
 
-          <ComponentLabel
-            name="OpenStatusProgress"
-            file="components/common/open-status-progress.tsx"
-          />
-          <Sub title="OpenStatusProgress — open count / total count progress bar">
-            <GlassCard variant="medium" className="max-w-sm space-y-4">
-              <OpenStatusProgress openCount={38} totalCount={42} label="Attractions operating" />
-              <OpenStatusProgress openCount={3} totalCount={12} label="Shows operating" />
-              <OpenStatusProgress openCount={0} totalCount={8} label="Restaurants (all closed)" />
-            </GlassCard>
-          </Sub>
-
-          <ComponentLabel name="BreadcrumbNav" file="components/common/breadcrumb-nav.tsx" />
-          <Sub title='BreadcrumbNav variant="pill" (default) — park page / attraction page'>
-            <div className="flex flex-col gap-4">
-              <BreadcrumbNav
-                breadcrumbs={[
-                  { name: 'Europe', url: '/europe' },
-                  { name: 'Germany', url: '/europe/germany' },
-                  { name: 'Brühl', url: '/europe/germany/bruhl' },
-                ]}
-                currentPage="Phantasialand"
-              />
-              <BreadcrumbNav
-                breadcrumbs={[
-                  { name: 'Europe', url: '/europe' },
-                  { name: 'Germany', url: '/europe/germany' },
-                  { name: 'Brühl', url: '/europe/germany/bruhl' },
-                  { name: 'Phantasialand', url: '/europe/germany/bruhl/phantasialand' },
-                ]}
-                currentPage="Taron"
-                pinLastBreadcrumb
-              />
-            </div>
-          </Sub>
-          <Sub title='BreadcrumbNav variant="plain" — listing pages (no background)'>
-            <BreadcrumbNav
-              variant="plain"
-              breadcrumbs={[
-                { name: 'Europe', url: '/europe' },
-                { name: 'Germany', url: '/europe/germany' },
-              ]}
-              currentPage="Brühl"
+            <ComponentLabel
+              name="OpenStatusProgress"
+              file="components/common/open-status-progress.tsx"
             />
-          </Sub>
+            <Sub title="OpenStatusProgress — open count / total count progress bar">
+              <GlassCard variant="medium" className="max-w-sm space-y-4">
+                <OpenStatusProgress openCount={38} totalCount={42} label="Attractions operating" />
+                <OpenStatusProgress openCount={3} totalCount={12} label="Shows operating" />
+                <OpenStatusProgress openCount={0} totalCount={8} label="Restaurants (all closed)" />
+              </GlassCard>
+            </Sub>
 
-          <ComponentLabel name="FavoriteStar" file="components/common/favorite-star.tsx" />
-          <Sub title="FavoriteStar — all 4 types × all 3 sizes">
-            <div className="flex flex-wrap gap-6">
-              {(['sm', 'md', 'lg'] as const).map((size) => (
-                <div key={size} className="flex flex-col gap-2">
-                  <span className="text-muted-foreground font-mono text-xs">size={size}</span>
-                  <div className="flex gap-3">
-                    {(['park', 'attraction', 'show', 'restaurant'] as const).map((type) => (
-                      <div key={type} className="flex items-center gap-1">
-                        <FavoriteStar
-                          type={type}
-                          id={`demo-${type}-${size}`}
-                          name={type}
-                          size={size}
-                        />
-                        <span className="text-muted-foreground text-xs">{type}</span>
-                      </div>
-                    ))}
+            <ComponentLabel name="BreadcrumbNav" file="components/common/breadcrumb-nav.tsx" />
+            <Sub title='BreadcrumbNav variant="pill" (default) — park page / attraction page'>
+              <div className="flex flex-col gap-4">
+                <BreadcrumbNav
+                  breadcrumbs={[
+                    { name: 'Europe', url: '/europe' },
+                    { name: 'Germany', url: '/europe/germany' },
+                    { name: 'Brühl', url: '/europe/germany/bruhl' },
+                  ]}
+                  currentPage="Phantasialand"
+                />
+                <BreadcrumbNav
+                  breadcrumbs={[
+                    { name: 'Europe', url: '/europe' },
+                    { name: 'Germany', url: '/europe/germany' },
+                    { name: 'Brühl', url: '/europe/germany/bruhl' },
+                    { name: 'Phantasialand', url: '/europe/germany/bruhl/phantasialand' },
+                  ]}
+                  currentPage="Taron"
+                  pinLastBreadcrumb
+                />
+              </div>
+            </Sub>
+            <Sub title='BreadcrumbNav variant="plain" — listing pages (no background)'>
+              <BreadcrumbNav
+                variant="plain"
+                breadcrumbs={[
+                  { name: 'Europe', url: '/europe' },
+                  { name: 'Germany', url: '/europe/germany' },
+                ]}
+                currentPage="Brühl"
+              />
+            </Sub>
+
+            <ComponentLabel name="FavoriteStar" file="components/common/favorite-star.tsx" />
+            <Sub title="FavoriteStar — all 4 types × all 3 sizes">
+              <div className="flex flex-wrap gap-6">
+                {(['sm', 'md', 'lg'] as const).map((size) => (
+                  <div key={size} className="flex flex-col gap-2">
+                    <span className="text-muted-foreground font-mono text-xs">size={size}</span>
+                    <div className="flex gap-3">
+                      {(['park', 'attraction', 'show', 'restaurant'] as const).map((type) => (
+                        <div key={type} className="flex items-center gap-1">
+                          <FavoriteStar
+                            type={type}
+                            id={`demo-${type}-${size}`}
+                            name={type}
+                            size={size}
+                          />
+                          <span className="text-muted-foreground text-xs">{type}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+                ))}
+              </div>
+            </Sub>
+
+            <ComponentLabel
+              name="CompactNumberWithTooltip"
+              file="components/common/compact-number-with-tooltip.tsx"
+            />
+            <Sub title="CompactNumberWithTooltip — hover to see full number">
+              <GlassCard variant="medium" className="flex flex-wrap gap-6 p-4">
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">4,900,000</span>
+                  <span className="text-2xl font-bold">
+                    <CompactNumberWithTooltip value={4900000} />
+                  </span>
                 </div>
-              ))}
-            </div>
-          </Sub>
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">125,430</span>
+                  <span className="text-2xl font-bold">
+                    <CompactNumberWithTooltip value={125430} />
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">8,200</span>
+                  <span className="text-2xl font-bold">
+                    <CompactNumberWithTooltip value={8200} />
+                  </span>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">430</span>
+                  <span className="text-2xl font-bold">
+                    <CompactNumberWithTooltip value={430} />
+                  </span>
+                </div>
+              </GlassCard>
+            </Sub>
 
-          <ComponentLabel
-            name="CompactNumberWithTooltip"
-            file="components/common/compact-number-with-tooltip.tsx"
-          />
-          <Sub title="CompactNumberWithTooltip — hover to see full number">
-            <GlassCard variant="medium" className="flex flex-wrap gap-6 p-4">
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">4,900,000</span>
-                <span className="text-2xl font-bold">
-                  <CompactNumberWithTooltip value={4900000} />
-                </span>
+            <ComponentLabel name="SectionHeader" file="components/common/section-header.tsx" />
+            <Sub title="SectionHeader — icon + title + optional badge">
+              <div className="space-y-3">
+                <SectionHeader icon={MapPin} title="Parks in Germany" badge={42} />
+                <SectionHeader icon={Ticket} title="Attractions" />
+                <SectionHeader icon={Wrench} title="Under Refurbishment" badge={3} />
               </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">125,430</span>
-                <span className="text-2xl font-bold">
-                  <CompactNumberWithTooltip value={125430} />
-                </span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">8,200</span>
-                <span className="text-2xl font-bold">
-                  <CompactNumberWithTooltip value={8200} />
-                </span>
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">430</span>
-                <span className="text-2xl font-bold">
-                  <CompactNumberWithTooltip value={430} />
-                </span>
-              </div>
-            </GlassCard>
-          </Sub>
+            </Sub>
 
-          <ComponentLabel name="SectionHeader" file="components/common/section-header.tsx" />
-          <Sub title="SectionHeader — icon + title + optional badge">
-            <div className="space-y-3">
-              <SectionHeader icon={MapPin} title="Parks in Germany" badge={42} />
-              <SectionHeader icon={Ticket} title="Attractions" />
-              <SectionHeader icon={Wrench} title="Under Refurbishment" badge={3} />
-            </div>
-          </Sub>
+            <ComponentLabel name="ThemeToggle" file="components/common/theme-toggle.tsx" />
+            <ComponentLabel name="LocaleSwitcher" file="components/common/locale-switcher.tsx" />
+            <Sub title="ThemeToggle + LocaleSwitcher — Interactive dropdowns">
+              <Row>
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">ThemeToggle</span>
+                  <ThemeToggle />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-muted-foreground text-xs">LocaleSwitcher</span>
+                  <LocaleSwitcher />
+                </div>
+              </Row>
+            </Sub>
 
-          <ComponentLabel name="ThemeToggle" file="components/common/theme-toggle.tsx" />
-          <ComponentLabel name="LocaleSwitcher" file="components/common/locale-switcher.tsx" />
-          <Sub title="ThemeToggle + LocaleSwitcher — Interactive dropdowns">
-            <Row>
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">ThemeToggle</span>
-                <ThemeToggle />
-              </div>
-              <div className="flex flex-col gap-1">
-                <span className="text-muted-foreground text-xs">LocaleSwitcher</span>
-                <LocaleSwitcher />
-              </div>
-            </Row>
-          </Sub>
+            <ComponentLabel name="SearchCommand" file="components/search/search-bar.tsx" />
+            <Sub title='SearchCommand — trigger="button" opens dialog'>
+              <SearchCommand trigger="button" size="lg" isGlobal />
+            </Sub>
+          </Section>
 
-          <ComponentLabel name="SearchCommand" file="components/search/search-bar.tsx" />
-          <Sub title='SearchCommand — trigger="button" opens dialog'>
-            <SearchCommand trigger="button" size="lg" isGlobal />
-          </Sub>
-        </Section>
-
-        {/* ================================================================
+          {/* ================================================================
             10. WEATHER CARD
         ================================================================ */}
-        <Section title="Weather Card" icon={CloudSun}>
-          <ComponentLabel name="WeatherCard" file="components/parks/weather-card.tsx" />
-          <Sub title="WeatherCard — As seen on Park Page (with Glass effect)">
-            <WeatherCardShowcase variant="glass-pair" />
-          </Sub>
+          <Section title="Weather Card" icon={CloudSun}>
+            <ComponentLabel name="WeatherCard" file="components/parks/weather-card.tsx" />
+            <Sub title="WeatherCard — As seen on Park Page (with Glass effect)">
+              <WeatherCardShowcase variant="glass-pair" />
+            </Sub>
 
-          <Sub title="WeatherCard — Different Conditions">
-            <WeatherCardShowcase variant="conditions-grid" />
-          </Sub>
+            <Sub title="WeatherCard — Different Conditions">
+              <WeatherCardShowcase variant="conditions-grid" />
+            </Sub>
 
-          <ComponentLabel
-            name="WeatherNowcastBanner"
-            file="components/parks/weather-nowcast-banner.tsx"
-          />
-          <Sub title="WeatherNowcastBanner — Priority: storm > hail > thunderstorm > rain">
-            <NowcastBannerDemo />
-          </Sub>
-        </Section>
+            <ComponentLabel
+              name="WeatherNowcastBanner"
+              file="components/parks/weather-nowcast-banner.tsx"
+            />
+            <Sub title="WeatherNowcastBanner — Priority: storm > hail > thunderstorm > rain">
+              <NowcastBannerDemo />
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             11. ATTRACTION HISTORY
         ================================================================ */}
-        <Section title="Attraction History" icon={BarChart2}>
-          <ComponentLabel
-            name="AttractionHistoryDay"
-            file="components/parks/attraction-history-day.tsx"
-          />
-          <Sub title="AttractionHistoryDay — All States (today / public holiday / school vacation / park closed / ride closed)">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
-              <div className="space-y-1">
-                <AttractionHistoryDay day={MOCK_HISTORY_DAY_OPEN} />
-                <p className="text-muted-foreground text-center text-[10px]">OPEN · today · high</p>
+          <Section title="Attraction History" icon={BarChart2}>
+            <ComponentLabel
+              name="AttractionHistoryDay"
+              file="components/parks/attraction-history-day.tsx"
+            />
+            <Sub title="AttractionHistoryDay — All States (today / public holiday / school vacation / park closed / ride closed)">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+                <div className="space-y-1">
+                  <AttractionHistoryDay day={MOCK_HISTORY_DAY_OPEN} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    OPEN · today · high
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <AttractionHistoryDay day={MOCK_HISTORY_DAY_HOLIDAY} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    OPEN · public holiday · very_high
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <AttractionHistoryDay day={MOCK_HISTORY_DAY_SCHOOL} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    OPEN · school vacation · extreme
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <AttractionHistoryDay day={MOCK_HISTORY_DAY_PARK_CLOSED} />
+                  <p className="text-muted-foreground text-center text-[10px]">PARK_CLOSED</p>
+                </div>
+                <div className="space-y-1">
+                  <AttractionHistoryDay day={MOCK_HISTORY_DAY_CLOSED_RIDE} />
+                  <p className="text-muted-foreground text-center text-[10px]">CLOSED_RIDE</p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <AttractionHistoryDay day={MOCK_HISTORY_DAY_HOLIDAY} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  OPEN · public holiday · very_high
-                </p>
-              </div>
-              <div className="space-y-1">
-                <AttractionHistoryDay day={MOCK_HISTORY_DAY_SCHOOL} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  OPEN · school vacation · extreme
-                </p>
-              </div>
-              <div className="space-y-1">
-                <AttractionHistoryDay day={MOCK_HISTORY_DAY_PARK_CLOSED} />
-                <p className="text-muted-foreground text-center text-[10px]">PARK_CLOSED</p>
-              </div>
-              <div className="space-y-1">
-                <AttractionHistoryDay day={MOCK_HISTORY_DAY_CLOSED_RIDE} />
-                <p className="text-muted-foreground text-center text-[10px]">CLOSED_RIDE</p>
-              </div>
-            </div>
-          </Sub>
-        </Section>
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             12. CALENDAR DAYS
         ================================================================ */}
-        <Section title="Calendar Days" icon={CalendarDays}>
-          <ComponentLabel name="ParkCalendarDay" file="components/parks/park-calendar-day.tsx" />
-          <Sub title="ParkCalendarDay — All States">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_OPERATING} isToday={true} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  OPERATING · today · high
-                </p>
+          <Section title="Calendar Days" icon={CalendarDays}>
+            <ComponentLabel name="ParkCalendarDay" file="components/parks/park-calendar-day.tsx" />
+            <Sub title="ParkCalendarDay — All States">
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_OPERATING} isToday={true} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    OPERATING · today · high
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_CLOSED} isToday={false} />
+                  <p className="text-muted-foreground text-center text-[10px]">CLOSED</p>
+                </div>
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_HOLIDAY} isToday={false} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    Public holiday · very_high
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_SCHOOL} isToday={false} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    School vacation · extreme
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_BRIDGE} isToday={false} />
+                  <p className="text-muted-foreground text-center text-[10px]">
+                    Bridge day · moderate
+                  </p>
+                </div>
+                <div className="space-y-1">
+                  <ParkCalendarDay day={MOCK_CAL_UNKNOWN} isToday={false} />
+                  <p className="text-muted-foreground text-center text-[10px]">UNKNOWN (no data)</p>
+                </div>
               </div>
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_CLOSED} isToday={false} />
-                <p className="text-muted-foreground text-center text-[10px]">CLOSED</p>
-              </div>
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_HOLIDAY} isToday={false} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  Public holiday · very_high
-                </p>
-              </div>
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_SCHOOL} isToday={false} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  School vacation · extreme
-                </p>
-              </div>
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_BRIDGE} isToday={false} />
-                <p className="text-muted-foreground text-center text-[10px]">
-                  Bridge day · moderate
-                </p>
-              </div>
-              <div className="space-y-1">
-                <ParkCalendarDay day={MOCK_CAL_UNKNOWN} isToday={false} />
-                <p className="text-muted-foreground text-center text-[10px]">UNKNOWN (no data)</p>
-              </div>
-            </div>
-          </Sub>
-        </Section>
+            </Sub>
+          </Section>
 
-        {/* ================================================================
+          {/* ================================================================
             12. EXTRACTED SHARED COMPONENTS
         ================================================================ */}
-        <Section title="Shared Micro-Components" icon={Info}>
-          <ComponentLabel name="TrendIndicator" file="components/parks/trend-indicator.tsx" />
-          <Sub title="TrendIndicator — variant=icon, size=sm (default) / size=md">
-            <div className="space-y-3">
-              <Row>
-                {(['up', 'increasing', 'stable', 'down', 'decreasing'] as const).map((t) => (
-                  <div key={t} className="flex flex-col items-center gap-1">
-                    <TrendIndicator trend={t} size="sm" />
-                    <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
-                  </div>
-                ))}
-                <span className="text-muted-foreground mb-0.5 self-end text-xs">sm</span>
-              </Row>
+          <Section title="Shared Micro-Components" icon={Info}>
+            <ComponentLabel name="TrendIndicator" file="components/parks/trend-indicator.tsx" />
+            <Sub title="TrendIndicator — variant=icon, size=sm (default) / size=md">
+              <div className="space-y-3">
+                <Row>
+                  {(['up', 'increasing', 'stable', 'down', 'decreasing'] as const).map((t) => (
+                    <div key={t} className="flex flex-col items-center gap-1">
+                      <TrendIndicator trend={t} size="sm" />
+                      <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
+                    </div>
+                  ))}
+                  <span className="text-muted-foreground mb-0.5 self-end text-xs">sm</span>
+                </Row>
+                <Row>
+                  {(['up', 'stable', 'down'] as const).map((t) => (
+                    <div key={t} className="flex flex-col items-center gap-1">
+                      <TrendIndicator trend={t} size="md" />
+                      <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
+                    </div>
+                  ))}
+                  <span className="text-muted-foreground mb-0.5 self-end text-xs">md</span>
+                </Row>
+              </div>
+            </Sub>
+            <Sub title="TrendIndicator — variant=pill with label (park-status detailed)">
               <Row>
                 {(['up', 'stable', 'down'] as const).map((t) => (
-                  <div key={t} className="flex flex-col items-center gap-1">
-                    <TrendIndicator trend={t} size="md" />
-                    <span className="text-muted-foreground font-mono text-[10px]">{t}</span>
-                  </div>
+                  <TrendIndicator key={t} trend={t} variant="pill" label={t} />
                 ))}
-                <span className="text-muted-foreground mb-0.5 self-end text-xs">md</span>
+                {(['up', 'stable', 'down'] as const).map((t) => (
+                  <TrendIndicator key={`md-${t}`} trend={t} variant="pill" size="md" label={t} />
+                ))}
               </Row>
-            </div>
-          </Sub>
-          <Sub title="TrendIndicator — variant=pill with label (park-status detailed)">
-            <Row>
-              {(['up', 'stable', 'down'] as const).map((t) => (
-                <TrendIndicator key={t} trend={t} variant="pill" label={t} />
-              ))}
-              {(['up', 'stable', 'down'] as const).map((t) => (
-                <TrendIndicator key={`md-${t}`} trend={t} variant="pill" size="md" label={t} />
-              ))}
-            </Row>
-          </Sub>
+            </Sub>
 
-          <ComponentLabel name="WaitTimeBadge" file="components/parks/wait-time-badge.tsx" />
-          <Sub title="WaitTimeBadge — size=lg (attraction card main) / size=sm (park card avg)">
-            <Row>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;lg&quot;
-                </span>
-                <WaitTimeBadge waitTime={45} size="lg" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;lg&quot; 1 min
-                </span>
-                <WaitTimeBadge waitTime={1} size="lg" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;sm&quot;
-                </span>
-                <WaitTimeBadge waitTime={35} size="sm" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;sm&quot; 1 min
-                </span>
-                <WaitTimeBadge waitTime={1} size="sm" />
-              </div>
-            </Row>
-          </Sub>
+            <ComponentLabel name="WaitTimeBadge" file="components/parks/wait-time-badge.tsx" />
+            <Sub title="WaitTimeBadge — size=lg (attraction card main) / size=sm (park card avg)">
+              <Row>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;lg&quot;
+                  </span>
+                  <WaitTimeBadge waitTime={45} size="lg" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;lg&quot; 1 min
+                  </span>
+                  <WaitTimeBadge waitTime={1} size="lg" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;sm&quot;
+                  </span>
+                  <WaitTimeBadge waitTime={35} size="sm" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;sm&quot; 1 min
+                  </span>
+                  <WaitTimeBadge waitTime={1} size="sm" />
+                </div>
+              </Row>
+            </Sub>
 
-          <ComponentLabel name="QueueTypeBadge" file="components/parks/queue-type-badge.tsx" />
-          <Sub title="QueueTypeBadge — all queue types">
-            <Row>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'SINGLE_RIDER',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    waitTime: 20,
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">SINGLE_RIDER</span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'PAID_RETURN_TIME',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    returnStart: null,
-                    returnEnd: null,
-                    price: { amount: 15, currency: 'EUR', formatted: '€15' },
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  PAID_RETURN_TIME
-                </span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'PAID_STANDBY',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    waitTime: null,
-                    price: { amount: 10, currency: 'EUR', formatted: '€10' },
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">PAID_STANDBY</span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'RETURN_TIME',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    state: 'AVAILABLE',
-                    returnStart: returnStart,
-                    returnEnd: returnEnd,
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  RETURN_TIME (available)
-                </span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'RETURN_TIME',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    state: 'FULL',
-                    returnStart: null,
-                    returnEnd: null,
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  RETURN_TIME (full)
-                </span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'BOARDING_GROUP',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    allocationStatus: 'AVAILABLE',
-                    currentGroupStart: 100,
-                    currentGroupEnd: 150,
-                    estimatedWait: 30,
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  BOARDING_GROUP (available)
-                </span>
-              </div>
-              <div className="flex flex-col items-start gap-1">
-                <QueueTypeBadge
-                  queue={{
-                    queueType: 'BOARDING_GROUP',
-                    status: 'OPERATING',
-                    lastUpdated: now,
-                    allocationStatus: 'FINISHED',
-                    currentGroupStart: null,
-                    currentGroupEnd: null,
-                    estimatedWait: null,
-                  }}
-                />
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  BOARDING_GROUP (finished)
-                </span>
-              </div>
-            </Row>
-          </Sub>
-
-          <ComponentLabel name="DistanceBadge" file="components/common/distance-badge.tsx" />
-          <Sub title="DistanceBadge — size=sm (cards) / size=md (nearby)">
-            <Row>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;sm&quot; number
-                </span>
-                <DistanceBadge distance={1200} size="sm" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;sm&quot; string
-                </span>
-                <DistanceBadge distance="750 m" size="sm" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;md&quot; number
-                </span>
-                <DistanceBadge distance={42000} size="md" />
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  size=&quot;md&quot; string
-                </span>
-                <DistanceBadge distance="3.2 km" size="md" />
-              </div>
-            </Row>
-          </Sub>
-
-          <ComponentLabel
-            name="OperatingHoursDisplay"
-            file="components/common/operating-hours-display.tsx"
-          />
-          <Sub title="OperatingHoursDisplay — with timezone (LocalTimeRange) / without (HH:mm substring)">
-            <Row>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">with timeZone</span>
-                <span className="text-lg font-semibold tabular-nums">
-                  <OperatingHoursDisplay
-                    openingTime="2026-06-01T09:00:00+02:00"
-                    closingTime="2026-06-01T20:00:00+02:00"
-                    timeZone="Europe/Berlin"
+            <ComponentLabel name="QueueTypeBadge" file="components/parks/queue-type-badge.tsx" />
+            <Sub title="QueueTypeBadge — all queue types">
+              <Row>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'SINGLE_RIDER',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      waitTime: 20,
+                    }}
                   />
-                </span>
-              </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-muted-foreground font-mono text-[10px]">
-                  without timeZone (calendar)
-                </span>
-                <span className="text-lg font-semibold tabular-nums">
-                  <OperatingHoursDisplay
-                    openingTime="2026-06-01T10:00:00"
-                    closingTime="2026-06-01T22:30:00"
+                  <span className="text-muted-foreground font-mono text-[10px]">SINGLE_RIDER</span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'PAID_RETURN_TIME',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      returnStart: null,
+                      returnEnd: null,
+                      price: { amount: 15, currency: 'EUR', formatted: '€15' },
+                    }}
                   />
-                </span>
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    PAID_RETURN_TIME
+                  </span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'PAID_STANDBY',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      waitTime: null,
+                      price: { amount: 10, currency: 'EUR', formatted: '€10' },
+                    }}
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px]">PAID_STANDBY</span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'RETURN_TIME',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      state: 'AVAILABLE',
+                      returnStart: returnStart,
+                      returnEnd: returnEnd,
+                    }}
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    RETURN_TIME (available)
+                  </span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'RETURN_TIME',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      state: 'FULL',
+                      returnStart: null,
+                      returnEnd: null,
+                    }}
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    RETURN_TIME (full)
+                  </span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'BOARDING_GROUP',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      allocationStatus: 'AVAILABLE',
+                      currentGroupStart: 100,
+                      currentGroupEnd: 150,
+                      estimatedWait: 30,
+                    }}
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    BOARDING_GROUP (available)
+                  </span>
+                </div>
+                <div className="flex flex-col items-start gap-1">
+                  <QueueTypeBadge
+                    queue={{
+                      queueType: 'BOARDING_GROUP',
+                      status: 'OPERATING',
+                      lastUpdated: now,
+                      allocationStatus: 'FINISHED',
+                      currentGroupStart: null,
+                      currentGroupEnd: null,
+                      estimatedWait: null,
+                    }}
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    BOARDING_GROUP (finished)
+                  </span>
+                </div>
+              </Row>
+            </Sub>
+
+            <ComponentLabel name="DistanceBadge" file="components/common/distance-badge.tsx" />
+            <Sub title="DistanceBadge — size=sm (cards) / size=md (nearby)">
+              <Row>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;sm&quot; number
+                  </span>
+                  <DistanceBadge distance={1200} size="sm" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;sm&quot; string
+                  </span>
+                  <DistanceBadge distance="750 m" size="sm" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;md&quot; number
+                  </span>
+                  <DistanceBadge distance={42000} size="md" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    size=&quot;md&quot; string
+                  </span>
+                  <DistanceBadge distance="3.2 km" size="md" />
+                </div>
+              </Row>
+            </Sub>
+
+            <ComponentLabel
+              name="OperatingHoursDisplay"
+              file="components/common/operating-hours-display.tsx"
+            />
+            <Sub title="OperatingHoursDisplay — with timezone (LocalTimeRange) / without (HH:mm substring)">
+              <Row>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">with timeZone</span>
+                  <span className="text-lg font-semibold tabular-nums">
+                    <OperatingHoursDisplay
+                      openingTime="2026-06-01T09:00:00+02:00"
+                      closingTime="2026-06-01T20:00:00+02:00"
+                      timeZone="Europe/Berlin"
+                    />
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="text-muted-foreground font-mono text-[10px]">
+                    without timeZone (calendar)
+                  </span>
+                  <span className="text-lg font-semibold tabular-nums">
+                    <OperatingHoursDisplay
+                      openingTime="2026-06-01T10:00:00"
+                      closingTime="2026-06-01T22:30:00"
+                    />
+                  </span>
+                </div>
+              </Row>
+            </Sub>
+          </Section>
+
+          {/* ── Admin / System Components ───────────────────────────────── */}
+          <Section title="Admin / System Components" icon={Activity}>
+            <ComponentLabel name="MetricBar" file="components/common/metric-bar.tsx" />
+            <Sub title="MetricBar — auto-colors at 60% (amber) and 80% (red)">
+              <div className="w-full max-w-sm space-y-3">
+                <MetricBar label="CPU" value={18} max={28} unit=" GB" pct={64} />
+                <MetricBar label="Memory" value={18} max={28} unit=" GB" pct={64} />
+                <MetricBar
+                  label="Disk"
+                  value={101}
+                  max={915}
+                  unit=" GB"
+                  pct={11}
+                  thresholds={[75, 90]}
+                />
+                <MetricBar label="Connections" value={34} max={100} unit="" pct={34} />
+                <MetricBar label="Usage (high)" value={85} max={100} unit="%" />
+                <MetricBar label="Usage (critical)" value={97} max={100} unit="%" />
               </div>
-            </Row>
-          </Sub>
-        </Section>
+            </Sub>
 
-        {/* ── Admin / System Components ───────────────────────────────── */}
-        <Section title="Admin / System Components" icon={Activity}>
-          <ComponentLabel name="MetricBar" file="components/common/metric-bar.tsx" />
-          <Sub title="MetricBar — auto-colors at 60% (amber) and 80% (red)">
-            <div className="w-full max-w-sm space-y-3">
-              <MetricBar label="CPU" value={18} max={28} unit=" GB" pct={64} />
-              <MetricBar label="Memory" value={18} max={28} unit=" GB" pct={64} />
-              <MetricBar
-                label="Disk"
-                value={101}
-                max={915}
-                unit=" GB"
-                pct={11}
-                thresholds={[75, 90]}
-              />
-              <MetricBar label="Connections" value={34} max={100} unit="" pct={34} />
-              <MetricBar label="Usage (high)" value={85} max={100} unit="%" />
-              <MetricBar label="Usage (critical)" value={97} max={100} unit="%" />
-            </div>
-          </Sub>
+            <ComponentLabel
+              name="TrainingStatusBadge"
+              file="components/common/training-status-badge.tsx"
+            />
+            <Sub title="TrainingStatusBadge — all states">
+              <div className="flex flex-wrap gap-4">
+                <TrainingStatusBadge state="training" label="v20260525_0824 · 4m 12s" />
+                <TrainingStatusBadge state="idle" label="v20260524_0600" />
+                <TrainingStatusBadge state="error" label="reset on startup" />
+                <TrainingStatusBadge state="unknown" />
+              </div>
+            </Sub>
+          </Section>
 
-          <ComponentLabel
-            name="TrainingStatusBadge"
-            file="components/common/training-status-badge.tsx"
-          />
-          <Sub title="TrainingStatusBadge — all states">
-            <div className="flex flex-wrap gap-4">
-              <TrainingStatusBadge state="training" label="v20260525_0824 · 4m 12s" />
-              <TrainingStatusBadge state="idle" label="v20260524_0600" />
-              <TrainingStatusBadge state="error" label="reset on startup" />
-              <TrainingStatusBadge state="unknown" />
-            </div>
-          </Sub>
-        </Section>
+          {/* ── Glossary Inject ─────────────────────────────────────────── */}
+          <Section title="Glossary Term Inject" icon={BookOpen}>
+            <ComponentLabel name="GlossaryInject" file="components/glossary/glossary-inject.tsx" />
 
-        {/* ── Glossary Inject ─────────────────────────────────────────── */}
-        <Section title="Glossary Term Inject" icon={BookOpen}>
-          <ComponentLabel name="GlossaryInject" file="components/glossary/glossary-inject.tsx" />
-
-          <Sub title="Usage — use GlossaryInject in any server component, no wrapper needed">
-            <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// any server component — self-sufficient, no provider needed
+            <Sub title="Usage — use GlossaryInject in any server component, no wrapper needed">
+              <div className="bg-muted/40 rounded-lg p-4 font-mono text-xs leading-relaxed whitespace-pre">{`// any server component — self-sufficient, no provider needed
 <GlossaryInject>{someTextString}</GlossaryInject>`}</div>
-          </Sub>
+            </Sub>
 
-          <Sub title="Live preview — FAQ-style answer text (hover the dashed terms)">
-            <div className="max-w-2xl space-y-4 text-sm leading-relaxed">
-              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                Paragraph 1 — Planning &amp; Crowd management
-              </p>
-              <p>
-                <GlossaryInject>
-                  {`The best way to plan a theme park visit is to check the crowd calendar before you book your tickets. On a peak day you can expect wait times of 90 minutes or more for popular attractions, so arriving at rope drop makes a significant difference. A virtual queue for the newest ride is often released the moment the park opens — sometimes within seconds.`}
-                </GlossaryInject>
-              </p>
+            <Sub title="Live preview — FAQ-style answer text (hover the dashed terms)">
+              <div className="max-w-2xl space-y-4 text-sm leading-relaxed">
+                <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  Paragraph 1 — Planning &amp; Crowd management
+                </p>
+                <p>
+                  <GlossaryInject>
+                    {`The best way to plan a theme park visit is to check the crowd calendar before you book your tickets. On a peak day you can expect wait times of 90 minutes or more for popular attractions, so arriving at rope drop makes a significant difference. A virtual queue for the newest ride is often released the moment the park opens — sometimes within seconds.`}
+                  </GlossaryInject>
+                </p>
 
-              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                Paragraph 2 — Queue strategies
-              </p>
-              <p>
-                <GlossaryInject>
-                  {`If the posted wait time looks too long, check whether the attraction offers a single rider lane — this can cut your wait by 50–70 % on busy days. Alternatively, an express pass grants priority access and is especially worth it when crowd levels are high. On low crowd days the standby queue moves fast enough that you probably won't need either option.`}
-                </GlossaryInject>
-              </p>
+                <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  Paragraph 2 — Queue strategies
+                </p>
+                <p>
+                  <GlossaryInject>
+                    {`If the posted wait time looks too long, check whether the attraction offers a single rider lane — this can cut your wait by 50–70 % on busy days. Alternatively, an express pass grants priority access and is especially worth it when crowd levels are high. On low crowd days the standby queue moves fast enough that you probably won't need either option.`}
+                  </GlossaryInject>
+                </p>
 
-              <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                Paragraph 3 — Maintenance &amp; Operations
-              </p>
-              <p>
-                <GlossaryInject>
-                  {`Attractions go into refurbishment regularly — typically during the off-peak shoulder season when crowd levels are at their lowest. Parks publish refurbishment schedules months in advance so guests can plan accordingly. A ride that is down for maintenance won't appear in the live wait time feed at all.`}
-                </GlossaryInject>
-              </p>
-            </div>
-          </Sub>
+                <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  Paragraph 3 — Maintenance &amp; Operations
+                </p>
+                <p>
+                  <GlossaryInject>
+                    {`Attractions go into refurbishment regularly — typically during the off-peak shoulder season when crowd levels are at their lowest. Parks publish refurbishment schedules months in advance so guests can plan accordingly. A ride that is down for maintenance won't appear in the live wait time feed at all.`}
+                  </GlossaryInject>
+                </p>
+              </div>
+            </Sub>
 
-          <Sub title="Behaviour">
-            <ul className="text-muted-foreground list-disc space-y-1 pl-5 text-sm">
-              <li>
-                Only the <strong>first occurrence</strong> of each term per text block is linked —
-                no over-linking
-              </li>
-              <li>
-                Terms are matched <strong>longest-first</strong> (e.g. &quot;Express Pass&quot;
-                before &quot;Express&quot;)
-              </li>
-              <li>
-                Matching is <strong>case-insensitive</strong> and respects word boundaries
-              </li>
-              <li>
-                Fetches glossary terms via{' '}
-                <code className="bg-muted rounded px-1 text-xs">getGlossaryTerms(locale)</code> —
-                cached per request via React cache()
-              </li>
-            </ul>
-          </Sub>
-        </Section>
+            <Sub title="Behaviour">
+              <ul className="text-muted-foreground list-disc space-y-1 pl-5 text-sm">
+                <li>
+                  Only the <strong>first occurrence</strong> of each term per text block is linked —
+                  no over-linking
+                </li>
+                <li>
+                  Terms are matched <strong>longest-first</strong> (e.g. &quot;Express Pass&quot;
+                  before &quot;Express&quot;)
+                </li>
+                <li>
+                  Matching is <strong>case-insensitive</strong> and respects word boundaries
+                </li>
+                <li>
+                  Fetches glossary terms via{' '}
+                  <code className="bg-muted rounded px-1 text-xs">getGlossaryTerms(locale)</code> —
+                  cached per request via React cache()
+                </li>
+              </ul>
+            </Sub>
+          </Section>
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
