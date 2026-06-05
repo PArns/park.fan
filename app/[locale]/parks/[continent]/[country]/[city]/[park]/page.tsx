@@ -1,14 +1,14 @@
 import { Suspense, type ComponentProps } from 'react';
 import { format, startOfMonth, endOfMonth, addMonths, addDays, min } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { connection } from 'next/server';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
 import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
@@ -53,6 +53,33 @@ interface ParkPageProps {
     city: string;
     park: string;
   }>;
+}
+
+// Prebuild the most-requested parks (× all locales). Under Cache Components every dynamic route
+// must enumerate at least one param: without a generateStaticParams, Next prerenders a
+// param-less placeholder shell and `await params` there counts as dynamic data accessed outside
+// <Suspense>, which fails the build. Listing concrete params makes each prebuilt park a proper
+// PPR page (static shell + streamed Suspense holes). Every other park stays on-demand ISR
+// (dynamicParams defaults to true). Bounded to keep build time / API load in check; resilient to
+// a failed popular-parks fetch (mirrors the attraction route).
+const PREBUILD_PARK_LIMIT = 30;
+
+export async function generateStaticParams() {
+  const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
+
+  const geoPaths = popular
+    .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
+    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4);
+
+  return locales.flatMap((locale) =>
+    geoPaths.map(([continent, country, city, park]) => ({
+      locale,
+      continent,
+      country,
+      city,
+      park,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
