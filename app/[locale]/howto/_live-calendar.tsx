@@ -5,6 +5,7 @@ import { Card } from '@/components/ui/card';
 import { Clock, Sun, Star, Backpack, PartyPopper, Calendar } from 'lucide-react';
 import { MockCalendar, type MockLocale, CROWD_LABELS, CROWD_COLORS } from './_mock-components';
 import { getServerNowMs } from '@/lib/utils/server-time';
+import { Suspense } from 'react';
 
 export function buildBorderColor(day: CalendarDay): string {
   if (day.status === 'CLOSED') return 'border-status-closed dark:border-status-closed';
@@ -16,7 +17,19 @@ export function buildBorderColor(day: CalendarDay): string {
   return 'border-border';
 }
 
-export async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
+/**
+ * The live demo fetches uncached calendar data, so under Cache Components it must sit behind
+ * a Suspense boundary (streamed dynamic hole); the static MockCalendar is the fallback.
+ */
+export function LiveCalendarExample({ locale }: { locale: MockLocale }) {
+  return (
+    <Suspense fallback={<MockCalendar locale={locale} />}>
+      <LiveCalendarExampleInner locale={locale} />
+    </Suspense>
+  );
+}
+
+async function LiveCalendarExampleInner({ locale }: { locale: MockLocale }) {
   // ── Fetch data only — JSX must not be constructed inside try/catch ─────────
   let days: CalendarDay[] = [];
   let dtFmt: Intl.DateTimeFormat | null = null;
