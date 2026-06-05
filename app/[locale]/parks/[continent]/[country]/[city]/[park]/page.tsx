@@ -9,6 +9,7 @@ import { connection } from 'next/server';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
 import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
 import { getParkHistoricalStats } from '@/lib/api/stats';
@@ -138,17 +139,13 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-// Dynamic rendering (see connection() in the page): static generation would have to await the
-// slow calendar/stats <Suspense> boundaries before emitting any HTML (15-20s cold render).
-// Rendering dynamically streams the shell immediately and the slow sections after, while their
-// underlying fetches stay cached (revalidate) so we don't re-hit the backend on every request.
-
+// Cache Components: the shell (header, attractions, weather, FAQ, structured data) is
+// statically prerendered + edge-cached; the slow calendar/stats sections opt into dynamic
+// rendering individually (connection() inside their Streamed* components) so they stream as
+// PPR holes without ever blocking the static shell.
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
-  // Opt into dynamic rendering so the shell streams immediately and the calendar/stats/FAQ
-  // Suspense boundaries stream in, instead of static generation blocking on them (cold ~15s).
-  await connection();
 
   const t = await getTranslations('parks');
   const tCommon = await getTranslations('common');
@@ -170,10 +167,14 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
+  // Cached "now" (cacheComponents-safe) — drives the calendar range + today lookups below.
+  const nowMs = await getServerNowMs();
+  const now = new Date(nowMs);
+
   // Pre-fetch calendar + historical stats in parallel.
   // Calendar: current month + next 2 months (API limit: 90 days max — cap to avoid 400)
-  const calendarFrom = startOfMonth(new Date());
-  const calendarTo = min([endOfMonth(addMonths(new Date(), 2)), addDays(calendarFrom, 89)]);
+  const calendarFrom = startOfMonth(now);
+  const calendarTo = min([endOfMonth(addMonths(now, 2)), addDays(calendarFrom, 89)]);
 
   // This calendar feeds only the below-the-fold best-days + FAQ sections (streamed via
   // <Suspense> below); the calendar tab client-fetches per visible month on its own
@@ -234,7 +235,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
     if (!park.schedule || park.schedule.length === 0) return null;
 
     // Get today's date in the park's timezone
-    const todayInParkTz = new Date().toLocaleDateString('en-CA', {
+    const todayInParkTz = now.toLocaleDateString('en-CA', {
       timeZone: park.timezone,
     }); // Format: YYYY-MM-DD
 
@@ -273,11 +274,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
         {park.shows && park.shows.length > 0 && (
-          <ShowsStructuredData
-            shows={park.shows}
-            park={park}
-            date={format(new Date(), 'yyyy-MM-dd')}
-          />
+          <ShowsStructuredData shows={park.shows} park={park} date={format(now, 'yyyy-MM-dd')} />
         )}
         <FAQStructuredData park={park} locale={locale} />
 
@@ -413,6 +410,8 @@ async function StreamedBestDays({
   calendarPromise: Promise<IntegratedCalendarResponse>;
   statsPromise: Promise<ParkHistoricalStats | null>;
 }) {
+  // Dynamic PPR hole: keeps the slow calendar/stats out of the static shell prerender.
+  await connection();
   const [calendarData, stats] = await Promise.all([calendarPromise, statsPromise]);
   return (
     <ParkBestDaysSection
@@ -430,6 +429,8 @@ async function StreamedFaq({
 }: Omit<ComponentProps<typeof ParkFAQSection>, 'calendarData'> & {
   calendarPromise: Promise<IntegratedCalendarResponse>;
 }) {
+  // Dynamic PPR hole: the calendar-derived crowd FAQ streams; the static FAQ fallback is prerendered.
+  await connection();
   const calendarData = await calendarPromise;
   return <ParkFAQSection {...rest} calendarData={calendarData} />;
 }
@@ -445,6 +446,8 @@ async function StreamedParkStats({
 }: Omit<ComponentProps<typeof ParkStatsSection>, 'stats'> & {
   statsPromise: Promise<ParkHistoricalStats | null>;
 }) {
+  // Dynamic PPR hole: keeps the (no-store, cold-compute) stats out of the static shell prerender.
+  await connection();
   const stats = await statsPromise;
   return <ParkStatsSection stats={stats} {...rest} />;
 }

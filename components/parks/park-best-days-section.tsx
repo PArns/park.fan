@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import type { IntegratedCalendarResponse, CrowdLevel, DayOfWeekStat } from '@/lib/api/types';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { getServerNowMs } from '@/lib/utils/server-time';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 
@@ -74,7 +75,11 @@ export async function ParkBestDaysSection({
   className,
 }: ParkBestDaysSectionProps) {
   const t = await getTranslations('parks.bestDays');
-  const analysis = analyzeBestDays(calendarData.days, calendarData.meta.timezone);
+  const analysis = analyzeBestDays(
+    calendarData.days,
+    await getServerNowMs(),
+    calendarData.meta.timezone
+  );
 
   const bestDaysOfWeek =
     statsByDayOfWeek && statsByDayOfWeek.length > 0

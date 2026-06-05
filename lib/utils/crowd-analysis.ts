@@ -32,14 +32,20 @@ export interface BestDaysAnalysis {
   totalDays: number;
 }
 
-export function analyzeBestDays(days: CalendarDay[], timezone?: string): BestDaysAnalysis {
+export function analyzeBestDays(
+  days: CalendarDay[],
+  /** Epoch ms for "now" — pass a cached value (getServerNowMs) for cacheComponents safety. */
+  nowMs: number,
+  timezone?: string
+): BestDaysAnalysis {
+  const now = new Date(nowMs);
   // "Today" must be in the park's timezone, not the server/UTC day — otherwise a
   // park east/west of UTC can drop the current day (or keep a past one) for a few
   // hours around midnight, e.g. listing a day in "upcoming quiet days" that has
   // already started locally. Fall back to UTC only when no timezone is provided.
   const today = timezone
-    ? formatInTimeZone(new Date(), timezone, 'yyyy-MM-dd')
-    : new Date().toISOString().slice(0, 10);
+    ? formatInTimeZone(now, timezone, 'yyyy-MM-dd')
+    : now.toISOString().slice(0, 10);
 
   const futureDays = days.filter(
     (d) =>
@@ -72,7 +78,7 @@ export function analyzeBestDays(days: CalendarDay[], timezone?: string): BestDay
     .sort((a, b) => a.avgScore - b.avgScore);
 
   // --- Upcoming quiet days (next 30 days) ---
-  const in30Days = new Date();
+  const in30Days = new Date(nowMs);
   in30Days.setDate(in30Days.getDate() + 30);
   const in30Str = in30Days.toISOString().slice(0, 10);
 
