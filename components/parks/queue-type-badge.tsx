@@ -35,6 +35,16 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
     return wt !== null && wt !== undefined && typeof wt === 'number' && wt > 0 ? wt : null;
   };
 
+  // The API may send placeholder prices (amount 0, formatted "Unknown") when the
+  // real fee isn't available. Treat those as "no price" so we never render junk.
+  const getFormattedPrice = (q: QueueDataItem): string | null => {
+    if (!('price' in q) || !q.price) return null;
+    const { amount, formatted } = q.price;
+    if (!formatted || formatted.trim().toLowerCase() === 'unknown') return null;
+    if (typeof amount === 'number' && amount <= 0) return null;
+    return formatted;
+  };
+
   switch (queue.queueType) {
     case 'STANDBY':
       return null;
@@ -49,23 +59,25 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
       break;
     }
 
-    case 'PAID_RETURN_TIME':
+    case 'PAID_RETURN_TIME': {
       Icon = Zap;
-      label =
-        'price' in queue && queue.price?.formatted
-          ? t('queue.details.lightningLane', { price: queue.price.formatted })
-          : t('queue.details.lightningLaneNoPrice');
+      const price = getFormattedPrice(queue);
+      label = price
+        ? t('queue.details.lightningLane', { price })
+        : t('queue.details.lightningLaneNoPrice');
       colorClass = colorPaid;
       break;
+    }
 
-    case 'PAID_STANDBY':
+    case 'PAID_STANDBY': {
       Icon = Zap;
-      label =
-        'price' in queue && queue.price?.formatted
-          ? t('queue.details.express', { price: queue.price.formatted })
-          : t('queue.details.expressNoPrice');
+      const price = getFormattedPrice(queue);
+      label = price
+        ? t('queue.details.express', { price })
+        : t('queue.details.expressNoPrice');
       colorClass = colorPaid;
       break;
+    }
 
     case 'RETURN_TIME':
       if (
