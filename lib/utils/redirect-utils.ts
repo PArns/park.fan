@@ -9,63 +9,38 @@
  */
 
 import { cache } from 'react';
+import { cacheLife } from 'next/cache';
 import { getGeoStructure } from '@/lib/api/discovery';
 
-// Cache the geo structure for redirect lookups
-let geoStructureCache: {
-  data: Awaited<ReturnType<typeof getGeoStructure>> | null;
-  timestamp: number;
-} = {
-  data: null,
-  timestamp: 0,
-};
-
-// O(1) lookup index built once when geo structure is loaded
-let parkSlugIndex: Map<string, ParkLookupResult> | null = null;
-
-const CACHE_TTL = 60 * 60 * 1000; // 1 hour
-
 /**
- * Get cached geo structure for redirect lookups and build slug indexes.
+ * O(1) park-slug → geo-path index for redirect lookups, cached via Cache Components.
+ * Returns a plain Record (serializable across the cache boundary). Refreshes hourly.
  */
-async function getCachedGeoStructure() {
-  const now = Date.now();
+async function getParkSlugIndex(): Promise<Record<string, ParkLookupResult>> {
+  'use cache';
+  cacheLife('hours');
 
-  if (
-    geoStructureCache.data &&
-    now - geoStructureCache.timestamp < CACHE_TTL &&
-    parkSlugIndex !== null
-  ) {
-    return geoStructureCache.data;
-  }
-
+  const index: Record<string, ParkLookupResult> = {};
   try {
-    const data = await getGeoStructure(86400); // 24h cache at API level
-    geoStructureCache = { data, timestamp: now };
-
-    // Rebuild O(1) index whenever we refresh the geo structure
-    parkSlugIndex = new Map();
-
+    const data = await getGeoStructure(86400);
     for (const continent of data.continents) {
       for (const country of continent.countries) {
         for (const city of country.cities) {
           for (const park of city.parks) {
-            parkSlugIndex.set(park.slug, {
+            index[park.slug] = {
               continent: continent.slug,
               country: country.slug,
               city: city.slug,
               parkSlug: park.slug,
-            });
+            };
           }
         }
       }
     }
-
-    return data;
   } catch (error) {
     console.error('[RedirectUtils] Failed to fetch geo structure:', error);
-    return geoStructureCache.data; // Return stale data if available
   }
+  return index;
 }
 
 export interface ParkLookupResult {
@@ -80,8 +55,8 @@ export interface ParkLookupResult {
  * Returns the full geographic path if found.
  */
 export async function findParkBySlug(parkSlug: string): Promise<ParkLookupResult | null> {
-  await getCachedGeoStructure();
-  return parkSlugIndex?.get(parkSlug) ?? null;
+  const index = await getParkSlugIndex();
+  return index[parkSlug] ?? null;
 }
 
 /**
