@@ -8,6 +8,7 @@ import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { ParkCard } from '@/components/parks/park-card';
 import { TrendIndicator } from '@/components/parks/trend-indicator';
+import { getServerNowMs } from '@/lib/utils/server-time';
 import { WeatherForecastStrip } from '@/components/parks/weather-forecast-strip';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import {
@@ -428,11 +429,11 @@ export function MockParkHeader({ locale }: { locale: MockLocale }) {
   );
 }
 
-export function MockAttractionCards(_props: { locale: MockLocale }) {
+export async function MockAttractionCards(_props: { locale: MockLocale }) {
   // Distribute 6 history points across today's park hours (10:00 → 17:30
   // Europe/Berlin) so the sparkline axis always renders a sensible daytime range,
   // independent of when the cached howto page is served.
-  const today = new Date();
+  const today = new Date(await getServerNowMs());
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0');
   const dd = String(today.getDate()).padStart(2, '0');
@@ -618,10 +619,10 @@ export function MockShowCards() {
   );
 }
 
-export function MockNearbyCards(_props: { locale: MockLocale }) {
+export async function MockNearbyCards(_props: { locale: MockLocale }) {
   // Fixed hours (09:00 / 22:00) with today's date so the card always shows
   // clean, natural-looking times even though the page is cached for 24h.
-  const now = new Date();
+  const now = new Date(await getServerNowMs());
   const yyyy = now.getFullYear();
   const mm = String(now.getMonth() + 1).padStart(2, '0');
   const dd = String(now.getDate()).padStart(2, '0');

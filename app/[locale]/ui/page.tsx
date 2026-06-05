@@ -167,7 +167,9 @@ function Row({ children, wrap = true }: { children: React.ReactNode; wrap?: bool
 // Mock data
 // ============================================================================
 
-const NOW_MS = Date.now();
+// Static showcase timestamp — this is the component gallery, not live data, so a fixed
+// time keeps it cacheComponents-safe (no current-time read during prerender).
+const NOW_MS = Date.parse('2026-06-01T12:00:00.000Z');
 const now = new Date(NOW_MS).toISOString();
 const hourAgo = new Date(NOW_MS - 3600000).toISOString();
 const halfHourAgo = new Date(NOW_MS - 1800000).toISOString();
@@ -2288,7 +2290,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'SINGLE_RIDER',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     waitTime: 20,
                   }}
                 />
@@ -2299,7 +2301,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'PAID_RETURN_TIME',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     returnStart: null,
                     returnEnd: null,
                     price: { amount: 15, currency: 'EUR', formatted: '€15' },
@@ -2314,7 +2316,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'PAID_STANDBY',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     waitTime: null,
                     price: { amount: 10, currency: 'EUR', formatted: '€10' },
                   }}
@@ -2326,7 +2328,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'RETURN_TIME',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     state: 'AVAILABLE',
                     returnStart: returnStart,
                     returnEnd: returnEnd,
@@ -2341,7 +2343,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'RETURN_TIME',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     state: 'FULL',
                     returnStart: null,
                     returnEnd: null,
@@ -2356,7 +2358,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'BOARDING_GROUP',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     allocationStatus: 'AVAILABLE',
                     currentGroupStart: 100,
                     currentGroupEnd: 150,
@@ -2372,7 +2374,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   queue={{
                     queueType: 'BOARDING_GROUP',
                     status: 'OPERATING',
-                    lastUpdated: new Date().toISOString(),
+                    lastUpdated: now,
                     allocationStatus: 'FINISHED',
                     currentGroupStart: null,
                     currentGroupEnd: null,

@@ -4,6 +4,7 @@ import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Clock, Sun, Star, Backpack, PartyPopper, Calendar } from 'lucide-react';
 import { MockCalendar, type MockLocale, CROWD_LABELS, CROWD_COLORS } from './_mock-components';
+import { getServerNowMs } from '@/lib/utils/server-time';
 
 export function buildBorderColor(day: CalendarDay): string {
   if (day.status === 'CLOSED') return 'border-status-closed dark:border-status-closed';
@@ -23,7 +24,7 @@ export async function LiveCalendarExample({ locale }: { locale: MockLocale }) {
   let timezone = 'Europe/Berlin';
 
   try {
-    const today = new Date();
+    const today = new Date(await getServerNowMs());
     const from = today.toISOString().split('T')[0];
     const to = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
