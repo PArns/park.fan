@@ -50,7 +50,6 @@ export async function generateMetadata({
 }
 
 // No caching for search - always fresh results
-export const dynamic = 'force-dynamic';
 
 const typeIcons = {
   park: TreePalm,

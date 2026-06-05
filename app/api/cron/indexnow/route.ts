@@ -6,7 +6,6 @@ import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-u
 
 const BASE_URL = 'https://park.fan';
 
-export const runtime = 'nodejs';
 export const maxDuration = 60;
 
 export async function GET(request: Request) {

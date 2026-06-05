@@ -62,7 +62,6 @@ import type { Metadata } from 'next';
 // ~5 min ISR window for the static shell. Each data section sets its own
 // revalidate on its fetch (analytics/geo: 300s, ML: 1800s) and streams in via
 // its own Suspense boundary, so a slow/stale endpoint never blocks first paint.
-export const revalidate = 300;
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

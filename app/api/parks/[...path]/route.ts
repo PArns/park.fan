@@ -116,4 +116,3 @@ export async function GET(
 }
 
 // No caching - we want fresh data on every request
-export const dynamic = 'force-dynamic';

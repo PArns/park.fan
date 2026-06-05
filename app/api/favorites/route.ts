@@ -4,7 +4,6 @@ import { enrichParksWithImages, enrichAttractionsWithImages } from '@/lib/utils/
 import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 
 /** Response depends on cookies and optionally IP; must not be cached. */
-export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);

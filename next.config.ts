@@ -6,6 +6,10 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Cache Components (Next 16, successor to experimental.ppr): static, edge-cacheable
+  // shells + streamed dynamic holes. Data caching is via `'use cache'` + `cacheLife`
+  // (see lib/api/*), dynamic work sits behind <Suspense>.
+  cacheComponents: true,
   staticPageGenerationTimeout: 180,
   compiler: {
     // Remove React properties that are not needed in production

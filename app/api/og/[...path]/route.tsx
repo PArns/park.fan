@@ -33,8 +33,6 @@ import {
   FlagBR,
 } from '@/components/common/icons/flags'; // Added generic icon import if needed, but imported specifically here
 
-export const runtime = 'nodejs';
-
 // OG Image dimensions
 const WIDTH = 1200;
 const HEIGHT = 630;

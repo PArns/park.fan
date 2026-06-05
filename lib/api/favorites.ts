@@ -227,7 +227,7 @@ export async function getFavorites(
         'Content-Type': 'application/json',
         ...getServerAuthHeaders(),
       },
-      next: { revalidate: 0 }, // User-specific (cookies/context), do not cache
+      cache: 'no-store', // User-specific (cookies/context), do not cache
     });
 
     if (!response.ok) {

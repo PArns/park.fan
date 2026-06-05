@@ -1,24 +1,25 @@
+import { cacheLife } from 'next/cache';
 import { api } from './client';
 import type { MLDashboardDto, ModelMetricsHistoryResponse } from './types';
 
 /**
  * Get ML model dashboard — accuracy, coverage, model health.
- * The ML dashboard changes only on model retraining; cache for 1h.
+ * Changes only on model retraining; cached 30 min.
  */
 export async function getMLDashboard(): Promise<MLDashboardDto> {
-  return api.get<MLDashboardDto>('/v1/ml/dashboard', {
-    next: { revalidate: 1800 },
-  });
+  'use cache';
+  cacheLife({ stale: 1800, revalidate: 1800, expire: 7200 });
+  return api.get<MLDashboardDto>('/v1/ml/dashboard');
 }
 
 /**
- * Get ML model metrics history for sparklines.
- * Returns up to `limit` snapshots, oldest first.
- * Cache for 1h — training runs once daily at 06:00 UTC.
+ * Get ML model metrics history for sparklines (oldest first, up to `limit`).
+ * Cached 30 min — training runs once daily at 06:00 UTC.
  */
 export async function getMLMetricsHistory(limit = 50): Promise<ModelMetricsHistoryResponse> {
+  'use cache';
+  cacheLife({ stale: 1800, revalidate: 1800, expire: 7200 });
   return api.get<ModelMetricsHistoryResponse>('/v1/ml/models/metrics-history', {
     params: { limit },
-    next: { revalidate: 1800 },
   });
 }

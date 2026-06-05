@@ -59,7 +59,11 @@ export default function SystemPage() {
   const redisOk = data.redis.status === 'connected';
   const cpuTemp = data.host.cpu.temperatureC;
   const cpuTempClass =
-    (cpuTemp ?? 0) >= 85 ? 'text-red-400' : (cpuTemp ?? 0) >= 70 ? 'text-amber-400' : 'text-foreground';
+    (cpuTemp ?? 0) >= 85
+      ? 'text-red-400'
+      : (cpuTemp ?? 0) >= 70
+        ? 'text-amber-400'
+        : 'text-foreground';
   const swap = data.host.swap;
   const fresh = data.freshness;
   // Wait-time ingestion: a stalled cron once ran 83 days unnoticed, so flag staleness loudly.
@@ -97,15 +101,14 @@ export default function SystemPage() {
   const chipRank = (c: string) =>
     /coretemp|k10temp|zenpower|cpu/i.test(c) ? 0 : /nvme/i.test(c) ? 1 : 2;
   const sensorEntries = Object.entries(sensorGroups).sort(
-    (a, b) => chipRank(a[0]) - chipRank(b[0]) || a[0].localeCompare(b[0]),
+    (a, b) => chipRank(a[0]) - chipRank(b[0]) || a[0].localeCompare(b[0])
   );
   for (const [, list] of sensorEntries) {
     list.sort((a, b) => {
       const pa = /package|tctl|tdie|composite/i.test(a.label) ? 0 : 1;
       const pb = /package|tctl|tdie|composite/i.test(b.label) ? 0 : 1;
       return (
-        pa - pb ||
-        Number(a.label.match(/\d+/)?.[0] ?? 0) - Number(b.label.match(/\d+/)?.[0] ?? 0)
+        pa - pb || Number(a.label.match(/\d+/)?.[0] ?? 0) - Number(b.label.match(/\d+/)?.[0] ?? 0)
       );
     });
   }
@@ -313,7 +316,13 @@ export default function SystemPage() {
                         Mem I/O {g.utilizationMemPct ?? '—'}%
                       </p>
                     </div>
-                    <MetricBar label="Temp" value={temp} max={100} unit=" °C" thresholds={[70, 85]} />
+                    <MetricBar
+                      label="Temp"
+                      value={temp}
+                      max={100}
+                      unit=" °C"
+                      thresholds={[70, 85]}
+                    />
                   </CardContent>
                 </Card>
 

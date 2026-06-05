@@ -1,6 +1,5 @@
-import { unstable_cache } from 'next/cache';
+import { cacheLife, cacheTag } from 'next/cache';
 import { getServerAuthHeaders } from './client';
-import { CACHE_TTL } from './cache-config';
 import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
@@ -53,11 +52,10 @@ export async function getIntegratedCalendar(
   const queryString = params.toString();
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
+  // Uncached low-level fetch. Callers that want caching wrap this in a `'use cache'`
+  // boundary (see getBestDaysCalendar); the /api/calendar proxy and client polls want it live.
   const response = await fetch(url, {
-    next: {
-      revalidate: options.revalidate ?? CACHE_TTL.calendar,
-      ...(options.tags ? { tags: options.tags } : {}),
-    },
+    cache: 'no-store',
     headers: {
       'Content-Type': 'application/json',
       ...getServerAuthHeaders(),
@@ -142,27 +140,21 @@ export async function getBestDaysCalendar(
   parkSlug: string,
   options: { from?: string; to?: string } = {}
 ): Promise<IntegratedCalendarResponse> {
-  const from = options.from ?? '';
-  const to = options.to ?? '';
+  'use cache';
+  cacheLife({
+    stale: BEST_DAYS_REVALIDATE,
+    revalidate: BEST_DAYS_REVALIDATE,
+    expire: BEST_DAYS_REVALIDATE * 2,
+  });
+  cacheTag(`best-days:${parkSlug}`);
 
-  const cached = unstable_cache(
-    async () => {
-      const raw = await getIntegratedCalendar(continent, country, city, parkSlug, {
-        from: options.from,
-        to: options.to,
-        includeHourly: 'none',
-        // Don't let the inner fetch attempt to data-cache the ~2 MB body (it fails the
-        // 2 MB cap and re-fetches every time). The projected result below is the cache.
-        revalidate: 0,
-      });
-      return projectBestDaysCalendar(raw);
-    },
-    ['best-days-calendar', continent, country, city, parkSlug, from, to],
-    {
-      revalidate: BEST_DAYS_REVALIDATE,
-      tags: [`best-days:${parkSlug}`],
-    }
-  );
-
-  return cached();
+  // The inner fetch is uncached (getIntegratedCalendar uses no-store); this `'use cache'`
+  // boundary caches only the projected ~13 KB result, keeping the raw ~1.7 MB body — which
+  // exceeds Next's fetch data-cache cap — out of the cache and the render tree entirely.
+  const raw = await getIntegratedCalendar(continent, country, city, parkSlug, {
+    from: options.from,
+    to: options.to,
+    includeHourly: 'none',
+  });
+  return projectBestDaysCalendar(raw);
 }

@@ -304,10 +304,7 @@ export interface ParkOccupancy {
   breakdown?: Record<string, unknown>;
 }
 
-export type PeakHourSource =
-  | 'observed_today'
-  | 'prediction'
-  | 'historical_fallback';
+export type PeakHourSource = 'observed_today' | 'prediction' | 'historical_fallback';
 
 export interface ParkStatistics {
   avgWaitTime: number;
