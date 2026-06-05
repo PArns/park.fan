@@ -1,25 +1,15 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import { useTranslations, useLocale } from 'next-intl';
-import {
-  Crown,
-  TrendingUp,
-  TrendingDown,
-  Minus,
-  ChartColumn,
-  Clock,
-  Star,
-  MapPin,
-} from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Crown, TrendingUp, TrendingDown, Minus, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from '@/lib/api/types';
-import type { ReactNode } from 'react';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
-import { ParkTime } from '@/components/common/park-time';
+import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
@@ -92,10 +82,6 @@ function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: str
   return '#';
 }
 
-function minutesUntil(isoStr: string): number {
-  return Math.round((new Date(isoStr).getTime() - Date.now()) / 60_000);
-}
-
 // ============================================================================
 // Component
 // ============================================================================
@@ -112,7 +98,6 @@ export function AttractionCard({
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
-  const locale = useLocale();
 
   const status = getStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
@@ -147,41 +132,9 @@ export function AttractionCard({
     return { direction: delta > 0 ? 'up' : 'down', delta };
   })();
 
-  // Best-visit slot (only for OPERATING)
+  // Best-visit slot (only for OPERATING). The "in X min" text is time-relative, so it's
+  // rendered by the client <AttractionCardBestTime> (cacheComponents-safe).
   const bestSlot = status === 'OPERATING' ? getBestSlot(attraction) : null;
-  let bestTimeNode: ReactNode = null;
-  if (bestSlot) {
-    const mins = minutesUntil(bestSlot.time);
-    const timeTag = () => (
-      <strong className="font-bold">
-        {effectiveTimezone ? (
-          <ParkTime
-            isoTime={bestSlot.time}
-            parkTimezone={effectiveTimezone}
-            locale={locale}
-            showSuffix
-          />
-        ) : (
-          new Date(bestSlot.time).toLocaleTimeString(locale, {
-            hour: '2-digit',
-            minute: '2-digit',
-          })
-        )}
-      </strong>
-    );
-    if (mins <= 0) {
-      bestTimeNode = bestSlot.rating === 'optimal' ? t('bestVisitNow') : t('bestVisitGoodNow');
-    } else if (mins < 60) {
-      bestTimeNode = t.rich('cardBestTimeInMinutesOnly', { time: timeTag, minutes: mins });
-    } else {
-      const h = Math.floor(mins / 60);
-      const m = mins % 60;
-      bestTimeNode =
-        m === 0
-          ? t.rich('cardBestTimeInHoursOnly', { time: timeTag, hours: h })
-          : t.rich('cardBestTimeIn', { time: timeTag, hours: h, minutes: m });
-    }
-  }
 
   const hasSparkline = isOperatingOrUnknown && waitTime !== null;
 
@@ -475,7 +428,7 @@ export function AttractionCard({
               </div>
 
               {/* Divider + stats rows */}
-              {(stats?.peakWaitToday != null || stats?.avgWaitToday != null || bestTimeNode) && (
+              {(stats?.peakWaitToday != null || stats?.avgWaitToday != null || bestSlot) && (
                 <>
                   <div className="h-px w-full" style={{ background: 'var(--pk-panel-border)' }} />
                   {(stats?.peakWaitToday != null || stats?.avgWaitToday != null) && (
@@ -514,14 +467,11 @@ export function AttractionCard({
                       )}
                     </div>
                   )}
-                  {bestTimeNode && (
-                    <div className="flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
-                      <Star
-                        className="h-[11px] w-[11px] shrink-0 fill-current"
-                        aria-hidden="true"
-                      />
-                      <span>{bestTimeNode}</span>
-                    </div>
+                  {bestSlot && (
+                    <AttractionCardBestTime
+                      bestSlot={bestSlot}
+                      effectiveTimezone={effectiveTimezone}
+                    />
                   )}
                 </>
               )}
