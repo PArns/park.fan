@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs d'attractions. Planifiez votre visite parfaite avec des données en temps réel et la navigation.",
-    "keywords": "temps d'attente parc attraction, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, calendrier parc, meilleur moment visite",
+    "keywords": "temps d'attente parc attraction, temps d'attente en direct, temps d'attente aujourd'hui, calendrier d'affluence, prévision IA, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite",
     "sections": {
       "explore": "Parcs Internationaux",
       "popularParks": "Parcs Populaires",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Temps d'Attente Parcs d'Attractions & Prédictions",
       "description": "Temps d'attente en direct et prédictions d'affluence pour 142+ parcs. Planifiez votre visite avec des données en temps réel.",
-      "keywords": "temps d'attente parc attraction, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, calendrier parc, meilleur moment visite"
+      "keywords": "temps d'attente parc attraction, temps d'attente en direct, temps d'attente aujourd'hui, calendrier d'affluence, prévision IA, file d'attente, prévisions affluence, horaires ouverture, parc d'attractions, montagnes russes, Disney temps d'attente, Universal Studios, Europa-Park, Phantasialand, meilleur moment visite"
     },
     "home": {
       "title": "Temps d'Attente en Direct & Prédictions d'Affluence",
@@ -825,8 +825,8 @@
       "title": "Parcs d'Attractions Monde",
       "description": "Comparez les temps d'attente, statuts et affluence pour les meilleurs parcs comme Disney World, Disneyland, Universal Studios et Europa-Park.",
       "metaDescriptionTemplate": "Temps d'attente en direct et calendrier pour {park} à {city}. Prévisions du jour, meilleurs jours et horaires d'ouverture.",
-      "titleTemplate": "{park} Temps d'Attente – {city}",
-      "titleTemplateNoCity": "{park} – Temps d'Attente & Meilleurs Jours",
+      "titleTemplate": "{park} Temps d'Attente LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Temps d'Attente LIVE & Affluence",
       "metaDescriptionTemplateNoCity": "Temps d'attente en direct et calendrier pour {park}. Prévisions du jour, meilleurs jours et horaires d'ouverture.",
       "keywordWaitTimes": "temps d'attente",
       "keywordCrowdCalendar": "calendrier d'affluence",

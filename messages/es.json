@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Tiempos de espera en vivo y predicciones de afluencia para más de 142 parques temáticos. Planifica tu visita perfecta con datos en tiempo real y navegación.",
-    "keywords": "tiempos de espera parques temáticos, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, calendario parque, mejor momento visita",
+    "keywords": "tiempos de espera parques temáticos, tiempos de espera en vivo, tiempos de espera hoy, calendario de afluencia, predicción IA, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, mejor momento visita",
     "sections": {
       "explore": "Parques Internacionales",
       "popularParks": "Parques Populares",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Tiempos de Espera Parques Temáticos & Predicciones",
       "description": "Tiempos de espera en vivo y predicciones de afluencia para 142+ parques temáticos. Planifica tu visita con datos en tiempo real.",
-      "keywords": "tiempos de espera parques temáticos, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, calendario parque, mejor momento visita"
+      "keywords": "tiempos de espera parques temáticos, tiempos de espera en vivo, tiempos de espera hoy, calendario de afluencia, predicción IA, colas, predicciones afluencia, horarios apertura, parque de atracciones, montaña rusa, tiempos espera Disney, Universal Studios, Europa-Park, Phantasialand, mejor momento visita"
     },
     "home": {
       "title": "Tiempos de Espera en Vivo & Predicciones de Afluencia",
@@ -825,8 +825,8 @@
       "title": "Parques Temáticos Mundiales",
       "description": "Compara tiempos de espera, estado y afluencia de los mejores parques como Disney World, Disneyland, Universal Studios y Europa-Park.",
       "metaDescriptionTemplate": "Tiempos de espera en vivo y calendario para {park} en {city}. Pronóstico de hoy, mejores días y horarios de apertura.",
-      "titleTemplate": "{park} Tiempos de Espera – {city}",
-      "titleTemplateNoCity": "{park} – Tiempos de Espera & Mejores Días",
+      "titleTemplate": "{park} Tiempos de Espera LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Tiempos de Espera LIVE & Afluencia",
       "metaDescriptionTemplateNoCity": "Tiempos de espera en vivo y calendario para {park}. Pronóstico de hoy, mejores días y horarios de apertura.",
       "keywordWaitTimes": "tiempos de espera",
       "keywordCrowdCalendar": "calendario de afluencia",

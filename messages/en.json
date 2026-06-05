@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Live wait times and AI-powered crowd predictions for 142+ theme parks worldwide. Plan your perfect park visit with real-time data and in-park navigation.",
-    "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit",
+    "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit",
     "sections": {
       "explore": "Parks Worldwide",
       "popularParks": "Popular Parks",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Theme Park Wait Times & Predictions",
       "description": "Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.",
-      "keywords": "theme park wait times, queue times, crowd predictions, ride availability, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, theme park calendar, best time to visit"
+      "keywords": "theme park wait times, live wait times, wait times today, crowd calendar, AI crowd forecast, queue times, crowd predictions, opening hours, amusement park, roller coaster, Disney wait times, Universal Studios, Europa-Park, Phantasialand, best time to visit"
     },
     "home": {
       "title": "Live Theme Park Wait Times & Crowd Predictions",
@@ -825,8 +825,8 @@
       "title": "Theme Parks Worldwide",
       "description": "Compare live wait times, crowd levels, and hours for top parks: Disney, Universal, Europa-Park, and more.",
       "metaDescriptionTemplate": "Live wait times & crowd calendar for {park} in {city}. Check today's forecast, best days to visit, and opening hours.",
-      "titleTemplate": "{park} Wait Times – {city}",
-      "titleTemplateNoCity": "{park} – Wait Times & Best Days to Visit",
+      "titleTemplate": "{park} Wait Times LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Wait Times LIVE & Best Days",
       "metaDescriptionTemplateNoCity": "Live wait times & crowd calendar for {park}. Check today's forecast, best days to visit, and opening hours.",
       "keywordWaitTimes": "wait times",
       "keywordCrowdCalendar": "crowd calendar",

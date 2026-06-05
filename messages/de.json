@@ -173,7 +173,7 @@
   },
   "footer": {
     "description": "Live-Wartezeiten und KI-gestützte Besucherprognosen für über 142 Freizeitparks weltweit. Plane deinen perfekten Parkbesuch mit Echtzeit-Daten und In-Park Navigation.",
-    "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt",
+    "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit",
     "sections": {
       "explore": "Parks weltweit",
       "popularParks": "Beliebte Parks",
@@ -815,7 +815,7 @@
     "global": {
       "title": "park.fan - Freizeitpark Wartezeiten & Prognosen",
       "description": "Live-Wartezeiten und KI-Prognosen für 142+ Freizeitparks weltweit. Plane deinen Parkbesuch mit Echtzeit-Daten und In-Park-Navigation.",
-      "keywords": "Freizeitpark Wartezeiten, Warteschlangen, Besucherprognosen, Attraktionen Verfügbarkeit, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, Freizeitpark Kalender, bester Besuchszeitpunkt"
+      "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
       "title": "Live Freizeitpark Wartezeiten & Crowd-Prognosen",
@@ -824,10 +824,10 @@
     "parks": {
       "title": "Freizeitparks Weltweit",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
-      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten & beste Besuchstage",
-      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Beste Besuchstage, Prognosen und Öffnungszeiten auf einen Blick.",
+      "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender für {park} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
+      "titleTemplate": "{park} Wartezeiten LIVE – {city}",
+      "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
+      "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender für {park}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "keywordWaitTimes": "Wartezeiten",
       "keywordCrowdCalendar": "Crowd-Kalender",
       "keywordBestTime": "beste Besuchszeit"
