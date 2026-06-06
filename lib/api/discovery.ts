@@ -97,6 +97,34 @@ export async function getParksNearLocation(
 ): Promise<NearbyParkItem[]> {
   'use cache';
   cacheLife({ stale: 3600, revalidate: 3600, expire: 3600 * 4 });
+  return fetchParksNearLocation(lat, lng, excludeParkId, limit, maxDistanceM, false);
+}
+
+/**
+ * Live (no-store) variant of {@link getParksNearLocation} for the client overlay.
+ *
+ * The park page renders its "nearby parks" cards status-free (cacheable shell) and refreshes the
+ * live open/closed status on the client via `useParkNeighbors` → `/api/parks/near`, which calls
+ * this. Same proximity logic, just uncached so the overlay reflects the latest status.
+ */
+export async function getParksNearLocationFresh(
+  lat: number,
+  lng: number,
+  excludeParkId?: string,
+  limit: number = 3,
+  maxDistanceM: number = 300_000
+): Promise<NearbyParkItem[]> {
+  return fetchParksNearLocation(lat, lng, excludeParkId, limit, maxDistanceM, true);
+}
+
+async function fetchParksNearLocation(
+  lat: number,
+  lng: number,
+  excludeParkId: string | undefined,
+  limit: number,
+  maxDistanceM: number,
+  fresh: boolean
+): Promise<NearbyParkItem[]> {
   // The API sometimes returns coordinates as strings despite being typed as number — coerce defensively.
   const latNum = Number(lat);
   const lngNum = Number(lng);
@@ -114,7 +142,10 @@ export async function getParksNearLocation(
   const endpoint = `/v1/discovery/nearby?lat=${offsetLat}&lng=${lngNum}&limit=${fetchLimit}&radius=0`;
 
   try {
-    const response = await api.get<NearbyApiResponse>(endpoint);
+    const response = await api.get<NearbyApiResponse>(
+      endpoint,
+      fresh ? { cache: 'no-store' } : undefined
+    );
 
     if (response.type !== 'nearby_parks' || !response.data.parks) {
       return [];
