@@ -286,12 +286,20 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
   } as unknown as ParkResponse;
 
   return (
-    <div className="not-prose relative overflow-hidden rounded-xl">
-      <BackgroundOverlay
-        imageSrc="/images/parks/phantasialand/background.jpg"
-        alt="Phantasialand"
-        intensity="medium"
-      />
+    <div className="not-prose relative">
+      {/* Hero image in its OWN clipped layer. The data cards below are deliberately
+          NOT nested inside an overflow-hidden/rounded ancestor — that's the one
+          structural difference from the live park page, which renders these glass
+          cards over a separate fixed ParkBackground with no such wrapper. Nesting
+          translucent backdrop-blur cards inside overflow-hidden + rounded makes
+          their square corners bleed over the image. */}
+      <div className="absolute inset-0 z-0 overflow-hidden rounded-xl border">
+        <BackgroundOverlay
+          imageSrc="/images/parks/phantasialand/background.jpg"
+          alt="Phantasialand"
+          intensity="medium"
+        />
+      </div>
       <div className="relative z-10 space-y-4 p-3">
         {/* Park header — GlassCard, matching the real park page */}
         <GlassCard variant="medium">
@@ -322,13 +330,7 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
             status="OPERATING"
             className="border-primary/10"
           />
-          {/* Extra clipping wrapper: the WeatherCard's animated background uses a
-              backdrop-filter glass layer that Chrome fails to clip to the card's own
-              rounded corners when it sits over the hero image here — the square corners
-              would otherwise poke through. A plain overflow-clip wrapper fixes it. */}
-          <div className="overflow-hidden rounded-xl">
-            <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
-          </div>
+          <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
         </div>
 
         {/* Status grid — occupancy, wait times & attractions */}
