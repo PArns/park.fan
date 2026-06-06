@@ -33,15 +33,20 @@ export function LocationBanner({ ariaLabel }: LocationBannerProps) {
   }
 
   return (
+    // Floating, out of the document flow: a fixed bottom card instead of an in-flow
+    // section. The banner only appears after the client-side geolocation check, so when
+    // it was in flow it pushed everything below it down by ~320px on mount — the dominant
+    // homepage CLS (0.13). As a fixed overlay it no longer affects layout. pointer-events
+    // are scoped to the card so the rest of the floating strip stays click-through.
     <section
-      className="px-4 py-4"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-40 px-4 pb-4"
       aria-label={ariaLabel ?? tCommon('locationBannerLabel')}
       data-nosnippet
       data-noindex
     >
-      <div className="container mx-auto">
+      <div className="pointer-events-auto container mx-auto max-w-3xl">
         <div
-          className="border-border/80 bg-card relative overflow-hidden rounded-2xl border shadow-sm ring-1 ring-black/5 dark:ring-white/5"
+          className="border-border/80 bg-card/95 relative overflow-hidden rounded-2xl border shadow-2xl ring-1 ring-black/5 backdrop-blur-md dark:ring-white/5"
           aria-live="polite"
         >
           <div className="from-primary/5 to-primary/5 absolute inset-0 bg-gradient-to-br via-transparent" />
