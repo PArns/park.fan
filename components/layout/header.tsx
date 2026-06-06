@@ -85,7 +85,7 @@ export function Header() {
             alt=""
             aria-hidden="true"
             className="hidden h-6 w-auto dark:block"
-            priority
+            loading="eager"
           />
           <Image
             src="/logo-small.svg"
@@ -94,7 +94,7 @@ export function Header() {
             alt=""
             aria-hidden="true"
             className="block h-6 w-auto dark:hidden"
-            priority
+            loading="eager"
           />
           <Image
             src="/parkfan-dark.svg"
@@ -102,7 +102,7 @@ export function Header() {
             height={24}
             alt="park.fan"
             className="hidden h-5 w-auto dark:block"
-            priority
+            loading="eager"
           />
           <Image
             src="/parkfan.svg"
@@ -110,7 +110,7 @@ export function Header() {
             height={24}
             alt="park.fan"
             className="block h-5 w-auto dark:hidden"
-            priority
+            loading="eager"
           />
         </Link>
 
@@ -131,7 +131,7 @@ export function Header() {
             alt=""
             aria-hidden="true"
             className="hidden h-7 w-auto md:h-9 dark:block"
-            priority
+            loading="eager"
           />
           <Image
             src="/logo-small.svg"
@@ -140,7 +140,7 @@ export function Header() {
             alt="park.fan"
             aria-hidden="true"
             className="block h-7 w-auto md:h-9 dark:hidden"
-            priority
+            loading="eager"
           />
           <Image
             src="/parkfan-dark.svg"
@@ -148,7 +148,7 @@ export function Header() {
             height={24}
             alt="park.fan"
             className="hidden h-5 w-auto md:h-6 dark:block"
-            priority
+            loading="eager"
           />
           <Image
             src="/parkfan.svg"
@@ -157,7 +157,7 @@ export function Header() {
             alt=""
             aria-hidden="true"
             className="block h-5 w-auto md:h-6 dark:hidden"
-            priority
+            loading="eager"
           />
         </Link>
 
