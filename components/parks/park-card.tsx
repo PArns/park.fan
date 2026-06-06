@@ -138,12 +138,19 @@ export function ParkCard({
         {/* Photo — z-0, inner div carries the hover scale */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
-            <div
-              className={cn(
-                'pk-photo-zoom relative h-full w-full overflow-hidden',
-                !isOperatingOrUnknown && 'pk-photo-closed'
-              )}
-            >
+            <>
+              {/* Mobile (<sm): skip the photo entirely. These cards collapse/scroll on
+                  phones and the photo is purely decorative — each one is rendered twice
+                  (main + reflection), so dropping it removes two image downloads per card
+                  on the slowest connections. Show the gradient fallback instead; desktop
+                  and tablet (sm+) keep the full photo. */}
+              <div className="from-muted to-card h-full w-full bg-gradient-to-br sm:hidden" />
+              <div
+                className={cn(
+                  'pk-photo-zoom relative hidden h-full w-full overflow-hidden sm:block',
+                  !isOperatingOrUnknown && 'pk-photo-closed'
+                )}
+              >
               {/*
                 Photo container starts exactly at glass-header bottom (~100px).
                 The photo's TOP edge is the seam. The reflection (scaleY-1 around
@@ -183,6 +190,7 @@ export function ParkCard({
                 </div>
               </div>
             </div>
+            </>
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
           )}
