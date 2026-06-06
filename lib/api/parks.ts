@@ -2,7 +2,15 @@ import { cacheLife } from 'next/cache';
 import { api, ApiError } from './client';
 import type { ParkWithAttractions, AttractionResponse, PopularPark } from './types';
 
-const PARK_MAX_AGE = 300; // 5 min — matches API Redis/Cloudflare cache
+// Shell-level TTL for the park/attraction static prerender. Deliberately DECOUPLED from the
+// API's 5-min live cadence: the wait times baked into the shell are only an SSR seed that
+// LiveParkData / LiveAttractionData replace client-side (React Query, no-store) on mount. The
+// shell content that actually matters for SEO/no-JS (name, description, attraction list, FAQ,
+// structured data) changes at most daily. Under Cache Components the effective revalidate of a
+// route shell is the MIN cacheLife of the 'use cache' reads in its static portion, so this value
+// (together with getServerNowMs on the park page) is the floor that drives the dominant
+// per-park/per-attraction × per-locale ISR-write volume. 1h instead of 5min cuts those writes ~12×.
+const PARK_MAX_AGE = 3600; // 1h shell TTL — live data is refreshed client-side, not via ISR
 
 /**
  * Get parks by geographic path. Cached via Cache Components (`'use cache'`):

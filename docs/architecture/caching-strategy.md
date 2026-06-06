@@ -24,8 +24,8 @@ Next.js ISR controls revalidation per route:
 | Continent  | Static ISR | 300 (5m)   | 120s      | Geo structure (rarely changes)                            |
 | Country    | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
 | City       | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
-| Park       | Static ISR | 300 (5m)   | 300s      | On-demand ISR; live wait times + weather via RQ on client |
-| Attraction | Static ISR | 300 (5m)   | 300s      | On-demand ISR; live wait times via React Query on client  |
+| Park       | Static ISR | 3600 (1h)  | 300s      | On-demand ISR; live wait times + weather via RQ on client |
+| Attraction | Static ISR | 3600 (1h)  | 300s      | On-demand ISR; live wait times via React Query on client  |
 | Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                 |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
@@ -33,10 +33,36 @@ Next.js ISR controls revalidation per route:
 > `html[data-temp-unit]` which an inline script in the root layout sets before paint — see
 > `components/common/unit-display.tsx`). This removed the per-request `temp_unit` cookie
 > read, and the park/attraction fetches (`getParkByGeoPath`, `getAttractionByGeoPath`,
-> `getParkWeatherNowcast`, the `stats` retry) were switched from `cache: 'no-store'` to
-> `revalidate: 300` — together these let the park & attraction pages render as on-demand
-> ISR (edge-cached) with no unit flash. Live wait times/weather stay fresh via client-side
-> React Query (`LiveParkData` / `useWeatherNowcast`, 5-min poll).
+> `getParkWeatherNowcast`, the `stats` retry) render as on-demand ISR (edge-cached) with no
+> unit flash. Live wait times/weather stay fresh via client-side React Query (`LiveParkData` /
+> `useWeatherNowcast`, 5-min poll).
+
+---
+
+## Minimizing ISR Writes (Jun 2026)
+
+**Problem:** Vercel bills an **ISR write** every time a cache unit (route shell or `'use cache'`
+data entry) revalidates and is persisted. Under Cache Components, a route shell's effective
+revalidate is the **MIN cacheLife of the `'use cache'` reads in its static portion**. The park &
+attraction shells are the highest-cardinality routes (`N_parks`/`N_attractions × 6 locales`), so a
+short shell TTL multiplied across them dominated the write bill.
+
+**Key insight:** the shells don't need live freshness. Wait times, weather and today's crowd level
+are all refreshed **client-side** (React Query, `cache: 'no-store'`); the server-rendered numbers
+are only an SSR seed replaced on mount. The shell content that matters for SEO/no-JS (name,
+description, attraction list, FAQ, structured data) changes at most daily.
+
+**Changes:**
+
+| Lever                                   | Before        | After        | Effect                                              |
+| --------------------------------------- | ------------- | ------------ | --------------------------------------------------- |
+| `PARK_MAX_AGE` (park/attraction shell)  | 300s          | **3600s**    | Park + attraction shell writes ~12× fewer (dominant) |
+| `getServerNowMs` (`server-time.ts`)     | 300s          | **`'hours'`** | Removes the hidden 5-min floor it pinned on the park shell |
+| `getParkHistoricalStats`                | 300s          | **3600s**    | Retry loop already warms cold compute in one fill; data is daily |
+| Analytics (`getGlobalStats`/ticker/geo) | 300s          | **600s**     | Minor — single shared keys streamed in homepage Suspense holes |
+
+> Both `PARK_MAX_AGE` **and** `getServerNowMs` had to be raised together: the park shell floor is
+> their MIN, so lifting only one would have left it pinned at 300s.
 
 ---
 
@@ -82,8 +108,8 @@ In `next.config.ts`:
 | -------------------------- | -------------------- | --------- | ------------------------------ |
 | `/v1/search`               | `cache: 'no-store'`  | 60s       | Always fresh search results    |
 | `/v1/analytics/*`          | `cache: 'no-store'`  | 120s      | Real-time statistics           |
-| `/v1/parks/*` (detail)     | `revalidate: 300s`   | 300s      | ISR-cacheable; live via RQ     |
-| `/v1/parks/*/attractions`  | `revalidate: 300s`   | 300s      | ISR-cacheable; live via RQ     |
+| `/v1/parks/*` (detail)     | `revalidate: 3600s`  | 300s      | Shell seed; live via RQ        |
+| `/v1/parks/*/attractions`  | `revalidate: 3600s`  | 300s      | Shell seed; live via RQ        |
 | `/v1/discovery/geo`        | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | `/v1/discovery/continents` | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | Calendar                   | `revalidate: 3600s`  | 300-3600s | Schedule data (changes daily)  |
