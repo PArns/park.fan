@@ -59,10 +59,7 @@ export function WindCompass({ directionDeg, windKmh, className }: WindCompassPro
         // direction reads unambiguously instead of as a faint ">" caret. The
         // speed label nests in the centre gap so it stays legible over the
         // glass background.
-        <g
-          transform={`rotate(${directionDeg!} 50 50)`}
-          className="stroke-primary fill-primary"
-        >
+        <g transform={`rotate(${directionDeg!} 50 50)`} className="stroke-primary fill-primary">
           <line x1="50" y1="17" x2="50" y2="42" strokeWidth="3.5" strokeLinecap="round" />
           <polygon points="50,83 42,67 58,67" className="stroke-none" />
         </g>

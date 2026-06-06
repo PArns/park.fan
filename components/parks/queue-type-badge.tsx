@@ -72,9 +72,7 @@ export function QueueTypeBadge({ queue, timezone }: QueueTypeBadgeProps) {
     case 'PAID_STANDBY': {
       Icon = Zap;
       const price = getFormattedPrice(queue);
-      label = price
-        ? t('queue.details.express', { price })
-        : t('queue.details.expressNoPrice');
+      label = price ? t('queue.details.express', { price }) : t('queue.details.expressNoPrice');
       colorClass = colorPaid;
       break;
     }

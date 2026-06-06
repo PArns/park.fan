@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +6,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ParkCardScheduleFooter } from '@/components/parks/park-card-schedule-footer';
+import { CardPhoto } from '@/components/parks/card-photo';
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -135,54 +135,16 @@ export function ParkCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* Photo — z-0, inner div carries the hover scale */}
+        {/* Photo — z-0, inner div carries the hover scale. Hidden below `sm` (cards collapse
+            on phones), so only the gradient placeholder shows there. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
-            <div
-              className={cn(
-                'pk-photo-zoom relative h-full w-full overflow-hidden',
-                !isOperatingOrUnknown && 'pk-photo-closed'
-              )}
-            >
-              {/*
-                Photo container starts exactly at glass-header bottom (~100px).
-                The photo's TOP edge is the seam. The reflection (scaleY-1 around
-                the container top = seam) extends upward through the glass area.
-              */}
-              <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
-                {/* Main photo — top edge at seam, fills downward */}
-                <Image
-                  src={backgroundImage}
-                  alt={name}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={false}
-                />
-                {/* Reflection — same image flipped around the container top (= seam).
-                   Mask applies BEFORE the flip: opaque at element top (= seam after flip)
-                   fading to transparent toward the bottom (= top of card after flip). */}
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    transform: 'scaleY(-1)',
-                    transformOrigin: 'center top',
-                    maskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                  }}
-                >
-                  <Image
-                    src={backgroundImage}
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={false}
-                  />
-                </div>
-              </div>
-            </div>
+            <CardPhoto
+              src={backgroundImage}
+              alt={name}
+              closed={!isOperatingOrUnknown}
+              hideOnMobile
+            />
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
           )}

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
-import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
+import { CardPhoto } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
 import { Crown, TrendingUp, TrendingDown, Minus, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
@@ -157,44 +157,11 @@ export function AttractionCard({
         {/* Photo */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
-            <div
-              className={cn(
-                'pk-photo-zoom relative h-full w-full overflow-hidden',
-                !isOperatingOrUnknown && 'pk-photo-closed'
-              )}
-            >
-              <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
-                <Image
-                  src={backgroundImage}
-                  alt={stripNewPrefix(attraction.name)}
-                  fill
-                  className="object-cover object-top"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  priority={false}
-                />
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    transform: 'scaleY(-1)',
-                    transformOrigin: 'center top',
-                    // Mask is applied BEFORE the flip: opaque at element top (= seam after flip)
-                    // and fading to transparent toward element bottom (= top of card after flip).
-                    maskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                  }}
-                >
-                  <Image
-                    src={backgroundImage}
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={false}
-                  />
-                </div>
-              </div>
-            </div>
+            <CardPhoto
+              src={backgroundImage}
+              alt={stripNewPrefix(attraction.name)}
+              closed={!isOperatingOrUnknown}
+            />
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
           )}

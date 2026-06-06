@@ -62,7 +62,7 @@ export function NowcastUpdateCountdown({
   const ss = String(totalSec % 60).padStart(2, '0');
 
   return (
-    <p className={cn('font-mono text-[11px] opacity-60', className)}>
+    <p className={cn('font-mono text-[11px] tabular-nums opacity-60', className)}>
       {t('updateIn', { countdown: `${mm}:${ss}` })}
     </p>
   );

@@ -14,23 +14,33 @@ interface SparklineProps {
   points: SparklinePoint[];
   className?: string;
   formatTooltip?: (point: SparklinePoint) => { label: string; value: string };
+  /**
+   * Y-axis scaling. `'zero'` (default) anchors the baseline at 0 — right for wait times.
+   * `'fit'` zooms to the data range (+20% headroom) so series with small relative variation
+   * (e.g. ML scores around 0.9) stay legible instead of flattening to a near-flat line.
+   */
+  yDomain?: 'zero' | 'fit';
 }
 
-export function Sparkline({ points, className, formatTooltip }: SparklineProps) {
+export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }: SparklineProps) {
   const [activePoint, setActivePoint] = useState<
     (SparklinePoint & { clientX: number; clientY: number }) | null
   >(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mounted = useMounted();
 
-  const { xMin, xMax, yMax } = useMemo(() => {
-    if (points.length === 0) return { xMin: 0, xMax: 1, yMax: 10 };
-    return {
-      xMin: points[0].x,
-      xMax: points[points.length - 1].x,
-      yMax: Math.max(...points.map((p) => p.value), 10),
-    };
-  }, [points]);
+  const { xMin, xMax, yMin, yMax } = useMemo(() => {
+    if (points.length === 0) return { xMin: 0, xMax: 1, yMin: 0, yMax: 10 };
+    const values = points.map((p) => p.value);
+    const base = { xMin: points[0].x, xMax: points[points.length - 1].x };
+    if (yDomain === 'fit') {
+      const lo = Math.min(...values);
+      const hi = Math.max(...values);
+      const pad = (hi - lo) * 0.2 || 1;
+      return { ...base, yMin: lo - pad, yMax: hi + pad };
+    }
+    return { ...base, yMin: 0, yMax: Math.max(...values, 10) };
+  }, [points, yDomain]);
 
   useEffect(() => {
     if (points.length === 0) return;
@@ -65,8 +75,9 @@ export function Sparkline({ points, className, formatTooltip }: SparklineProps) 
   if (points.length === 0) return null;
 
   const xRange = xMax - xMin || 1;
+  const yRange = yMax - yMin || 1;
   const getX = (x: number) => ((x - xMin) / xRange) * 100;
-  const getY = (value: number) => 100 - (value / yMax) * 100;
+  const getY = (value: number) => 100 - ((value - yMin) / yRange) * 100;
 
   let pathD = '';
   points.forEach((p, i) => {
