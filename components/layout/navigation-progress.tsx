@@ -64,7 +64,14 @@ export function NavigationProgress() {
   // START — same-origin link clicks + programmatic navigations (router.push patches pushState).
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) {
+      if (
+        e.defaultPrevented ||
+        e.button !== 0 ||
+        e.metaKey ||
+        e.ctrlKey ||
+        e.shiftKey ||
+        e.altKey
+      ) {
         return;
       }
       const anchor = (e.target as HTMLElement | null)?.closest('a');
@@ -81,7 +88,8 @@ export function NavigationProgress() {
       }
       if (url.origin !== window.location.origin) return;
       // Same page (or pure hash change) — no navigation, no bar.
-      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search)
+        return;
       start();
     };
 
@@ -94,10 +102,7 @@ export function NavigationProgress() {
       if (dest != null) {
         try {
           const url = new URL(dest.toString(), window.location.href);
-          if (
-            url.pathname !== window.location.pathname ||
-            url.search !== window.location.search
-          ) {
+          if (url.pathname !== window.location.pathname || url.search !== window.location.search) {
             start();
           }
         } catch {
@@ -137,12 +142,11 @@ export function NavigationProgress() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-0.5">
       <div
-        className="bg-park-primary h-full transition-[width,opacity] ease-out"
+        className="bg-park-primary h-full origin-left transition-[width,opacity] ease-out"
         style={{
           width: `${progress}%`,
           opacity: fading ? 0 : 1,
           transitionDuration: fading ? '220ms' : '300ms',
-          boxShadow: '0 0 10px 1px var(--park-primary)',
         }}
       />
     </div>
