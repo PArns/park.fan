@@ -322,7 +322,13 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
             status="OPERATING"
             className="border-primary/10"
           />
-          <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
+          {/* Extra clipping wrapper: the WeatherCard's animated background uses a
+              backdrop-filter glass layer that Chrome fails to clip to the card's own
+              rounded corners when it sits over the hero image here — the square corners
+              would otherwise poke through. A plain overflow-clip wrapper fixes it. */}
+          <div className="overflow-hidden rounded-xl">
+            <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
+          </div>
         </div>
 
         {/* Status grid — occupancy, wait times & attractions */}
