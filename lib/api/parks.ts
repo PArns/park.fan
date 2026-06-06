@@ -22,6 +22,33 @@ const PARK_MAX_AGE = 3600; // 1h park shell TTL — live data is refreshed clien
 const ATTRACTION_MAX_AGE = 21600; // 6h attraction shell TTL — dominant route, no schedule in shell
 
 /**
+ * Drop per-attraction fields the PARK page never renders before the snapshot is cached.
+ *
+ * The park detail response embeds, per attraction, a `history` array (one entry per day, each with
+ * a 24-point `hourlyP90` series), plus `hourlyForecast` and `predictionAccuracy`. None of these are
+ * read on the park page — the attraction cards draw their sparkline from `statistics.history`, and
+ * the full history/forecast belong to the attraction DETAIL page, which sources them from
+ * `getAttractionByGeoPath` (it only falls back to the park copy if the detail endpoint is down).
+ * These arrays dominate the response size, and because the snapshot is persisted via `'use cache'`
+ * (the data-cache entry) AND baked into every per-locale ISR route segment via `initialData={park}`,
+ * their bytes are paid for as size-weighted ISR **write units** on every revalidation. Stripping
+ * them here keeps the park snapshot lean everywhere it is written, without dropping a single field
+ * the park page (or its live React-Query refetch through the same function) actually shows.
+ */
+function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
+  return {
+    ...park,
+    attractions: park.attractions.map((a) => {
+      const lean = { ...a };
+      delete lean.history;
+      delete lean.hourlyForecast;
+      delete lean.predictionAccuracy;
+      return lean;
+    }),
+  };
+}
+
+/**
  * Get parks by geographic path. Cached via Cache Components (`'use cache'`):
  * the static shell of the park page captures this snapshot; live wait times are
  * refreshed client-side by LiveParkData.
@@ -41,9 +68,12 @@ export async function getParkByGeoPath(
   'use cache';
   cacheLife({ stale: PARK_MAX_AGE, revalidate: PARK_MAX_AGE, expire: PARK_MAX_AGE * 4 });
   try {
-    return await api.get<ParkWithAttractions>(
+    const park = await api.get<ParkWithAttractions>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}`
     );
+    // Trim detail-only per-attraction arrays before this snapshot is cached/serialized (see
+    // leanParkForShell) — they are the bulk of the size-weighted ISR write units otherwise.
+    return leanParkForShell(park);
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
