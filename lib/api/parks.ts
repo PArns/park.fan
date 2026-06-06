@@ -18,7 +18,11 @@ import type { ParkWithAttractions, AttractionResponse, PopularPark } from './typ
 // a tighter bound is worth the extra writes. Attractions get a longer 6h floor: their shell has no
 // schedule/weather (only name/description/history-chart seed, daily-ish), they are by far the
 // highest-cardinality route, and their live status/wait time is client-refreshed all the same.
-const PARK_MAX_AGE = 3600; // 1h park shell TTL — live data is refreshed client-side, not via ISR
+// 6h park shell TTL. The shell carries only structure + the schedule/weather seed (both
+// day-stable or client-refreshed); live wait times/status come from the client poll via
+// getParkByGeoPathFresh (see below), so the cached shell no longer needs to be the fresh source —
+// it can revalidate every 6h instead of hourly (~6× fewer park ISR writes), matching attractions.
+const PARK_MAX_AGE = 21600;
 const ATTRACTION_MAX_AGE = 21600; // 6h attraction shell TTL — dominant route, no schedule in shell
 
 /**
@@ -69,9 +73,38 @@ export async function getParkByGeoPath(
 ): Promise<ParkWithAttractions | null> {
   'use cache';
   cacheLife({ stale: PARK_MAX_AGE, revalidate: PARK_MAX_AGE, expire: PARK_MAX_AGE * 4 });
+  return fetchParkByGeoPath(continent, country, city, parkSlug, false);
+}
+
+/**
+ * Live (no-store) variant of {@link getParkByGeoPath} for the client poll path.
+ *
+ * The `/api/parks/...` proxy (polled by LiveParkData / LiveAttractionData every 5 min) used to call
+ * the cached `getParkByGeoPath`, so the "live" wait times were actually up to PARK_MAX_AGE stale.
+ * This variant skips our cache so the poll reflects the backend's latest snapshot (the upstream
+ * Redis/Cloudflare 5-min cache still collapses concurrent calls). Decoupling the poll from the shell
+ * cache is what lets the shell TTL go to 6h without freezing the live data.
+ */
+export async function getParkByGeoPathFresh(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<ParkWithAttractions | null> {
+  return fetchParkByGeoPath(continent, country, city, parkSlug, true);
+}
+
+async function fetchParkByGeoPath(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  fresh: boolean
+): Promise<ParkWithAttractions | null> {
   try {
     const park = await api.get<ParkWithAttractions>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
+      fresh ? { cache: 'no-store' } : undefined
     );
     // Trim detail-only per-attraction arrays before this snapshot is cached/serialized (see
     // leanParkForShell) — they are the bulk of the size-weighted ISR write units otherwise.
