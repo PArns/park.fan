@@ -376,7 +376,7 @@ export async function MockAttractionCards(_props: { locale: MockLocale }) {
       id: 'mock-taron',
       name: 'Taron',
       slug: 'taron',
-      url: '/europe/germany/bruhl/phantasialand/taron',
+      url: '/europe/germany/bruehl/phantasialand/taron',
       latitude: null,
       longitude: null,
       park: { ...phantasialand },
@@ -403,7 +403,7 @@ export async function MockAttractionCards(_props: { locale: MockLocale }) {
       id: 'mock-black-mamba',
       name: 'Black Mamba',
       slug: 'black-mamba',
-      url: '/europe/germany/bruhl/phantasialand/black-mamba',
+      url: '/europe/germany/bruehl/phantasialand/black-mamba',
       latitude: null,
       longitude: null,
       park: { ...phantasialand },
@@ -427,7 +427,7 @@ export async function MockAttractionCards(_props: { locale: MockLocale }) {
       id: 'mock-raik',
       name: 'Raik',
       slug: 'raik',
-      url: '/europe/germany/bruhl/phantasialand/raik',
+      url: '/europe/germany/bruehl/phantasialand/raik',
       latitude: null,
       longitude: null,
       park: { ...phantasialand },
@@ -546,7 +546,7 @@ export async function MockNearbyCards(_props: { locale: MockLocale }) {
         city="Brühl"
         country="Germany"
         translateCountry
-        href={'/europe/germany/bruhl/phantasialand' as '/'}
+        href={'/europe/germany/bruehl/phantasialand' as '/'}
         backgroundImage="/images/parks/phantasialand/background.jpg"
         status="OPERATING"
         crowdLevel="high"
