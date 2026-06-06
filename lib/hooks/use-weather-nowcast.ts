@@ -43,16 +43,19 @@ export function useWeatherNowcast({
 
       return (await response.json()) as WeatherNowcast;
     },
-    initialData,
-    // The park page is statically rendered (ISR), so this server `initialData` can already
-    // be older than its staleTime by the time the cached HTML reaches the browser. Anchor
-    // React Query's freshness to the nowcast's real observation time (not mount time) so a
-    // stale cached page refetches immediately on mount. Without this, RQ trusts initialData
-    // for the full staleTime → frozen banner with a past nextUpdateAt (update-countdown hidden).
+    // Pass `undefined` (not the `null` prop) as initialData. The park page no longer provides an SSR
+    // nowcast seed (the slow fetch timed out the static prerender), so initialData arrives as `null`
+    // — and React Query treats a `null` initialData as an already-resolved value, skipping the mount
+    // fetch for the whole staleTime. That left the nowcast + warning banner blank for ~5 min. With
+    // `undefined`, there is no initial value, so the query fetches on mount.
+    initialData: initialData ?? undefined,
+    // When a seed IS present, anchor freshness to its real observation time (not mount time) so a
+    // stale cached page refetches immediately instead of trusting initialData for the full staleTime.
     initialDataUpdatedAt: initialData?.observedAt ? Date.parse(initialData.observedAt) : undefined,
-    // Client-only: under Cache Components, running the query during the static prerender would
-    // read Date.now() internally (React Query). The SSR shell renders from initialData.
-    enabled: enabled && initialData !== null && typeof window !== 'undefined',
+    // Client-only: under Cache Components, running the query during the static prerender would read
+    // Date.now() internally (React Query). `typeof window` keeps it off the server; the SSR shell
+    // renders from the (now empty) initialData and the client fetches the nowcast on mount.
+    enabled: enabled && typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 15 * 60_000,
     refetchOnWindowFocus: true,
