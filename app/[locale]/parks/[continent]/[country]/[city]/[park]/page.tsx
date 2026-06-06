@@ -290,7 +290,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
   return (
     <>
-      {parkBgImage && <link rel="preload" as="image" href={parkBgImage} />}
+      {/* No manual <link rel="preload"> here: it pointed at the RAW /images/parks/.../background.jpg,
+          but <ParkBackground> renders it through next/image (/_next/image?…&q=90). The raw preload
+          was never the LCP resource — it just downloaded the full-size original in parallel,
+          competing for bandwidth with the optimized image. next/image's `priority` already preloads
+          the correct optimized rendition. */}
       <ParkBackground imageSrc={parkBgImage} alt={parkName} />
 
       <PageContainer>
