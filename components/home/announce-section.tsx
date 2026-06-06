@@ -12,9 +12,7 @@ import { getServerNowMs } from '@/lib/utils/server-time';
 // Code-split the countdown: FlipClock pulls in framer-motion (~40 KB gzip), but it
 // only renders when an announcement with `countdownTo` is live. A dynamic import keeps
 // framer-motion out of the homepage's initial bundle until a countdown is actually shown.
-const FlipClock = dynamic(() =>
-  import('@/components/ui/flip-clock').then((m) => m.FlipClock)
-);
+const FlipClock = dynamic(() => import('@/components/ui/flip-clock').then((m) => m.FlipClock));
 
 interface AnnounceSectionProps {
   locale: string;

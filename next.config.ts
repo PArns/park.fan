@@ -29,7 +29,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-scroll-area',
       '@radix-ui/react-separator',
       '@radix-ui/react-slot',
-      'recharts',
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,

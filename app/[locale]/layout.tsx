@@ -140,10 +140,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} font-sans antialiased`}
-        suppressHydrationWarning
-      >
+      <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
         {/* Set the temperature unit on <html> before paint so weather/calendar values
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
