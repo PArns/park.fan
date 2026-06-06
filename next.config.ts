@@ -158,7 +158,24 @@ const nextConfig: NextConfig = {
     return [
       // Content-Language per locale — helps Google associate pages with their language
       ...localeHeaderRules,
-      // OG images are semi-static — cache aggressively (must come before the /api no-store rule)
+      // Static SVGs served from /public — cache for 1 year (immutable via content hash)
+      {
+        source: '/:file*.svg',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
+      },
+      // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
+      {
+        source: '/api/:path*',
+        headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
+      },
+      // Cacheable /api routes — these MUST come AFTER the blanket /api no-store rule above, because
+      // Next applies header rules last-match-wins per key
+      // (nextjs.org/docs/app/api-reference/config/next-config-js/headers#header-overriding-behavior):
+      // a specific rule placed *after* the broad one re-enables caching for just those paths. (og +
+      // featured-parks used to sit *before* the blanket, so it silently overrode them to no-store —
+      // moved here too.) The park calendar/stats/nowcast back the park page's client-loaded
+      // BestDays/Stats/weather sections; CDN-caching keeps the heavy calendar (~450 KB) + the stats
+      // off the backend on every park view.
       {
         source: '/api/og/:path*',
         headers: [
@@ -168,25 +185,29 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Static SVGs served from /public — cache for 1 year (immutable via content hash)
-      {
-        source: '/:file*.svg',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }],
-      },
-      // Featured parks API — cacheable geo data (must come before the /api no-store rule)
       {
         source: '/api/featured-parks/:path*',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=7200',
-          },
+          { key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=7200' },
         ],
       },
-      // Only disable cache for API and search; let Next.js handle page caching (ISR/static)
       {
-        source: '/api/:path*',
-        headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
+        source: '/api/parks/:continent/:country/:city/:park/calendar',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
+        ],
+      },
+      {
+        source: '/api/parks/:continent/:country/:city/:park/stats',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=82800' },
+        ],
+      },
+      {
+        source: '/api/parks/:continent/:country/:city/:park/weather/nowcast',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
+        ],
       },
       {
         source: '/:locale/search',
