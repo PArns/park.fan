@@ -13,6 +13,7 @@ import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
+import { NavigationProgress } from '@/components/layout/navigation-progress';
 import {
   OrganizationStructuredData,
   WebSiteStructuredData,
@@ -176,6 +177,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                   which are dynamic under Cache Components — stream them as Suspense holes so the
                   page shell stays statically prerenderable. */}
               <Suspense fallback={null}>
+                <NavigationProgress />
                 <ScrollToTop />
                 <AnalyticsIdentify locale={locale} />
                 <WebVitalsReporter />
