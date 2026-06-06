@@ -29,6 +29,7 @@ export async function GlossaryInjectLoader({
     name: t.name,
     shortDefinition: t.shortDefinition,
     slug: t.slug,
+    aliases: t.aliases,
   }));
 
   return (

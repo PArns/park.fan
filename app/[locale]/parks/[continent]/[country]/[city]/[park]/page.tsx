@@ -1,21 +1,18 @@
-import { Suspense, type ComponentProps } from 'react';
+import { Suspense } from 'react';
 import { format, startOfMonth, endOfMonth, addMonths, addDays, min } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { connection } from 'next/server';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
-import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
-import { getParkHistoricalStats } from '@/lib/api/stats';
-import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
-import type { IntegratedCalendarResponse, ParkHistoricalStats } from '@/lib/api/types';
+import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import type { Locale } from '@/i18n/config';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -38,9 +35,7 @@ import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
-import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
-import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -181,10 +176,14 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-// Cache Components: the shell (header, attractions, weather, FAQ, structured data) is
-// statically prerendered + edge-cached; the slow calendar/stats sections opt into dynamic
-// rendering individually (connection() inside their Streamed* components) so they stream as
-// PPR holes without ever blocking the static shell.
+// Cache Components: the entire shell (header, attractions, weather, FAQ, structured data) is
+// statically prerendered + edge-cached (served `s-maxage`, like the attraction page). The slow
+// below-the-fold sections — best-days, historical stats, the crowd-derived FAQ entry — are loaded
+// CLIENT-side (React Query → the `/api/parks/.../calendar` + `/stats` CDN-cached routes), each
+// showing a skeleton until its data lands. This deliberately avoids forcing dynamic rendering:
+// a single dynamic-IO opt-in (the old per-section approach) would tip the WHOLE route into
+// dynamic (`no-store`) rendering, which is what previously defeated edge caching and drove ISR
+// write churn.
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
@@ -214,34 +213,38 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const now = new Date(nowMs);
 
   // Calendar date range: current month + next 2 months (API limit: 90 days max — cap to avoid 400).
-  // The calendar feeds only the below-the-fold best-days + FAQ sections, which stream as dynamic
-  // <Suspense> holes (StreamedBestDays / StreamedFaq, after connection()). The ~2.25 MB fetch is
-  // therefore invoked INSIDE those holes (not here in the shell): it's too big for Next's fetch
-  // data-cache, so under Cache Components creating its promise in the static shell would surface
-  // as "uncached data outside <Suspense>". getBestDaysCalendar caches the projected ~13 KB result
-  // (unstable_cache, 24h SWR), so the two consumers share one cached snapshot.
+  // The calendar feeds only the below-the-fold best-days + FAQ sections, which now load CLIENT-side
+  // (useParkBestDaysCalendar → the `/api/parks/.../calendar` CDN-cached route). We only compute the
+  // from/to window here (cheap, from the cached "now") and hand it to those client components — the
+  // bulky ~2.25 MB fetch never touches the static shell, so it can't poison the prerender.
   const calendarFrom = startOfMonth(now);
   const calendarTo = min([endOfMonth(addMonths(now, 2)), addDays(calendarFrom, 89)]);
-  const calendarArgs: CalendarArgs = {
-    continent,
-    country,
-    city,
-    parkSlug,
-    from: format(calendarFrom, 'yyyy-MM-dd'),
-    to: format(calendarTo, 'yyyy-MM-dd'),
-    timezone: park.timezone,
-    hasOperatingSchedule: park.hasOperatingSchedule,
-  };
+  const calendarFromStr = format(calendarFrom, 'yyyy-MM-dd');
+  const calendarToStr = format(calendarTo, 'yyyy-MM-dd');
 
-  // Nowcast feeds the header banner + weather card (above the fold), so it stays on the
-  // blocking path (small, cacheable response).
-  const nowcast = await getParkWeatherNowcast(continent, country, city, parkSlug).catch(() => null);
+  // Glossary terms for the (client) FAQ section. This is a small static-content lookup (no fetch,
+  // no clock) so it's safe to load in the static shell; the client FAQ tree highlights terms from
+  // these props instead of awaiting them itself.
+  const glossaryTerms = await getGlossaryTerms(locale as Locale);
+  const glossarySegment = GLOSSARY_SEGMENTS[locale as Locale];
+  const faqGlossaryTerms = glossaryTerms.map((term) => ({
+    id: term.id,
+    name: term.name,
+    shortDefinition: term.shortDefinition,
+    slug: term.slug,
+    aliases: term.aliases,
+  }));
 
-  // Historical stats feed only the below-the-fold stats section and the best-days widget. The
-  // stats response (2 years of aggregates) can exceed Next's 2 MB fetch data-cache cap, which
-  // would leave its 'use cache' boundary uncached — and creating that promise here in the static
-  // shell would surface as "uncached data outside <Suspense>". So, like the calendar, the fetch
-  // is invoked INSIDE the dynamic Suspense holes (after connection()), keyed off the geo slugs.
+  // Nowcast (rain/storm warnings) is intentionally NOT fetched in the static shell. Its `'use cache'`
+  // fill can time out during prerender (the nowcast endpoint is the slowest park dependency), which
+  // FAILS the park page's static prerender and makes Next fall back to dynamic rendering for the whole
+  // route — served `no-store`, so the CDN never caches it and every request hits the function (the
+  // root cause of the park-route ISR write churn). Both consumers (WeatherNowcastBanner, WeatherCard)
+  // already fetch the nowcast client-side via useWeatherNowcast, so no SSR seed is needed.
+
+  // Historical stats (2-year aggregate) feed only the below-the-fold stats + best-days sections and
+  // are likewise loaded CLIENT-side (useParkHistoricalStats → the `/api/parks/.../stats` CDN-cached
+  // route), so the slow cold-compute response never blocks or poisons the static shell.
 
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
@@ -349,7 +352,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               country={country}
               city={city}
               parkSlug={parkSlug}
-              initialData={nowcast}
+              initialData={null}
               className="mb-6"
             />
           </Suspense>
@@ -373,7 +376,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <Suspense fallback={null}>
                 <WeatherCard
                   weather={park.weather}
-                  nowcast={nowcast}
+                  nowcast={null}
                   continent={continent}
                   country={country}
                   city={city}
@@ -394,14 +397,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
             landNames={landNames}
             attractionsByLand={attractionsByLand}
             bestDaysSlot={
-              <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
-                <StreamedBestDays
-                  calendarArgs={calendarArgs}
-                  parkName={parkName}
-                  parkSlug={parkSlug}
-                  locale={locale}
-                />
-              </Suspense>
+              <ParkBestDaysSection
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
+                from={calendarFromStr}
+                to={calendarToStr}
+                timezone={park.timezone}
+                hasOperatingSchedule={park.hasOperatingSchedule}
+                parkName={parkName}
+                locale={locale}
+              />
             }
           />
 
@@ -417,134 +424,34 @@ export default async function ParkPage({ params }: ParkPageProps) {
             </Suspense>
           )}
 
-          {/* Historical statistics — streamed so a cold/slow stats response doesn't block
-              the shell or blank the section until a reload. */}
-          <Suspense fallback={<ParkStatsSectionSkeleton />}>
-            <StreamedParkStats
-              continent={continent}
-              country={country}
-              city={city}
-              parkSlug={parkSlug}
-              locale={locale}
-            />
-          </Suspense>
+          {/* Historical statistics — loaded client-side (CDN-cached /stats route); a skeleton
+              shows until the cold/slow stats response lands, so it never blocks the static shell. */}
+          <ParkStatsSection
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            locale={locale}
+          />
 
-          {/* FAQ Section */}
+          {/* FAQ Section — client-rendered: Q0–Q6 render immediately from the static park data,
+              and the calendar-derived Q7 streams in once the client calendar fetch resolves. */}
           <Separator className="my-8" />
-          <Suspense fallback={<ParkFAQSection park={park} locale={locale} />}>
-            <StreamedFaq park={park} locale={locale} calendarArgs={calendarArgs} />
-          </Suspense>
+          <ParkFAQSection
+            park={park}
+            locale={locale}
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            from={calendarFromStr}
+            to={calendarToStr}
+            nowMs={nowMs}
+            glossaryTerms={faqGlossaryTerms}
+            glossarySegment={glossarySegment}
+          />
         </article>
       </PageContainer>
     </>
   );
-}
-
-/**
- * Args for the below-the-fold best-days calendar fetch. The Streamed* components take these
- * args and run the fetch themselves (after connection()), so the ~2.25 MB uncacheable response
- * is only ever requested inside a dynamic Suspense hole — never in the static shell, where it
- * would surface as "uncached data outside <Suspense>".
- */
-interface CalendarArgs {
-  continent: string;
-  country: string;
-  city: string;
-  parkSlug: string;
-  from: string;
-  to: string;
-  timezone: string;
-  hasOperatingSchedule: boolean;
-}
-
-/**
- * Fetch + project the best-days calendar (cached 24h via unstable_cache inside
- * getBestDaysCalendar), falling back to an empty calendar on error so a failed fetch degrades
- * the widget gracefully instead of taking down the streamed section.
- */
-function loadBestDaysCalendar(a: CalendarArgs): Promise<IntegratedCalendarResponse> {
-  return getBestDaysCalendar(a.continent, a.country, a.city, a.parkSlug, {
-    from: a.from,
-    to: a.to,
-  }).catch(
-    (): IntegratedCalendarResponse => ({
-      meta: {
-        slug: a.parkSlug,
-        timezone: a.timezone,
-        hasOperatingSchedule: a.hasOperatingSchedule,
-      },
-      days: [],
-    })
-  );
-}
-
-/**
- * Fetch historical park stats (cached 5 min via 'use cache' inside getParkHistoricalStats). The
- * 2-year aggregate response can exceed Next's 2 MB fetch data-cache cap; if it does, the boundary
- * is uncached — which is why this is invoked only INSIDE the dynamic Suspense holes (after
- * connection()), never in the static shell. Falls back to null so a failure degrades gracefully.
- */
-function loadParkStats(
-  continent: string,
-  country: string,
-  city: string,
-  parkSlug: string
-): Promise<ParkHistoricalStats | null> {
-  return getParkHistoricalStats(continent, country, city, parkSlug).catch(
-    (): ParkHistoricalStats | null => null
-  );
-}
-
-/**
- * Streams the "best days" widget. The calendar + stats fetches are kicked off HERE (inside the
- * dynamic hole, after connection()) rather than in the page shell, so the bulky uncacheable
- * responses never block or poison the static prerender. Wrapped in <Suspense> by the caller.
- */
-async function StreamedBestDays({
-  calendarArgs,
-  ...rest
-}: Omit<ComponentProps<typeof ParkBestDaysSection>, 'calendarData' | 'statsByDayOfWeek'> & {
-  calendarArgs: CalendarArgs;
-}) {
-  // Dynamic PPR hole: keeps the slow calendar/stats out of the static shell prerender.
-  await connection();
-  const { continent, country, city, parkSlug } = calendarArgs;
-  const [calendarData, stats] = await Promise.all([
-    loadBestDaysCalendar(calendarArgs),
-    loadParkStats(continent, country, city, parkSlug),
-  ]);
-  return (
-    <ParkBestDaysSection
-      calendarData={calendarData}
-      statsByDayOfWeek={stats?.byDayOfWeek}
-      {...rest}
-    />
-  );
-}
-
-/** Streams the FAQ section (calendar-derived crowd FAQ) the same way. */
-async function StreamedFaq({
-  calendarArgs,
-  ...rest
-}: Omit<ComponentProps<typeof ParkFAQSection>, 'calendarData'> & {
-  calendarArgs: CalendarArgs;
-}) {
-  // Dynamic PPR hole: the calendar-derived crowd FAQ streams; the static FAQ fallback is prerendered.
-  await connection();
-  const calendarData = await loadBestDaysCalendar(calendarArgs);
-  return <ParkFAQSection {...rest} calendarData={calendarData} />;
-}
-
-/**
- * Below-the-fold historical statistics. Fetched inside a dynamic Suspense hole (connection())
- * so the cold, slow-to-compute (and potentially >2 MB, uncacheable) stats response never blocks
- * the static shell; the skeleton shows until the data streams in.
- */
-async function StreamedParkStats({
-  ...rest
-}: Omit<ComponentProps<typeof ParkStatsSection>, 'stats'>) {
-  // Dynamic PPR hole: keeps the (no-store, cold-compute) stats out of the static shell prerender.
-  await connection();
-  const stats = await loadParkStats(rest.continent, rest.country, rest.city, rest.parkSlug);
-  return <ParkStatsSection stats={stats} {...rest} />;
 }

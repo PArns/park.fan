@@ -1,6 +1,8 @@
+'use client';
+
 import type { ReactNode } from 'react';
-import { ParkWithAttractions, IntegratedCalendarResponse } from '@/lib/api/types';
-import { getTranslations } from 'next-intl/server';
+import { ParkWithAttractions } from '@/lib/api/types';
+import { useTranslations } from 'next-intl';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import {
   ChevronDown,
@@ -15,15 +17,34 @@ import {
 import { Card } from '@/components/ui/card';
 import { stripNewPrefix } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { GlossaryInjectClient } from '@/components/glossary/glossary-inject-client';
+import {
+  GlossaryInjectProvider,
+  type GlossaryInjectTerm,
+} from '@/components/glossary/glossary-inject-context';
+import type { Locale } from '@/i18n/config';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { buildParkFaqItems, getParkArticleForms, type ParkFaqIconName } from '@/lib/faq/park-faq';
-import { getServerNowMs } from '@/lib/utils/server-time';
+import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
   locale: string;
-  calendarData?: IntegratedCalendarResponse;
+  /** Calendar window (current month + next 2) computed in the server shell — used for Q7. */
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+  from: string;
+  to: string;
+  /** Day-stable "now" (epoch ms) computed in the server shell via getServerNowMs(). Passed in
+   *  (rather than read from Date.now() here) so the base Q0–Q6 stay in the static prerender for
+   *  SEO without reading the clock inside a Client Component during the prerender. */
+  nowMs: number;
+  /** Glossary terms + URL segment, loaded in the server shell, so the client tree can highlight
+   *  terms without awaiting them. */
+  glossaryTerms: GlossaryInjectTerm[];
+  glossarySegment: string;
 }
 
 interface FAQItem {
@@ -53,11 +74,33 @@ function isFaqListAnswer(
   );
 }
 
-export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSectionProps) {
-  const t = await getTranslations('seo.faq');
+export function ParkFAQSection({
+  park,
+  locale,
+  continent,
+  country,
+  city,
+  parkSlug,
+  from,
+  to,
+  nowMs,
+  glossaryTerms,
+  glossarySegment,
+}: ParkFAQSectionProps) {
+  const t = useTranslations('seo.faq');
+  const tGeo = useTranslations('geo');
 
-  const tGeo = await getTranslations('geo');
-  const nowMs = await getServerNowMs();
+  // Calendar feeds only Q7 (least-crowded days); it streams in client-side. Until it lands,
+  // the base Q0–Q6 render immediately — same graceful behavior as the old streamed fallback.
+  const { data: calendarData } = useParkBestDaysCalendar({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from,
+    to,
+  });
+
   const faqs: FAQItem[] = buildParkFaqItems(
     park,
     locale,
@@ -120,45 +163,51 @@ export async function ParkFAQSection({ park, locale, calendarData }: ParkFAQSect
   if (faqs.length === 0) return null;
 
   return (
-    <section className="space-y-4">
-      <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-        <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
-      </div>
-      <div className="space-y-3">
-        {faqs.map((faq, index) => {
-          const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];
+    <GlossaryInjectProvider
+      terms={glossaryTerms}
+      locale={locale as Locale}
+      segment={glossarySegment}
+    >
+      <section className="space-y-4">
+        <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
+          <h2 className="text-2xl font-bold">{t('title', { park: parkName })}</h2>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((faq, index) => {
+            const Icon = ICON_MAP[faq.iconName as keyof typeof ICON_MAP];
 
-          return (
-            <Card key={index} className="overflow-hidden">
-              <details className="group">
-                <summary className="hover:bg-muted/50 flex cursor-pointer list-none items-center justify-between p-4 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <Icon className="text-primary h-5 w-5 flex-shrink-0" />
-                    <span className="text-left font-medium">{faq.question}</span>
+            return (
+              <Card key={index} className="overflow-hidden">
+                <details className="group">
+                  <summary className="hover:bg-muted/50 flex cursor-pointer list-none items-center justify-between p-4 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <Icon className="text-primary h-5 w-5 flex-shrink-0" />
+                      <span className="text-left font-medium">{faq.question}</span>
+                    </div>
+                    <ChevronDown className="text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
+                  </summary>
+                  <div className="text-muted-foreground border-t px-4 pt-2 pb-4">
+                    {typeof faq.answer === 'string' ? (
+                      <GlossaryInjectClient>{faq.answer}</GlossaryInjectClient>
+                    ) : isFaqListAnswer(faq.answer) ? (
+                      <>
+                        <p className="mb-2">{faq.answer.text}</p>
+                        <ul className="list-disc space-y-1 pl-5">
+                          {faq.answer.list.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <>{faq.answer as ReactNode}</>
+                    )}
                   </div>
-                  <ChevronDown className="text-muted-foreground h-5 w-5 flex-shrink-0 transition-transform group-open:rotate-180" />
-                </summary>
-                <div className="text-muted-foreground border-t px-4 pt-2 pb-4">
-                  {typeof faq.answer === 'string' ? (
-                    <GlossaryInject>{faq.answer}</GlossaryInject>
-                  ) : isFaqListAnswer(faq.answer) ? (
-                    <>
-                      <p className="mb-2">{faq.answer.text}</p>
-                      <ul className="list-disc space-y-1 pl-5">
-                        {faq.answer.list.map((item, i) => (
-                          <li key={i}>{item}</li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <>{faq.answer as ReactNode}</>
-                  )}
-                </div>
-              </details>
-            </Card>
-          );
-        })}
-      </div>
-    </section>
+                </details>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+    </GlossaryInjectProvider>
   );
 }

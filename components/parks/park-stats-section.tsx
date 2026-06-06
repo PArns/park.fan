@@ -1,11 +1,15 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
 import { BarChart3 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
 import { ParkStatsAttractionsCard } from '@/components/parks/park-stats-attractions-card';
+import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
+import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
 interface ParkStatsSectionProps {
-  stats: ParkHistoricalStats | null;
   continent: string;
   country: string;
   city: string;
@@ -13,17 +17,64 @@ interface ParkStatsSectionProps {
   locale: string;
 }
 
-export async function ParkStatsSection({
-  stats,
+/**
+ * Client wrapper: fetches the 2-year historical aggregate client-side (via the CDN-cached
+ * `/api/parks/.../stats` route), shows the skeleton while loading, then renders the stats
+ * content. Moving this off the server render lets the park page stay statically prerenderable
+ * (no `connection()` / dynamic hole). A failed fetch resolves to `null` → renders nothing,
+ * mirroring the old server-side loadParkStats fallback.
+ */
+export function ParkStatsSection({
   continent,
   country,
   city,
   parkSlug,
   locale,
 }: ParkStatsSectionProps) {
-  const t = await getTranslations('parks.stats');
+  // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
+  // static prerender renders the placeholder rather than an empty section.
+  const mounted = useMounted();
+  const { data: stats, isLoading } = useParkHistoricalStats({
+    continent,
+    country,
+    city,
+    parkSlug,
+  });
+
+  if (!mounted || isLoading) {
+    return <ParkStatsSectionSkeleton />;
+  }
 
   if (!stats || !stats.meta.displayable) return null;
+
+  return (
+    <StatsContent
+      stats={stats}
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      locale={locale}
+    />
+  );
+}
+
+function StatsContent({
+  stats,
+  continent,
+  country,
+  city,
+  parkSlug,
+  locale,
+}: {
+  stats: ParkHistoricalStats;
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+  locale: string;
+}) {
+  const t = useTranslations('parks.stats');
 
   const monthRows = stats.byMonth.map((m) => ({
     key: m.month,

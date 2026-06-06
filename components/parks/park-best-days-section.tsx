@@ -1,18 +1,31 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import type { IntegratedCalendarResponse, CrowdLevel, DayOfWeekStat } from '@/lib/api/types';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
-import { getServerNowMs } from '@/lib/utils/server-time';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
+import { useParkHistoricalStats } from '@/lib/hooks/use-park-historical-stats';
+import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 
 interface ParkBestDaysSectionProps {
-  calendarData: IntegratedCalendarResponse;
-  statsByDayOfWeek?: DayOfWeekStat[];
-  parkName: string;
+  continent: string;
+  country: string;
+  city: string;
   parkSlug: string;
+  /** Calendar window (current month + next 2, capped at 90 days) computed in the server shell. */
+  from: string;
+  to: string;
+  /** Park timezone — used for the empty-calendar fallback meta while data loads/fails. */
+  timezone: string;
+  hasOperatingSchedule: boolean;
+  parkName: string;
   locale: string;
   /** Renders as a compact card without section heading — for embedding in the header area */
   compact?: boolean;
@@ -65,7 +78,83 @@ function DayChip({ dayIndex, score, locale }: { dayIndex: number; score: number;
   );
 }
 
-export async function ParkBestDaysSection({
+/**
+ * Client wrapper: fetches the calendar window + historical stats client-side (via the
+ * `/api/parks/.../calendar` + `/stats` CDN-cached routes), shows the skeleton while loading,
+ * then renders the best-days content. Moving this off the server render is what lets the park
+ * page stay statically prerenderable (no `connection()` / dynamic hole). Falls back to an empty
+ * calendar / undefined stats on error so a failed fetch degrades gracefully (mirrors the old
+ * server-side loadBestDaysCalendar/loadParkStats fallbacks).
+ */
+export function ParkBestDaysSection({
+  continent,
+  country,
+  city,
+  parkSlug,
+  from,
+  to,
+  timezone,
+  hasOperatingSchedule,
+  parkName,
+  locale,
+  compact = false,
+  className,
+}: ParkBestDaysSectionProps) {
+  // Both queries are browser-only (disabled during SSR). Gate the content render on `mounted`
+  // so the static prerender (and first paint) shows the skeleton instead of reaching the
+  // clock-reading content below — reading Date.now() inside a Client Component during the
+  // prerender is forbidden under Cache Components.
+  const mounted = useMounted();
+  const { data: calendarData, isLoading: calendarLoading } = useParkBestDaysCalendar({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from,
+    to,
+  });
+  const { data: stats, isLoading: statsLoading } = useParkHistoricalStats({
+    continent,
+    country,
+    city,
+    parkSlug,
+  });
+
+  // The compact header card has no skeleton placeholder; render nothing until data arrives.
+  if (!mounted || calendarLoading || statsLoading) {
+    return compact ? null : <ParkBestDaysSectionSkeleton />;
+  }
+
+  // Graceful empty fallback when the calendar fetch failed (mirrors loadBestDaysCalendar).
+  const resolvedCalendar: IntegratedCalendarResponse = calendarData ?? {
+    meta: { slug: parkSlug, timezone, hasOperatingSchedule },
+    days: [],
+  };
+
+  return (
+    <BestDaysContent
+      calendarData={resolvedCalendar}
+      statsByDayOfWeek={stats?.byDayOfWeek}
+      parkName={parkName}
+      parkSlug={parkSlug}
+      locale={locale}
+      compact={compact}
+      className={className}
+    />
+  );
+}
+
+interface BestDaysContentProps {
+  calendarData: IntegratedCalendarResponse;
+  statsByDayOfWeek?: DayOfWeekStat[];
+  parkName: string;
+  parkSlug: string;
+  locale: string;
+  compact?: boolean;
+  className?: string;
+}
+
+function BestDaysContent({
   calendarData,
   statsByDayOfWeek,
   parkName,
@@ -73,13 +162,12 @@ export async function ParkBestDaysSection({
   locale,
   compact = false,
   className,
-}: ParkBestDaysSectionProps) {
-  const t = await getTranslations('parks.bestDays');
-  const analysis = analyzeBestDays(
-    calendarData.days,
-    await getServerNowMs(),
-    calendarData.meta.timezone
-  );
+}: BestDaysContentProps) {
+  const t = useTranslations('parks.bestDays');
+  // Capture "now" once at mount (lazy init) — analyzeBestDays only needs day-granular precision,
+  // and calling Date.now() directly during render is a purity violation.
+  const [nowMs] = useState(() => Date.now());
+  const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
 
   const bestDaysOfWeek =
     statsByDayOfWeek && statsByDayOfWeek.length > 0

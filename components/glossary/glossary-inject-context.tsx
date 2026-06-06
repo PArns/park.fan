@@ -8,6 +8,8 @@ export interface GlossaryInjectTerm {
   name: string;
   shortDefinition: string;
   slug: string;
+  /** Plural forms / alternate names that also link to this term — needed for client-side matching. */
+  aliases?: string[];
 }
 
 interface GlossaryInjectContextValue {

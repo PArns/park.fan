@@ -19,17 +19,18 @@ export async function getCurrentYear(): Promise<number> {
 }
 
 /**
- * Current epoch milliseconds, captured at cache-fill time. Refreshes hourly.
+ * Current epoch milliseconds, captured at cache-fill time. Refreshes daily.
  *
  * Consumers only need day-granular precision (calendar month boundaries, "today's" schedule
- * lookup, the yyyy-MM-dd date in structured data). The previous 5-min cadence pinned every
- * route shell that reads this (the park page) to a 5-min revalidate floor — forcing a fresh
- * ISR write per park × locale every 5 min regardless of the park TTL. Hourly removes that
- * hidden floor; for truly live values use a Client Component instead.
+ * lookup, the yyyy-MM-dd date in structured data). This is read in the park/attraction static
+ * shell, so its cacheLife is the MIN that pins the whole route's revalidate: at 'hours' it
+ * silently capped park/attraction at a 1h revalidate, defeating the intended 6h TTL (a hidden
+ * per-park × per-locale write multiplier). 'days' lifts that floor so the 6h shell TTL actually
+ * applies; for truly live values use a Client Component instead.
  */
 export async function getServerNowMs(): Promise<number> {
   'use cache';
-  cacheLife('hours');
+  cacheLife('days');
   return Date.now();
 }
 
