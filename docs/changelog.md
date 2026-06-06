@@ -18,10 +18,10 @@ render-blocking stylesheet (not inlined), and a redundant font preload.
 - **framer-motion code-split** — the homepage `FlipClock` countdown is now a `next/dynamic`
   import, so framer-motion (~40 KB gzip) leaves the initial bundle and only loads when an
   announcement countdown is actually live.
-- **Critical CSS inlining restored** — the production `build` runs Webpack again (Beasties /
-  `optimizeCss` is Webpack-only and was a no-op under `next build --turbo`, leaving the full
-  stylesheet render-blocking). `build:turbo` keeps the Turbopack path available. ⚠️ Verify on a
-  preview deploy: critical-CSS extraction previously caused FOUC.
+- **Critical CSS inlining restored** — the production `build` now passes `--webpack`. Beasties /
+  `optimizeCss` is Webpack-only, and Next 16 defaults to Turbopack for `next build`, so the
+  stylesheet was render-blocking (no inlined critical CSS). `build:turbo` keeps the Turbopack
+  path available. ⚠️ Verify on a preview deploy: critical-CSS extraction previously caused FOUC.
 
 ### Follow-ups (audited, not yet done)
 
