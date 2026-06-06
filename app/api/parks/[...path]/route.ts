@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 
 export async function GET(
@@ -16,9 +16,10 @@ export async function GET(
     const [continent, country, city, park] = path;
 
     try {
-      const parkData = await getParkByGeoPath(continent, country, city, park);
+      // Fresh (no-store) so the client poll reflects the backend's latest wait times — NOT the
+      // cached shell snapshot (which now lives 6h). getParkByGeoPathFresh resolves to null on 404.
+      const parkData = await getParkByGeoPathFresh(continent, country, city, park);
 
-      // getParkByGeoPath resolves to null for a non-existent park (404) instead of throwing.
       if (!parkData) {
         return NextResponse.json({ error: 'Park not found' }, { status: 404 });
       }
