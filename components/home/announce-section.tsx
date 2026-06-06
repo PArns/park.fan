@@ -1,6 +1,7 @@
 import { getMarkdownContent } from '@/lib/markdown';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import { Button } from '@/components/ui/button';
@@ -71,10 +72,13 @@ export async function AnnounceSection({ locale }: AnnounceSectionProps) {
             src={cleanBackground}
             alt="Background"
             fill
+            loader={backgroundImageLoader}
             className="object-cover object-top"
             sizes="100vw"
-            priority={true}
-            quality={85}
+            // Sits below the hero — not the LCP. Keeping it off `priority` stops it
+            // competing with the hero image for bandwidth (the hero's LCP load delay
+            // was ~1.4 s on slow 4G). Lazy-loads as it scrolls into view. Shares the
+            // hero's loader so mobile/desktop quality is handled the same way (q60/q90).
           />
           <div className="from-background via-background/90 to-muted/50 absolute inset-0 bg-gradient-to-br" />
           <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
