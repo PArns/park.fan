@@ -120,13 +120,17 @@ export function LiveParkData({
         </Card>
       )}
 
-      {/* Subtle loading indicator during background refetch */}
-      {isFetching && !isError && (
-        <div className="text-muted-foreground mb-4 flex items-center gap-2 text-xs">
-          <Loader2 className="h-3 w-3 animate-spin" />
-          <span>{t('updating')}</span>
-        </div>
-      )}
+      {/* Subtle loading indicator during background refetch. Wrapped in a fixed-height slot that is
+          always present, so the indicator appearing/disappearing on every 5-min poll (and on the
+          immediate refetch-on-mount) no longer shifts the status + tabs below it (CLS). */}
+      <div className="mb-4 h-4">
+        {isFetching && !isError && (
+          <div className="text-muted-foreground flex items-center gap-2 text-xs">
+            <Loader2 className="h-3 w-3 animate-spin" />
+            <span>{t('updating')}</span>
+          </div>
+        )}
+      </div>
 
       {/* Park Status Component — on mobile receives the tabs between WaitTime and Attractions */}
       <ParkStatus park={currentPark} variant="detailed" midSlot={tabsWithHash} />
