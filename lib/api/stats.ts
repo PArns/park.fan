@@ -34,12 +34,12 @@ export async function getParkHistoricalStats(
   years = 2
 ): Promise<ParkHistoricalStats | null> {
   'use cache';
-  // Cached (Cache Components): creating this promise in the park-page shell is allowed, while
-  // the StreamedParkStats <Suspense> hole still streams it off the critical path. The retry loop
-  // below already warms a cold-compute backend WITHIN a single fill, so a successful aggregate is
-  // returned on first load — and the data only changes daily. A 5-min window was therefore pure
-  // ISR-write churn (288 writes/day per park key); 1h cuts that ~12× while still re-attempting a
-  // genuine null (too-little-data) park within the hour.
+  // Cached (Cache Components). This is now invoked from the `/api/parks/.../stats` route handler
+  // (the park page loads stats CLIENT-side), so the slow cold-compute never touches the park
+  // page's static prerender. The retry loop below warms a cold-compute backend WITHIN a single
+  // fill, so a successful aggregate is returned on first load — and the data only changes daily.
+  // A 5-min window was therefore pure ISR-write churn (288 writes/day per park key); 1h cuts that
+  // ~12× while still re-attempting a genuine null (too-little-data) park within the hour.
   cacheLife({ stale: 3600, revalidate: 3600, expire: 14400 });
 
   const url = `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/stats?years=${years}`;

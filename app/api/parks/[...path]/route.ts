@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import { getParkByGeoPathFresh } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
+import { getParkHistoricalStats } from '@/lib/api/stats';
 
 export async function GET(
   request: NextRequest,
@@ -86,6 +87,33 @@ export async function GET(
     }
   }
 
+  // Handle historical stats: [continent, country, city, park, 'stats'] (5 segments)
+  // e.g., ['europe', 'germany', 'bruehl', 'phantasialand', 'stats']
+  if (path && path.length === 5 && path[4] === 'stats') {
+    const [continent, country, city, park] = path;
+
+    try {
+      // 2-year aggregate — large and slow to compute (cold-park lazy compute is retried inside
+      // getParkHistoricalStats). Serving it through this function response keeps the response on
+      // the CDN (s-maxage) WITHOUT pulling the slow fetch into the park page's static prerender:
+      // this is a cacheable function response, NOT an ISR write of the page shell.
+      const stats = await getParkHistoricalStats(continent, country, city, park);
+
+      if (!stats) {
+        return NextResponse.json({ error: 'Stats not available' }, { status: 404 });
+      }
+
+      return NextResponse.json(stats, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=82800',
+        },
+      });
+    } catch (error) {
+      console.error('[Stats API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch stats data' }, { status: 500 });
+    }
+  }
+
   // Handle weather nowcast: [continent, country, city, park, 'weather', 'nowcast'] (6 segments)
   if (path && path.length === 6 && path[4] === 'weather' && path[5] === 'nowcast') {
     const [continent, country, city, park] = path;
@@ -115,7 +143,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /stats, or /weather/nowcast',
     },
     { status: 400 }
   );

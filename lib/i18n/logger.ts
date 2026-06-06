@@ -5,8 +5,23 @@
  * to help identify translation issues across all pages.
  */
 
-import fs from 'fs';
-import path from 'path';
+// `fs`/`path` are loaded lazily (server-only) instead of via top-level imports: this module is
+// now reachable from Client Components (e.g. the client FAQ section → translateCountry), and a
+// static `import fs from 'fs'` makes the client bundle fail to resolve `fs` under Turbopack.
+// File logging only ever runs on the server in production, so requiring these on demand keeps
+// server behavior identical while staying client-bundle-safe.
+type FsModule = typeof import('fs');
+type PathModule = typeof import('path');
+
+function loadNodeModules(): { fs: FsModule; path: PathModule } | null {
+  if (typeof window !== 'undefined') return null;
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    return { fs: require('fs') as FsModule, path: require('path') as PathModule };
+  } catch {
+    return null;
+  }
+}
 
 interface MissingTranslation {
   key: string;
@@ -24,13 +39,14 @@ class TranslationLogger {
 
   private constructor() {
     this.isServer = typeof window === 'undefined';
-    this.logPath = path.join(process.cwd(), 'translation-missing.json');
+    const node = loadNodeModules();
+    this.logPath = node ? node.path.join(process.cwd(), 'translation-missing.json') : '';
 
     // Load existing log if in build mode
-    if (this.isServer && process.env.NODE_ENV === 'production') {
+    if (node && this.isServer && process.env.NODE_ENV === 'production') {
       try {
-        if (fs.existsSync(this.logPath)) {
-          const existing = JSON.parse(fs.readFileSync(this.logPath, 'utf-8'));
+        if (node.fs.existsSync(this.logPath)) {
+          const existing = JSON.parse(node.fs.readFileSync(this.logPath, 'utf-8'));
           existing.forEach((item: MissingTranslation) => {
             const uniqueKey = `${item.locale}:${item.namespace || ''}:${item.key}:${item.page}`;
             this.missingKeys.set(uniqueKey, item);
@@ -80,9 +96,11 @@ class TranslationLogger {
   }
 
   private saveToFile(): void {
+    const node = loadNodeModules();
+    if (!node || !this.logPath) return;
     try {
       const data = Array.from(this.missingKeys.values());
-      fs.writeFileSync(this.logPath, JSON.stringify(data, null, 2), 'utf-8');
+      node.fs.writeFileSync(this.logPath, JSON.stringify(data, null, 2), 'utf-8');
     } catch (error) {
       console.error('Failed to save translation log:', error);
     }
