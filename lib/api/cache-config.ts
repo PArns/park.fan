@@ -19,9 +19,13 @@ export const CACHE_TTL = {
   nearby: 60, // ⚠️ Using cache: 'no-store' - IP/GeoIP-dependent, must not be cached
   realtime: 120, // ⚠️ Using cache: 'no-store' - live ticker/realtime stats
 
-  // Discovery & Park data
-  geo: 3600, // geo structure changes rarely
-  continents: 3600, // same as geo
+  // Discovery & Park data. Raised to 24h once the hub pages (continent/country/city) render their
+  // ParkCards STATUS-FREE: live status/crowd/wait now come from the client (<LiveParkGrid> →
+  // /api/discovery), so the per-locale ISR shells carry only structure (park names/slugs), which
+  // changes ~weekly. A new/removed park appears within 24h (or via on-demand revalidate); this
+  // collapses the hourly hub-page write churn ~24×.
+  geo: 86400, // geo structure changes rarely (was 3600 — hub shells no longer carry live status)
+  continents: 86400, // same as geo
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
   // Shell TTL for the park/attraction static prerender. Decoupled from the API's 5-min live
   // cadence: the shell wait times are only an SSR seed replaced client-side by React Query, so a

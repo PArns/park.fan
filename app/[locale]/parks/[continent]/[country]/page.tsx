@@ -4,7 +4,8 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
-import { ParkCard } from '@/components/parks/park-card';
+import { LiveParkGrid } from '@/components/parks/live-park-grid';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -149,30 +150,22 @@ export default async function CountryPage({ params }: CountryPageProps) {
               badge={t('parkCount', { count: city.parkCount })}
             />
 
-            <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {city.parks.map((park) => (
-                <ParkCard
-                  key={park.id}
-                  name={stripNewPrefix(park.name)}
-                  slug={park.slug}
-                  city={city.name}
-                  country={countryName}
-                  href={`/parks/${continent}/${country}/${city.slug}/${park.slug}`}
-                  status={park.status}
-                  crowdLevel={
-                    park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel
-                  }
-                  averageWaitTime={park.analytics?.statistics?.avgWaitTime}
-                  operatingAttractions={park.analytics?.statistics?.operatingAttractions}
-                  totalAttractions={park.analytics?.statistics?.totalAttractions}
-                  showBackground={true}
-                  variant="detailed"
-                  timezone={park.timezone}
-                  todaySchedule={park.todaySchedule}
-                  nextSchedule={park.nextSchedule}
-                />
-              ))}
-            </div>
+            {/* Status-free shell (cacheable); live status overlaid client-side. All cities on
+                the page share one underlying /api/discovery call (React Query dedupe). */}
+            <LiveParkGrid
+              continent={continent}
+              country={country}
+              parks={city.parks.map((park) => ({
+                id: park.id,
+                name: stripNewPrefix(park.name),
+                slug: park.slug,
+                city: city.name,
+                countryName,
+                href: `/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+                backgroundImage: getParkBackgroundImage(park.slug),
+              }))}
+              className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            />
           </div>
         ))}
       </div>
