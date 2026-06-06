@@ -42,7 +42,7 @@ import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-s
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkStatsSectionSkeleton } from '@/components/parks/park-stats-section-skeleton';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
-import { groupAttractionsByLand } from '@/lib/utils/park-utils';
+import { groupAttractionsByLand, leanParkSeed } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
@@ -243,9 +243,18 @@ export default async function ParkPage({ params }: ParkPageProps) {
   // shell would surface as "uncached data outside <Suspense>". So, like the calendar, the fetch
   // is invoked INSIDE the dynamic Suspense holes (after connection()), keyed off the geo slugs.
 
+  // Seed the attraction grid status-free: only the structure (name/link/land/headliner/seasonal)
+  // is prerendered; wait times, status, crowd, statistics/sparkline and best-visit times are
+  // refetched on the client by LiveParkData (useLiveParkData), so they aren't baked into the
+  // per-locale ISR output. This is the bulk of the park-page size-weighted write units.
+  const seedPark = leanParkSeed(park);
+
   // Group attractions by land
   const otherAttractionsLabel = t('otherAttractions');
-  const attractionsByLand = groupAttractionsByLand(park.attractions || [], otherAttractionsLabel);
+  const attractionsByLand = groupAttractionsByLand(
+    seedPark.attractions || [],
+    otherAttractionsLabel
+  );
   const landNames = Object.keys(attractionsByLand).sort((a, b) => {
     // Put "Other Attractions" at the end
     if (a === otherAttractionsLabel) return 1;
@@ -386,7 +395,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
           <LiveParkData
-            initialData={park}
+            initialData={seedPark}
             continent={continent}
             country={country}
             city={city}
