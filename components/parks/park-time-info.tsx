@@ -15,7 +15,9 @@ import type { ScheduleItem, NextScheduleItem, InfluencingHoliday } from '@/lib/a
 
 interface ParkTimeInfoProps {
   timezone: string;
-  todaySchedule?: ScheduleItem | null;
+  /** Full park schedule (day-stable, lives in the static shell). Today's entry is picked
+   *  CLIENT-side from the browser clock + park timezone, so the shell stays time-independent. */
+  schedule?: ScheduleItem[] | null;
   nextSchedule?: NextScheduleItem | null;
   status?: ParkStatus | null;
   hasOperatingSchedule?: boolean;
@@ -30,7 +32,7 @@ interface ParkTimeInfoProps {
  */
 export function ParkTimeInfo({
   timezone,
-  todaySchedule,
+  schedule,
   nextSchedule,
   status,
   hasOperatingSchedule = true,
@@ -41,6 +43,16 @@ export function ParkTimeInfo({
   const tNearby = useTranslations('nearby');
   const locale = useLocale();
   const currentTime = useBrowserNow(60_000);
+
+  // Pick today's schedule entry CLIENT-side (from the browser clock in the park's timezone) so the
+  // static shell never reads the server clock. Before mount we fall back to the first entry — same
+  // graceful seed the server used previously — and the real "today" fills in after hydration.
+  const todaySchedule: ScheduleItem | null = (() => {
+    if (!schedule || schedule.length === 0) return null;
+    if (!currentTime) return schedule[0];
+    const todayInParkTz = currentTime.toLocaleDateString('en-CA', { timeZone: timezone });
+    return schedule.find((s) => s.date === todayInParkTz) ?? schedule[0];
+  })();
 
   // Format current time in park timezone
   const formatCurrentTime = () => {

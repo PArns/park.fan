@@ -3,7 +3,6 @@ import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
 import { buildParkFaqItems, getParkArticleForms } from '@/lib/faq/park-faq';
-import { getServerNowMs } from '@/lib/utils/server-time';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
@@ -14,12 +13,15 @@ export async function FAQStructuredData({ park, locale }: FAQStructuredDataProps
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
 
+  // Pass null for "now": the JSON-LD stays SERVER-rendered (SEO) but TIME-INDEPENDENT, so it can
+  // live in the day-stable static shell without reading the clock (which would pin/stale the
+  // shell). Q1 emits an evergreen opening-hours answer instead of today's concrete hours.
   const items = buildParkFaqItems(
     park,
     locale,
     t as Parameters<typeof buildParkFaqItems>[2],
     tGeo as Parameters<typeof buildParkFaqItems>[3],
-    await getServerNowMs()
+    null
   );
 
   const { parkNom, parkAcc } = getParkArticleForms(park, locale);

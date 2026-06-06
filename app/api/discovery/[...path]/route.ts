@@ -12,7 +12,11 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://api.park.fan';
  * ISR shell carries no volatile data (and can be cached for a day). The live open/closed status,
  * crowd level and wait times are layered on the client via `useRegionParks`, which polls this
  * endpoint — exactly the SSR-static + client-live split already used for the park page, favorites
- * and nearby. Always no-store here so the client overlay reflects the backend's latest snapshot.
+ * and nearby. The upstream fetch stays no-store (always the backend's latest), but the RESPONSE
+ * gets a small shared CDN window (s-maxage=60) so concurrent hub polls collapse onto one backend
+ * call instead of hitting it per visitor — the client polls every 5 min anyway, so a ≤60 s CDN
+ * window doesn't meaningfully stale the overlay. (Requires a matching exemption in next.config,
+ * placed AFTER the blanket `/api → no-store` rule, or that rule overrides this header.)
  */
 export async function GET(
   _request: NextRequest,
@@ -38,7 +42,7 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json(data, {
       status: response.status,
-      headers: { 'Cache-Control': 'no-store, must-revalidate' },
+      headers: { 'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=120' },
     });
   } catch (error) {
     console.error('[Discovery proxy] Error:', error);

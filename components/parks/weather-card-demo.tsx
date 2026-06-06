@@ -495,11 +495,11 @@ export function ParkTimeInfoShowcase() {
     <div className="grid max-w-2xl grid-cols-1 gap-4 sm:grid-cols-2">
       <ParkTimeInfo
         timezone="Europe/Berlin"
-        todaySchedule={buildScheduleForOffset(today, 0, 9, 22, '+01:00')}
+        schedule={[buildScheduleForOffset(today, 0, 9, 22, '+01:00')]}
       />
       <ParkTimeInfo
         timezone="America/New_York"
-        todaySchedule={buildScheduleForOffset(today, 0, 9, 20, '-05:00')}
+        schedule={[buildScheduleForOffset(today, 0, 9, 20, '-05:00')]}
         nextSchedule={buildScheduleForOffset(today, 1, 9, 20, '-05:00')}
       />
     </div>
@@ -528,7 +528,7 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
           <ParkTimeInfo
             timezone="Europe/Berlin"
             status="OPERATING"
-            todaySchedule={buildTodaySchedule(today)}
+            schedule={[buildTodaySchedule(today)]}
           />
           <WeatherCard
             weather={buildWeather(today, 'sunny')}

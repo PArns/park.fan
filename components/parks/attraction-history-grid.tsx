@@ -1,11 +1,13 @@
-import { getLocale, getTranslations } from 'next-intl/server';
+'use client';
+
+import { useLocale, useTranslations } from 'next-intl';
 import { format, eachDayOfInterval } from 'date-fns';
 import { de, enUS, es, fr, it, nl, type Locale } from 'date-fns/locale';
 import { Ban, PartyPopper, Backpack, Calendar } from 'lucide-react';
 import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { AttractionHistoryDay as HistoryDay, DayDataProps } from './attraction-history-day';
-import { getServerNowMs } from '@/lib/utils/server-time';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 interface AttractionHistoryGridProps {
   attraction: {
@@ -19,83 +21,15 @@ interface GridDayData extends DayDataProps {
   date: Date;
 }
 
-export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps) {
-  const locale = await getLocale();
-  const t = await getTranslations('attractions');
+export function AttractionHistoryGrid({ attraction }: AttractionHistoryGridProps) {
+  const locale = useLocale();
+  const t = useTranslations('attractions');
+  // "today" is derived from the browser clock (null until mount) so the static shell never reads
+  // the server clock — previously getServerNowMs() here pinned the attraction shell's revalidate.
+  const browserNow = useBrowserNow(null);
 
   const dateLocaleMap: Record<string, Locale> = { de, en: enUS, fr, it, nl, es };
   const dateLocale: Locale = dateLocaleMap[locale] ?? enUS;
-
-  // Calculate date range: today to 30 days ago. Cached "now" (cacheComponents-safe).
-  const today = new Date(await getServerNowMs());
-  today.setHours(0, 0, 0, 0);
-  const thirtyDaysAgo = new Date(today);
-  thirtyDaysAgo.setDate(today.getDate() - 30);
-  const dateRange = { start: thirtyDaysAgo, end: today };
-
-  // Create a map of history data by date for quick lookup
-  const historyMap = new Map<string, AttractionHistoryDay>();
-  if (attraction.history) {
-    attraction.history.forEach((day) => {
-      historyMap.set(day.date, day);
-    });
-  }
-
-  // Create a map of schedule data by date for quick lookup
-  const scheduleMap = new Map<string, ScheduleItem>();
-  if (attraction.schedule) {
-    attraction.schedule.forEach((item) => {
-      scheduleMap.set(item.date, item);
-    });
-  }
-
-  // Generate all days in the range and group into weeks
-  const allDays = eachDayOfInterval(dateRange);
-
-  // Create day data with history and schedule lookup
-  const days: GridDayData[] = allDays.map((date) => {
-    const dateStr = format(date, 'yyyy-MM-dd');
-    const historyData = historyMap.get(dateStr);
-    const scheduleData = scheduleMap.get(dateStr);
-
-    const hasHistory = historyData && historyData.hourlyP90 && historyData.hourlyP90.length > 1;
-    const isToday =
-      date.getFullYear() === today.getFullYear() &&
-      date.getMonth() === today.getMonth() &&
-      date.getDate() === today.getDate();
-
-    let attractionStatus: GridDayData['attractionStatus'] = 'UNKNOWN';
-
-    if (hasHistory) {
-      attractionStatus = 'OPEN';
-    } else {
-      // No history data
-      if (scheduleData) {
-        if (scheduleData.scheduleType !== 'OPERATING') {
-          attractionStatus = 'PARK_CLOSED';
-        } else {
-          // Park is open, but no history
-          if (isToday) {
-            attractionStatus = 'NOT_YET_OPEN';
-          } else if (date < today) {
-            attractionStatus = 'CLOSED_RIDE';
-          }
-        }
-      }
-    }
-
-    return {
-      date,
-      dateStr,
-      dayOfWeek: format(date, 'EEE', { locale: dateLocale }),
-      dayOfMonth: format(date, 'd'),
-      month: format(date, 'MMM', { locale: dateLocale }),
-      historyData,
-      scheduleData,
-      attractionStatus,
-      isToday,
-    };
-  });
 
   if (!attraction.history || attraction.history.length === 0) {
     return (
@@ -107,6 +41,78 @@ export async function AttractionHistoryGrid({ attraction }: AttractionHistoryGri
       </Card>
     );
   }
+
+  // Before mount we have no "today" yet — render the static frame (heading + legend) but defer the
+  // day grid so SSR and the first client render match (no hydration mismatch). The grid fills in
+  // right after hydration.
+  const today = browserNow ? new Date(browserNow) : null;
+  if (today) today.setHours(0, 0, 0, 0);
+
+  // Calculate date range: today to 30 days ago.
+  const days: GridDayData[] = (() => {
+    if (!today) return [];
+    const thirtyDaysAgo = new Date(today);
+    thirtyDaysAgo.setDate(today.getDate() - 30);
+    const dateRange = { start: thirtyDaysAgo, end: today };
+
+    // Create a map of history data by date for quick lookup
+    const historyMap = new Map<string, AttractionHistoryDay>();
+    attraction.history?.forEach((day) => {
+      historyMap.set(day.date, day);
+    });
+
+    // Create a map of schedule data by date for quick lookup
+    const scheduleMap = new Map<string, ScheduleItem>();
+    attraction.schedule?.forEach((item) => {
+      scheduleMap.set(item.date, item);
+    });
+
+    const allDays = eachDayOfInterval(dateRange);
+
+    return allDays.map((date) => {
+      const dateStr = format(date, 'yyyy-MM-dd');
+      const historyData = historyMap.get(dateStr);
+      const scheduleData = scheduleMap.get(dateStr);
+
+      const hasHistory = historyData && historyData.hourlyP90 && historyData.hourlyP90.length > 1;
+      const isToday =
+        date.getFullYear() === today.getFullYear() &&
+        date.getMonth() === today.getMonth() &&
+        date.getDate() === today.getDate();
+
+      let attractionStatus: GridDayData['attractionStatus'] = 'UNKNOWN';
+
+      if (hasHistory) {
+        attractionStatus = 'OPEN';
+      } else {
+        // No history data
+        if (scheduleData) {
+          if (scheduleData.scheduleType !== 'OPERATING') {
+            attractionStatus = 'PARK_CLOSED';
+          } else {
+            // Park is open, but no history
+            if (isToday) {
+              attractionStatus = 'NOT_YET_OPEN';
+            } else if (date < today) {
+              attractionStatus = 'CLOSED_RIDE';
+            }
+          }
+        }
+      }
+
+      return {
+        date,
+        dateStr,
+        dayOfWeek: format(date, 'EEE', { locale: dateLocale }),
+        dayOfMonth: format(date, 'd'),
+        month: format(date, 'MMM', { locale: dateLocale }),
+        historyData,
+        scheduleData,
+        attractionStatus,
+        isToday,
+      };
+    });
+  })();
 
   return (
     <Card className="relative p-4 md:p-6">

@@ -46,7 +46,9 @@ export function useParkBestDaysCalendar({
 
       return (await response.json()) as IntegratedCalendarResponse;
     },
-    enabled: typeof window !== 'undefined',
+    // Browser-only, and only once the (client-derived) window is known — `from`/`to` are empty
+    // until the browser clock lands, and we must not fire a `?from=&to=` request.
+    enabled: typeof window !== 'undefined' && from !== '' && to !== '',
     staleTime: 30 * 60_000,
     gcTime: 60 * 60_000,
     refetchOnWindowFocus: false,

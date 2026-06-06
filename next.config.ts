@@ -210,6 +210,14 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Hub "X parks open now" live-counts batch, polled by every continent/country/city card grid.
+        // A 60s shared CDN window collapses concurrent polls off the backend (it was no-store).
+        source: '/api/discovery/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
+        ],
+      },
+      {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },

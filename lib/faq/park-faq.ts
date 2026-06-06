@@ -46,21 +46,29 @@ export function buildParkFaqItems(
   locale: string,
   t: T,
   tGeo: TGeo,
-  /** Epoch ms for "now" — pass a cached value (getServerNowMs) for cacheComponents safety. */
-  nowMs: number
+  /**
+   * Epoch ms for "now", or `null` for a TIME-INDEPENDENT build. The only time-dependent answer is
+   * Q1 (today's opening hours): pass `null` (the SSR / pre-mount / structured-data path) to get an
+   * evergreen "see the calendar" answer, or a client-derived `Date.now()` to get today's concrete
+   * hours after mount. Keeping `null` out of the static shell is what lets the park shell stay
+   * time-independent (1-day TTL) — nothing here may read the server clock.
+   */
+  nowMs: number | null
 ): ParkFaqItem[] {
   const { parkName, parkNom, parkNomCap } = getParkArticleForms(park, locale);
 
   const timeZone = park.timezone || 'UTC';
-  const now = new Date(nowMs);
-  const parkDate = formatInTimeZone(now, timeZone, 'yyyy-MM-dd');
-  const todaySchedule = park.schedule?.find((s) => s.date === parkDate);
-  const localizedDate = new Intl.DateTimeFormat(locale, {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  }).format(now);
+  const now = nowMs != null ? new Date(nowMs) : null;
+  const parkDate = now ? formatInTimeZone(now, timeZone, 'yyyy-MM-dd') : null;
+  const todaySchedule = parkDate ? park.schedule?.find((s) => s.date === parkDate) : undefined;
+  const localizedDate = now
+    ? new Intl.DateTimeFormat(locale, {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }).format(now)
+    : null;
 
   const items: ParkFaqItem[] = [];
 
@@ -86,9 +94,13 @@ export function buildParkFaqItems(
     });
   }
 
-  // Q1: Opening Hours
+  // Q1: Opening Hours. Time-INDEPENDENT when nowMs is null (SSR/structured-data/pre-mount): an
+  // evergreen answer that never reads the clock, so it can't pin or stale the static shell. With a
+  // client-derived nowMs it upgrades to today's concrete hours after mount.
   let openingHoursAnswer: string;
   if (
+    now &&
+    localizedDate &&
     todaySchedule?.scheduleType === 'OPERATING' &&
     todaySchedule.openingTime &&
     todaySchedule.closingTime
@@ -96,8 +108,10 @@ export function buildParkFaqItems(
     const open = formatInTimeZone(new Date(todaySchedule.openingTime), timeZone, 'HH:mm');
     const close = formatInTimeZone(new Date(todaySchedule.closingTime), timeZone, 'HH:mm');
     openingHoursAnswer = t('openingHoursA', { date: localizedDate, park: parkNom, open, close });
-  } else {
+  } else if (now && localizedDate && todaySchedule) {
     openingHoursAnswer = t('openingHoursClosed', { date: localizedDate, park: parkNom });
+  } else {
+    openingHoursAnswer = t('openingHoursEvergreenA', { park: parkNom });
   }
   items.push({
     iconName: 'Calendar',

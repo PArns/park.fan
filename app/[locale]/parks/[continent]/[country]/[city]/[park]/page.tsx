@@ -1,5 +1,4 @@
 import { Suspense } from 'react';
-import { format, startOfMonth, endOfMonth, addMonths, addDays, min } from 'date-fns';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
@@ -9,7 +8,6 @@ import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
 import { getGeoStructure } from '@/lib/api/discovery';
-import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
@@ -208,19 +206,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Cached "now" (cacheComponents-safe) — drives the calendar range + today lookups below.
-  const nowMs = await getServerNowMs();
-  const now = new Date(nowMs);
-
-  // Calendar date range: current month + next 2 months (API limit: 90 days max — cap to avoid 400).
-  // The calendar feeds only the below-the-fold best-days + FAQ sections, which now load CLIENT-side
-  // (useParkBestDaysCalendar → the `/api/parks/.../calendar` CDN-cached route). We only compute the
-  // from/to window here (cheap, from the cached "now") and hand it to those client components — the
-  // bulky ~2.25 MB fetch never touches the static shell, so it can't poison the prerender.
-  const calendarFrom = startOfMonth(now);
-  const calendarTo = min([endOfMonth(addMonths(now, 2)), addDays(calendarFrom, 89)]);
-  const calendarFromStr = format(calendarFrom, 'yyyy-MM-dd');
-  const calendarToStr = format(calendarTo, 'yyyy-MM-dd');
+  // The calendar window (current month + next 2) that feeds the below-the-fold best-days + FAQ
+  // sections is now derived CLIENT-side (useCalendarWindow) inside those client components, so the
+  // static shell reads no clock at all — keeping it time-independent for the 1-day TTL. The bulky
+  // calendar fetch itself was already client-side (useParkBestDaysCalendar → the CDN-cached route).
 
   // Glossary terms for the (client) FAQ section. This is a small static-content lookup (no fetch,
   // no clock) so it's safe to load in the static shell; the client FAQ tree highlights terms from
@@ -261,18 +250,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
-  // Get today's schedule - filter by date in park's timezone
-  const getTodaySchedule = () => {
-    if (!park.schedule || park.schedule.length === 0) return null;
-
-    // Get today's date in the park's timezone
-    const todayInParkTz = now.toLocaleDateString('en-CA', {
-      timeZone: park.timezone,
-    }); // Format: YYYY-MM-DD
-
-    return park.schedule.find((s) => s.date === todayInParkTz) || park.schedule[0];
-  };
-  const todaySchedule = getTodaySchedule();
+  // Today's schedule is picked CLIENT-side inside <ParkTimeInfo> (from the browser clock in the
+  // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived
+  // "today" entry, so the shell never reads the server clock.
   const parkName = stripNewPrefix(park.name);
 
   // Construct breadcrumbs using utility
@@ -309,7 +289,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
         {park.shows && park.shows.length > 0 && (
-          <ShowsStructuredData shows={park.shows} park={park} date={format(now, 'yyyy-MM-dd')} />
+          <ShowsStructuredData shows={park.shows} park={park} />
         )}
         <FAQStructuredData park={park} locale={locale} />
 
@@ -363,7 +343,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             <Suspense fallback={null}>
               <ParkTimeInfo
                 timezone={park.timezone}
-                todaySchedule={todaySchedule}
+                schedule={park.schedule}
                 nextSchedule={park.nextSchedule}
                 status={park.status}
                 hasOperatingSchedule={park.hasOperatingSchedule}
@@ -402,8 +382,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 country={country}
                 city={city}
                 parkSlug={parkSlug}
-                from={calendarFromStr}
-                to={calendarToStr}
                 timezone={park.timezone}
                 hasOperatingSchedule={park.hasOperatingSchedule}
                 parkName={parkName}
@@ -444,9 +422,6 @@ export default async function ParkPage({ params }: ParkPageProps) {
             country={country}
             city={city}
             parkSlug={parkSlug}
-            from={calendarFromStr}
-            to={calendarToStr}
-            nowMs={nowMs}
             glossaryTerms={faqGlossaryTerms}
             glossarySegment={glossarySegment}
           />

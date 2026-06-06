@@ -14,16 +14,17 @@ import type { ParkWithAttractions, AttractionResponse, PopularPark } from './typ
 // Context: park/attraction pages were dynamic (no ISR writes) until they were switched to static
 // ISR with revalidate:300 — which is what turned ISR writes on across the whole catalog × 6 locales.
 //
-// Parks keep a 1h floor: their shell carries the operating schedule, status and structured data, so
-// a tighter bound is worth the extra writes. Attractions get a longer 6h floor: their shell has no
-// schedule/weather (only name/description/history-chart seed, daily-ish), they are by far the
-// highest-cardinality route, and their live status/wait time is client-refreshed all the same.
-// 6h park shell TTL. The shell carries only structure + the schedule/weather seed (both
-// day-stable or client-refreshed); live wait times/status come from the client poll via
-// getParkByGeoPathFresh (see below), so the cached shell no longer needs to be the fresh source —
-// it can revalidate every 6h instead of hourly (~6× fewer park ISR writes), matching attractions.
-const PARK_MAX_AGE = 21600;
-const ATTRACTION_MAX_AGE = 21600; // 6h attraction shell TTL — dominant route, no schedule in shell
+// Both shells now revalidate every 1 DAY. The only thing that previously pinned them below this was
+// a server-time read in their static render — getServerToday('hours') in DailyWaitTimeChartServer
+// (the #1 ISR-write driver) and getServerNowMs in the park page/FAQ/history grid. All of that
+// "today/now"-dependent content (the daily chart's "today" marker, today's opening-hours, the
+// crowd FAQ, the history grid's "today") is now CLIENT-derived (useBrowserNow/useMounted) or made
+// time-INDEPENDENT, so the shells carry only day-stable structure. Live wait times/status come from
+// the client poll via getParkByGeoPathFresh (no-store), so a stale shell never shows stale live
+// data. A 1-day TTL collapses the per-park/per-attraction × per-locale ISR-write volume ~4× vs 6h
+// (and ~24× vs the original hourly park floor).
+const PARK_MAX_AGE = 86400; // 1d park shell TTL — all "today/now" content is client-derived
+const ATTRACTION_MAX_AGE = 86400; // 1d attraction shell TTL — dominant route, "today" client-derived
 
 /**
  * Drop per-attraction fields the PARK page never renders before the snapshot is cached.
