@@ -3,7 +3,8 @@ import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
-import { ParkCard } from '@/components/parks/park-card';
+import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -110,6 +111,19 @@ export default async function CityPage({ params }: CityPageProps) {
   const continentName = translateContinent(t, continent, locale);
   const countryName = translateCountry(t, country, locale);
 
+  // Status-free seed for the cards: only fields that never change during the day. Live status,
+  // crowd level, wait time and schedule are layered on the client by <LiveParkGrid>, so this
+  // (per-locale) prerender carries no volatile data and stays valid for a day.
+  const staticParks: StaticPark[] = parks.map((park) => ({
+    id: park.id,
+    name: stripNewPrefix(park.name),
+    slug: park.slug,
+    city: city.name,
+    countryName,
+    href: `/parks/${continent}/${country}/${citySlug}/${park.slug}`,
+    backgroundImage: getParkBackgroundImage(park.slug),
+  }));
+
   // Generate breadcrumbs with translations
   const tNav = await getTranslations('navigation');
   const { breadcrumbs, currentPage: cityCurrentPage } = generateCityBreadcrumbs({
@@ -142,30 +156,15 @@ export default async function CityPage({ params }: CityPageProps) {
         description={t('parkCount', { count: parks.length })}
       />
 
-      {/* Parks Grid */}
+      {/* Parks Grid — status-free shell (cacheable); live status overlaid client-side. */}
       <section aria-label={tExplore('parks')}>
         <h2 className="sr-only">{tExplore('parks')}</h2>
-        <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2">
-          {parks.map((park) => (
-            <ParkCard
-              key={park.id}
-              name={stripNewPrefix(park.name)}
-              slug={park.slug}
-              city={city.name}
-              country={countryName}
-              href={`/parks/${continent}/${country}/${citySlug}/${park.slug}`}
-              status={park.status}
-              crowdLevel={park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel}
-              averageWaitTime={park.analytics?.statistics?.avgWaitTime}
-              operatingAttractions={park.analytics?.statistics?.operatingAttractions}
-              totalAttractions={park.analytics?.statistics?.totalAttractions}
-              variant="detailed"
-              timezone={park.timezone}
-              todaySchedule={park.todaySchedule}
-              nextSchedule={park.nextSchedule}
-            />
-          ))}
-        </div>
+        <LiveParkGrid
+          continent={continent}
+          country={country}
+          parks={staticParks}
+          className="grid [grid-auto-rows:auto_1fr_auto] gap-4 md:grid-cols-2"
+        />
       </section>
     </PageContainer>
   );

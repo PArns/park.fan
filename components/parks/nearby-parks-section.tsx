@@ -1,8 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 import { MapPin } from 'lucide-react';
-import { ParkCard } from '@/components/parks/park-card';
 import { getParksNearLocation } from '@/lib/api/discovery';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { stripNewPrefix } from '@/lib/utils';
+import { LiveNearbyParks, type StaticNearbyPark } from '@/components/parks/live-nearby-parks';
 
 interface NearbyParksSectionProps {
   parkId: string;
@@ -19,6 +20,18 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
 
   if (parks.length < 2) return null;
 
+  // Status-free seed (proximity + structure only); live status is overlaid client-side.
+  const staticParks: StaticNearbyPark[] = parks.map((park) => ({
+    id: park.id,
+    name: stripNewPrefix(park.name),
+    slug: park.slug,
+    city: park.city ?? '',
+    country: park.country ?? '',
+    distance: park.distance,
+    url: park.url ?? '',
+    backgroundImage: getParkBackgroundImage(park.slug),
+  }));
+
   return (
     <section className={className}>
       <div className="bg-background/70 mb-4 rounded-xl px-4 py-3 backdrop-blur-md">
@@ -29,30 +42,7 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
         <p className="text-muted-foreground mt-1 text-sm">{t('nearbyParksArea')}</p>
       </div>
 
-      <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {parks.map((park) => (
-          <li key={park.id} className="row-span-3 grid [grid-template-rows:subgrid]">
-            <ParkCard
-              id={park.id}
-              slug={park.slug}
-              name={stripNewPrefix(park.name)}
-              city={park.city ?? ''}
-              country={park.country ?? ''}
-              distance={park.distance}
-              status={park.status as import('@/lib/api/types').ParkStatus}
-              timezone={park.timezone}
-              totalAttractions={park.totalAttractions}
-              operatingAttractions={park.operatingAttractions}
-              analytics={park.analytics}
-              todaySchedule={park.todaySchedule ?? undefined}
-              nextSchedule={park.nextSchedule ?? undefined}
-              url={park.url ?? ''}
-              hasOperatingSchedule={park.hasOperatingSchedule}
-              translateCountry
-            />{' '}
-          </li>
-        ))}
-      </ul>
+      <LiveNearbyParks parkId={parkId} lat={lat} lng={lng} parks={staticParks} />
     </section>
   );
 }

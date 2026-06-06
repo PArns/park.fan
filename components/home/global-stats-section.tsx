@@ -1,36 +1,40 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { BarChart3, Database } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatsCard } from '@/components/common/stats-card';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { ParkCard } from '@/components/parks/park-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
-import { getGlobalStats } from '@/lib/api/analytics';
-import { catchNonFatal } from '@/lib/api/client';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/utils/park-assets';
-import { getServerNowMs } from '@/lib/utils/server-time';
+import { useGlobalStats } from '@/lib/hooks/use-global-stats';
+import {
+  useParkBackgrounds,
+  resolveParkBg,
+  resolveAttractionBg,
+} from '@/lib/hooks/use-park-backgrounds';
+import { GlobalStatsSkeleton } from '@/components/home/home-skeletons';
 
 /**
  * Global real-time stats + platform statistics.
  *
- * Both blocks share a single `getGlobalStats` fetch, so they live in one
- * <Suspense> boundary. Rendered server-side (below the fold) and streamed in
- * after the hero — never blocking first paint.
+ * Fully live, so it loads client-side via {@link useGlobalStats} (no-store, 5-min poll) instead of
+ * being baked into the homepage ISR shell. Background images for the live park/ride highlights are
+ * resolved on the client via {@link useParkBackgrounds}. Until the data lands, the section renders
+ * its skeleton (same one the homepage <Suspense> uses), so the prerendered shell stays status-free.
  */
-export async function GlobalStatsSection() {
-  const [t, tCommon, tGeo, stats] = await Promise.all([
-    getTranslations('stats'),
-    getTranslations('common'),
-    getTranslations('geo'),
-    catchNonFatal(getGlobalStats()),
-  ]);
+export function GlobalStatsSection() {
+  const t = useTranslations('stats');
+  const tCommon = useTranslations('common');
+  const tGeo = useTranslations('geo');
+  const { data: stats } = useGlobalStats();
+  const bgSet = useParkBackgrounds();
 
-  if (!stats) return null;
+  if (!stats) return <GlobalStatsSkeleton />;
 
-  // Cached "now" for the synthetic stat snapshot timestamps (cacheComponents-safe).
-  const nowIso = new Date(await getServerNowMs()).toISOString();
+  const nowIso = new Date().toISOString();
 
   return (
     <>
@@ -85,7 +89,7 @@ export async function GlobalStatsSection() {
                     stats.mostCrowdedPark.country
                   )}
                   href={convertApiUrlToFrontendUrl(stats.mostCrowdedPark.url) as '/'}
-                  backgroundImage={getParkBackgroundImage(stats.mostCrowdedPark.slug)}
+                  backgroundImage={resolveParkBg(stats.mostCrowdedPark.slug, bgSet)}
                   status="OPERATING"
                   timezone={stats.mostCrowdedPark.timezone}
                   crowdLevel={stats.mostCrowdedPark.crowdLevel ?? undefined}
@@ -110,7 +114,7 @@ export async function GlobalStatsSection() {
                     stats.leastCrowdedPark.country
                   )}
                   href={convertApiUrlToFrontendUrl(stats.leastCrowdedPark.url) as '/'}
-                  backgroundImage={getParkBackgroundImage(stats.leastCrowdedPark.slug)}
+                  backgroundImage={resolveParkBg(stats.leastCrowdedPark.slug, bgSet)}
                   status="OPERATING"
                   timezone={stats.leastCrowdedPark.timezone}
                   crowdLevel={stats.leastCrowdedPark.crowdLevel ?? undefined}
@@ -130,12 +134,11 @@ export async function GlobalStatsSection() {
                 <AttractionCard
                   parkStatus="OPERATING"
                   showParkName
-                  backgroundImage={
-                    getAttractionBackgroundImage(
-                      stats.longestWaitRide.parkSlug,
-                      stats.longestWaitRide.slug
-                    ) ?? getParkBackgroundImage(stats.longestWaitRide.parkSlug)
-                  }
+                  backgroundImage={resolveAttractionBg(
+                    stats.longestWaitRide.parkSlug,
+                    stats.longestWaitRide.slug,
+                    bgSet
+                  )}
                   attraction={{
                     id: stats.longestWaitRide.id,
                     name: stats.longestWaitRide.name,
@@ -184,12 +187,11 @@ export async function GlobalStatsSection() {
                 <AttractionCard
                   parkStatus="OPERATING"
                   showParkName
-                  backgroundImage={
-                    getAttractionBackgroundImage(
-                      stats.shortestWaitRide.parkSlug,
-                      stats.shortestWaitRide.slug
-                    ) ?? getParkBackgroundImage(stats.shortestWaitRide.parkSlug)
-                  }
+                  backgroundImage={resolveAttractionBg(
+                    stats.shortestWaitRide.parkSlug,
+                    stats.shortestWaitRide.slug,
+                    bgSet
+                  )}
                   attraction={{
                     id: stats.shortestWaitRide.id,
                     name: stats.shortestWaitRide.name,

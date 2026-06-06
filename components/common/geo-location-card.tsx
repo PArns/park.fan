@@ -4,13 +4,15 @@ import { ChevronRight, MapPin } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { IconContainer } from '@/components/common/icon-container';
+import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 
 interface GeoLocationCardProps {
   name: string;
   slug: string;
   href: string;
-  openParkCount: number;
+  /** Live open-park count. `undefined` = not yet loaded (client overlay) → renders a skeleton. */
+  openParkCount?: number;
   totalParkCount: number;
   subtitle?: string; // e.g., "5 countries" for continents, "3 cities" for countries
   variant?: 'continent' | 'country' | 'city';
@@ -40,7 +42,12 @@ export function GeoLocationCard({
                 {subtitle && <p className="text-muted-foreground text-sm">{subtitle}</p>}
                 <div className="mt-1 flex items-center gap-2 text-sm">
                   <span className="text-park-primary font-medium">
-                    {openParkCount} {t('open')}
+                    {openParkCount === undefined ? (
+                      <Skeleton className="inline-block h-4 w-5 align-middle" />
+                    ) : (
+                      openParkCount
+                    )}{' '}
+                    {t('open')}
                   </span>
                   <span className="text-muted-foreground">
                     / {totalParkCount} {tExplore('stats.park', { count: totalParkCount })}
@@ -51,12 +58,12 @@ export function GeoLocationCard({
             <ChevronRight className="group-interactive-icon h-5 w-5" />
           </div>
 
-          {/* Progress bar */}
+          {/* Progress bar — muted placeholder until the live count loads */}
           <OpenStatusProgress
-            openCount={openParkCount}
+            openCount={openParkCount ?? 0}
             totalCount={totalParkCount}
             showLabel={false}
-            className="mt-4"
+            className={cn('mt-4', openParkCount === undefined && 'opacity-40')}
           />
         </CardContent>
       </Card>
