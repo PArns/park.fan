@@ -101,9 +101,12 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 // hero server-rendered for LCP.
 async function pickHeroImage(): Promise<string> {
   'use cache';
-  // Hourly rotation is plenty for a decorative hero. A 5-min window made this the MIN cacheLife in
-  // the homepage shell, pinning the (6-locale) homepage to a 5-min ISR-write cadence for nothing.
-  cacheLife('hours');
+  // The homepage shell carries no live data anymore — the global stats and the per-continent "open
+  // now" counts both load client-side (useGlobalStats / useGeoLiveStats), so the structure-only shell
+  // never needs to be fresh. That leaves this hero pick as the shell's only revalidation pin, so a
+  // daily window drops the (6-locale) homepage from an hourly to a daily ISR-write cadence. Daily
+  // rotation is plenty for a decorative hero (same call we made for the glossary hero).
+  cacheLife('days');
   return HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 }
 
