@@ -24,25 +24,27 @@ const ATTRACTION_MAX_AGE = 21600; // 6h attraction shell TTL — dominant route,
 /**
  * Drop per-attraction fields the PARK page never renders before the snapshot is cached.
  *
- * The park detail response embeds, per attraction, a `history` array (one entry per day, each with
- * a 24-point `hourlyP90` series), plus `hourlyForecast` and `predictionAccuracy`. None of these are
- * read on the park page — the attraction cards draw their sparkline from `statistics.history`, and
- * the full history/forecast belong to the attraction DETAIL page, which sources them from
- * `getAttractionByGeoPath` (it only falls back to the park copy if the detail endpoint is down).
- * These arrays dominate the response size, and because the snapshot is persisted via `'use cache'`
- * (the data-cache entry) AND baked into every per-locale ISR route segment via `initialData={park}`,
- * their bytes are paid for as size-weighted ISR **write units** on every revalidation. Stripping
- * them here keeps the park snapshot lean everywhere it is written, without dropping a single field
- * the park page (or its live React-Query refetch through the same function) actually shows.
+ * Measured against the live europa-park response (96 attractions, ~134 KB): the body is dominated
+ * by `statistics` (incl. the card sparkline `history`), `bestVisitTimes` and `queues` — all of which
+ * the park cards DO render, so they stay. The clearly removable field is `url` (~7 KB / ~5 %): it is
+ * the raw `/v1/parks/.../attractions/<slug>` API path, and the card's `getHref` only uses it as a
+ * preference — it falls back to `${parkPath}/${slug}` (parkPath is always supplied on the park page),
+ * which resolves to the identical frontend URL. The `history`/`hourlyForecast`/`predictionAccuracy`
+ * deletes are defensive: the park endpoint does not currently send them per attraction, but if it
+ * ever does they are attraction-detail-only (sourced from getAttractionByGeoPath) and must not bloat
+ * the park snapshot. Because the snapshot is persisted via `'use cache'` AND baked into every
+ * per-locale ISR route segment via `initialData={park}`, trimming here shrinks the size-weighted ISR
+ * write units (and the live /api/parks proxy response) on every park, across all 6 locales.
  */
 function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
   return {
     ...park,
     attractions: park.attractions.map((a) => {
       const lean = { ...a };
-      delete lean.history;
-      delete lean.hourlyForecast;
-      delete lean.predictionAccuracy;
+      delete lean.url; // href falls back to `${parkPath}/${slug}` — identical frontend URL
+      delete lean.history; // defensive: attraction-detail-only if ever present
+      delete lean.hourlyForecast; // defensive: detail-only
+      delete lean.predictionAccuracy; // defensive: detail-only
       return lean;
     }),
   };
