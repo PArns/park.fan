@@ -219,15 +219,6 @@ export function NearbyParksCard({ className }: { className?: string }) {
             {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
           </h2>
           <div className="space-y-4">
-            {!permissionGranted && !permissionDenied && (
-              <div className="bg-muted/50 border-border flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
-                <span className="text-muted-foreground">{t('locationHint')}</span>
-                <Button onClick={refresh} size="sm" variant="outline">
-                  <Navigation className="mr-1.5 h-3.5 w-3.5" />
-                  {t('enable')}
-                </Button>
-              </div>
-            )}
             {/* Quick navigation: primary CTA to park page when user is in park */}
             {parkPageUrl && (
               <div className="mb-4">
@@ -430,15 +421,9 @@ export function NearbyParksCard({ className }: { className?: string }) {
           <p className="text-muted-foreground mb-4 text-sm">{t('noOpenNearbyFocus')}</p>
         )}
         <div>
-          {!permissionGranted && !permissionDenied && (
-            <div className="bg-muted/50 border-border mb-4 flex flex-wrap items-center justify-between gap-2 rounded-lg border px-3 py-2 text-sm">
-              <span className="text-muted-foreground">{t('locationHint')}</span>
-              <Button onClick={refresh} size="sm" variant="outline">
-                <Navigation className="mr-1.5 h-3.5 w-3.5" />
-                {t('enable')}
-              </Button>
-            </div>
-          )}
+          {/* The location prompt lives in the floating LocationBanner now — an inline,
+              conditionally-rendered hint here would re-introduce an in-flow layout shift
+              (and duplicate the banner's message). */}
           <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {parks.map((park, index) => {
               const hidden = !isExpanded && index >= 2;
