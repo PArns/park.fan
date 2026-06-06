@@ -4,9 +4,9 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { getCountriesInContinent, getContinents } from '@/lib/api/discovery';
-import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
-import { GeoLocationCard } from '@/components/common/geo-location-card';
+import { LiveCountryCards, type StaticCountryCard } from '@/components/parks/live-country-cards';
+import { LiveOpenCount } from '@/components/parks/live-open-count';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
@@ -60,11 +60,10 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  // Fetch countries in this continent
-  const [rawCountries, liveStats] = await Promise.all([
-    catchNonFatal(getCountriesInContinent(continent)),
-    catchNonFatal(getGeoLiveStats()),
-  ]);
+  // Fetch countries in this continent. Live open-park counts are NOT fetched here anymore — they
+  // are layered on the client (<LiveCountryCards> / <LiveOpenCount> → useGeoLiveStats), so this
+  // shell stays status-free and cacheable instead of revalidating every 10 min to refresh counts.
+  const rawCountries = await catchNonFatal(getCountriesInContinent(continent));
 
   if (!rawCountries) {
     notFound();
@@ -87,24 +86,11 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
     }
   });
 
-  const countries = Array.from(uniqueCountries.values()).map((country) => {
-    // Find live stats for this country
-    // Note: we might need to find by slug.
-    // The liveStats structure is: continents -> countries.
-    // We need to find the current continent in liveStats, then find the country.
-    const continentStats = liveStats?.continents.find((c) => c.slug === continent);
-    const countryStats = continentStats?.countries.find((c) => c.slug === country.slug);
+  const countries = Array.from(uniqueCountries.values());
 
-    return {
-      ...country,
-      openParkCount: countryStats?.openParkCount ?? country.openParkCount ?? 0,
-    };
-  });
-
-  // Calculate totals
+  // Calculate totals (static structure only — the live "open" total is overlaid client-side).
   const totalParks = countries.reduce((sum, c) => sum + c.parkCount, 0);
   const totalCities = countries.reduce((sum, c) => sum + c.cityCount, 0);
-  const totalOpenParks = countries.reduce((sum, c) => sum + (c.openParkCount || 0), 0);
 
   const continentName = translateContinent(t, continent, locale);
 
@@ -140,7 +126,7 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
         description={
           <>
             <span className="text-park-primary font-medium">
-              {totalOpenParks} {t('open')}
+              <LiveOpenCount continent={continent} /> {t('open')}
             </span>{' '}
             / {totalParks} {tExplore('stats.park', { count: totalParks })} • {countries.length}{' '}
             {tExplore('stats.country', { count: countries.length })} • {totalCities}{' '}
@@ -151,24 +137,20 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
 
       <section aria-label={tExplore('countries')}>
         <h2 className="sr-only">{tExplore('countries')}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {countries.map((country) => {
-            const countryName = translateCountry(t, country.slug, locale, country.name);
-
-            return (
-              <GeoLocationCard
-                key={country.slug}
-                name={countryName}
-                slug={country.slug}
-                href={`/parks/${continent}/${country.slug}`}
-                openParkCount={country.openParkCount}
-                totalParkCount={country.parkCount}
-                subtitle={`${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`}
-                variant="country"
-              />
-            );
-          })}
-        </div>
+        {/* Status-free shell; live open-park counts overlaid client-side (shared geo-live call). */}
+        <LiveCountryCards
+          continent={continent}
+          countries={countries.map(
+            (country): StaticCountryCard => ({
+              slug: country.slug,
+              name: translateCountry(t, country.slug, locale, country.name),
+              href: `/parks/${continent}/${country.slug}`,
+              totalParkCount: country.parkCount,
+              subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
+            })
+          )}
+          className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        />
       </section>
     </PageContainer>
   );
