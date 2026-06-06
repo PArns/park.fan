@@ -4,6 +4,34 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.9.1 (2026-06-06) – Post-PPR front-end weight trim
+
+Follow-up to the Cache Components migration after RUM showed FCP slipping into "needs
+improvement". Measured on the live homepage: ~444 KB gzip JS (24 chunks), one 28 KB-gzip
+render-blocking stylesheet (not inlined), and a redundant font preload.
+
+### Performance
+
+- **Geist_Mono dropped** — `font-mono` is aliased to Geist Sans in `globals.css`, removing a
+  ~30 KB render-blocking font preload on every route. Number-heavy live spots (nowcast
+  countdown) keep fixed-width digits via `tabular-nums`.
+- **framer-motion code-split** — the homepage `FlipClock` countdown is now a `next/dynamic`
+  import, so framer-motion (~40 KB gzip) leaves the initial bundle and only loads when an
+  announcement countdown is actually live.
+- **Critical CSS inlining restored** — the production `build` runs Webpack again (Beasties /
+  `optimizeCss` is Webpack-only and was a no-op under `next build --turbo`, leaving the full
+  stylesheet render-blocking). `build:turbo` keeps the Turbopack path available. ⚠️ Verify on a
+  preview deploy: critical-CSS extraction previously caused FOUC.
+
+### Follow-ups (audited, not yet done)
+
+- ML sparkline still pulls **recharts (~100 KB)** for one line — migrate to the lightweight
+  SVG `Sparkline` (needs a custom y-domain + active-dot).
+- Header `SearchCommand` ships **cmdk** on every page though the dialog only opens on click —
+  lazy-load the `CommandDialog`.
+
+---
+
 ## 2.9.0 (2026-06-05) – Next.js 16 Cache Components (PPR)
 
 Full migration to `cacheComponents: true` (Partial Prerendering). Pages now ship as a static,

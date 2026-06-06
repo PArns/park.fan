@@ -1,5 +1,5 @@
 import { getMarkdownContent } from '@/lib/markdown';
-import { FlipClock } from '@/components/ui/flip-clock';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
@@ -7,6 +7,13 @@ import { Button } from '@/components/ui/button';
 import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { getServerNowMs } from '@/lib/utils/server-time';
+
+// Code-split the countdown: FlipClock pulls in framer-motion (~40 KB gzip), but it
+// only renders when an announcement with `countdownTo` is live. A dynamic import keeps
+// framer-motion out of the homepage's initial bundle until a countdown is actually shown.
+const FlipClock = dynamic(() =>
+  import('@/components/ui/flip-clock').then((m) => m.FlipClock)
+);
 
 interface AnnounceSectionProps {
   locale: string;

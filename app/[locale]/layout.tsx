@@ -17,17 +17,11 @@ import {
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from '@/components/seo/structured-data';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
-  subsets: ['latin'],
-  display: 'swap',
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -147,7 +141,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${geistSans.variable} font-sans antialiased`}
         suppressHydrationWarning
       >
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
