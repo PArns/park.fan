@@ -14,7 +14,6 @@ import { getServerNowMs } from '@/lib/utils/server-time';
 import { catchNonFatal } from '@/lib/api/client';
 import { getBestDaysCalendar } from '@/lib/api/integrated-calendar';
 import { getParkHistoricalStats } from '@/lib/api/stats';
-import { getParkWeatherNowcast } from '@/lib/api/weather-nowcast';
 import type { IntegratedCalendarResponse, ParkHistoricalStats } from '@/lib/api/types';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
@@ -233,9 +232,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
     hasOperatingSchedule: park.hasOperatingSchedule,
   };
 
-  // Nowcast feeds the header banner + weather card (above the fold), so it stays on the
-  // blocking path (small, cacheable response).
-  const nowcast = await getParkWeatherNowcast(continent, country, city, parkSlug).catch(() => null);
+  // Nowcast (rain/storm warnings) is intentionally NOT fetched in the static shell. Its `'use cache'`
+  // fill can time out during prerender (the nowcast endpoint is the slowest park dependency), which
+  // FAILS the park page's static prerender and makes Next fall back to dynamic rendering for the whole
+  // route — served `no-store`, so the CDN never caches it and every request hits the function (the
+  // root cause of the park-route ISR write churn). Both consumers (WeatherNowcastBanner, WeatherCard)
+  // already fetch the nowcast client-side via useWeatherNowcast, so no SSR seed is needed.
 
   // Historical stats feed only the below-the-fold stats section and the best-days widget. The
   // stats response (2 years of aggregates) can exceed Next's 2 MB fetch data-cache cap, which
@@ -349,7 +351,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               country={country}
               city={city}
               parkSlug={parkSlug}
-              initialData={nowcast}
+              initialData={null}
               className="mb-6"
             />
           </Suspense>
@@ -373,7 +375,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
               <Suspense fallback={null}>
                 <WeatherCard
                   weather={park.weather}
-                  nowcast={nowcast}
+                  nowcast={null}
                   continent={continent}
                   country={country}
                   city={city}
