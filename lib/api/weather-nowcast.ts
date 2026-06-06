@@ -2,13 +2,19 @@ import { cacheLife } from 'next/cache';
 import { api, ApiError } from './client';
 import type { WeatherNowcast } from './types';
 
-// API sets Cache-Control: max-age=900 (15 min). Match that here.
-const NOWCAST_MAX_AGE = 900;
+// Shell-seed TTL for the cached nowcast. The API itself sets Cache-Control: max-age=900 (15 min),
+// but this cached copy only seeds the park-page static shell — `useWeatherNowcast` replaces it
+// client-side on mount via the uncached `getParkWeatherNowcastFresh` poll. Pinning it at 900 made
+// it the MIN cacheLife in the park shell, capping the whole park route's revalidate at 15 min and
+// undercutting the 1h park TTL (see PARK_MAX_AGE). 1h here lets the park shell actually reach its
+// intended floor; the live banner stays fresh via the client poll regardless.
+const NOWCAST_SEED_TTL = 3600;
 
 /**
  * Get short-term (next ~2h) weather nowcast for a park.
  * Returns null if nowcast is unavailable (404 — missing coordinates or upstream down).
- * Cached 15 min (Cache Components) so the park-page static shell can bake it in.
+ * Cached 1h (Cache Components) so the park-page static shell can bake in a seed; the live banner
+ * is refreshed client-side (see getParkWeatherNowcastFresh / useWeatherNowcast).
  */
 export async function getParkWeatherNowcast(
   continent: string,
@@ -17,7 +23,7 @@ export async function getParkWeatherNowcast(
   parkSlug: string
 ): Promise<WeatherNowcast | null> {
   'use cache';
-  cacheLife({ stale: NOWCAST_MAX_AGE, revalidate: NOWCAST_MAX_AGE, expire: NOWCAST_MAX_AGE * 2 });
+  cacheLife({ stale: NOWCAST_SEED_TTL, revalidate: NOWCAST_SEED_TTL, expire: NOWCAST_SEED_TTL * 2 });
   try {
     return await api.get<WeatherNowcast>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/weather/nowcast`

@@ -23,8 +23,12 @@ export const CACHE_TTL = {
   geo: 3600, // geo structure changes rarely
   continents: 3600, // same as geo
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
-  parkDetail: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
-  waitTimes: 300, // revalidate 300s (ISR-cacheable) - live wait times refreshed client-side
+  // Shell TTL for the park/attraction static prerender. Decoupled from the API's 5-min live
+  // cadence: the shell wait times are only an SSR seed replaced client-side by React Query, so a
+  // 1h-stale shell is fine. This is the floor that drives the dominant per-park/per-attraction ×
+  // per-locale ISR-write volume (see PARK_MAX_AGE in lib/api/parks.ts) — 1h cuts those ~12×.
+  parkDetail: 3600, // shell revalidate 1h - live wait times refreshed client-side
+  waitTimes: 3600, // shell revalidate 1h - live wait times refreshed client-side
 
   // Static data (still using revalidate)
   calendar: 900, // /v1/parks/:slug/calendar - API: 900s (past/today) / 1800s (future); the forecast under it only changes ~13h, and today's crowdLevel is patched client-side via a separate 5-min today-only fetch — so 5 min here was pure rebuild churn
