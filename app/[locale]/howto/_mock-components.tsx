@@ -326,7 +326,7 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
         <div className="grid gap-4 md:grid-cols-2">
           <ParkTimeInfo
             timezone="Europe/Berlin"
-            todaySchedule={todaySchedule}
+            schedule={[todaySchedule]}
             status="OPERATING"
             className="border-primary/10"
           />

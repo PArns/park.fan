@@ -7,6 +7,8 @@ interface UseLiveParkDataParams {
   city: string;
   parkSlug: string;
   initialData?: ParkWithAttractions;
+  /** Lets a non-primary consumer (e.g. the WeatherCard) subscribe only when it has geo params. */
+  enabled?: boolean;
 }
 
 /**
@@ -25,6 +27,7 @@ export function useLiveParkData({
   city,
   parkSlug,
   initialData,
+  enabled = true,
 }: UseLiveParkDataParams) {
   return useQuery<ParkWithAttractions>({
     queryKey: ['park-live', continent, country, city, parkSlug],
@@ -46,7 +49,7 @@ export function useLiveParkData({
     // Run the query on the client only. During the static (Cache Components) prerender the
     // component renders from `initialData`; activating React Query server-side would read
     // Date.now() internally, which a static prerender forbids.
-    enabled: typeof window !== 'undefined',
+    enabled: enabled && typeof window !== 'undefined',
     staleTime: 5 * 60_000,
     gcTime: 10 * 60_000,
     refetchOnWindowFocus: true,

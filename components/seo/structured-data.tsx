@@ -288,11 +288,9 @@ export function AttractionStructuredData({
 export function ShowsStructuredData({
   shows,
   park,
-  date,
 }: {
   shows: ParkShow[];
   park: ParkResponse | ParkWithAttractions;
-  date: string;
 }) {
   if (!shows || shows.length === 0) return null;
 
@@ -302,6 +300,15 @@ export function ShowsStructuredData({
   );
 
   if (showsWithTimes.length === 0) return null;
+
+  // Representative event date derived from the park's own schedule (the earliest OPERATING day in
+  // the day-stable shell data), NOT the server clock. This keeps the Shows JSON-LD time-INDEPENDENT
+  // so it never pins or stales the static shell, while still emitting a valid Event startDate.
+  const schedule = park.schedule;
+  const date = schedule?.find((s) => s.scheduleType === 'OPERATING')?.date ?? schedule?.[0]?.date;
+
+  // No schedule date to anchor the Event(s) → skip rather than emit a bogus startDate.
+  if (!date) return null;
 
   // One Event per show (not per showtime): a popular park can have 100+ daily
   // showtimes, which previously emitted 100+ near-identical Event blocks (~100KB

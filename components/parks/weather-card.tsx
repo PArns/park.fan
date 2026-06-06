@@ -12,6 +12,7 @@ import { TemperatureUnitToggle } from '@/components/common/temperature-unit-togg
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherCardProps {
@@ -52,10 +53,22 @@ export function WeatherCard({
   // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
   const activeNowcast = hasParams ? liveNowcast : nowcast;
 
-  if (!weather.current) return null;
+  // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up
+  // to a day stale. Subscribe to the same live park query LiveParkData polls (shared key → no extra
+  // fetch) and use its fresh `weather`; fall back to the server-rendered prop until it lands.
+  const { data: livePark } = useLiveParkData({
+    continent: continent ?? '',
+    country: country ?? '',
+    city: city ?? '',
+    parkSlug: parkSlug ?? '',
+    enabled: hasParams,
+  });
+  const activeWeather = hasParams && livePark?.weather?.current ? livePark.weather : weather;
 
-  const current = weather.current;
-  const now = weather.now ?? null;
+  if (!activeWeather.current) return null;
+
+  const current = activeWeather.current;
+  const now = activeWeather.now ?? null;
 
   // Nowcast (~15 min freshness) wins over the daily "now" snapshot, which can be hours old.
   // It now also carries temperature, apparent-temperature, min/max, and isDay — so when a
@@ -199,8 +212,8 @@ export function WeatherCard({
             )}
           </div>
 
-          {(forecast || (weather.forecast && weather.forecast.length > 0)) && (
-            <WeatherForecastStrip forecast={forecast || (weather.forecast ?? [])} />
+          {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
+            <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />
           )}
 
           <p className="text-muted-foreground/50 !-mt-1 -mr-4 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">

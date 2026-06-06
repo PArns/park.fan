@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useMounted } from '@/lib/hooks/use-mounted';
+import { useMounted, useBrowserNow } from '@/lib/hooks/use-mounted';
+import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import type { IntegratedCalendarResponse, CrowdLevel, DayOfWeekStat } from '@/lib/api/types';
@@ -19,9 +20,6 @@ interface ParkBestDaysSectionProps {
   country: string;
   city: string;
   parkSlug: string;
-  /** Calendar window (current month + next 2, capped at 90 days) computed in the server shell. */
-  from: string;
-  to: string;
   /** Park timezone — used for the empty-calendar fallback meta while data loads/fails. */
   timezone: string;
   hasOperatingSchedule: boolean;
@@ -91,8 +89,6 @@ export function ParkBestDaysSection({
   country,
   city,
   parkSlug,
-  from,
-  to,
   timezone,
   hasOperatingSchedule,
   parkName,
@@ -105,6 +101,9 @@ export function ParkBestDaysSection({
   // clock-reading content below — reading Date.now() inside a Client Component during the
   // prerender is forbidden under Cache Components.
   const mounted = useMounted();
+  // Calendar window derived from the browser clock (client-only) so the park shell never reads
+  // the server clock — keeping it time-independent for the 1-day TTL.
+  const { from, to } = getCalendarWindow(useBrowserNow(null));
   const { data: calendarData, isLoading: calendarLoading } = useParkBestDaysCalendar({
     continent,
     country,

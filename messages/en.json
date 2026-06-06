@@ -870,6 +870,7 @@
       "openingHoursQ": "What are the opening hours for {park} today?",
       "openingHoursA": "Today, {date}, {park} is open from {open} to {close}.",
       "openingHoursClosed": "Today, {date}, {park} is closed.",
+      "openingHoursEvergreenA": "Opening hours at {park} vary by season and day. Check the schedule and crowd calendar on this page for the current opening times.",
       "locationQ": "Where is {park} located?",
       "locationA": "{park} is located in {city}, {country}.",
       "attractionCountQ": "How many attractions are at {park}?",

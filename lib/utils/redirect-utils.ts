@@ -14,11 +14,16 @@ import { getGeoStructure } from '@/lib/api/discovery';
 
 /**
  * O(1) park-slug → geo-path index for redirect lookups, cached via Cache Components.
- * Returns a plain Record (serializable across the cache boundary). Refreshes hourly.
+ * Returns a plain Record (serializable across the cache boundary). Refreshes daily.
+ *
+ * This index is read in the PARK page's static shell (findParkPageRedirect), so its cacheLife is
+ * part of the MIN that pins the park route's revalidate. The data is day-stable (geo paths / park
+ * slugs change very rarely, and the underlying getGeoStructure is already fetched with a 1-day
+ * cache), so 'days' lets the park shell reach its intended 1-day TTL instead of an hourly floor.
  */
 async function getParkSlugIndex(): Promise<Record<string, ParkLookupResult>> {
   'use cache';
-  cacheLife('hours');
+  cacheLife('days');
 
   const index: Record<string, ParkLookupResult> = {};
   try {

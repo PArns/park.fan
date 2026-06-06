@@ -26,21 +26,16 @@ import type { Locale } from '@/i18n/config';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { buildParkFaqItems, getParkArticleForms, type ParkFaqIconName } from '@/lib/faq/park-faq';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
+import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
   locale: string;
-  /** Calendar window (current month + next 2) computed in the server shell — used for Q7. */
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
-  from: string;
-  to: string;
-  /** Day-stable "now" (epoch ms) computed in the server shell via getServerNowMs(). Passed in
-   *  (rather than read from Date.now() here) so the base Q0–Q6 stay in the static prerender for
-   *  SEO without reading the clock inside a Client Component during the prerender. */
-  nowMs: number;
   /** Glossary terms + URL segment, loaded in the server shell, so the client tree can highlight
    *  terms without awaiting them. */
   glossaryTerms: GlossaryInjectTerm[];
@@ -81,14 +76,21 @@ export function ParkFAQSection({
   country,
   city,
   parkSlug,
-  from,
-  to,
-  nowMs,
   glossaryTerms,
   glossarySegment,
 }: ParkFAQSectionProps) {
   const t = useTranslations('seo.faq');
   const tGeo = useTranslations('geo');
+
+  // "now" comes from the browser clock (null until mount): during the SSR/static prerender the
+  // time-dependent Q1 (today's hours) renders an evergreen answer and the shell never reads the
+  // clock; the real value fills in after hydration. Day-granular precision is all Q1/Q7 need.
+  const browserNow = useBrowserNow(null);
+  const nowMs = browserNow ? browserNow.getTime() : null;
+
+  // Calendar window derived from the browser clock (client-only) — keeps the park shell
+  // time-independent for the 1-day TTL.
+  const { from, to } = getCalendarWindow(browserNow);
 
   // Calendar feeds only Q7 (least-crowded days); it streams in client-side. Until it lands,
   // the base Q0–Q6 render immediately — same graceful behavior as the old streamed fallback.
@@ -118,8 +120,8 @@ export function ParkFAQSection({
     </CrowdCalendarFaqLink>
   );
 
-  // Q7: Least crowded (requires calendar data, uses rich text)
-  if (calendarData) {
+  // Q7: Least crowded (requires calendar data + a client-derived "now", uses rich text)
+  if (calendarData && nowMs != null) {
     const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
     if (analysis.totalDays >= 7) {
       const conjunctions: Record<string, string> = {

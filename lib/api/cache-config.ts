@@ -29,10 +29,10 @@ export const CACHE_TTL = {
   parks: 300, // popular parks frontend data-cached 5 min - slow-moving popularity ranking
   // Shell TTL for the park/attraction static prerender (see PARK_MAX_AGE / ATTRACTION_MAX_AGE in
   // lib/api/parks.ts). The shell is only an SSR seed; live wait times/status come from the client
-  // poll via getParkByGeoPathFresh (no-store), so the shell can revalidate every 6h instead of
-  // hourly — ~6× fewer park ISR writes, with the live data staying genuinely fresh.
-  parkDetail: 21600, // shell revalidate 6h - live wait times via getParkByGeoPathFresh
-  waitTimes: 21600, // shell revalidate 6h - live wait times via getParkByGeoPathFresh
+  // poll via getParkByGeoPathFresh (no-store), and all "today/now" content is client-derived, so
+  // the shell can revalidate once a day — ~24× fewer park ISR writes vs hourly, live data stays fresh.
+  parkDetail: 86400, // shell revalidate 1d - live wait times via getParkByGeoPathFresh
+  waitTimes: 86400, // shell revalidate 1d - live wait times via getParkByGeoPathFresh
 
   // Static data (still using revalidate)
   calendar: 900, // /v1/parks/:slug/calendar - API: 900s (past/today) / 1800s (future); the forecast under it only changes ~13h, and today's crowdLevel is patched client-side via a separate 5-min today-only fetch — so 5 min here was pure rebuild churn

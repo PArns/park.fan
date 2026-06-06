@@ -96,7 +96,11 @@ export async function getParksNearLocation(
   maxDistanceM: number = 300_000
 ): Promise<NearbyParkItem[]> {
   'use cache';
-  cacheLife({ stale: 3600, revalidate: 3600, expire: 3600 * 4 });
+  // Read in the PARK page's static shell (NearbyParksSection) — its cacheLife is part of the MIN
+  // that pins the park route's revalidate, so an hourly TTL silently capped the park shell at 1h.
+  // The seed here is proximity + structure only (status-free); live status is overlaid client-side
+  // (LiveNearbyParks), and geo proximity is day-stable, so 1d lifts the floor to the intended TTL.
+  cacheLife({ stale: 86400, revalidate: 86400, expire: 86400 * 4 });
   return fetchParksNearLocation(lat, lng, excludeParkId, limit, maxDistanceM, false);
 }
 
