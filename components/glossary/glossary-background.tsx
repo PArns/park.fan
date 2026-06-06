@@ -3,17 +3,24 @@ import { RandomHeroImage } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
 
 /**
- * Pick the glossary background server-side (rotates every ~5 min via the data cache), exactly like
- * the homepage hero. This is what makes the image an LCP-friendly resource: passing `imageSrc` to
- * <RandomHeroImage> renders it in the SSR HTML with `priority` + `fetchPriority="high"` (next/image
- * then preloads the optimized rendition). The old client-random pick (no `imageSrc`) only chose the
- * image in a post-hydration effect with no priority, so the largest element didn't even start
- * loading until the JS had run — the cause of the multi-second glossary LCP.
+ * Pick the glossary background server-side. Server-rendering is what makes the image an LCP-friendly
+ * resource: passing `imageSrc` to <RandomHeroImage> renders it in the SSR HTML with `priority` +
+ * `fetchPriority="high"` (next/image then preloads the optimized rendition). The old client-random
+ * pick (no `imageSrc`) only chose the image in a post-hydration effect with no priority — the cause
+ * of the multi-second glossary LCP.
+ *
+ * The pick is DETERMINISTIC per UTC day (not random): every glossary page in a day resolves to the
+ * same image, so navigating between terms no longer swaps the hero. It also no longer re-randomises
+ * every 5 min — the old 5-min `'use cache'` pinned each glossary route to a 5-min ISR revalidate
+ * (pure write churn across all terms × locales). `'days'` rotates it once per day with ~288× fewer
+ * glossary writes.
  */
 async function pickGlossaryHero(): Promise<string> {
   'use cache';
-  cacheLife({ stale: 300, revalidate: 300, expire: 900 });
-  return HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+  cacheLife('days');
+  // Date.now() is captured at cache-fill time (allowed inside a 'use cache' boundary).
+  const dayIndex = Math.floor(Date.now() / 86_400_000);
+  return HERO_IMAGES[dayIndex % HERO_IMAGES.length];
 }
 
 /**
