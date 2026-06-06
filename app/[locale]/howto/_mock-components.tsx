@@ -1,19 +1,20 @@
 import React from 'react';
+import { getTranslations } from 'next-intl/server';
 import { Badge } from '@/components/ui/badge';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
+import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { GlassCard } from '@/components/common/glass-card';
 import { BackgroundOverlay } from '@/components/common/background-overlay';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { ParkCard } from '@/components/parks/park-card';
-import { TrendIndicator } from '@/components/parks/trend-indicator';
+import { ParkTimeInfo } from '@/components/parks/park-time-info';
+import { WeatherCard } from '@/components/parks/weather-card';
+import { ParkStatus } from '@/components/parks/park-status';
 import { getServerNowMs } from '@/lib/utils/server-time';
-import { WeatherForecastStrip } from '@/components/parks/weather-forecast-strip';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
+import type { ScheduleItem, WeatherData, WeatherNowcast, ParkResponse } from '@/lib/api/types';
 import {
   Star,
-  TrendingUp,
   Clock,
   Users,
   AlertTriangle,
@@ -21,9 +22,7 @@ import {
   TrendingDown,
   PartyPopper,
   Backpack,
-  Calendar,
   MapPin,
-  Wind,
   Sun,
 } from 'lucide-react';
 import { DemoBadge } from './_howto-ui';
@@ -110,65 +109,181 @@ export function CrowdBadge({ level, locale }: { level: string; locale: MockLocal
   );
 }
 
-export function MockParkHeader({ locale }: { locale: MockLocale }) {
-  const isDE = locale === 'de';
-  const t = isDE
-    ? {
-        suffix: 'Aktuelle Wartezeiten',
-        operating: 'GEÖFFNET',
-        city: 'Brühl',
-        country: 'Deutschland',
-        timezone: 'Europe/Berlin',
-        todaySchedule: 'Heutige Öffnungszeiten',
-        openingHours: 'Öffnungszeiten',
-        hours: '09:00 – 22:00',
-        closingIn: 'Schließt in 6 Stunden 20 Minuten',
-        currentTime: 'Aktuelle Uhrzeit',
-        time: '15:40',
-        weatherLabel: 'Wetter',
-        weatherDesc: 'Sonnig',
-        occupancyLabel: 'Auslastung',
-        avgWaitLabel: 'Ø Wartezeit',
-        current: 'Aktuell',
-        trend: 'Trend',
-        parkPeak: 'Park-Höchststand',
-        peakTime: 'Stoßzeit',
-        peakBadge: 'IN 1 STD. 45 MIN.',
-        attractionsLabel: 'Attraktionen',
-        open: 'Geöffnet',
-        closed: 'Geschlossen',
-        vsTypical: '30% Höher vs typisch',
-        minutes: 'Minuten',
-        operating2: 'in Betrieb',
-      }
-    : {
-        suffix: 'Current Wait Times',
-        operating: 'OPERATING',
-        city: 'Brühl',
-        country: 'Germany',
-        timezone: 'Europe/Berlin',
-        todaySchedule: "Today's Hours",
-        openingHours: 'Opening hours',
-        hours: '09:00 – 22:00',
-        closingIn: 'Closes in 6 hours 20 minutes',
-        currentTime: 'Current time',
-        time: '3:40 PM',
-        weatherLabel: 'Weather',
-        weatherDesc: 'Sunny',
-        occupancyLabel: 'Occupancy',
-        avgWaitLabel: 'Avg. wait',
-        current: 'Currently',
-        trend: 'Trend',
-        parkPeak: 'Park peak today',
-        peakTime: 'Peak time',
-        peakBadge: 'IN 1H 45M',
-        attractionsLabel: 'Attractions',
-        open: 'Open',
-        closed: 'Closed',
-        vsTypical: '30% Higher vs typical',
-        minutes: 'Minutes',
-        operating2: 'operating',
+export async function MockParkHeader({ locale }: { locale: MockLocale }) {
+  // Render the *real* park-page header components (ParkTimeInfo, WeatherCard,
+  // ParkStatus) with mock data so this guide always mirrors the live UI — incl.
+  // the weather nowcast badge, wind compass and temperature toggle.
+  const t = await getTranslations({ locale, namespace: 'parks' });
+  const tGeo = await getTranslations({ locale, namespace: 'geo' });
+
+  const nowMs = await getServerNowMs();
+  const today = new Date(nowMs);
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const dateStr = `${yyyy}-${mm}-${dd}`;
+  const iso = (h: number, min = 0) =>
+    `${dateStr}T${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}:00+02:00`;
+
+  const todaySchedule: ScheduleItem = {
+    date: dateStr,
+    scheduleType: 'OPERATING',
+    openingTime: iso(9),
+    closingTime: iso(22),
+    description: null,
+    purchases: null,
+    holidayName: null,
+  };
+
+  // Sunny day with a live nowcast — exactly how the real park page renders it.
+  const weather: WeatherData = {
+    current: {
+      date: dateStr,
+      dataType: 'current',
+      temperatureMax: '26',
+      temperatureMin: '16',
+      precipitationSum: '0',
+      rainSum: '0',
+      snowfallSum: '0',
+      weatherCode: 1,
+      weatherDescription: '',
+      windSpeedMax: '12',
+    },
+    now: {
+      temperature: 21,
+      apparentTemperature: 19,
+      humidity: 50,
+      weatherCode: 1,
+      weatherDescription: '',
+      isDay: true,
+    },
+    forecast: [
+      {
+        temperatureMax: '21',
+        temperatureMin: '14',
+        weatherCode: 1,
+        windSpeedMax: '10',
+        precipitationSum: '0',
+      },
+      {
+        temperatureMax: '18',
+        temperatureMin: '12',
+        weatherCode: 3,
+        windSpeedMax: '14',
+        precipitationSum: '0',
+      },
+      {
+        temperatureMax: '14',
+        temperatureMin: '9',
+        weatherCode: 63,
+        windSpeedMax: '22',
+        precipitationSum: '8',
+      },
+      {
+        temperatureMax: '17',
+        temperatureMin: '11',
+        weatherCode: 2,
+        windSpeedMax: '12',
+        precipitationSum: '1.5',
+      },
+      {
+        temperatureMax: '24',
+        temperatureMin: '15',
+        weatherCode: 0,
+        windSpeedMax: '8',
+        precipitationSum: '0',
+      },
+      {
+        temperatureMax: '26',
+        temperatureMin: '16',
+        weatherCode: 0,
+        windSpeedMax: '7',
+        precipitationSum: '0',
+      },
+    ].map((d, i) => {
+      const day = new Date(nowMs + (i + 1) * 86_400_000);
+      return {
+        date: `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`,
+        dataType: 'forecast' as const,
+        temperatureMax: d.temperatureMax,
+        temperatureMin: d.temperatureMin,
+        precipitationSum: d.precipitationSum,
+        rainSum: d.precipitationSum,
+        snowfallSum: '0',
+        weatherCode: d.weatherCode,
+        weatherDescription: '',
+        windSpeedMax: d.windSpeedMax,
       };
+    }),
+  };
+
+  const nowcast: WeatherNowcast = {
+    park: {
+      id: 'phantasialand',
+      name: 'Phantasialand',
+      slug: 'phantasialand',
+      timezone: 'Europe/Berlin',
+    },
+    observedAt: new Date(nowMs - 2 * 60_000).toISOString(),
+    nextUpdateAt: new Date(nowMs + 13 * 60_000).toISOString(),
+    currentlyRaining: false,
+    currentTemperatureC: 21,
+    currentApparentTemperatureC: 19,
+    currentHumidity: 50,
+    currentPrecipitationMm: 0,
+    currentRainIntensity: null,
+    currentWeatherCode: 1,
+    currentWeatherDescription: '',
+    isDay: true,
+    temperatureMaxC: 26,
+    temperatureMinC: 16,
+    currentWindSpeedKmh: 12,
+    currentWindDirectionDeg: 225,
+    currentWindGustsKmh: 18,
+    currentSnowfallCm: 0,
+    currentVisibilityM: 24000,
+    peakWindGustsKmh: 22,
+    steps: [],
+    attribution: {
+      url: 'https://open-meteo.com/',
+      license: 'CC-BY-4.0',
+      attribution: 'Weather data by Open-Meteo.com',
+    },
+  };
+
+  const park = {
+    id: 'phantasialand',
+    slug: 'phantasialand',
+    name: 'Phantasialand',
+    city: 'Brühl',
+    country: 'Germany',
+    continent: 'Europe',
+    timezone: 'Europe/Berlin',
+    status: 'OPERATING' as const,
+    currentLoad: { crowdLevel: 'high' as const, baseline: 35, currentWaitTime: 45 },
+    analytics: {
+      occupancy: {
+        current: 130,
+        trend: 'stable' as const,
+        comparedToTypical: 30,
+        comparisonStatus: 'higher' as const,
+        baseline90thPercentile: 75,
+        updatedAt: new Date(nowMs).toISOString(),
+      },
+      statistics: {
+        avgWaitTime: 45,
+        avgWaitToday: 42,
+        peakHour: iso(17, 30),
+        peakHourSource: 'prediction' as const,
+        crowdLevel: 'high' as const,
+        totalAttractions: 40,
+        operatingAttractions: 32,
+        closedAttractions: 8,
+        timestamp: new Date(nowMs).toISOString(),
+        peakWaitToday: 55,
+      },
+    },
+  } as unknown as ParkResponse;
 
   return (
     <div className="not-prose relative overflow-hidden rounded-xl">
@@ -177,253 +292,41 @@ export function MockParkHeader({ locale }: { locale: MockLocale }) {
         alt="Phantasialand"
         intensity="medium"
       />
-      <div className="relative z-10 space-y-3 p-3">
-        {/* Park header — GlassCard style */}
-        <GlassCard>
+      <div className="relative z-10 space-y-4 p-3">
+        {/* Park header — GlassCard, matching the real park page */}
+        <GlassCard variant="medium">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div className="flex-1">
-              <div className="mb-2 flex flex-wrap items-center gap-3">
-                <h3 className="text-2xl font-bold">
-                  Phantasialand
-                  <span className="text-muted-foreground ml-2 text-lg font-normal">
-                    – {t.suffix}
-                  </span>
-                </h3>
-                <DemoBadge color="badge-status-operating" label={t.operating} icon={Clock} />
+              <div className="mb-2 flex flex-wrap items-baseline">
+                <h3 className="text-2xl font-bold sm:text-3xl">Phantasialand</h3>
+                <span className="text-muted-foreground ml-2 text-lg font-normal sm:text-xl">
+                  – {t('h1Suffix')}
+                </span>
               </div>
-              <div className="text-muted-foreground flex flex-wrap items-center gap-3 text-sm">
+              <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                 <address className="flex items-center gap-1 not-italic">
-                  <MapPin className="h-4 w-4" />
-                  {t.city}, {t.country}
+                  <MapPin className="h-4 w-4" aria-hidden="true" />
+                  <span>Brühl</span>, <span>{tGeo('countries.germany')}</span>
                 </address>
-                <Badge variant="outline" className="gap-1 font-mono text-xs">
-                  <Clock className="h-3 w-3" />
-                  {t.timezone}
-                </Badge>
               </div>
             </div>
             <Star className="text-muted-foreground h-6 w-6 shrink-0" />
           </div>
         </GlassCard>
 
-        {/* 2-col: opening hours + weather */}
-        <div className="grid gap-3 md:grid-cols-2">
-          <Card>
-            <CardHeader className="pb-3">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Calendar className="h-4 w-4" />
-                {t.todaySchedule}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground text-sm font-medium">{t.openingHours}</span>
-                <span className="text-lg font-semibold tabular-nums">{t.hours}</span>
-              </div>
-              <div className="flex items-center justify-end">
-                <Badge variant="secondary">{t.closingIn}</Badge>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground text-sm font-medium">{t.currentTime}</span>
-                <div className="flex items-center gap-1.5">
-                  <Clock className="text-primary h-4 w-4" />
-                  <time className="text-lg font-bold tabular-nums">{t.time}</time>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Sun className="h-4 w-4" />
-                {t.weatherLabel}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="bg-muted rounded-full p-2">
-                    <Sun className="h-8 w-8 text-amber-400" />
-                  </div>
-                  <div>
-                    <span className="text-3xl font-bold">21°</span>
-                    <p className="text-muted-foreground text-xs">16° – 26°</p>
-                    <p className="text-muted-foreground text-xs">Feels like 19°</p>
-                    <p className="text-muted-foreground mt-0.5 text-sm font-medium">
-                      {t.weatherDesc}
-                    </p>
-                  </div>
-                </div>
-                <div className="text-muted-foreground space-y-1 text-xs">
-                  <div className="flex items-center gap-1.5">
-                    <span>☂</span>
-                    <span>0mm</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Wind className="h-3 w-3" />
-                    <span>12 km/h</span>
-                  </div>
-                </div>
-              </div>
-              <WeatherForecastStrip
-                forecast={[
-                  {
-                    date: '2026-04-07',
-                    dataType: 'forecast',
-                    temperatureMax: '21',
-                    temperatureMin: '14',
-                    precipitationSum: '0',
-                    rainSum: '0',
-                    snowfallSum: '0',
-                    weatherCode: 1,
-                    weatherDescription: '',
-                    windSpeedMax: '10',
-                  },
-                  {
-                    date: '2026-04-08',
-                    dataType: 'forecast',
-                    temperatureMax: '18',
-                    temperatureMin: '12',
-                    precipitationSum: '0',
-                    rainSum: '0',
-                    snowfallSum: '0',
-                    weatherCode: 3,
-                    weatherDescription: '',
-                    windSpeedMax: '14',
-                  },
-                  {
-                    date: '2026-04-09',
-                    dataType: 'forecast',
-                    temperatureMax: '14',
-                    temperatureMin: '9',
-                    precipitationSum: '8',
-                    rainSum: '8',
-                    snowfallSum: '0',
-                    weatherCode: 63,
-                    weatherDescription: '',
-                    windSpeedMax: '22',
-                  },
-                  {
-                    date: '2026-04-10',
-                    dataType: 'forecast',
-                    temperatureMax: '17',
-                    temperatureMin: '11',
-                    precipitationSum: '1.5',
-                    rainSum: '1.5',
-                    snowfallSum: '0',
-                    weatherCode: 2,
-                    weatherDescription: '',
-                    windSpeedMax: '12',
-                  },
-                  {
-                    date: '2026-04-11',
-                    dataType: 'forecast',
-                    temperatureMax: '24',
-                    temperatureMin: '15',
-                    precipitationSum: '0',
-                    rainSum: '0',
-                    snowfallSum: '0',
-                    weatherCode: 0,
-                    weatherDescription: '',
-                    windSpeedMax: '8',
-                  },
-                  {
-                    date: '2026-04-12',
-                    dataType: 'forecast',
-                    temperatureMax: '26',
-                    temperatureMin: '16',
-                    precipitationSum: '0',
-                    rainSum: '0',
-                    snowfallSum: '0',
-                    weatherCode: 0,
-                    weatherDescription: '',
-                    windSpeedMax: '7',
-                  },
-                ]}
-              />
-            </CardContent>
-          </Card>
+        {/* Schedule & Weather Row — identical layout to the park page */}
+        <div className="grid gap-4 md:grid-cols-2">
+          <ParkTimeInfo
+            timezone="Europe/Berlin"
+            todaySchedule={todaySchedule}
+            status="OPERATING"
+            className="border-primary/10"
+          />
+          <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
         </div>
 
-        {/* 3-col: occupancy + avg wait + attractions */}
-        <div className="grid gap-3 md:grid-cols-3">
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Users className="h-4 w-4" />
-                {t.occupancyLabel}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <CrowdBadge level="high" locale={locale} />
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">{t.occupancyLabel}</span>
-                <span className="font-bold">130%</span>
-              </div>
-              <Progress value={65} className="h-1.5" />
-              <p className="text-trend-up text-xs font-medium">{t.vsTypical}</p>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <Clock className="h-4 w-4" />
-                {t.avgWaitLabel}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-2 text-sm">
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t.current}</span>
-                <span className="text-xl font-bold">
-                  45 <span className="text-muted-foreground text-sm font-normal">{t.minutes}</span>
-                </span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t.trend}</span>
-                <TrendIndicator trend="stable" variant="pill" label={isDE ? 'STABIL' : 'STABLE'} />
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t.parkPeak}</span>
-                <span className="font-semibold">55 min</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">{t.peakTime}</span>
-                <DemoBadge
-                  color="bg-primary/65 border-primary/80 dark:bg-primary/25 dark:border-primary/40"
-                  label={t.peakBadge}
-                  icon={Clock}
-                />
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader className="pb-2">
-              <CardTitle className="flex items-center gap-2 text-base">
-                <TrendingUp className="h-4 w-4" />
-                {t.attractionsLabel}
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="mb-3 flex items-baseline gap-2">
-                <span className="text-3xl font-bold">32</span>
-                <span className="text-muted-foreground text-lg">/ 40</span>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div className="rounded-lg bg-emerald-500/10 p-2 text-center">
-                  <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">32</div>
-                  <div className="text-muted-foreground text-xs">{t.open}</div>
-                </div>
-                <div className="bg-muted rounded-lg p-2 text-center">
-                  <div className="text-lg font-bold">8</div>
-                  <div className="text-muted-foreground text-xs">{t.closed}</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        {/* Status grid — occupancy, wait times & attractions */}
+        <ParkStatus park={park} variant="detailed" />
       </div>
     </div>
   );
