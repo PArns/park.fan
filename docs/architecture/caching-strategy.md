@@ -25,7 +25,7 @@ Next.js ISR controls revalidation per route:
 | Country    | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
 | City       | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query              |
 | Park       | Static ISR | 3600 (1h)  | 300s      | On-demand ISR; live wait times + weather via RQ on client |
-| Attraction | Static ISR | 3600 (1h)  | 300s      | On-demand ISR; live wait times via React Query on client  |
+| Attraction | Static ISR | 21600 (6h) | 300s      | On-demand ISR; live wait times via React Query on client  |
 | Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                 |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
@@ -41,28 +41,48 @@ Next.js ISR controls revalidation per route:
 
 ## Minimizing ISR Writes (Jun 2026)
 
-**Problem:** Vercel bills an **ISR write** every time a cache unit (route shell or `'use cache'`
-data entry) revalidates and is persisted. Under Cache Components, a route shell's effective
-revalidate is the **MIN cacheLife of the `'use cache'` reads in its static portion**. The park &
-attraction shells are the highest-cardinality routes (`N_parks`/`N_attractions × 6 locales`), so a
-short shell TTL multiplied across them dominated the write bill.
+**Root cause:** park & attraction pages were **dynamic** (no ISR writes at all) until they were
+switched to **static ISR with `revalidate: 300`** (the dual-unit CSS / on-demand-ISR change). That
+flipped ISR writes on across the *entire* catalog × 6 locales — Vercel ISR Write Units went from
+near-zero to ~250k/day. Vercel bills an **ISR write** every time a cache unit (route shell or
+`'use cache'` data entry) revalidates and is persisted, and under Cache Components a route shell's
+effective revalidate is the **MIN cacheLife of the `'use cache'` reads in its static portion**. The
+park & attraction shells are the highest-cardinality routes (`N_parks`/`N_attractions × 6 locales`),
+so the 5-min floor multiplied across them dominated the bill.
 
-**Key insight:** the shells don't need live freshness. Wait times, weather and today's crowd level
-are all refreshed **client-side** (React Query, `cache: 'no-store'`); the server-rendered numbers
-are only an SSR seed replaced on mount. The shell content that matters for SEO/no-JS (name,
-description, attraction list, FAQ, structured data) changes at most daily.
+**Key insight:** the shells don't need live freshness. Wait times, **open/closed status**, weather
+and today's crowd level are all refreshed **client-side** (React Query, `cache: 'no-store'`,
+5-min poll + refetch on mount/focus — see `use-live-park-data.ts`); the server-rendered values are
+only an SSR seed replaced on mount. **For any visitor with JS the shell TTL is invisible** — it only
+governs first paint, no-JS visitors and crawlers. The shell content that matters for SEO/no-JS
+(name, description, attraction list, FAQ, structured data) changes at most daily.
 
 **Changes:**
 
-| Lever                                   | Before        | After        | Effect                                              |
-| --------------------------------------- | ------------- | ------------ | --------------------------------------------------- |
-| `PARK_MAX_AGE` (park/attraction shell)  | 300s          | **3600s**    | Park + attraction shell writes ~12× fewer (dominant) |
-| `getServerNowMs` (`server-time.ts`)     | 300s          | **`'hours'`** | Removes the hidden 5-min floor it pinned on the park shell |
-| `getParkHistoricalStats`                | 300s          | **3600s**    | Retry loop already warms cold compute in one fill; data is daily |
-| Analytics (`getGlobalStats`/ticker/geo) | 300s          | **600s**     | Minor — single shared keys streamed in homepage Suspense holes |
+| Lever                                   | Before        | After         | Effect                                                       |
+| --------------------------------------- | ------------- | ------------- | ------------------------------------------------------------ |
+| `PARK_MAX_AGE` (park shell)             | 300s          | **3600s**     | Park shell writes ~12× fewer; keeps schedule/status reasonably fresh |
+| `ATTRACTION_MAX_AGE` (attraction shell) | 300s          | **21600s**    | Dominant route (highest cardinality, no schedule in shell) → ~72× fewer |
+| `getServerNowMs` (`server-time.ts`)     | 300s          | **`'hours'`** | Removes the hidden 5-min floor it pinned on the park shell   |
+| `getParkWeatherNowcast` (shell seed)    | 900s          | **3600s**     | Was capping the park shell at 15 min; client poll stays fresh |
+| `getParkHistoricalStats`                | 300s          | **3600s**     | Retry loop already warms cold compute in one fill; data is daily |
+| `getPopularParks`                       | 300s          | **1800s**     | Slow-moving ranking; feeds generateStaticParams + home seed  |
+| `pickHeroImage` (homepage shell)        | 300s          | **`'hours'`** | Decorative rotation pinned the 6-locale homepage to 5-min writes |
+| Analytics (`getGlobalStats`/ticker/geo) | 300s          | **600s**      | Minor — single shared keys streamed in homepage Suspense holes |
 
-> Both `PARK_MAX_AGE` **and** `getServerNowMs` had to be raised together: the park shell floor is
-> their MIN, so lifting only one would have left it pinned at 300s.
+> The park shell floor is the **MIN** of `getParkByGeoPath`, `getServerNowMs` **and**
+> `getParkWeatherNowcast` — all three had to be raised together, otherwise the lowest one would
+> have kept the shell pinned (e.g. the nowcast alone capped it at 15 min).
+
+**Deliberately conservative:** parks keep a 1h floor (their shell carries schedule + status +
+structured data); attractions go to 6h (no schedule/weather in shell). Neither goes to 24h, so a
+park/ride that opens or closes is never misrepresented for more than the floor to no-JS/crawlers —
+and not at all to JS visitors (client poll). The best-days **forecast** calendar stays on its
+separate 24h `unstable_cache`, and today's crowd level is patched client-side every 5 min.
+
+**Next step (not yet done):** on-demand revalidation — let the backend call a
+`revalidateTag`/`revalidatePath` webhook when park/attraction data actually changes, so TTLs can go
+to days and time-based write churn nearly disappears. The `best-days:<slug>` tag already exists.
 
 ---
 
@@ -109,7 +129,7 @@ In `next.config.ts`:
 | `/v1/search`               | `cache: 'no-store'`  | 60s       | Always fresh search results    |
 | `/v1/analytics/*`          | `cache: 'no-store'`  | 120s      | Real-time statistics           |
 | `/v1/parks/*` (detail)     | `revalidate: 3600s`  | 300s      | Shell seed; live via RQ        |
-| `/v1/parks/*/attractions`  | `revalidate: 3600s`  | 300s      | Shell seed; live via RQ        |
+| `/v1/parks/*/attractions`  | `revalidate: 21600s` | 300s      | Shell seed; live via RQ        |
 | `/v1/discovery/geo`        | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | `/v1/discovery/continents` | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
 | Calendar                   | `revalidate: 3600s`  | 300-3600s | Schedule data (changes daily)  |
