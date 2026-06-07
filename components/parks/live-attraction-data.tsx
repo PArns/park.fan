@@ -1,6 +1,7 @@
 'use client';
 
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
+import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import {
   AlertCircle,
   Loader2,
@@ -27,7 +28,6 @@ import type {
   QueueStatus,
   StandbyQueue,
   AccuracyBadge,
-  PredictionAccuracy,
 } from '@/lib/api/types';
 
 const QUEUE_TYPE_KEYS = {
@@ -82,8 +82,6 @@ interface LiveAttractionDataProps {
   country: string;
   city: string;
   parkSlug: string;
-  /** Static prediction accuracy from the attraction detail endpoint — not updated on live refetch. */
-  predictionAccuracy?: PredictionAccuracy | null;
 }
 
 export function LiveAttractionData({
@@ -93,7 +91,6 @@ export function LiveAttractionData({
   country,
   city,
   parkSlug,
-  predictionAccuracy,
 }: LiveAttractionDataProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
@@ -105,6 +102,17 @@ export function LiveAttractionData({
     parkSlug,
     attractionSlug,
     initialPark,
+  });
+
+  // Prediction accuracy lives in the attraction *detail* (stripped from the live park poll). It's
+  // fetched client-side via the CDN-cached detail route — shared (deduped) with the daily chart's
+  // <AttractionHistorySections> through React Query's query key, so this adds no extra request.
+  const { data: detail } = useAttractionDetail({
+    continent,
+    country,
+    city,
+    parkSlug,
+    attractionSlug,
   });
 
   if (!attraction) return null;
@@ -139,8 +147,9 @@ export function LiveAttractionData({
   const config = statusConfig[status];
   const StatusIcon = config.icon;
 
-  // Prefer live data if the park endpoint returns predictionAccuracy; fall back to static prop.
-  const effectivePredictionAccuracy = attraction.predictionAccuracy ?? predictionAccuracy;
+  // Prefer the live park poll if it returns predictionAccuracy; otherwise use the client-fetched
+  // attraction detail (the live poll strips it via leanParkForShell).
+  const effectivePredictionAccuracy = attraction.predictionAccuracy ?? detail?.predictionAccuracy;
 
   return (
     <>

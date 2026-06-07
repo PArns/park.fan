@@ -147,6 +147,36 @@ export async function getAttractionByGeoPath(
 }
 
 /**
+ * Live (no-store) variant of {@link getAttractionByGeoPath} for the client detail fetch.
+ *
+ * The attraction page's static shell used to BLOCK on the cached `getAttractionByGeoPath`, baking
+ * the heavy `history` + `hourlyForecast` time-series into every per-attraction × per-locale ISR
+ * shell — by far the dominant ISR-write source. The daily chart, history grid and prediction-
+ * accuracy card now fetch this client-side via the CDN-cached `/api/parks/.../attractions/<slug>`
+ * route, so the shell carries only the lean park-embedded attraction (name / statistics /
+ * bestVisitTimes) + JSON-LD. This fresh variant skips our own cache so that route reflects the
+ * backend's latest snapshot (the upstream Redis/CDN still collapses concurrent calls), and — most
+ * importantly — keeps the slow detail fetch off the shell prerender entirely (no ISR write for it).
+ */
+export async function getAttractionByGeoPathFresh(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<AttractionResponse | null> {
+  try {
+    return await api.get<AttractionResponse>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+      { cache: 'no-store' }
+    );
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
+  }
+}
+
+/**
  * Get the most-requested parks, ranked by tracked request volume.
  * The popularity ranking drifts slowly, so 30 min of staleness is fine — and it feeds
  * generateStaticParams + the homepage/featured seed, so a tighter window was pure write churn.
