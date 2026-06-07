@@ -101,9 +101,11 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
 // hero server-rendered for LCP.
 async function pickHeroImage(): Promise<string> {
   'use cache';
-  // Hourly rotation is plenty for a decorative hero. A 5-min window made this the MIN cacheLife in
-  // the homepage shell, pinning the (6-locale) homepage to a 5-min ISR-write cadence for nothing.
-  cacheLife('hours');
+  // Daily rotation is plenty for a decorative hero, and it keeps this read from being the MIN
+  // cacheLife in the homepage static render — at 'hours' it pinned the (6-locale) homepage shell to
+  // an hourly ISR-write cadence just to rotate a background image. 'days' lets the shell revalidate
+  // once a day (the hero still changes daily); everything live on the homepage is client-loaded.
+  cacheLife('days');
   return HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
 }
 

@@ -3,9 +3,8 @@ import { translateContinent } from '@/lib/i18n/helpers';
 import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getContinents } from '@/lib/api/discovery';
-import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
-import { GeoLocationCard } from '@/components/common/geo-location-card';
+import { LiveContinentCards } from '@/components/parks/live-continent-cards';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
 import { ItemListStructuredData } from '@/components/seo/structured-data';
@@ -49,21 +48,16 @@ export default async function ParksPage({ params }: ParksPageProps) {
   const t = await getTranslations('geo');
   const tExplore = await getTranslations('explore');
 
-  // Fetch continents and live stats
-  const [continents, liveStats] = await Promise.all([
-    catchNonFatal(getContinents()).then((r) => r ?? []),
-    catchNonFatal(getGeoLiveStats()),
-  ]);
+  // Structure only — live open-park counts are NOT read here. Baking getGeoLiveStats() into this
+  // server render pinned the (6-locale) /parks shell to a 10-min ISR-write cadence; instead the grid
+  // overlays the live counts on the client via <LiveContinentCards> (shared useGeoLiveStats batch),
+  // exactly like the continent page's country cards, so the shell can revalidate daily.
+  const continents = await catchNonFatal(getContinents()).then((r) => r ?? []);
 
-  const continentItems = continents.map((continent) => {
-    // Find live stats for this continent to get the most up-to-date open park count
-    const continentStats = liveStats?.continents.find((c) => c.slug === continent.slug);
-
-    return {
-      ...continent,
-      openParkCount: continentStats?.openParkCount ?? continent.openParkCount ?? 0,
-    };
-  });
+  const continentItems = continents.map((continent) => ({
+    ...continent,
+    openParkCount: continent.openParkCount ?? 0,
+  }));
 
   // Calculate totals
   const totalParks = continentItems.reduce((sum, c) => sum + c.parkCount, 0);
@@ -107,24 +101,19 @@ export default async function ParksPage({ params }: ParksPageProps) {
         }
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {continentItems.map((continent) => {
-          const continentName = translateContinent(t, continent.slug, locale, continent.name);
-
-          return (
-            <GeoLocationCard
-              key={continent.slug}
-              name={continentName}
-              slug={continent.slug}
-              href={`/parks/${continent.slug}`}
-              openParkCount={continent.openParkCount}
-              totalParkCount={continent.parkCount}
-              subtitle={`${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`}
-              variant="continent"
-            />
-          );
-        })}
-      </div>
+      <LiveContinentCards
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        continents={continentItems.map((continent) => ({
+          slug: continent.slug,
+          name: translateContinent(t, continent.slug, locale, continent.name),
+          href: `/parks/${continent.slug}`,
+          totalParkCount: continent.parkCount,
+          subtitle: `${continent.countryCount} ${tExplore('stats.country', { count: continent.countryCount })}`,
+        }))}
+        seedOpenParkCount={Object.fromEntries(
+          continentItems.map((continent) => [continent.slug, continent.openParkCount])
+        )}
+      />
     </PageContainer>
   );
 }

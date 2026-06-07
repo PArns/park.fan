@@ -10,7 +10,9 @@ import { LiveWaitTicker } from './live-wait-ticker';
  * positioned, so a `null` fallback causes no layout shift.
  */
 export async function HeroTicker() {
-  const tickerData = await catchNonFatal(getTickerData());
+  // Day-stale SSR seed only — LiveWaitTicker keeps it live client-side (5-min poll). A short seed
+  // TTL here would pin the whole homepage shell's ISR-write cadence to this decorative ticker.
+  const tickerData = await catchNonFatal(getTickerData(86400));
   if (!tickerData || tickerData.items.length === 0) return null;
 
   return (

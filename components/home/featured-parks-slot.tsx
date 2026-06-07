@@ -14,9 +14,13 @@ import { extractFeaturedParks } from './featured-parks-section';
  * by Next, so sharing it with the live-activity section costs no extra round-trip.
  */
 export async function FeaturedParksSlot({ locale }: { locale: string }) {
+  // Seed only — the client (FeaturedParksSectionClient → React Query) keeps the parks live, so the
+  // server fetch needs just day-granular freshness. Passing 300 (5 min) here previously made this
+  // the MIN cacheLife in the homepage static render, pinning the (6-locale) homepage shell to a
+  // 5-min ISR-write cadence; the default (1d) lets the homepage shell revalidate daily.
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
-    catchNonFatal(getGeoStructure(300)),
+    catchNonFatal(getGeoStructure()),
   ]);
 
   return (
