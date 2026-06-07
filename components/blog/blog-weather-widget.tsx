@@ -1,4 +1,3 @@
-import { connection } from 'next/server';
 import { getTranslations } from 'next-intl/server';
 import { GlassCard } from '@/components/common/glass-card';
 import { WeatherCard } from '@/components/parks/weather-card';
@@ -18,8 +17,9 @@ interface BlogWeatherWidgetProps {
  *   ```
  *
  * Reuses the park detail page's WeatherCard. The full park carries the weather
- * payload; passing the geo params enables the same live nowcast polling. Renders
- * nothing when the park has no current weather rather than an empty card.
+ * payload; passing the geo params enables the same live nowcast polling. Both
+ * upstream fetchers (`getParkByGeoPath`, `getParkWeatherNowcast`) are
+ * 'use cache' wrapped, so this stays prerender-safe without a dynamic hole.
  */
 export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) {
   const tBlog = await getTranslations('blog');
@@ -33,9 +33,6 @@ export async function BlogWeatherWidget({ park, slug }: BlogWeatherWidgetProps) 
     );
   }
 
-  // Dynamic PPR hole: weather + nowcast stream below the fold so they never
-  // block the prerendered shell.
-  await connection();
   const [full, nowcast] = await Promise.all([
     getParkByGeoPath(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),
     getParkWeatherNowcast(geo.continent, geo.country, geo.city, geo.parkSlug).catch(() => null),

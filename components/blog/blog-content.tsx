@@ -149,13 +149,13 @@ const WHITESPACE_NORMALIZE_RE =
 function renderGlossaryString(
   text: string,
   terms: GlossaryTerm[],
-  used: Set<string>,
+  _used: Set<string>,
   locale: Locale,
   segment: string
 ): ReactNode {
   const normalized = text.replace(WHITESPACE_NORMALIZE_RE, ' ');
   if (!normalized.trim()) return text;
-  const segments = parseGlossarySegments(normalized, terms, used);
+  const segments = parseGlossarySegments(normalized, terms);
   if (segments.every((s) => s.type === 'text')) return text;
   return segments.map((seg, i) => {
     if (seg.type === 'text') return <Fragment key={i}>{seg.content}</Fragment>;
