@@ -204,6 +204,17 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Attraction detail (history + hourlyForecast time-series) backing the attraction page's
+        // client-loaded daily chart + history grid. Like calendar/stats, this specific rule AFTER the
+        // blanket /api no-store re-enables CDN caching — without it the route handler's Cache-Control
+        // is clobbered to no-store. Today's forecast refines through the day, so a short window
+        // (10 min + 5 min SWR) matches the backend's ~5-min attraction cache.
+        source: '/api/parks/:continent/:country/:city/:park/attractions/:attraction',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=600, stale-while-revalidate=300' },
+        ],
+      },
+      {
         source: '/api/parks/:continent/:country/:city/:park/weather/nowcast',
         headers: [
           { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
