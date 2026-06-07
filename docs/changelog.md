@@ -23,9 +23,11 @@ while everything live/heavy loads client-side with skeletons.
 
 ### Cold-load
 
-- **Prebuild all parks** (`generateStaticParams`, ~156 × 6 locales) so every park is warm with full
-  SEO HTML on preview + prod from the first request; the attraction long-tail stays on-demand.
-- **Prewarm cron** (`vercel.json`, every 6 h) recovers warmth after eviction between deploys.
+- **Prebuild top ~20 popular parks** (`generateStaticParams`) so the highest-traffic parks are warm
+  with full SEO HTML on preview + prod from the first request; long-tail + attractions stay on-demand.
+  (Prebuilding all ~156 overran a fresh Vercel build — too many cold park-detail fetches.)
+- **Prewarm cron** (`vercel.json`, every 6 h) warms the rest of the popular set in prod + recovers
+  after eviction.
 
 ### Other
 

@@ -24,7 +24,7 @@ Next.js ISR controls revalidation per route:
 | Continent  | Static ISR | 300 (5m)    | 120s      | Geo structure (rarely changes)                                            |
 | Country    | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
 | City       | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
-| Park       | Static ISR | 604800 (7d) | 300s      | Prebuilt (all parks) + lean shell; live data via RQ on client             |
+| Park       | Static ISR | 604800 (7d) | 300s      | Prebuilt (top ~20 popular) + lean shell; live data via RQ on client       |
 | Attraction | Static ISR | 604800 (7d) | 300s      | Lean shell + JSON-LD; history/forecast chart + live data via RQ on client |
 | Search     | Dynamic    | —           | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                 |
 
@@ -94,10 +94,14 @@ governs first paint, no-JS visitors and crawlers. The shell content that matters
 - **Attraction detail** (`history` + `hourlyForecast`) loads **client-side** via the CDN-cached
   `/api/parks/.../attractions/<slug>` route (`useAttractionDetail`; `s-maxage=600` + SWR) — off the
   ISR shell entirely.
-- **Warm by prebuild + cron (no cold renders).** `generateStaticParams` prebuilds **all parks**
-  (~156 × 6 locales — cheap; the heavy attraction long-tail stays on-demand on a single seed), so
-  every park is warm with full SEO HTML on preview AND prod from the first request. The prewarm cron
-  (`vercel.json`, every 6 h) re-warms after eviction between deploys.
+- **Warm by prebuild + cron (no cold renders).** `generateStaticParams` prebuilds the **top ~20
+  popular parks** × 6 locales — warm with full SEO HTML on preview + prod from the first request; the
+  attraction long-tail and less-popular parks stay on-demand (single seed). Prebuilding **every** park
+  (~156) was tried but overran a fresh Vercel build — too many cold `getParkByGeoPath` fetches, and a
+  single fetch error inside a `'use cache'` boundary fails the whole prerender (a local build hid it
+  via `.next/cache`). The **prewarm cron** (`vercel.json`, every 6 h) warms the rest of the popular
+  set in prod + recovers from eviction. (Preview only warms the top ~20 — Vercel crons don't run on
+  previews.)
 
 **Next step (not yet done):** on-demand revalidation — backend webhook → `revalidateTag` when
 park/attraction data actually changes, so TTLs can go to ∞ and time-based writes nearly vanish. The
@@ -169,18 +173,19 @@ In `next.config.ts`:
 
 ### Strategy
 
-- **Refresh on Focus:** Data refreshes when user returns to tab (respects API cache)
-- **No Automatic Polling:** Zero background requests to minimize Vercel costs
-- **Smart Intervals:** Longer cache for closed parks/rides
+- **5-min auto-poll:** `refetchInterval` keeps wait times/status live while the page is open (catches
+  opening/closing), regardless of park status
+- **Refresh on focus / reconnect:** also refreshes when the user returns to the tab or reconnects
+- **Stale SSR seed:** `initialDataUpdatedAt: 0` anchors the baked shell value as stale, so the hook
+  refetches live data immediately on mount (a 7-day shell never shows stale live data to a JS visitor)
 
 ### Stale Times by Component
 
-| Component | Open Status | staleTime | Rationale                            |
-| --------- | ----------- | --------- | ------------------------------------ |
-| Park Data | Open        | 5 min     | Live wait times change frequently    |
-| Park Data | Closed      | 1 hour    | Closed parks don't need live updates |
-| Search    | -           | 1 min     | Recent searches cached briefly       |
-| Calendar  | -           | 5 min     | Schedule rarely changes mid-month    |
+| Component | Open Status | staleTime | Rationale                                              |
+| --------- | ----------- | --------- | ------------------------------------------------------ |
+| Park Data | Open/Closed | 5 min     | 5-min staleTime + 5-min poll (catches opening/closing) |
+| Search    | -           | 1 min     | Recent searches cached briefly                         |
+| Calendar  | -           | 5 min     | Schedule rarely changes mid-month                      |
 
 ### Implementation
 
@@ -193,9 +198,10 @@ const { data, isFetching } = useQuery({
   queryKey: ['park-live', ...pathParams],
   queryFn: () => fetch(`/api/parks/${pathParams.join('/')}`),
   staleTime,
-  refetchOnWindowFocus: true, // Only refresh on user action
+  refetchOnWindowFocus: true,
   refetchOnReconnect: true,
-  // NO refetchInterval - no automatic polling
+  refetchInterval: 5 * 60_000, // 5-min live poll while the page is open
+  initialDataUpdatedAt: 0, // SSR seed is stale → refetch live data on mount
 });
 
 // UI: Subtle loading indicator only during background refetch
@@ -206,10 +212,9 @@ const { data, isFetching } = useQuery({
 
 ### Cost Optimization
 
-- **Baseline:** ~2-3 API calls/sec (existing Favorites, Nearby)
-- **After Implementation:** ~2-3 API calls/sec (only on focus/reconnect)
-- **Impact:** Minimal - no automatic polling
-- **Vercel Buffer:** 100k invocations/day = 1.15/sec avg (huge headroom)
+- **Live polling:** ~one `/api/parks/...` call per open page every 5 min (+ on focus/reconnect),
+  served `no-store` through the CDN-collapsed proxy — a function response, **not** an ISR write
+- **Vercel Buffer:** 100k invocations/day = 1.15/sec avg (plenty of headroom)
 
 ### Files
 
