@@ -1,4 +1,10 @@
 {
+  "share": {
+    "title": "Condividi",
+    "on": "Condividi su {platform}",
+    "copy": "Copia link",
+    "copied": "Copiato!"
+  },
   "common": {
     "scroll": "Scorri",
     "loading": "Caricamento...",
@@ -192,6 +198,7 @@
     "impressum": "Impressum",
     "howto": "Come funziona",
     "glossaryLink": "Dizionario",
+    "blog": "Blog",
     "datenschutz": "Informativa sulla privacy",
     "privacy": "Informativa sulla privacy",
     "terms": "Termini di servizio",
@@ -235,7 +242,8 @@
     "admin": "Admin",
     "nearbyPark": "Vicino: {parkName}",
     "howto": "Guida",
-    "glossary": "Dizionario"
+    "glossary": "Dizionario",
+    "blog": "Blog"
   },
   "theme": {
     "light": "Chiaro",
@@ -985,5 +993,105 @@
   "parkCard": {
     "until": "Fino alle",
     "closingIn": "tra"
+  },
+  "blog": {
+    "title": "Blog",
+    "badge": "Blog park.fan",
+    "description": "Resoconti di visita, analisi dati e notizie dai parchi.",
+    "intro": "Resoconti onesti, analisi dei tempi di attesa e notizie brevi.",
+    "blog": "Blog",
+    "empty": "Ancora nessun articolo.",
+    "readMore": "Leggi l'articolo",
+    "readingTime": "{minutes} min di lettura",
+    "updatedOn": "Aggiornato il {date}",
+    "languageNotice": {
+      "available": "Questo articolo è disponibile anche in {language}",
+      "fallback": "Non ancora tradotto — versione in {language} mostrata."
+    },
+    "breadcrumbs": "Briciole di pane",
+    "categories": "Categorie",
+    "category": {
+      "label": "Categoria",
+      "description": "Articoli in {category} su park.fan.",
+      "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}"
+    },
+    "home": {
+      "heading": "Dal blog",
+      "intro": "Resoconti di visita, analisi dei dati e novità sui parchi: qui trovi per primi gli articoli più recenti.",
+      "viewAll": "Leggi tutti gli articoli"
+    },
+    "gallery": {
+      "title": "Galleria",
+      "openImage": "Apri immagine {index} di {total}",
+      "close": "Chiudi galleria",
+      "next": "Immagine successiva",
+      "previous": "Immagine precedente"
+    },
+    "inlineImage": {
+      "openImage": "Apri immagine",
+      "close": "Chiudi immagine"
+    },
+    "parkLink": {
+      "viewPark": "Vedi {name}",
+      "avgWait": "{minutes} min in media",
+      "openAttractions": "{open} su {total} aperte"
+    },
+    "attractionLink": {
+      "attraction": "Attrazione",
+      "viewAttraction": "Vedi {name}",
+      "atPark": "al {park}"
+    },
+    "related": {
+      "title": "Altro dal blog"
+    },
+    "relatedParks": {
+      "title": "Parchi citati"
+    },
+    "widget": {
+      "parkSpotlight": "Parco in primo piano",
+      "parkNotFound": "Parco \"{slug}\" non trovato.",
+      "attractionSpotlight": "Attrazione in primo piano",
+      "attractionNotFound": "Attrazione \"{slug}\" non trovata.",
+      "parkMap": "Mappa del parco",
+      "weather": "Meteo",
+      "glossary": "Glossario",
+      "glossaryMore": "Definizione completa",
+      "termNotFound": "Termine del glossario \"{slug}\" non trovato."
+    },
+    "toc": {
+      "title": "Indice",
+      "label": "Indice dei contenuti"
+    },
+    "postNav": {
+      "label": "Altri articoli",
+      "previous": "Precedente",
+      "next": "Successivo"
+    },
+    "pagination": {
+      "label": "Paginazione",
+      "previous": "Precedente",
+      "next": "Successivo",
+      "pageLabel": "Pagina {page}",
+      "pageOf": "Pagina {page} di {total}",
+      "goToPage": "Vai alla pagina {page}"
+    },
+    "references": {
+      "parks": "{count, plural, =1 {Parco nell'articolo} other {Parchi nell'articolo}}",
+      "attractions": "{count, plural, =1 {Attrazione nell'articolo} other {Attrazioni nell'articolo}}"
+    },
+    "author": {
+      "label": "Autore",
+      "postsBy": "Articoli di {name}",
+      "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}",
+      "description": "Articoli di {name} su park.fan.",
+      "noPosts": "Ancora nessun articolo."
+    },
+    "tag": {
+      "label": "Tag",
+      "description": "Articoli taggati #{tag} su park.fan.",
+      "postsCount": "{count, plural, =1 {# articolo} other {# articoli}}",
+      "cloudTitle": "Argomenti"
+    },
+    "featured": "In evidenza"
   }
 }

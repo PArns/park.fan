@@ -1,0 +1,66 @@
+{
+  "reports": {
+    "en": "Trip Reports",
+    "de": "Berichte",
+    "nl": "Verslagen",
+    "fr": "Reportages",
+    "es": "Reportajes",
+    "it": "Reportage"
+  },
+  "reports/orlando": {
+    "en": "Orlando",
+    "de": "Orlando",
+    "nl": "Orlando",
+    "fr": "Orlando",
+    "es": "Orlando",
+    "it": "Orlando"
+  },
+  "reports/orlando/disney-world": {
+    "en": "Walt Disney World",
+    "de": "Walt Disney World",
+    "nl": "Walt Disney World",
+    "fr": "Walt Disney World",
+    "es": "Walt Disney World",
+    "it": "Walt Disney World"
+  },
+  "reports/orlando/disney-world/magic-kingdom": {
+    "en": "Magic Kingdom",
+    "de": "Magic Kingdom",
+    "nl": "Magic Kingdom",
+    "fr": "Magic Kingdom",
+    "es": "Magic Kingdom",
+    "it": "Magic Kingdom"
+  },
+  "reports/europe": {
+    "en": "Europe",
+    "de": "Europa",
+    "nl": "Europa",
+    "fr": "Europe",
+    "es": "Europa",
+    "it": "Europa"
+  },
+  "reports/europe/europa-park": {
+    "en": "Europa-Park",
+    "de": "Europa-Park",
+    "nl": "Europa-Park",
+    "fr": "Europa-Park",
+    "es": "Europa-Park",
+    "it": "Europa-Park"
+  },
+  "news": {
+    "en": "News",
+    "de": "News",
+    "nl": "Nieuws",
+    "fr": "Actualités",
+    "es": "Noticias",
+    "it": "Notizie"
+  },
+  "guides": {
+    "en": "Guides",
+    "de": "Guides",
+    "nl": "Gidsen",
+    "fr": "Guides",
+    "es": "Guías",
+    "it": "Guide"
+  }
+}

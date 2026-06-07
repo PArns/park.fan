@@ -22,6 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'File individuelle'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -43,6 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Pass Express']
   },
   {
     id: 'posted-wait-time',
@@ -102,7 +104,7 @@ const translations: GlossaryTermTranslation[] = [
       "Une fermeture temporaire non planifiée d'une attraction, souvent due à une panne technique.",
     definition:
       "Le temps d'arrêt désigne une fermeture temporaire non programmée d'une attraction — à distinguer d'une rénovation planifiée. Les temps d'arrêt sont causés par des pannes techniques, des vérifications de sécurité, des incidents ou des conditions météorologiques défavorables. park.fan affiche l'état opérationnel actuel de chaque attraction en temps réel.",
-    aliases: ['Pannes'],
+    aliases: ['Pannes', 'Arrêts'],
     alternateNames: ['Incident Technique', 'Hors Service', 'Fermeture imprévue'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
@@ -143,7 +145,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un supplément de billet permettant de visiter plusieurs parcs du même resort dans la même journée.',
     definition:
       "Un Park Hopper permet d'entrer dans deux parcs ou plus exploités par le même resort lors d'une même journée. L'option Park Hopper de Disney, par exemple, permet de passer entre Magic Kingdom, EPCOT, Hollywood Studios et Animal Kingdom après 14h. Universal propose un système similaire de billet multi-parcs. C'est particulièrement intéressant lorsque des attractions ou des expériences spécifiques sont réparties sur plusieurs parcs.",
-    aliases: ['Park-Hopper'],
+    aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Billet multi-parcs'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
@@ -217,6 +219,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -348,6 +351,7 @@ const translations: GlossaryTermTranslation[] = [
       "Une heure de retour (parfois appelée fenêtre de retour) est un créneau horaire précis — généralement d'une heure — pendant lequel un visiteur ayant réservé un accès prioritaire (via la Lightning Lane, une file virtuelle ou un système similaire) peut se présenter à l'entrée dédiée de l'attraction. Les heures de retour permettent aux visiteurs de profiter d'autres zones du parc pendant l'intervalle plutôt que de faire la queue physiquement. Manquer sa fenêtre de retour (généralement définie par un retard de quelques minutes au-delà du créneau) entraîne en principe la perte de la réservation. Les données de temps d'attente et de niveau d'affluence de park.fan vous aident à décider quelles attractions prioriser pour les réservations.",
     relatedTermIds: ['boarding-group', 'fastpass', 'lightning-lane', 'virtual-queue'],
     alternateNames: ['Return Time', 'Créneau de retour'],
+    aliases: ['Heure de retour', 'Heures de retour']
   },
   {
     id: 'ert',
@@ -479,6 +483,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Coaster à Lancement', 'Catapulte'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters']
   },
   {
     id: 'wooden-coaster',
@@ -986,6 +991,7 @@ const translations: GlossaryTermTranslation[] = [
       "Une prévision IA utilise des modèles de machine learning entraînés sur des données historiques de fréquentation, des données météo, des calendriers scolaires et des données en temps réel pour prédire l'affluence dans un parc ou pour une attraction donnée. park.fan génère des prévisions IA pour la fréquentation et les temps d'attente prévus jusqu'à 30+ jours à l'avance.\n\nLes prévisions sont continuellement mises à jour à mesure que de nouvelles données arrivent. Les prévisions à court terme (1–7 jours) sont généralement très précises car elles intègrent les données météo actuelles, les annonces d'événements et les signaux de réservation. Les prévisions à long terme sont naturellement moins précises, mais restent utiles pour identifier les périodes calmes ou animées bien à l'avance.",
 
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
+    aliases: ['Prévision IA', 'Prévisions IA']
   },
   {
     id: 'opening-hours',

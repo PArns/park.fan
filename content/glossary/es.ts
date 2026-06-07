@@ -9,7 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El tiempo de espera es la duración estimada que un visitante pasa en la cola antes de poder subir a una atracción. Los parques muestran los tiempos de espera en las entradas de las atracciones y en sus aplicaciones. park.fan realiza un seguimiento de los tiempos de espera en vivo que se actualizan cada minuto.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
-    aliases: ['Tiempos de espera'],
+    aliases: ['Tiempos de espera', 'tiempo de espera'],
     alternateNames: ['Cola', 'Tiempo en cola'],
   },
   {
@@ -22,6 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Fila individual'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -43,6 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Pase Express', 'Pases Express']
   },
   {
     id: 'posted-wait-time',
@@ -52,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El tiempo publicado es la estimación oficial mostrada en los letreros en la entrada física de una atracción y/o en la aplicación oficial del parque. park.fan agrega los tiempos de espera publicados de fuentes oficiales cada minuto.',
     relatedTermIds: ['crowd-level', 'wait-time'],
+    aliases: ['tiempo publicado', 'tiempos publicados']
   },
   {
     id: 'crowd-level',
@@ -61,7 +64,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El nivel de afluencia describe la densidad general de visitantes en un parque en un día u hora determinados. park.fan utiliza una escala de Muy Bajo a Extremo basada en datos históricos de tiempos de espera, ocupación actual y predicciones de IA.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Niveles de afluencia'],
+    aliases: ['Niveles de afluencia', 'afluencia'],
   },
   {
     id: 'crowd-calendar',
@@ -71,6 +74,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un calendario de afluencia es un calendario mensual o anual que muestra los niveles de afluencia previstos para cada día. park.fan genera calendarios de afluencia usando modelos de IA entrenados en años de datos históricos de tiempos de espera, combinados con calendarios de vacaciones escolares, eventos próximos y tendencias estacionales.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
+    aliases: ['Calendarios de afluencia']
   },
   {
     id: 'peak-day',
@@ -144,7 +148,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un complemento de ticket que permite visitar varios parques del mismo resort en el mismo día.',
     definition:
       'Un ticket Park Hopper permite acceder a dos o más parques del mismo resort en un solo día. La opción Park Hopper de Disney, por ejemplo, permite moverse entre Magic Kingdom, EPCOT, Hollywood Studios y Animal Kingdom a partir de las 14:00 horas. Es especialmente útil cuando atracciones o experiencias específicas están distribuidas entre varios parques.',
-    aliases: ['Park-Hopper'],
+    aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Ticket multiparque'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
@@ -216,6 +220,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -478,6 +483,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Montaña Rusa Lanzada', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters', 'montañas rusas de lanzamiento']
   },
   {
     id: 'wooden-coaster',

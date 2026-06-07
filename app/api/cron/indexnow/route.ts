@@ -39,6 +39,36 @@ export async function GET(request: Request) {
     // Non-fatal — continue with what we have
   }
 
+  // ── Blog pages — index, every post, every category, every tag ─────────────
+  try {
+    const { listPosts, getTranslationIndex } = await import('@/lib/blog');
+    const { buildCategoryTree } = await import('@/lib/blog/categories');
+    const { listTags } = await import('@/lib/blog/tags');
+    const translationIndex = getTranslationIndex();
+
+    for (const locale of locales) {
+      urls.push(`${BASE_URL}/${locale}/blog`);
+      // Posts — each translationKey contributes a per-locale URL.
+      for (const [, localeMap] of translationIndex) {
+        const enSlug = localeMap.get('en');
+        const slug = localeMap.get(locale) ?? enSlug;
+        if (slug) urls.push(`${BASE_URL}/${locale}/blog/${slug}`);
+      }
+      // Categories + tags
+      const { flat } = buildCategoryTree(locale);
+      for (const path of flat.keys()) {
+        urls.push(`${BASE_URL}/${locale}/blog/category/${path}`);
+      }
+      for (const tag of listTags(locale)) {
+        urls.push(`${BASE_URL}/${locale}/blog/tag/${tag.slug}`);
+      }
+    }
+    // Stable order is good for IndexNow — same URL hash on repeated pings.
+    void listPosts;
+  } catch (error) {
+    console.error('[IndexNow] Failed to collect blog URLs:', error);
+  }
+
   // IndexNow accepts up to 10 000 URLs per request
   const BATCH_SIZE = 10_000;
   const batches: Promise<void>[] = [];

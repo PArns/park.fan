@@ -50,6 +50,8 @@ import {
   MLStatsSkeleton,
   LiveActivitySkeleton,
 } from '@/components/home/home-skeletons';
+import { LatestBlogSection } from '@/components/home/latest-blog-section';
+import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
@@ -173,6 +175,12 @@ export default async function HomePage({ params }: HomePageProps) {
                 </div>
               </div>
             </GlassCard>
+
+            {/* Compact "from the blog" strip — three latest posts directly
+                under the hero main box. Full BlogBottomSections still
+                renders further down the page; this is the at-a-glance
+                version for visitors who land at the top fold. */}
+            <BlogHeroPreview locale={locale as Locale} />
           </div>
         </div>
 
@@ -202,6 +210,9 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Favorites Section */}
       <FavoritesSection />
+
+      {/* Latest Blog Posts */}
+      <LatestBlogSection locale={locale as Locale} />
 
       {/* Featured Parks – locale-aware, direct park links for SEO (SSR seed + client live data) */}
       <Suspense fallback={<FeaturedParksSkeleton />}>

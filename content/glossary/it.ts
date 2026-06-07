@@ -9,7 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Il tempo di attesa è la durata stimata che un ospite trascorre in coda prima di poter salire su un'attrazione. I parchi mostrano i tempi di attesa agli ingressi delle attrazioni e nelle loro app. park.fan traccia i tempi di attesa in diretta aggiornati ogni minuto.",
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
-    aliases: ['Tempi di attesa'],
+    aliases: ['Tempi di attesa', 'tempo di attesa'],
     alternateNames: ['Fila', 'Tempo in coda', 'Tempo di coda'],
   },
   {
@@ -22,6 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Fila individuale'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -43,6 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Pass Express']
   },
   {
     id: 'posted-wait-time',
@@ -52,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Il tempo segnalato è la stima ufficiale visualizzata sui cartelli all'ingresso fisico di un'attrazione e/o nell'app ufficiale del parco. park.fan aggrega i tempi di attesa segnalati da fonti ufficiali ogni minuto.",
     relatedTermIds: ['crowd-level', 'wait-time'],
+    aliases: ['tempo segnalato', 'tempi segnalati']
   },
   {
     id: 'crowd-level',
@@ -61,7 +64,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Il livello di affluenza descrive la densità complessiva dei visitatori in un parco in un dato giorno o momento. park.fan utilizza una scala da Molto Basso a Estremo basata sui dati storici dei tempi di attesa, l'occupazione attuale e le previsioni IA.",
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Livelli di affluenza'],
+    aliases: ['Livelli di affluenza', 'affluenza'],
   },
   {
     id: 'crowd-calendar',
@@ -219,6 +222,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -483,6 +487,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Coaster a Lancio', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters']
   },
   {
     id: 'wooden-coaster',
@@ -581,6 +586,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Un'inversione è qualsiasi elemento su una montagna russa in cui il binario e il veicolo ruotano i passeggeri oltre il piano verticale — posizionandoli almeno parzialmente a testa in giù. Le inversioni comuni includono il looping verticale, il Cobra Roll, il Cavatappi, l'Immelmann, il Dive Loop, l'Inline Twist, l'Heartline Roll e lo Zero-g Roll. I coaster moderni presentano abitualmente da sei a quattordici inversioni in un singolo layout. Il numero di inversioni è una delle statistiche chiave per descrivere l'intensità di un coaster. Le inversioni generano sia G-force positive (al fondo dei loop) che G-force negative (in cima), creando sensazioni variate lungo tutto il giro.",
     relatedTermIds: ['cobra-roll', 'corkscrew', 'immelmann', 'vertical-loop', 'zero-g-roll'],
+    aliases: ['Inversioni']
   },
   {
     id: 'vertical-loop',
@@ -1039,7 +1045,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un tempo di attesa in tempo reale è il dato attuale estratto direttamente dai sistemi del parco — non una media storica, ma il dato reale al minuto. park.fan recupera i tempi di attesa in tempo reale dalle API ufficiali dei parchi e da fonti terze, aggiornando ogni minuto.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
-    aliases: ['Tempi di attesa in tempo reale', 'Attesa live'],
+    aliases: ['Tempi di attesa in tempo reale', 'Attesa live', 'tempo di attesa in tempo reale'],
   },
   {
     id: 'crowd-forecast',

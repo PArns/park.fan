@@ -180,6 +180,14 @@ export function Header() {
             </Link>
           )}
           <Link
+            href="/blog"
+            prefetch={false}
+            className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+            tabIndex={isTransparent ? -1 : 0}
+          >
+            {t('blog')}
+          </Link>
+          <Link
             href="/parks/europe"
             prefetch={false}
             className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
@@ -270,6 +278,13 @@ export function Header() {
                       {t('nearbyPark', { parkName: nearestPark.name })}
                     </Link>
                   )}
+                  <Link
+                    href="/blog"
+                    prefetch={false}
+                    className="hover:text-primary text-lg font-medium transition-colors"
+                  >
+                    {t('blog')}
+                  </Link>
                   <Link
                     href="/"
                     prefetch={false}
