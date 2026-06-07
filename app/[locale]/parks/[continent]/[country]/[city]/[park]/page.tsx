@@ -49,17 +49,18 @@ interface ParkPageProps {
   }>;
 }
 
-// Prebuild the most-requested parks (× all locales). Under Cache Components every dynamic route
-// must enumerate at least one param: without a generateStaticParams, Next prerenders a
-// param-less placeholder shell and `await params` there counts as dynamic data accessed outside
-// <Suspense>, which fails the build. Listing concrete params makes each prebuilt park a proper
-// PPR page (static shell + streamed Suspense holes). Every other park stays on-demand ISR
-// (dynamicParams defaults to true). Kept small to bound build memory / API load — each entry is a
-// full park-page prerender against the live API, and the long tail is served on-demand anyway.
-const PREBUILD_PARK_LIMIT = 12;
+const PREBUILD_PARK_LIMIT = 20;
 
 type ParkRouteParams = { continent: string; country: string; city: string; park: string };
 
+// Prebuild the most popular parks (× all locales) so the highest-traffic parks are warm with full
+// SEO HTML on preview + prod from the first request. BOUNDED on purpose: prerendering EVERY park
+// (~156) issued too many cold park-detail fetches on a fresh Vercel build and failed it (a single
+// fetch error inside the `'use cache'` boundary fails the whole build); ~20 stays within the proven
+// envelope. The prewarm cron (vercel.json) warms the long-tail in prod after deploy; everything else
+// is on-demand ISR (dynamicParams). NOTE: generateStaticParams reads do NOT pin the route's
+// revalidate (only render-path reads do), so getPopularParks' short cacheLife is fine here. Cache
+// Components requires ≥1 entry — the geo fallback + a stable seed guarantee that.
 export async function generateStaticParams() {
   const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
 
@@ -68,23 +69,29 @@ export async function generateStaticParams() {
     .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4)
     .map(([continent, country, city, park]) => ({ continent, country, city, park }));
 
-  // Cache Components requires generateStaticParams to return ≥1 result — an empty array throws
-  // EmptyGenerateStaticParamsError and fails the whole build. The popular-parks endpoint can be
-  // briefly unavailable during a build (and a build environment may be flakier than local), so
-  // fall back to the geo structure — already relied on by the city/country routes — to guarantee
-  // we always enumerate at least one real park.
+  // Fallback if the popular-parks endpoint is briefly unavailable at build: enumerate the geo
+  // structure, bounded to the same limit.
   if (parks.length === 0) {
-    const geo = await getGeoStructure().catch(() => null);
-    outer: for (const c of geo?.continents ?? []) {
-      for (const co of c.countries) {
-        for (const ci of co.cities) {
-          for (const p of ci.parks) {
-            parks.push({ continent: c.slug, country: co.slug, city: ci.slug, park: p.slug });
+    const geo = await getGeoStructure(604800).catch(() => null);
+    outer: for (const continent of geo?.continents ?? []) {
+      for (const country of continent.countries) {
+        for (const city of country.cities) {
+          for (const park of city.parks) {
+            parks.push({
+              continent: continent.slug,
+              country: country.slug,
+              city: city.slug,
+              park: park.slug,
+            });
             if (parks.length >= PREBUILD_PARK_LIMIT) break outer;
           }
         }
       }
     }
+  }
+
+  if (parks.length === 0) {
+    parks.push({ continent: 'europe', country: 'germany', city: 'rust', park: 'europa-park' });
   }
 
   return locales.flatMap((locale) => parks.map((p) => ({ locale, ...p })));

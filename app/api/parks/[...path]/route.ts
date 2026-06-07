@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
-import { getParkByGeoPathFresh } from '@/lib/api/parks';
+import { getParkByGeoPathFresh, getAttractionByGeoPathFresh } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats } from '@/lib/api/stats';
 
@@ -111,6 +111,42 @@ export async function GET(
     } catch (error) {
       console.error('[Stats API] Error:', error);
       return NextResponse.json({ error: 'Failed to fetch stats data' }, { status: 500 });
+    }
+  }
+
+  // Handle attraction detail: [continent, country, city, park, 'attractions', slug] (6 segments)
+  // e.g., ['europe', 'germany', 'rust', 'europa-park', 'attractions', 'blue-fire-megacoaster']
+  if (path && path.length === 6 && path[4] === 'attractions') {
+    const [continent, country, city, park, , attractionSlug] = path;
+
+    try {
+      // The heavy time-series — daily `history` + `hourlyForecast` (+ schedule, bestVisitTimes,
+      // predictionAccuracy) — that backs the daily chart, history grid and accuracy card. Serving
+      // it through this CDN-cached function response (s-maxage) keeps it OFF the attraction page's
+      // static prerender: it's a cacheable function response, NOT an ISR write of the page shell.
+      // Today's hourlyForecast refines through the day, so a short window (10 min fresh + 5 min SWR
+      // = ≤15 min old) matches the backend's ~5-min attraction cache while collapsing concurrent
+      // polls off the origin.
+      const data = await getAttractionByGeoPathFresh(
+        continent,
+        country,
+        city,
+        park,
+        attractionSlug
+      );
+
+      if (!data) {
+        return NextResponse.json({ error: 'Attraction not found' }, { status: 404 });
+      }
+
+      return NextResponse.json(data, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=600, stale-while-revalidate=300',
+        },
+      });
+    } catch (error) {
+      console.error('[Attraction API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch attraction data' }, { status: 500 });
     }
   }
 

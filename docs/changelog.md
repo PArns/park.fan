@@ -4,6 +4,41 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.10.0 (2026-06-07) – ISR cost & cold-load overhaul
+
+Park/attraction routes were the dominant Vercel ISR-write source (write-heavy, read-light), and
+cold parks loaded slowly. Reworked the render split so the server shell stays SEO-complete and cheap
+while everything live/heavy loads client-side with skeletons.
+
+### Caching / cost
+
+- **7-day shell TTL** for park + attraction (`PARK_MAX_AGE`/`ATTRACTION_MAX_AGE = 604800`), down from
+  daily — ~7× fewer time-based ISR writes. Required lifting every nested `'use cache'` MIN
+  (`getCurrentYear`, `getParkSlugIndex` + `getGeoStructure`, `getParksNearLocation`) off its 1-day
+  floor; verified via `next build`'s per-route `revalidate` column.
+- **Lean ISR snapshot** — `leanParkForShell` strips the heavy `statistics.history` sparkline series
+  from the cached/serialized shell (the live no-store poll keeps it) → smaller size-weighted writes.
+- **Attraction detail client-side** — `history`/`hourlyForecast` load via the CDN-cached
+  `/api/parks/.../attractions/<slug>` route, off the ISR shell.
+
+### Cold-load
+
+- **Prebuild top ~20 popular parks** (`generateStaticParams`) so the highest-traffic parks are warm
+  with full SEO HTML on preview + prod from the first request; long-tail + attractions stay on-demand.
+  (Prebuilding all ~156 overran a fresh Vercel build — too many cold park-detail fetches.)
+- **Prewarm cron** (`vercel.json`, every 6 h) warms the rest of the popular set in prod + recovers
+  after eviction.
+
+### Other
+
+- Disabled operating-park hover prefetch (prefetching a park triggered an ISR write).
+- Fixed the `/api/parks/.../attractions/<slug>` CDN cache header (was clobbered by the blanket
+  `/api` no-store rule).
+
+See [caching-strategy](architecture/caching-strategy.md).
+
+---
+
 ## 2.9.1 (2026-06-06) – Post-PPR front-end weight trim
 
 Follow-up to the Cache Components migration after RUM showed FCP slipping into "needs

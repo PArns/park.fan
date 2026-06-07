@@ -493,7 +493,9 @@ export interface AttractionStatistics {
   maxWaitToday: number | null;
   peakWaitToday: number | null;
   peakWaitTimestamp: string | null;
-  history: {
+  /** Sparkline series. Optional: stripped from the ISR shell snapshot (re-supplied by the live
+   *  no-store poll); present on live/detail responses. */
+  history?: {
     timestamp: string;
     waitTime: number;
   }[];

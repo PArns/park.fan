@@ -47,7 +47,6 @@ interface ParkBadgesProps {
   crowdLabel: string | null;
   hoursStr: string | null;
   parkUrl: string | null;
-  isOpenForPrefetch: boolean;
   t: ReturnType<typeof useTranslations<'parks'>>;
   tCommon: ReturnType<typeof useTranslations<'common'>>;
 }
@@ -58,7 +57,6 @@ function ParkBadges({
   crowdLabel,
   hoursStr,
   parkUrl,
-  isOpenForPrefetch,
   t,
   tCommon,
 }: ParkBadgesProps) {
@@ -95,7 +93,7 @@ function ParkBadges({
       {parkUrl && (
         <Link
           href={parkUrl}
-          prefetch={isOpenForPrefetch}
+          prefetch={false}
           className="text-primary hover:text-primary/90 focus-visible:ring-ring mt-1 inline-flex items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-xs font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none md:mt-0 md:px-4 md:py-2 md:text-sm"
         >
           {t('heroParkLink')}
@@ -195,7 +193,6 @@ export function HeroWithNearby({
           crowdLabel={crowdLabel}
           hoursStr={hoursStr}
           parkUrl={parkUrl}
-          isOpenForPrefetch={isOpen}
           t={t}
           tCommon={tCommon}
         />
@@ -243,7 +240,6 @@ export function HeroWithNearby({
             crowdLabel={nearParkCrowdLabel}
             hoursStr={nearParkHoursStr}
             parkUrl={nearParkUrl}
-            isOpenForPrefetch={nearParkOpen ?? false}
             t={t}
             tCommon={tCommon}
           />

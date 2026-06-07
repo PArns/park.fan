@@ -170,7 +170,7 @@ export function Header() {
           {showNearbyPark && (
             <Link
               href={convertApiUrlToFrontendUrl(nearestPark.url)}
-              prefetch={nearestPark.status === 'OPERATING'}
+              prefetch={false}
               className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors"
               aria-label={t('nearbyPark', { parkName: nearestPark.name })}
               tabIndex={isTransparent ? -1 : 0}
@@ -262,7 +262,7 @@ export function Header() {
                   {showNearbyPark && (
                     <Link
                       href={convertApiUrlToFrontendUrl(nearestPark.url)}
-                      prefetch={nearestPark.status === 'OPERATING'}
+                      prefetch={false}
                       className="bg-muted/80 hover:bg-muted text-foreground flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors"
                       aria-label={t('nearbyPark', { parkName: nearestPark.name })}
                     >

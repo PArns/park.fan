@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, locales } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
@@ -8,7 +8,7 @@ import { MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath, getAttractionByGeoPath, getPopularParks } from '@/lib/api/parks';
+import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
@@ -23,8 +23,7 @@ import { AttractionFAQStructuredData } from '@/components/seo/attraction-faq-str
 import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
-import { AttractionCalendar } from '@/components/parks/attraction-calendar';
-import { DailyWaitTimeChartServer } from '@/components/parks/daily-wait-time-chart-server';
+import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -137,32 +136,25 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-// Prebuild the headliner attractions of the most-requested parks (× all locales) so the
-// long tail's cold first render is eliminated; every other attraction stays on-demand ISR
-// (dynamicParams defaults to true). Bounded by the constants below to keep build time/API
-// load in check. Resilient: a failed park fetch just skips that park's prebuild.
-const PREBUILD_PARK_LIMIT = 15;
-const HEADLINERS_PER_PARK = 4;
-
-export async function generateStaticParams() {
-  const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
-
-  const geoPaths = popular
-    .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
-    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4);
-
-  const perPark = await Promise.all(
-    geoPaths.map(async ([continent, country, city, park]) => {
-      const data = await getParkByGeoPath(continent, country, city, park).catch(() => null);
-      return (data?.attractions ?? [])
-        .filter((a) => a.isHeadliner)
-        .slice(0, HEADLINERS_PER_PARK)
-        .map((a) => ({ continent, country, city, park, attraction: a.slug }));
-    })
-  );
-
-  const base = perPark.flat();
-  return locales.flatMap((locale) => base.map((p) => ({ locale, ...p })));
+// On-demand ISR for the whole catalog — we deliberately DON'T prebuild the popular parks' headliner
+// attractions × 6 locales here. That was the single biggest build-time cost (hundreds of prerenders
+// + build-time API load) and is redundant: every attraction renders on first request (dynamicParams
+// defaults to true), and the prewarm cron warms popular pages post-deploy. Cache Components still
+// requires ≥1 entry (an empty array throws EmptyGenerateStaticParamsError, and a param-less route
+// makes `await params` dynamic outside <Suspense> — both fail the build), so we return a single
+// stable seed and generate everything else lazily. A wrong seed slug would only waste this one
+// prerender.
+export function generateStaticParams() {
+  return [
+    {
+      locale: 'en',
+      continent: 'europe',
+      country: 'germany',
+      city: 'rust',
+      park: 'europa-park',
+      attraction: 'blue-fire-megacoaster',
+    },
+  ];
 }
 
 export default async function AttractionPage({ params }: AttractionPageProps) {
@@ -181,26 +173,14 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   const tGeo = await getTranslations('geo');
   const tSeo = await getTranslations('seo.attraction');
 
-  // Fetch park and attraction data in parallel
-  const [park, attractionData] = await Promise.all([
-    catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug)),
-    catchNonFatal(getAttractionByGeoPath(continent, country, city, parkSlug, attractionSlug)),
-  ]);
-
-  // Find attraction in park data and merge static fields from the detail endpoint
-  const parkAttraction = park?.attractions?.find((a) => a.slug === attractionSlug);
-
-  const attraction = parkAttraction
-    ? {
-        ...parkAttraction,
-        history: attractionData?.history || parkAttraction.history,
-        schedule: attractionData?.schedule,
-        hourlyForecast: attractionData?.hourlyForecast,
-        predictionAccuracy: attractionData?.predictionAccuracy,
-        statistics: attractionData?.statistics || parkAttraction.statistics,
-        bestVisitTimes: attractionData?.bestVisitTimes ?? parkAttraction.bestVisitTimes,
-      }
-    : null;
+  // Only the lean park snapshot is fetched in the static shell. The attraction's heavy detail — the
+  // daily `history` + `hourlyForecast` time-series — is loaded CLIENT-side inside
+  // <AttractionHistorySections> (via the CDN-cached /api/parks/.../attractions/<slug> route), so it
+  // no longer bakes into every per-attraction × per-locale ISR write (the dominant write source).
+  // The park-embedded attraction carries everything the shell + JSON-LD + FAQ need (name,
+  // statistics, bestVisitTimes); live status/wait times still come from the client poll.
+  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
+  const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
 
   if (!park || !attraction) {
     notFound();
@@ -278,7 +258,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                       href={
                         `/parks/${continent}/${country}/${city}/${parkSlug}` as '/parks/europe/germany/rust/europa-park'
                       }
-                      prefetch={park.status === 'OPERATING'}
+                      prefetch={false}
                       className="hover:text-foreground flex items-center gap-1"
                     >
                       <MapPin className="h-4 w-4" />
@@ -305,27 +285,23 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             country={country}
             city={city}
             parkSlug={parkSlug}
-            predictionAccuracy={attractionData?.predictionAccuracy}
           />
 
           <Separator className="my-8" />
 
-          {/* Static: daily chart and historical calendar */}
-          {(attraction.hourlyForecast?.length || attraction.history?.length) && (
-            <section className="mb-8">
-              <DailyWaitTimeChartServer
-                history={attraction.history}
-                hourlyForecast={attraction.hourlyForecast}
-                timezone={park.timezone}
-                schedule={attraction.schedule}
-                bestVisitTimes={attraction.bestVisitTimes}
-              />
-            </section>
-          )}
-
-          <section className="mb-8">
-            <AttractionCalendar attraction={attraction} park={park} />
-          </section>
+          {/* Daily wait-time chart + 30-day history grid — client-loaded from the CDN-cached
+              attraction detail route so the heavy history/forecast time-series stays out of the
+              ISR shell (a skeleton holds the layout until it lands). */}
+          <AttractionHistorySections
+            continent={continent}
+            country={country}
+            city={city}
+            parkSlug={parkSlug}
+            attractionSlug={attractionSlug}
+            attractionName={attractionName}
+            timezone={park.timezone}
+            bestVisitTimes={attraction.bestVisitTimes}
+          />
 
           <Separator className="my-8" />
           <AttractionFAQSection attraction={attraction} park={park} />

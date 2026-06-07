@@ -14,43 +14,58 @@ import type { ParkWithAttractions, AttractionResponse, PopularPark } from './typ
 // Context: park/attraction pages were dynamic (no ISR writes) until they were switched to static
 // ISR with revalidate:300 — which is what turned ISR writes on across the whole catalog × 6 locales.
 //
-// Both shells now revalidate every 1 DAY. The only thing that previously pinned them below this was
-// a server-time read in their static render — getServerToday('hours') in DailyWaitTimeChartServer
-// (the #1 ISR-write driver) and getServerNowMs in the park page/FAQ/history grid. All of that
-// "today/now"-dependent content (the daily chart's "today" marker, today's opening-hours, the
-// crowd FAQ, the history grid's "today") is now CLIENT-derived (useBrowserNow/useMounted) or made
-// time-INDEPENDENT, so the shells carry only day-stable structure. Live wait times/status come from
-// the client poll via getParkByGeoPathFresh (no-store), so a stale shell never shows stale live
-// data. A 1-day TTL collapses the per-park/per-attraction × per-locale ISR-write volume ~4× vs 6h
-// (and ~24× vs the original hourly park floor).
-const PARK_MAX_AGE = 86400; // 1d park shell TTL — all "today/now" content is client-derived
-const ATTRACTION_MAX_AGE = 86400; // 1d attraction shell TTL — dominant route, "today" client-derived
+// Both shells revalidate every 7 DAYS. The shell carries only day-stable, SEO-relevant structure
+// (name, attraction list + links, FAQ, JSON-LD, summary stats); every "today/now" value and all
+// live data (status, wait times, weather, history, forecast) is CLIENT-derived (useBrowserNow /
+// React Query no-store polls via getParkByGeoPathFresh), so a 7-day-old shell never shows stale
+// live data to a JS visitor — it only seeds first paint, no-JS visitors and crawlers, which change
+// at most when a ride is added/removed. 7 days cuts the time-based per-park/per-attraction ×
+// per-locale ISR-write FREQUENCY ~7× vs 1 day; on-demand revalidation (a backend webhook →
+// revalidateTag) can later push it toward ∞. Cold renders are avoided by prebuilding all parks
+// (generateStaticParams) + the prewarm cron, so the long TTL has no first-paint downside.
+const PARK_MAX_AGE = 604800; // 7d park shell TTL — live data is client-side
+const ATTRACTION_MAX_AGE = 604800; // 7d attraction shell TTL — live data is client-side
 
 /**
- * Drop per-attraction fields the PARK page never renders before the snapshot is cached.
- *
- * Measured against the live europa-park response (96 attractions, ~134 KB): the body is dominated
- * by `statistics` (incl. the card sparkline `history`), `bestVisitTimes` and `queues` — all of which
- * the park cards DO render, so they stay. The clearly removable field is `url` (~7 KB / ~5 %): it is
- * the raw `/v1/parks/.../attractions/<slug>` API path, and the card's `getHref` only uses it as a
- * preference — it falls back to `${parkPath}/${slug}` (parkPath is always supplied on the park page),
- * which resolves to the identical frontend URL. The `history`/`hourlyForecast`/`predictionAccuracy`
- * deletes are defensive: the park endpoint does not currently send them per attraction, but if it
- * ever does they are attraction-detail-only (sourced from getAttractionByGeoPath) and must not bloat
- * the park snapshot. Because the snapshot is persisted via `'use cache'` AND baked into every
- * per-locale ISR route segment via `initialData={park}`, trimming here shrinks the size-weighted ISR
- * write units (and the live /api/parks proxy response) on every park, across all 6 locales.
+ * Trim for the LIVE (no-store) client poll: drop only attraction-detail-only fields the park/
+ * attraction cards never use — the raw `url` (the card's `getHref` falls back to `${parkPath}/${slug}`,
+ * the identical frontend URL) and the detail-only `history`/`hourlyForecast`/`predictionAccuracy`.
+ * KEEPS `statistics` (incl. the card sparkline `history`), `bestVisitTimes` and `queues` — the cards
+ * render those live. This response is served `no-store` (see the /api/parks proxy), so its size
+ * carries NO ISR-write cost.
  */
-function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
+function leanParkForLive(park: ParkWithAttractions): ParkWithAttractions {
   return {
     ...park,
     attractions: park.attractions.map((a) => {
       const lean = { ...a };
       delete lean.url; // href falls back to `${parkPath}/${slug}` — identical frontend URL
-      delete lean.history; // defensive: attraction-detail-only if ever present
-      delete lean.hourlyForecast; // defensive: detail-only
-      delete lean.predictionAccuracy; // defensive: detail-only
+      delete lean.history; // attraction-detail-only if ever present
+      delete lean.hourlyForecast; // detail-only
+      delete lean.predictionAccuracy; // detail-only
       return lean;
+    }),
+  };
+}
+
+/**
+ * Trim for the ISR SHELL — the `'use cache'` snapshot baked into every per-park/per-attraction ×
+ * per-locale write AND serialized into the page as the `initialData`/`initialPark` prop. On top of
+ * the live trim it drops the heavy per-attraction `statistics.history` sparkline time-series — the
+ * single biggest size chunk and the main size-weighted ISR-write driver. Nothing in the SHELL needs
+ * it: the FAQ uses only summary statistics, and the card sparkline is `history ?? []` filled by the
+ * live poll (which keeps the full `statistics`). Everything SEO-relevant stays — name, slug/link,
+ * land, summary stats, and `queues` (the attraction FAQ's queue-type answers).
+ */
+function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
+  const live = leanParkForLive(park);
+  return {
+    ...live,
+    attractions: live.attractions.map((a) => {
+      if (!a.statistics) return a;
+      const statsLean = { ...a.statistics };
+      delete statsLean.history; // sparkline series — re-supplied by the live poll, not needed in HTML
+      return { ...a, statistics: statsLean };
     }),
   };
 }
@@ -107,9 +122,9 @@ async function fetchParkByGeoPath(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
       fresh ? { cache: 'no-store' } : undefined
     );
-    // Trim detail-only per-attraction arrays before this snapshot is cached/serialized (see
-    // leanParkForShell) — they are the bulk of the size-weighted ISR write units otherwise.
-    return leanParkForShell(park);
+    // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
+    // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
+    return fresh ? leanParkForLive(park) : leanParkForShell(park);
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
     throw err;
@@ -139,6 +154,36 @@ export async function getAttractionByGeoPath(
   try {
     return await api.get<AttractionResponse>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
+    );
+  } catch (err) {
+    if (err instanceof ApiError && err.status === 404) return null;
+    throw err;
+  }
+}
+
+/**
+ * Live (no-store) variant of {@link getAttractionByGeoPath} for the client detail fetch.
+ *
+ * The attraction page's static shell used to BLOCK on the cached `getAttractionByGeoPath`, baking
+ * the heavy `history` + `hourlyForecast` time-series into every per-attraction × per-locale ISR
+ * shell — by far the dominant ISR-write source. The daily chart, history grid and prediction-
+ * accuracy card now fetch this client-side via the CDN-cached `/api/parks/.../attractions/<slug>`
+ * route, so the shell carries only the lean park-embedded attraction (name / statistics /
+ * bestVisitTimes) + JSON-LD. This fresh variant skips our own cache so that route reflects the
+ * backend's latest snapshot (the upstream Redis/CDN still collapses concurrent calls), and — most
+ * importantly — keeps the slow detail fetch off the shell prerender entirely (no ISR write for it).
+ */
+export async function getAttractionByGeoPathFresh(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  attractionSlug: string
+): Promise<AttractionResponse | null> {
+  try {
+    return await api.get<AttractionResponse>(
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+      { cache: 'no-store' }
     );
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
