@@ -6,7 +6,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath } from '@/lib/api/parks';
+import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
@@ -49,30 +49,42 @@ interface ParkPageProps {
   }>;
 }
 
+const PREBUILD_PARK_LIMIT = 20;
+
 type ParkRouteParams = { continent: string; country: string; city: string; park: string };
 
-// Prebuild ALL parks (× all locales) so every park is warm — instant, with full SEO HTML, no cold
-// on-demand render — from the first request on preview AND prod. Parks are low-cardinality (~156),
-// so this is cheap build time; the heavy long-tail (attractions) stays on-demand. The geo structure
-// (already fetched for the hub routes) enumerates every park. The prewarm cron (vercel.json)
-// re-warms after cache eviction between deploys. Cache Components requires ≥1 entry — a stable seed
-// is the fallback if the geo fetch is briefly unavailable at build.
+// Prebuild the most popular parks (× all locales) so the highest-traffic parks are warm with full
+// SEO HTML on preview + prod from the first request. BOUNDED on purpose: prerendering EVERY park
+// (~156) issued too many cold park-detail fetches on a fresh Vercel build and failed it (a single
+// fetch error inside the `'use cache'` boundary fails the whole build); ~20 stays within the proven
+// envelope. The prewarm cron (vercel.json) warms the long-tail in prod after deploy; everything else
+// is on-demand ISR (dynamicParams). NOTE: generateStaticParams reads do NOT pin the route's
+// revalidate (only render-path reads do), so getPopularParks' short cacheLife is fine here. Cache
+// Components requires ≥1 entry — the geo fallback + a stable seed guarantee that.
 export async function generateStaticParams() {
-  // 7-day geo cache: this read shares the park route's cache-life accounting, so the default 1-day
-  // geo TTL would cap the 7-day park shell. Geo paths are week-stable.
-  const geo = await getGeoStructure(604800).catch(() => null);
+  const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
 
-  const parks: ParkRouteParams[] = [];
-  for (const continent of geo?.continents ?? []) {
-    for (const country of continent.countries) {
-      for (const city of country.cities) {
-        for (const park of city.parks) {
-          parks.push({
-            continent: continent.slug,
-            country: country.slug,
-            city: city.slug,
-            park: park.slug,
-          });
+  const parks: ParkRouteParams[] = popular
+    .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
+    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4)
+    .map(([continent, country, city, park]) => ({ continent, country, city, park }));
+
+  // Fallback if the popular-parks endpoint is briefly unavailable at build: enumerate the geo
+  // structure, bounded to the same limit.
+  if (parks.length === 0) {
+    const geo = await getGeoStructure(604800).catch(() => null);
+    outer: for (const continent of geo?.continents ?? []) {
+      for (const country of continent.countries) {
+        for (const city of country.cities) {
+          for (const park of city.parks) {
+            parks.push({
+              continent: continent.slug,
+              country: country.slug,
+              city: city.slug,
+              park: park.slug,
+            });
+            if (parks.length >= PREBUILD_PARK_LIMIT) break outer;
+          }
         }
       }
     }
