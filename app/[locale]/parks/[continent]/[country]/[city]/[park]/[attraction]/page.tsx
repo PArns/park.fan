@@ -277,9 +277,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             </GlassCard>
           </div>
 
-          {/* Live: status, wait time, queues — auto-refreshes every 5 min */}
+          {/* Live: status, wait time, queues — auto-refreshes every 5 min.
+              initialPark is trimmed to THIS attraction (LiveAttractionData finds it by slug and
+              uses only park-level fields) — passing the full park serialized all ~95 sibling
+              attractions into every per-attraction ISR shell, the bulk of its write size. The live
+              poll (getParkByGeoPathFresh) still returns the full park client-side. */}
           <LiveAttractionData
-            initialPark={park}
+            initialPark={{ ...park, attractions: [attraction] }}
             attractionSlug={attractionSlug}
             continent={continent}
             country={country}
