@@ -107,6 +107,32 @@ governs first paint, no-JS visitors and crawlers. The shell content that matters
 park/attraction data actually changes, so TTLs can go to ∞ and time-based writes nearly vanish. The
 `best-days:<slug>` tag already exists.
 
+**Architecture decision (Jun 2026) — keep Cache Components (PPR); accept cold-fill writes.**
+
+We evaluated moving the high-cardinality routes (attraction/park) to **dynamic + CDN** (no ISR
+writes). It is **not possible while `cacheComponents: true`**: both escape hatches fail the build —
+`connection()` outside `<Suspense>` → _"Uncached data accessed outside of `<Suspense>`"_, and
+`export const dynamic = 'force-dynamic'` → _"not compatible with `nextConfig.cacheComponents`"_. PPR
+**requires** every route to have a static, ISR-persisted shell. We keep PPR (the SSR shells are worth
+it for SEO) and accept its write model.
+
+**Write model under PPR** (verified locally with `NEXT_PRIVATE_DEBUG_CACHE=1` + per-fetch logging —
+both routes cache correctly, **MISS→HIT**, ~1 write then served):
+
+- **Cold-fill** — first generation of a path: the shell + ~1 PPR segment per route level (attraction
+  ≈ 7) + shared `'use cache'` data. **Inherent.** Happens per unique path on first crawl, after
+  eviction, and after **every deploy** (a deploy resets the ISR cache → full re-fill). This is the
+  dominant volume — tens of thousands of attraction paths × 6 locales, **crawler-driven** (not user
+  traffic: a park click is ~1 write, then HIT). **Not reducible in code under PPR** — only
+  operationally (fewer deploys; Vercel ISR is durable, so warm paths stay warm).
+- **Time-based** — re-write every TTL. Currently 7 d → **0** with on-demand revalidation.
+
+**Levers (priority):** ① on-demand revalidation (kills time-based writes; needs the backend webhook)
+· ② fewer prod deploys (each is a full catalog re-fill) · ③ lean shell + `initialPark` trim (smaller
+writes + better retention → less eviction — done) · ④ long TTL (done, 7 d). The per-cold-fill
+**count** (shell + segments) can't be lowered without flattening the URL (breaks SEO) — it's the
+price of PPR for a deep, high-cardinality route.
+
 ---
 
 ## API Cache Headers (Backend)
