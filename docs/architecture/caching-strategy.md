@@ -18,15 +18,15 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | Render     | revalidate | API Cache | Strategy                                                                  |
-| ---------- | ---------- | ---------- | --------- | ------------------------------------------------------------------------- |
-| Homepage   | Static ISR | 300 (5m)   | 120s      | Prerendered HTML; data sections via Suspense, live via RQ                 |
-| Continent  | Static ISR | 300 (5m)   | 120s      | Geo structure (rarely changes)                                            |
-| Country    | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                              |
-| City       | Static ISR | 300 (5m)   | 300s      | Prerendered; live park stats via React Query                              |
-| Park       | Static ISR | 86400 (1d) | 300s      | On-demand ISR; live wait times + weather via RQ on client                 |
-| Attraction | Static ISR | 86400 (1d) | 300s      | Lean shell + JSON-LD; history/forecast chart + live data via RQ on client |
-| Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                 |
+| Route      | Render     | revalidate  | API Cache | Strategy                                                                  |
+| ---------- | ---------- | ----------- | --------- | ------------------------------------------------------------------------- |
+| Homepage   | Static ISR | 300 (5m)    | 120s      | Prerendered HTML; data sections via Suspense, live via RQ                 |
+| Continent  | Static ISR | 300 (5m)    | 120s      | Geo structure (rarely changes)                                            |
+| Country    | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
+| City       | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
+| Park       | Static ISR | 604800 (7d) | 300s      | Prebuilt (all parks) + lean shell; live data via RQ on client             |
+| Attraction | Static ISR | 604800 (7d) | 300s      | Lean shell + JSON-LD; history/forecast chart + live data via RQ on client |
+| Search     | Dynamic    | —           | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                 |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
 > in BOTH °C and °F and toggled purely by CSS (`.u-metric` / `.u-imperial`, driven by
@@ -74,29 +74,34 @@ governs first paint, no-JS visitors and crawlers. The shell content that matters
 > `getParkWeatherNowcast` — all three had to be raised together, otherwise the lowest one would
 > have kept the shell pinned (e.g. the nowcast alone capped it at 15 min).
 
-**Update (Jun 7 2026) — daily shells + lean attraction + no catalog prebuild:**
+**Update (Jun 7 2026) — 7-day shells + lean ISR snapshot + warm-by-prebuild:**
 
-- **Both shells now revalidate once a day** (`PARK_MAX_AGE`/`ATTRACTION_MAX_AGE = 86400`). The last
-  sub-day floors were server-clock reads in the static render (`getServerToday`/`getServerNowMs` in
-  the daily chart, history grid, FAQ, opening-hours) — all moved client-side (`useBrowserNow`), so
-  the shells are time-independent. Live status/wait times stay fresh via the client poll, so a
-  day-old shell never shows stale live data.
-- **The attraction route was still the #1 ISR writer** afterwards, because its shell **blocked on
-  `getAttractionByGeoPath` and baked the full `history` + `hourlyForecast` time-series into every
-  per-attraction × per-locale write**. That detail now loads **client-side** via the CDN-cached
-  `/api/parks/.../attractions/<slug>` route (`useAttractionDetail` → the daily chart, history grid
-  and accuracy card; `s-maxage=600` + SWR), exactly how the park page offloaded stats/calendar. The
-  shell now carries only the lean park snapshot + JSON-LD + FAQ, so each write is far smaller and the
-  slow detail fetch can no longer time out and tip the route into dynamic rendering.
-- **No more catalog prebuild.** `generateStaticParams` for the park/attraction routes used to
-  prerender the most-popular parks (+ their headliner attractions) × 6 locales at build time — pure
-  build-time cost + build-time API load, redundant now that every page is on-demand ISR and the
-  prewarm cron warms popular pages post-deploy. Each route now returns a single stable seed (Cache
-  Components requires ≥1) and everything else is generated on first request.
+- **Both shells revalidate every 7 days** (`PARK_MAX_AGE`/`ATTRACTION_MAX_AGE = 604800`). The shell
+  carries only day-stable, SEO-relevant structure (name, attraction list + links, FAQ, JSON-LD,
+  summary stats); every "today/now" value and all live data (status, wait times, weather, history,
+  forecast) is client-derived, so a 7-day-old shell never shows stale live data to a JS visitor. 7d
+  cuts time-based ISR-write **frequency** ~7× vs 1 day.
+  - Reaching 7d meant raising **every** `'use cache'` read in the shells' MIN — they were all on a
+    1-day floor that silently capped the 7-day shell: `getCurrentYear` (Footer → every route),
+    `getParkSlugIndex` + its nested `getGeoStructure`, the park `generateStaticParams` geo read, and
+    `getParksNearLocation` (NearbyParksSection). Always verify with `next build`'s per-route
+    `revalidate` column — a single nested short cacheLife caps the whole route.
+- **Lean ISR snapshot (write _size_).** `leanParkForShell` (baked into every per-park/per-attraction
+  × per-locale write and serialized as `initialData`) now also strips the heavy per-attraction
+  `statistics.history` sparkline series — the biggest size chunk. The live no-store poll
+  (`leanParkForLive`) keeps the full data; the card sparkline is `history ?? []`, re-supplied
+  client-side. FAQ (summary stats) + SEO links are unaffected.
+- **Attraction detail** (`history` + `hourlyForecast`) loads **client-side** via the CDN-cached
+  `/api/parks/.../attractions/<slug>` route (`useAttractionDetail`; `s-maxage=600` + SWR) — off the
+  ISR shell entirely.
+- **Warm by prebuild + cron (no cold renders).** `generateStaticParams` prebuilds **all parks**
+  (~156 × 6 locales — cheap; the heavy attraction long-tail stays on-demand on a single seed), so
+  every park is warm with full SEO HTML on preview AND prod from the first request. The prewarm cron
+  (`vercel.json`, every 6 h) re-warms after eviction between deploys.
 
-**Next step (not yet done):** on-demand revalidation — let the backend call a
-`revalidateTag`/`revalidatePath` webhook when park/attraction data actually changes, so TTLs can go
-beyond a day and time-based write churn nearly disappears. The `best-days:<slug>` tag already exists.
+**Next step (not yet done):** on-demand revalidation — backend webhook → `revalidateTag` when
+park/attraction data actually changes, so TTLs can go to ∞ and time-based writes nearly vanish. The
+`best-days:<slug>` tag already exists.
 
 ---
 

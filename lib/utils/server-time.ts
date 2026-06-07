@@ -11,10 +11,15 @@ import { cacheLife } from 'next/cache';
  * live values (countdowns, "x min ago"), use a Client Component instead.
  */
 
-/** Current calendar year (for copyright lines). Refreshes daily. */
+/**
+ * Current calendar year (for copyright lines). Read in the Footer, which is part of EVERY route's
+ * static prerender — so its cacheLife is a global MIN that pins every route's revalidate. At 'days'
+ * it silently capped park/attraction at 1-day (defeating the 7-day shell TTL). 'weeks' lifts that
+ * floor; the year still self-corrects within a week of Jan 1, which is plenty for a footer.
+ */
 export async function getCurrentYear(): Promise<number> {
   'use cache';
-  cacheLife('days');
+  cacheLife('weeks');
   return new Date().getFullYear();
 }
 

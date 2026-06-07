@@ -17,17 +17,20 @@ import { getGeoStructure } from '@/lib/api/discovery';
  * Returns a plain Record (serializable across the cache boundary). Refreshes daily.
  *
  * This index is read in the PARK page's static shell (findParkPageRedirect), so its cacheLife is
- * part of the MIN that pins the park route's revalidate. The data is day-stable (geo paths / park
- * slugs change very rarely, and the underlying getGeoStructure is already fetched with a 1-day
- * cache), so 'days' lets the park shell reach its intended 1-day TTL instead of an hourly floor.
+ * part of the MIN that pins the park route's revalidate. The data is week-stable (geo paths / park
+ * slugs change very rarely), so 'weeks' lets the park shell reach its intended 7-day TTL instead of
+ * being capped at 1 day.
  */
 async function getParkSlugIndex(): Promise<Record<string, ParkLookupResult>> {
   'use cache';
-  cacheLife('days');
+  cacheLife('weeks');
 
   const index: Record<string, ParkLookupResult> = {};
   try {
-    const data = await getGeoStructure(86400);
+    // 7-day cache: this nested 'use cache' read is part of the park route's MIN revalidate, so a
+    // shorter geo TTL here would cap the 7-day park shell (geo paths are week-stable; only used for
+    // malformed-URL redirect detection, never to serve a valid park).
+    const data = await getGeoStructure(604800);
     for (const continent of data.continents) {
       for (const country of continent.countries) {
         for (const city of country.cities) {

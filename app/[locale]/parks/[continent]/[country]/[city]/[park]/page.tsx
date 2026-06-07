@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, locales } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
@@ -48,17 +49,40 @@ interface ParkPageProps {
   }>;
 }
 
-// On-demand ISR for the whole catalog — we deliberately DON'T prebuild the popular parks × 6 locales
-// here. That was pure build-time cost (dozens of prerenders + build-time API load) and is redundant:
-// every park renders on first request (dynamicParams defaults to true), and the prewarm cron warms
-// the popular pages right after a deploy. Cache Components still requires ≥1 entry (an empty array
-// throws EmptyGenerateStaticParamsError, and a param-less route makes `await params` dynamic outside
-// <Suspense> — both fail the build), so we return a single stable seed (Europa-Park) and generate
-// everything else lazily. A wrong seed slug would only waste this one prerender.
-export function generateStaticParams() {
-  return [
-    { locale: 'en', continent: 'europe', country: 'germany', city: 'rust', park: 'europa-park' },
-  ];
+type ParkRouteParams = { continent: string; country: string; city: string; park: string };
+
+// Prebuild ALL parks (× all locales) so every park is warm — instant, with full SEO HTML, no cold
+// on-demand render — from the first request on preview AND prod. Parks are low-cardinality (~156),
+// so this is cheap build time; the heavy long-tail (attractions) stays on-demand. The geo structure
+// (already fetched for the hub routes) enumerates every park. The prewarm cron (vercel.json)
+// re-warms after cache eviction between deploys. Cache Components requires ≥1 entry — a stable seed
+// is the fallback if the geo fetch is briefly unavailable at build.
+export async function generateStaticParams() {
+  // 7-day geo cache: this read shares the park route's cache-life accounting, so the default 1-day
+  // geo TTL would cap the 7-day park shell. Geo paths are week-stable.
+  const geo = await getGeoStructure(604800).catch(() => null);
+
+  const parks: ParkRouteParams[] = [];
+  for (const continent of geo?.continents ?? []) {
+    for (const country of continent.countries) {
+      for (const city of country.cities) {
+        for (const park of city.parks) {
+          parks.push({
+            continent: continent.slug,
+            country: country.slug,
+            city: city.slug,
+            park: park.slug,
+          });
+        }
+      }
+    }
+  }
+
+  if (parks.length === 0) {
+    parks.push({ continent: 'europe', country: 'germany', city: 'rust', park: 'europa-park' });
+  }
+
+  return locales.flatMap((locale) => parks.map((p) => ({ locale, ...p })));
 }
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
