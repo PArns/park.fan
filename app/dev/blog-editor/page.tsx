@@ -33,6 +33,46 @@ back-to-back. The [bare](ref:/parks/europe/germany/bruehl/phantasialand?bare)
 variant blends quietly into the sentence with no annotation, while
 [long](ref:/parks/europe/germany/bruehl/phantasialand?long) keeps the city +
 country pair.
+
+## Inline image
+
+![Welcome cover | A park.fan blog banner | center](/blog/images/welcome-cover.svg)
+
+## Embeds (bare URL on its own line)
+
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+
+https://www.instagram.com/p/CzAbCdEfGhI/
+
+https://suno.com/song/abc123
+
+## Widget fences (attrs in body — TipTap drops info-string attrs on round-trip)
+
+\`\`\`park-widget
+slug: phantasialand
+\`\`\`
+
+\`\`\`weather-widget
+slug: phantasialand
+\`\`\`
+
+\`\`\`stats-widget
+slug: phantasialand
+\`\`\`
+
+\`\`\`attraction-widget
+parkSlug: phantasialand
+slug: black-mamba
+\`\`\`
+
+\`\`\`gallery-widget
+folder: /blog/images
+heading: Highlights
+\`\`\`
+
+## Glossary terms (should highlight at publish)
+
+Live wait times power the entire site — we crunch crowd levels every minute.
 `;
 
 export default function BlogEditorDevTestPage() {

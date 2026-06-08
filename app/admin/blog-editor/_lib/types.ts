@@ -60,6 +60,44 @@ export function toFrontmatter(fm: EditorFrontmatter): BlogFrontmatter {
   return out;
 }
 
+/**
+ * Inverse of {@link toFrontmatter} — hydrate a parsed YAML frontmatter back
+ * into the form-state shape so an existing post can be loaded into the editor.
+ * Forgiving on input (gray-matter parses dates into Date objects, optional
+ * fields may be missing); always returns a fully-populated EditorFrontmatter.
+ */
+export function fromFrontmatter(raw: Record<string, unknown>): EditorFrontmatter {
+  const dateStr = (v: unknown): string => {
+    if (v instanceof Date) return v.toISOString().slice(0, 10);
+    if (typeof v === 'string') return v.slice(0, 10);
+    return '';
+  };
+  const str = (v: unknown): string => (typeof v === 'string' ? v : '');
+  const arr = (v: unknown): string[] =>
+    Array.isArray(v) ? v.filter((x): x is string => typeof x === 'string') : [];
+  const cover = (raw.coverImage ?? {}) as Record<string, unknown>;
+  const seo = (raw.seo ?? {}) as Record<string, unknown>;
+  const mode = str(raw.mode);
+  return {
+    title: str(raw.title),
+    excerpt: str(raw.excerpt),
+    date: dateStr(raw.date),
+    updatedAt: dateStr(raw.updatedAt),
+    authorKey: str(raw.author),
+    mode: mode === 'hidden' || mode === 'draft' ? mode : 'published',
+    featured: raw.featured === true,
+    category: str(raw.category),
+    tags: arr(raw.tags),
+    coverSrc: str(cover.src),
+    coverAlt: str(cover.alt),
+    coverCredit: str(cover.credit),
+    seoTitle: str(seo.title),
+    seoDescription: str(seo.description),
+    seoKeywords: arr(seo.keywords),
+    translationKey: str(raw.translationKey),
+  };
+}
+
 /** Sensible defaults for a fresh post. */
 export function emptyFrontmatter(): EditorFrontmatter {
   const today = new Date().toISOString().slice(0, 10);

@@ -5,6 +5,10 @@ import {
   resolveAttraction,
   resolvePark,
 } from '@/lib/blog/park-resolver';
+import {
+  getAttractionBackgroundImage,
+  getParkBackgroundImage,
+} from '@/lib/utils/park-assets';
 
 /**
  * Resolve a ref: token into the same handful of fields the published renderer
@@ -34,6 +38,10 @@ export async function GET(req: NextRequest) {
       country: park.country,
       status: park.status ?? null,
       crowdLevel: park.crowdLevel ?? null,
+      avgWaitTime: park.avgWaitTime ?? null,
+      operatingAttractions: park.operatingAttractions ?? null,
+      totalAttractions: park.totalAttractions ?? null,
+      backgroundImage: getParkBackgroundImage(park.slug),
     });
   }
 
@@ -53,9 +61,13 @@ export async function GET(req: NextRequest) {
     found: true,
     name: attraction.attractionName,
     parkName: park.name,
+    parkCity: park.city,
     country: park.country,
     status: attraction.status ?? null,
     waitTime: attraction.currentWaitTime ?? null,
     crowdLevel: attraction.crowdLevel ?? null,
+    backgroundImage:
+      getAttractionBackgroundImage(parkSlug, attractionSlug) ??
+      getParkBackgroundImage(parkSlug),
   });
 }

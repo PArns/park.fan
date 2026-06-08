@@ -12,6 +12,8 @@ import { Table, TableRow, TableHeader, TableCell } from '@tiptap/extension-table
 import { Markdown } from 'tiptap-markdown';
 import { SlashCommand } from '../_extensions/slash-command';
 import { RefPreview } from '../_extensions/ref-preview';
+import { WidgetPreview } from '../_extensions/widget-preview';
+import { EmbedPreview } from '../_extensions/embed-preview';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
 import { ImagePicker, type ImagePickResult } from './image-picker';
@@ -110,6 +112,8 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         buildItems: () => buildSlashItems(emit),
       }),
       RefPreview,
+      WidgetPreview,
+      EmbedPreview,
     ],
     content: initialMarkdown || '',
     editorProps: {

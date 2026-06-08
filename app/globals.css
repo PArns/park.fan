@@ -841,6 +841,246 @@ html[data-temp-unit='F'] .u-imperial {
   letter-spacing: 0.04em;
   font-size: 0.7em;
 }
+.tiptap-canvas .ref-preview-pill--avg,
+.tiptap-canvas .ref-preview-pill--ops {
+  background: color-mix(in oklab, var(--foreground) 8%, transparent);
+  color: color-mix(in oklab, var(--foreground) 75%, transparent);
+  border-color: color-mix(in oklab, var(--foreground) 15%, transparent);
+}
+
+/* ?full spotlight preview — block card that hints at the published spotlight
+   render without trying to fully replicate it. Sits in the editor flow so the
+   author sees where a card lands. */
+.tiptap-canvas .ref-preview-spotlight {
+  position: relative;
+  display: block;
+  margin: 0.75rem 0;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 130px;
+  border: 1px solid color-mix(in oklab, var(--primary) 30%, transparent);
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--primary) 14%, transparent), color-mix(in oklab, var(--primary) 4%, transparent)),
+    color-mix(in oklab, var(--background) 60%, black);
+  box-shadow: 0 4px 18px color-mix(in oklab, var(--primary) 12%, transparent);
+  user-select: none;
+  -webkit-user-select: none;
+  animation: refPreviewIn 220ms ease-out;
+}
+.tiptap-canvas .ref-preview-spotlight--loading,
+.tiptap-canvas .ref-preview-spotlight--failed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  color: color-mix(in oklab, var(--foreground) 55%, transparent);
+  min-height: 80px;
+}
+.tiptap-canvas .ref-preview-spotlight__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.05);
+  opacity: 0.45;
+  z-index: 0;
+}
+.tiptap-canvas .ref-preview-spotlight__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--background) 90%, transparent) 0%,
+    color-mix(in oklab, var(--background) 65%, transparent) 45%,
+    color-mix(in oklab, var(--background) 10%, transparent) 100%
+  );
+}
+.tiptap-canvas .ref-preview-spotlight__body {
+  position: relative;
+  z-index: 1;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.tiptap-canvas .ref-preview-spotlight__kind {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 0.2em 0.6em;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  align-self: flex-start;
+}
+.tiptap-canvas .ref-preview-spotlight__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--foreground);
+  margin-top: 0.15rem;
+}
+.tiptap-canvas .ref-preview-spotlight__sub {
+  font-size: 0.85rem;
+  color: color-mix(in oklab, var(--foreground) 65%, transparent);
+}
+.tiptap-canvas .ref-preview-spotlight__pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.45rem;
+}
+
+/* Shrink the empty widget code fences so they read as a tiny "source marker"
+   beside the rich preview card injected by WidgetPreview. */
+.tiptap-canvas pre:has(> code[class*="-widget"]) {
+  margin: 0;
+  padding: 0.25rem 0.6rem;
+  background: color-mix(in oklab, var(--foreground) 5%, transparent);
+  border-radius: 6px;
+  font-size: 0.7rem;
+  opacity: 0.55;
+}
+.tiptap-canvas code[class*="-widget"] {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  color: color-mix(in oklab, var(--foreground) 65%, transparent);
+}
+.tiptap-canvas code[class*="-widget"]::before {
+  content: '⌗ widget fence — preview below';
+  display: block;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* Widget fence preview card — same visual family as ref-preview-spotlight but
+   labeled with the widget kind so authors can tell what'll render at publish. */
+.tiptap-canvas .widget-preview {
+  position: relative;
+  display: block;
+  margin: 0.4rem 0 0.9rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--primary) 28%, transparent);
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--primary) 10%, transparent), color-mix(in oklab, var(--primary) 3%, transparent)),
+    color-mix(in oklab, var(--background) 60%, black);
+  user-select: none;
+  -webkit-user-select: none;
+  animation: refPreviewIn 220ms ease-out;
+}
+.tiptap-canvas .widget-preview__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  z-index: 0;
+}
+.tiptap-canvas .widget-preview__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--background) 90%, transparent) 0%,
+    color-mix(in oklab, var(--background) 55%, transparent) 60%,
+    color-mix(in oklab, var(--background) 5%, transparent) 100%
+  );
+}
+.tiptap-canvas .widget-preview__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border-bottom: 1px solid color-mix(in oklab, var(--primary) 18%, transparent);
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+}
+.tiptap-canvas .widget-preview__tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  padding: 0.18em 0.55em;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--primary) 20%, transparent);
+}
+.tiptap-canvas .widget-preview__attrs {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.7rem;
+  color: color-mix(in oklab, var(--foreground) 60%, transparent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.tiptap-canvas .widget-preview__body {
+  position: relative;
+  z-index: 1;
+  padding: 0.7rem 0.95rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.tiptap-canvas .widget-preview__body--failed {
+  font-style: italic;
+  color: color-mix(in oklab, var(--foreground) 55%, transparent);
+}
+.tiptap-canvas .widget-preview__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+.tiptap-canvas .widget-preview__sub {
+  font-size: 0.78rem;
+  color: color-mix(in oklab, var(--foreground) 65%, transparent);
+}
+
+/* Embed chip — clear "YouTube/Instagram/Suno" indicator for paragraphs whose
+   only content is a bare embed URL. Matches the published render behaviour. */
+.tiptap-canvas .embed-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0.9rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in oklab, var(--foreground) 15%, transparent);
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+  user-select: none;
+  -webkit-user-select: none;
+  font-size: 0.78rem;
+  animation: refPreviewIn 220ms ease-out;
+}
+.tiptap-canvas .embed-preview__tag {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.18em 0.6em;
+  border-radius: 9999px;
+}
+.tiptap-canvas .embed-preview__label {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  color: color-mix(in oklab, var(--foreground) 70%, transparent);
+}
+.tiptap-canvas .embed-preview--youtube .embed-preview__tag {
+  background: color-mix(in oklab, oklch(0.65 0.24 25) 22%, transparent);
+  color: oklch(0.78 0.22 25);
+}
+.tiptap-canvas .embed-preview--instagram .embed-preview__tag {
+  background: color-mix(in oklab, oklch(0.62 0.22 330) 22%, transparent);
+  color: oklch(0.78 0.2 330);
+}
+.tiptap-canvas .embed-preview--suno .embed-preview__tag {
+  background: color-mix(in oklab, oklch(0.7 0.2 200) 22%, transparent);
+  color: oklch(0.82 0.18 200);
+}
 
 /* ─── TipTap menus (tippy popovers) ───────────────────────────────────────── */
 

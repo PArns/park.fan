@@ -1,0 +1,274 @@
+import { Extension } from '@tiptap/core';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { Decoration, DecorationSet } from '@tiptap/pm/view';
+import type { Node as PMNode } from '@tiptap/pm/model';
+
+/**
+ * Renders a card-style block preview *next to* each widget code fence in the
+ * editor so authors see what their `park-widget`, `attraction-widget`, etc.
+ * will look like at publish time. The empty fence body still owns the
+ * document state — we only add a decoration; the user can still edit it.
+ *
+ * Shared module-level cache with ref-preview would be ideal but is not worth
+ * the refactor right now; each extension keeps its own resolution map. The
+ * resolve-ref endpoint is server-cached anyway so duplicate calls are cheap.
+ */
+
+interface ResolvedData {
+  kind: 'park' | 'ride';
+  found: boolean;
+  name?: string;
+  city?: string;
+  country?: string;
+  parkName?: string;
+  parkCity?: string;
+  status?: string | null;
+  crowdLevel?: string | null;
+  waitTime?: number | null;
+  backgroundImage?: string | null;
+  avgWaitTime?: number | null;
+  operatingAttractions?: number | null;
+  totalAttractions?: number | null;
+}
+
+type CacheEntry =
+  | { state: 'loading' }
+  | { state: 'failed' }
+  | { state: 'ready'; data: ResolvedData };
+
+const cache = new Map<string, CacheEntry>();
+
+function fetchResolve(refValue: string, onResolve: () => void) {
+  if (cache.has(refValue)) return;
+  cache.set(refValue, { state: 'loading' });
+  fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
+    .then((r) => (r.ok ? (r.json() as Promise<ResolvedData>) : Promise.reject()))
+    .then((data) => {
+      cache.set(refValue, { state: 'ready', data });
+    })
+    .catch(() => {
+      cache.set(refValue, { state: 'failed' });
+    })
+    .finally(onResolve);
+}
+
+interface WidgetSpan {
+  /** End position of the code-fence node — where the decoration is anchored. */
+  pos: number;
+  /** Fence info string (e.g. `park-widget`, `attraction-widget`). */
+  name: string;
+  /** Parsed attribute map from both the language string and the fence body. */
+  attrs: Record<string, string>;
+  /** Pre-computed `refValue` for the resolve-ref endpoint, when applicable. */
+  refValue?: string;
+}
+
+const WIDGET_KINDS = new Set([
+  'park-widget',
+  'map-widget',
+  'weather-widget',
+  'best-days-widget',
+  'stats-widget',
+  'attraction-widget',
+  'glossary-widget',
+  'gallery-widget',
+]);
+
+const ATTR_RE = /\b([a-zA-Z][a-zA-Z0-9_-]*)\s*[:=]\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))/g;
+
+function parseAttrs(source: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const line of source.split(/\r?\n/)) {
+    let m: RegExpExecArray | null;
+    ATTR_RE.lastIndex = 0;
+    while ((m = ATTR_RE.exec(line)) !== null) {
+      out[m[1]] = (m[2] ?? m[3] ?? m[4] ?? '').trim();
+    }
+  }
+  return out;
+}
+
+function collectWidgets(doc: PMNode): WidgetSpan[] {
+  const spans: WidgetSpan[] = [];
+  doc.descendants((node, pos) => {
+    if (node.type.name !== 'codeBlock') return;
+    const lang = (node.attrs as { language?: string }).language ?? '';
+    // tiptap stores the fence info string in `language`. It can include
+    // trailing attrs (e.g. `park-widget slug=phantasialand`) so split first.
+    const firstSpace = lang.indexOf(' ');
+    const name = (firstSpace === -1 ? lang : lang.slice(0, firstSpace)).trim();
+    if (!WIDGET_KINDS.has(name)) return;
+    const attrSource = `${lang.slice(name.length)}\n${node.textContent ?? ''}`;
+    const attrs = parseAttrs(attrSource);
+    let refValue: string | undefined;
+    if (name === 'attraction-widget' && attrs.parkSlug && attrs.slug) {
+      refValue = `${attrs.parkSlug}/${attrs.slug}`;
+    } else if (attrs.slug && name !== 'glossary-widget' && name !== 'gallery-widget') {
+      refValue = attrs.slug;
+    }
+    spans.push({ pos: pos + node.nodeSize, name, attrs, refValue });
+  });
+  return spans;
+}
+
+function widgetLabel(name: string): string {
+  return name
+    .replace(/-widget$/, '')
+    .split('-')
+    .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : p))
+    .join(' ');
+}
+
+function buildWidgetCard(span: WidgetSpan): HTMLElement {
+  const wrapper = document.createElement('div');
+  wrapper.className = `widget-preview widget-preview--${span.name}`;
+  wrapper.contentEditable = 'false';
+
+  const header = document.createElement('div');
+  header.className = 'widget-preview__header';
+  const tag = document.createElement('span');
+  tag.className = 'widget-preview__tag';
+  tag.textContent = widgetLabel(span.name);
+  header.appendChild(tag);
+
+  const attrsSummary = document.createElement('span');
+  attrsSummary.className = 'widget-preview__attrs';
+  const summary: string[] = [];
+  if (span.attrs.slug) summary.push(`slug=${span.attrs.slug}`);
+  if (span.attrs.parkSlug) summary.push(`parkSlug=${span.attrs.parkSlug}`);
+  if (span.attrs.folder) summary.push(`folder=${span.attrs.folder}`);
+  if (span.attrs.heading) summary.push(`heading=${span.attrs.heading}`);
+  attrsSummary.textContent = summary.join(' · ');
+  header.appendChild(attrsSummary);
+  wrapper.appendChild(header);
+
+  const body = document.createElement('div');
+  body.className = 'widget-preview__body';
+
+  if (!span.refValue) {
+    // gallery / glossary — no park to resolve; show the metadata only.
+    body.textContent =
+      span.name === 'gallery-widget'
+        ? `Gallery${span.attrs.heading ? ` · ${span.attrs.heading}` : ''}${
+            span.attrs.folder ? ` · ${span.attrs.folder}` : ''
+          }`
+        : `Glossary term · ${span.attrs.slug ?? span.attrs.term ?? span.attrs.id ?? '?'}`;
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  const entry = cache.get(span.refValue);
+  if (!entry || entry.state === 'loading') {
+    const dot = document.createElement('span');
+    dot.className = 'ref-preview-spinner';
+    body.appendChild(dot);
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+  if (entry.state === 'failed' || !entry.data.found) {
+    body.classList.add('widget-preview__body--failed');
+    body.textContent = `Could not resolve ${span.refValue}`;
+    wrapper.appendChild(body);
+    return wrapper;
+  }
+
+  const data = entry.data;
+  if (data.backgroundImage) {
+    const bg = document.createElement('div');
+    bg.className = 'widget-preview__bg';
+    bg.style.backgroundImage = `url(${data.backgroundImage})`;
+    wrapper.appendChild(bg);
+  }
+
+  const title = document.createElement('div');
+  title.className = 'widget-preview__title';
+  title.textContent = data.name ?? span.refValue;
+  body.appendChild(title);
+
+  const sub = document.createElement('div');
+  sub.className = 'widget-preview__sub';
+  if (data.kind === 'park') {
+    sub.textContent = `${data.city ?? ''}${data.country ? `, ${data.country}` : ''}`;
+  } else {
+    sub.textContent = [data.parkName, data.parkCity, data.country].filter(Boolean).join(' · ');
+  }
+  body.appendChild(sub);
+
+  wrapper.appendChild(body);
+  return wrapper;
+}
+
+function buildDecorations(doc: PMNode, spans: WidgetSpan[]): DecorationSet {
+  const decorations: Decoration[] = [];
+  for (const span of spans) {
+    const entry = span.refValue ? cache.get(span.refValue) : undefined;
+    const stateKey = entry ? entry.state : span.refValue ? 'unset' : 'static';
+    decorations.push(
+      Decoration.widget(span.pos, () => buildWidgetCard(span), {
+        side: 1,
+        key: `widget-preview:${span.name}:${span.refValue ?? Object.values(span.attrs).join(',')}:${stateKey}`,
+      })
+    );
+  }
+  return DecorationSet.create(doc, decorations);
+}
+
+interface PluginState {
+  decorations: DecorationSet;
+  spans: WidgetSpan[];
+}
+
+const widgetPreviewKey = new PluginKey<PluginState>('widgetPreview');
+
+export const WidgetPreview = Extension.create({
+  name: 'widgetPreview',
+  addProseMirrorPlugins() {
+    return [
+      new Plugin<PluginState>({
+        key: widgetPreviewKey,
+        state: {
+          init(_, state) {
+            const spans = collectWidgets(state.doc);
+            return { spans, decorations: buildDecorations(state.doc, spans) };
+          },
+          apply(tr, prev, _old, newState) {
+            const refresh = tr.getMeta(widgetPreviewKey) === 'refresh';
+            if (!tr.docChanged && !refresh) {
+              return {
+                spans: prev.spans,
+                decorations: prev.decorations.map(tr.mapping, tr.doc),
+              };
+            }
+            const spans = collectWidgets(newState.doc);
+            return { spans, decorations: buildDecorations(newState.doc, spans) };
+          },
+        },
+        view(view) {
+          const trigger = () => {
+            const s = widgetPreviewKey.getState(view.state);
+            if (!s) return;
+            for (const span of s.spans) {
+              if (!span.refValue) continue;
+              if (cache.has(span.refValue)) continue;
+              fetchResolve(span.refValue, () => {
+                if (view.isDestroyed) return;
+                view.dispatch(view.state.tr.setMeta(widgetPreviewKey, 'refresh'));
+              });
+            }
+          };
+          trigger();
+          return {
+            update(updatedView, prevState) {
+              if (updatedView.state.doc !== prevState.doc) trigger();
+            },
+          };
+        },
+        props: {
+          decorations(state) {
+            return widgetPreviewKey.getState(state)?.decorations;
+          },
+        },
+      }),
+    ];
+  },
+});

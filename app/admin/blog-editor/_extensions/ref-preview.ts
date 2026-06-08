@@ -22,9 +22,14 @@ interface RefData {
   city?: string;
   country?: string;
   parkName?: string;
+  parkCity?: string;
   status?: string | null;
   crowdLevel?: string | null;
   waitTime?: number | null;
+  avgWaitTime?: number | null;
+  operatingAttractions?: number | null;
+  totalAttractions?: number | null;
+  backgroundImage?: string | null;
 }
 
 type CacheEntry = { state: 'loading' } | { state: 'failed' } | { state: 'ready'; data: RefData };
@@ -171,23 +176,122 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   return wrapper;
 }
 
+function buildSpotlightDOM(span: RefSpan): HTMLElement {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'ref-preview-spotlight';
+  wrapper.contentEditable = 'false';
+  wrapper.setAttribute('data-ref', span.refValue);
+  wrapper.setAttribute('data-kind', '');
+
+  const entry = cache.get(span.refValue);
+  if (!entry || entry.state === 'loading') {
+    wrapper.classList.add('ref-preview-spotlight--loading');
+    const dot = document.createElement('span');
+    dot.className = 'ref-preview-spinner';
+    wrapper.appendChild(dot);
+    return wrapper;
+  }
+  if (entry.state === 'failed' || !entry.data.found) {
+    wrapper.classList.add('ref-preview-spotlight--failed');
+    wrapper.textContent = `Spotlight card for ${span.refValue} — not found`;
+    return wrapper;
+  }
+  const data = entry.data;
+  wrapper.setAttribute('data-kind', data.kind);
+
+  if (data.backgroundImage) {
+    const bg = document.createElement('div');
+    bg.className = 'ref-preview-spotlight__bg';
+    bg.style.backgroundImage = `url(${data.backgroundImage})`;
+    wrapper.appendChild(bg);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'ref-preview-spotlight__body';
+
+  const kindLabel = document.createElement('div');
+  kindLabel.className = 'ref-preview-spotlight__kind';
+  kindLabel.textContent = data.kind === 'park' ? 'Park spotlight' : 'Ride spotlight';
+  body.appendChild(kindLabel);
+
+  const title = document.createElement('div');
+  title.className = 'ref-preview-spotlight__title';
+  title.textContent = data.name ?? span.refValue;
+  body.appendChild(title);
+
+  const sub = document.createElement('div');
+  sub.className = 'ref-preview-spotlight__sub';
+  if (data.kind === 'park') {
+    sub.textContent = `${data.city ?? ''}${data.country ? `, ${data.country}` : ''}`;
+  } else {
+    const parts = [data.parkName, data.parkCity, data.country].filter(Boolean);
+    sub.textContent = parts.join(' · ');
+  }
+  body.appendChild(sub);
+
+  const pills = document.createElement('div');
+  pills.className = 'ref-preview-spotlight__pills';
+
+  const statusText = statusBadgeText(data.status);
+  if (statusText) {
+    const pill = document.createElement('span');
+    pill.className = 'ref-preview-pill ref-preview-pill--status';
+    pill.textContent = statusText;
+    pills.appendChild(pill);
+  } else if (data.kind === 'ride' && typeof data.waitTime === 'number') {
+    const pill = document.createElement('span');
+    pill.className = 'ref-preview-pill ref-preview-pill--wait';
+    pill.textContent = `${data.waitTime} min wait`;
+    pills.appendChild(pill);
+  } else if (data.kind === 'park' && data.crowdLevel) {
+    const pill = document.createElement('span');
+    pill.className = `ref-preview-pill ref-preview-pill--crowd ref-preview-pill--crowd-${data.crowdLevel.toLowerCase()}`;
+    pill.textContent = data.crowdLevel.toLowerCase();
+    pills.appendChild(pill);
+  }
+  if (data.kind === 'park' && typeof data.avgWaitTime === 'number') {
+    const pill = document.createElement('span');
+    pill.className = 'ref-preview-pill ref-preview-pill--avg';
+    pill.textContent = `⌀ ${data.avgWaitTime} min`;
+    pills.appendChild(pill);
+  }
+  if (
+    data.kind === 'park' &&
+    typeof data.operatingAttractions === 'number' &&
+    typeof data.totalAttractions === 'number'
+  ) {
+    const pill = document.createElement('span');
+    pill.className = 'ref-preview-pill ref-preview-pill--ops';
+    pill.textContent = `${data.operatingAttractions}/${data.totalAttractions} open`;
+    pills.appendChild(pill);
+  }
+  body.appendChild(pills);
+
+  wrapper.appendChild(body);
+  return wrapper;
+}
+
 function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
   const decorations: Decoration[] = [];
   for (const span of spans) {
-    // ?bare suppresses the annotation; ?full means a block card is rendered
-    // instead so the inline preview would be misleading.
-    if (span.options.has('bare') || span.options.has('full')) continue;
+    // ?bare suppresses the annotation entirely (matches the published renderer).
+    if (span.options.has('bare')) continue;
     // The key MUST encode the resolution state — otherwise PM reuses the
     // loading-spinner DOM after the fetch resolves and the badge never
     // updates to "(City, Country)".
     const entry = cache.get(span.refValue);
     const stateKey = entry ? entry.state : 'unset';
     const optKey = [...span.options].sort().join(',');
+    const full = span.options.has('full');
     decorations.push(
-      Decoration.widget(span.to, () => buildBadgeDOM(span), {
-        side: 1,
-        key: `ref-preview:${span.refValue}:${optKey}:${stateKey}`,
-      })
+      Decoration.widget(
+        span.to,
+        () => (full ? buildSpotlightDOM(span) : buildBadgeDOM(span)),
+        {
+          side: 1,
+          key: `ref-preview:${full ? 'spot' : 'inline'}:${span.refValue}:${optKey}:${stateKey}`,
+        }
+      )
     );
   }
   return DecorationSet.create(doc, decorations);
