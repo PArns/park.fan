@@ -60,7 +60,13 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
-      StarterKit.configure({ codeBlock: { HTMLAttributes: { class: 'bg-muted rounded-md p-3' } } }),
+      StarterKit.configure({
+        codeBlock: { HTMLAttributes: { class: 'bg-muted rounded-md p-3' } },
+        // StarterKit v3 ships its own Link extension; we configure ours below
+        // with stricter URL validation, so disable the bundled one to avoid the
+        // "Duplicate extension names found: ['link']" warning.
+        link: false,
+      }),
       Link.configure({
         openOnClick: false,
         autolink: true,

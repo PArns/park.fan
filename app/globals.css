@@ -752,46 +752,94 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
-  font-size: 0.85em;
+  margin-left: 0.4em;
+  font-size: 0.82em;
   font-weight: 400;
   vertical-align: baseline;
   user-select: none;
+  -webkit-user-select: none;
   pointer-events: none;
-  margin-left: 0.05em;
+  white-space: nowrap;
+  animation: refPreviewIn 180ms ease-out;
+}
+@keyframes refPreviewIn {
+  from { opacity: 0; transform: translateY(-1px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .tiptap-canvas .ref-preview-location {
-  color: var(--muted-foreground, hsl(0 0% 60%));
+  color: color-mix(in oklab, var(--foreground) 55%, transparent);
+  font-style: normal;
 }
 .tiptap-canvas .ref-preview-badge--loading,
 .tiptap-canvas .ref-preview-badge--failed {
-  color: var(--muted-foreground, hsl(0 0% 60%));
-  opacity: 0.7;
+  color: color-mix(in oklab, var(--foreground) 45%, transparent);
   font-style: italic;
+}
+.tiptap-canvas .ref-preview-spinner {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.4;
+  animation: refPreviewPulse 1s ease-in-out infinite;
+}
+@keyframes refPreviewPulse {
+  0%, 100% { opacity: 0.2; transform: scale(0.85); }
+  50%      { opacity: 0.7; transform: scale(1.05); }
 }
 .tiptap-canvas .ref-preview-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0 0.4em;
-  height: 1.4em;
+  gap: 0.18em;
+  padding: 0 0.55em;
+  height: 1.5em;
   border-radius: 9999px;
   font-size: 0.78em;
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1;
+  border: 1px solid transparent;
+  transition: filter 0.15s ease;
+}
+.tiptap-canvas .ref-preview-clock {
+  font-size: 0.95em;
+  line-height: 0;
 }
 .tiptap-canvas .ref-preview-pill--wait {
-  background: hsl(var(--primary) / 0.15);
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
   color: var(--primary);
+  border-color: color-mix(in oklab, var(--primary) 30%, transparent);
 }
 .tiptap-canvas .ref-preview-pill--crowd {
-  background: hsl(var(--primary) / 0.12);
+  background: color-mix(in oklab, var(--primary) 15%, transparent);
   color: var(--primary);
+  border-color: color-mix(in oklab, var(--primary) 25%, transparent);
   text-transform: capitalize;
 }
+.tiptap-canvas .ref-preview-pill--crowd-low,
+.tiptap-canvas .ref-preview-pill--crowd-very_low {
+  background: color-mix(in oklab, oklch(0.7 0.18 145) 18%, transparent);
+  color: oklch(0.78 0.18 145);
+  border-color: color-mix(in oklab, oklch(0.7 0.18 145) 35%, transparent);
+}
+.tiptap-canvas .ref-preview-pill--crowd-medium {
+  background: color-mix(in oklab, oklch(0.78 0.16 80) 18%, transparent);
+  color: oklch(0.82 0.16 80);
+  border-color: color-mix(in oklab, oklch(0.78 0.16 80) 35%, transparent);
+}
+.tiptap-canvas .ref-preview-pill--crowd-high,
+.tiptap-canvas .ref-preview-pill--crowd-very_high {
+  background: color-mix(in oklab, oklch(0.7 0.2 30) 18%, transparent);
+  color: oklch(0.78 0.2 30);
+  border-color: color-mix(in oklab, oklch(0.7 0.2 30) 35%, transparent);
+}
 .tiptap-canvas .ref-preview-pill--status {
-  background: hsl(0 70% 50% / 0.18);
-  color: hsl(0 70% 65%);
+  background: color-mix(in oklab, oklch(0.65 0.2 25) 18%, transparent);
+  color: oklch(0.78 0.2 25);
+  border-color: color-mix(in oklab, oklch(0.65 0.2 25) 35%, transparent);
   text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.7em;
 }
 
 /* ─── TipTap menus (tippy popovers) ───────────────────────────────────────── */

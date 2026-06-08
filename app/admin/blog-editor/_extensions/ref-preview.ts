@@ -124,27 +124,24 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   const entry = cache.get(span.refValue);
   if (!entry || entry.state === 'loading') {
     wrapper.classList.add('ref-preview-badge--loading');
-    wrapper.textContent = '…';
+    const dot = document.createElement('span');
+    dot.className = 'ref-preview-spinner';
+    wrapper.appendChild(dot);
     return wrapper;
   }
-  if (entry.state === 'failed') {
+  if (entry.state === 'failed' || !entry.data.found) {
     wrapper.classList.add('ref-preview-badge--failed');
     wrapper.textContent = '· not found';
     return wrapper;
   }
   const data = entry.data;
-  if (!data.found) {
-    wrapper.classList.add('ref-preview-badge--failed');
-    wrapper.textContent = '· not found';
-    return wrapper;
-  }
 
   const location = document.createElement('span');
   location.className = 'ref-preview-location';
   if (data.kind === 'park') {
-    location.textContent = ` (${data.city}, ${data.country})`;
+    location.textContent = `(${data.city}, ${data.country})`;
   } else {
-    location.textContent = ` (${data.parkName}, ${data.country})`;
+    location.textContent = `(${data.parkName}, ${data.country})`;
   }
   wrapper.appendChild(location);
 
@@ -158,11 +155,15 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   } else if (data.kind === 'ride' && typeof data.waitTime === 'number') {
     const badge = document.createElement('span');
     badge.className = 'ref-preview-pill ref-preview-pill--wait';
-    badge.textContent = `${data.waitTime} min`;
+    const clock = document.createElement('span');
+    clock.className = 'ref-preview-clock';
+    clock.textContent = '◷';
+    badge.appendChild(clock);
+    badge.appendChild(document.createTextNode(`${data.waitTime} min`));
     wrapper.appendChild(badge);
   } else if (data.kind === 'park' && data.crowdLevel) {
     const badge = document.createElement('span');
-    badge.className = 'ref-preview-pill ref-preview-pill--crowd';
+    badge.className = `ref-preview-pill ref-preview-pill--crowd ref-preview-pill--crowd-${data.crowdLevel.toLowerCase()}`;
     badge.textContent = data.crowdLevel.toLowerCase();
     wrapper.appendChild(badge);
   }
@@ -176,12 +177,16 @@ function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
     // ?bare suppresses the annotation; ?full means a block card is rendered
     // instead so the inline preview would be misleading.
     if (span.options.has('bare') || span.options.has('full')) continue;
+    // The key MUST encode the resolution state — otherwise PM reuses the
+    // loading-spinner DOM after the fetch resolves and the badge never
+    // updates to "(City, Country)".
+    const entry = cache.get(span.refValue);
+    const stateKey = entry ? entry.state : 'unset';
+    const optKey = [...span.options].sort().join(',');
     decorations.push(
       Decoration.widget(span.to, () => buildBadgeDOM(span), {
         side: 1,
-        // Stable key so PM reuses the DOM across keystrokes when nothing
-        // about the span actually changed.
-        key: `ref-preview:${span.from}:${span.refValue}:${[...span.options].join(',')}`,
+        key: `ref-preview:${span.refValue}:${optKey}:${stateKey}`,
       })
     );
   }
