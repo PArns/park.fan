@@ -1,4 +1,5 @@
 import type { BlogFrontmatter } from '@/lib/blog/types';
+import type { Locale } from '@/i18n/config';
 
 /** What the editor's form-state holds. All optional/strings so empty fields don't crash. */
 export interface EditorFrontmatter {
@@ -18,6 +19,16 @@ export interface EditorFrontmatter {
   seoDescription: string;
   seoKeywords: string[];
   translationKey: string;
+}
+
+/** Per-locale slice — each locale tab keeps its own frontmatter + body + slug. */
+export interface LocaleDraft {
+  fm: EditorFrontmatter;
+  body: string;
+  /** URL slug for this locale (may differ from source — slugify the localised title). */
+  slug: string;
+  /** True once the user edited the slug manually so we stop auto-deriving from the title. */
+  slugTouched: boolean;
 }
 
 /** Convert the form state into the final blog frontmatter shape we serialise to YAML. */
@@ -72,6 +83,10 @@ export function emptyFrontmatter(): EditorFrontmatter {
   };
 }
 
+export function emptyDraft(): LocaleDraft {
+  return { fm: emptyFrontmatter(), body: '', slug: '', slugTouched: false };
+}
+
 /** Slugify a title into a URL-safe post slug. */
 export function slugify(input: string): string {
   return input
@@ -87,4 +102,20 @@ export function slugify(input: string): string {
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '');
+}
+
+/** True when a locale's draft has enough content to be saved (and validated). */
+export function isDraftFilled(d: LocaleDraft): boolean {
+  return Boolean(d.fm.title.trim() && d.fm.excerpt.trim() && d.body.trim());
+}
+
+/**
+ * What the editor sends to /api/admin/blog-editor/save: one entry per locale
+ * the user filled in. The server validates + commits each as a separate file
+ * under content/blog/<locale>/<slug>.md inside ONE branch + ONE PR.
+ */
+export interface SavePayload {
+  baseSlug: string;
+  sourceLocale: Locale;
+  perLocale: Partial<Record<Locale, { slug: string; frontmatter: BlogFrontmatter; body: string }>>;
 }

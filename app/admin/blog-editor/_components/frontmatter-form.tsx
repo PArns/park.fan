@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
 import type { EditorFrontmatter } from '../_lib/types';
+import { DatePop } from './date-pop';
 
 interface FrontmatterFormProps {
   value: EditorFrontmatter;
@@ -13,17 +14,14 @@ interface FrontmatterFormProps {
   authors: AuthorOption[];
   categories: CategoryOption[];
   allTags: string[];
-  locales: readonly string[];
-  locale: string;
-  onLocaleChange: (l: string) => void;
   slug: string;
   onSlugChange: (s: string) => void;
 }
 
 /**
  * Notion-style page properties block. Big title + subtitle, then a compact grid
- * of pills/dropdowns for the rest. Looks like the post hero so authors get a
- * visual preview of how the metadata reads.
+ * of pills/dropdowns for the rest. The active locale is controlled outside this
+ * component (see LocaleTabs); only fields scoped to the active locale live here.
  */
 export function FrontmatterForm({
   value,
@@ -31,9 +29,6 @@ export function FrontmatterForm({
   authors,
   categories,
   allTags,
-  locales,
-  locale,
-  onLocaleChange,
   slug,
   onSlugChange,
 }: FrontmatterFormProps) {
@@ -44,7 +39,6 @@ export function FrontmatterForm({
   return (
     <div className="border-border/60 bg-card/40 mb-6 rounded-2xl border p-6 backdrop-blur-sm">
       <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
-        <LocalePill value={locale} options={locales} onChange={onLocaleChange} />
         <SlugChip value={slug} onChange={onSlugChange} />
       </div>
 
@@ -76,17 +70,12 @@ export function FrontmatterForm({
           value={value.category}
           onChange={(p) => set('category', p)}
         />
-        <DateField
-          label="Date"
-          value={value.date}
-          onChange={(d) => set('date', d)}
-          icon={CalendarDays}
-        />
-        <DateField
+        <DatePop label="Date" value={value.date} onChange={(d) => set('date', d)} />
+        <DatePop
           label="Updated"
           value={value.updatedAt}
           onChange={(d) => set('updatedAt', d)}
-          icon={CalendarDays}
+          allowClear
         />
         <ModePicker value={value.mode} onChange={(m) => set('mode', m)} />
         <FeaturedToggle value={value.featured} onChange={(b) => set('featured', b)} />
@@ -130,36 +119,6 @@ export function FrontmatterForm({
           />
         </div>
       </details>
-    </div>
-  );
-}
-
-function LocalePill({
-  value,
-  options,
-  onChange,
-}: {
-  value: string;
-  options: readonly string[];
-  onChange: (v: string) => void;
-}) {
-  return (
-    <div className="bg-muted/50 inline-flex overflow-hidden rounded-full p-0.5">
-      {options.map((l) => (
-        <button
-          key={l}
-          type="button"
-          onClick={() => onChange(l)}
-          className={cn(
-            'rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors',
-            value === l
-              ? 'bg-primary text-primary-foreground'
-              : 'text-muted-foreground hover:text-foreground'
-          )}
-        >
-          {l}
-        </button>
-      ))}
     </div>
   );
 }
@@ -257,37 +216,6 @@ function CategoryPicker({
   );
 }
 
-function DateField({
-  label,
-  value,
-  onChange,
-  icon: Icon,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  icon: typeof CalendarDays;
-}) {
-  return (
-    <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
-      <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
-        <Icon className="h-4 w-4" />
-      </div>
-      <div className="min-w-0 flex-1">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
-          {label}
-        </div>
-        <input
-          type="date"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="text-foreground w-full bg-transparent text-sm font-medium outline-none"
-        />
-      </div>
-    </label>
-  );
-}
-
 function ModePicker({
   value,
   onChange,
@@ -370,8 +298,13 @@ function TagChips({
   suggestions: string[];
 }) {
   const [draft, setDraft] = useState('');
+  const cleanedDraft = draft.trim().toLowerCase();
+  const matchesExisting =
+    cleanedDraft !== '' &&
+    suggestions.some((s) => s === cleanedDraft) === false &&
+    value.includes(cleanedDraft) === false;
   const available = suggestions.filter(
-    (s) => !value.includes(s) && (!draft || s.toLowerCase().includes(draft.toLowerCase()))
+    (s) => !value.includes(s) && (!cleanedDraft || s.toLowerCase().includes(cleanedDraft))
   );
   const add = (t: string) => {
     const cleaned = t.trim().toLowerCase();
@@ -383,8 +316,14 @@ function TagChips({
 
   return (
     <div>
-      <div className="text-muted-foreground mb-1.5 text-[10px] font-semibold uppercase tracking-wider">
-        Tags
+      <div className="mb-1.5 flex items-center justify-between">
+        <span className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          Tags
+        </span>
+        <span className="text-muted-foreground/70 text-[10px]">
+          Type to search · press <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Enter</kbd>{' '}
+          to add a new one
+        </span>
       </div>
       <div className="border-border/60 bg-background/60 flex flex-wrap items-center gap-1.5 rounded-xl border px-3 py-2">
         {value.map((t) => (
@@ -414,13 +353,22 @@ function TagChips({
               remove(value[value.length - 1]);
             }
           }}
-          placeholder={value.length ? '' : 'Type a tag, press Enter'}
+          placeholder={value.length ? '+ tag' : 'Type a tag, press Enter to add'}
           className="text-foreground min-w-[8rem] flex-1 bg-transparent text-sm outline-none"
         />
+        {matchesExisting && (
+          <button
+            type="button"
+            onClick={() => add(draft)}
+            className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold"
+          >
+            <Plus className="h-3 w-3" /> add &ldquo;{cleanedDraft}&rdquo;
+          </button>
+        )}
       </div>
-      {available.length > 0 && (draft || value.length === 0) && (
+      {available.length > 0 && (
         <div className="mt-1.5 flex flex-wrap gap-1">
-          {available.slice(0, 12).map((t) => (
+          {available.slice(0, 14).map((t) => (
             <button
               key={t}
               type="button"
