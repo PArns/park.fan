@@ -13,6 +13,7 @@ import { Markdown } from 'tiptap-markdown';
 import { SlashCommand } from '../_extensions/slash-command';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
+import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
 
 interface EditorCanvasProps {
@@ -31,23 +32,15 @@ interface EditorCanvasProps {
  */
 export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvasProps) {
   const [pickerMode, setPickerMode] = useState<PickerMode | null>(null);
+  const [imagePickerOpen, setImagePickerOpen] = useState(false);
   // Hold the editor in a ref too so the slash extension can fire actions
   // synchronously without sequencing through useState (which React 19 forbids
   // inside effects).
   const editorRef = useRef<Editor | null>(null);
 
-  const runEmbed = (kind: 'youtube' | 'instagram' | 'suno' | 'image') => {
+  const runUrlEmbed = (kind: 'youtube' | 'instagram' | 'suno') => {
     const editor = editorRef.current;
     if (!editor) return;
-    if (kind === 'image') {
-      const url = window.prompt('Image URL (e.g. /blog/images/cover.svg)');
-      if (!url) return;
-      const alt = window.prompt('Alt text (optional)') ?? '';
-      const caption = window.prompt('Caption (optional)') ?? '';
-      const altCombined = caption ? `${alt} | ${caption}` : alt;
-      editor.chain().focus().insertContent(`\n\n![${altCombined}](${url})\n\n`).run();
-      return;
-    }
     const url = window.prompt(`${kind[0].toUpperCase()}${kind.slice(1)} URL`);
     if (!url) return;
     editor.chain().focus().insertContent(`\n\n${url}\n\n`).run();
@@ -56,13 +49,10 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
   const emit = (action: string) => {
     if (action === 'park' || action === 'ride' || action === 'spotlight') {
       setPickerMode(action);
-    } else if (
-      action === 'image' ||
-      action === 'youtube' ||
-      action === 'instagram' ||
-      action === 'suno'
-    ) {
-      runEmbed(action);
+    } else if (action === 'image') {
+      setImagePickerOpen(true);
+    } else if (action === 'youtube' || action === 'instagram' || action === 'suno') {
+      runUrlEmbed(action);
     }
   };
 
@@ -74,6 +64,12 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         openOnClick: false,
         autolink: true,
         protocols: ['ref', 'park', 'attraction', 'http', 'https', 'mailto'],
+        // TipTap v3 has a stricter default URL validator that rejects our
+        // `ref:/parks/<…>` form (and any plain absolute path). Whitelist the
+        // protocols we serialise into markdown so setLink({href}) actually
+        // sticks. Inline scheme defangs `javascript:` and `data:` URIs.
+        isAllowedUri: (url) =>
+          /^(ref:|park:|attraction:|https?:\/\/|mailto:|\/)/.test(url),
         HTMLAttributes: { rel: 'noopener' },
       }),
       Image,
@@ -113,6 +109,20 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         class:
           'tiptap-canvas prose prose-invert max-w-none min-h-[60vh] outline-none focus:outline-none',
       },
+      // Ref / park / attraction links are authoring markers, never real URLs —
+      // we must not let the browser try to navigate to `ref:phantasialand?bare`
+      // when the author clicks them (which surfaces as an "undefined" page).
+      handleClickOn(_view, _pos, _node, _nodePos, event) {
+        const target = event.target as HTMLElement | null;
+        const anchor = target?.closest('a');
+        if (!anchor) return false;
+        const href = anchor.getAttribute('href') ?? '';
+        if (/^(ref:|park:|attraction:)/.test(href)) {
+          event.preventDefault();
+          return true;
+        }
+        return false;
+      },
     },
     onUpdate: ({ editor: e }) => {
       const md = (e.storage as unknown as { markdown: { getMarkdown: () => string } })
@@ -145,18 +155,19 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
     // inserted markdown doesn't end up `[Phantasialand ](ref:…)`.
     const label = r.label.trim();
     if (pickerMode === 'spotlight') {
+      // Block card always uses ?full — that's what triggers the spotlight render.
       const md = `\n\n[${label}](ref:${r.refKey}?full)\n\n`;
       editor.chain().focus().insertContent(md).run();
     } else {
-      // Inline reference link with bare option so the live annotation doesn't
-      // leak into mid-sentence prose. Authors can tweak to ?info later.
+      // Inline reference link — the variant (info/bare/long) was picked in the
+      // dialog footer. We append the option flag so the renderer picks it up.
       editor
         .chain()
         .focus()
         .insertContent({
           type: 'text',
           text: label,
-          marks: [{ type: 'link', attrs: { href: `ref:${r.refKey}?bare` } }],
+          marks: [{ type: 'link', attrs: { href: `ref:${r.refKey}?${r.option}` } }],
         })
         // Drop the link mark right after the inserted text so the next character
         // the author types isn't sucked into the link.
@@ -180,6 +191,15 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
           mode={pickerMode}
           onPick={handlePick}
           onClose={() => setPickerMode(null)}
+        />
+        <ImagePicker
+          open={imagePickerOpen}
+          onClose={() => setImagePickerOpen(false)}
+          withCaption
+          onPick={(r: ImagePickResult) => {
+            const altCombined = r.caption ? `${r.alt} | ${r.caption}` : r.alt;
+            editor?.chain().focus().insertContent(`\n\n![${altCombined}](${r.src})\n\n`).run();
+          }}
         />
       </div>
     </div>

@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
 import type { EditorFrontmatter } from '../_lib/types';
 import { DatePop } from './date-pop';
+import { ImagePicker } from './image-picker';
 
 interface FrontmatterFormProps {
   value: EditorFrontmatter;
@@ -95,12 +96,9 @@ export function FrontmatterForm({
           Cover image & SEO
         </summary>
         <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <Field
-            label="Cover src"
-            value={value.coverSrc}
+          <CoverPicker
+            src={value.coverSrc}
             onChange={(v) => set('coverSrc', v)}
-            placeholder="/blog/images/cover.svg"
-            icon={ImageIcon}
           />
           <Field
             label="Cover alt"
@@ -381,6 +379,58 @@ function TagChips({
         </div>
       )}
     </div>
+  );
+}
+
+function CoverPicker({
+  src,
+  onChange,
+}: {
+  src: string;
+  onChange: (s: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        className="border-border/60 hover:border-border bg-background/60 group flex items-center gap-3 rounded-xl border px-3 py-2 text-left transition-colors"
+      >
+        <div className="bg-primary/15 text-primary relative h-12 w-12 shrink-0 overflow-hidden rounded-lg">
+          {src ? (
+            <Image
+              src={src}
+              alt="Cover"
+              fill
+              sizes="48px"
+              className="object-cover"
+              unoptimized={src.endsWith('.svg') || src.startsWith('http')}
+            />
+          ) : (
+            <ImageIcon className="absolute inset-0 m-auto h-4 w-4" />
+          )}
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+            Cover image
+          </div>
+          <div
+            className={cn(
+              'truncate text-sm',
+              src ? 'text-foreground font-medium' : 'text-muted-foreground/60'
+            )}
+          >
+            {src || 'Pick an image…'}
+          </div>
+        </div>
+      </button>
+      <ImagePicker
+        open={open}
+        onClose={() => setOpen(false)}
+        onPick={(r) => onChange(r.src)}
+      />
+    </>
   );
 }
 

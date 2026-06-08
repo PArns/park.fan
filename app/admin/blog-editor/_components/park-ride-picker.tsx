@@ -1,10 +1,13 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { MapPin, TrainFront, X } from 'lucide-react';
+import { MapPin, Sparkles, TrainFront, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export type PickerMode = 'park' | 'ride' | 'spotlight';
+
+/** Inline-link options the blog renderer understands for `ref:` links. */
+export type RefOption = 'info' | 'bare' | 'long';
 
 export interface PickerResult {
   /**
@@ -15,6 +18,8 @@ export interface PickerResult {
   refKey: string;
   label: string;
   kind: 'park' | 'ride';
+  /** Inline only — spotlight always uses `?full`. */
+  option: RefOption;
 }
 
 interface ParkRidePickerProps {
@@ -54,6 +59,7 @@ function pathFromHit(hit: SearchHit): string | null {
  */
 export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   const [q, setQ] = useState('');
+  const [option, setOption] = useState<RefOption>('info');
   const [hits, setHits] = useState<{ parks: SearchHit[]; rides: SearchHit[] }>({
     parks: [],
     rides: [],
@@ -106,7 +112,7 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   const choose = (hit: SearchHit, kind: 'park' | 'ride') => {
     const ref = pathFromHit(hit);
     if (!ref) return;
-    onPick({ refKey: ref, label: hit.name, kind });
+    onPick({ refKey: ref, label: hit.name, kind, option });
   };
 
   return (
@@ -146,6 +152,42 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
             <X className="h-4 w-4" />
           </button>
         </div>
+        {mode !== 'spotlight' && (
+          <div className="border-border/60 flex items-center gap-2 border-b px-3 py-2 text-xs">
+            <span className="text-muted-foreground inline-flex items-center gap-1">
+              <Sparkles className="h-3 w-3" /> Variant
+            </span>
+            <div className="bg-muted/40 inline-flex overflow-hidden rounded-full p-0.5">
+              {(
+                [
+                  { k: 'info', label: 'Info', hint: 'live wait-time badge' },
+                  { k: 'bare', label: 'Bare', hint: 'plain link, no badge' },
+                  ...(mode === 'park'
+                    ? [{ k: 'long', label: 'Long', hint: 'city, country' }]
+                    : []),
+                ] as Array<{ k: RefOption; label: string; hint: string }>
+              ).map((o) => (
+                <button
+                  key={o.k}
+                  type="button"
+                  onClick={() => setOption(o.k)}
+                  title={o.hint}
+                  className={cn(
+                    'rounded-full px-2.5 py-0.5 font-semibold transition-colors',
+                    option === o.k
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  )}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+            <span className="text-muted-foreground/70 ml-auto font-mono text-[10px]">
+              ?{option}
+            </span>
+          </div>
+        )}
         <div className="max-h-[60vh] overflow-y-auto p-1">
           {visibleParks.length === 0 && visibleRides.length === 0 && (
             <div className="text-muted-foreground p-6 text-center text-sm">
