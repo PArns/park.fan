@@ -2,6 +2,15 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey, TextSelection } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
+import type { Root } from 'react-dom/client';
+import { mountInlineBadge } from './inline-badge';
+
+/**
+ * Tracks the React roots we mount inside widget DOM, keyed by the container
+ * span so we can unmount them when the decoration is destroyed and avoid
+ * leaking roots across edits.
+ */
+const badgeRoots = new WeakMap<HTMLElement, Root>();
 
 /**
  * Live WYSIWYG preview for `[label](ref:…)` links — adds the same inline
@@ -155,27 +164,19 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   wrapper.appendChild(location);
 
   // Live badge — wait time for rides, crowd level for parks, status when shut.
-  const statusText = statusBadgeText(data.status);
-  if (statusText) {
-    const badge = document.createElement('span');
-    badge.className = 'ref-preview-pill ref-preview-pill--status';
-    badge.textContent = statusText;
-    wrapper.appendChild(badge);
-  } else if (data.kind === 'ride' && typeof data.waitTime === 'number') {
-    const badge = document.createElement('span');
-    badge.className = 'ref-preview-pill ref-preview-pill--wait';
-    const clock = document.createElement('span');
-    clock.className = 'ref-preview-clock';
-    clock.textContent = '◷';
-    badge.appendChild(clock);
-    badge.appendChild(document.createTextNode(`${data.waitTime} min`));
-    wrapper.appendChild(badge);
-  } else if (data.kind === 'park' && data.crowdLevel) {
-    const badge = document.createElement('span');
-    badge.className = `ref-preview-pill ref-preview-pill--crowd ref-preview-pill--crowd-${data.crowdLevel.toLowerCase()}`;
-    badge.textContent = data.crowdLevel.toLowerCase();
-    wrapper.appendChild(badge);
-  }
+  // Mount the real ParkStatusBadge / CrowdLevelBadge / wait-time Badge React
+  // components so the inline pill is pixel-identical to what the published
+  // post renders, instead of a hand-rolled visual lookalike.
+  const badgeHost = document.createElement('span');
+  badgeHost.className = 'ref-preview-pill-host';
+  wrapper.appendChild(badgeHost);
+  const root = mountInlineBadge(badgeHost, {
+    kind: data.kind,
+    status: data.status ?? null,
+    crowdLevel: data.crowdLevel ?? null,
+    waitTime: data.waitTime ?? null,
+  });
+  badgeRoots.set(wrapper, root);
 
   return wrapper;
 }
@@ -346,6 +347,16 @@ function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
         {
           side: 1,
           key: `ref-preview:${full ? 'spot' : 'inline'}:${span.refValue}:${optKey}:${stateKey}`,
+          // Unmount the React root that mountInlineBadge() created so we don't
+          // leak it across decoration rebuilds. `queueMicrotask` defers the
+          // unmount past the current render commit (otherwise React warns).
+          destroy(node) {
+            const el = node as HTMLElement;
+            const root = badgeRoots.get(el);
+            if (!root) return;
+            badgeRoots.delete(el);
+            queueMicrotask(() => root.unmount());
+          },
         }
       )
     );

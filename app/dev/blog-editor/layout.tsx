@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
+import { NextIntlClientProvider } from 'next-intl';
+import enMessages from '@/messages/en.json';
 import '../../globals.css';
 
 const geistSans = Geist({
@@ -7,6 +9,16 @@ const geistSans = Geist({
   subsets: ['latin'],
   display: 'swap',
 });
+
+const adminMessages = {
+  parks: {
+    status: enMessages.parks?.status ?? {},
+    crowdLevels: enMessages.parks?.crowdLevels ?? {},
+  },
+  common: {
+    min: enMessages.common?.min ?? 'min',
+  },
+};
 
 export const metadata: Metadata = {
   title: 'Dev — Blog editor isolated test',
@@ -24,7 +36,9 @@ export default function DevLayout({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
       >
-        {children}
+        <NextIntlClientProvider locale="en" messages={adminMessages} timeZone="UTC">
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
