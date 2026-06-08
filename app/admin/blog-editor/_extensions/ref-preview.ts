@@ -421,9 +421,15 @@ export const RefPreview = Extension.create({
             return refPreviewKey.getState(state)?.decorations;
           },
           handleClick(view, clickPos, event) {
-            const target = event.target as HTMLElement | null;
+            const raw = event.target as Node | null;
+            // Click target may be a text node — walk up to the closest Element
+            // so `closest()` works against our chip selectors.
+            const target =
+              raw instanceof Element
+                ? raw
+                : (raw?.parentElement as Element | null);
             const chip = target?.closest(
-              '.ref-preview-badge, .ref-preview-spotlight, .tiptap-canvas a[href]'
+              '.ref-preview-badge, .ref-preview-spotlight, a[href]'
             ) as HTMLElement | null;
             if (!chip) return false;
             // CRITICAL: never trust the stashed data-from/data-to on the

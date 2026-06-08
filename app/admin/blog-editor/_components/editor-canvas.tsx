@@ -137,8 +137,9 @@ export function EditorCanvas({
           'tiptap-canvas prose prose-invert max-w-none min-h-[60vh] outline-none focus:outline-none',
       },
       // Ref / park / attraction links are authoring markers, never real URLs —
-      // we must not let the browser try to navigate to `ref:phantasialand?bare`
-      // when the author clicks them (which surfaces as an "undefined" page).
+      // call preventDefault so the browser doesn't navigate to `ref:phantasialand?bare`,
+      // but return `false` so the click STILL reaches ref-preview's handleClick
+      // (which fires the selection event that drives the PropertiesPanel).
       handleClickOn(_view, _pos, _node, _nodePos, event) {
         const target = event.target as HTMLElement | null;
         const anchor = target?.closest('a');
@@ -146,7 +147,6 @@ export function EditorCanvas({
         const href = anchor.getAttribute('href') ?? '';
         if (/^(ref:|park:|attraction:)/.test(href)) {
           event.preventDefault();
-          return true;
         }
         return false;
       },
