@@ -44,6 +44,10 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
   const [alt, setAlt] = useState('');
   const [caption, setCaption] = useState('');
   const [stagedSrc, setStagedSrc] = useState<string | null>(null);
+  // Render in chunks so the modal stays cheap even with thousands of images.
+  // Search bypasses this — typed queries already filter the list down hard.
+  const STEP = 60;
+  const [displayLimit, setDisplayLimit] = useState(STEP);
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -56,9 +60,13 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
   }, []);
 
   const ql = q.trim().toLowerCase();
-  const filtered = ql ? images.filter((i) => i.src.toLowerCase().includes(ql)) : images;
+  const allFiltered = ql ? images.filter((i) => i.src.toLowerCase().includes(ql)) : images;
+  // No cap while searching — matches are usually a handful and the user is hunting.
+  const visible = ql ? allFiltered : allFiltered.slice(0, displayLimit);
+  const hiddenCount = allFiltered.length - visible.length;
+
   const groups = new Map<string, BlogImage[]>();
-  for (const i of filtered) {
+  for (const i of visible) {
     const k = i.folder || '(root)';
     if (!groups.has(k)) groups.set(k, []);
     groups.get(k)!.push(i);
@@ -136,7 +144,7 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
         </div>
 
         <div className="flex-1 overflow-y-auto p-3">
-          {!loading && filtered.length === 0 && (
+          {!loading && allFiltered.length === 0 && (
             <div className="text-muted-foreground p-8 text-center text-sm">
               <ImageIcon className="mx-auto mb-2 h-6 w-6 opacity-40" />
               {images.length === 0
@@ -172,6 +180,7 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
                         fill
                         sizes="200px"
                         className="object-cover"
+                        loading="lazy"
                         unoptimized={img.src.endsWith('.svg')}
                       />
                       <div className="absolute inset-x-0 bottom-0 truncate bg-gradient-to-t from-black/80 to-transparent px-2 py-1 text-left text-[10px] text-white">
@@ -183,6 +192,20 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
               </div>
             </div>
           ))}
+          {hiddenCount > 0 && (
+            <div className="mt-2 flex flex-col items-center gap-1 py-2">
+              <button
+                type="button"
+                onClick={() => setDisplayLimit((d) => d + STEP)}
+                className="border-border/60 hover:border-primary/60 hover:text-primary text-foreground/80 rounded-full border px-4 py-1.5 text-xs font-semibold transition-colors"
+              >
+                Load {Math.min(hiddenCount, STEP)} more
+              </button>
+              <span className="text-muted-foreground text-[10px]">
+                {visible.length} of {allFiltered.length} shown
+              </span>
+            </div>
+          )}
         </div>
 
         {withCaption && stagedSrc && (
