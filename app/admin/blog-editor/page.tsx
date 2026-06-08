@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import enMessages from '@/messages/en.json';
 import { getInitialEditorData } from './_lib/initial-data';
@@ -27,8 +28,10 @@ const adminMessages = {
 export default function BlogEditorPage() {
   const data = getInitialEditorData();
   return (
-    <NextIntlClientProvider locale="en" messages={adminMessages} timeZone="UTC">
-      <BlogEditorClient initialData={data} />
-    </NextIntlClientProvider>
+    <Suspense fallback={null}>
+      <NextIntlClientProvider locale="en" messages={adminMessages} timeZone="UTC">
+        <BlogEditorClient initialData={data} />
+      </NextIntlClientProvider>
+    </Suspense>
   );
 }
