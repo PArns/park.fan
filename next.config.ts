@@ -6,10 +6,12 @@ const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
-  // Cache Components (Next 16, successor to experimental.ppr): static, edge-cacheable
-  // shells + streamed dynamic holes. Data caching is via `'use cache'` + `cacheLife`
-  // (see lib/api/*), dynamic work sits behind <Suspense>.
-  cacheComponents: true,
+  // Cache Components (PPR) is intentionally OFF. The high-traffic detail pages (park, attraction,
+  // home) are `export const dynamic = 'force-dynamic'` — rendered per request so there is NO per-URL
+  // ISR shell write (the catalog × 6-locale write explosion that PPR caused). Content is server-
+  // rendered (content-first, no skeleton); live data is client-loaded (React Query → CDN-cached /api
+  // routes). Server data fetches are cached in the Vercel Data Cache via `fetch` `next:{revalidate}`
+  // (see lib/api/*). Content pages (glossary, legal, hubs) stay static via generateStaticParams.
   staticPageGenerationTimeout: 180,
   compiler: {
     // Remove React properties that are not needed in production

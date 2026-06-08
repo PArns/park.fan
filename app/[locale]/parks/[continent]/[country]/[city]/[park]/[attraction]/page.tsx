@@ -136,26 +136,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
   };
 }
 
-// On-demand ISR for the whole catalog — we deliberately DON'T prebuild the popular parks' headliner
-// attractions × 6 locales here. That was the single biggest build-time cost (hundreds of prerenders
-// + build-time API load) and is redundant: every attraction renders on first request (dynamicParams
-// defaults to true), and the prewarm cron warms popular pages post-deploy. Cache Components still
-// requires ≥1 entry (an empty array throws EmptyGenerateStaticParamsError, and a param-less route
-// makes `await params` dynamic outside <Suspense> — both fail the build), so we return a single
-// stable seed and generate everything else lazily. A wrong seed slug would only waste this one
-// prerender.
-export function generateStaticParams() {
-  return [
-    {
-      locale: 'en',
-      continent: 'europe',
-      country: 'germany',
-      city: 'rust',
-      park: 'europa-park',
-      attraction: 'blue-fire-megacoaster',
-    },
-  ];
-}
+// FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write (the dominant
+// write-units source pre-#118 was prerendering every attraction × 6 locales). Cache Components is
+// off; this page reads the data-cached park snapshot (getParkByGeoPath, `fetch` next:revalidate,
+// shared per park) and renders the full content (h1, JSON-LD, FAQ) server-side into the first HTML
+// — content-first, no skeleton. Live status/wait times + the heavy history time-series are
+// client-loaded (React Query). No generateStaticParams needed.
+export const dynamic = 'force-dynamic';
 
 export default async function AttractionPage({ params }: AttractionPageProps) {
   const {

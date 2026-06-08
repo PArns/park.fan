@@ -62,10 +62,7 @@ function buildPatternFragment(pattern: string): string {
   return `\\b${escaped}${trailingBoundary}`;
 }
 
-export function parseGlossarySegments(
-  text: string,
-  terms: GlossaryMatchTerm[]
-): GlossarySegment[] {
+export function parseGlossarySegments(text: string, terms: GlossaryMatchTerm[]): GlossarySegment[] {
   const entries = buildMatchEntries(terms);
   if (entries.length === 0) return [{ type: 'text', content: text }];
 

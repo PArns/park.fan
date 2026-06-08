@@ -9,27 +9,17 @@
  */
 
 import { cache } from 'react';
-import { cacheLife } from 'next/cache';
 import { getGeoStructure } from '@/lib/api/discovery';
 
 /**
- * O(1) park-slug → geo-path index for redirect lookups, cached via Cache Components.
- * Returns a plain Record (serializable across the cache boundary). Refreshes daily.
- *
- * This index is read in the PARK page's static shell (findParkPageRedirect), so its cacheLife is
- * part of the MIN that pins the park route's revalidate. The data is week-stable (geo paths / park
- * slugs change very rarely), so 'weeks' lets the park shell reach its intended 7-day TTL instead of
- * being capped at 1 day.
+ * O(1) park-slug → geo-path index for redirect lookups. Memoized per request via React `cache()`;
+ * the underlying `getGeoStructure(604800)` is itself cached cross-request in the Vercel Data Cache
+ * (`fetch` `next: { revalidate }`), so rebuilding this small index per request is cheap and never
+ * hits the backend. Used only for malformed-URL redirect detection, never to serve a valid park.
  */
-async function getParkSlugIndex(): Promise<Record<string, ParkLookupResult>> {
-  'use cache';
-  cacheLife('weeks');
-
+const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult>> => {
   const index: Record<string, ParkLookupResult> = {};
   try {
-    // 7-day cache: this nested 'use cache' read is part of the park route's MIN revalidate, so a
-    // shorter geo TTL here would cap the 7-day park shell (geo paths are week-stable; only used for
-    // malformed-URL redirect detection, never to serve a valid park).
     const data = await getGeoStructure(604800);
     for (const continent of data.continents) {
       for (const country of continent.countries) {
@@ -49,7 +39,7 @@ async function getParkSlugIndex(): Promise<Record<string, ParkLookupResult>> {
     console.error('[RedirectUtils] Failed to fetch geo structure:', error);
   }
   return index;
-}
+});
 
 export interface ParkLookupResult {
   continent: string;

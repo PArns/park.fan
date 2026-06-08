@@ -1,30 +1,16 @@
-import { cacheLife } from 'next/cache';
 import { api, ApiError } from './client';
 import type { ParkWithAttractions, AttractionResponse, PopularPark } from './types';
 
-// Shell-level TTL for the park/attraction static prerender. Deliberately DECOUPLED from the
-// API's 5-min live cadence: the wait times + open/closed status baked into the shell are only an
-// SSR seed that LiveParkData / LiveAttractionData replace client-side (React Query, no-store, 5-min
-// poll + refetch on mount/focus — see use-live-park-data.ts). So for any visitor with JS the shell
-// TTL is invisible; it only governs the first-paint seed, no-JS visitors and crawlers. Under Cache
-// Components the effective revalidate of a route shell is the MIN cacheLife of the 'use cache' reads
-// in its static portion, so these values are the floor that drives the dominant per-park /
-// per-attraction × per-locale ISR-write volume.
-//
-// Context: park/attraction pages were dynamic (no ISR writes) until they were switched to static
-// ISR with revalidate:300 — which is what turned ISR writes on across the whole catalog × 6 locales.
-//
-// Both shells revalidate every 7 DAYS. The shell carries only day-stable, SEO-relevant structure
-// (name, attraction list + links, FAQ, JSON-LD, summary stats); every "today/now" value and all
-// live data (status, wait times, weather, history, forecast) is CLIENT-derived (useBrowserNow /
-// React Query no-store polls via getParkByGeoPathFresh), so a 7-day-old shell never shows stale
-// live data to a JS visitor — it only seeds first paint, no-JS visitors and crawlers, which change
-// at most when a ride is added/removed. 7 days cuts the time-based per-park/per-attraction ×
-// per-locale ISR-write FREQUENCY ~7× vs 1 day; on-demand revalidation (a backend webhook →
-// revalidateTag) can later push it toward ∞. Cold renders are avoided by prebuilding all parks
-// (generateStaticParams) + the prewarm cron, so the long TTL has no first-paint downside.
-const PARK_MAX_AGE = 604800; // 7d park shell TTL — live data is client-side
-const ATTRACTION_MAX_AGE = 604800; // 7d attraction shell TTL — live data is client-side
+// Data-cache (`fetch` `next: { revalidate }`) windows for the park/attraction structure fetch.
+// The park & attraction PAGES are `force-dynamic` (rendered per request → no per-URL ISR shell
+// writes — see their page.tsx). These cached fetches only shield the backend: the structure
+// (name, attraction list, FAQ, summary stats) is shared across all 6 locales of a park and revalidated
+// once per window via stale-while-revalidate. Every live value (status, wait times, weather, history,
+// forecast) is CLIENT-derived (React Query no-store polls via getParkByGeoPathFresh), so a day-old
+// structure snapshot never shows stale live data to a JS visitor. 1 day keeps new rides appearing in
+// the SSR/SEO HTML within ~24h while keeping data-cache writes negligible (shared per park).
+const PARK_REVALIDATE = 86400; // 1d — structure snapshot; live data is client-side
+const ATTRACTION_REVALIDATE = 86400; // 1d
 
 /**
  * Trim for the LIVE (no-store) client poll: drop only attraction-detail-only fields the park/
@@ -71,24 +57,21 @@ function leanParkForShell(park: ParkWithAttractions): ParkWithAttractions {
 }
 
 /**
- * Get parks by geographic path. Cached via Cache Components (`'use cache'`):
- * the static shell of the park page captures this snapshot; live wait times are
- * refreshed client-side by LiveParkData.
+ * Get parks by geographic path. Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`
+ * (stale-while-revalidate, 1-day window): the per-request `force-dynamic` park/attraction render
+ * reads this shared snapshot (keyed by the backend URL — NOT the locale, so all 6 locales of a park
+ * share one entry) so the backend isn't hit on every render; live wait times are refreshed
+ * client-side by LiveParkData.
  *
- * Returns `null` for a non-existent park (API 404). The 404 MUST be caught inside this
- * `'use cache'` boundary: an error thrown across a `'use cache'` boundary bypasses the caller's
- * `try`/`catch` (and `catchNonFatal`) and surfaces as a 500 instead of letting the caller render
- * `notFound()` — so a missing park would 500 rather than 404. Other errors (maintenance/network)
- * still propagate.
+ * Returns `null` for a non-existent park (API 404). The 404 is caught inside `fetchParkByGeoPath`
+ * (returns `null`) so the caller can render `notFound()`; other errors (maintenance/network) propagate.
  */
-export async function getParkByGeoPath(
+export function getParkByGeoPath(
   continent: string,
   country: string,
   city: string,
   parkSlug: string
 ): Promise<ParkWithAttractions | null> {
-  'use cache';
-  cacheLife({ stale: PARK_MAX_AGE, revalidate: PARK_MAX_AGE, expire: PARK_MAX_AGE * 4 });
   return fetchParkByGeoPath(continent, country, city, parkSlug, false);
 }
 
@@ -120,7 +103,7 @@ async function fetchParkByGeoPath(
   try {
     const park = await api.get<ParkWithAttractions>(
       `/v1/parks/${continent}/${country}/${city}/${parkSlug}`,
-      fresh ? { cache: 'no-store' } : undefined
+      fresh ? { cache: 'no-store' } : { next: { revalidate: PARK_REVALIDATE, tags: ['parks'] } }
     );
     // The ISR shell gets the aggressive trim (drops statistics.history — the biggest size-weighted
     // ISR-write chunk); the live no-store poll keeps the full per-attraction data for the cards.
@@ -133,10 +116,10 @@ async function fetchParkByGeoPath(
 
 /**
  * Get a specific attraction by geographic path with full data including history.
- * Cached via Cache Components; live wait times are refreshed client-side.
+ * Cached in the Vercel Data Cache via `fetch` `next: { revalidate }`; live wait times are refreshed
+ * client-side.
  *
- * Returns `null` on a 404 for the same reason as {@link getParkByGeoPath} (a throw across the
- * `'use cache'` boundary would 500 instead of letting the caller render `notFound()`).
+ * Returns `null` on a 404 so the caller can render `notFound()`.
  */
 export async function getAttractionByGeoPath(
   continent: string,
@@ -145,15 +128,10 @@ export async function getAttractionByGeoPath(
   parkSlug: string,
   attractionSlug: string
 ): Promise<AttractionResponse | null> {
-  'use cache';
-  cacheLife({
-    stale: ATTRACTION_MAX_AGE,
-    revalidate: ATTRACTION_MAX_AGE,
-    expire: ATTRACTION_MAX_AGE * 4,
-  });
   try {
     return await api.get<AttractionResponse>(
-      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`
+      `/v1/parks/${continent}/${country}/${city}/${parkSlug}/attractions/${attractionSlug}`,
+      { next: { revalidate: ATTRACTION_REVALIDATE, tags: ['attractions'] } }
     );
   } catch (err) {
     if (err instanceof ApiError && err.status === 404) return null;
@@ -197,8 +175,9 @@ export async function getAttractionByGeoPathFresh(
  * generateStaticParams + the homepage/featured seed, so a tighter window was pure write churn.
  * @param limit clamped to 1–100 by the API (default 20)
  */
-export async function getPopularParks(limit = 20): Promise<PopularPark[]> {
-  'use cache';
-  cacheLife({ stale: 1800, revalidate: 1800, expire: 7200 });
-  return api.get<PopularPark[]>('/v1/parks/popular', { params: { limit } });
+export function getPopularParks(limit = 20): Promise<PopularPark[]> {
+  return api.get<PopularPark[]>('/v1/parks/popular', {
+    params: { limit },
+    next: { revalidate: 1800, tags: ['popular-parks'] },
+  });
 }

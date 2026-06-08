@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, locales } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
-import { getParkByGeoPath, getPopularParks } from '@/lib/api/parks';
-import { getGeoStructure } from '@/lib/api/discovery';
+import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
 import type { Locale } from '@/i18n/config';
@@ -49,53 +48,12 @@ interface ParkPageProps {
   }>;
 }
 
-const PREBUILD_PARK_LIMIT = 20;
-
-type ParkRouteParams = { continent: string; country: string; city: string; park: string };
-
-// Prebuild the most popular parks (× all locales) so the highest-traffic parks are warm with full
-// SEO HTML on preview + prod from the first request. BOUNDED on purpose: prerendering EVERY park
-// (~156) issued too many cold park-detail fetches on a fresh Vercel build and failed it (a single
-// fetch error inside the `'use cache'` boundary fails the whole build); ~20 stays within the proven
-// envelope. The prewarm cron (vercel.json) warms the long-tail in prod after deploy; everything else
-// is on-demand ISR (dynamicParams). NOTE: generateStaticParams reads do NOT pin the route's
-// revalidate (only render-path reads do), so getPopularParks' short cacheLife is fine here. Cache
-// Components requires ≥1 entry — the geo fallback + a stable seed guarantee that.
-export async function generateStaticParams() {
-  const popular = await getPopularParks(PREBUILD_PARK_LIMIT).catch(() => []);
-
-  const parks: ParkRouteParams[] = popular
-    .map((p) => p.url?.replace(/^\/v1\/parks\//, '').split('/'))
-    .filter((seg): seg is [string, string, string, string] => !!seg && seg.length === 4)
-    .map(([continent, country, city, park]) => ({ continent, country, city, park }));
-
-  // Fallback if the popular-parks endpoint is briefly unavailable at build: enumerate the geo
-  // structure, bounded to the same limit.
-  if (parks.length === 0) {
-    const geo = await getGeoStructure(604800).catch(() => null);
-    outer: for (const continent of geo?.continents ?? []) {
-      for (const country of continent.countries) {
-        for (const city of country.cities) {
-          for (const park of city.parks) {
-            parks.push({
-              continent: continent.slug,
-              country: country.slug,
-              city: city.slug,
-              park: park.slug,
-            });
-            if (parks.length >= PREBUILD_PARK_LIMIT) break outer;
-          }
-        }
-      }
-    }
-  }
-
-  if (parks.length === 0) {
-    parks.push({ continent: 'europe', country: 'germany', city: 'rust', park: 'europa-park' });
-  }
-
-  return locales.flatMap((locale) => parks.map((p) => ({ locale, ...p })));
-}
+// FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write across the
+// catalog × 6 locales. Cache Components is off; the structure (header, attractions, FAQ, JSON-LD)
+// AND the best-days section render server-side into the first HTML (content-first, no skeleton) from
+// the data-cached snapshots (getParkByGeoPath / getBestDaysCalendar). Live status/wait times,
+// weather nowcast and historical stats are client-loaded (React Query) and stream in afterwards.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
   const { continent, country, city, park: parkSlug, locale } = await params;
@@ -181,14 +139,11 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-// Cache Components: the entire shell (header, attractions, weather, FAQ, structured data) is
-// statically prerendered + edge-cached (served `s-maxage`, like the attraction page). The slow
-// below-the-fold sections — best-days, historical stats, the crowd-derived FAQ entry — are loaded
-// CLIENT-side (React Query → the `/api/parks/.../calendar` + `/stats` CDN-cached routes), each
-// showing a skeleton until its data lands. This deliberately avoids forcing dynamic rendering:
-// a single dynamic-IO opt-in (the old per-section approach) would tip the WHOLE route into
-// dynamic (`no-store`) rendering, which is what previously defeated edge caching and drove ISR
-// write churn.
+// force-dynamic (see the `export const dynamic` above): the structure (header, attractions, FAQ,
+// JSON-LD) renders server-side into the first HTML — content-first — from the data-cached park
+// snapshot (getParkByGeoPath). The slow/live sections — best-days calendar, historical stats,
+// weather nowcast, live wait times — stay CLIENT-loaded (React Query → CDN-cached /api routes) and
+// trickle in behind their own skeletons, so their cold/slow fetches never block this page's TTFB.
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
@@ -213,10 +168,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // The calendar window (current month + next 2) that feeds the below-the-fold best-days + FAQ
-  // sections is now derived CLIENT-side (useCalendarWindow) inside those client components, so the
-  // static shell reads no clock at all — keeping it time-independent for the 1-day TTL. The bulky
-  // calendar fetch itself was already client-side (useParkBestDaysCalendar → the CDN-cached route).
+  // Best-days + historical stats are loaded CLIENT-side (React Query → the CDN-cached
+  // `/api/parks/.../calendar` + `/stats` routes), each showing a skeleton until its data lands.
+  // They are deliberately NOT fetched here: the calendar is a large, lazily-computed backend
+  // response (cold compute can take 10–20s) and would block this dynamic page's TTFB — keeping it
+  // client-side lets the structure render content-first and these sections trickle in.
 
   // Glossary terms for the (client) FAQ section. This is a small static-content lookup (no fetch,
   // no clock) so it's safe to load in the static shell; the client FAQ tree highlights terms from
@@ -385,6 +341,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             attractionsByLand={attractionsByLand}
             bestDaysSlot={
               <ParkBestDaysSection
+                key="best-days"
                 continent={continent}
                 country={country}
                 city={city}

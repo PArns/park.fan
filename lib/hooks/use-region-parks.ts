@@ -1,5 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import type { DiscoveryCityResponse, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
+import type {
+  DiscoveryCityResponse,
+  ParkStatus,
+  CrowdLevel,
+  ScheduleSummary,
+} from '@/lib/api/types';
 
 /** Live, per-park fields the hub ParkCards overlay client-side (everything that can change during the day). */
 export interface LiveParkFields {

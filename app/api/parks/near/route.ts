@@ -20,7 +20,10 @@ export async function GET(request: NextRequest) {
 
   try {
     const parks = await getParksNearLocationFresh(lat, lng, exclude, limit, maxDistanceM);
-    return NextResponse.json({ parks }, { headers: { 'Cache-Control': 'no-store, must-revalidate' } });
+    return NextResponse.json(
+      { parks },
+      { headers: { 'Cache-Control': 'no-store, must-revalidate' } }
+    );
   } catch (error) {
     console.error('[Park neighbors proxy] Error:', error);
     return NextResponse.json({ error: 'Failed to fetch nearby parks' }, { status: 502 });

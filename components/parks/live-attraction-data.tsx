@@ -19,6 +19,7 @@ import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { cn } from '@/lib/utils';
 import type {
   ParkWithAttractions,
@@ -94,6 +95,9 @@ export function LiveAttractionData({
 }: LiveAttractionDataProps) {
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
+  // Gate the live-refetch indicator on mount so SSR and first client render agree (the page is
+  // force-dynamic; the refetch-on-mount flips `isFetching` true and would otherwise mismatch).
+  const mounted = useMounted();
 
   const { park, attraction, isFetching, isError, error } = useLiveAttractionData({
     continent,
@@ -170,7 +174,7 @@ export function LiveAttractionData({
         </Card>
       )}
 
-      {isFetching && !isError && (
+      {mounted && isFetching && !isError && (
         <div className="text-muted-foreground mb-4 flex items-center gap-2 text-xs">
           <Loader2 className="h-3 w-3 animate-spin" />
           <span>{tCommon('updating')}</span>
