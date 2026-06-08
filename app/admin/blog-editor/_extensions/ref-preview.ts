@@ -412,16 +412,60 @@ export const RefPreview = Extension.create({
           handleClick(view, _pos, event) {
             const target = event.target as HTMLElement | null;
             const chip = target?.closest(
-              '.ref-preview-badge, .ref-preview-spotlight'
+              '.ref-preview-badge, .ref-preview-spotlight, .tiptap-canvas a[href^="ref:"]'
             ) as HTMLElement | null;
             if (!chip) return false;
-            const from = Number.parseInt(chip.getAttribute('data-from') ?? '', 10);
-            const to = Number.parseInt(chip.getAttribute('data-to') ?? '', 10);
-            if (Number.isNaN(from) || Number.isNaN(to)) return false;
+            // For decoration chips we stashed the link range on the DOM; for
+            // a click on the actual <a> we infer it from the link mark at the
+            // click position.
+            let from = Number.parseInt(chip.getAttribute('data-from') ?? '', 10);
+            let to = Number.parseInt(chip.getAttribute('data-to') ?? '', 10);
+            let href = chip.getAttribute('data-ref')
+              ? `ref:${chip.getAttribute('data-ref')}`
+              : '';
+            if (Number.isNaN(from) || Number.isNaN(to)) {
+              const $pos = view.state.doc.resolve(_pos);
+              const linkMark = $pos.marks().find((m) => m.type.name === 'link');
+              if (!linkMark) return false;
+              href = String(linkMark.attrs.href ?? '');
+              if (!href.startsWith('ref:')) return false;
+              // Walk the textblock to find the contiguous link range.
+              const parent = $pos.parent;
+              let start = $pos.start();
+              let end = $pos.start();
+              parent.content.forEach((node, offset) => {
+                const nodeFrom = $pos.start() + offset;
+                const nodeTo = nodeFrom + node.nodeSize;
+                if (nodeTo <= _pos) return;
+                if (
+                  node.marks.find(
+                    (m) => m.type.name === 'link' && m.attrs.href === href
+                  )
+                ) {
+                  if (start === end) start = nodeFrom;
+                  end = nodeTo;
+                }
+              });
+              from = start;
+              to = end;
+            }
             event.preventDefault();
             const sel = TextSelection.create(view.state.doc, from, to);
             view.dispatch(view.state.tr.setSelection(sel).scrollIntoView());
             view.focus();
+            // Fire a window event the canvas listens for, with the chip rect
+            // so the popover can position itself near what was clicked.
+            const rect = chip.getBoundingClientRect();
+            window.dispatchEvent(
+              new CustomEvent('parkfan-ref-edit', {
+                detail: {
+                  from,
+                  to,
+                  href,
+                  rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
+                },
+              })
+            );
             return true;
           },
         },

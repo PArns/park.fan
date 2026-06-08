@@ -758,7 +758,8 @@ html[data-temp-unit='F'] .u-imperial {
   vertical-align: baseline;
   user-select: none;
   -webkit-user-select: none;
-  pointer-events: none;
+  /* Pointer-events stays on so the badge is clickable — the ref-preview plugin
+     catches the click and jumps the caret into the underlying link mark. */
   white-space: nowrap;
   animation: refPreviewIn 180ms ease-out;
 }

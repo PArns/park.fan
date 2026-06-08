@@ -25,6 +25,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [translatingTarget, setTranslatingTarget] = useState<Locale | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [loadingPost, setLoadingPost] = useState(false);
+  const [view, setView] = useState<'editor' | 'source'>('editor');
   /**
    * When non-null the editor is editing an existing post — saves go to the
    * same per-locale paths instead of creating fresh files. Holds the original
@@ -290,9 +291,29 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         onSlugChange={onSlugChange}
       />
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_minmax(360px,42%)]">
-        <EditorCanvas initialMarkdown={active.body} onMarkdownChange={onBodyChange} />
-        <MarkdownPreview value={active.body} />
+      <div>
+        <div className="border-border/60 -mb-px inline-flex items-center gap-0.5 rounded-t-lg border border-b-0 bg-background/60 p-0.5 backdrop-blur">
+          {(['editor', 'source'] as const).map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => setView(t)}
+              className={[
+                'rounded-md px-3 py-1 text-xs font-semibold transition-colors',
+                view === t
+                  ? 'bg-primary/15 text-primary'
+                  : 'hover:bg-accent/40 text-foreground/70',
+              ].join(' ')}
+            >
+              {t === 'editor' ? 'Editor' : '.md source'}
+            </button>
+          ))}
+        </div>
+        {view === 'editor' ? (
+          <EditorCanvas initialMarkdown={active.body} onMarkdownChange={onBodyChange} />
+        ) : (
+          <MarkdownPreview value={active.body} />
+        )}
       </div>
 
       <SaveBar onSave={onSave} disabled={!!disabledReason} disabledReason={disabledReason} />
