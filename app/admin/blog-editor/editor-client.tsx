@@ -312,7 +312,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         {view === 'editor' ? (
           <EditorCanvas initialMarkdown={active.body} onMarkdownChange={onBodyChange} />
         ) : (
-          <MarkdownPreview value={active.body} />
+          <MarkdownPreview value={active.body} onChange={onBodyChange} />
         )}
       </div>
 

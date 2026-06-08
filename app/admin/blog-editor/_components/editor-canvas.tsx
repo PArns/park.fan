@@ -195,12 +195,16 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         .unsetMark('link')
         .run();
       replaceRangeRef.current = null;
-    } else if (pickerMode === 'spotlight') {
-      // Block card always uses ?full — that's what triggers the spotlight render.
+    } else if (pickerMode === 'spotlight' || r.option === 'full') {
+      // Block card always uses ?full — that's what triggers the spotlight
+      // render. Comes in here from the standalone Spotlight insert OR when
+      // the author picks the Full variant in a Park/Ride dialog. Wrapping
+      // with `\n\n` lifts the link into its own paragraph so the renderer
+      // hoists it into the block card on publish.
       const md = `\n\n[${label}](ref:${r.refKey}?full)\n\n`;
       editor.chain().focus().insertContent(md).run();
     } else {
-      // Inline reference link — the variant (info/bare/long) was picked in the
+      // Inline reference link — the variant (info/bare) was picked in the
       // dialog footer. We append the option flag so the renderer picks it up.
       editor
         .chain()

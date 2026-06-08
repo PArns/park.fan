@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import { Replace, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-export type RefVariant = 'info' | 'bare' | 'long' | 'full';
+export type RefVariant = 'info' | 'bare' | 'full';
 
 export interface RefEditTarget {
   from: number;
@@ -30,9 +30,13 @@ function parseRef(href: string): { value: string; opt: RefVariant | null } | nul
   return {
     value: rest.slice(0, q),
     opt:
-      flag === 'info' || flag === 'bare' || flag === 'long' || flag === 'full'
+      flag === 'info' || flag === 'bare' || flag === 'full'
         ? (flag as RefVariant)
-        : null,
+        : // ?long is a legacy no-op in the renderer — surface it as Info so
+          // the popover stays in sync with reality.
+          flag === 'long'
+          ? 'info'
+          : null,
   };
 }
 
@@ -71,12 +75,6 @@ export function RefEditPopover({
 
   if (!target) return null;
   const parsed = parseRef(target.href);
-  // Park vs ride matters for which variants we offer (?long is parks only).
-  // `/parks/<continent>/<country>/<city>/<park>` = 4 parts after stripping
-  // the /parks/ prefix; a ride adds a 5th segment.
-  const isRide = parsed?.value.startsWith('/parks/')
-    ? parsed.value.slice('/parks/'.length).split('/').filter(Boolean).length >= 5
-    : (parsed?.value.includes('/') ?? false);
   const current = parsed?.opt ?? 'info';
 
   // Position just above the chip; if it'd run off the top, drop below it.
@@ -100,9 +98,7 @@ export function RefEditPopover({
       <span className="text-muted-foreground px-1.5 text-[10px] font-semibold uppercase tracking-wider">
         Variant
       </span>
-      {(['info', 'bare', 'long', 'full'] as const)
-        .filter((v) => v !== 'long' || !isRide)
-        .map((v) => (
+      {(['info', 'bare', 'full'] as const).map((v) => (
           <button
             key={v}
             type="button"

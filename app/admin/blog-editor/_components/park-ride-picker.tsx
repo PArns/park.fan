@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 export type PickerMode = 'park' | 'ride' | 'spotlight';
 
 /** Inline-link options the blog renderer understands for `ref:` links. */
-export type RefOption = 'info' | 'bare' | 'long';
+export type RefOption = 'info' | 'bare' | 'full';
 
 export interface PickerResult {
   /**
@@ -160,11 +160,9 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
             <div className="bg-muted/40 inline-flex overflow-hidden rounded-full p-0.5">
               {(
                 [
-                  { k: 'info', label: 'Info', hint: 'live wait-time badge' },
-                  { k: 'bare', label: 'Bare', hint: 'plain link, no badge' },
-                  ...(mode === 'park'
-                    ? [{ k: 'long', label: 'Long', hint: 'city, country' }]
-                    : []),
+                  { k: 'info', label: 'Info', hint: 'inline link · city/park + live badge' },
+                  { k: 'bare', label: 'Bare', hint: 'inline link · no annotation' },
+                  { k: 'full', label: 'Full', hint: 'block spotlight card (renders as its own paragraph)' },
                 ] as Array<{ k: RefOption; label: string; hint: string }>
               ).map((o) => (
                 <button
