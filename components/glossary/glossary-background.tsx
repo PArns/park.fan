@@ -1,4 +1,3 @@
-import { cacheLife } from 'next/cache';
 import { RandomHeroImage } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
 
@@ -9,16 +8,11 @@ import { HERO_IMAGES } from '@/lib/hero-images';
  * pick (no `imageSrc`) only chose the image in a post-hydration effect with no priority — the cause
  * of the multi-second glossary LCP.
  *
- * The pick is DETERMINISTIC per UTC day (not random): every glossary page in a day resolves to the
- * same image, so navigating between terms no longer swaps the hero. It also no longer re-randomises
- * every 5 min — the old 5-min `'use cache'` pinned each glossary route to a 5-min ISR revalidate
- * (pure write churn across all terms × locales). `'days'` rotates it once per day with ~288× fewer
- * glossary writes.
+ * The pick is DETERMINISTIC (not random): on the statically-prerendered glossary pages the
+ * build-time day index is baked in, so every glossary page in a deploy resolves to the same image
+ * (navigating between terms no longer swaps the hero) and there is zero per-request/ISR write churn.
  */
-async function pickGlossaryHero(): Promise<string> {
-  'use cache';
-  cacheLife('days');
-  // Date.now() is captured at cache-fill time (allowed inside a 'use cache' boundary).
+function pickGlossaryHero(): string {
   const dayIndex = Math.floor(Date.now() / 86_400_000);
   return HERO_IMAGES[dayIndex % HERO_IMAGES.length];
 }
@@ -28,7 +22,7 @@ async function pickGlossaryHero(): Promise<string> {
  * No Ken Burns animation. Fades to the page background colour over the lower third.
  */
 export async function GlossaryBackground() {
-  const imageSrc = await pickGlossaryHero();
+  const imageSrc = pickGlossaryHero();
 
   return (
     <div className="pointer-events-none absolute top-0 right-0 left-0 -z-10 h-[calc(90vh+4rem)] max-h-[1100px] overflow-hidden select-none">

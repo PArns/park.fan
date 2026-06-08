@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator';
 import { AlertCircle, Loader2 } from 'lucide-react';
 import { useMemo } from 'react';
 import { useTranslations } from 'next-intl';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import type {
   ParkWithAttractions,
@@ -48,6 +49,10 @@ export function LiveParkData({
   bestDaysSlot,
 }: LiveParkDataProps) {
   const t = useTranslations('common');
+  // Gate the live-refetch indicator on mount: the server render (and first client render) must agree
+  // (both render the empty fixed-height slot), or the refetch-on-mount flipping `isFetching` true
+  // would cause a hydration mismatch on this force-dynamic page.
+  const mounted = useMounted();
 
   const {
     data: park,
@@ -124,7 +129,7 @@ export function LiveParkData({
           always present, so the indicator appearing/disappearing on every 5-min poll (and on the
           immediate refetch-on-mount) no longer shifts the status + tabs below it (CLS). */}
       <div className="mb-4 h-4">
-        {isFetching && !isError && (
+        {mounted && isFetching && !isError && (
           <div className="text-muted-foreground flex items-center gap-2 text-xs">
             <Loader2 className="h-3 w-3 animate-spin" />
             <span>{t('updating')}</span>

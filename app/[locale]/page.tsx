@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, locales } from '@/i18n/config';
+import { generateAlternateLanguages } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HERO_IMAGES } from '@/lib/hero-images';
-import { cacheLife } from 'next/cache';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -57,13 +56,10 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
-// ~5 min ISR window for the static shell. Each data section sets its own
-// revalidate on its fetch (analytics/geo: 300s, ML: 1800s) and streams in via
-// its own Suspense boundary, so a slow/stale endpoint never blocks first paint.
-
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+// FULLY DYNAMIC (force-dynamic) — rendered per request, no ISR shell write. The above-the-fold
+// shell renders server-side (content-first); each data section fetches its own data and streams in
+// via its own Suspense boundary, so a slow/stale endpoint never blocks first paint.
+export const dynamic = 'force-dynamic';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -96,15 +92,14 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
-// Hero image rotates per cache window instead of per request: under Cache Components
-// the static shell can't read Math.random() directly, and a cached pick keeps the
-// hero server-rendered for LCP.
-async function pickHeroImage(): Promise<string> {
-  'use cache';
-  // Hourly rotation is plenty for a decorative hero. A 5-min window made this the MIN cacheLife in
-  // the homepage shell, pinning the (6-locale) homepage to a 5-min ISR-write cadence for nothing.
-  cacheLife('hours');
-  return HERO_IMAGES[Math.floor(Math.random() * HERO_IMAGES.length)];
+// Hero image with an effective 5-minute TTL: a deterministic pick keyed to the current 5-min window
+// — stable within the window (identical for all concurrent requests, no per-request reshuffle) and
+// rotating every 5 minutes. Deterministic so it needs no cache machinery on this force-dynamic page,
+// and it stays server-rendered for LCP (passed to <HeroBackground> with priority).
+const HERO_TTL_MS = 5 * 60_000;
+function pickHeroImage(): string {
+  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
+  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
 }
 
 export default async function HomePage({ params }: HomePageProps) {
@@ -117,7 +112,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
 
-  const randomHeroImage = await pickHeroImage();
+  const randomHeroImage = pickHeroImage();
 
   return (
     <div className="flex flex-col">
