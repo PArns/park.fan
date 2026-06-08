@@ -20,26 +20,23 @@ interface ParkRidePickerProps {
 }
 
 interface SearchHit {
-  type: 'park' | 'attraction';
+  type: string;
   name: string;
-  /** /parks/... frontend URL — we read the last 2-4 segments back into a ref key. */
-  url: string;
-  parkName?: string;
+  slug: string;
+  url?: string;
+  parentPark?: { name: string; slug: string };
 }
 
 interface SearchResponse {
-  parks?: SearchHit[];
-  attractions?: SearchHit[];
+  results?: SearchHit[];
 }
 
-/** Pull the ref key out of /parks/<continent>/<country>/<city>/<park>[/<ride>]. */
-function refFromUrl(url: string, kind: 'park' | 'ride'): string | null {
-  const parts = url.split('/').filter(Boolean);
-  const idx = parts.indexOf('parks');
-  if (idx === -1) return null;
-  const tail = parts.slice(idx + 1);
-  if (kind === 'park') return tail[3] ?? null;
-  return tail[3] && tail[4] ? `${tail[3]}/${tail[4]}` : null;
+/** Turn a hit into the ref: key the editor inserts. */
+function refFromHit(hit: SearchHit, kind: 'park' | 'ride'): string | null {
+  if (kind === 'park') return hit.slug || null;
+  // Attractions are addressed by parkSlug/attractionSlug — we need the parent.
+  if (!hit.parentPark?.slug || !hit.slug) return null;
+  return `${hit.parentPark.slug}/${hit.slug}`;
 }
 
 /**
@@ -62,20 +59,21 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   }, [mode]);
 
   useEffect(() => {
-    if (!mode || !q.trim()) return;
+    // The search backend requires at least 3 chars (see /api/search/route.ts).
+    if (!mode || q.trim().length < 3) return;
     const ctrl = new AbortController();
     const t = setTimeout(async () => {
       setLoading(true);
       try {
         const url = new URL('/api/search', window.location.origin);
         url.searchParams.set('q', q.trim());
-        url.searchParams.set('limit', '12');
         const r = await fetch(url, { signal: ctrl.signal });
         if (!r.ok) return;
         const data = (await r.json()) as SearchResponse;
+        const all = data.results ?? [];
         setHits({
-          parks: (data.parks ?? []).slice(0, 8),
-          rides: (data.attractions ?? []).slice(0, 8),
+          parks: all.filter((h) => h.type === 'park').slice(0, 8),
+          rides: all.filter((h) => h.type === 'attraction').slice(0, 8),
         });
       } catch {
         /* aborted */
@@ -99,7 +97,7 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   const visibleRides = wantRides && q.trim() ? hits.rides : [];
 
   const choose = (hit: SearchHit, kind: 'park' | 'ride') => {
-    const ref = refFromUrl(hit.url, kind);
+    const ref = refFromHit(hit, kind);
     if (!ref) return;
     onPick({ refKey: ref, label: hit.name, kind });
   };
@@ -144,7 +142,13 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
         <div className="max-h-[60vh] overflow-y-auto p-1">
           {visibleParks.length === 0 && visibleRides.length === 0 && (
             <div className="text-muted-foreground p-6 text-center text-sm">
-              {q.trim() ? 'No matches.' : 'Start typing to search.'}
+              {q.trim().length === 0
+                ? 'Start typing to search.'
+                : q.trim().length < 3
+                  ? 'Keep typing — at least 3 characters.'
+                  : loading
+                    ? 'Searching…'
+                    : 'No matches.'}
             </div>
           )}
           {visibleParks.length > 0 && (
@@ -188,6 +192,10 @@ function Group({
 }
 
 function Row({ hit, onClick }: { hit: SearchHit; onClick: () => void }) {
+  const refKey =
+    hit.type === 'attraction' && hit.parentPark
+      ? `${hit.parentPark.slug}/${hit.slug}`
+      : hit.slug;
   return (
     <button
       type="button"
@@ -198,12 +206,12 @@ function Row({ hit, onClick }: { hit: SearchHit; onClick: () => void }) {
     >
       <div className="min-w-0">
         <div className="text-foreground text-sm font-medium leading-tight">{hit.name}</div>
-        {hit.parkName && (
-          <div className="text-muted-foreground text-xs leading-snug">at {hit.parkName}</div>
+        {hit.parentPark?.name && (
+          <div className="text-muted-foreground text-xs leading-snug">at {hit.parentPark.name}</div>
         )}
       </div>
       <code className="text-muted-foreground/70 group-hover:text-muted-foreground font-mono text-[10px]">
-        {hit.url.split('/').slice(-2).join('/')}
+        ref:{refKey}
       </code>
     </button>
   );
