@@ -183,6 +183,26 @@ function prettifyName(slug: string): string {
  * The link slug part stops at `?` so authors can pass options. Used at
  * render time so we can resolve them on the server in one batch.
  */
+/**
+ * Normalise a `ref:` token value into `{ kind, key }`. Accepts both the legacy
+ * short form (just the slug, or `parkSlug/rideSlug` for a ride) AND the new
+ * full-path form the editor produces — `/parks/<continent>/<country>/<city>/
+ * <parkSlug>[/<rideSlug>]`. The renderer + resolver only ever sees the bare
+ * slug pair after this normaliser runs, so existing posts keep working.
+ */
+export function parseRefKey(value: string): { kind: 'park' | 'ride'; key: string } {
+  if (value.startsWith('/parks/')) {
+    const parts = value
+      .slice('/parks/'.length)
+      .split('/')
+      .filter(Boolean);
+    // [continent, country, city, parkSlug, rideSlug?]
+    if (parts.length === 4) return { kind: 'park', key: parts[3] };
+    if (parts.length >= 5) return { kind: 'ride', key: `${parts[3]}/${parts[4]}` };
+  }
+  return { kind: value.includes('/') ? 'ride' : 'park', key: value };
+}
+
 export function extractInlineRefs(markdown: string): {
   parkSlugs: Set<string>;
   attractions: Set<string>;
@@ -201,13 +221,12 @@ export function extractInlineRefs(markdown: string): {
     else if (value.startsWith('attraction:')) {
       attractions.add(value.slice('attraction:'.length));
     } else if (value.startsWith('ref:')) {
-      // park vs ride is decided by the presence of a slash in the key
-      const refKey = value.slice('ref:'.length);
-      if (refKey.includes('/')) {
-        attractions.add(refKey);
-        parks.add(refKey.split('/')[0]);
+      const { kind, key } = parseRefKey(value.slice('ref:'.length));
+      if (kind === 'ride') {
+        attractions.add(key);
+        parks.add(key.split('/')[0]);
       } else {
-        parks.add(refKey);
+        parks.add(key);
       }
     }
   }

@@ -12,6 +12,7 @@ import rehypeSlug from 'rehype-slug';
 import type { Locale } from '@/i18n/config';
 import {
   extractInlineRefs,
+  parseRefKey,
   parseRefOptions,
   resolveAttraction,
   resolvePark,
@@ -95,7 +96,10 @@ function parseEntityRef(href: string | undefined): EntityRef | null {
   if (!href) return null;
   if (href.startsWith('ref:')) {
     const { slug, options } = parseRefOptions(href.slice('ref:'.length));
-    return { kind: slug.includes('/') ? 'ride' : 'park', key: slug, options };
+    // Accept both the legacy short form (`slug` or `parkSlug/rideSlug`) and the
+    // full geo-path form the editor writes — `/parks/<continent>/<…>`.
+    const { kind, key } = parseRefKey(slug);
+    return { kind, key, options };
   }
   if (href.startsWith('attraction:')) {
     const { slug, options } = parseRefOptions(href.slice('attraction:'.length));

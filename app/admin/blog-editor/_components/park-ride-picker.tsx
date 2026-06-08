@@ -7,7 +7,11 @@ import { cn } from '@/lib/utils';
 export type PickerMode = 'park' | 'ride' | 'spotlight';
 
 export interface PickerResult {
-  /** The full ref:key — either `park-slug` or `park-slug/ride-slug`. */
+  /**
+   * The full geo path used inside the ref: token — e.g.
+   * `/parks/europe/germany/bruehl/phantasialand` or `…/phantasialand/black-mamba`.
+   * The renderer normalises this back to a bare slug at resolve time.
+   */
   refKey: string;
   label: string;
   kind: 'park' | 'ride';
@@ -31,12 +35,15 @@ interface SearchResponse {
   results?: SearchHit[];
 }
 
-/** Turn a hit into the ref: key the editor inserts. */
-function refFromHit(hit: SearchHit, kind: 'park' | 'ride'): string | null {
-  if (kind === 'park') return hit.slug || null;
-  // Attractions are addressed by parkSlug/attractionSlug — we need the parent.
-  if (!hit.parentPark?.slug || !hit.slug) return null;
-  return `${hit.parentPark.slug}/${hit.slug}`;
+/**
+ * Turn a hit into the path used inside the ref: token. The search API returns
+ * `/v1/parks/<continent>/<country>/<city>/<parkSlug>[/<rideSlug>]`; we strip
+ * the version prefix so the path matches the actual frontend URL and authors
+ * see something they recognise in the markdown source.
+ */
+function pathFromHit(hit: SearchHit): string | null {
+  if (!hit.url) return null;
+  return hit.url.replace(/^\/v\d+/, '');
 }
 
 /**
@@ -97,7 +104,7 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   const visibleRides = wantRides && q.trim() ? hits.rides : [];
 
   const choose = (hit: SearchHit, kind: 'park' | 'ride') => {
-    const ref = refFromHit(hit, kind);
+    const ref = pathFromHit(hit);
     if (!ref) return;
     onPick({ refKey: ref, label: hit.name, kind });
   };
@@ -192,10 +199,7 @@ function Group({
 }
 
 function Row({ hit, onClick }: { hit: SearchHit; onClick: () => void }) {
-  const refKey =
-    hit.type === 'attraction' && hit.parentPark
-      ? `${hit.parentPark.slug}/${hit.slug}`
-      : hit.slug;
+  const refKey = hit.url ? hit.url.replace(/^\/v\d+/, '') : hit.slug;
   return (
     <button
       type="button"
