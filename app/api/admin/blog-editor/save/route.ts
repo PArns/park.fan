@@ -7,6 +7,12 @@ interface SavePayload {
   baseSlug: string;
   sourceLocale: string;
   perLocale: Record<string, { slug: string; frontmatter: BlogFrontmatter; body: string }>;
+  /** When present we're updating an existing post — flip PR title to "Update"
+   *  and delete any stale per-locale files left behind by a slug rename. */
+  editing?: {
+    key: string;
+    originalSlugs: Record<string, string>;
+  };
 }
 
 const REQUIRED_TOKEN_HINT =
@@ -90,7 +96,9 @@ export async function POST(req: Request) {
   }
 
   const stamp = new Date().toISOString().slice(0, 10);
-  const branch = `blog/${baseSlug}-${stamp}`;
+  const branch = payload.editing
+    ? `blog/edit-${baseSlug}-${stamp}`
+    : `blog/${baseSlug}-${stamp}`;
   try {
     await octokit.git.createRef({
       owner,
@@ -147,9 +155,44 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3. Open the PR. Source-locale title is the PR title; the body lists the
+  // 3. Sweep up any stale per-locale files left behind by a slug rename. We
+  //    delete the original-slug file on the new branch only if the per-locale
+  //    draft committed at a different path; otherwise the upsert already
+  //    overwrote the same file in-place.
+  const removed: string[] = [];
+  if (payload.editing) {
+    for (const [locale, originalSlug] of Object.entries(payload.editing.originalSlugs)) {
+      const draft = perLocale[locale];
+      if (!draft || !LOCALE_RE.test(locale) || !SLUG_RE.test(originalSlug)) continue;
+      if (draft.slug === originalSlug) continue;
+      const stalePath = `content/blog/${locale}/${originalSlug}.md`;
+      try {
+        const existing = await octokit.repos.getContent({
+          owner,
+          repo,
+          path: stalePath,
+          ref: branch,
+        });
+        if (Array.isArray(existing.data) || existing.data.type !== 'file') continue;
+        await octokit.repos.deleteFile({
+          owner,
+          repo,
+          path: stalePath,
+          branch,
+          message: `chore(blog/${locale}): drop renamed slug ${originalSlug}`,
+          sha: existing.data.sha,
+        });
+        removed.push(`${locale}:${originalSlug}`);
+      } catch {
+        /* nothing to delete */
+      }
+    }
+  }
+
+  // 4. Open the PR. Source-locale title is the PR title; the body lists the
   //    locales we wrote so reviewers see at a glance what's included.
   const sourceFm = perLocale[sourceLocale]!.frontmatter;
+  const action = payload.editing ? 'Update' : 'Blog';
   const bodyLines = [
     `Drafted from the **/admin/blog-editor**.`,
     '',
@@ -159,6 +202,9 @@ export async function POST(req: Request) {
     ...committed.map(
       (l) => `- \`${l}\` — \`content/blog/${l}/${perLocale[l]!.slug}.md\``
     ),
+    ...(removed.length
+      ? ['', '**Renamed (old files removed):**', ...removed.map((r) => `- \`${r}.md\``)]
+      : []),
     '',
     '_Review the rendered post, tweak as needed, then mark ready for review._',
   ];
@@ -169,7 +215,7 @@ export async function POST(req: Request) {
       repo,
       head: branch,
       base: baseBranch,
-      title: `Blog: ${sourceFm.title}`,
+      title: `${action}: ${sourceFm.title}`,
       draft: true,
       body: bodyLines.join('\n'),
     });

@@ -1,22 +1,17 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { PenLine } from 'lucide-react';
+import { FolderOpen, PenLine, Plus } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
 import { EditorCanvas } from './_components/editor-canvas';
 import { MarkdownPreview } from './_components/markdown-preview';
 import { SaveBar } from './_components/save-bar';
 import { LocaleTabs } from './_components/locale-tabs';
+import { PostPicker } from './_components/post-picker';
 import type { EditorInitialData } from './_lib/initial-data';
-import {
-  emptyDraft,
-  isDraftFilled,
-  slugify,
-  toFrontmatter,
-  type EditorFrontmatter,
-  type LocaleDraft,
-} from './_lib/types';
+import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
+import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
@@ -28,6 +23,17 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     [DEFAULT_SOURCE]: emptyDraft(),
   });
   const [translatingTarget, setTranslatingTarget] = useState<Locale | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [loadingPost, setLoadingPost] = useState(false);
+  /**
+   * When non-null the editor is editing an existing post — saves go to the
+   * same per-locale paths instead of creating fresh files. Holds the original
+   * slug for every locale so a rename can delete the stale file on save.
+   */
+  const [editing, setEditing] = useState<{
+    key: string;
+    originalSlugs: Partial<Record<Locale, string>>;
+  } | null>(null);
 
   const ensure = (locale: Locale): LocaleDraft => drafts[locale] ?? emptyDraft();
   const active = ensure(activeLocale);
@@ -90,7 +96,16 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     const res = await fetch('/api/admin/blog-editor/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ baseSlug, sourceLocale, perLocale }),
+      body: JSON.stringify({
+        baseSlug,
+        sourceLocale,
+        perLocale,
+        ...(editing
+          ? {
+              editing: { key: editing.key, originalSlugs: editing.originalSlugs },
+            }
+          : {}),
+      }),
     });
     if (!res.ok) {
       const text = await res.text();
@@ -102,6 +117,49 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       url: data.url,
       message: `${data.committed.length} locale(s) → ${data.branch}`,
     };
+  };
+
+  const onLoadPost = async (key: string) => {
+    setLoadingPost(true);
+    try {
+      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`);
+      if (!res.ok) {
+        alert(`Could not load post: ${res.status}`);
+        return;
+      }
+      const data = (await res.json()) as {
+        key: string;
+        sourceLocale: Locale;
+        baseSlug: string;
+        perLocale: Partial<
+          Record<Locale, { slug: string; fm: EditorFrontmatter; body: string }>
+        >;
+      };
+      const nextDrafts: Partial<Record<Locale, LocaleDraft>> = {};
+      const originalSlugs: Partial<Record<Locale, string>> = {};
+      for (const [loc, entry] of Object.entries(data.perLocale)) {
+        if (!entry) continue;
+        nextDrafts[loc as Locale] = {
+          fm: entry.fm,
+          body: entry.body,
+          slug: entry.slug,
+          // Mark as touched so the auto-derive on title edits doesn't clobber
+          // the original slug — authors that want to rename can edit the slug
+          // field explicitly.
+          slugTouched: true,
+        };
+        originalSlugs[loc as Locale] = entry.slug;
+      }
+      setDrafts(nextDrafts);
+      setSourceLocale(data.sourceLocale);
+      setActiveLocale(data.sourceLocale);
+      setEditing({ key: data.key, originalSlugs });
+      setPickerOpen(false);
+    } catch (err) {
+      alert(`Load failed: ${(err as Error).message}`);
+    } finally {
+      setLoadingPost(false);
+    }
   };
 
   const onTranslate = async (target: Locale) => {
@@ -162,6 +220,11 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         <div className="min-w-0 flex-1">
           <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-xl font-semibold tracking-tight text-transparent">
             Blog editor
+            {editing && (
+              <span className="text-muted-foreground ml-2 text-xs font-normal">
+                · editing <code className="bg-muted/60 rounded px-1 font-mono">{editing.key}</code>
+              </span>
+            )}
           </h1>
           <p className="text-muted-foreground text-xs">
             Write once → translate → open one PR against{' '}
@@ -170,7 +233,39 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             </code>
           </p>
         </div>
+        <div className="inline-flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setPickerOpen(true)}
+            disabled={loadingPost}
+            className="border-border/60 hover:border-primary/60 hover:bg-accent/40 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors disabled:opacity-60"
+          >
+            <FolderOpen className="h-3.5 w-3.5" />
+            {loadingPost ? 'Loading…' : 'Open existing'}
+          </button>
+          {editing && (
+            <button
+              type="button"
+              onClick={() => {
+                if (!confirm('Discard current draft and start a new post?')) return;
+                setDrafts({ [sourceLocale]: emptyDraft() });
+                setEditing(null);
+                setActiveLocale(sourceLocale);
+              }}
+              className="border-border/60 hover:border-primary/60 hover:bg-accent/40 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              New
+            </button>
+          )}
+        </div>
       </header>
+
+      <PostPicker
+        open={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        onPick={onLoadPost}
+      />
 
       <LocaleTabs
         locales={initialData.locales}

@@ -177,83 +177,125 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
 }
 
 function buildSpotlightDOM(span: RefSpan): HTMLElement {
-  const wrapper = document.createElement('div');
-  wrapper.className = 'ref-preview-spotlight';
-  wrapper.contentEditable = 'false';
-  wrapper.setAttribute('data-ref', span.refValue);
-  wrapper.setAttribute('data-kind', '');
+  // Outer container holds the "ATTRAKTION IM FOKUS" label + the card itself,
+  // matching the BlogParkWidget / BlogAttractionWidget shape on the published
+  // page (label above, glass-top card below with photo bleed).
+  const container = document.createElement('div');
+  container.className = 'ref-preview-spotlight';
+  container.contentEditable = 'false';
+  container.setAttribute('data-ref', span.refValue);
 
   const entry = cache.get(span.refValue);
-  if (!entry || entry.state === 'loading') {
-    wrapper.classList.add('ref-preview-spotlight--loading');
-    const dot = document.createElement('span');
-    dot.className = 'ref-preview-spinner';
-    wrapper.appendChild(dot);
-    return wrapper;
-  }
-  if (entry.state === 'failed' || !entry.data.found) {
-    wrapper.classList.add('ref-preview-spotlight--failed');
-    wrapper.textContent = `Spotlight card for ${span.refValue} — not found`;
-    return wrapper;
-  }
-  const data = entry.data;
-  wrapper.setAttribute('data-kind', data.kind);
-
-  if (data.backgroundImage) {
-    const bg = document.createElement('div');
-    bg.className = 'ref-preview-spotlight__bg';
-    bg.style.backgroundImage = `url(${data.backgroundImage})`;
-    wrapper.appendChild(bg);
-  }
-
-  const body = document.createElement('div');
-  body.className = 'ref-preview-spotlight__body';
 
   const kindLabel = document.createElement('div');
-  kindLabel.className = 'ref-preview-spotlight__kind';
-  kindLabel.textContent = data.kind === 'park' ? 'Park spotlight' : 'Ride spotlight';
-  body.appendChild(kindLabel);
+  kindLabel.className = 'ref-preview-spotlight__label';
+  kindLabel.textContent =
+    entry && entry.state === 'ready' && entry.data.found && entry.data.kind === 'ride'
+      ? 'Attraction in focus'
+      : 'Park spotlight';
+  container.appendChild(kindLabel);
 
-  const title = document.createElement('div');
-  title.className = 'ref-preview-spotlight__title';
-  title.textContent = data.name ?? span.refValue;
-  body.appendChild(title);
+  const card = document.createElement('div');
+  card.className = 'ref-preview-spotlight__card';
+  container.appendChild(card);
 
-  const sub = document.createElement('div');
-  sub.className = 'ref-preview-spotlight__sub';
+  if (!entry || entry.state === 'loading') {
+    card.classList.add('ref-preview-spotlight__card--loading');
+    const dot = document.createElement('span');
+    dot.className = 'ref-preview-spinner';
+    card.appendChild(dot);
+    return container;
+  }
+  if (entry.state === 'failed' || !entry.data.found) {
+    card.classList.add('ref-preview-spotlight__card--failed');
+    card.textContent = `Could not resolve ${span.refValue}`;
+    return container;
+  }
+  const data = entry.data;
+  container.setAttribute('data-kind', data.kind);
+
+  // Photo layer (z-0) — covers the whole card; the glass panel sits on top.
+  if (data.backgroundImage) {
+    const photo = document.createElement('div');
+    photo.className = 'ref-preview-spotlight__photo';
+    photo.style.backgroundImage = `url(${data.backgroundImage})`;
+    card.appendChild(photo);
+    // Scrim mimicking pk-scrim-top/bot.
+    const scrim = document.createElement('div');
+    scrim.className = 'ref-preview-spotlight__scrim';
+    card.appendChild(scrim);
+  } else {
+    card.classList.add('ref-preview-spotlight__card--no-photo');
+  }
+
+  // Favorite star ornament — purely decorative in the editor preview.
+  const star = document.createElement('div');
+  star.className = 'ref-preview-spotlight__star';
+  star.textContent = '☆';
+  card.appendChild(star);
+
+  // Glass panel on top.
+  const panel = document.createElement('div');
+  panel.className = 'ref-preview-spotlight__panel';
+
+  const name = document.createElement('div');
+  name.className = 'ref-preview-spotlight__name';
+  name.textContent = data.name ?? span.refValue;
+  panel.appendChild(name);
+
+  const location = document.createElement('div');
+  location.className = 'ref-preview-spotlight__loc';
+  const pin = document.createElement('span');
+  pin.className = 'ref-preview-spotlight__pin';
+  pin.textContent = '⌖';
+  location.appendChild(pin);
+  const locText = document.createElement('span');
   if (data.kind === 'park') {
-    sub.textContent = `${data.city ?? ''}${data.country ? `, ${data.country}` : ''}`;
+    locText.textContent = `${data.city ?? ''}${data.country ? `, ${data.country}` : ''}`;
   } else {
     const parts = [data.parkName, data.parkCity, data.country].filter(Boolean);
-    sub.textContent = parts.join(' · ');
+    locText.textContent = parts.join(' · ');
   }
-  body.appendChild(sub);
+  location.appendChild(locText);
+  panel.appendChild(location);
 
-  const pills = document.createElement('div');
-  pills.className = 'ref-preview-spotlight__pills';
+  // Badge row — the big status badge gets prominence, just like the published
+  // card's GESCHLOSSEN / OPEN pill.
+  const badges = document.createElement('div');
+  badges.className = 'ref-preview-spotlight__badges';
 
   const statusText = statusBadgeText(data.status);
   if (statusText) {
     const pill = document.createElement('span');
-    pill.className = 'ref-preview-pill ref-preview-pill--status';
-    pill.textContent = statusText;
-    pills.appendChild(pill);
-  } else if (data.kind === 'ride' && typeof data.waitTime === 'number') {
+    pill.className = 'ref-preview-spotlight__status ref-preview-spotlight__status--closed';
+    const dot = document.createElement('span');
+    dot.className = 'ref-preview-spotlight__status-dot';
+    dot.textContent = '⊗';
+    pill.appendChild(dot);
+    pill.appendChild(document.createTextNode(statusText));
+    badges.appendChild(pill);
+  } else {
+    const pill = document.createElement('span');
+    pill.className = 'ref-preview-spotlight__status ref-preview-spotlight__status--open';
+    pill.textContent = 'OPEN';
+    badges.appendChild(pill);
+  }
+  if (data.kind === 'ride' && typeof data.waitTime === 'number') {
     const pill = document.createElement('span');
     pill.className = 'ref-preview-pill ref-preview-pill--wait';
     pill.textContent = `${data.waitTime} min wait`;
-    pills.appendChild(pill);
+    badges.appendChild(pill);
   } else if (data.kind === 'park' && data.crowdLevel) {
     const pill = document.createElement('span');
     pill.className = `ref-preview-pill ref-preview-pill--crowd ref-preview-pill--crowd-${data.crowdLevel.toLowerCase()}`;
     pill.textContent = data.crowdLevel.toLowerCase();
-    pills.appendChild(pill);
+    badges.appendChild(pill);
   }
   if (data.kind === 'park' && typeof data.avgWaitTime === 'number') {
     const pill = document.createElement('span');
     pill.className = 'ref-preview-pill ref-preview-pill--avg';
     pill.textContent = `⌀ ${data.avgWaitTime} min`;
-    pills.appendChild(pill);
+    badges.appendChild(pill);
   }
   if (
     data.kind === 'park' &&
@@ -263,12 +305,12 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
     const pill = document.createElement('span');
     pill.className = 'ref-preview-pill ref-preview-pill--ops';
     pill.textContent = `${data.operatingAttractions}/${data.totalAttractions} open`;
-    pills.appendChild(pill);
+    badges.appendChild(pill);
   }
-  body.appendChild(pills);
+  panel.appendChild(badges);
 
-  wrapper.appendChild(body);
-  return wrapper;
+  card.appendChild(panel);
+  return container;
 }
 
 function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
