@@ -73,7 +73,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
   };
 
   return (
-    <div className="border-border/60 bg-background/80 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-30 -mx-8 -mt-8 mb-4 flex flex-wrap items-center gap-1 rounded-t-2xl border-b px-3 py-2 backdrop-blur-md">
+    <div className="border-border/60 bg-background sticky top-0 z-30 -mx-8 -mt-8 mb-6 flex flex-wrap items-center gap-1 rounded-t-2xl border-b px-3 py-2 shadow-[0_8px_16px_-12px_rgba(0,0,0,0.6)]">
       <Group>
         <IconBtn
           label="Undo (⌘Z)"

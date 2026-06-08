@@ -1,5 +1,5 @@
 import { Extension } from '@tiptap/core';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { Plugin, PluginKey, TextSelection } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 
@@ -125,6 +125,10 @@ function buildBadgeDOM(span: RefSpan): HTMLElement {
   // and split text nodes oddly.
   wrapper.contentEditable = 'false';
   wrapper.setAttribute('data-ref', span.refValue);
+  // handleClick reads these to jump the caret back into the underlying link
+  // mark, which lights up the BubbleMenu's variant chips for editing.
+  wrapper.setAttribute('data-from', String(span.from));
+  wrapper.setAttribute('data-to', String(span.to));
 
   const entry = cache.get(span.refValue);
   if (!entry || entry.state === 'loading') {
@@ -184,15 +188,25 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
   container.className = 'ref-preview-spotlight';
   container.contentEditable = 'false';
   container.setAttribute('data-ref', span.refValue);
+  container.setAttribute('data-from', String(span.from));
+  container.setAttribute('data-to', String(span.to));
 
   const entry = cache.get(span.refValue);
 
+  // Best-effort label even before the API responds: a slash in the ref value
+  // means it's a ride (`parkSlug/rideSlug` or `/parks/.../park/ride`). Once the
+  // data lands we narrow further based on the resolved kind.
+  const isRideHint = span.refValue.includes('/parks/')
+    ? span.refValue.split('/').filter(Boolean).length >= 5
+    : span.refValue.includes('/');
   const kindLabel = document.createElement('div');
   kindLabel.className = 'ref-preview-spotlight__label';
-  kindLabel.textContent =
-    entry && entry.state === 'ready' && entry.data.found && entry.data.kind === 'ride'
-      ? 'Attraction in focus'
-      : 'Park spotlight';
+  if (entry && entry.state === 'ready' && entry.data.found) {
+    kindLabel.textContent =
+      entry.data.kind === 'ride' ? 'Attraction in focus' : 'Park spotlight';
+  } else {
+    kindLabel.textContent = isRideHint ? 'Attraction in focus' : 'Park spotlight';
+  }
   container.appendChild(kindLabel);
 
   const card = document.createElement('div');
@@ -374,7 +388,9 @@ export const RefPreview = Extension.create({
             const s = refPreviewKey.getState(view.state);
             if (!s) return;
             for (const span of s.spans) {
-              if (span.options.has('bare') || span.options.has('full')) continue;
+              // ?bare suppresses any preview, so skip the fetch. ?full DOES
+              // need the data — that's the spotlight card.
+              if (span.options.has('bare')) continue;
               if (cache.has(span.refValue)) continue;
               fetchRef(span.refValue, () => {
                 if (view.isDestroyed) return;
@@ -392,6 +408,21 @@ export const RefPreview = Extension.create({
         props: {
           decorations(state) {
             return refPreviewKey.getState(state)?.decorations;
+          },
+          handleClick(view, _pos, event) {
+            const target = event.target as HTMLElement | null;
+            const chip = target?.closest(
+              '.ref-preview-badge, .ref-preview-spotlight'
+            ) as HTMLElement | null;
+            if (!chip) return false;
+            const from = Number.parseInt(chip.getAttribute('data-from') ?? '', 10);
+            const to = Number.parseInt(chip.getAttribute('data-to') ?? '', 10);
+            if (Number.isNaN(from) || Number.isNaN(to)) return false;
+            event.preventDefault();
+            const sel = TextSelection.create(view.state.doc, from, to);
+            view.dispatch(view.state.tr.setSelection(sel).scrollIntoView());
+            view.focus();
+            return true;
           },
         },
       }),

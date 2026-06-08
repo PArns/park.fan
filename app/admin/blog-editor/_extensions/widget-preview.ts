@@ -146,13 +146,24 @@ function buildWidgetCard(span: WidgetSpan): HTMLElement {
   body.className = 'widget-preview__body';
 
   if (!span.refValue) {
-    // gallery / glossary — no park to resolve; show the metadata only.
-    body.textContent =
-      span.name === 'gallery-widget'
-        ? `Gallery${span.attrs.heading ? ` · ${span.attrs.heading}` : ''}${
-            span.attrs.folder ? ` · ${span.attrs.folder}` : ''
-          }`
-        : `Glossary term · ${span.attrs.slug ?? span.attrs.term ?? span.attrs.id ?? '?'}`;
+    body.classList.add('widget-preview__body--hint');
+    if (span.name === 'gallery-widget') {
+      body.textContent = `Gallery${span.attrs.heading ? ` · ${span.attrs.heading}` : ''}${
+        span.attrs.folder ? ` · ${span.attrs.folder}` : ''
+      }`;
+    } else if (span.name === 'glossary-widget') {
+      body.textContent = `Glossary term · ${
+        span.attrs.slug ?? span.attrs.term ?? span.attrs.id ?? '(not set)'
+      }`;
+    } else if (Object.keys(span.attrs).length === 0) {
+      // Most likely the author wrote ```park-widget slug=phantasialand``` on
+      // one line — TipTap drops everything after the first space. Nudge them
+      // toward the body-attr form the editor preserves.
+      body.textContent =
+        'Missing slug. Put attrs on their own lines:\nslug: phantasialand';
+    } else {
+      body.textContent = `Missing slug for ${widgetLabel(span.name)}`;
+    }
     wrapper.appendChild(body);
     return wrapper;
   }

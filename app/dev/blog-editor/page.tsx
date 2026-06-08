@@ -46,6 +46,19 @@ https://www.instagram.com/p/CzAbCdEfGhI/
 
 https://suno.com/song/abc123
 
+## Welcome-post replication
+
+Spotlight rides (from the live welcome post):
+
+[Taron](ref:phantasialand/taron?full)
+
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
+
+Weather widget with info-string slug (the real welcome post syntax):
+
+\`\`\`weather-widget slug=phantasialand
+\`\`\`
+
 ## Widget fences (attrs in body — TipTap drops info-string attrs on round-trip)
 
 \`\`\`park-widget

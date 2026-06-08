@@ -859,6 +859,15 @@ html[data-temp-unit='F'] .u-imperial {
   animation: refPreviewIn 220ms ease-out;
   user-select: none;
   -webkit-user-select: none;
+  cursor: pointer;
+}
+.tiptap-canvas .ref-preview-spotlight:hover .ref-preview-spotlight__card {
+  border-color: color-mix(in oklab, var(--primary) 45%, transparent);
+  transform: translateY(-1px);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.tiptap-canvas .ref-preview-badge {
+  cursor: pointer;
 }
 .tiptap-canvas .ref-preview-spotlight__label {
   font-size: 0.7rem;

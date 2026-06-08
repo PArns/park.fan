@@ -9,6 +9,50 @@ const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
 const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
 const SAFE_KEY = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 
+const WIDGET_NAMES = new Set([
+  'park-widget',
+  'map-widget',
+  'weather-widget',
+  'best-days-widget',
+  'stats-widget',
+  'attraction-widget',
+  'glossary-widget',
+  'gallery-widget',
+]);
+
+/**
+ * TipTap's CodeBlock parses only the first space-delimited token of the fence
+ * info string as the `language` attr — anything after that is silently dropped.
+ * Existing posts in this repo use the inline form (```park-widget slug=…``);
+ * if we hand that to the editor verbatim, the slug vanishes on the first save.
+ *
+ * Migrate any widget fence with info-string attrs to the body-attr form
+ * (```park-widget\nslug: …\n```) BEFORE we send the markdown to the client.
+ * The renderer already supports both syntaxes, so this is a safe normalisation.
+ */
+function normaliseWidgetFences(md: string): string {
+  return md.replace(
+    /^```([a-z][a-z0-9-]*-widget)(?:[ \t]+([^\n]+))?\n([\s\S]*?)\n?```/gm,
+    (full, name: string, info: string | undefined, body: string) => {
+      if (!WIDGET_NAMES.has(name)) return full;
+      const inlineAttrs = info?.trim();
+      if (!inlineAttrs) return full;
+      // Split `key=value` pairs (with optional quoted values) and emit each on
+      // its own `key: value` line inside the body.
+      const re =
+        /([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))/g;
+      const lines: string[] = [];
+      let m: RegExpExecArray | null;
+      while ((m = re.exec(inlineAttrs)) !== null) {
+        lines.push(`${m[1]}: ${m[2] ?? m[3] ?? m[4] ?? ''}`);
+      }
+      if (lines.length === 0) return full;
+      const newBody = [...lines, body.trim()].filter(Boolean).join('\n');
+      return '```' + name + '\n' + newBody + '\n```';
+    }
+  );
+}
+
 /**
  * Load every locale file belonging to one post (matched by translationKey or
  * the source-locale slug) and hand the editor back a ready-to-hydrate draft
@@ -51,7 +95,7 @@ export async function GET(
         perLocale[entry.name] = {
           slug,
           fm: fromFrontmatter(data as Record<string, unknown>),
-          body: content.trimStart(),
+          body: normaliseWidgetFences(content.trimStart()),
         };
       } catch {
         /* skip malformed */
