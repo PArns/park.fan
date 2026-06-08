@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { FolderOpen, PenLine, Plus } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
@@ -9,8 +9,10 @@ import { MarkdownPreview } from './_components/markdown-preview';
 import { SaveBar } from './_components/save-bar';
 import { LocaleTabs } from './_components/locale-tabs';
 import { PostPicker } from './_components/post-picker';
-import type { EditorInitialData } from './_lib/initial-data';
+import type { AuthorOption, CategoryOption, EditorInitialData } from './_lib/initial-data';
 import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
+import type { NewAuthorDraft } from './_components/author-create-modal';
+import type { NewCategoryDraft } from './_components/category-create-modal';
 import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
 
 const DEFAULT_SOURCE: Locale = 'en';
@@ -26,6 +28,30 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [pickerOpen, setPickerOpen] = useState(false);
   const [loadingPost, setLoadingPost] = useState(false);
   const [view, setView] = useState<'editor' | 'source'>('editor');
+  /** Authors / categories the user created in this session — get appended to
+   *  the editor's pickers AND sent with the save payload so the resulting PR
+   *  contains the new author file / categories.json patch. */
+  const [newAuthors, setNewAuthors] = useState<NewAuthorDraft[]>([]);
+  const [newCategories, setNewCategories] = useState<NewCategoryDraft[]>([]);
+
+  const authors: AuthorOption[] = useMemo(
+    () => [
+      ...initialData.authors,
+      ...newAuthors.map((a) => ({ key: a.key, name: a.name, ...(a.avatar ? { avatar: a.avatar } : {}), ...(a.role ? { role: a.role } : {}) })),
+    ],
+    [initialData.authors, newAuthors]
+  );
+  const categories: CategoryOption[] = useMemo(
+    () => [
+      ...initialData.categories,
+      ...newCategories.map((c) => ({
+        path: c.path,
+        labelEn: c.labels.en ?? c.path,
+        labelDe: c.labels.de ?? c.labels.en ?? c.path,
+      })),
+    ],
+    [initialData.categories, newCategories]
+  );
   /**
    * When non-null the editor is editing an existing post — saves go to the
    * same per-locale paths instead of creating fresh files. Holds the original
@@ -82,6 +108,15 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     return undefined;
   }, [drafts, sourceLocale, baseSlug]);
 
+  const onCreateAuthor = useCallback((draft: NewAuthorDraft) => {
+    setNewAuthors((prev) => (prev.find((a) => a.key === draft.key) ? prev : [...prev, draft]));
+  }, []);
+  const onCreateCategory = useCallback((draft: NewCategoryDraft) => {
+    setNewCategories((prev) =>
+      prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]
+    );
+  }, []);
+
   const onSave = async () => {
     const perLocale: Record<string, { slug: string; frontmatter: ReturnType<typeof toFrontmatter>; body: string }> = {};
     for (const l of initialData.locales) {
@@ -106,6 +141,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
               editing: { key: editing.key, originalSlugs: editing.originalSlugs },
             }
           : {}),
+        ...(newAuthors.length ? { newAuthors } : {}),
+        ...(newCategories.length ? { newCategories } : {}),
       }),
     });
     if (!res.ok) {
@@ -284,11 +321,13 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       <FrontmatterForm
         value={active.fm}
         onChange={onFmChange}
-        authors={initialData.authors}
-        categories={initialData.categories}
+        authors={authors}
+        categories={categories}
         allTags={initialData.tags}
         slug={active.slug || (sourceLocale === activeLocale ? baseSlug : '')}
         onSlugChange={onSlugChange}
+        onCreateAuthor={onCreateAuthor}
+        onCreateCategory={onCreateCategory}
       />
 
       <div>

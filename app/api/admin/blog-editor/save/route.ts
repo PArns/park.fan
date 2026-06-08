@@ -13,6 +13,44 @@ interface SavePayload {
     key: string;
     originalSlugs: Record<string, string>;
   };
+  /** Brand-new authors created during this session — each becomes a
+   *  content/blog/authors/<key>.md file in the same PR. */
+  newAuthors?: Array<{
+    key: string;
+    name: string;
+    role?: string;
+    location?: string;
+    url?: string;
+    avatar?: string;
+    bio?: string;
+  }>;
+  /** Brand-new categories — appended to content/blog/categories.json in the
+   *  same PR so the post's `category:` field resolves on the live site. */
+  newCategories?: Array<{ path: string; labels: Record<string, string> }>;
+}
+
+const AUTHOR_KEY_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
+const CATEGORY_PATH_RE = /^[a-z0-9](?:[a-z0-9-/]*[a-z0-9])?$/i;
+
+function buildAuthorFile(a: NonNullable<SavePayload['newAuthors']>[number]): string {
+  const lines = ['---', `name: ${yamlString(a.name)}`];
+  if (a.role) lines.push(`role: ${yamlString(a.role)}`);
+  if (a.location) lines.push(`location: ${yamlString(a.location)}`);
+  if (a.url) lines.push(`url: ${a.url}`);
+  if (a.avatar) lines.push(`avatar: ${a.avatar}`);
+  if (a.bio) lines.push(`bio: ${yamlString(a.bio)}`);
+  lines.push('---', '');
+  if (a.bio) lines.push(a.bio, '');
+  return lines.join('\n');
+}
+
+function yamlString(s: string): string {
+  // Quote if there's any character YAML would treat as a control structure
+  // (colon, quote, hash, dash at start). Doubles up any embedded quote.
+  if (/[":#\n]/.test(s) || /^[-?]/.test(s)) {
+    return `"${s.replace(/"/g, '\\"')}"`;
+  }
+  return s;
 }
 
 const REQUIRED_TOKEN_HINT =
@@ -189,6 +227,91 @@ export async function POST(req: Request) {
     }
   }
 
+  // 3b. Commit any new authors as `content/blog/authors/<key>.md`. We don't
+  //     overwrite existing files (would be surprising), so we silently skip
+  //     keys that already resolve via the GitHub Content API.
+  const authorsCommitted: string[] = [];
+  for (const author of payload.newAuthors ?? []) {
+    if (!AUTHOR_KEY_RE.test(author.key) || !author.name?.trim()) continue;
+    const path = `content/blog/authors/${author.key}.md`;
+    try {
+      await octokit.repos.getContent({ owner, repo, path, ref: branch });
+      continue;
+    } catch {
+      /* doesn't exist yet — go on and create it */
+    }
+    try {
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path,
+        branch,
+        message: `feat(blog/authors): add ${author.key}`,
+        content: Buffer.from(buildAuthorFile(author), 'utf8').toString('base64'),
+      });
+      authorsCommitted.push(author.key);
+    } catch (e) {
+      return NextResponse.json(
+        { error: `Could not commit author ${author.key}: ${(e as Error).message}` },
+        { status: 500 }
+      );
+    }
+  }
+
+  // 3c. Append new categories to content/blog/categories.json — fetch existing
+  //     JSON, splice the new entries in, recommit. Skips silently if a path
+  //     collides with what's already on disk.
+  const categoriesCommitted: string[] = [];
+  if ((payload.newCategories ?? []).length) {
+    const categoriesPath = 'content/blog/categories.json';
+    let existingSha: string | undefined;
+    let existing: Record<string, Record<string, string>> = {};
+    try {
+      const res = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: categoriesPath,
+        ref: branch,
+      });
+      if (!Array.isArray(res.data) && res.data.type === 'file') {
+        existingSha = res.data.sha;
+        existing = JSON.parse(Buffer.from(res.data.content, 'base64').toString('utf8'));
+      }
+    } catch {
+      /* file doesn't exist on this branch — start from empty */
+    }
+    const merged = { ...existing };
+    for (const cat of payload.newCategories ?? []) {
+      if (!CATEGORY_PATH_RE.test(cat.path) || merged[cat.path]) continue;
+      const labels: Record<string, string> = {};
+      for (const [loc, label] of Object.entries(cat.labels)) {
+        if (typeof label === 'string' && label.trim()) labels[loc] = label.trim();
+      }
+      if (!labels.en) continue;
+      merged[cat.path] = labels;
+      categoriesCommitted.push(cat.path);
+    }
+    if (categoriesCommitted.length) {
+      const content = JSON.stringify(merged, null, 2) + '\n';
+      try {
+        await octokit.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          path: categoriesPath,
+          branch,
+          message: `feat(blog/categories): add ${categoriesCommitted.join(', ')}`,
+          content: Buffer.from(content, 'utf8').toString('base64'),
+          ...(existingSha ? { sha: existingSha } : {}),
+        });
+      } catch (e) {
+        return NextResponse.json(
+          { error: `Could not commit categories.json: ${(e as Error).message}` },
+          { status: 500 }
+        );
+      }
+    }
+  }
+
   // 4. Open the PR. Source-locale title is the PR title; the body lists the
   //    locales we wrote so reviewers see at a glance what's included.
   const sourceFm = perLocale[sourceLocale]!.frontmatter;
@@ -204,6 +327,20 @@ export async function POST(req: Request) {
     ),
     ...(removed.length
       ? ['', '**Renamed (old files removed):**', ...removed.map((r) => `- \`${r}.md\``)]
+      : []),
+    ...(authorsCommitted.length
+      ? [
+          '',
+          '**New authors:**',
+          ...authorsCommitted.map((k) => `- \`content/blog/authors/${k}.md\``),
+        ]
+      : []),
+    ...(categoriesCommitted.length
+      ? [
+          '',
+          '**New categories:**',
+          ...categoriesCommitted.map((p) => `- \`${p}\``),
+        ]
       : []),
     '',
     '_Review the rendered post, tweak as needed, then mark ready for review._',

@@ -6,6 +6,11 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
 import type { EditorFrontmatter } from '../_lib/types';
+import { AuthorCreateModal, type NewAuthorDraft } from './author-create-modal';
+import {
+  CategoryCreateModal,
+  type NewCategoryDraft,
+} from './category-create-modal';
 import { DatePop } from './date-pop';
 import { ImagePicker } from './image-picker';
 
@@ -17,6 +22,11 @@ interface FrontmatterFormProps {
   allTags: string[];
   slug: string;
   onSlugChange: (s: string) => void;
+  /** Bubbles a brand-new author up to the parent so it can be appended to the
+   *  authors list AND included in the save PR. */
+  onCreateAuthor?: (draft: NewAuthorDraft) => void;
+  /** Same flow for a new (sub-)category. */
+  onCreateCategory?: (draft: NewCategoryDraft) => void;
 }
 
 /**
@@ -32,10 +42,14 @@ export function FrontmatterForm({
   allTags,
   slug,
   onSlugChange,
+  onCreateAuthor,
+  onCreateCategory,
 }: FrontmatterFormProps) {
   const set = <K extends keyof EditorFrontmatter>(k: K, v: EditorFrontmatter[K]) =>
     onChange({ ...value, [k]: v });
   const author = authors.find((a) => a.key === value.authorKey);
+  const [authorModalOpen, setAuthorModalOpen] = useState(false);
+  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
   return (
     <div className="border-border/60 bg-card/40 mb-6 rounded-2xl border p-6 backdrop-blur-sm">
@@ -63,13 +77,27 @@ export function FrontmatterForm({
         <AuthorPicker
           authors={authors}
           value={value.authorKey}
-          onChange={(k) => set('authorKey', k)}
+          onChange={(k) => {
+            if (k === '__new__') {
+              setAuthorModalOpen(true);
+              return;
+            }
+            set('authorKey', k);
+          }}
           selected={author}
+          canCreate={!!onCreateAuthor}
         />
         <CategoryPicker
           categories={categories}
           value={value.category}
-          onChange={(p) => set('category', p)}
+          onChange={(p) => {
+            if (p === '__new__') {
+              setCategoryModalOpen(true);
+              return;
+            }
+            set('category', p);
+          }}
+          canCreate={!!onCreateCategory}
         />
         <DatePop label="Date" value={value.date} onChange={(d) => set('date', d)} />
         <DatePop
@@ -117,6 +145,31 @@ export function FrontmatterForm({
           />
         </div>
       </details>
+
+      {onCreateAuthor && (
+        <AuthorCreateModal
+          open={authorModalOpen}
+          existing={new Set(authors.map((a) => a.key))}
+          onClose={() => setAuthorModalOpen(false)}
+          onCreate={(draft) => {
+            onCreateAuthor(draft);
+            set('authorKey', draft.key);
+            setAuthorModalOpen(false);
+          }}
+        />
+      )}
+      {onCreateCategory && (
+        <CategoryCreateModal
+          open={categoryModalOpen}
+          existing={categories}
+          onClose={() => setCategoryModalOpen(false)}
+          onCreate={(draft) => {
+            onCreateCategory(draft);
+            set('category', draft.path);
+            setCategoryModalOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -140,11 +193,13 @@ function AuthorPicker({
   value,
   onChange,
   selected,
+  canCreate,
 }: {
   authors: AuthorOption[];
   value: string;
   onChange: (k: string) => void;
   selected: AuthorOption | undefined;
+  canCreate?: boolean;
 }) {
   return (
     <label className="border-border/60 hover:border-border bg-background/60 group flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
@@ -170,9 +225,7 @@ function AuthorPicker({
               {a.name}
             </option>
           ))}
-          <option value="__new__" disabled>
-            + new author (coming soon)
-          </option>
+          {canCreate && <option value="__new__">+ New author…</option>}
         </select>
       </div>
     </label>
@@ -183,10 +236,12 @@ function CategoryPicker({
   categories,
   value,
   onChange,
+  canCreate,
 }: {
   categories: CategoryOption[];
   value: string;
   onChange: (p: string) => void;
+  canCreate?: boolean;
 }) {
   return (
     <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
@@ -208,6 +263,7 @@ function CategoryPicker({
               {c.labelEn} · {c.path}
             </option>
           ))}
+          {canCreate && <option value="__new__">+ New (sub-)category…</option>}
         </select>
       </div>
     </label>
