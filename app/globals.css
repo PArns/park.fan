@@ -722,3 +722,36 @@ html[data-temp-unit='F'] .u-imperial {
   height: 0;
   pointer-events: none;
 }
+/* Selection highlight inside the canvas pops a bit more than the system
+   default so the bubble menu reads naturally with what's selected. */
+.tiptap-canvas ::selection {
+  background: hsl(var(--primary) / 0.25);
+}
+/* The first heading sets the visual tone; soften the top margin so the very
+   first block doesn't slam into the canvas border. */
+.tiptap-canvas > *:first-child {
+  margin-top: 0;
+}
+/* Editor links should look obviously interactive but stay subtle in the
+   author view. ref:/park:/attraction: hrefs aren't real URLs so we don't
+   want a hand cursor on them — they're just visual cues. */
+.tiptap-canvas a[href^='ref:'],
+.tiptap-canvas a[href^='park:'],
+.tiptap-canvas a[href^='attraction:'] {
+  cursor: text;
+  background: hsl(var(--primary) / 0.08);
+  padding: 0 0.25em;
+  border-radius: 0.25em;
+  text-decoration: none;
+}
+
+/* ─── TipTap menus (tippy popovers) ───────────────────────────────────────── */
+
+/* Slash-menu tippy: kill the default white box so our own card shows. */
+.tippy-box[data-theme~='tiptap-popup'] {
+  background: transparent;
+  box-shadow: none;
+}
+.tippy-box[data-theme~='tiptap-popup'] > .tippy-content {
+  padding: 0;
+}

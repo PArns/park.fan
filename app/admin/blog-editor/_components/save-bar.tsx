@@ -58,10 +58,10 @@ export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
         onClick={handle}
         disabled={loading || disabled}
         className={cn(
-          'inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors',
+          'inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-lg transition-all',
           disabled
-            ? 'bg-muted text-muted-foreground cursor-not-allowed'
-            : 'bg-primary text-primary-foreground hover:bg-primary/90'
+            ? 'bg-muted text-muted-foreground cursor-not-allowed shadow-none'
+            : 'from-primary to-primary/80 text-primary-foreground bg-gradient-to-br hover:shadow-primary/30 hover:scale-[1.02]'
         )}
       >
         {loading ? (

@@ -155,15 +155,21 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
 
   return (
     <div className="container mx-auto max-w-[1400px] px-4 py-6">
-      <header className="mb-4 flex items-center gap-2">
-        <PenLine className="text-primary h-5 w-5" />
-        <h1 className="text-foreground text-xl font-semibold tracking-tight">Blog editor</h1>
-        <span className="text-muted-foreground text-xs">
-          Write once → translate → open one PR against{' '}
-          <code className="bg-muted rounded px-1.5 py-0.5">
-            {initialData.repoOwner}/{initialData.repoName}@{initialData.baseBranch}
-          </code>
-        </span>
+      <header className="mb-6 flex flex-wrap items-center gap-3">
+        <div className="bg-primary/15 text-primary flex h-9 w-9 items-center justify-center rounded-xl">
+          <PenLine className="h-4 w-4" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-xl font-semibold tracking-tight text-transparent">
+            Blog editor
+          </h1>
+          <p className="text-muted-foreground text-xs">
+            Write once → translate → open one PR against{' '}
+            <code className="bg-muted/60 rounded px-1.5 py-0.5 font-mono">
+              {initialData.repoOwner}/{initialData.repoName}@{initialData.baseBranch}
+            </code>
+          </p>
+        </div>
       </header>
 
       <LocaleTabs

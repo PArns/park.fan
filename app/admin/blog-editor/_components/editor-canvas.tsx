@@ -81,7 +81,7 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         placeholder: ({ node }) =>
           node.type.name === 'heading'
             ? `Heading ${node.attrs.level}`
-            : "Type '/' for blocks, or just write…",
+            : "Press '/' for blocks · select text for formatting · or just write",
         showOnlyCurrent: true,
         emptyEditorClass: 'is-editor-empty',
       }),
@@ -111,7 +111,7 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
     editorProps: {
       attributes: {
         class:
-          'tiptap-canvas prose prose-invert max-w-none min-h-[40vh] outline-none focus:outline-none',
+          'tiptap-canvas prose prose-invert max-w-none min-h-[60vh] outline-none focus:outline-none',
       },
     },
     onUpdate: ({ editor: e }) => {
@@ -141,8 +141,11 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
 
   const handlePick = (r: PickerResult) => {
     if (!editor) return;
+    // Defend against incidental whitespace from the search backend so the
+    // inserted markdown doesn't end up `[Phantasialand ](ref:…)`.
+    const label = r.label.trim();
     if (pickerMode === 'spotlight') {
-      const md = `\n\n[${r.label}](ref:${r.refKey}?full)\n\n`;
+      const md = `\n\n[${label}](ref:${r.refKey}?full)\n\n`;
       editor.chain().focus().insertContent(md).run();
     } else {
       // Inline reference link with bare option so the live annotation doesn't
@@ -152,23 +155,33 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
         .focus()
         .insertContent({
           type: 'text',
-          text: r.label,
+          text: label,
           marks: [{ type: 'link', attrs: { href: `ref:${r.refKey}?bare` } }],
         })
+        // Drop the link mark right after the inserted text so the next character
+        // the author types isn't sucked into the link.
+        .unsetMark('link')
         .run();
     }
     setPickerMode(null);
   };
 
   return (
-    <div className="border-border/60 bg-background/40 rounded-2xl border p-6 backdrop-blur-sm">
-      <EditorBubbleMenu editor={editor} />
-      <EditorContent editor={editor} />
-      <ParkRidePicker
-        mode={pickerMode}
-        onPick={handlePick}
-        onClose={() => setPickerMode(null)}
+    <div className="relative">
+      {/* Soft glow accent so the writing area visually anchors the page. */}
+      <div
+        aria-hidden="true"
+        className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
       />
+      <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8 backdrop-blur-md">
+        <EditorBubbleMenu editor={editor} />
+        <EditorContent editor={editor} />
+        <ParkRidePicker
+          mode={pickerMode}
+          onPick={handlePick}
+          onClose={() => setPickerMode(null)}
+        />
+      </div>
     </div>
   );
 }

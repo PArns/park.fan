@@ -67,9 +67,10 @@ export const SlashCommand = Extension.create<{
                 interactive: true,
                 trigger: 'manual',
                 placement: 'bottom-start',
-                animation: 'shift-away',
+                arrow: false,
                 duration: 0,
                 hideOnClick: true,
+                theme: 'tiptap-popup',
               })[0];
             },
             onUpdate: (props) => {
