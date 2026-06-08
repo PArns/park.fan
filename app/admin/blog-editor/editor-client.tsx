@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { FolderOpen, PenLine, Plus } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
@@ -9,6 +9,8 @@ import { MarkdownPreview } from './_components/markdown-preview';
 import { SaveBar } from './_components/save-bar';
 import { LocaleTabs } from './_components/locale-tabs';
 import { PostPicker } from './_components/post-picker';
+import { PropertiesPanel, type EditorSelection } from './_components/properties-panel';
+import type { Editor } from '@tiptap/core';
 import type { AuthorOption, CategoryOption, EditorInitialData } from './_lib/initial-data';
 import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
 import type { NewAuthorDraft } from './_components/author-create-modal';
@@ -28,6 +30,40 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [pickerOpen, setPickerOpen] = useState(false);
   const [loadingPost, setLoadingPost] = useState(false);
   const [view, setView] = useState<'editor' | 'source'>('editor');
+  /** Last clicked chip in the editor — drives the right-side PropertiesPanel.
+   *  Stays sticky until the next chip is clicked so the author can flip back
+   *  to the panel after typing. */
+  const [selection, setSelection] = useState<EditorSelection>(null);
+  /** Lifted TipTap editor instance so PropertiesPanel can run commands. */
+  const [editor, setEditor] = useState<Editor | null>(null);
+
+  // The ref-preview extension fires `parkfan-selection` from handleClick. We
+  // listen at the top level so the panel reflects whichever chip was clicked
+  // last, regardless of where in the canvas tree the event originated.
+  useEffect(() => {
+    const onSelection = (e: Event) => {
+      const detail = (e as CustomEvent<EditorSelection & { rect?: unknown }>).detail;
+      if (!detail) return;
+      setSelection(detail);
+    };
+    window.addEventListener('parkfan-selection', onSelection as EventListener);
+    return () =>
+      window.removeEventListener('parkfan-selection', onSelection as EventListener);
+  }, []);
+
+  const requestRefReplace = useCallback(() => {
+    if (!selection || selection.kind !== 'ref') return;
+    const value = selection.value;
+    const isRide = value.startsWith('/parks/')
+      ? value.slice('/parks/'.length).split('/').filter(Boolean).length >= 5
+      : value.includes('/');
+    window.dispatchEvent(
+      new CustomEvent('parkfan-replace-ref-request', {
+        detail: { pos: selection.pos, isRide },
+      })
+    );
+    setSelection(null);
+  }, [selection]);
   /** Authors / categories the user created in this session — get appended to
    *  the editor's pickers AND sent with the save payload so the resulting PR
    *  contains the new author file / categories.json patch. */
@@ -378,11 +414,25 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             <span>{Math.max(1, active.body.split('\n').length)} lines</span>
           </div>
         </div>
-        {view === 'editor' ? (
-          <EditorCanvas initialMarkdown={active.body} onMarkdownChange={onBodyChange} />
-        ) : (
-          <MarkdownPreview value={active.body} onChange={onBodyChange} />
-        )}
+        <div className="grid items-start gap-4 lg:grid-cols-[1fr_320px]">
+          <div className="min-w-0">
+            {view === 'editor' ? (
+              <EditorCanvas
+                initialMarkdown={active.body}
+                onMarkdownChange={onBodyChange}
+                onEditorReady={setEditor}
+              />
+            ) : (
+              <MarkdownPreview value={active.body} onChange={onBodyChange} />
+            )}
+          </div>
+          <PropertiesPanel
+            editor={editor}
+            selection={selection}
+            charCount={active.body.length}
+            onReplaceRef={requestRefReplace}
+          />
+        </div>
       </div>
 
       <SaveBar onSave={onSave} disabled={!!disabledReason} disabledReason={disabledReason} />

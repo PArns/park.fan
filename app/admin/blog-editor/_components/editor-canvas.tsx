@@ -19,16 +19,14 @@ import { EditorBubbleMenu } from './bubble-menu';
 import { FixedToolbar, type ToolbarAction } from './fixed-toolbar';
 import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
-import {
-  RefEditPopover,
-  type RefEditTarget,
-  type RefVariant,
-} from './ref-edit-popover';
-import { LinkEditPopover, type LinkEditTarget } from './link-edit-popover';
 
 interface EditorCanvasProps {
   initialMarkdown: string;
   onMarkdownChange: (md: string) => void;
+  /** Hand the TipTap editor instance up so the PropertiesPanel (rendered next
+   *  to the canvas in editor-client) can drive commands directly without
+   *  needing the canvas to proxy them. */
+  onEditorReady?: (editor: Editor | null) => void;
 }
 
 /**
@@ -40,16 +38,17 @@ interface EditorCanvasProps {
  * `tiptap-markdown` to keep our custom blocks structural via `[label](ref:…)`
  * links and bare embed-URL lines.
  */
-export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvasProps) {
+export function EditorCanvas({
+  initialMarkdown,
+  onMarkdownChange,
+  onEditorReady,
+}: EditorCanvasProps) {
   const [pickerMode, setPickerMode] = useState<PickerMode | null>(null);
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
-  /** Currently-edited ref chip — drives the floating Variant/Replace popover. */
-  const [refEditTarget, setRefEditTarget] = useState<RefEditTarget | null>(null);
-  /** Plain link click — drives the LinkEditPopover (href field + Save / Remove). */
-  const [linkEditTarget, setLinkEditTarget] = useState<LinkEditTarget | null>(null);
-  /** When set, the next picker pick replaces the existing link range rather
-   *  than inserting a fresh link. */
-  const replaceRangeRef = useRef<{ from: number; to: number } | null>(null);
+  /** When set, the next ParkRidePicker pick replaces an existing link at this
+   *  position rather than inserting a fresh link. The PropertiesPanel asks
+   *  for a replace via a window event; the canvas captures pos here. */
+  const replacePosRef = useRef<number | null>(null);
   // Hold the editor in a ref too so the slash extension can fire actions
   // synchronously without sequencing through useState (which React 19 forbids
   // inside effects).
@@ -163,7 +162,8 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
   // slash extension at runtime, after this render commits) can reach it.
   useEffect(() => {
     editorRef.current = editor;
-  }, [editor]);
+    onEditorReady?.(editor);
+  }, [editor, onEditorReady]);
 
   // Keep the canvas in sync when the parent swaps the active draft (e.g. the
   // user flips to a different locale tab).
@@ -182,22 +182,27 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
     // Defend against incidental whitespace from the search backend so the
     // inserted markdown doesn't end up `[Phantasialand ](ref:…)`.
     const label = r.label.trim();
-    // Replace flow — when the user came in via "Replace…" from a chip popover.
-    if (replaceRangeRef.current) {
-      const { from, to } = replaceRangeRef.current;
+    // Replace flow — when the user came in via "Replace…" from the panel.
+    // We resolve the link range from the click pos at apply time so the
+    // operation always targets the link that's actually there now.
+    if (replacePosRef.current !== null) {
+      const pos = replacePosRef.current;
       const opt = pickerMode === 'spotlight' ? 'full' : r.option;
+      const newHref = `ref:${r.refKey}?${opt}`;
       editor
         .chain()
         .focus()
-        .deleteRange({ from, to })
-        .insertContentAt(from, {
+        .setTextSelection(pos)
+        .extendMarkRange('link')
+        .deleteSelection()
+        .insertContent({
           type: 'text',
           text: label,
-          marks: [{ type: 'link', attrs: { href: `ref:${r.refKey}?${opt}` } }],
+          marks: [{ type: 'link', attrs: { href: newHref } }],
         })
         .unsetMark('link')
         .run();
-      replaceRangeRef.current = null;
+      replacePosRef.current = null;
     } else if (pickerMode === 'spotlight' || r.option === 'full') {
       // Block card always uses ?full — that's what triggers the spotlight
       // render. Comes in here from the standalone Spotlight insert OR when
@@ -225,93 +230,23 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
     setPickerMode(null);
   };
 
-  // Listen for chip-click events fired by the ref-preview plugin and open the
-  // floating edit popover next to whatever was clicked. ref: links open the
-  // variant Editor; everything else gets the plain href editor.
+  // The PropertiesPanel (rendered next to this canvas by editor-client) fires
+  // this when the author hits "Replace park / ride" — we stash the clicked
+  // pos and open our picker. handlePick then resolves the link range fresh
+  // and swaps content.
   useEffect(() => {
-    const onRef = (e: Event) => setRefEditTarget((e as CustomEvent<RefEditTarget>).detail);
-    const onLink = (e: Event) => setLinkEditTarget((e as CustomEvent<LinkEditTarget>).detail);
-    window.addEventListener('parkfan-ref-edit', onRef as EventListener);
-    window.addEventListener('parkfan-link-edit', onLink as EventListener);
-    return () => {
-      window.removeEventListener('parkfan-ref-edit', onRef as EventListener);
-      window.removeEventListener('parkfan-link-edit', onLink as EventListener);
+    const onReplaceRequest = (e: Event) => {
+      const detail = (e as CustomEvent<{ pos: number; isRide: boolean }>).detail;
+      replacePosRef.current = detail.pos;
+      setPickerMode(detail.isRide ? 'ride' : 'park');
     };
+    window.addEventListener('parkfan-replace-ref-request', onReplaceRequest as EventListener);
+    return () =>
+      window.removeEventListener(
+        'parkfan-replace-ref-request',
+        onReplaceRequest as EventListener
+      );
   }, []);
-
-  const saveLink = (next: string) => {
-    if (!editor || !linkEditTarget) return;
-    const trimmed = next.trim();
-    if (!trimmed) {
-      editor
-        .chain()
-        .focus()
-        .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
-        .unsetLink()
-        .run();
-    } else {
-      editor
-        .chain()
-        .focus()
-        .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
-        .extendMarkRange('link')
-        .setLink({ href: trimmed })
-        .run();
-    }
-    setLinkEditTarget(null);
-  };
-  const removeLinkAt = () => {
-    if (!editor || !linkEditTarget) return;
-    editor
-      .chain()
-      .focus()
-      .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
-      .unsetLink()
-      .run();
-    setLinkEditTarget(null);
-  };
-
-  const applyVariant = (variant: RefVariant) => {
-    if (!editor || !refEditTarget) return;
-    const rest = refEditTarget.href.slice(4); // strip "ref:"
-    const value = rest.includes('?') ? rest.slice(0, rest.indexOf('?')) : rest;
-    const newHref = `ref:${value}?${variant}`;
-    editor
-      .chain()
-      .focus()
-      .setTextSelection({ from: refEditTarget.from, to: refEditTarget.to })
-      .extendMarkRange('link')
-      .setLink({ href: newHref })
-      .run();
-    setRefEditTarget(null);
-  };
-
-  const removeLink = () => {
-    if (!editor || !refEditTarget) return;
-    editor
-      .chain()
-      .focus()
-      .setTextSelection({ from: refEditTarget.from, to: refEditTarget.to })
-      .extendMarkRange('link')
-      .unsetLink()
-      .run();
-    setRefEditTarget(null);
-  };
-
-  const replaceLink = () => {
-    if (!refEditTarget) return;
-    // Stash the range so handlePick knows to replace rather than append.
-    replaceRangeRef.current = { from: refEditTarget.from, to: refEditTarget.to };
-    // The decision park-or-ride is encoded in the existing href; we open the
-    // same picker mode the spotlight uses since it accepts both.
-    const rest = refEditTarget.href.slice(4);
-    const value = rest.includes('?') ? rest.slice(0, rest.indexOf('?')) : rest;
-    const isRide = value.startsWith('/parks/')
-      ? value.split('/').filter(Boolean).length >= 5
-      : value.includes('/');
-    setPickerMode(isRide ? 'ride' : 'park');
-    setRefEditTarget(null);
-  };
 
   return (
     <div className="relative">
@@ -337,19 +272,6 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
             const altCombined = r.caption ? `${r.alt} | ${r.caption}` : r.alt;
             editor?.chain().focus().insertContent(`\n\n![${altCombined}](${r.src})\n\n`).run();
           }}
-        />
-        <RefEditPopover
-          target={refEditTarget}
-          onClose={() => setRefEditTarget(null)}
-          onVariant={applyVariant}
-          onReplace={replaceLink}
-          onRemove={removeLink}
-        />
-        <LinkEditPopover
-          target={linkEditTarget}
-          onClose={() => setLinkEditTarget(null)}
-          onSave={saveLink}
-          onRemove={removeLinkAt}
         />
       </div>
     </div>

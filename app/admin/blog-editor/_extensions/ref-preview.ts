@@ -1,5 +1,5 @@
 import { Extension } from '@tiptap/core';
-import { Plugin, PluginKey, TextSelection } from '@tiptap/pm/state';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 import type { Root } from 'react-dom/client';
@@ -420,63 +420,52 @@ export const RefPreview = Extension.create({
           decorations(state) {
             return refPreviewKey.getState(state)?.decorations;
           },
-          handleClick(view, _pos, event) {
+          handleClick(view, clickPos, event) {
             const target = event.target as HTMLElement | null;
             const chip = target?.closest(
               '.ref-preview-badge, .ref-preview-spotlight, .tiptap-canvas a[href]'
             ) as HTMLElement | null;
             if (!chip) return false;
-            // For decoration chips we stashed the link range on the DOM; for
-            // a click on the actual <a> we infer it from the link mark at the
-            // click position.
-            let from = Number.parseInt(chip.getAttribute('data-from') ?? '', 10);
-            let to = Number.parseInt(chip.getAttribute('data-to') ?? '', 10);
-            let href = chip.getAttribute('data-ref')
-              ? `ref:${chip.getAttribute('data-ref')}`
-              : '';
-            if (Number.isNaN(from) || Number.isNaN(to)) {
-              const $pos = view.state.doc.resolve(_pos);
-              const linkMark = $pos.marks().find((m) => m.type.name === 'link');
-              if (!linkMark) return false;
-              href = String(linkMark.attrs.href ?? '');
-              if (!href) return false;
-              // Walk the textblock to find the contiguous link range.
-              const parent = $pos.parent;
-              let start = $pos.start();
-              let end = $pos.start();
-              parent.content.forEach((node, offset) => {
-                const nodeFrom = $pos.start() + offset;
-                const nodeTo = nodeFrom + node.nodeSize;
-                if (nodeTo <= _pos) return;
-                if (
-                  node.marks.find(
-                    (m) => m.type.name === 'link' && m.attrs.href === href
-                  )
-                ) {
-                  if (start === end) start = nodeFrom;
-                  end = nodeTo;
-                }
-              });
-              from = start;
-              to = end;
+            // CRITICAL: never trust the stashed data-from/data-to on the
+            // widget DOM — ProseMirror reuses widget nodes when their key
+            // doesn't change, so those numbers go stale as soon as the doc
+            // shifts upstream. Resolve the link mark from the live click pos
+            // instead so editing scales to N chips.
+            const doc = view.state.doc;
+            let probe = clickPos;
+            let $pos = doc.resolve(probe);
+            let linkMark = $pos.marks().find((m) => m.type.name === 'link');
+            // Widget decorations anchor AFTER the link span — step back one
+            // position to land on the trailing character of the link text.
+            if (!linkMark && probe > 0) {
+              probe = clickPos - 1;
+              $pos = doc.resolve(probe);
+              linkMark = $pos.marks().find((m) => m.type.name === 'link');
             }
+            if (!linkMark) return false;
+            const href = String(linkMark.attrs.href ?? '');
+            if (!href) return false;
             event.preventDefault();
-            const sel = TextSelection.create(view.state.doc, from, to);
-            view.dispatch(view.state.tr.setSelection(sel).scrollIntoView());
-            view.focus();
-            // Fire a window event the canvas listens for. ref: chips get the
-            // variant popover; everything else (http/mailto/internal) gets the
-            // plain LinkEditPopover with an href field.
-            const isRef = href.startsWith('ref:');
+            // Hand the click position to whoever's listening. The parent
+            // panel will redo setTextSelection+extendMarkRange at apply time
+            // so it always reads the link's current range from the doc.
             const rect = chip.getBoundingClientRect();
-            const detail = {
-              from,
-              to,
-              href,
-              rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
-            };
+            const isRef = href.startsWith('ref:');
+            const value = isRef
+              ? (href.slice(4).includes('?')
+                  ? href.slice(4, href.indexOf('?'))
+                  : href.slice(4))
+              : '';
             window.dispatchEvent(
-              new CustomEvent(isRef ? 'parkfan-ref-edit' : 'parkfan-link-edit', { detail })
+              new CustomEvent('parkfan-selection', {
+                detail: {
+                  kind: isRef ? 'ref' : 'link',
+                  pos: probe,
+                  href,
+                  value,
+                  rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
+                },
+              })
             );
             return true;
           },
