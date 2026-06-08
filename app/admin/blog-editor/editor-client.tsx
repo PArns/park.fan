@@ -253,31 +253,48 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   return (
     <div className="container mx-auto max-w-[1400px] px-4 py-6">
       <header className="mb-6 flex flex-wrap items-center gap-3">
-        <div className="bg-primary/15 text-primary flex h-9 w-9 items-center justify-center rounded-xl">
-          <PenLine className="h-4 w-4" />
+        <div className="from-primary/20 to-primary/5 text-primary flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <PenLine className="h-5 w-5" />
         </div>
         <div className="min-w-0 flex-1">
-          <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-xl font-semibold tracking-tight text-transparent">
-            Blog editor
+          <div className="flex items-center gap-2">
+            <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+              Blog editor
+            </h1>
+            <span
+              className={[
+                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+                editing
+                  ? 'bg-amber-500/15 text-amber-500'
+                  : 'bg-emerald-500/15 text-emerald-500',
+              ].join(' ')}
+            >
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  editing ? 'bg-amber-500' : 'bg-emerald-500'
+                } animate-pulse`}
+              />
+              {editing ? 'editing' : 'new post'}
+            </span>
             {editing && (
-              <span className="text-muted-foreground ml-2 text-xs font-normal">
-                · editing <code className="bg-muted/60 rounded px-1 font-mono">{editing.key}</code>
-              </span>
+              <code className="bg-muted/60 text-foreground/80 truncate rounded-md px-2 py-0.5 font-mono text-xs">
+                {editing.key}
+              </code>
             )}
-          </h1>
-          <p className="text-muted-foreground text-xs">
+          </div>
+          <p className="text-muted-foreground mt-0.5 text-xs">
             Write once → translate → open one PR against{' '}
-            <code className="bg-muted/60 rounded px-1.5 py-0.5 font-mono">
+            <code className="bg-muted/60 text-foreground/80 rounded px-1.5 py-0.5 font-mono">
               {initialData.repoOwner}/{initialData.repoName}@{initialData.baseBranch}
             </code>
           </p>
         </div>
-        <div className="inline-flex items-center gap-1.5">
+        <div className="inline-flex items-center gap-2">
           <button
             type="button"
             onClick={() => setPickerOpen(true)}
             disabled={loadingPost}
-            className="border-border/60 hover:border-primary/60 hover:bg-accent/40 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors disabled:opacity-60"
+            className="border-border/70 hover:border-primary/60 hover:bg-primary/8 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
           >
             <FolderOpen className="h-3.5 w-3.5" />
             {loadingPost ? 'Loading…' : 'Open existing'}
@@ -291,10 +308,10 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
                 setEditing(null);
                 setActiveLocale(sourceLocale);
               }}
-              className="border-border/60 hover:border-primary/60 hover:bg-accent/40 inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors"
+              className="from-primary/15 to-primary/5 border-primary/30 text-primary hover:border-primary/60 inline-flex items-center gap-1.5 rounded-xl border bg-gradient-to-br px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Plus className="h-3.5 w-3.5" />
-              New
+              New post
             </button>
           )}
         </div>
@@ -332,22 +349,34 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       />
 
       <div>
-        <div className="border-border/60 -mb-px inline-flex items-center gap-0.5 rounded-t-lg border border-b-0 bg-background/60 p-0.5 backdrop-blur">
-          {(['editor', 'source'] as const).map((t) => (
-            <button
-              key={t}
-              type="button"
-              onClick={() => setView(t)}
-              className={[
-                'rounded-md px-3 py-1 text-xs font-semibold transition-colors',
-                view === t
-                  ? 'bg-primary/15 text-primary'
-                  : 'hover:bg-accent/40 text-foreground/70',
-              ].join(' ')}
-            >
-              {t === 'editor' ? 'Editor' : '.md source'}
-            </button>
-          ))}
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <div className="border-border/70 bg-muted/30 inline-flex items-center gap-1 rounded-xl border p-1 backdrop-blur">
+            {(['editor', 'source'] as const).map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setView(t)}
+                className={[
+                  'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+                  view === t
+                    ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-background/40',
+                ].join(' ')}
+              >
+                <span
+                  className={`h-1.5 w-1.5 rounded-full ${
+                    view === t ? 'bg-primary' : 'bg-muted-foreground/40'
+                  }`}
+                />
+                {t === 'editor' ? 'Visual editor' : '.md source'}
+              </button>
+            ))}
+          </div>
+          <div className="text-muted-foreground hidden text-[10px] uppercase tracking-wider sm:flex sm:items-center sm:gap-2">
+            <span>{active.body.length.toLocaleString()} chars</span>
+            <span className="text-muted-foreground/40">·</span>
+            <span>{Math.max(1, active.body.split('\n').length)} lines</span>
+          </div>
         </div>
         {view === 'editor' ? (
           <EditorCanvas initialMarkdown={active.body} onMarkdownChange={onBodyChange} />

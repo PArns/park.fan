@@ -73,7 +73,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
   };
 
   return (
-    <div className="border-border/60 bg-background/40 -mx-8 -mt-8 mb-6 flex flex-wrap items-center gap-1 rounded-t-2xl border-b px-3 py-2">
+    <div className="border-border/60 from-muted/25 to-muted/5 -mx-8 -mt-8 mb-6 flex flex-wrap items-center gap-1 rounded-t-2xl border-b bg-gradient-to-b px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
       <Group>
         <IconBtn
           label="Undo (⌘Z)"
@@ -99,7 +99,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
             type="button"
             onClick={() => setHeadingOpen((v) => !v)}
             onBlur={() => setTimeout(() => setHeadingOpen(false), 150)}
-            className="hover:bg-accent/40 inline-flex items-center gap-1 rounded-md px-2 py-1 text-xs font-semibold"
+            className="hover:bg-accent/50 border-border/40 inline-flex h-8 items-center gap-1 rounded-lg border bg-background/40 px-2.5 text-xs font-semibold transition-all"
           >
             {blockLabel}
             <ChevronDown className="h-3 w-3 opacity-60" />
@@ -236,7 +236,7 @@ function Group({ children }: { children: React.ReactNode }) {
 }
 
 function Divider() {
-  return <div className="bg-border/40 mx-1 h-5 w-px" />;
+  return <div className="bg-border/50 mx-1.5 h-5 w-px" />;
 }
 
 function IconBtn({
@@ -260,9 +260,9 @@ function IconBtn({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        'flex h-7 w-7 items-center justify-center rounded-md transition-colors',
-        active && 'bg-primary/15 text-primary',
-        !active && !disabled && 'hover:bg-accent/40 text-foreground/85',
+        'flex h-8 w-8 items-center justify-center rounded-lg transition-all',
+        active && 'bg-primary/15 text-primary ring-1 ring-primary/30',
+        !active && !disabled && 'hover:bg-accent/50 text-foreground/85 hover:scale-110',
         disabled && 'text-foreground/30 cursor-not-allowed'
       )}
     >
@@ -285,7 +285,7 @@ function LabelBtn({
       type="button"
       title={`Insert ${label}`}
       onClick={onClick}
-      className="hover:bg-accent/40 text-foreground/85 inline-flex h-7 items-center gap-1 rounded-md px-2 text-xs font-semibold transition-colors"
+      className="hover:bg-accent/50 hover:text-primary text-foreground/85 inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-xs font-semibold transition-all hover:scale-105 active:scale-95"
     >
       {children}
       {label}

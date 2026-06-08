@@ -52,28 +52,39 @@ export function FrontmatterForm({
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
   return (
-    <div className="border-border/60 bg-card/40 mb-6 rounded-2xl border p-6 backdrop-blur-sm">
-      <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
-        <SlugChip value={slug} onChange={onSlugChange} />
+    <div className="mb-6 space-y-4">
+      {/* Title & summary card — gives the post identity its own breathing room. */}
+      <div className="border-border/60 bg-card/40 group relative overflow-hidden rounded-2xl border p-7 backdrop-blur-sm">
+        <div className="from-primary/8 via-primary/0 to-primary/3 pointer-events-none absolute inset-0 bg-gradient-to-br opacity-50" />
+        <div className="relative">
+          <div className="mb-3 flex flex-wrap items-center gap-2 text-xs">
+            <SlugChip value={slug} onChange={onSlugChange} />
+          </div>
+          <textarea
+            value={value.title}
+            onChange={(e) => set('title', e.target.value)}
+            placeholder="Untitled"
+            rows={1}
+            className="placeholder:text-muted-foreground/40 mb-2 w-full resize-none bg-transparent text-4xl font-bold tracking-tight outline-none"
+            style={{ minHeight: '3rem' }}
+          />
+          <textarea
+            value={value.excerpt}
+            onChange={(e) => set('excerpt', e.target.value)}
+            placeholder="One or two sentences for cards and meta description."
+            rows={2}
+            className="text-muted-foreground placeholder:text-muted-foreground/40 w-full resize-none bg-transparent text-lg leading-snug outline-none"
+          />
+        </div>
       </div>
 
-      <textarea
-        value={value.title}
-        onChange={(e) => set('title', e.target.value)}
-        placeholder="Untitled"
-        rows={1}
-        className="placeholder:text-muted-foreground/40 mb-2 w-full resize-none bg-transparent text-4xl font-bold tracking-tight outline-none"
-        style={{ minHeight: '3rem' }}
-      />
-      <textarea
-        value={value.excerpt}
-        onChange={(e) => set('excerpt', e.target.value)}
-        placeholder="One or two sentences for cards and meta description."
-        rows={2}
-        className="text-muted-foreground placeholder:text-muted-foreground/40 mb-6 w-full resize-none bg-transparent text-lg leading-snug outline-none"
-      />
-
-      <div className="grid gap-3 sm:grid-cols-2">
+      {/* Properties card — Notion-style page properties grid. */}
+      <div className="border-border/60 bg-card/30 rounded-2xl border p-5 backdrop-blur-sm">
+        <div className="mb-4 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <span className="bg-primary/40 h-1 w-1 rounded-full" />
+          Page properties
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
         <AuthorPicker
           authors={authors}
           value={value.authorKey}
@@ -108,22 +119,26 @@ export function FrontmatterForm({
         />
         <ModePicker value={value.mode} onChange={(m) => set('mode', m)} />
         <FeaturedToggle value={value.featured} onChange={(b) => set('featured', b)} />
-      </div>
+        </div>
 
-      <div className="mt-4">
-        <TagChips
-          value={value.tags}
-          onChange={(t) => set('tags', t)}
-          suggestions={allTags}
-        />
-      </div>
+        <div className="border-border/40 mt-5 border-t pt-4">
+          <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+            <span className="bg-primary/40 h-1 w-1 rounded-full" />
+            Tags
+          </div>
+          <TagChips
+            value={value.tags}
+            onChange={(t) => set('tags', t)}
+            suggestions={allTags}
+          />
+        </div>
 
-      <details className="group mt-4">
-        <summary className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors">
-          <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" />
-          Cover image & SEO
-        </summary>
-        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+        <details className="group mt-4 border-border/40 border-t pt-4">
+          <summary className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer items-center gap-1.5 text-xs font-semibold transition-colors">
+            <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" />
+            Cover image & SEO
+          </summary>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2">
           <CoverPicker
             src={value.coverSrc}
             onChange={(v) => set('coverSrc', v)}
@@ -143,8 +158,9 @@ export function FrontmatterForm({
             value={value.seoDescription}
             onChange={(v) => set('seoDescription', v)}
           />
-        </div>
-      </details>
+          </div>
+        </details>
+      </div>
 
       {onCreateAuthor && (
         <AuthorCreateModal
@@ -370,14 +386,9 @@ function TagChips({
 
   return (
     <div>
-      <div className="mb-1.5 flex items-center justify-between">
-        <span className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
-          Tags
-        </span>
-        <span className="text-muted-foreground/70 text-[10px]">
-          Type to search · press <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Enter</kbd>{' '}
-          to add a new one
-        </span>
+      <div className="text-muted-foreground/70 mb-1.5 text-right text-[10px]">
+        Type to search · press <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Enter</kbd>{' '}
+        to add a new one
       </div>
       <div className="border-border/60 bg-background/60 flex flex-wrap items-center gap-1.5 rounded-xl border px-3 py-2">
         {value.map((t) => (
