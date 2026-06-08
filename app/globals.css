@@ -622,3 +622,103 @@ html[data-temp-unit='F'] .u-metric {
 html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
+
+/* ─── Blog editor (TipTap) canvas ──────────────────────────────────────────── */
+
+.tiptap-canvas {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.tiptap-canvas:focus {
+  outline: none;
+}
+.tiptap-canvas > * + * {
+  margin-top: 0.85em;
+}
+.tiptap-canvas h1,
+.tiptap-canvas h2,
+.tiptap-canvas h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-top: 1.6em;
+  margin-bottom: 0.4em;
+}
+.tiptap-canvas h1 {
+  font-size: 1.875rem;
+}
+.tiptap-canvas h2 {
+  font-size: 1.5rem;
+}
+.tiptap-canvas h3 {
+  font-size: 1.25rem;
+}
+.tiptap-canvas a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+}
+.tiptap-canvas blockquote {
+  border-left: 3px solid hsl(var(--primary) / 0.5);
+  padding: 0.25em 0 0.25em 1em;
+  color: hsl(var(--foreground) / 0.85);
+  font-style: italic;
+}
+.tiptap-canvas code {
+  background: hsl(var(--muted));
+  padding: 0.1em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.9em;
+}
+.tiptap-canvas pre {
+  background: hsl(var(--muted));
+  padding: 0.9rem 1rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+}
+.tiptap-canvas pre code {
+  background: transparent;
+  padding: 0;
+}
+.tiptap-canvas ul,
+.tiptap-canvas ol {
+  padding-left: 1.6em;
+}
+.tiptap-canvas ul {
+  list-style: disc;
+}
+.tiptap-canvas ol {
+  list-style: decimal;
+}
+.tiptap-canvas hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 2em 0;
+}
+.tiptap-canvas table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5em 0;
+}
+.tiptap-canvas th,
+.tiptap-canvas td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.4em 0.6em;
+}
+.tiptap-canvas th {
+  background: hsl(var(--muted) / 0.6);
+  font-weight: 600;
+  text-align: left;
+}
+/* Empty-editor placeholder. */
+.tiptap-canvas p.is-editor-empty:first-child::before,
+.tiptap-canvas h1.is-editor-empty::before,
+.tiptap-canvas h2.is-editor-empty::before,
+.tiptap-canvas h3.is-editor-empty::before {
+  color: hsl(var(--muted-foreground) / 0.5);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,472 @@
+'use client';
+
+import { useState } from 'react';
+import { CalendarDays, Check, Image as ImageIcon, Plus, Sparkles, Tag, X } from 'lucide-react';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
+import type { EditorFrontmatter } from '../_lib/types';
+
+interface FrontmatterFormProps {
+  value: EditorFrontmatter;
+  onChange: (next: EditorFrontmatter) => void;
+  authors: AuthorOption[];
+  categories: CategoryOption[];
+  allTags: string[];
+  locales: readonly string[];
+  locale: string;
+  onLocaleChange: (l: string) => void;
+  slug: string;
+  onSlugChange: (s: string) => void;
+}
+
+/**
+ * Notion-style page properties block. Big title + subtitle, then a compact grid
+ * of pills/dropdowns for the rest. Looks like the post hero so authors get a
+ * visual preview of how the metadata reads.
+ */
+export function FrontmatterForm({
+  value,
+  onChange,
+  authors,
+  categories,
+  allTags,
+  locales,
+  locale,
+  onLocaleChange,
+  slug,
+  onSlugChange,
+}: FrontmatterFormProps) {
+  const set = <K extends keyof EditorFrontmatter>(k: K, v: EditorFrontmatter[K]) =>
+    onChange({ ...value, [k]: v });
+  const author = authors.find((a) => a.key === value.authorKey);
+
+  return (
+    <div className="border-border/60 bg-card/40 mb-6 rounded-2xl border p-6 backdrop-blur-sm">
+      <div className="mb-4 flex flex-wrap items-center gap-2 text-xs">
+        <LocalePill value={locale} options={locales} onChange={onLocaleChange} />
+        <SlugChip value={slug} onChange={onSlugChange} />
+      </div>
+
+      <textarea
+        value={value.title}
+        onChange={(e) => set('title', e.target.value)}
+        placeholder="Untitled"
+        rows={1}
+        className="placeholder:text-muted-foreground/40 mb-2 w-full resize-none bg-transparent text-4xl font-bold tracking-tight outline-none"
+        style={{ minHeight: '3rem' }}
+      />
+      <textarea
+        value={value.excerpt}
+        onChange={(e) => set('excerpt', e.target.value)}
+        placeholder="One or two sentences for cards and meta description."
+        rows={2}
+        className="text-muted-foreground placeholder:text-muted-foreground/40 mb-6 w-full resize-none bg-transparent text-lg leading-snug outline-none"
+      />
+
+      <div className="grid gap-3 sm:grid-cols-2">
+        <AuthorPicker
+          authors={authors}
+          value={value.authorKey}
+          onChange={(k) => set('authorKey', k)}
+          selected={author}
+        />
+        <CategoryPicker
+          categories={categories}
+          value={value.category}
+          onChange={(p) => set('category', p)}
+        />
+        <DateField
+          label="Date"
+          value={value.date}
+          onChange={(d) => set('date', d)}
+          icon={CalendarDays}
+        />
+        <DateField
+          label="Updated"
+          value={value.updatedAt}
+          onChange={(d) => set('updatedAt', d)}
+          icon={CalendarDays}
+        />
+        <ModePicker value={value.mode} onChange={(m) => set('mode', m)} />
+        <FeaturedToggle value={value.featured} onChange={(b) => set('featured', b)} />
+      </div>
+
+      <div className="mt-4">
+        <TagChips
+          value={value.tags}
+          onChange={(t) => set('tags', t)}
+          suggestions={allTags}
+        />
+      </div>
+
+      <details className="group mt-4">
+        <summary className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer items-center gap-1 text-xs font-medium transition-colors">
+          <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" />
+          Cover image & SEO
+        </summary>
+        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+          <Field
+            label="Cover src"
+            value={value.coverSrc}
+            onChange={(v) => set('coverSrc', v)}
+            placeholder="/blog/images/cover.svg"
+            icon={ImageIcon}
+          />
+          <Field
+            label="Cover alt"
+            value={value.coverAlt}
+            onChange={(v) => set('coverAlt', v)}
+          />
+          <Field
+            label="SEO title"
+            value={value.seoTitle}
+            onChange={(v) => set('seoTitle', v)}
+          />
+          <Field
+            label="SEO description"
+            value={value.seoDescription}
+            onChange={(v) => set('seoDescription', v)}
+          />
+        </div>
+      </details>
+    </div>
+  );
+}
+
+function LocalePill({
+  value,
+  options,
+  onChange,
+}: {
+  value: string;
+  options: readonly string[];
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="bg-muted/50 inline-flex overflow-hidden rounded-full p-0.5">
+      {options.map((l) => (
+        <button
+          key={l}
+          type="button"
+          onClick={() => onChange(l)}
+          className={cn(
+            'rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors',
+            value === l
+              ? 'bg-primary text-primary-foreground'
+              : 'text-muted-foreground hover:text-foreground'
+          )}
+        >
+          {l}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function SlugChip({ value, onChange }: { value: string; onChange: (s: string) => void }) {
+  return (
+    <div className="bg-muted/40 text-muted-foreground inline-flex items-center gap-1 rounded-full px-3 py-1 font-mono text-[11px]">
+      <span className="opacity-60">slug</span>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="text-foreground w-56 bg-transparent outline-none"
+        spellCheck={false}
+      />
+    </div>
+  );
+}
+
+function AuthorPicker({
+  authors,
+  value,
+  onChange,
+  selected,
+}: {
+  authors: AuthorOption[];
+  value: string;
+  onChange: (k: string) => void;
+  selected: AuthorOption | undefined;
+}) {
+  return (
+    <label className="border-border/60 hover:border-border bg-background/60 group flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+      <div className="bg-primary/15 text-primary relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-semibold">
+        {selected?.avatar ? (
+          <Image src={selected.avatar} alt={selected.name} fill className="object-cover" />
+        ) : (
+          (selected?.name ?? '?').charAt(0).toUpperCase()
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          Author
+        </div>
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="text-foreground w-full appearance-none bg-transparent text-sm font-medium outline-none"
+        >
+          <option value="">— pick author —</option>
+          {authors.map((a) => (
+            <option key={a.key} value={a.key}>
+              {a.name}
+            </option>
+          ))}
+          <option value="__new__" disabled>
+            + new author (coming soon)
+          </option>
+        </select>
+      </div>
+    </label>
+  );
+}
+
+function CategoryPicker({
+  categories,
+  value,
+  onChange,
+}: {
+  categories: CategoryOption[];
+  value: string;
+  onChange: (p: string) => void;
+}) {
+  return (
+    <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+      <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
+        <Tag className="h-4 w-4" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          Category
+        </div>
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="text-foreground w-full appearance-none bg-transparent text-sm font-medium outline-none"
+        >
+          <option value="">— none —</option>
+          {categories.map((c) => (
+            <option key={c.path} value={c.path}>
+              {c.labelEn} · {c.path}
+            </option>
+          ))}
+        </select>
+      </div>
+    </label>
+  );
+}
+
+function DateField({
+  label,
+  value,
+  onChange,
+  icon: Icon,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  icon: typeof CalendarDays;
+}) {
+  return (
+    <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+      <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
+        <Icon className="h-4 w-4" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          {label}
+        </div>
+        <input
+          type="date"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="text-foreground w-full bg-transparent text-sm font-medium outline-none"
+        />
+      </div>
+    </label>
+  );
+}
+
+function ModePicker({
+  value,
+  onChange,
+}: {
+  value: 'published' | 'hidden' | 'draft';
+  onChange: (m: 'published' | 'hidden' | 'draft') => void;
+}) {
+  const options: Array<{ k: 'published' | 'hidden' | 'draft'; label: string; tone: string }> = [
+    { k: 'draft', label: 'Draft', tone: 'bg-muted text-muted-foreground' },
+    { k: 'hidden', label: 'Hidden', tone: 'bg-amber-500/15 text-amber-500' },
+    { k: 'published', label: 'Published', tone: 'bg-emerald-500/15 text-emerald-500' },
+  ];
+  return (
+    <div className="border-border/60 bg-background/60 flex items-center gap-3 rounded-xl border px-3 py-2">
+      <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
+        <Check className="h-4 w-4" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          Mode
+        </div>
+        <div className="flex gap-1">
+          {options.map((o) => (
+            <button
+              key={o.k}
+              type="button"
+              onClick={() => onChange(o.k)}
+              className={cn(
+                'rounded-full px-2.5 py-0.5 text-xs font-semibold transition-opacity',
+                o.tone,
+                value === o.k ? 'opacity-100' : 'opacity-50 hover:opacity-80'
+              )}
+            >
+              {o.label}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FeaturedToggle({ value, onChange }: { value: boolean; onChange: (b: boolean) => void }) {
+  return (
+    <button
+      type="button"
+      onClick={() => onChange(!value)}
+      className={cn(
+        'flex items-center gap-3 rounded-xl border px-3 py-2 transition-colors',
+        value
+          ? 'border-primary/40 bg-primary/10'
+          : 'border-border/60 bg-background/60 hover:border-border'
+      )}
+    >
+      <div
+        className={cn(
+          'flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
+          value ? 'bg-primary/25 text-primary' : 'bg-primary/15 text-primary'
+        )}
+      >
+        <Sparkles className="h-4 w-4" />
+      </div>
+      <div className="min-w-0 flex-1 text-left">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          Featured
+        </div>
+        <div className="text-foreground text-sm font-medium">{value ? 'Yes' : 'No'}</div>
+      </div>
+    </button>
+  );
+}
+
+function TagChips({
+  value,
+  onChange,
+  suggestions,
+}: {
+  value: string[];
+  onChange: (v: string[]) => void;
+  suggestions: string[];
+}) {
+  const [draft, setDraft] = useState('');
+  const available = suggestions.filter(
+    (s) => !value.includes(s) && (!draft || s.toLowerCase().includes(draft.toLowerCase()))
+  );
+  const add = (t: string) => {
+    const cleaned = t.trim().toLowerCase();
+    if (!cleaned || value.includes(cleaned)) return;
+    onChange([...value, cleaned]);
+    setDraft('');
+  };
+  const remove = (t: string) => onChange(value.filter((x) => x !== t));
+
+  return (
+    <div>
+      <div className="text-muted-foreground mb-1.5 text-[10px] font-semibold uppercase tracking-wider">
+        Tags
+      </div>
+      <div className="border-border/60 bg-background/60 flex flex-wrap items-center gap-1.5 rounded-xl border px-3 py-2">
+        {value.map((t) => (
+          <span
+            key={t}
+            className="bg-primary/15 text-primary inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium"
+          >
+            #{t}
+            <button
+              type="button"
+              onClick={() => remove(t)}
+              className="hover:bg-primary/25 rounded-full p-0.5 transition-colors"
+              aria-label={`Remove ${t}`}
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </span>
+        ))}
+        <input
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ',') {
+              e.preventDefault();
+              add(draft);
+            } else if (e.key === 'Backspace' && !draft && value.length) {
+              remove(value[value.length - 1]);
+            }
+          }}
+          placeholder={value.length ? '' : 'Type a tag, press Enter'}
+          className="text-foreground min-w-[8rem] flex-1 bg-transparent text-sm outline-none"
+        />
+      </div>
+      {available.length > 0 && (draft || value.length === 0) && (
+        <div className="mt-1.5 flex flex-wrap gap-1">
+          {available.slice(0, 12).map((t) => (
+            <button
+              key={t}
+              type="button"
+              onClick={() => add(t)}
+              className="text-muted-foreground hover:bg-primary/10 hover:text-primary rounded-full px-2 py-0.5 text-[11px] transition-colors"
+            >
+              + {t}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Field({
+  label,
+  value,
+  onChange,
+  placeholder,
+  icon: Icon,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  icon?: typeof CalendarDays;
+}) {
+  return (
+    <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+      {Icon && (
+        <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
+          <Icon className="h-4 w-4" />
+        </div>
+      )}
+      <div className="min-w-0 flex-1">
+        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          {label}
+        </div>
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className="text-foreground placeholder:text-muted-foreground/40 w-full bg-transparent text-sm outline-none"
+        />
+      </div>
+    </label>
+  );
+}
