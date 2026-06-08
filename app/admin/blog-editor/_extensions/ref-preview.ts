@@ -1,0 +1,249 @@
+import { Extension } from '@tiptap/core';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { Decoration, DecorationSet } from '@tiptap/pm/view';
+import type { Node as PMNode } from '@tiptap/pm/model';
+
+/**
+ * Live WYSIWYG preview for `[label](ref:…)` links — adds the same inline
+ * annotation (city, country + live badge) that the published blog renderer
+ * shows. The decoration sits to the right of the link span; ?bare suppresses
+ * it (matches the renderer) and ?full hides it too because the spotlight card
+ * is rendered as a whole block instead.
+ *
+ * Implementation note: data is fetched once per unique ref via a module-level
+ * cache so jumping between locale tabs or remounting the editor doesn't
+ * re-hit the API for refs already seen this session.
+ */
+
+interface RefData {
+  kind: 'park' | 'ride';
+  found: boolean;
+  name?: string;
+  city?: string;
+  country?: string;
+  parkName?: string;
+  status?: string | null;
+  crowdLevel?: string | null;
+  waitTime?: number | null;
+}
+
+type CacheEntry = { state: 'loading' } | { state: 'failed' } | { state: 'ready'; data: RefData };
+
+const cache = new Map<string, CacheEntry>();
+
+function fetchRef(refValue: string, onResolve: () => void) {
+  if (cache.has(refValue)) return;
+  cache.set(refValue, { state: 'loading' });
+  fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
+    .then((r) => (r.ok ? (r.json() as Promise<RefData>) : Promise.reject()))
+    .then((data) => {
+      cache.set(refValue, { state: 'ready', data });
+    })
+    .catch(() => {
+      cache.set(refValue, { state: 'failed' });
+    })
+    .finally(() => {
+      onResolve();
+    });
+}
+
+interface RefSpan {
+  from: number;
+  to: number;
+  refValue: string;
+  options: Set<string>;
+}
+
+function parseRefHref(href: string): { value: string; options: Set<string> } | null {
+  if (!href.startsWith('ref:')) return null;
+  const rest = href.slice('ref:'.length);
+  const qIdx = rest.indexOf('?');
+  if (qIdx === -1) return { value: rest, options: new Set() };
+  return {
+    value: rest.slice(0, qIdx),
+    options: new Set(
+      rest
+        .slice(qIdx + 1)
+        .split('&')
+        .map((s) => s.split('=')[0]?.toLowerCase() ?? '')
+        .filter(Boolean)
+    ),
+  };
+}
+
+/**
+ * Walk the doc and collect contiguous spans of text that share a single
+ * ref: link href. ProseMirror splits link-marked text across multiple text
+ * nodes for any internal style change, so we coalesce by neighbour position +
+ * matching href to find the actual end of the link.
+ */
+function collectRefs(doc: PMNode): RefSpan[] {
+  const raw: Array<{ from: number; to: number; href: string }> = [];
+  doc.descendants((node, pos) => {
+    if (!node.isText) return;
+    const link = node.marks.find(
+      (m) =>
+        m.type.name === 'link' &&
+        typeof m.attrs.href === 'string' &&
+        (m.attrs.href as string).startsWith('ref:')
+    );
+    if (!link) return;
+    const href = link.attrs.href as string;
+    const from = pos;
+    const to = pos + node.nodeSize;
+    const last = raw[raw.length - 1];
+    if (last && last.to === from && last.href === href) {
+      last.to = to;
+    } else {
+      raw.push({ from, to, href });
+    }
+  });
+  const out: RefSpan[] = [];
+  for (const r of raw) {
+    const parsed = parseRefHref(r.href);
+    if (!parsed) continue;
+    out.push({ from: r.from, to: r.to, refValue: parsed.value, options: parsed.options });
+  }
+  return out;
+}
+
+function statusBadgeText(status: string | null | undefined): string | null {
+  if (!status) return null;
+  if (status === 'OPERATING') return null;
+  return status.replace(/_/g, ' ').toLowerCase();
+}
+
+function buildBadgeDOM(span: RefSpan): HTMLElement {
+  const wrapper = document.createElement('span');
+  wrapper.className = 'ref-preview-badge';
+  // Critical — without this PM will try to map editing into our injected DOM
+  // and split text nodes oddly.
+  wrapper.contentEditable = 'false';
+  wrapper.setAttribute('data-ref', span.refValue);
+
+  const entry = cache.get(span.refValue);
+  if (!entry || entry.state === 'loading') {
+    wrapper.classList.add('ref-preview-badge--loading');
+    wrapper.textContent = '…';
+    return wrapper;
+  }
+  if (entry.state === 'failed') {
+    wrapper.classList.add('ref-preview-badge--failed');
+    wrapper.textContent = '· not found';
+    return wrapper;
+  }
+  const data = entry.data;
+  if (!data.found) {
+    wrapper.classList.add('ref-preview-badge--failed');
+    wrapper.textContent = '· not found';
+    return wrapper;
+  }
+
+  const location = document.createElement('span');
+  location.className = 'ref-preview-location';
+  if (data.kind === 'park') {
+    location.textContent = ` (${data.city}, ${data.country})`;
+  } else {
+    location.textContent = ` (${data.parkName}, ${data.country})`;
+  }
+  wrapper.appendChild(location);
+
+  // Live badge — wait time for rides, crowd level for parks, status when shut.
+  const statusText = statusBadgeText(data.status);
+  if (statusText) {
+    const badge = document.createElement('span');
+    badge.className = 'ref-preview-pill ref-preview-pill--status';
+    badge.textContent = statusText;
+    wrapper.appendChild(badge);
+  } else if (data.kind === 'ride' && typeof data.waitTime === 'number') {
+    const badge = document.createElement('span');
+    badge.className = 'ref-preview-pill ref-preview-pill--wait';
+    badge.textContent = `${data.waitTime} min`;
+    wrapper.appendChild(badge);
+  } else if (data.kind === 'park' && data.crowdLevel) {
+    const badge = document.createElement('span');
+    badge.className = 'ref-preview-pill ref-preview-pill--crowd';
+    badge.textContent = data.crowdLevel.toLowerCase();
+    wrapper.appendChild(badge);
+  }
+
+  return wrapper;
+}
+
+function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
+  const decorations: Decoration[] = [];
+  for (const span of spans) {
+    // ?bare suppresses the annotation; ?full means a block card is rendered
+    // instead so the inline preview would be misleading.
+    if (span.options.has('bare') || span.options.has('full')) continue;
+    decorations.push(
+      Decoration.widget(span.to, () => buildBadgeDOM(span), {
+        side: 1,
+        // Stable key so PM reuses the DOM across keystrokes when nothing
+        // about the span actually changed.
+        key: `ref-preview:${span.from}:${span.refValue}:${[...span.options].join(',')}`,
+      })
+    );
+  }
+  return DecorationSet.create(doc, decorations);
+}
+
+interface PluginState {
+  decorations: DecorationSet;
+  spans: RefSpan[];
+}
+
+const refPreviewKey = new PluginKey<PluginState>('refPreview');
+
+export const RefPreview = Extension.create({
+  name: 'refPreview',
+  addProseMirrorPlugins() {
+    return [
+      new Plugin<PluginState>({
+        key: refPreviewKey,
+        state: {
+          init(_, state) {
+            const spans = collectRefs(state.doc);
+            return { spans, decorations: buildDecorations(state.doc, spans) };
+          },
+          apply(tr, prev, _old, newState) {
+            const refresh = tr.getMeta(refPreviewKey) === 'refresh';
+            if (!tr.docChanged && !refresh) {
+              return {
+                spans: prev.spans,
+                decorations: prev.decorations.map(tr.mapping, tr.doc),
+              };
+            }
+            const spans = collectRefs(newState.doc);
+            return { spans, decorations: buildDecorations(newState.doc, spans) };
+          },
+        },
+        view(view) {
+          const triggerFetches = () => {
+            const s = refPreviewKey.getState(view.state);
+            if (!s) return;
+            for (const span of s.spans) {
+              if (span.options.has('bare') || span.options.has('full')) continue;
+              if (cache.has(span.refValue)) continue;
+              fetchRef(span.refValue, () => {
+                if (view.isDestroyed) return;
+                view.dispatch(view.state.tr.setMeta(refPreviewKey, 'refresh'));
+              });
+            }
+          };
+          triggerFetches();
+          return {
+            update(updatedView, prevState) {
+              if (updatedView.state.doc !== prevState.doc) triggerFetches();
+            },
+          };
+        },
+        props: {
+          decorations(state) {
+            return refPreviewKey.getState(state)?.decorations;
+          },
+        },
+      }),
+    ];
+  },
+});

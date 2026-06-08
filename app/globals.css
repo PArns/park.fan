@@ -745,6 +745,55 @@ html[data-temp-unit='F'] .u-imperial {
   text-decoration: none;
 }
 
+/* WYSIWYG annotation injected right after every `ref:` link by RefPreview —
+   mirrors the published renderer's "(City, Country) [badge]" annotation so
+   authors see live what `?info` vs `?bare` looks like. */
+.tiptap-canvas .ref-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-size: 0.85em;
+  font-weight: 400;
+  vertical-align: baseline;
+  user-select: none;
+  pointer-events: none;
+  margin-left: 0.05em;
+}
+.tiptap-canvas .ref-preview-location {
+  color: var(--muted-foreground, hsl(0 0% 60%));
+}
+.tiptap-canvas .ref-preview-badge--loading,
+.tiptap-canvas .ref-preview-badge--failed {
+  color: var(--muted-foreground, hsl(0 0% 60%));
+  opacity: 0.7;
+  font-style: italic;
+}
+.tiptap-canvas .ref-preview-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.4em;
+  height: 1.4em;
+  border-radius: 9999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.tiptap-canvas .ref-preview-pill--wait {
+  background: hsl(var(--primary) / 0.15);
+  color: var(--primary);
+}
+.tiptap-canvas .ref-preview-pill--crowd {
+  background: hsl(var(--primary) / 0.12);
+  color: var(--primary);
+  text-transform: capitalize;
+}
+.tiptap-canvas .ref-preview-pill--status {
+  background: hsl(0 70% 50% / 0.18);
+  color: hsl(0 70% 65%);
+  text-transform: uppercase;
+}
+
 /* ─── TipTap menus (tippy popovers) ───────────────────────────────────────── */
 
 /* Slash-menu tippy: kill the default white box so our own card shows. */
