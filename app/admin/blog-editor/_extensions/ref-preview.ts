@@ -423,7 +423,7 @@ export const RefPreview = Extension.create({
           handleClick(view, _pos, event) {
             const target = event.target as HTMLElement | null;
             const chip = target?.closest(
-              '.ref-preview-badge, .ref-preview-spotlight, .tiptap-canvas a[href^="ref:"]'
+              '.ref-preview-badge, .ref-preview-spotlight, .tiptap-canvas a[href]'
             ) as HTMLElement | null;
             if (!chip) return false;
             // For decoration chips we stashed the link range on the DOM; for
@@ -439,7 +439,7 @@ export const RefPreview = Extension.create({
               const linkMark = $pos.marks().find((m) => m.type.name === 'link');
               if (!linkMark) return false;
               href = String(linkMark.attrs.href ?? '');
-              if (!href.startsWith('ref:')) return false;
+              if (!href) return false;
               // Walk the textblock to find the contiguous link range.
               const parent = $pos.parent;
               let start = $pos.start();
@@ -464,18 +464,19 @@ export const RefPreview = Extension.create({
             const sel = TextSelection.create(view.state.doc, from, to);
             view.dispatch(view.state.tr.setSelection(sel).scrollIntoView());
             view.focus();
-            // Fire a window event the canvas listens for, with the chip rect
-            // so the popover can position itself near what was clicked.
+            // Fire a window event the canvas listens for. ref: chips get the
+            // variant popover; everything else (http/mailto/internal) gets the
+            // plain LinkEditPopover with an href field.
+            const isRef = href.startsWith('ref:');
             const rect = chip.getBoundingClientRect();
+            const detail = {
+              from,
+              to,
+              href,
+              rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
+            };
             window.dispatchEvent(
-              new CustomEvent('parkfan-ref-edit', {
-                detail: {
-                  from,
-                  to,
-                  href,
-                  rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
-                },
-              })
+              new CustomEvent(isRef ? 'parkfan-ref-edit' : 'parkfan-link-edit', { detail })
             );
             return true;
           },

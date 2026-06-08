@@ -78,22 +78,29 @@ export function RefEditPopover({
   const current = parsed?.opt ?? 'info';
 
   // Position just above the chip; if it'd run off the top, drop below it.
-  const POPOVER_HEIGHT = 56;
-  const above = target.rect.top - POPOVER_HEIGHT > 16;
-  const top = above ? target.rect.top - POPOVER_HEIGHT - 8 : target.rect.bottom + 8;
+  const POPOVER_WIDTH = 380;
+  const POPOVER_HEIGHT = 44;
+  const wantsTop = target.rect.top - POPOVER_HEIGHT - 12 > 80;
+  const top = wantsTop ? target.rect.top - POPOVER_HEIGHT - 10 : target.rect.bottom + 10;
   const left = Math.max(
     16,
     Math.min(
-      window.innerWidth - 16 - 360,
-      (target.rect.left + target.rect.right) / 2 - 180
+      window.innerWidth - 16 - POPOVER_WIDTH,
+      (target.rect.left + target.rect.right) / 2 - POPOVER_WIDTH / 2
     )
   );
 
   return (
     <div
       ref={ref}
-      style={{ position: 'fixed', top, left, zIndex: 60 }}
-      className="border-border/60 bg-popover text-popover-foreground inline-flex items-center gap-1 rounded-xl border p-1 shadow-2xl"
+      style={{
+        position: 'fixed',
+        top,
+        left,
+        zIndex: 60,
+        width: POPOVER_WIDTH,
+      }}
+      className="border-primary/40 bg-popover text-popover-foreground inline-flex animate-in fade-in zoom-in-95 items-center gap-1 rounded-xl border-2 p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.6)] duration-150"
     >
       <span className="text-muted-foreground px-1.5 text-[10px] font-semibold uppercase tracking-wider">
         Variant

@@ -48,6 +48,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         path: c.path,
         labelEn: c.labels.en ?? c.path,
         labelDe: c.labels.de ?? c.labels.en ?? c.path,
+        labels: c.labels,
       })),
     ],
     [initialData.categories, newCategories]

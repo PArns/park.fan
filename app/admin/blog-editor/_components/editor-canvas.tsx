@@ -24,6 +24,7 @@ import {
   type RefEditTarget,
   type RefVariant,
 } from './ref-edit-popover';
+import { LinkEditPopover, type LinkEditTarget } from './link-edit-popover';
 
 interface EditorCanvasProps {
   initialMarkdown: string;
@@ -44,6 +45,8 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
   /** Currently-edited ref chip — drives the floating Variant/Replace popover. */
   const [refEditTarget, setRefEditTarget] = useState<RefEditTarget | null>(null);
+  /** Plain link click — drives the LinkEditPopover (href field + Save / Remove). */
+  const [linkEditTarget, setLinkEditTarget] = useState<LinkEditTarget | null>(null);
   /** When set, the next picker pick replaces the existing link range rather
    *  than inserting a fresh link. */
   const replaceRangeRef = useRef<{ from: number; to: number } | null>(null);
@@ -223,15 +226,50 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
   };
 
   // Listen for chip-click events fired by the ref-preview plugin and open the
-  // floating edit popover next to whatever was clicked.
+  // floating edit popover next to whatever was clicked. ref: links open the
+  // variant Editor; everything else gets the plain href editor.
   useEffect(() => {
-    const onEdit = (e: Event) => {
-      const ce = e as CustomEvent<RefEditTarget>;
-      setRefEditTarget(ce.detail);
+    const onRef = (e: Event) => setRefEditTarget((e as CustomEvent<RefEditTarget>).detail);
+    const onLink = (e: Event) => setLinkEditTarget((e as CustomEvent<LinkEditTarget>).detail);
+    window.addEventListener('parkfan-ref-edit', onRef as EventListener);
+    window.addEventListener('parkfan-link-edit', onLink as EventListener);
+    return () => {
+      window.removeEventListener('parkfan-ref-edit', onRef as EventListener);
+      window.removeEventListener('parkfan-link-edit', onLink as EventListener);
     };
-    window.addEventListener('parkfan-ref-edit', onEdit as EventListener);
-    return () => window.removeEventListener('parkfan-ref-edit', onEdit as EventListener);
   }, []);
+
+  const saveLink = (next: string) => {
+    if (!editor || !linkEditTarget) return;
+    const trimmed = next.trim();
+    if (!trimmed) {
+      editor
+        .chain()
+        .focus()
+        .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
+        .unsetLink()
+        .run();
+    } else {
+      editor
+        .chain()
+        .focus()
+        .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
+        .extendMarkRange('link')
+        .setLink({ href: trimmed })
+        .run();
+    }
+    setLinkEditTarget(null);
+  };
+  const removeLinkAt = () => {
+    if (!editor || !linkEditTarget) return;
+    editor
+      .chain()
+      .focus()
+      .setTextSelection({ from: linkEditTarget.from, to: linkEditTarget.to })
+      .unsetLink()
+      .run();
+    setLinkEditTarget(null);
+  };
 
   const applyVariant = (variant: RefVariant) => {
     if (!editor || !refEditTarget) return;
@@ -306,6 +344,12 @@ export function EditorCanvas({ initialMarkdown, onMarkdownChange }: EditorCanvas
           onVariant={applyVariant}
           onReplace={replaceLink}
           onRemove={removeLink}
+        />
+        <LinkEditPopover
+          target={linkEditTarget}
+          onClose={() => setLinkEditTarget(null)}
+          onSave={saveLink}
+          onRemove={removeLinkAt}
         />
       </div>
     </div>

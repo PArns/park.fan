@@ -14,12 +14,20 @@ export interface AuthorOption {
   name: string;
   avatar?: string;
   role?: string;
+  /** Full editable fields — read once upfront so the Edit modal can pre-fill
+   *  without an extra round-trip. Tiny payload for the handful of authors. */
+  location?: string;
+  url?: string;
+  bio?: string;
 }
 
 export interface CategoryOption {
   path: string;
   labelEn: string;
   labelDe: string;
+  /** Every per-locale label as stored in categories.json, so the Edit modal
+   *  can show all of them at once. */
+  labels: Partial<Record<Locale, string>>;
 }
 
 export interface EditorInitialData {
@@ -44,6 +52,7 @@ const getCategories = cache((): CategoryOption[] => {
       path: p,
       labelEn: labels.en ?? p,
       labelDe: labels.de ?? labels.en ?? p,
+      labels,
     }));
   } catch {
     return [];
@@ -82,6 +91,9 @@ const getAuthors = cache((): AuthorOption[] => {
       name: a.name,
       ...(a.avatar ? { avatar: a.avatar } : {}),
       ...(a.role ? { role: a.role } : {}),
+      ...(a.location ? { location: a.location } : {}),
+      ...(a.url ? { url: a.url } : {}),
+      ...(a.bioBody ? { bio: a.bioBody } : a.bio ? { bio: a.bio } : {}),
     });
   }
   return out;
