@@ -82,8 +82,15 @@ interface PropertiesPanelProps {
   selection: EditorSelection;
   /** Total markdown length — shown in the empty state stats. */
   charCount: number;
-  /** Triggered when the author asks to swap the underlying park/ride. */
-  onReplaceRef: () => void;
+  /** Triggered when the author asks to swap the underlying park/ride. The
+   *  rect (when supplied) anchors the picker near the click instead of
+   *  floating at the top of the viewport. */
+  onReplaceRef: (rect?: {
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  }) => void;
 }
 
 /**
@@ -171,7 +178,12 @@ function RefProperties({
 }: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'ref' }>;
-  onReplaceRef: () => void;
+  onReplaceRef: (rect?: {
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  }) => void;
 }) {
   // Pull the current variant fresh from the href every render so external
   // edits to the link mark (e.g. via the source view) reflect immediately.
@@ -253,7 +265,18 @@ function RefProperties({
 
       <Section label="Actions">
         <div className="grid gap-1.5">
-          <ActionButton onClick={onReplaceRef} icon={Replace}>
+          <ActionButton
+            onClick={(ev) => {
+              const r = ev.currentTarget.getBoundingClientRect();
+              onReplaceRef({
+                top: r.top,
+                bottom: r.bottom,
+                left: r.left,
+                right: r.right,
+              });
+            }}
+            icon={Replace}
+          >
             Replace park / ride…
           </ActionButton>
           <ActionButton onClick={removeLink} icon={Trash2} destructive>
@@ -478,19 +501,39 @@ function WidgetForm({
           }
           return null;
         })();
-        const openPicker = () => {
+        const openPicker = (ev: React.MouseEvent<HTMLButtonElement>) => {
           if (!pickerMode) return;
+          // Anchor the picker near the trigger button so it doesn't always
+          // float at the top of the viewport.
+          const btnRect = ev.currentTarget.getBoundingClientRect();
+          const rect = {
+            top: btnRect.top,
+            bottom: btnRect.bottom,
+            left: btnRect.left,
+            right: btnRect.right,
+          };
           const id = `pick-${Date.now()}-${Math.random().toString(36).slice(2)}`;
           const onResult = (ev: Event) => {
-            const detail = (ev as CustomEvent<{ id: string; slug: string }>).detail;
+            const detail = (
+              ev as CustomEvent<{ id: string; slug: string; parentParkSlug?: string }>
+            ).detail;
             if (detail.id !== id) return;
             window.removeEventListener(
               'parkfan-park-picker-result',
               onResult as EventListener
             );
             // Pull the latest attrs to avoid stomping fields the user edited
-            // between opening and choosing.
-            setAttrs((prev) => ({ ...prev, [f.key]: detail.slug }));
+            // between opening and choosing. When picking a ride for the
+            // attraction-widget we also auto-fill parkSlug from the ride's
+            // parent — otherwise the author has to pick twice.
+            const hasParkSlugField = fields.some((x) => x.key === 'parkSlug');
+            setAttrs((prev) => {
+              const next = { ...prev, [f.key]: detail.slug };
+              if (detail.parentParkSlug && pickerMode === 'ride' && hasParkSlugField) {
+                next.parkSlug = detail.parentParkSlug;
+              }
+              return next;
+            });
           };
           window.addEventListener(
             'parkfan-park-picker-result',
@@ -498,7 +541,7 @@ function WidgetForm({
           );
           window.dispatchEvent(
             new CustomEvent('parkfan-park-picker-request', {
-              detail: { id, mode: pickerMode },
+              detail: { id, mode: pickerMode, rect },
             })
           );
         };
@@ -778,9 +821,25 @@ function ImageForm({
     window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
   const pickImage = () => {
+    // Re-resolve the image's live position right before opening — the rect we
+    // captured at click time goes stale as soon as the author scrolls or
+    // adds/removes content above. Walking the canvas for the matching <img>
+    // gives the picker a fresh anchor every time.
+    const liveRect = ((): typeof selection.rect | undefined => {
+      const canvas = document.querySelector('.tiptap-canvas');
+      if (!canvas) return selection.rect;
+      const imgs = canvas.querySelectorAll<HTMLImageElement>('img');
+      for (const img of imgs) {
+        if (img.getAttribute('src') === selection.src) {
+          const r = img.getBoundingClientRect();
+          return { top: r.top, bottom: r.bottom, left: r.left, right: r.right };
+        }
+      }
+      return selection.rect;
+    })();
     window.dispatchEvent(
       new CustomEvent('parkfan-image-pick-request', {
-        detail: { pos: selection.pos, rect: selection.rect },
+        detail: { pos: selection.pos, rect: liveRect },
       })
     );
   };
@@ -944,7 +1003,7 @@ function ActionButton({
   destructive,
   children,
 }: {
-  onClick: () => void;
+  onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
   icon: typeof MapPin;
   destructive?: boolean;
   children: React.ReactNode;

@@ -55,19 +55,22 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     };
   }, []);
 
-  const requestRefReplace = useCallback(() => {
-    if (!selection || selection.kind !== 'ref') return;
-    const value = selection.value;
-    const isRide = value.startsWith('/parks/')
-      ? value.slice('/parks/'.length).split('/').filter(Boolean).length >= 5
-      : value.includes('/');
-    window.dispatchEvent(
-      new CustomEvent('parkfan-replace-ref-request', {
-        detail: { pos: selection.pos, isRide },
-      })
-    );
-    setSelection(null);
-  }, [selection]);
+  const requestRefReplace = useCallback(
+    (anchorRect?: { top: number; bottom: number; left: number; right: number }) => {
+      if (!selection || selection.kind !== 'ref') return;
+      const value = selection.value;
+      const isRide = value.startsWith('/parks/')
+        ? value.slice('/parks/'.length).split('/').filter(Boolean).length >= 5
+        : value.includes('/');
+      window.dispatchEvent(
+        new CustomEvent('parkfan-replace-ref-request', {
+          detail: { pos: selection.pos, isRide, rect: anchorRect },
+        })
+      );
+      setSelection(null);
+    },
+    [selection]
+  );
   /** Authors / categories the user created in this session — get appended to
    *  the editor's pickers AND sent with the save payload so the resulting PR
    *  contains the new author file / categories.json patch. */

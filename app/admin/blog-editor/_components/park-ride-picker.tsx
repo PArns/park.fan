@@ -18,6 +18,11 @@ export interface PickerResult {
   refKey: string;
   label: string;
   kind: 'park' | 'ride';
+  /** For rides — the parent park's bare slug straight from the search hit.
+   *  The URL has an intercalated `/attractions/` segment so deriving this
+   *  from `refKey` alone is brittle; the search backend gives us the
+   *  authoritative value. */
+  parentParkSlug?: string;
   /** Inline only — spotlight always uses `?full`. */
   option: RefOption;
 }
@@ -26,6 +31,10 @@ interface ParkRidePickerProps {
   mode: PickerMode | null;
   onPick: (result: PickerResult) => void;
   onClose: () => void;
+  /** Bounding rect of whatever triggered the picker (panel button, chip).
+   *  When supplied the modal floats near the trigger instead of always
+   *  hovering at the top of the viewport. */
+  anchorRect?: { top: number; bottom: number; left: number; right: number };
 }
 
 interface SearchHit {
@@ -57,7 +66,12 @@ function pathFromHit(hit: SearchHit): string | null {
  * mode shows both parks and rides since the author picks either kind for
  * a ?full card.
  */
-export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
+export function ParkRidePicker({
+  mode,
+  onPick,
+  onClose,
+  anchorRect,
+}: ParkRidePickerProps) {
   const [q, setQ] = useState('');
   const [option, setOption] = useState<RefOption>('info');
   const [hits, setHits] = useState<{ parks: SearchHit[]; rides: SearchHit[] }>({
@@ -112,17 +126,65 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
   const choose = (hit: SearchHit, kind: 'park' | 'ride') => {
     const ref = pathFromHit(hit);
     if (!ref) return;
-    onPick({ refKey: ref, label: hit.name, kind, option });
+    onPick({
+      refKey: ref,
+      label: hit.name,
+      kind,
+      option,
+      ...(kind === 'ride' && hit.parentPark?.slug
+        ? { parentParkSlug: hit.parentPark.slug }
+        : {}),
+    });
   };
+
+  // Anchor positioning — same scheme the ImagePicker uses. When a trigger
+  // rect is supplied, place the modal near it on the side with more room so
+  // the dialog never escapes the viewport.
+  const DIALOG_HEIGHT = Math.min(560, window.innerHeight * 0.8);
+  let modalStyle: React.CSSProperties = {};
+  if (anchorRect) {
+    const spaceBelow = window.innerHeight - anchorRect.bottom;
+    const spaceAbove = anchorRect.top;
+    const placeBelow = spaceBelow >= 360 || spaceBelow >= spaceAbove;
+    const top = placeBelow
+      ? Math.max(
+          16,
+          Math.min(anchorRect.bottom + 12, window.innerHeight - DIALOG_HEIGHT - 16)
+        )
+      : Math.max(16, anchorRect.top - DIALOG_HEIGHT - 12);
+    modalStyle = {
+      position: 'fixed',
+      top,
+      left: Math.max(
+        16,
+        Math.min(
+          window.innerWidth - 16 - 620,
+          (anchorRect.left + anchorRect.right) / 2 - 310
+        )
+      ),
+      width: 'min(620px, 92vw)',
+      maxHeight: DIALOG_HEIGHT,
+    };
+  }
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 backdrop-blur-sm pt-[15vh]"
+      className={
+        anchorRect
+          ? 'fixed inset-0 z-50 bg-black/40 backdrop-blur-sm'
+          : 'fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-[15vh] backdrop-blur-sm'
+      }
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="border-border/60 bg-popover text-popover-foreground w-[min(620px,92vw)] overflow-hidden rounded-2xl border shadow-2xl">
+      <div
+        style={modalStyle}
+        className={
+          'border-border/60 bg-popover text-popover-foreground overflow-hidden rounded-2xl border shadow-2xl flex flex-col ' +
+          (anchorRect ? '' : 'w-[min(620px,92vw)]')
+        }
+      >
         <div className="border-border/60 flex items-center gap-2 border-b px-3 py-2">
           <input
             ref={inputRef}
@@ -186,7 +248,7 @@ export function ParkRidePicker({ mode, onPick, onClose }: ParkRidePickerProps) {
             </span>
           </div>
         )}
-        <div className="max-h-[60vh] overflow-y-auto p-1">
+        <div className="min-h-0 flex-1 overflow-y-auto p-1">
           {visibleParks.length === 0 && visibleRides.length === 0 && (
             <div className="text-muted-foreground p-6 text-center text-sm">
               {q.trim().length === 0

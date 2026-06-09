@@ -64,6 +64,11 @@ export function EditorCanvas({
   const [imagePickerAnchor, setImagePickerAnchor] = useState<
     { top: number; bottom: number; left: number; right: number } | null
   >(null);
+  /** Trigger rect for the park/ride picker. Set when the picker is opened
+   *  from a panel control so it floats near the click instead of pt-[15vh]. */
+  const [parkPickerAnchor, setParkPickerAnchor] = useState<
+    { top: number; bottom: number; left: number; right: number } | null
+  >(null);
   /** Render-time mirror of replaceImagePosRef.current so the ImagePicker can
    *  read `replaceMode` without us reading a ref during render (React 19
    *  forbids that — eslint-plugin-react-hooks/refs catches it). */
@@ -217,12 +222,21 @@ export function EditorCanvas({
     // just the bare slug (last path segment) and close the picker without
     // touching the doc.
     if (widgetPickRequestRef.current) {
-      // refKey looks like `/parks/europe/germany/bruehl/phantasialand[/ride]`;
-      // the widget fields expect just the last slug component.
-      const slug = r.refKey.split('/').filter(Boolean).pop() ?? r.refKey;
+      // refKey looks like `/parks/europe/germany/bruehl/phantasialand[/attractions/<ride>]`;
+      // the widget fields expect just the last slug component. For a ride
+      // we also surface its parent park slug from the search hit so the
+      // attraction-widget's parkSlug field auto-fills — the URL has an
+      // intercalated `/attractions/` segment so slicing the path alone would
+      // produce "attractions" instead of the park.
+      const parts = r.refKey.split('/').filter(Boolean);
+      const slug = parts[parts.length - 1] ?? r.refKey;
       window.dispatchEvent(
         new CustomEvent('parkfan-park-picker-result', {
-          detail: { id: widgetPickRequestRef.current, slug },
+          detail: {
+            id: widgetPickRequestRef.current,
+            slug,
+            ...(r.parentParkSlug ? { parentParkSlug: r.parentParkSlug } : {}),
+          },
         })
       );
       widgetPickRequestRef.current = null;
@@ -286,8 +300,15 @@ export function EditorCanvas({
   // and swaps content.
   useEffect(() => {
     const onReplaceRequest = (e: Event) => {
-      const detail = (e as CustomEvent<{ pos: number; isRide: boolean }>).detail;
+      const detail = (
+        e as CustomEvent<{
+          pos: number;
+          isRide: boolean;
+          rect?: { top: number; bottom: number; left: number; right: number };
+        }>
+      ).detail;
       replacePosRef.current = detail.pos;
+      setParkPickerAnchor(detail.rect ?? null);
       setPickerMode(detail.isRide ? 'ride' : 'park');
     };
     const onImageRequest = (e: Event) => {
@@ -303,8 +324,15 @@ export function EditorCanvas({
       setImagePickerOpen(true);
     };
     const onWidgetPickRequest = (e: Event) => {
-      const detail = (e as CustomEvent<{ id: string; mode: 'park' | 'ride' }>).detail;
+      const detail = (
+        e as CustomEvent<{
+          id: string;
+          mode: 'park' | 'ride';
+          rect?: { top: number; bottom: number; left: number; right: number };
+        }>
+      ).detail;
       widgetPickRequestRef.current = detail.id;
+      setParkPickerAnchor(detail.rect ?? null);
       setPickerMode(detail.mode);
     };
     window.addEventListener('parkfan-replace-ref-request', onReplaceRequest as EventListener);
@@ -330,14 +358,18 @@ export function EditorCanvas({
         aria-hidden="true"
         className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
       />
-      <div className="border-border/60 bg-background/60 relative overflow-hidden rounded-2xl border p-8 backdrop-blur-md">
+      <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8 backdrop-blur-md">
         <FixedToolbar editor={editor} onEmit={onToolbarEmit} />
         <EditorBubbleMenu editor={editor} />
         <EditorContent editor={editor} />
         <ParkRidePicker
           mode={pickerMode}
+          anchorRect={parkPickerAnchor ?? undefined}
           onPick={handlePick}
-          onClose={() => setPickerMode(null)}
+          onClose={() => {
+            setPickerMode(null);
+            setParkPickerAnchor(null);
+          }}
         />
         <ImagePicker
           open={imagePickerOpen}
@@ -360,6 +392,11 @@ export function EditorCanvas({
               // back to wherever the caret was sitting (often the top of the
               // doc), which is exactly the "picker scrolls everything to the
               // top" report. setNodeAttribute alone keeps the viewport stable.
+              const prevNode = editor.state.doc.nodeAt(pos);
+              const prevAlt =
+                prevNode && prevNode.type.name === 'image'
+                  ? String(prevNode.attrs.alt ?? '')
+                  : '';
               editor
                 .chain()
                 .command(({ tr }) => {
@@ -369,6 +406,35 @@ export function EditorCanvas({
                   return true;
                 })
                 .run();
+              // Re-emit the selection so the PropertiesPanel's preview <img>
+              // re-binds to the new src — without this the right-hand thumbnail
+              // would keep showing the old image until the user clicked
+              // elsewhere and back.
+              const altParts = prevAlt.split('|').map((s) => s.trim());
+              window.dispatchEvent(
+                new CustomEvent('parkfan-selection', {
+                  detail: {
+                    kind: 'image',
+                    pos,
+                    src: r.src,
+                    alt: altParts[0] ?? '',
+                    caption: altParts[1] ?? '',
+                    align:
+                      altParts[2] === 'left' ||
+                      altParts[2] === 'right' ||
+                      altParts[2] === 'wide'
+                        ? altParts[2]
+                        : 'center',
+                    size:
+                      altParts[3] === 'small' ||
+                      altParts[3] === 'medium' ||
+                      altParts[3] === 'large'
+                        ? altParts[3]
+                        : undefined,
+                    rect: imagePickerAnchor ?? undefined,
+                  },
+                })
+              );
               replaceImagePosRef.current = null;
               setImagePickerReplaceMode(false);
               setImagePickerAnchor(null);
