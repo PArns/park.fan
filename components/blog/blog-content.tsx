@@ -403,15 +403,29 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     img({ src, alt }) {
       if (typeof src !== 'string' || !src) return null;
       // Authoring convention encoded in the markdown alt text:
-      //   ![alt | caption | align](src)
-      // where `align` is one of left | right | center | wide. Alignment can
-      // also come from a ?align= query on the src, which wins if present.
+      //   ![alt | caption | align | size](src)
+      // where `align` is one of left | right | center | wide and `size` is an
+      // optional small | medium | large override. Alignment can also come
+      // from a ?align= query on the src, which wins if present.
       const altStr = typeof alt === 'string' ? alt : '';
       const parts = altStr.split('|').map((s) => s.trim());
       const imgAlt = parts[0] ?? '';
       const caption = parts[1] || undefined;
       const align = resolveImageAlign(parts[2], src);
-      return <BlogInlineImage src={src} alt={imgAlt} caption={caption} align={align} />;
+      const sizeRaw = (parts[3] ?? '').toLowerCase();
+      const size: 'small' | 'medium' | 'large' | undefined =
+        sizeRaw === 'small' || sizeRaw === 'medium' || sizeRaw === 'large'
+          ? sizeRaw
+          : undefined;
+      return (
+        <BlogInlineImage
+          src={src}
+          alt={imgAlt}
+          caption={caption}
+          align={align}
+          size={size}
+        />
+      );
     },
     h1: ({ children }) => (
       <h1 className="text-foreground mt-12 mb-6 text-3xl font-bold tracking-tight first:mt-0 sm:text-4xl">

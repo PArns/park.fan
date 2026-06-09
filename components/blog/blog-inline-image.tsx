@@ -9,6 +9,8 @@ import { cn } from '@/lib/utils';
 
 export type BlogImageAlign = 'center' | 'left' | 'right' | 'wide';
 
+export type BlogImageSize = 'small' | 'medium' | 'large';
+
 interface BlogInlineImageProps {
   src: string;
   alt?: string;
@@ -21,6 +23,8 @@ interface BlogInlineImageProps {
    *  - wide: full content width
    */
   align?: BlogImageAlign;
+  /** Optional explicit size override — narrows the figure on top of `align`. */
+  size?: BlogImageSize;
 }
 
 const FIGURE_ALIGN: Record<BlogImageAlign, string> = {
@@ -40,12 +44,24 @@ const ASPECT_ALIGN: Record<BlogImageAlign, string> = {
   right: 'aspect-[4/3]',
 };
 
-export function BlogInlineImage({ src, alt = '', caption, align = 'center' }: BlogInlineImageProps) {
+const SIZE_OVERRIDE: Record<BlogImageSize, string> = {
+  small: 'sm:max-w-[200px]',
+  medium: 'sm:max-w-[360px]',
+  large: 'sm:max-w-[640px]',
+};
+
+export function BlogInlineImage({
+  src,
+  alt = '',
+  caption,
+  align = 'center',
+  size,
+}: BlogInlineImageProps) {
   const t = useTranslations('blog');
   const [open, setOpen] = useState(false);
 
   return (
-    <figure className={cn('not-prose', FIGURE_ALIGN[align])}>
+    <figure className={cn('not-prose', FIGURE_ALIGN[align], size && SIZE_OVERRIDE[size])}>
       <button
         type="button"
         onClick={() => setOpen(true)}

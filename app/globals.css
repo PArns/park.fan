@@ -735,6 +735,59 @@ html[data-temp-unit='F'] .u-imperial {
 /* Editor links should look obviously interactive but stay subtle in the
    author view. ref:/park:/attraction: hrefs aren't real URLs so we don't
    want a hand cursor on them — they're just visual cues. */
+/* Inline image — alignment + size driven by data-attrs the image-preview
+   plugin parses out of the markdown alt string (`alt | caption | align | size`). */
+.tiptap-canvas .editor-img {
+  display: block;
+  cursor: pointer;
+  border-radius: 12px;
+  margin: 1rem auto;
+  max-width: 720px;
+  height: auto;
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease;
+}
+.tiptap-canvas .editor-img:hover {
+  border-color: color-mix(in oklab, var(--primary) 40%, transparent);
+}
+.tiptap-canvas .editor-img-align-left {
+  float: left;
+  margin: 0.5rem 1.5rem 0.5rem 0;
+  max-width: 360px;
+}
+.tiptap-canvas .editor-img-align-right {
+  float: right;
+  margin: 0.5rem 0 0.5rem 1.5rem;
+  max-width: 360px;
+}
+.tiptap-canvas .editor-img-align-center {
+  display: block;
+  margin: 1rem auto;
+  max-width: 720px;
+}
+.tiptap-canvas .editor-img-align-wide {
+  display: block;
+  margin: 1rem 0;
+  max-width: 100%;
+  width: 100%;
+}
+.tiptap-canvas .editor-img-size-small {
+  max-width: 200px;
+}
+.tiptap-canvas .editor-img-size-medium {
+  max-width: 400px;
+}
+.tiptap-canvas .editor-img-size-large {
+  max-width: 720px;
+}
+/* Clear floats around image runs so following paragraphs don't bleed into the
+   gutter the wrap-around already reserves. */
+.tiptap-canvas h1,
+.tiptap-canvas h2,
+.tiptap-canvas h3 {
+  clear: both;
+}
+
 .tiptap-canvas a[href^='ref:'],
 .tiptap-canvas a[href^='park:'],
 .tiptap-canvas a[href^='attraction:'] {

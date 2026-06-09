@@ -2,9 +2,14 @@
 
 import { useState } from 'react';
 import {
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
   Boxes,
   ExternalLink,
+  Image as ImageIcon,
   Link as LinkIcon,
+  Maximize,
   MapPin,
   MousePointerClick,
   Replace,
@@ -40,6 +45,15 @@ export type EditorSelection =
       nodeFrom: number;
       nodeTo: number;
       pos: number;
+    }
+  | {
+      kind: 'image';
+      pos: number;
+      src: string;
+      alt: string;
+      caption: string;
+      align: 'center' | 'left' | 'right' | 'wide';
+      size?: 'small' | 'medium' | 'large';
     }
   | null;
 
@@ -80,7 +94,9 @@ export function PropertiesPanel({
               ? 'ref chip'
               : selection.kind === 'link'
                 ? 'link'
-                : 'widget'}
+                : selection.kind === 'widget'
+                  ? 'widget'
+                  : 'image'}
           </span>
         )}
       </div>
@@ -96,6 +112,8 @@ export function PropertiesPanel({
           <LinkProperties editor={editor} selection={selection} />
         ) : selection?.kind === 'widget' ? (
           <WidgetProperties editor={editor} selection={selection} />
+        ) : selection?.kind === 'image' ? (
+          <ImageProperties editor={editor} selection={selection} />
         ) : (
           <EmptyState charCount={charCount} />
         )}
@@ -443,6 +461,204 @@ function widgetLabel(name: string): string {
     .split('-')
     .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : p))
     .join(' ') + ' widget';
+}
+
+/**
+ * Re-mount the image form on every new selection so its uncontrolled fields
+ * pick up the new image cleanly without an in-effect setState dance.
+ */
+function ImageProperties(props: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'image' }>;
+}) {
+  return <ImageForm key={`${props.selection.pos}-${props.selection.src}`} {...props} />;
+}
+
+const ALIGN_OPTIONS: Array<{
+  k: 'left' | 'center' | 'right' | 'wide';
+  label: string;
+  icon: typeof AlignLeft;
+}> = [
+  { k: 'left', label: 'Left', icon: AlignLeft },
+  { k: 'center', label: 'Center', icon: AlignCenter },
+  { k: 'right', label: 'Right', icon: AlignRight },
+  { k: 'wide', label: 'Wide', icon: Maximize },
+];
+
+const SIZE_OPTIONS: Array<{ k: '' | 'small' | 'medium' | 'large'; label: string }> = [
+  { k: '', label: 'Auto' },
+  { k: 'small', label: 'Small' },
+  { k: 'medium', label: 'Medium' },
+  { k: 'large', label: 'Large' },
+];
+
+function ImageForm({
+  editor,
+  selection,
+}: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'image' }>;
+}) {
+  const [alt, setAlt] = useState(selection.alt);
+  const [caption, setCaption] = useState(selection.caption);
+  const [align, setAlign] = useState<typeof selection.align>(selection.align);
+  const [size, setSize] = useState<'' | 'small' | 'medium' | 'large'>(
+    selection.size ?? ''
+  );
+
+  const buildAltString = () => {
+    const parts: string[] = [alt.trim()];
+    if (caption.trim() || align !== 'center' || size) parts.push(caption.trim());
+    if (align !== 'center' || size) parts.push(align);
+    if (size) parts.push(size);
+    return parts.join(' | ');
+  };
+
+  const save = () => {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.setNodeAttribute(selection.pos, 'alt', buildAltString());
+        return true;
+      })
+      .run();
+  };
+  const remove = () => {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        const node = tr.doc.nodeAt(selection.pos);
+        if (!node) return false;
+        tr.delete(selection.pos, selection.pos + node.nodeSize);
+        return true;
+      })
+      .run();
+  };
+  const pickImage = () => {
+    window.dispatchEvent(
+      new CustomEvent('parkfan-image-pick-request', {
+        detail: { pos: selection.pos },
+      })
+    );
+  };
+
+  return (
+    <div className="space-y-4">
+      <Header
+        icon={ImageIcon}
+        kind="Image"
+        title={alt || '(no alt text)'}
+        subtitle={selection.src}
+      />
+
+      <Section label="Preview">
+        <div className="border-border/60 bg-muted/30 relative h-32 w-full overflow-hidden rounded-lg border">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={selection.src}
+            alt={alt}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
+      </Section>
+
+      <Section label="Source">
+        <div className="flex items-center gap-1.5">
+          <input
+            value={selection.src}
+            readOnly
+            className="border-border/60 bg-background/60 text-muted-foreground flex-1 truncate rounded-lg border px-2.5 py-1.5 font-mono text-[10px] outline-none"
+          />
+          <button
+            type="button"
+            onClick={pickImage}
+            className="hover:bg-accent/50 text-primary border-border/60 inline-flex h-8 items-center gap-1 rounded-md border px-2 text-[10px] font-semibold transition-colors"
+          >
+            <Replace className="h-3 w-3" />
+            Pick…
+          </button>
+        </div>
+      </Section>
+
+      <Section label="Alt text">
+        <input
+          value={alt}
+          onChange={(e) => setAlt(e.target.value)}
+          placeholder="Describe the image for screen readers"
+          className="border-border/60 bg-background/60 text-foreground w-full rounded-lg border px-2.5 py-1.5 text-xs outline-none"
+        />
+      </Section>
+
+      <Section label="Caption">
+        <input
+          value={caption}
+          onChange={(e) => setCaption(e.target.value)}
+          placeholder="Shown below the image (optional)"
+          className="border-border/60 bg-background/60 text-foreground w-full rounded-lg border px-2.5 py-1.5 text-xs outline-none"
+        />
+      </Section>
+
+      <Section label="Alignment">
+        <div className="bg-muted/40 grid grid-cols-4 gap-1 rounded-xl p-1">
+          {ALIGN_OPTIONS.map((opt) => {
+            const Icon = opt.icon;
+            return (
+              <button
+                key={opt.k}
+                type="button"
+                title={opt.label}
+                onClick={() => setAlign(opt.k)}
+                className={cn(
+                  'inline-flex flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-semibold transition-all',
+                  align === opt.k
+                    ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                    : 'text-muted-foreground hover:text-foreground'
+                )}
+              >
+                <Icon className="h-3.5 w-3.5" />
+                {opt.label}
+              </button>
+            );
+          })}
+        </div>
+      </Section>
+
+      <Section label="Size">
+        <div className="bg-muted/40 grid grid-cols-4 gap-1 rounded-xl p-1">
+          {SIZE_OPTIONS.map((opt) => (
+            <button
+              key={opt.k}
+              type="button"
+              onClick={() => setSize(opt.k)}
+              className={cn(
+                'rounded-lg px-2 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all',
+                size === opt.k
+                  ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      </Section>
+
+      <Section label="Actions">
+        <div className="grid gap-1.5">
+          <ActionButton onClick={save} icon={Sparkles}>
+            Save changes
+          </ActionButton>
+          <ActionButton onClick={remove} icon={Trash2} destructive>
+            Delete image
+          </ActionButton>
+        </div>
+      </Section>
+    </div>
+  );
 }
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {

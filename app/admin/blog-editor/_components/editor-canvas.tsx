@@ -14,6 +14,7 @@ import { SlashCommand } from '../_extensions/slash-command';
 import { RefPreview } from '../_extensions/ref-preview';
 import { WidgetPreview } from '../_extensions/widget-preview';
 import { EmbedPreview } from '../_extensions/embed-preview';
+import { ImagePreview } from '../_extensions/image-preview';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
 import { FixedToolbar, type ToolbarAction } from './fixed-toolbar';
@@ -45,6 +46,10 @@ export function EditorCanvas({
 }: EditorCanvasProps) {
   const [pickerMode, setPickerMode] = useState<PickerMode | null>(null);
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
+  /** When set, the next ImagePicker pick replaces the existing <img> at this
+   *  doc position rather than inserting a fresh image — driven by the
+   *  PropertiesPanel's "Pick image…" action via a window event. */
+  const replaceImagePosRef = useRef<number | null>(null);
   /** When set, the next ParkRidePicker pick replaces an existing link at this
    *  position rather than inserting a fresh link. The PropertiesPanel asks
    *  for a replace via a window event; the canvas captures pos here. */
@@ -159,6 +164,7 @@ export function EditorCanvas({
       RefPreview,
       WidgetPreview,
       EmbedPreview,
+      ImagePreview,
     ],
     content: initialMarkdown || '',
     editorProps: {
@@ -270,12 +276,20 @@ export function EditorCanvas({
       replacePosRef.current = detail.pos;
       setPickerMode(detail.isRide ? 'ride' : 'park');
     };
+    const onImageRequest = (e: Event) => {
+      const detail = (e as CustomEvent<{ pos: number }>).detail;
+      replaceImagePosRef.current = detail.pos;
+      setImagePickerOpen(true);
+    };
     window.addEventListener('parkfan-replace-ref-request', onReplaceRequest as EventListener);
-    return () =>
+    window.addEventListener('parkfan-image-pick-request', onImageRequest as EventListener);
+    return () => {
+      window.removeEventListener('parkfan-image-pick-request', onImageRequest as EventListener);
       window.removeEventListener(
         'parkfan-replace-ref-request',
         onReplaceRequest as EventListener
       );
+    };
   }, []);
 
   return (
@@ -296,11 +310,32 @@ export function EditorCanvas({
         />
         <ImagePicker
           open={imagePickerOpen}
-          onClose={() => setImagePickerOpen(false)}
+          onClose={() => {
+            setImagePickerOpen(false);
+            replaceImagePosRef.current = null;
+          }}
           withCaption
           onPick={(r: ImagePickResult) => {
+            if (!editor) return;
+            // Replace flow — only the src changes; the panel will round-trip
+            // alt/caption/align/size on its own next save.
+            if (replaceImagePosRef.current !== null) {
+              const pos = replaceImagePosRef.current;
+              editor
+                .chain()
+                .focus()
+                .command(({ tr }) => {
+                  const node = tr.doc.nodeAt(pos);
+                  if (!node || node.type.name !== 'image') return false;
+                  tr.setNodeAttribute(pos, 'src', r.src);
+                  return true;
+                })
+                .run();
+              replaceImagePosRef.current = null;
+              return;
+            }
             const altCombined = r.caption ? `${r.alt} | ${r.caption}` : r.alt;
-            editor?.chain().focus().insertContent(`\n\n![${altCombined}](${r.src})\n\n`).run();
+            editor.chain().focus().insertContent(`\n\n![${altCombined}](${r.src})\n\n`).run();
           }}
         />
       </div>
