@@ -20,6 +20,7 @@ import { EditorBubbleMenu } from './bubble-menu';
 import { FixedToolbar, type ToolbarAction } from './fixed-toolbar';
 import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
+import { getWidget } from '../_lib/widgets';
 
 interface EditorCanvasProps {
   initialMarkdown: string;
@@ -67,27 +68,10 @@ export function EditorCanvas({
     editor.chain().focus().insertContent(`\n\n${url}\n\n`).run();
   };
 
-  /**
-   * Sensible default body attrs per widget kind — the author gets a
-   * pre-filled placeholder slug they can immediately click in the panel and
-   * replace, rather than an empty codeBlock that doesn't even surface the
-   * required fields.
-   */
-  const WIDGET_DEFAULTS: Record<string, string> = {
-    'park-widget': 'slug: phantasialand',
-    'map-widget': 'slug: phantasialand',
-    'weather-widget': 'slug: phantasialand',
-    'stats-widget': 'slug: phantasialand',
-    'best-days-widget': 'slug: phantasialand',
-    'attraction-widget': 'parkSlug: phantasialand\nslug: black-mamba',
-    'gallery-widget': 'folder: /images/parks/phantasialand\nheading: Highlights',
-    'glossary-widget': 'slug: crowd-level',
-  };
-
   const insertWidget = (name: string) => {
     const ed = editorRef.current;
     if (!ed) return;
-    const body = WIDGET_DEFAULTS[name] ?? '';
+    const body = getWidget(name)?.defaultBody ?? '';
     const schema = ed.schema;
     const codeBlock = schema.nodes.codeBlock;
     if (!codeBlock) return;

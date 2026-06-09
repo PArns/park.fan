@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import type { Editor } from '@tiptap/core';
 import { cn } from '@/lib/utils';
+import { getWidget, widgetLabel } from '../_lib/widgets';
 
 export type EditorSelection =
   | {
@@ -374,22 +375,9 @@ function LinkPropertiesForm({
  * blog renderer cares about — author can still drop into the .md source view
  * if they want something exotic.
  */
-const WIDGET_FIELDS: Record<string, Array<{ key: string; label: string; placeholder?: string }>> = {
-  'park-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
-  'map-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
-  'weather-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
-  'best-days-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
-  'stats-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
-  'attraction-widget': [
-    { key: 'parkSlug', label: 'Park slug', placeholder: 'phantasialand' },
-    { key: 'slug', label: 'Ride slug', placeholder: 'black-mamba' },
-  ],
-  'gallery-widget': [
-    { key: 'folder', label: 'Folder', placeholder: '/blog/images' },
-    { key: 'heading', label: 'Heading', placeholder: 'Highlights' },
-  ],
-  'glossary-widget': [{ key: 'slug', label: 'Term slug', placeholder: 'live-wait-time' }],
-};
+// Field roster per widget kind comes from the shared registry — see
+// _lib/widgets.ts for the catalogue. Adding a widget there auto-surfaces the
+// matching panel form here.
 
 function WidgetProperties(props: {
   editor: Editor | null;
@@ -407,7 +395,7 @@ function WidgetForm({
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'widget' }>;
 }) {
-  const fields = WIDGET_FIELDS[selection.name] ?? [];
+  const fields = getWidget(selection.name)?.fields ?? [];
   const [attrs, setAttrs] = useState<Record<string, string>>(() => ({ ...selection.attrs }));
 
   const save = () => {
@@ -499,13 +487,6 @@ function WidgetForm({
   );
 }
 
-function widgetLabel(name: string): string {
-  return name
-    .replace(/-widget$/, '')
-    .split('-')
-    .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : p))
-    .join(' ') + ' widget';
-}
 
 /**
  * Re-mount the image form on every new selection so its uncontrolled fields

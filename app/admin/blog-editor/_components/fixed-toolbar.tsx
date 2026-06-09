@@ -2,16 +2,11 @@
 
 import type { Editor } from '@tiptap/core';
 import {
-  BarChart3,
-  BookText,
   Bold,
   Boxes,
-  Calendar,
   Camera,
   ChevronDown,
-  CloudSun,
   Code,
-  GalleryHorizontal,
   Image as ImageIcon,
   Italic,
   Link as LinkIcon,
@@ -26,12 +21,12 @@ import {
   Strikethrough,
   Table as TableIcon,
   TrainFront,
-  TreePalm,
   Undo2,
   Video,
 } from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { WIDGETS } from '../_lib/widgets';
 
 interface FixedToolbarProps {
   editor: Editor | null;
@@ -48,21 +43,8 @@ export type ToolbarAction =
   | 'suno'
   | `widget:${string}`;
 
-const WIDGET_INSERTS: Array<{
-  name: string;
-  label: string;
-  icon: typeof Code;
-  hint: string;
-}> = [
-  { name: 'park-widget', label: 'Park widget', icon: TreePalm, hint: 'Park card with live data' },
-  { name: 'attraction-widget', label: 'Attraction widget', icon: TrainFront, hint: 'Ride card with live wait' },
-  { name: 'weather-widget', label: 'Weather widget', icon: CloudSun, hint: 'Live weather + forecast' },
-  { name: 'stats-widget', label: 'Stats widget', icon: BarChart3, hint: 'Live park statistics' },
-  { name: 'best-days-widget', label: 'Best-days widget', icon: Calendar, hint: 'Crowd-calendar preview' },
-  { name: 'map-widget', label: 'Map widget', icon: MapPin, hint: 'Mini park map' },
-  { name: 'gallery-widget', label: 'Gallery widget', icon: GalleryHorizontal, hint: 'Folder-based gallery' },
-  { name: 'glossary-widget', label: 'Glossary widget', icon: BookText, hint: 'Inline term definition' },
-];
+// Widget kinds the toolbar dropdown exposes — sourced from the shared
+// _lib/widgets.ts registry so adding a new kind only touches one file.
 
 const HEADINGS: Array<{ level: 1 | 2 | 3; label: string }> = [
   { level: 1, label: 'Heading 1' },
@@ -278,7 +260,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
           </button>
           {widgetOpen && (
             <div className="border-border/60 bg-popover absolute right-0 top-full z-40 mt-1 min-w-[220px] overflow-hidden rounded-lg border shadow-xl">
-              {WIDGET_INSERTS.map((w) => {
+              {WIDGETS.map((w) => {
                 const Icon = w.icon;
                 return (
                   <DropItem

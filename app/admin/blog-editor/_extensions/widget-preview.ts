@@ -7,6 +7,11 @@ import {
   eventToElement,
   pickClosestByCoords,
 } from '../_lib/chip-utils';
+import {
+  widgetLabel,
+  widgetTagLabel,
+  WIDGET_NAMES,
+} from '../_lib/widgets';
 
 /**
  * Renders a card-style block preview *next to* each widget code fence in the
@@ -45,17 +50,6 @@ interface WidgetSpan {
   refValue?: string;
 }
 
-const WIDGET_KINDS = new Set([
-  'park-widget',
-  'map-widget',
-  'weather-widget',
-  'best-days-widget',
-  'stats-widget',
-  'attraction-widget',
-  'glossary-widget',
-  'gallery-widget',
-]);
-
 const ATTR_RE = /\b([a-zA-Z][a-zA-Z0-9_-]*)\s*[:=]\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))/g;
 
 function parseAttrs(source: string): Record<string, string> {
@@ -79,7 +73,7 @@ function collectWidgets(doc: PMNode): WidgetSpan[] {
     // trailing attrs (e.g. `park-widget slug=phantasialand`) so split first.
     const firstSpace = lang.indexOf(' ');
     const name = (firstSpace === -1 ? lang : lang.slice(0, firstSpace)).trim();
-    if (!WIDGET_KINDS.has(name)) return;
+    if (!WIDGET_NAMES.has(name)) return;
     const attrSource = `${lang.slice(name.length)}\n${node.textContent ?? ''}`;
     const attrs = parseAttrs(attrSource);
     let refValue: string | undefined;
@@ -93,13 +87,6 @@ function collectWidgets(doc: PMNode): WidgetSpan[] {
   return spans;
 }
 
-function widgetLabel(name: string): string {
-  return name
-    .replace(/-widget$/, '')
-    .split('-')
-    .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : p))
-    .join(' ');
-}
 
 function buildWidgetCard(span: WidgetSpan): HTMLElement {
   const wrapper = document.createElement('div');
@@ -110,7 +97,7 @@ function buildWidgetCard(span: WidgetSpan): HTMLElement {
   header.className = 'widget-preview__header';
   const tag = document.createElement('span');
   tag.className = 'widget-preview__tag';
-  tag.textContent = widgetLabel(span.name);
+  tag.textContent = widgetTagLabel(span.name);
   header.appendChild(tag);
 
   const attrsSummary = document.createElement('span');
