@@ -147,23 +147,33 @@ export function TableMenu({ editor }: TableMenuProps) {
           </Btn>
         </Group>
         <Divider />
-        <Group>
-          <Btn
-            onClick={() => editor.chain().focus().mergeCells().run()}
-            label="Merge cells"
-            disabled={!editor.can().mergeCells()}
-          >
-            <Combine className="h-3.5 w-3.5" />
-          </Btn>
-          <Btn
-            onClick={() => editor.chain().focus().splitCell().run()}
-            label="Split cell"
-            disabled={!editor.can().splitCell()}
-          >
-            <SplitSquareHorizontal className="h-3.5 w-3.5" />
-          </Btn>
-        </Group>
-        <Divider />
+        {/* Merge / split only make sense once the author has drag-selected
+            multiple cells (mergeCells) or parked the caret inside a merged
+            one (splitCell). Hide them entirely otherwise so the toolbar
+            doesn't read as "lots of dead buttons". */}
+        {(editor.can().mergeCells() || editor.can().splitCell()) && (
+          <>
+            <Group>
+              {editor.can().mergeCells() && (
+                <Btn
+                  onClick={() => editor.chain().focus().mergeCells().run()}
+                  label="Merge cells"
+                >
+                  <Combine className="h-3.5 w-3.5" />
+                </Btn>
+              )}
+              {editor.can().splitCell() && (
+                <Btn
+                  onClick={() => editor.chain().focus().splitCell().run()}
+                  label="Split cell"
+                >
+                  <SplitSquareHorizontal className="h-3.5 w-3.5" />
+                </Btn>
+              )}
+            </Group>
+            <Divider />
+          </>
+        )}
         <Group>
           <div className="relative">
             <button

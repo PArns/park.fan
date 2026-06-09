@@ -520,7 +520,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       // selectors in globals.css read it to colour the header row.
       const themeAttr = (rest as { 'data-theme'?: string })['data-theme'];
       return (
-        <div className="not-prose my-6 w-full overflow-x-auto">
+        <div className="not-prose border-border/60 my-6 w-full overflow-x-auto rounded-xl border">
           <table
             className="w-full border-collapse text-sm"
             {...(themeAttr ? { 'data-theme': themeAttr } : {})}
@@ -530,13 +530,22 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         </div>
       );
     },
-    thead: ({ children }) => <thead className="border-border border-b">{children}</thead>,
-    tr: ({ children }) => <tr className="border-border/60 border-b last:border-0">{children}</tr>,
+    thead: ({ children }) => (
+      <thead className="bg-muted/40 border-border border-b">{children}</thead>
+    ),
+    tr: ({ children }) => (
+      <tr className="border-border/40 border-b last:border-0">{children}</tr>
+    ),
     th: ({ children }) => (
-      <th scope="col" className="text-foreground px-3 py-2 text-left font-semibold">{injectGlossary(children)}</th>
+      <th
+        scope="col"
+        className="text-foreground px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider"
+      >
+        {injectGlossary(children)}
+      </th>
     ),
     td: ({ children }) => (
-      <td className="text-foreground/90 px-3 py-2 align-top">{injectGlossary(children)}</td>
+      <td className="text-foreground/90 px-4 py-2.5 align-top">{injectGlossary(children)}</td>
     ),
     // strong / em renderers explicitly run injectGlossary on their text
     // children — without this, glossary terms wrapped in **bold** or _italic_
