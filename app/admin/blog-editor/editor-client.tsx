@@ -46,9 +46,13 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       if (!detail) return;
       setSelection(detail);
     };
+    const onClear = () => setSelection(null);
     window.addEventListener('parkfan-selection', onSelection as EventListener);
-    return () =>
+    window.addEventListener('parkfan-clear-selection', onClear as EventListener);
+    return () => {
       window.removeEventListener('parkfan-selection', onSelection as EventListener);
+      window.removeEventListener('parkfan-clear-selection', onClear as EventListener);
+    };
   }, []);
 
   const requestRefReplace = useCallback(() => {

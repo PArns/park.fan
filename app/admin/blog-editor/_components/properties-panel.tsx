@@ -170,6 +170,14 @@ function RefProperties({
       .unsetMark('link')
       .setMark('link', { href: newHref })
       .run();
+    // Re-emit the selection event so the panel's `currentOpt` reflects the
+    // new href on the next render — otherwise the pill stays glued to the
+    // previous variant even though the doc has updated.
+    window.dispatchEvent(
+      new CustomEvent('parkfan-selection', {
+        detail: { ...selection, href: newHref },
+      })
+    );
   };
   const removeLink = () => {
     if (!editor) return;
@@ -179,6 +187,8 @@ function RefProperties({
       .setTextSelection({ from: selection.from, to: selection.to })
       .unsetMark('link')
       .run();
+    // Clear the panel — the underlying link is gone.
+    window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
 
   return (
@@ -268,6 +278,7 @@ function LinkPropertiesForm({
         .setTextSelection({ from: selection.from, to: selection.to })
         .unsetMark('link')
         .run();
+      window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
       return;
     }
     editor
@@ -277,6 +288,11 @@ function LinkPropertiesForm({
       .unsetMark('link')
       .setMark('link', { href: trimmed })
       .run();
+    window.dispatchEvent(
+      new CustomEvent('parkfan-selection', {
+        detail: { ...selection, href: trimmed },
+      })
+    );
   };
   const remove = () => {
     if (!editor) return;
@@ -286,6 +302,7 @@ function LinkPropertiesForm({
       .setTextSelection({ from: selection.from, to: selection.to })
       .unsetMark('link')
       .run();
+    window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
 
   return (
@@ -402,6 +419,16 @@ function WidgetForm({
         return true;
       })
       .run();
+    // Re-emit so the panel pulls the fresh attrs from the cleaned-up body.
+    window.dispatchEvent(
+      new CustomEvent('parkfan-selection', {
+        detail: {
+          ...selection,
+          attrs: { ...attrs },
+          nodeTo: selection.nodeFrom + newNode.nodeSize,
+        },
+      })
+    );
   };
 
   const removeWidget = () => {
@@ -414,6 +441,7 @@ function WidgetForm({
         return true;
       })
       .run();
+    window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
 
   return (
@@ -524,6 +552,11 @@ function ImageForm({
         return true;
       })
       .run();
+    window.dispatchEvent(
+      new CustomEvent('parkfan-selection', {
+        detail: { ...selection, alt, caption, align, size: size || undefined },
+      })
+    );
   };
   const remove = () => {
     if (!editor) return;
@@ -537,6 +570,7 @@ function ImageForm({
         return true;
       })
       .run();
+    window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
   const pickImage = () => {
     window.dispatchEvent(
