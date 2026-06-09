@@ -278,6 +278,83 @@ export const WidgetPreview = Extension.create({
           decorations(state) {
             return widgetPreviewKey.getState(state)?.decorations;
           },
+          handleClick(view, _clickPos, event) {
+            const raw = event.target as Node | null;
+            const target =
+              raw instanceof Element
+                ? raw
+                : (raw?.parentElement as Element | null);
+            const chip = target?.closest('.widget-preview') as HTMLElement | null;
+            if (!chip) return false;
+            // Find the matching span by widget name + attrs serialised on the
+            // DOM. We anchor the widget at the END of the code-block node so
+            // the span whose `pos` equals our chip's intent is the one we
+            // want — disambiguate by chip rect when the same widget kind
+            // shows up multiple times.
+            const state = widgetPreviewKey.getState(view.state);
+            const spans = state?.spans ?? [];
+            const name = Array.from(chip.classList)
+              .find((c) => c.startsWith('widget-preview--'))
+              ?.replace('widget-preview--', '');
+            if (!name) return false;
+            const matches = spans.filter((s) => s.name === name);
+            if (matches.length === 0) return false;
+            let pick = matches[0];
+            if (matches.length > 1) {
+              const chipTop = chip.getBoundingClientRect().top;
+              let bestDist = Infinity;
+              for (const s of matches) {
+                try {
+                  const coords = view.coordsAtPos(s.pos);
+                  const dist = Math.abs(coords.top - chipTop);
+                  if (dist < bestDist) {
+                    bestDist = dist;
+                    pick = s;
+                  }
+                } catch {
+                  /* invalid pos */
+                }
+              }
+            }
+            // The widget decoration anchors at the END of the codeBlock
+            // node (`pos: pos + node.nodeSize` in collectWidgets). The
+            // codeBlock node itself starts at pos - nodeSize. We compute the
+            // node's start/end by walking the doc from the anchor backwards
+            // until we find a codeBlock whose end matches `pick.pos`.
+            const doc = view.state.doc;
+            let nodeFrom = -1;
+            let nodeTo = -1;
+            doc.descendants((node, pos) => {
+              if (node.type.name !== 'codeBlock') return;
+              if (pos + node.nodeSize === pick.pos) {
+                nodeFrom = pos;
+                nodeTo = pos + node.nodeSize;
+                return false;
+              }
+            });
+            if (nodeFrom < 0) return false;
+            event.preventDefault();
+            const rect = chip.getBoundingClientRect();
+            window.dispatchEvent(
+              new CustomEvent('parkfan-selection', {
+                detail: {
+                  kind: 'widget',
+                  name: pick.name,
+                  attrs: pick.attrs,
+                  nodeFrom,
+                  nodeTo,
+                  pos: nodeFrom,
+                  rect: {
+                    top: rect.top,
+                    bottom: rect.bottom,
+                    left: rect.left,
+                    right: rect.right,
+                  },
+                },
+              })
+            );
+            return true;
+          },
         },
       }),
     ];

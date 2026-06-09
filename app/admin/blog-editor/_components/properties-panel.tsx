@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import {
+  Boxes,
   ExternalLink,
   Link as LinkIcon,
   MapPin,
@@ -28,6 +29,18 @@ export type EditorSelection =
       value: string;
     }
   | { kind: 'link'; pos: number; from: number; to: number; href: string }
+  | {
+      kind: 'widget';
+      /** Widget name as it appears in the fence info string (park-widget,
+       *  attraction-widget, weather-widget, …). */
+      name: string;
+      /** Current attrs parsed from the body, what the panel edits. */
+      attrs: Record<string, string>;
+      /** Whole codeBlock node range so saves can replace it cleanly. */
+      nodeFrom: number;
+      nodeTo: number;
+      pos: number;
+    }
   | null;
 
 interface PropertiesPanelProps {
@@ -63,7 +76,11 @@ export function PropertiesPanel({
         </div>
         {selection && (
           <span className="text-muted-foreground/80 inline-flex items-center gap-1 rounded-full bg-muted/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
-            {selection.kind === 'ref' ? 'ref chip' : 'link'}
+            {selection.kind === 'ref'
+              ? 'ref chip'
+              : selection.kind === 'link'
+                ? 'link'
+                : 'widget'}
           </span>
         )}
       </div>
@@ -77,6 +94,8 @@ export function PropertiesPanel({
           />
         ) : selection?.kind === 'link' ? (
           <LinkProperties editor={editor} selection={selection} />
+        ) : selection?.kind === 'widget' ? (
+          <WidgetProperties editor={editor} selection={selection} />
         ) : (
           <EmptyState charCount={charCount} />
         )}
@@ -297,6 +316,133 @@ function LinkPropertiesForm({
       </Section>
     </div>
   );
+}
+
+/**
+ * Per-widget editable attr matrix. Each kind only surfaces the fields the
+ * blog renderer cares about — author can still drop into the .md source view
+ * if they want something exotic.
+ */
+const WIDGET_FIELDS: Record<string, Array<{ key: string; label: string; placeholder?: string }>> = {
+  'park-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
+  'map-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
+  'weather-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
+  'best-days-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
+  'stats-widget': [{ key: 'slug', label: 'Park slug', placeholder: 'phantasialand' }],
+  'attraction-widget': [
+    { key: 'parkSlug', label: 'Park slug', placeholder: 'phantasialand' },
+    { key: 'slug', label: 'Ride slug', placeholder: 'black-mamba' },
+  ],
+  'gallery-widget': [
+    { key: 'folder', label: 'Folder', placeholder: '/blog/images' },
+    { key: 'heading', label: 'Heading', placeholder: 'Highlights' },
+  ],
+  'glossary-widget': [{ key: 'slug', label: 'Term slug', placeholder: 'live-wait-time' }],
+};
+
+function WidgetProperties(props: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'widget' }>;
+}) {
+  // Remount whenever the selected widget changes so the local form state
+  // re-initialises from the new attrs cleanly.
+  return <WidgetForm key={`${props.selection.nodeFrom}-${props.selection.name}`} {...props} />;
+}
+
+function WidgetForm({
+  editor,
+  selection,
+}: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'widget' }>;
+}) {
+  const fields = WIDGET_FIELDS[selection.name] ?? [];
+  const [attrs, setAttrs] = useState<Record<string, string>>(() => ({ ...selection.attrs }));
+
+  const save = () => {
+    if (!editor) return;
+    // Serialise the new attrs into one body line per key (the renderer
+    // already handles this form) and replace the codeBlock's whole content
+    // with it. Keeping the language attr intact preserves the widget name
+    // in the fence info string.
+    const body = fields
+      .map((f) => `${f.key}: ${attrs[f.key]?.trim() ?? ''}`)
+      .filter((line) => !line.endsWith(': '))
+      .join('\n');
+    const schema = editor.schema;
+    const codeBlock = schema.nodes.codeBlock;
+    if (!codeBlock) return;
+    const newNode = codeBlock.create(
+      { language: selection.name },
+      body ? schema.text(body) : null
+    );
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.replaceRangeWith(selection.nodeFrom, selection.nodeTo, newNode);
+        return true;
+      })
+      .run();
+  };
+
+  const removeWidget = () => {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.delete(selection.nodeFrom, selection.nodeTo);
+        return true;
+      })
+      .run();
+  };
+
+  return (
+    <div className="space-y-4">
+      <Header
+        icon={Boxes}
+        kind={widgetLabel(selection.name)}
+        title={attrs.slug || attrs.parkSlug || attrs.folder || '(missing config)'}
+        subtitle={selection.name}
+      />
+
+      {fields.map((f) => (
+        <Section key={f.key} label={f.label}>
+          <input
+            value={attrs[f.key] ?? ''}
+            onChange={(e) =>
+              setAttrs((prev) => ({ ...prev, [f.key]: e.target.value }))
+            }
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') save();
+            }}
+            placeholder={f.placeholder}
+            className="border-border/60 bg-background/60 text-foreground w-full rounded-lg border px-2.5 py-1.5 font-mono text-xs outline-none"
+          />
+        </Section>
+      ))}
+
+      <Section label="Actions">
+        <div className="grid gap-1.5">
+          <ActionButton onClick={save} icon={Sparkles}>
+            Save attrs
+          </ActionButton>
+          <ActionButton onClick={removeWidget} icon={Trash2} destructive>
+            Delete widget
+          </ActionButton>
+        </div>
+      </Section>
+    </div>
+  );
+}
+
+function widgetLabel(name: string): string {
+  return name
+    .replace(/-widget$/, '')
+    .split('-')
+    .map((p) => (p ? p[0].toUpperCase() + p.slice(1) : p))
+    .join(' ') + ' widget';
 }
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
