@@ -21,6 +21,9 @@ import type { TableTheme } from '../_extensions/themed-table';
  */
 
 const MAGIC_RE = /<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\n?/gm;
+const MAGIC_LINE_RE = /^\s*<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\s*$/;
+const DIVIDER_RE = /^\s*\|?[\s|:-]+\|?\s*$/;
+const FENCE_RE = /^\s*(```|~~~)/;
 
 const isTable = (node: PMNode) => node.type.name === 'table';
 
@@ -34,22 +37,32 @@ function collectTableThemes(doc: PMNode): TableTheme[] {
   return out;
 }
 
+/** Is `lines[i]` the first row of a GFM table (next line is the divider)?
+ *  Caller is responsible for fence tracking. */
+function isTableStartAt(lines: string[], i: number): boolean {
+  const line = lines[i];
+  const next = lines[i + 1];
+  if (!line?.startsWith('|') || !next) return false;
+  return DIVIDER_RE.test(next) && next.includes('-');
+}
+
 /**
  * Walk the markdown string finding each GFM table start (first `|`-prefixed
- * line that's followed by a `|---|` divider line). Returns the line index of
- * each table start.
+ * line that's followed by a `|---|` divider line). Lines inside ``` / ~~~
+ * code fences are skipped — a fenced example of table syntax must not shift
+ * the theme↔table index mapping.
  */
 function findTableStarts(md: string): number[] {
   const lines = md.split('\n');
   const starts: number[] = [];
+  let inFence = false;
   for (let i = 0; i < lines.length - 1; i++) {
-    const line = lines[i];
-    const next = lines[i + 1];
-    if (!line.startsWith('|') || !next) continue;
-    // Header / divider line is `|---|---|` (with optional alignment colons).
-    if (/^\s*\|?[\s|:-]+\|?\s*$/.test(next) && next.includes('-')) {
-      starts.push(i);
+    if (FENCE_RE.test(lines[i])) {
+      inFence = !inFence;
+      continue;
     }
+    if (inFence) continue;
+    if (isTableStartAt(lines, i)) starts.push(i);
   }
   return starts;
 }
@@ -88,24 +101,34 @@ export function parseThemesFromMarkdown(markdown: string): {
   const outLines: string[] = [];
   const themes: TableTheme[] = [];
   let pendingTheme: TableTheme | null = null;
+  let inFence = false;
   for (let i = 0; i < inLines.length; i++) {
     const line = inLines[i];
-    const m = /^\s*<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\s*$/.exec(line);
+    if (FENCE_RE.test(line)) {
+      inFence = !inFence;
+      outLines.push(line);
+      continue;
+    }
+    if (inFence) {
+      outLines.push(line);
+      continue;
+    }
+    const m = MAGIC_LINE_RE.exec(line);
     if (m) {
       pendingTheme = m[1] as TableTheme;
       // The serializer pads the comment with a trailing blank line so the
-      // GFM parser doesn't merge it into the next table. Eat that blank too,
-      // otherwise blank lines accumulate on every round trip.
-      if (i + 1 < inLines.length && inLines[i + 1].trim() === '') i++;
+      // GFM parser doesn't merge it into the next table. Eat ALL blanks here
+      // (hand edits may have added more) so they don't accumulate on every
+      // round trip.
+      while (i + 1 < inLines.length && inLines[i + 1].trim() === '') i++;
       continue; // strip the magic line — it never reaches the parser
     }
-    const isTableStart =
-      line.startsWith('|') &&
-      i + 1 < inLines.length &&
-      /^\s*\|?[\s|:-]+\|?\s*$/.test(inLines[i + 1]) &&
-      inLines[i + 1].includes('-');
-    if (isTableStart) {
+    if (isTableStartAt(inLines, i)) {
       themes.push(pendingTheme ?? 'default');
+      pendingTheme = null;
+    } else if (line.trim() !== '') {
+      // Any other content between the comment and a table breaks the
+      // binding — a stray directive shouldn't theme a table further down.
       pendingTheme = null;
     }
     outLines.push(line);
@@ -113,21 +136,27 @@ export function parseThemesFromMarkdown(markdown: string): {
   return { cleaned: outLines.join('\n'), themes };
 }
 
-/** Apply the per-table-index theme map to a freshly-parsed editor doc. */
+/** Apply the per-table-index theme map to a freshly-parsed editor doc.
+ *  Positions are resolved INSIDE the transaction so they can't go stale, and
+ *  the change is kept out of the undo history — it restores saved state, the
+ *  author never "did" anything. The caller is responsible for suppressing
+ *  its own onUpdate handling around this call (the transaction does change
+ *  the doc, and TipTap has no per-command emitUpdate switch). */
 export function applyThemesToDoc(editor: Editor, themes: TableTheme[]): void {
   if (themes.every((t) => t === 'default')) return;
-  const positions: number[] = [];
-  editor.state.doc.descendants((node, pos) => {
-    if (isTable(node)) positions.push(pos);
-  });
   editor
     .chain()
-    .command(({ tr }) => {
+    .command(({ tr, state }) => {
+      const positions: number[] = [];
+      state.doc.descendants((node, pos) => {
+        if (isTable(node)) positions.push(pos);
+      });
       for (let i = 0; i < Math.min(positions.length, themes.length); i++) {
         const theme = themes[i];
         if (theme === 'default') continue;
         tr.setNodeAttribute(positions[i], 'theme', theme);
       }
+      tr.setMeta('addToHistory', false);
       return true;
     })
     .run();

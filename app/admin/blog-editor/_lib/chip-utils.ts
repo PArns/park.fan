@@ -1,10 +1,41 @@
 import type { EditorView } from '@tiptap/pm/view';
+import type { Node as PMNode } from '@tiptap/pm/model';
 
 /**
  * Helpers shared across the four chip preview extensions
  * (ref / widget / image / embed). The plugins themselves stay tiny — anything
  * that drifted into copy-paste between them lives here instead.
  */
+
+/**
+ * Re-resolve a chip's doc position right before writing to it. Positions are
+ * captured at click time; any edit above the chip shifts them, so a write at
+ * the captured pos could hit the wrong node (or out-of-bounds). The verifier
+ * decides whether the node at a position is "the one we meant" (usually by
+ * type + a stable attr like the image src or the widget's fence language).
+ *
+ * Returns the captured pos when it still verifies, otherwise the verified
+ * position closest to it, otherwise null (chip was deleted).
+ */
+export function reanchorPos(
+  doc: PMNode,
+  pos: number,
+  verify: (node: PMNode) => boolean
+): number | null {
+  const at = pos >= 0 && pos < doc.content.size ? doc.nodeAt(pos) : null;
+  if (at && verify(at)) return pos;
+  let best: number | null = null;
+  let bestDist = Infinity;
+  doc.descendants((node, p) => {
+    if (!verify(node)) return;
+    const dist = Math.abs(p - pos);
+    if (dist < bestDist) {
+      bestDist = dist;
+      best = p;
+    }
+  });
+  return best;
+}
 
 /**
  * Click targets in TipTap are often the deepest DOM node a click landed on —

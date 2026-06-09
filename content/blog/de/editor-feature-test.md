@@ -168,6 +168,12 @@ bleiben sie reine Prosa — das ist erwartet.
 
 ### Tabelle
 
+Eine Tabelle mit `primary`-Theme — die Kopfzeile sollte im Editor-Canvas
+und im veröffentlichten Beitrag eingefärbt sein. In eine Zelle klicken
+öffnet das Tabellen-Menü mit dem Farb-Picker.
+
+<!--tbl-theme: primary-->
+
 | Block-Art         | Chip-Selektor              | Inspector-Formular        |
 | ----------------- | -------------------------- | ------------------------- |
 | `?info` / `?bare` | `.ref-preview-badge`       | Ref-Variante + Replace    |

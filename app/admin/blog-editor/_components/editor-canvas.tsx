@@ -28,6 +28,7 @@ import { FixedToolbar, type ToolbarAction } from './fixed-toolbar';
 import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
 import { getWidget } from '../_lib/widgets';
+import { reanchorPos } from '../_lib/chip-utils';
 
 interface EditorCanvasProps {
   initialMarkdown: string;
@@ -56,8 +57,15 @@ export function EditorCanvas({
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
   /** When set, the next ImagePicker pick replaces the existing <img> at this
    *  doc position rather than inserting a fresh image — driven by the
-   *  PropertiesPanel's "Pick image…" action via a window event. */
-  const replaceImagePosRef = useRef<number | null>(null);
+   *  PropertiesPanel's "Pick image…" action via a window event. The src is
+   *  carried along so the position can be re-anchored at apply time if edits
+   *  above the image shifted it. */
+  const replaceImagePosRef = useRef<{ pos: number; src: string } | null>(null);
+  /** True while applyThemesToDoc restores table themes after a setContent —
+   *  that transaction changes the doc and would otherwise fire onUpdate,
+   *  marking a freshly-loaded post as dirty (and overwriting the draft body
+   *  with tiptap-markdown's normalisation of it). */
+  const applyingThemesRef = useRef(false);
   /** When set, the next ParkRidePicker pick replaces an existing link at this
    *  position rather than inserting a fresh link. The PropertiesPanel asks
    *  for a replace via a window event; the canvas captures pos here. */
@@ -197,6 +205,9 @@ export function EditorCanvas({
       },
     },
     onUpdate: ({ editor: e }) => {
+      // Theme restoration after a load is not a user edit — swallowing it
+      // here keeps freshly-opened posts clean (see applyingThemesRef).
+      if (applyingThemesRef.current) return;
       const raw = (e.storage as unknown as { markdown: { getMarkdown: () => string } })
         .markdown.getMarkdown();
       // tiptap-markdown drops table-level attrs on the floor — we re-inject
@@ -229,7 +240,12 @@ export function EditorCanvas({
       // re-apply the captured themes onto the freshly-parsed table nodes.
       const { cleaned, themes } = parseThemesFromMarkdown(initialMarkdown || '');
       editor.commands.setContent(cleaned, { emitUpdate: false });
-      applyThemesToDoc(editor, themes);
+      applyingThemesRef.current = true;
+      try {
+        applyThemesToDoc(editor, themes);
+      } finally {
+        applyingThemesRef.current = false;
+      }
     }
   }, [initialMarkdown, editor]);
 
@@ -333,10 +349,11 @@ export function EditorCanvas({
       const detail = (
         e as CustomEvent<{
           pos: number;
+          src?: string;
           rect?: { top: number; bottom: number; left: number; right: number };
         }>
       ).detail;
-      replaceImagePosRef.current = detail.pos;
+      replaceImagePosRef.current = { pos: detail.pos, src: detail.src ?? '' };
       setImagePickerAnchor(detail.rect ?? null);
       setImagePickerReplaceMode(true);
       setImagePickerOpen(true);
@@ -406,7 +423,23 @@ export function EditorCanvas({
             // Replace flow — only the src changes; the panel will round-trip
             // alt/caption/align/size on its own next save.
             if (replaceImagePosRef.current !== null) {
-              const pos = replaceImagePosRef.current;
+              const req = replaceImagePosRef.current;
+              // Edits between the chip click and the pick shift positions —
+              // re-anchor on the nearest image still carrying the original
+              // src so we never overwrite a neighbour.
+              const pos = reanchorPos(
+                editor.state.doc,
+                req.pos,
+                (n) =>
+                  n.type.name === 'image' &&
+                  (!req.src || String(n.attrs.src ?? '') === req.src)
+              );
+              if (pos === null) {
+                replaceImagePosRef.current = null;
+                setImagePickerReplaceMode(false);
+                setImagePickerAnchor(null);
+                return;
+              }
               // Don't `.focus()` here — that would yank the editor's scroll
               // back to wherever the caret was sitting (often the top of the
               // doc), which is exactly the "picker scrolls everything to the

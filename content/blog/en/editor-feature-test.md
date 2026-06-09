@@ -168,6 +168,12 @@ prose — that's expected.
 
 ### Table
 
+A `primary`-themed table — the header row should render tinted in both the
+editor canvas and the published post. Click into a cell to get the table
+menu with the palette picker.
+
+<!--tbl-theme: primary-->
+
 | Block kind        | Chip selector              | Inspector form         |
 | ----------------- | -------------------------- | ---------------------- |
 | `?info` / `?bare` | `.ref-preview-badge`       | Ref variant + replace  |

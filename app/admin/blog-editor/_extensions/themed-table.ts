@@ -68,13 +68,16 @@ export const ThemedTable = Table.extend({
   },
   addNodeView() {
     const minWidth = this.options.cellMinWidth as number;
+    const configured = this.options.HTMLAttributes as Record<string, string>;
     return ({ node, editor }: { node: PMNode; editor: { view: EditorView } }) => {
-      const view = new ThemedTableView(node, minWidth, editor.view, {});
-      // Apply initial theme attr — TableView's constructor only sets the
-      // attributes it's been handed; we pass `{}` so we own the data-theme.
+      // Seed the constructor with both the configured HTMLAttributes (so a
+      // future `ThemedTable.configure({ HTMLAttributes })` keeps working) and
+      // the initial theme attr; ThemedTableView.update keeps the latter in
+      // sync afterwards.
       const theme = (node.attrs.theme as TableTheme | undefined) ?? 'default';
-      if (theme !== 'default') view.table.setAttribute('data-theme', theme);
-      return view;
+      const attrs: Record<string, string> = { ...configured };
+      if (theme !== 'default') attrs['data-theme'] = theme;
+      return new ThemedTableView(node, minWidth, editor.view, attrs);
     };
   },
 });

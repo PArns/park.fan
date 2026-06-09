@@ -51,7 +51,8 @@ export function EditorBubbleMenu({ editor }: EditorBubbleMenuProps) {
       }}
       options={{ placement: 'top', offset: 8 }}
     >
-      <div className="border-border/60 bg-popover text-popover-foreground inline-flex items-center gap-0.5 rounded-xl border p-1 shadow-xl">
+      {/* z-40 keeps the menu above the sticky FixedToolbar (z-30). */}
+      <div className="border-border/60 bg-popover text-popover-foreground relative z-40 inline-flex items-center gap-0.5 rounded-xl border p-1 shadow-xl">
         <Btn
           active={editor.isActive('bold')}
           onClick={() => editor.chain().focus().toggleBold().run()}

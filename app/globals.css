@@ -704,19 +704,32 @@ html[data-temp-unit='F'] .u-imperial {
   border-top: 1px solid var(--border);
   margin: 2em 0;
 }
+/* TableView (resizable mode) wraps every table in div.tableWrapper — style
+   it like the published blog's rounded table card so the canvas previews
+   what readers will get. */
+.tiptap-canvas .tableWrapper {
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin: 1rem 0;
+}
 .tiptap-canvas table {
   border-collapse: collapse;
   width: 100%;
-  margin: 0.5em 0;
+  margin: 0;
 }
 .tiptap-canvas th,
 .tiptap-canvas td {
-  border: 1px solid var(--border);
-  padding: 0.4em 0.6em;
+  border: 1px solid color-mix(in oklab, var(--border) 40%, transparent);
+  padding: 0.5em 0.8em;
 }
 .tiptap-canvas th {
   background: color-mix(in oklab, var(--foreground) 8%, transparent);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.75em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
 }
 /* Themed-header presets — picked from the TableMenu palette. Applies to
    both the editor canvas (.tiptap-canvas) AND the rendered blog
@@ -749,10 +762,6 @@ html[data-temp-unit='F'] .u-imperial {
   background: color-mix(in oklab, oklch(0.7 0.2 30) 22%, transparent);
   color: oklch(0.82 0.2 30);
   border-bottom-color: color-mix(in oklab, oklch(0.7 0.2 30) 45%, transparent);
-}
-.tiptap-canvas table {
-  font-weight: inherit;
-  text-align: left;
 }
 /* Empty-editor placeholder. */
 .tiptap-canvas p.is-editor-empty:first-child::before,

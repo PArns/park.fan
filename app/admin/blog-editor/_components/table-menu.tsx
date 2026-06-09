@@ -7,11 +7,7 @@ import {
   ArrowLeftToLine,
   ArrowRightToLine,
   ArrowUpToLine,
-  Combine,
-  Heading1,
-  Heading2,
   Palette,
-  SplitSquareHorizontal,
   Trash2,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -25,11 +21,12 @@ interface TableMenuProps {
 /**
  * Floating table operations toolbar.
  *
- * Appears whenever the caret is inside a table cell — gives the author
- * one-click access to add / remove rows + columns, toggle header row / column
- * and delete the whole table. Keeps the FixedToolbar uncluttered (which only
- * needs the *insert* button) while still surfacing every table command the
- * @tiptap/extension-table package ships with.
+ * Appears whenever the caret is inside a table cell. Deliberately limited to
+ * the operations GFM markdown can actually express: add / remove rows and
+ * columns, the header colour theme, and deleting the table. Header-row /
+ * header-column toggles and cell merge / split are NOT offered — they create
+ * table shapes (header cells mid-table, colspan / rowspan) that have no pipe
+ * table representation, so the post would silently degrade on save.
  */
 const THEME_LABEL: Record<TableTheme, string> = {
   default: 'Default',
@@ -53,19 +50,20 @@ export function TableMenu({ editor }: TableMenuProps) {
   const [themeOpen, setThemeOpen] = useState(false);
   // useEditor only re-renders on doc changes; pure selection moves (caret
   // jumping into a table cell) don't trigger a React render, so the
-  // `editor.can()` checks below would evaluate against the previous
-  // selection and show every command as disabled until the user clicks an
-  // unconditional button (the H toggles) that mutates the doc. Tick a local
-  // counter on every editor transaction so the menu reads fresh state.
+  // `editor.can()` / `getAttributes` reads below would reflect the previous
+  // selection. Tick on selection + doc updates so the menu reads fresh state.
+  // NOTE: do NOT subscribe to `transaction` — plugins (column resizing,
+  // floating-ui sync) dispatch meta-only transactions during render, which
+  // turns an unconditional tick into an infinite update loop.
   const [, tick] = useState(0);
   useEffect(() => {
     if (!editor) return;
-    const onTransaction = () => tick((n) => n + 1);
-    editor.on('selectionUpdate', onTransaction);
-    editor.on('transaction', onTransaction);
+    const onChange = () => tick((n) => n + 1);
+    editor.on('selectionUpdate', onChange);
+    editor.on('update', onChange);
     return () => {
-      editor.off('selectionUpdate', onTransaction);
-      editor.off('transaction', onTransaction);
+      editor.off('selectionUpdate', onChange);
+      editor.off('update', onChange);
     };
   }, [editor]);
   if (!editor) return null;
@@ -97,7 +95,8 @@ export function TableMenu({ editor }: TableMenuProps) {
       shouldShow={({ editor: e }) => e.isActive('table')}
       options={{ placement: 'top', offset: 12 }}
     >
-      <div className="border-border/60 bg-popover text-popover-foreground inline-flex items-center gap-0.5 rounded-xl border p-1 shadow-xl">
+      {/* z-40 keeps the menu above the sticky FixedToolbar (z-30). */}
+      <div className="border-border/60 bg-popover text-popover-foreground relative z-40 inline-flex items-center gap-0.5 rounded-xl border p-1 shadow-xl">
         <Group>
           <Btn
             onClick={() => editor.chain().focus().addRowBefore().run()}
@@ -148,49 +147,6 @@ export function TableMenu({ editor }: TableMenuProps) {
           </Btn>
         </Group>
         <Divider />
-        <Group>
-          <Btn
-            onClick={() => editor.chain().focus().toggleHeaderRow().run()}
-            label="Toggle header row"
-            active={editor.isActive('tableHeader')}
-          >
-            <Heading1 className="h-3.5 w-3.5" />
-          </Btn>
-          <Btn
-            onClick={() => editor.chain().focus().toggleHeaderColumn().run()}
-            label="Toggle header column"
-          >
-            <Heading2 className="h-3.5 w-3.5" />
-          </Btn>
-        </Group>
-        <Divider />
-        {/* Merge / split only make sense once the author has drag-selected
-            multiple cells (mergeCells) or parked the caret inside a merged
-            one (splitCell). Hide them entirely otherwise so the toolbar
-            doesn't read as "lots of dead buttons". */}
-        {(editor.can().mergeCells() || editor.can().splitCell()) && (
-          <>
-            <Group>
-              {editor.can().mergeCells() && (
-                <Btn
-                  onClick={() => editor.chain().focus().mergeCells().run()}
-                  label="Merge cells"
-                >
-                  <Combine className="h-3.5 w-3.5" />
-                </Btn>
-              )}
-              {editor.can().splitCell() && (
-                <Btn
-                  onClick={() => editor.chain().focus().splitCell().run()}
-                  label="Split cell"
-                >
-                  <SplitSquareHorizontal className="h-3.5 w-3.5" />
-                </Btn>
-              )}
-            </Group>
-            <Divider />
-          </>
-        )}
         <Group>
           <div className="relative">
             <button

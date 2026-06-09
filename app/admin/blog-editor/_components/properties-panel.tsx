@@ -23,6 +23,7 @@ import {
 import type { Editor } from '@tiptap/core';
 import { cn } from '@/lib/utils';
 import { getWidget, widgetLabel } from '../_lib/widgets';
+import { reanchorPos } from '../_lib/chip-utils';
 
 export type EditorSelection =
   | {
@@ -448,8 +449,21 @@ function WidgetForm({
     editor
       .chain()
       .focus()
-      .command(({ tr }) => {
-        tr.replaceRangeWith(selection.nodeFrom, selection.nodeTo, newNode);
+      .command(({ tr, state }) => {
+        // nodeFrom was captured at click time — re-anchor on the nearest
+        // codeBlock still carrying this widget's fence language so edits
+        // above the fence can't make the save splice the wrong range.
+        const pos = reanchorPos(
+          state.doc,
+          selection.nodeFrom,
+          (n) =>
+            n.type.name === 'codeBlock' &&
+            String(n.attrs.language ?? '').split(' ')[0] === selection.name
+        );
+        if (pos === null) return false;
+        const node = state.doc.nodeAt(pos);
+        if (!node) return false;
+        tr.replaceRangeWith(pos, pos + node.nodeSize, newNode);
         return true;
       })
       .run();
@@ -470,8 +484,18 @@ function WidgetForm({
     editor
       .chain()
       .focus()
-      .command(({ tr }) => {
-        tr.delete(selection.nodeFrom, selection.nodeTo);
+      .command(({ tr, state }) => {
+        const pos = reanchorPos(
+          state.doc,
+          selection.nodeFrom,
+          (n) =>
+            n.type.name === 'codeBlock' &&
+            String(n.attrs.language ?? '').split(' ')[0] === selection.name
+        );
+        if (pos === null) return false;
+        const node = state.doc.nodeAt(pos);
+        if (!node) return false;
+        tr.delete(pos, pos + node.nodeSize);
         return true;
       })
       .run();
@@ -640,8 +664,18 @@ function EmbedForm({
     editor
       .chain()
       .focus()
-      .command(({ tr }) => {
-        tr.replaceRangeWith(selection.paragraphFrom, selection.paragraphTo, node);
+      .command(({ tr, state }) => {
+        // Re-anchor on the paragraph still containing this embed URL — the
+        // captured range drifts as soon as anything above it is edited.
+        const pos = reanchorPos(
+          state.doc,
+          selection.paragraphFrom,
+          (n) => n.type.name === 'paragraph' && n.textContent.trim() === selection.href
+        );
+        if (pos === null) return false;
+        const old = state.doc.nodeAt(pos);
+        if (!old) return false;
+        tr.replaceRangeWith(pos, pos + old.nodeSize, node);
         return true;
       })
       .run();
@@ -660,8 +694,16 @@ function EmbedForm({
     editor
       .chain()
       .focus()
-      .command(({ tr }) => {
-        tr.delete(selection.paragraphFrom, selection.paragraphTo);
+      .command(({ tr, state }) => {
+        const pos = reanchorPos(
+          state.doc,
+          selection.paragraphFrom,
+          (n) => n.type.name === 'paragraph' && n.textContent.trim() === selection.href
+        );
+        if (pos === null) return false;
+        const node = state.doc.nodeAt(pos);
+        if (!node) return false;
+        tr.delete(pos, pos + node.nodeSize);
         return true;
       })
       .run();
@@ -778,8 +820,18 @@ function ImageForm({
     const altString = buildAltStringFrom(next);
     editor
       .chain()
-      .command(({ tr }) => {
-        tr.setNodeAttribute(selection.pos, 'alt', altString);
+      .command(({ tr, state }) => {
+        // Edits above the image shift its position after the click that
+        // filled `selection` — re-anchor on the nearest image still carrying
+        // this src before writing.
+        const pos = reanchorPos(
+          state.doc,
+          selection.pos,
+          (n) =>
+            n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
+        );
+        if (pos === null) return false;
+        tr.setNodeAttribute(pos, 'alt', altString);
         return true;
       })
       .run();
@@ -811,10 +863,17 @@ function ImageForm({
     editor
       .chain()
       .focus()
-      .command(({ tr }) => {
-        const node = tr.doc.nodeAt(selection.pos);
+      .command(({ tr, state }) => {
+        const pos = reanchorPos(
+          state.doc,
+          selection.pos,
+          (n) =>
+            n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
+        );
+        if (pos === null) return false;
+        const node = tr.doc.nodeAt(pos);
         if (!node) return false;
-        tr.delete(selection.pos, selection.pos + node.nodeSize);
+        tr.delete(pos, pos + node.nodeSize);
         return true;
       })
       .run();
@@ -830,6 +889,7 @@ function ImageForm({
       new CustomEvent('parkfan-image-pick-request', {
         detail: {
           pos: selection.pos,
+          src: selection.src,
           rect: { top: r.top, bottom: r.bottom, left: r.left, right: r.right },
         },
       })

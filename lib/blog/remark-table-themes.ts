@@ -8,7 +8,9 @@
  * The directive is opt-in — non-themed tables stay as plain GFM and are
  * unaffected.
  */
-const MAGIC_RE = /^\s*<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->\s*$/;
+// Deliberately NOT anchored to ^…$ — remark may merge adjacent raw-HTML
+// lines into one node, so the directive just needs to appear in the value.
+const MAGIC_RE = /<!--\s*tbl-theme:\s*([a-zA-Z]+)\s*-->/;
 
 interface MdNode {
   type: string;
@@ -40,9 +42,16 @@ export function remarkTableThemes(): (tree: MdRoot) => void {
         };
       }
       // Drop the magic comment from the rendered tree either way so it never
-      // shows up as a stray HTML island next to the table.
-      children.splice(i, 1);
-      i--;
+      // shows up as a stray HTML island next to the table. When remark merged
+      // the comment with other raw HTML into one node, only strip the
+      // directive substring instead of nuking the whole node.
+      const stripped = (node.value ?? '').replace(MAGIC_RE, '').trim();
+      if (stripped) {
+        node.value = stripped;
+      } else {
+        children.splice(i, 1);
+        i--;
+      }
     }
   };
 }

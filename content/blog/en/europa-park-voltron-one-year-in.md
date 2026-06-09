@@ -59,6 +59,8 @@ In 2025's comparable summer window, two things happened:
    reduction. Same operations, same crowd, just a new headliner pulling
    pressure off.
 
+<!--tbl-theme: success-->
+
 | Ride          | 2023 peak wait | 2025 peak wait |
 | ------------- | -------------- | -------------- |
 | Voltron Nevera | —             | 74 min         |
