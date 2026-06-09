@@ -10,6 +10,7 @@ import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import type { Locale } from '@/i18n/config';
+import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
 import {
   extractInlineRefs,
   parseRefKey,
@@ -513,11 +514,22 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       </blockquote>
     ),
     hr: () => <hr className="border-border my-10" />,
-    table: ({ children }) => (
-      <div className="not-prose my-6 w-full overflow-x-auto">
-        <table className="w-full border-collapse text-sm">{children}</table>
-      </div>
-    ),
+    table: ({ children, ...rest }) => {
+      // Pass `data-theme` through when the remark-table-themes plugin
+      // attached it from a `<!--tbl-theme: …-->` directive — the CSS
+      // selectors in globals.css read it to colour the header row.
+      const themeAttr = (rest as { 'data-theme'?: string })['data-theme'];
+      return (
+        <div className="not-prose my-6 w-full overflow-x-auto">
+          <table
+            className="w-full border-collapse text-sm"
+            {...(themeAttr ? { 'data-theme': themeAttr } : {})}
+          >
+            {children}
+          </table>
+        </div>
+      );
+    },
     thead: ({ children }) => <thead className="border-border border-b">{children}</thead>,
     tr: ({ children }) => <tr className="border-border/60 border-b last:border-0">{children}</tr>,
     th: ({ children }) => (
@@ -559,7 +571,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
             <ReactMarkdown
               key={`md-${idx}`}
               components={components}
-              remarkPlugins={[remarkGfm]}
+              remarkPlugins={[remarkGfm, remarkTableThemes]}
               rehypePlugins={[rehypeSlug]}
               urlTransform={preserveCustomProtocols}
             >

@@ -8,7 +8,13 @@ import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
 import Placeholder from '@tiptap/extension-placeholder';
 import Typography from '@tiptap/extension-typography';
-import { Table, TableRow, TableHeader, TableCell } from '@tiptap/extension-table';
+import { TableRow, TableHeader, TableCell } from '@tiptap/extension-table';
+import { ThemedTable } from '../_extensions/themed-table';
+import {
+  applyThemesToDoc,
+  parseThemesFromMarkdown,
+  serializeWithThemes,
+} from '../_lib/table-theme-md';
 import { Markdown } from 'tiptap-markdown';
 import { SlashCommand } from '../_extensions/slash-command';
 import { RefPreview } from '../_extensions/ref-preview';
@@ -144,7 +150,7 @@ export function EditorCanvas({
         emptyEditorClass: 'is-editor-empty',
       }),
       Typography,
-      Table.configure({ resizable: true }),
+      ThemedTable.configure({ resizable: true }),
       TableRow,
       TableHeader,
       TableCell,
@@ -191,9 +197,12 @@ export function EditorCanvas({
       },
     },
     onUpdate: ({ editor: e }) => {
-      const md = (e.storage as unknown as { markdown: { getMarkdown: () => string } })
+      const raw = (e.storage as unknown as { markdown: { getMarkdown: () => string } })
         .markdown.getMarkdown();
-      onMarkdownChange(md);
+      // tiptap-markdown drops table-level attrs on the floor — we re-inject
+      // the theme as a leading `<!--tbl-theme: …-->` comment so the round
+      // trip survives the save/load cycle.
+      onMarkdownChange(serializeWithThemes(e, raw));
     },
   });
 
@@ -208,11 +217,19 @@ export function EditorCanvas({
   // user flips to a different locale tab).
   useEffect(() => {
     if (!editor) return;
-    const current = (
-      editor.storage as unknown as { markdown: { getMarkdown: () => string } }
-    ).markdown.getMarkdown();
+    const current = serializeWithThemes(
+      editor,
+      (
+        editor.storage as unknown as { markdown: { getMarkdown: () => string } }
+      ).markdown.getMarkdown()
+    );
     if (current !== initialMarkdown) {
-      editor.commands.setContent(initialMarkdown || '', { emitUpdate: false });
+      // Strip our `<!--tbl-theme: …-->` comments before handing the markdown
+      // to tiptap — it would emit them as literal text otherwise — then
+      // re-apply the captured themes onto the freshly-parsed table nodes.
+      const { cleaned, themes } = parseThemesFromMarkdown(initialMarkdown || '');
+      editor.commands.setContent(cleaned, { emitUpdate: false });
+      applyThemesToDoc(editor, themes);
     }
   }, [initialMarkdown, editor]);
 

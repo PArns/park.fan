@@ -10,10 +10,13 @@ import {
   Combine,
   Heading1,
   Heading2,
+  Palette,
   SplitSquareHorizontal,
   Trash2,
 } from 'lucide-react';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { TABLE_THEMES, type TableTheme } from '../_extensions/themed-table';
 
 interface TableMenuProps {
   editor: Editor | null;
@@ -28,8 +31,49 @@ interface TableMenuProps {
  * needs the *insert* button) while still surfacing every table command the
  * @tiptap/extension-table package ships with.
  */
+const THEME_LABEL: Record<TableTheme, string> = {
+  default: 'Default',
+  primary: 'Primary',
+  accent: 'Accent',
+  success: 'Success',
+  warning: 'Warning',
+  danger: 'Danger',
+};
+
+const THEME_SWATCH: Record<TableTheme, string> = {
+  default: 'bg-foreground/15',
+  primary: 'bg-primary/60',
+  accent: 'bg-accent/60',
+  success: 'bg-emerald-500/60',
+  warning: 'bg-amber-500/60',
+  danger: 'bg-rose-500/60',
+};
+
 export function TableMenu({ editor }: TableMenuProps) {
+  const [themeOpen, setThemeOpen] = useState(false);
   if (!editor) return null;
+  const currentTheme = (editor.getAttributes('table').theme ?? 'default') as TableTheme;
+  const setTheme = (t: TableTheme) => {
+    // `updateAttributes('table', …)` only touches the node at the current
+    // selection — which is the table cell, not the table itself. Walk up
+    // from the caret to find the enclosing table and patch its attrs.
+    editor
+      .chain()
+      .focus()
+      .command(({ tr, state }) => {
+        const { $from } = state.selection;
+        for (let depth = $from.depth; depth >= 0; depth--) {
+          const node = $from.node(depth);
+          if (node.type.name === 'table') {
+            tr.setNodeAttribute(depth === 0 ? 0 : $from.before(depth), 'theme', t);
+            return true;
+          }
+        }
+        return false;
+      })
+      .run();
+    setThemeOpen(false);
+  };
   return (
     <BubbleMenu
       editor={editor}
@@ -118,6 +162,46 @@ export function TableMenu({ editor }: TableMenuProps) {
           >
             <SplitSquareHorizontal className="h-3.5 w-3.5" />
           </Btn>
+        </Group>
+        <Divider />
+        <Group>
+          <div className="relative">
+            <button
+              type="button"
+              title="Header color"
+              aria-label="Header color"
+              onClick={() => setThemeOpen((v) => !v)}
+              onBlur={() => setTimeout(() => setThemeOpen(false), 150)}
+              className={cn(
+                'hover:bg-accent/50 text-foreground/80 inline-flex h-7 items-center gap-1 rounded-md px-1.5 transition-colors',
+                currentTheme !== 'default' && 'text-primary'
+              )}
+            >
+              <Palette className="h-3.5 w-3.5" />
+              <span className={cn('h-3 w-3 rounded-full', THEME_SWATCH[currentTheme])} />
+            </button>
+            {themeOpen && (
+              <div className="border-border/60 bg-popover absolute left-0 top-full z-50 mt-1 min-w-[160px] overflow-hidden rounded-lg border shadow-xl">
+                {TABLE_THEMES.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => setTheme(t)}
+                    className={cn(
+                      'flex w-full items-center gap-2 px-3 py-1.5 text-left text-xs transition-colors',
+                      currentTheme === t
+                        ? 'bg-primary/10 text-primary'
+                        : 'hover:bg-accent/40 text-foreground/85'
+                    )}
+                  >
+                    <span className={cn('h-3 w-3 rounded-full ring-1 ring-border/60', THEME_SWATCH[t])} />
+                    {THEME_LABEL[t]}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </Group>
         <Divider />
         <Btn

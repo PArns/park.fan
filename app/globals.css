@@ -717,6 +717,41 @@ html[data-temp-unit='F'] .u-imperial {
 .tiptap-canvas th {
   background: color-mix(in oklab, var(--foreground) 8%, transparent);
   font-weight: 600;
+}
+/* Themed-header presets — picked from the TableMenu palette. Applies to
+   both the editor canvas (.tiptap-canvas) AND the rendered blog
+   (.blog-content) so authors see the same colour they'll get on publish. */
+.tiptap-canvas table[data-theme='primary'] th,
+.blog-content table[data-theme='primary'] th {
+  background: color-mix(in oklab, var(--primary) 22%, transparent);
+  color: var(--primary);
+  border-bottom-color: color-mix(in oklab, var(--primary) 45%, transparent);
+}
+.tiptap-canvas table[data-theme='accent'] th,
+.blog-content table[data-theme='accent'] th {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+  color: var(--accent-foreground);
+}
+.tiptap-canvas table[data-theme='success'] th,
+.blog-content table[data-theme='success'] th {
+  background: color-mix(in oklab, oklch(0.7 0.18 145) 22%, transparent);
+  color: oklch(0.82 0.18 145);
+  border-bottom-color: color-mix(in oklab, oklch(0.7 0.18 145) 45%, transparent);
+}
+.tiptap-canvas table[data-theme='warning'] th,
+.blog-content table[data-theme='warning'] th {
+  background: color-mix(in oklab, oklch(0.78 0.16 80) 22%, transparent);
+  color: oklch(0.86 0.16 80);
+  border-bottom-color: color-mix(in oklab, oklch(0.78 0.16 80) 45%, transparent);
+}
+.tiptap-canvas table[data-theme='danger'] th,
+.blog-content table[data-theme='danger'] th {
+  background: color-mix(in oklab, oklch(0.7 0.2 30) 22%, transparent);
+  color: oklch(0.82 0.2 30);
+  border-bottom-color: color-mix(in oklab, oklch(0.7 0.2 30) 45%, transparent);
+}
+.tiptap-canvas table {
+  font-weight: inherit;
   text-align: left;
 }
 /* Empty-editor placeholder. */
