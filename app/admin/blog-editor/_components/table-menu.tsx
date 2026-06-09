@@ -14,7 +14,7 @@ import {
   SplitSquareHorizontal,
   Trash2,
 } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { TABLE_THEMES, type TableTheme } from '../_extensions/themed-table';
 
@@ -51,6 +51,23 @@ const THEME_SWATCH: Record<TableTheme, string> = {
 
 export function TableMenu({ editor }: TableMenuProps) {
   const [themeOpen, setThemeOpen] = useState(false);
+  // useEditor only re-renders on doc changes; pure selection moves (caret
+  // jumping into a table cell) don't trigger a React render, so the
+  // `editor.can()` checks below would evaluate against the previous
+  // selection and show every command as disabled until the user clicks an
+  // unconditional button (the H toggles) that mutates the doc. Tick a local
+  // counter on every editor transaction so the menu reads fresh state.
+  const [, tick] = useState(0);
+  useEffect(() => {
+    if (!editor) return;
+    const onTransaction = () => tick((n) => n + 1);
+    editor.on('selectionUpdate', onTransaction);
+    editor.on('transaction', onTransaction);
+    return () => {
+      editor.off('selectionUpdate', onTransaction);
+      editor.off('transaction', onTransaction);
+    };
+  }, [editor]);
   if (!editor) return null;
   const currentTheme = (editor.getAttributes('table').theme ?? 'default') as TableTheme;
   const setTheme = (t: TableTheme) => {
