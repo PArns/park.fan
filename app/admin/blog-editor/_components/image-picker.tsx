@@ -32,6 +32,12 @@ interface ImagePickerProps {
   onPick: (r: ImagePickResult) => void;
   /** When set, the dialog also collects alt + caption (used for inline insertions). */
   withCaption?: boolean;
+  /** "Pick…" from a panel — a single click should commit the new src
+   *  immediately, without staging for caption-entry. */
+  replaceMode?: boolean;
+  /** Bounding rect of the chip that triggered the picker so the modal can
+   *  anchor near it instead of always floating at the top of the viewport. */
+  anchorRect?: { top: number; bottom: number; left: number; right: number };
 }
 
 type View = 'grid' | 'list';
@@ -46,7 +52,13 @@ export function ImagePicker(props: ImagePickerProps) {
   return <ImagePickerBody {...props} />;
 }
 
-function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps, 'open'>) {
+function ImagePickerBody({
+  onClose,
+  onPick,
+  withCaption,
+  replaceMode,
+  anchorRect,
+}: Omit<ImagePickerProps, 'open'>) {
   const [images, setImages] = useState<BlogImage[]>([]);
   const [q, setQ] = useState('');
   const [loading, setLoading] = useState(true);
@@ -89,6 +101,13 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
    *  need caption text; list view always stages so the author can preview the
    *  rendered image before committing. */
   const onItemClick = (src: string) => {
+    // Replace flow short-circuits caption staging — the panel already owns
+    // alt/caption, the picker only swaps the underlying src.
+    if (replaceMode) {
+      onPick({ src, alt: '', caption: '' });
+      onClose();
+      return;
+    }
     if (view === 'list' || withCaption) {
       setStagedSrc(src);
       setAlt(
@@ -106,14 +125,51 @@ function ImagePickerBody({ onClose, onPick, withCaption }: Omit<ImagePickerProps
     onClose();
   };
 
+  // Anchor positioning — when the panel hands us the triggering chip's rect
+  // we float the modal near it instead of always at the top of the viewport.
+  // Picks the side with more room so the dialog never escapes the screen.
+  const DIALOG_HEIGHT = Math.min(640, window.innerHeight * 0.85);
+  let modalStyle: React.CSSProperties = {};
+  if (anchorRect) {
+    const spaceBelow = window.innerHeight - anchorRect.bottom;
+    const spaceAbove = anchorRect.top;
+    const placeBelow = spaceBelow >= 360 || spaceBelow >= spaceAbove;
+    const top = placeBelow
+      ? Math.min(anchorRect.bottom + 12, window.innerHeight - DIALOG_HEIGHT - 16)
+      : Math.max(16, anchorRect.top - DIALOG_HEIGHT - 12);
+    modalStyle = {
+      position: 'fixed',
+      top,
+      left: Math.max(
+        16,
+        Math.min(
+          window.innerWidth - 16 - 720,
+          (anchorRect.left + anchorRect.right) / 2 - 360
+        )
+      ),
+      width: 'min(720px, 92vw)',
+      maxHeight: DIALOG_HEIGHT,
+    };
+  }
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-[8vh] backdrop-blur-sm"
+      className={
+        anchorRect
+          ? 'fixed inset-0 z-50 bg-black/40 backdrop-blur-sm'
+          : 'fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-[8vh] backdrop-blur-sm'
+      }
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="border-border/60 bg-popover text-popover-foreground flex max-h-[85vh] w-[min(900px,92vw)] flex-col overflow-hidden rounded-2xl border shadow-2xl">
+      <div
+        style={modalStyle}
+        className={
+          'border-border/60 bg-popover text-popover-foreground flex flex-col overflow-hidden rounded-2xl border shadow-2xl ' +
+          (anchorRect ? '' : 'max-h-[85vh] w-[min(900px,92vw)]')
+        }
+      >
         <div className="border-border/60 flex items-center gap-2 border-b px-3 py-2">
           <Search className="text-muted-foreground h-4 w-4 shrink-0" />
           <input

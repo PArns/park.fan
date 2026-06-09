@@ -62,6 +62,9 @@ export type EditorSelection =
       caption: string;
       align: 'center' | 'left' | 'right' | 'wide';
       size?: 'small' | 'medium' | 'large';
+      /** Carried through from the chip click so the ImagePicker (when the
+       *  panel opens it via Pick…) can anchor itself near the image. */
+      rect?: { top: number; bottom: number; left: number; right: number };
     }
   | {
       kind: 'embed';
@@ -777,7 +780,7 @@ function ImageForm({
   const pickImage = () => {
     window.dispatchEvent(
       new CustomEvent('parkfan-image-pick-request', {
-        detail: { pos: selection.pos },
+        detail: { pos: selection.pos, rect: selection.rect },
       })
     );
   };

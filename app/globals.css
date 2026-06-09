@@ -786,6 +786,36 @@ html[data-temp-unit='F'] .u-imperial {
 .tiptap-canvas .editor-img-size-large {
   max-width: 720px;
 }
+.tiptap-canvas .editor-img-caption {
+  display: block;
+  margin: 0.5rem auto 1rem;
+  max-width: 720px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: color-mix(in oklab, var(--foreground) 70%, transparent);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.tiptap-canvas .editor-img-caption-align-left {
+  text-align: left;
+  margin: 0.25rem 1.5rem 0.5rem 0;
+  max-width: 360px;
+  float: left;
+  clear: left;
+}
+.tiptap-canvas .editor-img-caption-align-right {
+  text-align: right;
+  margin: 0.25rem 0 0.5rem 1.5rem;
+  max-width: 360px;
+  float: right;
+  clear: right;
+}
+.tiptap-canvas .editor-img-caption-align-wide {
+  margin: 0.5rem 0 1rem;
+  max-width: 100%;
+  text-align: center;
+}
 /* Clear floats around image runs so following paragraphs don't bleed into the
    gutter the wrap-around already reserves. */
 .tiptap-canvas h1,

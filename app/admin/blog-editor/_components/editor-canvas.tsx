@@ -59,6 +59,15 @@ export function EditorCanvas({
    *  the ParkRidePicker in plain park-or-ride mode and remember the request
    *  id so the result event can be addressed back to the originating field. */
   const widgetPickRequestRef = useRef<string | null>(null);
+  /** Chip rect for whichever surface triggered the image picker — drives
+   *  anchored modal positioning instead of always-on-top. */
+  const [imagePickerAnchor, setImagePickerAnchor] = useState<
+    { top: number; bottom: number; left: number; right: number } | null
+  >(null);
+  /** Render-time mirror of replaceImagePosRef.current so the ImagePicker can
+   *  read `replaceMode` without us reading a ref during render (React 19
+   *  forbids that — eslint-plugin-react-hooks/refs catches it). */
+  const [imagePickerReplaceMode, setImagePickerReplaceMode] = useState(false);
   // Hold the editor in a ref too so the slash extension can fire actions
   // synchronously without sequencing through useState (which React 19 forbids
   // inside effects).
@@ -282,8 +291,15 @@ export function EditorCanvas({
       setPickerMode(detail.isRide ? 'ride' : 'park');
     };
     const onImageRequest = (e: Event) => {
-      const detail = (e as CustomEvent<{ pos: number }>).detail;
+      const detail = (
+        e as CustomEvent<{
+          pos: number;
+          rect?: { top: number; bottom: number; left: number; right: number };
+        }>
+      ).detail;
       replaceImagePosRef.current = detail.pos;
+      setImagePickerAnchor(detail.rect ?? null);
+      setImagePickerReplaceMode(true);
       setImagePickerOpen(true);
     };
     const onWidgetPickRequest = (e: Event) => {
@@ -328,8 +344,12 @@ export function EditorCanvas({
           onClose={() => {
             setImagePickerOpen(false);
             replaceImagePosRef.current = null;
+            setImagePickerAnchor(null);
+            setImagePickerReplaceMode(false);
           }}
           withCaption
+          replaceMode={imagePickerReplaceMode}
+          anchorRect={imagePickerAnchor ?? undefined}
           onPick={(r: ImagePickResult) => {
             if (!editor) return;
             // Replace flow — only the src changes; the panel will round-trip
@@ -350,6 +370,8 @@ export function EditorCanvas({
                 })
                 .run();
               replaceImagePosRef.current = null;
+              setImagePickerReplaceMode(false);
+              setImagePickerAnchor(null);
               return;
             }
             const altCombined = r.caption ? `${r.alt} | ${r.caption}` : r.alt;

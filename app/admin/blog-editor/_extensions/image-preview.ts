@@ -83,20 +83,45 @@ function collectImages(doc: PMNode): ImageSpan[] {
   return out;
 }
 
+function buildCaptionDOM(caption: string, align: ImageAlign): HTMLElement {
+  const node = document.createElement('span');
+  node.className = `editor-img-caption editor-img-caption-align-${align}`;
+  node.contentEditable = 'false';
+  node.textContent = caption;
+  return node;
+}
+
 function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
-  const decorations = spans.map((s) =>
-    Decoration.node(s.pos, s.pos + 1, {
-      class: [
-        'editor-img',
-        `editor-img-align-${s.parsed.align}`,
-        s.parsed.size ? `editor-img-size-${s.parsed.size}` : '',
-      ]
-        .filter(Boolean)
-        .join(' '),
-      'data-align': s.parsed.align,
-      ...(s.parsed.size ? { 'data-size': s.parsed.size } : {}),
-    })
-  );
+  const decorations: Decoration[] = [];
+  for (const s of spans) {
+    decorations.push(
+      Decoration.node(s.pos, s.pos + 1, {
+        class: [
+          'editor-img',
+          `editor-img-align-${s.parsed.align}`,
+          s.parsed.size ? `editor-img-size-${s.parsed.size}` : '',
+        ]
+          .filter(Boolean)
+          .join(' '),
+        'data-align': s.parsed.align,
+        ...(s.parsed.size ? { 'data-size': s.parsed.size } : {}),
+      })
+    );
+    // Caption widget — sits right after the image so it floats with the same
+    // alignment column. Empty captions skip the widget entirely.
+    if (s.parsed.caption) {
+      decorations.push(
+        Decoration.widget(
+          s.pos + 1,
+          () => buildCaptionDOM(s.parsed.caption ?? '', s.parsed.align),
+          {
+            side: 1,
+            key: `image-caption:${s.pos}:${s.parsed.caption}:${s.parsed.align}`,
+          }
+        )
+      );
+    }
+  }
   return DecorationSet.create(doc, decorations);
 }
 
