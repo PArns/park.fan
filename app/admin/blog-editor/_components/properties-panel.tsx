@@ -17,15 +17,17 @@ import { cn } from '@/lib/utils';
 export type EditorSelection =
   | {
       kind: 'ref';
-      /** Position inside the doc where the click happened — the panel uses
-       *  setTextSelection(pos).extendMarkRange('link') so positions are
-       *  always resolved against the *current* doc, never stale DOM attrs. */
+      /** Start of the link mark in the doc — used directly by setTextSelection
+       *  so we don't have to re-resolve via extendMarkRange (which can extend
+       *  to the wrong link if the click resolved inside an adjacent span). */
       pos: number;
+      from: number;
+      to: number;
       href: string;
       /** Raw ref value (without leading `ref:`) — drives label heuristics. */
       value: string;
     }
-  | { kind: 'link'; pos: number; href: string }
+  | { kind: 'link'; pos: number; from: number; to: number; href: string }
   | null;
 
 interface PropertiesPanelProps {
@@ -119,12 +121,17 @@ function RefProperties({
     if (!editor) return;
     const value = selection.value;
     const newHref = `ref:${value}?${variant}`;
+    // setTextSelection over the FULL link range and replace the mark — never
+    // use extendMarkRange here. ProseMirror's mark-range extension can drift
+    // into an adjacent link when the source link is the trailing edge of a
+    // paragraph (which is exactly the case for inline ?info / ?long badges
+    // and the post-link widget anchor of ?full spotlights).
     editor
       .chain()
       .focus()
-      .setTextSelection(selection.pos)
-      .extendMarkRange('link')
-      .setLink({ href: newHref })
+      .setTextSelection({ from: selection.from, to: selection.to })
+      .unsetMark('link')
+      .setMark('link', { href: newHref })
       .run();
   };
   const removeLink = () => {
@@ -132,9 +139,8 @@ function RefProperties({
     editor
       .chain()
       .focus()
-      .setTextSelection(selection.pos)
-      .extendMarkRange('link')
-      .unsetLink()
+      .setTextSelection({ from: selection.from, to: selection.to })
+      .unsetMark('link')
       .run();
   };
 
@@ -219,15 +225,20 @@ function LinkPropertiesForm({
     if (!editor) return;
     const trimmed = href.trim();
     if (!trimmed) {
-      editor.chain().focus().setTextSelection(selection.pos).extendMarkRange('link').unsetLink().run();
+      editor
+        .chain()
+        .focus()
+        .setTextSelection({ from: selection.from, to: selection.to })
+        .unsetMark('link')
+        .run();
       return;
     }
     editor
       .chain()
       .focus()
-      .setTextSelection(selection.pos)
-      .extendMarkRange('link')
-      .setLink({ href: trimmed })
+      .setTextSelection({ from: selection.from, to: selection.to })
+      .unsetMark('link')
+      .setMark('link', { href: trimmed })
       .run();
   };
   const remove = () => {
@@ -235,9 +246,8 @@ function LinkPropertiesForm({
     editor
       .chain()
       .focus()
-      .setTextSelection(selection.pos)
-      .extendMarkRange('link')
-      .unsetLink()
+      .setTextSelection({ from: selection.from, to: selection.to })
+      .unsetMark('link')
       .run();
   };
 

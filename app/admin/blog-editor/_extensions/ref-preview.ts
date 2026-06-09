@@ -432,44 +432,131 @@ export const RefPreview = Extension.create({
               '.ref-preview-badge, .ref-preview-spotlight, a[href]'
             ) as HTMLElement | null;
             if (!chip) return false;
-            // CRITICAL: never trust the stashed data-from/data-to on the
-            // widget DOM — ProseMirror reuses widget nodes when their key
-            // doesn't change, so those numbers go stale as soon as the doc
-            // shifts upstream. Resolve the link mark from the live click pos
-            // instead so editing scales to N chips.
+
             const doc = view.state.doc;
-            let probe = clickPos;
-            let $pos = doc.resolve(probe);
-            let linkMark = $pos.marks().find((m) => m.type.name === 'link');
-            // Widget decorations anchor AFTER the link span — step back one
-            // position to land on the trailing character of the link text.
-            if (!linkMark && probe > 0) {
-              probe = clickPos - 1;
-              $pos = doc.resolve(probe);
-              linkMark = $pos.marks().find((m) => m.type.name === 'link');
+            let from = -1;
+            let to = -1;
+            let href = '';
+
+            // Branch 1: chip is one of our decoration widgets. The widget DOM
+            // gets reused across doc edits (key doesn't change for option-only
+            // shifts), so anything stashed as a data-* attr goes stale. The
+            // plugin's `spans` array, on the other hand, is recomputed from
+            // collectRefs(doc) on every docChanged tx → always current. Find
+            // the span by its data-ref (the link value never changes for a
+            // given chip's identity) and prefer the one whose anchor is
+            // nearest the chip's vertical position so we pick the *right* one
+            // when the same park is referenced multiple times.
+            const dataRef = chip.getAttribute('data-ref');
+            if (dataRef) {
+              const state = refPreviewKey.getState(view.state);
+              const candidates = (state?.spans ?? []).filter(
+                (s) => s.refValue === dataRef
+              );
+              if (candidates.length === 1) {
+                from = candidates[0].from;
+                to = candidates[0].to;
+                href = `ref:${dataRef}${
+                  candidates[0].options.size
+                    ? `?${[...candidates[0].options].join('&')}`
+                    : ''
+                }`;
+              } else if (candidates.length > 1) {
+                // Disambiguate by the chip's on-screen vertical position
+                // vs. each candidate's anchor coord. Whichever doc position
+                // renders closest to the click target wins.
+                const chipTop = chip.getBoundingClientRect().top;
+                let best = candidates[0];
+                let bestDist = Infinity;
+                for (const c of candidates) {
+                  try {
+                    const coords = view.coordsAtPos(c.to);
+                    const dist = Math.abs(coords.top - chipTop);
+                    if (dist < bestDist) {
+                      best = c;
+                      bestDist = dist;
+                    }
+                  } catch {
+                    /* invalid pos — skip */
+                  }
+                }
+                from = best.from;
+                to = best.to;
+                href = `ref:${dataRef}${
+                  best.options.size ? `?${[...best.options].join('&')}` : ''
+                }`;
+              }
             }
-            if (!linkMark) return false;
-            const href = String(linkMark.attrs.href ?? '');
-            if (!href) return false;
+
+            // Branch 2: plain `<a>` click (e.g. ?bare links, mailto, https,
+            // internal /paths). Resolve the link mark at the live click pos
+            // and walk the textblock to find the contiguous mark range.
+            if (from < 0) {
+              let probe = clickPos;
+              let $pos = doc.resolve(probe);
+              let linkMark = $pos.marks().find((m) => m.type.name === 'link');
+              if (!linkMark && probe > 0) {
+                probe = clickPos - 1;
+                $pos = doc.resolve(probe);
+                linkMark = $pos.marks().find((m) => m.type.name === 'link');
+              }
+              if (!linkMark) return false;
+              href = String(linkMark.attrs.href ?? '');
+              if (!href) return false;
+              // Walk the textblock to find the contiguous link range so the
+              // panel can do precise unlink/replace operations.
+              const parent = $pos.parent;
+              const parentStart = $pos.before() + 1;
+              let runFrom = -1;
+              let runTo = -1;
+              parent.content.forEach((node, offset) => {
+                const nodeFrom = parentStart + offset;
+                const nodeTo = nodeFrom + node.nodeSize;
+                const hasLink = node.marks.find(
+                  (m) => m.type.name === 'link' && m.attrs.href === href
+                );
+                if (hasLink && nodeFrom <= probe && probe < nodeTo) {
+                  if (runFrom < 0) runFrom = nodeFrom;
+                  runTo = nodeTo;
+                }
+              });
+              if (runFrom < 0) {
+                runFrom = probe;
+                runTo = probe + 1;
+              }
+              from = runFrom;
+              to = runTo;
+            }
+
             event.preventDefault();
-            // Hand the click position to whoever's listening. The parent
-            // panel will redo setTextSelection+extendMarkRange at apply time
-            // so it always reads the link's current range from the doc.
             const rect = chip.getBoundingClientRect();
             const isRef = href.startsWith('ref:');
             const value = isRef
-              ? (href.slice(4).includes('?')
-                  ? href.slice(4, href.indexOf('?'))
-                  : href.slice(4))
+              ? href.slice(4).includes('?')
+                ? href.slice(4, href.indexOf('?'))
+                : href.slice(4)
               : '';
             window.dispatchEvent(
               new CustomEvent('parkfan-selection', {
                 detail: {
                   kind: isRef ? 'ref' : 'link',
-                  pos: probe,
+                  // Carry the FULL range, not just a probe. The panel uses
+                  // [from, to] directly with setTextSelection so we don't
+                  // need extendMarkRange to recover the span — which was the
+                  // step that went wrong when ProseMirror's coordsAtPos
+                  // mapped a click inside a tall spotlight to the NEXT
+                  // paragraph's link instead.
+                  pos: from,
+                  from,
+                  to,
                   href,
                   value,
-                  rect: { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right },
+                  rect: {
+                    top: rect.top,
+                    bottom: rect.bottom,
+                    left: rect.left,
+                    right: rect.right,
+                  },
                 },
               })
             );
