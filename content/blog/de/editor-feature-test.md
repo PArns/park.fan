@@ -123,7 +123,7 @@ slug: black-mamba
 Ordner + Heading:
 
 ```gallery-widget
-folder: /images/parks/phantasialand
+folder: /blog/images/europa-park-voltron
 heading: Phantasialand in Bildern
 ```
 

@@ -246,18 +246,31 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const onCreateAuthor = useCallback((draft: NewAuthorDraft) => {
     setNewAuthors((prev) => (prev.find((a) => a.key === draft.key) ? prev : [...prev, draft]));
   }, []);
-  const onEditAuthor = useCallback((draft: NewAuthorDraft) => {
-    setEditedAuthors((prev) => {
-      const rest = prev.filter((a) => a.key !== draft.key);
-      return [...rest, draft];
-    });
-  }, []);
-  const onEditCategory = useCallback((draft: NewCategoryDraft) => {
-    setEditedCategories((prev) => {
-      const rest = prev.filter((c) => c.path !== draft.path);
-      return [...rest, draft];
-    });
-  }, []);
+  const onEditAuthor = useCallback(
+    (draft: NewAuthorDraft) => {
+      // Editing an author that was CREATED this session updates the pending
+      // create instead — otherwise the save payload lists the key under both
+      // newAuthors and editedAuthors and the PR carries two commits for it.
+      if (newAuthors.some((a) => a.key === draft.key)) {
+        setNewAuthors((prev) => prev.map((a) => (a.key === draft.key ? draft : a)));
+      } else {
+        setEditedAuthors((prev) => [...prev.filter((a) => a.key !== draft.key), draft]);
+      }
+    },
+    [newAuthors]
+  );
+  const onEditCategory = useCallback(
+    (draft: NewCategoryDraft) => {
+      // Same merge rule as onEditAuthor — session-created categories update
+      // in place rather than double-listing in the payload.
+      if (newCategories.some((c) => c.path === draft.path)) {
+        setNewCategories((prev) => prev.map((c) => (c.path === draft.path ? draft : c)));
+      } else {
+        setEditedCategories((prev) => [...prev.filter((c) => c.path !== draft.path), draft]);
+      }
+    },
+    [newCategories]
+  );
   const onCreateCategory = useCallback((draft: NewCategoryDraft) => {
     setNewCategories((prev) =>
       prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]
@@ -276,11 +289,16 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         body: d.body,
       };
     }
-    // Ship any staged uploads that are actually referenced from a draft body
-    // — pasted-then-deleted images stay behind and never bloat the PR.
-    const bodies = Object.values(perLocale).map((d) => d.body);
+    // Ship any staged uploads that are actually referenced from the post —
+    // draft bodies, per-locale cover images, and author avatars all count;
+    // pasted-then-deleted images stay behind and never bloat the PR.
+    const referenced = [
+      ...Object.values(perLocale).map((d) => d.body),
+      ...Object.values(drafts).map((d) => d?.fm.coverSrc ?? ''),
+      ...[...newAuthors, ...editedAuthors].map((a) => a.avatar ?? ''),
+    ];
     const newImages = listPendingImages()
-      .filter((img) => bodies.some((b) => b.includes(img.path)))
+      .filter((img) => referenced.some((r) => r.includes(img.path)))
       .map((img) => ({ path: img.path, contentBase64: img.base64 }));
     const res = await fetch('/api/admin/blog-editor/save', {
       method: 'POST',

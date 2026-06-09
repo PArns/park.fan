@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { UserPlus, X } from 'lucide-react';
+import { Image as ImageIcon, UserPlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import { Field } from './form-fields';
+import { ImagePicker } from './image-picker';
 
 export interface NewAuthorDraft {
   key: string;
@@ -69,6 +70,7 @@ function AuthorForm({
   const [url, setUrl] = useState(initial?.url ?? '');
   const [avatar, setAvatar] = useState(initial?.avatar ?? '');
   const [bio, setBio] = useState(initial?.bio ?? '');
+  const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
 
   const derivedKey = isEdit ? initial!.key : keyTouched ? key : slugify(name);
   const trimmedName = name.trim();
@@ -172,13 +174,32 @@ function AuthorForm({
                 className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none"
               />
             </Field>
-            <Field label="Avatar URL (optional)">
-              <input
-                value={avatar}
-                onChange={(e) => setAvatar(e.target.value)}
-                placeholder="/blog/images/authors/patrick.jpg"
-                className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none"
-              />
+            <Field label="Avatar (optional)">
+              <div className="flex items-center gap-1.5">
+                {avatar && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={avatar}
+                    alt=""
+                    className="border-border/60 h-8 w-8 shrink-0 rounded-full border object-cover"
+                  />
+                )}
+                <input
+                  value={avatar}
+                  onChange={(e) => setAvatar(e.target.value)}
+                  placeholder="/blog/images/authors/patrick.jpg"
+                  className="bg-background/60 border-border/60 text-foreground min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-sm outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => setAvatarPickerOpen(true)}
+                  title="Pick or upload an avatar"
+                  className="hover:bg-accent/50 text-primary border-border/60 inline-flex h-8 shrink-0 items-center gap-1 rounded-md border px-2 text-[10px] font-semibold transition-colors"
+                >
+                  <ImageIcon className="h-3 w-3" />
+                  Pick…
+                </button>
+              </div>
             </Field>
           </div>
           <Field label="Bio (optional)">
@@ -215,6 +236,14 @@ function AuthorForm({
           </button>
         </div>
       </div>
+      <ImagePicker
+        open={avatarPickerOpen}
+        onClose={() => setAvatarPickerOpen(false)}
+        onPick={(r) => {
+          setAvatar(r.src);
+          setAvatarPickerOpen(false);
+        }}
+      />
     </div>
   );
 }

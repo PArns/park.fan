@@ -4,7 +4,7 @@ translationKey: editor-feature-test
 date: '2026-06-09'
 updatedAt: '2026-06-09'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   A scratch post that exercises every park.fan editor chip — ref variants,
@@ -123,7 +123,7 @@ slug: black-mamba
 Folder + heading:
 
 ```gallery-widget
-folder: /images/parks/phantasialand
+folder: /blog/images/europa-park-voltron
 heading: Phantasialand in pictures
 ```
 
