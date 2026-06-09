@@ -64,7 +64,7 @@ export function ParkTimeInfo({
   // props until the live poll lands (and for the demo/mock usages that pass no geo params), so SSR and
   // the first client render still agree.
   const hasParams = !!(continent && country && city && parkSlug);
-  const { data: livePark } = useLiveParkData({
+  const { data: livePark, dataUpdatedAt } = useLiveParkData({
     continent: continent ?? '',
     country: country ?? '',
     city: city ?? '',
@@ -76,6 +76,14 @@ export function ParkTimeInfo({
   const nextSchedule = (hasParams ? livePark?.nextSchedule : null) ?? nextScheduleProp;
   const hasOperatingSchedule =
     (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
+
+  // In live mode the snapshot `status` can be stale, so showing the badge immediately flashes a
+  // wrong GESCHLOSSEN that then flips to GEÖFFNET once the poll lands. Gate the badge on the live
+  // query having resolved at least once — `dataUpdatedAt` stays 0 until a real fetch completes
+  // (initialData is anchored to epoch via initialDataUpdatedAt:0), and it's 0 both on the server
+  // (query disabled) and on the first client render, so hiding it is hydration-safe. Without geo
+  // params (demo/mock usages) there is no live poll, so the prop status shows right away.
+  const showStatusBadge = !hasParams || dataUpdatedAt > 0;
 
   // Pick today's schedule entry CLIENT-side (from the browser clock in the park's timezone) so the
   // static shell never reads the server clock. Before mount we fall back to the first entry — same
@@ -229,7 +237,9 @@ export function ParkTimeInfo({
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />
           {isUnknown ? t('schedule') : t('todaySchedule')}
-          {status && <ParkStatusBadge status={status} className="ml-auto" />}
+          {showStatusBadge && status && (
+            <ParkStatusBadge status={status} className="ml-auto" />
+          )}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
