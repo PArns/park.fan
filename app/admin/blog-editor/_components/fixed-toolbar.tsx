@@ -2,9 +2,16 @@
 
 import type { Editor } from '@tiptap/core';
 import {
+  BarChart3,
+  BookText,
   Bold,
+  Boxes,
+  Calendar,
+  Camera,
   ChevronDown,
+  CloudSun,
   Code,
+  GalleryHorizontal,
   Image as ImageIcon,
   Italic,
   Link as LinkIcon,
@@ -12,12 +19,14 @@ import {
   ListOrdered,
   MapPin,
   Minus,
+  Music,
   Quote,
   Redo2,
   Sparkles,
   Strikethrough,
   Table as TableIcon,
   TrainFront,
+  TreePalm,
   Undo2,
   Video,
 } from 'lucide-react';
@@ -36,7 +45,24 @@ export type ToolbarAction =
   | 'image'
   | 'youtube'
   | 'instagram'
-  | 'suno';
+  | 'suno'
+  | `widget:${string}`;
+
+const WIDGET_INSERTS: Array<{
+  name: string;
+  label: string;
+  icon: typeof Code;
+  hint: string;
+}> = [
+  { name: 'park-widget', label: 'Park widget', icon: TreePalm, hint: 'Park card with live data' },
+  { name: 'attraction-widget', label: 'Attraction widget', icon: TrainFront, hint: 'Ride card with live wait' },
+  { name: 'weather-widget', label: 'Weather widget', icon: CloudSun, hint: 'Live weather + forecast' },
+  { name: 'stats-widget', label: 'Stats widget', icon: BarChart3, hint: 'Live park statistics' },
+  { name: 'best-days-widget', label: 'Best-days widget', icon: Calendar, hint: 'Crowd-calendar preview' },
+  { name: 'map-widget', label: 'Map widget', icon: MapPin, hint: 'Mini park map' },
+  { name: 'gallery-widget', label: 'Gallery widget', icon: GalleryHorizontal, hint: 'Folder-based gallery' },
+  { name: 'glossary-widget', label: 'Glossary widget', icon: BookText, hint: 'Inline term definition' },
+];
 
 const HEADINGS: Array<{ level: 1 | 2 | 3; label: string }> = [
   { level: 1, label: 'Heading 1' },
@@ -52,6 +78,7 @@ const HEADINGS: Array<{ level: 1 | 2 | 3; label: string }> = [
  */
 export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
   const [headingOpen, setHeadingOpen] = useState(false);
+  const [widgetOpen, setWidgetOpen] = useState(false);
   if (!editor) return null;
 
   const activeHeading = HEADINGS.find((h) => editor.isActive('heading', { level: h.level }));
@@ -223,9 +250,59 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
         <LabelBtn label="Image" onClick={() => onEmit('image')}>
           <ImageIcon className="h-3.5 w-3.5" />
         </LabelBtn>
-        <IconBtn label="YouTube" onClick={() => onEmit('youtube')}>
+        <IconBtn label="YouTube embed" onClick={() => onEmit('youtube')}>
           <Video className="h-3.5 w-3.5" />
         </IconBtn>
+        <IconBtn label="Instagram embed" onClick={() => onEmit('instagram')}>
+          <Camera className="h-3.5 w-3.5" />
+        </IconBtn>
+        <IconBtn label="Suno embed" onClick={() => onEmit('suno')}>
+          <Music className="h-3.5 w-3.5" />
+        </IconBtn>
+      </Group>
+
+      <Divider />
+
+      <Group>
+        <div className="relative">
+          <button
+            type="button"
+            onClick={() => setWidgetOpen((v) => !v)}
+            onBlur={() => setTimeout(() => setWidgetOpen(false), 150)}
+            className="hover:bg-accent/50 border-border/40 inline-flex h-8 items-center gap-1.5 rounded-lg border bg-background/40 px-2.5 text-xs font-semibold transition-all"
+            title="Insert a widget code fence"
+          >
+            <Boxes className="h-3.5 w-3.5" />
+            Widget
+            <ChevronDown className="h-3 w-3 opacity-60" />
+          </button>
+          {widgetOpen && (
+            <div className="border-border/60 bg-popover absolute right-0 top-full z-40 mt-1 min-w-[220px] overflow-hidden rounded-lg border shadow-xl">
+              {WIDGET_INSERTS.map((w) => {
+                const Icon = w.icon;
+                return (
+                  <DropItem
+                    key={w.name}
+                    onClick={() => {
+                      onEmit(`widget:${w.name}` as ToolbarAction);
+                      setWidgetOpen(false);
+                    }}
+                  >
+                    <span className="text-primary mr-2 inline-flex h-4 w-4 items-center justify-center">
+                      <Icon className="h-3.5 w-3.5" />
+                    </span>
+                    <span className="flex-1">
+                      <span className="text-foreground/95 font-semibold">{w.label}</span>
+                      <span className="text-muted-foreground/80 ml-1 text-[10px]">
+                        {w.hint}
+                      </span>
+                    </span>
+                  </DropItem>
+                );
+              })}
+            </div>
+          )}
+        </div>
       </Group>
     </div>
   );

@@ -8,9 +8,14 @@ import {
   type CSSProperties,
 } from 'react';
 import {
+  BarChart3,
+  BookText,
+  Calendar,
   Camera,
+  CloudSun,
   Code,
   Film,
+  GalleryHorizontal,
   Heading1,
   Heading2,
   Heading3,
@@ -24,6 +29,7 @@ import {
   Sparkles,
   Table as TableIcon,
   TrainFront,
+  TreePalm,
   Type,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -32,7 +38,7 @@ export interface SlashItem {
   title: string;
   description: string;
   icon: typeof Code;
-  group: 'Text' | 'Embeds' | 'park.fan';
+  group: 'Text' | 'Embeds' | 'park.fan' | 'Widgets';
   /** Called with the editor to perform the actual insertion. */
   command: (ctx: { editor: import('@tiptap/core').Editor; range: { from: number; to: number } }) => void;
 }
@@ -296,6 +302,90 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
       command: ({ editor, range }) => {
         editor.chain().focus().deleteRange(range).run();
         emit('suno');
+      },
+    },
+    // Widget fences — each emits the same `widget:<name>` action so the
+    // canvas can insert a fresh codeBlock with the language attr already
+    // set. The author edits the body attrs via the right-side
+    // PropertiesPanel that flips on for the freshly-inserted chip.
+    {
+      title: 'Park widget',
+      description: 'Park card with live data',
+      icon: TreePalm,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:park-widget');
+      },
+    },
+    {
+      title: 'Attraction widget',
+      description: 'Ride card with live wait',
+      icon: TrainFront,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:attraction-widget');
+      },
+    },
+    {
+      title: 'Weather widget',
+      description: 'Live weather + forecast',
+      icon: CloudSun,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:weather-widget');
+      },
+    },
+    {
+      title: 'Stats widget',
+      description: "Park's live stats panel",
+      icon: BarChart3,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:stats-widget');
+      },
+    },
+    {
+      title: 'Best-days widget',
+      description: 'Crowd-calendar preview',
+      icon: Calendar,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:best-days-widget');
+      },
+    },
+    {
+      title: 'Map widget',
+      description: 'Mini park map',
+      icon: MapPin,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:map-widget');
+      },
+    },
+    {
+      title: 'Gallery widget',
+      description: 'Folder-based image gallery',
+      icon: GalleryHorizontal,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:gallery-widget');
+      },
+    },
+    {
+      title: 'Glossary widget',
+      description: 'Inline term definition',
+      icon: BookText,
+      group: 'Widgets',
+      command: ({ editor, range }) => {
+        editor.chain().focus().deleteRange(range).run();
+        emit('widget:glossary-widget');
       },
     },
   ];

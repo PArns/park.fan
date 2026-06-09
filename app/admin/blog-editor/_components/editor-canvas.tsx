@@ -62,6 +62,34 @@ export function EditorCanvas({
     editor.chain().focus().insertContent(`\n\n${url}\n\n`).run();
   };
 
+  /**
+   * Sensible default body attrs per widget kind — the author gets a
+   * pre-filled placeholder slug they can immediately click in the panel and
+   * replace, rather than an empty codeBlock that doesn't even surface the
+   * required fields.
+   */
+  const WIDGET_DEFAULTS: Record<string, string> = {
+    'park-widget': 'slug: phantasialand',
+    'map-widget': 'slug: phantasialand',
+    'weather-widget': 'slug: phantasialand',
+    'stats-widget': 'slug: phantasialand',
+    'best-days-widget': 'slug: phantasialand',
+    'attraction-widget': 'parkSlug: phantasialand\nslug: black-mamba',
+    'gallery-widget': 'folder: /images/parks/phantasialand\nheading: Highlights',
+    'glossary-widget': 'slug: crowd-level',
+  };
+
+  const insertWidget = (name: string) => {
+    const ed = editorRef.current;
+    if (!ed) return;
+    const body = WIDGET_DEFAULTS[name] ?? '';
+    const schema = ed.schema;
+    const codeBlock = schema.nodes.codeBlock;
+    if (!codeBlock) return;
+    const node = codeBlock.create({ language: name }, body ? schema.text(body) : null);
+    ed.chain().focus().insertContent(node.toJSON()).run();
+  };
+
   const emit = (action: string) => {
     if (action === 'park' || action === 'ride' || action === 'spotlight') {
       setPickerMode(action);
@@ -69,6 +97,8 @@ export function EditorCanvas({
       setImagePickerOpen(true);
     } else if (action === 'youtube' || action === 'instagram' || action === 'suno') {
       runUrlEmbed(action);
+    } else if (action.startsWith('widget:')) {
+      insertWidget(action.slice('widget:'.length));
     }
   };
 
