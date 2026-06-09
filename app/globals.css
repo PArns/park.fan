@@ -623,6 +623,54 @@ html[data-temp-unit='F'] .u-imperial {
   display: inline;
 }
 
+/* ─── Blog code highlighting (rehype-highlight / highlight.js tokens) ──────
+   Compact dark token palette scoped to the published blog so we don't ship a
+   full hljs theme stylesheet. Tuned for the site's dark surface; in light
+   mode the muted pre background keeps contrast acceptable. */
+.blog-content .hljs-comment,
+.blog-content .hljs-quote {
+  color: color-mix(in oklab, var(--muted-foreground) 85%, transparent);
+  font-style: italic;
+}
+.blog-content .hljs-keyword,
+.blog-content .hljs-selector-tag,
+.blog-content .hljs-tag,
+.blog-content .hljs-name {
+  color: oklch(0.71 0.15 300);
+}
+.blog-content .hljs-string,
+.blog-content .hljs-regexp,
+.blog-content .hljs-addition,
+.blog-content .hljs-attribute {
+  color: oklch(0.76 0.14 145);
+}
+.blog-content .hljs-number,
+.blog-content .hljs-literal,
+.blog-content .hljs-built_in,
+.blog-content .hljs-type {
+  color: oklch(0.78 0.13 60);
+}
+.blog-content .hljs-title,
+.blog-content .hljs-function,
+.blog-content .hljs-section {
+  color: oklch(0.75 0.12 240);
+}
+.blog-content .hljs-attr,
+.blog-content .hljs-variable,
+.blog-content .hljs-template-variable,
+.blog-content .hljs-symbol {
+  color: oklch(0.78 0.1 200);
+}
+.blog-content .hljs-deletion {
+  color: oklch(0.7 0.18 25);
+}
+.blog-content .hljs-emphasis {
+  font-style: italic;
+}
+.blog-content .hljs-strong {
+  font-weight: 700;
+}
+
 /* ─── Blog editor (TipTap) canvas ──────────────────────────────────────────── */
 
 .tiptap-canvas {

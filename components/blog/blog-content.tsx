@@ -9,6 +9,7 @@ import {
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
+import rehypeHighlight from 'rehype-highlight';
 import type { Locale } from '@/i18n/config';
 import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
 import { remarkCallouts, type CalloutType } from '@/lib/blog/remark-callouts';
@@ -648,7 +649,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
               key={`md-${idx}`}
               components={components}
               remarkPlugins={[remarkGfm, remarkTableThemes, remarkCallouts]}
-              rehypePlugins={[rehypeSlug]}
+              rehypePlugins={[rehypeSlug, rehypeHighlight]}
               urlTransform={preserveCustomProtocols}
             >
               {seg.body}
