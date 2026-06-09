@@ -18,38 +18,68 @@ export interface NewAuthorDraft {
 
 interface Props {
   open: boolean;
-  /** Existing author keys so we can prevent collisions. */
+  /** Existing author keys so we can prevent collisions on Create. */
   existing: Set<string>;
+  /** When set, the modal opens in Edit mode — fields pre-filled, key locked. */
+  initial?: NewAuthorDraft;
   onClose: () => void;
-  onCreate: (draft: NewAuthorDraft) => void;
+  onSubmit: (draft: NewAuthorDraft) => void;
 }
 
 /**
- * Modal that captures the minimum frontmatter needed for a new
- * content/blog/authors/<key>.md file. Key auto-derives from Name (until the
- * author manually edits it) so the common case is "type a name → Create".
+ * Modal that captures the minimum frontmatter for a content/blog/authors/<key>
+ * .md file — either creating a new one (key auto-derives from name) or
+ * editing an existing one (key field is locked).
  */
-export function AuthorCreateModal({ open, existing, onClose, onCreate }: Props) {
-  const [name, setName] = useState('');
-  const [key, setKey] = useState('');
-  const [keyTouched, setKeyTouched] = useState(false);
-  const [role, setRole] = useState('');
-  const [location, setLocation] = useState('');
-  const [url, setUrl] = useState('');
-  const [avatar, setAvatar] = useState('');
-  const [bio, setBio] = useState('');
+export function AuthorCreateModal({
+  open,
+  existing,
+  initial,
+  onClose,
+  onSubmit,
+}: Props) {
+  return open ? (
+    <AuthorForm
+      key={initial?.key ?? 'create'}
+      existing={existing}
+      initial={initial}
+      onClose={onClose}
+      onSubmit={onSubmit}
+    />
+  ) : null;
+}
 
-  if (!open) return null;
+function AuthorForm({
+  existing,
+  initial,
+  onClose,
+  onSubmit,
+}: {
+  existing: Set<string>;
+  initial?: NewAuthorDraft;
+  onClose: () => void;
+  onSubmit: (draft: NewAuthorDraft) => void;
+}) {
+  const isEdit = !!initial;
+  const [name, setName] = useState(initial?.name ?? '');
+  const [key, setKey] = useState(initial?.key ?? '');
+  const [keyTouched, setKeyTouched] = useState(!!initial);
+  const [role, setRole] = useState(initial?.role ?? '');
+  const [location, setLocation] = useState(initial?.location ?? '');
+  const [url, setUrl] = useState(initial?.url ?? '');
+  const [avatar, setAvatar] = useState(initial?.avatar ?? '');
+  const [bio, setBio] = useState(initial?.bio ?? '');
 
-  const derivedKey = keyTouched ? key : slugify(name);
+  const derivedKey = isEdit ? initial!.key : keyTouched ? key : slugify(name);
   const trimmedName = name.trim();
-  const collision = existing.has(derivedKey);
+  // In edit mode collisions are fine — we're overwriting the same key.
+  const collision = !isEdit && existing.has(derivedKey);
   const valid =
     !!trimmedName && !!derivedKey && /^[a-z0-9][a-z0-9-]*$/.test(derivedKey) && !collision;
 
   const submit = () => {
     if (!valid) return;
-    onCreate({
+    onSubmit({
       key: derivedKey,
       name: trimmedName,
       role: role.trim() || undefined,
@@ -70,7 +100,9 @@ export function AuthorCreateModal({ open, existing, onClose, onCreate }: Props) 
       <div className="border-border/60 bg-popover text-popover-foreground w-[min(560px,92vw)] overflow-hidden rounded-2xl border shadow-2xl">
         <div className="border-border/60 flex items-center gap-2 border-b px-4 py-3">
           <UserPlus className="text-primary h-4 w-4" />
-          <div className="text-foreground/95 flex-1 text-sm font-semibold">New author</div>
+          <div className="text-foreground/95 flex-1 text-sm font-semibold">
+            {isEdit ? `Edit author · ${initial!.key}` : 'New author'}
+          </div>
           <button
             type="button"
             onClick={onClose}
@@ -94,20 +126,23 @@ export function AuthorCreateModal({ open, existing, onClose, onCreate }: Props) 
           <Field
             label="Key (slug)"
             hint={
-              collision
-                ? `An author with key "${derivedKey}" already exists.`
-                : 'Used as the filename and the `author:` value in frontmatter.'
+              isEdit
+                ? "Locked — renaming would move the markdown file too. Pop a new author instead if you want a different key."
+                : collision
+                  ? `An author with key "${derivedKey}" already exists.`
+                  : 'Used as the filename and the `author:` value in frontmatter.'
             }
             error={collision}
           >
             <input
               value={derivedKey}
+              disabled={isEdit}
               onChange={(e) => {
                 setKeyTouched(true);
                 setKey(e.target.value);
               }}
               placeholder="patrick"
-              className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none"
+              className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none disabled:cursor-not-allowed disabled:opacity-60"
             />
           </Field>
           <div className="grid grid-cols-2 gap-3">
@@ -176,7 +211,7 @@ export function AuthorCreateModal({ open, existing, onClose, onCreate }: Props) 
                 : 'bg-muted text-muted-foreground cursor-not-allowed'
             )}
           >
-            Create author
+            {isEdit ? 'Save changes' : 'Create author'}
           </button>
         </div>
       </div>

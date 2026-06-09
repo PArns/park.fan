@@ -1,7 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarDays, Check, Image as ImageIcon, Plus, Sparkles, Tag, X } from 'lucide-react';
+import {
+  CalendarDays,
+  Check,
+  Image as ImageIcon,
+  Pencil,
+  Plus,
+  Sparkles,
+  Tag,
+  X,
+} from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
@@ -27,6 +36,10 @@ interface FrontmatterFormProps {
   onCreateAuthor?: (draft: NewAuthorDraft) => void;
   /** Same flow for a new (sub-)category. */
   onCreateCategory?: (draft: NewCategoryDraft) => void;
+  /** Edit-in-place flows — overwrite an existing author / category in the
+   *  same save PR. */
+  onEditAuthor?: (draft: NewAuthorDraft) => void;
+  onEditCategory?: (draft: NewCategoryDraft) => void;
 }
 
 /**
@@ -44,12 +57,19 @@ export function FrontmatterForm({
   onSlugChange,
   onCreateAuthor,
   onCreateCategory,
+  onEditAuthor,
+  onEditCategory,
 }: FrontmatterFormProps) {
   const set = <K extends keyof EditorFrontmatter>(k: K, v: EditorFrontmatter[K]) =>
     onChange({ ...value, [k]: v });
   const author = authors.find((a) => a.key === value.authorKey);
-  const [authorModalOpen, setAuthorModalOpen] = useState(false);
-  const [categoryModalOpen, setCategoryModalOpen] = useState(false);
+  const category = categories.find((c) => c.path === value.category);
+  const [authorModal, setAuthorModal] = useState<
+    { mode: 'create' } | { mode: 'edit'; initial: NewAuthorDraft } | null
+  >(null);
+  const [categoryModal, setCategoryModal] = useState<
+    { mode: 'create' } | { mode: 'edit'; initial: NewCategoryDraft } | null
+  >(null);
 
   return (
     <div className="mb-6 space-y-4">
@@ -90,25 +110,54 @@ export function FrontmatterForm({
           value={value.authorKey}
           onChange={(k) => {
             if (k === '__new__') {
-              setAuthorModalOpen(true);
+              setAuthorModal({ mode: 'create' });
               return;
             }
             set('authorKey', k);
           }}
           selected={author}
           canCreate={!!onCreateAuthor}
+          onEdit={
+            author && onEditAuthor
+              ? () =>
+                  setAuthorModal({
+                    mode: 'edit',
+                    initial: {
+                      key: author.key,
+                      name: author.name,
+                      avatar: author.avatar,
+                      role: author.role,
+                      location: author.location,
+                      url: author.url,
+                      bio: author.bio,
+                    },
+                  })
+              : undefined
+          }
         />
         <CategoryPicker
           categories={categories}
           value={value.category}
           onChange={(p) => {
             if (p === '__new__') {
-              setCategoryModalOpen(true);
+              setCategoryModal({ mode: 'create' });
               return;
             }
             set('category', p);
           }}
           canCreate={!!onCreateCategory}
+          onEdit={
+            category && onEditCategory
+              ? () =>
+                  setCategoryModal({
+                    mode: 'edit',
+                    initial: {
+                      path: category.path,
+                      labels: { ...category.labels },
+                    },
+                  })
+              : undefined
+          }
         />
         <DatePop label="Date" value={value.date} onChange={(d) => set('date', d)} />
         <DatePop
@@ -162,27 +211,39 @@ export function FrontmatterForm({
         </details>
       </div>
 
-      {onCreateAuthor && (
+      {(onCreateAuthor || onEditAuthor) && (
         <AuthorCreateModal
-          open={authorModalOpen}
+          open={authorModal !== null}
           existing={new Set(authors.map((a) => a.key))}
-          onClose={() => setAuthorModalOpen(false)}
-          onCreate={(draft) => {
-            onCreateAuthor(draft);
-            set('authorKey', draft.key);
-            setAuthorModalOpen(false);
+          initial={authorModal?.mode === 'edit' ? authorModal.initial : undefined}
+          onClose={() => setAuthorModal(null)}
+          onSubmit={(draft) => {
+            if (authorModal?.mode === 'edit') {
+              onEditAuthor?.(draft);
+            } else {
+              onCreateAuthor?.(draft);
+              set('authorKey', draft.key);
+            }
+            setAuthorModal(null);
           }}
         />
       )}
-      {onCreateCategory && (
+      {(onCreateCategory || onEditCategory) && (
         <CategoryCreateModal
-          open={categoryModalOpen}
+          open={categoryModal !== null}
           existing={categories}
-          onClose={() => setCategoryModalOpen(false)}
-          onCreate={(draft) => {
-            onCreateCategory(draft);
-            set('category', draft.path);
-            setCategoryModalOpen(false);
+          initial={
+            categoryModal?.mode === 'edit' ? categoryModal.initial : undefined
+          }
+          onClose={() => setCategoryModal(null)}
+          onSubmit={(draft) => {
+            if (categoryModal?.mode === 'edit') {
+              onEditCategory?.(draft);
+            } else {
+              onCreateCategory?.(draft);
+              set('category', draft.path);
+            }
+            setCategoryModal(null);
           }}
         />
       )}
@@ -210,15 +271,17 @@ function AuthorPicker({
   onChange,
   selected,
   canCreate,
+  onEdit,
 }: {
   authors: AuthorOption[];
   value: string;
   onChange: (k: string) => void;
   selected: AuthorOption | undefined;
   canCreate?: boolean;
+  onEdit?: () => void;
 }) {
   return (
-    <label className="border-border/60 hover:border-border bg-background/60 group flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+    <div className="border-border/60 hover:border-border bg-background/60 group flex items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
       <div className="bg-primary/15 text-primary relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full text-sm font-semibold">
         {selected?.avatar ? (
           <Image src={selected.avatar} alt={selected.name} fill className="object-cover" />
@@ -226,7 +289,7 @@ function AuthorPicker({
           (selected?.name ?? '?').charAt(0).toUpperCase()
         )}
       </div>
-      <div className="min-w-0 flex-1">
+      <label className="min-w-0 flex-1 cursor-pointer">
         <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
           Author
         </div>
@@ -243,8 +306,18 @@ function AuthorPicker({
           ))}
           {canCreate && <option value="__new__">+ New author…</option>}
         </select>
-      </div>
-    </label>
+      </label>
+      {onEdit && selected && (
+        <button
+          type="button"
+          onClick={onEdit}
+          title={`Edit ${selected.key}`}
+          className="text-muted-foreground hover:bg-accent/40 hover:text-foreground inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors"
+        >
+          <Pencil className="h-3.5 w-3.5" />
+        </button>
+      )}
+    </div>
   );
 }
 
@@ -253,18 +326,21 @@ function CategoryPicker({
   value,
   onChange,
   canCreate,
+  onEdit,
 }: {
   categories: CategoryOption[];
   value: string;
   onChange: (p: string) => void;
   canCreate?: boolean;
+  onEdit?: () => void;
 }) {
+  const hasSelection = !!value;
   return (
-    <label className="border-border/60 hover:border-border bg-background/60 flex cursor-pointer items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
+    <div className="border-border/60 hover:border-border bg-background/60 flex items-center gap-3 rounded-xl border px-3 py-2 transition-colors">
       <div className="bg-primary/15 text-primary flex h-9 w-9 shrink-0 items-center justify-center rounded-full">
         <Tag className="h-4 w-4" />
       </div>
-      <div className="min-w-0 flex-1">
+      <label className="min-w-0 flex-1 cursor-pointer">
         <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
           Category
         </div>
@@ -281,8 +357,18 @@ function CategoryPicker({
           ))}
           {canCreate && <option value="__new__">+ New (sub-)category…</option>}
         </select>
-      </div>
-    </label>
+      </label>
+      {onEdit && hasSelection && (
+        <button
+          type="button"
+          onClick={onEdit}
+          title={`Edit ${value}`}
+          className="text-muted-foreground hover:bg-accent/40 hover:text-foreground inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-md transition-colors"
+        >
+          <Pencil className="h-3.5 w-3.5" />
+        </button>
+      )}
+    </div>
   );
 }
 

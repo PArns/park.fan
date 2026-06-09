@@ -73,26 +73,62 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
    *  contains the new author file / categories.json patch. */
   const [newAuthors, setNewAuthors] = useState<NewAuthorDraft[]>([]);
   const [newCategories, setNewCategories] = useState<NewCategoryDraft[]>([]);
+  /** Authors / categories the user *edited* (overwriting an existing entry).
+   *  Distinct from the new-* lists because the server commits them with the
+   *  existing file SHA (otherwise GitHub rejects the createOrUpdate call). */
+  const [editedAuthors, setEditedAuthors] = useState<NewAuthorDraft[]>([]);
+  const [editedCategories, setEditedCategories] = useState<NewCategoryDraft[]>([]);
 
-  const authors: AuthorOption[] = useMemo(
-    () => [
-      ...initialData.authors,
-      ...newAuthors.map((a) => ({ key: a.key, name: a.name, ...(a.avatar ? { avatar: a.avatar } : {}), ...(a.role ? { role: a.role } : {}) })),
-    ],
-    [initialData.authors, newAuthors]
-  );
-  const categories: CategoryOption[] = useMemo(
-    () => [
-      ...initialData.categories,
-      ...newCategories.map((c) => ({
+  const authors: AuthorOption[] = useMemo(() => {
+    const merged: AuthorOption[] = initialData.authors.map((a) => {
+      const overwrite = editedAuthors.find((e) => e.key === a.key);
+      return overwrite
+        ? {
+            key: overwrite.key,
+            name: overwrite.name,
+            ...(overwrite.avatar ? { avatar: overwrite.avatar } : {}),
+            ...(overwrite.role ? { role: overwrite.role } : {}),
+            ...(overwrite.location ? { location: overwrite.location } : {}),
+            ...(overwrite.url ? { url: overwrite.url } : {}),
+            ...(overwrite.bio ? { bio: overwrite.bio } : {}),
+          }
+        : a;
+    });
+    for (const a of newAuthors) {
+      merged.push({
+        key: a.key,
+        name: a.name,
+        ...(a.avatar ? { avatar: a.avatar } : {}),
+        ...(a.role ? { role: a.role } : {}),
+        ...(a.location ? { location: a.location } : {}),
+        ...(a.url ? { url: a.url } : {}),
+        ...(a.bio ? { bio: a.bio } : {}),
+      });
+    }
+    return merged;
+  }, [initialData.authors, newAuthors, editedAuthors]);
+  const categories: CategoryOption[] = useMemo(() => {
+    const merged: CategoryOption[] = initialData.categories.map((c) => {
+      const overwrite = editedCategories.find((e) => e.path === c.path);
+      return overwrite
+        ? {
+            path: overwrite.path,
+            labelEn: overwrite.labels.en ?? c.labelEn,
+            labelDe: overwrite.labels.de ?? overwrite.labels.en ?? c.labelDe,
+            labels: overwrite.labels,
+          }
+        : c;
+    });
+    for (const c of newCategories) {
+      merged.push({
         path: c.path,
         labelEn: c.labels.en ?? c.path,
         labelDe: c.labels.de ?? c.labels.en ?? c.path,
         labels: c.labels,
-      })),
-    ],
-    [initialData.categories, newCategories]
-  );
+      });
+    }
+    return merged;
+  }, [initialData.categories, newCategories, editedCategories]);
   /**
    * When non-null the editor is editing an existing post — saves go to the
    * same per-locale paths instead of creating fresh files. Holds the original
@@ -152,6 +188,18 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const onCreateAuthor = useCallback((draft: NewAuthorDraft) => {
     setNewAuthors((prev) => (prev.find((a) => a.key === draft.key) ? prev : [...prev, draft]));
   }, []);
+  const onEditAuthor = useCallback((draft: NewAuthorDraft) => {
+    setEditedAuthors((prev) => {
+      const rest = prev.filter((a) => a.key !== draft.key);
+      return [...rest, draft];
+    });
+  }, []);
+  const onEditCategory = useCallback((draft: NewCategoryDraft) => {
+    setEditedCategories((prev) => {
+      const rest = prev.filter((c) => c.path !== draft.path);
+      return [...rest, draft];
+    });
+  }, []);
   const onCreateCategory = useCallback((draft: NewCategoryDraft) => {
     setNewCategories((prev) =>
       prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]
@@ -184,6 +232,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
           : {}),
         ...(newAuthors.length ? { newAuthors } : {}),
         ...(newCategories.length ? { newCategories } : {}),
+        ...(editedAuthors.length ? { editedAuthors } : {}),
+        ...(editedCategories.length ? { editedCategories } : {}),
       }),
     });
     if (!res.ok) {
@@ -386,6 +436,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         onSlugChange={onSlugChange}
         onCreateAuthor={onCreateAuthor}
         onCreateCategory={onCreateCategory}
+        onEditAuthor={onEditAuthor}
+        onEditCategory={onEditCategory}
       />
 
       <div>

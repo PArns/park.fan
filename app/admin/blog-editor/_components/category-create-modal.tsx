@@ -17,31 +17,73 @@ interface Props {
   open: boolean;
   /** Existing categories so we can offer them as a parent + prevent collisions. */
   existing: CategoryOption[];
+  /** When set, opens in Edit mode — path locked, labels pre-filled. */
+  initial?: NewCategoryDraft;
   onClose: () => void;
-  onCreate: (draft: NewCategoryDraft) => void;
+  onSubmit: (draft: NewCategoryDraft) => void;
 }
 
 const LOCALES = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
 
 /**
- * Modal that captures a new category entry for content/blog/categories.json.
- * Authors pick an optional parent category — the saved key is
- * `<parent>/<slug>` — and supply localised labels. Only English is required;
- * the others fall back to English when blank.
+ * Captures a category entry for content/blog/categories.json — create OR
+ * edit. In edit mode the parent + slug halves of the path are locked
+ * (renaming would also need to migrate every post that points at the old
+ * path, which is out of scope here).
  */
-export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props) {
-  const [parent, setParent] = useState('');
-  const [labelEn, setLabelEn] = useState('');
-  const [slug, setSlug] = useState('');
-  const [slugTouched, setSlugTouched] = useState(false);
-  const [otherLabels, setOtherLabels] = useState<Record<string, string>>({});
+export function CategoryCreateModal({
+  open,
+  existing,
+  initial,
+  onClose,
+  onSubmit,
+}: Props) {
+  return open ? (
+    <CategoryForm
+      key={initial?.path ?? 'create'}
+      existing={existing}
+      initial={initial}
+      onClose={onClose}
+      onSubmit={onSubmit}
+    />
+  ) : null;
+}
 
-  if (!open) return null;
+function CategoryForm({
+  existing,
+  initial,
+  onClose,
+  onSubmit,
+}: {
+  existing: CategoryOption[];
+  initial?: NewCategoryDraft;
+  onClose: () => void;
+  onSubmit: (draft: NewCategoryDraft) => void;
+}) {
+  const isEdit = !!initial;
+  const initialParts = initial?.path.split('/') ?? [];
+  const initialParent = initialParts.length > 1 ? initialParts.slice(0, -1).join('/') : '';
+  const initialSlug = initialParts.length ? initialParts[initialParts.length - 1] : '';
+  const [parent, setParent] = useState(initialParent);
+  const [labelEn, setLabelEn] = useState(initial?.labels.en ?? '');
+  const [slug, setSlug] = useState(initialSlug);
+  const [slugTouched, setSlugTouched] = useState(!!initial);
+  const [otherLabels, setOtherLabels] = useState<Record<string, string>>(() => {
+    const out: Record<string, string> = {};
+    for (const [loc, label] of Object.entries(initial?.labels ?? {})) {
+      if (loc !== 'en' && label) out[loc] = label;
+    }
+    return out;
+  });
 
-  const derivedSlug = slugTouched ? slug : slugify(labelEn);
-  const fullPath = parent ? `${parent}/${derivedSlug}` : derivedSlug;
+  const derivedSlug = isEdit ? initialSlug : slugTouched ? slug : slugify(labelEn);
+  const fullPath = isEdit
+    ? initial!.path
+    : parent
+      ? `${parent}/${derivedSlug}`
+      : derivedSlug;
   const existingKeys = new Set(existing.map((c) => c.path));
-  const collision = !!derivedSlug && existingKeys.has(fullPath);
+  const collision = !isEdit && !!derivedSlug && existingKeys.has(fullPath);
   const valid =
     !!labelEn.trim() &&
     !!derivedSlug &&
@@ -56,7 +98,7 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
       const v = otherLabels[loc]?.trim();
       if (v) labels[loc] = v;
     }
-    onCreate({ path: fullPath, labels });
+    onSubmit({ path: fullPath, labels });
   };
 
   return (
@@ -70,7 +112,7 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
         <div className="border-border/60 flex items-center gap-2 border-b px-4 py-3">
           <FolderPlus className="text-primary h-4 w-4" />
           <div className="text-foreground/95 flex-1 text-sm font-semibold">
-            New (sub-)category
+            {isEdit ? `Edit category · ${initial!.path}` : 'New (sub-)category'}
           </div>
           <button
             type="button"
@@ -83,11 +125,15 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
         </div>
 
         <div className="grid gap-3 px-4 py-3">
-          <Field label="Parent category">
+          <Field
+            label="Parent category"
+            hint={isEdit ? 'Locked while editing.' : undefined}
+          >
             <select
               value={parent}
+              disabled={isEdit}
               onChange={(e) => setParent(e.target.value)}
-              className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none"
+              className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-60"
             >
               <option value="">— top-level —</option>
               {existing.map((c) => (
@@ -110,20 +156,23 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
             <Field
               label="Slug"
               hint={
-                collision
-                  ? `${fullPath} already exists.`
-                  : `Full path: ${fullPath || '(needs slug)'}`
+                isEdit
+                  ? 'Locked while editing.'
+                  : collision
+                    ? `${fullPath} already exists.`
+                    : `Full path: ${fullPath || '(needs slug)'}`
               }
               error={collision}
             >
               <input
                 value={derivedSlug}
+                disabled={isEdit}
                 onChange={(e) => {
                   setSlugTouched(true);
                   setSlug(e.target.value);
                 }}
                 placeholder="disney-world"
-                className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none"
+                className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none disabled:cursor-not-allowed disabled:opacity-60"
               />
             </Field>
           </div>
@@ -170,7 +219,7 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
                 : 'bg-muted text-muted-foreground cursor-not-allowed'
             )}
           >
-            Create category
+            {isEdit ? 'Save changes' : 'Create category'}
           </button>
         </div>
       </div>

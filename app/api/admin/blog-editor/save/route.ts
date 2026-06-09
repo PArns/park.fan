@@ -27,6 +27,12 @@ interface SavePayload {
   /** Brand-new categories — appended to content/blog/categories.json in the
    *  same PR so the post's `category:` field resolves on the live site. */
   newCategories?: Array<{ path: string; labels: Record<string, string> }>;
+  /** Edited authors: overwrite the existing author file in place (we pass
+   *  the existing SHA to the createOrUpdateFileContents call so GitHub
+   *  accepts the update). */
+  editedAuthors?: SavePayload['newAuthors'];
+  /** Edited categories: merge over the existing categories.json entry. */
+  editedCategories?: SavePayload['newCategories'];
 }
 
 const AUTHOR_KEY_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
@@ -227,42 +233,62 @@ export async function POST(req: Request) {
     }
   }
 
-  // 3b. Commit any new authors as `content/blog/authors/<key>.md`. We don't
-  //     overwrite existing files (would be surprising), so we silently skip
-  //     keys that already resolve via the GitHub Content API.
+  // 3b. Commit any new authors as `content/blog/authors/<key>.md`. New keys
+  //     skip silently if the file already exists (mid-air collision); edited
+  //     keys deliberately overwrite using the existing SHA.
   const authorsCommitted: string[] = [];
-  for (const author of payload.newAuthors ?? []) {
-    if (!AUTHOR_KEY_RE.test(author.key) || !author.name?.trim()) continue;
-    const path = `content/blog/authors/${author.key}.md`;
-    try {
-      await octokit.repos.getContent({ owner, repo, path, ref: branch });
-      continue;
-    } catch {
-      /* doesn't exist yet — go on and create it */
-    }
-    try {
-      await octokit.repos.createOrUpdateFileContents({
-        owner,
-        repo,
-        path,
-        branch,
-        message: `feat(blog/authors): add ${author.key}`,
-        content: Buffer.from(buildAuthorFile(author), 'utf8').toString('base64'),
-      });
-      authorsCommitted.push(author.key);
-    } catch (e) {
-      return NextResponse.json(
-        { error: `Could not commit author ${author.key}: ${(e as Error).message}` },
-        { status: 500 }
-      );
+  const authorsUpdated: string[] = [];
+  const authorRuns: Array<{ list: NonNullable<typeof payload.newAuthors>; mode: 'create' | 'edit' }> = [
+    { list: payload.newAuthors ?? [], mode: 'create' },
+    { list: payload.editedAuthors ?? [], mode: 'edit' },
+  ];
+  for (const { list, mode } of authorRuns) {
+    for (const author of list) {
+      if (!AUTHOR_KEY_RE.test(author.key) || !author.name?.trim()) continue;
+      const path = `content/blog/authors/${author.key}.md`;
+      let existingSha: string | undefined;
+      try {
+        const res = await octokit.repos.getContent({ owner, repo, path, ref: branch });
+        if (!Array.isArray(res.data) && res.data.type === 'file') {
+          existingSha = res.data.sha;
+        }
+      } catch {
+        /* doesn't exist */
+      }
+      if (mode === 'create' && existingSha) continue;
+      if (mode === 'edit' && !existingSha) continue;
+      try {
+        await octokit.repos.createOrUpdateFileContents({
+          owner,
+          repo,
+          path,
+          branch,
+          message:
+            mode === 'create'
+              ? `feat(blog/authors): add ${author.key}`
+              : `chore(blog/authors): update ${author.key}`,
+          content: Buffer.from(buildAuthorFile(author), 'utf8').toString('base64'),
+          ...(existingSha ? { sha: existingSha } : {}),
+        });
+        if (mode === 'create') authorsCommitted.push(author.key);
+        else authorsUpdated.push(author.key);
+      } catch (e) {
+        return NextResponse.json(
+          { error: `Could not commit author ${author.key}: ${(e as Error).message}` },
+          { status: 500 }
+        );
+      }
     }
   }
 
-  // 3c. Append new categories to content/blog/categories.json — fetch existing
-  //     JSON, splice the new entries in, recommit. Skips silently if a path
-  //     collides with what's already on disk.
+  // 3c. Splice new + edited categories into content/blog/categories.json.
+  //     Edited entries overwrite labels in place; new entries skip silently
+  //     if a path is already taken (mid-air collision).
   const categoriesCommitted: string[] = [];
-  if ((payload.newCategories ?? []).length) {
+  const categoriesUpdated: string[] = [];
+  const totalCategoryWork =
+    (payload.newCategories?.length ?? 0) + (payload.editedCategories?.length ?? 0);
+  if (totalCategoryWork) {
     const categoriesPath = 'content/blog/categories.json';
     let existingSha: string | undefined;
     let existing: Record<string, Record<string, string>> = {};
@@ -291,15 +317,35 @@ export async function POST(req: Request) {
       merged[cat.path] = labels;
       categoriesCommitted.push(cat.path);
     }
-    if (categoriesCommitted.length) {
+    for (const cat of payload.editedCategories ?? []) {
+      if (!CATEGORY_PATH_RE.test(cat.path) || !merged[cat.path]) continue;
+      const labels: Record<string, string> = {};
+      for (const [loc, label] of Object.entries(cat.labels)) {
+        if (typeof label === 'string' && label.trim()) labels[loc] = label.trim();
+      }
+      if (!labels.en) continue;
+      merged[cat.path] = labels;
+      categoriesUpdated.push(cat.path);
+    }
+    if (categoriesCommitted.length || categoriesUpdated.length) {
       const content = JSON.stringify(merged, null, 2) + '\n';
+      const labelParts = [
+        categoriesCommitted.length
+          ? `add ${categoriesCommitted.join(', ')}`
+          : '',
+        categoriesUpdated.length
+          ? `update ${categoriesUpdated.join(', ')}`
+          : '',
+      ]
+        .filter(Boolean)
+        .join(' · ');
       try {
         await octokit.repos.createOrUpdateFileContents({
           owner,
           repo,
           path: categoriesPath,
           branch,
-          message: `feat(blog/categories): add ${categoriesCommitted.join(', ')}`,
+          message: `chore(blog/categories): ${labelParts}`,
           content: Buffer.from(content, 'utf8').toString('base64'),
           ...(existingSha ? { sha: existingSha } : {}),
         });
@@ -335,11 +381,25 @@ export async function POST(req: Request) {
           ...authorsCommitted.map((k) => `- \`content/blog/authors/${k}.md\``),
         ]
       : []),
+    ...(authorsUpdated.length
+      ? [
+          '',
+          '**Edited authors:**',
+          ...authorsUpdated.map((k) => `- \`content/blog/authors/${k}.md\``),
+        ]
+      : []),
     ...(categoriesCommitted.length
       ? [
           '',
           '**New categories:**',
           ...categoriesCommitted.map((p) => `- \`${p}\``),
+        ]
+      : []),
+    ...(categoriesUpdated.length
+      ? [
+          '',
+          '**Edited categories:**',
+          ...categoriesUpdated.map((p) => `- \`${p}\``),
         ]
       : []),
     '',
