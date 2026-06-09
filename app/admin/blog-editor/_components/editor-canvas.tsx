@@ -21,6 +21,7 @@ import { RefPreview } from '../_extensions/ref-preview';
 import { WidgetPreview } from '../_extensions/widget-preview';
 import { EmbedPreview } from '../_extensions/embed-preview';
 import { ImagePreview } from '../_extensions/image-preview';
+import { CalloutPreview } from '../_extensions/callout-preview';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
 import { TableMenu } from './table-menu';
@@ -182,6 +183,7 @@ export function EditorCanvas({
       WidgetPreview,
       EmbedPreview,
       ImagePreview,
+      CalloutPreview,
     ],
     content: initialMarkdown || '',
     editorProps: {

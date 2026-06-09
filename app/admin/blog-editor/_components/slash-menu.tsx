@@ -208,6 +208,30 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
       command: ({ editor, range }) =>
         editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
     },
+    ...(
+      [
+        ['note', 'Note callout', 'Blue info box'],
+        ['tip', 'Tip callout', 'Green hint box'],
+        ['important', 'Important callout', 'Purple emphasis box'],
+        ['warning', 'Warning callout', 'Amber caution box'],
+        ['caution', 'Caution callout', 'Red danger box'],
+      ] as const
+    ).map<SlashItem>(([kind, title, description]) => ({
+      title,
+      description,
+      icon: Quote,
+      group: 'Text',
+      command: ({ editor, range }) => {
+        // GitHub-alert syntax — stays a plain blockquote in the doc, the
+        // CalloutPreview extension + blog renderer do the styling.
+        editor
+          .chain()
+          .focus()
+          .deleteRange(range)
+          .insertContent(`\n\n> [!${kind.toUpperCase()}]\n> Your text here\n\n`)
+          .run();
+      },
+    })),
     {
       title: 'Divider',
       description: 'Horizontal rule',

@@ -188,6 +188,24 @@ menu with the palette picker.
 console.log('hello from the editor');
 ```
 
+### Callouts
+
+GitHub-alert syntax — each renders as a coloured box in both the editor
+canvas and the published post:
+
+> [!NOTE]
+> Useful context the reader shouldn't skip.
+
+> [!TIP]
+> Ride Taron first thing in the morning — the queue triples by 11:00.
+
+> [!WARNING]
+> Wait times in this post are historical; check the live page before you go.
+
+And a plain quote for contrast, which must stay a quote:
+
+> Theme parks are the closest thing we have to time machines.
+
 ## Wrap-up
 
 If you got through this post and every chip lit up the right inspector

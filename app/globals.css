@@ -763,6 +763,68 @@ html[data-temp-unit='F'] .u-imperial {
   color: oklch(0.82 0.2 30);
   border-bottom-color: color-mix(in oklab, oklch(0.7 0.2 30) 45%, transparent);
 }
+/* GitHub-alert callouts (`> [!NOTE]` …) — the CalloutPreview extension tags
+   marked blockquotes with these classes so the canvas mirrors the published
+   boxes. The `[!TYPE]` marker itself renders as a small pill. */
+.tiptap-canvas .editor-callout {
+  border-left-width: 1px;
+  border: 1px solid;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-style: normal;
+  color: color-mix(in oklab, var(--foreground) 85%, transparent);
+}
+.tiptap-canvas .editor-callout--note {
+  border-color: color-mix(in oklab, oklch(0.685 0.169 237.323) 30%, transparent);
+  background: color-mix(in oklab, oklch(0.685 0.169 237.323) 10%, transparent);
+}
+.tiptap-canvas .editor-callout--tip {
+  border-color: color-mix(in oklab, oklch(0.696 0.17 162.48) 30%, transparent);
+  background: color-mix(in oklab, oklch(0.696 0.17 162.48) 10%, transparent);
+}
+.tiptap-canvas .editor-callout--important {
+  border-color: color-mix(in oklab, oklch(0.606 0.25 292.717) 30%, transparent);
+  background: color-mix(in oklab, oklch(0.606 0.25 292.717) 10%, transparent);
+}
+.tiptap-canvas .editor-callout--warning {
+  border-color: color-mix(in oklab, oklch(0.769 0.188 70.08) 30%, transparent);
+  background: color-mix(in oklab, oklch(0.769 0.188 70.08) 10%, transparent);
+}
+.tiptap-canvas .editor-callout--caution {
+  border-color: color-mix(in oklab, oklch(0.645 0.246 16.439) 30%, transparent);
+  background: color-mix(in oklab, oklch(0.645 0.246 16.439) 10%, transparent);
+}
+.tiptap-canvas .editor-callout-marker {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 0 0.5em;
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: inherit;
+}
+.tiptap-canvas .editor-callout-marker--note {
+  background: color-mix(in oklab, oklch(0.685 0.169 237.323) 20%, transparent);
+  color: oklch(0.746 0.16 232.661);
+}
+.tiptap-canvas .editor-callout-marker--tip {
+  background: color-mix(in oklab, oklch(0.696 0.17 162.48) 20%, transparent);
+  color: oklch(0.765 0.177 163.223);
+}
+.tiptap-canvas .editor-callout-marker--important {
+  background: color-mix(in oklab, oklch(0.606 0.25 292.717) 20%, transparent);
+  color: oklch(0.709 0.21 293.541);
+}
+.tiptap-canvas .editor-callout-marker--warning {
+  background: color-mix(in oklab, oklch(0.769 0.188 70.08) 20%, transparent);
+  color: oklch(0.828 0.189 84.429);
+}
+.tiptap-canvas .editor-callout-marker--caution {
+  background: color-mix(in oklab, oklch(0.645 0.246 16.439) 20%, transparent);
+  color: oklch(0.712 0.194 13.428);
+}
+
 /* Empty-editor placeholder. */
 .tiptap-canvas p.is-editor-empty:first-child::before,
 .tiptap-canvas h1.is-editor-empty::before,

@@ -188,6 +188,24 @@ und im veröffentlichten Beitrag eingefärbt sein. In eine Zelle klicken
 console.log('hallo aus dem editor');
 ```
 
+### Callouts
+
+GitHub-Alert-Syntax — jede rendert als farbige Box im Editor-Canvas und
+im veröffentlichten Beitrag:
+
+> [!NOTE]
+> Nützlicher Kontext, den Leser nicht überspringen sollten.
+
+> [!TIP]
+> Taron am besten gleich morgens fahren — die Schlange verdreifacht sich bis 11:00.
+
+> [!WARNING]
+> Die Wartezeiten in diesem Beitrag sind historisch; vor dem Besuch die Live-Seite checken.
+
+Und ein normales Zitat zum Vergleich, das ein Zitat bleiben muss:
+
+> Freizeitparks sind das Näheste an Zeitmaschinen, das wir haben.
+
 ## Fazit
 
 Wenn du dich durch diesen Post geklickt hast und jeder Chip das richtige

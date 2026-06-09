@@ -80,6 +80,10 @@ the Croatian area — Voltron's neighbourhood. By **11:30**, Voltron's queue
 peaks. By **14:00**, Silver Star's queue peaks. By **17:00**, both have
 collapsed and Wodan owns the evening rush.
 
+> [!TIP]
+> Ride Voltron in the first operating hour or after 19:00 — between 11:30
+> and 17:00 its queue rarely drops below an hour.
+
 If you're planning a visit, the practical takeaway is annoying but simple:
 
 - **Do Voltron first thing** or it dominates your day.

@@ -11,6 +11,14 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import type { Locale } from '@/i18n/config';
 import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
+import { remarkCallouts, type CalloutType } from '@/lib/blog/remark-callouts';
+import {
+  AlertTriangle,
+  Info,
+  Lightbulb,
+  MessageSquareWarning,
+  OctagonAlert,
+} from 'lucide-react';
 import {
   extractInlineRefs,
   parseRefKey,
@@ -45,6 +53,44 @@ import { BlogGlossaryWidget } from './blog-glossary-widget';
 import { BlogGallery } from './blog-gallery';
 import { listFolderImages } from '@/lib/blog/gallery';
 import type { BlogImage } from '@/lib/blog/types';
+
+/** Box / title classes + icon per GitHub-alert callout type. Kept as static
+ *  class strings so Tailwind sees them at build time. */
+const CALLOUT_META: Record<
+  CalloutType,
+  { label: string; icon: typeof Info; box: string; title: string }
+> = {
+  note: {
+    label: 'Note',
+    icon: Info,
+    box: 'border-sky-500/30 bg-sky-500/10',
+    title: 'text-sky-400',
+  },
+  tip: {
+    label: 'Tip',
+    icon: Lightbulb,
+    box: 'border-emerald-500/30 bg-emerald-500/10',
+    title: 'text-emerald-400',
+  },
+  important: {
+    label: 'Important',
+    icon: MessageSquareWarning,
+    box: 'border-violet-500/30 bg-violet-500/10',
+    title: 'text-violet-400',
+  },
+  warning: {
+    label: 'Warning',
+    icon: AlertTriangle,
+    box: 'border-amber-500/30 bg-amber-500/10',
+    title: 'text-amber-400',
+  },
+  caution: {
+    label: 'Caution',
+    icon: OctagonAlert,
+    box: 'border-rose-500/30 bg-rose-500/10',
+    title: 'text-rose-400',
+  },
+};
 
 interface BlogContentProps {
   markdown: string;
@@ -508,11 +554,32 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       </ol>
     ),
     li: ({ children }) => <li>{injectGlossary(children)}</li>,
-    blockquote: ({ children }) => (
-      <blockquote className="border-primary/40 text-foreground/80 my-6 border-l-4 pl-4 italic">
-        {injectGlossary(children)}
-      </blockquote>
-    ),
+    blockquote: ({ children, ...rest }) => {
+      // remark-callouts tags GitHub-style `> [!NOTE]` blockquotes with a
+      // data-callout attribute — those render as coloured boxes instead of
+      // the plain quote treatment.
+      const callout = (rest as { 'data-callout'?: CalloutType })['data-callout'];
+      if (callout && CALLOUT_META[callout]) {
+        const meta = CALLOUT_META[callout];
+        const Icon = meta.icon;
+        return (
+          <aside data-callout={callout} className={`not-prose my-6 rounded-xl border px-4 py-3 ${meta.box}`}>
+            <div className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider ${meta.title}`}>
+              <Icon className="h-3.5 w-3.5" />
+              {meta.label}
+            </div>
+            <div className="text-foreground/85 text-[0.95rem] leading-relaxed [&>p]:my-1.5">
+              {injectGlossary(children)}
+            </div>
+          </aside>
+        );
+      }
+      return (
+        <blockquote className="border-primary/40 text-foreground/80 my-6 border-l-4 pl-4 italic">
+          {injectGlossary(children)}
+        </blockquote>
+      );
+    },
     hr: () => <hr className="border-border my-10" />,
     table: ({ children, ...rest }) => {
       // Pass `data-theme` through when the remark-table-themes plugin
@@ -580,7 +647,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
             <ReactMarkdown
               key={`md-${idx}`}
               components={components}
-              remarkPlugins={[remarkGfm, remarkTableThemes]}
+              remarkPlugins={[remarkGfm, remarkTableThemes, remarkCallouts]}
               rehypePlugins={[rehypeSlug]}
               urlTransform={preserveCustomProtocols}
             >
