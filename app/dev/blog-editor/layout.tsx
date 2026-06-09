@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Suspense } from 'react';
 import { Geist } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import enMessages from '@/messages/en.json';
@@ -37,11 +36,9 @@ export default function DevLayout({ children }: { children: React.ReactNode }) {
       <body
         className={`${geistSans.variable} bg-background text-foreground min-h-screen font-sans antialiased`}
       >
-        <Suspense fallback={null}>
-          <NextIntlClientProvider locale="en" messages={adminMessages} timeZone="UTC">
-            {children}
-          </NextIntlClientProvider>
-        </Suspense>
+        <NextIntlClientProvider locale="en" messages={adminMessages} timeZone="UTC">
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
