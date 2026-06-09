@@ -310,6 +310,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 nextSchedule={park.nextSchedule}
                 status={park.status}
                 hasOperatingSchedule={park.hasOperatingSchedule}
+                continent={continent}
+                country={country}
+                city={city}
+                parkSlug={parkSlug}
                 className="border-primary/10"
               />
             </Suspense>

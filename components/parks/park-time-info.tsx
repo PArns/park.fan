@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type { ParkStatus } from '@/lib/api/types';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
@@ -21,6 +22,14 @@ interface ParkTimeInfoProps {
   nextSchedule?: NextScheduleItem | null;
   status?: ParkStatus | null;
   hasOperatingSchedule?: boolean;
+  /** Geo-routing params — when provided, the card subscribes to the live park query (shared key
+   *  with LiveParkData → no extra fetch) so the status badge + schedule reflect the live state
+   *  instead of the up-to-1-day-stale server snapshot baked into the data-cache. Omitted by the
+   *  demo/mock showcases, which keep the static props. */
+  continent?: string;
+  country?: string;
+  city?: string;
+  parkSlug?: string;
   className?: string;
 }
 
@@ -32,10 +41,14 @@ interface ParkTimeInfoProps {
  */
 export function ParkTimeInfo({
   timezone,
-  schedule,
-  nextSchedule,
-  status,
-  hasOperatingSchedule = true,
+  schedule: scheduleProp,
+  nextSchedule: nextScheduleProp,
+  status: statusProp,
+  hasOperatingSchedule: hasOperatingScheduleProp = true,
+  continent,
+  country,
+  city,
+  parkSlug,
   className,
 }: ParkTimeInfoProps) {
   const t = useTranslations('parks');
@@ -43,6 +56,26 @@ export function ParkTimeInfo({
   const tNearby = useTranslations('nearby');
   const locale = useLocale();
   const currentTime = useBrowserNow(60_000);
+
+  // The park structure (incl. `status` and `schedule`) is baked into the 1-day data-cache snapshot,
+  // so the server-rendered props can be up to a day stale — which previously left this badge showing
+  // GESCHLOSSEN while the park was actually open. Subscribe to the same live park query LiveParkData
+  // polls (shared React Query key → no extra fetch) and prefer its fresh values; fall back to the
+  // props until the live poll lands (and for the demo/mock usages that pass no geo params), so SSR and
+  // the first client render still agree.
+  const hasParams = !!(continent && country && city && parkSlug);
+  const { data: livePark } = useLiveParkData({
+    continent: continent ?? '',
+    country: country ?? '',
+    city: city ?? '',
+    parkSlug: parkSlug ?? '',
+    enabled: hasParams,
+  });
+  const status = (hasParams ? livePark?.status : null) ?? statusProp;
+  const schedule = (hasParams ? livePark?.schedule : null) ?? scheduleProp;
+  const nextSchedule = (hasParams ? livePark?.nextSchedule : null) ?? nextScheduleProp;
+  const hasOperatingSchedule =
+    (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
 
   // Pick today's schedule entry CLIENT-side (from the browser clock in the park's timezone) so the
   // static shell never reads the server clock. Before mount we fall back to the first entry — same
