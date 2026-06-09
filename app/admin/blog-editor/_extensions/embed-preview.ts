@@ -14,7 +14,11 @@ import { parseInstagram, parseSuno, parseYouTube } from '@/lib/blog/embeds';
 type EmbedKind = 'youtube' | 'instagram' | 'suno';
 
 interface EmbedSpan {
+  /** End of the paragraph — anchors the decoration chip. */
   pos: number;
+  /** Whole paragraph range so the panel can swap or delete the line. */
+  paragraphFrom: number;
+  paragraphTo: number;
   kind: EmbedKind;
   label: string;
   href: string;
@@ -37,8 +41,6 @@ function collectEmbeds(doc: PMNode): EmbedSpan[] {
   const out: EmbedSpan[] = [];
   doc.descendants((node, pos) => {
     if (node.type.name !== 'paragraph') return;
-    // Walk children; only consider paragraphs whose single child is a text or
-    // link that holds exactly one URL with no surrounding prose.
     const child = node.firstChild;
     if (!child || node.childCount !== 1) return;
     const text = (child.text ?? '').trim();
@@ -47,7 +49,14 @@ function collectEmbeds(doc: PMNode): EmbedSpan[] {
     const href = (linkMark?.attrs.href as string | undefined) ?? text;
     const hit = detect(href);
     if (!hit) return;
-    out.push({ pos: pos + node.nodeSize, kind: hit.kind, label: hit.label, href });
+    out.push({
+      pos: pos + node.nodeSize,
+      paragraphFrom: pos,
+      paragraphTo: pos + node.nodeSize,
+      kind: hit.kind,
+      label: hit.label,
+      href,
+    });
   });
   return out;
 }
@@ -112,6 +121,70 @@ export const EmbedPreview = Extension.create({
         props: {
           decorations(state) {
             return embedPreviewKey.getState(state)?.decorations;
+          },
+          handleClick(view, _clickPos, event) {
+            const raw = event.target as Node | null;
+            const target =
+              raw instanceof Element
+                ? raw
+                : (raw?.parentElement as Element | null);
+            const chip = target?.closest('.embed-preview') as HTMLElement | null;
+            if (!chip) return false;
+            // Resolve which embed span matches the clicked chip. The chip
+            // kind lives in its className; if the same provider appears
+            // multiple times we disambiguate by chip-rect vs coordsAtPos.
+            const kindClass = Array.from(chip.classList).find((c) =>
+              c.startsWith('embed-preview--')
+            );
+            const kind = kindClass?.replace('embed-preview--', '') as
+              | EmbedKind
+              | undefined;
+            if (!kind) return false;
+            const state = embedPreviewKey.getState(view.state);
+            const candidates = (state?.spans ?? []).filter((s) => s.kind === kind);
+            if (candidates.length === 0) return false;
+            let pick = candidates[0];
+            if (candidates.length > 1) {
+              const r = chip.getBoundingClientRect();
+              const chipX = (r.left + r.right) / 2;
+              const chipY = (r.top + r.bottom) / 2;
+              let bestDist = Infinity;
+              for (const s of candidates) {
+                try {
+                  const coords = view.coordsAtPos(s.pos);
+                  const dx = coords.left - chipX;
+                  const dy = (coords.top + coords.bottom) / 2 - chipY;
+                  const dist = Math.hypot(dx, dy);
+                  if (dist < bestDist) {
+                    bestDist = dist;
+                    pick = s;
+                  }
+                } catch {
+                  /* invalid pos */
+                }
+              }
+            }
+            event.preventDefault();
+            const rect = chip.getBoundingClientRect();
+            window.dispatchEvent(
+              new CustomEvent('parkfan-selection', {
+                detail: {
+                  kind: 'embed',
+                  provider: pick.kind,
+                  href: pick.href,
+                  paragraphFrom: pick.paragraphFrom,
+                  paragraphTo: pick.paragraphTo,
+                  pos: pick.paragraphFrom,
+                  rect: {
+                    top: rect.top,
+                    bottom: rect.bottom,
+                    left: rect.left,
+                    right: rect.right,
+                  },
+                },
+              })
+            );
+            return true;
           },
         },
       }),

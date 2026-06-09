@@ -301,12 +301,16 @@ export const WidgetPreview = Extension.create({
             if (matches.length === 0) return false;
             let pick = matches[0];
             if (matches.length > 1) {
-              const chipTop = chip.getBoundingClientRect().top;
+              const r = chip.getBoundingClientRect();
+              const chipX = (r.left + r.right) / 2;
+              const chipY = (r.top + r.bottom) / 2;
               let bestDist = Infinity;
               for (const s of matches) {
                 try {
                   const coords = view.coordsAtPos(s.pos);
-                  const dist = Math.abs(coords.top - chipTop);
+                  const dx = coords.left - chipX;
+                  const dy = (coords.top + coords.bottom) / 2 - chipY;
+                  const dist = Math.hypot(dx, dy);
                   if (dist < bestDist) {
                     bestDist = dist;
                     pick = s;

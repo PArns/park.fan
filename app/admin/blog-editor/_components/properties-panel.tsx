@@ -1,17 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   AlignCenter,
   AlignLeft,
   AlignRight,
   Boxes,
+  Camera,
   ExternalLink,
+  Film,
   Image as ImageIcon,
   Link as LinkIcon,
   Maximize,
   MapPin,
   MousePointerClick,
+  Music,
   Replace,
   Sparkles,
   Trash2,
@@ -55,6 +58,15 @@ export type EditorSelection =
       align: 'center' | 'left' | 'right' | 'wide';
       size?: 'small' | 'medium' | 'large';
     }
+  | {
+      kind: 'embed';
+      /** Bare URL embed paragraph (YouTube / Instagram / Suno). */
+      provider: 'youtube' | 'instagram' | 'suno';
+      href: string;
+      paragraphFrom: number;
+      paragraphTo: number;
+      pos: number;
+    }
   | null;
 
 interface PropertiesPanelProps {
@@ -96,7 +108,9 @@ export function PropertiesPanel({
                 ? 'link'
                 : selection.kind === 'widget'
                   ? 'widget'
-                  : 'image'}
+                  : selection.kind === 'image'
+                    ? 'image'
+                    : 'embed'}
           </span>
         )}
       </div>
@@ -114,6 +128,8 @@ export function PropertiesPanel({
           <WidgetProperties editor={editor} selection={selection} />
         ) : selection?.kind === 'image' ? (
           <ImageProperties editor={editor} selection={selection} />
+        ) : selection?.kind === 'embed' ? (
+          <EmbedProperties editor={editor} selection={selection} />
         ) : (
           <EmptyState charCount={charCount} />
         )}
@@ -495,6 +511,127 @@ function widgetLabel(name: string): string {
  * Re-mount the image form on every new selection so its uncontrolled fields
  * pick up the new image cleanly without an in-effect setState dance.
  */
+/**
+ * Bare-URL embed paragraph editor. The chip in the canvas represents a
+ * paragraph whose only content is a YouTube / Instagram / Suno URL — saving
+ * replaces the paragraph's content with the new URL, deletion drops the whole
+ * paragraph (and adjacent blank lines collapse on the next markdown round-trip).
+ */
+function EmbedProperties(props: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'embed' }>;
+}) {
+  return <EmbedForm key={props.selection.paragraphFrom} {...props} />;
+}
+
+function EmbedForm({
+  editor,
+  selection,
+}: {
+  editor: Editor | null;
+  selection: Extract<EditorSelection, { kind: 'embed' }>;
+}) {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const providerIcon =
+    selection.provider === 'youtube'
+      ? Film
+      : selection.provider === 'instagram'
+        ? Camera
+        : Music;
+  const providerLabel =
+    selection.provider === 'youtube'
+      ? 'YouTube embed'
+      : selection.provider === 'instagram'
+        ? 'Instagram embed'
+        : 'Suno embed';
+
+  const save = () => {
+    if (!editor) return;
+    const next = (inputRef.current?.value ?? '').trim();
+    if (!next) return;
+    const schema = editor.schema;
+    const paragraph = schema.nodes.paragraph;
+    if (!paragraph) return;
+    const node = paragraph.create(null, schema.text(next));
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.replaceRangeWith(selection.paragraphFrom, selection.paragraphTo, node);
+        return true;
+      })
+      .run();
+    window.dispatchEvent(
+      new CustomEvent('parkfan-selection', {
+        detail: {
+          ...selection,
+          href: next,
+          paragraphTo: selection.paragraphFrom + node.nodeSize,
+        },
+      })
+    );
+  };
+  const remove = () => {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .command(({ tr }) => {
+        tr.delete(selection.paragraphFrom, selection.paragraphTo);
+        return true;
+      })
+      .run();
+    window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
+  };
+
+  return (
+    <div className="space-y-4">
+      <Header
+        icon={providerIcon}
+        kind={providerLabel}
+        title={selection.href}
+        subtitle="paragraph-only URL · renders as embed at publish"
+      />
+
+      <Section label="URL">
+        <input
+          key={selection.href}
+          ref={inputRef}
+          defaultValue={selection.href}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') save();
+          }}
+          placeholder="https://…"
+          className="border-border/60 bg-background/60 text-foreground w-full rounded-lg border px-2.5 py-1.5 font-mono text-[11px] outline-none"
+        />
+      </Section>
+
+      <Section label="Actions">
+        <div className="grid gap-1.5">
+          <ActionButton onClick={save} icon={Sparkles}>
+            Save URL
+          </ActionButton>
+          {selection.href.startsWith('http') && (
+            <a
+              href={selection.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border-border/60 hover:border-primary/40 hover:bg-primary/10 text-foreground/85 inline-flex items-center gap-2 rounded-lg border px-2.5 py-1.5 text-xs font-semibold transition-colors"
+            >
+              <ExternalLink className="h-3.5 w-3.5" />
+              Open in new tab
+            </a>
+          )}
+          <ActionButton onClick={remove} icon={Trash2} destructive>
+            Delete embed
+          </ActionButton>
+        </div>
+      </Section>
+    </div>
+  );
+}
+
 function ImageProperties(props: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'image' }>;

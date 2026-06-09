@@ -450,9 +450,21 @@ export const RefPreview = Extension.create({
             const dataRef = chip.getAttribute('data-ref');
             if (dataRef) {
               const state = refPreviewKey.getState(view.state);
-              const candidates = (state?.spans ?? []).filter(
-                (s) => s.refValue === dataRef
+              // Filter by ref value AND by chip kind: a `.ref-preview-badge`
+              // can only come from an inline (?info / ?long / default) span,
+              // never a ?full one (?full renders a `.ref-preview-spotlight`
+              // instead). Without this filter, clicking the first of two
+              // back-to-back same-park inline badges that bracket a ?full
+              // spotlight would still match the spotlight as a candidate and
+              // its coord could end up closer.
+              const isSpotlightChip = chip.classList.contains(
+                'ref-preview-spotlight'
               );
+              const candidates = (state?.spans ?? []).filter((s) => {
+                if (s.refValue !== dataRef) return false;
+                const isFull = s.options.has('full');
+                return isSpotlightChip ? isFull : !isFull;
+              });
               if (candidates.length === 1) {
                 from = candidates[0].from;
                 to = candidates[0].to;
@@ -462,16 +474,21 @@ export const RefPreview = Extension.create({
                     : ''
                 }`;
               } else if (candidates.length > 1) {
-                // Disambiguate by the chip's on-screen vertical position
-                // vs. each candidate's anchor coord. Whichever doc position
-                // renders closest to the click target wins.
-                const chipTop = chip.getBoundingClientRect().top;
+                // Disambiguate by both X AND Y of the chip vs the candidate
+                // anchor — for two inline chips on the same line (e.g. two
+                // back-to-back rides) the Y coords match and only X tells
+                // them apart.
+                const chipRect = chip.getBoundingClientRect();
+                const chipX = (chipRect.left + chipRect.right) / 2;
+                const chipY = (chipRect.top + chipRect.bottom) / 2;
                 let best = candidates[0];
                 let bestDist = Infinity;
                 for (const c of candidates) {
                   try {
                     const coords = view.coordsAtPos(c.to);
-                    const dist = Math.abs(coords.top - chipTop);
+                    const dx = coords.left - chipX;
+                    const dy = (coords.top + coords.bottom) / 2 - chipY;
+                    const dist = Math.hypot(dx, dy);
                     if (dist < bestDist) {
                       best = c;
                       bestDist = dist;
