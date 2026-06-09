@@ -17,6 +17,7 @@ import { EmbedPreview } from '../_extensions/embed-preview';
 import { ImagePreview } from '../_extensions/image-preview';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
+import { TableMenu } from './table-menu';
 import { FixedToolbar, type ToolbarAction } from './fixed-toolbar';
 import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
@@ -361,6 +362,7 @@ export function EditorCanvas({
       <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8">
         <FixedToolbar editor={editor} onEmit={onToolbarEmit} />
         <EditorBubbleMenu editor={editor} />
+        <TableMenu editor={editor} />
         <EditorContent editor={editor} />
         <ParkRidePicker
           mode={pickerMode}

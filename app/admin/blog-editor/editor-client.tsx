@@ -344,7 +344,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   };
 
   return (
-    <div className="container mx-auto max-w-[1400px] px-4 py-6">
+    <div className="container mx-auto max-w-[min(1800px,98vw)] px-4 py-6">
       <header className="mb-6 flex flex-wrap items-center gap-3">
         <div className="from-primary/20 to-primary/5 text-primary flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
           <PenLine className="h-5 w-5" />
