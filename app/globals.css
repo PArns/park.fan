@@ -724,8 +724,14 @@ html[data-temp-unit='F'] .u-imperial {
 }
 /* Selection highlight inside the canvas pops a bit more than the system
    default so the bubble menu reads naturally with what's selected. */
-.tiptap-canvas ::selection {
-  background: hsl(var(--primary) / 0.25);
+.tiptap-canvas ::selection,
+.tiptap-canvas ::-moz-selection {
+  background: color-mix(in oklab, var(--primary) 40%, transparent);
+  color: var(--foreground);
+}
+.tiptap-canvas .ProseMirror-selectednode {
+  outline: 2px solid color-mix(in oklab, var(--primary) 60%, transparent);
+  outline-offset: 2px;
 }
 /* The first heading sets the visual tone; soften the top margin so the very
    first block doesn't slam into the canvas border. */

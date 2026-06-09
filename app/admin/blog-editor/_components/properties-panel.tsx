@@ -36,6 +36,10 @@ export type EditorSelection =
       href: string;
       /** Raw ref value (without leading `ref:`) — drives label heuristics. */
       value: string;
+      /** Author-visible link text, captured at click time. Used as the panel
+       *  title so the inspector reads "bare" / "full" / "Phantasialand" —
+       *  whatever the author typed — instead of always reading the slug. */
+      label?: string;
     }
   | { kind: 'link'; pos: number; from: number; to: number; href: string }
   | {
@@ -213,8 +217,8 @@ function RefProperties({
       <Header
         icon={isRide ? TrainFront : MapPin}
         kind={isRide ? 'Ride reference' : 'Park reference'}
-        title={prettyName(selection.value)}
-        subtitle={selection.value}
+        title={selection.label?.trim() || prettyName(selection.value)}
+        subtitle={`→ ${prettyName(selection.value)} · ${selection.value}`}
       />
 
       <Section label="Variant">
@@ -457,21 +461,73 @@ function WidgetForm({
         subtitle={selection.name}
       />
 
-      {fields.map((f) => (
-        <Section key={f.key} label={f.label}>
-          <input
-            value={attrs[f.key] ?? ''}
-            onChange={(e) =>
-              setAttrs((prev) => ({ ...prev, [f.key]: e.target.value }))
-            }
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') save();
-            }}
-            placeholder={f.placeholder}
-            className="border-border/60 bg-background/60 text-foreground w-full rounded-lg border px-2.5 py-1.5 font-mono text-xs outline-none"
-          />
-        </Section>
-      ))}
+      {fields.map((f) => {
+        // Which fields are "park" or "ride" slugs — those get a Pick button
+        // that opens the ParkRidePicker via a window event the editor-canvas
+        // catches. Keeps the panel ignorant of the picker's React state.
+        const pickerMode: 'park' | 'ride' | null = ((): 'park' | 'ride' | null => {
+          if (f.key === 'parkSlug') return 'park';
+          if (f.key === 'slug') {
+            if (selection.name === 'attraction-widget') return 'ride';
+            if (selection.name === 'glossary-widget') return null;
+            if (selection.name === 'gallery-widget') return null;
+            return 'park';
+          }
+          return null;
+        })();
+        const openPicker = () => {
+          if (!pickerMode) return;
+          const id = `pick-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+          const onResult = (ev: Event) => {
+            const detail = (ev as CustomEvent<{ id: string; slug: string }>).detail;
+            if (detail.id !== id) return;
+            window.removeEventListener(
+              'parkfan-park-picker-result',
+              onResult as EventListener
+            );
+            // Pull the latest attrs to avoid stomping fields the user edited
+            // between opening and choosing.
+            setAttrs((prev) => ({ ...prev, [f.key]: detail.slug }));
+          };
+          window.addEventListener(
+            'parkfan-park-picker-result',
+            onResult as EventListener
+          );
+          window.dispatchEvent(
+            new CustomEvent('parkfan-park-picker-request', {
+              detail: { id, mode: pickerMode },
+            })
+          );
+        };
+        return (
+          <Section key={f.key} label={f.label}>
+            <div className="flex items-center gap-1.5">
+              <input
+                value={attrs[f.key] ?? ''}
+                onChange={(e) =>
+                  setAttrs((prev) => ({ ...prev, [f.key]: e.target.value }))
+                }
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') save();
+                }}
+                placeholder={f.placeholder}
+                className="border-border/60 bg-background/60 text-foreground flex-1 rounded-lg border px-2.5 py-1.5 font-mono text-xs outline-none"
+              />
+              {pickerMode && (
+                <button
+                  type="button"
+                  onClick={openPicker}
+                  title={pickerMode === 'ride' ? 'Pick a ride…' : 'Pick a park…'}
+                  className="hover:bg-accent/50 text-primary border-border/60 inline-flex h-8 items-center gap-1 rounded-md border px-2 text-[10px] font-semibold transition-colors"
+                >
+                  <Replace className="h-3 w-3" />
+                  Pick…
+                </button>
+              )}
+            </div>
+          </Section>
+        );
+      })}
 
       <Section label="Actions">
         <div className="grid gap-1.5">
@@ -652,30 +708,58 @@ function ImageForm({
     selection.size ?? ''
   );
 
-  const buildAltString = () => {
-    const parts: string[] = [alt.trim()];
-    if (caption.trim() || align !== 'center' || size) parts.push(caption.trim());
-    if (align !== 'center' || size) parts.push(align);
-    if (size) parts.push(size);
+  const buildAltStringFrom = (
+    partsIn: { alt: string; caption: string; align: typeof selection.align; size: '' | 'small' | 'medium' | 'large' }
+  ) => {
+    const parts: string[] = [partsIn.alt.trim()];
+    const hasMeta = !!partsIn.caption.trim() || partsIn.align !== 'center' || !!partsIn.size;
+    if (hasMeta) parts.push(partsIn.caption.trim());
+    if (partsIn.align !== 'center' || partsIn.size) parts.push(partsIn.align);
+    if (partsIn.size) parts.push(partsIn.size);
     return parts.join(' | ');
   };
 
-  const save = () => {
+  /** Write a new alt string into the doc — used by both the manual Save button
+   *  (for alt + caption text) and the live align/size toggles which apply on
+   *  click instead of waiting for Save. */
+  const writeAlt = (next: {
+    alt: string;
+    caption: string;
+    align: typeof selection.align;
+    size: '' | 'small' | 'medium' | 'large';
+  }) => {
     if (!editor) return;
+    const altString = buildAltStringFrom(next);
     editor
       .chain()
-      .focus()
       .command(({ tr }) => {
-        tr.setNodeAttribute(selection.pos, 'alt', buildAltString());
+        tr.setNodeAttribute(selection.pos, 'alt', altString);
         return true;
       })
       .run();
     window.dispatchEvent(
       new CustomEvent('parkfan-selection', {
-        detail: { ...selection, alt, caption, align, size: size || undefined },
+        detail: {
+          ...selection,
+          alt: next.alt,
+          caption: next.caption,
+          align: next.align,
+          size: next.size || undefined,
+        },
       })
     );
   };
+
+  const setAlignLive = (k: typeof selection.align) => {
+    setAlign(k);
+    writeAlt({ alt, caption, align: k, size });
+  };
+  const setSizeLive = (k: '' | 'small' | 'medium' | 'large') => {
+    setSize(k);
+    writeAlt({ alt, caption, align, size: k });
+  };
+
+  const save = () => writeAlt({ alt, caption, align, size });
   const remove = () => {
     if (!editor) return;
     editor
@@ -763,7 +847,7 @@ function ImageForm({
                 key={opt.k}
                 type="button"
                 title={opt.label}
-                onClick={() => setAlign(opt.k)}
+                onClick={() => setAlignLive(opt.k)}
                 className={cn(
                   'inline-flex flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-semibold transition-all',
                   align === opt.k
@@ -785,7 +869,7 @@ function ImageForm({
             <button
               key={opt.k}
               type="button"
-              onClick={() => setSize(opt.k)}
+              onClick={() => setSizeLive(opt.k)}
               className={cn(
                 'rounded-lg px-2 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all',
                 size === opt.k

@@ -55,6 +55,10 @@ export function EditorCanvas({
    *  position rather than inserting a fresh link. The PropertiesPanel asks
    *  for a replace via a window event; the canvas captures pos here. */
   const replacePosRef = useRef<number | null>(null);
+  /** When the panel's widget form asks for a park slug via "Pick…", we open
+   *  the ParkRidePicker in plain park-or-ride mode and remember the request
+   *  id so the result event can be addressed back to the originating field. */
+  const widgetPickRequestRef = useRef<string | null>(null);
   // Hold the editor in a ref too so the slash extension can fire actions
   // synchronously without sequencing through useState (which React 19 forbids
   // inside effects).
@@ -199,6 +203,23 @@ export function EditorCanvas({
 
   const handlePick = (r: PickerResult) => {
     if (!editor) return;
+    // Widget Pick… flow — the request originated from the PropertiesPanel
+    // wanting a slug for a widget fence field. Fire the result back with
+    // just the bare slug (last path segment) and close the picker without
+    // touching the doc.
+    if (widgetPickRequestRef.current) {
+      // refKey looks like `/parks/europe/germany/bruehl/phantasialand[/ride]`;
+      // the widget fields expect just the last slug component.
+      const slug = r.refKey.split('/').filter(Boolean).pop() ?? r.refKey;
+      window.dispatchEvent(
+        new CustomEvent('parkfan-park-picker-result', {
+          detail: { id: widgetPickRequestRef.current, slug },
+        })
+      );
+      widgetPickRequestRef.current = null;
+      setPickerMode(null);
+      return;
+    }
     // Defend against incidental whitespace from the search backend so the
     // inserted markdown doesn't end up `[Phantasialand ](ref:…)`.
     const label = r.label.trim();
@@ -265,13 +286,23 @@ export function EditorCanvas({
       replaceImagePosRef.current = detail.pos;
       setImagePickerOpen(true);
     };
+    const onWidgetPickRequest = (e: Event) => {
+      const detail = (e as CustomEvent<{ id: string; mode: 'park' | 'ride' }>).detail;
+      widgetPickRequestRef.current = detail.id;
+      setPickerMode(detail.mode);
+    };
     window.addEventListener('parkfan-replace-ref-request', onReplaceRequest as EventListener);
     window.addEventListener('parkfan-image-pick-request', onImageRequest as EventListener);
+    window.addEventListener('parkfan-park-picker-request', onWidgetPickRequest as EventListener);
     return () => {
       window.removeEventListener('parkfan-image-pick-request', onImageRequest as EventListener);
       window.removeEventListener(
         'parkfan-replace-ref-request',
         onReplaceRequest as EventListener
+      );
+      window.removeEventListener(
+        'parkfan-park-picker-request',
+        onWidgetPickRequest as EventListener
       );
     };
   }, []);
@@ -305,9 +336,12 @@ export function EditorCanvas({
             // alt/caption/align/size on its own next save.
             if (replaceImagePosRef.current !== null) {
               const pos = replaceImagePosRef.current;
+              // Don't `.focus()` here — that would yank the editor's scroll
+              // back to wherever the caret was sitting (often the top of the
+              // doc), which is exactly the "picker scrolls everything to the
+              // top" report. setNodeAttribute alone keeps the viewport stable.
               editor
                 .chain()
-                .focus()
                 .command(({ tr }) => {
                   const node = tr.doc.nodeAt(pos);
                   if (!node || node.type.name !== 'image') return false;

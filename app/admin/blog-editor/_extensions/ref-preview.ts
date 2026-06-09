@@ -502,6 +502,15 @@ export const RefPreview = Extension.create({
                 ? href.slice(4, href.indexOf('?'))
                 : href.slice(4)
               : '';
+            // Pull the actual displayed link text out of the doc so the panel
+            // can show "bare" / "full" / "Phantasialand" — whatever the
+            // author wrote — instead of always falling back to the ref slug.
+            let label = '';
+            try {
+              label = doc.textBetween(from, to, '');
+            } catch {
+              /* range invalid — fall back to the slug-derived title */
+            }
             window.dispatchEvent(
               new CustomEvent('parkfan-selection', {
                 detail: {
@@ -517,6 +526,7 @@ export const RefPreview = Extension.create({
                   to,
                   href,
                   value,
+                  label,
                   rect: {
                     top: rect.top,
                     bottom: rect.bottom,
