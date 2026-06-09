@@ -16,6 +16,13 @@ import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
 import type { NewAuthorDraft } from './_components/author-create-modal';
 import type { NewCategoryDraft } from './_components/category-create-modal';
 import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
+import {
+  clearDraftSnapshot,
+  isMeaningfulSnapshot,
+  loadDraftSnapshot,
+  saveDraftSnapshot,
+  type DraftSnapshot,
+} from './_lib/draft-autosave';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
@@ -36,6 +43,19 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [selection, setSelection] = useState<EditorSelection>(null);
   /** Lifted TipTap editor instance so PropertiesPanel can run commands. */
   const [editor, setEditor] = useState<Editor | null>(null);
+  /** A meaningful localStorage snapshot from a previous session — drives the
+   *  "Restore draft?" banner. Detected once after mount (localStorage isn't
+   *  available during SSR, and reading it in render would mismatch hydration). */
+  const [restorable, setRestorable] = useState<DraftSnapshot | null>(null);
+  useEffect(() => {
+    // Deferred a tick — the React 19 lint (set-state-in-effect) flags
+    // synchronous setState in effects as a cascading-render hazard.
+    const t = setTimeout(() => {
+      const snap = loadDraftSnapshot();
+      if (snap && isMeaningfulSnapshot(snap)) setRestorable(snap);
+    }, 0);
+    return () => clearTimeout(t);
+  }, []);
 
   // The ref-preview extension fires `parkfan-selection` from handleClick. We
   // listen at the top level so the panel reflects whichever chip was clicked
@@ -142,6 +162,36 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     originalSlugs: Partial<Record<Locale, string>>;
   } | null>(null);
 
+  // Debounced crash-protection snapshot. Anything typed lands in
+  // localStorage within a second; an empty editor clears the slot instead so
+  // a discarded draft doesn't resurrect on the next visit.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const meaningful = Object.values(drafts).some(
+        (d) => !!d && (!!d.fm.title.trim() || !!d.body.trim())
+      );
+      if (meaningful) {
+        saveDraftSnapshot({ drafts, editing, sourceLocale, activeLocale });
+      } else if (!editing) {
+        clearDraftSnapshot();
+      }
+    }, 800);
+    return () => clearTimeout(t);
+  }, [drafts, editing, sourceLocale, activeLocale]);
+
+  const restoreDraft = () => {
+    if (!restorable) return;
+    setDrafts(restorable.drafts);
+    setEditing(restorable.editing);
+    setSourceLocale(restorable.sourceLocale);
+    setActiveLocale(restorable.activeLocale);
+    setRestorable(null);
+  };
+  const discardDraft = () => {
+    clearDraftSnapshot();
+    setRestorable(null);
+  };
+
   const ensure = (locale: Locale): LocaleDraft => drafts[locale] ?? emptyDraft();
   const active = ensure(activeLocale);
 
@@ -244,6 +294,9 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       return { ok: false, message: `${res.status}: ${text || res.statusText}` };
     }
     const data = (await res.json()) as { url: string; branch: string; committed: string[] };
+    // The PR is the durable copy now — the crash-protection snapshot has
+    // served its purpose.
+    clearDraftSnapshot();
     return {
       ok: true,
       url: data.url,
@@ -415,6 +468,38 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         onClose={() => setPickerOpen(false)}
         onPick={onLoadPost}
       />
+
+      {restorable && (
+        <div className="border-amber-500/30 bg-amber-500/10 mb-6 flex flex-wrap items-center gap-3 rounded-xl border px-4 py-3 text-sm">
+          <span className="text-amber-200/90">
+            Unsaved draft from{' '}
+            <strong>{new Date(restorable.savedAt).toLocaleString()}</strong>
+            {restorable.editing ? (
+              <>
+                {' '}
+                (editing <code className="font-mono text-xs">{restorable.editing.key}</code>)
+              </>
+            ) : null}{' '}
+            found.
+          </span>
+          <div className="ml-auto inline-flex gap-2">
+            <button
+              type="button"
+              onClick={restoreDraft}
+              className="rounded-lg bg-amber-500/20 px-3 py-1.5 text-xs font-semibold text-amber-100 transition-colors hover:bg-amber-500/30"
+            >
+              Restore
+            </button>
+            <button
+              type="button"
+              onClick={discardDraft}
+              className="text-muted-foreground hover:text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors"
+            >
+              Discard
+            </button>
+          </div>
+        </div>
+      )}
 
       <LocaleTabs
         locales={initialData.locales}
