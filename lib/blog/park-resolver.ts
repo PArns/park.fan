@@ -233,7 +233,7 @@ export function extractInlineRefs(markdown: string): {
 
   // 2. Widget fences — ```park-widget … ``` / ```attraction-widget … ```
   const widgetRe =
-    /^```([a-z]+-widget)(?:\s+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
+    /^```([a-z]+-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
   while ((match = widgetRe.exec(markdown)) !== null) {
     const name = match[1];
     const attrSource = `${match[2] ?? ''}\n${match[3] ?? ''}`;

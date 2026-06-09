@@ -163,6 +163,9 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     originalSlugs: Partial<Record<Locale, string>>;
   } | null>(null);
 
+  /** Last successful localStorage snapshot — drives the tiny "saved" tick
+   *  in the stats row so authors trust the crash protection. */
+  const [lastAutosave, setLastAutosave] = useState<Date | null>(null);
   // Debounced crash-protection snapshot. Anything typed lands in
   // localStorage within a second; an empty editor clears the slot instead so
   // a discarded draft doesn't resurrect on the next visit.
@@ -173,6 +176,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       );
       if (meaningful) {
         saveDraftSnapshot({ drafts, editing, sourceLocale, activeLocale });
+        setLastAutosave(new Date());
       } else if (!editing) {
         clearDraftSnapshot();
       }
@@ -562,9 +566,32 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             ))}
           </div>
           <div className="text-muted-foreground hidden text-[10px] uppercase tracking-wider sm:flex sm:items-center sm:gap-2">
-            <span>{active.body.length.toLocaleString()} chars</span>
-            <span className="text-muted-foreground/40">·</span>
-            <span>{Math.max(1, active.body.split('\n').length)} lines</span>
+            {(() => {
+              // Strip image/link syntax so URLs don't inflate the word count.
+              const text = active.body
+                .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+                .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+              const words = (text.match(/\S+/g) ?? []).length;
+              const minutes = Math.max(1, Math.round(words / 220));
+              return (
+                <>
+                  <span>{words.toLocaleString()} words</span>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>~{minutes} min read</span>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>{Math.max(1, active.body.split('\n').length)} lines</span>
+                </>
+              );
+            })()}
+            {lastAutosave && (
+              <>
+                <span className="text-muted-foreground/40">·</span>
+                <span className="inline-flex items-center gap-1 text-emerald-500/90 normal-case">
+                  <span className="h-1 w-1 rounded-full bg-emerald-500" />
+                  saved {lastAutosave.toLocaleTimeString()}
+                </span>
+              </>
+            )}
           </div>
         </div>
         <div className="grid items-start gap-4 lg:grid-cols-[1fr_320px]">

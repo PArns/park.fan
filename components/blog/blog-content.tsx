@@ -105,7 +105,11 @@ interface Segment {
   widget?: { name: string; attrs: Record<string, string> };
 }
 
-const WIDGET_FENCE = /^```([a-z][a-z0-9-]*-widget)(?:\s+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
+// `[ \\t]+` (NOT \\s+) — \\s matches the newline, which made the FIRST BODY LINE
+// parse as the info string. Body attrs use `key: value`, which the
+// info-string parser doesn't understand, so every body-attr widget (the
+// form the editor writes!) silently rendered as nothing.
+const WIDGET_FENCE = /^```([a-z][a-z0-9-]*-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
 
 /** Widgets keyed by a single park `slug=` attr — all pre-resolve into parkMap. */
 const PARK_SLUG_WIDGETS = new Set([
@@ -493,7 +497,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         {injectGlossary(children)}
       </h3>
     ),
-    p: ({ children }) => {
+    p: ({ children, node }) => {
       // A paragraph that is just a single link can become a block element: a
       // `?full` spotlight card or a YouTube/Instagram embed. A <div> inside <p>
       // is invalid and breaks hydration, so emit these without the <p> wrapper.
@@ -501,6 +505,25 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const meaningful = Children.toArray(children).filter(
         (c) => !(typeof c === 'string' && c.trim() === '')
       );
+
+      // Block-producing children that may NOT live inside a <p>: images (our
+      // img renderer emits a <figure>) and `?full` refs (block cards). When
+      // any are present the wrapper must be a <div> — the browser's parser
+      // would otherwise hoist them out of the <p> while parsing, desyncing
+      // the DOM from React's tree and nuking the whole hydrated subtree
+      // (which is exactly how every widget on a post used to vanish).
+      const hastChildren =
+        (node as { children?: Array<{ type?: string; tagName?: string; properties?: { href?: string } }> })
+          ?.children ?? [];
+      const hasBlockChild = hastChildren.some((c) => {
+        if (c.type !== 'element') return false;
+        if (c.tagName === 'img') return true;
+        if (c.tagName === 'a') {
+          const href = String(c.properties?.href ?? '');
+          return /^(ref:|park:|attraction:)/.test(href) && /[?&](full|long)\b/.test(href);
+        }
+        return false;
+      });
 
       // Two or more `?full` references in one paragraph → a side-by-side row.
       if (meaningful.length >= 2) {
@@ -541,6 +564,17 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
           const label = typeof props.children === 'string' ? props.children : undefined;
           return <BlogSunoEmbed id={suno.id} title={label && label !== href ? label : undefined} />;
         }
+      }
+      if (hasBlockChild) {
+        // Sole image → the <figure> manages its own spacing, no wrapper at
+        // all. Mixed prose + block chip → block-safe <div> with the same
+        // text treatment as a paragraph.
+        if (meaningful.length === 1) return <>{children}</>;
+        return (
+          <div className="text-foreground/90 my-5 leading-[1.75]">
+            {injectGlossary(children)}
+          </div>
+        );
       }
       return <p className="text-foreground/90 my-5 leading-[1.75]">{injectGlossary(children)}</p>;
     },

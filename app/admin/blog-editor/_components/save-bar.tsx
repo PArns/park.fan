@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ExternalLink, GitPullRequest, Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -31,6 +31,27 @@ export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
       setLoading(false);
     }
   };
+
+  // ⌘S / Ctrl+S triggers the same flow (and stops the browser's save
+  // dialog). Latest state lives in refs synced post-render (React 19
+  // forbids ref writes during render) so the listener binds once.
+  const stateRef = useRef({ loading, disabled: !!disabled });
+  const handleRef = useRef(handle);
+  useEffect(() => {
+    stateRef.current = { loading, disabled: !!disabled };
+    handleRef.current = handle;
+  });
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        const { loading: busy, disabled: off } = stateRef.current;
+        if (!busy && !off) void handleRef.current();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   return (
     <div className="sticky bottom-4 z-10 mt-8">
@@ -83,6 +104,11 @@ export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
             <GitPullRequest className="h-4 w-4" />
           )}
           {loading ? 'Opening PR…' : 'Save & open PR'}
+          {!loading && !disabled && (
+            <kbd className="bg-primary-foreground/15 ml-0.5 hidden rounded px-1.5 py-0.5 font-mono text-[10px] font-semibold opacity-80 sm:inline">
+              ⌘S
+            </kbd>
+          )}
         </button>
       </div>
     </div>

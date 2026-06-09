@@ -22,6 +22,7 @@ import { WidgetPreview } from '../_extensions/widget-preview';
 import { EmbedPreview } from '../_extensions/embed-preview';
 import { ImagePreview } from '../_extensions/image-preview';
 import { CalloutPreview } from '../_extensions/callout-preview';
+import { ActiveChip } from '../_extensions/active-chip';
 import { buildSlashItems } from './slash-menu';
 import { EditorBubbleMenu } from './bubble-menu';
 import { TableMenu } from './table-menu';
@@ -205,6 +206,7 @@ export function EditorCanvas({
       EmbedPreview,
       ImagePreview,
       CalloutPreview,
+      ActiveChip,
     ],
     content: initialMarkdown || '',
     editorProps: {
@@ -238,17 +240,9 @@ export function EditorCanvas({
         void insertUploadedImages(files);
         return true;
       },
-      handleDrop(view, event, _slice, moved) {
-        if (moved) return false; // internal drag — let ProseMirror move it
-        const files = Array.from(event.dataTransfer?.files ?? []).filter((f) =>
-          f.type.startsWith('image/')
-        );
-        if (!files.length) return false;
-        event.preventDefault();
-        const coords = view.posAtCoords({ left: event.clientX, top: event.clientY });
-        void insertUploadedImages(files, coords?.pos);
-        return true;
-      },
+      // NOTE: image-file drops are handled by the canvas wrapper's React
+      // onDrop (covers the whole card incl. padding); a PM-level handleDrop
+      // here would double-insert since the event bubbles up to the wrapper.
     },
     onUpdate: ({ editor: e }) => {
       // Theme restoration after a load is not a user edit — swallowing it
@@ -439,7 +433,27 @@ export function EditorCanvas({
         aria-hidden="true"
         className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
       />
-      <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8">
+      <div
+        className="border-border/60 bg-background/60 relative rounded-2xl border p-8"
+        // Catch image drops on the WHOLE canvas card, not just the exact
+        // ProseMirror text area — dropping onto the padding / toolbar zone
+        // used to make the browser navigate to the file instead of uploading.
+        onDragOver={(e) => {
+          if (Array.from(e.dataTransfer.items).some((i) => i.kind === 'file')) {
+            e.preventDefault();
+          }
+        }}
+        onDrop={(e) => {
+          const files = Array.from(e.dataTransfer.files).filter((f) =>
+            f.type.startsWith('image/')
+          );
+          if (!files.length) return;
+          e.preventDefault();
+          const view = editorRef.current?.view;
+          const coords = view?.posAtCoords({ left: e.clientX, top: e.clientY });
+          void insertUploadedImages(files, coords?.pos);
+        }}
+      >
         <FixedToolbar editor={editor} onEmit={onToolbarEmit} />
         <EditorBubbleMenu editor={editor} />
         <TableMenu editor={editor} />

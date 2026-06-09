@@ -989,11 +989,33 @@ html[data-temp-unit='F'] .u-imperial {
 .tiptap-canvas a[href^='ref:'],
 .tiptap-canvas a[href^='park:'],
 .tiptap-canvas a[href^='attraction:'] {
-  cursor: text;
+  cursor: pointer;
   background: color-mix(in oklab, var(--primary) 12%, transparent);
   padding: 0 0.25em;
   border-radius: 0.25em;
   text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.tiptap-canvas a[href^='ref:']:hover,
+.tiptap-canvas a[href^='park:']:hover,
+.tiptap-canvas a[href^='attraction:']:hover {
+  background: color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+/* Ring around whichever chip is loaded in the PropertiesPanel — the
+   ActiveChip plugin maps the panel selection onto these classes so authors
+   always see WHICH chip they're editing. Esc clears it. */
+.tiptap-canvas .chip-active-inline {
+  box-shadow:
+    0 0 0 1.5px color-mix(in oklab, var(--primary) 70%, transparent),
+    0 0 12px color-mix(in oklab, var(--primary) 25%, transparent);
+  border-radius: 0.25em;
+}
+.tiptap-canvas .chip-active-node {
+  outline: 2px solid color-mix(in oklab, var(--primary) 60%, transparent);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 16px color-mix(in oklab, var(--primary) 18%, transparent);
 }
 
 /* WYSIWYG annotation injected right after every `ref:` link by RefPreview —

@@ -172,11 +172,16 @@ export const ImagePreview = Extension.create({
             if (!img) return false;
             // Find the span matching this <img> by src. When the same image is
             // used twice, disambiguate by hypot(Δx, Δy) so the closer instance
-            // wins even when both share a line.
+            // wins even when both share a line. Freshly-uploaded images render
+            // through their staging blob URL (the decoration overrides src),
+            // so match against that too — otherwise clicking an uploaded image
+            // never opened the panel.
             const state = imagePreviewKey.getState(view.state);
             const spans = state?.spans ?? [];
             const src = img.getAttribute('src') ?? '';
-            const matches = spans.filter((s) => s.src === src);
+            const matches = spans.filter(
+              (s) => s.src === src || getPendingImage(s.src)?.objectUrl === src
+            );
             const pick = pickClosestByCoords(img, matches, view, (s) => s.pos);
             if (!pick) return false;
             event.preventDefault();

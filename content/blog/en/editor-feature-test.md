@@ -4,7 +4,7 @@ translationKey: editor-feature-test
 date: '2026-06-09'
 updatedAt: '2026-06-09'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   A scratch post that exercises every park.fan editor chip — ref variants,

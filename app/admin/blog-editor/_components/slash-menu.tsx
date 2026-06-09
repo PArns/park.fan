@@ -8,6 +8,7 @@ import {
   type CSSProperties,
 } from 'react';
 import {
+  AlertTriangle,
   Camera,
   Code,
   Film,
@@ -15,11 +16,15 @@ import {
   Heading2,
   Heading3,
   Image as ImageIcon,
+  Info,
+  Lightbulb,
   List,
   ListOrdered,
   MapPin,
+  MessageSquareWarning,
   Minus,
   Music,
+  OctagonAlert,
   Quote,
   Sparkles,
   Table as TableIcon,
@@ -210,16 +215,16 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
     },
     ...(
       [
-        ['note', 'Note callout', 'Blue info box'],
-        ['tip', 'Tip callout', 'Green hint box'],
-        ['important', 'Important callout', 'Purple emphasis box'],
-        ['warning', 'Warning callout', 'Amber caution box'],
-        ['caution', 'Caution callout', 'Red danger box'],
+        ['note', 'Note callout', 'Blue info box', Info],
+        ['tip', 'Tip callout', 'Green hint box', Lightbulb],
+        ['important', 'Important callout', 'Purple emphasis box', MessageSquareWarning],
+        ['warning', 'Warning callout', 'Amber caution box', AlertTriangle],
+        ['caution', 'Caution callout', 'Red danger box', OctagonAlert],
       ] as const
-    ).map<SlashItem>(([kind, title, description]) => ({
+    ).map<SlashItem>(([kind, title, description, icon]) => ({
       title,
       description,
-      icon: Quote,
+      icon,
       group: 'Text',
       command: ({ editor, range }) => {
         // GitHub-alert syntax — stays a plain blockquote in the doc, the
