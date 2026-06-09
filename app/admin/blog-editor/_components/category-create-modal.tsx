@@ -5,6 +5,7 @@ import { FolderPlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import type { CategoryOption } from '../_lib/initial-data';
+import { Field } from './form-fields';
 
 export interface NewCategoryDraft {
   path: string;
@@ -177,33 +178,3 @@ export function CategoryCreateModal({ open, existing, onClose, onCreate }: Props
   );
 }
 
-function Field({
-  label,
-  hint,
-  error,
-  children,
-}: {
-  label: string;
-  hint?: string;
-  error?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="grid gap-1">
-      <span className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
-        {label}
-      </span>
-      {children}
-      {hint && (
-        <span
-          className={cn(
-            'text-[10px]',
-            error ? 'text-destructive' : 'text-muted-foreground/70'
-          )}
-        >
-          {hint}
-        </span>
-      )}
-    </label>
-  );
-}

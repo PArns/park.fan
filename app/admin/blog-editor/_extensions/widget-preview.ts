@@ -2,16 +2,17 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
+import {
+  createResolveCache,
+  eventToElement,
+  pickClosestByCoords,
+} from '../_lib/chip-utils';
 
 /**
  * Renders a card-style block preview *next to* each widget code fence in the
  * editor so authors see what their `park-widget`, `attraction-widget`, etc.
  * will look like at publish time. The empty fence body still owns the
  * document state — we only add a decoration; the user can still edit it.
- *
- * Shared module-level cache with ref-preview would be ideal but is not worth
- * the refactor right now; each extension keeps its own resolution map. The
- * resolve-ref endpoint is server-cached anyway so duplicate calls are cheap.
  */
 
 interface ResolvedData {
@@ -31,26 +32,7 @@ interface ResolvedData {
   totalAttractions?: number | null;
 }
 
-type CacheEntry =
-  | { state: 'loading' }
-  | { state: 'failed' }
-  | { state: 'ready'; data: ResolvedData };
-
-const cache = new Map<string, CacheEntry>();
-
-function fetchResolve(refValue: string, onResolve: () => void) {
-  if (cache.has(refValue)) return;
-  cache.set(refValue, { state: 'loading' });
-  fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
-    .then((r) => (r.ok ? (r.json() as Promise<ResolvedData>) : Promise.reject()))
-    .then((data) => {
-      cache.set(refValue, { state: 'ready', data });
-    })
-    .catch(() => {
-      cache.set(refValue, { state: 'failed' });
-    })
-    .finally(onResolve);
-}
+const cache = createResolveCache<ResolvedData>();
 
 interface WidgetSpan {
   /** End position of the code-fence node — where the decoration is anchored. */
@@ -260,8 +242,7 @@ export const WidgetPreview = Extension.create({
             if (!s) return;
             for (const span of s.spans) {
               if (!span.refValue) continue;
-              if (cache.has(span.refValue)) continue;
-              fetchResolve(span.refValue, () => {
+              cache.ensure(span.refValue, () => {
                 if (view.isDestroyed) return;
                 view.dispatch(view.state.tr.setMeta(widgetPreviewKey, 'refresh'));
               });
@@ -279,18 +260,10 @@ export const WidgetPreview = Extension.create({
             return widgetPreviewKey.getState(state)?.decorations;
           },
           handleClick(view, _clickPos, event) {
-            const raw = event.target as Node | null;
-            const target =
-              raw instanceof Element
-                ? raw
-                : (raw?.parentElement as Element | null);
-            const chip = target?.closest('.widget-preview') as HTMLElement | null;
+            const chip = eventToElement(event)?.closest(
+              '.widget-preview'
+            ) as HTMLElement | null;
             if (!chip) return false;
-            // Find the matching span by widget name + attrs serialised on the
-            // DOM. We anchor the widget at the END of the code-block node so
-            // the span whose `pos` equals our chip's intent is the one we
-            // want — disambiguate by chip rect when the same widget kind
-            // shows up multiple times.
             const state = widgetPreviewKey.getState(view.state);
             const spans = state?.spans ?? [];
             const name = Array.from(chip.classList)
@@ -298,28 +271,8 @@ export const WidgetPreview = Extension.create({
               ?.replace('widget-preview--', '');
             if (!name) return false;
             const matches = spans.filter((s) => s.name === name);
-            if (matches.length === 0) return false;
-            let pick = matches[0];
-            if (matches.length > 1) {
-              const r = chip.getBoundingClientRect();
-              const chipX = (r.left + r.right) / 2;
-              const chipY = (r.top + r.bottom) / 2;
-              let bestDist = Infinity;
-              for (const s of matches) {
-                try {
-                  const coords = view.coordsAtPos(s.pos);
-                  const dx = coords.left - chipX;
-                  const dy = (coords.top + coords.bottom) / 2 - chipY;
-                  const dist = Math.hypot(dx, dy);
-                  if (dist < bestDist) {
-                    bestDist = dist;
-                    pick = s;
-                  }
-                } catch {
-                  /* invalid pos */
-                }
-              }
-            }
+            const pick = pickClosestByCoords(chip, matches, view, (s) => s.pos);
+            if (!pick) return false;
             // The widget decoration anchors at the END of the codeBlock
             // node (`pos: pos + node.nodeSize` in collectWidgets). The
             // codeBlock node itself starts at pos - nodeSize. We compute the

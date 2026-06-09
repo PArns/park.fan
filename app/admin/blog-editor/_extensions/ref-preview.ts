@@ -4,6 +4,11 @@ import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 import type { Root } from 'react-dom/client';
 import { mountInlineBadge } from './inline-badge';
+import {
+  createResolveCache,
+  eventToElement,
+  pickClosestByCoords,
+} from '../_lib/chip-utils';
 
 /**
  * Tracks the React roots we mount inside widget DOM, keyed by the container
@@ -41,25 +46,7 @@ interface RefData {
   backgroundImage?: string | null;
 }
 
-type CacheEntry = { state: 'loading' } | { state: 'failed' } | { state: 'ready'; data: RefData };
-
-const cache = new Map<string, CacheEntry>();
-
-function fetchRef(refValue: string, onResolve: () => void) {
-  if (cache.has(refValue)) return;
-  cache.set(refValue, { state: 'loading' });
-  fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`)
-    .then((r) => (r.ok ? (r.json() as Promise<RefData>) : Promise.reject()))
-    .then((data) => {
-      cache.set(refValue, { state: 'ready', data });
-    })
-    .catch(() => {
-      cache.set(refValue, { state: 'failed' });
-    })
-    .finally(() => {
-      onResolve();
-    });
-}
+const cache = createResolveCache<RefData>();
 
 interface RefSpan {
   from: number;
@@ -402,8 +389,7 @@ export const RefPreview = Extension.create({
               // ?bare suppresses any preview, so skip the fetch. ?full DOES
               // need the data — that's the spotlight card.
               if (span.options.has('bare')) continue;
-              if (cache.has(span.refValue)) continue;
-              fetchRef(span.refValue, () => {
+              cache.ensure(span.refValue, () => {
                 if (view.isDestroyed) return;
                 view.dispatch(view.state.tr.setMeta(refPreviewKey, 'refresh'));
               });
@@ -421,14 +407,7 @@ export const RefPreview = Extension.create({
             return refPreviewKey.getState(state)?.decorations;
           },
           handleClick(view, clickPos, event) {
-            const raw = event.target as Node | null;
-            // Click target may be a text node — walk up to the closest Element
-            // so `closest()` works against our chip selectors.
-            const target =
-              raw instanceof Element
-                ? raw
-                : (raw?.parentElement as Element | null);
-            const chip = target?.closest(
+            const chip = eventToElement(event)?.closest(
               '.ref-preview-badge, .ref-preview-spotlight, a[href]'
             ) as HTMLElement | null;
             if (!chip) return false;
@@ -465,38 +444,8 @@ export const RefPreview = Extension.create({
                 const isFull = s.options.has('full');
                 return isSpotlightChip ? isFull : !isFull;
               });
-              if (candidates.length === 1) {
-                from = candidates[0].from;
-                to = candidates[0].to;
-                href = `ref:${dataRef}${
-                  candidates[0].options.size
-                    ? `?${[...candidates[0].options].join('&')}`
-                    : ''
-                }`;
-              } else if (candidates.length > 1) {
-                // Disambiguate by both X AND Y of the chip vs the candidate
-                // anchor — for two inline chips on the same line (e.g. two
-                // back-to-back rides) the Y coords match and only X tells
-                // them apart.
-                const chipRect = chip.getBoundingClientRect();
-                const chipX = (chipRect.left + chipRect.right) / 2;
-                const chipY = (chipRect.top + chipRect.bottom) / 2;
-                let best = candidates[0];
-                let bestDist = Infinity;
-                for (const c of candidates) {
-                  try {
-                    const coords = view.coordsAtPos(c.to);
-                    const dx = coords.left - chipX;
-                    const dy = (coords.top + coords.bottom) / 2 - chipY;
-                    const dist = Math.hypot(dx, dy);
-                    if (dist < bestDist) {
-                      best = c;
-                      bestDist = dist;
-                    }
-                  } catch {
-                    /* invalid pos — skip */
-                  }
-                }
+              const best = pickClosestByCoords(chip, candidates, view, (c) => c.to);
+              if (best) {
                 from = best.from;
                 to = best.to;
                 href = `ref:${dataRef}${

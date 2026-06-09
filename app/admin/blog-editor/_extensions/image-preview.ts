@@ -2,6 +2,7 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
+import { eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
 
 /**
  * Visual + selection layer for inline images.
@@ -133,39 +134,19 @@ export const ImagePreview = Extension.create({
             return imagePreviewKey.getState(state)?.decorations;
           },
           handleClick(view, _clickPos, event) {
-            const raw = event.target as Node | null;
-            const target =
-              raw instanceof Element ? raw : (raw?.parentElement as Element | null);
-            const img = target?.closest('img') as HTMLImageElement | null;
+            const img = eventToElement(event)?.closest('img') as
+              | HTMLImageElement
+              | null;
             if (!img) return false;
             // Find the span matching this <img> by src. When the same image is
-            // used twice, disambiguate by chip top vs view.coordsAtPos.
+            // used twice, disambiguate by hypot(Δx, Δy) so the closer instance
+            // wins even when both share a line.
             const state = imagePreviewKey.getState(view.state);
             const spans = state?.spans ?? [];
             const src = img.getAttribute('src') ?? '';
             const matches = spans.filter((s) => s.src === src);
-            if (matches.length === 0) return false;
-            let pick = matches[0];
-            if (matches.length > 1) {
-              const r = img.getBoundingClientRect();
-              const chipX = (r.left + r.right) / 2;
-              const chipY = (r.top + r.bottom) / 2;
-              let bestDist = Infinity;
-              for (const s of matches) {
-                try {
-                  const coords = view.coordsAtPos(s.pos);
-                  const dx = coords.left - chipX;
-                  const dy = (coords.top + coords.bottom) / 2 - chipY;
-                  const dist = Math.hypot(dx, dy);
-                  if (dist < bestDist) {
-                    bestDist = dist;
-                    pick = s;
-                  }
-                } catch {
-                  /* invalid pos */
-                }
-              }
-            }
+            const pick = pickClosestByCoords(img, matches, view, (s) => s.pos);
+            if (!pick) return false;
             event.preventDefault();
             const rect = img.getBoundingClientRect();
             window.dispatchEvent(
