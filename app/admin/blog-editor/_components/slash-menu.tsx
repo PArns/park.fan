@@ -100,7 +100,7 @@ export const SlashMenu = forwardRef<SlashMenuHandle, SlashMenuProps>(function Sl
 
   let runningIndex = 0;
   return (
-    <div className="border-border/60 bg-popover text-popover-foreground max-h-[60vh] w-72 overflow-y-auto rounded-xl border p-1 shadow-xl">
+    <div className="border-border/60 bg-popover text-popover-foreground editor-scroll max-h-[60vh] w-72 overflow-y-auto rounded-xl border p-1 shadow-xl">
       {Array.from(groups.entries()).map(([group, list]) => (
         <div key={group}>
           <div className="text-muted-foreground mt-2 mb-1 px-2 text-[10px] font-semibold uppercase tracking-wider first:mt-0">

@@ -319,7 +319,7 @@ function IconBtn({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        'flex h-8 w-8 items-center justify-center rounded-lg transition-all',
+        'flex h-8 w-8 items-center justify-center rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
         active && 'bg-primary/15 text-primary ring-1 ring-primary/30',
         !active && !disabled && 'hover:bg-accent/50 text-foreground/85 hover:scale-110',
         disabled && 'text-foreground/30 cursor-not-allowed'
@@ -344,7 +344,7 @@ function LabelBtn({
       type="button"
       title={`Insert ${label}`}
       onClick={onClick}
-      className="hover:bg-accent/50 hover:text-primary text-foreground/85 inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-xs font-semibold transition-all hover:scale-105 active:scale-95"
+      className="hover:bg-accent/50 hover:text-primary text-foreground/85 focus-visible:ring-primary/50 inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-xs font-semibold transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 active:scale-95"
     >
       {children}
       {label}

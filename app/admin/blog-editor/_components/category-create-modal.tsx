@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { FolderPlus, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ChevronRight, FolderPlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { slugify } from '../_lib/types';
 import type { CategoryOption } from '../_lib/initial-data';
@@ -29,7 +29,8 @@ const LOCALES = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
  * Captures a category entry for content/blog/categories.json — create OR
  * edit. In edit mode the parent + slug halves of the path are locked
  * (renaming would also need to migrate every post that points at the old
- * path, which is out of scope here).
+ * path, which is out of scope here). The breadcrumb band previews the final
+ * path live while typing.
  */
 export function CategoryCreateModal({
   open,
@@ -101,18 +102,51 @@ function CategoryForm({
     onSubmit({ path: fullPath, labels });
   };
 
+  // Esc closes, ⌘/Ctrl+Enter saves. Latest closure via ref (synced
+  // post-render; React 19 forbids ref writes during render).
+  const submitRef = useRef(submit);
+  useEffect(() => {
+    submitRef.current = submit;
+  });
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopPropagation();
+        onClose();
+      } else if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+        e.preventDefault();
+        submitRef.current();
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  // Sort categories by path so the parent dropdown reads as a tree; indent
+  // children by depth.
+  const sortedParents = [...existing].sort((a, b) => a.path.localeCompare(b.path));
+
+  const previewCrumbs = (fullPath || '…').split('/').filter(Boolean);
+
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/40 pt-[10vh] backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 pt-[8vh] backdrop-blur-sm"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="border-border/60 bg-popover text-popover-foreground w-[min(580px,92vw)] overflow-hidden rounded-2xl border shadow-2xl">
-        <div className="border-border/60 flex items-center gap-2 border-b px-4 py-3">
-          <FolderPlus className="text-primary h-4 w-4" />
-          <div className="text-foreground/95 flex-1 text-sm font-semibold">
-            {isEdit ? `Edit category · ${initial!.path}` : 'New (sub-)category'}
+      <div className="border-border/60 bg-popover text-popover-foreground animate-in fade-in slide-in-from-top-2 w-[min(600px,92vw)] overflow-hidden rounded-2xl border shadow-2xl duration-200">
+        <div className="border-border/60 from-primary/10 flex items-center gap-2.5 border-b bg-gradient-to-r to-transparent px-4 py-3">
+          <div className="from-primary/25 to-primary/10 text-primary flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br">
+            <FolderPlus className="h-4 w-4" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <div className="text-foreground/95 text-sm font-semibold">
+              {isEdit ? 'Edit category' : 'New (sub-)category'}
+            </div>
+            <div className="text-muted-foreground truncate font-mono text-[10px]">
+              content/blog/categories.json
+            </div>
           </div>
           <button
             type="button"
@@ -124,6 +158,35 @@ function CategoryForm({
           </button>
         </div>
 
+        {/* Live path preview — breadcrumb of the final category path. */}
+        <div
+          className={cn(
+            'border-border/40 flex items-center gap-1 border-b px-4 py-2.5',
+            collision ? 'bg-destructive/10' : 'bg-muted/20'
+          )}
+        >
+          {previewCrumbs.map((part, i) => (
+            <span key={`${part}-${i}`} className="inline-flex items-center gap-1">
+              {i > 0 && <ChevronRight className="text-muted-foreground/50 h-3 w-3" />}
+              <span
+                className={cn(
+                  'rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold',
+                  i === previewCrumbs.length - 1
+                    ? collision
+                      ? 'bg-destructive/20 text-destructive'
+                      : 'bg-primary/15 text-primary'
+                    : 'bg-muted/60 text-muted-foreground'
+                )}
+              >
+                {part}
+              </span>
+            </span>
+          ))}
+          <span className="text-muted-foreground/60 ml-auto shrink-0 text-[10px] font-semibold uppercase tracking-wider">
+            {collision ? 'Already exists' : 'Path'}
+          </span>
+        </div>
+
         <div className="grid gap-3 px-4 py-3">
           <Field
             label="Parent category"
@@ -133,14 +196,19 @@ function CategoryForm({
               value={parent}
               disabled={isEdit}
               onChange={(e) => setParent(e.target.value)}
-              className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none disabled:cursor-not-allowed disabled:opacity-60"
+              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
             >
               <option value="">— top-level —</option>
-              {existing.map((c) => (
-                <option key={c.path} value={c.path}>
-                  {c.labelEn} · {c.path}
-                </option>
-              ))}
+              {sortedParents.map((c) => {
+                const depth = c.path.split('/').length - 1;
+                return (
+                  <option key={c.path} value={c.path}>
+                    {'  '.repeat(depth)}
+                    {depth > 0 ? '└ ' : ''}
+                    {c.labelEn}
+                  </option>
+                );
+              })}
             </select>
           </Field>
           <div className="grid grid-cols-2 gap-3">
@@ -150,7 +218,7 @@ function CategoryForm({
                 value={labelEn}
                 onChange={(e) => setLabelEn(e.target.value)}
                 placeholder="Disney World"
-                className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
               />
             </Field>
             <Field
@@ -160,7 +228,7 @@ function CategoryForm({
                   ? 'Locked while editing.'
                   : collision
                     ? `${fullPath} already exists.`
-                    : `Full path: ${fullPath || '(needs slug)'}`
+                    : 'Auto-derives from the label.'
               }
               error={collision}
             >
@@ -172,7 +240,7 @@ function CategoryForm({
                   setSlug(e.target.value);
                 }}
                 placeholder="disney-world"
-                className="bg-background/60 border-border/60 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
               />
             </Field>
           </div>
@@ -192,7 +260,7 @@ function CategoryForm({
                       setOtherLabels((prev) => ({ ...prev, [loc]: e.target.value }))
                     }
                     placeholder={labelEn || loc.toUpperCase()}
-                    className="bg-background/60 border-border/60 text-foreground rounded-md border px-2 py-1 text-xs outline-none"
+                    className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-md border px-2 py-1 text-xs outline-none transition-colors"
                   />
                 </label>
               ))}
@@ -200,7 +268,11 @@ function CategoryForm({
           </Field>
         </div>
 
-        <div className="border-border/60 bg-muted/20 flex items-center justify-end gap-2 border-t px-4 py-3">
+        <div className="border-border/60 bg-muted/20 flex items-center gap-2 border-t px-4 py-3">
+          <span className="text-muted-foreground/70 mr-auto hidden text-[10px] sm:block">
+            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">Esc</kbd> cancel ·{' '}
+            <kbd className="bg-muted rounded px-1 py-0.5 font-mono">⌘⏎</kbd> save
+          </span>
           <button
             type="button"
             onClick={onClose}
@@ -226,4 +298,3 @@ function CategoryForm({
     </div>
   );
 }
-

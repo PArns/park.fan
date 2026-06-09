@@ -132,7 +132,17 @@ export function PropertiesPanel({
         )}
       </div>
 
-      <div className="h-[calc(100%-3rem)] overflow-y-auto px-4 py-4">
+      <div className="editor-scroll h-[calc(100%-3rem)] overflow-y-auto px-4 py-4">
+        <div
+          // Re-keying on the selection identity restarts the entrance
+          // animation, so switching chips visibly swaps the form.
+          key={
+            selection
+              ? `${selection.kind}:${'pos' in selection ? selection.pos : ''}`
+              : 'empty'
+          }
+          className="animate-in fade-in slide-in-from-right-2 h-full duration-200"
+        >
         {selection?.kind === 'ref' ? (
           <RefProperties
             editor={editor}
@@ -150,6 +160,7 @@ export function PropertiesPanel({
         ) : (
           <EmptyState charCount={charCount} />
         )}
+        </div>
       </div>
     </aside>
   );

@@ -269,7 +269,7 @@ function ImagePickerBody({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-3">
+        <div className="editor-scroll flex-1 overflow-y-auto p-3">
           {!loading && allFiltered.length === 0 && (
             <div className="text-muted-foreground p-8 text-center text-sm">
               <ImageIcon className="mx-auto mb-2 h-6 w-6 opacity-40" />

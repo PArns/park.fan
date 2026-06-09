@@ -251,7 +251,7 @@ export function ParkRidePicker({
             </span>
           </div>
         )}
-        <div className="min-h-0 flex-1 overflow-y-auto p-1">
+        <div className="editor-scroll min-h-0 flex-1 overflow-y-auto p-1">
           {visibleParks.length === 0 && visibleRides.length === 0 && (
             <div className="text-muted-foreground p-6 text-center text-sm">
               {q.trim().length === 0
