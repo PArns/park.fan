@@ -33,7 +33,16 @@ interface SavePayload {
   editedAuthors?: SavePayload['newAuthors'];
   /** Edited categories: merge over the existing categories.json entry. */
   editedCategories?: SavePayload['newCategories'];
+  /** Images pasted / dropped / uploaded in the editor. Each lands as
+   *  `public<path>` in the same PR so the markdown references resolve the
+   *  moment the PR merges. */
+  newImages?: Array<{ path: string; contentBase64: string }>;
 }
+
+/** /blog/images/… only, no traversal, whitelisted raster/vector extensions. */
+const IMAGE_PATH_RE = /^\/blog\/images\/[a-z0-9][a-z0-9/._-]*\.(png|jpe?g|webp|gif|avif|svg)$/i;
+/** ~3MB raw ≈ 4MB base64 — matches the client-side cap. */
+const MAX_IMAGE_BASE64 = 4 * 1024 * 1024;
 
 const AUTHOR_KEY_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i;
 const CATEGORY_PATH_RE = /^[a-z0-9](?:[a-z0-9-/]*[a-z0-9])?$/i;
@@ -358,6 +367,41 @@ export async function POST(req: Request) {
     }
   }
 
+  // 3d. Commit uploaded images under public/blog/images/… — one commit per
+  //     file so the PR diff stays readable. Hard-validated paths only.
+  const imagesCommitted: string[] = [];
+  for (const img of payload.newImages ?? []) {
+    if (!IMAGE_PATH_RE.test(img.path) || img.path.includes('..')) {
+      return NextResponse.json(
+        { error: `Invalid image path: ${img.path}` },
+        { status: 400 }
+      );
+    }
+    if (!img.contentBase64 || img.contentBase64.length > MAX_IMAGE_BASE64) {
+      return NextResponse.json(
+        { error: `Image too large or empty: ${img.path}` },
+        { status: 400 }
+      );
+    }
+    const filePath = `public${img.path}`;
+    try {
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: filePath,
+        branch,
+        message: `feat(blog/images): add ${img.path.split('/').pop()}`,
+        content: img.contentBase64,
+      });
+      imagesCommitted.push(img.path);
+    } catch (e) {
+      return NextResponse.json(
+        { error: `Could not commit image ${img.path}: ${(e as Error).message}` },
+        { status: 500 }
+      );
+    }
+  }
+
   // 4. Open the PR. Source-locale title is the PR title; the body lists the
   //    locales we wrote so reviewers see at a glance what's included.
   const sourceFm = perLocale[sourceLocale]!.frontmatter;
@@ -400,6 +444,13 @@ export async function POST(req: Request) {
           '',
           '**Edited categories:**',
           ...categoriesUpdated.map((p) => `- \`${p}\``),
+        ]
+      : []),
+    ...(imagesCommitted.length
+      ? [
+          '',
+          '**Uploaded images:**',
+          ...imagesCommitted.map((p) => `- \`public${p}\``),
         ]
       : []),
     '',

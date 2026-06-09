@@ -3,6 +3,7 @@ import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 import { eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
+import { getPendingImage } from '../_lib/pending-images';
 
 /**
  * Visual + selection layer for inline images.
@@ -94,6 +95,11 @@ function buildCaptionDOM(caption: string, align: ImageAlign): HTMLElement {
 function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
   const decorations: Decoration[] = [];
   for (const s of spans) {
+    // Freshly-uploaded images don't exist on disk yet — the bytes are staged
+    // in the pending-images store until Save commits them. Point the
+    // rendered <img> at the staging blob so the author sees the picture
+    // instead of a broken thumbnail. The doc keeps the final public path.
+    const staged = getPendingImage(s.src);
     decorations.push(
       Decoration.node(s.pos, s.pos + 1, {
         class: [
@@ -105,6 +111,7 @@ function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
           .join(' '),
         'data-align': s.parsed.align,
         ...(s.parsed.size ? { 'data-size': s.parsed.size } : {}),
+        ...(staged ? { src: staged.objectUrl } : {}),
       })
     );
     // Caption widget — sits right after the image so it floats with the same

@@ -9,9 +9,11 @@ import {
   LayoutGrid,
   List as ListIcon,
   Search,
+  Upload,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { addPendingImage } from '../_lib/pending-images';
 
 interface BlogImage {
   src: string;
@@ -207,6 +209,34 @@ function ImagePickerBody({
               <ListIcon className="h-3.5 w-3.5" />
             </ViewBtn>
           </div>
+          <label
+            title="Upload an image — committed with the post's PR"
+            className="hover:bg-accent/50 text-primary border-border/60 inline-flex h-7 cursor-pointer items-center gap-1 rounded-md border px-2 text-[10px] font-semibold transition-colors"
+          >
+            <Upload className="h-3 w-3" />
+            Upload
+            <input
+              type="file"
+              accept="image/png,image/jpeg,image/webp,image/gif,image/avif,image/svg+xml"
+              className="hidden"
+              onChange={async (e) => {
+                const file = e.target.files?.[0];
+                e.target.value = '';
+                if (!file) return;
+                try {
+                  const staged = await addPendingImage(file);
+                  onPick({
+                    src: staged.path,
+                    alt: staged.name.replace(/\.[a-z0-9]+$/i, ''),
+                    caption: '',
+                  });
+                  onClose();
+                } catch (err) {
+                  window.alert((err as Error).message);
+                }
+              }}
+            />
+          </label>
           <button
             type="button"
             onClick={onClose}

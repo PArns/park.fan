@@ -30,6 +30,7 @@ import { ImagePicker, type ImagePickResult } from './image-picker';
 import { ParkRidePicker, type PickerMode, type PickerResult } from './park-ride-picker';
 import { getWidget } from '../_lib/widgets';
 import { reanchorPos } from '../_lib/chip-utils';
+import { addPendingImage } from '../_lib/pending-images';
 
 interface EditorCanvasProps {
   initialMarkdown: string;
@@ -127,6 +128,26 @@ export function EditorCanvas({
 
   const onToolbarEmit = (action: ToolbarAction) => emit(action);
 
+  /** Stage pasted / dropped image files and insert their markdown at `pos`
+   *  (or the current caret). The bytes ride along in the pending-images
+   *  store until Save ships them as commits in the PR. */
+  const insertUploadedImages = async (files: File[], pos?: number) => {
+    const ed = editorRef.current;
+    if (!ed) return;
+    for (const file of files) {
+      try {
+        const staged = await addPendingImage(file);
+        const md = `\n\n![${staged.name.replace(/\.[a-z0-9]+$/i, '')}](${staged.path})\n\n`;
+        const chain = ed.chain().focus();
+        if (pos !== undefined) chain.setTextSelection(Math.min(pos, ed.state.doc.content.size));
+        chain.insertContent(md).run();
+        pos = undefined; // subsequent files insert after the previous one
+      } catch (err) {
+        window.alert((err as Error).message);
+      }
+    }
+  };
+
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -204,6 +225,29 @@ export function EditorCanvas({
           event.preventDefault();
         }
         return false;
+      },
+      // Paste / drop image files → stage them for the save-PR and insert
+      // their markdown immediately. Non-image clipboard content falls
+      // through to tiptap-markdown's regular paste handling.
+      handlePaste(_view, event) {
+        const files = Array.from(event.clipboardData?.files ?? []).filter((f) =>
+          f.type.startsWith('image/')
+        );
+        if (!files.length) return false;
+        event.preventDefault();
+        void insertUploadedImages(files);
+        return true;
+      },
+      handleDrop(view, event, _slice, moved) {
+        if (moved) return false; // internal drag — let ProseMirror move it
+        const files = Array.from(event.dataTransfer?.files ?? []).filter((f) =>
+          f.type.startsWith('image/')
+        );
+        if (!files.length) return false;
+        event.preventDefault();
+        const coords = view.posAtCoords({ left: event.clientX, top: event.clientY });
+        void insertUploadedImages(files, coords?.pos);
+        return true;
       },
     },
     onUpdate: ({ editor: e }) => {

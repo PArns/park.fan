@@ -24,6 +24,7 @@ import type { Editor } from '@tiptap/core';
 import { cn } from '@/lib/utils';
 import { getWidget, widgetLabel } from '../_lib/widgets';
 import { reanchorPos } from '../_lib/chip-utils';
+import { getPendingImage } from '../_lib/pending-images';
 
 export type EditorSelection =
   | {
@@ -909,7 +910,7 @@ function ImageForm({
         <div className="border-border/60 bg-muted/30 relative h-32 w-full overflow-hidden rounded-lg border">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={selection.src}
+            src={getPendingImage(selection.src)?.objectUrl ?? selection.src}
             alt={alt}
             className="absolute inset-0 h-full w-full object-cover"
           />

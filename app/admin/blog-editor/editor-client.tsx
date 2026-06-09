@@ -23,6 +23,7 @@ import {
   saveDraftSnapshot,
   type DraftSnapshot,
 } from './_lib/draft-autosave';
+import { clearPendingImages, listPendingImages } from './_lib/pending-images';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
@@ -271,6 +272,12 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         body: d.body,
       };
     }
+    // Ship any staged uploads that are actually referenced from a draft body
+    // — pasted-then-deleted images stay behind and never bloat the PR.
+    const bodies = Object.values(perLocale).map((d) => d.body);
+    const newImages = listPendingImages()
+      .filter((img) => bodies.some((b) => b.includes(img.path)))
+      .map((img) => ({ path: img.path, contentBase64: img.base64 }));
     const res = await fetch('/api/admin/blog-editor/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -287,6 +294,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         ...(newCategories.length ? { newCategories } : {}),
         ...(editedAuthors.length ? { editedAuthors } : {}),
         ...(editedCategories.length ? { editedCategories } : {}),
+        ...(newImages.length ? { newImages } : {}),
       }),
     });
     if (!res.ok) {
@@ -294,9 +302,10 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
       return { ok: false, message: `${res.status}: ${text || res.statusText}` };
     }
     const data = (await res.json()) as { url: string; branch: string; committed: string[] };
-    // The PR is the durable copy now — the crash-protection snapshot has
-    // served its purpose.
+    // The PR is the durable copy now — the crash-protection snapshot and the
+    // staged uploads have served their purpose.
     clearDraftSnapshot();
+    clearPendingImages();
     return {
       ok: true,
       url: data.url,
