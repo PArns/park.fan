@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import {
   ExternalLink,
@@ -67,6 +67,14 @@ function ImagePickerBody({
   const [caption, setCaption] = useState('');
   const [stagedSrc, setStagedSrc] = useState<string | null>(null);
   const [view, setView] = useState<View>('grid');
+  const searchRef = useRef<HTMLInputElement>(null);
+  // Focus the search box without `autoFocus` — the default-focus behaviour
+  // (focus on mount) calls .focus() WITHOUT `preventScroll`, which on some
+  // pages yanks the document up to bring the (already-visible, fixed-
+  // positioned) input "into view". preventScroll keeps the viewport pinned.
+  useEffect(() => {
+    searchRef.current?.focus({ preventScroll: true });
+  }, []);
   // Render in chunks so the modal stays cheap even with thousands of images.
   // Search bypasses this — typed queries already filter the list down hard.
   const STEP = 60;
@@ -173,12 +181,12 @@ function ImagePickerBody({
         <div className="border-border/60 flex items-center gap-2 border-b px-3 py-2">
           <Search className="text-muted-foreground h-4 w-4 shrink-0" />
           <input
+            ref={searchRef}
             value={q}
             onChange={(e) => setQ(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Escape') onClose();
             }}
-            autoFocus
             placeholder="Search images under /blog/images…"
             className="text-foreground flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground/50"
           />

@@ -82,7 +82,10 @@ export function ParkRidePicker({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (mode) inputRef.current?.focus();
+    // preventScroll keeps the document pinned — the default `.focus()` was
+    // yanking the viewport to the top when the picker mounted near the
+    // bottom of a long page.
+    if (mode) inputRef.current?.focus({ preventScroll: true });
   }, [mode]);
 
   useEffect(() => {

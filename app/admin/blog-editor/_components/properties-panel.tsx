@@ -820,26 +820,18 @@ function ImageForm({
       .run();
     window.dispatchEvent(new CustomEvent('parkfan-clear-selection'));
   };
-  const pickImage = () => {
-    // Re-resolve the image's live position right before opening — the rect we
-    // captured at click time goes stale as soon as the author scrolls or
-    // adds/removes content above. Walking the canvas for the matching <img>
-    // gives the picker a fresh anchor every time.
-    const liveRect = ((): typeof selection.rect | undefined => {
-      const canvas = document.querySelector('.tiptap-canvas');
-      if (!canvas) return selection.rect;
-      const imgs = canvas.querySelectorAll<HTMLImageElement>('img');
-      for (const img of imgs) {
-        if (img.getAttribute('src') === selection.src) {
-          const r = img.getBoundingClientRect();
-          return { top: r.top, bottom: r.bottom, left: r.left, right: r.right };
-        }
-      }
-      return selection.rect;
-    })();
+  const pickImage = (ev: React.MouseEvent<HTMLButtonElement>) => {
+    // Anchor to the Pick button itself — the panel is sticky so the button
+    // is always on-screen, whereas the underlying <img> can be scrolled
+    // away. The previous image-rect anchoring sent the picker off-viewport
+    // whenever the author scrolled before clicking Pick.
+    const r = ev.currentTarget.getBoundingClientRect();
     window.dispatchEvent(
       new CustomEvent('parkfan-image-pick-request', {
-        detail: { pos: selection.pos, rect: liveRect },
+        detail: {
+          pos: selection.pos,
+          rect: { top: r.top, bottom: r.bottom, left: r.left, right: r.right },
+        },
       })
     );
   };

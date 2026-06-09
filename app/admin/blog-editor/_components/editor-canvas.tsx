@@ -358,7 +358,7 @@ export function EditorCanvas({
         aria-hidden="true"
         className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
       />
-      <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8 backdrop-blur-md">
+      <div className="border-border/60 bg-background/60 relative rounded-2xl border p-8">
         <FixedToolbar editor={editor} onEmit={onToolbarEmit} />
         <EditorBubbleMenu editor={editor} />
         <EditorContent editor={editor} />
