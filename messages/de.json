@@ -513,7 +513,7 @@
       "subtitle": "Basierend auf KI-Crowd-Prognosen für die nächsten 3 Monate",
       "quietestDaysTitle": "Ruhigste Wochentage",
       "upcomingQuietTitle": "Kommende ruhige Tage",
-      "schoolHolidayWarning": "Schulferien sind am {park} typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
+      "schoolHolidayWarning": "Für {park} gilt: In den Schulferien ist es typischerweise deutlich voller — prüfe den Crowd-Kalender vor der Buchung.",
       "noUpcomingQuiet": "In den nächsten 30 Tagen keine besonders ruhigen Tage.",
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
