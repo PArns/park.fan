@@ -31,8 +31,7 @@ import type {
 } from '@/lib/api/types';
 
 /** Seasonal entities count as in season unless the API explicitly says otherwise. */
-const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) =>
-  x.isCurrentlyInSeason !== false;
+const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) => x.isCurrentlyInSeason !== false;
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
@@ -209,9 +208,7 @@ export function TabsWithHash({
   const headliners = useMemo(() => {
     const all = Object.values(attractionsByLand)
       .flat()
-      .filter(
-        (a) => a.isHeadliner && (showOffSeasonAttractions || isInSeason(a))
-      );
+      .filter((a) => a.isHeadliner && (showOffSeasonAttractions || isInSeason(a)));
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
     return all

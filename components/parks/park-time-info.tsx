@@ -237,9 +237,7 @@ export function ParkTimeInfo({
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />
           {isUnknown ? t('schedule') : t('todaySchedule')}
-          {showStatusBadge && status && (
-            <ParkStatusBadge status={status} className="ml-auto" />
-          )}
+          {showStatusBadge && status && <ParkStatusBadge status={status} className="ml-auto" />}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
