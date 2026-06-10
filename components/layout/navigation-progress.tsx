@@ -8,10 +8,10 @@ import { usePathname, useSearchParams } from 'next/navigation';
  * acknowledged instantly (the way GitHub/YouTube do it), even while the next route is still
  * being fetched/streamed.
  *
- * No dependency: it's driven by CSS width/opacity transitions. It starts on a same-origin link
- * click or a `history.pushState` (router navigation), trickles toward ~90 %, and snaps to 100 %
- * (then fades) when the new route's `pathname`/`searchParams` land. A safety timeout finishes it
- * if a navigation never resolves to a route change.
+ * No dependency: it's driven by CSS transform/opacity transitions. It starts on a same-origin link
+ * click or a `history.pushState`/`replaceState` (router navigation), trickles toward ~90 %, runs
+ * to 100 % and then fades when the new route's `pathname`/`searchParams` land. A safety timeout
+ * finishes it if a navigation never resolves to a route change.
  */
 export function NavigationProgress() {
   const pathname = usePathname();
@@ -39,11 +39,15 @@ export function NavigationProgress() {
     active.current = false;
     clearLoadTimers();
     setProgress(100);
-    setFading(true);
+    // Let the bar visibly reach 100 % before the fade starts — fading immediately
+    // would hide it mid-run and make it look like it never completed.
     fadeOut.current = setTimeout(() => {
-      setProgress(0);
-      setFading(false);
-    }, 240);
+      setFading(true);
+      fadeOut.current = setTimeout(() => {
+        setProgress(0);
+        setFading(false);
+      }, 220);
+    }, 160);
   }, []);
   finishRef.current = finish;
 
@@ -93,28 +97,41 @@ export function NavigationProgress() {
       start();
     };
 
+    // Start the bar when the destination differs from the current route.
+    const startIfRouteChanges = (dest: string | URL | null | undefined) => {
+      if (dest == null) return;
+      try {
+        const url = new URL(dest.toString(), window.location.href);
+        if (url.pathname !== window.location.pathname || url.search !== window.location.search) {
+          start();
+        }
+      } catch {
+        /* ignore malformed URLs */
+      }
+    };
+
+    // router.push uses pushState, router.replace (e.g. the locale switcher) uses replaceState.
     const originalPushState = window.history.pushState;
     window.history.pushState = function patchedPushState(
       this: History,
       ...args: Parameters<History['pushState']>
     ) {
-      const dest = args[2];
-      if (dest != null) {
-        try {
-          const url = new URL(dest.toString(), window.location.href);
-          if (url.pathname !== window.location.pathname || url.search !== window.location.search) {
-            start();
-          }
-        } catch {
-          /* ignore malformed URLs */
-        }
-      }
+      startIfRouteChanges(args[2]);
       return originalPushState.apply(this, args);
+    };
+    const originalReplaceState = window.history.replaceState;
+    window.history.replaceState = function patchedReplaceState(
+      this: History,
+      ...args: Parameters<History['replaceState']>
+    ) {
+      startIfRouteChanges(args[2]);
+      return originalReplaceState.apply(this, args);
     };
 
     document.addEventListener('click', onClick, true);
     return () => {
       window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
       document.removeEventListener('click', onClick, true);
     };
   }, [start]);
@@ -140,13 +157,14 @@ export function NavigationProgress() {
   if (progress === 0 && !fading) return null;
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-0.5">
+    <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 z-[9999] h-[3px]">
       <div
-        className="bg-park-primary h-full origin-left transition-[width,opacity] ease-out"
+        className="bg-primary h-full w-full origin-left transition-[transform,opacity] ease-out"
         style={{
-          width: `${progress}%`,
+          transform: `scaleX(${progress / 100})`,
           opacity: fading ? 0 : 1,
-          transitionDuration: fading ? '220ms' : '300ms',
+          // Finish fast so the run to 100 % completes before the fade kicks in.
+          transitionDuration: fading ? '220ms' : progress === 100 ? '150ms' : '300ms',
         }}
       />
     </div>
