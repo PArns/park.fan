@@ -13,7 +13,7 @@ export function BlogReadingProgress() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const onScroll = () => {
+    const measure = () => {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const end = document.getElementById('blog-progress-end');
       let max: number;
@@ -27,9 +27,22 @@ export function BlogReadingProgress() {
       }
       setProgress(max > 0 ? Math.min(100, Math.max(0, (scrollTop / max) * 100)) : 0);
     };
+
+    // rAF-throttle: scroll fires more often than once per frame and measure()
+    // forces layout via getBoundingClientRect.
+    let frame: number | null = null;
+    const onScroll = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        measure();
+      });
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     return () => {
+      if (frame !== null) cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };

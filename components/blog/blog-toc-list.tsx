@@ -22,7 +22,7 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   useEffect(() => {
     const ids = entries.map((e) => e.id);
     const offset = 120;
-    const onScroll = () => {
+    const measure = () => {
       let current: string | null = null;
       for (const id of ids) {
         const el = document.getElementById(id);
@@ -32,9 +32,22 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
       }
       setActiveId(current);
     };
+
+    // rAF-throttle: measure() queries layout for every heading, so cap it at
+    // one pass per frame instead of every scroll event.
+    let frame: number | null = null;
+    const onScroll = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        measure();
+      });
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll, { passive: true });
     return () => {
+      if (frame !== null) cancelAnimationFrame(frame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };

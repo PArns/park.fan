@@ -10,7 +10,7 @@ import {
   Palette,
   Trash2,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { TABLE_THEMES, type TableTheme } from '../_extensions/themed-table';
 
@@ -56,9 +56,16 @@ export function TableMenu({ editor }: TableMenuProps) {
   // floating-ui sync) dispatch meta-only transactions during render, which
   // turns an unconditional tick into an infinite update loop.
   const [, tick] = useState(0);
+  const wasInTable = useRef(false);
   useEffect(() => {
     if (!editor) return;
-    const onChange = () => tick((n) => n + 1);
+    // Only tick while the selection is in a table (or just left one, so the
+    // menu hides) — typing anywhere else in the document stays render-free.
+    const onChange = () => {
+      const inTable = editor.isActive('table');
+      if (inTable || wasInTable.current) tick((n) => n + 1);
+      wasInTable.current = inTable;
+    };
     editor.on('selectionUpdate', onChange);
     editor.on('update', onChange);
     return () => {
