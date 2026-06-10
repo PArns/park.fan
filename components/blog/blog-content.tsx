@@ -35,7 +35,8 @@ import {
 } from '@/lib/utils/park-assets';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
-import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import { BlogParkLink } from './blog-park-link';
 import { BlogAttractionLink } from './blog-attraction-link';
