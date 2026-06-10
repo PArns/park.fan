@@ -5,7 +5,7 @@ date: '2026-05-08'
 author:
   name: Patrick Arns
   bio: 'Founder of park.fan. Coaster nerd, data person, and forever ride-line optimizer.'
-mode: published
+mode: draft
 excerpt: >-
   A year of wait-time data later, we can finally answer the real question
   about Voltron Nevera: did it become Europa-Park's new headliner, or did

@@ -4,7 +4,7 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-05-20'
 updatedAt: '2026-05-22'
 author: patrick
-mode: published
+mode: draft
 featured: true
 excerpt: >-
   We're launching the park.fan blog. Honest trip reports, data deep-dives and

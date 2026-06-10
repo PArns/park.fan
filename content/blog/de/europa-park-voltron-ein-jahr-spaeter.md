@@ -5,7 +5,7 @@ date: '2026-05-08'
 author:
   name: Patrick Arns
   bio: 'Gründer von park.fan. Achterbahn-Nerd, Datenmensch und ewiger Warteschlangen-Optimierer.'
-mode: published
+mode: draft
 excerpt: >-
   Ein Jahr Wartezeit-Daten später können wir die eine wirkliche Frage zu
   Voltron Nevera endlich beantworten: Wurde sie der neue Headliner — oder

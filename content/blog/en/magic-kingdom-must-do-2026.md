@@ -6,7 +6,7 @@ updatedAt: '2026-05-18'
 author:
   name: Patrick Arns
   bio: 'Founder of park.fan. Coaster nerd, data person, and forever ride-line optimizer.'
-mode: published
+mode: draft
 excerpt: >-
   After three full days at Walt Disney World last month, here is the honest
   short list — six attractions at the Magic Kingdom that earn their wait
