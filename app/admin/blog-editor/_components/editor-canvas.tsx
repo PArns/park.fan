@@ -439,7 +439,10 @@ export function EditorCanvas({
         className="from-primary/20 via-primary/0 to-primary/10 pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br opacity-60 blur-sm"
       />
       <div
-        className="border-border/60 bg-background/60 relative rounded-2xl border p-8"
+        // min-h matches the PropertiesPanel's sticky height
+        // (h-[calc(100vh-6rem)]) so an empty/new editor and the panel end at
+        // the same line; long content still grows past it naturally.
+        className="border-border/60 bg-background/60 relative flex min-h-[calc(100vh-6rem)] flex-col rounded-2xl border p-8"
         // Catch image drops on the WHOLE canvas card, not just the exact
         // ProseMirror text area — dropping onto the padding / toolbar zone
         // used to make the browser navigate to the file instead of uploading.
@@ -462,7 +465,18 @@ export function EditorCanvas({
         <FixedToolbar editor={editor} onEmit={onToolbarEmit} />
         <EditorBubbleMenu editor={editor} />
         <TableMenu editor={editor} />
-        <EditorContent editor={editor} />
+        {/* flex-1 stretches the editable area to the card's full height so
+            clicking the empty space below short content focuses the editor
+            (clicks inside the prose itself are left to ProseMirror). */}
+        <EditorContent
+          editor={editor}
+          className="flex flex-1 flex-col [&>.tiptap-canvas]:flex-1"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              editorRef.current?.chain().focus('end').run();
+            }
+          }}
+        />
         <ParkRidePicker
           mode={pickerMode}
           anchorRect={parkPickerAnchor ?? undefined}
