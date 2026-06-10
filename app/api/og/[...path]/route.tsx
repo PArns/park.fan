@@ -9,7 +9,7 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale } from '@/i18n/config';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import {
   FlagDE,
   FlagGB,
@@ -123,6 +123,18 @@ function getCrowdLevelColor(level: string): string {
 }
 
 // Helper to get status color
+type OgPageType = 'HOME' | 'GENERIC' | 'CONTINENT' | 'COUNTRY' | 'CITY' | 'PARK' | 'ATTRACTION';
+
+function determineOgPageType(path: string[], isGeneric: boolean): OgPageType {
+  if (path.length === 1) return 'HOME';
+  if (isGeneric) return 'GENERIC';
+  if (path.length === 2) return 'CONTINENT';
+  if (path.length === 3) return 'COUNTRY';
+  if (path.length === 4) return 'CITY';
+  if (path.length >= 6 && path[5]) return 'ATTRACTION';
+  return 'PARK';
+}
+
 function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
     OPERATING: '#059669', // emerald-600
@@ -182,27 +194,16 @@ export async function GET(
     const attractionSlug = path[5];
 
     // Determine type based on path length and content
-    const type =
-      path.length === 1
-        ? 'HOME'
-        : isGeneric
-          ? 'GENERIC'
-          : path.length === 2
-            ? 'CONTINENT'
-            : path.length === 3
-              ? 'COUNTRY'
-              : path.length === 4
-                ? 'CITY'
-                : path.length >= 6 && path[5] // attractionSlug
-                  ? 'ATTRACTION'
-                  : 'PARK';
+    const type = determineOgPageType(path, Boolean(isGeneric));
 
     // Fetch translations
-    const tCommon = await getTranslations({ locale, namespace: 'common' });
-    const tGeo = await getTranslations({ locale, namespace: 'geo' });
-    const tParks = await getTranslations({ locale, namespace: 'parks' });
-    const tAttractions = await getTranslations({ locale, namespace: 'attractions' });
-    const tHomepage = await getTranslations({ locale, namespace: 'homepage' });
+    const [tCommon, tGeo, tParks, tAttractions, tHomepage] = await Promise.all([
+      getTranslations({ locale, namespace: 'common' }),
+      getTranslations({ locale, namespace: 'geo' }),
+      getTranslations({ locale, namespace: 'parks' }),
+      getTranslations({ locale, namespace: 'attractions' }),
+      getTranslations({ locale, namespace: 'homepage' }),
+    ]);
 
     // Dynamic translations for generic pages
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
