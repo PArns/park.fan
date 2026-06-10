@@ -1,5 +1,5 @@
 'use client';
-import { useReducer, useEffect } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
@@ -30,7 +30,6 @@ type TypewriterState = {
   phraseIndex: number;
   phase: TypewriterPhase;
   started: boolean;
-  cursorVisible: boolean;
 };
 
 type TypewriterAction =
@@ -38,15 +37,13 @@ type TypewriterAction =
   | { type: 'type_char'; char: string }
   | { type: 'delete_char' }
   | { type: 'set_phase'; phase: TypewriterPhase }
-  | { type: 'next_phrase'; count: number }
-  | { type: 'toggle_cursor' };
+  | { type: 'next_phrase'; count: number };
 
 const initialState: TypewriterState = {
   displayText: '',
   phraseIndex: 0,
   phase: 'typing',
   started: false,
-  cursorVisible: true,
 };
 
 function typewriterReducer(state: TypewriterState, action: TypewriterAction): TypewriterState {
@@ -66,8 +63,6 @@ function typewriterReducer(state: TypewriterState, action: TypewriterAction): Ty
         phraseIndex: (state.phraseIndex + 1) % action.count,
         phase: 'typing',
       };
-    case 'toggle_cursor':
-      return { ...state, cursorVisible: !state.cursorVisible };
     default:
       return state;
   }
@@ -80,14 +75,14 @@ function useTypewriter(
   pauseDuration = 2000
 ) {
   const [state, dispatch] = useReducer(typewriterReducer, initialState);
-  const { displayText, phraseIndex, phase, started, cursorVisible } = state;
+  const { displayText, phraseIndex, phase, started } = state;
 
   useEffect(() => {
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
 
     // Start only once the page has loaded and the main thread is idle, so the typewriter
-    // (which re-renders the input every ~150ms) never competes with the critical render
+    // (which re-renders the placeholder every ~150ms) never competes with the critical render
     // (LCP / hydration) on slow connections.
     const begin = () => {
       const ric = window.requestIdleCallback;
@@ -110,12 +105,6 @@ function useTypewriter(
       if (timeoutId !== undefined) clearTimeout(timeoutId);
     };
   }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    const id = setInterval(() => dispatch({ type: 'toggle_cursor' }), 530);
-    return () => clearInterval(id);
-  }, [started]);
 
   useEffect(() => {
     if (!started) return;
@@ -161,21 +150,48 @@ function useTypewriter(
     pauseDuration,
   ]);
 
-  if (!started) return null;
+  return { displayText, phase, started };
+}
 
-  const cursor = phase === 'pausing_deleted' ? '' : cursorVisible ? '|' : '';
-  return `${displayText}${cursor}`;
+/**
+ * Leaf component owning the typewriter state, so the frequent typing ticks only
+ * re-render this span — not the whole SearchCommand tree it is passed into.
+ * The cursor blinks via CSS animation instead of a 530ms JS interval.
+ */
+function TypewriterPlaceholder({
+  fallback,
+  textRef,
+}: {
+  fallback: string;
+  textRef: React.MutableRefObject<string>;
+}) {
+  const { displayText, phase, started } = useTypewriter(PLACEHOLDERS);
+
+  textRef.current = started ? displayText : '';
+
+  if (!started) return <>{fallback}</>;
+
+  return (
+    <>
+      {displayText}
+      {phase !== 'pausing_deleted' && (
+        <span aria-hidden className="animate-[typewriter-blink_1.06s_step-end_infinite]">
+          |
+        </span>
+      )}
+    </>
+  );
 }
 
 export function HeroSearchInput({
   placeholder: defaultPlaceholder,
   className,
 }: HeroSearchInputProps) {
-  const typedPlaceholder = useTypewriter(PLACEHOLDERS);
-  const displayPlaceholder = typedPlaceholder || defaultPlaceholder;
+  // Mirrors the currently typed placeholder for analytics without re-rendering this parent.
+  const typedTextRef = useRef('');
 
   const handleClick = () => {
-    trackHeroSearchClicked({ placeholderShown: typedPlaceholder || 'default' });
+    trackHeroSearchClicked({ placeholderShown: typedTextRef.current || 'default' });
   };
 
   return (
@@ -186,7 +202,7 @@ export function HeroSearchInput({
       <SearchCommand
         trigger="input"
         size="lg"
-        placeholder={displayPlaceholder}
+        placeholder={<TypewriterPlaceholder fallback={defaultPlaceholder} textRef={typedTextRef} />}
         autoFocusOnType={true}
         searchOpenSource="hero"
       />

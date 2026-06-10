@@ -72,7 +72,7 @@ function SkeletonItem({ width }: { width: string }) {
 interface SearchCommandProps {
   trigger?: 'button' | 'input' | 'hero';
   label?: string;
-  placeholder?: string;
+  placeholder?: ReactNode;
   isGlobal?: boolean;
   autoFocusOnType?: boolean;
   size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
