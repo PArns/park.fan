@@ -384,6 +384,18 @@ export async function POST(req: Request) {
       );
     }
     const filePath = `public${img.path}`;
+    // Re-uploading a same-named image (e.g. editing a post and replacing a
+    // shot) must overwrite — the contents API needs the existing SHA for
+    // that, otherwise it 422s.
+    let existingImageSha: string | undefined;
+    try {
+      const res = await octokit.repos.getContent({ owner, repo, path: filePath, ref: branch });
+      if (!Array.isArray(res.data) && res.data.type === 'file') {
+        existingImageSha = res.data.sha;
+      }
+    } catch {
+      /* new file */
+    }
     try {
       await octokit.repos.createOrUpdateFileContents({
         owner,
@@ -392,6 +404,7 @@ export async function POST(req: Request) {
         branch,
         message: `feat(blog/images): add ${img.path.split('/').pop()}`,
         content: img.contentBase64,
+        ...(existingImageSha ? { sha: existingImageSha } : {}),
       });
       imagesCommitted.push(img.path);
     } catch (e) {

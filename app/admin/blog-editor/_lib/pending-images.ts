@@ -26,6 +26,19 @@ export interface PendingImage {
 
 const pending = new Map<string, PendingImage>();
 
+/** Folder segment new uploads land in — the post's base slug, kept in sync
+ *  by editor-client. Falls back to `uploads` before a slug exists (brand-new
+ *  draft without a title yet). */
+let uploadFolder = 'uploads';
+
+export function setUploadFolder(slug: string): void {
+  const safe = slug
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  uploadFolder = safe || 'uploads';
+}
+
 const EXT_BY_MIME: Record<string, string> = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
@@ -61,8 +74,14 @@ export async function addPendingImage(file: File): Promise<PendingImage> {
     );
   }
   const ext = EXT_BY_MIME[file.type];
-  const stamp = Date.now().toString(36);
-  const path = `/blog/images/uploads/${stamp}-${sanitizeName(file.name)}.${ext}`;
+  // Uploads live in a per-post folder (/blog/images/<post-slug>/<name>) so
+  // the repo stays organised — same convention the existing posts use. A
+  // numeric suffix dedupes same-named files within the session.
+  const base = sanitizeName(file.name);
+  let path = `/blog/images/${uploadFolder}/${base}.${ext}`;
+  for (let n = 2; pending.has(path); n++) {
+    path = `/blog/images/${uploadFolder}/${base}-${n}.${ext}`;
+  }
   const base64 = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {

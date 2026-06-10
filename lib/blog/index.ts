@@ -77,8 +77,12 @@ export const getPostByTranslationKey = cache(
 
     if (!loadedLocale || !entry) return null;
 
+    // draft → invisible everywhere. hidden → reachable via direct URL but
+    // excluded from every listing surface (listPosts filters it out below,
+    // which also keeps it off the index, category/tag pages, RSS and the
+    // sitemap). published → everywhere.
     const mode = entry.fm.mode ?? 'published';
-    if (mode !== 'published') return null;
+    if (mode === 'draft') return null;
 
     // TODO: reinstate future-date scheduling under Cache Components — reading the
     // clock at render is forbidden, so this needs to thread `getServerToday`
@@ -140,6 +144,8 @@ export const listPosts = cache((requestedLocale: Locale): BlogListItem[] => {
   for (const key of index.keys()) {
     const post = getPostByTranslationKey(key, requestedLocale);
     if (!post) continue;
+    // Hidden posts render via direct URL but never appear in listings.
+    if ((post.frontmatter.mode ?? 'published') === 'hidden') continue;
     items.push({
       slug: post.slug,
       translationKey: post.translationKey,

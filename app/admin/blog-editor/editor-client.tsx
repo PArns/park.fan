@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { FolderOpen, PenLine, Plus } from 'lucide-react';
+import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
 import type { Locale } from '@/i18n/config';
 import { FrontmatterForm } from './_components/frontmatter-form';
 import { EditorCanvas } from './_components/editor-canvas';
@@ -23,7 +23,7 @@ import {
   saveDraftSnapshot,
   type DraftSnapshot,
 } from './_lib/draft-autosave';
-import { clearPendingImages, listPendingImages } from './_lib/pending-images';
+import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/pending-images';
 
 const DEFAULT_SOURCE: Locale = 'en';
 
@@ -37,6 +37,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
   const [translatingTarget, setTranslatingTarget] = useState<Locale | null>(null);
   const [pickerOpen, setPickerOpen] = useState(false);
   const [loadingPost, setLoadingPost] = useState(false);
+  const [deletingPost, setDeletingPost] = useState(false);
   const [view, setView] = useState<'editor' | 'source'>('editor');
   /** Last clicked chip in the editor — drives the right-side PropertiesPanel.
    *  Stays sticky until the next chip is clicked so the author can flip back
@@ -230,6 +231,12 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     const src = drafts[sourceLocale];
     return src?.slug || slugify(src?.fm.title ?? '');
   }, [drafts, sourceLocale]);
+
+  // New uploads land in /blog/images/<post-slug>/ — keep the staging store's
+  // folder in sync with whatever the post is currently called.
+  useEffect(() => {
+    setUploadFolder(baseSlug || editing?.key || 'uploads');
+  }, [baseSlug, editing]);
 
   // Validation: at least the source locale must be filled and slugified.
   const disabledReason = useMemo(() => {
@@ -427,6 +434,47 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     }
   };
 
+  const onDeletePost = async () => {
+    if (!editing) return;
+    const fileList = Object.entries(editing.originalSlugs)
+      .map(([l, sl]) => `  ${l}: content/blog/${l}/${sl}.md`)
+      .join('\n');
+    if (
+      !confirm(
+        `Delete this post? A draft PR will be opened that removes:\n\n${fileList}\n\nNothing is deleted until that PR is merged.`
+      )
+    ) {
+      return;
+    }
+    setDeletingPost(true);
+    try {
+      const res = await fetch('/api/admin/blog-editor/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          key: editing.key,
+          slugs: editing.originalSlugs,
+          title: drafts[sourceLocale]?.fm.title ?? editing.key,
+        }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        alert(`Delete failed: ${res.status} ${text}`);
+        return;
+      }
+      const data = (await res.json()) as { url: string };
+      clearDraftSnapshot();
+      setDrafts({ [sourceLocale]: emptyDraft() });
+      setEditing(null);
+      setActiveLocale(sourceLocale);
+      window.open(data.url, '_blank', 'noopener');
+    } catch (err) {
+      alert(`Delete failed: ${(err as Error).message}`);
+    } finally {
+      setDeletingPost(false);
+    }
+  };
+
   return (
     <div className="container mx-auto max-w-[min(1800px,98vw)] px-4 py-6">
       <header className="mb-6 flex flex-wrap items-center gap-3">
@@ -489,6 +537,22 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             >
               <Plus className="h-3.5 w-3.5" />
               New post
+            </button>
+          )}
+          {editing && (
+            <button
+              type="button"
+              onClick={onDeletePost}
+              disabled={deletingPost}
+              title="Open a draft PR that removes every locale file of this post"
+              className="border-destructive/30 text-destructive hover:border-destructive/60 hover:bg-destructive/10 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition-all disabled:opacity-60"
+            >
+              {deletingPost ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Trash2 className="h-3.5 w-3.5" />
+              )}
+              {deletingPost ? 'Opening PR…' : 'Delete post'}
             </button>
           )}
         </div>
@@ -612,7 +676,13 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             )}
           </div>
         </div>
-        <div className="grid items-start gap-4 lg:grid-cols-[1fr_320px]">
+        <div
+          className={
+            view === 'editor'
+              ? 'grid items-start gap-4 lg:grid-cols-[1fr_320px]'
+              : 'grid items-start gap-4'
+          }
+        >
           <div className="min-w-0">
             {view === 'editor' ? (
               <EditorCanvas
@@ -624,12 +694,16 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
               <MarkdownPreview value={active.body} onChange={onBodyChange} />
             )}
           </div>
-          <PropertiesPanel
-            editor={editor}
-            selection={selection}
-            charCount={active.body.length}
-            onReplaceRef={requestRefReplace}
-          />
+          {/* The inspector edits chips in the visual canvas — pure .md view
+              has nothing to inspect, so give the source editor the width. */}
+          {view === 'editor' && (
+            <PropertiesPanel
+              editor={editor}
+              selection={selection}
+              charCount={active.body.length}
+              onReplaceRef={requestRefReplace}
+            />
+          )}
         </div>
       </div>
 
