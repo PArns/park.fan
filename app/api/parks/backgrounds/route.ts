@@ -18,23 +18,26 @@ function getAllFiles(dirPath: string, arrayOfFiles: string[] = []) {
   return arrayOfFiles;
 }
 
+// The image set is fixed at build time — walk the directory once per process,
+// not on every request.
+let cachedBackgrounds: string[] | null = null;
+
+function scanBackgrounds(): string[] {
+  if (!fs.existsSync(PARKS_IMAGE_DIR)) return [];
+
+  const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
+  return getAllFiles(PARKS_IMAGE_DIR)
+    .filter((filePath) => imageExtensions.includes(path.extname(filePath).toLowerCase()))
+    .map((filePath) => {
+      const relativePath = path.relative(path.join(process.cwd(), 'public'), filePath);
+      return `/${relativePath.replace(/\\/g, '/')}`;
+    });
+}
+
 export async function GET() {
   try {
-    if (!fs.existsSync(PARKS_IMAGE_DIR)) {
-      return NextResponse.json({ backgrounds: [] });
-    }
-
-    const allFiles = getAllFiles(PARKS_IMAGE_DIR);
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.webp'];
-
-    const backgrounds = allFiles
-      .filter((filePath) => imageExtensions.includes(path.extname(filePath).toLowerCase()))
-      .map((filePath) => {
-        const relativePath = path.relative(path.join(process.cwd(), 'public'), filePath);
-        return `/${relativePath.replace(/\\/g, '/')}`;
-      });
-
-    return NextResponse.json({ backgrounds });
+    cachedBackgrounds ??= scanBackgrounds();
+    return NextResponse.json({ backgrounds: cachedBackgrounds });
   } catch (error) {
     console.error('Error scanning park backgrounds:', error);
     return NextResponse.json({ error: 'Failed to scan backgrounds' }, { status: 500 });
