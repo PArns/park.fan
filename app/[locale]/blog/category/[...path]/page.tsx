@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { FolderTree } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts } from '@/lib/blog';
+import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import {
   buildCategoryTree,
   categoryPathBreadcrumbs,
@@ -78,6 +78,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const { locale, path } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
+  if (!hasPublishedPosts()) notFound();
   setRequestLocale(locale);
 
   const segments = parseCategoryPath(path.join('/'));

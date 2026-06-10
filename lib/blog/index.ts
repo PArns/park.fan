@@ -37,6 +37,21 @@ const getRawIndex = cache((): Map<string, Map<Locale, RawEntry>> => {
   return index;
 });
 
+/**
+ * Does the blog have at least one PUBLISHED post (any locale)? Every visible
+ * blog surface — header/footer nav, homepage strips, the blog index, feeds,
+ * sitemap — gates on this so a repo where everything sits in draft/hidden
+ * presents no blog at all.
+ */
+export const hasPublishedPosts = cache((): boolean => {
+  for (const localeMap of getRawIndex().values()) {
+    for (const entry of localeMap.values()) {
+      if ((entry.fm.mode ?? 'published') === 'published') return true;
+    }
+  }
+  return false;
+});
+
 /** Map from translationKey → { locale: slug } — kept for hreflang / canonical lookups. */
 export const getTranslationIndex = cache((): Map<string, Map<Locale, string>> => {
   const out = new Map<string, Map<Locale, string>>();

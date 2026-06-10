@@ -1,5 +1,5 @@
 import type { NextRequest } from 'next/server';
-import { listPosts } from '@/lib/blog';
+import { hasPublishedPosts, listPosts } from '@/lib/blog';
 import { resolveAuthor } from '@/lib/blog/authors';
 import { routing, type Locale } from '@/i18n/routing';
 
@@ -42,6 +42,10 @@ export async function GET(
   }
   const locale = rawLocale as Locale;
 
+  // No published posts → no feed; the whole blog is invisible.
+  if (!hasPublishedPosts()) {
+    return new Response('Not found', { status: 404 });
+  }
   const posts = listPosts(locale).slice(0, 40);
   const channelTitle = locale === 'de' ? 'park.fan Blog' : 'park.fan Blog';
   const channelDescription =

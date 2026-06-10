@@ -136,8 +136,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Attraction pages excluded — crawl budget focused on high-value park pages.
 
   // ── Blog pages ────────────────────────────────────────────────────────────
-  const { listPosts, buildPostAlternates, getTranslationIndex } = await import('@/lib/blog');
+  const { listPosts, buildPostAlternates, getTranslationIndex, hasPublishedPosts } =
+    await import('@/lib/blog');
   const { buildCategoryTree } = await import('@/lib/blog/categories');
+
+  // The blog only exists for the frontend once something is published —
+  // keep the index + posts + category/tag pages out of the sitemap until then.
+  if (!hasPublishedPosts()) return routes;
 
   const blogIndexAlternates = buildAlternates(() => '/blog');
   for (const locale of locales) {

@@ -4,7 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts } from '@/lib/blog';
+import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
@@ -75,6 +75,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 export default async function BlogTagPage({ params }: TagPageProps) {
   const { locale, tag } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
+  if (!hasPublishedPosts()) notFound();
   setRequestLocale(locale);
 
   const canonicalTag = findCanonicalTag(locale as Locale, tag);

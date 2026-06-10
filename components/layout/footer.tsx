@@ -10,9 +10,11 @@ import type { Locale } from '@/i18n/config';
 
 interface FooterProps {
   locale: string;
+  /** Whether the blog has at least one published post. */
+  showBlog?: boolean;
 }
 
-export async function Footer({ locale }: FooterProps) {
+export async function Footer({ locale, showBlog = true }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
@@ -353,15 +355,19 @@ export async function Footer({ locale }: FooterProps) {
             <BuildInfo />
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 md:justify-end">
-            <Link
-              href="/blog"
-              prefetch={false}
-              className="hover:text-foreground text-sm transition-colors"
-              aria-label={t('blog')}
-            >
-              {t('blog')}
-            </Link>
-            <span className="text-muted-foreground/60 flex items-center">•</span>
+            {showBlog && (
+              <>
+                <Link
+                  href="/blog"
+                  prefetch={false}
+                  className="hover:text-foreground text-sm transition-colors"
+                  aria-label={t('blog')}
+                >
+                  {t('blog')}
+                </Link>
+                <span className="text-muted-foreground/60 flex items-center">•</span>
+              </>
+            )}
             <Link
               href="/howto"
               prefetch={false}

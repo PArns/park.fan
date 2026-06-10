@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import { BLOG_POSTS_PER_PAGE, listPosts } from '@/lib/blog';
+import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -72,6 +73,8 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
 }
 
 export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
+  // No published posts → the blog doesn't exist for the frontend.
+  if (!hasPublishedPosts()) notFound();
   const { locale } = await params;
   if (!routing.locales.includes(locale as Locale)) {
     return null;

@@ -8,6 +8,7 @@ import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { hasPublishedPosts } from '@/lib/blog';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
@@ -117,6 +118,8 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   // Get messages for the current locale
   const messages = await getMessages();
+  // Blog surfaces hide entirely while no post is published.
+  const showBlog = hasPublishedPosts();
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading
@@ -185,13 +188,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               </Suspense>
               <div className="flex min-h-screen flex-col">
                 <Suspense fallback={<div className="h-14" />}>
-                  <Header />
+                  <Header showBlog={showBlog} />
                 </Suspense>
                 <main className="flex-1">{children}</main>
                 {/* Footer renders next-intl links (dynamic under Cache Components) — stream it
                     as a below-the-fold dynamic hole so pages keep a static, cacheable shell. */}
                 <Suspense fallback={null}>
-                  <Footer locale={locale} />
+                  <Footer locale={locale} showBlog={showBlog} />
                 </Suspense>
               </div>
             </NextIntlClientProvider>
