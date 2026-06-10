@@ -36,13 +36,15 @@ export interface FetchOptions extends RequestInit {
  */
 export const API_MAINTENANCE_DIGEST = 'API_MAINTENANCE_1033';
 
+const CLOUDFLARE_TUNNEL_ERROR_RE = /(error[\s_]*1033|error code:\s*1033)/i;
+
 /**
  * Detects a Cloudflare "Argo Tunnel error" (error code 1033), which is served as
  * an HTML page (usually HTTP 530) when the API origin tunnel is unreachable.
  */
 function isCloudflareTunnelDown(body: string): boolean {
   if (!body) return false;
-  return /(error[\s_]*1033|error code:\s*1033)/i.test(body);
+  return CLOUDFLARE_TUNNEL_ERROR_RE.test(body);
 }
 
 export class ApiError extends Error {

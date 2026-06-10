@@ -167,7 +167,9 @@ function TypewriterPlaceholder({
 }) {
   const { displayText, phase, started } = useTypewriter(PLACEHOLDERS);
 
-  textRef.current = started ? displayText : '';
+  useEffect(() => {
+    textRef.current = started ? displayText : '';
+  }, [textRef, started, displayText]);
 
   if (!started) return <>{fallback}</>;
 

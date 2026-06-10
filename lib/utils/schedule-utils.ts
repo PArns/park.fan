@@ -3,6 +3,14 @@ import type { ScheduleSummary } from '@/lib/api/types';
 
 export type { ScheduleSummary };
 
+/** Splits a millisecond duration into full hours and remaining minutes. */
+function diffToHoursMinutes(diffMs: number): { hours: number; minutes: number } {
+  return {
+    hours: Math.floor(diffMs / (1000 * 60 * 60)),
+    minutes: Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)),
+  };
+}
+
 /**
  * Computes a human-readable schedule message for a park card.
  * Shared between ParkCard and ParkCardNearby.
@@ -43,8 +51,7 @@ export function getScheduleMessage(
       const diff = closing.getTime() - now.getTime();
       if (diff <= 0) return null;
 
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const { hours, minutes } = diffToHoursMinutes(diff);
 
       if (hours > 0) {
         return {
@@ -61,8 +68,7 @@ export function getScheduleMessage(
         const diff = opening.getTime() - now.getTime();
 
         if (diff > 0) {
-          const hours = Math.floor(diff / (1000 * 60 * 60));
-          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const { hours, minutes } = diffToHoursMinutes(diff);
 
           if (hours < 24) {
             if (timezone) {
@@ -117,8 +123,7 @@ export function getScheduleMessage(
           const totalWeeks = totalDays / 7;
 
           if (totalHours < 24) {
-            const hours = Math.floor(totalHours);
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const { hours, minutes } = diffToHoursMinutes(diff);
 
             if (timezone) {
               const openingTimeFormatted = nextOpening.toLocaleTimeString(locale, {

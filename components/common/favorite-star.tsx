@@ -33,11 +33,10 @@ export function FavoriteStar({
   const [isFav, setIsFav] = useState(false);
   const t = useTranslations('favorites');
 
-  // Initialize state from cookies
+  // Initialize state from cookies (effect only, so SSR/hydration render the default)
   useEffect(() => {
-    setTimeout(() => {
-      setIsFav(isFavorite(type, id));
-    }, 0);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsFav(isFavorite(type, id));
   }, [type, id]);
 
   // Listen for favorites-changed events
