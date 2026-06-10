@@ -79,18 +79,20 @@ function useTypewriter(
 
   useEffect(() => {
     let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let delayId: ReturnType<typeof setTimeout> | undefined;
 
-    // Start only once the page has loaded and the main thread is idle, so the typewriter
-    // (which re-renders the placeholder every ~150ms) never competes with the critical render
-    // (LCP / hydration) on slow connections.
+    // Start 2s after the page has loaded (and the main thread is idle), so the
+    // typewriter (which re-renders the placeholder every ~150ms) never competes
+    // with the critical render (LCP / hydration) on slow connections.
     const begin = () => {
-      const ric = window.requestIdleCallback;
-      if (ric) {
-        idleId = ric(() => dispatch({ type: 'start' }), { timeout: 3000 });
-      } else {
-        timeoutId = setTimeout(() => dispatch({ type: 'start' }), 1500);
-      }
+      delayId = setTimeout(() => {
+        const ric = window.requestIdleCallback;
+        if (ric) {
+          idleId = ric(() => dispatch({ type: 'start' }), { timeout: 1000 });
+        } else {
+          dispatch({ type: 'start' });
+        }
+      }, 2000);
     };
 
     if (document.readyState === 'complete') {
@@ -102,7 +104,7 @@ function useTypewriter(
     return () => {
       window.removeEventListener('load', begin);
       if (idleId !== undefined) window.cancelIdleCallback?.(idleId);
-      if (timeoutId !== undefined) clearTimeout(timeoutId);
+      if (delayId !== undefined) clearTimeout(delayId);
     };
   }, []);
 
@@ -173,10 +175,16 @@ function TypewriterPlaceholder({
 
   if (!started) return <>{fallback}</>;
 
+  const showCursor = phase !== 'pausing_deleted';
+
+  // Between phrases (text deleted, cursor hidden) show the static placeholder
+  // instead of an empty field — matches the old `typedText || fallback` behavior.
+  if (!displayText && !showCursor) return <>{fallback}</>;
+
   return (
     <>
       {displayText}
-      {phase !== 'pausing_deleted' && (
+      {showCursor && (
         <span aria-hidden className="animate-[typewriter-blink_1.06s_step-end_infinite]">
           |
         </span>
