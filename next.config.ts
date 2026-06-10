@@ -231,6 +231,47 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Live park poll (use-live-park-data, every visitor every 5 min). The backend already
+        // caches this 5 min (Redis + CDN), so data can never be fresher than that — a 60s shared
+        // CDN window adds no real staleness but collapses all concurrent visitors of a park onto
+        // a single function invocation (fetch + lean transform + re-serialize of the full payload).
+        source: '/api/parks/:continent/:country/:city/:park',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=240' },
+        ],
+      },
+      {
+        // Homepage live stats (ticker / realtime / geo-live), polled by every homepage visitor
+        // every 5 min — param-less shared data, same collapse rationale as discovery above.
+        source: '/api/analytics/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
+        ],
+      },
+      {
+        // Search results are query-keyed and the backend caches them 60s — a matching CDN window
+        // collapses popular queries without changing freshness.
+        source: '/api/search',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=60, stale-while-revalidate=120' },
+        ],
+      },
+      {
+        // Glossary search runs over build-time data — responses are immutable until the next
+        // deploy (which purges the CDN), so cache them hard.
+        source: '/api/glossary-search',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=86400' },
+        ],
+      },
+      {
+        // Background image list is a filesystem walk over build-time assets — immutable per deploy.
+        source: '/api/parks/backgrounds',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=86400' },
+        ],
+      },
+      {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },

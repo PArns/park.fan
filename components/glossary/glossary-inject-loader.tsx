@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
-import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import { GlossaryInjectProvider } from './glossary-inject-context';

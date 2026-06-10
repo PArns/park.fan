@@ -3,22 +3,12 @@ import type { Locale } from '@/i18n/config';
 import { GLOSSARY_TERMS } from './data';
 import type { GlossaryTerm, GlossaryTermTranslation } from './types';
 
-/** Locale → canonical glossary URL segment (for link generation). */
-export const GLOSSARY_SEGMENTS: Record<Locale, string> = {
-  en: 'glossary',
-  de: 'glossar',
-  fr: 'glossaire',
-  it: 'glossario',
-  nl: 'woordenboek',
-  es: 'glosario',
-};
-
 async function loadTranslations(locale: Locale): Promise<GlossaryTermTranslation[]> {
   const mod = await import(`@/content/glossary/${locale}`);
   return (mod.default ?? mod) as GlossaryTermTranslation[];
 }
 
-export const getGlossaryTerms = cache(async (locale: Locale): Promise<GlossaryTerm[]> => {
+async function buildGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
   const translations = await loadTranslations(locale);
   const translationMap = new Map(translations.map((t) => [t.id, t]));
 
@@ -38,7 +28,20 @@ export const getGlossaryTerms = cache(async (locale: Locale): Promise<GlossaryTe
       },
     ];
   });
-});
+}
+
+// Glossary data is fixed at build time, so memoize per process instead of rebuilding the
+// 219-term array (+ translation map) on every request (glossary pages, search route, sitemap).
+const termsByLocale = new Map<Locale, Promise<GlossaryTerm[]>>();
+
+export function getGlossaryTerms(locale: Locale): Promise<GlossaryTerm[]> {
+  let terms = termsByLocale.get(locale);
+  if (!terms) {
+    terms = buildGlossaryTerms(locale);
+    termsByLocale.set(locale, terms);
+  }
+  return terms;
+}
 
 export const getTermBySlug = cache(
   async (locale: Locale, slug: string): Promise<GlossaryTerm | null> => {

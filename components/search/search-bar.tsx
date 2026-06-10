@@ -31,6 +31,8 @@ import { stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import type { Locale } from '@/i18n/config';
 import {
   trackSearchOpened,
   trackSearchResultClicked,
@@ -70,7 +72,7 @@ function SkeletonItem({ width }: { width: string }) {
 interface SearchCommandProps {
   trigger?: 'button' | 'input' | 'hero';
   label?: string;
-  placeholder?: string;
+  placeholder?: ReactNode;
   isGlobal?: boolean;
   autoFocusOnType?: boolean;
   size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
@@ -315,15 +317,7 @@ export function SearchCommand({
       );
     } else if (result.type === 'glossary') {
       // Navigate to glossary term page — next-intl router adds locale prefix automatically
-      const glossarySegments: Record<string, string> = {
-        en: 'glossary',
-        de: 'glossar',
-        fr: 'glossaire',
-        it: 'glossario',
-        nl: 'woordenlijst',
-        es: 'glosario',
-      };
-      const seg = glossarySegments[locale] ?? 'glossary';
+      const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
       router.push(`/${seg}/${result.slug}` as '/parks/europe');
     } else if (result.parentPark && result.parentPark.url) {
       // Fallback for attractions/shows/restaurants without explicit URL
@@ -639,15 +633,7 @@ export function SearchCommand({
                 heading={tSearch('headings.glossary', { count: glossaryData.results.length })}
               >
                 {glossaryData.results.map((item) => {
-                  const glossarySegments: Record<string, string> = {
-                    en: 'glossary',
-                    de: 'glossar',
-                    fr: 'glossaire',
-                    it: 'glossario',
-                    nl: 'woordenlijst',
-                    es: 'glosario',
-                  };
-                  const seg = glossarySegments[locale] ?? 'glossary';
+                  const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
                   return (
                     <CommandItem
                       key={item.id}
@@ -715,15 +701,7 @@ export function SearchCommand({
                 });
 
                 if (glossaryData && glossaryData.results.length > 0) {
-                  const glossarySegments: Record<string, string> = {
-                    en: 'glossary',
-                    de: 'glossar',
-                    fr: 'glossaire',
-                    it: 'glossario',
-                    nl: 'woordenlijst',
-                    es: 'glosario',
-                  };
-                  const seg = glossarySegments[locale] ?? 'glossary';
+                  const seg = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
                   // Glossary results found by API (which searches English names + aliases)
                   // should rank higher than substring matches in other categories
                   const glossaryBestScore = 40;

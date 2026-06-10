@@ -23,7 +23,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { AdminProvider, SESSION_KEY, useAdmin } from '../_lib/admin-context';
+import { ADMIN_PASS_HEADER, AdminProvider, SESSION_KEY, useAdmin } from '../_lib/admin-context';
 
 interface NavItem {
   href: string;
@@ -252,7 +252,9 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/admin/system-health?pass=${encodeURIComponent(pass)}`);
+      const res = await fetch('/api/admin/system-health', {
+        headers: { [ADMIN_PASS_HEADER]: pass },
+      });
       if (res.status === 401 || res.status === 403) {
         setError('Wrong password.');
         return;

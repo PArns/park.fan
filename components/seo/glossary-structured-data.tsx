@@ -2,7 +2,7 @@ import { escapeJsonLd } from './structured-data';
 import { SITE_URL } from '@/i18n/config';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Locale } from '@/i18n/config';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 
 /** ISO date of last glossary content review — update when terms are added or changed */
 const GLOSSARY_CONTENT_DATE = '2026-03-17';

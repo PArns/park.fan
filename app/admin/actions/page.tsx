@@ -16,7 +16,7 @@ import {
   Wrench,
   type LucideIcon,
 } from 'lucide-react';
-import { useAdmin } from '../_lib/admin-context';
+import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
 import { Section } from '../_lib/ui';
 
 interface ActionDef {
@@ -106,8 +106,9 @@ export default function ActionsPage() {
       return next;
     });
     try {
-      const res = await fetch(`/api/admin/${action.path}?pass=${encodeURIComponent(pass)}`, {
+      const res = await fetch(`/api/admin/${action.path}`, {
         method: 'POST',
+        headers: { [ADMIN_PASS_HEADER]: pass },
       });
       setResult((p) => ({ ...p, [action.key]: res.ok ? 'ok' : 'err' }));
     } catch {

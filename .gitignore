@@ -48,6 +48,7 @@ next-env.d.ts
 build-info.json
 lib/hero-images.ts
 lib/glossary/client-data.ts
+lib/attraction-images.ts
 
 *.md
 *.txt

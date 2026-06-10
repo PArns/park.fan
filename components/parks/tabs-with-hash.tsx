@@ -30,6 +30,9 @@ import type {
   ParkAttraction,
 } from '@/lib/api/types';
 
+/** Seasonal entities count as in season unless the API explicitly says otherwise. */
+const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) => x.isCurrentlyInSeason !== false;
+
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
   ssr: false,
@@ -83,10 +86,8 @@ export function TabsWithHash({
   // Avoid hydration mismatch by only rendering after mount
   const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsMounted(true);
-    }, 0);
-    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMounted(true);
   }, []);
 
   const tabsRef = useRef<HTMLDivElement>(null);
@@ -207,9 +208,7 @@ export function TabsWithHash({
   const headliners = useMemo(() => {
     const all = Object.values(attractionsByLand)
       .flat()
-      .filter(
-        (a) => a.isHeadliner && (showOffSeasonAttractions || a.isCurrentlyInSeason !== false)
-      );
+      .filter((a) => a.isHeadliner && (showOffSeasonAttractions || isInSeason(a)));
 
     // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
     return all
@@ -258,12 +257,12 @@ export function TabsWithHash({
     () =>
       Object.values(attractionsByLand)
         .flat()
-        .filter((a) => a.isCurrentlyInSeason === false).length,
+        .filter((a) => !isInSeason(a)).length,
     [attractionsByLand]
   );
 
   const offSeasonShowCount = useMemo(
-    () => (park.shows ?? []).filter((s) => s.isCurrentlyInSeason === false).length,
+    () => (park.shows ?? []).filter((s) => !isInSeason(s)).length,
     [park.shows]
   );
 
@@ -271,7 +270,7 @@ export function TabsWithHash({
     if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return attractionsByLand;
     const result: Record<string, ParkAttraction[]> = {};
     for (const [land, attractions] of Object.entries(attractionsByLand)) {
-      const filtered = attractions.filter((a) => a.isCurrentlyInSeason !== false);
+      const filtered = attractions.filter(isInSeason);
       if (filtered.length > 0) result[land] = filtered;
     }
     return result;
@@ -279,7 +278,7 @@ export function TabsWithHash({
 
   const visibleShows = useMemo(() => {
     if (showOffSeasonShows || offSeasonShowCount === 0) return park.shows ?? [];
-    return (park.shows ?? []).filter((s) => s.isCurrentlyInSeason !== false);
+    return (park.shows ?? []).filter(isInSeason);
   }, [park.shows, showOffSeasonShows, offSeasonShowCount]);
 
   // Filter attractions based on search query (and off-season filter)
@@ -289,7 +288,7 @@ export function TabsWithHash({
       : fuse
           .search(searchQuery)
           .map((result) => result.item)
-          .filter((a) => showOffSeasonAttractions || a.isCurrentlyInSeason !== false)
+          .filter((a) => showOffSeasonAttractions || isInSeason(a))
           .reduce(
             (acc, attraction) => {
               const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';

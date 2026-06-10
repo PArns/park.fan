@@ -12,6 +12,13 @@ async function proxyRequest(request: NextRequest, path: string[]) {
     apiUrl.searchParams.set(key, value);
   });
 
+  // The admin UI sends the pass via header to keep it out of browser URLs and
+  // frontend access logs; the backend still expects it as a query param.
+  const headerPass = request.headers.get('x-admin-pass');
+  if (headerPass && !apiUrl.searchParams.has('pass')) {
+    apiUrl.searchParams.set('pass', headerPass);
+  }
+
   const response = await fetch(apiUrl.toString(), {
     method: request.method,
     headers: { 'Content-Type': 'application/json', ...getServerAuthHeaders() },

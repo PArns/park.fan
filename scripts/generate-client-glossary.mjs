@@ -13,7 +13,42 @@ const rootDir = resolve(__dirname, '..');
 
 const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 const GLOSSARY_DIR = resolve(rootDir, 'content/glossary');
+const DATA_FILE = resolve(rootDir, 'lib/glossary/data.ts');
 const OUTPUT_FILE = resolve(rootDir, 'lib/glossary/client-data.ts');
+
+/**
+ * Parse lib/glossary/data.ts and extract the per-locale URL slugs for each term,
+ * so client components can build glossary links without importing the full
+ * GLOSSARY_TERMS data set.
+ * Returns: { 'term-id': { en: 'slug', de: 'slug', ... } }
+ */
+function parseSlugsFromData() {
+  const content = readFileSync(DATA_FILE, 'utf-8');
+  const slugsByTerm = {};
+
+  const termRe = /\{\s*id:\s*'([^']+)'[\s\S]*?slugs:\s*\{([\s\S]*?)\}/g;
+  let match;
+  while ((match = termRe.exec(content)) !== null) {
+    const [, termId, slugsBlock] = match;
+    const slugs = {};
+    const slugRe = /([a-z]+):\s*'([^']+)'/g;
+    let slugMatch;
+    while ((slugMatch = slugRe.exec(slugsBlock)) !== null) {
+      slugs[slugMatch[1]] = slugMatch[2];
+    }
+    const missing = LOCALES.filter((l) => !slugs[l]);
+    if (missing.length > 0) {
+      throw new Error(`Term '${termId}' in data.ts is missing slugs for: ${missing.join(', ')}`);
+    }
+    slugsByTerm[termId] = slugs;
+  }
+
+  if (Object.keys(slugsByTerm).length === 0) {
+    throw new Error('No term slugs found in data.ts — parser out of sync with file format?');
+  }
+
+  return slugsByTerm;
+}
 
 /**
  * Parse a TypeScript glossary file and extract term data.
@@ -125,7 +160,7 @@ function loadAllGlossaryData() {
 /**
  * Generate TypeScript source code for client data.
  */
-function generateClientDataFile(allTerms) {
+function generateClientDataFile(allTerms, slugsByTerm) {
   const termsObject = Object.entries(allTerms)
     .map(([termId, data]) => {
       const nameObj = Object.entries(data.name)
@@ -136,12 +171,23 @@ function generateClientDataFile(allTerms) {
         .map(([locale, def]) => `      ${locale}: "${def.replace(/"/g, '\\"')}"`)
         .join(',\n');
 
+      const slugs = slugsByTerm[termId];
+      if (!slugs) {
+        throw new Error(`Term '${termId}' has translations but no slugs in data.ts`);
+      }
+      const slugsObj = Object.entries(slugs)
+        .map(([locale, slug]) => `      ${locale}: "${slug.replace(/"/g, '\\"')}"`)
+        .join(',\n');
+
       return `  '${termId}': {
     name: {
 ${nameObj}
     },
     shortDefinition: {
 ${defObj}
+    },
+    slugs: {
+${slugsObj}
     },
   }`;
     })
@@ -158,6 +204,7 @@ import type { Locale } from '@/i18n/config';
 export interface ClientGlossaryTerm {
   name: Record<Locale, string>;
   shortDefinition: Record<Locale, string>;
+  slugs: Record<Locale, string>;
 }
 
 export const CLIENT_GLOSSARY_TERMS: Record<string, ClientGlossaryTerm> = {
@@ -169,7 +216,8 @@ ${termsObject}
 try {
   console.log('📝 Generating client glossary data...');
   const allTerms = loadAllGlossaryData();
-  const output = generateClientDataFile(allTerms);
+  const slugsByTerm = parseSlugsFromData();
+  const output = generateClientDataFile(allTerms, slugsByTerm);
   writeFileSync(OUTPUT_FILE, output, 'utf-8');
   console.log(`✅ Generated ${OUTPUT_FILE}`);
   console.log(`   Found ${Object.keys(allTerms).length} glossary terms`);

@@ -896,7 +896,7 @@ function ContentNLSections() {
         <TipBox label="Tip">
           De volledige woordenlijst is beschikbaar op{' '}
           <Link href="/woordenboek" className="text-primary font-medium underline">
-            park.fan/woordenlijst
+            park.fan/woordenboek
           </Link>{' '}
           met termen in 7 categorieën.
         </TipBox>

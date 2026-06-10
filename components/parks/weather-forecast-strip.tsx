@@ -33,18 +33,29 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
       }
     };
 
+    // Throttle to one check per frame — scroll/resize can fire far more often.
+    let frame: number | null = null;
+    const scheduleCheck = () => {
+      if (frame !== null) return;
+      frame = requestAnimationFrame(() => {
+        frame = null;
+        checkScroll();
+      });
+    };
+
     const current = scrollRef.current;
     if (current) {
-      current.addEventListener('scroll', checkScroll);
+      current.addEventListener('scroll', scheduleCheck, { passive: true });
       checkScroll();
-      window.addEventListener('resize', checkScroll);
+      window.addEventListener('resize', scheduleCheck);
     }
 
     return () => {
+      if (frame !== null) cancelAnimationFrame(frame);
       if (current) {
-        current.removeEventListener('scroll', checkScroll);
+        current.removeEventListener('scroll', scheduleCheck);
       }
-      window.removeEventListener('resize', checkScroll);
+      window.removeEventListener('resize', scheduleCheck);
     };
   }, [forecast]);
 
