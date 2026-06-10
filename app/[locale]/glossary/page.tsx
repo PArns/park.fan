@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { locales, generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';

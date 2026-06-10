@@ -1,5 +1,6 @@
 import { getLocale } from 'next-intl/server';
-import { getGlossaryTerms, GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { getGlossaryTerms } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossaryInjectTerm } from './glossary-inject-term';

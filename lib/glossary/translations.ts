@@ -3,16 +3,6 @@ import type { Locale } from '@/i18n/config';
 import { GLOSSARY_TERMS } from './data';
 import type { GlossaryTerm, GlossaryTermTranslation } from './types';
 
-/** Locale → canonical glossary URL segment (for link generation). */
-export const GLOSSARY_SEGMENTS: Record<Locale, string> = {
-  en: 'glossary',
-  de: 'glossar',
-  fr: 'glossaire',
-  it: 'glossario',
-  nl: 'woordenboek',
-  es: 'glosario',
-};
-
 async function loadTranslations(locale: Locale): Promise<GlossaryTermTranslation[]> {
   const mod = await import(`@/content/glossary/${locale}`);
   return (mod.default ?? mod) as GlossaryTermTranslation[];

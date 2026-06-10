@@ -3,8 +3,7 @@
 import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import { GLOSSARY_TERMS } from '@/lib/glossary/data';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { CLIENT_GLOSSARY_TERMS } from '@/lib/glossary/client-data';
 import type { Locale } from '@/i18n/config';
@@ -34,15 +33,14 @@ export function GlossaryTermLink({
   tooltipOnly = false,
 }: GlossaryTermLinkProps) {
   const locale = useLocale() as Locale;
-  const termData = GLOSSARY_TERMS.find((t) => t.id === termId);
+  const termData = CLIENT_GLOSSARY_TERMS[termId];
   if (!termData) return <>{children}</>;
   const slug = termData.slugs[locale];
   const segment = GLOSSARY_SEGMENTS[locale];
 
   // Get tooltip data if available and enabled
-  const clientTerm = showTooltip ? CLIENT_GLOSSARY_TERMS[termId] : null;
-  const tooltipName = clientTerm?.name[locale];
-  const tooltipDefinition = clientTerm?.shortDefinition[locale];
+  const tooltipName = showTooltip ? termData.name[locale] : null;
+  const tooltipDefinition = showTooltip ? termData.shortDefinition[locale] : null;
 
   // tooltipOnly mode: render a span with tooltip but no link (use inside card <Link> elements)
   if (tooltipOnly) {

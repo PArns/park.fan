@@ -4,7 +4,7 @@ import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 

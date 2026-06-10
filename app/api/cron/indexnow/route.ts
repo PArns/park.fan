@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
 import { locales } from '@/i18n/config';
-import { GLOSSARY_SEGMENTS } from '@/lib/glossary/translations';
+import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 
 const BASE_URL = 'https://park.fan';
