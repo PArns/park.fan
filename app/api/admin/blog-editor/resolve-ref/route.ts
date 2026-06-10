@@ -9,6 +9,7 @@ import {
   getAttractionBackgroundImage,
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
+import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 /**
  * Resolve a ref: token into the same handful of fields the published renderer
@@ -21,6 +22,8 @@ import {
  * (`/parks/europe/germany/bruehl/phantasialand[/<rideSlug>]`).
  */
 export async function GET(req: NextRequest) {
+  const unauthorized = await requireAdminPass(req);
+  if (unauthorized) return unauthorized;
   const ref = req.nextUrl.searchParams.get('ref');
   if (!ref) {
     return NextResponse.json({ error: 'missing ref' }, { status: 400 });

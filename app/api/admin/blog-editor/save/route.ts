@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { Octokit } from '@octokit/rest';
 import type { BlogFrontmatter } from '@/lib/blog/types';
 import { buildPostFile } from '@/app/admin/blog-editor/_lib/serialize';
+import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 interface SavePayload {
   baseSlug: string;
@@ -80,6 +81,8 @@ const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
  * The PR body summarises which locales landed and which still need work.
  */
 export async function POST(req: Request) {
+  const unauthorized = await requireAdminPass(req);
+  if (unauthorized) return unauthorized;
   const token = process.env.BLOG_EDITOR_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
   if (!token) return NextResponse.json({ error: REQUIRED_TOKEN_HINT }, { status: 500 });
 

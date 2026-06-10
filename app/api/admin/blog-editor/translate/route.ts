@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { BlogFrontmatter } from '@/lib/blog/types';
+import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 interface TranslateBody {
   sourceLocale: string;
@@ -29,6 +30,8 @@ const TOKEN_HINT =
  * dates, the author key and the SEO-keywords array are left untouched.
  */
 export async function POST(req: Request) {
+  const unauthorized = await requireAdminPass(req);
+  if (unauthorized) return unauthorized;
   const key = process.env.BLOG_EDITOR_ANTHROPIC_API_KEY ?? process.env.ANTHROPIC_API_KEY;
   if (!key) return NextResponse.json({ error: TOKEN_HINT }, { status: 500 });
 

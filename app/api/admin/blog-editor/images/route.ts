@@ -2,6 +2,7 @@ import 'server-only';
 import fs from 'fs';
 import path from 'path';
 import { NextResponse } from 'next/server';
+import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 const IMG_RE = /\.(jpe?g|png|webp|avif|svg|gif)$/i;
 const ROOT = path.resolve(process.cwd(), 'public', 'blog', 'images');
@@ -34,7 +35,9 @@ function walk(dir: string, rel = ''): BlogImage[] {
  * picker can render them as labelled sections. Sorting newest-first via mtime
  * surfaces the image you just added at the top.
  */
-export async function GET() {
+export async function GET(req: Request) {
+  const unauthorized = await requireAdminPass(req);
+  if (unauthorized) return unauthorized;
   const images = walk(ROOT).map((img) => {
     let mtime = 0;
     try {

@@ -4,6 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { NextResponse, type NextRequest } from 'next/server';
 import { fromFrontmatter } from '@/app/admin/blog-editor/_lib/types';
+import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 const BLOG_ROOT = path.resolve(process.cwd(), 'content', 'blog');
 const LOCALE_RE = /^[a-z]{2}(-[a-z]{2})?$/i;
@@ -60,9 +61,12 @@ function normaliseWidgetFences(md: string): string {
  * tricked into reading outside content/blog via `../`.
  */
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ key: string }> }
 ) {
+  const unauthorized = await requireAdminPass(req);
+  if (unauthorized) return unauthorized;
+
   const { key } = await params;
   if (!key || !SAFE_KEY.test(key)) {
     return NextResponse.json({ error: 'invalid key' }, { status: 400 });
