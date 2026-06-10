@@ -77,14 +77,6 @@ export function ParkTimeInfo({
   const hasOperatingSchedule =
     (hasParams ? livePark?.hasOperatingSchedule : undefined) ?? hasOperatingScheduleProp;
 
-  // In live mode the snapshot `status` can be stale, so showing the badge immediately flashes a
-  // wrong GESCHLOSSEN that then flips to GEÖFFNET once the poll lands. Gate the badge on the live
-  // query having resolved at least once — `dataUpdatedAt` stays 0 until a real fetch completes
-  // (initialData is anchored to epoch via initialDataUpdatedAt:0), and it's 0 both on the server
-  // (query disabled) and on the first client render, so hiding it is hydration-safe. Without geo
-  // params (demo/mock usages) there is no live poll, so the prop status shows right away.
-  const showStatusBadge = !hasParams || dataUpdatedAt > 0;
-
   // Pick today's schedule entry CLIENT-side (from the browser clock in the park's timezone) so the
   // static shell never reads the server clock. Before mount we fall back to the first entry — same
   // graceful seed the server used previously — and the real "today" fills in after hydration.
@@ -159,6 +151,33 @@ export function ParkTimeInfo({
   // UNLESS we have a nextSchedule to show (OffSeason case) or we are in UNKNOWN state
   const isOperatingToday = todaySchedule && todaySchedule.scheduleType === 'OPERATING';
   const isUnknown = status === 'UNKNOWN' || (!isOperatingToday && !hasOperatingSchedule);
+
+  // Badge value + visibility. The full-park live poll (which the badge previously gated on) also
+  // computes best-visit-times and is the page's slowest dependency, so waiting on it left the badge
+  // blank long after the opening hours had rendered. Instead, derive the open/closed state from
+  // today's operating hours + the browser clock — the exact inputs the "öffnet/schließt in"
+  // countdown already uses — so the badge appears TOGETHER with the opening hours, with no extra
+  // request and no stale-snapshot flash. The live status still wins once the poll lands (it can
+  // surface an unscheduled DOWN/REFURBISHMENT/closure the schedule can't predict).
+  const liveStatus = hasParams && dataUpdatedAt > 0 ? (livePark?.status ?? null) : null;
+  const scheduledStatus: ParkStatus | null = (() => {
+    if (!isOperatingToday || !currentTime) return null;
+    const { openingTime, closingTime } = todaySchedule!;
+    if (!openingTime || !closingTime) return null;
+    const opening = new Date(openingTime);
+    const closing = new Date(closingTime);
+    // Only trust the entry if it's actually today in the park tz (mirrors getTimeUntilMessage).
+    const todayInParkTz = currentTime.toLocaleDateString('en-CA', { timeZone: timezone });
+    if (opening.toLocaleDateString('en-CA', { timeZone: timezone }) !== todayInParkTz) return null;
+    return currentTime >= opening && currentTime < closing ? 'OPERATING' : 'CLOSED';
+  })();
+  const badgeStatus = liveStatus ?? scheduledStatus ?? status;
+  // Show once we have a trustworthy value: the resolved live poll, the clock-derived schedule
+  // status, or an UNKNOWN park (whose snapshot status is stable). On the server and the first client
+  // render — before the clock mounts and before the poll resolves — this is false for normal parks,
+  // so the badge stays hidden (hydration-safe) instead of flashing the up-to-1-day-stale snapshot.
+  const showStatusBadge =
+    !hasParams || liveStatus !== null || scheduledStatus !== null || isUnknown;
 
   if (!isOperatingToday && !isUnknown) {
     // API may send nextSchedule with only openingTime/closingTime (no date)
@@ -237,8 +256,8 @@ export function ParkTimeInfo({
         <CardTitle className="flex items-center gap-2 text-base">
           <Calendar className="h-4 w-4" />
           {isUnknown ? t('schedule') : t('todaySchedule')}
-          {showStatusBadge && status && (
-            <ParkStatusBadge status={status} className="ml-auto" />
+          {showStatusBadge && badgeStatus && (
+            <ParkStatusBadge status={badgeStatus} className="ml-auto" />
           )}
         </CardTitle>
       </CardHeader>
