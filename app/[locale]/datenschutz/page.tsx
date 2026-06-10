@@ -1,5 +1,10 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import {
+  locales,
+  generateAlternateLanguages,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      url: `https://park.fan/${locale}/datenschutz`,
+      url: `${SITE_URL}/${locale}/datenschutz`,
       siteName: 'park.fan',
       type: 'website',
       images: [
@@ -46,10 +51,10 @@ export async function generateMetadata({ params }: DatenschutzPageProps): Promis
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `https://park.fan/${locale}/datenschutz`,
+      canonical: `${SITE_URL}/${locale}/datenschutz`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/datenschutz`),
-        'x-default': 'https://park.fan/en/datenschutz',
+        'x-default': `${SITE_URL}/en/datenschutz`,
       },
     },
     robots: {

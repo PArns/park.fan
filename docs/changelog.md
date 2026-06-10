@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## 2.10.1 (2026-06-10) – SEO review fixes
+
+Full-code SEO review; fixed everything actionable. See [seo/analysis.md](seo/analysis.md).
+
+- **robots.txt**: `Allow: /api/og/` so Google can crawl the OG images; stopped disallowing
+  `/_next/` (Google renders pages and needs JS/CSS/optimized images).
+- **Sitemap**: removed noindex legal pages (Search-Console conflict), added `/parks` and
+  `/search`; blog entries/hreflang now only for locales with a real translation.
+- **Blog EN-fallbacks** (`/de/blog/<en-slug>` etc.): canonical now points to the EN original;
+  no longer advertised via hreflang, sitemap, or IndexNow.
+- **Localized 404**: new `app/[locale]/not-found.tsx` (translated, inside the site chrome)
+  instead of the bare English root fallback.
+- **Icons**: real 180×180 `apple-touch-icon.png` (iOS ignores SVG), manifest icons with
+  correct sizes (192/512 generated from `logo-big.png`; `logo.png` was 569×683).
+- **HowTo page**: Article JSON-LD added.
+- **Maintenance page**: auto-recovers via 15 s health poll — previously a reloaded
+  `/maintenance` showed the outage screen forever.
+- **`SITE_URL`** from `i18n/config.ts` is now the single base-URL source for canonicals,
+  hreflang, JSON-LD and IndexNow (was hardcoded in ~25 places).
+
+---
+
 ## 2.10.0 (2026-06-07) – ISR cost & cold-load overhaul
 
 Park/attraction routes were the dominant Vercel ISR-write source (write-heavy, read-light), and

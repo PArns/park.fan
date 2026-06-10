@@ -2,8 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import {
+  generateAlternateLanguages,
+  locales,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { getAuthor, listAuthorKeys, resolveAuthor } from '@/lib/blog/authors';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogAuthorProfile } from '@/components/blog/blog-author-profile';
@@ -19,7 +24,6 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 interface AuthorPageProps {
   params: Promise<{ locale: string; author: string }>;
 }
-
 
 /** One page per (locale × registry author). */
 export async function generateStaticParams() {
@@ -49,20 +53,20 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
       title: fullTitle,
       description,
       locale: localeToOpenGraphLocale[locale as Locale],
-      url: `https://park.fan/${locale}/blog/authors/${author}`,
+      url: `${SITE_URL}/${locale}/blog/authors/${author}`,
       siteName: 'park.fan',
       type: 'profile',
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: entry.name }],
     },
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
-      canonical: `https://park.fan/${locale}/blog/authors/${author}`,
+      canonical: `${SITE_URL}/${locale}/blog/authors/${author}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/blog/authors/${author}`),
-        'x-default': `https://park.fan/en/blog/authors/${author}`,
+        'x-default': `${SITE_URL}/en/blog/authors/${author}`,
       },
       types: {
-        'application/rss+xml': `https://park.fan/${locale}/blog/feed.xml`,
+        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
       },
     },
   };

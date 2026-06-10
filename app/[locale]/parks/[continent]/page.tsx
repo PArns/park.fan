@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
@@ -40,14 +40,14 @@ export async function generateMetadata({ params }: ContinentPageProps): Promise<
       locale,
       title: t('titleTemplate', { location: continentName }),
       description: t('metaDescriptionTemplate', { location: continentName }),
-      url: `https://park.fan/${locale}/parks/${continent}`,
+      url: `${SITE_URL}/${locale}/parks/${continent}`,
       ogImageUrl,
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/parks/${continent}`,
+      canonical: `${SITE_URL}/${locale}/parks/${continent}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/parks/${continent}`),
-        'x-default': `https://park.fan/en/parks/${continent}`,
+        'x-default': `${SITE_URL}/en/parks/${continent}`,
       },
     },
   };

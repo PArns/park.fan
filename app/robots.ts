@@ -1,14 +1,17 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/i18n/config';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://park.fan';
-
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
-      disallow: ['/api/', '/_next/'],
+      // /api/og/ serves the Open Graph images referenced in every page's
+      // metadata — it must stay crawlable (longest-match wins over /api/).
+      // /_next/ is deliberately NOT disallowed: Google renders pages with a
+      // headless browser and needs the JS/CSS bundles and optimized images.
+      allow: ['/', '/api/og/'],
+      disallow: ['/api/'],
     },
-    sitemap: [`${baseUrl}/sitemap.xml`],
+    sitemap: [`${SITE_URL}/sitemap.xml`],
   };
 }

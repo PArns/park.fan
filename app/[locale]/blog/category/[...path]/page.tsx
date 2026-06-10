@@ -3,8 +3,13 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { FolderTree } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import {
+  generateAlternateLanguages,
+  locales,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import {
   buildCategoryTree,
   categoryPathBreadcrumbs,
@@ -59,17 +64,17 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
       title: fullTitle,
       description,
       locale: localeToOpenGraphLocale[locale as Locale],
-      url: `https://park.fan/${locale}/blog/category/${fullPath}`,
+      url: `${SITE_URL}/${locale}/blog/category/${fullPath}`,
       siteName: 'park.fan',
       type: 'website',
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
     },
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
-      canonical: `https://park.fan/${locale}/blog/category/${fullPath}`,
+      canonical: `${SITE_URL}/${locale}/blog/category/${fullPath}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/blog/category/${fullPath}`),
-        'x-default': `https://park.fan/en/blog/category/${fullPath}`,
+        'x-default': `${SITE_URL}/en/blog/category/${fullPath}`,
       },
     },
   };

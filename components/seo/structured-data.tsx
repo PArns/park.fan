@@ -12,10 +12,12 @@ import {
   BreadcrumbList,
   Organization,
   Attraction,
+  Article,
 } from 'schema-dts';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { getAttractionImage } from '@/lib/attraction-images';
 import { stripNewPrefix } from '@/lib/utils';
+import { SITE_URL } from '@/i18n/config';
 
 type StructuredDataProps<T extends Thing> = {
   data: WithContext<T>;
@@ -37,7 +39,43 @@ function JsonLd<T extends Thing>({ data }: StructuredDataProps<T>) {
   );
 }
 
-const SITE_URL = 'https://park.fan';
+/**
+ * Article JSON-LD for static guide pages (e.g. /howto). Google retired HowTo
+ * rich results in 2023, so a plain Article with publisher is the appropriate
+ * markup for long-form guide content.
+ */
+export function ArticleStructuredData({
+  title,
+  description,
+  url,
+  locale,
+  image,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  locale: string;
+  image?: string;
+}) {
+  const data: WithContext<Article> = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description,
+    mainEntityOfPage: url,
+    url,
+    inLanguage: locale,
+    ...(image && { image }),
+    author: { '@type': 'Organization', name: 'park.fan', url: SITE_URL },
+    publisher: {
+      '@type': 'Organization',
+      name: 'park.fan',
+      url: SITE_URL,
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/logo.png` },
+    },
+  };
+  return <JsonLd data={data} />;
+}
 
 /** Normalizes raw API cuisineType values to proper display names. */
 function normalizeCuisineType(cuisineType: string | null): string | undefined {
@@ -125,7 +163,7 @@ export function ParkStructuredData({
     url: url,
     ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,
-    image: parkBgImage ? `https://park.fan${parkBgImage}` : undefined,
+    image: parkBgImage ? `${SITE_URL}${parkBgImage}` : undefined,
     address: {
       '@type': 'PostalAddress',
       addressLocality: park.city || undefined,
@@ -155,7 +193,7 @@ export function ParkStructuredData({
               '@type': 'TouristAttraction' as const,
               name: stripNewPrefix(attraction.name),
               url: `${url}/${attraction.slug}`,
-              image: attrImg ? `https://park.fan${attrImg}` : undefined,
+              image: attrImg ? `${SITE_URL}${attrImg}` : undefined,
             };
           })
         : []),
@@ -265,7 +303,7 @@ export function AttractionStructuredData({
     ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
-    image: attrImg ? `https://park.fan${attrImg}` : undefined,
+    image: attrImg ? `${SITE_URL}${attrImg}` : undefined,
     containedInPlace: {
       '@type': 'ThemePark',
       name: parkName,
@@ -329,7 +367,7 @@ export function ShowsStructuredData({
           byDayTime: startTimes,
         },
       }),
-      image: parkBgImage ? `https://park.fan${parkBgImage}` : `${SITE_URL}/logo-big.png`,
+      image: parkBgImage ? `${SITE_URL}${parkBgImage}` : `${SITE_URL}/logo-big.png`,
       location: {
         '@type': 'Place' as const,
         name: stripNewPrefix(park.name),

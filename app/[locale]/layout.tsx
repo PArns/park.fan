@@ -4,7 +4,12 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
-import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
+import {
+  generateAlternateLanguages,
+  locales,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
@@ -48,7 +53,7 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
   }
 
   const t = await getTranslations({ locale, namespace: 'seo.global' });
-  const siteUrl = 'https://park.fan';
+  const siteUrl = SITE_URL;
 
   return {
     title: {
@@ -59,13 +64,13 @@ export async function generateMetadata({ params }: LocaleLayoutProps): Promise<M
     keywords: t('keywords'),
     icons: {
       icon: '/favicon.ico',
-      apple: '/logo.png',
+      apple: '/apple-touch-icon.png',
     },
     alternates: {
       canonical: `${siteUrl}/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': 'https://park.fan/en',
+        'x-default': `${SITE_URL}/en`,
       },
     },
     openGraph: {

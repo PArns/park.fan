@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { Link } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -81,14 +81,14 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       locale,
       title: fullTitle,
       description: t('description'),
-      url: `https://park.fan/${locale}`,
+      url: `${SITE_URL}/${locale}`,
       ogImageUrl,
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}`,
+      canonical: `${SITE_URL}/${locale}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': 'https://park.fan/en',
+        'x-default': `${SITE_URL}/en`,
       },
     },
   };

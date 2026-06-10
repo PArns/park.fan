@@ -37,15 +37,14 @@ Erstellt April 2026 auf Basis einer Ranking-Analyse gegen wartezeiten.app, queue
 
 ## Phase 1 — Technische Quick Wins
 
-### 1A · Sitemap: statische Seiten ergänzen ✅
+### 1A · Sitemap: statische Seiten ergänzen ✅ (revidiert Juni 2026)
 
 **Datei:** `app/sitemap.ts`
 
-Fehlende Seiten für alle Locales hinzufügen:
-
-- `/[locale]/impressum` — priority 0.4, changeFrequency yearly
-- `/[locale]/datenschutz` — priority 0.4, changeFrequency yearly
-- `/[locale]/search` (ohne `?q=`) — priority 0.5, changeFrequency monthly
+- `/[locale]/search` (ohne `?q=`) — priority 0.5, changeFrequency monthly ✅
+- ~~`/[locale]/impressum`, `/[locale]/datenschutz`~~ — **nicht** in die Sitemap:
+  beide Seiten sind inzwischen `noindex`, und noindex-URLs in der Sitemap
+  erzeugen Search-Console-Fehler. Siehe [sitemaps.md](sitemaps.md).
 
 ### 1B · Search-Pages noindex ✅ (bereits erledigt)
 

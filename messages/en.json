@@ -91,6 +91,12 @@
     "maintenanceTitle": "We'll be back soon!",
     "maintenanceDescription": "park.fan is temporarily unavailable while we perform maintenance. Please try again in a few minutes."
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or has been moved. Maybe the ride got renamed?",
+    "goHome": "Back to homepage",
+    "browseParks": "Browse all parks"
+  },
   "home": {
     "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
     "hero": {

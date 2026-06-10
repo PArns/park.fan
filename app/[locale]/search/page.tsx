@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
@@ -37,14 +37,14 @@ export async function generateMetadata({
       locale,
       title: q ? t('titleTemplate', { query: q }) : t('title'),
       description: t('metaDescriptionTemplate'),
-      url: `https://park.fan/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
+      url: `${SITE_URL}/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       ogImageUrl: getOgImageUrl([locale, 'search']),
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/search`,
+      canonical: `${SITE_URL}/${locale}/search`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/search`),
-        'x-default': `https://park.fan/en/search`,
+        'x-default': `${SITE_URL}/en/search`,
       },
     },
   };

@@ -1,6 +1,6 @@
 import 'server-only';
 import { cache } from 'react';
-import { locales, defaultLocale, type Locale } from '@/i18n/config';
+import { locales, defaultLocale, SITE_URL, type Locale } from '@/i18n/config';
 import type { BlogFrontmatter, BlogListItem, BlogPost } from './types';
 import { BLOG_POSTS_RAW } from './manifest';
 
@@ -186,20 +186,21 @@ export const listPosts = cache((requestedLocale: Locale): BlogListItem[] => {
 /**
  * Return alternate hreflang URLs for a single post (per translationKey).
  *
- * Posts not translated into a given locale still render via fallback, so all
- * supported locales are emitted. The URL uses the locale-specific filename
- * slug when available, otherwise the EN slug.
+ * Only locales with a real translation are emitted. Untranslated locales
+ * still render via EN fallback, but those URLs serve duplicate EN content
+ * and canonicalize to the EN original — listing them as hreflang
+ * alternates would tell search engines a translation exists where it
+ * doesn't.
  */
 export function buildPostAlternates(translationKey: string): Record<string, string> {
   const index = getTranslationIndex();
   const localeMap = index.get(translationKey);
   if (!localeMap) return {};
-  const enSlug = localeMap.get(defaultLocale);
   const out: Record<string, string> = {};
   for (const locale of locales) {
-    const slug = localeMap.get(locale) ?? enSlug;
+    const slug = localeMap.get(locale);
     if (!slug) continue;
-    out[locale] = `https://park.fan/${locale}/blog/${slug}`;
+    out[locale] = `${SITE_URL}/${locale}/blog/${slug}`;
   }
   return out;
 }

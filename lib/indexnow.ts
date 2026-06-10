@@ -1,6 +1,8 @@
+import { SITE_URL } from '@/i18n/config';
+
 const INDEXNOW_KEY = 'f179c6a9d9f0022913e75fae2dcaa75a';
 const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
-const BASE_URL = 'https://park.fan';
+const BASE_URL = SITE_URL;
 
 export async function submitUrlsToIndexNow(urls: string[]): Promise<void> {
   if (urls.length === 0) return;

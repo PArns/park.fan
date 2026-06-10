@@ -91,6 +91,12 @@
     "maintenanceTitle": "Wir sind bald wieder da!",
     "maintenanceDescription": "park.fan ist wegen Wartungsarbeiten vorübergehend nicht erreichbar. Bitte versuche es in ein paar Minuten erneut."
   },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben. Vielleicht wurde die Attraktion umbenannt?",
+    "goHome": "Zur Startseite",
+    "browseParks": "Alle Parks entdecken"
+  },
   "home": {
     "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 150 Freizeitparks und 5.000+ Attraktionen weltweit—u. a. Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",
     "hero": {

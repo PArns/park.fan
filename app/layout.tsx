@@ -3,10 +3,12 @@ import './globals.css';
 
 // Metadata is now handled in [locale]/layout.tsx for i18n support
 
+// app/favicon.ico and app/icon.svg are served automatically via the file
+// convention; only the Apple touch icon (iOS ignores SVG) needs an explicit
+// 180×180 PNG.
 export const metadata: Metadata = {
   icons: {
-    icon: [{ url: '/logo-small.svg', type: 'image/svg+xml' }],
-    apple: '/logo-small.svg',
+    apple: '/apple-touch-icon.png',
   },
 };
 

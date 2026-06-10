@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
-import { locales } from '@/i18n/config';
+import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
-const BASE_URL = 'https://park.fan';
+const BASE_URL = SITE_URL;
 
 function buildAlternates(pathFn: (locale: string) => string): {
   languages: Record<string, string>;
@@ -22,10 +22,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes: MetadataRoute.Sitemap = [];
 
   // ── Static pages ──────────────────────────────────────────────────────────
+  // Impressum/Datenschutz are intentionally absent: they are noindex pages,
+  // and noindex URLs in a sitemap trigger Search Console errors.
   const homepageAlternates = buildAlternates(() => '');
+  const parksAlternates = buildAlternates(() => '/parks');
+  const searchAlternates = buildAlternates(() => '/search');
   const howtoAlternates = buildAlternates(() => '/howto');
-  const impressumAlternates = buildAlternates(() => '/impressum');
-  const datenschutzAlternates = buildAlternates(() => '/datenschutz');
 
   for (const locale of locales) {
     routes.push(
@@ -36,22 +38,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: homepageAlternates,
       },
       {
+        url: `${BASE_URL}/${locale}/parks`,
+        changeFrequency: 'weekly',
+        priority: 0.8,
+        alternates: parksAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/search`,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+        alternates: searchAlternates,
+      },
+      {
         url: `${BASE_URL}/${locale}/howto`,
         changeFrequency: 'monthly',
         priority: 0.4,
         alternates: howtoAlternates,
-      },
-      {
-        url: `${BASE_URL}/${locale}/impressum`,
-        changeFrequency: 'monthly',
-        priority: 0.1,
-        alternates: impressumAlternates,
-      },
-      {
-        url: `${BASE_URL}/${locale}/datenschutz`,
-        changeFrequency: 'monthly',
-        priority: 0.4,
-        alternates: datenschutzAlternates,
       }
     );
   }
@@ -155,17 +157,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Blog posts — alternates per translationKey use locale-specific slugs.
+  // Only locales with a real translation are listed: EN-fallback URLs
+  // (e.g. /de/blog/<en-slug>) canonicalize to the EN original and must not
+  // appear in the sitemap or in hreflang alternates.
   const translationIndex = getTranslationIndex();
   for (const [translationKey, localeMap] of translationIndex) {
-    const enSlug = localeMap.get('en');
-    const alternates: Record<string, string> = {};
-    for (const locale of locales) {
-      const slug = localeMap.get(locale as import('@/i18n/config').Locale) ?? enSlug;
-      if (slug) alternates[locale] = `${BASE_URL}/${locale}/blog/${slug}`;
-    }
+    const alternates = buildPostAlternates(translationKey);
     if (alternates['en']) alternates['x-default'] = alternates['en'];
 
     for (const locale of locales) {
+      if (!localeMap.get(locale as import('@/i18n/config').Locale)) continue;
       const posts = listPosts(locale as import('@/i18n/config').Locale);
       const post = posts.find((p) => p.translationKey === translationKey);
       if (!post) continue;
@@ -178,7 +179,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: { languages: alternates },
       });
     }
-    void buildPostAlternates(translationKey);
   }
 
   // Blog category pages
