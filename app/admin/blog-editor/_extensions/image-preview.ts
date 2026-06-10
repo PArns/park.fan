@@ -1,5 +1,5 @@
 import { Extension } from '@tiptap/core';
-import { Plugin, PluginKey } from '@tiptap/pm/state';
+import { Plugin, PluginKey, TextSelection } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 import { eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
@@ -185,6 +185,22 @@ export const ImagePreview = Extension.create({
             const pick = pickClosestByCoords(img, matches, view, (s) => s.pos);
             if (!pick) return false;
             event.preventDefault();
+            // Place a TextSelection right AFTER the image's inline node so
+            // the caret lands inside the same paragraph — arrow keys and
+            // typing then work as expected next to a floated image (the
+            // whole point of left/right alignment). Without this the click
+            // returned `true` and the selection stayed wherever it last
+            // was, so typing fell through to a different paragraph.
+            try {
+              const afterImage = pick.pos + 1;
+              if (afterImage <= view.state.doc.content.size) {
+                const sel = TextSelection.create(view.state.doc, afterImage);
+                view.dispatch(view.state.tr.setSelection(sel));
+                view.focus();
+              }
+            } catch {
+              /* selection placement is best-effort */
+            }
             const rect = img.getBoundingClientRect();
             window.dispatchEvent(
               new CustomEvent('parkfan-selection', {

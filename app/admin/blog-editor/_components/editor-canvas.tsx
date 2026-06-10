@@ -171,7 +171,12 @@ export function EditorCanvas({
           /^(ref:|park:|attraction:|https?:\/\/|mailto:|\/)/.test(url),
         HTMLAttributes: { rel: 'noopener' },
       }),
-      Image,
+      // `inline: true` lets the image live INSIDE a paragraph alongside
+      // prose — so authors can put their caret next to a left/right-floated
+      // image and type text that wraps around it. Without this the image is
+      // its own block, the paragraph holds only the image, and there's
+      // nothing to type into next to it.
+      Image.configure({ inline: true, allowBase64: false }),
       Placeholder.configure({
         placeholder: ({ node }) =>
           node.type.name === 'heading'
@@ -552,8 +557,12 @@ export function EditorCanvas({
               setImagePickerAnchor(null);
               return;
             }
+            // Inline-image insert — the image node lives INSIDE the current
+            // paragraph (no leading/trailing blank lines), so the caret stays
+            // in that paragraph after the insert and the author can keep
+            // typing text right next to the picture.
             const altCombined = r.caption ? `${r.alt} | ${r.caption}` : r.alt;
-            editor.chain().focus().insertContent(`\n\n![${altCombined}](${r.src})\n\n`).run();
+            editor.chain().focus().insertContent(`![${altCombined}](${r.src}) `).run();
           }}
         />
       </div>
