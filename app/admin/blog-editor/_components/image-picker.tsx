@@ -94,10 +94,10 @@ function ImagePickerBody({
 
   const ql = q.trim().toLowerCase();
   const allFiltered = ql ? images.filter((i) => i.src.toLowerCase().includes(ql)) : images;
-  // No cap while searching — matches are usually a handful and the user is hunting.
-  // List view rows are cheap, so we lift the cap there as well.
-  const capped = ql || view === 'list' ? allFiltered : allFiltered.slice(0, displayLimit);
-  const visible = capped;
+  // No cap while searching — matches are usually a handful and the user is
+  // hunting. Both views paginate otherwise: list rows carry thumbnails now,
+  // so a thousand-image library would mount a thousand <Image>s without it.
+  const visible = ql ? allFiltered : allFiltered.slice(0, displayLimit);
   const hiddenCount = allFiltered.length - visible.length;
 
   const groups = new Map<string, BlogImage[]>();
@@ -327,13 +327,26 @@ function ImagePickerBody({
                           type="button"
                           onClick={() => onItemClick(img.src)}
                           className={cn(
-                            'flex w-full items-center gap-2 rounded-md px-2 py-1.5 text-left transition-colors',
+                            'group/row flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left transition-colors',
                             isStaged
                               ? 'bg-primary/10 text-primary'
                               : 'hover:bg-accent/40'
                           )}
                         >
-                          <ImageIcon className="text-muted-foreground/70 h-3.5 w-3.5 shrink-0" />
+                          {/* Thumbnail instead of a generic icon — at list
+                              scale you pick by PICTURE, not by filename.
+                              Lazy-loaded so a thousand-row list stays cheap. */}
+                          <span className="border-border/50 bg-muted relative h-10 w-14 shrink-0 overflow-hidden rounded-md border">
+                            <Image
+                              src={img.src}
+                              alt={img.name}
+                              fill
+                              sizes="56px"
+                              className="object-cover transition-transform group-hover/row:scale-105"
+                              loading="lazy"
+                              unoptimized={img.src.endsWith('.svg')}
+                            />
+                          </span>
                           <span className="text-foreground/90 truncate text-sm">{img.name}</span>
                           <span className="text-muted-foreground/60 ml-auto truncate font-mono text-[11px]">
                             {img.src}
@@ -346,7 +359,7 @@ function ImagePickerBody({
               )}
             </div>
           ))}
-          {hiddenCount > 0 && view === 'grid' && (
+          {hiddenCount > 0 && (
             <div className="mt-2 flex flex-col items-center gap-1 py-2">
               <button
                 type="button"
