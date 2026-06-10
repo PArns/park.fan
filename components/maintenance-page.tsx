@@ -1,9 +1,34 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+
+/** How often to probe whether the API is reachable again. */
+const RECOVERY_POLL_MS = 15_000;
 
 export function MaintenancePage() {
   const t = useTranslations('common');
+
+  // The /maintenance route is static and would otherwise show the outage
+  // screen forever (e.g. after a reload). Poll a lightweight same-origin
+  // proxy endpoint and leave via full navigation once the API responds —
+  // a full load ensures no stale error state survives the recovery.
+  useEffect(() => {
+    let cancelled = false;
+    const check = async () => {
+      try {
+        const res = await fetch('/api/parks/popular?limit=1', { cache: 'no-store' });
+        if (!cancelled && res.ok) window.location.replace('/');
+      } catch {
+        // Still down — keep polling.
+      }
+    };
+    const id = setInterval(check, RECOVERY_POLL_MS);
+    return () => {
+      cancelled = true;
+      clearInterval(id);
+    };
+  }, []);
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-slate-100 px-4 dark:bg-slate-950">

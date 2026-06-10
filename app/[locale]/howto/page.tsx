@@ -1,8 +1,14 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import {
+  locales,
+  generateAlternateLanguages,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { ArticleStructuredData } from '@/components/seo/structured-data';
 import type { ComponentType } from 'react';
 
 // Lazy per-locale loaders so only the requested language's ~1000-line content
@@ -146,7 +152,7 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      url: `https://park.fan/${locale}/howto`,
+      url: `${SITE_URL}/${locale}/howto`,
       siteName: 'park.fan',
       type: 'article',
       images: [
@@ -165,10 +171,10 @@ export async function generateMetadata({ params }: HowtoPageProps): Promise<Meta
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `https://park.fan/${locale}/howto`,
+      canonical: `${SITE_URL}/${locale}/howto`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/howto`),
-        'x-default': 'https://park.fan/en/howto',
+        'x-default': `${SITE_URL}/en/howto`,
       },
     },
     robots: {
@@ -199,6 +205,13 @@ export default async function HowtoPage({ params }: HowtoPageProps) {
 
   return (
     <div className="container mx-auto px-4 py-12">
+      <ArticleStructuredData
+        title={title}
+        description={intro}
+        url={`${SITE_URL}/${locale}/howto`}
+        locale={locale}
+        image={getOgImageUrl([locale, 'howto'])}
+      />
       <div>
         <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{title}</h1>
         <p className="text-muted-foreground mb-10 text-lg">{intro}</p>

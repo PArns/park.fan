@@ -91,6 +91,12 @@
     "maintenanceTitle": "Nous revenons bientôt !",
     "maintenanceDescription": "park.fan est temporairement indisponible pour cause de maintenance. Veuillez réessayer dans quelques minutes."
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous cherchez n'existe pas ou a été déplacée. L'attraction a peut-être été renommée ?",
+    "goHome": "Retour à l'accueil",
+    "browseParks": "Voir tous les parcs"
+  },
   "home": {
     "intro": "park.fan affiche les temps d'attente en direct et l'affluence pour plus de 150 parcs d'attractions et 5 000+ attractions dans le monde—dont Disney, Universal Studios, Europa-Park et Phantasialand. Planifiez votre visite avec les files en direct, horaires et prédictions IA.",
     "hero": {

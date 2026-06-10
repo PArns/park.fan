@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   if (redirectUrl) {
     return {
       title: tNotFound('park'),
-      alternates: { canonical: `https://park.fan/${locale}${redirectUrl}` },
+      alternates: { canonical: `${SITE_URL}/${locale}${redirectUrl}` },
     };
   }
 
@@ -125,17 +125,17 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       locale,
       title,
       description,
-      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
+      url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('park', { park: parkName }),
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
+      canonical: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
       languages: {
         ...generateAlternateLanguages(
           (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}`
         ),
-        'x-default': `https://park.fan/en/parks/${continent}/${country}/${city}/${parkSlug}`,
+        'x-default': `${SITE_URL}/en/parks/${continent}/${country}/${city}/${parkSlug}`,
       },
     },
   };
@@ -248,7 +248,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
       <PageContainer>
         <ParkStructuredData
           park={park}
-          url={`https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+          url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
           description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
           locale={locale}
         />
@@ -398,7 +398,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
 
           <Separator className="my-8" />
           <ShareButtons
-            url={`https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+            url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
             title={park.name}
           />
         </article>

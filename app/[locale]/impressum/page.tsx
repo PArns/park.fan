@@ -1,5 +1,10 @@
 import { getTranslations } from 'next-intl/server';
-import { locales, generateAlternateLanguages, localeToOpenGraphLocale } from '@/i18n/config';
+import {
+  locales,
+  generateAlternateLanguages,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
@@ -28,7 +33,7 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
       description: t('description'),
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
       alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
-      url: `https://park.fan/${locale}/impressum`,
+      url: `${SITE_URL}/${locale}/impressum`,
       siteName: 'park.fan',
       type: 'website',
       images: [
@@ -47,10 +52,10 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
       images: [ogImageUrl],
     },
     alternates: {
-      canonical: `https://park.fan/${locale}/impressum`,
+      canonical: `${SITE_URL}/${locale}/impressum`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/impressum`),
-        'x-default': 'https://park.fan/en/impressum',
+        'x-default': `${SITE_URL}/en/impressum`,
       },
     },
     robots: {

@@ -3,8 +3,13 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Tag } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import { generateAlternateLanguages, locales, localeToOpenGraphLocale } from '@/i18n/config';
-import {BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
+import {
+  generateAlternateLanguages,
+  locales,
+  localeToOpenGraphLocale,
+  SITE_URL,
+} from '@/i18n/config';
+import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { findCanonicalTag, listTags, normalizeTagSlug } from '@/lib/blog/tags';
 import { BlogPostCard } from '@/components/blog/blog-post-card';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
@@ -20,7 +25,6 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 interface TagPageProps {
   params: Promise<{ locale: string; tag: string }>;
 }
-
 
 /**
  * Pre-generate one page per (locale × tag) so every tag in every post becomes
@@ -53,20 +57,20 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
       title: fullTitle,
       description,
       locale: localeToOpenGraphLocale[locale as Locale],
-      url: `https://park.fan/${locale}/blog/tag/${tag}`,
+      url: `${SITE_URL}/${locale}/blog/tag/${tag}`,
       siteName: 'park.fan',
       type: 'website',
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
     },
     twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
     alternates: {
-      canonical: `https://park.fan/${locale}/blog/tag/${tag}`,
+      canonical: `${SITE_URL}/${locale}/blog/tag/${tag}`,
       languages: {
         ...generateAlternateLanguages((l) => `/${l}/blog/tag/${tag}`),
-        'x-default': `https://park.fan/en/blog/tag/${tag}`,
+        'x-default': `${SITE_URL}/en/blog/tag/${tag}`,
       },
       types: {
-        'application/rss+xml': `https://park.fan/${locale}/blog/feed.xml`,
+        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
       },
     },
   };

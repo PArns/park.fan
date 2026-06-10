@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages } from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
@@ -117,7 +117,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         park: parkName,
         city: cityName,
       }),
-      url: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
+      url: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       ogImageUrl,
       imageAlt: tImageAlt('attraction', {
         attraction: attractionName,
@@ -125,13 +125,13 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
       }),
     }),
     alternates: {
-      canonical: `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
+      canonical: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       languages: {
         ...generateAlternateLanguages(
           (l) =>
             `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
         ),
-        'x-default': `https://park.fan/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
+        'x-default': `${SITE_URL}/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
       },
     },
   };
@@ -196,7 +196,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
     continentsLabel: tNav('continents'),
   });
 
-  const attractionUrl = `https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
+  const attractionUrl = `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`;
 
   const backgroundImage =
     getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);

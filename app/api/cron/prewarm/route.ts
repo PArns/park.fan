@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
+import { SITE_URL } from '@/i18n/config';
 
 /**
  * Cache-prewarm crawler.
@@ -20,7 +21,7 @@ import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-u
 
 export const maxDuration = 300; // warming cold parks resolves calendar/stats server-side
 
-const BASE_URL = process.env.PREWARM_BASE_URL || 'https://park.fan';
+const BASE_URL = process.env.PREWARM_BASE_URL || SITE_URL;
 const CONCURRENCY = 12;
 const PER_REQUEST_TIMEOUT_MS = 20_000;
 

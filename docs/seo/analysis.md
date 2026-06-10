@@ -1,212 +1,52 @@
 # park.fan SEO Analysis
 
-As of February 2026. Full-site analysis with concrete recommendations.
+As of June 2026 (full-code review). Earlier February-2026 findings that are done are folded into the table below.
 
 ---
 
-## Already Well Implemented
+## Current State (verified against code)
 
-| Area                      | Status                                                                                                                                                                     |
-| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Metadata**              | `generateMetadata` on all relevant pages (Home, Parks, Park, Attraction, Continent, Country, City, Search, Impressum, Privacy)                                             |
-| **Canonical URLs**        | Set everywhere, locale-specific                                                                                                                                            |
-| **hreflang / alternates** | `alternates.languages` + `x-default` in locale layout and subpages                                                                                                         |
-| **Open Graph**            | title, description, url, locale, images (1200×630), siteName                                                                                                               |
-| **Twitter Cards**         | summary_large_image with title, description, image                                                                                                                         |
-| **Structured Data**       | Organization, WebSite (with SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home + Park + Attraction), Event (Shows)                                 |
-| **Sitemap**               | Split into 3 sub-sitemaps via `generateSitemaps()`: `/sitemap/0.xml` (home+parks), `/sitemap/1.xml` (attractions), `/sitemap/2.xml` (geo) — see [sitemaps.md](sitemaps.md) |
-| **robots.txt**            | Allow /, Disallow /api/, /\_next/, /parks/ (root redirect); sitemap index `/sitemap.xml` listed                                                                            |
-| **Semantics**             | H1 per page, nav with aria-label                                                                                                                                           |
-| **Viewport & Theme**      | viewport, themeColor for Light/Dark                                                                                                                                        |
-
----
-
-## Recommended Optimizations
-
-### 1. **Sitemap: Add Static Pages**
-
-**Problem:** Impressum, Privacy, and the plain search URL (`/search`) are not in the sitemap.
-
-**Recommendation:** Add in `app/sitemap.ts`:
-
-- `${BASE_URL}/${locale}/impressum`
-- `${BASE_URL}/${locale}/datenschutz`
-- `${BASE_URL}/${locale}/search` (search page only, no query, e.g. priority 0.5, changeFrequency monthly)
-
-**Benefit:** Important legal pages and search entry page become indexable and visible in sitemap.
+| Area                      | Status                                                                                                                                                                                                                   |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Metadata**              | `generateMetadata` on all pages (Home, Parks, Geo hubs, Park, Attraction, Search, Blog ×5, Glossary ×2, HowTo, Legal); base URL from `SITE_URL` (`i18n/config.ts`)                                                       |
+| **Canonical URLs**        | Absolute, locale-specific, query params stripped; attraction variant slugs + blog EN-fallbacks canonicalize to their originals                                                                                           |
+| **hreflang / alternates** | Absolute URLs + `x-default` everywhere; blog posts emit only locales with real translations                                                                                                                              |
+| **Open Graph / Twitter**  | Complete incl. images (1200×630 via `/api/og/`), `summary_large_image`                                                                                                                                                   |
+| **Structured Data**       | Organization, WebSite (+SearchAction), ThemePark, TouristAttraction, BreadcrumbList, FAQPage (Home/Park/Attraction), Event (Shows), ItemList (hubs), BlogPosting, DefinedTermSet/DefinedTerm (Glossary), Article (HowTo) |
+| **Sitemap**               | Single `app/sitemap.ts` — see [sitemaps.md](sitemaps.md); noindex pages excluded                                                                                                                                         |
+| **robots.txt**            | `Allow: /api/og/` (OG images crawlable), `Disallow: /api/`; `/_next/` intentionally **not** blocked (Google needs JS/CSS for rendering)                                                                                  |
+| **noindex**               | Legal pages, `/maintenance`, `/ui`, search-with-query, attraction variant slugs, admin (meta robots)                                                                                                                     |
+| **404**                   | Localized `app/[locale]/not-found.tsx` inside the site chrome (header/footer/internal links); root `app/not-found.tsx` covers non-locale paths                                                                           |
+| **Icons / Manifest**      | `app/favicon.ico` + `app/icon.svg` (convention), 180×180 `/apple-touch-icon.png`, manifest with real 192/512 PNGs                                                                                                        |
+| **Feeds / IndexNow**      | RSS per locale (`/blog/feed.xml`, linked via `alternates.types`), IndexNow cron daily 06:00 UTC (canonical URLs only)                                                                                                    |
+| **Rendering**             | All SEO-critical content (names, descriptions, FAQs, JSON-LD) server-rendered; live data client-loaded                                                                                                                   |
 
 ---
 
-### 2. **Search Pages with Query: Consider noindex**
+## Known Trade-offs / Open Items
 
-**Problem:** Each search URL with `?q=...` gets its own canonical URL and could be treated as duplicate content.
-
-**Recommendation:** For search pages with query parameter, set `robots` to `noindex, follow`:
-
-- In `app/[locale]/search/page.tsx` in `generateMetadata`:  
-  When `q` is present: `robots: { index: false, follow: true }`.
-- Without query (`/search`) keep `index: true` (inherited from layout).
-
-**Benefit:** Reduces duplicate content risk; search pages with empty or generic query are not indexed as separate "pages".
+1. **Park sitemap entries have no `lastModified`** — the geo API exposes no update timestamp. Add when the backend provides one.
+2. **Hub + attraction pages not in sitemap** — deliberate crawl-budget decision; they stay indexable via internal links. Revisit if attraction long-tail traffic matters more.
+3. **`error.tsx` is a soft-200 for non-maintenance errors** — client error boundaries can't export metadata; the failing route itself returns HTTP 500, so impact is minimal.
+4. **Maintenance flow** — `/maintenance` is noindex and auto-recovers via a 15 s health poll (`components/maintenance-page.tsx`). Crawlers hitting a failing route during an outage get HTTP 500 (retry-later semantics).
+5. **Blog pagination** — not yet needed (`BLOG_POSTS_PER_PAGE`); when added, use path-based `/blog/page/[n]`, not query params.
 
 ---
 
-### 3. **hreflang: Absolute URLs (optional, Best Practice)**
+## Quick Checklist After Major Changes
 
-**Problem:** Next.js uses relative paths for `alternates.languages` (e.g. `/de/parks`). Google accepts this but recommends absolute URLs for hreflang.
-
-**Recommendation:** If you want to control the `<link rel="alternate" hreflang="...">` output, build absolute URLs in a central helper, e.g.:
-
-```ts
-const SITE_URL = 'https://park.fan';
-export function getAlternateLanguages(pathTemplate: (locale: Locale) => string) {
-  const result: Record<string, string> = {};
-  for (const locale of locales) {
-    result[locale] = `${SITE_URL}${pathTemplate(locale)}`;
-  }
-  result['x-default'] = `${SITE_URL}/en`;
-  return result;
-}
-```
-
-Then generate `canonical` and `languages` values with this base URL in all `generateMetadata`.  
-**Note:** Next.js may already output absolute URLs from relative paths – check the rendered HTML first. If it already shows absolute URLs, no change needed.
-
----
-
-### 4. **Check Title Length (especially Park/Attraction)**
-
-**Problem:** Long titles (e.g. "{Park} {City} Live Wait Times, Crowd Calendar & Best Days to Visit") can be truncated in search results (~50–60 chars visible).
-
-**Recommendation:**
-
-- Adjust title templates in messages so the core (Park/Attraction + location) comes first and stays under ~55 chars, e.g.  
-  `{park} – Wait Times & Crowd | park.fan` or  
-  `{attraction} @ {park} – Wait Times | park.fan`.
-- Consider shortening "… Live Wait Times, Crowd Calendar & Best Days to Visit" or moving it to meta description.
-
-**Benefit:** Better SERP display, less truncation of important names.
-
----
-
-### 5. **Meta Description Length**
-
-**Problem:** Meta descriptions should ideally be ~150–160 characters.
-
-**Recommendation:** In `messages/*.json`, measure values for `seo.*.metaDescriptionTemplate` and `seo.*.description` with typical placeholder values. Shorten overly long texts; keep core message and call-to-action at the front.
-
-**Benefit:** Full display in SERP and clearer user messaging.
-
----
-
-### 6. **Web App Manifest and Icons**
-
-**Problem:** No `manifest.json` (or PWA manifest) and no explicit Apple Touch Icon references.
-
-**Recommendation:**
-
-- Create `app/manifest.ts` (or `manifest.json`) with:
-  - `name`, `short_name`, `description`, `start_url` (e.g. `/en`), `display: 'standalone'` or `'browser'`, `theme_color`, `background_color`, `icons` (min. 192×192, 512×512).
-- In `app/layout.tsx` or root layout:
-  - `<link rel="icon" href="/favicon.ico" sizes="any" />` (if not already present)
-  - Optional: `<link rel="apple-touch-icon" href="/apple-touch-icon.png" />` (180×180)
-
-**Benefit:** Better behavior when adding to home screen, clear branding icons, possible positive signals for "complete" website.
-
----
-
-### 7. **Structured Data: ItemList for List Pages** ✅ Done
-
-~~**Problem:** Continent/Country/City pages list parks without ItemList schema.~~
-
-**Status (v2.6.4):** `ItemListStructuredData` is now present on all listing pages:
-
-- `/parks` overview (continents as ItemList) — **added v2.6.4**
-- `/parks/{continent}` (countries) — already present
-- `/parks/{continent}/{country}` (parks) — already present
-- `/parks/{continent}/{country}/{city}` (parks in city) — already present
-
----
-
-### 8. **Image Alt Text and Lazy Loading**
-
-**Status:** OG images already have translated alt texts (`seo.imageAlt`).
-
-**Recommendation:** Ensure all content-relevant images (e.g. park backgrounds, attraction images) have an `alt` attribute (descriptive, with park/attraction name). Check `loading="lazy"` for below-the-fold images if needed (Next.js `Image` often does this already).
-
----
-
-### 9. **Core Web Vitals & Performance**
-
-**Note:** Not purely "SEO text", but a ranking factor.
-
-**Recommendation:** Monitor LCP, INP/FID, CLS (e.g. Vercel Analytics, Search Console). Already positive: fonts with `display: 'swap'`, viewport set. For pages with many parks/attractions: keep dynamic imports (e.g. for maps/calendar).
-
----
-
-### 10. **404 and Error Pages**
-
-**Status:** `app/not-found.tsx` exists.
-
-**Recommendation:** Ensure the 404 page:
-
-- has clear, helpful text and link to homepage/search,
-- does not get `noindex` (404 pages may be indexed, though Google often removes them),
-- optionally add a simple breadcrumb or "You are here: park.fan → Page not found" for context.
-
----
-
-### 11. **Internal Linking & Breadcrumbs** ✅ Partially Done
-
-**Status (v2.6.4):**
-
-- BreadcrumbNav and BreadcrumbList structured data present on all pages.
-- **FeaturedParksSection added to homepage** — 6 direct park links per locale, locale-specific (de/en/fr/nl/it/es), with live crowd/wait-time data. Reduces click depth from 4+ hops to 1. See [featured-parks.md](featured-parks.md).
-
-**Still open:** Contextual links on Park/Attraction pages to "More parks in {City}" or "Similar attractions in {Park}" — would further improve thematic grouping. Nearby Parks section on park pages is planned (requires `/api/nearby` endpoint, tracked separately).
-
----
-
-### 12. **Duplicate CSS Import (already fixed)**
-
-**Problem:** `app/layout.tsx` imported `./globals.css` twice.
-
-**Status:** Removed – only one import now.
-
----
-
-## Prioritization
-
-| Priority   | Action                                              | Effort     | Benefit                                 | Status         |
-| ---------- | --------------------------------------------------- | ---------- | --------------------------------------- | -------------- |
-| High       | Extend sitemap with Impressum, Privacy, /search     | Low        | Index legal pages + search entry        | ✅ Done        |
-| High       | Set search pages with `?q=...` to noindex, follow   | Low        | Avoid duplicate content                 | ✅ Done        |
-| ~~High~~   | ~~Nearby Parks section on park detail pages~~       | ~~Medium~~ | ~~Cross-linking between parks~~         | ✅ Done        |
-| ~~Medium~~ | ~~Shorten title templates (Park/Attraction)~~       | ~~Medium~~ | ~~Better SERP display~~                 | ✅ Done        |
-| ~~Medium~~ | ~~Check/shorten meta description lengths~~          | ~~Low~~    | ~~Better SERP display~~                 | ✅ Done        |
-| Medium     | Web app manifest + icons                            | Low        | Completeness, Add-to-Homescreen         | ✅ Done        |
-| Low        | hreflang absolute URLs (only if currently relative) | Low        | Best practice                           | ✅ Done        |
-| ~~Low~~    | ~~ItemList for Continent/Country/City~~             | ~~Medium~~ | ~~Optional better list interpretation~~ | ✅ Done v2.6.4 |
-| ~~High~~   | ~~Homepage direct park links (FeaturedParks)~~      | ~~Medium~~ | ~~Internal linking, click depth~~       | ✅ Done v2.6.4 |
-| ~~High~~   | ~~Split sitemap into separate files~~               | ~~Medium~~ | ~~Crawl budget, geo hub pages~~         | ✅ Done v2.6.4 |
-
----
-
-## Quick Checklist Before Go-Live / After Major Changes
-
-- [ ] Sitemap includes all important static pages (incl. Impressum, Privacy, /search).
-- [ ] Search pages with query are noindex, follow.
-- [ ] Title per page under ~60 characters (or core first).
-- [ ] Meta description per page ~150–160 characters.
-- [ ] One H1 per page, sensible H2 hierarchy.
-- [ ] All locales have correct canonical + hreflang.
-- [ ] robots.txt allows / and references sitemap.xml.
-- [ ] Structured Data (Organization, WebSite, Park, Attraction, Breadcrumbs, FAQ) passes Google Rich Results Test.
-- [ ] Manifest and Favicon/Apple Touch Icon set (optional but recommended).
+- [ ] New page types: `generateMetadata` with canonical + hreflang (use `SITE_URL` + `generateAlternateLanguages`), OG image, sensible robots.
+- [ ] noindex pages must NOT be added to `app/sitemap.ts`.
+- [ ] New locale-prefixed routes reachable via internal links (header/footer/breadcrumbs).
+- [ ] Structured data passes the Google Rich Results Test.
+- [ ] Titles < ~60 chars, descriptions ~150–160 chars (see `seo.*` in `messages/*.json`).
+- [ ] Don't block crawlable assets in `app/robots.ts` (especially `/api/og/`, `/_next/`).
 
 ---
 
 ## Related
 
-- [Internationalization](../i18n/internationalization.md) – hreflang, locale
-- [Development Scripts](../development/scripts.md)
+- [Sitemaps](sitemaps.md)
+- [Featured Parks](featured-parks.md)
+- [SEO Roadmap](seo-roadmap.md)
+- [Internationalization](../i18n/internationalization.md)

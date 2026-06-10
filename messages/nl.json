@@ -91,6 +91,12 @@
     "maintenanceTitle": "We zijn zo weer terug!",
     "maintenanceDescription": "park.fan is tijdelijk niet beschikbaar vanwege onderhoud. Probeer het over een paar minuten opnieuw."
   },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die je zoekt bestaat niet of is verplaatst. Misschien heeft de attractie een nieuwe naam gekregen?",
+    "goHome": "Naar de startpagina",
+    "browseParks": "Alle parken bekijken"
+  },
   "home": {
     "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 150 pretparken en 5.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
     "hero": {

@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
 import { submitUrlsToIndexNow } from '@/lib/indexnow';
-import { locales } from '@/i18n/config';
+import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { getParkPaths, getAttractionPaths, localizedUrls } from '@/lib/content-urls';
 
-const BASE_URL = 'https://park.fan';
+const BASE_URL = SITE_URL;
 
 export const maxDuration = 60;
 
@@ -48,10 +48,10 @@ export async function GET(request: Request) {
 
     for (const locale of locales) {
       urls.push(`${BASE_URL}/${locale}/blog`);
-      // Posts — each translationKey contributes a per-locale URL.
+      // Posts — only real translations; EN-fallback URLs canonicalize to the
+      // EN original and shouldn't be submitted.
       for (const [, localeMap] of translationIndex) {
-        const enSlug = localeMap.get('en');
-        const slug = localeMap.get(locale) ?? enSlug;
+        const slug = localeMap.get(locale);
         if (slug) urls.push(`${BASE_URL}/${locale}/blog/${slug}`);
       }
       // Categories + tags

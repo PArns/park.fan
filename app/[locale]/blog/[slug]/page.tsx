@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { locales, localeToOpenGraphLocale } from '@/i18n/config';
+import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import {
   buildPostAlternates,
   getPostByLocaleSlug,
@@ -32,10 +32,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { ParkBackground } from '@/components/parks/park-background';
-import {
-  categoryPathBreadcrumbs,
-  resolveCategoryLabel,
-} from '@/lib/blog/categories';
+import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
 
 interface BlogPostPageProps {
@@ -61,8 +58,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   const title = frontmatter.seo?.title ?? frontmatter.title;
   const description = frontmatter.seo?.description ?? frontmatter.excerpt;
   const fullTitle = `${title} | ${t('title')} · park.fan`;
+  // Only locales with a real translation — fallback locales serve the EN
+  // content and must not advertise themselves as translations.
   const alternates = buildPostAlternates(translationKey);
-  const localeUrl = alternates[locale] ?? `https://park.fan/${locale}/blog/${post.slug}`;
+  const localeUrl = alternates[locale] ?? `${SITE_URL}/${locale}/blog/${post.slug}`;
+  // A fallback URL (EN content under another locale prefix) is a duplicate of
+  // the EN original — point its canonical there instead of at itself.
+  const canonicalUrl = alternates[locale] ?? alternates['en'] ?? localeUrl;
   // OG image priority:
   //   1. explicit seo.ogImage frontmatter override
   //   2. cover image from frontmatter (the post hero)
@@ -75,18 +77,19 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     getOgImageUrl([locale, 'blog', post.slug]);
   const fullOgImage = ogImageSource.startsWith('http')
     ? ogImageSource
-    : `https://park.fan${ogImageSource.startsWith('/') ? '' : '/'}${ogImageSource}`;
+    : `${SITE_URL}${ogImageSource.startsWith('/') ? '' : '/'}${ogImageSource}`;
 
   // Merge `tags` with the optional `seo.keywords` frontmatter field — both
   // feed Google's keywords meta, the tag list anchors the in-app archive.
   const extraKeywords = Array.isArray(frontmatter.seo?.keywords)
     ? frontmatter.seo!.keywords
     : typeof frontmatter.seo?.keywords === 'string'
-      ? frontmatter.seo.keywords.split(',').map((k) => k.trim()).filter(Boolean)
+      ? frontmatter.seo.keywords
+          .split(',')
+          .map((k) => k.trim())
+          .filter(Boolean)
       : [];
-  const allKeywords = Array.from(
-    new Set([...(frontmatter.tags ?? []), ...extraKeywords])
-  );
+  const allKeywords = Array.from(new Set([...(frontmatter.tags ?? []), ...extraKeywords]));
 
   const seoIndex = frontmatter.seo?.noindex !== true;
   const canonicalOverride = frontmatter.seo?.canonical;
@@ -124,13 +127,13 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       images: [fullOgImage],
     },
     alternates: {
-      canonical: canonicalOverride ?? localeUrl,
+      canonical: canonicalOverride ?? canonicalUrl,
       languages: {
         ...alternates,
         'x-default': alternates['en'] ?? localeUrl,
       },
       types: {
-        'application/rss+xml': `https://park.fan/${locale}/blog/feed.xml`,
+        'application/rss+xml': `${SITE_URL}/${locale}/blog/feed.xml`,
       },
     },
     robots: {
@@ -195,13 +198,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     }
   }
 
-  const shareUrl = `https://park.fan/${locale}/blog/${post.slug}`;
+  const shareUrl = `${SITE_URL}/${locale}/blog/${post.slug}`;
   const hasToc = extractToc(post.content).length >= 3;
 
   return (
     <>
       {cover && <link rel="preload" as="image" href={cover} />}
-      <ParkBackground imageSrc={cover} alt={post.frontmatter.coverImage?.alt ?? post.frontmatter.title} />
+      <ParkBackground
+        imageSrc={cover}
+        alt={post.frontmatter.coverImage?.alt ?? post.frontmatter.title}
+      />
       <BlogReadingProgress />
 
       <PageContainer>
@@ -224,11 +230,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div
             className={
-              hasToc ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8' : undefined
+              hasToc
+                ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8'
+                : undefined
             }
           >
             {hasToc && (
-              <aside className="mb-8 space-y-6 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+              <aside className="mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
                 <BlogToc markdown={post.content} title={post.frontmatter.title} />
                 {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
                 <div className="hidden space-y-6 lg:block">
