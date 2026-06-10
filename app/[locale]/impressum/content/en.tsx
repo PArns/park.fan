@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Link } from '@/i18n/navigation';
 import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
@@ -14,7 +15,12 @@ export function ImpressumEN() {
         </h2>
 
         <address className="my-4 not-italic">
-          <strong>Patrick Arns</strong>
+          <Link
+            href={'/blog/authors/patrick' as '/'}
+            className="hover:text-primary underline-offset-4 transition-colors hover:underline"
+          >
+            <strong>Patrick Arns</strong>
+          </Link>
           <br />
           Ahrstr. 7
           <br />
@@ -33,7 +39,12 @@ export function ImpressumEN() {
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Editorially responsible</h3>
         <address className="my-4 not-italic">
-          <strong>Patrick Arns</strong>
+          <Link
+            href={'/blog/authors/patrick' as '/'}
+            className="hover:text-primary underline-offset-4 transition-colors hover:underline"
+          >
+            <strong>Patrick Arns</strong>
+          </Link>
           <br />
           Ahrstr. 7
           <br />

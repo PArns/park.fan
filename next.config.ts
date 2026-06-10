@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
   // routes). Server data fetches are cached in the Vercel Data Cache via `fetch` `next:{revalidate}`
   // (see lib/api/*). Content pages (glossary, legal, hubs) stay static via generateStaticParams.
   staticPageGenerationTimeout: 180,
+  // Include blog content + images in the deployment bundle. lib/blog/authors,
+  // lib/blog/categories and lib/blog/gallery read these via process.cwd() at
+  // runtime, which Next.js can't statically trace through imports.
+  outputFileTracingIncludes: {
+    '/[locale]/blog/**': ['./content/blog/**/*', './public/blog/**/*'],
+    '/sitemap.xml': ['./content/blog/**/*'],
+    '/[locale]': ['./content/blog/**/*'],
+  },
   compiler: {
     // Remove React properties that are not needed in production
     reactRemoveProperties: process.env.NODE_ENV === 'production',

@@ -7,4 +7,8 @@ declare module 'schema-dts' {
   export type Organization = any;
   export type Attraction = any;
   export type TouristAttraction = any;
+  export type BlogPosting = any;
+  export type Blog = any;
+  export type Person = any;
+  export type ImageObject = any;
 }

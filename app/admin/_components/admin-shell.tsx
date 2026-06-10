@@ -13,6 +13,7 @@ import {
   Loader2,
   LogOut,
   MapPin,
+  PenLine,
   RefreshCw,
   Server,
   ShieldCheck,
@@ -54,7 +55,10 @@ const NAV_GROUPS: NavGroup[] = [
   },
   {
     label: 'Management',
-    items: [{ href: '/admin/parks', label: 'Parks', icon: MapPin }],
+    items: [
+      { href: '/admin/parks', label: 'Parks', icon: MapPin },
+      { href: '/admin/blog-editor', label: 'Blog editor', icon: PenLine },
+    ],
   },
   {
     label: 'Operations',

@@ -28,5 +28,9 @@ export const config = {
   // Note: This must be a static array - Next.js config cannot use dynamic values
   // We use the pattern from config but expanded manually for now as Next.js config needs static strings
   // or simple template literals.
-  matcher: ['/', '/(de|en|nl|fr|es|it)/:path*', '/((?!api|admin|_next|_vercel|.*\\..*).*)'],
+  matcher: [
+    '/',
+    '/(de|en|nl|fr|es|it)/:path*',
+    '/((?!api|admin|dev|_next|_vercel|.*\\..*).*)',
+  ],
 };

@@ -8,7 +8,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Wait time (also called queue time) is the estimated duration a guest must stand in line before boarding a ride or attraction. Parks post wait times at ride entrances and on their official apps, calculating the figure from queue length sensors, historical throughput data, and current loading efficiency. On busy days a single popular attraction can show waits of 90 minutes or more, making real-time data invaluable for planning your day.\n\npark.fan tracks live wait times updated every few minutes so you can monitor conditions across all attractions simultaneously. By comparing wait times across a park in real time you can identify which rides are experiencing temporary lulls and which have built up long queues — and act accordingly. Combining live wait data with the crowd calendar gives you the full picture before you even arrive at the gate.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
-    aliases: ['Wait Times'],
+    aliases: ['Wait Times', 'queue time', 'queue times'],
   },
   {
     id: 'single-rider',
@@ -19,6 +19,7 @@ const translations: GlossaryTermTranslation[] = [
       'Single rider queues allow guests who are comfortable riding alone — or separated from their group — to fill odd seats left over in ride vehicles. Because single riders slot into gaps rather than waiting for an entire row to fill, the line moves dramatically faster than the standby queue, often cutting wait times by 50–70%. Rides with large multi-row vehicles, such as roller coasters and simulator attractions, benefit the most from this system.\n\nNot every park or attraction offers single rider access. Where available it is one of the most cost-free strategies for reducing your daily queue time. The trade-off is that you may not sit alongside your companions, so it works best for larger thrill rides where the experience is largely individual. Always check the ride entrance signage or the park app before committing to the single rider lane.',
     alternateNames: ['Single Rider Lane', 'Solo rider queue'],
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -38,6 +39,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "An Express Pass (the exact name varies by park — Universal Express, Disney Lightning Lane, Six Flags Flash Pass, etc.) is a ticket upgrade allowing holders to use a dedicated priority entrance with significantly shorter wait times. Some parks include express access in premium resort hotel packages; others sell it as a daily add-on with dynamic pricing that rises as the park gets busier. At Universal Studios parks, the unlimited Express Pass effectively allows guests to re-ride the same attraction multiple times throughout the day.\n\nWhether an Express Pass is worth the cost depends heavily on crowd levels. On a quiet day with 20-minute standby waits, a premium pass offers limited value. On a peak day with 90-minute queues, the math changes dramatically. Use park.fan's crowd calendar to forecast the busyness of your chosen visit date before deciding whether to purchase.",
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Express Passes']
   },
   {
     id: 'posted-wait-time',
@@ -47,6 +49,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The posted wait time is the official estimate displayed on signs at the physical entrance of a ride and in the park's official app. Parks calculate this figure using queue length sensors, historical throughput data, and current loading efficiency. Posted times are typically rounded to the nearest 5 or 10 minutes and can sometimes differ from the actual experienced wait — parks occasionally overestimate to manage expectations, or underestimate when queues unexpectedly lengthen.\n\nPark.fan aggregates posted wait times from official sources every few minutes, giving you a live picture of conditions across all tracked attractions. Comparing posted times across different attractions at the same moment is one of the simplest and most effective ways to decide which ride to head to next during your visit.",
     relatedTermIds: ['crowd-level', 'wait-time'],
+    aliases: ['posted wait times', 'posted wait', 'displayed wait time']
   },
   {
     id: 'crowd-level',
@@ -66,6 +69,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A crowd calendar is a month-by-month or year-view calendar showing predicted crowd levels for each day at a specific park. park.fan generates crowd calendars using AI models trained on years of historical wait time data, cross-referenced with school holiday schedules across multiple countries, upcoming events, park operating hours, and seasonal trends. Green days indicate low predicted crowds; orange and red days flag high visitor numbers.\n\nFor visitors with flexible dates, the crowd calendar is one of the most powerful tools available. Shifting a visit by even one or two days can mean the difference between 30-minute queues and 90-minute queues for the same attraction. Families planning around school holidays can use the calendar to identify whether specific holiday weeks are historically busier or quieter than others at their chosen park.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
+    aliases: ['crowd calendars']
   },
   {
     id: 'peak-day',
@@ -84,6 +88,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A refurbishment (often called a "rehab" by enthusiasts) is a scheduled maintenance or renovation period during which a ride, show, or area of the park is temporarily closed. Refurbishments can last from a few days to several months and are typically planned for the off-season to minimise visitor impact. Parks usually publish refurbishment schedules in advance, though the dates can shift. Major parks like Disney and Universal schedule annual maintenance windows for each attraction, often rotating closures so that different rides are refurbished each year.\n\nRefurbishments are important planning considerations — discovering that your most anticipated ride is closed upon arrival can be deeply frustrating. park.fan marks attractions currently undergoing refurbishment so you can check the status of your target rides before booking travel. Always cross-reference park.fan data with the official park website before finalising a trip, particularly for shoulder-season visits when refurbishment activity is highest.',
     relatedTermIds: ['downtime', 'ride-capacity'],
+    aliases: ['Refurbishments', 'refurb', 'refurbs']
   },
   {
     id: 'downtime',
@@ -93,6 +98,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Downtime refers to an unscheduled, temporary closure of a ride or attraction — distinct from a planned refurbishment. Causes include mechanical malfunctions, sensor errors, safety checks triggered by guest incidents, adverse weather (particularly lightning), or animals entering the ride zone. Most downtime events are resolved within minutes to a couple of hours, though complex mechanical failures can extend closures.\n\nFrom a planning perspective, downtime is one of the least predictable variables in a theme park day. High-capacity rides with complex systems — such as large roller coasters or elaborate dark rides — tend to experience downtime more frequently than simpler attractions. park.fan displays the current operational status of every tracked attraction in real time, distinguishing between Operating, Down, Closed, and Refurbishment states, so you can adjust your route the moment a ride goes offline.',
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
+    aliases: ['Downtimes', 'ride downtime']
   },
   {
     id: 'ride-capacity',
@@ -111,6 +117,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Rope drop refers to the moment a theme park opens for the day — named after the physical rope or barrier that park staff lower to allow the first guests inside. Arriving at rope drop, or ideally 30–45 minutes before the stated opening time to clear security and reach the gate first, is one of the most effective no-cost strategies in theme park planning. Popular rides see their shortest queues of the entire day during the first 30–60 minutes of park operation, before the bulk of the crowd arrives and spreads through the park.\n\nThe optimal rope drop strategy depends on the park layout. At Magic Kingdom, for example, rushing to Seven Dwarfs Mine Train immediately at opening can mean a 15-minute wait versus a 90-minute wait by mid-morning. Many parks also offer early park entry for hotel guests, allowing access to select attractions before the general public. park.fan's schedule section shows exact opening times for each park so you can build your rope drop plan around the official hours.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 'wait-time'],
+    aliases: ['Rope Drops']
   },
   {
     id: 'early-entry',
@@ -129,6 +136,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A Park Hopper ticket allows entry to two or more parks operated by the same resort on a single day. Disney's Park Hopper option, for example, lets guests switch between Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom after 2 PM. Universal Orlando offers a two- or three-park ticket covering Universal Studios, Islands of Adventure, and Epic Universe. In Europe, PortAventura World offers a combined ticket for PortAventura Park and Ferrari Land.\n\nHopping is most worthwhile when a specific attraction you want exists only in a second park, when you want to combine a morning in one park with a dinner or evening show in another, or on shorter trips where seeing highlights across multiple parks is a priority. The cost premium over a single-park ticket varies by resort and is usually higher on peak days with dynamic pricing.",
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
+    aliases: ['Park Hoppers']
   },
   {
     id: 'season-pass',
@@ -137,6 +145,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A Season Pass (Annual Pass) grants unlimited entry to one or more parks over a 12-month period. Higher tiers typically include extras such as free or discounted parking, dining discounts, merchandise deals, and early reservation windows for special events. Annual passes are sold at parks worldwide — Europa-Park's Jahrespass, Disneyland Paris's Annual Pass, and Alton Towers's Merlin Annual Pass are popular European examples.\n\nMany passes include blockout dates on the busiest days of the year, restricting entry on peak periods to manage capacity. For frequent visitors — typically three or more visits per year — an annual pass nearly always pays for itself compared to buying individual day tickets. Some passes also offer reciprocal access or discounts at partner parks, adding additional value for enthusiasts who visit multiple parks per year.",
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
+    aliases: ['Season Passes']
   },
   {
     id: 'height-requirement',
@@ -156,6 +165,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A themed land is a distinct area within a theme park combining a unified visual design, a narrative backstory, and matching attractions, dining, and merchandise. The goal is total immersion — when done well, guests feel transported to a different world the moment they cross the land's entrance. Well-known examples include The Wizarding World of Harry Potter at Universal (both Orlando and Hollywood), Star Wars: Galaxy's Edge at Disney, and Avalon at Phantasialand.\n\nThemed lands are typically the most photographed and highest-demand sections of a park. New land openings generate enormous media attention and bring significant crowd spikes during their debut seasons. From a practical standpoint, themed lands often cluster their highest-capacity rides with their lower-capacity headliners, creating uneven wait times within the same area. Understanding a land's attraction layout helps you plan the most efficient order of operations when you arrive.",
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
+    aliases: ['Themed Lands']
   },
   {
     id: 'soft-opening',
@@ -174,6 +184,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The standby queue is the regular waiting line that all guests can join without any ticket upgrade or priority pass. It operates on a first-come, first-served basis and wait times directly reflect the real-time crowd level at that attraction. On busy days, standby queues for headline rides at major parks can stretch to 90 minutes or more — sometimes wrapping around multiple switchback sections and extending outside the queue building entirely.\n\nTracking standby wait times across a park in real time is the core use case for park.fan. By monitoring multiple rides simultaneously, you can identify when a popular attraction's queue suddenly drops (perhaps due to downtime clearing, or a show drawing crowds away) and react quickly. The standby queue is also the baseline against which the value of any priority pass is measured — the bigger the standby wait, the more valuable an Express Pass becomes.",
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['standby queues', 'standby']
   },
   {
     id: 'lightning-lane',
@@ -183,6 +194,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Lightning Lane is Disney's name for its priority queue access system, introduced in late 2021 to replace the discontinued FastPass+ programme. It comes in two tiers: Individual Lightning Lane (ILL), sold separately for the highest-demand attractions at a per-person, per-ride fee; and Lightning Lane Multi Pass (LLMP), a daily subscription allowing guests to reserve timed return windows across a selection of rides. Pricing for both tiers is dynamic, rising on busier days.\n\nLightning Lane replaced a system that was free, making it one of the most debated changes in recent Disney history. The practical impact depends on how busy the park is — on quiet days the standby queue is fast enough that Lightning Lane offers marginal benefit. On peak days, Individual Lightning Lane for the very top attractions (Space Mountain, Tron, Radiator Springs Racers) can mean the difference between riding and missing out entirely. park.fan\'s crowd calendar can help you judge which days warrant the additional spend.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -247,6 +259,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Opening day is the officially announced date on which a new park, expansion, or attraction opens to the general public. Opening days are major events in the theme park community, typically drawing large media coverage, ribbon-cutting ceremonies, character appearances, and a festive atmosphere. They also attract the most dedicated enthusiasts, who often queue from the early hours to be among the first to experience the new attraction.\n\nDespite the celebratory atmosphere, opening day is rarely the optimal time for a first visit if minimising wait times is your goal. The combination of media attention, novelty factor, and enthusiast tourism typically produces some of the longest opening-week queues an attraction will ever see. Soft openings occasionally precede the official opening day and can provide a much lower-crowd alternative for guests who happen to be in the park at the right moment.',
     relatedTermIds: ['crowd-level', 'rope-drop', 'soft-opening'],
+    aliases: ['Opening Days']
   },
   {
     id: 'rider-switch',
@@ -299,6 +312,7 @@ const translations: GlossaryTermTranslation[] = [
       'vr-coaster',
       'wait-time',
     ],
+    aliases: ['Dark Rides']
   },
   {
     id: 'return-time',
@@ -365,6 +379,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A launch coaster replaces the traditional chain lift hill with a propulsion system that rapidly accelerates the train from a standstill to top speed in just a few seconds. The main technologies are: LSM (Linear Synchronous Motor) launches, where electromagnetic coils accelerate a fin attached to the train — smooth, precise, and reusable; LIM (Linear Induction Motor) launches — similar but less energy-efficient; hydraulic launches, used by Intamin on record-breaking coasters like Kingda Ka (0 to 206 km/h in 3.5 seconds); and compressed-air launches. Some coasters feature multiple launches throughout the circuit, maintaining energy across the layout.\n\nThe sudden, powerful acceleration of a launch is a defining sensation that no lift hill can replicate. Taron at Phantasialand, the world's longest launched coaster by circuit length at time of installation, delivers two separate LSM launches through an intricately themed rocky landscape. Red Force at Ferrari Land in Spain reaches 180 km/h in five seconds via hydraulic launch. LSM technology has become the dominant standard for new-build launched coasters in Europe.",
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters']
   },
   {
     id: 'wooden-coaster',
@@ -718,6 +733,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A dive coaster is characterised by a wide train — typically four to eight riders across per row — a near-vertical or beyond-vertical drop (90 degrees or more), and a theatrical pause at the top of the drop where the train holds momentarily at the crest before releasing. The wide train gives every rider an unobstructed view straight down into the drop, amplifying the psychological anticipation. The pause is not an accident: it is a deliberate design decision to maximise tension before the plunge.\n\nB&M's Dive Machine line popularised the concept with Oblivion at Alton Towers (1998) — Europe's first dive coaster — and SheiKra at Busch Gardens Tampa. In Europe, Valkyria at Liseberg, Dive to Atlantis at Gardaland, and Baron 1898 at Efteling are celebrated Dive Machine installations. Gerstlauer offers a competing Dive Coaster model for smaller spaces. The combination of wide train, extreme drop angle, and deliberate pause makes dive coasters among the most immediately communicable experiences in theme park marketing.",
     relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
+    aliases: ['Dive Coasters']
   },
   {
     id: 'credit',
@@ -818,6 +834,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Hyper coaster is the industry classification for roller coasters between 200 and 299 feet (approximately 61–91 m) in height. B&M and Intamin use slightly different terminology — B&M calls their designs Hyper Coasters while Intamin uses the term Mega Coaster — but the height range is consistent. Both manufacturers' hyper-class rides share the same design philosophy: long, flowing layouts with large camelback airtime hills at sustained high speed, typically without any inversions.\n\nShambhala at PortAventura in Spain is Europe's tallest hyper coaster at 76 m, often ranked among the continent's best coasters overall. Other celebrated European hypers include Goliath at Walibi Holland, Silver Star at Europa-Park, and Kondaa at Walibi Belgium (Mack Rides' take on the format). Globally, Mako at SeaWorld Orlando and Diamondback at Kings Island are considered benchmarks. The combination of sheer height, sustained speed, and repeated powerful airtime moments makes hyper coasters consistently the most popular ride type among dedicated enthusiasts.",
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
+    aliases: ['Hyper Coasters']
   },
   {
     id: 'giga-coaster',
@@ -872,7 +889,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'An AI forecast uses machine learning models trained on historical attendance data, weather patterns, school holiday calendars, and real-time queue data to predict how busy a theme park or individual attraction will be on any given day or hour. park.fan generates AI forecasts for crowd levels and expected wait times up to 30+ days in advance.\n\nThe predictions are updated continuously as new data arrives. Near-term forecasts (1–7 days) are typically very accurate because recent weather, event announcements, and booking signals can be incorporated. Longer-range forecasts are naturally less precise but still valuable for planning — they identify reliably quiet or busy periods well ahead of time.\n\nAI forecasts differ from simple historical averages by adapting to current conditions: a theme park that has just announced a new attraction, a public holiday falling on a different weekday than usual, or an unusually warm spring weekend will all shift the prediction meaningfully away from the historical baseline.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['AI Forecasts'],
+    aliases: ['AI Forecasts', 'AI prediction', 'AI predictions'],
   },
   {
     id: 'ki',
@@ -891,7 +908,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A live wait time is the current, real-time wait pulled from a park's own data systems — not a historical average, but the actual figure right now, to the minute. park.fan fetches live wait times from official park APIs and third-party sources and refreshes every minute, so you always know which attractions are running short queues and which are backed up.",
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
-    aliases: ['Live Wait Times'],
+    aliases: ['Live Wait Times', 'live wait time', 'real-time wait time', 'real-time wait times'],
     alternateNames: ['Real-Time Wait Time', 'Real-Time Wait Times'],
   },
   {

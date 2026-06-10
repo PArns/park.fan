@@ -8,7 +8,7 @@ import { stripNewPrefix } from '@/lib/utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
-import { isValidLocale } from '@/i18n/config';
+import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import {
   FlagDE,
@@ -162,6 +162,17 @@ export async function GET(
     // New: Allow locale (1), locale/continent (2), ...
     if (path.length < 1) {
       return new Response('Invalid path. Expected at least: locale', { status: 400 });
+    }
+
+    // Blog branch — `<locale>/blog/...` (index / post / category / tag) is
+    // handled by a dedicated, simpler renderer. Falls through to the
+    // existing flow when the second segment isn't `blog`.
+    if (path.length >= 2 && path[1] === 'blog' && isValidLocale(path[0])) {
+      const { renderBlogOg } = await import('@/lib/og/blog-og');
+      return renderBlogOg({
+        locale: path[0] as Locale,
+        segments: path.slice(2),
+      });
     }
 
     // Generic pages configuration

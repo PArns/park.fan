@@ -1,4 +1,10 @@
 {
+  "share": {
+    "title": "Partager",
+    "on": "Partager sur {platform}",
+    "copy": "Copier le lien",
+    "copied": "Copié !"
+  },
   "common": {
     "scroll": "Défiler",
     "loading": "Chargement...",
@@ -192,6 +198,7 @@
     "impressum": "Mentions Légales",
     "howto": "Comment ça marche",
     "glossaryLink": "Dictionnaire",
+    "blog": "Blog",
     "datenschutz": "Confidentialité",
     "privacy": "Politique de Confidentialité",
     "terms": "Conditions d'Utilisation",
@@ -235,7 +242,8 @@
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
     "howto": "Guide",
-    "glossary": "Dictionnaire"
+    "glossary": "Dictionnaire",
+    "blog": "Blog"
   },
   "theme": {
     "light": "Clair",
@@ -985,5 +993,105 @@
   "parkCard": {
     "until": "Jusqu'à",
     "closingIn": "dans"
+  },
+  "blog": {
+    "title": "Blog",
+    "badge": "Blog park.fan",
+    "description": "Carnets de visite, analyses de données et actualités des parcs par l'équipe park.fan.",
+    "intro": "Carnets de visite honnêtes, analyses de temps d'attente et brèves d'actualité.",
+    "blog": "Blog",
+    "empty": "Aucun article pour le moment.",
+    "readMore": "Lire l'article",
+    "readingTime": "{minutes} min de lecture",
+    "updatedOn": "Mis à jour le {date}",
+    "languageNotice": {
+      "available": "Cet article est aussi disponible en {language}",
+      "fallback": "Pas encore traduit — version en {language} affichée."
+    },
+    "breadcrumbs": "Fil d'Ariane",
+    "categories": "Catégories",
+    "category": {
+      "label": "Catégorie",
+      "description": "Articles dans {category} sur park.fan.",
+      "postsCount": "{count, plural, =1 {# article} other {# articles}}"
+    },
+    "home": {
+      "heading": "Depuis le blog",
+      "intro": "Carnets de visite, analyses de données et actualités des parcs – les derniers articles apparaissent ici en premier.",
+      "viewAll": "Lire tous les articles"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "openImage": "Ouvrir l'image {index} sur {total}",
+      "close": "Fermer la galerie",
+      "next": "Image suivante",
+      "previous": "Image précédente"
+    },
+    "inlineImage": {
+      "openImage": "Ouvrir l'image",
+      "close": "Fermer l'image"
+    },
+    "parkLink": {
+      "viewPark": "Voir {name}",
+      "avgWait": "{minutes} min en moyenne",
+      "openAttractions": "{open} sur {total} ouvertes"
+    },
+    "attractionLink": {
+      "attraction": "Attraction",
+      "viewAttraction": "Voir {name}",
+      "atPark": "à {park}"
+    },
+    "related": {
+      "title": "Plus depuis le blog"
+    },
+    "relatedParks": {
+      "title": "Parcs mentionnés dans l'article"
+    },
+    "widget": {
+      "parkSpotlight": "Parc à la une",
+      "parkNotFound": "Parc \"{slug}\" introuvable.",
+      "attractionSpotlight": "Attraction à l'honneur",
+      "attractionNotFound": "Attraction \"{slug}\" introuvable.",
+      "parkMap": "Plan du parc",
+      "weather": "Météo",
+      "glossary": "Glossaire",
+      "glossaryMore": "Définition complète",
+      "termNotFound": "Terme du glossaire « {slug} » introuvable."
+    },
+    "toc": {
+      "title": "Sommaire",
+      "label": "Table des matières"
+    },
+    "postNav": {
+      "label": "Plus d'articles",
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Précédent",
+      "next": "Suivant",
+      "pageLabel": "Page {page}",
+      "pageOf": "Page {page} sur {total}",
+      "goToPage": "Aller à la page {page}"
+    },
+    "references": {
+      "parks": "{count, plural, =1 {Parc dans cet article} other {Parcs dans cet article}}",
+      "attractions": "{count, plural, =1 {Attraction dans cet article} other {Attractions dans cet article}}"
+    },
+    "author": {
+      "label": "Auteur",
+      "postsBy": "Articles de {name}",
+      "postsCount": "{count, plural, =1 {# article} other {# articles}}",
+      "description": "Articles de {name} sur park.fan.",
+      "noPosts": "Pas encore d'articles."
+    },
+    "tag": {
+      "label": "Tag",
+      "description": "Articles taggés #{tag} sur park.fan.",
+      "postsCount": "{count, plural, =1 {# article} other {# articles}}",
+      "cloudTitle": "Thèmes"
+    },
+    "featured": "À la une"
   }
 }

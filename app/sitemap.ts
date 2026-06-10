@@ -135,5 +135,90 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Attraction pages excluded — crawl budget focused on high-value park pages.
 
+  // ── Blog pages ────────────────────────────────────────────────────────────
+  const { listPosts, buildPostAlternates, getTranslationIndex, hasPublishedPosts } =
+    await import('@/lib/blog');
+  const { buildCategoryTree } = await import('@/lib/blog/categories');
+
+  // The blog only exists for the frontend once something is published —
+  // keep the index + posts + category/tag pages out of the sitemap until then.
+  if (!hasPublishedPosts()) return routes;
+
+  const blogIndexAlternates = buildAlternates(() => '/blog');
+  for (const locale of locales) {
+    routes.push({
+      url: `${BASE_URL}/${locale}/blog`,
+      changeFrequency: 'daily',
+      priority: 0.7,
+      alternates: blogIndexAlternates,
+    });
+  }
+
+  // Blog posts — alternates per translationKey use locale-specific slugs.
+  const translationIndex = getTranslationIndex();
+  for (const [translationKey, localeMap] of translationIndex) {
+    const enSlug = localeMap.get('en');
+    const alternates: Record<string, string> = {};
+    for (const locale of locales) {
+      const slug = localeMap.get(locale as import('@/i18n/config').Locale) ?? enSlug;
+      if (slug) alternates[locale] = `${BASE_URL}/${locale}/blog/${slug}`;
+    }
+    if (alternates['en']) alternates['x-default'] = alternates['en'];
+
+    for (const locale of locales) {
+      const posts = listPosts(locale as import('@/i18n/config').Locale);
+      const post = posts.find((p) => p.translationKey === translationKey);
+      if (!post) continue;
+      const lastMod = post.frontmatter.updatedAt ?? post.frontmatter.date;
+      routes.push({
+        url: alternates[locale] ?? `${BASE_URL}/${locale}/blog/${post.slug}`,
+        lastModified: new Date(lastMod),
+        changeFrequency: 'monthly',
+        priority: 0.6,
+        alternates: { languages: alternates },
+      });
+    }
+    void buildPostAlternates(translationKey);
+  }
+
+  // Blog category pages
+  for (const locale of locales) {
+    const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
+    for (const path of flat.keys()) {
+      routes.push({
+        url: `${BASE_URL}/${locale}/blog/category/${path}`,
+        changeFrequency: 'weekly',
+        priority: 0.4,
+        alternates: buildAlternates(() => `/blog/category/${path}`),
+      });
+    }
+  }
+
+  // Blog tag pages
+  const { listTags } = await import('@/lib/blog/tags');
+  for (const locale of locales) {
+    for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
+      routes.push({
+        url: `${BASE_URL}/${locale}/blog/tag/${tag.slug}`,
+        changeFrequency: 'weekly',
+        priority: 0.4,
+        alternates: buildAlternates(() => `/blog/tag/${tag.slug}`),
+      });
+    }
+  }
+
+  // Blog author pages
+  const { listAuthorKeys } = await import('@/lib/blog/authors');
+  for (const locale of locales) {
+    for (const author of listAuthorKeys()) {
+      routes.push({
+        url: `${BASE_URL}/${locale}/blog/authors/${author}`,
+        changeFrequency: 'weekly',
+        priority: 0.4,
+        alternates: buildAlternates(() => `/blog/authors/${author}`),
+      });
+    }
+  }
+
   return routes;
 }

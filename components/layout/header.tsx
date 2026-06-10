@@ -19,7 +19,13 @@ import type { NearbyParksData } from '@/types/nearby';
 /** API returns distance in meters. Only show "Nearby: Park" when nearest park is within this (m). */
 const NEAR_PARK_HEADER_RADIUS_M = 5000; // 5 km
 
-export function Header() {
+interface HeaderProps {
+  /** Whether the blog has at least one published post — every blog link
+   *  hides while the answer is no. Computed server-side in the layout. */
+  showBlog?: boolean;
+}
+
+export function Header({ showBlog = true }: HeaderProps) {
   const t = useTranslations('navigation');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -179,6 +185,16 @@ export function Header() {
               <span className="max-w-[140px] truncate">{nearestPark.name}</span>
             </Link>
           )}
+          {showBlog && (
+            <Link
+              href="/blog"
+              prefetch={false}
+              className="text-muted-foreground hover:text-foreground text-sm font-medium transition-colors"
+              tabIndex={isTransparent ? -1 : 0}
+            >
+              {t('blog')}
+            </Link>
+          )}
           <Link
             href="/parks/europe"
             prefetch={false}
@@ -268,6 +284,15 @@ export function Header() {
                     >
                       <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
                       {t('nearbyPark', { parkName: nearestPark.name })}
+                    </Link>
+                  )}
+                  {showBlog && (
+                    <Link
+                      href="/blog"
+                      prefetch={false}
+                      className="hover:text-primary text-lg font-medium transition-colors"
+                    >
+                      {t('blog')}
                     </Link>
                   )}
                   <Link

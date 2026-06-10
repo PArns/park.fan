@@ -14,6 +14,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
+import { ShareButtons } from '@/components/common/share-buttons';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
   AttractionStructuredData,
@@ -296,6 +297,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           <Separator className="my-8" />
           <AttractionFAQSection attraction={attraction} park={park} />
+
+          <Separator className="my-8" />
+          <ShareButtons url={attractionUrl} title={attractionName} />
         </article>
       </PageContainer>
     </>

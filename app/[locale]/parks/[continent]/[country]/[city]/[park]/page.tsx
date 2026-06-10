@@ -25,6 +25,7 @@ import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
 import { ParkFavoriteButton } from '@/components/parks/park-favorite-button';
+import { ShareButtons } from '@/components/common/share-buttons';
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
@@ -393,6 +394,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
             parkSlug={parkSlug}
             glossaryTerms={faqGlossaryTerms}
             glossarySegment={glossarySegment}
+          />
+
+          <Separator className="my-8" />
+          <ShareButtons
+            url={`https://park.fan/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
+            title={park.name}
           />
         </article>
       </PageContainer>

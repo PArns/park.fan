@@ -85,3 +85,15 @@ The locale switcher reads `link[rel="alternate"][hreflang="..."]` tags from `<he
 - **hreflang**: Each detail page lists locale-specific slugs for all 6 languages
 - **Sitemap**: 6 overview pages (priority 0.7, weekly) + all term×locale pages (priority 0.5, monthly)
 - **IndexNow**: Glossary overview pages submitted alongside home/howto/parks/attractions
+
+## Use in blog posts
+
+Blog post bodies expose glossary terms two ways (see `components/blog/blog-content.tsx`):
+
+- **Auto-injection**: known glossary terms (and aliases) are highlighted automatically on first occurrence via `GlossaryInjectTerm`, linking to the term's detail page. The compiled matcher is cached per locale in a `WeakMap`.
+- **Glossary widget**: to pull a term's name and **full definition** straight from the dataset into the post body — no copied text — authors drop a widget fence referencing the term:
+
+      ```glossary-widget slug=hyper-coaster
+      ```
+
+  `slug` accepts either the term's localized slug or its stable `id` (slug is tried first, then id), so the same reference works across translated posts. Rendered by `BlogGlossaryWidget` as a card with the term name, its definition paragraphs, optional alternate names, and a link to the detail page. An unknown reference falls back to a not-found note (`blog.widget.termNotFound`).

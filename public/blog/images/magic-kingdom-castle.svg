@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Magic Kingdom castle">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset=".55" stop-color="#fb7185"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="castle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cbd5f5"/>
+      <stop offset="1" stop-color="#475569"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <circle cx="1180" cy="270" r="120" fill="#fde68a" opacity=".85"/>
+  <g fill="url(#castle)">
+    <polygon points="800,180 760,260 840,260"/>
+    <rect x="760" y="260" width="80" height="240"/>
+    <polygon points="700,300 660,370 740,370"/>
+    <rect x="660" y="370" width="80" height="200"/>
+    <polygon points="900,300 860,370 940,370"/>
+    <rect x="860" y="370" width="80" height="200"/>
+    <rect x="660" y="520" width="280" height="180"/>
+    <polygon points="580,440 540,510 620,510"/>
+    <rect x="540" y="510" width="80" height="190"/>
+    <polygon points="1020,440 980,510 1060,510"/>
+    <rect x="980" y="510" width="80" height="190"/>
+  </g>
+  <rect y="700" width="1600" height="200" fill="#0f172a" opacity=".75"/>
+  <g fill="#fde68a">
+    <circle cx="120" cy="140" r="3"/>
+    <circle cx="220" cy="200" r="2"/>
+    <circle cx="320" cy="100" r="2.5"/>
+    <circle cx="420" cy="160" r="2"/>
+    <circle cx="1320" cy="140" r="2.5"/>
+    <circle cx="1420" cy="200" r="2"/>
+    <circle cx="1480" cy="100" r="3"/>
+  </g>
+  <text x="80" y="820" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" fill="#fff" font-weight="700">
+    Magic Kingdom · Cinderella Castle
+  </text>
+</svg>

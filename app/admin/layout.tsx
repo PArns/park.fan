@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 import '../globals.css';
+import 'react-day-picker/style.css';
 import { AdminShell } from './_components/admin-shell';
 
 const geistSans = Geist({

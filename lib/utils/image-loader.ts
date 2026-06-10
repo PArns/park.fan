@@ -15,6 +15,9 @@ import type { ImageLoaderProps } from 'next/image';
  * Quality values must be listed in next.config `images.qualities`.
  */
 export function backgroundImageLoader({ src, width }: ImageLoaderProps): string {
+  // SVGs can't go through the optimizer (next/image responds 400 unless
+  // dangerouslyAllowSVG is on) — and there's nothing to optimize anyway.
+  if (src.endsWith('.svg')) return src;
   const quality = width <= 828 ? 60 : 75;
   return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality}`;
 }

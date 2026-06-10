@@ -9,7 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'De wachttijd is de geschatte duur die een bezoeker in de rij staat voordat hij een attractie kan betreden. Parken geven wachttijden aan bij attractie-ingangen en in hun apps. park.fan houdt live wachttijden bij die elke minuut worden bijgewerkt.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
-    aliases: ['Wachttijden'],
+    aliases: ['Wachttijden', 'wachttijd'],
     alternateNames: ['Queue Time', 'Wachttijd in de rij'],
   },
   {
@@ -22,6 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Individuele rij'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -43,6 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Express Pas', 'Express Passen']
   },
   {
     id: 'posted-wait-time',
@@ -52,6 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'De aangegeven wachttijd is de officiële schatting weergegeven op borden bij de fysieke ingang van een attractie en/of in de officiële park-app. park.fan aggregeert aangegeven wachttijden van officiële bronnen elke minuut.',
     relatedTermIds: ['crowd-level', 'wait-time'],
+    aliases: ['aangegeven wachttijd', 'aangegeven wachttijden']
   },
   {
     id: 'crowd-level',
@@ -61,7 +64,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Het drukte-niveau beschrijft de algehele bezoekerdichtheid in een park op een bepaalde dag of tijd. park.fan gebruikt een schaal van Zeer Laag tot Extreem op basis van historische wachttijdgegevens, huidige bezetting en AI-voorspellingen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Drukte-niveaus'],
+    aliases: ['Drukte-niveaus', 'druktes'],
   },
   {
     id: 'crowd-calendar',
@@ -71,6 +74,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een druktekalender is een maand- of jaaroverzichtskalender die voorspelde drukteniveaus voor elke dag toont. park.fan genereert druktekalenders met behulp van AI-modellen die zijn getraind op jaren historische wachttijdgegevens, gecombineerd met schoolvakantiescalenders, aankomende evenementen en seizoenspatronen.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
+    aliases: ['Druktekalenders']
   },
   {
     id: 'peak-day',
@@ -146,7 +150,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een ticketoptie waarmee bezoekers op dezelfde dag meerdere parken van hetzelfde resort kunnen bezoeken.',
     definition:
       "Een Park Hopper-ticket geeft toegang tot twee of meer parken van hetzelfde resort op één dag. Disney's Park Hopper-optie laat gasten bijvoorbeeld schakelen tussen Magic Kingdom, EPCOT, Hollywood Studios en Animal Kingdom na 14:00 uur. Het is bijzonder handig wanneer specifieke attracties of ervaringen verspreid zijn over meerdere parken.",
-    aliases: ['Park-Hopper'],
+    aliases: ['Park-Hopper', 'Park Hoppers'],
     alternateNames: ['Park Hopping', 'Multi-park ticket'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
@@ -158,7 +162,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een jaarticket dat onbeperkte parkbezoeken gedurende 12 maanden mogelijk maakt.',
     definition:
       'Een jaarkaart (Annual Pass) biedt onbeperkte toegang tot één of meer parken gedurende 12 maanden. Hogere niveaus bevatten vaak extra voordelen zoals korting op eten en drinken, gratis parkeren en korting op merchandise. Sommige jaarkaarten hebben geblokkeerde dagen (blockout dates) op de drukste dagen van het jaar. Voor regelmatige bezoekers — doorgaans drie of meer bezoeken per jaar — verdient een jaarkaart zichzelf bijna altijd terug.',
-    aliases: ['Seizoenspas'],
+    aliases: ['Seizoenspas', 'Jaarkaarten', 'Seizoenspassen'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Jaarticket', 'Jaarabonnement'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -204,7 +208,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'De normale wachtrij van een attractie, zonder reservering of speciaal pas.',
     definition:
       'De Standby-rij is de standaard fysieke wachtrij die alle bezoekers zonder extra ticket of upgrade kunnen gebruiken. Wie in de Standby-rij staat, wacht op volgorde van aankomst — de weergegeven wachttijd weerspiegelt direct de huidige drukte bij de attractie. Op drukke dagen kunnen Standby-tijden bij topattracties oplopen tot meer dan 90 minuten. park.fan houdt Standby-wachttijden real-time bij zodat je altijd de kortste rij kunt vinden.',
-    aliases: ['Standby-rij'],
+    aliases: ['Standby-rij', 'standby'],
     alternateNames: ['Normale Wachtrij', 'Reguliere Rij', 'Gewone wachtrij'],
 
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
@@ -219,6 +223,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -483,6 +488,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Gelanceerde Achtbaan', 'Katapult-achtbaan'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters']
   },
   {
     id: 'wooden-coaster',
@@ -554,6 +560,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Een Dive Coaster wordt gekenmerkt door een breed treinstel (doorgaans 8–10 rijders per rij), een nagenoeg verticale of voorbij-verticale drop (90+ graden) en een theatraal moment aan de top van de drop — de trein houdt even stil aan de rand voordat hij wordt losgelaten, wat de psychologische spanning maximaliseert. Het brede treinstel geeft alle rijders een onbelemmerd zicht recht naar beneden. B&M's Dive Machine-lijn (Oblivion bij Alton Towers, SheiKra bij Busch Gardens) introduceerde het concept; Gerstlauer's Dive Coaster-model is een concurrerende versie. De opzettelijke pauze voor de drop is een bewuste ontwerpbeslissing om de spanning te verhogen.",
     relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
+    aliases: ['Dive Coasters']
   },
   {
     id: 'vr-coaster',
@@ -991,6 +998,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema's en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan genereert AI-voorspellingen voor drukte en verwachte wachttijden tot 30+ dagen van tevoren.\n\nVoorspellingen worden continu bijgewerkt naarmate nieuwe data binnenkomt. Kortetermijnvoorspellingen (1–7 dagen) zijn doorgaans zeer nauwkeurig omdat ze actuele weersdata, aankondigingen van evenementen en boekingssignalen meenemen. Langetermijnvoorspellingen zijn van nature minder nauwkeurig, maar blijven waardevol voor het identificeren van rustige of drukke perioden ruim van tevoren.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
+    aliases: ['AI-voorspelling', 'AI-voorspellingen']
   },
   {
     id: 'opening-hours',
@@ -1043,7 +1051,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Een live wachttijd is de actuele, realtime wachttijd direct vanuit de datasystemen van een park — geen historisch gemiddelde, maar het werkelijke cijfer van dit moment, tot op de minuut nauwkeurig. park.fan haalt live wachttijden op vanuit officiële park-API's en derde partijen en vernieuwt elke minuut.",
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
-    aliases: ['Live wachttijden'],
+    aliases: ['Live wachttijden', 'live wachttijd', 'realtime wachttijd'],
     alternateNames: ['Realtime wachttijd', 'Realtime wachttijden'],
   },
   {

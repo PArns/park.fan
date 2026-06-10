@@ -49,12 +49,14 @@ build-info.json
 lib/hero-images.ts
 lib/glossary/client-data.ts
 lib/attraction-images.ts
+lib/blog/manifest.ts
 
 *.md
 *.txt
 *.log
 
 !content/home/*.md
+!content/blog/**/*.md
 .env*.local
 
 # Docs and project markdown (keep in git)

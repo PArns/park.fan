@@ -1,0 +1,717 @@
+'use client';
+
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FolderOpen, Loader2, PenLine, Plus, Trash2 } from 'lucide-react';
+import type { Locale } from '@/i18n/config';
+import { FrontmatterForm } from './_components/frontmatter-form';
+import { EditorCanvas } from './_components/editor-canvas';
+import { MarkdownPreview } from './_components/markdown-preview';
+import { SaveBar } from './_components/save-bar';
+import { LocaleTabs } from './_components/locale-tabs';
+import { PostPicker } from './_components/post-picker';
+import { PropertiesPanel, type EditorSelection } from './_components/properties-panel';
+import type { Editor } from '@tiptap/core';
+import type { AuthorOption, CategoryOption, EditorInitialData } from './_lib/initial-data';
+import type { EditorFrontmatter, LocaleDraft } from './_lib/types';
+import type { NewAuthorDraft } from './_components/author-create-modal';
+import type { NewCategoryDraft } from './_components/category-create-modal';
+import { emptyDraft, isDraftFilled, slugify, toFrontmatter } from './_lib/types';
+import {
+  clearDraftSnapshot,
+  isMeaningfulSnapshot,
+  loadDraftSnapshot,
+  saveDraftSnapshot,
+  type DraftSnapshot,
+} from './_lib/draft-autosave';
+import { clearPendingImages, listPendingImages, setUploadFolder } from './_lib/pending-images';
+import { ADMIN_PASS_HEADER, useAdmin } from '../_lib/admin-context';
+
+const DEFAULT_SOURCE: Locale = 'en';
+
+export function BlogEditorClient({ initialData }: { initialData: EditorInitialData }) {
+  const { pass } = useAdmin();
+  const [sourceLocale, setSourceLocale] = useState<Locale>(DEFAULT_SOURCE);
+  const [activeLocale, setActiveLocale] = useState<Locale>(DEFAULT_SOURCE);
+  // One slice per locale. Created lazily when the user first edits that tab.
+  const [drafts, setDrafts] = useState<Partial<Record<Locale, LocaleDraft>>>({
+    [DEFAULT_SOURCE]: emptyDraft(),
+  });
+  const [translatingTarget, setTranslatingTarget] = useState<Locale | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [loadingPost, setLoadingPost] = useState(false);
+  const [deletingPost, setDeletingPost] = useState(false);
+  const [view, setView] = useState<'editor' | 'source'>('editor');
+  /** Last clicked chip in the editor — drives the right-side PropertiesPanel.
+   *  Stays sticky until the next chip is clicked so the author can flip back
+   *  to the panel after typing. */
+  const [selection, setSelection] = useState<EditorSelection>(null);
+  /** Lifted TipTap editor instance so PropertiesPanel can run commands. */
+  const [editor, setEditor] = useState<Editor | null>(null);
+  /** A meaningful localStorage snapshot from a previous session — drives the
+   *  "Restore draft?" banner. Detected once after mount (localStorage isn't
+   *  available during SSR, and reading it in render would mismatch hydration). */
+  const [restorable, setRestorable] = useState<DraftSnapshot | null>(null);
+  useEffect(() => {
+    // Deferred a tick — the React 19 lint (set-state-in-effect) flags
+    // synchronous setState in effects as a cascading-render hazard.
+    const t = setTimeout(() => {
+      const snap = loadDraftSnapshot();
+      if (snap && isMeaningfulSnapshot(snap)) setRestorable(snap);
+    }, 0);
+    return () => clearTimeout(t);
+  }, []);
+
+  // The ref-preview extension fires `parkfan-selection` from handleClick. We
+  // listen at the top level so the panel reflects whichever chip was clicked
+  // last, regardless of where in the canvas tree the event originated.
+  useEffect(() => {
+    const onSelection = (e: Event) => {
+      const detail = (e as CustomEvent<EditorSelection & { rect?: unknown }>).detail;
+      if (!detail) return;
+      setSelection(detail);
+    };
+    const onClear = () => setSelection(null);
+    window.addEventListener('parkfan-selection', onSelection as EventListener);
+    window.addEventListener('parkfan-clear-selection', onClear as EventListener);
+    return () => {
+      window.removeEventListener('parkfan-selection', onSelection as EventListener);
+      window.removeEventListener('parkfan-clear-selection', onClear as EventListener);
+    };
+  }, []);
+
+  const requestRefReplace = useCallback(
+    (anchorRect?: { top: number; bottom: number; left: number; right: number }) => {
+      if (!selection || selection.kind !== 'ref') return;
+      const value = selection.value;
+      const isRide = value.startsWith('/parks/')
+        ? value.slice('/parks/'.length).split('/').filter(Boolean).length >= 5
+        : value.includes('/');
+      window.dispatchEvent(
+        new CustomEvent('parkfan-replace-ref-request', {
+          detail: { pos: selection.pos, isRide, rect: anchorRect },
+        })
+      );
+      setSelection(null);
+    },
+    [selection]
+  );
+  /** Authors / categories the user created in this session — get appended to
+   *  the editor's pickers AND sent with the save payload so the resulting PR
+   *  contains the new author file / categories.json patch. */
+  const [newAuthors, setNewAuthors] = useState<NewAuthorDraft[]>([]);
+  const [newCategories, setNewCategories] = useState<NewCategoryDraft[]>([]);
+  /** Authors / categories the user *edited* (overwriting an existing entry).
+   *  Distinct from the new-* lists because the server commits them with the
+   *  existing file SHA (otherwise GitHub rejects the createOrUpdate call). */
+  const [editedAuthors, setEditedAuthors] = useState<NewAuthorDraft[]>([]);
+  const [editedCategories, setEditedCategories] = useState<NewCategoryDraft[]>([]);
+
+  const authors: AuthorOption[] = useMemo(() => {
+    const merged: AuthorOption[] = initialData.authors.map((a) => {
+      const overwrite = editedAuthors.find((e) => e.key === a.key);
+      return overwrite
+        ? {
+            key: overwrite.key,
+            name: overwrite.name,
+            ...(overwrite.avatar ? { avatar: overwrite.avatar } : {}),
+            ...(overwrite.role ? { role: overwrite.role } : {}),
+            ...(overwrite.location ? { location: overwrite.location } : {}),
+            ...(overwrite.url ? { url: overwrite.url } : {}),
+            ...(overwrite.bio ? { bio: overwrite.bio } : {}),
+          }
+        : a;
+    });
+    for (const a of newAuthors) {
+      merged.push({
+        key: a.key,
+        name: a.name,
+        ...(a.avatar ? { avatar: a.avatar } : {}),
+        ...(a.role ? { role: a.role } : {}),
+        ...(a.location ? { location: a.location } : {}),
+        ...(a.url ? { url: a.url } : {}),
+        ...(a.bio ? { bio: a.bio } : {}),
+      });
+    }
+    return merged;
+  }, [initialData.authors, newAuthors, editedAuthors]);
+  const categories: CategoryOption[] = useMemo(() => {
+    const merged: CategoryOption[] = initialData.categories.map((c) => {
+      const overwrite = editedCategories.find((e) => e.path === c.path);
+      return overwrite
+        ? {
+            path: overwrite.path,
+            labelEn: overwrite.labels.en ?? c.labelEn,
+            labelDe: overwrite.labels.de ?? overwrite.labels.en ?? c.labelDe,
+            labels: overwrite.labels,
+          }
+        : c;
+    });
+    for (const c of newCategories) {
+      merged.push({
+        path: c.path,
+        labelEn: c.labels.en ?? c.path,
+        labelDe: c.labels.de ?? c.labels.en ?? c.path,
+        labels: c.labels,
+      });
+    }
+    return merged;
+  }, [initialData.categories, newCategories, editedCategories]);
+  /**
+   * When non-null the editor is editing an existing post — saves go to the
+   * same per-locale paths instead of creating fresh files. Holds the original
+   * slug for every locale so a rename can delete the stale file on save.
+   */
+  const [editing, setEditing] = useState<{
+    key: string;
+    originalSlugs: Partial<Record<Locale, string>>;
+  } | null>(null);
+
+  /** Last successful localStorage snapshot — drives the tiny "saved" tick
+   *  in the stats row so authors trust the crash protection. */
+  const [lastAutosave, setLastAutosave] = useState<Date | null>(null);
+  // Debounced crash-protection snapshot. Anything typed lands in
+  // localStorage within a second; an empty editor clears the slot instead so
+  // a discarded draft doesn't resurrect on the next visit.
+  useEffect(() => {
+    const t = setTimeout(() => {
+      const meaningful = Object.values(drafts).some(
+        (d) => !!d && (!!d.fm.title.trim() || !!d.body.trim())
+      );
+      if (meaningful) {
+        saveDraftSnapshot({ drafts, editing, sourceLocale, activeLocale });
+        setLastAutosave(new Date());
+      } else if (!editing) {
+        clearDraftSnapshot();
+      }
+    }, 800);
+    return () => clearTimeout(t);
+  }, [drafts, editing, sourceLocale, activeLocale]);
+
+  const restoreDraft = () => {
+    if (!restorable) return;
+    setDrafts(restorable.drafts);
+    setEditing(restorable.editing);
+    setSourceLocale(restorable.sourceLocale);
+    setActiveLocale(restorable.activeLocale);
+    setRestorable(null);
+  };
+  const discardDraft = () => {
+    clearDraftSnapshot();
+    setRestorable(null);
+  };
+
+  const ensure = (locale: Locale): LocaleDraft => drafts[locale] ?? emptyDraft();
+  const active = ensure(activeLocale);
+
+  const patch = (locale: Locale, next: Partial<LocaleDraft>) => {
+    setDrafts((prev) => {
+      const current = prev[locale] ?? emptyDraft();
+      return { ...prev, [locale]: { ...current, ...next } };
+    });
+  };
+
+  const onFmChange = (next: EditorFrontmatter) => {
+    const cur = ensure(activeLocale);
+    // Auto-derive slug from the title for this locale until the user edits it.
+    const nextSlug = cur.slugTouched ? cur.slug : slugify(next.title);
+    patch(activeLocale, { fm: next, slug: nextSlug });
+  };
+  const onBodyChange = (md: string) => patch(activeLocale, { body: md });
+  const onSlugChange = (s: string) => patch(activeLocale, { slug: s, slugTouched: true });
+
+  const filled = useMemo<Record<string, boolean>>(() => {
+    const out: Record<string, boolean> = {};
+    for (const l of initialData.locales) {
+      const d = drafts[l];
+      out[l] = !!d && (isDraftFilled(d) || !!d.fm.title.trim() || !!d.body.trim());
+    }
+    return out;
+  }, [drafts, initialData.locales]);
+
+  /** The base slug used in the PR branch name + filenames where no per-locale slug is set. */
+  const baseSlug = useMemo(() => {
+    const src = drafts[sourceLocale];
+    return src?.slug || slugify(src?.fm.title ?? '');
+  }, [drafts, sourceLocale]);
+
+  // New uploads land in /blog/images/<post-slug>/ — keep the staging store's
+  // folder in sync with whatever the post is currently called.
+  useEffect(() => {
+    setUploadFolder(baseSlug || editing?.key || 'uploads');
+  }, [baseSlug, editing]);
+
+  // Validation: at least the source locale must be filled and slugified.
+  const disabledReason = useMemo(() => {
+    const src = drafts[sourceLocale];
+    if (!src) return `Fill the ${sourceLocale.toUpperCase()} (source) locale first.`;
+    if (!src.fm.title.trim()) return 'A title is required.';
+    if (!src.fm.authorKey) return 'Pick an author.';
+    if (!src.fm.excerpt.trim()) return 'An excerpt is required (also used in cards + meta).';
+    if (!src.body.trim()) return 'Write something before opening a PR.';
+    if (!src.slug.trim() && !baseSlug) return 'Slug is empty.';
+    return undefined;
+  }, [drafts, sourceLocale, baseSlug]);
+
+  const onCreateAuthor = useCallback((draft: NewAuthorDraft) => {
+    setNewAuthors((prev) => (prev.find((a) => a.key === draft.key) ? prev : [...prev, draft]));
+  }, []);
+  const onEditAuthor = useCallback(
+    (draft: NewAuthorDraft) => {
+      // Editing an author that was CREATED this session updates the pending
+      // create instead — otherwise the save payload lists the key under both
+      // newAuthors and editedAuthors and the PR carries two commits for it.
+      if (newAuthors.some((a) => a.key === draft.key)) {
+        setNewAuthors((prev) => prev.map((a) => (a.key === draft.key ? draft : a)));
+      } else {
+        setEditedAuthors((prev) => [...prev.filter((a) => a.key !== draft.key), draft]);
+      }
+    },
+    [newAuthors]
+  );
+  const onEditCategory = useCallback(
+    (draft: NewCategoryDraft) => {
+      // Same merge rule as onEditAuthor — session-created categories update
+      // in place rather than double-listing in the payload.
+      if (newCategories.some((c) => c.path === draft.path)) {
+        setNewCategories((prev) => prev.map((c) => (c.path === draft.path ? draft : c)));
+      } else {
+        setEditedCategories((prev) => [...prev.filter((c) => c.path !== draft.path), draft]);
+      }
+    },
+    [newCategories]
+  );
+  const onCreateCategory = useCallback((draft: NewCategoryDraft) => {
+    setNewCategories((prev) =>
+      prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]
+    );
+  }, []);
+
+  const onSave = async () => {
+    const perLocale: Record<string, { slug: string; frontmatter: ReturnType<typeof toFrontmatter>; body: string }> = {};
+    for (const l of initialData.locales) {
+      const d = drafts[l];
+      if (!d) continue;
+      if (!isDraftFilled(d)) continue;
+      perLocale[l] = {
+        slug: d.slug.trim() || baseSlug,
+        frontmatter: toFrontmatter(d.fm),
+        body: d.body,
+      };
+    }
+    // Ship any staged uploads that are actually referenced from the post —
+    // draft bodies, per-locale cover images, and author avatars all count;
+    // pasted-then-deleted images stay behind and never bloat the PR.
+    const referenced = [
+      ...Object.values(perLocale).map((d) => d.body),
+      ...Object.values(drafts).map((d) => d?.fm.coverSrc ?? ''),
+      ...[...newAuthors, ...editedAuthors].map((a) => a.avatar ?? ''),
+    ];
+    const newImages = listPendingImages()
+      .filter((img) => referenced.some((r) => r.includes(img.path)))
+      .map((img) => ({ path: img.path, contentBase64: img.base64 }));
+    const res = await fetch('/api/admin/blog-editor/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+      body: JSON.stringify({
+        baseSlug,
+        sourceLocale,
+        perLocale,
+        ...(editing
+          ? {
+              editing: { key: editing.key, originalSlugs: editing.originalSlugs },
+            }
+          : {}),
+        ...(newAuthors.length ? { newAuthors } : {}),
+        ...(newCategories.length ? { newCategories } : {}),
+        ...(editedAuthors.length ? { editedAuthors } : {}),
+        ...(editedCategories.length ? { editedCategories } : {}),
+        ...(newImages.length ? { newImages } : {}),
+      }),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      return { ok: false, message: `${res.status}: ${text || res.statusText}` };
+    }
+    const data = (await res.json()) as { url: string; branch: string; committed: string[] };
+    // The PR is the durable copy now — the crash-protection snapshot and the
+    // staged uploads have served their purpose.
+    clearDraftSnapshot();
+    clearPendingImages();
+    return {
+      ok: true,
+      url: data.url,
+      message: `${data.committed.length} locale(s) → ${data.branch}`,
+    };
+  };
+
+  const onLoadPost = async (key: string) => {
+    setLoadingPost(true);
+    try {
+      const res = await fetch(`/api/admin/blog-editor/posts/${encodeURIComponent(key)}`, {
+        headers: { [ADMIN_PASS_HEADER]: pass },
+      });
+      if (!res.ok) {
+        alert(`Could not load post: ${res.status}`);
+        return;
+      }
+      const data = (await res.json()) as {
+        key: string;
+        sourceLocale: Locale;
+        baseSlug: string;
+        perLocale: Partial<
+          Record<Locale, { slug: string; fm: EditorFrontmatter; body: string }>
+        >;
+      };
+      const nextDrafts: Partial<Record<Locale, LocaleDraft>> = {};
+      const originalSlugs: Partial<Record<Locale, string>> = {};
+      for (const [loc, entry] of Object.entries(data.perLocale)) {
+        if (!entry) continue;
+        nextDrafts[loc as Locale] = {
+          fm: entry.fm,
+          body: entry.body,
+          slug: entry.slug,
+          // Mark as touched so the auto-derive on title edits doesn't clobber
+          // the original slug — authors that want to rename can edit the slug
+          // field explicitly.
+          slugTouched: true,
+        };
+        originalSlugs[loc as Locale] = entry.slug;
+      }
+      setDrafts(nextDrafts);
+      setSourceLocale(data.sourceLocale);
+      setActiveLocale(data.sourceLocale);
+      setEditing({ key: data.key, originalSlugs });
+      setPickerOpen(false);
+    } catch (err) {
+      alert(`Load failed: ${(err as Error).message}`);
+    } finally {
+      setLoadingPost(false);
+    }
+  };
+
+  const onTranslate = async (target: Locale) => {
+    const src = drafts[sourceLocale];
+    if (!src || !isDraftFilled(src)) return;
+    setTranslatingTarget(target);
+    try {
+      const res = await fetch('/api/admin/blog-editor/translate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        body: JSON.stringify({
+          sourceLocale,
+          targetLocale: target,
+          frontmatter: toFrontmatter(src.fm),
+          body: src.body,
+        }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        alert(`Translation failed: ${res.status} ${text}`);
+        return;
+      }
+      const data = (await res.json()) as {
+        title: string;
+        excerpt: string;
+        body: string;
+        seoTitle?: string;
+        seoDescription?: string;
+      };
+      // Carry over everything language-neutral from the source draft; replace
+      // language-bound fields with the AI output.
+      const baseFm = src.fm;
+      const newFm: EditorFrontmatter = {
+        ...baseFm,
+        title: data.title,
+        excerpt: data.excerpt,
+        seoTitle: data.seoTitle ?? '',
+        seoDescription: data.seoDescription ?? '',
+      };
+      patch(target, {
+        fm: newFm,
+        body: data.body,
+        slug: slugify(data.title),
+        slugTouched: false,
+      });
+      setActiveLocale(target);
+    } finally {
+      setTranslatingTarget(null);
+    }
+  };
+
+  const onDeletePost = async () => {
+    if (!editing) return;
+    const fileList = Object.entries(editing.originalSlugs)
+      .map(([l, sl]) => `  ${l}: content/blog/${l}/${sl}.md`)
+      .join('\n');
+    if (
+      !confirm(
+        `Delete this post? A draft PR will be opened that removes:\n\n${fileList}\n\nNothing is deleted until that PR is merged.`
+      )
+    ) {
+      return;
+    }
+    setDeletingPost(true);
+    try {
+      const res = await fetch('/api/admin/blog-editor/delete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', [ADMIN_PASS_HEADER]: pass },
+        body: JSON.stringify({
+          key: editing.key,
+          slugs: editing.originalSlugs,
+          title: drafts[sourceLocale]?.fm.title ?? editing.key,
+        }),
+      });
+      if (!res.ok) {
+        const text = await res.text();
+        alert(`Delete failed: ${res.status} ${text}`);
+        return;
+      }
+      const data = (await res.json()) as { url: string };
+      clearDraftSnapshot();
+      setDrafts({ [sourceLocale]: emptyDraft() });
+      setEditing(null);
+      setActiveLocale(sourceLocale);
+      window.open(data.url, '_blank', 'noopener');
+    } catch (err) {
+      alert(`Delete failed: ${(err as Error).message}`);
+    } finally {
+      setDeletingPost(false);
+    }
+  };
+
+  return (
+    <div className="container mx-auto max-w-[min(1800px,98vw)] px-4 py-6">
+      <header className="mb-6 flex flex-wrap items-center gap-3">
+        <div className="from-primary/20 to-primary/5 text-primary flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+          <PenLine className="h-5 w-5" />
+        </div>
+        <div className="min-w-0 flex-1">
+          <div className="flex items-center gap-2">
+            <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+              Blog editor
+            </h1>
+            <span
+              className={[
+                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider',
+                editing
+                  ? 'bg-amber-500/15 text-amber-500'
+                  : 'bg-emerald-500/15 text-emerald-500',
+              ].join(' ')}
+            >
+              <span
+                className={`h-1.5 w-1.5 rounded-full ${
+                  editing ? 'bg-amber-500' : 'bg-emerald-500'
+                } animate-pulse`}
+              />
+              {editing ? 'editing' : 'new post'}
+            </span>
+            {editing && (
+              <code className="bg-muted/60 text-foreground/80 truncate rounded-md px-2 py-0.5 font-mono text-xs">
+                {editing.key}
+              </code>
+            )}
+          </div>
+          <p className="text-muted-foreground mt-0.5 text-xs">
+            Write once → translate → open one PR against{' '}
+            <code className="bg-muted/60 text-foreground/80 rounded px-1.5 py-0.5 font-mono">
+              {initialData.repoOwner}/{initialData.repoName}@{initialData.baseBranch}
+            </code>
+          </p>
+        </div>
+        <div className="inline-flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setPickerOpen(true)}
+            disabled={loadingPost}
+            className="border-border/70 hover:border-primary/60 hover:bg-primary/8 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+          >
+            <FolderOpen className="h-3.5 w-3.5" />
+            {loadingPost ? 'Loading…' : 'Open existing'}
+          </button>
+          {editing && (
+            <button
+              type="button"
+              onClick={() => {
+                if (!confirm('Discard current draft and start a new post?')) return;
+                setDrafts({ [sourceLocale]: emptyDraft() });
+                setEditing(null);
+                setActiveLocale(sourceLocale);
+              }}
+              className="from-primary/15 to-primary/5 border-primary/30 text-primary hover:border-primary/60 inline-flex items-center gap-1.5 rounded-xl border bg-gradient-to-br px-3 py-2 text-xs font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              New post
+            </button>
+          )}
+          {editing && (
+            <button
+              type="button"
+              onClick={onDeletePost}
+              disabled={deletingPost}
+              title="Open a draft PR that removes every locale file of this post"
+              className="border-destructive/30 text-destructive hover:border-destructive/60 hover:bg-destructive/10 inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-semibold transition-all disabled:opacity-60"
+            >
+              {deletingPost ? (
+                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <Trash2 className="h-3.5 w-3.5" />
+              )}
+              {deletingPost ? 'Opening PR…' : 'Delete post'}
+            </button>
+          )}
+        </div>
+      </header>
+
+      <PostPicker
+        open={pickerOpen}
+        onClose={() => setPickerOpen(false)}
+        onPick={onLoadPost}
+      />
+
+      {restorable && (
+        <div className="border-amber-500/30 bg-amber-500/10 mb-6 flex flex-wrap items-center gap-3 rounded-xl border px-4 py-3 text-sm">
+          <span className="text-amber-200/90">
+            Unsaved draft from{' '}
+            <strong>{new Date(restorable.savedAt).toLocaleString()}</strong>
+            {restorable.editing ? (
+              <>
+                {' '}
+                (editing <code className="font-mono text-xs">{restorable.editing.key}</code>)
+              </>
+            ) : null}{' '}
+            found.
+          </span>
+          <div className="ml-auto inline-flex gap-2">
+            <button
+              type="button"
+              onClick={restoreDraft}
+              className="rounded-lg bg-amber-500/20 px-3 py-1.5 text-xs font-semibold text-amber-100 transition-colors hover:bg-amber-500/30"
+            >
+              Restore
+            </button>
+            <button
+              type="button"
+              onClick={discardDraft}
+              className="text-muted-foreground hover:text-foreground rounded-lg px-3 py-1.5 text-xs font-semibold transition-colors"
+            >
+              Discard
+            </button>
+          </div>
+        </div>
+      )}
+
+      <LocaleTabs
+        locales={initialData.locales}
+        active={activeLocale}
+        source={sourceLocale}
+        onActive={(l) => setActiveLocale(l as Locale)}
+        onSource={(l) => setSourceLocale(l as Locale)}
+        filled={filled}
+        translatingTarget={translatingTarget}
+        onTranslate={(t) => onTranslate(t as Locale)}
+        translateDisabled={!drafts[sourceLocale] || !isDraftFilled(drafts[sourceLocale]!)}
+        translateDisabledReason="Fill the source locale first."
+      />
+
+      <FrontmatterForm
+        value={active.fm}
+        onChange={onFmChange}
+        authors={authors}
+        categories={categories}
+        allTags={initialData.tags}
+        slug={active.slug || (sourceLocale === activeLocale ? baseSlug : '')}
+        onSlugChange={onSlugChange}
+        onCreateAuthor={onCreateAuthor}
+        onCreateCategory={onCreateCategory}
+        onEditAuthor={onEditAuthor}
+        onEditCategory={onEditCategory}
+      />
+
+      <div>
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <div className="border-border/70 bg-muted/30 inline-flex items-center gap-1 rounded-xl border p-1 backdrop-blur">
+            {(['editor', 'source'] as const).map((t) => (
+              <button
+                key={t}
+                type="button"
+                onClick={() => setView(t)}
+                className={[
+                  'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+                  view === t
+                    ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-background/40',
+                ].join(' ')}
+              >
+                <span
+                  className={`h-1.5 w-1.5 rounded-full ${
+                    view === t ? 'bg-primary' : 'bg-muted-foreground/40'
+                  }`}
+                />
+                {t === 'editor' ? 'Visual editor' : '.md source'}
+              </button>
+            ))}
+          </div>
+          <div className="text-muted-foreground hidden text-[10px] uppercase tracking-wider sm:flex sm:items-center sm:gap-2">
+            {(() => {
+              // Strip image/link syntax so URLs don't inflate the word count.
+              const text = active.body
+                .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+                .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+              const words = (text.match(/\S+/g) ?? []).length;
+              const minutes = Math.max(1, Math.round(words / 220));
+              return (
+                <>
+                  <span>{words.toLocaleString()} words</span>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>~{minutes} min read</span>
+                  <span className="text-muted-foreground/40">·</span>
+                  <span>{Math.max(1, active.body.split('\n').length)} lines</span>
+                </>
+              );
+            })()}
+            {lastAutosave && (
+              <>
+                <span className="text-muted-foreground/40">·</span>
+                <span className="inline-flex items-center gap-1 text-emerald-500/90 normal-case">
+                  <span className="h-1 w-1 rounded-full bg-emerald-500" />
+                  saved {lastAutosave.toLocaleTimeString()}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+        <div
+          className={
+            view === 'editor'
+              ? 'grid items-start gap-4 lg:grid-cols-[1fr_320px]'
+              : 'grid items-start gap-4'
+          }
+        >
+          <div className="min-w-0">
+            {view === 'editor' ? (
+              <EditorCanvas
+                initialMarkdown={active.body}
+                onMarkdownChange={onBodyChange}
+                onEditorReady={setEditor}
+              />
+            ) : (
+              <MarkdownPreview value={active.body} onChange={onBodyChange} />
+            )}
+          </div>
+          {/* The inspector edits chips in the visual canvas — pure .md view
+              has nothing to inspect, so give the source editor the width. */}
+          {view === 'editor' && (
+            <PropertiesPanel
+              editor={editor}
+              selection={selection}
+              charCount={active.body.length}
+              onReplaceRef={requestRefReplace}
+            />
+          )}
+        </div>
+      </div>
+
+      <SaveBar onSave={onSave} disabled={!!disabledReason} disabledReason={disabledReason} />
+    </div>
+  );
+}

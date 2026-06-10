@@ -1,4 +1,10 @@
 {
+  "share": {
+    "title": "Delen",
+    "on": "Delen op {platform}",
+    "copy": "Link kopiëren",
+    "copied": "Gekopieerd!"
+  },
   "common": {
     "scroll": "Scrollen",
     "loading": "Laden...",
@@ -192,6 +198,7 @@
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
     "glossaryLink": "Woordenboek",
+    "blog": "Blog",
     "datenschutz": "Privacybeleid",
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden",
@@ -235,7 +242,8 @@
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Gids",
-    "glossary": "Woordenboek"
+    "glossary": "Woordenboek",
+    "blog": "Blog"
   },
   "theme": {
     "light": "Licht",
@@ -985,5 +993,105 @@
   "parkCard": {
     "until": "Tot",
     "closingIn": "nog"
+  },
+  "blog": {
+    "title": "Blog",
+    "badge": "park.fan Blog",
+    "description": "Reisverslagen, data-analyses en pretpark-nieuws van het park.fan-team.",
+    "intro": "Eerlijke reisverslagen, wachttijd-analyses en beknopte updates uit de parken die we volgen.",
+    "blog": "Blog",
+    "empty": "Nog geen artikelen. Kom snel terug.",
+    "readMore": "Artikel lezen",
+    "readingTime": "{minutes} min lezen",
+    "updatedOn": "Bijgewerkt {date}",
+    "languageNotice": {
+      "available": "Dit artikel is ook beschikbaar in het {language}",
+      "fallback": "Nog niet vertaald — je ziet de {language}-versie."
+    },
+    "breadcrumbs": "Kruimelpad",
+    "categories": "Categorieën",
+    "category": {
+      "label": "Categorie",
+      "description": "Blog-artikelen in {category} op park.fan.",
+      "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}"
+    },
+    "home": {
+      "heading": "Uit het blog",
+      "intro": "Reisverslagen, data-analyses en pretparknieuws – de nieuwste artikelen verschijnen hier eerst.",
+      "viewAll": "Alle artikelen lezen"
+    },
+    "gallery": {
+      "title": "Galerij",
+      "openImage": "Open afbeelding {index} van {total}",
+      "close": "Galerij sluiten",
+      "next": "Volgende afbeelding",
+      "previous": "Vorige afbeelding"
+    },
+    "inlineImage": {
+      "openImage": "Afbeelding openen",
+      "close": "Afbeelding sluiten"
+    },
+    "parkLink": {
+      "viewPark": "{name} bekijken",
+      "avgWait": "gem. {minutes} min",
+      "openAttractions": "{open} van {total} open"
+    },
+    "attractionLink": {
+      "attraction": "Attractie",
+      "viewAttraction": "{name} bekijken",
+      "atPark": "in {park}"
+    },
+    "related": {
+      "title": "Meer uit het blog"
+    },
+    "relatedParks": {
+      "title": "Parken in dit artikel"
+    },
+    "widget": {
+      "parkSpotlight": "Park in de schijnwerpers",
+      "parkNotFound": "Park \"{slug}\" niet gevonden.",
+      "attractionSpotlight": "Attractie in de schijnwerpers",
+      "attractionNotFound": "Attractie \"{slug}\" niet gevonden.",
+      "parkMap": "Plattegrond",
+      "weather": "Weer",
+      "glossary": "Woordenlijst",
+      "glossaryMore": "Volledige definitie",
+      "termNotFound": "Woordenlijstterm \"{slug}\" niet gevonden."
+    },
+    "toc": {
+      "title": "Inhoud",
+      "label": "Inhoudsopgave"
+    },
+    "postNav": {
+      "label": "Meer artikelen",
+      "previous": "Vorige",
+      "next": "Volgende"
+    },
+    "pagination": {
+      "label": "Paginering",
+      "previous": "Vorige",
+      "next": "Volgende",
+      "pageLabel": "Pagina {page}",
+      "pageOf": "Pagina {page} van {total}",
+      "goToPage": "Ga naar pagina {page}"
+    },
+    "references": {
+      "parks": "{count, plural, =1 {Park in dit artikel} other {Parken in dit artikel}}",
+      "attractions": "{count, plural, =1 {Attractie in dit artikel} other {Attracties in dit artikel}}"
+    },
+    "author": {
+      "label": "Auteur",
+      "postsBy": "Artikelen van {name}",
+      "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}",
+      "description": "Artikelen van {name} op park.fan.",
+      "noPosts": "Nog geen artikelen."
+    },
+    "tag": {
+      "label": "Tag",
+      "description": "Blog-artikelen met de tag #{tag} op park.fan.",
+      "postsCount": "{count, plural, =1 {# artikel} other {# artikelen}}",
+      "cloudTitle": "Onderwerpen"
+    },
+    "featured": "Uitgelicht"
   }
 }

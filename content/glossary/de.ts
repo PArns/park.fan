@@ -9,7 +9,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Wartezeit (auch Wartezeit in der Warteschlange) ist die geschätzte Dauer, die ein Besucher in der Warteschlange verbringt, bevor er eine Attraktion besteigen kann. Parks zeigen Wartezeiten an Attraktionseingängen und in ihren Apps an. park.fan erfasst live Wartezeiten, die jede Minute aktualisiert werden, damit du die aktuellen Bedingungen für alle Attraktionen einsehen kannst.',
     relatedTermIds: ['express-pass', 'posted-wait-time', 'single-rider', 'virtual-queue'],
-    aliases: ['Wartezeiten'],
+    aliases: ['Wartezeiten', 'Warteschlange', 'Warteschlangen', 'Wartezeit-Daten'],
     alternateNames: ['Wartezeit in der Warteschlange', 'Queue Time', 'Queue Times'],
   },
   {
@@ -22,6 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Einzelfahrer', 'Single-Spur'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Single Riders']
   },
   {
     id: 'virtual-queue',
@@ -31,6 +32,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Eine virtuelle Warteschlange (manchmal auch als Boarding-Gruppe oder Rückkehrzeit bezeichnet) ermöglicht es Besuchern, sich über eine App oder einen Kiosk für eine Attraktion anzumelden und eine Benachrichtigung zu erhalten, wenn ihre Runde naht. Anstatt in einer physischen Schlange zu stehen, können Besucher andere Parkbereiche genießen und zurückkehren, wenn sie aufgerufen werden.',
     relatedTermIds: ['express-pass', 'single-rider', 'wait-time'],
+    aliases: ['Virtuelle Warteschlangen']
   },
   {
     id: 'express-pass',
@@ -42,6 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Express-Pass', 'Express-Pässe']
   },
   {
     id: 'posted-wait-time',
@@ -50,6 +53,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die angezeigte Wartezeit ist die offizielle Schätzung, die auf Schildern am physischen Eingang einer Attraktion und/oder in der offiziellen Park-App angezeigt wird. Parks berechnen diese Zahl anhand von Warteschlangenlängensensoren, historischen Durchsatzdaten und aktueller Ladeeffizienz. park.fan aggregiert angezeigte Wartezeiten aus offiziellen Quellen jede Minute.',
     relatedTermIds: ['crowd-level', 'wait-time'],
+    aliases: ['Angezeigte Wartezeit', 'Angezeigte Wartezeiten']
   },
   {
     id: 'crowd-level',
@@ -59,7 +63,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Die Besucherdichte beschreibt die allgemeine Besucherdichte in einem Park an einem bestimmten Tag oder zu einer bestimmten Zeit. park.fan verwendet eine Skala von Sehr Niedrig bis Extrem basierend auf historischen Wartezeitdaten, aktueller Belegung und KI-Prognosen. Ein Tag mit Sehr Niedriger Besucherdichte bedeutet kurze Schlangen und minimale Staus; ein Extremer Tag bedeutet maximale Besucherzahlen mit langen Wartezeiten bei den meisten Attraktionen.',
     relatedTermIds: ['crowd-calendar', 'peak-day', 'wait-time'],
-    aliases: ['Besucherdichten'],
+    aliases: ['Besucherdichten', 'Besucherandrang', 'Crowd Level'],
     alternateNames: ['Crowd Level', 'Crowd Levels', 'Besucherandrang'],
   },
   {
@@ -70,7 +74,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Besucherkalender ist ein Monats- oder Jahreskalender, der vorhergesagte Besucherdichten für jeden Tag zeigt. park.fan erstellt Besucherkalender mit KI-Modellen, die auf jahrelangen historischen Wartezeitdaten, kombinierten Schulferienkalendern, bevorstehenden Veranstaltungen und saisonalen Trends trainiert wurden. Grüne Tage zeigen niedrige Besucherzahlen an; orange und rote Tage zeigen hohe Besucherzahlen an.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['Besucherkalender'],
+    aliases: ['Besucherkalender', 'Crowd-Kalender', 'Crowd-Kalendar'],
   },
   {
     id: 'peak-day',
@@ -106,6 +110,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Außer Betrieb', 'Technische Störung'],
 
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
+    aliases: ['Betriebsstörungen', 'Ausfälle']
   },
   {
     id: 'ride-capacity',
@@ -147,6 +152,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Park Hopping', 'Multi-Park-Ticket', 'Park-Hopper-Ticket'],
 
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
+    aliases: ['Park-Hopper-Ticket']
   },
   {
     id: 'season-pass',
@@ -154,7 +160,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Ein Ticket, das unbegrenzte Parkbesuche innerhalb eines Jahres ermöglicht.',
     definition:
       'Ein Jahrespass (auch Saisonkarte oder Annual Pass) gewährt unbegrenzte Eintritte in einen oder mehrere Parks über einen Zeitraum von üblicherweise zwölf Monaten. Viele Jahrespässe enthalten Zusatzleistungen wie Rabatte auf Gastronomie, Merchandise oder Parken. Je nach Stufe können Sperrdaten (Blockout-Dates) an Spitzentagen gelten. Für regelmäßige Besucher — mehr als drei bis vier Mal jährlich — rechnet sich ein Jahrespass in der Regel gegenüber Einzeltickets.',
-    aliases: ['Jahreskarte', 'Jahrespässe'],
+    aliases: ['Jahreskarte', 'Jahrespässe', 'Saisonpass', 'Saisonpässe'],
     alternateNames: ['Annual Pass', 'Season Pass', 'Saisonkarte', 'Saisonpass'],
 
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
@@ -204,6 +210,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Normale Warteschlange', 'Reguläre Warteschlange', 'Standby-Warteschlange'],
 
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
+    aliases: ['Standby', 'Standby-Schlange']
   },
   {
     id: 'lightning-lane',
@@ -221,6 +228,7 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
+    aliases: ['Lightning Lanes']
   },
   {
     id: 'genie-plus',
@@ -297,6 +305,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Der Eröffnungstag ist das offiziell angekündigte Datum, an dem ein neuer Park, eine Erweiterung oder eine Attraktion erstmals der Öffentlichkeit zugänglich gemacht wird. Eröffnungstage sind besondere Ereignisse in der Freizeitpark-Community: Sie ziehen in der Regel große Medienaufmerksamkeit, lange Schlangen und eine festliche Atmosphäre an. Parks veranstalten häufig Eröffnungszeremonien mit besonderen Unterhaltungsangeboten. Da Eröffnungstage besonders viele Besucher anziehen, sind sie selten der beste Zeitpunkt, um eine neue Attraktion mit kurzen Wartezeiten zu erleben. Soft Openings finden gelegentlich vor dem offiziellen Eröffnungstag statt.',
     relatedTermIds: ['crowd-level', 'rope-drop', 'soft-opening'],
+    aliases: ['Eröffnungstage']
   },
   {
     id: 'rider-switch',
@@ -440,6 +449,7 @@ const translations: GlossaryTermTranslation[] = [
     ],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
+    aliases: ['Launch Coasters', 'Abschuss-Coaster']
   },
   {
     id: 'wooden-coaster',
@@ -813,6 +823,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Ein Dive Coaster zeichnet sich durch extrem breite Züge (meist 8–10 Sitzplätze in einer Reihe), einen nahezu vertikalen oder Überkopf-Abfall (90+ Grad) und einen theatralischen Halt an der Abfallkante aus — der Zug hält kurz über der Kante an, bevor er freigelassen wird. Das maximiert die Vorspannung. Das breite Format gibt allen Fahrgästen den Blick senkrecht nach unten. B&Ms Dive Machine (Oblivion in Alton Towers, Krake in Heide-Park) hat das Konzept geprägt; Gerstlauer bietet ein Konkurrenzmodell an. Der bewusste Stopp an der Kante ist eine Designentscheidung zur Steigerung der psychologischen Spannung.',
     relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
+    aliases: ['Dive Coasters']
   },
   {
     id: 'credit',
@@ -994,6 +1005,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine KI-Prognose nutzt Machine-Learning-Modelle, die mit historischen Besuchsdaten, Wetterdaten, Schulferienkalendern und Echtzeit-Warteschlangendaten trainiert wurden, um vorherzusagen, wie voll ein Freizeitpark oder eine einzelne Attraktion an einem bestimmten Tag oder zu einer bestimmten Stunde sein wird. park.fan generiert KI-Prognosen für Besucherdichte und erwartete Wartezeiten bis zu 30+ Tage im Voraus.\n\nDie Vorhersagen werden kontinuierlich aktualisiert, wenn neue Daten eintreffen. Kurzfristige Prognosen (1–7 Tage) sind typischerweise sehr präzise, da aktuelle Wetterdaten, Veranstaltungsankündigungen und Buchungssignale einbezogen werden können. Langfristige Prognosen sind naturgemäß weniger präzise, aber dennoch wertvoll für die Planung – sie identifizieren zuverlässig ruhige oder belebte Zeiträume weit im Voraus.\n\nKI-Prognosen unterscheiden sich von einfachen historischen Durchschnittswerten dadurch, dass sie sich an aktuelle Bedingungen anpassen: Ein Freizeitpark, der gerade eine neue Attraktion angekündigt hat, ein Feiertag, der auf einen anderen Wochentag fällt als üblich, oder ein ungewöhnlich warmes Frühlingswochenende verschieben die Vorhersage spürbar vom historischen Basiswert.',
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['AI Forecast', 'AI Forecasts'],
+    aliases: ['KI-Prognose', 'KI-Prognosen', 'KI-Vorhersage', 'KI-Vorhersagen']
   },
   {
     id: 'ki',
@@ -1014,6 +1026,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Echtzeit-Wartezeit ist die aktuelle, live aus den Erfassungssystemen eines Freizeitparks abgerufene Wartezeit — kein historischer Durchschnitt, sondern der tatsächliche Stand von heute, jetzt, auf die Minute genau. park.fan ruft Echtzeit-Wartezeiten aus offiziellen Park-APIs und Drittquellen ab und aktualisiert die Daten im Minutentakt. So siehst du immer, welche Attraktion gerade leer ist und wo du wirklich 60 Minuten warten müsstest.',
     relatedTermIds: ['crowd-forecast', 'posted-wait-time', 'wait-time'],
     alternateNames: ['Live-Wartezeit', 'Live-Wartezeiten'],
+    aliases: ['Echtzeit-Wartezeit', 'Echtzeit-Wartezeiten', 'Live-Wartezeit', 'Live-Wartezeiten']
   },
   {
     id: 'crowd-forecast',
@@ -1024,6 +1037,7 @@ const translations: GlossaryTermTranslation[] = [
       'Eine Crowd-Prognose (auch Besucherprognose) ist eine datengestützte Vorhersage, wie voll ein Freizeitpark an einem bestimmten Tag oder zu einer bestimmten Uhrzeit sein wird. park.fan berechnet Crowd-Prognosen täglich neu auf Basis historischer Besuchszahlen, Schulferienkalender, Wetterdaten und Sonderveranstaltungen. Die Ergebnisse fließen direkt in den Besucherkalender ein: Grüne Tage bedeuten kurze Warteschlangen, rote Tage stehen für Spitzenbetrieb mit langen Wartezeiten.',
     relatedTermIds: ['ai-forecast', 'crowd-calendar', 'crowd-level', 'peak-day'],
     alternateNames: ['Besucherprognose', 'Besucherprognosen'],
+    aliases: ['Crowd-Prognose', 'Crowd-Prognosen', 'Besucherprognose', 'Besucherprognosen']
   },
   {
     id: 'opening-hours',
@@ -1067,6 +1081,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'G-Kraft (Erdbeschleunigungsäquivalent) misst die Beschleunigung, die ein Fahrgast im Vergleich zur normalen Schwerkraft der Erde erlebt. Positive G-Kräfte (über 1G) drücken Fahrgäste in ihre Sitze, wenn der Zug durch ein Tal oder eine enge Kurve zieht. Negative G-Kräfte (unter 0G) heben Fahrgäste aus ihren Sitzen und erzeugen Airtime. Seitliche G-Kräfte (Laterals) wirken quer zur Fahrtrichtung und schieben Fahrgäste auf Kurven und Übergängen seitlich.\n\nAchterbahnen sind so konstruiert, dass diese Kräfte gezielt sequenziert werden. 4–5G in einem Talboden sind das Merkmal einer kraftvollen First-Drop-Einleitung. Ein kurzer Moment von −0,5G bis −1G auf einem Airtime-Hügel erzeugt das typische Schwebegefühl. Die meisten Bahnen zielen auf 0–5G anhaltende positive Kräfte ab, mit kurzen Spitzen für dramatische Effekte. Anhaltend hohe G-Belastungen über mehrere Sekunden können zu Unbehagen oder Greyout führen; gut gestaltete Coaster balancieren Intensitätspitzen mit Erholungsabschnitten.',
     relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs'],
+    aliases: ['G-Kräfte', 'G-Kraft']
   },
   {
     id: 'greyout',
@@ -1478,6 +1493,7 @@ const translations: GlossaryTermTranslation[] = [
       'Als Wasserfahrt bezeichnet man Attraktionen, bei denen Wasser ein zentraler Bestandteil des Erlebnisses ist – entweder fahren die Fahrzeuge durch einen Wasserkanal, oder Wasser wird als gezielter Effekt eingesetzt. Die drei häufigsten Typen sind: Wildwasserbahnen (Bootsfahrten durch Kanäle mit Steilabfall), Wildwasser-Rafting-Bahnen (kreisförmige Boote durch künstliche Stromschnellen) und Spritz-Battles (Gäste beschießen sich gegenseitig mit Wasserkanonen). Wasserfahrten haben in der Regel niedrige Mindestgrößenanforderungen und eine sehr breite Zielgruppe. An heißen Sommertagen können die Wartezeiten extrem lang werden.',
     relatedTermIds: ['height-requirement', 'log-flume', 'ride-capacity', 'river-rapids'],
     alternateNames: ['Water Ride', 'Wasserattraktion', 'Nassattraktion'],
+    aliases: ['Wasserfahrten', 'Wasserattraktionen', 'Wasserrutschen']
   },
   {
     id: 'live-show',

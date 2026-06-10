@@ -1,0 +1,289 @@
+import type { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { routing, type Locale } from '@/i18n/routing';
+import { locales, localeToOpenGraphLocale } from '@/i18n/config';
+import {
+  buildPostAlternates,
+  getPostByLocaleSlug,
+  getTranslationIndex,
+  listAllUrlSlugsByLocale,
+} from '@/lib/blog';
+import { BlogContent } from '@/components/blog/blog-content';
+import { BlogPostHero } from '@/components/blog/blog-post-hero';
+import { BlogToc } from '@/components/blog/blog-toc';
+import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
+import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
+import { extractToc } from '@/lib/blog/toc';
+import { resolveAuthor } from '@/lib/blog/authors';
+import { ShareButtons } from '@/components/common/share-buttons';
+import { BlogPostNav } from '@/components/blog/blog-post-nav';
+import { BlogReadingProgress } from '@/components/blog/blog-reading-progress';
+import { BlogGallery } from '@/components/blog/blog-gallery';
+import { resolveGallery } from '@/lib/blog/gallery';
+import { BlogTags } from '@/components/blog/blog-tags';
+import { BlogRelatedPosts } from '@/components/blog/blog-related-posts';
+import { BlogReferences } from '@/components/blog/blog-references';
+import { BlogBottomSections } from '@/components/blog/blog-bottom-sections';
+import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
+import { getOgImageUrl } from '@/lib/utils/og-image';
+import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
+import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
+import { PageContainer } from '@/components/common/page-container';
+import { GlassCard } from '@/components/common/glass-card';
+import { ParkBackground } from '@/components/parks/park-background';
+import {
+  categoryPathBreadcrumbs,
+  resolveCategoryLabel,
+} from '@/lib/blog/categories';
+import type { Breadcrumb } from '@/lib/api/types';
+
+interface BlogPostPageProps {
+  params: Promise<{ locale: string; slug: string }>;
+}
+
+// All blog routes are statically generated at build time. Geo + glossary
+// data is fetched in cached server helpers, so the markup is produced once
+// per build (re-generated every `revalidate` window).
+
+export function generateStaticParams() {
+  return listAllUrlSlugsByLocale().map(({ locale, slug }) => ({ locale, slug }));
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { locale, slug } = await params;
+  if (!routing.locales.includes(locale as Locale)) return {};
+  const post = getPostByLocaleSlug(slug, locale as Locale);
+  if (!post) return {};
+
+  const t = await getTranslations({ locale, namespace: 'blog' });
+  const { frontmatter, translationKey } = post;
+  const title = frontmatter.seo?.title ?? frontmatter.title;
+  const description = frontmatter.seo?.description ?? frontmatter.excerpt;
+  const fullTitle = `${title} | ${t('title')} · park.fan`;
+  const alternates = buildPostAlternates(translationKey);
+  const localeUrl = alternates[locale] ?? `https://park.fan/${locale}/blog/${post.slug}`;
+  // OG image priority:
+  //   1. explicit seo.ogImage frontmatter override
+  //   2. cover image from frontmatter (the post hero)
+  //   3. dynamic OG image generated from the title (/api/og)
+  // Hardened to absolutise paths and never produce a dangling
+  // `https://park.fan` URL when nothing is set.
+  const ogImageSource =
+    frontmatter.seo?.ogImage ??
+    frontmatter.coverImage?.src ??
+    getOgImageUrl([locale, 'blog', post.slug]);
+  const fullOgImage = ogImageSource.startsWith('http')
+    ? ogImageSource
+    : `https://park.fan${ogImageSource.startsWith('/') ? '' : '/'}${ogImageSource}`;
+
+  // Merge `tags` with the optional `seo.keywords` frontmatter field — both
+  // feed Google's keywords meta, the tag list anchors the in-app archive.
+  const extraKeywords = Array.isArray(frontmatter.seo?.keywords)
+    ? frontmatter.seo!.keywords
+    : typeof frontmatter.seo?.keywords === 'string'
+      ? frontmatter.seo.keywords.split(',').map((k) => k.trim()).filter(Boolean)
+      : [];
+  const allKeywords = Array.from(
+    new Set([...(frontmatter.tags ?? []), ...extraKeywords])
+  );
+
+  const seoIndex = frontmatter.seo?.noindex !== true;
+  const canonicalOverride = frontmatter.seo?.canonical;
+  const metaAuthor = resolveAuthor(frontmatter.author, locale as Locale);
+
+  return {
+    title: { absolute: fullTitle },
+    description,
+    authors: [{ name: metaAuthor.name, url: metaAuthor.url }],
+    keywords: allKeywords.length > 0 ? allKeywords : undefined,
+    openGraph: {
+      title: fullTitle,
+      description,
+      locale: localeToOpenGraphLocale[locale as Locale],
+      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
+      url: localeUrl,
+      siteName: 'park.fan',
+      type: 'article',
+      publishedTime: frontmatter.date,
+      modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
+      tags: frontmatter.tags,
+      images: [
+        {
+          url: fullOgImage,
+          width: 1200,
+          height: 630,
+          alt: frontmatter.coverImage?.alt ?? frontmatter.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description,
+      images: [fullOgImage],
+    },
+    alternates: {
+      canonical: canonicalOverride ?? localeUrl,
+      languages: {
+        ...alternates,
+        'x-default': alternates['en'] ?? localeUrl,
+      },
+      types: {
+        'application/rss+xml': `https://park.fan/${locale}/blog/feed.xml`,
+      },
+    },
+    robots: {
+      index: seoIndex,
+      follow: seoIndex,
+      googleBot: {
+        index: seoIndex,
+        follow: seoIndex,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { locale, slug } = await params;
+  if (!routing.locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
+
+  const post = getPostByLocaleSlug(slug, locale as Locale);
+  if (!post) notFound();
+
+  // Canonicalize: if a translation exists for this locale but the user landed
+  // on a different-locale's slug, redirect to the canonical URL for the
+  // requested locale. This keeps URLs clean and SEO consistent.
+  const index = getTranslationIndex();
+  const localeMap = index.get(post.translationKey);
+  const canonicalSlugForRequested = localeMap?.get(locale as Locale);
+  if (canonicalSlugForRequested && canonicalSlugForRequested !== slug) {
+    redirect(`/${locale}/blog/${canonicalSlugForRequested}`);
+  }
+
+  const tBlog = await getTranslations({ locale, namespace: 'blog' });
+
+  // BreadcrumbNav breadcrumbs (excluding the current page — that's `currentPage`).
+  const navBreadcrumbs: Breadcrumb[] = [
+    { name: tBlog('blog'), url: '/blog' },
+    ...categoryPathBreadcrumbs(post.frontmatter.category).map((segments) => {
+      const fullPath = segments.join('/');
+      return {
+        name: resolveCategoryLabel(fullPath, locale as Locale, segments[segments.length - 1]),
+        url: `/blog/category/${fullPath}`,
+      };
+    }),
+  ];
+
+  // SEO crumbs include the current post for the BreadcrumbList JSON-LD.
+  const seoBreadcrumbs: Breadcrumb[] = [
+    ...navBreadcrumbs,
+    { name: post.frontmatter.title, url: `/blog/${post.slug}` },
+  ];
+
+  const cover = post.frontmatter.coverImage?.src ?? null;
+
+  // Locales that have a real translation of this post → their canonical URL.
+  // Drives the "also available in your language" notice in the hero.
+  const availableTranslations: Partial<Record<Locale, string>> = {};
+  if (localeMap) {
+    for (const [l, s] of localeMap) {
+      availableTranslations[l] = `/${l}/blog/${s}`;
+    }
+  }
+
+  const shareUrl = `https://park.fan/${locale}/blog/${post.slug}`;
+  const hasToc = extractToc(post.content).length >= 3;
+
+  return (
+    <>
+      {cover && <link rel="preload" as="image" href={cover} />}
+      <ParkBackground imageSrc={cover} alt={post.frontmatter.coverImage?.alt ?? post.frontmatter.title} />
+      <BlogReadingProgress />
+
+      <PageContainer>
+        <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
+        <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
+
+        <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
+
+        <article>
+          {/* Header glass card — same shape as the park page header */}
+          <div className="mb-8">
+            <GlassCard variant="medium">
+              <BlogPostHero
+                post={post}
+                currentLocale={locale as Locale}
+                availableTranslations={availableTranslations}
+              />
+            </GlassCard>
+          </div>
+
+          <div
+            className={
+              hasToc ? 'lg:grid lg:grid-cols-[minmax(0,1fr)_16rem] lg:items-start lg:gap-8' : undefined
+            }
+          >
+            {hasToc && (
+              <aside className="mb-8 space-y-6 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+                <BlogToc markdown={post.content} title={post.frontmatter.title} />
+                {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
+                <div className="hidden space-y-6 lg:block">
+                  <BlogCategoryTree locale={locale as Locale} />
+                  <BlogTagCloud locale={locale as Locale} />
+                </div>
+              </aside>
+            )}
+
+            <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+              {/* Body in its own glass card so the long-form content sits on a
+                 frosted panel exactly like the schedule/weather/stats cards on
+                 the park page. */}
+              <GlassCard variant="medium" className="mb-8">
+                <BlogContent markdown={post.content} locale={locale as Locale} />
+
+                {(() => {
+                  const images = resolveGallery(post.frontmatter.gallery);
+                  return images.length > 0 ? <BlogGallery images={images} /> : null;
+                })()}
+
+                {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                  <div className="border-border/60 mt-12 border-t pt-6">
+                    <BlogTags tags={post.frontmatter.tags} />
+                  </div>
+                )}
+
+                <div className="border-border/60 mt-8 border-t pt-6">
+                  <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+                </div>
+              </GlassCard>
+
+              {/* Marks the end of the readable article body — the reading-progress
+                 bar fills to 100% here, before the references/related sections. */}
+              <div id="blog-progress-end" aria-hidden="true" />
+
+              {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
+                 the post — inline link references, embedded widgets, plus the
+                 explicit relatedParks / relatedAttractions frontmatter. */}
+              <BlogReferences post={post} />
+
+              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
+
+              <BlogRelatedPosts
+                locale={locale as Locale}
+                currentTranslationKey={post.translationKey}
+                category={post.frontmatter.category}
+                tags={post.frontmatter.tags ?? []}
+              />
+            </div>
+          </div>
+        </article>
+      </PageContainer>
+
+      <BlogBottomSections locale={locale} />
+    </>
+  );
+}

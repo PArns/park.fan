@@ -1,4 +1,10 @@
 {
+  "share": {
+    "title": "Share",
+    "on": "Share on {platform}",
+    "copy": "Copy link",
+    "copied": "Copied!"
+  },
   "common": {
     "scroll": "Scroll",
     "loading": "Loading...",
@@ -192,6 +198,7 @@
     "impressum": "Imprint",
     "howto": "How it works",
     "glossaryLink": "Dictionary",
+    "blog": "Blog",
     "datenschutz": "Privacy Policy",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -235,7 +242,8 @@
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
     "howto": "Guide",
-    "glossary": "Dictionary"
+    "glossary": "Dictionary",
+    "blog": "Blog"
   },
   "theme": {
     "light": "Light",
@@ -985,5 +993,105 @@
   "parkCard": {
     "until": "Until",
     "closingIn": "in"
+  },
+  "blog": {
+    "title": "Blog",
+    "badge": "park.fan Blog",
+    "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
+    "intro": "Honest trip reports, wait-time data dives, and concise news from the parks we cover. Written by humans who stand in lines so you don't have to.",
+    "blog": "Blog",
+    "empty": "No posts yet. Check back soon.",
+    "readMore": "Read article",
+    "readingTime": "{minutes} min read",
+    "updatedOn": "Updated {date}",
+    "languageNotice": {
+      "available": "This article is also available in {language}",
+      "fallback": "Not translated yet — showing the {language} version."
+    },
+    "breadcrumbs": "Breadcrumbs",
+    "categories": "Categories",
+    "category": {
+      "label": "Category",
+      "description": "Blog posts in {category} on park.fan.",
+      "postsCount": "{count, plural, =1 {# post} other {# posts}}"
+    },
+    "home": {
+      "heading": "From the blog",
+      "intro": "Trip reports, data deep-dives and theme park news — the latest posts land here first.",
+      "viewAll": "Read all posts"
+    },
+    "gallery": {
+      "title": "Gallery",
+      "openImage": "Open image {index} of {total}",
+      "close": "Close gallery",
+      "next": "Next image",
+      "previous": "Previous image"
+    },
+    "inlineImage": {
+      "openImage": "Open image",
+      "close": "Close image"
+    },
+    "parkLink": {
+      "viewPark": "View {name}",
+      "avgWait": "{minutes} min avg",
+      "openAttractions": "{open} of {total} open"
+    },
+    "attractionLink": {
+      "attraction": "Attraction",
+      "viewAttraction": "View {name}",
+      "atPark": "at {park}"
+    },
+    "related": {
+      "title": "More from the blog"
+    },
+    "relatedParks": {
+      "title": "Parks mentioned in this article"
+    },
+    "widget": {
+      "parkSpotlight": "Park spotlight",
+      "parkNotFound": "Park \"{slug}\" could not be found.",
+      "attractionSpotlight": "Ride spotlight",
+      "attractionNotFound": "Ride \"{slug}\" could not be found.",
+      "parkMap": "Park map",
+      "weather": "Weather",
+      "glossary": "Glossary",
+      "glossaryMore": "Full definition",
+      "termNotFound": "Glossary term \"{slug}\" could not be found."
+    },
+    "toc": {
+      "title": "Contents",
+      "label": "Table of contents"
+    },
+    "postNav": {
+      "label": "More articles",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "pagination": {
+      "label": "Pagination",
+      "previous": "Previous",
+      "next": "Next",
+      "pageLabel": "Page {page}",
+      "pageOf": "Page {page} of {total}",
+      "goToPage": "Go to page {page}"
+    },
+    "references": {
+      "parks": "{count, plural, =1 {Park in this article} other {Parks in this article}}",
+      "attractions": "{count, plural, =1 {Ride in this article} other {Rides in this article}}"
+    },
+    "author": {
+      "label": "Author",
+      "postsBy": "Posts by {name}",
+      "postsCount": "{count, plural, =1 {# post} other {# posts}}",
+      "description": "Posts by {name} on park.fan.",
+      "noPosts": "No posts yet."
+    },
+    "tag": {
+      "label": "Tag",
+      "description": "Blog posts tagged #{tag} on park.fan.",
+      "postsCount": "{count, plural, =1 {# post} other {# posts}}",
+      "cloudTitle": "Topics"
+    },
+    "featured": "Featured"
   }
 }

@@ -1,4 +1,10 @@
 {
+  "share": {
+    "title": "Teilen",
+    "on": "Teilen auf {platform}",
+    "copy": "Link kopieren",
+    "copied": "Kopiert!"
+  },
   "common": {
     "scroll": "Scrollen",
     "loading": "Laden...",
@@ -192,6 +198,7 @@
     "impressum": "Impressum",
     "howto": "Anleitung",
     "glossaryLink": "Wörterbuch",
+    "blog": "Blog",
     "datenschutz": "Datenschutzerklärung",
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
@@ -235,7 +242,8 @@
     "admin": "Admin",
     "nearbyPark": "In der Nähe: {parkName}",
     "howto": "Anleitung",
-    "glossary": "Wörterbuch"
+    "glossary": "Wörterbuch",
+    "blog": "Blog"
   },
   "theme": {
     "light": "Hell",
@@ -255,7 +263,7 @@
     "status": {
       "OPERATING": "Geöffnet",
       "CLOSED": "Geschlossen",
-      "REFURBISHMENT": "In Renovierung",
+      "REFURBISHMENT": "In Wartung",
       "DOWN": "Störung",
       "UNKNOWN": "Unbekannt"
     },
@@ -985,5 +993,105 @@
   "parkCard": {
     "until": "Bis",
     "closingIn": "noch"
+  },
+  "blog": {
+    "title": "Blog",
+    "badge": "park.fan Blog",
+    "description": "Reiseberichte, Daten-Deep-Dives und Park-News vom park.fan-Team.",
+    "intro": "Ehrliche Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von Menschen, die anstehen, damit du es nicht musst.",
+    "blog": "Blog",
+    "empty": "Noch keine Beiträge. Schau bald wieder vorbei.",
+    "readMore": "Artikel lesen",
+    "readingTime": "{minutes} Min. Lesezeit",
+    "updatedOn": "Aktualisiert {date}",
+    "languageNotice": {
+      "available": "Diesen Artikel gibt es auch auf {language}",
+      "fallback": "Noch nicht übersetzt — du siehst die Version auf {language}."
+    },
+    "breadcrumbs": "Brotkrumen",
+    "categories": "Kategorien",
+    "category": {
+      "label": "Kategorie",
+      "description": "Blog-Beiträge in {category} auf park.fan.",
+      "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}"
+    },
+    "home": {
+      "heading": "Aus dem Blog",
+      "intro": "Reiseberichte, Daten-Analysen und Park-News – die neuesten Beiträge erscheinen hier zuerst.",
+      "viewAll": "Alle Beiträge lesen"
+    },
+    "gallery": {
+      "title": "Galerie",
+      "openImage": "Bild {index} von {total} öffnen",
+      "close": "Galerie schließen",
+      "next": "Nächstes Bild",
+      "previous": "Vorheriges Bild"
+    },
+    "inlineImage": {
+      "openImage": "Bild öffnen",
+      "close": "Bild schließen"
+    },
+    "parkLink": {
+      "viewPark": "{name} ansehen",
+      "avgWait": "Ø {minutes} Min.",
+      "openAttractions": "{open} von {total} offen"
+    },
+    "attractionLink": {
+      "attraction": "Attraktion",
+      "viewAttraction": "{name} ansehen",
+      "atPark": "im {park}"
+    },
+    "related": {
+      "title": "Mehr aus dem Blog"
+    },
+    "relatedParks": {
+      "title": "Parks im Beitrag"
+    },
+    "widget": {
+      "parkSpotlight": "Park im Fokus",
+      "parkNotFound": "Park „{slug}\" wurde nicht gefunden.",
+      "attractionSpotlight": "Attraktion im Fokus",
+      "attractionNotFound": "Attraktion „{slug}\" wurde nicht gefunden.",
+      "parkMap": "Parkplan",
+      "weather": "Wetter",
+      "glossary": "Glossar",
+      "glossaryMore": "Vollständige Definition",
+      "termNotFound": "Glossarbegriff \"{slug}\" wurde nicht gefunden."
+    },
+    "toc": {
+      "title": "Inhalt",
+      "label": "Inhaltsverzeichnis"
+    },
+    "postNav": {
+      "label": "Weitere Beiträge",
+      "previous": "Vorheriger",
+      "next": "Nächster"
+    },
+    "pagination": {
+      "label": "Seitennavigation",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "pageLabel": "Seite {page}",
+      "pageOf": "Seite {page} von {total}",
+      "goToPage": "Zu Seite {page}"
+    },
+    "references": {
+      "parks": "{count, plural, =1 {Park im Beitrag} other {Parks im Beitrag}}",
+      "attractions": "{count, plural, =1 {Attraktion im Beitrag} other {Attraktionen im Beitrag}}"
+    },
+    "author": {
+      "label": "Autor",
+      "postsBy": "Beiträge von {name}",
+      "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}",
+      "description": "Beiträge von {name} auf park.fan.",
+      "noPosts": "Noch keine Beiträge."
+    },
+    "tag": {
+      "label": "Tag",
+      "description": "Blog-Beiträge mit dem Tag #{tag} auf park.fan.",
+      "postsCount": "{count, plural, =1 {# Beitrag} other {# Beiträge}}",
+      "cloudTitle": "Themen"
+    },
+    "featured": "Empfohlen"
   }
 }
