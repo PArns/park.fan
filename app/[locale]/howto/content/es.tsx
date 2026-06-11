@@ -27,6 +27,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -491,6 +493,50 @@ function ContentESSections() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Recomendaciones rope drop">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Para las atracciones estrella (headliners) de un parque, park.fan calcula a diario, a
+            partir de los patrones de espera de las últimas semanas, si el rope drop merece la pena
+            —estar en la puerta justo a la apertura— o si la cola es más corta por la noche:
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                Merece la pena: llega a la entrada a la apertura y monta primero en esta atracción;
+                a menudo ahorras 45–90 minutos respecto al pico del día. Verde = consejo fuerte,
+                turquesa = buen consejo.
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Mejor más tarde
+              </span>
+              <p className="text-muted-foreground text-sm">
+                Lo contrario: aquí la cola ya es larga en la apertura; normalmente es más corta por
+                la noche. Ahórrate el sprint y vuelve más tarde.
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            En la página de detalle de la atracción, un panel propio muestra los detalles: espera en
+            la apertura vs. pico del día, los minutos ahorrados y la ventana de tiempo (p. ej.
+            «Mejor en los primeros 45 min tras la apertura, hasta aprox. las 10:45»). En la página
+            del parque, un panel de consejos sobre los destacados resume dónde compensa hoy el rope
+            drop y qué atracciones es mejor dejar para la noche.
+          </p>
+          <InfoBox>
+            Las recomendaciones se recalculan a diario y solo aparecen en atracciones estrella de
+            parques con horarios publicados. Todas las horas se muestran en la zona horaria del
+            parque, como en todo park.fan.
+          </InfoBox>
         </SubSection>
 
         <SubSection title="Tipos de Cola">

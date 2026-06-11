@@ -28,6 +28,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -479,6 +481,49 @@ function ContentENSections() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Rope Drop Recommendations">
+          <p className="text-muted-foreground mb-3 text-sm">
+            For a park's top attractions (headliners), park.fan computes daily from recent wait-time
+            patterns whether rope drop pays off — being at the gates right at park opening — or
+            whether the line is shortest in the evening:
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope Drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                Worth it: be at the entrance at opening and ride this attraction first — you often
+                save 45–90 minutes compared to the day's peak. Green = strong tip, teal = good tip.
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Better later
+              </span>
+              <p className="text-muted-foreground text-sm">
+                The opposite: the line is already long right at opening — it's typically shortest in
+                the evening. Skip the sprint and come back later.
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            On the attraction detail page a dedicated panel shows the details: wait at opening vs.
+            day's peak, the minutes saved and the time window (e.g. “Best within the first 45 min
+            after opening — until about 10:45”). On the park page a tip panel above the headliners
+            sums up where rope drop pays off today — and which attractions are better saved for the
+            evening.
+          </p>
+          <InfoBox>
+            Recommendations are recomputed daily and only appear for headliner attractions in parks
+            with published opening hours. All times are shown in the park's timezone — like
+            everywhere on park.fan.
+          </InfoBox>
         </SubSection>
 
         <SubSection title="Queue Types">

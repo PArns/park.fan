@@ -27,6 +27,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -480,6 +482,50 @@ function ContentNLSections() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Rope-drop-aanbevelingen">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Voor de topattracties (headliners) van een park berekent park.fan dagelijks uit de
+            wachttijdpatronen van de afgelopen weken of rope drop loont – direct bij parkopening
+            aanwezig zijn – of dat de rij ’s avonds het kortst is:
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                De moeite waard: sta bij opening bij de ingang en rijd deze attractie als eerste –
+                je bespaart vaak 45–90 minuten ten opzichte van de dagpiek. Groen = sterke tip,
+                turquoise = goede tip.
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Later beter
+              </span>
+              <p className="text-muted-foreground text-sm">
+                Het omgekeerde: hier is de rij al bij opening lang – meestal is hij ’s avonds het
+                kortst. Bespaar je de sprint en kom later terug.
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            Op de detailpagina van de attractie toont een eigen paneel de details: wachttijd bij
+            opening vs. dagpiek, de besparing in minuten en het tijdvenster (bijv. “Het beste binnen
+            de eerste 45 min. na opening – tot ca. 10:45”). Op de parkpagina vat een tip-paneel
+            boven de highlights samen waar rope drop vandaag loont – en welke attracties je beter
+            voor de avond bewaart.
+          </p>
+          <InfoBox>
+            De aanbevelingen worden dagelijks opnieuw berekend en verschijnen alleen bij
+            headliner-attracties in parken met gepubliceerde openingstijden. Alle tijden staan –
+            zoals overal op park.fan – in de tijdzone van het park.
+          </InfoBox>
         </SubSection>
 
         <SubSection title="Wachtrij-typen">
