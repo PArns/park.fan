@@ -7,13 +7,15 @@ import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
-import type { WeatherHourlyPoint } from '@/lib/api/types';
+import type { ScheduleItem, WeatherHourlyPoint } from '@/lib/api/types';
 
 interface WeatherHourlyChartProps {
   /** Today's hourly points (naive park-local times, ascending). */
   points: WeatherHourlyPoint[];
   /** Park timezone — point times are naive park-local, so "now" is compared in that zone. */
   timezone: string;
+  /** Park schedule — today's opening hours are marked as a band on the chart. */
+  schedule?: ScheduleItem[];
   className?: string;
 }
 
@@ -65,7 +67,12 @@ function smoothPath(pts: { x: number; y: number }[]): string {
  * hourly chart. Renders nothing once the data no longer belongs to today
  * (e.g. right after midnight, until the next refetch rolls it over).
  */
-export function WeatherHourlyChart({ points, timezone, className }: WeatherHourlyChartProps) {
+export function WeatherHourlyChart({
+  points,
+  timezone,
+  schedule,
+  className,
+}: WeatherHourlyChartProps) {
   const locale = useLocale();
   const t = useTranslations('parks.weather');
   const tNowcast = useTranslations('parks.weatherNowcast');
@@ -129,6 +136,31 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
   // peak is around the current hour they collide, so drop the "Now" text then.
   const showNowLabel = Math.abs(clampX(xFor(maxIdx)) - nowPct) > 10;
 
+  // Park opening hours — today's OPERATING window mapped onto the day axis.
+  const localMinutes = (iso: string) =>
+    parseInt(iso.slice(11, 13), 10) * 60 + parseInt(iso.slice(14, 16), 10);
+  const todaySchedule =
+    schedule?.find(
+      (s) =>
+        s.date === nowLocal.slice(0, 10) &&
+        s.scheduleType === 'OPERATING' &&
+        s.openingTime &&
+        s.closingTime
+    ) ?? null;
+  let openPct: number | null = null;
+  let closePct: number | null = null;
+  if (todaySchedule) {
+    const open = toLocalIso(Date.parse(todaySchedule.openingTime!), timezone);
+    const close = toLocalIso(Date.parse(todaySchedule.closingTime!), timezone);
+    if (open.slice(0, 10) === nowLocal.slice(0, 10)) {
+      openPct = (localMinutes(open) / 1440) * 100;
+      // Parks closing after midnight run to the edge of the chart.
+      closePct =
+        close.slice(0, 10) > nowLocal.slice(0, 10) ? 100 : (localMinutes(close) / 1440) * 100;
+      if (closePct <= openPct) closePct = 100;
+    }
+  }
+
   const fmtTime = (localIso: string) =>
     new Date(`${localIso}Z`).toLocaleTimeString(locale, {
       hour: '2-digit',
@@ -149,7 +181,17 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
       </p>
 
       <div className="relative h-24">
-        {/* Temperature curve */}
+        {/* Park opening hours band */}
+        {openPct != null && closePct != null && (
+          <div
+            className="border-primary/30 bg-primary/[0.07] pointer-events-none absolute inset-y-0 border-x border-dashed"
+            style={{ left: `${openPct}%`, width: `${closePct - openPct}%` }}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Temperature curve — drawn twice via clip paths so the elapsed part of
+            the day renders dimmed (an overlay wash would tint dark mode wrong). */}
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full text-amber-400"
           viewBox="0 0 100 100"
@@ -161,24 +203,38 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
               <stop offset="0%" stopColor="currentColor" stopOpacity="0.28" />
               <stop offset="80%" stopColor="currentColor" stopOpacity="0.02" />
             </linearGradient>
+            <clipPath id={`${gradientId}-past`}>
+              <rect x="0" y="0" width={nowPct} height="100" />
+            </clipPath>
+            <clipPath id={`${gradientId}-future`}>
+              <rect x={nowPct} y="0" width={100 - nowPct} height="100" />
+            </clipPath>
           </defs>
-          <path d={areaD} fill={`url(#${gradientId})`} />
-          <path
-            d={lineD}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            vectorEffect="non-scaling-stroke"
-          />
+          {[
+            { clip: 'past', opacity: 0.45 },
+            { clip: 'future', opacity: 1 },
+          ].map(({ clip, opacity }) => (
+            <g key={clip} clipPath={`url(#${gradientId}-${clip})`} opacity={opacity}>
+              <path d={areaD} fill={`url(#${gradientId})`} />
+              <path
+                d={lineD}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </g>
+          ))}
         </svg>
 
         {/* Rain bars + per-hour tooltip hit areas */}
         <div className="absolute inset-0 flex">
-          {points.map((p) => {
+          {points.map((p, i) => {
             const mm = p.precipitationMm ?? 0;
             const barPct =
               mm > 0 ? Math.min(RAIN_AREA_PCT, Math.max(8, (mm / rainScale) * RAIN_AREA_PCT)) : 0;
+            const isPast = (i + 1) * 60 <= nowMinutes;
             const prob = p.precipitationProbability;
             const { icon: HourIcon, label, color } = getWeatherConfig(p.weatherCode ?? 0, p.isDay);
             const ariaLabel = `${fmtTime(p.time)} · ${
@@ -190,7 +246,10 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
                   <div className="relative min-w-0 flex-1" aria-label={ariaLabel}>
                     {barPct > 0 && (
                       <div
-                        className="absolute inset-x-[15%] bottom-0 rounded-t-[2px] bg-sky-400/85"
+                        className={cn(
+                          'absolute inset-x-[15%] bottom-0 rounded-t-[2px] bg-sky-400/85',
+                          isPast && 'opacity-40'
+                        )}
                         style={{ height: `${barPct}%` }}
                       />
                     )}
@@ -230,13 +289,6 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
             );
           })}
         </div>
-
-        {/* Mute hours that have already passed */}
-        <div
-          className="bg-background/45 pointer-events-none absolute inset-y-0 left-0"
-          style={{ width: `${nowPct}%` }}
-          aria-hidden="true"
-        />
 
         {/* "Now" marker */}
         <div
@@ -278,10 +330,17 @@ export function WeatherHourlyChart({ points, timezone, className }: WeatherHourl
         {points.map((p, i) => {
           if (i % 3 !== 0) return <div key={p.time} className="min-w-0 flex-1" />;
           const { icon: HourIcon, color } = getWeatherConfig(p.weatherCode ?? 0, p.isDay);
+          const isPast = (i + 1) * 60 <= nowMinutes;
           return (
-            <div key={p.time} className="flex min-w-0 flex-1 flex-col items-center gap-0.5">
+            <div
+              key={p.time}
+              className={cn(
+                'flex min-w-0 flex-1 flex-col items-center gap-0.5',
+                isPast && 'opacity-50'
+              )}
+            >
               <HourIcon className={cn('h-3.5 w-3.5 shrink-0', color)} aria-hidden="true" />
-              <span className="text-muted-foreground text-[9px] leading-none tabular-nums">
+              <span className="text-muted-foreground text-center text-[9px] leading-tight tabular-nums">
                 {fmtHour(p.time)}
               </span>
             </div>

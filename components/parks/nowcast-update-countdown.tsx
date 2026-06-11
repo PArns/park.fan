@@ -61,9 +61,14 @@ export function NowcastUpdateCountdown({
   const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
   const ss = String(totalSec % 60).padStart(2, '0');
 
+  // Below `sm` the full sentence wraps the card header — show the bare timer there.
   return (
-    <p className={cn('font-mono text-[11px] tabular-nums opacity-60', className)}>
-      {t('updateIn', { countdown: `${mm}:${ss}` })}
+    <p
+      className={cn('font-mono text-[11px] tabular-nums opacity-60', className)}
+      title={t('updateIn', { countdown: `${mm}:${ss}` })}
+    >
+      <span className="sm:hidden">{`${mm}:${ss}`}</span>
+      <span className="hidden sm:inline">{t('updateIn', { countdown: `${mm}:${ss}` })}</span>
     </p>
   );
 }

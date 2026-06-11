@@ -333,6 +333,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   latitude={park.latitude}
                   longitude={park.longitude}
                   timezone={park.timezone}
+                  schedule={park.schedule}
                   className="border-primary/10"
                 />
               </Suspense>

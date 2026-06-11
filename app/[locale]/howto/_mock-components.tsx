@@ -12,7 +12,13 @@ import { WeatherCard } from '@/components/parks/weather-card';
 import { ParkStatus } from '@/components/parks/park-status';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
-import type { ScheduleItem, WeatherData, WeatherNowcast, ParkResponse } from '@/lib/api/types';
+import type {
+  ScheduleItem,
+  WeatherData,
+  WeatherHourlyToday,
+  WeatherNowcast,
+  ParkResponse,
+} from '@/lib/api/types';
 import {
   Star,
   Clock,
@@ -251,6 +257,29 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
     },
   };
 
+  // Hourly day view (sunny mock): diurnal curve, dry all day. Dated "today in
+  // Europe/Berlin" — the chart hides itself when the data isn't today's.
+  const berlinDateStr = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Europe/Berlin',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(nowMs);
+  const hourly: WeatherHourlyToday = {
+    timezone: 'Europe/Berlin',
+    points: Array.from({ length: 24 }, (_, h) => {
+      const tFrac = 0.5 - 0.5 * Math.cos((((h - 5 + 24) % 24) / 24) * 2 * Math.PI);
+      return {
+        time: `${berlinDateStr}T${String(h).padStart(2, '0')}:00`,
+        temperatureC: Math.round((16 + 10 * tFrac) * 10) / 10,
+        precipitationMm: 0,
+        precipitationProbability: 5,
+        weatherCode: 1,
+        isDay: h >= 6 && h <= 21,
+      };
+    }),
+  };
+
   const park = {
     id: 'phantasialand',
     slug: 'phantasialand',
@@ -330,7 +359,14 @@ export async function MockParkHeader({ locale }: { locale: MockLocale }) {
             status="OPERATING"
             className="border-primary/10"
           />
-          <WeatherCard weather={weather} nowcast={nowcast} className="border-primary/10" />
+          <WeatherCard
+            weather={weather}
+            nowcast={nowcast}
+            timezone="Europe/Berlin"
+            hourly={hourly}
+            schedule={[todaySchedule]}
+            className="border-primary/10"
+          />
         </div>
 
         {/* Status grid — occupancy, wait times & attractions */}
