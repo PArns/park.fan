@@ -339,6 +339,76 @@ export interface PredictionAccuracy {
 }
 
 // ============================================================================
+// Rope Drop (precomputed "worth arriving at opening" recommendation)
+// ============================================================================
+
+export type RopeDropStrength = 'high' | 'moderate';
+export type RopeDropConfidence = 'high' | 'medium' | 'low';
+
+/** Per-day-type level bucket (absolute minutes, trailing window). */
+export interface RopeDropDayBucket {
+  /** Typical wait right after opening (minutes). */
+  openWait: number;
+  /** Typical daily peak wait (minutes). */
+  busyPeak: number;
+  /** busyPeak − openWait (minutes saved by rope-dropping). */
+  savings: number;
+}
+
+/**
+ * Rope-drop recommendation attached to tier1/tier2 headliners in parks with a
+ * schedule. Present even when `worth` is false — always check `worth`, not
+ * just existence. Headline levels reflect the busier of the two day-type buckets.
+ */
+export interface RopeDropInfo {
+  worth: boolean;
+  /** Recommendation tier when worth; null or absent otherwise. */
+  strength?: RopeDropStrength | null;
+  /** Data-quality indicator (number of operating days in the window). */
+  confidence: RopeDropConfidence;
+  /** Daily peak wait you avoid (minutes). */
+  busyPeak: number;
+  /** Typical wait at opening (minutes). */
+  openWait: number;
+  /** busyPeak − openWait (minutes). */
+  savings: number;
+  /** Advantage window: ride within X minutes after opening. */
+  rideByMinutesAfterOpen: number;
+  /** Minutes after opening of the day's absolute lowest wait (often evening). */
+  bestSlotMinutesAfterOpen: number;
+  /**
+   * Expected wait (minutes) at that trough — the payoff for coming back later.
+   * Added in backend PR #69; absent/null until recommendations are recomputed.
+   */
+  bestSlotWait?: number | null;
+  /**
+   * Server verdict: better saved for late in the day than rope-dropped (the
+   * trough falls in the back of the operating day, pre-closing line drain
+   * excluded). Added in backend PR #69; absent/null until recomputed.
+   */
+  endOfDayWorth?: boolean | null;
+  /** busyPeak − bestSlotWait (minutes saved at the evening trough). */
+  endOfDaySavings?: number | null;
+  /** openingTime + rideByMinutesAfterOpen for the next operating day (UTC ISO), or null. */
+  rideByUtc: string | null;
+  /** openingTime + bestSlotMinutesAfterOpen for the next operating day (UTC ISO), or null. */
+  bestSlotUtc: string | null;
+  byDaytype: {
+    weekend: RopeDropDayBucket;
+    weekday: RopeDropDayBucket;
+  };
+}
+
+/** Park-level quick summary: headliners with worth=true, sorted by savings desc. */
+export interface RopeDropHeadliner {
+  attractionId: string;
+  name: string;
+  /** Minutes saved by rope-dropping on a busy day. */
+  savings: number;
+  strength: RopeDropStrength;
+}
+
+// ============================================================================
 // Park Entities (Attractions, Shows, Restaurants)
 // ============================================================================
 
@@ -367,6 +437,8 @@ export interface ParkAttraction {
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
   bestVisitTimes?: BestVisitSlot[] | null;
+  /** Only set for tier1/tier2 headliners in parks with a schedule. */
+  ropeDrop?: RopeDropInfo | null;
   // Only present on attraction detail page (merged from dedicated endpoint)
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;
@@ -439,6 +511,8 @@ export interface ParkWithAttractions extends ParkBase {
   currentLoad?: ParkLoad | null;
   weather?: WeatherData;
   attractions: ParkAttraction[];
+  /** Headliners worth rope-dropping (worth=true), sorted by minutes saved. */
+  ropeDropHeadliners?: RopeDropHeadliner[];
   shows?: ParkShow[];
   restaurants?: ParkRestaurant[];
   analytics?: ParkAnalytics | null;
@@ -476,6 +550,8 @@ export interface AttractionResponse {
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
   bestVisitTimes?: BestVisitSlot[] | null;
+  /** Only set for tier1/tier2 headliners in parks with a schedule. */
+  ropeDrop?: RopeDropInfo | null;
 }
 
 export interface AttractionHistoryDay {

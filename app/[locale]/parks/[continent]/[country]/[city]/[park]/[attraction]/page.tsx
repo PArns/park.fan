@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
@@ -26,6 +27,8 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
+import { RopeDropCard } from '@/components/parks/rope-drop-card';
+import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -278,6 +281,29 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             city={city}
             parkSlug={parkSlug}
           />
+
+          {/* Rope-drop recommendation — precomputed daily on the server, present
+              only for tier1/tier2 headliners in parks with a schedule. Today's
+              closing caps displayed times to the operating day. The "no need to
+              rush" note renders only when some ride in the park IS recommended,
+              so it never sits on every headliner of an unrecommended park. */}
+          {attraction.ropeDrop && (
+            <RopeDropCard
+              ropeDrop={attraction.ropeDrop}
+              timezone={park.timezone}
+              todayClosingUtc={
+                park.schedule?.find(
+                  (s) =>
+                    s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
+                    s.scheduleType === 'OPERATING'
+                )?.closingTime ?? null
+              }
+              parkHasRecommendations={(park.attractions ?? []).some(
+                (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+              )}
+              className="mb-8"
+            />
+          )}
 
           <Separator className="my-8" />
 

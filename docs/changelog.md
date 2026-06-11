@@ -4,6 +4,41 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Rope-drop recommendations
+
+Surfaces the API's precomputed rope-drop data (backend PR #67): is it worth arriving at park
+opening for a headliner, and until when does the advantage last.
+
+- **Types**: `RopeDropInfo` / `RopeDropHeadliner` in `lib/api/types.ts`; `ropeDrop` on
+  `ParkAttraction` + `AttractionResponse`, `ropeDropHeadliners` on `ParkWithAttractions`.
+  Only set for tier1/tier2 headliners in parks with a schedule — and present even when
+  `worth: false`, so always check `worth`, not just existence.
+- **Attraction cards**: `<RopeDropBadge>` (sunrise icon, emerald = high / teal = moderate)
+  shown when `worth: true`, regardless of live status (the tip matters most pre-opening).
+- **Attraction detail**: `<RopeDropCard>` — savings headline (open wait vs. day peak),
+  advantage window as concrete park-local time via `rideByUtc` (offset fallback when null),
+  quieter evening alternative via `bestSlotUtc` when the day's trough isn't at opening,
+  weekend/weekday breakdown, low-confidence hint. Muted "no need to rush" note when
+  `worth: false`.
+- **Park page**: `<RopeDropHeadliners>` strip above the headliners section (chips linking to
+  each attraction, minutes saved); data arrives pre-filtered/sorted from the API.
+- **Inverse recommendation ("better later")**: when `worth: false` but the line is already long
+  right at opening (≥30 min) and the day's trough sits ≥2 h later (`isEveningBetter` in
+  `lib/utils/rope-drop.ts`), cards get an indigo moon badge and the detail page an
+  "Better later than at opening" panel pointing at the typical trough time (`bestSlotUtc`).
+- **Backend PR #69 fields**: `bestSlotWait` (expected wait at the trough), `endOfDayWorth` /
+  `endOfDaySavings` (server-side "better later" verdict with pre-closing line-drain guard) —
+  all optional in the frontend types. `isEveningBetter` prefers the server verdict and keeps
+  the local heuristic as fallback for cached recommendations predating the fields. When
+  `bestSlotWait` is present, the evening panel shows an opening/peak/evening stat trio and the
+  badge hint + alternative lines say "typically only ~X min". `/v1/favorites` now also carries
+  `ropeDrop`, so favorites cards light up without further frontend changes.
+- **i18n**: `attractions.ropeDrop.*` + `parks.ropeDropSection.*` in all 6 locales.
+- Rope-drop values are recomputed daily server-side — no extra polling; the fields ride along
+  on the existing park/attraction responses.
+
+---
+
 ## 2.10.1 (2026-06-10) – SEO review fixes
 
 Full-code SEO review; fixed everything actionable. See [seo/analysis.md](seo/analysis.md).
