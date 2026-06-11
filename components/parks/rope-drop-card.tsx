@@ -19,6 +19,13 @@ interface RopeDropCardProps {
    * are never shown.
    */
   todayClosingUtc?: string | null;
+  /**
+   * Whether any attraction in this park carries a rope-drop or evening
+   * recommendation. The "no need to rush" note only makes sense as a contrast
+   * to recommended neighbors — in parks without any recommendation it would
+   * appear on every headliner as noise.
+   */
+  parkHasRecommendations?: boolean;
   className?: string;
 }
 
@@ -36,6 +43,7 @@ export function RopeDropCard({
   ropeDrop,
   timezone,
   todayClosingUtc,
+  parkHasRecommendations = true,
   className,
 }: RopeDropCardProps) {
   const t = useTranslations('attractions.ropeDrop');
@@ -154,6 +162,8 @@ export function RopeDropCard({
         </GlassCard>
       );
     }
+
+    if (!parkHasRecommendations) return null;
 
     return (
       <GlassCard variant="light" className={cn('p-4', className)}>

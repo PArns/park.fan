@@ -28,6 +28,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
+import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -283,7 +284,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
           {/* Rope-drop recommendation — precomputed daily on the server, present
               only for tier1/tier2 headliners in parks with a schedule. Today's
-              closing caps displayed times to the operating day. */}
+              closing caps displayed times to the operating day. The "no need to
+              rush" note renders only when some ride in the park IS recommended,
+              so it never sits on every headliner of an unrecommended park. */}
           {attraction.ropeDrop && (
             <RopeDropCard
               ropeDrop={attraction.ropeDrop}
@@ -295,6 +298,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                     s.scheduleType === 'OPERATING'
                 )?.closingTime ?? null
               }
+              parkHasRecommendations={(park.attractions ?? []).some(
+                (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+              )}
               className="mb-8"
             />
           )}
