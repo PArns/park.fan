@@ -306,7 +306,9 @@
       },
       "gustsLabel": "Böen",
       "visibilityLabel": "Sicht",
-      "snowLabel": "Schnee"
+      "snowLabel": "Schnee",
+      "hourlyTitle": "Stündliche Vorhersage",
+      "nowLabel": "Jetzt"
     },
     "weatherNowcast": {
       "updateIn": "Aktualisierung in {countdown}",

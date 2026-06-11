@@ -188,6 +188,28 @@ export interface WeatherNowcast {
 }
 
 // ============================================================================
+// Weather Hourly (today's hour-by-hour forecast, proxied from Open-Meteo)
+// ============================================================================
+
+export interface WeatherHourlyPoint {
+  /** Naive park-local hour ("YYYY-MM-DDTHH:00"), same convention as nowcast steps. */
+  time: string;
+  temperatureC: number | null;
+  /** mm accumulated in this hour slot. */
+  precipitationMm: number | null;
+  /** 0–100%. */
+  precipitationProbability: number | null;
+  weatherCode: number | null;
+  isDay: boolean;
+}
+
+export interface WeatherHourlyToday {
+  /** IANA timezone the point times are local to. */
+  timezone: string;
+  points: WeatherHourlyPoint[];
+}
+
+// ============================================================================
 // Queue Data
 // ============================================================================
 

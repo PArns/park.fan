@@ -5,6 +5,7 @@ import { Cloud, ExternalLink, Snowflake, Eye, CloudFog } from 'lucide-react';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
+import { WeatherHourlyChart } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
@@ -12,6 +13,7 @@ import { TemperatureUnitToggle } from '@/components/common/temperature-unit-togg
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
 
@@ -25,6 +27,11 @@ interface WeatherCardProps {
   country?: string;
   city?: string;
   parkSlug?: string;
+  /** Park coordinates + timezone — when provided (and a nowcast exists), enables
+      the detailed hour-by-hour day view for today. */
+  latitude?: number | null;
+  longitude?: number | null;
+  timezone?: string;
   className?: string;
 }
 
@@ -36,6 +43,9 @@ export function WeatherCard({
   country,
   city,
   parkSlug,
+  latitude,
+  longitude,
+  timezone,
   className,
 }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
@@ -52,6 +62,15 @@ export function WeatherCard({
   });
   // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
   const activeNowcast = hasParams ? liveNowcast : nowcast;
+
+  // Detailed day view for today — only when a nowcast exists (parks with live
+  // weather coverage) and we know where the park is.
+  const { data: hourly } = useWeatherHourly({
+    latitude,
+    longitude,
+    timezone,
+    enabled: !!activeNowcast,
+  });
 
   // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up
   // to a day stale. Subscribe to the same live park query LiveParkData polls (shared key → no extra
@@ -211,6 +230,10 @@ export function WeatherCard({
               </div>
             )}
           </div>
+
+          {activeNowcast && timezone && hourly && hourly.points.length > 0 && (
+            <WeatherHourlyChart points={hourly.points} timezone={timezone} />
+          )}
 
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
             <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />
