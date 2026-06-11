@@ -2,12 +2,12 @@
 
 import { useEffect, useId, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Clock, Droplets, Umbrella } from 'lucide-react';
+import { Clock, CloudHail, CloudLightning, Droplets, Umbrella, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
-import type { ScheduleItem, WeatherHourlyPoint } from '@/lib/api/types';
+import type { ScheduleItem, WeatherHourlyPoint, WeatherNowcast } from '@/lib/api/types';
 
 interface WeatherHourlyChartProps {
   /** Today's hourly points (naive park-local times, ascending). */
@@ -16,11 +16,37 @@ interface WeatherHourlyChartProps {
   timezone: string;
   /** Park schedule — today's opening hours are marked as a band on the chart. */
   schedule?: ScheduleItem[];
+  /** Live nowcast — severe-weather windows (storm/hail/thunderstorm) are drawn on the chart. */
+  nowcast?: WeatherNowcast | null;
   className?: string;
 }
 
+// Severe-weather windows drawn as tinted vertical bands — same kinds, priority
+// order, colors and icons as the WeatherNowcastBanner.
+type WarningKind = 'storm' | 'hail' | 'thunderstorm';
+
+const WARNING_STYLES: Record<WarningKind, { icon: typeof Wind; band: string; iconColor: string }> =
+  {
+    storm: {
+      icon: Wind,
+      band: 'bg-red-500/15 border-red-500/50',
+      iconColor: 'text-red-600 dark:text-red-400',
+    },
+    hail: {
+      icon: CloudHail,
+      band: 'bg-orange-500/15 border-orange-500/50',
+      iconColor: 'text-orange-600 dark:text-orange-400',
+    },
+    thunderstorm: {
+      icon: CloudLightning,
+      band: 'bg-yellow-500/15 border-yellow-500/50',
+      iconColor: 'text-yellow-600 dark:text-yellow-400',
+    },
+  };
+
 // Chart geometry in viewBox units (0–100 on both axes, preserveAspectRatio="none").
-const TEMP_TOP = 14; // y of the warmest hour
+// TEMP_TOP leaves headroom for the max-temp label so it doesn't touch the box edge.
+const TEMP_TOP = 22; // y of the warmest hour
 const TEMP_BOTTOM = 62; // y of the coldest hour
 // Bottom share of the chart reserved for the rain bars.
 const RAIN_AREA_PCT = 30;
@@ -71,6 +97,7 @@ export function WeatherHourlyChart({
   points,
   timezone,
   schedule,
+  nowcast,
   className,
 }: WeatherHourlyChartProps) {
   const locale = useLocale();
@@ -166,6 +193,37 @@ export function WeatherHourlyChart({
     }
   }
 
+  // Severe-weather windows (UTC instants) mapped onto today's axis. All present
+  // kinds are drawn, not just the banner's highest-priority one.
+  const warnings: {
+    kind: WarningKind;
+    fromPct: number;
+    toPct: number;
+    startLocal: string;
+    endLocal: string | null;
+  }[] = [];
+  if (nowcast) {
+    const events: [WarningKind, string | null | undefined, string | null | undefined][] = [
+      ['storm', nowcast.stormStartsAt, nowcast.stormEndsAt],
+      ['hail', nowcast.hailStartsAt, nowcast.hailEndsAt],
+      ['thunderstorm', nowcast.thunderstormStartsAt, nowcast.thunderstormEndsAt],
+    ];
+    const today = nowLocal.slice(0, 10);
+    for (const [kind, startsAt, endsAt] of events) {
+      if (!startsAt) continue;
+      const startLocal = toLocalIso(Date.parse(startsAt), timezone);
+      const endLocal = endsAt ? toLocalIso(Date.parse(endsAt), timezone) : null;
+      if (startLocal.slice(0, 10) > today) continue; // starts on a later day
+      if (endLocal && endLocal.slice(0, 10) < today) continue; // ended on an earlier day
+      const fromPct = startLocal.slice(0, 10) < today ? 0 : xForMinutes(localMinutes(startLocal));
+      // Unknown or after-midnight end → run to the edge of the chart.
+      const toPct =
+        endLocal && endLocal.slice(0, 10) === today ? xForMinutes(localMinutes(endLocal)) : 100;
+      if (toPct <= fromPct) continue;
+      warnings.push({ kind, fromPct, toPct, startLocal, endLocal });
+    }
+  }
+
   const fmtTime = (localIso: string) =>
     new Date(`${localIso}Z`).toLocaleTimeString(locale, {
       hour: '2-digit',
@@ -180,7 +238,7 @@ export function WeatherHourlyChart({
 
   return (
     <div className={cn('min-w-0', className)}>
-      <div className="relative h-24">
+      <div className="relative h-28">
         {/* Park opening hours band */}
         {openPct != null && closePct != null && (
           <div
@@ -189,6 +247,39 @@ export function WeatherHourlyChart({
             aria-hidden="true"
           />
         )}
+
+        {/* Severe-weather windows (storm / hail / thunderstorm) */}
+        {warnings.map(({ kind, fromPct, toPct, startLocal, endLocal }, i) => {
+          const { icon: WarnIcon, band, iconColor } = WARNING_STYLES[kind];
+          const range = `${fmtTime(startLocal)}${endLocal ? ` – ${fmtTime(endLocal)}` : ''}`;
+          return (
+            <div
+              key={kind}
+              className={cn('pointer-events-none absolute inset-y-0 border-x', band)}
+              style={{ left: `${fromPct}%`, width: `${toPct - fromPct}%` }}
+            >
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  {/* Stacked per warning so overlapping windows don't bury each
+                      other's icon. */}
+                  <span
+                    className="pointer-events-auto absolute left-1/2 z-10 -translate-x-1/2"
+                    style={{ top: `${4 + i * 18}px` }}
+                    aria-label={`${tNowcast(`${kind}.heading`)} ${range}`}
+                  >
+                    <WarnIcon className={cn('size-3.5', iconColor)} aria-hidden="true" />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent side="top">
+                  <span className="flex items-center gap-1.5 tabular-nums">
+                    <WarnIcon className={cn('size-3 shrink-0', iconColor)} aria-hidden="true" />
+                    {tNowcast(`${kind}.heading`)} · {range}
+                  </span>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          );
+        })}
 
         {/* Temperature curve — drawn twice via clip paths so the elapsed part of
             the day renders dimmed (an overlay wash would tint dark mode wrong). */}

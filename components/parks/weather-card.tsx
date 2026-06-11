@@ -288,6 +288,7 @@ export function WeatherCard({
               points={activeHourly.points}
               timezone={timezone}
               schedule={schedule ?? undefined}
+              nowcast={activeNowcast}
             />
           )}
 
