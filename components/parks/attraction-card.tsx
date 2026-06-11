@@ -20,7 +20,7 @@ import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
-import { isEveningBetter } from '@/lib/utils/rope-drop';
+import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
@@ -311,7 +311,7 @@ export function AttractionCard({
             {eveningBetter && (
               <RopeDropEveningBadge
                 openWait={ropeDropData!.openWait}
-                bestSlotWait={ropeDropData!.bestSlotWait}
+                bestSlotWait={troughWait(ropeDropData!)}
               />
             )}
             {'isSeasonal' in attraction && attraction.isSeasonal && (

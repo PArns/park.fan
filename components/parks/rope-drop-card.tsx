@@ -7,7 +7,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { ParkTime } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
-import { isEveningBetter } from '@/lib/utils/rope-drop';
+import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
 import type { RopeDropInfo } from '@/lib/api/types';
 
 interface RopeDropCardProps {
@@ -76,16 +76,19 @@ export function RopeDropCard({
 
   if (!ropeDrop.worth) {
     if (isEveningBetter(ropeDrop)) {
-      const troughWait = ropeDrop.bestSlotWait ?? null;
+      const eveningTroughWait = troughWait(ropeDrop);
 
       const eveningBestNode: ReactNode = ropeDrop.bestSlotUtc
-        ? troughWait != null
-          ? t.rich('eveningBestAtWait', { wait: troughWait, time: timeTag(ropeDrop.bestSlotUtc) })
+        ? eveningTroughWait != null
+          ? t.rich('eveningBestAtWait', {
+              wait: eveningTroughWait,
+              time: timeTag(ropeDrop.bestSlotUtc),
+            })
           : t.rich('eveningBestAt', { time: timeTag(ropeDrop.bestSlotUtc) })
         : bestSlotOffsetNode('eveningBestOffset');
 
       const eveningStats =
-        troughWait != null
+        eveningTroughWait != null
           ? [
               { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },
               {
@@ -94,7 +97,7 @@ export function RopeDropCard({
                 value: ropeDrop.busyPeak,
                 highlight: false,
               },
-              { icon: Moon, label: t('eveningWait'), value: troughWait, highlight: true },
+              { icon: Moon, label: t('eveningWait'), value: eveningTroughWait, highlight: true },
             ]
           : null;
 
@@ -196,10 +199,11 @@ export function RopeDropCard({
         })
       : t('rideWithin', { minutes: ropeDrop.rideByMinutesAfterOpen });
 
+  const worthTroughWait = troughWait(ropeDrop);
   const bestSlotNode: ReactNode = ropeDrop.bestSlotUtc
-    ? ropeDrop.bestSlotWait != null
+    ? worthTroughWait != null
       ? t.rich('bestSlotAtWait', {
-          wait: ropeDrop.bestSlotWait,
+          wait: worthTroughWait,
           time: timeTag(ropeDrop.bestSlotUtc),
         })
       : t.rich('bestSlotAt', { time: timeTag(ropeDrop.bestSlotUtc) })

@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
-import { isEveningBetter } from '@/lib/utils/rope-drop';
+import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
 import type { ParkAttraction, RopeDropHeadliner } from '@/lib/api/types';
 
 interface RopeDropHeadlinersProps {
@@ -41,7 +41,7 @@ export function RopeDropHeadliners({ headliners, attractions, parkPath }: RopeDr
     .map((a) => ({
       id: a.id,
       name: a.name,
-      wait: a.ropeDrop!.bestSlotWait ?? null,
+      wait: troughWait(a.ropeDrop!),
       savedVsPeak: a.ropeDrop!.endOfDaySavings ?? null,
       href: attractionHref(a, parkPath),
     }))
