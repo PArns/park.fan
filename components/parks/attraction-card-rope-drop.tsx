@@ -39,9 +39,13 @@ export function AttractionCardRopeDrop({
     </strong>
   );
 
-  const node: ReactNode = ropeDrop.rideByUtc
-    ? t.rich('cardLineUntil', { savings: ropeDrop.savings, time: timeTag })
-    : t('cardLine', { savings: ropeDrop.savings });
+  // The "(until ~HH:MM)" suffix only makes sense when there is a real
+  // advantage window — for always-busy rides rideBy is 0 and the until-time
+  // would just restate the opening time.
+  const node: ReactNode =
+    ropeDrop.rideByUtc && ropeDrop.rideByMinutesAfterOpen >= 15
+      ? t.rich('cardLineUntil', { savings: ropeDrop.savings, time: timeTag })
+      : t('cardLine', { savings: ropeDrop.savings });
 
   return (
     <div className="flex items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400">

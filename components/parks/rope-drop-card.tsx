@@ -13,6 +13,12 @@ import type { RopeDropInfo } from '@/lib/api/types';
 interface RopeDropCardProps {
   ropeDrop: RopeDropInfo;
   timezone: string;
+  /**
+   * Today's closing time (UTC ISO). Recommendations pooled from longer
+   * historical days can resolve past today's closing — times after closing
+   * are never shown.
+   */
+  todayClosingUtc?: string | null;
   className?: string;
 }
 
@@ -26,9 +32,23 @@ interface RopeDropCardProps {
  * muted "no need to rush" note. Client Component: the concrete times render
  * via <ParkTime> (browser-timezone tooltip needs the client).
  */
-export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProps) {
+export function RopeDropCard({
+  ropeDrop,
+  timezone,
+  todayClosingUtc,
+  className,
+}: RopeDropCardProps) {
   const t = useTranslations('attractions.ropeDrop');
   const locale = useLocale();
+
+  // A best-slot instant past today's closing is an artifact of recommendations
+  // computed on longer historical days — suppress it rather than show a time
+  // the visitor can't act on.
+  const closingMs = todayClosingUtc ? Date.parse(todayClosingUtc) : NaN;
+  const bestSlotPlausible =
+    !ropeDrop.bestSlotUtc ||
+    !Number.isFinite(closingMs) ||
+    Date.parse(ropeDrop.bestSlotUtc) <= closingMs;
 
   const timeTag = (iso: string) => {
     const tag = () => (
@@ -119,10 +139,12 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
               ))}
             </div>
           )}
-          <p className="flex items-center gap-2 text-sm font-medium">
-            <Moon className="text-muted-foreground h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            <span suppressHydrationWarning>{eveningBestNode}</span>
-          </p>
+          {bestSlotPlausible && (
+            <p className="flex items-center gap-2 text-sm font-medium">
+              <Moon className="text-muted-foreground h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+              <span suppressHydrationWarning>{eveningBestNode}</span>
+            </p>
+          )}
           {ropeDrop.confidence === 'low' && (
             <p className="text-muted-foreground mt-4 flex items-center gap-1 border-t pt-3 text-xs">
               <Info className="h-3 w-3 shrink-0" aria-hidden="true" />
@@ -145,14 +167,24 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
 
   // The day's absolute trough is only worth calling out when it lies outside
   // the opening advantage window (in ~69% of cases it does, often the evening).
-  const showBestSlot = ropeDrop.bestSlotMinutesAfterOpen > ropeDrop.rideByMinutesAfterOpen;
+  const showBestSlot =
+    ropeDrop.bestSlotMinutesAfterOpen > ropeDrop.rideByMinutesAfterOpen && bestSlotPlausible;
 
-  const rideByNode: ReactNode = ropeDrop.rideByUtc
-    ? t.rich('rideWithinUntil', {
-        minutes: ropeDrop.rideByMinutesAfterOpen,
-        time: timeTag(ropeDrop.rideByUtc),
-      })
-    : t('rideWithin', { minutes: ropeDrop.rideByMinutesAfterOpen });
+  // Always-busy flagships have no real advantage window (the wait already
+  // exceeds half the peak in the first 15-min bin → rideBy = 0). "Within the
+  // first 0 min" reads broken — say "right at opening" instead.
+  const rideAtOpening = ropeDrop.rideByMinutesAfterOpen < 15;
+
+  const rideByNode: ReactNode = rideAtOpening
+    ? ropeDrop.rideByUtc
+      ? t.rich('rideAtOpeningAt', { time: timeTag(ropeDrop.rideByUtc) })
+      : t('rideAtOpening')
+    : ropeDrop.rideByUtc
+      ? t.rich('rideWithinUntil', {
+          minutes: ropeDrop.rideByMinutesAfterOpen,
+          time: timeTag(ropeDrop.rideByUtc),
+        })
+      : t('rideWithin', { minutes: ropeDrop.rideByMinutesAfterOpen });
 
   const bestSlotNode: ReactNode = ropeDrop.bestSlotUtc
     ? ropeDrop.bestSlotWait != null

@@ -293,7 +293,9 @@
     "ropeDropSection": {
       "title": "Consejo rope drop",
       "description": "Llega a la apertura: en estas atracciones es donde más merece la pena:",
-      "save": "ahorra ~{minutes} min"
+      "save": "ahorra ~{minutes} min",
+      "eveningDescription": "Mejor dejarlas para la noche:",
+      "eveningWait": "por la noche ~{minutes} min"
     },
     "operatingCount": "{count}/{total} abiertos",
     "restaurants": "Restaurantes",
@@ -650,6 +652,8 @@
       "savings": "Ahorras",
       "rideWithin": "Mejor en los primeros {minutes} min tras la apertura",
       "rideWithinUntil": "Mejor en los primeros {minutes} min tras la apertura (hasta aprox. las <time></time>)",
+      "rideAtOpening": "Mejor justo en la apertura",
+      "rideAtOpeningAt": "Mejor justo en la apertura (<time></time>)",
       "bestSlotAt": "Alternativa más tranquila: espera mínima hacia las <time></time>",
       "bestSlotAtWait": "Alternativa más tranquila: normalmente solo ~{wait} min hacia las <time></time>",
       "bestSlotOffset": "Alternativa más tranquila: espera mínima unos {minutes} min después de la apertura",

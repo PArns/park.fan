@@ -293,7 +293,9 @@
     "ropeDropSection": {
       "title": "Rope-drop-tip",
       "description": "Wees er bij opening – bij deze attracties loont het het meest:",
-      "save": "bespaart ca. {minutes} min."
+      "save": "bespaart ca. {minutes} min.",
+      "eveningDescription": "Hier kun je beter de avond afwachten:",
+      "eveningWait": "'s avonds ca. {minutes} min."
     },
     "operatingCount": "{count}/{total} open",
     "restaurants": "Restaurants",
@@ -650,6 +652,8 @@
       "savings": "Je bespaart",
       "rideWithin": "Het beste binnen de eerste {minutes} min. na opening",
       "rideWithinUntil": "Het beste binnen de eerste {minutes} min. na opening (tot ca. <time></time>)",
+      "rideAtOpening": "Het beste direct bij opening",
+      "rideAtOpeningAt": "Het beste direct bij opening (<time></time>)",
       "bestSlotAt": "Rustiger alternatief: laagste wachttijd rond <time></time>",
       "bestSlotAtWait": "Rustiger alternatief: meestal maar ca. {wait} min. rond <time></time>",
       "bestSlotOffset": "Rustiger alternatief: laagste wachttijd ca. {minutes} min. na opening",

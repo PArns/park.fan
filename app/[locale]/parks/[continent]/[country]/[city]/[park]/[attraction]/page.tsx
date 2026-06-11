@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
@@ -281,11 +282,19 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           />
 
           {/* Rope-drop recommendation — precomputed daily on the server, present
-              only for tier1/tier2 headliners in parks with a schedule. */}
+              only for tier1/tier2 headliners in parks with a schedule. Today's
+              closing caps displayed times to the operating day. */}
           {attraction.ropeDrop && (
             <RopeDropCard
               ropeDrop={attraction.ropeDrop}
               timezone={park.timezone}
+              todayClosingUtc={
+                park.schedule?.find(
+                  (s) =>
+                    s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
+                    s.scheduleType === 'OPERATING'
+                )?.closingTime ?? null
+              }
               className="mb-8"
             />
           )}

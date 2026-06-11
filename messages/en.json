@@ -293,7 +293,9 @@
     "ropeDropSection": {
       "title": "Rope Drop Tip",
       "description": "Be there at opening — it pays off most for these attractions:",
-      "save": "save ~{minutes} min"
+      "save": "save ~{minutes} min",
+      "eveningDescription": "Better saved for the evening:",
+      "eveningWait": "evening ~{minutes} min"
     },
     "operatingCount": "{count}/{total} operating",
     "restaurants": "Restaurants",
@@ -650,6 +652,8 @@
       "savings": "You save",
       "rideWithin": "Best within the first {minutes} min after opening",
       "rideWithinUntil": "Best within the first {minutes} min after opening (until about <time></time>)",
+      "rideAtOpening": "Best right at opening",
+      "rideAtOpeningAt": "Best right at opening (<time></time>)",
       "bestSlotAt": "Quieter alternative: lowest waits around <time></time>",
       "bestSlotAtWait": "Quieter alternative: typically only ~{wait} min around <time></time>",
       "bestSlotOffset": "Quieter alternative: lowest waits about {minutes} min after opening",

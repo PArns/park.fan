@@ -457,9 +457,10 @@ export function TabsWithHash({
               </div>
             </div>
 
-            {(park.ropeDropHeadliners?.length ?? 0) > 0 && !searchQuery.trim() && (
+            {/* Renders nothing when there are neither worth nor evening picks. */}
+            {!searchQuery.trim() && (
               <RopeDropHeadliners
-                headliners={park.ropeDropHeadliners!}
+                headliners={park.ropeDropHeadliners ?? []}
                 attractions={park.attractions ?? []}
                 parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
               />
