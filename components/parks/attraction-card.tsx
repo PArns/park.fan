@@ -15,6 +15,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
+import { RopeDropBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
@@ -285,6 +286,14 @@ export function AttractionCard({
                 level={
                   crowdLevel as 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme'
                 }
+              />
+            )}
+            {/* Rope drop is planning info — shown regardless of live status (it
+                matters most before the park opens). */}
+            {'ropeDrop' in attraction && attraction.ropeDrop?.worth && (
+              <RopeDropBadge
+                strength={attraction.ropeDrop.strength}
+                savings={attraction.ropeDrop.savings}
               />
             )}
             {'isSeasonal' in attraction && attraction.isSeasonal && (

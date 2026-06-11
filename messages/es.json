@@ -290,6 +290,11 @@
     "nextPredicted": "Siguiente: {time} min previsto",
     "otherAttractions": "Otras Atracciones",
     "headlinersSection": "Destacados",
+    "ropeDropSection": {
+      "title": "Consejo rope drop",
+      "description": "Llega a la apertura: en estas atracciones es donde más merece la pena:",
+      "save": "ahorra ~{minutes} min"
+    },
     "operatingCount": "{count}/{total} abiertos",
     "restaurants": "Restaurantes",
     "viewPark": "Ver Parque",
@@ -630,6 +635,24 @@
     "headliner": {
       "title": "Headliner",
       "description": "Atracción imprescindible de este parque"
+    },
+    "ropeDrop": {
+      "badge": "Rope drop",
+      "badgeHint": "Merece la pena subir justo a la apertura: ahorras unos {savings} min",
+      "title": "Consejo rope drop",
+      "explainer": "Llega a la entrada a la hora de apertura y ven directamente aquí: es cuando la espera es más corta.",
+      "strengthHigh": "Consejo fuerte",
+      "strengthModerate": "Buen consejo",
+      "atOpening": "En la apertura",
+      "dayPeak": "Pico del día",
+      "savings": "Ahorras",
+      "rideWithin": "Mejor en los primeros {minutes} min tras la apertura",
+      "rideWithinUntil": "Mejor en los primeros {minutes} min tras la apertura (hasta aprox. las <time></time>)",
+      "bestSlotAt": "Alternativa más tranquila: espera mínima hacia las <time></time>",
+      "bestSlotOffset": "Alternativa más tranquila: espera mínima unos {minutes} min después de la apertura",
+      "byDaytype": "Ahorro típico: ~{weekend} min los fines de semana · ~{weekday} min entre semana",
+      "confidenceLow": "Basado en pocos datos: tómalo como una orientación aproximada",
+      "notWorth": "Aquí no hace falta correr a la apertura: las esperas se mantienen razonables todo el día (~{openWait} min a la apertura)."
     },
     "todayChart": {
       "title": "Tiempos de espera hoy",

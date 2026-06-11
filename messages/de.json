@@ -467,6 +467,11 @@
     "nextPredicted": "Nächste: {time} Min prognostiziert",
     "otherAttractions": "Weitere Attraktionen",
     "headlinersSection": "Highlights",
+    "ropeDropSection": {
+      "title": "Rope-Drop-Tipp",
+      "description": "Sei zur Öffnung da – bei diesen Attraktionen lohnt es sich am meisten:",
+      "save": "spart ca. {minutes} Min."
+    },
     "operatingCount": "{count}/{total} in Betrieb",
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
@@ -630,6 +635,24 @@
     "headliner": {
       "title": "Headliner",
       "description": "Highlight-Attraktion dieses Parks"
+    },
+    "ropeDrop": {
+      "badge": "Rope Drop",
+      "badgeHint": "Lohnt sich direkt zur Parköffnung – spart ca. {savings} Min.",
+      "title": "Rope-Drop-Tipp",
+      "explainer": "Sei zur Parköffnung am Eingang und geh direkt hierhin – dann ist die Wartezeit am kürzesten.",
+      "strengthHigh": "Starker Tipp",
+      "strengthModerate": "Guter Tipp",
+      "atOpening": "Zur Öffnung",
+      "dayPeak": "Tagespeak",
+      "savings": "Du sparst",
+      "rideWithin": "Am besten in den ersten {minutes} Min. nach Öffnung",
+      "rideWithinUntil": "Am besten in den ersten {minutes} Min. nach Öffnung (bis ca. <time></time>)",
+      "bestSlotAt": "Ruhigere Alternative: niedrigste Wartezeit gegen <time></time>",
+      "bestSlotOffset": "Ruhigere Alternative: niedrigste Wartezeit ca. {minutes} Min. nach Öffnung",
+      "byDaytype": "Typische Ersparnis: ca. {weekend} Min. am Wochenende · ca. {weekday} Min. unter der Woche",
+      "confidenceLow": "Basiert auf wenigen Daten – als grobe Orientierung verstehen",
+      "notWorth": "Hier musst du zur Öffnung nicht sprinten – die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung)."
     },
     "todayChart": {
       "title": "Wartezeiten heute",

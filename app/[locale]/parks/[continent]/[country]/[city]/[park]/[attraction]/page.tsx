@@ -26,6 +26,7 @@ import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
+import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix } from '@/lib/utils';
@@ -278,6 +279,16 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             city={city}
             parkSlug={parkSlug}
           />
+
+          {/* Rope-drop recommendation — precomputed daily on the server, present
+              only for tier1/tier2 headliners in parks with a schedule. */}
+          {attraction.ropeDrop && (
+            <RopeDropCard
+              ropeDrop={attraction.ropeDrop}
+              timezone={park.timezone}
+              className="mb-8"
+            />
+          )}
 
           <Separator className="my-8" />
 

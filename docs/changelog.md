@@ -4,6 +4,30 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Rope-drop recommendations
+
+Surfaces the API's precomputed rope-drop data (backend PR #67): is it worth arriving at park
+opening for a headliner, and until when does the advantage last.
+
+- **Types**: `RopeDropInfo` / `RopeDropHeadliner` in `lib/api/types.ts`; `ropeDrop` on
+  `ParkAttraction` + `AttractionResponse`, `ropeDropHeadliners` on `ParkWithAttractions`.
+  Only set for tier1/tier2 headliners in parks with a schedule — and present even when
+  `worth: false`, so always check `worth`, not just existence.
+- **Attraction cards**: `<RopeDropBadge>` (sunrise icon, emerald = high / teal = moderate)
+  shown when `worth: true`, regardless of live status (the tip matters most pre-opening).
+- **Attraction detail**: `<RopeDropCard>` — savings headline (open wait vs. day peak),
+  advantage window as concrete park-local time via `rideByUtc` (offset fallback when null),
+  quieter evening alternative via `bestSlotUtc` when the day's trough isn't at opening,
+  weekend/weekday breakdown, low-confidence hint. Muted "no need to rush" note when
+  `worth: false`.
+- **Park page**: `<RopeDropHeadliners>` strip above the headliners section (chips linking to
+  each attraction, minutes saved); data arrives pre-filtered/sorted from the API.
+- **i18n**: `attractions.ropeDrop.*` + `parks.ropeDropSection.*` in all 6 locales.
+- Rope-drop values are recomputed daily server-side — no extra polling; the fields ride along
+  on the existing park/attraction responses.
+
+---
+
 ## 2.10.1 (2026-06-10) – SEO review fixes
 
 Full-code SEO review; fixed everything actionable. See [seo/analysis.md](seo/analysis.md).

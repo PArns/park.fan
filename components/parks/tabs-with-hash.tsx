@@ -20,6 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
+import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { stripNewPrefix } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
@@ -455,6 +456,14 @@ export function TabsWithHash({
                 )}
               </div>
             </div>
+
+            {(park.ropeDropHeadliners?.length ?? 0) > 0 && !searchQuery.trim() && (
+              <RopeDropHeadliners
+                headliners={park.ropeDropHeadliners!}
+                attractions={park.attractions ?? []}
+                parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              />
+            )}
 
             {headliners.length > 0 && !searchQuery.trim() && (
               <LandSection

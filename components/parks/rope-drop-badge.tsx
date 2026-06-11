@@ -1,0 +1,33 @@
+import { Sunrise } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
+import type { RopeDropStrength } from '@/lib/api/types';
+
+interface RopeDropBadgeProps {
+  strength?: RopeDropStrength | null;
+  savings: number;
+  className?: string;
+}
+
+/** "Worth riding at park opening" badge for headliner attraction cards. */
+export function RopeDropBadge({ strength, savings, className }: RopeDropBadgeProps) {
+  const t = useTranslations('attractions.ropeDrop');
+
+  return (
+    <span title={t('badgeHint', { savings })}>
+      <Badge
+        className={cn(
+          'font-semibold backdrop-blur-md',
+          strength === 'high'
+            ? 'border border-emerald-500/30 bg-emerald-500/15 text-emerald-600 dark:text-emerald-300'
+            : 'border border-teal-500/30 bg-teal-500/15 text-teal-600 dark:text-teal-300',
+          className
+        )}
+      >
+        <Sunrise className="h-3 w-3 text-inherit" />
+        {t('badge')}
+      </Badge>
+    </span>
+  );
+}
