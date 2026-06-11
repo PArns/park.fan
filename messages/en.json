@@ -462,7 +462,6 @@
       "gustsLabel": "Gusts",
       "visibilityLabel": "Visibility",
       "snowLabel": "Snow",
-      "hourlyTitle": "Hourly forecast",
       "nowLabel": "Now"
     },
     "weatherNowcast": {

@@ -295,7 +295,7 @@ export function WeatherCard({
             <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />
           )}
 
-          <p className="text-muted-foreground/50 !-mt-1 -mr-4 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">
+          <p className="text-muted-foreground/50 !-mt-1 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">
             <Cloud className="h-3 w-3 shrink-0" aria-hidden="true" />
             <a
               href="https://open-meteo.com/"

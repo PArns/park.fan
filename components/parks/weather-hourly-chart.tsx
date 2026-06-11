@@ -180,11 +180,6 @@ export function WeatherHourlyChart({
 
   return (
     <div className={cn('min-w-0', className)}>
-      <p className="text-muted-foreground mb-1.5 flex items-center gap-1.5 text-xs font-medium">
-        <Clock className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
-        {t('hourlyTitle')}
-      </p>
-
       <div className="relative h-24">
         {/* Park opening hours band */}
         {openPct != null && closePct != null && (
