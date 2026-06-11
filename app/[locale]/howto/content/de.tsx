@@ -29,6 +29,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -599,6 +601,39 @@ function ContentDE() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Rope-Drop-Empfehlungen">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>{`Für die Top-Attraktionen (Headliner) eines Parks berechnet park.fan täglich aus den Wartezeit-Mustern der letzten Wochen, ob sich Rope Drop lohnt – also pünktlich zur Parköffnung da zu sein – oder ob die Schlange abends am kürzesten ist:`}</GlossaryInject>
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope Drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`Lohnt sich: Sei zur Öffnung am Eingang und fahre diese Attraktion zuerst – gegenüber dem Tagespeak sparst du oft 45–90 Minuten. Grün = starker Tipp, Türkis = guter Tipp.`}</GlossaryInject>
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Später besser
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`Das Gegenteil: Hier ist die Schlange schon zur Öffnung lang – am kürzesten ist sie typischerweise am Abend. Spar dir den Sprint und komm später wieder.`}</GlossaryInject>
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            <GlossaryInject>{`Auf der Attraktions-Detailseite zeigt ein eigenes Panel die Details: Wartezeit zur Öffnung vs. Tagespeak, die Ersparnis in Minuten und das Zeitfenster (z. B. „Am besten in den ersten 45 Min. nach Öffnung – bis ca. 10:45 Uhr“). Auf der Park-Seite fasst ein Tipp-Panel über den Highlights zusammen, wo sich Rope Drop heute lohnt – und welche Attraktionen du dir besser für den Abend aufhebst.`}</GlossaryInject>
+          </p>
+          <InfoBox>
+            <GlossaryInject>{`Die Empfehlungen werden täglich neu berechnet und erscheinen nur bei Headliner-Attraktionen in Parks mit veröffentlichten Öffnungszeiten. Alle Uhrzeiten sind – wie überall auf park.fan – in der Zeitzone des Parks.`}</GlossaryInject>
+          </InfoBox>
         </SubSection>
 
         {/* Warteschlangen-Typen */}

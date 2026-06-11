@@ -27,6 +27,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -489,6 +491,39 @@ function ContentITSections() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Raccomandazioni rope drop">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>{`Per le attrazioni principali (headliner) di un parco, park.fan calcola ogni giorno, dai tempi di attesa delle ultime settimane, se il rope drop conviene – farsi trovare all’ingresso all’apertura del parco – o se la coda è più corta di sera:`}</GlossaryInject>
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`Conviene: fatti trovare all’ingresso all’apertura e sali per primo su questa attrazione – spesso risparmi 45–90 minuti rispetto al picco del giorno. Verde = consiglio forte, turchese = buon consiglio.`}</GlossaryInject>
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Meglio più tardi
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`Il contrario: qui la coda è già lunga all’apertura – di solito è più corta di sera. Risparmiati la corsa e torna più tardi.`}</GlossaryInject>
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            <GlossaryInject>{`Nella pagina di dettaglio dell’attrazione un pannello dedicato mostra i dettagli: attesa all’apertura vs. picco del giorno, i minuti risparmiati e la finestra di tempo (es. «Meglio nei primi 45 min dopo l’apertura, fino alle 10:45 circa»). Nella pagina del parco un pannello di consigli sopra le attrazioni principali riassume dove il rope drop conviene oggi – e quali attrazioni è meglio tenere per la sera.`}</GlossaryInject>
+          </p>
+          <InfoBox>
+            <GlossaryInject>{`Le raccomandazioni vengono ricalcolate ogni giorno e compaiono solo per le attrazioni headliner nei parchi con orari pubblicati. Tutti gli orari sono nel fuso orario del parco, come ovunque su park.fan.`}</GlossaryInject>
+          </InfoBox>
         </SubSection>
 
         <SubSection title="Tipi di Coda">

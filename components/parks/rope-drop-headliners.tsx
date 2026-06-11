@@ -1,6 +1,7 @@
 import { Sunrise, Moon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
@@ -58,7 +59,9 @@ export function RopeDropHeadliners({ headliners, attractions, parkPath }: RopeDr
     >
       <div className="mb-1 flex items-center gap-2">
         <Sunrise className="h-4 w-4 shrink-0 text-emerald-500" aria-hidden="true" />
-        <h3 className="text-sm font-semibold">{t('title')}</h3>
+        <h3 className="text-sm font-semibold">
+          <GlossaryTermLink termId="rope-drop">{t('title')}</GlossaryTermLink>
+        </h3>
       </div>
       {items.length > 0 && (
         <>

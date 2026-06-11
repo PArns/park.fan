@@ -663,7 +663,7 @@
       "eveningBadgeHint": "Already ~{openWait} min at opening — typically shortest later in the day",
       "eveningBadgeHintWait": "Already ~{openWait} min at opening — typically only ~{bestSlotWait} min later in the day",
       "eveningTitle": "Better later than at opening",
-      "eveningText": "Rope drop doesn't pay off here — the line is already ~{openWait} min right at opening (day's peak: ~{busyPeak} min).",
+      "eveningText": "<term>Rope drop</term> doesn't pay off here — the line is already ~{openWait} min right at opening (day's peak: ~{busyPeak} min).",
       "eveningBestAt": "Typically shortest around <time></time>",
       "eveningBestAtWait": "Typically only ~{wait} min around <time></time>",
       "eveningBestOffset": "Typically shortest ~{minutes} min after opening",

@@ -5,6 +5,7 @@ import { Sunrise, Clock, ChartColumn, TrendingDown, Moon, Info } from 'lucide-re
 import { useTranslations, useLocale } from 'next-intl';
 import { GlassCard } from '@/components/common/glass-card';
 import { Badge } from '@/components/ui/badge';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { ParkTime } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
 import { isEveningBetter, troughWait } from '@/lib/utils/rope-drop';
@@ -114,7 +115,11 @@ export function RopeDropCard({
             </h2>
           </div>
           <p className="text-muted-foreground mb-3 text-sm">
-            {t('eveningText', { openWait: ropeDrop.openWait, busyPeak: ropeDrop.busyPeak })}
+            {t.rich('eveningText', {
+              openWait: ropeDrop.openWait,
+              busyPeak: ropeDrop.busyPeak,
+              term: (chunks) => <GlossaryTermLink termId="rope-drop">{chunks}</GlossaryTermLink>,
+            })}
           </p>
           {eveningStats && (
             <div className="mb-4 grid grid-cols-3 gap-3">
@@ -224,7 +229,7 @@ export function RopeDropCard({
       <div className="mb-3 flex flex-wrap items-center gap-3">
         <h2 className="flex items-center gap-2 text-xl font-semibold">
           <Sunrise className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
-          {t('title')}
+          <GlossaryTermLink termId="rope-drop">{t('title')}</GlossaryTermLink>
         </h2>
         <Badge
           className={cn(

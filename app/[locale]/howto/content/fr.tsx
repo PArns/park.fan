@@ -28,6 +28,8 @@ import {
   Sun,
   Leaf,
   EyeOff,
+  Sunrise,
+  Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
 import {
@@ -490,6 +492,39 @@ function ContentFRSections() {
               </div>
             ))}
           </div>
+        </SubSection>
+
+        {/* Rope-Drop */}
+        <SubSection title="Recommandations rope drop">
+          <p className="text-muted-foreground mb-3 text-sm">
+            <GlossaryInject>{`Pour les attractions phares (headliners) d'un parc, park.fan calcule chaque jour, à partir des temps d'attente des dernières semaines, si le rope drop en vaut la peine – être présent dès l'ouverture du parc – ou si la file est la plus courte le soir :`}</GlossaryInject>
+          </p>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 py-0.5 text-xs font-semibold text-emerald-600 backdrop-blur-md dark:text-emerald-300">
+                <Sunrise className="h-3 w-3" />
+                Rope drop
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`Ça vaut le coup : soyez à l'entrée à l'ouverture et faites cette attraction en premier – vous économisez souvent 45 à 90 minutes par rapport au pic du jour. Vert = conseil fort, turquoise = bon conseil.`}</GlossaryInject>
+              </p>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-indigo-500/30 bg-indigo-500/15 px-2 py-0.5 text-xs font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300">
+                <Moon className="h-3 w-3" />
+                Mieux plus tard
+              </span>
+              <p className="text-muted-foreground text-sm">
+                <GlossaryInject>{`L'inverse : ici la file est déjà longue dès l'ouverture – elle est généralement la plus courte le soir. Évitez le sprint et revenez plus tard.`}</GlossaryInject>
+              </p>
+            </div>
+          </div>
+          <p className="text-muted-foreground mt-3 text-sm">
+            <GlossaryInject>{`Sur la page de détail de l'attraction, un panneau dédié affiche les détails : attente à l'ouverture vs pic du jour, minutes économisées et fenêtre de temps (p. ex. « Idéal dans les 45 premières minutes après l'ouverture – jusqu'à env. 10h45 »). Sur la page du parc, un panneau de conseils au-dessus des incontournables résume où le rope drop paie aujourd'hui – et quelles attractions garder pour le soir.`}</GlossaryInject>
+          </p>
+          <InfoBox>
+            <GlossaryInject>{`Les recommandations sont recalculées chaque jour et n'apparaissent que pour les attractions phares des parcs avec horaires publiés. Toutes les heures sont affichées dans le fuseau horaire du parc – comme partout sur park.fan.`}</GlossaryInject>
+          </InfoBox>
         </SubSection>
 
         <SubSection title="Types de File">

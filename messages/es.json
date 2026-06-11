@@ -663,7 +663,7 @@
       "eveningBadgeHint": "Ya ~{openWait} min en la apertura: normalmente más corta al final del día",
       "eveningBadgeHintWait": "Ya ~{openWait} min en la apertura: más tarde normalmente solo ~{bestSlotWait} min",
       "eveningTitle": "Mejor más tarde que en la apertura",
-      "eveningText": "El rope drop no compensa aquí: ya hay ~{openWait} min de espera justo en la apertura (pico del día: ~{busyPeak} min).",
+      "eveningText": "El <term>rope drop</term> no compensa aquí: ya hay ~{openWait} min de espera justo en la apertura (pico del día: ~{busyPeak} min).",
       "eveningBestAt": "Normalmente la espera más corta hacia las <time></time>",
       "eveningBestAtWait": "Normalmente solo ~{wait} min hacia las <time></time>",
       "eveningBestOffset": "Normalmente la espera más corta ~{minutes} min después de la apertura",
