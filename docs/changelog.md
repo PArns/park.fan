@@ -22,6 +22,10 @@ opening for a headliner, and until when does the advantage last.
   `worth: false`.
 - **Park page**: `<RopeDropHeadliners>` strip above the headliners section (chips linking to
   each attraction, minutes saved); data arrives pre-filtered/sorted from the API.
+- **Inverse recommendation ("better later")**: when `worth: false` but the line is already long
+  right at opening (≥30 min) and the day's trough sits ≥2 h later (`isEveningBetter` in
+  `lib/utils/rope-drop.ts`), cards get an indigo moon badge and the detail page an
+  "Better later than at opening" panel pointing at the typical trough time (`bestSlotUtc`).
 - **i18n**: `attractions.ropeDrop.*` + `parks.ropeDropSection.*` in all 6 locales.
 - Rope-drop values are recomputed daily server-side — no extra polling; the fields ride along
   on the existing park/attraction responses.

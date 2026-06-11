@@ -7,6 +7,7 @@ import { GlassCard } from '@/components/common/glass-card';
 import { Badge } from '@/components/ui/badge';
 import { ParkTime } from '@/components/common/park-time';
 import { cn } from '@/lib/utils';
+import { isEveningBetter } from '@/lib/utils/rope-drop';
 import type { RopeDropInfo } from '@/lib/api/types';
 
 interface RopeDropCardProps {
@@ -16,27 +17,18 @@ interface RopeDropCardProps {
 }
 
 /**
- * Rope-drop recommendation panel for the attraction detail page. Shows the
- * minutes saved by riding at park opening, the advantage window (concrete park
- * time when the API resolved an opening time, minutes-after-open otherwise)
- * and the quieter evening alternative when the day's trough isn't at opening.
- * Client Component: the concrete times render via <ParkTime> (browser-timezone
- * tooltip needs the client).
+ * Rope-drop recommendation panel for the attraction detail page. Three states:
+ * worth → full panel with the minutes saved by riding at park opening, the
+ * advantage window (concrete park time when the API resolved an opening time,
+ * minutes-after-open otherwise) and the quieter evening alternative when the
+ * day's trough isn't at opening. Evening-better → inverse recommendation (long
+ * line right at opening, trough much later — ride late instead). Otherwise a
+ * muted "no need to rush" note. Client Component: the concrete times render
+ * via <ParkTime> (browser-timezone tooltip needs the client).
  */
 export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProps) {
   const t = useTranslations('attractions.ropeDrop');
   const locale = useLocale();
-
-  if (!ropeDrop.worth) {
-    return (
-      <GlassCard variant="light" className={cn('p-4', className)}>
-        <p className="text-muted-foreground flex items-center gap-2 text-sm">
-          <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {t('notWorth', { openWait: ropeDrop.openWait })}
-        </p>
-      </GlassCard>
-    );
-  }
 
   const timeTag = (iso: string) => {
     const tag = () => (
@@ -46,6 +38,58 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
     );
     return tag;
   };
+
+  // Offset fallback when no concrete UTC instant is available: the trough is
+  // often 10+ hours after opening, so switch to hours past 2 h for readability.
+  const bestSlotOffsetNode = (key: 'bestSlotOffset' | 'eveningBestOffset'): ReactNode =>
+    ropeDrop.bestSlotMinutesAfterOpen >= 120
+      ? t(`${key}Hours`, { hours: Math.round(ropeDrop.bestSlotMinutesAfterOpen / 60) })
+      : t(key, { minutes: ropeDrop.bestSlotMinutesAfterOpen });
+
+  if (!ropeDrop.worth) {
+    if (isEveningBetter(ropeDrop)) {
+      const eveningBestNode: ReactNode = ropeDrop.bestSlotUtc
+        ? t.rich('eveningBestAt', { time: timeTag(ropeDrop.bestSlotUtc) })
+        : bestSlotOffsetNode('eveningBestOffset');
+
+      return (
+        <GlassCard
+          variant="medium"
+          className={cn('border-indigo-500/30', className)}
+          aria-label={t('eveningTitle')}
+        >
+          <div className="mb-3 flex flex-wrap items-center gap-3">
+            <h2 className="flex items-center gap-2 text-xl font-semibold">
+              <Moon className="h-5 w-5 shrink-0 text-indigo-400" aria-hidden="true" />
+              {t('eveningTitle')}
+            </h2>
+          </div>
+          <p className="text-muted-foreground mb-3 text-sm">
+            {t('eveningText', { openWait: ropeDrop.openWait, busyPeak: ropeDrop.busyPeak })}
+          </p>
+          <p className="flex items-center gap-2 text-sm font-medium">
+            <Moon className="text-muted-foreground h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+            <span suppressHydrationWarning>{eveningBestNode}</span>
+          </p>
+          {ropeDrop.confidence === 'low' && (
+            <p className="text-muted-foreground mt-4 flex items-center gap-1 border-t pt-3 text-xs">
+              <Info className="h-3 w-3 shrink-0" aria-hidden="true" />
+              {t('confidenceLow')}
+            </p>
+          )}
+        </GlassCard>
+      );
+    }
+
+    return (
+      <GlassCard variant="light" className={cn('p-4', className)}>
+        <p className="text-muted-foreground flex items-center gap-2 text-sm">
+          <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {t('notWorth', { openWait: ropeDrop.openWait })}
+        </p>
+      </GlassCard>
+    );
+  }
 
   // The day's absolute trough is only worth calling out when it lies outside
   // the opening advantage window (in ~69% of cases it does, often the evening).
@@ -60,7 +104,7 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
 
   const bestSlotNode: ReactNode = ropeDrop.bestSlotUtc
     ? t.rich('bestSlotAt', { time: timeTag(ropeDrop.bestSlotUtc) })
-    : t('bestSlotOffset', { minutes: ropeDrop.bestSlotMinutesAfterOpen });
+    : bestSlotOffsetNode('bestSlotOffset');
 
   const stats = [
     { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },

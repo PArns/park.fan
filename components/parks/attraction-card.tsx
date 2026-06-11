@@ -20,9 +20,10 @@ import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-
 import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
+import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
-import { RopeDropBadge } from './rope-drop-badge';
+import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
@@ -81,8 +82,8 @@ function getBestSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisit
   );
 }
 
-function getWorthRopeDrop(attraction: ParkAttraction | FavoriteAttraction): RopeDropInfo | null {
-  if (!('ropeDrop' in attraction) || !attraction.ropeDrop?.worth) return null;
+function getRopeDrop(attraction: ParkAttraction | FavoriteAttraction): RopeDropInfo | null {
+  if (!('ropeDrop' in attraction) || !attraction.ropeDrop) return null;
   return attraction.ropeDrop;
 }
 
@@ -151,7 +152,9 @@ export function AttractionCard({
   // rendered by the client <AttractionCardBestTime> (cacheComponents-safe).
   const bestSlot = status === 'OPERATING' ? getBestSlot(attraction) : null;
 
-  const ropeDrop = getWorthRopeDrop(attraction);
+  const ropeDropData = getRopeDrop(attraction);
+  const ropeDrop = ropeDropData?.worth ? ropeDropData : null;
+  const eveningBetter = ropeDropData !== null && !ropeDrop && isEveningBetter(ropeDropData);
 
   const hasSparkline = isOperatingOrUnknown && waitTime !== null;
 
@@ -305,6 +308,7 @@ export function AttractionCard({
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
             {ropeDrop && <RopeDropBadge strength={ropeDrop.strength} savings={ropeDrop.savings} />}
+            {eveningBetter && <RopeDropEveningBadge openWait={ropeDropData!.openWait} />}
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}
