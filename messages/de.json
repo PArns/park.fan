@@ -639,6 +639,8 @@
     "ropeDrop": {
       "badge": "Rope Drop",
       "badgeHint": "Lohnt sich direkt zur Parköffnung – spart ca. {savings} Min.",
+      "cardLine": "Rope Drop: spart ca. {savings} Min.",
+      "cardLineUntil": "Rope Drop: spart ca. {savings} Min. (bis ca. <time></time>)",
       "title": "Rope-Drop-Tipp",
       "explainer": "Sei zur Parköffnung am Eingang und geh direkt hierhin – dann ist die Wartezeit am kürzesten.",
       "strengthHigh": "Starker Tipp",

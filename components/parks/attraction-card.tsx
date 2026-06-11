@@ -7,10 +7,17 @@ import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { formatDistance } from '@/lib/utils/distance-utils';
-import type { ParkAttraction, AttractionStatus, ParkStatus, BestVisitSlot } from '@/lib/api/types';
+import type {
+  ParkAttraction,
+  AttractionStatus,
+  ParkStatus,
+  BestVisitSlot,
+  RopeDropInfo,
+} from '@/lib/api/types';
 import type { FavoriteAttraction } from '@/lib/api/favorites';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { AttractionCardBestTime } from '@/components/parks/attraction-card-best-time';
+import { AttractionCardRopeDrop } from '@/components/parks/attraction-card-rope-drop';
 import { Skeleton } from '@/components/ui/skeleton';
 import { WaitTimeValue } from '@/components/common/wait-time-value';
 import { ParkStatusBadge } from './park-status-badge';
@@ -72,6 +79,11 @@ function getBestSlot(attraction: ParkAttraction | FavoriteAttraction): BestVisit
     attraction.bestVisitTimes.find((s) => s.rating === 'good') ??
     null
   );
+}
+
+function getWorthRopeDrop(attraction: ParkAttraction | FavoriteAttraction): RopeDropInfo | null {
+  if (!('ropeDrop' in attraction) || !attraction.ropeDrop?.worth) return null;
+  return attraction.ropeDrop;
 }
 
 function getHref(attraction: ParkAttraction | FavoriteAttraction, parkPath?: string): string {
@@ -138,6 +150,8 @@ export function AttractionCard({
   // Best-visit slot (only for OPERATING). The "in X min" text is time-relative, so it's
   // rendered by the client <AttractionCardBestTime> (cacheComponents-safe).
   const bestSlot = status === 'OPERATING' ? getBestSlot(attraction) : null;
+
+  const ropeDrop = getWorthRopeDrop(attraction);
 
   const hasSparkline = isOperatingOrUnknown && waitTime !== null;
 
@@ -290,12 +304,7 @@ export function AttractionCard({
             )}
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
-            {'ropeDrop' in attraction && attraction.ropeDrop?.worth && (
-              <RopeDropBadge
-                strength={attraction.ropeDrop.strength}
-                savings={attraction.ropeDrop.savings}
-              />
-            )}
+            {ropeDrop && <RopeDropBadge strength={ropeDrop.strength} savings={ropeDrop.savings} />}
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}
@@ -406,7 +415,10 @@ export function AttractionCard({
               </div>
 
               {/* Divider + stats rows */}
-              {(stats?.peakWaitToday != null || stats?.avgWaitToday != null || bestSlot) && (
+              {(stats?.peakWaitToday != null ||
+                stats?.avgWaitToday != null ||
+                bestSlot ||
+                ropeDrop) && (
                 <>
                   <div className="h-px w-full" style={{ background: 'var(--pk-panel-border)' }} />
                   {(stats?.peakWaitToday != null || stats?.avgWaitToday != null) && (
@@ -451,6 +463,14 @@ export function AttractionCard({
                     <Suspense fallback={<Skeleton className="h-3.5 w-28" />}>
                       <AttractionCardBestTime
                         bestSlot={bestSlot}
+                        effectiveTimezone={effectiveTimezone}
+                      />
+                    </Suspense>
+                  )}
+                  {ropeDrop && (
+                    <Suspense fallback={<Skeleton className="h-3.5 w-28" />}>
+                      <AttractionCardRopeDrop
+                        ropeDrop={ropeDrop}
                         effectiveTimezone={effectiveTimezone}
                       />
                     </Suspense>

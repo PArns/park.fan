@@ -651,6 +651,8 @@
     "ropeDrop": {
       "badge": "Rope drop",
       "badgeHint": "Conviene salire subito all'apertura: risparmi circa {savings} min",
+      "cardLine": "Rope drop: risparmia ~{savings} min",
+      "cardLineUntil": "Rope drop: risparmia ~{savings} min (fino alle <time></time> circa)",
       "title": "Consiglio rope drop",
       "explainer": "Fatti trovare all'ingresso all'apertura del parco e vieni subito qui: è il momento con l'attesa più breve.",
       "strengthHigh": "Consiglio forte",

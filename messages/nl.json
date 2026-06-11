@@ -639,6 +639,8 @@
     "ropeDrop": {
       "badge": "Rope drop",
       "badgeHint": "De moeite waard om direct bij opening te rijden – bespaart ca. {savings} min.",
+      "cardLine": "Rope drop: bespaart ca. {savings} min.",
+      "cardLineUntil": "Rope drop: bespaart ca. {savings} min. (tot ca. <time></time>)",
       "title": "Rope-drop-tip",
       "explainer": "Sta bij de ingang als het park opent en ga direct hierheen – dan is de wachttijd het kortst.",
       "strengthHigh": "Sterke tip",

@@ -639,6 +639,8 @@
     "ropeDrop": {
       "badge": "Rope Drop",
       "badgeHint": "Worth riding right at park opening — saves about {savings} min",
+      "cardLine": "Rope drop: save ~{savings} min",
+      "cardLineUntil": "Rope drop: save ~{savings} min (until ~<time></time>)",
       "title": "Rope Drop Tip",
       "explainer": "Be at the gates when the park opens and head straight here — that's when the wait is shortest.",
       "strengthHigh": "Strong tip",

@@ -639,6 +639,8 @@
     "ropeDrop": {
       "badge": "Rope drop",
       "badgeHint": "Merece la pena subir justo a la apertura: ahorras unos {savings} min",
+      "cardLine": "Rope drop: ahorra ~{savings} min",
+      "cardLineUntil": "Rope drop: ahorra ~{savings} min (hasta aprox. las <time></time>)",
       "title": "Consejo rope drop",
       "explainer": "Llega a la entrada a la hora de apertura y ven directamente aquí: es cuando la espera es más corta.",
       "strengthHigh": "Consejo fuerte",

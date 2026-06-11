@@ -6,6 +6,7 @@ import type {
   ComparisonStatus,
   AccuracyBadge,
   BestVisitSlot,
+  RopeDropInfo,
 } from '@/lib/api/types';
 
 export interface FavoritePark {
@@ -113,6 +114,8 @@ export interface FavoriteAttraction {
   url: string;
   backgroundImage?: string | null; // Added by proxy route
   bestVisitTimes?: BestVisitSlot[] | null;
+  /** Not yet delivered by /v1/favorites — typed so cards light up once the API ships it. */
+  ropeDrop?: RopeDropInfo | null;
 }
 
 export interface FavoriteShow {
