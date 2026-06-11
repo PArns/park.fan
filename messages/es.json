@@ -669,7 +669,8 @@
       "eveningBestOffset": "Normalmente la espera más corta ~{minutes} min después de la apertura",
       "eveningBestOffsetHours": "Normalmente la espera más corta ~{hours} h después de la apertura",
       "eveningWait": "Por la noche",
-      "confidenceLow": "Basado en pocos datos: tómalo como una orientación aproximada"
+      "confidenceLow": "Basado en pocos datos: tómalo como una orientación aproximada",
+      "notWorth": "Aquí no hace falta correr a la apertura: las esperas se mantienen razonables todo el día (~{openWait} min a la apertura)."
     },
     "todayChart": {
       "title": "Tiempos de espera hoy",

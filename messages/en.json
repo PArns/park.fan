@@ -669,7 +669,8 @@
       "eveningBestOffset": "Typically shortest ~{minutes} min after opening",
       "eveningBestOffsetHours": "Typically shortest ~{hours} h after opening",
       "eveningWait": "Evening",
-      "confidenceLow": "Based on limited data — treat as a rough guide"
+      "confidenceLow": "Based on limited data — treat as a rough guide",
+      "notWorth": "No need to rush here at opening — waits stay manageable throughout the day (~{openWait} min at opening)."
     },
     "todayChart": {
       "title": "Today's Wait Times",

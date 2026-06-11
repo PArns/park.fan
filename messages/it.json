@@ -681,7 +681,8 @@
       "eveningBestOffset": "Di solito l'attesa più corta ~{minutes} min dopo l'apertura",
       "eveningBestOffsetHours": "Di solito l'attesa più corta ~{hours} h dopo l'apertura",
       "eveningWait": "La sera",
-      "confidenceLow": "Basato su pochi dati: da considerare come indicazione di massima"
+      "confidenceLow": "Basato su pochi dati: da considerare come indicazione di massima",
+      "notWorth": "Qui non serve correre all'apertura: le attese restano gestibili tutto il giorno (~{openWait} min all'apertura)."
     }
   },
   "calendar": {

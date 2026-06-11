@@ -28,9 +28,9 @@ interface RopeDropCardProps {
  * advantage window (concrete park time when the API resolved an opening time,
  * minutes-after-open otherwise) and the quieter evening alternative when the
  * day's trough isn't at opening. Evening-better → inverse recommendation (long
- * line right at opening, trough much later — ride late instead). Otherwise
- * nothing renders. Client Component: the concrete times render via <ParkTime>
- * (browser-timezone tooltip needs the client).
+ * line right at opening, trough much later — ride late instead). Otherwise a
+ * muted "no need to rush" note. Client Component: the concrete times render
+ * via <ParkTime> (browser-timezone tooltip needs the client).
  */
 export function RopeDropCard({
   ropeDrop,
@@ -155,9 +155,14 @@ export function RopeDropCard({
       );
     }
 
-    // Neither a rope-drop nor an evening recommendation — render nothing
-    // rather than a hint on every headliner (it would just be noise).
-    return null;
+    return (
+      <GlassCard variant="light" className={cn('p-4', className)}>
+        <p className="text-muted-foreground flex items-center gap-2 text-sm">
+          <Sunrise className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {t('notWorth', { openWait: ropeDrop.openWait })}
+        </p>
+      </GlassCard>
+    );
   }
 
   // The day's absolute trough is only worth calling out when it lies outside
