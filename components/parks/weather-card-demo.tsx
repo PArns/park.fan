@@ -232,22 +232,6 @@ function buildHourlyFor(variant: Variant, now: number): WeatherHourlyToday | nul
   return { timezone: 'Europe/Berlin', points };
 }
 
-/** Today's park hours (Berlin-fixed) for the opening-hours band on the chart. */
-function buildChartSchedule(now: number): ScheduleItem[] {
-  const dateStr = berlinDateStr(now);
-  return [
-    {
-      date: dateStr,
-      scheduleType: 'OPERATING',
-      openingTime: `${dateStr}T09:00:00+02:00`,
-      closingTime: `${dateStr}T20:00:00+02:00`,
-      description: null,
-      purchases: null,
-      holidayName: null,
-    },
-  ];
-}
-
 function buildScheduleForOffset(
   today: Date,
   dayOffset: number,
@@ -314,12 +298,14 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
             status="OPERATING"
             schedule={[buildTodaySchedule(today)]}
           />
+          {/* Same schedule object as the ParkTimeInfo next to it, so the chart's
+              opening-hours band matches the displayed times. */}
           <WeatherCard
             weather={buildWeather(today, 'sunny')}
             nowcast={buildNowcastFor('sunny', mountedAt)}
             timezone="Europe/Berlin"
             hourly={buildHourlyFor('sunny', mountedAt)}
-            schedule={buildChartSchedule(mountedAt)}
+            schedule={[buildTodaySchedule(today)]}
           />
         </div>
       </div>

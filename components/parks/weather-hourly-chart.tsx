@@ -115,10 +115,15 @@ export function WeatherHourlyChart({
   const peakMm = Math.max(...points.map((p) => p.precipitationMm ?? 0));
   const rainScale = Math.max(RAIN_SCALE_TOP_MM, peakMm);
 
-  // "Now" position as a fraction of the day, in park-local time.
+  // Map a park-local time of day onto the x-axis. Hour values (temp points, axis
+  // labels) sit at the CENTER of their hour column, so clock times must use the
+  // same half-slot offset — a plain minutes/1440 mapping lands ~30 min too far left.
+  const xForMinutes = (min: number) => Math.min(Math.max(((min / 60 + 0.5) / n) * 100, 0), 100);
+
+  // "Now" position, in park-local time.
   const nowMinutes =
     parseInt(nowLocal.slice(11, 13), 10) * 60 + parseInt(nowLocal.slice(14, 16), 10);
-  const nowPct = (nowMinutes / 1440) * 100;
+  const nowPct = xForMinutes(nowMinutes);
 
   // Temperature at "now", interpolated between the neighbouring hour points.
   const u = nowMinutes / 60 - 0.5;
@@ -153,10 +158,10 @@ export function WeatherHourlyChart({
     const open = toLocalIso(Date.parse(todaySchedule.openingTime!), timezone);
     const close = toLocalIso(Date.parse(todaySchedule.closingTime!), timezone);
     if (open.slice(0, 10) === nowLocal.slice(0, 10)) {
-      openPct = (localMinutes(open) / 1440) * 100;
+      openPct = xForMinutes(localMinutes(open));
       // Parks closing after midnight run to the edge of the chart.
       closePct =
-        close.slice(0, 10) > nowLocal.slice(0, 10) ? 100 : (localMinutes(close) / 1440) * 100;
+        close.slice(0, 10) > nowLocal.slice(0, 10) ? 100 : xForMinutes(localMinutes(close));
       if (closePct <= openPct) closePct = 100;
     }
   }
