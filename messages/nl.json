@@ -669,8 +669,7 @@
       "eveningBestOffset": "Meestal het kortst ca. {minutes} min. na opening",
       "eveningBestOffsetHours": "Meestal het kortst ca. {hours} u na opening",
       "eveningWait": "'s Avonds",
-      "confidenceLow": "Gebaseerd op weinig gegevens – zie dit als een ruwe indicatie",
-      "notWorth": "Hier hoef je bij opening niet te haasten – de wachttijden blijven de hele dag te overzien (ca. {openWait} min. bij opening)."
+      "confidenceLow": "Gebaseerd op weinig gegevens – zie dit als een ruwe indicatie"
     },
     "todayChart": {
       "title": "Wachttijden vandaag",

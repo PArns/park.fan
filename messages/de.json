@@ -669,8 +669,7 @@
       "eveningBestOffset": "Am kürzesten typischerweise ca. {minutes} Min. nach Öffnung",
       "eveningBestOffsetHours": "Am kürzesten typischerweise ca. {hours} Std. nach Öffnung",
       "eveningWait": "Abends",
-      "confidenceLow": "Basiert auf wenigen Daten – als grobe Orientierung verstehen",
-      "notWorth": "Hier musst du zur Öffnung nicht sprinten – die Wartezeiten bleiben über den Tag überschaubar (ca. {openWait} Min. zur Öffnung)."
+      "confidenceLow": "Basiert auf wenigen Daten – als grobe Orientierung verstehen"
     },
     "todayChart": {
       "title": "Wartezeiten heute",
