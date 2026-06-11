@@ -308,7 +308,12 @@ export function AttractionCard({
             {/* Rope drop is planning info — shown regardless of live status (it
                 matters most before the park opens). */}
             {ropeDrop && <RopeDropBadge strength={ropeDrop.strength} savings={ropeDrop.savings} />}
-            {eveningBetter && <RopeDropEveningBadge openWait={ropeDropData!.openWait} />}
+            {eveningBetter && (
+              <RopeDropEveningBadge
+                openWait={ropeDropData!.openWait}
+                bestSlotWait={ropeDropData!.bestSlotWait}
+              />
+            )}
             {'isSeasonal' in attraction && attraction.isSeasonal && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}

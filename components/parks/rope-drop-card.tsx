@@ -48,9 +48,27 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
 
   if (!ropeDrop.worth) {
     if (isEveningBetter(ropeDrop)) {
+      const troughWait = ropeDrop.bestSlotWait ?? null;
+
       const eveningBestNode: ReactNode = ropeDrop.bestSlotUtc
-        ? t.rich('eveningBestAt', { time: timeTag(ropeDrop.bestSlotUtc) })
+        ? troughWait != null
+          ? t.rich('eveningBestAtWait', { wait: troughWait, time: timeTag(ropeDrop.bestSlotUtc) })
+          : t.rich('eveningBestAt', { time: timeTag(ropeDrop.bestSlotUtc) })
         : bestSlotOffsetNode('eveningBestOffset');
+
+      const eveningStats =
+        troughWait != null
+          ? [
+              { icon: Clock, label: t('atOpening'), value: ropeDrop.openWait, highlight: false },
+              {
+                icon: ChartColumn,
+                label: t('dayPeak'),
+                value: ropeDrop.busyPeak,
+                highlight: false,
+              },
+              { icon: Moon, label: t('eveningWait'), value: troughWait, highlight: true },
+            ]
+          : null;
 
       return (
         <GlassCard
@@ -67,6 +85,40 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
           <p className="text-muted-foreground mb-3 text-sm">
             {t('eveningText', { openWait: ropeDrop.openWait, busyPeak: ropeDrop.busyPeak })}
           </p>
+          {eveningStats && (
+            <div className="mb-4 grid grid-cols-3 gap-3">
+              {eveningStats.map(({ icon: Icon, label, value, highlight }) => (
+                <div
+                  key={label}
+                  className={cn(
+                    'rounded-lg border p-3 text-center',
+                    highlight
+                      ? 'border-indigo-500/30 bg-indigo-500/10'
+                      : 'border-border/50 bg-background/40'
+                  )}
+                >
+                  <div
+                    className={cn(
+                      'text-muted-foreground mx-auto mb-1 flex items-center justify-center gap-1 text-xs font-medium',
+                      highlight && 'text-indigo-500 dark:text-indigo-300'
+                    )}
+                  >
+                    <Icon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                    {label}
+                  </div>
+                  <div
+                    className={cn(
+                      'text-2xl font-bold tabular-nums',
+                      highlight && 'text-indigo-500 dark:text-indigo-300'
+                    )}
+                  >
+                    {value}
+                    <span className="text-muted-foreground ml-1 text-xs font-medium">min</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
           <p className="flex items-center gap-2 text-sm font-medium">
             <Moon className="text-muted-foreground h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             <span suppressHydrationWarning>{eveningBestNode}</span>
@@ -103,7 +155,12 @@ export function RopeDropCard({ ropeDrop, timezone, className }: RopeDropCardProp
     : t('rideWithin', { minutes: ropeDrop.rideByMinutesAfterOpen });
 
   const bestSlotNode: ReactNode = ropeDrop.bestSlotUtc
-    ? t.rich('bestSlotAt', { time: timeTag(ropeDrop.bestSlotUtc) })
+    ? ropeDrop.bestSlotWait != null
+      ? t.rich('bestSlotAtWait', {
+          wait: ropeDrop.bestSlotWait,
+          time: timeTag(ropeDrop.bestSlotUtc),
+        })
+      : t.rich('bestSlotAt', { time: timeTag(ropeDrop.bestSlotUtc) })
     : bestSlotOffsetNode('bestSlotOffset');
 
   const stats = [

@@ -376,6 +376,19 @@ export interface RopeDropInfo {
   rideByMinutesAfterOpen: number;
   /** Minutes after opening of the day's absolute lowest wait (often evening). */
   bestSlotMinutesAfterOpen: number;
+  /**
+   * Expected wait (minutes) at that trough — the payoff for coming back later.
+   * Added in backend PR #69; absent/null until recommendations are recomputed.
+   */
+  bestSlotWait?: number | null;
+  /**
+   * Server verdict: better saved for late in the day than rope-dropped (the
+   * trough falls in the back of the operating day, pre-closing line drain
+   * excluded). Added in backend PR #69; absent/null until recomputed.
+   */
+  endOfDayWorth?: boolean | null;
+  /** busyPeak − bestSlotWait (minutes saved at the evening trough). */
+  endOfDaySavings?: number | null;
   /** openingTime + rideByMinutesAfterOpen for the next operating day (UTC ISO), or null. */
   rideByUtc: string | null;
   /** openingTime + bestSlotMinutesAfterOpen for the next operating day (UTC ISO), or null. */

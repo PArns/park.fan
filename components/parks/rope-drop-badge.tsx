@@ -34,6 +34,8 @@ export function RopeDropBadge({ strength, savings, className }: RopeDropBadgePro
 
 interface RopeDropEveningBadgeProps {
   openWait: number;
+  /** Expected wait at the day's trough — shown in the hint when available. */
+  bestSlotWait?: number | null;
   className?: string;
 }
 
@@ -41,11 +43,20 @@ interface RopeDropEveningBadgeProps {
  * Inverse recommendation badge: the line is long right at opening and the
  * day's trough sits much later — ride late instead (see isEveningBetter).
  */
-export function RopeDropEveningBadge({ openWait, className }: RopeDropEveningBadgeProps) {
+export function RopeDropEveningBadge({
+  openWait,
+  bestSlotWait,
+  className,
+}: RopeDropEveningBadgeProps) {
   const t = useTranslations('attractions.ropeDrop');
 
+  const hint =
+    bestSlotWait != null
+      ? t('eveningBadgeHintWait', { openWait, bestSlotWait })
+      : t('eveningBadgeHint', { openWait });
+
   return (
-    <span title={t('eveningBadgeHint', { openWait })}>
+    <span title={hint}>
       <Badge
         className={cn(
           'border border-indigo-500/30 bg-indigo-500/15 font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300',

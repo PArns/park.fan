@@ -26,6 +26,13 @@ opening for a headliner, and until when does the advantage last.
   right at opening (≥30 min) and the day's trough sits ≥2 h later (`isEveningBetter` in
   `lib/utils/rope-drop.ts`), cards get an indigo moon badge and the detail page an
   "Better later than at opening" panel pointing at the typical trough time (`bestSlotUtc`).
+- **Backend PR #69 fields**: `bestSlotWait` (expected wait at the trough), `endOfDayWorth` /
+  `endOfDaySavings` (server-side "better later" verdict with pre-closing line-drain guard) —
+  all optional in the frontend types. `isEveningBetter` prefers the server verdict and keeps
+  the local heuristic as fallback for cached recommendations predating the fields. When
+  `bestSlotWait` is present, the evening panel shows an opening/peak/evening stat trio and the
+  badge hint + alternative lines say "typically only ~X min". `/v1/favorites` now also carries
+  `ropeDrop`, so favorites cards light up without further frontend changes.
 - **i18n**: `attractions.ropeDrop.*` + `parks.ropeDropSection.*` in all 6 locales.
 - Rope-drop values are recomputed daily server-side — no extra polling; the fields ride along
   on the existing park/attraction responses.
