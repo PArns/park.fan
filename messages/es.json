@@ -461,7 +461,8 @@
       },
       "gustsLabel": "Ráfagas",
       "visibilityLabel": "Visibilidad",
-      "snowLabel": "Nieve"
+      "snowLabel": "Nieve",
+      "nowLabel": "Ahora"
     },
     "weatherNowcast": {
       "updateIn": "Actualización en {countdown}",

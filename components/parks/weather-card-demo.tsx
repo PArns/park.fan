@@ -4,7 +4,13 @@ import { useState } from 'react';
 import { format, addDays } from 'date-fns';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
-import type { WeatherData, WeatherDay, WeatherNowcast, ScheduleItem } from '@/lib/api/types';
+import type {
+  WeatherData,
+  WeatherDay,
+  WeatherHourlyToday,
+  WeatherNowcast,
+  ScheduleItem,
+} from '@/lib/api/types';
 import { FORECAST_TEMPLATE, VARIANT_CURRENT, type Variant } from './weather-card-demo-data';
 
 function buildWeather(today: Date, variant: Variant): WeatherData {
@@ -177,6 +183,55 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
   }
 }
 
+/** "Today" in the demo park's timezone — the hourly chart hides itself otherwise. */
+function berlinDateStr(now: number): string {
+  return new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Europe/Berlin',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(now);
+}
+
+interface HourlyVariantConfig {
+  tMin: number;
+  tMax: number;
+  dryCode: number;
+  rain: { from: number; to: number; peakMm: number; code: number } | null;
+}
+
+const HOURLY_VARIANTS: Partial<Record<Variant, HourlyVariantConfig>> = {
+  sunny: { tMin: 10, tMax: 19, dryCode: 1, rain: null },
+  rainy: { tMin: 7, tMax: 11, dryCode: 3, rain: { from: 11, to: 18, peakMm: 1.2, code: 63 } },
+  stormy: { tMin: 5, tMax: 9, dryCode: 3, rain: { from: 13, to: 20, peakMm: 3.2, code: 95 } },
+};
+
+/** Deterministic hourly day data so the showcase renders the day-view chart offline. */
+function buildHourlyFor(variant: Variant, now: number): WeatherHourlyToday | null {
+  const cfg = HOURLY_VARIANTS[variant];
+  if (!cfg) return null;
+  const dateStr = berlinDateStr(now);
+  const points = Array.from({ length: 24 }, (_, h) => {
+    // Diurnal curve: coolest around 05:00, warmest around 17:00.
+    const tFrac = 0.5 - 0.5 * Math.cos((((h - 5 + 24) % 24) / 24) * 2 * Math.PI);
+    const rain = cfg.rain;
+    const rainFrac =
+      rain && h >= rain.from && h <= rain.to
+        ? Math.sin(((h - rain.from) / (rain.to - rain.from)) * Math.PI)
+        : 0;
+    const mm = rain ? Math.round(rain.peakMm * rainFrac * 10) / 10 : 0;
+    return {
+      time: `${dateStr}T${String(h).padStart(2, '0')}:00`,
+      temperatureC: Math.round((cfg.tMin + (cfg.tMax - cfg.tMin) * tFrac) * 10) / 10,
+      precipitationMm: mm,
+      precipitationProbability: mm > 0 ? Math.round(60 + 35 * rainFrac) : 15,
+      weatherCode: mm > 0 ? cfg.rain!.code : cfg.dryCode,
+      isDay: h >= 6 && h <= 21,
+    };
+  });
+  return { timezone: 'Europe/Berlin', points };
+}
+
 function buildScheduleForOffset(
   today: Date,
   dayOffset: number,
@@ -243,9 +298,14 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
             status="OPERATING"
             schedule={[buildTodaySchedule(today)]}
           />
+          {/* Same schedule object as the ParkTimeInfo next to it, so the chart's
+              opening-hours band matches the displayed times. */}
           <WeatherCard
             weather={buildWeather(today, 'sunny')}
             nowcast={buildNowcastFor('sunny', mountedAt)}
+            timezone="Europe/Berlin"
+            hourly={buildHourlyFor('sunny', mountedAt)}
+            schedule={[buildTodaySchedule(today)]}
           />
         </div>
       </div>
@@ -258,10 +318,14 @@ export function WeatherCardShowcase({ variant }: WeatherCardShowcaseProps) {
       <WeatherCard
         weather={buildWeather(today, 'rainy')}
         nowcast={buildNowcastFor('rainy', mountedAt)}
+        timezone="Europe/Berlin"
+        hourly={buildHourlyFor('rainy', mountedAt)}
       />
       <WeatherCard
         weather={buildWeather(today, 'stormy')}
         nowcast={buildNowcastFor('stormy', mountedAt)}
+        timezone="Europe/Berlin"
+        hourly={buildHourlyFor('stormy', mountedAt)}
       />
       <WeatherCard weather={buildWeather(today, 'snowy')} />
       <WeatherCard weather={buildWeather(today, 'fog')} />

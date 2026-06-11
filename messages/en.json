@@ -461,7 +461,8 @@
       },
       "gustsLabel": "Gusts",
       "visibilityLabel": "Visibility",
-      "snowLabel": "Snow"
+      "snowLabel": "Snow",
+      "nowLabel": "Now"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

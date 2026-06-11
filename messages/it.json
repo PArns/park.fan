@@ -461,7 +461,8 @@
       },
       "gustsLabel": "Raffiche",
       "visibilityLabel": "Visibilità",
-      "snowLabel": "Neve"
+      "snowLabel": "Neve",
+      "nowLabel": "Ora"
     },
     "weatherNowcast": {
       "updateIn": "Aggiornamento tra {countdown}",

@@ -330,6 +330,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   country={country}
                   city={city}
                   parkSlug={parkSlug}
+                  latitude={park.latitude}
+                  longitude={park.longitude}
+                  timezone={park.timezone}
+                  schedule={park.schedule}
                   className="border-primary/10"
                 />
               </Suspense>

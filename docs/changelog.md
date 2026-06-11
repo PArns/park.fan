@@ -4,6 +4,30 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Hourly day view in the weather card
+
+Weather-app style detail view for today inside the park weather card: smoothed temperature
+curve with min/max labels, rain bars per hour, a "now" marker (past hours dimmed) and
+per-hour tooltips (time, temp, condition, precip, rain probability), plus an axis with
+weather icons every 3 h. Shown only when the park has a live nowcast.
+
+- **Data**: the backend exposes no hourly temperatures (daily weather + ~6 h nowcast only),
+  so `/api/weather/hourly` proxies Open-Meteo — the backend's own upstream source, already
+  attributed in the card. The proxy keeps requests first-party (no visitor IPs to a third
+  party), validates `lat`/`lon`/`tz`, rounds coords to ~1 km and caches 15 min
+  (`revalidate: 900` + `s-maxage=900`), so all visitors of a park share one upstream call.
+  If/when the backend grows an hourly endpoint, only the route handler needs to change.
+- **Types**: `WeatherHourlyPoint` / `WeatherHourlyToday` in `lib/api/types.ts`.
+- **Hook**: `useWeatherHourly` (client-only, 15 min stale, 30 min refetch to roll the chart
+  over to the new day after midnight); enabled only when a nowcast exists.
+- **Component**: `components/parks/weather-hourly-chart.tsx`; hides itself when the data no
+  longer belongs to "today" in the park timezone (midnight gap until the next refetch).
+- **Park page**: passes `latitude`/`longitude`/`timezone` to `WeatherCard` (new optional
+  props — other `WeatherCard` consumers are unaffected).
+- **i18n**: `parks.weather.hourlyTitle` / `parks.weather.nowLabel` in all 6 locales.
+
+---
+
 ## Unreleased – Rope-drop recommendations
 
 Surfaces the API's precomputed rope-drop data (backend PR #67): is it worth arriving at park

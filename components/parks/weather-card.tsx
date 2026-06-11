@@ -1,10 +1,20 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Cloud, ExternalLink, Snowflake, Eye, CloudFog } from 'lucide-react';
+import {
+  Cloud,
+  ExternalLink,
+  Snowflake,
+  Eye,
+  CloudFog,
+  Droplets,
+  Thermometer,
+  Wind as WindIcon,
+} from 'lucide-react';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
+import { WeatherHourlyChart } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
 import { WindCompass } from './wind-compass';
@@ -12,8 +22,15 @@ import { TemperatureUnitToggle } from '@/components/common/temperature-unit-togg
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
-import type { WeatherData, WeatherDay, WeatherNowcast } from '@/lib/api/types';
+import type {
+  ScheduleItem,
+  WeatherData,
+  WeatherDay,
+  WeatherHourlyToday,
+  WeatherNowcast,
+} from '@/lib/api/types';
 
 interface WeatherCardProps {
   weather: WeatherData;
@@ -25,6 +42,15 @@ interface WeatherCardProps {
   country?: string;
   city?: string;
   parkSlug?: string;
+  /** Park coordinates + timezone — when provided (and a nowcast exists), enables
+      the detailed hour-by-hour day view for today. */
+  latitude?: number | null;
+  longitude?: number | null;
+  timezone?: string;
+  /** Park schedule — today's opening hours are marked in the hourly day view. */
+  schedule?: ScheduleItem[] | null;
+  /** Static hourly data (showcases/demos) — when set, the live fetch is skipped. */
+  hourly?: WeatherHourlyToday | null;
   className?: string;
 }
 
@@ -36,6 +62,11 @@ export function WeatherCard({
   country,
   city,
   parkSlug,
+  latitude,
+  longitude,
+  timezone,
+  schedule,
+  hourly,
   className,
 }: WeatherCardProps) {
   const t = useTranslations('parks.weather');
@@ -52,6 +83,17 @@ export function WeatherCard({
   });
   // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
   const activeNowcast = hasParams ? liveNowcast : nowcast;
+
+  // Detailed day view for today — only when a nowcast exists (parks with live
+  // weather coverage) and we know where the park is. A static `hourly` prop
+  // (showcases/demos) takes precedence and disables the fetch.
+  const { data: fetchedHourly } = useWeatherHourly({
+    latitude,
+    longitude,
+    timezone,
+    enabled: !!activeNowcast && hourly === undefined,
+  });
+  const activeHourly = hourly !== undefined ? hourly : fetchedHourly;
 
   // The base forecast (current + 7-day strip) is baked into the 1-day ISR shell, so it would be up
   // to a day stale. Subscribe to the same live park query LiveParkData polls (shared key → no extra
@@ -154,8 +196,10 @@ export function WeatherCard({
                   <Temp celsius={tempMinC} /> – <Temp celsius={tempMaxC} />
                 </p>
                 {feelsLikeC != null && (
-                  <p className="text-muted-foreground text-xs">
-                    {t('feelsLike')} <Temp celsius={feelsLikeC} />
+                  <p className="text-muted-foreground flex items-center gap-1 text-xs whitespace-nowrap">
+                    <Thermometer className="h-3 w-3 shrink-0 sm:hidden" aria-hidden="true" />
+                    <span className="hidden sm:inline">{t('feelsLike')}</span>
+                    <Temp celsius={feelsLikeC} />
                   </p>
                 )}
                 <p className="text-muted-foreground mt-0.5 text-sm font-medium">{t(label)}</p>
@@ -164,32 +208,51 @@ export function WeatherCard({
 
             {activeNowcast ? (
               <div className="flex items-center gap-3">
+                {/* Text labels collapse to their icons below `sm` — the value column
+                    sits next to the temperature block and wraps otherwise. */}
                 <div className="text-muted-foreground space-y-0.5 text-right text-xs">
-                  <div>
-                    <span className="opacity-70">{t('precipLabel')}: </span>
+                  <div
+                    className="flex items-center justify-end gap-1 whitespace-nowrap"
+                    title={t('precipLabel')}
+                  >
+                    <Droplets className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                    <span className="hidden opacity-70 sm:inline">{t('precipLabel')}: </span>
                     <Precip mm={precipMm} />
                   </div>
                   {gustsKmh != null && (
-                    <div>
-                      <span className="opacity-70">{t('gustsLabel')}: </span>
+                    <div
+                      className="flex items-center justify-end gap-1 whitespace-nowrap"
+                      title={t('gustsLabel')}
+                    >
+                      <WindIcon className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                      <span className="hidden opacity-70 sm:inline">{t('gustsLabel')}: </span>
                       <Wind kmh={gustsKmh} />
                     </div>
                   )}
                   {visM != null && (
-                    <div className="flex items-center justify-end gap-1">
+                    <div
+                      className="flex items-center justify-end gap-1 whitespace-nowrap"
+                      title={isFog ? t('fog') : t('visibilityLabel')}
+                    >
                       {isFog ? (
                         <CloudFog className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                       ) : (
                         <Eye className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
                       )}
-                      <span className="opacity-70">{isFog ? t('fog') : t('visibilityLabel')}:</span>{' '}
+                      <span className="hidden opacity-70 sm:inline">
+                        {isFog ? t('fog') : t('visibilityLabel')}:
+                      </span>{' '}
                       <Distance meters={visM} />
                     </div>
                   )}
                   {showSnow && (
-                    <div className="flex items-center justify-end gap-1">
+                    <div
+                      className="flex items-center justify-end gap-1 whitespace-nowrap"
+                      title={t('snowLabel')}
+                    >
                       <Snowflake className="h-3.5 w-3.5 shrink-0 text-sky-300" aria-hidden="true" />
-                      <span className="opacity-70">{t('snowLabel')}:</span> {snowCm!.toFixed(1)} cm
+                      <span className="hidden opacity-70 sm:inline">{t('snowLabel')}:</span>{' '}
+                      {snowCm!.toFixed(1)} cm
                     </div>
                   )}
                 </div>
@@ -200,23 +263,40 @@ export function WeatherCard({
               </div>
             ) : (
               <div className="text-muted-foreground space-y-0.5 text-right text-xs">
-                <div>
-                  <span className="opacity-70">{t('precipLabel')}: </span>
+                <div
+                  className="flex items-center justify-end gap-1 whitespace-nowrap"
+                  title={t('precipLabel')}
+                >
+                  <Droplets className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                  <span className="hidden opacity-70 sm:inline">{t('precipLabel')}: </span>
                   <Precip mm={precipMm} />
                 </div>
-                <div>
-                  <span className="opacity-70">{t('windLabel')}: </span>
+                <div
+                  className="flex items-center justify-end gap-1 whitespace-nowrap"
+                  title={t('windLabel')}
+                >
+                  <WindIcon className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
+                  <span className="hidden opacity-70 sm:inline">{t('windLabel')}: </span>
                   <Wind kmh={windKmh} />
                 </div>
               </div>
             )}
           </div>
 
+          {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 && (
+            <WeatherHourlyChart
+              points={activeHourly.points}
+              timezone={timezone}
+              schedule={schedule ?? undefined}
+              nowcast={activeNowcast}
+            />
+          )}
+
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
             <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />
           )}
 
-          <p className="text-muted-foreground/50 !-mt-1 -mr-4 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">
+          <p className="text-muted-foreground/50 !-mt-1 -mb-3 flex items-center justify-end gap-1 text-[12px] leading-none font-medium">
             <Cloud className="h-3 w-3 shrink-0" aria-hidden="true" />
             <a
               href="https://open-meteo.com/"

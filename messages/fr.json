@@ -461,7 +461,8 @@
       },
       "gustsLabel": "Rafales",
       "visibilityLabel": "Visibilité",
-      "snowLabel": "Neige"
+      "snowLabel": "Neige",
+      "nowLabel": "Maintenant"
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",

@@ -461,7 +461,8 @@
       },
       "gustsLabel": "Windstoten",
       "visibilityLabel": "Zicht",
-      "snowLabel": "Sneeuw"
+      "snowLabel": "Sneeuw",
+      "nowLabel": "Nu"
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",
