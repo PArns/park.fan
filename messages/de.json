@@ -663,7 +663,7 @@
       "eveningBadgeHint": "Schon zur Öffnung ca. {openWait} Min. – meist später am Tag am kürzesten",
       "eveningBadgeHintWait": "Schon zur Öffnung ca. {openWait} Min. – später am Tag meist nur ca. {bestSlotWait} Min.",
       "eveningTitle": "Später besser als zur Öffnung",
-      "eveningText": "Rope Drop lohnt sich hier nicht – schon direkt zur Öffnung warten ca. {openWait} Min. (Tagespeak: ca. {busyPeak} Min.).",
+      "eveningText": "<term>Rope Drop</term> lohnt sich hier nicht – schon direkt zur Öffnung warten ca. {openWait} Min. (Tagespeak: ca. {busyPeak} Min.).",
       "eveningBestAt": "Am kürzesten typischerweise gegen <time></time>",
       "eveningBestAtWait": "Meist nur ca. {wait} Min. gegen <time></time>",
       "eveningBestOffset": "Am kürzesten typischerweise ca. {minutes} Min. nach Öffnung",

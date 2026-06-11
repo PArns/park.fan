@@ -498,9 +498,7 @@ function ContentESSections() {
         {/* Rope-Drop */}
         <SubSection title="Recomendaciones rope drop">
           <p className="text-muted-foreground mb-3 text-sm">
-            Para las atracciones estrella (headliners) de un parque, park.fan calcula a diario, a
-            partir de los patrones de espera de las últimas semanas, si el rope drop merece la pena
-            —estar en la puerta justo a la apertura— o si la cola es más corta por la noche:
+            <GlossaryInject>{`Para las atracciones estrella (headliners) de un parque, park.fan calcula a diario, a partir de los patrones de espera de las últimas semanas, si el rope drop merece la pena —estar en la puerta justo a la apertura— o si la cola es más corta por la noche:`}</GlossaryInject>
           </p>
           <div className="space-y-3">
             <div className="flex items-start gap-3">
@@ -509,9 +507,7 @@ function ContentESSections() {
                 Rope drop
               </span>
               <p className="text-muted-foreground text-sm">
-                Merece la pena: llega a la entrada a la apertura y monta primero en esta atracción;
-                a menudo ahorras 45–90 minutos respecto al pico del día. Verde = consejo fuerte,
-                turquesa = buen consejo.
+                <GlossaryInject>{`Merece la pena: llega a la entrada a la apertura y monta primero en esta atracción; a menudo ahorras 45–90 minutos respecto al pico del día. Verde = consejo fuerte, turquesa = buen consejo.`}</GlossaryInject>
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -520,22 +516,15 @@ function ContentESSections() {
                 Mejor más tarde
               </span>
               <p className="text-muted-foreground text-sm">
-                Lo contrario: aquí la cola ya es larga en la apertura; normalmente es más corta por
-                la noche. Ahórrate el sprint y vuelve más tarde.
+                <GlossaryInject>{`Lo contrario: aquí la cola ya es larga en la apertura; normalmente es más corta por la noche. Ahórrate el sprint y vuelve más tarde.`}</GlossaryInject>
               </p>
             </div>
           </div>
           <p className="text-muted-foreground mt-3 text-sm">
-            En la página de detalle de la atracción, un panel propio muestra los detalles: espera en
-            la apertura vs. pico del día, los minutos ahorrados y la ventana de tiempo (p. ej.
-            «Mejor en los primeros 45 min tras la apertura, hasta aprox. las 10:45»). En la página
-            del parque, un panel de consejos sobre los destacados resume dónde compensa hoy el rope
-            drop y qué atracciones es mejor dejar para la noche.
+            <GlossaryInject>{`En la página de detalle de la atracción, un panel propio muestra los detalles: espera en la apertura vs. pico del día, los minutos ahorrados y la ventana de tiempo (p. ej. «Mejor en los primeros 45 min tras la apertura, hasta aprox. las 10:45»). En la página del parque, un panel de consejos sobre los destacados resume dónde compensa hoy el rope drop y qué atracciones es mejor dejar para la noche.`}</GlossaryInject>
           </p>
           <InfoBox>
-            Las recomendaciones se recalculan a diario y solo aparecen en atracciones estrella de
-            parques con horarios publicados. Todas las horas se muestran en la zona horaria del
-            parque, como en todo park.fan.
+            <GlossaryInject>{`Las recomendaciones se recalculan a diario y solo aparecen en atracciones estrella de parques con horarios publicados. Todas las horas se muestran en la zona horaria del parque, como en todo park.fan.`}</GlossaryInject>
           </InfoBox>
         </SubSection>
 

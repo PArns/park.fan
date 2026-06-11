@@ -663,7 +663,7 @@
       "eveningBadgeHint": "Al ca. {openWait} min. bij opening – meestal later op de dag het kortst",
       "eveningBadgeHintWait": "Al ca. {openWait} min. bij opening – later op de dag meestal maar ca. {bestSlotWait} min.",
       "eveningTitle": "Later beter dan bij opening",
-      "eveningText": "Rope drop loont hier niet – direct bij opening is de wachttijd al ca. {openWait} min. (dagpiek: ca. {busyPeak} min.).",
+      "eveningText": "<term>Rope drop</term> loont hier niet – direct bij opening is de wachttijd al ca. {openWait} min. (dagpiek: ca. {busyPeak} min.).",
       "eveningBestAt": "Meestal het kortst rond <time></time>",
       "eveningBestAtWait": "Meestal maar ca. {wait} min. rond <time></time>",
       "eveningBestOffset": "Meestal het kortst ca. {minutes} min. na opening",

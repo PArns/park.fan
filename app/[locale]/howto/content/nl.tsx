@@ -487,9 +487,7 @@ function ContentNLSections() {
         {/* Rope-Drop */}
         <SubSection title="Rope-drop-aanbevelingen">
           <p className="text-muted-foreground mb-3 text-sm">
-            Voor de topattracties (headliners) van een park berekent park.fan dagelijks uit de
-            wachttijdpatronen van de afgelopen weken of rope drop loont – direct bij parkopening
-            aanwezig zijn – of dat de rij ’s avonds het kortst is:
+            <GlossaryInject>{`Voor de topattracties (headliners) van een park berekent park.fan dagelijks uit de wachttijdpatronen van de afgelopen weken of rope drop loont – direct bij parkopening aanwezig zijn – of dat de rij ’s avonds het kortst is:`}</GlossaryInject>
           </p>
           <div className="space-y-3">
             <div className="flex items-start gap-3">
@@ -498,9 +496,7 @@ function ContentNLSections() {
                 Rope drop
               </span>
               <p className="text-muted-foreground text-sm">
-                De moeite waard: sta bij opening bij de ingang en rijd deze attractie als eerste –
-                je bespaart vaak 45–90 minuten ten opzichte van de dagpiek. Groen = sterke tip,
-                turquoise = goede tip.
+                <GlossaryInject>{`De moeite waard: sta bij opening bij de ingang en rijd deze attractie als eerste – je bespaart vaak 45–90 minuten ten opzichte van de dagpiek. Groen = sterke tip, turquoise = goede tip.`}</GlossaryInject>
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -509,22 +505,15 @@ function ContentNLSections() {
                 Later beter
               </span>
               <p className="text-muted-foreground text-sm">
-                Het omgekeerde: hier is de rij al bij opening lang – meestal is hij ’s avonds het
-                kortst. Bespaar je de sprint en kom later terug.
+                <GlossaryInject>{`Het omgekeerde: hier is de rij al bij opening lang – meestal is hij ’s avonds het kortst. Bespaar je de sprint en kom later terug.`}</GlossaryInject>
               </p>
             </div>
           </div>
           <p className="text-muted-foreground mt-3 text-sm">
-            Op de detailpagina van de attractie toont een eigen paneel de details: wachttijd bij
-            opening vs. dagpiek, de besparing in minuten en het tijdvenster (bijv. “Het beste binnen
-            de eerste 45 min. na opening – tot ca. 10:45”). Op de parkpagina vat een tip-paneel
-            boven de highlights samen waar rope drop vandaag loont – en welke attracties je beter
-            voor de avond bewaart.
+            <GlossaryInject>{`Op de detailpagina van de attractie toont een eigen paneel de details: wachttijd bij opening vs. dagpiek, de besparing in minuten en het tijdvenster (bijv. “Het beste binnen de eerste 45 min. na opening – tot ca. 10:45”). Op de parkpagina vat een tip-paneel boven de highlights samen waar rope drop vandaag loont – en welke attracties je beter voor de avond bewaart.`}</GlossaryInject>
           </p>
           <InfoBox>
-            De aanbevelingen worden dagelijks opnieuw berekend en verschijnen alleen bij
-            headliner-attracties in parken met gepubliceerde openingstijden. Alle tijden staan –
-            zoals overal op park.fan – in de tijdzone van het park.
+            <GlossaryInject>{`De aanbevelingen worden dagelijks opnieuw berekend en verschijnen alleen bij headliner-attracties in parken met gepubliceerde openingstijden. Alle tijden staan – zoals overal op park.fan – in de tijdzone van het park.`}</GlossaryInject>
           </InfoBox>
         </SubSection>
 

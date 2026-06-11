@@ -606,9 +606,7 @@ function ContentDE() {
         {/* Rope-Drop */}
         <SubSection title="Rope-Drop-Empfehlungen">
           <p className="text-muted-foreground mb-3 text-sm">
-            Für die Top-Attraktionen (Headliner) eines Parks berechnet park.fan täglich aus den
-            Wartezeit-Mustern der letzten Wochen, ob sich Rope Drop lohnt – also pünktlich zur
-            Parköffnung da zu sein – oder ob die Schlange abends am kürzesten ist:
+            <GlossaryInject>{`Für die Top-Attraktionen (Headliner) eines Parks berechnet park.fan täglich aus den Wartezeit-Mustern der letzten Wochen, ob sich Rope Drop lohnt – also pünktlich zur Parköffnung da zu sein – oder ob die Schlange abends am kürzesten ist:`}</GlossaryInject>
           </p>
           <div className="space-y-3">
             <div className="flex items-start gap-3">
@@ -617,8 +615,7 @@ function ContentDE() {
                 Rope Drop
               </span>
               <p className="text-muted-foreground text-sm">
-                Lohnt sich: Sei zur Öffnung am Eingang und fahre diese Attraktion zuerst – gegenüber
-                dem Tagespeak sparst du oft 45–90 Minuten. Grün = starker Tipp, Türkis = guter Tipp.
+                <GlossaryInject>{`Lohnt sich: Sei zur Öffnung am Eingang und fahre diese Attraktion zuerst – gegenüber dem Tagespeak sparst du oft 45–90 Minuten. Grün = starker Tipp, Türkis = guter Tipp.`}</GlossaryInject>
               </p>
             </div>
             <div className="flex items-start gap-3">
@@ -627,22 +624,15 @@ function ContentDE() {
                 Später besser
               </span>
               <p className="text-muted-foreground text-sm">
-                Das Gegenteil: Hier ist die Schlange schon zur Öffnung lang – am kürzesten ist sie
-                typischerweise am Abend. Spar dir den Sprint und komm später wieder.
+                <GlossaryInject>{`Das Gegenteil: Hier ist die Schlange schon zur Öffnung lang – am kürzesten ist sie typischerweise am Abend. Spar dir den Sprint und komm später wieder.`}</GlossaryInject>
               </p>
             </div>
           </div>
           <p className="text-muted-foreground mt-3 text-sm">
-            Auf der Attraktions-Detailseite zeigt ein eigenes Panel die Details: Wartezeit zur
-            Öffnung vs. Tagespeak, die Ersparnis in Minuten und das Zeitfenster (z. B. „Am besten in
-            den ersten 45 Min. nach Öffnung – bis ca. 10:45 Uhr“). Auf der Park-Seite fasst ein
-            Tipp-Panel über den Highlights zusammen, wo sich Rope Drop heute lohnt – und welche
-            Attraktionen du dir besser für den Abend aufhebst.
+            <GlossaryInject>{`Auf der Attraktions-Detailseite zeigt ein eigenes Panel die Details: Wartezeit zur Öffnung vs. Tagespeak, die Ersparnis in Minuten und das Zeitfenster (z. B. „Am besten in den ersten 45 Min. nach Öffnung – bis ca. 10:45 Uhr“). Auf der Park-Seite fasst ein Tipp-Panel über den Highlights zusammen, wo sich Rope Drop heute lohnt – und welche Attraktionen du dir besser für den Abend aufhebst.`}</GlossaryInject>
           </p>
           <InfoBox>
-            Die Empfehlungen werden täglich neu berechnet und erscheinen nur bei
-            Headliner-Attraktionen in Parks mit veröffentlichten Öffnungszeiten. Alle Uhrzeiten sind
-            – wie überall auf park.fan – in der Zeitzone des Parks.
+            <GlossaryInject>{`Die Empfehlungen werden täglich neu berechnet und erscheinen nur bei Headliner-Attraktionen in Parks mit veröffentlichten Öffnungszeiten. Alle Uhrzeiten sind – wie überall auf park.fan – in der Zeitzone des Parks.`}</GlossaryInject>
           </InfoBox>
         </SubSection>
 
