@@ -4,6 +4,7 @@ Theme park wait times and statistics frontend for **[api.park.fan](https://api.p
 **Technology Stack:** Next.js 16 (App Router), React 19, TypeScript.
 **Routing:** This project uses **`proxy.ts`** for routing and i18n middleware, **not** a standard `middleware.ts`.
 Multilingual (EN/DE/NL/FR/ES/IT), Server Components by default. All detailed documentation lives in **`docs/`** - start at **[docs/README.md](docs/README.md)**.
+**Park page loading priority (REQUIREMENT):** the best-travel-time data (best-days calendar + historical stats) must **always load last** — live status, wait times and all weather queries load first. Enforced via `useLoadLast` (`lib/hooks/use-load-last.ts`); see [system-overview](docs/architecture/system-overview.md#4-park-page-loading-priority-requirement).
 
 ---
 

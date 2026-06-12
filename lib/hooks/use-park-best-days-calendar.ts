@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 interface UseParkBestDaysCalendarParams {
@@ -23,6 +24,10 @@ interface UseParkBestDaysCalendarParams {
  *   where reading the clock internally (React Query) is forbidden under Cache Components.
  * - 30-min staleTime: this fuels trip-planning aggregates that only shift with the daily
  *   forecast, so a half-hour-old snapshot is fine.
+ * - Deferred via `useLoadLast`: the best-travel-time data must ALWAYS load last on the park
+ *   page — this large, slow (cold compute 10–20 s) response must never compete with the live
+ *   status/weather queries (see docs/architecture/system-overview.md → "Park page loading
+ *   priority").
  */
 export function useParkBestDaysCalendar({
   continent,
@@ -32,6 +37,8 @@ export function useParkBestDaysCalendar({
   from,
   to,
 }: UseParkBestDaysCalendarParams) {
+  const releasedLast = useLoadLast();
+
   return useQuery<IntegratedCalendarResponse>({
     queryKey: ['park-best-days-calendar', continent, country, city, parkSlug, from, to],
     queryFn: async () => {
@@ -47,8 +54,9 @@ export function useParkBestDaysCalendar({
       return (await response.json()) as IntegratedCalendarResponse;
     },
     // Browser-only, and only once the (client-derived) window is known — `from`/`to` are empty
-    // until the browser clock lands, and we must not fire a `?from=&to=` request.
-    enabled: typeof window !== 'undefined' && from !== '' && to !== '',
+    // until the browser clock lands, and we must not fire a `?from=&to=` request. `releasedLast`
+    // holds the fetch back until every other query on the page has settled (loads-last rule).
+    enabled: typeof window !== 'undefined' && from !== '' && to !== '' && releasedLast,
     staleTime: 30 * 60_000,
     gcTime: 60 * 60_000,
     refetchOnWindowFocus: false,

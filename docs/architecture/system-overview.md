@@ -29,6 +29,24 @@ The park.fan frontend is a **Next.js 16** App Router application with Server Com
 3. **Rendering** → HTML with SEO, JSON-LD, meta tags
 4. **Client** → Hydration, theme, search, favorites
 
+### 4. Park page loading priority (REQUIREMENT)
+
+On the park detail page, the **best-travel-time data ("Beste Reisezeit": best-days
+calendar + historical stats) must ALWAYS load LAST — everything else loads first.**
+
+- These are the largest and slowest park requests (cold backend compute can take
+  10–20 s); they must never compete with the fast, user-visible live data (park
+  status, wait times, weather nowcast, hourly weather) for bandwidth or backend
+  capacity.
+- Enforced centrally by `lib/hooks/use-load-last.ts` (`useLoadLast`), which holds
+  back `useParkBestDaysCalendar` and `useParkHistoricalStats` until every other
+  React Query fetch on the page has settled (plus a safety timeout so the sections
+  can never be starved). **Any new consumer of calendar/stats data on the park page
+  must go through these hooks** so the rule cannot be bypassed (queries with the
+  same key would otherwise start the fetch early).
+- Conversely: weather must load EARLY. The hourly day-view fetch runs in parallel
+  with the nowcast (no waterfall); only its _rendering_ is gated on the nowcast.
+
 ---
 
 ## Routing Structure

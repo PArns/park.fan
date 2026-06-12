@@ -104,7 +104,11 @@ export function ParkBestDaysSection({
   // Calendar window derived from the browser clock (client-only) so the park shell never reads
   // the server clock — keeping it time-independent for the 1-day TTL.
   const { from, to } = getCalendarWindow(useBrowserNow(null));
-  const { data: calendarData, isLoading: calendarLoading } = useParkBestDaysCalendar({
+  // `isPending` (not `isLoading`): both queries start DISABLED — until mounted/the calendar
+  // window is known, and until useLoadLast releases them (best-travel-time loads last, see
+  // the hooks). A disabled query is pending but not fetching, so `isLoading` would be false
+  // and the section would flash its empty fallback during the defer window.
+  const { data: calendarData, isPending: calendarPending } = useParkBestDaysCalendar({
     continent,
     country,
     city,
@@ -112,7 +116,7 @@ export function ParkBestDaysSection({
     from,
     to,
   });
-  const { data: stats, isLoading: statsLoading } = useParkHistoricalStats({
+  const { data: stats, isPending: statsPending } = useParkHistoricalStats({
     continent,
     country,
     city,
@@ -120,7 +124,7 @@ export function ParkBestDaysSection({
   });
 
   // The compact header card has no skeleton placeholder; render nothing until data arrives.
-  if (!mounted || calendarLoading || statsLoading) {
+  if (!mounted || calendarPending || statsPending) {
     return compact ? null : <ParkBestDaysSectionSkeleton />;
   }
 

@@ -84,14 +84,17 @@ export function WeatherCard({
   // liveNowcast is undefined when the hook is disabled (no params) — fall back to the static prop
   const activeNowcast = hasParams ? liveNowcast : nowcast;
 
-  // Detailed day view for today — only when a nowcast exists (parks with live
-  // weather coverage) and we know where the park is. A static `hourly` prop
+  // Detailed day view for today. The fetch starts IMMEDIATELY (in parallel with the
+  // nowcast, not gated on it) so the chart is ready the moment the nowcast lands —
+  // the old nowcast→hourly waterfall delayed the weather card by a full roundtrip.
+  // Rendering below still requires a nowcast (parks with live weather coverage); for
+  // parks without one the single CDN-cached fetch is cheap. A static `hourly` prop
   // (showcases/demos) takes precedence and disables the fetch.
   const { data: fetchedHourly } = useWeatherHourly({
     latitude,
     longitude,
     timezone,
-    enabled: !!activeNowcast && hourly === undefined,
+    enabled: hourly === undefined,
   });
   const activeHourly = hourly !== undefined ? hourly : fetchedHourly;
 

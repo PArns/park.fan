@@ -5,15 +5,33 @@ interface UseWeatherHourlyParams {
   latitude: number | null | undefined;
   longitude: number | null | undefined;
   timezone: string | undefined;
-  /** Gate the fetch (e.g. only when a nowcast exists, so the day view is shown at all). */
+  /** Gate the fetch (e.g. when static `hourly` data is supplied instead). */
   enabled?: boolean;
+}
+
+/** Today's date (YYYY-MM-DD) in the park timezone, from the browser clock. */
+function parkLocalDate(timezone: string): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: timezone,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(Date.now());
 }
 
 /**
  * Today's hour-by-hour forecast (temperature + precipitation) for a park
  * location, via the cached `/api/weather/hourly` Open-Meteo proxy.
- * The server response is cached 15 min, so polling faster is wasted work; the
- * 30-min refetch mainly rolls the chart over to the new day after midnight.
+ *
+ * The explicit `date` param pins every cache layer (CDN + Next data cache) to
+ * the park-local day the CHART will check against ("is this today?"). Without
+ * it, a stale-while-revalidate serve could hand the first visitor of the day
+ * yesterday's response — whose date no longer matches "today", so the day view
+ * silently disappeared on some pages. The date is computed at FETCH time (not
+ * in the query key), so the 30-min refetch rolls the chart over to the new day
+ * after midnight, same as before.
+ *
+ * The server response is cached 15 min, so polling faster is wasted work.
  */
 export function useWeatherHourly({
   latitude,
@@ -26,8 +44,9 @@ export function useWeatherHourly({
   return useQuery<WeatherHourlyToday | null>({
     queryKey: ['weather-hourly', latitude, longitude, timezone],
     queryFn: async () => {
+      const date = parkLocalDate(timezone!);
       const response = await fetch(
-        `/api/weather/hourly?lat=${latitude}&lon=${longitude}&tz=${encodeURIComponent(timezone!)}`,
+        `/api/weather/hourly?lat=${latitude}&lon=${longitude}&tz=${encodeURIComponent(timezone!)}&date=${date}`,
         { cache: 'no-store' }
       );
 

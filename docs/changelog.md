@@ -4,6 +4,39 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Park page load order: weather first, best travel time last
+
+Two loading fixes on the park page, plus a stale-cache fix that made the hourly weather
+day view randomly disappear.
+
+- **Hourly day view sometimes missing (stale-day cache race)**: `/api/weather/hourly`
+  used `forecast_days=1` ("today at upstream fetch time") behind two
+  stale-while-revalidate cache layers (Next data cache `revalidate: 900` + CDN
+  `s-maxage=900`). The Next data cache serves a stale entry (any age) while it
+  revalidates in the background — so the first visitors after midnight could receive
+  YESTERDAY's hours. `WeatherHourlyChart` hides data that isn't "today" in the park
+  timezone, so the chart silently vanished on those pages and reappeared on reload.
+  Fix: the client (`useWeatherHourly`) now sends the park-local date (browser clock,
+  computed at fetch time) as `&date=`, and the route maps it to Open-Meteo
+  `start_date`/`end_date`. Every cache key (CDN request URL + Next data-cache upstream
+  URL) now rolls over with the park-local day, so a stale serve can never deliver the
+  wrong day.
+- **Weather loaded too late (nowcast→hourly waterfall)**: the hourly fetch was gated on
+  the nowcast having arrived. It now starts in parallel on mount; only the _rendering_
+  of the day view still requires a nowcast.
+- **Best travel time ALWAYS loads last (requirement)**: the best-days calendar +
+  historical stats are the page's largest/slowest requests (cold compute 10–20 s) and
+  competed with the live/weather queries. New `useLoadLast` gate
+  (`lib/hooks/use-load-last.ts`) defers `useParkBestDaysCalendar` +
+  `useParkHistoricalStats` until every other React Query fetch on the page has settled
+  (300 ms network-idle grace, 5 s safety timeout so the sections can't be starved).
+  Consumers (`ParkBestDaysSection`, `ParkStatsSection`) now gate their skeletons on
+  `isPending` instead of `isLoading` — a deferred (disabled) query is pending but not
+  fetching, so `isLoading` would have flashed the empty fallback. Requirement
+  documented in [system-overview](architecture/system-overview.md) and `CLAUDE.md`.
+
+---
+
 ## Unreleased – Hourly day view in the weather card
 
 Weather-app style detail view for today inside the park weather card: smoothed temperature
