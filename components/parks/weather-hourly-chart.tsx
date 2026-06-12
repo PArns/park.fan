@@ -386,19 +386,24 @@ export function WeatherHourlyChart({
           className="border-foreground/30 pointer-events-none absolute inset-y-0 border-l border-dashed"
           style={{ left: `${nowPct}%` }}
           aria-hidden="true"
-        >
-          {showNowLabel && (
-            <span className="text-foreground/60 absolute top-0 left-1 text-[9px] leading-none font-medium">
-              {t('nowLabel')}
-            </span>
-          )}
-        </div>
+        />
         {nowTempY != null && (
           <div
             className="ring-background pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400 ring-2"
             style={{ left: `${nowPct}%`, top: `${nowTempY}%` }}
             aria-hidden="true"
           />
+        )}
+        {/* "Now" label — anchored just above the dot on the curve (not glued to the
+            chart's top edge); hidden when it would collide with the max-temp label. */}
+        {showNowLabel && nowTempY != null && (
+          <span
+            className="text-foreground/60 pointer-events-none absolute -translate-x-1/2 -translate-y-full pb-2.5 text-[9px] leading-none font-medium"
+            style={{ left: `${clampX(nowPct)}%`, top: `${nowTempY}%` }}
+            aria-hidden="true"
+          >
+            {t('nowLabel')}
+          </span>
         )}
 
         {/* Min/max temperature labels, anchored to their hours */}

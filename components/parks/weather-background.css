@@ -5,6 +5,30 @@
   border-radius: inherit;
   z-index: 0;
   --cloud: #ffffff;
+  /* Size container so the cloud drift can be a compositor `transform` animation
+     in container-width units (see weather-drift-transform below). */
+  container-type: size;
+}
+
+/* iOS/WebKit: content BEHIND a backdrop-filter (the glass overlay) is only
+   re-snapshotted when the compositor updates — without their own GPU layers
+   the animated scene appears frozen except while scrolling. Promote every
+   animated layer and the glass itself so the scene keeps animating behind
+   the blur. (The sun keeps its layer via will-change only — its pulse
+   keyframes own the transform.) */
+.weather-bg__canvas,
+.weather-bg__clouds,
+.weather-bg__stars,
+.weather-bg__fog,
+.weather-bg__flash,
+.weather-bg__bolt,
+.weather-bg__sun,
+.weather-bg__glass {
+  will-change: transform;
+}
+.weather-bg__canvas,
+.weather-bg__glass {
+  transform: translateZ(0);
 }
 
 /* --- Sky gradients (day) --- */
@@ -178,6 +202,17 @@
   animation: weather-drift var(--duration) linear infinite;
   animation-delay: var(--delay);
 }
+/* Compositor-driven drift where container units exist (Safari 16+/modern):
+   animating `left` runs on the main thread, and on iOS such changes never
+   reach the backdrop-filter snapshot — the clouds only moved while
+   scrolling. `translateX` in cqw units is handled by the compositor and
+   keeps the whole scene repainting behind the glass. */
+@supports (width: 1cqw) {
+  .weather-bg__cloud {
+    left: 0;
+    animation-name: weather-drift-transform;
+  }
+}
 .weather-bg__cloud::before,
 .weather-bg__cloud::after {
   content: '';
@@ -289,6 +324,16 @@ html.dark .weather-bg__glass {
   }
   to {
     left: 118%;
+  }
+}
+/* Same path as weather-drift, but compositor-driven; scale must ride along
+   because keyframes replace the element's base transform. */
+@keyframes weather-drift-transform {
+  from {
+    transform: translateX(-30cqw) scale(var(--scale));
+  }
+  to {
+    transform: translateX(118cqw) scale(var(--scale));
   }
 }
 @keyframes weather-fog {
