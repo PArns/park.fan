@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useLoadLast } from '@/lib/hooks/use-load-last';
 import type { ParkHistoricalStats } from '@/lib/api/types';
 
 interface UseParkHistoricalStatsParams {
@@ -20,6 +21,9 @@ interface UseParkHistoricalStatsParams {
  *   where reading the clock internally (React Query) is forbidden under Cache Components.
  * - 404 = "no displayable stats for this park" → treated as `null`, no retries.
  * - 1h staleTime mirrors the server cache window (data changes daily, not in real time).
+ * - Deferred via `useLoadLast`: feeds the best-travel-time + stats sections, which must
+ *   ALWAYS load last on the park page — never competing with the live status/weather
+ *   queries (see docs/architecture/system-overview.md → "Park page loading priority").
  */
 export function useParkHistoricalStats({
   continent,
@@ -27,6 +31,8 @@ export function useParkHistoricalStats({
   city,
   parkSlug,
 }: UseParkHistoricalStatsParams) {
+  const releasedLast = useLoadLast();
+
   return useQuery<ParkHistoricalStats | null>({
     queryKey: ['park-historical-stats', continent, country, city, parkSlug],
     queryFn: async () => {
@@ -44,7 +50,9 @@ export function useParkHistoricalStats({
 
       return (await response.json()) as ParkHistoricalStats;
     },
-    enabled: typeof window !== 'undefined',
+    // `releasedLast` holds the fetch back until every other query on the page has settled
+    // (loads-last rule).
+    enabled: typeof window !== 'undefined' && releasedLast,
     staleTime: 60 * 60_000,
     gcTime: 90 * 60_000,
     refetchOnWindowFocus: false,

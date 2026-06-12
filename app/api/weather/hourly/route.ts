@@ -11,9 +11,19 @@ import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
  * party) and lets the Next data cache + CDN collapse all visitors of a park onto
  * one upstream call per cache window.
  *
- * Query params: lat, lon (coordinates), tz (IANA timezone for local hour labels).
+ * Query params: lat, lon (coordinates), tz (IANA timezone for local hour labels),
+ * date (optional YYYY-MM-DD — the park-local "today" the client renders).
  * Coordinates are rounded to 2 decimals (~1 km) — plenty for weather, and it
  * canonicalizes the upstream URL for better cache hits.
+ *
+ * The `date` param pins the upstream request to an explicit day
+ * (`start_date`/`end_date`) instead of `forecast_days=1` ("today at upstream
+ * fetch time"). This makes every cache key — CDN (request URL) and Next data
+ * cache (upstream URL) — roll over with the park-local day, so a
+ * stale-while-revalidate serve can never return YESTERDAY's hours for a
+ * request made today. (The chart hides data that isn't "today", so that stale
+ * serve made the hourly day view randomly disappear for the first visitors of
+ * a day.)
  */
 
 interface OpenMeteoHourlyResponse {
@@ -29,6 +39,7 @@ interface OpenMeteoHourlyResponse {
 }
 
 const TZ_PATTERN = /^[A-Za-z0-9_+\-/]{1,64}$/;
+const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -51,12 +62,20 @@ export async function GET(request: NextRequest) {
   if (!TZ_PATTERN.test(tz)) {
     return NextResponse.json({ error: 'Invalid tz' }, { status: 400 });
   }
+  const date = searchParams.get('date');
+  if (date !== null && !DATE_PATTERN.test(date)) {
+    return NextResponse.json({ error: 'Invalid date' }, { status: 400 });
+  }
+
+  // Explicit day when the client sent one (date-stable cache keys, see above);
+  // `forecast_days=1` as back-compat fallback for requests without it.
+  const dayWindow = date ? `&start_date=${date}&end_date=${date}` : `&forecast_days=1`;
 
   const upstream =
     `https://api.open-meteo.com/v1/forecast` +
     `?latitude=${lat.toFixed(2)}&longitude=${lon.toFixed(2)}` +
     `&hourly=temperature_2m,precipitation,precipitation_probability,weather_code,is_day` +
-    `&forecast_days=1&timezone=${encodeURIComponent(tz)}`;
+    `${dayWindow}&timezone=${encodeURIComponent(tz)}`;
 
   try {
     // Open-Meteo refreshes its models roughly hourly; 15 min keeps the curve

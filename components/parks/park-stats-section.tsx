@@ -34,14 +34,17 @@ export function ParkStatsSection({
   // Browser-only query (disabled during SSR). Show the skeleton until mounted + loaded so the
   // static prerender renders the placeholder rather than an empty section.
   const mounted = useMounted();
-  const { data: stats, isLoading } = useParkHistoricalStats({
+  // `isPending` (not `isLoading`): the query starts DISABLED until useLoadLast releases it
+  // (best-travel-time/stats load last). A disabled query is pending but not fetching, so
+  // `isLoading` would be false and the section would vanish during the defer window.
+  const { data: stats, isPending } = useParkHistoricalStats({
     continent,
     country,
     city,
     parkSlug,
   });
 
-  if (!mounted || isLoading) {
+  if (!mounted || isPending) {
     return <ParkStatsSectionSkeleton />;
   }
 
