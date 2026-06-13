@@ -147,6 +147,10 @@ export default function MlPage() {
   const dash = useAdminFetch<MlDashboard>('/api/ml/dashboard');
   const alerts = useAdminFetch<MlAlert[]>('/api/ml/monitoring/alerts');
   const anomalies = useAdminFetch<MlAnomalyStats>('/api/ml/monitoring/anomalies/stats');
+  const tftPerformers = useAdminFetch<{
+    topPerformers: MlPerformer[];
+    bottomPerformers: MlPerformer[];
+  }>('/api/ml/monitoring/tft/performers');
   const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
 
   if (dash.error) return <ErrorPanel message={`ML dashboard: ${dash.error}`} />;
@@ -456,7 +460,7 @@ export default function MlPage() {
         </Section>
       )}
 
-      <Section icon={Sparkles} title="Per-attraction accuracy">
+      <Section icon={Sparkles} title="Per-attraction accuracy (CatBoost hourly)">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <PerformerList
             title="Best predictions"
@@ -470,6 +474,23 @@ export default function MlPage() {
           />
         </div>
       </Section>
+
+      {tftPerformers.data && tftPerformers.data.topPerformers.length > 0 && (
+        <Section icon={Sparkles} title="Per-attraction accuracy (TFT daily)">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <PerformerList
+              title="Best predictions"
+              icon={TrendingUp}
+              performers={tftPerformers.data.topPerformers}
+            />
+            <PerformerList
+              title="Worst predictions"
+              icon={TrendingDown}
+              performers={tftPerformers.data.bottomPerformers}
+            />
+          </div>
+        </Section>
+      )}
 
       <Section icon={Bell} title="Monitoring">
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
