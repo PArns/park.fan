@@ -32,13 +32,7 @@ const LOCALES = ['en', 'de', 'nl', 'fr', 'es', 'it'] as const;
  * path, which is out of scope here). The breadcrumb band previews the final
  * path live while typing.
  */
-export function CategoryCreateModal({
-  open,
-  existing,
-  initial,
-  onClose,
-  onSubmit,
-}: Props) {
+export function CategoryCreateModal({ open, existing, initial, onClose, onSubmit }: Props) {
   return open ? (
     <CategoryForm
       key={initial?.path ?? 'create'}
@@ -78,18 +72,11 @@ function CategoryForm({
   });
 
   const derivedSlug = isEdit ? initialSlug : slugTouched ? slug : slugify(labelEn);
-  const fullPath = isEdit
-    ? initial!.path
-    : parent
-      ? `${parent}/${derivedSlug}`
-      : derivedSlug;
+  const fullPath = isEdit ? initial!.path : parent ? `${parent}/${derivedSlug}` : derivedSlug;
   const existingKeys = new Set(existing.map((c) => c.path));
   const collision = !isEdit && !!derivedSlug && existingKeys.has(fullPath);
   const valid =
-    !!labelEn.trim() &&
-    !!derivedSlug &&
-    /^[a-z0-9][a-z0-9-]*$/.test(derivedSlug) &&
-    !collision;
+    !!labelEn.trim() && !!derivedSlug && /^[a-z0-9][a-z0-9-]*$/.test(derivedSlug) && !collision;
 
   const submit = () => {
     if (!valid) return;
@@ -182,21 +169,18 @@ function CategoryForm({
               </span>
             </span>
           ))}
-          <span className="text-muted-foreground/60 ml-auto shrink-0 text-[10px] font-semibold uppercase tracking-wider">
+          <span className="text-muted-foreground/60 ml-auto shrink-0 text-[10px] font-semibold tracking-wider uppercase">
             {collision ? 'Already exists' : 'Path'}
           </span>
         </div>
 
         <div className="grid gap-3 px-4 py-3">
-          <Field
-            label="Parent category"
-            hint={isEdit ? 'Locked while editing.' : undefined}
-          >
+          <Field label="Parent category" hint={isEdit ? 'Locked while editing.' : undefined}>
             <select
               value={parent}
               disabled={isEdit}
               onChange={(e) => setParent(e.target.value)}
-              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
             >
               <option value="">— top-level —</option>
               {sortedParents.map((c) => {
@@ -218,7 +202,7 @@ function CategoryForm({
                 value={labelEn}
                 onChange={(e) => setLabelEn(e.target.value)}
                 placeholder="Disney World"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
               />
             </Field>
             <Field
@@ -240,14 +224,11 @@ function CategoryForm({
                   setSlug(e.target.value);
                 }}
                 placeholder="disney-world"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
               />
             </Field>
           </div>
-          <Field
-            label="Other locales (optional)"
-            hint="Empty = uses English label as fallback."
-          >
+          <Field label="Other locales (optional)" hint="Empty = uses English label as fallback.">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
               {LOCALES.filter((l) => l !== 'en').map((loc) => (
                 <label key={loc} className="grid gap-1">
@@ -256,11 +237,9 @@ function CategoryForm({
                   </span>
                   <input
                     value={otherLabels[loc] ?? ''}
-                    onChange={(e) =>
-                      setOtherLabels((prev) => ({ ...prev, [loc]: e.target.value }))
-                    }
+                    onChange={(e) => setOtherLabels((prev) => ({ ...prev, [loc]: e.target.value }))}
                     placeholder={labelEn || loc.toUpperCase()}
-                    className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-md border px-2 py-1 text-xs outline-none transition-colors"
+                    className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-md border px-2 py-1 text-xs transition-colors outline-none"
                   />
                 </label>
               ))}

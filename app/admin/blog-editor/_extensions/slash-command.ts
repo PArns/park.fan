@@ -37,9 +37,7 @@ export const SlashCommand = Extension.create<{
           if (!query) return all;
           const q = query.toLowerCase();
           return all.filter(
-            (i) =>
-              i.title.toLowerCase().includes(q) ||
-              i.description.toLowerCase().includes(q)
+            (i) => i.title.toLowerCase().includes(q) || i.description.toLowerCase().includes(q)
           );
         },
         render: () => {

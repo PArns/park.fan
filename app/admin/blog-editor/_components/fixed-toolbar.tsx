@@ -69,10 +69,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
 
   const promptForLink = () => {
     const prev = editor.getAttributes('link').href as string | undefined;
-    const url = window.prompt(
-      'URL (https://… or ref:slug?info / ref:park/ride?full)',
-      prev ?? ''
-    );
+    const url = window.prompt('URL (https://… or ref:slug?info / ref:park/ride?full)', prev ?? '');
     if (url === null) return;
     if (url === '') {
       editor.chain().focus().extendMarkRange('link').unsetLink().run();
@@ -108,13 +105,13 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
             type="button"
             onClick={() => setHeadingOpen((v) => !v)}
             onBlur={() => setTimeout(() => setHeadingOpen(false), 150)}
-            className="hover:bg-accent/50 border-border/40 inline-flex h-8 items-center gap-1 rounded-lg border bg-background/40 px-2.5 text-xs font-semibold transition-all"
+            className="hover:bg-accent/50 border-border/40 bg-background/40 inline-flex h-8 items-center gap-1 rounded-lg border px-2.5 text-xs font-semibold transition-all"
           >
             {blockLabel}
             <ChevronDown className="h-3 w-3 opacity-60" />
           </button>
           {headingOpen && (
-            <div className="border-border/60 bg-popover absolute left-0 top-full z-40 mt-1 min-w-[160px] overflow-hidden rounded-lg border shadow-xl">
+            <div className="border-border/60 bg-popover absolute top-full left-0 z-40 mt-1 min-w-[160px] overflow-hidden rounded-lg border shadow-xl">
               <DropItem
                 onClick={() => {
                   editor.chain().focus().setParagraph().run();
@@ -201,10 +198,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
         >
           <Quote className="h-3.5 w-3.5" />
         </IconBtn>
-        <IconBtn
-          label="Divider"
-          onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        >
+        <IconBtn label="Divider" onClick={() => editor.chain().focus().setHorizontalRule().run()}>
           <Minus className="h-3.5 w-3.5" />
         </IconBtn>
         <IconBtn
@@ -251,7 +245,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
             type="button"
             onClick={() => setWidgetOpen((v) => !v)}
             onBlur={() => setTimeout(() => setWidgetOpen(false), 150)}
-            className="hover:bg-accent/50 border-border/40 inline-flex h-8 items-center gap-1.5 rounded-lg border bg-background/40 px-2.5 text-xs font-semibold transition-all"
+            className="hover:bg-accent/50 border-border/40 bg-background/40 inline-flex h-8 items-center gap-1.5 rounded-lg border px-2.5 text-xs font-semibold transition-all"
             title="Insert a widget code fence"
           >
             <Boxes className="h-3.5 w-3.5" />
@@ -259,7 +253,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
             <ChevronDown className="h-3 w-3 opacity-60" />
           </button>
           {widgetOpen && (
-            <div className="border-border/60 bg-popover absolute right-0 top-full z-40 mt-1 min-w-[220px] overflow-hidden rounded-lg border shadow-xl">
+            <div className="border-border/60 bg-popover absolute top-full right-0 z-40 mt-1 min-w-[220px] overflow-hidden rounded-lg border shadow-xl">
               {WIDGETS.map((w) => {
                 const Icon = w.icon;
                 return (
@@ -275,9 +269,7 @@ export function FixedToolbar({ editor, onEmit }: FixedToolbarProps) {
                     </span>
                     <span className="flex-1">
                       <span className="text-foreground/95 font-semibold">{w.label}</span>
-                      <span className="text-muted-foreground/80 ml-1 text-[10px]">
-                        {w.hint}
-                      </span>
+                      <span className="text-muted-foreground/80 ml-1 text-[10px]">{w.hint}</span>
                     </span>
                   </DropItem>
                 );
@@ -319,8 +311,8 @@ function IconBtn({
       disabled={disabled}
       onClick={onClick}
       className={cn(
-        'flex h-8 w-8 items-center justify-center rounded-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
-        active && 'bg-primary/15 text-primary ring-1 ring-primary/30',
+        'focus-visible:ring-primary/50 flex h-8 w-8 items-center justify-center rounded-lg transition-all focus-visible:ring-2 focus-visible:outline-none',
+        active && 'bg-primary/15 text-primary ring-primary/30 ring-1',
         !active && !disabled && 'hover:bg-accent/50 text-foreground/85 hover:scale-110',
         disabled && 'text-foreground/30 cursor-not-allowed'
       )}
@@ -344,7 +336,7 @@ function LabelBtn({
       type="button"
       title={`Insert ${label}`}
       onClick={onClick}
-      className="hover:bg-accent/50 hover:text-primary text-foreground/85 focus-visible:ring-primary/50 inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-xs font-semibold transition-all hover:scale-105 focus-visible:outline-none focus-visible:ring-2 active:scale-95"
+      className="hover:bg-accent/50 hover:text-primary text-foreground/85 focus-visible:ring-primary/50 inline-flex h-8 items-center gap-1.5 rounded-lg px-2.5 text-xs font-semibold transition-all hover:scale-105 focus-visible:ring-2 focus-visible:outline-none active:scale-95"
     >
       {children}
       {label}

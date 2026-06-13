@@ -93,7 +93,10 @@ export function BlogLanguageNotice({
         <Languages className="text-primary h-3.5 w-3.5 shrink-0" aria-hidden="true" />
         <LocaleFlag locale={betterMatch} />
         <span>{t('languageNotice.available', { language: localeNames[betterMatch] })}</span>
-        <ArrowRight className="text-muted-foreground ml-auto h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+        <ArrowRight
+          className="text-muted-foreground ml-auto h-3.5 w-3.5 shrink-0"
+          aria-hidden="true"
+        />
       </a>
     );
   }

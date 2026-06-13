@@ -60,7 +60,9 @@ export function BlogParkLink({
   // Inline live badge: crowd-level badge while operating, status badge when
   // the park is shut. Real badge components — not recoloured link text.
   const liveBadge = closed ? (
-    park.status ? <ParkStatusBadge status={park.status} className={INLINE_BADGE} /> : null
+    park.status ? (
+      <ParkStatusBadge status={park.status} className={INLINE_BADGE} />
+    ) : null
   ) : park.crowdLevel ? (
     <CrowdLevelBadge level={park.crowdLevel} className={INLINE_BADGE} />
   ) : null;

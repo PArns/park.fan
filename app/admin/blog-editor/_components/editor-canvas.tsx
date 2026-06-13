@@ -79,14 +79,20 @@ export function EditorCanvas({
   const widgetPickRequestRef = useRef<string | null>(null);
   /** Chip rect for whichever surface triggered the image picker — drives
    *  anchored modal positioning instead of always-on-top. */
-  const [imagePickerAnchor, setImagePickerAnchor] = useState<
-    { top: number; bottom: number; left: number; right: number } | null
-  >(null);
+  const [imagePickerAnchor, setImagePickerAnchor] = useState<{
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  } | null>(null);
   /** Trigger rect for the park/ride picker. Set when the picker is opened
    *  from a panel control so it floats near the click instead of pt-[15vh]. */
-  const [parkPickerAnchor, setParkPickerAnchor] = useState<
-    { top: number; bottom: number; left: number; right: number } | null
-  >(null);
+  const [parkPickerAnchor, setParkPickerAnchor] = useState<{
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+  } | null>(null);
   /** Render-time mirror of replaceImagePosRef.current so the ImagePicker can
    *  read `replaceMode` without us reading a ref during render (React 19
    *  forbids that — eslint-plugin-react-hooks/refs catches it). */
@@ -167,8 +173,7 @@ export function EditorCanvas({
         // `ref:/parks/<…>` form (and any plain absolute path). Whitelist the
         // protocols we serialise into markdown so setLink({href}) actually
         // sticks. Inline scheme defangs `javascript:` and `data:` URIs.
-        isAllowedUri: (url) =>
-          /^(ref:|park:|attraction:|https?:\/\/|mailto:|\/)/.test(url),
+        isAllowedUri: (url) => /^(ref:|park:|attraction:|https?:\/\/|mailto:|\/)/.test(url),
         HTMLAttributes: { rel: 'noopener' },
       }),
       // `inline: true` lets the image live INSIDE a paragraph alongside
@@ -253,8 +258,9 @@ export function EditorCanvas({
       // Theme restoration after a load is not a user edit — swallowing it
       // here keeps freshly-opened posts clean (see applyingThemesRef).
       if (applyingThemesRef.current) return;
-      const raw = (e.storage as unknown as { markdown: { getMarkdown: () => string } })
-        .markdown.getMarkdown();
+      const raw = (
+        e.storage as unknown as { markdown: { getMarkdown: () => string } }
+      ).markdown.getMarkdown();
       // tiptap-markdown drops table-level attrs on the floor — we re-inject
       // the theme as a leading `<!--tbl-theme: …-->` comment so the round
       // trip survives the save/load cycle.
@@ -420,10 +426,7 @@ export function EditorCanvas({
     window.addEventListener('parkfan-park-picker-request', onWidgetPickRequest as EventListener);
     return () => {
       window.removeEventListener('parkfan-image-pick-request', onImageRequest as EventListener);
-      window.removeEventListener(
-        'parkfan-replace-ref-request',
-        onReplaceRequest as EventListener
-      );
+      window.removeEventListener('parkfan-replace-ref-request', onReplaceRequest as EventListener);
       window.removeEventListener(
         'parkfan-park-picker-request',
         onWidgetPickRequest as EventListener
@@ -452,9 +455,7 @@ export function EditorCanvas({
           }
         }}
         onDrop={(e) => {
-          const files = Array.from(e.dataTransfer.files).filter((f) =>
-            f.type.startsWith('image/')
-          );
+          const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith('image/'));
           if (!files.length) return;
           e.preventDefault();
           const view = editorRef.current?.view;
@@ -510,8 +511,7 @@ export function EditorCanvas({
                 editor.state.doc,
                 req.pos,
                 (n) =>
-                  n.type.name === 'image' &&
-                  (!req.src || String(n.attrs.src ?? '') === req.src)
+                  n.type.name === 'image' && (!req.src || String(n.attrs.src ?? '') === req.src)
               );
               if (pos === null) {
                 replaceImagePosRef.current = null;
@@ -525,9 +525,7 @@ export function EditorCanvas({
               // top" report. setNodeAttribute alone keeps the viewport stable.
               const prevNode = editor.state.doc.nodeAt(pos);
               const prevAlt =
-                prevNode && prevNode.type.name === 'image'
-                  ? String(prevNode.attrs.alt ?? '')
-                  : '';
+                prevNode && prevNode.type.name === 'image' ? String(prevNode.attrs.alt ?? '') : '';
               editor
                 .chain()
                 .command(({ tr }) => {
@@ -551,15 +549,11 @@ export function EditorCanvas({
                     alt: altParts[0] ?? '',
                     caption: altParts[1] ?? '',
                     align:
-                      altParts[2] === 'left' ||
-                      altParts[2] === 'right' ||
-                      altParts[2] === 'wide'
+                      altParts[2] === 'left' || altParts[2] === 'right' || altParts[2] === 'wide'
                         ? altParts[2]
                         : 'center',
                     size:
-                      altParts[3] === 'small' ||
-                      altParts[3] === 'medium' ||
-                      altParts[3] === 'large'
+                      altParts[3] === 'small' || altParts[3] === 'medium' || altParts[3] === 'large'
                         ? altParts[3]
                         : undefined,
                     rect: imagePickerAnchor ?? undefined,

@@ -102,8 +102,7 @@ function collectGalleryFolders() {
     for (const entry of entries) {
       if (!entry.isDirectory()) continue;
       const sub = resolve(dir, entry.name);
-      const relFromPublic =
-        '/' + relative(resolve(rootDir, 'public'), sub).split(sep).join('/');
+      const relFromPublic = '/' + relative(resolve(rootDir, 'public'), sub).split(sep).join('/');
       // The blog-resolver looks up by leading-slash relative path; index both
       // "/blog/images/foo" and "/blog/images/foo/" for safety.
       const images = listImages(sub);

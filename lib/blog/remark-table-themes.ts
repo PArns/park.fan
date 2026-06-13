@@ -32,7 +32,12 @@ export function remarkTableThemes(): (tree: MdRoot) => void {
       const theme = m[1];
       // Walk forward past any blank html nodes to find the next table.
       let j = i + 1;
-      while (j < children.length && children[j].type === 'html' && !(children[j].value ?? '').trim()) j++;
+      while (
+        j < children.length &&
+        children[j].type === 'html' &&
+        !(children[j].value ?? '').trim()
+      )
+        j++;
       const next = children[j];
       if (next && next.type === 'table') {
         next.data = next.data ?? {};

@@ -54,10 +54,7 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   }, [entries]);
 
   return (
-    <nav
-      aria-label={label}
-      className="border-border/60 bg-muted/30 rounded-lg border p-4 text-sm"
-    >
+    <nav aria-label={label} className="border-border/60 bg-muted/30 rounded-lg border p-4 text-sm">
       <p className="text-muted-foreground mb-2 flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
         <List className="h-3.5 w-3.5" aria-hidden="true" />
         {title}

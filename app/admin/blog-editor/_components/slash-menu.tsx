@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  forwardRef,
-  useEffect,
-  useImperativeHandle,
-  useState,
-  type CSSProperties,
-} from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState, type CSSProperties } from 'react';
 import {
   AlertTriangle,
   Camera,
@@ -40,7 +34,10 @@ export interface SlashItem {
   icon: typeof Code;
   group: 'Text' | 'Embeds' | 'park.fan' | 'Widgets';
   /** Called with the editor to perform the actual insertion. */
-  command: (ctx: { editor: import('@tiptap/core').Editor; range: { from: number; to: number } }) => void;
+  command: (ctx: {
+    editor: import('@tiptap/core').Editor;
+    range: { from: number; to: number };
+  }) => void;
 }
 
 export interface SlashMenuHandle {
@@ -103,7 +100,7 @@ export const SlashMenu = forwardRef<SlashMenuHandle, SlashMenuProps>(function Sl
     <div className="border-border/60 bg-popover text-popover-foreground editor-scroll max-h-[60vh] w-72 overflow-y-auto rounded-xl border p-1 shadow-xl">
       {Array.from(groups.entries()).map(([group, list]) => (
         <div key={group}>
-          <div className="text-muted-foreground mt-2 mb-1 px-2 text-[10px] font-semibold uppercase tracking-wider first:mt-0">
+          <div className="text-muted-foreground mt-2 mb-1 px-2 text-[10px] font-semibold tracking-wider uppercase first:mt-0">
             {group}
           </div>
           {list.map((it) => {
@@ -127,10 +124,8 @@ export const SlashMenu = forwardRef<SlashMenuHandle, SlashMenuProps>(function Sl
                   <Icon className="h-3.5 w-3.5" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-sm font-medium leading-tight">{it.title}</div>
-                  <div className="text-muted-foreground text-xs leading-snug">
-                    {it.description}
-                  </div>
+                  <div className="text-sm leading-tight font-medium">{it.title}</div>
+                  <div className="text-muted-foreground text-xs leading-snug">{it.description}</div>
                 </div>
               </button>
             );

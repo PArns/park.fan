@@ -4,11 +4,7 @@ import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
 import type { Root } from 'react-dom/client';
 import { mountInlineBadge } from './inline-badge';
-import {
-  createResolveCache,
-  eventToElement,
-  pickClosestByCoords,
-} from '../_lib/chip-utils';
+import { createResolveCache, eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
 
 /**
  * Tracks the React roots we mount inside widget DOM, keyed by the container
@@ -190,8 +186,7 @@ function buildSpotlightDOM(span: RefSpan): HTMLElement {
   const kindLabel = document.createElement('div');
   kindLabel.className = 'ref-preview-spotlight__label';
   if (entry && entry.state === 'ready' && entry.data.found) {
-    kindLabel.textContent =
-      entry.data.kind === 'ride' ? 'Attraction in focus' : 'Park spotlight';
+    kindLabel.textContent = entry.data.kind === 'ride' ? 'Attraction in focus' : 'Park spotlight';
   } else {
     kindLabel.textContent = isRideHint ? 'Attraction in focus' : 'Park spotlight';
   }
@@ -328,24 +323,20 @@ function buildDecorations(doc: PMNode, spans: RefSpan[]): DecorationSet {
     const optKey = [...span.options].sort().join(',');
     const full = span.options.has('full');
     decorations.push(
-      Decoration.widget(
-        span.to,
-        () => (full ? buildSpotlightDOM(span) : buildBadgeDOM(span)),
-        {
-          side: 1,
-          key: `ref-preview:${full ? 'spot' : 'inline'}:${span.refValue}:${optKey}:${stateKey}`,
-          // Unmount the React root that mountInlineBadge() created so we don't
-          // leak it across decoration rebuilds. `queueMicrotask` defers the
-          // unmount past the current render commit (otherwise React warns).
-          destroy(node) {
-            const el = node as HTMLElement;
-            const root = badgeRoots.get(el);
-            if (!root) return;
-            badgeRoots.delete(el);
-            queueMicrotask(() => root.unmount());
-          },
-        }
-      )
+      Decoration.widget(span.to, () => (full ? buildSpotlightDOM(span) : buildBadgeDOM(span)), {
+        side: 1,
+        key: `ref-preview:${full ? 'spot' : 'inline'}:${span.refValue}:${optKey}:${stateKey}`,
+        // Unmount the React root that mountInlineBadge() created so we don't
+        // leak it across decoration rebuilds. `queueMicrotask` defers the
+        // unmount past the current render commit (otherwise React warns).
+        destroy(node) {
+          const el = node as HTMLElement;
+          const root = badgeRoots.get(el);
+          if (!root) return;
+          badgeRoots.delete(el);
+          queueMicrotask(() => root.unmount());
+        },
+      })
     );
   }
   return DecorationSet.create(doc, decorations);
@@ -436,9 +427,7 @@ export const RefPreview = Extension.create({
               // back-to-back same-park inline badges that bracket a ?full
               // spotlight would still match the spotlight as a candidate and
               // its coord could end up closer.
-              const isSpotlightChip = chip.classList.contains(
-                'ref-preview-spotlight'
-              );
+              const isSpotlightChip = chip.classList.contains('ref-preview-spotlight');
               const candidates = (state?.spans ?? []).filter((s) => {
                 if (s.refValue !== dataRef) return false;
                 const isFull = s.options.has('full');

@@ -38,7 +38,7 @@ export function LocaleTabs({
 }: LocaleTabsProps) {
   return (
     <div className="border-border/60 bg-card/40 mb-4 flex flex-wrap items-center gap-2 rounded-2xl border p-3 backdrop-blur-sm">
-      <span className="text-muted-foreground mr-1 text-[10px] font-semibold uppercase tracking-wider">
+      <span className="text-muted-foreground mr-1 text-[10px] font-semibold tracking-wider uppercase">
         Locales
       </span>
       {locales.map((l) => {
@@ -61,7 +61,7 @@ export function LocaleTabs({
                 isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
               )}
             >
-              <span className="uppercase tracking-wider">{l}</span>
+              <span className="tracking-wider uppercase">{l}</span>
               <span
                 className={cn(
                   'h-1.5 w-1.5 rounded-full',
@@ -76,9 +76,7 @@ export function LocaleTabs({
               title={isSource ? 'Source language' : 'Set as source language'}
               className={cn(
                 'inline-flex items-center px-1.5 transition-colors',
-                isSource
-                  ? 'text-amber-400'
-                  : 'text-muted-foreground/40 hover:text-muted-foreground'
+                isSource ? 'text-amber-400' : 'text-muted-foreground/40 hover:text-muted-foreground'
               )}
             >
               <Star className={cn('h-3 w-3', isSource && 'fill-current')} />

@@ -15,13 +15,7 @@ import type { EditorView } from '@tiptap/pm/view';
  * node. The save / load helpers in `_lib/table-theme-md.ts` keep both ends
  * of the round-trip in sync.
  */
-export type TableTheme =
-  | 'default'
-  | 'primary'
-  | 'accent'
-  | 'success'
-  | 'warning'
-  | 'danger';
+export type TableTheme = 'default' | 'primary' | 'accent' | 'success' | 'warning' | 'danger';
 
 export const TABLE_THEMES: readonly TableTheme[] = [
   'default',

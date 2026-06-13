@@ -46,12 +46,7 @@ export function parseImageAlt(raw: string): ParsedImageAlt {
 export function serialiseImageAlt(parts: ParsedImageAlt): string {
   // Trim trailing empty segments so we don't emit `Alt | | center` when the
   // caption is empty. Always keep at least `alt`.
-  const out: string[] = [
-    parts.alt,
-    parts.caption ?? '',
-    parts.align,
-    parts.size ?? '',
-  ];
+  const out: string[] = [parts.alt, parts.caption ?? '', parts.align, parts.size ?? ''];
   while (out.length > 1 && out[out.length - 1] === '') out.pop();
   return out.join(' | ').replace(/\s+\|/g, ' |').replace(/\|\s+/g, '| ');
 }
@@ -166,9 +161,7 @@ export const ImagePreview = Extension.create({
             return imagePreviewKey.getState(state)?.decorations;
           },
           handleClick(view, _clickPos, event) {
-            const img = eventToElement(event)?.closest('img') as
-              | HTMLImageElement
-              | null;
+            const img = eventToElement(event)?.closest('img') as HTMLImageElement | null;
             if (!img) return false;
             // Find the span matching this <img> by src. When the same image is
             // used twice, disambiguate by hypot(Δx, Δy) so the closer instance

@@ -51,6 +51,7 @@ im französischen Bereich. Silver Stars typische Spitzenstunde lag im
 Sommer-Zeitfenster 2023 im Schnitt bei **52 Minuten**.
 
 ```glossary-widget slug=hyper-coaster
+
 ```
 
 Im vergleichbaren Sommer-Zeitfenster 2025 sind zwei Dinge passiert:
@@ -95,12 +96,14 @@ Wenn du flexibel bist, _welcher Tag_ es wird, nimmt dir der Crowd-Kalender
 die Entscheidung ab — hier die ruhigsten kommenden Tage:
 
 ```best-days-widget slug=europa-park
+
 ```
 
 Und so liegt alles zueinander. Voltron verankert den Kroatien-Bereich im
 Norden, Silver Star liegt unten im französischen Viertel:
 
 ```map-widget slug=europa-park
+
 ```
 
 ## Ist sie die beste Achterbahn Europas?
@@ -121,12 +124,14 @@ Check die Vorhersage, bevor du dich auf ein Datum festlegst — ein verregneter
 Wochentag schlägt beim Anstehen oft den sonnigen Samstag:
 
 ```weather-widget slug=europa-park
+
 ```
 
 Und die Langzeit-Zahlen, falls du deine Entscheidungen datenbasiert magst —
 typische Wartezeiten nach Monat und Wochentag über die letzten zwei Saisons:
 
 ```stats-widget slug=europa-park
+
 ```
 
 ## Voltron im Video

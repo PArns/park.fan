@@ -35,8 +35,8 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
     <div
       className={
         inRow
-          ? 'not-prose grid h-full w-full gap-3 [grid-template-rows:auto_auto_1fr_auto]'
-          : 'not-prose my-8 grid w-full gap-3 [grid-template-rows:auto_auto_1fr_auto] sm:w-1/2 lg:w-1/3'
+          ? 'not-prose grid h-full w-full [grid-template-rows:auto_auto_1fr_auto] gap-3'
+          : 'not-prose my-8 grid w-full [grid-template-rows:auto_auto_1fr_auto] gap-3 sm:w-1/2 lg:w-1/3'
       }
     >
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">

@@ -20,11 +20,7 @@ interface BlogPostHeroProps {
  * separator + meta). The cover image is rendered separately as a fixed
  * ParkBackground in the page route.
  */
-export function BlogPostHero({
-  post,
-  currentLocale,
-  availableTranslations,
-}: BlogPostHeroProps) {
+export function BlogPostHero({ post, currentLocale, availableTranslations }: BlogPostHeroProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
   const { frontmatter, readingTimeMinutes, isFallback, loadedLocale } = post;
@@ -40,7 +36,7 @@ export function BlogPostHero({
         </AvatarFallback>
       </Avatar>
       <div className="text-sm leading-tight">
-        <div className="text-foreground font-semibold underline-offset-4 transition-colors [.group:hover_&]:text-primary [.group:hover_&]:underline">
+        <div className="text-foreground [.group:hover_&]:text-primary font-semibold underline-offset-4 transition-colors [.group:hover_&]:underline">
           {author.name}
         </div>
         {author.bio && (

@@ -1,10 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { GlassCard } from '@/components/common/glass-card';
-import {
-  getAttractionBackgroundImage,
-  getParkBackgroundImage,
-} from '@/lib/utils/park-assets';
+import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
@@ -50,8 +47,8 @@ export async function BlogAttractionWidget({
     <div
       className={
         inRow
-          ? 'not-prose grid h-full w-full gap-3 [grid-template-rows:auto_auto_1fr_auto]'
-          : 'not-prose my-8 grid w-full gap-3 [grid-template-rows:auto_auto_1fr_auto] sm:w-1/2 lg:w-1/3'
+          ? 'not-prose grid h-full w-full [grid-template-rows:auto_auto_1fr_auto] gap-3'
+          : 'not-prose my-8 grid w-full [grid-template-rows:auto_auto_1fr_auto] gap-3 sm:w-1/2 lg:w-1/3'
       }
     >
       <h3 className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
@@ -72,4 +69,3 @@ export async function BlogAttractionWidget({
     </div>
   );
 }
-

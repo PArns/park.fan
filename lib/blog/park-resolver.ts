@@ -129,8 +129,7 @@ export const resolveAttraction = cache(
     // Derive the inline-displayable live values once, server-side, so the
     // client link component doesn't need to re-parse the queue array.
     const standby = detail?.queues?.find((q) => q.queueType === 'STANDBY');
-    const currentWaitTime =
-      standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null;
+    const currentWaitTime = standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null;
     // Park closed ⇒ ride closed. Otherwise prefer the standby queue's own
     // status, then the attraction-level status.
     let status: AttractionStatus | undefined;
@@ -192,10 +191,7 @@ function prettifyName(slug: string): string {
  */
 export function parseRefKey(value: string): { kind: 'park' | 'ride'; key: string } {
   if (value.startsWith('/parks/')) {
-    const parts = value
-      .slice('/parks/'.length)
-      .split('/')
-      .filter(Boolean);
+    const parts = value.slice('/parks/'.length).split('/').filter(Boolean);
     // [continent, country, city, parkSlug, rideSlug?]
     if (parts.length === 4) return { kind: 'park', key: parts[3] };
     if (parts.length >= 5) return { kind: 'ride', key: `${parts[3]}/${parts[4]}` };
@@ -232,8 +228,7 @@ export function extractInlineRefs(markdown: string): {
   }
 
   // 2. Widget fences — ```park-widget … ``` / ```attraction-widget … ```
-  const widgetRe =
-    /^```([a-z]+-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
+  const widgetRe = /^```([a-z]+-widget)(?:[ \t]+([^\n`]+))?\n([\s\S]*?)\n?```$/gm;
   while ((match = widgetRe.exec(markdown)) !== null) {
     const name = match[1];
     const attrSource = `${match[2] ?? ''}\n${match[3] ?? ''}`;
@@ -252,10 +247,7 @@ export function extractInlineRefs(markdown: string): {
 
 function extractAttr(source: string, key: string): string | undefined {
   // Accepts `key=value`, `key="value"`, `key: value` formats.
-  const re = new RegExp(
-    `\\b${key}\\s*[:=]\\s*(?:"([^"]*)"|'([^']*)'|([^\\s]+))`,
-    'i'
-  );
+  const re = new RegExp(`\\b${key}\\s*[:=]\\s*(?:"([^"]*)"|'([^']*)'|([^\\s]+))`, 'i');
   const m = source.match(re);
   if (!m) return undefined;
   return m[1] ?? m[2] ?? m[3];

@@ -74,12 +74,12 @@ name/bio/url in every post. Each author also gets a profile page at
 ```md
 ---
 name: Patrick Arns
-role: Gründer von park.fan          # short title, shown under the name
+role: Gründer von park.fan # short title, shown under the name
 location: Deutschland
-url: https://arns.dev               # primary website / rel=author
+url: https://arns.dev # primary website / rel=author
 avatar: /blog/images/authors/patrick.jpg
 bio: 'One-line bio for post headers and cards.'
-links:                              # rendered as pills on the profile page
+links: # rendered as pills on the profile page
   website: https://arns.dev
   github: https://github.com/PArns
   x: https://x.com/…
@@ -135,10 +135,10 @@ Use a normal Markdown link with a `ref:` href. **Park vs. ride is detected by a
 slash** in the key.
 
 ```md
-[Europa-Park](ref:europa-park)                      → inline park link
-[Voltron](ref:europa-park/voltron-nevera…)          → inline ride link
-[Europa-Park](ref:europa-park?full)                 → full park spotlight card
-[Voltron](ref:europa-park/voltron-nevera…?full)     → full ride spotlight card
+[Europa-Park](ref:europa-park) → inline park link
+[Voltron](ref:europa-park/voltron-nevera…) → inline ride link
+[Europa-Park](ref:europa-park?full) → full park spotlight card
+[Voltron](ref:europa-park/voltron-nevera…?full) → full ride spotlight card
 ```
 
 - The key is the **park slug**, or **`parkSlug/rideSlug`** for a ride.
@@ -153,7 +153,7 @@ slash** in the key.
 | `full` | Render the full spotlight card instead of an inline link. |
 | `bare` | Inline link **without** the short info annotation.        |
 | `info` | Force the inline annotation on (default for parks/rides). |
-| `long` | Park links show the longer "city, country" form.         |
+| `long` | Park links show the longer "city, country" form.          |
 
 > `park:slug` and `attraction:parkSlug/slug` are kept as **aliases** of `ref:`
 > and accept the same options, but new posts should use `ref:`.
@@ -193,19 +193,20 @@ attributes on the info line (`key=value`, `key: value` or `key="value"`).
 
 ````md
 ```weather-widget slug=europa-park
+
 ```
 ````
 
-| Widget               | Attributes                         | Renders                                  |
-| -------------------- | ---------------------------------- | ---------------------------------------- |
-| `weather-widget`     | `slug`                             | Live weather + nowcast for a park.       |
-| `best-days-widget`   | `slug`                             | Quietest upcoming days (crowd calendar). |
-| `stats-widget`       | `slug`                             | Typical waits by month / weekday.        |
-| `map-widget`         | `slug`                             | Interactive park map.                    |
-| `glossary-widget`    | `slug` (a.k.a. `term` / `id`)      | Full glossary definition inline.         |
-| `gallery-widget`     | `folder` (or line-based body)      | Photo gallery (see below).               |
-| `park-widget`        | `slug`                             | Park spotlight card — use `ref:…?full`.  |
-| `attraction-widget`  | `parkSlug`, `slug`                 | Ride spotlight card — use `ref:…?full`.  |
+| Widget              | Attributes                    | Renders                                  |
+| ------------------- | ----------------------------- | ---------------------------------------- |
+| `weather-widget`    | `slug`                        | Live weather + nowcast for a park.       |
+| `best-days-widget`  | `slug`                        | Quietest upcoming days (crowd calendar). |
+| `stats-widget`      | `slug`                        | Typical waits by month / weekday.        |
+| `map-widget`        | `slug`                        | Interactive park map.                    |
+| `glossary-widget`   | `slug` (a.k.a. `term` / `id`) | Full glossary definition inline.         |
+| `gallery-widget`    | `folder` (or line-based body) | Photo gallery (see below).               |
+| `park-widget`       | `slug`                        | Park spotlight card — use `ref:…?full`.  |
+| `attraction-widget` | `parkSlug`, `slug`            | Ride spotlight card — use `ref:…?full`.  |
 
 `park-widget` / `attraction-widget` still work but are **superseded by
 `ref:slug?full`** — prefer the `ref:` form for new posts.
@@ -218,6 +219,7 @@ alt/caption/credit:
 
 ````md
 ```gallery-widget folder=/blog/images/orlando-2026 heading="The trip in photos"
+
 ```
 ````
 

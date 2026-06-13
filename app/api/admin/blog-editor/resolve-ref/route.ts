@@ -1,14 +1,7 @@
 import 'server-only';
 import { NextResponse, type NextRequest } from 'next/server';
-import {
-  parseRefKey,
-  resolveAttraction,
-  resolvePark,
-} from '@/lib/blog/park-resolver';
-import {
-  getAttractionBackgroundImage,
-  getParkBackgroundImage,
-} from '@/lib/utils/park-assets';
+import { parseRefKey, resolveAttraction, resolvePark } from '@/lib/blog/park-resolver';
+import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { requireAdminPass } from '@/lib/admin/verify-pass';
 
 /**
@@ -70,7 +63,6 @@ export async function GET(req: NextRequest) {
     waitTime: attraction.currentWaitTime ?? null,
     crowdLevel: attraction.crowdLevel ?? null,
     backgroundImage:
-      getAttractionBackgroundImage(parkSlug, attractionSlug) ??
-      getParkBackgroundImage(parkSlug),
+      getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug),
   });
 }

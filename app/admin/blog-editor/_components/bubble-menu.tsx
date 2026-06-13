@@ -2,13 +2,7 @@
 
 import { BubbleMenu } from '@tiptap/react/menus';
 import type { Editor } from '@tiptap/core';
-import {
-  Bold,
-  Code,
-  Italic,
-  Link as LinkIcon,
-  Strikethrough,
-} from 'lucide-react';
+import { Bold, Code, Italic, Link as LinkIcon, Strikethrough } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface EditorBubbleMenuProps {

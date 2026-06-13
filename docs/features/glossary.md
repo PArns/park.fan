@@ -36,17 +36,24 @@ The segment map lives in `lib/glossary/translations.ts` as `GLOSSARY_SEGMENTS`.
 
 ## Terms & Categories
 
-Currently **90 terms** across 7 categories:
+Currently **237 terms**. Categories are defined in `lib/glossary/types.ts` (`GlossaryCategory`); the ones in active use:
 
-| Category           | Description                                |
-| ------------------ | ------------------------------------------ |
-| `wait-times`       | Queuing systems, express passes, etc.      |
-| `crowd-levels`     | Crowd forecasting, peak days, calendars    |
-| `park-operations`  | Refurbishments, capacity, events           |
-| `planning`         | Rope drop, ERT, touring plans, passes      |
-| `attractions`      | Ride types, animatronics, height limits    |
-| `coasters`         | Coaster types and manufacturers            |
-| `coaster-elements` | Track elements (inversions, airtime, etc.) |
+| Category           | Description                                            |
+| ------------------ | ------------------------------------------------------ |
+| `coaster-elements` | Track elements (inversions, airtime, etc.)             |
+| `attractions`      | Ride types, dark-ride tech, height limits              |
+| `coasters`         | Coaster types (hyper, giga, dive, wild mouse, …)       |
+| `manufacturers`    | Ride builders (Mack, Intamin, B&M, Vekoma, …)          |
+| `planning`         | Rope drop, ERT, touring plans, passes, AI metrics      |
+| `wait-times`       | Queuing systems, express passes, etc.                  |
+| `ride-experience`  | Enthusiast jargon (GP, credit, near-miss, Mackprodukt) |
+| `park-operations`  | Refurbishments, capacity, dispatch, events             |
+| `crowd-levels`     | Crowd forecasting, peak days, calendars                |
+| `dining`           | Quick/table service, reservations, mobile ordering     |
+| `shopping`         | Souvenirs, merchandise, park exclusives                |
+| `logistics`        | Chicken exit, in-show exit, e-stop                     |
+
+> The `ai` category exists in the type union but is currently unused.
 
 ## Adding a New Term
 

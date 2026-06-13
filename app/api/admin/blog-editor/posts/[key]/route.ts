@@ -40,8 +40,7 @@ function normaliseWidgetFences(md: string): string {
       if (!inlineAttrs) return full;
       // Split `key=value` pairs (with optional quoted values) and emit each on
       // its own `key: value` line inside the body.
-      const re =
-        /([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))/g;
+      const re = /([a-zA-Z][a-zA-Z0-9_-]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))/g;
       const lines: string[] = [];
       let m: RegExpExecArray | null;
       while ((m = re.exec(inlineAttrs)) !== null) {
@@ -60,10 +59,7 @@ function normaliseWidgetFences(md: string): string {
  * payload. Keys are validated against a slug-shape regex so we can't be
  * tricked into reading outside content/blog via `../`.
  */
-export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ key: string }> }
-) {
+export async function GET(req: NextRequest, { params }: { params: Promise<{ key: string }> }) {
   const unauthorized = await requireAdminPass(req);
   if (unauthorized) return unauthorized;
 

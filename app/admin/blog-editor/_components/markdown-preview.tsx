@@ -50,7 +50,7 @@ export function MarkdownPreview({ value, onChange }: MarkdownPreviewProps) {
   return (
     <div className="border-border/60 bg-background/40 flex h-[calc(100vh-12rem)] flex-col overflow-hidden rounded-2xl border backdrop-blur-sm">
       <div className="border-border/60 flex items-center justify-between border-b px-4 py-2.5">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           .md source {onChange && '· editable'}
         </div>
         <button
@@ -71,7 +71,7 @@ export function MarkdownPreview({ value, onChange }: MarkdownPreviewProps) {
         <div
           ref={gutterRef}
           aria-hidden
-          className="text-muted-foreground/50 border-border/40 select-none overflow-hidden border-r px-2 py-3 text-right"
+          className="text-muted-foreground/50 border-border/40 overflow-hidden border-r px-2 py-3 text-right select-none"
           style={{
             // Keep the gutter exactly in sync with the textarea's per-line
             // metrics so the numbers line up at every scroll position.

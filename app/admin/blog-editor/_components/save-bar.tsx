@@ -17,7 +17,9 @@ interface SaveBarProps {
  */
 export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<{ url?: string; message?: string; ok: boolean } | null>(null);
+  const [result, setResult] = useState<{ url?: string; message?: string; ok: boolean } | null>(
+    null
+  );
 
   const handle = async () => {
     setLoading(true);
@@ -95,7 +97,7 @@ export function SaveBar({ onSave, disabled, disabledReason }: SaveBarProps) {
             'inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold shadow-lg transition-all',
             disabled
               ? 'bg-muted text-muted-foreground cursor-not-allowed shadow-none'
-              : 'from-primary to-primary/80 text-primary-foreground bg-gradient-to-br shadow-primary/20 hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.99]'
+              : 'from-primary to-primary/80 text-primary-foreground shadow-primary/20 hover:shadow-primary/40 bg-gradient-to-br hover:scale-[1.02] active:scale-[0.99]'
           )}
         >
           {loading ? (

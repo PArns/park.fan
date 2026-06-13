@@ -24,9 +24,7 @@ export interface DraftSnapshot {
 
 /** Does the snapshot contain anything worth restoring? */
 export function isMeaningfulSnapshot(s: DraftSnapshot): boolean {
-  return Object.values(s.drafts).some(
-    (d) => !!d && (!!d.fm.title.trim() || !!d.body.trim())
-  );
+  return Object.values(s.drafts).some((d) => !!d && (!!d.fm.title.trim() || !!d.body.trim()));
 }
 
 export function loadDraftSnapshot(): DraftSnapshot | null {

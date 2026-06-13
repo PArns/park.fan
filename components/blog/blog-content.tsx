@@ -1,11 +1,4 @@
-import {
-  Children,
-  cloneElement,
-  Fragment,
-  Suspense,
-  isValidElement,
-  type ReactNode,
-} from 'react';
+import { Children, cloneElement, Fragment, Suspense, isValidElement, type ReactNode } from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
@@ -13,13 +6,7 @@ import rehypeHighlight from 'rehype-highlight';
 import type { Locale } from '@/i18n/config';
 import { remarkTableThemes } from '@/lib/blog/remark-table-themes';
 import { remarkCallouts, type CalloutType } from '@/lib/blog/remark-callouts';
-import {
-  AlertTriangle,
-  Info,
-  Lightbulb,
-  MessageSquareWarning,
-  OctagonAlert,
-} from 'lucide-react';
+import { AlertTriangle, Info, Lightbulb, MessageSquareWarning, OctagonAlert } from 'lucide-react';
 import {
   extractInlineRefs,
   parseRefKey,
@@ -29,10 +16,7 @@ import {
   type ResolvedAttraction,
   type ResolvedPark,
 } from '@/lib/blog/park-resolver';
-import {
-  getAttractionBackgroundImage,
-  getParkBackgroundImage,
-} from '@/lib/utils/park-assets';
+import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossaryInjectTerm } from '@/components/glossary/glossary-inject-term';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
@@ -195,8 +179,7 @@ function resolveImageAlign(altSegment: string | undefined, src: string): BlogIma
  * "Live Wait Times" never matches text like `live wait times`,
  * `live wait\ntimes` or `live wait​times`.
  */
-const WHITESPACE_NORMALIZE_RE =
-  /(?:\s|​|‌|‍|⁠)+/g;
+const WHITESPACE_NORMALIZE_RE = /(?:\s|​|‌|‍|⁠)+/g;
 
 /**
  * Replace glossary-term occurrences in a plain string with
@@ -344,10 +327,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const attractionBackgroundMap = new Map<string, string | null>();
   for (const [ref] of attractionMap) {
     const [parkSlug, attractionSlug] = ref.split('/');
-    attractionBackgroundMap.set(
-      ref,
-      getAttractionBackgroundImage(parkSlug, attractionSlug)
-    );
+    attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
   }
 
   /**
@@ -361,9 +341,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       return renderGlossaryString(node, glossaryTerms, usedGlossaryTerms, locale, glossarySegment);
     }
     if (Array.isArray(node)) {
-      return node.map((child, i) => (
-        <Fragment key={i}>{injectGlossary(child)}</Fragment>
-      ));
+      return node.map((child, i) => <Fragment key={i}>{injectGlossary(child)}</Fragment>);
     }
     // Recurse into inline formatting (strong/em/code) so a glossary term wrapped
     // in **bold** still gets a tooltip — but leave React elements with custom
@@ -396,7 +374,9 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         />
       );
     }
-    return <BlogParkWidget park={parkMap.get(entity.key) ?? null} slug={entity.key} inRow={inRow} />;
+    return (
+      <BlogParkWidget park={parkMap.get(entity.key) ?? null} slug={entity.key} inRow={inRow} />
+    );
   };
 
   const components: Components = {
@@ -467,18 +447,8 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const align = resolveImageAlign(parts[2], src);
       const sizeRaw = (parts[3] ?? '').toLowerCase();
       const size: 'small' | 'medium' | 'large' | undefined =
-        sizeRaw === 'small' || sizeRaw === 'medium' || sizeRaw === 'large'
-          ? sizeRaw
-          : undefined;
-      return (
-        <BlogInlineImage
-          src={src}
-          alt={imgAlt}
-          caption={caption}
-          align={align}
-          size={size}
-        />
-      );
+        sizeRaw === 'small' || sizeRaw === 'medium' || sizeRaw === 'large' ? sizeRaw : undefined;
+      return <BlogInlineImage src={src} alt={imgAlt} caption={caption} align={align} size={size} />;
     },
     h1: ({ children }) => (
       <h1 className="text-foreground mt-12 mb-6 text-3xl font-bold tracking-tight first:mt-0 sm:text-4xl">
@@ -514,8 +484,11 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       // the DOM from React's tree and nuking the whole hydrated subtree
       // (which is exactly how every widget on a post used to vanish).
       const hastChildren =
-        (node as { children?: Array<{ type?: string; tagName?: string; properties?: { href?: string } }> })
-          ?.children ?? [];
+        (
+          node as {
+            children?: Array<{ type?: string; tagName?: string; properties?: { href?: string } }>;
+          }
+        )?.children ?? [];
       const hasBlockChild = hastChildren.some((c) => {
         if (c.type !== 'element') return false;
         if (c.tagName === 'img') return true;
@@ -572,9 +545,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         // text treatment as a paragraph.
         if (meaningful.length === 1) return <>{children}</>;
         return (
-          <div className="text-foreground/90 my-5 leading-[1.75]">
-            {injectGlossary(children)}
-          </div>
+          <div className="text-foreground/90 my-5 leading-[1.75]">{injectGlossary(children)}</div>
         );
       }
       return <p className="text-foreground/90 my-5 leading-[1.75]">{injectGlossary(children)}</p>;
@@ -599,8 +570,13 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;
         return (
-          <aside data-callout={callout} className={`not-prose my-6 rounded-xl border px-4 py-3 ${meta.box}`}>
-            <div className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider ${meta.title}`}>
+          <aside
+            data-callout={callout}
+            className={`not-prose my-6 rounded-xl border px-4 py-3 ${meta.box}`}
+          >
+            <div
+              className={`mb-1.5 inline-flex items-center gap-1.5 text-xs font-bold tracking-wider uppercase ${meta.title}`}
+            >
               <Icon className="h-3.5 w-3.5" />
               {meta.label}
             </div>
@@ -636,13 +612,11 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     thead: ({ children }) => (
       <thead className="bg-muted/40 border-border border-b">{children}</thead>
     ),
-    tr: ({ children }) => (
-      <tr className="border-border/40 border-b last:border-0">{children}</tr>
-    ),
+    tr: ({ children }) => <tr className="border-border/40 border-b last:border-0">{children}</tr>,
     th: ({ children }) => (
       <th
         scope="col"
-        className="text-foreground px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider"
+        className="text-foreground px-4 py-2.5 text-left text-xs font-bold tracking-wider uppercase"
       >
         {injectGlossary(children)}
       </th>
@@ -654,9 +628,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
     // children — without this, glossary terms wrapped in **bold** or _italic_
     // never get tooltipped because react-markdown delegates to these
     // function components before the parent <p>'s recursion can see inside.
-    strong: ({ children }) => (
-      <strong className="font-semibold">{injectGlossary(children)}</strong>
-    ),
+    strong: ({ children }) => <strong className="font-semibold">{injectGlossary(children)}</strong>,
     em: ({ children }) => <em className="italic">{injectGlossary(children)}</em>,
     code: ({ className, children }) => {
       // Inline code only — widget fences are extracted before markdown runs.

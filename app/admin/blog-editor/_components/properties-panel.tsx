@@ -87,12 +87,7 @@ interface PropertiesPanelProps {
   /** Triggered when the author asks to swap the underlying park/ride. The
    *  rect (when supplied) anchors the picker near the click instead of
    *  floating at the top of the viewport. */
-  onReplaceRef: (rect?: {
-    top: number;
-    bottom: number;
-    left: number;
-    right: number;
-  }) => void;
+  onReplaceRef: (rect?: { top: number; bottom: number; left: number; right: number }) => void;
 }
 
 /**
@@ -113,12 +108,12 @@ export function PropertiesPanel({
   return (
     <aside className="border-border/60 bg-card/30 sticky top-4 h-[calc(100vh-6rem)] overflow-hidden rounded-2xl border backdrop-blur-sm">
       <div className="border-border/40 flex items-center justify-between border-b px-4 py-3">
-        <div className="text-muted-foreground inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase">
           <span className="bg-primary/40 h-1 w-1 rounded-full" />
           Properties
         </div>
         {selection && (
-          <span className="text-muted-foreground/80 inline-flex items-center gap-1 rounded-full bg-muted/40 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider">
+          <span className="text-muted-foreground/80 bg-muted/40 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase">
             {selection.kind === 'ref'
               ? 'ref chip'
               : selection.kind === 'link'
@@ -136,30 +131,22 @@ export function PropertiesPanel({
         <div
           // Re-keying on the selection identity restarts the entrance
           // animation, so switching chips visibly swaps the form.
-          key={
-            selection
-              ? `${selection.kind}:${'pos' in selection ? selection.pos : ''}`
-              : 'empty'
-          }
+          key={selection ? `${selection.kind}:${'pos' in selection ? selection.pos : ''}` : 'empty'}
           className="animate-in fade-in slide-in-from-right-2 h-full duration-200"
         >
-        {selection?.kind === 'ref' ? (
-          <RefProperties
-            editor={editor}
-            selection={selection}
-            onReplaceRef={onReplaceRef}
-          />
-        ) : selection?.kind === 'link' ? (
-          <LinkProperties editor={editor} selection={selection} />
-        ) : selection?.kind === 'widget' ? (
-          <WidgetProperties editor={editor} selection={selection} />
-        ) : selection?.kind === 'image' ? (
-          <ImageProperties editor={editor} selection={selection} />
-        ) : selection?.kind === 'embed' ? (
-          <EmbedProperties editor={editor} selection={selection} />
-        ) : (
-          <EmptyState charCount={charCount} />
-        )}
+          {selection?.kind === 'ref' ? (
+            <RefProperties editor={editor} selection={selection} onReplaceRef={onReplaceRef} />
+          ) : selection?.kind === 'link' ? (
+            <LinkProperties editor={editor} selection={selection} />
+          ) : selection?.kind === 'widget' ? (
+            <WidgetProperties editor={editor} selection={selection} />
+          ) : selection?.kind === 'image' ? (
+            <ImageProperties editor={editor} selection={selection} />
+          ) : selection?.kind === 'embed' ? (
+            <EmbedProperties editor={editor} selection={selection} />
+          ) : (
+            <EmptyState charCount={charCount} />
+          )}
         </div>
       </div>
     </aside>
@@ -174,10 +161,9 @@ function EmptyState({ charCount }: { charCount: number }) {
       </div>
       <div className="text-foreground/80 text-sm font-semibold">Nothing selected</div>
       <p className="text-muted-foreground mt-1 max-w-[220px] text-xs leading-relaxed">
-        Click any chip — park, ride, link or spotlight — in the editor to
-        inspect and edit it here.
+        Click any chip — park, ride, link or spotlight — in the editor to inspect and edit it here.
       </p>
-      <div className="text-muted-foreground/70 mt-6 inline-flex items-center gap-3 rounded-full bg-muted/30 px-3 py-1.5 text-[10px] font-medium">
+      <div className="text-muted-foreground/70 bg-muted/30 mt-6 inline-flex items-center gap-3 rounded-full px-3 py-1.5 text-[10px] font-medium">
         <span>{charCount.toLocaleString()} chars</span>
       </div>
     </div>
@@ -191,12 +177,7 @@ function RefProperties({
 }: {
   editor: Editor | null;
   selection: Extract<EditorSelection, { kind: 'ref' }>;
-  onReplaceRef: (rect?: {
-    top: number;
-    bottom: number;
-    left: number;
-    right: number;
-  }) => void;
+  onReplaceRef: (rect?: { top: number; bottom: number; left: number; right: number }) => void;
 }) {
   // Pull the current variant fresh from the href every render so external
   // edits to the link mark (e.g. via the source view) reflect immediately.
@@ -257,9 +238,9 @@ function RefProperties({
               type="button"
               onClick={() => setVariant(v)}
               className={cn(
-                'flex-1 rounded-lg px-2.5 py-1.5 text-[11px] font-bold uppercase tracking-wider transition-all',
+                'flex-1 rounded-lg px-2.5 py-1.5 text-[11px] font-bold tracking-wider uppercase transition-all',
                 currentOpt === v
-                  ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                  ? 'bg-background text-foreground ring-border/60 shadow-sm ring-1'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
@@ -268,8 +249,7 @@ function RefProperties({
           ))}
         </div>
         <p className="text-muted-foreground/80 mt-2 text-[11px] leading-relaxed">
-          {currentOpt === 'info' &&
-            'Inline link · city/park + live status badge.'}
+          {currentOpt === 'info' && 'Inline link · city/park + live status badge.'}
           {currentOpt === 'bare' && 'Inline link · no annotation.'}
           {currentOpt === 'full' &&
             'Block spotlight card with background image (renders as its own paragraph).'}
@@ -299,7 +279,7 @@ function RefProperties({
       </Section>
 
       <Section label="Reference">
-        <code className="bg-muted/40 text-foreground/80 block break-all rounded-md px-2 py-1.5 font-mono text-[10px]">
+        <code className="bg-muted/40 text-foreground/80 block rounded-md px-2 py-1.5 font-mono text-[10px] break-all">
           ref:{selection.value}?{currentOpt}
         </code>
       </Section>
@@ -454,10 +434,7 @@ function WidgetForm({
     const schema = editor.schema;
     const codeBlock = schema.nodes.codeBlock;
     if (!codeBlock) return;
-    const newNode = codeBlock.create(
-      { language: selection.name },
-      body ? schema.text(body) : null
-    );
+    const newNode = codeBlock.create({ language: selection.name }, body ? schema.text(body) : null);
     editor
       .chain()
       .focus()
@@ -554,10 +531,7 @@ function WidgetForm({
               ev as CustomEvent<{ id: string; slug: string; parentParkSlug?: string }>
             ).detail;
             if (detail.id !== id) return;
-            window.removeEventListener(
-              'parkfan-park-picker-result',
-              onResult as EventListener
-            );
+            window.removeEventListener('parkfan-park-picker-result', onResult as EventListener);
             // Pull the latest attrs to avoid stomping fields the user edited
             // between opening and choosing. When picking a ride for the
             // attraction-widget we also auto-fill parkSlug from the ride's
@@ -571,10 +545,7 @@ function WidgetForm({
               return next;
             });
           };
-          window.addEventListener(
-            'parkfan-park-picker-result',
-            onResult as EventListener
-          );
+          window.addEventListener('parkfan-park-picker-result', onResult as EventListener);
           window.dispatchEvent(
             new CustomEvent('parkfan-park-picker-request', {
               detail: { id, mode: pickerMode, rect },
@@ -586,9 +557,7 @@ function WidgetForm({
             <div className="flex items-center gap-1.5">
               <input
                 value={attrs[f.key] ?? ''}
-                onChange={(e) =>
-                  setAttrs((prev) => ({ ...prev, [f.key]: e.target.value }))
-                }
+                onChange={(e) => setAttrs((prev) => ({ ...prev, [f.key]: e.target.value }))}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') save();
                 }}
@@ -625,7 +594,6 @@ function WidgetForm({
   );
 }
 
-
 /**
  * Re-mount the image form on every new selection so its uncontrolled fields
  * pick up the new image cleanly without an in-effect setState dance.
@@ -653,11 +621,7 @@ function EmbedForm({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const providerIcon =
-    selection.provider === 'youtube'
-      ? Film
-      : selection.provider === 'instagram'
-        ? Camera
-        : Music;
+    selection.provider === 'youtube' ? Film : selection.provider === 'instagram' ? Camera : Music;
   const providerLabel =
     selection.provider === 'youtube'
       ? 'YouTube embed'
@@ -804,13 +768,14 @@ function ImageForm({
   const [alt, setAlt] = useState(selection.alt);
   const [caption, setCaption] = useState(selection.caption);
   const [align, setAlign] = useState<typeof selection.align>(selection.align);
-  const [size, setSize] = useState<'' | 'small' | 'medium' | 'large'>(
-    selection.size ?? ''
-  );
+  const [size, setSize] = useState<'' | 'small' | 'medium' | 'large'>(selection.size ?? '');
 
-  const buildAltStringFrom = (
-    partsIn: { alt: string; caption: string; align: typeof selection.align; size: '' | 'small' | 'medium' | 'large' }
-  ) => {
+  const buildAltStringFrom = (partsIn: {
+    alt: string;
+    caption: string;
+    align: typeof selection.align;
+    size: '' | 'small' | 'medium' | 'large';
+  }) => {
     const parts: string[] = [partsIn.alt.trim()];
     const hasMeta = !!partsIn.caption.trim() || partsIn.align !== 'center' || !!partsIn.size;
     if (hasMeta) parts.push(partsIn.caption.trim());
@@ -839,8 +804,7 @@ function ImageForm({
         const pos = reanchorPos(
           state.doc,
           selection.pos,
-          (n) =>
-            n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
+          (n) => n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
         );
         if (pos === null) return false;
         tr.setNodeAttribute(pos, 'alt', altString);
@@ -879,8 +843,7 @@ function ImageForm({
         const pos = reanchorPos(
           state.doc,
           selection.pos,
-          (n) =>
-            n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
+          (n) => n.type.name === 'image' && String(n.attrs.src ?? '') === selection.src
         );
         if (pos === null) return false;
         const node = tr.doc.nodeAt(pos);
@@ -977,7 +940,7 @@ function ImageForm({
                 className={cn(
                   'inline-flex flex-col items-center gap-0.5 rounded-lg px-2 py-1.5 text-[10px] font-semibold transition-all',
                   align === opt.k
-                    ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                    ? 'bg-background text-foreground ring-border/60 shadow-sm ring-1'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
@@ -997,9 +960,9 @@ function ImageForm({
               type="button"
               onClick={() => setSizeLive(opt.k)}
               className={cn(
-                'rounded-lg px-2 py-1.5 text-[10px] font-bold uppercase tracking-wider transition-all',
+                'rounded-lg px-2 py-1.5 text-[10px] font-bold tracking-wider uppercase transition-all',
                 size === opt.k
-                  ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                  ? 'bg-background text-foreground ring-border/60 shadow-sm ring-1'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
@@ -1026,7 +989,7 @@ function ImageForm({
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="text-muted-foreground mb-1.5 text-[10px] font-semibold uppercase tracking-wider">
+      <div className="text-muted-foreground mb-1.5 text-[10px] font-semibold tracking-wider uppercase">
         {label}
       </div>
       {children}
@@ -1051,7 +1014,7 @@ function Header({
         <Icon className="h-4 w-4" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-muted-foreground text-[9px] font-bold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[9px] font-bold tracking-wider uppercase">
           {kind}
         </div>
         <div className="text-foreground truncate text-sm font-semibold">{title}</div>
@@ -1093,7 +1056,10 @@ function parseVariant(href: string): 'info' | 'bare' | 'full' {
   if (!href.startsWith('ref:')) return 'info';
   const q = href.indexOf('?');
   if (q === -1) return 'info';
-  const opt = href.slice(q + 1).split(/[&=]/)[0]?.toLowerCase();
+  const opt = href
+    .slice(q + 1)
+    .split(/[&=]/)[0]
+    ?.toLowerCase();
   if (opt === 'bare') return 'bare';
   if (opt === 'full') return 'full';
   return 'info';

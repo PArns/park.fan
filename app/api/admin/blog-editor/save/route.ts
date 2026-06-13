@@ -152,9 +152,7 @@ export async function POST(req: Request) {
   }
 
   const stamp = new Date().toISOString().slice(0, 10);
-  const branch = payload.editing
-    ? `blog/edit-${baseSlug}-${stamp}`
-    : `blog/${baseSlug}-${stamp}`;
+  const branch = payload.editing ? `blog/edit-${baseSlug}-${stamp}` : `blog/${baseSlug}-${stamp}`;
   try {
     await octokit.git.createRef({
       owner,
@@ -250,7 +248,10 @@ export async function POST(req: Request) {
   //     keys deliberately overwrite using the existing SHA.
   const authorsCommitted: string[] = [];
   const authorsUpdated: string[] = [];
-  const authorRuns: Array<{ list: NonNullable<typeof payload.newAuthors>; mode: 'create' | 'edit' }> = [
+  const authorRuns: Array<{
+    list: NonNullable<typeof payload.newAuthors>;
+    mode: 'create' | 'edit';
+  }> = [
     { list: payload.newAuthors ?? [], mode: 'create' },
     { list: payload.editedAuthors ?? [], mode: 'edit' },
   ];
@@ -342,12 +343,8 @@ export async function POST(req: Request) {
     if (categoriesCommitted.length || categoriesUpdated.length) {
       const content = JSON.stringify(merged, null, 2) + '\n';
       const labelParts = [
-        categoriesCommitted.length
-          ? `add ${categoriesCommitted.join(', ')}`
-          : '',
-        categoriesUpdated.length
-          ? `update ${categoriesUpdated.join(', ')}`
-          : '',
+        categoriesCommitted.length ? `add ${categoriesCommitted.join(', ')}` : '',
+        categoriesUpdated.length ? `update ${categoriesUpdated.join(', ')}` : '',
       ]
         .filter(Boolean)
         .join(' · ');
@@ -375,16 +372,10 @@ export async function POST(req: Request) {
   const imagesCommitted: string[] = [];
   for (const img of payload.newImages ?? []) {
     if (!IMAGE_PATH_RE.test(img.path) || img.path.includes('..')) {
-      return NextResponse.json(
-        { error: `Invalid image path: ${img.path}` },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: `Invalid image path: ${img.path}` }, { status: 400 });
     }
     if (!img.contentBase64 || img.contentBase64.length > MAX_IMAGE_BASE64) {
-      return NextResponse.json(
-        { error: `Image too large or empty: ${img.path}` },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: `Image too large or empty: ${img.path}` }, { status: 400 });
     }
     const filePath = `public${img.path}`;
     // Re-uploading a same-named image (e.g. editing a post and replacing a
@@ -428,9 +419,7 @@ export async function POST(req: Request) {
     `> ${sourceFm.excerpt}`,
     '',
     '**Locales included:**',
-    ...committed.map(
-      (l) => `- \`${l}\` — \`content/blog/${l}/${perLocale[l]!.slug}.md\``
-    ),
+    ...committed.map((l) => `- \`${l}\` — \`content/blog/${l}/${perLocale[l]!.slug}.md\``),
     ...(removed.length
       ? ['', '**Renamed (old files removed):**', ...removed.map((r) => `- \`${r}.md\``)]
       : []),
@@ -449,25 +438,13 @@ export async function POST(req: Request) {
         ]
       : []),
     ...(categoriesCommitted.length
-      ? [
-          '',
-          '**New categories:**',
-          ...categoriesCommitted.map((p) => `- \`${p}\``),
-        ]
+      ? ['', '**New categories:**', ...categoriesCommitted.map((p) => `- \`${p}\``)]
       : []),
     ...(categoriesUpdated.length
-      ? [
-          '',
-          '**Edited categories:**',
-          ...categoriesUpdated.map((p) => `- \`${p}\``),
-        ]
+      ? ['', '**Edited categories:**', ...categoriesUpdated.map((p) => `- \`${p}\``)]
       : []),
     ...(imagesCommitted.length
-      ? [
-          '',
-          '**Uploaded images:**',
-          ...imagesCommitted.map((p) => `- \`public${p}\``),
-        ]
+      ? ['', '**Uploaded images:**', ...imagesCommitted.map((p) => `- \`public${p}\``)]
       : []),
     '',
     '_Review the rendered post, tweak as needed, then mark ready for review._',

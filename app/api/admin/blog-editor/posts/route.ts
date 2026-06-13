@@ -87,19 +87,18 @@ export async function GET(req: Request) {
         slug: r.slug,
         title: typeof r.fm.title === 'string' ? r.fm.title : r.slug,
         mode:
-          mode === 'hidden' || mode === 'draft'
-            ? (mode as PostLocaleSummary['mode'])
-            : 'published',
+          mode === 'hidden' || mode === 'draft' ? (mode as PostLocaleSummary['mode']) : 'published',
         date: dateStr(r.fm.date),
         updatedAt: dateStr(r.fm.updatedAt),
       };
     }
     const sourceLocale = locales.en ? 'en' : Object.keys(locales)[0]!;
-    const latestDate = Object.values(locales)
-      .map((l) => l.updatedAt || l.date)
-      .filter(Boolean)
-      .sort()
-      .reverse()[0] ?? '';
+    const latestDate =
+      Object.values(locales)
+        .map((l) => l.updatedAt || l.date)
+        .filter(Boolean)
+        .sort()
+        .reverse()[0] ?? '';
     posts.push({
       key,
       title: locales[sourceLocale].title,

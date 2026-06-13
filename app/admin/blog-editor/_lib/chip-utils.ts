@@ -120,8 +120,7 @@ export function createResolveCache<T>(
       cache.set(refValue, { state: 'loading' });
       // Plain module (no hook access) — read the admin pass straight from the
       // session, same store the AdminShell login writes to.
-      const pass =
-        typeof window !== 'undefined' ? (sessionStorage.getItem(SESSION_KEY) ?? '') : '';
+      const pass = typeof window !== 'undefined' ? (sessionStorage.getItem(SESSION_KEY) ?? '') : '';
       fetch(`/api/admin/blog-editor/resolve-ref?ref=${encodeURIComponent(refValue)}`, {
         headers: { [ADMIN_PASS_HEADER]: pass },
       })

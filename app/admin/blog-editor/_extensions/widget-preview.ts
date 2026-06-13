@@ -2,16 +2,8 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
-import {
-  createResolveCache,
-  eventToElement,
-  pickClosestByCoords,
-} from '../_lib/chip-utils';
-import {
-  widgetLabel,
-  widgetTagLabel,
-  WIDGET_NAMES,
-} from '../_lib/widgets';
+import { createResolveCache, eventToElement, pickClosestByCoords } from '../_lib/chip-utils';
+import { widgetLabel, widgetTagLabel, WIDGET_NAMES } from '../_lib/widgets';
 
 /**
  * Renders a card-style block preview *next to* each widget code fence in the
@@ -87,7 +79,6 @@ function collectWidgets(doc: PMNode): WidgetSpan[] {
   return spans;
 }
 
-
 function buildWidgetCard(span: WidgetSpan): HTMLElement {
   const wrapper = document.createElement('div');
   wrapper.className = `widget-preview widget-preview--${span.name}`;
@@ -128,8 +119,7 @@ function buildWidgetCard(span: WidgetSpan): HTMLElement {
       // Most likely the author wrote ```park-widget slug=phantasialand``` on
       // one line — TipTap drops everything after the first space. Nudge them
       // toward the body-attr form the editor preserves.
-      body.textContent =
-        'Missing slug. Put attrs on their own lines:\nslug: phantasialand';
+      body.textContent = 'Missing slug. Put attrs on their own lines:\nslug: phantasialand';
     } else {
       body.textContent = `Missing slug for ${widgetLabel(span.name)}`;
     }
@@ -247,9 +237,7 @@ export const WidgetPreview = Extension.create({
             return widgetPreviewKey.getState(state)?.decorations;
           },
           handleClick(view, _clickPos, event) {
-            const chip = eventToElement(event)?.closest(
-              '.widget-preview'
-            ) as HTMLElement | null;
+            const chip = eventToElement(event)?.closest('.widget-preview') as HTMLElement | null;
             if (!chip) return false;
             const state = widgetPreviewKey.getState(view.state);
             const spans = state?.spans ?? [];

@@ -19,7 +19,7 @@ const translations: GlossaryTermTranslation[] = [
       'Single rider queues allow guests who are comfortable riding alone — or separated from their group — to fill odd seats left over in ride vehicles. Because single riders slot into gaps rather than waiting for an entire row to fill, the line moves dramatically faster than the standby queue, often cutting wait times by 50–70%. Rides with large multi-row vehicles, such as roller coasters and simulator attractions, benefit the most from this system.\n\nNot every park or attraction offers single rider access. Where available it is one of the most cost-free strategies for reducing your daily queue time. The trade-off is that you may not sit alongside your companions, so it works best for larger thrill rides where the experience is largely individual. Always check the ride entrance signage or the park app before committing to the single rider lane.',
     alternateNames: ['Single Rider Lane', 'Solo rider queue'],
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Single Riders']
+    aliases: ['Single Riders'],
   },
   {
     id: 'virtual-queue',
@@ -39,7 +39,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "An Express Pass (the exact name varies by park — Universal Express, Disney Lightning Lane, Six Flags Flash Pass, etc.) is a ticket upgrade allowing holders to use a dedicated priority entrance with significantly shorter wait times. Some parks include express access in premium resort hotel packages; others sell it as a daily add-on with dynamic pricing that rises as the park gets busier. At Universal Studios parks, the unlimited Express Pass effectively allows guests to re-ride the same attraction multiple times throughout the day.\n\nWhether an Express Pass is worth the cost depends heavily on crowd levels. On a quiet day with 20-minute standby waits, a premium pass offers limited value. On a peak day with 90-minute queues, the math changes dramatically. Use park.fan's crowd calendar to forecast the busyness of your chosen visit date before deciding whether to purchase.",
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express Passes']
+    aliases: ['Express Passes'],
   },
   {
     id: 'posted-wait-time',
@@ -49,7 +49,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The posted wait time is the official estimate displayed on signs at the physical entrance of a ride and in the park's official app. Parks calculate this figure using queue length sensors, historical throughput data, and current loading efficiency. Posted times are typically rounded to the nearest 5 or 10 minutes and can sometimes differ from the actual experienced wait — parks occasionally overestimate to manage expectations, or underestimate when queues unexpectedly lengthen.\n\nPark.fan aggregates posted wait times from official sources every few minutes, giving you a live picture of conditions across all tracked attractions. Comparing posted times across different attractions at the same moment is one of the simplest and most effective ways to decide which ride to head to next during your visit.",
     relatedTermIds: ['crowd-level', 'wait-time'],
-    aliases: ['posted wait times', 'posted wait', 'displayed wait time']
+    aliases: ['posted wait times', 'posted wait', 'displayed wait time'],
   },
   {
     id: 'crowd-level',
@@ -69,7 +69,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A crowd calendar is a month-by-month or year-view calendar showing predicted crowd levels for each day at a specific park. park.fan generates crowd calendars using AI models trained on years of historical wait time data, cross-referenced with school holiday schedules across multiple countries, upcoming events, park operating hours, and seasonal trends. Green days indicate low predicted crowds; orange and red days flag high visitor numbers.\n\nFor visitors with flexible dates, the crowd calendar is one of the most powerful tools available. Shifting a visit by even one or two days can mean the difference between 30-minute queues and 90-minute queues for the same attraction. Families planning around school holidays can use the calendar to identify whether specific holiday weeks are historically busier or quieter than others at their chosen park.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['crowd calendars']
+    aliases: ['crowd calendars'],
   },
   {
     id: 'peak-day',
@@ -88,7 +88,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'A refurbishment (often called a "rehab" by enthusiasts) is a scheduled maintenance or renovation period during which a ride, show, or area of the park is temporarily closed. Refurbishments can last from a few days to several months and are typically planned for the off-season to minimise visitor impact. Parks usually publish refurbishment schedules in advance, though the dates can shift. Major parks like Disney and Universal schedule annual maintenance windows for each attraction, often rotating closures so that different rides are refurbished each year.\n\nRefurbishments are important planning considerations — discovering that your most anticipated ride is closed upon arrival can be deeply frustrating. park.fan marks attractions currently undergoing refurbishment so you can check the status of your target rides before booking travel. Always cross-reference park.fan data with the official park website before finalising a trip, particularly for shoulder-season visits when refurbishment activity is highest.',
     relatedTermIds: ['downtime', 'ride-capacity'],
-    aliases: ['Refurbishments', 'refurb', 'refurbs']
+    aliases: ['Refurbishments', 'refurb', 'refurbs'],
   },
   {
     id: 'downtime',
@@ -98,7 +98,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Downtime refers to an unscheduled, temporary closure of a ride or attraction — distinct from a planned refurbishment. Causes include mechanical malfunctions, sensor errors, safety checks triggered by guest incidents, adverse weather (particularly lightning), or animals entering the ride zone. Most downtime events are resolved within minutes to a couple of hours, though complex mechanical failures can extend closures.\n\nFrom a planning perspective, downtime is one of the least predictable variables in a theme park day. High-capacity rides with complex systems — such as large roller coasters or elaborate dark rides — tend to experience downtime more frequently than simpler attractions. park.fan displays the current operational status of every tracked attraction in real time, distinguishing between Operating, Down, Closed, and Refurbishment states, so you can adjust your route the moment a ride goes offline.',
     relatedTermIds: ['refurbishment', 'ride-capacity', 'wait-time'],
-    aliases: ['Downtimes', 'ride downtime']
+    aliases: ['Downtimes', 'ride downtime'],
   },
   {
     id: 'ride-capacity',
@@ -116,8 +116,8 @@ const translations: GlossaryTermTranslation[] = [
       'The moment a park opens its gates each morning, when queues for popular rides are at their shortest.',
     definition:
       "Rope drop refers to the moment a theme park opens for the day — named after the physical rope or barrier that park staff lower to allow the first guests inside. Arriving at rope drop, or ideally 30–45 minutes before the stated opening time to clear security and reach the gate first, is one of the most effective no-cost strategies in theme park planning. Popular rides see their shortest queues of the entire day during the first 30–60 minutes of park operation, before the bulk of the crowd arrives and spreads through the park.\n\nThe optimal rope drop strategy depends on the park layout. At Magic Kingdom, for example, rushing to Seven Dwarfs Mine Train immediately at opening can mean a 15-minute wait versus a 90-minute wait by mid-morning. Many parks also offer early park entry for hotel guests, allowing access to select attractions before the general public. park.fan's schedule section shows exact opening times for each park so you can build your rope drop plan around the official hours.",
-    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 'wait-time'],
-    aliases: ['Rope Drops']
+    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],
+    aliases: ['Rope Drops'],
   },
   {
     id: 'early-entry',
@@ -136,7 +136,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A Park Hopper ticket allows entry to two or more parks operated by the same resort on a single day. Disney's Park Hopper option, for example, lets guests switch between Magic Kingdom, EPCOT, Hollywood Studios, and Animal Kingdom after 2 PM. Universal Orlando offers a two- or three-park ticket covering Universal Studios, Islands of Adventure, and Epic Universe. In Europe, PortAventura World offers a combined ticket for PortAventura Park and Ferrari Land.\n\nHopping is most worthwhile when a specific attraction you want exists only in a second park, when you want to combine a morning in one park with a dinner or evening show in another, or on shorter trips where seeing highlights across multiple parks is a priority. The cost premium over a single-park ticket varies by resort and is usually higher on peak days with dynamic pricing.",
     relatedTermIds: ['crowd-calendar', 'rope-drop', 'season-pass'],
-    aliases: ['Park Hoppers']
+    aliases: ['Park Hoppers'],
   },
   {
     id: 'season-pass',
@@ -145,7 +145,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A Season Pass (Annual Pass) grants unlimited entry to one or more parks over a 12-month period. Higher tiers typically include extras such as free or discounted parking, dining discounts, merchandise deals, and early reservation windows for special events. Annual passes are sold at parks worldwide — Europa-Park's Jahrespass, Disneyland Paris's Annual Pass, and Alton Towers's Merlin Annual Pass are popular European examples.\n\nMany passes include blockout dates on the busiest days of the year, restricting entry on peak periods to manage capacity. For frequent visitors — typically three or more visits per year — an annual pass nearly always pays for itself compared to buying individual day tickets. Some passes also offer reciprocal access or discounts at partner parks, adding additional value for enthusiasts who visit multiple parks per year.",
     relatedTermIds: ['express-pass', 'park-hopper', 'peak-day'],
-    aliases: ['Season Passes']
+    aliases: ['Season Passes'],
   },
   {
     id: 'height-requirement',
@@ -165,7 +165,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A themed land is a distinct area within a theme park combining a unified visual design, a narrative backstory, and matching attractions, dining, and merchandise. The goal is total immersion — when done well, guests feel transported to a different world the moment they cross the land's entrance. Well-known examples include The Wizarding World of Harry Potter at Universal (both Orlando and Hollywood), Star Wars: Galaxy's Edge at Disney, and Avalon at Phantasialand.\n\nThemed lands are typically the most photographed and highest-demand sections of a park. New land openings generate enormous media attention and bring significant crowd spikes during their debut seasons. From a practical standpoint, themed lands often cluster their highest-capacity rides with their lower-capacity headliners, creating uneven wait times within the same area. Understanding a land's attraction layout helps you plan the most efficient order of operations when you arrive.",
     relatedTermIds: ['refurbishment', 'ride-capacity', 'soft-opening'],
-    aliases: ['Themed Lands']
+    aliases: ['Themed Lands'],
   },
   {
     id: 'soft-opening',
@@ -184,7 +184,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "The standby queue is the regular waiting line that all guests can join without any ticket upgrade or priority pass. It operates on a first-come, first-served basis and wait times directly reflect the real-time crowd level at that attraction. On busy days, standby queues for headline rides at major parks can stretch to 90 minutes or more — sometimes wrapping around multiple switchback sections and extending outside the queue building entirely.\n\nTracking standby wait times across a park in real time is the core use case for park.fan. By monitoring multiple rides simultaneously, you can identify when a popular attraction's queue suddenly drops (perhaps due to downtime clearing, or a show drawing crowds away) and react quickly. The standby queue is also the baseline against which the value of any priority pass is measured — the bigger the standby wait, the more valuable an Express Pass becomes.",
     relatedTermIds: ['express-pass', 'single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['standby queues', 'standby']
+    aliases: ['standby queues', 'standby'],
   },
   {
     id: 'lightning-lane',
@@ -194,7 +194,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Lightning Lane is Disney's name for its priority queue access system, introduced in late 2021 to replace the discontinued FastPass+ programme. It comes in two tiers: Individual Lightning Lane (ILL), sold separately for the highest-demand attractions at a per-person, per-ride fee; and Lightning Lane Multi Pass (LLMP), a daily subscription allowing guests to reserve timed return windows across a selection of rides. Pricing for both tiers is dynamic, rising on busier days.\n\nLightning Lane replaced a system that was free, making it one of the most debated changes in recent Disney history. The practical impact depends on how busy the park is — on quiet days the standby queue is fast enough that Lightning Lane offers marginal benefit. On peak days, Individual Lightning Lane for the very top attractions (Space Mountain, Tron, Radiator Springs Racers) can mean the difference between riding and missing out entirely. park.fan\'s crowd calendar can help you judge which days warrant the additional spend.",
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes']
+    aliases: ['Lightning Lanes'],
   },
   {
     id: 'genie-plus',
@@ -239,7 +239,7 @@ const translations: GlossaryTermTranslation[] = [
       'An automatically captured photo taken of guests at a key moment during a ride, available to purchase afterwards.',
     definition:
       "A ride photo is an on-ride image automatically captured by a fixed camera at a dramatic moment during an attraction — typically the drop on a water ride, the crest of a roller coaster's first hill, or the peak of an accelerator coaster launch. After disembarking, guests can view their photo at an on-site kiosk or in the park's official app and choose whether to purchase a digital or printed copy.\n\nMany parks offer all-day or all-resort photo packages that cover unlimited ride photos for a fixed price — these typically offer good value if you are riding several photo-equipped attractions. Ride photos have become a beloved souvenir tradition and a staple of social media trip reports. The images also provide an objective record of the drop angle and rider expressions that words struggle to capture.",
-    relatedTermIds: ['themed-land'],
+    relatedTermIds: ['onride-offride', 'themed-land'],
   },
   {
     id: 'queue-line',
@@ -259,7 +259,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Opening day is the officially announced date on which a new park, expansion, or attraction opens to the general public. Opening days are major events in the theme park community, typically drawing large media coverage, ribbon-cutting ceremonies, character appearances, and a festive atmosphere. They also attract the most dedicated enthusiasts, who often queue from the early hours to be among the first to experience the new attraction.\n\nDespite the celebratory atmosphere, opening day is rarely the optimal time for a first visit if minimising wait times is your goal. The combination of media attention, novelty factor, and enthusiast tourism typically produces some of the longest opening-week queues an attraction will ever see. Soft openings occasionally precede the official opening day and can provide a much lower-crowd alternative for guests who happen to be in the park at the right moment.',
     relatedTermIds: ['crowd-level', 'rope-drop', 'soft-opening'],
-    aliases: ['Opening Days']
+    aliases: ['Opening Days'],
   },
   {
     id: 'rider-switch',
@@ -312,7 +312,7 @@ const translations: GlossaryTermTranslation[] = [
       'vr-coaster',
       'wait-time',
     ],
-    aliases: ['Dark Rides']
+    aliases: ['Dark Rides'],
   },
   {
     id: 'return-time',
@@ -331,7 +331,15 @@ const translations: GlossaryTermTranslation[] = [
       'The sensation of weightlessness or being lifted from your seat caused by negative G-forces on roller coasters.',
     definition:
       'Airtime describes the sensation of weightlessness — negative G-forces — that roller coaster riders experience when the train crests a hill or valley faster than gravitational free fall. There are two main varieties: floater airtime, characterised by mild negative Gs and a gentle floating sensation where you rise slightly from the seat; and ejector airtime, characterised by intense negative Gs where the lap bar becomes the only thing keeping you in the vehicle.\n\nAirtime is widely considered the defining quality of great coaster design, particularly for steel hyper coasters, giga coasters, and wooden coasters. Dedicated airtime hills (also called camelbacks) are engineered to follow a parabolic trajectory that maximises the negative G phase. Some of the most celebrated airtime coasters in Europe include Shambhala at PortAventura, Goliath at Walibi Holland, Balder at Liseberg, and Untamed at Walibi Holland — all consistently ranked at the top of enthusiast polls for the intensity and quality of their airtime.',
-    relatedTermIds: ['airtime-hill', 'bunnyhop', 'first-drop', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime-hill',
+      'bunnyhop',
+      'first-drop',
+      'quad-down',
+      'restraint-freedom',
+      's-hill',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'inversion',
@@ -379,7 +387,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "A launch coaster replaces the traditional chain lift hill with a propulsion system that rapidly accelerates the train from a standstill to top speed in just a few seconds. The main technologies are: LSM (Linear Synchronous Motor) launches, where electromagnetic coils accelerate a fin attached to the train — smooth, precise, and reusable; LIM (Linear Induction Motor) launches — similar but less energy-efficient; hydraulic launches, used by Intamin on record-breaking coasters like Kingda Ka (0 to 206 km/h in 3.5 seconds); and compressed-air launches. Some coasters feature multiple launches throughout the circuit, maintaining energy across the layout.\n\nThe sudden, powerful acceleration of a launch is a defining sensation that no lift hill can replicate. Taron at Phantasialand, the world's longest launched coaster by circuit length at time of installation, delivers two separate LSM launches through an intricately themed rocky landscape. Red Force at Ferrari Land in Spain reaches 180 km/h in five seconds via hydraulic launch. LSM technology has become the dominant standard for new-build launched coasters in Europe.",
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters']
+    aliases: ['Launch Coasters'],
   },
   {
     id: 'wooden-coaster',
@@ -388,7 +396,7 @@ const translations: GlossaryTermTranslation[] = [
       'A roller coaster built primarily of wood, known for its distinctive rumble, lateral movement, and unpredictable airtime.',
     definition:
       "A wooden coaster is built with a wooden track structure (laminated layers of wood) on a wooden or steel support frame. Unlike steel coasters, wood has natural flex and imprecision in its construction that creates the characteristic rumble, lateral shuffle, and unpredictable airtime that enthusiasts prize. The experience tends to feel more raw and physical than the smooth precision of a steel coaster — a quality many riders find uniquely appealing.\n\nFamous wooden coasters include Balder at Liseberg (Sweden), widely regarded as Europe's best wooden coaster, The Beast at Kings Island (one of the longest in the world at 2.2 km), and Megafobia at Oakwood in Wales. Wooden coasters require significant ongoing maintenance — rails must be relaminated, checked, and replaced on a continuous cycle — and their ride characteristics change noticeably with temperature and humidity. Rocky Mountain Construction's conversion process can transform an ageing wooden coaster into a steel I-box hybrid, opening up new design possibilities while retaining the iconic wooden structure.",
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
     alternateNames: ['Woodie', 'Woodies'],
   },
   {
@@ -398,7 +406,15 @@ const translations: GlossaryTermTranslation[] = [
       'A roller coaster built primarily with steel track and support structure, known for its smooth, precise ride experience.',
     definition:
       'A steel coaster is built with tubular or flat steel track supported by a steel lattice or tubular frame. Unlike wooden coasters with their natural flex and unpredictable motion, steel offers engineers precise control over G-forces, transitions, and inversions. The smooth, predictable ride of a steel coaster makes it ideal for executing complex layouts with multiple inversions, tight radius curves, and sustained high-speed sections.\n\nSteel coasters dominate modern coaster development because they allow designers to create nearly any shape imaginable — beyond-vertical drops, complete inversions, and rapid direction changes. The most celebrated steel coasters in Europe include Shambhala at PortAventura, Nemesis at Alton Towers, and Silver Star at Europa-Park. Steel coasters range from small family rides to record-breaking mega coasters, making the category the most versatile in the theme park industry. The precision of steel comes at a cost: maintenance requires careful track inspection and frequent repainting, and the steel structure is less forgiving of design errors than the flexibility of wood.',
-    relatedTermIds: ['hyper-coaster', 'inversion', 'launch-coaster', 'wooden-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'hyper-coaster',
+      'inversion',
+      'launch-coaster',
+      'single-rail-coaster',
+      'stand-up-coaster',
+      'wooden-coaster',
+    ],
     aliases: ['Steel Coasters'],
     alternateNames: ['Steel track coaster', 'Steel roller coaster'],
   },
@@ -429,7 +445,15 @@ const translations: GlossaryTermTranslation[] = [
       'Bolliger & Mabillard, a Swiss manufacturer renowned for smooth, reliable coasters and signature elements including the Immelmann, cobra roll, and zero-G roll.',
     definition:
       "B&M (Bolliger & Mabillard) is a Swiss roller coaster manufacturer founded in 1988 by former Intamin engineers Walter Bolliger and Claude Mabillard. The company is renowned for producing exceptionally smooth, reliable rides with a distinctive experience characterised by sustained positive G-forces, signature inversions, and very high operational reliability. B&M's engineering philosophy prioritises predictable, comfortable intensity over rough surprises — a quality that has made their coasters perennial crowd favourites at every park they occupy.\n\nB&M specialises in inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters, dive machines, and flying coasters. Nearly every major European park features at least one B&M installation: Shambhala and Dragon Khan at PortAventura, Silver Star at Europa-Park, Nemesis at Alton Towers, Goliath at Walibi Holland, Katun at Mirabilandia, and Oziris at Parc Astérix. The company's reputation for quality has made a B&M installation a prestige signal for any park.",
-    relatedTermIds: ['cobra-roll', 'dive-coaster', 'hybrid-coaster', 'immelmann', 'zero-g-roll'],
+    relatedTermIds: [
+      'cobra-roll',
+      'dive-coaster',
+      'hybrid-coaster',
+      'immelmann',
+      'smoothness',
+      'stand-up-coaster',
+      'zero-g-roll',
+    ],
   },
   {
     id: 'intamin',
@@ -447,7 +471,17 @@ const translations: GlossaryTermTranslation[] = [
       'A German family-owned manufacturer from Waldkirch, the company behind Europa-Park and producers of water rides, dark rides, and acclaimed hyper coasters.',
     definition:
       "Mack Rides is a German ride manufacturer based in Waldkirch, Baden-Württemberg — a few kilometres from Europa-Park, which the Mack family both owns and uses as a showcase for their products. Founded in 1921, the company began with portable fairground rides before expanding into permanent park attractions. Their portfolio now spans water rides, dark rides (including Disney's Test Track and Radiator Springs Racers), and a rapidly growing range of steel coasters.\n\nMack's Blue Fire Megacoaster at Europa-Park (2009) was the first ride to feature the Stengel Dive element and immediately became one of Europe's most admired launched coasters. Their more recent hyper coasters have drawn extraordinary praise: Ride to Happiness at Plopsaland de Panne (Belgium) and Kondaa at Walibi Belgium are both considered among Europe's finest coasters by the enthusiast community. Mack has also supplied Disney with multiple custom attractions, cementing a status as one of the most technically versatile manufacturers in the world.",
-    relatedTermIds: ['b-and-m', 'intamin', 'launch-coaster', 'stengel-dive'],
+    relatedTermIds: [
+      'b-and-m',
+      'bobsled-coaster',
+      'intamin',
+      'launch-coaster',
+      'mackprodukt',
+      'powered-coaster',
+      'splashdown',
+      'stengel-dive',
+      'water-coaster',
+    ],
   },
   {
     id: 'rmc',
@@ -456,7 +490,14 @@ const translations: GlossaryTermTranslation[] = [
       'An Idaho-based manufacturer that invented the hybrid coaster concept, converting ageing wooden coasters into steel I-box track rides with unprecedented airtime and inversions.',
     definition:
       "Rocky Mountain Construction (RMC) is an American roller coaster manufacturer and maintenance company based in Hayden, Idaho, best known for inventing the I-box steel track system that can be fitted onto wooden coaster support structures. This conversion technology allowed parks to transform rough, ageing wooden coasters into world-class hybrid rides featuring intense airtime, multiple inversions, beyond-vertical drops, and dramatic overbanked turns — all design features impossible on traditional wood track.\n\nRMC conversions quickly became some of the most acclaimed rides in the world: Steel Vengeance at Cedar Point, Wicked Cyclone at Six Flags New England, and Wildfire at Kolmården in Sweden all received immediate enthusiast acclaim after their openings. New-build RMC hybrids — built from scratch rather than converted from an existing coaster — include Untamed at Walibi Holland, which opened in 2019 and is consistently ranked as one of Europe's best coasters. RMC fundamentally changed the calculus for parks with ageing wooden coasters, offering a clear upgrade path without the loss of beloved heritage structures.",
-    relatedTermIds: ['airtime', 'barrel-roll-drop', 'hybrid-coaster', 'stall', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime',
+      'barrel-roll-drop',
+      'hybrid-coaster',
+      'single-rail-coaster',
+      'stall',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'vekoma',
@@ -465,7 +506,7 @@ const translations: GlossaryTermTranslation[] = [
       "A Dutch manufacturer and one of the world's most prolific coaster producers, known for the Boomerang, the SLC, and a modern new-generation lineup.",
     definition:
       "Vekoma Rides Manufacturing is a Dutch roller coaster manufacturer headquartered in Vlodrop, Netherlands, and one of the world's most prolific producers by total installations. Founded in 1926, Vekoma built its global reach with the Boomerang — a compact, inexpensive shuttle coaster with three inversions ridden twice (once forward, once backward), licensed to parks worldwide. Over 50 Boomerangs were built; the model is found on every inhabited continent.\n\nOther iconic Vekoma designs include the Suspended Looping Coaster (SLC), Mine Train coasters, and the Giant Inverted Boomerang. Starting in the 2010s, Vekoma reinvented itself with a new-generation lineup featuring dramatically smoother ride systems, innovative layouts, and improved family offerings. New-generation models like the Family Boomerang, Tilt Coaster, and suspended family coasters appear increasingly at European parks. Disney has also commissioned custom Vekoma designs for several of its resorts, including the Seven Dwarfs Mine Train, signalling Vekoma's rehabilitation from manufacturer of rough but affordable coasters to trusted supplier of premium family attractions.",
-    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin'],
+    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
   },
   {
     id: 'gerstlauer',
@@ -476,6 +517,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gerstlauer Amusement Rides GmbH is a German roller coaster manufacturer based in Münsterhausen, Bavaria. Founded in 1946 as a metalworking company, it entered the amusement ride market in the 1980s and built its global reputation with the Euro-Fighter model — a compact, electric-launch coaster famous for its beyond-vertical (up to 97-degree) first drop. Euro-Fighters can be installed in very tight spaces, making them attractive for urban parks and smaller venues. European examples include Saw – The Ride at Thorpe Park and Rage at Adventure Island.\n\nGerstlauer also produces the Infinity Coaster model, spinning coasters, and the SkyRoller — a coaster where riders control their own wing rotation, flipping themselves independently. In the enthusiast community, Gerstlauer rides are valued for packing significant intensity into small footprints. The company occupies an interesting market position between the large-scale ambitions of B&M and Intamin and the compact value of older Vekoma models.',
     relatedTermIds: [
       'b-and-m',
+      'beyond-vertical-drop',
       'euro-fighter',
       'intamin',
       'spinning-coaster',
@@ -507,7 +549,7 @@ const translations: GlossaryTermTranslation[] = [
       "The initial descent after the lift hill or launch — typically the ride's fastest point and the defining statement of its character.",
     definition:
       "The first drop is the primary descent immediately following the lift hill or launch segment. On most traditional coasters it is the tallest element and produces the coaster's maximum speed. The drop's angle, height, and profile strongly influence the overall character of the ride: steep-angle drops (over 80 degrees) create a sensation of near-vertical plunge and intense acceleration; parabolic drops with a carefully shaped profile can generate powerful airtime despite a gentler approach angle.\n\nDive coasters are specifically designed around an exceptionally dramatic first drop experience — the wide train pauses at the crest before plunging beyond vertical. The beyond-vertical drops (over 90 degrees) of Oblivion at Alton Towers and SheiKra at Busch Gardens have been central to those rides' identities since their opening. The first drop is the most commonly filmed element in roller coaster POV and promotional footage, and the moment most riders describe when recounting a coaster experience to someone who hasn't ridden it.",
-    relatedTermIds: ['airtime', 'airtime-hill', 'dive-coaster', 'lifthill'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'beyond-vertical-drop', 'dive-coaster', 'lifthill'],
   },
   {
     id: 'airtime-hill',
@@ -516,7 +558,7 @@ const translations: GlossaryTermTranslation[] = [
       'A hill-shaped element engineered to produce negative G-forces, causing riders to float or be lifted from their seats.',
     definition:
       "An airtime hill (also called a camelback) is a rise-and-fall element specifically engineered to produce negative G-forces — the sensation of floating or being ejected from the seat. The hill profile follows a parabolic trajectory that keeps the train in what engineers call a 'free-fall arc', maximising the duration and intensity of the negative-G phase. Floater airtime hills produce mild, comfortable floating; ejector airtime hills are shaped more aggressively and produce intense, seat-leaving sensations where the lap bar is genuinely the only restraint between the rider and the sky.\n\nSteel coasters use precisely machined parabolic profiles for consistent, repeatable airtime on every run. Wooden coasters produce more varied airtime due to track flex and the natural irregularities of wood construction. The quality and quantity of airtime hills is one of the most important variables in enthusiast rankings of coasters — hyper coasters like Shambhala at PortAventura, Goliath at Walibi Holland, and Silver Star at Europa-Park are celebrated primarily for their sustained sequences of powerful airtime hills.",
-    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 'stengel-dive'],
+    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 's-hill', 'stengel-dive'],
   },
   {
     id: 'helix',
@@ -669,7 +711,7 @@ const translations: GlossaryTermTranslation[] = [
       'A series of small, quick airtime hills near the end of a ride producing gentle floater airtime as the train loses speed.',
     definition:
       "Bunny hops are a series of small, rapid hills placed toward the end of a coaster layout when the train has shed most of its kinetic energy. At this reduced speed, each hill generates gentle floater airtime — a soft, rhythmic floating sensation rather than the intense ejector airtime of the faster hills earlier in the layout. The name reflects the light, bouncing motion that resembles a rabbit's series of hops.\n\nBunny hops are a classic design feature on hyper coasters, giga coasters, and wooden coasters, providing a lighthearted and energetic final flourish before the brake run. They require relatively little vertical height to be effective at low speeds, making them an efficient use of the final terrain. Many enthusiasts consider a well-executed bunny hop sequence a mark of thoughtful layout design — squeezing maximum enjoyment out of the dying moments of a ride rather than simply ending on a brake run.",
-    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run', 's-hill'],
   },
   {
     id: 'stengel-dive',
@@ -723,7 +765,7 @@ const translations: GlossaryTermTranslation[] = [
       'A compact Gerstlauer coaster model featuring a vertical or beyond-vertical first drop after a vertical lift hill, delivering intense thrills in a small footprint.',
     definition:
       "The Euro-Fighter is Gerstlauer's signature compact coaster model, immediately recognisable by its vertical chain lift (which pulls the train straight upward like a tower) and its first drop of 90 degrees or beyond-vertical (up to 97 degrees). Designed for parks with limited space, Euro-Fighters pack intense thrills — multiple inversions, tight turns, and high G-forces — into a very small area. The beyond-vertical drop is particularly notable: the train pauses at the top of the vertical lift with riders leaning out over the void before plunging past the vertical plane.\n\nEuropean Euro-Fighters include Saw – The Ride at Thorpe Park, Rage at Adventure Island (Southend-on-Sea), and Fluch von Novgorod at Hansa-Park in Germany. The compact nature of the design has made Euro-Fighters a popular choice for parks in urban settings or with irregular terrain, and the beyond-vertical first drop has become one of the most talked-about single moments in mid-scale coaster design.",
-    relatedTermIds: ['first-drop', 'inversion', 'lifthill'],
+    relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
     id: 'dive-coaster',
@@ -732,8 +774,14 @@ const translations: GlossaryTermTranslation[] = [
       'A coaster type featuring an unusually wide train and a near-vertical or beyond-vertical drop with a deliberate pause at the crest before plunging.',
     definition:
       "A dive coaster is characterised by a wide train — typically four to eight riders across per row — a near-vertical or beyond-vertical drop (90 degrees or more), and a theatrical pause at the top of the drop where the train holds momentarily at the crest before releasing. The wide train gives every rider an unobstructed view straight down into the drop, amplifying the psychological anticipation. The pause is not an accident: it is a deliberate design decision to maximise tension before the plunge.\n\nB&M's Dive Machine line popularised the concept with Oblivion at Alton Towers (1998) — Europe's first dive coaster — and SheiKra at Busch Gardens Tampa. In Europe, Valkyria at Liseberg, Dive to Atlantis at Gardaland, and Baron 1898 at Efteling are celebrated Dive Machine installations. Gerstlauer offers a competing Dive Coaster model for smaller spaces. The combination of wide train, extreme drop angle, and deliberate pause makes dive coasters among the most immediately communicable experiences in theme park marketing.",
-    relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
-    aliases: ['Dive Coasters']
+    relatedTermIds: [
+      'b-and-m',
+      'beyond-vertical-drop',
+      'euro-fighter',
+      'first-drop',
+      'launch-coaster',
+    ],
+    aliases: ['Dive Coasters'],
   },
   {
     id: 'credit',
@@ -742,7 +790,15 @@ const translations: GlossaryTermTranslation[] = [
       'A roller coaster an enthusiast has ridden and logged to their personal count — collecting credits is a defining hobby in the coaster community.',
     definition:
       "A coaster credit (or simply 'credit' or 'cred') is a roller coaster that an enthusiast has ridden and officially added to their personal count. The practice of collecting credits — riding as many different coasters as possible — is one of the defining activities of the roller coaster enthusiast community. Rules about what counts vary: some count only conventional coasters, others include water coasters, family coasters, or even kiddie coasters; some require riding every version of a coaster on the same ride hardware to count it once, others count any ridden layout.\n\nTracking sites like the Roller Coaster Database (RCDB) and apps like Coaster Count allow enthusiasts to log and share their totals. The pursuit of credits has motivated thousands of enthusiasts to travel internationally, plan trips around obscure parks that house rare or historic coasters, and seek out every last installation of a model type. For many, reaching milestones (100 credits, 500, 1,000) is a meaningful personal goal that shapes their travel for years.",
-    relatedTermIds: ['hybrid-coaster', 'pov', 'wooden-coaster'],
+    relatedTermIds: [
+      'hybrid-coaster',
+      'mackprodukt',
+      'onride-offride',
+      'pov',
+      'powered-coaster',
+      're-ride',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'pov',
@@ -751,7 +807,7 @@ const translations: GlossaryTermTranslation[] = [
       'Point-of-view footage filmed from the front row of a coaster, letting prospective riders virtually preview the full experience.',
     definition:
       'POV (Point of View) refers to on-ride video footage recorded from the perspective of a front-row rider, with a camera typically mounted to the train or a helmet rig. POV videos are one of the most popular content formats in the theme park community and are widely used by prospective visitors to preview a coaster before travelling to a park. A good POV shows every element, drop, and inversion in sequence, communicating the pace, intensity, and layout of a ride in a way that no verbal description can match.\n\nPark operators sometimes produce official POVs for promotional purposes; more often they are filmed by enthusiasts, media, or during special guest events. YouTube hosts tens of thousands of coaster POV videos covering installations worldwide. The term is also used more broadly for any first-person perspective footage of theme park attractions, including dark rides and water rides. For a new coaster opening, the release of official POV footage is often a major community event that drives significant viewer interest.',
-    relatedTermIds: ['credit', 'dark-ride'],
+    relatedTermIds: ['credit', 'dark-ride', 'onride-offride'],
   },
   {
     id: 'vr-coaster',
@@ -769,7 +825,7 @@ const translations: GlossaryTermTranslation[] = [
       'Exclusive Ride Time — private access to one or more attractions for a small group, with no general public queue.',
     definition:
       'ERT (Exclusive Ride Time) is a period during which a selected group — typically members of a coaster enthusiast club, resort hotel guests with premium packages, or season pass holders at special events — have exclusive access to a ride or set of rides with the general public excluded. During ERT, participants can ride repeatedly with minimal waiting, often achieving dozens of rides in a single session that would take multiple full park days in normal operation.\n\nERT events are organised by parks for club meetups (European Coaster Club, American Coaster Enthusiasts, and dozens of national organisations worldwide), for premium resort hotel packages offering before-hours or after-hours ride access, or as part of hard ticket events. For coaster enthusiasts, ERT is among the most prized theme park experiences — riding a coaster 15 or 20 times in succession, in different row positions, at different times of day, reveals its true character and nuances in a way that a single ride in a full-day crowd simply cannot.',
-    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 'rope-drop'],
+    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 're-ride', 'rope-drop'],
   },
   {
     id: 'touring-plan',
@@ -834,7 +890,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Hyper coaster is the industry classification for roller coasters between 200 and 299 feet (approximately 61–91 m) in height. B&M and Intamin use slightly different terminology — B&M calls their designs Hyper Coasters while Intamin uses the term Mega Coaster — but the height range is consistent. Both manufacturers' hyper-class rides share the same design philosophy: long, flowing layouts with large camelback airtime hills at sustained high speed, typically without any inversions.\n\nShambhala at PortAventura in Spain is Europe's tallest hyper coaster at 76 m, often ranked among the continent's best coasters overall. Other celebrated European hypers include Goliath at Walibi Holland, Silver Star at Europa-Park, and Kondaa at Walibi Belgium (Mack Rides' take on the format). Globally, Mako at SeaWorld Orlando and Diamondback at Kings Island are considered benchmarks. The combination of sheer height, sustained speed, and repeated powerful airtime moments makes hyper coasters consistently the most popular ride type among dedicated enthusiasts.",
     relatedTermIds: ['airtime', 'airtime-hill', 'b-and-m', 'giga-coaster', 'intamin'],
-    aliases: ['Hyper Coasters']
+    aliases: ['Hyper Coasters'],
   },
   {
     id: 'giga-coaster',
@@ -954,7 +1010,7 @@ const translations: GlossaryTermTranslation[] = [
       "The unit of acceleration experienced by riders, measured as multiples of Earth's gravitational acceleration (9.81 m/s²).",
     definition:
       "G-force (gravitational force equivalent) measures the acceleration a rider's body experiences relative to Earth's gravity. Positive G-forces (above 1G) press riders into their seats as the train pulls through a valley or tight curve — the same force that makes you feel heavy in a fast car. Negative G-forces (below 0G) lift riders from their seats, creating airtime. Lateral G-forces act sideways, pushing riders across their seat on turns and transitions.\n\nRoller coasters are designed to sequence these forces deliberately. A sustained 4–5G valley is the hallmark of a powerful first drop transition. A brief −0.5G to −1G moment on an airtime hill produces the signature floating sensation. Most coasters target a range of 0–5G of sustained positive G-force, with brief spikes above this for dramatic effect. Sustained high-G exposure beyond a few seconds can cause discomfort or greyout; well-designed coasters balance intensity peaks with recovery sections.",
-    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs'],
+    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs', 'smoothness'],
     aliases: ['G-Forces', 'G Force', 'G Forces'],
   },
   {
@@ -1078,7 +1134,7 @@ const translations: GlossaryTermTranslation[] = [
       "A horizontal safety restraint across the rider's lap that allows a greater range of free movement than over-the-shoulder harnesses.",
     definition:
       "A lap bar is a horizontal safety restraint that pins riders securely across the upper thighs or lap area. Unlike over-the-shoulder harnesses that fully encase the torso, lap bars allow the upper body to move more freely, creating a more open, less restrictive sensation. Lap bars are the standard restraint on most modern hypercoasters, giga coasters, and many traditional steel and wooden coasters. During airtime moments, lap bars let riders experience the full sensation of being ejected upward from the seat, creating the sensation that only the bar prevents them from flying out of the vehicle.\n\nLap bars are preferred by enthusiasts for high-airtime coasters because they provide the most uninhibited airtime sensation — the gap between rider and seat is immediately noticeable. However, lap bars require proper positioning and can feel uncomfortable on riders with longer torsos or certain body shapes if the bar doesn't fit ideally. Coaster manufacturers have continuously refined lap bar design over decades, and modern lap bars are significantly more comfortable than earlier generations. On coasters with intense lateral forces, the lap bar may slide back and forth slightly during sharp turns, which some riders find annoying and others find thrilling.",
-    relatedTermIds: ['airtime', 'ride-cart', 'shoulder-harness'],
+    relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     alternateNames: ['Lap Restraint', 'Lap Harness'],
   },
   {
@@ -1088,7 +1144,7 @@ const translations: GlossaryTermTranslation[] = [
       'An over-the-shoulder safety restraint that fully encloses the torso, limiting movement during the ride.',
     definition:
       'A shoulder harness (also called an over-the-shoulder restraint or OTS harness) is a clamping safety device that comes down over both shoulders and across the lap, fully encasing the torso. Shoulder harnesses were the standard on coasters from the 1980s through early 2000s and remain common on inverted coasters, some suspended coasters, and family rides where maximum restraint is prioritized. Modern harnesses include ratcheting mechanisms that allow for varying tightness to accommodate different rider builds.\n\nWhen sitting in a shoulder harness on a high-airtime coaster, the sensation is notably different from a lap bar: riders cannot rise from the seat as dramatically because the shoulder restraint holds them down. This trade-off — greater security and comfort for some riders versus less intense airtime sensation — is a key design choice manufacturers make. Enthusiasts generally prefer lap bars for airtime-heavy coasters and consider shoulder harnesses slightly less thrilling for that purpose, though they can feel more secure and comfortable for nervous riders or on coasters with intense lateral forces.',
-    relatedTermIds: ['airtime', 'lap-bar', 'ride-cart'],
+    relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     alternateNames: ['OTS Harness', 'Over-the-shoulder Restraint'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
@@ -1147,7 +1203,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Family steel coaster themed as a mine cart journey.',
     definition:
       'A mine train coaster is a family-friendly steel roller coaster styled as a runaway mining cart. Typically featuring moderate speeds, small drops, and tight turns through themed tunnels and rock formations. Suitable for a wide age range. Examples include Big Thunder Mountain Railroad (Disney parks) and Gold Rush (Plopsaland).',
-    relatedTermIds: ['steel-coaster', 'themed-land'],
+    relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'mine car coaster', 'mine ride'],
     alternateNames: ['family coaster'],
   },
@@ -1157,7 +1213,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Coaster designed to follow and interact with the natural landscape.',
     definition:
       'A terrain coaster is built to take advantage of natural topography — hills, valleys, and ravines — rather than relying entirely on artificial structure. The ride interacts closely with the ground, creating a sense of speed and immersion. Classic examples include Beast (Kings Island) and Ravine Flyer II (Waldameer).',
-    relatedTermIds: ['airtime', 'steel-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     alternateNames: ['terrain ride', 'landscape coaster', 'ground-hugging coaster'],
   },
   {
@@ -1166,7 +1222,13 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: "Steel coaster where the floor retracts so riders' feet dangle freely.",
     definition:
       'On a floorless coaster, the car floor drops away after riders are secured, leaving legs dangling above the track. Unlike inverted coasters, the track runs beneath the car rather than above. B&M pioneered the type with Medusa (Six Flags Great Adventure, 1999). Examples in Europe include Goliath (Walibi Holland).',
-    relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'b-and-m',
+      'dive-coaster',
+      'inverted-coaster',
+      'stand-up-coaster',
+      'steel-coaster',
+    ],
     aliases: ['floorless'],
     alternateNames: ['open floor coaster'],
   },
@@ -1176,7 +1238,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'American coaster manufacturer responsible for the first modern loop.',
     definition:
       "Arrow Dynamics (founded 1945) was a pioneering American roller coaster manufacturer that introduced the modern tubular steel track and the first modern vertical loop on Corkscrew (Knott's Berry Farm, 1975). Arrow coasters are known for their iconic corkscrew and suspended looping coasters. The company declared bankruptcy in 2001 and its assets were acquired by S&S.",
-    relatedTermIds: ['corkscrew', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
+    relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow'],
   },
   {
@@ -1265,7 +1327,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Sweeping banked direction change delivering strong airtime.',
     definition:
       'A wave turn is a high-speed banked turn that transitions through a brief moment of negative or lateral G-forces, creating a sensation of airtime mid-corner. Common on Rocky Mountain Construction coasters, the element combines directional change with ejector or floater airtime. It appears on rides like Wildfire (Kolmården) and Untamed (Walibi Holland).',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc'],
+    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn element'],
     alternateNames: ['banked airtime turn'],
   },
@@ -1438,7 +1500,13 @@ const translations: GlossaryTermTranslation[] = [
       'A water channel ride where boat-shaped vehicles travel through a trough and finish with a dramatic plunge and splash.',
     definition:
       'A log flume (also called a flume ride or splash ride) is a water ride in which guests sit in boat-shaped vehicles — traditionally log-shaped fibreglass hulls — and travel along a water-filled channel, navigating a course of flat sections and small rises before a final steep drop splash. The impact at the bottom almost guarantees wet riders; the extent depends on the drop height and trough design. Log flumes were introduced in the 1960s and became a fixture of parks worldwide, prized for their family friendliness, moderate throughput, and iconic summer appeal. Many classic examples have received major theming upgrades. Well-known European examples include Poseidon at Europa-Park and various Wildwasserbahn installations across German-speaking parks.',
-    relatedTermIds: ['height-requirement', 'river-rapids', 'water-ride'],
+    relatedTermIds: [
+      'height-requirement',
+      'river-rapids',
+      'splashdown',
+      'water-coaster',
+      'water-ride',
+    ],
     alternateNames: ['flume ride', 'log ride', 'splash ride', 'water flume'],
   },
   {
@@ -1705,7 +1773,13 @@ const translations: GlossaryTermTranslation[] = [
       'When a ride operator presses lap bars or restraints too tightly against riders — reducing comfort and eliminating the airtime the ride was designed to deliver.',
     definition:
       'Stapling refers to the practice — intentional or over-cautious — of an operator pushing a lap bar or shoulder harness so firmly against a rider that it is significantly tighter than the minimum required safe position. The term comes from the sensation of being pinned or "stapled" into the seat. On airtime-focused coasters, lap bars are supposed to sit loosely enough for riders to actually lift slightly off the seat at the crests of hills — that\'s what delivers airtime. A stapled rider is held flat against the seat throughout and cannot experience the intended floating sensation, regardless of how well-designed the hills are.\n\nStapling is a common source of frustration in the enthusiast community, particularly on wooden coasters and hybrid coasters where airtime is the primary attraction. The degree of stapling varies by park, by operator, by time of day, and sometimes by the visible size of the rider being restrained. Some parks are known for consistently loose, rider-friendly policies; others are criticised for systematically over-restraining. Riders who want to maximise airtime often board as late as possible to avoid early check-by operators, and position the bar themselves before operators come to check it.',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lap-bar', 'shoulder-harness'],
+    relatedTermIds: [
+      'airtime',
+      'ejector-airtime',
+      'lap-bar',
+      'restraint-freedom',
+      'shoulder-harness',
+    ],
     aliases: ['stapled', 'over-stapled'],
     alternateNames: ['over-tightened restraint'],
   },
@@ -1727,7 +1801,13 @@ const translations: GlossaryTermTranslation[] = [
       'A coaster style using small individual cars and a compact layout of tight flat turns at the edges of elevated platforms — creating the sensation the car is about to fly off.',
     definition:
       'A wild mouse coaster (also simply "mouse coaster") uses small cars seating two to four riders rather than the long trains of conventional coasters. The hallmark of the design is a series of tight, flat-banked hairpin turns executed at the very edges of the track, where the car travels perpendicular to the curve before turning sharply. Because the turns are not steeply banked — unlike the smooth banked curves of other coasters — riders are thrown laterally against the side of the car, and the momentum of the approach makes the turn feel later than expected, creating a convincing sensation that the car is about to slide off the track.\n\nWild mouse coasters are among the most space-efficient designs available, fitting a surprising amount of ride into a compact footprint by layering the hairpin turns on elevated platforms above the track below. Steel wild mouse models appear at parks around the world from manufacturers including Mack Rides, Maurer, and Gerstlauer; wooden wild mouse coasters exist but are rare. The ride profile appeals broadly — the cars are accessible to riders of many heights and ages, the speed is moderate, and the hairpin-turn sensation is reliably surprising regardless of how many times a rider has experienced it.',
-    relatedTermIds: ['gerstlauer', 'mack-rides', 'spinning-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'gerstlauer',
+      'mack-rides',
+      'spinning-coaster',
+      'steel-coaster',
+    ],
     aliases: ['wild mouse coaster'],
     alternateNames: ['mouse coaster', 'Wilde Maus'],
   },
@@ -1931,7 +2011,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'A series of humps or hills designed to provide airtime.',
     definition:
       'A camelback (or camelback hill) is a classic roller coaster element consisting of a large, hump-shaped hill. As the train crests the hill, riders experience "floater" airtime, the sensation of lifting out of their seats. Camelbacks are foundational to hypercoasters and are often used in sequence to provide multiple moments of weightlessness.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['Camelbacks', 'Camel back'],
   },
   {
@@ -1950,7 +2030,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'A term used by enthusiasts to refer to non-enthusiast park guests.',
     definition:
       'GP, or "General Public," is a slang term used within the theme park and roller coaster enthusiast community to describe average park guests who do not share the same level of technical knowledge or passion for rides. The term is often used when discussing how parks market their attractions or how guests react to ride operations and closures. It is generally not used by parks themselves.',
-    relatedTermIds: ['credit', 'ert', 'touring-plan'],
+    relatedTermIds: ['credit', 'ert', 'fanboy', 'hype-train', 'mackprodukt', 'touring-plan'],
     aliases: ['General Public'],
   },
   {
@@ -2157,6 +2237,186 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'An E-Stop (Emergency Stop) is a safety mechanism or procedure that immediately cuts power or applies brakes to halt all ride movement. It can be triggered automatically by sensors or manually by operators. After an E-Stop, the ride must usually be inspected and reset before resuming service.',
     relatedTermIds: ['block-brake', 'downtime', 'in-show-exit'],
+  },
+  {
+    id: 'mackprodukt',
+    name: 'Mackprodukt',
+    shortDefinition:
+      'German-community slang for the reflexive, uncritical praise that devoted Mack Rides fans heap on anything the manufacturer builds.',
+    definition:
+      'A "Mackprodukt" (literally "Mack product") is an in-joke from the German-speaking coaster enthusiast community, used to gently mock the fervent loyalty of Mack Rides fans. Because Mack is a German manufacturer and the family behind Europa-Park — by far the most beloved park in the region — its fanbase is famously devoted, and critics joke that every new Mack ride is hailed as a masterpiece before anyone has even ridden it.\n\nThe meme is built around a handful of stock phrases that supposedly stand in for any real analysis: admiration for how beautifully the track is bent ("die Schiene ist so toll gebogen" — "the track is so wonderfully curved") and for the gorgeous trains ("wunderschöne Fahrfiguren" — "beautiful ride cars"), aesthetic compliments that conveniently sidestep how the coaster actually rides. Calling something a "Mackprodukt", or simply quoting the phrases, has become the community\'s shorthand for affectionate eye-rolling at brand loyalty winning out over substance.',
+    relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
+    aliases: ['Mack-Produkt', 'Mackprodukte'],
+  },
+  {
+    id: 'onride-offride',
+    name: 'On-Ride / Off-Ride',
+    shortDefinition:
+      'Enthusiast shorthand for footage filmed on board a ride (on-ride) versus filmed from the ground watching it (off-ride).',
+    definition:
+      "On-ride and off-ride describe the two main ways enthusiasts capture a coaster. An on-ride video is shot from a rider's seat and conveys the pacing, airtime and forces of the experience, while an off-ride video is filmed trackside and shows the layout, theming and trains in motion. The pair comes up constantly when discussing POVs and ride videos shared online; because many parks ban loose phone filming on board, sanctioned on-ride media is especially prized.",
+    relatedTermIds: ['pov', 'ride-photo', 'credit'],
+    aliases: ['On-Ride', 'Off-Ride', 'Onride', 'Offride'],
+  },
+  {
+    id: 're-ride',
+    name: 'Re-Ride',
+    shortDefinition:
+      'Staying on or immediately re-boarding a ride for another lap without leaving your seat or rejoining the queue.',
+    definition:
+      'A re-ride is when a guest is allowed to remain on a ride — or hop straight back into the station — for an additional cycle without walking the full line again. Re-rides are common late in the day, during quiet periods, or at enthusiast events when demand is low and operators simply wave riders back on. Generous re-ride policies are a big draw for coaster fans, allowing back-to-back laps to compare different rows or just enjoy a favourite again.',
+    relatedTermIds: ['credit', 'ert', 'rope-drop'],
+    aliases: ['Re-Rides', 'Reride'],
+  },
+  {
+    id: 'hype-train',
+    name: 'Hype Train',
+    shortDefinition:
+      'The wave of community excitement that builds around an announced ride, sometimes inflating expectations beyond reality.',
+    definition:
+      'The "hype train" is the surge of anticipation that builds across forums and social media once a new attraction is teased or announced. It feeds on construction updates, leaked layouts and early POV releases, and can push expectations sky-high long before opening day. Enthusiasts joke about "boarding the hype train" — and about the inevitable let-down when a ride fails to live up to it. The concept is closely tied to fanbase loyalty and to memes like the Mackprodukt.',
+    relatedTermIds: ['gp', 'mackprodukt', 'fanboy'],
+    aliases: ['Hype', 'Hype-Train'],
+  },
+  {
+    id: 'fanboy',
+    name: 'Fanboy',
+    shortDefinition:
+      'A fan whose devotion to a particular park, manufacturer or ride makes their opinion reflexively positive and uncritical.',
+    definition:
+      'In enthusiast circles a "fanboy" (used regardless of gender) is someone whose attachment to a specific park or manufacturer colours every judgement they make, defending it and praising its products almost on reflex. The label is usually applied half-jokingly, but it captures a real dynamic in the hobby where brand loyalty can outweigh objective assessment — the German-community Mackprodukt meme is essentially fanboyism turned into a running gag.',
+    relatedTermIds: ['mackprodukt', 'hype-train', 'gp'],
+    aliases: ['Fanboys', 'Fangirl'],
+  },
+  {
+    id: 'smoothness',
+    name: 'Ride Smoothness',
+    shortDefinition:
+      'How free a coaster is from jolts, shuffling and vibration — the opposite of a rough or rattly ride.',
+    definition:
+      'Smoothness (German enthusiasts call it "Laufruhe") describes how cleanly a coaster\'s trains track through the layout without head-banging, shuffling or vibration. It is shaped by the precision of the track manufacturing, the train and wheel design, and the ride\'s age and maintenance. Makers like B&M and Mack are renowned for glass-smooth rides, and a coaster keeping its smoothness as it ages is considered a mark of engineering quality. The opposite — a rough, rattling ride — is one of the most common enthusiast complaints.',
+    relatedTermIds: ['rattle', 'b-and-m', 'g-force'],
+    aliases: ['Smooth', 'Laufruhe', 'Glass-smooth'],
+  },
+  {
+    id: 'rattle',
+    name: 'Rattle',
+    shortDefinition:
+      'Unwanted vibration or shaking transmitted through a coaster train, making an otherwise good ride feel rough.',
+    definition:
+      'A rattle is the buzzing, shaking or shuffling sensation that develops when a coaster\'s wheels no longer track perfectly against the rails — often a sign of track wear, wheel condition or ageing construction. German enthusiasts call it "Rattern" or "Geruckel". A rattle can turn an otherwise excellent layout into an uncomfortable experience and is one of the most frequently debated flaws in the community, especially on older Arrow and Vekoma steel coasters. Its absence is praised as smoothness, or Laufruhe.',
+    relatedTermIds: ['smoothness', 'wooden-coaster', 'arrow-dynamics'],
+    aliases: ['Rattling', 'Rattern', 'Geruckel'],
+  },
+  {
+    id: 'restraint-freedom',
+    name: 'Restraint Freedom',
+    shortDefinition:
+      'How much room a rider has to move under the lap bar or shoulder harness — key to how airtime and ejector feel.',
+    definition:
+      'Restraint freedom — "Bügelfreiheit" in the German community — describes how much space is left between the rider and the restraint once it is locked. Generous freedom under a lap bar lets riders lift out of the seat during airtime moments, dramatically intensifying the floating or ejector sensation, while a tight or aggressively-stapled restraint kills that feeling. Enthusiasts prize coasters with loose lap bars (such as many Intamin and Mack designs) for exactly this reason, and complain when staff staple restraints too firmly.',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'stapling'],
+    aliases: ['Bügelfreiheit', 'Restraint Room'],
+  },
+  {
+    id: 'single-rail-coaster',
+    name: 'Single-Rail Coaster',
+    shortDefinition:
+      'A modern coaster type running on one narrow central rail, with riders seated single-file for an exposed, twisty ride.',
+    definition:
+      'A single-rail coaster uses a single narrow box-section rail instead of the usual two parallel rails, with trains in which riders sit one behind another straddling the track. The thin rail allows extremely tight, contorted layouts and a uniquely exposed feeling. Rocky Mountain Construction pioneered the modern version with its "Raptor" model (such as RailBlazer at California\'s Great America), and Vekoma and Intamin have since developed their own single-rail designs, making it one of the most distinctive coaster types of the last decade.',
+    relatedTermIds: ['rmc', 'vekoma', 'steel-coaster'],
+    aliases: ['Single Rail', 'Raptor Track', 'Single-Rail Coasters'],
+  },
+  {
+    id: 'stand-up-coaster',
+    name: 'Stand-Up Coaster',
+    shortDefinition:
+      'A coaster on which riders are secured in a standing position rather than seated.',
+    definition:
+      "A stand-up coaster restrains riders in an upright, standing posture, using a bicycle-style seat and an over-the-shoulder harness to hold them in place. Popular in the late 1980s and 1990s — chiefly from TOGO and B&M — the format changes how forces are felt through the body, with loops and turns putting unusual pressure on the legs. Few new stand-ups have been built since, and several have been converted to other formats (B&M's Mantis became the floorless Rougarou), making surviving examples a sought-after credit.",
+    relatedTermIds: ['b-and-m', 'floorless-coaster', 'steel-coaster'],
+    aliases: ['Stand Up Coaster', 'Standup Coaster', 'Stand-Up Coasters'],
+  },
+  {
+    id: 'bobsled-coaster',
+    name: 'Bobsled Coaster',
+    shortDefinition:
+      'A coaster whose cars run freely through an open, banked trough instead of being locked to a fixed track.',
+    definition:
+      'A bobsled coaster sends its cars down a curved, tube-like trough rather than along a conventional track, so they are free to find their own line through the banked turns — much like a real bobsleigh run. The result is a swooping, laterally-driven ride with no inversions, where speed and the shape of the channel dictate the experience. Schwarzkopf built celebrated early versions, and Mack Rides is the best-known maker of the modern steel bobsled, several of which run at German and Alpine parks.',
+    relatedTermIds: ['mack-rides', 'wild-mouse', 'steel-coaster'],
+    aliases: ['Bobsleigh Coaster', 'Bobbahn', 'Bobsled Coasters'],
+  },
+  {
+    id: 'powered-coaster',
+    name: 'Powered Coaster',
+    shortDefinition:
+      'A coaster-style ride driven continuously by an on-board or track motor instead of relying on gravity.',
+    definition:
+      'A powered coaster looks like a roller coaster but is propelled throughout its circuit by electric motors rather than being lifted once and released to gravity. Because it can hold speed and run multiple laps, it is typically a gentle family attraction — often themed as a mine train, dragon or animal — offering high capacity with modest thrills. Whether powered coasters "count" as credits is a long-running, semi-serious debate in the enthusiast community.',
+    relatedTermIds: ['alpine-coaster', 'credit', 'mack-rides', 'mine-train'],
+    aliases: ['Powered Coasters', 'Powered Track Ride'],
+  },
+  {
+    id: 'water-coaster',
+    name: 'Water Coaster',
+    shortDefinition:
+      'A hybrid of roller coaster and water ride, combining coaster-style track and lifts with one or more splashdowns.',
+    definition:
+      'A water coaster blends coaster mechanics — chain or powered lifts, drops and banked track — with the soaking finale of a water ride. Boats or coaster-style cars are hauled up lift hills and sent through dips before braking sharply into a trough of water that throws up a wave. Mack Rides is the dominant maker of the modern water coaster, with installations like Poseidon at Europa-Park, and the type is popular because it delivers coaster pacing plus a refreshing splash on hot days.',
+    relatedTermIds: ['mack-rides', 'log-flume', 'splashdown'],
+    aliases: ['Water Coasters', 'Aqua Coaster'],
+  },
+  {
+    id: 'alpine-coaster',
+    name: 'Alpine Coaster',
+    shortDefinition:
+      'A rail-guided downhill coaster, usually on a mountainside, where riders control their own speed with a brake lever.',
+    definition:
+      'An alpine coaster (also called a mountain coaster) is a sled- or cart-based ride fixed to a rail that follows the natural contours of a hillside, letting riders descend at a speed they set themselves with a hand brake. Unlike a traditional coaster there is no train and usually no powered launch — gravity and the terrain provide the ride, while a cable tows carts back to the top. They are a year-round fixture at Alpine resorts and have spread worldwide; the older, trough-based "Sommerrodelbahn" (summer toboggan run) is their close relative.',
+    relatedTermIds: ['terrain-coaster', 'powered-coaster'],
+    aliases: ['Mountain Coaster', 'Alpine Coasters', 'Sommerrodelbahn'],
+  },
+  {
+    id: 'beyond-vertical-drop',
+    name: 'Beyond-Vertical Drop',
+    shortDefinition:
+      'A drop steeper than 90 degrees, so the track tips riders past straight-down and briefly faces them backward.',
+    definition:
+      "A beyond-vertical drop exceeds 90 degrees of steepness, meaning the track curls back under itself so riders are momentarily tilted past straight-down and pointed slightly backward toward the structure. The effect maximises the sensation of free-fall and the fear of the drop. Gerstlauer's Euro-Fighter model popularised the format with drops around 95–97°, and B&M and others have built dive coasters with similar overhanging first drops. Rides like Mumbo Jumbo and Takabisha have held records for the steepest such drops.",
+    relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
+    aliases: ['Beyond Vertical Drop', 'Over-Vertical Drop', 'Beyond-Vertical Drops'],
+  },
+  {
+    id: 'splashdown',
+    name: 'Splashdown',
+    shortDefinition:
+      'The water-braking finale of a water ride or water coaster, where the boat hits a trough and throws up a wave.',
+    definition:
+      'A splashdown is the moment a boat or car plunges into a shallow channel of water at the bottom of a drop, using the water both to slow the vehicle and to launch a dramatic curtain of spray. On water coasters and log flumes it is the signature soak, and designers tune the depth and shape of the trough to control how drenched riders — and onlookers on nearby bridges — get. A well-placed splashdown is as much a spectator attraction as a ride element.',
+    relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
+    aliases: ['Splash-down', 'Splashdowns', 'Water Splashdown'],
+  },
+  {
+    id: 'quad-down',
+    name: 'Quad-Down',
+    shortDefinition:
+      'A series of four successive descending hops that deliver repeated, rapid-fire airtime near the end of a layout.',
+    definition:
+      'A quad-down (and its smaller cousins the triple-down and double-down) is a stack of descending steps taken in quick succession, each giving a sharp pop of airtime as the train drops, levels briefly and drops again. The element is a favourite on wooden and hybrid coasters for delivering machine-gun airtime in a compact footprint, building on the same idea as the camelback and bunny hop but chaining the hops into one rapid sequence.',
+    relatedTermIds: ['airtime', 'camelback', 'wooden-coaster'],
+    aliases: ['Quad Down', 'Triple-Down', 'Double-Down'],
+  },
+  {
+    id: 's-hill',
+    name: 'S-Hill',
+    shortDefinition:
+      'An S-shaped airtime hill that throws riders to one side as it lifts them, mixing floatiness with a lateral kick.',
+    definition:
+      'An S-hill is an airtime hill built with an S-shaped curve, so as the train crests and floats it is also pushed laterally to one side and then the other. The result mixes vertical airtime with a sideways snap that catches riders off guard, and it is a hallmark of modern wooden and hybrid coasters that aim for unpredictable, "out-of-control" pacing. It is closely related to the wave turn, which leans the airtime fully onto its side.',
+    relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
+    aliases: ['S Hill', 'S-Hills', 'Speed Bump'],
   },
 ];
 

@@ -280,6 +280,15 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Park image redirect (slug → optimizer). The slug→file mapping is stable,
+        // so cache the 307 at the edge to skip the resolver hop on cache miss.
+        // MUST stay after the blanket /api no-store rule to re-enable CDN caching.
+        source: '/api/image',
+        headers: [
+          { key: 'Cache-Control', value: 'public, s-maxage=86400, stale-while-revalidate=604800' },
+        ],
+      },
+      {
         source: '/:locale/search',
         headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }],
       },

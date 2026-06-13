@@ -93,12 +93,10 @@ export default function BlogEditorDevTestPage() {
   return (
     <div className="container mx-auto max-w-[1400px] px-4 py-6">
       <header className="mb-4">
-        <h1 className="text-foreground text-lg font-semibold">
-          Blog editor — ref: preview test
-        </h1>
+        <h1 className="text-foreground text-lg font-semibold">Blog editor — ref: preview test</h1>
         <p className="text-muted-foreground text-xs">
-          No-auth isolated mount of EditorCanvas. Use this to verify the WYSIWYG
-          annotation renders correctly before exposing the full editor.
+          No-auth isolated mount of EditorCanvas. Use this to verify the WYSIWYG annotation renders
+          correctly before exposing the full editor.
         </p>
       </header>
       <div className="grid gap-6 lg:grid-cols-[1fr_minmax(360px,42%)]">

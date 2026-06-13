@@ -86,7 +86,10 @@ function ImagePickerBody({
 
   useEffect(() => {
     const ctrl = new AbortController();
-    fetch('/api/admin/blog-editor/images', { signal: ctrl.signal, headers: { [ADMIN_PASS_HEADER]: pass } })
+    fetch('/api/admin/blog-editor/images', {
+      signal: ctrl.signal,
+      headers: { [ADMIN_PASS_HEADER]: pass },
+    })
       .then((r) => r.json())
       .then((data: { images?: BlogImage[] }) => setImages(data.images ?? []))
       .catch(() => setImages([]))
@@ -123,7 +126,13 @@ function ImagePickerBody({
     if (view === 'list' || withCaption) {
       setStagedSrc(src);
       setAlt(
-        (prev) => prev || src.split('/').pop()?.replace(/\.[a-z]+$/i, '') || ''
+        (prev) =>
+          prev ||
+          src
+            .split('/')
+            .pop()
+            ?.replace(/\.[a-z]+$/i, '') ||
+          ''
       );
       return;
     }
@@ -154,10 +163,7 @@ function ImagePickerBody({
       top,
       left: Math.max(
         16,
-        Math.min(
-          window.innerWidth - 16 - 720,
-          (anchorRect.left + anchorRect.right) / 2 - 360
-        )
+        Math.min(window.innerWidth - 16 - 720, (anchorRect.left + anchorRect.right) / 2 - 360)
       ),
       width: 'min(720px, 92vw)',
       maxHeight: DIALOG_HEIGHT,
@@ -192,22 +198,14 @@ function ImagePickerBody({
               if (e.key === 'Escape') onClose();
             }}
             placeholder="Search images under /blog/images…"
-            className="text-foreground flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground/50"
+            className="text-foreground placeholder:text-muted-foreground/50 flex-1 bg-transparent text-base outline-none"
           />
           {loading && <span className="text-muted-foreground text-xs">loading…</span>}
           <div className="bg-muted/40 inline-flex overflow-hidden rounded-md p-0.5">
-            <ViewBtn
-              active={view === 'grid'}
-              onClick={() => setView('grid')}
-              label="Grid"
-            >
+            <ViewBtn active={view === 'grid'} onClick={() => setView('grid')} label="Grid">
               <LayoutGrid className="h-3.5 w-3.5" />
             </ViewBtn>
-            <ViewBtn
-              active={view === 'list'}
-              onClick={() => setView('list')}
-              label="List"
-            >
+            <ViewBtn active={view === 'list'} onClick={() => setView('list')} label="List">
               <ListIcon className="h-3.5 w-3.5" />
             </ViewBtn>
           </div>
@@ -254,7 +252,7 @@ function ImagePickerBody({
             value={customUrl}
             onChange={(e) => setCustomUrl(e.target.value)}
             placeholder="…or paste an external image URL"
-            className="text-foreground flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/50"
+            className="text-foreground placeholder:text-muted-foreground/50 flex-1 bg-transparent text-sm outline-none"
           />
           <button
             type="button"
@@ -275,14 +273,12 @@ function ImagePickerBody({
           {!loading && allFiltered.length === 0 && (
             <div className="text-muted-foreground p-8 text-center text-sm">
               <ImageIcon className="mx-auto mb-2 h-6 w-6 opacity-40" />
-              {images.length === 0
-                ? 'No images under /public/blog/images yet.'
-                : 'No matches.'}
+              {images.length === 0 ? 'No images under /public/blog/images yet.' : 'No matches.'}
             </div>
           )}
           {Array.from(groups.entries()).map(([folder, imgs]) => (
             <div key={folder} className="mb-4 last:mb-0">
-              <div className="text-muted-foreground mb-2 inline-flex items-center gap-1 px-1 text-[10px] font-semibold uppercase tracking-wider">
+              <div className="text-muted-foreground mb-2 inline-flex items-center gap-1 px-1 text-[10px] font-semibold tracking-wider uppercase">
                 <Folder className="h-3 w-3" />
                 {folder}
                 <span className="opacity-60">· {imgs.length}</span>
@@ -330,9 +326,7 @@ function ImagePickerBody({
                           onClick={() => onItemClick(img.src)}
                           className={cn(
                             'group/row flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left transition-colors',
-                            isStaged
-                              ? 'bg-primary/10 text-primary'
-                              : 'hover:bg-accent/40'
+                            isStaged ? 'bg-primary/10 text-primary' : 'hover:bg-accent/40'
                           )}
                         >
                           {/* Thumbnail instead of a generic icon — at list
@@ -379,7 +373,7 @@ function ImagePickerBody({
 
         {stagedSrc && (
           <div className="border-border/60 bg-muted/20 flex flex-col gap-2 border-t px-3 py-3 sm:flex-row sm:items-start">
-            <div className="bg-muted relative h-28 w-28 shrink-0 overflow-hidden rounded-lg border border-border/60">
+            <div className="bg-muted border-border/60 relative h-28 w-28 shrink-0 overflow-hidden rounded-lg border">
               <Image
                 src={stagedSrc}
                 alt="Preview"

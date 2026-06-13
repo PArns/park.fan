@@ -1,5 +1,5 @@
 ---
-title: "Editor Feature Test — All Chips, All Variants"
+title: 'Editor Feature Test — All Chips, All Variants'
 translationKey: editor-feature-test
 date: '2026-06-09'
 updatedAt: '2026-06-09'
@@ -174,12 +174,12 @@ menu with the palette picker.
 
 <!--tbl-theme: primary-->
 
-| Block kind        | Chip selector              | Inspector form         |
-| ----------------- | -------------------------- | ---------------------- |
-| `?info` / `?bare` | `.ref-preview-badge`       | Ref variant + replace  |
-| `?full`           | `.ref-preview-spotlight`   | Same variant editor    |
-| `*-widget`        | `.widget-preview`          | Widget attrs form      |
-| plain `<a>`       | `a[href]`                  | Hyperlink href editor  |
+| Block kind        | Chip selector            | Inspector form        |
+| ----------------- | ------------------------ | --------------------- |
+| `?info` / `?bare` | `.ref-preview-badge`     | Ref variant + replace |
+| `?full`           | `.ref-preview-spotlight` | Same variant editor   |
+| `*-widget`        | `.widget-preview`        | Widget attrs form     |
+| plain `<a>`       | `a[href]`                | Hyperlink href editor |
 
 ### Code block
 

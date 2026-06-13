@@ -22,7 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Fila individual'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Single Riders']
+    aliases: ['Single Riders'],
   },
   {
     id: 'virtual-queue',
@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Pase Express', 'Pases Express']
+    aliases: ['Pase Express', 'Pases Express'],
   },
   {
     id: 'posted-wait-time',
@@ -54,7 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'El tiempo publicado es la estimación oficial mostrada en los letreros en la entrada física de una atracción y/o en la aplicación oficial del parque. park.fan agrega los tiempos de espera publicados de fuentes oficiales cada minuto.',
     relatedTermIds: ['crowd-level', 'wait-time'],
-    aliases: ['tiempo publicado', 'tiempos publicados']
+    aliases: ['tiempo publicado', 'tiempos publicados'],
   },
   {
     id: 'crowd-level',
@@ -74,7 +74,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Un calendario de afluencia es un calendario mensual o anual que muestra los niveles de afluencia previstos para cada día. park.fan genera calendarios de afluencia usando modelos de IA entrenados en años de datos históricos de tiempos de espera, combinados con calendarios de vacaciones escolares, eventos próximos y tendencias estacionales.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['Calendarios de afluencia']
+    aliases: ['Calendarios de afluencia'],
   },
   {
     id: 'peak-day',
@@ -127,7 +127,7 @@ const translations: GlossaryTermTranslation[] = [
       'El momento en que un parque abre oficialmente sus puertas y las colas para las atracciones populares son más cortas.',
     definition:
       'El Rope Drop se refiere al momento en que un parque temático abre para el día — llamado así por la cuerda (o barrera) literal que el personal del parque baja para dejar entrar a los primeros visitantes. Llegar al Rope Drop es una estrategia popular porque las atracciones populares tienen las colas más cortas por la mañana, antes de que las multitudes se acumulen. El horario de park.fan muestra las horas de apertura exactas para que puedas planificar tu estrategia.',
-    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 'wait-time'],
+    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],
   },
   {
     id: 'early-entry',
@@ -220,7 +220,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes']
+    aliases: ['Lightning Lanes'],
   },
   {
     id: 'genie-plus',
@@ -275,7 +275,7 @@ const translations: GlossaryTermTranslation[] = [
       'La foto de atracción es una imagen tomada automáticamente por una cámara fija en un momento clave del recorrido — normalmente la caída de una atracción acuática o el punto más alto de una montaña rusa. Al terminar, los visitantes pueden ver su foto en un quiosco o en la app del parque y decidir si la compran. Muchos parques ofrecen paquetes fotográficos de día que incluyen fotos ilimitadas de todas las atracciones del resort. La foto de atracción es un recuerdo muy apreciado y un clásico momento para compartir en redes sociales.',
     aliases: ['Foto On-Ride'],
     alternateNames: ['Fotos de atracción'],
-    relatedTermIds: ['themed-land'],
+    relatedTermIds: ['onride-offride', 'themed-land'],
   },
   {
     id: 'queue-line',
@@ -361,7 +361,7 @@ const translations: GlossaryTermTranslation[] = [
       'ERT (Exclusive Ride Time) es un período durante el cual un grupo seleccionado — normalmente miembros de un club de entusiastas de montañas rusas, huéspedes de hoteles del resort o titulares de pases anuales — tiene acceso exclusivo a una atracción o conjunto de atracciones sin público general. Durante el ERT los participantes pueden repetir las atracciones con esperas mínimas, logrando a veces decenas de pasadas en una sola sesión. Los eventos ERT los organizan los parques para clubs de entusiastas (como el European Coaster Club o el American Coaster Enthusiasts), para paquetes premium de hotel o como parte de eventos fuera de horario. Para los entusiastas, el ERT es una de las experiencias más preciadas del parque: revela el verdadero carácter de una atracción sin la presión de la cola.',
     alternateNames: ['Exclusive Ride Time', 'Tiempo exclusivo en atracción'],
 
-    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 'rope-drop'],
+    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 're-ride', 'rope-drop'],
   },
   {
     id: 'touring-plan',
@@ -403,7 +403,15 @@ const translations: GlossaryTermTranslation[] = [
       'B&M (Bolliger & Mabillard) es un fabricante suizo de montañas rusas fundado en 1988 por Walter Bolliger y Claude Mabillard. La empresa es reconocida por producir atracciones excepcionalmente suaves y fiables con una experiencia de conducción distintiva: fuertes G positivas, inversiones características (Immelmann, Cobra Roll, Zero-g Roll) y excelente capacidad de despacho. B&M se especializa en coasters invertidos, sit-down con inversiones, hyper coasters (más de 60 m), giga coasters (más de 90 m), wing coasters y dive machines. Prácticamente todos los grandes parques europeos cuentan con al menos una instalación B&M, incluidos Shambhala y Dragon Khan en PortAventura, Silver Star en Europa-Park, Nemesis en Alton Towers y Goliath en Walibi Holland.',
     alternateNames: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
-    relatedTermIds: ['cobra-roll', 'dive-coaster', 'hybrid-coaster', 'immelmann', 'zero-g-roll'],
+    relatedTermIds: [
+      'cobra-roll',
+      'dive-coaster',
+      'hybrid-coaster',
+      'immelmann',
+      'smoothness',
+      'stand-up-coaster',
+      'zero-g-roll',
+    ],
   },
   {
     id: 'intamin',
@@ -423,7 +431,17 @@ const translations: GlossaryTermTranslation[] = [
       'Mack Rides es un fabricante alemán de atracciones con sede en Waldkirch, Baden-Württemberg — a pocos kilómetros de Europa-Park, el parque insignia de la familia. Fundada en 1921, Mack produce atracciones acuáticas, dark rides (incluyendo Test Track y Radiator Springs Racers de Disney) y una cartera creciente de montañas rusas de alta emoción. Su Blue Fire Megacoaster en Europa-Park (2009) fue la primera atracción en incorporar el elemento Stengel Dive. Los hyper coasters más recientes de Mack (Ride to Happiness en Plopsaland, Kondaa en Walibi Belgium) han recibido una amplia aclamación crítica de la comunidad entusiasta. Las atracciones de Mack Rides son una presencia definitoria en los parques europeos, especialmente en el propio Europa-Park de la familia Mack.',
     alternateNames: ['Mack'],
 
-    relatedTermIds: ['b-and-m', 'intamin', 'launch-coaster', 'stengel-dive'],
+    relatedTermIds: [
+      'b-and-m',
+      'bobsled-coaster',
+      'intamin',
+      'launch-coaster',
+      'mackprodukt',
+      'powered-coaster',
+      'splashdown',
+      'stengel-dive',
+      'water-coaster',
+    ],
   },
   {
     id: 'rmc',
@@ -434,7 +452,14 @@ const translations: GlossaryTermTranslation[] = [
       'Rocky Mountain Construction (RMC) es un fabricante y empresa de mantenimiento de montañas rusas americano con sede en Hayden, Idaho, conocido por inventar el sistema de pista de acero I-box que puede instalarse sobre la estructura de madera de un coaster existente. Esta tecnología de conversión permitió a los parques transformar viejas montañas rusas de madera en atracciones híbridas de primera clase con airtime intenso, múltiples inversiones y caídas más allá de la vertical — algo imposible en las pistas de madera tradicionales. Conversiones de RMC como Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) y Wildfire (Kolmården) se convirtieron rápidamente en favoritas de los entusiastas. En Europa, el híbrido de nueva construcción de RMC, Untamed en Walibi Holland, está considerado uno de los mejores coasters del continente.',
     alternateNames: ['Rocky Mountain Construction'],
 
-    relatedTermIds: ['airtime', 'barrel-roll-drop', 'hybrid-coaster', 'stall', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime',
+      'barrel-roll-drop',
+      'hybrid-coaster',
+      'single-rail-coaster',
+      'stall',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'vekoma',
@@ -445,7 +470,7 @@ const translations: GlossaryTermTranslation[] = [
       "Vekoma Rides Manufacturing es un fabricante neerlandés de montañas rusas con sede en Vlodrop, Países Bajos, y uno de los productores más prolíficos del mundo en términos de instalaciones totales. Fundada en 1926 como empresa de ingeniería mecánica, Vekoma se reconvirtió en atracciones en la década de 1970 y alcanzó fama mundial con su Boomerang — un compacto shuttle coaster con tres inversiones que se licenció barato y se instaló en parques de todo el mundo. Otros modelos icónicos incluyen el Suspended Looping Coaster (SLC), el Giant Inverted Boomerang y el Mine Train. A partir de la década de 2010, Vekoma se reinventó con una moderna línea 'nueva generación' con sistemas de conducción más suaves, layouts innovadores y mejoradas atracciones familiares. Nuevos modelos como el Family Boomerang, el Tilt Coaster y los coasters familiares suspendidos aparecen cada vez más en parques europeos. Disney también ha encargado diseños Vekoma personalizados para sus resorts.",
     alternateNames: ['Vekoma Rides'],
 
-    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin'],
+    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
   },
   {
     id: 'gerstlauer',
@@ -458,6 +483,7 @@ const translations: GlossaryTermTranslation[] = [
 
     relatedTermIds: [
       'b-and-m',
+      'beyond-vertical-drop',
       'euro-fighter',
       'intamin',
       'spinning-coaster',
@@ -483,7 +509,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Montaña Rusa Lanzada', 'Catapulta'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters', 'montañas rusas de lanzamiento']
+    aliases: ['Launch Coasters', 'montañas rusas de lanzamiento'],
   },
   {
     id: 'wooden-coaster',
@@ -492,7 +518,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una montaña rusa construida principalmente en madera, caracterizada por su vibración distintiva, el movimiento lateral y el airtime impredecible.',
     definition:
       'Una montaña rusa de madera es una atracción construida con pista y estructura de soporte de madera. A diferencia de las de acero, la madera tiene una flexión y una imprecisión naturales que crean la característica vibración, el bamboleo lateral y el airtime impredecible que tanto gustan a los entusiastas. Entre las montañas rusas de madera más famosas están Balder en Liseberg, The Beast en Kings Island y Megafobia en Oakwood. Requieren un mantenimiento constante — la pista debe relamiparse regularmente — y son sensibles a los cambios meteorológicos. El proceso de conversión de RMC puede transformar viejas montañas rusas de madera en coasters híbridos de pista de acero manteniendo la estructura de madera.',
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
     aliases: ['Montañas rusas de madera'],
     alternateNames: ['Woodie', 'Woodies', 'Coaster de madera'],
   },
@@ -503,7 +529,15 @@ const translations: GlossaryTermTranslation[] = [
       'Una montaña rusa construida principalmente con pista y estructura de acero, conocida por su viaje suave y preciso.',
     definition:
       'Una montaña rusa de acero se construye con pista tubular o plana de acero soportada por una estructura de acero. A diferencia de las montañas rusas de madera con su flexibilidad natural, el acero ofrece a los ingenieros un control preciso de las fuerzas G, transiciones e inversiones. El viaje suave y predecible de una montaña rusa de acero permite crear layouts complejos con múltiples inversiones, curvas cerradas y secciones de alta velocidad.\n\nLas montañas rusas de acero dominan el desarrollo moderno de coasters. Los ejemplos más celebrados en Europa incluyen Shambhala en PortAventura, Nemesis en Alton Towers y Silver Star en Europa-Park. Las montañas rusas de acero van desde pequeñas atracciones familiares hasta mega coasters récord-rompedores. La precisión del acero requiere inspección y mantenimiento regular, pero permite menos margen de error de diseño que la flexibilidad de la madera.',
-    relatedTermIds: ['hyper-coaster', 'inversion', 'launch-coaster', 'wooden-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'hyper-coaster',
+      'inversion',
+      'launch-coaster',
+      'single-rail-coaster',
+      'stand-up-coaster',
+      'wooden-coaster',
+    ],
     aliases: ['Montañas rusas de acero', 'Acero'],
   },
   {
@@ -545,7 +579,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un modelo compacto de Gerstlauer con una primera caída vertical o más allá de la vertical lanzada desde una cadena de ascenso vertical, diseñado para ofrecer emociones intensas en un espacio reducido.',
     definition:
       'El Euro-Fighter es el modelo compacto más característico de Gerstlauer, reconocible por su primera caída vertical (90 grados) o más allá de la vertical (hasta 97 grados) tras una cadena de ascenso vertical. Diseñado para parques con espacio limitado, los Euro-Fighters concentran emociones intensas — múltiples inversiones, curvas cerradas y altas G positivas — en un área pequeña. La caída más allá de la vertical es especialmente notable: el tren se detiene en lo alto con los pasajeros inclinados sobre el vacío antes de la caída. Euro-Fighters europeos incluyen Saw – The Ride en Thorpe Park, Rage en Adventure Island y Fluch von Novgorod en Hansa-Park.',
-    relatedTermIds: ['first-drop', 'inversion', 'lifthill'],
+    relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
     id: 'dive-coaster',
@@ -554,7 +588,13 @@ const translations: GlossaryTermTranslation[] = [
       'Un tipo de montaña rusa con un tren excepcionalmente ancho y una caída vertical o más allá de la vertical, con una pausa deliberada en la cresta antes del plunge.',
     definition:
       'Un Dive Coaster se caracteriza por un tren ancho (normalmente 8–10 pasajeros por fila), una caída vertical o más allá de la vertical (90+ grados) y una pausa teatral en lo alto de la caída — el tren se detiene unos instantes en la cresta antes de soltarse, maximizando la anticipación psicológica. El tren ancho ofrece a todos los pasajeros una vista despejada directamente hacia abajo. La línea Dive Machine de B&M (Oblivion en Alton Towers, SheiKra en Busch Gardens) fue pionera del concepto; el modelo Dive Coaster de Gerstlauer es una versión alternativa. La pausa deliberada antes de la caída es una decisión de diseño consciente para aumentar la tensión y es uno de los momentos más comentados en las conversaciones sobre parques temáticos.',
-    relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
+    relatedTermIds: [
+      'b-and-m',
+      'beyond-vertical-drop',
+      'euro-fighter',
+      'first-drop',
+      'launch-coaster',
+    ],
   },
   {
     id: 'vr-coaster',
@@ -572,7 +612,15 @@ const translations: GlossaryTermTranslation[] = [
       'La sensación de ingravidez o elevación del asiento que se experimenta en las montañas rusas durante los momentos de G negativas.',
     definition:
       'El Airtime describe la sensación de ingravidez — G negativas — que los pasajeros de montañas rusas experimentan cuando el coaster corona una colina o un valle más rápido que la caída libre. Existen dos tipos principales: floater airtime (G negativas suaves, una sensación de flotación ligera) y ejector airtime (G negativas intensas, donde la barra de seguridad o el cinturón son lo único que te mantiene en el asiento). El airtime está ampliamente considerado como la característica definitoria de los grandes coasters de acero y de madera. Las airtime hills (también llamadas camelbacks) están diseñadas específicamente para maximizar esta sensación dando a la pista una trayectoria parabólica de caída libre.',
-    relatedTermIds: ['airtime-hill', 'bunnyhop', 'first-drop', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime-hill',
+      'bunnyhop',
+      'first-drop',
+      'quad-down',
+      'restraint-freedom',
+      's-hill',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'inversion',
@@ -633,7 +681,7 @@ const translations: GlossaryTermTranslation[] = [
       'El descenso inicial tras la lifthill — normalmente el punto más alto y rápido del recorrido, que define el carácter de la montaña rusa.',
     definition:
       'El First Drop es el descenso principal inmediatamente después de la lifthill o del segmento de lanzamiento. En la mayoría de los coasters tradicionales es la colina más alta y produce la velocidad máxima de la atracción. El ángulo, la altura y el perfil influyen fuertemente en el carácter general: las caídas con ángulos pronunciados (más de 80–90 grados) crean intensas sensaciones de aceleración, mientras que las caídas parabólicas pueden generar un airtime potente a pesar de un ángulo más suave. Los dive coasters presentan caídas que superan los 90 grados (más allá de la vertical), obligando a los pasajeros a inclinarse sobre el borde. El First Drop es a menudo el momento más esperado en cualquier coaster nuevo y es ampliamente filmado como material promocional.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'dive-coaster', 'lifthill'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'beyond-vertical-drop', 'dive-coaster', 'lifthill'],
   },
   {
     id: 'airtime-hill',
@@ -645,7 +693,7 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Colina de airtime'],
     alternateNames: ['Camelback', 'Bunny Hill'],
 
-    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 'stengel-dive'],
+    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 's-hill', 'stengel-dive'],
   },
   {
     id: 'helix',
@@ -801,7 +849,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una serie de pequeñas colinas rápidas cerca del final del recorrido que producen un suave airtime flotante cuando el tren va perdiendo velocidad.',
     definition:
       'Un Bunnyhop (salto de conejo) es una serie de colinas pequeñas y rápidas situadas hacia el final del recorrido cuando el tren ha perdido la mayor parte de su energía cinética. A esa velocidad reducida, las colinas generan un suave floater airtime — una flotación rítmica y ligera en lugar del intenso ejector airtime de las colinas más rápidas al inicio del recorrido. El nombre refleja el movimiento ligero y saltarín que recuerda al salto de un conejo. Los Bunnyhops son finales habituales en hyper coasters, giga coasters y montañas rusas de madera, proporcionando un remate alegre antes del brake run. Los entusiastas suelen considerar los Bunnyhops bien ejecutados como señal de un diseño de recorrido cuidadoso.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run', 's-hill'],
   },
   {
     id: 'stengel-dive',
@@ -849,7 +897,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Credits'],
     alternateNames: ['Cred', 'Creds', 'Contador de montañas rusas'],
 
-    relatedTermIds: ['hybrid-coaster', 'pov', 'wooden-coaster'],
+    relatedTermIds: [
+      'hybrid-coaster',
+      'mackprodukt',
+      'onride-offride',
+      'pov',
+      'powered-coaster',
+      're-ride',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'pov',
@@ -861,7 +917,7 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Point of View'],
     alternateNames: ['On-Ride Video', 'Video en cabina', 'Perspectiva de montaje'],
 
-    relatedTermIds: ['credit', 'dark-ride'],
+    relatedTermIds: ['credit', 'dark-ride', 'onride-offride'],
   },
   {
     id: 'stacking',
@@ -1067,7 +1123,7 @@ const translations: GlossaryTermTranslation[] = [
       'La fuerza G (equivalente gravitacional) mide la aceleración que experimenta un pasajero en relación con la gravedad normal de la Tierra. Las fuerzas G positivas (por encima de 1G) presionan a los pasajeros contra sus asientos al pasar por valles o curvas cerradas. Las fuerzas G negativas (por debajo de 0G) levantan a los pasajeros de sus asientos y crean airtime. Las fuerzas G laterales actúan horizontalmente, empujando a los pasajeros hacia los lados en curvas y transiciones.\n\nLas montañas rusas están diseñadas para secuenciar estas fuerzas de forma deliberada. Un valle que genera 4–5G es la marca de una transición del primer descenso potente. Un breve momento de −0,5G en una colina de airtime produce la característica sensación de flotación. La mayoría de las atracciones apuntan a 0–5G de fuerzas positivas sostenidas, con picos breves para efectos dramáticos. Una exposición prolongada a fuerzas G elevadas puede causar malestar o greyout; las montañas rusas bien diseñadas equilibran los picos de intensidad con secciones de recuperación.',
     aliases: ['Fuerzas G', 'G-Forces'],
     alternateNames: ['G-Force'],
-    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs'],
+    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs', 'smoothness'],
   },
   {
     id: 'greyout',
@@ -1189,7 +1245,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un arnés horizontal de seguridad sobre el regazo que permite mayor libertad de movimiento que los arneses de hombro.',
     definition:
       'Una barra de regazo es un dispositivo de seguridad horizontal que asegura a los pasajeros sobre los muslos superiores. A diferencia de los arneses de hombro que envuelven completamente el torso, las barras de regazo permiten que la parte superior del cuerpo se mueva más libremente, creando una sensación más abierta y menos restrictiva. Las barras de regazo son estándar en la mayoría de los hipercoasters, gigas y muchas montañas rusas de madera y acero tradicionales. Durante los momentos de airtime, las barras de regazo permiten a los pasajeros experimentar la sensación completa de ser expulsados del asiento, creando la sensación de que solo la barra evita que salgan del vehículo.\n\nLas barras de regazo son preferidas por los entusiastas para montañas rusas de alto airtime porque proporcionan la sensación de airtime más sin trabas. Sin embargo, requieren un posicionamiento adecuado y pueden sentirse incómodas para pasajeros con torsos más largos. Los fabricantes han refinado continuamente el diseño de la barra de regazo durante décadas, y los modelos modernos son significativamente más cómodos que las generaciones anteriores.',
-    relatedTermIds: ['airtime', 'ride-cart', 'shoulder-harness'],
+    relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     aliases: ['Arnés de regazo'],
   },
   {
@@ -1199,7 +1255,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un arnés de seguridad sobre los hombros que envuelve completamente el torso, limitando el movimiento durante el viaje.',
     definition:
       "Un arnés de hombro es un dispositivo de seguridad que desciende sobre ambos hombros y a través de la cintura, envolviendo completamente el torso. Los arneses de hombro fueron estándar en montañas rusas desde los años '80 hasta 2000 y siguen siendo comunes en coasters invertidos, algunos coasters suspendidos y atracciones familiares donde la seguridad máxima es prioridad. Los arneses modernos incluyen mecanismos de trinquete que permiten una tensión variable para acomodar diferentes tipos de cuerpo.\n\nCuando estás sentado en un arnés de hombro en una montaña rusa de alto airtime, la sensación es notablemente diferente de una barra de regazo: los pasajeros no pueden elevarse del asiento tan dramáticamente porque el arnés los mantiene hacia abajo. Este compromiso — mayor seguridad y comodidad frente a una sensación de airtime menos intensa — es una opción de diseño clave que hacen los fabricantes.",
-    relatedTermIds: ['airtime', 'lap-bar', 'ride-cart'],
+    relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     aliases: ['Arnés OTS'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
@@ -1258,7 +1314,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Montaña rusa familiar de acero ambientada como vagoneta de mina.',
     definition:
       'Un tren minero es una montaña rusa de acero para familias, estilizada como una vagoneta de mina desbocada. Típicamente con velocidades moderadas, pequeñas caídas y curvas cerradas a través de túneles y formaciones rocosas temáticas. Apta para un amplio rango de edades. Ejemplos: Big Thunder Mountain Railroad (parques Disney) y Gold Rush (Plopsaland).',
-    relatedTermIds: ['steel-coaster', 'themed-land'],
+    relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mine coaster', 'vagoneta de mina', 'coaster familiar', 'mine train'],
   },
   {
@@ -1267,7 +1323,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Montaña rusa diseñada para seguir el paisaje natural.',
     definition:
       'Un terrain coaster está construido para aprovechar la topografía natural — colinas, valles y barrancos — en lugar de depender enteramente de estructuras artificiales. La pista interactúa estrechamente con el terreno, creando una sensación de velocidad e inmersión. Ejemplos clásicos: The Beast (Kings Island) y Ravine Flyer II (Waldameer).',
-    relatedTermIds: ['airtime', 'steel-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     aliases: ['terrain coaster', 'coaster de terreno', 'montaña rusa paisajística'],
   },
   {
@@ -1276,7 +1332,13 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Montaña rusa de acero sin suelo, con los pies colgando libremente.',
     definition:
       'En un floorless coaster, el piso del vehículo se retrae una vez que los pasajeros están sujetos, dejando las piernas colgando sobre el raíl. A diferencia de los coasters invertidos, el raíl pasa por debajo del vehículo. B&M fue pionera con Medusa (1999). Ejemplo europeo: Goliath (Walibi Holland).',
-    relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'b-and-m',
+      'dive-coaster',
+      'inverted-coaster',
+      'stand-up-coaster',
+      'steel-coaster',
+    ],
     aliases: ['floorless', 'coaster sin suelo', 'floorless coaster'],
   },
   {
@@ -1285,7 +1347,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Fabricante americano responsable del primer looping moderno.',
     definition:
       "Arrow Dynamics (fundada en 1945) fue un fabricante americano pionero que introdujo el raíl tubular de acero moderno y el primer loop vertical moderno en Corkscrew (Knott's Berry Farm, 1975). Las atracciones Arrow son conocidas por sus corkscrews y suspended looping coasters. La empresa se declaró en quiebra en 2001 y sus activos fueron adquiridos por S&S.",
-    relatedTermIds: ['corkscrew', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
+    relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
   {
@@ -1375,7 +1437,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Curva peraltada que genera airtime en mitad del cambio de dirección.',
     definition:
       'Un wave turn es una curva muy peraltada a alta velocidad que atraviesa brevemente fuerzas G negativas o laterales, creando una sensación de airtime en mitad de la curva. Frecuente en atracciones de Rocky Mountain Construction, el elemento combina cambio direccional con ejector o floater airtime. Se puede encontrar en Wildfire (Kolmården) y Untamed (Walibi Holland).',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc'],
+    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn', 'curva con airtime'],
   },
   {
@@ -1577,7 +1639,13 @@ const translations: GlossaryTermTranslation[] = [
       'Atracción de canal de agua en que barcas con forma de tronco recorren un circuito y terminan con un gran chapuzón.',
     definition:
       'Un descenso de troncos (log flume) es una atracción acuática en la que los visitantes se sientan en embarcaciones con forma de tronco y recorren un canal lleno de agua. Tras secciones tranquilas llega una rampa empinada final que provoca un gran chapuzón casi seguro para los pasajeros. Los descensos de troncos se introdujeron en los años 1960 y se han convertido en un elemento casi universal de los parques de atracciones, apreciados por su atractivo familiar, su capacidad moderada y su popularidad veraniega. Ejemplos europeos destacados: Poseidon en Europa-Park y numerosas instalaciones de tipo Wildwasserbahn en parques de habla alemana.',
-    relatedTermIds: ['height-requirement', 'river-rapids', 'water-ride'],
+    relatedTermIds: [
+      'height-requirement',
+      'river-rapids',
+      'splashdown',
+      'water-coaster',
+      'water-ride',
+    ],
     aliases: ['log flume', 'troncos', 'río de troncos', 'Wildwasserbahn', 'barca de troncos'],
   },
   {
@@ -1856,7 +1924,13 @@ const translations: GlossaryTermTranslation[] = [
       'Cuando un operador aprieta los barcos de regazo o los arneses demasiado contra los riders — eliminando el confort y el airtime que la atracción fue diseñada para ofrecer.',
     definition:
       'El stapling se refiere a la práctica — intencional o por exceso de precaución — de un operador que empuja un lap bar o arnés de hombros tan firmemente contra un rider que queda mucho más ajustado de lo mínimo necesario para la seguridad. El término proviene de la sensación de estar "grapado" al asiento. En las montañas rusas centradas en el airtime, los lap bars deben quedar suficientemente sueltos para que los riders puedan elevarse ligeramente del asiento en las crestas de las colinas — eso es airtime. Un rider stapled permanece pegado al asiento durante toda la vuelta y no puede experimentar la sensación de flotación prevista, por bien diseñadas que estén las colinas.\n\nEl stapling es una fuente habitual de frustración en la comunidad de entusiastas, especialmente en montañas rusas de madera e híbridas donde el airtime es la atracción principal. Algunos parques son conocidos por su política sistemáticamente ajustada; otros se valoran por su libertad de lap bar.',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lap-bar', 'shoulder-harness'],
+    relatedTermIds: [
+      'airtime',
+      'ejector-airtime',
+      'lap-bar',
+      'restraint-freedom',
+      'shoulder-harness',
+    ],
     aliases: ['stapled', 'arnés demasiado ajustado', 'barra demasiado apretada'],
   },
   {
@@ -1876,7 +1950,13 @@ const translations: GlossaryTermTranslation[] = [
       'Un tipo de montaña rusa con pequeños vehículos individuales y un circuito compacto de curvas cerradas y planas en el borde de plataformas elevadas.',
     definition:
       'Una wild mouse (ratón salvaje) utiliza pequeños vehículos de dos a cuatro personas en lugar de trenes largos. Su sello distintivo es una serie de curvas en horquilla cerradas y poco peraltadas ejecutadas en los bordes más exteriores de la vía. La escasa inclinación — a diferencia de las curvas muy peraltadas de otras montañas rusas — lanza a los riders lateralmente contra la pared del vehículo, y la inercia del movimiento hace que la curva parezca llegar más tarde de lo esperado, creando la convincente sensación de que el vehículo está a punto de salirse de la vía.\n\nLas wild mouse son de las diseños más eficientes en cuanto a espacio, encajando una sorprendente cantidad de vía en una huella compacta al apilar los niveles de curvas en horquilla. Son comunes en parques de todo el mundo y de muy distintos tamaños. Fabricantes destacados: Mack Rides, Maurer y Gerstlauer.',
-    relatedTermIds: ['gerstlauer', 'mack-rides', 'spinning-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'gerstlauer',
+      'mack-rides',
+      'spinning-coaster',
+      'steel-coaster',
+    ],
     aliases: ['wild mouse coaster', 'ratón salvaje', 'Wilde Maus'],
   },
   {
@@ -2090,7 +2170,7 @@ const translations: GlossaryTermTranslation[] = [
       'Una serie de jorobas o colinas diseñadas para proporcionar tiempo en el aire (airtime).',
     definition:
       'Un camelback (o colina camelback) es un elemento clásico de montaña rusa que consiste en una gran colina en forma de joroba. A medida que el tren corona la colina, los pasajeros experimentan "floater airtime", la sensación de elevarse de sus asientos. Los camelbacks son fundamentales para las hypercoasters y a menudo se usan en secuencia para proporcionar múltiples momentos de ingravidez.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['Camelbacks', 'Lomo de camello', 'Colina de aire'],
   },
   {
@@ -2110,7 +2190,7 @@ const translations: GlossaryTermTranslation[] = [
       'Un término usado por los entusiastas para referirse a los visitantes que no son entusiastas.',
     definition:
       'GP, o "General Public", es un término de jerga utilizado dentro de la comunidad de entusiastas de los parques temáticos y las montañas rusas para describir a los visitantes promedio de los parques que no comparten el mismo nivel de conocimiento técnico o pasión por las atracciones. El término se usa a menudo cuando se discute cómo los parques comercializan sus atracciones o cómo reaccionan los visitantes a las operaciones y cierres. Generalmente no es usado por los propios parques.',
-    relatedTermIds: ['credit', 'ert', 'touring-plan'],
+    relatedTermIds: ['credit', 'ert', 'fanboy', 'hype-train', 'mackprodukt', 'touring-plan'],
     aliases: ['General Public', 'Público general'],
   },
   {
@@ -2336,6 +2416,186 @@ const translations: GlossaryTermTranslation[] = [
       'El E-Stop (Emergency Stop) es la desconexión inmediata de una atracción por seguridad. Se activa manual o automáticamente si los sensores detectan anomalías. Los trenes se detienen en zonas seguras (frenos) y la atracción suele requerir una inspección antes de volver a ponerse en marcha.',
     relatedTermIds: ['block-brake', 'downtime', 'in-show-exit'],
     aliases: ['E-Stop', 'parada de seguridad'],
+  },
+  {
+    id: 'mackprodukt',
+    name: 'Mackprodukt',
+    shortDefinition:
+      'Jerga de la comunidad germanoparlante para el elogio reflejo y acrítico que los fans de Mack Rides dedican a cualquier novedad del fabricante.',
+    definition:
+      'Un "Mackprodukt" (literalmente "producto Mack") es una broma interna de la comunidad germanoparlante de aficionados a las montañas rusas, usada para burlarse con cariño de la ferviente lealtad de los fans de Mack Rides. Como Mack es un fabricante alemán y la familia detrás de Europa-Park — con diferencia el parque más querido de la región —, su base de fans es famosa por su devoción, y los críticos bromean con que cada nueva atracción de Mack es aclamada como una obra maestra antes incluso de haberla probado.\n\nEl meme se construye en torno a un puñado de frases hechas que supuestamente sustituyen a cualquier análisis real: la admiración por lo bien curvada que está la vía ("die Schiene ist so toll gebogen", "la vía está curvada de maravilla") y por los preciosos trenes ("wunderschöne Fahrfiguren", "vagones bellísimos"), cumplidos estéticos que esquivan cómodamente la cuestión de cómo se monta realmente la atracción. Llamar a algo "Mackprodukt", o simplemente citar esas frases, se ha convertido en el atajo de la comunidad para poner los ojos en blanco, con afecto, ante la fidelidad a la marca que se impone a la sustancia.',
+    relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
+    aliases: ['Mack-Produkt', 'Mackprodukte'],
+  },
+  {
+    id: 'onride-offride',
+    name: 'On-Ride / Off-Ride',
+    shortDefinition:
+      'Abreviatura de los aficionados para las imágenes grabadas a bordo de una atracción (on-ride) frente a las grabadas desde el suelo (off-ride).',
+    definition:
+      'On-ride y off-ride describen las dos formas principales en que los aficionados graban una montaña rusa. Un vídeo on-ride se rueda desde el asiento de un pasajero y transmite el ritmo, el airtime y las fuerzas de la experiencia, mientras que un vídeo off-ride se graba desde el borde de la vía y muestra el trazado, la tematización y los trenes en movimiento. La pareja de términos aparece constantemente al hablar de POV y vídeos compartidos en línea; como muchos parques prohíben grabar libremente con el móvil a bordo, las imágenes on-ride autorizadas son especialmente apreciadas.',
+    relatedTermIds: ['pov', 'ride-photo', 'credit'],
+    aliases: ['On-Ride', 'Off-Ride', 'Onride', 'Offride'],
+  },
+  {
+    id: 're-ride',
+    name: 'Re-Ride',
+    shortDefinition:
+      'Permanecer a bordo o volver a subir de inmediato para otra vuelta sin abandonar el asiento ni rehacer la cola.',
+    definition:
+      'Un re-ride ocurre cuando se permite a un visitante permanecer en una atracción — o volver directamente a la estación — para un ciclo adicional sin recorrer toda la fila de nuevo. Los re-rides son habituales a última hora del día, en periodos tranquilos o en eventos para aficionados, cuando la demanda es baja y los operadores simplemente hacen señas a los pasajeros para que sigan. Una política de re-ride generosa es un gran atractivo para los fans de las montañas rusas, ya que permite encadenar vueltas para comparar filas o sencillamente disfrutar otra vez de una favorita.',
+    relatedTermIds: ['credit', 'ert', 'rope-drop'],
+    aliases: ['Re-Rides', 'Reride'],
+  },
+  {
+    id: 'hype-train',
+    name: 'Hype Train',
+    shortDefinition:
+      'La ola de entusiasmo que se forma en la comunidad en torno a una atracción anunciada, inflando a veces las expectativas más allá de la realidad.',
+    definition:
+      'El "hype train" es la oleada de expectación que se propaga por foros y redes sociales en cuanto se insinúa o anuncia una nueva atracción. Se alimenta de avances de la obra, trazados filtrados y primeras POV, y puede disparar las expectativas mucho antes del día de apertura. Los aficionados bromean con "subirse al hype train" — y con la inevitable decepción cuando una atracción no está a la altura. El concepto está estrechamente ligado a la lealtad de los fans y a memes como el Mackprodukt.',
+    relatedTermIds: ['gp', 'mackprodukt', 'fanboy'],
+    aliases: ['Hype', 'Hype-Train'],
+  },
+  {
+    id: 'fanboy',
+    name: 'Fanboy',
+    shortDefinition:
+      'Un fan cuya devoción por un parque, fabricante o atracción concretos vuelve su opinión positiva y acrítica por reflejo.',
+    definition:
+      'En los círculos de aficionados, un "fanboy" (el término se usa sin distinción de género) es alguien cuyo apego a un parque o fabricante concreto tiñe todos sus juicios, defendiendo y alabando sus productos casi por reflejo. La etiqueta suele aplicarse medio en broma, pero capta una dinámica real de la afición en la que la lealtad a la marca puede pesar más que la valoración objetiva — el meme Mackprodukt de la comunidad germanoparlante es, en el fondo, el fanboyismo convertido en chiste recurrente.',
+    relatedTermIds: ['mackprodukt', 'hype-train', 'gp'],
+    aliases: ['Fanboys', 'Fangirl'],
+  },
+  {
+    id: 'smoothness',
+    name: 'Suavidad de marcha',
+    shortDefinition:
+      'Lo libre que está una montaña rusa de tirones, traqueteos y vibraciones — lo contrario de una marcha brusca o que vibra.',
+    definition:
+      'La suavidad de marcha (en inglés "smoothness"; los aficionados alemanes la llaman "Laufruhe") describe con qué limpieza recorren el trazado los trenes de una montaña rusa, sin golpes de cabeza, traqueteos ni vibraciones. Depende de la precisión de fabricación de la vía, del diseño de tren y ruedas, y de la edad y el mantenimiento de la atracción. Fabricantes como B&M y Mack son célebres por sus marchas "lisas como el cristal", y una montaña rusa que conserva su suavidad al envejecer se considera una muestra de calidad de ingeniería. Lo contrario — una marcha brusca y vibrante — es una de las quejas más frecuentes de los aficionados.',
+    relatedTermIds: ['rattle', 'b-and-m', 'g-force'],
+    aliases: ['Smoothness', 'Laufruhe', 'suavidad'],
+  },
+  {
+    id: 'rattle',
+    name: 'Traqueteo',
+    shortDefinition:
+      'Vibración o sacudida no deseada transmitida por un tren de montaña rusa, que vuelve brusca una marcha por lo demás buena.',
+    definition:
+      'Un traqueteo (en inglés "rattle") es la sensación de zumbido, sacudida o temblor que aparece cuando las ruedas de una montaña rusa ya no siguen perfectamente los raíles — a menudo señal de desgaste de la vía, estado de las ruedas o construcción envejecida. Los aficionados alemanes lo llaman "Rattern" o "Geruckel". Un traqueteo puede convertir un trazado excelente en una experiencia incómoda y es uno de los defectos más debatidos en la comunidad, sobre todo en las viejas montañas rusas de acero de Arrow y Vekoma. Su ausencia se elogia como suavidad de marcha.',
+    relatedTermIds: ['smoothness', 'wooden-coaster', 'arrow-dynamics'],
+    aliases: ['Rattle', 'Rattern'],
+  },
+  {
+    id: 'restraint-freedom',
+    name: 'Libertad de movimiento',
+    shortDefinition:
+      'Cuánto espacio tiene un pasajero para moverse bajo la barra o el arnés — clave para cómo se sienten el airtime y el ejector.',
+    definition:
+      'La libertad de movimiento ("Bügelfreiheit" en la comunidad alemana) describe cuánto espacio queda entre el pasajero y el sistema de retención una vez bloqueado. Una amplia libertad bajo una barra de regazo permite que los pasajeros se eleven del asiento en los momentos de airtime, intensificando enormemente la sensación de flotación o de ejector, mientras que una retención ajustada o presionada con fuerza la anula. Los aficionados valoran las montañas rusas con barras de regazo holgadas (como muchos diseños de Intamin y Mack) precisamente por esto, y se quejan cuando el personal aprieta las retenciones en exceso (stapling).',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'stapling'],
+    aliases: ['Bügelfreiheit', 'Restraint Freedom'],
+  },
+  {
+    id: 'single-rail-coaster',
+    name: 'Single-Rail Coaster',
+    shortDefinition:
+      'Tipo moderno de montaña rusa que circula sobre un único raíl central estrecho, con pasajeros sentados en fila para una experiencia expuesta y retorcida.',
+    definition:
+      'Una single-rail coaster usa un único raíl estrecho de sección de caja en lugar de los dos raíles paralelos habituales, con trenes en los que los pasajeros se sientan uno detrás de otro a horcajadas sobre la vía. El raíl fino permite trazados extremadamente ceñidos y retorcidos y una sensación de exposición única. Rocky Mountain Construction encabezó la versión moderna con su modelo "Raptor" (como RailBlazer en el Great America de California); Vekoma e Intamin han desarrollado desde entonces sus propios diseños single-rail, lo que la convierte en uno de los tipos de montaña rusa más distintivos de la última década.',
+    relatedTermIds: ['rmc', 'vekoma', 'steel-coaster'],
+    aliases: ['Single Rail', 'Single-Rail', 'Raptor Track'],
+  },
+  {
+    id: 'stand-up-coaster',
+    name: 'Stand-Up Coaster',
+    shortDefinition:
+      'Una montaña rusa en la que los pasajeros van asegurados de pie en lugar de sentados.',
+    definition:
+      'Una stand-up coaster sujeta a los pasajeros en posición erguida, de pie, mediante un asiento tipo sillín de bicicleta y un arnés de hombros. Populares a finales de los años 80 y en los 90 — sobre todo de TOGO y B&M —, el formato cambia cómo se sienten las fuerzas en el cuerpo: rizos y curvas ejercen una presión inusual sobre las piernas. Desde entonces se han construido pocas nuevas, y varias se han reconvertido a otros formatos (la Mantis de B&M pasó a ser la floorless Rougarou), por lo que los ejemplares supervivientes son un credit codiciado.',
+    relatedTermIds: ['b-and-m', 'floorless-coaster', 'steel-coaster'],
+    aliases: ['Stand Up Coaster', 'Standup Coaster'],
+  },
+  {
+    id: 'bobsled-coaster',
+    name: 'Montaña rusa bob',
+    shortDefinition:
+      'Una montaña rusa cuyos coches circulan libres por un canal abierto y peraltado en lugar de ir fijados a una vía rígida.',
+    definition:
+      'Una montaña rusa bob ("bobsled coaster") envía sus coches por un canal curvo en forma de medio tubo en lugar de por una vía clásica, de modo que encuentran su propia trayectoria en las curvas peraltadas — igual que una pista de bob real. El resultado es una marcha sinuosa, dominada por las fuerzas laterales y sin inversiones, donde la velocidad y la forma del canal dictan la experiencia. Schwarzkopf construyó célebres versiones antiguas, y Mack Rides es el fabricante más conocido del bob de acero moderno, varios de los cuales funcionan en parques alemanes y alpinos.',
+    relatedTermIds: ['mack-rides', 'wild-mouse', 'steel-coaster'],
+    aliases: ['Bobsled Coaster', 'Bobbahn', 'Bob'],
+  },
+  {
+    id: 'powered-coaster',
+    name: 'Powered Coaster',
+    shortDefinition:
+      'Una atracción tipo montaña rusa impulsada de forma continua por un motor a bordo o en la vía, en lugar de depender de la gravedad.',
+    definition:
+      'Una powered coaster parece una montaña rusa pero se propulsa a lo largo de todo su circuito mediante motores eléctricos, en vez de subir una vez y entregarse a la gravedad. Como puede mantener la velocidad y dar varias vueltas, suele ser una suave atracción familiar — a menudo tematizada como tren minero, dragón o animal — con alta capacidad y emoción moderada. Si las powered coasters "cuentan" como credits es un debate antiguo y medio en serio dentro de la comunidad de aficionados.',
+    relatedTermIds: ['alpine-coaster', 'credit', 'mack-rides', 'mine-train'],
+    aliases: ['Powered Coasters', 'montaña rusa motorizada'],
+  },
+  {
+    id: 'water-coaster',
+    name: 'Montaña rusa acuática',
+    shortDefinition:
+      'Un híbrido entre montaña rusa y atracción acuática, que combina vía y elevadores de coaster con uno o varios splashdowns.',
+    definition:
+      'Una montaña rusa acuática ("water coaster") fusiona la mecánica del coaster — elevadores de cadena o motorizados, caídas y vía peraltada — con el final mojado de una atracción acuática. Botes o coches tipo coaster son izados por los elevadores y lanzados por hondonadas antes de frenar bruscamente en una pila de agua que levanta una ola. Mack Rides es el fabricante dominante de la montaña rusa acuática moderna, con instalaciones como Poseidon en Europa-Park, y el tipo es popular porque ofrece el ritmo de una montaña rusa más un refrescante chapuzón en los días calurosos.',
+    relatedTermIds: ['mack-rides', 'log-flume', 'splashdown'],
+    aliases: ['Water Coaster', 'coaster acuática'],
+  },
+  {
+    id: 'alpine-coaster',
+    name: 'Alpine Coaster',
+    shortDefinition:
+      'Una montaña rusa de descenso guiada por un raíl, normalmente en la ladera de una montaña, donde los pasajeros controlan su propia velocidad con una palanca de freno.',
+    definition:
+      'Un alpine coaster (también llamado mountain coaster) es una atracción de trineo o carrito fijada a un raíl que sigue los contornos naturales de una ladera, dejando que los pasajeros desciendan a la velocidad que ellos mismos fijan con un freno de mano. A diferencia de una montaña rusa tradicional, no hay tren ni, por lo general, lanzamiento motorizado — la gravedad y el terreno proporcionan la marcha, mientras un cable remolca los carritos de vuelta arriba. Son una presencia durante todo el año en las estaciones alpinas y se han extendido por todo el mundo; la más antigua "Sommerrodelbahn" (tobogán de verano) de canal es su pariente cercano.',
+    relatedTermIds: ['terrain-coaster', 'powered-coaster'],
+    aliases: ['Mountain Coaster', 'Sommerrodelbahn'],
+  },
+  {
+    id: 'beyond-vertical-drop',
+    name: 'Beyond-Vertical Drop',
+    shortDefinition:
+      'Una caída de más de 90 grados, de modo que la vía inclina a los pasajeros más allá de la vertical y los orienta un instante hacia atrás.',
+    definition:
+      'Una beyond-vertical drop supera los 90 grados de inclinación: la vía se curva por debajo de sí misma, de modo que los pasajeros quedan un instante inclinados más allá de la vertical y orientados ligeramente hacia atrás, hacia la estructura. El efecto maximiza la sensación de caída libre y el miedo a la bajada. El modelo Euro-Fighter de Gerstlauer popularizó el formato con caídas de unos 95–97°, y B&M y otros han construido dive coasters con primeras caídas en voladizo similares. Atracciones como Mumbo Jumbo y Takabisha han ostentado récords de la caída más empinada de este tipo.',
+    relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
+    aliases: ['Beyond Vertical Drop', 'caída más allá de la vertical'],
+  },
+  {
+    id: 'splashdown',
+    name: 'Splashdown',
+    shortDefinition:
+      'El final frenado por agua de una atracción acuática o montaña rusa acuática, donde el bote golpea una pila y levanta una ola.',
+    definition:
+      'Un splashdown es el momento en que un bote o coche se sumerge en un canal de agua poco profundo al pie de una caída, usando el agua tanto para frenar el vehículo como para levantar una espectacular cortina de salpicaduras. En montañas rusas acuáticas y troncos es el remojón característico, y los diseñadores ajustan la profundidad y la forma de la pila para controlar cuánto se mojan los pasajeros — y los espectadores en los puentes cercanos. Un splashdown bien situado es tanto un reclamo para el público como un elemento de la marcha.',
+    relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
+    aliases: ['Splash-down', 'Splashdowns'],
+  },
+  {
+    id: 'quad-down',
+    name: 'Quad-Down',
+    shortDefinition:
+      'Una serie de cuatro saltos descendentes sucesivos que ofrecen airtime repetido y a quemarropa cerca del final de un trazado.',
+    definition:
+      'Un quad-down (y sus primos menores el triple-down y el double-down) es una sucesión de escalones descendentes tomados en rápida secuencia, cada uno de los cuales da un golpe seco de airtime mientras el tren baja, se nivela un instante y vuelve a bajar. El elemento es un favorito en las montañas rusas de madera e híbridas por ofrecer airtime "a ráfagas" en poco espacio; se basa en la misma idea que el camelback y el bunny hop, pero encadena los saltos en una sola secuencia rápida.',
+    relatedTermIds: ['airtime', 'camelback', 'wooden-coaster'],
+    aliases: ['Quad Down', 'Triple-Down', 'Double-Down'],
+  },
+  {
+    id: 's-hill',
+    name: 'S-Hill',
+    shortDefinition:
+      'Una colina de airtime en forma de S que lanza a los pasajeros hacia un lado al elevarlos, mezclando flotación con un golpe lateral.',
+    definition:
+      'Una S-hill es una colina de airtime construida con una curva en S, de modo que cuando el tren corona y flota también es empujado lateralmente primero hacia un lado y luego hacia el otro. El resultado mezcla airtime vertical con un tirón lateral que pilla desprevenidos a los pasajeros, y es un sello de las montañas rusas de madera e híbridas modernas que buscan un ritmo impredecible, "fuera de control". El elemento está estrechamente emparentado con el wave turn, que vuelca el airtime por completo de lado.',
+    relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
+    aliases: ['S Hill', 'Speed Bump'],
   },
 ];
 

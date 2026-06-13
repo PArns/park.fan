@@ -38,7 +38,9 @@ export const listTags = cache((locale: Locale): TagEntry[] => {
       else map.set(slug, { label: tag, slug, count: 1 });
     }
   }
-  return Array.from(map.values()).sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+  return Array.from(map.values()).sort(
+    (a, b) => b.count - a.count || a.label.localeCompare(b.label)
+  );
 });
 
 /**

@@ -33,13 +33,7 @@ interface Props {
  * editing an existing one (key field is locked). The live preview band at the
  * top mirrors the author block readers see on published posts.
  */
-export function AuthorCreateModal({
-  open,
-  existing,
-  initial,
-  onClose,
-  onSubmit,
-}: Props) {
+export function AuthorCreateModal({ open, existing, initial, onClose, onSubmit }: Props) {
   return open ? (
     <AuthorForm
       key={initial?.key ?? 'create'}
@@ -162,11 +156,10 @@ function AuthorForm({
               {trimmedName || 'Author name'}
             </div>
             <div className="text-muted-foreground truncate text-xs">
-              {[role.trim(), location.trim()].filter(Boolean).join(' · ') ||
-                'Role · Location'}
+              {[role.trim(), location.trim()].filter(Boolean).join(' · ') || 'Role · Location'}
             </div>
           </div>
-          <span className="text-muted-foreground/60 ml-auto shrink-0 text-[10px] font-semibold uppercase tracking-wider">
+          <span className="text-muted-foreground/60 ml-auto shrink-0 text-[10px] font-semibold tracking-wider uppercase">
             Preview
           </span>
         </div>
@@ -179,7 +172,7 @@ function AuthorForm({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Patrick Arns"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
               />
             </Field>
             <Field
@@ -201,7 +194,7 @@ function AuthorForm({
                   setKey(e.target.value);
                 }}
                 placeholder="patrick"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs outline-none transition-colors disabled:cursor-not-allowed disabled:opacity-60"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 font-mono text-xs transition-colors outline-none disabled:cursor-not-allowed disabled:opacity-60"
               />
             </Field>
           </div>
@@ -211,7 +204,7 @@ function AuthorForm({
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 placeholder="Founder of park.fan"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
               />
             </Field>
             <Field label="Location (optional)">
@@ -219,7 +212,7 @@ function AuthorForm({
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Germany"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
               />
             </Field>
           </div>
@@ -229,7 +222,7 @@ function AuthorForm({
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
                 placeholder="https://example.com"
-                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
               />
             </Field>
             <Field label="Avatar (optional)">
@@ -238,7 +231,7 @@ function AuthorForm({
                   value={avatar}
                   onChange={(e) => setAvatar(e.target.value)}
                   placeholder="/blog/images/authors/patrick.jpg"
-                  className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+                  className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground min-w-0 flex-1 rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
                 />
                 <button
                   type="button"
@@ -258,7 +251,7 @@ function AuthorForm({
               onChange={(e) => setBio(e.target.value)}
               placeholder="One or two sentences for the author block on posts."
               rows={3}
-              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm outline-none transition-colors"
+              className="bg-background/60 border-border/60 focus:border-primary/50 text-foreground rounded-lg border px-3 py-1.5 text-sm transition-colors outline-none"
             />
           </Field>
         </div>

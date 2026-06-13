@@ -281,13 +281,14 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
     [newCategories]
   );
   const onCreateCategory = useCallback((draft: NewCategoryDraft) => {
-    setNewCategories((prev) =>
-      prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]
-    );
+    setNewCategories((prev) => (prev.find((c) => c.path === draft.path) ? prev : [...prev, draft]));
   }, []);
 
   const onSave = async () => {
-    const perLocale: Record<string, { slug: string; frontmatter: ReturnType<typeof toFrontmatter>; body: string }> = {};
+    const perLocale: Record<
+      string,
+      { slug: string; frontmatter: ReturnType<typeof toFrontmatter>; body: string }
+    > = {};
     for (const l of initialData.locales) {
       const d = drafts[l];
       if (!d) continue;
@@ -358,9 +359,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         key: string;
         sourceLocale: Locale;
         baseSlug: string;
-        perLocale: Partial<
-          Record<Locale, { slug: string; fm: EditorFrontmatter; body: string }>
-        >;
+        perLocale: Partial<Record<Locale, { slug: string; fm: EditorFrontmatter; body: string }>>;
       };
       const nextDrafts: Partial<Record<Locale, LocaleDraft>> = {};
       const originalSlugs: Partial<Record<Locale, string>> = {};
@@ -492,10 +491,8 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
             </h1>
             <span
               className={[
-                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider',
-                editing
-                  ? 'bg-amber-500/15 text-amber-500'
-                  : 'bg-emerald-500/15 text-emerald-500',
+                'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase',
+                editing ? 'bg-amber-500/15 text-amber-500' : 'bg-emerald-500/15 text-emerald-500',
               ].join(' ')}
             >
               <span
@@ -562,17 +559,12 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         </div>
       </header>
 
-      <PostPicker
-        open={pickerOpen}
-        onClose={() => setPickerOpen(false)}
-        onPick={onLoadPost}
-      />
+      <PostPicker open={pickerOpen} onClose={() => setPickerOpen(false)} onPick={onLoadPost} />
 
       {restorable && (
-        <div className="border-amber-500/30 bg-amber-500/10 mb-6 flex flex-wrap items-center gap-3 rounded-xl border px-4 py-3 text-sm">
+        <div className="mb-6 flex flex-wrap items-center gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm">
           <span className="text-amber-200/90">
-            Unsaved draft from{' '}
-            <strong>{new Date(restorable.savedAt).toLocaleString()}</strong>
+            Unsaved draft from <strong>{new Date(restorable.savedAt).toLocaleString()}</strong>
             {restorable.editing ? (
               <>
                 {' '}
@@ -638,7 +630,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
                 className={[
                   'inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
                   view === t
-                    ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
+                    ? 'bg-background text-foreground ring-border/60 shadow-sm ring-1'
                     : 'text-muted-foreground hover:text-foreground hover:bg-background/40',
                 ].join(' ')}
               >
@@ -651,7 +643,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
               </button>
             ))}
           </div>
-          <div className="text-muted-foreground hidden text-[10px] uppercase tracking-wider sm:flex sm:items-center sm:gap-2">
+          <div className="text-muted-foreground hidden text-[10px] tracking-wider uppercase sm:flex sm:items-center sm:gap-2">
             {(() => {
               // Strip image/link syntax so URLs don't inflate the word count.
               const text = active.body

@@ -50,6 +50,7 @@ that anchors the French area. Silver Star's typical peak-hour wait,
 averaged across the 2023 summer season, was **52 minutes**.
 
 ```glossary-widget slug=hyper-coaster
+
 ```
 
 In 2025's comparable summer window, two things happened:
@@ -61,11 +62,11 @@ In 2025's comparable summer window, two things happened:
 
 <!--tbl-theme: success-->
 
-| Ride          | 2023 peak wait | 2025 peak wait |
-| ------------- | -------------- | -------------- |
-| Voltron Nevera | —             | 74 min         |
-| Silver Star   | 52 min         | 39 min         |
-| Wodan         | 41 min         | 48 min         |
+| Ride           | 2023 peak wait | 2025 peak wait |
+| -------------- | -------------- | -------------- |
+| Voltron Nevera | —              | 74 min         |
+| Silver Star    | 52 min         | 39 min         |
+| Wodan          | 41 min         | 48 min         |
 
 The most-loaded ride after Voltron's first full year is still Voltron.
 That doesn't surprise anyone. But the **second** most-loaded ride is now
@@ -95,12 +96,14 @@ If you have flexibility on _which day_ to go, the crowd calendar makes the
 choice for you — here are the quietest upcoming days:
 
 ```best-days-widget slug=europa-park
+
 ```
 
 And here's where everything sits. Voltron anchors the Croatia area in the
 north; Silver Star is down in the French quarter:
 
 ```map-widget slug=europa-park
+
 ```
 
 ## Is it the best coaster in Europe?
@@ -120,12 +123,14 @@ Check the forecast before you commit to a date — a rainy weekday often beats
 a sunny Saturday for short queues:
 
 ```weather-widget slug=europa-park
+
 ```
 
 And the long-run numbers, if you like your decisions data-backed — typical
 waits by month and by day of week across the last two seasons:
 
 ```stats-widget slug=europa-park
+
 ```
 
 ## Voltron on video

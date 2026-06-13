@@ -1069,8 +1069,14 @@ html[data-temp-unit='F'] .u-imperial {
   animation: refPreviewIn 180ms ease-out;
 }
 @keyframes refPreviewIn {
-  from { opacity: 0; transform: translateY(-1px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-1px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .tiptap-canvas .ref-preview-location {
   color: color-mix(in oklab, var(--foreground) 55%, transparent);
@@ -1090,8 +1096,15 @@ html[data-temp-unit='F'] .u-imperial {
   animation: refPreviewPulse 1s ease-in-out infinite;
 }
 @keyframes refPreviewPulse {
-  0%, 100% { opacity: 0.2; transform: scale(0.85); }
-  50%      { opacity: 0.7; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
 }
 .tiptap-canvas .ref-preview-pill {
   display: inline-flex;
@@ -1170,7 +1183,9 @@ html[data-temp-unit='F'] .u-imperial {
 .tiptap-canvas .ref-preview-spotlight:hover .ref-preview-spotlight__card {
   border-color: color-mix(in oklab, var(--primary) 45%, transparent);
   transform: translateY(-1px);
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
 }
 .tiptap-canvas .ref-preview-badge {
   cursor: pointer;
@@ -1216,8 +1231,13 @@ html[data-temp-unit='F'] .u-imperial {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, transparent 30%, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    transparent 30%,
+    transparent 55%,
+    rgba(0, 0, 0, 0.65) 100%
+  );
 }
 .tiptap-canvas .ref-preview-spotlight__star {
   position: absolute;
@@ -1243,8 +1263,7 @@ html[data-temp-unit='F'] .u-imperial {
   z-index: 3;
   padding: 14px 56px 14px 18px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.13) 0%, transparent 36%),
-    rgba(20, 20, 25, 0.55);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.13) 0%, transparent 36%), rgba(20, 20, 25, 0.55);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -1304,7 +1323,7 @@ html[data-temp-unit='F'] .u-imperial {
 /* Widget code fences carry the same data the preview card already shows —
    hide them from the canvas. Their text is still in the underlying doc and
    round-trips through markdown, so the source view stays editable. */
-.tiptap-canvas pre:has(> code[class*="-widget"]) {
+.tiptap-canvas pre:has(> code[class*='-widget']) {
   display: none;
 }
 
@@ -1318,7 +1337,11 @@ html[data-temp-unit='F'] .u-imperial {
   overflow: hidden;
   border: 1px solid color-mix(in oklab, var(--primary) 28%, transparent);
   background:
-    linear-gradient(135deg, color-mix(in oklab, var(--primary) 10%, transparent), color-mix(in oklab, var(--primary) 3%, transparent)),
+    linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--primary) 10%, transparent),
+      color-mix(in oklab, var(--primary) 3%, transparent)
+    ),
     color-mix(in oklab, var(--background) 60%, black);
   user-select: none;
   -webkit-user-select: none;

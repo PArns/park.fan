@@ -45,6 +45,7 @@ I spent three full days at [Magic Kingdom](park:magic-kingdom-park) over
 spring break. Here is the short list.
 
 ```park-widget slug=magic-kingdom-park
+
 ```
 
 ## 1. Seven Dwarfs Mine Train
@@ -67,6 +68,7 @@ re-track quietly fixed the worst of the roughness. Best wait window is the
 **last 90 minutes before park close**, when the dinner crowd thins.
 
 ```attraction-widget parkSlug=magic-kingdom-park slug=space-mountain
+
 ```
 
 ## 3. Tron Lightcycle / Run
@@ -102,6 +104,7 @@ The pre-show and stretching room are still one of the most committed
 moments in the park. Aim for the **final hour** when the line collapses.
 
 ```gallery-widget folder=/blog/images/magic-kingdom-2026/ heading=A few moments from the trip
+
 ```
 
 ## The data, in one chart

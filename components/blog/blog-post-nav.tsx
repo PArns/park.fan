@@ -25,10 +25,7 @@ export async function BlogPostNav({ locale, currentTranslationKey }: BlogPostNav
   if (!prev && !next) return null;
 
   return (
-    <nav
-      aria-label={t('postNav.label')}
-      className="mt-12 grid gap-3 sm:grid-cols-2"
-    >
+    <nav aria-label={t('postNav.label')} className="mt-12 grid gap-3 sm:grid-cols-2">
       {prev ? (
         <Link
           href={`/blog/${prev.slug}` as '/'}

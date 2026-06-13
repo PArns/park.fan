@@ -69,7 +69,8 @@ function buildChip(span: EmbedSpan): HTMLElement {
 
   const tag = document.createElement('span');
   tag.className = 'embed-preview__tag';
-  tag.textContent = span.kind === 'youtube' ? 'YouTube' : span.kind === 'instagram' ? 'Instagram' : 'Suno';
+  tag.textContent =
+    span.kind === 'youtube' ? 'YouTube' : span.kind === 'instagram' ? 'Instagram' : 'Suno';
   wrapper.appendChild(tag);
 
   const label = document.createElement('span');
@@ -124,16 +125,12 @@ export const EmbedPreview = Extension.create({
             return embedPreviewKey.getState(state)?.decorations;
           },
           handleClick(view, _clickPos, event) {
-            const chip = eventToElement(event)?.closest(
-              '.embed-preview'
-            ) as HTMLElement | null;
+            const chip = eventToElement(event)?.closest('.embed-preview') as HTMLElement | null;
             if (!chip) return false;
             const kindClass = Array.from(chip.classList).find((c) =>
               c.startsWith('embed-preview--')
             );
-            const kind = kindClass?.replace('embed-preview--', '') as
-              | EmbedKind
-              | undefined;
+            const kind = kindClass?.replace('embed-preview--', '') as EmbedKind | undefined;
             if (!kind) return false;
             const state = embedPreviewKey.getState(view.state);
             const candidates = (state?.spans ?? []).filter((s) => s.kind === kind);

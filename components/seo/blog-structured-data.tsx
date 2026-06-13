@@ -51,7 +51,8 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
     inLanguage: locale,
     datePublished: frontmatter.date,
     dateModified: frontmatter.updatedAt ?? frontmatter.date,
-    keywords: frontmatter.tags && frontmatter.tags.length > 0 ? frontmatter.tags.join(', ') : undefined,
+    keywords:
+      frontmatter.tags && frontmatter.tags.length > 0 ? frontmatter.tags.join(', ') : undefined,
     wordCount: post.content ? post.content.split(/\s+/).filter(Boolean).length : undefined,
     timeRequired: `PT${post.readingTimeMinutes}M`,
     articleSection: frontmatter.category,
@@ -75,10 +76,7 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
   );
 }
 
@@ -126,9 +124,6 @@ export function BlogStructuredData({
   };
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }}
-    />
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: escapeJsonLd(data) }} />
   );
 }

@@ -40,12 +40,7 @@ export function BlogTags({ tags, className, label, asLinks = true }: BlogTagsPro
           );
         }
         return (
-          <Link
-            key={tag}
-            href={`/blog/tag/${slug}` as '/'}
-            prefetch={false}
-            className={pillClass}
-          >
+          <Link key={tag} href={`/blog/tag/${slug}` as '/'} prefetch={false} className={pillClass}>
             #{tag}
           </Link>
         );

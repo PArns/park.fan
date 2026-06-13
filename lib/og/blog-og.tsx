@@ -83,157 +83,155 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
   const colors = PALETTES[palette];
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        display: 'flex',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+        backgroundColor: '#0f172a',
+        color: 'white',
+        fontFamily: '"Inter"',
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      {/* Cover image (when available) */}
+      {coverImage && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={coverImage}
+          alt=""
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            opacity: 0.45,
+          }}
+        />
+      )}
+
+      {/* Palette-tinted vignette */}
       <div
         style={{
-          display: 'flex',
-          width: '100%',
-          height: '100%',
-          flexDirection: 'column',
-          backgroundColor: '#0f172a',
-          color: 'white',
-          fontFamily: '"Inter"',
+          position: 'absolute',
+          inset: 0,
+          background: `radial-gradient(circle at 80% 20%, ${colors.glow}, transparent 60%)`,
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background:
+            'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
           position: 'relative',
-          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          padding: '64px 72px',
+          height: '100%',
+          width: '100%',
         }}
       >
-        {/* Cover image (when available) */}
-        {coverImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={coverImage}
-            alt=""
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              opacity: 0.45,
-            }}
-          />
-        )}
-
-        {/* Palette-tinted vignette */}
+        {/* Top kicker row */}
         <div
           style={{
-            position: 'absolute',
-            inset: 0,
-            background: `radial-gradient(circle at 80% 20%, ${colors.glow}, transparent 60%)`,
-          }}
-        />
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'linear-gradient(to bottom, rgba(15,23,42,0.55) 0%, rgba(15,23,42,0.92) 100%)',
-          }}
-        />
-
-        {/* Content */}
-        <div
-          style={{
-            position: 'relative',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: '64px 72px',
-            height: '100%',
-            width: '100%',
+            alignItems: 'center',
+            gap: 16,
+            fontSize: 22,
+            fontWeight: 600,
+            letterSpacing: 1.2,
+            textTransform: 'uppercase',
+            color: colors.kicker,
           }}
         >
-          {/* Top kicker row */}
+          <span
+            style={{
+              display: 'flex',
+              width: 8,
+              height: 8,
+              borderRadius: 999,
+              background: colors.kicker,
+            }}
+          />
+          {kicker}
+        </div>
+
+        {/* Title block */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
+          <div
+            style={{
+              fontSize: title.length > 60 ? 56 : title.length > 30 ? 72 : 88,
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: -1.5,
+              maxWidth: 1050,
+              color: '#ffffff',
+            }}
+          >
+            {clamp(title, 140)}
+          </div>
+          {subtitle && (
+            <div
+              style={{
+                fontSize: 26,
+                fontWeight: 400,
+                lineHeight: 1.35,
+                maxWidth: 980,
+                color: 'rgba(255,255,255,0.82)',
+              }}
+            >
+              {clamp(subtitle, 180)}
+            </div>
+          )}
+        </div>
+
+        {/* Brand bar */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 0,
+              fontSize: 38,
+              fontWeight: 800,
+              letterSpacing: -1,
+            }}
+          >
+            <span style={{ color: '#ffffff' }}>park</span>
+            <span style={{ color: colors.kicker }}>.fan</span>
+          </div>
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 16,
+              gap: 12,
               fontSize: 22,
-              fontWeight: 600,
-              letterSpacing: 1.2,
-              textTransform: 'uppercase',
-              color: colors.kicker,
+              color: 'rgba(255,255,255,0.65)',
             }}
           >
-            <span
-              style={{
-                display: 'flex',
-                width: 8,
-                height: 8,
-                borderRadius: 999,
-                background: colors.kicker,
-              }}
-            />
-            {kicker}
-          </div>
-
-          {/* Title block */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-            <div
-              style={{
-                fontSize: title.length > 60 ? 56 : title.length > 30 ? 72 : 88,
-                fontWeight: 800,
-                lineHeight: 1.05,
-                letterSpacing: -1.5,
-                maxWidth: 1050,
-                color: '#ffffff',
-              }}
-            >
-              {clamp(title, 140)}
-            </div>
-            {subtitle && (
-              <div
-                style={{
-                  fontSize: 26,
-                  fontWeight: 400,
-                  lineHeight: 1.35,
-                  maxWidth: 980,
-                  color: 'rgba(255,255,255,0.82)',
-                }}
-              >
-                {clamp(subtitle, 180)}
-              </div>
-            )}
-          </div>
-
-          {/* Brand bar */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                gap: 0,
-                fontSize: 38,
-                fontWeight: 800,
-                letterSpacing: -1,
-              }}
-            >
-              <span style={{ color: '#ffffff' }}>park</span>
-              <span style={{ color: colors.kicker }}>.fan</span>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 12,
-                fontSize: 22,
-                color: 'rgba(255,255,255,0.65)',
-              }}
-            >
-              {SITE_URL.replace(/^https?:\/\//, '')}
-            </div>
+            {SITE_URL.replace(/^https?:\/\//, '')}
           </div>
         </div>
       </div>
-    ),
+    </div>,
     { width: WIDTH, height: HEIGHT }
   );
 }

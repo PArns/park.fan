@@ -107,6 +107,7 @@ Und weil gute Daten ruhig auch gut aussehen dürfen — das Wetter, genau
 jetzt am [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```weather-widget slug=phantasialand
+
 ```
 
 ## Wer schreibt das?

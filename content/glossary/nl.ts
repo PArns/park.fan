@@ -22,7 +22,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Single Rider Lane', 'Individuele rij'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Single Riders']
+    aliases: ['Single Riders'],
   },
   {
     id: 'virtual-queue',
@@ -44,7 +44,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Flash Pass', 'Express Pass', 'Lightning Lane'],
 
     relatedTermIds: ['single-rider', 'virtual-queue', 'wait-time'],
-    aliases: ['Express Pas', 'Express Passen']
+    aliases: ['Express Pas', 'Express Passen'],
   },
   {
     id: 'posted-wait-time',
@@ -54,7 +54,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'De aangegeven wachttijd is de officiële schatting weergegeven op borden bij de fysieke ingang van een attractie en/of in de officiële park-app. park.fan aggregeert aangegeven wachttijden van officiële bronnen elke minuut.',
     relatedTermIds: ['crowd-level', 'wait-time'],
-    aliases: ['aangegeven wachttijd', 'aangegeven wachttijden']
+    aliases: ['aangegeven wachttijd', 'aangegeven wachttijden'],
   },
   {
     id: 'crowd-level',
@@ -74,7 +74,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een druktekalender is een maand- of jaaroverzichtskalender die voorspelde drukteniveaus voor elke dag toont. park.fan genereert druktekalenders met behulp van AI-modellen die zijn getraind op jaren historische wachttijdgegevens, gecombineerd met schoolvakantiescalenders, aankomende evenementen en seizoenspatronen.',
     relatedTermIds: ['crowd-level', 'peak-day', 'rope-drop'],
-    aliases: ['Druktekalenders']
+    aliases: ['Druktekalenders'],
   },
   {
     id: 'peak-day',
@@ -129,7 +129,7 @@ const translations: GlossaryTermTranslation[] = [
       "De Rope Drop verwijst naar het moment waarop een pretpark voor de dag opent — vernoemd naar het letterlijke touw (of barrière) dat parkpersoneel laat zakken om de eerste bezoekers binnen te laten. Vroeg aankomen bij de Rope Drop is een populaire strategie omdat populaire attracties 's ochtends de kortste rijen hebben, voordat de drukte aantrekt. Het schema van park.fan toont exacte openingstijden zodat je je strategie perfect kunt plannen.",
     aliases: ['Rope-Drop'],
 
-    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 'wait-time'],
+    relatedTermIds: ['crowd-calendar', 'crowd-level', 'early-entry', 're-ride', 'wait-time'],
   },
   {
     id: 'early-entry',
@@ -223,7 +223,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Lightning Lane Multi Pass', 'Individual Lightning Lane', 'LLMP', 'ILL'],
 
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time'],
-    aliases: ['Lightning Lanes']
+    aliases: ['Lightning Lanes'],
   },
   {
     id: 'genie-plus',
@@ -280,7 +280,7 @@ const translations: GlossaryTermTranslation[] = [
       "De ritfoto is een afbeelding die automatisch wordt gemaakt door een vaste camera op een spannend moment van de attractie — typisch de val bij een waterattractie of het hoogtepunt van een achtbaan. Na de rit kunnen bezoekers hun foto bekijken bij een kiosk of in de park-app en kiezen of ze hem willen kopen. Veel parken bieden dagpakketten aan met onbeperkte ritfoto's van alle attracties in het resort. De ritfoto is een geliefd souvenir en een klassiek moment om te delen op sociale media.",
     aliases: ['Rit-Foto', 'On-Ride Foto', 'Attractiefoto'],
 
-    relatedTermIds: ['themed-land'],
+    relatedTermIds: ['onride-offride', 'themed-land'],
   },
   {
     id: 'queue-line',
@@ -366,7 +366,7 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['ERT'],
     alternateNames: ['Exclusive Ride Time', 'Exclusieve rijtijd'],
 
-    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 'rope-drop'],
+    relatedTermIds: ['credit', 'early-entry', 'hard-ticket-event', 're-ride', 'rope-drop'],
   },
   {
     id: 'touring-plan',
@@ -408,7 +408,15 @@ const translations: GlossaryTermTranslation[] = [
       'B&M (Bolliger & Mabillard) is een Zwitserse achtbaanfabrikant, opgericht in 1988 door Walter Bolliger en Claude Mabillard. Het bedrijf staat bekend om uitzonderlijk soepele, betrouwbare ritten met positieve G-krachten, kenmerkende inversies (Immelmann, cobra roll, zero-G roll) en uitstekende doorstroom. B&M is gespecialiseerd in inverted coasters, sit-down loopers, hyper coasters (over 61 m), giga coasters (over 91 m), wing coasters en dive machines. Vrijwel elk groot Europees park heeft minstens één B&M-installatie, waaronder Shambhala en Dragon Khan bij PortAventura, Silver Star bij Europa-Park, Nemesis bij Alton Towers en Goliath bij Walibi Holland.',
     aliases: ['Bolliger & Mabillard', 'Bolliger and Mabillard'],
 
-    relatedTermIds: ['cobra-roll', 'dive-coaster', 'hybrid-coaster', 'immelmann', 'zero-g-roll'],
+    relatedTermIds: [
+      'cobra-roll',
+      'dive-coaster',
+      'hybrid-coaster',
+      'immelmann',
+      'smoothness',
+      'stand-up-coaster',
+      'zero-g-roll',
+    ],
   },
   {
     id: 'intamin',
@@ -428,7 +436,17 @@ const translations: GlossaryTermTranslation[] = [
       "Mack Rides is een Duitse attractiefabrikant gevestigd in Waldkirch, Baden-Württemberg — op slechts enkele kilometers van Europa-Park, het vlaggenschip van het bedrijf. Opgericht in 1921 produceert Mack waterritten, dark rides (waaronder Disney's Test Track en Radiator Springs Racers) en een groeiend portfolio van spectaculaire achtbanen. Hun Blue Fire Megacoaster bij Europa-Park (2009) was de eerste rit met een Stengel Dive-element. Macks recentere hyper coasters (Ride to Happiness bij Plopsaland, Kondaa bij Walibi Belgium) hebben brede lovende kritiek ontvangen van de enthousiastengemeenschap. Mack Rides zijn een bepalende aanwezigheid in Europese parken, met name in het eigen Europa-Park van de familie Mack.",
     aliases: ['Mack'],
 
-    relatedTermIds: ['b-and-m', 'intamin', 'launch-coaster', 'stengel-dive'],
+    relatedTermIds: [
+      'b-and-m',
+      'bobsled-coaster',
+      'intamin',
+      'launch-coaster',
+      'mackprodukt',
+      'powered-coaster',
+      'splashdown',
+      'stengel-dive',
+      'water-coaster',
+    ],
   },
   {
     id: 'rmc',
@@ -439,7 +457,14 @@ const translations: GlossaryTermTranslation[] = [
       "Rocky Mountain Construction (RMC) is een Amerikaanse achtbaanfabrikant en onderhoudsbedrijf uit Hayden, Idaho, het best bekend om het uitvinden van het stalen I-box-spoorsysteem dat op houten achtbaanconstructies kan worden toegepast. Deze conversietechnologie stelde parken in staat ruwe, verouderde houten achtbanen te transformeren tot wereldklasse hybride ritten met intense airtime, meerdere inversies en voorbij-verticale drops — dingen die traditionele houten achtbanen niet konden. RMC-conversies zoals Steel Vengeance (Cedar Point), Wicked Cyclone (Six Flags New England) en Wildfire (Kolmården) werden snel favorieten bij enthousiastelingen. In Europa wordt RMC's nieuwgebouwde hybride Untamed bij Walibi Holland algemeen beschouwd als een van de beste achtbanen van het continent.",
     aliases: ['Rocky Mountain Construction'],
 
-    relatedTermIds: ['airtime', 'barrel-roll-drop', 'hybrid-coaster', 'stall', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime',
+      'barrel-roll-drop',
+      'hybrid-coaster',
+      'single-rail-coaster',
+      'stall',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'vekoma',
@@ -450,7 +475,7 @@ const translations: GlossaryTermTranslation[] = [
       "Vekoma Rides Manufacturing is een Nederlandse achtbaanfabrikant gevestigd in Vlodrop en een van de meest productieve producenten ter wereld qua totale installaties. Opgericht in 1926 als machinebouwbedrijf, stapte Vekoma in de jaren 70 over naar attracties en verwierf wereldwijde bekendheid met zijn Boomerang-achtbaan — een compacte shuttle-achtbaan met drie inversies die goedkoop gelicentieerd en overal ter wereld geïnstalleerd werd. Andere iconische modellen zijn de Suspended Looping Coaster (SLC), de Giant Inverted Boomerang en de Mine Train. Vanaf de jaren 2010 vernieuwde Vekoma zichzelf met een moderne 'new generation'-productlijn met soepelere rijsystemen, innovatieve lay-outs en verbeterde familieattraccties. Nieuwe modellen zoals de Family Boomerang, de Tilt Coaster en hangende familieachtbanen verschijnen steeds vaker in Europese parken. Disney heeft ook op maat gemaakte Vekoma-ontwerpen besteld voor zijn resorts.",
     aliases: ['Vekoma Rides'],
 
-    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin'],
+    relatedTermIds: ['b-and-m', 'boomerang', 'gerstlauer', 'intamin', 'single-rail-coaster'],
   },
   {
     id: 'gerstlauer',
@@ -463,6 +488,7 @@ const translations: GlossaryTermTranslation[] = [
 
     relatedTermIds: [
       'b-and-m',
+      'beyond-vertical-drop',
       'euro-fighter',
       'intamin',
       'spinning-coaster',
@@ -488,7 +514,7 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['LSM Coaster', 'LIM Coaster', 'Gelanceerde Achtbaan', 'Katapult-achtbaan'],
 
     relatedTermIds: ['horseshoe', 'intamin', 'lifthill', 'top-hat'],
-    aliases: ['Launch Coasters']
+    aliases: ['Launch Coasters'],
   },
   {
     id: 'wooden-coaster',
@@ -497,7 +523,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaan die voornamelijk van hout is gebouwd, gekenmerkt door een karakteristiek gerommel, laterale beweging en onvoorspelbare airtime.',
     definition:
       'Een houten achtbaan is een rit met een houten spoor en draagconstructie. In tegenstelling tot stalen achtbanen heeft hout van nature enige flexibiliteit en onnauwkeurigheid, wat het kenmerkende gerommel, de laterale beweging en de onvoorspelbare airtime creëert waar enthousiastelingen van houden. Beroemde houten achtbanen zijn Balder bij Liseberg, The Beast bij Kings Island en Megafobia bij Oakwood. Houten achtbanen vereisen constant onderhoud — de rails moeten regelmatig worden herverlamd — en zijn gevoelig voor weersveranderingen. Het RMC-conversieproces kan verouderde houten achtbanen omtoveren tot staalspoor-hybride achtbanen met behoud van de houten constructie.',
-    relatedTermIds: ['airtime', 'hybrid-coaster', 'rmc'],
+    relatedTermIds: ['airtime', 'hybrid-coaster', 'quad-down', 'rattle', 'rmc'],
     aliases: ['Houten achtbanen'],
     alternateNames: ['Woodie', 'Woodies', 'Houten coaster'],
   },
@@ -508,7 +534,15 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaan gebouwd met stalen rail en stalen constructie, bekend om zijn vloeiende en nauwkeurige rijervaring.',
     definition:
       'Een stalen achtbaan wordt gebouwd met buisvormige of platte stalen rail ondersteund door een stalen frame. In tegenstelling tot houten achtbanen met hun natuurlijke flexibiliteit, biedt staal ingenieurs nauwkeurige controle over G-krachten, overgangen en inversies. De vloeiende, voorspelbare rit van een stalen achtbaan maakt het mogelijk om complexe layouts met meerdere inversies, nauwe bochten en snelle secties te creëren.\n\nStalen achtbanen domineren de moderne achtbaanentwickeling. De meest gevierde voorbeelden in Europa zijn Shambhala in PortAventura, Nemesis in Alton Towers en Silver Star in Europa-Park. Stalen achtbanen variëren van kleine familieattracties tot recordbrekende mega coasters. De nauwkeurigheid van staal vereist regelmatig onderhoud en inspectie, maar staat minder ontwerp-fouten toe dan de flexibiliteit van hout.',
-    relatedTermIds: ['hyper-coaster', 'inversion', 'launch-coaster', 'wooden-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'hyper-coaster',
+      'inversion',
+      'launch-coaster',
+      'single-rail-coaster',
+      'stand-up-coaster',
+      'wooden-coaster',
+    ],
     aliases: ['Stalen achtbanen', 'Staal'],
   },
   {
@@ -550,7 +584,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een compact Gerstlauer-achtbaanmodel met een nagenoeg verticale of voorbij-verticale eerste drop gelanceerd vanuit een verticale lifthill, ontworpen voor intense thrills in een kleine ruimte.',
     definition:
       "De Euro-Fighter is Gerstlauer's kenmerkende compacte achtbaanmodel, herkenbaar aan zijn verticale (90 graden) of voorbij-verticale eerste drop (tot 97 graden) na een verticale chain lifthill. Ontworpen voor parken met beperkte ruimte, proppt de Euro-Fighter intense thrills — meerdere inversies, strakke bochten en hoge G-krachten — in een klein gebied. De voorbij-verticale drop is bijzonder opvallend: de trein pauzeert aan de top met rijders die over de afgrond uitkijken voordat de val begint. Europese Euro-Fighters zijn onder meer Saw – The Ride bij Thorpe Park, Rage bij Adventure Island en Fluch von Novgorod bij Hansa-Park.",
-    relatedTermIds: ['first-drop', 'inversion', 'lifthill'],
+    relatedTermIds: ['beyond-vertical-drop', 'first-drop', 'inversion', 'lifthill'],
   },
   {
     id: 'dive-coaster',
@@ -559,8 +593,14 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaantype met een ongewoon breed treinstel en een nagenoeg verticale of voorbij-verticale drop, met een opzettelijke pauze aan de rand vóór de val.',
     definition:
       "Een Dive Coaster wordt gekenmerkt door een breed treinstel (doorgaans 8–10 rijders per rij), een nagenoeg verticale of voorbij-verticale drop (90+ graden) en een theatraal moment aan de top van de drop — de trein houdt even stil aan de rand voordat hij wordt losgelaten, wat de psychologische spanning maximaliseert. Het brede treinstel geeft alle rijders een onbelemmerd zicht recht naar beneden. B&M's Dive Machine-lijn (Oblivion bij Alton Towers, SheiKra bij Busch Gardens) introduceerde het concept; Gerstlauer's Dive Coaster-model is een concurrerende versie. De opzettelijke pauze voor de drop is een bewuste ontwerpbeslissing om de spanning te verhogen.",
-    relatedTermIds: ['b-and-m', 'euro-fighter', 'first-drop', 'launch-coaster'],
-    aliases: ['Dive Coasters']
+    relatedTermIds: [
+      'b-and-m',
+      'beyond-vertical-drop',
+      'euro-fighter',
+      'first-drop',
+      'launch-coaster',
+    ],
+    aliases: ['Dive Coasters'],
   },
   {
     id: 'vr-coaster',
@@ -578,7 +618,15 @@ const translations: GlossaryTermTranslation[] = [
       'Het gevoel van gewichtloosheid of uit je stoel worden getild dat achtbaanrijders ervaren bij negatieve G-kracht-momenten.',
     definition:
       "Airtime beschrijft het gevoel van gewichtloosheid — negatieve G-krachten — dat achtbaanrijders ervaren wanneer de achtbaan een heuvel of vallei sneller neemt dan vrije val. Er zijn twee hoofdtypen: floater airtime (zachte negatieve G's, een zacht zweefgevoel) en ejector airtime (intense negatieve G's, waarbij de schootbeugel of riem het enige is dat je in je stoel houdt). Airtime wordt door velen beschouwd als het meest bepalende kenmerk van een geweldige stalen of houten achtbaan. Airtime hills (ook wel camelbacks genoemd) zijn specifiek ontworpen om deze gewaarwording te maximaliseren door het spoor een parabolische vrije-val-vorm te geven.",
-    relatedTermIds: ['airtime-hill', 'bunnyhop', 'first-drop', 'wooden-coaster'],
+    relatedTermIds: [
+      'airtime-hill',
+      'bunnyhop',
+      'first-drop',
+      'quad-down',
+      'restraint-freedom',
+      's-hill',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'inversion',
@@ -638,7 +686,7 @@ const translations: GlossaryTermTranslation[] = [
       'De eerste daling na de lifthill — doorgaans het hoogste en snelste punt van de rit, bepalend voor het karakter van de achtbaan.',
     definition:
       'De First Drop is de primaire daling direct na de lifthill of het lanceersegment. Op de meeste traditionele achtbanen is het de hoogste heuvel en bereikt de achtbaan er zijn maximale snelheid. De hoek, hoogte en profiel bepalen sterk het algehele karakter: steil-hoekige drops (over 80–90 graden) creëren intense versnellingsgewaarwordingen, terwijl parabolische drops sterke airtime kunnen genereren ondanks een zachtere hoek. Dive Coasters hebben drops die 90 graden overstijgen (voorbij verticaal), waarbij rijders voorover over de rand moeten leunen. De First Drop is vaak het meest geanticipeerde moment op elke nieuwe achtbaan.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'dive-coaster', 'lifthill'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'beyond-vertical-drop', 'dive-coaster', 'lifthill'],
   },
   {
     id: 'airtime-hill',
@@ -650,7 +698,7 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Airtime heuvels'],
     alternateNames: ['Camelback', 'Bunny Hill'],
 
-    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 'stengel-dive'],
+    relatedTermIds: ['airtime', 'bunnyhop', 'first-drop', 's-hill', 'stengel-dive'],
   },
   {
     id: 'helix',
@@ -806,7 +854,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een reeks kleine, snelle airtime hills aan het einde van een rit die zachte floater airtime produceren terwijl de trein vaart verliest.',
     definition:
       'Een bunnyhop is een reeks kleine, snelle heuvels geplaatst naar het einde van een achtbaanlayout wanneer de trein het grootste deel van zijn kinetische energie heeft verbruikt. Bij deze verlaagde snelheid genereren de heuvels zachte floater airtime — een zacht, ritmisch zweefgevoel in plaats van de intense ejector airtime van snellere heuvels eerder in de layout. De term weerspiegelt de lichte, stuiterende beweging die doet denken aan een hoppend konijn. Bunnyhops zijn veelvoorkomende finales op hyper coasters, giga coasters en houten achtbanen, en bieden een speelse slotklapper voor de brake run. Enthousiastelingen beschouwen goed uitgevoerde bunnyhops als een teken van doordacht layoutontwerp.',
-    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'brake-run', 's-hill'],
   },
   {
     id: 'stengel-dive',
@@ -854,7 +902,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Credits'],
     alternateNames: ['Cred', 'Creds', 'Coaster-teller'],
 
-    relatedTermIds: ['hybrid-coaster', 'pov', 'wooden-coaster'],
+    relatedTermIds: [
+      'hybrid-coaster',
+      'mackprodukt',
+      'onride-offride',
+      'pov',
+      'powered-coaster',
+      're-ride',
+      'wooden-coaster',
+    ],
   },
   {
     id: 'pov',
@@ -866,7 +922,7 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['Point of View'],
     alternateNames: ['On-Ride Video', 'Meerijvideo'],
 
-    relatedTermIds: ['credit', 'dark-ride'],
+    relatedTermIds: ['credit', 'dark-ride', 'onride-offride'],
   },
   {
     id: 'stacking',
@@ -998,7 +1054,7 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       "Een AI-voorspelling gebruikt machine learning-modellen die getraind zijn op historische bezoekersdata, weersdata, schoolvakantieschema's en real-time wachtrij-informatie om te voorspellen hoe druk een pretpark of attractie zal zijn op een bepaalde dag of tijdstip. park.fan genereert AI-voorspellingen voor drukte en verwachte wachttijden tot 30+ dagen van tevoren.\n\nVoorspellingen worden continu bijgewerkt naarmate nieuwe data binnenkomt. Kortetermijnvoorspellingen (1–7 dagen) zijn doorgaans zeer nauwkeurig omdat ze actuele weersdata, aankondigingen van evenementen en boekingssignalen meenemen. Langetermijnvoorspellingen zijn van nature minder nauwkeurig, maar blijven waardevol voor het identificeren van rustige of drukke perioden ruim van tevoren.",
     relatedTermIds: ['crowd-calendar', 'crowd-level', 'peak-day'],
-    aliases: ['AI-voorspelling', 'AI-voorspellingen']
+    aliases: ['AI-voorspelling', 'AI-voorspellingen'],
   },
   {
     id: 'opening-hours',
@@ -1071,7 +1127,7 @@ const translations: GlossaryTermTranslation[] = [
       'De eenheid van versnelling die passagiers ervaren, gemeten als veelvouden van de zwaartekrachtversnelling op Aarde (9,81 m/s²).',
     definition:
       'G-kracht (gravitationeel equivalent) meet de versnelling die een passagier ervaart ten opzichte van de normale zwaartekracht van de Aarde. Positieve G-krachten (boven 1G) drukken passagiers in hun stoel tijdens dalen of scherpe bochten. Negatieve G-krachten (onder 0G) heffen passagiers uit hun stoel en creëren airtime. Laterale G-krachten werken zijdelings en duwen passagiers opzij in bochten en overgangen.\n\nAchtbanen zijn ontworpen om deze krachten doelgericht te rangschikken. Een dal dat 4–5G genereert is het kenmerk van een krachtige first drop-overgang. Een kort moment van −0,5G op een airtime-heuvel produceert het typische zweefgevoel. De meeste attracties richten zich op 0–5G aanhoudende positieve krachten, met korte pieken voor dramatisch effect. Langdurige hoge G-belasting boven enkele seconden kan ongemak of greyout veroorzaken; goed ontworpen achtbanen balanceren intensiteitspieken met herstelsecties.',
-    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs'],
+    relatedTermIds: ['airtime', 'greyout', 'hangtime', 'inversion', 'lateral-gs', 'smoothness'],
     aliases: ['G-Krachten'],
     alternateNames: ['G-Force', 'G-Forces'],
   },
@@ -1196,7 +1252,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een horizontale veiligheidsbalk over de schoot, die meer bewegingsvrijheid toestaat dan schouderbeugels.',
     definition:
       'Een schootbeugel is een horizontaal veiligheidsinrichting dat ruiters op de bovenbenen immobiliseert. In tegenstelling tot schouderbeugels die het gehele bovenlichaam omhullen, stellen schootbeugels het bovenlichaam in staat om vrijer te bewegen, wat een openere, minder beperkende gewaarwording creëert. Schootbeugels zijn standaard op de meeste moderne hypercoasters, gigacoasters en veel traditionele staal- en houten achtbanen. Tijdens airtimemomenten stellen schootbeugels ruiters in staat de volledige gewaarwording van uit de stoel worden geworpen te ervaren, wat het gevoel creëert dat alleen de balk hen in het voertuig houdt.\n\nSchootbeugels worden door enthousiastelingen voor hoogtiertime-achtbanen geprefereerd omdat zij de meest ongehinderde airtime-gewaarwording opleveren. Ze vereisen echter een juiste positionering en kunnen oncomfortabel zijn voor ruiters met langere rompjes. Fabrikanten hebben het schootbeugelontwerp in decennia voortdurend verfijnd, en moderne beugels zijn aanzienlijk comfortabeler dan eerdere generaties.',
-    relatedTermIds: ['airtime', 'ride-cart', 'shoulder-harness'],
+    relatedTermIds: ['airtime', 'restraint-freedom', 'ride-cart', 'shoulder-harness'],
     aliases: ['Schoot-beugel'],
   },
   {
@@ -1206,7 +1262,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een over-de-schouder veiligheidsinrichting die het hele bovenlichaam omhult en beweging tijdens de rit beperkt.',
     definition:
       "Een schouderbeugel is een veiligheidsinrichting die over beide schouders en over de schoot komt, het gehele bovenlichaam volledig omhullend. Schouderbeugels waren standaard op achtbanen van de jaren '80 tot 2000 en blijven gebruikelijk op omgekeerde coasters, sommige hangende coasters en family-attracties waar maximale veiligheid prioriteit heeft. Moderne beugels hebben click-mechanismen die verschillende strakheid toestaan om verschillende lichaamstypen aan te passen.\n\nWanneer je in een schouderbeugel op een hoogtiertime-achtbaan zit, is de gewaarwording aanzienlijk anders dan een schootbeugel: ruiters kunnen niet zo dramatisch uit de stoel omhoog komen omdat de beugel hen naar beneden houdt. Dit compromis — verbeterde veiligheid en comfort tegen minder intense airtime-gewaarwording — is een belangrijke ontwerkkeuze die fabrikanten maken.",
-    relatedTermIds: ['airtime', 'lap-bar', 'ride-cart'],
+    relatedTermIds: ['airtime', 'lap-bar', 'restraint-freedom', 'ride-cart'],
     aliases: ['OTS-beugel'],
   },
   // ── Shopping ───────────────────────────────────────────────────────────────
@@ -1266,7 +1322,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Familie-stalen achtbaan in het thema van een mijnwagentje.',
     definition:
       'Een mijntrein coaster is een familievriendelijke stalen achtbaan die is vormgegeven als een doorgereden mijnkarretje. Typisch met gematigde snelheden, kleine drops en scherpe bochten door thematische tunnels en rotsformaties. Geschikt voor een breed leeftijdsspectrum. Voorbeelden: Big Thunder Mountain Railroad (Disney-parken) en Gold Rush (Plopsaland).',
-    relatedTermIds: ['steel-coaster', 'themed-land'],
+    relatedTermIds: ['powered-coaster', 'steel-coaster', 'themed-land'],
     aliases: ['mijnwagentje', 'familieachtbaan'],
     alternateNames: ['mine coaster', 'mine train'],
   },
@@ -1276,7 +1332,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Achtbaan ontworpen om de natuurlijke landschap te volgen en te benutten.',
     definition:
       'Een terrain coaster is gebouwd om de natuurlijke topografie — heuvels, valleien en ravijnen — optimaal te benutten in plaats van volledig op kunstmatige structuren te steunen. De baan interageert nauw met de grond, wat een gevoel van snelheid en onderdompeling creëert. Klassieke voorbeelden: The Beast (Kings Island) en Ravine Flyer II (Waldameer).',
-    relatedTermIds: ['airtime', 'steel-coaster', 'wooden-coaster'],
+    relatedTermIds: ['airtime', 'alpine-coaster', 'steel-coaster', 'wooden-coaster'],
     aliases: ['landschapsachtbaan', 'grondgebonden achtbaan'],
     alternateNames: ['terrain coaster'],
   },
@@ -1286,7 +1342,13 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition: 'Stalen achtbaan zonder vloer, waarbij de benen vrij hangen.',
     definition:
       'Bij een floorless coaster klapt de wagenvloer weg zodra de passagiers zijn vastgemaakt, waardoor de benen vrij boven de rails hangen. In tegenstelling tot inverted coasters loopt de rail onder het voertuig in plaats van erboven. B&M was pionier met Medusa (1999). Europees voorbeeld: Goliath (Walibi Holland).',
-    relatedTermIds: ['b-and-m', 'dive-coaster', 'inverted-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'b-and-m',
+      'dive-coaster',
+      'inverted-coaster',
+      'stand-up-coaster',
+      'steel-coaster',
+    ],
     aliases: ['achtbaan zonder vloer'],
     alternateNames: ['floorless', 'floorless coaster'],
   },
@@ -1297,7 +1359,7 @@ const translations: GlossaryTermTranslation[] = [
       'Amerikaans achtbaanfabrikant verantwoordelijk voor de eerste moderne looping.',
     definition:
       "Arrow Dynamics (opgericht in 1945) was een baanbrekende Amerikaanse fabrikant die de moderne buisstalen rail en de eerste moderne verticale looping introduceerde op Corkscrew (Knott's Berry Farm, 1975). Arrow-attracties staan bekend om hun corkscrews en suspended looping coasters. Het bedrijf vroeg in 2001 faillissement aan en de activa werden overgenomen door S&S.",
-    relatedTermIds: ['corkscrew', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
+    relatedTermIds: ['corkscrew', 'rattle', 'steel-coaster', 'suspended-coaster', 'vertical-loop'],
     aliases: ['Arrow', 'Arrow Development', 'S&S Arrow', 'arrow dynamics'],
   },
   {
@@ -1385,7 +1447,7 @@ const translations: GlossaryTermTranslation[] = [
       'Gebogen, sterk gekantelde bocht die airtime geeft midden in de richtingsverandering.',
     definition:
       'Een wave turn is een snelle, sterk gekantelde bocht die kort negatieve of laterale G-krachten veroorzaakt, wat een airtime-gevoel geeft midden in de bocht. Veel voorkomend op Rocky Mountain Construction-attracties, combineert het element richtingsverandering met ejector- of floater-airtime. Te vinden op Wildfire (Kolmården) en Untamed (Walibi Holland).',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc'],
+    relatedTermIds: ['airtime', 'ejector-airtime', 'lateral-gs', 'overbank', 'rmc', 's-hill'],
     aliases: ['wave turn', 'airtime bocht'],
   },
   {
@@ -1555,7 +1617,13 @@ const translations: GlossaryTermTranslation[] = [
       'Waterkanaal-attractie waarbij bootje-achtige voertuigen een goot afleggen en eindigen met een grote plons.',
     definition:
       'Een wildwaterbaan (ook log flume of boomstambootje) is een waterattractie waarbij gasten in boomstamvormige bootjes door een watergevuld kanaal glijden. Na rustigere secties volgt een steile helling waarbij het bootje in een waterbekken plonst en passagiers vrijwel zeker nat worden. Wildwaterbanen dateren uit de jaren 1960 en zijn inmiddels een standaard in parken wereldwijd. Ze zijn familievriendelijk, hebben een gemiddelde capaciteit en zijn klassieke zomerattracties. Bekende Europese voorbeelden: Poseidon in Europa-Park en talrijke wildwaterbanen in Duitstalige parken.',
-    relatedTermIds: ['height-requirement', 'river-rapids', 'water-ride'],
+    relatedTermIds: [
+      'height-requirement',
+      'river-rapids',
+      'splashdown',
+      'water-coaster',
+      'water-ride',
+    ],
     aliases: ['boomstambootje', 'log flume', 'plonsbaan', 'wildwaterrit', 'waterglijbaan'],
   },
   {
@@ -1834,7 +1902,13 @@ const translations: GlossaryTermTranslation[] = [
       'Wanneer een rijoperator beugels of schouderbanden te strak aantrekt — waardoor comfort en airtime verloren gaan.',
     definition:
       'Stapling verwijst naar de praktijk — opzettelijk of uit overvoorzichtigheid — waarbij een operator een schootbeugel of schouderbeugel zo stevig tegen een rijder aandruwt dat die significant strakker zit dan de minimaal vereiste veiligheidsstand. De term komt van het gevoel in de stoel te zijn "geniet". Bij airtime-georiënteerde achtbanen zijn schootbeugels juist bedoeld om los genoeg te zitten zodat rijders aan de top van heuvels iets van hun stoel kunnen loskomen — dat is airtime. Een gestapelde rijder wordt tijdens de hele rit plat op de stoel gedrukt en kan het beoogde zweefgevoel niet ervaren, hoe goed de heuvels ook zijn ontworpen.\n\nStapling is een veelgehoorde bron van frustratie in de enthousiastengemeenschap, met name bij houten achtbanen en hybride coasters waar airtime de hoofdattractiviteit is. Sommige parken staan bekend om hun consequent losse, rijdersvriendelijke beugelpolitiek; anderen worden bekritiseerd voor systematisch te strak aantrekken.',
-    relatedTermIds: ['airtime', 'ejector-airtime', 'lap-bar', 'shoulder-harness'],
+    relatedTermIds: [
+      'airtime',
+      'ejector-airtime',
+      'lap-bar',
+      'restraint-freedom',
+      'shoulder-harness',
+    ],
     aliases: ['gestapeld', 'te strakke beugel', 'over-stapled'],
   },
   {
@@ -1854,7 +1928,13 @@ const translations: GlossaryTermTranslation[] = [
       'Een achtbaantype met kleine individuele wagentjes en een compact circuit van strakke, vlakke haarspeldbochten aan de rand van verhoogde platforms.',
     definition:
       'Een wild mouse (wilde muis) gebruikt kleine wagentjes van twee tot vier personen in plaats van lange treinen. Het handelsmerk is een reeks strakke, nauwelijks gecantelde haarspeldbochten die aan de buitenste rand van de baan worden genomen. Omdat de bochten niet steil zijn gecanteld — anders dan bij andere achtbanen — worden rijders zijdelings tegen de wand van het wagentje geduwd, en door de traagheid van de aanloop lijkt de bocht later te komen dan verwacht, wat de overtuigende illusie schept dat het wagentje van de baan gaat glijden.\n\nWild mouse-achtbanen behoren tot de meest ruimte-efficiënte ontwerpen en verpakken verrassend veel baanlengte in een compacte footprint door de niveaus van haarspeldbochten op elkaar te stapelen. Ze zijn wereldwijd te vinden bij parken van uiteenlopende grootte. Fabrikanten zijn onder meer Mack Rides, Maurer en Gerstlauer.',
-    relatedTermIds: ['gerstlauer', 'mack-rides', 'spinning-coaster', 'steel-coaster'],
+    relatedTermIds: [
+      'bobsled-coaster',
+      'gerstlauer',
+      'mack-rides',
+      'spinning-coaster',
+      'steel-coaster',
+    ],
     aliases: ['wild mouse coaster', 'wilde muis', 'Wilde Maus'],
   },
   {
@@ -2066,7 +2146,7 @@ const translations: GlossaryTermTranslation[] = [
       'Een grote heuvel in de vorm van een kamelenbult ontworpen voor langdurige airtime.',
     definition:
       'De Camelback is het fundamentele element van elke hypercoaster. Het is een parabolische heuvel waar de trein met hoge snelheid overheen rijdt: op het hoogste punt (de apex) ervaren passagiers een gevoel van gewichtloosheid (airtime). De naam komt van de gelijkenis met de bult van een kameel. Hoe scherper de bocht bovenaan, hoe intenser het effect (van floater naar ejector airtime).',
-    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster'],
+    relatedTermIds: ['airtime', 'airtime-hill', 'hyper-coaster', 'quad-down'],
     aliases: ['kamelenbult', 'camelbacks'],
   },
   {
@@ -2086,7 +2166,7 @@ const translations: GlossaryTermTranslation[] = [
       'Slangterm gebruikt door pretparkliefhebbers om de gewone bezoeker aan te duiden.',
     definition:
       "GP staat voor 'General Public'. Het wordt door de community van liefhebbers (enthusiasts) gebruikt om bezoekers te beschrijven die geen diepgaande kennis hebben van achtbaantechniek of terminologie. Vaak wordt de term grappend gebruikt wanneer gewone bezoekers feitelijke onjuistheden uiten, zoals elke attractie een 'achtbaan' noemen of denken dat een looping gevaarlijk is als de trein stilvalt.",
-    relatedTermIds: ['credit', 'ert', 'touring-plan'],
+    relatedTermIds: ['credit', 'ert', 'fanboy', 'hype-train', 'mackprodukt', 'touring-plan'],
     aliases: ['gewone publiek', 'normale bezoekers'],
   },
   {
@@ -2297,6 +2377,185 @@ const translations: GlossaryTermTranslation[] = [
     definition:
       'Een E-Stop (noodstop) is een veiligheidsmechanisme of procedure die onmiddellijk de stroom onderbreekt of remmen inschakelt om alle bewegingen van de attractie te stoppen. Het kan automatisch worden geactiveerd door sensoren of handmatig door operators. Na een E-Stop moet de attractie meestal worden geïnspecteerd en gereset voordat deze weer in gebruik kan worden genomen.',
     relatedTermIds: ['block-brake', 'downtime', 'in-show-exit'],
+  },
+  {
+    id: 'mackprodukt',
+    name: 'Mackprodukt',
+    shortDefinition:
+      'Jargon uit de Duitstalige community voor de reflexmatige, kritiekloze lofzang waarmee fervente Mack Rides-fans elke nieuwe creatie van de fabrikant onthalen.',
+    definition:
+      'Een "Mackprodukt" (letterlijk "Mack-product") is een ingewijde grap uit de Duitstalige achtbaan-community, waarmee de fanatieke merktrouw van Mack Rides-fans liefdevol op de hak wordt genomen. Omdat Mack een Duitse fabrikant is én de familie achter Europa-Park — veruit het meest geliefde park van de regio —, staat de fanbase bekend als bijzonder toegewijd, en critici grappen dat elke nieuwe Mack-attractie al tot meesterwerk wordt uitgeroepen voordat iemand erin heeft gezeten.\n\nDe meme draait om een handvol standaardzinnen die zogenaamd elke echte analyse vervangen: bewondering voor hoe mooi de rails gebogen is ("die Schiene ist so toll gebogen", "de rails is zo prachtig gebogen") en voor de schitterende treinen ("wunderschöne Fahrfiguren", "beeldschone wagons") — esthetische complimenten die handig de vraag omzeilen hoe de attractie nu eigenlijk rijdt. Iets een "Mackprodukt" noemen, of simpelweg die zinnen citeren, is de community-afkorting geworden voor een liefdevol hoofdschudden om merktrouw die het wint van inhoud.',
+    relatedTermIds: ['credit', 'fanboy', 'gp', 'hype-train', 'mack-rides'],
+    aliases: ['Mack-Produkt', 'Mackprodukte'],
+  },
+  {
+    id: 'onride-offride',
+    name: 'On-Ride / Off-Ride',
+    shortDefinition:
+      'Liefhebbersjargon voor beelden die aan boord van een attractie zijn gefilmd (on-ride) tegenover beelden die vanaf de grond zijn gefilmd (off-ride).',
+    definition:
+      'On-ride en off-ride beschrijven de twee belangrijkste manieren waarop liefhebbers een achtbaan vastleggen. Een on-ride video is gefilmd vanaf de stoel van een rijder en geeft het tempo, de airtime en de krachten van de rit weer, terwijl een off-ride video langs de baan wordt gefilmd en de layout, thematisering en treinen in beweging toont. Het begrippenpaar komt voortdurend langs bij het bespreken van POVs en ritvideos online; omdat veel parken het los filmen met de telefoon aan boord verbieden, zijn officieel toegestane on-ride beelden bijzonder gewild.',
+    relatedTermIds: ['pov', 'ride-photo', 'credit'],
+    aliases: ['On-Ride', 'Off-Ride', 'Onride', 'Offride'],
+  },
+  {
+    id: 're-ride',
+    name: 'Re-Ride',
+    shortDefinition:
+      'Blijven zitten of meteen opnieuw instappen voor nog een rondje, zonder je stoel te verlaten of opnieuw in de wachtrij te gaan.',
+    definition:
+      'Een re-ride is wanneer een gast op een attractie mag blijven zitten — of direct weer in het station mag instappen — voor een extra cyclus zonder de hele rij opnieuw te lopen. Re-rides komen vaak voor laat op de dag, in rustige periodes of bij liefhebbersevenementen, wanneer de vraag laag is en de medewerkers rijders simpelweg laten doorrijden. Een ruimhartig re-ride-beleid is een grote trekpleister voor achtbaanfans en maakt het mogelijk om rondjes aaneen te rijden om rijen te vergelijken of gewoon opnieuw van een favoriet te genieten.',
+    relatedTermIds: ['credit', 'ert', 'rope-drop'],
+    aliases: ['Re-Rides', 'Reride'],
+  },
+  {
+    id: 'hype-train',
+    name: 'Hype Train',
+    shortDefinition:
+      'De golf van enthousiasme die in de community ontstaat rond een aangekondigde attractie en de verwachtingen soms boven de realiteit opblaast.',
+    definition:
+      'De "hype train" is de golf van verwachting die op fora en sociale media ontstaat zodra een nieuwe attractie wordt geteased of aangekondigd. Hij voedt zich met bouwupdates, gelekte layouts en vroege POV-releases en kan de verwachtingen torenhoog opdrijven lang voor de openingsdag. Liefhebbers grappen over het "instappen in de hype train" — en over de onvermijdelijke teleurstelling als een attractie er niet aan voldoet. Het begrip hangt nauw samen met merktrouw en met memes zoals het Mackprodukt.',
+    relatedTermIds: ['gp', 'mackprodukt', 'fanboy'],
+    aliases: ['Hype', 'Hype-Train'],
+  },
+  {
+    id: 'fanboy',
+    name: 'Fanboy',
+    shortDefinition:
+      'Een fan wiens toewijding aan een bepaald park, fabrikant of attractie zijn mening reflexmatig positief en kritiekloos maakt.',
+    definition:
+      'In liefhebberskringen is een "fanboy" (de term wordt ongeacht geslacht gebruikt) iemand wiens gehechtheid aan een specifiek park of fabrikant elk oordeel kleurt, en die de producten ervan bijna reflexmatig verdedigt en prijst. Het etiket wordt meestal half voor de grap geplakt, maar het vat een echte dynamiek in de hobby waarin merktrouw zwaarder kan wegen dan een objectieve beoordeling — de Mackprodukt-meme van de Duitstalige community is in wezen fanboyisme dat een running gag is geworden.',
+    relatedTermIds: ['mackprodukt', 'hype-train', 'gp'],
+    aliases: ['Fanboys', 'Fangirl'],
+  },
+  {
+    id: 'smoothness',
+    name: 'Loopcomfort',
+    shortDefinition:
+      'Hoe vrij een achtbaan is van schokken, geschud en trillingen — het tegenovergestelde van een ruwe of ratelende rit.',
+    definition:
+      'Loopcomfort (in het Engels "smoothness", Duitse liefhebbers noemen het "Laufruhe") beschrijft hoe netjes de treinen van een achtbaan de layout doorlopen zonder hoofdstoten, geschud of trillingen. Het hangt af van de precisie waarmee de rails is gefabriceerd, het ontwerp van trein en wielen, en de leeftijd en het onderhoud van de attractie. Fabrikanten als B&M en Mack staan bekend om glasgladde ritten, en een achtbaan die zijn loopcomfort behoudt naarmate hij ouder wordt geldt als bewijs van technische kwaliteit. Het tegenovergestelde — een ruwe, ratelende rit — is een van de meest gehoorde klachten van liefhebbers.',
+    relatedTermIds: ['rattle', 'b-and-m', 'g-force'],
+    aliases: ['Smoothness', 'Laufruhe', 'glasglad'],
+  },
+  {
+    id: 'rattle',
+    name: 'Rattle',
+    shortDefinition:
+      'Ongewenste trilling of geschud dat door een achtbaantrein wordt doorgegeven en een verder goede rit ruw doet aanvoelen.',
+    definition:
+      'Een rattle is het gezoem, geschud of geratel dat ontstaat wanneer de wielen van een achtbaan niet meer perfect over de rails lopen — vaak een teken van railslijtage, wielconditie of veroudering. Duitse liefhebbers noemen het "Rattern" of "Geruckel". Een rattle kan een verder uitstekende layout in een ongemakkelijke ervaring veranderen en is een van de meest besproken gebreken in de community, vooral bij oudere stalen achtbanen van Arrow en Vekoma. Het ontbreken ervan wordt geprezen als loopcomfort.',
+    relatedTermIds: ['smoothness', 'wooden-coaster', 'arrow-dynamics'],
+    aliases: ['Rattling', 'Rattern', 'Geratel'],
+  },
+  {
+    id: 'restraint-freedom',
+    name: 'Bewegingsvrijheid',
+    shortDefinition:
+      'Hoeveel ruimte een rijder heeft om te bewegen onder de heupbeugel of schouderbeugel — bepalend voor hoe airtime en ejector aanvoelen.',
+    definition:
+      'Bewegingsvrijheid ("Bügelfreiheit" in de Duitse community) beschrijft hoeveel ruimte er tussen de rijder en de beugel overblijft zodra die vergrendeld is. Ruime vrijheid onder een heupbeugel laat rijders bij airtime-momenten van de stoel komen, wat het zwevende of ejector-gevoel sterk versterkt, terwijl een strakke of hard aangedrukte beugel dat gevoel om zeep helpt. Liefhebbers waarderen achtbanen met losse heupbeugels (zoals veel ontwerpen van Intamin en Mack) juist hierom, en klagen wanneer medewerkers de beugels te stevig aandrukken (stapling).',
+    relatedTermIds: ['lap-bar', 'shoulder-harness', 'airtime', 'stapling'],
+    aliases: ['Bügelfreiheit', 'Restraint Freedom'],
+  },
+  {
+    id: 'single-rail-coaster',
+    name: 'Single-Rail Coaster',
+    shortDefinition:
+      'Een modern achtbaantype dat op één smalle centrale rail rijdt, met rijders achter elkaar voor een blootgestelde, kronkelige rit.',
+    definition:
+      'Een single-rail coaster gebruikt één smalle koker-rail in plaats van de gebruikelijke twee parallelle rails, met treinen waarin rijders schrijlings achter elkaar op de baan zitten. De dunne rail maakt extreem krappe, verwrongen layouts en een uniek blootgesteld gevoel mogelijk. Rocky Mountain Construction baande de weg voor de moderne versie met het "Raptor"-model (zoals RailBlazer in California\'s Great America); Vekoma en Intamin ontwikkelden sindsdien hun eigen single-rail-ontwerpen, waardoor het een van de meest kenmerkende achtbaantypes van het afgelopen decennium is.',
+    relatedTermIds: ['rmc', 'vekoma', 'steel-coaster'],
+    aliases: ['Single Rail', 'Single-Rail', 'Raptor Track'],
+  },
+  {
+    id: 'stand-up-coaster',
+    name: 'Stand-Up Coaster',
+    shortDefinition: 'Een achtbaan waarop rijders staand in plaats van zittend worden vastgezet.',
+    definition:
+      'Een stand-up coaster zet rijders rechtop, staand vast met een fietszadelachtige zitting en een schouderbeugel. Populair in de late jaren 80 en de jaren 90 — vooral van TOGO en B&M — verandert het formaat hoe de krachten door het lichaam worden gevoeld: loops en bochten zetten de benen onder ongebruikelijke druk. Er zijn sindsdien weinig nieuwe stand-ups gebouwd, en meerdere zijn omgebouwd naar andere formats (de Mantis van B&M werd de floorless Rougarou), waardoor de overgebleven exemplaren een gewilde credit zijn.',
+    relatedTermIds: ['b-and-m', 'floorless-coaster', 'steel-coaster'],
+    aliases: ['Stand Up Coaster', 'Standup Coaster'],
+  },
+  {
+    id: 'bobsled-coaster',
+    name: 'Bobsleebaan',
+    shortDefinition:
+      'Een achtbaan waarvan de wagens vrij door een open, opgewipte goot rijden in plaats van vast aan een rail te zitten.',
+    definition:
+      'Een bobsleebaan ("bobsled coaster") stuurt zijn wagens door een gebogen, halfbuisvormige goot in plaats van langs een klassieke rail, zodat ze hun eigen lijn door de opgewipte bochten vinden — net als een echte bobsleebaan. Het resultaat is een zwierige, door zijwaartse krachten gedreven rit zonder inversies, waarin snelheid en de vorm van de goot de ervaring bepalen. Schwarzkopf bouwde gevierde vroege versies, en Mack Rides is de bekendste maker van de moderne stalen bobsleebaan, waarvan er meerdere in Duitse en Alpenparken draaien.',
+    relatedTermIds: ['mack-rides', 'wild-mouse', 'steel-coaster'],
+    aliases: ['Bobsled Coaster', 'Bobbahn', 'Bobslee-achtbaan'],
+  },
+  {
+    id: 'powered-coaster',
+    name: 'Powered Coaster',
+    shortDefinition:
+      'Een achtbaanachtige attractie die continu wordt aangedreven door een motor aan boord of in de baan, in plaats van op zwaartekracht te steunen.',
+    definition:
+      'Een powered coaster ziet eruit als een achtbaan maar wordt over zijn hele circuit voortgestuwd door elektromotoren, in plaats van eenmaal omhoog te worden getrokken en aan de zwaartekracht overgelaten. Omdat hij snelheid kan houden en meerdere rondjes kan rijden, is het meestal een rustige familieattractie — vaak gethematiseerd als mijntrein, draak of dier — met hoge capaciteit en bescheiden sensatie. Of powered coasters als credit "meetellen" is een al lang lopend, half serieus debat in de liefhebberscommunity.',
+    relatedTermIds: ['alpine-coaster', 'credit', 'mack-rides', 'mine-train'],
+    aliases: ['Powered Coasters', 'aangedreven achtbaan'],
+  },
+  {
+    id: 'water-coaster',
+    name: 'Water Coaster',
+    shortDefinition:
+      'Een kruising tussen achtbaan en waterattractie, die achtbaanbaan en liften combineert met een of meer splashdowns.',
+    definition:
+      'Een water coaster combineert achtbaanmechaniek — ketting- of aangedreven liften, dalingen en opgewipte baan — met het natte slot van een waterattractie. Boten of achtbaanachtige wagens worden de liftheuvels op getrokken en door dalen gestuurd voordat ze scherp afremmen in een waterbak die een golf opwerpt. Mack Rides is de dominante maker van de moderne water coaster, met installaties als Poseidon in Europa-Park, en het type is populair omdat het achtbaantempo combineert met een verfrissende plons op hete dagen.',
+    relatedTermIds: ['mack-rides', 'log-flume', 'splashdown'],
+    aliases: ['Water Coasters', 'water-achtbaan'],
+  },
+  {
+    id: 'alpine-coaster',
+    name: 'Alpine Coaster',
+    shortDefinition:
+      'Een railgeleide afdaalachtbaan, meestal op een berghelling, waarbij rijders hun eigen snelheid regelen met een remhendel.',
+    definition:
+      'Een alpine coaster (ook mountain coaster genoemd) is een slee- of karretjesattractie die vast op een rail zit en de natuurlijke contouren van een helling volgt, waarbij rijders hun eigen snelheid bepalen met een handrem. Anders dan bij een klassieke achtbaan is er geen trein en meestal geen aangedreven lancering — zwaartekracht en het terrein leveren de rit, terwijl een kabel de karretjes weer naar boven trekt. Ze zijn het hele jaar door een vast onderdeel van Alpenoorden en hebben zich wereldwijd verspreid; de oudere, gootvormige "Sommerrodelbahn" (zomerrodelbaan) is hun naaste verwant.',
+    relatedTermIds: ['terrain-coaster', 'powered-coaster'],
+    aliases: ['Mountain Coaster', 'Sommerrodelbahn'],
+  },
+  {
+    id: 'beyond-vertical-drop',
+    name: 'Beyond-Vertical Drop',
+    shortDefinition:
+      'Een afdaling steiler dan 90 graden, zodat de baan rijders voorbij recht-naar-beneden kantelt en ze even achterover laat kijken.',
+    definition:
+      'Een beyond-vertical drop overschrijdt 90 graden steilte: de baan krult onder zichzelf terug, zodat rijders even voorbij de verticaal worden gekanteld en licht achterover naar de constructie worden gericht. Het effect maximaliseert het gevoel van vrije val en de angst voor de afdaling. Het Euro-Fighter-model van Gerstlauer maakte het formaat populair met afdalingen rond 95–97°, en B&M en anderen hebben dive coasters gebouwd met vergelijkbare overhangende eerste dalingen. Attracties als Mumbo Jumbo en Takabisha hielden records voor de steilste afdaling van dit type.',
+    relatedTermIds: ['dive-coaster', 'euro-fighter', 'first-drop', 'gerstlauer'],
+    aliases: ['Beyond Vertical Drop', 'afdaling voorbij de verticaal'],
+  },
+  {
+    id: 'splashdown',
+    name: 'Splashdown',
+    shortDefinition:
+      'Het door water afgeremde slot van een waterattractie of water coaster, waar de boot een bak raakt en een golf opwerpt.',
+    definition:
+      'Een splashdown is het moment waarop een boot of wagen aan de voet van een daling in een ondiep waterkanaal duikt, waarbij het water zowel het voertuig afremt als een spectaculair gordijn van spetters opwerpt. Op water coasters en boomstamattracties is dit de kenmerkende natmaker, en ontwerpers stemmen de diepte en vorm van de bak af om te regelen hoe nat rijders — en toeschouwers op nabije bruggen — worden. Een goed geplaatste splashdown is evenzeer een publiekstrekker als een ritelement.',
+    relatedTermIds: ['water-coaster', 'log-flume', 'mack-rides'],
+    aliases: ['Splash-down', 'Splashdowns'],
+  },
+  {
+    id: 'quad-down',
+    name: 'Quad-Down',
+    shortDefinition:
+      'Een reeks van vier opeenvolgende dalende hobbels die herhaalde, snel achtereenvolgende airtime geven tegen het einde van een layout.',
+    definition:
+      'Een quad-down (en zijn kleinere neefjes de triple-down en double-down) is een stapel dalende treden in snelle opeenvolging, die elk een scherpe pof airtime geven terwijl de trein daalt, kort vlak komt en weer daalt. Het element is een favoriet op houten en hybride achtbanen omdat het "machinegeweer"-airtime levert in een compacte ruimte; het bouwt op hetzelfde idee als de camelback en bunny hop, maar rijgt de hobbels aaneen tot één snelle reeks.',
+    relatedTermIds: ['airtime', 'camelback', 'wooden-coaster'],
+    aliases: ['Quad Down', 'Triple-Down', 'Double-Down'],
+  },
+  {
+    id: 's-hill',
+    name: 'S-Hill',
+    shortDefinition:
+      'Een S-vormige airtime-heuvel die rijders bij het optillen naar één kant gooit en zweefgevoel met een zijwaartse zet combineert.',
+    definition:
+      'Een S-hill is een airtime-heuvel met een S-vormige bocht, zodat de trein bij het overgaan van de top en het zweven ook zijwaarts eerst naar de ene en dan naar de andere kant wordt geduwd. Het resultaat mengt verticale airtime met een zijwaartse ruk die rijders verrast, en is een handelsmerk van moderne houten en hybride achtbanen die op een onvoorspelbaar, "uit de hand gelopen" tempo mikken. Het element is nauw verwant aan de wave turn, die de airtime volledig op zijn kant legt.',
+    relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
+    aliases: ['S Hill', 'Speed Bump'],
   },
 ];
 

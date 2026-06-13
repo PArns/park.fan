@@ -107,6 +107,7 @@ And because good data is allowed to look good — the weather, right now at
 the [Phantasialand](ref:phantasialand?bare) gate:
 
 ```weather-widget slug=phantasialand
+
 ```
 
 ## Who's writing this?

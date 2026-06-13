@@ -48,7 +48,7 @@ export function BlogAuthorProfile({ author }: { author: ResolvedAuthor }) {
           </div>
 
           {author.bioBody ? (
-            <div className="text-foreground/90 mt-3 space-y-3 text-base leading-relaxed [&_a]:text-primary [&_a:hover]:underline">
+            <div className="text-foreground/90 [&_a]:text-primary mt-3 space-y-3 text-base leading-relaxed [&_a:hover]:underline">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{

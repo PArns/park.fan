@@ -9,10 +9,7 @@ import {
   type ResolvedAttraction,
   type ResolvedPark,
 } from '@/lib/blog/park-resolver';
-import {
-  getAttractionBackgroundImage,
-  getParkBackgroundImage,
-} from '@/lib/utils/park-assets';
+import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
 import type { BlogAttractionRef, BlogPost } from '@/lib/blog/types';
@@ -33,8 +30,9 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   const tGeo = await getTranslations('geo');
 
   // --- 1. Gather every referenced slug --------------------------------------
-  const { parkSlugs: inlineParkSlugs, attractions: inlineAttractionRefs } =
-    extractInlineRefs(post.content);
+  const { parkSlugs: inlineParkSlugs, attractions: inlineAttractionRefs } = extractInlineRefs(
+    post.content
+  );
 
   const parkSlugSet = new Set<string>(inlineParkSlugs);
   for (const slug of post.frontmatter.relatedParks ?? []) {
@@ -56,9 +54,9 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   }
 
   // --- 2. Resolve in parallel ----------------------------------------------
-  const parks = (
-    await Promise.all([...parkSlugSet].map((slug) => resolvePark(slug)))
-  ).filter((p): p is ResolvedPark => p !== null);
+  const parks = (await Promise.all([...parkSlugSet].map((slug) => resolvePark(slug)))).filter(
+    (p): p is ResolvedPark => p !== null
+  );
 
   const attractions = (
     await Promise.all(
@@ -70,9 +68,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
         return { park, attraction };
       })
     )
-  ).filter(
-    (a): a is { park: ResolvedPark; attraction: ResolvedAttraction } => a !== null
-  );
+  ).filter((a): a is { park: ResolvedPark; attraction: ResolvedAttraction } => a !== null);
 
   if (parks.length === 0 && attractions.length === 0) return null;
 

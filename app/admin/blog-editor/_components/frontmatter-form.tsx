@@ -16,10 +16,7 @@ import { cn } from '@/lib/utils';
 import type { AuthorOption, CategoryOption } from '../_lib/initial-data';
 import type { EditorFrontmatter } from '../_lib/types';
 import { AuthorCreateModal, type NewAuthorDraft } from './author-create-modal';
-import {
-  CategoryCreateModal,
-  type NewCategoryDraft,
-} from './category-create-modal';
+import { CategoryCreateModal, type NewCategoryDraft } from './category-create-modal';
 import { DatePop } from './date-pop';
 import { ImagePicker } from './image-picker';
 
@@ -100,113 +97,98 @@ export function FrontmatterForm({
 
       {/* Properties card — Notion-style page properties grid. */}
       <div className="border-border/60 bg-card/30 rounded-2xl border p-5 backdrop-blur-sm">
-        <div className="mb-4 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+        <div className="text-muted-foreground mb-4 inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase">
           <span className="bg-primary/40 h-1 w-1 rounded-full" />
           Page properties
         </div>
         <div className="grid gap-3 sm:grid-cols-2">
-        <AuthorPicker
-          authors={authors}
-          value={value.authorKey}
-          onChange={(k) => {
-            if (k === '__new__') {
-              setAuthorModal({ mode: 'create' });
-              return;
+          <AuthorPicker
+            authors={authors}
+            value={value.authorKey}
+            onChange={(k) => {
+              if (k === '__new__') {
+                setAuthorModal({ mode: 'create' });
+                return;
+              }
+              set('authorKey', k);
+            }}
+            selected={author}
+            canCreate={!!onCreateAuthor}
+            onEdit={
+              author && onEditAuthor
+                ? () =>
+                    setAuthorModal({
+                      mode: 'edit',
+                      initial: {
+                        key: author.key,
+                        name: author.name,
+                        avatar: author.avatar,
+                        role: author.role,
+                        location: author.location,
+                        url: author.url,
+                        bio: author.bio,
+                      },
+                    })
+                : undefined
             }
-            set('authorKey', k);
-          }}
-          selected={author}
-          canCreate={!!onCreateAuthor}
-          onEdit={
-            author && onEditAuthor
-              ? () =>
-                  setAuthorModal({
-                    mode: 'edit',
-                    initial: {
-                      key: author.key,
-                      name: author.name,
-                      avatar: author.avatar,
-                      role: author.role,
-                      location: author.location,
-                      url: author.url,
-                      bio: author.bio,
-                    },
-                  })
-              : undefined
-          }
-        />
-        <CategoryPicker
-          categories={categories}
-          value={value.category}
-          onChange={(p) => {
-            if (p === '__new__') {
-              setCategoryModal({ mode: 'create' });
-              return;
+          />
+          <CategoryPicker
+            categories={categories}
+            value={value.category}
+            onChange={(p) => {
+              if (p === '__new__') {
+                setCategoryModal({ mode: 'create' });
+                return;
+              }
+              set('category', p);
+            }}
+            canCreate={!!onCreateCategory}
+            onEdit={
+              category && onEditCategory
+                ? () =>
+                    setCategoryModal({
+                      mode: 'edit',
+                      initial: {
+                        path: category.path,
+                        labels: { ...category.labels },
+                      },
+                    })
+                : undefined
             }
-            set('category', p);
-          }}
-          canCreate={!!onCreateCategory}
-          onEdit={
-            category && onEditCategory
-              ? () =>
-                  setCategoryModal({
-                    mode: 'edit',
-                    initial: {
-                      path: category.path,
-                      labels: { ...category.labels },
-                    },
-                  })
-              : undefined
-          }
-        />
-        <DatePop label="Date" value={value.date} onChange={(d) => set('date', d)} />
-        <DatePop
-          label="Updated"
-          value={value.updatedAt}
-          onChange={(d) => set('updatedAt', d)}
-          allowClear
-        />
-        <ModePicker value={value.mode} onChange={(m) => set('mode', m)} />
-        <FeaturedToggle value={value.featured} onChange={(b) => set('featured', b)} />
+          />
+          <DatePop label="Date" value={value.date} onChange={(d) => set('date', d)} />
+          <DatePop
+            label="Updated"
+            value={value.updatedAt}
+            onChange={(d) => set('updatedAt', d)}
+            allowClear
+          />
+          <ModePicker value={value.mode} onChange={(m) => set('mode', m)} />
+          <FeaturedToggle value={value.featured} onChange={(b) => set('featured', b)} />
         </div>
 
         <div className="border-border/40 mt-5 border-t pt-4">
-          <div className="mb-2 inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          <div className="text-muted-foreground mb-2 inline-flex items-center gap-1.5 text-[10px] font-semibold tracking-wider uppercase">
             <span className="bg-primary/40 h-1 w-1 rounded-full" />
             Tags
           </div>
-          <TagChips
-            value={value.tags}
-            onChange={(t) => set('tags', t)}
-            suggestions={allTags}
-          />
+          <TagChips value={value.tags} onChange={(t) => set('tags', t)} suggestions={allTags} />
         </div>
 
-        <details className="group mt-4 border-border/40 border-t pt-4">
+        <details className="group border-border/40 mt-4 border-t pt-4">
           <summary className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer items-center gap-1.5 text-xs font-semibold transition-colors">
             <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" />
             Cover image & SEO
           </summary>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
-          <CoverPicker
-            src={value.coverSrc}
-            onChange={(v) => set('coverSrc', v)}
-          />
-          <Field
-            label="Cover alt"
-            value={value.coverAlt}
-            onChange={(v) => set('coverAlt', v)}
-          />
-          <Field
-            label="SEO title"
-            value={value.seoTitle}
-            onChange={(v) => set('seoTitle', v)}
-          />
-          <Field
-            label="SEO description"
-            value={value.seoDescription}
-            onChange={(v) => set('seoDescription', v)}
-          />
+            <CoverPicker src={value.coverSrc} onChange={(v) => set('coverSrc', v)} />
+            <Field label="Cover alt" value={value.coverAlt} onChange={(v) => set('coverAlt', v)} />
+            <Field label="SEO title" value={value.seoTitle} onChange={(v) => set('seoTitle', v)} />
+            <Field
+              label="SEO description"
+              value={value.seoDescription}
+              onChange={(v) => set('seoDescription', v)}
+            />
           </div>
         </details>
       </div>
@@ -232,9 +214,7 @@ export function FrontmatterForm({
         <CategoryCreateModal
           open={categoryModal !== null}
           existing={categories}
-          initial={
-            categoryModal?.mode === 'edit' ? categoryModal.initial : undefined
-          }
+          initial={categoryModal?.mode === 'edit' ? categoryModal.initial : undefined}
           onClose={() => setCategoryModal(null)}
           onSubmit={(draft) => {
             if (categoryModal?.mode === 'edit') {
@@ -290,7 +270,7 @@ function AuthorPicker({
         )}
       </div>
       <label className="min-w-0 flex-1 cursor-pointer">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           Author
         </div>
         <select
@@ -341,7 +321,7 @@ function CategoryPicker({
         <Tag className="h-4 w-4" />
       </div>
       <label className="min-w-0 flex-1 cursor-pointer">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           Category
         </div>
         <select
@@ -390,7 +370,7 @@ function ModePicker({
         <Check className="h-4 w-4" />
       </div>
       <div className="min-w-0 flex-1">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           Mode
         </div>
         <div className="flex gap-1">
@@ -435,7 +415,7 @@ function FeaturedToggle({ value, onChange }: { value: boolean; onChange: (b: boo
         <Sparkles className="h-4 w-4" />
       </div>
       <div className="min-w-0 flex-1 text-left">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           Featured
         </div>
         <div className="text-foreground text-sm font-medium">{value ? 'Yes' : 'No'}</div>
@@ -535,13 +515,7 @@ function TagChips({
   );
 }
 
-function CoverPicker({
-  src,
-  onChange,
-}: {
-  src: string;
-  onChange: (s: string) => void;
-}) {
+function CoverPicker({ src, onChange }: { src: string; onChange: (s: string) => void }) {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -565,7 +539,7 @@ function CoverPicker({
           )}
         </div>
         <div className="min-w-0 flex-1">
-          <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
             Cover image
           </div>
           <div
@@ -578,11 +552,7 @@ function CoverPicker({
           </div>
         </div>
       </button>
-      <ImagePicker
-        open={open}
-        onClose={() => setOpen(false)}
-        onPick={(r) => onChange(r.src)}
-      />
+      <ImagePicker open={open} onClose={() => setOpen(false)} onPick={(r) => onChange(r.src)} />
     </>
   );
 }
@@ -608,7 +578,7 @@ function Field({
         </div>
       )}
       <div className="min-w-0 flex-1">
-        <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+        <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
           {label}
         </div>
         <input

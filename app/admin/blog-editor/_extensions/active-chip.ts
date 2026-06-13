@@ -51,10 +51,7 @@ function rangeFromDetail(detail: SelectionDetail): ActiveRange | null {
       }
       return null;
     case 'embed':
-      if (
-        typeof detail.paragraphFrom === 'number' &&
-        typeof detail.paragraphTo === 'number'
-      ) {
+      if (typeof detail.paragraphFrom === 'number' && typeof detail.paragraphTo === 'number') {
         return { from: detail.paragraphFrom, to: detail.paragraphTo, mode: 'node' };
       }
       return null;
@@ -96,9 +93,7 @@ export const ActiveChip = Extension.create({
         state: {
           init: () => ({ range: null, decos: DecorationSet.empty }),
           apply(tr, prev) {
-            const meta = tr.getMeta(activeChipKey) as
-              | { range: ActiveRange | null }
-              | undefined;
+            const meta = tr.getMeta(activeChipKey) as { range: ActiveRange | null } | undefined;
             if (meta !== undefined) {
               return { range: meta.range, decos: buildDecorations(tr.doc, meta.range) };
             }
@@ -132,9 +127,7 @@ export const ActiveChip = Extension.create({
             editorView.dispatch(editorView.state.tr.setMeta(activeChipKey, { range }));
           };
           const onClear = () => {
-            editorView.dispatch(
-              editorView.state.tr.setMeta(activeChipKey, { range: null })
-            );
+            editorView.dispatch(editorView.state.tr.setMeta(activeChipKey, { range: null }));
           };
           window.addEventListener('parkfan-selection', onSelect as EventListener);
           window.addEventListener('parkfan-clear-selection', onClear);

@@ -171,7 +171,7 @@ export function TableMenu({ editor }: TableMenuProps) {
               <span className={cn('h-3 w-3 rounded-full', THEME_SWATCH[currentTheme])} />
             </button>
             {themeOpen && (
-              <div className="border-border/60 bg-popover absolute left-0 top-full z-50 mt-1 min-w-[160px] overflow-hidden rounded-lg border shadow-xl">
+              <div className="border-border/60 bg-popover absolute top-full left-0 z-50 mt-1 min-w-[160px] overflow-hidden rounded-lg border shadow-xl">
                 {TABLE_THEMES.map((t) => (
                   <button
                     key={t}
@@ -185,7 +185,9 @@ export function TableMenu({ editor }: TableMenuProps) {
                         : 'hover:bg-accent/40 text-foreground/85'
                     )}
                   >
-                    <span className={cn('h-3 w-3 rounded-full ring-1 ring-border/60', THEME_SWATCH[t])} />
+                    <span
+                      className={cn('ring-border/60 h-3 w-3 rounded-full ring-1', THEME_SWATCH[t])}
+                    />
                     {THEME_LABEL[t]}
                   </button>
                 ))}

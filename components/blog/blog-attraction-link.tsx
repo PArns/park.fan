@@ -86,8 +86,7 @@ export function BlogAttractionLink({
           {!bare && (
             <span className="ml-1 inline-flex items-baseline gap-1 align-baseline no-underline">
               <span className="text-muted-foreground text-[0.92em] font-normal">
-                ({park.name},{' '}
-                {translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)})
+                ({park.name}, {translateGeoSlug(tGeo, 'countries', park.countrySlug, park.country)})
               </span>
               {liveBadge && (
                 <span className="inline-flex translate-y-[1px] align-middle">{liveBadge}</span>

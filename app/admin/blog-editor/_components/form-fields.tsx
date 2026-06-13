@@ -22,16 +22,13 @@ export function Field({
 }) {
   return (
     <label className="grid gap-1">
-      <span className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+      <span className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
         {label}
       </span>
       {children}
       {hint && (
         <span
-          className={cn(
-            'text-[10px]',
-            error ? 'text-destructive' : 'text-muted-foreground/70'
-          )}
+          className={cn('text-[10px]', error ? 'text-destructive' : 'text-muted-foreground/70')}
         >
           {hint}
         </span>

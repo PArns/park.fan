@@ -5,7 +5,6 @@ import { routing, type Locale } from '@/i18n/routing';
 
 const SITE_URL = 'https://park.fan';
 
-
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -82,7 +81,9 @@ export async function GET(
           }" length="0" />`
         : '';
       const descriptionXml = `<![CDATA[${escapeCData(frontmatter.excerpt)}${
-        coverAbs ? `<br/><img src="${coverAbs}" alt="${escapeXml(frontmatter.coverImage?.alt ?? frontmatter.title)}" />` : ''
+        coverAbs
+          ? `<br/><img src="${coverAbs}" alt="${escapeXml(frontmatter.coverImage?.alt ?? frontmatter.title)}" />`
+          : ''
       }]]>`;
       return `  <item>
     <title>${escapeXml(frontmatter.title)}</title>

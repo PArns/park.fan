@@ -55,7 +55,7 @@ export function DatePop({ label, value, onChange, allowClear }: DatePopProps) {
           <CalendarDays className="h-4 w-4" />
         </div>
         <div className="min-w-0 flex-1">
-          <div className="text-muted-foreground text-[10px] font-semibold uppercase tracking-wider">
+          <div className="text-muted-foreground text-[10px] font-semibold tracking-wider uppercase">
             {label}
           </div>
           <div
@@ -81,7 +81,7 @@ export function DatePop({ label, value, onChange, allowClear }: DatePopProps) {
                 onChange('');
               }
             }}
-            className="hover:bg-accent/40 rounded-full p-1 transition-colors cursor-pointer"
+            className="hover:bg-accent/40 cursor-pointer rounded-full p-1 transition-colors"
             aria-label="Clear date"
           >
             <X className="h-3.5 w-3.5" />
@@ -89,7 +89,7 @@ export function DatePop({ label, value, onChange, allowClear }: DatePopProps) {
         )}
       </button>
       {open && (
-        <div className="border-border/60 bg-popover absolute left-0 top-full z-20 mt-1 rounded-xl border p-2 shadow-xl">
+        <div className="border-border/60 bg-popover absolute top-full left-0 z-20 mt-1 rounded-xl border p-2 shadow-xl">
           <DayPicker
             mode="single"
             selected={date}

@@ -1,5 +1,5 @@
 ---
-title: "Editor-Funktionstest — alle Chips, alle Varianten"
+title: 'Editor-Funktionstest — alle Chips, alle Varianten'
 translationKey: editor-feature-test
 date: '2026-06-09'
 updatedAt: '2026-06-09'
@@ -174,12 +174,12 @@ und im veröffentlichten Beitrag eingefärbt sein. In eine Zelle klicken
 
 <!--tbl-theme: primary-->
 
-| Block-Art         | Chip-Selektor              | Inspector-Formular        |
-| ----------------- | -------------------------- | ------------------------- |
-| `?info` / `?bare` | `.ref-preview-badge`       | Ref-Variante + Replace    |
-| `?full`           | `.ref-preview-spotlight`   | Selber Variant-Editor     |
-| `*-widget`        | `.widget-preview`          | Widget-Attrs-Formular     |
-| plain `<a>`       | `a[href]`                  | Hyperlink-Href-Editor     |
+| Block-Art         | Chip-Selektor            | Inspector-Formular     |
+| ----------------- | ------------------------ | ---------------------- |
+| `?info` / `?bare` | `.ref-preview-badge`     | Ref-Variante + Replace |
+| `?full`           | `.ref-preview-spotlight` | Selber Variant-Editor  |
+| `*-widget`        | `.widget-preview`        | Widget-Attrs-Formular  |
+| plain `<a>`       | `a[href]`                | Hyperlink-Href-Editor  |
 
 ### Code-Block
 

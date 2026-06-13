@@ -81,12 +81,7 @@ function InlineBadge({ data }: { data: InlineBadgeData }) {
     return <RideWaitBadge minutes={data.waitTime} />;
   }
   if (data.kind === 'park' && data.crowdLevel) {
-    return (
-      <CrowdLevelBadge
-        level={data.crowdLevel as CrowdLevel}
-        className={INLINE_BADGE}
-      />
-    );
+    return <CrowdLevelBadge level={data.crowdLevel as CrowdLevel} className={INLINE_BADGE} />;
   }
   return null;
 }

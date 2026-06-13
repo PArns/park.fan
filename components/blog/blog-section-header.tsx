@@ -61,9 +61,7 @@ export function BlogSectionHeader({
           </div>
         )}
         <Heading className={headingClass}>{title}</Heading>
-        {intro && (
-          <p className="text-muted-foreground mt-3 text-base sm:text-lg">{intro}</p>
-        )}
+        {intro && <p className="text-muted-foreground mt-3 text-base sm:text-lg">{intro}</p>}
         {meta && <p className="text-muted-foreground mt-2 text-xs">{meta}</p>}
       </div>
       {action && (
@@ -84,7 +82,10 @@ export function BlogSectionHeader({
   return (
     <GlassCard
       variant="light"
-      className={cn('mb-10 border-white/30 bg-white/35 px-6 py-7 dark:border-white/10 dark:bg-black/35', className)}
+      className={cn(
+        'mb-10 border-white/30 bg-white/35 px-6 py-7 dark:border-white/10 dark:bg-black/35',
+        className
+      )}
     >
       <header>{inner}</header>
     </GlassCard>

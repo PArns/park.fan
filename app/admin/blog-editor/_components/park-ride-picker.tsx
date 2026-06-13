@@ -66,12 +66,7 @@ function pathFromHit(hit: SearchHit): string | null {
  * mode shows both parks and rides since the author picks either kind for
  * a ?full card.
  */
-export function ParkRidePicker({
-  mode,
-  onPick,
-  onClose,
-  anchorRect,
-}: ParkRidePickerProps) {
+export function ParkRidePicker({ mode, onPick, onClose, anchorRect }: ParkRidePickerProps) {
   const [q, setQ] = useState('');
   const [option, setOption] = useState<RefOption>('info');
   const [hits, setHits] = useState<{ parks: SearchHit[]; rides: SearchHit[] }>({
@@ -134,9 +129,7 @@ export function ParkRidePicker({
       label: hit.name,
       kind,
       option,
-      ...(kind === 'ride' && hit.parentPark?.slug
-        ? { parentParkSlug: hit.parentPark.slug }
-        : {}),
+      ...(kind === 'ride' && hit.parentPark?.slug ? { parentParkSlug: hit.parentPark.slug } : {}),
     });
   };
 
@@ -150,20 +143,14 @@ export function ParkRidePicker({
     const spaceAbove = anchorRect.top;
     const placeBelow = spaceBelow >= 360 || spaceBelow >= spaceAbove;
     const top = placeBelow
-      ? Math.max(
-          16,
-          Math.min(anchorRect.bottom + 12, window.innerHeight - DIALOG_HEIGHT - 16)
-        )
+      ? Math.max(16, Math.min(anchorRect.bottom + 12, window.innerHeight - DIALOG_HEIGHT - 16))
       : Math.max(16, anchorRect.top - DIALOG_HEIGHT - 12);
     modalStyle = {
       position: 'fixed',
       top,
       left: Math.max(
         16,
-        Math.min(
-          window.innerWidth - 16 - 620,
-          (anchorRect.left + anchorRect.right) / 2 - 310
-        )
+        Math.min(window.innerWidth - 16 - 620, (anchorRect.left + anchorRect.right) / 2 - 310)
       ),
       width: 'min(620px, 92vw)',
       maxHeight: DIALOG_HEIGHT,
@@ -184,7 +171,7 @@ export function ParkRidePicker({
       <div
         style={modalStyle}
         className={
-          'border-border/60 bg-popover text-popover-foreground overflow-hidden rounded-2xl border shadow-2xl flex flex-col ' +
+          'border-border/60 bg-popover text-popover-foreground flex flex-col overflow-hidden rounded-2xl border shadow-2xl ' +
           (anchorRect ? '' : 'w-[min(620px,92vw)]')
         }
       >
@@ -203,11 +190,9 @@ export function ParkRidePicker({
                   ? 'Search a ride…'
                   : 'Search a park or ride for the spotlight card…'
             }
-            className="text-foreground flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground/50"
+            className="text-foreground placeholder:text-muted-foreground/50 flex-1 bg-transparent text-base outline-none"
           />
-          {loading && (
-            <span className="text-muted-foreground text-xs">searching…</span>
-          )}
+          {loading && <span className="text-muted-foreground text-xs">searching…</span>}
           <button
             type="button"
             onClick={onClose}
@@ -227,7 +212,11 @@ export function ParkRidePicker({
                 [
                   { k: 'info', label: 'Info', hint: 'inline link · city/park + live badge' },
                   { k: 'bare', label: 'Bare', hint: 'inline link · no annotation' },
-                  { k: 'full', label: 'Full', hint: 'block spotlight card (renders as its own paragraph)' },
+                  {
+                    k: 'full',
+                    label: 'Full',
+                    hint: 'block spotlight card (renders as its own paragraph)',
+                  },
                 ] as Array<{ k: RefOption; label: string; hint: string }>
               ).map((o) => (
                 <button
@@ -294,7 +283,7 @@ function Group({
 }) {
   return (
     <div className="mb-1 last:mb-0">
-      <div className="text-muted-foreground inline-flex items-center gap-1.5 px-2 pb-1 pt-2 text-[10px] font-semibold uppercase tracking-wider">
+      <div className="text-muted-foreground inline-flex items-center gap-1.5 px-2 pt-2 pb-1 text-[10px] font-semibold tracking-wider uppercase">
         <Icon className="h-3 w-3" />
         {label}
       </div>
@@ -314,7 +303,7 @@ function Row({ hit, onClick }: { hit: SearchHit; onClick: () => void }) {
       )}
     >
       <div className="min-w-0">
-        <div className="text-foreground text-sm font-medium leading-tight">{hit.name}</div>
+        <div className="text-foreground text-sm leading-tight font-medium">{hit.name}</div>
         {hit.parentPark?.name && (
           <div className="text-muted-foreground text-xs leading-snug">at {hit.parentPark.name}</div>
         )}

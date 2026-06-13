@@ -45,7 +45,10 @@ function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
 
   useEffect(() => {
     const ctrl = new AbortController();
-    fetch('/api/admin/blog-editor/posts', { signal: ctrl.signal, headers: { [ADMIN_PASS_HEADER]: pass } })
+    fetch('/api/admin/blog-editor/posts', {
+      signal: ctrl.signal,
+      headers: { [ADMIN_PASS_HEADER]: pass },
+    })
       .then((r) => r.json())
       .then((data: { posts?: PostSummary[] }) => setPosts(data.posts ?? []))
       .catch(() => setPosts([]))
@@ -81,7 +84,7 @@ function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
             }}
             autoFocus
             placeholder="Search by title, translation key, or slug…"
-            className="text-foreground flex-1 bg-transparent text-base outline-none placeholder:text-muted-foreground/50"
+            className="text-foreground placeholder:text-muted-foreground/50 flex-1 bg-transparent text-base outline-none"
           />
           {loading && <span className="text-muted-foreground text-xs">loading…</span>}
           <button
@@ -131,7 +134,7 @@ function PostPickerBody({ onClose, onPick }: Omit<PostPickerProps, 'open'>) {
                           key={loc}
                           title={`${loc}: ${summary.slug}`}
                           className={cn(
-                            'inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider',
+                            'inline-flex items-center gap-1 rounded-full border px-1.5 py-0.5 text-[9px] font-bold tracking-wider uppercase',
                             summary.mode === 'published'
                               ? 'border-primary/30 bg-primary/15 text-primary'
                               : summary.mode === 'draft'
