@@ -191,7 +191,10 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     const park = data.park;
-    const attractions = (data.rides || []).slice(0, 5);
+    // Sort by distance (nearest first) before limiting — API order isn't guaranteed.
+    const attractions = [...(data.rides || [])]
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 5);
 
     // Park page URL (for "Go to park page" CTA); fallback from first attraction
     const rawParkUrl = (park as { url?: string })?.url;
@@ -222,12 +225,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
             {/* Quick navigation: primary CTA to park page when user is in park */}
             {parkPageUrl && (
               <div className="mb-4">
-                <Link href={parkPageUrl} prefetch={false}>
-                  <Button className="w-full sm:w-auto" size="lg">
-                    <ChevronRight className="mr-2 h-4 w-4" />
+                <Button asChild size="lg" className="w-full justify-center sm:w-auto">
+                  <Link href={parkPageUrl} prefetch={false}>
                     {t('goToParkPage')}
-                  </Button>
-                </Link>
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             )}
             {/* Park Info */}
