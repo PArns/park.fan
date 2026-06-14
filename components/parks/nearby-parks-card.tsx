@@ -14,6 +14,7 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
+import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
@@ -362,10 +363,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                           <div className="flex items-center gap-2">
                             {attraction.status === 'OPERATING' &&
                               typeof attraction.waitTime === 'number' && (
-                                <Badge
-                                  variant="secondary"
-                                  className="bg-status-operating/20 text-status-operating gap-1"
-                                >
+                                <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
                                   <span>⏱️</span>
                                   {attraction.waitTime} min
                                 </Badge>
