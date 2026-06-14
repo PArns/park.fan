@@ -26,6 +26,11 @@ import {
   trackNearbyInParkDetected,
 } from '@/lib/analytics/umami';
 
+// Top spacing that separates the card from the hero above. The in-park full-bleed banner
+// is intentionally exempt: it must sit flush under the hero (see app/[locale]/page.tsx), so
+// only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
+const TOP_SPACING = 'mt-8';
+
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
@@ -139,7 +144,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   // Don't show if GPS timed out / unavailable — permissionGranted stays true in that case.
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
     return (
-      <div className={cn('min-h-[200px]', className)}>
+      <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
         <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
           <MapPin className="text-muted-foreground h-5 w-5" />
           {t('title')}
@@ -160,7 +165,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
   if (showErrorCard) {
     return (
-      <div className={cn('min-h-[200px]', className)}>
+      <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
         <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
           <MapPin className="text-park-primary h-5 w-5" />
           {t('loadError')}
@@ -405,7 +410,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
     if (parks.length === 0) {
       return (
-        <div className={cn('min-h-[200px]', className)}>
+        <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
           <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
             <MapPin className="text-muted-foreground h-5 w-5" />
             {t('title')}
@@ -416,7 +421,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     return (
-      <section className={className}>
+      <section className={cn(TOP_SPACING, className)}>
         <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
           <MapPin className="text-park-primary h-5 w-5" />
           {nearestOpenPark
