@@ -206,15 +206,18 @@ export function NearbyParksCard({ className }: { className?: string }) {
     const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
-      <section className={cn('bg-park-primary/5 relative overflow-hidden py-6', className)}>
-        {/* Background image: confined to the header band and faded to the section background
-            so it never bleeds through the attractions list (kept it readable in light mode,
-            where the previous full-height overlay showed the image between the frosted rows). */}
+      <section className={cn('bg-park-primary/5 relative py-6', className)}>
+        {/* Background image: breaks out to the full viewport width (the card sits inside a
+            centered container) and is confined to the header band, faded to the section
+            background so it never bleeds through the attractions list — keeping the list
+            readable in light mode. `left-1/2 -translate-x-1/2 w-screen` is the full-bleed
+            trick; body has `overflow-x: clip` so this adds no horizontal scrollbar. */}
         {park.backgroundImage && (
-          <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-56 overflow-hidden sm:h-64">
+          <div className="pointer-events-none absolute top-0 left-1/2 z-0 h-56 w-screen -translate-x-1/2 overflow-hidden sm:h-64">
             <BackgroundOverlayImage
               imageSrc={park.backgroundImage}
               alt={stripNewPrefix(park.name)}
+              sizes="100vw"
             />
             <div className="from-background/10 via-background/50 to-background absolute inset-0 bg-gradient-to-b" />
           </div>
