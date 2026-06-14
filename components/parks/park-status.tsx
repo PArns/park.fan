@@ -127,7 +127,10 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
                         </span>
                       </div>
                       <Progress
-                        value={occupancy.current}
+                        // occupancy.current is relative to the 90th-percentile baseline and can
+                        // exceed 100 (e.g. 204% on an extreme day); clamp so the bar fills instead
+                        // of overflowing its track (translateX would push it out for >100).
+                        value={Math.min(100, Math.max(0, occupancy.current))}
                         className="h-2"
                         aria-label={t('occupancy')}
                       />
