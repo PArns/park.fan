@@ -18,7 +18,6 @@ import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
 import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
-import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import {
   trackNearbyPermissionGranted,
@@ -401,14 +400,6 @@ export function NearbyParksCard({ className }: { className?: string }) {
   if (nearbyData.type === 'nearby_parks') {
     const data = nearbyData.data as NearbyParksData;
     const rawParks = data.parks;
-
-    // Mirror the hero's in-park fallback: when the nearest park is within
-    // IN_PARK_FALLBACK_DISTANCE_M the hero already shows the "Welcome to <park>" in-park variant,
-    // so this "nearest open park" list would be redundant and contradict it. Hide it then.
-    // (The real in_park banner — within the backend's tighter radius — is handled above.)
-    if (rawParks.length > 0 && rawParks[0].distance <= IN_PARK_FALLBACK_DISTANCE_M) {
-      return null;
-    }
 
     // Sort: open (OPERATING/UNKNOWN) first, then by distance – so "nearest open" is first open
     const parks = [...rawParks].sort((a, b) => {
