@@ -6,7 +6,7 @@ import { MapPin, Navigation, Clock, TrendingUp, ChevronRight } from 'lucide-reac
 import { Link } from '@/i18n/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
-import { BackgroundOverlay } from '@/components/common/background-overlay';
+import { BackgroundOverlayImage } from '@/components/common/background-overlay-image';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -191,7 +191,10 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     const park = data.park;
-    const attractions = (data.rides || []).slice(0, 5);
+    // Sort by distance (nearest first) before limiting — API order isn't guaranteed.
+    const attractions = [...(data.rides || [])]
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, 5);
 
     // Park page URL (for "Go to park page" CTA); fallback from first attraction
     const rawParkUrl = (park as { url?: string })?.url;
@@ -203,17 +206,30 @@ export function NearbyParksCard({ className }: { className?: string }) {
     const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
-      <section className={cn('bg-park-primary/5 relative overflow-hidden py-6', className)}>
-        {/* Background Image */}
+      <section
+        className={cn(
+          // Full-bleed banner: the card lives inside a centered container, so break the whole
+          // section out to the viewport width (body has `overflow-x: clip` → no h-scrollbar).
+          // The content below is re-contained, so its left/right padding stays symmetric.
+          'bg-park-primary/5 relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-6',
+          className
+        )}
+      >
+        {/* Background image: confined to the header band and faded to the section background
+            so it never bleeds through the attractions list — keeping the list readable in
+            light mode. */}
         {park.backgroundImage && (
-          <BackgroundOverlay
-            imageSrc={park.backgroundImage}
-            alt={stripNewPrefix(park.name)}
-            intensity="medium"
-          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-56 overflow-hidden sm:h-64">
+            <BackgroundOverlayImage
+              imageSrc={park.backgroundImage}
+              alt={stripNewPrefix(park.name)}
+              sizes="100vw"
+            />
+            <div className="from-background/10 via-background/50 to-background absolute inset-0 bg-gradient-to-b" />
+          </div>
         )}
 
-        <div className="relative z-10">
+        <div className="relative z-10 container mx-auto px-4">
           <h2 className="mb-6 flex items-center gap-2 text-xl font-bold">
             <MapPin className="text-park-primary h-5 w-5" />
             {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
@@ -222,12 +238,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
             {/* Quick navigation: primary CTA to park page when user is in park */}
             {parkPageUrl && (
               <div className="mb-4">
-                <Link href={parkPageUrl} prefetch={false}>
-                  <Button className="w-full sm:w-auto" size="lg">
-                    <ChevronRight className="mr-2 h-4 w-4" />
+                <Button asChild size="lg" className="w-full justify-center sm:w-auto">
+                  <Link href={parkPageUrl} prefetch={false}>
                     {t('goToParkPage')}
-                  </Button>
-                </Link>
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </Button>
               </div>
             )}
             {/* Park Info */}

@@ -124,7 +124,7 @@ export default async function HomePage({ params }: HomePageProps) {
           Letting the logo load eagerly (it's a small SVG) keeps the preload budget for the hero. */}
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
-      <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-14 sm:pb-20 md:pt-28 md:pb-24 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-24">
+      <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-6 sm:pb-8 md:pt-28 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-12">
         <HeroBackground imageSrc={randomHeroImage} />
         <div className="relative container mx-auto">
           <div className="flex flex-col">
@@ -201,8 +201,9 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
       <LocationBanner />
 
-      {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park */}
-      <section className="px-4 py-8">
+      {/* Nearby / In-Park – primary focus: nearest open park or quick park navigation when in park.
+          No top padding so the (full-bleed) in-park banner sits flush under the hero. */}
+      <section className="px-4 pb-8">
         <div className="container mx-auto">
           <NearbyParksCard />
         </div>
