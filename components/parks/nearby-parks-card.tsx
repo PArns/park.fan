@@ -197,8 +197,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     const park = data.park;
-    // Sort by distance (nearest first) before limiting — API order isn't guaranteed.
+    // Hide attractions that aren't open (e.g. seasonal closures like Phantasialand's ice-skate
+    // hire, which only runs during Wintertraum, or rides under refurbishment). DOWN is kept — it's
+    // part of today's lineup, just momentarily out of service. Filter before slicing so closed
+    // rides don't take up the 5 visible slots. Sort by distance (API order isn't guaranteed).
     const attractions = [...(data.rides || [])]
+      .filter((a) => a.status !== 'CLOSED' && a.status !== 'REFURBISHMENT')
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5);
 
