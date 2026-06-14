@@ -206,14 +206,20 @@ export function NearbyParksCard({ className }: { className?: string }) {
     const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
-      <section className={cn('bg-park-primary/5 relative py-6', className)}>
-        {/* Background image: breaks out to the full viewport width (the card sits inside a
-            centered container) and is confined to the header band, faded to the section
-            background so it never bleeds through the attractions list — keeping the list
-            readable in light mode. `left-1/2 -translate-x-1/2 w-screen` is the full-bleed
-            trick; body has `overflow-x: clip` so this adds no horizontal scrollbar. */}
+      <section
+        className={cn(
+          // Full-bleed banner: the card lives inside a centered container, so break the whole
+          // section out to the viewport width (body has `overflow-x: clip` → no h-scrollbar).
+          // The content below is re-contained, so its left/right padding stays symmetric.
+          'bg-park-primary/5 relative left-1/2 w-screen -translate-x-1/2 overflow-hidden py-6',
+          className
+        )}
+      >
+        {/* Background image: confined to the header band and faded to the section background
+            so it never bleeds through the attractions list — keeping the list readable in
+            light mode. */}
         {park.backgroundImage && (
-          <div className="pointer-events-none absolute top-0 left-1/2 z-0 h-56 w-screen -translate-x-1/2 overflow-hidden sm:h-64">
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-56 overflow-hidden sm:h-64">
             <BackgroundOverlayImage
               imageSrc={park.backgroundImage}
               alt={stripNewPrefix(park.name)}
@@ -223,7 +229,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
           </div>
         )}
 
-        <div className="relative z-10">
+        <div className="relative z-10 container mx-auto px-4">
           <h2 className="mb-6 flex items-center gap-2 text-xl font-bold">
             <MapPin className="text-park-primary h-5 w-5" />
             {t('youAreInPark', { parkName: stripNewPrefix(park.name) })}
