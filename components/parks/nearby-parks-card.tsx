@@ -6,7 +6,7 @@ import { MapPin, Navigation, Clock, TrendingUp, ChevronRight } from 'lucide-reac
 import { Link } from '@/i18n/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
-import { BackgroundOverlay } from '@/components/common/background-overlay';
+import { BackgroundOverlayImage } from '@/components/common/background-overlay-image';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -207,13 +207,17 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
     return (
       <section className={cn('bg-park-primary/5 relative overflow-hidden py-6', className)}>
-        {/* Background Image */}
+        {/* Background image: confined to the header band and faded to the section background
+            so it never bleeds through the attractions list (kept it readable in light mode,
+            where the previous full-height overlay showed the image between the frosted rows). */}
         {park.backgroundImage && (
-          <BackgroundOverlay
-            imageSrc={park.backgroundImage}
-            alt={stripNewPrefix(park.name)}
-            intensity="medium"
-          />
+          <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-56 overflow-hidden sm:h-64">
+            <BackgroundOverlayImage
+              imageSrc={park.backgroundImage}
+              alt={stripNewPrefix(park.name)}
+            />
+            <div className="from-background/10 via-background/50 to-background absolute inset-0 bg-gradient-to-b" />
+          </div>
         )}
 
         <div className="relative z-10">
