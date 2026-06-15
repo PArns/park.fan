@@ -17,11 +17,9 @@ interface ParkStatusProps {
   park: ParkData;
   variant: 'compact' | 'detailed' | 'card' | 'hero';
   className?: string;
-  /** Inserted between the WaitTime card and Attractions card in the detailed grid, mobile only. */
-  midSlot?: React.ReactNode;
 }
 
-export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProps) {
+export function ParkStatus({ park, variant, className }: ParkStatusProps) {
   const analytics = 'analytics' in park ? park.analytics : null;
   const currentLoad = 'currentLoad' in park ? park.currentLoad : null;
   const status = 'status' in park ? park.status : undefined;
@@ -267,11 +265,6 @@ export function ParkStatus({ park, variant, className, midSlot }: ParkStatusProp
             )}
           </div>
         )}
-
-        {/* Ride list (tabs) on mobile — rendered for EVERY status, incl. closed parks (where the
-            open-parks stats grid above isn't rendered at all). Desktop shows the tabs via a
-            separate `hidden sm:block` block in LiveParkData, so this is mobile-only. */}
-        {midSlot && <div className="sm:hidden">{midSlot}</div>}
       </div>
     );
   }
