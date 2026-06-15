@@ -42,10 +42,10 @@ const nextConfig: NextConfig = {
     ],
     // Optimize CSS to reduce render-blocking
     optimizeCss: true,
-    // Surface attribution on Web Vitals (metric.attribution) so the RUM reporter can pin
-    // the exact element/interaction behind a poor INP/LCP/CLS — e.g. the homepage INP>200ms.
-    // TTFB/FCP attribution splits server wait vs client paint to track the streaming win.
-    webVitalsAttribution: ['INP', 'LCP', 'CLS', 'TTFB', 'FCP'],
+    // NOTE: no `webVitalsAttribution` here. In Next 16 it does not wire attribution into
+    // `useReportWebVitals` (the flag's env vars are defined but never consumed). The RUM
+    // reporter imports `web-vitals/attribution` directly instead — see
+    // components/analytics/web-vitals-reporter.tsx.
   },
   images: {
     formats: ['image/avif', 'image/webp'],

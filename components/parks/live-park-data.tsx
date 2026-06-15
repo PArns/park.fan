@@ -137,15 +137,20 @@ export function LiveParkData({
         )}
       </div>
 
-      {/* Park Status Component — on mobile receives the tabs between WaitTime and Attractions */}
-      <ParkStatus park={currentPark} variant="detailed" midSlot={tabsWithHash} />
-
-      {bestDaysSlot}
-
-      <Separator className="my-8" />
-
-      {/* Tabs on desktop (hidden on mobile — already shown inside ParkStatus grid) */}
-      <div className="hidden sm:block">{tabsWithHash}</div>
+      {/* Status, ride-list tabs and best-days are laid out in ONE flex column and reordered per
+          breakpoint via `order`, so the heavy <TabsWithHash> (the full attraction grid for big
+          parks) is rendered + hydrated EXACTLY ONCE. It used to be mounted twice — a mobile copy
+          inside ParkStatus and a `hidden sm:block` desktop copy — and `display:none` does not skip
+          hydration, so every park page paid double the hydration/re-render cost (the dominant
+          mobile-INP source on large parks like PortAventura). `gap-8` gives uniform spacing.
+            mobile : status → tabs → best-days
+            desktop: status → best-days → separator → tabs */}
+      <div className="flex flex-col gap-8">
+        <ParkStatus park={currentPark} variant="detailed" className="order-1" />
+        <div className="order-2 sm:order-4">{tabsWithHash}</div>
+        {bestDaysSlot && <div className="order-3 sm:order-2">{bestDaysSlot}</div>}
+        <Separator className="order-3 hidden sm:block" />
+      </div>
     </>
   );
 }
