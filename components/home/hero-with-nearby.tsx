@@ -17,9 +17,8 @@ import type {
   NearbyParkInfo,
   ParkWithDistance,
 } from '@/types/nearby';
+import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
-/** API returns distance in meters. Treat user as "in park" when nearest park is within this (m). */
-const IN_PARK_FALLBACK_DISTANCE_M = 1000; // 1 km
 /** Only show "Park is nearby" hero subline when nearest park is within this (m). */
 const NEAR_PARK_HERO_RADIUS_M = 5000; // 5 km
 

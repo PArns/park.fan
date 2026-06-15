@@ -4,6 +4,13 @@
  */
 import type { AttractionStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
 
+/**
+ * API returns distance in meters. Treat the user as "in park" when the nearest park is within
+ * this radius. Shared by the hero (shows the "Welcome to <park>" variant) and the nearby card
+ * (hides the redundant "nearest open park" list) so the two never contradict each other.
+ */
+export const IN_PARK_FALLBACK_DISTANCE_M = 1000; // 1 km
+
 export interface UserLocation {
   latitude: number;
   longitude: number;

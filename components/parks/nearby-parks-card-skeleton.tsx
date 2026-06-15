@@ -13,7 +13,9 @@ import { cn } from '@/lib/utils';
  */
 export function NearbyParksCardSkeleton({ className }: { className?: string }) {
   return (
-    <section className={className} aria-hidden="true">
+    // mt-8 mirrors NearbyParksCard's TOP_SPACING so the swap to the live parks list keeps the
+    // same gap under the hero (no layout shift). The in-park banner is full-bleed and exempt.
+    <section className={cn('mt-8', className)} aria-hidden="true">
       <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
         <Skeleton className="h-5 w-5 rounded-full" />
         <Skeleton className="h-6 w-48" />

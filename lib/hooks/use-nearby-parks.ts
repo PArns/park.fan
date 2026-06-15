@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
+import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
 export interface UseNearbyParksOptions {
   /** Radius in meters (default: 1000). */
@@ -15,7 +16,11 @@ export interface UseNearbyParksOptions {
  * single request (the query key is derived from these values). Use `useHomeNearbyParks`
  * rather than passing the literals inline so they can't silently drift apart.
  */
-export const HOME_NEARBY_RADIUS_M = 200;
+// The backend classifies the user as "in park" (and returns the rides list) only when within
+// `radius` of a park. Match the hero's in-park distance so standing at the entrance/parking
+// (a few hundred metres from the park point) returns in_park with rides, instead of the
+// "nearest parks" list — keeping the hero welcome and the card in sync.
+export const HOME_NEARBY_RADIUS_M = IN_PARK_FALLBACK_DISTANCE_M; // 1 km
 export const HOME_NEARBY_LIMIT = 6;
 
 const CACHE_KEY = 'nearby-parks-v2';
