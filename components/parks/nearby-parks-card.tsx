@@ -2,7 +2,7 @@
 
 import { useEffect, useSyncExternalStore, useState, useRef } from 'react';
 import { useTranslations } from 'next-intl';
-import { MapPin, Navigation, Clock, TrendingUp, ChevronRight } from 'lucide-react';
+import { MapPin, Navigation, Clock, TrendingUp, ChevronRight, Star } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ParkCard } from '@/components/parks/park-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -17,7 +17,11 @@ import { formatDistance } from '@/lib/utils/distance-utils';
 import { waitTimeBadgeClass } from '@/lib/blog/live-display';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl, getParkUrlFromAttractionUrl } from '@/lib/utils/url-utils';
-import type { NearbyAttractionsData, NearbyParksData } from '@/types/nearby';
+import type {
+  AttractionWithDistance,
+  NearbyAttractionsData,
+  NearbyParksData,
+} from '@/types/nearby';
 import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import {
   trackNearbyPermissionGranted,
@@ -30,6 +34,70 @@ import {
 // is intentionally exempt: it must sit flush under the hero (see app/[locale]/page.tsx), so
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
 const TOP_SPACING = 'mt-8';
+
+/**
+ * A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the
+ * headliner list and the "nearest attractions" list so both render identically. Pass
+ * `headlinerLabel` to render a "Top" badge next to the name for marquee attractions.
+ */
+function InParkAttractionRow({
+  attraction,
+  awayLabel,
+  headlinerLabel,
+}: {
+  attraction: AttractionWithDistance;
+  awayLabel: string;
+  headlinerLabel?: string;
+}) {
+  return (
+    <li>
+      <Link
+        href={convertApiUrlToFrontendUrl(attraction.url)}
+        prefetch={false}
+        className="group block"
+      >
+        <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
+          {/* Favorite Star */}
+          {attraction.id && (
+            <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
+              <FavoriteStar type="attraction" id={attraction.id} />
+            </div>
+          )}
+          <div className="min-w-0 flex-1 pr-2">
+            <div className="flex items-center gap-2">
+              <p className="group-hover:text-primary truncate font-medium transition-colors">
+                {stripNewPrefix(attraction.name)}
+              </p>
+              {headlinerLabel && (
+                <Badge className="shrink-0 gap-1 border-transparent bg-amber-500/15 text-amber-700 dark:text-amber-400">
+                  <Star className="h-3 w-3 fill-current" />
+                  {headlinerLabel}
+                </Badge>
+              )}
+            </div>
+            <p className="text-muted-foreground text-xs">
+              {formatDistance(attraction.distance)} {awayLabel}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            {attraction.status === 'OPERATING' && typeof attraction.waitTime === 'number' && (
+              <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
+                <span>⏱️</span>
+                {attraction.waitTime} min
+              </Badge>
+            )}
+            {attraction.status === 'OPERATING' &&
+              attraction.crowdLevel &&
+              attraction.crowdLevel !== null && (
+                <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
+              )}
+            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
+          </div>
+        </div>
+      </Link>
+    </li>
+  );
+}
 
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
@@ -197,23 +265,40 @@ export function NearbyParksCard({ className }: { className?: string }) {
     }
 
     const park = data.park;
+    // Drop rides that are clearly out of their season. The API already hides
+    // `isCurrentlyInSeason === false`, but we filter defensively so off-season attractions never
+    // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
+    const inSeasonRides = (data.rides || []).filter((a) => a.isCurrentlyInSeason !== false);
+
+    // Headliners (top/marquee attractions, flagged by the API). Always shown above the regular
+    // list, sorted by distance. Keep closed ones too — a headliner is worth pointing out even when
+    // it's momentarily not operating.
+    const headliners = inSeasonRides
+      .filter((a) => a.isHeadliner)
+      .sort((a, b) => a.distance - b.distance);
+    const headlinerIds = new Set(headliners.map((h) => h.id));
+
     // Hide attractions that aren't open (e.g. seasonal closures like Phantasialand's ice-skate
     // hire, which only runs during Wintertraum, or rides under refurbishment). DOWN is kept — it's
     // part of today's lineup, just momentarily out of service. Filter before slicing so closed
     // rides don't take up the 5 visible slots. Sort by distance (API order isn't guaranteed).
-    const attractions = [...(data.rides || [])]
+    // Headliners are excluded here so they aren't listed twice.
+    const attractions = inSeasonRides
+      .filter((a) => !headlinerIds.has(a.id))
       .filter((a) => a.status !== 'CLOSED' && a.status !== 'REFURBISHMENT')
       .sort((a, b) => a.distance - b.distance)
       .slice(0, 5);
 
-    // Park page URL (for "Go to park page" CTA); fallback from first attraction
+    // Park page URL (for "Go to park page" CTA); fallback from first known ride (headliner or
+    // regular attraction) when the park itself doesn't carry a url.
+    const fallbackRide = attractions[0] ?? headliners[0] ?? null;
     const rawParkUrl = (park as { url?: string })?.url;
     const parkPageUrl = rawParkUrl
       ? convertApiUrlToFrontendUrl(rawParkUrl)
-      : attractions.length > 0
-        ? getParkUrlFromAttractionUrl(attractions[0].url)
+      : fallbackRide
+        ? getParkUrlFromAttractionUrl(fallbackRide.url)
         : null;
-    const parkMapUrl = parkPageUrl && attractions.length > 0 ? `${parkPageUrl}#map` : parkPageUrl;
+    const parkMapUrl = parkPageUrl && fallbackRide ? `${parkPageUrl}#map` : parkPageUrl;
 
     return (
       <section
@@ -340,6 +425,26 @@ export function NearbyParksCard({ className }: { className?: string }) {
               </>
             )}
 
+            {/* Headliners — always shown above the nearest attractions */}
+            {headliners.length > 0 && (
+              <div>
+                <h4 className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
+                  <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
+                  {t('headliners')}
+                </h4>
+                <ul className="space-y-2">
+                  {headliners.map((attraction) => (
+                    <InParkAttractionRow
+                      key={attraction.id}
+                      attraction={attraction}
+                      awayLabel={t('awayFrom')}
+                      headlinerLabel={t('headlinerBadge')}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Nearest Attractions */}
             {attractions.length > 0 && (
               <div>
@@ -348,45 +453,11 @@ export function NearbyParksCard({ className }: { className?: string }) {
                 </h4>
                 <ul className="space-y-2">
                   {attractions.map((attraction) => (
-                    <li key={attraction.id}>
-                      <Link
-                        href={convertApiUrlToFrontendUrl(attraction.url)}
-                        prefetch={false}
-                        className="group block"
-                      >
-                        <div className="bg-background/60 hover:bg-background/80 hover:border-primary/50 relative flex items-center justify-between rounded-lg border p-3 backdrop-blur-md transition-all hover:shadow-sm">
-                          {/* Favorite Star */}
-                          {attraction.id && (
-                            <div className="absolute top-2 right-2 z-20 flex items-center justify-center">
-                              <FavoriteStar type="attraction" id={attraction.id} />
-                            </div>
-                          )}
-                          <div className="min-w-0 flex-1 pr-2">
-                            <p className="group-hover:text-primary truncate font-medium transition-colors">
-                              {stripNewPrefix(attraction.name)}
-                            </p>
-                            <p className="text-muted-foreground text-xs">
-                              {formatDistance(attraction.distance)} {t('awayFrom')}
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            {attraction.status === 'OPERATING' &&
-                              typeof attraction.waitTime === 'number' && (
-                                <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
-                                  <span>⏱️</span>
-                                  {attraction.waitTime} min
-                                </Badge>
-                              )}
-                            {attraction.status === 'OPERATING' &&
-                              attraction.crowdLevel &&
-                              attraction.crowdLevel !== null && (
-                                <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
-                              )}
-                            <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
-                          </div>
-                        </div>
-                      </Link>
-                    </li>
+                    <InParkAttractionRow
+                      key={attraction.id}
+                      attraction={attraction}
+                      awayLabel={t('awayFrom')}
+                    />
                   ))}
                 </ul>
               </div>
