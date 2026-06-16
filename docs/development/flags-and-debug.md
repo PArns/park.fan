@@ -23,8 +23,10 @@ including the real `isHeadliner` / `isSeasonal` / `isCurrentlyInSeason` flags. T
 (`lib/hooks/use-nearby-parks.ts`) forwards the param, runs even without GPS, and bypasses the
 localStorage cache so simulated results never mix with real ones.
 
-**Production-safe:** the param is gated behind `NODE_ENV !== 'production'` in `app/api/nearby/route.ts`
-and is ignored on production deployments. Presets/resolver live in `lib/nearby-simulation.ts`.
+**Production-safe:** enabled on local dev **and Vercel preview deployments**, disabled only on the
+real production deployment. The gate lives in `isSimulationEnabled()` (`lib/nearby-simulation.ts`):
+since Vercel runs previews with `NODE_ENV='production'`, it keys off `VERCEL_ENV` (`preview` vs
+`production`) and falls back to `NODE_ENV` for non-Vercel runs. Presets/resolver live in the same file.
 
 ---
 

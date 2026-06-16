@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerAuthHeaders } from '@/lib/api/client';
 import { enrichParksWithImages } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
-import { resolveSimLocation } from '@/lib/nearby-simulation';
+import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
 
 /** Response depends on client IP (GeoIP when no coords); must not be cached. */
 
@@ -24,11 +24,10 @@ export async function GET(request: NextRequest) {
   // Debug: force GeoIP for this IP — only available outside production
   const ipDebug = process.env.NODE_ENV !== 'production' ? searchParams.get('ip') : null;
 
-  // Dev-only: simulate standing inside a park (e.g. ?sim=in_park) so the real backend returns an
-  // in_park response with genuine headliner/seasonal data, without needing real GPS. Ignored in
-  // production. When set, it overrides any user-supplied coordinates.
-  const simLocation =
-    process.env.NODE_ENV !== 'production' ? resolveSimLocation(searchParams.get('sim')) : null;
+  // Dev/preview-only: simulate standing inside a park (e.g. ?sim=in_park) so the real backend
+  // returns an in_park response with genuine headliner/seasonal data, without needing real GPS.
+  // Disabled on the production deployment. When set, it overrides any user-supplied coordinates.
+  const simLocation = isSimulationEnabled() ? resolveSimLocation(searchParams.get('sim')) : null;
 
   const effLat = simLocation ? String(simLocation.latitude) : lat;
   const effLng = simLocation ? String(simLocation.longitude) : lng;

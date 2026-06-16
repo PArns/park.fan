@@ -22,6 +22,20 @@ export interface SimLocation {
 }
 
 /**
+ * Whether the `sim` param may be honored. Enabled on local dev and Vercel **preview** deployments,
+ * disabled only on the real production deployment.
+ *
+ * On Vercel, `NODE_ENV` is `'production'` even for preview builds, so checking `NODE_ENV` alone
+ * would (wrongly) disable simulation on previews. Vercel distinguishes the environments via
+ * `VERCEL_ENV` (`'production' | 'preview' | 'development'`), so we key off that when present and
+ * fall back to `NODE_ENV` for non-Vercel/local runs.
+ */
+export function isSimulationEnabled(): boolean {
+  if (process.env.VERCEL_ENV) return process.env.VERCEL_ENV !== 'production';
+  return process.env.NODE_ENV !== 'production';
+}
+
+/**
  * Coordinates that sit inside the park (not just nearby) so the backend classifies the request as
  * `in_park` and returns the rides/headliners list. Keys are normalized (no spaces/dashes).
  */
