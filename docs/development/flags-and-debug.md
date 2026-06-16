@@ -6,6 +6,28 @@ Experimental and debug behavior is controlled via **Vercel Toolbar** and **Flags
 
 ---
 
+## Nearby in-park simulation (`?sim=`)
+
+For developing the homepage **in-park** view (headliner list, live wait times, seasonal handling)
+without physically standing in a park, append a `sim` query param to any page:
+
+| Value                | Effect                                                                          |
+| -------------------- | ------------------------------------------------------------------------------- |
+| `?sim=in_park`       | Simulate standing in the default park (Phantasialand, returns real headliners). |
+| `?sim=efteling` etc. | Named preset (`phantasialand`, `efteling`, `europapark`, `disneylandparis`).    |
+| `?sim=50.79,6.87`    | Arbitrary `lat,lng` coordinates.                                                |
+
+How it works: the param is **not** fabricated data. `/api/nearby` (the proxy) overrides the request
+coordinates with the chosen park, so the **real backend** returns a genuine `in_park` response —
+including the real `isHeadliner` / `isSeasonal` / `isCurrentlyInSeason` flags. The client hook
+(`lib/hooks/use-nearby-parks.ts`) forwards the param, runs even without GPS, and bypasses the
+localStorage cache so simulated results never mix with real ones.
+
+**Production-safe:** the param is gated behind `NODE_ENV !== 'production'` in `app/api/nearby/route.ts`
+and is ignored on production deployments. Presets/resolver live in `lib/nearby-simulation.ts`.
+
+---
+
 ## Vercel Toolbar
 
 On Vercel deployments (preview and production), the [Vercel Toolbar](https://vercel.com/docs/workflow-collaboration/vercel-toolbar) can be enabled. It provides:

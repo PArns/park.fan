@@ -109,6 +109,11 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
 
   const { position, loading: geoLoading, initialCheckDone } = useGeolocation();
 
+  // Dev-only: `?sim=in_park` (and friends) simulates standing in a park so the in-park UI can be
+  // previewed without real GPS. Forwarded to /api/nearby, which only honors it outside production.
+  const simMode =
+    typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('sim') : null;
+
   const hasCoords = position != null;
   // Wait while a GPS lookup is pending (permission granted → coords imminent) instead of
   // firing a throwaway IP-fallback request that the coords refetch would supersede ~1-2s
@@ -116,27 +121,33 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   // resolves we run with coords; if it never starts (permission not granted) or fails
   // (timeout/unavailable), `!geoLoading` lets us run with the GeoIP fallback. Cached
   // results still show instantly via `placeholderData`, so waiting costs no perceived UX.
-  const canRun = hasCoords || (initialCheckDone && !geoLoading);
+  // A simulation overrides the location server-side, so it can run even before/without GPS.
+  const canRun = !!simMode || hasCoords || (initialCheckDone && !geoLoading);
 
   return useQuery<NearbyResponse>({
-    queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit],
+    queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit, simMode],
     queryFn: async () => {
       const url = new URL('/api/nearby', window.location.origin);
       const coords = position ?? null;
-      if (coords) {
+      // Don't send the user's real coordinates while simulating — the server picks the park.
+      if (coords && !simMode) {
         url.searchParams.set('lat', String(coords.lat));
         url.searchParams.set('lng', String(coords.lng));
       }
       url.searchParams.set('radius', radiusInMeters.toString());
       url.searchParams.set('limit', limit.toString());
+      if (simMode) url.searchParams.set('sim', simMode);
 
       const response = await fetch(url.toString(), { cache: 'no-store' });
 
       if (!response.ok) {
         // On API error (e.g. 400 location unavailable): return cached data if available
         // so the user keeps seeing their last known results instead of an error state.
-        const cached = readCache(position?.lat ?? null, position?.lng ?? null);
-        if (cached) return cached;
+        // Skip the cache while simulating so simulated data never mixes with real results.
+        if (!simMode) {
+          const cached = readCache(position?.lat ?? null, position?.lng ?? null);
+          if (cached) return cached;
+        }
 
         const body = await response.json().catch(() => ({}));
         const message =
@@ -147,6 +158,9 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
       }
 
       const data: NearbyResponse = await response.json();
+
+      // Never read from or write to the real cache while simulating.
+      if (simMode) return data;
 
       // Only persist and return meaningful results. Empty parks array or unknown types
       // fall back to the last cached result so stale-but-good data isn't replaced.
@@ -160,8 +174,9 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     enabled: canRun,
     // Show last cached response immediately while fresh data loads in the background.
     // The closure captures the current position so stale data from a different
-    // location (> 10 km away or > 5 min old) is silently dropped.
-    placeholderData: () => readCache(position?.lat ?? null, position?.lng ?? null),
+    // location (> 10 km away or > 5 min old) is silently dropped. Disabled while simulating.
+    placeholderData: () =>
+      simMode ? undefined : readCache(position?.lat ?? null, position?.lng ?? null),
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
     refetchOnWindowFocus: true,
