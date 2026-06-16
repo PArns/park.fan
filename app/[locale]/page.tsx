@@ -37,6 +37,7 @@ const NearbyParksCard = nextDynamic(
 import { AnnounceSection } from '@/components/home/announce-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
+import { HeroImageInfoGate } from '@/components/layout/hero-image-info-gate';
 import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -184,9 +185,12 @@ export default async function HomePage({ params }: HomePageProps) {
           </div>
         </div>
 
-        {/* Hero image attribution – park, city, country (+ attraction & area if known) */}
+        {/* Hero image attribution – park, city, country (+ attraction & area if known).
+            Hidden when the user is in a park (the hero then rotates that park's own images). */}
         {HERO_IMAGE_META[randomHeroImage] && (
-          <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+          <HeroImageInfoGate>
+            <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+          </HeroImageInfoGate>
         )}
 
         {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
