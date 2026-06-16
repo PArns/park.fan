@@ -152,8 +152,11 @@ export function WeatherHourlyChart({
     parseInt(nowLocal.slice(11, 13), 10) * 60 + parseInt(nowLocal.slice(14, 16), 10);
   const nowPct = xForMinutes(nowMinutes);
 
-  // Temperature at "now", interpolated between the neighbouring hour points.
-  const u = nowMinutes / 60 - 0.5;
+  // Temperature at "now", interpolated between the neighbouring hour points. The fractional index
+  // is nowMinutes/60 — the inverse of the x mapping (a point at index i sits at xFor(i)), so the
+  // dot lands exactly on the curve under the "now" line. (Using nowMinutes/60 - 0.5 here shifted
+  // the dot half a column off the curve.)
+  const u = nowMinutes / 60;
   const i0 = Math.min(Math.max(Math.floor(u), 0), n - 2);
   const frac = Math.min(Math.max(u - i0, 0), 1);
   const t0 = points[i0].temperatureC;
