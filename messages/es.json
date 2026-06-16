@@ -716,6 +716,8 @@
     "nearParkSubtitle": "Por tu zona: {parkName} y más",
     "awayFrom": "de",
     "nearestAttractions": "Atracciones Más Cercanas",
+    "headliners": "Atracciones destacadas",
+    "headlinerBadge": "Top",
     "noParksNearby": "No se encontraron parques cerca.",
     "nearbyParks": "Parques Cercanos",
     "nearestOpenTitle": "Parque abierto más cercano",

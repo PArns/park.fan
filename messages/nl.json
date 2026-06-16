@@ -716,6 +716,8 @@
     "nearParkSubtitle": "In jouw buurt: {parkName} en meer",
     "awayFrom": "van",
     "nearestAttractions": "Dichtstbijzijnde Attracties",
+    "headliners": "Topattracties",
+    "headlinerBadge": "Top",
     "noParksNearby": "Geen parken in de buurt gevonden.",
     "nearbyParks": "Parken in de Buurt",
     "nearestOpenTitle": "Dichtstbijzijnde open park",

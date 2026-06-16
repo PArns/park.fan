@@ -30,6 +30,18 @@ export interface AttractionWithDistance {
     avgWaitToday?: number;
   };
   url: string;
+  /** true = top/marquee attraction of the park (derived from historical wait times). */
+  isHeadliner?: boolean;
+  /** Attraction only runs during certain months. */
+  isSeasonal?: boolean;
+  /** Months (1–12) the attraction typically runs in; null when unknown/not seasonal. */
+  seasonMonths?: number[] | null;
+  /**
+   * true/false = currently in/out of season; null for non-seasonal rides or seasonal rides
+   * with unknown months. The API already drops `isCurrentlyInSeason === false` rides, but the
+   * frontend filters defensively too.
+   */
+  isCurrentlyInSeason?: boolean | null;
 }
 
 export interface NearbyParkInfo {
