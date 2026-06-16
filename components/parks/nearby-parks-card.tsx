@@ -50,10 +50,13 @@ function InParkAttractionRow({
   attraction,
   awayLabel,
   headlinerLabel,
+  statusLabel,
 }: {
   attraction: AttractionWithDistance;
   awayLabel: string;
   headlinerLabel?: string;
+  /** Label for a non-operating ride (e.g. "Closed"); shown instead of the wait/crowd badges. */
+  statusLabel?: string;
 }) {
   return (
     <li>
@@ -86,17 +89,25 @@ function InParkAttractionRow({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {attraction.status === 'OPERATING' && typeof attraction.waitTime === 'number' && (
-              <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
-                <span>⏱️</span>
-                {attraction.waitTime} min
-              </Badge>
+            {attraction.status === 'OPERATING' ? (
+              <>
+                {typeof attraction.waitTime === 'number' && (
+                  <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
+                    <span>⏱️</span>
+                    {attraction.waitTime} min
+                  </Badge>
+                )}
+                {attraction.crowdLevel && attraction.crowdLevel !== null && (
+                  <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
+                )}
+              </>
+            ) : (
+              statusLabel && (
+                <Badge variant="outline" className="text-muted-foreground font-normal">
+                  {statusLabel}
+                </Badge>
+              )
             )}
-            {attraction.status === 'OPERATING' &&
-              attraction.crowdLevel &&
-              attraction.crowdLevel !== null && (
-                <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
-              )}
             <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
           </div>
         </div>
@@ -108,6 +119,16 @@ function InParkAttractionRow({
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
+  const tAttr = useTranslations('attractions');
+
+  // Label for a ride that isn't operating (Closed / Down / Refurb). Returns undefined for
+  // OPERATING (wait/crowd badges handle that) and unknown statuses (no badge).
+  const statusLabelFor = (status: string): string | undefined => {
+    if (status === 'DOWN' || status === 'CLOSED' || status === 'REFURBISHMENT') {
+      return tAttr(`label.${status}`);
+    }
+    return undefined;
+  };
 
   const [isExpanded, setIsExpanded] = useState(false);
   const mounted = useSyncExternalStore(
@@ -447,6 +468,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
                       headlinerLabel={t('headlinerBadge')}
+                      statusLabel={statusLabelFor(attraction.status)}
                     />
                   ))}
                 </ul>
@@ -466,6 +488,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
                       headlinerLabel={t('headlinerBadge')}
+                      statusLabel={statusLabelFor(attraction.status)}
                     />
                   ))}
                 </ul>
