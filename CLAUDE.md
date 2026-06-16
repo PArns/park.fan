@@ -5,6 +5,7 @@ Theme park wait times and statistics frontend for **[api.park.fan](https://api.p
 **Routing:** This project uses **`proxy.ts`** for routing and i18n middleware, **not** a standard `middleware.ts`.
 Multilingual (EN/DE/NL/FR/ES/IT), Server Components by default. All detailed documentation lives in **`docs/`** - start at **[docs/README.md](docs/README.md)**.
 **Park page loading priority (REQUIREMENT):** the best-travel-time data (best-days calendar + historical stats) must **always load last** — live status, wait times and all weather queries load first. Enforced via `useLoadLast` (`lib/hooks/use-load-last.ts`); see [system-overview](docs/architecture/system-overview.md#4-park-page-loading-priority-requirement).
+**Reuse existing components (REQUIREMENT):** always reuse existing components (e.g. `ParkStatusBadge`, `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline — keeps styling/colors consistent. Only build new when nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
 
 ---
 

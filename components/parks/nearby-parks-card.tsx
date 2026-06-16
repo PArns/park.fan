@@ -11,6 +11,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -50,14 +51,16 @@ function InParkAttractionRow({
   attraction,
   awayLabel,
   headlinerLabel,
-  statusLabel,
 }: {
   attraction: AttractionWithDistance;
   awayLabel: string;
   headlinerLabel?: string;
-  /** Label for a non-operating ride (e.g. "Closed"); shown instead of the wait/crowd badges. */
-  statusLabel?: string;
 }) {
+  // Non-operating rides (e.g. whole park closed) get a colored status badge instead of a wait time.
+  const showStatusBadge =
+    attraction.status === 'DOWN' ||
+    attraction.status === 'CLOSED' ||
+    attraction.status === 'REFURBISHMENT';
   return (
     <li>
       <Link
@@ -102,11 +105,7 @@ function InParkAttractionRow({
                 )}
               </>
             ) : (
-              statusLabel && (
-                <Badge variant="outline" className="text-muted-foreground font-normal">
-                  {statusLabel}
-                </Badge>
-              )
+              showStatusBadge && <ParkStatusBadge status={attraction.status} />
             )}
             <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
           </div>
@@ -119,16 +118,6 @@ function InParkAttractionRow({
 export function NearbyParksCard({ className }: { className?: string }) {
   const t = useTranslations('nearby');
   const tCommon = useTranslations('common');
-  const tAttr = useTranslations('attractions');
-
-  // Label for a ride that isn't operating (Closed / Down / Refurb). Returns undefined for
-  // OPERATING (wait/crowd badges handle that) and unknown statuses (no badge).
-  const statusLabelFor = (status: string): string | undefined => {
-    if (status === 'DOWN' || status === 'CLOSED' || status === 'REFURBISHMENT') {
-      return tAttr(`label.${status}`);
-    }
-    return undefined;
-  };
 
   const [isExpanded, setIsExpanded] = useState(false);
   const mounted = useSyncExternalStore(
@@ -468,7 +457,6 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
                       headlinerLabel={t('headlinerBadge')}
-                      statusLabel={statusLabelFor(attraction.status)}
                     />
                   ))}
                 </ul>
@@ -488,7 +476,6 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
                       headlinerLabel={t('headlinerBadge')}
-                      statusLabel={statusLabelFor(attraction.status)}
                     />
                   ))}
                 </ul>
