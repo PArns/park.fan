@@ -82,6 +82,15 @@ API keys and other secrets only in **`.env.local`**. Never document or commit se
 
 ---
 
+## 11. Reuse existing components
+
+**Always reuse existing components** instead of re-implementing UI inline. Before writing a badge,
+card, status indicator, etc., check for an existing component (e.g. `ParkStatusBadge`,
+`CrowdLevelBadge`, `Badge`, `ParkCard`). This keeps styling/colors and behavior consistent across
+the app. Only create a new component when nothing suitable exists.
+
+---
+
 ## Related
 
 - [Setup](setup.md)

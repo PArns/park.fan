@@ -11,6 +11,7 @@ import { FavoriteStar } from '@/components/common/favorite-star';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { formatDistance } from '@/lib/utils/distance-utils';
@@ -35,10 +36,14 @@ import {
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
 const TOP_SPACING = 'mt-8';
 
+// All headliners are shown (no cap). The "nearest" list below shows the next non-headliner rides so
+// the user always sees more than just the marquee attractions.
+const NEAREST_LIMIT = 5;
+
 /**
  * A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the
- * headliner list and the "nearest attractions" list so both render identically. Pass
- * `headlinerLabel` to render a "Top" badge next to the name for marquee attractions.
+ * headliner list and the "nearest attractions" list so both render identically. When the ride is a
+ * headliner and `headlinerLabel` is set, a "Top" badge is shown next to the name in either list.
  */
 function InParkAttractionRow({
   attraction,
@@ -49,6 +54,11 @@ function InParkAttractionRow({
   awayLabel: string;
   headlinerLabel?: string;
 }) {
+  // Non-operating rides (e.g. whole park closed) get a colored status badge instead of a wait time.
+  const showStatusBadge =
+    attraction.status === 'DOWN' ||
+    attraction.status === 'CLOSED' ||
+    attraction.status === 'REFURBISHMENT';
   return (
     <li>
       <Link
@@ -68,7 +78,7 @@ function InParkAttractionRow({
               <p className="group-hover:text-primary truncate font-medium transition-colors">
                 {stripNewPrefix(attraction.name)}
               </p>
-              {headlinerLabel && (
+              {attraction.isHeadliner && headlinerLabel && (
                 <Badge className="shrink-0 gap-1 border-transparent bg-amber-500/15 text-amber-700 dark:text-amber-400">
                   <Star className="h-3 w-3 fill-current" />
                   {headlinerLabel}
@@ -80,17 +90,21 @@ function InParkAttractionRow({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {attraction.status === 'OPERATING' && typeof attraction.waitTime === 'number' && (
-              <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
-                <span>⏱️</span>
-                {attraction.waitTime} min
-              </Badge>
+            {attraction.status === 'OPERATING' ? (
+              <>
+                {typeof attraction.waitTime === 'number' && (
+                  <Badge className={waitTimeBadgeClass(attraction.waitTime)}>
+                    <span>⏱️</span>
+                    {attraction.waitTime} min
+                  </Badge>
+                )}
+                {attraction.crowdLevel && attraction.crowdLevel !== null && (
+                  <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
+                )}
+              </>
+            ) : (
+              showStatusBadge && <ParkStatusBadge status={attraction.status} />
             )}
-            {attraction.status === 'OPERATING' &&
-              attraction.crowdLevel &&
-              attraction.crowdLevel !== null && (
-                <CrowdLevelBadge level={attraction.crowdLevel} showLabel={false} />
-              )}
             <ChevronRight className="text-muted-foreground group-hover:text-primary h-4 w-4 flex-shrink-0 transition-colors" />
           </div>
         </div>
@@ -270,24 +284,21 @@ export function NearbyParksCard({ className }: { className?: string }) {
     // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
     const inSeasonRides = (data.rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
-    // Headliners (top/marquee attractions, flagged by the API). Always shown above the regular
-    // list, sorted by distance. Keep closed ones too — a headliner is worth pointing out even when
-    // it's momentarily not operating.
+    // Headliners (top/marquee attractions, flagged by the API). All of them are shown above the
+    // regular list, sorted by distance. Closed ones are kept and carry a status badge — a headliner
+    // is worth pointing out even when the park (or just that ride) isn't operating right now.
     const headliners = inSeasonRides
       .filter((a) => a.isHeadliner)
       .sort((a, b) => a.distance - b.distance);
     const headlinerIds = new Set(headliners.map((h) => h.id));
 
-    // Hide attractions that aren't open (e.g. seasonal closures like Phantasialand's ice-skate
-    // hire, which only runs during Wintertraum, or rides under refurbishment). DOWN is kept — it's
-    // part of today's lineup, just momentarily out of service. Filter before slicing so closed
-    // rides don't take up the 5 visible slots. Sort by distance (API order isn't guaranteed).
-    // Headliners are excluded here so they aren't listed twice.
+    // The remaining (non-headliner) rides, nearest first. Closed/refurbishment rides are kept (they
+    // show a status badge) so the list isn't empty when the park is currently closed — otherwise the
+    // user would only ever see headliners. Off-season rides are already dropped via inSeasonRides.
     const attractions = inSeasonRides
       .filter((a) => !headlinerIds.has(a.id))
-      .filter((a) => a.status !== 'CLOSED' && a.status !== 'REFURBISHMENT')
       .sort((a, b) => a.distance - b.distance)
-      .slice(0, 5);
+      .slice(0, NEAREST_LIMIT);
 
     // Park page URL (for "Go to park page" CTA); fallback from first known ride (headliner or
     // regular attraction) when the park itself doesn't carry a url.
@@ -457,6 +468,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       key={attraction.id}
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
+                      headlinerLabel={t('headlinerBadge')}
                     />
                   ))}
                 </ul>

@@ -37,6 +37,8 @@ const NearbyParksCard = nextDynamic(
 import { AnnounceSection } from '@/components/home/announce-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
+import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
+import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -125,74 +127,79 @@ export default async function HomePage({ params }: HomePageProps) {
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-6 sm:pb-8 md:pt-28 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-12">
-        <HeroBackground imageSrc={randomHeroImage} />
-        <div className="relative container mx-auto">
-          <div className="flex flex-col">
-            {/* Row 1: Logo left + Title/Description right */}
-            <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/20 bg-white/25 px-4 py-4 shadow-2xl sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/40">
-              {/* Logo – light/dark variant based on theme */}
-              <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
-                {/* SVGs don't benefit from next/image optimization — use <img> directly */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo-big.svg"
-                  alt="park.fan"
-                  fetchPriority="high"
-                  className="h-full w-full object-contain dark:hidden"
-                />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/logo-big-dark.svg"
-                  alt="park.fan"
-                  className="hidden h-full w-full object-contain dark:block"
-                />
-              </div>
-              {/* Title + Description + Search + Links */}
-              <div className="w-full min-w-0 text-center lg:max-w-none lg:flex-1">
-                <HeroWithNearby
-                  searchPlaceholder={tHome('hero.searchPlaceholder')}
-                  hideSearch
-                  titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
-                  introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
-                />
-                <HeroSearchInput
-                  placeholder={tHome('hero.searchPlaceholder')}
-                  className="mt-5 w-full"
-                />
-                <div className="mt-4 flex flex-wrap justify-center gap-3">
-                  <Button asChild variant="outline" size="sm" className="rounded-full">
-                    <Link href="/howto" prefetch={false}>
-                      <BookOpen className="h-3.5 w-3.5 shrink-0" />
-                      {tHome('hero.howto')}
-                    </Link>
-                  </Button>
-                  <Button asChild variant="outline" size="sm" className="rounded-full">
-                    <Link href={glossaryPath} prefetch={false}>
-                      <Tag className="h-3.5 w-3.5 shrink-0" />
-                      {tHome('hero.glossary')}
-                    </Link>
-                  </Button>
+        <HeroRotationProvider>
+          <HeroBackground imageSrc={randomHeroImage} />
+          <div className="relative container mx-auto">
+            <div className="flex flex-col">
+              {/* Row 1: Logo left + Title/Description right */}
+              <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/20 bg-white/25 px-4 py-4 shadow-2xl sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/40">
+                {/* Logo – light/dark variant based on theme */}
+                <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
+                  {/* SVGs don't benefit from next/image optimization — use <img> directly */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logo-big.svg"
+                    alt="park.fan"
+                    fetchPriority="high"
+                    className="h-full w-full object-contain dark:hidden"
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/logo-big-dark.svg"
+                    alt="park.fan"
+                    className="hidden h-full w-full object-contain dark:block"
+                  />
                 </div>
-              </div>
-            </GlassCard>
+                {/* Title + Description + Search + Links */}
+                <div className="w-full min-w-0 text-center lg:max-w-none lg:flex-1">
+                  <HeroWithNearby
+                    searchPlaceholder={tHome('hero.searchPlaceholder')}
+                    hideSearch
+                    titleSlot={<GlossaryInject noUnderline>{tParks('title')}</GlossaryInject>}
+                    introSlot={<GlossaryInject>{tHome('intro')}</GlossaryInject>}
+                  />
+                  <HeroSearchInput
+                    placeholder={tHome('hero.searchPlaceholder')}
+                    className="mt-5 w-full"
+                  />
+                  <div className="mt-4 flex flex-wrap justify-center gap-3">
+                    <Button asChild variant="outline" size="sm" className="rounded-full">
+                      <Link href="/howto" prefetch={false}>
+                        <BookOpen className="h-3.5 w-3.5 shrink-0" />
+                        {tHome('hero.howto')}
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" size="sm" className="rounded-full">
+                      <Link href={glossaryPath} prefetch={false}>
+                        <Tag className="h-3.5 w-3.5 shrink-0" />
+                        {tHome('hero.glossary')}
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </GlassCard>
 
-            {/* Compact "from the blog" strip — three latest posts directly
+              {/* Compact "from the blog" strip — three latest posts directly
                 under the hero main box. Full BlogBottomSections still
                 renders further down the page; this is the at-a-glance
                 version for visitors who land at the top fold. */}
-            <BlogHeroPreview locale={locale as Locale} />
+              <BlogHeroPreview locale={locale as Locale} />
+            </div>
           </div>
-        </div>
 
-        {/* Hero image attribution – park, city, country (+ attraction & area if known) */}
-        {HERO_IMAGE_META[randomHeroImage] && (
-          <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
-        )}
+          {/* Hero image attribution – park, city, country (+ attraction & area if known).
+              When the user is in a park, the switch captions the rotating park image instead. */}
+          {HERO_IMAGE_META[randomHeroImage] && (
+            <HeroImageInfoSwitch>
+              <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+            </HeroImageInfoSwitch>
+          )}
 
-        {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
-        <Suspense fallback={null}>
-          <HeroTicker />
-        </Suspense>
+          {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
+          <Suspense fallback={null}>
+            <HeroTicker />
+          </Suspense>
+        </HeroRotationProvider>
       </section>
 
       {/* Announcement Section */}
