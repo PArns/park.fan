@@ -36,10 +36,8 @@ import {
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
 const TOP_SPACING = 'mt-8';
 
-// How many of each in-park list to show. Headliners are capped so a park that flags many
-// attractions as headliners (e.g. Phantasialand) doesn't push the regular "nearest" list off the
-// page — the remaining rides still surface in the nearest list below.
-const HEADLINER_LIMIT = 5;
+// All headliners are shown (no cap). The "nearest" list below shows the next non-headliner rides so
+// the user always sees more than just the marquee attractions.
 const NEAREST_LIMIT = 5;
 
 /**
@@ -286,24 +284,19 @@ export function NearbyParksCard({ className }: { className?: string }) {
     // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
     const inSeasonRides = (data.rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
-    // Headliners (top/marquee attractions, flagged by the API). Shown above the regular list,
-    // sorted by distance and capped so they don't crowd out everything else. Keep closed ones too —
-    // a headliner is worth pointing out even when it's momentarily not operating.
+    // Headliners (top/marquee attractions, flagged by the API). All of them are shown above the
+    // regular list, sorted by distance. Closed ones are kept and carry a status badge — a headliner
+    // is worth pointing out even when the park (or just that ride) isn't operating right now.
     const headliners = inSeasonRides
       .filter((a) => a.isHeadliner)
-      .sort((a, b) => a.distance - b.distance)
-      .slice(0, HEADLINER_LIMIT);
-    const shownHeadlinerIds = new Set(headliners.map((h) => h.id));
+      .sort((a, b) => a.distance - b.distance);
+    const headlinerIds = new Set(headliners.map((h) => h.id));
 
-    // Hide attractions that aren't open (e.g. seasonal closures like Phantasialand's ice-skate
-    // hire, which only runs during Wintertraum, or rides under refurbishment). DOWN is kept — it's
-    // part of today's lineup, just momentarily out of service. Filter before slicing so closed
-    // rides don't take up the visible slots. Sort by distance (API order isn't guaranteed). Only the
-    // headliners already shown above are excluded, so the rest still appear here (with their own
-    // "Top" badge when applicable) instead of vanishing.
+    // The remaining (non-headliner) rides, nearest first. Closed/refurbishment rides are kept (they
+    // show a status badge) so the list isn't empty when the park is currently closed — otherwise the
+    // user would only ever see headliners. Off-season rides are already dropped via inSeasonRides.
     const attractions = inSeasonRides
-      .filter((a) => !shownHeadlinerIds.has(a.id))
-      .filter((a) => a.status !== 'CLOSED' && a.status !== 'REFURBISHMENT')
+      .filter((a) => !headlinerIds.has(a.id))
       .sort((a, b) => a.distance - b.distance)
       .slice(0, NEAREST_LIMIT);
 
