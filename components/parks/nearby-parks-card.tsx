@@ -35,10 +35,16 @@ import {
 // only the parks-list / prompt / error / empty states (and the matching skeleton) get this gap.
 const TOP_SPACING = 'mt-8';
 
+// How many of each in-park list to show. Headliners are capped so a park that flags many
+// attractions as headliners (e.g. Phantasialand) doesn't push the regular "nearest" list off the
+// page — the remaining rides still surface in the nearest list below.
+const HEADLINER_LIMIT = 5;
+const NEAREST_LIMIT = 5;
+
 /**
  * A single in-park attraction row (name, distance, live wait/crowd badges). Shared by the
- * headliner list and the "nearest attractions" list so both render identically. Pass
- * `headlinerLabel` to render a "Top" badge next to the name for marquee attractions.
+ * headliner list and the "nearest attractions" list so both render identically. When the ride is a
+ * headliner and `headlinerLabel` is set, a "Top" badge is shown next to the name in either list.
  */
 function InParkAttractionRow({
   attraction,
@@ -68,7 +74,7 @@ function InParkAttractionRow({
               <p className="group-hover:text-primary truncate font-medium transition-colors">
                 {stripNewPrefix(attraction.name)}
               </p>
-              {headlinerLabel && (
+              {attraction.isHeadliner && headlinerLabel && (
                 <Badge className="shrink-0 gap-1 border-transparent bg-amber-500/15 text-amber-700 dark:text-amber-400">
                   <Star className="h-3 w-3 fill-current" />
                   {headlinerLabel}
@@ -270,24 +276,26 @@ export function NearbyParksCard({ className }: { className?: string }) {
     // leak into the list; seasonal rides with unknown months (null) and in-season ones stay.
     const inSeasonRides = (data.rides || []).filter((a) => a.isCurrentlyInSeason !== false);
 
-    // Headliners (top/marquee attractions, flagged by the API). Always shown above the regular
-    // list, sorted by distance. Keep closed ones too — a headliner is worth pointing out even when
-    // it's momentarily not operating.
+    // Headliners (top/marquee attractions, flagged by the API). Shown above the regular list,
+    // sorted by distance and capped so they don't crowd out everything else. Keep closed ones too —
+    // a headliner is worth pointing out even when it's momentarily not operating.
     const headliners = inSeasonRides
       .filter((a) => a.isHeadliner)
-      .sort((a, b) => a.distance - b.distance);
-    const headlinerIds = new Set(headliners.map((h) => h.id));
+      .sort((a, b) => a.distance - b.distance)
+      .slice(0, HEADLINER_LIMIT);
+    const shownHeadlinerIds = new Set(headliners.map((h) => h.id));
 
     // Hide attractions that aren't open (e.g. seasonal closures like Phantasialand's ice-skate
     // hire, which only runs during Wintertraum, or rides under refurbishment). DOWN is kept — it's
     // part of today's lineup, just momentarily out of service. Filter before slicing so closed
-    // rides don't take up the 5 visible slots. Sort by distance (API order isn't guaranteed).
-    // Headliners are excluded here so they aren't listed twice.
+    // rides don't take up the visible slots. Sort by distance (API order isn't guaranteed). Only the
+    // headliners already shown above are excluded, so the rest still appear here (with their own
+    // "Top" badge when applicable) instead of vanishing.
     const attractions = inSeasonRides
-      .filter((a) => !headlinerIds.has(a.id))
+      .filter((a) => !shownHeadlinerIds.has(a.id))
       .filter((a) => a.status !== 'CLOSED' && a.status !== 'REFURBISHMENT')
       .sort((a, b) => a.distance - b.distance)
-      .slice(0, 5);
+      .slice(0, NEAREST_LIMIT);
 
     // Park page URL (for "Go to park page" CTA); fallback from first known ride (headliner or
     // regular attraction) when the park itself doesn't carry a url.
@@ -457,6 +465,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
                       key={attraction.id}
                       attraction={attraction}
                       awayLabel={t('awayFrom')}
+                      headlinerLabel={t('headlinerBadge')}
                     />
                   ))}
                 </ul>
