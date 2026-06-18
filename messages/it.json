@@ -276,6 +276,7 @@
       "very_high": "Molto alta",
       "extreme": "Estrema",
       "full": "Pieno",
+      "unknown": "Nessuna previsione",
       "closed": "Chiuso"
     },
     "avgWaitTime": "Tempo di attesa medio",

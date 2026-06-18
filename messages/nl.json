@@ -276,6 +276,7 @@
       "very_high": "Zeer Hoog",
       "extreme": "Extreem",
       "full": "Vol",
+      "unknown": "Geen voorspelling",
       "closed": "Gesloten"
     },
     "avgWaitTime": "Gem. Wachttijd",

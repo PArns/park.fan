@@ -276,6 +276,7 @@
       "very_high": "Très Élevée",
       "extreme": "Extrême",
       "full": "Complet",
+      "unknown": "Pas de prévision",
       "closed": "Fermé"
     },
     "avgWaitTime": "Attente Moy.",

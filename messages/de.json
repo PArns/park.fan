@@ -360,6 +360,7 @@
       "very_high": "Sehr hoch",
       "extreme": "Extrem",
       "full": "Voll",
+      "unknown": "Keine Prognose",
       "closed": "Geschlossen"
     },
     "avgWaitTime": "Ø Wartezeit",

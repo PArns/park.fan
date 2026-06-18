@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { CrowdLevel } from '@/lib/api/types';
 
-import { User, Users, AlertCircle, Ban } from 'lucide-react';
+import { User, Users, AlertCircle, Ban, HelpCircle } from 'lucide-react';
 
 /* Green band: teal (very_low) → emerald (low) → green (moderate/Normal); then orange → rose → red. */
 const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }> = {
@@ -14,6 +14,8 @@ const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }
   very_high: { colorClass: 'badge-crowd-very-high', Icon: Users },
   extreme: { colorClass: 'badge-crowd-extreme', Icon: AlertCircle },
   closed: { colorClass: 'badge-status-closed', Icon: Ban },
+  // Neutral "no forecast": park not ratable yet (< 30 operating days of data).
+  unknown: { colorClass: 'bg-slate-400 dark:bg-slate-600', Icon: HelpCircle },
 };
 
 interface CrowdLevelBadgeProps {

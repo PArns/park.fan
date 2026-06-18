@@ -11,7 +11,17 @@ export interface BestVisitSlot {
   rating: 'optimal' | 'good';
 }
 // Queue types moved to QueueDataItem definition area
-export type CrowdLevel = 'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme';
+// 'unknown' = "keine Prognose": the park is not ratable yet (< 30 operating
+// days of headliner data → API sends typicalDayPeak=NULL). Rendered as a neutral
+// "no forecast" badge, never as a real crowd tier.
+export type CrowdLevel =
+  | 'very_low'
+  | 'low'
+  | 'moderate'
+  | 'high'
+  | 'very_high'
+  | 'extreme'
+  | 'unknown';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
 export type Recommendation =
   | 'highly_recommended'

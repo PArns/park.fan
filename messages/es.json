@@ -276,6 +276,7 @@
       "very_high": "Muy Alta",
       "extreme": "Extrema",
       "full": "Lleno",
+      "unknown": "Sin previsión",
       "closed": "Cerrado"
     },
     "avgWaitTime": "Espera Prom.",
