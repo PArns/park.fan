@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import type { WeatherNowcast, WeatherWarning } from '@/lib/api/types';
 
 interface WeatherWarningBannerProps {
@@ -153,6 +154,12 @@ export function WeatherWarningBanner({
 }: WeatherWarningBannerProps) {
   const locale = useLocale();
 
+  // Warnings are client-only (live query, or relative-time formatting via
+  // Date.now()). Render nothing until mounted so the server and the first client
+  // render agree (both empty) — otherwise the banner appearing only on the
+  // client is a hydration mismatch.
+  const mounted = useMounted();
+
   // Always call the hook (rules of hooks); gate it so static/showcase use skips
   // the network. React Query dedupes this with the nowcast banner's query.
   const { data } = useWeatherNowcast({
@@ -165,7 +172,7 @@ export function WeatherWarningBanner({
   });
 
   const warnings = warningsProp ?? data?.warnings ?? initialData?.warnings ?? [];
-  if (warnings.length === 0) return null;
+  if (!mounted || warnings.length === 0) return null;
 
   const tz = timezone ?? data?.park.timezone;
   const sorted = [...warnings].sort(
