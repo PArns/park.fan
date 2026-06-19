@@ -233,7 +233,8 @@ export function WeatherHourlyChart({
   const clampX = (x: number) => Math.min(Math.max(x, 7), 93);
   const hourlyMax = Math.max(...valid);
   const hourlyMin = Math.min(...valid);
-  const maxX = liveTemp != null && liveTemp >= hourlyMax ? nowPct : xFor(temps.indexOf(maxTemp));
+  const maxAtNow = liveTemp != null && liveTemp >= hourlyMax;
+  const maxX = maxAtNow ? nowPct : xFor(temps.indexOf(maxTemp));
   const minX = liveTemp != null && liveTemp <= hourlyMin ? nowPct : xFor(temps.indexOf(minTemp));
   // The max label and the "now" marker both live near the top — when the day's
   // peak is around the current hour they collide, so drop the "Now" text then.
@@ -500,7 +501,11 @@ export function WeatherHourlyChart({
 
         {/* Min/max temperature labels, anchored to their hours */}
         <span
-          className="pointer-events-none absolute -translate-x-1/2 -translate-y-full pb-0.5 text-[10px] font-semibold tabular-nums"
+          className={cn(
+            'pointer-events-none absolute -translate-x-1/2 -translate-y-full text-[10px] font-semibold tabular-nums',
+            // Extra clearance when the peak label sits right above the "now" dot.
+            maxAtNow ? 'pb-2.5' : 'pb-0.5'
+          )}
           style={{ left: `${clampX(maxX)}%`, top: `${yFor(maxTemp)}%` }}
         >
           <Temp celsius={maxTemp} />
