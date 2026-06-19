@@ -64,7 +64,7 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
       </div>
 
       {/* Per-day breakdown */}
-      <div className="flex h-28 items-end gap-1.5">
+      <div className="flex h-28 items-stretch gap-1.5">
         {DISPLAY_ORDER.map((dow) => {
           const d = byDow.get(dow);
           const busy = d?.busy ?? null;
@@ -77,7 +77,10 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
               ? `${dayLabel(dow, locale)}: ${typical}–${busy} ${t('min')}`
               : dayLabel(dow, locale);
           return (
-            <div key={dow} className="flex flex-1 flex-col items-center gap-1.5" title={title}>
+            <div key={dow} className="flex flex-1 flex-col items-center gap-1" title={title}>
+              <span className="text-muted-foreground text-[10px] leading-none tabular-nums">
+                {busy != null ? busy : ''}
+              </span>
               <div className="bg-muted/40 relative w-full flex-1 overflow-hidden rounded-t">
                 {/* Busy (P90) — light extension */}
                 <div
