@@ -69,6 +69,7 @@ import type { DayDataProps } from '@/components/parks/attraction-history-day';
 // Weather + Calendar
 import { WeatherCardShowcase, ParkTimeInfoShowcase } from '@/components/parks/weather-card-demo';
 import { NowcastBannerDemo } from '@/components/parks/nowcast-banner-demo';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 import { ParkCalendarDay } from '@/components/parks/park-calendar-day';
 
 // Background overlay
@@ -2142,6 +2143,14 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
             />
             <Sub title="WeatherNowcastBanner — Priority: storm > hail > thunderstorm > rain">
               <NowcastBannerDemo />
+            </Sub>
+
+            <ComponentLabel
+              name="WeatherWarningBanner"
+              file="components/parks/weather-warning-banner.tsx"
+            />
+            <Sub title="WeatherWarningBanner — official DWD / MeteoAlarm warnings, sorted by severity (extreme → minor)">
+              <WeatherWarningBannerDemo />
             </Sub>
           </Section>
 

@@ -39,6 +39,7 @@ import {
   MockHourlyChart,
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 
 function IntroIT() {
   return (
@@ -234,6 +235,16 @@ function ContentITSections() {
           Europa-Park mostra l&apos;ora dell&apos;Europa Centrale.
         </InfoBox>
         <MockParkHeader locale="en" />
+
+        <SubSection title="Allerte meteo">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Quando il servizio meteorologico nazionale emette un&apos;allerta ufficiale per la
+            posizione di un parco — caldo, temporale, vento e altro —, in cima alla pagina del parco
+            compare un banner colorato. Il colore indica la gravità (giallo → arancione → rosso);
+            espandi qualsiasi allerta per i dettagli e i consigli.
+          </p>
+          <WeatherWarningBannerDemo />
+        </SubSection>
 
         <SubSection title="Schede – Attrazioni, Spettacoli, Calendario, Mappa">
           <div className="space-y-3 text-sm">

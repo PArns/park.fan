@@ -527,6 +527,20 @@
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
       "titleCompact": "Beste Reisezeit"
+    },
+    "weatherWarnings": {
+      "severity": {
+        "minor": "Gering",
+        "moderate": "Mäßig",
+        "severe": "Schwer",
+        "extreme": "Extrem"
+      },
+      "until": "bis {time}",
+      "fromUntil": "{start} – {end}",
+      "more": "Mehr Infos",
+      "less": "Weniger",
+      "instruction": "Hinweis",
+      "source": "Quelle: {name}"
     }
   },
   "attractions": {

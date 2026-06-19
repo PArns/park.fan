@@ -40,6 +40,7 @@ import {
   MockHourlyChart,
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 
 function IntroEN() {
   return (
@@ -225,6 +226,16 @@ function ContentENSections() {
           Time.
         </InfoBox>
         <MockParkHeader locale="en" />
+
+        <SubSection title="Severe-Weather Warnings">
+          <p className="text-muted-foreground mb-3 text-sm">
+            When the national weather service issues an official warning for a park&apos;s location —
+            heat, thunderstorm, storm and more — a coloured banner appears at the top of the park
+            page. The colour reflects the severity (yellow → orange → red); expand any warning for
+            the full details and safety advice.
+          </p>
+          <WeatherWarningBannerDemo />
+        </SubSection>
 
         <SubSection title="Tabs – Attractions, Shows, Calendar, Map">
           <div className="space-y-3 text-sm">

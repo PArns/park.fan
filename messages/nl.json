@@ -527,6 +527,20 @@
       "noData": "Nog niet genoeg voorspellingsdata beschikbaar.",
       "bestWeekendDayTitle": "Beste weekenddag",
       "titleCompact": "Beste reistijd"
+    },
+    "weatherWarnings": {
+      "severity": {
+        "minor": "Gering",
+        "moderate": "Matig",
+        "severe": "Zwaar",
+        "extreme": "Extreem"
+      },
+      "until": "tot {time}",
+      "fromUntil": "{start} – {end}",
+      "more": "Meer info",
+      "less": "Minder",
+      "instruction": "Advies",
+      "source": "Bron: {name}"
     }
   },
   "attractions": {

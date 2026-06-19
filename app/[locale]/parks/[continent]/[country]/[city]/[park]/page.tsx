@@ -13,6 +13,7 @@ import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { Locale } from '@/i18n/config';
 import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
+import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import {
@@ -289,7 +290,20 @@ export default async function ParkPage({ params }: ParkPageProps) {
             </GlassCard>
           </div>
 
-          {/* Weather warning banner (rain / storm / hail / thunderstorm) — client live query,
+          {/* Official severe-weather warnings (DWD / MeteoAlarm) — shown above the
+              self-derived nowcast banner since they carry authoritative severity. */}
+          <Suspense fallback={null}>
+            <WeatherWarningBanner
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              initialData={null}
+              className="mb-6"
+            />
+          </Suspense>
+
+          {/* Weather nowcast banner (rain / storm / hail / thunderstorm) — client live query,
               streamed as a dynamic hole under Cache Components. */}
           <Suspense fallback={null}>
             <WeatherNowcastBanner

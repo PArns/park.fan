@@ -41,6 +41,7 @@ import {
   MockHourlyChart,
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 
 function ContentDE() {
   return (
@@ -275,6 +276,16 @@ function ContentDE() {
             Mitteleuropäische Zeit.
           </InfoBox>
           <MockParkHeader locale="de" />
+
+          <SubSection title="Unwetterwarnungen">
+            <p className="text-muted-foreground mb-3 text-sm">
+              Gibt der nationale Wetterdienst eine amtliche Warnung für den Standort eines Parks
+              heraus – Hitze, Gewitter, Sturm und mehr –, erscheint oben auf der Parkseite ein
+              farbiger Hinweis. Die Farbe zeigt die Schwere (gelb → orange → rot); jede Warnung
+              lässt sich für Details und Verhaltenshinweise aufklappen.
+            </p>
+            <WeatherWarningBannerDemo />
+          </SubSection>
         </SubSection>
 
         <SubSection title="Tabs – Attraktionen, Shows, Kalender, Karte">

@@ -527,6 +527,20 @@
       "noData": "Pas encore assez de données de prévision disponibles.",
       "bestWeekendDayTitle": "Meilleur jour de week-end",
       "titleCompact": "Meilleure période"
+    },
+    "weatherWarnings": {
+      "severity": {
+        "minor": "Mineur",
+        "moderate": "Modéré",
+        "severe": "Sévère",
+        "extreme": "Extrême"
+      },
+      "until": "jusqu’à {time}",
+      "fromUntil": "{start} – {end}",
+      "more": "Plus d’infos",
+      "less": "Moins",
+      "instruction": "Conseil",
+      "source": "Source : {name}"
     }
   },
   "attractions": {

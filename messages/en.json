@@ -527,6 +527,20 @@
       "noData": "Not enough crowd forecast data available yet.",
       "bestWeekendDayTitle": "Best Weekend Day",
       "titleCompact": "Best Time to Visit"
+    },
+    "weatherWarnings": {
+      "severity": {
+        "minor": "Minor",
+        "moderate": "Moderate",
+        "severe": "Severe",
+        "extreme": "Extreme"
+      },
+      "until": "until {time}",
+      "fromUntil": "{start} – {end}",
+      "more": "More info",
+      "less": "Less",
+      "instruction": "Advice",
+      "source": "Source: {name}"
     }
   },
   "attractions": {

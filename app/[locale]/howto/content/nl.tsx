@@ -39,6 +39,7 @@ import {
   MockHourlyChart,
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
+import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
 
 function IntroNL() {
   return (
@@ -229,6 +230,16 @@ function ContentNLSections() {
           Midden-Europese Tijd.
         </InfoBox>
         <MockParkHeader locale="en" />
+
+        <SubSection title="Weerwaarschuwingen">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Wanneer de nationale weerdienst een officiële waarschuwing afgeeft voor de locatie van
+            een park — hitte, onweer, storm en meer —, verschijnt boven aan de parkpagina een
+            gekleurde melding. De kleur geeft de ernst aan (geel → oranje → rood); klap een
+            waarschuwing uit voor details en adviezen.
+          </p>
+          <WeatherWarningBannerDemo />
+        </SubSection>
 
         <SubSection title="Tabbladen – Attracties, Shows, Kalender, Kaart">
           <div className="space-y-3 text-sm">

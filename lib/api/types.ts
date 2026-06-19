@@ -130,10 +130,45 @@ export interface WeatherNow {
   isDay: boolean;
 }
 
+export type WeatherWarningSeverity = 'Minor' | 'Moderate' | 'Severe' | 'Extreme';
+
+/**
+ * Official severe-weather warning. Source: DWD (via Bright Sky) for German
+ * parks, MeteoAlarm (via MeteoGate) for the rest of Europe. German and English
+ * variants are both included — pick per locale, fall back to German when an
+ * `*En` field is null. Non-European parks return no warnings.
+ */
+export interface WeatherWarning {
+  /** Stable id (CAP alert id) — use as a list key. */
+  alertId: string;
+  /** Event type, German, e.g. "EXTREME HITZE". */
+  event: string;
+  eventEn?: string | null;
+  /** Minor | Moderate | Severe | Extreme. */
+  severity?: WeatherWarningSeverity | string | null;
+  urgency?: string | null;
+  category?: string | null;
+  /** Validity window (ISO 8601). */
+  onset?: string | null;
+  expires?: string | null;
+  headline?: string | null;
+  headlineEn?: string | null;
+  description?: string | null;
+  descriptionEn?: string | null;
+  instruction?: string | null;
+  instructionEn?: string | null;
+  /** Affected area, e.g. "Stadt Brühl". */
+  area?: string | null;
+  /** Source identifier, e.g. "brightsky" | "meteogate". */
+  source: string;
+}
+
 export interface WeatherData {
   current?: WeatherDay;
   now?: WeatherNow | null;
   forecast?: WeatherDay[];
+  /** Active severe-weather warnings (empty/absent when none). */
+  warnings?: WeatherWarning[];
 }
 
 // ============================================================================
@@ -195,6 +230,8 @@ export interface WeatherNowcast {
   peakWindGustsKmh: number | null;
   steps: WeatherNowcastStep[];
   attribution: WeatherNowcastAttribution;
+  /** Active official severe-weather warnings (empty/absent when none). */
+  warnings?: WeatherWarning[];
 }
 
 // ============================================================================
