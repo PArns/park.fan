@@ -41,6 +41,7 @@ import {
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 
 function IntroEN() {
   return (
@@ -235,6 +236,16 @@ function ContentENSections() {
             the full details and safety advice.
           </p>
           <WeatherWarningBannerDemo />
+        </SubSection>
+
+        <SubSection title="Typical Wait Times (per ride)">
+          <p className="text-muted-foreground mb-3 text-sm">
+            Each ride&apos;s own page shows its typical wait pattern — the normal (median) and busy
+            (90th-percentile) peak wait, split by weekday and weekend and broken down per day, plus
+            the all-time record. Built from the last 365 days, so you can tell at a glance whether a
+            ride is usually a walk-on or a long queue.
+          </p>
+          <AttractionTypicalWaitsDemo />
         </SubSection>
 
         <SubSection title="Tabs – Attractions, Shows, Calendar, Map">

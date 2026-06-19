@@ -64,6 +64,7 @@ import { HourlyP90Sparkline } from '@/components/parks/hourly-p90-sparkline';
 import { LandSection } from '@/components/parks/land-section';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { AttractionHistoryDay } from '@/components/parks/attraction-history-day';
+import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 import type { DayDataProps } from '@/components/parks/attraction-history-day';
 
 // Weather + Calendar
@@ -2191,6 +2192,14 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <p className="text-muted-foreground text-center text-[10px]">CLOSED_RIDE</p>
                 </div>
               </div>
+            </Sub>
+
+            <ComponentLabel
+              name="AttractionTypicalWaits"
+              file="components/parks/attraction-typical-waits.tsx"
+            />
+            <Sub title="AttractionTypicalWaits — typical (P50) vs busy (P90) peak waits, weekday/weekend + per-day, gated on displayable">
+              <AttractionTypicalWaitsDemo />
             </Sub>
           </Section>
 

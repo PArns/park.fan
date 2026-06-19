@@ -40,6 +40,7 @@ import {
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 
 function IntroIT() {
   return (
@@ -244,6 +245,15 @@ function ContentITSections() {
             espandi qualsiasi allerta per i dettagli e i consigli.
           </p>
           <WeatherWarningBannerDemo />
+        </SubSection>
+
+        <SubSection title="Tempi di attesa tipici (per attrazione)">
+          <p className="text-muted-foreground mb-3 text-sm">
+            La pagina di ogni attrazione mostra il suo schema di attesa tipico — il picco normale
+            (mediana) e quello pieno (90° percentile), diviso tra feriali e weekend e per giorno,
+            oltre al record assoluto. Basato sugli ultimi 365 giorni.
+          </p>
+          <AttractionTypicalWaitsDemo />
         </SubSection>
 
         <SubSection title="Schede – Attrazioni, Spettacoli, Calendario, Mappa">

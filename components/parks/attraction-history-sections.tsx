@@ -5,6 +5,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { DailyWaitTimeChartClient } from './daily-wait-time-chart-client';
 import { AttractionHistoryGrid } from './attraction-history-grid';
+import { AttractionTypicalWaits } from './attraction-typical-waits';
 import { AttractionHistorySectionsSkeleton } from './attraction-history-sections-skeleton';
 import type { BestVisitSlot } from '@/lib/api/types';
 
@@ -81,6 +82,12 @@ export function AttractionHistorySections({
               ratingGood: t('ratingGood'),
             }}
           />
+        </section>
+      )}
+
+      {detail.typicalWaits?.displayable && (
+        <section className="mb-8">
+          <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
         </section>
       )}
 

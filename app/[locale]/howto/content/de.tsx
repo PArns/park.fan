@@ -42,6 +42,7 @@ import {
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 
 function ContentDE() {
   return (
@@ -285,6 +286,16 @@ function ContentDE() {
               lässt sich für Details und Verhaltenshinweise aufklappen.
             </p>
             <WeatherWarningBannerDemo />
+          </SubSection>
+
+          <SubSection title="Typische Wartezeiten (pro Fahrgeschäft)">
+            <p className="text-muted-foreground mb-3 text-sm">
+              Die Seite eines einzelnen Fahrgeschäfts zeigt sein typisches Wartemuster — die normale
+              (Median) und die volle (90. Perzentil) Spitzen-Wartezeit, getrennt nach Wochentag und
+              Wochenende und pro Tag aufgeschlüsselt, dazu den Rekord. Basis sind die letzten 365
+              Tage, sodass du auf einen Blick erkennst, ob eine Attraktion meist kurz oder lang ist.
+            </p>
+            <AttractionTypicalWaitsDemo />
           </SubSection>
         </SubSection>
 

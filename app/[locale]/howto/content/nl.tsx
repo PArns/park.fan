@@ -40,6 +40,7 @@ import {
 } from '../_mock-components';
 import { LiveCalendarExample } from '../_live-calendar';
 import { WeatherWarningBannerDemo } from '@/components/parks/weather-warning-banner-demo';
+import { AttractionTypicalWaitsDemo } from '@/components/parks/attraction-typical-waits-demo';
 
 function IntroNL() {
   return (
@@ -239,6 +240,15 @@ function ContentNLSections() {
             waarschuwing uit voor details en adviezen.
           </p>
           <WeatherWarningBannerDemo />
+        </SubSection>
+
+        <SubSection title="Typische wachttijden (per attractie)">
+          <p className="text-muted-foreground mb-3 text-sm">
+            De pagina van elke attractie toont het typische wachtpatroon — de normale (mediaan) en
+            drukke (90e percentiel) piekwachttijd, gesplitst per doordeweekse dag en weekend en per
+            dag, plus het record aller tijden. Gebaseerd op de laatste 365 dagen.
+          </p>
+          <AttractionTypicalWaitsDemo />
         </SubSection>
 
         <SubSection title="Tabbladen – Attracties, Shows, Kalender, Kaart">

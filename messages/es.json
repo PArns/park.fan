@@ -699,6 +699,16 @@
       "min": "min.",
       "todayMin": "Mín.",
       "todayMax": "Máx."
+    },
+    "typicalWaits": {
+      "title": "Tiempos de espera típicos",
+      "basedOn": "Según los últimos {days} días",
+      "weekdays": "Entre semana",
+      "weekend": "Fin de semana",
+      "typical": "Normal",
+      "busy": "Lleno",
+      "min": "min",
+      "peak": "Récord {value} min · {date}"
     }
   },
   "calendar": {

@@ -699,6 +699,16 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max."
+    },
+    "typicalWaits": {
+      "title": "Typische wachttijden",
+      "basedOn": "Op basis van de laatste {days} dagen",
+      "weekdays": "Doordeweeks",
+      "weekend": "Weekend",
+      "typical": "Normaal",
+      "busy": "Druk",
+      "min": "min",
+      "peak": "Record {value} min · {date}"
     }
   },
   "calendar": {

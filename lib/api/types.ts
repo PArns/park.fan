@@ -594,6 +594,38 @@ export interface ParkWithAttractions extends ParkBase {
 // Attraction Response Types
 // ============================================================================
 
+/**
+ * Typical-vs-busy peak waits, derived from the distribution of daily peak waits
+ * over a 365-day window. `typical` = P50 (a normal day's peak), `busy` = P90
+ * (a busy day's peak), both in whole minutes (null when no data).
+ */
+export interface TypicalWaitBucket {
+  typical: number | null;
+  busy: number | null;
+  sampleDays: number;
+}
+
+export interface DayOfWeekWait extends TypicalWaitBucket {
+  /** 0=Sunday … 6=Saturday. */
+  dayOfWeek: number;
+  isWeekend: boolean;
+}
+
+export interface TypicalWaits {
+  weekday: TypicalWaitBucket;
+  weekend: TypicalWaitBucket;
+  /** Per day-of-week, only days that have data (ordered 0=Sun…6=Sat). */
+  byDayOfWeek: DayOfWeekWait[];
+  /** Record peak over the window with its date (YYYY-MM-DD, park tz). */
+  peak: { value: number; date: string } | null;
+  windowDays: number;
+  dataFrom: string;
+  dataTo: string;
+  /** Render only when true (the total sample is large enough to be meaningful). */
+  displayable: boolean;
+  generatedAt: string;
+}
+
 export interface AttractionResponse {
   id: string;
   name: string;
@@ -621,6 +653,8 @@ export interface AttractionResponse {
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
+  /** Typical (P50) vs busy (P90) peak-wait stats — render when `displayable`. */
+  typicalWaits?: TypicalWaits | null;
 }
 
 export interface AttractionHistoryDay {
