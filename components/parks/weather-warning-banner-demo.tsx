@@ -21,7 +21,8 @@ const DEMO_WARNINGS: WeatherWarning[] = [
       'Es tritt eine extreme Wärmebelastung auf. Eine starke gesundheitliche Gefährdung ist zu erwarten.',
     descriptionEn:
       'Extreme heat load. A strong impact on health is expected, also for healthy people.',
-    instruction: 'Meiden Sie die direkte Sonne, trinken Sie ausreichend und vermeiden Sie Anstrengung.',
+    instruction:
+      'Meiden Sie die direkte Sonne, trinken Sie ausreichend und vermeiden Sie Anstrengung.',
     instructionEn: 'Avoid direct sun, drink enough water and avoid strenuous activity.',
     area: 'Stadt Brühl',
     source: 'brightsky',
@@ -51,7 +52,8 @@ const DEMO_WARNINGS: WeatherWarning[] = [
     expires: inH(10),
     headline: 'Amtliche WARNUNG vor Windböen',
     headlineEn: 'Official warning of wind gusts',
-    description: 'Es treten Windböen mit Geschwindigkeiten um 55 km/h aus südwestlicher Richtung auf.',
+    description:
+      'Es treten Windböen mit Geschwindigkeiten um 55 km/h aus südwestlicher Richtung auf.',
     descriptionEn: 'Wind gusts around 55 km/h from a south-westerly direction.',
     instruction: null,
     instructionEn: null,

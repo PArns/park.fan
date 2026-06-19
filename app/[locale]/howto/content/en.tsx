@@ -230,8 +230,8 @@ function ContentENSections() {
 
         <SubSection title="Severe-Weather Warnings">
           <p className="text-muted-foreground mb-3 text-sm">
-            When the national weather service issues an official warning for a park&apos;s location —
-            heat, thunderstorm, storm and more — a coloured banner appears at the top of the park
+            When the national weather service issues an official warning for a park&apos;s location
+            — heat, thunderstorm, storm and more — a coloured banner appears at the top of the park
             page. The colour reflects the severity (yellow → orange → red); expand any warning for
             the full details and safety advice.
           </p>

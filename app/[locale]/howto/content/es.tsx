@@ -252,9 +252,10 @@ function ContentESSections() {
 
         <SubSection title="Tiempos de espera típicos (por atracción)">
           <p className="text-muted-foreground mb-3 text-sm">
-            La página de cada atracción muestra su patrón típico de espera — el pico normal (mediana)
-            y el de mucha gente (percentil 90), separado por días laborables y fin de semana y
-            desglosado por día, además del récord histórico. Se basa en los últimos 365 días.
+            La página de cada atracción muestra su patrón típico de espera — el pico normal
+            (mediana) y el de mucha gente (percentil 90), separado por días laborables y fin de
+            semana y desglosado por día, además del récord histórico. Se basa en los últimos 365
+            días.
           </p>
           <AttractionTypicalWaitsDemo />
         </SubSection>

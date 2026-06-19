@@ -217,7 +217,11 @@ function WarningCard({
 
   return (
     <section
-      className={cn('relative overflow-hidden rounded-xl border p-4 shadow-sm', styles.border, styles.text)}
+      className={cn(
+        'relative overflow-hidden rounded-xl border p-4 shadow-sm',
+        styles.border,
+        styles.text
+      )}
       role="alert"
       aria-live="polite"
     >
@@ -226,7 +230,10 @@ function WarningCard({
         className="bg-background/85 pointer-events-none absolute inset-0 rounded-xl backdrop-blur-md"
         aria-hidden="true"
       />
-      <div className={cn('pointer-events-none absolute inset-0 rounded-xl', styles.bg)} aria-hidden="true" />
+      <div
+        className={cn('pointer-events-none absolute inset-0 rounded-xl', styles.bg)}
+        aria-hidden="true"
+      />
 
       <div className="relative flex items-start gap-3">
         <div className={cn('mt-0.5 shrink-0', styles.iconColor)}>
@@ -235,7 +242,10 @@ function WarningCard({
 
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <AlertTriangle className={cn('h-3.5 w-3.5 shrink-0', styles.iconColor)} aria-hidden="true" />
+            <AlertTriangle
+              className={cn('h-3.5 w-3.5 shrink-0', styles.iconColor)}
+              aria-hidden="true"
+            />
             <h3 className="text-sm font-semibold">{headline}</h3>
             <span
               className={cn(
@@ -290,7 +300,9 @@ function WarningCard({
             </>
           ) : null}
 
-          <p className="text-muted-foreground/70 mt-2 text-[11px]">{t('source', { name: sourceName })}</p>
+          <p className="text-muted-foreground/70 mt-2 text-[11px]">
+            {t('source', { name: sourceName })}
+          </p>
         </div>
       </div>
     </section>

@@ -50,18 +50,18 @@ Changes — bestehende Felder bleiben unverändert):
 Analog zu `rides`: alle Shows des Parks, mit Distanz zum User, nach Distanz
 aufsteigend sortiert.
 
-| Feld                  | Typ                          | Hinweis                                                            |
-| --------------------- | ---------------------------- | ----------------------------------------------------------------- |
-| `id`                  | `string`                     |                                                                   |
-| `name`                | `string`                     |                                                                   |
-| `slug`                | `string`                     |                                                                   |
-| `distance`            | `number`                     | Meter, Haversine User ↔ Show-Koordinaten                          |
-| `status`              | `string`                     | `OPERATING` / `CLOSED` / …                                        |
-| `showtimes`           | `{ startTime: string }[]`    | **heutige** Showtimes, ISO 8601 **mit Offset** (z. B. `+02:00`)   |
-| `url`                 | `string`                     | API-URL, z. B. `/v1/parks/<…>/shows/<slug>`                       |
-| `isSeasonal`          | `boolean` (optional)         | wie bei Park-Detail                                                |
-| `seasonMonths`        | `number[] \| null` (opt.)    | Monate 1–12; `null` = saisonal, Monate unbekannt                  |
-| `isCurrentlyInSeason` | `boolean \| null` (opt.)     |                                                                   |
+| Feld                  | Typ                       | Hinweis                                                         |
+| --------------------- | ------------------------- | --------------------------------------------------------------- |
+| `id`                  | `string`                  |                                                                 |
+| `name`                | `string`                  |                                                                 |
+| `slug`                | `string`                  |                                                                 |
+| `distance`            | `number`                  | Meter, Haversine User ↔ Show-Koordinaten                        |
+| `status`              | `string`                  | `OPERATING` / `CLOSED` / …                                      |
+| `showtimes`           | `{ startTime: string }[]` | **heutige** Showtimes, ISO 8601 **mit Offset** (z. B. `+02:00`) |
+| `url`                 | `string`                  | API-URL, z. B. `/v1/parks/<…>/shows/<slug>`                     |
+| `isSeasonal`          | `boolean` (optional)      | wie bei Park-Detail                                             |
+| `seasonMonths`        | `number[] \| null` (opt.) | Monate 1–12; `null` = saisonal, Monate unbekannt                |
+| `isCurrentlyInSeason` | `boolean \| null` (opt.)  |                                                                 |
 
 Umsetzung: Im `in_park`-Zweig des `LocationService` zusätzlich die Shows des
 erkannten Parks laden (Show-Repository, `parkId = park.id`), Distanz wie bei den
@@ -79,17 +79,17 @@ Die Headliner des Parks (dieselben, die am Park-Detail als
 `ropeDropHeadliners` bestimmt werden) — mit Distanz zum User, nach Distanz
 aufsteigend sortiert.
 
-| Feld         | Typ                       | Hinweis                                         |
-| ------------ | ------------------------- | ----------------------------------------------- |
-| `id`         | `string`                  |                                                 |
-| `name`       | `string`                  |                                                 |
-| `slug`       | `string`                  |                                                 |
-| `distance`   | `number`                  | Meter, Haversine User ↔ Attraktions-Koordinaten |
-| `status`     | `string`                  | `OPERATING` / `CLOSED` / …                      |
-| `waitTime`   | `number \| null`          | aktuelle Wartezeit                              |
-| `crowdLevel` | `string \| null` (opt.)   | falls vorhanden                                 |
-| `url`        | `string`                  | API-URL der Attraktion                          |
-| `worth`      | `boolean` (optional)      | aus Rope-Drop-Logik, falls vorhanden            |
+| Feld           | Typ                     | Hinweis                                         |
+| -------------- | ----------------------- | ----------------------------------------------- |
+| `id`           | `string`                |                                                 |
+| `name`         | `string`                |                                                 |
+| `slug`         | `string`                |                                                 |
+| `distance`     | `number`                | Meter, Haversine User ↔ Attraktions-Koordinaten |
+| `status`       | `string`                | `OPERATING` / `CLOSED` / …                      |
+| `waitTime`     | `number \| null`        | aktuelle Wartezeit                              |
+| `crowdLevel`   | `string \| null` (opt.) | falls vorhanden                                 |
+| `url`          | `string`                | API-URL der Attraktion                          |
+| `worth`        | `boolean` (optional)    | aus Rope-Drop-Logik, falls vorhanden            |
 | `minutesSaved` | `number` (optional)     | aus Rope-Drop-Logik, falls vorhanden            |
 
 Umsetzung: Die vorhandene Headliner-/Rope-Drop-Bestimmung wiederverwenden, die

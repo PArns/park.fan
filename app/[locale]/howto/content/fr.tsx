@@ -244,7 +244,8 @@ function ContentFRSections() {
             Lorsque le service météorologique national émet une alerte officielle pour
             l&apos;emplacement d&apos;un parc — canicule, orage, tempête et plus —, une bannière
             colorée apparaît en haut de la page du parc. La couleur indique la gravité (jaune →
-            orange → rouge) ; dépliez n&apos;importe quelle alerte pour les détails et les consignes.
+            orange → rouge) ; dépliez n&apos;importe quelle alerte pour les détails et les
+            consignes.
           </p>
           <WeatherWarningBannerDemo />
         </SubSection>

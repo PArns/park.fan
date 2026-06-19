@@ -24,7 +24,11 @@ function formatPeakDate(date: string, locale: string): string {
   // Date-only string — anchor at noon to avoid a timezone day-shift.
   const d = new Date(`${date}T12:00:00`);
   if (Number.isNaN(d.getTime())) return date;
-  return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric' }).format(d);
+  return new Intl.DateTimeFormat(locale, {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(d);
 }
 
 export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTypicalWaitsProps) {
@@ -46,7 +50,7 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
 
   return (
     <section
-      className={cn('rounded-xl border bg-card/60 p-5 backdrop-blur-sm', className)}
+      className={cn('bg-card/60 rounded-xl border p-5 backdrop-blur-sm', className)}
       aria-label={t('title')}
     >
       <div className="mb-4 flex items-center gap-2">
@@ -59,8 +63,20 @@ export function AttractionTypicalWaits({ typicalWaits, className }: AttractionTy
 
       {/* Weekday vs weekend summary */}
       <div className="mb-5 grid grid-cols-2 gap-3">
-        <SummaryCard label={t('weekdays')} bucket={weekday} typicalLabel={t('typical')} busyLabel={t('busy')} unit={t('min')} />
-        <SummaryCard label={t('weekend')} bucket={weekend} typicalLabel={t('typical')} busyLabel={t('busy')} unit={t('min')} />
+        <SummaryCard
+          label={t('weekdays')}
+          bucket={weekday}
+          typicalLabel={t('typical')}
+          busyLabel={t('busy')}
+          unit={t('min')}
+        />
+        <SummaryCard
+          label={t('weekend')}
+          bucket={weekend}
+          typicalLabel={t('typical')}
+          busyLabel={t('busy')}
+          unit={t('min')}
+        />
       </div>
 
       {/* Per-day breakdown */}
