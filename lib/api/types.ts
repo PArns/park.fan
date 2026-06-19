@@ -508,6 +508,8 @@ export interface ParkAttraction {
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
+  /** Precomputed P50/P90 peak-wait stats — present for displayable headliners (SSR). */
+  typicalWaits?: TypicalWaits | null;
   // Only present on attraction detail page (merged from dedicated endpoint)
   hourlyForecast?: ForecastItem[];
   predictionAccuracy?: PredictionAccuracy | null;

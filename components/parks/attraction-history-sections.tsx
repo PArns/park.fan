@@ -19,6 +19,8 @@ interface AttractionHistorySectionsProps {
   timezone: string;
   /** From the lean park snapshot (kept in the shell) — fallback if the detail omits it. */
   bestVisitTimes?: BestVisitSlot[] | null;
+  /** True when the shell already rendered typical-waits (headliner) — skip it here. */
+  suppressTypicalWaits?: boolean;
 }
 
 /**
@@ -41,6 +43,7 @@ export function AttractionHistorySections({
   attractionName,
   timezone,
   bestVisitTimes,
+  suppressTypicalWaits,
 }: AttractionHistorySectionsProps) {
   const mounted = useMounted();
   const t = useTranslations('attractions.todayChart');
@@ -62,6 +65,15 @@ export function AttractionHistorySections({
 
   return (
     <>
+      {/* Typical (P50) vs busy (P90) peak waits. For headliners this is rendered
+          in the static shell instead (suppressTypicalWaits) for SEO + instant
+          paint; non-headliner displayable rides still get it client-side here. */}
+      {!suppressTypicalWaits && detail.typicalWaits?.displayable && (
+        <section className="mb-8">
+          <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
+        </section>
+      )}
+
       {/* Daily chart and historical calendar */}
       {hasChart && (
         <section className="mb-8">
@@ -82,12 +94,6 @@ export function AttractionHistorySections({
               ratingGood: t('ratingGood'),
             }}
           />
-        </section>
-      )}
-
-      {detail.typicalWaits?.displayable && (
-        <section className="mb-8">
-          <AttractionTypicalWaits typicalWaits={detail.typicalWaits} />
         </section>
       )}
 

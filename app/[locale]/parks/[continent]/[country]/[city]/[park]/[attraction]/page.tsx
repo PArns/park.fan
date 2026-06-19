@@ -26,6 +26,7 @@ import { AttractionFAQSection } from '@/components/faq/attraction-faq-section';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { AttractionHistorySections } from '@/components/parks/attraction-history-sections';
+import { AttractionTypicalWaits } from '@/components/parks/attraction-typical-waits';
 import { LiveAttractionData } from '@/components/parks/live-attraction-data';
 import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
@@ -310,6 +311,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           {/* Daily wait-time chart + 30-day history grid — client-loaded from the CDN-cached
               attraction detail route so the heavy history/forecast time-series stays out of the
               ISR shell (a skeleton holds the layout until it lands). */}
+          {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
+              rendered in the static shell for SEO + instant paint. Non-headliner
+              displayable rides fall back to the client render in the section below. */}
+          {attraction.typicalWaits?.displayable && (
+            <section className="mb-8">
+              <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+            </section>
+          )}
+
           <AttractionHistorySections
             continent={continent}
             country={country}
@@ -319,6 +329,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
             attractionName={attractionName}
             timezone={park.timezone}
             bestVisitTimes={attraction.bestVisitTimes}
+            suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
           />
 
           <Separator className="my-8" />
