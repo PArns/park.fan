@@ -55,8 +55,16 @@ export function NavigationProgress() {
     if (active.current) return;
     active.current = true;
     if (fadeOut.current) clearTimeout(fadeOut.current);
-    setFading(false);
-    setProgress(8);
+    // `history.pushState` is patched below, so `start` can fire from inside
+    // React's insertion-effect phase (e.g. a `router.replace` during render /
+    // on mount), where scheduling a state update synchronously throws
+    // "useInsertionEffect must not schedule updates". Defer the visual updates
+    // one microtask so they run just outside that phase. The `active` guard and
+    // timers above stay synchronous so de-duping and timing are unaffected.
+    queueMicrotask(() => {
+      setFading(false);
+      setProgress(8);
+    });
     // Ease toward 90 % so the bar keeps creeping while the route loads.
     trickle.current = setInterval(() => {
       setProgress((p) => (p >= 90 ? 90 : p + Math.max(0.4, (90 - p) * 0.1)));
