@@ -53,6 +53,38 @@ const RAIN_AREA_PCT = 30;
 // mm/h that fills the rain area ("moderate" rain); heavier slots scale the chart up.
 const RAIN_SCALE_TOP_MM = 2.5;
 
+// Temperature palette (concrete colours; the normal 10–30 band is amber-400, the
+// same as the SVG's `currentColor`). Drives the now-dot, mirroring the line gradient.
+const TEMP_PALETTE: [number, string][] = [
+  [30, '#ef4444'], // hot
+  [26, '#fbbf24'], // amber-400 (= currentColor)
+  [10, '#fbbf24'],
+  [5, '#38bdf8'], // cool
+  [0, '#2563eb'], // cold
+];
+
+function lerpColor(a: string, b: string, f: number): string {
+  const pa = parseInt(a.slice(1), 16);
+  const pb = parseInt(b.slice(1), 16);
+  const r = Math.round(((pa >> 16) & 255) + (((pb >> 16) & 255) - ((pa >> 16) & 255)) * f);
+  const g = Math.round(((pa >> 8) & 255) + (((pb >> 8) & 255) - ((pa >> 8) & 255)) * f);
+  const bl = Math.round((pa & 255) + ((pb & 255) - (pa & 255)) * f);
+  return `#${((1 << 24) + (r << 16) + (g << 8) + bl).toString(16).slice(1)}`;
+}
+
+/** Colour for a temperature, interpolated to match the line gradient. */
+function tempColorAt(t: number): string {
+  const s = TEMP_PALETTE;
+  if (t >= s[0][0]) return s[0][1];
+  if (t <= s[s.length - 1][0]) return s[s.length - 1][1];
+  for (let i = 0; i < s.length - 1; i++) {
+    const [hi, c1] = s[i];
+    const [lo, c2] = s[i + 1];
+    if (t <= hi && t >= lo) return lerpColor(c1, c2, (hi - t) / (hi - lo || 1));
+  }
+  return s[0][1];
+}
+
 /** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
 function toLocalIso(ms: number, timezone: string): string {
   return new Intl.DateTimeFormat('sv-SE', {
@@ -104,6 +136,7 @@ export function WeatherHourlyChart({
   const t = useTranslations('parks.weather');
   const tNowcast = useTranslations('parks.weatherNowcast');
   const gradientId = useId();
+  const tempLineGradientId = useId();
 
   // Re-render every minute so the "now" marker tracks the actual time.
   const [nowMs, setNowMs] = useState(() => Date.now());
@@ -119,22 +152,76 @@ export function WeatherHourlyChart({
   // Only a *today* view makes sense; hide the chart when the data is for another day.
   if (points[0].time.slice(0, 10) !== nowLocal.slice(0, 10)) return null;
 
+  const liveTemp = nowcast?.currentTemperatureC ?? null;
+
   const temps = points.map((p) => p.temperatureC);
   const valid = temps.filter((v): v is number => v != null);
   if (valid.length < 2) return null;
-  const minTemp = Math.min(...valid);
-  const maxTemp = Math.max(...valid);
+  // Fold in the live nowcast temp so the curve, peak and the header (which shows
+  // that live value) share one scale.
+  const scaleTemps = liveTemp != null ? [...valid, liveTemp] : valid;
+  const minTemp = Math.min(...scaleTemps);
+  const maxTemp = Math.max(...scaleTemps);
   // Keep a flat curve from collapsing to a line glued to the top of the band.
   const span = Math.max(maxTemp - minTemp, 2);
 
   const xFor = (i: number) => ((i + 0.5) / n) * 100;
   const yFor = (tempC: number) =>
     TEMP_BOTTOM - ((tempC - minTemp) / span) * (TEMP_BOTTOM - TEMP_TOP);
+  // Map a park-local time of day onto the x-axis (centre-of-hour offset, like xFor).
+  const xForMinutes = (min: number) => Math.min(Math.max(((min / 60 + 0.5) / n) * 100, 0), 100);
 
-  const linePts = points
+  // "Now" position + temperature. Prefer the LIVE nowcast value so the dot, peak
+  // and header agree (and "now" tracks live); else interpolate the hourly curve.
+  const nowMinutes =
+    parseInt(nowLocal.slice(11, 13), 10) * 60 + parseInt(nowLocal.slice(14, 16), 10);
+  const nowPct = xForMinutes(nowMinutes);
+  const u = nowMinutes / 60;
+  const i0 = Math.min(Math.max(Math.floor(u), 0), n - 2);
+  const frac = Math.min(Math.max(u - i0, 0), 1);
+  const t0 = points[i0].temperatureC;
+  const t1 = points[i0 + 1].temperatureC;
+  const interpNow = t0 != null && t1 != null ? t0 + (t1 - t0) * frac : null;
+  const nowTemp = liveTemp ?? interpNow;
+  const nowTempY = nowTemp != null ? yFor(nowTemp) : null;
+  const nowTempColor = nowTemp != null ? tempColorAt(nowTemp) : undefined;
+
+  // Line: the hourly curve with the live "now" point spliced in (by time) so the
+  // curve passes through it and the dot sits on the line.
+  const hourlyPts = points
     .map((p, i) => (p.temperatureC != null ? { x: xFor(i), y: yFor(p.temperatureC) } : null))
     .filter((p): p is { x: number; y: number } => p !== null);
+  const linePts =
+    liveTemp != null && nowTempY != null
+      ? [
+          ...hourlyPts.filter((p) => Math.abs(p.x - nowPct) > 100 / n / 3),
+          { x: nowPct, y: nowTempY },
+        ].sort((a, b) => a.x - b.x)
+      : hourlyPts;
   const lineD = smoothPath(linePts);
+
+  // Temperature-tinted line: a vertical gradient whose stops sit at the y of each
+  // threshold temp. Since the y-axis IS temperature, only the part of the curve
+  // in a band takes that colour, with a smooth transition between. `currentColor`
+  // (the SVG's amber) is the normal 10–30 °C band, so it looks unchanged there;
+  // only > 30 °C (hot/red) and < 10 °C (cool → cold/blue) diverge.
+  const TEMP_COLORS: [number, string][] = [
+    [30, '#ef4444'], // hot
+    [26, 'currentColor'], // back to the normal colour just below 30
+    [10, 'currentColor'], // normal band (10–26 °C)
+    [5, '#38bdf8'], // cool
+    [0, '#2563eb'], // cold (and below, via clamp)
+  ];
+  let runOff = 0;
+  const tempLineStops = TEMP_COLORS.map(([temp, color]) => {
+    runOff = Math.max(runOff, Math.min(1, Math.max(0, yFor(temp) / 100)));
+    return { offset: runOff, color };
+  });
+  // Same colours under the curve, faded top→bottom — a subtle temperature wash.
+  const tempFillStops = tempLineStops.map((s) => ({
+    ...s,
+    opacity: Math.max(0.03, 0.24 - 0.2 * s.offset),
+  }));
   const areaD = `${lineD} L ${linePts[linePts.length - 1].x.toFixed(2)} 100 L ${linePts[0].x.toFixed(2)} 100 Z`;
 
   // Rain bars: scale against a fixed "moderate rain fills the area" top, but
@@ -142,34 +229,15 @@ export function WeatherHourlyChart({
   const peakMm = Math.max(...points.map((p) => p.precipitationMm ?? 0));
   const rainScale = Math.max(RAIN_SCALE_TOP_MM, peakMm);
 
-  // Map a park-local time of day onto the x-axis. Hour values (temp points, axis
-  // labels) sit at the CENTER of their hour column, so clock times must use the
-  // same half-slot offset — a plain minutes/1440 mapping lands ~30 min too far left.
-  const xForMinutes = (min: number) => Math.min(Math.max(((min / 60 + 0.5) / n) * 100, 0), 100);
-
-  // "Now" position, in park-local time.
-  const nowMinutes =
-    parseInt(nowLocal.slice(11, 13), 10) * 60 + parseInt(nowLocal.slice(14, 16), 10);
-  const nowPct = xForMinutes(nowMinutes);
-
-  // Temperature at "now", interpolated between the neighbouring hour points. The fractional index
-  // is nowMinutes/60 — the inverse of the x mapping (a point at index i sits at xFor(i)), so the
-  // dot lands exactly on the curve under the "now" line. (Using nowMinutes/60 - 0.5 here shifted
-  // the dot half a column off the curve.)
-  const u = nowMinutes / 60;
-  const i0 = Math.min(Math.max(Math.floor(u), 0), n - 2);
-  const frac = Math.min(Math.max(u - i0, 0), 1);
-  const t0 = points[i0].temperatureC;
-  const t1 = points[i0 + 1].temperatureC;
-  const nowTempY = t0 != null && t1 != null ? yFor(t0 + (t1 - t0) * frac) : null;
-
-  // Min/max label anchors (clamped so the labels stay inside the card).
-  const maxIdx = temps.indexOf(maxTemp);
-  const minIdx = temps.indexOf(minTemp);
+  // Min/max label anchors. The live temp sits at "now" when it's the day's extreme.
   const clampX = (x: number) => Math.min(Math.max(x, 7), 93);
+  const hourlyMax = Math.max(...valid);
+  const hourlyMin = Math.min(...valid);
+  const maxX = liveTemp != null && liveTemp >= hourlyMax ? nowPct : xFor(temps.indexOf(maxTemp));
+  const minX = liveTemp != null && liveTemp <= hourlyMin ? nowPct : xFor(temps.indexOf(minTemp));
   // The max label and the "now" marker both live near the top — when the day's
   // peak is around the current hour they collide, so drop the "Now" text then.
-  const showNowLabel = Math.abs(clampX(xFor(maxIdx)) - nowPct) > 10;
+  const showNowLabel = Math.abs(clampX(maxX) - nowPct) > 10;
 
   // Park opening hours — today's OPERATING window mapped onto the day axis.
   const localMinutes = (iso: string) =>
@@ -293,9 +361,30 @@ export function WeatherHourlyChart({
           aria-hidden="true"
         >
           <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="currentColor" stopOpacity="0.28" />
-              <stop offset="80%" stopColor="currentColor" stopOpacity="0.02" />
+            <linearGradient
+              id={gradientId}
+              gradientUnits="userSpaceOnUse"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="100"
+            >
+              {tempFillStops.map((s, i) => (
+                <stop key={i} offset={s.offset} stopColor={s.color} stopOpacity={s.opacity} />
+              ))}
+            </linearGradient>
+            {/* Temperature-tinted line stroke — vertical (y = temperature). */}
+            <linearGradient
+              id={tempLineGradientId}
+              gradientUnits="userSpaceOnUse"
+              x1="0"
+              y1="0"
+              x2="0"
+              y2="100"
+            >
+              {tempLineStops.map((s, i) => (
+                <stop key={i} offset={s.offset} stopColor={s.color} />
+              ))}
             </linearGradient>
             <clipPath id={`${gradientId}-past`}>
               <rect x="0" y="0" width={nowPct} height="100" />
@@ -313,7 +402,7 @@ export function WeatherHourlyChart({
               <path
                 d={lineD}
                 fill="none"
-                stroke="currentColor"
+                stroke={`url(#${tempLineGradientId})`}
                 strokeWidth="2"
                 strokeLinecap="round"
                 vectorEffect="non-scaling-stroke"
@@ -392,8 +481,8 @@ export function WeatherHourlyChart({
         />
         {nowTempY != null && (
           <div
-            className="ring-background pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400 ring-2"
-            style={{ left: `${nowPct}%`, top: `${nowTempY}%` }}
+            className="ring-background pointer-events-none absolute h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full ring-2"
+            style={{ left: `${nowPct}%`, top: `${nowTempY}%`, backgroundColor: nowTempColor }}
             aria-hidden="true"
           />
         )}
@@ -412,13 +501,13 @@ export function WeatherHourlyChart({
         {/* Min/max temperature labels, anchored to their hours */}
         <span
           className="pointer-events-none absolute -translate-x-1/2 -translate-y-full pb-0.5 text-[10px] font-semibold tabular-nums"
-          style={{ left: `${clampX(xFor(maxIdx))}%`, top: `${yFor(maxTemp)}%` }}
+          style={{ left: `${clampX(maxX)}%`, top: `${yFor(maxTemp)}%` }}
         >
           <Temp celsius={maxTemp} />
         </span>
         <span
           className="text-muted-foreground pointer-events-none absolute -translate-x-1/2 pt-0.5 text-[10px] font-medium tabular-nums"
-          style={{ left: `${clampX(xFor(minIdx))}%`, top: `${yFor(minTemp)}%` }}
+          style={{ left: `${clampX(minX)}%`, top: `${yFor(minTemp)}%` }}
         >
           <Temp celsius={minTemp} />
         </span>
