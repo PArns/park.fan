@@ -503,8 +503,8 @@ export function WeatherHourlyChart({
         <span
           className={cn(
             'pointer-events-none absolute -translate-x-1/2 -translate-y-full text-[10px] font-semibold tabular-nums',
-            // Extra clearance when the peak label sits right above the "now" dot.
-            maxAtNow ? 'pb-2.5' : 'pb-0.5'
+            // A touch of clearance when the peak label sits right above the "now" dot.
+            maxAtNow ? 'pb-1.5' : 'pb-0.5'
           )}
           style={{ left: `${clampX(maxX)}%`, top: `${yFor(maxTemp)}%` }}
         >
