@@ -479,7 +479,9 @@
         "bodyStartsInMin": "Pioggia tra circa {duration} ({intensity}).",
         "bodyEndsInMin": "Sta piovendo — finisce tra circa {duration}.",
         "bodyEndsInMinIntensity": "Sta piovendo ({intensity}) — finisce tra circa {duration}.",
-        "bodyNowIntensity": "Sta piovendo al parco in questo momento ({intensity})."
+        "bodyNowIntensity": "Sta piovendo al parco in questo momento ({intensity}).",
+        "bodyNowEndsAt": "Sta piovendo al parco in questo momento. Termina verso le {time}.",
+        "bodyNowEndsAtIntensity": "Sta piovendo al parco in questo momento ({intensity}). Termina verso le {time}."
       },
       "thunderstorm": {
         "heading": "Allerta temporale",

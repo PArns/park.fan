@@ -51,6 +51,32 @@ const minutesUntil = (iso: string | null | undefined, now: number): number | nul
   return Math.max(0, Math.round((ts - now) / 60_000));
 };
 
+/** Park-local "HH:MM" for an end time — but only when it ends in the future AND on
+ *  today's date in the park timezone (a carry-over to another day returns null). */
+const endsTodayLabel = (
+  iso: string | null | undefined,
+  timezone: string,
+  now: number,
+  locale: string
+): string | null => {
+  if (!iso) return null;
+  const ts = Date.parse(iso);
+  if (Number.isNaN(ts) || ts <= now) return null;
+  const dayKey = (ms: number) =>
+    new Intl.DateTimeFormat('en-CA', {
+      timeZone: timezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).format(ms);
+  if (dayKey(ts) !== dayKey(now)) return null;
+  return new Intl.DateTimeFormat(locale, {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: timezone,
+  }).format(ts);
+};
+
 /** How far ahead (minutes) to surface a rain pre-warning. Severe events
  *  (storm/hail/thunderstorm) have no gate and show as soon as they're forecast. */
 const RAIN_LEAD_MINUTES = 60;
@@ -264,15 +290,14 @@ export function WeatherNowcastBanner({
           intensity: t(`intensity.${intensityKey}`),
         });
       } else {
-        const endsIn = minutesUntil(banner.endsAt, now);
         const intensityLabel = banner.intensity ? t(`intensity.${banner.intensity}`) : null;
-        if (endsIn !== null && endsIn > 0) {
+        // Append an absolute end time only when the rain is forecast to stop later
+        // TODAY in the park's timezone; a carry-over to tomorrow stays "raining now".
+        const endsAt = endsTodayLabel(banner.endsAt, data.park.timezone, now, locale);
+        if (endsAt) {
           body = intensityLabel
-            ? t('rain.bodyEndsInMinIntensity', {
-                duration: formatShortDuration(endsIn, locale),
-                intensity: intensityLabel,
-              })
-            : t('rain.bodyEndsInMin', { duration: formatShortDuration(endsIn, locale) });
+            ? t('rain.bodyNowEndsAtIntensity', { intensity: intensityLabel, time: endsAt })
+            : t('rain.bodyNowEndsAt', { time: endsAt });
         } else {
           body = intensityLabel
             ? t('rain.bodyNowIntensity', { intensity: intensityLabel })

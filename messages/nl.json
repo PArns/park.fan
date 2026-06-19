@@ -479,7 +479,9 @@
         "bodyStartsInMin": "Regen over ongeveer {duration} ({intensity}).",
         "bodyEndsInMin": "Het regent — stopt over ongeveer {duration}.",
         "bodyEndsInMinIntensity": "Het regent ({intensity}) — stopt over ongeveer {duration}.",
-        "bodyNowIntensity": "Het regent nu in het park ({intensity})."
+        "bodyNowIntensity": "Het regent nu in het park ({intensity}).",
+        "bodyNowEndsAt": "Het regent nu in het park. Stopt rond {time}.",
+        "bodyNowEndsAtIntensity": "Het regent nu in het park ({intensity}). Stopt rond {time}."
       },
       "thunderstorm": {
         "heading": "Onweerswaarschuwing",

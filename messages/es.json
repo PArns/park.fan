@@ -479,7 +479,9 @@
         "bodyStartsInMin": "Lluvia en unos {duration} ({intensity}).",
         "bodyEndsInMin": "Está lloviendo — termina en unos {duration}.",
         "bodyEndsInMinIntensity": "Está lloviendo ({intensity}) — termina en unos {duration}.",
-        "bodyNowIntensity": "Está lloviendo en el parque ahora mismo ({intensity})."
+        "bodyNowIntensity": "Está lloviendo en el parque ahora mismo ({intensity}).",
+        "bodyNowEndsAt": "Está lloviendo en el parque ahora mismo. Termina hacia las {time}.",
+        "bodyNowEndsAtIntensity": "Está lloviendo en el parque ahora mismo ({intensity}). Termina hacia las {time}."
       },
       "thunderstorm": {
         "heading": "Aviso de tormenta",
