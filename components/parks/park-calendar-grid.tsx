@@ -67,6 +67,23 @@ export function ParkCalendarGrid({
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
+  // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
+  // week grid on desktop). They used to BOTH live in the DOM toggled by `md:hidden` / `hidden
+  // md:block`, so every ParkCalendarDay mounted + rendered TWICE (display:none doesn't skip render
+  // or hydration). This grid is `ssr: false` (see tabs-with-hash) and only mounts once the calendar
+  // tab is opened, so we can pick the layout from the live viewport — no hydration mismatch — and
+  // each day card mounts exactly once.
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window === 'undefined' ? true : window.matchMedia('(min-width: 768px)').matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
   // Fetch calendar data with React Query (automatic caching)
   const from = format(startOfMonth(currentMonth), 'yyyy-MM-dd');
   const to = format(endOfMonth(currentMonth), 'yyyy-MM-dd');
@@ -351,60 +368,62 @@ export function ParkCalendarGrid({
 
               {/* Mobile View: Reversed List (Newest First) */}
               <div className="grid grid-cols-2 gap-6 pt-3 md:hidden">
-                {reversedDays.map((day) => {
-                  const dateStr = format(day, 'yyyy-MM-dd');
-                  const dayData = calendarMap.get(dateStr);
+                {!isDesktop &&
+                  reversedDays.map((day) => {
+                    const dateStr = format(day, 'yyyy-MM-dd');
+                    const dayData = calendarMap.get(dateStr);
 
-                  if (!dayData) return null;
+                    if (!dayData) return null;
 
-                  const isToday =
-                    day.getFullYear() === today.getFullYear() &&
-                    day.getMonth() === today.getMonth() &&
-                    day.getDate() === today.getDate();
+                    const isToday =
+                      day.getFullYear() === today.getFullYear() &&
+                      day.getMonth() === today.getMonth() &&
+                      day.getDate() === today.getDate();
 
-                  return (
-                    <ParkCalendarDay
-                      key={dateStr}
-                      day={dayData}
-                      isToday={isToday}
-                      isBest={bestDayDates.has(dateStr)}
-                    />
-                  );
-                })}
+                    return (
+                      <ParkCalendarDay
+                        key={dateStr}
+                        day={dayData}
+                        isToday={isToday}
+                        isBest={bestDayDates.has(dateStr)}
+                      />
+                    );
+                  })}
               </div>
 
               {/* Desktop View: Standard Weeks */}
               <div className="hidden space-y-6 pt-3 md:block">
-                {weeks.map((week, weekIdx) => (
-                  <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
-                    {week.map((day, dayIdx) => {
-                      if (!day) {
-                        return <div key={`empty-${weekIdx}-${dayIdx}`} className="h-full"></div>;
-                      }
+                {isDesktop &&
+                  weeks.map((week, weekIdx) => (
+                    <div key={weekIdx} className="grid grid-cols-7 items-stretch gap-2">
+                      {week.map((day, dayIdx) => {
+                        if (!day) {
+                          return <div key={`empty-${weekIdx}-${dayIdx}`} className="h-full"></div>;
+                        }
 
-                      const dateStr = format(day, 'yyyy-MM-dd');
-                      const dayData = calendarMap.get(dateStr);
+                        const dateStr = format(day, 'yyyy-MM-dd');
+                        const dayData = calendarMap.get(dateStr);
 
-                      if (!dayData) {
-                        return <div key={dateStr} className="h-full"></div>;
-                      }
+                        if (!dayData) {
+                          return <div key={dateStr} className="h-full"></div>;
+                        }
 
-                      const isToday =
-                        day.getFullYear() === today.getFullYear() &&
-                        day.getMonth() === today.getMonth() &&
-                        day.getDate() === today.getDate();
+                        const isToday =
+                          day.getFullYear() === today.getFullYear() &&
+                          day.getMonth() === today.getMonth() &&
+                          day.getDate() === today.getDate();
 
-                      return (
-                        <ParkCalendarDay
-                          key={dateStr}
-                          day={dayData}
-                          isToday={isToday}
-                          isBest={bestDayDates.has(dateStr)}
-                        />
-                      );
-                    })}
-                  </div>
-                ))}
+                        return (
+                          <ParkCalendarDay
+                            key={dateStr}
+                            day={dayData}
+                            isToday={isToday}
+                            isBest={bestDayDates.has(dateStr)}
+                          />
+                        );
+                      })}
+                    </div>
+                  ))}
               </div>
             </div>
           </div>
