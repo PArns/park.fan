@@ -4,6 +4,24 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – No more scrollbar flicker when opening popups
+
+Opening any Radix popup (language switcher dropdown, dialog, popover, command palette,
+mobile sheet) made the whole page flicker horizontally: `react-remove-scroll` locks the
+body and hides the vertical scrollbar while the popup is open, so on classic-scrollbar
+systems (Windows/Linux) the content area — including the sticky header and `w-screen`
+full-bleed sections — widened by the scrollbar's width and snapped back on close.
+
+- **Fix** (`app/globals.css`): `html { scrollbar-gutter: stable }` permanently reserves
+  the scrollbar's space, so hiding the scrollbar no longer changes the page width. The
+  `body[data-scroll-locked]` rule now also zeroes the `margin-right`/`padding-right` that
+  `react-remove-scroll` adds to compensate for the removed scrollbar — with a stable
+  gutter that space is already reserved, so the compensation would otherwise shift the
+  page the other way.
+- No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
+
+---
+
 ## Unreleased – Park page load order: weather first, best travel time last
 
 Two loading fixes on the park page, plus a stale-cache fix that made the hourly weather
