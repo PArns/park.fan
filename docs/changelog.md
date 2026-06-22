@@ -4,6 +4,43 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – No more scrollbar flicker when opening popups
+
+Opening any Radix popup (language switcher dropdown, dialog, popover, command palette,
+mobile sheet) made the whole page flicker horizontally: `react-remove-scroll` locks the
+body and hides the vertical scrollbar while the popup is open, so on classic-scrollbar
+systems (Windows/Linux) the content area — including the sticky header and `w-screen`
+full-bleed sections — widened by the scrollbar's width and snapped back on close.
+
+- **Fix** (`app/globals.css`): `html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`
+  reserves the scrollbar's space **only while a popup is open**, so hiding the scrollbar no
+  longer changes the page width. It is deliberately _not_ permanent — during normal scrolling
+  the browser's native scrollbar renders as-is (correct theme colour, no forced always-visible
+  bar). The `body[data-scroll-locked]` rule also zeroes the `margin-right`/`padding-right` that
+  `react-remove-scroll` adds to compensate for the removed scrollbar — the reserved gutter
+  already covers that, so otherwise it would shift the page the other way.
+- No-op on overlay-scrollbar systems (e.g. macOS without "always show scrollbars"), which
+  never had the flicker.
+- **Dark scrollbar in dark mode** (`app/globals.css`): some platforms (notably macOS) colour
+  the native scrollbar from the _OS_ appearance, not the page — and `color-scheme: dark`
+  doesn't reliably override it — so a dark site on a light/auto macOS showed a light/white
+  scrollbar. `.dark { scrollbar-color: … transparent }` now sets the colour explicitly
+  (driven by the theme class, so it matches the chosen theme from the first paint). Light
+  mode keeps the native scrollbar.
+
+---
+
+## Unreleased – Glassier popups (dropdowns & popovers)
+
+Dropdown menus (e.g. the language switcher) and popovers were flat opaque boxes. They now
+match the site's glass aesthetic: a translucent, `backdrop-blur-xl` surface
+(`supports-[backdrop-filter]` keeps an opaque fallback), softer `rounded-xl` corners, a
+richer `shadow-xl` with a subtle ring, and menu items get `rounded-md` + a color
+transition on hover. Shared via `components/ui/dropdown-menu.tsx` +
+`components/ui/popover.tsx`, so every dropdown/popover benefits.
+
+---
+
 ## Unreleased – Park page load order: weather first, best travel time last
 
 Two loading fixes on the park page, plus a stale-cache fix that made the hourly weather

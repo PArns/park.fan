@@ -153,17 +153,41 @@
   --sidebar-ring: oklch(0.628 0.137 241.275);
 }
 
+/* Force the scrollbar colours to follow the SITE theme in dark mode. Some platforms
+   (notably macOS) colour the native scrollbar from the OS appearance, not the page,
+   and `color-scheme: dark` does NOT reliably override that — so a dark site on a light
+   (or auto) macOS shows a light/white scrollbar. Setting `scrollbar-color` explicitly
+   wins. Driven by the `.dark` class (applied before first paint by next-themes), so it
+   matches the chosen theme with no flash. Light mode keeps the native scrollbar. */
+.dark {
+  scrollbar-color: color-mix(in oklab, var(--foreground) 28%, transparent) transparent;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  /* When a Radix popup (language switcher, dialog, popover, command palette, mobile
+     sheet) opens, react-remove-scroll hides the scrollbar — which would make the page
+     width jump (flicker). Reserve the scrollbar's space for exactly that moment so the
+     layout stays put. We do this ONLY while a popup is open (not permanently): during
+     normal scrolling the browser's native scrollbar renders as-is — correct theme
+     colour, no forced always-visible bar. */
+  html:has(body[data-scroll-locked]) {
+    scrollbar-gutter: stable;
   }
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
   }
-  /* Prevent background scroll when a Radix dialog/command palette is open */
+  /* Prevent background scroll when a Radix popup is open. react-remove-scroll also
+     adds margin-/padding-right to <body> to compensate for the scrollbar it removes —
+     but with the gutter above that space is already reserved, so the extra offset
+     would shift the page the other way. Cancel it to keep the page perfectly still. */
   body[data-scroll-locked] {
     overflow: hidden !important;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
   }
 }
 
