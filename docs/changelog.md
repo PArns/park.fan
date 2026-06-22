@@ -12,13 +12,15 @@ body and hides the vertical scrollbar while the popup is open, so on classic-scr
 systems (Windows/Linux) the content area — including the sticky header and `w-screen`
 full-bleed sections — widened by the scrollbar's width and snapped back on close.
 
-- **Fix** (`app/globals.css`): `html { scrollbar-gutter: stable }` permanently reserves
-  the scrollbar's space, so hiding the scrollbar no longer changes the page width. The
-  `body[data-scroll-locked]` rule also zeroes the `margin-right`/`padding-right` that
-  `react-remove-scroll` adds to compensate for the removed scrollbar — with a stable
-  gutter that space is already reserved, so the compensation would otherwise shift the
-  page the other way.
-- No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
+- **Fix** (`app/globals.css`): `html:has(body[data-scroll-locked]) { scrollbar-gutter: stable }`
+  reserves the scrollbar's space **only while a popup is open**, so hiding the scrollbar no
+  longer changes the page width. It is deliberately _not_ permanent — during normal scrolling
+  the browser's native scrollbar renders as-is (correct theme colour, no forced always-visible
+  bar). The `body[data-scroll-locked]` rule also zeroes the `margin-right`/`padding-right` that
+  `react-remove-scroll` adds to compensate for the removed scrollbar — the reserved gutter
+  already covers that, so otherwise it would shift the page the other way.
+- No-op on overlay-scrollbar systems (e.g. macOS without "always show scrollbars"), which
+  never had the flicker.
 
 ---
 

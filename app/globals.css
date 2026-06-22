@@ -157,16 +157,13 @@
   * {
     @apply border-border outline-ring/50;
   }
-  /* Always reserve room for the vertical scrollbar. Every Radix popup (language
-     switcher dropdown, dialog, popover, command palette, mobile sheet) locks the
-     body via react-remove-scroll, which HIDES the scrollbar while it's open.
-     Without a reserved gutter the page content (incl. the sticky header and any
-     `w-screen` full-bleed sections) widens by the scrollbar's width the instant a
-     popup opens and snaps back when it closes — a visible horizontal flicker.
-     `scrollbar-gutter: stable` keeps that space reserved at all times, so opening
-     a popup no longer changes the page width. It's a no-op on overlay-scrollbar
-     systems (e.g. macOS), which don't have the flicker to begin with. */
-  html {
+  /* When a Radix popup (language switcher, dialog, popover, command palette, mobile
+     sheet) opens, react-remove-scroll hides the scrollbar — which would make the page
+     width jump (flicker). Reserve the scrollbar's space for exactly that moment so the
+     layout stays put. We do this ONLY while a popup is open (not permanently): during
+     normal scrolling the browser's native scrollbar renders as-is — correct theme
+     colour, no forced always-visible bar. */
+  html:has(body[data-scroll-locked]) {
     scrollbar-gutter: stable;
   }
   body {
