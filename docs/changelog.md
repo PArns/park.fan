@@ -21,6 +21,12 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
   already covers that, so otherwise it would shift the page the other way.
 - No-op on overlay-scrollbar systems (e.g. macOS without "always show scrollbars"), which
   never had the flicker.
+- **Dark scrollbar in dark mode** (`app/globals.css`): some platforms (notably macOS) colour
+  the native scrollbar from the _OS_ appearance, not the page — and `color-scheme: dark`
+  doesn't reliably override it — so a dark site on a light/auto macOS showed a light/white
+  scrollbar. `.dark { scrollbar-color: … transparent }` now sets the colour explicitly
+  (driven by the theme class, so it matches the chosen theme from the first paint). Light
+  mode keeps the native scrollbar.
 
 ---
 

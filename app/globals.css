@@ -153,6 +153,16 @@
   --sidebar-ring: oklch(0.628 0.137 241.275);
 }
 
+/* Force the scrollbar colours to follow the SITE theme in dark mode. Some platforms
+   (notably macOS) colour the native scrollbar from the OS appearance, not the page,
+   and `color-scheme: dark` does NOT reliably override that — so a dark site on a light
+   (or auto) macOS shows a light/white scrollbar. Setting `scrollbar-color` explicitly
+   wins. Driven by the `.dark` class (applied before first paint by next-themes), so it
+   matches the chosen theme with no flash. Light mode keeps the native scrollbar. */
+.dark {
+  scrollbar-color: color-mix(in oklab, var(--foreground) 28%, transparent) transparent;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
