@@ -14,24 +14,10 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
 
 - **Fix** (`app/globals.css`): `html { scrollbar-gutter: stable }` permanently reserves
   the scrollbar's space, so hiding the scrollbar no longer changes the page width. The
-  `body[data-scroll-locked]` rule now also zeroes the `margin-right`/`padding-right` that
+  `body[data-scroll-locked]` rule also zeroes the `margin-right`/`padding-right` that
   `react-remove-scroll` adds to compensate for the removed scrollbar — with a stable
   gutter that space is already reserved, so the compensation would otherwise shift the
   page the other way.
-- **Gutter strip** (`components/parks/park-background.tsx` + `app/globals.css`): while a
-  popup hides the scrollbar, the reserved gutter showed the dark page background as a strip
-  next to the bright park hero. The fixed park background now bleeds across the full
-  viewport (`width: 100vw`) **only while `body[data-scroll-locked]` is set** (a popup is
-  open); otherwise it stays pinned to the content edge. This avoids the strip without ever
-  parking a bright image _behind_ the scrollbar — which would tint a translucent scrollbar
-  track (e.g. Windows 11 Fluent) bright. No horizontal overflow (verified).
-- **White scrollbar on first paint** (`app/globals.css`): `color-scheme` is now set in CSS —
-  `@media (prefers-color-scheme: dark)` plus the `.light`/`.dark` classes — instead of
-  relying on next-themes' post-hydration JS. next-themes can't know the theme during SSR,
-  so the `.dark` class only lands after its script runs; previously a dark-system visitor
-  got a light (white) native scrollbar for the first frame, correcting only after a theme
-  toggle. The media query now matches the system theme from the first paint, and the
-  explicit class overrides it once next-themes applies it.
 - No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
 
 ---

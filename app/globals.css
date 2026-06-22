@@ -85,11 +85,6 @@
 }
 
 :root {
-  /* Drive color-scheme from the theme class (next-themes sets `.dark` in its
-     pre-paint script) rather than only via its post-hydration JS — otherwise the
-     native scrollbar/controls paint in light mode for the first frame when dark is
-     the initial theme (white scrollbar until you toggle). */
-  color-scheme: light;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -124,23 +119,7 @@
   --sidebar-ring: oklch(0.628 0.137 241.275);
 }
 
-/* Match the native scrollbar / form controls to the theme from the very first
-   paint. next-themes can't know the theme during SSR — it adds the `.dark` class
-   only after its client script runs — so until then the system preference drives
-   color-scheme. Without this a dark-system visitor sees a light (white) scrollbar
-   for the first frame (it only corrects on a theme toggle). The explicit
-   `.light`/`.dark` classes below then take over once next-themes applies them. */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-  }
-}
-.light {
-  color-scheme: light;
-}
-
 .dark {
-  color-scheme: dark;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -202,16 +181,6 @@
     overflow: hidden !important;
     margin-right: 0 !important;
     padding-right: 0 !important;
-  }
-  /* While a popup hides the scrollbar, the reserved gutter would otherwise show the
-     dark page background as a strip next to a bright full-bleed hero. Let the fixed
-     park background bleed across the full viewport (into the now-empty gutter) for
-     the duration the popup is open. Normally it stays at the content edge so nothing
-     bright sits behind the (possibly translucent) scrollbar. */
-  body[data-scroll-locked] [data-park-bg] {
-    right: auto !important;
-    left: 0 !important;
-    width: 100vw !important;
   }
 }
 
