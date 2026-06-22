@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { PopularParksGridClient } from '@/components/home/featured-parks-section-client';
+import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -910,7 +910,7 @@ function ContentENSections() {
           park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
           and Europa-Park. Here are the most-visited parks in your region with live data:
         </p>
-        <PopularParksGridClient />
+        <PopularParksGrid />
       </Section>
 
       {/* ── 10. Glossary ─────────────────────────────────────────────────── */}

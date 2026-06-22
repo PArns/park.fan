@@ -10,7 +10,9 @@ import { GlossaryTermDetail } from '@/components/glossary/glossary-term-detail';
 import { GlossaryBackground } from '@/components/glossary/glossary-background';
 import { GlossaryStructuredData } from '@/components/seo/glossary-structured-data';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
-import { FeaturedParksSectionClient } from '@/components/home/featured-parks-section-client';
+import { Suspense } from 'react';
+import { FeaturedParksSlot } from '@/components/home/featured-parks-slot';
+import { FeaturedParksSkeleton } from '@/components/home/home-skeletons';
 import nextDynamic from 'next/dynamic';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
@@ -100,11 +102,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
   const term = await getTermBySlug(locale as Locale, termSlug);
   if (!term) notFound();
 
-  const [t, tCommon, tHome] = await Promise.all([
-    getTranslations('glossary'),
-    getTranslations('common'),
-    getTranslations('home'),
-  ]);
+  const [t, tCommon] = await Promise.all([getTranslations('glossary'), getTranslations('common')]);
 
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
 
@@ -162,11 +160,9 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
 
       <FavoritesSection />
 
-      <FeaturedParksSectionClient
-        headingText={tHome('sections.featuredParks')}
-        introText={tHome('sections.featuredParksIntro')}
-        ctaText={tHome('hero.cta')}
-      />
+      <Suspense fallback={<FeaturedParksSkeleton />}>
+        <FeaturedParksSlot locale={locale} />
+      </Suspense>
     </>
   );
 }

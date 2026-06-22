@@ -1,30 +1,32 @@
 import { getTranslations } from 'next-intl/server';
 import { Globe } from 'lucide-react';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { getGeoLiveStats } from '@/lib/api/analytics';
 import { catchNonFatal } from '@/lib/api/client';
-import { LiveActivityGrid, type StaticContinentCard } from '@/components/home/live-activity-grid';
+import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-activity-grid';
 
 /**
- * "Parks open now" — per-continent live open-park counts.
+ * "Parks open now" — per-continent live open-park counts, server-rendered into the homepage shell.
  *
- * The section structure (continent names + total park counts) comes from the static geo structure
- * and is prerendered/edge-cached; the live open counts are layered on the client by
- * {@link LiveActivityGrid} (shared geo-live batch call), so this section no longer bakes a stale
- * count into the homepage ISR shell. Rendered inside <Suspense> so the geo fetch never blocks the
- * hero.
+ * The continent structure (names + total park counts) comes from the static geo structure; the live
+ * open counts come from `getGeoLiveStats(300)`, which shares the shell's 5-min revalidate window — so
+ * the counts stay fresh while shipping no client JS. Rendered inside <Suspense> so neither fetch
+ * blocks the hero; on error the section is omitted.
  */
 export async function LiveActivitySection() {
-  const [tHome, geoData] = await Promise.all([
+  const [tHome, geoData, geoLive] = await Promise.all([
     getTranslations('home'),
     catchNonFatal(getGeoStructure()),
+    catchNonFatal(getGeoLiveStats(300)),
   ]);
 
-  const continents: StaticContinentCard[] =
+  const continents: ContinentCard[] =
     geoData?.continents.map((continent) => ({
       slug: continent.slug,
       name: continent.name,
       parkCount: continent.parkCount,
       countryCount: continent.countryCount,
+      openParkCount: geoLive?.continents.find((c) => c.slug === continent.slug)?.openParkCount ?? 0,
     })) || [];
 
   if (continents.length === 0) return null;

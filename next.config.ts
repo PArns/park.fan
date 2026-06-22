@@ -196,12 +196,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: '/api/featured-parks/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, s-maxage=3600, stale-while-revalidate=7200' },
-        ],
-      },
-      {
         source: '/api/parks/:continent/:country/:city/:park/calendar',
         headers: [
           { key: 'Cache-Control', value: 'public, s-maxage=300, stale-while-revalidate=600' },
