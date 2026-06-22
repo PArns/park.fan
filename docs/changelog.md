@@ -18,11 +18,13 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
   `react-remove-scroll` adds to compensate for the removed scrollbar — with a stable
   gutter that space is already reserved, so the compensation would otherwise shift the
   page the other way.
-- **Gutter strip** (`components/parks/park-background.tsx`): the fixed full-bleed park
-  background was pinned to `inset-0`/`right-0`, i.e. the viewport _minus_ the reserved
-  gutter, so the gutter showed the dark page background as a strip while a popup was open.
-  It now spans `w-screen` (full viewport width) and paints behind the gutter. No
-  horizontal overflow (verified).
+- **Gutter strip** (`components/parks/park-background.tsx` + `app/globals.css`): while a
+  popup hides the scrollbar, the reserved gutter showed the dark page background as a strip
+  next to the bright park hero. The fixed park background now bleeds across the full
+  viewport (`width: 100vw`) **only while `body[data-scroll-locked]` is set** (a popup is
+  open); otherwise it stays pinned to the content edge. This avoids the strip without ever
+  parking a bright image _behind_ the scrollbar — which would tint a translucent scrollbar
+  track (e.g. Windows 11 Fluent) bright. No horizontal overflow (verified).
 - No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
 
 ---
