@@ -231,15 +231,21 @@ export function Header({ showBlog = true }: HeaderProps) {
           />
         </div>
 
-        {/* Corner pill – absolute right-6, mirrors the corner logo on the left. Fades out on scroll. */}
-        <div
-          className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
-            isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
-          }`}
-        >
-          <LocaleSwitcher />
-          <ThemeToggle />
-        </div>
+        {/* Corner pill – absolute right-6, mirrors the corner logo on the left. Fades out on scroll.
+            Only ever visible on the transparent homepage header (`isTransparent` can only be true when
+            `isHomePage`), so it's rendered ONLY on the homepage. On every other route it would be a
+            permanently-hidden second copy of <LocaleSwitcher/> + <ThemeToggle/> that still hydrates
+            (display/opacity don't skip hydration) — double the work for two interactive dropdowns. */}
+        {isHomePage && (
+          <div
+            className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
+              isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+          >
+            <LocaleSwitcher />
+            <ThemeToggle />
+          </div>
+        )}
 
         {/* Actions */}
         <div className="flex items-center gap-2">

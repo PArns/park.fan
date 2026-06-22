@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { useLocale } from 'next-intl';
 import { useTranslations } from 'next-intl';
 import { Clock, Droplets, Umbrella } from 'lucide-react';
@@ -51,7 +52,7 @@ function toLocalIso(ms: number, timezone: string): string {
  * time. The window auto-sizes to the actual rain event. Renders nothing when no
  * rain is forecast in the remaining series.
  */
-export function NowcastPrecipTimeline({
+export const NowcastPrecipTimeline = memo(function NowcastPrecipTimeline({
   steps,
   observedAt,
   timezone,
@@ -155,4 +156,4 @@ export function NowcastPrecipTimeline({
       </div>
     </div>
   );
-}
+});
