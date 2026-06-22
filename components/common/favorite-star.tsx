@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { Star } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { isFavorite, toggleFavorite, type FavoriteType } from '@/lib/utils/favorites';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
@@ -78,37 +77,35 @@ export function FavoriteStar({
 
   const iconSize = sizeClasses[size];
 
+  // Native `title` instead of a Radix Tooltip: a FavoriteStar sits on every park/attraction
+  // card, so a Radix tooltip here means one tooltip instance hydrating per card (× 100+ on big
+  // park pages). The card surface already uses native `title` for the same reason — this keeps
+  // the hint + a11y label without the per-card client hydration cost.
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <button
-          type="button"
-          onClick={handleClick}
-          className={cn(
-            'z-10 flex items-center justify-center transition-all hover:scale-110',
-            'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
-            !noCircle && 'border-border/50 hover:border-border rounded-full border p-1 shadow-md',
-            className
-          )}
-          aria-label={isFav ? t('removeFromFavorites') : t('addToFavorites')}
-          aria-pressed={isFav}
-        >
-          <Star
-            className={cn(
-              iconSize,
-              'transition-all',
-              isFav
-                ? 'fill-amber-400 text-amber-500'
-                : variant === 'glass'
-                  ? 'fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45'
-                  : 'fill-muted-foreground/20 text-muted-foreground'
-            )}
-          />
-        </button>
-      </TooltipTrigger>
-      <TooltipContent side="left">
-        <p>{t('tooltip')}</p>
-      </TooltipContent>
-    </Tooltip>
+    <button
+      type="button"
+      onClick={handleClick}
+      className={cn(
+        'z-10 flex items-center justify-center transition-all hover:scale-110',
+        'focus:ring-primary focus:ring-2 focus:ring-offset-2 focus:outline-none',
+        !noCircle && 'border-border/50 hover:border-border rounded-full border p-1 shadow-md',
+        className
+      )}
+      aria-label={isFav ? t('removeFromFavorites') : t('addToFavorites')}
+      aria-pressed={isFav}
+      title={t('tooltip')}
+    >
+      <Star
+        className={cn(
+          iconSize,
+          'transition-all',
+          isFav
+            ? 'fill-amber-400 text-amber-500'
+            : variant === 'glass'
+              ? 'fill-black/10 text-black/40 dark:fill-white/20 dark:text-white/45'
+              : 'fill-muted-foreground/20 text-muted-foreground'
+        )}
+      />
+    </button>
   );
 }

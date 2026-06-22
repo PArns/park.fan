@@ -8,6 +8,7 @@ import { ParkCard } from '@/components/parks/park-card';
 import { ParkCardNearbySkeleton } from '@/components/parks/park-card-nearby-skeleton';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { AttractionCardSkeleton } from '@/components/parks/attraction-card-skeleton';
+import { LazyMount } from '@/components/parks/lazy-mount';
 import { ShowCard } from '@/components/parks/show-card';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
@@ -186,30 +187,32 @@ export function FavoritesSection() {
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('parks')}</h3>
-                <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {sortedFavorites.parks.map((park) => (
-                    <ParkCard
-                      key={park.id}
-                      id={park.id}
-                      slug={park.slug}
-                      name={stripNewPrefix(park.name)}
-                      city={park.city}
-                      country={park.country}
-                      distance={park.distance || 0}
-                      status={park.status as import('@/lib/api/types').ParkStatus}
-                      timezone={park.timezone}
-                      totalAttractions={park.totalAttractions}
-                      operatingAttractions={park.operatingAttractions}
-                      analytics={park.analytics}
-                      todaySchedule={park.todaySchedule}
-                      nextSchedule={park.nextSchedule}
-                      backgroundImage={park.backgroundImage}
-                      url={park.url}
-                      hasOperatingSchedule={park.hasOperatingSchedule}
-                      translateCountry
-                    />
-                  ))}
-                </div>
+                <LazyMount minHeight={64 + sortedFavorites.parks.length * 200}>
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {sortedFavorites.parks.map((park) => (
+                      <ParkCard
+                        key={park.id}
+                        id={park.id}
+                        slug={park.slug}
+                        name={stripNewPrefix(park.name)}
+                        city={park.city}
+                        country={park.country}
+                        distance={park.distance || 0}
+                        status={park.status as import('@/lib/api/types').ParkStatus}
+                        timezone={park.timezone}
+                        totalAttractions={park.totalAttractions}
+                        operatingAttractions={park.operatingAttractions}
+                        analytics={park.analytics}
+                        todaySchedule={park.todaySchedule}
+                        nextSchedule={park.nextSchedule}
+                        backgroundImage={park.backgroundImage}
+                        url={park.url}
+                        hasOperatingSchedule={park.hasOperatingSchedule}
+                        translateCountry
+                      />
+                    ))}
+                  </div>
+                </LazyMount>
               </div>
               {(sortedFavorites.attractions.length > 0 ||
                 sortedFavorites.shows.length > 0 ||
@@ -222,17 +225,19 @@ export function FavoritesSection() {
             <>
               <div>
                 <h3 className="mb-4 text-lg font-semibold">{t('attractions')}</h3>
-                <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {sortedFavorites.attractions.map((attraction) => (
-                    <AttractionCard
-                      key={attraction.id}
-                      attraction={attraction}
-                      backgroundImage={attraction.backgroundImage}
-                      distance={attraction.distance}
-                      showParkName={true}
-                    />
-                  ))}
-                </div>
+                <LazyMount minHeight={64 + sortedFavorites.attractions.length * 340}>
+                  <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                    {sortedFavorites.attractions.map((attraction) => (
+                      <AttractionCard
+                        key={attraction.id}
+                        attraction={attraction}
+                        backgroundImage={attraction.backgroundImage}
+                        distance={attraction.distance}
+                        showParkName={true}
+                      />
+                    ))}
+                  </div>
+                </LazyMount>
               </div>
               {(sortedFavorites.shows.length > 0 || sortedFavorites.restaurants.length > 0) && (
                 <Separator />
