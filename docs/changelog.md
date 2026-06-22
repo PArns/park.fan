@@ -4,6 +4,27 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Homepage stats server-rendered into the 5-min shell
+
+Everything from **Global Stats** down (Global/Platform Stats + "Parks open now") now renders
+**server-side into the homepage's 5-min static shell** instead of fetching its data client-side. This
+removes the React Query hooks (`use-global-stats`, `use-park-backgrounds`, and `useGeoLiveStats` on
+the homepage) and their no-store `/api/...` round-trips from the home bundle — less client JS
+competing with the render-blocking CSS at first paint, and the stats now land in the prerendered HTML
+(better LCP, SEO, no-JS). Data is at most 5 min stale: `getGlobalStats(300)` / `getGeoLiveStats(300)`
+share the shell's revalidate window. See [caching-strategy](architecture/caching-strategy.md).
+
+- `components/home/global-stats-section.tsx` → `async` server component; park/ride backgrounds are
+  resolved on the server (`lib/utils/park-assets`) instead of via the deleted `use-park-backgrounds`
+  client mirror.
+- `components/home/live-activity-{section,grid}.tsx` → per-continent open counts come from the server
+  `getGeoLiveStats(300)` fetch (props), so the grid ships no client JS. `useGeoLiveStats` stays for the
+  geo pages.
+- `lib/api/analytics.ts`: `getGlobalStats` / `getGeoLiveStats` take an optional `revalidate` (default
+  600); the homepage passes **300** to pin them to the shell's window.
+
+---
+
 ## Unreleased – No more scrollbar flicker when opening popups
 
 Opening any Radix popup (language switcher dropdown, dialog, popover, command palette,

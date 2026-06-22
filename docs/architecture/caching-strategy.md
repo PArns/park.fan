@@ -133,6 +133,24 @@ writes + better retention → less eviction — done) · ④ long TTL (done, 7 d
 **count** (shell + segments) can't be lowered without flattening the URL (breaks SEO) — it's the
 price of PPR for a deep, high-cardinality route.
 
+**Update (Jun 22 2026) — homepage "Global Stats" + "Live Activity" server-rendered into the shell.**
+
+The homepage sections from **Global Stats** downward now render **server-side into the 5-min static
+shell** instead of client-fetching their data. This removes three React Query hooks (and their
+no-store `/api/...` round-trips) from the home bundle — less client JS competing with the
+render-blocking CSS on first paint (the home-page LCP bottleneck) — and bakes the stats into the
+prerendered HTML (SEO / no-JS). The visitor-facing trade-off is ≤5-min staleness, which is exactly
+the hero/shell rotation window.
+
+- `GlobalStatsSection` → `async` server component: `getGlobalStats(300)` + server-side background
+  resolution (`getParkBackgroundImage` / `getAttractionBackgroundImage`). Deleted `use-global-stats.ts`
+  and `use-park-backgrounds.ts` (now unused — `/api/parks/backgrounds` has no internal caller left).
+- `LiveActivitySection` / `LiveActivityGrid` → per-continent open counts come from `getGeoLiveStats(300)`
+  (props); `useGeoLiveStats` is no longer used on the homepage (it stays for the geo pages).
+- `getGlobalStats` / `getGeoLiveStats` now take a `revalidate` arg (default 600); the homepage passes
+  **300** so the Data Cache entry shares the shell's revalidate window. This **supersedes the 600s row
+  above** for the `realtime` + `geo-live` keys (ticker stays 600s, still client-streamed).
+
 ---
 
 ## API Cache Headers (Backend)

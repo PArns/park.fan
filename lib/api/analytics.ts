@@ -2,12 +2,13 @@ import { api } from './client';
 import type { GlobalStats, GeoLiveStatsDto, TickerResponse } from './types';
 
 /**
- * Get global real-time statistics — cached 10 min in the Vercel Data Cache.
- * Streamed inside a homepage <Suspense> hole (one shared key).
+ * Get global real-time statistics — cached in the Vercel Data Cache.
+ * Server-rendered into the homepage shell, which pins it to its 5-min revalidate window
+ * (`getGlobalStats(300)`); defaults to 10 min for any other caller.
  */
-export function getGlobalStats(): Promise<GlobalStats> {
+export function getGlobalStats(revalidate = 600): Promise<GlobalStats> {
   return api.get<GlobalStats>('/v1/analytics/realtime', {
-    next: { revalidate: 600, tags: ['analytics'] },
+    next: { revalidate, tags: ['analytics'] },
   });
 }
 
@@ -23,10 +24,12 @@ export function getTickerData(): Promise<TickerResponse> {
 }
 
 /**
- * Get live statistics for geographic regions — cached 10 min.
+ * Get live statistics for geographic regions — cached in the Vercel Data Cache.
+ * Server-rendered into the homepage shell, which pins it to its 5-min revalidate window
+ * (`getGeoLiveStats(300)`); defaults to 10 min for any other caller.
  */
-export function getGeoLiveStats(): Promise<GeoLiveStatsDto> {
+export function getGeoLiveStats(revalidate = 600): Promise<GeoLiveStatsDto> {
   return api.get<GeoLiveStatsDto>('/v1/analytics/geo-live', {
-    next: { revalidate: 600, tags: ['analytics'] },
+    next: { revalidate, tags: ['analytics'] },
   });
 }

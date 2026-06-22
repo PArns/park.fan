@@ -1,37 +1,32 @@
-'use client';
-
 import { ChevronRight } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
-import { Skeleton } from '@/components/ui/skeleton';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { useGeoLiveStats, findOpenParkCount } from '@/lib/hooks/use-geo-live-stats';
 
-/** Static (cacheable) per-continent fields — everything except the live open-park count. */
-export interface StaticContinentCard {
+/** Per-continent card data — including the live open-park count, resolved server-side. */
+export interface ContinentCard {
   slug: string;
   name: string;
   parkCount: number;
   countryCount: number;
+  openParkCount: number;
 }
 
 /**
- * Homepage "parks open now" grid. Card structure (continent name, country count, total parks) is
- * prerendered; the live open count is layered on the client via the shared {@link useGeoLiveStats}
- * batch call — so this section no longer bakes a 10-min-stale count into the homepage ISR shell.
+ * Homepage "parks open now" grid — server-rendered into the 5-min shell. The continent structure
+ * and the live open count both come from props (resolved in {@link LiveActivitySection} via
+ * `getGeoLiveStats(300)`), so the count refreshes with the shell and this grid ships no client JS.
  */
-export function LiveActivityGrid({ continents }: { continents: StaticContinentCard[] }) {
-  const tGeo = useTranslations('geo');
-  const tExplore = useTranslations('explore');
-  const { data } = useGeoLiveStats();
+export async function LiveActivityGrid({ continents }: { continents: ContinentCard[] }) {
+  const [tGeo, tExplore] = await Promise.all([getTranslations('geo'), getTranslations('explore')]);
 
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {continents.map((continent) => {
         const continentName = translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
-        const openParkCount = findOpenParkCount(data, continent.slug);
+        const openParkCount = continent.openParkCount;
 
         return (
           <Link
@@ -54,20 +49,14 @@ export function LiveActivityGrid({ continents }: { continents: StaticContinentCa
               <CardContent>
                 <div className="mb-2 flex items-baseline gap-2">
                   <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">
-                    {openParkCount === undefined ? (
-                      <Skeleton as="span" className="inline-block h-7 w-8 align-middle" />
-                    ) : (
-                      openParkCount
-                    )}
+                    {openParkCount}
                   </span>
                   <span className="text-muted-foreground text-sm">/ {continent.parkCount}</span>
                 </div>
-                {/* Progress bar — muted placeholder until the live count loads */}
                 <OpenStatusProgress
-                  openCount={openParkCount ?? 0}
+                  openCount={openParkCount}
                   totalCount={continent.parkCount}
                   showLabel={false}
-                  className={openParkCount === undefined ? 'opacity-40' : undefined}
                 />
               </CardContent>
             </Card>
