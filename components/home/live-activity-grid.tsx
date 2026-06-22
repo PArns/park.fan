@@ -55,7 +55,7 @@ export function LiveActivityGrid({ continents }: { continents: StaticContinentCa
                 <div className="mb-2 flex items-baseline gap-2">
                   <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">
                     {openParkCount === undefined ? (
-                      <Skeleton className="inline-block h-7 w-8 align-middle" />
+                      <Skeleton as="span" className="inline-block h-7 w-8 align-middle" />
                     ) : (
                       openParkCount
                     )}

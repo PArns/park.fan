@@ -60,10 +60,20 @@ import { GlossaryInject } from '@/components/glossary/glossary-inject';
 
 import type { Metadata } from 'next';
 
-// FULLY DYNAMIC (force-dynamic) — rendered per request, no ISR shell write. The above-the-fold
-// shell renders server-side (content-first); each data section fetches its own data and streams in
-// via its own Suspense boundary, so a slow/stale endpoint never blocks first paint.
-export const dynamic = 'force-dynamic';
+// STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
+// attraction catalog, so there is no "ISR shell-write explosion"). The shell is served straight
+// from the CDN (fast TTFB → fast LCP, bf-cache eligible) and revalidated stale-while-revalidate
+// from the Data Cache TTLs of the section fetches below; each regeneration also re-picks the
+// hero's 5-min window. Every live, per-visitor value (nearby, favorites, featured/stats/ticker
+// live status) is loaded CLIENT-side via React Query, so the cached HTML never goes stale where
+// it matters. No `force-dynamic`: a per-request server render here was the page's biggest cost
+// (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
+
+// Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
+// so it stays pinned to the hero image's 5-min rotation window: `pickHeroImage()` re-runs on each
+// regeneration, so under steady traffic the hero keeps rotating ~every 5 min. Also keeps the
+// SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded on top.
+export const revalidate = 300;
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
