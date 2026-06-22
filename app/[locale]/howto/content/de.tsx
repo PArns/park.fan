@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { PopularParksGridClient } from '@/components/home/featured-parks-section-client';
+import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -1108,7 +1108,7 @@ function ContentDE() {
           park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
           Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
         </p>
-        <PopularParksGridClient />
+        <PopularParksGrid />
       </Section>
 
       {/* ── 10. Glossar ───────────────────────────────────────────────────── */}

@@ -147,6 +147,10 @@ the hero/shell rotation window.
   and `use-park-backgrounds.ts` (now unused — `/api/parks/backgrounds` has no internal caller left).
 - `LiveActivitySection` / `LiveActivityGrid` → per-continent open counts come from `getGeoLiveStats(300)`
   (props); `useGeoLiveStats` is no longer used on the homepage (it stays for the geo pages).
+- **Featured ("beliebte") parks** → `FeaturedParksSlot` / `PopularParksGrid` are now server components
+  rendering `extractFeaturedParks(getGeoStructure(300))` directly (homepage, blog, glossary, howto). The
+  old `/api/featured-parks` client poll returned that **same** 300s-cached geo data, so it was pure
+  overhead — route + `featured-parks-section-client.tsx` deleted.
 - `getGlobalStats` / `getGeoLiveStats` now take a `revalidate` arg (default 600); the homepage passes
   **300** so the Data Cache entry shares the shell's revalidate window. This **supersedes the 600s row
   above** for the `realtime` + `geo-live` keys (ticker stays 600s, still client-streamed).

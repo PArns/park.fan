@@ -1,12 +1,12 @@
 # Featured Parks Section
 
-Homepage section (`components/home/featured-parks-section.tsx`) that shows 6 locale-specific park cards with live data directly on the homepage — primary SEO internal-linking surface from the root page to individual park pages.
+Homepage section — rendered **server-side** by `components/home/featured-parks-slot.tsx` (the per-locale slug config lives in `components/home/featured-parks-section.tsx`) — that shows 6 locale-specific park cards with live data directly on the homepage, the primary SEO internal-linking surface from the root page to individual park pages. The same components are reused at the bottom of glossary term + blog pages, and a compact `PopularParksGrid` variant appears on the howto pages.
 
 ---
 
 ## How It Works
 
-1. **Data source:** Uses `geoData` already fetched on the homepage via `getGeoStructure()` — no extra API call. `CACHE_TTL.geo = 120s`, so live status/crowd data is fresh.
+1. **Data source:** Server-rendered from `geoData` via `getGeoStructure(300)` (request-deduped with the live-activity section) — no client fetch, no extra API call. Baked into the page's 5-min shell, so status/crowd data is at most ~5 min stale (it was already only as fresh as the 300s geo cache back when it was polled client-side).
 2. **Extraction:** `extractFeaturedParks()` traverses the geo structure and finds parks by slug in the predefined order. Parks not found in the API are silently skipped (graceful degradation).
 3. **Live data passed to `ParkCard`:** `status`, `crowdLevel`, `avgWaitTime`, `operatingAttractions`, `totalAttractions`, `todaySchedule`, `nextSchedule`, `timezone`.
 4. **Country name translation:** Country slug → `tGeo('countries.${slug}')` — same pattern as `ParkCardNearby`.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { PopularParksGridClient } from '@/components/home/featured-parks-section-client';
+import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -934,7 +934,7 @@ function ContentITSections() {
           park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati nella
           tua regione con dati in tempo reale:
         </p>
-        <PopularParksGridClient />
+        <PopularParksGrid />
       </Section>
 
       {/* ── 10. Glossario ────────────────────────────────────────────────── */}

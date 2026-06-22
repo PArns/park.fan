@@ -4,15 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – Homepage stats server-rendered into the 5-min shell
+## Unreleased – Homepage sections server-rendered into the 5-min shell
 
-Everything from **Global Stats** down (Global/Platform Stats + "Parks open now") now renders
-**server-side into the homepage's 5-min static shell** instead of fetching its data client-side. This
-removes the React Query hooks (`use-global-stats`, `use-park-backgrounds`, and `useGeoLiveStats` on
-the homepage) and their no-store `/api/...` round-trips from the home bundle — less client JS
-competing with the render-blocking CSS at first paint, and the stats now land in the prerendered HTML
-(better LCP, SEO, no-JS). Data is at most 5 min stale: `getGlobalStats(300)` / `getGeoLiveStats(300)`
-share the shell's revalidate window. See [caching-strategy](architecture/caching-strategy.md).
+The homepage's data sections — **Featured Parks** ("beliebte Parks"), **Global/Platform Stats** and
+**"Parks open now"** — now render **server-side into the 5-min static shell** instead of fetching
+their data client-side. This removes the React Query hooks (`use-global-stats`, `use-park-backgrounds`,
+the homepage's `useGeoLiveStats`, and the featured-parks poll) and their no-store `/api/...`
+round-trips from the home bundle — less client JS competing with the render-blocking CSS at first
+paint, and the content now lands in the prerendered HTML (better LCP, SEO, no-JS). Data is at most
+5 min stale: the section fetches (`getGlobalStats(300)` / `getGeoLiveStats(300)` /
+`getGeoStructure(300)`) share the shell's revalidate window. See
+[caching-strategy](architecture/caching-strategy.md).
 
 - `components/home/global-stats-section.tsx` → `async` server component; park/ride backgrounds are
   resolved on the server (`lib/utils/park-assets`) instead of via the deleted `use-park-backgrounds`
@@ -20,6 +22,12 @@ share the shell's revalidate window. See [caching-strategy](architecture/caching
 - `components/home/live-activity-{section,grid}.tsx` → per-continent open counts come from the server
   `getGeoLiveStats(300)` fetch (props), so the grid ships no client JS. `useGeoLiveStats` stays for the
   geo pages.
+- `components/home/featured-parks-slot.tsx` → `FeaturedParksSlot` (full section) + `PopularParksGrid`
+  (compact, howto pages) are now server components that render `extractFeaturedParks(getGeoStructure(300))`
+  directly. The client poll returned that _same_ 300s-cached data, so server-rendering costs no
+  freshness. Deleted `featured-parks-section-client.tsx` + the `/api/featured-parks/[locale]` route
+  (its only caller was the poll). Applied across the homepage, blog context module, glossary term
+  pages and the 6 howto pages.
 - `lib/api/analytics.ts`: `getGlobalStats` / `getGeoLiveStats` take an optional `revalidate` (default
   600); the homepage passes **300** to pin them to the shell's window.
 
