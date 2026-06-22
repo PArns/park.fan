@@ -69,6 +69,12 @@ import type { Metadata } from 'next';
 // it matters. No `force-dynamic`: a per-request server render here was the page's biggest cost
 // (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
 
+// Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
+// so it stays pinned to the hero image's 5-min rotation window: `pickHeroImage()` re-runs on each
+// regeneration, so under steady traffic the hero keeps rotating ~every 5 min. Also keeps the
+// SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded on top.
+export const revalidate = 300;
+
 interface HomePageProps {
   params: Promise<{ locale: string }>;
 }
