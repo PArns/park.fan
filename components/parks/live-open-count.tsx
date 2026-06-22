@@ -21,7 +21,11 @@ export function LiveOpenCount({
   const { data } = useGeoLiveStats();
   const count = findOpenParkCount(data, continent, country);
   if (count === undefined) {
-    return <Skeleton className={cn('inline-block h-[1em] w-6 align-middle', className)} />;
+    // <span>, not the default <div>: this renders inline inside a <p> (the geo PageHeader subtitle),
+    // where a <div> is invalid HTML and triggers a hydration mismatch.
+    return (
+      <Skeleton as="span" className={cn('inline-block h-[1em] w-6 align-middle', className)} />
+    );
   }
   return <>{count}</>;
 }

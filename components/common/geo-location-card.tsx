@@ -43,7 +43,7 @@ export function GeoLocationCard({
                 <div className="mt-1 flex items-center gap-2 text-sm">
                   <span className="text-park-primary font-medium">
                     {openParkCount === undefined ? (
-                      <Skeleton className="inline-block h-4 w-5 align-middle" />
+                      <Skeleton as="span" className="inline-block h-4 w-5 align-middle" />
                     ) : (
                       openParkCount
                     )}{' '}
