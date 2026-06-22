@@ -18,7 +18,23 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
   `react-remove-scroll` adds to compensate for the removed scrollbar — with a stable
   gutter that space is already reserved, so the compensation would otherwise shift the
   page the other way.
+- **Gutter strip** (`components/parks/park-background.tsx`): the fixed full-bleed park
+  background was pinned to `inset-0`/`right-0`, i.e. the viewport _minus_ the reserved
+  gutter, so the gutter showed the dark page background as a strip while a popup was open.
+  It now spans `w-screen` (full viewport width) and paints behind the gutter. No
+  horizontal overflow (verified).
 - No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
+
+---
+
+## Unreleased – Glassier popups (dropdowns & popovers)
+
+Dropdown menus (e.g. the language switcher) and popovers were flat opaque boxes. They now
+match the site's glass aesthetic: a translucent, `backdrop-blur-xl` surface
+(`supports-[backdrop-filter]` keeps an opaque fallback), softer `rounded-xl` corners, a
+richer `shadow-xl` with a subtle ring, and menu items get `rounded-md` + a color
+transition on hover. Shared via `components/ui/dropdown-menu.tsx` +
+`components/ui/popover.tsx`, so every dropdown/popover benefits.
 
 ---
 

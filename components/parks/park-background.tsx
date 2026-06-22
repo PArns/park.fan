@@ -19,7 +19,10 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
 
   if (fixed) {
     return (
-      <div className="pointer-events-none fixed inset-0 -z-10 select-none">
+      // w-screen (not inset-0/right-0) so the fixed layer spans the FULL viewport
+      // incl. the reserved scrollbar gutter (scrollbar-gutter: stable) — otherwise a
+      // dark strip shows in the gutter while a popup hides the scrollbar.
+      <div className="pointer-events-none fixed inset-y-0 left-0 -z-10 w-screen select-none">
         <Image
           src={imageSrc}
           alt={alt}
@@ -38,7 +41,7 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
   }
 
   return (
-    <div className="pointer-events-none fixed top-0 right-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] overflow-hidden select-none">
+    <div className="pointer-events-none fixed top-0 left-0 -z-10 h-[calc(75vh+4rem)] max-h-[850px] w-screen overflow-hidden select-none">
       <div className="relative h-full w-full">
         <Image
           src={imageSrc}
