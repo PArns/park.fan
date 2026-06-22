@@ -124,6 +124,21 @@
   --sidebar-ring: oklch(0.628 0.137 241.275);
 }
 
+/* Match the native scrollbar / form controls to the theme from the very first
+   paint. next-themes can't know the theme during SSR — it adds the `.dark` class
+   only after its client script runs — so until then the system preference drives
+   color-scheme. Without this a dark-system visitor sees a light (white) scrollbar
+   for the first frame (it only corrects on a theme toggle). The explicit
+   `.light`/`.dark` classes below then take over once next-themes applies them. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+.light {
+  color-scheme: light;
+}
+
 .dark {
   color-scheme: dark;
   --background: oklch(0.145 0 0);

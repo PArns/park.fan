@@ -25,11 +25,13 @@ full-bleed sections — widened by the scrollbar's width and snapped back on clo
   open); otherwise it stays pinned to the content edge. This avoids the strip without ever
   parking a bright image _behind_ the scrollbar — which would tint a translucent scrollbar
   track (e.g. Windows 11 Fluent) bright. No horizontal overflow (verified).
-- **White scrollbar on first paint** (`app/globals.css`): `color-scheme` is now driven by
-  the `.dark`/`:root` CSS (the `.dark` class is applied by next-themes' pre-paint script)
-  instead of only next-themes' post-hydration JS. Previously, when dark was the _initial_
-  theme, the native scrollbar painted in light mode (white) for the first frame and only
-  corrected after a theme toggle.
+- **White scrollbar on first paint** (`app/globals.css`): `color-scheme` is now set in CSS —
+  `@media (prefers-color-scheme: dark)` plus the `.light`/`.dark` classes — instead of
+  relying on next-themes' post-hydration JS. next-themes can't know the theme during SSR,
+  so the `.dark` class only lands after its script runs; previously a dark-system visitor
+  got a light (white) native scrollbar for the first frame, correcting only after a theme
+  toggle. The media query now matches the system theme from the first paint, and the
+  explicit class overrides it once next-themes applies it.
 - No-op on overlay-scrollbar systems (e.g. macOS), which never had the flicker.
 
 ---
