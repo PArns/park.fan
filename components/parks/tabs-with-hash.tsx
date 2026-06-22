@@ -19,6 +19,7 @@ import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
 import { LandSection } from '@/components/parks/land-section';
+import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
 import { stripNewPrefix } from '@/lib/utils';
@@ -478,20 +479,30 @@ export function TabsWithHash({
             )}
 
             {hasSearchResults ? (
-              landNames.map((landName) => {
+              landNames.map((landName, index) => {
                 const attractions = filteredAttractionsByLand[landName];
                 if (!attractions) return null;
 
                 return (
-                  <LandSection
+                  // Lazy-mount every land below the first so a big park's 100+ glass cards no
+                  // longer all render at once (excessive DOM + mobile paint/compositing cost).
+                  // While searching, render every matching land eagerly so no result is hidden
+                  // behind a placeholder. minHeight ≈ the single-column mobile height so the
+                  // scroll length stays stable and sections below mount off-screen.
+                  <LazyMount
                     key={landName}
-                    landName={landName}
-                    attractions={attractions}
-                    parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                    parkSlug={parkSlug}
-                    parkStatus={park.status}
-                    timezone={park.timezone}
-                  />
+                    eager={index === 0 || searchQuery.trim().length > 0}
+                    minHeight={64 + attractions.length * 340}
+                  >
+                    <LandSection
+                      landName={landName}
+                      attractions={attractions}
+                      parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                      parkSlug={parkSlug}
+                      parkStatus={park.status}
+                      timezone={park.timezone}
+                    />
+                  </LazyMount>
                 );
               })
             ) : (
