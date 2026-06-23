@@ -1,12 +1,34 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useEffect, useReducer } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { CLIENT_GLOSSARY_TERMS } from '@/lib/glossary/client-data';
+import {
+  getLoadedGlossaryTerms,
+  loadGlossaryTerms,
+  subscribeGlossaryTerms,
+} from '@/lib/glossary/client-data-loader';
 import type { Locale } from '@/i18n/config';
+
+/**
+ * Subscribe to the lazily-loaded glossary data for `locale`. Returns the term map once it
+ * resolves (or `undefined` until then). The data is client-only, so SSR and the first client
+ * render both return `undefined` (matching markup → no hydration mismatch); the links/tooltips
+ * "highlight in" right after the per-locale chunk loads. Only the mounted term-link instances
+ * re-render — never the whole page.
+ */
+function useGlossaryTerms(locale: Locale) {
+  const [, force] = useReducer((c: number) => c + 1, 0);
+  useEffect(() => {
+    if (getLoadedGlossaryTerms(locale)) return;
+    loadGlossaryTerms(locale);
+    return subscribeGlossaryTerms(force);
+  }, [locale]);
+  return getLoadedGlossaryTerms(locale);
+}
 
 interface GlossaryTermLinkProps {
   /** Glossary term id (from data.ts). */
@@ -24,6 +46,9 @@ interface GlossaryTermLinkProps {
 /**
  * Lightweight client component for rendering a glossary term link with optional tooltip.
  * Use this in client component trees where async GlossaryInject is not available.
+ *
+ * The term data (name/definition/slug) is loaded lazily per locale (see client-data-loader),
+ * so until it arrives the children render as plain text and then upgrade to a link + tooltip.
  */
 export function GlossaryTermLink({
   termId,
@@ -33,14 +58,14 @@ export function GlossaryTermLink({
   tooltipOnly = false,
 }: GlossaryTermLinkProps) {
   const locale = useLocale() as Locale;
-  const termData = CLIENT_GLOSSARY_TERMS[termId];
+  const termData = useGlossaryTerms(locale)?.[termId];
   if (!termData) return <>{children}</>;
-  const slug = termData.slugs[locale];
+  const slug = termData.slug;
   const segment = GLOSSARY_SEGMENTS[locale];
 
   // Get tooltip data if available and enabled
-  const tooltipName = showTooltip ? termData.name[locale] : null;
-  const tooltipDefinition = showTooltip ? termData.shortDefinition[locale] : null;
+  const tooltipName = showTooltip ? termData.name : null;
+  const tooltipDefinition = showTooltip ? termData.shortDefinition : null;
 
   // tooltipOnly mode: render a span with tooltip but no link (use inside card <Link> elements)
   if (tooltipOnly) {

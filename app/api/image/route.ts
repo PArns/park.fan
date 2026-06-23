@@ -20,7 +20,7 @@ import { NextRequest, NextResponse } from 'next/server';
 // Keep in sync with next.config.ts `images.{deviceSizes ∪ imageSizes, qualities}`.
 // The optimizer rejects any width/quality not in these allow-lists.
 const ALLOWED_WIDTHS = [32, 48, 64, 96, 128, 256, 384, 640, 828, 1080, 1200, 1920, 2560, 3840];
-const ALLOWED_QUALITIES = [60, 75, 85, 90];
+const ALLOWED_QUALITIES = [50, 60, 75, 85, 90];
 
 const SLUG_RE = /^[a-z0-9-]+$/; // blocks path traversal (no '/', '.', '..')
 const SOURCE_EXTS = ['jpg', 'jpeg', 'png', 'webp'];
