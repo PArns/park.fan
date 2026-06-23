@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo, useDeferredValue } from 'react';
 import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
@@ -283,25 +283,31 @@ export function TabsWithHash({
     return (park.shows ?? []).filter(isInSeason);
   }, [park.shows, showOffSeasonShows, offSeasonShowCount]);
 
-  // Filter attractions based on search query (and off-season filter)
-  const filteredAttractionsByLand =
-    searchQuery.trim() === ''
-      ? inSeasonAttractionsByLand
-      : fuse
-          .search(searchQuery)
-          .map((result) => result.item)
-          .filter((a) => showOffSeasonAttractions || isInSeason(a))
-          .reduce(
-            (acc, attraction) => {
-              const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
-              if (!acc[land]) {
-                acc[land] = [];
-              }
-              acc[land].push(attraction);
-              return acc;
-            },
-            {} as Record<string, ParkAttraction[]>
-          );
+  // Keep typing responsive on big parks: the input updates `searchQuery` synchronously, but the
+  // expensive Fuse search + full attraction-grid re-render run against a DEFERRED copy at lower
+  // priority, so each keystroke paints immediately instead of blocking on the filter. This was the
+  // dominant mobile-INP cost (~700 ms/keystroke on a 96-attraction park): it used to run unmemoized
+  // in the render body, so every keystroke re-ran the fuzzy search + re-rendered every land before
+  // the next paint. `useMemo` also stops it recomputing on unrelated re-renders (the 5-min poll).
+  const deferredQuery = useDeferredValue(searchQuery);
+  const isSearching = deferredQuery.trim() !== '';
+
+  const filteredAttractionsByLand = useMemo(() => {
+    const q = deferredQuery.trim();
+    if (q === '') return inSeasonAttractionsByLand;
+    return fuse
+      .search(q)
+      .map((result) => result.item)
+      .filter((a) => showOffSeasonAttractions || isInSeason(a))
+      .reduce(
+        (acc, attraction) => {
+          const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
+          (acc[land] ??= []).push(attraction);
+          return acc;
+        },
+        {} as Record<string, ParkAttraction[]>
+      );
+  }, [deferredQuery, inSeasonAttractionsByLand, fuse, showOffSeasonAttractions, attractionLandKey]);
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
@@ -459,7 +465,7 @@ export function TabsWithHash({
             </div>
 
             {/* Renders nothing when there are neither worth nor evening picks. */}
-            {!searchQuery.trim() && (
+            {!isSearching && (
               <RopeDropHeadliners
                 headliners={park.ropeDropHeadliners ?? []}
                 attractions={park.attractions ?? []}
@@ -467,7 +473,7 @@ export function TabsWithHash({
               />
             )}
 
-            {headliners.length > 0 && !searchQuery.trim() && (
+            {headliners.length > 0 && !isSearching && (
               <LandSection
                 landName={t('headlinersSection')}
                 attractions={headliners}
@@ -491,7 +497,7 @@ export function TabsWithHash({
                   // scroll length stays stable and sections below mount off-screen.
                   <LazyMount
                     key={landName}
-                    eager={index === 0 || searchQuery.trim().length > 0}
+                    eager={index === 0 || isSearching}
                     minHeight={64 + attractions.length * 340}
                   >
                     <LandSection
