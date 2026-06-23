@@ -4,7 +4,7 @@
  * This ensures CLIENT_GLOSSARY_TERMS is always in sync with source translations.
  */
 
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -14,7 +14,10 @@ const rootDir = resolve(__dirname, '..');
 const LOCALES = ['en', 'de', 'fr', 'it', 'nl', 'es'];
 const GLOSSARY_DIR = resolve(rootDir, 'content/glossary');
 const DATA_FILE = resolve(rootDir, 'lib/glossary/data.ts');
+// Legacy monolithic output (all terms × all locales, ~80 KB gzip) — replaced by the
+// per-locale files below so GlossaryTermLink can lazily load only the active locale.
 const OUTPUT_FILE = resolve(rootDir, 'lib/glossary/client-data.ts');
+const OUTPUT_DIR = resolve(rootDir, 'lib/glossary/client-data');
 
 /**
  * Parse lib/glossary/data.ts and extract the per-locale URL slugs for each term,
@@ -158,68 +161,52 @@ function loadAllGlossaryData() {
 }
 
 /**
- * Generate TypeScript source code for client data.
+ * Generate a per-locale client-data file. Each file holds only one locale's flat
+ * { termId: { name, shortDefinition, slug } } map (~13 KB gzip) so GlossaryTermLink
+ * can lazily load just the active locale instead of all six (~80 KB gzip).
  */
-function generateClientDataFile(allTerms, slugsByTerm) {
-  const termsObject = Object.entries(allTerms)
+function generatePerLocaleFile(locale, allTerms, slugsByTerm) {
+  const entries = Object.entries(allTerms)
+    .filter(([, data]) => data.name[locale] && data.shortDefinition[locale])
     .map(([termId, data]) => {
-      const nameObj = Object.entries(data.name)
-        .map(([locale, name]) => `      ${locale}: "${name.replace(/"/g, '\\"')}"`)
-        .join(',\n');
-
-      const defObj = Object.entries(data.shortDefinition)
-        .map(([locale, def]) => `      ${locale}: "${def.replace(/"/g, '\\"')}"`)
-        .join(',\n');
-
-      const slugs = slugsByTerm[termId];
-      if (!slugs) {
-        throw new Error(`Term '${termId}' has translations but no slugs in data.ts`);
+      const slug = slugsByTerm[termId]?.[locale];
+      if (!slug) {
+        throw new Error(`Term '${termId}' has translations but no '${locale}' slug in data.ts`);
       }
-      const slugsObj = Object.entries(slugs)
-        .map(([locale, slug]) => `      ${locale}: "${slug.replace(/"/g, '\\"')}"`)
-        .join(',\n');
-
-      return `  '${termId}': {
-    name: {
-${nameObj}
-    },
-    shortDefinition: {
-${defObj}
-    },
-    slugs: {
-${slugsObj}
-    },
-  }`;
+      // JSON.stringify produces a safely-escaped double-quoted string literal.
+      return `  ${JSON.stringify(termId)}: { name: ${JSON.stringify(data.name[locale])}, shortDefinition: ${JSON.stringify(data.shortDefinition[locale])}, slug: ${JSON.stringify(slug)} },`;
     })
-    .join(',\n');
+    .join('\n');
 
   return `/**
- * Client-side glossary data for Tooltip support.
- * Auto-generated from content/glossary/{locale}.ts files.
- * Do NOT edit manually — run: npm run generate:client-glossary
+ * Client-side glossary data (${locale}) for tooltip + link support.
+ * Lazily loaded by GlossaryTermLink via ../client-data-loader.
+ * Auto-generated from content/glossary/${locale}.ts — do NOT edit manually.
+ * Run: npm run generate:client-glossary
  */
+import type { ClientTerm } from '../client-data-loader';
 
-import type { Locale } from '@/i18n/config';
-
-export interface ClientGlossaryTerm {
-  name: Record<Locale, string>;
-  shortDefinition: Record<Locale, string>;
-  slugs: Record<Locale, string>;
-}
-
-export const CLIENT_GLOSSARY_TERMS: Record<string, ClientGlossaryTerm> = {
-${termsObject}
+export const TERMS: Record<string, ClientTerm> = {
+${entries}
 };
 `;
 }
 
 try {
-  console.log('📝 Generating client glossary data...');
+  console.log('📝 Generating per-locale client glossary data...');
   const allTerms = loadAllGlossaryData();
   const slugsByTerm = parseSlugsFromData();
-  const output = generateClientDataFile(allTerms, slugsByTerm);
-  writeFileSync(OUTPUT_FILE, output, 'utf-8');
-  console.log(`✅ Generated ${OUTPUT_FILE}`);
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  for (const locale of LOCALES) {
+    writeFileSync(
+      resolve(OUTPUT_DIR, `${locale}.ts`),
+      generatePerLocaleFile(locale, allTerms, slugsByTerm),
+      'utf-8'
+    );
+  }
+  // Remove the obsolete monolithic file (replaced by the per-locale lazy chunks).
+  if (existsSync(OUTPUT_FILE)) rmSync(OUTPUT_FILE);
+  console.log(`✅ Generated ${LOCALES.length} per-locale files in ${OUTPUT_DIR}`);
   console.log(`   Found ${Object.keys(allTerms).length} glossary terms`);
 } catch (error) {
   console.error('❌ Error generating client glossary data:', error.message);
