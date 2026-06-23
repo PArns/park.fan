@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useGeolocation } from '@/lib/contexts/geolocation-context';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import type { NearbyResponse, NearbyParksData } from '@/types/nearby';
 import { IN_PARK_FALLBACK_DISTANCE_M } from '@/types/nearby';
 
@@ -108,6 +109,11 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   const limit = opts.limit ?? 6;
 
   const { position, loading: geoLoading, initialCheckDone } = useGeolocation();
+  // Hold the (GeoIP/nearby) network request until the page has loaded + gone idle, so it never
+  // competes with first paint / LCP for bandwidth. Cached results still render instantly via
+  // `placeholderData`, so for returning visitors there's no perceived delay; new visitors see
+  // the nearby skeleton resolve a moment later.
+  const afterLoad = useAfterLoad();
 
   // Dev-only: `?sim=in_park` (and friends) simulates standing in a park so the in-park UI can be
   // previewed without real GPS. Forwarded to /api/nearby, which only honors it outside production.
@@ -121,8 +127,9 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
   // resolves we run with coords; if it never starts (permission not granted) or fails
   // (timeout/unavailable), `!geoLoading` lets us run with the GeoIP fallback. Cached
   // results still show instantly via `placeholderData`, so waiting costs no perceived UX.
-  // A simulation overrides the location server-side, so it can run even before/without GPS.
-  const canRun = !!simMode || hasCoords || (initialCheckDone && !geoLoading);
+  // A simulation overrides the location server-side, so it can run even before/without GPS
+  // (and bypasses the after-load gate so previews are immediate).
+  const canRun = !!simMode || ((hasCoords || (initialCheckDone && !geoLoading)) && afterLoad);
 
   return useQuery<NearbyResponse>({
     queryKey: ['nearby-parks', position?.lat, position?.lng, radiusInMeters, limit, simMode],
