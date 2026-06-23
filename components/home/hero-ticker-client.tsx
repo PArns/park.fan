@@ -4,31 +4,49 @@ import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import type { TickerItem } from '@/lib/api/types';
 
-// Desktop-only lazy chunk — never fetched on mobile because the gate below renders null there.
+// Client-only lazy chunk — only fetched once the gate below decides to mount.
 const LiveWaitTicker = dynamic(() => import('./live-wait-ticker').then((m) => m.LiveWaitTicker), {
   ssr: false,
 });
 
 /**
- * Desktop-only gate for the hero wait-times ticker.
+ * Deferred, desktop-only gate for the hero wait-times ticker.
  *
- * The ticker was previously `hidden md:block` — visually hidden on mobile but still hydrated,
- * pulling its chunk + a React Query poll for something the user never sees. Here it mounts only
- * once a `min-width: 768px` media query confirms desktop, so on mobile it is never added to the
- * tree (no chunk, no polling, nothing on the critical path). This stays a single tree: the gate
- * always renders and the ticker is a conditional child — there is no separate mobile subtree.
+ * The ticker is purely decorative live data, so it must never compete with the initial render /
+ * LCP — on desktop either. It is mounted only when:
+ *   1. the viewport is desktop (`min-width: 768px`) — mobile never mounts it at all, and
+ *   2. the page has finished loading and the main thread goes idle,
+ * so its chunk + React Query poll start strictly after the page is interactive. Single tree:
+ * this component always renders and the ticker is a conditional child — no separate mobile subtree.
  */
 export function HeroTickerClient({ items }: { items: TickerItem[] }) {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
+    // Desktop only — decide once on mount; mobile never loads the ticker.
+    if (!window.matchMedia('(min-width: 768px)').matches) return;
+
+    let cancelled = false;
+    let idle: number | undefined;
+    const schedule = () => {
+      const ric = window.requestIdleCallback;
+      idle = ric
+        ? ric(() => !cancelled && setMounted(true), { timeout: 2000 })
+        : window.setTimeout(() => !cancelled && setMounted(true), 300);
+    };
+
+    // Wait for the load event (or run now if the page is already loaded), then idle.
+    if (document.readyState === 'complete') schedule();
+    else window.addEventListener('load', schedule, { once: true });
+
+    return () => {
+      cancelled = true;
+      window.removeEventListener('load', schedule);
+      if (idle != null) (window.cancelIdleCallback ?? window.clearTimeout)(idle);
+    };
   }, []);
 
-  if (!isDesktop) return null;
+  if (!mounted) return null;
   return (
     <div className="absolute right-0 bottom-0 left-0">
       <LiveWaitTicker initialItems={items} />

@@ -7,8 +7,9 @@ import { HeroTickerClient } from './hero-ticker-client';
  *
  * Fetches its own data so it can be streamed inside a <Suspense fallback={null}>
  * boundary — it must never block the hero / first paint. The actual ticker is mounted
- * client-side only on desktop (see HeroTickerClient), so on mobile its chunk and React
- * Query poll never load — it used to be CSS-hidden but still hydrated.
+ * client-side only on desktop AND only after the page has loaded (see HeroTickerClient),
+ * so its chunk + React Query poll stay off the critical path; on mobile it never loads at
+ * all — it used to be CSS-hidden but still hydrated.
  */
 export async function HeroTicker() {
   const tickerData = await catchNonFatal(getTickerData());
