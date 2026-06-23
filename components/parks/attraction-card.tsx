@@ -172,13 +172,15 @@ export function AttractionCard({
           boxShadow: 'var(--pk-card-shadow)',
         }}
       >
-        {/* Photo */}
+        {/* Photo — hidden below `sm` (cards collapse on phones, matching the `sm:min-h-[220px]`
+            spacer below and ParkCard), so only the gradient placeholder shows there. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {backgroundImage ? (
             <CardPhoto
               src={backgroundImage}
               alt={stripNewPrefix(attraction.name)}
               closed={!isOperatingOrUnknown}
+              hideOnMobile
             />
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
