@@ -9,6 +9,14 @@ import { cn } from '@/lib/utils';
 
 const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
 
+// All hero source images are ≤1024px wide, so the old 80vw made high-DPR phones request the
+// w=1080 srcset candidate — an *upscale* of a 1024px source: more bytes, zero extra detail. 60vw
+// pulls the w=828 candidate instead (w=640 on DPR2) — the largest non-upscaled rendition — which
+// cuts the mobile LCP image ~28% at the same quality. It's a decorative full-bleed background
+// under two gradient overlays + opacity-90 + ken-burns, so the slightly smaller rendition is
+// imperceptible. Desktop keeps 115vw. Quality is set per-width in backgroundImageLoader.
+const HERO_IMAGE_SIZES = '(max-width: 768px) 60vw, 115vw';
+
 interface RandomHeroImageProps {
   imageSrc?: string;
   noAnimation?: boolean;
@@ -41,7 +49,7 @@ function InParkHeroImages({ noAnimation }: { noAnimation?: boolean }) {
             i === activeIndex ? 'opacity-90' : 'opacity-0'
           )}
           style={noAnimation ? undefined : { animation: KEN_BURNS }}
-          sizes="(max-width: 768px) 80vw, 115vw"
+          sizes={HERO_IMAGE_SIZES}
         />
       ))}
     </>
@@ -93,11 +101,7 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
           animating ? 'will-change-transform' : ''
         )}
         style={animating ? { animation: KEN_BURNS } : undefined}
-        // Decorative full-bleed background under two gradient overlays + opacity-90 + ken-burns,
-        // so a slightly smaller (upscaled) image is imperceptible. Under-declaring the mobile
-        // width pulls a smaller srcset candidate (lighter LCP on slow connections); desktop
-        // keeps the full 115vw rendition untouched.
-        sizes="(max-width: 768px) 80vw, 115vw"
+        sizes={HERO_IMAGE_SIZES}
       />
       <InParkHeroImages noAnimation={noAnimation} />
     </>
