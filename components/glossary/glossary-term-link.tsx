@@ -1,7 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -19,15 +19,21 @@ import type { Locale } from '@/i18n/config';
  * render both return `undefined` (matching markup → no hydration mismatch); the links/tooltips
  * "highlight in" right after the per-locale chunk loads. Only the mounted term-link instances
  * re-render — never the whole page.
+ *
+ * `useSyncExternalStore` re-reads the snapshot immediately after subscribing, so a term link
+ * that mounts while the import is in-flight can't miss the resolution that lands in the
+ * render→effect gap (which a manual effect+subscribe would). The effect only kicks the
+ * (deduplicated) load off after first paint.
  */
 function useGlossaryTerms(locale: Locale) {
-  const [, force] = useReducer((c: number) => c + 1, 0);
   useEffect(() => {
-    if (getLoadedGlossaryTerms(locale)) return;
     loadGlossaryTerms(locale);
-    return subscribeGlossaryTerms(force);
   }, [locale]);
-  return getLoadedGlossaryTerms(locale);
+  return useSyncExternalStore(
+    subscribeGlossaryTerms,
+    () => getLoadedGlossaryTerms(locale),
+    () => undefined
+  );
 }
 
 interface GlossaryTermLinkProps {

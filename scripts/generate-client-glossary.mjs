@@ -162,19 +162,28 @@ function loadAllGlossaryData() {
 
 /**
  * Generate a per-locale client-data file. Each file holds only one locale's flat
- * { termId: { name, shortDefinition, slug } } map (~13 KB gzip) so GlossaryTermLink
+ * { termId: { name?, shortDefinition?, slug } } map (~13 KB gzip) so GlossaryTermLink
  * can lazily load just the active locale instead of all six (~80 KB gzip).
+ *
+ * Every term is emitted (keyed by its always-present slug). name/shortDefinition are dropped
+ * only for a locale that lacks that translation — the term then still renders as a link without
+ * a tooltip, instead of silently degrading to plain text.
  */
 function generatePerLocaleFile(locale, allTerms, slugsByTerm) {
   const entries = Object.entries(allTerms)
-    .filter(([, data]) => data.name[locale] && data.shortDefinition[locale])
     .map(([termId, data]) => {
       const slug = slugsByTerm[termId]?.[locale];
       if (!slug) {
         throw new Error(`Term '${termId}' has translations but no '${locale}' slug in data.ts`);
       }
-      // JSON.stringify produces a safely-escaped double-quoted string literal.
-      return `  ${JSON.stringify(termId)}: { name: ${JSON.stringify(data.name[locale])}, shortDefinition: ${JSON.stringify(data.shortDefinition[locale])}, slug: ${JSON.stringify(slug)} },`;
+      // JSON.stringify produces a safely-escaped double-quoted string literal. name/shortDefinition
+      // are only emitted when this locale actually has them (keeps the tooltip optional).
+      const fields = [];
+      if (data.name[locale]) fields.push(`name: ${JSON.stringify(data.name[locale])}`);
+      if (data.shortDefinition[locale])
+        fields.push(`shortDefinition: ${JSON.stringify(data.shortDefinition[locale])}`);
+      fields.push(`slug: ${JSON.stringify(slug)}`);
+      return `  ${JSON.stringify(termId)}: { ${fields.join(', ')} },`;
     })
     .join('\n');
 

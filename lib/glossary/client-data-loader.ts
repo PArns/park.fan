@@ -2,8 +2,10 @@ import type { Locale } from '@/i18n/config';
 
 /** One glossary term's client-side data for a single locale. */
 export interface ClientTerm {
-  name: string;
-  shortDefinition: string;
+  /** Tooltip title. Omitted when this locale has no translation yet — the link still renders. */
+  name?: string;
+  /** Tooltip body. Omitted when this locale has no translation yet. */
+  shortDefinition?: string;
   slug: string;
 }
 
