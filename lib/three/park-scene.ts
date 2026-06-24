@@ -390,11 +390,14 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   sun.shadow.normalBias = 0.02;
   scene.add(sun);
 
-  // -- Material factories (low metalness; emissive carries the night glow) --
+  // -- Material factories. flatShading gives the faceted, toy-like "toon" look
+  // the park is going for (stylized & playful), and a constant emissive glow
+  // keeps lights/accents lively. Callers can still override flatShading.
   const emissiveMats: THREE.MeshStandardMaterial[] = [];
-  const plainMaterial: MatFactory = (params) => track.mat(new THREE.MeshStandardMaterial(params));
+  const plainMaterial: MatFactory = (params) =>
+    track.mat(new THREE.MeshStandardMaterial({ flatShading: true, ...params }));
   const litMaterial: LitFactory = (params, glow = 0.9) => {
-    const m = track.mat(new THREE.MeshStandardMaterial(params));
+    const m = track.mat(new THREE.MeshStandardMaterial({ flatShading: true, ...params }));
     m.emissive = new THREE.Color((params.color as THREE.ColorRepresentation) ?? 0xffffff);
     m.userData.glow = glow;
     m.emissiveIntensity = palette.emissive * glow;
@@ -846,31 +849,46 @@ function buildCastle({ track, plain, lit, pbr, loadImage }: BuildCtx): THREE.Gro
     group.add(arch);
   }
 
-  // Tall central tower ON TOP of the gatehouse (over the tunnel).
-  const central = makeTower(3.2, 13, C.roofBlue, C.flagRed, wallMat);
+  // Central tower over the tunnel — kept moderate so the castle reads WIDE.
+  const central = makeTower(3.1, 11, C.roofBlue, C.flagRed, wallMat);
   central.position.set(0, 10.6, 0);
   group.add(central);
 
-  // Outer flanking towers + connecting side walls.
+  // A broad spread of towers stepping down and outward (out to x≈±20), plus a
+  // back row for depth — a sprawling, imposing footprint rather than one spire.
   const flank: Array<[number, number, number, number, number, THREE.MeshStandardMaterial]> = [
-    [-10.5, 0, 11, C.roofPink, C.flagYellow, wallMat2],
-    [10.5, 0, 11, C.roofPurple, C.flagBlue, wallMat2],
-    [-13, -7, 8.5, C.roofTeal, C.flagRed, wallMat],
-    [13, -7, 8.5, C.roofPink, C.flagBlue, wallMat],
+    [-9, 1, 9, C.roofPink, C.flagYellow, wallMat2],
+    [9, 1, 9, C.roofPurple, C.flagBlue, wallMat2],
+    [-15, 0, 7.5, C.roofTeal, C.flagRed, wallMat],
+    [15, 0, 7.5, C.roofPink, C.flagBlue, wallMat],
+    [-20.5, -2, 6, C.roofPurple, C.flagYellow, wallMat2],
+    [20.5, -2, 6, C.roofTeal, C.flagBlue, wallMat2],
+    [-11, -11, 7.5, C.roofBlue, C.flagRed, wallMat],
+    [11, -11, 7.5, C.roofPink, C.flagYellow, wallMat],
   ];
   for (const [x, z, h, roof, flag, body] of flank) {
-    const tower = makeTower(h > 10 ? 2.1 : 1.6, h, roof, flag, body);
+    const tower = makeTower(h >= 9 ? 2.0 : h >= 7 ? 1.6 : 1.3, h, roof, flag, body);
     tower.position.set(x, 0, z);
     group.add(tower);
   }
-  const sideWallGeo = track.geo(new THREE.BoxGeometry(4, 5.5, 3));
-  for (const sx of [-8, 8]) {
-    const w = new THREE.Mesh(sideWallGeo, wallMat);
-    w.position.set(sx, 2.75, 0);
-    w.castShadow = true;
-    w.receiveShadow = true;
-    group.add(w);
-  }
+
+  // Broad crenellated curtain walls tie the towers into one sprawling mass.
+  const makeWall = (x: number, w: number, h: number) => {
+    const wall = new THREE.Mesh(track.geo(new THREE.BoxGeometry(w, h, 3)), wallMat);
+    wall.position.set(x, h / 2, 0);
+    wall.castShadow = true;
+    wall.receiveShadow = true;
+    group.add(wall);
+    const cap = new THREE.Mesh(track.geo(new THREE.BoxGeometry(w, 0.8, 3.4)), wallMat2);
+    cap.position.set(x, h + 0.4, 0);
+    group.add(cap);
+  };
+  makeWall(-7, 4, 5);
+  makeWall(7, 4, 5);
+  makeWall(-12.5, 4.5, 4.5);
+  makeWall(12.5, 4.5, 4.5);
+  makeWall(-18, 4, 4);
+  makeWall(18, 4, 4);
 
   // park.fan crest high on the central tower, facing the approach (+z). Unlit
   // (basic) material so it stays crisp and legible by day and night.
