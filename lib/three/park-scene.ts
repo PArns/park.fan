@@ -1076,33 +1076,109 @@ function buildCastleGate({ track, plain, lit, pbr }: BuildCtx): THREE.Group {
   group.position.set(0, 0, -13);
 
   const stoneMat = plain({ ...pbr.stone, color: C.stoneLight, roughness: 0.9, metalness: 0 });
-  // Two thick towers flanking a wide opening (clear from x≈-3.5..3.5, up to y≈9).
-  const towerGeo = track.geo(new THREE.CylinderGeometry(2, 2.3, 11, 18));
-  for (const sx of [-5.5, 5.5]) {
+  const goldMat = lit({ color: C.gold, metalness: 0.2, roughness: 0.35 }, 0.5);
+  const woodMat = plain({ ...pbr.wood, roughness: 0.8, metalness: 0 });
+
+  // Two round towers flanking the gate.
+  const towerGeo = track.geo(new THREE.CylinderGeometry(2, 2.3, 12, 18));
+  for (const sx of [-5.6, 5.6]) {
     const t = new THREE.Mesh(towerGeo, stoneMat);
-    t.position.set(sx, 5.5, 0);
+    t.position.set(sx, 6, 0);
     t.castShadow = true;
     t.receiveShadow = true;
     group.add(t);
     const roof = new THREE.Mesh(
-      track.geo(new THREE.ConeGeometry(2.5, 3.4, 18)),
+      track.geo(new THREE.ConeGeometry(2.6, 3.6, 18)),
       lit({ color: C.roofBlue, roughness: 0.55 }, 0.45)
     );
-    roof.position.set(sx, 12.6, 0);
+    roof.position.set(sx, 13.8, 0);
     roof.castShadow = true;
     group.add(roof);
   }
-  // Arched lintel spanning the towers (well above the flight height).
-  const span = new THREE.Mesh(track.geo(new THREE.BoxGeometry(9, 2.2, 2.4)), stoneMat);
-  span.position.set(0, 9.6, 0);
-  span.castShadow = true;
-  group.add(span);
-  const arch = new THREE.Mesh(
-    track.geo(new THREE.TorusGeometry(3.6, 0.5, 12, 28, Math.PI)),
-    lit({ color: C.gold, metalness: 0.2, roughness: 0.35 }, 0.5)
+
+  // A REAL arched gate: a stone wall with a rounded (Romanesque) opening cut
+  // out via an extruded Shape — so the passage is a true arch, not a boxy lintel.
+  const W = 11.4;
+  const HTOP = 12;
+  const OW = 7; // opening width
+  const OS = 4.5; // straight side height before the semicircle springs
+  const shape = new THREE.Shape();
+  shape.moveTo(-W / 2, 0);
+  shape.lineTo(W / 2, 0);
+  shape.lineTo(W / 2, HTOP);
+  shape.lineTo(-W / 2, HTOP);
+  shape.closePath();
+  const hole = new THREE.Path();
+  hole.moveTo(-OW / 2, 0);
+  hole.lineTo(-OW / 2, OS);
+  hole.absarc(0, OS, OW / 2, Math.PI, 0, true);
+  hole.lineTo(OW / 2, 0);
+  hole.closePath();
+  shape.holes.push(hole);
+  const wallGeo = track.geo(new THREE.ExtrudeGeometry(shape, { depth: 3, bevelEnabled: false }));
+  wallGeo.translate(0, 0, -1.5);
+  const wall = new THREE.Mesh(wallGeo, stoneMat);
+  wall.castShadow = true;
+  wall.receiveShadow = true;
+  group.add(wall);
+
+  // Gold arch trim hugging the opening's curve (front + back faces).
+  const archGeo = track.geo(new THREE.TorusGeometry(OW / 2, 0.3, 10, 24, Math.PI));
+  for (const sz of [1.55, -1.55]) {
+    const a = new THREE.Mesh(archGeo, goldMat);
+    a.position.set(0, OS, sz);
+    group.add(a);
+  }
+  // Crenellated parapet along the top.
+  const parapet = new THREE.Mesh(
+    track.geo(new THREE.BoxGeometry(W, 1, 3.3)),
+    plain({ ...pbr.stone, color: C.stoneBlue, roughness: 0.9 })
   );
-  arch.position.set(0, 8.4, 0);
-  group.add(arch);
+  parapet.position.set(0, HTOP + 0.5, 0);
+  group.add(parapet);
+
+  // --- Drawbridge over a moat in front of the gate ---
+  const moat = new THREE.Mesh(
+    track.geo(new THREE.CircleGeometry(9, 40)),
+    lit({ color: 0x2f7fb0, roughness: 0.15, transparent: true, opacity: 0.85 }, 0.2)
+  );
+  moat.rotation.x = -Math.PI / 2;
+  moat.position.set(0, 0.08, 7);
+  group.add(moat);
+  const bridge = new THREE.Mesh(track.geo(new THREE.BoxGeometry(6, 0.4, 9)), woodMat);
+  bridge.position.set(0, 0.4, 7);
+  bridge.castShadow = true;
+  bridge.receiveShadow = true;
+  group.add(bridge);
+  // plank lines across the bridge
+  const plankGeo = track.geo(new THREE.BoxGeometry(6.1, 0.45, 0.12));
+  for (let i = 0; i < 7; i++) {
+    const plank = new THREE.Mesh(plankGeo, plain({ color: 0x6b4a2b, roughness: 0.9 }));
+    plank.position.set(0, 0.42, 3 + i * 1.3);
+    group.add(plank);
+  }
+  // railing posts + rope, and golden drawbridge chains up to the gate
+  const postGeo = track.geo(new THREE.CylinderGeometry(0.12, 0.12, 1.1, 8));
+  const ropeMat = plain({ color: 0x6b5a3a, roughness: 0.9 });
+  const chainMat = lit({ color: C.gold, metalness: 0.4, roughness: 0.4 }, 0.3);
+  for (const sx of [-2.9, 2.9]) {
+    for (const pz of [3.4, 7, 10.6]) {
+      const post = new THREE.Mesh(postGeo, woodMat);
+      post.position.set(sx, 0.95, pz);
+      group.add(post);
+    }
+    const rope = new THREE.Mesh(track.geo(new THREE.CylinderGeometry(0.04, 0.04, 7.2, 5)), ropeMat);
+    rope.position.set(sx, 1.4, 7);
+    rope.rotation.x = Math.PI / 2;
+    group.add(rope);
+    const chain = new THREE.Mesh(
+      track.geo(new THREE.CylinderGeometry(0.06, 0.06, 12, 5)),
+      chainMat
+    );
+    chain.position.set(sx, 4.4, 6);
+    chain.rotation.x = Math.PI / 3;
+    group.add(chain);
+  }
 
   return group;
 }
