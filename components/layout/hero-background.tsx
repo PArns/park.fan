@@ -2,10 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import nextDynamic from 'next/dynamic';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
 import { cn } from '@/lib/utils';
+
+// The three.js amusement-park diorama is heavy (the whole three.js runtime), so
+// it's code-split and loaded client-only AFTER first paint. Until it's ready —
+// and as a permanent fallback when WebGL is unavailable — the gradient sky below
+// stands in. ssr:false keeps three.js out of the SSR payload and the hero's LCP.
+const HeroThreePark = nextDynamic(
+  () => import('@/components/layout/hero-three-park').then((m) => m.HeroThreePark),
+  { ssr: false, loading: () => null }
+);
 
 const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
 
@@ -108,16 +118,25 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
   );
 }
 
-interface HeroBackgroundProps {
-  imageSrc?: string;
-}
-
-export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
+/**
+ * The homepage hero background: an animated three.js amusement park (castle,
+ * Ferris wheel, carousel, roller coaster…). A CSS gradient sky paints instantly
+ * underneath — it's the pre-load placeholder and the no-WebGL fallback, and its
+ * colors match the 3D sky so the canvas fades in seamlessly. When the visitor is
+ * inside a real park, that park's photos still crossfade in on top.
+ */
+export function HeroBackground() {
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
-      <RandomHeroImage imageSrc={imageSrc} />
-      {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
-      <div className="from-background/60 via-background/10 to-muted/40 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
+      {/* Instant gradient sky (matches the three.js sky stops in park-scene.ts). */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#5fb4f0_0%,#9fd2f7_55%,#cde6ff_100%)] dark:bg-[linear-gradient(to_bottom,#0b1437_0%,#241a45_55%,#3a2a63_100%)]" />
+      {/* three.js amusement-park diorama (client-only, fades in when ready) */}
+      <HeroThreePark />
+      {/* Real park photos take over when the visitor is detected inside a park */}
+      <InParkHeroImages />
+      {/* Branded overlays for text legibility. Lighter at the top so the colorful
+          scene shows through; stronger toward the bottom-right behind content. */}
+      <div className="from-background/45 via-background/5 to-muted/40 dark:from-background/85 dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
       <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
     </div>
   );

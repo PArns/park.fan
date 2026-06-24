@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
-import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -36,10 +35,8 @@ const NearbyParksCard = nextDynamic(
 );
 import { AnnounceSection } from '@/components/home/announce-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
-import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
-import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { HeroTicker } from '@/components/home/hero-ticker';
@@ -70,9 +67,9 @@ import type { Metadata } from 'next';
 // (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
 
 // Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
-// so it stays pinned to the hero image's 5-min rotation window: `pickHeroImage()` re-runs on each
-// regeneration, so under steady traffic the hero keeps rotating ~every 5 min. Also keeps the
-// SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded on top.
+// to keep the SSR'd featured-parks seed reasonably fresh; all truly live data is still
+// client-loaded on top. The hero background is a client-only three.js scene, so it no longer
+// pins this TTL to an image-rotation window.
 export const revalidate = 300;
 
 interface HomePageProps {
@@ -106,16 +103,6 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
-// Hero image with an effective 5-minute TTL: a deterministic pick keyed to the current 5-min window
-// — stable within the window (identical for all concurrent requests, no per-request reshuffle) and
-// rotating every 5 minutes. Deterministic so it needs no cache machinery on this force-dynamic page,
-// and it stays server-rendered for LCP (passed to <HeroBackground> with priority).
-const HERO_TTL_MS = 5 * 60_000;
-function pickHeroImage(): string {
-  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
-  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
-}
-
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -126,19 +113,16 @@ export default async function HomePage({ params }: HomePageProps) {
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
 
-  const randomHeroImage = pickHeroImage();
-
   return (
     <div className="flex flex-col">
-      {/* No manual logo preload: the big logo is only a branding mark (a tiny SVG), not the LCP
-          element — that's the hero background, which next/image already preloads via `priority`.
-          The old preload also only covered the light variant, wasting a request on dark theme.
-          Letting the logo load eagerly (it's a small SVG) keeps the preload budget for the hero. */}
+      {/* No manual logo preload: the big logo is only a branding mark (a tiny SVG). The hero
+          background is now a client-only three.js scene over an instant CSS gradient sky, so
+          there's no LCP image to preload — letting the small SVG logo load eagerly is fine. */}
       <HomepageFAQStructuredData />
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-6 sm:pb-8 md:pt-28 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-12">
         <HeroRotationProvider>
-          <HeroBackground imageSrc={randomHeroImage} />
+          <HeroBackground />
           <div className="relative container mx-auto">
             <div className="flex flex-col">
               {/* Row 1: Logo left + Title/Description right */}
@@ -197,13 +181,9 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
           </div>
 
-          {/* Hero image attribution – park, city, country (+ attraction & area if known).
-              When the user is in a park, the switch captions the rotating park image instead. */}
-          {HERO_IMAGE_META[randomHeroImage] && (
-            <HeroImageInfoSwitch>
-              <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
-            </HeroImageInfoSwitch>
-          )}
+          {/* Hero image attribution – only when the visitor is inside a real park, where the 3D
+              scene is replaced by that park's rotating photos. No caption for the default 3D hero. */}
+          <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
 
           {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
           <Suspense fallback={null}>
