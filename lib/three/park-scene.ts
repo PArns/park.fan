@@ -71,27 +71,12 @@ const DAY = {
   sunIntensity: 2.1,
   ambient: 0xffffff,
   ambientIntensity: 0.12,
-  emissive: 0.0,
+  // A constant glow on emissive surfaces (lights, fountains, the marker, ride
+  // accents) so the park reads bright and lively. The scene is theme-independent
+  // — it always renders this daytime look regardless of the site's dark mode.
+  emissive: 0.45,
   water: 0x3aa6d8,
   lampIntensity: 0,
-};
-
-const NIGHT = {
-  skyTop: '#070d29',
-  skyBottom: '#34245c',
-  fog: '#1a1438',
-  fogNear: 60,
-  fogFar: 190,
-  hemiSky: 0x2a3666,
-  hemiGround: 0x1a1530,
-  hemiIntensity: 0.5,
-  sun: 0x9fb0ff,
-  sunIntensity: 0.4,
-  ambient: 0x3a4674,
-  ambientIntensity: 0.28,
-  emissive: 1.0,
-  water: 0x16324a,
-  lampIntensity: 16,
 };
 
 type Palette = typeof DAY;
@@ -169,6 +154,43 @@ function makeStripeTexture(colorA: string, colorB: string): THREE.CanvasTexture 
   return tex;
 }
 
+/**
+ * A tileable RollerCoaster-Tycoon-style paved path: a grid of slabs with grout
+ * lines and slight per-slab tonal variation + speckle. Reads as classic park
+ * pavement at any distance.
+ */
+function makePathTexture(): THREE.CanvasTexture {
+  const size = 256;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = '#766a5b'; // grout
+  ctx.fillRect(0, 0, size, size);
+  const n = 4;
+  const w = size / n;
+  const gap = 3;
+  const bases = ['#cdbfa6', '#c5b699', '#d4c7af', '#bfb091'];
+  for (let gy = 0; gy < n; gy++) {
+    for (let gx = 0; gx < n; gx++) {
+      ctx.fillStyle = bases[(gx + gy * 2) % bases.length];
+      ctx.fillRect(gx * w + gap, gy * w + gap, w - gap * 2, w - gap * 2);
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      for (let s = 0; s < 7; s++) {
+        ctx.fillRect(
+          gx * w + gap + Math.random() * (w - 2 * gap),
+          gy * w + gap + Math.random() * (w - 2 * gap),
+          2,
+          2
+        );
+      }
+    }
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  return tex;
+}
+
 /** A tileable ripple normal map for the lake, built from summed sine waves. */
 function makeWaterNormal(): THREE.CanvasTexture {
   const size = 256;
@@ -198,6 +220,27 @@ function makeWaterNormal(): THREE.CanvasTexture {
   }
   ctx.putImageData(img, 0, 0);
   const tex = new THREE.CanvasTexture(canvas);
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  return tex;
+}
+
+/** Vertical streaks for a scrolling waterfall sheet. */
+function makeWaterfallTexture(): THREE.CanvasTexture {
+  const w = 32;
+  const h = 128;
+  const canvas = document.createElement('canvas');
+  canvas.width = w;
+  canvas.height = h;
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = '#cfeefe';
+  ctx.fillRect(0, 0, w, h);
+  for (let x = 0; x < w; x++) {
+    const shade = 200 + Math.floor(Math.random() * 55);
+    ctx.fillStyle = `rgb(${shade},${shade + 5},255)`;
+    ctx.fillRect(x, 0, 1, h);
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
   tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
   return tex;
 }
@@ -254,6 +297,8 @@ interface BuildCtx {
   registerWater: (m: THREE.MeshStandardMaterial) => void;
   /** Load a single sRGB image texture (e.g. the park.fan logo). */
   loadImage: (url: string) => THREE.Texture;
+  /** Max anisotropy of the renderer (for crisp ground textures at grazing angles). */
+  maxAniso: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -262,8 +307,7 @@ interface BuildCtx {
 
 export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions): ParkSceneHandle {
   const track = new Tracker();
-  let theme = opts.theme;
-  let palette: Palette = theme === 'dark' ? NIGHT : DAY;
+  const palette: Palette = DAY; // theme-independent: always the bright daytime look
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
@@ -283,7 +327,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   renderer.toneMappingExposure = 1.0;
 
   const scene = new THREE.Scene();
-  let skyTex = track.tex(makeSkyTexture(palette.skyTop, palette.skyBottom));
+  const skyTex = track.tex(makeSkyTexture(palette.skyTop, palette.skyBottom));
   scene.background = skyTex;
   scene.fog = new THREE.Fog(palette.fog, palette.fogNear, palette.fogFar);
 
@@ -405,6 +449,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     lampLights,
     registerWater: (m) => waterMats.push(m),
     loadImage,
+    maxAniso,
   };
 
   const animated: Animated[] = [];
@@ -420,7 +465,13 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   castle.position.set(0, 0, -30);
   root.add(castle);
   root.add(buildCastleGate(ctx)); // freestanding flythrough arch at z≈-13
-  root.add(buildCastleGarden(ctx)); // hidden courtyard garden revealed behind the castle
+  root.add(buildCastleGarden(ctx)); // hidden courtyard garden right behind the castle
+
+  // The bombastic reveal further back: a great lake with a dancing fountain
+  // show, a waterfall mountain, and a giant glowing park.fan marker.
+  const finale = buildGrandFinale(ctx);
+  root.add(finale.group);
+  animated.push(finale);
 
   const carousel = buildCarousel(ctx);
   carousel.group.position.set(-11, 0, -19);
@@ -572,37 +623,13 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   scene.add(stars);
 
   // -- Theme application --------------------------------------------------
-  function applyTheme(next: SceneTheme) {
-    theme = next;
-    palette = theme === 'dark' ? NIGHT : DAY;
-
-    const newSky = track.tex(makeSkyTexture(palette.skyTop, palette.skyBottom));
-    scene.background = newSky;
-    skyTex.dispose();
-    track.textures.delete(skyTex);
-    skyTex = newSky;
-
-    const fog = scene.fog as THREE.Fog;
-    fog.color.set(palette.fog);
-    fog.near = palette.fogNear;
-    fog.far = palette.fogFar;
-    hemi.color.set(palette.hemiSky);
-    hemi.groundColor.set(palette.hemiGround);
-    hemi.intensity = palette.hemiIntensity;
-    ambient.color.set(palette.ambient);
-    ambient.intensity = palette.ambientIntensity;
-    sun.color.set(palette.sun);
-    sun.intensity = palette.sunIntensity;
-
-    for (const m of emissiveMats) m.emissiveIntensity = palette.emissive * (m.userData.glow ?? 0.9);
-    for (const l of lampLights) l.intensity = palette.lampIntensity;
-    for (const w of waterMats) w.color.set(palette.water);
-
-    stars.visible = theme === 'dark';
-    (stars.material as THREE.PointsMaterial).opacity = theme === 'dark' ? 0.9 : 0;
-    fireworks.group.visible = true; // bursts are vivid at night, subtle by day
-  }
-  applyTheme(theme);
+  // One-time look setup (theme-independent — always the bright daytime look).
+  // Sky / fog / lights are already configured from DAY at init; here we apply the
+  // constant glow to the emissive surfaces built above and tint the lake water.
+  for (const m of emissiveMats) m.emissiveIntensity = palette.emissive * (m.userData.glow ?? 0.9);
+  for (const w of waterMats) w.color.set(palette.water);
+  for (const l of lampLights) l.intensity = palette.lampIntensity;
+  stars.visible = false;
 
   // -- Render loop --------------------------------------------------------
   const clock = new THREE.Clock();
@@ -657,10 +684,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
       renderer.setSize(width, height, false);
       if (opts.reducedMotion) renderFrame(clock.elapsedTime, 0);
     },
-    setTheme(next) {
-      if (next === theme) return;
-      applyTheme(next);
-      if (opts.reducedMotion) renderFrame(clock.elapsedTime, 0);
+    setTheme() {
+      // The park is intentionally theme-independent (always the bright daytime
+      // look), so nothing changes when the site toggles light/dark.
     },
     dispose() {
       stop();
@@ -679,7 +705,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
 // Ground + themed zones
 // ---------------------------------------------------------------------------
 
-function buildGround({ track, plain, pbr }: BuildCtx): THREE.Group {
+function buildGround({ track, plain, pbr, maxAniso }: BuildCtx): THREE.Group {
   const group = new THREE.Group();
 
   const grassMat = plain({ ...pbr.grass, roughness: 1, metalness: 0 });
@@ -705,17 +731,25 @@ function buildGround({ track, plain, pbr }: BuildCtx): THREE.Group {
   zoneDisc(18, 16, 13, ZONE.frontier); // Frontierland
   zoneDisc(0, 16, 12, ZONE.mainstreet); // Main Street
 
-  // Paved plaza hub + radiating paths.
-  const pavingMat = plain({ ...pbr.paving, roughness: 0.95, metalness: 0 });
-  const plaza = new THREE.Mesh(track.geo(new THREE.CircleGeometry(11, 56)), pavingMat);
+  // Paved plaza hub + radiating paths — RCT-style slab pavement (procedural).
+  const plazaTex = track.tex(makePathTexture());
+  plazaTex.anisotropy = maxAniso;
+  plazaTex.repeat.set(6, 6);
+  const plazaMat = plain({ map: plazaTex, roughness: 0.95, metalness: 0 });
+  const plaza = new THREE.Mesh(track.geo(new THREE.CircleGeometry(11, 56)), plazaMat);
   plaza.rotation.x = -Math.PI / 2;
   plaza.position.y = 0.03;
   plaza.receiveShadow = true;
   group.add(plaza);
 
+  // Separate texture instance so the long radiating paths keep square slabs.
+  const pathTex = track.tex(makePathTexture());
+  pathTex.anisotropy = maxAniso;
+  pathTex.repeat.set(1.4, 20);
+  const pathMat = plain({ map: pathTex, roughness: 0.95, metalness: 0 });
   const pathGeo = track.geo(new THREE.PlaneGeometry(5.5, 80));
   for (let i = 0; i < 4; i++) {
-    const path = new THREE.Mesh(pathGeo, pavingMat);
+    const path = new THREE.Mesh(pathGeo, pathMat);
     path.rotation.x = -Math.PI / 2;
     path.rotation.z = (i * Math.PI) / 4;
     path.position.y = 0.025;
@@ -2056,6 +2090,144 @@ function buildFireworks({ track }: BuildCtx, origin: THREE.Vector3): Animated {
       geo.setDrawRange(0, n);
       (geo.attributes.position as THREE.BufferAttribute).needsUpdate = true;
       (geo.attributes.color as THREE.BufferAttribute).needsUpdate = true;
+    },
+  };
+}
+
+/**
+ * The grand finale behind the castle: a great reflecting lake with a dancing
+ * fountain show, a snow-capped waterfall mountain, and a giant glowing park.fan
+ * location marker hovering above. Everything is tall so it reads ABOVE the
+ * centered glass content panel; the camera banks left before reaching the
+ * central jet/marker, so the x≈0 axis stays clear for the flythrough.
+ */
+function buildGrandFinale({ track, plain, lit, loadImage }: BuildCtx): Animated {
+  const group = new THREE.Group();
+  group.position.set(0, 0, -64);
+
+  // Great reflecting lake + stone rim.
+  const lakeMat = plain({
+    color: 0x2f8fd0,
+    roughness: 0.2,
+    metalness: 0,
+    transparent: true,
+    opacity: 0.9,
+  });
+  lakeMat.emissive = new THREE.Color(0x1c4a6b);
+  lakeMat.emissiveIntensity = 0.25;
+  const lake = new THREE.Mesh(track.geo(new THREE.CircleGeometry(17, 56)), lakeMat);
+  lake.rotation.x = -Math.PI / 2;
+  lake.position.y = 0.1;
+  group.add(lake);
+  const rim = new THREE.Mesh(
+    track.geo(new THREE.TorusGeometry(17, 0.6, 10, 64)),
+    plain({ color: 0xd8cbb0, roughness: 0.9 })
+  );
+  rim.rotation.x = -Math.PI / 2;
+  rim.position.y = 0.2;
+  group.add(rim);
+
+  // Fountain show: an outer + inner ring of jets and a tall central jet. Each
+  // jet is a cylinder whose height pulses on a phase offset (a "wave").
+  const jetMat = lit({ color: 0xbfe8ff, roughness: 0.2, transparent: true, opacity: 0.8 }, 0.85);
+  const jetGeo = track.geo(new THREE.CylinderGeometry(0.18, 0.28, 1, 8));
+  interface Jet {
+    mesh: THREE.Mesh;
+    phase: number;
+    max: number;
+  }
+  const jets: Jet[] = [];
+  const addJet = (x: number, z: number, phase: number, max: number) => {
+    const jet = new THREE.Mesh(jetGeo, jetMat);
+    jet.position.set(x, 0, z);
+    group.add(jet);
+    jets.push({ mesh: jet, phase, max });
+  };
+  for (let i = 0; i < 16; i++) {
+    const a = (i / 16) * Math.PI * 2;
+    addJet(Math.cos(a) * 10.5, Math.sin(a) * 10.5, i * 0.5, 7);
+  }
+  for (let i = 0; i < 10; i++) {
+    const a = (i / 10) * Math.PI * 2 + 0.3;
+    addJet(Math.cos(a) * 5.5, Math.sin(a) * 5.5, i * 0.7 + 1, 5);
+  }
+  const central = new THREE.Mesh(track.geo(new THREE.CylinderGeometry(0.4, 0.6, 1, 12)), jetMat);
+  group.add(central);
+  jets.push({ mesh: central, phase: 0, max: 16 });
+
+  // Snow-capped waterfall mountain behind the lake.
+  const mtn = new THREE.Mesh(
+    track.geo(new THREE.ConeGeometry(20, 44, 7)),
+    plain({ color: 0x8a9bb0, roughness: 1 })
+  );
+  mtn.position.set(0, 22, -22);
+  mtn.castShadow = true;
+  group.add(mtn);
+  const cap = new THREE.Mesh(
+    track.geo(new THREE.ConeGeometry(8, 14, 7)),
+    plain({ color: 0xf2f6ff, roughness: 0.9 })
+  );
+  cap.position.set(0, 37, -22);
+  group.add(cap);
+  const fallTex = track.tex(makeWaterfallTexture());
+  fallTex.repeat.set(1, 4);
+  const fallMat = lit(
+    {
+      map: fallTex,
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.85,
+      roughness: 0.2,
+      side: THREE.DoubleSide,
+    },
+    0.5
+  );
+  const fall = new THREE.Mesh(track.geo(new THREE.PlaneGeometry(3.4, 30)), fallMat);
+  fall.position.set(0, 15, -12.4);
+  group.add(fall);
+  const splash = new THREE.Mesh(
+    track.geo(new THREE.CircleGeometry(3, 24)),
+    lit({ color: 0xbfe8ff, roughness: 0.2, transparent: true, opacity: 0.7 }, 0.4)
+  );
+  splash.rotation.x = -Math.PI / 2;
+  splash.position.set(0, 0.18, -12);
+  group.add(splash);
+
+  // Giant glowing park.fan location marker hovering over the lake, with a halo.
+  const markerTex = loadImage('/logo-dark.png'); // 569×683 pin marker
+  const markerH = 9;
+  const marker = new THREE.Mesh(
+    track.geo(new THREE.PlaneGeometry((markerH * 569) / 683, markerH)),
+    track.mat(
+      new THREE.MeshBasicMaterial({
+        map: markerTex,
+        transparent: true,
+        toneMapped: false,
+        side: THREE.DoubleSide,
+      })
+    )
+  );
+  marker.position.set(0, 17, 0);
+  group.add(marker);
+  const halo = new THREE.Mesh(
+    track.geo(new THREE.CircleGeometry(6, 32)),
+    lit({ color: 0x5db8ff, transparent: true, opacity: 0.18 }, 1.2)
+  );
+  halo.position.set(0, 17.5, -0.3);
+  group.add(halo);
+
+  return {
+    group,
+    update: (elapsed) => {
+      for (const j of jets) {
+        const h = (Math.sin(elapsed * 1.6 + j.phase) * 0.5 + 0.5) * j.max + 0.5;
+        j.mesh.scale.y = h;
+        j.mesh.position.y = h / 2;
+      }
+      fallTex.offset.y = -elapsed * 0.6;
+      marker.position.y = 17 + Math.sin(elapsed * 0.8) * 0.6;
+      marker.rotation.y = Math.sin(elapsed * 0.3) * 0.3;
+      halo.position.y = marker.position.y + 0.5;
     },
   };
 }
