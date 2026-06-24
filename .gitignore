@@ -58,6 +58,7 @@ lib/blog/manifest.ts
 
 !content/home/*.md
 !content/blog/**/*.md
+!public/textures/**/CREDITS.txt
 .env*.local
 
 # Docs and project markdown (keep in git)
