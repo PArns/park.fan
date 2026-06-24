@@ -2322,14 +2322,14 @@ function buildGrandFinale({ track, plain, lit, loadImage }: BuildCtx): Animated 
       })
     )
   );
-  const markerY = 54;
-  marker.position.set(0, markerY, -22); // above the peak (mountain is at z=-22 local)
+  const markerY = 24;
+  marker.position.set(0, markerY, -4); // hovering in front of the mountain, in view
   group.add(marker);
   const halo = new THREE.Mesh(
     track.geo(new THREE.CircleGeometry(8, 32)),
     lit({ color: 0x5db8ff, transparent: true, opacity: 0.2 }, 1.2)
   );
-  halo.position.set(0, markerY + 0.5, -22.3);
+  halo.position.set(0, markerY + 0.5, -4.3);
   group.add(halo);
 
   return {

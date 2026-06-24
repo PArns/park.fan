@@ -128,16 +128,17 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
 export function HeroBackground() {
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
-      {/* Instant gradient sky (matches the three.js sky stops in park-scene.ts). */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#5fb4f0_0%,#9fd2f7_55%,#cde6ff_100%)] dark:bg-[linear-gradient(to_bottom,#0b1437_0%,#241a45_55%,#3a2a63_100%)]" />
+      {/* Instant gradient sky — bright daytime, matching the 3D sky. The scene is
+          theme-independent (always daytime), so there is NO dark variant: the
+          hero must not go dark when the site is in dark mode. */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#5fb4f0_0%,#9fd2f7_55%,#cde6ff_100%)]" />
       {/* three.js amusement-park diorama (client-only, fades in when ready) */}
       <HeroThreePark />
       {/* Real park photos take over when the visitor is detected inside a park */}
       <InParkHeroImages />
-      {/* Branded overlays for text legibility. Lighter at the top so the colorful
-          scene shows through; stronger toward the bottom-right behind content. */}
-      <div className="from-background/45 via-background/5 to-muted/40 dark:from-background/85 dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
-      <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+      {/* Only a very light tint for depth/legibility — kept subtle and
+          theme-independent so the bright, colorful scene always shows through. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15" />
     </div>
   );
 }
