@@ -2,10 +2,20 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import nextDynamic from 'next/dynamic';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
 import { cn } from '@/lib/utils';
+
+// The three.js amusement-park scene pulls in the whole three.js runtime, so it's
+// code-split and loaded client-only AFTER first paint. Until it's ready — and as
+// a permanent fallback when WebGL is unavailable — the CSS gradient sky below
+// stands in. ssr:false keeps three.js out of the SSR payload and the hero's LCP.
+const HeroThreePark = nextDynamic(
+  () => import('@/components/layout/hero-three-park').then((m) => m.HeroThreePark),
+  { ssr: false, loading: () => null }
+);
 
 const KEN_BURNS = 'ken-burns 22s ease-in-out infinite alternate';
 
@@ -108,17 +118,28 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
   );
 }
 
-interface HeroBackgroundProps {
-  imageSrc?: string;
-}
-
-export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
+/**
+ * The homepage hero background: an animated three.js RollerCoaster-Tycoon-style
+ * park (entrance arch, coaster, Ferris wheel, carousel, stalls, peeps…) that the
+ * camera flies through. A CSS gradient sky paints instantly underneath — the
+ * pre-load placeholder and the no-WebGL fallback — with a bright daytime variant
+ * and a night variant for dark mode, matching the scene's own day/night look so
+ * the canvas fades in seamlessly. When the visitor is inside a real park, that
+ * park's photos still crossfade in on top.
+ */
+export function HeroBackground() {
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
-      <RandomHeroImage imageSrc={imageSrc} />
-      {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
-      <div className="from-background/60 via-background/10 to-muted/40 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
-      <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+      {/* Instant gradient sky — bright by day, deep blue at night (dark mode),
+          matching the 3D sky so the canvas fades in seamlessly. */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#3b8fe3_0%,#7fc2f3_55%,#cdeeff_100%)] dark:bg-[linear-gradient(to_bottom,#070b1e_0%,#142150_55%,#33508c_100%)]" />
+      {/* three.js park scene (client-only, fades in when ready) */}
+      <HeroThreePark />
+      {/* Real park photos take over when the visitor is detected inside a park */}
+      <InParkHeroImages />
+      {/* Only a very light tint for depth/legibility — kept subtle and
+          theme-independent so the bright, colorful scene always shows through. */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15" />
     </div>
   );
 }
