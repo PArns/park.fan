@@ -475,6 +475,60 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   root.add(finale.group);
   animated.push(finale);
 
+  // A whole second park sprawls BEHIND the castle, around the lake: a second
+  // Ferris wheel, a drop-tower "Startflyer", an observation tower, a second
+  // coaster (a different, bluer style), and rows of food/shop stalls.
+  const backFerris = buildFerrisWheel(ctx);
+  backFerris.group.position.set(-34, 0, -60);
+  backFerris.group.rotation.y = 0.5;
+  root.add(backFerris.group);
+  animated.push(backFerris);
+
+  const dropTower = buildDropTower(ctx);
+  dropTower.group.position.set(34, 0, -58);
+  root.add(dropTower.group);
+  animated.push(dropTower);
+
+  const obsTower = buildObservationTower(ctx);
+  obsTower.group.position.set(-40, 0, -80);
+  root.add(obsTower.group);
+  animated.push(obsTower);
+
+  // Second coaster — a compact, swooping steel circuit in a different (teal) style.
+  const coaster2 = buildCoaster(ctx, {
+    color: 0x33d6c0,
+    speed: 0.07,
+    pts: [
+      new THREE.Vector3(20, 1, -52),
+      new THREE.Vector3(34, 2, -62),
+      new THREE.Vector3(40, 10, -74),
+      new THREE.Vector3(30, 15, -84),
+      new THREE.Vector3(14, 11, -82),
+      new THREE.Vector3(10, 5, -70),
+      new THREE.Vector3(18, 3, -60),
+    ],
+  });
+  root.add(coaster2.group);
+  animated.push(coaster2);
+
+  // Rows of stalls around the back park (RCT-style abundance of stands).
+  const backStalls: Array<[number, number, number, number]> = [
+    [-14, -50, 0.2, 0xff5d6c],
+    [-6, -50, -0.2, 0x5db8ff],
+    [6, -50, 0.2, 0x8be04e],
+    [14, -50, -0.2, 0xffd166],
+    [-20, -54, 0.6, 0xff9f43],
+    [20, -54, -0.6, 0xb57bff],
+    [-24, -70, 0.8, 0x5db8ff],
+    [24, -70, -0.8, 0xff5d6c],
+  ];
+  for (const [x, z, r, color] of backStalls) {
+    const stall = buildStall(ctx, color);
+    stall.position.set(x, 0, z);
+    stall.rotation.y = r;
+    root.add(stall);
+  }
+
   const carousel = buildCarousel(ctx);
   carousel.group.position.set(-11, 0, -19);
   root.add(carousel.group);
@@ -545,11 +599,20 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
 
   // Main Street (front): entrance arch + stalls + tents
   root.add(buildEntranceGate(ctx));
+  // Plenty of stalls lining the main avenue + plaza edges (RCT-style abundance).
   const stallSpots: Array<[number, number, number, number]> = [
     [-6, 14, 0.3, 0xff5d6c],
     [6, 14, -0.3, 0x5db8ff],
     [-12, 20, 0.5, 0x8be04e],
     [12, 20, -0.5, 0xffd166],
+    [-9, 26, 0.3, 0xff9f43],
+    [9, 26, -0.3, 0xb57bff],
+    [-16, 30, 0.6, 0x5db8ff],
+    [16, 30, -0.6, 0xff5d6c],
+    [-14, 9, 1.4, 0xffd166],
+    [14, 9, -1.4, 0x8be04e],
+    [-18, 15, 0.9, 0xb57bff],
+    [18, 15, -0.9, 0xff9f43],
   ];
   for (const [x, z, r, color] of stallSpots) {
     const stall = buildStall(ctx, color);
@@ -1493,9 +1556,12 @@ function buildSwingRide({ track, plain, lit }: BuildCtx): Animated {
   };
 }
 
-function buildCoaster({ track, plain, lit }: BuildCtx): Animated {
+function buildCoaster(
+  { track, plain, lit }: BuildCtx,
+  opts?: { pts?: THREE.Vector3[]; color?: number; speed?: number }
+): Animated {
   const group = new THREE.Group();
-  const pts = [
+  const pts = opts?.pts ?? [
     new THREE.Vector3(-34, 1, 24),
     new THREE.Vector3(-40, 1.5, 2),
     new THREE.Vector3(-32, 9, -16),
@@ -1507,6 +1573,8 @@ function buildCoaster({ track, plain, lit }: BuildCtx): Animated {
     new THREE.Vector3(2, 1.2, 32),
     new THREE.Vector3(-18, 2, 30),
   ];
+  const railColor = opts?.color ?? C.coaster;
+  const trainSpeed = opts?.speed ?? 0.05;
   const curve = new THREE.CatmullRomCurve3(pts, true, 'catmullrom', 0.5);
   const SEG = 360;
   const frames = curve.computeFrenetFrames(SEG, true);
@@ -1521,7 +1589,7 @@ function buildCoaster({ track, plain, lit }: BuildCtx): Animated {
     leftPts.push(p.clone().add(side));
     rightPts.push(p.clone().sub(side));
   }
-  const railMat = lit({ color: C.coaster, metalness: 0.2, roughness: 0.4 }, 0.7);
+  const railMat = lit({ color: railColor, metalness: 0.2, roughness: 0.4 }, 0.7);
   const makeRail = (points: THREE.Vector3[]) => {
     const c = new THREE.CatmullRomCurve3(points, true);
     const mesh = new THREE.Mesh(track.geo(new THREE.TubeGeometry(c, SEG, 0.16, 8, true)), railMat);
@@ -1587,7 +1655,7 @@ function buildCoaster({ track, plain, lit }: BuildCtx): Animated {
   return {
     group,
     update: (elapsed) => {
-      const head = (elapsed * 0.05) % 1;
+      const head = (elapsed * trainSpeed) % 1;
       for (let i = 0; i < cars.length; i++) place(cars[i], head - i * 0.018);
     },
   };
@@ -1798,12 +1866,13 @@ function buildTree({ track, plain }: BuildCtx): THREE.Group {
 function buildVisitors({ track, plain, lit }: BuildCtx): Animated {
   const group = new THREE.Group();
   const skinMat = plain({ color: 0xffd9b8, roughness: 0.75 });
-  const headGeo = track.geo(new THREE.SphereGeometry(0.18, 12, 10));
+  // Chunky RCT "peep" proportions: big round head, short stout body, stubby limbs.
+  const headGeo = track.geo(new THREE.SphereGeometry(0.27, 14, 12));
   const hairGeo = track.geo(
-    new THREE.SphereGeometry(0.19, 12, 8, 0, Math.PI * 2, 0, Math.PI * 0.55)
+    new THREE.SphereGeometry(0.28, 14, 10, 0, Math.PI * 2, 0, Math.PI * 0.52)
   );
-  const torsoGeo = track.geo(new THREE.CapsuleGeometry(0.17, 0.34, 4, 8));
-  const limbGeo = track.geo(new THREE.CapsuleGeometry(0.06, 0.32, 3, 6));
+  const torsoGeo = track.geo(new THREE.CapsuleGeometry(0.24, 0.16, 4, 10));
+  const limbGeo = track.geo(new THREE.CapsuleGeometry(0.085, 0.18, 3, 6));
   const hairColors = [0x3a2a1a, 0x6b4a2b, 0x141414, 0xc9a24b, 0x8a8a8a, 0xb5532a];
   const pantsColors = [0x2a3b6b, 0x44464d, 0x6b4a2b, 0x2a5b3b, 0x5b2a4a];
 
@@ -1829,12 +1898,12 @@ function buildVisitors({ track, plain, lit }: BuildCtx): Animated {
     const pantsMat = plain({ color: pantsColors[i % pantsColors.length], roughness: 0.8 });
 
     const torso = new THREE.Mesh(torsoGeo, shirtMat);
-    torso.position.y = 0.8;
+    torso.position.y = 0.7;
     torso.castShadow = true;
     person.add(torso);
 
     const head = new THREE.Mesh(headGeo, skinMat);
-    head.position.y = 1.18;
+    head.position.y = 1.16;
     head.castShadow = true;
     person.add(head);
     const hair = new THREE.Mesh(
@@ -1849,17 +1918,19 @@ function buildVisitors({ track, plain, lit }: BuildCtx): Animated {
       const pivot = new THREE.Group();
       pivot.position.set(x, y, 0);
       const limb = new THREE.Mesh(limbGeo, mat);
-      limb.position.y = -0.2;
+      limb.position.y = -0.14;
       limb.castShadow = true;
       pivot.add(limb);
       person.add(pivot);
       return pivot;
     };
-    const legL = makeLimb(pantsMat, -0.09, 0.62);
-    const legR = makeLimb(pantsMat, 0.09, 0.62);
-    const armL = makeLimb(shirtMat, -0.24, 1.04);
-    const armR = makeLimb(shirtMat, 0.24, 1.04);
+    const legL = makeLimb(pantsMat, -0.11, 0.44);
+    const legR = makeLimb(pantsMat, 0.11, 0.44);
+    const armL = makeLimb(shirtMat, -0.27, 0.86);
+    const armR = makeLimb(shirtMat, 0.27, 0.86);
 
+    // Peeps are small; scale up a touch so they read from the flying camera.
+    person.scale.setScalar(1.25);
     group.add(person);
     people.push({
       g: person,
@@ -2425,6 +2496,100 @@ function buildBunting({ track, lit }: BuildCtx): THREE.Group {
     }
   }
   return group;
+}
+
+/** A drop-tower "Startflyer": a ring of seats hauled up a mast, then dropped. */
+function buildDropTower({ track, plain, lit }: BuildCtx): Animated {
+  const group = new THREE.Group();
+  const H = 27;
+  const mast = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(0.55, 0.8, H, 8)),
+    plain({ color: 0xff4d8d, metalness: 0.3, roughness: 0.5 })
+  );
+  mast.position.y = H / 2;
+  mast.castShadow = true;
+  group.add(mast);
+  const top = new THREE.Mesh(
+    track.geo(new THREE.ConeGeometry(1.4, 2.4, 8)),
+    lit({ color: C.gold, roughness: 0.4 }, 0.5)
+  );
+  top.position.y = H + 1.2;
+  group.add(top);
+
+  const gondola = new THREE.Group();
+  const hub = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(1, 1, 0.6, 12)),
+    plain({ color: 0xdfe9ff, metalness: 0.3, roughness: 0.5 })
+  );
+  gondola.add(hub);
+  const seatGeo = track.geo(new THREE.BoxGeometry(0.7, 0.7, 0.7));
+  for (let i = 0; i < 8; i++) {
+    const a = (i / 8) * Math.PI * 2;
+    const seat = new THREE.Mesh(
+      seatGeo,
+      lit({ color: RIDE_COLORS[i % RIDE_COLORS.length], roughness: 0.5 }, 0.5)
+    );
+    seat.position.set(Math.cos(a) * 1.9, -0.2, Math.sin(a) * 1.9);
+    seat.castShadow = true;
+    gondola.add(seat);
+  }
+  group.add(gondola);
+
+  return {
+    group,
+    update: (e) => {
+      const t = (e * 0.4) % 1; // ride cycle: slow climb, brief hang, fast drop
+      let h;
+      if (t < 0.62) h = (t / 0.62) * (H - 4);
+      else if (t < 0.7) h = H - 4;
+      else h = (H - 4) * Math.max(0, 1 - (t - 0.7) / 0.1);
+      gondola.position.y = 1.6 + h;
+    },
+  };
+}
+
+/** An observation tower: a rotating ring gondola slowly rising on a tall mast. */
+function buildObservationTower({ track, plain, lit }: BuildCtx): Animated {
+  const group = new THREE.Group();
+  const H = 34;
+  const mast = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(0.9, 1.4, H, 10)),
+    plain({ color: 0xdfe9ff, metalness: 0.3, roughness: 0.5 })
+  );
+  mast.position.y = H / 2;
+  mast.castShadow = true;
+  group.add(mast);
+  const spire = new THREE.Mesh(
+    track.geo(new THREE.ConeGeometry(1.6, 3.5, 10)),
+    lit({ color: C.gold, roughness: 0.4 }, 0.5)
+  );
+  spire.position.y = H + 1.7;
+  group.add(spire);
+
+  const gondola = new THREE.Group();
+  const ring = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(3, 3, 1.8, 22, 1, true)),
+    lit(
+      { color: 0x5db8ff, roughness: 0.4, transparent: true, opacity: 0.7, side: THREE.DoubleSide },
+      0.45
+    )
+  );
+  gondola.add(ring);
+  const roof = new THREE.Mesh(
+    track.geo(new THREE.ConeGeometry(3.5, 1.4, 22)),
+    lit({ color: C.flagRed, roughness: 0.5 }, 0.45)
+  );
+  roof.position.y = 1.6;
+  gondola.add(roof);
+  group.add(gondola);
+
+  return {
+    group,
+    update: (e) => {
+      gondola.rotation.y = e * 0.35;
+      gondola.position.y = 6 + (Math.sin(e * 0.18) * 0.5 + 0.5) * (H - 13);
+    },
+  };
 }
 
 function buildStars(track: Tracker): THREE.Points {
