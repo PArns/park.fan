@@ -166,7 +166,7 @@ export function AttractionCard({
     >
       <article
         className={cn(
-          'relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] border border-black/[0.12] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 dark:border-white/10'
+          'relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1'
         )}
         style={{
           boxShadow: 'var(--pk-card-shadow)',
