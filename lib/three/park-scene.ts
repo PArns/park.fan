@@ -659,8 +659,8 @@ function buildFountain(ctx: BuildCtx): Ride {
   // water jets (thin light-blue cones that pulse)
   const jets: THREE.Mesh[] = [];
   const jetMat = ctx.lit(
-    { color: 0xafe7fb, roughness: 0.2, transparent: true, opacity: 0.85 },
-    0.4
+    { color: 0xafe7fb, roughness: 0.2, transparent: true, opacity: 0.8 },
+    0.18
   );
   for (let i = 0; i < 6; i++) {
     const a = (i / 6) * Math.PI * 2;
@@ -895,7 +895,6 @@ function makePeep(ctx: BuildCtx): THREE.Group {
     ctx.mat({ color: shirt, roughness: 1 })
   );
   torso.position.y = 0.5;
-  torso.castShadow = true;
   g.add(torso);
   // big round head
   const head = new THREE.Mesh(
@@ -903,7 +902,6 @@ function makePeep(ctx: BuildCtx): THREE.Group {
     ctx.mat({ color: skin, roughness: 1 })
   );
   head.position.y = 0.95;
-  head.castShadow = true;
   g.add(head);
   // simple hair cap
   const hair = new THREE.Mesh(
@@ -1139,30 +1137,47 @@ function buildEntrance(ctx: BuildCtx, logoWord: THREE.Texture): THREE.Group {
 // Builders: bunting (colourful pennant strings)
 // ---------------------------------------------------------------------------
 
-function buildBunting(ctx: BuildCtx, a: THREE.Vector3, b: THREE.Vector3, sag = 1.2): THREE.Group {
+/**
+ * A festive pennant string, built as just two instanced meshes (flags + bulbs)
+ * for performance. One `color` per string (strings cycle colours), so the
+ * avenue reads as colourful glowing fairy-lights at night without 168 meshes.
+ */
+function buildBunting(
+  ctx: BuildCtx,
+  a: THREE.Vector3,
+  b: THREE.Vector3,
+  color: number,
+  sag = 1.2
+): THREE.Group {
   const g = new THREE.Group();
   const segs = 14;
+  const flags = new THREE.InstancedMesh(
+    ctx.track.geo(new THREE.ConeGeometry(0.18, 0.42, 4)),
+    ctx.lit({ color, roughness: 1 }, 0.4),
+    segs
+  );
+  const bulbs = new THREE.InstancedMesh(
+    ctx.track.geo(new THREE.SphereGeometry(0.08, 6, 6)),
+    ctx.lit({ color, roughness: 0.4 }, 0.6),
+    segs
+  );
+  const m = new THREE.Matrix4();
+  const flagRot = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI);
+  const noRot = new THREE.Quaternion();
+  const one = new THREE.Vector3(1, 1, 1);
+  const p = new THREE.Vector3();
   for (let i = 0; i < segs; i++) {
     const t = i / (segs - 1);
-    const p = a.clone().lerp(b, t);
+    p.copy(a).lerp(b, t);
     p.y -= Math.sin(t * Math.PI) * sag;
-    const color = RIDE_COLORS[i % RIDE_COLORS.length];
-    const flag = new THREE.Mesh(
-      ctx.track.geo(new THREE.ConeGeometry(0.18, 0.42, 4)),
-      ctx.lit({ color, roughness: 1 }, 0.35)
-    );
-    flag.position.copy(p);
-    flag.rotation.x = Math.PI;
-    g.add(flag);
-    // a little bulb between the pennants — glows brightly at night
-    const bulb = new THREE.Mesh(
-      ctx.track.geo(new THREE.SphereGeometry(0.08, 6, 6)),
-      ctx.lit({ color, roughness: 0.4 }, 0.6)
-    );
-    bulb.position.copy(p);
-    bulb.position.y -= 0.28;
-    g.add(bulb);
+    flags.setMatrixAt(i, m.compose(p, flagRot, one));
+    p.y -= 0.28;
+    bulbs.setMatrixAt(i, m.compose(p, noRot, one));
   }
+  flags.instanceMatrix.needsUpdate = true;
+  bulbs.instanceMatrix.needsUpdate = true;
+  g.add(flags);
+  g.add(bulbs);
   return g;
 }
 
@@ -1872,7 +1887,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const sun = new THREE.DirectionalLight(0xffe7bd, 2.35);
   sun.position.set(-44, 40, 30); // lower angle → longer, more dramatic shadows
   sun.castShadow = true;
-  sun.shadow.mapSize.set(mobile ? 1024 : 2048, mobile ? 1024 : 2048);
+  sun.shadow.mapSize.set(mobile ? 1024 : 1536, mobile ? 1024 : 1536);
   sun.shadow.camera.near = 1;
   sun.shadow.camera.far = 180;
   sun.shadow.camera.left = -74;
@@ -2096,9 +2111,17 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     world.add(f);
   }
 
-  // bunting over the main street
+  // bunting over the main street (each string a different festive colour)
+  let bunI = 0;
   for (let z = 30; z >= 6; z -= 8) {
-    world.add(buildBunting(ctx, new THREE.Vector3(-4.5, 4.2, z), new THREE.Vector3(4.5, 4.2, z)));
+    world.add(
+      buildBunting(
+        ctx,
+        new THREE.Vector3(-4.5, 4.2, z),
+        new THREE.Vector3(4.5, 4.2, z),
+        RIDE_COLORS[bunI++ % RIDE_COLORS.length]
+      )
+    );
   }
 
   // peeps walking the street + plaza
@@ -2196,19 +2219,35 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     'catmullrom',
     0.5
   );
-  const LAP_SECONDS = 100; // slow, stately, cinematic
-  const LOOK_AHEAD = 0.014;
-  const FOCUS = new THREE.Vector3(0, 4, 0); // park heart (plaza)
-  const ENTRY_LOOK = new THREE.Vector3(0, 7.5, 33); // entrance banner + floating pin
+  const LAP_SECONDS = 120; // slow, gliding, cinematic
+  // Gaze targets — a parallel CLOSED curve aimed at the LOGO and the RIDES (at
+  // ride height), never the path or the fountain. The camera's orientation is
+  // slerped toward this each frame, so every pan is smooth.
+  const aimPath = new THREE.CatmullRomCurve3(
+    [
+      new THREE.Vector3(0, 8.5, 33), // 1 approach → park.fan logo (banner + pin)
+      new THREE.Vector3(0, 8.2, 31), // 2 → logo, closer
+      new THREE.Vector3(2, 12, -38), // 3 through the arch → castle reveal
+      new THREE.Vector3(13, 12.5, -30), // 4 main street → swing to the mega-coaster
+      new THREE.Vector3(15, 13, -31), // 5 over plaza → mega-coaster (towering)
+      new THREE.Vector3(-22, 9, -20), // 6 back-left → ferris wheel
+      new THREE.Vector3(0, 14, -44), // 7 orbit left → castle
+      new THREE.Vector3(-16, 9, -22), // 8 front-left → ferris / castle cluster
+      new THREE.Vector3(0, 13.5, -42), // 9 wide front → castle vista
+      new THREE.Vector3(15, 12.5, -31), // 10 front-right → mega-coaster
+      new THREE.Vector3(-4, 11.5, -40), // 11 orbit right → castle / coaster
+      new THREE.Vector3(-22, 9, -20), // 12 back-right → ferris wheel
+    ],
+    true,
+    'catmullrom',
+    0.5
+  );
   const camPos = new THREE.Vector3();
   const camLook = new THREE.Vector3();
-  const tmpAhead = new THREE.Vector3();
-  const tmpBehind = new THREE.Vector3();
-  const camTangent = new THREE.Vector3();
-  const camSide = new THREE.Vector3();
-  const camAccel = new THREE.Vector3();
-  const camUp = new THREE.Vector3();
+  const lookM = new THREE.Matrix4();
+  const targetQuat = new THREE.Quaternion();
   const WORLD_UP = new THREE.Vector3(0, 1, 0);
+  let camStarted = false;
 
   // -- Cinematic post-processing pipeline ------------------------------------
   // RenderPass → selective Bloom (only bright emissive accents glow — tuned
@@ -2242,13 +2281,13 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     scene.add(spot.target);
     ctx.nightLight(spot, intensity);
   };
-  addSpot(0xff5db0, [-6, 0.4, 40], [0, 7, 34], 90); // pink wash on the entrance
-  addSpot(0x5db8ff, [6, 0.4, 40], [0, 7, 34], 90); // blue wash on the entrance
-  addSpot(0xbfd0ff, [-7, 0.4, -30], [-3, 16, -45], 340); // cool wash up the castle
-  addSpot(0xffe6a8, [7, 0.4, -30], [3, 16, -45], 300); // warm wash up the castle
-  addSpot(0x2fe0d8, [24, 0.4, -22], [15, 13, -32], 200); // teal up the mega-coaster
-  addSpot(0xffe072, [-31, 0.4, 0], [-31, 12, -7], 150); // warm up the drop tower
-  if (!mobile) addSpot(0x8be04e, [-22, 0.4, -12], [-22, 10, -21], 110); // green ferris wheel
+  addSpot(0xff5db0, [-6, 0.4, 40], [0, 7, 34], 55); // pink wash on the entrance
+  addSpot(0x5db8ff, [6, 0.4, 40], [0, 7, 34], 55); // blue wash on the entrance
+  addSpot(0xbfd0ff, [-7, 0.4, -30], [-3, 16, -45], 150); // cool wash up the castle
+  addSpot(0xffe6a8, [7, 0.4, -30], [3, 16, -45], 130); // warm wash up the castle
+  addSpot(0x2fe0d8, [24, 0.4, -22], [15, 13, -32], 110); // teal up the mega-coaster
+  addSpot(0xffe072, [-31, 0.4, 0], [-31, 12, -7], 80); // warm up the drop tower
+  if (!mobile) addSpot(0x8be04e, [-22, 0.4, -12], [-22, 10, -21], 65); // green ferris wheel
 
   const applyTheme = (theme: SceneTheme) => {
     const night = theme === 'dark';
@@ -2269,53 +2308,39 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     moon.visible = night;
     for (const l of nightLights) l.intensity = night ? (l.userData.nightIntensity as number) : 0;
     for (const m of emissiveMats)
-      m.emissiveIntensity = (m.userData.glow as number) * (night ? 1.7 : 1.0);
-    bloom.strength = night ? 0.5 : 0.4;
-    bloom.threshold = night ? 0.42 : 0.86;
-    bloom.radius = night ? 0.6 : 0.5;
+      m.emissiveIntensity = (m.userData.glow as number) * (night ? 1.35 : 1.0);
+    // Night bloom kept gentle (low strength, high threshold) so only the
+    // brightest lights glow — no big white wash-out.
+    bloom.strength = night ? 0.26 : 0.4;
+    bloom.threshold = night ? 0.6 : 0.86;
+    bloom.radius = night ? 0.45 : 0.5;
     grade.uniforms.uVignette.value = night ? 0.92 : 0.55;
     grade.uniforms.uSat.value = night ? 1.08 : 1.16;
-    renderer.toneMappingExposure = night ? 1.0 : 1.06;
+    renderer.toneMappingExposure = night ? 0.98 : 1.06;
   };
 
   // -- Render loop -----------------------------------------------------------
   const clock = new THREE.Clock();
   let frameId = 0;
   let running = false;
-  let currentRoll = 0; // low-passed banking roll (smoothed across frames)
 
   const renderFrame = (elapsed: number, delta: number) => {
     for (const a of animated) a.update(elapsed, delta);
     const t = (elapsed / LAP_SECONDS) % 1;
     flightPath.getPointAt(t, camPos);
-    flightPath.getPointAt((t + LOOK_AHEAD) % 1, tmpAhead);
-    flightPath.getPointAt((t - 0.012 + 1) % 1, tmpBehind);
-    // Cinematic banking: roll the camera into turns from path curvature, then
-    // LOW-PASS it — a CatmullRom's curvature is discontinuous at control points,
-    // so using the raw value makes the camera jerk; filtering banks it smoothly.
-    camTangent.copy(tmpAhead).sub(tmpBehind).normalize();
-    camSide.crossVectors(camTangent, WORLD_UP).normalize();
-    camAccel.copy(tmpAhead).add(tmpBehind).addScaledVector(camPos, -2);
-    const targetRoll = THREE.MathUtils.clamp(camAccel.dot(camSide) * 6.5, -0.26, 0.26);
-    currentRoll += (targetRoll - currentRoll) * (delta > 0 ? Math.min(1, delta * 2.5) : 1);
-    camUp.copy(WORLD_UP).applyAxisAngle(camTangent, currentRoll);
-    camera.up.copy(camUp);
-    // Default: pitch DOWN at the park (RCT iso angle); the look target is forced
-    // low so the ground & attractions fill the frame instead of empty sky.
-    const settle = THREE.MathUtils.smoothstep(t, 0.05, 0.17);
-    tmpAhead.y = THREE.MathUtils.lerp(3.8, 2.3, settle);
-    // During the orbit, bias toward the park heart so busy attractions stay framed.
-    const orbit = THREE.MathUtils.smoothstep(t, 0.3, 0.45);
-    camLook.copy(tmpAhead).lerp(FOCUS, orbit * 0.55);
-    // Opening hero moment: hold the gaze on the entrance arch, banner & floating
-    // park.fan pin. Keyed to circular distance from the seam (min(t,1-t)) so the
-    // entrance-look engages smoothly as the camera comes around for the next lap
-    // and never SNAPS at the loop boundary.
-    const seamDist = Math.min(t, 1 - t);
-    const entryW = 1 - THREE.MathUtils.smoothstep(seamDist, 0.0, 0.05);
-    camLook.lerp(ENTRY_LOOK, entryW);
+    aimPath.getPointAt(t, camLook);
     camera.position.copy(camPos);
-    camera.lookAt(camLook);
+    // Smooth orientation: build the target look-rotation and SLERP toward it, so
+    // every pan/turn eases instead of snapping — buttery even across curve kinks
+    // or frame hitches. (Position rides the smooth CatmullRom directly.)
+    lookM.lookAt(camPos, camLook, WORLD_UP);
+    targetQuat.setFromRotationMatrix(lookM);
+    if (!camStarted) {
+      camera.quaternion.copy(targetQuat);
+      camStarted = true;
+    } else {
+      camera.quaternion.slerp(targetQuat, delta > 0 ? 1 - Math.exp(-delta * 2.6) : 1);
+    }
     composer.render();
   };
 
