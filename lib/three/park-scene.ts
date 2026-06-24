@@ -290,31 +290,35 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const camera = new THREE.PerspectiveCamera(52, initialW / initialH, 0.1, 500);
   camera.position.set(0, 6, 30);
 
-  // -- Flying camera: swoop in over Main Street, THROUGH the castle gate, then
-  // arc around the whole park. Points 1–3 are kept on x=0 so the gate flythrough
-  // is straight; the look target is read a little further along the same path,
-  // so the camera always looks where it's going (and forward through the gate).
+  // -- Flying camera (cinematic): glide in low over Main Street, dead-straight
+  // THROUGH the freestanding gate, THROUGH the castle's archway tunnel, and out
+  // into the hidden courtyard garden behind it — then rise and arc wide around
+  // the whole park past the mountains. Points 1–6 stay on x=0 so the whole
+  // gate→tunnel→reveal run is a straight line. The look target reads a little
+  // further along the same path, so the camera always faces where it's going.
   const flightPath = new THREE.CatmullRomCurve3(
     [
-      new THREE.Vector3(0, 5.5, 32),
-      new THREE.Vector3(0, 4.4, 10),
-      new THREE.Vector3(0, 4.2, -13), // through the gate (gate sits at z≈-13)
-      new THREE.Vector3(0, 6, -20), // stay on-axis a beat → dead-straight flythrough
-      new THREE.Vector3(-18, 14, -28), // then veer hard left + climb, well clear of the castle
-      new THREE.Vector3(-42, 18, -36),
-      new THREE.Vector3(-52, 15, 4),
-      new THREE.Vector3(-32, 12, 36),
-      new THREE.Vector3(0, 11, 54),
-      new THREE.Vector3(34, 12, 36),
-      new THREE.Vector3(52, 15, 4),
-      new THREE.Vector3(30, 18, -36),
+      new THREE.Vector3(0, 5, 34),
+      new THREE.Vector3(0, 4.3, 12),
+      new THREE.Vector3(0, 4.2, -13), // freestanding gate (z≈-13)
+      new THREE.Vector3(0, 4.3, -22),
+      new THREE.Vector3(0, 4.4, -30), // THROUGH the castle archway tunnel (x=0)
+      new THREE.Vector3(0, 5.6, -42), // emerge into the courtyard garden
+      new THREE.Vector3(0, 12, -54), // rise over the garden
+      new THREE.Vector3(-36, 19, -58),
+      new THREE.Vector3(-58, 16, -8),
+      new THREE.Vector3(-34, 13, 40),
+      new THREE.Vector3(0, 12, 60),
+      new THREE.Vector3(34, 13, 40),
+      new THREE.Vector3(58, 16, -8),
+      new THREE.Vector3(36, 19, -58),
     ],
     true,
     'catmullrom',
     0.5
   );
-  const LAP_SECONDS = 54;
-  const LOOK_AHEAD = 0.028;
+  const LAP_SECONDS = 92; // slow, stately flight
+  const LOOK_AHEAD = 0.016;
   const camPos = new THREE.Vector3();
   const camTarget = new THREE.Vector3();
 
@@ -408,12 +412,15 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   scene.add(root);
 
   root.add(buildGround(ctx));
+  root.add(buildMountains(ctx)); // distant horizon backdrop for depth + scale
 
-  // Fantasyland (back center)
+  // Fantasyland (back center) — the camera flies through the freestanding gate,
+  // through the castle's archway tunnel, and into the hidden courtyard behind.
   const castle = buildCastle(ctx);
   castle.position.set(0, 0, -30);
   root.add(castle);
   root.add(buildCastleGate(ctx)); // freestanding flythrough arch at z≈-13
+  root.add(buildCastleGarden(ctx)); // hidden courtyard garden revealed behind the castle
 
   const carousel = buildCarousel(ctx);
   carousel.group.position.set(-11, 0, -19);
@@ -545,6 +552,8 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
 
   root.add(buildFences(ctx));
   root.add(buildFlowerBeds(ctx));
+  root.add(buildStreetProps(ctx)); // RCT details: benches, bins, signs, bushes
+  root.add(buildBunting(ctx)); // colorful pennant strings over the plaza
 
   const visitors = buildVisitors(ctx);
   root.add(visitors.group);
@@ -777,30 +786,60 @@ function buildCastle({ track, plain, lit, pbr, loadImage }: BuildCtx): THREE.Gro
     return tower;
   };
 
-  group.add(makeTower(3.4, 13, C.roofBlue, C.flagRed, wallMat));
-  const corners: Array<[number, number, number, number, number, THREE.MeshStandardMaterial]> = [
-    [-6, -1, 9.5, C.roofPink, C.flagYellow, wallMat2],
-    [6, -1, 9.5, C.roofPurple, C.flagBlue, wallMat2],
-    [-8.5, 3, 8, C.roofTeal, C.flagRed, wallMat],
-    [8.5, 3, 8, C.roofPink, C.flagBlue, wallMat],
+  // --- Gatehouse with a central archway TUNNEL on x=0 ---------------------
+  // The camera flies straight through, front to back. The clear opening is
+  // x∈[-3.5, 3.5], y∈[0, 8], open at both ends (no geometry on the axis).
+  const pierGeo = track.geo(new THREE.BoxGeometry(3, 9, 6));
+  for (const sx of [-5.5, 5.5]) {
+    const pier = new THREE.Mesh(pierGeo, wallMat);
+    pier.position.set(sx, 4.5, 0);
+    pier.castShadow = true;
+    pier.receiveShadow = true;
+    group.add(pier);
+  }
+  // Lintel spanning the piers — its underside (y=8) is the top of the opening,
+  // well above the flight height (y≈4.4).
+  const lintel = new THREE.Mesh(track.geo(new THREE.BoxGeometry(8.5, 2.6, 6)), wallMat);
+  lintel.position.set(0, 9.3, 0);
+  lintel.castShadow = true;
+  lintel.receiveShadow = true;
+  group.add(lintel);
+  // Gold arch trim on the front + back faces of the opening.
+  const archGeo = track.geo(new THREE.TorusGeometry(3.5, 0.45, 12, 24, Math.PI));
+  for (const sz of [3.02, -3.02]) {
+    const arch = new THREE.Mesh(archGeo, goldMat);
+    arch.position.set(0, 8, sz);
+    group.add(arch);
+  }
+
+  // Tall central tower ON TOP of the gatehouse (over the tunnel).
+  const central = makeTower(3.2, 13, C.roofBlue, C.flagRed, wallMat);
+  central.position.set(0, 10.6, 0);
+  group.add(central);
+
+  // Outer flanking towers + connecting side walls.
+  const flank: Array<[number, number, number, number, number, THREE.MeshStandardMaterial]> = [
+    [-10.5, 0, 11, C.roofPink, C.flagYellow, wallMat2],
+    [10.5, 0, 11, C.roofPurple, C.flagBlue, wallMat2],
+    [-13, -7, 8.5, C.roofTeal, C.flagRed, wallMat],
+    [13, -7, 8.5, C.roofPink, C.flagBlue, wallMat],
   ];
-  for (const [x, z, h, roof, flag, body] of corners) {
-    const tower = makeTower(h > 8.5 ? 1.9 : 1.5, h, roof, flag, body);
+  for (const [x, z, h, roof, flag, body] of flank) {
+    const tower = makeTower(h > 10 ? 2.1 : 1.6, h, roof, flag, body);
     tower.position.set(x, 0, z);
     group.add(tower);
   }
+  const sideWallGeo = track.geo(new THREE.BoxGeometry(4, 5.5, 3));
+  for (const sx of [-8, 8]) {
+    const w = new THREE.Mesh(sideWallGeo, wallMat);
+    w.position.set(sx, 2.75, 0);
+    w.castShadow = true;
+    w.receiveShadow = true;
+    group.add(w);
+  }
 
-  // Curtain wall set BEHIND the keep (negative z) so the approach/flythrough
-  // corridor in front of the castle stays clear of geometry.
-  const wall = new THREE.Mesh(track.geo(new THREE.BoxGeometry(16, 5, 3)), wallMat);
-  wall.position.set(0, 2.5, -9);
-  wall.castShadow = true;
-  wall.receiveShadow = true;
-  group.add(wall);
-
-  // park.fan crest on the front of the keep, facing the approach. A navy board
-  // with a gold frame; the logo uses an unlit (basic) material so it stays
-  // crisp and legible by day and night.
+  // park.fan crest high on the central tower, facing the approach (+z). Unlit
+  // (basic) material so it stays crisp and legible by day and night.
   const banner = new THREE.Group();
   const frame = new THREE.Mesh(
     track.geo(new THREE.BoxGeometry(6.2, 2.4, 0.3)),
@@ -819,8 +858,75 @@ function buildCastle({ track, plain, lit, pbr, loadImage }: BuildCtx): THREE.Gro
   const logo = new THREE.Mesh(track.geo(new THREE.PlaneGeometry(5.2, (5.2 * 219) / 768)), logoMat);
   logo.position.z = 0.2;
   banner.add(logo);
-  banner.position.set(0, 9.4, 3.5); // front face of the keep (+z = toward camera)
+  banner.position.set(0, 15, 3.3); // on the central tower, toward the camera
   group.add(banner);
+
+  return group;
+}
+
+/** The hidden courtyard garden revealed behind the castle (flythrough payoff). */
+function buildCastleGarden({ track, plain, lit, pbr }: BuildCtx): THREE.Group {
+  const group = new THREE.Group();
+  group.position.set(0, 0, -44);
+
+  // Paved courtyard disc.
+  const court = new THREE.Mesh(
+    track.geo(new THREE.CircleGeometry(11, 48)),
+    plain({ ...pbr.paving, color: 0xf3e8d4, roughness: 0.95, metalness: 0 })
+  );
+  court.rotation.x = -Math.PI / 2;
+  court.position.y = 0.02;
+  court.receiveShadow = true;
+  group.add(court);
+
+  // Central tiered fountain with a little water jet.
+  const stoneMat = plain({ ...pbr.stone, color: C.stoneLight, roughness: 0.9 });
+  const basin = new THREE.Mesh(track.geo(new THREE.CylinderGeometry(3, 3.3, 0.8, 28)), stoneMat);
+  basin.position.y = 0.4;
+  basin.castShadow = true;
+  basin.receiveShadow = true;
+  group.add(basin);
+  const water = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(2.7, 2.7, 0.3, 28)),
+    lit({ color: 0x3aa6d8, roughness: 0.2, transparent: true, opacity: 0.85 }, 0.2)
+  );
+  water.position.y = 0.75;
+  group.add(water);
+  const pedestal = new THREE.Mesh(track.geo(new THREE.CylinderGeometry(0.4, 0.6, 2, 16)), stoneMat);
+  pedestal.position.y = 1.6;
+  group.add(pedestal);
+  const topBowl = new THREE.Mesh(
+    track.geo(new THREE.CylinderGeometry(1.2, 0.5, 0.5, 20)),
+    stoneMat
+  );
+  topBowl.position.y = 2.7;
+  group.add(topBowl);
+  const jet = new THREE.Mesh(
+    track.geo(new THREE.SphereGeometry(0.35, 12, 12)),
+    lit({ color: 0xbfe8ff, roughness: 0.2 }, 0.5)
+  );
+  jet.position.y = 3.2;
+  group.add(jet);
+
+  // Hedge ring with gaps, dotted with topiary balls.
+  const hedgeMat = plain({ color: 0x3a8e3f, roughness: 1 });
+  const ballMat = plain({ color: 0x4fbf5f, roughness: 1 });
+  const hedgeGeo = track.geo(new THREE.BoxGeometry(2.4, 1.1, 0.9));
+  const ballGeo = track.geo(new THREE.SphereGeometry(0.8, 12, 10));
+  for (let i = 0; i < 12; i++) {
+    const ang = (i / 12) * Math.PI * 2;
+    if (i % 4 === 0) continue; // gaps
+    const r = 8.5;
+    const hedge = new THREE.Mesh(hedgeGeo, hedgeMat);
+    hedge.position.set(Math.cos(ang) * r, 0.55, Math.sin(ang) * r);
+    hedge.rotation.y = -ang;
+    hedge.castShadow = true;
+    group.add(hedge);
+    const ball = new THREE.Mesh(ballGeo, ballMat);
+    ball.position.set(Math.cos(ang) * r, 1.4, Math.sin(ang) * r);
+    ball.castShadow = true;
+    group.add(ball);
+  }
 
   return group;
 }
@@ -1609,47 +1715,130 @@ function buildTree({ track, plain }: BuildCtx): THREE.Group {
   return group;
 }
 
+/**
+ * Articulated RCT-style "peeps": head + hair, a colored torso, and swinging
+ * arms and legs driven by a simple walk cycle as they stroll the paths.
+ */
 function buildVisitors({ track, plain, lit }: BuildCtx): Animated {
   const group = new THREE.Group();
-  const bodyGeo = track.geo(new THREE.CapsuleGeometry(0.22, 0.5, 4, 8));
-  const headGeo = track.geo(new THREE.SphereGeometry(0.2, 10, 10));
-  const headMat = plain({ color: 0xffd9b8, roughness: 0.7 });
-  const people: Array<{ g: THREE.Group; radius: number; speed: number; phase: number }> = [];
-  const count = 18;
+  const skinMat = plain({ color: 0xffd9b8, roughness: 0.75 });
+  const headGeo = track.geo(new THREE.SphereGeometry(0.18, 12, 10));
+  const hairGeo = track.geo(
+    new THREE.SphereGeometry(0.19, 12, 8, 0, Math.PI * 2, 0, Math.PI * 0.55)
+  );
+  const torsoGeo = track.geo(new THREE.CapsuleGeometry(0.17, 0.34, 4, 8));
+  const limbGeo = track.geo(new THREE.CapsuleGeometry(0.06, 0.32, 3, 6));
+  const hairColors = [0x3a2a1a, 0x6b4a2b, 0x141414, 0xc9a24b, 0x8a8a8a, 0xb5532a];
+  const pantsColors = [0x2a3b6b, 0x44464d, 0x6b4a2b, 0x2a5b3b, 0x5b2a4a];
+
+  interface Peep {
+    g: THREE.Group;
+    legL: THREE.Group;
+    legR: THREE.Group;
+    armL: THREE.Group;
+    armR: THREE.Group;
+    radius: number;
+    speed: number;
+    phase: number;
+  }
+  const people: Peep[] = [];
+  const count = 24;
+
   for (let i = 0; i < count; i++) {
     const person = new THREE.Group();
-    const body = new THREE.Mesh(
-      bodyGeo,
-      lit({ color: VISITOR_COLORS[i % VISITOR_COLORS.length], roughness: 0.6 }, 0.25)
+    const shirtMat = lit(
+      { color: VISITOR_COLORS[i % VISITOR_COLORS.length], roughness: 0.7 },
+      0.25
     );
-    body.position.y = 0.55;
-    body.castShadow = true;
-    person.add(body);
-    const head = new THREE.Mesh(headGeo, headMat);
-    head.position.y = 1.0;
+    const pantsMat = plain({ color: pantsColors[i % pantsColors.length], roughness: 0.8 });
+
+    const torso = new THREE.Mesh(torsoGeo, shirtMat);
+    torso.position.y = 0.8;
+    torso.castShadow = true;
+    person.add(torso);
+
+    const head = new THREE.Mesh(headGeo, skinMat);
+    head.position.y = 1.18;
+    head.castShadow = true;
     person.add(head);
+    const hair = new THREE.Mesh(
+      hairGeo,
+      plain({ color: hairColors[i % hairColors.length], roughness: 0.85 })
+    );
+    hair.position.y = 1.2;
+    person.add(hair);
+
+    // Limb on a pivot at the hip/shoulder so rotation.x swings it like a hinge.
+    const makeLimb = (mat: THREE.MeshStandardMaterial, x: number, y: number) => {
+      const pivot = new THREE.Group();
+      pivot.position.set(x, y, 0);
+      const limb = new THREE.Mesh(limbGeo, mat);
+      limb.position.y = -0.2;
+      limb.castShadow = true;
+      pivot.add(limb);
+      person.add(pivot);
+      return pivot;
+    };
+    const legL = makeLimb(pantsMat, -0.09, 0.62);
+    const legR = makeLimb(pantsMat, 0.09, 0.62);
+    const armL = makeLimb(shirtMat, -0.24, 1.04);
+    const armR = makeLimb(shirtMat, 0.24, 1.04);
+
     group.add(person);
     people.push({
       g: person,
-      radius: 7 + (i % 5) * 1.3,
-      speed: (0.12 + (i % 4) * 0.04) * (i % 2 === 0 ? 1 : -1),
+      legL,
+      legR,
+      armL,
+      armR,
+      radius: 7 + (i % 6) * 1.2,
+      speed: (0.1 + (i % 4) * 0.035) * (i % 2 === 0 ? 1 : -1),
       phase: (i / count) * Math.PI * 2,
     });
   }
+
   return {
     group,
     update: (elapsed) => {
       for (const p of people) {
         const a = p.phase + elapsed * p.speed;
-        p.g.position.set(
-          Math.cos(a) * p.radius,
-          Math.abs(Math.sin(elapsed * 4 + p.phase)) * 0.08,
-          Math.sin(a) * p.radius
-        );
+        p.g.position.set(Math.cos(a) * p.radius, 0, Math.sin(a) * p.radius);
         p.g.rotation.y = -a + (p.speed > 0 ? Math.PI / 2 : -Math.PI / 2);
+        // Walk cycle: legs + arms swing in opposition, body bobs gently.
+        const step = elapsed * 6 * (p.speed > 0 ? 1 : -1) + p.phase * 3;
+        const sw = Math.sin(step) * 0.5;
+        p.legL.rotation.x = sw;
+        p.legR.rotation.x = -sw;
+        p.armL.rotation.x = -sw * 0.8;
+        p.armR.rotation.x = sw * 0.8;
+        p.g.position.y = Math.abs(Math.sin(step)) * 0.04;
       }
     },
   };
+}
+
+/** Low-poly mountains ringing the park on the horizon — depth + scale. */
+function buildMountains({ track, plain }: BuildCtx): THREE.Group {
+  const group = new THREE.Group();
+  const rockMat = plain({ color: 0x8a9bb0, roughness: 1, metalness: 0 });
+  const snowMat = plain({ color: 0xf2f6ff, roughness: 0.9, metalness: 0 });
+  const count = 16;
+  for (let i = 0; i < count; i++) {
+    const ang = (i / count) * Math.PI * 2 + (i % 2) * 0.2;
+    const dist = 92 + (i % 4) * 8;
+    const h = 22 + ((i * 7) % 18);
+    const r = 12 + ((i * 5) % 8);
+    const peak = new THREE.Mesh(track.geo(new THREE.ConeGeometry(r, h, 6)), rockMat);
+    peak.position.set(Math.cos(ang) * dist, h / 2 - 2, Math.sin(ang) * dist);
+    peak.rotation.y = i;
+    group.add(peak);
+    // Snow cap.
+    const cap = new THREE.Mesh(track.geo(new THREE.ConeGeometry(r * 0.42, h * 0.32, 6)), snowMat);
+    cap.position.set(peak.position.x, h * 0.84 - 2, peak.position.z);
+    cap.rotation.y = i;
+    group.add(cap);
+  }
+  return group;
 }
 
 function buildClouds({ track, plain }: BuildCtx): Animated {
@@ -1869,6 +2058,156 @@ function buildFireworks({ track }: BuildCtx, origin: THREE.Vector3): Animated {
       (geo.attributes.color as THREE.BufferAttribute).needsUpdate = true;
     },
   };
+}
+
+/**
+ * Classic RCT park dressing: benches, litter bins, directional signposts and
+ * bushes placed around the plaza ring and paths (kept off the central x≈0
+ * flight axis so the gate flythrough stays clear).
+ */
+function buildStreetProps({ track, plain, lit }: BuildCtx): THREE.Group {
+  const group = new THREE.Group();
+  const woodMat = plain({ color: 0x9c6b3f, roughness: 0.85 });
+  const metalMat = plain({ color: 0x39414f, metalness: 0.4, roughness: 0.5 });
+  const bushMat = plain({ color: 0x4aa34f, roughness: 1 });
+
+  const seatGeo = track.geo(new THREE.BoxGeometry(1.6, 0.12, 0.5));
+  const backGeo = track.geo(new THREE.BoxGeometry(1.6, 0.45, 0.1));
+  const benchLegGeo = track.geo(new THREE.BoxGeometry(0.12, 0.5, 0.5));
+  const makeBench = (x: number, z: number, rot: number) => {
+    const b = new THREE.Group();
+    const seat = new THREE.Mesh(seatGeo, woodMat);
+    seat.position.y = 0.5;
+    seat.castShadow = true;
+    b.add(seat);
+    const back = new THREE.Mesh(backGeo, woodMat);
+    back.position.set(0, 0.73, -0.2);
+    b.add(back);
+    for (const lx of [-0.7, 0.7]) {
+      const leg = new THREE.Mesh(benchLegGeo, metalMat);
+      leg.position.set(lx, 0.25, 0);
+      b.add(leg);
+    }
+    b.position.set(x, 0, z);
+    b.rotation.y = rot;
+    group.add(b);
+  };
+
+  const binGeo = track.geo(new THREE.CylinderGeometry(0.25, 0.22, 0.7, 12));
+  const makeBin = (x: number, z: number) => {
+    const bin = new THREE.Mesh(binGeo, metalMat);
+    bin.position.set(x, 0.35, z);
+    bin.castShadow = true;
+    group.add(bin);
+  };
+
+  const signPostGeo = track.geo(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 8));
+  const armGeo = track.geo(new THREE.BoxGeometry(1.2, 0.4, 0.08));
+  const makeSign = (x: number, z: number, rot: number) => {
+    const s = new THREE.Group();
+    const post = new THREE.Mesh(signPostGeo, woodMat);
+    post.position.y = 1.2;
+    post.castShadow = true;
+    s.add(post);
+    const a1 = new THREE.Mesh(armGeo, lit({ color: 0x5db8ff, roughness: 0.6 }, 0.3));
+    a1.position.set(0.5, 2.0, 0);
+    s.add(a1);
+    const a2 = new THREE.Mesh(armGeo, lit({ color: 0xff9f43, roughness: 0.6 }, 0.3));
+    a2.position.set(-0.5, 1.55, 0);
+    s.add(a2);
+    s.position.set(x, 0, z);
+    s.rotation.y = rot;
+    group.add(s);
+  };
+
+  const bushGeo = track.geo(new THREE.SphereGeometry(0.6, 10, 8));
+  const makeBush = (x: number, z: number, sc: number) => {
+    const bush = new THREE.Mesh(bushGeo, bushMat);
+    bush.position.set(x, 0.4 * sc, z);
+    bush.scale.setScalar(sc);
+    group.add(bush);
+  };
+
+  const benchSpots: Array<[number, number, number]> = [
+    [8, 7, -0.6],
+    [-8, 7, 0.6],
+    [7, -7, -2.4],
+    [-7, -7, 2.4],
+    [10.5, 1, -1.57],
+    [-10.5, 1, 1.57],
+  ];
+  for (const [x, z, r] of benchSpots) makeBench(x, z, r);
+  const binSpots: Array<[number, number]> = [
+    [6.5, 8],
+    [-6.5, 8],
+    [9.5, -4],
+    [-9.5, -4],
+    [5.5, -8.5],
+    [-5.5, -8.5],
+  ];
+  for (const [x, z] of binSpots) makeBin(x, z);
+  const signSpots: Array<[number, number, number]> = [
+    [6, 6, 0.4],
+    [-6, 6, -0.4],
+    [6, -6, 2.7],
+    [-6, -6, -2.7],
+  ];
+  for (const [x, z, r] of signSpots) makeSign(x, z, r);
+  for (let i = 0; i < 30; i++) {
+    const ang = (i / 30) * Math.PI * 2;
+    const r = 12.2 + (i % 3) * 0.8;
+    makeBush(Math.cos(ang) * r, Math.sin(ang) * r, 0.7 + (i % 3) * 0.18);
+  }
+
+  return group;
+}
+
+/** Strings of colorful triangular pennants (bunting) over the side paths. */
+function buildBunting({ track, lit }: BuildCtx): THREE.Group {
+  const group = new THREE.Group();
+  const ropeMat = track.mat(new THREE.MeshStandardMaterial({ color: 0x6b5a3a, roughness: 0.9 }));
+  const postMat = track.mat(new THREE.MeshStandardMaterial({ color: 0x9c6b3f, roughness: 0.85 }));
+  const postGeo = track.geo(new THREE.CylinderGeometry(0.08, 0.1, 4, 8));
+  const flagGeo = track.geo(new THREE.ConeGeometry(0.22, 0.5, 3));
+  const colors = [0xff5d6c, 0xffd166, 0x5db8ff, 0x8be04e, 0xb57bff];
+
+  // Each string spans two posts. Kept on the sides (|x| large) to avoid the
+  // central flight corridor.
+  const strings: Array<[number, number, number, number]> = [
+    [-14, 6, -22, 14],
+    [14, 6, 22, 14],
+    [-15, -6, -24, -14],
+    [15, -6, 24, -14],
+  ];
+  for (const [x1, z1, x2, z2] of strings) {
+    for (const [px, pz] of [
+      [x1, z1],
+      [x2, z2],
+    ]) {
+      const post = new THREE.Mesh(postGeo, postMat);
+      post.position.set(px, 2, pz);
+      post.castShadow = true;
+      group.add(post);
+    }
+    const a = new THREE.Vector3(x1, 3.7, z1);
+    const b = new THREE.Vector3(x2, 3.7, z2);
+    const len = a.distanceTo(b);
+    const rope = new THREE.Mesh(track.geo(new THREE.CylinderGeometry(0.03, 0.03, len, 5)), ropeMat);
+    rope.position.copy(a).lerp(b, 0.5);
+    rope.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), b.clone().sub(a).normalize());
+    group.add(rope);
+    const n = Math.max(4, Math.floor(len / 1.1));
+    for (let i = 1; i < n; i++) {
+      const p = a.clone().lerp(b, i / n);
+      const flag = new THREE.Mesh(
+        flagGeo,
+        lit({ color: colors[i % colors.length], roughness: 0.6, side: THREE.DoubleSide }, 0.4)
+      );
+      flag.position.set(p.x, p.y - 0.35, p.z);
+      group.add(flag);
+    }
+  }
+  return group;
 }
 
 function buildStars(track: Tracker): THREE.Points {
