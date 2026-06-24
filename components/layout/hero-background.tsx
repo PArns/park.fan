@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import nextDynamic from 'next/dynamic';
+import { Loader2 } from 'lucide-react';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
@@ -128,18 +129,43 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
  * park's photos still crossfade in on top.
  */
 export function HeroBackground() {
+  // `sceneReady` flips when the 3D park signals it's loaded. The loader lives
+  // HERE (always mounted) rather than inside HeroThreePark, so it's visible
+  // during the three.js chunk download too — not only after it has mounted.
+  const [sceneReady, setSceneReady] = useState(false);
+  const onReady = useCallback(() => setSceneReady(true), []);
+  // Safety: hide the loader even if the chunk/WebGL never signals ready.
+  useEffect(() => {
+    const t = setTimeout(() => setSceneReady(true), 8000);
+    return () => clearTimeout(t);
+  }, []);
+
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
       {/* Instant gradient sky — bright by day, deep blue at night (dark mode),
           matching the 3D sky so the canvas fades in seamlessly. */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#3b8fe3_0%,#7fc2f3_55%,#cdeeff_100%)] dark:bg-[linear-gradient(to_bottom,#070b1e_0%,#142150_55%,#33508c_100%)]" />
       {/* three.js park scene (client-only, fades in when ready) */}
-      <HeroThreePark />
+      <HeroThreePark onReady={onReady} />
       {/* Real park photos take over when the visitor is detected inside a park */}
       <InParkHeroImages />
       {/* Only a very light tint for depth/legibility — kept subtle and
           theme-independent so the bright, colorful scene always shows through. */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/15" />
+      {/* Loader chip near the bottom (clear of the centred content card), fading
+          out once the 3D park is ready. */}
+      <div
+        aria-hidden="true"
+        className={cn(
+          'pointer-events-none absolute inset-x-0 bottom-6 flex justify-center transition-opacity duration-500',
+          sceneReady ? 'opacity-0' : 'opacity-100'
+        )}
+      >
+        <span className="bg-background/55 text-foreground/80 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-md">
+          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+          Loading 3D park…
+        </span>
+      </div>
     </div>
   );
 }

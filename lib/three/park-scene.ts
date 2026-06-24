@@ -255,7 +255,7 @@ function buildGround(ctx: BuildCtx): THREE.Mesh {
  * A paved path strip (textured paving). Tiling is baked into the plane's UVs so
  * the shared PBR maps can be reused across every strip without cloning.
  */
-function pathStrip(ctx: BuildCtx, width: number, len: number): THREE.Group {
+function pathStrip(ctx: BuildCtx, width: number, len: number, y: number): THREE.Group {
   const g = new THREE.Group();
   const geo = ctx.track.geo(new THREE.PlaneGeometry(width, len));
   const uv = geo.attributes.uv as THREE.BufferAttribute;
@@ -263,10 +263,21 @@ function pathStrip(ctx: BuildCtx, width: number, len: number): THREE.Group {
   uv.needsUpdate = true;
   const top = new THREE.Mesh(
     geo,
-    ctx.mat({ ...ctx.pbr.paving, color: 0xc4cfcf, flatShading: false, roughness: 1 })
+    // polygonOffset keeps the path reliably above the grass; a distinct `y` per
+    // strip (passed by the caller) stops overlapping strips from z-fighting
+    // (the flicker seen on the fly-over).
+    ctx.mat({
+      ...ctx.pbr.paving,
+      color: 0xc4cfcf,
+      flatShading: false,
+      roughness: 1,
+      polygonOffset: true,
+      polygonOffsetFactor: -2,
+      polygonOffsetUnits: -2,
+    })
   );
   top.rotation.x = -Math.PI / 2;
-  top.position.y = 0.09;
+  top.position.y = y;
   top.receiveShadow = true;
   g.add(top);
   return g;
@@ -274,28 +285,27 @@ function pathStrip(ctx: BuildCtx, width: number, len: number): THREE.Group {
 
 function buildPaths(ctx: BuildCtx): THREE.Group {
   const g = new THREE.Group();
+  // Each strip gets a slightly different height so overlapping strips never sit
+  // exactly coplanar (which caused the fly-over flicker / z-fighting).
   // main street: entrance (front, +z) straight back to the plaza
-  const main = pathStrip(ctx, 7, 64);
+  const main = pathStrip(ctx, 7, 64, 0.12);
   main.position.set(0, 0, 4);
   g.add(main);
   // central plaza (wide square)
-  const plaza = pathStrip(ctx, 26, 26);
+  const plaza = pathStrip(ctx, 26, 26, 0.085);
   plaza.position.set(0, 0, -4);
   g.add(plaza);
   // cross avenues off the plaza
-  const cross = pathStrip(ctx, 52, 6);
+  const cross = pathStrip(ctx, 52, 6, 0.105);
   cross.position.set(0, 0, -4);
   g.add(cross);
   // a path toward the back-left and back-right ride areas
-  const left = pathStrip(ctx, 6, 30);
+  const left = pathStrip(ctx, 6, 30, 0.11);
   left.position.set(-22, 0, -20);
   g.add(left);
-  const right = pathStrip(ctx, 6, 30);
+  const right = pathStrip(ctx, 6, 30, 0.115);
   right.position.set(22, 0, -20);
   g.add(right);
-  const back = pathStrip(ctx, 50, 6);
-  back.position.set(0, 0, -34);
-  g.add(back);
   return g;
 }
 
@@ -337,29 +347,59 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
 // Builders: scenery
 // ---------------------------------------------------------------------------
 
-/** A round, bushy RCT tree: brown trunk + 1–3 overlapping low-poly green blobs. */
-function buildTree(ctx: BuildCtx): THREE.Group {
+/**
+ * All round, bushy RCT trees built as just TWO instanced meshes (trunks +
+ * foliage blobs) instead of a Group per tree — hundreds of draw calls collapse
+ * to two, which keeps the fly-over smooth. Foliage tone varies per-instance.
+ */
+function buildTrees(ctx: BuildCtx, placements: [number, number][]): THREE.Group {
   const g = new THREE.Group();
-  const h = rnd(1.6, 2.6);
-  const trunk = new THREE.Mesh(
-    ctx.track.geo(new THREE.CylinderGeometry(0.18, 0.26, h, 6)),
-    ctx.mat({ color: PAL.wood, roughness: 1 })
-  );
-  trunk.position.y = h / 2;
-  trunk.castShadow = true;
-  g.add(trunk);
-  const tone = pick([0x2f8f1f, 0x47af27, 0x379f17, 0x1f7b00]);
-  const blobs = 1 + Math.floor(Math.random() * 3);
-  for (let i = 0; i < blobs; i++) {
-    const r = rnd(1.0, 1.5) * (i === 0 ? 1 : 0.8);
-    const blob = new THREE.Mesh(
-      ctx.track.geo(new THREE.IcosahedronGeometry(r, 1)),
-      ctx.mat({ color: tone, flatShading: true, roughness: 1 })
+  const tones = [0x2f8f1f, 0x47af27, 0x379f17, 0x1f7b00];
+  const trunks: THREE.Matrix4[] = [];
+  const blobs: { m: THREE.Matrix4; c: THREE.Color }[] = [];
+  const noRot = new THREE.Quaternion();
+  for (const [x, z] of placements) {
+    const h = rnd(1.6, 2.6);
+    trunks.push(
+      new THREE.Matrix4().compose(new THREE.Vector3(x, h / 2, z), noRot, new THREE.Vector3(1, h, 1))
     );
-    blob.position.set(rnd(-0.5, 0.5), h + rnd(-0.2, 0.6) + i * 0.5, rnd(-0.5, 0.5));
-    blob.castShadow = true;
-    g.add(blob);
+    const tone = new THREE.Color(pick(tones));
+    const n = 1 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < n; i++) {
+      const r = rnd(1.0, 1.5) * (i === 0 ? 1 : 0.8);
+      const pos = new THREE.Vector3(
+        x + rnd(-0.5, 0.5),
+        h + rnd(-0.2, 0.6) + i * 0.5,
+        z + rnd(-0.5, 0.5)
+      );
+      blobs.push({
+        m: new THREE.Matrix4().compose(pos, noRot, new THREE.Vector3(r, r, r)),
+        c: tone.clone().multiplyScalar(rnd(0.88, 1.12)),
+      });
+    }
   }
+  const trunkInst = new THREE.InstancedMesh(
+    ctx.track.geo(new THREE.CylinderGeometry(0.18, 0.26, 1, 6)),
+    ctx.mat({ color: PAL.wood, roughness: 1 }),
+    trunks.length
+  );
+  trunkInst.castShadow = true;
+  trunks.forEach((m, i) => trunkInst.setMatrixAt(i, m));
+  trunkInst.instanceMatrix.needsUpdate = true;
+  g.add(trunkInst);
+  const folInst = new THREE.InstancedMesh(
+    ctx.track.geo(new THREE.IcosahedronGeometry(1, 1)),
+    ctx.mat({ color: 0xffffff, flatShading: true, roughness: 1 }),
+    blobs.length
+  );
+  folInst.castShadow = true;
+  blobs.forEach((b, i) => {
+    folInst.setMatrixAt(i, b.m);
+    folInst.setColorAt(i, b.c);
+  });
+  folInst.instanceMatrix.needsUpdate = true;
+  if (folInst.instanceColor) folInst.instanceColor.needsUpdate = true;
+  g.add(folInst);
   return g;
 }
 
@@ -439,9 +479,10 @@ function buildLamp(ctx: BuildCtx): THREE.Group {
 }
 
 /** A park bench. */
-function buildBench(ctx: BuildCtx): THREE.Group {
+function buildBench(ctx: BuildCtx, color = 0xe0c690): THREE.Group {
   const g = new THREE.Group();
-  const woodMat = ctx.mat({ ...ctx.pbr.wood, color: 0xe0c690, flatShading: false, roughness: 1 });
+  // painted-slat benches: a tint over the wood grain, varied per placement
+  const woodMat = ctx.mat({ ...ctx.pbr.wood, color, flatShading: false, roughness: 1 });
   const seat = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.4, 0.1, 0.5)), woodMat);
   seat.position.y = 0.5;
   g.add(seat);
@@ -467,6 +508,115 @@ function buildBin(ctx: BuildCtx): THREE.Mesh {
   );
   bin.position.y = 0.3;
   return bin;
+}
+
+// Main-Street palettes — each shop picks a distinct facade/roof/awning/sign so
+// the avenue reads as a row of individual storefronts, not one repeated kiosk.
+const SHOP_WALL = [0xf1e7d3, 0xcfe3f5, 0xf6c9bd, 0xcdeacb, 0xfdeeb8, 0xe6d4f2, 0xf7d6a8, 0xd6efe8];
+const SHOP_ROOF = [0xc0392b, 0x2b7a78, 0x6b4423, 0x21407f, 0x8753bb, 0xd35400, 0x1f7a3f, 0x3f6fd8];
+const SHOP_AWNING = [
+  '#e30700',
+  '#2b67df',
+  '#47af27',
+  '#db3b8f',
+  '#ff6f17',
+  '#8753bb',
+  '#f3b700',
+  '#17a39b',
+];
+
+/**
+ * A Main-Street shop front: a colourful two-storey storefront with a striped
+ * awning, a sign band, a glass shopfront, upper windows and a varied roof
+ * (hip roof or a flat roof with a tall "false-front" parapet). `v` selects the
+ * colour/roof variant so a row of these reads as a real, varied high street.
+ * Front faces +z; rotate to line either side of the avenue.
+ */
+function buildShop(ctx: BuildCtx, v: number): THREE.Group {
+  const g = new THREE.Group();
+  const W = 5.2;
+  const D = 4.6;
+  const H = 5.2 + (v % 3) * 0.8; // 5.2 .. 6.8
+  const wallCol = SHOP_WALL[v % SHOP_WALL.length];
+  const roofCol = SHOP_ROOF[(v + 3) % SHOP_ROOF.length];
+  const trimCol = SHOP_ROOF[(v + 5) % SHOP_ROOF.length];
+  const front = D / 2;
+
+  // facade body — wood-grained, painted a distinct colour
+  const body = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(W, H, D)),
+    ctx.mat({ ...ctx.pbr.wood, color: wallCol, flatShading: false, roughness: 1 })
+  );
+  body.position.y = H / 2;
+  body.castShadow = true;
+  body.receiveShadow = true;
+  g.add(body);
+
+  // roof: hip pyramid, or flat with a tall false-front parapet (alternating)
+  const roofMat = ctx.lit({ color: roofCol, roughness: 1 }, 0.12);
+  if (v % 2 === 0) {
+    const roof = new THREE.Mesh(ctx.track.geo(new THREE.ConeGeometry(W * 0.82, 2.0, 4)), roofMat);
+    roof.position.y = H + 1.0;
+    roof.rotation.y = Math.PI / 4;
+    roof.castShadow = true;
+    g.add(roof);
+  } else {
+    const parapet = new THREE.Mesh(
+      ctx.track.geo(new THREE.BoxGeometry(W + 0.3, 1.5, 0.5)),
+      roofMat
+    );
+    parapet.position.set(0, H + 0.55, front - 0.1);
+    parapet.castShadow = true;
+    g.add(parapet);
+    const cornice = new THREE.Mesh(
+      ctx.track.geo(new THREE.BoxGeometry(W + 0.4, 0.35, D + 0.4)),
+      roofMat
+    );
+    cornice.position.y = H + 0.15;
+    g.add(cornice);
+  }
+
+  // sign band above the shopfront (glows a touch at night)
+  const sign = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(W - 0.4, 0.7, 0.12)),
+    ctx.lit({ color: trimCol, roughness: 1 }, 0.2)
+  );
+  sign.position.set(0, 3.5, front + 0.06);
+  g.add(sign);
+
+  // striped awning over the shopfront
+  const awn = ctx.stripeTex(SHOP_AWNING[v % SHOP_AWNING.length], '#f7f7f7');
+  awn.repeat.set(5, 1);
+  ctx.track.tex(awn);
+  const awning = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(W - 0.2, 0.12, 1.3)),
+    ctx.mat({ map: awn, color: 0xffffff, roughness: 1 })
+  );
+  awning.position.set(0, 3.0, front + 0.55);
+  awning.rotation.x = -0.34;
+  awning.castShadow = true;
+  g.add(awning);
+
+  // glass shopfront + door (ground floor)
+  const glass = ctx.lit({ color: 0x9fd3f3, roughness: 0.4 }, 0.22);
+  const window0 = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(W - 1.4, 1.7, 0.1)), glass);
+  window0.position.set(-0.5, 1.5, front + 0.02);
+  g.add(window0);
+  const door = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(1.0, 2.0, 0.12)),
+    ctx.mat({ color: trimCol, roughness: 1 })
+  );
+  door.position.set(W / 2 - 0.9, 1.0, front + 0.03);
+  g.add(door);
+
+  // upper-floor windows (warm — glow at night)
+  const upWin = ctx.lit({ color: 0xffe6b0, roughness: 0.5 }, 0.3);
+  for (let i = -1; i <= 1; i++) {
+    const w = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.85, 1.0, 0.1)), upWin);
+    w.position.set(i * 1.5, 4.4, front + 0.02);
+    g.add(w);
+  }
+  return g;
 }
 
 /** A tiered stone fountain with gently pulsing water jets — a plaza centrepiece. */
@@ -1356,71 +1506,76 @@ function buildDropTower(ctx: BuildCtx): Ride {
   };
 }
 
+interface CoasterOpts {
+  railR?: number;
+  gauge?: number;
+  segments?: number;
+  tieEvery?: number;
+  supEvery?: number;
+  trainCars?: number;
+  speed?: number;
+  /** [x,y,z,w,h,d] station platform, or null for none. */
+  station?: [number, number, number, number, number, number] | null;
+}
+
 /**
- * A coaster: a closed CatmullRom circuit (lift hill, drop, vertical loop,
- * airtime hills) with twin tubular rails, cross-ties, white support columns and
- * a train of cars running the track.
+ * Build a coaster from a list of control points: a closed CatmullRom circuit
+ * with twin tubular rails, cross-ties, support columns and a running train.
+ * Used for both the mid-park coaster and the big background mega-coaster.
  */
-function buildCoaster(ctx: BuildCtx, color: number): Ride {
+function coasterTrack(ctx: BuildCtx, color: number, raw: number[][], opts: CoasterOpts = {}): Ride {
+  const {
+    railR = 0.11,
+    gauge = 0.34,
+    segments = 260,
+    tieEvery = 3,
+    supEvery = 7,
+    trainCars = 5,
+    speed = 0.045,
+    station = null,
+  } = opts;
   const g = new THREE.Group();
-  const pts = [
-    [-13, 2.0, 6],
-    [-13, 2.0, -6],
-    [-9, 7, -9],
-    [-3, 12.5, -9], // lift top
-    [3, 11.5, -8],
-    [7, 6, -6],
-    [10, 3, -2], // bottom into loop
-    [13.5, 7, 0],
-    [10.5, 12.5, 1], // loop top
-    [6.5, 9.5, 1],
-    [8, 4.5, 3], // exit loop
-    [11, 4.5, 7],
-    [6, 5.5, 10], // airtime hill
-    [-3, 4.5, 11],
-    [-9, 3.0, 9],
-  ].map((p) => new THREE.Vector3(p[0], p[1], p[2]));
+  const pts = raw.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
   const curve = new THREE.CatmullRomCurve3(pts, true, 'catmullrom', 0.5);
-  const N = 240;
+  const N = segments;
   const frames = curve.computeFrenetFrames(N, true);
   const left: THREE.Vector3[] = [];
   const right: THREE.Vector3[] = [];
   const samples: THREE.Vector3[] = [];
   for (let i = 0; i <= N; i++) {
-    const t = i / N;
-    const p = curve.getPointAt(t);
+    const p = curve.getPointAt(i / N);
     samples.push(p);
-    const b = frames.binormals[Math.min(i, N - 1)].clone().multiplyScalar(0.34);
+    const b = frames.binormals[Math.min(i, N - 1)].clone().multiplyScalar(gauge);
     left.push(p.clone().add(b));
     right.push(p.clone().sub(b));
   }
-  const railMat = ctx.lit({ color, roughness: 0.7 }, 0.18);
+  const railMat = ctx.lit({ color, roughness: 0.7 }, 0.2);
   for (const arr of [left, right]) {
     const c = new THREE.CatmullRomCurve3(arr, true, 'catmullrom', 0.5);
     const tube = new THREE.Mesh(
-      ctx.track.geo(new THREE.TubeGeometry(c, N, 0.11, 6, true)),
+      ctx.track.geo(new THREE.TubeGeometry(c, N, railR, 6, true)),
       railMat
     );
     tube.castShadow = true;
     g.add(tube);
   }
   // cross-ties
-  const tieMat = ctx.mat({ color: 0x839797, roughness: 1 });
-  const tieGeo = ctx.track.geo(new THREE.BoxGeometry(0.78, 0.07, 0.16));
-  for (let i = 0; i <= N; i += 3) {
+  const tieMat = ctx.mat({ color: 0x6f8383, roughness: 1 });
+  const tieGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 2.4, 0.07, 0.16));
+  for (let i = 0; i <= N; i += tieEvery) {
     const mid = left[i].clone().add(right[i]).multiplyScalar(0.5);
     const tie = new THREE.Mesh(tieGeo, tieMat);
     tie.position.copy(mid);
     tie.lookAt(right[i]);
     g.add(tie);
   }
-  // white support columns
+  // support columns (with a foot) wherever the track is off the ground
   const supMat = ctx.mat({ color: 0xeff3f3, roughness: 1 });
-  for (let i = 0; i <= N; i += 7) {
+  for (let i = 0; i <= N; i += supEvery) {
     const p = samples[i];
     if (p.y > 1.4) {
       const col = new THREE.Mesh(
-        ctx.track.geo(new THREE.CylinderGeometry(0.1, 0.12, p.y, 6)),
+        ctx.track.geo(new THREE.CylinderGeometry(railR * 0.9, railR * 1.2, p.y, 6)),
         supMat
       );
       col.position.set(p.x, p.y / 2, p.z);
@@ -1428,21 +1583,23 @@ function buildCoaster(ctx: BuildCtx, color: number): Ride {
       g.add(col);
     }
   }
-  // station platform
-  const station = new THREE.Mesh(
-    ctx.track.geo(new THREE.BoxGeometry(3, 1.6, 11)),
-    ctx.mat({ color: PAL.woodLight, roughness: 1 })
-  );
-  station.position.set(-13, 0.8, 0);
-  station.receiveShadow = true;
-  g.add(station);
-  // train of cars
+  if (station) {
+    const [sx, sy, sz, sw, sh, sd] = station;
+    const plat = new THREE.Mesh(
+      ctx.track.geo(new THREE.BoxGeometry(sw, sh, sd)),
+      ctx.mat({ color: PAL.woodLight, roughness: 1 })
+    );
+    plat.position.set(sx, sy, sz);
+    plat.receiveShadow = true;
+    g.add(plat);
+  }
+  // train
   const cars: THREE.Mesh[] = [];
-  const carGeo = ctx.track.geo(new THREE.BoxGeometry(0.7, 0.55, 1.15));
-  for (let k = 0; k < 5; k++) {
+  const carGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 2, 0.55, 1.15));
+  for (let k = 0; k < trainCars; k++) {
     const car = new THREE.Mesh(
       carGeo,
-      ctx.lit({ color: k === 0 ? PAL.yellow : color, roughness: 0.8 }, 0.22)
+      ctx.lit({ color: k === 0 ? PAL.yellow : color, roughness: 0.8 }, 0.24)
     );
     car.castShadow = true;
     g.add(car);
@@ -1452,16 +1609,179 @@ function buildCoaster(ctx: BuildCtx, color: number): Ride {
   return {
     group: g,
     update(elapsed) {
-      const speed = 0.045;
       for (let k = 0; k < cars.length; k++) {
-        const t = (elapsed * speed + k * 0.011) % 1;
+        const t = (elapsed * speed + k * 0.01) % 1;
         const p = curve.getPointAt(t);
         const ahead = curve.getPointAt((t + 0.006) % 1);
-        cars[k].position.set(p.x, p.y + 0.28, p.z);
-        cars[k].lookAt(tmp.set(ahead.x, ahead.y + 0.28, ahead.z));
+        cars[k].position.set(p.x, p.y + 0.26, p.z);
+        cars[k].lookAt(tmp.set(ahead.x, ahead.y + 0.26, ahead.z));
       }
     },
   };
+}
+
+/**
+ * A big, dramatic background mega-coaster (VelociCoaster-style): a launch, a tall
+ * top-hat, a vertical loop, a corkscrew roll and low banked turns. Taller rails
+ * and supports than the mid-park coaster so it towers behind the park.
+ */
+function buildBigCoaster(ctx: BuildCtx, color: number): Ride {
+  return coasterTrack(
+    ctx,
+    color,
+    [
+      [-17, 2.4, 6], // station / launch
+      [-9, 2.4, 7],
+      [-2, 11, 6], // up to the top hat
+      [2, 22, 3], // TOP HAT peak
+      [4, 12, 0], // steep drop
+      [5, 2.6, -3], // bottom
+      [8, 8, -5], // up into the vertical loop
+      [12.5, 15, -5],
+      [9, 18.5, -4], // LOOP top (inverted)
+      [5, 14, -4],
+      [6, 6, -4], // loop exit
+      [10, 4, -7], // low banked turn
+      [13, 6, -11],
+      [9, 9.5, -12.5], // corkscrew
+      [4, 8.5, -12.5],
+      [2, 5.5, -10.5],
+      [-3, 6.5, -8], // airtime hills back to station
+      [-9, 4.5, -5],
+      [-15, 3, -1],
+      [-18, 2.6, 3],
+    ],
+    {
+      railR: 0.15,
+      gauge: 0.42,
+      segments: 340,
+      supEvery: 6,
+      trainCars: 7,
+      speed: 0.05,
+      station: [-17, 1.0, 6, 4, 2, 7],
+    }
+  );
+}
+
+/**
+ * A pretty Disney-style fairytale castle: a tall layered central keep with a
+ * blue spire, flanking towers with conical roofs, a crenellated gatehouse, gold
+ * trim and warm windows that glow at night. The park's grand back-drop.
+ */
+function buildCastle(ctx: BuildCtx): THREE.Group {
+  const g = new THREE.Group();
+  const wall = ctx.mat({ color: 0xece2d0, roughness: 1 }); // warm cream stone
+  const blueRoof = ctx.lit({ color: 0x3f6fd8, roughness: 1 }, 0.16);
+  const purpleRoof = ctx.lit({ color: 0x8753bb, roughness: 1 }, 0.16);
+  const gold = ctx.lit({ color: 0xffd24a, roughness: 0.5 }, 0.32);
+  const winMat = ctx.lit({ color: 0xffd98a, roughness: 0.5 }, 0.5); // warm, glows at night
+  const flagMat = ctx.lit({ color: PAL.magenta, roughness: 1 }, 0.25);
+
+  const winGeo = ctx.track.geo(new THREE.BoxGeometry(0.3, 0.62, 0.12));
+  const addWindows = (cx: number, cz: number, r: number, y: number, n: number) => {
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + 0.3;
+      const w = new THREE.Mesh(winGeo, winMat);
+      w.position.set(cx + Math.cos(a) * r, y, cz + Math.sin(a) * r);
+      w.rotation.y = -a + Math.PI / 2;
+      g.add(w);
+    }
+  };
+
+  // a fairytale tower: shaft + conical roof + gold finial + pennant + windows
+  const tower = (
+    x: number,
+    z: number,
+    r: number,
+    h: number,
+    roofH: number,
+    roofMat: THREE.Material
+  ) => {
+    const shaft = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(r, r * 1.08, h, 12)),
+      wall
+    );
+    shaft.position.set(x, h / 2, z);
+    shaft.castShadow = true;
+    g.add(shaft);
+    const roof = new THREE.Mesh(
+      ctx.track.geo(new THREE.ConeGeometry(r * 1.32, roofH, 12)),
+      roofMat
+    );
+    roof.position.set(x, h + roofH / 2, z);
+    roof.castShadow = true;
+    g.add(roof);
+    const finial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(r * 0.22, 8, 8)), gold);
+    finial.position.set(x, h + roofH + r * 0.18, z);
+    g.add(finial);
+    const pole = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(0.04, 0.04, 1.4, 5)),
+      gold
+    );
+    pole.position.set(x, h + roofH + 0.9, z);
+    g.add(pole);
+    const flag = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.85, 0.42, 0.03)), flagMat);
+    flag.position.set(x + 0.48, h + roofH + 1.2, z);
+    g.add(flag);
+    addWindows(x, z, r + 0.02, h * 0.66, 5);
+  };
+
+  // central keep — three stacked drums + a tall spire
+  const k1 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.7, 4.0, 6, 16)), wall);
+  k1.position.y = 3;
+  k1.castShadow = true;
+  g.add(k1);
+  const k2 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.0, 3.3, 6, 16)), wall);
+  k2.position.y = 9;
+  k2.castShadow = true;
+  g.add(k2);
+  const k3 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(2.3, 2.6, 3.5, 16)), wall);
+  k3.position.y = 13.7;
+  g.add(k3);
+  const spire = new THREE.Mesh(ctx.track.geo(new THREE.ConeGeometry(2.7, 10, 16)), blueRoof);
+  spire.position.y = 20.5;
+  spire.castShadow = true;
+  g.add(spire);
+  const spireFinial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(0.5, 10, 10)), gold);
+  spireFinial.position.y = 25.6;
+  g.add(spireFinial);
+  const topPole = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(0.05, 0.05, 2, 6)), gold);
+  topPole.position.y = 27;
+  g.add(topPole);
+  const topFlag = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.1, 0.55, 0.03)), flagMat);
+  topFlag.position.set(0.6, 27.5, 0);
+  g.add(topFlag);
+  addWindows(0, 0, 3.05, 9, 7);
+  addWindows(0, 0, 2.35, 14, 6);
+
+  // crenellated gatehouse at the front (+z)
+  const gate = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(9, 6, 4)), wall);
+  gate.position.set(0, 3, 4.5);
+  gate.castShadow = true;
+  g.add(gate);
+  for (let i = -4; i <= 4; i += 2) {
+    const cren = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.1, 0.9, 1)), wall);
+    cren.position.set(i, 6.4, 4.5);
+    g.add(cren);
+  }
+  // archway (dark recess) + gold rose window
+  const arch = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(2.4, 3.6, 0.5)),
+    ctx.mat({ color: 0x2a2336, roughness: 1 })
+  );
+  arch.position.set(0, 1.8, 6.55);
+  g.add(arch);
+  const rose = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(0.8, 16)), winMat);
+  rose.position.set(0, 4.4, 6.56);
+  g.add(rose);
+
+  // corner / flanking towers
+  tower(-6.2, 3.5, 1.7, 9, 5, blueRoof);
+  tower(6.2, 3.5, 1.7, 9, 5, blueRoof);
+  tower(-5.2, -3.5, 1.5, 12, 6, purpleRoof);
+  tower(5.2, -3.5, 1.5, 12, 6, purpleRoof);
+
+  return g;
 }
 
 // ---------------------------------------------------------------------------
@@ -1663,7 +1983,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   world.add(buildPaths(ctx));
 
   const pond = buildPond(ctx, waterTex);
-  pond.group.position.set(0, 0, -34);
+  pond.group.position.set(0, 0, -25); // lake in front of the castle
   world.add(pond.group);
   animated.push(pond);
 
@@ -1673,7 +1993,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   world.add(entrance);
 
   // forecourt in front of the arch so the approach reads as a welcome plaza
-  const forecourt = pathStrip(ctx, 22, 16);
+  const forecourt = pathStrip(ctx, 22, 16, 0.13);
   forecourt.position.set(0, 0, 43);
   world.add(forecourt);
   for (const sx of [-1, 1]) {
@@ -1682,9 +2002,21 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     world.add(bed);
   }
 
-  // stalls lining the main street (the RCT2 Buden)
-  const stallKinds: StallKind[] = ['icecream', 'burger', 'hotdog', 'drink', 'donut', 'fries'];
-  const awnings: [string, string][] = [
+  // MAIN STREET: a row of individual, varied shop fronts lining the entrance
+  // avenue (Disney "Main Street" style) — each one a different colour/roof/awning.
+  const shopZ = [29, 23.6, 18.2, 12.8];
+  shopZ.forEach((z, i) => {
+    for (const sx of [-1, 1]) {
+      const shop = buildShop(ctx, i * 2 + (sx < 0 ? 0 : 1));
+      shop.position.set(sx * 7.3, 0, z);
+      shop.rotation.y = sx < 0 ? Math.PI / 2 : -Math.PI / 2;
+      world.add(shop);
+    }
+  });
+
+  // classic RCT food kiosks (the "Buden") clustered around the plaza
+  const kioskKinds: StallKind[] = ['icecream', 'burger', 'hotdog', 'drink', 'donut', 'fries'];
+  const kioskAwn: [string, string][] = [
     ['#e30700', '#f7f7f7'],
     ['#2b67df', '#f7f7f7'],
     ['#ffe72f', '#e30700'],
@@ -1692,32 +2024,33 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     ['#db3b8f', '#f7f7f7'],
     ['#ff6f17', '#f7f7f7'],
   ];
-  let si = 0;
-  for (let z = 26; z >= 12; z -= 7) {
-    for (const sx of [-1, 1]) {
-      const stall = buildStall(
-        ctx,
-        stallKinds[si % stallKinds.length],
-        ...awnings[si % awnings.length]
-      );
-      stall.position.set(sx * 6.5, 0, z);
-      stall.rotation.y = sx < 0 ? Math.PI / 2 : -Math.PI / 2;
-      world.add(stall);
-      si++;
-    }
-  }
+  const kioskSpots: [number, number, number][] = [
+    [-9, 3, Math.PI / 2],
+    [9, 3, -Math.PI / 2],
+    [-9, -12, Math.PI / 2],
+    [9, -12, -Math.PI / 2],
+    [7, 9, Math.PI],
+  ];
+  kioskSpots.forEach(([x, z, ry], i) => {
+    const k = buildStall(ctx, kioskKinds[i % kioskKinds.length], ...kioskAwn[i % kioskAwn.length]);
+    k.position.set(x, 0, z);
+    k.rotation.y = ry;
+    world.add(k);
+  });
 
-  // trees scattered on the grass (kept off the paths)
-  for (let i = 0; i < (mobile ? 34 : 70); i++) {
+  // trees scattered on the grass (kept off the paths / buildings) — built as
+  // two instanced meshes for performance
+  const treeSpots: [number, number][] = [];
+  const treeTarget = mobile ? 34 : 70;
+  for (let i = 0; i < treeTarget * 3 && treeSpots.length < treeTarget; i++) {
     const x = rnd(-HALF + 4, HALF - 4);
     const z = rnd(-HALF + 4, HALF - 4);
-    // keep clear of the main street + central plaza
-    if (Math.abs(x) < 6 && z > -18 && z < 32) continue;
-    if (Math.abs(x) < 15 && Math.abs(z) < 10) continue;
-    const tree = buildTree(ctx);
-    tree.position.set(x, 0, z);
-    world.add(tree);
+    if (Math.abs(x) < 11 && z > -20 && z < 34) continue; // clear the main street
+    if (Math.abs(x) < 16 && Math.abs(z) < 12) continue; // clear the central plaza
+    if (Math.abs(x) < 9 && z < -36) continue; // clear the castle
+    treeSpots.push([x, z]);
   }
+  world.add(buildTrees(ctx, treeSpots));
 
   // flower beds around the plaza
   for (const [x, z] of [
@@ -1731,13 +2064,16 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     world.add(bed);
   }
 
-  // benches, bins & lamps along the street
+  // benches, bins & lamps along the street — benches painted in varied colours
+  const benchCols = [0x1f7a3f, 0x21407f, 0xc0392b, 0x2b7a78, 0x6b4423];
+  let bi = 0;
   for (let z = 24; z >= -2; z -= 6) {
     for (const sx of [-1, 1]) {
-      const bench = buildBench(ctx);
+      const bench = buildBench(ctx, benchCols[bi % benchCols.length]);
       bench.position.set(sx * 4.2, 0, z);
       bench.rotation.y = sx < 0 ? Math.PI / 2 : -Math.PI / 2;
       world.add(bench);
+      bi++;
     }
     const lamp = buildLamp(ctx);
     lamp.position.set(4.0, 0, z - 3);
@@ -1790,11 +2126,16 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // (never point-blank as a wall). Low items can go under the flight path.
   addRide(buildFountain(ctx), 0, -4); // plaza centrepiece (low — camera flies over)
   addRide(buildCarousel(ctx), -12, -7); // beside the plaza
-  addRide(buildFerrisWheel(ctx), -21, -20, 0.25); // back-left landmark
-  addRide(buildCoaster(ctx, PAL.red), 21, -19, -0.4); // back-right
-  addRide(buildDropTower(ctx), 0, -33); // tall back-centre spire (rises over the panel)
-  addRide(buildSwingRide(ctx), -15, 8); // mid-left
+  addRide(buildFerrisWheel(ctx), -22, -21, 0.28); // back-left landmark
+  addRide(buildBigCoaster(ctx, 0x1fc6c2), 15, -32, -0.35); // teal mega-coaster, towers in the back
+  addRide(buildDropTower(ctx), -31, -7); // tall spire on the left edge
+  addRide(buildSwingRide(ctx), -14, 9); // mid-left
   addRide(buildSwingRide(ctx), 14, 9); // mid-right
+
+  // Disney-style castle: the grand back-drop at the far end of the park
+  const castle = buildCastle(ctx);
+  castle.position.set(0, 0, -45);
+  world.add(castle);
 
   // -- Floating park.fan marker-pin landmark ---------------------------------
   // Billboards to the camera and gently bobs above the entrance; always bright
@@ -1843,13 +2184,13 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
       new THREE.Vector3(0, 4.0, 30), // THROUGH the arch
       new THREE.Vector3(0, 6.5, 14), // onto the main street
       new THREE.Vector3(0, 9, -2), // over the plaza
-      new THREE.Vector3(-13, 12, -13), // bank toward the back-left
-      new THREE.Vector3(-34, 12, -2), // orbit left
-      new THREE.Vector3(-28, 11, 24), // front-left
-      new THREE.Vector3(0, 13, 44), // wide front
-      new THREE.Vector3(28, 11, 24), // front-right
-      new THREE.Vector3(34, 12, -2), // orbit right
-      new THREE.Vector3(16, 11, -16), // back-right
+      new THREE.Vector3(-14, 11.5, -14), // bank toward the back-left
+      new THREE.Vector3(-30, 12, -3), // orbit left (tightened so the edge isn't empty)
+      new THREE.Vector3(-25, 10.5, 22), // front-left
+      new THREE.Vector3(0, 12.5, 40), // wide front
+      new THREE.Vector3(25, 10.5, 22), // front-right
+      new THREE.Vector3(30, 12, -3), // orbit right
+      new THREE.Vector3(15, 11.5, -15), // back-right
     ],
     true,
     'catmullrom',
@@ -1903,24 +2244,27 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   };
   addSpot(0xff5db0, [-6, 0.4, 40], [0, 7, 34], 90); // pink wash on the entrance
   addSpot(0x5db8ff, [6, 0.4, 40], [0, 7, 34], 90); // blue wash on the entrance
-  addSpot(0xffe072, [0, 0.4, -25], [0, 16, -33], 120); // warm up the drop tower
-  if (!mobile) addSpot(0x8be04e, [-21, 0.4, -11], [-21, 9, -20], 80); // green ferris wheel
+  addSpot(0xbfd0ff, [-7, 0.4, -30], [-3, 16, -45], 340); // cool wash up the castle
+  addSpot(0xffe6a8, [7, 0.4, -30], [3, 16, -45], 300); // warm wash up the castle
+  addSpot(0x2fe0d8, [24, 0.4, -22], [15, 13, -32], 200); // teal up the mega-coaster
+  addSpot(0xffe072, [-31, 0.4, 0], [-31, 12, -7], 150); // warm up the drop tower
+  if (!mobile) addSpot(0x8be04e, [-22, 0.4, -12], [-22, 10, -21], 110); // green ferris wheel
 
   const applyTheme = (theme: SceneTheme) => {
     const night = theme === 'dark';
     scene.background = night ? nightSky : skyTex;
     const fog = scene.fog as THREE.Fog;
-    fog.color.set(night ? 0x0c1730 : 0xcfeaff);
-    fog.near = night ? 44 : 64;
-    fog.far = night ? 210 : 240;
-    hemi.color.set(night ? 0x32508f : 0xdcefff);
-    hemi.groundColor.set(night ? 0x0e1626 : 0x7a9a5a);
-    hemi.intensity = night ? 0.16 : 0.85;
-    ambient.color.set(night ? 0x223a66 : 0xfff3e0);
-    ambient.intensity = night ? 0.05 : 0.2;
-    sun.color.set(night ? 0x9ab4ff : 0xffe7bd);
-    sun.intensity = night ? 0.22 : 2.35;
-    fill.intensity = night ? 0.1 : 0.35;
+    fog.color.set(night ? 0x101d3a : 0xcfeaff);
+    fog.near = night ? 50 : 64;
+    fog.far = night ? 230 : 240;
+    hemi.color.set(night ? 0x3a5aa0 : 0xdcefff);
+    hemi.groundColor.set(night ? 0x141f33 : 0x7a9a5a);
+    hemi.intensity = night ? 0.32 : 0.85;
+    ambient.color.set(night ? 0x2b4a7a : 0xfff3e0);
+    ambient.intensity = night ? 0.14 : 0.2;
+    sun.color.set(night ? 0xaec4ff : 0xffe7bd);
+    sun.intensity = night ? 0.45 : 2.35;
+    fill.intensity = night ? 0.2 : 0.35;
     stars.visible = night;
     moon.visible = night;
     for (const l of nightLights) l.intensity = night ? (l.userData.nightIntensity as number) : 0;
@@ -1938,6 +2282,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const clock = new THREE.Clock();
   let frameId = 0;
   let running = false;
+  let currentRoll = 0; // low-passed banking roll (smoothed across frames)
 
   const renderFrame = (elapsed: number, delta: number) => {
     for (const a of animated) a.update(elapsed, delta);
@@ -1945,16 +2290,16 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     flightPath.getPointAt(t, camPos);
     flightPath.getPointAt((t + LOOK_AHEAD) % 1, tmpAhead);
     flightPath.getPointAt((t - 0.012 + 1) % 1, tmpBehind);
-    // Cinematic banking: roll the camera into turns based on path curvature.
+    // Cinematic banking: roll the camera into turns from path curvature, then
+    // LOW-PASS it — a CatmullRom's curvature is discontinuous at control points,
+    // so using the raw value makes the camera jerk; filtering banks it smoothly.
     camTangent.copy(tmpAhead).sub(tmpBehind).normalize();
     camSide.crossVectors(camTangent, WORLD_UP).normalize();
     camAccel.copy(tmpAhead).add(tmpBehind).addScaledVector(camPos, -2);
-    const roll = THREE.MathUtils.clamp(camAccel.dot(camSide) * 6.5, -0.3, 0.3);
-    camUp.copy(WORLD_UP).applyAxisAngle(camTangent, roll);
+    const targetRoll = THREE.MathUtils.clamp(camAccel.dot(camSide) * 6.5, -0.26, 0.26);
+    currentRoll += (targetRoll - currentRoll) * (delta > 0 ? Math.min(1, delta * 2.5) : 1);
+    camUp.copy(WORLD_UP).applyAxisAngle(camTangent, currentRoll);
     camera.up.copy(camUp);
-    // Pitch the view DOWN at the park (RCT-style iso angle): force the look
-    // target low so the ground & attractions fill the frame instead of empty
-    // sky. Near the entrance keep it higher to look straight THROUGH the arch.
     // Default: pitch DOWN at the park (RCT iso angle); the look target is forced
     // low so the ground & attractions fill the frame instead of empty sky.
     const settle = THREE.MathUtils.smoothstep(t, 0.05, 0.17);
@@ -1963,8 +2308,11 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     const orbit = THREE.MathUtils.smoothstep(t, 0.3, 0.45);
     camLook.copy(tmpAhead).lerp(FOCUS, orbit * 0.55);
     // Opening hero moment: hold the gaze on the entrance arch, banner & floating
-    // park.fan pin as we glide in, then hand off to the through-arch view.
-    const entryW = 1 - THREE.MathUtils.smoothstep(t, 0.0, 0.045);
+    // park.fan pin. Keyed to circular distance from the seam (min(t,1-t)) so the
+    // entrance-look engages smoothly as the camera comes around for the next lap
+    // and never SNAPS at the loop boundary.
+    const seamDist = Math.min(t, 1 - t);
+    const entryW = 1 - THREE.MathUtils.smoothstep(seamDist, 0.0, 0.05);
     camLook.lerp(ENTRY_LOOK, entryW);
     camera.position.copy(camPos);
     camera.lookAt(camLook);

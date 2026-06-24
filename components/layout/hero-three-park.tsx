@@ -9,9 +9,10 @@
  *
  * Loading strategy: pulled in via a `ssr:false` dynamic import (see
  * `hero-background.tsx`), so three.js is code-split into its own chunk and never
- * blocks SSR or the hero's LCP. A CSS gradient sky shows underneath instantly; a
- * small loader overlay runs until the scene's textures have loaded, then the
- * canvas fades in.
+ * blocks SSR or the hero's LCP. A CSS gradient sky shows underneath instantly;
+ * the canvas fades in once the scene's textures have loaded. The loader chip
+ * itself lives in the (always-mounted) parent so it can show during the chunk
+ * download too — this component just reports readiness via `onReady`.
  *
  *  - **Theme-aware:** re-applies day/night whenever next-themes resolves.
  *  - **Reduced motion:** renders a single static frame, no animation loop.
@@ -20,15 +21,27 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTheme } from 'next-themes';
-import { Loader2 } from 'lucide-react';
 import { createParkScene, type ParkSceneHandle, type SceneTheme } from '@/lib/three/park-scene';
 import { cn } from '@/lib/utils';
 
-export function HeroThreePark({ className }: { className?: string }) {
+export function HeroThreePark({
+  className,
+  onReady,
+}: {
+  className?: string;
+  onReady?: () => void;
+}) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleRef = useRef<ParkSceneHandle | null>(null);
+  // Keep the latest onReady in a ref so the (one-time) scene effect never needs
+  // it as a dependency — otherwise an inline parent callback would rebuild the
+  // whole scene on every render.
+  const onReadyRef = useRef(onReady);
+  useEffect(() => {
+    onReadyRef.current = onReady;
+  });
   // `ready` flips once the scene's textures have loaded (or a safety timeout),
-  // fading the canvas in and hiding the loader.
+  // fading the canvas in.
   const [ready, setReady] = useState(false);
   const { resolvedTheme } = useTheme();
 
@@ -40,7 +53,9 @@ export function HeroThreePark({ className }: { className?: string }) {
     // setState is never called synchronously in the effect body (that triggers
     // a cascading-render lint error) — always via rAF / timeout / async callback.
     const markReady = () => {
-      if (mounted) setReady(true);
+      if (!mounted) return;
+      setReady(true);
+      onReadyRef.current?.();
     };
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -95,31 +110,15 @@ export function HeroThreePark({ className }: { className?: string }) {
   }, [resolvedTheme]);
 
   return (
-    <>
-      <canvas
-        ref={canvasRef}
-        aria-hidden="true"
-        className={cn(
-          'absolute inset-0 h-full w-full transition-opacity duration-[1200ms] ease-out',
-          ready ? 'opacity-100' : 'opacity-0',
-          className
-        )}
-      />
-      {/* Loader: a small chip near the bottom of the hero, clear of the content
-          card, that fades out once the 3D park is ready. */}
-      <div
-        aria-hidden="true"
-        className={cn(
-          'pointer-events-none absolute inset-x-0 bottom-6 flex justify-center transition-opacity duration-500',
-          ready ? 'opacity-0' : 'opacity-100'
-        )}
-      >
-        <span className="bg-background/55 text-foreground/80 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-md">
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          Loading 3D park…
-        </span>
-      </div>
-    </>
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      className={cn(
+        'absolute inset-0 h-full w-full transition-opacity duration-[1200ms] ease-out',
+        ready ? 'opacity-100' : 'opacity-0',
+        className
+      )}
+    />
   );
 }
 
