@@ -342,26 +342,25 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // further along the same path, so the camera always faces where it's going.
   const flightPath = new THREE.CatmullRomCurve3(
     [
-      new THREE.Vector3(0, 5, 34),
-      new THREE.Vector3(0, 4.3, 12),
-      new THREE.Vector3(0, 4.2, -13), // freestanding gate (z≈-13)
-      new THREE.Vector3(0, 4.3, -22),
-      new THREE.Vector3(0, 4.4, -30), // THROUGH the castle archway tunnel (x=0)
-      new THREE.Vector3(0, 5.6, -42), // emerge into the courtyard garden
-      new THREE.Vector3(0, 12, -54), // rise over the garden
-      new THREE.Vector3(-36, 19, -58),
-      new THREE.Vector3(-58, 16, -8),
-      new THREE.Vector3(-34, 13, 40),
-      new THREE.Vector3(0, 12, 60),
-      new THREE.Vector3(34, 13, 40),
-      new THREE.Vector3(58, 16, -8),
-      new THREE.Vector3(36, 19, -58),
+      new THREE.Vector3(0, 13, 42), // approach overview
+      new THREE.Vector3(0, 6.5, 14), // descend toward the gate
+      new THREE.Vector3(0, 4.5, -13), // brief dramatic dip THROUGH the gate
+      new THREE.Vector3(0, 4.6, -30), // through the castle archway tunnel (x=0)
+      new THREE.Vector3(0, 8, -44), // emerge into the courtyard, climbing
+      new THREE.Vector3(0, 18, -56), // frame the finale lake + the mountain marker
+      new THREE.Vector3(-36, 19, -46), // …then a closer overview orbit so the park,
+      new THREE.Vector3(-52, 16, -4), //   its attractions and the wide castle stay
+      new THREE.Vector3(-38, 14, 42), //   present and full in frame (not distant)
+      new THREE.Vector3(0, 16, 54),
+      new THREE.Vector3(38, 14, 42),
+      new THREE.Vector3(52, 16, -4),
+      new THREE.Vector3(36, 19, -46),
     ],
     true,
     'catmullrom',
     0.5
   );
-  const LAP_SECONDS = 92; // slow, stately flight
+  const LAP_SECONDS = 96; // slow, stately flight
   const LOOK_AHEAD = 0.016;
   const camPos = new THREE.Vector3();
   const camTarget = new THREE.Vector3();
@@ -581,20 +580,45 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   ];
   lanternSpots.forEach(([x, z], i) => root.add(buildLantern(ctx, x, z, i % 2 === 0)));
 
-  // Trees framing the park.
+  // Trees framing the park + filling the empty stretches (front avenue, edges,
+  // and all around the finale behind the castle) so no area reads as bare.
   const treeSpots: Array<[number, number]> = [
+    // outer ring / edges
     [-40, 14],
     [-44, -18],
     [40, 16],
     [45, -4],
-    [-18, 24],
-    [8, 24],
-    [34, 22],
-    [-36, 22],
     [44, -24],
     [-46, -4],
+    // front avenue (Main Street) — denser
+    [-18, 24],
+    [8, 24],
     [20, 26],
     [-26, 26],
+    [-14, 30],
+    [14, 30],
+    [-22, 33],
+    [22, 33],
+    [-9, 27],
+    [9, 27],
+    // mid-park fill
+    [34, 22],
+    [-36, 22],
+    [30, 4],
+    [-31, -3],
+    [33, -16],
+    [-33, -14],
+    // around the finale behind the castle (z further negative)
+    [-22, -50],
+    [22, -50],
+    [-30, -60],
+    [30, -60],
+    [-16, -64],
+    [16, -64],
+    [-34, -44],
+    [34, -44],
+    [-12, -74],
+    [12, -74],
   ];
   for (const [x, z] of treeSpots) {
     const tree = buildTree(ctx);
@@ -2211,9 +2235,11 @@ function buildGrandFinale({ track, plain, lit, loadImage }: BuildCtx): Animated 
   splash.position.set(0, 0.18, -12);
   group.add(splash);
 
-  // Giant glowing park.fan location marker hovering over the lake, with a halo.
+  // Giant glowing park.fan marker crowning the mountain peak — high against the
+  // sky so it never clips into geometry or the camera path, and reads above the
+  // glass panel. Faces the approach (+z); a gentle sway keeps it lively.
   const markerTex = loadImage('/logo-dark.png'); // 569×683 pin marker
-  const markerH = 9;
+  const markerH = 13;
   const marker = new THREE.Mesh(
     track.geo(new THREE.PlaneGeometry((markerH * 569) / 683, markerH)),
     track.mat(
@@ -2225,13 +2251,14 @@ function buildGrandFinale({ track, plain, lit, loadImage }: BuildCtx): Animated 
       })
     )
   );
-  marker.position.set(0, 17, 0);
+  const markerY = 54;
+  marker.position.set(0, markerY, -22); // above the peak (mountain is at z=-22 local)
   group.add(marker);
   const halo = new THREE.Mesh(
-    track.geo(new THREE.CircleGeometry(6, 32)),
-    lit({ color: 0x5db8ff, transparent: true, opacity: 0.18 }, 1.2)
+    track.geo(new THREE.CircleGeometry(8, 32)),
+    lit({ color: 0x5db8ff, transparent: true, opacity: 0.2 }, 1.2)
   );
-  halo.position.set(0, 17.5, -0.3);
+  halo.position.set(0, markerY + 0.5, -22.3);
   group.add(halo);
 
   return {
@@ -2243,8 +2270,8 @@ function buildGrandFinale({ track, plain, lit, loadImage }: BuildCtx): Animated 
         j.mesh.position.y = h / 2;
       }
       fallTex.offset.y = -elapsed * 0.6;
-      marker.position.y = 17 + Math.sin(elapsed * 0.8) * 0.6;
-      marker.rotation.y = Math.sin(elapsed * 0.3) * 0.3;
+      marker.position.y = markerY + Math.sin(elapsed * 0.8) * 0.8;
+      marker.rotation.y = Math.sin(elapsed * 0.3) * 0.35;
       halo.position.y = marker.position.y + 0.5;
     },
   };
