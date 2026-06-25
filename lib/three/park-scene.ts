@@ -2012,53 +2012,51 @@ function buildPirateShip(ctx: BuildCtx): Ride {
 }
 
 /**
- * A compact log flume water ride: a high station, a steep blue water drop into a
- * splash pool, white support columns, log boats sliding down on a loop and a
- * recurring splash burst at the bottom.
+ * A COMPLETE log-flume circuit (not just a drop): one closed loop carrying boats
+ * up a lift hill, along a top channel, down a small drop then a big drop into a
+ * splash pool, around a low return channel and back up the lift. The chute is
+ * built from short segments that follow the loop; the boats ride it continuously.
  */
 function buildLogFlume(ctx: BuildCtx): Ride {
   const g = new THREE.Group();
   const woodMat = ctx.mat({ color: 0x8f6327, roughness: 1 });
   const supMat = ctx.mat({ color: 0xeff3f3, roughness: 1 });
+  const roofMat = ctx.lit({ color: 0xc0392b, roughness: 1 }, 0.12);
   const waterMat = ctx.lit(
     { color: 0x4fb3e8, roughness: 0.3, transparent: true, opacity: 0.9 },
     0.16
   );
   const UP = new THREE.Vector3(0, 1, 0);
-  const fwdX = new THREE.Vector3(1, 0, 0);
-  const TOP = 9;
-  const chX0 = -7; // channel start x
-  const chX1 = -3; // channel end x — where the drop curve begins
 
-  // top station + flat channel (kept entirely in the local x–y plane, z = 0, so
-  // the drop is a clean 2-D pitch-down with NO sideways veer)
-  const plat = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.7, 3)), woodMat);
-  plat.position.set(-4.6, TOP - 0.6, 0);
-  plat.castShadow = true;
-  g.add(plat);
-  for (const wz of [-1.45, 1.45]) {
-    const rail = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.4, 0.16)), woodMat);
-    rail.position.set(-4.6, TOP, wz);
-    g.add(rail);
-  }
-  const topWater = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.12, 2.6)), waterMat);
-  topWater.position.set(-4.6, TOP - 0.12, 0);
-  g.add(topWater);
+  // The whole ride is ONE closed circuit: lift hill → top channel → small drop →
+  // big drop into the pool → low return channel → back to the lift. Built in 3-D
+  // but with no near-vertical tangents, so the chute segments orient cleanly.
+  const loop = new THREE.CatmullRomCurve3(
+    [
+      new THREE.Vector3(-6.0, 8.4, -2.0), // 0 top of lift / start of the channel
+      new THREE.Vector3(-3.6, 8.3, -2.0), // 1 top channel
+      new THREE.Vector3(-2.0, 8.0, -2.0), // 2 first (small) drop begins
+      new THREE.Vector3(-0.2, 6.5, -2.0), // 3 foot of the small drop
+      new THREE.Vector3(1.3, 6.1, -2.0), // 4 short level mid-section
+      new THREE.Vector3(3.2, 3.0, -2.0), // 5 the big drop
+      new THREE.Vector3(4.8, 1.2, -2.0), // 6
+      new THREE.Vector3(6.3, 0.55, -1.5), // 7 splash-down
+      new THREE.Vector3(7.4, 0.5, 0.1), // 8 U-turn (right end)
+      new THREE.Vector3(6.3, 0.55, 1.7), // 9 into the return
+      new THREE.Vector3(3.2, 0.7, 2.2), // 10 low return channel (back)
+      new THREE.Vector3(-0.8, 0.82, 2.2), // 11 return channel
+      new THREE.Vector3(-4.6, 0.98, 2.0), // 12
+      new THREE.Vector3(-6.7, 1.3, 1.1), // 13 lift base (left end)
+      new THREE.Vector3(-7.1, 4.7, -0.5), // 14 up the lift hill
+    ],
+    true,
+    'catmullrom',
+    0.5
+  );
 
-  // The DROP as ONE smooth curve in the x–y plane: it leaves the channel
-  // horizontal (so the transition is seamless — no hard corner), steepens through
-  // the middle, then flattens into the splash pool. Built from short channel
-  // segments (floor + low side walls + water) that follow the curve's tangent.
-  const drop = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(chX1, TOP - 0.2, 0),
-    new THREE.Vector3(chX1 + 1.1, TOP - 0.45, 0),
-    new THREE.Vector3(0.6, 6.0, 0),
-    new THREE.Vector3(2.9, 2.8, 0),
-    new THREE.Vector3(4.8, 1.0, 0),
-    new THREE.Vector3(6.2, 0.7, 0),
-  ]);
-  const SEG = 18;
-  const pts = drop.getSpacedPoints(SEG);
+  // chute as short segments (floor + low side walls + water) following the loop
+  const SEG = ctx.mobile ? 16 : 28;
+  const pts = loop.getSpacedPoints(SEG);
   const segMid = new THREE.Vector3();
   const segDir = new THREE.Vector3();
   const segQ = new THREE.Quaternion();
@@ -2067,60 +2065,59 @@ function buildLogFlume(ctx: BuildCtx): Ride {
   for (let i = 0; i < SEG; i++) {
     const p0 = pts[i];
     const p1 = pts[i + 1];
-    const segLen = p0.distanceTo(p1) + 0.08; // slight overlap hides the joints
+    const segLen = p0.distanceTo(p1) + 0.1; // slight overlap hides the joints
     segMid.copy(p0).add(p1).multiplyScalar(0.5);
     segDir.copy(p1).sub(p0).normalize();
     segQ.setFromRotationMatrix(lookM.lookAt(zero, segDir, UP));
     const seg = new THREE.Group();
     seg.position.copy(segMid);
     seg.quaternion.copy(segQ);
-    const floor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.7, 0.18, segLen)), woodMat);
-    seg.add(floor);
-    for (const wx of [-0.85, 0.85]) {
-      const wall = new THREE.Mesh(
-        ctx.track.geo(new THREE.BoxGeometry(0.16, 0.46, segLen)),
-        woodMat
-      );
-      wall.position.set(wx, 0.22, 0);
+    seg.add(new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.6, 0.18, segLen)), woodMat));
+    for (const wx of [-0.8, 0.8]) {
+      const wall = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.14, 0.4, segLen)), woodMat);
+      wall.position.set(wx, 0.2, 0);
       seg.add(wall);
     }
-    const w = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.4, 0.1, segLen)), waterMat);
-    w.position.set(0, 0.16, 0);
+    const w = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.32, 0.1, segLen)), waterMat);
+    w.position.set(0, 0.15, 0);
     seg.add(w);
     g.add(seg);
   }
 
-  // splash pool at the foot of the drop
-  const poolX = 7.2;
-  const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(3.6, 28)), waterMat);
+  // little station house at the top of the lift
+  const station = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(4, 1.3, 3.4)), woodMat);
+  station.position.set(-4.7, 7.55, -2);
+  station.castShadow = true;
+  g.add(station);
+  const roof = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(4.6, 0.3, 4)), roofMat);
+  roof.position.set(-4.7, 8.95, -2);
+  roof.castShadow = true;
+  g.add(roof);
+
+  // splash pool at the foot of the big drop
+  const splashPt = new THREE.Vector3(6.0, 0.16, -1.0);
+  const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(2.9, 28)), waterMat);
   pool.rotation.x = -Math.PI / 2;
-  pool.position.set(poolX, 0.16, 0);
+  pool.position.copy(splashPt);
   g.add(pool);
 
-  // support columns under the station + along the drop curve
-  const colSpots: [number, number][] = [
-    [-6.4, TOP - 0.6],
-    [-2.9, TOP - 0.7],
-  ];
-  for (const t of [0.34, 0.62, 0.85]) {
-    const cp = drop.getPointAt(t);
-    colSpots.push([cp.x, cp.y - 0.2]);
-  }
-  for (const [cx, ch] of colSpots) {
-    if (ch < 1) continue;
-    const col = new THREE.Mesh(
-      ctx.track.geo(new THREE.CylinderGeometry(0.16, 0.18, ch, 6)),
-      supMat
-    );
-    col.position.set(cx, ch / 2, 0);
+  // support columns along the elevated parts of the loop (skip the low return)
+  const cp = new THREE.Vector3();
+  for (let i = 0; i < 14; i++) {
+    loop.getPointAt(i / 14, cp);
+    const h = cp.y - 0.25;
+    if (h < 1.4) continue;
+    const col = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(0.15, 0.17, h, 6)), supMat);
+    col.position.set(cp.x, h / 2, cp.z);
     col.castShadow = true;
     g.add(col);
   }
 
-  // log boats: ride the channel, then follow the drop curve (nose tilts to match)
+  // log boats riding the full circuit
   const logs: THREE.Mesh[] = [];
   const logGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.32, 0.95, 4, 10));
-  for (let k = 0; k < 2; k++) {
+  const nBoats = ctx.mobile ? 2 : 3;
+  for (let k = 0; k < nBoats; k++) {
     const log = new THREE.Mesh(logGeo, ctx.mat({ color: 0x6b4423, roughness: 1 }));
     g.add(log);
     logs.push(log);
@@ -2149,34 +2146,27 @@ function buildLogFlume(ctx: BuildCtx): Ride {
   const ss = new THREE.Vector3();
   const cpv = new THREE.Vector3();
   const tan = new THREE.Vector3();
+  const U_SPLASH = 0.47; // loop param of the splash-down
   return {
     group: g,
     update(elapsed) {
       for (let k = 0; k < logs.length; k++) {
-        const t = (elapsed * 0.3 + k * 0.5) % 1;
-        if (t < 0.4) {
-          // riding the flat top channel toward the drop (lying along +x)
-          const u = t / 0.4;
-          logs[k].position.set(chX0 + u * (chX1 - chX0), TOP - 0.02, 0);
-          logs[k].quaternion.setFromUnitVectors(UP, fwdX);
-        } else {
-          // following the drop curve, nose tilted to the local tangent
-          const u = (t - 0.4) / 0.6;
-          drop.getPointAt(u, cpv);
-          drop.getTangentAt(u, tan);
-          logs[k].position.set(cpv.x, cpv.y + 0.14, cpv.z);
-          logs[k].quaternion.setFromUnitVectors(UP, tan);
-        }
+        const u = (elapsed * 0.05 + k / logs.length) % 1;
+        loop.getPointAt(u, cpv);
+        loop.getTangentAt(u, tan);
+        logs[k].position.set(cpv.x, cpv.y + 0.14, cpv.z);
+        logs[k].quaternion.setFromUnitVectors(UP, tan);
       }
-      // splash cycles at the pool
-      const sphase = (elapsed * 0.3) % 0.5;
-      const sf = Math.max(0, 1 - sphase / 0.5);
+      // splash when the lead boat reaches the splash-down point
+      const u0 = (elapsed * 0.05) % 1;
+      const d = Math.abs(u0 - U_SPLASH);
+      const sf = Math.max(0, 1 - Math.min(d, 1 - d) / 0.07);
       (splash.material as THREE.MeshStandardMaterial).opacity = 0.85 * sf;
       const grow = (1 - sf) * 2.2;
       ss.set(0.4 + sf * 0.6, 0.4 + sf * 0.6, 0.4 + sf * 0.6);
       for (let i = 0; i < 14; i++) {
         sp.copy(sd[i]).multiplyScalar(grow);
-        sp.set(poolX + sp.x, 0.5 + sd[i].y * (1 - sf) * 1.4, sp.z);
+        sp.set(splashPt.x + sp.x, 0.5 + sd[i].y * (1 - sf) * 1.4, splashPt.z + sp.z);
         splash.setMatrixAt(i, m.compose(sp, noRot, ss));
       }
       splash.instanceMatrix.needsUpdate = true;
@@ -2278,11 +2268,11 @@ function buildCastle(ctx: BuildCtx): THREE.Group {
   addWindows(0, 0, 2.35, 14, 6);
 
   // crenellated gatehouse at the front (+z)
-  const gate = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(9, 6, 4)), wall);
+  const gate = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(11, 6, 4)), wall);
   gate.position.set(0, 3, 4.5);
   gate.castShadow = true;
   g.add(gate);
-  for (let i = -4; i <= 4; i += 2) {
+  for (let i = -5; i <= 5; i += 2) {
     const cren = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.1, 0.9, 1)), wall);
     cren.position.set(i, 6.4, 4.5);
     g.add(cren);
@@ -2298,11 +2288,41 @@ function buildCastle(ctx: BuildCtx): THREE.Group {
   rose.position.set(0, 4.4, 6.56);
   g.add(rose);
 
-  // corner / flanking towers
-  tower(-6.2, 3.5, 1.7, 9, 5, blueRoof);
-  tower(6.2, 3.5, 1.7, 9, 5, blueRoof);
-  tower(-5.2, -3.5, 1.5, 12, 6, purpleRoof);
-  tower(5.2, -3.5, 1.5, 12, 6, purpleRoof);
+  // a low crenellated curtain wall segment (box + sparse merlons on the top)
+  const addWall = (cx: number, cz: number, w: number, d: number, h: number) => {
+    const seg = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(w, h, d)), wall);
+    seg.position.set(cx, h / 2, cz);
+    seg.castShadow = true;
+    g.add(seg);
+    const alongX = w >= d;
+    const span = (alongX ? w : d) - 0.6;
+    const n = Math.max(1, Math.round(span / 1.5));
+    for (let i = 0; i <= n; i++) {
+      const o = -span / 2 + (i * span) / n;
+      const cren = new THREE.Mesh(
+        ctx.track.geo(new THREE.BoxGeometry(alongX ? 0.7 : d + 0.1, 0.7, alongX ? d + 0.1 : 0.7)),
+        wall
+      );
+      cren.position.set(alongX ? cx + o : cx, h + 0.35, alongX ? cz : cz + o);
+      g.add(cren);
+    }
+  };
+
+  // sprawling curtain walls linking the towers (front + both sides) so the castle
+  // reads as a broad walled complex, not just a cluster of towers
+  addWall(-8.4, 5, 5.8, 3, 4.4); // front wall: left corner tower → gatehouse
+  addWall(8.4, 5, 5.8, 3, 4.4); // front wall: gatehouse → right corner tower
+  addWall(-11.3, -1, 3, 11.2, 4); // left side wall
+  addWall(11.3, -1, 3, 11.2, 4); // right side wall
+
+  // towers — spread WIDE for a sprawling footprint (tall pair flanking the keep,
+  // plus front & back corner towers anchoring the curtain walls)
+  tower(-5.6, -1.5, 1.9, 13, 6.5, purpleRoof); // tall flanking (left)
+  tower(5.6, -1.5, 1.9, 13, 6.5, purpleRoof); // tall flanking (right)
+  tower(-11.3, 5, 1.8, 9, 5, blueRoof); // front-left corner
+  tower(11.3, 5, 1.8, 9, 5, blueRoof); // front-right corner
+  tower(-11.3, -6.5, 1.6, 10.5, 5.6, blueRoof); // back-left corner
+  tower(11.3, -6.5, 1.6, 10.5, 5.6, blueRoof); // back-right corner
 
   return g;
 }
@@ -2572,7 +2592,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     [29, -25, 17], // mega-coaster footprint
     [-31, -7, 4], // drop tower
     [-14, 9, 4.5], // swing
-    [15, 6, 10], // log flume
+    [18.5, 1, 12], // log flume
     [-12, -7, 6], // carousel
     [0, -4, 5], // fountain
     [0, -27, 11], // lake + pirate ship
@@ -2681,7 +2701,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   addRide(buildBigCoaster(ctx, 0x1fc6c2), 29, -25, -0.1); // teal mega-coaster, back-right (clear of the castle + lake)
   addRide(buildDropTower(ctx), -31, -7); // tall spire on the left edge
   addRide(buildSwingRide(ctx), -14, 9); // mid-left
-  addRide(buildLogFlume(ctx), 15, 6, -0.3); // mid-right water ride
+  addRide(buildLogFlume(ctx), 18.5, 1, -0.3); // right-side water ride (clear of the shops)
   addRide(buildPirateShip(ctx), 0, -27, 0.5); // galleon on the lake
 
   // Disney-style castle: the grand back-drop at the far end of the park
