@@ -459,26 +459,46 @@ function buildFence(ctx: BuildCtx, len: number): THREE.Group {
 }
 
 /** A lamp post (unlit by day, but a warm glowing globe for life). */
-function buildLamp(ctx: BuildCtx): THREE.Group {
+function buildLamp(ctx: BuildCtx, armDir = 1): THREE.Group {
   const g = new THREE.Group();
-  const pole = new THREE.Mesh(
-    ctx.track.geo(new THREE.CylinderGeometry(0.07, 0.09, 3, 6)),
-    ctx.mat({ color: 0x3f5353, roughness: 1 })
-  );
+  const metal = ctx.mat({ color: 0x3f5353, roughness: 1 });
+  const pole = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(0.07, 0.09, 3, 6)), metal);
   pole.position.y = 1.5;
   pole.castShadow = true;
   g.add(pole);
+  // a short arm reaches out from the top so the lantern can dangle from a cable
+  // over the path (instead of perching on the pole tip)
+  const armLen = 0.5;
+  const arm = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(0.04, 0.04, armLen, 5)),
+    metal
+  );
+  arm.rotation.z = Math.PI / 2;
+  arm.position.set((armDir * armLen) / 2, 2.98, 0);
+  g.add(arm);
+  const tipX = armDir * armLen;
+  // the cable the lantern hangs from
+  const cable = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(0.018, 0.018, 0.42, 4)),
+    ctx.mat({ color: 0x222a2a, roughness: 1 })
+  );
+  cable.position.set(tipX, 2.74, 0);
+  g.add(cable);
+  // little cap the cable clips onto, then the glowing lantern below it
+  const cap = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(0.08, 0.12, 0.1, 8)), metal);
+  cap.position.set(tipX, 2.59, 0);
+  g.add(cap);
   const globe = new THREE.Mesh(
-    ctx.track.geo(new THREE.SphereGeometry(0.22, 8, 8)),
+    ctx.track.geo(new THREE.SphereGeometry(0.22, 12, 12)),
     ctx.lit({ color: 0xfff3df, roughness: 0.5 }, 0.7)
   );
-  globe.position.y = 3.05;
+  globe.position.set(tipX, 2.4, 0);
   g.add(globe);
   // warm pool of light, switched on at night (skipped on mobile for perf — the
-  // emissive globe still glows via bloom)
+  // emissive lantern still glows via bloom)
   if (!ctx.mobile) {
     const bulb = new THREE.PointLight(0xffdca8, 0, 15, 1.7);
-    bulb.position.y = 3.0;
+    bulb.position.set(tipX, 2.4, 0);
     ctx.nightLight(bulb, 8);
     g.add(bulb);
   }
@@ -1188,16 +1208,26 @@ function buildBunting(
   const noRot = new THREE.Quaternion();
   const one = new THREE.Vector3(1, 1, 1);
   const p = new THREE.Vector3();
+  const wirePts: THREE.Vector3[] = [];
   for (let i = 0; i < segs; i++) {
     const t = i / (segs - 1);
     p.copy(a).lerp(b, t);
     p.y -= Math.sin(t * Math.PI) * sag;
+    wirePts.push(new THREE.Vector3(p.x, p.y + 0.2, p.z)); // the cable runs along the flag tops
     flags.setMatrixAt(i, m.compose(p, flagRot, one));
     p.y -= 0.28;
     bulbs.setMatrixAt(i, m.compose(p, noRot, one));
   }
   flags.instanceMatrix.needsUpdate = true;
   bulbs.instanceMatrix.needsUpdate = true;
+  // the swagged cable the lampions actually hang from (was missing — they floated)
+  const wire = new THREE.Mesh(
+    ctx.track.geo(
+      new THREE.TubeGeometry(new THREE.CatmullRomCurve3(wirePts), segs * 2, 0.03, 5, false)
+    ),
+    ctx.mat({ color: 0x2a2a2a, roughness: 1 })
+  );
+  g.add(wire);
   g.add(flags);
   g.add(bulbs);
   return g;
@@ -1864,6 +1894,27 @@ function buildPirateShip(ctx: BuildCtx): Ride {
   hull.position.y = 1.0;
   hull.castShadow = true;
   g.add(hull);
+  // pointed bow (prow) so the front tapers to an edge instead of a flat box
+  // face — a 3-sided prism stood on end with one vertex aimed forward (+x),
+  // squashed along its length so the point is bluff, not needle-sharp
+  const bow = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(1.49, 1.49, 1.7, 3)),
+    hullMat
+  );
+  bow.rotation.y = Math.PI / 2;
+  bow.scale.z = 0.62;
+  bow.position.set(3.96, 1.0, 0);
+  bow.castShadow = true;
+  g.add(bow);
+  // gold trim cap following the prow point
+  const bowTrim = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(1.49, 1.49, 0.26, 3)),
+    trimMat
+  );
+  bowTrim.rotation.y = Math.PI / 2;
+  bowTrim.scale.z = 0.62;
+  bowTrim.position.set(3.96, 1.75, 0);
+  g.add(bowTrim);
   const trim = new THREE.Mesh(
     ctx.track.geo(new THREE.BoxGeometry(L + 0.15, 0.28, W + 0.15)),
     trimMat
@@ -1882,13 +1933,14 @@ function buildPirateShip(ctx: BuildCtx): Ride {
   );
   deck.position.y = 1.78;
   g.add(deck);
-  // bowsprit (angled spar at the front)
+  // bowsprit (angled spar) springing UP and FORWARD from the prow — not dipping
+  // down into the water as before
   const bowsprit = new THREE.Mesh(
-    ctx.track.geo(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 6)),
+    ctx.track.geo(new THREE.CylinderGeometry(0.08, 0.08, 2.2, 6)),
     mastMat
   );
-  bowsprit.position.set(L / 2 + 0.6, 2.2, 0);
-  bowsprit.rotation.z = Math.PI / 2 - 0.5;
+  bowsprit.position.set(4.7, 2.3, 0);
+  bowsprit.rotation.z = 0.5 - Math.PI / 2;
   g.add(bowsprit);
   // masts with square sails + yards
   for (const [mx, mh, sw] of [
@@ -2530,10 +2582,10 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
       world.add(bench);
       bi++;
     }
-    const lamp = buildLamp(ctx);
+    const lamp = buildLamp(ctx, -1); // right side: arm reaches in over the path
     lamp.position.set(4.0, 0, z - 3);
     world.add(lamp);
-    const lamp2 = buildLamp(ctx);
+    const lamp2 = buildLamp(ctx, 1); // left side: arm reaches in over the path
     lamp2.position.set(-4.0, 0, z - 3);
     world.add(lamp2);
     if (z % 12 === 0) {
