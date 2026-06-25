@@ -314,9 +314,9 @@ function buildPaths(ctx: BuildCtx): THREE.Group {
 
 function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group } & Animated {
   const g = new THREE.Group();
-  waterTex.repeat.set(3, 3);
+  waterTex.repeat.set(4, 4);
   const water = new THREE.Mesh(
-    ctx.track.geo(new THREE.CircleGeometry(11, 36)),
+    ctx.track.geo(new THREE.CircleGeometry(14, 48)),
     ctx.mat({
       map: waterTex,
       color: PAL.waterLight,
@@ -331,7 +331,7 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
   g.add(water);
   // stone rim
   const rim = new THREE.Mesh(
-    ctx.track.geo(new THREE.TorusGeometry(11.2, 0.5, 8, 40)),
+    ctx.track.geo(new THREE.TorusGeometry(14.2, 0.55, 8, 48)),
     ctx.mat({ color: PAL.stone, roughness: 1 })
   );
   rim.rotation.x = -Math.PI / 2;
@@ -1917,7 +1917,9 @@ function buildPirateShip(ctx: BuildCtx): Ride {
     update(elapsed) {
       g.rotation.z = Math.sin(elapsed * 0.6) * 0.045;
       g.rotation.x = Math.sin(elapsed * 0.5 + 1) * 0.03;
-      g.position.y = Math.sin(elapsed * 0.7) * 0.12;
+      // Sit the hull DOWN in the water (waterline part-way up the hull) so it
+      // floats IN the lake rather than perched on top of the surface; bob gently.
+      g.position.y = -0.5 + Math.sin(elapsed * 0.7) * 0.1;
     },
   };
 }
@@ -1936,6 +1938,8 @@ function buildLogFlume(ctx: BuildCtx): Ride {
     0.16
   );
   const TOP = 10;
+  const UP = new THREE.Vector3(0, 1, 0);
+  const topDir = new THREE.Vector3(1, 0, 0); // top channel travels +x
   const a = new THREE.Vector3(-1, TOP - 0.2, -3.5); // top of the drop
   const b = new THREE.Vector3(2.5, 0.8, 4.2); // splash-down point
   // top station + flat channel
@@ -1946,19 +1950,53 @@ function buildLogFlume(ctx: BuildCtx): Ride {
   const topWater = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(4.4, 0.18, 2)), waterMat);
   topWater.position.set(-3.3, TOP - 0.1, -3.5);
   g.add(topWater);
-  // the steep drop (trough + water surface), aligned a → b
+  // The steep drop as a proper U-channel (floor + two side walls + a water
+  // surface), aligned a → b. Orientation is built in LOCAL space from the slope
+  // direction (NOT Object3D.lookAt, which treats the target as a world point and
+  // so mis-aligns once this ride is translated/rotated into the park).
   const mid = a.clone().add(b).multiplyScalar(0.5);
   const len = a.distanceTo(b);
-  const trough = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.4, 0.4, len)), woodMat);
-  trough.position.copy(mid);
-  trough.lookAt(b);
-  trough.castShadow = true;
-  g.add(trough);
-  const chute = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.8, 0.14, len)), waterMat);
-  chute.position.copy(mid);
-  chute.position.y += 0.24;
-  chute.lookAt(b);
-  g.add(chute);
+  const dropDir = b.clone().sub(a).normalize();
+  const dropQuat = new THREE.Quaternion().setFromRotationMatrix(
+    new THREE.Matrix4().lookAt(new THREE.Vector3(0, 0, 0), dropDir, UP)
+  );
+  const dropGroup = new THREE.Group();
+  dropGroup.position.copy(mid);
+  dropGroup.quaternion.copy(dropQuat);
+  g.add(dropGroup);
+  const floor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.0, 0.28, len)), woodMat);
+  floor.castShadow = true;
+  dropGroup.add(floor);
+  for (const wx of [-1, 1]) {
+    const wall = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.22, 0.66, len)), woodMat);
+    wall.position.set(wx, 0.34, 0);
+    dropGroup.add(wall);
+  }
+  const chute = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.65, 0.12, len)), waterMat);
+  chute.position.y = 0.2;
+  dropGroup.add(chute);
+  // crest lip: a short channel angled at the bisector of the flat top and the
+  // steep drop, so the bend reads as a rounded brow rather than a hard corner
+  const crestDir = topDir.clone().add(dropDir).normalize();
+  const crest = new THREE.Group();
+  crest.position.set(a.x, a.y - 0.08, a.z + 0.2);
+  crest.quaternion.setFromRotationMatrix(
+    new THREE.Matrix4().lookAt(new THREE.Vector3(0, 0, 0), crestDir, UP)
+  );
+  g.add(crest);
+  const crestFloor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.0, 0.28, 2.8)), woodMat);
+  crest.add(crestFloor);
+  for (const wx of [-1, 1]) {
+    const cw = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.22, 0.6, 2.8)), woodMat);
+    cw.position.set(wx, 0.3, 0);
+    crest.add(cw);
+  }
+  const crestWater = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(1.65, 0.12, 2.8)),
+    waterMat
+  );
+  crestWater.position.y = 0.18;
+  crest.add(crestWater);
   // splash pool
   const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(4.2, 28)), waterMat);
   pool.rotation.x = -Math.PI / 2;
@@ -1985,7 +2023,6 @@ function buildLogFlume(ctx: BuildCtx): Ride {
   const logGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.35, 1.0, 4, 8));
   for (let k = 0; k < 2; k++) {
     const log = new THREE.Mesh(logGeo, ctx.mat({ color: 0x6b4423, roughness: 1 }));
-    log.rotation.z = Math.PI / 2;
     g.add(log);
     logs.push(log);
   }
@@ -2017,14 +2054,16 @@ function buildLogFlume(ctx: BuildCtx): Ride {
       for (let k = 0; k < logs.length; k++) {
         const t = (elapsed * 0.32 + k * 0.5) % 1;
         if (t < 0.45) {
-          // riding the top channel toward the drop
+          // riding the top channel toward the drop (lying along +x)
           const u = t / 0.45;
           logs[k].position.set(-5 + u * 4, TOP, -3.5);
+          logs[k].quaternion.setFromUnitVectors(UP, topDir);
         } else {
-          // dropping a → b (eased: accelerate)
+          // dropping a → b, nose tilted down to follow the chute (eased: accelerate)
           const u = (t - 0.45) / 0.55;
           tmpA.copy(a).lerp(b, u * u);
           logs[k].position.copy(tmpA);
+          logs[k].quaternion.setFromUnitVectors(UP, dropDir);
         }
       }
       // splash cycles at the pool
@@ -2507,17 +2546,19 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   }
 
   // peeps walking the street + plaza
+  // Peep routes — straight strolls kept in OPEN areas, clear of the fountain,
+  // carousel, lake/ship and every ride (peeps were walking through the fountain).
   const routes: [THREE.Vector3, THREE.Vector3][] = [
-    [new THREE.Vector3(-2, 0, 30), new THREE.Vector3(-2, 0, -2)],
-    [new THREE.Vector3(2, 0, -2), new THREE.Vector3(2, 0, 30)],
-    [new THREE.Vector3(-12, 0, -4), new THREE.Vector3(12, 0, -4)],
-    [new THREE.Vector3(-1, 0, 0), new THREE.Vector3(-1, 0, -30)],
-    [new THREE.Vector3(1, 0, -30), new THREE.Vector3(1, 0, 0)],
-    [new THREE.Vector3(-22, 0, -8), new THREE.Vector3(-22, 0, -30)],
-    [new THREE.Vector3(22, 0, -30), new THREE.Vector3(22, 0, -8)],
+    [new THREE.Vector3(-2.5, 0, 30), new THREE.Vector3(-2.5, 0, 2)], // main street, left lane
+    [new THREE.Vector3(2.5, 0, 2), new THREE.Vector3(2.5, 0, 30)], // main street, right lane
+    [new THREE.Vector3(-9, 0, 2), new THREE.Vector3(9, 0, 2)], // plaza, north of the fountain
+    [new THREE.Vector3(-9, 0, -11), new THREE.Vector3(9, 0, -11)], // plaza, south of the fountain
+    [new THREE.Vector3(12, 0, -2), new THREE.Vector3(12, 0, -12)], // plaza, east side
+    [new THREE.Vector3(-7, 0, -2), new THREE.Vector3(-7, 0, -12)], // plaza, west side
     [new THREE.Vector3(-6, 0, 41), new THREE.Vector3(6, 0, 41)], // forecourt
-    [new THREE.Vector3(9, 0, 10), new THREE.Vector3(20, 0, 4)], // toward the flume
-    [new THREE.Vector3(-9, 0, -13), new THREE.Vector3(9, 0, -13)], // along the lakefront
+    [new THREE.Vector3(-19, 0, 1), new THREE.Vector3(-19, 0, 12)], // left stroll (clear of rides)
+    [new THREE.Vector3(11, 0, 13), new THREE.Vector3(20, 0, 14)], // near the flume queue
+    [new THREE.Vector3(-17, 0, -2), new THREE.Vector3(-17, 0, -12)], // between carousel & ferris
   ];
   const peeps = buildPeeps(ctx, mobile ? routes.slice(0, 6) : routes);
   world.add(peeps.group);
@@ -2630,9 +2671,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const aimPath = new THREE.CatmullRomCurve3(
     [
       new THREE.Vector3(0, 8, 31), // 1 → park.fan logo (framed on approach)
-      new THREE.Vector3(0, 6.5, -8), // 2 → look FORWARD down the street (not up at the banner)
-      new THREE.Vector3(0, 6, -28), // 3 → down Main Street to the castle
-      new THREE.Vector3(8, 7, -22), // 4 → park ahead (pitched down, not sky)
+      new THREE.Vector3(0, 4.6, -5), // 2 → pitch DOWN onto Main Street (shops, bunting, peeps)
+      new THREE.Vector3(0, 4.4, -24), // 3 → down Main Street toward the castle (low gaze)
+      new THREE.Vector3(8, 5.5, -22), // 4 → park ahead, clearly pitched down
       new THREE.Vector3(16, 8, -20), // 5 → swing toward the mega-coaster
       new THREE.Vector3(26, 9, -22), // 6 → the coaster
       new THREE.Vector3(29, 13, -23), // 7 LOW PASS → look UP at the coaster
