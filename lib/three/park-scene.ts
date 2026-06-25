@@ -238,7 +238,8 @@ const pick = <T>(arr: readonly T[]): T => arr[Math.floor(Math.random() * arr.len
 const HALF = 46; // park half-extent (world units)
 
 function buildGround(ctx: BuildCtx): THREE.Mesh {
-  const geo = ctx.track.geo(new THREE.PlaneGeometry(HALF * 2 + 40, HALF * 2 + 40));
+  // extra-large so the backdrop hills/mountains behind the castle sit on ground
+  const geo = ctx.track.geo(new THREE.PlaneGeometry(HALF * 2 + 130, HALF * 2 + 130));
   // bright RCT-green grass with normal/roughness relief for texture
   const mesh = new THREE.Mesh(
     geo,
@@ -1244,6 +1245,146 @@ function buildStars(ctx: BuildCtx): { points: THREE.Points } & Animated {
   };
 }
 
+/**
+ * A scenic backdrop behind the castle: rolling green hills close-in, then hazy
+ * blue-grey mountains further out (faded by fog) — so there's depth and
+ * landscape behind the castle instead of empty grass meeting sky.
+ */
+function buildBackdrop(ctx: BuildCtx): THREE.Group {
+  const g = new THREE.Group();
+  const hillA = ctx.mat({ color: 0x4f9e3a, roughness: 1 });
+  const hillB = ctx.mat({ color: 0x3f8f37, roughness: 1 });
+  // rolling hills (flattened domes) just behind the castle
+  const hills: [number, number, number, number][] = [
+    [-26, -56, 11, 7],
+    [-9, -60, 13, 9],
+    [10, -58, 12, 8],
+    [27, -55, 11, 7],
+    [-40, -62, 12, 8],
+    [40, -60, 12, 8],
+  ];
+  for (const [x, z, r, h] of hills) {
+    const hill = new THREE.Mesh(
+      ctx.track.geo(new THREE.SphereGeometry(r, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2)),
+      Math.random() > 0.5 ? hillA : hillB
+    );
+    hill.position.set(x, -1, z);
+    hill.scale.y = h / r;
+    g.add(hill);
+  }
+  // distant mountains (cool blue-grey; fog fades them into the sky)
+  const mtnMat = ctx.mat({ color: 0x8499b5, roughness: 1 });
+  const snowMat = ctx.mat({ color: 0xeef4ff, roughness: 1 });
+  const mtns: [number, number, number, number][] = [
+    [-44, -78, 17, 22],
+    [-14, -86, 22, 30],
+    [16, -82, 19, 26],
+    [46, -76, 17, 22],
+    [2, -94, 24, 34],
+  ];
+  for (const [x, z, r, h] of mtns) {
+    const mtn = new THREE.Mesh(ctx.track.geo(new THREE.ConeGeometry(r, h, 8)), mtnMat);
+    mtn.position.set(x, h / 2 - 3, z);
+    g.add(mtn);
+    const cap = new THREE.Mesh(
+      ctx.track.geo(new THREE.ConeGeometry(r * 0.42, h * 0.32, 8)),
+      snowMat
+    );
+    cap.position.set(x, 0.84 * h - 3, z); // snowy peak near the cone's top
+    g.add(cap);
+  }
+  return g;
+}
+
+/**
+ * Fireworks bursting behind/above the castle: a few instanced shells that
+ * expand, fade and fall, then respawn in a new spot and colour. Bright emissive
+ * so they glow (and bloom at night).
+ */
+function buildFireworks(ctx: BuildCtx, centers: [number, number, number][]): Ride {
+  const g = new THREE.Group();
+  const SHELLS = 4;
+  const PARTS = 30;
+  const PERIOD = 3.4;
+  const BURST_R = 7;
+  const sphere = ctx.track.geo(new THREE.SphereGeometry(0.17, 6, 6));
+  interface Shell {
+    inst: THREE.InstancedMesh;
+    mat: THREE.MeshStandardMaterial;
+    dirs: THREE.Vector3[];
+    offset: number;
+    center: THREE.Vector3;
+    prev: number;
+  }
+  const shells: Shell[] = [];
+  const pickNew = (sh: Shell) => {
+    const c = centers[Math.floor(Math.random() * centers.length)];
+    sh.center.set(c[0] + rnd(-5, 5), c[1] + rnd(-3, 3), c[2] + rnd(-3, 3));
+    const col = new THREE.Color(RIDE_COLORS[Math.floor(Math.random() * RIDE_COLORS.length)]);
+    sh.mat.color.copy(col);
+    sh.mat.emissive.copy(col);
+  };
+  for (let s = 0; s < SHELLS; s++) {
+    const mat = ctx.track.mat(
+      new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        emissive: 0xffffff,
+        emissiveIntensity: 1.4,
+        roughness: 0.4,
+        transparent: true,
+        opacity: 1,
+      })
+    );
+    const inst = new THREE.InstancedMesh(sphere, mat, PARTS);
+    inst.frustumCulled = false;
+    g.add(inst);
+    const dirs: THREE.Vector3[] = [];
+    for (let i = 0; i < PARTS; i++) {
+      const u = Math.random() * 2 - 1;
+      const th = Math.random() * Math.PI * 2;
+      const rr = Math.sqrt(1 - u * u);
+      dirs.push(new THREE.Vector3(rr * Math.cos(th), u, rr * Math.sin(th)));
+    }
+    const sh: Shell = {
+      inst,
+      mat,
+      dirs,
+      offset: s / SHELLS + Math.random() * 0.08,
+      center: new THREE.Vector3(),
+      prev: 1,
+    };
+    pickNew(sh);
+    shells.push(sh);
+  }
+  const m = new THREE.Matrix4();
+  const noRot = new THREE.Quaternion();
+  const pos = new THREE.Vector3();
+  const scl = new THREE.Vector3();
+  return {
+    group: g,
+    update(elapsed) {
+      for (const sh of shells) {
+        const phase = (elapsed / PERIOD + sh.offset) % 1;
+        if (phase < sh.prev) pickNew(sh); // wrapped → new burst
+        sh.prev = phase;
+        const expand = Math.sqrt(phase) * BURST_R;
+        const fade = Math.max(0, 1 - phase);
+        sh.mat.opacity = fade * fade;
+        sh.mat.emissiveIntensity = 1.4 * fade;
+        const drop = phase * phase * 3.5;
+        const ss = 0.4 + 0.6 * fade;
+        scl.set(ss, ss, ss);
+        for (let i = 0; i < PARTS; i++) {
+          pos.copy(sh.dirs[i]).multiplyScalar(expand).add(sh.center);
+          pos.y -= drop;
+          sh.inst.setMatrixAt(i, m.compose(pos, noRot, scl));
+        }
+        sh.inst.instanceMatrix.needsUpdate = true;
+      }
+    },
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Builders: rides
 // ---------------------------------------------------------------------------
@@ -1692,10 +1833,12 @@ function buildBigCoaster(ctx: BuildCtx, color: number): Ride {
  */
 function buildCastle(ctx: BuildCtx): THREE.Group {
   const g = new THREE.Group();
-  const wall = ctx.mat({ color: 0xd8ccb4, roughness: 1 }); // warm stone (not stark white → no night bloom-out)
-  const blueRoof = ctx.lit({ color: 0x3f6fd8, roughness: 1 }, 0.16);
-  const purpleRoof = ctx.lit({ color: 0x8753bb, roughness: 1 }, 0.16);
-  const gold = ctx.lit({ color: 0xffd24a, roughness: 0.5 }, 0.32);
+  // smooth-shaded (flatShading:false) + high segment counts so the towers and
+  // spires read ROUND, not faceted/blocky.
+  const wall = ctx.mat({ color: 0xd8ccb4, roughness: 1, flatShading: false });
+  const blueRoof = ctx.lit({ color: 0x3f6fd8, roughness: 1, flatShading: false }, 0.16);
+  const purpleRoof = ctx.lit({ color: 0x8753bb, roughness: 1, flatShading: false }, 0.16);
+  const gold = ctx.lit({ color: 0xffd24a, roughness: 0.5, flatShading: false }, 0.32);
   const winMat = ctx.lit({ color: 0xffd98a, roughness: 0.5 }, 0.28); // warm windows (soft glow at night)
   const flagMat = ctx.lit({ color: PAL.magenta, roughness: 1 }, 0.25);
 
@@ -1720,20 +1863,20 @@ function buildCastle(ctx: BuildCtx): THREE.Group {
     roofMat: THREE.Material
   ) => {
     const shaft = new THREE.Mesh(
-      ctx.track.geo(new THREE.CylinderGeometry(r, r * 1.08, h, 12)),
+      ctx.track.geo(new THREE.CylinderGeometry(r, r * 1.08, h, 26)),
       wall
     );
     shaft.position.set(x, h / 2, z);
     shaft.castShadow = true;
     g.add(shaft);
     const roof = new THREE.Mesh(
-      ctx.track.geo(new THREE.ConeGeometry(r * 1.32, roofH, 12)),
+      ctx.track.geo(new THREE.ConeGeometry(r * 1.32, roofH, 26)),
       roofMat
     );
     roof.position.set(x, h + roofH / 2, z);
     roof.castShadow = true;
     g.add(roof);
-    const finial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(r * 0.22, 8, 8)), gold);
+    const finial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(r * 0.22, 14, 12)), gold);
     finial.position.set(x, h + roofH + r * 0.18, z);
     g.add(finial);
     const pole = new THREE.Mesh(
@@ -1749,22 +1892,22 @@ function buildCastle(ctx: BuildCtx): THREE.Group {
   };
 
   // central keep — three stacked drums + a tall spire
-  const k1 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.7, 4.0, 6, 16)), wall);
+  const k1 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.7, 4.0, 6, 32)), wall);
   k1.position.y = 3;
   k1.castShadow = true;
   g.add(k1);
-  const k2 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.0, 3.3, 6, 16)), wall);
+  const k2 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(3.0, 3.3, 6, 32)), wall);
   k2.position.y = 9;
   k2.castShadow = true;
   g.add(k2);
-  const k3 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(2.3, 2.6, 3.5, 16)), wall);
+  const k3 = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(2.3, 2.6, 3.5, 32)), wall);
   k3.position.y = 13.7;
   g.add(k3);
-  const spire = new THREE.Mesh(ctx.track.geo(new THREE.ConeGeometry(2.7, 10, 16)), blueRoof);
+  const spire = new THREE.Mesh(ctx.track.geo(new THREE.ConeGeometry(2.7, 10, 32)), blueRoof);
   spire.position.y = 20.5;
   spire.castShadow = true;
   g.add(spire);
-  const spireFinial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(0.5, 10, 10)), gold);
+  const spireFinial = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(0.5, 16, 14)), gold);
   spireFinial.position.y = 25.6;
   g.add(spireFinial);
   const topPole = new THREE.Mesh(ctx.track.geo(new THREE.CylinderGeometry(0.05, 0.05, 2, 6)), gold);
@@ -2060,16 +2203,27 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     world.add(k);
   });
 
-  // trees scattered on the grass (kept off the paths / buildings) — built as
-  // two instanced meshes for performance
+  // trees scattered on the grass (kept off the paths / buildings / rides) —
+  // built as two instanced meshes for performance
+  // ride keep-out circles [x, z, radius] so no tree grows into an attraction
+  const rideKeepouts: [number, number, number][] = [
+    [-22, -21, 11], // ferris wheel
+    [27, -25, 17], // mega-coaster footprint
+    [-31, -7, 4], // drop tower
+    [-14, 9, 4.5], // swing
+    [14, 9, 4.5], // swing
+    [-12, -7, 6], // carousel
+    [0, -4, 5], // fountain
+  ];
   const treeSpots: [number, number][] = [];
   const treeTarget = mobile ? 34 : 70;
-  for (let i = 0; i < treeTarget * 3 && treeSpots.length < treeTarget; i++) {
+  for (let i = 0; i < treeTarget * 4 && treeSpots.length < treeTarget; i++) {
     const x = rnd(-HALF + 4, HALF - 4);
     const z = rnd(-HALF + 4, HALF - 4);
     if (Math.abs(x) < 11 && z > -20 && z < 34) continue; // clear the main street
     if (Math.abs(x) < 16 && Math.abs(z) < 12) continue; // clear the central plaza
     if (Math.abs(x) < 9 && z < -36) continue; // clear the castle
+    if (rideKeepouts.some(([rx, rz, rr]) => (x - rx) ** 2 + (z - rz) ** 2 < rr * rr)) continue;
     treeSpots.push([x, z]);
   }
   world.add(buildTrees(ctx, treeSpots));
@@ -2166,6 +2320,20 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const castle = buildCastle(ctx);
   castle.position.set(0, 0, -45);
   world.add(castle);
+
+  // scenic landscape (rolling hills + hazy mountains) behind the castle
+  world.add(buildBackdrop(ctx));
+
+  // fireworks bursting above & behind the castle
+  const fireworks = buildFireworks(ctx, [
+    [-10, 27, -55],
+    [8, 29, -57],
+    [0, 31, -52],
+    [-16, 25, -59],
+    [15, 26, -55],
+  ]);
+  world.add(fireworks.group);
+  animated.push(fireworks);
 
   // -- Floating park.fan marker-pin landmark ---------------------------------
   // Billboards to the camera and gently bobs above the entrance; always bright
