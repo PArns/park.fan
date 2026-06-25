@@ -371,7 +371,7 @@ function buildTrees(ctx: BuildCtx, placements: [number, number][]): THREE.Group 
       new THREE.Matrix4().compose(new THREE.Vector3(x, h / 2, z), noRot, new THREE.Vector3(1, h, 1))
     );
     const tone = new THREE.Color(pick(tones));
-    const n = 1 + Math.floor(Math.random() * 3);
+    const n = 2 + Math.floor(Math.random() * 3); // 2–4 overlapping puffs → fuller canopy
     for (let i = 0; i < n; i++) {
       const r = rnd(1.0, 1.5) * (i === 0 ? 1 : 0.8);
       const pos = new THREE.Vector3(
@@ -395,8 +395,9 @@ function buildTrees(ctx: BuildCtx, placements: [number, number][]): THREE.Group 
   trunkInst.instanceMatrix.needsUpdate = true;
   g.add(trunkInst);
   const folInst = new THREE.InstancedMesh(
-    ctx.track.geo(new THREE.IcosahedronGeometry(1, 1)),
-    ctx.mat({ color: 0xffffff, flatShading: true, roughness: 1 }),
+    // detail-2 + SMOOTH shading → round, fluffy foliage instead of faceted blobs
+    ctx.track.geo(new THREE.IcosahedronGeometry(1, 2)),
+    ctx.mat({ color: 0xffffff, flatShading: false, roughness: 1 }),
     blobs.length
   );
   folInst.castShadow = true;
@@ -1252,19 +1253,20 @@ function buildBunting(
 /** Soft, slowly drifting toon clouds to fill the sky. */
 function buildClouds(ctx: BuildCtx): Ride {
   const g = new THREE.Group();
-  const mat = ctx.mat({ color: 0xffffff, flatShading: true, roughness: 1 });
+  // SMOOTH-shaded so the puffs read round/soft, not faceted
+  const mat = ctx.mat({ color: 0xffffff, flatShading: false, roughness: 1 });
   const puffs: { obj: THREE.Group; speed: number; base: number }[] = [];
   const count = ctx.mobile ? 6 : 11;
   for (let i = 0; i < count; i++) {
     const cloud = new THREE.Group();
-    const blobs = 3 + Math.floor(Math.random() * 3);
+    const blobs = 4 + Math.floor(Math.random() * 3); // 4–6 puffs → fluffier clouds
     for (let j = 0; j < blobs; j++) {
       const blob = new THREE.Mesh(
-        ctx.track.geo(new THREE.IcosahedronGeometry(rnd(2, 3.4), 1)),
+        ctx.track.geo(new THREE.IcosahedronGeometry(rnd(1.9, 3.2), 2)),
         mat
       );
-      blob.position.set(rnd(-3.5, 3.5), rnd(-0.4, 0.4), rnd(-2, 2));
-      blob.scale.y = 0.5;
+      blob.position.set(rnd(-3.8, 3.8), rnd(-0.4, 0.5), rnd(-2, 2));
+      blob.scale.y = 0.62;
       cloud.add(blob);
     }
     cloud.position.set(rnd(-65, 65), rnd(30, 46), rnd(-65, 12));
