@@ -890,42 +890,57 @@ interface Peep extends Animated {
   group: THREE.Group;
 }
 
-/** One chunky peep: big round head + colourful torso + short legs. */
+/**
+ * One chunky, cuddly peep: an oversized round head on a plump capsule body
+ * with stubby rounded limbs. Everything is SMOOTH-shaded (flatShading:false)
+ * and high-segment so the little guy reads round and soft, not faceted.
+ */
 function makePeep(ctx: BuildCtx): THREE.Group {
   const g = new THREE.Group();
   const skin = pick(SKIN_COLORS);
   const shirt = pick(SHIRT_COLORS);
   const pants = pick(PANTS_COLORS);
-  // torso (short, slightly tapered)
+  const soft = { roughness: 1, flatShading: false };
+  // plump rounded torso — a capsule gives soft round shoulders & belly
   const torso = new THREE.Mesh(
-    ctx.track.geo(new THREE.CylinderGeometry(0.2, 0.24, 0.42, 8)),
-    ctx.mat({ color: shirt, roughness: 1 })
+    ctx.track.geo(new THREE.CapsuleGeometry(0.22, 0.16, 6, 16)),
+    ctx.mat({ color: shirt, ...soft })
   );
-  torso.position.y = 0.5;
+  torso.position.y = 0.52;
   g.add(torso);
-  // big round head
+  // big round head (chibi proportions — head wider than the body)
   const head = new THREE.Mesh(
-    ctx.track.geo(new THREE.SphereGeometry(0.26, 10, 9)),
-    ctx.mat({ color: skin, roughness: 1 })
+    ctx.track.geo(new THREE.SphereGeometry(0.3, 20, 16)),
+    ctx.mat({ color: skin, ...soft })
   );
-  head.position.y = 0.95;
+  head.position.y = 1.0;
   g.add(head);
-  // simple hair cap
+  // soft rounded hair cap hugging the head
   const hair = new THREE.Mesh(
-    ctx.track.geo(new THREE.SphereGeometry(0.27, 10, 8, 0, Math.PI * 2, 0, Math.PI / 2)),
-    ctx.mat({ color: pick([0x271300, 0x573b0b, 0x4f2700, 0x172323, 0x8f6327]), roughness: 1 })
+    ctx.track.geo(new THREE.SphereGeometry(0.31, 20, 12, 0, Math.PI * 2, 0, Math.PI * 0.6)),
+    ctx.mat({ color: pick([0x271300, 0x573b0b, 0x4f2700, 0x172323, 0x8f6327]), ...soft })
   );
-  hair.position.y = 1.0;
+  hair.position.y = 1.04;
   g.add(hair);
-  // legs
+  // stubby rounded legs (capsules → rounded knees & feet)
   for (const sx of [-0.1, 0.1]) {
     const leg = new THREE.Mesh(
-      ctx.track.geo(new THREE.CylinderGeometry(0.08, 0.08, 0.34, 6)),
-      ctx.mat({ color: pants, roughness: 1 })
+      ctx.track.geo(new THREE.CapsuleGeometry(0.09, 0.14, 4, 12)),
+      ctx.mat({ color: pants, ...soft })
     );
-    leg.position.set(sx, 0.17, 0);
+    leg.position.set(sx, 0.19, 0);
     leg.name = sx < 0 ? 'legL' : 'legR';
     g.add(leg);
+  }
+  // tiny rounded arms tucked at the sides for extra cuteness
+  for (const sx of [-1, 1]) {
+    const arm = new THREE.Mesh(
+      ctx.track.geo(new THREE.CapsuleGeometry(0.07, 0.12, 4, 10)),
+      ctx.mat({ color: shirt, ...soft })
+    );
+    arm.position.set(sx * 0.27, 0.56, 0);
+    arm.rotation.z = sx * 0.32;
+    g.add(arm);
   }
   g.scale.setScalar(1.05);
   return g;
