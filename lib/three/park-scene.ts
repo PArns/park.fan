@@ -1303,11 +1303,11 @@ function buildBackdrop(ctx: BuildCtx): THREE.Group {
  */
 function buildFireworks(ctx: BuildCtx, centers: [number, number, number][]): Ride {
   const g = new THREE.Group();
-  const SHELLS = 4;
-  const PARTS = 30;
-  const PERIOD = 3.4;
-  const BURST_R = 7;
-  const sphere = ctx.track.geo(new THREE.SphereGeometry(0.17, 6, 6));
+  const SHELLS = 6;
+  const PARTS = 40;
+  const PERIOD = 2.8;
+  const BURST_R = 9;
+  const sphere = ctx.track.geo(new THREE.SphereGeometry(0.2, 6, 6));
   interface Shell {
     inst: THREE.InstancedMesh;
     mat: THREE.MeshStandardMaterial;
