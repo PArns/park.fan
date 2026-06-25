@@ -189,10 +189,10 @@ function makeStripeTexture(a: string, b: string): THREE.CanvasTexture {
 
 function makeWaterTexture(): THREE.CanvasTexture {
   const [c, ctx] = canvas(128);
-  ctx.fillStyle = '#2b938f';
+  ctx.fillStyle = '#2f9fd0';
   ctx.fillRect(0, 0, 128, 128);
   for (let i = 0; i < 60; i++) {
-    ctx.strokeStyle = Math.random() > 0.5 ? '#63bbbb' : '#177f77';
+    ctx.strokeStyle = Math.random() > 0.5 ? '#8fd8ef' : '#2477a8';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     const y = Math.random() * 128;
@@ -290,9 +290,11 @@ function buildPaths(ctx: BuildCtx): THREE.Group {
   const g = new THREE.Group();
   // Each strip gets a slightly different height so overlapping strips never sit
   // exactly coplanar (which caused the fly-over flicker / z-fighting).
-  // main street: entrance (front, +z) straight back to the plaza
-  const main = pathStrip(ctx, 7, 64, 0.12);
-  main.position.set(0, 0, 4);
+  // main street: entrance (front, +z) straight back to the plaza — it STOPS at
+  // the plaza and must not run on into the lake behind it (the path draws over
+  // the water, so an over-long strip made the boat look like it sat on a path)
+  const main = pathStrip(ctx, 7, 44, 0.12);
+  main.position.set(0, 0, 14);
   g.add(main);
   // central plaza (wide square)
   const plaza = pathStrip(ctx, 26, 26, 0.085);
@@ -316,14 +318,16 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
   const g = new THREE.Group();
   waterTex.repeat.set(4, 4);
   const water = new THREE.Mesh(
-    ctx.track.geo(new THREE.CircleGeometry(13, 48)),
+    ctx.track.geo(new THREE.CircleGeometry(10, 48)),
     ctx.mat({
       map: waterTex,
-      color: PAL.waterLight,
+      // white tint so the (now bright-blue) water texture shows at full
+      // strength — multiplying by a teal colour made the lake read near-black
+      color: 0xffffff,
       roughness: 0.35,
       metalness: 0.0,
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.95,
     })
   );
   water.rotation.x = -Math.PI / 2;
@@ -331,7 +335,7 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
   g.add(water);
   // stone rim
   const rim = new THREE.Mesh(
-    ctx.track.geo(new THREE.TorusGeometry(13.2, 0.55, 8, 48)),
+    ctx.track.geo(new THREE.TorusGeometry(10.3, 0.55, 8, 48)),
     ctx.mat({ color: PAL.stone, roughness: 1 })
   );
   rim.rotation.x = -Math.PI / 2;
@@ -2407,7 +2411,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   world.add(buildPaths(ctx));
 
   const pond = buildPond(ctx, waterTex);
-  pond.group.position.set(0, 0, -25); // lake in front of the castle
+  pond.group.position.set(0, 0, -27); // lake between the plaza and the castle
   world.add(pond.group);
   animated.push(pond);
 
@@ -2467,13 +2471,13 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // ride keep-out circles [x, z, radius] so no tree grows into an attraction
   const rideKeepouts: [number, number, number][] = [
     [-22, -21, 11], // ferris wheel
-    [27, -25, 17], // mega-coaster footprint
+    [29, -25, 17], // mega-coaster footprint
     [-31, -7, 4], // drop tower
     [-14, 9, 4.5], // swing
     [15, 6, 10], // log flume
     [-12, -7, 6], // carousel
     [0, -4, 5], // fountain
-    [0, -25, 13], // lake + pirate ship
+    [0, -27, 11], // lake + pirate ship
   ];
   const treeSpots: [number, number][] = [];
   const treeTarget = mobile ? 34 : 70;
@@ -2551,10 +2555,10 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const routes: [THREE.Vector3, THREE.Vector3][] = [
     [new THREE.Vector3(-2.5, 0, 30), new THREE.Vector3(-2.5, 0, 2)], // main street, left lane
     [new THREE.Vector3(2.5, 0, 2), new THREE.Vector3(2.5, 0, 30)], // main street, right lane
-    [new THREE.Vector3(-9, 0, 2), new THREE.Vector3(9, 0, 2)], // plaza, north of the fountain
-    [new THREE.Vector3(-9, 0, -11), new THREE.Vector3(9, 0, -11)], // plaza, south of the fountain
-    [new THREE.Vector3(12, 0, -2), new THREE.Vector3(12, 0, -12)], // plaza, east side
-    [new THREE.Vector3(-7, 0, -2), new THREE.Vector3(-7, 0, -12)], // plaza, west side
+    [new THREE.Vector3(-6.5, 0, 2), new THREE.Vector3(6.5, 0, 2)], // plaza N of the fountain (inside the ±9 kiosks)
+    [new THREE.Vector3(-6.5, 0, -10), new THREE.Vector3(6.5, 0, -10)], // plaza S of the fountain (clear of kiosks + lake)
+    [new THREE.Vector3(12.5, 0, -3), new THREE.Vector3(12.5, 0, -12)], // plaza, east side (outside the ±9 kiosks)
+    [new THREE.Vector3(-6, 0, -3), new THREE.Vector3(-6, 0, -12)], // plaza, west side (clear of the −9 kiosk)
     [new THREE.Vector3(-6, 0, 41), new THREE.Vector3(6, 0, 41)], // forecourt
     [new THREE.Vector3(-19, 0, 1), new THREE.Vector3(-19, 0, 12)], // left stroll (clear of rides)
     [new THREE.Vector3(11, 0, 13), new THREE.Vector3(20, 0, 14)], // near the flume queue
@@ -2576,11 +2580,11 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   addRide(buildFountain(ctx), 0, -4); // plaza centrepiece (low — camera flies over)
   addRide(buildCarousel(ctx), -12, -7); // beside the plaza
   addRide(buildFerrisWheel(ctx), -22, -21, 0.28); // back-left landmark
-  addRide(buildBigCoaster(ctx, 0x1fc6c2), 27, -25, -0.1); // teal mega-coaster, back-right (clear of the castle)
+  addRide(buildBigCoaster(ctx, 0x1fc6c2), 29, -25, -0.1); // teal mega-coaster, back-right (clear of the castle + lake)
   addRide(buildDropTower(ctx), -31, -7); // tall spire on the left edge
   addRide(buildSwingRide(ctx), -14, 9); // mid-left
   addRide(buildLogFlume(ctx), 15, 6, -0.3); // mid-right water ride
-  addRide(buildPirateShip(ctx), 0, -24, 0.5); // galleon on the lake
+  addRide(buildPirateShip(ctx), 0, -27, 0.5); // galleon on the lake
 
   // Disney-style castle: the grand back-drop at the far end of the park
   const castle = buildCastle(ctx);
