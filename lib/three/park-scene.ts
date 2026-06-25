@@ -163,11 +163,9 @@ function makeNightSkyTexture(): THREE.CanvasTexture {
   g.addColorStop(1, '#33508c');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 256, 256);
-  // faint baked stars in the upper sky
-  for (let i = 0; i < 130; i++) {
-    ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.5 + 0.2})`;
-    ctx.fillRect(Math.random() * 256, Math.random() * 150, 1, 1);
-  }
+  // NB: no baked stars here — they'd be locked to the screen (a 2D background
+  // texture doesn't move with the camera) and read as "static". The stars are a
+  // real 3D point field (buildStars) so they move/parallax with the flight.
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
   return t;
@@ -1211,13 +1209,14 @@ function buildClouds(ctx: BuildCtx): Ride {
   };
 }
 
-/** A starfield for the night sky (hidden by day). */
-function buildStars(ctx: BuildCtx): THREE.Points {
-  const N = 700;
+/** A 3D starfield for the night sky (hidden by day). Moves/parallaxes with the
+ *  camera, and slowly drifts + twinkles so it never looks static. */
+function buildStars(ctx: BuildCtx): { points: THREE.Points } & Animated {
+  const N = 1100;
   const pos = new Float32Array(N * 3);
   for (let i = 0; i < N; i++) {
     const th = Math.random() * Math.PI * 2;
-    const ph = Math.acos(Math.random() * 0.7 + 0.1);
+    const ph = Math.acos(Math.random() * 0.8 + 0.05);
     const r = 200;
     pos[i * 3] = Math.sin(ph) * Math.cos(th) * r;
     pos[i * 3 + 1] = Math.cos(ph) * r * 0.7 + 30;
@@ -1228,14 +1227,21 @@ function buildStars(ctx: BuildCtx): THREE.Points {
   const mat = ctx.track.mat(
     new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 1.4,
+      size: 1.5,
       sizeAttenuation: false,
       transparent: true,
       opacity: 0.9,
       fog: false,
     })
   );
-  return new THREE.Points(geo, mat);
+  const points = new THREE.Points(geo, mat);
+  return {
+    points,
+    update(elapsed) {
+      points.rotation.y = elapsed * 0.006; // slow celestial drift
+      mat.opacity = 0.78 + Math.sin(elapsed * 1.5) * 0.16; // gentle twinkle
+    },
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -1608,13 +1614,14 @@ function coasterTrack(ctx: BuildCtx, color: number, raw: number[][], opts: Coast
     plat.receiveShadow = true;
     g.add(plat);
   }
-  // train
+  // train — a tight string of bright, smooth-shaded cars (a proper coaster
+  // train, not dark floating blocks): lead car yellow, the rest bright red.
   const cars: THREE.Mesh[] = [];
-  const carGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 2, 0.55, 1.15));
+  const carGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 1.7, 0.5, 1.3));
   for (let k = 0; k < trainCars; k++) {
     const car = new THREE.Mesh(
       carGeo,
-      ctx.lit({ color: k === 0 ? PAL.yellow : color, roughness: 0.8 }, 0.24)
+      ctx.lit({ color: k === 0 ? 0xffe072 : 0xe5202e, roughness: 0.5, flatShading: false }, 0.42)
     );
     car.castShadow = true;
     g.add(car);
@@ -1625,11 +1632,11 @@ function coasterTrack(ctx: BuildCtx, color: number, raw: number[][], opts: Coast
     group: g,
     update(elapsed) {
       for (let k = 0; k < cars.length; k++) {
-        const t = (elapsed * speed + k * 0.01) % 1;
+        const t = (elapsed * speed + k * 0.0072) % 1; // tight spacing → one train
         const p = curve.getPointAt(t);
-        const ahead = curve.getPointAt((t + 0.006) % 1);
-        cars[k].position.set(p.x, p.y + 0.26, p.z);
-        cars[k].lookAt(tmp.set(ahead.x, ahead.y + 0.26, ahead.z));
+        const ahead = curve.getPointAt((t + 0.005) % 1);
+        cars[k].position.set(p.x, p.y + 0.22, p.z);
+        cars[k].lookAt(tmp.set(ahead.x, ahead.y + 0.22, ahead.z));
       }
     },
   };
@@ -1671,7 +1678,7 @@ function buildBigCoaster(ctx: BuildCtx, color: number): Ride {
       gauge: 0.42,
       segments: 340,
       supEvery: 6,
-      trainCars: 7,
+      trainCars: 9,
       speed: 0.05,
       station: [-17, 1.0, 6, 4, 2, 7],
     }
@@ -1685,11 +1692,11 @@ function buildBigCoaster(ctx: BuildCtx, color: number): Ride {
  */
 function buildCastle(ctx: BuildCtx): THREE.Group {
   const g = new THREE.Group();
-  const wall = ctx.mat({ color: 0xece2d0, roughness: 1 }); // warm cream stone
+  const wall = ctx.mat({ color: 0xd8ccb4, roughness: 1 }); // warm stone (not stark white → no night bloom-out)
   const blueRoof = ctx.lit({ color: 0x3f6fd8, roughness: 1 }, 0.16);
   const purpleRoof = ctx.lit({ color: 0x8753bb, roughness: 1 }, 0.16);
   const gold = ctx.lit({ color: 0xffd24a, roughness: 0.5 }, 0.32);
-  const winMat = ctx.lit({ color: 0xffd98a, roughness: 0.5 }, 0.5); // warm, glows at night
+  const winMat = ctx.lit({ color: 0xffd98a, roughness: 0.5 }, 0.28); // warm windows (soft glow at night)
   const flagMat = ctx.lit({ color: PAL.magenta, roughness: 1 }, 0.25);
 
   const winGeo = ctx.track.geo(new THREE.BoxGeometry(0.3, 0.62, 0.12));
@@ -2150,7 +2157,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   addRide(buildFountain(ctx), 0, -4); // plaza centrepiece (low — camera flies over)
   addRide(buildCarousel(ctx), -12, -7); // beside the plaza
   addRide(buildFerrisWheel(ctx), -22, -21, 0.28); // back-left landmark
-  addRide(buildBigCoaster(ctx, 0x1fc6c2), 15, -32, -0.35); // teal mega-coaster, towers in the back
+  addRide(buildBigCoaster(ctx, 0x1fc6c2), 27, -25, -0.1); // teal mega-coaster, back-right (clear of the castle)
   addRide(buildDropTower(ctx), -31, -7); // tall spire on the left edge
   addRide(buildSwingRide(ctx), -14, 9); // mid-left
   addRide(buildSwingRide(ctx), 14, 9); // mid-right
@@ -2188,7 +2195,8 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
 
   // night-sky decorations (toggled on at night by applyTheme)
   const stars = buildStars(ctx);
-  scene.add(stars);
+  scene.add(stars.points);
+  animated.push(stars);
   const moon = new THREE.Mesh(
     track.geo(new THREE.SphereGeometry(6, 22, 22)),
     track.mat(new THREE.MeshBasicMaterial({ color: 0xfdf3d0, fog: false, toneMapped: false }))
@@ -2204,9 +2212,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     [
       new THREE.Vector3(0, 4.6, 46), // approach
       new THREE.Vector3(0, 4.2, 40), // dip toward the arch
-      new THREE.Vector3(0, 4.0, 30), // THROUGH the arch
-      new THREE.Vector3(0, 6.5, 14), // onto the main street
-      new THREE.Vector3(0, 9, -2), // over the plaza
+      new THREE.Vector3(0, 4.2, 30), // THROUGH the arch
+      new THREE.Vector3(0, 9.5, 13), // onto the main street (elevated → looks down at the park)
+      new THREE.Vector3(2, 11.5, -3), // over the plaza
       new THREE.Vector3(-14, 11.5, -14), // bank toward the back-left
       new THREE.Vector3(-30, 12, -3), // orbit left (tightened so the edge isn't empty)
       new THREE.Vector3(-25, 10.5, 22), // front-left
@@ -2225,18 +2233,18 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // slerped toward this each frame, so every pan is smooth.
   const aimPath = new THREE.CatmullRomCurve3(
     [
-      new THREE.Vector3(0, 8.5, 33), // 1 approach → park.fan logo (banner + pin)
-      new THREE.Vector3(0, 8.2, 31), // 2 → logo, closer
-      new THREE.Vector3(2, 12, -38), // 3 through the arch → castle reveal
-      new THREE.Vector3(13, 12.5, -30), // 4 main street → swing to the mega-coaster
-      new THREE.Vector3(15, 13, -31), // 5 over plaza → mega-coaster (towering)
-      new THREE.Vector3(-22, 9, -20), // 6 back-left → ferris wheel
-      new THREE.Vector3(0, 14, -44), // 7 orbit left → castle
-      new THREE.Vector3(-16, 9, -22), // 8 front-left → ferris / castle cluster
-      new THREE.Vector3(0, 13.5, -42), // 9 wide front → castle vista
-      new THREE.Vector3(15, 12.5, -31), // 10 front-right → mega-coaster
-      new THREE.Vector3(-4, 11.5, -40), // 11 orbit right → castle / coaster
-      new THREE.Vector3(-22, 9, -20), // 12 back-right → ferris wheel
+      new THREE.Vector3(0, 7.5, 33), // 1 approach → park.fan logo (banner + pin)
+      new THREE.Vector3(0, 7, 31), // 2 → logo, closer
+      new THREE.Vector3(0, 6, -32), // 3 through the arch → down Main Street to the castle
+      new THREE.Vector3(6, 6.5, -26), // 4 main street → park + castle (pitched down, not sky)
+      new THREE.Vector3(24, 8, -24), // 5 over plaza → mega-coaster (back-right)
+      new THREE.Vector3(-22, 7, -20), // 6 back-left → ferris wheel
+      new THREE.Vector3(0, 8.5, -42), // 7 orbit left → castle
+      new THREE.Vector3(-14, 7, -22), // 8 front-left → ferris / castle cluster
+      new THREE.Vector3(0, 8, -40), // 9 wide front → castle vista
+      new THREE.Vector3(24, 8, -24), // 10 front-right → mega-coaster
+      new THREE.Vector3(-2, 8, -40), // 11 orbit right → castle
+      new THREE.Vector3(-22, 7, -20), // 12 back-right → ferris wheel
     ],
     true,
     'catmullrom',
@@ -2283,9 +2291,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   };
   addSpot(0xff5db0, [-6, 0.4, 40], [0, 7, 34], 55); // pink wash on the entrance
   addSpot(0x5db8ff, [6, 0.4, 40], [0, 7, 34], 55); // blue wash on the entrance
-  addSpot(0xbfd0ff, [-7, 0.4, -30], [-3, 16, -45], 150); // cool wash up the castle
-  addSpot(0xffe6a8, [7, 0.4, -30], [3, 16, -45], 130); // warm wash up the castle
-  addSpot(0x2fe0d8, [24, 0.4, -22], [15, 13, -32], 110); // teal up the mega-coaster
+  addSpot(0xbfd0ff, [-7, 0.4, -30], [-3, 13, -45], 40); // cool wash up the castle
+  addSpot(0xffe6a8, [7, 0.4, -30], [3, 13, -45], 34); // warm wash up the castle
+  addSpot(0x2fe0d8, [37, 0.4, -16], [27, 13, -25], 110); // teal up the mega-coaster
   addSpot(0xffe072, [-31, 0.4, 0], [-31, 12, -7], 80); // warm up the drop tower
   if (!mobile) addSpot(0x8be04e, [-22, 0.4, -12], [-22, 10, -21], 65); // green ferris wheel
 
@@ -2304,19 +2312,19 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     sun.color.set(night ? 0xaec4ff : 0xffe7bd);
     sun.intensity = night ? 0.45 : 2.35;
     fill.intensity = night ? 0.2 : 0.35;
-    stars.visible = night;
+    stars.points.visible = night;
     moon.visible = night;
     for (const l of nightLights) l.intensity = night ? (l.userData.nightIntensity as number) : 0;
     for (const m of emissiveMats)
       m.emissiveIntensity = (m.userData.glow as number) * (night ? 1.35 : 1.0);
-    // Night bloom kept gentle (low strength, high threshold) so only the
-    // brightest lights glow — no big white wash-out.
-    bloom.strength = night ? 0.26 : 0.4;
-    bloom.threshold = night ? 0.6 : 0.86;
+    // Night bloom kept gentle (low strength, HIGH threshold) so only the
+    // actual lights glow — lit surfaces (e.g. the pale castle) must not bloom.
+    bloom.strength = night ? 0.22 : 0.4;
+    bloom.threshold = night ? 0.74 : 0.86;
     bloom.radius = night ? 0.45 : 0.5;
     grade.uniforms.uVignette.value = night ? 0.92 : 0.55;
     grade.uniforms.uSat.value = night ? 1.08 : 1.16;
-    renderer.toneMappingExposure = night ? 0.98 : 1.06;
+    renderer.toneMappingExposure = night ? 0.92 : 1.06;
   };
 
   // -- Render loop -----------------------------------------------------------
