@@ -575,20 +575,34 @@ export async function GET(
                   gap: '24px',
                 }}
               >
-                <h1
+                {/* Brand lockup: marker icon + wordmark (replaces the plain "park.fan"
+                    text). Dark-background asset variants, mirroring the site header's logo.
+                    Raster PNGs are used because Satori renders them reliably; loaded via the
+                    same absolute-URL pattern as the background image above. */}
+                <div
                   style={{
-                    fontSize: '140px',
-                    fontWeight: 900,
-                    color: 'white',
-                    margin: 0,
-                    lineHeight: 1,
-                    letterSpacing: '-0.04em',
-                    textShadow: '0 8px 30px rgba(0,0,0,0.5)',
-                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '28px',
                   }}
                 >
-                  park.fan
-                </h1>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${baseUrl}/logo-dark.png`}
+                    alt=""
+                    width={125}
+                    height={150}
+                    style={{ width: '125px', height: '150px' }}
+                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${baseUrl}/parkfan-dark.png`}
+                    alt="park.fan"
+                    width={491}
+                    height={140}
+                    style={{ width: '491px', height: '140px' }}
+                  />
+                </div>
 
                 <h2
                   style={{
