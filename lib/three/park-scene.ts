@@ -316,7 +316,7 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
   const g = new THREE.Group();
   waterTex.repeat.set(4, 4);
   const water = new THREE.Mesh(
-    ctx.track.geo(new THREE.CircleGeometry(14, 48)),
+    ctx.track.geo(new THREE.CircleGeometry(13, 48)),
     ctx.mat({
       map: waterTex,
       color: PAL.waterLight,
@@ -331,7 +331,7 @@ function buildPond(ctx: BuildCtx, waterTex: THREE.Texture): { group: THREE.Group
   g.add(water);
   // stone rim
   const rim = new THREE.Mesh(
-    ctx.track.geo(new THREE.TorusGeometry(14.2, 0.55, 8, 48)),
+    ctx.track.geo(new THREE.TorusGeometry(13.2, 0.55, 8, 48)),
     ctx.mat({ color: PAL.stone, roughness: 1 })
   );
   rim.rotation.x = -Math.PI / 2;
