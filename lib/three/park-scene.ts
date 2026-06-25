@@ -1220,6 +1220,22 @@ function buildBunting(
   }
   flags.instanceMatrix.needsUpdate = true;
   bulbs.instanceMatrix.needsUpdate = true;
+  // slim support posts at both ends so the garland is strung BETWEEN them rather
+  // than hanging in mid-air (a.y === b.y for every caller)
+  const postMat = ctx.mat({ color: 0x6b5535, roughness: 1 });
+  const postTop = a.y + 0.2; // up to the cable line
+  for (const end of [a, b]) {
+    const post = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(0.06, 0.085, postTop, 6)),
+      postMat
+    );
+    post.position.set(end.x, postTop / 2, end.z);
+    post.castShadow = true;
+    g.add(post);
+    const knob = new THREE.Mesh(ctx.track.geo(new THREE.SphereGeometry(0.12, 8, 6)), postMat);
+    knob.position.set(end.x, postTop, end.z);
+    g.add(knob);
+  }
   // the swagged cable the lampions actually hang from (was missing — they floated)
   const wire = new THREE.Mesh(
     ctx.track.geo(
