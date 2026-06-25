@@ -27,18 +27,22 @@ import { cn } from '@/lib/utils';
 export function HeroThreePark({
   className,
   onReady,
+  onProgress,
 }: {
   className?: string;
   onReady?: () => void;
+  onProgress?: (progress: number) => void;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleRef = useRef<ParkSceneHandle | null>(null);
-  // Keep the latest onReady in a ref so the (one-time) scene effect never needs
-  // it as a dependency — otherwise an inline parent callback would rebuild the
+  // Keep the latest callbacks in refs so the (one-time) scene effect never needs
+  // them as dependencies — otherwise an inline parent callback would rebuild the
   // whole scene on every render.
   const onReadyRef = useRef(onReady);
+  const onProgressRef = useRef(onProgress);
   useEffect(() => {
     onReadyRef.current = onReady;
+    onProgressRef.current = onProgress;
   });
   // `ready` flips once the scene's textures have loaded (or a safety timeout),
   // fading the canvas in.
@@ -72,6 +76,7 @@ export function HeroThreePark({
         theme: initialTheme,
         reducedMotion,
         onReady: () => requestAnimationFrame(markReady),
+        onProgress: (p) => onProgressRef.current?.(p),
       });
     } catch (err) {
       // WebGL unavailable / context-creation failed — drop the loader, keep the

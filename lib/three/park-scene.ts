@@ -43,6 +43,8 @@ interface CreateOptions {
   reducedMotion: boolean;
   /** Fires once the scene is built and any external images have loaded. */
   onReady?: () => void;
+  /** Reports texture/asset load progress in [0,1] (for a loader progress bar). */
+  onProgress?: (progress: number) => void;
 }
 
 interface Animated {
@@ -2061,6 +2063,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     if (readyFired) return;
     readyFired = true;
     opts.onReady?.();
+  };
+  manager.onProgress = (_url, loaded, total) => {
+    opts.onProgress?.(total > 0 ? loaded / total : 0);
   };
   const texLoader = new THREE.TextureLoader(manager);
   const loadTex = (url: string, srgb: boolean, repeat: number) => {

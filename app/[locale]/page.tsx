@@ -126,7 +126,9 @@ export default async function HomePage({ params }: HomePageProps) {
           <div className="relative container mx-auto">
             <div className="flex flex-col">
               {/* Row 1: Logo left + Title/Description right */}
-              <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/20 bg-white/25 px-4 py-4 shadow-2xl sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/40">
+              {/* Extra-transparent by default so the 3D park shows through; on
+                  hover it fades back to a readable opacity (transition-colors). */}
+              <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/10 px-4 py-4 shadow-2xl transition-colors duration-500 ease-out hover:border-white/25 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/20 dark:hover:border-white/15 dark:hover:bg-black/45">
                 {/* Logo – light/dark variant based on theme */}
                 <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
                   {/* SVGs don't benefit from next/image optimization — use <img> directly */}

@@ -133,12 +133,33 @@ export function HeroBackground() {
   // HERE (always mounted) rather than inside HeroThreePark, so it's visible
   // during the three.js chunk download too — not only after it has mounted.
   const [sceneReady, setSceneReady] = useState(false);
-  const onReady = useCallback(() => setSceneReady(true), []);
-  // Safety: hide the loader even if the chunk/WebGL never signals ready.
-  useEffect(() => {
-    const t = setTimeout(() => setSceneReady(true), 8000);
-    return () => clearTimeout(t);
+  const [progress, setProgress] = useState(0);
+  const onReady = useCallback(() => {
+    setSceneReady(true);
+    setProgress(1);
   }, []);
+  // Real asset-load progress (textures/logos) maps to [0, 0.9]; the bar only
+  // reaches 100% on ready (onLoad). Never let it go backwards.
+  const onProgress = useCallback((p: number) => {
+    setProgress((prev) => Math.max(prev, p * 0.9));
+  }, []);
+  // While loading, ease the bar forward so it always feels alive even before the
+  // first real progress event (the three.js chunk download isn't tracked). Plus
+  // a safety net that reveals the scene if nothing ever signals ready.
+  useEffect(() => {
+    if (sceneReady) return;
+    const id = setInterval(() => {
+      setProgress((p) => (p < 0.9 ? p + (0.9 - p) * 0.05 : p));
+    }, 120);
+    const safety = setTimeout(() => {
+      setSceneReady(true);
+      setProgress(1);
+    }, 8000);
+    return () => {
+      clearInterval(id);
+      clearTimeout(safety);
+    };
+  }, [sceneReady]);
 
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
@@ -146,7 +167,7 @@ export function HeroBackground() {
           matching the 3D sky so the canvas fades in seamlessly. */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#3b8fe3_0%,#7fc2f3_55%,#cdeeff_100%)] dark:bg-[linear-gradient(to_bottom,#070b1e_0%,#142150_55%,#33508c_100%)]" />
       {/* three.js park scene (client-only, fades in when ready) */}
-      <HeroThreePark onReady={onReady} />
+      <HeroThreePark onReady={onReady} onProgress={onProgress} />
       {/* Real park photos take over when the visitor is detected inside a park */}
       <InParkHeroImages />
       {/* Only a very light tint for depth/legibility — kept subtle and
@@ -161,9 +182,17 @@ export function HeroBackground() {
           sceneReady ? 'opacity-0' : 'opacity-100'
         )}
       >
-        <span className="bg-background/55 text-foreground/80 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium shadow-sm backdrop-blur-md">
-          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-          Loading 3D park…
+        <span className="bg-background/55 inline-flex flex-col items-center gap-1.5 rounded-2xl px-4 py-2.5 shadow-sm backdrop-blur-md">
+          <span className="text-foreground/80 inline-flex items-center gap-2 text-xs font-medium">
+            <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            Loading 3D park… {Math.round(progress * 100)}%
+          </span>
+          <span className="bg-foreground/15 block h-1.5 w-44 overflow-hidden rounded-full">
+            <span
+              className="bg-foreground/70 block h-full rounded-full transition-[width] duration-300 ease-out"
+              style={{ width: `${Math.round(progress * 100)}%` }}
+            />
+          </span>
         </span>
       </div>
     </div>
