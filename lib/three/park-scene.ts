@@ -2008,95 +2008,108 @@ function buildLogFlume(ctx: BuildCtx): Ride {
     { color: 0x4fb3e8, roughness: 0.3, transparent: true, opacity: 0.9 },
     0.16
   );
-  const TOP = 10;
   const UP = new THREE.Vector3(0, 1, 0);
-  const topDir = new THREE.Vector3(1, 0, 0); // top channel travels +x
-  const a = new THREE.Vector3(-1, TOP - 0.2, -3.5); // top of the drop
-  const b = new THREE.Vector3(2.5, 0.8, 4.2); // splash-down point
-  // top station + flat channel
-  const plat = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5, 0.6, 4)), woodMat);
-  plat.position.set(-3.5, TOP - 0.5, -3.5);
+  const fwdX = new THREE.Vector3(1, 0, 0);
+  const TOP = 9;
+  const chX0 = -7; // channel start x
+  const chX1 = -3; // channel end x — where the drop curve begins
+
+  // top station + flat channel (kept entirely in the local x–y plane, z = 0, so
+  // the drop is a clean 2-D pitch-down with NO sideways veer)
+  const plat = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.7, 3)), woodMat);
+  plat.position.set(-4.6, TOP - 0.6, 0);
   plat.castShadow = true;
   g.add(plat);
-  const topWater = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(4.4, 0.18, 2)), waterMat);
-  topWater.position.set(-3.3, TOP - 0.1, -3.5);
+  for (const wz of [-1.45, 1.45]) {
+    const rail = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.4, 0.16)), woodMat);
+    rail.position.set(-4.6, TOP, wz);
+    g.add(rail);
+  }
+  const topWater = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5.4, 0.12, 2.6)), waterMat);
+  topWater.position.set(-4.6, TOP - 0.12, 0);
   g.add(topWater);
-  // The steep drop as a proper U-channel (floor + two side walls + a water
-  // surface), aligned a → b. Orientation is built in LOCAL space from the slope
-  // direction (NOT Object3D.lookAt, which treats the target as a world point and
-  // so mis-aligns once this ride is translated/rotated into the park).
-  const mid = a.clone().add(b).multiplyScalar(0.5);
-  const len = a.distanceTo(b);
-  const dropDir = b.clone().sub(a).normalize();
-  const dropQuat = new THREE.Quaternion().setFromRotationMatrix(
-    new THREE.Matrix4().lookAt(new THREE.Vector3(0, 0, 0), dropDir, UP)
-  );
-  const dropGroup = new THREE.Group();
-  dropGroup.position.copy(mid);
-  dropGroup.quaternion.copy(dropQuat);
-  g.add(dropGroup);
-  const floor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.0, 0.28, len)), woodMat);
-  floor.castShadow = true;
-  dropGroup.add(floor);
-  for (const wx of [-1, 1]) {
-    const wall = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.22, 0.66, len)), woodMat);
-    wall.position.set(wx, 0.34, 0);
-    dropGroup.add(wall);
+
+  // The DROP as ONE smooth curve in the x–y plane: it leaves the channel
+  // horizontal (so the transition is seamless — no hard corner), steepens through
+  // the middle, then flattens into the splash pool. Built from short channel
+  // segments (floor + low side walls + water) that follow the curve's tangent.
+  const drop = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(chX1, TOP - 0.2, 0),
+    new THREE.Vector3(chX1 + 1.1, TOP - 0.45, 0),
+    new THREE.Vector3(0.6, 6.0, 0),
+    new THREE.Vector3(2.9, 2.8, 0),
+    new THREE.Vector3(4.8, 1.0, 0),
+    new THREE.Vector3(6.2, 0.7, 0),
+  ]);
+  const SEG = 18;
+  const pts = drop.getSpacedPoints(SEG);
+  const segMid = new THREE.Vector3();
+  const segDir = new THREE.Vector3();
+  const segQ = new THREE.Quaternion();
+  const lookM = new THREE.Matrix4();
+  const zero = new THREE.Vector3(0, 0, 0);
+  for (let i = 0; i < SEG; i++) {
+    const p0 = pts[i];
+    const p1 = pts[i + 1];
+    const segLen = p0.distanceTo(p1) + 0.08; // slight overlap hides the joints
+    segMid.copy(p0).add(p1).multiplyScalar(0.5);
+    segDir.copy(p1).sub(p0).normalize();
+    segQ.setFromRotationMatrix(lookM.lookAt(zero, segDir, UP));
+    const seg = new THREE.Group();
+    seg.position.copy(segMid);
+    seg.quaternion.copy(segQ);
+    const floor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.7, 0.18, segLen)), woodMat);
+    seg.add(floor);
+    for (const wx of [-0.85, 0.85]) {
+      const wall = new THREE.Mesh(
+        ctx.track.geo(new THREE.BoxGeometry(0.16, 0.46, segLen)),
+        woodMat
+      );
+      wall.position.set(wx, 0.22, 0);
+      seg.add(wall);
+    }
+    const w = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.4, 0.1, segLen)), waterMat);
+    w.position.set(0, 0.16, 0);
+    seg.add(w);
+    g.add(seg);
   }
-  const chute = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.65, 0.12, len)), waterMat);
-  chute.position.y = 0.2;
-  dropGroup.add(chute);
-  // crest lip: a short channel angled at the bisector of the flat top and the
-  // steep drop, so the bend reads as a rounded brow rather than a hard corner
-  const crestDir = topDir.clone().add(dropDir).normalize();
-  const crest = new THREE.Group();
-  crest.position.set(a.x, a.y - 0.08, a.z + 0.2);
-  crest.quaternion.setFromRotationMatrix(
-    new THREE.Matrix4().lookAt(new THREE.Vector3(0, 0, 0), crestDir, UP)
-  );
-  g.add(crest);
-  const crestFloor = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.0, 0.28, 2.8)), woodMat);
-  crest.add(crestFloor);
-  for (const wx of [-1, 1]) {
-    const cw = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(0.22, 0.6, 2.8)), woodMat);
-    cw.position.set(wx, 0.3, 0);
-    crest.add(cw);
-  }
-  const crestWater = new THREE.Mesh(
-    ctx.track.geo(new THREE.BoxGeometry(1.65, 0.12, 2.8)),
-    waterMat
-  );
-  crestWater.position.y = 0.18;
-  crest.add(crestWater);
-  // splash pool
-  const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(4.2, 28)), waterMat);
+
+  // splash pool at the foot of the drop
+  const poolX = 7.2;
+  const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(3.6, 28)), waterMat);
   pool.rotation.x = -Math.PI / 2;
-  pool.position.set(3, 0.18, 5.5);
+  pool.position.set(poolX, 0.16, 0);
   g.add(pool);
-  // support columns under the station / drop
-  for (const [sx, sz] of [
-    [-5, -3.5],
-    [-2, -3.5],
-    [-1, -1],
-    [1, 2],
-  ] as const) {
-    const colTop = sz < -2 ? TOP - 1 : Math.max(2, TOP - (sz + 3.5) * 1.4);
+
+  // support columns under the station + along the drop curve
+  const colSpots: [number, number][] = [
+    [-6.4, TOP - 0.6],
+    [-2.9, TOP - 0.7],
+  ];
+  for (const t of [0.34, 0.62, 0.85]) {
+    const cp = drop.getPointAt(t);
+    colSpots.push([cp.x, cp.y - 0.2]);
+  }
+  for (const [cx, ch] of colSpots) {
+    if (ch < 1) continue;
     const col = new THREE.Mesh(
-      ctx.track.geo(new THREE.CylinderGeometry(0.16, 0.18, colTop, 6)),
+      ctx.track.geo(new THREE.CylinderGeometry(0.16, 0.18, ch, 6)),
       supMat
     );
-    col.position.set(sx, colTop / 2, sz);
+    col.position.set(cx, ch / 2, 0);
     col.castShadow = true;
     g.add(col);
   }
-  // log boats sliding down on a loop
+
+  // log boats: ride the channel, then follow the drop curve (nose tilts to match)
   const logs: THREE.Mesh[] = [];
-  const logGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.35, 1.0, 4, 8));
+  const logGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.32, 0.95, 4, 10));
   for (let k = 0; k < 2; k++) {
     const log = new THREE.Mesh(logGeo, ctx.mat({ color: 0x6b4423, roughness: 1 }));
     g.add(log);
     logs.push(log);
   }
+
   // splash burst (instanced droplets) at the pool — own material (its opacity
   // animates each frame, so it must not share waterMat with the chute/pool)
   const splashMat = ctx.lit(
@@ -2118,34 +2131,36 @@ function buildLogFlume(ctx: BuildCtx): Ride {
   const noRot = new THREE.Quaternion();
   const sp = new THREE.Vector3();
   const ss = new THREE.Vector3();
-  const tmpA = new THREE.Vector3();
+  const cpv = new THREE.Vector3();
+  const tan = new THREE.Vector3();
   return {
     group: g,
     update(elapsed) {
       for (let k = 0; k < logs.length; k++) {
-        const t = (elapsed * 0.32 + k * 0.5) % 1;
-        if (t < 0.45) {
-          // riding the top channel toward the drop (lying along +x)
-          const u = t / 0.45;
-          logs[k].position.set(-5 + u * 4, TOP, -3.5);
-          logs[k].quaternion.setFromUnitVectors(UP, topDir);
+        const t = (elapsed * 0.3 + k * 0.5) % 1;
+        if (t < 0.4) {
+          // riding the flat top channel toward the drop (lying along +x)
+          const u = t / 0.4;
+          logs[k].position.set(chX0 + u * (chX1 - chX0), TOP - 0.02, 0);
+          logs[k].quaternion.setFromUnitVectors(UP, fwdX);
         } else {
-          // dropping a → b, nose tilted down to follow the chute (eased: accelerate)
-          const u = (t - 0.45) / 0.55;
-          tmpA.copy(a).lerp(b, u * u);
-          logs[k].position.copy(tmpA);
-          logs[k].quaternion.setFromUnitVectors(UP, dropDir);
+          // following the drop curve, nose tilted to the local tangent
+          const u = (t - 0.4) / 0.6;
+          drop.getPointAt(u, cpv);
+          drop.getTangentAt(u, tan);
+          logs[k].position.set(cpv.x, cpv.y + 0.14, cpv.z);
+          logs[k].quaternion.setFromUnitVectors(UP, tan);
         }
       }
       // splash cycles at the pool
-      const sphase = (elapsed * 0.32) % 0.5; // roughly when a log lands
+      const sphase = (elapsed * 0.3) % 0.5;
       const sf = Math.max(0, 1 - sphase / 0.5);
       (splash.material as THREE.MeshStandardMaterial).opacity = 0.85 * sf;
       const grow = (1 - sf) * 2.2;
       ss.set(0.4 + sf * 0.6, 0.4 + sf * 0.6, 0.4 + sf * 0.6);
       for (let i = 0; i < 14; i++) {
         sp.copy(sd[i]).multiplyScalar(grow);
-        sp.set(b.x + sp.x, 0.6 + sd[i].y * (1 - sf) * 1.4, 5 + sp.z);
+        sp.set(poolX + sp.x, 0.5 + sd[i].y * (1 - sf) * 1.4, sp.z);
         splash.setMatrixAt(i, m.compose(sp, noRot, ss));
       }
       splash.instanceMatrix.needsUpdate = true;
