@@ -146,10 +146,12 @@ function canvas(size: number): [HTMLCanvasElement, CanvasRenderingContext2D] {
 
 function makeSkyTexture(): THREE.CanvasTexture {
   const [c, ctx] = canvas(256);
+  // warm golden-afternoon sky: deep blue up top easing to a warm horizon glow
   const g = ctx.createLinearGradient(0, 0, 0, 256);
-  g.addColorStop(0, PAL.skyTop);
-  g.addColorStop(0.55, '#7fc2f3');
-  g.addColorStop(1, PAL.skyBottom);
+  g.addColorStop(0, '#3f86d8');
+  g.addColorStop(0.5, '#8ec8ee');
+  g.addColorStop(0.82, '#e3eef0');
+  g.addColorStop(1, '#fbe6c6');
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, 256, 256);
   const t = new THREE.CanvasTexture(c);
@@ -1828,6 +1830,219 @@ function buildBigCoaster(ctx: BuildCtx, color: number): Ride {
   );
 }
 
+/** A stylised pirate galleon that gently rocks on the lake. */
+function buildPirateShip(ctx: BuildCtx): Ride {
+  const g = new THREE.Group();
+  const hullMat = ctx.mat({ color: 0x5b3b1b, roughness: 1 });
+  const trimMat = ctx.lit({ color: 0xffd24a, roughness: 0.6 }, 0.16);
+  const deckMat = ctx.mat({ color: 0x8f6327, roughness: 1 });
+  const mastMat = ctx.mat({ color: 0x4f2b13, roughness: 1 });
+  const sailMat = ctx.mat({ color: 0xf3ece0, roughness: 1, flatShading: false });
+  const L = 7;
+  const W = 2.6;
+  // hull
+  const hull = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(L, 1.7, W)), hullMat);
+  hull.position.y = 1.0;
+  hull.castShadow = true;
+  g.add(hull);
+  const trim = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(L + 0.15, 0.28, W + 0.15)),
+    trimMat
+  );
+  trim.position.y = 1.75;
+  g.add(trim);
+  // raised stern at the back (-x)
+  const stern = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.7, 1.9, W * 0.92)), deckMat);
+  stern.position.set(-L / 2 + 0.7, 2.5, 0);
+  stern.castShadow = true;
+  g.add(stern);
+  // deck
+  const deck = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(L - 0.5, 0.18, W - 0.5)),
+    deckMat
+  );
+  deck.position.y = 1.78;
+  g.add(deck);
+  // bowsprit (angled spar at the front)
+  const bowsprit = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(0.08, 0.08, 2.4, 6)),
+    mastMat
+  );
+  bowsprit.position.set(L / 2 + 0.6, 2.2, 0);
+  bowsprit.rotation.z = Math.PI / 2 - 0.5;
+  g.add(bowsprit);
+  // masts with square sails + yards
+  for (const [mx, mh, sw] of [
+    [-1.4, 6, 2.2],
+    [1.6, 7.2, 2.6],
+  ] as const) {
+    const mast = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.15, mh, 8)),
+      mastMat
+    );
+    mast.position.set(mx, 1.8 + mh / 2, 0);
+    mast.castShadow = true;
+    g.add(mast);
+    for (const sy of [mh * 0.52, mh * 0.82]) {
+      const sail = new THREE.Mesh(
+        ctx.track.geo(new THREE.BoxGeometry(0.12, mh * 0.24, sw)),
+        sailMat
+      );
+      sail.position.set(mx + 0.06, 1.8 + sy, 0);
+      g.add(sail);
+      const yard = new THREE.Mesh(
+        ctx.track.geo(new THREE.CylinderGeometry(0.05, 0.05, sw + 0.5, 6)),
+        mastMat
+      );
+      yard.rotation.x = Math.PI / 2;
+      yard.position.set(mx, 1.8 + sy + mh * 0.12, 0);
+      g.add(yard);
+    }
+  }
+  // crow's nest + pirate flag on the tall mast
+  const nest = new THREE.Mesh(
+    ctx.track.geo(new THREE.CylinderGeometry(0.4, 0.32, 0.5, 10)),
+    deckMat
+  );
+  nest.position.set(1.6, 1.8 + 7.2 * 0.86, 0);
+  g.add(nest);
+  const flag = new THREE.Mesh(
+    ctx.track.geo(new THREE.BoxGeometry(0.95, 0.55, 0.03)),
+    ctx.lit({ color: 0x172323, roughness: 1 }, 0.1)
+  );
+  flag.position.set(1.6 + 0.55, 1.8 + 7.2 + 0.2, 0);
+  g.add(flag);
+  return {
+    group: g,
+    update(elapsed) {
+      g.rotation.z = Math.sin(elapsed * 0.6) * 0.045;
+      g.rotation.x = Math.sin(elapsed * 0.5 + 1) * 0.03;
+      g.position.y = Math.sin(elapsed * 0.7) * 0.12;
+    },
+  };
+}
+
+/**
+ * A compact log flume water ride: a high station, a steep blue water drop into a
+ * splash pool, white support columns, log boats sliding down on a loop and a
+ * recurring splash burst at the bottom.
+ */
+function buildLogFlume(ctx: BuildCtx): Ride {
+  const g = new THREE.Group();
+  const woodMat = ctx.mat({ color: 0x8f6327, roughness: 1 });
+  const supMat = ctx.mat({ color: 0xeff3f3, roughness: 1 });
+  const waterMat = ctx.lit(
+    { color: 0x4fb3e8, roughness: 0.3, transparent: true, opacity: 0.9 },
+    0.16
+  );
+  const TOP = 10;
+  const a = new THREE.Vector3(-1, TOP - 0.2, -3.5); // top of the drop
+  const b = new THREE.Vector3(2.5, 0.8, 4.2); // splash-down point
+  // top station + flat channel
+  const plat = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(5, 0.6, 4)), woodMat);
+  plat.position.set(-3.5, TOP - 0.5, -3.5);
+  plat.castShadow = true;
+  g.add(plat);
+  const topWater = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(4.4, 0.18, 2)), waterMat);
+  topWater.position.set(-3.3, TOP - 0.1, -3.5);
+  g.add(topWater);
+  // the steep drop (trough + water surface), aligned a → b
+  const mid = a.clone().add(b).multiplyScalar(0.5);
+  const len = a.distanceTo(b);
+  const trough = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(2.4, 0.4, len)), woodMat);
+  trough.position.copy(mid);
+  trough.lookAt(b);
+  trough.castShadow = true;
+  g.add(trough);
+  const chute = new THREE.Mesh(ctx.track.geo(new THREE.BoxGeometry(1.8, 0.14, len)), waterMat);
+  chute.position.copy(mid);
+  chute.position.y += 0.24;
+  chute.lookAt(b);
+  g.add(chute);
+  // splash pool
+  const pool = new THREE.Mesh(ctx.track.geo(new THREE.CircleGeometry(4.2, 28)), waterMat);
+  pool.rotation.x = -Math.PI / 2;
+  pool.position.set(3, 0.18, 5.5);
+  g.add(pool);
+  // support columns under the station / drop
+  for (const [sx, sz] of [
+    [-5, -3.5],
+    [-2, -3.5],
+    [-1, -1],
+    [1, 2],
+  ] as const) {
+    const colTop = sz < -2 ? TOP - 1 : Math.max(2, TOP - (sz + 3.5) * 1.4);
+    const col = new THREE.Mesh(
+      ctx.track.geo(new THREE.CylinderGeometry(0.16, 0.18, colTop, 6)),
+      supMat
+    );
+    col.position.set(sx, colTop / 2, sz);
+    col.castShadow = true;
+    g.add(col);
+  }
+  // log boats sliding down on a loop
+  const logs: THREE.Mesh[] = [];
+  const logGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.35, 1.0, 4, 8));
+  for (let k = 0; k < 2; k++) {
+    const log = new THREE.Mesh(logGeo, ctx.mat({ color: 0x6b4423, roughness: 1 }));
+    log.rotation.z = Math.PI / 2;
+    g.add(log);
+    logs.push(log);
+  }
+  // splash burst (instanced droplets) at the pool — own material (its opacity
+  // animates each frame, so it must not share waterMat with the chute/pool)
+  const splashMat = ctx.lit(
+    { color: 0xd7f3ff, roughness: 0.3, transparent: true, opacity: 0.85 },
+    0.2
+  );
+  const splash = new THREE.InstancedMesh(
+    ctx.track.geo(new THREE.SphereGeometry(0.16, 6, 6)),
+    splashMat,
+    14
+  );
+  g.add(splash);
+  const sd: THREE.Vector3[] = [];
+  for (let i = 0; i < 14; i++) {
+    const an = (i / 14) * Math.PI * 2;
+    sd.push(new THREE.Vector3(Math.cos(an) * 0.8, rnd(1.2, 2), Math.sin(an) * 0.8));
+  }
+  const m = new THREE.Matrix4();
+  const noRot = new THREE.Quaternion();
+  const sp = new THREE.Vector3();
+  const ss = new THREE.Vector3();
+  const tmpA = new THREE.Vector3();
+  return {
+    group: g,
+    update(elapsed) {
+      for (let k = 0; k < logs.length; k++) {
+        const t = (elapsed * 0.32 + k * 0.5) % 1;
+        if (t < 0.45) {
+          // riding the top channel toward the drop
+          const u = t / 0.45;
+          logs[k].position.set(-5 + u * 4, TOP, -3.5);
+        } else {
+          // dropping a → b (eased: accelerate)
+          const u = (t - 0.45) / 0.55;
+          tmpA.copy(a).lerp(b, u * u);
+          logs[k].position.copy(tmpA);
+        }
+      }
+      // splash cycles at the pool
+      const sphase = (elapsed * 0.32) % 0.5; // roughly when a log lands
+      const sf = Math.max(0, 1 - sphase / 0.5);
+      (splash.material as THREE.MeshStandardMaterial).opacity = 0.85 * sf;
+      const grow = (1 - sf) * 2.2;
+      ss.set(0.4 + sf * 0.6, 0.4 + sf * 0.6, 0.4 + sf * 0.6);
+      for (let i = 0; i < 14; i++) {
+        sp.copy(sd[i]).multiplyScalar(grow);
+        sp.set(b.x + sp.x, 0.6 + sd[i].y * (1 - sf) * 1.4, 5 + sp.z);
+        splash.setMatrixAt(i, m.compose(sp, noRot, ss));
+      }
+      splash.instanceMatrix.needsUpdate = true;
+    },
+  };
+}
+
 /**
  * A pretty Disney-style fairytale castle: a tall layered central keep with a
  * blue spire, flanking towers with conical roofs, a crenellated gatehouse, gold
@@ -2037,7 +2252,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   const ambient = new THREE.AmbientLight(0xfff3e0, 0.2);
   scene.add(ambient);
   const sun = new THREE.DirectionalLight(0xffe7bd, 2.35);
-  sun.position.set(-44, 40, 30); // lower angle → longer, more dramatic shadows
+  sun.position.set(-52, 30, 22); // low golden-afternoon angle → long, dramatic shadows
   sun.castShadow = true;
   sun.shadow.mapSize.set(mobile ? 1024 : 1536, mobile ? 1024 : 1536);
   sun.shadow.camera.near = 1;
@@ -2216,9 +2431,10 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     [27, -25, 17], // mega-coaster footprint
     [-31, -7, 4], // drop tower
     [-14, 9, 4.5], // swing
-    [14, 9, 4.5], // swing
+    [15, 6, 10], // log flume
     [-12, -7, 6], // carousel
     [0, -4, 5], // fountain
+    [0, -25, 13], // lake + pirate ship
   ];
   const treeSpots: [number, number][] = [];
   const treeTarget = mobile ? 34 : 70;
@@ -2299,8 +2515,11 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     [new THREE.Vector3(1, 0, -30), new THREE.Vector3(1, 0, 0)],
     [new THREE.Vector3(-22, 0, -8), new THREE.Vector3(-22, 0, -30)],
     [new THREE.Vector3(22, 0, -30), new THREE.Vector3(22, 0, -8)],
+    [new THREE.Vector3(-6, 0, 41), new THREE.Vector3(6, 0, 41)], // forecourt
+    [new THREE.Vector3(9, 0, 10), new THREE.Vector3(20, 0, 4)], // toward the flume
+    [new THREE.Vector3(-9, 0, -13), new THREE.Vector3(9, 0, -13)], // along the lakefront
   ];
-  const peeps = buildPeeps(ctx, routes);
+  const peeps = buildPeeps(ctx, mobile ? routes.slice(0, 6) : routes);
   world.add(peeps.group);
   animated.push(peeps);
 
@@ -2319,7 +2538,8 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   addRide(buildBigCoaster(ctx, 0x1fc6c2), 27, -25, -0.1); // teal mega-coaster, back-right (clear of the castle)
   addRide(buildDropTower(ctx), -31, -7); // tall spire on the left edge
   addRide(buildSwingRide(ctx), -14, 9); // mid-left
-  addRide(buildSwingRide(ctx), 14, 9); // mid-right
+  addRide(buildLogFlume(ctx), 15, 6, -0.3); // mid-right water ride
+  addRide(buildPirateShip(ctx), 0, -24, 0.5); // galleon on the lake
 
   // Disney-style castle: the grand back-drop at the far end of the park
   const castle = buildCastle(ctx);
@@ -2383,18 +2603,21 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // the busy park interior (never empty ground).
   const flightPath = new THREE.CatmullRomCurve3(
     [
-      new THREE.Vector3(0, 4.6, 46), // approach
-      new THREE.Vector3(0, 4.2, 40), // dip toward the arch
-      new THREE.Vector3(0, 4.2, 30), // THROUGH the arch
-      new THREE.Vector3(0, 9.5, 13), // onto the main street (elevated → looks down at the park)
-      new THREE.Vector3(2, 11.5, -3), // over the plaza
-      new THREE.Vector3(-14, 11.5, -14), // bank toward the back-left
-      new THREE.Vector3(-30, 12, -3), // orbit left (tightened so the edge isn't empty)
-      new THREE.Vector3(-25, 10.5, 22), // front-left
-      new THREE.Vector3(0, 12.5, 40), // wide front
-      new THREE.Vector3(25, 10.5, 22), // front-right
-      new THREE.Vector3(30, 12, -3), // orbit right
-      new THREE.Vector3(15, 11.5, -15), // back-right
+      new THREE.Vector3(0, 4.6, 46), // 1 approach
+      new THREE.Vector3(0, 4.2, 38), // 2 dip toward the arch
+      new THREE.Vector3(0, 4.2, 30), // 3 THROUGH the arch
+      new THREE.Vector3(0, 9.5, 13), // 4 onto the main street (elevated)
+      new THREE.Vector3(3, 11, -3), // 5 over the plaza
+      new THREE.Vector3(14, 7, -13), // 6 dive toward the coaster
+      new THREE.Vector3(25, 4.5, -19), // 7 LOW PASS by the mega-coaster
+      new THREE.Vector3(31, 8, -33), // 8 sweep up, back-right
+      new THREE.Vector3(12, 15, -42), // 9 climb toward the castle
+      new THREE.Vector3(0, 20, -39), // 10 SWEEP high by the castle
+      new THREE.Vector3(-14, 15, -38), // 11 descend left of the castle
+      new THREE.Vector3(-30, 12, -10), // 12 orbit left
+      new THREE.Vector3(-25, 10.5, 21), // 13 front-left
+      new THREE.Vector3(0, 12.5, 40), // 14 wide front
+      new THREE.Vector3(24, 10.5, 22), // 15 front-right
     ],
     true,
     'catmullrom',
@@ -2406,18 +2629,21 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // slerped toward this each frame, so every pan is smooth.
   const aimPath = new THREE.CatmullRomCurve3(
     [
-      new THREE.Vector3(0, 7.5, 33), // 1 approach → park.fan logo (banner + pin)
-      new THREE.Vector3(0, 7, 31), // 2 → logo, closer
-      new THREE.Vector3(0, 6, -32), // 3 through the arch → down Main Street to the castle
-      new THREE.Vector3(6, 6.5, -26), // 4 main street → park + castle (pitched down, not sky)
-      new THREE.Vector3(24, 8, -24), // 5 over plaza → mega-coaster (back-right)
-      new THREE.Vector3(-22, 7, -20), // 6 back-left → ferris wheel
-      new THREE.Vector3(0, 8.5, -42), // 7 orbit left → castle
-      new THREE.Vector3(-14, 7, -22), // 8 front-left → ferris / castle cluster
-      new THREE.Vector3(0, 8, -40), // 9 wide front → castle vista
-      new THREE.Vector3(24, 8, -24), // 10 front-right → mega-coaster
-      new THREE.Vector3(-2, 8, -40), // 11 orbit right → castle
-      new THREE.Vector3(-22, 7, -20), // 12 back-right → ferris wheel
+      new THREE.Vector3(0, 8, 31), // 1 → park.fan logo (framed on approach)
+      new THREE.Vector3(0, 6.5, -8), // 2 → look FORWARD down the street (not up at the banner)
+      new THREE.Vector3(0, 6, -28), // 3 → down Main Street to the castle
+      new THREE.Vector3(8, 7, -22), // 4 → park ahead (pitched down, not sky)
+      new THREE.Vector3(16, 8, -20), // 5 → swing toward the mega-coaster
+      new THREE.Vector3(26, 9, -22), // 6 → the coaster
+      new THREE.Vector3(29, 13, -23), // 7 LOW PASS → look UP at the coaster
+      new THREE.Vector3(16, 11, -40), // 8 → turn toward the castle
+      new THREE.Vector3(0, 16, -45), // 9 → castle (rising)
+      new THREE.Vector3(0, 16, -46), // 10 SWEEP → the castle spire
+      new THREE.Vector3(-20, 9, -26), // 11 → ferris / park (descending)
+      new THREE.Vector3(-18, 8, -22), // 12 → ferris wheel
+      new THREE.Vector3(-6, 8, -26), // 13 → back rides
+      new THREE.Vector3(0, 9, -40), // 14 → castle vista
+      new THREE.Vector3(16, 8, -24), // 15 → coaster / park
     ],
     true,
     'catmullrom',
@@ -2474,17 +2700,18 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     const night = theme === 'dark';
     scene.background = night ? nightSky : skyTex;
     const fog = scene.fog as THREE.Fog;
-    fog.color.set(night ? 0x101d3a : 0xcfeaff);
+    // Day = warm golden afternoon; night = cool moonlight.
+    fog.color.set(night ? 0x101d3a : 0xdce8ec);
     fog.near = night ? 50 : 64;
-    fog.far = night ? 230 : 240;
-    hemi.color.set(night ? 0x3a5aa0 : 0xdcefff);
-    hemi.groundColor.set(night ? 0x141f33 : 0x7a9a5a);
-    hemi.intensity = night ? 0.32 : 0.85;
-    ambient.color.set(night ? 0x2b4a7a : 0xfff3e0);
+    fog.far = night ? 230 : 245;
+    hemi.color.set(night ? 0x3a5aa0 : 0xeae3d0);
+    hemi.groundColor.set(night ? 0x141f33 : 0x9a8458);
+    hemi.intensity = night ? 0.32 : 0.8;
+    ambient.color.set(night ? 0x2b4a7a : 0xffeccf);
     ambient.intensity = night ? 0.14 : 0.2;
-    sun.color.set(night ? 0xaec4ff : 0xffe7bd);
-    sun.intensity = night ? 0.45 : 2.35;
-    fill.intensity = night ? 0.2 : 0.35;
+    sun.color.set(night ? 0xaec4ff : 0xffd79a); // warm golden sun by day
+    sun.intensity = night ? 0.45 : 2.4;
+    fill.intensity = night ? 0.2 : 0.38;
     stars.points.visible = night;
     moon.visible = night;
     for (const l of nightLights) l.intensity = night ? (l.userData.nightIntensity as number) : 0;
