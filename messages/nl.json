@@ -99,8 +99,11 @@
   },
   "home": {
     "hottestParks": {
+      "badge": "Hittegolf",
       "title": "De heetste parken in Duitsland, Frankrijk, Italië, Nederland en België",
       "subtitle": "Hittegolf in de parken — de drie heetste bestemmingen van vandaag",
+      "description": "Als het in de parken boven 35 °C wordt, telt de timing: kom vroeg, kies voor schaduw en waterattracties en drink genoeg. Dit zijn de heetste bestemmingen van vandaag.",
+      "hottestLabel": "Heetste park",
       "viewPark": "Naar het park"
     },
     "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 150 pretparken en 5.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",

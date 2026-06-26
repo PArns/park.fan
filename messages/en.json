@@ -99,8 +99,11 @@
   },
   "home": {
     "hottestParks": {
+      "badge": "Heat wave",
       "title": "The hottest parks in Germany, France, Italy, the Netherlands and Belgium",
       "subtitle": "Heat wave at the parks — today's three hottest destinations",
+      "description": "When park temperatures climb past 35 °C, timing matters: arrive early, plan for shade and water rides, and stay hydrated. These are today's hottest destinations.",
+      "hottestLabel": "Hottest park",
       "viewPark": "View park"
     },
     "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",

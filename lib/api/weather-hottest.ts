@@ -19,10 +19,17 @@ import { getParkWeatherNowcast } from './weather-nowcast';
 const HOT_COUNTRY_CODES = new Set(['DE', 'FR', 'IT', 'NL', 'BE']);
 
 /**
- * Park slugs to keep out of the ranking (e.g. water parks — a heat headline pointing at
- * Rulantica, an indoor/outdoor water world, is off-message).
+ * Parks to keep out of the ranking (e.g. water parks — a heat headline pointing at
+ * Rulantica, an indoor/outdoor water world, is off-message). Matched against both the
+ * slug and the display name (lowercased substring) so a differing slug still excludes it.
  */
-const EXCLUDED_PARK_SLUGS = new Set(['rulantica']);
+const EXCLUDED_TERMS = ['rulantica'];
+
+function isExcludedPark(slug: string, name: string): boolean {
+  const s = slug.toLowerCase();
+  const n = name.toLowerCase();
+  return EXCLUDED_TERMS.some((term) => s === term || n.includes(term));
+}
 
 /** Cap candidates per country (biggest parks by attraction count) to bound weather lookups. */
 const MAX_CANDIDATES_PER_COUNTRY = 8;
@@ -75,7 +82,7 @@ export async function getHottestParks(minTempC: number, limit: number): Promise<
           // Skip permanently-closed / scheduleless parks — a heat headline should
           // point at places one can actually visit.
           if (!park.hasOperatingSchedule) continue;
-          if (EXCLUDED_PARK_SLUGS.has(park.slug)) continue;
+          if (isExcludedPark(park.slug, park.name)) continue;
           countryParks.push({
             continentSlug: continent.slug,
             countrySlug: country.slug,

@@ -99,8 +99,11 @@
   },
   "home": {
     "hottestParks": {
+      "badge": "Ola de calor",
       "title": "Los parques más calurosos de Alemania, Francia, Italia, Países Bajos y Bélgica",
       "subtitle": "Ola de calor en los parques — los tres destinos más calurosos de hoy",
+      "description": "Cuando la temperatura en los parques supera los 35 °C, el momento importa: llega temprano, busca sombra y atracciones acuáticas, y mantente hidratado. Estos son los destinos más calurosos de hoy.",
+      "hottestLabel": "Parque más caluroso",
       "viewPark": "Ver parque"
     },
     "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
