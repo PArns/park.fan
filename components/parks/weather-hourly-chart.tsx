@@ -510,7 +510,7 @@ export function WeatherHourlyChart({
           style={{ left: `${clampX(maxX)}%`, top: `${yFor(maxTemp)}%` }}
         >
           <Temp celsius={maxTemp} />
-          {isHeatWarning(maxTemp) && <HeatWarningBadge label={t('heatWarning')} size={13} />}
+          {isHeatWarning(maxTemp) && <HeatWarningBadge label={t('heatWarning')} size="1.3em" />}
         </span>
         <span
           className="text-muted-foreground pointer-events-none absolute -translate-x-1/2 pt-0.5 text-[10px] font-medium tabular-nums"

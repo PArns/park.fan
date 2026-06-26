@@ -150,7 +150,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                 <div className="flex flex-col items-center leading-none">
                   <span className="inline-flex items-center gap-1 text-sm font-bold">
                     <Temp celsius={tempMax} />
-                    {reasons.length > 0 && <HeatWarningBadge label={warningLabel} size={12} />}
+                    {reasons.length > 0 && <HeatWarningBadge label={warningLabel} size="1.15em" />}
                   </span>
                   <span className="text-muted-foreground mt-0.5 text-[10px]">
                     <Temp celsius={parseFloat(day.temperatureMin)} />

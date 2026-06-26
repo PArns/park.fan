@@ -15,8 +15,12 @@ export function isHeatWarning(celsius: number): boolean {
 interface HeatWarningBadgeProps {
   /** Accessible label / tooltip text. */
   label: string;
-  /** Edge length in px (the badge renders in a square box). Defaults to 16. */
-  size?: number;
+  /**
+   * Edge length. A number is treated as px; a string is any CSS length. Defaults
+   * to `"1em"` so the triangle tracks the surrounding font size (and thus visually
+   * matches the temperature it sits next to).
+   */
+  size?: number | string;
   className?: string;
 }
 
@@ -25,15 +29,14 @@ interface HeatWarningBadgeProps {
  * black "!". Deliberately not stylised. Shown next to temperatures above
  * {@link HEAT_WARNING_THRESHOLD_C}.
  */
-export function HeatWarningBadge({ label, size = 16, className }: HeatWarningBadgeProps) {
+export function HeatWarningBadge({ label, size = '1em', className }: HeatWarningBadgeProps) {
   return (
     <svg
       role="img"
       aria-label={label}
       viewBox="0 0 24 24"
-      width={size}
-      height={size}
       className={cn('inline-block shrink-0 align-middle', className)}
+      style={{ width: size, height: size }}
     >
       <title>{label}</title>
       {/* Triangle: white fill, red border, rounded corners. */}

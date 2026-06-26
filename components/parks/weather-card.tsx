@@ -193,11 +193,9 @@ export function WeatherCard({
                 <WeatherIcon className={`h-12 w-12 ${color}`} />
               </div>
               <div>
-                <span className="inline-flex items-center gap-1.5 text-3xl font-bold">
+                <span className="inline-flex items-center gap-2 text-3xl font-bold">
                   <Temp celsius={displayTempC} />
-                  {isHeatWarning(displayTempC) && (
-                    <HeatWarningBadge label={t('heatWarning')} size={20} />
-                  )}
+                  {isHeatWarning(displayTempC) && <HeatWarningBadge label={t('heatWarning')} />}
                 </span>
                 <p className="text-muted-foreground text-xs">
                   <Temp celsius={tempMinC} /> – <Temp celsius={tempMaxC} />
