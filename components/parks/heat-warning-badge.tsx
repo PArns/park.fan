@@ -15,29 +15,46 @@ export function isHeatWarning(celsius: number): boolean {
 interface HeatWarningBadgeProps {
   /** Accessible label / tooltip text. */
   label: string;
-  /** Edge length in px (square badge). Defaults to 16. */
+  /** Edge length in px (the badge renders in a square box). Defaults to 16. */
   size?: number;
   className?: string;
 }
 
 /**
- * A deliberately non-stylised "caution" mark — a real warning sign: red border,
- * white background, black exclamation mark. Shown next to temperatures above
+ * A real, road-sign style warning triangle — red border, white background and a
+ * black "!". Deliberately not stylised. Shown next to temperatures above
  * {@link HEAT_WARNING_THRESHOLD_C}.
  */
 export function HeatWarningBadge({ label, size = 16, className }: HeatWarningBadgeProps) {
   return (
-    <span
+    <svg
       role="img"
       aria-label={label}
-      title={label}
-      className={cn(
-        'inline-flex shrink-0 items-center justify-center rounded-sm border-2 border-red-600 bg-white font-bold text-black',
-        className
-      )}
-      style={{ width: size, height: size, fontSize: Math.round(size * 0.7), lineHeight: 1 }}
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      className={cn('inline-block shrink-0 align-middle', className)}
     >
-      !
-    </span>
+      <title>{label}</title>
+      {/* Triangle: white fill, red border, rounded corners. */}
+      <path
+        d="M12 3 L22.5 21 L1.5 21 Z"
+        fill="#ffffff"
+        stroke="#dc2626"
+        strokeWidth="2.4"
+        strokeLinejoin="round"
+      />
+      {/* Exclamation mark, black. */}
+      <line
+        x1="12"
+        y1="10"
+        x2="12"
+        y2="15.5"
+        stroke="#000000"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+      <circle cx="12" cy="18.6" r="1.25" fill="#000000" />
+    </svg>
   );
 }
