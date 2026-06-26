@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
 import { parseISO } from 'date-fns';
 import { de, enUS, es, fr, nl, type Locale } from 'date-fns/locale';
@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 import { useEffect, useRef, useState } from 'react';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { Temp, Precip } from '@/components/common/unit-display';
+import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
 import type { WeatherDay } from '@/lib/api/types';
 
 interface WeatherForecastStripProps {
@@ -19,6 +20,7 @@ const LOCALE_MAP: Record<string, Locale> = { de, es, fr, nl };
 
 export function WeatherForecastStrip({ forecast, className }: WeatherForecastStripProps) {
   const locale = useLocale();
+  const t = useTranslations('parks.weather');
   const dateFnsLocale = LOCALE_MAP[locale] ?? enUS;
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeft, setShowLeft] = useState(false);
@@ -122,6 +124,7 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
             const date = parseISO(day.date);
             const dayLabel = format(date, 'EEE', { locale: dateFnsLocale });
             const precip = parseFloat(day.precipitationSum || '0');
+            const tempMax = parseFloat(day.temperatureMax);
             const isLast = i === validForecast.length - 1;
 
             return (
@@ -137,8 +140,11 @@ export function WeatherForecastStrip({ forecast, className }: WeatherForecastStr
                 </span>
                 <ForecastIcon className={`h-4 w-4 ${color}`} />
                 <div className="flex flex-col items-center leading-none">
-                  <span className="text-sm font-bold">
-                    <Temp celsius={parseFloat(day.temperatureMax)} />
+                  <span className="inline-flex items-center gap-1 text-sm font-bold">
+                    <Temp celsius={tempMax} />
+                    {isHeatWarning(tempMax) && (
+                      <HeatWarningBadge label={t('heatWarning')} size={12} />
+                    )}
                   </span>
                   <span className="text-muted-foreground mt-0.5 text-[10px]">
                     <Temp celsius={parseFloat(day.temperatureMin)} />

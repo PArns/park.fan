@@ -14,6 +14,7 @@ import {
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { WeatherForecastStrip } from './weather-forecast-strip';
+import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
 import { WeatherHourlyChart } from './weather-hourly-chart';
 import { NowcastUpdateCountdown } from './nowcast-update-countdown';
 import { WeatherBackground } from './weather-background';
@@ -192,8 +193,11 @@ export function WeatherCard({
                 <WeatherIcon className={`h-12 w-12 ${color}`} />
               </div>
               <div>
-                <span className="text-3xl font-bold">
+                <span className="inline-flex items-center gap-1.5 text-3xl font-bold">
                   <Temp celsius={displayTempC} />
+                  {isHeatWarning(displayTempC) && (
+                    <HeatWarningBadge label={t('heatWarning')} size={20} />
+                  )}
                 </span>
                 <p className="text-muted-foreground text-xs">
                   <Temp celsius={tempMinC} /> – <Temp celsius={tempMaxC} />

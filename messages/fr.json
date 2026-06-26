@@ -463,7 +463,8 @@
       "gustsLabel": "Rafales",
       "visibilityLabel": "Visibilité",
       "snowLabel": "Neige",
-      "nowLabel": "Maintenant"
+      "nowLabel": "Maintenant",
+      "heatWarning": "Alerte chaleur – plus de 30 °C (86 °F)"
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",

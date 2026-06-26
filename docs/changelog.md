@@ -4,6 +4,21 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Heat warning badge on the weather card
+
+Temperatures above **30 °C (86 °F)** now show a real "caution" mark — a square with a red
+border, white background and a black "!" — next to the affected temperature. It appears both
+next to the current temperature at the top of the weather card and on every day in the bottom
+forecast strip whose max temperature crosses the threshold. The threshold is checked on the
+Celsius source value, so it triggers identically regardless of the user's °C/°F unit choice.
+
+- `components/parks/heat-warning-badge.tsx` (new) — `HeatWarningBadge` + `isHeatWarning()` helper
+  and the shared `HEAT_WARNING_THRESHOLD_C` constant.
+- `components/parks/weather-card.tsx` / `weather-forecast-strip.tsx` — render the badge.
+- `messages/*.json` — `parks.weather.heatWarning` tooltip label (all 6 locales).
+
+---
+
 ## Unreleased – Homepage sections server-rendered into the 5-min shell
 
 The homepage's data sections — **Featured Parks** ("beliebte Parks"), **Global/Platform Stats** and

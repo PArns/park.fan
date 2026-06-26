@@ -463,7 +463,8 @@
       "gustsLabel": "Windstoten",
       "visibilityLabel": "Zicht",
       "snowLabel": "Sneeuw",
-      "nowLabel": "Nu"
+      "nowLabel": "Nu",
+      "heatWarning": "Hittewaarschuwing – boven 30 °C (86 °F)"
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",

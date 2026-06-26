@@ -463,7 +463,8 @@
       "gustsLabel": "Raffiche",
       "visibilityLabel": "Visibilità",
       "snowLabel": "Neve",
-      "nowLabel": "Ora"
+      "nowLabel": "Ora",
+      "heatWarning": "Allerta caldo – oltre 30 °C (86 °F)"
     },
     "weatherNowcast": {
       "updateIn": "Aggiornamento tra {countdown}",
