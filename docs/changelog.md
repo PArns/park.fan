@@ -13,11 +13,18 @@ the hourly nowcast chart, and on every day in the bottom forecast strip whose ma
 crosses the threshold. The threshold is checked on the Celsius source value, so it triggers
 identically regardless of the user's °C/°F unit choice.
 
+The same triangle also flags **severe-weather days** in the forecast strip — thunderstorms,
+heavy rain (code 65/67/82 or ≥ 25 mm/day), heavy snowfall (code 75/86 or ≥ 10 cm/day) and
+storm-force wind (≥ 60 km/h). When a day is both hot and severe, a single triangle carries a
+tooltip that lists every reason.
+
 - `components/parks/heat-warning-badge.tsx` (new) — `HeatWarningBadge` (SVG warning triangle) +
   `isHeatWarning()` helper and the shared `HEAT_WARNING_THRESHOLD_C` constant.
+- `lib/utils/weather-utils.ts` — `getDayWeatherWarning()` classifies a forecast day as severe.
 - `components/parks/weather-card.tsx` / `weather-forecast-strip.tsx` / `weather-hourly-chart.tsx`
   — render the badge.
-- `messages/*.json` — `parks.weather.heatWarning` tooltip label (all 6 locales).
+- `messages/*.json` — `parks.weather.heatWarning` + `parks.weather.weatherWarning.*` tooltip
+  labels (all 6 locales).
 
 ---
 

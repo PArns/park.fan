@@ -11,6 +11,49 @@ import {
   CloudDrizzle,
 } from 'lucide-react';
 
+/**
+ * Severe-weather classification for a single forecast day. Returned value is the
+ * translation key suffix under `parks.weather.weatherWarning.*`; `null` means the
+ * day is unremarkable. Heat is handled separately (see `isHeatWarning`).
+ */
+export type WeatherWarning = 'thunderstorm' | 'heavySnow' | 'heavyRain' | 'storm';
+
+// Daily thresholds for "severe". Tuned to flag genuinely disruptive days, not a
+// passing shower. Units match the Open-Meteo daily fields (mm / cm / km/h).
+const HEAVY_RAIN_MM = 25;
+const HEAVY_SNOW_CM = 10;
+const STORM_WIND_KMH = 60;
+
+/**
+ * Classify a forecast day as severe weather. Checks the WMO weather code first
+ * (thunderstorm / heavy rain / heavy snow) and then falls back to the daily
+ * totals so a day that accumulates a lot of rain/snow/wind without a "heavy"
+ * code still trips the warning. Priority: thunderstorm → snow → rain → wind.
+ */
+export function getDayWeatherWarning(day: {
+  weatherCode: number;
+  precipitationSum?: string;
+  snowfallSum?: string;
+  windSpeedMax?: string;
+}): WeatherWarning | null {
+  const code = day.weatherCode;
+  // 95/96/99 — thunderstorm (with hail).
+  if (code === 95 || code === 96 || code === 99) return 'thunderstorm';
+
+  const snow = parseFloat(day.snowfallSum || '0');
+  // 75 heavy snow, 86 heavy snow showers.
+  if (code === 75 || code === 86 || snow >= HEAVY_SNOW_CM) return 'heavySnow';
+
+  const precip = parseFloat(day.precipitationSum || '0');
+  // 65 heavy rain, 67 heavy freezing rain, 82 violent rain showers.
+  if (code === 65 || code === 67 || code === 82 || precip >= HEAVY_RAIN_MM) return 'heavyRain';
+
+  const wind = parseFloat(day.windSpeedMax || '0');
+  if (wind >= STORM_WIND_KMH) return 'storm';
+
+  return null;
+}
+
 // WMO Weather Codes grouping
 // https://open-meteo.com/en/docs
 export function getWeatherConfig(code: number, isDay = true) {
