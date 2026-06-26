@@ -98,6 +98,11 @@
     "browseParks": "Browse all parks"
   },
   "home": {
+    "hottestParks": {
+      "title": "The hottest parks in Germany, France, Italy, the Netherlands and Belgium",
+      "subtitle": "Heat wave at the parks — today's three hottest destinations",
+      "viewPark": "View park"
+    },
     "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
     "hero": {
       "badge": "AI-Powered Predictions",

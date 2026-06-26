@@ -98,6 +98,11 @@
     "browseParks": "Ver todos los parques"
   },
   "home": {
+    "hottestParks": {
+      "title": "Los parques más calurosos de Alemania, Francia, Italia, Países Bajos y Bélgica",
+      "subtitle": "Ola de calor en los parques — los tres destinos más calurosos de hoy",
+      "viewPark": "Ver parque"
+    },
     "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
     "hero": {
       "badge": "Predicciones por IA",

@@ -35,6 +35,7 @@ const NearbyParksCard = nextDynamic(
   }
 );
 import { AnnounceSection } from '@/components/home/announce-section';
+import { HottestParksSection } from '@/components/home/hottest-parks-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
@@ -214,6 +215,12 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* Announcement Section */}
       <AnnounceSection locale={locale} />
+
+      {/* Hottest parks heat banner — only renders during a real heat wave (≥ 35 °C in DE/FR/IT/NL/BE);
+          fallback is null because the section is absent most of the year (no skeleton flash). */}
+      <Suspense fallback={null}>
+        <HottestParksSection locale={locale} />
+      </Suspense>
 
       {/* Location banner: not for snippet/indexing (data-nosnippet); show when user has not granted location */}
       <LocationBanner />

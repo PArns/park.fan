@@ -98,6 +98,11 @@
     "browseParks": "Alle Parks entdecken"
   },
   "home": {
+    "hottestParks": {
+      "title": "Die heißesten Parks in Deutschland, Frankreich, Italien, den Niederlanden und Belgien",
+      "subtitle": "Hitzewelle in den Parks — die drei heißesten Ziele heute",
+      "viewPark": "Zum Park"
+    },
     "intro": "park.fan zeigt Echtzeit-Wartezeiten und Besucherandrang für über 150 Freizeitparks und 5.000+ Attraktionen weltweit—u. a. Disney, Universal Studios, Europa-Park und Phantasialand. Plane deinen Besuch mit Live-Wartezeiten, Öffnungszeiten und KI-gestützten Prognosen.",
     "hero": {
       "badge": "KI-gestützte Vorhersagen",

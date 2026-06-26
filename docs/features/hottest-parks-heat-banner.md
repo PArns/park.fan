@@ -1,6 +1,9 @@
 # Feature concept: "Hottest parks" heat banner on the homepage
 
-> Status: **proposal / feasibility** — not yet implemented.
+> Status: **implemented** (frontend aggregation = doc's Option B; countries **DE / FR / IT / NL / BE**;
+> ranking by today's **max** temperature). See `components/home/hottest-parks-section.tsx` and
+> `lib/api/weather-hottest.ts`. The data source can later be swapped to the backend endpoint
+> (Option A) without touching the section component.
 > A homepage section in the spirit of the existing **Saisonstart** announcement
 > ([`AnnounceSection`](../../components/home/announce-section.tsx)) that surfaces the
 > hottest theme parks in **Germany, France, the Netherlands and Belgium** during a
