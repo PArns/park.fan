@@ -115,8 +115,8 @@ export async function HottestParksSection({ locale: _locale }: HottestParksSecti
                       {tWeather(label)}
                     </span>
                     <span className="inline-flex items-center gap-1.5 text-5xl leading-none font-bold">
-                      <Temp celsius={park.temperatureMaxC} />
-                      {isHeatWarning(park.temperatureMaxC) && (
+                      <Temp celsius={park.temperatureC} />
+                      {isHeatWarning(park.temperatureC) && (
                         <HeatWarningBadge label={tWeather('heatWarning')} />
                       )}
                     </span>
