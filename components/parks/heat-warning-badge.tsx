@@ -3,13 +3,13 @@ import { cn } from '@/lib/utils';
 /**
  * Temperature (in °C) at or above which we surface a heat warning. The check is
  * always done on the Celsius source value so the threshold is unit-independent;
- * 30 °C is exactly 86 °F.
+ * 35 °C is exactly 95 °F.
  */
-export const HEAT_WARNING_THRESHOLD_C = 30;
+export const HEAT_WARNING_THRESHOLD_C = 35;
 
 /** True when a Celsius temperature should trigger the heat warning badge. */
 export function isHeatWarning(celsius: number): boolean {
-  return celsius > HEAT_WARNING_THRESHOLD_C;
+  return celsius >= HEAT_WARNING_THRESHOLD_C;
 }
 
 interface HeatWarningBadgeProps {

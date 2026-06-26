@@ -308,7 +308,7 @@
       "visibilityLabel": "Sicht",
       "snowLabel": "Schnee",
       "nowLabel": "Jetzt",
-      "heatWarning": "Hitzewarnung – über 30 °C (86 °F)",
+      "heatWarning": "Hitzewarnung – ab 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Unwetterwarnung: Gewitter",
         "heavyRain": "Unwetterwarnung: Starkregen",

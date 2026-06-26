@@ -464,7 +464,7 @@
       "visibilityLabel": "Visibilidad",
       "snowLabel": "Nieve",
       "nowLabel": "Ahora",
-      "heatWarning": "Aviso de calor – más de 30 °C (86 °F)",
+      "heatWarning": "Aviso de calor – desde 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Alerta meteorológica: tormenta eléctrica",
         "heavyRain": "Alerta meteorológica: lluvia intensa",

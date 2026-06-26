@@ -464,7 +464,7 @@
       "visibilityLabel": "Visibilità",
       "snowLabel": "Neve",
       "nowLabel": "Ora",
-      "heatWarning": "Allerta caldo – oltre 30 °C (86 °F)",
+      "heatWarning": "Allerta caldo – da 35 °C (95 °F)",
       "weatherWarning": {
         "thunderstorm": "Allerta meteo: temporale",
         "heavyRain": "Allerta meteo: pioggia intensa",

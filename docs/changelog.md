@@ -4,6 +4,14 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Heat warning threshold raised to 35 °C
+
+The heat warning now triggers at **≥ 35 °C (95 °F)** (was > 30 °C). Single constant
+`HEAT_WARNING_THRESHOLD_C` in `components/parks/heat-warning-badge.tsx` plus the tooltip
+copy in `messages/*.json`. Severe-weather day warnings are unchanged.
+
+---
+
 ## Unreleased – Heat warning badge on the weather card
 
 Temperatures above **30 °C (86 °F)** now show a real road-sign style warning triangle — red
