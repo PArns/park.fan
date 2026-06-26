@@ -79,9 +79,10 @@ export async function getHottestParks(minTempC: number, limit: number): Promise<
       const countryParks: Candidate[] = [];
       for (const city of country.cities) {
         for (const park of city.parks) {
-          // Skip permanently-closed / scheduleless parks — a heat headline should
-          // point at places one can actually visit.
-          if (!park.hasOperatingSchedule) continue;
+          // Only parks actually OPERATING today — excludes off-season parks and
+          // seasonal-event venues (e.g. Traumatica) that have a schedule but are
+          // closed right now. A heat headline should point at places open today.
+          if (park.todaySchedule?.scheduleType !== 'OPERATING') continue;
           if (isExcludedPark(park.slug, park.name)) continue;
           countryParks.push({
             continentSlug: continent.slug,
