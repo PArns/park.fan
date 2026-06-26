@@ -98,6 +98,14 @@
     "browseParks": "Scopri tutti i parchi"
   },
   "home": {
+    "hottestParks": {
+      "badge": "Ondata di caldo",
+      "title": "I parchi più caldi in Germania, Francia, Italia, Paesi Bassi e Belgio",
+      "subtitle": "Ondata di caldo nei parchi — le tre mete più calde di oggi",
+      "description": "Quando nei parchi si superano i 35 °C, il tempismo conta: arriva presto, punta su zone d'ombra e attrazioni acquatiche e bevi a sufficienza. Ecco le mete più calde di oggi.",
+      "hottestLabel": "Parco più caldo",
+      "viewPark": "Vai al parco"
+    },
     "intro": "park.fan mostra i tempi di attesa in tempo reale e i livelli di affluenza per oltre 150 parchi a tema e 5.000+ attrazioni in tutto il mondo, inclusi Disney, Universal Studios, Europa-Park e Phantasialand. Pianifica la tua visita con code live, orari di apertura e previsioni basate sull'intelligenza artificiale.",
     "hero": {
       "badge": "Previsioni basate sull'IA",

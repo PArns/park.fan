@@ -4,6 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – "Hottest parks" heat banner on the homepage
+
+A Saisonstart-style homepage section that surfaces the **3 hottest parks** in
+**Germany, France, Italy, the Netherlands and Belgium** during a heat wave, each with a
+park link and a temperature card (max temp + the heat-warning triangle). It is
+**data-driven**: it renders only while at least one park that is **operating today** is
+at/above the heat threshold (`HEAT_WARNING_THRESHOLD_C`, 35 °C) and **disappears
+automatically** when the heat passes — no manual end date. Includes a °C/°F toggle and an
+explanatory heat-tips paragraph; water parks (Rulantica) and off-season / seasonal-event
+venues are excluded. See [hottest-parks-heat-banner](features/hottest-parks-heat-banner.md).
+
+- `lib/api/weather-hottest.ts` (new) — `getHottestParks()` derives the biggest parks
+  operating today in DE/FR/IT/NL/BE from the geo tree and ranks them by cached per-park
+  nowcast (today's max temperature). Frontend aggregation; swappable for a backend endpoint.
+- `components/home/hottest-parks-section.tsx` (new) — server component, reuses `<Temp>`,
+  `TemperatureUnitToggle`, `getWeatherConfig`, `<HeatWarningBadge>` and country translation;
+  renders `null` when no park qualifies.
+- `app/[locale]/page.tsx` — section mounted after `AnnounceSection`, in `Suspense` with a
+  `null` fallback (no skeleton flash for a usually-absent section).
+- `messages/*.json` — `home.hottestParks.*` (all 6 locales).
+
+---
+
 ## Unreleased – Heat warning threshold raised to 35 °C
 
 The heat warning now triggers at **≥ 35 °C (95 °F)** (was > 30 °C). Single constant
