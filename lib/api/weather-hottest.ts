@@ -43,10 +43,8 @@ export interface HottestPark {
   /** Country slug (for `geo.countries.*` translation) and raw name fallback. */
   countrySlug: string;
   countryName: string;
-  /** Today's max temperature in °C — the ranking metric. */
-  temperatureMaxC: number;
-  temperatureMinC: number | null;
-  currentTempC: number | null;
+  /** Current temperature in °C — the ranking metric (live; shifts through the day). */
+  temperatureC: number;
   weatherCode: number | null;
 }
 
@@ -62,9 +60,11 @@ interface Candidate {
 }
 
 /**
- * Top `limit` parks in DE/FR/IT/NL/BE whose today's max temperature is at or above
- * `minTempC`, sorted hottest-first. Returns `[]` when none qualify — the section then
- * renders nothing (the data-driven "expiry").
+ * Top `limit` parks in DE/FR/IT/NL/BE whose *current* temperature is at or above
+ * `minTempC`, sorted hottest-first. Ranking and visibility are both live: the banner
+ * reshuffles as the day heats up and cools down, and disappears once no park is at/above
+ * the threshold right now. Returns `[]` when none qualify — the section then renders
+ * nothing (the data-driven "expiry").
  */
 export async function getHottestParks(minTempC: number, limit: number): Promise<HottestPark[]> {
   const geo = await getGeoStructure().catch(() => null);
@@ -115,9 +115,11 @@ export async function getHottestParks(minTempC: number, limit: number): Promise<
   candidates.forEach((c, i) => {
     const w = weather[i];
     if (!w) return;
-    // Rank by today's max; fall back to the live temperature when max is missing.
-    const maxC = w.temperatureMaxC ?? w.currentTemperatureC;
-    if (maxC == null || maxC < minTempC) return;
+    // Rank by the *current* temperature so the banner reflects how hot each park is right
+    // now — it shifts through the day (cooler mornings/evenings, midday peak). Fall back to
+    // today's max only when the live reading is missing.
+    const tempC = w.currentTemperatureC ?? w.temperatureMaxC;
+    if (tempC == null || tempC < minTempC) return;
     hot.push({
       name: c.parkName,
       slug: c.parkSlug,
@@ -125,13 +127,11 @@ export async function getHottestParks(minTempC: number, limit: number): Promise<
       city: c.cityName,
       countrySlug: c.countrySlug,
       countryName: c.countryName,
-      temperatureMaxC: maxC,
-      temperatureMinC: w.temperatureMinC,
-      currentTempC: w.currentTemperatureC,
+      temperatureC: tempC,
       weatherCode: w.currentWeatherCode,
     });
   });
 
-  hot.sort((a, b) => b.temperatureMaxC - a.temperatureMaxC);
+  hot.sort((a, b) => b.temperatureC - a.temperatureC);
   return hot.slice(0, limit);
 }
