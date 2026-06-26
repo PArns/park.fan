@@ -6,6 +6,7 @@ import { Clock, CloudHail, CloudLightning, Droplets, Umbrella, Wind } from 'luci
 import { cn } from '@/lib/utils';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Temp, Precip } from '@/components/common/unit-display';
+import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import type { ScheduleItem, WeatherHourlyPoint, WeatherNowcast } from '@/lib/api/types';
 
@@ -502,13 +503,14 @@ export function WeatherHourlyChart({
         {/* Min/max temperature labels, anchored to their hours */}
         <span
           className={cn(
-            'pointer-events-none absolute -translate-x-1/2 -translate-y-full text-[10px] font-semibold tabular-nums',
+            'pointer-events-none absolute inline-flex -translate-x-1/2 -translate-y-full items-center gap-0.5 text-[10px] font-semibold tabular-nums',
             // A touch of clearance when the peak label sits right above the "now" dot.
             maxAtNow ? 'pb-1.5' : 'pb-0.5'
           )}
           style={{ left: `${clampX(maxX)}%`, top: `${yFor(maxTemp)}%` }}
         >
           <Temp celsius={maxTemp} />
+          {isHeatWarning(maxTemp) && <HeatWarningBadge label={t('heatWarning')} size="1.3em" />}
         </span>
         <span
           className="text-muted-foreground pointer-events-none absolute -translate-x-1/2 pt-0.5 text-[10px] font-medium tabular-nums"

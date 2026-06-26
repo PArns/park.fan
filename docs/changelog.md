@@ -4,6 +4,30 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Heat warning badge on the weather card
+
+Temperatures above **30 °C (86 °F)** now show a real road-sign style warning triangle — red
+border, white background and a black "!" (SVG) — next to the affected temperature. It appears
+next to the current temperature at the top of the weather card, on the peak-temperature label of
+the hourly nowcast chart, and on every day in the bottom forecast strip whose max temperature
+crosses the threshold. The threshold is checked on the Celsius source value, so it triggers
+identically regardless of the user's °C/°F unit choice.
+
+The same triangle also flags **severe-weather days** in the forecast strip — thunderstorms,
+heavy rain (code 65/67/82 or ≥ 25 mm/day), heavy snowfall (code 75/86 or ≥ 10 cm/day) and
+storm-force wind (≥ 60 km/h). When a day is both hot and severe, a single triangle carries a
+tooltip that lists every reason.
+
+- `components/parks/heat-warning-badge.tsx` (new) — `HeatWarningBadge` (SVG warning triangle) +
+  `isHeatWarning()` helper and the shared `HEAT_WARNING_THRESHOLD_C` constant.
+- `lib/utils/weather-utils.ts` — `getDayWeatherWarning()` classifies a forecast day as severe.
+- `components/parks/weather-card.tsx` / `weather-forecast-strip.tsx` / `weather-hourly-chart.tsx`
+  — render the badge.
+- `messages/*.json` — `parks.weather.heatWarning` + `parks.weather.weatherWarning.*` tooltip
+  labels (all 6 locales).
+
+---
+
 ## Unreleased – Homepage sections server-rendered into the 5-min shell
 
 The homepage's data sections — **Featured Parks** ("beliebte Parks"), **Global/Platform Stats** and

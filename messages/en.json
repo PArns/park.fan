@@ -463,7 +463,14 @@
       "gustsLabel": "Gusts",
       "visibilityLabel": "Visibility",
       "snowLabel": "Snow",
-      "nowLabel": "Now"
+      "nowLabel": "Now",
+      "heatWarning": "Heat warning – above 30 °C (86 °F)",
+      "weatherWarning": {
+        "thunderstorm": "Severe weather: thunderstorm",
+        "heavyRain": "Severe weather: heavy rain",
+        "heavySnow": "Severe weather: heavy snowfall",
+        "storm": "Severe weather: storm"
+      }
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",

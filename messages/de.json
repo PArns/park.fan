@@ -307,7 +307,14 @@
       "gustsLabel": "Böen",
       "visibilityLabel": "Sicht",
       "snowLabel": "Schnee",
-      "nowLabel": "Jetzt"
+      "nowLabel": "Jetzt",
+      "heatWarning": "Hitzewarnung – über 30 °C (86 °F)",
+      "weatherWarning": {
+        "thunderstorm": "Unwetterwarnung: Gewitter",
+        "heavyRain": "Unwetterwarnung: Starkregen",
+        "heavySnow": "Unwetterwarnung: starker Schneefall",
+        "storm": "Unwetterwarnung: Sturm"
+      }
     },
     "weatherNowcast": {
       "updateIn": "Aktualisierung in {countdown}",
