@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Flame, ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Temp } from '@/components/common/unit-display';
+import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import {
@@ -43,6 +44,9 @@ export async function HottestParksSection({ locale: _locale }: HottestParksSecti
             <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-base font-medium md:text-lg">
               {t('subtitle')}
             </p>
+            <div className="mt-4 flex justify-center">
+              <TemperatureUnitToggle />
+            </div>
           </div>
 
           <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
