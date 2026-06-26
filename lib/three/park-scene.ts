@@ -2604,7 +2604,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   for (let i = 0; i < treeTarget * 4 && treeSpots.length < treeTarget; i++) {
     const x = rnd(-HALF + 4, HALF - 4);
     const z = rnd(-HALF + 4, HALF - 4);
-    if (Math.abs(x) < 11 && z > -20 && z < 34) continue; // clear the main street
+    if (Math.abs(x) < 12 && z > -20 && z < 52) continue; // clear the main street + the entrance approach the camera flies in low through
     if (Math.abs(x) < 16 && Math.abs(z) < 12) continue; // clear the central plaza
     if (Math.abs(x) < 9 && z < -36) continue; // clear the castle
     if (rideKeepouts.some(([rx, rz, rr]) => (x - rx) ** 2 + (z - rz) ** 2 < rr * rr)) continue;
