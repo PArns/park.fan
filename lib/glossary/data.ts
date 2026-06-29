@@ -893,6 +893,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'pretzel-loop',
       es: 'pretzel-loop',
     },
+    player: { element: 'pretzel-loop' },
   },
   {
     id: 'batwing',
@@ -2081,6 +2082,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'sea-serpent',
       es: 'sea-serpent',
     },
+    player: { element: 'sea-serpent' },
   },
   {
     id: 'barrel-roll-drop',

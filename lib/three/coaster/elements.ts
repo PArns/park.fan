@@ -393,11 +393,48 @@ const beyondVerticalDrop: CoasterElementDef = {
   duration: 7,
 };
 
-// ── Cobra roll — a double inversion: up into a first inverted head, dip, then a
-//    mirrored second inverted head, exiting the way it came. A small depth (z)
-//    drift twists the two halves past each other (the half-corkscrews). ───────
+// ── Cobra roll — a double inversion that REVERSES direction: up into a first
+//    inverted head, over and down, straight into a mirrored second head, then
+//    out along the ground travelling the OPPOSITE way (exit leg parallel to the
+//    entry, offset sideways). The two heads lean the same way (the cobra hood);
+//    the z-drift carries the reversal and keeps the legs from overlapping. ─────
 const cobraRoll: CoasterElementDef = {
   id: 'cobra-roll',
+  points: [
+    [-12, 1, 0],
+    [-7, 1.1, 0],
+    [-3.2, 1.5, 0.1], // entry leg, heading +x
+    [-2.0, 4.8, 0.3],
+    [-1.6, 9.2, 0.6],
+    [-1.3, 12.1, 1.0], // head 1 (inverted), splayed −x/+z
+    [-0.5, 11.4, 1.6],
+    [-0.1, 8.8, 2.0],
+    [0.0, 7.2, 2.4], // valley between the heads
+    [0.1, 8.8, 2.8],
+    [0.5, 11.4, 3.2],
+    [1.0, 12.1, 3.5], // head 2 (inverted), splayed +x/+z
+    [0.4, 9.2, 3.8],
+    [-0.6, 4.8, 4.0],
+    [-2.2, 1.5, 4.1], // exit leg, heading −x (opposite the entry)
+    [-6, 1.1, 4.1],
+    [-11, 1, 4.1],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'enterLoop' },
+    { t: 0.36, label: 'inverted' },
+    { t: 0.5, label: 'exitLoop' },
+    { t: 0.64, label: 'inverted' },
+    { t: 0.8, label: 'leave' },
+  ],
+  duration: 9,
+  defaultView: 'follow',
+};
+
+// ── Sea serpent — like a cobra roll's two inverted heads, but the corkscrews
+//    face OPPOSITE ways so the train exits the SAME direction it entered (it
+//    flows straight through instead of reversing). ───────────────────────────
+const seaSerpent: CoasterElementDef = {
+  id: 'sea-serpent',
   points: [
     [-13, 1, 0],
     [-8, 1, 0],
@@ -408,12 +445,12 @@ const cobraRoll: CoasterElementDef = {
     [0, 10.8, -0.3],
     [0, 9, 0], // valley between the two heads
     [0, 10.8, 0.3],
-    [1.5, 12, 0.7], // head 2 (inverted, mirrored)
+    [1.5, 12, 0.7], // head 2 (inverted, mirrored the other way)
     [3, 8, 0.55],
     [3.5, 4, 0.2],
     [4.5, 1.5, 0],
     [8, 1, 0],
-    [13, 1, 0],
+    [13, 1, 0], // exit — same direction as entry
   ],
   keyPoints: [
     { t: 0.2, label: 'enterLoop' },
@@ -714,6 +751,47 @@ const nonInvertingLoop: CoasterElementDef = {
   duration: 8,
 };
 
+// ── Pretzel loop — the flying-coaster signature: entered from the TOP, the
+//    train dives head-first toward the ground, loops around and climbs back
+//    out, so the entry and exit strands cross near the top in a pretzel. A
+//    steady depth drift makes the crossing pass over/under, not through. ───────
+const pretzelLoop: CoasterElementDef = {
+  id: 'pretzel-loop',
+  points: [
+    [-12, 12, 0],
+    [-7.5, 11.6, 0.2],
+    [-4.2, 10.4, 0.5], // dive in from height
+    [-2.37, 12.28, 0.7],
+    [-0.1, 12.8, 0.79],
+    [2.19, 12.35, 0.89],
+    [4.1, 11.02, 0.98],
+    [5.29, 9.02, 1.07],
+    [5.58, 6.71, 1.17],
+    [4.9, 4.49, 1.26],
+    [3.37, 2.73, 1.35],
+    [1.26, 1.74, 1.45], // loop bottom
+    [-1.07, 1.7, 1.54],
+    [-3.21, 2.61, 1.63],
+    [-4.8, 4.32, 1.73],
+    [-5.56, 6.52, 1.82],
+    [-5.36, 8.84, 1.91],
+    [-4.23, 10.87, 2.01],
+    [-2.37, 12.28, 2.1], // back over the top — crosses the dive strand
+    [-4.5, 10.6, 2.3],
+    [-8, 11.4, 2.2],
+    [-12, 12, 2.1], // climb out at height
+  ],
+  keyPoints: [
+    { t: 0.16, label: 'approach' },
+    { t: 0.34, label: 'enterLoop' },
+    { t: 0.52, label: 'inverted' },
+    { t: 0.72, label: 'exitLoop' },
+    { t: 0.88, label: 'leave' },
+  ],
+  duration: 9,
+  defaultView: 'follow',
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -772,6 +850,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'raven-turn': ravenTurn,
   'inclined-loop': inclinedLoop,
   'non-inverting-loop': nonInvertingLoop,
+  'sea-serpent': seaSerpent,
+  'pretzel-loop': pretzelLoop,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {
