@@ -5,6 +5,9 @@
  * has a player uses this exact factory, so the look stays consistent; only the
  * element data differs.
  *
+ * Most elements are a single track; a `dual` element (e.g. the celestial spin)
+ * builds two tracks that orbit a shared centreline, each with its own train.
+ *
  * Public handle: resize / setTheme / dispose plus play / pause / seek(0..1) /
  * setView('front'|'follow'|'onboard') and an onTick callback driving the UI.
  *
@@ -55,6 +58,10 @@ export interface CoasterSceneHandle {
 }
 
 const DEG = Math.PI / 180;
+const GAUGE = 0.36;
+const RAIL_R = 0.12;
+const CARS = 4;
+const CAR_GAP_T = 0.014;
 
 export function createCoasterScene(
   canvas: HTMLCanvasElement,
@@ -78,7 +85,9 @@ export function createCoasterScene(
   const nightFog = new THREE.Fog(0x101a36, 60, 190);
   scene.fog = dayFog;
 
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 600);
+  // Tight near/far for solid depth precision (kills the z-fighting flicker the
+  // old 0.1 → 600 range produced); everything past the fog is invisible anyway.
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.25, 320);
 
   // -- Lights --------------------------------------------------------------
   const hemi = new THREE.HemisphereLight(0xffffff, 0x6b7f55, 0.9);
@@ -101,96 +110,222 @@ export function createCoasterScene(
   const clouds = buildClouds(ctx);
   world.add(clouds.group);
 
-  // -- Track + train -------------------------------------------------------
-  const N = Math.max(150, def.points.length * 18);
-  const pts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
-  const frames: CurveFrames = framesAlongCurve(pts, N, { closed: false, roll: def.roll });
-
-  const gauge = 0.36;
-  const railR = 0.12;
+  // -- Shared track + peep resources --------------------------------------
   const railMat = ctx.lit({ color: PAL.rail, roughness: 0.6 }, 0.22);
-  const railGlow = railMat; // shared
-  const left: THREE.Vector3[] = [];
-  const right: THREE.Vector3[] = [];
-  for (let i = 0; i <= N; i++) {
-    const off = frames.rights[i].clone().multiplyScalar(gauge);
-    left.push(frames.points[i].clone().add(off));
-    right.push(frames.points[i].clone().sub(off));
-  }
-  for (const arr of [left, right]) {
-    const c = new THREE.CatmullRomCurve3(arr, false, 'catmullrom', 0.5);
-    const tube = new THREE.Mesh(
-      ctx.track.geo(new THREE.TubeGeometry(c, N, railR, 7, false)),
-      railGlow
-    );
-    world.add(tube);
-  }
-  // spine tube (centre rail box) for a chunkier, single-track read
-  {
-    const c = new THREE.CatmullRomCurve3(frames.points, false, 'catmullrom', 0.5);
-    const spine = new THREE.Mesh(
-      ctx.track.geo(new THREE.TubeGeometry(c, N, railR * 0.6, 6, false)),
-      ctx.mat({ color: 0x33415a, roughness: 0.8 })
-    );
-    world.add(spine);
-  }
-  // cross-ties
+  const spineMat = ctx.mat({ color: 0x33415a, roughness: 0.8 });
   const tieMat = ctx.mat({ color: PAL.tie, roughness: 1 });
-  const tieGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 2.4, 0.08, 0.18));
-  for (let i = 0; i <= N; i += 4) {
-    const mid = left[i].clone().add(right[i]).multiplyScalar(0.5);
-    const tie = new THREE.Mesh(tieGeo, tieMat);
-    tie.position.copy(mid);
-    const m = new THREE.Matrix4().makeBasis(
-      frames.rights[i],
-      frames.ups[i],
-      frames.tangents[i].clone().negate()
-    );
-    tie.quaternion.setFromRotationMatrix(m);
-    world.add(tie);
-  }
-  // support columns: low/mid structure only (skip the high apex so nothing spears the figure)
+  const tieGeo = ctx.track.geo(new THREE.BoxGeometry(GAUGE * 2.4, 0.08, 0.18));
   const supMat = ctx.mat({ color: PAL.support, roughness: 1 });
-  for (let i = 4; i <= N - 4; i += 9) {
-    const p = frames.points[i];
-    if (p.y > 1.8 && p.y < 6.5) {
-      const h = p.y - 0.2;
-      const col = new THREE.Mesh(
-        ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.16, h, 6)),
-        supMat
+
+  // Riders — a few bright shirt colours + one skin tone, all shared.
+  const peepShirts = [0xffd24a, 0xff6f43, 0x4fc3f7, 0xab47bc, 0x66bb6a, 0xff5277, 0xffffff].map(
+    (c) => ctx.mat({ color: c, roughness: 0.85, flatShading: false })
+  );
+  const peepSkin = ctx.mat({ color: 0xf1c79f, roughness: 0.9, flatShading: false });
+  const peepTorsoGeo = ctx.track.geo(new THREE.CapsuleGeometry(0.1, 0.16, 3, 8));
+  const peepHeadGeo = ctx.track.geo(new THREE.SphereGeometry(0.1, 10, 8));
+  const peepArmGeo = ctx.track.geo(new THREE.BoxGeometry(0.045, 0.2, 0.045));
+
+  function buildPeep(shirt: number, armsUp: boolean): THREE.Group {
+    const g = new THREE.Group();
+    const shirtMat = peepShirts[shirt % peepShirts.length];
+    const torso = new THREE.Mesh(peepTorsoGeo, shirtMat);
+    torso.position.y = 0.12;
+    g.add(torso);
+    const head = new THREE.Mesh(peepHeadGeo, peepSkin);
+    head.position.y = 0.32;
+    g.add(head);
+    for (const s of [-1, 1]) {
+      const arm = new THREE.Mesh(peepArmGeo, shirtMat);
+      if (armsUp) {
+        arm.position.set(s * 0.11, 0.27, 0.02);
+        arm.rotation.z = s * 0.45;
+      } else {
+        arm.position.set(s * 0.13, 0.12, 0);
+      }
+      g.add(arm);
+    }
+    return g;
+  }
+
+  // -- Car / train builders ------------------------------------------------
+  // Local axes after orientation: +x = right, +y = up, +z = backward (so the
+  // car's NOSE points at local −z, the travel direction). Everything is seated
+  // ABOVE the rails (y > rail radius) so the train never z-fights the track.
+  const carBodyGeo = ctx.track.geo(new THREE.BoxGeometry(GAUGE * 1.95, 0.42, 1.2));
+  const carChassisGeo = ctx.track.geo(new THREE.BoxGeometry(GAUGE * 1.5, 0.22, 1.06));
+  const carNoseGeo = ctx.track.geo(new THREE.ConeGeometry(GAUGE * 0.95, 0.5, 4));
+  const wheelGeo = ctx.track.geo(new THREE.CylinderGeometry(0.1, 0.1, 0.08, 10));
+  const chassisMat = ctx.mat({ color: 0x2a3344, roughness: 0.85 });
+  const wheelMat = ctx.mat({ color: 0x161b24, roughness: 0.7 });
+
+  function buildCar(leadCar: boolean, accentColor: number): THREE.Group {
+    const g = new THREE.Group();
+    const bodyMat = ctx.lit({ color: accentColor, roughness: 0.45, flatShading: false }, 0.3);
+
+    const chassis = new THREE.Mesh(carChassisGeo, chassisMat);
+    chassis.position.y = 0.3;
+    g.add(chassis);
+
+    const body = new THREE.Mesh(carBodyGeo, bodyMat);
+    body.position.y = 0.52;
+    g.add(body);
+
+    // wheels (just visual hints, low on the chassis)
+    for (const sx of [-1, 1]) {
+      for (const sz of [-1, 1]) {
+        const w = new THREE.Mesh(wheelGeo, wheelMat);
+        w.rotation.z = Math.PI / 2;
+        w.position.set(sx * GAUGE * 0.95, 0.2, sz * 0.42);
+        g.add(w);
+      }
+    }
+
+    // lead car gets a pointed nose at the front (local −z)
+    if (leadCar) {
+      const nose = new THREE.Mesh(carNoseGeo, bodyMat);
+      nose.position.set(0, 0.5, -0.74);
+      nose.rotation.x = -Math.PI / 2; // apex toward −z
+      nose.rotation.y = Math.PI / 4; // square the 4-sided cone to the body
+      g.add(nose);
+    }
+
+    // two riders, hands up
+    const p1 = buildPeep(leadCar ? 0 : 2, true);
+    p1.position.set(-0.12, 0.7, 0.08);
+    g.add(p1);
+    const p2 = buildPeep(leadCar ? 3 : 5, true);
+    p2.position.set(0.12, 0.7, 0.08);
+    g.add(p2);
+
+    return g;
+  }
+
+  function buildTrain(accentColor: number): THREE.Group[] {
+    const cars: THREE.Group[] = [];
+    for (let k = 0; k < CARS; k++) {
+      const car = buildCar(k === 0, accentColor);
+      world.add(car);
+      cars.push(car);
+    }
+    return cars;
+  }
+
+  // -- Track geometry ------------------------------------------------------
+  function buildTrackGeometry(frames: CurveFrames) {
+    const N = frames.points.length - 1;
+    const left: THREE.Vector3[] = [];
+    const right: THREE.Vector3[] = [];
+    for (let i = 0; i <= N; i++) {
+      const off = frames.rights[i].clone().multiplyScalar(GAUGE);
+      left.push(frames.points[i].clone().add(off));
+      right.push(frames.points[i].clone().sub(off));
+    }
+    for (const arr of [left, right]) {
+      const c = new THREE.CatmullRomCurve3(arr, false, 'catmullrom', 0.5);
+      world.add(
+        new THREE.Mesh(ctx.track.geo(new THREE.TubeGeometry(c, N, RAIL_R, 7, false)), railMat)
       );
-      col.position.set(p.x, h / 2, p.z);
-      world.add(col);
+    }
+    // spine (centre box rail) for a chunkier read
+    const sc = new THREE.CatmullRomCurve3(frames.points, false, 'catmullrom', 0.5);
+    world.add(
+      new THREE.Mesh(ctx.track.geo(new THREE.TubeGeometry(sc, N, RAIL_R * 0.6, 6, false)), spineMat)
+    );
+    // cross-ties
+    for (let i = 0; i <= N; i += 4) {
+      const mid = left[i].clone().add(right[i]).multiplyScalar(0.5);
+      const tie = new THREE.Mesh(tieGeo, tieMat);
+      tie.position.copy(mid);
+      tie.quaternion.setFromRotationMatrix(
+        new THREE.Matrix4().makeBasis(
+          frames.rights[i],
+          frames.ups[i],
+          frames.tangents[i].clone().negate()
+        )
+      );
+      world.add(tie);
     }
   }
-  // central pylon for tall figures (loop / hill) so they read as supported
-  const box = new THREE.Box3().setFromPoints(frames.points);
+
+  // -- Build the track(s) + train(s) --------------------------------------
+  interface TrackBuild {
+    frames: CurveFrames;
+    cars: THREE.Group[];
+  }
+  const tracks: TrackBuild[] = [];
+  // Frames used for support columns + the central pylon (centreline for duals).
+  let supportFrames: CurveFrames;
+
+  if (def.dual) {
+    // Centreline hump, then two tracks orbiting it ±gap/2, rotated by twist(t).
+    const cN = Math.max(170, def.points.length * 20);
+    const cPts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
+    const cFrames = framesAlongCurve(cPts, cN, { closed: false });
+    supportFrames = cFrames;
+    const half = def.dual.gap / 2;
+    const aPts: THREE.Vector3[] = [];
+    const bPts: THREE.Vector3[] = [];
+    const dir = new THREE.Vector3();
+    for (let i = 0; i <= cN; i++) {
+      const th = def.dual.twist(i / cN);
+      dir
+        .copy(cFrames.rights[i])
+        .multiplyScalar(Math.cos(th))
+        .addScaledVector(cFrames.ups[i], Math.sin(th));
+      aPts.push(cFrames.points[i].clone().addScaledVector(dir, half));
+      bPts.push(cFrames.points[i].clone().addScaledVector(dir, -half));
+    }
+    for (const [pts, accent] of [
+      [aPts, PAL.carLead],
+      [bPts, PAL.car],
+    ] as const) {
+      const frames = framesAlongCurve(pts, pts.length - 1, { closed: false });
+      buildTrackGeometry(frames);
+      tracks.push({ frames, cars: buildTrain(accent) });
+    }
+  } else {
+    const N = Math.max(150, def.points.length * 18);
+    const pts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
+    const frames = framesAlongCurve(pts, N, { closed: false, roll: def.roll });
+    supportFrames = frames;
+    buildTrackGeometry(frames);
+    tracks.push({ frames, cars: buildTrain(PAL.carLead) });
+  }
+  const mainFrames = tracks[0].frames;
+
+  // -- Bounding box (over every track) for camera framing -----------------
+  const allPoints: THREE.Vector3[] = [];
+  for (const tb of tracks) allPoints.push(...tb.frames.points);
+  const box = new THREE.Box3().setFromPoints(allPoints);
   const center = box.getCenter(new THREE.Vector3());
   const size = box.getSize(new THREE.Vector3());
-  if (size.y > 8) {
-    const h = Math.max(2, box.min.y) + (size.y * 0.5 - box.min.y);
-    const pyH = center.y - 0.5;
-    const pylon = new THREE.Mesh(
-      ctx.track.geo(new THREE.CylinderGeometry(0.18, 0.24, pyH, 8)),
-      supMat
-    );
-    pylon.position.set(center.x, pyH / 2, center.z - 0.6);
-    world.add(pylon);
-    void h;
-  }
 
-  // train
-  const CARS = 4;
-  const carGapT = 0.014;
-  const cars: THREE.Mesh[] = [];
-  const carGeo = ctx.track.geo(new THREE.BoxGeometry(gauge * 1.8, 0.5, 1.25));
-  for (let k = 0; k < CARS; k++) {
-    const car = new THREE.Mesh(
-      carGeo,
-      ctx.lit({ color: k === 0 ? PAL.carLead : PAL.car, roughness: 0.5, flatShading: false }, 0.4)
-    );
-    world.add(car);
-    cars.push(car);
+  // -- Supports ------------------------------------------------------------
+  {
+    const sf = supportFrames;
+    const M = sf.points.length - 1;
+    for (let i = 4; i <= M - 4; i += 9) {
+      const p = sf.points[i];
+      if (p.y > 1.8 && p.y < 6.5) {
+        const h = p.y - 0.2;
+        const col = new THREE.Mesh(
+          ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.16, h, 6)),
+          supMat
+        );
+        col.position.set(p.x, h / 2, p.z);
+        world.add(col);
+      }
+    }
+    if (size.y > 8) {
+      const pyH = center.y - 0.5;
+      const pylon = new THREE.Mesh(
+        ctx.track.geo(new THREE.CylinderGeometry(0.18, 0.24, pyH, 8)),
+        supMat
+      );
+      pylon.position.set(center.x, pyH / 2, center.z - 0.6);
+      world.add(pylon);
+    }
   }
 
   // -- Camera framing ------------------------------------------------------
@@ -229,6 +364,12 @@ export function createCoasterScene(
     up: new THREE.Vector3(),
     right: new THREE.Vector3(),
   };
+  const fLook = {
+    pos: new THREE.Vector3(),
+    tangent: new THREE.Vector3(),
+    up: new THREE.Vector3(),
+    right: new THREE.Vector3(),
+  };
   const carBasis = new THREE.Matrix4();
   const _lookM = new THREE.Matrix4();
   const _quat = new THREE.Quaternion();
@@ -241,18 +382,20 @@ export function createCoasterScene(
   let camStarted = false;
 
   function placeTrain() {
-    for (let k = 0; k < CARS; k++) {
-      const t = THREE.MathUtils.clamp(progress - k * carGapT, 0, 1);
-      frameAt(frames, t, f0);
-      cars[k].position.copy(f0.pos).addScaledVector(f0.up, 0.26);
-      carBasis.makeBasis(f0.right, f0.up, f0.tangent.clone().negate());
-      cars[k].quaternion.setFromRotationMatrix(carBasis);
+    for (const tb of tracks) {
+      for (let k = 0; k < CARS; k++) {
+        const t = THREE.MathUtils.clamp(progress - k * CAR_GAP_T, 0, 1);
+        frameAt(tb.frames, t, f0);
+        tb.cars[k].position.copy(f0.pos);
+        carBasis.makeBasis(f0.right, f0.up, f0.tangent.clone().negate());
+        tb.cars[k].quaternion.setFromRotationMatrix(carBasis);
+      }
     }
   }
 
   function updateCamera(snap: boolean) {
-    // lead car frame drives follow / onboard
-    frameAt(frames, progress, f0);
+    // lead car of the primary track drives follow / onboard
+    frameAt(mainFrames, progress, f0);
     if (view === 'front') {
       desiredPos.copy(frontPos);
       desiredUp.set(0, 1, 0);
@@ -272,13 +415,16 @@ export function createCoasterScene(
         .addScaledVector(_wup, 3.4);
       lookTarget.copy(f0.pos).addScaledVector(fwdH, 1.5);
     } else {
-      // onboard — sit at the front seat (ahead of the lead car centre), look
-      // forward; up rolls with the frame so the view inverts through the figure.
+      // onboard — head height above the lead car; look at a point further ALONG
+      // the track (not straight down the instantaneous tangent) so the view
+      // follows the hill/twist instead of staring at the sky on a climb. Up
+      // rolls with the frame so the horizon inverts through the figure.
       desiredUp.copy(f0.up);
-      desiredPos.copy(f0.pos).addScaledVector(f0.up, 0.5).addScaledVector(f0.tangent, 0.5);
-      lookTarget.copy(f0.pos).addScaledVector(f0.tangent, 7).addScaledVector(f0.up, 0.15);
+      desiredPos.copy(f0.pos).addScaledVector(f0.up, 0.95).addScaledVector(f0.tangent, 0.5);
+      frameAt(mainFrames, Math.min(progress + 0.12, 1), fLook);
+      lookTarget.copy(fLook.pos).addScaledVector(f0.up, 0.35);
     }
-    // Matrix4.lookAt uses the CAMERA convention (-z faces the target); building
+    // Matrix4.lookAt uses the CAMERA convention (−z faces the target); building
     // the quaternion this way avoids the inverted facing a plain Object3D.lookAt
     // would give.
     _lookM.lookAt(desiredPos, lookTarget, desiredUp);

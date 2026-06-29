@@ -2562,12 +2562,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "Un elemento di airtime inclinato verso l’esterno in cui il treno ruota lentamente di un giro completo sopra una cresta, facendo fluttuare i passeggeri verso l’esterno.",
-    definition: "Il celestial roll è un moderno elemento di inversione, reso popolare dalle montagne russe ibride di Rocky Mountain Construction (RMC): il binario sale oltre una cresta inclinandosi verso l’esterno e fa ruotare il treno di un giro completo di 360°. Poiché la rotazione è centrata vicino ai passeggeri e sincronizzata con la cresta, unisce un airtime prolungato a una rotazione lenta e priva di peso, ben diversa dal ribaltamento rapido di un cavatappi. Nella vista frontale guarda il treno fluttuare sopra la cresta; passa alla vista a bordo per sentire l’orizzonte capovolgersi lentamente. È strettamente legato allo zero-G roll.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Un’inversione a doppio binario di Mack Rides: due treni in gara superano una collina condivisa mentre i loro binari si avvolgono l’uno attorno all’altro: uno rotola verso l’alto, l’altro verso il basso.',
+    definition:
+      'Il celestial spin è un’inversione a doppio binario brevettata da [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides) ed è l’elemento simbolo di [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), le montagne russe lanciate in duello di [Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). Mentre i due treni in gara superano una collina condivisa, i loro binari si invertono l’uno attorno all’altro: un treno rotola verso l’alto in uno zero-G roll mentre, nello stesso istante, l’altro rotola verso il basso in un barrel roll, così le vetture sembrano avvolgersi a spirale l’una attorno all’altra a mezz’aria.\n\nPoiché entrambe le rotazioni sono sincronizzate con la collina di airtime, i passeggeri fluttuano in un lungo momento di assenza di peso mentre il treno gemello sfreccia a pochi metri di distanza. Guardalo di fronte nella vista frontale per vedere i due binari avvolgersi, passa alla modalità inseguimento per seguire il duello, oppure sali a bordo per sentire il tuo orizzonte capovolgersi mentre l’altro treno ti passa sopra. È strettamente legato allo zero-G roll, all’inversione e alla collina di airtime.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
-import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { GlossaryRichText } from '@/components/glossary/glossary-rich-text';
 import { GlossaryTermTracker } from '@/components/glossary/glossary-term-tracker';
 import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
 import type { GlossaryTerm } from '@/lib/glossary/types';
@@ -63,7 +63,7 @@ export function GlossaryTermDetail({
     <div className="text-foreground space-y-4 text-base leading-relaxed">
       {term.definition.split('\n\n').map((para, i) => (
         <p key={i}>
-          <GlossaryInject locale={locale}>{para}</GlossaryInject>
+          <GlossaryRichText locale={locale}>{para}</GlossaryRichText>
         </p>
       ))}
     </div>

@@ -2558,12 +2558,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "Een naar buiten hellend airtime-element waarbij de trein over een top langzaam een volledige rol maakt en rijders naar buiten laat zweven.",
-    definition: "Een celestial roll is een modern inversie-achtig element, bekend geworden door de hybride achtbanen van Rocky Mountain Construction (RMC). De baan stijgt over een top, helt daarbij naar buiten en rolt de trein in een langzame draai van 360° om. Doordat de rol dicht bij de rijders is gecentreerd en samenvalt met de top, combineert hij langgerekte airtime met een gewichtloze, trage rotatie in plaats van de snelle flip van een kurkentrekker. Bekijk in het vooraanzicht hoe de trein over de top zweeft en schakel naar de aan-boordcamera om de horizon langzaam te voelen kantelen. Nauw verwant aan de zero-G-roll.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Een dubbelspoor-inversie van Mack Rides: twee racende treinen gaan over een gedeelde heuvel terwijl hun sporen om elkaar heen draaien – de een rolt omhoog, de ander omlaag.',
+    definition:
+      'Een celestial spin is een door [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides) gepatenteerde dubbelspoor-inversie en het kenmerkende element van [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), de duellerende lanceerachtbaan in [Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). Terwijl de twee racende treinen over een gedeelde heuvel komen, draaien hun sporen om elkaar heen: de ene trein rolt via een zero-G-roll omhoog terwijl de andere op exact hetzelfde moment via een barrel roll omlaag rolt – de wagens lijken in de lucht om elkaar heen te spiralen.\n\nOmdat beide rollen op de airtime-heuvel zijn afgestemd, zweven rijders een lang, gewichtloos moment terwijl de zustertrein op slechts enkele meters afstand voorbijdraait. Bekijk het frontaal in het vooraanzicht om te zien hoe de twee sporen om elkaar heen winden, schakel naar de volgmodus om het duel te volgen, of rijd mee aan boord om je eigen horizon te voelen kantelen terwijl de andere trein over je heen scheert. Nauw verwant aan de zero-G-roll, de inversie en de airtime-heuvel.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 

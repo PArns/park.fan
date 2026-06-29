@@ -2598,12 +2598,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "Un elemento de airtime inclinado hacia fuera en el que el tren gira lentamente una vuelta completa sobre una cima, lanzando a los pasajeros hacia el exterior.",
-    definition: "El celestial roll es un elemento de inversión moderno, popularizado por las montañas rusas híbridas de Rocky Mountain Construction (RMC): la vía asciende sobre una cima mientras se inclina hacia fuera y hace girar al tren en una vuelta lenta de 360°. Como el giro está centrado cerca de los pasajeros y coincide con la cima, combina un airtime prolongado con una rotación lenta e ingrávida, en lugar del volteo rápido de un sacacorchos. En la vista frontal, observa cómo el tren flota sobre la cima; cambia a la vista a bordo para sentir cómo el horizonte se invierte lentamente. Está muy relacionado con el zero-G roll.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Una inversión de doble vía de Mack Rides: dos trenes compiten sobre una cima compartida mientras sus vías giran una alrededor de la otra: una rueda hacia arriba y la otra hacia abajo.',
+    definition:
+      'El celestial spin es una inversión de doble vía patentada por [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides) y el elemento insignia de [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), la montaña rusa lanzada en duelo de [Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). Cuando los dos trenes compiten sobre una cima compartida, sus vías se invierten una alrededor de la otra: un tren rueda hacia arriba en un zero-G roll mientras que, en el mismo instante, el otro rueda hacia abajo en un barrel roll, de modo que los coches parecen girar en espiral uno alrededor del otro en el aire.\n\nComo ambos giros están sincronizados con la colina de airtime, los pasajeros flotan en un largo momento de ingravidez mientras el tren gemelo pasa a solo unos metros. Míralo de frente en la vista frontal para ver cómo las dos vías se enroscan, cambia al modo seguimiento para seguir el duelo o súbete a bordo para sentir cómo tu propio horizonte se invierte mientras el otro tren pasa por encima. Está muy relacionado con el zero-G roll, la inversión y la colina de airtime.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 

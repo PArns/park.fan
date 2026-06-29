@@ -2481,12 +2481,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "Un élément d’airtime incliné vers l’extérieur où le train effectue lentement un tonneau complet au sommet, projetant les passagers vers l’extérieur.",
-    definition: "Le celestial roll est un élément d’inversion moderne, popularisé par les montagnes russes hybrides de Rocky Mountain Construction (RMC) : la voie s’élève au-dessus d’une bosse tout en s’inclinant vers l’extérieur et fait pivoter le train sur un tour complet de 360°. Comme la rotation est centrée près des passagers et calée sur le sommet, elle mêle une airtime prolongée à une rotation lente et aérienne, loin du retournement vif d’un tire-bouchon. En vue frontale, regardez le train flotter au sommet ; passez en vue embarquée pour sentir l’horizon basculer lentement. Proche du zero-G roll.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Une inversion à double voie de Mack Rides : deux trains en course franchissent une bosse commune tandis que leurs voies s’enroulent l’une autour de l’autre — l’une roule vers le haut, l’autre vers le bas.',
+    definition:
+      'Le celestial spin est une inversion à double voie brevetée par [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides), devenue l’élément emblématique de [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), les montagnes russes lancées en duel d’[Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). Lorsque les deux trains en course franchissent une bosse commune, leurs voies s’inversent l’une autour de l’autre : un train monte dans un zero-G roll tandis que, au même instant, l’autre descend dans un tonneau — les véhicules semblent s’enrouler l’un autour de l’autre en plein vol.\n\nComme les deux rotations sont calées sur la bosse d’airtime, les passagers flottent un long instant en apesanteur pendant que le train jumeau passe à quelques mètres. Regardez-le de face en vue frontale pour voir les deux voies s’enrouler, passez en mode suivi pour suivre le duel, ou embarquez pour sentir votre propre horizon basculer tandis que l’autre train file au-dessus de vous. Proche du zero-G roll, de l’inversion et de la bosse d’airtime.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 

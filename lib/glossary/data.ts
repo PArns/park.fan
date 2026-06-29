@@ -2382,17 +2382,17 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
     },
   },
   {
-    id: 'celestial-roll',
+    id: 'celestial-spin',
     category: 'coaster-elements',
     slugs: {
-      en: 'celestial-roll',
-      de: 'celestial-roll',
-      fr: 'celestial-roll',
-      it: 'celestial-roll',
-      nl: 'celestial-roll',
-      es: 'celestial-roll',
+      en: 'celestial-spin',
+      de: 'celestial-spin',
+      fr: 'celestial-spin',
+      it: 'celestial-spin',
+      nl: 'celestial-spin',
+      es: 'celestial-spin',
     },
-    player: { element: 'celestial-roll' },
+    player: { element: 'celestial-spin' },
   },
   // ── Jargon & Concepts (P3) ─────────────────────────────────────────────────
   {

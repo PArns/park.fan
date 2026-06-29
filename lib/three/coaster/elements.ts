@@ -25,6 +25,13 @@ export interface CoasterElementDef {
   points: [number, number, number][];
   /** Extra roll (radians) about the tangent at progress t∈[0,1]. Omit for planar figures. */
   roll?: (t: number) => number;
+  /**
+   * Dual-track element (e.g. a celestial spin): `points` is then the shared
+   * CENTRELINE, and the scene builds TWO tracks orbiting it — offset by ±gap/2
+   * in the centreline's (right, up) plane, rotated by `twist(t)` so they wind
+   * around each other. Each track gets its own train.
+   */
+  dual?: { gap: number; twist: (t: number) => number };
   /** Timeline markers. */
   keyPoints: ElementKeyPoint[];
   /** Seconds for one pass of the run (default 9). */
@@ -114,35 +121,38 @@ const airtimeHill: CoasterElementDef = {
   ],
 };
 
-// ── Celestial roll — RMC-style outward-banked airtime hill: the train floats
-//    over a long crest while slowly rolling a full turn. (New glossary term.) ──
-const celestialRoll: CoasterElementDef = {
-  id: 'celestial-roll',
+// ── Celestial Spin — Mack Rides' patented DUAL-TRACK element, the signature
+//    move of Stardust Racers at Universal Epic Universe: twin tracks invert
+//    AROUND each other over a crest (one rolls up while the other rolls down).
+//    Modelled as a centreline hump with two tracks orbiting it a full turn;
+//    the scene builds both tracks + both trains from this. ───────────────────
+const celestialSpin: CoasterElementDef = {
+  id: 'celestial-spin',
   points: [
-    [-20, 1.5, 0],
-    [-13, 1.6, 0],
-    [-7, 2.1, 0],
-    [-4, 4.1, 0],
-    [0, 7, 0],
-    [4, 4.1, 0],
-    [7, 2.1, 0],
-    [13, 1.6, 0],
-    [20, 1.5, 0],
+    [-22, 1.4, 0],
+    [-14, 1.6, 0],
+    [-8, 2.3, 0],
+    [-3.5, 4.8, 0],
+    [0, 7.8, 0],
+    [3.5, 4.8, 0],
+    [8, 2.3, 0],
+    [14, 1.6, 0],
+    [22, 1.4, 0],
   ],
-  roll: (t) => TAU * smoothstep(0.26, 0.74, t),
+  dual: { gap: 2.3, twist: (t) => TAU * smoothstep(0.16, 0.84, t) },
   keyPoints: [
     { t: 0.2, label: 'climb' },
     { t: 0.5, label: 'celestial' },
     { t: 0.8, label: 'land' },
   ],
-  duration: 10,
+  duration: 11,
 };
 
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
   'airtime-hill': airtimeHill,
-  'celestial-roll': celestialRoll,
+  'celestial-spin': celestialSpin,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

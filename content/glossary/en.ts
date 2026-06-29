@@ -2419,12 +2419,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'S-Hills', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "An outward-banked airtime element where the train slowly rolls a full turn over a crest, floating riders to the outside.",
-    definition: "A celestial roll is a modern inversion-style element — popularised by Rocky Mountain Construction (RMC) hybrid coasters — in which the track rises over a crest while banking outward and rolling the train through a full 360° turn. Because the roll is centred near the riders and timed with the crest, it blends sustained airtime with a slow, weightless rotation rather than the snappy flip of a corkscrew. The result is a long, floaty hang as the train turns over in mid-air.\n\nCelestial rolls read beautifully in 3-D: watch the train float over the crest in the front view, then switch to the onboard camera to feel the slow roll invert your horizon. It is closely related to the zero-G roll and the outward-banked airtime hill.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'A dual-track inversion by Mack Rides: two racing trains crest a shared hill while their tracks twist around each other — one rolling up, the other down.',
+    definition:
+      'A celestial spin is a dual-track inversion patented by [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides) and made famous as the signature element of [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), the duelling launch coaster at [Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). As the two racing trains crest a shared hill, their tracks invert around one another: one train rolls upward through a zero-G roll while, at the very same moment, the other rolls downward through a barrel roll — so the cars appear to spiral around each other in mid-air.\n\nBecause both rolls are timed to the airtime hill, riders float through a long moment of weightlessness while the sister train twists past just metres away. Watch it head-on in the front view to see the two tracks wind around each other, switch to follow mode to track the duel, or ride onboard to feel your own horizon invert as the other train sweeps overhead. It is closely related to the zero-G roll, the inversion and the airtime hill.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 

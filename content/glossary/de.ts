@@ -2583,12 +2583,15 @@ const translations: GlossaryTermTranslation[] = [
     aliases: ['S Hill', 'S-Hügel', 'Speed Bump'],
   },
   {
-    id: 'celestial-roll',
-    name: "Celestial Roll",
-    shortDefinition: "Ein nach außen geneigtes Airtime-Element, bei dem der Zug über eine Kuppe langsam eine volle Drehung rollt und die Fahrgäste nach außen schweben lässt.",
-    definition: "Ein Celestial Roll ist ein modernes, von Rocky Mountain Construction (RMC) bekannt gemachtes Inversionselement: Die Schiene steigt über eine Kuppe an, neigt sich dabei nach außen und rollt den Zug in einer langsamen 360°-Drehung herum. Weil die Drehung nahe an den Fahrgästen zentriert und mit der Kuppe abgestimmt ist, verbindet sie anhaltende Airtime mit einer schwerelosen, langsamen Rotation – kein schnelles Überschlagen wie beim Korkenzieher, sondern ein langes, schwebendes Hängen, während sich der Horizont sanft überdreht.\n\nIn der 3-D-Ansicht ist das gut nachvollziehbar: In der Frontalansicht schwebt der Zug über die Kuppe, in der Mitfahr-Ansicht spürt man, wie die langsame Drehung den Horizont auf den Kopf stellt. Eng verwandt mit dem Zero-G-Roll und dem nach außen geneigten Airtime-Hügel.",
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Eine Doppelschienen-Inversion von Mack Rides: Zwei Züge überfahren im Rennen eine gemeinsame Kuppe, während sich ihre Schienen umeinander drehen – der eine rollt nach oben, der andere nach unten.',
+    definition:
+      'Ein Celestial Spin ist eine von [Mack Rides](https://en.wikipedia.org/wiki/Mack_Rides) patentierte Doppelschienen-Inversion und das Signature-Element von [Stardust Racers](https://en.wikipedia.org/wiki/Stardust_Racers), der Dueling-Launch-Achterbahn im [Universal Epic Universe](https://en.wikipedia.org/wiki/Universal_Epic_Universe). Während die beiden Züge im Rennen über eine gemeinsame Kuppe fahren, drehen sich ihre Schienen umeinander: Der eine Zug rollt durch einen Zero-G-Roll nach oben, während der andere im selben Moment in einem Barrel Roll nach unten rollt – die Wagen scheinen sich in der Luft umeinander zu winden.\n\nWeil beide Rollen auf den Airtime-Hügel abgestimmt sind, erleben die Fahrgäste einen langen, schwerelosen Moment, während der Schwesterzug nur wenige Meter entfernt vorbeidreht. In der Frontalansicht sieht man, wie sich die beiden Schienen umeinander winden; im Follow-Modus verfolgt man das Duell, und in der Mitfahr-Ansicht kippt der eigene Horizont, während der andere Zug über einen hinwegzieht. Eng verwandt mit dem Zero-G-Roll, der Inversion und dem Airtime-Hügel.',
     relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
-    aliases: ['Celestial Rolls'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
   },
 ];
 
