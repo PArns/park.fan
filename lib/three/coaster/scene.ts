@@ -276,13 +276,17 @@ export function createCoasterScene(
       aPts.push(cFrames.points[i].clone().addScaledVector(dir, half));
       bPts.push(cFrames.points[i].clone().addScaledVector(dir, -half));
     }
-    for (const [pts, accent] of [
-      [aPts, PAL.carLead],
-      [bPts, PAL.car],
-    ] as const) {
-      const frames = framesAlongCurve(pts, pts.length - 1, { closed: false });
+    const dualRoll = def.dual.roll;
+    const specs: { pts: THREE.Vector3[]; accent: number; sign: number }[] = [
+      { pts: aPts, accent: PAL.carLead, sign: 1 },
+      { pts: bPts, accent: PAL.car, sign: -1 },
+    ];
+    for (const sp of specs) {
+      // Opposite roll per track: one train rolls up, the other down.
+      const roll = dualRoll ? (t: number) => sp.sign * dualRoll(t) : undefined;
+      const frames = framesAlongCurve(sp.pts, sp.pts.length - 1, { closed: false, roll });
       buildTrackGeometry(frames);
-      tracks.push({ frames, cars: buildTrain(accent) });
+      tracks.push({ frames, cars: buildTrain(sp.accent) });
     }
   } else {
     const N = Math.max(150, def.points.length * 18);

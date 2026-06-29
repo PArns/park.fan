@@ -31,7 +31,7 @@ export interface CoasterElementDef {
    * in the centreline's (right, up) plane, rotated by `twist(t)` so they wind
    * around each other. Each track gets its own train.
    */
-  dual?: { gap: number; twist: (t: number) => number };
+  dual?: { gap: number; twist: (t: number) => number; roll?: (t: number) => number };
   /** Timeline markers. */
   keyPoints: ElementKeyPoint[];
   /** Seconds for one pass of the run (default 9). */
@@ -45,58 +45,63 @@ function smoothstep(a: number, b: number, x: number): number {
 }
 const TAU = Math.PI * 2;
 
-// ── Vertical loop — planar teardrop in the x-y plane; parallel transport takes
-//    the train fully inverted at the apex with no explicit roll. ───────────────
+// ── Vertical loop — a near-circular loop in the x-y plane. A small, steady
+//    depth drift (z) means the entry and exit legs cross OVER/UNDER each other
+//    at the bottom (as a real loop does) instead of intersecting in-plane, so
+//    the track never appears to drive through itself. Parallel transport takes
+//    the train fully inverted at the apex with no explicit roll. ──────────────
 const verticalLoop: CoasterElementDef = {
   id: 'vertical-loop',
   points: [
-    [-20, 1, 0],
-    [-13, 1, 0],
-    [-6, 1, 0],
-    [-3, 1.5, 0],
-    [1.7, 3.7, 0],
-    [3.5, 7.7, 0],
-    [0, 11.7, 0],
-    [-3.5, 7.7, 0],
-    [-1.7, 3.7, 0],
-    [3, 1.5, 0],
-    [6, 1, 0],
-    [13, 1, 0],
-    [20, 1, 0],
+    [-10, 1, 0],
+    [-5.5, 1.05, 0],
+    [-2.8, 1.3, 0],
+    [0, 1.6, 0], // loop bottom — entry (moving +x)
+    [4.6, 3.0, 0.18],
+    [5.6, 7.0, 0.42],
+    [4.3, 10.9, 0.72],
+    [0, 12.6, 0.95], // top (moving −x)
+    [-4.3, 10.9, 1.12],
+    [-5.6, 7.0, 1.28],
+    [-4.6, 3.0, 1.42],
+    [0, 1.6, 1.55], // loop bottom — exit (moving +x, just behind the entry)
+    [2.8, 1.3, 1.55],
+    [5.5, 1.05, 1.55],
+    [10, 1, 1.55],
   ],
   keyPoints: [
-    { t: 0.14, label: 'approach' },
-    { t: 0.31, label: 'enterLoop' },
+    { t: 0.12, label: 'approach' },
+    { t: 0.3, label: 'enterLoop' },
     { t: 0.5, label: 'inverted' },
-    { t: 0.69, label: 'exitLoop' },
-    { t: 0.86, label: 'leave' },
+    { t: 0.7, label: 'exitLoop' },
+    { t: 0.88, label: 'leave' },
   ],
+  duration: 8,
 };
 
-// ── Corkscrew — a gentle hump that drifts sideways (z) while the train barrel-
-//    rolls a full 360° across the middle of the run. ───────────────────────────
+// ── Corkscrew — a symmetric, centred hump over which the train barrel-rolls a
+//    full 360°. Kept planar (no sideways drift) so it reads centred head-on;
+//    the inversion is carried entirely by the explicit roll. ──────────────────
 const corkscrew: CoasterElementDef = {
   id: 'corkscrew',
   points: [
-    [-20, 3, 0],
-    [-13, 3, 0],
-    [-7, 3.1, 0],
-    [-4, 3.6, 0.4],
-    [-1.5, 4.8, 2.4],
-    [1.5, 4.8, 2.4],
-    [4, 3.6, 0.4],
-    [7, 3.1, 0],
-    [13, 3, 0],
-    [20, 3, 0],
+    [-11, 2.6, 0],
+    [-6, 2.7, 0],
+    [-2.6, 3.6, 0],
+    [0, 4.0, 0],
+    [2.6, 3.6, 0],
+    [6, 2.7, 0],
+    [11, 2.6, 0],
   ],
-  roll: (t) => TAU * smoothstep(0.32, 0.68, t),
+  roll: (t) => TAU * smoothstep(0.28, 0.72, t),
   keyPoints: [
-    { t: 0.2, label: 'approach' },
-    { t: 0.4, label: 'rollIn' },
+    { t: 0.16, label: 'approach' },
+    { t: 0.38, label: 'rollIn' },
     { t: 0.5, label: 'inverted' },
-    { t: 0.6, label: 'rollOut' },
-    { t: 0.82, label: 'leave' },
+    { t: 0.62, label: 'rollOut' },
+    { t: 0.84, label: 'leave' },
   ],
+  duration: 7,
 };
 
 // ── Airtime hill — a planar parabolic camelback; riders float at the crest. No
@@ -104,21 +109,20 @@ const corkscrew: CoasterElementDef = {
 const airtimeHill: CoasterElementDef = {
   id: 'airtime-hill',
   points: [
-    [-20, 1, 0],
-    [-13, 1, 0],
-    [-7, 1.3, 0],
+    [-11, 1, 0],
+    [-6, 1.2, 0],
     [-3, 3.6, 0],
     [0, 7.3, 0],
     [3, 3.6, 0],
-    [7, 1.3, 0],
-    [13, 1, 0],
-    [20, 1, 0],
+    [6, 1.2, 0],
+    [11, 1, 0],
   ],
   keyPoints: [
-    { t: 0.22, label: 'climb' },
+    { t: 0.2, label: 'climb' },
     { t: 0.5, label: 'airtime' },
-    { t: 0.78, label: 'land' },
+    { t: 0.8, label: 'land' },
   ],
+  duration: 7,
 };
 
 // ── Celestial Spin — Mack Rides' patented DUAL-TRACK element, the signature
@@ -129,23 +133,28 @@ const airtimeHill: CoasterElementDef = {
 const celestialSpin: CoasterElementDef = {
   id: 'celestial-spin',
   points: [
-    [-22, 1.4, 0],
-    [-14, 1.6, 0],
-    [-8, 2.3, 0],
-    [-3.5, 4.8, 0],
-    [0, 7.8, 0],
-    [3.5, 4.8, 0],
-    [8, 2.3, 0],
-    [14, 1.6, 0],
-    [22, 1.4, 0],
+    [-12, 1.5, 0],
+    [-7, 2.1, 0],
+    [-3.5, 4.7, 0],
+    [0, 7.7, 0],
+    [3.5, 4.7, 0],
+    [7, 2.1, 0],
+    [12, 1.5, 0],
   ],
-  dual: { gap: 2.3, twist: (t) => TAU * smoothstep(0.16, 0.84, t) },
+  // The two tracks swap sides once (half-orbit) AND each train barrel-rolls a
+  // full turn in OPPOSITE directions (one rolls up, the other down) — so they
+  // visibly invert around each other over the crest.
+  dual: {
+    gap: 2.4,
+    twist: (t) => Math.PI * smoothstep(0.18, 0.82, t),
+    roll: (t) => TAU * smoothstep(0.22, 0.78, t),
+  },
   keyPoints: [
     { t: 0.2, label: 'climb' },
     { t: 0.5, label: 'celestial' },
     { t: 0.8, label: 'land' },
   ],
-  duration: 11,
+  duration: 9,
 };
 
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {

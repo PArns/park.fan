@@ -6,6 +6,7 @@ Theme park wait times and statistics frontend for **[api.park.fan](https://api.p
 Multilingual (EN/DE/NL/FR/ES/IT), Server Components by default. All detailed documentation lives in **`docs/`** - start at **[docs/README.md](docs/README.md)**.
 **Park page loading priority (REQUIREMENT):** the best-travel-time data (best-days calendar + historical stats) must **always load last** — live status, wait times and all weather queries load first. Enforced via `useLoadLast` (`lib/hooks/use-load-last.ts`); see [system-overview](docs/architecture/system-overview.md#4-park-page-loading-priority-requirement).
 **Reuse existing components (REQUIREMENT):** always reuse existing components (e.g. `ParkStatusBadge`, `CrowdLevelBadge`, `Badge`, `ParkCard`) instead of re-implementing UI inline — keeps styling/colors consistent. Only build new when nothing suitable exists. See [conventions](docs/development/conventions.md#11-reuse-existing-components).
+**three.js animations (REQUIREMENT):** research the real-world reference **first**, then implement; and **verify every animation from all camera perspectives** (coaster player: Front, Follow, Onboard) across the whole timeline and both day/night themes via the headless render harness before shipping — a green build is not enough. See [conventions](docs/development/conventions.md#12-threejs-animations-research-first-then-verify-from-every-perspective-requirement).
 
 ---
 

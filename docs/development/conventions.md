@@ -91,6 +91,31 @@ the app. Only create a new component when nothing suitable exists.
 
 ---
 
+## 12. three.js animations: research first, then verify from every perspective (REQUIREMENT)
+
+Any three.js animation (the glossary coaster player, the homepage hero, future 3-D scenes) must be
+built **research-first** and **verified from every camera perspective** before it ships:
+
+1. **Research first, then implement.** Before modelling a real-world figure (a coaster element, a
+   ride, a building), look up what it actually looks like — reference photos/POVs, the manufacturer,
+   the named element. Encode the _correct_ geometry; do not approximate from memory. Note the source
+   in a code comment when it is non-obvious (e.g. the celestial spin is a Mack dual-track element).
+2. **Test from ALL perspectives.** Every animated figure must be checked in **each** camera mode it
+   exposes — for the coaster player that is **Front, Follow _and_ Onboard** — across the full
+   timeline (entry → element → exit) and in **both day and night** themes. A figure that looks right
+   head-on but self-intersects, leans, or clips in another view is **not** done.
+3. **Verify visually, not just by building.** `tsc`/`eslint`/`build` passing is necessary but not
+   sufficient. Use the headless render harness (Chrome + SwiftShader + Puppeteer contact sheets, see
+   `docs/development/notes-for-sessions.md`) to actually _look_ at the frames before committing.
+4. **Geometry sanity.** Track must not pass through itself in a way that reads as wrong, figures must
+   be centered in the frontal frame unless intentionally offset, loops should read cleanly (use a
+   small depth offset so entry/exit cross over–under rather than intersecting), and the train must
+   sit on the rails (no z-fighting).
+
+→ Coaster engine: `lib/three/coaster/` (`kit.ts`, `elements.ts`, `scene.ts`)
+
+---
+
 ## Related
 
 - [Setup](setup.md)
