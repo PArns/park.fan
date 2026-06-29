@@ -116,25 +116,23 @@ export function GlossaryTermDetail({
       </div>
 
       {hasPlayer ? (
-        /* ── Player layout: title → 3-D player on top → text + sidebar below ── */
-        <div className="flex flex-col gap-5">
-          <div>{headerBlock}</div>
-
-          <CoasterPlayer
-            element={term.player!.element}
-            labels={playerLabels!}
-            className="shadow-md"
-          />
-
-          <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
-            <div className="flex flex-col gap-4">
-              <Card className="border-primary/20 py-0 shadow-md">
-                <div className="px-6 py-6">{definitionBlock}</div>
-              </Card>
-              {backButton}
-            </div>
-            {sidebar}
+        /* ── Player layout: the 3-D player sits full-bleed on top of one
+              cohesive card, with the title + definition below it; related
+              terms go in the sidebar. ── */
+        <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
+          <div className="flex flex-col gap-4">
+            <Card className="border-primary/20 gap-0 overflow-hidden py-0 shadow-md">
+              <CoasterPlayer
+                element={term.player!.element}
+                labels={playerLabels!}
+                className="rounded-none border-0 shadow-none"
+              />
+              <div className="px-6 pt-5 pb-4">{headerBlock}</div>
+              <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
+            </Card>
+            {backButton}
           </div>
+          {sidebar}
         </div>
       ) : (
         /* ── Default layout: combined header + definition card with sidebar ── */

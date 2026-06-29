@@ -201,6 +201,13 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
             ))}
           </div>
         )}
+
+        {/* park.fan wordmark — embedded branding (bottom-left) */}
+        {!failed && (
+          <div className="pointer-events-none absolute bottom-2 left-3 z-10 flex items-baseline text-sm font-bold tracking-tight text-white/90 select-none [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
+            park<span className="text-sky-300">.fan</span>
+          </div>
+        )}
       </div>
 
       {/* Transport bar */}
@@ -224,44 +231,51 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
             <RotateCcw className="h-4 w-4" />
           </button>
 
-          {/* Timeline with key-point markers */}
-          <div className="relative flex-1 py-2">
-            <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
-            <div
-              className="bg-primary pointer-events-none absolute top-1/2 left-0 h-1.5 -translate-y-1/2 rounded-full"
-              style={{ width: `${progress * 100}%` }}
-            />
-            {keyPoints.map((k, i) => (
-              <button
-                key={i}
-                type="button"
-                title={labels.keys[k.label] ?? k.label}
-                onClick={() => {
-                  onScrub(k.t);
-                  endScrub();
+          {/* Timeline with key-point markers — fixed-height row so the range
+              thumb centres exactly on the groove regardless of intrinsic size. */}
+          <div className="relative flex-1 self-stretch">
+            <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2">
+              {/* groove */}
+              <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
+              {/* progress fill */}
+              <div
+                className="bg-primary pointer-events-none absolute top-1/2 left-0 h-1.5 -translate-y-1/2 rounded-full"
+                style={{ width: `${progress * 100}%` }}
+              />
+              {/* interactive scrubber — fills the row, thumb sits on the groove */}
+              <input
+                type="range"
+                min={0}
+                max={1}
+                step={0.001}
+                value={progress}
+                onChange={(e) => onScrub(parseFloat(e.target.value))}
+                onPointerDown={() => {
+                  scrubbingRef.current = true;
                 }}
-                className="group absolute top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 p-1.5"
-                style={{ left: `${k.t * 100}%` }}
-                aria-label={labels.keys[k.label] ?? k.label}
-              >
-                <span className="border-background bg-primary/70 group-hover:bg-primary block h-2.5 w-2.5 rounded-full border" />
-              </button>
-            ))}
-            <input
-              type="range"
-              min={0}
-              max={1}
-              step={0.001}
-              value={progress}
-              onChange={(e) => onScrub(parseFloat(e.target.value))}
-              onPointerDown={() => {
-                scrubbingRef.current = true;
-              }}
-              onPointerUp={endScrub}
-              onBlur={endScrub}
-              aria-label={labels.view}
-              className="coaster-scrubber relative z-20 w-full cursor-pointer appearance-none bg-transparent"
-            />
+                onPointerUp={endScrub}
+                onBlur={endScrub}
+                aria-label={labels.view}
+                className="coaster-scrubber absolute inset-0 z-10 h-full w-full cursor-pointer appearance-none bg-transparent"
+              />
+              {/* key-point markers — above the scrubber so they stay clickable */}
+              {keyPoints.map((k, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  title={labels.keys[k.label] ?? k.label}
+                  onClick={() => {
+                    onScrub(k.t);
+                    endScrub();
+                  }}
+                  className="group absolute top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 p-1.5"
+                  style={{ left: `${k.t * 100}%` }}
+                  aria-label={labels.keys[k.label] ?? k.label}
+                >
+                  <span className="border-background bg-primary/70 group-hover:bg-primary block h-2.5 w-2.5 rounded-full border" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
