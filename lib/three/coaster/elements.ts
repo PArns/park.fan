@@ -285,6 +285,61 @@ const topHat: CoasterElementDef = {
   duration: 8,
 };
 
+// ── Immelmann — half a vertical loop (up and over, inverting via parallel
+//    transport) then a half-twist that rolls the train upright as it flies out
+//    in the OPPOSITE direction at height. ────────────────────────────────────
+const immelmann: CoasterElementDef = {
+  id: 'immelmann',
+  points: [
+    [-12, 1, 0],
+    [-7, 1, 0],
+    [-3, 1.4, 0],
+    [0, 2.2, 0], // bottom, entering +x
+    [3.4, 4.4, 0],
+    [4.7, 8.2, 0],
+    [3.4, 11, 0],
+    [0.3, 12.3, 0], // over the top — inverted, now travelling −x
+    [-3.6, 12.2, 0], // level out (the half-twist rolls upright here)
+    [-8, 11.6, 0],
+    [-12, 11.2, 0], // exit −x, upright, at height
+  ],
+  roll: (t) => Math.PI * smoothstep(0.5, 0.82, t), // half-twist out after the top
+  keyPoints: [
+    { t: 0.18, label: 'climb' },
+    { t: 0.44, label: 'inverted' },
+    { t: 0.66, label: 'rollOut' },
+    { t: 0.86, label: 'leave' },
+  ],
+  duration: 8,
+};
+
+// ── Dive loop — the Immelmann reversed: the train twists up and over, then
+//    dives back toward the ground through a half vertical loop. ──────────────
+const diveLoop: CoasterElementDef = {
+  id: 'dive-loop',
+  points: [
+    [-12, 11.2, 0], // lead-in, entering +x at height
+    [-8, 11.6, 0],
+    [-3.6, 12.2, 0],
+    [0.3, 12.3, 0], // top (twist to inverted here, before the dive)
+    [3.4, 11, 0],
+    [4.7, 8.2, 0],
+    [3.4, 4.4, 0],
+    [0, 2.2, 0], // bottom, now travelling −x
+    [-3, 1.4, 0],
+    [-7, 1, 0],
+    [-12, 1, 0], // exit −x along the ground
+  ],
+  roll: (t) => Math.PI * smoothstep(0.16, 0.46, t), // twist to inverted before the dive
+  keyPoints: [
+    { t: 0.14, label: 'approach' },
+    { t: 0.32, label: 'rollIn' },
+    { t: 0.54, label: 'inverted' },
+    { t: 0.82, label: 'land' },
+  ],
+  duration: 8,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -295,6 +350,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'zero-g-stall': zeroGStall,
   bunnyhop: bunnyHop,
   'top-hat': topHat,
+  immelmann,
+  'dive-loop': diveLoop,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

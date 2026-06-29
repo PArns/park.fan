@@ -571,6 +571,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'immelmann',
       es: 'immelmann',
     },
+    player: { element: 'immelmann' },
   },
   {
     id: 'zero-g-roll',
@@ -839,6 +840,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'dive-loop',
       es: 'dive-loop',
     },
+    player: { element: 'dive-loop' },
   },
   {
     id: 'inline-twist',
