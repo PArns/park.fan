@@ -1003,6 +1003,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'horseshoe',
       es: 'horseshoe',
     },
+    player: { element: 'horseshoe' },
   },
   {
     id: 'predrop',
@@ -1222,6 +1223,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'overbank',
       es: 'overbank',
     },
+    player: { element: 'overbank' },
   },
   {
     id: 'trim-brake',
@@ -1660,6 +1662,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'wave-turn',
       es: 'wave-turn',
     },
+    player: { element: 'wave-turn' },
   },
   {
     id: 'high-five',
@@ -2344,6 +2347,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'raven-turn',
       es: 'raven-turn',
     },
+    player: { element: 'raven-turn' },
   },
   {
     id: 'dive-drop',
@@ -2368,6 +2372,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'outerbanked-turn',
       es: 'outerbanked-turn',
     },
+    player: { element: 'outerbanked-turn' },
   },
   {
     id: 'camelback',

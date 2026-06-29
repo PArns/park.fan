@@ -1066,7 +1066,11 @@
         "climb": "Climb",
         "airtime": "Airtime",
         "land": "Land",
-        "celestial": "Celestial spin"
+        "celestial": "Celestial spin",
+        "turn": "Turnaround",
+        "bank": "Banked over",
+        "crest": "Airtime crest",
+        "dive": "Dive"
       }
     }
   },

@@ -506,6 +506,141 @@ const bananaRoll: CoasterElementDef = {
   duration: 7,
 };
 
+// ── Horseshoe — a 180° turnaround perched on top of a hill: the train climbs,
+//    sweeps through a heavily-banked (≈90°) semicircle at the apex and comes
+//    back down, now travelling the opposite direction. A steady depth offset
+//    keeps the up-leg and down-leg from overlapping in view. ───────────────────
+const horseshoe: CoasterElementDef = {
+  id: 'horseshoe',
+  points: [
+    [-13, 1, 0],
+    [-8.5, 2, 0],
+    [-5, 4.6, 0],
+    [-3.2, 6.8, 0.3], // bank in as the climb tops out
+    [-1.4, 7.6, 1.8],
+    [0, 7.9, 3.7], // apex — heading +z, banked ≈90°
+    [-1.4, 7.6, 5.6],
+    [-3.2, 6.8, 7.1], // back over the top, now heading −x
+    [-5, 4.6, 7.4],
+    [-8.5, 2, 7.4],
+    [-13, 1, 7.4],
+  ],
+  roll: (t) => 1.6 * (smoothstep(0.24, 0.37, t) - smoothstep(0.63, 0.76, t)),
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.5, label: 'turn' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Overbanked turn — a sweeping, near-level curve in which the track tilts
+//    PAST vertical (≈105°), so riders lean over beyond upside-down without ever
+//    fully inverting. Sustained left turn → one steady direction of bank. ──────
+const overbank: CoasterElementDef = {
+  id: 'overbank',
+  points: [
+    [-13, 3.5, -4],
+    [-7, 3.5, -3.4],
+    [-2, 3.6, -1.5],
+    [1.6, 3.7, 1.5],
+    [3, 3.7, 6], // heading +z, over-banked ≈105°
+    [1.6, 3.6, 10.5],
+    [-2, 3.5, 13.5], // swept ≈160°, now heading −x
+    [-7, 3.5, 14],
+  ],
+  roll: (t) => 1.83 * (smoothstep(0.16, 0.34, t) - smoothstep(0.66, 0.84, t)),
+  keyPoints: [
+    { t: 0.18, label: 'approach' },
+    { t: 0.5, label: 'bank' },
+    { t: 0.82, label: 'leave' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Wave turn — RMC's banked turnaround with an airtime crest: the train rolls
+//    to ≈90° on its side, floats over a camelback while fully banked, and exits
+//    the opposite direction. Like a horseshoe, but with airtime at the top. ────
+const waveTurn: CoasterElementDef = {
+  id: 'wave-turn',
+  points: [
+    [-13, 1.3, 0],
+    [-8.5, 2.4, 0],
+    [-5, 5.2, 0],
+    [-3, 7.4, 0.35], // bank to 90° entering the turn
+    [-1.3, 9.0, 1.8],
+    [0, 9.5, 3.7], // crest — airtime while banked ≈95°, heading +z
+    [-1.3, 9.0, 5.6],
+    [-3, 7.4, 7.05], // heading −x
+    [-5, 5.2, 7.4],
+    [-8.5, 2.4, 7.4],
+    [-13, 1.3, 7.4],
+  ],
+  roll: (t) => 1.66 * (smoothstep(0.22, 0.36, t) - smoothstep(0.64, 0.78, t)),
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.5, label: 'crest' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Outward-banked turn — the opposite of an overbank: the track banks the
+//    "wrong" way (tilting outward, ≈40°) so the curve throws riders to the
+//    OUTSIDE instead of cradling them into it. ────────────────────────────────
+const outerbankedTurn: CoasterElementDef = {
+  id: 'outerbanked-turn',
+  points: [
+    [-13, 3, -2.5],
+    [-8, 3, -2],
+    [-4, 3.1, -0.5],
+    [-1, 3.2, 2],
+    [1, 3.3, 5.5],
+    [1.4, 3.3, 10],
+    [1.4, 3.3, 14],
+  ],
+  roll: (t) => -0.72 * (smoothstep(0.2, 0.4, t) - smoothstep(0.62, 0.82, t)),
+  keyPoints: [
+    { t: 0.2, label: 'approach' },
+    { t: 0.5, label: 'bank' },
+    { t: 0.82, label: 'leave' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Raven turn — a half-inversion turnaround: the train climbs the front of a
+//    loop, rolls inverted over the top, then dives back down and levels out at
+//    its starting height, now travelling the opposite way. Planar (parallel
+//    transport inverts it); a small depth drift separates the climb and dive. ──
+const ravenTurn: CoasterElementDef = {
+  id: 'raven-turn',
+  points: [
+    [-12, 1, 0],
+    [-6.5, 1.1, 0],
+    [-3, 1.6, 0], // bottom front — heading +x
+    [0.6, 3.2, 0.15],
+    [2.6, 6.6, 0.4],
+    [1.9, 10.2, 0.7],
+    [-0.4, 11.6, 0.95], // top — inverted, heading −x
+    [-2.7, 10.4, 1.2],
+    [-3.4, 6.8, 1.5],
+    [-2.2, 3.4, 1.8], // dive down the back, heading −x
+    [-5.5, 1.5, 2.0], // level out
+    [-12, 1.3, 2.0],
+  ],
+  keyPoints: [
+    { t: 0.22, label: 'climb' },
+    { t: 0.46, label: 'inverted' },
+    { t: 0.68, label: 'dive' },
+    { t: 0.86, label: 'leave' },
+  ],
+  duration: 8,
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -557,6 +692,11 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'barrel-roll-drop': barrelRollDrop,
   'banana-roll': bananaRoll,
   helix: helixElement,
+  horseshoe,
+  overbank,
+  'wave-turn': waveTurn,
+  'outerbanked-turn': outerbankedTurn,
+  'raven-turn': ravenTurn,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

@@ -1066,7 +1066,11 @@
         "climb": "Subida",
         "airtime": "Airtime",
         "land": "Aterrizaje",
-        "celestial": "Celestial spin"
+        "celestial": "Celestial spin",
+        "turn": "Giro de 180°",
+        "bank": "Peralte",
+        "crest": "Cresta",
+        "dive": "Caída"
       }
     }
   },
