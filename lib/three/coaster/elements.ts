@@ -792,6 +792,37 @@ const pretzelLoop: CoasterElementDef = {
   defaultView: 'follow',
 };
 
+// ── Sidewinder — half a vertical loop pulling up into an inverted top, then a
+//    half-corkscrew that rolls the train upright while turning ≈90° to the side
+//    (the building block of Vekoma's Boomerang). Compact: an inversion plus a
+//    sharp directional change. ─────────────────────────────────────────────────
+const sidewinder: CoasterElementDef = {
+  id: 'sidewinder',
+  points: [
+    [-11, 1, 0],
+    [-6, 1, 0],
+    [-2.5, 1.5, 0],
+    [0, 2.4, 0], // bottom — heading +x
+    [3.2, 4.6, 0],
+    [4.5, 8.2, 0],
+    [3.3, 11.0, 0],
+    [0.6, 12.2, 0.5], // inverted top — begin the half-corkscrew + 90° turn
+    [-1.4, 12.1, 2.2],
+    [-2.4, 11.7, 5.0], // rolling upright through the turn toward +z
+    [-2.9, 11.5, 8.5],
+    [-3.1, 11.4, 12], // exit — upright, at height, heading +z
+  ],
+  roll: (t) => Math.PI * smoothstep(0.56, 0.88, t),
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.45, label: 'inverted' },
+    { t: 0.66, label: 'rollOut' },
+    { t: 0.86, label: 'leave' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -852,6 +883,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'non-inverting-loop': nonInvertingLoop,
   'sea-serpent': seaSerpent,
   'pretzel-loop': pretzelLoop,
+  sidewinder,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

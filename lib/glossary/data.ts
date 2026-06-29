@@ -881,6 +881,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'sidewinder',
       es: 'sidewinder',
     },
+    player: { element: 'sidewinder' },
   },
   {
     id: 'pretzel-loop',
