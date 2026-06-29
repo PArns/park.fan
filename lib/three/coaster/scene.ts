@@ -259,7 +259,7 @@ export function createCoasterScene(
 
   if (def.dual) {
     // Centreline hump, then two tracks orbiting it ±gap/2, rotated by twist(t).
-    const cN = Math.max(170, def.points.length * 20);
+    const cN = Math.max(300, def.points.length * 36);
     const cPts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
     const cFrames = framesAlongCurve(cPts, cN, { closed: false });
     supportFrames = cFrames;
@@ -320,15 +320,6 @@ export function createCoasterScene(
         col.position.set(p.x, h / 2, p.z);
         world.add(col);
       }
-    }
-    if (size.y > 8) {
-      const pyH = center.y - 0.5;
-      const pylon = new THREE.Mesh(
-        ctx.track.geo(new THREE.CylinderGeometry(0.18, 0.24, pyH, 8)),
-        supMat
-      );
-      pylon.position.set(center.x, pyH / 2, center.z - 0.6);
-      world.add(pylon);
     }
   }
 

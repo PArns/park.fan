@@ -126,28 +126,30 @@ const airtimeHill: CoasterElementDef = {
 };
 
 // ── Celestial Spin — Mack Rides' patented DUAL-TRACK element, the signature
-//    move of Stardust Racers at Universal Epic Universe: twin tracks invert
-//    AROUND each other over a crest (one rolls up while the other rolls down).
-//    Modelled as a centreline hump with two tracks orbiting it a full turn;
-//    the scene builds both tracks + both trains from this. ───────────────────
+//    (and TALLEST, 41 m) move of Stardust Racers at Universal Epic Universe.
+//    Both trains climb a tall spire and their tracks invert AROUND each other
+//    while rising over the peak — a double-helix intertwine, both ascending
+//    (NOT a high-five, where the tracks merely bank side-by-side). Modelled as
+//    a tall, narrow centreline spire with two tracks orbiting it a full turn;
+//    no explicit roll — the helix itself rolls both trains as they wind. ──────
 const celestialSpin: CoasterElementDef = {
   id: 'celestial-spin',
   points: [
-    [-12, 1.5, 0],
-    [-7, 2.1, 0],
-    [-3.5, 4.7, 0],
-    [0, 7.7, 0],
-    [3.5, 4.7, 0],
-    [7, 2.1, 0],
-    [12, 1.5, 0],
+    [-13, 1.5, 0],
+    [-8, 2.0, 0],
+    [-3.6, 4.6, 0],
+    [-1.4, 8.2, 0],
+    [0, 11.2, 0], // tall peak — the apex of the ride
+    [1.4, 8.2, 0],
+    [3.6, 4.6, 0],
+    [8, 2.0, 0],
+    [13, 1.5, 0],
   ],
-  // The two tracks swap sides once (half-orbit) AND each train barrel-rolls a
-  // full turn in OPPOSITE directions (one rolls up, the other down) — so they
-  // visibly invert around each other over the crest.
+  // Both tracks orbit the shared spire a FULL turn, winding around each other
+  // (a double helix) as they rise and fall — both trains go up and over.
   dual: {
-    gap: 2.4,
-    twist: (t) => Math.PI * smoothstep(0.18, 0.82, t),
-    roll: (t) => TAU * smoothstep(0.22, 0.78, t),
+    gap: 2.2,
+    twist: (t) => TAU * smoothstep(0.16, 0.84, t),
   },
   keyPoints: [
     { t: 0.2, label: 'climb' },
