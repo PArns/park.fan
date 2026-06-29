@@ -387,6 +387,38 @@ const beyondVerticalDrop: CoasterElementDef = {
   duration: 7,
 };
 
+// ── Cobra roll — a double inversion: up into a first inverted head, dip, then a
+//    mirrored second inverted head, exiting the way it came. A small depth (z)
+//    drift twists the two halves past each other (the half-corkscrews). ───────
+const cobraRoll: CoasterElementDef = {
+  id: 'cobra-roll',
+  points: [
+    [-13, 1, 0],
+    [-8, 1, 0],
+    [-4.5, 1.5, 0],
+    [-3.5, 4, -0.2],
+    [-3, 8, -0.55],
+    [-1.5, 12, -0.7], // head 1 (inverted)
+    [0, 10.8, -0.3],
+    [0, 9, 0], // valley between the two heads
+    [0, 10.8, 0.3],
+    [1.5, 12, 0.7], // head 2 (inverted, mirrored)
+    [3, 8, 0.55],
+    [3.5, 4, 0.2],
+    [4.5, 1.5, 0],
+    [8, 1, 0],
+    [13, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'enterLoop' },
+    { t: 0.37, label: 'inverted' },
+    { t: 0.5, label: 'exitLoop' },
+    { t: 0.63, label: 'inverted' },
+    { t: 0.8, label: 'leave' },
+  ],
+  duration: 9,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -401,6 +433,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'dive-loop': diveLoop,
   'first-drop': firstDrop,
   'beyond-vertical-drop': beyondVerticalDrop,
+  'cobra-roll': cobraRoll,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

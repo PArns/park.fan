@@ -816,6 +816,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'cobra-roll',
       es: 'cobra-roll',
     },
+    player: { element: 'cobra-roll' },
   },
   {
     id: 'corkscrew',
