@@ -319,6 +319,9 @@ export function createCoasterScene(
         nextAt = f.arc[i] + COL_SPACING;
         const p = f.points[i];
         if (p.y > 1.6 && p.y < 5.5) {
+          // Skip a column that would pass through a lower stretch of track at
+          // ~the same ground footprint (e.g. a helix's lower spiral, or the far
+          // side of a steep figure) rather than spearing it.
           const pierces = allPts.some(
             (q) => q.y < p.y - 0.6 && Math.hypot(q.x - p.x, q.z - p.z) < 0.85
           );
