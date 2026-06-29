@@ -823,6 +823,54 @@ const sidewinder: CoasterElementDef = {
   defaultView: 'follow',
 };
 
+// ── Flat spin — a corkscrew laid almost on its side: the train barrel-rolls a
+//    full 360° while sweeping through a wide, nearly level horizontal arc, so
+//    the spiral reads flat and sweeping rather than rising over a hump. ────────
+const flatSpin: CoasterElementDef = {
+  id: 'flat-spin',
+  points: [
+    [-13, 4.5, -4.5],
+    [-8, 4.6, -3.5],
+    [-3.5, 4.7, -1.2],
+    [0, 4.8, 1.8], // mid — rolling through the flat sweep
+    [2.6, 4.7, 5.5],
+    [3.2, 4.6, 10],
+    [3.3, 4.5, 14],
+  ],
+  roll: (t) => TAU * smoothstep(0.2, 0.8, t),
+  keyPoints: [
+    { t: 0.2, label: 'rollIn' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.8, label: 'rollOut' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Zero-G winder — a zero-G roll with a built-in directional change: the train
+//    floats over an airtime crest, barrel-rolls a full 360° at the weightless
+//    apex, and curves away so it enters and exits on different headings. ───────
+const zeroGWinder: CoasterElementDef = {
+  id: 'zero-g-winder',
+  points: [
+    [-12, 1.5, -3.5],
+    [-7, 2.6, -2.6],
+    [-3, 5.2, -1],
+    [0, 6.6, 1.2], // weightless crest — roll + turn
+    [3, 5.6, 3.6],
+    [7, 3, 5.4],
+    [12, 1.5, 6.6],
+  ],
+  roll: (t) => TAU * smoothstep(0.22, 0.78, t),
+  keyPoints: [
+    { t: 0.22, label: 'rollIn' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.78, label: 'rollOut' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -884,6 +932,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'sea-serpent': seaSerpent,
   'pretzel-loop': pretzelLoop,
   sidewinder,
+  'flat-spin': flatSpin,
+  'zero-g-winder': zeroGWinder,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

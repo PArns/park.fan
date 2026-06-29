@@ -932,6 +932,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'flat-spin',
       es: 'flat-spin',
     },
+    player: { element: 'flat-spin' },
   },
   {
     id: 'cutback',
@@ -2045,6 +2046,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-winder',
       es: 'zero-g-winder',
     },
+    player: { element: 'zero-g-winder' },
   },
   {
     id: 'banana-roll',
