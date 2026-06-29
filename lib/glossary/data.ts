@@ -742,6 +742,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'lifthill',
       es: 'lifthill',
     },
+    player: { element: 'lifthill' },
   },
   {
     id: 'first-drop',
@@ -2123,6 +2124,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'verstrengelde-loops',
       es: 'loops-entrelazados',
     },
+    player: { element: 'interlocking-loops' },
   },
   {
     id: 'anti-rollback',
@@ -2392,6 +2394,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'camelback',
       es: 'camelback',
     },
+    player: { element: 'camelback' },
   },
   {
     id: 'zero-g-stall',
@@ -2639,6 +2642,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'quad-down',
       es: 'quad-down',
     },
+    player: { element: 'quad-down' },
   },
   {
     id: 's-hill',
@@ -2651,6 +2655,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 's-hill',
       es: 's-hill',
     },
+    player: { element: 's-hill' },
   },
   {
     id: 'strata-coaster',

@@ -926,6 +926,160 @@ const zeroGWinder: CoasterElementDef = {
   defaultView: 'follow',
 };
 
+// ── Camelback — a series of rounded airtime hills in a row; riders float over
+//    each crest. Purely planar, never inverts. ─────────────────────────────────
+const camelback: CoasterElementDef = {
+  id: 'camelback',
+  points: [
+    [-13, 1.2, 0],
+    [-10, 1.5, 0],
+    [-7, 5.6, 0],
+    [-5, 6.8, 0], // hill 1 crest
+    [-3, 5.6, 0],
+    [-1.2, 2.6, 0],
+    [1.2, 2.6, 0],
+    [3, 5.6, 0],
+    [5, 6.8, 0], // hill 2 crest
+    [7, 5.6, 0],
+    [10, 1.5, 0],
+    [13, 1.2, 0],
+  ],
+  keyPoints: [
+    { t: 0.18, label: 'approach' },
+    { t: 0.36, label: 'airtime' },
+    { t: 0.64, label: 'airtime' },
+    { t: 0.84, label: 'land' },
+  ],
+  duration: 8,
+};
+
+// ── Quad down — four successive DESCENDING airtime hops, each crest lower than
+//    the last, for rapid-fire airtime near the end of a layout. ────────────────
+const quadDown: CoasterElementDef = {
+  id: 'quad-down',
+  points: [
+    [-13, 10, 0],
+    [-9.5, 10, 0],
+    [-7.6, 8, 0],
+    [-6.3, 8.7, 0], // hop 1
+    [-4.9, 6.3, 0],
+    [-3.7, 6.9, 0], // hop 2
+    [-2.3, 4.6, 0],
+    [-1.1, 5.1, 0], // hop 3
+    [0.4, 3.1, 0],
+    [1.6, 3.5, 0], // hop 4
+    [3.1, 1.9, 0],
+    [6, 1.2, 0],
+    [13, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.42, label: 'airtime' },
+    { t: 0.66, label: 'airtime' },
+    { t: 0.86, label: 'land' },
+  ],
+  duration: 7,
+};
+
+// ── S-hill — an airtime hill that weaves an S in plan as it lifts, so riders
+//    get a lateral kick on top of the float. The S is in the path (depth). ─────
+const sHill: CoasterElementDef = {
+  id: 's-hill',
+  points: [
+    [-13, 1.2, 0],
+    [-8.5, 2.2, -2.2],
+    [-4.5, 5.2, -2.6],
+    [-1.5, 6.6, -1.2],
+    [0, 6.8, 0], // crest
+    [1.5, 6.6, 1.2],
+    [4.5, 5.2, 2.6],
+    [8.5, 2.2, 2.2],
+    [13, 1.2, 0],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'approach' },
+    { t: 0.5, label: 'airtime' },
+    { t: 0.8, label: 'leave' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Lift hill — the mechanically-powered straight climb to the highest point,
+//    cresting into the first drop. ────────────────────────────────────────────
+const lifthill: CoasterElementDef = {
+  id: 'lifthill',
+  points: [
+    [-13, 1, 0],
+    [-10, 1.2, 0],
+    [-7, 3.4, 0],
+    [-4, 6.6, 0],
+    [-1, 9.8, 0],
+    [1.6, 11.8, 0],
+    [3.6, 12, 0], // crest
+    [5.2, 11.2, 0],
+    [7, 8.6, 0],
+    [9, 5, 0],
+    [11, 2.2, 0],
+    [13, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.16, label: 'approach' },
+    { t: 0.45, label: 'climb' },
+    { t: 0.62, label: 'crest' },
+    { t: 0.85, label: 'land' },
+  ],
+  duration: 9,
+};
+
+// ── Interlocking loops — two vertical loops whose planes lean opposite ways so
+//    they cross through each other (chain-link). The train rides both; each
+//    inverts via parallel transport. ──────────────────────────────────────────
+const interlockingLoops: CoasterElementDef = {
+  id: 'interlocking-loops',
+  points: [
+    [-13, 1, -1.4],
+    [-9, 1.2, -1],
+    [-2.6, 2.1, 0.17],
+    [-0.28, 2.78, 0.58],
+    [1.31, 4.61, 1.48],
+    [1.66, 7.01, 2.61],
+    [0.65, 9.22, 3.67],
+    [-1.39, 10.53, 4.34], // loop A top (leaning +z)
+    [-3.81, 10.53, 4.47],
+    [-5.85, 9.22, 4.05],
+    [-6.86, 7.01, 3.25],
+    [-6.51, 4.61, 2.37],
+    [-4.92, 2.78, 1.73],
+    [-2.6, 2.1, 1.57],
+    [-0.6, 1.6, 2.5], // cross to loop B
+    [1.2, 1.6, 2.7],
+    [2.6, 2.1, 2.73],
+    [4.92, 2.78, 2.57],
+    [6.51, 4.61, 1.93],
+    [6.86, 7.01, 1.05],
+    [5.85, 9.22, 0.25],
+    [3.81, 10.53, -0.17], // loop B top (leaning −z, plane crosses A)
+    [1.39, 10.53, -0.04],
+    [-0.65, 9.22, 0.63],
+    [-1.66, 7.01, 1.69],
+    [-1.31, 4.61, 2.82],
+    [0.28, 2.78, 3.72],
+    [2.6, 2.1, 4.13],
+    [9, 1.2, 4.4],
+    [13, 1, 4.5],
+  ],
+  keyPoints: [
+    { t: 0.16, label: 'enterLoop' },
+    { t: 0.3, label: 'inverted' },
+    { t: 0.5, label: 'exitLoop' },
+    { t: 0.7, label: 'inverted' },
+    { t: 0.84, label: 'leave' },
+  ],
+  duration: 9,
+  defaultView: 'follow',
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -989,6 +1143,11 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   sidewinder,
   'flat-spin': flatSpin,
   'zero-g-winder': zeroGWinder,
+  camelback,
+  'quad-down': quadDown,
+  's-hill': sHill,
+  lifthill,
+  'interlocking-loops': interlockingLoops,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {
