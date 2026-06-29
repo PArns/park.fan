@@ -9,6 +9,7 @@
  */
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import { Play, Pause, RotateCcw, Eye, Video, Armchair } from 'lucide-react';
 import {
@@ -202,10 +203,40 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
           </div>
         )}
 
-        {/* park.fan wordmark — embedded branding (bottom-left) */}
+        {/* park.fan logo (pin + wordmark) — embedded branding, bottom-left.
+            Light/dark variants toggle with the theme, matching the header. */}
         {!failed && (
-          <div className="pointer-events-none absolute bottom-2 left-3 z-10 flex items-baseline text-sm font-bold tracking-tight text-white/90 select-none [text-shadow:0_1px_4px_rgba(0,0,0,0.55)]">
-            park<span className="text-sky-300">.fan</span>
+          <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-1.5 select-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+            <Image
+              src="/logo-small-dark.svg"
+              width={26}
+              height={30}
+              alt=""
+              aria-hidden="true"
+              className="hidden h-5 w-auto dark:block"
+            />
+            <Image
+              src="/logo-small.svg"
+              width={26}
+              height={30}
+              alt=""
+              aria-hidden="true"
+              className="block h-5 w-auto dark:hidden"
+            />
+            <Image
+              src="/parkfan-dark.svg"
+              width={84}
+              height={24}
+              alt="park.fan"
+              className="hidden h-4 w-auto dark:block"
+            />
+            <Image
+              src="/parkfan.svg"
+              width={84}
+              height={24}
+              alt="park.fan"
+              className="block h-4 w-auto dark:hidden"
+            />
           </div>
         )}
       </div>
