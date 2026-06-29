@@ -254,15 +254,12 @@ export function createCoasterScene(
     cars: THREE.Group[];
   }
   const tracks: TrackBuild[] = [];
-  // Frames used for support columns + the central pylon (centreline for duals).
-  let supportFrames: CurveFrames;
 
   if (def.dual) {
     // Centreline hump, then two tracks orbiting it ±gap/2, rotated by twist(t).
     const cN = Math.max(300, def.points.length * 36);
     const cPts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
     const cFrames = framesAlongCurve(cPts, cN, { closed: false });
-    supportFrames = cFrames;
     const half = def.dual.gap / 2;
     const aPts: THREE.Vector3[] = [];
     const bPts: THREE.Vector3[] = [];
@@ -292,7 +289,6 @@ export function createCoasterScene(
     const N = Math.max(150, def.points.length * 18);
     const pts = def.points.map((p) => new THREE.Vector3(p[0], p[1], p[2]));
     const frames = framesAlongCurve(pts, N, { closed: false, roll: def.roll });
-    supportFrames = frames;
     buildTrackGeometry(frames);
     tracks.push({ frames, cars: buildTrain(PAL.carLead) });
   }
@@ -305,20 +301,28 @@ export function createCoasterScene(
   const center = box.getCenter(new THREE.Vector3());
   const size = box.getSize(new THREE.Vector3());
 
-  // -- Supports ------------------------------------------------------------
+  // -- Supports — vertical columns under EACH track where it sits low enough to
+  //    be supported (not up inside the figure), spaced by ARC LENGTH so the
+  //    density is independent of curve resolution. ─────────────────────────
   {
-    const sf = supportFrames;
-    const M = sf.points.length - 1;
-    for (let i = 4; i <= M - 4; i += 9) {
-      const p = sf.points[i];
-      if (p.y > 1.8 && p.y < 6.5) {
-        const h = p.y - 0.2;
-        const col = new THREE.Mesh(
-          ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.16, h, 6)),
-          supMat
-        );
-        col.position.set(p.x, h / 2, p.z);
-        world.add(col);
+    const COL_SPACING = 3.2;
+    for (const tb of tracks) {
+      const f = tb.frames;
+      const M = f.points.length - 1;
+      let nextAt = 1.2;
+      for (let i = 1; i < M; i++) {
+        if (f.arc[i] < nextAt) continue;
+        nextAt = f.arc[i] + COL_SPACING;
+        const p = f.points[i];
+        if (p.y > 1.6 && p.y < 5.5) {
+          const h = p.y - 0.2;
+          const col = new THREE.Mesh(
+            ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.16, h, 6)),
+            supMat
+          );
+          col.position.set(p.x, h / 2, p.z);
+          world.add(col);
+        }
       }
     }
   }
