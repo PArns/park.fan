@@ -2051,6 +2051,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'banana-roll',
       es: 'banana-roll',
     },
+    player: { element: 'banana-roll' },
   },
   {
     id: 'inclined-loop',
@@ -2087,6 +2088,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'barrel-roll-drop',
       es: 'barrel-roll-drop',
     },
+    player: { element: 'barrel-roll-drop' },
   },
   {
     id: 'mcbr',

@@ -454,6 +454,52 @@ const batwing: CoasterElementDef = {
   duration: 9,
 };
 
+// ── Barrel-roll drop — a 360° barrel roll performed while plunging down a
+//    drop, so the inversion and the descent happen together. ─────────────────
+const barrelRollDrop: CoasterElementDef = {
+  id: 'barrel-roll-drop',
+  points: [
+    [-11, 9, 0],
+    [-8, 9, 0],
+    [-5.5, 8.3, 0],
+    [-3, 5.5, 0],
+    [-1, 2.6, 0],
+    [0.6, 1.3, 0],
+    [3, 1, 0],
+    [7, 1, 0],
+    [11, 1, 0],
+  ],
+  roll: (t) => TAU * smoothstep(0.24, 0.6, t),
+  keyPoints: [
+    { t: 0.16, label: 'climb' },
+    { t: 0.42, label: 'inverted' },
+    { t: 0.78, label: 'land' },
+  ],
+  duration: 7,
+};
+
+// ── Banana roll — a 360° roll along a curved, arcing track (the path bows out
+//    to the side like a banana while the train rolls). ──────────────────────
+const bananaRoll: CoasterElementDef = {
+  id: 'banana-roll',
+  points: [
+    [-11, 2.6, 0],
+    [-6.5, 2.8, 0.4],
+    [-2.5, 3.7, 1.3],
+    [0, 4.1, 1.7],
+    [2.5, 3.7, 1.3],
+    [6.5, 2.8, 0.4],
+    [11, 2.6, 0],
+  ],
+  roll: (t) => TAU * smoothstep(0.28, 0.72, t),
+  keyPoints: [
+    { t: 0.2, label: 'rollIn' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.8, label: 'rollOut' },
+  ],
+  duration: 7,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -470,6 +516,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'beyond-vertical-drop': beyondVerticalDrop,
   'cobra-roll': cobraRoll,
   batwing,
+  'barrel-roll-drop': barrelRollDrop,
+  'banana-roll': bananaRoll,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {
