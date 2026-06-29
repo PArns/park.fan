@@ -340,6 +340,53 @@ const diveLoop: CoasterElementDef = {
   duration: 8,
 };
 
+// ── First drop — the big descent off the lift/launch crest: a steep, floaty
+//    plunge that levels out along the ground. ────────────────────────────────
+const firstDrop: CoasterElementDef = {
+  id: 'first-drop',
+  points: [
+    [-12, 11, 0],
+    [-8.5, 11, 0],
+    [-5.5, 10.2, 0],
+    [-3, 7.4, 0],
+    [-1.2, 3.7, 0],
+    [0, 1.4, 0],
+    [2.5, 1, 0],
+    [7, 1, 0],
+    [12, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.16, label: 'climb' },
+    { t: 0.45, label: 'airtime' },
+    { t: 0.78, label: 'land' },
+  ],
+  duration: 7,
+};
+
+// ── Beyond-vertical drop — a drop steeper than 90°: the track tucks back under
+//    itself (overhangs) at the steepest point before levelling out. ──────────
+const beyondVerticalDrop: CoasterElementDef = {
+  id: 'beyond-vertical-drop',
+  points: [
+    [-11, 11.6, 0],
+    [-7.5, 11.6, 0],
+    [-5, 11, 0],
+    [-3.7, 8.8, 0],
+    [-3.5, 5.8, 0],
+    [-4.2, 3, 0], // overhang — x moves back as it drops (past vertical)
+    [-3, 1.2, 0],
+    [0, 0.9, 0],
+    [4, 1, 0],
+    [9, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.18, label: 'climb' },
+    { t: 0.46, label: 'airtime' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 7,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -352,6 +399,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'top-hat': topHat,
   immelmann,
   'dive-loop': diveLoop,
+  'first-drop': firstDrop,
+  'beyond-vertical-drop': beyondVerticalDrop,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

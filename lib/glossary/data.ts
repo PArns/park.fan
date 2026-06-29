@@ -754,6 +754,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'first-drop',
       es: 'first-drop',
     },
+    player: { element: 'first-drop' },
   },
   {
     id: 'airtime-hill',
@@ -2596,6 +2597,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'beyond-vertical-drop',
       es: 'beyond-vertical-drop',
     },
+    player: { element: 'beyond-vertical-drop' },
   },
   {
     id: 'splashdown',
