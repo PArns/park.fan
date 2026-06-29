@@ -419,6 +419,41 @@ const cobraRoll: CoasterElementDef = {
   duration: 9,
 };
 
+// ── Batwing — like a cobra roll but stretched vertically: up into a first
+//    inverted head, a deep dive almost to the ground, then a mirrored second
+//    inverted head before exiting. ───────────────────────────────────────────
+const batwing: CoasterElementDef = {
+  id: 'batwing',
+  points: [
+    [-13, 1, 0],
+    [-8, 1, 0],
+    [-4.5, 1.6, 0],
+    [-3, 5, -0.25],
+    [-2.2, 9.5, -0.6],
+    [-1.4, 12.5, -0.7], // head 1 (inverted)
+    [-1.2, 10.5, -0.5],
+    [-1.6, 5.5, -0.2],
+    [-1.2, 2.2, 0], // deep dive near the ground (between the heads)
+    [1.2, 2.2, 0],
+    [1.6, 5.5, 0.2],
+    [1.2, 10.5, 0.5],
+    [1.4, 12.5, 0.7], // head 2 (inverted, mirrored)
+    [2.2, 9.5, 0.6],
+    [3, 5, 0.25],
+    [4.5, 1.6, 0],
+    [8, 1, 0],
+    [13, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.22, label: 'enterLoop' },
+    { t: 0.34, label: 'inverted' },
+    { t: 0.5, label: 'exitLoop' },
+    { t: 0.66, label: 'inverted' },
+    { t: 0.8, label: 'leave' },
+  ],
+  duration: 9,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -434,6 +469,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'first-drop': firstDrop,
   'beyond-vertical-drop': beyondVerticalDrop,
   'cobra-roll': cobraRoll,
+  batwing,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

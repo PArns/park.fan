@@ -904,6 +904,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'batwing',
       es: 'batwing',
     },
+    player: { element: 'batwing' },
   },
   {
     id: 'norwegian-loop',
