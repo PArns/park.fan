@@ -418,29 +418,38 @@ const cobraRoll: CoasterElementDef = {
   id: 'cobra-roll',
   points: [
     [-12, 1, 0],
-    [-7, 1.1, 0],
-    [-3.2, 1.5, 0.1], // entry leg, heading +x
-    [-2.0, 4.8, 0.3],
-    [-1.6, 9.2, 0.6],
-    [-1.3, 12.1, 1.0], // head 1 (inverted), splayed −x/+z
-    [-0.5, 11.4, 1.6],
-    [-0.1, 8.8, 2.0],
-    [0.0, 7.2, 2.4], // valley between the heads
-    [0.1, 8.8, 2.8],
-    [0.5, 11.4, 3.2],
-    [1.0, 12.1, 3.5], // head 2 (inverted), splayed +x/+z
-    [0.4, 9.2, 3.8],
-    [-0.6, 4.8, 4.0],
-    [-2.2, 1.5, 4.1], // exit leg, heading −x (opposite the entry)
-    [-6, 1.1, 4.1],
-    [-11, 1, 4.1],
+    [-8, 1.1, 0],
+    [-4, 1.4, 0], // entry leg, heading +x
+    [-1, 1.6, 0],
+    [0.91, 1.98, 0.03],
+    [2.54, 3.06, 0.06],
+    [3.62, 4.69, 0.09],
+    [4, 6.6, 0.13],
+    [3.62, 8.51, 0.16],
+    [2.54, 10.14, 0.19],
+    [0.91, 11.22, 0.22],
+    [-1, 11.6, 0.25], // head 1 over the top — inverted, heading −x
+    [-1, 11.6, 1.3], // the hood — shift across at the top
+    [-1, 11.6, 2.3],
+    [-1, 11.6, 2.6],
+    [0.91, 11.22, 2.63],
+    [2.54, 10.14, 2.66],
+    [3.62, 8.51, 2.69],
+    [4, 6.6, 2.73],
+    [3.62, 4.69, 2.76],
+    [2.54, 3.06, 2.79],
+    [0.91, 1.98, 2.82],
+    [-1, 1.6, 2.85], // head 2 bottom — heading −x (reversed)
+    [-4, 1.4, 2.85],
+    [-8, 1.1, 2.9],
+    [-12, 1, 2.9],
   ],
   keyPoints: [
-    { t: 0.2, label: 'enterLoop' },
-    { t: 0.36, label: 'inverted' },
+    { t: 0.18, label: 'enterLoop' },
+    { t: 0.4, label: 'inverted' },
     { t: 0.5, label: 'exitLoop' },
-    { t: 0.64, label: 'inverted' },
-    { t: 0.8, label: 'leave' },
+    { t: 0.62, label: 'inverted' },
+    { t: 0.84, label: 'leave' },
   ],
   duration: 9,
   defaultView: 'follow',
@@ -453,27 +462,42 @@ const seaSerpent: CoasterElementDef = {
   id: 'sea-serpent',
   points: [
     [-13, 1, 0],
-    [-8, 1, 0],
-    [-4.5, 1.5, 0],
-    [-3.5, 4, -0.2],
-    [-3, 8, -0.55],
-    [-1.5, 12, -0.7], // head 1 (inverted)
-    [0, 10.8, -0.3],
-    [0, 9, 0], // valley between the two heads
-    [0, 10.8, 0.3],
-    [1.5, 12, 0.7], // head 2 (inverted, mirrored the other way)
-    [3, 8, 0.55],
-    [3.5, 4, 0.2],
-    [4.5, 1.5, 0],
-    [8, 1, 0],
-    [13, 1, 0], // exit — same direction as entry
+    [-9, 1.1, 0],
+    [-6.2, 1.4, 0],
+    [-4.2, 1.7, 0],
+    [-1.91, 2.44, 0.13],
+    [-0.49, 4.39, 0.26],
+    [-0.49, 6.81, 0.39],
+    [-1.91, 8.76, 0.52],
+    [-4.2, 9.5, 0.65], // head 1 top — inverted
+    [-6.49, 8.76, 0.78],
+    [-7.91, 6.81, 0.91],
+    [-7.91, 4.39, 1.04],
+    [-6.49, 2.44, 1.17],
+    [-4.2, 1.7, 1.3],
+    [-1, 1.5, 1.4], // valley between the loops
+    [1, 1.5, 1.5],
+    [4.2, 1.7, 1.6],
+    [6.49, 2.44, 1.73],
+    [7.91, 4.39, 1.86],
+    [7.91, 6.81, 1.99],
+    [6.49, 8.76, 2.12],
+    [4.2, 9.5, 2.25], // head 2 top — inverted
+    [1.91, 8.76, 2.38],
+    [0.49, 6.81, 2.51],
+    [0.49, 4.39, 2.64],
+    [1.91, 2.44, 2.77],
+    [4.2, 1.7, 2.9],
+    [6.2, 1.4, 3],
+    [9, 1.1, 3],
+    [13, 1, 3], // exit — same direction as entry
   ],
   keyPoints: [
-    { t: 0.2, label: 'enterLoop' },
-    { t: 0.37, label: 'inverted' },
+    { t: 0.16, label: 'enterLoop' },
+    { t: 0.3, label: 'inverted' },
     { t: 0.5, label: 'exitLoop' },
-    { t: 0.63, label: 'inverted' },
-    { t: 0.8, label: 'leave' },
+    { t: 0.7, label: 'inverted' },
+    { t: 0.84, label: 'leave' },
   ],
   duration: 9,
 };
