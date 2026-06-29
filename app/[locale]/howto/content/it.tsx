@@ -985,7 +985,7 @@ function ContentITSections() {
             <GlossaryInject>
               Alcune voci sugli elementi delle montagne russe includono un player 3-D interattivo
               per vedere la figura invece di leggerne soltanto. Un buon esempio è il Celestial Spin
-              — l'elemento a doppio binario realizzato da Mack Rides per Stardust Racers. Avvialo
+              — l’elemento a doppio binario realizzato da Mack Rides per Stardust Racers. Avvialo
               qui sotto, trascina la linea del tempo in qualsiasi punto (i punti chiave sono
               evidenziati) e alterna tre viste della telecamera:
             </GlossaryInject>
@@ -1006,7 +1006,7 @@ function ContentITSections() {
             </Li>
             <Li>
               <strong className="text-foreground">A bordo</strong> — sali in prima fila e senti
-              l'inversione.
+              l’inversione.
             </Li>
           </ul>
         </SubSection>
