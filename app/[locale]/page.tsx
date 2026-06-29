@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 
 import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
-import { HERO_IMAGES } from '@/lib/hero-images';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
@@ -37,10 +36,9 @@ const NearbyParksCard = nextDynamic(
 import { AnnounceSection } from '@/components/home/announce-section';
 import { HottestParksSection } from '@/components/home/hottest-parks-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
-import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
+import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
-import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { HeroTicker } from '@/components/home/hero-ticker';
@@ -58,6 +56,9 @@ import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { HERO_IMAGES } from '@/lib/hero-images';
+import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
+import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
 
@@ -71,10 +72,19 @@ import type { Metadata } from 'next';
 // (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
 
 // Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
-// so it stays pinned to the hero image's 5-min rotation window: `pickHeroImage()` re-runs on each
-// regeneration, so under steady traffic the hero keeps rotating ~every 5 min. Also keeps the
-// SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded on top.
+// to keep the SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded
+// on top. Each regeneration also re-picks the classic hero image's 5-min window (used when the 3D
+// hero flag is off).
 export const revalidate = 300;
+
+// Classic hero image: a deterministic pick keyed to the current 5-min window — stable within the
+// window (identical for all concurrent requests) and rotating every 5 minutes. Server-rendered for
+// LCP. Only used when HERO_3D_ENABLED is off; the 3D hero ignores it.
+const HERO_TTL_MS = 5 * 60_000;
+function pickHeroImage(): string {
+  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
+  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
+}
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -107,16 +117,6 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 }
 
-// Hero image with an effective 5-minute TTL: a deterministic pick keyed to the current 5-min window
-// — stable within the window (identical for all concurrent requests, no per-request reshuffle) and
-// rotating every 5 minutes. Deterministic so it needs no cache machinery on this force-dynamic page,
-// and it stays server-rendered for LCP (passed to <HeroBackground> with priority).
-const HERO_TTL_MS = 5 * 60_000;
-function pickHeroImage(): string {
-  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
-  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
-}
-
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -126,8 +126,13 @@ export default async function HomePage({ params }: HomePageProps) {
   // data-dependent section fetches its own data (and translations) inside a
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
-
   const randomHeroImage = pickHeroImage();
+  // Hero panel: when the 3-D park is on, fade the WHOLE card (text/logo/buttons via
+  // `opacity`) so the scene shows through, restoring full opacity on hover. Over the
+  // classic photo hero, keep it solid/legible.
+  const heroPanelClass = HERO_3D_ENABLED
+    ? 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/12 px-4 py-4 opacity-55 shadow-2xl transition duration-500 ease-out hover:bg-white/25 hover:opacity-100 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:bg-black/25 dark:hover:bg-black/50'
+    : 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/10 px-4 py-4 shadow-2xl transition-colors duration-500 ease-out hover:border-white/25 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/20 dark:hover:border-white/15 dark:hover:bg-black/45';
 
   return (
     <div className="flex flex-col">
@@ -142,8 +147,8 @@ export default async function HomePage({ params }: HomePageProps) {
           <HeroBackground imageSrc={randomHeroImage} />
           <div className="relative container mx-auto">
             <div className="flex flex-col">
-              {/* Row 1: Logo left + Title/Description right */}
-              <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/20 bg-white/25 px-4 py-4 shadow-2xl sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/40">
+              {/* Row 1: Logo left + Title/Description right (style depends on the hero flag) */}
+              <GlassCard className={heroPanelClass}>
                 {/* Logo – light/dark variant based on theme */}
                 <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
                   {/* SVGs don't benefit from next/image optimization — use <img> directly */}
@@ -198,12 +203,17 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
           </div>
 
-          {/* Hero image attribution – park, city, country (+ attraction & area if known).
-              When the user is in a park, the switch captions the rotating park image instead. */}
-          {HERO_IMAGE_META[randomHeroImage] && (
-            <HeroImageInfoSwitch>
-              <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
-            </HeroImageInfoSwitch>
+          {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
+              replace it do, via the switch); the classic photo hero captions the current image's
+              park / city / country. */}
+          {HERO_3D_ENABLED ? (
+            <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
+          ) : (
+            HERO_IMAGE_META[randomHeroImage] && (
+              <HeroImageInfoSwitch>
+                <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+              </HeroImageInfoSwitch>
+            )
           )}
 
           {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}

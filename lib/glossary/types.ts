@@ -19,6 +19,12 @@ export interface GlossaryTermData {
   id: string;
   category: GlossaryCategory;
   slugs: Record<Locale, string>;
+  /**
+   * When set, the term renders an interactive 3-D coaster player. `element`
+   * keys into the coaster-element registry (lib/three/coaster/elements.ts).
+   * Locale-independent: the geometry is the same in every language.
+   */
+  player?: { element: string };
 }
 
 export interface GlossaryTermTranslation {

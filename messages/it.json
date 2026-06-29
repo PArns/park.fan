@@ -1059,7 +1059,35 @@
     },
     "searchPlaceholder": "Cerca termini…",
     "noResults": "Nessun termine trovato per \"{query}\".",
-    "noResultsHint": "Prova un'altra parola o sfoglia le categorie."
+    "noResultsHint": "Prova un'altra parola o sfoglia le categorie.",
+    "player": {
+      "play": "Riproduci",
+      "pause": "Pausa",
+      "replay": "Ripeti",
+      "view": "Vista",
+      "viewFront": "Frontale",
+      "viewFollow": "Inseguimento",
+      "viewOnboard": "A bordo",
+      "title": "Animazione 3-D",
+      "loading": "Caricamento animazione 3-D…",
+      "keys": {
+        "approach": "Avvicinamento",
+        "enterLoop": "Ingresso loop",
+        "inverted": "Capovolto",
+        "exitLoop": "Uscita loop",
+        "leave": "Uscita",
+        "rollIn": "Inizio avvitamento",
+        "rollOut": "Fine avvitamento",
+        "climb": "Salita",
+        "airtime": "Airtime",
+        "land": "Atterraggio",
+        "celestial": "Celestial spin",
+        "turn": "Inversione a U",
+        "bank": "Sopraelevazione",
+        "crest": "Cresta",
+        "dive": "Tuffo"
+      }
+    }
   },
   "howto": {
     "title": "Come funziona – La guida completa",

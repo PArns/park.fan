@@ -1059,7 +1059,35 @@
     },
     "searchPlaceholder": "Rechercher un terme…",
     "noResults": "Aucun terme trouvé pour « {query} ».",
-    "noResultsHint": "Essayez un autre mot ou parcourez les catégories."
+    "noResultsHint": "Essayez un autre mot ou parcourez les catégories.",
+    "player": {
+      "play": "Lecture",
+      "pause": "Pause",
+      "replay": "Rejouer",
+      "view": "Vue",
+      "viewFront": "Frontale",
+      "viewFollow": "Poursuite",
+      "viewOnboard": "Embarqué",
+      "title": "Animation 3-D",
+      "loading": "Chargement de l’animation 3-D…",
+      "keys": {
+        "approach": "Approche",
+        "enterLoop": "Entrée du looping",
+        "inverted": "Tête en bas",
+        "exitLoop": "Sortie du looping",
+        "leave": "Sortie",
+        "rollIn": "Début du tonneau",
+        "rollOut": "Fin du tonneau",
+        "climb": "Montée",
+        "airtime": "Airtime",
+        "land": "Atterrissage",
+        "celestial": "Celestial spin",
+        "turn": "Demi-tour",
+        "bank": "Inclinaison",
+        "crest": "Sommet",
+        "dive": "Plongeon"
+      }
+    }
   },
   "howto": {
     "title": "Comment ça marche – Le guide complet",

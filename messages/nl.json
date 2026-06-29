@@ -1059,7 +1059,35 @@
     },
     "searchPlaceholder": "Termen zoeken…",
     "noResults": "Geen termen gevonden voor \"{query}\".",
-    "noResultsHint": "Probeer een ander woord of blader door de categorieën."
+    "noResultsHint": "Probeer een ander woord of blader door de categorieën.",
+    "player": {
+      "play": "Afspelen",
+      "pause": "Pauze",
+      "replay": "Opnieuw",
+      "view": "Weergave",
+      "viewFront": "Vooraanzicht",
+      "viewFollow": "Volgen",
+      "viewOnboard": "Aan boord",
+      "title": "3D-animatie",
+      "loading": "3D-animatie laden…",
+      "keys": {
+        "approach": "Aanloop",
+        "enterLoop": "Looping in",
+        "inverted": "Ondersteboven",
+        "exitLoop": "Looping uit",
+        "leave": "Uitgang",
+        "rollIn": "Indraaien",
+        "rollOut": "Uitdraaien",
+        "climb": "Klim",
+        "airtime": "Airtime",
+        "land": "Landing",
+        "celestial": "Celestial spin",
+        "turn": "Keerbocht",
+        "bank": "Overhelling",
+        "crest": "Top",
+        "dive": "Duik"
+      }
+    }
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

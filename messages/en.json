@@ -1059,7 +1059,35 @@
     },
     "searchPlaceholder": "Search terms…",
     "noResults": "No terms found for \"{query}\".",
-    "noResultsHint": "Try a different word or browse the categories below."
+    "noResultsHint": "Try a different word or browse the categories below.",
+    "player": {
+      "play": "Play",
+      "pause": "Pause",
+      "replay": "Replay",
+      "view": "View",
+      "viewFront": "Front",
+      "viewFollow": "Follow",
+      "viewOnboard": "Onboard",
+      "title": "3-D animation",
+      "loading": "Loading 3-D animation…",
+      "keys": {
+        "approach": "Approach",
+        "enterLoop": "Enter loop",
+        "inverted": "Inverted",
+        "exitLoop": "Exit loop",
+        "leave": "Exit",
+        "rollIn": "Roll in",
+        "rollOut": "Roll out",
+        "climb": "Climb",
+        "airtime": "Airtime",
+        "land": "Land",
+        "celestial": "Celestial spin",
+        "turn": "Turnaround",
+        "bank": "Banked over",
+        "crest": "Airtime crest",
+        "dive": "Dive"
+      }
+    }
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

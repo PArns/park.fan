@@ -2418,6 +2418,17 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'S-Hills', 'Speed Bump'],
   },
+  {
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'A dual-track inversion by Mack Rides: two racing trains crest a shared hill while their tracks twist around each other — one rolling up, the other down.',
+    definition:
+      'A celestial spin is a dual-track inversion patented by Mack Rides and made famous as the signature element of [Stardust Racers](/en/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), the duelling launch coaster at [Universal Epic Universe](/en/parks/north-america/united-states/orlando/universal-epic-universe). As the two racing trains crest a shared hill, their tracks invert around one another: one train rolls upward through a zero-G roll while, at the very same moment, the other rolls downward through a barrel roll — so the cars appear to spiral around each other in mid-air.\n\nBecause both rolls are timed to the airtime hill, riders float through a long moment of weightlessness while the sister train twists past just metres away. Watch it head-on in the front view to see the two tracks wind around each other, switch to follow mode to track the duel, or ride onboard to feel your own horizon invert as the other train sweeps overhead. It is closely related to the zero-G roll, the inversion and the airtime hill.',
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
+  },
 ];
 
 export default translations;

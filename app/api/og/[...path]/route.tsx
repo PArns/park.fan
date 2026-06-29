@@ -175,6 +175,22 @@ export async function GET(
       });
     }
 
+    // Glossary TERM branch — `<locale>/<glossarySegment>/<termSlug>` (length 3).
+    // The overview (length 2) still uses the generic card on purpose; only a
+    // real term slug gets a dedicated name + definition card. Unknown slugs
+    // fall through to the generic handler below.
+    if (path.length === 3 && isValidLocale(path[0])) {
+      const termLocale = path[0] as Locale;
+      if (path[1] === GLOSSARY_SEGMENTS[termLocale]) {
+        const { getTermBySlug } = await import('@/lib/glossary/translations');
+        const term = await getTermBySlug(termLocale, path[2]);
+        if (term) {
+          const { renderGlossaryTermOg } = await import('@/lib/og/glossary-og');
+          return renderGlossaryTermOg({ locale: termLocale, term });
+        }
+      }
+    }
+
     // Generic pages configuration
     const glossaryEntries = Object.fromEntries(
       Object.values(GLOSSARY_SEGMENTS).map((seg) => [

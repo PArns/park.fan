@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Search, BookOpen, X, Tag } from 'lucide-react';
+import { Search, BookOpen, X, Tag, Rotate3d } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { GlossaryTermCard } from './glossary-term-card';
@@ -40,6 +40,7 @@ export function GlossaryOverviewClient({
   const t = useTranslations('glossary');
   const [query, setQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<GlossaryCategory | null>(null);
+  const [playerOnly, setPlayerOnly] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Track search queries (debounced, min 3 chars, privacy-safe — only length)
@@ -83,20 +84,21 @@ export function GlossaryOverviewClient({
       .filter((group) => !activeCategory || group.category === activeCategory)
       .map((group) => ({
         ...group,
-        terms: !q
-          ? group.terms
-          : group.terms.filter(
-              (term) =>
-                term.name.toLowerCase().includes(q) ||
-                term.shortDefinition.toLowerCase().includes(q) ||
-                term.enName.toLowerCase().includes(q)
-            ),
+        terms: group.terms.filter((term) => {
+          if (playerOnly && !term.player) return false;
+          if (!q) return true;
+          return (
+            term.name.toLowerCase().includes(q) ||
+            term.shortDefinition.toLowerCase().includes(q) ||
+            term.enName.toLowerCase().includes(q)
+          );
+        }),
       }))
       .filter((group) => group.terms.length > 0);
-  }, [query, activeCategory, groupedTerms]);
+  }, [query, activeCategory, playerOnly, groupedTerms]);
 
   const filteredCount = filtered.reduce((acc, g) => acc + g.terms.length, 0);
-  const hasFilter = query.trim() || activeCategory;
+  const hasFilter = query.trim() || activeCategory || playerOnly;
 
   return (
     <div>
@@ -155,6 +157,23 @@ export function GlossaryOverviewClient({
 
             <span className="bg-border h-3.5 w-px" aria-hidden />
 
+            {/* 3-D player filter — distinct from category pills */}
+            <button
+              onClick={() => setPlayerOnly((v) => !v)}
+              aria-pressed={playerOnly}
+              className={cn(
+                'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs transition-colors',
+                playerOnly
+                  ? 'border-primary/60 bg-primary/10 text-primary font-medium'
+                  : 'border-border text-muted-foreground hover:border-primary/40 hover:text-foreground'
+              )}
+            >
+              <Rotate3d className="h-3 w-3" />
+              {t('player.title')}
+            </button>
+
+            <span className="bg-border h-3.5 w-px" aria-hidden />
+
             {groupedTerms.map(({ category, categoryLabel }) => (
               <button
                 key={category}
@@ -200,7 +219,13 @@ export function GlossaryOverviewClient({
                 <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {terms.map((term) => (
-                    <GlossaryTermCard key={term.id} term={term} locale={locale} segment={segment} />
+                    <GlossaryTermCard
+                      key={term.id}
+                      term={term}
+                      locale={locale}
+                      segment={segment}
+                      playerLabel={t('player.title')}
+                    />
                   ))}
                 </div>
               </section>

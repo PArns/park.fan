@@ -118,6 +118,21 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
     { name: t('overviewTitle'), url: `/${segment}` },
   ];
 
+  // Localised strings for the 3-D coaster player (only consumed when term.player is set)
+  const playerLabels = term.player
+    ? {
+        play: t('player.play'),
+        pause: t('player.pause'),
+        replay: t('player.replay'),
+        view: t('player.view'),
+        viewFront: t('player.viewFront'),
+        viewFollow: t('player.viewFollow'),
+        viewOnboard: t('player.viewOnboard'),
+        loading: t('player.loading'),
+        keys: t.raw('player.keys') as Record<string, string>,
+      }
+    : undefined;
+
   return (
     <>
       <GlossaryBackground />
@@ -148,6 +163,7 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
             category: t(`category.${term.category}`),
             termH1Suffix: t('termH1Suffix'),
           }}
+          playerLabels={playerLabels}
         />
       </PageContainer>
 

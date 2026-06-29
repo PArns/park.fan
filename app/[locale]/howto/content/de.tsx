@@ -33,6 +33,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -1160,6 +1161,45 @@ function ContentDE() {
       </Section>
 
       {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
+      <Section id="coaster-player" title="Der 3-D-Achterbahn-Player">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Einige Einträge zu Achterbahn-Figuren haben einen interaktiven 3-D-Player, damit du
+              die Figur ansehen kannst, statt nur darüber zu lesen. Ein gutes Beispiel ist der
+              Celestial Spin — das von Mack Rides für Stardust Racers gebaute
+              Doppelschienen-Element. Starte ihn unten, zieh die Zeitleiste an jede Stelle (die
+              wichtigsten Punkte sind markiert) und wechsle zwischen drei Kameraperspektiven:
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="de" />
+        </div>
+        <SubSection title="Drei Kameraperspektiven">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Frontal</strong> — die Figur frontal vor dem Berg,
+              damit du ihre Gesamtform erkennst.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Verfolgen</strong> — eine Verfolgerkamera, die dem
+              Zug durch die Figur folgt.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Mitfahrt</strong> — fahre aus der ersten Reihe mit
+              und spüre die Inversion.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Jeder Glossar-Eintrag mit dem 3-D-Symbol nutzt denselben Player — etwa beim Vertical
+            Loop, Korkenzieher und Airtime-Hügel.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Häufige Fragen">
         <div className="space-y-4">
           {[

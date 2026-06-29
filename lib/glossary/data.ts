@@ -558,6 +558,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'looping',
       es: 'looping',
     },
+    player: { element: 'vertical-loop' },
   },
   {
     id: 'immelmann',
@@ -570,6 +571,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'immelmann',
       es: 'immelmann',
     },
+    player: { element: 'immelmann' },
   },
   {
     id: 'zero-g-roll',
@@ -582,6 +584,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-roll',
       es: 'zero-g-roll',
     },
+    player: { element: 'zero-g-roll' },
   },
   {
     id: 'launch-coaster',
@@ -739,6 +742,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'lifthill',
       es: 'lifthill',
     },
+    player: { element: 'lifthill' },
   },
   {
     id: 'first-drop',
@@ -751,6 +755,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'first-drop',
       es: 'first-drop',
     },
+    player: { element: 'first-drop' },
   },
   {
     id: 'airtime-hill',
@@ -763,6 +768,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'airtime-hill',
       es: 'airtime-hill',
     },
+    player: { element: 'airtime-hill' },
   },
   {
     id: 'helix',
@@ -775,6 +781,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'helix',
       es: 'helix',
     },
+    player: { element: 'helix' },
   },
   {
     id: 'block-brake',
@@ -811,6 +818,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'cobra-roll',
       es: 'cobra-roll',
     },
+    player: { element: 'cobra-roll' },
   },
   {
     id: 'corkscrew',
@@ -823,6 +831,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'corkscrew',
       es: 'corkscrew',
     },
+    player: { element: 'corkscrew' },
   },
   {
     id: 'dive-loop',
@@ -835,6 +844,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'dive-loop',
       es: 'dive-loop',
     },
+    player: { element: 'dive-loop' },
   },
   {
     id: 'inline-twist',
@@ -859,6 +869,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'heartline-roll',
       es: 'heartline-roll',
     },
+    player: { element: 'heartline-roll' },
   },
   {
     id: 'sidewinder',
@@ -871,6 +882,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'sidewinder',
       es: 'sidewinder',
     },
+    player: { element: 'sidewinder' },
   },
   {
     id: 'pretzel-loop',
@@ -883,6 +895,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'pretzel-loop',
       es: 'pretzel-loop',
     },
+    player: { element: 'pretzel-loop' },
   },
   {
     id: 'batwing',
@@ -895,6 +908,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'batwing',
       es: 'batwing',
     },
+    player: { element: 'batwing' },
   },
   {
     id: 'norwegian-loop',
@@ -919,6 +933,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'flat-spin',
       es: 'flat-spin',
     },
+    player: { element: 'flat-spin' },
   },
   {
     id: 'cutback',
@@ -967,6 +982,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'bunnyhop',
       es: 'bunnyhop',
     },
+    player: { element: 'bunnyhop' },
   },
   {
     id: 'stengel-dive',
@@ -991,6 +1007,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'horseshoe',
       es: 'horseshoe',
     },
+    player: { element: 'horseshoe' },
   },
   {
     id: 'predrop',
@@ -1015,6 +1032,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'top-hat',
       es: 'top-hat',
     },
+    player: { element: 'top-hat' },
   },
   {
     id: 'boomerang',
@@ -1209,6 +1227,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'overbank',
       es: 'overbank',
     },
+    player: { element: 'overbank' },
   },
   {
     id: 'trim-brake',
@@ -1647,6 +1666,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'wave-turn',
       es: 'wave-turn',
     },
+    player: { element: 'wave-turn' },
   },
   {
     id: 'high-five',
@@ -2027,6 +2047,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-winder',
       es: 'zero-g-winder',
     },
+    player: { element: 'zero-g-winder' },
   },
   {
     id: 'banana-roll',
@@ -2039,6 +2060,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'banana-roll',
       es: 'banana-roll',
     },
+    player: { element: 'banana-roll' },
   },
   {
     id: 'inclined-loop',
@@ -2051,6 +2073,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'gekantelde-looping',
       es: 'looping-inclinado',
     },
+    player: { element: 'inclined-loop' },
   },
   {
     id: 'sea-serpent',
@@ -2063,6 +2086,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'sea-serpent',
       es: 'sea-serpent',
     },
+    player: { element: 'sea-serpent' },
   },
   {
     id: 'barrel-roll-drop',
@@ -2075,6 +2099,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'barrel-roll-drop',
       es: 'barrel-roll-drop',
     },
+    player: { element: 'barrel-roll-drop' },
   },
   {
     id: 'mcbr',
@@ -2099,6 +2124,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'verstrengelde-loops',
       es: 'loops-entrelazados',
     },
+    player: { element: 'interlocking-loops' },
   },
   {
     id: 'anti-rollback',
@@ -2305,6 +2331,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'non-inverting-loop',
       es: 'non-inverting-loop',
     },
+    player: { element: 'non-inverting-loop' },
   },
   {
     id: 'pretzel-knot',
@@ -2329,6 +2356,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'raven-turn',
       es: 'raven-turn',
     },
+    player: { element: 'raven-turn' },
   },
   {
     id: 'dive-drop',
@@ -2353,6 +2381,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'outerbanked-turn',
       es: 'outerbanked-turn',
     },
+    player: { element: 'outerbanked-turn' },
   },
   {
     id: 'camelback',
@@ -2365,6 +2394,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'camelback',
       es: 'camelback',
     },
+    player: { element: 'camelback' },
   },
   {
     id: 'zero-g-stall',
@@ -2377,6 +2407,20 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-stall',
       es: 'zero-g-stall',
     },
+    player: { element: 'zero-g-stall' },
+  },
+  {
+    id: 'celestial-spin',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'celestial-spin',
+      de: 'celestial-spin',
+      fr: 'celestial-spin',
+      it: 'celestial-spin',
+      nl: 'celestial-spin',
+      es: 'celestial-spin',
+    },
+    player: { element: 'celestial-spin' },
   },
   // ── Jargon & Concepts (P3) ─────────────────────────────────────────────────
   {
@@ -2573,6 +2617,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'beyond-vertical-drop',
       es: 'beyond-vertical-drop',
     },
+    player: { element: 'beyond-vertical-drop' },
   },
   {
     id: 'splashdown',
@@ -2597,6 +2642,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'quad-down',
       es: 'quad-down',
     },
+    player: { element: 'quad-down' },
   },
   {
     id: 's-hill',
@@ -2609,6 +2655,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 's-hill',
       es: 's-hill',
     },
+    player: { element: 's-hill' },
   },
   {
     id: 'strata-coaster',

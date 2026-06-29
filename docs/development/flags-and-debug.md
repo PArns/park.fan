@@ -6,6 +6,18 @@ Experimental and debug behavior is controlled via **Vercel Toolbar** and **Flags
 
 ---
 
+## Build-time feature flags (`lib/config/features.ts`)
+
+A small set of **static, build-time** feature toggles live in **`lib/config/features.ts`** — for shipping a feature behind an off-by-default switch that flips per-deploy (not per-session like the Toolbar flags). Each reads a `NEXT_PUBLIC_*` env var and **defaults OFF**; set the var in Vercel project settings (or `.env.local`) to enable. `NEXT_PUBLIC_*` so the value is readable in both Server and Client Components and the unused branch tree-shakes out.
+
+| Flag              | Env var               | Default | Effect                                                                                                                  |
+| ----------------- | --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `HERO_3D_ENABLED` | `NEXT_PUBLIC_HERO_3D` | off     | On → animated three.js RCT-style 3-D park hero. Off → classic rotating hero photo. (three.js is only imported when on.) |
+
+Accepts `1` / `true` / `on` / `yes` (case-insensitive). Use these for product feature gating; use the Toolbar **Flags** below for per-session debug overrides.
+
+---
+
 ## Nearby in-park simulation (`?sim=`)
 
 For developing the homepage **in-park** view (headliner list, live wait times, seasonal handling)

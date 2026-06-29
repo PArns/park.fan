@@ -32,6 +32,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -962,6 +963,45 @@ function ContentENSections() {
       </Section>
 
       {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
+      <Section id="coaster-player" title="The 3-D Coaster Player">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Some coaster-element entries come with an interactive 3-D player, so you can watch the
+              figure instead of only reading about it. A good example is the Celestial Spin — the
+              dual-track signature element Mack Rides built for Stardust Racers. Press play below,
+              drag the timeline to any moment (the key points are marked), and switch between three
+              camera views:
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="en" />
+        </div>
+        <SubSection title="Three camera views">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Front</strong> — the element head-on in front of
+              the mountain, so you can read its overall shape.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Follow</strong> — a chase camera that tracks the
+              train through the figure.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Onboard</strong> — ride along from the front seat
+              and feel the inversion.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Every glossary entry that carries the 3-D badge uses this same player — look for it on
+            elements like the vertical loop, corkscrew and airtime hill.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Frequently Asked Questions">
         <div className="space-y-4">
           {[

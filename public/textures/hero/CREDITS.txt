@@ -1,0 +1,13 @@
+Hero park textures
+==================
+
+Procedurally downscaled CC0 PBR textures used by the homepage three.js
+hero (lib/three/park-scene.ts). Regenerate with: pnpm generate:hero-textures
+
+All sources are CC0 / public domain (https://ambientcg.com/license) —
+no attribution required; listed here for provenance.
+
+- grass: ambientCG "Grass004" (CC0) — https://ambientcg.com/view?id=Grass004
+- paving: ambientCG "PavingStones070" (CC0) — https://ambientcg.com/view?id=PavingStones070
+- stone: ambientCG "Bricks066" (CC0) — https://ambientcg.com/view?id=Bricks066
+- wood: ambientCG "Planks016" (CC0) — https://ambientcg.com/view?id=Planks016

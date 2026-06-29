@@ -2480,6 +2480,17 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'Speed Bump'],
   },
+  {
+    id: 'celestial-spin',
+    name: 'Celestial Spin',
+    shortDefinition:
+      'Une inversion à double voie de Mack Rides : deux trains en course franchissent une bosse commune tandis que leurs voies s’enroulent l’une autour de l’autre — l’une roule vers le haut, l’autre vers le bas.',
+    definition:
+      'Le celestial spin est une inversion à double voie brevetée par Mack Rides, devenue l’élément emblématique de [Stardust Racers](/fr/parks/north-america/united-states/orlando/universal-epic-universe/stardust-racers), les montagnes russes lancées en duel d’[Universal Epic Universe](/fr/parks/north-america/united-states/orlando/universal-epic-universe). Lorsque les deux trains en course franchissent une bosse commune, leurs voies s’inversent l’une autour de l’autre : un train monte dans un zero-G roll tandis que, au même instant, l’autre descend dans un tonneau — les véhicules semblent s’enrouler l’un autour de l’autre en plein vol.\n\nComme les deux rotations sont calées sur la bosse d’airtime, les passagers flottent un long instant en apesanteur pendant que le train jumeau passe à quelques mètres. Regardez-le de face en vue frontale pour voir les deux voies s’enrouler, passez en mode suivi pour suivre le duel, ou embarquez pour sentir votre propre horizon basculer tandis que l’autre train file au-dessus de vous. Proche du zero-G roll, de l’inversion et de la bosse d’airtime.',
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Roll', 'Celestial Rolls', 'Celestial Spins'],
+    alternateNames: ['Celestial Roll'],
+  },
 ];
 
 export default translations;
