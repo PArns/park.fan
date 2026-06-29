@@ -36,6 +36,7 @@ const NearbyParksCard = nextDynamic(
 import { AnnounceSection } from '@/components/home/announce-section';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { HeroImageInfoSwitch } from '@/components/layout/hero-image-info-switch';
+import { HeroImageInfo } from '@/components/layout/hero-image-info';
 import { HeroRotationProvider } from '@/components/layout/hero-rotation-context';
 import { HeroWithNearby } from '@/components/home/hero-with-nearby';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
@@ -54,6 +55,9 @@ import { BlogHeroPreview } from '@/components/home/blog-hero-preview';
 
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
+import { HERO_IMAGES } from '@/lib/hero-images';
+import { HERO_IMAGE_META } from '@/lib/hero-images-meta';
+import { HERO_3D_ENABLED } from '@/lib/config/features';
 
 import type { Metadata } from 'next';
 
@@ -68,8 +72,18 @@ import type { Metadata } from 'next';
 
 // Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
 // to keep the SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded
-// on top. (The hero is now the client-only 3D park scene, so it needs no server-side image pick.)
+// on top. Each regeneration also re-picks the classic hero image's 5-min window (used when the 3D
+// hero flag is off).
 export const revalidate = 300;
+
+// Classic hero image: a deterministic pick keyed to the current 5-min window — stable within the
+// window (identical for all concurrent requests) and rotating every 5 minutes. Server-rendered for
+// LCP. Only used when HERO_3D_ENABLED is off; the 3D hero ignores it.
+const HERO_TTL_MS = 5 * 60_000;
+function pickHeroImage(): string {
+  const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);
+  return HERO_IMAGES[windowIndex % HERO_IMAGES.length];
+}
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -111,6 +125,13 @@ export default async function HomePage({ params }: HomePageProps) {
   // data-dependent section fetches its own data (and translations) inside a
   // Suspense boundary below, so the hero renders/streams without waiting on the API.
   const [tHome, tParks] = await Promise.all([getTranslations('home'), getTranslations('parks')]);
+  const randomHeroImage = pickHeroImage();
+  // Hero panel: when the 3-D park is on, fade the WHOLE card (text/logo/buttons via
+  // `opacity`) so the scene shows through, restoring full opacity on hover. Over the
+  // classic photo hero, keep it solid/legible.
+  const heroPanelClass = HERO_3D_ENABLED
+    ? 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/12 px-4 py-4 opacity-55 shadow-2xl transition duration-500 ease-out hover:bg-white/25 hover:opacity-100 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:bg-black/25 dark:hover:bg-black/50'
+    : 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/10 px-4 py-4 shadow-2xl transition-colors duration-500 ease-out hover:border-white/25 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/20 dark:hover:border-white/15 dark:hover:bg-black/45';
 
   return (
     <div className="flex flex-col">
@@ -122,14 +143,11 @@ export default async function HomePage({ params }: HomePageProps) {
       {/* Hero Section – static default; when user is in a park (nearby), shows "Willkommen im [Park]" + park info */}
       <section className="relative isolate -mt-14 overflow-hidden px-6 pt-14 pb-6 sm:pb-8 md:pt-28 md:pb-10 lg:flex lg:min-h-dvh lg:flex-col lg:justify-center lg:pt-16 lg:pb-12">
         <HeroRotationProvider>
-          <HeroBackground />
+          <HeroBackground imageSrc={randomHeroImage} />
           <div className="relative container mx-auto">
             <div className="flex flex-col">
-              {/* Row 1: Logo left + Title/Description right */}
-              {/* The WHOLE panel (text, logo, buttons — via `opacity`) is faded
-                  by default so the 3D park shows through, and fades back to fully
-                  opaque + readable on hover. */}
-              <GlassCard className="mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/12 px-4 py-4 opacity-55 shadow-2xl transition duration-500 ease-out hover:bg-white/25 hover:opacity-100 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:bg-black/25 dark:hover:bg-black/50">
+              {/* Row 1: Logo left + Title/Description right (style depends on the hero flag) */}
+              <GlassCard className={heroPanelClass}>
                 {/* Logo – light/dark variant based on theme */}
                 <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
                   {/* SVGs don't benefit from next/image optimization — use <img> directly */}
@@ -184,9 +202,18 @@ export default async function HomePage({ params }: HomePageProps) {
             </div>
           </div>
 
-          {/* Hero image attribution – only when the visitor is inside a real park, where the 3D
-              scene is replaced by that park's rotating photos. No caption for the default 3D hero. */}
-          <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
+          {/* Hero image attribution. The 3-D hero shows no caption (only the in-park photos that
+              replace it do, via the switch); the classic photo hero captions the current image's
+              park / city / country. */}
+          {HERO_3D_ENABLED ? (
+            <HeroImageInfoSwitch>{null}</HeroImageInfoSwitch>
+          ) : (
+            HERO_IMAGE_META[randomHeroImage] && (
+              <HeroImageInfoSwitch>
+                <HeroImageInfo meta={HERO_IMAGE_META[randomHeroImage]} />
+              </HeroImageInfoSwitch>
+            )
+          )}
 
           {/* Live wait times ticker — streamed in; never blocks the hero (decorative, absolute) */}
           <Suspense fallback={null}>

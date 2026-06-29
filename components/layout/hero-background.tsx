@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 import { HERO_IMAGES } from '@/lib/hero-images';
 import { backgroundImageLoader } from '@/lib/utils/image-loader';
 import { useHeroRotation } from '@/components/layout/hero-rotation-context';
+import { HERO_3D_ENABLED } from '@/lib/config/features';
 import { cn } from '@/lib/utils';
 
 // The three.js amusement-park scene pulls in the whole three.js runtime, so it's
@@ -119,16 +120,40 @@ export function RandomHeroImage({ imageSrc, noAnimation }: RandomHeroImageProps)
   );
 }
 
+interface HeroBackgroundProps {
+  imageSrc?: string;
+}
+
 /**
- * The homepage hero background: an animated three.js RollerCoaster-Tycoon-style
- * park (entrance arch, coaster, Ferris wheel, carousel, stalls, peeps…) that the
- * camera flies through. A CSS gradient sky paints instantly underneath — the
- * pre-load placeholder and the no-WebGL fallback — with a bright daytime variant
- * and a night variant for dark mode, matching the scene's own day/night look so
- * the canvas fades in seamlessly. When the visitor is inside a real park, that
- * park's photos still crossfade in on top.
+ * The homepage hero background, behind the {@link HERO_3D_ENABLED} feature flag
+ * (default OFF): when off it's the classic rotating park photo; when on it's the
+ * animated three.js park the camera flies through. Either way, when the visitor
+ * is inside a real park that park's own photos crossfade in on top.
  */
-export function HeroBackground() {
+export function HeroBackground({ imageSrc }: HeroBackgroundProps) {
+  return HERO_3D_ENABLED ? <HeroBackground3D /> : <HeroBackgroundClassic imageSrc={imageSrc} />;
+}
+
+/** Classic hero: a rotating, ken-burns park photo under a branded overlay. */
+function HeroBackgroundClassic({ imageSrc }: HeroBackgroundProps) {
+  return (
+    <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
+      <RandomHeroImage imageSrc={imageSrc} />
+      {/* Branded overlay — from-background is navy in dark mode, near-white in light mode */}
+      <div className="from-background/60 via-background/10 to-muted/40 dark:from-background dark:via-background/20 dark:to-muted/70 absolute inset-0 bg-gradient-to-br" />
+      <div className="from-park-primary/10 absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] via-transparent to-transparent" />
+    </div>
+  );
+}
+
+/**
+ * The animated three.js RollerCoaster-Tycoon-style park (entrance arch, coaster,
+ * Ferris wheel, carousel, stalls, peeps…) that the camera flies through. A CSS
+ * gradient sky paints instantly underneath — the pre-load placeholder and the
+ * no-WebGL fallback — with a bright daytime variant and a night variant for dark
+ * mode, matching the scene's own day/night look so the canvas fades in seamlessly.
+ */
+function HeroBackground3D() {
   // `sceneReady` flips when the 3D park signals it's loaded. The loader lives
   // HERE (always mounted) rather than inside HeroThreePark, so it's visible
   // during the three.js chunk download too — not only after it has mounted.
