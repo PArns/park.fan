@@ -31,6 +31,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -959,6 +960,45 @@ function ContentNLSections() {
       </Section>
 
       {/* ── 11. Veelgestelde Vragen ──────────────────────────────────────────────────────────── */}
+      <Section id="coaster-player" title="De 3-D-achtbaanspeler">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Sommige vermeldingen over achtbaanelementen hebben een interactieve 3-D-speler, zodat
+              je de figuur kunt bekijken in plaats van er alleen over te lezen. Een goed voorbeeld
+              is de Celestial Spin — het dubbelspoor-element dat Mack Rides bouwde voor Stardust
+              Racers. Speel hem hieronder af, sleep de tijdlijn naar elk moment (de belangrijkste
+              punten zijn gemarkeerd) en wissel tussen drie cameraperspectieven:
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="nl" />
+        </div>
+        <SubSection title="Drie cameraperspectieven">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Vooraanzicht</strong> — de figuur frontaal voor de
+              berg, zodat je de algehele vorm ziet.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Volgen</strong> — een volgcamera die de trein door
+              de figuur volgt.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Aan boord</strong> — rijd mee vanaf de eerste rij
+              en voel de inversie.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Elke woordenboekvermelding met het 3-D-symbool gebruikt dezelfde speler — bijvoorbeeld
+            bij de vertical loop, kurkentrekker en airtime-heuvel.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Veelgestelde Vragen">
         <div className="space-y-4">
           {[

@@ -31,6 +31,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -989,6 +990,45 @@ function ContentESSections() {
       </Section>
 
       {/* ── 11. Preguntas Frecuentes ─────────────────────────────────────────── */}
+      <Section id="coaster-player" title="El reproductor 3-D de montañas rusas">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Algunas entradas de elementos de montaña rusa incluyen un reproductor 3-D interactivo
+              para ver la figura en lugar de solo leer sobre ella. Un buen ejemplo es el Celestial
+              Spin — el elemento de doble vía que Mack Rides creó para Stardust Racers. Reprodúcelo
+              abajo, arrastra la línea de tiempo a cualquier momento (los puntos clave están
+              marcados) y alterna entre tres vistas de cámara:
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="es" />
+        </div>
+        <SubSection title="Tres vistas de cámara">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Frontal</strong> — la figura de frente ante la
+              montaña, para ver su forma general.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Seguimiento</strong> — una cámara que sigue al
+              tren a través de la figura.
+            </Li>
+            <Li>
+              <strong className="text-foreground">A bordo</strong> — súbete en la primera fila y
+              siente la inversión.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Cada entrada del glosario con el distintivo 3-D usa este mismo reproductor — por ejemplo
+            el looping vertical, el sacacorchos y la colina de airtime.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Preguntas Frecuentes">
         <div className="space-y-4">
           {[

@@ -31,6 +31,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -978,6 +979,45 @@ function ContentITSections() {
       </Section>
 
       {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
+      <Section id="coaster-player" title="Il player 3-D delle montagne russe">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Alcune voci sugli elementi delle montagne russe includono un player 3-D interattivo
+              per vedere la figura invece di leggerne soltanto. Un buon esempio è il Celestial Spin
+              — l'elemento a doppio binario realizzato da Mack Rides per Stardust Racers. Avvialo
+              qui sotto, trascina la linea del tempo in qualsiasi punto (i punti chiave sono
+              evidenziati) e alterna tre viste della telecamera:
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="it" />
+        </div>
+        <SubSection title="Tre viste della telecamera">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Frontale</strong> — la figura di fronte davanti
+              alla montagna, per coglierne la forma complessiva.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Inseguimento</strong> — una telecamera che segue
+              il treno attraverso la figura.
+            </Li>
+            <Li>
+              <strong className="text-foreground">A bordo</strong> — sali in prima fila e senti
+              l'inversione.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Ogni voce del glossario con il badge 3-D usa lo stesso player — ad esempio il vertical
+            loop, il cavatappi e la collina di airtime.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Domande Frequenti">
         <div className="space-y-4">
           {[

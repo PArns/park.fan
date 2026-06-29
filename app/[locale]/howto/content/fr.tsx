@@ -32,6 +32,7 @@ import {
   Moon,
 } from 'lucide-react';
 import { Section, SubSection, DemoBadge, InfoBox, TipBox, PersonaCard, Li } from '../_howto-ui';
+import { CoasterPlayerDemo } from '../_coaster-player-demo';
 import {
   MockParkHeader,
   MockAttractionCards,
@@ -998,6 +999,45 @@ function ContentFRSections() {
       </Section>
 
       {/* ── 11. FAQ ─────────────────────────────────────────────────────────── */}
+      <Section id="coaster-player" title="Le lecteur 3-D de montagnes russes">
+        <div className="text-muted-foreground space-y-4 text-base leading-relaxed">
+          <p>
+            <GlossaryInject>
+              Certaines entrées d'éléments de montagnes russes proposent un lecteur 3-D interactif
+              pour voir la figure plutôt que de seulement la lire. Le Celestial Spin en est un bon
+              exemple — l'élément à double voie conçu par Mack Rides pour Stardust Racers. Lancez-le
+              ci-dessous, déplacez la chronologie à n'importe quel instant (les points clés sont
+              marqués) et basculez entre trois vues de caméra :
+            </GlossaryInject>
+          </p>
+        </div>
+        <div className="mt-5 max-w-2xl">
+          <CoasterPlayerDemo locale="fr" />
+        </div>
+        <SubSection title="Trois vues de caméra">
+          <ul className="text-muted-foreground space-y-2">
+            <Li>
+              <strong className="text-foreground">Frontale</strong> — la figure de face devant la
+              montagne, pour en lire la forme générale.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Poursuite</strong> — une caméra qui suit le train
+              à travers la figure.
+            </Li>
+            <Li>
+              <strong className="text-foreground">Embarqué</strong> — embarquez depuis la première
+              rangée et ressentez l'inversion.
+            </Li>
+          </ul>
+        </SubSection>
+        <p className="text-muted-foreground mt-4">
+          <GlossaryInject>
+            Chaque entrée du glossaire portant le badge 3-D utilise ce même lecteur — par exemple le
+            looping vertical, le tire-bouchon et la bosse d’airtime.
+          </GlossaryInject>
+        </p>
+      </Section>
+
       <Section id="faq" title="Questions Fréquentes">
         <div className="space-y-4">
           {[
