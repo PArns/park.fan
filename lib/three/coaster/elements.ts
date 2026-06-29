@@ -502,39 +502,64 @@ const seaSerpent: CoasterElementDef = {
   duration: 9,
 };
 
-// ── Batwing — like a cobra roll but stretched vertically: up into a first
-//    inverted head, a deep dive almost to the ground, then a mirrored second
-//    inverted head before exiting. ───────────────────────────────────────────
+// ── Batwing — two inverted "wings": up and over a first inverted hood, a deep
+//    dive almost to the ground, then up and over a mirrored second hood. Wider
+//    and lower than a cobra roll (the spread-wing silhouette). Each hood is a
+//    real x-y loop so the train fully inverts. ────────────────────────────────
 const batwing: CoasterElementDef = {
   id: 'batwing',
   points: [
-    [-13, 1, 0],
-    [-8, 1, 0],
-    [-4.5, 1.6, 0],
-    [-3, 5, -0.25],
-    [-2.2, 9.5, -0.6],
-    [-1.4, 12.5, -0.7], // head 1 (inverted)
-    [-1.2, 10.5, -0.5],
-    [-1.6, 5.5, -0.2],
-    [-1.2, 2.2, 0], // deep dive near the ground (between the heads)
-    [1.2, 2.2, 0],
-    [1.6, 5.5, 0.2],
-    [1.2, 10.5, 0.5],
-    [1.4, 12.5, 0.7], // head 2 (inverted, mirrored)
-    [2.2, 9.5, 0.6],
-    [3, 5, 0.25],
-    [4.5, 1.6, 0],
-    [8, 1, 0],
-    [13, 1, 0],
+    [-12, 1, 0],
+    [-8, 1.1, 0],
+    [-4.8, 1.5, 0],
+    [-3.2, 1.4, 0],
+    [-1.29, 1.84, 0.04],
+    [0.24, 3.06, 0.07],
+    [1.09, 4.82, 0.11],
+    [1.09, 6.78, 0.14],
+    [0.24, 8.54, 0.18],
+    [-1.29, 9.76, 0.21],
+    [-3.2, 10.2, 0.25], // wing 1 — inverted over the top
+    [-1.29, 9.76, 0.29],
+    [0.24, 8.54, 0.32],
+    [1.09, 6.78, 0.36],
+    [1.09, 4.82, 0.39],
+    [0.24, 3.06, 0.43],
+    [-1.29, 1.84, 0.46],
+    [-3.2, 1.4, 0.5],
+    [-3.2, 1.6, 0.7],
+    [-1, 1.4, 1.1], // deep dive across the bottom (the body)
+    [1, 1.4, 1.5],
+    [3.2, 1.6, 1.9],
+    [3.2, 1.4, 2.1],
+    [5.11, 1.84, 2.14],
+    [6.64, 3.06, 2.17],
+    [7.49, 4.82, 2.21],
+    [7.49, 6.78, 2.24],
+    [6.64, 8.54, 2.28],
+    [5.11, 9.76, 2.31],
+    [3.2, 10.2, 2.35], // wing 2 — inverted over the top
+    [5.11, 9.76, 2.39],
+    [6.64, 8.54, 2.42],
+    [7.49, 6.78, 2.46],
+    [7.49, 4.82, 2.49],
+    [6.64, 3.06, 2.53],
+    [5.11, 1.84, 2.56],
+    [3.2, 1.4, 2.6],
+    [3.2, 1.6, 2.8],
+    [6, 1.2, 2.9],
+    [10, 1.05, 2.9],
+    [13, 1, 2.9],
   ],
   keyPoints: [
-    { t: 0.22, label: 'enterLoop' },
-    { t: 0.34, label: 'inverted' },
+    { t: 0.2, label: 'enterLoop' },
+    { t: 0.3, label: 'inverted' },
     { t: 0.5, label: 'exitLoop' },
-    { t: 0.66, label: 'inverted' },
-    { t: 0.8, label: 'leave' },
+    { t: 0.7, label: 'inverted' },
+    { t: 0.84, label: 'leave' },
   ],
   duration: 9,
+  defaultView: 'follow',
 };
 
 // ── Barrel-roll drop — a 360° barrel roll performed while plunging down a
@@ -792,40 +817,39 @@ const nonInvertingLoop: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Pretzel loop — the flying-coaster signature: entered from the TOP, the
-//    train dives head-first toward the ground, loops around and climbs back
-//    out, so the entry and exit strands cross near the top in a pretzel. A
-//    steady depth drift makes the crossing pass over/under, not through. ───────
+// ── Pretzel loop — the flying-coaster signature: the train dives steeply down
+//    the middle, loops around the bottom, and the loop body crosses back over
+//    the dive strand — the pretzel knot. A steady depth drift makes the
+//    crossing pass over/under, not through. ────────────────────────────────────
 const pretzelLoop: CoasterElementDef = {
   id: 'pretzel-loop',
   points: [
-    [-12, 12, 0],
-    [-7.5, 11.6, 0.2],
-    [-4.2, 10.4, 0.5], // dive in from height
-    [-2.37, 12.28, 0.7],
-    [-0.1, 12.8, 0.79],
-    [2.19, 12.35, 0.89],
-    [4.1, 11.02, 0.98],
-    [5.29, 9.02, 1.07],
-    [5.58, 6.71, 1.17],
-    [4.9, 4.49, 1.26],
-    [3.37, 2.73, 1.35],
-    [1.26, 1.74, 1.45], // loop bottom
-    [-1.07, 1.7, 1.54],
-    [-3.21, 2.61, 1.63],
-    [-4.8, 4.32, 1.73],
-    [-5.56, 6.52, 1.82],
-    [-5.36, 8.84, 1.91],
-    [-4.23, 10.87, 2.01],
-    [-2.37, 12.28, 2.1], // back over the top — crosses the dive strand
-    [-4.5, 10.6, 2.3],
-    [-8, 11.4, 2.2],
-    [-12, 12, 2.1], // climb out at height
+    [-2.2, 13, 0],
+    [-0.6, 10, 0.15],
+    [0.2, 6, 0.3],
+    [0.7, 2.2, 0.5], // steep dive down the middle
+    [0.7, 1.2, 0.7],
+    [2.93, 1.75, 0.78],
+    [4.65, 3.27, 0.87],
+    [5.47, 5.42, 0.95],
+    [5.19, 7.7, 1.04],
+    [3.88, 9.59, 1.12],
+    [1.85, 10.66, 1.21], // over the top
+    [-0.45, 10.66, 1.29],
+    [-2.48, 9.59, 1.38],
+    [-3.79, 7.7, 1.46],
+    [-4.07, 5.42, 1.55],
+    [-3.25, 3.27, 1.63], // down the back — crosses over the dive strand
+    [-1.53, 1.75, 1.72],
+    [0.7, 1.2, 1.8],
+    [-2.5, 2.6, 2.0], // climb out to the left
+    [-6, 3.4, 2.1],
+    [-11, 4, 2.2],
   ],
   keyPoints: [
-    { t: 0.16, label: 'approach' },
-    { t: 0.34, label: 'enterLoop' },
-    { t: 0.52, label: 'inverted' },
+    { t: 0.18, label: 'dive' },
+    { t: 0.3, label: 'enterLoop' },
+    { t: 0.5, label: 'inverted' },
     { t: 0.72, label: 'exitLoop' },
     { t: 0.88, label: 'leave' },
   ],
