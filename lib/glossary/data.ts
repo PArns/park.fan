@@ -2068,6 +2068,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'gekantelde-looping',
       es: 'looping-inclinado',
     },
+    player: { element: 'inclined-loop' },
   },
   {
     id: 'sea-serpent',
@@ -2323,6 +2324,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'non-inverting-loop',
       es: 'non-inverting-loop',
     },
+    player: { element: 'non-inverting-loop' },
   },
   {
     id: 'pretzel-knot',

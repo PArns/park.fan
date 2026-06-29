@@ -641,6 +641,79 @@ const ravenTurn: CoasterElementDef = {
   duration: 8,
 };
 
+// ── Inclined loop — a vertical loop whose plane is tilted off-vertical, so it
+//    leans steadily to one side as it rises. Parallel transport still inverts
+//    the train over the top; the lean comes from a depth (z) drift. ────────────
+const inclinedLoop: CoasterElementDef = {
+  id: 'inclined-loop',
+  points: [
+    [-12, 1, 0],
+    [-7, 1.2, 0],
+    [-3.2, 1.6, 0],
+    [-1.1, 1.6, 0], // bottom — entry (moving +x)
+    [1.58, 2.22, 0.38],
+    [3.68, 3.93, 1.45],
+    [4.77, 6.35, 2.94],
+    [4.63, 8.91, 4.54],
+    [3.33, 11.04, 5.85],
+    [1.21, 12.24, 6.6], // top — leaned over toward +z
+    [-1.21, 12.24, 6.6],
+    [-3.33, 11.04, 5.85],
+    [-4.63, 8.91, 4.54],
+    [-4.77, 6.35, 2.94],
+    [-3.68, 3.93, 1.45],
+    [-1.58, 2.22, 0.38],
+    [1.1, 1.6, 0], // bottom — exit (moving +x, beside the entry)
+    [3.2, 1.6, 0],
+    [7, 1.2, 0],
+    [12, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.16, label: 'approach' },
+    { t: 0.32, label: 'enterLoop' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.7, label: 'exitLoop' },
+    { t: 0.86, label: 'leave' },
+  ],
+  duration: 8,
+  defaultView: 'follow',
+};
+
+// ── Non-inverting loop — a tall, loop-shaped hill where the track twists ≈180°
+//    over the crest so the train stays UPRIGHT (airtime) instead of going fully
+//    inverted. The roll bump cancels the loop's natural inversion at the apex. ─
+const nonInvertingLoop: CoasterElementDef = {
+  id: 'non-inverting-loop',
+  points: [
+    [-12, 1, 0],
+    [-6.5, 1.2, 0],
+    [-2.6, 1.6, 0],
+    [0, 1.8, 0.15], // bottom — entry
+    [3.6, 3.4, 0.3],
+    [5.0, 6.6, 0.45],
+    [4.2, 10.0, 0.6],
+    [1.6, 12.4, 0.75],
+    [0, 12.9, 0.85], // apex — twisted upright (airtime)
+    [-1.6, 12.4, 0.95],
+    [-4.2, 10.0, 1.1],
+    [-5.0, 6.6, 1.25],
+    [-3.6, 3.4, 1.4],
+    [0, 1.8, 1.5], // bottom — exit
+    [2.6, 1.6, 1.5],
+    [6.5, 1.2, 1.5],
+    [12, 1, 1.5],
+  ],
+  roll: (t) => Math.PI * Math.sin(Math.PI * smoothstep(0.16, 0.84, t)),
+  keyPoints: [
+    { t: 0.16, label: 'approach' },
+    { t: 0.34, label: 'climb' },
+    { t: 0.5, label: 'airtime' },
+    { t: 0.68, label: 'land' },
+    { t: 0.86, label: 'leave' },
+  ],
+  duration: 8,
+};
+
 // ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
 //    descending (a sustained, banked turn). Curves away into depth, so it opens
 //    in the follow view. ─────────────────────────────────────────────────────
@@ -697,6 +770,8 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'wave-turn': waveTurn,
   'outerbanked-turn': outerbankedTurn,
   'raven-turn': ravenTurn,
+  'inclined-loop': inclinedLoop,
+  'non-inverting-loop': nonInvertingLoop,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {
