@@ -85,26 +85,42 @@ const verticalLoop: CoasterElementDef = {
   duration: 8,
 };
 
-// ── Corkscrew — a symmetric, centred hump over which the train barrel-rolls a
-//    full 360°. Kept planar (no sideways drift) so it reads centred head-on;
-//    the inversion is carried entirely by the explicit roll. ──────────────────
+// ── Corkscrew — a true helix: the centreline itself spirals a full 360° around
+//    a horizontal axis along the travel direction (y and z trace a circle while
+//    x advances), and the train barrel-rolls in sync, so the two rails wind
+//    around each other like a screw thread. The spiralling PATH is what sets it
+//    apart from the banana roll (which only bows out flat to one side). ───────
 const corkscrew: CoasterElementDef = {
   id: 'corkscrew',
   points: [
-    [-11, 2.6, 0],
-    [-6, 2.7, 0],
-    [-2.6, 3.6, 0],
-    [0, 4.0, 0],
-    [2.6, 3.6, 0],
-    [6, 2.7, 0],
-    [11, 2.6, 0],
+    [-11, 2, 0],
+    [-7.5, 2, 0],
+    [-4.6, 1.7, 0],
+    [-4.02, 1.91, 1.03],
+    [-3.45, 2.49, 1.91],
+    [-2.88, 3.37, 2.49],
+    [-2.3, 4.4, 2.7], // ¼ turn — out to the side
+    [-1.72, 5.43, 2.49],
+    [-1.15, 6.31, 1.91],
+    [-0.58, 6.89, 1.03],
+    [0, 7.1, 0], // ½ turn — over the top (inverted)
+    [0.58, 6.89, -1.03],
+    [1.15, 6.31, -1.91],
+    [1.72, 5.43, -2.49],
+    [2.3, 4.4, -2.7], // ¾ turn — out the other side
+    [2.88, 3.37, -2.49],
+    [3.45, 2.49, -1.91],
+    [4.03, 1.91, -1.03],
+    [4.6, 1.7, 0],
+    [7.5, 2, 0],
+    [11, 2, 0],
   ],
-  roll: (t) => TAU * smoothstep(0.28, 0.72, t),
+  roll: (t) => TAU * smoothstep(0.12, 0.88, t),
   keyPoints: [
     { t: 0.16, label: 'approach' },
-    { t: 0.38, label: 'rollIn' },
+    { t: 0.36, label: 'rollIn' },
     { t: 0.5, label: 'inverted' },
-    { t: 0.62, label: 'rollOut' },
+    { t: 0.64, label: 'rollOut' },
     { t: 0.84, label: 'leave' },
   ],
   duration: 7,
@@ -684,26 +700,27 @@ const ravenTurn: CoasterElementDef = {
 const inclinedLoop: CoasterElementDef = {
   id: 'inclined-loop',
   points: [
-    [-12, 1, 0],
-    [-7, 1.2, 0],
+    [-12, 1, -0.3],
+    [-7, 1.2, -0.2],
     [-3.2, 1.6, 0],
-    [-1.1, 1.6, 0], // bottom — entry (moving +x)
-    [1.58, 2.22, 0.38],
-    [3.68, 3.93, 1.45],
-    [4.77, 6.35, 2.94],
-    [4.63, 8.91, 4.54],
-    [3.33, 11.04, 5.85],
-    [1.21, 12.24, 6.6], // top — leaned over toward +z
-    [-1.21, 12.24, 6.6],
-    [-3.33, 11.04, 5.85],
-    [-4.63, 8.91, 4.54],
-    [-4.77, 6.35, 2.94],
-    [-3.68, 3.93, 1.45],
-    [-1.58, 2.22, 0.38],
-    [1.1, 1.6, 0], // bottom — exit (moving +x, beside the entry)
-    [3.2, 1.6, 0],
-    [7, 1.2, 0],
-    [12, 1, 0],
+    [-1, 1.6, 0], // bottom — entry (moving +x, z≈0)
+    [1.49, 2.13, 0.45],
+    [3.51, 3.63, 1.39],
+    [4.69, 5.8, 2.66],
+    [4.84, 8.2, 4.04],
+    [3.94, 10.37, 5.31],
+    [2.2, 11.87, 6.25],
+    [0, 12.4, 6.7], // top — leaned over toward +z
+    [-2.2, 11.87, 6.62],
+    [-3.94, 10.37, 6.05],
+    [-4.84, 8.2, 5.16],
+    [-4.69, 5.8, 4.14],
+    [-3.51, 3.63, 3.25],
+    [-1.49, 2.13, 2.68],
+    [1, 1.6, 2.6], // bottom — exit (offset in z so it clears the entry leg)
+    [3.2, 1.6, 2.6],
+    [7, 1.2, 2.7],
+    [12, 1, 2.8],
   ],
   keyPoints: [
     { t: 0.16, label: 'approach' },

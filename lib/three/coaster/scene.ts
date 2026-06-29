@@ -306,6 +306,10 @@ export function createCoasterScene(
   //    density is independent of curve resolution. ─────────────────────────
   {
     const COL_SPACING = 3.2;
+    // Every track sample, so a column can be rejected if it would spear through
+    // a lower stretch of track at ~the same ground footprint (e.g. a helix or
+    // any figure that passes over itself).
+    const allPts = tracks.flatMap((tb) => tb.frames.points);
     for (const tb of tracks) {
       const f = tb.frames;
       const M = f.points.length - 1;
@@ -315,6 +319,10 @@ export function createCoasterScene(
         nextAt = f.arc[i] + COL_SPACING;
         const p = f.points[i];
         if (p.y > 1.6 && p.y < 5.5) {
+          const pierces = allPts.some(
+            (q) => q.y < p.y - 0.6 && Math.hypot(q.x - p.x, q.z - p.z) < 0.85
+          );
+          if (pierces) continue;
           const h = p.y - 0.2;
           const col = new THREE.Mesh(
             ctx.track.geo(new THREE.CylinderGeometry(0.12, 0.16, h, 6)),
