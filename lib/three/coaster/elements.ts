@@ -137,19 +137,22 @@ const celestialSpin: CoasterElementDef = {
   points: [
     [-13, 1.5, 0],
     [-8, 2.0, 0],
-    [-3.6, 4.6, 0],
-    [-1.4, 8.2, 0],
-    [0, 11.2, 0], // tall peak — the apex of the ride
-    [1.4, 8.2, 0],
-    [3.6, 4.6, 0],
+    [-3.4, 4.8, 0],
+    [-1.3, 8.6, 0],
+    [0, 11.6, 0], // tall peak — the apex of the ride
+    [1.3, 8.6, 0],
+    [3.4, 4.8, 0],
     [8, 2.0, 0],
     [13, 1.5, 0],
   ],
-  // Both tracks orbit the shared spire a FULL turn, winding around each other
-  // (a double helix) as they rise and fall — both trains go up and over.
+  // Inverted crisscross over the peak: the two tracks rotate a HALF turn so
+  // they swap sides through vertical — at the apex one train hangs upside-down
+  // just above the other — while BOTH barrel-roll the same way, so both ascend
+  // AND invert. (Stardust Racers' signature 41 m element.)
   dual: {
-    gap: 2.2,
-    twist: (t) => TAU * smoothstep(0.16, 0.84, t),
+    gap: 1.9,
+    twist: (t) => Math.PI * smoothstep(0.16, 0.84, t),
+    roll: (t) => TAU * smoothstep(0.2, 0.8, t),
   },
   keyPoints: [
     { t: 0.2, label: 'climb' },

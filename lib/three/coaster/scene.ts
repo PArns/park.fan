@@ -277,14 +277,14 @@ export function createCoasterScene(
       bPts.push(cFrames.points[i].clone().addScaledVector(dir, -half));
     }
     const dualRoll = def.dual.roll;
-    const specs: { pts: THREE.Vector3[]; accent: number; sign: number }[] = [
-      { pts: aPts, accent: PAL.carLead, sign: 1 },
-      { pts: bPts, accent: PAL.car, sign: -1 },
+    const specs: { pts: THREE.Vector3[]; accent: number }[] = [
+      { pts: aPts, accent: PAL.carLead },
+      { pts: bPts, accent: PAL.car },
     ];
     for (const sp of specs) {
-      // Opposite roll per track: one train rolls up, the other down.
-      const roll = dualRoll ? (t: number) => sp.sign * dualRoll(t) : undefined;
-      const frames = framesAlongCurve(sp.pts, sp.pts.length - 1, { closed: false, roll });
+      // Both trains barrel-roll the same way (both ascend AND invert); the
+      // half-turn orbit is what swaps them over/under each other at the apex.
+      const frames = framesAlongCurve(sp.pts, sp.pts.length - 1, { closed: false, roll: dualRoll });
       buildTrackGeometry(frames);
       tracks.push({ frames, cars: buildTrain(sp.accent) });
     }
