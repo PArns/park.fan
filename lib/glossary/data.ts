@@ -780,6 +780,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'helix',
       es: 'helix',
     },
+    player: { element: 'helix' },
   },
   {
     id: 'block-brake',

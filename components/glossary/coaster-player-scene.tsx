@@ -18,6 +18,7 @@ import {
   type CoasterView,
   type SceneTheme,
 } from '@/lib/three/coaster/scene';
+import { getCoasterElement } from '@/lib/three/coaster/elements';
 import { cn } from '@/lib/utils';
 
 export interface CoasterPlayerLabels {
@@ -53,7 +54,9 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [view, setView] = useState<CoasterView>('front');
+  const [view, setView] = useState<CoasterView>(
+    () => (getCoasterElement(element)?.defaultView as CoasterView | undefined) ?? 'front'
+  );
   const [keyPoints, setKeyPoints] = useState<{ t: number; label: string }[]>([]);
   const { resolvedTheme } = useTheme();
 
@@ -206,7 +209,7 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         {/* park.fan logo (pin + wordmark) — embedded branding, bottom-left.
             Light/dark variants toggle with the theme, matching the header. */}
         {!failed && (
-          <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-1.5 select-none drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+          <div className="pointer-events-none absolute bottom-2.5 left-3 z-10 flex items-center gap-1.5 drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] select-none">
             <Image
               src="/logo-small-dark.svg"
               width={26}

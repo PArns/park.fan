@@ -36,6 +36,12 @@ export interface CoasterElementDef {
   keyPoints: ElementKeyPoint[];
   /** Seconds for one pass of the run (default 9). */
   duration?: number;
+  /**
+   * Initial camera the player opens with. Turn-based figures (helix, overbanked
+   * turn) read poorly head-on — they curve away into depth — so they default to
+   * `'follow'`. Omit for the usual `'front'`.
+   */
+  defaultView?: 'front' | 'follow' | 'onboard';
 }
 
 // — small easing helpers —
@@ -500,6 +506,38 @@ const bananaRoll: CoasterElementDef = {
   duration: 7,
 };
 
+// ── Helix — the track spirals ~1¼ turns around a vertical axis while gently
+//    descending (a sustained, banked turn). Curves away into depth, so it opens
+//    in the follow view. ─────────────────────────────────────────────────────
+const helixElement: CoasterElementDef = {
+  id: 'helix',
+  points: [
+    [-12, 6, 0],
+    [-7, 5.8, 0],
+    [-4, 5.5, 0], // enter the spiral (θ≈180°)
+    [-2.8, 5.1, 2.8],
+    [0, 4.8, 4],
+    [2.8, 4.4, 2.8],
+    [4, 4.0, 0],
+    [2.8, 3.6, -2.8],
+    [0, 3.2, -4],
+    [-2.8, 2.9, -2.8],
+    [-4, 2.6, 0], // one full turn
+    [-2.8, 2.3, 2.8],
+    [0, 2.0, 4],
+    [2.8, 1.8, 2.8],
+    [4, 1.6, 0],
+    [7, 1.4, 0],
+    [12, 1.2, 0],
+  ],
+  keyPoints: [
+    { t: 0.22, label: 'approach' },
+    { t: 0.8, label: 'leave' },
+  ],
+  duration: 9,
+  defaultView: 'follow',
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
@@ -518,6 +556,7 @@ export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   batwing,
   'barrel-roll-drop': barrelRollDrop,
   'banana-roll': bananaRoll,
+  helix: helixElement,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

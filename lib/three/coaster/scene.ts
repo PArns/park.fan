@@ -328,7 +328,7 @@ export function createCoasterScene(
   }
 
   // -- Camera framing ------------------------------------------------------
-  let view: CoasterView = opts.view ?? 'front';
+  let view: CoasterView = opts.view ?? (def.defaultView as CoasterView | undefined) ?? 'front';
   const frontPos = new THREE.Vector3();
   const frontTarget = center.clone();
   function computeFront(aspect: number) {
