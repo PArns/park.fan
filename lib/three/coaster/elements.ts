@@ -162,11 +162,139 @@ const celestialSpin: CoasterElementDef = {
   duration: 9,
 };
 
+// ── Heartline roll — a 360° roll on essentially LEVEL track, rotating the train
+//    around the riders' heart line (no hill, no lateral drift). ───────────────
+const heartlineRoll: CoasterElementDef = {
+  id: 'heartline-roll',
+  points: [
+    [-11, 3.4, 0],
+    [-6, 3.4, 0],
+    [-2, 3.5, 0],
+    [0, 3.6, 0],
+    [2, 3.5, 0],
+    [6, 3.4, 0],
+    [11, 3.4, 0],
+  ],
+  roll: (t) => TAU * smoothstep(0.3, 0.7, t),
+  keyPoints: [
+    { t: 0.18, label: 'approach' },
+    { t: 0.4, label: 'rollIn' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.6, label: 'rollOut' },
+    { t: 0.82, label: 'leave' },
+  ],
+  duration: 7,
+};
+
+// ── Zero-G roll — a 360° roll timed to the crest of an airtime hill, so it
+//    happens in a weightless float (the roll axis ≈ the riders). ──────────────
+const zeroGRoll: CoasterElementDef = {
+  id: 'zero-g-roll',
+  points: [
+    [-11, 1.5, 0],
+    [-6, 1.9, 0],
+    [-2.5, 4.6, 0],
+    [0, 6.6, 0],
+    [2.5, 4.6, 0],
+    [6, 1.9, 0],
+    [11, 1.5, 0],
+  ],
+  roll: (t) => TAU * smoothstep(0.32, 0.68, t),
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 7,
+};
+
+// ── Zero-G stall — like a zero-G roll, but the train rolls inverted at the
+//    crest and HANGS upside-down for a beat before rolling back upright. ──────
+const zeroGStall: CoasterElementDef = {
+  id: 'zero-g-stall',
+  points: [
+    [-12, 1.5, 0],
+    [-7, 1.9, 0],
+    [-3, 4.6, 0],
+    [0, 6.8, 0],
+    [3, 4.6, 0],
+    [7, 1.9, 0],
+    [12, 1.5, 0],
+  ],
+  // roll to inverted, hang there (the stall), then complete the roll upright
+  roll: (t) => {
+    if (t < 0.4) return Math.PI * smoothstep(0.12, 0.4, t); // 0 → π (invert)
+    if (t < 0.6) return Math.PI; // hang inverted
+    return Math.PI + Math.PI * smoothstep(0.6, 0.88, t); // π → 2π (recover)
+  },
+  keyPoints: [
+    { t: 0.22, label: 'climb' },
+    { t: 0.5, label: 'inverted' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 9,
+};
+
+// ── Bunny hops — a SERIES of small, low hills taken in quick succession, each
+//    popping a little ejector airtime. ───────────────────────────────────────
+const bunnyHop: CoasterElementDef = {
+  id: 'bunnyhop',
+  points: [
+    [-13, 1.3, 0],
+    [-9, 1.4, 0],
+    [-6.5, 2.2, 0], // hop 1
+    [-4.3, 1.4, 0], // dip
+    [-2.1, 2.2, 0], // hop 2
+    [0, 1.4, 0], // dip
+    [2.1, 2.2, 0], // hop 3
+    [4.3, 1.4, 0], // dip
+    [6.5, 2.2, 0], // hop 4
+    [9, 1.4, 0],
+    [13, 1.3, 0],
+  ],
+  keyPoints: [
+    { t: 0.2, label: 'climb' },
+    { t: 0.5, label: 'airtime' },
+    { t: 0.8, label: 'land' },
+  ],
+  duration: 6,
+};
+
+// ── Top hat — a tall, near-vertical climb, a sharp crest and a near-vertical
+//    drop; the signature element of many launch coasters. ────────────────────
+const topHat: CoasterElementDef = {
+  id: 'top-hat',
+  points: [
+    [-9, 1, 0],
+    [-5.5, 1.2, 0],
+    [-3.2, 5, 0],
+    [-2.2, 9.4, 0],
+    [-1, 11.3, 0],
+    [0, 11.7, 0], // crest
+    [1, 11.3, 0],
+    [2.2, 9.4, 0],
+    [3.2, 5, 0],
+    [5.5, 1.2, 0],
+    [9, 1, 0],
+  ],
+  keyPoints: [
+    { t: 0.25, label: 'climb' },
+    { t: 0.5, label: 'airtime' },
+    { t: 0.75, label: 'land' },
+  ],
+  duration: 8,
+};
+
 export const COASTER_ELEMENTS: Record<string, CoasterElementDef> = {
   'vertical-loop': verticalLoop,
   corkscrew,
   'airtime-hill': airtimeHill,
   'celestial-spin': celestialSpin,
+  'heartline-roll': heartlineRoll,
+  'zero-g-roll': zeroGRoll,
+  'zero-g-stall': zeroGStall,
+  bunnyhop: bunnyHop,
+  'top-hat': topHat,
 };
 
 export function getCoasterElement(id: string): CoasterElementDef | undefined {

@@ -583,6 +583,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-roll',
       es: 'zero-g-roll',
     },
+    player: { element: 'zero-g-roll' },
   },
   {
     id: 'launch-coaster',
@@ -862,6 +863,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'heartline-roll',
       es: 'heartline-roll',
     },
+    player: { element: 'heartline-roll' },
   },
   {
     id: 'sidewinder',
@@ -970,6 +972,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'bunnyhop',
       es: 'bunnyhop',
     },
+    player: { element: 'bunnyhop' },
   },
   {
     id: 'stengel-dive',
@@ -1018,6 +1021,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'top-hat',
       es: 'top-hat',
     },
+    player: { element: 'top-hat' },
   },
   {
     id: 'boomerang',
@@ -2380,6 +2384,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-stall',
       es: 'zero-g-stall',
     },
+    player: { element: 'zero-g-stall' },
   },
   {
     id: 'celestial-spin',
