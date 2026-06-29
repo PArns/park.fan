@@ -4,6 +4,7 @@ import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { Card } from '@/components/ui/card';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { GlossaryTermTracker } from '@/components/glossary/glossary-term-tracker';
+import { CoasterPlayer, type CoasterPlayerLabels } from '@/components/glossary/coaster-player';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import type { Breadcrumb } from '@/lib/api/types';
 import type { Locale } from '@/i18n/config';
@@ -22,6 +23,8 @@ interface GlossaryTermDetailProps {
     category: string;
     termH1Suffix: string;
   };
+  /** Localised strings for the 3-D player; only needed when `term.player` is set. */
+  playerLabels?: CoasterPlayerLabels;
 }
 
 export function GlossaryTermDetail({
@@ -31,7 +34,79 @@ export function GlossaryTermDetail({
   locale,
   segment,
   labels,
+  playerLabels,
 }: GlossaryTermDetailProps) {
+  const hasPlayer = Boolean(term.player && playerLabels);
+
+  // ── Reusable fragments — composed differently depending on whether the term
+  //    carries a 3-D player (player on top, text below) or not (combined card).
+  const headerBlock = (
+    <>
+      <div className="mb-1 flex items-center gap-2">
+        <Tag className="text-primary h-3 w-3 shrink-0" />
+        <span className="text-primary text-xs font-medium">{labels.category}</span>
+      </div>
+      <h1 className="mb-1.5 text-3xl leading-tight font-bold">
+        {term.name}{' '}
+        <span className="text-muted-foreground text-xl font-normal">{labels.termH1Suffix}</span>
+      </h1>
+      {term.alternateNames && term.alternateNames.length > 0 && (
+        <p className="text-muted-foreground mt-1.5 text-sm">
+          <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
+          {term.alternateNames.join(' · ')}
+        </p>
+      )}
+    </>
+  );
+
+  const definitionBlock = (
+    <div className="text-foreground space-y-4 text-base leading-relaxed">
+      {term.definition.split('\n\n').map((para, i) => (
+        <p key={i}>
+          <GlossaryInject locale={locale}>{para}</GlossaryInject>
+        </p>
+      ))}
+    </div>
+  );
+
+  const backButton = (
+    <div className="pb-2">
+      <Button asChild variant="default" size="sm">
+        <Link href={`/${locale}/${segment}`}>
+          <ArrowLeft className="h-4 w-4" />
+          {labels.backToGlossary}
+        </Link>
+      </Button>
+    </div>
+  );
+
+  const sidebar = relatedTerms.length > 0 && (
+    <aside aria-label={labels.relatedTerms}>
+      {/* Sidebar wrapped in its own glass card so the heading is readable */}
+      <Card className="border-primary/15 gap-0 py-0 shadow-sm">
+        <div className="border-primary/10 border-b px-4 py-2.5">
+          <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
+            {labels.relatedTerms}
+          </p>
+        </div>
+        <div className="divide-border divide-y">
+          {relatedTerms.map((related) => (
+            <Link
+              key={related.id}
+              href={`/${locale}/${segment}/${related.slug}`}
+              className="hover:bg-primary/5 group block px-4 py-2 transition-colors"
+            >
+              <p className="text-sm font-medium">{related.name}</p>
+              <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
+                {related.shortDefinition}
+              </p>
+            </Link>
+          ))}
+        </div>
+      </Card>
+    </aside>
+  );
+
   return (
     <div>
       <GlossaryTermTracker termId={term.id} locale={locale} />
@@ -40,81 +115,40 @@ export function GlossaryTermDetail({
         <BreadcrumbNav breadcrumbs={breadcrumbs} currentPage={term.name} variant="pill" />
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
-        {/* ── Left column ───────────────────────────────────────────────── */}
-        <div className="flex flex-col gap-4">
-          {/* Combined card: header + definition */}
-          <Card className="border-primary/20 gap-0 py-0 shadow-md">
-            {/* Header section */}
-            <div className="px-6 pt-5 pb-4">
-              <div className="mb-1 flex items-center gap-2">
-                <Tag className="text-primary h-3 w-3 shrink-0" />
-                <span className="text-primary text-xs font-medium">{labels.category}</span>
-              </div>
-              <h1 className="mb-1.5 text-3xl leading-tight font-bold">
-                {term.name}{' '}
-                <span className="text-muted-foreground text-xl font-normal">
-                  {labels.termH1Suffix}
-                </span>
-              </h1>
-              {term.alternateNames && term.alternateNames.length > 0 && (
-                <p className="text-muted-foreground mt-1.5 text-sm">
-                  <span className="font-medium">{labels.alsoKnownAs}:</span>{' '}
-                  {term.alternateNames.join(' · ')}
-                </p>
-              )}
-            </div>
-            {/* Definition section */}
-            <div className="border-primary/10 border-t px-6 py-6">
-              <div className="text-foreground space-y-4 text-base leading-relaxed">
-                {term.definition.split('\n\n').map((para, i) => (
-                  <p key={i}>
-                    <GlossaryInject locale={locale}>{para}</GlossaryInject>
-                  </p>
-                ))}
-              </div>
-            </div>
-          </Card>
+      {hasPlayer ? (
+        /* ── Player layout: title → 3-D player on top → text + sidebar below ── */
+        <div className="flex flex-col gap-5">
+          <div>{headerBlock}</div>
 
-          {/* Back button */}
-          <div className="pb-2">
-            <Button asChild variant="default" size="sm">
-              <Link href={`/${locale}/${segment}`}>
-                <ArrowLeft className="h-4 w-4" />
-                {labels.backToGlossary}
-              </Link>
-            </Button>
+          <CoasterPlayer
+            element={term.player!.element}
+            labels={playerLabels!}
+            className="shadow-md"
+          />
+
+          <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
+            <div className="flex flex-col gap-4">
+              <Card className="border-primary/20 py-0 shadow-md">
+                <div className="px-6 py-6">{definitionBlock}</div>
+              </Card>
+              {backButton}
+            </div>
+            {sidebar}
           </div>
         </div>
-
-        {/* ── Sidebar: Related terms ────────────────────────────────────── */}
-        {relatedTerms.length > 0 && (
-          <aside aria-label={labels.relatedTerms}>
-            {/* Sidebar wrapped in its own glass card so the heading is readable */}
-            <Card className="border-primary/15 gap-0 py-0 shadow-sm">
-              <div className="border-primary/10 border-b px-4 py-2.5">
-                <p className="text-muted-foreground text-xs font-semibold tracking-widest uppercase">
-                  {labels.relatedTerms}
-                </p>
-              </div>
-              <div className="divide-border divide-y">
-                {relatedTerms.map((related) => (
-                  <Link
-                    key={related.id}
-                    href={`/${locale}/${segment}/${related.slug}`}
-                    className="hover:bg-primary/5 group block px-4 py-2 transition-colors"
-                  >
-                    <p className="text-sm font-medium">{related.name}</p>
-                    <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-relaxed">
-                      {related.shortDefinition}
-                    </p>
-                  </Link>
-                ))}
-              </div>
+      ) : (
+        /* ── Default layout: combined header + definition card with sidebar ── */
+        <div className="grid gap-5 lg:grid-cols-[1fr_260px]">
+          <div className="flex flex-col gap-4">
+            <Card className="border-primary/20 gap-0 py-0 shadow-md">
+              <div className="px-6 pt-5 pb-4">{headerBlock}</div>
+              <div className="border-primary/10 border-t px-6 py-6">{definitionBlock}</div>
             </Card>
-          </aside>
-        )}
-      </div>
+            {backButton}
+          </div>
+          {sidebar}
+        </div>
+      )}
     </div>
   );
 }

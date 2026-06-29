@@ -1044,7 +1044,31 @@
     },
     "searchPlaceholder": "Begriffe suchen…",
     "noResults": "Keine Begriffe für „{query}\" gefunden.",
-    "noResultsHint": "Versuche ein anderes Wort oder sieh dir die Kategorien an."
+    "noResultsHint": "Versuche ein anderes Wort oder sieh dir die Kategorien an.",
+    "player": {
+      "play": "Abspielen",
+      "pause": "Pause",
+      "replay": "Wiederholen",
+      "view": "Ansicht",
+      "viewFront": "Frontal",
+      "viewFollow": "Verfolgen",
+      "viewOnboard": "Mitfahrt",
+      "title": "3-D-Animation",
+      "loading": "3-D-Animation lädt…",
+      "keys": {
+        "approach": "Anfahrt",
+        "enterLoop": "Looping-Einfahrt",
+        "inverted": "Überkopf",
+        "exitLoop": "Looping-Ausfahrt",
+        "leave": "Ausfahrt",
+        "rollIn": "Eindrehen",
+        "rollOut": "Ausdrehen",
+        "climb": "Anstieg",
+        "airtime": "Airtime",
+        "land": "Landung",
+        "celestial": "Celestial Roll"
+      }
+    }
   },
   "howto": {
     "title": "So funktioniert es – Die vollständige Anleitung",

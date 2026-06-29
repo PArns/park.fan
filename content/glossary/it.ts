@@ -2561,6 +2561,14 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'Speed Bump'],
   },
+  {
+    id: 'celestial-roll',
+    name: "Celestial Roll",
+    shortDefinition: "Un elemento di airtime inclinato verso l’esterno in cui il treno ruota lentamente di un giro completo sopra una cresta, facendo fluttuare i passeggeri verso l’esterno.",
+    definition: "Il celestial roll è un moderno elemento di inversione, reso popolare dalle montagne russe ibride di Rocky Mountain Construction (RMC): il binario sale oltre una cresta inclinandosi verso l’esterno e fa ruotare il treno di un giro completo di 360°. Poiché la rotazione è centrata vicino ai passeggeri e sincronizzata con la cresta, unisce un airtime prolungato a una rotazione lenta e priva di peso, ben diversa dal ribaltamento rapido di un cavatappi. Nella vista frontale guarda il treno fluttuare sopra la cresta; passa alla vista a bordo per sentire l’orizzonte capovolgersi lentamente. È strettamente legato allo zero-G roll.",
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Rolls'],
+  },
 ];
 
 export default translations;

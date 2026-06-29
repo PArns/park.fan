@@ -558,6 +558,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'looping',
       es: 'looping',
     },
+    player: { element: 'vertical-loop' },
   },
   {
     id: 'immelmann',
@@ -763,6 +764,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'airtime-hill',
       es: 'airtime-hill',
     },
+    player: { element: 'airtime-hill' },
   },
   {
     id: 'helix',
@@ -823,6 +825,7 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'corkscrew',
       es: 'corkscrew',
     },
+    player: { element: 'corkscrew' },
   },
   {
     id: 'dive-loop',
@@ -2377,6 +2380,19 @@ export const GLOSSARY_TERMS: GlossaryTermData[] = [
       nl: 'zero-g-stall',
       es: 'zero-g-stall',
     },
+  },
+  {
+    id: 'celestial-roll',
+    category: 'coaster-elements',
+    slugs: {
+      en: 'celestial-roll',
+      de: 'celestial-roll',
+      fr: 'celestial-roll',
+      it: 'celestial-roll',
+      nl: 'celestial-roll',
+      es: 'celestial-roll',
+    },
+    player: { element: 'celestial-roll' },
   },
   // ── Jargon & Concepts (P3) ─────────────────────────────────────────────────
   {

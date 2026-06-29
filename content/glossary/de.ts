@@ -2582,6 +2582,14 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'S-Hügel', 'Speed Bump'],
   },
+  {
+    id: 'celestial-roll',
+    name: "Celestial Roll",
+    shortDefinition: "Ein nach außen geneigtes Airtime-Element, bei dem der Zug über eine Kuppe langsam eine volle Drehung rollt und die Fahrgäste nach außen schweben lässt.",
+    definition: "Ein Celestial Roll ist ein modernes, von Rocky Mountain Construction (RMC) bekannt gemachtes Inversionselement: Die Schiene steigt über eine Kuppe an, neigt sich dabei nach außen und rollt den Zug in einer langsamen 360°-Drehung herum. Weil die Drehung nahe an den Fahrgästen zentriert und mit der Kuppe abgestimmt ist, verbindet sie anhaltende Airtime mit einer schwerelosen, langsamen Rotation – kein schnelles Überschlagen wie beim Korkenzieher, sondern ein langes, schwebendes Hängen, während sich der Horizont sanft überdreht.\n\nIn der 3-D-Ansicht ist das gut nachvollziehbar: In der Frontalansicht schwebt der Zug über die Kuppe, in der Mitfahr-Ansicht spürt man, wie die langsame Drehung den Horizont auf den Kopf stellt. Eng verwandt mit dem Zero-G-Roll und dem nach außen geneigten Airtime-Hügel.",
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Rolls'],
+  },
 ];
 
 export default translations;

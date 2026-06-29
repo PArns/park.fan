@@ -2418,6 +2418,14 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'S-Hills', 'Speed Bump'],
   },
+  {
+    id: 'celestial-roll',
+    name: "Celestial Roll",
+    shortDefinition: "An outward-banked airtime element where the train slowly rolls a full turn over a crest, floating riders to the outside.",
+    definition: "A celestial roll is a modern inversion-style element — popularised by Rocky Mountain Construction (RMC) hybrid coasters — in which the track rises over a crest while banking outward and rolling the train through a full 360° turn. Because the roll is centred near the riders and timed with the crest, it blends sustained airtime with a slow, weightless rotation rather than the snappy flip of a corkscrew. The result is a long, floaty hang as the train turns over in mid-air.\n\nCelestial rolls read beautifully in 3-D: watch the train float over the crest in the front view, then switch to the onboard camera to feel the slow roll invert your horizon. It is closely related to the zero-G roll and the outward-banked airtime hill.",
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Rolls'],
+  },
 ];
 
 export default translations;

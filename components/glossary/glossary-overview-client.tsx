@@ -200,7 +200,13 @@ export function GlossaryOverviewClient({
                 <h2 className="mb-4 text-xl font-semibold">{categoryLabel}</h2>
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {terms.map((term) => (
-                    <GlossaryTermCard key={term.id} term={term} locale={locale} segment={segment} />
+                    <GlossaryTermCard
+                      key={term.id}
+                      term={term}
+                      locale={locale}
+                      segment={segment}
+                      playerLabel={t('player.title')}
+                    />
                   ))}
                 </div>
               </section>

@@ -2557,6 +2557,14 @@ const translations: GlossaryTermTranslation[] = [
     relatedTermIds: ['airtime', 'airtime-hill', 'wave-turn', 'bunnyhop'],
     aliases: ['S Hill', 'Speed Bump'],
   },
+  {
+    id: 'celestial-roll',
+    name: "Celestial Roll",
+    shortDefinition: "Een naar buiten hellend airtime-element waarbij de trein over een top langzaam een volledige rol maakt en rijders naar buiten laat zweven.",
+    definition: "Een celestial roll is een modern inversie-achtig element, bekend geworden door de hybride achtbanen van Rocky Mountain Construction (RMC). De baan stijgt over een top, helt daarbij naar buiten en rolt de trein in een langzame draai van 360° om. Doordat de rol dicht bij de rijders is gecentreerd en samenvalt met de top, combineert hij langgerekte airtime met een gewichtloze, trage rotatie in plaats van de snelle flip van een kurkentrekker. Bekijk in het vooraanzicht hoe de trein over de top zweeft en schakel naar de aan-boordcamera om de horizon langzaam te voelen kantelen. Nauw verwant aan de zero-G-roll.",
+    relatedTermIds: ['zero-g-roll', 'airtime-hill', 'inversion', 'hangtime'],
+    aliases: ['Celestial Rolls'],
+  },
 ];
 
 export default translations;

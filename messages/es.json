@@ -1044,7 +1044,31 @@
     },
     "searchPlaceholder": "Buscar términos…",
     "noResults": "No se encontraron términos para \"{query}\".",
-    "noResultsHint": "Prueba con otra palabra o explora las categorías."
+    "noResultsHint": "Prueba con otra palabra o explora las categorías.",
+    "player": {
+      "play": "Reproducir",
+      "pause": "Pausa",
+      "replay": "Repetir",
+      "view": "Vista",
+      "viewFront": "Frontal",
+      "viewFollow": "Seguimiento",
+      "viewOnboard": "A bordo",
+      "title": "Animación 3-D",
+      "loading": "Cargando animación 3-D…",
+      "keys": {
+        "approach": "Aproximación",
+        "enterLoop": "Entrada al rizo",
+        "inverted": "Invertido",
+        "exitLoop": "Salida del rizo",
+        "leave": "Salida",
+        "rollIn": "Inicio del giro",
+        "rollOut": "Fin del giro",
+        "climb": "Subida",
+        "airtime": "Airtime",
+        "land": "Aterrizaje",
+        "celestial": "Celestial roll"
+      }
+    }
   },
   "howto": {
     "title": "Cómo funciona – La guía completa",
