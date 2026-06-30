@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, ExternalLink, ImageIcon, Loader2, Trash2, Undo2, X } from 'lucide-react';
+import { Check, Download, ExternalLink, ImageIcon, Loader2, Trash2, Undo2, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
@@ -86,6 +86,8 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
 
   const imgSrc = (url: string) =>
     /^https?:/.test(url) ? url : `${url}&pass=${encodeURIComponent(pass)}`;
+  const downloadSrc = (url: string, name: string) =>
+    `${imgSrc(url)}&download=1&name=${encodeURIComponent(name)}`;
 
   async function mutate(action: string, init: RequestInit) {
     setBusy(action);
@@ -125,21 +127,33 @@ function SubmissionCard({ submission }: { submission: SubmissionRecord }) {
         {/* Photos */}
         <div className="grid grid-cols-3 gap-2 md:w-72 md:shrink-0">
           {submission.images.map((img) => (
-            <a
+            <figure
               key={img.key}
-              href={imgSrc(img.url)}
-              target="_blank"
-              rel="noreferrer"
-              className="bg-muted/40 relative aspect-square overflow-hidden rounded-lg border"
-              title={`${img.originalName} · ${(img.size / 1024 / 1024).toFixed(1)} MB`}
+              className="bg-muted/40 group/thumb relative aspect-square overflow-hidden rounded-lg border"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element -- arbitrary blob/host URL, not a project asset */}
-              <img
-                src={imgSrc(img.url)}
-                alt={img.originalName}
-                className="size-full object-cover"
-              />
-            </a>
+              <a
+                href={imgSrc(img.url)}
+                target="_blank"
+                rel="noreferrer"
+                className="block size-full"
+                title={`${img.originalName} · ${(img.size / 1024 / 1024).toFixed(1)} MB`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- streamed via our admin route, not a project asset */}
+                <img
+                  src={imgSrc(img.url)}
+                  alt={img.originalName}
+                  className="size-full object-cover"
+                />
+              </a>
+              <a
+                href={downloadSrc(img.url, img.originalName)}
+                download={img.originalName}
+                title="Download original"
+                className="bg-background/80 text-foreground hover:bg-primary hover:text-primary-foreground absolute top-1 right-1 flex size-7 items-center justify-center rounded-md opacity-0 shadow-sm backdrop-blur-sm transition-all group-hover/thumb:opacity-100"
+              >
+                <Download className="size-3.5" />
+              </a>
+            </figure>
           ))}
         </div>
 

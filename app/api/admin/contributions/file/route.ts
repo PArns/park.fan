@@ -43,6 +43,14 @@ export async function GET(request: Request) {
   const ext = key.split('.').pop()?.toLowerCase() ?? '';
   const fallbackType = EXT_TYPES[ext] ?? 'application/octet-stream';
 
+  // When ?download=1, force a download with the original filename instead of
+  // rendering inline — so moderators can save the full-res original.
+  const download = url.searchParams.get('download') === '1';
+  const downloadName = url.searchParams.get('name') ?? key.split('/').pop() ?? 'photo';
+
+  const extraHeaders: Record<string, string> = { 'Cache-Control': 'private, no-store' };
+  if (download) extraHeaders['Content-Disposition'] = contentDisposition(downloadName);
+
   if (resolveDriver() === 'vercel-blob') {
     try {
       const result = await get(key, { access: 'private' });
@@ -50,10 +58,7 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: 'not-found' }, { status: 404 });
       }
       return new NextResponse(result.stream, {
-        headers: {
-          'Content-Type': result.blob.contentType ?? fallbackType,
-          'Cache-Control': 'private, no-store',
-        },
+        headers: { 'Content-Type': result.blob.contentType ?? fallbackType, ...extraHeaders },
       });
     } catch (err) {
       console.error('[admin/contributions/file] blob get failed:', err);
@@ -64,6 +69,13 @@ export async function GET(request: Request) {
   const data = await readImageLocal(key);
   if (!data) return NextResponse.json({ error: 'not-found' }, { status: 404 });
   return new NextResponse(new Uint8Array(data), {
-    headers: { 'Content-Type': fallbackType, 'Cache-Control': 'private, no-store' },
+    headers: { 'Content-Type': fallbackType, ...extraHeaders },
   });
+}
+
+/** Build a safe `Content-Disposition: attachment` header (ASCII fallback + UTF-8). */
+function contentDisposition(name: string): string {
+  const clean = name.replace(/[\r\n"]/g, '').slice(0, 120) || 'photo';
+  const ascii = clean.replace(/[^\x20-\x7E]/g, '_');
+  return `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(clean)}`;
 }
