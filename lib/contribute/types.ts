@@ -45,21 +45,57 @@ export interface StoredImageRecord {
   size: number;
 }
 
+export type SubmissionStatus = 'pending' | 'approved' | 'rejected';
+
 /**
- * A persisted contribution. In the prototype these are appended to a JSONL file
- * (see lib/contribute/submissions.ts); in production this is the row you'd write to
- * your moderation table. `status` starts as `pending` — nothing is shown publicly
- * until a human approves it.
+ * A persisted contribution stored in the moderation queue (see
+ * lib/contribute/submissions.ts). `status` starts as `pending` — nothing is shown
+ * publicly until a human approves it.
  */
 export interface SubmissionRecord {
   id: string;
   createdAt: string;
-  status: 'pending' | 'approved' | 'rejected';
+  status: SubmissionStatus;
   entity: AssignedEntity;
   caption: string;
   credit: string;
   images: StoredImageRecord[];
   /** Coarse client info kept for abuse triage (never shown publicly). */
-  ip?: string;
   userAgent?: string;
 }
+
+/** Fields a moderator may edit on an existing submission. */
+export interface SubmissionPatch {
+  status?: SubmissionStatus;
+  caption?: string;
+  credit?: string;
+}
+
+/**
+ * Signed, short-lived upload ticket. Issued by `/api/contribute/start` AFTER the
+ * Turnstile challenge is verified, then presented (instead of re-solving Turnstile)
+ * when authorizing each direct-to-Blob upload and when finalizing the submission.
+ * HMAC-signed so the client can't tamper with the assignment or file budget.
+ */
+export interface TicketPayload {
+  /** Submission id — also the Blob folder all files must land under. */
+  sid: string;
+  entity: AssignedEntity;
+  caption: string;
+  credit: string;
+  /** Max number of files this ticket authorizes. */
+  maxFiles: number;
+  /** Expiry (epoch ms). */
+  exp: number;
+}
+
+/** One file the client reports as uploaded, validated server-side in /finalize. */
+export const uploadedBlobSchema = z.object({
+  url: z.string().url(),
+  pathname: z.string().min(1),
+  originalName: z.string().min(1),
+  contentType: z.string().min(1),
+  size: z.number().int().nonnegative(),
+});
+
+export type UploadedBlob = z.infer<typeof uploadedBlobSchema>;

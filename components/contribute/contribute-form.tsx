@@ -2,15 +2,22 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { upload } from '@vercel/blob/client';
 import { CheckCircle2, Loader2, PartyPopper, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import type { AssignedEntity } from '@/lib/contribute/types';
+import type { AssignedEntity, UploadedBlob } from '@/lib/contribute/types';
 import { PhotoDropzone, type PendingImage } from './photo-dropzone';
 import { EntityPicker } from './entity-picker';
 import { TurnstileWidget } from './turnstile-widget';
+
+/** Sanitize a filename for use inside a Blob pathname (mirrors the server guard). */
+function safeName(name: string): string {
+  const base = name.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 80);
+  return base.length > 0 ? base : 'image';
+}
 
 interface ContributeFormProps {
   /** Optional pre-assigned entity (e.g. when the form is embedded on a park page). */
@@ -19,7 +26,7 @@ interface ContributeFormProps {
 
 type SubmitState =
   | { status: 'idle' }
-  | { status: 'submitting' }
+  | { status: 'submitting'; done: number; total: number }
   | { status: 'success'; count: number }
   | { status: 'error'; code: string };
 
@@ -65,31 +72,92 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
     setSubmit({ status: 'idle' });
   };
 
+  const fail = (code: string) => setSubmit({ status: 'error', code });
+  const succeed = (count: number) => {
+    images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
+    setSubmit({ status: 'success', count });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSubmit || !entity) return;
-    setSubmit({ status: 'submitting' });
-
-    const form = new FormData();
-    form.append('turnstileToken', token);
-    form.append('meta', JSON.stringify({ entity, caption, credit, consent: true }));
-    images.forEach((img) => form.append('files', img.file, img.file.name));
+    setSubmit({ status: 'submitting', done: 0, total: images.length });
 
     try {
+      // 1) Verify Turnstile + get a signed upload ticket.
+      const startRes = await fetch('/api/contribute/start', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ turnstileToken: token, entity, caption, credit, consent: true }),
+      });
+      const start = (await startRes.json().catch(() => ({}))) as {
+        ok?: boolean;
+        ticket?: string;
+        sid?: string;
+        mode?: 'client' | 'server';
+        error?: string;
+      };
+      if (!startRes.ok || !start.ok || !start.ticket || !start.sid) {
+        return fail(start.error ?? 'generic');
+      }
+      const { ticket, sid, mode } = start;
+
+      if (mode === 'client') {
+        // 2a) Upload each photo straight to Vercel Blob (no 4.5 MB limit).
+        const blobs: UploadedBlob[] = [];
+        for (let i = 0; i < images.length; i++) {
+          const img = images[i];
+          const result = await upload(
+            `contributions/${sid}/${i}-${safeName(img.file.name)}`,
+            img.file,
+            {
+              access: 'public',
+              handleUploadUrl: '/api/contribute/upload',
+              clientPayload: ticket,
+              contentType: img.file.type,
+              multipart: img.file.size > 8 * 1024 * 1024,
+            }
+          );
+          blobs.push({
+            url: result.url,
+            pathname: result.pathname,
+            originalName: img.file.name,
+            contentType: img.file.type || result.contentType,
+            size: img.file.size,
+          });
+          setSubmit({ status: 'submitting', done: i + 1, total: images.length });
+        }
+        // 3a) Record the moderation-queue entry.
+        const finRes = await fetch('/api/contribute/finalize', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ticket, blobs }),
+        });
+        const fin = (await finRes.json().catch(() => ({}))) as {
+          ok?: boolean;
+          count?: number;
+          error?: string;
+        };
+        return finRes.ok && fin.ok
+          ? succeed(fin.count ?? images.length)
+          : fail(fin.error ?? 'generic');
+      }
+
+      // 2b) Server-upload fallback (offline dev, no Blob token; ≤4.5 MB).
+      const form = new FormData();
+      form.append('ticket', ticket);
+      images.forEach((img) => form.append('files', img.file, img.file.name));
       const res = await fetch('/api/contribute', { method: 'POST', body: form });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
         count?: number;
         error?: string;
       };
-      if (res.ok && data.ok) {
-        setSubmit({ status: 'success', count: data.count ?? images.length });
-        images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
-      } else {
-        setSubmit({ status: 'error', code: data.error ?? 'generic' });
-      }
+      return res.ok && data.ok
+        ? succeed(data.count ?? images.length)
+        : fail(data.error ?? 'generic');
     } catch {
-      setSubmit({ status: 'error', code: 'network' });
+      fail('network');
     }
   };
 
@@ -194,6 +262,12 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
                 <>
                   <Loader2 className="size-4 animate-spin" />
                   {t('submitting')}
+                  {submit.status === 'submitting' && submit.total > 1 && (
+                    <span className="tabular-nums">
+                      {' '}
+                      {submit.done}/{submit.total}
+                    </span>
+                  )}
                 </>
               ) : (
                 <>

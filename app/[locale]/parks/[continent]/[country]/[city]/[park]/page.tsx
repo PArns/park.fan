@@ -37,6 +37,8 @@ import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
+import { ContributeBanner } from '@/components/contribute/contribute-banner';
+import { buildContributeHref } from '@/lib/contribute/prefill';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -418,6 +420,23 @@ export default async function ParkPage({ params }: ParkPageProps) {
           <ShareButtons
             url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
             title={park.name}
+          />
+
+          {/* Invite visitors to contribute their own photos of this park */}
+          <ContributeBanner
+            className="mt-8"
+            href={
+              park.id
+                ? buildContributeHref({
+                    type: 'park',
+                    id: park.id,
+                    name: parkName,
+                    slug: parkSlug,
+                    url: `/parks/${continent}/${country}/${city}/${parkSlug}`,
+                    country: park.country ?? undefined,
+                  })
+                : undefined
+            }
           />
         </article>
       </PageContainer>

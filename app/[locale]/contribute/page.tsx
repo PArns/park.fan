@@ -13,9 +13,11 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ContributeForm } from '@/components/contribute/contribute-form';
 import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
+import { parseEntityFromParams } from '@/lib/contribute/prefill';
 
 interface ContributePageProps {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export function generateStaticParams() {
@@ -56,9 +58,10 @@ export async function generateMetadata({ params }: ContributePageProps): Promise
   };
 }
 
-export default async function ContributePage({ params }: ContributePageProps) {
+export default async function ContributePage({ params, searchParams }: ContributePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const initialEntity = parseEntityFromParams(await searchParams);
   const t = await getTranslations('contribute.hero');
   const tBanner = await getTranslations('contribute.banner');
 
@@ -99,7 +102,7 @@ export default async function ContributePage({ params }: ContributePageProps) {
       {/* Rights + form, in a narrower reading column */}
       <div id="upload" className="mx-auto max-w-3xl scroll-mt-8">
         <RightsNotice />
-        <ContributeForm />
+        <ContributeForm initialEntity={initialEntity} />
       </div>
     </div>
   );
