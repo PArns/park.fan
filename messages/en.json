@@ -715,7 +715,11 @@
       "ratingGood": "Good time",
       "min": "min.",
       "todayMin": "Min.",
-      "todayMax": "Max."
+      "todayMax": "Max.",
+      "aiBadge": "AI forecast",
+      "aiExplainer": "Past times are real measurements; upcoming values are AI predictions.",
+      "legendRecorded": "Recorded",
+      "legendForecast": "AI forecast"
     },
     "typicalWaits": {
       "title": "Typical wait times",
@@ -726,7 +730,8 @@
       "busy": "Busy",
       "min": "min",
       "peak": "Record {value} min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Plan the best time to visit"
   },
   "calendar": {
     "legend": "Legend",

@@ -2,8 +2,9 @@
 
 import { useMemo, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
-import { Clock } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { Clock, Sparkles } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
@@ -31,6 +32,14 @@ export interface DailyWaitTimeChartData {
     min: string;
     ratingOptimal: string;
     ratingGood: string;
+    /** "KI-Prognose" pill shown next to the title. */
+    aiBadge: string;
+    /** One line explaining recorded-vs-predicted. */
+    aiExplainer: string;
+    /** Legend label for past, measured bars (dimmed). */
+    legendRecorded: string;
+    /** Legend label for future, AI-forecast bars (solid). */
+    legendForecast: string;
   };
 }
 
@@ -164,8 +173,33 @@ export function DailyWaitTimeChart({
   })();
 
   return (
-    <Card className="p-4 sm:p-6">
-      <h2 className="mb-4 text-xl font-semibold">{translations.title}</h2>
+    // Bare section (no Card) — rendered inside the unified live card on the attraction page.
+    <div>
+      {/* Title + KI-Prognose pill (links to the AI-forecast glossary term) */}
+      <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
+        <h2 className="text-xl font-semibold">{translations.title}</h2>
+        <GlossaryTermLink termId="ai-forecast">
+          <Badge className="border-primary/20 bg-primary/10 text-primary gap-1">
+            <Sparkles className="h-3 w-3" />
+            {translations.aiBadge}
+          </Badge>
+        </GlossaryTermLink>
+      </div>
+
+      {/* Explainer: past bars are real measurements, future bars are AI predictions */}
+      <p className="text-muted-foreground mb-3 text-xs sm:text-sm">{translations.aiExplainer}</p>
+
+      {/* Legend distinguishing recorded (dimmed) from forecast (solid) bars */}
+      <div className="text-muted-foreground mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px]">
+        <span className="flex items-center gap-1.5">
+          <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm opacity-40" aria-hidden="true" />
+          {translations.legendRecorded}
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="bg-crowd-moderate h-2.5 w-2 rounded-sm" aria-hidden="true" />
+          {translations.legendForecast}
+        </span>
+      </div>
 
       {/* Horizontally scrollable chart — current time centered on mount */}
       <div ref={scrollRef} className="no-scrollbar -mx-4 overflow-x-auto px-4 sm:-mx-6 sm:px-6">
@@ -306,6 +340,6 @@ export function DailyWaitTimeChart({
           )}
         </div>
       )}
-    </Card>
+    </div>
   );
 }

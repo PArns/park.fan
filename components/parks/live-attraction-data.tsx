@@ -2,25 +2,17 @@
 
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import {
-  AlertCircle,
-  Loader2,
-  Clock,
-  AlertTriangle,
-  Wrench,
-  XCircle,
-  BarChart3,
-} from 'lucide-react';
+import { AlertCircle, Loader2, Clock, AlertTriangle, Wrench, XCircle, Layers } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { StatusInfoCard } from '@/components/common/status-info-card';
-import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { SectionHeading } from '@/components/common/section-heading';
+import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
+import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { cn } from '@/lib/utils';
 import type {
   ParkWithAttractions,
   AttractionStatus,
@@ -63,14 +55,6 @@ const ACCURACY_BADGE_KEYS = {
   insufficient_data: 'accuracy.insufficient_data',
 } as const satisfies Record<AccuracyBadge, string>;
 
-const ACCURACY_BORDER: Record<AccuracyBadge, string> = {
-  excellent: 'border-status-operating/40',
-  good: 'border-status-operating/40',
-  fair: 'border-status-down/40',
-  poor: 'border-destructive/40',
-  insufficient_data: 'border-border',
-};
-
 function getMainQueue(queues?: QueueDataItem[]): QueueDataItem | null {
   if (!queues || queues.length === 0) return null;
   return queues.find((q) => q.queueType === 'STANDBY') || queues[0];
@@ -94,6 +78,7 @@ export function LiveAttractionData({
   parkSlug,
 }: LiveAttractionDataProps) {
   const t = useTranslations('attractions');
+  const tChart = useTranslations('attractions.todayChart');
   const tCommon = useTranslations('common');
   // Gate the live-refetch indicator on mount so SSR and first client render agree (the page is
   // force-dynamic; the refetch-on-mount flips `isFetching` true and would otherwise mismatch).
@@ -108,10 +93,11 @@ export function LiveAttractionData({
     initialPark,
   });
 
-  // Prediction accuracy lives in the attraction *detail* (stripped from the live park poll). It's
-  // fetched client-side via the CDN-cached detail route — shared (deduped) with the daily chart's
+  // The attraction *detail* (stripped from the live park poll) carries the prediction accuracy AND
+  // the daily "Wartezeiten heute" time-series (history/forecast/schedule/bestVisitTimes). It's
+  // fetched client-side via the CDN-cached detail route — shared (deduped) with the 30-day grid's
   // <AttractionHistorySections> through React Query's query key, so this adds no extra request.
-  const { data: detail } = useAttractionDetail({
+  const { data: detail, isLoading: isDetailLoading } = useAttractionDetail({
     continent,
     country,
     city,
@@ -155,6 +141,10 @@ export function LiveAttractionData({
   // attraction detail (the live poll strips it via leanParkForShell).
   const effectivePredictionAccuracy = attraction.predictionAccuracy ?? detail?.predictionAccuracy;
 
+  // Whether the detail carries enough to render the "Wartezeiten heute" bar chart.
+  const hasTodayChart =
+    (detail?.hourlyForecast?.length ?? 0) > 0 || (detail?.history?.length ?? 0) > 0;
+
   return (
     <>
       {isError && (
@@ -181,71 +171,83 @@ export function LiveAttractionData({
         </div>
       )}
 
-      {/* Status & Wait Time */}
-      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <WaitTimeInfoCard
+      {/* Unified "live now" card: current wait + status + KI accuracy as the header, with today's
+          "Wartezeiten heute" bar chart in the same box right below — the value and the chart read
+          as one unit. The header paints immediately from the live poll; the chart fills in once the
+          (deduped) detail fetch lands. */}
+      <Card className="mb-8 gap-0 overflow-hidden p-0">
+        <AttractionLivePanel
           waitTime={
             status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
               ? ((mainQueue as StandbyQueue).waitTime ?? null)
               : null
           }
+          status={status}
+          statusIcon={StatusIcon}
+          statusLabel={config.label}
           trend={attraction.trend ?? undefined}
           minWaitToday={calculatedMinWaitToday}
           maxWaitToday={calculatedMaxWaitToday}
-          sparklineHistory={attraction.statistics?.history}
           timezone={park.timezone}
-          statusIcon={StatusIcon}
-          statusLabel={config.label}
+          lastUpdated={mainQueue?.lastUpdated}
+          predictionAccuracy={effectivePredictionAccuracy}
+          accuracyLabel={
+            effectivePredictionAccuracy
+              ? t(ACCURACY_BADGE_KEYS[effectivePredictionAccuracy.badge])
+              : undefined
+          }
           labels={{
-            title: t('waitTime'),
+            waitTime: t('waitTime'),
             minutes: tCommon('minutes'),
+            status: tCommon('status'),
+            updated: tCommon('updated'),
             todayMin: t('todayChart.todayMin'),
             todayMax: t('todayChart.todayMax'),
             min: t('todayChart.min'),
+            predictionAccuracy: t('predictionAccuracy'),
             trendLabel: attraction.trend
               ? tCommon(attraction.trend.toLowerCase() as string)
               : undefined,
           }}
         />
 
-        <StatusInfoCard title={tCommon('status')} icon={StatusIcon} className="gap-3">
-          <ParkStatusBadge status={status} className="text-base" />
-          {mainQueue?.lastUpdated && (
-            <p className="text-muted-foreground mt-2 text-xs">
-              {tCommon('updated')}{' '}
-              <LocalTime time={mainQueue.lastUpdated} timeZone={park.timezone} />
-            </p>
-          )}
-        </StatusInfoCard>
-
-        {effectivePredictionAccuracy && (
-          <StatusInfoCard
-            title={t('predictionAccuracy')}
-            icon={BarChart3}
-            className={cn('gap-3 border-2', ACCURACY_BORDER[effectivePredictionAccuracy.badge])}
-          >
-            <Badge
-              className={cn('text-base', {
-                'bg-destructive/15 text-destructive': effectivePredictionAccuracy.badge === 'poor',
-                'bg-status-down/15 text-status-down': effectivePredictionAccuracy.badge === 'fair',
-                'bg-status-operating/15 text-status-operating':
-                  effectivePredictionAccuracy.badge === 'good' ||
-                  effectivePredictionAccuracy.badge === 'excellent',
-              })}
-            >
-              {t(ACCURACY_BADGE_KEYS[effectivePredictionAccuracy.badge])}{' '}
-            </Badge>
-            <p className="text-muted-foreground mt-2 text-sm">
-              {effectivePredictionAccuracy.message}
-            </p>
-          </StatusInfoCard>
-        )}
-      </div>
+        {/* Today's wait-time bar chart — same card, divided from the header. */}
+        {!mounted || isDetailLoading ? (
+          <div className="border-border/60 space-y-3 border-t p-4 sm:p-6">
+            <Skeleton className="h-6 w-44 max-w-full" />
+            <Skeleton className="h-28 w-full rounded-lg sm:h-32" />
+          </div>
+        ) : hasTodayChart ? (
+          <div className="border-border/60 border-t p-4 sm:p-6">
+            <DailyWaitTimeChartClient
+              history={detail!.history}
+              hourlyForecast={detail!.hourlyForecast}
+              timezone={park.timezone}
+              schedule={detail!.schedule}
+              bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+              translations={{
+                title: tChart('title'),
+                now: tChart('now'),
+                bestSlots: tChart('bestSlots', { hours: '{hours}' }),
+                bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
+                timeSuffix: tChart('timeSuffix'),
+                min: tChart('min'),
+                ratingOptimal: tChart('ratingOptimal'),
+                ratingGood: tChart('ratingGood'),
+                aiBadge: tChart('aiBadge'),
+                aiExplainer: tChart('aiExplainer'),
+                legendRecorded: tChart('legendRecorded'),
+                legendForecast: tChart('legendForecast'),
+              }}
+            />
+          </div>
+        ) : null}
+      </Card>
 
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (
         <section className="mb-8">
-          <h2 className="mb-4 text-xl font-semibold">{t('otherQueues')}</h2>
+          <SectionHeading icon={Layers} title={t('otherQueues')} />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')

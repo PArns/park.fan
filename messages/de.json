@@ -715,7 +715,11 @@
       "ratingGood": "Gute Zeit",
       "min": "min.",
       "todayMin": "Min.",
-      "todayMax": "Max."
+      "todayMax": "Max.",
+      "aiBadge": "KI-Prognose",
+      "aiExplainer": "Vergangene Zeiten sind echte Messungen, künftige Werte sind KI-Vorhersagen.",
+      "legendRecorded": "Aufgezeichnet",
+      "legendForecast": "KI-Prognose"
     },
     "typicalWaits": {
       "title": "Typische Wartezeiten",
@@ -726,7 +730,8 @@
       "busy": "Voll",
       "min": "Min",
       "peak": "Rekord {value} Min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Beste Besuchszeit planen"
   },
   "calendar": {
     "legend": "Legende",

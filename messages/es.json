@@ -715,7 +715,11 @@
       "ratingGood": "Buen momento",
       "min": "min.",
       "todayMin": "Mín.",
-      "todayMax": "Máx."
+      "todayMax": "Máx.",
+      "aiBadge": "Previsión IA",
+      "aiExplainer": "Los tiempos pasados son mediciones reales; los valores futuros son predicciones de IA.",
+      "legendRecorded": "Registrado",
+      "legendForecast": "Previsión IA"
     },
     "typicalWaits": {
       "title": "Tiempos de espera típicos",
@@ -726,7 +730,8 @@
       "busy": "Lleno",
       "min": "min",
       "peak": "Récord {value} min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Planifica el mejor momento para visitar"
   },
   "calendar": {
     "legend": "Leyenda",

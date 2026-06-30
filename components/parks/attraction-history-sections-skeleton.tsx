@@ -2,21 +2,14 @@ import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 
 /**
- * Loading placeholder for <AttractionHistorySections>. Mirrors the daily wait-time chart card and
- * the 30-day history grid card so the layout stays stable (no CLS) while the client-side detail
- * fetch resolves — the same pattern as <ParkStatsSectionSkeleton> on the park page.
+ * Loading placeholder for <AttractionHistorySections>. Mirrors the 30-day history grid card so the
+ * layout stays stable (no CLS) while the client-side detail fetch resolves — the same pattern as
+ * <ParkStatsSectionSkeleton> on the park page. (The daily "Wartezeiten heute" chart now lives in the
+ * unified live card, which renders its own skeleton.)
  */
 export function AttractionHistorySectionsSkeleton() {
   return (
     <div aria-hidden="true">
-      {/* Daily wait-time chart card */}
-      <section className="mb-8">
-        <Card className="space-y-4 p-6">
-          <Skeleton className="h-6 w-56 max-w-full" />
-          <Skeleton className="h-[260px] w-full rounded-lg" />
-        </Card>
-      </section>
-
       {/* History calendar grid card */}
       <section className="mb-8">
         <Card className="space-y-4 p-6">
