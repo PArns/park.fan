@@ -7,6 +7,7 @@ import {
   Activity,
   AlertTriangle,
   Brain,
+  ImageIcon,
   KeyRound,
   LayoutDashboard,
   ListChecks,
@@ -58,6 +59,7 @@ const NAV_GROUPS: NavGroup[] = [
     items: [
       { href: '/admin/parks', label: 'Parks', icon: MapPin },
       { href: '/admin/blog-editor', label: 'Blog editor', icon: PenLine },
+      { href: '/admin/contributions', label: 'Contributions', icon: ImageIcon },
     ],
   },
   {

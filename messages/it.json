@@ -1218,5 +1218,91 @@
       "cloudTitle": "Argomenti"
     },
     "featured": "In evidenza"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Lasciati ispirare",
+      "subtitle": "Dalle colline di airtime alle dark ride a tema — alcuni parchi e attrazioni su park.fan a cui aggiungere le tue foto."
+    },
+    "meta": {
+      "title": "Condividi le tue foto di parchi e attrazioni",
+      "description": "Carica le tue foto di parchi divertimenti e attrazioni. Trascina più immagini, assegnale a un parco o a un’attrazione e contribuisci a far crescere la galleria della community di park.fan."
+    },
+    "hero": {
+      "title": "Condividi le tue foto di parchi e attrazioni",
+      "subtitle": "Hai bei scatti di un coaster, di una parata o di un parco al tramonto? Caricali qui, dicci quale attrazione o parco mostrano e, dopo una rapida verifica, li aggiungiamo alla galleria."
+    },
+    "banner": {
+      "eyebrow": "Galleria della community",
+      "title": "Hai foto di questa attrazione o parco?",
+      "subtitle": "Carica i tuoi scatti e aiuta gli altri fan: trascina, assegna, fatto.",
+      "cta": "Carica foto"
+    },
+    "dropzone": {
+      "title": "Trascina qui le tue foto",
+      "hint": "oppure clicca per sfogliare – JPG, PNG, WebP, AVIF, HEIC o TIFF",
+      "browse": "Scegli i file",
+      "limits": "Fino a {max} foto · max {size} ciascuna",
+      "badType": "formato non supportato",
+      "tooLarge": "file troppo grande",
+      "tooMany": "limite di foto raggiunto",
+      "remove": "Rimuovi foto",
+      "count": "{count, plural, one {# foto} other {# foto}} selezionate (max {max})"
+    },
+    "picker": {
+      "placeholder": "Cerca un’attrazione o un parco…",
+      "searchPlaceholder": "Digita il nome di un parco o di un’attrazione…",
+      "minChars": "Digita almeno {min} caratteri",
+      "empty": "Nessun parco o attrazione trovati",
+      "parks": "Parchi",
+      "attractions": "Attrazioni",
+      "park": "Parco",
+      "attraction": "Attrazione",
+      "inPark": "a {park}",
+      "change": "Modifica"
+    },
+    "form": {
+      "step1": "Aggiungi le tue foto",
+      "step2": "Quale attrazione o parco?",
+      "step3": "Aggiungi dettagli",
+      "step4": "Conferma di essere umano",
+      "captionLabel": "Didascalia (facoltativa)",
+      "captionPlaceholder": "es. Prima fila al tramonto",
+      "creditLabel": "Il tuo nome / credito (facoltativo)",
+      "creditPlaceholder": "Come vuoi essere accreditato",
+      "consentLabel": "Ho scattato io queste foto (o ne detengo i diritti) e concedo a park.fan una licenza per pubblicarle (dopo verifica), con credito dove indicato. Mantengo il mio diritto d’autore.",
+      "consentHint": "Il caricamento è possibile solo dopo aver spuntato questa casella.",
+      "submit": "Invia le foto",
+      "submitting": "Caricamento…",
+      "requirements": "Aggiungi almeno una foto, scegli un’attrazione o un parco, accetta i termini e supera il controllo."
+    },
+    "rights": {
+      "title": "Le tue foto, i tuoi diritti",
+      "intro": "Prima di caricarle, ecco esattamente cosa succede alle tue foto:",
+      "ownership": "Mantieni il diritto d’autore. Non cedi nulla: ci dai solo il permesso di usare la foto.",
+      "license": "Concedi a park.fan una licenza non esclusiva, mondiale e gratuita per mostrare, ridimensionare e ottimizzare la foto su park.fan e sui nostri canali, con credito se lo fornisci.",
+      "moderation": "Ogni caricamento viene verificato da una persona prima di comparire. Niente va online automaticamente.",
+      "ownContent": "Carica solo foto scattate da te o di cui detieni chiaramente i diritti: nessuna persona che non vuole essere mostrata, nessun materiale di terzi.",
+      "withdraw": "Hai cambiato idea? Contattaci e rimuoveremo la tua foto."
+    },
+    "success": {
+      "title": "Grazie!",
+      "message": "{count, plural, one {La tua foto è} other {Le tue # foto sono}} stata/e inviata/e e comparirà/compariranno nella galleria dopo una rapida verifica.",
+      "again": "Carica altre foto",
+      "home": "Torna alla home"
+    },
+    "error": {
+      "generic": "Qualcosa è andato storto. Riprova.",
+      "network": "Errore di rete. Controlla la connessione e riprova.",
+      "turnstile-failed": "Controllo anti-bot fallito. Ricarica e riprova.",
+      "invalid-meta": "Scegli un’attrazione o un parco e accetta i termini.",
+      "no-files": "Aggiungi almeno una foto.",
+      "too-many-files": "Troppe foto in un unico invio.",
+      "bad-type": "Uno dei tuoi file non è un formato immagine supportato.",
+      "too-large": "Uno dei tuoi file è troppo grande.",
+      "storage-failed": "Non è stato possibile salvare le tue foto. Riprova più tardi.",
+      "record-failed": "Non è stato possibile salvare il tuo invio. Riprova più tardi.",
+      "invalid-form": "Il caricamento non era valido. Riprova."
+    }
   }
 }

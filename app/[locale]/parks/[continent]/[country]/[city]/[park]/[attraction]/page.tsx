@@ -16,6 +16,8 @@ import type { Metadata } from 'next';
 import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ShareButtons } from '@/components/common/share-buttons';
+import { ContributeBanner } from '@/components/contribute/contribute-banner';
+import { buildContributeHref } from '@/lib/contribute/prefill';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
   AttractionStructuredData,
@@ -352,6 +354,24 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           <div className="mt-10">
             <ShareButtons url={attractionUrl} title={attractionName} />
           </div>
+
+          {/* Invite visitors to contribute their own photos of this ride */}
+          <ContributeBanner
+            className="mt-8"
+            href={
+              attraction.id
+                ? buildContributeHref({
+                    type: 'attraction',
+                    id: attraction.id,
+                    name: attractionName,
+                    slug: attractionSlug,
+                    url: `/parks/${continent}/${country}/${city}/${parkSlug}/${attractionSlug}`,
+                    country: park.country ?? undefined,
+                    parentParkName: parkName,
+                  })
+                : undefined
+            }
+          />
         </article>
       </PageContainer>
     </>

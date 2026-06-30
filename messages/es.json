@@ -1218,5 +1218,91 @@
       "cloudTitle": "Temas"
     },
     "featured": "Destacado"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Inspírate",
+      "subtitle": "De colinas de airtime a dark rides tematizados: algunos parques y atracciones de park.fan a los que añadir tus fotos."
+    },
+    "meta": {
+      "title": "Comparte tus fotos de parques y atracciones",
+      "description": "Sube tus propias fotos de parques de atracciones y atracciones. Arrastra y suelta varias imágenes, asígnalas a un parque o atracción y ayuda a crecer la galería de la comunidad de park.fan."
+    },
+    "hero": {
+      "title": "Comparte tus fotos de parques y atracciones",
+      "subtitle": "¿Tienes buenas fotos de una montaña rusa, un desfile o un parque al atardecer? Súbelas aquí, dinos qué atracción o parque muestran y, tras una revisión rápida, las añadimos a la galería."
+    },
+    "banner": {
+      "eyebrow": "Galería de la comunidad",
+      "title": "¿Tienes fotos de esta atracción o parque?",
+      "subtitle": "Sube tus fotos y ayuda a otros fans: arrastra, asigna, listo.",
+      "cta": "Subir fotos"
+    },
+    "dropzone": {
+      "title": "Arrastra y suelta tus fotos aquí",
+      "hint": "o haz clic para explorar: JPG, PNG, WebP, AVIF, HEIC o TIFF",
+      "browse": "Elegir archivos",
+      "limits": "Hasta {max} fotos · máx. {size} cada una",
+      "badType": "formato no compatible",
+      "tooLarge": "el archivo es demasiado grande",
+      "tooMany": "límite de fotos alcanzado",
+      "remove": "Quitar foto",
+      "count": "{count, plural, one {# foto} other {# fotos}} seleccionada(s) (máx {max})"
+    },
+    "picker": {
+      "placeholder": "Busca una atracción o parque…",
+      "searchPlaceholder": "Escribe el nombre de un parque o atracción…",
+      "minChars": "Escribe al menos {min} caracteres",
+      "empty": "No se encontraron parques ni atracciones",
+      "parks": "Parques",
+      "attractions": "Atracciones",
+      "park": "Parque",
+      "attraction": "Atracción",
+      "inPark": "en {park}",
+      "change": "Cambiar"
+    },
+    "form": {
+      "step1": "Añade tus fotos",
+      "step2": "¿Qué atracción o parque?",
+      "step3": "Añadir detalles",
+      "step4": "Confirma que eres humano",
+      "captionLabel": "Pie de foto (opcional)",
+      "captionPlaceholder": "p. ej. Primera fila al atardecer",
+      "creditLabel": "Tu nombre / crédito (opcional)",
+      "creditPlaceholder": "Cómo quieres que te acreditemos",
+      "consentLabel": "Hice estas fotos (o tengo los derechos) y concedo a park.fan una licencia para publicarlas (tras revisión), con crédito cuando se indique. Conservo mis derechos de autor.",
+      "consentHint": "Solo se puede subir cuando marcas esta casilla.",
+      "submit": "Enviar fotos",
+      "submitting": "Subiendo…",
+      "requirements": "Añade al menos una foto, elige una atracción o parque, acepta las condiciones y pasa la verificación."
+    },
+    "rights": {
+      "title": "Tus fotos, tus derechos",
+      "intro": "Antes de subirlas, esto es exactamente lo que ocurre con tus fotos:",
+      "ownership": "Conservas los derechos de autor. No cedes nada: solo nos das permiso para usar la foto.",
+      "license": "Concedes a park.fan una licencia no exclusiva, mundial y gratuita para mostrar, redimensionar y optimizar la foto en park.fan y nuestros canales, con crédito si lo proporcionas.",
+      "moderation": "Cada subida la revisa una persona antes de aparecer. Nada se publica automáticamente.",
+      "ownContent": "Sube solo fotos que hayas hecho tú o sobre las que tengas claramente los derechos: sin personas que no quieran aparecer ni material de terceros.",
+      "withdraw": "¿Cambiaste de opinión? Escríbenos y eliminaremos tu foto."
+    },
+    "success": {
+      "title": "¡Gracias!",
+      "message": "{count, plural, one {Tu foto se ha} other {Tus # fotos se han}} enviado y aparecerá(n) en la galería tras una revisión rápida.",
+      "again": "Subir más fotos",
+      "home": "Volver al inicio"
+    },
+    "error": {
+      "generic": "Algo salió mal. Inténtalo de nuevo.",
+      "network": "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
+      "turnstile-failed": "La verificación anti-bot falló. Recarga e inténtalo de nuevo.",
+      "invalid-meta": "Elige una atracción o parque y acepta las condiciones.",
+      "no-files": "Añade al menos una foto.",
+      "too-many-files": "Demasiadas fotos en un mismo envío.",
+      "bad-type": "Uno de tus archivos no es un formato de imagen compatible.",
+      "too-large": "Uno de tus archivos es demasiado grande.",
+      "storage-failed": "No pudimos guardar tus fotos. Inténtalo más tarde.",
+      "record-failed": "No pudimos guardar tu envío. Inténtalo más tarde.",
+      "invalid-form": "El envío tenía un formato incorrecto. Inténtalo de nuevo."
+    }
   }
 }

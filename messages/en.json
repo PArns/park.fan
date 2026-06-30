@@ -1218,5 +1218,91 @@
       "cloudTitle": "Topics"
     },
     "featured": "Featured"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Get inspired",
+      "subtitle": "From airtime hills to themed dark rides — a few of the parks and rides on park.fan you can add your photos to."
+    },
+    "meta": {
+      "title": "Share your park & ride photos",
+      "description": "Upload your own photos of theme parks and rides. Drag & drop multiple images, assign them to a park or attraction, and help grow the park.fan community gallery."
+    },
+    "hero": {
+      "title": "Share your park & ride photos",
+      "subtitle": "Got great shots of a coaster, a parade or a park at sunset? Drop them here, tell us which ride or park they show, and we add them to the gallery after a quick review."
+    },
+    "banner": {
+      "eyebrow": "Community gallery",
+      "title": "Got photos of this ride or park?",
+      "subtitle": "Upload your shots and help fellow fans — drag & drop, assign, done.",
+      "cta": "Upload photos"
+    },
+    "dropzone": {
+      "title": "Drag & drop your photos here",
+      "hint": "or click to browse — JPG, PNG, WebP, AVIF, HEIC or TIFF",
+      "browse": "Choose files",
+      "limits": "Up to {max} photos · max {size} each",
+      "badType": "unsupported format",
+      "tooLarge": "file is too large",
+      "tooMany": "photo limit reached",
+      "remove": "Remove photo",
+      "count": "{count, plural, one {# photo} other {# photos}} selected (max {max})"
+    },
+    "picker": {
+      "placeholder": "Search for a ride or park…",
+      "searchPlaceholder": "Type a park or ride name…",
+      "minChars": "Type at least {min} characters",
+      "empty": "No parks or rides found",
+      "parks": "Parks",
+      "attractions": "Rides & attractions",
+      "park": "Park",
+      "attraction": "Ride",
+      "inPark": "in {park}",
+      "change": "Change"
+    },
+    "form": {
+      "step1": "Add your photos",
+      "step2": "Which ride or park?",
+      "step3": "Add details",
+      "step4": "Confirm you are human",
+      "captionLabel": "Caption (optional)",
+      "captionPlaceholder": "e.g. Front row at sunset",
+      "creditLabel": "Your name / credit (optional)",
+      "creditPlaceholder": "How you want to be credited",
+      "consentLabel": "I took these photos (or hold the rights) and grant park.fan a licence to publish them (after review), crediting me where given. I keep my copyright.",
+      "consentHint": "Uploading is only possible once you tick this box.",
+      "submit": "Submit photos",
+      "submitting": "Uploading…",
+      "requirements": "Add at least one photo, pick a ride or park, accept the terms and pass the check."
+    },
+    "rights": {
+      "title": "Your photos, your rights",
+      "intro": "Before you upload, here is exactly what happens with your pictures:",
+      "ownership": "You keep the copyright. You never sign your rights away — you simply grant us permission to use the photo.",
+      "license": "You grant park.fan a non-exclusive, worldwide, royalty-free licence to show, resize and optimise the photo on park.fan and our channels, with a credit where you provided one.",
+      "moderation": "Every upload is reviewed by a person before it appears. Nothing goes live automatically.",
+      "ownContent": "Only upload photos you took yourself or clearly hold the rights to — no other people who object to being shown, no material owned by someone else.",
+      "withdraw": "Changed your mind? Contact us any time and we will remove your photo."
+    },
+    "success": {
+      "title": "Thank you!",
+      "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review.",
+      "again": "Upload more photos",
+      "home": "Back to home"
+    },
+    "error": {
+      "generic": "Something went wrong. Please try again.",
+      "network": "Network error. Please check your connection and retry.",
+      "turnstile-failed": "Bot check failed. Please reload and try again.",
+      "invalid-meta": "Please pick a ride or park and accept the terms.",
+      "no-files": "Please add at least one photo.",
+      "too-many-files": "Too many photos in one submission.",
+      "bad-type": "One of your files is not a supported image format.",
+      "too-large": "One of your files is too large.",
+      "storage-failed": "We could not store your photos. Please try again later.",
+      "record-failed": "We could not save your submission. Please try again later.",
+      "invalid-form": "The upload was malformed. Please try again."
+    }
   }
 }
