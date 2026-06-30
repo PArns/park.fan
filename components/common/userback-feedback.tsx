@@ -55,17 +55,20 @@ export function UserbackFeedback({ locale }: Props) {
     setLoading(true);
     try {
       // Lazy-load the SDK only on first interaction.
-      const { default: Userback } = await import('@userback/widget');
-      const widget = await Userback(USERBACK_TOKEN, {
+      const mod = await import('@userback/widget');
+      const widget = await mod.default(USERBACK_TOKEN, {
         is_live: process.env.NODE_ENV === 'production',
         widget_settings: {
           language: LOCALE_TO_USERBACK_LANGUAGE[locale] ?? 'en',
           // We provide the trigger button ourselves; keep the native launcher hidden.
           trigger_type: 'api',
         },
+        // Open the form on first load via on_load: the init promise resolves
+        // before the widget iframe has finished mounting, so calling open()
+        // right after it would be a no-op (and require a second click).
+        on_load: () => mod.getUserback()?.open(),
       });
       widgetRef.current = widget;
-      widget.open();
     } catch (error) {
       console.error('[Userback] Failed to initialise feedback widget:', error);
     } finally {
