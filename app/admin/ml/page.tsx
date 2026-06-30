@@ -18,8 +18,7 @@ import type {
   TftTrainingProgress,
   ComparisonRow,
   MlComparisonBoard,
-  IntradayVerdict,
-  ChallengerVerdict,
+  ShadowComparisonRow,
 } from '@/lib/api/admin';
 import {
   EmptyPanel,
@@ -158,92 +157,186 @@ const SEGMENT_LABELS: Record<string, string> = {
   quiet: 'quiet',
   headliner: 'hdlnr',
 };
-
-type NormalizedVerdict = {
-  segment: string;
-  n: number;
-  challengerMae: number;
-  catboostMae: number;
-  delta: number;
-  wins: boolean;
+const SEGMENT_ORDER: Record<string, number> = { busy: 0, all: 1, mid: 2, quiet: 3 };
+// Lead buckets differ per board (PCN is hourly, Shape daily); 'all' (the aggregate) sorts last.
+const LEAD_ORDER: Record<string, number> = {
+  '<=3h': 0,
+  '3-6h': 1,
+  '>6h': 2,
+  '<=3d': 0,
+  '4-7d': 1,
+  '>7d': 2,
+  all: 9,
 };
 
-// PCN and Shape verdicts carry the same numbers under different field names; normalize so
-// one board component renders both.
-function normalizeVerdict(v: IntradayVerdict | ChallengerVerdict): NormalizedVerdict {
-  const isPcn = 'pcnMae' in v;
-  return {
-    segment: v.segment,
-    n: v.n,
-    challengerMae: isPcn ? v.pcnMae : v.challengerMae,
-    catboostMae: v.catboostMae,
-    delta: v.delta,
-    wins: isPcn ? v.pcnWins : v.challengerWins,
-  };
+// Postgres numerics arrive as strings; coerce defensively.
+const num = (v: string | number) => (typeof v === 'number' ? v : parseFloat(v));
+
+type ShadowCell = {
+  segment: string;
+  leadBucket: string;
+  n: number;
+  actual: number;
+  catboostMae: number | null;
+  challengerMae: number | null;
+  challengerBias: number | null;
+  challengerPred: number | null;
+  delta: number | null; // catMae − challengerMae (>0 ⇒ challenger better)
+};
+
+type ModelAcc = { n: number; maeW: number; biasW: number; actW: number; predW: number };
+
+// Pool the per-date board rows into one n-weighted cell per (segment, lead bucket), holding
+// CatBoost and the challenger side by side. The matched population is identical across models
+// by construction, so n / mean-actual are comparable.
+function aggregateShadowRows(rows: ShadowComparisonRow[], challengerModel: string): ShadowCell[] {
+  const cells = new Map<string, { catboost?: ModelAcc; challenger?: ModelAcc }>();
+  for (const r of rows) {
+    const key = `${r.segment}|${r.leadBucket}`;
+    const cell = cells.get(key) ?? {};
+    const slot = r.model === challengerModel ? 'challenger' : 'catboost';
+    const acc = (cell[slot] ??= { n: 0, maeW: 0, biasW: 0, actW: 0, predW: 0 });
+    const n = num(r.n);
+    acc.n += n;
+    acc.maeW += num(r.mae) * n;
+    acc.biasW += num(r.bias) * n;
+    acc.actW += num(r.meanActual) * n;
+    acc.predW += num(r.meanPred) * n;
+    cells.set(key, cell);
+  }
+  const out: ShadowCell[] = [];
+  for (const [key, { catboost, challenger }] of cells) {
+    const [segment, leadBucket] = key.split('|');
+    const cat = catboost?.n ? catboost.maeW / catboost.n : null;
+    const ch = challenger?.n ? challenger.maeW / challenger.n : null;
+    const src = challenger?.n ? challenger : catboost; // mean-actual is shared; use whichever exists
+    out.push({
+      segment,
+      leadBucket,
+      n: Math.min(challenger?.n ?? Infinity, catboost?.n ?? Infinity),
+      actual: src?.n ? src.actW / src.n : 0,
+      catboostMae: cat,
+      challengerMae: ch,
+      challengerBias: challenger?.n ? challenger.biasW / challenger.n : null,
+      challengerPred: challenger?.n ? challenger.predW / challenger.n : null,
+      delta: cat != null && ch != null ? cat - ch : null,
+    });
+  }
+  return out.sort(
+    (a, b) =>
+      (SEGMENT_ORDER[a.segment] ?? 9) - (SEGMENT_ORDER[b.segment] ?? 9) ||
+      (LEAD_ORDER[a.leadBucket] ?? 5) - (LEAD_ORDER[b.leadBucket] ?? 5)
+  );
 }
 
-function ShadowVerdictBoard({
+function biasColor(bias: number) {
+  const m = Math.abs(bias);
+  return m < 3 ? 'text-emerald-400' : m < 8 ? 'text-amber-400' : 'text-red-400';
+}
+
+function ShadowBoard({
   challengerLabel,
-  verdict,
+  challengerModel,
+  rows,
   note,
   error,
 }: {
   challengerLabel: string;
-  verdict?: (IntradayVerdict | ChallengerVerdict)[];
+  challengerModel: string;
+  rows?: ShadowComparisonRow[];
   note?: string;
   error?: string;
 }) {
-  const rows = (verdict ?? []).map(normalizeVerdict);
+  const cells = aggregateShadowRows(rows ?? [], challengerModel);
   return (
     <Card className="border-border/60">
       <CardHeader className="pb-2">
         <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-          {challengerLabel} vs CatBoost
+          {challengerLabel} vs CatBoost · by segment × lead
         </CardTitle>
       </CardHeader>
       <CardContent>
         {error ? (
           <p className="text-xs text-red-400">{error}</p>
-        ) : rows.length === 0 ? (
+        ) : cells.length === 0 ? (
           <p className="text-muted-foreground text-xs">{note ?? 'No comparison data yet'}</p>
         ) : (
-          <div className="space-y-0">
-            <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
-              <span>Seg</span>
-              <span className="text-right">n</span>
-              <span className="text-right">CatB</span>
-              <span className="text-right">{challengerLabel}</span>
-              <span className="text-right">Δ</span>
-            </div>
-            {rows.map((r) => (
-              <div
-                key={r.segment}
-                className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
-              >
-                <span className="font-mono">{SEGMENT_LABELS[r.segment] ?? r.segment}</span>
-                <span className="text-muted-foreground text-right font-mono tabular-nums">
-                  {r.n.toLocaleString('en-GB')}
-                </span>
-                <span className={`text-right font-mono tabular-nums ${maeColor(r.catboostMae)}`}>
-                  {r.catboostMae.toFixed(1)}
-                </span>
-                <span
-                  className={`text-right font-mono tabular-nums ${
-                    r.wins ? 'font-semibold text-blue-400' : maeColor(r.challengerMae)
-                  }`}
-                >
-                  {r.challengerMae.toFixed(1)}
-                </span>
-                <span
-                  className={`text-right font-mono tabular-nums ${
-                    r.wins ? 'text-emerald-400' : 'text-red-400'
-                  }`}
-                >
-                  {r.delta > 0 ? '+' : ''}
-                  {r.delta.toFixed(1)}
-                </span>
+          <div className="overflow-x-auto">
+            <div className="min-w-[34rem]">
+              <div className="border-border/60 text-muted-foreground grid grid-cols-9 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
+                <span>Seg</span>
+                <span>Lead</span>
+                <span className="text-right">n</span>
+                <span className="text-right">Act</span>
+                <span className="text-right">Pred</span>
+                <span className="text-right">Bias</span>
+                <span className="text-right">CatB</span>
+                <span className="text-right">{challengerLabel}</span>
+                <span className="text-right">Δ</span>
               </div>
-            ))}
+              {cells.map((c) => {
+                const wins = c.delta != null && c.delta > 0;
+                const isSummary = c.leadBucket === 'all';
+                return (
+                  <div
+                    key={`${c.segment}|${c.leadBucket}`}
+                    className={`border-border/40 grid grid-cols-9 gap-1 border-b py-1 text-xs last:border-0 ${
+                      isSummary ? 'bg-muted/30 font-medium' : ''
+                    }`}
+                  >
+                    <span className="font-mono">{SEGMENT_LABELS[c.segment] ?? c.segment}</span>
+                    <span className="text-muted-foreground font-mono">{c.leadBucket}</span>
+                    <span className="text-muted-foreground text-right font-mono tabular-nums">
+                      {c.n.toLocaleString('en-GB')}
+                    </span>
+                    <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
+                    <span className="text-right font-mono tabular-nums">
+                      {c.challengerPred != null ? c.challengerPred.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.challengerBias == null
+                          ? 'text-muted-foreground'
+                          : biasColor(c.challengerBias)
+                      }`}
+                    >
+                      {c.challengerBias == null
+                        ? '—'
+                        : `${c.challengerBias > 0 ? '+' : ''}${c.challengerBias.toFixed(1)}`}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.catboostMae != null ? maeColor(c.catboostMae) : 'text-muted-foreground'
+                      }`}
+                    >
+                      {c.catboostMae != null ? c.catboostMae.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.challengerMae == null
+                          ? 'text-muted-foreground'
+                          : wins
+                            ? 'font-semibold text-blue-400'
+                            : maeColor(c.challengerMae)
+                      }`}
+                    >
+                      {c.challengerMae != null ? c.challengerMae.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.delta == null
+                          ? 'text-muted-foreground'
+                          : wins
+                            ? 'text-emerald-400'
+                            : 'text-red-400'
+                      }`}
+                    >
+                      {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         )}
       </CardContent>
@@ -572,20 +665,25 @@ export default function MlPage() {
       {comparison.data && (
         <Section icon={GitCompare} title="Shadow model boards (vs CatBoost)">
           <p className="text-muted-foreground text-sm">
-            Per-segment MAE at lead &ldquo;all&rdquo;, n-weighted. Δ &gt; 0 (blue/green) means the
-            challenger beats CatBoost. PCN serves intraday behind a server flag; Shape is
-            shadow-only.
+            n-weighted MAE per segment × lead bucket (highlighted row = lead &ldquo;all&rdquo;
+            aggregate). <span className="font-medium">Act</span>/
+            <span className="font-medium">Pred</span> are mean realised vs predicted minutes;{' '}
+            <span className="font-medium">Bias</span> is the challenger&rsquo;s signed mean error
+            (Pred − Act). Δ &gt; 0 (green) means the challenger beats CatBoost. PCN serves intraday
+            behind a server flag; Shape is shadow-only.
           </p>
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <ShadowVerdictBoard
+          <div className="grid grid-cols-1 gap-3">
+            <ShadowBoard
               challengerLabel="PCN"
-              verdict={comparison.data.intraday.verdict}
+              challengerModel="pcn"
+              rows={comparison.data.intraday.rows}
               note={comparison.data.intraday.note}
               error={comparison.data.intraday.error}
             />
-            <ShadowVerdictBoard
+            <ShadowBoard
               challengerLabel="Shape"
-              verdict={comparison.data.shape.verdict}
+              challengerModel="shape"
+              rows={comparison.data.shape.rows}
               note={comparison.data.shape.note}
               error={comparison.data.shape.error}
             />
