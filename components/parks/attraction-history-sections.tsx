@@ -92,6 +92,10 @@ export function AttractionHistorySections({
               min: t('min'),
               ratingOptimal: t('ratingOptimal'),
               ratingGood: t('ratingGood'),
+              aiBadge: t('aiBadge'),
+              aiExplainer: t('aiExplainer'),
+              legendRecorded: t('legendRecorded'),
+              legendForecast: t('legendForecast'),
             }}
           />
         </section>

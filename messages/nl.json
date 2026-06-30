@@ -715,7 +715,11 @@
       "ratingGood": "Goed moment",
       "min": "min.",
       "todayMin": "Min.",
-      "todayMax": "Max."
+      "todayMax": "Max.",
+      "aiBadge": "AI-voorspelling",
+      "aiExplainer": "Tijden in het verleden zijn echte metingen; komende waarden zijn AI-voorspellingen.",
+      "legendRecorded": "Geregistreerd",
+      "legendForecast": "AI-voorspelling"
     },
     "typicalWaits": {
       "title": "Typische wachttijden",
@@ -726,7 +730,8 @@
       "busy": "Druk",
       "min": "min",
       "peak": "Record {value} min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Plan de beste bezoektijd"
   },
   "calendar": {
     "legend": "Legenda",

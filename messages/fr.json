@@ -715,7 +715,11 @@
       "ratingGood": "Bon créneau",
       "min": "min.",
       "todayMin": "Min.",
-      "todayMax": "Max."
+      "todayMax": "Max.",
+      "aiBadge": "Prévision IA",
+      "aiExplainer": "Les temps passés sont des mesures réelles ; les valeurs à venir sont des prévisions par IA.",
+      "legendRecorded": "Enregistré",
+      "legendForecast": "Prévision IA"
     },
     "typicalWaits": {
       "title": "Temps d’attente typiques",
@@ -726,7 +730,8 @@
       "busy": "Chargé",
       "min": "min",
       "peak": "Record {value} min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Planifier le meilleur moment pour visiter"
   },
   "calendar": {
     "legend": "Légende",

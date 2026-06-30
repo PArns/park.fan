@@ -677,7 +677,11 @@
       "ratingGood": "Buon orario",
       "min": "min.",
       "todayMin": "Min.",
-      "todayMax": "Max."
+      "todayMax": "Max.",
+      "aiBadge": "Previsione IA",
+      "aiExplainer": "I tempi passati sono misurazioni reali; i valori futuri sono previsioni dell'IA.",
+      "legendRecorded": "Registrato",
+      "legendForecast": "Previsione IA"
     },
     "headliner": {
       "title": "Attrazione principale",
@@ -726,7 +730,8 @@
       "busy": "Pieno",
       "min": "min",
       "peak": "Record {value} min · {date}"
-    }
+    },
+    "sectionPlanVisit": "Pianifica il momento migliore per visitare"
   },
   "calendar": {
     "legend": "Legenda",

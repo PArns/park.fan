@@ -1,7 +1,8 @@
 import { ParkWithAttractions, ParkAttraction } from '@/lib/api/types';
 import { getTranslations } from 'next-intl/server';
-import { ChevronDown, MapPin, Clock, Users, Zap } from 'lucide-react';
+import { ChevronDown, MapPin, Clock, Users, Zap, HelpCircle } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { SectionHeading } from '@/components/common/section-heading';
 import { stripNewPrefix } from '@/lib/utils';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { buildAttractionFaqItems, type AttractionFaqIconName } from '@/lib/faq/attraction-faq';
@@ -31,8 +32,8 @@ export async function AttractionFAQSection({ attraction, park }: AttractionFAQSe
   if (faqs.length === 0) return null;
 
   return (
-    <section className="space-y-4">
-      <h2 className="text-2xl font-bold">{t('title', { attraction: attractionName })}</h2>
+    <section>
+      <SectionHeading icon={HelpCircle} title={t('title', { attraction: attractionName })} />
       <div className="space-y-3">
         {faqs.map((faq, index) => {
           const Icon = ICON_MAP[faq.iconName];

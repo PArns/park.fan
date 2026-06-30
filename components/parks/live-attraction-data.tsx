@@ -2,25 +2,15 @@
 
 import { useLiveAttractionData } from '@/lib/hooks/use-live-attraction-data';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import {
-  AlertCircle,
-  Loader2,
-  Clock,
-  AlertTriangle,
-  Wrench,
-  XCircle,
-  BarChart3,
-} from 'lucide-react';
+import { AlertCircle, Loader2, Clock, AlertTriangle, Wrench, XCircle, Layers } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { StatusInfoCard } from '@/components/common/status-info-card';
-import { WaitTimeInfoCard } from '@/components/parks/wait-time-info-card';
+import { SectionHeading } from '@/components/common/section-heading';
+import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
-import { cn } from '@/lib/utils';
 import type {
   ParkWithAttractions,
   AttractionStatus,
@@ -62,14 +52,6 @@ const ACCURACY_BADGE_KEYS = {
   poor: 'accuracy.poor',
   insufficient_data: 'accuracy.insufficient_data',
 } as const satisfies Record<AccuracyBadge, string>;
-
-const ACCURACY_BORDER: Record<AccuracyBadge, string> = {
-  excellent: 'border-status-operating/40',
-  good: 'border-status-operating/40',
-  fair: 'border-status-down/40',
-  poor: 'border-destructive/40',
-  insufficient_data: 'border-border',
-};
 
 function getMainQueue(queues?: QueueDataItem[]): QueueDataItem | null {
   if (!queues || queues.length === 0) return null;
@@ -181,71 +163,49 @@ export function LiveAttractionData({
         </div>
       )}
 
-      {/* Status & Wait Time */}
-      <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <WaitTimeInfoCard
+      {/* Live now — compact hero panel (wait time + status + KI accuracy) */}
+      <div className="mb-8">
+        <AttractionLivePanel
           waitTime={
             status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
               ? ((mainQueue as StandbyQueue).waitTime ?? null)
               : null
           }
+          status={status}
+          statusIcon={StatusIcon}
+          statusLabel={config.label}
           trend={attraction.trend ?? undefined}
           minWaitToday={calculatedMinWaitToday}
           maxWaitToday={calculatedMaxWaitToday}
           sparklineHistory={attraction.statistics?.history}
           timezone={park.timezone}
-          statusIcon={StatusIcon}
-          statusLabel={config.label}
+          lastUpdated={mainQueue?.lastUpdated}
+          predictionAccuracy={effectivePredictionAccuracy}
+          accuracyLabel={
+            effectivePredictionAccuracy
+              ? t(ACCURACY_BADGE_KEYS[effectivePredictionAccuracy.badge])
+              : undefined
+          }
           labels={{
-            title: t('waitTime'),
+            waitTime: t('waitTime'),
             minutes: tCommon('minutes'),
+            status: tCommon('status'),
+            updated: tCommon('updated'),
             todayMin: t('todayChart.todayMin'),
             todayMax: t('todayChart.todayMax'),
             min: t('todayChart.min'),
+            predictionAccuracy: t('predictionAccuracy'),
             trendLabel: attraction.trend
               ? tCommon(attraction.trend.toLowerCase() as string)
               : undefined,
           }}
         />
-
-        <StatusInfoCard title={tCommon('status')} icon={StatusIcon} className="gap-3">
-          <ParkStatusBadge status={status} className="text-base" />
-          {mainQueue?.lastUpdated && (
-            <p className="text-muted-foreground mt-2 text-xs">
-              {tCommon('updated')}{' '}
-              <LocalTime time={mainQueue.lastUpdated} timeZone={park.timezone} />
-            </p>
-          )}
-        </StatusInfoCard>
-
-        {effectivePredictionAccuracy && (
-          <StatusInfoCard
-            title={t('predictionAccuracy')}
-            icon={BarChart3}
-            className={cn('gap-3 border-2', ACCURACY_BORDER[effectivePredictionAccuracy.badge])}
-          >
-            <Badge
-              className={cn('text-base', {
-                'bg-destructive/15 text-destructive': effectivePredictionAccuracy.badge === 'poor',
-                'bg-status-down/15 text-status-down': effectivePredictionAccuracy.badge === 'fair',
-                'bg-status-operating/15 text-status-operating':
-                  effectivePredictionAccuracy.badge === 'good' ||
-                  effectivePredictionAccuracy.badge === 'excellent',
-              })}
-            >
-              {t(ACCURACY_BADGE_KEYS[effectivePredictionAccuracy.badge])}{' '}
-            </Badge>
-            <p className="text-muted-foreground mt-2 text-sm">
-              {effectivePredictionAccuracy.message}
-            </p>
-          </StatusInfoCard>
-        )}
       </div>
 
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (
         <section className="mb-8">
-          <h2 className="mb-4 text-xl font-semibold">{t('otherQueues')}</h2>
+          <SectionHeading icon={Layers} title={t('otherQueues')} />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {attraction.queues
               .filter((q) => q.queueType !== 'STANDBY')

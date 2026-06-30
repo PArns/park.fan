@@ -5,10 +5,10 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
-import { MapPin } from 'lucide-react';
+import { MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
-import { Separator } from '@/components/ui/separator';
+import { SectionHeading } from '@/components/common/section-heading';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -32,7 +32,7 @@ import { RopeDropCard } from '@/components/parks/rope-drop-card';
 import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
-import { stripNewPrefix } from '@/lib/utils';
+import { stripNewPrefix, cn } from '@/lib/utils';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -229,8 +229,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
         />
 
         <article itemScope itemType="https://schema.org/TouristAttraction">
-          {/* Header */}
-          <div className="mb-8">
+          {/* Header — flows directly into the live panel below as one "live now" hero unit */}
+          <div className="mb-4">
             <GlassCard variant="medium" className="relative">
               {attraction.id && (
                 <div className="absolute top-4 right-4 z-20 flex items-center justify-center">
@@ -288,55 +288,72 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               closing caps displayed times to the operating day. The "no need to
               rush" note renders only when some ride in the park IS recommended,
               so it never sits on every headliner of an unrecommended park. */}
-          {attraction.ropeDrop && (
-            <RopeDropCard
-              ropeDrop={attraction.ropeDrop}
+          {/* Chapter: plan your visit — rope-drop, typical waits, today's chart and the
+              30-day history grid are grouped under one heading so the page reads as
+              chapters instead of a long stack of separator-divided blocks. */}
+          <section className="mt-10">
+            <SectionHeading icon={Sparkles} title={t('sectionPlanVisit')} />
+
+            {/* Rope-drop + typical waits — both server-rendered in the shell for
+                headliners, so they paint together; side by side on wide screens,
+                stacked when only one is present. */}
+            {(attraction.ropeDrop || attraction.typicalWaits?.displayable) && (
+              <div
+                className={cn(
+                  'mb-6 grid items-start gap-6',
+                  attraction.ropeDrop && attraction.typicalWaits?.displayable && 'lg:grid-cols-2'
+                )}
+              >
+                {attraction.ropeDrop && (
+                  <RopeDropCard
+                    ropeDrop={attraction.ropeDrop}
+                    timezone={park.timezone}
+                    todayClosingUtc={
+                      park.schedule?.find(
+                        (s) =>
+                          s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
+                          s.scheduleType === 'OPERATING'
+                      )?.closingTime ?? null
+                    }
+                    parkHasRecommendations={(park.attractions ?? []).some(
+                      (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
+                    )}
+                  />
+                )}
+                {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
+                    rendered in the static shell for SEO + instant paint. Non-headliner
+                    displayable rides fall back to the client render below. */}
+                {attraction.typicalWaits?.displayable && (
+                  <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
+                )}
+              </div>
+            )}
+
+            {/* Daily wait-time chart + 30-day history grid — client-loaded from the
+                CDN-cached attraction detail route so the heavy history/forecast
+                time-series stays out of the ISR shell (a skeleton holds the layout
+                until it lands), and the best-travel-time data loads last. */}
+            <AttractionHistorySections
+              continent={continent}
+              country={country}
+              city={city}
+              parkSlug={parkSlug}
+              attractionSlug={attractionSlug}
+              attractionName={attractionName}
               timezone={park.timezone}
-              todayClosingUtc={
-                park.schedule?.find(
-                  (s) =>
-                    s.date === formatInTimeZone(new Date(), park.timezone, 'yyyy-MM-dd') &&
-                    s.scheduleType === 'OPERATING'
-                )?.closingTime ?? null
-              }
-              parkHasRecommendations={(park.attractions ?? []).some(
-                (a) => a.ropeDrop && (a.ropeDrop.worth || isEveningBetter(a.ropeDrop))
-              )}
-              className="mb-8"
+              bestVisitTimes={attraction.bestVisitTimes}
+              suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
             />
-          )}
+          </section>
 
-          <Separator className="my-8" />
+          {/* Chapter: FAQ (its own icon heading lives inside the section) */}
+          <section className="mt-10">
+            <AttractionFAQSection attraction={attraction} park={park} />
+          </section>
 
-          {/* Daily wait-time chart + 30-day history grid — client-loaded from the CDN-cached
-              attraction detail route so the heavy history/forecast time-series stays out of the
-              ISR shell (a skeleton holds the layout until it lands). */}
-          {/* Typical (P50) vs busy (P90) peak waits — precomputed per headliner,
-              rendered in the static shell for SEO + instant paint. Non-headliner
-              displayable rides fall back to the client render in the section below. */}
-          {attraction.typicalWaits?.displayable && (
-            <section className="mb-8">
-              <AttractionTypicalWaits typicalWaits={attraction.typicalWaits} />
-            </section>
-          )}
-
-          <AttractionHistorySections
-            continent={continent}
-            country={country}
-            city={city}
-            parkSlug={parkSlug}
-            attractionSlug={attractionSlug}
-            attractionName={attractionName}
-            timezone={park.timezone}
-            bestVisitTimes={attraction.bestVisitTimes}
-            suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
-          />
-
-          <Separator className="my-8" />
-          <AttractionFAQSection attraction={attraction} park={park} />
-
-          <Separator className="my-8" />
-          <ShareButtons url={attractionUrl} title={attractionName} />
+          <div className="mt-10">
+            <ShareButtons url={attractionUrl} title={attractionName} />
+          </div>
         </article>
       </PageContainer>
     </>
