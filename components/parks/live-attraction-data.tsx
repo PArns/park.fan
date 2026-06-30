@@ -5,8 +5,10 @@ import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
 import { AlertCircle, Loader2, Clock, AlertTriangle, Wrench, XCircle, Layers } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { SectionHeading } from '@/components/common/section-heading';
 import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
+import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { useTranslations } from 'next-intl';
@@ -76,6 +78,7 @@ export function LiveAttractionData({
   parkSlug,
 }: LiveAttractionDataProps) {
   const t = useTranslations('attractions');
+  const tChart = useTranslations('attractions.todayChart');
   const tCommon = useTranslations('common');
   // Gate the live-refetch indicator on mount so SSR and first client render agree (the page is
   // force-dynamic; the refetch-on-mount flips `isFetching` true and would otherwise mismatch).
@@ -90,10 +93,11 @@ export function LiveAttractionData({
     initialPark,
   });
 
-  // Prediction accuracy lives in the attraction *detail* (stripped from the live park poll). It's
-  // fetched client-side via the CDN-cached detail route — shared (deduped) with the daily chart's
+  // The attraction *detail* (stripped from the live park poll) carries the prediction accuracy AND
+  // the daily "Wartezeiten heute" time-series (history/forecast/schedule/bestVisitTimes). It's
+  // fetched client-side via the CDN-cached detail route — shared (deduped) with the 30-day grid's
   // <AttractionHistorySections> through React Query's query key, so this adds no extra request.
-  const { data: detail } = useAttractionDetail({
+  const { data: detail, isLoading: isDetailLoading } = useAttractionDetail({
     continent,
     country,
     city,
@@ -137,6 +141,10 @@ export function LiveAttractionData({
   // attraction detail (the live poll strips it via leanParkForShell).
   const effectivePredictionAccuracy = attraction.predictionAccuracy ?? detail?.predictionAccuracy;
 
+  // Whether the detail carries enough to render the "Wartezeiten heute" bar chart.
+  const hasTodayChart =
+    (detail?.hourlyForecast?.length ?? 0) > 0 || (detail?.history?.length ?? 0) > 0;
+
   return (
     <>
       {isError && (
@@ -163,8 +171,11 @@ export function LiveAttractionData({
         </div>
       )}
 
-      {/* Live now — compact hero panel (wait time + status + KI accuracy) */}
-      <div className="mb-8">
+      {/* Unified "live now" card: current wait + status + KI accuracy as the header, with today's
+          "Wartezeiten heute" bar chart in the same box right below — the value and the chart read
+          as one unit. The header paints immediately from the live poll; the chart fills in once the
+          (deduped) detail fetch lands. */}
+      <Card className="mb-8 gap-0 overflow-hidden p-0">
         <AttractionLivePanel
           waitTime={
             status === 'OPERATING' && !isParkClosed && mainQueue && 'waitTime' in mainQueue
@@ -177,7 +188,6 @@ export function LiveAttractionData({
           trend={attraction.trend ?? undefined}
           minWaitToday={calculatedMinWaitToday}
           maxWaitToday={calculatedMaxWaitToday}
-          sparklineHistory={attraction.statistics?.history}
           timezone={park.timezone}
           lastUpdated={mainQueue?.lastUpdated}
           predictionAccuracy={effectivePredictionAccuracy}
@@ -200,7 +210,39 @@ export function LiveAttractionData({
               : undefined,
           }}
         />
-      </div>
+
+        {/* Today's wait-time bar chart — same card, divided from the header. */}
+        {!mounted || isDetailLoading ? (
+          <div className="border-border/60 space-y-3 border-t p-4 sm:p-6">
+            <Skeleton className="h-6 w-44 max-w-full" />
+            <Skeleton className="h-28 w-full rounded-lg sm:h-32" />
+          </div>
+        ) : hasTodayChart ? (
+          <div className="border-border/60 border-t p-4 sm:p-6">
+            <DailyWaitTimeChartClient
+              history={detail!.history}
+              hourlyForecast={detail!.hourlyForecast}
+              timezone={park.timezone}
+              schedule={detail!.schedule}
+              bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+              translations={{
+                title: tChart('title'),
+                now: tChart('now'),
+                bestSlots: tChart('bestSlots', { hours: '{hours}' }),
+                bestSlotsGood: tChart('bestSlotsGood', { hours: '{hours}' }),
+                timeSuffix: tChart('timeSuffix'),
+                min: tChart('min'),
+                ratingOptimal: tChart('ratingOptimal'),
+                ratingGood: tChart('ratingGood'),
+                aiBadge: tChart('aiBadge'),
+                aiExplainer: tChart('aiExplainer'),
+                legendRecorded: tChart('legendRecorded'),
+                legendForecast: tChart('legendForecast'),
+              }}
+            />
+          </div>
+        ) : null}
+      </Card>
 
       {/* Other Queue Types */}
       {attraction.queues && attraction.queues.length > 1 && (

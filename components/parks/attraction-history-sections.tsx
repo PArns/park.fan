@@ -1,13 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { useAttractionDetail } from '@/lib/hooks/use-attraction-detail';
-import { DailyWaitTimeChartClient } from './daily-wait-time-chart-client';
 import { AttractionHistoryGrid } from './attraction-history-grid';
 import { AttractionTypicalWaits } from './attraction-typical-waits';
 import { AttractionHistorySectionsSkeleton } from './attraction-history-sections-skeleton';
-import type { BestVisitSlot } from '@/lib/api/types';
 
 interface AttractionHistorySectionsProps {
   continent: string;
@@ -16,21 +13,18 @@ interface AttractionHistorySectionsProps {
   parkSlug: string;
   attractionSlug: string;
   attractionName: string;
-  timezone: string;
-  /** From the lean park snapshot (kept in the shell) — fallback if the detail omits it. */
-  bestVisitTimes?: BestVisitSlot[] | null;
   /** True when the shell already rendered typical-waits (headliner) — skip it here. */
   suppressTypicalWaits?: boolean;
 }
 
 /**
- * Client wrapper for the attraction's daily wait-time chart + 30-day history grid.
+ * Client wrapper for the attraction's 30-day history grid (+ typical-waits for non-headliners).
  *
- * These were server-rendered in the static shell, which baked the heavy `history` /
- * `hourlyForecast` time-series into every per-attraction × per-locale ISR write (the dominant
- * write source). They now load client-side via the CDN-cached `/api/parks/.../attractions/<slug>`
- * route (see {@link useAttractionDetail}), shrinking the shell to the lean park data + JSON-LD.
- * The SEO-critical content (structured data, FAQ) stays server-rendered.
+ * The heavy `history` / `hourlyForecast` time-series loads client-side via the CDN-cached
+ * `/api/parks/.../attractions/<slug>` route (see {@link useAttractionDetail}) so it never bakes
+ * into the per-attraction ISR write. The "Wartezeiten heute" daily chart now lives in the unified
+ * live card (see {@link LiveAttractionData}), which shares this same query; here we render only the
+ * historical calendar (and the typical-waits summary when it wasn't server-rendered in the shell).
  *
  * Shows the skeleton until mounted + loaded so the static prerender renders a stable placeholder.
  */
@@ -41,12 +35,9 @@ export function AttractionHistorySections({
   parkSlug,
   attractionSlug,
   attractionName,
-  timezone,
-  bestVisitTimes,
   suppressTypicalWaits,
 }: AttractionHistorySectionsProps) {
   const mounted = useMounted();
-  const t = useTranslations('attractions.todayChart');
   const { data: detail, isLoading } = useAttractionDetail({
     continent,
     country,
@@ -61,8 +52,6 @@ export function AttractionHistorySections({
 
   if (!detail) return null;
 
-  const hasChart = (detail.hourlyForecast?.length ?? 0) > 0 || (detail.history?.length ?? 0) > 0;
-
   return (
     <>
       {/* Typical (P50) vs busy (P90) peak waits. For headliners this is rendered
@@ -74,33 +63,7 @@ export function AttractionHistorySections({
         </section>
       )}
 
-      {/* Daily chart and historical calendar */}
-      {hasChart && (
-        <section className="mb-8">
-          <DailyWaitTimeChartClient
-            history={detail.history}
-            hourlyForecast={detail.hourlyForecast}
-            timezone={timezone}
-            schedule={detail.schedule}
-            bestVisitTimes={detail.bestVisitTimes ?? bestVisitTimes}
-            translations={{
-              title: t('title'),
-              now: t('now'),
-              bestSlots: t('bestSlots', { hours: '{hours}' }),
-              bestSlotsGood: t('bestSlotsGood', { hours: '{hours}' }),
-              timeSuffix: t('timeSuffix'),
-              min: t('min'),
-              ratingOptimal: t('ratingOptimal'),
-              ratingGood: t('ratingGood'),
-              aiBadge: t('aiBadge'),
-              aiExplainer: t('aiExplainer'),
-              legendRecorded: t('legendRecorded'),
-              legendForecast: t('legendForecast'),
-            }}
-          />
-        </section>
-      )}
-
+      {/* 30-day historical calendar */}
       <section className="mb-8">
         <AttractionHistoryGrid
           attraction={{ name: attractionName, history: detail.history, schedule: detail.schedule }}

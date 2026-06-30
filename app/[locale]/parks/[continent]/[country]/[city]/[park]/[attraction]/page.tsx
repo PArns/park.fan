@@ -329,10 +329,10 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </div>
             )}
 
-            {/* Daily wait-time chart + 30-day history grid — client-loaded from the
-                CDN-cached attraction detail route so the heavy history/forecast
-                time-series stays out of the ISR shell (a skeleton holds the layout
-                until it lands), and the best-travel-time data loads last. */}
+            {/* 30-day history grid — client-loaded from the CDN-cached attraction
+                detail route so the heavy history time-series stays out of the ISR
+                shell (a skeleton holds the layout until it lands). The "Wartezeiten
+                heute" daily chart now lives in the unified live card above. */}
             <AttractionHistorySections
               continent={continent}
               country={country}
@@ -340,8 +340,6 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               parkSlug={parkSlug}
               attractionSlug={attractionSlug}
               attractionName={attractionName}
-              timezone={park.timezone}
-              bestVisitTimes={attraction.bestVisitTimes}
               suppressTypicalWaits={!!attraction.typicalWaits?.displayable}
             />
           </section>

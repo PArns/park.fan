@@ -3,7 +3,6 @@
 import { useMemo, useRef, useEffect } from 'react';
 import { useLocale } from 'next-intl';
 import { Clock, Sparkles } from 'lucide-react';
-import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
@@ -174,7 +173,8 @@ export function DailyWaitTimeChart({
   })();
 
   return (
-    <Card className="p-4 sm:p-6">
+    // Bare section (no Card) — rendered inside the unified live card on the attraction page.
+    <div>
       {/* Title + KI-Prognose pill (links to the AI-forecast glossary term) */}
       <div className="mb-1.5 flex flex-wrap items-center gap-x-2 gap-y-1">
         <h2 className="text-xl font-semibold">{translations.title}</h2>
@@ -340,6 +340,6 @@ export function DailyWaitTimeChart({
           )}
         </div>
       )}
-    </Card>
+    </div>
   );
 }
