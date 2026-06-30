@@ -1,7 +1,7 @@
 import 'server-only';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { put, list, del } from '@vercel/blob';
+import { put, list, del, get } from '@vercel/blob';
 import { resolveDriver } from './driver';
 import { deleteImagesLocal } from './storage';
 import type { SubmissionPatch, SubmissionRecord } from './types';
@@ -61,10 +61,21 @@ const local = {
 
 // ─── vercel blob driver ─────────────────────────────────────────────────────
 
+/** Read a private metadata JSON blob by pathname (public URLs don't work on a private store). */
+async function readMeta(pathname: string): Promise<SubmissionRecord | null> {
+  try {
+    const result = await get(pathname, { access: 'private' });
+    if (!result || !result.stream) return null;
+    return (await new Response(result.stream).json()) as SubmissionRecord;
+  } catch {
+    return null;
+  }
+}
+
 const blob = {
   async record(rec: SubmissionRecord): Promise<void> {
     await put(metaPath(rec.id), JSON.stringify(rec), {
-      access: 'public',
+      access: 'private',
       contentType: 'application/json',
       addRandomSuffix: false,
       allowOverwrite: true,
@@ -73,34 +84,17 @@ const blob = {
   },
   async list(): Promise<SubmissionRecord[]> {
     const { blobs } = await list({ prefix: META_PREFIX, limit: 1000 });
-    const records = await Promise.all(
-      blobs.map(async (b) => {
-        try {
-          const res = await fetch(b.url, { cache: 'no-store' });
-          return (await res.json()) as SubmissionRecord;
-        } catch {
-          return null;
-        }
-      })
-    );
+    const records = await Promise.all(blobs.map((b) => readMeta(b.pathname)));
     return records.filter((r): r is SubmissionRecord => r !== null);
   },
   async get(id: string): Promise<SubmissionRecord | null> {
-    const { blobs } = await list({ prefix: metaPath(id), limit: 1 });
-    if (blobs.length === 0) return null;
-    try {
-      const res = await fetch(blobs[0].url, { cache: 'no-store' });
-      return (await res.json()) as SubmissionRecord;
-    } catch {
-      return null;
-    }
+    return readMeta(metaPath(id));
   },
   async remove(rec: SubmissionRecord): Promise<void> {
-    // Images are deleted by their pathname (key); the private blob URL isn't stored.
+    // Images and metadata are deleted by their pathname (key).
     const keys = rec.images.map((img) => img.key).filter(Boolean);
     if (keys.length) await del(keys);
-    const { blobs } = await list({ prefix: metaPath(rec.id), limit: 1 });
-    if (blobs.length) await del(blobs[0].url);
+    await del(metaPath(rec.id));
   },
 };
 

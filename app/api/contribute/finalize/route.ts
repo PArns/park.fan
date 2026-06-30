@@ -74,7 +74,10 @@ export async function POST(request: NextRequest) {
     await recordSubmission(record);
   } catch (err) {
     console.error('[contribute] finalize failed to record:', err);
-    return NextResponse.json({ error: 'record-failed' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'record-failed', detail: err instanceof Error ? err.message : String(err) },
+      { status: 500 }
+    );
   }
 
   return NextResponse.json({ ok: true, id: record.id, count: images.length });

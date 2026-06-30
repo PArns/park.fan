@@ -55,6 +55,9 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     console.error('[contribute] file upload failed:', err);
-    return NextResponse.json({ error: 'storage-failed' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'storage-failed', detail: err instanceof Error ? err.message : String(err) },
+      { status: 500 }
+    );
   }
 }
