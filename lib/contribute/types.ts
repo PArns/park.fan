@@ -91,7 +91,9 @@ export interface TicketPayload {
 
 /** One file the client reports as uploaded, validated server-side in /finalize. */
 export const uploadedBlobSchema = z.object({
-  url: z.string().url(),
+  // Blob public URL (prod) or a relative preview path (local dev) — the real
+  // integrity check is the pathname prefix verified in /finalize.
+  url: z.string().min(1),
   pathname: z.string().min(1),
   originalName: z.string().min(1),
   contentType: z.string().min(1),

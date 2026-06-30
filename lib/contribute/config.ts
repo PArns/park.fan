@@ -10,13 +10,19 @@
 export const MAX_FILES = 10;
 
 /**
- * Per-file size cap. High-res phone/DSLR shots are the point here, so we allow
- * 25 MB — comfortably above a 24 MP JPEG. NOTE: the prototype POSTs files through
- * the Next.js route, and Vercel's Serverless/Edge functions reject request bodies
- * over ~4.5 MB. For production high-res uploads switch to a direct-to-storage
- * upload (presigned URL / Vercel Blob client upload) — see lib/contribute/storage.ts.
+ * Per-file size cap for the request that reaches our proxy. Each photo is POSTed
+ * in its own request to /api/contribute/file, and Vercel's serverless functions
+ * reject request bodies over ~4.5 MB, so we cap at 4 MB (leaving headroom for the
+ * multipart envelope). Larger originals are downscaled client-side before upload
+ * (see components/contribute/compress.ts) so high-res shots still come through.
  */
-export const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25 MB
+export const MAX_FILE_SIZE = 4 * 1024 * 1024; // 4 MB (Vercel body limit ~4.5 MB)
+
+/**
+ * Limit for the ORIGINAL the user may pick (before client-side downscaling). We
+ * accept big high-res files here and shrink them to MAX_FILE_SIZE before upload.
+ */
+export const MAX_ORIGINAL_FILE_SIZE = 50 * 1024 * 1024; // 50 MB
 
 /** MIME types we accept. Covers the common high-res photo formats incl. Apple HEIC. */
 export const ACCEPTED_MIME_TYPES = [

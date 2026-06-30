@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import {
   ACCEPT_ATTR,
   MAX_FILES,
-  MAX_FILE_SIZE,
+  MAX_ORIGINAL_FILE_SIZE,
   formatBytes,
   isAcceptedMimeType,
 } from '@/lib/contribute/config';
@@ -61,7 +61,7 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
           rejected.push({ name: file.name, reason: 'type' });
           continue;
         }
-        if (file.size > MAX_FILE_SIZE) {
+        if (file.size > MAX_ORIGINAL_FILE_SIZE) {
           rejected.push({ name: file.name, reason: 'size' });
           continue;
         }
@@ -139,7 +139,7 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
           {t('browse')}
         </Button>
         <p className="text-muted-foreground/70 text-xs">
-          {t('limits', { max: MAX_FILES, size: formatBytes(MAX_FILE_SIZE) })}
+          {t('limits', { max: MAX_FILES, size: formatBytes(MAX_ORIGINAL_FILE_SIZE) })}
         </p>
         <input
           ref={inputRef}

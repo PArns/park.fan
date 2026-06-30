@@ -5,9 +5,11 @@ assign each set to a **park or ride**, and submit it into a **moderation queue**
 Protected by **Cloudflare Turnstile**. Public page: `/[locale]/contribute`.
 Moderation UI: `/admin/contributions`.
 
-Photos are uploaded **straight from the browser to Vercel Blob** (client direct
-upload), which bypasses Vercel's ~4.5 MB serverless body limit, so high-res files
-work. Nothing is shown publicly until a moderator approves it.
+Photos are **proxied through our own server** to a **private** Vercel Blob store —
+the browser never pushes to Blob directly and the store's write token never leaves
+the server. To stay under Vercel's ~4.5 MB request-body limit, each photo is sent in
+its own request and large originals are **downscaled client-side** first, so high-res
+shots still come through. Nothing is shown publicly until a moderator approves it.
 
 ## Pieces
 
@@ -21,35 +23,33 @@ work. Nothing is shown publicly until a moderator approves it.
 | Rights / "what we do with your photos" notice        | `components/contribute/rights-notice.tsx`         |
 | Example gallery                                      | `components/contribute/example-gallery.tsx`       |
 | Reusable CTA banner (parks/rides link here)          | `components/contribute/contribute-banner.tsx`     |
-| Begin (Turnstile + signed upload ticket)             | `app/api/contribute/start/route.ts`               |
-| Authorize each direct-to-Blob upload                 | `app/api/contribute/upload/route.ts`              |
+| Begin (Turnstile + signed ticket)                    | `app/api/contribute/start/route.ts`               |
+| Proxy one photo to the private Blob store            | `app/api/contribute/file/route.ts`                |
 | Finalize (write moderation record)                   | `app/api/contribute/finalize/route.ts`            |
-| Server-upload fallback (offline dev, ≤4.5 MB)        | `app/api/contribute/route.ts`                     |
+| Client-side downscale (fit the body limit)           | `components/contribute/compress.ts`               |
 | Turnstile server verify                              | `lib/contribute/turnstile.ts`                     |
-| HMAC upload ticket                                   | `lib/contribute/ticket.ts`                        |
+| HMAC ticket                                          | `lib/contribute/ticket.ts`                        |
 | Storage driver resolution                            | `lib/contribute/driver.ts`                        |
-| Local-FS image store (fallback)                      | `lib/contribute/storage.ts`                       |
+| Server-side image store (Blob `put` / local FS)      | `lib/contribute/storage.ts`                       |
 | Submissions repository (list/get/update/delete)      | `lib/contribute/submissions.ts`                   |
 | Prefill helpers (park/ride → /contribute)            | `lib/contribute/prefill.ts`                       |
 | Admin moderation page                                | `app/admin/contributions/page.tsx`                |
 | Admin APIs (list / patch / delete / file preview)    | `app/api/admin/contributions/**`                  |
 | i18n                                                 | `contribute` namespace in `messages/*.json`       |
 
-## Upload flow (client direct upload)
+## Upload flow (server proxy)
 
-1. User adds photos (validated client-side: type/size/count), picks the park/ride
-   (live `/api/search`), adds optional caption/credit, **ticks consent** (upload is
-   gated on it), and solves Turnstile.
-2. `POST /api/contribute/start` → verifies Turnstile **once**, validates the
-   assignment + consent, returns a short-lived **HMAC-signed ticket** (`lib/contribute/ticket.ts`)
-   describing the submission id, assignment and file budget. `mode` is `client` when
-   a Blob store is configured, else `server`.
-3. **client mode:** the browser uploads each file with `@vercel/blob/client`
-   `upload()` → `/api/contribute/upload` authorizes it against the ticket (not another
-   Turnstile solve) and pins it under `contributions/<sid>/`.
+1. User adds photos, picks the park/ride (live `/api/search`), adds optional
+   caption/credit, **ticks consent** (upload is gated on it), and solves Turnstile.
+2. `POST /api/contribute/start` → verifies Turnstile **once** (server-side), validates
+   the assignment + consent, returns a short-lived **HMAC-signed ticket**
+   (`lib/contribute/ticket.ts`) carrying the submission id, assignment and file budget.
+3. For each photo: the browser downscales it if needed (`compress.ts`) and POSTs it —
+   one file per request, each < 4.5 MB — to `POST /api/contribute/file`, which verifies
+   the ticket and `put()`s the bytes into the **private** Blob store server-side
+   (the write token never reaches the browser).
 4. `POST /api/contribute/finalize` → verifies the ticket and writes ONE `pending`
-   record referencing the uploaded blobs. (server mode posts the files multipart to
-   `/api/contribute` instead — dev only.)
+   record referencing the stored blobs.
 5. A moderator reviews it in `/admin/contributions` and approves/rejects/edits/deletes.
 
 ## Storage
