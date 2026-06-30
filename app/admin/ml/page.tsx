@@ -13,7 +13,14 @@ import {
 } from 'lucide-react';
 import { useAdminFetch } from '../_lib/admin-context';
 import { TrainingStatusBadge, type TrainingState } from '@/components/common/training-status-badge';
-import type { SystemHealthResponse, TftTrainingProgress, ComparisonRow } from '@/lib/api/admin';
+import type {
+  SystemHealthResponse,
+  TftTrainingProgress,
+  ComparisonRow,
+  MlComparisonBoard,
+  IntradayVerdict,
+  ChallengerVerdict,
+} from '@/lib/api/admin';
 import {
   EmptyPanel,
   ErrorPanel,
@@ -143,6 +150,107 @@ function PerformerList({
   );
 }
 
+// Shadow boards report segments at a finer grain than the live dashboard (busy/mid/quiet).
+const SEGMENT_LABELS: Record<string, string> = {
+  all: 'all',
+  busy: 'busy',
+  mid: 'mid',
+  quiet: 'quiet',
+  headliner: 'hdlnr',
+};
+
+type NormalizedVerdict = {
+  segment: string;
+  n: number;
+  challengerMae: number;
+  catboostMae: number;
+  delta: number;
+  wins: boolean;
+};
+
+// PCN and Shape verdicts carry the same numbers under different field names; normalize so
+// one board component renders both.
+function normalizeVerdict(v: IntradayVerdict | ChallengerVerdict): NormalizedVerdict {
+  const isPcn = 'pcnMae' in v;
+  return {
+    segment: v.segment,
+    n: v.n,
+    challengerMae: isPcn ? v.pcnMae : v.challengerMae,
+    catboostMae: v.catboostMae,
+    delta: v.delta,
+    wins: isPcn ? v.pcnWins : v.challengerWins,
+  };
+}
+
+function ShadowVerdictBoard({
+  challengerLabel,
+  verdict,
+  note,
+  error,
+}: {
+  challengerLabel: string;
+  verdict?: (IntradayVerdict | ChallengerVerdict)[];
+  note?: string;
+  error?: string;
+}) {
+  const rows = (verdict ?? []).map(normalizeVerdict);
+  return (
+    <Card className="border-border/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+          {challengerLabel} vs CatBoost
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {error ? (
+          <p className="text-xs text-red-400">{error}</p>
+        ) : rows.length === 0 ? (
+          <p className="text-muted-foreground text-xs">{note ?? 'No comparison data yet'}</p>
+        ) : (
+          <div className="space-y-0">
+            <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+              <span>Seg</span>
+              <span className="text-right">n</span>
+              <span className="text-right">CatB</span>
+              <span className="text-right">{challengerLabel}</span>
+              <span className="text-right">Δ</span>
+            </div>
+            {rows.map((r) => (
+              <div
+                key={r.segment}
+                className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
+              >
+                <span className="font-mono">{SEGMENT_LABELS[r.segment] ?? r.segment}</span>
+                <span className="text-muted-foreground text-right font-mono tabular-nums">
+                  {r.n.toLocaleString('en-GB')}
+                </span>
+                <span className={`text-right font-mono tabular-nums ${maeColor(r.catboostMae)}`}>
+                  {r.catboostMae.toFixed(1)}
+                </span>
+                <span
+                  className={`text-right font-mono tabular-nums ${
+                    r.wins ? 'font-semibold text-blue-400' : maeColor(r.challengerMae)
+                  }`}
+                >
+                  {r.challengerMae.toFixed(1)}
+                </span>
+                <span
+                  className={`text-right font-mono tabular-nums ${
+                    r.wins ? 'text-emerald-400' : 'text-red-400'
+                  }`}
+                >
+                  {r.delta > 0 ? '+' : ''}
+                  {r.delta.toFixed(1)}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function MlPage() {
   const dash = useAdminFetch<MlDashboard>('/api/ml/dashboard');
   const alerts = useAdminFetch<MlAlert[]>('/api/ml/monitoring/alerts');
@@ -152,6 +260,7 @@ export default function MlPage() {
     bottomPerformers: MlPerformer[];
   }>('/api/ml/monitoring/tft/performers');
   const health = useAdminFetch<SystemHealthResponse>('/api/admin/system-health', true);
+  const comparison = useAdminFetch<MlComparisonBoard>('/api/admin/ml-comparison', true);
 
   if (dash.error) return <ErrorPanel message={`ML dashboard: ${dash.error}`} />;
   if (!dash.data) return <LoadingPanel label="Loading ML metrics…" />;
@@ -456,6 +565,30 @@ export default function MlPage() {
                 )}
               </CardContent>
             </Card>
+          </div>
+        </Section>
+      )}
+
+      {comparison.data && (
+        <Section icon={GitCompare} title="Shadow model boards (vs CatBoost)">
+          <p className="text-muted-foreground text-sm">
+            Per-segment MAE at lead &ldquo;all&rdquo;, n-weighted. Δ &gt; 0 (blue/green) means the
+            challenger beats CatBoost. PCN serves intraday behind a server flag; Shape is
+            shadow-only.
+          </p>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ShadowVerdictBoard
+              challengerLabel="PCN"
+              verdict={comparison.data.intraday.verdict}
+              note={comparison.data.intraday.note}
+              error={comparison.data.intraday.error}
+            />
+            <ShadowVerdictBoard
+              challengerLabel="Shape"
+              verdict={comparison.data.shape.verdict}
+              note={comparison.data.shape.note}
+              error={comparison.data.shape.error}
+            />
           </div>
         </Section>
       )}
