@@ -141,3 +141,35 @@ export async function deleteSubmission(id: string): Promise<boolean> {
   await d.remove(existing);
   return true;
 }
+
+export interface BlobInventory {
+  /** Number of metadata records (submissions/*.json). */
+  metaBlobs: number;
+  /** Number of stored image files under contributions/. */
+  imageBlobs: number;
+}
+
+/**
+ * Diagnostic: raw blob counts (blob driver only). When `imageBlobs > 0` but the
+ * moderation list is empty, those images are ORPHANS from uploads that never
+ * reached the metadata step (e.g. a finalize failure). Null for the local driver.
+ */
+export async function inventory(): Promise<BlobInventory | null> {
+  if (resolveDriver() !== 'vercel-blob') return null;
+  const [meta, images] = await Promise.all([
+    list({ prefix: META_PREFIX, limit: 1000 }),
+    list({ prefix: 'contributions/', limit: 1000 }),
+  ]);
+  return { metaBlobs: meta.blobs.length, imageBlobs: images.blobs.length };
+}
+
+/** Delete image blobs under contributions/ that have no matching metadata record. */
+export async function purgeOrphanImages(): Promise<number> {
+  if (resolveDriver() !== 'vercel-blob') return 0;
+  const records = await blob.list();
+  const referenced = new Set(records.flatMap((r) => r.images.map((img) => img.key)));
+  const { blobs } = await list({ prefix: 'contributions/', limit: 1000 });
+  const orphans = blobs.map((b) => b.pathname).filter((p) => !referenced.has(p));
+  if (orphans.length) await del(orphans);
+  return orphans.length;
+}

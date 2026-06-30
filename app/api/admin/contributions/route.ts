@@ -1,7 +1,7 @@
 import 'server-only';
 import { NextResponse } from 'next/server';
 import { requireAdminPass } from '@/lib/admin/verify-pass';
-import { listSubmissions } from '@/lib/contribute/submissions';
+import { inventory, listSubmissions } from '@/lib/contribute/submissions';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -12,12 +12,17 @@ export async function GET(request: Request) {
   if (unauthorized) return unauthorized;
 
   try {
-    const submissions = await listSubmissions();
+    const [submissions, inv] = await Promise.all([listSubmissions(), inventory()]);
     const counts = submissions.reduce<Record<string, number>>((acc, s) => {
       acc[s.status] = (acc[s.status] ?? 0) + 1;
       return acc;
     }, {});
-    return NextResponse.json({ submissions, counts, total: submissions.length });
+    return NextResponse.json({
+      submissions,
+      counts,
+      total: submissions.length,
+      inventory: inv,
+    });
   } catch (err) {
     console.error('[admin/contributions] list failed:', err);
     return NextResponse.json({ error: 'list-failed' }, { status: 500 });

@@ -1,7 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Check, Download, ExternalLink, ImageIcon, Loader2, Trash2, Undo2, X } from 'lucide-react';
+import {
+  AlertTriangle,
+  Check,
+  Download,
+  ExternalLink,
+  ImageIcon,
+  Loader2,
+  Trash2,
+  Undo2,
+  X,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
@@ -13,6 +23,7 @@ interface ListResponse {
   submissions: SubmissionRecord[];
   counts: Partial<Record<SubmissionStatus, number>>;
   total: number;
+  inventory: { metaBlobs: number; imageBlobs: number } | null;
 }
 
 const STATUS_STYLES: Record<SubmissionStatus, string> = {
@@ -29,14 +40,33 @@ const FILTERS: { key: 'all' | SubmissionStatus; label: string }[] = [
 ];
 
 export default function ContributionsPage() {
+  const { pass, triggerRefresh } = useAdmin();
   const { data, error } = useAdminFetch<ListResponse>('/api/admin/contributions', true);
   const [filter, setFilter] = useState<'all' | SubmissionStatus>('all');
+  const [purging, setPurging] = useState(false);
 
   if (error) return <ErrorPanel message={error} />;
   if (!data) return <LoadingPanel label="Loading contributions…" />;
 
   const visible =
     filter === 'all' ? data.submissions : data.submissions.filter((s) => s.status === filter);
+
+  const referencedImages = data.submissions.reduce((n, s) => n + s.images.length, 0);
+  const orphans = data.inventory ? Math.max(0, data.inventory.imageBlobs - referencedImages) : 0;
+
+  const purgeOrphans = async () => {
+    if (!confirm(`Delete ${orphans} orphaned image file(s) from the store?`)) return;
+    setPurging(true);
+    try {
+      const res = await fetch('/api/admin/contributions/orphans', {
+        method: 'DELETE',
+        headers: { [ADMIN_PASS_HEADER]: pass },
+      });
+      if (res.ok) triggerRefresh();
+    } finally {
+      setPurging(false);
+    }
+  };
 
   return (
     <Section
@@ -64,6 +94,24 @@ export default function ContributionsPage() {
         </div>
       }
     >
+      {orphans > 0 && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
+          <AlertTriangle className="size-4 shrink-0" />
+          <span className="flex-1">
+            {orphans} orphaned image file(s) in the store with no submission record — left
+            over from uploads that failed before metadata was saved.
+          </span>
+          <button
+            onClick={purgeOrphans}
+            disabled={purging}
+            className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
+          >
+            {purging ? <Loader2 className="size-3.5 animate-spin" /> : <Trash2 className="size-3.5" />}
+            Purge orphans
+          </button>
+        </div>
+      )}
+
       {visible.length === 0 ? (
         <EmptyPanel label="No contributions in this view." />
       ) : (
