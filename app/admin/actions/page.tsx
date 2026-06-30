@@ -2,16 +2,20 @@
 
 import { useState } from 'react';
 import {
+  Activity,
   AlertTriangle,
+  Brain,
   CalendarCheck,
   CalendarClock,
   CheckCircle2,
+  GitCompare,
   Loader2,
   Play,
   RotateCcw,
   Sigma,
   Snowflake,
   Sparkles,
+  Spline,
   Trash2,
   Wrench,
   type LucideIcon,
@@ -27,7 +31,7 @@ interface ActionDef {
   description: string;
 }
 
-const ACTIONS: ActionDef[] = [
+const MAINTENANCE_ACTIONS: ActionDef[] = [
   {
     key: 'flush',
     label: 'Flush Cache',
@@ -93,6 +97,53 @@ const ACTIONS: ActionDef[] = [
   },
 ];
 
+// PCN (intraday nowcaster) and Shape (day-curve) shadow models. Triggers enqueue the
+// matching shadow job; results land in the ML page's "Shadow model boards" section.
+const SHADOW_ACTIONS: ActionDef[] = [
+  {
+    key: 'pcn-train',
+    label: 'PCN · Train',
+    icon: Brain,
+    path: 'pcn/train',
+    description: 'Train per-park PCN intraday models (bring-up trigger).',
+  },
+  {
+    key: 'pcn-forecast',
+    label: 'PCN · Forecast',
+    icon: Activity,
+    path: 'pcn/forecast',
+    description: 'Write PCN intraday forecasts.',
+  },
+  {
+    key: 'pcn-score',
+    label: 'PCN · Score',
+    icon: GitCompare,
+    path: 'pcn/score',
+    description: 'Score PCN vs CatBoost and refresh the board.',
+  },
+  {
+    key: 'shape-build',
+    label: 'Shape · Build',
+    icon: Spline,
+    path: 'shape/build',
+    description: 'Persist the additive + smooth day-curve profiles.',
+  },
+  {
+    key: 'shape-forecast',
+    label: 'Shape · Forecast',
+    icon: Activity,
+    path: 'shape/forecast',
+    description: 'Write Shape day-curve forecasts.',
+  },
+  {
+    key: 'shape-score',
+    label: 'Shape · Score',
+    icon: GitCompare,
+    path: 'shape/score',
+    description: 'Score Shape vs CatBoost and refresh the board.',
+  },
+];
+
 export default function ActionsPage() {
   const { pass } = useAdmin();
   const [loading, setLoading] = useState<Record<string, boolean>>({});
@@ -118,13 +169,10 @@ export default function ActionsPage() {
     }
   }
 
-  return (
-    <Section icon={Wrench} title="Maintenance actions">
-      <p className="text-muted-foreground text-sm">
-        Non-destructive jobs run asynchronously on the backend. Triggering only queues the job.
-      </p>
+  function renderGrid(actions: ActionDef[]) {
+    return (
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {ACTIONS.map((action) => {
+        {actions.map((action) => {
           const Icon = action.icon;
           const state = result[action.key];
           return (
@@ -157,6 +205,25 @@ export default function ActionsPage() {
           );
         })}
       </div>
-    </Section>
+    );
+  }
+
+  return (
+    <>
+      <Section icon={Wrench} title="Maintenance actions">
+        <p className="text-muted-foreground text-sm">
+          Non-destructive jobs run asynchronously on the backend. Triggering only queues the job.
+        </p>
+        {renderGrid(MAINTENANCE_ACTIONS)}
+      </Section>
+
+      <Section icon={GitCompare} title="Shadow model jobs (PCN / Shape)">
+        <p className="text-muted-foreground text-sm">
+          Manual triggers for the PCN and Shape shadow pipelines. Each enqueues a job; scores show
+          up under ML → Shadow model boards.
+        </p>
+        {renderGrid(SHADOW_ACTIONS)}
+      </Section>
+    </>
   );
 }
