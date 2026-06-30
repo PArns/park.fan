@@ -79,6 +79,9 @@ export const UMAMI_EVENTS = {
   GLOSSARY_TERM_VIEWED: 'glossary_term_viewed',
   GLOSSARY_CATEGORY_FILTERED: 'glossary_category_filtered',
   GLOSSARY_SEARCHED: 'glossary_searched',
+
+  // Feedback (Userback widget — fired when the visitor opens the feedback form)
+  FEEDBACK_OPENED: 'feedback_opened',
 } as const;
 
 // Event property types

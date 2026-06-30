@@ -92,6 +92,9 @@ importers:
       '@tiptap/suggestion':
         specifier: ^3.26.0
         version: 3.26.0(@tiptap/core@3.26.0(@tiptap/pm@3.26.0))(@tiptap/pm@3.26.0)
+      '@userback/widget':
+        specifier: ^0.3.12
+        version: 0.3.12
       '@vercel/blob':
         specifier: ^2.5.0
         version: 2.5.0
@@ -2087,6 +2090,9 @@ packages:
     resolution: {integrity: sha512-nAB74NfSNKknqQ1RrYj6uz8FcXEomu/MATJZxh/x+BArzN2U3JbOYC0APYzUIGhVY3m5hRxA8VPNdPBoG8txlA==}
     cpu: [x64]
     os: [win32]
+
+  '@userback/widget@0.3.12':
+    resolution: {integrity: sha512-68YihQblx1+4kFpd7e4nDBSV6ljSY0+hzIHHgbxgbJPJIhNgN4lyvOjcDbCrEb9qh6yXx5W6HBLKTMJD4hLXGg==}
 
   '@vercel/blob@2.5.0':
     resolution: {integrity: sha512-ke6WnMMYlUu9nBFmyjwEkC2o03Ku2X7QIeJ3KtlOJzblS/8Xau209zt0ic76rd7IvV5nrKCH/BzP4MkFmoSLuw==}
@@ -5848,6 +5854,8 @@ snapshots:
 
   '@unrs/resolver-binding-win32-x64-msvc@1.12.2':
     optional: true
+
+  '@userback/widget@0.3.12': {}
 
   '@vercel/blob@2.5.0':
     dependencies:

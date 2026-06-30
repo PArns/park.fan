@@ -1,4 +1,8 @@
 {
+  "feedback": {
+    "label": "Feedback",
+    "aria": "Invia feedback"
+  },
   "share": {
     "title": "Condividi",
     "on": "Condividi su {platform}",
