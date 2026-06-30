@@ -11,10 +11,12 @@ import type { StoredImageRecord } from './types';
  * never talks to the Blob store directly, so the private store's write token never
  * leaves the server.
  *
- *  - **vercel-blob**: `put()` with the server-only BLOB_READ_WRITE_TOKEN. Blobs are
- *    stored with `access: 'public'` + a random suffix so the URL is unguessable;
- *    nothing links to them until a moderator approves (see submissions.ts).
+ *  - **vercel-blob**: `put()` with the server-only BLOB_READ_WRITE_TOKEN into a
+ *    PRIVATE store (`access: 'private'`) — the bytes are never publicly reachable;
+ *    they're streamed back only through our own authenticated route.
  *  - **local**: writes under `.uploads/` for offline dev (Vercel's FS is ephemeral).
+ *
+ * Either way, the record's `url` points at our serve route, not a public blob URL.
  */
 
 export interface PutImageInput {
@@ -62,13 +64,14 @@ async function putImageBlob({
 }: PutImageInput): Promise<StoredImageRecord> {
   const pathname = `contributions/${submissionId}/${safeName(originalName)}`;
   const blob = await put(pathname, data, {
-    access: 'public',
+    access: 'private',
     contentType,
     addRandomSuffix: true,
   });
   return {
     key: blob.pathname,
-    url: blob.url,
+    // Served only through our authenticated route — never the raw private blob URL.
+    url: `/api/admin/contributions/file?key=${encodeURIComponent(blob.pathname)}`,
     originalName,
     contentType,
     size: data.byteLength,

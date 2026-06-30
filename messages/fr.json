@@ -1288,7 +1288,8 @@
     "success": {
       "title": "Merci !",
       "message": "{count, plural, one {Votre photo a} other {Vos # photos ont}} été envoyée(s) et apparaîtra(ont) dans la galerie après une rapide vérification.",
-      "again": "Téléverser d’autres photos"
+      "again": "Téléverser d’autres photos",
+      "home": "Retour à l’accueil"
     },
     "error": {
       "generic": "Une erreur est survenue. Veuillez réessayer.",

@@ -1288,7 +1288,8 @@
     "success": {
       "title": "Thank you!",
       "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review.",
-      "again": "Upload more photos"
+      "again": "Upload more photos",
+      "home": "Back to home"
     },
     "error": {
       "generic": "Something went wrong. Please try again.",

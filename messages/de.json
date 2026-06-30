@@ -1288,7 +1288,8 @@
     "success": {
       "title": "Vielen Dank!",
       "message": "{count, plural, one {Dein Foto wurde} other {Deine # Fotos wurden}} übermittelt und erscheint nach kurzer Prüfung in der Galerie.",
-      "again": "Weitere Fotos hochladen"
+      "again": "Weitere Fotos hochladen",
+      "home": "Zur Startseite"
     },
     "error": {
       "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",

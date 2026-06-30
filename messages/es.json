@@ -1288,7 +1288,8 @@
     "success": {
       "title": "¡Gracias!",
       "message": "{count, plural, one {Tu foto se ha} other {Tus # fotos se han}} enviado y aparecerá(n) en la galería tras una revisión rápida.",
-      "again": "Subir más fotos"
+      "again": "Subir más fotos",
+      "home": "Volver al inicio"
     },
     "error": {
       "generic": "Algo salió mal. Inténtalo de nuevo.",

@@ -1288,7 +1288,8 @@
     "success": {
       "title": "Grazie!",
       "message": "{count, plural, one {La tua foto è} other {Le tue # foto sono}} stata/e inviata/e e comparirà/compariranno nella galleria dopo una rapida verifica.",
-      "again": "Carica altre foto"
+      "again": "Carica altre foto",
+      "home": "Torna alla home"
     },
     "error": {
       "generic": "Qualcosa è andato storto. Riprova.",

@@ -96,8 +96,9 @@ const blob = {
     }
   },
   async remove(rec: SubmissionRecord): Promise<void> {
-    const urls = rec.images.map((img) => img.url).filter((u) => /^https?:/.test(u));
-    if (urls.length) await del(urls);
+    // Images are deleted by their pathname (key); the private blob URL isn't stored.
+    const keys = rec.images.map((img) => img.key).filter(Boolean);
+    if (keys.length) await del(keys);
     const { blobs } = await list({ prefix: metaPath(rec.id), limit: 1 });
     if (blobs.length) await del(blobs[0].url);
   },

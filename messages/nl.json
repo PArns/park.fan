@@ -1288,7 +1288,8 @@
     "success": {
       "title": "Bedankt!",
       "message": "{count, plural, one {Je foto is} other {Je # foto’s zijn}} verstuurd en verschijnt na een korte controle in de galerij.",
-      "again": "Meer foto’s uploaden"
+      "again": "Meer foto’s uploaden",
+      "home": "Terug naar home"
     },
     "error": {
       "generic": "Er ging iets mis. Probeer het opnieuw.",

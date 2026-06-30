@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { CheckCircle2, Loader2, PartyPopper, Send } from 'lucide-react';
+import { CheckCircle2, Loader2, Send } from 'lucide-react';
+import { useRouter } from '@/i18n/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -22,7 +23,6 @@ interface ContributeFormProps {
 type SubmitState =
   | { status: 'idle' }
   | { status: 'submitting'; done: number; total: number }
-  | { status: 'success'; count: number }
   | { status: 'error'; code: string };
 
 function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
@@ -42,7 +42,7 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
 export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const t = useTranslations('contribute.form');
   const tErr = useTranslations('contribute.error');
-  const tOk = useTranslations('contribute.success');
+  const router = useRouter();
 
   const [images, setImages] = useState<PendingImage[]>([]);
   const [entity, setEntity] = useState<AssignedEntity | null>(initialEntity);
@@ -56,21 +56,11 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const canSubmit =
     images.length > 0 && entity !== null && consent && token.length > 0 && !submitting;
 
-  const reset = () => {
-    images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
-    setImages([]);
-    setEntity(initialEntity);
-    setCaption('');
-    setCredit('');
-    setConsent(false);
-    setToken('');
-    setSubmit({ status: 'idle' });
-  };
-
   const fail = (code: string) => setSubmit({ status: 'error', code });
   const succeed = (count: number) => {
     images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
-    setSubmit({ status: 'success', count });
+    // Navigate to the dedicated thank-you page (keeps the submitting spinner until then).
+    router.push(`/contribute/thanks?count=${count}`);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -133,28 +123,6 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
       fail('network');
     }
   };
-
-  if (submit.status === 'success') {
-    return (
-      <Card className="overflow-hidden">
-        <CardContent className="flex flex-col items-center gap-4 py-12 text-center">
-          <div className="flex size-16 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
-            <PartyPopper className="size-8" />
-          </div>
-          <div className="space-y-1">
-            <h2 className="text-2xl font-bold">{tOk('title')}</h2>
-            <p className="text-muted-foreground max-w-md">
-              {tOk('message', { count: submit.count })}
-            </p>
-          </div>
-          <Button onClick={reset} className="gap-2">
-            <Send className="size-4" />
-            {tOk('again')}
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
 
   return (
     <form onSubmit={handleSubmit}>
