@@ -1,4 +1,8 @@
 {
+  "feedback": {
+    "label": "Feedback",
+    "aria": "Feedback geven"
+  },
   "share": {
     "title": "Delen",
     "on": "Delen op {platform}",

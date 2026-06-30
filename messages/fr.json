@@ -1,4 +1,8 @@
 {
+  "feedback": {
+    "label": "Avis",
+    "aria": "Donner votre avis"
+  },
   "share": {
     "title": "Partager",
     "on": "Partager sur {platform}",

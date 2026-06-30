@@ -1,4 +1,8 @@
 {
+  "feedback": {
+    "label": "Opiniones",
+    "aria": "Enviar opiniones"
+  },
   "share": {
     "title": "Compartir",
     "on": "Compartir en {platform}",

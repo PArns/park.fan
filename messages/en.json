@@ -1,4 +1,8 @@
 {
+  "feedback": {
+    "label": "Feedback",
+    "aria": "Send feedback"
+  },
   "share": {
     "title": "Share",
     "on": "Share on {platform}",

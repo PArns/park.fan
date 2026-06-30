@@ -17,6 +17,7 @@ import { hasPublishedPosts } from '@/lib/blog';
 import { LanguageBanner } from '@/components/layout/language-banner';
 import Script from 'next/script';
 import { AnalyticsIdentify } from '@/components/common/analytics-identify';
+import { UserbackFeedback } from '@/components/common/userback-feedback';
 import { WebVitalsReporter } from '@/components/analytics/web-vitals-reporter';
 import { ScrollToTop } from '@/components/common/scroll-to-top';
 import { NavigationProgress } from '@/components/layout/navigation-progress';
@@ -188,6 +189,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <NavigationProgress />
                 <ScrollToTop />
                 <AnalyticsIdentify locale={locale} />
+                <UserbackFeedback locale={locale} />
                 <WebVitalsReporter />
                 <LanguageBanner currentLocale={locale as Locale} />
               </Suspense>
