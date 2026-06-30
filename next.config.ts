@@ -138,6 +138,23 @@ const nextConfig: NextConfig = {
       }
     );
 
+    // 5. Relocated cities — the API moved the Disneyland Paris resort from the
+    // old `marne-la-vallee` city slug to `paris`. Old footer links (fixed in
+    // c346615) and the Google index still point at marne-la-vallee, producing
+    // 404s. Forward the whole city to paris so e.g. disneyland-park resolves.
+    rules.push(
+      {
+        source: '/:locale/parks/europe/france/marne-la-vallee/:park*',
+        destination: '/:locale/parks/europe/france/paris/:park*',
+        permanent: true,
+      },
+      {
+        source: '/parks/europe/france/marne-la-vallee/:park*',
+        destination: '/parks/europe/france/paris/:park*',
+        permanent: true,
+      }
+    );
+
     return rules;
   },
   async rewrites() {
