@@ -1218,5 +1218,90 @@
       "cloudTitle": "Thèmes"
     },
     "featured": "À la une"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Inspirez-vous",
+      "subtitle": "Des collines à sensations aux dark rides thématisés — quelques parcs et attractions de park.fan auxquels ajouter vos photos."
+    },
+    "meta": {
+      "title": "Partagez vos photos de parcs et attractions",
+      "description": "Téléversez vos propres photos de parcs d’attractions et d’attractions. Glissez-déposez plusieurs images, associez-les à un parc ou une attraction et enrichissez la galerie de la communauté park.fan."
+    },
+    "hero": {
+      "title": "Partagez vos photos de parcs et attractions",
+      "subtitle": "De beaux clichés d’un coaster, d’une parade ou d’un parc au coucher du soleil ? Déposez-les ici, indiquez l’attraction ou le parc concerné – après une rapide vérification, ils rejoignent la galerie."
+    },
+    "banner": {
+      "eyebrow": "Galerie communautaire",
+      "title": "Des photos de cette attraction ou de ce parc ?",
+      "subtitle": "Téléversez vos clichés et aidez les autres fans – glissez, associez, c’est fait.",
+      "cta": "Téléverser des photos"
+    },
+    "dropzone": {
+      "title": "Glissez-déposez vos photos ici",
+      "hint": "ou cliquez pour parcourir – JPG, PNG, WebP, AVIF, HEIC ou TIFF",
+      "browse": "Choisir des fichiers",
+      "limits": "Jusqu’à {max} photos · {size} max chacune",
+      "badType": "format non pris en charge",
+      "tooLarge": "fichier trop volumineux",
+      "tooMany": "limite de photos atteinte",
+      "remove": "Supprimer la photo",
+      "count": "{count, plural, one {# photo} other {# photos}} sélectionnée(s) (max {max})"
+    },
+    "picker": {
+      "placeholder": "Rechercher une attraction ou un parc…",
+      "searchPlaceholder": "Saisissez un nom de parc ou d’attraction…",
+      "minChars": "Saisissez au moins {min} caractères",
+      "empty": "Aucun parc ni attraction trouvé",
+      "parks": "Parcs",
+      "attractions": "Attractions",
+      "park": "Parc",
+      "attraction": "Attraction",
+      "inPark": "à {park}",
+      "change": "Modifier"
+    },
+    "form": {
+      "step1": "Ajoutez vos photos",
+      "step2": "Quelle attraction ou parc ?",
+      "step3": "Ajouter des détails",
+      "step4": "Confirmez que vous êtes humain",
+      "captionLabel": "Légende (facultatif)",
+      "captionPlaceholder": "ex. Premier rang au coucher du soleil",
+      "creditLabel": "Votre nom / crédit (facultatif)",
+      "creditPlaceholder": "Comment vous souhaitez être crédité",
+      "consentLabel": "J’ai pris ces photos (ou j’en détiens les droits) et j’accorde à park.fan une licence pour les publier (après vérification), avec mention si indiquée. Je conserve mon droit d’auteur.",
+      "consentHint": "Le téléversement n’est possible qu’une fois cette case cochée.",
+      "submit": "Envoyer les photos",
+      "submitting": "Téléversement…",
+      "requirements": "Ajoutez au moins une photo, choisissez une attraction ou un parc, acceptez les conditions et passez la vérification."
+    },
+    "rights": {
+      "title": "Vos photos, vos droits",
+      "intro": "Avant de téléverser, voici exactement ce qu’il advient de vos photos :",
+      "ownership": "Vous conservez le droit d’auteur. Vous ne cédez rien — vous nous accordez simplement l’autorisation d’utiliser la photo.",
+      "license": "Vous accordez à park.fan une licence non exclusive, mondiale et gratuite pour afficher, redimensionner et optimiser la photo sur park.fan et nos canaux, avec mention si vous en fournissez une.",
+      "moderation": "Chaque envoi est vérifié par une personne avant publication. Rien n’est mis en ligne automatiquement.",
+      "ownContent": "Ne téléversez que des photos que vous avez prises ou dont vous détenez clairement les droits — pas de personnes s’opposant à être montrées, pas de contenu appartenant à autrui.",
+      "withdraw": "Vous avez changé d’avis ? Contactez-nous et nous retirerons votre photo."
+    },
+    "success": {
+      "title": "Merci !",
+      "message": "{count, plural, one {Votre photo a} other {Vos # photos ont}} été envoyée(s) et apparaîtra(ont) dans la galerie après une rapide vérification.",
+      "again": "Téléverser d’autres photos"
+    },
+    "error": {
+      "generic": "Une erreur est survenue. Veuillez réessayer.",
+      "network": "Erreur réseau. Vérifiez votre connexion et réessayez.",
+      "turnstile-failed": "Échec de la vérification anti-bot. Rechargez et réessayez.",
+      "invalid-meta": "Choisissez une attraction ou un parc et acceptez les conditions.",
+      "no-files": "Ajoutez au moins une photo.",
+      "too-many-files": "Trop de photos dans un même envoi.",
+      "bad-type": "L’un de vos fichiers n’est pas un format d’image pris en charge.",
+      "too-large": "L’un de vos fichiers est trop volumineux.",
+      "storage-failed": "Impossible d’enregistrer vos photos. Réessayez plus tard.",
+      "record-failed": "Impossible d’enregistrer votre envoi. Réessayez plus tard.",
+      "invalid-form": "L’envoi était mal formé. Veuillez réessayer."
+    }
   }
 }

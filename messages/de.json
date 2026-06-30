@@ -1218,5 +1218,90 @@
       "cloudTitle": "Themen"
     },
     "featured": "Empfohlen"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Lass dich inspirieren",
+      "subtitle": "Von Airtime-Hügeln bis zu themenstarken Dark Rides – ein paar Parks und Rides auf park.fan, zu denen du deine Fotos beisteuern kannst."
+    },
+    "meta": {
+      "title": "Teile deine Park- & Ride-Fotos",
+      "description": "Lade eigene Fotos von Freizeitparks und Attraktionen hoch. Mehrere Bilder per Drag & Drop, einem Park oder Ride zuordnen und die park.fan-Community-Galerie mit aufbauen."
+    },
+    "hero": {
+      "title": "Teile deine Park- & Ride-Fotos",
+      "subtitle": "Du hast tolle Aufnahmen von einem Coaster, einer Parade oder einem Park im Sonnenuntergang? Lad sie hier hoch, sag uns welchen Ride oder Park sie zeigen – nach kurzer Prüfung landen sie in der Galerie."
+    },
+    "banner": {
+      "eyebrow": "Community-Galerie",
+      "title": "Fotos von diesem Ride oder Park?",
+      "subtitle": "Lad deine Aufnahmen hoch und hilf anderen Fans – Drag & Drop, zuordnen, fertig.",
+      "cta": "Fotos hochladen"
+    },
+    "dropzone": {
+      "title": "Zieh deine Fotos hierher",
+      "hint": "oder klick zum Auswählen – JPG, PNG, WebP, AVIF, HEIC oder TIFF",
+      "browse": "Dateien wählen",
+      "limits": "Bis zu {max} Fotos · max. {size} pro Datei",
+      "badType": "nicht unterstütztes Format",
+      "tooLarge": "Datei ist zu groß",
+      "tooMany": "Foto-Limit erreicht",
+      "remove": "Foto entfernen",
+      "count": "{count, plural, one {# Foto} other {# Fotos}} ausgewählt (max. {max})"
+    },
+    "picker": {
+      "placeholder": "Nach Ride oder Park suchen…",
+      "searchPlaceholder": "Park- oder Ride-Namen eingeben…",
+      "minChars": "Mindestens {min} Zeichen eingeben",
+      "empty": "Keine Parks oder Rides gefunden",
+      "parks": "Parks",
+      "attractions": "Rides & Attraktionen",
+      "park": "Park",
+      "attraction": "Ride",
+      "inPark": "in {park}",
+      "change": "Ändern"
+    },
+    "form": {
+      "step1": "Fotos hinzufügen",
+      "step2": "Welcher Ride oder Park?",
+      "step3": "Details ergänzen",
+      "step4": "Bestätige, dass du ein Mensch bist",
+      "captionLabel": "Bildtext (optional)",
+      "captionPlaceholder": "z. B. Erste Reihe im Sonnenuntergang",
+      "creditLabel": "Dein Name / Credit (optional)",
+      "creditPlaceholder": "Wie du genannt werden möchtest",
+      "consentLabel": "Ich habe diese Fotos gemacht (oder halte die Rechte) und räume park.fan eine Lizenz ein, sie (nach Prüfung) zu veröffentlichen – mit Nennung, wo angegeben. Mein Urheberrecht bleibt bei mir.",
+      "consentHint": "Der Upload ist erst möglich, wenn du dieses Häkchen setzt.",
+      "submit": "Fotos absenden",
+      "submitting": "Wird hochgeladen…",
+      "requirements": "Mindestens ein Foto, einen Ride oder Park wählen, Bedingungen akzeptieren und den Check bestehen."
+    },
+    "rights": {
+      "title": "Deine Fotos, deine Rechte",
+      "intro": "Bevor du hochlädst, hier genau, was mit deinen Bildern passiert:",
+      "ownership": "Dein Urheberrecht bleibt bei dir. Du trittst nichts ab – du gibst uns nur die Erlaubnis, das Foto zu nutzen.",
+      "license": "Du räumst park.fan eine einfache, weltweite, unentgeltliche Lizenz ein, das Foto auf park.fan und unseren Kanälen zu zeigen, zu skalieren und zu optimieren – mit Nennung, wo angegeben.",
+      "moderation": "Jeder Upload wird von einem Menschen geprüft, bevor er erscheint. Nichts geht automatisch live.",
+      "ownContent": "Lade nur Fotos hoch, die du selbst gemacht hast oder an denen du eindeutig die Rechte hältst – keine abgebildeten Personen, die nicht gezeigt werden möchten, kein fremdes Material.",
+      "withdraw": "Meinung geändert? Melde dich jederzeit, und wir entfernen dein Foto."
+    },
+    "success": {
+      "title": "Vielen Dank!",
+      "message": "{count, plural, one {Dein Foto wurde} other {Deine # Fotos wurden}} übermittelt und erscheint nach kurzer Prüfung in der Galerie.",
+      "again": "Weitere Fotos hochladen"
+    },
+    "error": {
+      "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+      "network": "Netzwerkfehler. Bitte prüfe deine Verbindung und versuche es erneut.",
+      "turnstile-failed": "Bot-Check fehlgeschlagen. Bitte lade neu und versuche es erneut.",
+      "invalid-meta": "Bitte wähle einen Ride oder Park und akzeptiere die Bedingungen.",
+      "no-files": "Bitte füge mindestens ein Foto hinzu.",
+      "too-many-files": "Zu viele Fotos in einer Übermittlung.",
+      "bad-type": "Eine deiner Dateien ist kein unterstütztes Bildformat.",
+      "too-large": "Eine deiner Dateien ist zu groß.",
+      "storage-failed": "Deine Fotos konnten nicht gespeichert werden. Bitte versuche es später erneut.",
+      "record-failed": "Deine Übermittlung konnte nicht gespeichert werden. Bitte versuche es später erneut.",
+      "invalid-form": "Der Upload war fehlerhaft. Bitte versuche es erneut."
+    }
   }
 }

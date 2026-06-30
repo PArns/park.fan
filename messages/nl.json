@@ -1218,5 +1218,90 @@
       "cloudTitle": "Onderwerpen"
     },
     "featured": "Uitgelicht"
+  },
+  "contribute": {
+    "gallery": {
+      "title": "Doe inspiratie op",
+      "subtitle": "Van airtime-heuvels tot getithemede dark rides — enkele parken en attracties op park.fan waaraan je je foto’s kunt toevoegen."
+    },
+    "meta": {
+      "title": "Deel je park- & attractiefoto’s",
+      "description": "Upload je eigen foto’s van pretparken en attracties. Sleep meerdere afbeeldingen, koppel ze aan een park of attractie en help de park.fan-galerij groeien."
+    },
+    "hero": {
+      "title": "Deel je park- & attractiefoto’s",
+      "subtitle": "Mooie shots van een coaster, een parade of een park bij zonsondergang? Zet ze hier neer, vertel ons welke attractie of park het is – na een korte controle komen ze in de galerij."
+    },
+    "banner": {
+      "eyebrow": "Community-galerij",
+      "title": "Foto’s van deze attractie of dit park?",
+      "subtitle": "Upload je shots en help andere fans – slepen, koppelen, klaar.",
+      "cta": "Foto’s uploaden"
+    },
+    "dropzone": {
+      "title": "Sleep je foto’s hierheen",
+      "hint": "of klik om te bladeren – JPG, PNG, WebP, AVIF, HEIC of TIFF",
+      "browse": "Bestanden kiezen",
+      "limits": "Tot {max} foto’s · max. {size} per stuk",
+      "badType": "niet-ondersteund formaat",
+      "tooLarge": "bestand is te groot",
+      "tooMany": "fotolimiet bereikt",
+      "remove": "Foto verwijderen",
+      "count": "{count, plural, one {# foto} other {# foto’s}} geselecteerd (max {max})"
+    },
+    "picker": {
+      "placeholder": "Zoek een attractie of park…",
+      "searchPlaceholder": "Typ een park- of attractienaam…",
+      "minChars": "Typ minstens {min} tekens",
+      "empty": "Geen parken of attracties gevonden",
+      "parks": "Parken",
+      "attractions": "Attracties",
+      "park": "Park",
+      "attraction": "Attractie",
+      "inPark": "in {park}",
+      "change": "Wijzigen"
+    },
+    "form": {
+      "step1": "Voeg je foto’s toe",
+      "step2": "Welke attractie of park?",
+      "step3": "Details toevoegen",
+      "step4": "Bevestig dat je een mens bent",
+      "captionLabel": "Bijschrift (optioneel)",
+      "captionPlaceholder": "bijv. Eerste rij bij zonsondergang",
+      "creditLabel": "Je naam / credit (optioneel)",
+      "creditPlaceholder": "Hoe je vermeld wilt worden",
+      "consentLabel": "Ik heb deze foto’s gemaakt (of bezit de rechten) en verleen park.fan een licentie om ze (na controle) te publiceren, met vermelding waar opgegeven. Mijn auteursrecht blijft van mij.",
+      "consentHint": "Uploaden kan pas als je dit vakje aanvinkt.",
+      "submit": "Foto’s versturen",
+      "submitting": "Uploaden…",
+      "requirements": "Voeg minstens één foto toe, kies een attractie of park, accepteer de voorwaarden en doorsta de check."
+    },
+    "rights": {
+      "title": "Jouw foto’s, jouw rechten",
+      "intro": "Voordat je uploadt, dit is precies wat er met je foto’s gebeurt:",
+      "ownership": "Je behoudt het auteursrecht. Je staat niets af — je geeft ons alleen toestemming om de foto te gebruiken.",
+      "license": "Je verleent park.fan een niet-exclusieve, wereldwijde, rechtenvrije licentie om de foto te tonen, te schalen en te optimaliseren op park.fan en onze kanalen, met vermelding waar opgegeven.",
+      "moderation": "Elke upload wordt door een mens gecontroleerd voordat hij verschijnt. Niets gaat automatisch live.",
+      "ownContent": "Upload alleen foto’s die je zelf hebt gemaakt of waarvan je duidelijk de rechten hebt — geen afgebeelde personen die er bezwaar tegen hebben, geen materiaal van anderen.",
+      "withdraw": "Van gedachten veranderd? Neem contact op en we verwijderen je foto."
+    },
+    "success": {
+      "title": "Bedankt!",
+      "message": "{count, plural, one {Je foto is} other {Je # foto’s zijn}} verstuurd en verschijnt na een korte controle in de galerij.",
+      "again": "Meer foto’s uploaden"
+    },
+    "error": {
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "network": "Netwerkfout. Controleer je verbinding en probeer het opnieuw.",
+      "turnstile-failed": "Botcontrole mislukt. Herlaad de pagina en probeer het opnieuw.",
+      "invalid-meta": "Kies een attractie of park en accepteer de voorwaarden.",
+      "no-files": "Voeg minstens één foto toe.",
+      "too-many-files": "Te veel foto’s in één inzending.",
+      "bad-type": "Een van je bestanden is geen ondersteund afbeeldingsformaat.",
+      "too-large": "Een van je bestanden is te groot.",
+      "storage-failed": "We konden je foto’s niet opslaan. Probeer het later opnieuw.",
+      "record-failed": "We konden je inzending niet opslaan. Probeer het later opnieuw.",
+      "invalid-form": "De upload was ongeldig. Probeer het opnieuw."
+    }
   }
 }

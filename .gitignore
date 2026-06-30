@@ -40,6 +40,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# user photo contributions — local-dev storage + moderation queue (never commit)
+/.uploads
+/.data
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
