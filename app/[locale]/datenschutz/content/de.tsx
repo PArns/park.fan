@@ -553,6 +553,53 @@ export function DatenschutzDE() {
           keine Einwilligung gemäß TDDDG erforderlich.
         </p>
 
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Userback (Feedback-Tool)</h3>
+        <p className="mb-4">
+          Wir setzen das Feedback-Tool Userback des Anbieters Userback Pty Ltd, Level 5, 100 Edward
+          Street, Brisbane QLD 4000, Australien, ein. Userback ermöglicht es Ihnen, uns über eine
+          Schaltfläche „Feedback" Rückmeldungen, Fehlermeldungen und Verbesserungsvorschläge zu
+          senden.
+        </p>
+        <p className="mb-4">
+          Userback wird ausschließlich auf Ihre aktive Veranlassung hin geladen: Der zugehörige
+          Programmcode wird erst dann von den Servern des Anbieters nachgeladen und ausgeführt, wenn
+          Sie die Schaltfläche „Feedback" anklicken. Vor diesem Klick findet keine Verbindung zu
+          Userback statt, und es werden keine Daten an den Anbieter übertragen.
+        </p>
+        <p className="mb-4">
+          Klicken Sie die Schaltfläche an, verarbeitet Userback technische Daten wie Ihre
+          IP-Adresse, eine daraus abgeleitete ungefähre Standortangabe, Browser- und
+          Geräteinformationen, die Bildschirmauflösung, die aufgerufene Seite (URL) sowie den
+          Zeitpunkt des Aufrufs. Sofern Sie diese im Feedback-Formular freiwillig angeben, werden
+          zusätzlich Ihr Name, Ihre E-Mail-Adresse, Ihre Nachricht und ggf. ein von Ihnen erstellter
+          Screenshot verarbeitet. Zur Wiedererkennung bei erneuter Nutzung speichert Userback
+          Konfigurations- und Reporterdaten im lokalen Speicher (Local Storage) Ihres Browsers.
+        </p>
+        <p className="mb-4">
+          Dabei können personenbezogene Daten in Drittländer außerhalb der EU bzw. des EWR (u. a.
+          USA und Australien) übertragen werden, in denen kein mit der EU vergleichbares
+          Datenschutzniveau besteht.
+        </p>
+        <p className="mb-4">
+          Rechtsgrundlage für die Verarbeitung sowie für die Speicherung und das Auslesen von
+          Informationen in Ihrem Endgerät (Local Storage) ist Ihre Einwilligung gemäß Art. 6 Abs. 1
+          lit. a DSGVO und § 25 Abs. 1 TDDDG, die Sie durch das aktive Anklicken der Schaltfläche
+          „Feedback" erteilen. Sie sind zur Nutzung von Userback nicht verpflichtet; klicken Sie die
+          Schaltfläche nicht an, wird das Tool nicht geladen. Ihre Einwilligung können Sie jederzeit
+          mit Wirkung für die Zukunft widerrufen, indem Sie das Tool künftig nicht mehr nutzen und
+          den lokalen Speicher Ihres Browsers leeren. Weitere Informationen finden Sie in der
+          Datenschutzerklärung des Anbieters unter{' '}
+          <a
+            href="https://userback.io/privacy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            https://userback.io/privacy/
+          </a>
+          .
+        </p>
+
         <p className="text-muted-foreground mt-8 text-sm">
           Quelle:{' '}
           <a

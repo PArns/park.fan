@@ -516,6 +516,50 @@ export function DatenschutzEN() {
           required.
         </p>
 
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Userback (Feedback Tool)</h3>
+        <p className="mb-4">
+          We use the feedback tool Userback, provided by Userback Pty Ltd, Level 5, 100 Edward
+          Street, Brisbane QLD 4000, Australia. Userback lets you send us feedback, bug reports, and
+          improvement suggestions via a &ldquo;Feedback&rdquo; button.
+        </p>
+        <p className="mb-4">
+          Userback is loaded solely upon your active request: the relevant program code is only
+          fetched from the provider&rsquo;s servers and executed once you click the
+          &ldquo;Feedback&rdquo; button. Before that click, no connection to Userback is established
+          and no data is transmitted to the provider.
+        </p>
+        <p className="mb-4">
+          When you click the button, Userback processes technical data such as your IP address, an
+          approximate location derived from it, browser and device information, screen resolution,
+          the page visited (URL), and the time of access. If you voluntarily provide them in the
+          feedback form, your name, email address, message, and any screenshot you create are also
+          processed. To recognize you on subsequent use, Userback stores configuration and reporter
+          data in your browser&rsquo;s local storage.
+        </p>
+        <p className="mb-4">
+          In doing so, personal data may be transferred to third countries outside the EU or EEA
+          (including the USA and Australia), where the level of data protection is not comparable to
+          that of the EU.
+        </p>
+        <p className="mb-4">
+          The legal basis for the processing as well as for the storage of and access to information
+          on your device (local storage) is your consent pursuant to Art. 6 para. 1 lit. a GDPR and
+          Section 25 para. 1 TTDSG, which you grant by actively clicking the &ldquo;Feedback&rdquo;
+          button. You are not obliged to use Userback; if you do not click the button, the tool is
+          not loaded. You can withdraw your consent at any time with effect for the future by no
+          longer using the tool and clearing your browser&rsquo;s local storage. For more
+          information, please see the provider&rsquo;s privacy policy at{' '}
+          <a
+            href="https://userback.io/privacy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:text-primary/80 underline"
+          >
+            https://userback.io/privacy/
+          </a>
+          .
+        </p>
+
         <p className="text-muted-foreground mt-8 text-sm">
           Source:{' '}
           <a
