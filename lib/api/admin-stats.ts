@@ -56,6 +56,19 @@ export interface MlDrift {
   dailyMetrics: MlDriftDaily[];
 }
 
+/** Served intraday accuracy (PCN champion-swap) — what users actually get for
+ *  15-min slots. `live`/`byPredictionType.HOURLY` measure the CatBoost fallback,
+ *  not the served model. null when PCN is not serving. */
+export interface MlServedIntraday {
+  servedModel: 'pcn';
+  mae: number;
+  n: number;
+  catboostMae: number | null;
+  /** catboostMae − mae; > 0 ⇒ the served model beats the CatBoost fallback. */
+  delta: number | null;
+  days: number;
+}
+
 export interface MlDashboard {
   model: {
     current: {
@@ -79,6 +92,7 @@ export interface MlDashboard {
   performance: {
     training: MlMetrics;
     live: MlLivePerformance;
+    servedIntraday: MlServedIntraday | null;
     drift: MlDrift;
     improvement: { maeDelta: number; maePercentChange: number; isImproving: boolean };
   };

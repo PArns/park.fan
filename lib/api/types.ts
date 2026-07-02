@@ -1045,6 +1045,18 @@ export interface MLDashboardDto {
       uniqueAttractions: number;
       uniqueParks: number;
     };
+    /** Served intraday accuracy (PCN champion-swap) — what users actually get for
+     *  15-min slots. `live`/`byPredictionType.HOURLY` measure the CatBoost fallback,
+     *  not the served model. null when PCN is not serving. */
+    servedIntraday: {
+      servedModel: 'pcn';
+      mae: number;
+      n: number;
+      catboostMae: number | null;
+      /** catboostMae − mae; > 0 ⇒ the served model beats the CatBoost fallback. */
+      delta: number | null;
+      days: number;
+    } | null;
     drift: {
       currentDrift: number;
       threshold: number;

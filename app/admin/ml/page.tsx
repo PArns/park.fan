@@ -417,7 +417,7 @@ export default function MlPage() {
       )}
 
       <Section icon={Brain} title="Active model">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
           <StatCard
             label="Version"
             value={<span className="text-xl">{model.current.version}</span>}
@@ -439,6 +439,30 @@ export default function MlPage() {
               </span>
             }
           />
+          {/* Served MAE = what users actually get intraday (PCN champion-swap).
+              The "Live MAE" above is the CatBoost fallback/system-wide number.
+              Guarded: absent when PCN isn't serving. */}
+          {perf.servedIntraday && (
+            <StatCard
+              label="Served MAE"
+              value={perf.servedIntraday.mae.toFixed(2)}
+              valueClass={maeColor(perf.servedIntraday.mae)}
+              sub={
+                perf.servedIntraday.delta != null ? (
+                  <span
+                    className={
+                      perf.servedIntraday.delta >= 0 ? 'text-emerald-400' : 'text-red-400'
+                    }
+                  >
+                    {perf.servedIntraday.delta >= 0 ? '-' : '+'}
+                    {Math.abs(perf.servedIntraday.delta).toFixed(1)} vs CatBoost
+                  </span>
+                ) : (
+                  'intraday (PCN)'
+                )
+              }
+            />
+          )}
           <StatCard
             label="Coverage"
             value={`${perf.live.coveragePercent.toFixed(1)}%`}
