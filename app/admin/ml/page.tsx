@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import {
   AlertTriangle,
   Bell,
-  Brain,
+  Gauge,
   GitCompare,
+  Layers,
   Play,
   Sparkles,
   TrendingDown,
@@ -102,6 +103,47 @@ function TftTrainingProgress({ p }: { p: TftTrainingProgress }) {
   );
 }
 
+// A single cell in the top status strip: small uppercase label above a value block.
+function StripCell({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="min-w-0 space-y-1">
+      <p className="text-muted-foreground text-[10px] font-semibold tracking-widest uppercase">
+        {label}
+      </p>
+      <div className="text-sm">{children}</div>
+    </div>
+  );
+}
+
+// One card in the serving map: model name + the horizon it serves, with its live accuracy body.
+function ServingCard({
+  name,
+  role,
+  children,
+}: {
+  name: string;
+  role: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card className="border-border/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="flex items-baseline justify-between gap-2 text-sm font-semibold">
+          <span>{name}</span>
+          <span className="text-muted-foreground text-[11px] font-normal">{role}</span>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-2">{children}</CardContent>
+    </Card>
+  );
+}
+
+function SubLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="text-foreground/70 text-xs font-semibold tracking-wide uppercase">{children}</h3>
+  );
+}
+
 function MetricsRow({ label, m }: { label: string; m: MlMetrics }) {
   return (
     <div className="border-border/40 grid grid-cols-5 gap-2 border-b py-2 text-sm last:border-0">
@@ -173,6 +215,41 @@ const LEADCURVE_ORDER: Record<string, number> = { '1h': 0, '3h': 1, '6h': 2 };
 
 // Postgres numerics arrive as strings; coerce defensively.
 const num = (v: string | number) => (typeof v === 'number' ? v : parseFloat(v));
+
+// Compact win/loss chips summarising a challenger's per-segment verdict at lead 'all'.
+// delta > 0 ⇒ challenger beats CatBoost (green); the API returns these, we don't compute them.
+type VerdictItem = { segment: string; delta: number; wins: boolean };
+
+function VerdictBar({ label, items }: { label: string; items: VerdictItem[] }) {
+  const sorted = [...items].sort(
+    (a, b) => (SEGMENT_ORDER[a.segment] ?? 9) - (SEGMENT_ORDER[b.segment] ?? 9)
+  );
+  return (
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+      <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+        {label}
+      </span>
+      <div className="flex flex-wrap gap-1.5">
+        {sorted.map((v) => (
+          <span
+            key={v.segment}
+            className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-0.5 text-xs font-medium ${
+              v.wins
+                ? 'border-emerald-500/20 bg-emerald-500/10 text-emerald-400'
+                : 'border-red-500/20 bg-red-500/10 text-red-400'
+            }`}
+          >
+            <span className="font-mono uppercase">{SEGMENT_LABELS[v.segment] ?? v.segment}</span>
+            <span className="tabular-nums">
+              {v.delta > 0 ? '+' : ''}
+              {v.delta.toFixed(1)}
+            </span>
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 type ShadowCell = {
   segment: string;
@@ -486,6 +563,145 @@ function LeadCurveBoard({
   );
 }
 
+// TFT active-model identity card (near-term daily serving model). Kept alongside the
+// scoreboard in the challenger section per the serving-map ↔ head-to-head split.
+function TftModelCard({ model }: { model: SystemHealthResponse['ml']['tft']['activeModel'] }) {
+  return (
+    <Card className="border-border/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+          Active model
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-1 text-sm">
+        {model ? (
+          <>
+            <p className="font-mono text-base">{model.version}</p>
+            {model.trainedAt && (
+              <p className="text-muted-foreground text-xs">
+                trained {new Date(model.trainedAt).toLocaleString('en-GB')}
+              </p>
+            )}
+            {model.horizon && (
+              <p className="text-muted-foreground text-xs">
+                horizon {model.horizon}d · scope {model.parkScope ?? 'all'}
+              </p>
+            )}
+          </>
+        ) : (
+          <p className="text-muted-foreground text-xs">No model trained yet</p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+// TFT-vs-CatBoost daily scoreboard. Pivots the flat rows → one entry per (date, segment)
+// holding both models side by side (TFT's edge lives on busy/hdlnr). Logic kept verbatim.
+function TftScoreboard({ comparison }: { comparison: SystemHealthResponse['ml']['comparison'] }) {
+  return (
+    <Card className="border-border/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+          vs CatBoost scoreboard
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {comparison?.rows?.length > 0 ? (
+          (() => {
+            type Pivot = {
+              date: string;
+              segment: string;
+              n: number;
+              cat?: ComparisonRow;
+              tft?: ComparisonRow;
+            };
+            const groups = new Map<string, Pivot>();
+            for (const r of comparison.rows) {
+              const segment = r.segment ?? 'all';
+              const key = `${r.targetDate}|${segment}`;
+              const g = groups.get(key) ?? { date: r.targetDate, segment, n: r.n };
+              if (r.model === 'tft') g.tft = r;
+              else g.cat = r;
+              groups.set(key, g);
+            }
+            const order: Record<string, number> = { all: 0, busy: 1, headliner: 2 };
+            const list = [...groups.values()]
+              .sort((a, b) =>
+                a.date < b.date
+                  ? 1
+                  : a.date > b.date
+                    ? -1
+                    : (order[a.segment] ?? 9) - (order[b.segment] ?? 9)
+              )
+              .slice(0, 12);
+            const segLabel: Record<string, string> = {
+              all: 'all',
+              busy: 'busy',
+              headliner: 'hdlnr',
+            };
+            const segClass: Record<string, string> = {
+              all: 'text-muted-foreground',
+              busy: 'text-amber-400',
+              headliner: 'text-violet-400',
+            };
+            return (
+              <div className="space-y-0">
+                <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
+                  <span>Date</span>
+                  <span>Seg</span>
+                  <span className="text-right">n</span>
+                  <span className="text-right">CatB</span>
+                  <span className="text-right">TFT</span>
+                </div>
+                {list.map((g, i) => {
+                  const cm = g.cat ? Number(g.cat.mae) : NaN;
+                  const tm = g.tft ? Number(g.tft.mae) : NaN;
+                  const tftWins = Number.isFinite(cm) && Number.isFinite(tm) && tm < cm;
+                  return (
+                    <div
+                      key={i}
+                      className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
+                    >
+                      <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
+                      <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
+                        {segLabel[g.segment] ?? g.segment}
+                      </span>
+                      <span className="text-muted-foreground text-right font-mono tabular-nums">
+                        {g.n}
+                      </span>
+                      <span
+                        className={`text-right font-mono tabular-nums ${Number.isFinite(cm) ? maeColor(cm) : 'text-muted-foreground'}`}
+                      >
+                        {Number.isFinite(cm) ? cm.toFixed(1) : '—'}
+                      </span>
+                      <span
+                        className={`text-right font-mono tabular-nums ${
+                          !Number.isFinite(tm)
+                            ? 'text-muted-foreground'
+                            : tftWins
+                              ? 'font-semibold text-blue-400'
+                              : maeColor(tm)
+                        }`}
+                      >
+                        {Number.isFinite(tm) ? tm.toFixed(1) : '—'}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()
+        ) : (
+          <p className="text-muted-foreground text-xs">
+            {comparison?.note ?? 'No comparison data yet'}
+          </p>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function MlPage() {
   const dash = useAdminFetch<MlDashboard>('/api/ml/dashboard');
   const alerts = useAdminFetch<MlAlert[]>('/api/ml/monitoring/alerts');
@@ -513,53 +729,195 @@ export default function MlPage() {
       ? 'error'
       : 'idle';
 
+  // Serving-map ↔ challenger verdicts (returned by the API; not recomputed here).
+  const intradayVerdict = comparison.data?.intraday.verdict?.map<VerdictItem>((v) => ({
+    segment: v.segment,
+    delta: v.delta,
+    wins: v.pcnWins,
+  }));
+  const shapeVerdict = comparison.data?.shape.verdict?.map<VerdictItem>((v) => ({
+    segment: v.segment,
+    delta: v.delta,
+    wins: v.challengerWins,
+  }));
+
+  const cbTraining = !!(catboost?.training.is_training && catboost.training.started_at);
+  const tftTraining = !!tft?.training.is_training;
+  const tftError = tft?.training.error;
+
   return (
     <>
-      {health.data && (
-        <Section icon={Play} title="Training jobs">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center justify-between text-sm">
-                  CatBoost
-                  <TrainingStatusBadge state={cbState} label={catboost?.activeModel?.version} />
-                </CardTitle>
-              </CardHeader>
-              {catboost?.training.is_training && catboost.training.started_at && (
-                <CardContent>
-                  <TrainingProgress startedAt={catboost.training.started_at} />
-                </CardContent>
+      {/* ── Status strip: one-glance health, serving models, training ───────── */}
+      <div className="space-y-3">
+        <Card className="border-border/60">
+          <CardContent className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-4">
+            <StripCell label="Health">
+              <StatusBadge status={perf.drift.status} />
+            </StripCell>
+            <StripCell label="CatBoost">
+              <div className="space-y-0.5">
+                <TrainingStatusBadge state={cbState} label={model.current.version} />
+                <p className="text-muted-foreground text-xs">{formatAge(d.system.modelAge)} old</p>
+              </div>
+            </StripCell>
+            <StripCell label="TFT">
+              {tft ? (
+                <div className="space-y-0.5">
+                  <TrainingStatusBadge state={tftState} label={tft.activeModel?.version} />
+                  {tft.activeModel?.horizon != null && (
+                    <p className="text-muted-foreground text-xs">
+                      ≤{tft.activeModel.horizon}d daily
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <span className="text-muted-foreground text-xs">
+                  {health.data ? 'no model' : 'loading…'}
+                </span>
               )}
-            </Card>
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="flex items-center justify-between text-sm">
-                  TFT
-                  <TrainingStatusBadge state={tftState} label={tft?.activeModel?.version} />
-                </CardTitle>
-              </CardHeader>
-              {tft?.training.is_training && tft.training.progress && (
-                <CardContent>
-                  <TftTrainingProgress p={tft.training.progress} />
-                </CardContent>
-              )}
-              {tft?.training.is_training && !tft.training.progress && (
-                <CardContent>
-                  <p className="text-muted-foreground text-xs">Starting… (building panel)</p>
-                </CardContent>
-              )}
-              {tft?.training.error && (
-                <CardContent>
-                  <p className="text-xs text-red-400">{tft.training.error}</p>
-                </CardContent>
-              )}
-            </Card>
-          </div>
-        </Section>
-      )}
+            </StripCell>
+            <StripCell label="Last accuracy check">
+              <div className="space-y-0.5">
+                <p className="tabular-nums">
+                  {new Date(d.system.lastAccuracyCheck.completedAt).toLocaleString('en-GB')}
+                </p>
+                <p className="text-muted-foreground text-xs">
+                  +{d.system.lastAccuracyCheck.newComparisonsAdded} comparisons
+                </p>
+              </div>
+            </StripCell>
+          </CardContent>
+        </Card>
 
-      <Section icon={Brain} title="Active model">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        {(cbTraining || tftTraining || tftError) && (
+          <Card className="border-border/60">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                <Play className="h-3.5 w-3.5" /> Training in progress
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="grid gap-4 sm:grid-cols-2">
+              {cbTraining && catboost?.training.started_at && (
+                <div className="space-y-1.5">
+                  <p className="text-xs font-medium">CatBoost</p>
+                  <TrainingProgress startedAt={catboost.training.started_at} />
+                </div>
+              )}
+              {tftTraining && (
+                <div className="space-y-1.5">
+                  <p className="text-xs font-medium">TFT</p>
+                  {tft?.training.progress ? (
+                    <TftTrainingProgress p={tft.training.progress} />
+                  ) : (
+                    <p className="text-muted-foreground text-xs">Starting… (building panel)</p>
+                  )}
+                </div>
+              )}
+              {tftError && !tftTraining && (
+                <div className="space-y-1.5">
+                  <p className="text-xs font-medium">TFT</p>
+                  <p className="text-xs text-red-400">{tftError}</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        )}
+      </div>
+
+      {/* ── Serving map: which model serves which horizon + live accuracy ───── */}
+      <Section icon={Layers} title="Serving map">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <ServingCard name="CatBoost" role="far-daily 31–365d · fallback">
+            <div className="flex items-end justify-between gap-2">
+              <div>
+                <span className={`text-3xl font-bold tabular-nums ${maeColor(perf.live.mae)}`}>
+                  {perf.live.mae.toFixed(2)}
+                </span>
+                <p className="text-muted-foreground text-xs">Live MAE</p>
+              </div>
+              <span
+                className={`text-xs font-medium ${
+                  perf.improvement.isImproving ? 'text-emerald-400' : 'text-red-400'
+                }`}
+              >
+                {perf.improvement.maePercentChange > 0 ? '+' : ''}
+                {perf.improvement.maePercentChange.toFixed(1)}% vs prev
+              </span>
+            </div>
+            <div className="border-border/40 flex items-center justify-between border-t pt-2 text-xs">
+              <span className="text-muted-foreground">Coverage</span>
+              <span className="font-mono tabular-nums">
+                {perf.live.coveragePercent.toFixed(1)}% ·{' '}
+                {perf.live.matchedPredictions.toLocaleString('en-GB')} matched
+              </span>
+            </div>
+          </ServingCard>
+
+          <ServingCard name="TFT" role="near-term daily ≤30d">
+            {tft?.activeModel ? (
+              <div className="space-y-1">
+                <p className="font-mono text-lg">{tft.activeModel.version}</p>
+                {tft.activeModel.horizon != null && (
+                  <p className="text-muted-foreground text-xs">
+                    horizon {tft.activeModel.horizon}d · scope {tft.activeModel.parkScope ?? 'all'}
+                  </p>
+                )}
+                {tft.activeModel.trainedAt && (
+                  <p className="text-muted-foreground text-xs">
+                    trained {new Date(tft.activeModel.trainedAt).toLocaleDateString('en-GB')}
+                  </p>
+                )}
+              </div>
+            ) : (
+              <p className="text-muted-foreground text-xs">
+                {health.data ? 'No model trained yet' : 'Loading…'}
+              </p>
+            )}
+          </ServingCard>
+
+          {/* Served intraday = what users actually get (PCN champion-swap). The CatBoost
+              "Live MAE" is the fallback/system-wide number. Guarded: absent when not serving. */}
+          <ServingCard name="PCN" role="intraday 15-min · champion-swap">
+            {perf.servedIntraday ? (
+              <>
+                <div className="flex items-end justify-between gap-2">
+                  <div>
+                    <span
+                      className={`text-3xl font-bold tabular-nums ${maeColor(perf.servedIntraday.mae)}`}
+                    >
+                      {perf.servedIntraday.mae.toFixed(2)}
+                    </span>
+                    <p className="text-muted-foreground text-xs">Served MAE</p>
+                  </div>
+                  {perf.servedIntraday.delta != null ? (
+                    <span
+                      className={`text-xs font-medium ${
+                        perf.servedIntraday.delta >= 0 ? 'text-emerald-400' : 'text-red-400'
+                      }`}
+                    >
+                      {perf.servedIntraday.delta >= 0 ? '-' : '+'}
+                      {Math.abs(perf.servedIntraday.delta).toFixed(1)} vs CatBoost
+                    </span>
+                  ) : (
+                    <span className="text-muted-foreground text-xs">vs CatBoost n/a</span>
+                  )}
+                </div>
+                <div className="border-border/40 flex items-center justify-between border-t pt-2 text-xs">
+                  <span className="text-muted-foreground">Window</span>
+                  <span className="font-mono tabular-nums">
+                    {perf.servedIntraday.n.toLocaleString('en-GB')} preds ·{' '}
+                    {perf.servedIntraday.days}d
+                  </span>
+                </div>
+              </>
+            ) : (
+              <p className="text-muted-foreground text-xs">Shadow only — not currently serving</p>
+            )}
+          </ServingCard>
+        </div>
+
+        {/* Model identity (CatBoost champion) */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <StatCard
             label="Version"
             value={<span className="text-xl">{model.current.version}</span>}
@@ -570,342 +928,187 @@ export default function MlPage() {
             value={formatAge(d.system.modelAge)}
             sub={`${model.current.fileSizeMB.toFixed(1)} MB`}
           />
-          <StatCard
-            label="Live MAE"
-            value={perf.live.mae.toFixed(2)}
-            valueClass={maeColor(perf.live.mae)}
-            sub={
-              <span className={perf.improvement.isImproving ? 'text-emerald-400' : 'text-red-400'}>
-                {perf.improvement.maePercentChange > 0 ? '+' : ''}
-                {perf.improvement.maePercentChange.toFixed(1)}% vs prev
-              </span>
-            }
-          />
-          {/* Served MAE = what users actually get intraday (PCN champion-swap).
-              The "Live MAE" above is the CatBoost fallback/system-wide number.
-              Guarded: absent when PCN isn't serving. */}
-          {perf.servedIntraday && (
-            <StatCard
-              label="Served MAE"
-              value={perf.servedIntraday.mae.toFixed(2)}
-              valueClass={maeColor(perf.servedIntraday.mae)}
-              sub={
-                perf.servedIntraday.delta != null ? (
-                  <span
-                    className={
-                      perf.servedIntraday.delta >= 0 ? 'text-emerald-400' : 'text-red-400'
-                    }
-                  >
-                    {perf.servedIntraday.delta >= 0 ? '-' : '+'}
-                    {Math.abs(perf.servedIntraday.delta).toFixed(1)} vs CatBoost
-                  </span>
-                ) : (
-                  'intraday (PCN)'
-                )
-              }
-            />
-          )}
-          <StatCard
-            label="Coverage"
-            value={`${perf.live.coveragePercent.toFixed(1)}%`}
-            sub={`${perf.live.matchedPredictions.toLocaleString('en-GB')} matched`}
-          />
           <StatCard label="Features" value={model.configuration.featureCount} sub="inputs used" />
         </div>
       </Section>
 
-      <Section icon={GitCompare} title="Accuracy (training vs live)">
-        <Card className="border-border/60">
-          <CardContent className="pt-5">
-            <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
-              <span />
-              <span className="text-right">MAE</span>
-              <span className="text-right">RMSE</span>
-              <span className="text-right">MAPE</span>
-              <span className="text-right">R²</span>
-            </div>
-            <MetricsRow label="Training" m={perf.training} />
-            <MetricsRow
-              label="Live"
-              m={{
-                mae: perf.live.mae,
-                rmse: perf.live.rmse,
-                mape: perf.live.mape,
-                r2Score: perf.live.r2Score,
-              }}
-            />
-            <div className="grid grid-cols-2 gap-3 pt-3 text-sm sm:grid-cols-4">
-              <KeyVal
-                label="Predictions"
-                value={perf.live.totalPredictions.toLocaleString('en-GB')}
+      {/* ── Model health: training-vs-live accuracy + drift ─────────────────── */}
+      <Section icon={Gauge} title="Model health">
+        <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+          <Card className="border-border/60 lg:col-span-2">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+                Accuracy · training vs live
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-2 border-b pb-2 text-xs font-medium tracking-wide uppercase">
+                <span />
+                <span className="text-right">MAE</span>
+                <span className="text-right">RMSE</span>
+                <span className="text-right">MAPE</span>
+                <span className="text-right">R²</span>
+              </div>
+              <MetricsRow label="Training" m={perf.training} />
+              <MetricsRow
+                label="Live"
+                m={{
+                  mae: perf.live.mae,
+                  rmse: perf.live.rmse,
+                  mape: perf.live.mape,
+                  r2Score: perf.live.r2Score,
+                }}
               />
-              <KeyVal label="Unique parks" value={perf.live.uniqueParks} />
-              <KeyVal label="Unique rides" value={perf.live.uniqueAttractions} />
-              <KeyVal
-                label="Train samples"
-                value={model.trainingData.trainSamples.toLocaleString('en-GB')}
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </Section>
-
-      <Section icon={TrendingDown} title="Drift">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          <Card className="border-border/60 sm:col-span-1">
-            <CardContent className="space-y-1 pt-5">
-              <StatusBadge status={perf.drift.status} />
-              <p className="text-muted-foreground pt-1 text-xs">
-                drift {perf.drift.currentDrift.toFixed(2)} / threshold {perf.drift.threshold}
-              </p>
+              <div className="grid grid-cols-2 gap-3 pt-3 text-sm sm:grid-cols-4">
+                <KeyVal
+                  label="Predictions"
+                  value={perf.live.totalPredictions.toLocaleString('en-GB')}
+                />
+                <KeyVal label="Unique parks" value={perf.live.uniqueParks} />
+                <KeyVal label="Unique rides" value={perf.live.uniqueAttractions} />
+                <KeyVal
+                  label="Train samples"
+                  value={model.trainingData.trainSamples.toLocaleString('en-GB')}
+                />
+              </div>
             </CardContent>
           </Card>
-          <div className="grid grid-cols-2 gap-3 sm:col-span-3 sm:grid-cols-3">
-            <Card className="border-border/60">
-              <CardContent className="pt-5">
+
+          <Card className="border-border/60">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-muted-foreground flex items-center gap-2 text-xs font-medium tracking-wide uppercase">
+                <TrendingDown className="h-3.5 w-3.5" /> Drift
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="space-y-1">
+                <StatusBadge status={perf.drift.status} />
+                <p className="text-muted-foreground text-xs">
+                  drift {perf.drift.currentDrift.toFixed(2)} / threshold {perf.drift.threshold}
+                </p>
+              </div>
+              <div className="grid grid-cols-3 gap-3">
                 <KeyVal
-                  label="Training MAE"
+                  label="Train MAE"
                   value={perf.drift.trainingMae.toFixed(2)}
                   valueClass={maeColor(perf.drift.trainingMae)}
                 />
-              </CardContent>
-            </Card>
-            <Card className="border-border/60">
-              <CardContent className="pt-5">
                 <KeyVal
                   label="Live MAE"
                   value={perf.drift.liveMae.toFixed(2)}
                   valueClass={maeColor(perf.drift.liveMae)}
                 />
-              </CardContent>
-            </Card>
-            <Card className="border-border/60">
-              <CardContent className="pt-5">
                 <KeyVal label="Tracked days" value={perf.drift.dailyMetrics.length} />
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </Section>
 
-      {/* TFT model + comparison */}
-      {health.data?.ml.tft && (
-        <Section icon={GitCompare} title="TFT (NeuralForecast) — near-term daily">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            {/* TFT model info */}
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                  Active model
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-1 text-sm">
-                {health.data.ml.tft.activeModel ? (
-                  <>
-                    <p className="font-mono text-base">{health.data.ml.tft.activeModel.version}</p>
-                    {health.data.ml.tft.activeModel.trainedAt && (
-                      <p className="text-muted-foreground text-xs">
-                        trained{' '}
-                        {new Date(health.data.ml.tft.activeModel.trainedAt).toLocaleString('en-GB')}
-                      </p>
-                    )}
-                    {health.data.ml.tft.activeModel.horizon && (
-                      <p className="text-muted-foreground text-xs">
-                        horizon {health.data.ml.tft.activeModel.horizon}d · scope{' '}
-                        {health.data.ml.tft.activeModel.parkScope ?? 'all'}
-                      </p>
-                    )}
-                  </>
-                ) : (
-                  <p className="text-muted-foreground text-xs">No model trained yet</p>
-                )}
-              </CardContent>
-            </Card>
+      {/* ── Challenger boards: verdict-forward shadow comparisons ───────────── */}
+      <Section icon={GitCompare} title="Challenger boards">
+        <p className="text-muted-foreground text-sm">
+          n-weighted MAE per segment × lead bucket (highlighted row = lead &ldquo;all&rdquo;
+          aggregate). <span className="font-medium">Act</span>/
+          <span className="font-medium">Pred</span> are mean realised vs predicted minutes;{' '}
+          <span className="font-medium">Bias</span> is the challenger&rsquo;s signed mean error
+          (Pred − Act). Δ &gt; 0 (green) means the challenger beats CatBoost. PCN serves intraday
+          behind a server flag; Shape is shadow-only.
+        </p>
 
-            {/* TFT vs CatBoost scoreboard */}
-            <Card className="border-border/60">
-              <CardHeader className="pb-2">
-                <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
-                  vs CatBoost scoreboard
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {health.data.ml.comparison?.rows?.length > 0 ? (
-                  (() => {
-                    // Pivot rows → one entry per (date, segment) holding both models,
-                    // so CatBoost vs TFT sit side by side (TFT's edge lives on busy/hdlnr).
-                    type Pivot = {
-                      date: string;
-                      segment: string;
-                      n: number;
-                      cat?: ComparisonRow;
-                      tft?: ComparisonRow;
-                    };
-                    const groups = new Map<string, Pivot>();
-                    for (const r of health.data.ml.comparison.rows) {
-                      const segment = r.segment ?? 'all';
-                      const key = `${r.targetDate}|${segment}`;
-                      const g = groups.get(key) ?? { date: r.targetDate, segment, n: r.n };
-                      if (r.model === 'tft') g.tft = r;
-                      else g.cat = r;
-                      groups.set(key, g);
-                    }
-                    const order: Record<string, number> = { all: 0, busy: 1, headliner: 2 };
-                    const list = [...groups.values()]
-                      .sort((a, b) =>
-                        a.date < b.date
-                          ? 1
-                          : a.date > b.date
-                            ? -1
-                            : (order[a.segment] ?? 9) - (order[b.segment] ?? 9)
-                      )
-                      .slice(0, 12);
-                    const segLabel: Record<string, string> = {
-                      all: 'all',
-                      busy: 'busy',
-                      headliner: 'hdlnr',
-                    };
-                    const segClass: Record<string, string> = {
-                      all: 'text-muted-foreground',
-                      busy: 'text-amber-400',
-                      headliner: 'text-violet-400',
-                    };
-                    return (
-                      <div className="space-y-0">
-                        <div className="border-border/60 text-muted-foreground grid grid-cols-5 gap-1 border-b pb-1 text-xs font-medium tracking-wide uppercase">
-                          <span>Date</span>
-                          <span>Seg</span>
-                          <span className="text-right">n</span>
-                          <span className="text-right">CatB</span>
-                          <span className="text-right">TFT</span>
-                        </div>
-                        {list.map((g, i) => {
-                          const cm = g.cat ? Number(g.cat.mae) : NaN;
-                          const tm = g.tft ? Number(g.tft.mae) : NaN;
-                          const tftWins = Number.isFinite(cm) && Number.isFinite(tm) && tm < cm;
-                          return (
-                            <div
-                              key={i}
-                              className="border-border/40 grid grid-cols-5 gap-1 border-b py-1 text-xs last:border-0"
-                            >
-                              <span className="text-muted-foreground">{g.date?.slice(5, 10)}</span>
-                              <span className={`font-mono ${segClass[g.segment] ?? ''}`}>
-                                {segLabel[g.segment] ?? g.segment}
-                              </span>
-                              <span className="text-muted-foreground text-right font-mono tabular-nums">
-                                {g.n}
-                              </span>
-                              <span
-                                className={`text-right font-mono tabular-nums ${Number.isFinite(cm) ? maeColor(cm) : 'text-muted-foreground'}`}
-                              >
-                                {Number.isFinite(cm) ? cm.toFixed(1) : '—'}
-                              </span>
-                              <span
-                                className={`text-right font-mono tabular-nums ${
-                                  !Number.isFinite(tm)
-                                    ? 'text-muted-foreground'
-                                    : tftWins
-                                      ? 'font-semibold text-blue-400'
-                                      : maeColor(tm)
-                                }`}
-                              >
-                                {Number.isFinite(tm) ? tm.toFixed(1) : '—'}
-                              </span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    );
-                  })()
-                ) : (
-                  <p className="text-muted-foreground text-xs">
-                    {health.data.ml.comparison?.note ?? 'No comparison data yet'}
-                  </p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        </Section>
-      )}
+        <div className="space-y-2">
+          {intradayVerdict && intradayVerdict.length > 0 && (
+            <VerdictBar label="Intraday verdict (lead all)" items={intradayVerdict} />
+          )}
+          <ShadowBoard
+            challengerLabel="PCN"
+            challengerModel="pcn"
+            rows={comparison.data?.intraday.rows}
+            note={comparison.data?.intraday.note}
+            error={comparison.data?.intraday.error}
+          />
+        </div>
 
-      {comparison.data && (
-        <Section icon={GitCompare} title="Shadow model boards (vs CatBoost)">
-          <p className="text-muted-foreground text-sm">
-            n-weighted MAE per segment × lead bucket (highlighted row = lead &ldquo;all&rdquo;
-            aggregate). <span className="font-medium">Act</span>/
-            <span className="font-medium">Pred</span> are mean realised vs predicted minutes;{' '}
-            <span className="font-medium">Bias</span> is the challenger&rsquo;s signed mean error
-            (Pred − Act). Δ &gt; 0 (green) means the challenger beats CatBoost. PCN serves intraday
-            behind a server flag; Shape is shadow-only.
-          </p>
-          <div className="grid grid-cols-1 gap-3">
-            <ShadowBoard
-              challengerLabel="PCN"
-              challengerModel="pcn"
-              rows={comparison.data.intraday.rows}
-              note={comparison.data.intraday.note}
-              error={comparison.data.intraday.error}
-            />
-            <ShadowBoard
-              challengerLabel="Shape"
-              challengerModel="shape"
-              rows={comparison.data.shape.rows}
-              note={comparison.data.shape.note}
-              error={comparison.data.shape.error}
+        <div className="space-y-2">
+          {shapeVerdict && shapeVerdict.length > 0 && (
+            <VerdictBar label="Day-curve verdict (lead all)" items={shapeVerdict} />
+          )}
+          <ShadowBoard
+            challengerLabel="Shape"
+            challengerModel="shape"
+            rows={comparison.data?.shape.rows}
+            note={comparison.data?.shape.note}
+            error={comparison.data?.shape.error}
+          />
+        </div>
+
+        {comparison.data?.leadCurve && (
+          <div className="space-y-2">
+            <p className="text-muted-foreground text-sm">
+              <span className="font-medium">Lead curve (§7.7):</span> PCN&rsquo;s forecast at a
+              forced 1h/3h/6h horizon vs a persistence baseline (the wait that many hours ago). Δ
+              &gt; 0 (green) means PCN beats persistence — expected to flip from negative at 1h to
+              positive at longer leads (the rest-of-day the UI serves).
+            </p>
+            <LeadCurveBoard
+              rows={comparison.data.leadCurve.rows}
+              note={comparison.data.leadCurve.note}
+              error={comparison.data.leadCurve.error}
             />
           </div>
-          {comparison.data.leadCurve && (
-            <>
-              <p className="text-muted-foreground pt-2 text-sm">
-                <span className="font-medium">Lead curve (§7.7):</span> PCN&rsquo;s forecast at a
-                forced 1h/3h/6h horizon vs a persistence baseline (the wait that many hours ago).
-                Δ &gt; 0 (green) means PCN beats persistence — expected to flip from negative at 1h
-                to positive at longer leads (the rest-of-day the UI serves).
-              </p>
-              <div className="grid grid-cols-1 gap-3">
-                <LeadCurveBoard
-                  rows={comparison.data.leadCurve.rows}
-                  note={comparison.data.leadCurve.note}
-                  error={comparison.data.leadCurve.error}
+        )}
+
+        {health.data?.ml.tft && (
+          <div className="space-y-2">
+            <SubLabel>Daily forecast · TFT vs CatBoost (≤30d)</SubLabel>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <TftModelCard model={health.data.ml.tft.activeModel} />
+              <TftScoreboard comparison={health.data.ml.comparison} />
+            </div>
+          </div>
+        )}
+      </Section>
+
+      {/* ── Per-attraction accuracy: CatBoost hourly + TFT daily ────────────── */}
+      <Section icon={Sparkles} title="Per-attraction accuracy">
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <SubLabel>CatBoost · hourly</SubLabel>
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <PerformerList
+                title="Best predictions"
+                icon={TrendingUp}
+                performers={insights.topPerformers}
+              />
+              <PerformerList
+                title="Worst predictions"
+                icon={TrendingDown}
+                performers={insights.bottomPerformers}
+              />
+            </div>
+          </div>
+
+          {tftPerformers.data && tftPerformers.data.topPerformers.length > 0 && (
+            <div className="space-y-2">
+              <SubLabel>TFT · daily</SubLabel>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <PerformerList
+                  title="Best predictions"
+                  icon={TrendingUp}
+                  performers={tftPerformers.data.topPerformers}
+                />
+                <PerformerList
+                  title="Worst predictions"
+                  icon={TrendingDown}
+                  performers={tftPerformers.data.bottomPerformers}
                 />
               </div>
-            </>
+            </div>
           )}
-        </Section>
-      )}
-
-      <Section icon={Sparkles} title="Per-attraction accuracy (CatBoost hourly)">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-          <PerformerList
-            title="Best predictions"
-            icon={TrendingUp}
-            performers={insights.topPerformers}
-          />
-          <PerformerList
-            title="Worst predictions"
-            icon={TrendingDown}
-            performers={insights.bottomPerformers}
-          />
         </div>
       </Section>
 
-      {tftPerformers.data && tftPerformers.data.topPerformers.length > 0 && (
-        <Section icon={Sparkles} title="Per-attraction accuracy (TFT daily)">
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <PerformerList
-              title="Best predictions"
-              icon={TrendingUp}
-              performers={tftPerformers.data.topPerformers}
-            />
-            <PerformerList
-              title="Worst predictions"
-              icon={TrendingDown}
-              performers={tftPerformers.data.bottomPerformers}
-            />
-          </div>
-        </Section>
-      )}
-
+      {/* ── Monitoring: anomalies + active alerts ───────────────────────────── */}
       <Section icon={Bell} title="Monitoring">
         <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
           <Card className="border-border/60">
