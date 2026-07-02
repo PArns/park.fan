@@ -198,6 +198,19 @@ export interface ChallengerVerdict {
   challengerWins: boolean;
 }
 
+/** PCN−persistence MAE delta per (forecast horizon, segment), n-weighted. delta>0 ⇒
+ * PCN's L-ahead forecast beats a naive no-change baseline. Persistence dominates at
+ * short leads; PCN pulls ahead at longer leads (the rest-of-day the UI serves). */
+export interface LeadCurveVerdict {
+  leadBucket: string; // '1h' | '3h' | '6h'
+  segment: string;
+  n: number;
+  pcnMae: number;
+  persistMae: number;
+  delta: number;
+  pcnWins: boolean;
+}
+
 /** One board section. Each is produced independently server-side, so any one can fail
  * on its own ({ error }) or be empty before its shadow table exists ({ note }). */
 export interface ComparisonSection<TRow, TVerdict> {
@@ -216,6 +229,9 @@ export interface MlComparisonBoard {
   intraday: ComparisonSection<ShadowComparisonRow, IntradayVerdict>;
   /** Shape vs CatBoost day-curve shadow board + Shape−CatBoost verdict. */
   shape: ComparisonSection<ShadowComparisonRow, ChallengerVerdict>;
+  /** PCN@{1h,3h,6h} vs persistence lead-curve board + verdict (§7.7). Optional: absent
+   * on API builds predating the lead-curve scorer. */
+  leadCurve?: ComparisonSection<ShadowComparisonRow, LeadCurveVerdict>;
 }
 
 export interface GpuDevice {
