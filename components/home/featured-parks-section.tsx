@@ -1,5 +1,5 @@
 import { getParkBackgroundImage } from '@/lib/utils/park-assets';
-import type { GeoStructure, ParkStatus, CrowdLevel, ScheduleSummary } from '@/lib/api/types';
+import type { GeoStructure } from '@/lib/api/types';
 
 /**
  * Featured parks per locale — verified slugs from footer + API structure.
@@ -59,25 +59,22 @@ const FEATURED_PARK_SLUGS: Record<string, string[]> = {
   ],
 };
 
+/**
+ * Day-stable, cacheable park fields only — deliberately NO live data (status, crowd, wait,
+ * schedule). Those used to be baked from the geo snapshot, which forced the geo fetch (and with
+ * it every page rendering this section) onto a 5-min ISR window; they now overlay client-side
+ * via `useRegionParks` (see FeaturedParkCardsLive), the same pattern as the hub-page grids.
+ */
 interface FeaturedPark {
   name: string;
   slug: string;
   parkId: string;
   city: string;
+  continentSlug: string;
   countrySlug: string;
   countryName: string; // raw name, translated in component
   href: string;
   backgroundImage?: string | null;
-  // Live data from ParkReference
-  status?: ParkStatus;
-  crowdLevel?: CrowdLevel;
-  averageWaitTime?: number;
-  operatingAttractions?: number;
-  totalAttractions?: number;
-  timezone?: string;
-  hasOperatingSchedule: boolean;
-  todaySchedule?: ScheduleSummary;
-  nextSchedule?: ScheduleSummary;
 }
 
 export { FEATURED_PARK_SLUGS };
@@ -100,19 +97,11 @@ export function extractFeaturedParks(geoData: GeoStructure | null, locale: strin
               slug: park.slug,
               parkId: park.id,
               city: city.name,
+              continentSlug: continent.slug,
               countrySlug: country.slug,
               countryName: country.name,
               href: `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
               backgroundImage: getParkBackgroundImage(park.slug),
-              status: park.status,
-              crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
-              averageWaitTime: park.analytics?.statistics?.avgWaitTime,
-              operatingAttractions: park.analytics?.statistics?.operatingAttractions,
-              totalAttractions: park.analytics?.statistics?.totalAttractions,
-              timezone: park.timezone,
-              hasOperatingSchedule: park.hasOperatingSchedule,
-              todaySchedule: park.todaySchedule,
-              nextSchedule: park.nextSchedule,
             });
           }
         }

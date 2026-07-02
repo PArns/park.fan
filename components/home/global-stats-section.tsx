@@ -1,8 +1,9 @@
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { BarChart3, Database } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { StatsCard } from '@/components/common/stats-card';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
+import { GlobalStatsLiveCounts } from '@/components/home/global-stats-live-counts';
 import { ParkCard } from '@/components/parks/park-card';
 import { AttractionCard } from '@/components/parks/attraction-card';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -14,19 +15,22 @@ import { getParkBackgroundImage, getAttractionBackgroundImage } from '@/lib/util
 /**
  * Global real-time stats + platform statistics — server-rendered into the homepage shell.
  *
- * Baked into the 5-min static shell: `getGlobalStats(300)` shares the shell's revalidate window, so
- * the highlighted parks/rides are at most 5 min stale while this section ships ZERO client JS (no
- * React Query, no client-side background resolution — backgrounds are resolved on the server from
- * the filesystem via {@link getParkBackgroundImage}/{@link getAttractionBackgroundImage}). While the
- * fetch is pending the homepage <Suspense> shows its skeleton; on error the section is omitted.
+ * The shell revalidates HOURLY (keeping ISR writes down — see app/[locale]/page.tsx), so the
+ * two headline "right now" counts overlay themselves client-side ({@link GlobalStatsLiveCounts},
+ * 5-min poll) on top of the baked seed. The highlighted park/ride cards stay fully baked (≤1h
+ * stale): they are editorial highlights linking to live park pages, and re-resolving them
+ * client-side would need per-park background lookups (a server-only fs resolve via
+ * {@link getParkBackgroundImage}/{@link getAttractionBackgroundImage}). While the fetch is
+ * pending the homepage <Suspense> shows its skeleton; on error the section is omitted.
  */
 export async function GlobalStatsSection() {
-  const [t, tCommon, tGeo] = await Promise.all([
+  const [t, tCommon, tGeo, locale] = await Promise.all([
     getTranslations('stats'),
     getTranslations('common'),
     getTranslations('geo'),
+    getLocale(),
   ]);
-  const stats = await catchNonFatal(getGlobalStats(300));
+  const stats = await catchNonFatal(getGlobalStats());
   if (!stats) return null;
 
   const nowIso = new Date().toISOString();
@@ -42,30 +46,18 @@ export async function GlobalStatsSection() {
           </div>
           <p className="text-muted-foreground mb-8 text-sm">{t('globalStatsIntro')}</p>
 
-          {/* Grid Layout: First row - 2 static cards */}
-          <div className="mb-4 grid gap-4 sm:grid-cols-2">
-            {/* Open Parks */}
-            <StatsCard
-              title={t('openParks')}
-              value={stats.counts.openParks}
-              description={
-                <>
-                  {tCommon('of')} {stats.counts.parks} {tCommon('total')}
-                </>
-              }
-            />
-
-            {/* Total Attractions */}
-            <StatsCard
-              title={t('totalAttractions')}
-              value={stats.counts.attractions.toLocaleString()}
-              description={
-                <>
-                  {stats.counts.openAttractions.toLocaleString()} {tCommon('operating')}
-                </>
-              }
-            />
-          </div>
+          {/* First row — the two headline "right now" counts, live via client overlay */}
+          <GlobalStatsLiveCounts
+            initialCounts={stats.counts}
+            locale={locale}
+            labels={{
+              openParks: t('openParks'),
+              of: tCommon('of'),
+              total: tCommon('total'),
+              totalAttractions: t('totalAttractions'),
+              operating: tCommon('operating'),
+            }}
+          />
 
           {/* Grid Layout: Second row - Parks */}
           <div className="mb-3 grid gap-4 sm:grid-cols-2">

@@ -13,7 +13,7 @@ export async function GET(
 
   // The live wait-times ticker is polled by every homepage visitor (every 5 min, see
   // live-wait-ticker) and the admin dashboard, all asking for the same param-less data.
-  // Serve it from the shared 5-min data cache (getTickerData → revalidate 300) so those
+  // Serve it from the shared 10-min data cache (getTickerData → revalidate 600) so those
   // concurrent polls collapse onto a single backend call instead of each hitting the API.
   // realtime/geo-live stay no-store below (live stats).
   if (path.length === 1 && path[0] === 'ticker') {

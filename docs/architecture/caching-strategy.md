@@ -20,12 +20,12 @@ Next.js ISR controls revalidation per route:
 
 | Route      | Render     | revalidate  | API Cache | Strategy                                                                  |
 | ---------- | ---------- | ----------- | --------- | ------------------------------------------------------------------------- |
-| Homepage   | Static ISR | 300 (5m)    | 120s      | Prerendered HTML; data sections via Suspense, live via RQ                 |
-| Continent  | Static ISR | 300 (5m)    | 120s      | Geo structure (rarely changes)                                            |
-| Country    | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
-| City       | Static ISR | 300 (5m)    | 300s      | Prerendered; live park stats via React Query                              |
-| Park       | Static ISR | 604800 (7d) | 300s      | Prebuilt (top ~20 popular) + lean shell; live data via RQ on client       |
-| Attraction | Static ISR | 604800 (7d) | 300s      | Lean shell + JSON-LD; history/forecast chart + live data via RQ on client |
+| Homepage   | Static ISR | 3600 (1h)   | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ         |
+| Continent  | Static ISR | 86400 (1d)  | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`         |
+| Country    | Static ISR | 86400 (1d)  | 300s      | Prerendered status-free; live park stats via React Query                  |
+| City       | Static ISR | 86400 (1d)  | 300s      | Prerendered status-free; live park stats via React Query                  |
+| Park       | Dynamic    | —           | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ    |
+| Attraction | Dynamic    | —           | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route  |
 | Search     | Dynamic    | —           | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                 |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
@@ -154,6 +154,49 @@ the hero/shell rotation window.
 - `getGlobalStats` / `getGeoLiveStats` now take a `revalidate` arg (default 600); the homepage passes
   **300** so the Data Cache entry shares the shell's revalidate window. This **supersedes the 600s row
   above** for the `realtime` + `geo-live` keys (ticker stays 600s, still client-streamed).
+
+**Update (Jul 2026) — hourly homepage shell + client-live overlays (write-regression fix).**
+
+The Jun 22 change above re-created the write problem it had once been designed around: a 5-min
+static shell × 6 locales × ~600 KB HTML+RSC per regeneration (Vercel bills ISR writes **per 8 KB
+stored**, so one homepage regeneration ≈ 75 units) ≈ **45–100k write units/day** — the entire Jun
+19–Jul 2 bill of 614k units. Two mechanisms drove it:
+
+1. **Shell churn:** `export const revalidate = 300` × 288 windows/day × 6 locales.
+2. **Fetch pinning:** a static route's effective ISR window is the **MIN of all its `fetch`
+   revalidates** — `getGeoStructure(300)` (featured slot), `getGlobalStats(300)`,
+   `getGeoLiveStats(300)`, `getTickerData()`@600 and `ml.ts`@1800 all pinned routes down; the
+   featured slot pinned **blog, glossary-term and howto pages** to 5 min too, and re-wrote the
+   ~114 KB geo Data-Cache entry 288×/day.
+
+Fix (mirrors the park/hub-page **shell + client-overlay** model — the shell carries day-stable
+structure, everything "now" is client-refreshed):
+
+| Lever                                        | Before           | After                                                             |
+| -------------------------------------------- | ---------------- | ----------------------------------------------------------------- |
+| Homepage `export const revalidate`           | 300              | **3600** (~12× fewer shell writes)                                |
+| `getGlobalStats` / `getGeoLiveStats` default | 600 (home: 300)  | **3600** — SSR seed only                                          |
+| `getTickerData` (shell seed)                 | 600              | **3600** via arg; proxy keeps 600 for polls                       |
+| `getMLDashboard` / `getMLMetricsHistory`     | 1800             | **3600**                                                          |
+| Featured slot `getGeoStructure`              | 300              | **default (24h)** — structure-only baking                         |
+| "Open parks" counts (global + per-continent) | baked, ≤5m       | client overlay: `useGlobalStats` / `useGeoLiveStats` (5-min poll) |
+| Featured card status/crowd/wait/schedule     | baked, ≤5m       | client overlay: `FeaturedParkCardsLive` → `useRegionParks`        |
+| Hero photo rotation                          | per 5-min window | re-picked per regeneration (~hourly)                              |
+
+Net effect: the "live" numbers are now **fresher** than before (5-min client poll + refetch on
+focus vs. a baked 5-min snapshot), while homepage shell writes drop ~12× and the geo entry drops
+from 288 to ~1 write/day. `/{locale}/parks` inherits the 3600s default for its baked counts.
+
+> **Rule of thumb before giving any route a static shell:** writes/day ≈ locales ×
+> (86400 / revalidate) × (stored size / 8 KB) × traffic-utilization. And check `next build`'s
+> revalidate column — one forgotten 300s fetch pins the whole route back down.
+
+**On-demand revalidation is now available** (`/api/revalidate`, POST, secret-protected): the
+backend can `revalidateTag` (`geo`, `parks`, `attractions`, `analytics`, `popular-parks`, `ml`,
+`weather`, `best-days:<slug>`) or `revalidatePath` when data **actually changes** — the
+"read first, only write on change" model. Time-based TTLs remain only as a fallback, so they can
+be raised further once the backend webhook is live. See
+[backend-integration](../api/backend-integration.md#on-demand-revalidation).
 
 ---
 

@@ -97,6 +97,32 @@ or build error). `'use cache'` requires `cacheComponents`, so the fix was:
 - "Each child in a list should have a unique key" near `<LiveParkData>` (TabsWithHash/render
   structure, unchanged by this work).
 
+## Regression #2 (Jun 22 2026): the 5-min homepage shell — fixed Jul 2026
+
+Write units climbed back to **45–100k/day** (614k for Jun 19–Jul 2) after #169/#170 made the
+homepage a **static 5-min shell**. Same billing math as above, different route:
+
+- Homepage shell = **~500 KB HTML + ~264 KB RSC per locale** (~96 units/regeneration at 8 KB/unit)
+  × 6 locales × up to 288 windows/day ≈ the observed daily bill. High frequency × fat shell —
+  cardinality (6) didn't matter this time.
+- **Fetch pinning spread it further:** a static route's effective revalidate is the MIN of its
+  fetch revalidates. `getGeoStructure(300)` inside the featured-parks slot pinned **blog,
+  glossary-term and howto pages** to 5 min as well, and re-wrote the ~114 KB geo Data-Cache
+  entry 288×/day.
+
+**Fix (Jul 2026):** homepage `revalidate` 300 → **3600**; every shell fetch raised to ≥ 3600
+(`getGlobalStats`/`getGeoLiveStats`/`getTickerData(3600)` seed/`ml.ts`/featured `getGeoStructure()`
+default 24h); everything that reads as "live" overlays client-side on the baked seed
+(`useGeoLiveStats`, new `useGlobalStats`, featured cards via `useRegionParks` — hub-page pattern).
+Verified via `prerender-manifest.json`: homepage + /parks = 3600, hubs 86400, blog `false`
+(fully static again), glossary 86400. Plus **`/api/revalidate`** (secret-protected
+`revalidateTag`/`revalidatePath`) so the backend can invalidate on real changes instead of timers.
+Details: [caching-strategy](../architecture/caching-strategy.md).
+
+**Lesson:** before giving any route a static shell, price it: writes/day ≈ locales ×
+(86400 / revalidate) × (stored bytes / 8 KB) × utilization — and audit every fetch in the render
+path for a lower revalidate that silently pins the route.
+
 ## Notes
 
 - Production serves `x-vercel-mitigated: challenge` (Vercel WAF/BotID, HTTP 429) to

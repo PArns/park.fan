@@ -2,49 +2,41 @@ import { getTranslations, getLocale } from 'next-intl/server';
 import { ChevronRight, Star } from 'lucide-react';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
-import { ParkCard } from '@/components/parks/park-card';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { Link } from '@/i18n/navigation';
 import { extractFeaturedParks, type FeaturedPark } from './featured-parks-section';
+import { FeaturedParkCardsLive } from './featured-park-cards-live';
 
 /**
- * Featured ("beliebte") parks — server-rendered into the page's 5-min shell.
+ * Featured ("beliebte") parks — structure server-rendered into the page's shell, live data
+ * layered on the client.
  *
- * The cards' live-ish data (status, crowd, wait, schedule) comes from `getGeoStructure(300)`, which
- * is request-deduped (shared with the live-activity section) and 5-min-cached. That is the *same*
- * source the old `/api/featured-parks` client poll hit, so rendering here on the server costs no
- * freshness while dropping the extra round-trip + React Query JS and baking the park links into the
- * prerendered HTML (the SEO point of this section). Wrapped in <Suspense> by callers so the geo
- * fetch never blocks the page shell.
+ * The baked part is day-stable only (names, links, city, photo — the SEO point of this
+ * section) and comes from the default 24h-cached `getGeoStructure()`, so this section no
+ * longer pins its host pages (homepage, blog, glossary, howto) to a 5-min ISR window — that
+ * pin was a main driver of the Jun 2026 ISR-write bill. Status/crowd/wait/schedule overlay
+ * client-side via the hub-page pattern ({@link FeaturedParkCardsLive} → `useRegionParks`,
+ * 5-min poll), so the cards are fresher than the old baked snapshot ever was. Wrapped in
+ * <Suspense> by callers so the geo fetch never blocks the page shell.
  */
 
-/** Shared server-rendered card grid used by both the full section and the compact grid. */
+/** Resolves translations server-side, then hands day-stable card data to the client grid. */
 async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
   const tGeo = await getTranslations('geo');
   return (
-    <div className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {parks.map((park) => (
-        <ParkCard
-          key={park.slug}
-          name={park.name}
-          slug={park.slug}
-          parkId={park.parkId}
-          city={park.city}
-          country={translateGeoSlug(tGeo, 'countries', park.countrySlug, park.countryName)}
-          href={park.href as '/'}
-          backgroundImage={park.backgroundImage}
-          status={park.status}
-          crowdLevel={park.crowdLevel}
-          averageWaitTime={park.averageWaitTime}
-          operatingAttractions={park.operatingAttractions}
-          totalAttractions={park.totalAttractions}
-          timezone={park.timezone}
-          todaySchedule={park.todaySchedule}
-          nextSchedule={park.nextSchedule}
-          variant="detailed"
-        />
-      ))}
-    </div>
+    <FeaturedParkCardsLive
+      parks={parks.map((park) => ({
+        parkId: park.parkId,
+        name: park.name,
+        slug: park.slug,
+        city: park.city,
+        country: translateGeoSlug(tGeo, 'countries', park.countrySlug, park.countryName),
+        href: park.href,
+        backgroundImage: park.backgroundImage ?? null,
+        continentSlug: park.continentSlug,
+        countrySlug: park.countrySlug,
+      }))}
+    />
   );
 }
 
@@ -55,7 +47,7 @@ async function FeaturedParkCards({ parks }: { parks: FeaturedPark[] }) {
 export async function FeaturedParksSlot({ locale }: { locale: string }) {
   const [tHome, geoData] = await Promise.all([
     getTranslations('home'),
-    catchNonFatal(getGeoStructure(300)),
+    catchNonFatal(getGeoStructure()),
   ]);
   const parks = extractFeaturedParks(geoData, locale);
   if (parks.length === 0) return null;
@@ -94,7 +86,7 @@ export async function PopularParksGrid() {
   const [tHome, locale, geoData] = await Promise.all([
     getTranslations('home'),
     getLocale(),
-    catchNonFatal(getGeoStructure(300)),
+    catchNonFatal(getGeoStructure()),
   ]);
   const parks = extractFeaturedParks(geoData, locale);
   if (parks.length === 0) return null;

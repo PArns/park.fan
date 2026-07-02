@@ -2,10 +2,10 @@ import { ChevronRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { OpenStatusProgress } from '@/components/common/open-status-progress';
+import { LiveContinentOpenCount } from '@/components/home/live-continent-open-count';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 
-/** Per-continent card data — including the live open-park count, resolved server-side. */
+/** Per-continent card data — the open count is the hourly SSR seed, overlaid live on the client. */
 export interface ContinentCard {
   slug: string;
   name: string;
@@ -15,9 +15,10 @@ export interface ContinentCard {
 }
 
 /**
- * Homepage "parks open now" grid — server-rendered into the 5-min shell. The continent structure
- * and the live open count both come from props (resolved in {@link LiveActivitySection} via
- * `getGeoLiveStats(300)`), so the count refreshes with the shell and this grid ships no client JS.
+ * Homepage "parks open now" grid. The continent structure (names, links, totals) is
+ * server-rendered into the hourly shell; only the open-park counter + progress bar are a
+ * client component ({@link LiveContinentOpenCount}) that overlays the baked seed with live
+ * values — one shared 5-min-polled batch call for all cards.
  */
 export async function LiveActivityGrid({ continents }: { continents: ContinentCard[] }) {
   const [tGeo, tExplore] = await Promise.all([getTranslations('geo'), getTranslations('explore')]);
@@ -26,7 +27,6 @@ export async function LiveActivityGrid({ continents }: { continents: ContinentCa
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {continents.map((continent) => {
         const continentName = translateGeoSlug(tGeo, 'continents', continent.slug, continent.name);
-        const openParkCount = continent.openParkCount;
 
         return (
           <Link
@@ -47,16 +47,10 @@ export async function LiveActivityGrid({ continents }: { continents: ContinentCa
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="mb-2 flex items-baseline gap-2">
-                  <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">
-                    {openParkCount}
-                  </span>
-                  <span className="text-muted-foreground text-sm">/ {continent.parkCount}</span>
-                </div>
-                <OpenStatusProgress
-                  openCount={openParkCount}
-                  totalCount={continent.parkCount}
-                  showLabel={false}
+                <LiveContinentOpenCount
+                  continentSlug={continent.slug}
+                  initialOpenCount={continent.openParkCount}
+                  parkCount={continent.parkCount}
                 />
               </CardContent>
             </Card>
