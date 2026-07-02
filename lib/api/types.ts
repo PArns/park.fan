@@ -270,10 +270,20 @@ export type QueueType =
 
 export type QueueStatus = 'OPERATING' | 'DOWN' | 'CLOSED' | 'REFURBISHMENT';
 
+/** Short-term wait-time trend the API attaches to live queues (STANDBY, SINGLE_RIDER). */
+export interface QueueTrend {
+  direction: TrendDirection;
+  changeRate: number;
+  recentAverage: number;
+  previousAverage: number;
+}
+
 export interface BaseQueue {
   queueType: QueueType;
   status: QueueStatus;
   lastUpdated: string;
+  /** Present on live standby/single-rider queues; absent from the park-list snapshot. */
+  trend?: QueueTrend;
 }
 
 export interface StandbyQueue extends BaseQueue {

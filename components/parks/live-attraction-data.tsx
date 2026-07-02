@@ -9,6 +9,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { SectionHeading } from '@/components/common/section-heading';
 import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
 import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
+import { TrendPill } from '@/components/parks/trend-pill';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
@@ -272,6 +273,24 @@ export function LiveAttractionData({
                     <div className="mb-2">
                       <QueueTypeBadge queue={queue} timezone={park.timezone} />
                     </div>
+                    {/* Short-term wait-time trend (e.g. single-rider rising/falling). Only the
+                        client-side detail fetch carries per-queue trend; the live park poll that
+                        feeds `attraction.queues` above does not. Derive both the arrow and the
+                        delta from the recent-vs-previous averages so they never disagree. */}
+                    {(() => {
+                      const trend = detail?.queues?.find(
+                        (q) => q.queueType === queue.queueType
+                      )?.trend;
+                      if (!trend) return null;
+                      const delta =
+                        Math.round((trend.recentAverage - trend.previousAverage) / 5) * 5;
+                      const direction = delta > 0 ? 'up' : delta < 0 ? 'down' : 'stable';
+                      return (
+                        <div className="mb-2">
+                          <TrendPill direction={direction} delta={delta} />
+                        </div>
+                      );
+                    })()}
                     {/* Paid standby lanes carry both a price (shown in the badge above) and a
                         wait time — surface the wait prominently. */}
                     {queue.queueType === 'PAID_STANDBY' && queue.waitTime !== null && (
