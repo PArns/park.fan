@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { SectionHeading } from '@/components/common/section-heading';
 import { AttractionLivePanel } from '@/components/parks/attraction-live-panel';
+import { QueueTypeBadge } from '@/components/parks/queue-type-badge';
 import { DailyWaitTimeChartClient } from '@/components/parks/daily-wait-time-chart-client';
 import { LocalTime } from '@/components/ui/local-time';
 import { GlossaryTermLink } from '@/components/glossary/glossary-term-link';
@@ -266,19 +267,27 @@ export function LiveAttractionData({
                       </span>
                       <Badge variant="outline">{t(QUEUE_STATUS_KEYS[queue.status])}</Badge>
                     </div>
-                    {'waitTime' in queue && queue.waitTime !== null && (
+                    {/* Canonical queue detail (price, single-rider time, boarding groups,
+                        virtual-queue window/state) — same component used on attraction cards. */}
+                    <div className="mb-2">
+                      <QueueTypeBadge queue={queue} timezone={park.timezone} />
+                    </div>
+                    {/* Paid standby lanes carry both a price (shown in the badge above) and a
+                        wait time — surface the wait prominently. */}
+                    {queue.queueType === 'PAID_STANDBY' && queue.waitTime !== null && (
                       <p className="text-2xl font-bold">
                         {queue.waitTime} <span className="text-muted-foreground text-sm">min</span>
                       </p>
                     )}
-                    {'returnStart' in queue &&
+                    {/* Lightning Lane carries both a price (badge) and a return window — the
+                        badge omits the window, so show it here. */}
+                    {queue.queueType === 'PAID_RETURN_TIME' &&
                       queue.returnStart &&
-                      'returnEnd' in queue &&
                       queue.returnEnd && (
                         <p className="text-muted-foreground text-sm">
                           {t('returnTime')}:{' '}
-                          <LocalTime time={queue.returnStart || ''} timeZone={park.timezone} /> -{' '}
-                          <LocalTime time={queue.returnEnd || ''} timeZone={park.timezone} />
+                          <LocalTime time={queue.returnStart} timeZone={park.timezone} /> -{' '}
+                          <LocalTime time={queue.returnEnd} timeZone={park.timezone} />
                         </p>
                       )}
                   </CardContent>
