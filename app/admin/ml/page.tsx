@@ -168,6 +168,8 @@ const LEAD_ORDER: Record<string, number> = {
   '>7d': 2,
   all: 9,
 };
+// Lead-curve horizons (§7.7): the forced forecast lead the origin was picked for.
+const LEADCURVE_ORDER: Record<string, number> = { '1h': 0, '3h': 1, '6h': 2 };
 
 // Postgres numerics arrive as strings; coerce defensively.
 const num = (v: string | number) => (typeof v === 'number' ? v : parseFloat(v));
@@ -321,6 +323,146 @@ function ShadowBoard({
                       }`}
                     >
                       {c.challengerMae != null ? c.challengerMae.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.delta == null
+                          ? 'text-muted-foreground'
+                          : wins
+                            ? 'text-emerald-400'
+                            : 'text-red-400'
+                      }`}
+                    >
+                      {c.delta == null ? '—' : `${c.delta > 0 ? '+' : ''}${c.delta.toFixed(1)}`}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
+  );
+}
+
+type LeadCurveCell = {
+  leadBucket: string;
+  segment: string;
+  n: number;
+  actual: number;
+  pcnMae: number | null;
+  persistMae: number | null;
+  delta: number | null; // persistMae − pcnMae (>0 ⇒ PCN beats persistence)
+};
+
+// Pool the lead-curve rows into one n-weighted cell per (horizon, segment), holding PCN
+// and the persistence baseline side by side. Each horizon has its own matched population
+// (fewer targets have a 6h-back origin), so n is per-cell.
+function aggregateLeadCurve(rows: ShadowComparisonRow[]): LeadCurveCell[] {
+  const cells = new Map<string, { pcn?: ModelAcc; persist?: ModelAcc }>();
+  for (const r of rows) {
+    const key = `${r.leadBucket}|${r.segment}`;
+    const cell = cells.get(key) ?? {};
+    const slot = r.model === 'pcn' ? 'pcn' : 'persist';
+    const acc = (cell[slot] ??= { n: 0, maeW: 0, biasW: 0, actW: 0, predW: 0 });
+    const n = num(r.n);
+    acc.n += n;
+    acc.maeW += num(r.mae) * n;
+    acc.actW += num(r.meanActual) * n;
+    cells.set(key, cell);
+  }
+  const out: LeadCurveCell[] = [];
+  for (const [key, { pcn, persist }] of cells) {
+    const [leadBucket, segment] = key.split('|');
+    const pcnMae = pcn?.n ? pcn.maeW / pcn.n : null;
+    const persistMae = persist?.n ? persist.maeW / persist.n : null;
+    const src = pcn?.n ? pcn : persist; // mean-actual is shared; use whichever exists
+    out.push({
+      leadBucket,
+      segment,
+      n: Math.min(pcn?.n ?? Infinity, persist?.n ?? Infinity),
+      actual: src?.n ? src.actW / src.n : 0,
+      pcnMae,
+      persistMae,
+      delta: pcnMae != null && persistMae != null ? persistMae - pcnMae : null,
+    });
+  }
+  return out.sort(
+    (a, b) =>
+      (LEADCURVE_ORDER[a.leadBucket] ?? 9) - (LEADCURVE_ORDER[b.leadBucket] ?? 9) ||
+      (SEGMENT_ORDER[a.segment] ?? 9) - (SEGMENT_ORDER[b.segment] ?? 9)
+  );
+}
+
+// PCN@{1h,3h,6h} vs a persistence baseline. Measures the longer leads the UI serves for
+// rest-of-day, which the main intraday board (freshest ~15-min origin) never scores (§7.7).
+function LeadCurveBoard({
+  rows,
+  note,
+  error,
+}: {
+  rows?: ShadowComparisonRow[];
+  note?: string;
+  error?: string;
+}) {
+  const cells = aggregateLeadCurve(rows ?? []);
+  return (
+    <Card className="border-border/60">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+          PCN vs persistence · by forecast horizon
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {error ? (
+          <p className="text-xs text-red-400">{error}</p>
+        ) : cells.length === 0 ? (
+          <p className="text-muted-foreground text-xs">{note ?? 'No lead-curve data yet'}</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <div className="min-w-[28rem]">
+              <div className="border-border/60 text-muted-foreground grid grid-cols-7 gap-1 border-b pb-1 text-[11px] font-medium tracking-wide uppercase">
+                <span>Lead</span>
+                <span>Seg</span>
+                <span className="text-right">n</span>
+                <span className="text-right">Act</span>
+                <span className="text-right">PCN</span>
+                <span className="text-right">Persist</span>
+                <span className="text-right">Δ</span>
+              </div>
+              {cells.map((c) => {
+                const wins = c.delta != null && c.delta > 0;
+                return (
+                  <div
+                    key={`${c.leadBucket}|${c.segment}`}
+                    className="border-border/40 grid grid-cols-7 gap-1 border-b py-1 text-xs last:border-0"
+                  >
+                    <span className="font-mono">{c.leadBucket}</span>
+                    <span className="text-muted-foreground font-mono">
+                      {SEGMENT_LABELS[c.segment] ?? c.segment}
+                    </span>
+                    <span className="text-muted-foreground text-right font-mono tabular-nums">
+                      {c.n.toLocaleString('en-GB')}
+                    </span>
+                    <span className="text-right font-mono tabular-nums">{c.actual.toFixed(1)}</span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.pcnMae == null
+                          ? 'text-muted-foreground'
+                          : wins
+                            ? 'font-semibold text-blue-400'
+                            : maeColor(c.pcnMae)
+                      }`}
+                    >
+                      {c.pcnMae != null ? c.pcnMae.toFixed(1) : '—'}
+                    </span>
+                    <span
+                      className={`text-right font-mono tabular-nums ${
+                        c.persistMae != null ? maeColor(c.persistMae) : 'text-muted-foreground'
+                      }`}
+                    >
+                      {c.persistMae != null ? c.persistMae.toFixed(1) : '—'}
                     </span>
                     <span
                       className={`text-right font-mono tabular-nums ${
@@ -712,6 +854,23 @@ export default function MlPage() {
               error={comparison.data.shape.error}
             />
           </div>
+          {comparison.data.leadCurve && (
+            <>
+              <p className="text-muted-foreground pt-2 text-sm">
+                <span className="font-medium">Lead curve (§7.7):</span> PCN&rsquo;s forecast at a
+                forced 1h/3h/6h horizon vs a persistence baseline (the wait that many hours ago).
+                Δ &gt; 0 (green) means PCN beats persistence — expected to flip from negative at 1h
+                to positive at longer leads (the rest-of-day the UI serves).
+              </p>
+              <div className="grid grid-cols-1 gap-3">
+                <LeadCurveBoard
+                  rows={comparison.data.leadCurve.rows}
+                  note={comparison.data.leadCurve.note}
+                  error={comparison.data.leadCurve.error}
+                />
+              </div>
+            </>
+          )}
         </Section>
       )}
 
