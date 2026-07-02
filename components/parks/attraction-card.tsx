@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Link } from '@/i18n/navigation';
 import { CardPhoto } from '@/components/parks/card-photo';
 import { useTranslations } from 'next-intl';
-import { Crown, TrendingUp, TrendingDown, Minus, ChartColumn, Clock, MapPin } from 'lucide-react';
+import { Crown, ChartColumn, Clock, MapPin } from 'lucide-react';
 import { cn, stripNewPrefix } from '@/lib/utils';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -27,6 +27,7 @@ import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
+import { TrendPill } from './trend-pill';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -112,7 +113,6 @@ export function AttractionCard({
   timezone,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
-  const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
 
   const status = getStatus(attraction, parkStatus);
@@ -389,24 +389,7 @@ export function AttractionCard({
                   <div className="mt-1 min-h-[24px]">
                     {(() => {
                       const t = trend ?? { direction: 'stable' as const, delta: 0 };
-                      return (
-                        <span
-                          className={cn(
-                            'inline-flex w-fit items-center gap-0.5 rounded-full border px-1.5 py-[2px] text-[10.5px] leading-none font-semibold text-white',
-                            t.direction === 'up' && 'bg-badge-trend-up/60 border-trend-up/25',
-                            t.direction === 'down' && 'bg-badge-trend-down/60 border-trend-down/25',
-                            t.direction === 'stable' &&
-                              'bg-badge-trend-stable/60 border-trend-stable/25'
-                          )}
-                        >
-                          {t.direction === 'up' && <TrendingUp className="h-[11px] w-[11px]" />}
-                          {t.direction === 'down' && <TrendingDown className="h-[11px] w-[11px]" />}
-                          {t.direction === 'stable' && <Minus className="h-[11px] w-[11px]" />}
-                          {t.direction === 'stable'
-                            ? tCommon('stable')
-                            : `${t.delta > 0 ? '+' : ''}${t.delta} min`}
-                        </span>
-                      );
+                      return <TrendPill direction={t.direction} delta={t.delta} />;
                     })()}
                   </div>
                 </div>
