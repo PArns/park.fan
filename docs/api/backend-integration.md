@@ -69,6 +69,42 @@ All `/api/*` routes send `Cache-Control: no-store, must-revalidate` (see [Cachin
 
 ---
 
+## On-Demand Revalidation
+
+`POST /api/revalidate` lets the **backend push cache invalidation when data actually changes**,
+instead of the frontend re-rendering (and paying Vercel ISR writes) on a timer. Disabled (503)
+until `REVALIDATE_SECRET` is set in the Vercel environment.
+
+```bash
+curl -X POST https://park.fan/api/revalidate \
+  -H "Authorization: Bearer $REVALIDATE_SECRET" \
+  -H "Content-Type: application/json" \
+  -d '{"tags":["geo","popular-parks"],"paths":["/en"]}'
+```
+
+- **`tags`** → `revalidateTag(tag, 'max')` (stale-while-revalidate purge: next request serves
+  stale and re-renders in the background). Tags currently attached to fetches (`lib/api/*`):
+
+  | Tag                | Invalidates                                         | Backend should fire on                        |
+  | ------------------ | --------------------------------------------------- | --------------------------------------------- |
+  | `geo`              | Geo structure / discovery (hubs, featured, sitemap) | Park/city/country added, removed or renamed   |
+  | `parks`            | Park detail snapshots                               | Park structure/metadata change                |
+  | `attractions`      | Attraction list snapshots                           | Attraction added/removed/renamed              |
+  | `popular-parks`    | Popularity ranking                                  | Ranking re-computed                           |
+  | `analytics`        | Global stats / ticker / geo-live SSR seeds          | (rarely useful — live values are client-side) |
+  | `ml`               | ML dashboard + metrics history                      | Model retrained                               |
+  | `weather`          | Per-park nowcast seeds                              | (normally TTL is fine)                        |
+  | `best-days:<slug>` | One park's best-days calendar                       | Calendar/prediction recompute for that park   |
+
+- **`paths`** → `revalidatePath(path)` for concrete page shells, e.g. `"/de"`, `"/en/parks"`.
+- Max 50 entries per array per request; invalid entries are dropped silently.
+
+This is the "read first, only write on change" model: TTLs (see
+[Caching Strategy](../architecture/caching-strategy.md)) remain only as a fallback and can be
+raised further once the backend webhook fires reliably.
+
+---
+
 ## Favorites
 
 Favorites are **stored in a cookie** (client) and **enriched via the API** (server).

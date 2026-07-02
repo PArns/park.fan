@@ -6,9 +6,9 @@ Homepage section — rendered **server-side** by `components/home/featured-parks
 
 ## How It Works
 
-1. **Data source:** Server-rendered from `geoData` via `getGeoStructure(300)` (request-deduped with the live-activity section) — no client fetch, no extra API call. Baked into the page's 5-min shell, so status/crowd data is at most ~5 min stale (it was already only as fresh as the 300s geo cache back when it was polled client-side).
+1. **Data source (structure):** Server-rendered from `geoData` via the default 24h-cached `getGeoStructure()` (request-deduped with the live-activity section). Only **day-stable** fields are baked (name, link, city, photo, translated country) — so the section no longer pins its host pages to a short ISR window (a route's effective revalidate is its lowest fetch revalidate; the old `getGeoStructure(300)` pinned homepage/blog/glossary/howto to 5 min and was a main ISR-write driver, see [caching-strategy](../architecture/caching-strategy.md)).
 2. **Extraction:** `extractFeaturedParks()` traverses the geo structure and finds parks by slug in the predefined order. Parks not found in the API are silently skipped (graceful degradation).
-3. **Live data passed to `ParkCard`:** `status`, `crowdLevel`, `avgWaitTime`, `operatingAttractions`, `totalAttractions`, `todaySchedule`, `nextSchedule`, `timezone`.
+3. **Live data (status, crowd, wait, schedule):** overlays **client-side** via `FeaturedParkCardsLive` → `useRegionParks` (one no-store `/api/discovery/<continent>/<country>` batch per distinct region, deduped by React Query, 5-min poll) — the same pattern as the hub-page `LiveParkGrid`. The prerendered card is status-free; the badge renders once the batch lands.
 4. **Country name translation:** Country slug → `tGeo('countries.${slug}')` — same pattern as `ParkCardNearby`.
 5. **Placement:** After `<FavoritesSection />`, before Global Stats — first "browse parks" section above the fold.
 

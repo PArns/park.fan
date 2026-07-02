@@ -4,6 +4,35 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – ISR writes: hourly homepage shell, client-live overlays, on-demand revalidation
+
+Vercel ISR Write Units had climbed back to ~45–100k/day (614k for Jun 19 – Jul 2). Root cause:
+the Jun 22 homepage change (static 5-min shell) — 6 locales × up to 288 regenerations/day ×
+~600 KB HTML+RSC per write (units are billed **per 8 KB stored**) ≈ the whole bill. On top,
+`getGeoStructure(300)` in the featured-parks slot re-wrote the ~114 KB geo Data-Cache entry
+every 5 min **and pinned every route embedding the slot** (blog, glossary terms, howto) to a
+5-min ISR window — a route's effective window is its **lowest** fetch revalidate. Fix — see
+[caching-strategy](architecture/caching-strategy.md):
+
+- `app/[locale]/page.tsx` — homepage `revalidate` **300 → 3600** (~12× fewer shell writes).
+  The classic hero photo now re-picks per regeneration (~hourly rotation across visits).
+- Every homepage-shell fetch raised to ≥ 3600 so none pins the route: `getGlobalStats` /
+  `getGeoLiveStats` (defaults 600→3600), `getTickerData(3600)` seed (the `/api/analytics/ticker`
+  proxy keeps its 600s cache for client polls), `lib/api/ml.ts` 1800→3600, featured slot
+  `getGeoStructure()` → 24h default.
+- The numbers that read as "live" overlay themselves client-side on the baked seed (the
+  park/hub-page shell+overlay model): new `LiveContinentOpenCount` (via existing
+  `useGeoLiveStats`), new `GlobalStatsLiveCounts` + `useGlobalStats` hook (no-store
+  `/api/analytics/realtime`), and featured cards now prerender **status-free** with
+  `FeaturedParkCardsLive` → `useRegionParks` overlay (same as hub grids). Fresher than the old
+  baked 5-min snapshot, ~zero extra LCP cost (all below the fold, React Query already loaded).
+- **NEW `/api/revalidate`** (POST, `Authorization: Bearer $REVALIDATE_SECRET`, body
+  `{"tags":[...],"paths":[...]}`) — on-demand `revalidateTag`/`revalidatePath`, so the backend
+  can push "data actually changed" instead of the frontend re-writing on a timer. See
+  [backend-integration](api/backend-integration.md#on-demand-revalidation).
+
+---
+
 ## Unreleased – "Hottest parks" heat banner on the homepage
 
 A Saisonstart-style homepage section that surfaces the **3 hottest parks** in

@@ -63,23 +63,26 @@ import { HERO_3D_ENABLED } from '@/lib/config/features';
 import type { Metadata } from 'next';
 
 // STATIC SHELL (per-locale build-time prerender — the homepage is only 6 pages, NOT the park/
-// attraction catalog, so there is no "ISR shell-write explosion"). The shell is served straight
-// from the CDN (fast TTFB → fast LCP, bf-cache eligible) and revalidated stale-while-revalidate
-// from the Data Cache TTLs of the section fetches below; each regeneration also re-picks the
-// hero's 5-min window. Every live, per-visitor value (nearby, favorites, featured/stats/ticker
-// live status) is loaded CLIENT-side via React Query, so the cached HTML never goes stale where
-// it matters. No `force-dynamic`: a per-request server render here was the page's biggest cost
+// attraction catalog). The shell is served straight from the CDN (fast TTFB → fast LCP, bf-cache
+// eligible). Every live value (nearby, favorites, ticker, open-park counts, global stats,
+// featured-card statuses) is refreshed CLIENT-side via React Query on top of the baked SSR seed —
+// the same shell+overlay model as the park/hub pages — so the shell's age is invisible to a JS
+// visitor. No `force-dynamic`: a per-request server render here was the page's biggest cost
 // (the `/` → `/{locale}` redirect + dynamic TTFB landing before LCP).
 
-// Regenerate every 5 minutes — set explicitly (rather than inheriting the lowest section-fetch TTL)
-// to keep the SSR'd featured-parks seed reasonably fresh; all truly live data is still client-loaded
-// on top. Each regeneration also re-picks the classic hero image's 5-min window (used when the 3D
-// hero flag is off).
-export const revalidate = 300;
+// Regenerate HOURLY. Vercel bills every shell regeneration as size-weighted ISR writes (~600 KB
+// HTML+RSC ≈ ~75 write units per locale), so the 5-min window this shipped with cost ~50k write
+// units/day across 6 locales — the dominant ISR-write driver of Jun 2026. Nothing user-visible
+// depends on the shell being younger than an hour (live data is client-refreshed, see above).
+// IMPORTANT: every `fetch` in this route's render must use `revalidate ≥ 3600` — the route's
+// effective ISR window is the LOWEST fetch revalidate in it (a single 300s fetch pins the whole
+// page back to 5 min). Verify with `next build` (revalidate column) after touching section fetches.
+export const revalidate = 3600;
 
-// Classic hero image: a deterministic pick keyed to the current 5-min window — stable within the
-// window (identical for all concurrent requests) and rotating every 5 minutes. Server-rendered for
-// LCP. Only used when HERO_3D_ENABLED is off; the 3D hero ignores it.
+// Classic hero image: a deterministic pick keyed to the current 5-min window — identical for all
+// concurrent requests, and re-picked on each shell regeneration (so the photo effectively rotates
+// with the ISR window, ~hourly). Server-rendered for LCP. Only used when HERO_3D_ENABLED is off;
+// the 3D hero ignores it.
 const HERO_TTL_MS = 5 * 60_000;
 function pickHeroImage(): string {
   const windowIndex = Math.floor(Date.now() / HERO_TTL_MS);

@@ -12,7 +12,10 @@ import { HeroTickerClient } from './hero-ticker-client';
  * all — it used to be CSS-hidden but still hydrated.
  */
 export async function HeroTicker() {
-  const tickerData = await catchNonFatal(getTickerData());
+  // 3600: seed only (LiveWaitTicker replaces it on mount via initialDataUpdatedAt: 0) — the
+  // default 600 would pin the homepage's ISR window to 10 min. The /api/analytics/ticker
+  // proxy keeps the 600s cache for the client polls.
+  const tickerData = await catchNonFatal(getTickerData(3600));
   if (!tickerData || tickerData.items.length === 0) return null;
 
   return <HeroTickerClient items={tickerData.items} />;

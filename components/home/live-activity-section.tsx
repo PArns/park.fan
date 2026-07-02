@@ -6,18 +6,19 @@ import { catchNonFatal } from '@/lib/api/client';
 import { LiveActivityGrid, type ContinentCard } from '@/components/home/live-activity-grid';
 
 /**
- * "Parks open now" — per-continent live open-park counts, server-rendered into the homepage shell.
+ * "Parks open now" — per-continent open-park counts, server-rendered into the homepage shell.
  *
- * The continent structure (names + total park counts) comes from the static geo structure; the live
- * open counts come from `getGeoLiveStats(300)`, which shares the shell's 5-min revalidate window — so
- * the counts stay fresh while shipping no client JS. Rendered inside <Suspense> so neither fetch
- * blocks the hero; on error the section is omitted.
+ * The continent structure (names + total park counts) comes from the static geo structure; the
+ * baked open counts are only an HOURLY SSR seed (the shell revalidates every 3600s to keep ISR
+ * writes down) — the live values overlay themselves client-side per card via the shared
+ * `useGeoLiveStats` batch call (see LiveContinentOpenCount). Rendered inside <Suspense> so
+ * neither fetch blocks the hero; on error the section is omitted.
  */
 export async function LiveActivitySection() {
   const [tHome, geoData, geoLive] = await Promise.all([
     getTranslations('home'),
     catchNonFatal(getGeoStructure()),
-    catchNonFatal(getGeoLiveStats(300)),
+    catchNonFatal(getGeoLiveStats()),
   ]);
 
   const continents: ContinentCard[] =
