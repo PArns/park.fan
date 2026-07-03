@@ -18,14 +18,14 @@ export function RopeDropBadge({ strength, savings, className }: RopeDropBadgePro
     <span title={t('badgeHint', { savings })}>
       <Badge
         className={cn(
-          'font-semibold backdrop-blur-md',
+          'border font-bold tracking-wide text-white uppercase shadow-md',
           strength === 'high'
-            ? 'border border-emerald-500/30 bg-emerald-500/15 text-emerald-600 dark:text-emerald-300'
-            : 'border border-teal-500/30 bg-teal-500/15 text-teal-600 dark:text-teal-300',
+            ? 'border-emerald-500/25 bg-emerald-600/60'
+            : 'border-teal-500/25 bg-teal-600/60',
           className
         )}
       >
-        <Sunrise className="h-3 w-3 text-inherit" />
+        <Sunrise className="h-3 w-3 text-white" />
         {t('badge')}
       </Badge>
     </span>
@@ -59,11 +59,11 @@ export function RopeDropEveningBadge({
     <span title={hint}>
       <Badge
         className={cn(
-          'border border-indigo-500/30 bg-indigo-500/15 font-semibold text-indigo-500 backdrop-blur-md dark:text-indigo-300',
+          'border border-indigo-500/25 bg-indigo-600/60 font-bold tracking-wide text-white uppercase shadow-md',
           className
         )}
       >
-        <Moon className="h-3 w-3 text-inherit" />
+        <Moon className="h-3 w-3 text-white" />
         {t('eveningBadge')}
       </Badge>
     </span>

@@ -93,10 +93,15 @@ export function ParkCardScheduleFooter({
               style={{ color: 'var(--pk-text-3)' }}
               aria-hidden="true"
             />
-            <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
-              {operatingAttractions}
-            </b>
-            /{totalAttractions} {tCommon('operating')}
+            {/* Wrapped in a single element so the bold count and "/total" stay
+                one flex item — otherwise the parent's `gap-1` renders a gap
+                between them ("36 /44" instead of "36/44"). */}
+            <span>
+              <b className="font-bold" style={{ color: 'var(--pk-text-1)' }}>
+                {operatingAttractions}
+              </b>
+              /{totalAttractions} {tCommon('operating')}
+            </span>
           </span>
         )}
 
