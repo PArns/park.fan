@@ -1000,6 +1000,29 @@ export default function MlPage() {
                 />
                 <KeyVal label="Tracked days" value={perf.drift.dailyMetrics.length} />
               </div>
+              {perf.drift.byHorizon && (
+                <div className="border-border/40 space-y-1 border-t pt-2 text-xs">
+                  {perf.drift.byHorizon.map((h) => (
+                    <div key={h.horizon} className="flex items-center justify-between gap-2">
+                      <span className="text-muted-foreground capitalize">{h.horizon}</span>
+                      {h.tracked && h.currentDrift != null ? (
+                        <span className="font-mono tabular-nums">
+                          {h.currentDrift.toFixed(1)}%
+                          {h.liveMae != null && (
+                            <span className="text-muted-foreground"> · MAE {h.liveMae.toFixed(2)}</span>
+                          )}
+                        </span>
+                      ) : (
+                        <span className="text-muted-foreground">n/a · unscored</span>
+                      )}
+                    </div>
+                  ))}
+                  <p className="text-muted-foreground/70">
+                    Intraday drift tracks the CatBoost fallback (PCN serves intraday); far-daily is
+                    unscored.
+                  </p>
+                </div>
+              )}
             </CardContent>
           </Card>
         </div>

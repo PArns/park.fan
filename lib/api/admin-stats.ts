@@ -47,6 +47,17 @@ export interface MlDriftDaily {
   predictionsCount: number;
 }
 
+/** Drift for one serving horizon (§6a-2). daily is `tracked:false` — far-daily
+ *  predictions are never scored against actuals, so its drift is unmeasured. */
+export interface MlHorizonDrift {
+  horizon: 'hourly' | 'daily';
+  tracked: boolean;
+  currentDrift: number | null;
+  liveMae: number | null;
+  status: string;
+  note: string | null;
+}
+
 export interface MlDrift {
   currentDrift: number;
   threshold: number;
@@ -54,6 +65,8 @@ export interface MlDrift {
   trainingMae: number;
   liveMae: number;
   dailyMetrics: MlDriftDaily[];
+  /** Per-horizon split. Optional: absent on API builds predating §6a-2. */
+  byHorizon?: MlHorizonDrift[];
 }
 
 /** Served intraday accuracy (PCN champion-swap) — what users actually get for
