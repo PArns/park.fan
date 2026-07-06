@@ -22,6 +22,8 @@
     "format:check": "prettier --check .",
     "validate:translations": "node scripts/validate-translations.js",
     "test:calendar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-utils.mjs",
+    "test:tactics": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-tactics-sim.mjs",
+    "verify:tactics": "node scripts/tactics-render-harness.mjs",
     "probe:isr": "node scripts/isr-cache-probe.mjs",
     "crawl:translations": "node scripts/crawl-translations.js",
     "crawl:translations:live": "node scripts/crawl-translations.js --live",
@@ -91,6 +93,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^16.2.9",
+    "@playwright/test": "^1.61.1",
     "@tailwindcss/postcss": "^4.3.2",
     "@tanstack/react-query-devtools": "^5.101.2",
     "@types/leaflet": "^1.9.21",

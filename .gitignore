@@ -69,3 +69,6 @@ lib/blog/manifest.ts
 !/docs/**/*.md
 !CLAUDE.md
 package-lock.json
+
+# tactics render harness artefacts
+/screenshots/

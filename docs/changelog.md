@@ -4,6 +4,17 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Queue Tactics: TFT-style auto battler prototype (`/dev/tactics`)
+
+An in-queue time-killer mini game: a Teamfight-Tactics-style auto battler you play on your
+phone while waiting in line. Deterministic, RNG-free combat core (mirror match = exact
+draw, gate-tested via `pnpm test:tactics`), three.js park-plaza arena with procedural
+units and day/night themes, mobile-first HUD, localStorage resume, fully local vs an AI.
+Headless visual verification via `pnpm verify:tactics` (convention #12).
+→ [Queue Tactics](features/queue-tactics.md)
+
+---
+
 ## Unreleased – SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
 
 The API's umlaut transliteration change re-slugged German cities (`bruhl` → `bruehl`,
