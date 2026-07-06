@@ -49,3 +49,23 @@ export const getTermBySlug = cache(
     return terms.find((t) => t.slug === slug) ?? null;
   }
 );
+
+/**
+ * Resolve a term slug from ANY locale to the requested locale's term.
+ *
+ * Google's index holds thousands of cross-locale glossary URLs from the era of
+ * next-intl's auto-generated alternate links (e.g. /nl/glossaire/harnais-epaules —
+ * a FRENCH slug under the NL locale). The segment redirect in next.config fixes
+ * the segment but keeps the foreign slug, which then 404s. This lookup lets the
+ * term page translate the slug and 308 to the correct local URL instead.
+ *
+ * Only call this after `getTermBySlug` missed for the requested locale.
+ */
+export const findTermByAnySlug = cache(
+  async (locale: Locale, slug: string): Promise<GlossaryTerm | null> => {
+    // slugs for all locales live in the static term data — no translation loads needed
+    const termData = GLOSSARY_TERMS.find((t) => Object.values(t.slugs).includes(slug));
+    if (!termData) return null;
+    return getTermBySlug(locale, termData.slugs[locale]);
+  }
+);

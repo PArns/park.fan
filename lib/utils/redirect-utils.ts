@@ -6,6 +6,7 @@
  * - Missing city segment: /parks/continent/country/park-slug (should have city)
  * - Attraction in park position: /parks/continent/country/park-slug/attraction-slug
  *   where park-slug is actually in the city position
+ * - Stale geo segments after an API re-slug (bruhl → bruehl, marne-la-vallee → paris)
  */
 
 import { cache } from 'react';
@@ -16,21 +17,24 @@ import { getGeoStructure } from '@/lib/api/discovery';
  * the underlying `getGeoStructure(604800)` is itself cached cross-request in the Vercel Data Cache
  * (`fetch` `next: { revalidate }`), so rebuilding this small index per request is cheap and never
  * hits the backend. Used only for malformed-URL redirect detection, never to serve a valid park.
+ *
+ * Values are LISTS: park slugs are not globally unique (e.g. `disneyland-park` exists in both
+ * Paris and Anaheim), so callers must disambiguate by continent/country before redirecting.
  */
-const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult>> => {
-  const index: Record<string, ParkLookupResult> = {};
+const getParkSlugIndex = cache(async (): Promise<Record<string, ParkLookupResult[]>> => {
+  const index: Record<string, ParkLookupResult[]> = {};
   try {
     const data = await getGeoStructure(604800);
     for (const continent of data.continents) {
       for (const country of continent.countries) {
         for (const city of country.cities) {
           for (const park of city.parks) {
-            index[park.slug] = {
+            (index[park.slug] ??= []).push({
               continent: continent.slug,
               country: country.slug,
               city: city.slug,
               parkSlug: park.slug,
-            };
+            });
           }
         }
       }
@@ -49,12 +53,12 @@ export interface ParkLookupResult {
 }
 
 /**
- * Find park by slug across all geo data — O(1) via index.
- * Returns the full geographic path if found.
+ * Find all locations a park slug exists at — O(1) via index.
+ * Usually one entry; duplicates happen (disneyland-park: Paris + Anaheim).
  */
-export async function findParkBySlug(parkSlug: string): Promise<ParkLookupResult | null> {
+export async function findParkLocationsBySlug(parkSlug: string): Promise<ParkLookupResult[]> {
   const index = await getParkSlugIndex();
-  return index[parkSlug] ?? null;
+  return index[parkSlug] ?? [];
 }
 
 /**
@@ -67,10 +71,12 @@ export async function findParkBySlug(parkSlug: string): Promise<ParkLookupResult
  */
 export const findCityPageRedirect = cache(
   async (continent: string, country: string, citySlug: string): Promise<string | null> => {
-    // Check if the "citySlug" is actually a park
-    const park = await findParkBySlug(citySlug);
+    // Check if the "citySlug" is actually a park within this continent/country
+    const park = (await findParkLocationsBySlug(citySlug)).find(
+      (p) => p.continent === continent && p.country === country
+    );
 
-    if (park && park.continent === continent && park.country === country) {
+    if (park) {
       // Found! The "city" segment is actually a park slug
       // Return the correct URL with the real city
       return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
@@ -95,10 +101,12 @@ export const findParkPageRedirect = cache(
     citySlug: string,
     _parkSlug: string
   ): Promise<string | null> => {
-    // Check if the "citySlug" is actually a park slug
-    const park = await findParkBySlug(citySlug);
+    // Check if the "citySlug" is actually a park slug within this continent/country
+    const park = (await findParkLocationsBySlug(citySlug)).find(
+      (p) => p.continent === continent && p.country === country
+    );
 
-    if (park && park.continent === continent && park.country === country) {
+    if (park) {
       // The "city" is actually a park — redirect to the park page at least.
       // We can no longer check if parkSlug is an attraction (removed from discovery endpoint).
       return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
@@ -118,13 +126,18 @@ export const findParkPageRedirect = cache(
  * exists in the geo structure under a different continent/country/city, return
  * its canonical path so callers can issue a permanent redirect.
  *
+ * Duplicate slugs (disneyland-park: Paris + Anaheim) are disambiguated by
+ * preferring a location in the requested continent+country, then continent;
+ * an ambiguous slug with no continent match yields no redirect rather than
+ * risking a cross-continent bounce.
+ *
  * IMPORTANT: only call this AFTER the API lookup for the requested path has
  * failed. The geo-structure snapshot is cached for days — if it lagged behind
  * a re-slug, calling this on the happy path could bounce a working new URL
  * back to a stale one. After a confirmed miss it can only improve on a 404.
  *
- * @returns The canonical park URL or null if the slug is unknown or already at
- *          the requested path
+ * @returns The canonical park URL or null if the slug is unknown, ambiguous or
+ *          already at the requested path
  */
 export const findRelocatedParkRedirect = cache(
   async (
@@ -133,7 +146,13 @@ export const findRelocatedParkRedirect = cache(
     citySlug: string,
     parkSlug: string
   ): Promise<string | null> => {
-    const park = await findParkBySlug(parkSlug);
+    const locations = await findParkLocationsBySlug(parkSlug);
+    if (locations.length === 0) return null;
+
+    const park =
+      locations.find((l) => l.continent === continent && l.country === country) ??
+      locations.find((l) => l.continent === continent) ??
+      (locations.length === 1 ? locations[0] : null);
 
     if (
       park &&
