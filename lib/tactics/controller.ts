@@ -92,28 +92,14 @@ export class GameController {
 
   syncScene(): void {
     if (!this.scene) return;
+    // Board units only — the bench lives in the DOM (BenchBar), where it is
+    // always reachable regardless of screen shape.
     const views: PlanningUnitView[] = [];
     const p1 = this.state.players.p1;
     for (const key of Object.keys(p1.board)) {
       const u = p1.board[key];
-      views.push({
-        uid: u.uid,
-        defId: u.defId,
-        star: u.star,
-        team: 0,
-        where: { kind: 'board', hex: parseHexKey(key) },
-      });
+      views.push({ uid: u.uid, defId: u.defId, star: u.star, team: 0, hex: parseHexKey(key) });
     }
-    p1.bench.forEach((u, i) => {
-      if (u)
-        views.push({
-          uid: u.uid,
-          defId: u.defId,
-          star: u.star,
-          team: 0,
-          where: { kind: 'bench', index: i },
-        });
-    });
     if (!isPveRound(this.state.round)) {
       const p2 = this.state.players.p2;
       for (const key of Object.keys(p2.board)) {
@@ -123,7 +109,7 @@ export class GameController {
           defId: u.defId,
           star: u.star,
           team: 1,
-          where: { kind: 'board', hex: rotate180(parseHexKey(key)) },
+          hex: rotate180(parseHexKey(key)),
         });
       }
     }
@@ -167,6 +153,19 @@ export class GameController {
     this.selectedUid = this.selectedUid === uid ? null : uid;
     this.scene?.setSelected(this.selectedUid);
     this.notify();
+  }
+
+  /** Move the selected board unit back to a free bench slot. */
+  toBench(index: number): boolean {
+    if (!this.selectedUid) return false;
+    const uid = this.selectedUid;
+    const ok = this.cmd({ type: 'moveUnit', uid, dest: { kind: 'bench', index } });
+    if (ok) {
+      this.selectedUid = null;
+      this.scene?.setSelected(null);
+      this.notify();
+    }
+    return ok;
   }
 
   /** Scene tap on an empty own-half target while a unit is selected. */
@@ -256,6 +255,8 @@ export class GameController {
     resolveCombat(this.state, this.pendingReplay);
     this.pendingReplay = null;
     this.aiPlanIfDue();
+    const lc = this.state.lastCombat;
+    if (lc?.winner === 'p1' && !isPveRound(lc.round)) this.scene?.celebrate();
     this.save();
     this.syncScene();
     this.uiPhase = this.state.phase === 'gameover' ? 'gameover' : 'banner';

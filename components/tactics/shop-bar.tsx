@@ -66,7 +66,7 @@ export function ShopBar({
           </div>
           <button
             onClick={onFight}
-            className="inline-flex items-center gap-1.5 rounded-xl bg-amber-500 px-4 py-2 text-sm font-bold text-black shadow-lg transition hover:bg-amber-400 active:scale-95"
+            className="inline-flex items-center gap-1.5 rounded-xl bg-gradient-to-b from-amber-400 to-amber-600 px-4 py-2 text-sm font-bold text-black shadow-[0_0_18px_rgba(245,180,50,0.45)] transition hover:from-amber-300 hover:to-amber-500 active:scale-95"
           >
             <Swords className="h-4 w-4" />
             Fight
@@ -81,7 +81,7 @@ export function ShopBar({
               return (
                 <div
                   key={i}
-                  className="h-[92px] rounded-lg border border-dashed border-white/10 bg-white/[0.03]"
+                  className="h-[96px] rounded-lg border border-dashed border-white/10 bg-white/[0.03]"
                 />
               );
             }
@@ -93,14 +93,19 @@ export function ShopBar({
                 onClick={() => onBuy(i)}
                 disabled={!affordable}
                 className={cn(
-                  'group relative h-[92px] overflow-hidden rounded-lg border text-left transition active:scale-95',
+                  'group relative h-[96px] overflow-hidden rounded-lg border text-left transition active:scale-95',
                   affordable
-                    ? 'border-white/15 bg-white/[0.07] hover:bg-white/[0.14]'
+                    ? 'border-white/15 bg-white/[0.07] hover:-translate-y-0.5 hover:bg-white/[0.14]'
                     : 'cursor-not-allowed border-white/5 bg-white/[0.03] opacity-50'
                 )}
-                style={{ boxShadow: `inset 0 3px 0 ${costHex(def.cost)}` }}
               >
-                <div className="flex h-full flex-col justify-between p-1.5">
+                <div
+                  className="h-1.5 w-full"
+                  style={{
+                    background: `linear-gradient(90deg, ${costHex(def.cost)}, ${costHex(def.cost)}55)`,
+                  }}
+                />
+                <div className="flex h-[calc(100%-6px)] flex-col justify-between p-1.5">
                   <div className="truncate text-[12px] leading-tight font-semibold text-white">
                     {def.name}
                   </div>
@@ -108,7 +113,10 @@ export function ShopBar({
                     <TraitChip trait={def.origin} compact />
                     <TraitChip trait={def.clazz} compact />
                   </div>
-                  <div className="flex items-center justify-end gap-0.5 text-[11px] font-bold text-amber-300">
+                  <div
+                    className="flex items-center justify-end gap-0.5 text-[11px] font-bold"
+                    style={{ color: costHex(def.cost) }}
+                  >
                     <Coins className="h-3 w-3" />
                     {def.cost}
                   </div>

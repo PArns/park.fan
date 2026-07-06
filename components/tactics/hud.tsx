@@ -17,6 +17,7 @@ import type { TraitId } from '@/lib/tactics/core/types';
 import type { UiState } from '@/lib/tactics/controller';
 import type { CameraPreset, SceneTheme } from '@/lib/three/tactics/scene';
 import { cn } from '@/lib/utils';
+import { BenchBar } from './bench-bar';
 import { ShopBar } from './shop-bar';
 import { TraitChip } from './trait-chip';
 
@@ -29,6 +30,8 @@ interface HudProps {
   onBuyXp: () => void;
   onFight: () => void;
   onSell: (uid: string) => void;
+  onSelectUnit: (uid: string) => void;
+  onToBench: (index: number) => void;
   onDeselect: () => void;
   onSpeed: (s: number) => void;
   onSkip: () => void;
@@ -199,7 +202,9 @@ export function Hud(props: HudProps) {
                   {selectedDef.ability.name}: {selectedDef.ability.description}
                 </div>
                 <div className="text-[10px] text-white/40">
-                  Tap a highlighted hex or bench slot to move · drag also works
+                  {selected.loc.kind === 'bench'
+                    ? 'Tap a highlighted hex to deploy'
+                    : 'Tap a hex to move · tap an empty bench slot to pull back'}
                 </div>
               </div>
               <div className="flex shrink-0 items-center gap-1.5">
@@ -245,7 +250,16 @@ export function Hud(props: HudProps) {
           </div>
         )}
 
-        {/* shop */}
+        {/* bench + shop */}
+        {ui.uiPhase === 'planning' && (
+          <BenchBar
+            bench={p1.bench}
+            selectedUid={ui.selectedUid}
+            boardSelected={!!selected && selected.loc.kind === 'board'}
+            onSelect={props.onSelectUnit}
+            onToBench={props.onToBench}
+          />
+        )}
         {ui.uiPhase === 'planning' && (
           <ShopBar
             player={p1}

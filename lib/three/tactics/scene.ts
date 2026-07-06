@@ -17,43 +17,35 @@
  */
 
 import * as THREE from 'three';
-import {
-  BENCH_SLOTS,
-  BOARD_COLS,
-  BOARD_ROWS,
-  HALF_ROWS,
-  hexToWorld,
-  type Hex,
-} from '@/lib/tactics/core/hex';
+import { BOARD_COLS, BOARD_ROWS, HALF_ROWS, hexToWorld, type Hex } from '@/lib/tactics/core/hex';
 import type { CombatReplay } from '@/lib/tactics/core/types';
 import { TICKS_PER_SECOND } from '@/lib/tactics/core/combat';
 import { UNITS } from '@/lib/tactics/core/data';
 import { ORIGIN_COLORS, THEMES, type ThemePalette } from './palette';
+import { buildParkEnvironment } from './environment';
 import { UnitVisual } from './units';
 
 export type SceneTheme = 'light' | 'dark';
 export type CameraPreset = 'default' | 'top' | 'side';
 
 const HEX_SPACING = 1.04;
-const BENCH_Z = -3.95;
-const BENCH_SPACING = 0.82;
 
 export interface PlanningUnitView {
   uid: string;
   defId: string;
   star: 1 | 2 | 3;
   team: 0 | 1;
-  where: { kind: 'board'; hex: Hex } | { kind: 'bench'; index: number };
+  hex: Hex;
 }
 
-export type DropTarget = { kind: 'board'; hex: Hex } | { kind: 'bench'; index: number } | null;
+export type DropTarget = { kind: 'board'; hex: Hex } | null;
 
 export interface TacticsSceneOptions {
   theme: SceneTheme;
   onReady?: () => void;
   /** Tap on one of MY units (planning). */
   onTapUnit?: (uid: string) => void;
-  /** Tap on an empty own-half hex / bench slot while something is selected. */
+  /** Tap on an empty own-half hex while something is selected. */
   onTapTarget?: (target: Exclude<DropTarget, null>) => void;
   /** Tap on nothing interactive. */
   onTapVoid?: () => void;
@@ -67,12 +59,14 @@ export interface TacticsSceneHandle {
   resize(w: number, h: number): void;
   setTheme(theme: SceneTheme): void;
   setCamera(preset: CameraPreset): void;
-  /** Rebuild planning visuals (own board+bench and enemy board, global coords). */
+  /** Rebuild planning visuals (own + enemy board units, global coords). */
   syncPlanning(units: PlanningUnitView[]): void;
   setSelected(uid: string | null): void;
   playReplay(replay: CombatReplay, speed: number): void;
   setReplaySpeed(speed: number): void;
   isReplaying(): boolean;
+  /** Confetti burst over the arena (victory). */
+  celebrate(): void;
   /** Jump the running replay to its end (skip). */
   finishReplay(): void;
   dispose(): void;
@@ -145,108 +139,9 @@ export function createTacticsScene(
   }
   scene.add(tiles);
 
-  /* ---------------- bench pads ---------------- */
-  const benchGeo = new THREE.CylinderGeometry(0.34, 0.36, 0.1, 6);
-  const benchMat = new THREE.MeshStandardMaterial({ roughness: 0.9 });
-  const benchPads: THREE.Mesh[] = [];
-  const benchX = (i: number) => (i - (BENCH_SLOTS - 1) / 2) * BENCH_SPACING;
-  for (let i = 0; i < BENCH_SLOTS; i++) {
-    const pad = new THREE.Mesh(benchGeo, benchMat);
-    pad.rotation.y = Math.PI / 6;
-    pad.position.set(benchX(i), -0.06, BENCH_Z);
-    pad.receiveShadow = true;
-    scene.add(pad);
-    benchPads.push(pad);
-  }
-
   /* ---------------- park environment ---------------- */
-  const env = new THREE.Group();
-  scene.add(env);
-  const groundMat = new THREE.MeshStandardMaterial({ roughness: 1 });
-  {
-    // Plaza island the board sits on.
-    const plazaMat = new THREE.MeshStandardMaterial({ roughness: 0.95 });
-    plazaMat.name = 'plaza';
-    const plaza = new THREE.Mesh(new THREE.CylinderGeometry(6.4, 6.9, 0.5, 28), plazaMat);
-    plaza.position.y = -0.4;
-    plaza.receiveShadow = true;
-    env.add(plaza);
-    const ground = new THREE.Mesh(new THREE.CylinderGeometry(14, 15.5, 1.2, 30), groundMat);
-    ground.position.y = -1.15;
-    ground.receiveShadow = true;
-    env.add(ground);
-  }
-
-  const treeFoliageMat = new THREE.MeshStandardMaterial({ roughness: 0.9 });
-  const treeTrunkMat = new THREE.MeshStandardMaterial({ roughness: 0.9 });
-  const treePositions: [number, number][] = [
-    [-6.3, -3.2],
-    [6.3, -3.0],
-    [-6.8, 1.6],
-    [6.8, 1.8],
-    [-5.2, 5.4],
-    [5.2, 5.6],
-    [0, 6.9],
-  ];
-  for (const [x, z] of treePositions) {
-    const tree = new THREE.Group();
-    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.09, 0.13, 0.7, 7), treeTrunkMat);
-    trunk.position.y = 0.35;
-    trunk.castShadow = true;
-    tree.add(trunk);
-    for (let i = 0; i < 3; i++) {
-      const cone = new THREE.Mesh(new THREE.ConeGeometry(0.62 - i * 0.16, 0.7, 8), treeFoliageMat);
-      cone.position.y = 0.85 + i * 0.42;
-      cone.castShadow = true;
-      tree.add(cone);
-    }
-    tree.position.set(x, 0, z);
-    const s = 0.9 + ((x * 7 + z * 13 + 100) % 10) / 25;
-    tree.scale.setScalar(s);
-    env.add(tree);
-  }
-
-  // String lights between poles around the plaza — the park-at-night touch.
-  const lanternMat = new THREE.MeshStandardMaterial({
-    color: 0xffe6b0,
-    emissive: 0xffb84d,
-    emissiveIntensity: 0,
-    roughness: 0.4,
-  });
-  const poleMat = new THREE.MeshStandardMaterial({ color: 0x88919f, roughness: 0.6 });
-  {
-    const bulbGeo = new THREE.SphereGeometry(0.065, 6, 5);
-    const polePositions: [number, number][] = [
-      [-5.6, -4.4],
-      [0, -5.6],
-      [5.6, -4.4],
-      [6.4, 0.6],
-      [4.6, 5.2],
-      [-4.6, 5.2],
-      [-6.4, 0.6],
-    ];
-    const poles: THREE.Vector3[] = [];
-    for (const [x, z] of polePositions) {
-      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 2.1, 7), poleMat);
-      pole.position.set(x, 1.05, z);
-      pole.castShadow = true;
-      env.add(pole);
-      poles.push(new THREE.Vector3(x, 2.05, z));
-    }
-    for (let i = 0; i < poles.length; i++) {
-      const a = poles[i];
-      const b = poles[(i + 1) % poles.length];
-      const bulbs = 7;
-      for (let k = 1; k < bulbs; k++) {
-        const f = k / bulbs;
-        const p = a.clone().lerp(b, f);
-        p.y -= Math.sin(f * Math.PI) * 0.35; // catenary-ish sag
-        const bulb = new THREE.Mesh(bulbGeo, lanternMat);
-        bulb.position.copy(p);
-        env.add(bulb);
-      }
-    }
-  }
+  const env = buildParkEnvironment();
+  scene.add(env.group);
 
   /* ---------------- unit containers ---------------- */
   const planningGroup = new THREE.Group();
@@ -259,25 +154,21 @@ export function createTacticsScene(
 
   /* ---------------- theme ---------------- */
   let pal: ThemePalette = THEMES[opts.theme];
+  let skyTex: THREE.CanvasTexture | null = null;
   function applyTheme(theme: SceneTheme): void {
     pal = THEMES[theme];
-    scene.background = new THREE.Color(pal.skyBottom);
-    scene.fog = new THREE.Fog(pal.fog, 18, 42);
+    const dark = theme === 'dark';
+    skyTex?.dispose();
+    skyTex = env.applyTheme(pal, dark);
+    scene.background = skyTex;
+    scene.fog = new THREE.Fog(pal.fog, 20, 52);
     hemi.color.setHex(pal.hemiSky);
     hemi.groundColor.setHex(pal.hemiGround);
     hemi.intensity = pal.hemiIntensity;
     sun.color.setHex(pal.sun);
     sun.intensity = pal.sunIntensity;
     ambient.color.setHex(pal.ambient);
-    ambient.intensity = theme === 'dark' ? 0.35 : 0.25;
-    groundMat.color.setHex(pal.ground);
-    (
-      env.children[0] as THREE.Mesh & { material: THREE.MeshStandardMaterial }
-    ).material.color.setHex(theme === 'dark' ? 0x39415a : 0xb7ac98);
-    benchMat.color.setHex(pal.benchPad);
-    treeFoliageMat.color.setHex(pal.treeFoliage);
-    treeTrunkMat.color.setHex(pal.treeTrunk);
-    lanternMat.emissiveIntensity = pal.lanternIntensity;
+    ambient.intensity = dark ? 0.35 : 0.25;
     const plazaGlow = pal.lanternIntensity > 0 ? 14 : 0;
     plazaLightA.intensity = plazaGlow;
     plazaLightB.intensity = plazaGlow;
@@ -385,19 +276,6 @@ export function createTacticsScene(
     }
     return best;
   }
-  function worldToBench(p: THREE.Vector3): number | null {
-    if (Math.abs(p.z - BENCH_Z) > 0.55) return null;
-    let best: number | null = null;
-    let bestD = 0.5;
-    for (let i = 0; i < BENCH_SLOTS; i++) {
-      const d = Math.abs(p.x - benchX(i));
-      if (d < bestD) {
-        bestD = d;
-        best = i;
-      }
-    }
-    return best;
-  }
   function unitAtPoint(p: THREE.Vector3): UnitVisual | null {
     let best: UnitVisual | null = null;
     let bestD = 0.45;
@@ -413,12 +291,9 @@ export function createTacticsScene(
   }
 
   /* ---------------- planning sync ---------------- */
-  const posOfPlace = (where: PlanningUnitView['where']): THREE.Vector3 => {
-    if (where.kind === 'board') {
-      const { x, z } = hexToWorld(where.hex, HEX_SPACING);
-      return new THREE.Vector3(x, 0, z);
-    }
-    return new THREE.Vector3(benchX(where.index), 0, BENCH_Z);
+  const posOfHex = (hex: Hex): THREE.Vector3 => {
+    const { x, z } = hexToWorld(hex, HEX_SPACING);
+    return new THREE.Vector3(x, 0, z);
   };
 
   let selectedUid: string | null = null;
@@ -441,7 +316,7 @@ export function createTacticsScene(
         planningGroup.add(v.group);
         planningVisuals.set(u.uid, v);
       }
-      v.placeAt(posOfPlace(u.where));
+      v.placeAt(posOfHex(u.hex));
     }
     for (const [uid, v] of planningVisuals) {
       if (!seen.has(uid)) {
@@ -513,10 +388,8 @@ export function createTacticsScene(
       const uid = dragging.info.uid;
       let target: DropTarget = null;
       if (p) {
-        const bench = worldToBench(p);
         const hex = worldToHex(p);
-        if (bench !== null) target = { kind: 'bench', index: bench };
-        else if (hex && hex.row < HALF_ROWS) target = { kind: 'board', hex };
+        if (hex && hex.row < HALF_ROWS) target = { kind: 'board', hex };
       }
       dragging = null;
       hoverHex = null;
@@ -529,10 +402,8 @@ export function createTacticsScene(
     if (downUnit) {
       opts.onTapUnit?.(downUnit.info.uid);
     } else if (p) {
-      const bench = worldToBench(p);
       const hex = worldToHex(p);
-      if (bench !== null) opts.onTapTarget?.({ kind: 'bench', index: bench });
-      else if (hex && hex.row < HALF_ROWS) opts.onTapTarget?.({ kind: 'board', hex });
+      if (hex && hex.row < HALF_ROWS) opts.onTapTarget?.({ kind: 'board', hex });
       else opts.onTapVoid?.();
     } else {
       opts.onTapVoid?.();
@@ -608,6 +479,65 @@ export function createTacticsScene(
         g.position.copy(target.group.position);
         for (const p of parts) p.position.y += dt * 0.9;
         mMat.opacity = 1 - t;
+        return true;
+      },
+    });
+  }
+
+  function celebrate(): void {
+    const colors = [0xd9534f, 0xe0a33a, 0x3f8cc9, 0x53a860, 0x8a63c9, 0xf2e8d8];
+    const geo = new THREE.PlaneGeometry(0.09, 0.14);
+    const g = new THREE.Group();
+    interface Flake {
+      m: THREE.Mesh;
+      v: THREE.Vector3;
+      spin: THREE.Vector3;
+    }
+    const flakes: Flake[] = [];
+    for (let i = 0; i < 90; i++) {
+      const m = new THREE.Mesh(
+        geo,
+        new THREE.MeshBasicMaterial({
+          color: colors[i % colors.length],
+          side: THREE.DoubleSide,
+          transparent: true,
+        })
+      );
+      m.position.set(
+        (((i * 37) % 100) / 100 - 0.5) * 8,
+        5 + ((i * 53) % 100) / 40,
+        (((i * 71) % 100) / 100 - 0.5) * 5 - 1.5
+      );
+      m.rotation.set(i, i * 2.3, i * 0.7);
+      flakes.push({
+        m,
+        v: new THREE.Vector3(
+          (((i * 13) % 10) - 5) / 14,
+          -(1.1 + ((i * 29) % 10) / 12),
+          (((i * 7) % 10) - 5) / 14
+        ),
+        spin: new THREE.Vector3(1 + ((i * 3) % 5), 1 + ((i * 5) % 5), 1 + ((i * 11) % 4)),
+      });
+      g.add(m);
+    }
+    fxGroup.add(g);
+    let t = 0;
+    fxList.push({
+      obj: g,
+      update(dt) {
+        t += dt / 2.6;
+        if (t >= 1) {
+          geo.dispose();
+          for (const f of flakes) (f.m.material as THREE.Material).dispose();
+          return false;
+        }
+        for (const f of flakes) {
+          f.m.position.addScaledVector(f.v, dt);
+          f.m.rotation.x += dt * f.spin.x;
+          f.m.rotation.y += dt * f.spin.y;
+          f.m.rotation.z += dt * f.spin.z;
+          (f.m.material as THREE.MeshBasicMaterial).opacity = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
+        }
         return true;
       },
     });
@@ -753,6 +683,8 @@ export function createTacticsScene(
     const dt = Math.min(0.1, clock.getDelta());
     elapsed += dt;
 
+    env.update(dt);
+
     // Camera easing (also handles aspect-based reframe).
     const v = presetVectors(preset);
     wantPos.copy(v.pos);
@@ -880,6 +812,9 @@ export function createTacticsScene(
     isReplaying() {
       return replay !== null;
     },
+    celebrate() {
+      celebrate();
+    },
     finishReplay() {
       if (!replay) return;
       replay.time = replay.replay.ticks + 1;
@@ -898,6 +833,8 @@ export function createTacticsScene(
       clearReplay();
       for (const v of planningVisuals.values()) v.dispose();
       planningVisuals.clear();
+      env.dispose();
+      skyTex?.dispose();
       renderer.dispose();
     },
   };

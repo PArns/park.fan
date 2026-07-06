@@ -143,6 +143,8 @@ export default function TacticsGameInner() {
           onBuyXp={() => controller.buyXp()}
           onFight={() => controller.startBattle()}
           onSell={(uid) => controller.sell(uid)}
+          onSelectUnit={(uid) => controller.select(uid)}
+          onToBench={(i) => controller.toBench(i)}
           onDeselect={() => controller.select(null)}
           onSpeed={(s) => controller.setSpeed(s)}
           onSkip={() => controller.skipBattle()}
