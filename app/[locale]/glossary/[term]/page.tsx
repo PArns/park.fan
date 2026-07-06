@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { getGlossaryTerms, getTermBySlug } from '@/lib/glossary/translations';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { getGlossaryTerms, getTermBySlug, findTermByAnySlug } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { locales, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
@@ -50,7 +50,18 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
     getTermBySlug(locale as Locale, termSlug),
     getTranslations({ locale, namespace: 'glossary' }),
   ]);
-  if (!term) return {};
+  if (!term) {
+    // Foreign-locale slug (legacy cross-locale URLs)? Point canonical at the
+    // translated slug — the page body issues the actual 308.
+    const translated = await findTermByAnySlug(locale as Locale, termSlug);
+    if (translated) {
+      const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
+      return {
+        alternates: { canonical: `${SITE_URL}/${locale}/${segment}/${translated.slug}` },
+      };
+    }
+    return {};
+  }
 
   const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
   const url = `${SITE_URL}/${locale}/${segment}/${termSlug}`;
@@ -100,7 +111,18 @@ export default async function GlossaryTermPage({ params }: TermPageProps) {
   setRequestLocale(locale);
 
   const term = await getTermBySlug(locale as Locale, termSlug);
-  if (!term) notFound();
+  if (!term) {
+    // Legacy cross-locale URLs (e.g. /nl/glossaire/harnais-epaules — a French
+    // slug under the NL locale, from next-intl's old auto-alternates) carry a
+    // slug from another locale. Translate it and 308 to the local URL so the
+    // thousands of such URLs in Google's index resolve instead of 404ing.
+    const translated = await findTermByAnySlug(locale as Locale, termSlug);
+    if (translated) {
+      const segment = GLOSSARY_SEGMENTS[locale as Locale] ?? 'glossary';
+      permanentRedirect(`/${locale}/${segment}/${translated.slug}`);
+    }
+    notFound();
+  }
 
   const [t, tCommon] = await Promise.all([getTranslations('glossary'), getTranslations('common')]);
 

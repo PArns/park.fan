@@ -155,6 +155,139 @@ const nextConfig: NextConfig = {
       }
     );
 
+    // 6. Re-slugged/relocated cities — the API switched its umlaut transliteration
+    // to ae/oe/ue (Brühl: bruhl → bruehl, Günzburg: gunzburg → guenzburg) and moved
+    // several parks to new city slugs (verified against the GSC 404 export of
+    // 2026-07-06 + the current /v1/discovery/geo structure). The Google index still
+    // holds the old URLs (park, attractions, city hub); 301 them (incl. the bare
+    // city-hub URL via the zero-or-more :park* wildcard) so link equity transfers
+    // instead of 404ing. Park/attraction URLs with other stale geo segments are
+    // additionally healed at request time by findRelocatedParkRedirect (redirect-utils).
+    const relocatedCities: Array<[string, string, string]> = [
+      ['europe/germany', 'bruhl', 'bruehl'], // Phantasialand (umlaut re-slug)
+      ['europe/germany', 'gunzburg', 'guenzburg'], // Legoland Deutschland (umlaut re-slug)
+      ['north-america/mexico', 'cocoyoc', 'oaxtepec'], // Hurricane Harbor Oaxtepec
+      ['north-america/united-states', 'glendale', 'phoenix'], // Hurricane Harbor Phoenix
+      ['north-america/united-states', 'valencia', 'santa-clarita'], // Six Flags Magic Mountain
+      ['north-america/united-states', 'willis', 'spring'], // Hurricane Harbor Splashtown
+    ];
+    for (const [geo, oldCity, newCity] of relocatedCities) {
+      rules.push(
+        {
+          source: `/:locale/parks/${geo}/${oldCity}/:park*`,
+          destination: `/:locale/parks/${geo}/${newCity}/:park*`,
+          permanent: true,
+        },
+        {
+          source: `/parks/${geo}/${oldCity}/:park*`,
+          destination: `/parks/${geo}/${newCity}/:park*`,
+          permanent: true,
+        }
+      );
+    }
+
+    // 7. Renamed parks (from the GSC 404 export, matched against current API slugs).
+    // Explicit list only — NO blanket six-flags-* rule: six-flags-hurricane-harbor-
+    // {los-angeles,oklahoma-city,rockford} and many six-flags-* parks still exist
+    // under their old slugs. :city stays a param so old AND new city slugs both
+    // match (rule 6 may fix the city in a separate hop); :rest* carries attractions.
+    const renamedParks: Array<[string, string, string]> = [
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-arlington', 'hurricane-harbor-arlington'],
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-concord', 'hurricane-harbor-concord'],
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-new-jersey', 'hurricane-harbor-new-jersey'],
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-oaxtepec', 'hurricane-harbor-oaxtepec'],
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-phoenix', 'hurricane-harbor-phoenix'],
+      ['north-america/:country/:city', 'six-flags-hurricane-harbor-splashtown', 'hurricane-harbor-splashtown'],
+      ['north-america/:country/:city', 'universals-epic-universe', 'universal-epic-universe'],
+      ['north-america/:country/:city', 'universals-volcano-bay', 'universal-volcano-bay'],
+      ['north-america/:country/:city', 'disneys-animal-kingdom-theme-park', 'disney-animal-kingdom'],
+      ['north-america/:country/:city', 'adventure-island', 'adventure-island-tampa'],
+      ['europe/:country/:city', 'toverland', 'attractiepark-toverland'],
+      ['asia/:country/:city', 'lotte-world', 'lotte-world-adventure'],
+    ];
+    for (const [scope, oldPark, newPark] of renamedParks) {
+      rules.push(
+        {
+          source: `/:locale/parks/${scope}/${oldPark}/:rest*`,
+          destination: `/:locale/parks/${scope}/${newPark}/:rest*`,
+          permanent: true,
+        },
+        {
+          source: `/parks/${scope}/${oldPark}/:rest*`,
+          destination: `/parks/${scope}/${newPark}/:rest*`,
+          permanent: true,
+        }
+      );
+    }
+    // One-offs that also change the city or collapse a resort URL:
+    // - universal-studios@bull-creek → Universal Studios Hollywood (Los Angeles)
+    // - walt-disney-world resort page → Orlando city hub (parks are separate pages now)
+    // - disneyland-paris resort page → Disneyland Park (Paris)
+    rules.push(
+      {
+        source: '/:locale/parks/north-america/united-states/bull-creek/universal-studios/:rest*',
+        destination:
+          '/:locale/parks/north-america/united-states/los-angeles/universal-studios-hollywood/:rest*',
+        permanent: true,
+      },
+      {
+        source: '/parks/north-america/united-states/bull-creek/universal-studios/:rest*',
+        destination:
+          '/parks/north-america/united-states/los-angeles/universal-studios-hollywood/:rest*',
+        permanent: true,
+      },
+      {
+        source: '/:locale/parks/north-america/united-states/orlando/walt-disney-world/:rest*',
+        destination: '/:locale/parks/north-america/united-states/orlando',
+        permanent: true,
+      },
+      {
+        source: '/parks/north-america/united-states/orlando/walt-disney-world/:rest*',
+        destination: '/parks/north-america/united-states/orlando',
+        permanent: true,
+      },
+      {
+        source: '/:locale/parks/europe/france/:city/disneyland-paris/:rest*',
+        destination: '/:locale/parks/europe/france/paris/disneyland-park/:rest*',
+        permanent: true,
+      },
+      {
+        source: '/parks/europe/france/:city/disneyland-paris/:rest*',
+        destination: '/parks/europe/france/paris/disneyland-park/:rest*',
+        permanent: true,
+      }
+    );
+
+    // 8. Old URL scheme without the /parks segment — /{locale}/{continent}/... and
+    // /{continent}/... URLs are still in Google's index and currently hard-404.
+    const CONTINENTS = 'europe|north-america|south-america|asia|oceania|africa';
+    rules.push(
+      {
+        source: `/:locale(en|de|nl|fr|es|it)/:continent(${CONTINENTS})/:path*`,
+        destination: '/:locale/parks/:continent/:path*',
+        permanent: true,
+      },
+      {
+        source: `/:continent(${CONTINENTS})/:path*`,
+        destination: '/parks/:continent/:path*',
+        permanent: true,
+      }
+    );
+
+    // 9. Doubled locale prefixes (/en/en/glossary, /de/de/glossar, /es/es — seen in
+    // the GSC 404 export). Only same-locale doubles exist, so collapse exactly those.
+    for (const locale of ['en', 'de', 'nl', 'fr', 'es', 'it']) {
+      rules.push({
+        source: `/${locale}/${locale}/:path*`,
+        destination: `/${locale}/:path*`,
+        permanent: true,
+      });
+    }
+
+    // 10. The web manifest lives at /manifest.webmanifest (app/manifest.ts);
+    // crawlers still request the conventional /manifest.json.
+    rules.push({ source: '/manifest.json', destination: '/manifest.webmanifest', permanent: true });
+
     return rules;
   },
   async rewrites() {

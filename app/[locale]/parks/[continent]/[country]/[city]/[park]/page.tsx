@@ -31,7 +31,7 @@ import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { findParkPageRedirect } from '@/lib/utils/redirect-utils';
+import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
@@ -80,6 +80,15 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
 
   if (!park) {
+    // Stale geo segments (re-slugged/relocated city)? Point canonical at the
+    // park's current path — the page body issues the actual 308.
+    const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
+    if (relocatedUrl) {
+      return {
+        title: tNotFound('park'),
+        alternates: { canonical: `${SITE_URL}/${locale}${relocatedUrl}` },
+      };
+    }
     return { title: tNotFound('park') };
   }
 
@@ -170,6 +179,13 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
 
   if (!park) {
+    // The park slug is stable across API geo re-slugs (bruhl → bruehl etc.).
+    // If it exists under different geo segments, 308 to the canonical path so
+    // Google transfers the old URL's signals instead of dropping a 404.
+    const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
+    if (relocatedUrl) {
+      permanentRedirect(`/${locale}${relocatedUrl}`);
+    }
     notFound();
   }
 

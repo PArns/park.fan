@@ -4,6 +4,46 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
+
+The API's umlaut transliteration change re-slugged German cities (`bruhl` → `bruehl`,
+`gunzburg` → `guenzburg`), so every previously indexed Phantasialand + Legoland-Deutschland
+URL (park, attractions, city hub) returned **404** — Google dropped the German flagship pages
+and google.de fell back to English results; visit share skewed to the US. hreflang, canonicals,
+sitemap alternates and `Content-Language` were verified correct — the missing piece was
+redirects for the old URLs:
+
+- **`findRelocatedParkRedirect`** (`lib/utils/redirect-utils.ts`) — generic safety net: the
+  park slug is the stable key; if the API lookup for a park/attraction URL 404s but the slug
+  exists elsewhere in the geo structure, the page issues a **308** to the canonical path.
+  Runs only after a confirmed API miss, so it can never bounce a working URL. Heals any
+  future city/country re-slug automatically. Wired into the park page and attraction page
+  (body + `generateMetadata` canonical). Handles duplicate park slugs (`disneyland-park`
+  exists in Paris **and** Anaheim) by preferring continent/country matches.
+- **Static 301s** in `next.config.ts`, derived from the GSC coverage export (2026-07-06,
+  2,388 known 404s) diffed against `/v1/discovery/geo`:
+  - rule 6 relocated cities: `bruhl`→`bruehl`, `gunzburg`→`guenzburg`, `cocoyoc`→`oaxtepec`,
+    `glendale`→`phoenix`, `valencia`→`santa-clarita`, `willis`→`spring`
+  - rule 7 renamed parks: 6× `six-flags-hurricane-harbor-*`→`hurricane-harbor-*` (the three
+    still-existing six-flags water parks are deliberately NOT matched), `universals-*`→
+    `universal-*`, `toverland`→`attractiepark-toverland`, `lotte-world`→`lotte-world-adventure`,
+    `disneys-animal-kingdom-theme-park`→`disney-animal-kingdom`, `adventure-island`→
+    `adventure-island-tampa`, `universal-studios`@bull-creek→`universal-studios-hollywood`@LA,
+    resort URLs `walt-disney-world`→Orlando hub, `disneyland-paris`→`disneyland-park`
+  - rule 8 pre-`/parks` URL scheme: `/{locale}/{continent}/…` → `/{locale}/parks/{continent}/…`
+  - rule 9 doubled locale prefixes (`/de/de/…`), rule 10 `/manifest.json` → `/manifest.webmanifest`
+- **Cross-locale glossary slugs** (≈38 % of the sampled 404s, legacy of next-intl
+  auto-alternates): the term page now resolves a slug from ANY locale via `findTermByAnySlug`
+  and 308s to the locale-correct slug — e.g. `/nl/glossaire/harnais-epaules` →
+  `/nl/woordenboek/schouderbeugels`-style chains end on real content instead of 404.
+- Docs: [routing-and-urls](architecture/routing-and-urls.md#redirect-logic-404-prevention)
+  examples updated to current slugs; [SEO analysis](seo/analysis.md) notes the incident.
+- Known backend data bug (flagged, needs API fix): `universal-studios-hollywood` is listed
+  under BOTH `bull-creek` and `los-angeles` in `/v1/discovery/geo` → duplicate sitemap
+  entries and split signals.
+
+---
+
 ## Unreleased – ISR writes: hourly homepage shell, client-live overlays, on-demand revalidation
 
 Vercel ISR Write Units had climbed back to ~45–100k/day (614k for Jun 19 – Jul 2). Root cause:
