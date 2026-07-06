@@ -29,5 +29,16 @@ export async function resolve(specifier, context, nextResolve) {
       }
     }
   }
+  // Extension-less relative imports (TS style, e.g. `./data`) from .ts modules.
+  if ((specifier.startsWith('./') || specifier.startsWith('../')) && context.parentURL) {
+    const base = join(dirname(fileURLToPath(context.parentURL)), specifier);
+    if (!existsSync(base) || !statSync(base).isFile()) {
+      for (const candidate of SUFFIXES.map((s) => base + s)) {
+        if (existsSync(candidate) && statSync(candidate).isFile()) {
+          return nextResolve(pathToFileURL(candidate).href, context);
+        }
+      }
+    }
+  }
   return nextResolve(specifier, context);
 }

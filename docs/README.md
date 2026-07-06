@@ -76,9 +76,10 @@
 
 ### Features
 
-| Doc                                     | Description                                              |
-| --------------------------------------- | -------------------------------------------------------- |
-| [Glossary System](features/glossary.md) | Term data, translations, localized URLs, search, sitemap |
+| Doc                                        | Description                                                        |
+| ------------------------------------------ | ------------------------------------------------------------------ |
+| [Glossary System](features/glossary.md)    | Term data, translations, localized URLs, search, sitemap           |
+| [Queue Tactics](features/queue-tactics.md) | TFT-style auto battler prototype at `/dev/tactics` (in-queue game) |
 
 ### Other
 
