@@ -10,8 +10,8 @@ The app uses **geographic routes** analogous to the API:
 
 **Examples:**
 
-- `/en/parks/europe/germany/bruhl/phantasialand`
-- `/de/parks/europe/germany/bruhl/phantasialand/taron`
+- `/en/parks/europe/germany/bruehl/phantasialand`
+- `/de/parks/europe/germany/bruehl/phantasialand/taron`
 - `/en/parks/north-america/united-states/orlando/magic-kingdom`
 
 **Important:** The **city** segment is **required** – there is no route without city.
@@ -20,7 +20,7 @@ The app uses **geographic routes** analogous to the API:
 
 ## URL Conversion (API → Frontend)
 
-The API returns URLs like `/v1/parks/europe/germany/bruhl/phantasialand`.
+The API returns URLs like `/v1/parks/europe/germany/bruehl/phantasialand`.
 
 **Rule:** Always use `convertApiUrlToFrontendUrl()` from `lib/utils/url-utils.ts` – **never** build URLs manually.
 
@@ -76,8 +76,9 @@ Malformed URLs (e.g. missing city) are checked **before** returning 404 and redi
 **`lib/utils/redirect-utils.ts`:**
 
 - `findParkBySlug()` – Lookup in geo structure
-- `findAttractionBySlug()` – Attraction in park
-- Redirects e.g. `/parks/europe/germany/phantasialand` → `/parks/europe/germany/bruhl/phantasialand`
+- `findParkPageRedirect()` / `findCityPageRedirect()` – Park slug in city position (missing city segment)
+- `findRelocatedParkRedirect()` – **Stale geo segments**: the park slug is the stable key; when the API re-slugs a city (e.g. umlaut transliteration `bruhl` → `bruehl`, `gunzburg` → `guenzburg`) or moves a park (`marne-la-vallee` → `paris`), the park/attraction pages 308 old URLs to the park's current canonical path. Only runs **after** the API lookup failed (never touches working URLs). Critical for SEO: without it, every re-slug 404s the URLs Google has indexed and German rankings drop.
+- Known historical re-slugs additionally get static 301s in `next.config.ts` (`redirects()`, rules 4–6) — these also cover the bare city-hub URLs.
 
 **Implemented in:**
 
@@ -87,8 +88,9 @@ Malformed URLs (e.g. missing city) are checked **before** returning 404 and redi
 
 **Example redirects:**
 
-- `/de/parks/europe/germany/phantasialand` → `/de/parks/europe/germany/bruhl/phantasialand`
+- `/de/parks/europe/germany/phantasialand` → `/de/parks/europe/germany/bruehl/phantasialand`
 - `/de/parks/europe/netherlands/toverland/fenix` → `/de/parks/europe/netherlands/sevenum/toverland/fenix`
+- `/de/parks/europe/germany/bruhl/phantasialand/taron` → `/de/parks/europe/germany/bruehl/phantasialand/taron` (old city slug, 301 via next.config + 308 fallback via `findRelocatedParkRedirect`)
 
 ---
 

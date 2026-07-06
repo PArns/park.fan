@@ -25,7 +25,7 @@ As of June 2026 (full-code review). Earlier February-2026 findings that are done
 
 ## Known Trade-offs / Open Items
 
-1. **Park sitemap entries have no `lastModified`** — the geo API exposes no update timestamp. Add when the backend provides one.
+0. **Backend re-slugs kill indexed URLs (July 2026 incident)** — the API's umlaut transliteration change (`bruhl` → `bruehl`, `gunzburg` → `guenzburg`) 404ed every indexed Phantasialand/Legoland-Deutschland URL; google.de stopped showing German pages and traffic skewed US. Fixed: `findRelocatedParkRedirect` 308s park/attraction URLs whose park slug exists under different geo segments (runs only after an API miss), plus static 301s for the known city re-slugs in `next.config.ts`. **After any future backend slug change:** verify the old URLs 301/308 (not 404), then use GSC URL inspection → "Request indexing" on the top affected pages. hreflang itself is correct site-wide — language swaps on google.de only work while the localized URLs actually resolve.
 2. **Hub + attraction pages not in sitemap** — deliberate crawl-budget decision; they stay indexable via internal links. Revisit if attraction long-tail traffic matters more.
 3. **`error.tsx` is a soft-200 for non-maintenance errors** — client error boundaries can't export metadata; the failing route itself returns HTTP 500, so impact is minimal.
 4. **Maintenance flow** — `/maintenance` is noindex and auto-recovers via a 15 s health poll (`components/maintenance-page.tsx`). Crawlers hitting a failing route during an outage get HTTP 500 (retry-later semantics).

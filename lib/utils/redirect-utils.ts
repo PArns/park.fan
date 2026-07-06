@@ -109,6 +109,44 @@ export const findParkPageRedirect = cache(
 );
 
 /**
+ * Try to find a redirect for a park URL whose geo segments went stale.
+ *
+ * The park slug is the stable key: when the API re-slugs a city (e.g. the
+ * umlaut transliteration change `bruhl` → `bruehl`, `gunzburg` → `guenzburg`)
+ * or moves a park to another city (`marne-la-vallee` → `paris`), URLs indexed
+ * by Google keep the old segments and would 404. If the requested park slug
+ * exists in the geo structure under a different continent/country/city, return
+ * its canonical path so callers can issue a permanent redirect.
+ *
+ * IMPORTANT: only call this AFTER the API lookup for the requested path has
+ * failed. The geo-structure snapshot is cached for days — if it lagged behind
+ * a re-slug, calling this on the happy path could bounce a working new URL
+ * back to a stale one. After a confirmed miss it can only improve on a 404.
+ *
+ * @returns The canonical park URL or null if the slug is unknown or already at
+ *          the requested path
+ */
+export const findRelocatedParkRedirect = cache(
+  async (
+    continent: string,
+    country: string,
+    citySlug: string,
+    parkSlug: string
+  ): Promise<string | null> => {
+    const park = await findParkBySlug(parkSlug);
+
+    if (
+      park &&
+      (park.continent !== continent || park.country !== country || park.city !== citySlug)
+    ) {
+      return `/parks/${park.continent}/${park.country}/${park.city}/${park.parkSlug}`;
+    }
+
+    return null;
+  }
+);
+
+/**
  * Try to find a redirect for a malformed attraction page URL
  *
  * Pattern: /parks/{continent}/{country}/{city}/{park}/{attraction}
@@ -118,3 +156,5 @@ export const findParkPageRedirect = cache(
  */
 // findAttractionPageRedirect removed: attraction data is no longer available
 // from discovery endpoints. Attraction redirect lookups are no longer supported.
+// Attraction URLs under a relocated park are healed via findRelocatedParkRedirect
+// (the attraction page re-appends its own slug to the corrected park path).

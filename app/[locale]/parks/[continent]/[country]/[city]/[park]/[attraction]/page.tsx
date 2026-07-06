@@ -3,7 +3,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import { MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -35,6 +35,7 @@ import { isEveningBetter } from '@/lib/utils/rope-drop';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateAttractionBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
 import { stripNewPrefix, cn } from '@/lib/utils';
+import { findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
 
 interface AttractionPageProps {
   params: Promise<{
@@ -62,6 +63,17 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
   if (!attraction) {
     const tNotFound = await getTranslations({ locale, namespace: 'seo.notFound' });
+    if (!park) {
+      // Stale geo segments (re-slugged/relocated city)? Point canonical at the
+      // attraction's current path — the page body issues the actual 308.
+      const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
+      if (relocatedUrl) {
+        return {
+          title: tNotFound('attraction'),
+          alternates: { canonical: `${SITE_URL}/${locale}${relocatedUrl}/${attractionSlug}` },
+        };
+      }
+    }
     return { title: tNotFound('attraction') };
   }
 
@@ -175,6 +187,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
   // statistics, bestVisitTimes); live status/wait times still come from the client poll.
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug) ?? null;
+
+  if (!park) {
+    // Park slug is stable across API geo re-slugs — 308 old attraction URLs
+    // (e.g. /germany/bruhl/phantasialand/taron) to the park's current path.
+    const relocatedUrl = await findRelocatedParkRedirect(continent, country, city, parkSlug);
+    if (relocatedUrl) {
+      permanentRedirect(`/${locale}${relocatedUrl}/${attractionSlug}`);
+    }
+  }
 
   if (!park || !attraction) {
     notFound();

@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
+
+The API's umlaut transliteration change re-slugged German cities (`bruhl` → `bruehl`,
+`gunzburg` → `guenzburg`), so every previously indexed Phantasialand + Legoland-Deutschland
+URL (park, attractions, city hub) returned **404** — Google dropped the German flagship pages
+and google.de fell back to English results; visit share skewed to the US. hreflang, canonicals,
+sitemap alternates and `Content-Language` were verified correct — the missing piece was
+redirects for the old URLs:
+
+- **`findRelocatedParkRedirect`** (`lib/utils/redirect-utils.ts`) — generic safety net: the
+  park slug is the stable key; if the API lookup for a park/attraction URL 404s but the slug
+  exists elsewhere in the geo structure, the page issues a **308** to the canonical path.
+  Runs only after a confirmed API miss, so it can never bounce a working URL. Heals any
+  future city/country re-slug automatically. Wired into the park page and attraction page
+  (body + `generateMetadata` canonical).
+- **Static 301s** in `next.config.ts` (rule 6) for the known re-slugs `bruhl` → `bruehl` and
+  `gunzburg` → `guenzburg` (locale-prefixed + unprefixed, incl. bare city-hub URLs).
+- Docs: [routing-and-urls](architecture/routing-and-urls.md#redirect-logic-404-prevention)
+  examples updated to current slugs; [SEO analysis](seo/analysis.md) notes the incident.
+
+---
+
 ## Unreleased – ISR writes: hourly homepage shell, client-live overlays, on-demand revalidation
 
 Vercel ISR Write Units had climbed back to ~45–100k/day (614k for Jun 19 – Jul 2). Root cause:

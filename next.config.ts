@@ -155,6 +155,33 @@ const nextConfig: NextConfig = {
       }
     );
 
+    // 6. Re-slugged umlaut cities — the API switched its transliteration from
+    // stripping umlauts to ae/oe/ue (Brühl: bruhl → bruehl, Günzburg:
+    // gunzburg → guenzburg). The Google index still holds the old German
+    // flagship-park URLs (Phantasialand, Legoland Deutschland) and their
+    // attraction pages; 301 them (incl. the bare city-hub URL via the
+    // zero-or-more :park* wildcard) so link equity transfers instead of 404ing.
+    // Park/attraction URLs with other stale geo segments are additionally
+    // healed at request time by findRelocatedParkRedirect (redirect-utils).
+    const reSluggedCities: Array<[string, string, string]> = [
+      ['europe/germany', 'bruhl', 'bruehl'],
+      ['europe/germany', 'gunzburg', 'guenzburg'],
+    ];
+    for (const [geo, oldCity, newCity] of reSluggedCities) {
+      rules.push(
+        {
+          source: `/:locale/parks/${geo}/${oldCity}/:park*`,
+          destination: `/:locale/parks/${geo}/${newCity}/:park*`,
+          permanent: true,
+        },
+        {
+          source: `/parks/${geo}/${oldCity}/:park*`,
+          destination: `/parks/${geo}/${newCity}/:park*`,
+          permanent: true,
+        }
+      );
+    }
+
     return rules;
   },
   async rewrites() {
