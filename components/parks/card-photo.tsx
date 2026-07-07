@@ -15,6 +15,13 @@ interface CardPhotoProps {
   /** Hide the photo below `sm` and show only the gradient placeholder — park cards collapse
    *  on phones, so the (decorative) photo download is skipped there. */
   hideOnMobile?: boolean;
+  /** Responsive `sizes` for the underlying next/image. Defaults to the 1/2/3-col grid. */
+  sizes?: string;
+  /** Vertical focal point. Park/ride hero photos frame from the `top`; portrait editorial
+   *  covers (blog) crop better from `center` so the subject isn't sliced down to sky. */
+  objectPosition?: 'top' | 'center';
+  /** Mark the main image as LCP priority (e.g. the blog feature card). */
+  priority?: boolean;
 }
 
 /**
@@ -27,8 +34,17 @@ interface CardPhotoProps {
  * placeholder keeps the area stable and the fade smooths the swap; cached images are caught
  * via the ref so they show instantly with no fade-from-transparent flash.
  */
-export function CardPhoto({ src, alt, closed, hideOnMobile }: CardPhotoProps) {
+export function CardPhoto({
+  src,
+  alt,
+  closed,
+  hideOnMobile,
+  sizes = SIZES,
+  objectPosition = 'top',
+  priority = false,
+}: CardPhotoProps) {
   const [loaded, setLoaded] = useState(false);
+  const objectClass = objectPosition === 'center' ? 'object-center' : 'object-top';
 
   // A cached image can finish before React attaches `onLoad`; the ref catches that case.
   const captureImg = useCallback((node: HTMLImageElement | null) => {
@@ -61,8 +77,9 @@ export function CardPhoto({ src, alt, closed, hideOnMobile }: CardPhotoProps) {
               src={src}
               alt={alt}
               fill
-              className="object-cover object-top"
-              sizes={SIZES}
+              className={cn('object-cover', objectClass)}
+              sizes={sizes}
+              priority={priority}
               onLoad={() => setLoaded(true)}
             />
             {/* Reflection — same image flipped around the container top (= seam), masked to
@@ -81,8 +98,8 @@ export function CardPhoto({ src, alt, closed, hideOnMobile }: CardPhotoProps) {
                 alt=""
                 aria-hidden="true"
                 fill
-                className="object-cover object-top"
-                sizes={SIZES}
+                className={cn('object-cover', objectClass)}
+                sizes={sizes}
               />
             </div>
           </div>

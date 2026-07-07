@@ -99,7 +99,7 @@ export function BlogParkLink({
           right height even when there is no background image (i.e. when the
           card's own min-h conditional doesn't fire).
         */}
-        <div className="grid [grid-template-rows:auto_minmax(220px,1fr)_auto]">
+        <div className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
           <ParkCard
             name={park.name}
             slug={park.slug}

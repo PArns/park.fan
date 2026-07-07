@@ -92,7 +92,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
             {parks.map((park) => (
               <div
                 key={park.slug}
-                className="grid [grid-template-rows:auto_minmax(220px,1fr)_auto]"
+                className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
               >
                 <ParkCard
                   name={park.name}
@@ -130,7 +130,7 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
             {attractions.map(({ park, attraction }) => (
               <div
                 key={`${park.slug}/${attraction.attractionSlug}`}
-                className="grid [grid-template-rows:auto_minmax(220px,1fr)_auto]"
+                className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
               >
                 <AttractionCard
                   attraction={buildAttractionPayload(park, attraction)}

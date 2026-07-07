@@ -8,10 +8,20 @@ import { resolveAuthor } from '@/lib/blog/authors';
 import type { Locale } from '@/i18n/config';
 import type { BlogPost } from '@/lib/blog/types';
 
+interface LanguageOffer {
+  locale: Locale;
+  href: string;
+  /** Pre-translated in the offer's own target language. */
+  label: string;
+}
+
 interface BlogPostHeroProps {
   post: BlogPost;
   currentLocale: Locale;
-  availableTranslations: Partial<Record<Locale, string>>;
+  /** Switch offers for other available translations, labels in their own language. */
+  languageOffers: LanguageOffer[];
+  /** Fallback notice text (in the shown language), or null when not a fallback. */
+  fallbackLabel: string | null;
 }
 
 /**
@@ -20,10 +30,15 @@ interface BlogPostHeroProps {
  * separator + meta). The cover image is rendered separately as a fixed
  * ParkBackground in the page route.
  */
-export function BlogPostHero({ post, currentLocale, availableTranslations }: BlogPostHeroProps) {
+export function BlogPostHero({
+  post,
+  currentLocale,
+  languageOffers,
+  fallbackLabel,
+}: BlogPostHeroProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
-  const { frontmatter, readingTimeMinutes, isFallback, loadedLocale } = post;
+  const { frontmatter, readingTimeMinutes, loadedLocale } = post;
 
   const author = resolveAuthor(frontmatter.author, currentLocale);
   const authorHref = author.key ? (`/blog/authors/${author.key}` as '/') : null;
@@ -129,8 +144,8 @@ export function BlogPostHero({ post, currentLocale, availableTranslations }: Blo
         <BlogLanguageNotice
           currentLocale={currentLocale}
           loadedLocale={loadedLocale}
-          isFallback={isFallback}
-          availableTranslations={availableTranslations}
+          languageOffers={languageOffers}
+          fallbackLabel={fallbackLabel}
         />
       </div>
     </div>

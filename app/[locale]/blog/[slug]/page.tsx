@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { locales, localeNames, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
 import {
   buildPostAlternates,
   getPostByLocaleSlug,
@@ -189,14 +189,33 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const cover = post.frontmatter.coverImage?.src ?? null;
 
-  // Locales that have a real translation of this post → their canonical URL.
-  // Drives the "also available in your language" notice in the hero.
-  const availableTranslations: Partial<Record<Locale, string>> = {};
-  if (localeMap) {
-    for (const [l, s] of localeMap) {
-      availableTranslations[l] = `/${l}/blog/${s}`;
-    }
-  }
+  // Language-switch offers for the hero notice. Each offer's label is
+  // pre-translated in ITS OWN target language (not the current UI locale): a
+  // German reader whose browser prefers English sees "This article is also
+  // available in English", because the offer leads to the English version and
+  // should read in that language. Labels are built server-side per locale.
+  const languageOffers = localeMap
+    ? await Promise.all(
+        [...localeMap]
+          .filter(([l]) => l !== post.loadedLocale)
+          .map(async ([l, s]) => {
+            const tl = await getTranslations({ locale: l, namespace: 'blog' });
+            return {
+              locale: l,
+              href: `/${l}/blog/${s}`,
+              label: tl('languageNotice.available', { language: localeNames[l] }),
+            };
+          })
+      )
+    : [];
+
+  // Fallback notice (requested locale untranslated → showing loadedLocale):
+  // written in the language actually being shown, since that's what the reader
+  // is about to read.
+  const tLoaded = await getTranslations({ locale: post.loadedLocale, namespace: 'blog' });
+  const fallbackLabel = post.isFallback
+    ? tLoaded('languageNotice.fallback', { language: localeNames[post.loadedLocale] })
+    : null;
 
   const shareUrl = `${SITE_URL}/${locale}/blog/${post.slug}`;
   const hasToc = extractToc(post.content).length >= 3;
@@ -223,7 +242,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <BlogPostHero
                 post={post}
                 currentLocale={locale as Locale}
-                availableTranslations={availableTranslations}
+                languageOffers={languageOffers}
+                fallbackLabel={fallbackLabel}
               />
             </GlassCard>
           </div>
