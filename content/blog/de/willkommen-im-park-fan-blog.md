@@ -84,6 +84,13 @@ Glückslichter, die bis heute warm leuchten — sie halten meine Kindheit
 lebendig, und mit ihr die Erinnerung an den Menschen, der damals neben
 mir durch diese Welten glitt.
 
+Und wenn mein Vater als LKW-Fahrer mal wieder auf Tour war, hat meine
+Mutter kurzerhand das Steuer übernommen: Mit ihr habe ich viele andere
+Parks entdeckt, allen voran den
+[Movie Park](ref:movie-park-germany?bare) — Ausflüge, die genauso zu
+dieser Geschichte gehören wie jede Gondelfahrt. Wenn diese Liebe zu
+Freizeitparks ein Erbe ist, dann ist sie eines von beiden Elternteilen.
+
 Wenn Menschen fragen, warum park.fan kostenlos ist und bleiben wird, ist
 das die ehrlichste Antwort, die ich habe: Dieser Ort hat mir Erinnerungen
 geschenkt, die mein Leben geprägt haben. Das hier ist meine Art, etwas
