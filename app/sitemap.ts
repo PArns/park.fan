@@ -113,11 +113,50 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // ── Park pages ────────────────────────────────────────────────────────────
-  // Continent/country/city hub pages excluded — crawl budget reserved for park detail pages.
+  // ── Geo hub + park pages ──────────────────────────────────────────────────
+  // Hub pages target head terms ("freizeitparks deutschland", "theme parks
+  // florida") that competitors rank overview pages for — they were previously
+  // excluded for crawl budget, but the SERP evidence (July 2026) showed the
+  // country/city intent is real. Single-park cities are excluded: the city
+  // page 308s to its only park (thin-duplicate rule in the city page).
   for (const continent of geo.continents) {
+    const continentPath = `/parks/${continent.slug}`;
+    const continentAlternates = buildAlternates(() => continentPath);
+    for (const locale of locales) {
+      routes.push({
+        url: `${BASE_URL}/${locale}${continentPath}`,
+        changeFrequency: 'weekly',
+        priority: 0.6,
+        alternates: continentAlternates,
+      });
+    }
+
     for (const country of continent.countries) {
+      const countryPath = `/parks/${continent.slug}/${country.slug}`;
+      const countryAlternates = buildAlternates(() => countryPath);
+      for (const locale of locales) {
+        routes.push({
+          url: `${BASE_URL}/${locale}${countryPath}`,
+          changeFrequency: 'weekly',
+          priority: 0.7,
+          alternates: countryAlternates,
+        });
+      }
+
       for (const city of country.cities) {
+        if (city.parks.length > 1) {
+          const cityPath = `/parks/${continent.slug}/${country.slug}/${city.slug}`;
+          const cityAlternates = buildAlternates(() => cityPath);
+          for (const locale of locales) {
+            routes.push({
+              url: `${BASE_URL}/${locale}${cityPath}`,
+              changeFrequency: 'weekly',
+              priority: 0.6,
+              alternates: cityAlternates,
+            });
+          }
+        }
+
         for (const park of city.parks) {
           const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
           const parkAlternates = buildAlternates(() => parkPath);
@@ -135,7 +174,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  // Attraction pages excluded — crawl budget focused on high-value park pages.
+  // Attraction pages live in a separate lean sitemap (app/sitemap-attractions.xml/
+  // route.ts, referenced from robots.ts): ~35k locale URLs would blow this file up
+  // past sitemap size limits if they carried the full hreflang alternate set.
 
   // ── Blog pages ────────────────────────────────────────────────────────────
   const { listPosts, buildPostAlternates, getTranslationIndex, hasPublishedPosts } =
