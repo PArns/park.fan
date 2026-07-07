@@ -38,12 +38,19 @@ const getRawIndex = cache((): Map<string, Map<Locale, RawEntry>> => {
 });
 
 /**
- * Does the blog have at least one PUBLISHED post (any locale)? Every visible
- * blog surface — header/footer nav, homepage strips, the blog index, feeds,
- * sitemap — gates on this so a repo where everything sits in draft/hidden
- * presents no blog at all.
+ * Does the blog have at least one PUBLISHED post? Every visible blog surface —
+ * header/footer nav, homepage strips, the blog index, feeds, sitemap — gates
+ * on this so a repo where everything sits in draft/hidden presents no blog at
+ * all.
+ *
+ * With a `locale` argument the check is locale-scoped: does THIS locale list
+ * at least one post? (`listPosts` already applies mode + EN-fallback
+ * semantics.) That lets a German-first rollout publish /de/blog without
+ * switching the blog on for locales that would present an empty index.
  */
-export const hasPublishedPosts = cache((): boolean => {
+export const hasPublishedPosts = cache((locale?: Locale): boolean => {
+  if (locale) return listPosts(locale).length > 0;
+
   for (const localeMap of getRawIndex().values()) {
     for (const entry of localeMap.values()) {
       if ((entry.fm.mode ?? 'published') === 'published') return true;
@@ -186,21 +193,22 @@ export const listPosts = cache((requestedLocale: Locale): BlogListItem[] => {
 /**
  * Return alternate hreflang URLs for a single post (per translationKey).
  *
- * Only locales with a real translation are emitted. Untranslated locales
- * still render via EN fallback, but those URLs serve duplicate EN content
- * and canonicalize to the EN original — listing them as hreflang
+ * Only locales with a real, PUBLISHED translation are emitted. Untranslated
+ * locales still render via EN fallback, but those URLs serve duplicate EN
+ * content and canonicalize to the EN original — listing them as hreflang
  * alternates would tell search engines a translation exists where it
- * doesn't.
+ * doesn't. Draft translations 404 and hidden ones are deliberately
+ * unlisted, so both stay out as well.
  */
 export function buildPostAlternates(translationKey: string): Record<string, string> {
-  const index = getTranslationIndex();
-  const localeMap = index.get(translationKey);
-  if (!localeMap) return {};
+  const raw = getRawIndex().get(translationKey);
+  if (!raw) return {};
   const out: Record<string, string> = {};
   for (const locale of locales) {
-    const slug = localeMap.get(locale);
-    if (!slug) continue;
-    out[locale] = `${SITE_URL}/${locale}/blog/${slug}`;
+    const entry = raw.get(locale);
+    if (!entry) continue;
+    if ((entry.fm.mode ?? 'published') !== 'published') continue;
+    out[locale] = `${SITE_URL}/${locale}/blog/${entry.slug}`;
   }
   return out;
 }

@@ -127,6 +127,12 @@ Lange Bio auf Deutsch …
 
 Hidden/draft posts also drop out of the category tree and tag cloud counts.
 
+**Visibility is locale-scoped.** A locale shows blog surfaces (nav link, index,
+category/tag/author pages, RSS feed, sitemap entries) only if it lists at least
+one post itself. Publishing e.g. only the DE translation launches /de/blog while
+every other locale stays blog-free (404) — and the post's hreflang lists only
+locales whose translation is actually `published`.
+
 ---
 
 ## 3. References (`ref:`) — link a park or ride

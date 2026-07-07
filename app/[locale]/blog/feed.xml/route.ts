@@ -41,8 +41,8 @@ export async function GET(
   }
   const locale = rawLocale as Locale;
 
-  // No published posts → no feed; the whole blog is invisible.
-  if (!hasPublishedPosts()) {
+  // No posts listed for this locale → no feed for it either.
+  if (!hasPublishedPosts(locale)) {
     return new Response('Not found', { status: 404 });
   }
   const posts = listPosts(locale).slice(0, 40);

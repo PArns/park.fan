@@ -4,6 +4,21 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Blog: German-first launch (welcome post live in DE only)
+
+The rewritten founder-story welcome post goes **published for DE**; EN stays draft until the
+translations are polished. To make a single-locale launch clean, blog visibility is now
+**locale-scoped** (`hasPublishedPosts(locale?)` in `lib/blog/index.ts`):
+
+- Header/footer nav, blog index, category/tag/author pages and the RSS feed exist **only in
+  locales that actually list posts** — /de/blog is live while /en/blog & co. stay 404 instead
+  of presenting an empty index.
+- `buildPostAlternates` emits only **published** translations (draft URLs 404, hidden ones are
+  unlisted — neither belongs in hreflang); the DE post self-canonicalizes with `x-default` on
+  itself until translations exist.
+- `app/sitemap.ts` blog section iterates only blog-live locales (incl. blog-scoped hreflang
+  alternates for index/category/tag/author entries).
+
 ## Unreleased – SEO: hub + attraction pages join the sitemaps
 
 SERP checks (July 2026) showed the missing long-tail surface: queue-times/wartezeiten.app rank

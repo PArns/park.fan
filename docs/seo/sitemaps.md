@@ -20,7 +20,7 @@ Hub + attraction pages were re-added in July 2026: SERP checks showed competitor
 | `/{locale}/parks/{continent}/{country}/{city}/{park}`        | 1.0      | daily           | – (no API timestamp) |
 | `/{locale}/parks/…/{park}/{attraction}` (own sitemap)        | 0.6      | weekly          | –                    |
 | `/{locale}/{glossary-segment}/{term}`                        | 0.8      | monthly         | –                    |
-| `/{locale}/blog` + posts + categories + tags + authors       | 0.4–0.7  | daily–monthly   | posts: `updatedAt`   |
+| `/{locale}/blog` + posts etc. (**blog-live locales only**)   | 0.4–0.7  | daily–monthly   | posts: `updatedAt`   |
 | `/{locale}/search` (plain, no query)                         | 0.5      | monthly         | –                    |
 | `/{locale}/howto`, `/{locale}/{glossary-segment}` (index)    | 0.4–0.5  | monthly/weekly  | –                    |
 
@@ -32,13 +32,13 @@ Every `/sitemap.xml` entry carries absolute `alternates.languages` (hreflang) fo
 
 ## What is NOT in the sitemaps (deliberate)
 
-| Page                                      | Reason                                                                                               |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `/impressum`, `/datenschutz`              | **noindex** pages — listing them triggers Search Console errors                                        |
-| Single-park city hubs                     | The city page 308s to its only park (thin-duplicate rule) — a redirecting URL doesn't belong           |
-| Attraction variant slugs (e.g. `taron-2`) | noindex, canonical points to base slug — the attractions route mirrors the page's base-exists check    |
-| `/search?q=...`                           | noindex (duplicate content risk); only the plain `/search` is listed                                   |
-| Blog EN-fallback URLs                     | Canonicalize to EN original (see above)                                                                |
+| Page                                      | Reason                                                                                              |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `/impressum`, `/datenschutz`              | **noindex** pages — listing them triggers Search Console errors                                     |
+| Single-park city hubs                     | The city page 308s to its only park (thin-duplicate rule) — a redirecting URL doesn't belong        |
+| Attraction variant slugs (e.g. `taron-2`) | noindex, canonical points to base slug — the attractions route mirrors the page's base-exists check |
+| `/search?q=...`                           | noindex (duplicate content risk); only the plain `/search` is listed                                |
+| Blog EN-fallback URLs                     | Canonicalize to EN original (see above)                                                             |
 
 ---
 

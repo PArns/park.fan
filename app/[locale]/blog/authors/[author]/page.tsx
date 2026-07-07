@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: AuthorPageProps): Promise<Met
 export default async function BlogAuthorPage({ params }: AuthorPageProps) {
   const { locale, author } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
-  if (!hasPublishedPosts()) notFound();
+  if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
   const entry = getAuthor(author, locale as Locale);

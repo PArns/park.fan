@@ -124,8 +124,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   // Get messages for the current locale
   const messages = await getMessages();
-  // Blog surfaces hide entirely while no post is published.
-  const showBlog = hasPublishedPosts();
+  // Blog surfaces show only in locales that actually list posts (German-first
+  // rollout: /de/blog can be live while other locales stay blog-free).
+  const showBlog = hasPublishedPosts(locale as Locale);
   const tSeo = await getTranslations({ locale, namespace: 'seo.global' });
 
   // NOTE: the temperature-unit cookie is intentionally NOT read here. Reading

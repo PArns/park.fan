@@ -187,8 +187,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // keep the index + posts + category/tag pages out of the sitemap until then.
   if (!hasPublishedPosts()) return routes;
 
-  const blogIndexAlternates = buildAlternates(() => '/blog');
-  for (const locale of locales) {
+  // German-first rollout: blog surfaces (index, categories, tags, authors,
+  // feeds) exist ONLY in locales that actually list posts. Locales without
+  // posts 404 their blog routes, so they must stay out of the sitemap and
+  // out of each other's hreflang alternates.
+  const blogLocales = locales.filter((l) => hasPublishedPosts(l));
+  const buildBlogAlternates = (
+    pathFn: (locale: string) => string
+  ): { languages: Record<string, string> } => ({
+    languages: Object.fromEntries([
+      ...blogLocales.map((l) => [l, `${BASE_URL}/${l}${pathFn(l)}`]),
+      ...(blogLocales.includes('en') ? [['x-default', `${BASE_URL}/en${pathFn('en')}`]] : []),
+    ]),
+  });
+
+  const blogIndexAlternates = buildBlogAlternates(() => '/blog');
+  for (const locale of blogLocales) {
     routes.push({
       url: `${BASE_URL}/${locale}/blog`,
       changeFrequency: 'daily',
@@ -223,40 +237,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Blog category pages
-  for (const locale of locales) {
+  for (const locale of blogLocales) {
     const { flat } = buildCategoryTree(locale as import('@/i18n/config').Locale);
     for (const path of flat.keys()) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/category/${path}`,
         changeFrequency: 'weekly',
         priority: 0.4,
-        alternates: buildAlternates(() => `/blog/category/${path}`),
+        alternates: buildBlogAlternates(() => `/blog/category/${path}`),
       });
     }
   }
 
   // Blog tag pages
   const { listTags } = await import('@/lib/blog/tags');
-  for (const locale of locales) {
+  for (const locale of blogLocales) {
     for (const tag of listTags(locale as import('@/i18n/config').Locale)) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/tag/${tag.slug}`,
         changeFrequency: 'weekly',
         priority: 0.4,
-        alternates: buildAlternates(() => `/blog/tag/${tag.slug}`),
+        alternates: buildBlogAlternates(() => `/blog/tag/${tag.slug}`),
       });
     }
   }
 
   // Blog author pages
   const { listAuthorKeys } = await import('@/lib/blog/authors');
-  for (const locale of locales) {
+  for (const locale of blogLocales) {
     for (const author of listAuthorKeys()) {
       routes.push({
         url: `${BASE_URL}/${locale}/blog/authors/${author}`,
         changeFrequency: 'weekly',
         priority: 0.4,
-        alternates: buildAlternates(() => `/blog/authors/${author}`),
+        alternates: buildBlogAlternates(() => `/blog/authors/${author}`),
       });
     }
   }

@@ -4,7 +4,7 @@ translationKey: welcome-to-park-fan-blog
 date: '2026-05-20'
 updatedAt: '2026-07-07'
 author: patrick
-mode: draft
+mode: published
 featured: true
 excerpt: >-
   park.fan beginnt nicht mit Code, sondern mit einem Kinderwagen am Märchensee
@@ -21,15 +21,17 @@ coverImage:
   alt: 'park.fan Blog-Launch — Trip Reports · Data · News'
   credit: 'park.fan'
 seo:
-  title: 'Warum es park.fan gibt — Willkommen im Blog'
+  title: 'Die Geschichte hinter park.fan — Willkommen im Blog'
   description: >-
-    Vom Kinderwagen am Märchensee im Phantasialand zur eigenen
-    Wartezeiten-Plattform: die Geschichte hinter park.fan — plus Reiseberichte,
-    Daten-Analysen mit Live-Wartezeiten und Park-News, kompakt und ehrlich.
+    Vom Kinderwagen am Märchensee im Phantasialand zur Plattform für
+    Live-Wartezeiten und KI-Crowd-Prognosen: die Geschichte hinter park.fan —
+    und was der Blog wird: Reiseberichte, Daten-Analysen, ehrliche Park-News.
   keywords:
     - park.fan Blog
+    - park.fan Geschichte
     - Freizeitpark Blog
     - Phantasialand Geschichte
+    - Maus au Chocolat
     - Reisebericht Freizeitpark
     - Wartezeiten Analyse
 ---
@@ -61,13 +63,15 @@ sind: Sie speichern Momente, die ein Leben lang halten. Ein neuer Highscore
 in der [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) zaubert
 mir heute noch ein kindliches Grinsen ins Gesicht — auch wenn meine
 Partnerin mir regelmäßig die 5000er-Mäuse wegschnappt und mich damit um
-den Rekord bringt. Danach Pancakes und Shakes im **Phenie's** in Wuze
-Town, und der Tag ist perfekt. Es gibt einen Grund, warum sich dieser Park
-„Europas Most Immersive Theme Park" nennen darf.
+den Rekord bringt. Dafür habe ich sie nach gefühlt hundert Fahrten endlich
+gefunden: die **10.000er-Maus im zweiten Raum**. Wo genau sie sitzt? Wird
+hier selbstverständlich nicht verraten. Danach Pancakes und Shakes im
+**Phenie's** in Wuze Town, und der Tag ist perfekt. Es gibt einen Grund,
+warum sich dieser Park „Europas Most Immersive Theme Park" nennen darf.
 
 ## Die zweite Hälfte der Geschichte
 
-Parallel zu all dem gab es immer noch ein zweites Ich: den Entwickler.
+Parallel zu all dem gab es schon immer ein zweites Ich: den Entwickler.
 Über 25 Jahre Software inzwischen — viele davon in der VPN-Welt, erst als
 Head of Software Development bei **CyberGhost**, heute als Distinguished
 Software Engineer bei **ExpressVPN**. Systeme, die Millionen Menschen
@@ -165,5 +169,7 @@ die Daten sagen, dass es sich lohnt.
 
 — Patrick
 
-_P.S.: Falls du die 5000er-Maus in der Maus au Chocolat siehst — lass sie
-bitte hängen. Ich brauche sie für die Revanche._
+_P.S.: Ja, die 10.000er-Maus im zweiten Raum der Maus au Chocolat
+existiert wirklich. Nein, ich verrate nicht, wo sie sitzt — such selbst.
+Und solltest du unterwegs eine 5000er sehen: Finger weg, die brauche ich
+für die Revanche._
