@@ -69,19 +69,20 @@ das mich nie wieder losgelassen hat.
 ## „1001 Nacht" — Fahrten, die bleiben
 
 Und dann war da die Gondelbahn **„1001 Nacht"**, bis 2009 in Betrieb und
-die erste Themenfahrt dieser Art in Deutschland. Wenn ich Ende der
-Achtzigerjahre mit meinem Vater in eine der Gondeln stieg, begann eine
-Reise, die mit jedem Meter tiefer in eine andere Welt führte: durch das
-wuchtige Drachenmaul hinein in die Szenen von Sindbad, Ali Baba und
-Sherazade, vorbei an geheimnisvoll schimmernden Tropfsteinhöhlen —
-getragen von einer Inszenierung, in die man sich hineinfallen lassen
-konnte wie in ein aufgeschlagenes Märchenbuch.
+die erste Themenfahrt dieser Art in Deutschland. Ende der Achtzigerjahre
+gehörte sie zu jedem unserer Familienbesuche fest dazu: meine Eltern und
+ich in einer dieser Gondeln, gemeinsam auf einer Reise, die mit jedem
+Meter tiefer in eine andere Welt führte — durch das wuchtige Drachenmaul
+hinein in die Szenen von Sindbad, Ali Baba und Sherazade, vorbei an
+geheimnisvoll schimmernden Tropfsteinhöhlen, getragen von einer
+Inszenierung, in die man sich hineinfallen lassen konnte wie in ein
+aufgeschlagenes Märchenbuch.
 
-Mein Vater ist 2019 gestorben. Vielleicht sind mir diese Fahrten gerade
-deshalb so unendlich kostbar geworden: Sie sind wie kleine Glückslichter,
-die bis heute warm leuchten — sie halten meine Kindheit lebendig, und mit
-ihr die Erinnerung an den Menschen, der damals neben mir durch diese
-Welten glitt.
+Mein Vater ist 2019 gestorben. Vielleicht sind mir diese gemeinsamen
+Fahrten gerade deshalb so unendlich kostbar geworden: Sie sind wie kleine
+Glückslichter, die bis heute warm leuchten — sie halten meine Kindheit
+lebendig, und mit ihr die Erinnerung an den Menschen, der damals neben
+mir durch diese Welten glitt.
 
 Wenn Menschen fragen, warum park.fan kostenlos ist und bleiben wird, ist
 das die ehrlichste Antwort, die ich habe: Dieser Ort hat mir Erinnerungen
@@ -282,7 +283,8 @@ Und weil es einfach sein musste, gibt es jetzt sogar einen
 
 Danke, dass du bis hierhin gelesen hast. Dieser Ort — die Plattform, der
 Blog, das alles — ist mein Dankeschön an einen Park am Märchensee, an
-einen Vater in einer Gondel und an jeden einzelnen Menschen, der
+Eltern, die einen kleinen Jungen immer wieder dorthin mitgenommen haben,
+an einen Vater in einer Gondel — und an jeden einzelnen Menschen, der
 Freizeitparks genauso liebt wie ich. Und jetzt: geh anstehen — aber bitte
 nur, wenn die Daten sagen, dass es sich lohnt.
 
