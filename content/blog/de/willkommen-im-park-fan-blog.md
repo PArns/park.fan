@@ -36,72 +36,110 @@ seo:
     - Wartezeiten Analyse
 ---
 
-# Es beginnt mit einem Kinderwagen am Märchensee
+Es gibt Orte, an denen die Zeit stillzustehen scheint — Flecken Erde, an
+denen Fantasie und Wirklichkeit so selbstverständlich ineinanderfließen,
+dass die Sorgen des Alltags für einen Moment einfach verblassen. Orte, an
+denen jede Ecke eine kleine Geschichte erzählt und hinter jeder Biegung
+eine neue Welt darauf wartet, entdeckt zu werden.
 
-Es gibt Orte, an denen die Zeit stillzustehen scheint. Orte, an denen
-Fantasie und Wirklichkeit ineinanderfließen und die Sorgen des Alltags für
-einen Moment verblassen. Mein Ort dafür liegt in Brühl.
+Mein Ort liegt in Brühl. Und wer verstehen will, warum es
+[park.fan](/) gibt, muss dort anfangen — lange bevor irgendjemand an
+Wartezeiten-Daten dachte.
+
+## Ein Kinderwagen am Märchensee
 
 Meine Eltern haben mich als kleines Kind im Kinderwagen um den Märchensee
-im [Phantasialand](ref:phantasialand?bare) geschoben — vorbei an über 40
-Märchenwelten voller liebevoller Kulissen und beweglicher Animatronics.
-Rotkäppchen, Aschenputtel, Ali Baba. Für mich war das kein Parkbesuch,
-das war ein lebendiges Eintauchen in Geschichten, inszeniert mit einer
-Detailverliebtheit, bei der man fast glaubte, die Figuren könnten jeden
-Moment zum Leben erwachen.
+im [Phantasialand](ref:phantasialand?bare) geschoben — vorbei an über
+vierzig Märchenwelten, deren liebevoll gebaute Kulissen und bewegliche
+Animatronics ganze Geschichten erzählten, ohne ein einziges Wort zu
+brauchen. Rotkäppchen, Aschenputtel, Ali Baba: Für mich war das nie bloß
+ein Parkbesuch. Es war ein Eintauchen in lebendig gewordene Erzählungen,
+inszeniert mit einer Detailverliebtheit, die einen fast glauben ließ, die
+Figuren könnten im nächsten Augenblick tatsächlich zum Leben erwachen —
+man musste nur lange genug hinsehen.
 
-Und dann war da die Gondelbahn **„1001 Nacht"** — bis 2009 in Betrieb und
-die erste Themenfahrt dieser Art in Deutschland. Ende der 80er bin ich mit
-meinem Vater durch Szenen von Sindbad, Ali Baba und Sherazade geglitten,
-vom wuchtigen Drachenmaul bis in die geheimnisvolle Tropfsteinhöhle. Mein
-Vater ist 2019 gestorben. Diese Fahrten sind für mich bis heute wie kleine
-Glückslichter: Sie halten meine Kindheit warm — und die Erinnerung an ihn
-gleich mit.
+## „1001 Nacht" — Fahrten, die bleiben
 
-Ich glaube, genau das können Freizeitparks, wenn sie mit Herzblut gemacht
-sind: Sie speichern Momente, die ein Leben lang halten. Ein neuer Highscore
-in der [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) zaubert
-mir heute noch ein kindliches Grinsen ins Gesicht — auch wenn meine
-Partnerin mir regelmäßig die 5000er-Mäuse wegschnappt und mich damit um
-den Rekord bringt. Dafür habe ich sie nach gefühlt hundert Fahrten endlich
-gefunden: die **10.000er-Maus im zweiten Raum**. Wo genau sie sitzt? Wird
-hier selbstverständlich nicht verraten. Danach Pancakes und Shakes im
-**Phenie's** in Wuze Town, und der Tag ist perfekt. Es gibt einen Grund,
-warum sich dieser Park „Europas Most Immersive Theme Park" nennen darf.
+Und dann war da die Gondelbahn **„1001 Nacht"**, bis 2009 in Betrieb und
+die erste Themenfahrt dieser Art in Deutschland. Wenn ich Ende der
+Achtzigerjahre mit meinem Vater in eine der Gondeln stieg, begann eine
+Reise, die mit jedem Meter tiefer in eine andere Welt führte: durch das
+wuchtige Drachenmaul hinein in die Szenen von Sindbad, Ali Baba und
+Sherazade, vorbei an geheimnisvoll schimmernden Tropfsteinhöhlen —
+getragen von einer Inszenierung, in die man sich hineinfallen lassen
+konnte wie in ein aufgeschlagenes Märchenbuch.
 
-## Die zweite Hälfte der Geschichte
+Mein Vater ist 2019 gestorben. Vielleicht sind mir diese Fahrten gerade
+deshalb so unendlich kostbar geworden: Sie sind wie kleine Glückslichter,
+die bis heute warm leuchten — sie halten meine Kindheit lebendig, und mit
+ihr die Erinnerung an den Menschen, der damals neben mir durch diese
+Welten glitt.
 
-Parallel zu all dem gab es schon immer ein zweites Ich: den Entwickler.
-Über 25 Jahre Software inzwischen — viele davon in der VPN-Welt, erst als
-Head of Software Development bei **CyberGhost**, heute als Distinguished
-Software Engineer bei **ExpressVPN**. Systeme, die Millionen Menschen
-gleichzeitig nutzen, ohne dass sie je darüber nachdenken müssen. Nebenbei
-Open Source, Smart-Home-Adapter, Side-Projects — der Kram, der auf
-[arns.dev](https://arns.dev) und [GitHub](https://github.com/PArns) liegt.
+## Von 5000er-Mäusen und einer 10.000er-Legende
 
-Zwei Leidenschaften, die jahrzehntelang friedlich nebeneinander herliefen —
-bis zu diesem einen Moment, den jeder Parkfan kennt: Sechzig Minuten
-[Taron](ref:phantasialand/taron?bare)-Standby, das Display lügt dir
-„ungefähr 45 Min." ins Gesicht, und zwei Stationen weiter schickt eine halb
-leere Familienbahn Wagen um Wagen ins Nichts. Da stand ich nun: ein Mensch,
-der beruflich Datenströme in Echtzeit verarbeitet — und privat keine Ahnung
-hatte, ob sich diese Schlange gerade lohnt.
+Ich glaube, genau das ist es, was Freizeitparks vermögen, wenn sie mit
+Herzblut gebaut werden: Sie speichern Momente, die ein Leben lang halten —
+und sie hören nie auf, neue hinzuzufügen. Ein frischer Highscore in der
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) zaubert mir
+heute noch dasselbe kindliche Grinsen ins Gesicht wie früher — auch wenn
+meine Partnerin die bemerkenswerte Angewohnheit pflegt, mir die
+5000er-Mäuse in exakt dem Augenblick wegzuschnappen, in dem ich sie
+anvisiere, und mich damit Fahrt um Fahrt um den Hausrekord bringt.
+
+Dafür gehört inzwischen ein Triumph mir allein: Nach gefühlt hundert
+Fahrten habe ich sie endlich entdeckt — die **10.000er-Maus im zweiten
+Raum**. Wo genau sie sitzt? Das bleibt, bei allem Verständnis für die
+Frage, mein Geheimnis.
+
+Danach Pancakes und Shakes im **Phenie's** in Wuze Town, fluffig und
+prachtvoll und viel zu gut für Freizeitpark-Gastronomie — und spätestens
+dann versteht man, warum sich dieser Park „Europas Most Immersive Theme
+Park" nennen darf, ohne dass es nach Marketing klingt.
+
+## Das zweite Ich: der Entwickler
+
+Parallel zu alldem gab es immer ein zweites Ich — eines, das seit über
+fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt:
+erst als Head of Software Development bei **CyberGhost**, heute als
+Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
+Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu
+verschwenden — was vermutlich das größte Kompliment ist, das man
+Infrastruktur machen kann. Dazu Open Source, Smart-Home-Adapter und mehr
+Side-Projects, als gut für mich sind; der ganze Kram, der sich auf
+[arns.dev](https://arns.dev) und [GitHub](https://github.com/PArns)
+stapelt.
+
+Zwei Leidenschaften also, die jahrzehntelang friedlich nebeneinanderher
+liefen, ohne sich je ernsthaft zu begegnen.
+
+## Der Moment in der Taron-Schlange
+
+Bis zu diesem einen Nachmittag, den vermutlich jeder Parkfan in der einen
+oder anderen Variante kennt: sechzig Minuten
+[Taron](ref:phantasialand/taron?bare)-Standby, ein Display, das einem mit
+stoischer Freundlichkeit „ungefähr 45 Minuten" ins Gesicht lügt — und zwei
+Stationen weiter eine halb leere Familienbahn, die Wagen um Wagen ins
+Nichts schickt. Da stand ich also: ein Mensch, der beruflich Datenströme
+in Echtzeit verarbeitet, und privat nicht die geringste Ahnung hatte, ob
+sich diese Schlange gerade lohnte — oder ob ich schlicht Lebenszeit gegen
+ein Geländer tauschte.
 
 > „Lass mich mal eben die Wartezeiten tracken." — _drei Jahre und eine
 > halbe Million Code-Zeilen später…_
 
-Geworden ist daraus [park.fan](/): ein **Echtzeit-Nervensystem für
-Freizeitparks**. Live-Wartezeiten aus über **150 Parks** und **5.000+
-Attraktionen**, im Minutentakt. Ein eigenes KI-Modell, das den Andrang
-**bis zu 365 Tage** im Voraus sieht — Ferien, Wetter und Schedules schon
-mitgedacht. Kostenlos, ohne Ads, ohne Konzern, der mitredet. Damit die
-Zeit im Park für das draufgeht, wofür sie da ist: Magie, Erinnerungen —
-und Highscore-Revanchen.
+Geworden ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**:
+Live-Wartezeiten aus über **150 Parks** und **5.000+ Attraktionen**, im
+Minutentakt. Ein eigenes KI-Modell, das den Andrang **bis zu 365 Tage** im
+Voraus sieht — Ferien, Wetter und Schedules schon mitgedacht. Kostenlos,
+ohne Werbung, ohne Konzern, der mitredet. Damit die Zeit im Park für das
+draufgeht, wofür sie da ist: Magie, Erinnerungen — und
+Highscore-Revanchen.
 
-## Warum jetzt auch ein Blog?
+## Was dieser Blog werden soll
 
-Weil eine Wartezeit ohne Kontext nur ein Gerücht mit Nachkommastelle ist.
-„50 Minuten" — dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
+Eine Wartezeit ohne Kontext ist nur ein Gerücht mit Nachkommastelle.
+„50 Minuten" — dreimal dieselbe Zahl, dreimal eine völlig andere
+Geschichte:
 
 - **50 Minuten** für ein **Flat Ride**? Glatte Zeitverschwendung. In der
   Spanne wären drei echte Coaster drin gewesen.
@@ -114,25 +152,27 @@ Weil eine Wartezeit ohne Kontext nur ein Gerücht mit Nachkommastelle ist.
   ein Jahr nach Eröffnung? Entweder Sahnetag — oder die Massen haben sich
   endlich verlaufen.
 
-Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier.
+Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier —
+in drei Formaten:
 
 **Reiseberichte.** Lang, mit Haltung, mit Fotos — und mit echten Daten aus
 genau dem Park, der gerade besucht wurde. Kein „war schön", sondern:
-„[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope Drop
-— das war der Plan, das hat funktioniert, das ging baden."
+„[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope
+Drop — das war der Plan, das hat funktioniert, das ging baden."
 
 **Daten-Deep-Dives.** Was verrät die Wartezeit-Historie eines Parks
 _wirklich_? Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am
-ehesten? Und halten unsere Prognosen, was sie versprechen? (Die
+ehesten? Und halten unsere Prognosen, was sie versprechen? Die
 Trefferquote liegt offen auf der [How-to-Seite](/howto) — schummeln
-zwecklos.)
+zwecklos.
 
 **News.** Kurz, ehrlich, ohne SEO-Sermon. Passiert etwas, steht es hier —
 schneller, als du ein Cookie-Banner wegklickst.
 
 Und das Schönste: Die Beiträge **leben**. Charts, Karten und Wartezeiten
-ziehen direkt aus park.fan — was du liest, macht der Park gerade wirklich.
-Die beiden Hauptdarsteller dieser Geschichte, live und ungeschönt:
+ziehen direkt aus park.fan — was du liest, macht der Park in diesem Moment
+wirklich. Die beiden Hauptdarsteller dieser Geschichte, live und
+ungeschönt:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
@@ -144,23 +184,23 @@ jetzt am [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```
 
-## Wer schreibt das?
+## Wer hier schreibt
 
-Ich, **Patrick** (tipp oben auf meinen Namen, dann landest du auf meinem
-Profil). Backend-Developer aus Deutschland, Coaster-Junkie seit dem
+Ich, **Patrick** — tipp oben auf meinen Namen, dann landest du auf meinem
+Profil. Backend-Developer aus Deutschland, Coaster-Junkie seit dem
 Kinderwagen, Datenmensch aus Berufung. Mehr Tech- und Side-Project-Kram
 auf [arns.dev](https://arns.dev).
 
-## Eine Sache noch
+## Kein Werbeflyer. Versprochen.
 
-Dieser Blog ist und bleibt **kein Werbeflyer**. park.fan kostet nichts, hat
-keine Ads, gehört niemandem außer der Neugier. Wird ein Park mies gemanagt,
-schreiben wir's. Ist eine App schlechter als die offizielle, sagen wir's
-auch. Du hast ein Thema, das dich juckt? Schreib mir — die E-Mail steht im
-[Impressum](/impressum).
+Dieser Blog ist und bleibt genau das nicht. park.fan kostet nichts, hat
+keine Werbung und gehört niemandem außer der Neugier. Wird ein Park mies
+gemanagt, schreiben wir es. Ist eine App schlechter als die offizielle,
+sagen wir auch das. Du hast ein Thema, das dich juckt? Schreib mir — die
+E-Mail steht im [Impressum](/impressum).
 
-Und weil es einfach sein musste, gibt es jetzt sogar einen **park.fan-Song**.
-Ja, im Ernst:
+Und weil es einfach sein musste, gibt es jetzt sogar einen
+**park.fan-Song**. Ja, im Ernst:
 
 [Mehr Loopings, weniger Stehen — die inoffizielle park.fan-Hymne](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
