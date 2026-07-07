@@ -9,7 +9,7 @@ import {
   SITE_URL,
 } from '@/i18n/config';
 import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
-import { BlogPostCard } from '@/components/blog/blog-post-card';
+import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
@@ -34,7 +34,9 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog' });
   const ogImageUrl = getOgImageUrl([locale, 'blog']);
-  const fullTitle = `${t('title')} | park.fan`;
+  // Descriptive, keyword-bearing <title> (the generic "Blog" stays as the H1
+  // fallback / breadcrumb label; the meta title carries the topic for search).
+  const fullTitle = `${t('heroTitle')} | park.fan`;
   return {
     title: { absolute: fullTitle },
     description: t('description'),
@@ -99,43 +101,29 @@ export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
   }
 
   // Render up to BLOG_POSTS_PER_PAGE on the index. Older posts stay reachable
-  // via the category tree on the right-hand sidebar.
+  // via the category tree on the right-hand sidebar. All posts use the same
+  // uniform card grid as the category pages (no separate full-width feature —
+  // it stretched portrait covers into a thin panoramic strip).
   const visiblePosts = allPosts.slice(0, BLOG_POSTS_PER_PAGE);
-  const [feature, ...rest] = visiblePosts;
 
   return (
     <>
       <BlogStructuredData
         locale={locale}
-        name={t('title')}
+        name={t('badge')}
         description={t('description')}
         posts={visiblePosts}
         path="/blog"
       />
-      <div className="relative isolate">
-        <div
-          className="from-primary/5 via-background to-background pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-gradient-to-b"
-          aria-hidden="true"
-        />
-        <div className="container mx-auto px-4 py-10 sm:py-14">
-          <BlogSectionHeader as="h1" badge={t('badge')} title={t('title')} intro={t('intro')} />
+      <div className="container mx-auto px-4 py-10 sm:py-14">
+        <BlogSectionHeader as="h1" badge={t('badge')} title={t('heroTitle')} intro={t('intro')} />
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-            <div className="space-y-10">
-              {feature && <BlogPostCard post={feature} variant="feature" />}
-              {rest.length > 0 && (
-                <div className="grid gap-6 sm:grid-cols-2">
-                  {rest.map((post) => (
-                    <BlogPostCard key={post.translationKey} post={post} />
-                  ))}
-                </div>
-              )}
-            </div>
-            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-              <BlogCategoryTree locale={locale as Locale} />
-              <BlogTagCloud locale={locale as Locale} />
-            </aside>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+          <BlogPostGrid posts={visiblePosts} />
+          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+            <BlogCategoryTree locale={locale as Locale} />
+            <BlogTagCloud locale={locale as Locale} />
+          </aside>
         </div>
       </div>
 

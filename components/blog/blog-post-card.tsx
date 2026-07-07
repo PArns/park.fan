@@ -13,6 +13,8 @@ import type { Locale } from '@/i18n/config';
 interface BlogPostCardProps {
   post: BlogListItem;
   variant?: 'default' | 'compact' | 'feature';
+  /** Mark the cover as LCP priority — set on the first card above the fold. */
+  priority?: boolean;
   className?: string;
 }
 
@@ -23,7 +25,12 @@ interface BlogPostCardProps {
  * the shared `--pk-card-shadow` CSS variables. Keeps the editorial surface
  * visually consistent with the rest of the site.
  */
-export function BlogPostCard({ post, variant = 'default', className }: BlogPostCardProps) {
+export function BlogPostCard({
+  post,
+  variant = 'default',
+  priority = false,
+  className,
+}: BlogPostCardProps) {
   const f = useFormatter();
   const t = useTranslations('blog');
   const localeStr = useLocale();
@@ -107,7 +114,7 @@ export function BlogPostCard({ post, variant = 'default', className }: BlogPostC
               alt={frontmatter.coverImage?.alt ?? frontmatter.title}
               hideOnMobile
               objectPosition="center"
-              priority={isFeature}
+              priority={priority}
               sizes={
                 isFeature
                   ? '(max-width: 1024px) 100vw, 1024px'
@@ -220,7 +227,7 @@ export function BlogPostCard({ post, variant = 'default', className }: BlogPostC
         <div
           className={cn(
             'relative z-[2]',
-            cover && (isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[220px]')
+            cover && (isFeature ? 'sm:min-h-[360px]' : 'sm:min-h-[240px]')
           )}
         />
 

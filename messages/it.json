@@ -1125,6 +1125,7 @@
   },
   "blog": {
     "title": "Blog",
+    "heroTitle": "Storie, dati e news dai parchi",
     "badge": "Blog park.fan",
     "description": "Resoconti di visita, analisi dati e notizie dai parchi.",
     "intro": "Resoconti onesti, analisi dei tempi di attesa e notizie brevi.",

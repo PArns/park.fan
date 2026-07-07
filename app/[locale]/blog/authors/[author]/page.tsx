@@ -10,7 +10,7 @@ import {
 } from '@/i18n/config';
 import { BLOG_POSTS_PER_PAGE, listPosts, hasPublishedPosts } from '@/lib/blog';
 import { getAuthor, listAuthorKeys, resolveAuthor } from '@/lib/blog/authors';
-import { BlogPostCard } from '@/components/blog/blog-post-card';
+import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogAuthorProfile } from '@/components/blog/blog-author-profile';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -104,43 +104,33 @@ export default async function BlogAuthorPage({ params }: AuthorPageProps) {
       />
       <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
 
-      <div className="relative isolate">
-        <div
-          className="from-primary/5 via-background to-background pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-gradient-to-b"
-          aria-hidden="true"
+      <div className="container mx-auto px-4 py-10 sm:py-14">
+        <BreadcrumbNav
+          breadcrumbs={breadcrumbs}
+          currentPage={entry.name}
+          variant="plain"
+          className="mb-6"
         />
-        <div className="container mx-auto px-4 py-10 sm:py-14">
-          <BreadcrumbNav
-            breadcrumbs={breadcrumbs}
-            currentPage={entry.name}
-            variant="plain"
-            className="mb-6"
-          />
 
-          <BlogAuthorProfile author={entry} />
+        <BlogAuthorProfile author={entry} />
 
-          <h2 className="text-foreground mt-10 mb-6 text-xl font-bold sm:text-2xl">
-            {t('author.postsBy', { name: entry.name })}
-            <span className="text-muted-foreground ml-2 text-sm font-normal">
-              {t('author.postsCount', { count: allPosts.length })}
-            </span>
-          </h2>
+        <h2 className="text-foreground mt-10 mb-6 text-xl font-bold sm:text-2xl">
+          {t('author.postsBy', { name: entry.name })}
+          <span className="text-muted-foreground ml-2 text-sm font-normal">
+            {t('author.postsCount', { count: allPosts.length })}
+          </span>
+        </h2>
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-            {visiblePosts.length > 0 ? (
-              <div className="grid gap-6 sm:grid-cols-2">
-                {visiblePosts.map((post) => (
-                  <BlogPostCard key={post.translationKey} post={post} />
-                ))}
-              </div>
-            ) : (
-              <p className="text-muted-foreground">{t('author.noPosts')}</p>
-            )}
-            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-              <BlogCategoryTree locale={locale as Locale} />
-              <BlogTagCloud locale={locale as Locale} />
-            </aside>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+          {visiblePosts.length > 0 ? (
+            <BlogPostGrid posts={visiblePosts} />
+          ) : (
+            <p className="text-muted-foreground">{t('author.noPosts')}</p>
+          )}
+          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+            <BlogCategoryTree locale={locale as Locale} />
+            <BlogTagCloud locale={locale as Locale} />
+          </aside>
         </div>
       </div>
 

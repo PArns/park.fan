@@ -17,7 +17,7 @@ import {
   parseCategoryPath,
   resolveCategoryLabel,
 } from '@/lib/blog/categories';
-import { BlogPostCard } from '@/components/blog/blog-post-card';
+import { BlogPostGrid } from '@/components/blog/blog-post-grid';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
@@ -130,40 +130,28 @@ export default async function BlogCategoryPage({ params }: CategoryPageProps) {
         path={`/blog/category/${fullPath}`}
       />
       <BreadcrumbStructuredData breadcrumbs={seoBreadcrumbs} locale={locale} />
-      <div className="relative isolate">
-        <div
-          className="from-primary/5 via-background to-background pointer-events-none absolute inset-x-0 top-0 -z-10 h-[420px] bg-gradient-to-b"
-          aria-hidden="true"
+      <div className="container mx-auto px-4 py-10 sm:py-14">
+        <BreadcrumbNav
+          breadcrumbs={breadcrumbs}
+          currentPage={label}
+          variant="plain"
+          className="mb-6"
         />
-        <div className="container mx-auto px-4 py-10 sm:py-14">
-          <BreadcrumbNav
-            breadcrumbs={breadcrumbs}
-            currentPage={label}
-            variant="plain"
-            className="mb-6"
-          />
 
-          <BlogSectionHeader
-            as="h1"
-            badge={t('category.label')}
-            badgeIcon={FolderTree}
-            title={label}
-            meta={t('category.postsCount', { count: totalItems })}
-          />
+        <BlogSectionHeader
+          as="h1"
+          badge={t('category.label')}
+          badgeIcon={FolderTree}
+          title={label}
+          meta={t('category.postsCount', { count: totalItems })}
+        />
 
-          <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
-            <div className="space-y-8">
-              <div className="grid gap-6 sm:grid-cols-2">
-                {visiblePosts.map((post) => (
-                  <BlogPostCard key={post.translationKey} post={post} />
-                ))}
-              </div>
-            </div>
-            <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
-              <BlogCategoryTree locale={locale as Locale} activePath={fullPath} />
-              <BlogTagCloud locale={locale as Locale} />
-            </aside>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+          <BlogPostGrid posts={visiblePosts} />
+          <aside className="space-y-6 lg:sticky lg:top-20 lg:self-start">
+            <BlogCategoryTree locale={locale as Locale} activePath={fullPath} />
+            <BlogTagCloud locale={locale as Locale} />
+          </aside>
         </div>
       </div>
 

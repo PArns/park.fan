@@ -1125,6 +1125,7 @@
   },
   "blog": {
     "title": "Blog",
+    "heroTitle": "Stories, data and news from the parks",
     "badge": "park.fan Blog",
     "description": "Trip reports, data dives, and theme-park news from the park.fan team.",
     "intro": "Honest trip reports, wait-time data dives, and concise news from the parks we cover. Written by humans who stand in lines so you don't have to.",

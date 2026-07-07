@@ -1125,6 +1125,7 @@
   },
   "blog": {
     "title": "Blog",
+    "heroTitle": "Verhalen, data en nieuws uit de parken",
     "badge": "park.fan Blog",
     "description": "Reisverslagen, data-analyses en pretpark-nieuws van het park.fan-team.",
     "intro": "Eerlijke reisverslagen, wachttijd-analyses en beknopte updates uit de parken die we volgen.",
