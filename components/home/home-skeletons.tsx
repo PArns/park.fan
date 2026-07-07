@@ -46,7 +46,7 @@ function StatsCardSkeleton() {
 function ParkCardSkeleton() {
   return (
     <article
-      className="relative flex min-h-[360px] flex-col overflow-hidden rounded-[20px] border border-black/[0.12] dark:border-white/10"
+      className="relative flex min-h-[360px] flex-col overflow-hidden rounded-[20px]"
       style={{ boxShadow: 'var(--pk-card-shadow)' }}
     >
       <div className="absolute inset-0 z-0">

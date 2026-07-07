@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 export function AttractionCardSkeleton() {
   return (
     <article
-      className="relative isolate flex min-h-[420px] flex-col overflow-hidden rounded-[20px] border border-black/[0.12] dark:border-white/10"
+      className="relative isolate flex min-h-[420px] flex-col overflow-hidden rounded-[20px]"
       style={{ boxShadow: 'var(--pk-card-shadow)' }}
     >
       {/* Background */}
