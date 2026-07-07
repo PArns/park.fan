@@ -55,7 +55,11 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           priority
           placeholder="blur"
           blurDataURL={PARK_BLUR_DATA_URL}
-          className="object-cover"
+          // Anchor the image to its top edge instead of centering it: the strip is shorter than the
+          // scaled image, so `object-cover` has to crop somewhere. Centered cropping ate into the top
+          // of the picture (sky / the ride itself); anchoring to the top keeps that visible and lets
+          // the excess fall off the bottom — which the gradient below already fades into the page.
+          className="object-cover object-top"
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />
