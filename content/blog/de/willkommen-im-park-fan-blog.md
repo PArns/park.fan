@@ -1,5 +1,5 @@
 ---
-title: 'Warum es park.fan gibt — eine Geschichte, die am Märchensee beginnt'
+title: 'Ein Kinderwagen, eine Gondel und eine halbe Million Zeilen Code'
 translationKey: welcome-to-park-fan-blog
 date: '2026-05-20'
 updatedAt: '2026-07-07'
@@ -7,10 +7,10 @@ author: patrick
 mode: published
 featured: true
 excerpt: >-
-  park.fan beginnt nicht mit Code, sondern mit einem Kinderwagen am Märchensee
-  im Phantasialand. Die Geschichte eines Herzensprojekts — und die Antwort auf
-  die Fragen, die jeder Parkbesuch aufwirft: Wann ist der beste Tag? Lohnt sich
-  ein Sonntag? Wie voll wird es wirklich?
+  Manche Projekte beginnen mit einem Businessplan. Dieses begann mit einem
+  Kinderwagen am Märchensee, einer Gondelfahrt durch „1001 Nacht" — und der
+  Frage, ob sich sechzig Minuten Taron-Schlange gerade lohnen. Die Geschichte
+  eines Herzensprojekts, das Parktage lesen lernte.
 tags:
   - meta
   - launch
@@ -22,11 +22,11 @@ coverImage:
   alt: 'park.fan Blog-Launch — Trip Reports · Data · News'
   credit: 'park.fan'
 seo:
-  title: 'Die Geschichte hinter park.fan — Willkommen im Blog'
+  title: 'Die park.fan-Geschichte: vom Märchensee zur Wartezeiten-KI'
   description: >-
-    Vom Kinderwagen am Märchensee im Phantasialand zur Plattform für
-    Live-Wartezeiten und KI-Crowd-Prognosen: die Geschichte hinter park.fan —
-    und die Antworten auf: Wann ist der beste Tag? Wie voll wird der Park?
+    Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
+    liest: die Geschichte von park.fan — und wann sich dein Parkbesuch
+    wirklich lohnt.
   keywords:
     - park.fan Blog
     - park.fan Geschichte
@@ -65,7 +65,7 @@ man musste nur lange genug hinsehen.
 
 Ich wusste damals natürlich nicht, dass dieser See der Anfang von allem
 war. Aber irgendwo zwischen diesen Kulissen hat sich etwas festgesetzt,
-das nie wieder losgelassen hat.
+das mich nie wieder losgelassen hat.
 
 ## „1001 Nacht" — Fahrten, die bleiben
 
@@ -119,7 +119,7 @@ Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
 Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu
 verschwenden — was vermutlich das größte Kompliment ist, das man
 Infrastruktur machen kann. Dazu Open Source, Smart-Home-Adapter und mehr
-Side-Projects, als gut für mich sind; der ganze Kram, der sich auf
+Side-Projects, als mir guttun; der ganze Kram, der sich auf
 [arns.dev](https://arns.dev) und [GitHub](https://github.com/PArns)
 stapelt.
 
@@ -177,7 +177,7 @@ bevor irgendjemand im Auto sitzt: **Wann ist der beste Tag? Lohnt sich
 ein Sonntag? Und wie voll wird es wirklich?**
 
 Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der
-besten Besuchstage — bis zu ein Jahr im Voraus, gefüttert mit
+besten Besuchstage — bis zu einem Jahr im Voraus, gefüttert mit
 Ferienkalendern, Wetterprognosen, Öffnungszeiten und der kompletten
 Wartezeit-Historie des Parks. Der ehrliche Blick in diese Daten räumt
 nebenbei mit ein paar Bauchgefühlen auf: Ein Sonntag im grauen November
