@@ -4,6 +4,14 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Hottest-parks banner: centered layout for a partial heat wave
+
+The homepage heat banner ([`HottestParksSection`](../components/home/hottest-parks-section.tsx))
+switched from a fixed 3-column grid to a **centered flex-wrap** row of fixed-width (`w-72`)
+cards. When only 1–2 parks in DE/FR/IT/NL/BE cross the 35 °C threshold, the cards now stay
+centered instead of left-aligning and leaving an empty trailing column. Three cards still fill
+`max-w-4xl` exactly; the ≥ 35 °C visibility trigger is unchanged.
+
 ## Unreleased – Blog: German-first launch (welcome post live in DE only)
 
 The rewritten founder-story welcome post goes **published for DE**; EN stays draft until the
