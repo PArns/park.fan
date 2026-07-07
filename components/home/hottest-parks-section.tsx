@@ -71,7 +71,10 @@ export async function HottestParksSection({ locale: _locale }: HottestParksSecti
               </div>
             </div>
 
-            <div className="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Flex-wrap (not a fixed grid) so a partial heat wave with only 1–2 qualifying
+                parks stays centered instead of leaving an empty trailing column. Three
+                fixed-width (w-72) cards fill max-w-4xl exactly; fewer just center. */}
+            <div className="mx-auto flex max-w-4xl flex-wrap justify-center gap-4">
               {parks.map((park, i) => {
                 const { icon: WeatherIcon, label, color } = getWeatherConfig(park.weatherCode ?? 0);
                 const country = translateGeoSlug(
@@ -87,7 +90,7 @@ export async function HottestParksSection({ locale: _locale }: HottestParksSecti
                     href={park.href}
                     aria-label={`${park.name} — ${t('viewPark')}`}
                     className={cn(
-                      'group bg-background/70 relative flex flex-col items-center gap-1.5 rounded-2xl border p-6 text-center shadow-sm backdrop-blur-sm transition hover:shadow-lg',
+                      'group bg-background/70 relative flex w-full flex-col items-center gap-1.5 rounded-2xl border p-6 text-center shadow-sm backdrop-blur-sm transition hover:shadow-lg sm:w-72',
                       isTop
                         ? 'border-orange-400/60 ring-1 ring-orange-400/40'
                         : 'border-border/40 hover:border-orange-400/40'
