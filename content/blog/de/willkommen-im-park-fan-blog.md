@@ -90,9 +90,18 @@ mir durch diese Welten glitt.
 Und wenn mein Vater als LKW-Fahrer mal wieder auf Tour war, hat meine
 Mutter kurzerhand das Steuer übernommen: Mit ihr habe ich viele andere
 Parks entdeckt, allen voran den
-[Movie Park](ref:movie-park-germany?bare) — Ausflüge, die genauso zu
-dieser Geschichte gehören wie jede Gondelfahrt. Wenn diese Liebe zu
-Freizeitparks ein Erbe ist, dann ist sie eines von beiden Elternteilen.
+[Movie Park](ref:movie-park-germany?bare) — damals noch Warner Bros.
+Movie World. Dort bin ich im **Lethal Weapon Pursuit** zum ersten Mal in
+meinem Leben Achterbahn gefahren: zwei Streifenwagen-Züge, die sich
+Looping um Looping ein Rennen durch eine dunkle Lagerhalle lieferten —
+Deutschlands einzige Dueling-Achterbahn, später als „Cop Car Chase"
+bekannt und seit 2006 nur noch Legende. Die Bahn gibt es nicht mehr. Die
+Sucht, die sie ausgelöst hat, sehr wohl. Streng genommen ist meine Mutter
+also schuld an allem, was danach kam.
+
+Wenn diese Liebe zu Freizeitparks ein Erbe ist, dann ist sie eines von
+beiden Elternteilen: Papa hat die Märchen beigesteuert — Mama die
+Achterbahnen.
 
 Wenn Menschen fragen, warum park.fan kostenlos ist und bleiben wird, ist
 das die ehrlichste Antwort, die ich habe: Dieser Ort hat mir Erinnerungen
@@ -193,6 +202,16 @@ Oktober etwas völlig anderes ist als ein sonniger Ferien-Samstag im Juli;
 dass Ferienkalender, Wetter, Öffnungszeiten und Jahre an
 Wartezeit-Historie zusammen ein Muster ergeben, das man lesen kann, wenn
 man nur hartnäckig genug hinschaut.
+
+Auf dem Schreibtisch, an dem all diese Nächte stattfanden, liegt heute
+übrigens ein originales **Taron-Laufrad**. Eines von der Bahn,
+wohlgemerkt — nicht das Kinderfahrzeug; diese Klarstellung braucht es
+erstaunlich oft, wenn Besucher davor stehen. Dieses Rad ist tausende
+Runden durch Klugheim gejagt, bevor es bei mir in Rente gehen durfte, und
+es erinnert mich bei jeder nächtlichen Debugging-Session daran, wofür der
+ganze Aufwand eigentlich ist: Irgendwo da draußen fährt gerade eine echte
+Bahn — und irgendwer da draußen will wissen, ob sich die Schlange davor
+lohnt.
 
 Heute ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**
 geworden: Live-Wartezeiten aus über **150 Parks** und **5.000+
