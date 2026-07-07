@@ -103,7 +103,7 @@ export function BlogAttractionLink({
            uses the same sm:min-h-[220px] photo spacer trick to open the 1fr
            middle row; the minmax floor keeps the image area open even when
            there is no background image to trigger the spacer's min-h. */}
-        <div className="grid [grid-template-rows:auto_minmax(220px,1fr)_auto]">
+        <div className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
           <AttractionCard
             attraction={attractionPayload}
             parkPath={park.href}

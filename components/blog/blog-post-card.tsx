@@ -3,6 +3,7 @@ import { BookOpen, Calendar, Clock, Star } from 'lucide-react';
 import { useFormatter, useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
+import { CardPhoto } from '@/components/parks/card-photo';
 import { cn } from '@/lib/utils';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { resolveAuthor } from '@/lib/blog/authors';
@@ -83,10 +84,11 @@ export function BlogPostCard({ post, variant = 'default', className }: BlogPostC
     <Link
       href={`/blog/${slug}` as '/'}
       className={cn(
-        // Each card provides its own subgrid context — auto / 1fr / auto
-        // matches ParkCard's internal layout, the 220px floor opens the
+        // Each card provides its own row tracks. On phones the photo row
+        // collapses to 0 (like ParkCard/AttractionCard) so the card shrinks to
+        // just its two glass panels; from `sm` up the 220px floor opens the
         // photo row even when the surrounding grid has no row tracks.
-        'grid [grid-template-rows:auto_minmax(220px,1fr)_auto]',
+        'grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]',
         className
       )}
     >
@@ -94,47 +96,24 @@ export function BlogPostCard({ post, variant = 'default', className }: BlogPostC
         className="group relative isolate row-span-3 grid cursor-pointer [grid-template-rows:subgrid] overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1"
         style={{ boxShadow: 'var(--pk-card-shadow)' }}
       >
-        {/* Photo — z-0, mirrors ParkCard's seam-reflection effect */}
+        {/* Photo — z-0. Shared CardPhoto, identical to ParkCard/AttractionCard:
+            hidden below `sm` so the card collapses on phones, placeholder +
+            fade-in for a smooth load. Portrait editorial covers crop from the
+            center (not the top) so the subject isn't sliced down to sky. */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {cover ? (
-            <div className="pk-photo-zoom relative h-full w-full overflow-hidden">
-              <div className="absolute inset-x-0 bottom-0" style={{ top: '50px' }}>
-                <Image
-                  src={cover}
-                  alt={frontmatter.coverImage?.alt ?? frontmatter.title}
-                  fill
-                  className="object-cover object-top"
-                  sizes={
-                    isFeature
-                      ? '(max-width: 1024px) 100vw, 1024px'
-                      : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                  }
-                  priority={isFeature}
-                />
-                <div
-                  className="pointer-events-none absolute inset-0"
-                  style={{
-                    transform: 'scaleY(-1)',
-                    transformOrigin: 'center top',
-                    maskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, black 0%, transparent 16%)',
-                  }}
-                >
-                  <Image
-                    src={cover}
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    className="object-cover object-top"
-                    sizes={
-                      isFeature
-                        ? '(max-width: 1024px) 100vw, 1024px'
-                        : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                    }
-                  />
-                </div>
-              </div>
-            </div>
+            <CardPhoto
+              src={cover}
+              alt={frontmatter.coverImage?.alt ?? frontmatter.title}
+              hideOnMobile
+              objectPosition="center"
+              priority={isFeature}
+              sizes={
+                isFeature
+                  ? '(max-width: 1024px) 100vw, 1024px'
+                  : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+              }
+            />
           ) : (
             <div className="from-muted to-card h-full w-full bg-gradient-to-br" />
           )}
