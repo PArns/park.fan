@@ -117,6 +117,28 @@ prachtvoll und viel zu gut für Freizeitpark-Gastronomie — und spätestens
 dann versteht man, warum sich dieser Park „Europas Most Immersive Theme
 Park" nennen darf, ohne dass es nach Marketing klingt.
 
+## Orlando, Mai 2026 — einmal im Leben
+
+Und dann war da noch dieser eine große Haken auf der Lebensliste. Im Mai
+2026 sind wir endlich nach Orlando geflogen — **Walt Disney World,
+Universal und SeaWorld**, das volle Programm, die „einmal im
+Leben"-Reise, von der ich seit Kindertagen geträumt habe. Es ist ein
+eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte
+später vor dem Cinderella Castle im
+[Magic Kingdom](ref:magic-kingdom-park?bare) steht: alles größer, alles
+lauter, alles weiter weg von Brühl — und doch exakt dasselbe Kribbeln wie
+damals in der Gondel. Dazwischen
+[Epic Universe](ref:universal-epic-universe?bare) in seinem ersten
+Sommer, Achterbahnen bei
+[Islands of Adventure](ref:universal-islands-of-adventure?bare), Orcas
+und Manta bei [SeaWorld](ref:seaworld-orlando?bare) — zwei Wochen, die
+sich angefühlt haben wie die Einlösung eines sehr alten Versprechens an
+mich selbst.
+
+Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit — beides
+landet in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es
+war jedes einzelne Jahr Vorfreude wert.
+
 ## Das zweite Ich: der Entwickler
 
 Parallel zu alldem gab es immer ein zweites Ich — eines, das seit über
@@ -244,7 +266,9 @@ in drei Formaten:
 **Reiseberichte.** Lang, mit Haltung, mit Fotos — und mit echten Daten aus
 genau dem Park, der gerade besucht wurde. Kein „war schön", sondern:
 „[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope
-Drop — das war der Plan, das hat funktioniert, das ging baden."
+Drop — das war der Plan, das hat funktioniert, das ging baden." Die
+Orlando-Reise von oben macht den Anfang: Disney World, Universal und
+SeaWorld, Bilder inklusive.
 
 **Daten-Deep-Dives.** Was verrät die Wartezeit-Historie eines Parks
 _wirklich_? Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am
