@@ -8,8 +8,9 @@ mode: published
 featured: true
 excerpt: >-
   park.fan beginnt nicht mit Code, sondern mit einem Kinderwagen am Märchensee
-  im Phantasialand. Die Geschichte hinter der Plattform — und was dieser Blog
-  werden soll: Reiseberichte, Daten-Deep-Dives und ehrliche Park-News.
+  im Phantasialand. Die Geschichte eines Herzensprojekts — und die Antwort auf
+  die Fragen, die jeder Parkbesuch aufwirft: Wann ist der beste Tag? Lohnt sich
+  ein Sonntag? Wie voll wird es wirklich?
 tags:
   - meta
   - launch
@@ -25,13 +26,15 @@ seo:
   description: >-
     Vom Kinderwagen am Märchensee im Phantasialand zur Plattform für
     Live-Wartezeiten und KI-Crowd-Prognosen: die Geschichte hinter park.fan —
-    und was der Blog wird: Reiseberichte, Daten-Analysen, ehrliche Park-News.
+    und die Antworten auf: Wann ist der beste Tag? Wie voll wird der Park?
   keywords:
     - park.fan Blog
     - park.fan Geschichte
     - Freizeitpark Blog
     - Phantasialand Geschichte
     - Maus au Chocolat
+    - bester Tag Freizeitpark
+    - Crowd Kalender
     - Reisebericht Freizeitpark
     - Wartezeiten Analyse
 ---
@@ -43,7 +46,9 @@ denen jede Ecke eine kleine Geschichte erzählt und hinter jeder Biegung
 eine neue Welt darauf wartet, entdeckt zu werden.
 
 Mein Ort liegt in Brühl. Und wer verstehen will, warum es
-[park.fan](/) gibt, muss dort anfangen — lange bevor irgendjemand an
+[park.fan](/) gibt — warum jemand Jahre seines Lebens, unzählige Nächte
+und eine halbe Million Zeilen Code in eine Fanpage über Freizeitparks
+steckt —, der muss dort anfangen. Lange bevor irgendjemand an
 Wartezeiten-Daten dachte.
 
 ## Ein Kinderwagen am Märchensee
@@ -57,6 +62,10 @@ ein Parkbesuch. Es war ein Eintauchen in lebendig gewordene Erzählungen,
 inszeniert mit einer Detailverliebtheit, die einen fast glauben ließ, die
 Figuren könnten im nächsten Augenblick tatsächlich zum Leben erwachen —
 man musste nur lange genug hinsehen.
+
+Ich wusste damals natürlich nicht, dass dieser See der Anfang von allem
+war. Aber irgendwo zwischen diesen Kulissen hat sich etwas festgesetzt,
+das nie wieder losgelassen hat.
 
 ## „1001 Nacht" — Fahrten, die bleiben
 
@@ -74,6 +83,11 @@ deshalb so unendlich kostbar geworden: Sie sind wie kleine Glückslichter,
 die bis heute warm leuchten — sie halten meine Kindheit lebendig, und mit
 ihr die Erinnerung an den Menschen, der damals neben mir durch diese
 Welten glitt.
+
+Wenn Menschen fragen, warum park.fan kostenlos ist und bleiben wird, ist
+das die ehrlichste Antwort, die ich habe: Dieser Ort hat mir Erinnerungen
+geschenkt, die mein Leben geprägt haben. Das hier ist meine Art, etwas
+zurückzugeben.
 
 ## Von 5000er-Mäusen und einer 10.000er-Legende
 
@@ -124,16 +138,81 @@ in Echtzeit verarbeitet, und privat nicht die geringste Ahnung hatte, ob
 sich diese Schlange gerade lohnte — oder ob ich schlicht Lebenszeit gegen
 ein Geländer tauschte.
 
-> „Lass mich mal eben die Wartezeiten tracken." — _drei Jahre und eine
-> halbe Million Code-Zeilen später…_
+> „Lass mich mal eben die Wartezeiten tracken." — _sagte ich. Es wurden
+> drei Jahre._
 
-Geworden ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**:
-Live-Wartezeiten aus über **150 Parks** und **5.000+ Attraktionen**, im
-Minutentakt. Ein eigenes KI-Modell, das den Andrang **bis zu 365 Tage** im
-Voraus sieht — Ferien, Wetter und Schedules schon mitgedacht. Kostenlos,
-ohne Werbung, ohne Konzern, der mitredet. Damit die Zeit im Park für das
-draufgeht, wofür sie da ist: Magie, Erinnerungen — und
-Highscore-Revanchen.
+## Drei Jahre Nächte — wie park.fan wirklich entstand
+
+Was als „mal eben" begann, wuchs sich zu dem aus, was Entwickler ein
+Herzensprojekt nennen und Partnerinnen vermutlich eher „schon wieder
+dieses Park-Ding". Aus einem Skript wurde ein Datensammler, aus dem
+Datensammler eine Pipeline, aus der Pipeline eine Plattform. Dazwischen
+lagen Nächte, in denen ich um zwei Uhr morgens auf Wartezeiten-Kurven
+starrte, weil irgendein Park seine Daten anders meldete als alle anderen;
+Debugging-Sessions, die länger dauerten als mancher Parktag; und dieser
+ganz eigene Moment von Ehrfurcht, wenn ein Modell zum ersten Mal einen
+überfüllten Samstag korrekt vorhersagt, Tage bevor er stattfindet.
+
+Denn das war der eigentliche Herzenswunsch: nicht noch eine Seite, die
+Zahlen anzeigt — sondern ein System, das Parktage **versteht**. Ein
+eigenes KI-Modell, das lernen musste, dass ein verregneter Brückentag im
+Oktober etwas völlig anderes ist als ein sonniger Ferien-Samstag im Juli;
+dass Ferienkalender, Wetter, Öffnungszeiten und Jahre an
+Wartezeit-Historie zusammen ein Muster ergeben, das man lesen kann, wenn
+man nur hartnäckig genug hinschaut.
+
+Heute ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**
+geworden: Live-Wartezeiten aus über **150 Parks** und **5.000+
+Attraktionen**, im Minutentakt. Prognosen, die den Andrang **bis zu 365
+Tage** im Voraus einschätzen. Und weil ich Zahlen grundsätzlich nur
+traue, wenn sie sich beweisen müssen: Das Modell benotet sich selbst.
+Jede Vorhersage wird später gegen die tatsächlich gemessene Wartezeit
+gehalten, und die Trefferquoten stehen offen auf der
+[How-to-Seite](/howto) — schummeln zwecklos.
+
+## Wann ist der beste Tag? Lohnt sich ein Sonntag?
+
+Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange
+bevor irgendjemand im Auto sitzt: **Wann ist der beste Tag? Lohnt sich
+ein Sonntag? Und wie voll wird es wirklich?**
+
+Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der
+besten Besuchstage — bis zu ein Jahr im Voraus, gefüttert mit
+Ferienkalendern, Wetterprognosen, Öffnungszeiten und der kompletten
+Wartezeit-Historie des Parks. Der ehrliche Blick in diese Daten räumt
+nebenbei mit ein paar Bauchgefühlen auf: Ein Sonntag im grauen November
+kann entspannter sein als jeder Dienstag in den NRW-Sommerferien. Ein
+Brückentag ist fast nie eine gute Idee. Und der „Geheimtipp", bei Regen
+zu fahren, funktioniert exakt so lange, bis alle anderen denselben
+Geheimtipp gelesen haben.
+
+Die Antwort ist eben nicht „Sonntage sind voll", sondern: **dieser**
+Sonntag, in **diesem** Park, zu **dieser** Jahreszeit — grün, gelb oder
+rot. Kalender öffnen, Farbe anschauen, entscheiden. Und wenn du schon im
+Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade
+die Ausnahme oder die Regel ist.
+
+## Was park.fan anders macht
+
+Es gibt gute Seiten, die dir zeigen, wie lang die Schlange **jetzt
+gerade** ist. Das können wir auch — im Minutentakt, weltweit. Aber
+park.fan wurde für die Frage **davor** gebaut: _Lohnt es sich überhaupt,
+hinzufahren?_
+
+Deshalb gehen wir ein paar Schritte weiter:
+
+- **Prognosen statt nur Ist-Zustand.** Ein eigenes KI-Modell schaut bis
+  zu 365 Tage nach vorn — nicht nur auf die aktuelle Anzeigetafel.
+- **Der Kalender der besten Tage.** Ferien, Wetter, Schedules und Jahre
+  an Historie, verdichtet zu einer einfachen Antwort: hin oder lieber
+  nicht.
+- **Ehrliche Selbstkontrolle.** Unsere Trefferquoten sind öffentlich —
+  wir messen uns an der Realität, nicht an unserem Marketing.
+- **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am
+  Parkeingang, Öffnungszeiten, Attraktions-Historien — in sechs Sprachen.
+- **Kostenlos, werbefrei, unabhängig.** Kein Konzern, keine Paywall,
+  keine Agenda. Eine Fanpage im besten Wortsinn: gebaut von jemandem, der
+  selbst ansteht.
 
 ## Was dieser Blog werden soll
 
@@ -162,9 +241,7 @@ Drop — das war der Plan, das hat funktioniert, das ging baden."
 
 **Daten-Deep-Dives.** Was verrät die Wartezeit-Historie eines Parks
 _wirklich_? Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am
-ehesten? Und halten unsere Prognosen, was sie versprechen? Die
-Trefferquote liegt offen auf der [How-to-Seite](/howto) — schummeln
-zwecklos.
+ehesten? Und halten unsere Prognosen, was sie versprechen?
 
 **News.** Kurz, ehrlich, ohne SEO-Sermon. Passiert etwas, steht es hier —
 schneller, als du ein Cookie-Banner wegklickst.
@@ -204,8 +281,11 @@ Und weil es einfach sein musste, gibt es jetzt sogar einen
 
 [Mehr Loopings, weniger Stehen — die inoffizielle park.fan-Hymne](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Danke fürs Vorbeischauen. Und jetzt: geh anstehen — aber bitte nur, wenn
-die Daten sagen, dass es sich lohnt.
+Danke, dass du bis hierhin gelesen hast. Dieser Ort — die Plattform, der
+Blog, das alles — ist mein Dankeschön an einen Park am Märchensee, an
+einen Vater in einer Gondel und an jeden einzelnen Menschen, der
+Freizeitparks genauso liebt wie ich. Und jetzt: geh anstehen — aber bitte
+nur, wenn die Daten sagen, dass es sich lohnt.
 
 — Patrick
 
