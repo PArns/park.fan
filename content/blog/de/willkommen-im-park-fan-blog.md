@@ -11,10 +11,12 @@ excerpt: >-
   Frage, ob sich sechzig Minuten Taron-Schlange gerade lohnen. Die Geschichte
   eines Herzensprojekts, das Parktage lesen lernte.
 tags:
-  - meta
-  - launch
   - park-fan
-  - ankuendigung
+  - phantasialand
+  - orlando
+  - wartezeiten
+  - ki-prognosen
+  - hinter-den-kulissen
 category: news
 coverImage:
   src: /blog/images/welcome-cover.svg
@@ -34,6 +36,7 @@ seo:
     - Maus au Chocolat
     - bester Tag Freizeitpark
     - Crowd Kalender
+    - Disney World Orlando
     - Reisebericht Freizeitpark
     - Wartezeiten Analyse
 ---
@@ -119,8 +122,9 @@ Park" nennen darf, ohne dass es nach Marketing klingt.
 
 ## Orlando, Mai 2026 — einmal im Leben
 
-Und dann war da noch dieser eine große Haken auf der Lebensliste. Im Mai
-2026 sind wir endlich nach Orlando geflogen — **Walt Disney World,
+Und dann war da noch dieser eine große Punkt auf der Lebensliste, hinter
+dem noch immer der Haken fehlte. Im Mai 2026 sind wir endlich nach
+Orlando geflogen — **Walt Disney World,
 Universal und SeaWorld**, das volle Programm, die „einmal im
 Leben"-Reise, von der ich seit Kindertagen geträumt habe. Es ist ein
 eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte
@@ -137,12 +141,12 @@ mich selbst.
 
 Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit — beides
 landet in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es
-war jedes einzelne Jahr Vorfreude wert.
+war jedes einzelne Jahr der Vorfreude wert.
 
 ## Das zweite Ich: der Entwickler
 
-Parallel zu alldem gab es immer ein zweites Ich — eines, das seit über
-fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt:
+Parallel zu all diesen Parkjahren gab es immer ein zweites Ich — eines,
+das seit über fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt:
 erst als Head of Software Development bei **CyberGhost**, heute als
 Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
 Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu
@@ -163,9 +167,9 @@ oder anderen Variante kennt: sechzig Minuten
 stoischer Freundlichkeit „ungefähr 45 Minuten" ins Gesicht lügt — und zwei
 Stationen weiter eine halb leere Familienbahn, die Wagen um Wagen ins
 Nichts schickt. Da stand ich also: ein Mensch, der beruflich Datenströme
-in Echtzeit verarbeitet, und privat nicht die geringste Ahnung hatte, ob
-sich diese Schlange gerade lohnte — oder ob ich schlicht Lebenszeit gegen
-ein Geländer tauschte.
+in Echtzeit verarbeitete — und privat nicht die geringste Ahnung hatte,
+ob sich diese Schlange gerade lohnte oder ob ich schlicht Lebenszeit
+gegen ein Geländer tauschte.
 
 > „Lass mich mal eben die Wartezeiten tracken." — _sagte ich. Es wurden
 > drei Jahre._
