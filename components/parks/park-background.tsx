@@ -63,9 +63,11 @@ export function ParkBackground({ imageSrc, alt, fixed = false }: ParkBackgroundP
           sizes={PARK_BG_SIZES}
           fetchPriority="high"
         />
-        {/* Gradient overlay to fade into the background color */}
-        <div className="via-background/20 to-background absolute inset-0 bg-gradient-to-b from-transparent" />
-        <div className="via-background/60 to-background absolute inset-0 translate-y-1/2 bg-gradient-to-b from-transparent" />
+        {/* Gradient overlay to fade into the background color. Kept fully transparent for the top
+            ~80% of the strip so as much of the image shows as possible, then ramped to the solid
+            background only over the bottom portion — the fade lives low instead of starting mid-image. */}
+        <div className="via-background/70 to-background absolute inset-0 bg-gradient-to-b from-transparent from-80% via-90%" />
+        <div className="to-background absolute inset-0 bg-gradient-to-b from-transparent from-90%" />
       </div>
     </div>
   );
