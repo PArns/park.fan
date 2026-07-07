@@ -2,8 +2,8 @@ import { getGeoStructure, getSitemapAttractions } from '@/lib/api/discovery';
 import { getPopularParks } from '@/lib/api/parks';
 import { locales } from '@/i18n/config';
 
-/** Variant slugs like "taron-2" are noindex pages — excluded everywhere. */
-const VARIANT_SLUG_RE = /^.+-\d+$/;
+/** Numbered-suffix slugs like "taron-2" MAY be noindex duplicates — see getAttractionPaths. */
+const VARIANT_SLUG_RE = /^(.+)-\d+$/;
 
 /**
  * Locale-agnostic content paths, shared by the IndexNow submitter and the
@@ -41,15 +41,36 @@ export async function getParkPaths(): Promise<string[]> {
 }
 
 /**
- * Attraction detail paths, excluding noindex variant slugs (e.g. "taron-2").
+ * Attraction detail paths, excluding noindex variant slugs. Mirrors the
+ * attraction page's rule exactly: a numbered-suffix slug (e.g. "playground-2")
+ * is only a noindex duplicate when its base slug exists in the SAME park —
+ * legitimate slugs like "area-51" or "spindeln-nyhet-2026" stay indexable.
  * Transforms the API url (`/v1/parks/.../attractions/<slug>`) to the frontend path.
  */
 export async function getAttractionPaths(): Promise<string[]> {
   const attractions = await getSitemapAttractions();
-  const paths: string[] = [];
+
+  const entries: { parkPath: string; slug: string }[] = [];
+  const slugsByPark = new Map<string, Set<string>>();
   for (const attraction of attractions) {
-    if (VARIANT_SLUG_RE.test(attraction.slug)) continue;
-    paths.push(attraction.url.replace(/^\/v1\/parks\//, '/parks/').replace(/\/attractions\//, '/'));
+    const path = attraction.url
+      .replace(/^\/v1\/parks\//, '/parks/')
+      .replace(/\/attractions\//, '/');
+    const parkPath = path.slice(0, path.lastIndexOf('/'));
+    entries.push({ parkPath, slug: attraction.slug });
+    let slugs = slugsByPark.get(parkPath);
+    if (!slugs) {
+      slugs = new Set();
+      slugsByPark.set(parkPath, slugs);
+    }
+    slugs.add(attraction.slug);
+  }
+
+  const paths: string[] = [];
+  for (const { parkPath, slug } of entries) {
+    const variantMatch = VARIANT_SLUG_RE.exec(slug);
+    if (variantMatch && slugsByPark.get(parkPath)?.has(variantMatch[1])) continue;
+    paths.push(`${parkPath}/${slug}`);
   }
   return paths;
 }

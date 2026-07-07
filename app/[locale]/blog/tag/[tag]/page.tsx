@@ -79,7 +79,7 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
 export default async function BlogTagPage({ params }: TagPageProps) {
   const { locale, tag } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
-  if (!hasPublishedPosts()) notFound();
+  if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
   const canonicalTag = findCanonicalTag(locale as Locale, tag);

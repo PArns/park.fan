@@ -1,14 +1,18 @@
 ---
 role: Gründer von park.fan
 location: Deutschland
-bio: 'Gründer von park.fan. Coaster-Nerd, Datenmensch und ewiger Warteschlangen-Optimierer.'
+bio: 'Gründer von park.fan. Coaster-Junkie seit dem Kinderwagen, Datenmensch aus Berufung.'
 ---
 
-Backend-Developer aus Deutschland, seit 20+ Jahren in Tech und gefühlt 30+ Jahren
-Coaster-süchtig. Der Tag, an dem ich in der Wodan-Schlange merkte, dass ich gar
-nicht wusste, ob sich das Anstehen lohnt, war ungefähr der Tag, an dem park.fan
-entstand.
+Meine Freizeitpark-Geschichte beginnt im Kinderwagen am Märchensee im
+Phantasialand — und die Fahrten durch die legendäre Gondelbahn „1001 Nacht"
+mit meinem Vater haben daraus eine Liebe fürs Leben gemacht. Die andere
+Hälfte von mir hat über 25 Jahre Software gebaut — Entwicklungsleitung bei
+CyberGhost, Engineering bei ExpressVPN — Systeme, auf die sich Millionen
+Menschen verlassen, ohne sie je zu bemerken.
 
-Heute führt die Plattform Live-Daten aus über 150 Freizeitparks zusammen — und
-im Blog schreibe ich über Reiseberichte, Daten-Analysen und alles, was Zahlen
-allein nicht erklären.
+park.fan ist der Ort, an dem beide Hälften zusammengefunden haben:
+Live-Daten aus über 150 Parks und 5.000+ Attraktionen, plus eine KI, die
+den Andrang bis zu einem Jahr im Voraus sieht — damit die Zeit im Park für
+Magie draufgeht, nicht für Geländer. Im Blog schreibe ich Reiseberichte,
+Daten-Analysen und alles, was Zahlen allein nicht erklären.

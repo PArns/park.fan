@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function BlogCategoryPage({ params }: CategoryPageProps) {
   const { locale, path } = await params;
   if (!routing.locales.includes(locale as Locale)) notFound();
-  if (!hasPublishedPosts()) notFound();
+  if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
   const segments = parseCategoryPath(path.join('/'));

@@ -4,6 +4,41 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – Blog: German-first launch (welcome post live in DE only)
+
+The rewritten founder-story welcome post goes **published for DE**; EN stays draft until the
+translations are polished. To make a single-locale launch clean, blog visibility is now
+**locale-scoped** (`hasPublishedPosts(locale?)` in `lib/blog/index.ts`):
+
+- Header/footer nav, blog index, category/tag/author pages and the RSS feed exist **only in
+  locales that actually list posts** — /de/blog is live while /en/blog & co. stay 404 instead
+  of presenting an empty index.
+- `buildPostAlternates` emits only **published** translations (draft URLs 404, hidden ones are
+  unlisted — neither belongs in hreflang); the DE post self-canonicalizes with `x-default` on
+  itself until translations exist.
+- `app/sitemap.ts` blog section iterates only blog-live locales (incl. blog-scoped hreflang
+  alternates for index/category/tag/author entries).
+
+## Unreleased – SEO: hub + attraction pages join the sitemaps
+
+SERP checks (July 2026) showed the missing long-tail surface: queue-times/wartezeiten.app rank
+their per-ride pages for "taron wartezeit"-style queries and country overviews rank for
+"freizeitparks deutschland" — page types park.fan HAS but kept out of the sitemap (old
+crawl-budget decision, explicitly marked "revisit"). Changes — see
+[sitemaps](seo/sitemaps.md):
+
+- `app/sitemap.ts`: continent + country hubs and **multi-park** city hubs added (single-park
+  cities 308 to their park and stay excluded).
+- **NEW `/sitemap-attractions.xml`** (`app/sitemap-attractions.xml/route.ts`, daily ISR):
+  ~5.8k attractions × 6 locales as lean `<loc>`-only entries (full alternates would approach
+  the 50 MB sitemap limit; the pages carry hreflang themselves). Referenced from robots.txt.
+- `lib/content-urls.ts` `getAttractionPaths`: variant filter now mirrors the attraction page
+  exactly — numbered-suffix slugs are only dropped when the base slug exists in the same park
+  (previously over-excluded legit slugs like `spindeln-nyhet-2026`); also fixes the IndexNow
+  URL set.
+
+---
+
 ## Unreleased – SEO: heal re-slugged geo URLs (google.de showed English/no German pages)
 
 The API's umlaut transliteration change re-slugged German cities (`bruhl` → `bruehl`,

@@ -78,12 +78,12 @@ export async function generateMetadata({ params }: BlogIndexPageProps): Promise<
 }
 
 export default async function BlogIndexPage({ params }: BlogIndexPageProps) {
-  // No published posts → the blog doesn't exist for the frontend.
-  if (!hasPublishedPosts()) notFound();
   const { locale } = await params;
   if (!routing.locales.includes(locale as Locale)) {
     return null;
   }
+  // No posts listed for THIS locale → the blog doesn't exist here (yet).
+  if (!hasPublishedPosts(locale as Locale)) notFound();
   setRequestLocale(locale);
 
   const t = await getTranslations('blog');

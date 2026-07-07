@@ -50,7 +50,7 @@ tags:                                                    # drives tag pages + ta
   - launch
 category: news                                           # slash-path, see §4
 coverImage:
-  src: /blog/images/welcome-cover.svg
+  src: /blog/images/welcome-cover.jpg
   alt: 'Cover alt text'
   credit: 'park.fan'
 seo:
@@ -126,6 +126,12 @@ Lange Bio auf Deutsch …
 | `draft`     | no      | no (dev only)     | Work in progress.                  |
 
 Hidden/draft posts also drop out of the category tree and tag cloud counts.
+
+**Visibility is locale-scoped.** A locale shows blog surfaces (nav link, index,
+category/tag/author pages, RSS feed, sitemap entries) only if it lists at least
+one post itself. Publishing e.g. only the DE translation launches /de/blog while
+every other locale stays blog-free (404) — and the post's hreflang lists only
+locales whose translation is actually `published`.
 
 ---
 

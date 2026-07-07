@@ -17,7 +17,7 @@ tags:
   - editor
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
+  src: /blog/images/welcome-cover.jpg
   alt: 'park.fan Editor — Chip-Testpost'
   credit: 'park.fan'
 seo:
@@ -77,7 +77,7 @@ https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb
 
 Zentriertes Bild mit Caption und Alt:
 
-![park.fan Banner | Festliches park.fan Coverbild | center](/blog/images/welcome-cover.svg)
+![park.fan Banner | Festliches park.fan Coverbild | center](/blog/images/welcome-cover.jpg)
 
 Und ein kleines rechtsbündiges inline mit Fließtext:
 

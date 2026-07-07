@@ -1,68 +1,276 @@
 ---
-title: 'park.fan ist da — und wir schreiben jetzt auch'
+title: 'Ein Kinderwagen, eine Gondel und eine halbe Million Zeilen Code'
 translationKey: welcome-to-park-fan-blog
-date: '2026-05-20'
-updatedAt: '2026-05-22'
+date: '2026-07-06'
 author: patrick
-mode: draft
+mode: published
 featured: true
 excerpt: >-
-  Wir starten den park.fan Blog. Reiseberichte, Daten-Deep-Dives und gelegentliches
-  Genöle über schlecht gemanagte Virtual Queues — geschrieben von Menschen, die
-  anstehen, damit du es nicht musst.
+  Manche Projekte beginnen mit einem Businessplan. Dieses begann mit einem
+  Kinderwagen am Märchensee, einer Gondelfahrt durch „1001 Nacht" — und der
+  Frage, ob sich sechzig Minuten Taron-Schlange gerade lohnen. Die Geschichte
+  eines Herzensprojekts, das Parktage lesen lernte.
 tags:
-  - meta
-  - launch
   - park-fan
-  - ankuendigung
+  - phantasialand
+  - orlando
+  - wartezeiten
+  - ki-prognosen
+  - hinter-den-kulissen
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'park.fan Blog-Launch — Trip Reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
-  title: 'Willkommen im park.fan Blog — Reiseberichte, Daten & News'
+  title: 'Die park.fan-Geschichte: vom Märchensee zur Wartezeiten-KI'
   description: >-
-    park.fan hat jetzt einen Blog. Echte Reiseberichte aus Magic Kingdom, Europa-Park
-    und mehr. Daten-Analysen mit Live-Wartezeiten. Park-News kompakt und ehrlich.
+    Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
+    liest: die Geschichte von park.fan — und wann sich dein Parkbesuch
+    wirklich lohnt.
   keywords:
     - park.fan Blog
+    - park.fan Geschichte
     - Freizeitpark Blog
+    - Phantasialand Geschichte
+    - Maus au Chocolat
+    - bester Tag Freizeitpark
+    - Crowd Kalender
+    - Disney World Orlando
     - Reisebericht Freizeitpark
     - Wartezeiten Analyse
-    - Theme Park Tips
 ---
 
-# Kennst du diesen Moment?
+Es gibt Orte, an denen die Zeit stillzustehen scheint — Flecken Erde, an
+denen Fantasie und Wirklichkeit so selbstverständlich ineinanderfließen,
+dass die Sorgen des Alltags für einen Moment einfach verblassen. Orte, an
+denen jede Ecke eine kleine Geschichte erzählt und hinter jeder Biegung
+eine neue Welt darauf wartet, entdeckt zu werden.
 
-Sechzig Minuten [Taron](ref:phantasialand/taron?bare)-Standby. Die Reihe
-kriecht, das Display lügt dir „ungefähr 45 Min." ins Gesicht — und
-ausgerechnet jetzt hörst du zwei Stationen weiter, wie eine halb leere
-[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) Wagen um Wagen
-ins Nichts schickt. **Achtzig Minuten** für einen Coaster. **Acht** für die
-Familienfahrt drei Meter weiter.
+Mein Ort liegt in Brühl. Und wer verstehen will, warum es
+[park.fan](/) gibt — warum jemand Jahre seines Lebens, unzählige Nächte
+und eine halbe Million Zeilen Code in eine Fanpage über Freizeitparks
+steckt —, der muss dort anfangen. Lange bevor irgendjemand an
+Wartezeiten-Daten dachte.
 
-Das ist der Moment. Schlange, Schweiß, dieses leise „Ich tausche hier
-gerade Lebenszeit gegen ein Geländer" — und genau daraus ist
-[park.fan](ref:phantasialand?bare) entstanden.
+## Ein Kinderwagen am Märchensee
 
-> „Lass mich mal eben die Wartezeiten tracken." — _drei Jahre und eine
-> halbe Million Code-Zeilen später…_
+Meine Eltern haben mich als kleines Kind im Kinderwagen um den Märchensee
+im [Phantasialand](ref:phantasialand?bare) geschoben — vorbei an über
+vierzig Märchenwelten, deren liebevoll gebaute Kulissen und bewegliche
+Animatronics ganze Geschichten erzählten, ohne ein einziges Wort zu
+brauchen. Rotkäppchen, Aschenputtel, Ali Baba: Für mich war das nie bloß
+ein Parkbesuch. Es war ein Eintauchen in lebendig gewordene Erzählungen,
+inszeniert mit einer Detailverliebtheit, die einen fast glauben ließ, die
+Figuren könnten im nächsten Augenblick tatsächlich zum Leben erwachen —
+man musste nur lange genug hinsehen.
 
-Geworden ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**:
-Live-Wartezeiten aus über **150 Parks** und **5.000+ Attraktionen**, im
-Minutentakt. Ein eigenes KI-Modell, das den Andrang **bis zu 365 Tage** im
-Voraus sieht — Ferien, Wetter und Schedules schon mitgedacht. Kostenlos,
-keine Ads, kein Konzern, der mitredet.
+Ich wusste damals natürlich nicht, dass dieser See der Anfang von allem
+war. Aber irgendwo zwischen diesen Kulissen hat sich etwas festgesetzt,
+das mich nie wieder losgelassen hat.
 
-Nur eins hat von Anfang an gefehlt: jemand, der diese Zahlen nicht bloß
-ausspuckt, sondern **erzählt**. Dafür ist dieser Blog da. Schön, dass du da
-bist.
+## „1001 Nacht" — Fahrten, die bleiben
 
-## Warum ein Blog?
+Und dann war da die Gondelbahn **„1001 Nacht"**, bis 2009 in Betrieb und
+die erste Themenfahrt dieser Art in Deutschland. Ende der Achtzigerjahre
+gehörte sie zu jedem unserer Familienbesuche fest dazu: meine Eltern und
+ich in einer dieser Gondeln, gemeinsam auf einer Reise, die mit jedem
+Meter tiefer in eine andere Welt führte — durch das wuchtige Drachenmaul
+hinein in die Szenen von Sindbad, Ali Baba und Sherazade, vorbei an
+geheimnisvoll schimmernden Tropfsteinhöhlen, getragen von einer
+Inszenierung, in die man sich hineinfallen lassen konnte wie in ein
+aufgeschlagenes Märchenbuch.
 
-Weil eine Wartezeit ohne Kontext nur ein Gerücht mit Nachkommastelle ist.
-„50 Minuten" — dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
+Mein Vater ist 2019 gestorben. Vielleicht sind mir diese gemeinsamen
+Fahrten gerade deshalb so unendlich kostbar geworden: Sie sind wie kleine
+Glückslichter, die bis heute warm leuchten — sie halten meine Kindheit
+lebendig, und mit ihr die Erinnerung an den Menschen, der damals neben
+mir durch diese Welten glitt.
+
+Und wenn mein Vater als LKW-Fahrer mal wieder auf Tour war, hat meine
+Mutter kurzerhand das Steuer übernommen: Mit ihr habe ich viele andere
+Parks entdeckt, allen voran den
+[Movie Park](ref:movie-park-germany?bare) — damals noch Warner Bros.
+Movie World. Dort bin ich im **Lethal Weapon Pursuit** zum ersten Mal in
+meinem Leben Achterbahn gefahren: zwei Streifenwagen-Züge, die sich
+Looping um Looping ein Rennen durch eine dunkle Lagerhalle lieferten —
+Deutschlands einzige Dueling-Achterbahn, später als „Cop Car Chase"
+bekannt und seit 2006 nur noch Legende. Die Bahn gibt es nicht mehr. Die
+Sucht, die sie ausgelöst hat, sehr wohl. Streng genommen ist meine Mutter
+also schuld an allem, was danach kam.
+
+Wenn diese Liebe zu Freizeitparks ein Erbe ist, dann ist sie eines von
+beiden Elternteilen: Papa hat die Märchen beigesteuert — Mama die
+Achterbahnen.
+
+Wenn Menschen fragen, warum park.fan kostenlos ist und bleiben wird, ist
+das die ehrlichste Antwort, die ich habe: Dieser Ort hat mir Erinnerungen
+geschenkt, die mein Leben geprägt haben. Das hier ist meine Art, etwas
+zurückzugeben.
+
+## Von 5000er-Mäusen und einer 10.000er-Legende
+
+Ich glaube, genau das ist es, was Freizeitparks vermögen, wenn sie mit
+Herzblut gebaut werden: Sie speichern Momente, die ein Leben lang halten —
+und sie hören nie auf, neue hinzuzufügen. Ein frischer Highscore in der
+[Maus au Chocolat](ref:phantasialand/maus-au-chocolat?bare) zaubert mir
+heute noch dasselbe kindliche Grinsen ins Gesicht wie früher — auch wenn
+meine Partnerin die bemerkenswerte Angewohnheit pflegt, mir die
+5000er-Mäuse in exakt dem Augenblick wegzuschnappen, in dem ich sie
+anvisiere, und mich damit Fahrt um Fahrt um den Hausrekord bringt.
+
+Dafür gehört inzwischen ein Triumph mir allein: Nach gefühlt hundert
+Fahrten habe ich sie endlich entdeckt — die **10.000er-Maus im zweiten
+Raum**. Wo genau sie sitzt? Das bleibt, bei allem Verständnis für die
+Frage, mein Geheimnis.
+
+Danach Pancakes und Shakes im **Phenie's** in Wuze Town, fluffig und
+prachtvoll und viel zu gut für Freizeitpark-Gastronomie — und spätestens
+dann versteht man, warum sich dieser Park „Europas Most Immersive Theme
+Park" nennen darf, ohne dass es nach Marketing klingt.
+
+## Orlando, Mai 2026 — einmal im Leben
+
+Und dann war da noch dieser eine große Punkt auf der Lebensliste, hinter
+dem noch immer der Haken fehlte. Im Mai 2026 sind wir endlich nach
+Orlando geflogen — **Walt Disney World,
+Universal und SeaWorld**, das volle Programm, die „einmal im
+Leben"-Reise, von der ich seit Kindertagen geträumt habe. Es ist ein
+eigenartig schönes Gefühl, wenn der Junge vom Märchensee Jahrzehnte
+später vor dem Cinderella Castle im
+[Magic Kingdom](ref:magic-kingdom-park?bare) steht: alles größer, alles
+lauter, alles weiter weg von Brühl — und doch exakt dasselbe Kribbeln wie
+damals in der Gondel. Dazwischen
+[Epic Universe](ref:universal-epic-universe?bare) in seinem ersten
+Sommer, Achterbahnen bei
+[Islands of Adventure](ref:universal-islands-of-adventure?bare), Orcas
+und Manta bei [SeaWorld](ref:seaworld-orlando?bare) — zwei Wochen, die
+sich angefühlt haben wie die Einlösung eines sehr alten Versprechens an
+mich selbst.
+
+Die Bilder davon sortiere ich noch, die Berichte sind in Arbeit — beides
+landet in den kommenden Wochen genau hier im Blog. Nur so viel vorweg: Es
+war jedes einzelne Jahr der Vorfreude wert.
+
+## Das zweite Ich: der Entwickler
+
+Parallel zu all diesen Parkjahren gab es immer ein zweites Ich — eines,
+das seit über fünfundzwanzig Jahren Software baut. Viele dieser Jahre in der VPN-Welt:
+erst als Head of Software Development bei **CyberGhost**, heute als
+Distinguished Software Engineer bei **ExpressVPN**. Systeme, die Millionen
+Menschen gleichzeitig benutzen, ohne je einen Gedanken an sie zu
+verschwenden — was vermutlich das größte Kompliment ist, das man
+Infrastruktur machen kann. Dazu Open Source, Smart-Home-Adapter und mehr
+Side-Projects, als mir guttun; der ganze Kram, der sich auf
+[arns.dev](https://arns.dev) und [GitHub](https://github.com/PArns)
+stapelt.
+
+Zwei Leidenschaften also, die jahrzehntelang friedlich nebeneinanderher
+liefen, ohne sich je ernsthaft zu begegnen.
+
+## Der Moment in der Taron-Schlange
+
+Bis zu diesem einen Nachmittag, den vermutlich jeder Parkfan in der einen
+oder anderen Variante kennt: sechzig Minuten
+[Taron](ref:phantasialand/taron?bare)-Standby, ein Display, das einem mit
+stoischer Freundlichkeit „ungefähr 45 Minuten" ins Gesicht lügt — und zwei
+Stationen weiter eine halb leere Familienbahn, die Wagen um Wagen ins
+Nichts schickt. Da stand ich also: ein Mensch, der beruflich Datenströme
+in Echtzeit verarbeitete — und privat nicht die geringste Ahnung hatte,
+ob sich diese Schlange gerade lohnte oder ob ich schlicht Lebenszeit
+gegen ein Geländer tauschte.
+
+> „Lass mich mal eben die Wartezeiten tracken." — _sagte ich. Es wurden
+> drei Jahre._
+
+## Drei Jahre Nächte — wie park.fan wirklich entstand
+
+Was als „mal eben" begann, wuchs sich zu dem aus, was Entwickler ein
+Herzensprojekt nennen und Partnerinnen vermutlich eher „schon wieder
+dieses Park-Ding". Aus einem Skript wurde ein Datensammler, aus dem
+Datensammler eine Pipeline, aus der Pipeline eine Plattform. Dazwischen
+lagen Nächte, in denen ich um zwei Uhr morgens auf Wartezeiten-Kurven
+starrte, weil irgendein Park seine Daten anders meldete als alle anderen;
+Debugging-Sessions, die länger dauerten als mancher Parktag; und dieser
+ganz eigene Moment von Ehrfurcht, wenn ein Modell zum ersten Mal einen
+überfüllten Samstag korrekt vorhersagt, Tage bevor er stattfindet.
+
+Denn das war der eigentliche Herzenswunsch: nicht noch eine Seite, die
+Zahlen anzeigt — sondern ein System, das Parktage **versteht**. Ein
+eigenes KI-Modell, das lernen musste, dass ein verregneter Brückentag im
+Oktober etwas völlig anderes ist als ein sonniger Ferien-Samstag im Juli;
+dass Ferienkalender, Wetter, Öffnungszeiten und Jahre an
+Wartezeit-Historie zusammen ein Muster ergeben, das man lesen kann, wenn
+man nur hartnäckig genug hinschaut.
+
+Auf dem Schreibtisch, an dem all diese Nächte stattfanden, liegt heute
+übrigens ein originales **Taron-Laufrad**. Eines von der Bahn,
+wohlgemerkt — nicht das Kinderfahrzeug; diese Klarstellung braucht es
+erstaunlich oft, wenn Besucher davor stehen. Dieses Rad ist tausende
+Runden durch Klugheim gejagt, bevor es bei mir in Rente gehen durfte, und
+es erinnert mich bei jeder nächtlichen Debugging-Session daran, wofür der
+ganze Aufwand eigentlich ist: Irgendwo da draußen fährt gerade eine echte
+Bahn — und irgendwer da draußen will wissen, ob sich die Schlange davor
+lohnt.
+
+Heute ist daraus ein **Echtzeit-Nervensystem für Freizeitparks**
+geworden: Live-Wartezeiten aus über **150 Parks** und **5.000+
+Attraktionen**, im Minutentakt. Prognosen, die den Andrang **bis zu 365
+Tage** im Voraus einschätzen. Und weil ich Zahlen grundsätzlich nur
+traue, wenn sie sich beweisen müssen: Das Modell benotet sich selbst.
+Jede Vorhersage wird später gegen die tatsächlich gemessene Wartezeit
+gehalten, und die Trefferquoten stehen offen auf der
+[How-to-Seite](/howto) — schummeln zwecklos.
+
+## Wann ist der beste Tag? Lohnt sich ein Sonntag?
+
+Es sind immer dieselben drei Fragen, die ein Parkbesuch aufwirft, lange
+bevor irgendjemand im Auto sitzt: **Wann ist der beste Tag? Lohnt sich
+ein Sonntag? Und wie voll wird es wirklich?**
+
+Genau dafür ist park.fan gebaut. Jede Parkseite hat einen Kalender der
+besten Besuchstage — bis zu einem Jahr im Voraus, gefüttert mit
+Ferienkalendern, Wetterprognosen, Öffnungszeiten und der kompletten
+Wartezeit-Historie des Parks. Der ehrliche Blick in diese Daten räumt
+nebenbei mit ein paar Bauchgefühlen auf: Ein Sonntag im grauen November
+kann entspannter sein als jeder Dienstag in den NRW-Sommerferien. Ein
+Brückentag ist fast nie eine gute Idee. Und der „Geheimtipp", bei Regen
+zu fahren, funktioniert exakt so lange, bis alle anderen denselben
+Geheimtipp gelesen haben.
+
+Die Antwort ist eben nicht „Sonntage sind voll", sondern: **dieser**
+Sonntag, in **diesem** Park, zu **dieser** Jahreszeit — grün, gelb oder
+rot. Kalender öffnen, Farbe anschauen, entscheiden. Und wenn du schon im
+Park stehst, zeigen dir die Live-Daten, ob die Schlange vor dir gerade
+die Ausnahme oder die Regel ist.
+
+## Was park.fan anders macht
+
+Es gibt gute Seiten, die dir zeigen, wie lang die Schlange **jetzt
+gerade** ist. Das können wir auch — im Minutentakt, weltweit. Aber
+park.fan wurde für die Frage **davor** gebaut: _Lohnt es sich überhaupt,
+hinzufahren?_
+
+Deshalb gehen wir ein paar Schritte weiter:
+
+- **Prognosen statt nur Ist-Zustand.** Ein eigenes KI-Modell schaut bis
+  zu 365 Tage nach vorn — nicht nur auf die aktuelle Anzeigetafel.
+- **Der Kalender der besten Tage.** Ferien, Wetter, Schedules und Jahre
+  an Historie, verdichtet zu einer einfachen Antwort: hin oder lieber
+  nicht.
+- **Ehrliche Selbstkontrolle.** Unsere Trefferquoten sind öffentlich —
+  wir messen uns an der Realität, nicht an unserem Marketing.
+- **Alles an einem Ort.** Wartezeiten, Crowd-Level, Wetter am
+  Parkeingang, Öffnungszeiten, Attraktions-Historien — in sechs Sprachen.
+- **Kostenlos, werbefrei, unabhängig.** Kein Konzern, keine Paywall,
+  keine Agenda. Eine Fanpage im besten Wortsinn: gebaut von jemandem, der
+  selbst ansteht.
+
+## Was dieser Blog werden soll
+
+Eine Wartezeit ohne Kontext ist nur ein Gerücht mit Nachkommastelle.
+„50 Minuten" — dreimal dieselbe Zahl, dreimal eine völlig andere
+Geschichte:
 
 - **50 Minuten** für ein **Flat Ride**? Glatte Zeitverschwendung. In der
   Spanne wären drei echte Coaster drin gewesen.
@@ -75,30 +283,27 @@ Weil eine Wartezeit ohne Kontext nur ein Gerücht mit Nachkommastelle ist.
   ein Jahr nach Eröffnung? Entweder Sahnetag — oder die Massen haben sich
   endlich verlaufen.
 
-Die Zahl steht im Diagramm. Die Geschichte dahinter steht hier — samt
-klarer Ansage, ob du jubeln oder fluchen solltest.
-
-## Was hier landet
+Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier —
+in drei Formaten:
 
 **Reiseberichte.** Lang, mit Haltung, mit Fotos — und mit echten Daten aus
 genau dem Park, der gerade besucht wurde. Kein „war schön", sondern:
-„[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope Drop
-— das war der Plan, das hat funktioniert, das ging baden." Der erste landet
-nächste Woche hier.
+„[Magic Kingdom](ref:magic-kingdom-park?bare), 15. Mai, 09:08 Uhr Rope
+Drop — das war der Plan, das hat funktioniert, das ging baden." Die
+Orlando-Reise von oben macht den Anfang: Disney World, Universal und
+SeaWorld, Bilder inklusive.
 
 **Daten-Deep-Dives.** Was verrät die Wartezeit-Historie eines Parks
 _wirklich_? Wann lohnt sich [Taron](ref:phantasialand/taron?bare) am
-ehesten? Ab welcher Stunde kippt ein 4. Juli im Magic Kingdom ins
-Unfahrbare? Und halten unsere Prognosen, was sie versprechen? (Die
-Trefferquote liegt offen — schummeln zwecklos.)
+ehesten? Und halten unsere Prognosen, was sie versprechen?
 
 **News.** Kurz, ehrlich, ohne SEO-Sermon. Passiert etwas, steht es hier —
 schneller, als du ein Cookie-Banner wegklickst.
 
 Und das Schönste: Die Beiträge **leben**. Charts, Karten und Wartezeiten
-ziehen direkt aus park.fan — was du liest, macht der Park gerade wirklich.
-Keine Screenshots, die schon tot waren, als sie entstanden. Die beiden von
-oben, live und ungeschönt:
+ziehen direkt aus park.fan — was du liest, macht der Park in diesem Moment
+wirklich. Die beiden Hauptdarsteller dieser Geschichte, live und
+ungeschönt:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
@@ -110,34 +315,43 @@ jetzt am [Phantasialand](ref:phantasialand?bare)-Eingang:
 
 ```
 
-## Wer schreibt das?
+## Wer hier schreibt
 
-Ich, **Patrick** (tipp oben auf meinen Namen, dann landest du auf meinem
-Profil) — Backend-Developer aus Deutschland, seit 20+ Jahren in Tech und
-gefühlt 30+ Jahren coastersüchtig. Der Moment in der Wodan-Schlange, in dem
-ich dachte „eigentlich weiß ich gar nicht, ob sich das hier gerade lohnt",
-war ungefähr die Geburtsstunde von park.fan. Mehr Tech- und
-Side-Project-Kram auf [arns.dev](https://arns.dev).
+Ich, **Patrick** — tipp oben auf meinen Namen, dann landest du auf meinem
+Profil. Backend-Developer aus Deutschland, Coaster-Junkie seit dem
+Kinderwagen, Datenmensch aus Berufung. Mehr Tech- und Side-Project-Kram
+auf [arns.dev](https://arns.dev).
 
-Und damit das nicht nach leerem Versprechen klingt: Unser Modell benotet
-sich selbst. Jede Vorhersage wird gegen die echte, später gemessene
-Wartezeit gehalten — und die Trefferquoten stehen offen auf der
-[How-to-Seite](/howto).
+## Kein Werbeflyer. Versprochen.
 
-## Eine Sache noch
+Dieser Blog ist und bleibt genau das nicht. park.fan kostet nichts, hat
+keine Werbung und gehört niemandem außer der Neugier. Wird ein Park mies
+gemanagt, schreiben wir es. Ist eine App schlechter als die offizielle,
+sagen wir auch das. Du hast ein Thema, das dich juckt? Schreib mir — die
+E-Mail steht im [Impressum](/impressum).
 
-Dieser Blog ist und bleibt **kein Werbeflyer**. park.fan kostet nichts, hat
-keine Ads, gehört niemandem außer der Neugier. Wird ein Park mies gemanagt,
-schreiben wir's. Ist eine App schlechter als die offizielle, sagen wir's
-auch. Du hast ein Thema, das dich juckt? Schreib mir — die E-Mail steht im
-[Impressum](/impressum).
-
-Und weil es einfach sein musste, gibt es jetzt sogar einen **park.fan-Song**.
-Ja, im Ernst:
+Und weil es einfach sein musste, gibt es jetzt sogar einen
+**park.fan-Song**. Ja, im Ernst:
 
 [Mehr Loopings, weniger Stehen — die inoffizielle park.fan-Hymne](https://suno.com/song/1b686ccc-85d3-465c-b69a-7eac1dbd5acb)
 
-Danke fürs Vorbeischauen. Und jetzt: geh anstehen — aber bitte nur, wenn
-die Daten sagen, dass es sich lohnt.
+Danke, dass du bis hierhin gelesen hast. Dieser Ort — die Plattform, der
+Blog, das alles — ist mein Dankeschön an einen Park am Märchensee, an
+Eltern, die einen kleinen Jungen immer wieder dorthin mitgenommen haben,
+an einen Vater in einer Gondel — und an jeden einzelnen Menschen, der
+Freizeitparks genauso liebt wie ich. Und jetzt: geh anstehen — aber bitte
+nur, wenn die Daten sagen, dass es sich lohnt.
 
 — Patrick
+
+_P.S.: Ja, die 10.000er-Maus im zweiten Raum der Maus au Chocolat
+existiert wirklich. Nein, ich verrate nicht, wo sie sitzt — such selbst.
+Und solltest du unterwegs eine 5000er sehen: Finger weg, die brauche ich
+für die Revanche._
+
+_P.P.S.: An Silas aka [Parkfan95](https://parkfan95.de): Ich hatte die
+Domain park.fan ehrlich schon gekauft, bevor du dich von EPFan95 in
+Parkfan95 umbenannt hast — reiner Zufall, versprochen. Und an alle, die
+eigentlich zu ihm wollten und stattdessen hier gelandet sind:
+Entschuldigung! Einmal rüber zu [parkfan95.de](https://parkfan95.de) —
+ein Besuch lohnt sich._
