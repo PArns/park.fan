@@ -62,7 +62,33 @@ export function BlogPostHero({ post, currentLocale, availableTranslations }: Blo
           {frontmatter.excerpt}
         </p>
 
-        <div className="border-border/60 mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t pt-5">
+        {/* Mobile: one compact meta line — author name inline (no avatar, no bio)
+            so the header card stays short on phones. */}
+        <div className="border-border/60 text-muted-foreground mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 border-t pt-4 text-xs sm:hidden">
+          {authorHref ? (
+            <Link
+              href={authorHref}
+              className="text-foreground font-semibold underline-offset-4 hover:underline"
+            >
+              {author.name}
+            </Link>
+          ) : (
+            <span className="text-foreground font-semibold">{author.name}</span>
+          )}
+          <span className="inline-flex items-center gap-1">
+            <Calendar className="h-3.5 w-3.5" />
+            <time dateTime={frontmatter.date}>
+              {f.dateTime(date, { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <Clock className="h-3.5 w-3.5" />
+            {t('readingTime', { minutes: readingTimeMinutes })}
+          </span>
+        </div>
+
+        {/* ≥ sm: full byline with avatar + bio, meta on the right */}
+        <div className="border-border/60 mt-6 hidden flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t pt-5 sm:flex">
           {authorHref ? (
             <Link
               href={authorHref}
