@@ -1,8 +1,7 @@
 ---
 title: 'Ein Kinderwagen, eine Gondel und eine halbe Million Zeilen Code'
 translationKey: welcome-to-park-fan-blog
-date: '2026-05-20'
-updatedAt: '2026-07-07'
+date: '2026-07-06'
 author: patrick
 mode: published
 featured: true

@@ -1,8 +1,7 @@
 ---
 title: 'Why park.fan exists — a story that starts at a fairy-tale lake'
 translationKey: welcome-to-park-fan-blog
-date: '2026-05-20'
-updatedAt: '2026-07-07'
+date: '2026-07-06'
 author: patrick
 mode: draft
 featured: true
