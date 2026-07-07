@@ -1125,6 +1125,7 @@
   },
   "blog": {
     "title": "Blog",
+    "heroTitle": "Geschichten, Daten und News aus den Parks",
     "badge": "park.fan Blog",
     "description": "Reiseberichte, Daten-Deep-Dives und Park-News vom park.fan-Team.",
     "intro": "Ehrliche Reiseberichte, Wartezeit-Analysen und knappe News aus den Parks, die wir abdecken. Geschrieben von Menschen, die anstehen, damit du es nicht musst.",
