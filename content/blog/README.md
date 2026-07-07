@@ -50,7 +50,7 @@ tags:                                                    # drives tag pages + ta
   - launch
 category: news                                           # slash-path, see §4
 coverImage:
-  src: /blog/images/welcome-cover.svg
+  src: /blog/images/welcome-cover.jpg
   alt: 'Cover alt text'
   credit: 'park.fan'
 seo:

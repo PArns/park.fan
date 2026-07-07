@@ -19,9 +19,9 @@ tags:
   - hinter-den-kulissen
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'park.fan Blog-Launch — Trip Reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: 'Die park.fan-Geschichte: vom Märchensee zur Wartezeiten-KI'
   description: >-
@@ -348,3 +348,10 @@ _P.S.: Ja, die 10.000er-Maus im zweiten Raum der Maus au Chocolat
 existiert wirklich. Nein, ich verrate nicht, wo sie sitzt — such selbst.
 Und solltest du unterwegs eine 5000er sehen: Finger weg, die brauche ich
 für die Revanche._
+
+_P.P.S.: An Silas aka [Parkfan95](https://parkfan95.de): Ich hatte die
+Domain park.fan ehrlich schon gekauft, bevor du dich von EPFan95 in
+Parkfan95 umbenannt hast — reiner Zufall, versprochen. Und an alle, die
+eigentlich zu ihm wollten und stattdessen hier gelandet sind:
+Entschuldigung! Einmal rüber zu [parkfan95.de](https://parkfan95.de) —
+ein Besuch lohnt sich._

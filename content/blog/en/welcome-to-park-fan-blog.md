@@ -19,9 +19,9 @@ tags:
   - behind-the-scenes
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'park.fan blog launch — Trip reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Velocicoaster loop in front of Hogwarts castle — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: 'The park.fan Story: from a Fairy-Tale Lake to a Wait-Time AI'
   description: >-
@@ -335,3 +335,9 @@ _P.S.: Yes, the 10,000-point mouse in the second room of Maus au Chocolat
 really exists. No, I won't tell you where it sits — go find it yourself.
 And should you spot a 5,000-point mouse along the way: hands off, I need
 that one for the rematch._
+
+_P.P.S.: To Silas aka [Parkfan95](https://parkfan95.de): honestly, I
+bought the park.fan domain before you renamed yourself from EPFan95 to
+Parkfan95 — pure coincidence, promise. And to everyone who was actually
+looking for him and ended up here instead: sorry! Head over to
+[parkfan95.de](https://parkfan95.de) — well worth the visit._

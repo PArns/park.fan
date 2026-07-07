@@ -20,9 +20,9 @@ tags:
   - entre-bastidores
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'Lanzamiento del blog park.fan — Trip reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Looping del Velocicoaster frente al castillo de Hogwarts — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: 'La historia de park.fan: del lago de cuentos a la IA de colas'
   description: >-
@@ -348,3 +348,9 @@ _P.D.: Sí, el ratón de 10.000 puntos de la segunda sala de Maus au
 Chocolat existe de verdad. No, no diré dónde está — búscalo tú. Y si por
 el camino ves uno de 5000: ni tocarlo, que lo necesito para la
 revancha._
+
+_P.D. 2: A Silas alias [Parkfan95](https://parkfan95.de): de verdad que
+compré el dominio park.fan antes de que te renombraras de EPFan95 a
+Parkfan95 — pura coincidencia, prometido. Y a todos los que en realidad
+lo buscaban a él y han acabado aquí: ¡perdón! Pasaos por
+[parkfan95.de](https://parkfan95.de) — merece la pena._

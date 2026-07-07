@@ -19,9 +19,9 @@ tags:
   - achter-de-schermen
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'park.fan blog-launch — Trip reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Velocicoaster-looping voor het kasteel van Zweinstein — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: 'Het verhaal achter park.fan: van sprookjesmeer tot wachttijden-AI'
   description: >-
@@ -340,3 +340,9 @@ waard is.
 _P.S.: Ja, de 10.000-punten-muis in de tweede ruimte van Maus au Chocolat
 bestaat echt. Nee, ik verklap niet waar ze zit — zoek zelf. En zie je
 onderweg een 5000-muis: afblijven, die heb ik nodig voor de revanche._
+
+_P.P.S.: Aan Silas aka [Parkfan95](https://parkfan95.de): ik had het
+domein park.fan eerlijk al gekocht voordat jij jezelf van EPFan95 in
+Parkfan95 omdoopte — puur toeval, beloofd. En aan iedereen die eigenlijk
+naar hem op zoek was en hier is beland: sorry! Even doorklikken naar
+[parkfan95.de](https://parkfan95.de) — een bezoek waard._

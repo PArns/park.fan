@@ -20,9 +20,9 @@ tags:
   - coulisses
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'Lancement du blog park.fan — Trip reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Looping du Velocicoaster devant le château de Poudlard — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: "L'histoire de park.fan : du lac aux contes à l'IA des files"
   description: >-
@@ -356,3 +356,9 @@ _P.-S. : Oui, la souris à 10 000 points dans la deuxième salle de Maus au
 Chocolat existe vraiment. Non, je ne dirai pas où elle se cache —
 cherchez vous-même. Et si vous croisez une souris à 5000 en chemin : pas
 touche, il me la faut pour la revanche._
+
+_P.-P.-S. : À Silas alias [Parkfan95](https://parkfan95.de) : j'avais
+honnêtement acheté le domaine park.fan avant que tu ne te rebaptises
+d'EPFan95 en Parkfan95 — pure coïncidence, promis. Et à tous ceux qui le
+cherchaient en réalité et ont atterri ici : pardon ! Filez donc sur
+[parkfan95.de](https://parkfan95.de) — le détour en vaut la peine._

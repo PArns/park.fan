@@ -20,9 +20,9 @@ tags:
   - dietro-le-quinte
 category: news
 coverImage:
-  src: /blog/images/welcome-cover.svg
-  alt: 'Lancio del blog park.fan — Trip reports · Data · News'
-  credit: 'park.fan'
+  src: /blog/images/welcome-cover.jpg
+  alt: 'Loop del Velocicoaster davanti al castello di Hogwarts — Islands of Adventure, Orlando'
+  credit: 'Patrick Arns'
 seo:
   title: "La storia di park.fan: dal lago delle fiabe all'IA delle code"
   description: >-
@@ -352,3 +352,9 @@ _P.S.: Sì, il topo da 10.000 punti nella seconda sala di Maus au
 Chocolat esiste davvero. No, non dirò dove si trova — cercalo tu. E se
 lungo la strada vedi un topo da 5000: giù le mani, mi serve per la
 rivincita._
+
+_P.P.S.: A Silas alias [Parkfan95](https://parkfan95.de): giuro che
+avevo comprato il dominio park.fan prima che tu ti ribattezzassi da
+EPFan95 a Parkfan95 — pura coincidenza, promesso. E a tutti quelli che
+in realtà cercavano lui e sono finiti qui: scusate! Fate un salto su
+[parkfan95.de](https://parkfan95.de) — ne vale la pena._
