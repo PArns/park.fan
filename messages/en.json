@@ -674,6 +674,7 @@
       }
     },
     "h1Suffix": "Live Wait Time",
+    "intro": "Current wait time for {attraction} at {park} – live, updated every minute. Follow the live status, today's history and typical peak hours to avoid long queues.",
     "headliner": {
       "title": "Headliner",
       "description": "Must-see attraction at this park"
@@ -947,7 +948,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} at {park} – Live Wait Times & Status",
-      "metaDescriptionTemplate": "Live wait times and predictions for {attraction} at {park}. Check queue data and crowd levels."
+      "metaDescriptionTemplate": "Live wait times and predictions for {attraction} at {park}. Check queue data and crowd levels.",
+      "keywordWaitTime": "wait times"
     },
     "continent": {
       "titleTemplate": "Theme Parks in {location}: Wait Times, Map & Overview",

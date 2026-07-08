@@ -674,6 +674,7 @@
       }
     },
     "h1Suffix": "Temps d'attente en direct",
+    "intro": "Temps d'attente actuel pour {attraction} à {park} – en direct, mis à jour chaque minute. Suivez le statut en direct, l'historique du jour et les heures d'affluence pour éviter les longues files.",
     "headliner": {
       "title": "Headliner",
       "description": "Attraction incontournable de ce parc"
@@ -947,7 +948,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",
-      "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence."
+      "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence.",
+      "keywordWaitTime": "temps d'attente"
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",

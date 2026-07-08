@@ -674,6 +674,7 @@
       }
     },
     "h1Suffix": "Aktuelle Wartezeit",
+    "intro": "Aktuelle Wartezeit für {attraction} im {park} – live und im Minutentakt. Verfolge den Live-Status, den heutigen Verlauf und typische Stoßzeiten, um lange Wartezeiten zu vermeiden.",
     "headliner": {
       "title": "Headliner",
       "description": "Highlight-Attraktion dieses Parks"
@@ -947,7 +948,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
-      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang.",
+      "keywordWaitTime": "Wartezeit"
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",

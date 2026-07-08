@@ -674,6 +674,7 @@
       }
     },
     "h1Suffix": "Tempo di attesa in diretta",
+    "intro": "Tempo di attesa attuale per {attraction} a {park} – in diretta, aggiornato ogni minuto. Segui lo stato in diretta, l'andamento di oggi e gli orari di punta per evitare lunghe code.",
     "todayChart": {
       "title": "Tempi di attesa oggi",
       "now": "Ora",
@@ -947,7 +948,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza."
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza.",
+      "keywordWaitTime": "tempo di attesa"
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",

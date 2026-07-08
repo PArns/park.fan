@@ -674,6 +674,7 @@
       }
     },
     "h1Suffix": "Live wachttijd",
+    "intro": "Actuele wachttijd voor {attraction} in {park} – live en elke minuut bijgewerkt. Volg de live status, het verloop van vandaag en typische piekuren om lange wachtrijen te vermijden.",
     "headliner": {
       "title": "Headliner",
       "description": "Topattratie van dit park"
@@ -947,7 +948,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
-      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
+      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte.",
+      "keywordWaitTime": "wachttijd"
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",
