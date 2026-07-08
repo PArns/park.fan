@@ -528,6 +528,8 @@
     },
     "h1Suffix": "Temps d'attente en direct",
     "intro": "Temps d'attente en direct pour {park} à {city} — actualisés à la minute. Voyez l'affluence du jour, les attractions ouvertes en ce moment et le meilleur moment pour votre visite — avec prévision d'affluence par IA et les meilleurs jours.",
+    "now": "Maintenant",
+    "forecastToday": "Prévision du jour",
     "stats": {
       "title": "Statistiques historiques des temps d'attente",
       "subtitle": "Basé sur {days} jours de données enregistrées · {years} dernières années",

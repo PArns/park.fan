@@ -34,6 +34,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { ParkHeaderStats } from '@/components/parks/park-header-stats';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
@@ -306,6 +307,17 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
                   </div>
+                  {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
+                      today's predicted crowd (the forecast column loads last per the
+                      loading-priority rule; it shares the calendar query with the best-days
+                      section below). */}
+                  <ParkHeaderStats
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                  />
                   {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
                       text with the exact "Wartezeiten im {park}" phrase + "heute" that the
                       live (client-streamed) grid doesn't provide as static text. */}

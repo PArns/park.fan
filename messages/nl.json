@@ -528,6 +528,8 @@
     },
     "h1Suffix": "Live wachttijden",
     "intro": "Actuele wachttijden in {park} in {city} — live en elke minuut ververst. Zie hoe druk het vandaag is, welke attracties nu open zijn en wanneer je bezoek het meest de moeite waard is — met AI-druktevoorspelling en de beste bezoekdagen.",
+    "now": "Nu",
+    "forecastToday": "Voorspelling vandaag",
     "stats": {
       "title": "Historische wachttijdstatistieken",
       "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",

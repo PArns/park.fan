@@ -19,7 +19,9 @@ const crowdLevelConfig: Record<string, { colorClass: string; Icon: typeof User }
 };
 
 interface CrowdLevelBadgeProps {
-  level: CrowdLevel | null | undefined;
+  // `'closed'` is accepted too — calendar days can be closed, and the config below
+  // renders it as a distinct "closed" chip (used e.g. in the header forecast panel).
+  level: CrowdLevel | 'closed' | null | undefined;
   showLabel?: boolean;
   className?: string;
 }

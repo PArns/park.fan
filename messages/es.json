@@ -528,6 +528,8 @@
     },
     "h1Suffix": "Tiempos de espera en vivo",
     "intro": "Tiempos de espera en directo de {park} en {city} — actualizados al minuto. Mira cuánta gente hay hoy, qué atracciones están abiertas y cuándo merece más la pena tu visita — con previsión de afluencia por IA y los mejores días.",
+    "now": "Ahora",
+    "forecastToday": "Previsión de hoy",
     "stats": {
       "title": "Estadísticas históricas de tiempos de espera",
       "subtitle": "Basado en {days} días de datos registrados · Últimos {years} años",
