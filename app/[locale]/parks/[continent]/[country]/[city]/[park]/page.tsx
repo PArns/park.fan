@@ -289,12 +289,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
             <GlassCard variant="medium">
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="flex-1">
-                  <div className="mb-2 flex flex-wrap items-baseline">
-                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
+                  {/* The wait-times keyword lives INSIDE the h1 (a styled span, not a
+                      sibling) so the target term "{park} Wartezeiten" is part of the
+                      page's primary heading — the single strongest on-page signal for
+                      the "<park> wartezeiten" query. */}
+                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
+                    {parkName}
                     <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
                       – {t('h1Suffix')}
                     </span>
-                  </div>
+                  </h1>
                   <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                     <address className="flex items-center gap-1 not-italic">
                       <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -302,6 +306,12 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
                   </div>
+                  {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
+                      text with the exact "Wartezeiten im {park}" phrase + "heute" that the
+                      live (client-streamed) grid doesn't provide as static text. */}
+                  <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+                    {t('intro', { park: parkName, city: cityName })}
+                  </p>
                 </div>
                 {park.id && <ParkFavoriteButton parkId={park.id} />}
               </div>

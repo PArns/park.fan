@@ -527,6 +527,7 @@
       "away": "entfernt"
     },
     "h1Suffix": "Wartezeiten live",
+    "intro": "Aktuelle Wartezeiten im {park} in {city} – live und im Minutentakt. Sieh, wie voll es heute ist, welche Attraktionen gerade geöffnet sind und wann sich dein Besuch am meisten lohnt – mit KI-Crowd-Prognose und besten Besuchstagen.",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
       "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",
