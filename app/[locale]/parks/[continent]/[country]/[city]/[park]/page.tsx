@@ -34,7 +34,6 @@ import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/red
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
-import { HeaderWeatherPanel } from '@/components/parks/header-weather-panel';
 import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
@@ -323,31 +322,19 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
                 </div>
-                {/* Right column fills the wide-screen void beside the title/stats (lg+ only — where
-                    the empty space appears; the full <WeatherCard> still renders below). It stacks
-                    today's weather with — when neighbouring-region school holidays are driving the
-                    crowds — a panel naming those regions (the "why is it busy" behind the forecast).
-                    Both are hidden below lg, where the compact holiday badge in the stats band and
-                    the weather card below already cover it. */}
+                {/* Right column (lg+ only): when neighbouring-region school holidays are driving the
+                    crowds, name those regions here — the "why is it so busy" behind the forecast. It
+                    collapses to nothing off-season; below lg the compact holiday badge in the stats
+                    band covers it. */}
                 <div className="flex items-start gap-3">
-                  <div className="hidden w-60 flex-col gap-3 lg:flex">
-                    {park.weather?.current && (
-                      <HeaderWeatherPanel
-                        weather={park.weather}
-                        continent={continent}
-                        country={country}
-                        city={city}
-                        parkSlug={parkSlug}
-                      />
-                    )}
-                    <HeaderHolidayPanel
-                      initialData={park}
-                      continent={continent}
-                      country={country}
-                      city={city}
-                      parkSlug={parkSlug}
-                    />
-                  </div>
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="hidden w-64 lg:block"
+                  />
                   {park.id && <ParkFavoriteButton parkId={park.id} />}
                 </div>
               </div>
