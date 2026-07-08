@@ -1,11 +1,11 @@
 /**
- * Human-readable names for the holiday-source regions the API returns as ISO codes
+ * Human-readable names for the German-state holiday-source regions the API returns as ISO codes
  * (e.g. `{ countryCode: 'DE', regionCode: 'RP' }` → "Rheinland-Pfalz"). Used to spell out the
  * NEIGHBOURING-region school holidays that drive a park's crowds — see <HeaderHolidayPanel>.
  *
- * German federal states are proper nouns kept in their native form across locales; foreign
- * countries are localised through the existing `geo.countries.<slug>` translations, so only an
- * ISO→slug bridge lives here.
+ * German federal states are proper nouns kept in their native form across locales. Every other
+ * region is named by its COUNTRY via `Intl.DisplayNames` in the component (which covers all ISO
+ * codes in every locale), so no country map is needed here.
  */
 
 /** ISO 3166-2:DE region code → German federal state name. */
@@ -26,22 +26,4 @@ export const DE_STATES: Record<string, string> = {
   ST: 'Sachsen-Anhalt',
   SH: 'Schleswig-Holstein',
   TH: 'Thüringen',
-};
-
-/** ISO 3166-1 alpha-2 country code → `geo.countries` slug (for localised country names). */
-export const COUNTRY_CODE_TO_SLUG: Record<string, string> = {
-  DE: 'germany',
-  NL: 'netherlands',
-  BE: 'belgium',
-  FR: 'france',
-  LU: 'luxembourg',
-  AT: 'austria',
-  CH: 'switzerland',
-  DK: 'denmark',
-  PL: 'poland',
-  CZ: 'czechia',
-  GB: 'united-kingdom',
-  IE: 'ireland',
-  IT: 'italy',
-  ES: 'spain',
 };
