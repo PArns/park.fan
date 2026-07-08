@@ -1,11 +1,10 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Luggage } from 'lucide-react';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
-import { translateGeoSlug } from '@/lib/utils/geo-translate';
-import { DE_STATES, COUNTRY_CODE_TO_SLUG } from '@/lib/utils/region-names';
+import { DE_STATES } from '@/lib/utils/region-names';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -21,10 +20,10 @@ interface HeaderHolidayPanelProps {
 /**
  * Right-column context panel that spells out the NEIGHBOURING-region school holidays driving today's
  * crowds — the concrete "why is it so busy" behind the crowd forecast, shown as a warm amber card
- * with the regions as chips (e.g. Rheinland-Pfalz · Niedersachsen · Hessen · Niederlande). Returns
- * null when no influencing holidays apply. Reads the SAME client-derived schedule as
- * <ParkHeaderStats> via useTodaySchedule (shared live query → no extra fetch); German states are
- * named locally, foreign countries via the existing geo translations.
+ * with the regions as chips (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Returns null when
+ * no influencing holidays apply. Reads the SAME client-derived schedule as <ParkHeaderStats> via
+ * useTodaySchedule (shared live query → no extra fetch); German states are named locally, every other
+ * region collapses to its localised country name via Intl.DisplayNames.
  */
 export function HeaderHolidayPanel({
   initialData,
@@ -35,7 +34,7 @@ export function HeaderHolidayPanel({
   className,
 }: HeaderHolidayPanelProps) {
   const t = useTranslations('parks');
-  const tGeo = useTranslations('geo');
+  const locale = useLocale();
   const timezone = initialData.timezone ?? 'UTC';
 
   const sched = useTodaySchedule({
@@ -51,18 +50,25 @@ export function HeaderHolidayPanel({
   });
 
   const regions = useMemo(() => {
+    // Localised country names for ANY ISO code (CH → Schweiz / Switzerland / Suisse …), so
+    // neighbouring cantons/départements never leak through as raw codes like "BL"/"BS".
+    let countryNames: Intl.DisplayNames | null = null;
+    try {
+      countryNames = new Intl.DisplayNames([locale], { type: 'region' });
+    } catch {
+      countryNames = null;
+    }
     const labels: string[] = [];
     const seen = new Set<string>();
     for (const h of sched.holiday?.influencing ?? []) {
       const { countryCode, regionCode } = h.source;
+      // German states keep their proper name; every other region collapses to its COUNTRY name
+      // (so e.g. the Basel cantons BL/BS show as one "Schweiz", not two raw codes).
       let label: string;
       if (countryCode === 'DE' && regionCode && DE_STATES[regionCode]) {
         label = DE_STATES[regionCode];
       } else {
-        const slug = COUNTRY_CODE_TO_SLUG[countryCode];
-        label = slug
-          ? translateGeoSlug(tGeo, 'countries', slug, regionCode || countryCode)
-          : regionCode || countryCode;
+        label = countryNames?.of(countryCode) ?? regionCode ?? countryCode;
       }
       if (!seen.has(label)) {
         seen.add(label);
@@ -70,7 +76,7 @@ export function HeaderHolidayPanel({
       }
     }
     return labels;
-  }, [sched.holiday, tGeo]);
+  }, [sched.holiday, locale]);
 
   if (regions.length === 0) return null;
 
