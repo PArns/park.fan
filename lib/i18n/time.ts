@@ -69,3 +69,20 @@ export function formatDuration(
     return `${minutes} ${t('minute', { count: minutes })}`;
   }
 }
+
+/**
+ * Compact duration ("7 Std. 9 Min." / "7 h 9 min") for tight spots like the header countdown,
+ * where the verbose {@link formatDuration} ("7 Stunden 9 Minuten") wraps awkwardly. Uses the
+ * abbreviated, count-independent common.hourShort / common.minuteShort labels.
+ */
+export function formatDurationShort(
+  diffMs: number,
+  t: (key: string, values?: Record<string, string | number | Date>) => string
+): string {
+  const hours = Math.floor(diffMs / (1000 * 60 * 60));
+  const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+
+  if (hours > 0 && minutes > 0) return `${hours} ${t('hourShort')} ${minutes} ${t('minuteShort')}`;
+  if (hours > 0) return `${hours} ${t('hourShort')}`;
+  return `${minutes} ${t('minuteShort')}`;
+}

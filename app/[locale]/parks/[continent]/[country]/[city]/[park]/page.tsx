@@ -15,7 +15,6 @@ import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
-import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import {
   ParkStructuredData,
   BreadcrumbStructuredData,
@@ -34,6 +33,8 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/redirect-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
+import { ParkHeaderStats } from '@/components/parks/park-header-stats';
+import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
@@ -234,7 +235,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
-  // Today's schedule is picked CLIENT-side inside <ParkTimeInfo> (from the browser clock in the
+  // Today's schedule is picked CLIENT-side inside <ParkHeaderStats> (from the browser clock in the
   // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived
   // "today" entry, so the shell never reads the server clock.
   const parkName = stripNewPrefix(park.name);
@@ -288,13 +289,14 @@ export default async function ParkPage({ params }: ParkPageProps) {
           <div className="mb-8">
             <GlassCard variant="medium">
               <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="mb-2 flex flex-wrap items-baseline">
-                    <h1 className="text-3xl font-bold md:text-4xl">{parkName}</h1>
-                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
-                      – {t('h1Suffix')}
-                    </span>
-                  </div>
+                <div className="min-w-0 flex-1">
+                  {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
+                      park name, only lighter weight) so the target term "{park} Wartezeiten"
+                      reads as one unified heading — the single strongest on-page signal for
+                      the "<park> wartezeiten" query. */}
+                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
+                    {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
+                  </h1>
                   <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                     <address className="flex items-center gap-1 not-italic">
                       <MapPin className="h-4 w-4" aria-hidden="true" />
@@ -302,8 +304,39 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
                   </div>
+                  {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
+                      today's predicted crowd (the forecast column loads last per the
+                      loading-priority rule; it shares the calendar query with the best-days
+                      section below). */}
+                  <ParkHeaderStats
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                  />
+                  {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
+                      text with the exact "Wartezeiten im {park}" phrase + "heute" that the
+                      live (client-streamed) grid doesn't provide as static text. */}
+                  <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
+                    {t('intro', { park: parkName, city: cityName })}
+                  </p>
                 </div>
-                {park.id && <ParkFavoriteButton parkId={park.id} />}
+                {/* Right column (lg+ only): when neighbouring-region school holidays are driving the
+                    crowds, name those regions here — the "why is it so busy" behind the forecast. It
+                    collapses to nothing off-season; below lg the compact holiday badge in the stats
+                    band covers it. */}
+                <div className="flex items-start gap-3">
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="hidden w-64 lg:block"
+                  />
+                  {park.id && <ParkFavoriteButton parkId={park.id} />}
+                </div>
               </div>
             </GlassCard>
           </div>
@@ -334,26 +367,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
             />
           </Suspense>
 
-          {/* Schedule & Weather Row */}
-          <div className="mb-8 grid gap-4 md:grid-cols-2">
-            {/* Today's Schedule with Current Time */}
-            <Suspense fallback={null}>
-              <ParkTimeInfo
-                timezone={park.timezone}
-                schedule={park.schedule}
-                nextSchedule={park.nextSchedule}
-                status={park.status}
-                hasOperatingSchedule={park.hasOperatingSchedule}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                className="border-primary/10"
-              />
-            </Suspense>
-
-            {/* Weather — client live nowcast query, streamed as a dynamic hole */}
-            {park.weather?.current && (
+          {/* Weather — client live nowcast query, streamed as a dynamic hole. Today's schedule,
+              status and opening hours now live in the <ParkHeaderStats> board up in the header,
+              so there's no separate schedule card here (no duplication). */}
+          {park.weather?.current && (
+            <div className="mb-8">
               <Suspense fallback={null}>
                 <WeatherCard
                   weather={park.weather}
@@ -369,8 +387,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   className="border-primary/10"
                 />
               </Suspense>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
           <LiveParkData

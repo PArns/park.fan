@@ -47,6 +47,8 @@
     "moreInfo": "Mehr Infos",
     "minutes": "Minuten",
     "minute": "{count, plural, =1 {Minute} other {Minuten}}",
+    "hourShort": "Std.",
+    "minuteShort": "Min.",
     "hour": "{count, plural, =1 {Stunde} other {Stunden}}",
     "noShowtimesToday": "Keine Vorstellungen heute",
     "hours": "Std",
@@ -527,6 +529,13 @@
       "away": "entfernt"
     },
     "h1Suffix": "Wartezeiten live",
+    "intro": "Aktuelle Wartezeiten im {park} in {city} – live und im Minutentakt. Sieh, wie voll es heute ist, welche Attraktionen gerade geöffnet sind und wann sich dein Besuch am meisten lohnt – mit KI-Crowd-Prognose und besten Besuchstagen.",
+    "now": "Jetzt",
+    "forecastToday": "Prognose heute",
+    "statusLabel": "Status",
+    "crowdNow": "Andrang jetzt",
+    "localTime": "Ortszeit",
+    "influencingHolidays": "Ferien in Nachbarregionen",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
       "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",
@@ -671,6 +680,7 @@
       }
     },
     "h1Suffix": "Aktuelle Wartezeit",
+    "intro": "Aktuelle Wartezeit für {attraction} im {park} – live und im Minutentakt. Verfolge den Live-Status, den heutigen Verlauf und typische Stoßzeiten, um lange Wartezeiten zu vermeiden.",
     "headliner": {
       "title": "Headliner",
       "description": "Highlight-Attraktion dieses Parks"
@@ -944,7 +954,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} im {park} – Wartezeiten LIVE & Status",
-      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang."
+      "metaDescriptionTemplate": "Aktuelle Wartezeiten für {attraction} im {park}. Prüfe Live-Daten und Besucherandrang.",
+      "keywordWaitTime": "Wartezeit"
     },
     "continent": {
       "titleTemplate": "Freizeitparks in {location}: Wartezeiten, Karte & Übersicht",

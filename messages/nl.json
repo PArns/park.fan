@@ -22,6 +22,8 @@
     "moreInfo": "Meer info",
     "minutes": "min",
     "minute": "{count, plural, =1 {minuut} other {minuten}}",
+    "hourShort": "u",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {uur} other {uur}}",
     "noShowtimesToday": "Geen showtijden vandaag",
     "hours": "u",
@@ -527,6 +529,13 @@
       "precipProbability": "regenkans"
     },
     "h1Suffix": "Live wachttijden",
+    "intro": "Actuele wachttijden in {park} in {city} — live en elke minuut ververst. Zie hoe druk het vandaag is, welke attracties nu open zijn en wanneer je bezoek het meest de moeite waard is — met AI-druktevoorspelling en de beste bezoekdagen.",
+    "now": "Nu",
+    "forecastToday": "Voorspelling vandaag",
+    "statusLabel": "Status",
+    "crowdNow": "Drukte nu",
+    "localTime": "lokale tijd",
+    "influencingHolidays": "Vakantie in nabije regio's",
     "stats": {
       "title": "Historische wachttijdstatistieken",
       "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",
@@ -671,6 +680,7 @@
       }
     },
     "h1Suffix": "Live wachttijd",
+    "intro": "Actuele wachttijd voor {attraction} in {park} – live en elke minuut bijgewerkt. Volg de live status, het verloop van vandaag en typische piekuren om lange wachtrijen te vermijden.",
     "headliner": {
       "title": "Headliner",
       "description": "Topattratie van dit park"
@@ -944,7 +954,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} in {park} – Live Wachttijden & Status",
-      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte."
+      "metaDescriptionTemplate": "Actuele wachttijden voor {attraction} in {park}. Check live wachtrij data en drukte.",
+      "keywordWaitTime": "wachttijd"
     },
     "continent": {
       "titleTemplate": "Pretparken in {location}: Wachttijden & Kaart",

@@ -22,6 +22,8 @@
     "moreInfo": "Plus d'infos",
     "minutes": "min",
     "minute": "{count, plural, =1 {minute} other {minutes}}",
+    "hourShort": "h",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {heure} other {heures}}",
     "noShowtimesToday": "Pas de spectacles aujourd'hui",
     "hours": "h",
@@ -527,6 +529,13 @@
       "precipProbability": "probabilité de pluie"
     },
     "h1Suffix": "Temps d'attente en direct",
+    "intro": "Temps d'attente en direct pour {park} à {city} — actualisés à la minute. Voyez l'affluence du jour, les attractions ouvertes en ce moment et le meilleur moment pour votre visite — avec prévision d'affluence par IA et les meilleurs jours.",
+    "now": "Maintenant",
+    "forecastToday": "Prévision du jour",
+    "statusLabel": "Statut",
+    "crowdNow": "Affluence",
+    "localTime": "heure locale",
+    "influencingHolidays": "Vacances dans les régions voisines",
     "stats": {
       "title": "Statistiques historiques des temps d'attente",
       "subtitle": "Basé sur {days} jours de données enregistrées · {years} dernières années",
@@ -671,6 +680,7 @@
       }
     },
     "h1Suffix": "Temps d'attente en direct",
+    "intro": "Temps d'attente actuel pour {attraction} à {park} – en direct, mis à jour chaque minute. Suivez le statut en direct, l'historique du jour et les heures d'affluence pour éviter les longues files.",
     "headliner": {
       "title": "Headliner",
       "description": "Attraction incontournable de ce parc"
@@ -944,7 +954,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} à {park} – Temps d'Attente en Direct",
-      "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence."
+      "metaDescriptionTemplate": "Temps d'attente en direct pour {attraction} à {park}. Vérifiez la file et l'affluence.",
+      "keywordWaitTime": "temps d'attente"
     },
     "continent": {
       "titleTemplate": "Parcs d'Attractions en {location} : Attente & Carte",

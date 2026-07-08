@@ -22,6 +22,8 @@
     "moreInfo": "Ulteriori informazioni",
     "minutes": "min",
     "minute": "{count, plural, =1 {minuto} other {minuti}}",
+    "hourShort": "h",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {ora} other {ore}}",
     "noShowtimesToday": "Nessuno spettacolo oggi",
     "hours": "h",
@@ -527,6 +529,13 @@
       "precipProbability": "probabilità di pioggia"
     },
     "h1Suffix": "Tempi di attesa in diretta",
+    "intro": "Tempi di attesa in tempo reale per {park} a {city} — aggiornati al minuto. Scopri quanta gente c'è oggi, quali attrazioni sono aperte e quando conviene di più la visita — con previsione IA dell'affluenza e i giorni migliori.",
+    "now": "Ora",
+    "forecastToday": "Previsione oggi",
+    "statusLabel": "Stato",
+    "crowdNow": "Affluenza ora",
+    "localTime": "ora locale",
+    "influencingHolidays": "Vacanze nelle regioni vicine",
     "stats": {
       "title": "Statistiche storiche sui tempi di attesa",
       "subtitle": "Basato su {days} giorni di dati registrati · Ultimi {years} anni",
@@ -671,6 +680,7 @@
       }
     },
     "h1Suffix": "Tempo di attesa in diretta",
+    "intro": "Tempo di attesa attuale per {attraction} a {park} – in diretta, aggiornato ogni minuto. Segui lo stato in diretta, l'andamento di oggi e gli orari di punta per evitare lunghe code.",
     "todayChart": {
       "title": "Tempi di attesa oggi",
       "now": "Ora",
@@ -944,7 +954,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} a {park} – Tempi di attesa e stato in diretta",
-      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza."
+      "metaDescriptionTemplate": "Tempi di attesa in diretta per {attraction} a {park}. Controlla i dati sulle code e i livelli di affluenza.",
+      "keywordWaitTime": "tempo di attesa"
     },
     "continent": {
       "titleTemplate": "Parchi a tema in {location}: Tempi di attesa, mappa e panoramica",

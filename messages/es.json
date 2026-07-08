@@ -22,6 +22,8 @@
     "moreInfo": "Más info",
     "minutes": "min",
     "minute": "{count, plural, =1 {minuto} other {minutos}}",
+    "hourShort": "h",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {hora} other {horas}}",
     "noShowtimesToday": "No hay horarios hoy",
     "hours": "h",
@@ -527,6 +529,13 @@
       "precipProbability": "probabilidad de lluvia"
     },
     "h1Suffix": "Tiempos de espera en vivo",
+    "intro": "Tiempos de espera en directo de {park} en {city} — actualizados al minuto. Mira cuánta gente hay hoy, qué atracciones están abiertas y cuándo merece más la pena tu visita — con previsión de afluencia por IA y los mejores días.",
+    "now": "Ahora",
+    "forecastToday": "Previsión de hoy",
+    "statusLabel": "Estado",
+    "crowdNow": "Afluencia ahora",
+    "localTime": "hora local",
+    "influencingHolidays": "Vacaciones en regiones cercanas",
     "stats": {
       "title": "Estadísticas históricas de tiempos de espera",
       "subtitle": "Basado en {days} días de datos registrados · Últimos {years} años",
@@ -671,6 +680,7 @@
       }
     },
     "h1Suffix": "Tiempo de espera en vivo",
+    "intro": "Tiempo de espera actual para {attraction} en {park} – en vivo, actualizado cada minuto. Sigue el estado en vivo, el historial de hoy y las horas punta para evitar largas colas.",
     "headliner": {
       "title": "Headliner",
       "description": "Atracción imprescindible de este parque"
@@ -944,7 +954,8 @@
     },
     "attraction": {
       "titleTemplate": "{attraction} en {park} – Tiempos de Espera en Vivo",
-      "metaDescriptionTemplate": "Tiempos de espera actuales para {attraction} en {park}. Revisa la cola en vivo y el nivel de afluencia."
+      "metaDescriptionTemplate": "Tiempos de espera actuales para {attraction} en {park}. Revisa la cola en vivo y el nivel de afluencia.",
+      "keywordWaitTime": "tiempo de espera"
     },
     "continent": {
       "titleTemplate": "Parques Temáticos en {location}: Espera y Mapa",

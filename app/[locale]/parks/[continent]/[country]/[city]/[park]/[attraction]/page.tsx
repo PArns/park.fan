@@ -101,7 +101,7 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
 
   const keywords = [
     attractionName,
-    `${attractionName} wait times`,
+    `${attractionName} ${t('keywordWaitTime')}`,
     parkName,
     `${parkName} ${cityName}`,
     cityName,
@@ -262,12 +262,15 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               )}
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
-                  <div className="mb-2 flex flex-wrap items-baseline">
-                    <h1 className="text-3xl font-bold md:text-4xl">{attractionName}</h1>
+                  {/* The wait-time keyword lives INSIDE the h1 (a styled span, not a
+                      sibling) so the primary heading actually carries "Wartezeit" — the
+                      strongest on-page signal for "{attraction} wartezeit" queries. */}
+                  <h1 className="mb-2 text-3xl font-bold md:text-4xl">
+                    {attractionName}
                     <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
                       – {t('h1Suffix')}
                     </span>
-                  </div>
+                  </h1>
                   <div className="text-foreground flex flex-wrap items-center gap-3">
                     <Link
                       href={
@@ -291,6 +294,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
               </div>
             </GlassCard>
           </div>
+
+          {/* Keyword-rich, server-rendered intro — crawlable topical text for
+              "{attraction} Wartezeit(en)" that the client-streamed live panel doesn't
+              provide as static HTML (mirrors the park page intro). */}
+          <p className="text-muted-foreground mt-3 mb-4 max-w-2xl text-sm leading-relaxed">
+            {t('intro', { attraction: attractionName, park: parkName })}
+          </p>
 
           {/* Live: status, wait time, queues — auto-refreshes every 5 min.
               initialPark is trimmed to THIS attraction (LiveAttractionData finds it by slug and
