@@ -22,6 +22,8 @@
     "moreInfo": "Ulteriori informazioni",
     "minutes": "min",
     "minute": "{count, plural, =1 {minuto} other {minuti}}",
+    "hourShort": "h",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {ora} other {ore}}",
     "noShowtimesToday": "Nessuno spettacolo oggi",
     "hours": "h",

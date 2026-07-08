@@ -47,6 +47,8 @@
     "moreInfo": "Mehr Infos",
     "minutes": "Minuten",
     "minute": "{count, plural, =1 {Minute} other {Minuten}}",
+    "hourShort": "Std.",
+    "minuteShort": "Min.",
     "hour": "{count, plural, =1 {Stunde} other {Stunden}}",
     "noShowtimesToday": "Keine Vorstellungen heute",
     "hours": "Std",

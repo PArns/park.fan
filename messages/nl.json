@@ -22,6 +22,8 @@
     "moreInfo": "Meer info",
     "minutes": "min",
     "minute": "{count, plural, =1 {minuut} other {minuten}}",
+    "hourShort": "u",
+    "minuteShort": "min",
     "hour": "{count, plural, =1 {uur} other {uur}}",
     "noShowtimesToday": "Geen showtijden vandaag",
     "hours": "u",

@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
-import { formatDuration } from '@/lib/i18n/time';
+import { formatDurationShort } from '@/lib/i18n/time';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type {
   ParkStatus,
@@ -133,13 +133,13 @@ export function useTodaySchedule({
     if (openingDateInParkTz !== todayInParkTz) return null;
     if (now < opening) {
       return {
-        message: `${t('opensIn')} ${formatDuration(opening.getTime() - now.getTime(), tCommon)}`,
+        message: `${t('opensIn')} ${formatDurationShort(opening.getTime() - now.getTime(), tCommon)}`,
         variant: 'opening',
       };
     }
     if (now >= opening && now < closing) {
       return {
-        message: `${t('closesIn')} ${formatDuration(closing.getTime() - now.getTime(), tCommon)}`,
+        message: `${t('closesIn')} ${formatDurationShort(closing.getTime() - now.getTime(), tCommon)}`,
         variant: 'closing',
       };
     }

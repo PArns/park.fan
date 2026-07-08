@@ -22,26 +22,23 @@ interface ParkHeaderStatsProps {
   parkSlug: string;
 }
 
-/** One column of the board: a small uppercase caption + its value stack. */
+/**
+ * One column of the stats band: a small uppercase caption + its value stack. No background or box
+ * of its own — on desktop the columns are separated by a thin left rule; on mobile they sit in a
+ * 2-col grid with whitespace. The band is part of the header card, not a card inside it.
+ */
 function Cell({
   caption,
   icon: Icon,
-  accent = false,
   children,
 }: {
   caption: string;
   icon?: typeof Clock;
-  accent?: boolean;
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn('flex flex-col gap-1.5 px-4 py-3', accent ? 'bg-primary/[0.06]' : 'bg-card/60')}>
-      <span
-        className={cn(
-          'flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase',
-          accent ? 'text-primary/80' : 'text-muted-foreground'
-        )}
-      >
+    <div className="border-border/50 flex flex-col gap-1.5 md:border-l md:pl-4 md:first:border-l-0 md:first:pl-0">
+      <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
         {Icon && <Icon className="h-3 w-3" aria-hidden="true" />}
         {caption}
       </span>
@@ -56,10 +53,11 @@ function Pending() {
 }
 
 /**
- * "Heute" board in the park header — the single at-a-glance summary of today: live status +
+ * "Heute" stats band in the park header — the single at-a-glance summary of today: live status +
  * park-local time, today's opening hours + "closes in X" countdown, the current crowd + average
- * wait, and — the differentiator — the **AI crowd forecast for today**. Replaces the separate
- * "Heutige Öffnungszeiten" card that used to sit below (no duplication).
+ * wait, and — the differentiator — the **AI crowd forecast for today**. Rendered as an integrated
+ * band (a top hairline + column rules), NOT a nested card, so it reads as part of the header.
+ * Replaces the separate "Heutige Öffnungszeiten" card that used to sit below (no duplication).
  *
  * Caching: schedule/status come from `useTodaySchedule`, which shares the live park query key with
  * <LiveParkData> (one 5-min poll, no extra fetch); the forecast reuses <ParkBestDaysSection>'s
@@ -148,8 +146,8 @@ export function ParkHeaderStats({
     : [];
 
   return (
-    <div className="border-border/60 mt-4 max-w-3xl overflow-hidden rounded-2xl border shadow-sm backdrop-blur-sm">
-      <div className="bg-border/50 grid grid-cols-2 gap-px md:grid-cols-4">
+    <div className="border-border/50 mt-5 max-w-3xl border-t pt-4">
+      <div className="grid grid-cols-2 gap-x-5 gap-y-4 md:grid-cols-4 md:gap-x-0">
         {/* Status + park-local time */}
         <Cell caption={t('statusLabel')}>
           {sched.showStatusBadge && sched.badgeStatus ? (
@@ -213,7 +211,7 @@ export function ParkHeaderStats({
         </Cell>
 
         {/* AI crowd forecast for today — the differentiator */}
-        <Cell caption={t('forecastToday')} icon={Sparkles} accent>
+        <Cell caption={t('forecastToday')} icon={Sparkles}>
           {calendar ? (
             predictedToday ? (
               <CrowdLevelBadge level={predictedToday} />
@@ -227,11 +225,7 @@ export function ParkHeaderStats({
       </div>
 
       {/* Holiday / bridge-day / school-vacation context — explains today's crowds */}
-      {holidayBadges.length > 0 && (
-        <div className="border-border/50 bg-card/40 flex flex-wrap gap-2 border-t px-4 py-2">
-          {holidayBadges}
-        </div>
-      )}
+      {holidayBadges.length > 0 && <div className="mt-4 flex flex-wrap gap-2">{holidayBadges}</div>}
     </div>
   );
 }
