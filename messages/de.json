@@ -530,6 +530,9 @@
     "intro": "Aktuelle Wartezeiten im {park} in {city} – live und im Minutentakt. Sieh, wie voll es heute ist, welche Attraktionen gerade geöffnet sind und wann sich dein Besuch am meisten lohnt – mit KI-Crowd-Prognose und besten Besuchstagen.",
     "now": "Jetzt",
     "forecastToday": "Prognose heute",
+    "statusLabel": "Status",
+    "crowdNow": "Andrang jetzt",
+    "localTime": "Ortszeit",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
       "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",

@@ -530,6 +530,9 @@
     "intro": "Tempi di attesa in tempo reale per {park} a {city} — aggiornati al minuto. Scopri quanta gente c'è oggi, quali attrazioni sono aperte e quando conviene di più la visita — con previsione IA dell'affluenza e i giorni migliori.",
     "now": "Ora",
     "forecastToday": "Previsione oggi",
+    "statusLabel": "Stato",
+    "crowdNow": "Affluenza ora",
+    "localTime": "ora locale",
     "stats": {
       "title": "Statistiche storiche sui tempi di attesa",
       "subtitle": "Basato su {days} giorni di dati registrati · Ultimi {years} anni",

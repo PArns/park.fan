@@ -530,6 +530,9 @@
     "intro": "Live wait times for {park} in {city} — updated by the minute. See how busy it is today, which attractions are open right now and when your visit is most worth it — with an AI crowd forecast and the best days to go.",
     "now": "Now",
     "forecastToday": "Forecast today",
+    "statusLabel": "Status",
+    "crowdNow": "Crowds now",
+    "localTime": "local time",
     "stats": {
       "title": "Historical Wait Time Statistics",
       "subtitle": "Based on {days} days of recorded data · Last {years} years",

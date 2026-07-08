@@ -15,7 +15,6 @@ import { WeatherCard } from '@/components/parks/weather-card';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
-import { ParkTimeInfo } from '@/components/parks/park-time-info';
 import {
   ParkStructuredData,
   BreadcrumbStructuredData,
@@ -235,7 +234,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
   const countryName = translateCountry(tGeo, country, locale, park.country ?? undefined);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
 
-  // Today's schedule is picked CLIENT-side inside <ParkTimeInfo> (from the browser clock in the
+  // Today's schedule is picked CLIENT-side inside <ParkHeaderStats> (from the browser clock in the
   // park's timezone) — the full day-stable park.schedule is handed down instead of a server-derived
   // "today" entry, so the shell never reads the server clock.
   const parkName = stripNewPrefix(park.name);
@@ -356,26 +355,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
             />
           </Suspense>
 
-          {/* Schedule & Weather Row */}
-          <div className="mb-8 grid gap-4 md:grid-cols-2">
-            {/* Today's Schedule with Current Time */}
-            <Suspense fallback={null}>
-              <ParkTimeInfo
-                timezone={park.timezone}
-                schedule={park.schedule}
-                nextSchedule={park.nextSchedule}
-                status={park.status}
-                hasOperatingSchedule={park.hasOperatingSchedule}
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                className="border-primary/10"
-              />
-            </Suspense>
-
-            {/* Weather — client live nowcast query, streamed as a dynamic hole */}
-            {park.weather?.current && (
+          {/* Weather — client live nowcast query, streamed as a dynamic hole. Today's schedule,
+              status and opening hours now live in the <ParkHeaderStats> board up in the header,
+              so there's no separate schedule card here (no duplication). */}
+          {park.weather?.current && (
+            <div className="mb-8">
               <Suspense fallback={null}>
                 <WeatherCard
                   weather={park.weather}
@@ -391,8 +375,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   className="border-primary/10"
                 />
               </Suspense>
-            )}
-          </div>
+            </div>
+          )}
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
           <LiveParkData

@@ -1,14 +1,16 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
-import { Clock } from 'lucide-react';
+import { useTranslations, useLocale } from 'next-intl';
+import { Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
-import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
+import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
+import { ParkTimeRange } from '@/components/common/park-time';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -20,38 +22,49 @@ interface ParkHeaderStatsProps {
   parkSlug: string;
 }
 
-/** Small uppercase caption above each panel. */
-function Caption({ children }: { children: React.ReactNode }) {
+/** One column of the board: a small uppercase caption + its value stack. */
+function Cell({
+  caption,
+  icon: Icon,
+  accent = false,
+  children,
+}: {
+  caption: string;
+  icon?: typeof Clock;
+  accent?: boolean;
+  children: React.ReactNode;
+}) {
   return (
-    <span className="text-muted-foreground text-[10px] font-semibold tracking-[0.08em] uppercase">
-      {children}
-    </span>
-  );
-}
-
-/** A framed glass mini-panel grouping the badges of one column. */
-function Panel({ className, children }: { className?: string; children: React.ReactNode }) {
-  return (
-    <div
-      className={cn(
-        'border-border/60 bg-background/50 flex items-center gap-2 rounded-xl border px-3 py-2 backdrop-blur-sm',
-        className
-      )}
-    >
-      {children}
+    <div className={cn('flex flex-col gap-1.5 px-4 py-3', accent ? 'bg-primary/[0.06]' : 'bg-card/60')}>
+      <span
+        className={cn(
+          'flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase',
+          accent ? 'text-primary/80' : 'text-muted-foreground'
+        )}
+      >
+        {Icon && <Icon className="h-3 w-3" aria-hidden="true" />}
+        {caption}
+      </span>
+      <div className="flex min-h-[1.75rem] flex-col items-start justify-center gap-1">{children}</div>
     </div>
   );
 }
 
+/** Subtle pill placeholder while a live/forecast value is still loading. */
+function Pending() {
+  return <span className="bg-muted-foreground/20 h-5 w-20 animate-pulse rounded-full" />;
+}
+
 /**
- * At-a-glance header strip that contrasts the park's **current** state (live status +
- * crowd, from the 5-min poll) with the **AI forecast for today** (from the best-days
- * calendar). This is park.fan's differentiator — "jetzt vs. Prognose" in one glance.
+ * "Heute" board in the park header — the single at-a-glance summary of today: live status +
+ * park-local time, today's opening hours + "closes in X" countdown, the current crowd + average
+ * wait, and — the differentiator — the **AI crowd forecast for today**. Replaces the separate
+ * "Heutige Öffnungszeiten" card that used to sit below (no duplication).
  *
- * Current data renders instantly from the server `initialData` and refreshes live; the
- * forecast column is gated by `useLoadLast` (the calendar loads LAST, after live/weather —
- * see the park-page loading-priority requirement) and shows a subtle placeholder until then.
- * It shares the calendar query key with ParkBestDaysSection, so no extra request is made.
+ * Caching: schedule/status come from `useTodaySchedule`, which shares the live park query key with
+ * <LiveParkData> (one 5-min poll, no extra fetch); the forecast reuses <ParkBestDaysSection>'s
+ * calendar query key (same {from,to}) so both read ONE cached request, still `useLoadLast`-gated so
+ * the forecast loads last. The 90-day "today" scan is memoised against the calendar.
  */
 export function ParkHeaderStats({
   initialData,
@@ -61,61 +74,164 @@ export function ParkHeaderStats({
   parkSlug,
 }: ParkHeaderStatsProps) {
   const t = useTranslations('parks');
+  const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const timezone = initialData.timezone ?? 'UTC';
 
-  const { data: live } = useLiveParkData({ continent, country, city, parkSlug, initialData });
-  const park = live ?? initialData;
-  const status = park.status;
-  // Mirror park-status.tsx: crowd/wait live in currentLoad (live) or analytics.statistics.
-  const currentCrowd = park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
-  const avgWait =
-    park.analytics?.statistics?.avgWaitTime ?? park.currentLoad?.currentWaitTime ?? 0;
-  const showCrowd = status === 'OPERATING' || status === 'UNKNOWN';
-
-  const { from, to } = getCalendarWindow(useBrowserNow(null));
-  // Shares the exact query key of ParkBestDaysSection ({continent…, from, to} — both derive
-  // from useBrowserNow(null), so the window is identical), so React Query serves BOTH from one
-  // cached request; no extra network call, and it stays gated by useLoadLast (loads last).
-  const { data: calendar } = useParkBestDaysCalendar({
+  const sched = useTodaySchedule({
+    timezone,
+    schedule: initialData.schedule,
+    nextSchedule: initialData.nextSchedule,
+    status: initialData.status,
+    hasOperatingSchedule: initialData.hasOperatingSchedule,
     continent,
     country,
     city,
     parkSlug,
-    from,
-    to,
   });
-  // Memoized so the 90-day scan doesn't re-run on unrelated re-renders (e.g. the 5-min live poll).
+
+  // Crowd/wait live in currentLoad (live) or analytics.statistics (mirrors park-status.tsx).
+  const park = sched.livePark ?? initialData;
+  const currentCrowd =
+    park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
+  const avgWait =
+    park.analytics?.statistics?.avgWaitTime ?? park.currentLoad?.currentWaitTime ?? 0;
+  // Show live crowd only when the park is (or might be) open; hide it when clearly closed/offseason.
+  const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
+
+  const { from, to } = getCalendarWindow(useBrowserNow(null));
+  const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug, from, to });
   const predictedToday = useMemo(
     () => calendar?.days.find((d) => d.isToday)?.crowdLevel ?? null,
     [calendar]
   );
 
+  const holidayBadges = sched.holiday
+    ? [
+        sched.holiday.publicHolidayName && (
+          <Badge
+            key="public"
+            variant="outline"
+            className="border-orange-300 bg-orange-50 text-xs dark:border-orange-800 dark:bg-orange-950/50 dark:text-orange-300"
+          >
+            🎉 {sched.holiday.publicHolidayName}
+          </Badge>
+        ),
+        sched.holiday.isBridgeDay && (
+          <Badge
+            key="bridge"
+            variant="outline"
+            className="border-blue-300 bg-blue-50 text-xs dark:border-blue-800 dark:bg-blue-950/50 dark:text-blue-300"
+          >
+            🌉 {t('bridgeDay')}
+          </Badge>
+        ),
+        sched.holiday.isSchoolVacation && (
+          <Badge
+            key="vacation"
+            variant="outline"
+            className="border-yellow-300 bg-yellow-50 text-xs dark:border-yellow-800 dark:bg-yellow-950/50 dark:text-yellow-300"
+          >
+            🎒 {t('schoolVacation')}
+          </Badge>
+        ),
+        ...sched.holiday.influencing.slice(0, 2).map((h) => (
+          <Badge
+            key={h.name}
+            variant="outline"
+            className="border-amber-300 bg-amber-50 text-xs dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-300"
+          >
+            🎄 {h.name}
+          </Badge>
+        )),
+      ].filter(Boolean)
+    : [];
+
   return (
-    <div className="mt-4 flex flex-wrap items-stretch gap-2.5">
-      {/* Now — live status + current crowd + avg wait */}
-      <div className="flex flex-col gap-1">
-        <Caption>{t('now')}</Caption>
-        <Panel>
-          {status && <ParkStatusBadge status={status} />}
-          {showCrowd && currentCrowd && <CrowdLevelBadge level={currentCrowd} />}
-          {avgWait > 0 && (
+    <div className="border-border/60 mt-4 max-w-3xl overflow-hidden rounded-2xl border shadow-sm backdrop-blur-sm">
+      <div className="bg-border/50 grid grid-cols-2 gap-px md:grid-cols-4">
+        {/* Status + park-local time */}
+        <Cell caption={t('statusLabel')}>
+          {sched.showStatusBadge && sched.badgeStatus ? (
+            <ParkStatusBadge status={sched.badgeStatus} />
+          ) : (
+            <Pending />
+          )}
+          {sched.currentTime && (
+            <span className="text-muted-foreground text-xs tabular-nums">
+              {sched.currentTimeFormatted}
+              {tCommon('timeSuffix')} · {t('localTime')}
+            </span>
+          )}
+        </Cell>
+
+        {/* Today's opening hours + countdown */}
+        <Cell caption={t('openingHours')} icon={DoorOpen}>
+          {sched.isOperatingToday && sched.openingTime && sched.closingTime ? (
+            <>
+              <span className="text-foreground text-sm font-semibold">
+                <ParkTimeRange
+                  openingTime={sched.openingTime}
+                  closingTime={sched.closingTime}
+                  parkTimezone={timezone}
+                  locale={locale}
+                  showSuffix
+                />
+              </span>
+              {sched.timeUntil && (
+                <span
+                  className={cn(
+                    'text-xs font-medium',
+                    sched.timeUntil.variant === 'opening'
+                      ? 'text-primary'
+                      : 'text-amber-600 dark:text-amber-400'
+                  )}
+                >
+                  {sched.timeUntil.message}
+                </span>
+              )}
+            </>
+          ) : sched.offseason ? (
+            <span className="text-foreground text-sm font-medium">{sched.offseason.message}</span>
+          ) : (
+            <span className="text-muted-foreground text-sm">{t('status.CLOSED')}</span>
+          )}
+        </Cell>
+
+        {/* Current crowd + average wait */}
+        <Cell caption={t('crowdNow')} icon={Users}>
+          {isOpenish && currentCrowd ? (
+            <CrowdLevelBadge level={currentCrowd} />
+          ) : (
+            <span className="text-muted-foreground text-sm">—</span>
+          )}
+          {isOpenish && avgWait > 0 && (
             <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
               <Clock className="h-3 w-3" aria-hidden="true" />Ø&nbsp;{avgWait}&nbsp;min
             </span>
           )}
-        </Panel>
+        </Cell>
+
+        {/* AI crowd forecast for today — the differentiator */}
+        <Cell caption={t('forecastToday')} icon={Sparkles} accent>
+          {calendar ? (
+            predictedToday ? (
+              <CrowdLevelBadge level={predictedToday} />
+            ) : (
+              <span className="text-muted-foreground text-sm">—</span>
+            )
+          ) : (
+            <Pending />
+          )}
+        </Cell>
       </div>
 
-      {/* Forecast for today — the AI crowd prediction */}
-      <div className="flex flex-col gap-1">
-        <Caption>{t('forecastToday')}</Caption>
-        <Panel className="border-primary/25 bg-primary/[0.06]">
-          {predictedToday ? (
-            <CrowdLevelBadge level={predictedToday} />
-          ) : (
-            <span className="bg-muted-foreground/20 h-4 w-20 animate-pulse rounded-full" />
-          )}
-        </Panel>
-      </div>
+      {/* Holiday / bridge-day / school-vacation context — explains today's crowds */}
+      {holidayBadges.length > 0 && (
+        <div className="border-border/50 bg-card/40 flex flex-wrap gap-2 border-t px-4 py-2">
+          {holidayBadges}
+        </div>
+      )}
     </div>
   );
 }
