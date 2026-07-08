@@ -205,10 +205,15 @@ export function useTodaySchedule({
     const shownNames = new Set<string>();
     const publicHolidayName = todaySchedule.isHoliday ? todaySchedule.holidayName : null;
     if (publicHolidayName) shownNames.add(publicHolidayName.toLowerCase());
+    // Keep influencing holidays DISTINCT BY REGION (name+country+region), not just by name: the same
+    // holiday (e.g. "Summer Holidays") across several neighbouring states each contributes a region
+    // to <HeaderHolidayPanel>. Still drop any that merely echo the local public holiday.
+    const seenRegions = new Set<string>();
     const influencing = (todaySchedule.influencingHolidays ?? []).filter((h: InfluencingHoliday) => {
-      const key = h.name.toLowerCase();
-      if (shownNames.has(key)) return false;
-      shownNames.add(key);
+      if (shownNames.has(h.name.toLowerCase())) return false;
+      const key = `${h.name.toLowerCase()}|${h.source.countryCode}|${h.source.regionCode ?? ''}`;
+      if (seenRegions.has(key)) return false;
+      seenRegions.add(key);
       return true;
     });
     return {

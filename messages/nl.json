@@ -535,6 +535,7 @@
     "statusLabel": "Status",
     "crowdNow": "Drukte nu",
     "localTime": "lokale tijd",
+    "influencingHolidays": "Vakantie in nabije regio's",
     "stats": {
       "title": "Historische wachttijdstatistieken",
       "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",

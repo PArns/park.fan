@@ -535,6 +535,7 @@
     "statusLabel": "Stato",
     "crowdNow": "Affluenza ora",
     "localTime": "ora locale",
+    "influencingHolidays": "Vacanze nelle regioni vicine",
     "stats": {
       "title": "Statistiche storiche sui tempi di attesa",
       "subtitle": "Basato su {days} giorni di dati registrati · Ultimi {years} anni",

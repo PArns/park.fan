@@ -535,6 +535,7 @@
     "statusLabel": "Status",
     "crowdNow": "Andrang jetzt",
     "localTime": "Ortszeit",
+    "influencingHolidays": "Ferien in Nachbarregionen",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
       "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",

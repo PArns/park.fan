@@ -42,7 +42,10 @@ function Cell({
         {Icon && <Icon className="h-3 w-3" aria-hidden="true" />}
         {caption}
       </span>
-      <div className="flex min-h-[1.75rem] flex-col items-start justify-center gap-1">{children}</div>
+      {/* justify-start (not -center) so the primary value (badge/time) sits at the SAME top
+          line across all cells — cells with a second line (Ø wait, countdown) grow downward
+          instead of pushing their badge up and out of alignment with single-line cells. */}
+      <div className="flex min-h-[1.75rem] flex-col items-start justify-start gap-1">{children}</div>
     </div>
   );
 }
@@ -133,15 +136,20 @@ export function ParkHeaderStats({
             🎒 {t('schoolVacation')}
           </Badge>
         ),
-        ...sched.holiday.influencing.slice(0, 2).map((h) => (
+        // The influencing holidays are school breaks in NEIGHBOURING regions (other German states
+        // / bordering countries) that drive visitors here — NOT a local holiday. Show ONE clearly
+        // labelled badge so it can't be misread as "this park's region is on holiday". On lg+ the
+        // richer <HeaderHolidayPanel> in the header's right column names the regions, so hide this
+        // badge there to avoid duplication (it stays for the panel-less mobile/tablet layout).
+        sched.holiday.influencing.length > 0 && (
           <Badge
-            key={h.name}
+            key="influencing"
             variant="outline"
-            className="border-amber-300 bg-amber-50 text-xs dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-300"
+            className="border-amber-300 bg-amber-50 text-xs lg:hidden dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-300"
           >
-            🎄 {h.name}
+            🧳 {t('influencingHolidays')}
           </Badge>
-        )),
+        ),
       ].filter(Boolean)
     : [];
 

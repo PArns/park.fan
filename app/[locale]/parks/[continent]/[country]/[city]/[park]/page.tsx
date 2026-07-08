@@ -34,6 +34,8 @@ import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/red
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
+import { HeaderWeatherPanel } from '@/components/parks/header-weather-panel';
+import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
@@ -288,16 +290,13 @@ export default async function ParkPage({ params }: ParkPageProps) {
           <div className="mb-8">
             <GlassCard variant="medium">
               <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="flex-1">
-                  {/* The wait-times keyword lives INSIDE the h1 (a styled span, not a
-                      sibling) so the target term "{park} Wartezeiten" is part of the
-                      page's primary heading — the single strongest on-page signal for
+                <div className="min-w-0 flex-1">
+                  {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
+                      park name, only lighter weight) so the target term "{park} Wartezeiten"
+                      reads as one unified heading — the single strongest on-page signal for
                       the "<park> wartezeiten" query. */}
                   <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                    {parkName}
-                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
-                      – {t('h1Suffix')}
-                    </span>
+                    {parkName} <span className="font-normal">– {t('h1Suffix')}</span>
                   </h1>
                   <div className="text-muted-foreground flex flex-wrap items-center gap-3">
                     <address className="flex items-center gap-1 not-italic">
@@ -324,7 +323,33 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
                 </div>
-                {park.id && <ParkFavoriteButton parkId={park.id} />}
+                {/* Right column fills the wide-screen void beside the title/stats (lg+ only — where
+                    the empty space appears; the full <WeatherCard> still renders below). It stacks
+                    today's weather with — when neighbouring-region school holidays are driving the
+                    crowds — a panel naming those regions (the "why is it busy" behind the forecast).
+                    Both are hidden below lg, where the compact holiday badge in the stats band and
+                    the weather card below already cover it. */}
+                <div className="flex items-start gap-3">
+                  <div className="hidden w-60 flex-col gap-3 lg:flex">
+                    {park.weather?.current && (
+                      <HeaderWeatherPanel
+                        weather={park.weather}
+                        continent={continent}
+                        country={country}
+                        city={city}
+                        parkSlug={parkSlug}
+                      />
+                    )}
+                    <HeaderHolidayPanel
+                      initialData={park}
+                      continent={continent}
+                      country={country}
+                      city={city}
+                      parkSlug={parkSlug}
+                    />
+                  </div>
+                  {park.id && <ParkFavoriteButton parkId={park.id} />}
+                </div>
               </div>
             </GlassCard>
           </div>

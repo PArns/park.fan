@@ -535,6 +535,7 @@
     "statusLabel": "Status",
     "crowdNow": "Crowds now",
     "localTime": "local time",
+    "influencingHolidays": "Holidays in nearby regions",
     "stats": {
       "title": "Historical Wait Time Statistics",
       "subtitle": "Based on {days} days of recorded data · Last {years} years",
