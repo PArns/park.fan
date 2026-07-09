@@ -45,7 +45,9 @@ function Cell({
       {/* justify-start (not -center) so the primary value (badge/time) sits at the SAME top
           line across all cells — cells with a second line (Ø wait, countdown) grow downward
           instead of pushing their badge up and out of alignment with single-line cells. */}
-      <div className="flex min-h-[1.75rem] flex-col items-start justify-start gap-1">{children}</div>
+      <div className="flex min-h-[1.75rem] flex-col items-start justify-start gap-1">
+        {children}
+      </div>
     </div>
   );
 }
@@ -95,13 +97,19 @@ export function ParkHeaderStats({
   const park = sched.livePark ?? initialData;
   const currentCrowd =
     park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel ?? null;
-  const avgWait =
-    park.analytics?.statistics?.avgWaitTime ?? park.currentLoad?.currentWaitTime ?? 0;
+  const avgWait = park.analytics?.statistics?.avgWaitTime ?? park.currentLoad?.currentWaitTime ?? 0;
   // Show live crowd only when the park is (or might be) open; hide it when clearly closed/offseason.
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
 
   const { from, to } = getCalendarWindow(useBrowserNow(null));
-  const { data: calendar } = useParkBestDaysCalendar({ continent, country, city, parkSlug, from, to });
+  const { data: calendar } = useParkBestDaysCalendar({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from,
+    to,
+  });
   const predictedToday = useMemo(
     () => calendar?.days.find((d) => d.isToday)?.crowdLevel ?? null,
     [calendar]
@@ -136,20 +144,10 @@ export function ParkHeaderStats({
             🎒 {t('schoolVacation')}
           </Badge>
         ),
-        // The influencing holidays are school breaks in NEIGHBOURING regions (other German states
-        // / bordering countries) that drive visitors here — NOT a local holiday. Show ONE clearly
-        // labelled badge so it can't be misread as "this park's region is on holiday". On lg+ the
-        // richer <HeaderHolidayPanel> in the header's right column names the regions, so hide this
-        // badge there to avoid duplication (it stays for the panel-less mobile/tablet layout).
-        sched.holiday.influencing.length > 0 && (
-          <Badge
-            key="influencing"
-            variant="outline"
-            className="border-amber-300 bg-amber-50 text-xs lg:hidden dark:border-amber-800 dark:bg-amber-950/50 dark:text-amber-300"
-          >
-            🧳 {t('influencingHolidays')}
-          </Badge>
-        ),
+        // NOTE: neighbouring-region school breaks (holiday.influencing) are NOT shown here anymore —
+        // the richer <HeaderHolidayPanel> owns that story at every breakpoint (right column on lg+,
+        // full-width below the intro on mobile/tablet), so a duplicate badge in this band would be
+        // redundant.
       ].filter(Boolean)
     : [];
 
@@ -213,7 +211,8 @@ export function ParkHeaderStats({
           )}
           {isOpenish && avgWait > 0 && (
             <span className="text-muted-foreground inline-flex items-center gap-1 text-xs font-medium">
-              <Clock className="h-3 w-3" aria-hidden="true" />Ø&nbsp;{avgWait}&nbsp;min
+              <Clock className="h-3 w-3" aria-hidden="true" />
+              Ø&nbsp;{avgWait}&nbsp;min
             </span>
           )}
         </Cell>

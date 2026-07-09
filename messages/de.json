@@ -536,6 +536,7 @@
     "crowdNow": "Andrang jetzt",
     "localTime": "Ortszeit",
     "influencingHolidays": "Ferien in Nachbarregionen",
+    "influencingHolidaysBody": "Dort sind gerade Schulferien – von hier reisen viele Tagesgäste an. Rechne mit mehr Andrang und längeren Wartezeiten als üblich.",
     "stats": {
       "title": "Historische Wartezeit-Statistiken",
       "subtitle": "Basierend auf {days} Tagen aufgezeichneter Daten · Letzte {years} Jahre",

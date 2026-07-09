@@ -18,12 +18,15 @@ interface HeaderHolidayPanelProps {
 }
 
 /**
- * Right-column context panel that spells out the NEIGHBOURING-region school holidays driving today's
- * crowds — the concrete "why is it so busy" behind the crowd forecast, shown as a warm amber card
- * with the regions as chips (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Returns null when
- * no influencing holidays apply. Reads the SAME client-derived schedule as <ParkHeaderStats> via
- * useTodaySchedule (shared live query → no extra fetch); German states are named locally, every other
- * region collapses to its localised country name via Intl.DisplayNames.
+ * Context panel that spells out the NEIGHBOURING-region school holidays driving today's crowds — the
+ * concrete "why is it so busy" behind the crowd forecast. A warm amber card with a title, a one-line
+ * explanation of the crowd consequence (day-trippers from those regions → busier than usual) and the
+ * regions as chips (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Returns null when no
+ * influencing holidays apply. Sits in the header's right column on lg+ and full-width below the intro
+ * on mobile/tablet (the compact stats-band badge it used to share space with is gone). Reads the SAME
+ * client-derived schedule as <ParkHeaderStats> via useTodaySchedule (shared live query → no extra
+ * fetch); German states are named locally, every other region collapses to its localised country name
+ * via Intl.DisplayNames.
  */
 export function HeaderHolidayPanel({
   initialData,
@@ -89,7 +92,7 @@ export function HeaderHolidayPanel({
   return (
     <div
       className={cn(
-        'rounded-xl border border-amber-200/70 bg-amber-50/60 px-4 py-3 shadow-sm backdrop-blur-sm dark:border-amber-800/40 dark:bg-amber-950/30',
+        'rounded-xl border border-amber-200/70 bg-amber-50/60 p-4 shadow-sm backdrop-blur-sm dark:border-amber-800/40 dark:bg-amber-950/30',
         className
       )}
     >
@@ -97,11 +100,16 @@ export function HeaderHolidayPanel({
         <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300">
           <Luggage className="h-4 w-4" aria-hidden="true" />
         </span>
-        <span className="text-foreground text-xs leading-tight font-semibold">
+        <span className="text-foreground text-sm leading-tight font-semibold">
           {t('influencingHolidays')}
         </span>
       </div>
-      <div className="mt-2.5 flex flex-wrap gap-1.5">
+      {/* The "why it matters" line: neighbouring school breaks send day-trippers here → busier than
+          usual. Spells out the crowd consequence so the regions below read as a reason, not a label. */}
+      <p className="text-muted-foreground mt-2 text-xs leading-relaxed">
+        {t('influencingHolidaysBody')}
+      </p>
+      <div className="mt-3 flex flex-wrap gap-1.5">
         {shown.map((r) => (
           <span
             key={r}

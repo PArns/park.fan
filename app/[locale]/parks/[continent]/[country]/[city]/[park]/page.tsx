@@ -321,11 +321,23 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
+                  {/* Mobile/tablet (< lg): the neighbouring-holidays panel renders full-width here,
+                      below the intro, since the right column collapses. Hidden on lg+ where the same
+                      panel lives in the right column instead (rendering twice is free — both read the
+                      shared live query and collapse to null off-season). */}
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="mt-4 lg:hidden"
+                  />
                 </div>
                 {/* Right column (lg+ only): when neighbouring-region school holidays are driving the
-                    crowds, name those regions here — the "why is it so busy" behind the forecast. It
-                    collapses to nothing off-season; below lg the compact holiday badge in the stats
-                    band covers it. */}
+                    crowds, name those regions here — the "why is it so busy" behind the forecast, with
+                    a short line on the crowd consequence. Collapses to nothing off-season; below lg the
+                    full-width copy above the fold covers it. */}
                 <div className="flex items-start gap-3">
                   <HeaderHolidayPanel
                     initialData={park}
@@ -333,7 +345,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
                     country={country}
                     city={city}
                     parkSlug={parkSlug}
-                    className="hidden w-64 lg:block"
+                    className="hidden w-72 lg:block"
                   />
                   {park.id && <ParkFavoriteButton parkId={park.id} />}
                 </div>
