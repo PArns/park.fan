@@ -135,7 +135,7 @@ export default async function HomePage({ params }: HomePageProps) {
   // classic photo hero, keep it solid/legible.
   const heroPanelClass = HERO_3D_ENABLED
     ? 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/12 px-4 py-4 opacity-55 shadow-2xl transition duration-500 ease-out hover:bg-white/25 hover:opacity-100 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:bg-black/25 dark:hover:bg-black/50'
-    : 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/15 bg-white/10 px-4 py-4 shadow-2xl transition-colors duration-500 ease-out hover:border-white/25 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/10 dark:bg-black/20 dark:hover:border-white/15 dark:hover:bg-black/45';
+    : 'mx-auto flex w-full max-w-5xl flex-col items-center border-white/25 bg-white/10 px-4 py-4 shadow-xl transition-colors duration-500 ease-out hover:border-white/35 hover:bg-white/25 sm:py-6 lg:flex-row lg:items-center lg:gap-8 lg:py-8 lg:pr-8 lg:pl-4 dark:border-white/15 dark:bg-black/20 dark:hover:border-white/25 dark:hover:bg-black/45';
 
   return (
     <div className="flex flex-col">

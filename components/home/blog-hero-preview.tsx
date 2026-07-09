@@ -31,7 +31,10 @@ export async function BlogHeroPreview({ locale }: BlogHeroPreviewProps) {
       <div className="w-full rounded-2xl border border-white/20 bg-white/25 p-4 shadow-lg backdrop-blur-md sm:w-fit sm:p-5 dark:border-white/10 dark:bg-black/35">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
           <div className="text-foreground inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
-            <Newspaper className="h-3.5 w-3.5" />
+            {/* sr-only h2 keeps the document outline correct (hero h1 → this section
+                → post h3) without turning the eyebrow label into all-caps heading text. */}
+            <h2 className="sr-only">{t('home.heading')}</h2>
+            <Newspaper className="h-3.5 w-3.5" aria-hidden />
             {t('home.heading')}
           </div>
           <Link
