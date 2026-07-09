@@ -154,7 +154,7 @@ export default async function HomePage({ params }: HomePageProps) {
               <GlassCard className={heroPanelClass}>
                 {/* Logo – light/dark variant based on theme */}
                 <div className="relative hidden h-20 w-20 shrink-0 sm:block sm:h-36 sm:w-36 lg:h-64 lg:w-64">
-                  {/* SVGs don't benefit from next/image optimization — use <img> directly */}
+                  {/* SVGs don't benefit from next/image optimization — use a plain img element */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/logo-big.svg"

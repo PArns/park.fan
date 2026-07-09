@@ -856,7 +856,7 @@ function ImageForm({
   };
   const pickImage = (ev: React.MouseEvent<HTMLButtonElement>) => {
     // Anchor to the Pick button itself — the panel is sticky so the button
-    // is always on-screen, whereas the underlying <img> can be scrolled
+    // is always on-screen, whereas the underlying img can be scrolled
     // away. The previous image-rect anchoring sent the picker off-viewport
     // whenever the author scrolled before clicking Pick.
     const r = ev.currentTarget.getBoundingClientRect();

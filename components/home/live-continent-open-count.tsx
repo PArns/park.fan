@@ -28,7 +28,7 @@ export function LiveContinentOpenCount({
   return (
     <>
       <div className="mb-2 flex items-baseline gap-2">
-        <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">
+        <span className="text-3xl font-bold text-emerald-600 dark:text-emerald-400">
           {openParkCount}
         </span>
         <span className="text-muted-foreground text-sm">/ {parkCount}</span>

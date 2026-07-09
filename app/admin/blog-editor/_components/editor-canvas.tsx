@@ -58,7 +58,7 @@ export function EditorCanvas({
 }: EditorCanvasProps) {
   const [pickerMode, setPickerMode] = useState<PickerMode | null>(null);
   const [imagePickerOpen, setImagePickerOpen] = useState(false);
-  /** When set, the next ImagePicker pick replaces the existing <img> at this
+  /** When set, the next ImagePicker pick replaces the existing img at this
    *  doc position rather than inserting a fresh image — driven by the
    *  PropertiesPanel's "Pick image…" action via a window event. The src is
    *  carried along so the position can be re-anchored at apply time if edits
@@ -535,7 +535,7 @@ export function EditorCanvas({
                   return true;
                 })
                 .run();
-              // Re-emit the selection so the PropertiesPanel's preview <img>
+              // Re-emit the selection so the PropertiesPanel's preview img
               // re-binds to the new src — without this the right-hand thumbnail
               // would keep showing the old image until the user clicked
               // elsewhere and back.

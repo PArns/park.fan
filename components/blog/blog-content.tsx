@@ -587,6 +587,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         );
       }
       return (
+        // impeccable-disable-next-line side-tab -- blockquote left rule is standard typography, not a card accent
         <blockquote className="border-primary/40 text-foreground/80 my-6 border-l-4 pl-4 italic">
           {injectGlossary(children)}
         </blockquote>

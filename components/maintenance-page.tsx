@@ -43,7 +43,7 @@ export function MaintenancePage() {
       <div className="relative z-10 flex max-w-md flex-col items-center rounded-3xl border border-white/30 bg-white/20 px-8 py-12 text-center shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
         {/* Hero logo – light/dark variant based on theme */}
         <div className="relative mb-8 h-36 w-36 sm:h-44 sm:w-44">
-          {/* SVGs don't benefit from next/image optimization — use <img> directly */}
+          {/* SVGs don't benefit from next/image optimization — use a plain img element */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo-big.svg"

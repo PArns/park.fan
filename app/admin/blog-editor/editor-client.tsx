@@ -486,9 +486,7 @@ export function BlogEditorClient({ initialData }: { initialData: EditorInitialDa
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
-            <h1 className="from-foreground to-foreground/70 bg-gradient-to-r bg-clip-text text-2xl font-bold tracking-tight text-transparent">
-              Blog editor
-            </h1>
+            <h1 className="text-foreground text-2xl font-bold tracking-tight">Blog editor</h1>
             <span
               className={[
                 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase',
