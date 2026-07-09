@@ -16,7 +16,7 @@ import { getPendingImage } from '../_lib/pending-images';
  *   size  ∈ small | medium | large         (optional override)
  *
  * In the editor we honour the same syntax: parse the alt parts, set
- * data-align / data-size attributes on the rendered `<img>` via a node
+ * data-align / data-size attributes on the rendered `img` via a node
  * decoration so CSS can float/center it, and dispatch a parkfan-selection
  * event on click so the PropertiesPanel can offer an inline editor.
  */
@@ -92,7 +92,7 @@ function buildDecorations(doc: PMNode, spans: ImageSpan[]): DecorationSet {
   for (const s of spans) {
     // Freshly-uploaded images don't exist on disk yet — the bytes are staged
     // in the pending-images store until Save commits them. Point the
-    // rendered <img> at the staging blob so the author sees the picture
+    // rendered img at the staging blob so the author sees the picture
     // instead of a broken thumbnail. The doc keeps the final public path.
     const staged = getPendingImage(s.src);
     decorations.push(
@@ -163,7 +163,7 @@ export const ImagePreview = Extension.create({
           handleClick(view, _clickPos, event) {
             const img = eventToElement(event)?.closest('img') as HTMLImageElement | null;
             if (!img) return false;
-            // Find the span matching this <img> by src. When the same image is
+            // Find the span matching this img by src. When the same image is
             // used twice, disambiguate by hypot(Δx, Δy) so the closer instance
             // wins even when both share a line. Freshly-uploaded images render
             // through their staging blob URL (the decoration overrides src),

@@ -4,8 +4,12 @@
   "private": true,
   "license": "GPL-3.0-only",
   "author": "Patrick Arns",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:live": "node scripts/dev-live.mjs",
     "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:hero-images && pnpm generate:attraction-images",
     "build": "pnpm prebuild && next build --turbo",
     "analyze": "pnpm prebuild && cross-env ANALYZE=true next build --webpack",
@@ -26,7 +30,11 @@
     "crawl:translations": "node scripts/crawl-translations.js",
     "crawl:translations:live": "node scripts/crawl-translations.js --live",
     "test:translations": "npm run validate:translations && npm run build && npm run crawl:translations",
-    "release:check": "pnpm lint && pnpm format:check && pnpm validate:translations"
+    "release:check": "pnpm lint && pnpm format:check && pnpm validate:translations",
+    "impeccable:detect": "npx -y impeccable@3 detect app components lib",
+    "impeccable:detect:ci": "npx -y impeccable@3 detect --json app components lib",
+    "impeccable:install": "npx -y impeccable@3 install",
+    "impeccable:update": "npx -y impeccable@3 update"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.1",

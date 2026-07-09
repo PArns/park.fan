@@ -69,3 +69,12 @@ lib/blog/manifest.ts
 !/docs/**/*.md
 !CLAUDE.md
 package-lock.json
+
+# impeccable design tooling — keep shared config (.impeccable/config.json,
+# design.json), ignore per-developer + generated live/annotation state
+/.impeccable/config.local.json
+/.impeccable/live/
+/.impeccable/cache/
+
+# Claude Code — per-developer local settings (not shared)
+/.claude/settings.local.json

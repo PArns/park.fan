@@ -753,6 +753,7 @@ html[data-temp-unit='F'] .u-imperial {
   text-underline-offset: 4px;
 }
 .tiptap-canvas blockquote {
+  /* impeccable-disable-next-line side-tab -- blockquote left rule is standard typography, not a card accent */
   border-left: 3px solid color-mix(in oklab, var(--primary) 50%, transparent);
   padding: 0.25em 0 0.25em 1em;
   color: color-mix(in oklab, var(--foreground) 85%, transparent);

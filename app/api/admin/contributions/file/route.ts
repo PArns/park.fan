@@ -27,7 +27,7 @@ const EXT_TYPES: Record<string, string> = {
  * Streams a contribution image to the admin moderation UI. This is the ONLY way the
  * bytes are exposed: the Blob store is private, so we fetch the blob server-side with
  * `get(..., { access: 'private' })` and stream it back behind the admin pass (which
- * may arrive via the `x-admin-pass` header or a `pass` query param — an <img> tag
+ * may arrive via the `x-admin-pass` header or a `pass` query param — an img tag
  * can't set headers). The local driver reads from `.uploads/` instead.
  */
 export async function GET(request: Request) {
