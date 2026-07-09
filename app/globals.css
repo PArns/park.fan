@@ -10,6 +10,9 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
+  /* Display face for headings. Falls back to Geist where the Bricolage variable
+     isn't mounted (e.g. the admin layout), so headings never lose their font. */
+  --font-display: var(--font-bricolage, var(--font-geist-sans));
   /* Geist_Mono was dropped to save a ~30 KB render-blocking font preload on every
      route. `font-mono` is intentionally aliased to Geist Sans so existing utility
      usages keep rendering (in Geist) without touching every call site. Number-heavy
@@ -179,6 +182,19 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
+  }
+  /* Headings render in the display face (Bricolage Grotesque); body, UI and
+     data stay in Geist. Gives typographic hierarchy without a second body font. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    /* Reference the next/font-emitted variables directly: Tailwind's `@theme
+       inline` tokens (e.g. --font-display) are inlined into utilities, not
+       emitted as real CSS vars, so var(--font-display) would be empty here. */
+    font-family: var(--font-bricolage, var(--font-geist-sans));
   }
   /* Prevent background scroll when a Radix popup is open. react-remove-scroll also
      adds margin-/padding-right to <body> to compensate for the scrollbar it removes —

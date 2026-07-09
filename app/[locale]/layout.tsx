@@ -25,13 +25,23 @@ import {
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from '@/components/seo/structured-data';
-import { Geist } from 'next/font/google';
+import { Geist, Bricolage_Grotesque } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   display: 'swap',
+});
+
+// Display face for headings — paired with Geist (body/UI/data) to give the
+// interface typographic hierarchy and personality. Distinctive enough not to
+// read as a default AI sans.
+const bricolage = Bricolage_Grotesque({
+  variable: '--font-bricolage',
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['600', '700', '800'],
 });
 
 interface LocaleLayoutProps {
@@ -151,7 +161,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Render html/body here to have access to locale for lang attribute
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${geistSans.variable} font-sans antialiased`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${bricolage.variable} font-sans antialiased`}
+        suppressHydrationWarning
+      >
         {umamiOrigin && <link rel="dns-prefetch" href={umamiOrigin} />}
         {/* Set the temperature unit on <html> before paint so weather/calendar values
             (server-rendered in both units, toggled by CSS) show the visitor's unit with
