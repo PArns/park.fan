@@ -1,0 +1,74 @@
+name: impeccable detector
+
+# Runs the impeccable (https://impeccable.style) design anti-pattern detector on
+# PREVIEW builds only — i.e. pull requests (each PR gets a Vercel preview) and
+# manual runs. It never runs on pushes to main, so production deploys are never
+# gated by it.
+#
+# It is NON-BLOCKING: findings are surfaced in the job summary and as a
+# downloadable JSON report, but the check always succeeds. Flip it to a hard
+# gate later by removing `continue-on-error` on the detect step.
+#
+# Toggle it off without touching code: set the repository variable
+# IMPECCABLE_DETECTOR to "off" (Settings → Secrets and variables → Actions →
+# Variables). Unset or any other value = on.
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: impeccable-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  detect:
+    if: ${{ vars.IMPECCABLE_DETECTOR != 'off' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Run impeccable detector
+        id: detect
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          npx -y impeccable@3 detect --json app components lib > impeccable-report.json || true
+
+      - name: Summarize findings
+        run: |
+          node -e '
+            const fs = require("fs");
+            let findings = [];
+            try { findings = JSON.parse(fs.readFileSync("impeccable-report.json", "utf8")); } catch (e) {}
+            const rel = (f) => String(f || "").replace(process.cwd() + "/", "");
+            const out = [];
+            if (!Array.isArray(findings) || findings.length === 0) {
+              out.push("### ✅ impeccable: no design anti-patterns found");
+            } else {
+              out.push(`### 🎨 impeccable found ${findings.length} design anti-pattern${findings.length === 1 ? "" : "s"}`);
+              out.push("");
+              out.push("Non-blocking design-quality hints. Details: `docs/development/impeccable.md`.");
+              out.push("");
+              out.push("| Rule | File | Line | Note |");
+              out.push("| --- | --- | --- | --- |");
+              for (const f of findings) {
+                const note = String(f.description || "").replace(/\|/g, "\\|").slice(0, 140);
+                out.push(`| \`${f.antipattern}\` | \`${rel(f.file)}\` | ${f.line ?? ""} | ${note} |`);
+              }
+            }
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, out.join("\n") + "\n");
+          '
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: impeccable-report
+          path: impeccable-report.json
+          if-no-files-found: ignore

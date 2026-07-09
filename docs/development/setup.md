@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- **Node.js:** v20+
+- **Node.js:** v24+ (pinned via `.nvmrc` and `package.json` `engines`; matches Vercel). Run `nvm use` to switch.
 - **pnpm:** Recommended package manager
 
 ## Installation
@@ -54,10 +54,13 @@ Prebuild runs `generate-build-info.mjs`, `generate-hero-images`, and `generate-a
 | `pnpm validate:translations`   | Validate translation keys         |
 | `pnpm crawl:translations`      | Translation crawler (static)      |
 | `pnpm crawl:translations:live` | Translation crawler (live server) |
+| `pnpm impeccable:detect`       | Design anti-pattern detector      |
+| `pnpm impeccable:install`      | Activate impeccable design skills |
 
 ## Related
 
 - [Scripts](scripts.md)
+- [impeccable (design tooling)](impeccable.md)
 - [Date & Time Handling](datetime-handling.md)
 - [Assets, Images & Content](assets.md)
 - [Flags & Debug](flags-and-debug.md)

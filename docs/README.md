@@ -39,6 +39,7 @@
 | [Assets, Images & Content](development/assets.md)        | Park/attraction images, hero/attraction manifests, content markdown |
 | [Flags & Debug](development/flags-and-debug.md)          | Vercel Toolbar, debug-geo-mode, adding flags                        |
 | [Conventions](development/conventions.md)                | Key rules (URLs, i18n, search, favorites, no secrets, etc.)         |
+| [impeccable (Design Tooling)](development/impeccable.md) | Anti-pattern detector (preview CI) + `/impeccable live` annotation  |
 | [Notes for Sessions](development/notes-for-sessions.md)  | Reminders for AI/human sessions                                     |
 
 ### Design
