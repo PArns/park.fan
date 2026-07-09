@@ -42,20 +42,21 @@ Prebuild runs `generate-build-info.mjs`, `generate-hero-images`, and `generate-a
 
 ## Commands
 
-| Command                        | Description                       |
-| ------------------------------ | --------------------------------- |
-| `pnpm dev`                     | Start dev server (Turbopack)      |
-| `pnpm build`                   | Production build                  |
-| `pnpm start`                   | Run production build              |
-| `pnpm lint`                    | Run ESLint                        |
-| `pnpm lint:fix`                | Fix lint errors                   |
-| `pnpm format`                  | Format with Prettier              |
-| `pnpm format:check`            | Check formatting                  |
-| `pnpm validate:translations`   | Validate translation keys         |
-| `pnpm crawl:translations`      | Translation crawler (static)      |
-| `pnpm crawl:translations:live` | Translation crawler (live server) |
-| `pnpm impeccable:detect`       | Design anti-pattern detector      |
-| `pnpm impeccable:install`      | Activate impeccable design skills |
+| Command                        | Description                               |
+| ------------------------------ | ----------------------------------------- |
+| `pnpm dev`                     | Start dev server (Turbopack)              |
+| `pnpm dev:live`                | Dev server for an impeccable live session |
+| `pnpm build`                   | Production build                          |
+| `pnpm start`                   | Run production build                      |
+| `pnpm lint`                    | Run ESLint                                |
+| `pnpm lint:fix`                | Fix lint errors                           |
+| `pnpm format`                  | Format with Prettier                      |
+| `pnpm format:check`            | Check formatting                          |
+| `pnpm validate:translations`   | Validate translation keys                 |
+| `pnpm crawl:translations`      | Translation crawler (static)              |
+| `pnpm crawl:translations:live` | Translation crawler (live server)         |
+| `pnpm impeccable:detect`       | Design anti-pattern detector              |
+| `pnpm impeccable:install`      | Activate impeccable design skills         |
 
 ## Related
 

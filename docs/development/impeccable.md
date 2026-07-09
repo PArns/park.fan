@@ -71,14 +71,20 @@ running dev server, leave a comment or stroke, and get production-quality
 HTML+CSS variants hot-swapped in via HMR. It runs through the AI harness skill,
 not the website — nothing is injected into the deployed app.
 
-Activate it when you need it:
+The overlay is **agent-driven**: it only attaches while a harness session is
+running `/impeccable live` (that command boots the local live helper, injects
+the overlay `<script>` with a per-session port + token, and long-polls for your
+annotations). Without a polling agent it's just a dimmed mark. So there is no
+always-on switch — you start a dev server and attach the overlay on demand:
 
 ```bash
-pnpm impeccable:install   # installs the impeccable skills into your AI harness
-pnpm dev                  # in another terminal — live mode needs a running server
+pnpm impeccable:install   # one-time: installs the impeccable skills into your AI harness
+pnpm dev:live             # dev server for a live session (plain `pnpm dev` also works)
 ```
 
-Then, inside Claude Code / Cursor:
+`pnpm dev:live` is a thin wrapper around `pnpm dev` (identical Turbopack flags)
+that prints how to attach the overlay; it keeps the default `pnpm dev` clean and
+overlay-free. Then, inside Claude Code / Cursor:
 
 ```
 /impeccable live          # interactive annotate → variant flow

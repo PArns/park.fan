@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:live": "node scripts/dev-live.mjs",
     "prebuild": "node scripts/generate-build-info.mjs && node scripts/generate-client-glossary.mjs && node scripts/generate-blog-manifest.mjs && pnpm generate:hero-images && pnpm generate:attraction-images",
     "build": "pnpm prebuild && next build --turbo",
     "analyze": "pnpm prebuild && cross-env ANALYZE=true next build --webpack",
