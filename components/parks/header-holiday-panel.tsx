@@ -95,13 +95,15 @@ export function HeaderHolidayPanel({
     // Not a card: the same uppercase caption the stat cells use, tied to the board by the divider the
     // caller passes in `className` (a full-height left rule on the right column, a top rule on mobile).
     <div className={cn(className)}>
-      <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
+      {/* Amber icon + caption + body: this is a crowd WARNING (neighbouring breaks → busier), so it
+          reads in the app's amber warning colour, standing out from the muted grey stat captions. */}
+      <span className="flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] text-amber-600 uppercase dark:text-amber-400">
         <Luggage className="h-3 w-3" aria-hidden="true" />
         {t('influencingHolidays')}
       </span>
       {/* The "why it matters" line: neighbouring school breaks send day-trippers here → busier than
           usual. Spells out the crowd consequence so the regions below read as a reason, not a label. */}
-      <p className="text-muted-foreground mt-1.5 max-w-2xl text-sm leading-relaxed">
+      <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-amber-700 dark:text-amber-200/90">
         {t('influencingHolidaysBody')}
       </p>
       <div className="mt-2.5 flex flex-wrap gap-1.5">
