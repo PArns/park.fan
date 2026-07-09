@@ -288,7 +288,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
           {/* Park Header */}
           <div className="mb-8">
             <GlassCard variant="medium">
-              <div className="flex flex-wrap items-start justify-between gap-4">
+              {/* Title row: park name + location on the left, favourite button pinned top-right. */}
+              <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
                       park name, only lighter weight) so the target term "{park} Wartezeiten"
@@ -304,6 +305,15 @@ export default async function ParkPage({ params }: ParkPageProps) {
                       <span>{translateGeoSlug(tGeo, 'countries', country, countryName)}</span>
                     </address>
                   </div>
+                </div>
+                {park.id && <ParkFavoriteButton parkId={park.id} />}
+              </div>
+
+              {/* Board row: today's stats board + the neighbouring-holidays column side by side, top-
+                  aligned so the holiday caption lines up with STATUS (not the header top). On < lg the
+                  holiday context has no right column and stacks under the intro instead. */}
+              <div className="flex flex-wrap items-stretch gap-4">
+                <div className="min-w-0 flex-1">
                   {/* At-a-glance "now vs. AI forecast" strip — live status/crowd next to
                       today's predicted crowd (the forecast column loads last per the
                       loading-priority rule; it shares the calendar query with the best-days
@@ -321,22 +331,30 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
-                </div>
-                {/* Right column (lg+ only): when neighbouring-region school holidays are driving the
-                    crowds, name those regions here — the "why is it so busy" behind the forecast. It
-                    collapses to nothing off-season; below lg the compact holiday badge in the stats
-                    band covers it. */}
-                <div className="flex items-start gap-3">
+                  {/* Mobile/tablet (< lg): the neighbouring-holidays context has no right column to
+                      live in, so it stacks here as a band row (top hairline), still using the board's
+                      caption typography rather than a floating card. */}
                   <HeaderHolidayPanel
                     initialData={park}
                     continent={continent}
                     country={country}
                     city={city}
                     parkSlug={parkSlug}
-                    className="hidden w-64 lg:block"
+                    className="border-border/50 mt-4 border-t pt-4 lg:hidden"
                   />
-                  {park.id && <ParkFavoriteButton parkId={park.id} />}
                 </div>
+                {/* Right column (lg+): the neighbouring-holidays context fills the empty space beside
+                    the board as an integral column — a full-height left divider + `mt-5 pt-4` matching
+                    the stats band's top rule, so its caption sits at the SAME height as STATUS. Not a
+                    floating card. Collapses to nothing when no influencing holidays apply. */}
+                <HeaderHolidayPanel
+                  initialData={park}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  className="border-border/50 mt-5 hidden w-64 shrink-0 self-stretch border-l pt-4 pl-5 lg:block xl:w-72"
+                />
               </div>
             </GlassCard>
           </div>

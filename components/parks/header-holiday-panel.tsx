@@ -18,12 +18,17 @@ interface HeaderHolidayPanelProps {
 }
 
 /**
- * Right-column context panel that spells out the NEIGHBOURING-region school holidays driving today's
- * crowds — the concrete "why is it so busy" behind the crowd forecast, shown as a warm amber card
- * with the regions as chips (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Returns null when
- * no influencing holidays apply. Reads the SAME client-derived schedule as <ParkHeaderStats> via
- * useTodaySchedule (shared live query → no extra fetch); German states are named locally, every other
- * region collapses to its localised country name via Intl.DisplayNames.
+ * Neighbouring-holidays context — the "why is it so busy" behind the crowd forecast. NOT a floating
+ * card: just a caption + explanation + region chips using the header board's own typography (the same
+ * uppercase caption the stat cells use), so it reads as an integral part of the header. The DIVIDER
+ * that ties it to the board is supplied by the caller via `className` — a full-height left rule
+ * (`border-l`) when it sits as the header's right-hand column on lg+, or a top rule (`border-t`) when
+ * it stacks as a band row on mobile. Returns null when no influencing holidays apply. A one-line
+ * explanation of the crowd consequence (day-trippers from those regions → busier than usual) sits
+ * above the regions (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Reads the SAME
+ * client-derived schedule as <ParkHeaderStats> via useTodaySchedule (shared live query → no extra
+ * fetch); German states are named locally, every other region collapses to its localised country name
+ * via Intl.DisplayNames.
  */
 export function HeaderHolidayPanel({
   initialData,
@@ -87,33 +92,31 @@ export function HeaderHolidayPanel({
   const overflow = regions.length - shown.length;
 
   return (
-    <div
-      className={cn(
-        'rounded-xl border border-amber-200/70 bg-amber-50/60 px-4 py-3 shadow-sm backdrop-blur-sm dark:border-amber-800/40 dark:bg-amber-950/30',
-        className
-      )}
-    >
-      <div className="flex items-center gap-2">
-        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900/50 dark:text-amber-300">
-          <Luggage className="h-4 w-4" aria-hidden="true" />
-        </span>
-        <span className="text-foreground text-xs leading-tight font-semibold">
-          {t('influencingHolidays')}
-        </span>
-      </div>
+    // Not a card: the same uppercase caption the stat cells use, tied to the board by the divider the
+    // caller passes in `className` (a full-height left rule on the right column, a top rule on mobile).
+    <div className={cn(className)}>
+      {/* Amber icon + caption + body: this is a crowd WARNING (neighbouring breaks → busier), so it
+          reads in the app's amber warning colour, standing out from the muted grey stat captions. */}
+      <span className="flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] text-amber-600 uppercase dark:text-amber-400">
+        <Luggage className="h-3 w-3" aria-hidden="true" />
+        {t('influencingHolidays')}
+      </span>
+      {/* The "why it matters" line: neighbouring school breaks send day-trippers here → busier than
+          usual. Spells out the crowd consequence so the regions below read as a reason, not a label. */}
+      <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-amber-700 dark:text-amber-200/90">
+        {t('influencingHolidaysBody')}
+      </p>
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         {shown.map((r) => (
           <span
             key={r}
-            className="rounded-md bg-amber-100/70 px-2 py-0.5 text-[11px] font-medium text-amber-800 dark:bg-amber-900/40 dark:text-amber-200"
+            className="rounded-md border border-amber-300/60 bg-amber-50/50 px-2 py-0.5 text-xs font-medium text-amber-700 dark:border-amber-800/50 dark:bg-amber-950/30 dark:text-amber-300"
           >
             {r}
           </span>
         ))}
         {overflow > 0 && (
-          <span className="self-center text-[11px] font-medium text-amber-700/70 dark:text-amber-300/70">
-            +{overflow}
-          </span>
+          <span className="text-muted-foreground self-center text-xs font-medium">+{overflow}</span>
         )}
       </div>
     </div>

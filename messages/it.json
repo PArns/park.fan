@@ -536,6 +536,7 @@
     "crowdNow": "Affluenza ora",
     "localTime": "ora locale",
     "influencingHolidays": "Vacanze nelle regioni vicine",
+    "influencingHolidaysBody": "Lì sono in vacanza scolastica: arrivano molti visitatori giornalieri. Aspettati più folla e attese più lunghe del solito.",
     "stats": {
       "title": "Statistiche storiche sui tempi di attesa",
       "subtitle": "Basato su {days} giorni di dati registrati · Ultimi {years} anni",

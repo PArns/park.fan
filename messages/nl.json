@@ -536,6 +536,7 @@
     "crowdNow": "Drukte nu",
     "localTime": "lokale tijd",
     "influencingHolidays": "Vakantie in nabije regio's",
+    "influencingHolidaysBody": "Daar is nu schoolvakantie – van daaruit komen veel dagjesmensen. Reken op meer drukte en langere wachttijden dan normaal.",
     "stats": {
       "title": "Historische wachttijdstatistieken",
       "subtitle": "Gebaseerd op {days} dagen geregistreerde data · Afgelopen {years} jaar",
