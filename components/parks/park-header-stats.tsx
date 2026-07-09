@@ -110,10 +110,15 @@ export function ParkHeaderStats({
     from,
     to,
   });
-  const predictedToday = useMemo(
-    () => calendar?.days.find((d) => d.isToday)?.crowdLevel ?? null,
-    [calendar]
-  );
+  // "Prognose heute" = the ML FORECAST for today (predicted peak), NOT the live level:
+  // the calendar's today `crowdLevel` is overridden with real-time occupancy, so we read
+  // the separate `predictedCrowdLevel`. Fall back to crowdLevel only on older API builds /
+  // unratable days (no regression), and never surface a "closed" sentinel as a forecast.
+  const predictedToday = useMemo(() => {
+    const today = calendar?.days.find((d) => d.isToday);
+    const level = today?.predictedCrowdLevel ?? today?.crowdLevel ?? null;
+    return level === 'closed' ? null : level;
+  }, [calendar]);
 
   const holidayBadges = sched.holiday
     ? [

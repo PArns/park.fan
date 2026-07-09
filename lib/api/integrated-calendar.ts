@@ -103,6 +103,7 @@ function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCa
     date: d.date,
     status: d.status,
     crowdLevel: d.crowdLevel,
+    predictedCrowdLevel: d.predictedCrowdLevel,
     isToday: d.isToday,
     isHoliday: d.isHoliday,
     isBridgeDay: d.isBridgeDay,
