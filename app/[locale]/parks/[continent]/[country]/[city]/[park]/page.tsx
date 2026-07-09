@@ -34,6 +34,7 @@ import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/red
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
+import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
@@ -287,7 +288,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           {/* Park Header */}
           <div className="mb-8">
             <GlassCard variant="medium">
-              <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="flex flex-wrap items-stretch justify-between gap-4">
                 <div className="min-w-0 flex-1">
                   {/* The wait-times keyword lives INSIDE the h1 (same size + color as the
                       park name, only lighter weight) so the target term "{park} Wartezeiten"
@@ -316,14 +317,38 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   />
                   {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
                       text with the exact "Wartezeiten im {park}" phrase + "heute" that the
-                      live (client-streamed) grid doesn't provide as static text. The
-                      neighbouring-region holiday context is rendered as a band row inside
-                      <ParkHeaderStats> above, integral to the header board (no floating card). */}
+                      live (client-streamed) grid doesn't provide as static text. */}
                   <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
+                  {/* Mobile/tablet (< lg): the neighbouring-holidays context has no right column to
+                      live in, so it stacks here as a band row (top hairline), still using the board's
+                      caption typography rather than a floating card. */}
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="border-border/50 mt-4 border-t pt-4 lg:hidden"
+                  />
                 </div>
-                {park.id && <ParkFavoriteButton parkId={park.id} />}
+                {/* Right column (lg+): the neighbouring-holidays context fills the empty space to the
+                    right of the board as an integral column — a full-height left divider (matching the
+                    stat-cell rules) + the board's caption typography, NOT a floating amber card. The
+                    favourite button keeps the top-right corner beside it. Collapses to nothing when no
+                    influencing holidays apply. */}
+                <div className="flex items-start gap-4 self-stretch">
+                  <HeaderHolidayPanel
+                    initialData={park}
+                    continent={continent}
+                    country={country}
+                    city={city}
+                    parkSlug={parkSlug}
+                    className="border-border/50 hidden w-64 shrink-0 self-stretch border-l pl-5 lg:block xl:w-72"
+                  />
+                  {park.id && <ParkFavoriteButton parkId={park.id} />}
+                </div>
               </div>
             </GlassCard>
           </div>

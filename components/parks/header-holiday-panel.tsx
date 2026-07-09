@@ -18,14 +18,17 @@ interface HeaderHolidayPanelProps {
 }
 
 /**
- * Neighbouring-holidays context — the "why is it so busy" behind the crowd forecast. Rendered as a
- * full-width row INSIDE the <ParkHeaderStats> board (not a floating card), so it reads as an integral
- * part of the header's left column: a hairline separator + an uppercase caption matching the stat
- * cells, a one-line explanation of the crowd consequence (day-trippers from those regions → busier
- * than usual), and the regions as subtle chips (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz).
- * Returns null when no influencing holidays apply. Reads the SAME client-derived schedule as
- * <ParkHeaderStats> via useTodaySchedule (shared live query → no extra fetch); German states are named
- * locally, every other region collapses to its localised country name via Intl.DisplayNames.
+ * Neighbouring-holidays context — the "why is it so busy" behind the crowd forecast. NOT a floating
+ * card: just a caption + explanation + region chips using the header board's own typography (the same
+ * uppercase caption the stat cells use), so it reads as an integral part of the header. The DIVIDER
+ * that ties it to the board is supplied by the caller via `className` — a full-height left rule
+ * (`border-l`) when it sits as the header's right-hand column on lg+, or a top rule (`border-t`) when
+ * it stacks as a band row on mobile. Returns null when no influencing holidays apply. A one-line
+ * explanation of the crowd consequence (day-trippers from those regions → busier than usual) sits
+ * above the regions (e.g. Rheinland-Pfalz · Hessen · Frankreich · Schweiz). Reads the SAME
+ * client-derived schedule as <ParkHeaderStats> via useTodaySchedule (shared live query → no extra
+ * fetch); German states are named locally, every other region collapses to its localised country name
+ * via Intl.DisplayNames.
  */
 export function HeaderHolidayPanel({
   initialData,
@@ -89,9 +92,9 @@ export function HeaderHolidayPanel({
   const overflow = regions.length - shown.length;
 
   return (
-    // A band row, not a card: a top hairline + the same uppercase caption the stat cells use, so it
-    // extends the header board instead of floating over it.
-    <div className={cn('border-border/50 border-t pt-4', className)}>
+    // Not a card: the same uppercase caption the stat cells use, tied to the board by the divider the
+    // caller passes in `className` (a full-height left rule on the right column, a top rule on mobile).
+    <div className={cn(className)}>
       <span className="text-muted-foreground flex items-center gap-1 text-[10px] font-semibold tracking-[0.08em] uppercase">
         <Luggage className="h-3 w-3" aria-hidden="true" />
         {t('influencingHolidays')}

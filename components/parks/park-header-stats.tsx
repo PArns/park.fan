@@ -9,7 +9,6 @@ import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
 import { CrowdLevelBadge } from './crowd-level-badge';
-import { HeaderHolidayPanel } from './header-holiday-panel';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
@@ -234,17 +233,6 @@ export function ParkHeaderStats({
 
       {/* Holiday / bridge-day / school-vacation context — explains today's crowds */}
       {holidayBadges.length > 0 && <div className="mt-4 flex flex-wrap gap-2">{holidayBadges}</div>}
-
-      {/* Neighbouring-region school holidays — rendered here as a band row so the "why is it busy"
-          context sits inside the header board (integral to the left column), not as a floating card. */}
-      <HeaderHolidayPanel
-        initialData={initialData}
-        continent={continent}
-        country={country}
-        city={city}
-        parkSlug={parkSlug}
-        className="mt-4"
-      />
     </div>
   );
 }
