@@ -75,3 +75,6 @@ package-lock.json
 /.impeccable/config.local.json
 /.impeccable/live/
 /.impeccable/cache/
+
+# Claude Code — per-developer local settings (not shared)
+/.claude/settings.local.json
