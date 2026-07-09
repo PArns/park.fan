@@ -34,7 +34,6 @@ import { findParkPageRedirect, findRelocatedParkRedirect } from '@/lib/utils/red
 import { stripNewPrefix } from '@/lib/utils';
 import { LiveParkData } from '@/components/parks/live-park-data';
 import { ParkHeaderStats } from '@/components/parks/park-header-stats';
-import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
@@ -317,38 +316,14 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   />
                   {/* Keyword-rich, server-rendered intro — gives Google crawlable topical
                       text with the exact "Wartezeiten im {park}" phrase + "heute" that the
-                      live (client-streamed) grid doesn't provide as static text. */}
+                      live (client-streamed) grid doesn't provide as static text. The
+                      neighbouring-region holiday context is rendered as a band row inside
+                      <ParkHeaderStats> above, integral to the header board (no floating card). */}
                   <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
-                  {/* Mobile/tablet (< lg): the neighbouring-holidays panel renders full-width here,
-                      below the intro, since the right column collapses. Hidden on lg+ where the same
-                      panel lives in the right column instead (rendering twice is free — both read the
-                      shared live query and collapse to null off-season). */}
-                  <HeaderHolidayPanel
-                    initialData={park}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    className="mt-4 lg:hidden"
-                  />
                 </div>
-                {/* Right column (lg+ only): when neighbouring-region school holidays are driving the
-                    crowds, name those regions here — the "why is it so busy" behind the forecast, with
-                    a short line on the crowd consequence. Collapses to nothing off-season; below lg the
-                    full-width copy above the fold covers it. */}
-                <div className="flex items-start gap-3">
-                  <HeaderHolidayPanel
-                    initialData={park}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    className="hidden w-72 lg:block"
-                  />
-                  {park.id && <ParkFavoriteButton parkId={park.id} />}
-                </div>
+                {park.id && <ParkFavoriteButton parkId={park.id} />}
               </div>
             </GlassCard>
           </div>
