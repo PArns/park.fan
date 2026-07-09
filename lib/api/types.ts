@@ -1229,6 +1229,11 @@ export interface CalendarDay {
   isEstimated?: boolean;
   hours?: OperatingHours;
   crowdLevel: CrowdLevel | 'closed';
+  /** ML FORWARD prediction for this day (predicted peak ÷ typical-day-peak). Equals
+   *  crowdLevel on future days; on TODAY it differs — crowdLevel is overridden with the
+   *  live occupancy, while this stays the true "forecast today". Optional: absent on
+   *  API builds predating the field, and on days with no ratable prediction. */
+  predictedCrowdLevel?: CrowdLevel;
   avgWaitTime?: number;
   crowdScore?: number;
   weather?: WeatherSummary;
