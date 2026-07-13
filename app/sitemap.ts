@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getGeoStructure } from '@/lib/api/discovery';
+import { getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { locales, SITE_URL } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import type { GlossaryTerm } from '@/lib/glossary/types';
@@ -160,6 +161,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         for (const park of city.parks) {
           const parkPath = `/parks/${continent.slug}/${country.slug}/${city.slug}/${park.slug}`;
           const parkAlternates = buildAlternates(() => parkPath);
+          // Image sitemap extension: associates the park's hero photo with its URL so Google can
+          // pick it as the SERP thumbnail (Google-recommended over relying on in-page discovery alone).
+          const parkBg = getParkBackgroundImage(park.slug);
+          const parkImages = parkBg ? [`${BASE_URL}${parkBg}`] : undefined;
 
           for (const locale of locales) {
             routes.push({
@@ -167,6 +172,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
               changeFrequency: 'daily',
               priority: 1.0,
               alternates: parkAlternates,
+              ...(parkImages && { images: parkImages }),
             });
           }
         }

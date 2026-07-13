@@ -112,6 +112,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
     city.parks.map((park) => ({
       name: stripNewPrefix(park.name),
       url: `/${locale}/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+      image: getParkBackgroundImage(park.slug),
     }))
   );
 

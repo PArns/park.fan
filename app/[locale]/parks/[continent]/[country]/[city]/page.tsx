@@ -139,6 +139,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const itemListItems = parks.map((park) => ({
     name: stripNewPrefix(park.name),
     url: `/${locale}/parks/${continent}/${country}/${citySlug}/${park.slug}`,
+    image: getParkBackgroundImage(park.slug),
   }));
 
   return (

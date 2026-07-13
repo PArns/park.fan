@@ -87,13 +87,21 @@ function normalizeCuisineType(cuisineType: string | null): string | undefined {
   return map[cuisineType.toLowerCase()] ?? cuisineType;
 }
 
-export function OrganizationStructuredData({ description }: { description?: string }) {
+export function OrganizationStructuredData({
+  description,
+  image,
+}: {
+  description?: string;
+  /** Representative image (e.g. the homepage OG card) — a thumbnail candidate for brand results. */
+  image?: string;
+}) {
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'park.fan',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
+    ...(image && { image }),
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
@@ -115,10 +123,13 @@ export function WebSiteStructuredData({
   locale,
   siteName = 'park.fan',
   description,
+  image,
 }: {
   locale: string;
   siteName?: string;
   description?: string;
+  /** Representative image (e.g. the locale's homepage OG card). */
+  image?: string;
 }) {
   const baseUrl = `${SITE_URL}/${locale}`;
   const searchUrl = `${baseUrl}/search?q={search_term_string}`;
@@ -129,6 +140,7 @@ export function WebSiteStructuredData({
     name: siteName,
     url: baseUrl,
     ...(description && { description }),
+    ...(image && { image }),
     inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction' as const,
@@ -219,27 +231,31 @@ export function ItemListStructuredData({
   listName,
   pageUrl,
 }: {
-  items: { name: string; url: string }[];
+  /**
+   * `image` (when provided) gives Google a per-item thumbnail candidate — the
+   * signal that lets list/hub pages surface picture results in the SERP. Pass
+   * an absolute or site-relative path; `null`/omitted items simply carry no image.
+   */
+  items: { name: string; url: string; image?: string | null }[];
   listName?: string;
   pageUrl: string;
 }) {
   if (!items || items.length === 0) return null;
 
-  const absoluteUrls = items.map((item) =>
-    item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`
-  );
+  const toAbsolute = (path: string) => (path.startsWith('http') ? path : `${SITE_URL}${path}`);
 
   const data = {
     '@context': 'https://schema.org' as const,
     '@type': 'ItemList' as const,
     ...(listName && { name: listName }),
-    url: pageUrl.startsWith('http') ? pageUrl : `${SITE_URL}${pageUrl}`,
+    url: toAbsolute(pageUrl),
     numberOfItems: items.length,
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem' as const,
       position: index + 1,
       name: item.name,
-      item: absoluteUrls[index],
+      item: toAbsolute(item.url),
+      ...(item.image && { image: toAbsolute(item.image) }),
     })),
   };
 
