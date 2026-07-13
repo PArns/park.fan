@@ -293,19 +293,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                  bar fills to 100% here, before the references/related sections. */}
               <div id="blog-progress-end" aria-hidden="true" />
 
-              {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
-                 the post — inline link references, embedded widgets, plus the
-                 explicit relatedParks / relatedAttractions frontmatter. */}
-              <BlogReferences post={post} />
+              {/* Post footer on its own frosted panel so the headings/links stay
+                 legible where they scroll over the fixed cover image — same
+                 glass treatment as the article body. Keep-reading first (more
+                 posts), then the parks & rides referenced here, then prev/next. */}
+              <div className="bg-background/60 mt-8 rounded-xl border px-6 shadow-sm backdrop-blur-md">
+                <BlogRelatedPosts
+                  locale={locale as Locale}
+                  currentTranslationKey={post.translationKey}
+                  category={post.frontmatter.category}
+                  tags={post.frontmatter.tags ?? []}
+                />
 
-              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
+                {/* Auto-collected, deduplicated parks & rides mentioned anywhere in
+                   the post — inline link references, embedded widgets, plus the
+                   explicit relatedParks / relatedAttractions frontmatter. */}
+                <BlogReferences post={post} />
 
-              <BlogRelatedPosts
-                locale={locale as Locale}
-                currentTranslationKey={post.translationKey}
-                category={post.frontmatter.category}
-                tags={post.frontmatter.tags ?? []}
-              />
+                <BlogPostNav
+                  locale={locale as Locale}
+                  currentTranslationKey={post.translationKey}
+                />
+              </div>
             </div>
           </div>
         </article>
