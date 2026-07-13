@@ -41,10 +41,7 @@ interface BlogBottomSectionsProps {
  */
 export function BlogBottomSections({ locale }: BlogBottomSectionsProps) {
   return (
-    // Frosted backdrop so these sections stay legible where they scroll over the
-    // fixed cover image on post/listing pages. backdrop-blur is a no-op over the
-    // solid page background elsewhere, so this stays a blog-only visual effect.
-    <div className="bg-background/40 backdrop-blur-md">
+    <>
       <section className="border-b px-4 py-8">
         <div className="container mx-auto">
           <NearbyParksCard />
@@ -56,6 +53,6 @@ export function BlogBottomSections({ locale }: BlogBottomSectionsProps) {
       <Suspense fallback={<FeaturedParksSkeleton />}>
         <FeaturedParksSlot locale={locale} />
       </Suspense>
-    </div>
+    </>
   );
 }

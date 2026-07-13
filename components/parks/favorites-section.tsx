@@ -110,10 +110,10 @@ export function FavoritesSection() {
     return (
       <section className="bg-muted/30 px-4 py-8">
         <div className="container mx-auto">
-          <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+          <div className="bg-background/70 mb-4 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 backdrop-blur-md">
             <Star className="text-primary h-5 w-5" />
-            {t('title')}
-          </h2>
+            <h2 className="text-xl font-bold">{t('title')}</h2>
+          </div>
           <div className="space-y-6">
             {showParkSkeletons && (
               <div>
@@ -160,10 +160,10 @@ export function FavoritesSection() {
     return (
       <section className="bg-muted/30 px-4 py-12">
         <div className="container mx-auto">
-          <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+          <div className="bg-background/70 mb-4 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 backdrop-blur-md">
             <Star className="text-primary h-5 w-5" />
-            {t('title')}
-          </h2>
+            <h2 className="text-xl font-bold">{t('title')}</h2>
+          </div>
           <p className="text-foreground mt-4 text-center text-base font-semibold">{t('empty')}</p>
           <p className="text-muted-foreground mt-2 text-center text-sm">{t('emptyHint')}</p>
         </div>

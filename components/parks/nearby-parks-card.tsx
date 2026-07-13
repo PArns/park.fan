@@ -227,7 +227,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   if (!permissionGranted && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+        <h2 className="bg-background/70 mb-2 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 text-xl font-bold backdrop-blur-md">
           <MapPin className="text-muted-foreground h-5 w-5" />
           {t('title')}
         </h2>
@@ -248,7 +248,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   if (showErrorCard) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-        <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+        <h2 className="bg-background/70 mb-2 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 text-xl font-bold backdrop-blur-md">
           <MapPin className="text-park-primary h-5 w-5" />
           {t('loadError')}
         </h2>
@@ -498,7 +498,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
     if (parks.length === 0) {
       return (
         <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
-          <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+          <h2 className="bg-background/70 mb-2 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 text-xl font-bold backdrop-blur-md">
             <MapPin className="text-muted-foreground h-5 w-5" />
             {t('title')}
           </h2>
@@ -509,7 +509,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
     return (
       <section className={cn(TOP_SPACING, className)}>
-        <h2 className="mb-2 flex items-center gap-2 text-xl font-bold">
+        <h2 className="bg-background/70 mb-2 flex w-fit items-center gap-2 rounded-xl px-4 py-2.5 text-xl font-bold backdrop-blur-md">
           <MapPin className="text-park-primary h-5 w-5" />
           {nearestOpenPark
             ? t('nearestOpenTitle')

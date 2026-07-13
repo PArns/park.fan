@@ -293,10 +293,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                  bar fills to 100% here, before the references/related sections. */}
               <div id="blog-progress-end" aria-hidden="true" />
 
+              {/* Prev/next as a standalone, full-width bar right under the article
+                 so it doesn't get buried under the footer sections. */}
+              <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
+
               {/* Post footer on its own frosted panel so the headings/links stay
                  legible where they scroll over the fixed cover image — same
                  glass treatment as the article body. Keep-reading first (more
-                 posts), then the parks & rides referenced here, then prev/next. */}
+                 posts), then the parks & rides referenced here. */}
               <div className="bg-background/60 mt-8 rounded-xl border px-6 shadow-sm backdrop-blur-md">
                 <BlogRelatedPosts
                   locale={locale as Locale}
@@ -309,11 +313,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                    the post — inline link references, embedded widgets, plus the
                    explicit relatedParks / relatedAttractions frontmatter. */}
                 <BlogReferences post={post} />
-
-                <BlogPostNav
-                  locale={locale as Locale}
-                  currentTranslationKey={post.translationKey}
-                />
               </div>
             </div>
           </div>

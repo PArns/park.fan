@@ -55,11 +55,15 @@ export async function FeaturedParksSlot({ locale }: { locale: string }) {
   return (
     <section className="px-4 py-12">
       <div className="container mx-auto">
-        <div className="mb-2 flex items-center gap-2">
-          <Star className="text-primary h-5 w-5" />
-          <h2 className="text-xl font-bold">{tHome('sections.featuredParks')}</h2>
+        <div className="bg-background/70 mb-8 w-fit rounded-xl px-4 py-3 backdrop-blur-md">
+          <div className="flex items-center gap-2">
+            <Star className="text-primary h-5 w-5" />
+            <h2 className="text-xl font-bold">{tHome('sections.featuredParks')}</h2>
+          </div>
+          <p className="text-muted-foreground mt-1 text-sm">
+            {tHome('sections.featuredParksIntro')}
+          </p>
         </div>
-        <p className="text-muted-foreground mb-8 text-sm">{tHome('sections.featuredParksIntro')}</p>
 
         <FeaturedParkCards parks={parks} />
 
