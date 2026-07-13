@@ -457,17 +457,30 @@ kleiner.
 Genau diese Profile sind der Grund, warum jede Parkseite auf park.fan
 neben den Live-Wartezeiten auch die Langzeit-Statistiken zeigt — denn
 „voll" ist relativ: 45 Minuten sind in Brühl ein schlechter Tag und im
-Magic Kingdom ein Geschenk. Hier der direkte Vergleich aus unseren
-Daten — typische Wartezeiten nach Monat und Wochentag, einmal Brühl,
-einmal Orlando:
+Magic Kingdom ein Geschenk. Schau dir denselben Datensatz für beide
+Parks an — typische Wartezeiten nach Monat und Wochentag, aus den
+letzten zwei Saisons.
+
+**Zuerst das [Phantasialand](ref:phantasialand?bare) in Brühl** — der
+kompakte Extremfall: Wenn hier eine Zahl hochgeht, dann steil, weil sich
+alles auf wenige Headliner konzentriert.
 
 ```stats-widget slug=phantasialand
 
 ```
 
+**Und jetzt das [Magic Kingdom](ref:magic-kingdom-park?bare) in Orlando** —
+der meistbesuchte Park der Welt: höhere Grundlast, aber breiter verteilt
+über Dutzende Attraktionen. Achte darauf, wie unterschiedlich schon die
+„typischen" Minuten und die Saison-Kurve über das Jahr aussehen.
+
 ```stats-widget slug=magic-kingdom-park
 
 ```
+
+Zwei Parks, zwei völlig verschiedene Wartezeit-Handschriften — und genau
+solche Muster sind es, aus denen unser Modell lernt, wann sich ein Besuch
+lohnt.
 
 ## Aufrücken bringt nichts — und bremst die Schlange sogar aus
 
