@@ -54,6 +54,13 @@ export interface ResolvedAttraction {
 
 interface IndexedGeo {
   parksBySlug: Map<string, ResolvedPark>;
+  /**
+   * Keyed by the full `continent/country/city/parkSlug` path. Needed because a
+   * bare park slug is **not unique** — e.g. `disneyland-park` exists in both
+   * Paris and Anaheim. When a ref carries the full geo path we resolve through
+   * this map so the correct park (and its rides) is returned.
+   */
+  parksByPath: Map<string, ResolvedPark>;
 }
 
 const buildIndex = cache(async (): Promise<IndexedGeo> => {
@@ -64,13 +71,14 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
     geo = null;
   }
   const parksBySlug = new Map<string, ResolvedPark>();
-  if (!geo) return { parksBySlug };
+  const parksByPath = new Map<string, ResolvedPark>();
+  if (!geo) return { parksBySlug, parksByPath };
 
   for (const continent of geo.continents) {
     for (const country of continent.countries) {
       for (const city of country.cities) {
         for (const park of city.parks) {
-          parksBySlug.set(park.slug, {
+          const resolved: ResolvedPark = {
             id: park.id,
             name: park.name,
             slug: park.slug,
@@ -93,22 +101,47 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
             hasOperatingSchedule: park.hasOperatingSchedule,
             todaySchedule: park.todaySchedule,
             nextSchedule: park.nextSchedule,
-          });
+          };
+          // Bare slug is last-write-wins on collisions; the path index keeps
+          // every park addressable and is preferred whenever a geoPath is known.
+          parksBySlug.set(park.slug, resolved);
+          parksByPath.set(
+            `${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
+            resolved
+          );
         }
       }
     }
   }
-  return { parksBySlug };
+  return { parksBySlug, parksByPath };
 });
 
-export const resolvePark = cache(async (slug: string): Promise<ResolvedPark | null> => {
-  const { parksBySlug } = await buildIndex();
-  return parksBySlug.get(slug) ?? null;
-});
+/**
+ * Resolve a park by slug. Pass `geoPath` (`continent/country/city`) to
+ * disambiguate slugs shared by multiple parks (e.g. Disneyland Paris vs.
+ * Anaheim); it wins over the bare-slug lookup and falls back to it when the
+ * path isn't found.
+ */
+export const resolvePark = cache(
+  async (slug: string, geoPath?: string): Promise<ResolvedPark | null> => {
+    const { parksBySlug, parksByPath } = await buildIndex();
+    if (geoPath) {
+      const byPath = parksByPath.get(`${geoPath}/${slug}`);
+      if (byPath) return byPath;
+    }
+    return parksBySlug.get(slug) ?? null;
+  }
+);
 
 export const resolveAttraction = cache(
-  async (parkSlug: string, attractionSlug: string): Promise<ResolvedAttraction | null> => {
-    const park = await resolvePark(parkSlug);
+  async (
+    parkSlug: string,
+    attractionSlug: string,
+    geoPath?: string
+  ): Promise<ResolvedAttraction | null> => {
+    // geoPath disambiguates a shared park slug (e.g. Disneyland Paris vs.
+    // Anaheim) so the ride is fetched from the intended park's geo path.
+    const park = await resolvePark(parkSlug, geoPath);
     if (!park) return null;
 
     // Try to enrich with the live attraction payload — failures are non-fatal,
@@ -188,13 +221,24 @@ function prettifyName(slug: string): string {
  * full-path form the editor produces — `/parks/<continent>/<country>/<city>/
  * <parkSlug>[/<rideSlug>]`. The renderer + resolver only ever sees the bare
  * slug pair after this normaliser runs, so existing posts keep working.
+ *
+ * When the full geo-path form is used, `geoPath` (`continent/country/city`) is
+ * returned alongside the bare key so resolution can disambiguate park slugs
+ * that are shared by more than one park (e.g. `disneyland-park` in Paris and
+ * Anaheim). The bare `key` stays unchanged for backward-compatible map/dedup
+ * behaviour; `geoPath` is `undefined` for the short form.
  */
-export function parseRefKey(value: string): { kind: 'park' | 'ride'; key: string } {
+export function parseRefKey(value: string): {
+  kind: 'park' | 'ride';
+  key: string;
+  geoPath?: string;
+} {
   if (value.startsWith('/parks/')) {
     const parts = value.slice('/parks/'.length).split('/').filter(Boolean);
     // [continent, country, city, parkSlug, rideSlug?]
-    if (parts.length === 4) return { kind: 'park', key: parts[3] };
-    if (parts.length >= 5) return { kind: 'ride', key: `${parts[3]}/${parts[4]}` };
+    const geoPath = parts.length >= 4 ? parts.slice(0, 3).join('/') : undefined;
+    if (parts.length === 4) return { kind: 'park', key: parts[3], geoPath };
+    if (parts.length >= 5) return { kind: 'ride', key: `${parts[3]}/${parts[4]}`, geoPath };
   }
   return { kind: value.includes('/') ? 'ride' : 'park', key: value };
 }
@@ -202,9 +246,15 @@ export function parseRefKey(value: string): { kind: 'park' | 'ride'; key: string
 export function extractInlineRefs(markdown: string): {
   parkSlugs: Set<string>;
   attractions: Set<string>;
+  /** Bare park slug → `continent/country/city` geoPath, when a ref carried one. */
+  parkGeoPaths: Map<string, string>;
+  /** Bare `parkSlug/rideSlug` → geoPath, when a ref carried one. */
+  attractionGeoPaths: Map<string, string>;
 } {
   const parks = new Set<string>();
   const attractions = new Set<string>();
+  const parkGeoPaths = new Map<string, string>();
+  const attractionGeoPaths = new Map<string, string>();
 
   // 1. Inline link references — [label](park:slug) / [label](attraction:p/s)
   //    plus the unified [label](ref:slug) / [label](ref:p/s) form.
@@ -217,12 +267,18 @@ export function extractInlineRefs(markdown: string): {
     else if (value.startsWith('attraction:')) {
       attractions.add(value.slice('attraction:'.length));
     } else if (value.startsWith('ref:')) {
-      const { kind, key } = parseRefKey(value.slice('ref:'.length));
+      const { kind, key, geoPath } = parseRefKey(value.slice('ref:'.length));
       if (kind === 'ride') {
         attractions.add(key);
-        parks.add(key.split('/')[0]);
+        const parkSlug = key.split('/')[0];
+        parks.add(parkSlug);
+        if (geoPath) {
+          attractionGeoPaths.set(key, geoPath);
+          if (!parkGeoPaths.has(parkSlug)) parkGeoPaths.set(parkSlug, geoPath);
+        }
       } else {
         parks.add(key);
+        if (geoPath) parkGeoPaths.set(key, geoPath);
       }
     }
   }
@@ -242,7 +298,7 @@ export function extractInlineRefs(markdown: string): {
     }
   }
 
-  return { parkSlugs: parks, attractions };
+  return { parkSlugs: parks, attractions, parkGeoPaths, attractionGeoPaths };
 }
 
 function extractAttr(source: string, key: string): string | undefined {

@@ -122,7 +122,13 @@ function preserveCustomProtocols(url: string): string {
   return '';
 }
 
-type EntityRef = { kind: 'park' | 'ride'; key: string; options: Set<string> };
+type EntityRef = {
+  kind: 'park' | 'ride';
+  key: string;
+  options: Set<string>;
+  /** `continent/country/city` path, present when the ref used the full geo form. */
+  geoPath?: string;
+};
 
 /**
  * Parse an entity-reference href into a normalized descriptor. Accepts the
@@ -134,9 +140,10 @@ function parseEntityRef(href: string | undefined): EntityRef | null {
   if (href.startsWith('ref:')) {
     const { slug, options } = parseRefOptions(href.slice('ref:'.length));
     // Accept both the legacy short form (`slug` or `parkSlug/rideSlug`) and the
-    // full geo-path form the editor writes — `/parks/<continent>/<…>`.
-    const { kind, key } = parseRefKey(slug);
-    return { kind, key, options };
+    // full geo-path form the editor writes — `/parks/<continent>/<…>`. The
+    // geoPath disambiguates slugs shared by multiple parks (Paris vs. Anaheim).
+    const { kind, key, geoPath } = parseRefKey(slug);
+    return { kind, key, options, geoPath };
   }
   if (href.startsWith('attraction:')) {
     const { slug, options } = parseRefOptions(href.slice('attraction:'.length));
@@ -264,7 +271,8 @@ function segmentize(markdown: string): Segment[] {
 }
 
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
-  const { parkSlugs, attractions } = extractInlineRefs(markdown);
+  const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } =
+    extractInlineRefs(markdown);
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
   // paragraphs without making the renderer async. Dedupe is shared across
@@ -275,15 +283,18 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
   const usedGlossaryTerms = new Set<string>();
 
   const parkEntries = await Promise.all(
-    [...parkSlugs].map(async (slug) => [slug, await resolvePark(slug)] as const)
+    [...parkSlugs].map(
+      async (slug) => [slug, await resolvePark(slug, parkGeoPaths.get(slug))] as const
+    )
   );
   const parkMap = new Map<string, ResolvedPark | null>(parkEntries);
 
   const attractionEntries = await Promise.all(
     [...attractions].map(async (ref) => {
       const [parkSlug, attractionSlug] = ref.split('/');
-      const park = await resolvePark(parkSlug);
-      const attraction = await resolveAttraction(parkSlug, attractionSlug);
+      const geoPath = attractionGeoPaths.get(ref);
+      const park = await resolvePark(parkSlug, geoPath);
+      const attraction = await resolveAttraction(parkSlug, attractionSlug, geoPath);
       return [ref, { park, attraction }] as const;
     })
   );

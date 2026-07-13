@@ -21,10 +21,10 @@ export async function GET(req: NextRequest) {
   if (!ref) {
     return NextResponse.json({ error: 'missing ref' }, { status: 400 });
   }
-  const { kind, key } = parseRefKey(ref);
+  const { kind, key, geoPath } = parseRefKey(ref);
 
   if (kind === 'park') {
-    const park = await resolvePark(key);
+    const park = await resolvePark(key, geoPath);
     if (!park) return NextResponse.json({ kind: 'park', found: false });
     return NextResponse.json({
       kind: 'park',
@@ -46,8 +46,8 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ kind: 'ride', found: false });
   }
   const [attraction, park] = await Promise.all([
-    resolveAttraction(parkSlug, attractionSlug),
-    resolvePark(parkSlug),
+    resolveAttraction(parkSlug, attractionSlug, geoPath),
+    resolvePark(parkSlug, geoPath),
   ]);
   if (!attraction || !park) {
     return NextResponse.json({ kind: 'ride', found: false });
