@@ -25,16 +25,15 @@ coverImage:
   caption: 'Disneys Animal Kingdom: zehntausende Gäste, ein Baum des Lebens — und überall die Frage, wie lange man wofür ansteht.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Wartezeiten verstehen: Warum wir für manche Rides gerne anstehen'
+  title: 'Wartezeiten-Psychologie im Freizeitpark'
   description: >-
-    Warum fühlen sich 60 Minuten manchmal wie 20 an? Pre-Shows,
-    Peak-End-Effekt, Durchsatz und Little's Law erklärt — und wie du mit
-    Live-Wartezeiten und Crowd-Prognosen auf park.fan schlauer anstehst.
+    Warum fühlen sich 60 Minuten Wartezeit an manchen Tagen wie 20 an? Die
+    Psychologie und Mathematik hinter Freizeitpark-Warteschlangen, erklärt.
   keywords:
     - Wartezeiten Freizeitpark
-    - Live Wartezeiten
-    - Wartezeiten live
     - Warteschlangen Psychologie
+    - Freizeitpark Warteschlange
+    - Live Wartezeiten
     - Wartezeiten Prognose
     - Durchsatz Achterbahn
     - Kapazität Freizeitpark
@@ -43,6 +42,7 @@ seo:
     - Pre-Show
     - Peak-End-Regel
     - Crowd Kalender
+    - Flight of Passage Wartezeit
     - Phantasialand Wartezeiten
     - Europa-Park Wartezeiten
     - Disney World Wartezeiten
