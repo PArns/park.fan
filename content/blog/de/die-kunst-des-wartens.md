@@ -208,6 +208,10 @@ Fahrt — ein Story-Coaster mit frei rotierenden Fahrzeugen und
 Rückwärts-Launch — ist das Finale einer Inszenierung, die schon zwanzig
 Minuten vorher begonnen hat.
 
+```gallery-widget folder=/blog/images/cosmic-rewind heading="Der Pavillon vor der Fahrt"
+
+```
+
 Bemerkenswert auch die Kapazitäts-Seite: Cosmic Rewind eröffnete im Mai
 2022 komplett **ohne klassische Standby-Schlange** — Zugang gab es **836
 Tage in Folge** ausschließlich per virtueller Warteschlange über die
