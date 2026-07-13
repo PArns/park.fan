@@ -11,10 +11,10 @@ excerpt: >-
   zu Little's Law — und mittendrin der Grund, warum es park.fan gibt.
 tags:
   - wartezeiten
-  - psychologie
   - warteschlangen
+  - psychologie
+  - park-fan
   - disney
-  - universal
   - orlando
   - europa-park
   - phantasialand
@@ -378,17 +378,18 @@ steht öffentlich auf der [How-to-Seite](/howto) — schummeln zwecklos.
 Womit wir bei einem der ältesten Rätsel der Parkwelt wären: Warum hat
 ausgerechnet **Peter Pan's Flight** — ein gemütlicher Dark Ride von
 1955er-Bauart, keine Achterbahn, kein Thrill — in praktisch jedem
-Disney-Park der Welt, vom **Disneyland Paris** bis nach Orlando, quasi
-permanent 45+ Minuten auf der Anzeige?
+Disney-Park der Welt, vom
+[Disneyland Paris](ref:/parks/europe/france/paris/disneyland-park?bare)
+bis nach Orlando, quasi permanent 45+ Minuten auf der Anzeige?
 
 Die Antwort steckt komplett in der Mathematik von oben:
 
-1. **Piratenschiffe sind keine Massentransportmittel.** Peter Pan
-   fliegt in Paris mit **16 Galeonen** über London, und in jede passen —
-   großzügig gezählt — **fünf Menschen**. Das ist die
-   Beförderungskapazität eines mittleren Fahrstuhls, verteilt auf einen
-   ganzen Nachthimmel. Inoffizielle Zählungen kommen auf etwa **1.200
-   Gäste pro Stunde**, die
+1. **Piratenschiffe sind keine Massentransportmittel.**
+   [Peter Pan's Flight in Paris](ref:/parks/europe/france/paris/disneyland-park/peter-pans-flight?bare)
+   schickt **16 Galeonen** über London, und in jede passen — großzügig
+   gezählt — **fünf Menschen**. Das ist die Beförderungskapazität eines
+   mittleren Fahrstuhls, verteilt auf einen ganzen Nachthimmel.
+   Inoffizielle Zählungen kommen auf etwa **1.200 Gäste pro Stunde**, die
    [Ur-Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
    schafft sogar nur um die 800 — ein einziger Hulk-Zug befördert pro
    Abfahrt doppelt so viele Menschen, wie Peter Pan Schiffe besitzt. Und
