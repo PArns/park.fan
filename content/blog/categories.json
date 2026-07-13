@@ -62,5 +62,13 @@
     "fr": "Guides",
     "es": "Guías",
     "it": "Guide"
+  },
+  "behind-the-scenes": {
+    "en": "Behind the Scenes",
+    "de": "Hinter den Kulissen",
+    "nl": "Achter de Schermen",
+    "fr": "Coulisses",
+    "es": "Entre Bastidores",
+    "it": "Dietro le Quinte"
   }
 }

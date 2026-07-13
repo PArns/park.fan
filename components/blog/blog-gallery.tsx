@@ -59,29 +59,31 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
         )}
       >
         {images.map((img, i) => (
-          <button
-            key={`${img.src}-${i}`}
-            type="button"
-            onClick={() => setOpenIndex(i)}
-            className="group bg-muted focus-visible:ring-ring/40 relative aspect-[4/3] overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]"
-            aria-label={t('gallery.openImage', { index: i + 1, total: images.length })}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt ?? ''}
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-            />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/0 to-transparent p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              {img.caption && (
-                <span className="line-clamp-2 text-xs text-white">{img.caption}</span>
-              )}
-            </div>
-            <span className="bg-background/80 absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100">
-              <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
-            </span>
-          </button>
+          <figure key={`${img.src}-${i}`} className="flex flex-col">
+            <button
+              type="button"
+              onClick={() => setOpenIndex(i)}
+              className="group bg-muted focus-visible:ring-ring/40 relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]"
+              aria-label={t('gallery.openImage', { index: i + 1, total: images.length })}
+            >
+              <Image
+                src={img.src}
+                alt={img.alt ?? ''}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <span className="bg-background/80 absolute top-2 right-2 flex h-7 w-7 items-center justify-center rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
+              </span>
+            </button>
+            {img.caption && (
+              <figcaption className="text-muted-foreground mt-2 text-sm leading-snug">
+                {img.caption}
+                {img.credit && <span className="text-muted-foreground/70"> © {img.credit}</span>}
+              </figcaption>
+            )}
+          </figure>
         ))}
       </div>
 

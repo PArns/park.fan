@@ -30,9 +30,12 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   const tGeo = await getTranslations('geo');
 
   // --- 1. Gather every referenced slug --------------------------------------
-  const { parkSlugs: inlineParkSlugs, attractions: inlineAttractionRefs } = extractInlineRefs(
-    post.content
-  );
+  const {
+    parkSlugs: inlineParkSlugs,
+    attractions: inlineAttractionRefs,
+    parkGeoPaths,
+    attractionGeoPaths,
+  } = extractInlineRefs(post.content);
 
   const parkSlugSet = new Set<string>(inlineParkSlugs);
   for (const slug of post.frontmatter.relatedParks ?? []) {
@@ -47,23 +50,29 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
   }
 
   // Also surface the parent park of every referenced attraction so the parks
-  // section is complete even when the body only links the ride.
+  // section is complete even when the body only links the ride. Inherit the
+  // ride's geoPath so a shared park slug (Paris vs. Anaheim) stays correct.
+  const parkGeoPathBySlug = new Map<string, string>(parkGeoPaths);
   for (const ref of attractionRefSet) {
     const [parkSlug] = ref.split('/');
-    if (parkSlug) parkSlugSet.add(parkSlug);
+    if (!parkSlug) continue;
+    parkSlugSet.add(parkSlug);
+    const gp = attractionGeoPaths.get(ref);
+    if (gp && !parkGeoPathBySlug.has(parkSlug)) parkGeoPathBySlug.set(parkSlug, gp);
   }
 
   // --- 2. Resolve in parallel ----------------------------------------------
-  const parks = (await Promise.all([...parkSlugSet].map((slug) => resolvePark(slug)))).filter(
-    (p): p is ResolvedPark => p !== null
-  );
+  const parks = (
+    await Promise.all([...parkSlugSet].map((slug) => resolvePark(slug, parkGeoPathBySlug.get(slug))))
+  ).filter((p): p is ResolvedPark => p !== null);
 
   const attractions = (
     await Promise.all(
       [...attractionRefSet].map(async (ref) => {
         const [parkSlug, attractionSlug] = ref.split('/');
-        const park = await resolvePark(parkSlug);
-        const attraction = await resolveAttraction(parkSlug, attractionSlug);
+        const gp = attractionGeoPaths.get(ref);
+        const park = await resolvePark(parkSlug, gp);
+        const attraction = await resolveAttraction(parkSlug, attractionSlug, gp);
         if (!park || !attraction) return null;
         return { park, attraction };
       })
