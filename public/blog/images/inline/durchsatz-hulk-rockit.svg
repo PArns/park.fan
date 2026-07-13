@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 700" role="img" aria-label="Diagramm: Zwei Wege zu ähnlichem Durchsatz — wenige große Züge vs. viele kleine Wagen">
+  <defs>
+    <linearGradient id="bgDia" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="700" rx="24" fill="url(#bgDia)"/>
+
+  <!-- left: Hulk — few big trains -->
+  <text x="400" y="90" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" fill="#4ade80" font-weight="800" text-anchor="middle">Wenige große Züge</text>
+  <text x="400" y="130" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#fff" opacity=".75" text-anchor="middle">32 Plätze · ~60 Abfahrten/h</text>
+  <g stroke="#334155" stroke-width="6" fill="none">
+    <circle cx="400" cy="360" r="170"/>
+  </g>
+  <g fill="#4ade80">
+    <rect x="230" y="336" width="96" height="48" rx="12"/>
+    <rect x="452" y="180" width="96" height="48" rx="12" transform="rotate(58 500 204)"/>
+    <rect x="452" y="492" width="96" height="48" rx="12" transform="rotate(-58 500 516)"/>
+  </g>
+  <text x="400" y="372" font-family="ui-sans-serif, system-ui, sans-serif" font-size="44" fill="#fff" font-weight="800" text-anchor="middle">≈ 1.920</text>
+  <text x="400" y="410" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#fff" opacity=".7" text-anchor="middle">Personen / Stunde</text>
+  <text x="400" y="620" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" fill="#fff" opacity=".85" text-anchor="middle">The Incredible Hulk Coaster</text>
+
+  <!-- divider -->
+  <line x1="800" y1="80" x2="800" y2="620" stroke="#475569" stroke-width="2" stroke-dasharray="10 12"/>
+  <text x="800" y="365" font-family="ui-sans-serif, system-ui, sans-serif" font-size="40" fill="#facc15" font-weight="800" text-anchor="middle">vs.</text>
+
+  <!-- right: Rockit — many small cars -->
+  <text x="1200" y="90" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" fill="#f472b6" font-weight="800" text-anchor="middle">Viele kleine Wagen</text>
+  <text x="1200" y="130" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" fill="#fff" opacity=".75" text-anchor="middle">12 Plätze · 7 Wagen im Umlauf</text>
+  <g stroke="#334155" stroke-width="6" fill="none">
+    <circle cx="1200" cy="360" r="170"/>
+  </g>
+  <g fill="#f472b6">
+    <rect x="1006" y="342" width="52" height="36" rx="10"/>
+    <rect x="1062" y="212" width="52" height="36" rx="10" transform="rotate(52 1088 230)"/>
+    <rect x="1174" y="164" width="52" height="36" rx="10"/>
+    <rect x="1294" y="204" width="52" height="36" rx="10" transform="rotate(-52 1320 222)"/>
+    <rect x="1342" y="342" width="52" height="36" rx="10"/>
+    <rect x="1286" y="474" width="52" height="36" rx="10" transform="rotate(52 1312 492)"/>
+    <rect x="1104" y="486" width="52" height="36" rx="10" transform="rotate(-52 1130 504)"/>
+  </g>
+  <text x="1200" y="372" font-family="ui-sans-serif, system-ui, sans-serif" font-size="44" fill="#fff" font-weight="800" text-anchor="middle">≈ 1.850</text>
+  <text x="1200" y="410" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" fill="#fff" opacity=".7" text-anchor="middle">Personen / Stunde</text>
+  <text x="1200" y="620" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" fill="#fff" opacity=".85" text-anchor="middle">Hollywood Rip Ride Rockit (2009–2025)</text>
+</svg>
