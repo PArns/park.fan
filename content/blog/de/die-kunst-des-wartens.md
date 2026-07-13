@@ -376,12 +376,10 @@ steht öffentlich auf der [How-to-Seite](/howto) — schummeln zwecklos.
 ## Warum Peter Pan's Flight immer „eskaliert"
 
 Womit wir bei einem der ältesten Rätsel der Parkwelt wären: Warum hat
-ausgerechnet
-[**Peter Pan's Flight**](/parks/europe/france/paris/disneyland-park/peter-pans-flight)
-— ein gemütlicher Dark Ride von 1955er-Bauart, keine Achterbahn, kein
-Thrill — im
-[Disneyland Paris](/parks/europe/france/paris/disneyland-park) wie in
-jedem anderen Disney-Park quasi permanent 45+ Minuten auf der Anzeige?
+ausgerechnet **Peter Pan's Flight** — ein gemütlicher Dark Ride von
+1955er-Bauart, keine Achterbahn, kein Thrill — in praktisch jedem
+Disney-Park der Welt, vom **Disneyland Paris** bis nach Orlando, quasi
+permanent 45+ Minuten auf der Anzeige?
 
 Die Antwort steckt komplett in der Mathematik von oben:
 
@@ -390,11 +388,12 @@ Die Antwort steckt komplett in der Mathematik von oben:
    großzügig gezählt — **fünf Menschen**. Das ist die
    Beförderungskapazität eines mittleren Fahrstuhls, verteilt auf einen
    ganzen Nachthimmel. Inoffizielle Zählungen kommen auf etwa **1.200
-   Gäste pro Stunde**, die Ur-Version im Magic Kingdom schafft sogar
-   nur um die 800 — ein einziger Hulk-Zug befördert pro Abfahrt doppelt
-   so viele Menschen, wie Peter Pan Schiffe besitzt. Und zum Vergleich
-   im eigenen Haus: Pirates of the Caribbean gleich nebenan schluckt
-   mit seinen großen Booten das fast Vierfache.
+   Gäste pro Stunde**, die
+   [Ur-Version im Magic Kingdom](ref:magic-kingdom-park/peter-pans-flight?bare)
+   schafft sogar nur um die 800 — ein einziger Hulk-Zug befördert pro
+   Abfahrt doppelt so viele Menschen, wie Peter Pan Schiffe besitzt. Und
+   zum Vergleich im eigenen Haus: Pirates of the Caribbean gleich
+   nebenan schluckt mit seinen großen Booten das fast Vierfache.
 2. **Sättigung ab dem Frühstück.** Sobald die Nachfrage die maximale
    Kapazität erreicht (Sättigung = 1,0), wächst die Schlange mit jedem
    zusätzlichen Gast **linear** weiter — schrumpfen kann sie erst
@@ -468,6 +467,60 @@ einmal Orlando:
 ```stats-widget slug=magic-kingdom-park
 
 ```
+
+## Aufrücken bringt nichts — und bremst die Schlange sogar aus
+
+Kleiner Selbstversuch fürs nächste Mal: Du stehst in der Schlange, vor
+dir öffnet sich eine Lücke von zwei Metern. Was macht dein Körper? Er
+rückt auf. Sofort, reflexhaft, als würde die Lücke sonst jemand klauen.
+Und das ist — mit Verlaub — vollkommen sinnlos.
+
+Denn Little's Law von eben sagt es glasklar: Deine Wartezeit hängt am
+**Durchsatz der Station ganz vorne**, nicht am Abstand zu deinem
+Vordermann. Ob du dich an ihn heranschiebst oder zwei Meter Luft lässt,
+ändert deine **Position** in der Reihe um exakt null Plätze. Du bewegst
+dich zwei Meter — vorne ankommen tust du dadurch keine Sekunde früher.
+
+Schlimmer noch: Das kollektive Aufrücken macht die Schlange sogar
+messbar **langsamer**. Es ist dieselbe Physik wie beim Autobahnstau,
+der scheinbar aus dem Nichts entsteht. Der Physiker Yuki Sugiyama hat
+22 Autos auf eine Kreisbahn geschickt, mit der einzigen Anweisung,
+konstant und mit gleichem Abstand zu fahren — nach wenigen Minuten
+bildete sich **ganz ohne Engpass** ein Stop-and-Go-Stau, der rückwärts
+durch die Kolonne lief. MIT-Mathematiker nennen diese sich selbst
+tragenden Wellen „Jamitons", weil sie sich verhalten wie
+Detonationswellen. In dichten Menschenmengen passiert exakt dasselbe —
+und dort sind solche rückwärtslaufenden Wellen sogar ein gefürchtetes
+Frühwarnzeichen.
+
+Der Übeltäter ist die **Anfahr-Verlustzeit**, die jeder von der Ampel
+kennt: Springt sie auf Grün, fährt nicht die ganze Kolonne gleichzeitig
+los — jeder reagiert rund eine Sekunde nach seinem Vordermann, und das
+hinterste Auto rollt erst spürbar später an. Jedes Mal, wenn deine
+Schlange anruckt, verpufft dieselbe gestaffelte Reaktionszeit. Zwanzig
+Ruck-Zyklen, mal sechzig Wartende — da summiert sich erstaunlich viel
+Nichts.
+
+Die verblüffende Konsequenz: Würden einfach **alle gleichmäßig und
+langsam** weitergehen, statt zu stehen, aufzurücken und wieder zu
+stehen, bewegte sich die Schlange flüssiger und im Schnitt schneller.
+Weniger Gedrängel, mehr Fluss. Der Verkehrsforschung ist das als
+„Faster-is-slower"-Effekt bekannt: Wer an einer Engstelle mehr drückt,
+senkt den Durchsatz, weil sich alle ineinander verkeilen — ein
+Ergebnis, das Dirk Helbing im Jahr 2000 in _Nature_ zeigte. Die eine
+Bedingung: Man muss unter der kritischen Dichte bleiben. Und genau
+deshalb hilft **Abstand halten** mehr als Aufrücken.
+
+Und jetzt die Pointe: Genau dieses Problem haben die Parks auf der
+**Fahrzeugseite** längst gelöst. Der Omnimover der Haunted Mansion und
+die Rolling Station von YOY halten nie an — kein Stopp, keine
+Anfahr-Verlustzeit, maximaler Fluss. Nur die Gäste in der Schlange
+davor sind das letzte Stop-and-Go-System, das noch niemand
+wegdesignt hat. Bis es so weit ist, bleibt der ehrlichste Hebel der,
+den du ohnehin selbst in der Hand hast: nicht dichter aufrücken,
+sondern von vornherein an einem Tag kommen, an dem die Schlange gar
+nicht erst in den Stau läuft — welcher das ist, verrät dir der
+Kalender der besten Tage weiter unten.
 
 ## Moderne Lösungen: Virtual Queues und doppelte Stationen
 
@@ -564,6 +617,8 @@ Prozent übertreibt._
 - Alex Stone: [Why Waiting Is Torture](https://www.nytimes.com/2012/08/19/opinion/sunday/why-waiting-in-line-is-torture.html) (New York Times, 2012)
 - Daniel Kahneman et al.: [Peak-End-Regel](https://en.wikipedia.org/wiki/Peak%E2%80%93end_rule)
 - John D. C. Little: [A Proof for the Queuing Formula L = λW](https://pubsonline.informs.org/doi/10.1287/opre.9.3.383) (Operations Research, 1961) — [Little's Law erklärt](https://en.wikipedia.org/wiki/Little%27s_law)
+- Zum Phantom-Stau: Sugiyama et al., [Traffic jams without bottlenecks](https://iopscience.iop.org/article/10.1088/1367-2630/10/3/033001) (New Journal of Physics, 2008) · [MIT „Jamitons"](https://www.sciencedaily.com/releases/2009/06/090608151550.htm)
+- Zum „Faster-is-slower"-Effekt: Helbing, Farkas & Vicsek, [Simulating dynamical features of escape panic](https://www.nature.com/articles/35035023) (Nature, 2000)
 - Technische Daten: [The Incredible Hulk Coaster](https://rcdb.com/557.htm), [Hollywood Rip Ride Rockit](https://rcdb.com/3866.htm) und [YOY](https://rcdb.com/20669.htm) auf RCDB · [Mack-Rides-Factsheet zu Voltron Nevera](https://mack.group/en/press-media/press-releases/2024-04-24/fact-sheet-voltron-nevera-powered-by-rimac) · [Die Technik hinter Voltron (Coaster101)](https://www.coaster101.com/2025/05/29/the-tech-behind-voltron/) · [YoY mit Rolling Station (Freizeitpark-Welt)](https://www.freizeitpark-welt.de/freizeitparks/walibi_holland/attraktionen/yoy-c681)
 - Kapazitäts-Deep-Dives: [THRC vs. OHRC bei Disney World](https://crooksinwdw.wordpress.com/2013/12/14/theoreticaloperational-hourly-ride-capacity-at-wdw/) · [Flight-of-Passage-Fakten bei TouringPlans](https://touringplans.com/blog/five-things-to-know-about-avatar-flight-of-passage/)
 - Europa-Park: [VirtualLine offiziell](https://www.europapark.de/en/theme-park/info/plan-your-visit/virtualline-europa-park)
