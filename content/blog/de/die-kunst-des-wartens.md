@@ -103,7 +103,9 @@ Wie schlecht wir unbeschäftigtes Warten einschätzen, lässt sich messen:
 In den Feldexperimenten des Marketingforschers **Jacob Hornik**
 überschätzten Wartende die tatsächlich verstrichene Zeit im Schnitt um
 **rund 36 Prozent** — aus gemessenen zehn Minuten werden im Kopf fast
-vierzehn. Und der MIT-Warteschlangenforscher **Richard Larson** zeigte
+vierzehn. Dein innerer Uhrmacher ist, kurz gesagt, ein notorischer
+Aufrundungskünstler — und rundet grundsätzlich zu deinen Ungunsten.
+Und der MIT-Warteschlangenforscher **Richard Larson** zeigte
 mit Kollegen schon 1991 unter dem schönen Titel
 [„Entertain, Enlighten, and Engage"](https://www.researchgate.net/publication/304582002_Prescription_for_the_Waiting_in_Line_Blues_Entertain_Enlighten_Engage),
 dass schon simple Ablenkung — im Experiment ein Nachrichten-Bildschirm
@@ -210,7 +212,8 @@ Bemerkenswert auch die Kapazitäts-Seite: Cosmic Rewind eröffnete im Mai
 2022 komplett **ohne klassische Standby-Schlange** — Zugang gab es **836
 Tage in Folge** ausschließlich per virtueller Warteschlange über die
 App. Zweieinhalb Jahre lang war die berühmteste Schlange EPCOTs eine,
-in der nie jemand stand; eine dauerhafte Standby-Queue kam erst Anfang
+in der nie jemand stand — eine Warteschlange, die ihren eigenen Namen
+nicht verdient hatte; eine dauerhafte Standby-Queue kam erst Anfang
 2025. Die physische Schlange existierte quasi nur noch als
 Story-Strecke, nicht als Stauraum — und das bei einer Bahn, die mit
 Zügen für 20 Personen um die 2.000 Gäste pro Stunde wegschafft.
@@ -224,8 +227,9 @@ Gäste — Menschen, die in dieser Stunde in keiner einzigen
 Ride-Warteschlange stehen. Das Amphitheater von **Fantasmic!** in den
 Hollywood Studios fasst mit Steh- und Sitzplätzen an die 10.000
 Menschen pro Vorstellung — eine einzige Show „schluckt" also eine ganze
-Besucherwelle, und die Wartezeiten im Rest des Parks atmen spürbar
-durch. In den Live-Charts auf park.fan kannst du diesem Effekt in
+Besucherwelle: zehntausend Leute, die für die nächste halbe Stunde
+garantiert woanders sitzen als vor deinem Lieblingscoaster. Die
+Wartezeiten im Rest des Parks atmen entsprechend spürbar durch. In den Live-Charts auf park.fan kannst du diesem Effekt in
 Echtzeit zusehen: Während der großen Abendshow knicken die Wartezeiten
 der Headliner messbar ein — wer die Show schon kennt, fährt in dieser
 Stunde am günstigsten. Genau für solche Momente aktualisieren wir die
@@ -576,7 +580,9 @@ Abfertigungs-Geschwindigkeit — mit drei klassischen Mustern:
   Kingdom ist das radikalste Beispiel — im selben Gebäude laufen zwei
   verschränkte, spiegelbildliche Bahnen („Alpha" und „Omega") mit
   eigenen Stationen, was die Kapazität des Systems praktisch
-  verdoppelt. Das Vorbild lieferte 1959 die Matterhorn-Bobbahn in
+  verdoppelt — effektiv zwei Achterbahnen, die sich als eine ausgeben,
+  und den meisten Gästen fällt es nie auf. Das Vorbild lieferte 1959
+  die Matterhorn-Bobbahn in
   Disneyland, die erste Achterbahn der Welt mit Stahlrohr-Schienen —
   ebenfalls mit zwei Strecken.
 
@@ -584,7 +590,9 @@ Und die Königsklasse des Durchsatzes kommt ganz ohne Station aus: Beim
 **Omnimover** — Disneys kontinuierlicher Fahrzeugkette, wie sie etwa
 die Haunted Mansion nutzt — hält das Band niemals an. Ein- und
 Ausstieg passieren am laufenden Fahrzeug, und die Attraktion schluckt
-so über 3.000 Gäste pro Stunde, mehr als so mancher Mega-Coaster.
+so über 3.000 Gäste pro Stunde, mehr als so mancher Mega-Coaster — mit
+einer Fahrzeugkette, die seit den Sechzigern klaglos ihre Runden dreht
+und nie nach einer Pause fragt.
 
 ## Fazit: Die Anzeige erzählt nur die halbe Geschichte
 
