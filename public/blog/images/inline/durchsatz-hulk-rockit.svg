@@ -1,61 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 840" role="img" aria-label="Durchsatz als Fläche: Plätze pro Abfahrt mal Abfahrten pro Stunde. Hulk ist ein hohes schmales Rechteck (32 Plätze, 60 Abfahrten/h), Rip Ride Rockit ein flaches breites (12 Plätze, 154 Abfahrten/h) — beide mit fast gleicher Fläche, rund 1900 Personen pro Stunde.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2100 900" role="img" aria-label="Durchsatz als Fläche: Plätze pro Abfahrt mal Abfahrten pro Stunde. Der Hulk ist ein hohes schmales Rechteck (32 Plätze, 60 Abfahrten pro Stunde), Hollywood Rip Ride Rockit ein flaches breites (12 Plätze, 154 Abfahrten pro Stunde) — beide mit fast gleicher Fläche, rund 1900 Personen pro Stunde.">
   <defs>
     <linearGradient id="bgDia" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#0f172a"/>
       <stop offset="1" stop-color="#1e293b"/>
     </linearGradient>
   </defs>
-  <rect width="1600" height="840" rx="24" fill="url(#bgDia)"/>
+  <rect width="2100" height="900" fill="url(#bgDia)"/>
 
   <!-- Formula header -->
-  <text x="800" y="62" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="800" fill="#fff">
+  <text x="1050" y="88" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="42" font-weight="800" fill="#fff">
     Durchsatz&#160;&#160;=&#160;&#160;<tspan fill="#38bdf8">Plätze pro Abfahrt</tspan>&#160;&#160;×&#160;&#160;<tspan fill="#facc15">Abfahrten pro Stunde</tspan>
   </text>
-  <text x="800" y="104" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="23" fill="#94a3b8">
-    Die Fläche ist der Durchsatz. Zwei fast gleiche Flächen — komplett andere Form.
+  <text x="1050" y="138" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="26" fill="#94a3b8">
+    Die Fläche ist der Durchsatz — zwei fast gleiche Flächen, komplett andere Form.
   </text>
 
   <!-- ===== LEFT PANEL: Hulk (tall & narrow) ===== -->
-  <!-- axes -->
   <g stroke="#475569" stroke-width="2">
-    <line x1="120" y1="740" x2="120" y2="360"/>
-    <line x1="120" y1="740" x2="740" y2="740"/>
+    <line x1="170" y1="800" x2="170" y2="400"/>
+    <line x1="170" y1="800" x2="900" y2="800"/>
   </g>
-  <!-- Y axis caption (Plätze) -->
-  <text x="150" y="345" font-family="ui-sans-serif, system-ui, sans-serif" font-size="17" fill="#64748b">↑ Plätze pro Abfahrt</text>
-  <!-- rect: 32 seats (h=269) × 60 dispatches (w=225) -->
-  <rect x="120" y="471" width="225" height="269" fill="#22c55e" fill-opacity="0.22" stroke="#4ade80" stroke-width="3"/>
-  <!-- seats bracket (left) -->
-  <text x="108" y="605" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#4ade80" transform="rotate(-90 108 605)">32 Plätze</text>
-  <!-- dispatches label (bottom) -->
-  <text x="232" y="768" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#facc15">60 Abfahrten/h</text>
-  <!-- area value inside -->
-  <text x="232" y="600" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="40" font-weight="800" fill="#fff">≈ 1.920</text>
-  <text x="232" y="632" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="19" fill="#e2e8f0">Personen / Stunde</text>
-  <!-- ride name -->
-  <text x="232" y="808" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#fff">The Incredible Hulk Coaster</text>
-  <text x="232" y="835" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="17" fill="#94a3b8">wenige, riesige Züge</text>
+  <text x="200" y="388" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#64748b">↑ Plätze pro Abfahrt</text>
+  <!-- rect: 32 seats (h=320) × 60 dispatches (w=264) -->
+  <rect x="170" y="480" width="264" height="320" fill="#22c55e" fill-opacity="0.22" stroke="#4ade80" stroke-width="3"/>
+  <text x="152" y="640" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#4ade80" transform="rotate(-90 152 640)">32 Plätze</text>
+  <text x="302" y="836" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#facc15">60 Abfahrten/h</text>
+  <text x="302" y="632" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="46" font-weight="800" fill="#fff">≈ 1.920</text>
+  <text x="302" y="668" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="21" fill="#e2e8f0">Personen / Stunde</text>
+  <text x="302" y="878" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="700" fill="#fff">The Incredible Hulk Coaster</text>
 
   <!-- ===== equals sign ===== -->
-  <text x="800" y="620" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="64" font-weight="800" fill="#64748b">≈</text>
-  <text x="800" y="660" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#64748b">gleiche</text>
-  <text x="800" y="682" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#64748b">Fläche</text>
+  <text x="1050" y="655" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="70" font-weight="800" fill="#64748b">≈</text>
+  <text x="1050" y="700" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#64748b">gleiche Fläche</text>
 
   <!-- ===== RIGHT PANEL: Rockit (short & wide) ===== -->
   <g stroke="#475569" stroke-width="2">
-    <line x1="880" y1="740" x2="880" y2="360"/>
-    <line x1="880" y1="740" x2="1490" y2="740"/>
+    <line x1="1230" y1="800" x2="1230" y2="400"/>
+    <line x1="1230" y1="800" x2="1960" y2="800"/>
   </g>
-  <text x="910" y="345" font-family="ui-sans-serif, system-ui, sans-serif" font-size="17" fill="#64748b">↑ Plätze pro Abfahrt</text>
-  <!-- rect: 12 seats (h=101) × 154 dispatches (w=577) -->
-  <rect x="880" y="639" width="577" height="101" fill="#ec4899" fill-opacity="0.22" stroke="#f472b6" stroke-width="3"/>
-  <!-- seats bracket (left) -->
-  <text x="868" y="689" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#f472b6" transform="rotate(-90 868 689)">12 Plätze</text>
-  <!-- dispatches label (bottom) -->
-  <text x="1168" y="768" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700" fill="#facc15">154 Abfahrten/h</text>
-  <!-- area value inside -->
-  <text x="1168" y="700" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="34" font-weight="800" fill="#fff">≈ 1.850 <tspan font-size="19" font-weight="400" fill="#e2e8f0">Personen / Stunde</tspan></text>
-  <!-- ride name -->
-  <text x="1168" y="808" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#fff">Hollywood Rip Ride Rockit</text>
-  <text x="1168" y="835" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="17" fill="#94a3b8">viele, winzige Wagen im Sekundentakt</text>
+  <text x="1260" y="388" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" fill="#64748b">↑ Plätze pro Abfahrt</text>
+  <!-- rect: 12 seats (h=120) × 154 dispatches (w=678) -->
+  <rect x="1230" y="680" width="678" height="120" fill="#ec4899" fill-opacity="0.22" stroke="#f472b6" stroke-width="3"/>
+  <text x="1212" y="740" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#f472b6" transform="rotate(-90 1212 740)">12 Plätze</text>
+  <text x="1569" y="836" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="24" font-weight="700" fill="#facc15">154 Abfahrten/h</text>
+  <text x="1569" y="753" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="40" font-weight="800" fill="#fff">≈ 1.850 <tspan font-size="21" font-weight="400" fill="#e2e8f0">Personen / Stunde</tspan></text>
+  <text x="1569" y="878" text-anchor="middle" font-family="ui-sans-serif, system-ui, sans-serif" font-size="25" font-weight="700" fill="#fff">Hollywood Rip Ride Rockit</text>
 </svg>

@@ -20,10 +20,10 @@ tags:
   - phantasialand
 category: guides
 coverImage:
-  src: /blog/images/kunst-des-wartens.svg
-  alt: 'Stilisierte Warteschlange, die sich in der Abenddämmerung zu einer Achterbahnstation schlängelt'
-  caption: 'Zwischen Anzeige und Station liegt mehr Design, als man beim Anstehen ahnt.'
-  credit: 'park.fan'
+  src: /blog/images/kunst-des-wartens-cover.jpg
+  alt: 'Der Baum des Lebens in Disneys Animal Kingdom, davor die Besuchermassen des Parks'
+  caption: 'Disneys Animal Kingdom: zehntausende Gäste, ein Baum des Lebens — und überall die Frage, wie lange man wofür ansteht.'
+  credit: 'Patrick Arns'
 seo:
   title: 'Wartezeiten verstehen: Warum wir für manche Rides gerne anstehen'
   description: >-
@@ -177,6 +177,10 @@ aufhalten. Eine Warteschlange, die sich selbst verstopft, weil sie zu
 gut aussieht: mehr Ehrerbietung geht nicht. Danach folgen gleich **zwei
 Pre-Show-Räume**, in denen du „gescannt" und mit deinem eigenen Avatar
 „verlinkt" wirst.
+
+```gallery-widget folder=/blog/images/avatar-flight-of-passage heading="Die Warteschlange in drei Stationen"
+
+```
 
 Das ist psychologisch doppelt clever: Die Story-Räume takten die Menge
 in Gruppen und verwandeln die letzte Viertelstunde — genau die Phase, die
