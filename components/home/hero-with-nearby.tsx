@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import type React from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -8,7 +7,6 @@ import { ChevronRight } from 'lucide-react';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { trackHeroViewed } from '@/lib/analytics/umami';
 import { Badge } from '@/components/ui/badge';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import type {
@@ -130,20 +128,6 @@ export function HeroWithNearby({
   const nearestParkForVariant = nearbyParksList.length > 0 ? nearbyParksList[0] : null;
   const showNearParkHero =
     nearestParkForVariant != null && nearestParkForVariant.distance <= NEAR_PARK_HERO_RADIUS_M;
-
-  const heroVariant = park ? 'in_park' : showNearParkHero ? 'near_park' : 'default';
-  const heroParkName = park?.name ?? nearestParkForVariant?.name;
-  const heroParkId = park?.id ?? nearestParkForVariant?.id;
-  const lastTrackedVariant = useRef<string | null>(null);
-  useEffect(() => {
-    if (lastTrackedVariant.current === heroVariant) return;
-    lastTrackedVariant.current = heroVariant;
-    trackHeroViewed({
-      variant: heroVariant as 'in_park' | 'near_park' | 'default',
-      ...(heroParkName && { parkName: heroParkName }),
-      ...(heroParkId && { parkId: heroParkId }),
-    });
-  }, [heroVariant, heroParkName, heroParkId]);
 
   // Fallback: API returned nearby_parks but user is very close → show "im Park" (distance from API is in meters)
   if (!park && nearbyData?.type === 'nearby_parks') {
