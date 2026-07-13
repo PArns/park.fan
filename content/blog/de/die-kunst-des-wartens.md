@@ -161,8 +161,8 @@ großartigen Finales weiterempfohlen hat.
 
 ## Wenn die Schlange selbst die Show ist
 
-Wie weit man dieses Prinzip treiben kann, zeigen zwei moderne
-Meisterstücke — beide in Orlando, beide mit Warteschlangen, für die
+Wie weit man dieses Prinzip treiben kann, zeigen drei moderne
+Meisterstücke — alle in Orlando, alle mit Warteschlangen, für die
 Leute freiwillig früher kommen.
 
 ### Avatar Flight of Passage: Ein Museum als Warteschlange
@@ -221,6 +221,40 @@ nicht verdient hatte; eine dauerhafte Standby-Queue kam erst Anfang
 2025. Die physische Schlange existierte quasi nur noch als
 Story-Strecke, nicht als Stauraum — und das bei einer Bahn, die mit
 Zügen für 20 Personen um die 2.000 Gäste pro Stunde wegschafft.
+
+### VelociCoaster: Warten im Raptor-Paddock
+
+Universal spielt bei
+[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster)
+in [Islands of Adventure](ref:universal-islands-of-adventure?bare) die
+gleiche Karte, nur mit Zähnen. Die Warteschlange führt mitten durch das
+**Raptor-Paddock** aus _Jurassic World_: vorbei an aufgerissenen
+Gehege-Zäunen, animatronischen Raptoren auf Greifweite und einem
+begrünten Atrium, in dem selbst die Betonwände nach Isla Nublar
+aussehen. Man wartet nicht auf einen Coaster, man macht eine
+Paddock-Führung, die zufällig in einem Vierfach-Launch endet. Genau das
+meint Maister mit **„occupied time"**: Beschäftigte Zeit fühlt sich
+kürzer an — und wer gerade prüft, ob der Raptor hinter dem Zaun wirklich
+den Kopf gedreht hat, schaut nicht alle zehn Sekunden aufs Handy.
+
+```gallery-widget folder=/blog/images/velocicoaster heading="Willkommen im Raptor-Paddock"
+
+```
+
+Und dann gibt es hier noch den vielleicht ehrlichsten Kapazitäts-Trick
+überhaupt: die **Single-Rider-Spur**. Wer allein fährt und sich auf den
+freien Einzelplatz setzen lässt, den eine Vierergruppe übrig lässt,
+kürzt nicht nur die eigene Wartezeit drastisch ab — er hilft dem Park,
+jeden Wagen randvoll zu machen. Jeder sonst leere Sitz ist verschenkte
+Kapazität; die Single-Rider-Spur ist die elegante Art, diese Lücken zu
+stopfen. Ein seltener Fall, in dem Eigennutz und Durchsatz exakt in die
+gleiche Richtung ziehen.
+
+```glossary-widget slug=single-rider
+
+```
+
+[Jurassic World VelociCoaster](ref:universal-islands-of-adventure/jurassic-world-velocicoaster?full)
 
 ### Shows: Die stillen Kapazitäts-Helfer
 
