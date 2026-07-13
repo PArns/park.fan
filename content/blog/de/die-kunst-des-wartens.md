@@ -18,7 +18,7 @@ tags:
   - orlando
   - europa-park
   - phantasialand
-category: hintergrund
+category: behind-the-scenes
 coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: 'Der Baum des Lebens in Disneys Animal Kingdom, davor die Besuchermassen des Parks'
