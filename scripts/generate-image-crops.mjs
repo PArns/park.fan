@@ -51,24 +51,46 @@ function cropBox(width, height, ratioW, ratioH) {
   return { w: width, h: Math.round(width / target) };
 }
 
+/** True when `outPath` already exists and is at least as new as the source. */
+function isFresh(outPath, sourceMtimeMs) {
+  try {
+    return fs.statSync(outPath).mtimeMs >= sourceMtimeMs;
+  } catch {
+    return false; // missing → not fresh
+  }
+}
+
 async function cropOne(sourcePath) {
   const dir = path.dirname(sourcePath);
   const ext = path.extname(sourcePath);
   const baseName = path.basename(sourcePath, ext);
+  const sourceMtimeMs = fs.statSync(sourcePath).mtimeMs;
+
+  // Incremental: skip a source entirely when all three crops are already newer
+  // than it — only re-cut when the photo was swapped/added (mtime moved forward).
+  const outPaths = ASPECTS.map((a) => path.join(dir, `${baseName}-${a.name}.jpg`));
+  if (outPaths.every((p) => isFresh(p, sourceMtimeMs)))
+    return { written: 0, skipped: ASPECTS.length };
 
   let meta;
   try {
     meta = await sharp(sourcePath).metadata();
   } catch (err) {
     console.warn(`⚠️  Could not read ${sourcePath}: ${err.message}`);
-    return 0;
+    return { written: 0, skipped: 0 };
   }
-  if (!meta.width || !meta.height) return 0;
+  if (!meta.width || !meta.height) return { written: 0, skipped: 0 };
 
   let written = 0;
-  for (const aspect of ASPECTS) {
+  let skipped = 0;
+  for (let i = 0; i < ASPECTS.length; i += 1) {
+    const aspect = ASPECTS[i];
+    const outPath = outPaths[i];
+    if (isFresh(outPath, sourceMtimeMs)) {
+      skipped += 1;
+      continue;
+    }
     const box = cropBox(meta.width, meta.height, aspect.w, aspect.h);
-    const outPath = path.join(dir, `${baseName}-${aspect.name}.jpg`);
     try {
       await sharp(sourcePath)
         .resize(box.w, box.h, { fit: 'cover', position: 'attention' })
@@ -79,7 +101,7 @@ async function cropOne(sourcePath) {
       console.warn(`⚠️  Failed to crop ${outPath}: ${err.message}`);
     }
   }
-  return written;
+  return { written, skipped };
 }
 
 /** Collects source images (background + real ride photos, never existing crops). */
@@ -114,14 +136,19 @@ async function main() {
 
   let sourceCount = 0;
   let cropCount = 0;
+  let skipCount = 0;
   for (const parkDir of parkDirs) {
     for (const source of collectSources(parkDir)) {
       sourceCount += 1;
-      cropCount += await cropOne(source);
+      const { written, skipped } = await cropOne(source);
+      cropCount += written;
+      skipCount += skipped;
     }
   }
 
-  console.log(`✅ Cut ${cropCount} crops from ${sourceCount} source images.`);
+  console.log(
+    `✅ Cut ${cropCount} crops from ${sourceCount} source images (${skipCount} already up to date).`
+  );
 }
 
 await main();
