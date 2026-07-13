@@ -71,6 +71,9 @@ function getAllImages() {
       if (!file.isFile()) continue;
       const ext = path.extname(file.name).toLowerCase();
       const base = path.basename(file.name, ext);
+      // Skip the auto-generated aspect-ratio crops (scripts/generate-image-crops.mjs)
+      // so they never register as separate hero images.
+      if (/-(?:16x9|4x3|1x1)$/.test(base)) continue;
       if (SUPPORTED_EXTENSIONS.includes(ext) && base !== 'background') {
         images.push(`/images/parks/${parkDir}/${file.name}`);
       }

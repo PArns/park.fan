@@ -4,7 +4,7 @@ import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { LiveParkGrid, type StaticPark } from '@/components/parks/live-park-grid';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -139,6 +139,7 @@ export default async function CityPage({ params }: CityPageProps) {
   const itemListItems = parks.map((park) => ({
     name: stripNewPrefix(park.name),
     url: `/${locale}/parks/${continent}/${country}/${citySlug}/${park.slug}`,
+    image: getParkImageSet(park.slug)[0],
   }));
 
   return (

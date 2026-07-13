@@ -255,6 +255,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
   });
 
   const parkBgImage = getParkBackgroundImage(parkSlug);
+  // OG card is only a fallback for the JSON-LD image when the park has no real photo.
+  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug]);
 
   return (
     <>
@@ -271,6 +273,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
           url={`${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`}
           description={tSeo('metaDescriptionTemplate', { park: parkName, city: cityName })}
           locale={locale}
+          ogImageUrl={ogImageUrl}
         />
         <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
         {park.shows && park.shows.length > 0 && (

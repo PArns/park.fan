@@ -1,6 +1,7 @@
 import { escapeJsonLd } from './structured-data';
 import type { Blog, BlogPosting, WithContext } from 'schema-dts';
-import type { BlogListItem, BlogPost } from '@/lib/blog/types';
+import type { BlogFrontmatter, BlogListItem, BlogPost } from '@/lib/blog/types';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 
 const SITE_URL = 'https://park.fan';
 const ORG = {
@@ -17,6 +18,20 @@ function absoluteUrl(url: string | undefined | null): string | undefined {
   if (!url) return undefined;
   if (url.startsWith('http')) return url;
   return `${SITE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+}
+
+/**
+ * Representative image for a post's structured data. Prefers real imagery (an
+ * explicit `seo.ogImage` override, then the cover photo) and falls back to the
+ * post's generated OG card, so every linked post still carries an image. Mirrors
+ * the OG-metadata chain in the blog post page.
+ */
+function resolvePostImage(locale: string, slug: string, frontmatter: BlogFrontmatter): string {
+  return (
+    absoluteUrl(frontmatter.seo?.ogImage) ??
+    absoluteUrl(frontmatter.coverImage?.src) ??
+    getOgImageUrl([locale, 'blog', slug])
+  );
 }
 
 interface BlogPostingStructuredDataProps {
@@ -39,7 +54,8 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
       : (frontmatter.author ?? { name: 'park.fan' });
 
   const canonical = `${SITE_URL}/${locale}${path}`;
-  const cover = absoluteUrl(frontmatter.coverImage?.src);
+  const imageUrl = resolvePostImage(locale, post.slug, frontmatter);
+  const coverUrl = absoluteUrl(frontmatter.coverImage?.src);
 
   const data: WithContext<BlogPosting> = {
     '@context': 'https://schema.org',
@@ -64,15 +80,14 @@ export function BlogPostingStructuredData({ post, locale, path }: BlogPostingStr
       ...(author.avatar ? { image: absoluteUrl(author.avatar) } : {}),
     },
     publisher: ORG,
-    ...(cover
-      ? {
-          image: {
-            '@type': 'ImageObject',
-            url: cover,
-            ...(frontmatter.coverImage?.alt ? { caption: frontmatter.coverImage.alt } : {}),
-          },
-        }
-      : {}),
+    image: {
+      '@type': 'ImageObject',
+      url: imageUrl,
+      // Caption only when the image IS the cover photo (the OG-card fallback has none).
+      ...(frontmatter.coverImage?.alt && imageUrl === coverUrl
+        ? { caption: frontmatter.coverImage.alt }
+        : {}),
+    },
   };
 
   return (
@@ -117,9 +132,9 @@ export function BlogStructuredData({
       url: `${SITE_URL}/${locale}/blog/${p.slug}`,
       datePublished: p.frontmatter.date,
       dateModified: p.frontmatter.updatedAt ?? p.frontmatter.date,
-      ...(p.frontmatter.coverImage?.src
-        ? { image: absoluteUrl(p.frontmatter.coverImage.src) }
-        : {}),
+      // Real cover photo preferred; generated OG card as fallback so every listed
+      // post carries an image when linked.
+      image: resolvePostImage(locale, p.slug, p.frontmatter),
     })),
   };
 

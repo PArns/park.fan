@@ -5,7 +5,7 @@ import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { LiveParkGrid } from '@/components/parks/live-park-grid';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import { getParkBackgroundImage, getParkImageSet } from '@/lib/utils/park-assets';
 import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
@@ -112,6 +112,7 @@ export default async function CountryPage({ params }: CountryPageProps) {
     city.parks.map((park) => ({
       name: stripNewPrefix(park.name),
       url: `/${locale}/parks/${continent}/${country}/${city.slug}/${park.slug}`,
+      image: getParkImageSet(park.slug)[0],
     }))
   );
 

@@ -14,7 +14,11 @@ import {
   Attraction,
   Article,
 } from 'schema-dts';
-import { getParkBackgroundImage } from '@/lib/utils/park-assets';
+import {
+  getParkBackgroundImage,
+  getParkImageSet,
+  getAttractionImageSet,
+} from '@/lib/utils/park-assets';
 import { getAttractionImage } from '@/lib/attraction-images';
 import { stripNewPrefix } from '@/lib/utils';
 import { SITE_URL } from '@/i18n/config';
@@ -77,6 +81,24 @@ export function ArticleStructuredData({
   return <JsonLd data={data} />;
 }
 
+/**
+ * Builds the JSON-LD `image` value from a park/ride image set.
+ *
+ * Real park/ride photos are always preferred; the OG card is used ONLY as a
+ * fallback when no such photo exists (Google then still has something to show,
+ * but never in place of a real picture). Site-relative paths are absolutized;
+ * a multi-crop set becomes an array (Google's recommended multi-aspect input),
+ * a single image stays a string.
+ */
+function buildStructuredImage(
+  imageSet: string[],
+  ogFallback?: string
+): string | string[] | undefined {
+  const absolute = imageSet.map((src) => (src.startsWith('http') ? src : `${SITE_URL}${src}`));
+  if (absolute.length === 0) return ogFallback;
+  return absolute.length === 1 ? absolute[0] : absolute;
+}
+
 /** Normalizes raw API cuisineType values to proper display names. */
 function normalizeCuisineType(cuisineType: string | null): string | undefined {
   if (!cuisineType) return undefined;
@@ -87,13 +109,21 @@ function normalizeCuisineType(cuisineType: string | null): string | undefined {
   return map[cuisineType.toLowerCase()] ?? cuisineType;
 }
 
-export function OrganizationStructuredData({ description }: { description?: string }) {
+export function OrganizationStructuredData({
+  description,
+  image,
+}: {
+  description?: string;
+  /** Representative image (e.g. the homepage OG card) — a thumbnail candidate for brand results. */
+  image?: string;
+}) {
   const data: WithContext<Organization> = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'park.fan',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
+    ...(image && { image }),
     description:
       description ||
       'Real-time theme park wait times, crowd predictions, and schedules. Plan your perfect visit with ML-powered forecasts for 142+ theme parks worldwide.',
@@ -115,10 +145,13 @@ export function WebSiteStructuredData({
   locale,
   siteName = 'park.fan',
   description,
+  image,
 }: {
   locale: string;
   siteName?: string;
   description?: string;
+  /** Representative image (e.g. the locale's homepage OG card). */
+  image?: string;
 }) {
   const baseUrl = `${SITE_URL}/${locale}`;
   const searchUrl = `${baseUrl}/search?q={search_term_string}`;
@@ -129,6 +162,7 @@ export function WebSiteStructuredData({
     name: siteName,
     url: baseUrl,
     ...(description && { description }),
+    ...(image && { image }),
     inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction' as const,
@@ -148,14 +182,16 @@ export function ParkStructuredData({
   url,
   description,
   locale,
+  ogImageUrl,
 }: {
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
   locale?: string;
+  /** OG-card URL — used only as a fallback when the park has no real photo. */
+  ogImageUrl?: string;
 }) {
   const parkName = stripNewPrefix(park.name);
-  const parkBgImage = getParkBackgroundImage(park.slug);
   const data: WithContext<ThemePark> = {
     '@context': 'https://schema.org',
     '@type': 'ThemePark',
@@ -163,7 +199,7 @@ export function ParkStructuredData({
     url: url,
     ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,
-    image: parkBgImage ? `${SITE_URL}${parkBgImage}` : undefined,
+    image: buildStructuredImage(getParkImageSet(park.slug), ogImageUrl),
     address: {
       '@type': 'PostalAddress',
       addressLocality: park.city || undefined,
@@ -219,27 +255,31 @@ export function ItemListStructuredData({
   listName,
   pageUrl,
 }: {
-  items: { name: string; url: string }[];
+  /**
+   * `image` (when provided) gives Google a per-item thumbnail candidate — the
+   * signal that lets list/hub pages surface picture results in the SERP. Pass
+   * an absolute or site-relative path; `null`/omitted items simply carry no image.
+   */
+  items: { name: string; url: string; image?: string | null }[];
   listName?: string;
   pageUrl: string;
 }) {
   if (!items || items.length === 0) return null;
 
-  const absoluteUrls = items.map((item) =>
-    item.url.startsWith('http') ? item.url : `${SITE_URL}${item.url}`
-  );
+  const toAbsolute = (path: string) => (path.startsWith('http') ? path : `${SITE_URL}${path}`);
 
   const data = {
     '@context': 'https://schema.org' as const,
     '@type': 'ItemList' as const,
     ...(listName && { name: listName }),
-    url: pageUrl.startsWith('http') ? pageUrl : `${SITE_URL}${pageUrl}`,
+    url: toAbsolute(pageUrl),
     numberOfItems: items.length,
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem' as const,
       position: index + 1,
       name: item.name,
-      item: absoluteUrls[index],
+      item: toAbsolute(item.url),
+      ...(item.image && { image: toAbsolute(item.image) }),
     })),
   };
 
@@ -285,16 +325,18 @@ export function AttractionStructuredData({
   url,
   description,
   locale,
+  ogImageUrl,
 }: {
   attraction: ParkAttraction;
   park: ParkResponse | ParkWithAttractions;
   url: string;
   description?: string;
   locale?: string;
+  /** OG-card URL — used only as a fallback when neither the ride nor its park has a photo. */
+  ogImageUrl?: string;
 }) {
   const attractionName = stripNewPrefix(attraction.name);
   const parkName = stripNewPrefix(park.name);
-  const attrImg = getAttractionImage(park.slug, attraction.slug);
   const data: WithContext<Attraction> = {
     '@context': 'https://schema.org',
     '@type': 'TouristAttraction',
@@ -303,7 +345,7 @@ export function AttractionStructuredData({
     ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
-    image: attrImg ? `${SITE_URL}${attrImg}` : undefined,
+    image: buildStructuredImage(getAttractionImageSet(park.slug, attraction.slug), ogImageUrl),
     containedInPlace: {
       '@type': 'ThemePark',
       name: parkName,

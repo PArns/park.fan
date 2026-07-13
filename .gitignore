@@ -56,6 +56,12 @@ lib/glossary/client-data/
 lib/attraction-images.ts
 lib/blog/manifest.ts
 
+# Auto-generated aspect-ratio crops (scripts/generate-image-crops.mjs) — cut from
+# the committed source photos at build time, never hand-authored.
+public/images/parks/**/*-16x9.jpg
+public/images/parks/**/*-4x3.jpg
+public/images/parks/**/*-1x1.jpg
+
 *.md
 *.txt
 *.log

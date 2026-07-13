@@ -25,6 +25,7 @@ import {
   OrganizationStructuredData,
   WebSiteStructuredData,
 } from '@/components/seo/structured-data';
+import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Geist } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
@@ -169,12 +170,18 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
             data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
             data-domains="park.fan"
             data-do-not-track="true"
-            data-performance="true"
             strategy="afterInteractive"
           />
         )}
-        <OrganizationStructuredData description={tSeo('description')} />
-        <WebSiteStructuredData locale={locale} description={tSeo('description')} />
+        <OrganizationStructuredData
+          description={tSeo('description')}
+          image={getOgImageUrl([locale])}
+        />
+        <WebSiteStructuredData
+          locale={locale}
+          description={tSeo('description')}
+          image={getOgImageUrl([locale])}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
