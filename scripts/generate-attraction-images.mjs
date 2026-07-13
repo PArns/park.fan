@@ -40,8 +40,13 @@ function getAllAttractionImages() {
         const ext = path.extname(file.name).toLowerCase();
         const baseName = path.basename(file.name, ext);
 
-        // Include all image files except background.jpg
-        if (SUPPORTED_EXTENSIONS.includes(ext) && baseName !== 'background') {
+        // Aspect-ratio crops (`<slug>-16x9|4x3|1x1`) feed the structured-data image set
+        // (see lib/utils/park-assets.ts), NOT the UI card map — skip them here so they
+        // don't register as phantom attractions.
+        const isAspectVariant = /-(?:16x9|4x3|1x1)$/.test(baseName);
+
+        // Include all image files except background.jpg and aspect-ratio crops
+        if (SUPPORTED_EXTENSIONS.includes(ext) && baseName !== 'background' && !isAspectVariant) {
           const key = `${parkDir}/${baseName}`;
           const webPath = `/images/parks/${parkDir}/${file.name}`;
           images[key] = webPath;

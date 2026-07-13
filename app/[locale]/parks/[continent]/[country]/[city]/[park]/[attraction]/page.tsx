@@ -227,6 +227,8 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
 
   const backgroundImage =
     getAttractionBackgroundImage(parkSlug, attractionSlug) ?? getParkBackgroundImage(parkSlug);
+  // OG card is only a fallback for the JSON-LD image when neither ride nor park has a photo.
+  const ogImageUrl = getOgImageUrl([locale, continent, country, city, parkSlug, attractionSlug]);
 
   return (
     <>
@@ -240,6 +242,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
           park: parkName,
           city: cityName,
         })}
+        ogImageUrl={ogImageUrl}
       />
       <AttractionFAQStructuredData attraction={attraction} park={park} locale={locale} />
       <BreadcrumbStructuredData breadcrumbs={breadcrumbs} locale={locale} />
