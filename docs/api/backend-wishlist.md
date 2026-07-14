@@ -103,10 +103,17 @@ The "read first, only write on change" fix is the backend firing `/api/revalidat
 ## P1 · Calendar payload diet
 
 Per-day `influencingHolidays` on `/v1/parks/{path}/calendar` is ~98 % of the ~2.25 MB body and
-is read by **no** frontend consumer of that endpoint (the header holiday panel reads
-`schedule[].influencingHolidays` from the **park** endpoint instead). Drop it by default or
-gate it behind `?include=influencingHolidays`. Payoff: the calendar grid tab and per-month
-client fetches shrink ~50×, and Next's 2 MB fetch-cache cap stops being a design constraint.
+is read by **no** frontend consumer of that endpoint — verified by grep: the only readers of
+`influencingHolidays` are `use-today-schedule.ts` / `park-time-info.tsx`, and both consume
+`ScheduleItem.influencingHolidays` (the **park** endpoint's `schedule[]`), while the calendar
+type's `CalendarDay.influencingHolidays` has zero consumers. Drop it by default or gate it
+behind `?include=influencingHolidays`. Payoff: the calendar grid tab and per-month client
+fetches shrink ~50×, and Next's 2 MB fetch-cache cap stops being a design constraint.
+
+> ⚠️ **Scope guard:** this diet applies ONLY to the per-day field on `/calendar`. The park
+> endpoint's `schedule[].influencingHolidays` MUST keep shipping — it feeds the
+> "Ferien in Nachbarregionen" header panel (`HeaderHolidayPanel`) and `ParkTimeInfo` on every
+> park page. Removing it there would silently kill that section.
 
 ---
 
