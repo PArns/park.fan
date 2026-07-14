@@ -75,7 +75,7 @@ PWA-Manifest mit name, short_name, description, icons, theme_color und backgroun
 > **Historie:** Ursprünglich Server Component; beim Umbau auf Client-Fetching (ISR-Write-Fix)
 > wurde der Text unbemerkt client-only (mount-gated Skeleton) — das „Wann besuchen"-Cluster
 > hatte monatelang **keinen indexierbaren Text**. Seit Juli 2026 rendert die Section wieder
-> server-seitig aus dem 24h-gecachten Kalender-Seed (`getBestDaysCalendarSeed`,
+> server-seitig aus dem gecachten Kalender-Seed (`getBestDaysCalendarSeed`, SWR,
 > timeout-guarded); die Client-Queries bleiben `useLoadLast`-gated.
 
 Erscheint auf der Park-Detailseite nach dem Crowd-Calendar. Generiert Textcontent aus `calendarData.days`:

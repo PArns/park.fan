@@ -181,8 +181,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
     permanentRedirect(`/${locale}${redirectUrl}`);
   }
 
-  // Best-days calendar SEED: fired in parallel with the park fetch below. It reads the 24h
-  // `unstable_cache` snapshot (getBestDaysCalendar, SWR + `best-days:<slug>` tag) and gives up
+  // Best-days calendar SEED: fired in parallel with the park fetch below. It reads the
+  // `unstable_cache` snapshot (BEST_DAYS_REVALIDATE) (getBestDaysCalendar, SWR + `best-days:<slug>` tag) and gives up
   // after a short timeout on a cold cache MISS (the raw calendar can take 10–20s of backend
   // compute and must never block this dynamic page's TTFB — `after()` keeps the abandoned fill
   // running so the NEXT request is warm). The seed feeds the SSR render of the best-days

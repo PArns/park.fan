@@ -19,7 +19,7 @@ was client-only. wartezeiten.app/queue-times serve exactly this content statical
   internal links per park instead of a pulse skeleton.
 - **Best-days SSR seed** — `getBestDaysCalendarSeed` (timeout-guarded `getBestDaysCalendar`,
   month-aligned window, `after()` keeps a cold fill alive) lets the "Beste Reisezeit" section
-  and the least-crowded FAQ render server-side when the 24h cache is warm. The client queries
+  and the least-crowded FAQ render server-side when the (72 h SWR) cache is warm. The client queries
   stay `useLoadLast`-deferred — the loading-priority requirement is untouched (the seed is
   props, not a page query).
 - **FAQ**: "Wann ist {park} am wenigsten los?" now also lands in the FAQPage **JSON-LD**

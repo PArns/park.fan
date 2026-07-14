@@ -77,8 +77,16 @@ export async function getIntegratedCalendar(
   return data;
 }
 
-/** Dedicated 24h cache window for the "best travel time" / quiet-days derivation. */
-export const BEST_DAYS_REVALIDATE = 24 * 60 * 60; // 24h
+/**
+ * Cache window for the "best travel time" / quiet-days derivation. The derivation is
+ * week-stable (quietest weekdays + a 90-day quiet-day forecast; `analyzeBestDays` re-filters
+ * against a fresh "today" on every render), the CLIENT queries fetch live through the /api
+ * proxy regardless, and `unstable_cache` is stale-while-revalidate — so this TTL is only the
+ * BACKGROUND refresh cadence, never a blocking wait. Effective staleness is additionally
+ * bounded by the month-aligned seed window (key rotates monthly) and the on-demand
+ * `best-days:<slug>` tag.
+ */
+export const BEST_DAYS_REVALIDATE = 72 * 60 * 60; // 3d
 
 /**
  * Project the full calendar response down to the handful of day fields the
@@ -117,7 +125,7 @@ function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCa
  * Calendar fetch dedicated to the "best travel time" derivation (best/quiet
  * weekdays, upcoming quiet days) and the crowd FAQ.
  *
- * Cached for 24h via `unstable_cache`, fully decoupled from the 15-min grid calendar:
+ * Cached for BEST_DAYS_REVALIDATE via `unstable_cache`, fully decoupled from the 15-min grid calendar:
  * - The data it feeds (day-of-week aggregates + a multi-week quiet-day forecast)
  *   only changes with the daily crowd forecast (~13h), so a day-old snapshot is
  *   fine for trip planning.
@@ -129,7 +137,7 @@ function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCa
  *   `unstable_cache` sidesteps this — it caches the function's small PROJECTED return value
  *   (~13 KB) directly, independent of the fetch data-cache, so the 2 MB body never needs to
  *   be a cache unit. Consumers only ever receive the projected days.
- * - `unstable_cache` is stale-while-revalidate: once the 24h window lapses, the next
+ * - `unstable_cache` is stale-while-revalidate: once the revalidate window lapses, the next
  *   request is served the STALE snapshot immediately while a background refresh runs,
  *   so the visitor never waits on a cold rebuild. The `best-days:<slug>` tag still
  *   supports on-demand `revalidateTag`.
