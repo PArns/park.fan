@@ -4,6 +4,29 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – perf: best-days seed streams instead of blocking park-page TTFB
+
+Cold-start latency fix. The best-days SEO seed (`getBestDaysCalendarSeed`) was `await`ed on the
+park page's render critical path, so a cold `/best-days` fetch (~0.4–1 s, occasionally slower than
+the park snapshot fetch, or hitting the seed timeout) was added straight to first-byte — a
+noticeable cold-start regression on `force-dynamic` park pages (no edge-cached HTML).
+
+- `page.tsx`: the seed promise is created but **no longer awaited in the body**. It's consumed only
+  inside `<Suspense>` boundaries — the FAQ JSON-LD (`FAQStructuredData` now takes the seed *promise*
+  and awaits it itself) and a new streamed `SeededBestDays` server component for the best-days slot.
+  The shell (H1, attraction overview, header, FAQ base + Q1) now flushes at **park-fetch speed** and
+  the seeded best-days HTML + least-crowded JSON-LD stream into the same response — crawlers still
+  receive them in the final document (verified: full-download HTML of a park with data contains the
+  best-days text + the 9-question FAQPage incl. least-crowded).
+- The visible FAQ Q7 (least crowded) is no longer server-seeded (that required the blocking await);
+  it streams in from the client calendar fetch after mount, and the SEO signal lives in the streamed
+  JSON-LD. Q0–Q6 + Q1 still render immediately from the park snapshot.
+- `BEST_DAYS_SEED_TIMEOUT_MS` 800 ms → 3 s: off the critical path now, so a generous bound just
+  lets the seed land in the streamed HTML more often; `after()` still warms the data cache on a miss.
+- Measured (local prod build, real API): cold-park page TTFB is now gated by the park snapshot fetch
+  (e.g. 0.42 s) instead of park + seed serialized; a park whose snapshot fetch is itself slow cold
+  (~0.9 s) is unchanged (that's the park fetch, not the seed). No hydration errors; forecast intact.
+
 ## Unreleased – SEO: park best-days now read the precomputed /best-days endpoint
 
 Follow-up to the "core content in first HTML" work, now that the backend ships the precomputed

@@ -8,6 +8,8 @@ import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
+import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
+import { ParkBestDaysSectionSkeleton } from '@/components/parks/park-best-days-section-skeleton';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -180,16 +182,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
     permanentRedirect(`/${locale}${redirectUrl}`);
   }
 
-  // Best-days SEED: fired in parallel with the park fetch below. It reads the precomputed
-  // `/best-days` snapshot (Next data-cached under BEST_DAYS_REVALIDATE + the `best-days:<slug>`
-  // tag the backend revalidates after each forecast warmup) and gives up after a short timeout on
-  // a cold data-cache miss (so a slow network can't block this dynamic page's TTFB — `after()`
-  // keeps the fill running so the NEXT request is warm). The seed feeds the SSR render of the
-  // best-days section + the crowd FAQ/JSON-LD; the deferred CLIENT queries (React Query, CDN-
-  // cached `/api/parks/.../best-days` + `/stats`, `useLoadLast`-gated) still load exactly as
-  // before and replace the seed once they settle — the loading-priority REQUIREMENT is untouched.
-  // ONE per-request clock read serves every seed-rendered "today" derivation (safe: the page is
-  // force-dynamic, nothing here is statically cached).
+  // Best-days SEED: fired here but DELIBERATELY NOT awaited on the render's critical path — it is
+  // consumed only inside <Suspense> boundaries below (the best-days section + the FAQ JSON-LD), so
+  // it STREAMS in and never gates TTFB. This is the fix for the cold-start latency regression: a
+  // cold `/best-days` fetch can be ~0.4–1s (occasionally slower than the park fetch), and awaiting
+  // it inline added that to first-byte. Now the shell (H1, attraction overview, header, FAQ base)
+  // flushes at park-fetch speed and the seeded best-days HTML arrives a beat later in the same
+  // stream — crawlers still receive it in the final document. The client queries (React Query,
+  // `useLoadLast`-gated) still replace the seed on the client as before. `getBestDaysCalendarSeed`
+  // keeps a timeout + `after()` so a hung backend can't hold the stream open and the fill still
+  // warms the data cache. ONE per-request clock read serves every seed-rendered "today" derivation.
   const seedNow = new Date();
   const seedNowMs = seedNow.getTime();
   const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
@@ -208,7 +210,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  const bestDaysSeed = await bestDaysSeedPromise;
+  // NOTE: bestDaysSeedPromise is intentionally NOT awaited here — see the comment where it's
+  // created. It is passed to the <Suspense>-wrapped FAQ JSON-LD + best-days slot below so it
+  // streams instead of blocking TTFB.
 
   // Historical stats are still loaded CLIENT-side only (React Query → the CDN-cached `/stats`
   // route, `useLoadLast`-gated): the 2-year aggregate is the other slow cold-compute response,
@@ -297,16 +301,17 @@ export default async function ParkPage({ params }: ParkPageProps) {
         {park.shows && park.shows.length > 0 && (
           <ShowsStructuredData shows={park.shows} park={park} />
         )}
-        <FAQStructuredData
-          park={park}
-          locale={locale}
-          nowMs={seedNowMs}
-          calendarSeed={
-            bestDaysSeed
-              ? { days: bestDaysSeed.days, timezone: bestDaysSeed.meta.timezone }
-              : null
-          }
-        />
+        {/* FAQ JSON-LD streams: the base FAQPage questions don't need the seed, and the
+            least-crowded question is appended when the seed resolves — awaiting it here would
+            block TTFB, so it's rendered inside its own Suspense boundary. */}
+        <Suspense fallback={null}>
+          <FAQStructuredData
+            park={park}
+            locale={locale}
+            nowMs={seedNowMs}
+            seedPromise={bestDaysSeedPromise}
+          />
+        </Suspense>
 
         {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
             Components); the BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
@@ -440,19 +445,23 @@ export default async function ParkPage({ params }: ParkPageProps) {
             landNames={landNames}
             attractionsByLand={attractionsByLand}
             bestDaysSlot={
-              <ParkBestDaysSection
-                key="best-days"
-                continent={continent}
-                country={country}
-                city={city}
-                parkSlug={parkSlug}
-                timezone={park.timezone}
-                hasOperatingSchedule={park.hasOperatingSchedule}
-                parkName={parkName}
-                locale={locale}
-                initialCalendar={bestDaysSeed}
-                seedNowMs={seedNowMs}
-              />
+              // Streamed: the seeded best-days content arrives in the same response a beat after
+              // the shell (skeleton shown until it lands), so the cold `/best-days` fetch never
+              // gates TTFB. The client query still takes over on hydration.
+              <Suspense fallback={<ParkBestDaysSectionSkeleton />}>
+                <SeededBestDays
+                  seedPromise={bestDaysSeedPromise}
+                  continent={continent}
+                  country={country}
+                  city={city}
+                  parkSlug={parkSlug}
+                  timezone={park.timezone}
+                  hasOperatingSchedule={park.hasOperatingSchedule}
+                  parkName={parkName}
+                  locale={locale}
+                  seedNowMs={seedNowMs}
+                />
+              </Suspense>
             }
           />
 
@@ -478,9 +487,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
             locale={locale}
           />
 
-          {/* FAQ Section — Q0–Q6 render from the park snapshot, Q1 (today's hours) + the
-              calendar-derived Q7 render server-side from the seed/server clock; the deferred
-              client calendar fetch upgrades Q7 after mount. */}
+          {/* FAQ Section — Q0–Q6 + Q1 (today's hours) render immediately from the park snapshot +
+              server clock. Q7 (least crowded) is NOT server-seeded here (that would require
+              awaiting the best-days seed on the critical path); it streams in from the client
+              calendar fetch after mount. The Q7 signal for SEO lives in the streamed FAQPage
+              JSON-LD above (which is seeded off the critical path). */}
           <Separator className="my-8" />
           <ParkFAQSection
             park={park}
@@ -491,7 +502,7 @@ export default async function ParkPage({ params }: ParkPageProps) {
             parkSlug={parkSlug}
             glossaryTerms={faqGlossaryTerms}
             glossarySegment={glossarySegment}
-            initialCalendar={bestDaysSeed}
+            initialCalendar={null}
             seedNowMs={seedNowMs}
           />
 
@@ -520,5 +531,52 @@ export default async function ParkPage({ params }: ParkPageProps) {
         </article>
       </PageContainer>
     </>
+  );
+}
+
+/**
+ * Streamed best-days slot: awaits the (off-critical-path) best-days seed INSIDE its own Suspense
+ * boundary and renders the seeded <ParkBestDaysSection>. Because the await happens here — not in
+ * the page body — the cold `/best-days` fetch never gates the page's TTFB: the shell flushes first
+ * and this content streams into the same response (crawlers still get it in the final HTML). A
+ * `null` seed (timeout/error) falls through to the section's own skeleton + client fetch.
+ */
+async function SeededBestDays({
+  seedPromise,
+  continent,
+  country,
+  city,
+  parkSlug,
+  timezone,
+  hasOperatingSchedule,
+  parkName,
+  locale,
+  seedNowMs,
+}: {
+  seedPromise: Promise<BestDaysSnapshot | null>;
+  continent: string;
+  country: string;
+  city: string;
+  parkSlug: string;
+  timezone: string;
+  hasOperatingSchedule: boolean;
+  parkName: string;
+  locale: string;
+  seedNowMs: number;
+}) {
+  const seed = await seedPromise;
+  return (
+    <ParkBestDaysSection
+      continent={continent}
+      country={country}
+      city={city}
+      parkSlug={parkSlug}
+      timezone={timezone}
+      hasOperatingSchedule={hasOperatingSchedule}
+      parkName={parkName}
+      locale={locale}
+      initialCalendar={seed}
+      seedNowMs={seedNowMs}
+    />
   );
 }
