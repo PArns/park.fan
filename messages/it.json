@@ -313,6 +313,11 @@
       "eveningWait": "di sera ~{minutes} min"
     },
     "operatingCount": "{count}/{total} operative",
+    "overview": {
+      "title": "Tempi di attesa a colpo d'occhio",
+      "minutesUnit": "min",
+      "dataAsOf": "Dati aggiornati alle {time} – i valori live si aggiornano ogni pochi minuti dopo il caricamento della pagina."
+    },
     "restaurants": "Ristoranti",
     "viewPark": "Vedi parco",
     "planYourVisit": "Pianifica la tua visita",

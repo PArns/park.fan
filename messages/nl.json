@@ -313,6 +313,11 @@
       "eveningWait": "'s avonds ca. {minutes} min."
     },
     "operatingCount": "{count}/{total} open",
+    "overview": {
+      "title": "Wachttijden in één oogopslag",
+      "minutesUnit": "min.",
+      "dataAsOf": "Gegevens per {time} – live waarden worden na het laden van de pagina elke paar minuten ververst."
+    },
     "restaurants": "Restaurants",
     "viewPark": "Bekijk Park",
     "planYourVisit": "Plan je Bezoek",

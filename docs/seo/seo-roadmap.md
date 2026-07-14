@@ -68,11 +68,17 @@ PWA-Manifest mit name, short_name, description, icons, theme_color und backgroun
 
 ## Phase 2 — "Wann besuchen"-Content (größte Keyword-Lücke)
 
-### 2A · `ParkBestDaysSection` Komponente ✅
+### 2A · `ParkBestDaysSection` Komponente ✅ (SSR im Juli 2026 wiederhergestellt)
 
 **Datei:** `components/parks/park-best-days-section.tsx`
 
-Server Component, erscheint auf der Park-Detailseite nach dem Crowd-Calendar. Generiert Textcontent aus `calendarData.days`:
+> **Historie:** Ursprünglich Server Component; beim Umbau auf Client-Fetching (ISR-Write-Fix)
+> wurde der Text unbemerkt client-only (mount-gated Skeleton) — das „Wann besuchen"-Cluster
+> hatte monatelang **keinen indexierbaren Text**. Seit Juli 2026 rendert die Section wieder
+> server-seitig aus dem gecachten Kalender-Seed (`getBestDaysCalendarSeed`, SWR,
+> timeout-guarded); die Client-Queries bleiben `useLoadLast`-gated.
+
+Erscheint auf der Park-Detailseite nach dem Crowd-Calendar. Generiert Textcontent aus `calendarData.days`:
 
 - Beste Monate (z.B. "März–Mai und September")
 - Beste Wochentage (z.B. "Dienstag und Mittwoch")

@@ -313,6 +313,11 @@
       "eveningWait": "evening ~{minutes} min"
     },
     "operatingCount": "{count}/{total} operating",
+    "overview": {
+      "title": "Wait times at a glance",
+      "minutesUnit": "min",
+      "dataAsOf": "Data as of {time} – live values refresh every few minutes once the page has loaded."
+    },
     "restaurants": "Restaurants",
     "viewPark": "View Park",
     "planYourVisit": "Plan Your Visit",

@@ -7,6 +7,7 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
+import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -55,10 +56,12 @@ interface ParkPageProps {
 }
 
 // FULLY DYNAMIC (force-dynamic) — rendered per request, so NO per-URL ISR shell write across the
-// catalog × 6 locales. Cache Components is off; the structure (header, attractions, FAQ, JSON-LD)
-// AND the best-days section render server-side into the first HTML (content-first, no skeleton) from
-// the data-cached snapshots (getParkByGeoPath / getBestDaysCalendar). Live status/wait times,
-// weather nowcast and historical stats are client-loaded (React Query) and stream in afterwards.
+// catalog × 6 locales. Cache Components is off; the structure (header, attraction wait-time
+// overview incl. every attraction name/link, FAQ, JSON-LD) AND — when its cache is warm — the
+// best-days section render server-side into the first HTML from the data-cached snapshots
+// (getParkByGeoPath / getBestDaysCalendarSeed; the seed is timeout-guarded so a cold calendar
+// fill can never block TTFB). Live status/wait times, weather nowcast and historical stats are
+// client-loaded (React Query) and stream in afterwards.
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: ParkPageProps): Promise<Metadata> {
@@ -154,11 +157,12 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   };
 }
 
-// force-dynamic (see the `export const dynamic` above): the structure (header, attractions, FAQ,
-// JSON-LD) renders server-side into the first HTML — content-first — from the data-cached park
-// snapshot (getParkByGeoPath). The slow/live sections — best-days calendar, historical stats,
-// weather nowcast, live wait times — stay CLIENT-loaded (React Query → CDN-cached /api routes) and
-// trickle in behind their own skeletons, so their cold/slow fetches never block this page's TTFB.
+// force-dynamic (see the `export const dynamic` above): the structure (header, attraction
+// wait-time overview, FAQ, JSON-LD) renders server-side into the first HTML — content-first —
+// from the data-cached park snapshot (getParkByGeoPath); the best-days section additionally
+// seeds from the data-cached calendar (timeout-guarded, see below). The LIVE values and the
+// historical stats stay CLIENT-loaded (React Query → CDN-cached /api routes) and trickle in
+// behind the SSR content, so their cold/slow fetches never block this page's TTFB.
 export default async function ParkPage({ params }: ParkPageProps) {
   const { locale, continent, country, city, park: parkSlug } = await params;
   setRequestLocale(locale);
@@ -176,6 +180,20 @@ export default async function ParkPage({ params }: ParkPageProps) {
     permanentRedirect(`/${locale}${redirectUrl}`);
   }
 
+  // Best-days SEED: fired in parallel with the park fetch below. It reads the precomputed
+  // `/best-days` snapshot (Next data-cached under BEST_DAYS_REVALIDATE + the `best-days:<slug>`
+  // tag the backend revalidates after each forecast warmup) and gives up after a short timeout on
+  // a cold data-cache miss (so a slow network can't block this dynamic page's TTFB — `after()`
+  // keeps the fill running so the NEXT request is warm). The seed feeds the SSR render of the
+  // best-days section + the crowd FAQ/JSON-LD; the deferred CLIENT queries (React Query, CDN-
+  // cached `/api/parks/.../best-days` + `/stats`, `useLoadLast`-gated) still load exactly as
+  // before and replace the seed once they settle — the loading-priority REQUIREMENT is untouched.
+  // ONE per-request clock read serves every seed-rendered "today" derivation (safe: the page is
+  // force-dynamic, nothing here is statically cached).
+  const seedNow = new Date();
+  const seedNowMs = seedNow.getTime();
+  const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
+
   // Fetch park data and holidays (holidays are optional)
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
 
@@ -190,11 +208,11 @@ export default async function ParkPage({ params }: ParkPageProps) {
     notFound();
   }
 
-  // Best-days + historical stats are loaded CLIENT-side (React Query → the CDN-cached
-  // `/api/parks/.../calendar` + `/stats` routes), each showing a skeleton until its data lands.
-  // They are deliberately NOT fetched here: the calendar is a large, lazily-computed backend
-  // response (cold compute can take 10–20s) and would block this dynamic page's TTFB — keeping it
-  // client-side lets the structure render content-first and these sections trickle in.
+  const bestDaysSeed = await bestDaysSeedPromise;
+
+  // Historical stats are still loaded CLIENT-side only (React Query → the CDN-cached `/stats`
+  // route, `useLoadLast`-gated): the 2-year aggregate is the other slow cold-compute response,
+  // and the best-days section renders its calendar-based fallback until it lands.
 
   // Glossary terms for the (client) FAQ section. This is a small static-content lookup (no fetch,
   // no clock) so it's safe to load in the static shell; the client FAQ tree highlights terms from
@@ -279,7 +297,16 @@ export default async function ParkPage({ params }: ParkPageProps) {
         {park.shows && park.shows.length > 0 && (
           <ShowsStructuredData shows={park.shows} park={park} />
         )}
-        <FAQStructuredData park={park} locale={locale} />
+        <FAQStructuredData
+          park={park}
+          locale={locale}
+          nowMs={seedNowMs}
+          calendarSeed={
+            bestDaysSeed
+              ? { days: bestDaysSeed.days, timezone: bestDaysSeed.meta.timezone }
+              : null
+          }
+        />
 
         {/* Breadcrumb — visible nav streams (next-intl links are dynamic under Cache
             Components); the BreadcrumbList JSON-LD above stays in the static shell for SEO. */}
@@ -334,29 +361,21 @@ export default async function ParkPage({ params }: ParkPageProps) {
                   <p className="text-muted-foreground mt-3 max-w-2xl text-sm leading-relaxed">
                     {t('intro', { park: parkName, city: cityName })}
                   </p>
-                  {/* Mobile/tablet (< lg): the neighbouring-holidays context has no right column to
-                      live in, so it stacks here as a band row (top hairline), still using the board's
-                      caption typography rather than a floating card. */}
-                  <HeaderHolidayPanel
-                    initialData={park}
-                    continent={continent}
-                    country={country}
-                    city={city}
-                    parkSlug={parkSlug}
-                    className="border-border/50 mt-4 border-t pt-4 lg:hidden"
-                  />
                 </div>
-                {/* Right column (lg+): the neighbouring-holidays context fills the empty space beside
-                    the board as an integral column — a full-height left divider + `mt-5 pt-4` matching
-                    the stats band's top rule, so its caption sits at the SAME height as STATUS. Not a
-                    floating card. Collapses to nothing when no influencing holidays apply. */}
+                {/* Neighbouring-holidays context — ONE instance for all breakpoints (it used to be
+                    rendered twice, `lg:hidden` + `hidden lg:block`, duplicating its text in the HTML
+                    and its hydration cost). Below lg it wraps to a full-width band row under the
+                    intro (top hairline); on lg+ it becomes the right-hand column beside the board —
+                    full-height left divider + `mt-5 pt-4` matching the stats band's top rule, so its
+                    caption sits at the SAME height as STATUS. Not a floating card. Collapses to
+                    nothing when no influencing holidays apply. */}
                 <HeaderHolidayPanel
                   initialData={park}
                   continent={continent}
                   country={country}
                   city={city}
                   parkSlug={parkSlug}
-                  className="border-border/50 mt-5 hidden w-64 shrink-0 self-stretch border-l pt-4 pl-5 lg:block xl:w-72"
+                  className="border-border/50 w-full border-t pt-4 lg:mt-5 lg:w-64 lg:shrink-0 lg:self-stretch lg:border-t-0 lg:border-l lg:pl-5 xl:w-72"
                 />
               </div>
             </GlassCard>
@@ -431,6 +450,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 hasOperatingSchedule={park.hasOperatingSchedule}
                 parkName={parkName}
                 locale={locale}
+                initialCalendar={bestDaysSeed}
+                seedNowMs={seedNowMs}
               />
             }
           />
@@ -457,8 +478,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
             locale={locale}
           />
 
-          {/* FAQ Section — client-rendered: Q0–Q6 render immediately from the static park data,
-              and the calendar-derived Q7 streams in once the client calendar fetch resolves. */}
+          {/* FAQ Section — Q0–Q6 render from the park snapshot, Q1 (today's hours) + the
+              calendar-derived Q7 render server-side from the seed/server clock; the deferred
+              client calendar fetch upgrades Q7 after mount. */}
           <Separator className="my-8" />
           <ParkFAQSection
             park={park}
@@ -469,6 +491,8 @@ export default async function ParkPage({ params }: ParkPageProps) {
             parkSlug={parkSlug}
             glossaryTerms={faqGlossaryTerms}
             glossarySegment={glossarySegment}
+            initialCalendar={bestDaysSeed}
+            seedNowMs={seedNowMs}
           />
 
           <Separator className="my-8" />

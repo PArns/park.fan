@@ -44,6 +44,11 @@ calendar + historical stats) must ALWAYS load LAST — everything else loads fir
   can never be starved). **Any new consumer of calendar/stats data on the park page
   must go through these hooks** so the rule cannot be bypassed (queries with the
   same key would otherwise start the fetch early).
+- The SERVER-side best-days seed (`getBestDaysCalendarSeed` in the park page) does
+  NOT bypass this rule: it reads the 24h data-cached snapshot during the per-request
+  render (timeout-guarded, so a cold fill can't block TTFB) and reaches the
+  components as plain props for the SSR/pre-mount render only — it never enqueues a
+  client query, and the deferred hooks above still fetch in the required order.
 - Conversely: weather must load EARLY. The hourly day-view fetch runs in parallel
   with the nowcast (no waterfall); only its _rendering_ is gated on the nowcast.
 

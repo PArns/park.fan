@@ -23,11 +23,15 @@ import {
   type GlossaryInjectTerm,
 } from '@/components/glossary/glossary-inject-context';
 import type { Locale } from '@/i18n/config';
-import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
-import { buildParkFaqItems, getParkArticleForms, type ParkFaqIconName } from '@/lib/faq/park-faq';
+import {
+  buildParkFaqItems,
+  getLeastCrowdedDays,
+  getParkArticleForms,
+  type ParkFaqIconName,
+} from '@/lib/faq/park-faq';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
-import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 interface ParkFAQSectionProps {
   park: ParkWithAttractions;
@@ -40,6 +44,12 @@ interface ParkFAQSectionProps {
    *  terms without awaiting them. */
   glossaryTerms: GlossaryInjectTerm[];
   glossarySegment: string;
+  /** Server-fetched calendar seed — lets Q7 (least crowded) render into the initial HTML
+   *  instead of streaming in only after the deferred client calendar fetch. */
+  initialCalendar?: IntegratedCalendarResponse | null;
+  /** Server "now" (epoch ms) — SSR fallback for the browser clock, so Q1 (today's hours) and
+   *  Q7 render server-side; the browser clock takes over after mount (same day → same output). */
+  seedNowMs?: number;
 }
 
 interface FAQItem {
@@ -78,30 +88,30 @@ export function ParkFAQSection({
   parkSlug,
   glossaryTerms,
   glossarySegment,
+  initialCalendar,
+  seedNowMs,
 }: ParkFAQSectionProps) {
   const t = useTranslations('seo.faq');
   const tGeo = useTranslations('geo');
 
-  // "now" comes from the browser clock (null until mount): during the SSR/static prerender the
-  // time-dependent Q1 (today's hours) renders an evergreen answer and the shell never reads the
-  // clock; the real value fills in after hydration. Day-granular precision is all Q1/Q7 need.
+  // "now": browser clock once mounted; before that (SSR + first client render) the server-passed
+  // seedNowMs, so the time-dependent Q1 (today's hours) and Q7 (least crowded) are part of the
+  // crawlable first HTML. Both renders read the SAME prop value → no hydration mismatch; the
+  // page is force-dynamic, so a per-request server clock is fine. Day-granular precision is all
+  // Q1/Q7 need, so the browser clock taking over after mount yields the same text.
   const browserNow = useBrowserNow(null);
-  const nowMs = browserNow ? browserNow.getTime() : null;
+  const nowMs = browserNow ? browserNow.getTime() : (seedNowMs ?? null);
 
-  // Calendar window derived from the browser clock (client-only) — keeps the park shell
-  // time-independent for the 1-day TTL.
-  const { from, to } = getCalendarWindow(browserNow);
-
-  // Calendar feeds only Q7 (least-crowded days); it streams in client-side. Until it lands,
-  // the base Q0–Q6 render immediately — same graceful behavior as the old streamed fallback.
-  const { data: calendarData } = useParkBestDaysCalendar({
+  // Calendar feeds only Q7 (least-crowded days). The deferred client fetch takes over once it
+  // lands; until then the server seed (when available) backs Q7 so it's already in the first
+  // HTML. Without a seed the base Q0–Q6 render immediately — the old streamed behavior.
+  const { data: clientCalendarData } = useParkBestDaysCalendar({
     continent,
     country,
     city,
     parkSlug,
-    from,
-    to,
   });
+  const calendarData = clientCalendarData ?? initialCalendar ?? undefined;
 
   const faqs: FAQItem[] = buildParkFaqItems(
     park,
@@ -120,45 +130,32 @@ export function ParkFAQSection({
     </CrowdCalendarFaqLink>
   );
 
-  // Q7: Least crowded (requires calendar data + a client-derived "now", uses rich text)
+  // Q7: Least crowded — shared derivation with the FAQPage JSON-LD (getLeastCrowdedDays), so
+  // the structured data and the visible answer can never diverge. Rich text (calendar link)
+  // stays a visible-only affordance.
   if (calendarData && nowMs != null) {
-    const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
-    if (analysis.totalDays >= 7) {
-      const conjunctions: Record<string, string> = {
-        de: ' und ',
-        fr: ' et ',
-        nl: ' en ',
-        es: ' y ',
-      };
-      const conjunction = conjunctions[locale] ?? ' and ';
-
-      if (analysis.bestDaysOfWeek.length >= 2) {
-        const mondayFirstOrder = (dayIndex: number) => (dayIndex + 6) % 7;
-        const dayNames = [...analysis.bestDaysOfWeek.slice(0, 2)]
-          .sort((a, b) => mondayFirstOrder(a.dayIndex) - mondayFirstOrder(b.dayIndex))
-          .map((s) => {
-            const refMonday = new Date(2025, 0, 6);
-            const date = new Date(refMonday);
-            date.setDate(refMonday.getDate() + ((s.dayIndex - 1 + 7) % 7));
-            return new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
-          })
-          .join(conjunction);
-        faqs.push({
-          iconName: 'Clock2' as ParkFaqIconName,
-          question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
-          answer: t.rich('leastCrowdedA', {
-            park: parkNomCap,
-            days: dayNames,
-            calendar: crowdCalendarLink,
-          }),
-        });
-      } else {
-        faqs.push({
-          iconName: 'Clock2' as ParkFaqIconName,
-          question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
-          answer: t.rich('leastCrowdedNoDataA', { calendar: crowdCalendarLink }),
-        });
-      }
+    const leastCrowded = getLeastCrowdedDays(
+      calendarData.days,
+      nowMs,
+      calendarData.meta.timezone,
+      locale
+    );
+    if (leastCrowded.status === 'days') {
+      faqs.push({
+        iconName: 'Clock2' as ParkFaqIconName,
+        question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
+        answer: t.rich('leastCrowdedA', {
+          park: parkNomCap,
+          days: leastCrowded.dayNames,
+          calendar: crowdCalendarLink,
+        }),
+      });
+    } else if (leastCrowded.status === 'no-pattern') {
+      faqs.push({
+        iconName: 'Clock2' as ParkFaqIconName,
+        question: t('leastCrowdedQ', { park: parkNom, parkLoc }),
+        answer: t.rich('leastCrowdedNoDataA', { calendar: crowdCalendarLink }),
+      });
     }
   }
 
