@@ -166,8 +166,14 @@ export async function getBestDaysCalendar(
   return fetchAndProject(continent, country, city, parkSlug, options.from, options.to);
 }
 
-/** How long the park page's SSR render may wait for the best-days snapshot before giving up. */
-const BEST_DAYS_SEED_TIMEOUT_MS = 2500;
+/**
+ * How long the park page's SSR render may wait for the best-days snapshot before giving up.
+ * Deliberately tight: a miss only costs the SSR seed for that ONE request (the client queries
+ * fill the section as before, and `after()` completes the cache fill for the next request).
+ * Once the backend ships the lean precomputed best-days endpoint (p99 well under this budget),
+ * misses should become practically impossible.
+ */
+const BEST_DAYS_SEED_TIMEOUT_MS = 1200;
 
 /**
  * TTFB-safe wrapper around {@link getBestDaysCalendar} for the park page's SERVER render (the
