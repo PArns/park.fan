@@ -171,22 +171,24 @@ export function getBestDaysSnapshotFresh(
 }
 
 /**
- * How long the park page's SSR render may wait for the best-days snapshot before giving up.
- * Now a formality: `/best-days` is a precomputed Redis read (p99 < 300 ms) behind the Next data
- * cache, so this only ever guards a genuinely cold data-cache miss meeting a slow network — and
- * a miss just drops the SSR seed for that one request (the client queries fill the section as
- * before; `after()` completes the cache fill for the next request).
+ * How long a streamed best-days consumer may wait for the snapshot before giving up.
+ *
+ * This is NO LONGER on the page's TTFB critical path — the seed is awaited only inside <Suspense>
+ * boundaries (the best-days slot + FAQ JSON-LD), so it streams in without gating first-byte. The
+ * timeout therefore only bounds how long the streamed chunk / lambda may stay open on a cold-and-
+ * slow `/best-days` fetch. It's generous (the endpoint is a precomputed Redis read, usually
+ * <300 ms) so the seed lands in the streamed HTML for crawlers whenever reasonably possible; a
+ * timeout drops the seed for that one request while `after()` still warms the data cache.
  */
-const BEST_DAYS_SEED_TIMEOUT_MS = 800;
+const BEST_DAYS_SEED_TIMEOUT_MS = 3000;
 
 /**
- * TTFB-safe wrapper around {@link getBestDaysCalendar} for the park page's SERVER render.
+ * Timeout-bounded wrapper around {@link getBestDaysCalendar} for the park page's streamed SEO seed.
  *
- * Waits at most {@link BEST_DAYS_SEED_TIMEOUT_MS}; on timeout it renders WITHOUT the seed (the
- * client queries fill the section, exactly the pre-seed behavior) while `after()` keeps the fetch
- * alive past the response so it still fills the Next data cache and the NEXT request gets the seed
- * instantly. Returns `null` on timeout or any error — callers treat `null` as "no seed", never as
- * an empty calendar.
+ * Waits at most {@link BEST_DAYS_SEED_TIMEOUT_MS}; on timeout it resolves `null` (the streamed
+ * section falls back to its skeleton + client fetch) while `after()` keeps the fetch alive past the
+ * response so it still fills the Next data cache and the NEXT request's stream gets the seed. Callers
+ * treat `null` as "no seed", never as an empty calendar. Consumed off the critical path (Suspense).
  */
 export async function getBestDaysCalendarSeed(
   continent: string,

@@ -1,4 +1,5 @@
-import { CalendarDay, ParkWithAttractions } from '@/lib/api/types';
+import { ParkWithAttractions } from '@/lib/api/types';
+import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
@@ -17,19 +18,25 @@ interface FAQStructuredDataProps {
    * seeds itself with. Omit (null) for time-independent output (evergreen Q1).
    */
   nowMs?: number | null;
-  /** Best-days calendar seed (data-cached, may be null on a cold-cache timeout). Feeds the
-   *  "least crowded" question so it appears in the JSON-LD, mirroring the visible FAQ. */
-  calendarSeed?: { days: CalendarDay[]; timezone: string } | null;
+  /**
+   * Best-days seed PROMISE (not the resolved value). This component is rendered inside a
+   * <Suspense> boundary and awaits the promise itself, so the cold `/best-days` fetch streams the
+   * JSON-LD in without blocking the page's TTFB. The awaited snapshot feeds the "least crowded"
+   * question so it appears in the JSON-LD (the visible Q7 is client-rendered). `null`/resolves-null
+   * → the FAQPage is emitted without the least-crowded entry.
+   */
+  seedPromise?: Promise<BestDaysSnapshot | null> | null;
 }
 
 export async function FAQStructuredData({
   park,
   locale,
   nowMs = null,
-  calendarSeed = null,
+  seedPromise = null,
 }: FAQStructuredDataProps) {
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
+  const calendarSeed = seedPromise ? await seedPromise : null;
 
   const items = buildParkFaqItems(
     park,
@@ -60,7 +67,7 @@ export async function FAQStructuredData({
     const leastCrowded = getLeastCrowdedDays(
       calendarSeed.days,
       nowMs,
-      calendarSeed.timezone,
+      calendarSeed.meta.timezone,
       locale
     );
     if (leastCrowded.status === 'days') {
