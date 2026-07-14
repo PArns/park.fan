@@ -500,6 +500,11 @@
       "eveningWait": "abends ca. {minutes} Min."
     },
     "operatingCount": "{count}/{total} in Betrieb",
+    "overview": {
+      "title": "Wartezeiten im Überblick",
+      "minutesUnit": "Min.",
+      "dataAsOf": "Datenstand: {time} Uhr – Live-Werte aktualisieren sich nach dem Laden der Seite alle paar Minuten."
+    },
     "restaurants": "Restaurants",
     "viewPark": "Park ansehen",
     "planYourVisit": "Besuch planen",
@@ -991,7 +996,7 @@
       "openingHoursQ": "Welche Öffnungszeiten hat {park} heute?",
       "openingHoursA": "Heute, {date}, hat {park} von {open} bis {close} Uhr geöffnet.",
       "openingHoursClosed": "Heute, {date}, ist {park} geschlossen.",
-      "openingHoursEvergreenA": "Die Öffnungszeiten von {park} hängen von Saison und Wochentag ab. Aktuelle Öffnungszeiten findest du im Zeitplan und Crowd-Kalender auf dieser Seite.",
+      "openingHoursEvergreenA": "Wie lange {park} geöffnet ist, hängt von Saison und Wochentag ab. Aktuelle Öffnungszeiten findest du im Zeitplan und Crowd-Kalender auf dieser Seite.",
       "locationQ": "Wo befindet sich {park}?",
       "locationA": "{park} befindet sich in {city}, {country}.",
       "attractionCountQ": "Wie viele Attraktionen gibt es im {park}?",

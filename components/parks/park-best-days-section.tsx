@@ -28,6 +28,17 @@ interface ParkBestDaysSectionProps {
   /** Renders as a compact card without section heading — for embedding in the header area */
   compact?: boolean;
   className?: string;
+  /**
+   * Server-fetched calendar seed (data-cached `getBestDaysCalendarSeed`). When present, the
+   * SSR / pre-mount render shows the REAL best-days content (from the seed) instead of a
+   * skeleton — this is what puts the "beste Reisezeit" text into the crawlable first HTML.
+   * The client queries below still load exactly as before (deferred via useLoadLast) and
+   * replace the seed once they settle. `null`/absent → the pre-seed skeleton behavior.
+   */
+  initialCalendar?: IntegratedCalendarResponse | null;
+  /** Server "now" (epoch ms) the seed was rendered with — keeps SSR and the first client
+   *  render byte-identical (no hydration mismatch from two clock reads). */
+  seedNowMs?: number;
 }
 
 function scoreToCrowdLevel(score: number): CrowdLevel {
@@ -95,6 +106,8 @@ export function ParkBestDaysSection({
   locale,
   compact = false,
   className,
+  initialCalendar,
+  seedNowMs,
 }: ParkBestDaysSectionProps) {
   // Both queries are browser-only (disabled during SSR). Gate the content render on `mounted`
   // so the static prerender (and first paint) shows the skeleton instead of reaching the
@@ -123,8 +136,26 @@ export function ParkBestDaysSection({
     parkSlug,
   });
 
-  // The compact header card has no skeleton placeholder; render nothing until data arrives.
+  // Until the client queries have settled, render the SERVER seed when we have one — the
+  // best-days text is then part of the initial HTML (SSR + first client render are identical,
+  // both driven by the same props). The weekday chips come from the calendar-based fallback
+  // inside BestDaysContent (no historical stats yet); once the deferred client queries land,
+  // the stats-based view replaces the seed. Without a seed: skeleton, as before.
   if (!mounted || calendarPending || statsPending) {
+    if (initialCalendar && seedNowMs != null) {
+      return (
+        <BestDaysContent
+          calendarData={initialCalendar}
+          statsByDayOfWeek={undefined}
+          nowMs={seedNowMs}
+          parkName={parkName}
+          parkSlug={parkSlug}
+          locale={locale}
+          compact={compact}
+          className={className}
+        />
+      );
+    }
     return compact ? null : <ParkBestDaysSectionSkeleton />;
   }
 
@@ -150,6 +181,8 @@ export function ParkBestDaysSection({
 interface BestDaysContentProps {
   calendarData: IntegratedCalendarResponse;
   statsByDayOfWeek?: DayOfWeekStat[];
+  /** Externally supplied "now" (the SSR seed's server clock). Omitted → captured at mount. */
+  nowMs?: number;
   parkName: string;
   parkSlug: string;
   locale: string;
@@ -160,6 +193,7 @@ interface BestDaysContentProps {
 function BestDaysContent({
   calendarData,
   statsByDayOfWeek,
+  nowMs: nowMsProp,
   parkName,
   parkSlug,
   locale,
@@ -168,8 +202,10 @@ function BestDaysContent({
 }: BestDaysContentProps) {
   const t = useTranslations('parks.bestDays');
   // Capture "now" once at mount (lazy init) — analyzeBestDays only needs day-granular precision,
-  // and calling Date.now() directly during render is a purity violation.
-  const [nowMs] = useState(() => Date.now());
+  // and calling Date.now() directly during render is a purity violation. The seed path passes
+  // the server clock in via prop instead, so SSR and hydration read the SAME value.
+  const [mountNowMs] = useState(() => nowMsProp ?? Date.now());
+  const nowMs = nowMsProp ?? mountNowMs;
   const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
 
   const bestDaysOfWeek =

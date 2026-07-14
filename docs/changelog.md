@@ -4,6 +4,35 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – SEO: park pages ship their core content in the first HTML again
+
+Competitor SERP analysis (July 2026, "phantasialand wartezeiten" & co.) found the park page's
+initial HTML contained **no attraction names, no attraction links and no best-days text** — the
+attractions tab mount-gated everything behind a skeleton, and the best-days/FAQ calendar content
+was client-only. wartezeiten.app/queue-times serve exactly this content statically. Changes
+(see [SEO analysis](seo/analysis.md)):
+
+- **NEW `AttractionWaitOverview`** — the pre-mount/no-JS state of the attractions tab is now a
+  server-rendered semantic list of EVERY attraction (name + link + snapshot wait/status),
+  grouped by land, with the park-wide Ø/peak/operating summary and a visible "Datenstand"
+  timestamp. The interactive cards replace it after mount; crawlers index 40 ride names + 40
+  internal links per park instead of a pulse skeleton.
+- **Best-days SSR seed** — `getBestDaysCalendarSeed` (timeout-guarded `getBestDaysCalendar`,
+  month-aligned window, `after()` keeps a cold fill alive) lets the "Beste Reisezeit" section
+  and the least-crowded FAQ render server-side when the 24h cache is warm. The client queries
+  stay `useLoadLast`-deferred — the loading-priority requirement is untouched (the seed is
+  props, not a page query).
+- **FAQ**: "Wann ist {park} am wenigsten los?" now also lands in the FAQPage **JSON-LD**
+  (shared `getLeastCrowdedDays` derivation, so markup and visible answer can't diverge), and
+  Q1 renders today's concrete opening hours server-side (force-dynamic page, per-request clock).
+- Fixes: German evergreen opening-hours FAQ no longer reads "von das {park}"; attraction-page
+  H1 text no longer concatenates as "Taron– Aktuelle Wartezeit"; the neighbouring-holidays
+  header panel renders once (responsive classes) instead of twice in the HTML.
+- Deliberately NOT changed: `PARK_REVALIDATE` stays 1 day — a shorter snapshot window would
+  re-create the ISR/data-cache write volume documented in
+  [caching-strategy](architecture/caching-strategy.md); freshness is signalled honestly via the
+  rendered "Datenstand" instead.
+
 ## Unreleased – Hottest-parks banner: centered layout for a partial heat wave
 
 The homepage heat banner ([`HottestParksSection`](../components/home/hottest-parks-section.tsx))

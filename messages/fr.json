@@ -313,6 +313,11 @@
       "eveningWait": "le soir env. {minutes} min"
     },
     "operatingCount": "{count}/{total} ouverts",
+    "overview": {
+      "title": "Temps d'attente en un coup d'œil",
+      "minutesUnit": "min",
+      "dataAsOf": "Données au {time} – les valeurs en direct s'actualisent toutes les quelques minutes après le chargement de la page."
+    },
     "restaurants": "Restaurants",
     "viewPark": "Voir le Parc",
     "planYourVisit": "Planifier votre Visite",

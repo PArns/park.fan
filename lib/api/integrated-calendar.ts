@@ -1,4 +1,5 @@
 import { unstable_cache } from 'next/cache';
+import { after } from 'next/server';
 import { getServerAuthHeaders } from './client';
 import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
 
@@ -163,4 +164,50 @@ export async function getBestDaysCalendar(
   );
 
   return fetchAndProject(continent, country, city, parkSlug, options.from, options.to);
+}
+
+/** How long the park page's SSR render may wait for the best-days snapshot before giving up. */
+const BEST_DAYS_SEED_TIMEOUT_MS = 2500;
+
+/**
+ * TTFB-safe wrapper around {@link getBestDaysCalendar} for the park page's SERVER render (the
+ * SEO seed for the best-days section + crowd FAQ).
+ *
+ * The underlying `unstable_cache` entry is stale-while-revalidate, so the ONLY slow path is a
+ * cold MISS (first request per park × calendar-month window, or after `revalidateTag`): the raw
+ * upstream calendar can take 10–20 s on a cold backend compute, which must never block the
+ * force-dynamic park page's TTFB. So the render waits at most {@link BEST_DAYS_SEED_TIMEOUT_MS}
+ * and then renders WITHOUT the seed (the client queries fill the section in, exactly the
+ * pre-seed behavior) — while `after()` keeps the abandoned fetch alive past the response so it
+ * still fills the cache and the NEXT request gets the seed instantly.
+ *
+ * Returns `null` on timeout or any error; callers must treat `null` as "no seed" (never as an
+ * empty calendar).
+ */
+export async function getBestDaysCalendarSeed(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string,
+  options: { from?: string; to?: string } = {}
+): Promise<IntegratedCalendarResponse | null> {
+  const calendarPromise = getBestDaysCalendar(continent, country, city, parkSlug, options).catch(
+    () => null
+  );
+
+  const result = await Promise.race([
+    calendarPromise,
+    new Promise<'timeout'>((resolve) => {
+      setTimeout(() => resolve('timeout'), BEST_DAYS_SEED_TIMEOUT_MS);
+    }),
+  ]);
+
+  if (result === 'timeout') {
+    // Cold cache fill in progress — keep it running past the response so it lands in the
+    // cache for the next request instead of being frozen with the lambda.
+    after(() => calendarPromise);
+    return null;
+  }
+
+  return result;
 }

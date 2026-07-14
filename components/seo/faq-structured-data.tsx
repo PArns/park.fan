@@ -1,30 +1,45 @@
-import { ParkWithAttractions } from '@/lib/api/types';
+import { CalendarDay, ParkWithAttractions } from '@/lib/api/types';
 import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
-import { buildParkFaqItems, getParkArticleForms } from '@/lib/faq/park-faq';
+import {
+  buildParkFaqItems,
+  getLeastCrowdedDays,
+  getParkArticleForms,
+} from '@/lib/faq/park-faq';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;
   locale: string;
+  /**
+   * Server "now" (epoch ms). The park page is force-dynamic (rendered per request), so the
+   * JSON-LD may safely carry today's concrete opening hours — the same answer the visible FAQ
+   * seeds itself with. Omit (null) for time-independent output (evergreen Q1).
+   */
+  nowMs?: number | null;
+  /** Best-days calendar seed (data-cached, may be null on a cold-cache timeout). Feeds the
+   *  "least crowded" question so it appears in the JSON-LD, mirroring the visible FAQ. */
+  calendarSeed?: { days: CalendarDay[]; timezone: string } | null;
 }
 
-export async function FAQStructuredData({ park, locale }: FAQStructuredDataProps) {
+export async function FAQStructuredData({
+  park,
+  locale,
+  nowMs = null,
+  calendarSeed = null,
+}: FAQStructuredDataProps) {
   const t = await getTranslations('seo.faq');
   const tGeo = await getTranslations('geo');
 
-  // Pass null for "now": the JSON-LD stays SERVER-rendered (SEO) but TIME-INDEPENDENT, so it can
-  // live in the day-stable static shell without reading the clock (which would pin/stale the
-  // shell). Q1 emits an evergreen opening-hours answer instead of today's concrete hours.
   const items = buildParkFaqItems(
     park,
     locale,
     t as Parameters<typeof buildParkFaqItems>[2],
     tGeo as Parameters<typeof buildParkFaqItems>[3],
-    null
+    nowMs
   );
 
-  const { parkNom, parkAcc } = getParkArticleForms(park, locale);
+  const { parkNom, parkNomCap, parkAcc, parkLoc } = getParkArticleForms(park, locale);
 
   const mainEntity = items.map((item) => {
     const answerText =
@@ -38,7 +53,33 @@ export async function FAQStructuredData({ park, locale }: FAQStructuredDataProps
     };
   });
 
-  // Q7: Crowd Calendar (always included in structured data)
+  // Q7: Least crowded days — only when the calendar seed is available; uses the SAME derivation
+  // as the visible FAQ (getLeastCrowdedDays) so the markup never claims what the page can't show.
+  // `t.markup` renders the <calendar> tag as plain text for the JSON-LD string.
+  if (calendarSeed && nowMs != null) {
+    const leastCrowded = getLeastCrowdedDays(
+      calendarSeed.days,
+      nowMs,
+      calendarSeed.timezone,
+      locale
+    );
+    if (leastCrowded.status === 'days') {
+      mainEntity.push({
+        '@type': 'Question',
+        name: t('leastCrowdedQ', { park: parkNom, parkLoc }),
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: t.markup('leastCrowdedA', {
+            park: parkNomCap,
+            days: leastCrowded.dayNames,
+            calendar: (chunks) => chunks,
+          }),
+        },
+      });
+    }
+  }
+
+  // Q8: Crowd Calendar (always included in structured data)
   mainEntity.push({
     '@type': 'Question',
     name: t('crowdCalendarQ', { park: parkNom }),

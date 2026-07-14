@@ -18,6 +18,7 @@ import Fuse from 'fuse.js';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
+import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overview';
 import { LandSection } from '@/components/parks/land-section';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
@@ -311,7 +312,11 @@ export function TabsWithHash({
 
   const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
-  // Render skeleton while mounting to prevent layout shift
+  // Pre-mount (SSR + first client render): render the server-renderable wait-time OVERVIEW
+  // instead of a skeleton. This is the ONLY attractions markup crawlers see without JS —
+  // every attraction name, its wait/status from the snapshot and the link to its detail page
+  // land in the initial HTML (the interactive cards below are mount-gated and lazy-mounted,
+  // so they never reach the first HTML). After mount the cards replace it seamlessly.
   if (!isMounted) {
     return (
       <div ref={tabsRef} className="scroll-mt-20">
@@ -353,17 +358,12 @@ export function TabsWithHash({
             )}
           </TabsList>
           <TabsContent value={defaultValue} className="space-y-6">
-            {/* Skeleton matching actual attraction cards layout */}
-            {landNames.slice(0, 2).map((_, idx) => (
-              <div key={idx} className="space-y-4">
-                <div className="bg-muted/50 h-8 w-48 animate-pulse rounded" />
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {[...Array(3)].map((_, i) => (
-                    <div key={i} className="bg-muted/50 h-64 animate-pulse rounded-lg" />
-                  ))}
-                </div>
-              </div>
-            ))}
+            <AttractionWaitOverview
+              park={park}
+              parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+              landNames={landNames}
+              attractionsByLand={attractionsByLand}
+            />
           </TabsContent>
         </Tabs>
       </div>

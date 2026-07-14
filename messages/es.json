@@ -313,6 +313,11 @@
       "eveningWait": "por la noche ~{minutes} min"
     },
     "operatingCount": "{count}/{total} abiertos",
+    "overview": {
+      "title": "Tiempos de espera de un vistazo",
+      "minutesUnit": "min",
+      "dataAsOf": "Datos actualizados a las {time} – los valores en vivo se actualizan cada pocos minutos tras cargar la página."
+    },
     "restaurants": "Restaurantes",
     "viewPark": "Ver Parque",
     "planYourVisit": "Planifica tu Visita",

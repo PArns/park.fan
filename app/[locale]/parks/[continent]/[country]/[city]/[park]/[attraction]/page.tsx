@@ -268,9 +268,11 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   {/* The wait-time keyword lives INSIDE the h1 (a styled span, not a
                       sibling) so the primary heading actually carries "Wartezeit" — the
                       strongest on-page signal for "{attraction} wartezeit" queries. */}
+                  {/* The literal space before the span matters: without it the extracted text
+                      (SERP snippets, screen readers) reads "Taron– Aktuelle Wartezeit". */}
                   <h1 className="mb-2 text-3xl font-bold md:text-4xl">
-                    {attractionName}
-                    <span className="text-muted-foreground ml-2 text-xl font-normal md:text-2xl">
+                    {attractionName}{' '}
+                    <span className="text-muted-foreground text-xl font-normal md:text-2xl">
                       – {t('h1Suffix')}
                     </span>
                   </h1>

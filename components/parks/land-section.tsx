@@ -2,7 +2,8 @@ import { useTranslations } from 'next-intl';
 import { LayoutGrid } from 'lucide-react';
 import { AttractionCard } from './attraction-card';
 import { getAttractionImage } from '@/lib/attraction-images';
-import type { ParkAttraction, AttractionStatus, ParkStatus } from '@/lib/api/types';
+import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
+import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
 
 interface LandSectionProps {
   landName: string;
@@ -11,14 +12,6 @@ interface LandSectionProps {
   parkSlug: string; // Added for background image lookup
   parkStatus?: ParkStatus;
   timezone?: string;
-}
-
-function getStatus(attraction: ParkAttraction, parkStatus?: ParkStatus): AttractionStatus {
-  if (parkStatus && parkStatus !== 'OPERATING') {
-    return 'CLOSED';
-  }
-  const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-  return standbyQueue?.status ?? attraction.status ?? 'CLOSED';
 }
 
 export function LandSection({
@@ -30,7 +23,9 @@ export function LandSection({
   timezone,
 }: LandSectionProps) {
   const t = useTranslations('parks');
-  const operatingCount = attractions.filter((a) => getStatus(a, parkStatus) === 'OPERATING').length;
+  const operatingCount = attractions.filter(
+    (a) => getAttractionDisplayStatus(a, parkStatus) === 'OPERATING'
+  ).length;
 
   return (
     <section>
