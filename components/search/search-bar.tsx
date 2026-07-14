@@ -23,6 +23,14 @@ interface SearchCommandProps {
   size?: 'sm' | 'lg'; // sm for header, lg for jumbotron
   /** Source label for the search_opened event when this trigger opens the dialog. */
   searchOpenSource?: 'header' | 'hero';
+  /**
+   * Pre-mount the (closed) lazy dialog during idle on touch devices so the FIRST tap opens an
+   * already-mounted palette. Without it, the first tap has to fetch the dialog chunk and mount it
+   * before Radix can focus the input — that async gap lands the focus() outside the user-gesture
+   * window mobile browsers (iOS Safari especially) require to raise the on-screen keyboard, so the
+   * keyboard stays down on the first tap. Opt-in (hero) to keep cmdk off the idle path elsewhere.
+   */
+  prewarm?: boolean;
   className?: string;
 }
 
@@ -34,6 +42,7 @@ export function SearchCommand({
   autoFocusOnType = false,
   size = 'lg',
   searchOpenSource = 'header',
+  prewarm = false,
   className,
 }: SearchCommandProps) {
   const t = useTranslations('common');
@@ -95,6 +104,43 @@ export function SearchCommand({
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [autoFocusOnType, open]);
+
+  // Pre-mount the (closed) lazy dialog during idle so the first tap opens an already-mounted
+  // palette instead of one that still has to fetch its chunk + mount before it can focus. That
+  // async gap is what keeps the on-screen keyboard down on the first tap on mobile (see the
+  // `prewarm` prop docs). Gated to coarse-pointer (touch) devices — desktop focus() works
+  // regardless of the lazy mount, so there's no reason to pull cmdk onto the idle path there.
+  // Scheduled after load + idle so it never competes with LCP/hydration; the dialog stays
+  // closed (open=false) so no portal content renders and no visible change occurs.
+  useEffect(() => {
+    if (!prewarm || hasOpened) return;
+    if (!window.matchMedia?.('(pointer: coarse)').matches) return;
+
+    let idleId: number | undefined;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+
+    const premount = () => {
+      const ric = window.requestIdleCallback;
+      if (ric) {
+        idleId = ric(() => setHasOpened(true), { timeout: 2000 });
+      } else {
+        // Safari has no requestIdleCallback — fall back to a short timeout.
+        timeoutId = setTimeout(() => setHasOpened(true), 200);
+      }
+    };
+
+    if (document.readyState === 'complete') {
+      premount();
+    } else {
+      window.addEventListener('load', premount, { once: true });
+    }
+
+    return () => {
+      window.removeEventListener('load', premount);
+      if (idleId !== undefined) window.cancelIdleCallback?.(idleId);
+      if (timeoutId !== undefined) clearTimeout(timeoutId);
+    };
+  }, [prewarm, hasOpened]);
 
   return (
     <>

@@ -215,6 +215,7 @@ export function HeroSearchInput({
         placeholder={<TypewriterPlaceholder fallback={defaultPlaceholder} textRef={typedTextRef} />}
         autoFocusOnType={true}
         searchOpenSource="hero"
+        prewarm={true}
       />
     </div>
   );
