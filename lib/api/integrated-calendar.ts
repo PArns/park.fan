@@ -1,7 +1,6 @@
-import { unstable_cache } from 'next/cache';
 import { after } from 'next/server';
 import { getServerAuthHeaders } from './client';
-import type { CalendarDay, IntegratedCalendarResponse } from '@/lib/api/types';
+import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 // Use proxy for client-side, direct live URL for server-side
 const getApiBaseUrl = () => {
@@ -49,10 +48,11 @@ export async function getIntegratedCalendar(
   const queryString = params.toString();
   const url = `${API_BASE_URL}/v1/parks/${continent}/${country}/${city}/${parkSlug}/calendar${queryString ? `?${queryString}` : ''}`;
 
-  // Uncached low-level fetch. The raw ~2.25 MB body exceeds Next's fetch data-cache cap (2 MB),
-  // so it can never be a cache unit; callers that want caching wrap the PROJECTED result in
-  // `unstable_cache` (see getBestDaysCalendar). The /api/calendar proxy and client polls want
-  // it live anyway.
+  // Uncached low-level fetch for the calendar GRID (hours + weather per day). The best-days /
+  // FAQ / forecast derivation no longer goes through here — it reads the dedicated precomputed
+  // `/best-days` endpoint (see getBestDaysCalendar below). The /api/calendar proxy and the grid's
+  // per-month client polls want this live anyway. (Since the backend's payload diet the body is
+  // ~50 KB, not the old ~2.25 MB — the per-day influencingHolidays are opt-in now.)
   const response = await fetch(url, {
     cache: 'no-store',
     headers: {
@@ -78,148 +78,133 @@ export async function getIntegratedCalendar(
 }
 
 /**
- * Cache window for the "best travel time" / quiet-days derivation. The derivation is
- * week-stable (quietest weekdays + a 90-day quiet-day forecast; `analyzeBestDays` re-filters
- * against a fresh "today" on every render), the CLIENT queries fetch live through the /api
- * proxy regardless, and `unstable_cache` is stale-while-revalidate — so this TTL is only the
- * BACKGROUND refresh cadence, never a blocking wait. Effective staleness is additionally
- * bounded by the month-aligned seed window (key rotates monthly) and the on-demand
- * `best-days:<slug>` tag.
+ * Next data-cache window for the SSR best-days snapshot. The backend `/best-days` endpoint is
+ * itself precomputed + CDN-cached, and it fires an on-demand `revalidateTag('best-days:<slug>')`
+ * after every forecast warmup — so this TTL is only the BACKGROUND fallback cadence (in case a
+ * webhook is missed), never a blocking wait, and never stale for long. The derivation it feeds
+ * is week-stable and `analyzeBestDays` re-filters against a fresh "today" on every render.
  */
 export const BEST_DAYS_REVALIDATE = 72 * 60 * 60; // 3d
 
-/**
- * Project the full calendar response down to the handful of day fields the
- * best-days/FAQ consumers actually touch. Shrinks the per-park snapshot from
- * ~1.7 MB to ~13 KB.
- *
- * Kept fields:
- * - `analyzeBestDays` reads date, status, crowdLevel, isSchoolVacation, isHoliday.
- * - ParkBestDaysSection renders `upcomingQuietDays` reading only date + crowdLevel.
- * - isToday/isBridgeDay are carried only to satisfy required CalendarDay fields.
- *
- * Dropped — most importantly `influencingHolidays`, which is ~98% of the raw
- * payload (a per-day, heavily-duplicated list of every regional holiday) and is
- * read by NO frontend consumer.
- *
- * This is what lets the result be cached at all: Next's fetch data-cache rejects
- * bodies over 2 MB (the raw response sits right at that boundary and fluctuates
- * with the holiday/forecast recompute), so the raw fetch was silently uncached.
- * It also keeps the bulky raw payload out of the React render tree entirely.
- */
-function projectBestDaysCalendar(data: IntegratedCalendarResponse): IntegratedCalendarResponse {
-  const days: CalendarDay[] = data.days.map((d) => ({
-    date: d.date,
-    status: d.status,
-    crowdLevel: d.crowdLevel,
-    predictedCrowdLevel: d.predictedCrowdLevel,
-    isToday: d.isToday,
-    isHoliday: d.isHoliday,
-    isBridgeDay: d.isBridgeDay,
-    isSchoolVacation: d.isSchoolVacation,
-  }));
-  return { meta: data.meta, days };
+/** Optional stats-quality weekday aggregate the `/best-days` endpoint may include (best-effort;
+ *  absent when the backend's `/stats` cache was cold at precompute time). Structurally a subset
+ *  of {@link import('@/lib/api/types').DayOfWeekStat}, so a full stats aggregate is assignable. */
+export interface BestDaysByDayOfWeek {
+  /** 0 = Sunday … 6 = Saturday. */
+  dayOfWeek: number;
+  avgCrowdScore: number;
+  sampleDays: number;
 }
 
+/** The lean, precomputed best-days snapshot: the calendar projection (`meta` + `days`) plus the
+ *  optional weekday aggregate. Shape returned by `GET /v1/parks/.../best-days`. */
+export interface BestDaysSnapshot extends IntegratedCalendarResponse {
+  byDayOfWeek?: BestDaysByDayOfWeek[];
+}
+
+const bestDaysUrl = (continent: string, country: string, city: string, parkSlug: string) =>
+  `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${parkSlug}/best-days`;
+
 /**
- * Calendar fetch dedicated to the "best travel time" derivation (best/quiet
- * weekdays, upcoming quiet days) and the crowd FAQ.
+ * Fetch the precomputed best-days snapshot (rolling today → +90d, park timezone).
  *
- * Cached for BEST_DAYS_REVALIDATE via `unstable_cache`, fully decoupled from the 15-min grid calendar:
- * - The data it feeds (day-of-week aggregates + a multi-week quiet-day forecast)
- *   only changes with the daily crowd forecast (~13h), so a day-old snapshot is
- *   fine for trip planning.
- * - The raw upstream response (~2.25 MB, dominated by an unused `influencingHolidays`
- *   list) is too big for Next's fetch data-cache (2 MB cap). This rules out a `'use cache'`
- *   boundary entirely: a `'use cache'` fn whose inner fetch can't be cached (whether via
- *   `no-store` or a `force-cache` that silently fails the 2 MB limit) becomes UNCACHED, and
- *   under Cache Components that surfaces as "uncached data accessed outside <Suspense>".
- *   `unstable_cache` sidesteps this — it caches the function's small PROJECTED return value
- *   (~13 KB) directly, independent of the fetch data-cache, so the 2 MB body never needs to
- *   be a cache unit. Consumers only ever receive the projected days.
- * - `unstable_cache` is stale-while-revalidate: once the revalidate window lapses, the next
- *   request is served the STALE snapshot immediately while a background refresh runs,
- *   so the visitor never waits on a cold rebuild. The `best-days:<slug>` tag still
- *   supports on-demand `revalidateTag`.
- * - The date-sensitive "upcoming quiet days" stay correct because analyzeBestDays
- *   re-filters against a freshly computed (park-timezone) "today" on every render.
+ * Replaces the old derive-from-`/calendar` path: the backend now materializes this lean
+ * projection (~15 KB — status, crowd level, holiday flags per day + an optional weekday
+ * aggregate) into Redis from the daily forecast batch and serves it with a single GET
+ * (p99 < 300 ms, never a lazy ML compute). Because it's small it fits Next's fetch data cache
+ * directly — no `unstable_cache` projection dance, no 2.25 MB body in the render tree.
  *
- * Cache Components note: callers invoke this INSIDE a dynamic Suspense hole (after
- * `connection()` — see the Streamed* components on the park page), never in the static
- * shell, so the 2.25 MB fetch streams below the fold and never blocks the prerendered shell.
+ * @param fresh `true` → `no-store` (the client-poll proxy path, respecting the backend's own
+ *   CDN headers); `false` → Next data-cached for {@link BEST_DAYS_REVALIDATE} and tagged
+ *   `best-days:<slug>` so the backend's post-warmup `revalidateTag` webhook drops it on change.
  */
-export async function getBestDaysCalendar(
+async function fetchBestDays(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
-  options: { from?: string; to?: string } = {}
-): Promise<IntegratedCalendarResponse> {
-  const fetchAndProject = unstable_cache(
-    async (c: string, co: string, ci: string, p: string, from?: string, to?: string) => {
-      const raw = await getIntegratedCalendar(c, co, ci, p, {
-        from,
-        to,
-        includeHourly: 'none',
-      });
-      return projectBestDaysCalendar(raw);
+  fresh: boolean
+): Promise<BestDaysSnapshot> {
+  const response = await fetch(bestDaysUrl(continent, country, city, parkSlug), {
+    ...(fresh
+      ? { cache: 'no-store' as const }
+      : { next: { revalidate: BEST_DAYS_REVALIDATE, tags: [`best-days:${parkSlug}`] } }),
+    headers: {
+      'Content-Type': 'application/json',
+      ...getServerAuthHeaders(),
     },
-    ['best-days-calendar'],
-    {
-      revalidate: BEST_DAYS_REVALIDATE,
-      tags: [`best-days:${parkSlug}`],
-    }
-  );
+  });
 
-  return fetchAndProject(continent, country, city, parkSlug, options.from, options.to);
+  if (!response.ok) {
+    throw new Error(`Best-days ${response.status}: ${response.statusText}`);
+  }
+
+  return (await response.json()) as BestDaysSnapshot;
+}
+
+/**
+ * Best-days snapshot for the SSR seed — Next data-cached ({@link BEST_DAYS_REVALIDATE}) + tagged,
+ * so repeat renders never touch the backend and the on-demand `best-days:<slug>` webhook keeps it
+ * fresh. Feeds the best-days section + the crowd FAQ / FAQPage JSON-LD.
+ */
+export function getBestDaysCalendar(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<BestDaysSnapshot> {
+  return fetchBestDays(continent, country, city, parkSlug, false);
+}
+
+/**
+ * Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy —
+ * skips our own cache so the response reflects the backend's latest snapshot (its Redis + CDN
+ * still collapse concurrent calls). Mirrors `getParkByGeoPathFresh`.
+ */
+export function getBestDaysSnapshotFresh(
+  continent: string,
+  country: string,
+  city: string,
+  parkSlug: string
+): Promise<BestDaysSnapshot> {
+  return fetchBestDays(continent, country, city, parkSlug, true);
 }
 
 /**
  * How long the park page's SSR render may wait for the best-days snapshot before giving up.
- * Deliberately tight: a miss only costs the SSR seed for that ONE request (the client queries
- * fill the section as before, and `after()` completes the cache fill for the next request).
- * Once the backend ships the lean precomputed best-days endpoint (p99 well under this budget),
- * misses should become practically impossible.
+ * Now a formality: `/best-days` is a precomputed Redis read (p99 < 300 ms) behind the Next data
+ * cache, so this only ever guards a genuinely cold data-cache miss meeting a slow network — and
+ * a miss just drops the SSR seed for that one request (the client queries fill the section as
+ * before; `after()` completes the cache fill for the next request).
  */
-const BEST_DAYS_SEED_TIMEOUT_MS = 1200;
+const BEST_DAYS_SEED_TIMEOUT_MS = 800;
 
 /**
- * TTFB-safe wrapper around {@link getBestDaysCalendar} for the park page's SERVER render (the
- * SEO seed for the best-days section + crowd FAQ).
+ * TTFB-safe wrapper around {@link getBestDaysCalendar} for the park page's SERVER render.
  *
- * The underlying `unstable_cache` entry is stale-while-revalidate, so the ONLY slow path is a
- * cold MISS (first request per park × calendar-month window, or after `revalidateTag`): the raw
- * upstream calendar can take 10–20 s on a cold backend compute, which must never block the
- * force-dynamic park page's TTFB. So the render waits at most {@link BEST_DAYS_SEED_TIMEOUT_MS}
- * and then renders WITHOUT the seed (the client queries fill the section in, exactly the
- * pre-seed behavior) — while `after()` keeps the abandoned fetch alive past the response so it
- * still fills the cache and the NEXT request gets the seed instantly.
- *
- * Returns `null` on timeout or any error; callers must treat `null` as "no seed" (never as an
- * empty calendar).
+ * Waits at most {@link BEST_DAYS_SEED_TIMEOUT_MS}; on timeout it renders WITHOUT the seed (the
+ * client queries fill the section, exactly the pre-seed behavior) while `after()` keeps the fetch
+ * alive past the response so it still fills the Next data cache and the NEXT request gets the seed
+ * instantly. Returns `null` on timeout or any error — callers treat `null` as "no seed", never as
+ * an empty calendar.
  */
 export async function getBestDaysCalendarSeed(
   continent: string,
   country: string,
   city: string,
-  parkSlug: string,
-  options: { from?: string; to?: string } = {}
-): Promise<IntegratedCalendarResponse | null> {
-  const calendarPromise = getBestDaysCalendar(continent, country, city, parkSlug, options).catch(
-    () => null
-  );
+  parkSlug: string
+): Promise<BestDaysSnapshot | null> {
+  const snapshotPromise = getBestDaysCalendar(continent, country, city, parkSlug).catch(() => null);
 
   const result = await Promise.race([
-    calendarPromise,
+    snapshotPromise,
     new Promise<'timeout'>((resolve) => {
       setTimeout(() => resolve('timeout'), BEST_DAYS_SEED_TIMEOUT_MS);
     }),
   ]);
 
   if (result === 'timeout') {
-    // Cold cache fill in progress — keep it running past the response so it lands in the
-    // cache for the next request instead of being frozen with the lambda.
-    after(() => calendarPromise);
+    after(() => snapshotPromise);
     return null;
   }
 

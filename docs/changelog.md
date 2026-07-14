@@ -4,6 +4,31 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – SEO: park best-days now read the precomputed /best-days endpoint
+
+Follow-up to the "core content in first HTML" work, now that the backend ships the precomputed
+best-days endpoint (PArns/v4.api.park.fan#94). The best-days section, crowd FAQ and header
+"Prognose heute" forecast previously derived their data from the ~2.25 MB `/calendar` response
+(≈98 % unused `influencingHolidays`, 10–20 s cold ML compute) guarded by a seed timeout.
+
+- `lib/api/integrated-calendar.ts`: `getBestDaysCalendar` / `getBestDaysCalendarSeed` now fetch
+  `GET /v1/parks/.../best-days` (a materialized Redis snapshot, ~15 KB, p99 < 300 ms). Dropped
+  `unstable_cache` + `projectBestDaysCalendar` — the small body fits Next's fetch data cache
+  directly (plain `next: { revalidate, tags: ['best-days:<slug>'] }`; the backend fires
+  `revalidateTag` after each forecast warmup). Seed timeout is now a formality (800 ms).
+- New `getBestDaysSnapshotFresh` + `/api/parks/.../best-days` proxy branch; `useParkBestDaysCalendar`
+  (client) switched to it — no more `from`/`to` window (the endpoint returns the rolling today→+90d
+  window), so `getCalendarWindow` / `lib/hooks/use-calendar-window.ts` are gone.
+- The `/best-days` snapshot includes a stats-quality `byDayOfWeek` aggregate, so the **SSR seed now
+  renders the proper "quietest weekdays" ranking + best weekend day** in the first HTML (previously
+  the seed fell back to the calendar-derived approximation).
+- `park-header-stats.tsx`: "today" for the forecast is derived from the browser clock in the park
+  timezone (`date === todayStr`) — the lean endpoint deliberately omits the `isToday` flag (a baked
+  flag goes stale in the CDN cache).
+- The calendar **grid tab** still uses the full `/calendar` endpoint (it needs hours + weather per
+  day); with the backend payload diet its default body is now ~50 KB instead of ~2.25 MB.
+- Loading-priority REQUIREMENT untouched: the client best-days query stays `useLoadLast`-deferred.
+
 ## Unreleased – SEO: park pages ship their core content in the first HTML again
 
 Competitor SERP analysis (July 2026, "phantasialand wartezeiten" & co.) found the park page's

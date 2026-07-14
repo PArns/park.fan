@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
+import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
 import { getParkByGeoPathFresh, getAttractionByGeoPathFresh } from '@/lib/api/parks';
 import { getParkWeatherNowcastFresh } from '@/lib/api/weather-nowcast';
 import { getParkHistoricalStats } from '@/lib/api/stats';
@@ -84,6 +84,28 @@ export async function GET(
     } catch (error) {
       console.error('[Calendar API] Error:', error);
       return NextResponse.json({ error: 'Failed to fetch calendar data' }, { status: 500 });
+    }
+  }
+
+  // Handle best-days snapshot: [continent, country, city, park, 'best-days'] (5 segments)
+  // The lean precomputed today→+90d projection (status, crowd level, holiday flags + optional
+  // weekday aggregate) that feeds the best-days section, crowd FAQ and header forecast. Served
+  // from the backend's materialized Redis snapshot (never a lazy ML compute), so this proxy just
+  // mirrors it behind a matching CDN window — collapsing concurrent client polls off the origin.
+  if (path && path.length === 5 && path[4] === 'best-days') {
+    const [continent, country, city, park] = path;
+
+    try {
+      const data = await getBestDaysSnapshotFresh(continent, country, city, park);
+
+      return NextResponse.json(data, {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+        },
+      });
+    } catch (error) {
+      console.error('[Best-Days API] Error:', error);
+      return NextResponse.json({ error: 'Failed to fetch best-days data' }, { status: 500 });
     }
   }
 
@@ -179,7 +201,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /stats, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /best-days, /stats, or /weather/nowcast',
     },
     { status: 400 }
   );

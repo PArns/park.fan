@@ -8,7 +8,6 @@ import { MapPin } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { getBestDaysCalendarSeed } from '@/lib/api/integrated-calendar';
-import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
 import { catchNonFatal } from '@/lib/api/client';
 import { getGlossaryTerms } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -181,27 +180,19 @@ export default async function ParkPage({ params }: ParkPageProps) {
     permanentRedirect(`/${locale}${redirectUrl}`);
   }
 
-  // Best-days calendar SEED: fired in parallel with the park fetch below. It reads the
-  // `unstable_cache` snapshot (BEST_DAYS_REVALIDATE) (getBestDaysCalendar, SWR + `best-days:<slug>` tag) and gives up
-  // after a short timeout on a cold cache MISS (the raw calendar can take 10–20s of backend
-  // compute and must never block this dynamic page's TTFB — `after()` keeps the abandoned fill
-  // running so the NEXT request is warm). The seed feeds the SSR render of the best-days
-  // section + the crowd FAQ/JSON-LD; the deferred CLIENT queries (React Query → CDN-cached
-  // `/api/parks/.../calendar` + `/stats`, `useLoadLast`-gated) still load exactly as before and
-  // replace the seed once they settle — the loading-priority REQUIREMENT is untouched.
-  // The month-aligned window keeps the cache key stable for a whole calendar month. ONE
-  // per-request clock read serves both the window and every seed-rendered "today" derivation
-  // (safe: the page is force-dynamic, nothing here is statically cached).
+  // Best-days SEED: fired in parallel with the park fetch below. It reads the precomputed
+  // `/best-days` snapshot (Next data-cached under BEST_DAYS_REVALIDATE + the `best-days:<slug>`
+  // tag the backend revalidates after each forecast warmup) and gives up after a short timeout on
+  // a cold data-cache miss (so a slow network can't block this dynamic page's TTFB — `after()`
+  // keeps the fill running so the NEXT request is warm). The seed feeds the SSR render of the
+  // best-days section + the crowd FAQ/JSON-LD; the deferred CLIENT queries (React Query, CDN-
+  // cached `/api/parks/.../best-days` + `/stats`, `useLoadLast`-gated) still load exactly as
+  // before and replace the seed once they settle — the loading-priority REQUIREMENT is untouched.
+  // ONE per-request clock read serves every seed-rendered "today" derivation (safe: the page is
+  // force-dynamic, nothing here is statically cached).
   const seedNow = new Date();
   const seedNowMs = seedNow.getTime();
-  const calendarWindow = getCalendarWindow(seedNow);
-  const bestDaysSeedPromise = getBestDaysCalendarSeed(
-    continent,
-    country,
-    city,
-    parkSlug,
-    calendarWindow
-  );
+  const bestDaysSeedPromise = getBestDaysCalendarSeed(continent, country, city, parkSlug);
 
   // Fetch park data and holidays (holidays are optional)
   const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));

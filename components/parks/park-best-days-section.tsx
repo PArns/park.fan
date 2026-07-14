@@ -3,11 +3,11 @@
 import { useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useMounted, useBrowserNow } from '@/lib/hooks/use-mounted';
-import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
+import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
-import type { IntegratedCalendarResponse, CrowdLevel, DayOfWeekStat } from '@/lib/api/types';
+import type { IntegratedCalendarResponse, CrowdLevel } from '@/lib/api/types';
+import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
@@ -35,7 +35,7 @@ interface ParkBestDaysSectionProps {
    * The client queries below still load exactly as before (deferred via useLoadLast) and
    * replace the seed once they settle. `null`/absent → the pre-seed skeleton behavior.
    */
-  initialCalendar?: IntegratedCalendarResponse | null;
+  initialCalendar?: BestDaysSnapshot | null;
   /** Server "now" (epoch ms) the seed was rendered with — keeps SSR and the first client
    *  render byte-identical (no hydration mismatch from two clock reads). */
   seedNowMs?: number;
@@ -114,20 +114,15 @@ export function ParkBestDaysSection({
   // clock-reading content below — reading Date.now() inside a Client Component during the
   // prerender is forbidden under Cache Components.
   const mounted = useMounted();
-  // Calendar window derived from the browser clock (client-only) so the park shell never reads
-  // the server clock — keeping it time-independent for the 1-day TTL.
-  const { from, to } = getCalendarWindow(useBrowserNow(null));
-  // `isPending` (not `isLoading`): both queries start DISABLED — until mounted/the calendar
-  // window is known, and until useLoadLast releases them (best-travel-time loads last, see
-  // the hooks). A disabled query is pending but not fetching, so `isLoading` would be false
-  // and the section would flash its empty fallback during the defer window.
+  // `isPending` (not `isLoading`): both queries start DISABLED — until mounted, and until
+  // useLoadLast releases them (best-travel-time loads last, see the hooks). A disabled query is
+  // pending but not fetching, so `isLoading` would be false and the section would flash its empty
+  // fallback during the defer window.
   const { data: calendarData, isPending: calendarPending } = useParkBestDaysCalendar({
     continent,
     country,
     city,
     parkSlug,
-    from,
-    to,
   });
   const { data: stats, isPending: statsPending } = useParkHistoricalStats({
     continent,
@@ -138,15 +133,16 @@ export function ParkBestDaysSection({
 
   // Until the client queries have settled, render the SERVER seed when we have one — the
   // best-days text is then part of the initial HTML (SSR + first client render are identical,
-  // both driven by the same props). The weekday chips come from the calendar-based fallback
-  // inside BestDaysContent (no historical stats yet); once the deferred client queries land,
-  // the stats-based view replaces the seed. Without a seed: skeleton, as before.
+  // both driven by the same props). The `/best-days` snapshot carries the stats-quality weekday
+  // aggregate (`byDayOfWeek`) too, so even the seed shows the proper "quietest weekdays" ranking
+  // (not just the calendar-derived fallback); once the deferred client queries land, the full
+  // stats view replaces the seed. Without a seed: skeleton, as before.
   if (!mounted || calendarPending || statsPending) {
     if (initialCalendar && seedNowMs != null) {
       return (
         <BestDaysContent
           calendarData={initialCalendar}
-          statsByDayOfWeek={undefined}
+          statsByDayOfWeek={initialCalendar.byDayOfWeek}
           nowMs={seedNowMs}
           parkName={parkName}
           parkSlug={parkSlug}
@@ -180,7 +176,9 @@ export function ParkBestDaysSection({
 
 interface BestDaysContentProps {
   calendarData: IntegratedCalendarResponse;
-  statsByDayOfWeek?: DayOfWeekStat[];
+  /** Weekday aggregate — the full `/stats` shape (client path) OR the lean `/best-days` subset
+   *  (seed path); only `dayOfWeek`/`avgCrowdScore`/`sampleDays` are read, so the subset suffices. */
+  statsByDayOfWeek?: BestDaysByDayOfWeek[];
   /** Externally supplied "now" (the SSR seed's server clock). Omitted → captured at mount. */
   nowMs?: number;
   parkName: string;

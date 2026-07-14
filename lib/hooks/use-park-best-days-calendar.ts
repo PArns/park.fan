@@ -1,62 +1,56 @@
 import { useQuery } from '@tanstack/react-query';
 import { useLoadLast } from '@/lib/hooks/use-load-last';
-import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 
 interface UseParkBestDaysCalendarParams {
   continent: string;
   country: string;
   city: string;
   parkSlug: string;
-  from: string; // YYYY-MM-DD
-  to: string; // YYYY-MM-DD
 }
 
 /**
- * Client-side fetch of the calendar window that feeds the "best days" widget and the
- * crowd-derived FAQ entry.
+ * Client-side fetch of the precomputed best-days snapshot that feeds the "best days" widget,
+ * the crowd-derived FAQ entry and the header "Prognose heute" forecast.
  *
- * Moved off the server render so the park page no longer needs a dynamic Suspense hole
- * (connection()) for the calendar — which forced the whole route into `no-store` and caused
- * ISR write churn. Hits the existing `/api/parks/.../calendar?from=&to=` route (CDN-cached,
- * s-maxage), the same endpoint the calendar tab already polls.
+ * Hits the dedicated `/api/parks/.../best-days` route (→ backend `/best-days`, a materialized
+ * Redis snapshot, CDN-cached). This replaced the old derive-from-`/calendar` path: no `from`/`to`
+ * window is needed (the endpoint returns the rolling today → +90d window), the payload is ~15 KB
+ * instead of ~2.25 MB, and it never triggers a cold ML compute.
  *
- * - Browser-only (`enabled` gated on `window`): never runs during the static prerender,
- *   where reading the clock internally (React Query) is forbidden under Cache Components.
- * - 30-min staleTime: this fuels trip-planning aggregates that only shift with the daily
- *   forecast, so a half-hour-old snapshot is fine.
- * - Deferred via `useLoadLast`: the best-travel-time data must ALWAYS load last on the park
- *   page — this large, slow (cold compute 10–20 s) response must never compete with the live
- *   status/weather queries (see docs/architecture/system-overview.md → "Park page loading
- *   priority").
+ * - Browser-only (`enabled` gated on `window`): never runs during the static prerender, where
+ *   reading the clock internally (React Query) is forbidden under Cache Components.
+ * - 30-min staleTime: this fuels trip-planning aggregates that only shift with the daily forecast,
+ *   so a half-hour-old snapshot is fine.
+ * - Deferred via `useLoadLast`: the best-travel-time data must ALWAYS load last on the park page —
+ *   it must never compete with the live status/weather queries (see
+ *   docs/architecture/system-overview.md → "Park page loading priority").
  */
 export function useParkBestDaysCalendar({
   continent,
   country,
   city,
   parkSlug,
-  from,
-  to,
 }: UseParkBestDaysCalendarParams) {
   const releasedLast = useLoadLast();
 
-  return useQuery<IntegratedCalendarResponse>({
-    queryKey: ['park-best-days-calendar', continent, country, city, parkSlug, from, to],
+  return useQuery<BestDaysSnapshot>({
+    queryKey: ['park-best-days-calendar', continent, country, city, parkSlug],
     queryFn: async () => {
       const response = await fetch(
-        `/api/parks/${continent}/${country}/${city}/${parkSlug}/calendar?from=${from}&to=${to}`,
+        `/api/parks/${continent}/${country}/${city}/${parkSlug}/best-days`,
         { cache: 'no-store' }
       );
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch calendar data: ${response.statusText}`);
+        throw new Error(`Failed to fetch best-days data: ${response.statusText}`);
       }
 
-      return (await response.json()) as IntegratedCalendarResponse;
+      return (await response.json()) as BestDaysSnapshot;
     },
-    // Browser-only, and only once the (client-derived) window is known — `from`/`to` are empty
-    // until the browser clock lands, and we must not fire a `?from=&to=` request. `releasedLast`
-    // holds the fetch back until every other query on the page has settled (loads-last rule).
-    enabled: typeof window !== 'undefined' && from !== '' && to !== '' && releasedLast,
+    // Browser-only, and held back by `releasedLast` until every other query on the page has
+    // settled (loads-last rule).
+    enabled: typeof window !== 'undefined' && releasedLast,
     staleTime: 30 * 60_000,
     gcTime: 60 * 60_000,
     refetchOnWindowFocus: false,

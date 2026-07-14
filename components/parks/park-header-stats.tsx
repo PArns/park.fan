@@ -4,7 +4,6 @@ import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
-import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
@@ -101,24 +100,26 @@ export function ParkHeaderStats({
   // Show live crowd only when the park is (or might be) open; hide it when clearly closed/offseason.
   const isOpenish = sched.badgeStatus === 'OPERATING' || sched.isUnknown;
 
-  const { from, to } = getCalendarWindow(useBrowserNow(null));
+  const browserNow = useBrowserNow(null);
   const { data: calendar } = useParkBestDaysCalendar({
     continent,
     country,
     city,
     parkSlug,
-    from,
-    to,
   });
   // "Prognose heute" = the ML FORECAST for today (predicted peak), NOT the live level:
   // the calendar's today `crowdLevel` is overridden with real-time occupancy, so we read
   // the separate `predictedCrowdLevel`. Fall back to crowdLevel only on older API builds /
   // unratable days (no regression), and never surface a "closed" sentinel as a forecast.
+  // "Today" is derived from the browser clock in the park tz — the `/best-days` snapshot
+  // deliberately carries no `isToday` flag (a baked flag goes stale in the CDN cache).
   const predictedToday = useMemo(() => {
-    const today = calendar?.days.find((d) => d.isToday);
+    if (!calendar || !browserNow) return null;
+    const todayStr = browserNow.toLocaleDateString('en-CA', { timeZone: timezone });
+    const today = calendar.days.find((d) => d.date === todayStr);
     const level = today?.predictedCrowdLevel ?? today?.crowdLevel ?? null;
     return level === 'closed' ? null : level;
-  }, [calendar]);
+  }, [calendar, browserNow, timezone]);
 
   const holidayBadges = sched.holiday
     ? [

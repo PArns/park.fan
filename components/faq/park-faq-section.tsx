@@ -30,7 +30,6 @@ import {
   type ParkFaqIconName,
 } from '@/lib/faq/park-faq';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
-import { getCalendarWindow } from '@/lib/hooks/use-calendar-window';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
@@ -103,10 +102,6 @@ export function ParkFAQSection({
   const browserNow = useBrowserNow(null);
   const nowMs = browserNow ? browserNow.getTime() : (seedNowMs ?? null);
 
-  // Calendar window derived from the browser clock (client-only) — keeps the park shell
-  // time-independent for the 1-day TTL.
-  const { from, to } = getCalendarWindow(browserNow);
-
   // Calendar feeds only Q7 (least-crowded days). The deferred client fetch takes over once it
   // lands; until then the server seed (when available) backs Q7 so it's already in the first
   // HTML. Without a seed the base Q0–Q6 render immediately — the old streamed behavior.
@@ -115,8 +110,6 @@ export function ParkFAQSection({
     country,
     city,
     parkSlug,
-    from,
-    to,
   });
   const calendarData = clientCalendarData ?? initialCalendar ?? undefined;
 

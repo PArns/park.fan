@@ -9,15 +9,30 @@ snapshot TTL) from load-bearing into belt-and-braces.
 Priorities: **P0** unblocks live frontend behavior · **P1** big payoff, needs coordination ·
 **P2** cleanups.
 
+> **Status (July 2026):** ✅ **P0 (best-days endpoint) and the P1 calendar payload diet shipped**
+> in backend PR [PArns/v4.api.park.fan#94] and are live. The frontend now reads `/best-days`
+> everywhere (SSR seed + client best-days/FAQ/forecast) — see the changelog entry "SEO: park
+> best-days now read the precomputed /best-days endpoint". The remaining items below (per-park
+> structure/operating revalidation, `/stats` precompute, geo-dupe, slug aliases, top-level
+> `dataTimestamp`) are still open.
+
 ---
 
-## P0 · Lean precomputed best-days endpoint
+## P0 · Lean precomputed best-days endpoint — ✅ SHIPPED
 
-**Problem:** the best-days/FAQ/forecast content is derived from `/v1/parks/{path}/calendar` —
-a ~2.25 MB response (≈98 % is per-day `influencingHolidays`, unused by these consumers) with
-**lazy compute of 10–20 s on a cold park**. The frontend therefore guards its SSR seed with a
-timeout (`BEST_DAYS_SEED_TIMEOUT_MS`, currently 1.2 s) and only renders the best-days block
-when its own SWR cache is warm.
+**Problem (was):** the best-days/FAQ/forecast content was derived from `/v1/parks/{path}/calendar` —
+a ~2.25 MB response (≈98 % per-day `influencingHolidays`, unused by these consumers) with
+**lazy compute of 10–20 s on a cold park**. The frontend guarded its SSR seed with a timeout and
+only rendered the best-days block when its own SWR cache was warm.
+
+**Delivered:** `GET /v1/parks/.../best-days` — a materialized Redis snapshot (today → +90d, park
+tz), ~15 KB, `p99 < 300 ms` cold & warm, `Cache-Control: public, max-age=3600, s-maxage=3600,
+stale-while-revalidate=86400`, refreshed by the 12 h calendar warmup which fires
+`revalidateTag('best-days:<slug>')` (Bearer-auth) at the frontend. Frontend switch:
+`getBestDaysCalendar`/`getBestDaysCalendarSeed` (SSR seed, Next data-cached + tagged),
+`getBestDaysSnapshotFresh` (`/api/parks/.../best-days` proxy), `useParkBestDaysCalendar` (client),
+and the seed now also carries the stats-quality `byDayOfWeek` weekday ranking into the first HTML.
+The verbatim original spec is preserved below for reference.
 
 **Request:** a dedicated, **precomputed** endpoint that returns exactly the projection the
 frontend keeps today (`projectBestDaysCalendar` in `lib/api/integrated-calendar.ts`):
@@ -100,7 +115,14 @@ The "read first, only write on change" fix is the backend firing `/api/revalidat
 
 ---
 
-## P1 · Calendar payload diet
+## P1 · Calendar payload diet — ✅ SHIPPED
+
+Delivered in the same backend PR: `/v1/parks/{path}/calendar` no longer returns per-day
+`influencingHolidays` by default (opt back in with `?include=influencingHolidays`). Verified live:
+the default calendar body dropped from ~2.25 MB to ~50 KB. The frontend needed no change — grep
+confirmed no consumer of `CalendarDay.influencingHolidays`; the header holiday panel reads
+`schedule[].influencingHolidays` from the **park** endpoint, which is untouched (the scope guard
+below held). Original note kept for reference:
 
 Per-day `influencingHolidays` on `/v1/parks/{path}/calendar` is ~98 % of the ~2.25 MB body and
 is read by **no** frontend consumer of that endpoint — verified by grep: the only readers of
