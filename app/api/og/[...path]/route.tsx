@@ -10,6 +10,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { OgBrandMark } from '@/lib/og/brand-mark';
 import {
   FlagDE,
   FlagGB,
@@ -602,14 +603,7 @@ export async function GET(
                     gap: '28px',
                   }}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${baseUrl}/logo-dark.png`}
-                    alt=""
-                    width={125}
-                    height={150}
-                    style={{ width: '125px', height: '150px' }}
-                  />
+                  <OgBrandMark height={150} />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`${baseUrl}/parkfan-dark.png`}
@@ -758,7 +752,10 @@ export async function GET(
                         {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
                       </>
                     ) : type === 'GENERIC' ? (
-                      <>� park.fan</>
+                      // Generic pages have no geo context for this kicker slot; show
+                      // just the marker so the brand isn't a duplicated wordmark
+                      // (the full logo lockup already sits in the top-right corner).
+                      <OgBrandMark height={36} />
                     ) : (
                       <>
                         {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
@@ -788,12 +785,15 @@ export async function GET(
                 <div
                   style={{
                     display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
                     fontSize: '48px',
                     fontWeight: 800,
                     color: '#3b82f6', // blue-500
                     letterSpacing: '-0.02em',
                   }}
                 >
+                  <OgBrandMark height={58} />
                   park.fan
                 </div>
               </div>

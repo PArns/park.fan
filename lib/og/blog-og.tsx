@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import type { Locale } from '@/i18n/config';
+import { OgBrandMark } from '@/lib/og/brand-mark';
 import { getPostByLocaleSlug } from '@/lib/blog';
 import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
@@ -205,18 +206,21 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
             justifyContent: 'space-between',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: 0,
-              fontSize: 38,
-              fontWeight: 800,
-              letterSpacing: -1,
-            }}
-          >
-            <span style={{ color: '#ffffff' }}>park</span>
-            <span style={{ color: colors.kicker }}>.fan</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <OgBrandMark height={46} />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 0,
+                fontSize: 38,
+                fontWeight: 800,
+                letterSpacing: -1,
+              }}
+            >
+              <span style={{ color: '#ffffff' }}>park</span>
+              <span style={{ color: colors.kicker }}>.fan</span>
+            </div>
           </div>
           <div
             style={{

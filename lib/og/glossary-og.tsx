@@ -1,6 +1,7 @@
 import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
+import { OgBrandMark } from '@/lib/og/brand-mark';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const WIDTH = 1200;
@@ -125,18 +126,21 @@ export async function renderGlossaryTermOg({ locale, term }: GlossaryOgParams): 
 
         {/* Brand bar */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: 0,
-              fontSize: 38,
-              fontWeight: 800,
-              letterSpacing: -1,
-            }}
-          >
-            <span style={{ color: '#ffffff' }}>park</span>
-            <span style={{ color: KICKER }}>.fan</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <OgBrandMark height={46} />
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 0,
+                fontSize: 38,
+                fontWeight: 800,
+                letterSpacing: -1,
+              }}
+            >
+              <span style={{ color: '#ffffff' }}>park</span>
+              <span style={{ color: KICKER }}>.fan</span>
+            </div>
           </div>
           <div
             style={{
