@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
 import type { Locale } from '@/i18n/config';
+import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { getPostByLocaleSlug } from '@/lib/blog';
 import { findCanonicalTag } from '@/lib/blog/tags';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
@@ -29,8 +30,10 @@ interface BlogOgParams {
 export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<Response> {
   const [first, ...rest] = segments;
 
-  // Try to identify which blog surface we're rendering for.
-  let kicker = 'park.fan · Blog';
+  // Try to identify which blog surface we're rendering for. The kicker is a
+  // section label only — the brand (park.fan wordmark) lives in the bottom
+  // lockup, so it must never repeat "park.fan" here.
+  let kicker = '';
   let title = 'Blog';
   let subtitle = '';
   let coverImage: string | null = null;
@@ -47,13 +50,13 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
     const tagSlug = rest[0];
     const canonical = tagSlug ? findCanonicalTag(locale, tagSlug) : null;
     title = canonical ? `#${canonical}` : `#${tagSlug ?? 'tag'}`;
-    kicker = locale === 'de' ? 'park.fan · Blog · Tag' : 'park.fan · Blog · Tag';
+    kicker = 'Blog · Tag';
     palette = paletteFromString(tagSlug ?? '');
   } else if (first === 'category') {
     const fullPath = rest.join('/');
     const last = rest[rest.length - 1] ?? '';
     title = resolveCategoryLabel(fullPath, locale, last);
-    kicker = locale === 'de' ? 'park.fan · Blog · Kategorie' : 'park.fan · Blog · Category';
+    kicker = locale === 'de' ? 'Blog · Kategorie' : 'Blog · Category';
     palette = paletteFromString(fullPath);
   } else {
     // Post slug
@@ -72,7 +75,7 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
       const categoryPath = post.frontmatter.category ?? '';
       if (categoryPath) {
         const last = categoryPath.split('/').filter(Boolean).pop() ?? '';
-        kicker = `park.fan · ${resolveCategoryLabel(categoryPath, locale, last)}`;
+        kicker = resolveCategoryLabel(categoryPath, locale, last);
         palette = paletteFromString(categoryPath);
       }
     } else {
@@ -143,30 +146,35 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
           width: '100%',
         }}
       >
-        {/* Top kicker row */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 16,
-            fontSize: 22,
-            fontWeight: 600,
-            letterSpacing: 1.2,
-            textTransform: 'uppercase',
-            color: colors.kicker,
-          }}
-        >
-          <span
+        {/* Top kicker row — a section label. Omitted (empty placeholder keeps
+            the 3-row vertical rhythm) when there's none, e.g. the blog index. */}
+        {kicker ? (
+          <div
             style={{
               display: 'flex',
-              width: 8,
-              height: 8,
-              borderRadius: 999,
-              background: colors.kicker,
+              alignItems: 'center',
+              gap: 16,
+              fontSize: 22,
+              fontWeight: 600,
+              letterSpacing: 1.2,
+              textTransform: 'uppercase',
+              color: colors.kicker,
             }}
-          />
-          {kicker}
-        </div>
+          >
+            <span
+              style={{
+                display: 'flex',
+                width: 8,
+                height: 8,
+                borderRadius: 999,
+                background: colors.kicker,
+              }}
+            />
+            {kicker}
+          </div>
+        ) : (
+          <div />
+        )}
 
         {/* Title block */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -197,39 +205,8 @@ export async function renderBlogOg({ locale, segments }: BlogOgParams): Promise<
           )}
         </div>
 
-        {/* Brand bar */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
-        >
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: 0,
-              fontSize: 38,
-              fontWeight: 800,
-              letterSpacing: -1,
-            }}
-          >
-            <span style={{ color: '#ffffff' }}>park</span>
-            <span style={{ color: colors.kicker }}>.fan</span>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              fontSize: 22,
-              color: 'rgba(255,255,255,0.65)',
-            }}
-          >
-            {SITE_URL.replace(/^https?:\/\//, '')}
-          </div>
-        </div>
+        {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
+        <OgBrandLockup markerHeight={46} />
       </div>
     </div>,
     { width: WIDTH, height: HEIGHT }

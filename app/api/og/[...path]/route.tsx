@@ -10,6 +10,7 @@ import { HERO_IMAGES } from '@/lib/hero-images';
 import { ParkAttraction, QueueDataItem } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { OgBrandLockup } from '@/lib/og/brand-mark';
 import {
   FlagDE,
   FlagGB,
@@ -282,7 +283,11 @@ export async function GET(
       statusColor = openParksCount > 0 ? getStatusColor('OPERATING') : getStatusColor('CLOSED');
     } else if (type === 'GENERIC') {
       const config = genericPages[secondSegment as keyof typeof genericPages];
-      name = tGeneric(config.key);
+      // Legal pages carry an SEO site-name suffix ("… - park.fan"); strip it
+      // from the OG headline so the brand appears once (the corner lockup).
+      // A trailing separator is required, so integral names ("Cos'è park.fan?")
+      // are left untouched.
+      name = tGeneric(config.key).replace(/\s*[-–—·|]\s*park\.fan\s*$/i, '');
 
       // For 'parks' generic page, we can show stats
       if (secondSegment === 'parks') {
@@ -591,34 +596,9 @@ export async function GET(
                   gap: '24px',
                 }}
               >
-                {/* Brand lockup: marker icon + wordmark (replaces the plain "park.fan"
-                    text). Dark-background asset variants, mirroring the site header's logo.
-                    Raster PNGs are used because Satori renders them reliably; loaded via the
-                    same absolute-URL pattern as the background image above. */}
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '28px',
-                  }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${baseUrl}/logo-dark.png`}
-                    alt=""
-                    width={125}
-                    height={150}
-                    style={{ width: '125px', height: '150px' }}
-                  />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`${baseUrl}/parkfan-dark.png`}
-                    alt="park.fan"
-                    width={491}
-                    height={140}
-                    style={{ width: '491px', height: '140px' }}
-                  />
-                </div>
+                {/* Brand lockup: marker icon + park.fan wordmark asset (dark-bg
+                    variant), mirroring the site header's logo. */}
+                <OgBrandLockup markerHeight={150} />
 
                 <h2
                   style={{
@@ -757,9 +737,8 @@ export async function GET(
                         {type === 'COUNTRY' && <>🌍 {localizedContinentName}</>}
                         {type === 'CONTINENT' && <>🌍 {tGeo('exploreByRegion')}</>}
                       </>
-                    ) : type === 'GENERIC' ? (
-                      <>� park.fan</>
-                    ) : (
+                    ) : type ===
+                      'GENERIC' ? null /* no kicker — brand shows once via the top-right lockup */ : (
                       <>
                         {FLAGS[country.toLowerCase().replace(/\s+/g, '-')] ? (
                           (() => {
@@ -785,17 +764,7 @@ export async function GET(
                   </p>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    fontSize: '48px',
-                    fontWeight: 800,
-                    color: '#3b82f6', // blue-500
-                    letterSpacing: '-0.02em',
-                  }}
-                >
-                  park.fan
-                </div>
+                <OgBrandLockup markerHeight={56} />
               </div>
 
               {/* Main Content Area */}
@@ -1010,102 +979,88 @@ export async function GET(
                 )}
               </div>
 
-              {/* Bottom Section: Wait Time, Peak, Sparkline */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  justifyContent: 'space-between',
-                  marginTop: '24px',
-                  borderTop: '2px solid rgba(255,255,255,0.15)',
-                  paddingTop: '24px',
-                }}
-              >
-                {/* Left: Wait Time Info / Regional Info */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
-                    <>
-                      {status === 'OPERATING' && waitTime !== null ? (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                          <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
-                            <span style={{ fontSize: '96px', fontWeight: 800, lineHeight: 1 }}>
-                              {waitTime}
-                            </span>
-                            <span
-                              style={{
-                                fontSize: '48px',
-                                fontWeight: 500,
-                                color: 'rgba(255,255,255,0.8)',
-                              }}
-                            >
-                              {tCommon('minutes')}
-                            </span>
-                          </div>
-                          {peakWaitToday !== undefined && peakWaitToday !== null && (
-                            <div
-                              style={{
-                                fontSize: '32px',
-                                color: 'rgba(255,255,255,0.6)',
-                                fontWeight: 500,
-                              }}
-                            >
-                              {tAttractions('peak', { time: peakWaitToday })}
-                            </div>
-                          )}
-                        </div>
-                      ) : (
-                        <span
-                          style={{
-                            fontSize: '48px',
-                            fontWeight: 500,
-                            color: 'rgba(255,255,255,0.6)',
-                          }}
-                        >
-                          {type === 'ATTRACTION'
-                            ? tAttractions('status.closed')
-                            : tParks('status.CLOSED')}
-                        </span>
-                      )}
-
-                      {type !== 'ATTRACTION' && status === 'OPERATING' && waitTime !== null && (
-                        <div
-                          style={{
-                            display: 'flex',
-                            fontSize: '32px',
-                            color: 'rgba(255,255,255,0.6)',
-                            fontWeight: 500,
-                          }}
-                        >
-                          {tParks('avgWaitTime')}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    // Regional Footer Info
-                    <div
-                      style={{
-                        display: 'flex',
-                        fontSize: '32px',
-                        color: 'rgba(255,255,255,0.6)',
-                        fontWeight: 500,
-                      }}
-                    >
+              {/* Bottom Section: wait time (park/attraction) or regional stats.
+                  Hidden when there's nothing to show: a closed ride has no wait
+                  time and its status already sits on the badge above, so a
+                  "Closed" line here would just duplicate it (and GENERIC pages
+                  have no stats at all). */}
+              {(['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ||
+                (status === 'OPERATING' && waitTime !== null)) && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                    justifyContent: 'space-between',
+                    marginTop: '24px',
+                    borderTop: '2px solid rgba(255,255,255,0.15)',
+                    paddingTop: '24px',
+                  }}
+                >
+                  {/* Left: Wait Time Info / Regional Info */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {!['CONTINENT', 'COUNTRY', 'CITY'].includes(type) ? (
                       <>
-                        {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
-                      </>
-                    </div>
-                  )}
-                </div>
+                        {status === 'OPERATING' && waitTime !== null ? (
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '16px' }}>
+                              <span style={{ fontSize: '96px', fontWeight: 800, lineHeight: 1 }}>
+                                {waitTime}
+                              </span>
+                              <span
+                                style={{
+                                  fontSize: '48px',
+                                  fontWeight: 500,
+                                  color: 'rgba(255,255,255,0.8)',
+                                }}
+                              >
+                                {tCommon('minutes')}
+                              </span>
+                            </div>
+                            {peakWaitToday !== undefined && peakWaitToday !== null && (
+                              <div
+                                style={{
+                                  fontSize: '32px',
+                                  color: 'rgba(255,255,255,0.6)',
+                                  fontWeight: 500,
+                                }}
+                              >
+                                {tAttractions('peak', { time: peakWaitToday })}
+                              </div>
+                            )}
+                          </div>
+                        ) : null}
 
-                {/* Right: park.fan branding only (if no sparkline or just always?)
-                      User removed duplicate branding previously.
-                      So this Right column effectively becomes empty or just for branding if desired?
-                      If Sparkline is absolute, we don't need this right column unless we want park.fan fallback.
-                      User wanted duplicate removed.
-                   */}
-                {/* Empty right side effectively, or maybe we don't need justify-between anymore?
-                       Let's keep structure for safety, but empty. */}
-              </div>
+                        {type !== 'ATTRACTION' && status === 'OPERATING' && waitTime !== null && (
+                          <div
+                            style={{
+                              display: 'flex',
+                              fontSize: '32px',
+                              color: 'rgba(255,255,255,0.6)',
+                              fontWeight: 500,
+                            }}
+                          >
+                            {tParks('avgWaitTime')}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      // Regional Footer Info
+                      <div
+                        style={{
+                          display: 'flex',
+                          fontSize: '32px',
+                          color: 'rgba(255,255,255,0.6)',
+                          fontWeight: 500,
+                        }}
+                      >
+                        <>
+                          {tGeo('parkCount', { count: totalParks })} • {tCommon('discover')}
+                        </>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>

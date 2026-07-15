@@ -84,3 +84,6 @@ package-lock.json
 
 # Claude Code — per-developer local settings (not shared)
 /.claude/settings.local.json
+
+# OG image render harness output (scripts/render-og.mjs)
+.og-preview/

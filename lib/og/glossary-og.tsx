@@ -1,11 +1,11 @@
 import { ImageResponse } from 'next/og';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
+import { OgBrandLockup } from '@/lib/og/brand-mark';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
-const SITE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://park.fan';
 const KICKER = '#38bdf8';
 const GLOW = 'rgba(56,189,248,0.35)';
 
@@ -26,7 +26,9 @@ interface GlossaryOgParams {
  */
 export async function renderGlossaryTermOg({ locale, term }: GlossaryOgParams): Promise<Response> {
   const t = await getTranslations({ locale, namespace: 'glossary' });
-  const kicker = `park.fan · ${t('termTitleSuffix')}`;
+  // Section label only — the brand wordmark lives once in the bottom lockup,
+  // so the kicker must not repeat "park.fan".
+  const kicker = t('termTitleSuffix');
   const subtitle = term.shortDefinition || term.definition.split('\n\n')[0] || '';
   const title = term.name;
 
@@ -123,33 +125,8 @@ export async function renderGlossaryTermOg({ locale, term }: GlossaryOgParams): 
           )}
         </div>
 
-        {/* Brand bar */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'baseline',
-              gap: 0,
-              fontSize: 38,
-              fontWeight: 800,
-              letterSpacing: -1,
-            }}
-          >
-            <span style={{ color: '#ffffff' }}>park</span>
-            <span style={{ color: KICKER }}>.fan</span>
-          </div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 12,
-              fontSize: 22,
-              color: 'rgba(255,255,255,0.65)',
-            }}
-          >
-            {SITE_URL.replace(/^https?:\/\//, '')}
-          </div>
-        </div>
+        {/* Brand bar — one logo lockup (marker + wordmark asset) per card. */}
+        <OgBrandLockup markerHeight={46} />
       </div>
     </div>,
     {
