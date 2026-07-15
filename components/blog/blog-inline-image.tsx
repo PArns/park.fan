@@ -33,8 +33,8 @@ const FIGURE_ALIGN: Record<BlogImageAlign, string> = {
   // Floated: full width on mobile, ~45 % floated on sm+. Negative-free
   // margins keep the text gutter clean. `clear-*` avoids stacking two
   // same-side floats on top of each other.
-  left: 'my-4 w-full sm:float-left sm:clear-left sm:mr-6 sm:mb-4 sm:w-[45%] sm:max-w-sm',
-  right: 'my-4 w-full sm:float-right sm:clear-right sm:ml-6 sm:mb-4 sm:w-[45%] sm:max-w-sm',
+  left: 'my-4 w-full sm:float-left sm:clear-left sm:mr-6 sm:mb-4 sm:w-[40%] sm:max-w-[300px]',
+  right: 'my-4 w-full sm:float-right sm:clear-right sm:ml-6 sm:mb-4 sm:w-[40%] sm:max-w-[300px]',
 };
 
 const SIZE_OVERRIDE: Record<BlogImageSize, string> = {

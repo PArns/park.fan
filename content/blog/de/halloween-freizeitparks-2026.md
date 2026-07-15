@@ -99,7 +99,7 @@ des Illusionisten Christian Farla. Wer schon mal an einem Oktober-Samstag
 zwischen Nebelschwaden und quietschender Kettensäge durch die „Streets of New
 York" getrieben wurde, versteht den Kult.
 
-![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein verlassener Wohnwagen im Morgennebel – Trailer-Park-Kulisse, wie sie zu solchen Events gehört. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Verlassener Wohnwagen mit Holzkisten im Morgennebel | In so einem Wohnwagen wohnt im Horror nie jemand Nettes. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
 
 Kleine Fußnote, ganz im Sinne des Augenzwinkerns: Zum Redaktionsschluss sah die
 „2026er" Halloween-Seite verdächtig nach der von 2025 aus — dieselben Mazes,
@@ -138,6 +138,8 @@ Kürbissen, gruselfrei, familientauglich, sehr instagrammabel. Abends übernimmt
 **Traumatica**, das „Festival of Fear" — und das feiert 2026 sein **20-jähriges
 Jubiläum**, ist also alt genug, um selbst ins Maze zu dürfen.
 
+![Zerborstene Pharaonen-Statue bei Nacht angestrahlt | Sogar die Pharaonen gucken hier böse. | right](/blog/images/halloween-parks-2026/beispiel-sphinx.jpg)
+
 Denn Traumatica ist **strikt ab 16** — und zwar so strikt, dass auch Mamas
 Unterschrift und der beste Dackelblick nichts nützen: Wer jünger ist, kommt
 nicht rein, Punkt. Dafür gibt's über 150 Darsteller, mehrere thematisierte
@@ -148,7 +150,11 @@ Rest der Horror-Welten aufmacht. Gespielt wird **Freitag bis Sonntag vom 23.
 September bis 7. November 2026**, dazu ausgewählte Donnerstage und Halloween
 selbst.
 
-![Zerborstene Pharaonen-Statue bei Nacht angestrahlt | Eine zerborstene Pharaonen-Statue, nachts angestrahlt – bombastische Kulisse, wie sie die großen Horror-Festivals lieben. | center | medium](/blog/images/halloween-parks-2026/beispiel-sphinx.jpg)
+Wer einmal drin war, beschreibt Traumatica weniger als Spukhaus-Rundgang denn
+als komplette Parallelwelt: nebelverhangene Gassen, in denen ganze Rudel von
+Darstellern gezielt Jagd auf Einzelne machen, dazu Pyro-Shows und ein
+Soundteppich, der einem noch auf dem Heimweg im Ohr sitzt. Familienfreundlich
+ist hier wirklich nur der Tag.
 
 [Europa-Park](ref:europa-park?full)
 
@@ -196,6 +202,8 @@ Orientierung, und das ist genau der Punkt. Sich in einem Freizeitpark die
 Hose auszuziehen ist an diesem Abend, ehrlich gesagt, das Normalste, was dir
 passiert.
 
+![Darsteller mit Schweißmaske und Lederschurz voller Ohrmarken vor einer Containertür | Der wartet schon – und die Ohrmarken am Schurz sind gebraucht. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+
 Und dann der heimliche Star der Sammlung: **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
 Erst wirst du in einem Viehwaggon-artigen Warteraum „begutachtet", dann in
@@ -207,8 +215,6 @@ aufgedrückt, „Qualitätskontrolle bestanden, Premium-Fleisch". Deshalb siehst
 du an guten Abenden Leute mit einem Stempel auf der Stirn aus dem Ausgang
 taumeln, halb traumatisiert, halb seltsam stolz, und dezent nach geräuchertem
 Speck riechend. Freiwillig. Für Geld. Man muss die Niederländer einfach mögen.
-
-![Darsteller mit Schweißmaske und Lederschurz voller Ohrmarken vor einer Containertür | Der Metzger mit den Ohrmarken am Schurz – genau die Figur, die ein Haus wie „Slaughterhouse" so ungemütlich macht. | center | medium](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
 Kurz: Wenn du „Halloween in Walibi" sagst, entscheide zuerst, welches Level du
 meinst — der Weg von Spooky Days zu einer Experience ist der von „Kürbis
@@ -224,6 +230,8 @@ Aktuelles Line-up und Termine: [walibi.nl/halloween](https://www.walibi.nl/hallo
 
 ### Bobbejaanland — Kino zum Reinlaufen
 
+![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Es sind immer die Puppen. | right](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+
 Der belgische [Bobbejaanland](ref:bobbejaanland) hat 2025 sein bis dahin
 größtes Spukhaus überhaupt eröffnet, und das läuft auch 2026 weiter:
 **„Paranormal Activity: Next of Kin"**, gebaut in **Kooperation mit dem
@@ -234,7 +242,10 @@ Dorf und eine Familie, die man sich lieber nicht zum Grillen einlädt. Damit
 stehen in Bobbejaanland **sieben Spukhäuser** — neben dem Paramount-Haus laufen
 Klassiker wie _Wrecked_, _Alice in Horrorland_ oder _Texas Butcher_.
 
-![Darstellerin als zerbrochene Porzellanpuppe vor buntem Kinderweltzaun | Eine Darstellerin als zerbrochene Porzellanpuppe – das Puppen-Motiv zieht sich durch fast jedes Spukhaus. | center | medium](/blog/images/halloween-parks-2026/beispiel-porzellanpuppe.jpg)
+Statt auf billige Sprungschreck-Momente setzt das Paramount-Haus auf die
+schleichende Found-Footage-Stimmung, für die die Filmreihe bekannt ist — enge
+Flure, wenig Licht und durchgehend das ungute Gefühl, dass gleich etwas
+passiert.
 
 Für alle, die die Grenze zwischen „Film gucken" und „im Film stehen" gern
 verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
@@ -254,7 +265,7 @@ für Jahr aus. Termin steht: **4. Oktober bis 1. November 2026** (die harmlosere
 Haunted Experiences — darunter die 2025 eingeführte **„Unmasked"**, eine
 Experience mit eigener Scare Zone.
 
-![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Ein Darsteller mit Tentakel-Maske und Handglocke bei den Toverland Halloween Nights. | center | medium](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Nachtwächter der Toverland Halloween Nights – Gesicht optional. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
 
 Die eigentliche Neuheit für **2026** wächst gerade buchstäblich in den Himmel —
 und liegt gar nicht im Park: **„Entwined: The Maze"** (der Name heißt so viel
@@ -287,14 +298,19 @@ Details zu Experiences, Scare Zones und Fear Pass:
 
 ### Walibi Belgium — „Ibilaw"
 
+![Clown mit Fez am Messerwurfstand bei Tag | Beruhigt auch bei Tageslicht niemanden. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+
 Auch der zweite Walibi mischt mit: [Walibi Belgium](ref:walibi-belgium) in
 Wavre macht seine Halloween-Saison zum großen Wiedereröffnungs-Moment nach der
-Sommerpause und tauft sie rückwärts auf **„Ibilaw"** — mit Spukhäusern, Scare
-Zones und einem **R.I.P. Pass** als Fast-Lane. Praktisch, wenn man ohnehin in
-der Ecke ist: Bobbejaanland liegt gut eine Autostunde entfernt, ein
-Doppel-Wochenende schreibt sich quasi von selbst.
+Sommerpause und tauft sie rückwärts auf **„Ibilaw"**. Auf dem Programm stehen
+begehbare Spukhäuser, mehrere Scare Zones und ein **R.I.P. Pass** als Fast-Lane
+— das übliche Fright-Nights-Besteck, nur eine Landesgrenze weiter südlich.
 
-![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown-Darsteller am Messerwurfstand – Scare-Actor-Handwerk, auch tagsüber. | center | medium](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
+Welche Häuser und Zonen 2026 genau dabei sind, verkündet Wavre wie die meisten
+Parks erst über den Sommer; der Charakter aber steht fest — kompaktes Gelände,
+kurze Wege zwischen den Schrecken und Darsteller, die die Nähe suchen. Praktisch
+obendrein: Bobbejaanland liegt gut eine Autostunde entfernt, ein
+Grusel-Doppelwochenende schreibt sich damit fast von selbst.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
@@ -315,7 +331,7 @@ deiner ist es nicht). Ideal für den Familienfrieden: Alle fahren tagsüber
 zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet abends im
 Maze, während der Rest sich an der Bratwurst festhält.
 
-![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Rostiger Militärtruck, Sendetürme, Stacheldraht – die Endzeit-Kulisse, wie sie zu einer Zombie-Zone wie „Sektor 23" passt. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang ist eher rustikal. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
@@ -401,7 +417,7 @@ Randwochen der Saison ist es spürbar entspannter (und die Darsteller haben mehr
 Zeit, sich exklusiv um _dich_ zu kümmern — je nach Sichtweise ein Vor- oder
 Nachteil).
 
-![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Halloween-Nacht: an Wochenenden und in den Ferien wird es in den Scare Zones richtig eng. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
+![Beleuchteter Torbogen Psycho Circus mit Menschenmenge bei Nacht | Volle Nacht: ab hier stehst du mehr an, als dir lieb ist. | wide](/blog/images/halloween-parks-2026/beispiel-psycho-circus.jpg)
 
 Statt zu raten, schau dir für deinen Wunschpark die **ruhigsten kommenden Tage**
 aus unserem KI-Crowd-Kalender an:
