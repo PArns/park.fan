@@ -27,10 +27,9 @@ coverImage:
 seo:
   title: 'Halloween in Freizeitparks 2026: Events, Termine & ruhigste Tage'
   description: >-
-    Die großen Halloween-Events 2026 in Europas Freizeitparks — Movie Park
-    Horror Festival, Europa-Park Traumatica, Toverland, Walibi, Bobbejaanland,
-    Parc Astérix. Plus: welche Parks kein Halloween machen und wann es am
-    leersten ist.
+    Halloween 2026 in Europas Freizeitparks: Movie Park, Traumatica, die
+    Walibi-Experiences, Toverland & Co. — plus die Halloween-Verweigerer und
+    wann es am leersten ist.
   keywords:
     - Halloween Freizeitpark 2026
     - Halloween Horror Festival Movie Park 2026
