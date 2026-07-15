@@ -16,8 +16,16 @@ tags:
   - freizeitpark
   - maze
   - saison-2026
+  - movie-park
   - europa-park
+  - walibi-holland
+  - walibi-belgium
+  - bobbejaanland
+  - toverland
+  - heide-park
+  - parc-asterix
   - phantasialand
+  - efteling
 category: guides
 coverImage:
   src: /blog/images/halloween-parks-2026/cover.jpg
@@ -117,6 +125,10 @@ Abend. Die **Mazes sind separat zu buchen** — plane das Budget ein.
 
 Termine, Maze-Line-up und Ticketstufen stehen auf der
 [offiziellen Halloween-Horror-Festival-Seite](https://www.movieparkgermany.de/en/halloween).
+
+```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kinderwelt heading="Kaputte Kinderwelt"
+
+```
 
 ### Europa-Park — Traumatica (Festival of Fear)
 
@@ -229,6 +241,10 @@ verwischen, ist das eine der lohnendsten Adressen jenseits der Grenze.
 
 [Bobbejaanland](ref:bobbejaanland?full)
 
+```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-darsteller heading="Die Darsteller"
+
+```
+
 ### Toverland — sieben Hektar Mais und die dringende Bitte, nicht stehenzubleiben
 
 [Toverland](ref:attractiepark-toverland) im niederländischen Sevenum (für viele
@@ -281,10 +297,6 @@ Doppel-Wochenende schreibt sich quasi von selbst.
 ![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown-Darsteller am Messerwurfstand – Scare-Actor-Handwerk, auch tagsüber. | center | medium](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
 
 [Walibi Belgium](ref:walibi-belgium?full)
-
-```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen heading="Impressionen aus den Horror-Nächten"
-
-```
 
 ## Familientauglich — Grusel mit Sicherheitsnetz
 
@@ -413,6 +425,10 @@ liefert die Statistik das Muster gleich mit:
 **Movie Park Germany — typische Wartezeiten nach Wochentag & Monat**
 
 ```stats-widget slug=movie-park-germany
+
+```
+
+```gallery-widget folder=/blog/images/halloween-parks-2026/impressionen-kulissen heading="Kulissen und Zonen"
 
 ```
 
