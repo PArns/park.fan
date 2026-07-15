@@ -37,16 +37,9 @@ const FIGURE_ALIGN: Record<BlogImageAlign, string> = {
   right: 'my-4 w-full sm:float-right sm:clear-right sm:ml-6 sm:mb-4 sm:w-[45%] sm:max-w-sm',
 };
 
-const ASPECT_ALIGN: Record<BlogImageAlign, string> = {
-  center: 'aspect-[16/9]',
-  wide: 'aspect-[21/9]',
-  left: 'aspect-[4/3]',
-  right: 'aspect-[4/3]',
-};
-
 const SIZE_OVERRIDE: Record<BlogImageSize, string> = {
   small: 'sm:max-w-[200px]',
-  medium: 'sm:max-w-[360px]',
+  medium: 'sm:max-w-[440px]',
   large: 'sm:max-w-[640px]',
 };
 
@@ -65,16 +58,14 @@ export function BlogInlineImage({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={cn(
-          'group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]',
-          ASPECT_ALIGN[align]
-        )}
+        className="group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]"
         aria-label={alt || t('inlineImage.openImage')}
       >
         <Image
           src={src}
           alt={alt}
-          fill
+          width={0}
+          height={0}
           sizes={
             align === 'left' || align === 'right'
               ? '(max-width: 640px) 100vw, 400px'
@@ -82,7 +73,7 @@ export function BlogInlineImage({
                 ? '(max-width: 1024px) 100vw, 1024px'
                 : '(max-width: 768px) 100vw, 768px'
           }
-          className="object-cover"
+          className="h-auto w-full"
         />
         <span className="bg-background/80 absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
