@@ -214,11 +214,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     : [];
 
   // Fallback notice (requested locale untranslated → showing loadedLocale):
-  // written in the language actually being shown, since that's what the reader
-  // is about to read.
-  const tLoaded = await getTranslations({ locale: post.loadedLocale, namespace: 'blog' });
+  // written in the reader's SELECTED locale — that's the language they chose to
+  // browse in — while naming the language actually shown, localized to that
+  // same selected locale (so an English reader sees "the German version", not
+  // "the Deutsch version").
+  const loadedLanguageName =
+    new Intl.DisplayNames([locale], { type: 'language' }).of(post.loadedLocale) ??
+    localeNames[post.loadedLocale];
   const fallbackLabel = post.isFallback
-    ? tLoaded('languageNotice.fallback', { language: localeNames[post.loadedLocale] })
+    ? tBlog('languageNotice.fallback', { language: loadedLanguageName })
     : null;
 
   const shareUrl = `${SITE_URL}/${locale}/blog/${post.slug}`;
@@ -278,7 +282,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <BlogContent markdown={post.content} locale={locale as Locale} />
 
                 {(() => {
-                  const images = resolveGallery(post.frontmatter.gallery);
+                  const images = resolveGallery(post.frontmatter.gallery, locale);
                   return images.length > 0 ? <BlogGallery images={images} /> : null;
                 })()}
 

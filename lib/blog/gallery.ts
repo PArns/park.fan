@@ -1,6 +1,6 @@
 import 'server-only';
 import type { BlogImage } from './types';
-import { BLOG_GALLERY_FOLDERS } from './manifest';
+import { BLOG_GALLERY_FOLDERS, BLOG_GALLERY_FOLDERS_L10N } from './manifest';
 
 /**
  * Return the images registered in the build-time manifest for the given
@@ -8,12 +8,23 @@ import { BLOG_GALLERY_FOLDERS } from './manifest';
  * scripts/generate-blog-manifest.mjs as part of prebuild and includes
  * captions.json overrides where present.
  *
+ * When `locale` is given and the folder ships a captions.<locale>.json (surfaced
+ * as BLOG_GALLERY_FOLDERS_L10N), the localized captions win; otherwise it falls
+ * back to the base captions.json listing.
+ *
  * Returns an empty array when the folder is unknown — useful for blog
  * post authors who reference a folder that has been renamed or deleted.
  */
-export function listFolderImages(folder: string): BlogImage[] {
+export function listFolderImages(folder: string, locale?: string): BlogImage[] {
   const normalized = folder.startsWith('/') ? folder : `/${folder}`;
-  return BLOG_GALLERY_FOLDERS[normalized] ?? BLOG_GALLERY_FOLDERS[`${normalized}/`] ?? [];
+  const withSlash = `${normalized}/`;
+  if (locale) {
+    const localized =
+      BLOG_GALLERY_FOLDERS_L10N[normalized]?.[locale] ??
+      BLOG_GALLERY_FOLDERS_L10N[withSlash]?.[locale];
+    if (localized) return localized;
+  }
+  return BLOG_GALLERY_FOLDERS[normalized] ?? BLOG_GALLERY_FOLDERS[withSlash] ?? [];
 }
 
 /**
@@ -23,15 +34,18 @@ export function listFolderImages(folder: string): BlogImage[] {
  *   - Array of BlogImage objects
  *   - String — interpreted as a folder path under /public
  *   - Object with { folder: '...' }
+ *
+ * `locale` selects localized captions for the folder forms (see listFolderImages).
  */
 export function resolveGallery(
-  input: BlogImage[] | string | { folder: string } | undefined
+  input: BlogImage[] | string | { folder: string } | undefined,
+  locale?: string
 ): BlogImage[] {
   if (!input) return [];
   if (Array.isArray(input)) return input;
-  if (typeof input === 'string') return listFolderImages(input);
+  if (typeof input === 'string') return listFolderImages(input, locale);
   if (typeof input === 'object' && 'folder' in input && typeof input.folder === 'string') {
-    return listFolderImages(input.folder);
+    return listFolderImages(input.folder, locale);
   }
   return [];
 }

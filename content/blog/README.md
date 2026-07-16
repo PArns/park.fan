@@ -229,6 +229,25 @@ alt/caption/credit:
 ```
 ````
 
+**Localized captions.** `captions.json` is the base/fallback (usually the source
+language). To translate a gallery per locale, drop a `captions.<locale>.json`
+next to it (e.g. `captions.fr.json`) using the **same image-filename keys**. It
+overrides the base **entry by entry** — you only localize the strings that
+change, and any image the locale file omits falls back to `captions.json`. The
+gallery then renders the reader's-locale captions automatically (and falls back
+to the base for locales without an override). Works for both the `folder=` form
+above and a frontmatter `gallery:` reference.
+
+```jsonc
+// captions.json          → base (here: German)
+{ "01-castle.jpg": { "alt": "Zauberschloss", "caption": "Das Schloss in der Dämmerung." } }
+// captions.fr.json       → French override, same keys
+{ "01-castle.jpg": { "alt": "Château", "caption": "Le château au crépuscule." } }
+```
+
+Regenerate the manifest (`pnpm generate:blog-manifest`) after adding or editing
+caption files.
+
 Or list images line by line in the body:
 
 ````md
