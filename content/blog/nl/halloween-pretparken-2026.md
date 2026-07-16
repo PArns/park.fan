@@ -78,7 +78,7 @@ drukst, en wanneer kom je het meest ontspannen door?**
 > bij het ter perse gaan bevestigd; voor de rest geldt: even nachecken voordat
 > je boekt.
 
-## De grote horror-events (’s avonds, vaak vanaf 16)
+## De grote horror-events ('s avonds, vaak vanaf 16)
 
 Dit is de harde kern: avondevents met uitgebreid beloopbare spookhuizen (in het
 jargon **mazes** of **haunted houses**), scare zones vol live-acteurs en op
@@ -99,7 +99,7 @@ opgejaagd, snapt de cultstatus.
 
 ![Verlaten caravan met houten kisten in de ochtendmist | Een eenzame caravan in de ochtendmist. Zelden een goed teken. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
 
-Kleine voetnoot, helemaal in de knipoog-stemming: de **data voor 2026 staan**
+Kleine voetnoot, helemaal in de geest van de knipoog: de **data voor 2026 staan**
 allang officieel vast, maar de precieze maze-line-up had Bottrop bij het ter
 perse gaan nog niet verklapt — de Halloween-tickets waren niet eens in de
 verkoop. Goed mogelijk dat Bottrop de echte nieuwigheden nog nalevert; net zo
@@ -160,17 +160,17 @@ met zondag van 23 september tot 7 november 2026**, plus geselecteerde
 donderdagen en Halloween zelf.
 
 De avond is strak getimed: inloop **17:45 uur**, foodcourt vanaf **18 uur** (het
-laatste avondmaal, zeg maar), horrorwerelden vanaf **19 uur**, einde om **23:30
+galgenmaal, zeg maar), horrorwerelden vanaf **19 uur**, einde om **23:30
 uur**. De toegang loopt via gestaffelde passen — van de **Event Pass** (vanaf 33
 €) via de **Shoxter Pass** met priority-toegang (vanaf 96 €) tot de **Psycho
 Pass** voor doorgewinterden (vanaf 18, all-inclusive, 349 €). Sommige extra
-kriebels kosten er nog bovenop: de vollecontact-experience **THE HOTEL** (29 €),
+kriebels kosten er nog bovenop: de full-contact-experience **THE HOTEL** (29 €),
 de club **THE FORBIDDEN** (10 €) en een korte horror-**VR** (6 €).
 
 Wie er eenmaal binnen is geweest, beschrijft Traumatica minder als een rondje
 spookhuis dan als een complete parallelle wereld: in mist gehulde steegjes
-waarin hele roedels acteurs gericht op individuen jagen, plus pyroshows en een
-geluidstapijt dat je op de terugweg nog in je oren zit. Gezinsvriendelijk is
+waarin hele roedels acteurs gericht jacht maken op eenlingen, plus pyroshows en
+een klanktapijt dat op weg naar huis nog in je oren blijft hangen. Gezinsvriendelijk is
 hier echt alleen de dag.
 
 [Europa-Park](ref:europa-park?full)
@@ -200,9 +200,9 @@ behandeld te worden, en bedank je ze achteraf ook nog.
 Neem **The Clinic**. De ontvangst ziet eruit als een normale kliniek — en dan
 word je op een brancard gegespt en liggend door de rest geschoven, blik
 uitsluitend richting plafond. Boven je razen flikkerende tl-buizen en
-beschimmelde tegels voorbij, dan verblindend ok-licht, een injectie, het gekrijs
+beschimmelde tegels voorbij, dan verblindend OK-licht, een injectie, het gekrijs
 van een botzaag die zich aan je borst wijdt, een op hol geslagen hartmonitor,
-een panische verpleegster. Als afsluiter: het teenlabel en het stevige dichtslaan
+een panische verpleegster. Als afsluiter: het labeltje aan je teen en het stevige dichtslaan
 van een koellade. Je beleeft, kort gezegd, je eigen spoedoperatie inclusief
 overlijden — vastgegespt, van onderaf, zonder de mogelijkheid om „ik denk dat ik
 maar eens ga" te zeggen.
@@ -210,7 +210,7 @@ maar eens ga" te zeggen.
 Of **Below**, volgens Walibi het intensiefste haunted house dat ze ooit hebben
 gebouwd. Het begint ermee dat je **je schoenen en broek uittrekt** en in een
 waadpak stapt — en ja, dat is het moment waarop het je begint te dagen dat dit
-geen normale avond wordt. De reden is verheugend banaal en tegelijk gruwelijk:
+geen normale avond wordt. De reden is aangenaam banaal en tegelijk gruwelijk:
 je daalt af in een rioolstelsel en waadt door **kniehoog water**, zogenaamd op
 jacht naar een ongediertebesmetting. De acteurs stormen door echte watervallen
 op je af, met — citaat van een bezoeker — aanzienlijke „spatschade". Je verliest
@@ -220,7 +220,7 @@ uittrekken is deze avond, eerlijk gezegd, het normaalste wat je overkomt.
 ![Acteur met lasmasker en leren schort voor een containerdeur | De slager wacht al. En nee, dat is geen welkomstcomité. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
 En dan de stiekeme ster van de collectie: **Slaughterhouse**, een
-vleesverwerkingsbedrijf waarin jij de rol van het ruwe materiaal op je neemt.
+vleesverwerkingsbedrijf waarin jij de rol van de grondstof op je neemt.
 Eerst word je in een als veewagon ingerichte wachtruimte „gekeurd", daarna in
 een aan de plafondrail hangende stoel gegespt — het idee is de slagershaak, het
 effect is volledige weerloosheid: armen nutteloos, benen op comfortabele
@@ -293,7 +293,7 @@ enige regel die telt: wie blijft staan, wordt gegrepen — dus altijd lekker
 doorlopen. Ruimte genoeg in elk geval om grondig, uitgebreid en met aankondiging
 te verdwalen.
 
-Kuriositeit in de marge: Toverland vermarkt Entwined als **„grootste
+Curieus detail in de marge: Toverland vermarkt Entwined als **„grootste
 Halloween-experience van Europa"** — waarmee we binnen ruim een uur rijden
 meteen twee parken hebben die „het grootste van Europa" voor zich opeisen
 (Bottrop het grootste _event_, Sevenum de grootste _experience_). Superlatieven
@@ -341,16 +341,16 @@ komen er extra bij.
 De precieze data voor 2026 kondigt Waver, zoals de meeste parken, de zomer door
 aan; ter oriëntatie: in 2025 waren het **18 Ibilaw-avonden** (11 oktober tot 2
 november), op zo'n tien daarvan was het park **tot 22 uur** open. Compact
-terrein, korte routes tussen de schrik door, acteurs die de nabijheid opzoeken —
+terrein, korte routes tussen de schrikmomenten door, acteurs die de nabijheid opzoeken —
 en praktisch bovendien: [Bobbejaanland](ref:bobbejaanland) ligt ruim een uur
-rijden verderop, een dubbel griezelweekend schrijft zichzelf zo bijna vanzelf.
+rijden verderop, een dubbel griezelweekend schrijft zichzelf bijna vanzelf.
 
 [Walibi Belgium](ref:walibi-belgium?full)
 
 ## Gezinsvriendelijk — griezelen met vangnet
 
 Niet iedereen wil (of mag) aan een slagershaak. Voor gezinnen met kinderen is er
-de ontscherpte versie: griezelen als sfeer, niet als shocktherapie.
+de afgezwakte versie: griezelen als sfeer, niet als shocktherapie.
 
 ### Heide-Park — Halloween met keuzevrijheid
 
