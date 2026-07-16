@@ -1,7 +1,7 @@
 {
   "05-arachnophobia-turm.jpg": {
     "alt": "Grün beleuchteter Turm mit Stacheldraht und Warnschildern, Schriftzug Arachnophobia",
-    "caption": "Arachnophobia – schon bei handtellergroßen Spinnen darfst du kehrtmachen."
+    "caption": "Arachnophobia. Nichts für alle, die schon handtellergroße Spinnen nicht abkönnen."
   },
   "06-aquarium-fassade.jpg": {
     "alt": "Verfallenes Holzgebäude mit Schriftzug Aquarium, blau-grün beleuchtet bei Nacht",
@@ -30,5 +30,9 @@
   "21-halloween-breathless-fassade.jpg": {
     "alt": "Blaue Art-Deco-Fassade mit Halloween-Schriftzug und Breathless bei Tag",
     "caption": "Tagsüber hübsche Fassade. Sobald’s dunkel wird: viel Spaß."
+  },
+  "11-sphinx-pharao.jpg": {
+    "alt": "Zerborstene Pharaonen-Statue bei Nacht angestrahlt",
+    "caption": "Sogar die Pharaonen gucken hier böse."
   }
 }

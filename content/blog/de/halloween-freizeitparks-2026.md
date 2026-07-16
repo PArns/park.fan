@@ -99,7 +99,7 @@ des Illusionisten Christian Farla. Wer schon mal an einem Oktober-Samstag
 zwischen Nebelschwaden und quietschender Kettensäge durch die „Streets of New
 York" getrieben wurde, versteht den Kult.
 
-![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Im Horror wohnt in so einem Wohnwagen nie jemand Nettes. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Ein einsamer Wohnwagen im Morgennebel. Selten ein gutes Zeichen. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
 
 Kleine Fußnote, ganz im Sinne des Augenzwinkerns: Zum Redaktionsschluss sah die
 „2026er" Halloween-Seite verdächtig nach der von 2025 aus — dieselben Mazes,
@@ -137,8 +137,6 @@ Persönlichkeit. Tagsüber: bunte Herbstkulisse mit gefühlt einer halben Millio
 Kürbissen, gruselfrei, familientauglich, sehr instagrammabel. Abends übernimmt
 **Traumatica**, das „Festival of Fear" — und das feiert 2026 sein **20-jähriges
 Jubiläum**, ist also alt genug, um selbst ins Maze zu dürfen.
-
-![Zerborstene Pharaonen-Statue bei Nacht angestrahlt | Sogar die Pharaonen gucken hier böse. | right](/blog/images/halloween-parks-2026/beispiel-sphinx.jpg)
 
 Denn Traumatica ist **strikt ab 16** — und zwar so strikt, dass auch Mamas
 Unterschrift und der beste Dackelblick nichts nützen: Wer jünger ist, kommt
@@ -202,7 +200,7 @@ Orientierung, und das ist genau der Punkt. Sich in einem Freizeitpark die
 Hose auszuziehen ist an diesem Abend, ehrlich gesagt, das Normalste, was dir
 passiert.
 
-![Darsteller mit Schweißmaske und Lederschurz voller Ohrmarken vor einer Containertür | Der wartet schon. Ohrmarken am Schurz – gebraucht, versteht sich. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Darsteller mit Schweißmaske und Lederschurz vor einer Containertür | Der Metzger wartet schon. Und nein, das ist kein Willkommenskomitee. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
 Und dann der heimliche Star der Sammlung: **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
@@ -448,7 +446,7 @@ liefert die Statistik das Muster gleich mit:
 
 ```
 
-## Fazit: sechs Wochen, ein Kontinent, sehr unterschiedliche Nerven
+## Fazit: sechs Wochen Grusel, für jede Nervenstärke etwas
 
 Die Halloween-Saison 2026 hat für jede Schmerzgrenze etwas: das schiere Volumen
 im [Movie Park](ref:movie-park-germany?bare), die große Inszenierung von
