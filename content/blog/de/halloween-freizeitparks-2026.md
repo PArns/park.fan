@@ -319,16 +319,34 @@ Details zu Experiences, Scare Zones und Fear Pass:
 ![Clown mit Fez am Messerwurfstand bei Tag | Ein Clown. Am Messerwurfstand. Zwei Ängste zum Preis von einer. | right](/blog/images/halloween-parks-2026/beispiel-fez-clown.jpg)
 
 Auch der zweite Walibi mischt mit: [Walibi Belgium](ref:walibi-belgium) in
-Wavre macht seine Halloween-Saison zum großen Wiedereröffnungs-Moment nach der
-Sommerpause und tauft sie rückwärts auf **„Ibilaw"**. Auf dem Programm stehen
-begehbare Spukhäuser, mehrere Scare Zones und mit dem **Speedy Pass** eine
-Fast-Lane — das übliche Fright-Nights-Besteck, nur eine Landesgrenze weiter
-südlich.
+Wavre verwandelt seinen Herbst in **„Ibilaw"** — und der Name ist schon der
+erste kleine Gruß: **„Ibilaw" ist „Walibi" rückwärts.** Wobei „Walibi" selbst
+ein Kürzel ist, zusammengesetzt aus den drei Nachbargemeinden **Wa**vre,
+**Li**mal und **Bi**erges. Zu Halloween wird der Park also im Wortsinn von hinten
+aufgezäumt: eine Parallelwelt, in der alles ein bisschen verkehrt herum läuft —
+inszeniert seit 2024 rund um das Maskottchen **Bill** und sein „grimmiges
+Königreich".
 
-Welche Häuser und Zonen 2026 genau dabei sind, verkündet Wavre wie die meisten
-Parks erst über den Sommer; der Charakter aber steht fest — kompaktes Gelände,
-kurze Wege zwischen den Schrecken und Darsteller, die die Nähe suchen. Praktisch
-obendrein: Bobbejaanland liegt gut eine Autostunde entfernt, ein
+Auf dem Programm steht das komplette Fright-Nights-Besteck: begehbare Spukhäuser
+wie **Mine Blast**, **Silence**, **The Curse of Amun** und das neuere
+**Aquarium** (ein angeblich seit den Neunzigern geschlossenes Schauaquarium, in
+dem noch etwas lauert), dazu Scare Zones wie das clowneske **Psycho Circus** —
+der Fez-Clown oben lässt grüßen — oder **Arachnophobia** für alle, die Spinnen
+schon in Normalgröße nicht abkönnen. Die Spukhäuser sind **nicht** im Eintritt
+enthalten, sondern kosten als Zeitfenster-Ticket rund **7,50 bis 8,50 € pro
+Haus**; wer Schlangestehen hasst, nimmt den **Speedy Pass** als Fast-Lane.
+
+Anders als das strikt ab-16-Traumatica bleibt Ibilaw familienfreundlicher: eine
+harte Altersgrenze gibt es nicht, für die Kleinen liegen sogar
+**Anti-Monster-Buttons** bereit. Praktisch für Jahreskarten-Besitzer — an den
+Ibilaw-Abenden ist der reguläre Parkeintritt schon dein Ticket, extra kommen nur
+die Spukhäuser.
+
+Die genauen 2026-Termine verkündet Wavre wie die meisten Parks über den Sommer;
+zur Orientierung: 2025 waren es **18 Ibilaw-Abende** (11. Oktober bis 2.
+November), an rund zehn davon lief der Park **bis 22 Uhr**. Kompaktes Gelände,
+kurze Wege zwischen den Schrecken, Darsteller, die die Nähe suchen — und
+praktisch obendrein: **Bobbejaanland** liegt gut eine Autostunde entfernt, ein
 Grusel-Doppelwochenende schreibt sich damit fast von selbst.
 
 [Walibi Belgium](ref:walibi-belgium?full)
