@@ -346,7 +346,7 @@ Die genauen 2026-Termine verkündet Wavre wie die meisten Parks über den Sommer
 zur Orientierung: 2025 waren es **18 Ibilaw-Abende** (11. Oktober bis 2.
 November), an rund zehn davon lief der Park **bis 22 Uhr**. Kompaktes Gelände,
 kurze Wege zwischen den Schrecken, Darsteller, die die Nähe suchen — und
-praktisch obendrein: **Bobbejaanland** liegt gut eine Autostunde entfernt, ein
+praktisch obendrein: [Bobbejaanland](ref:bobbejaanland) liegt gut eine Autostunde entfernt, ein
 Grusel-Doppelwochenende schreibt sich damit fast von selbst.
 
 [Walibi Belgium](ref:walibi-belgium?full)
@@ -441,8 +441,8 @@ Kinder dabei hat —, ist hier goldrichtig.
 2. **Mazes kosten extra.** Bei fast allen großen Events ist das Spukhaus nicht
    im Tagesticket. Einrechnen — und früh buchen, wenn dir ein bestimmtes Datum
    wichtig ist.
-3. **Fast-Lanes lohnen sich hier ausnahmsweise wirklich.** Toverlands **Fear
-   Pass** oder Walibi Belgiums **Speedy Pass** sind an vollen Halloween-Nächten
+3. **Fast-Lanes lohnen sich hier ausnahmsweise wirklich.** [Toverlands](ref:attractiepark-toverland) **Fear
+   Pass** oder [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** sind an vollen Halloween-Nächten
    kein dekadenter Luxus, sondern schlichte Mathematik: Ein Halloween-Abend ist
    kürzer als ein normaler Parktag, und jede Minute, die du _nicht_ in der
    Schlange stehst, ist eine Minute mehr Panik fürs Geld.
@@ -489,12 +489,12 @@ liefert die Statistik das Muster gleich mit:
 ## Fazit: sechs Wochen Grusel, für jede Nervenstärke etwas
 
 Die Halloween-Saison 2026 hat für jede Schmerzgrenze etwas: das schiere Volumen
-im [Movie Park](ref:movie-park-germany?bare), die große Inszenierung von
-[Traumatica](ref:europa-park?bare), Bobbejaanlands Kino zum Reinlaufen, das
-frische Maisfeld in [Toverland](ref:attractiepark-toverland?bare) — und, für die
-ganz Tapferen, die Walibi-Experiences, bei denen man freiwillig Geld dafür
+im [Movie Park](ref:movie-park-germany), die große Inszenierung von
+[Traumatica](ref:europa-park), [Bobbejaanlands](ref:bobbejaanland) Kino zum Reinlaufen, das
+frische Maisfeld in [Toverland](ref:attractiepark-toverland) — und, für die
+ganz Tapferen, die [Walibi-Experiences](ref:walibi-holland), bei denen man freiwillig Geld dafür
 bezahlt, gestempelt, geflutet und aufgeschlitzt zu werden. Als Gegenpol die
-stille, vornehme Herbst-Efteling und ein [Phantasialand](ref:phantasialand?bare),
+stille, vornehme Herbst-[Efteling](ref:efteling) und ein [Phantasialand](ref:phantasialand),
 das Halloween mit einem Schulterzucken überspringt und lieber gleich den Schnee
 anwirft.
 
