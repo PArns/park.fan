@@ -438,10 +438,10 @@ Kinder dabei hat —, ist hier goldrichtig.
 
 1. **Die Altersgrenzen sind keine Empfehlung.** Die harten Abend-Events
    (Traumatica und viele Mazes: 16+) lassen Jüngere auch _mit_ Eltern nicht
-   rein. Vorher klären, sonst steht die halbe Familie ratlos vor der Nebelwand
-   und der Abend ist gelaufen, bevor er anfing.
-2. **Mazes kosten extra.** Bei fast allen großen Events ist das Spukhaus nicht
-   im Tagesticket. Einrechnen — und früh buchen, wenn dir ein bestimmtes Datum
+   rein. Vorher klären, sonst wird die halbe Familie am Einlass abgewiesen und
+   der Abend ist gelaufen, bevor er anfing.
+2. **Mazes und Experiences kosten extra.** Bei fast allen großen Events sind die
+   Häuser und Experiences nicht im Tagesticket. Einrechnen — und früh buchen, wenn dir ein bestimmtes Datum
    wichtig ist.
 3. **Fast-Lanes lohnen sich hier ausnahmsweise wirklich.** [Toverlands](ref:attractiepark-toverland) **Fear
    Pass** oder [Walibi Belgiums](ref:walibi-belgium) **Speedy Pass** sind an vollen Halloween-Nächten
@@ -512,6 +512,6 @@ dich im Nebel etwas anspringt: Es ist nur Teil der Show. Ziemlich sicher.
 
 — Patrick
 
-_P.S.: Falls du im Oktober vor dem Phantasialand stehst und dich wunderst, wo
-der Grusel bleibt — ich hab's dir gesagt. Der Winterzauber ab November ist die
-Entschädigung, und die ist jeden Glühwein wert._
+_P.S.: Falls du im Oktober vor dem Phantasialand stehst und dich fragst, wo der
+Grusel bleibt — den gibt es nicht, und genau das war der Plan. Zur Entschädigung
+kommt ab November der Wintertraum, und der ist jeden Glühwein wert._
