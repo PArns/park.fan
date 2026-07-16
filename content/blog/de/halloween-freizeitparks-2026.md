@@ -6,7 +6,7 @@ author: patrick
 mode: published
 excerpt: >-
   Vom „größten" Event im Movie Park über Traumatica bis zu den berüchtigten
-  Walibi-Experiences, bei denen man freiwillig 50 Euro zahlt, um wie ein
+  Walibi-Experiences, bei denen man freiwillig 20 bis 25 Euro zahlt, um wie ein
   Kotelett gestempelt zu werden: der große — und ehrlich gesagt ziemlich
   vergnügte — Überblick über die Halloween-Saison 2026 in Deutschland, den
   Niederlanden, Belgien und Frankreich. Inklusive der zwei Top-Parks, die
