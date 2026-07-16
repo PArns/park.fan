@@ -63,7 +63,8 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]"
+              className="group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 focus:outline-none focus-visible:ring-2"
+              style={{ boxShadow: 'var(--pk-card-shadow)' }}
               aria-label={t('gallery.openImage', { index: i + 1, total: images.length })}
             >
               <Image

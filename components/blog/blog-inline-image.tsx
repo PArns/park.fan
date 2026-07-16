@@ -58,7 +58,8 @@ export function BlogInlineImage({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-xl border border-black/[0.08] shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 dark:border-white/[0.08]"
+        className="group bg-muted focus-visible:ring-ring/40 relative block w-full overflow-hidden rounded-[20px] transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-1 focus:outline-none focus-visible:ring-2"
+        style={{ boxShadow: 'var(--pk-card-shadow)' }}
         aria-label={alt || t('inlineImage.openImage')}
       >
         <Image
