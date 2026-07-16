@@ -754,7 +754,7 @@ function renderWidget(
     // the line-based body. The folder form is the recommended shape since it
     // requires no manual file listing and picks up captions.json overrides.
     const folder = attrs.folder ?? attrs.dir ?? attrs.path;
-    const images = folder ? listFolderImages(folder) : parseGalleryBody(body);
+    const images = folder ? listFolderImages(folder, ctx.locale) : parseGalleryBody(body);
     if (images.length === 0) return null;
     return <BlogGallery images={images} heading={attrs.heading} />;
   }

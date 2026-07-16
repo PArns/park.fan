@@ -282,7 +282,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 <BlogContent markdown={post.content} locale={locale as Locale} />
 
                 {(() => {
-                  const images = resolveGallery(post.frontmatter.gallery);
+                  const images = resolveGallery(post.frontmatter.gallery, locale);
                   return images.length > 0 ? <BlogGallery images={images} /> : null;
                 })()}
 
