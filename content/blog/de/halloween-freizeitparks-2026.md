@@ -1,9 +1,9 @@
 ---
 title: 'Halloween in Europas Freizeitparks 2026: Horror-Nächte, Mazes — und wer bewusst nicht mitmacht'
 translationKey: halloween-parks-2026
-date: '2026-07-15'
+date: '2026-07-17'
 author: patrick
-mode: hidden
+mode: published
 excerpt: >-
   Vom „größten" Event im Movie Park über Traumatica bis zu den berüchtigten
   Walibi-Experiences, bei denen man freiwillig 50 Euro zahlt, um wie ein
@@ -99,7 +99,7 @@ des Illusionisten Christian Farla. Wer schon mal an einem Oktober-Samstag
 zwischen Nebelschwaden und quietschender Kettensäge durch die „Streets of New
 York" getrieben wurde, versteht den Kult.
 
-![Verlassener Wohnwagen mit Holzkisten im Morgennebel | In so einem Wohnwagen wohnt im Horror nie jemand Nettes. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
+![Verlassener Wohnwagen mit Holzkisten im Morgennebel | Im Horror wohnt in so einem Wohnwagen nie jemand Nettes. | wide](/blog/images/halloween-parks-2026/beispiel-wohnwagen.jpg)
 
 Kleine Fußnote, ganz im Sinne des Augenzwinkerns: Zum Redaktionsschluss sah die
 „2026er" Halloween-Seite verdächtig nach der von 2025 aus — dieselben Mazes,
@@ -202,7 +202,7 @@ Orientierung, und das ist genau der Punkt. Sich in einem Freizeitpark die
 Hose auszuziehen ist an diesem Abend, ehrlich gesagt, das Normalste, was dir
 passiert.
 
-![Darsteller mit Schweißmaske und Lederschurz voller Ohrmarken vor einer Containertür | Der wartet schon – und die Ohrmarken am Schurz sind gebraucht. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
+![Darsteller mit Schweißmaske und Lederschurz voller Ohrmarken vor einer Containertür | Der wartet schon. Ohrmarken am Schurz – gebraucht, versteht sich. | left](/blog/images/halloween-parks-2026/beispiel-metzger.jpg)
 
 Und dann der heimliche Star der Sammlung: **Slaughterhouse**, ein
 Fleischverarbeitungsbetrieb, in dem du die Rolle des Rohmaterials übernimmst.
@@ -265,7 +265,7 @@ für Jahr aus. Termin steht: **4. Oktober bis 1. November 2026** (die harmlosere
 Haunted Experiences — darunter die 2025 eingeführte **„Unmasked"**, eine
 Experience mit eigener Scare Zone.
 
-![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Nachtwächter der Toverland Halloween Nights – Gesicht optional. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
+![Darsteller mit Tentakel-Maske und Handglocke vor dem Toverland-Halloween-Nights-Banner | Der Nachtwächter der Toverland Halloween Nights. Gesicht: Verhandlungssache. | left](/blog/images/halloween-parks-2026/toverland-cthulhu.jpg)
 
 Die eigentliche Neuheit für **2026** wächst gerade buchstäblich in den Himmel —
 und liegt gar nicht im Park: **„Entwined: The Maze"** (der Name heißt so viel
@@ -331,7 +331,7 @@ deiner ist es nicht). Ideal für den Familienfrieden: Alle fahren tagsüber
 zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet abends im
 Maze, während der Rest sich an der Bratwurst festhält.
 
-![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang ist eher rustikal. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
+![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang fällt … rustikal aus. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
 
 [Heide-Park](ref:heide-park?full)
 
