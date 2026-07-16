@@ -361,11 +361,13 @@ gibt es die entschärfte Version: Grusel als Stimmung, nicht als Schocktherapie.
 Der [Heide-Park](ref:heide-park) in Soltau macht beides und überlässt dir die
 Dosis. Halloween läuft **vom 10. bis 31. Oktober 2026**, an **fünf Tagen mit
 verlängerter Öffnung bis 21 Uhr** (Sa 10., Sa 17., Sa 24., Fr 30. und Sa 31.
-Oktober): tagsüber familientaugliche Deko, abends Scare Zone und **drei Horror-Mazes ab 16**, für die je ein eigenes
-Zeitfenster-Ticket nötig ist (3er-Bundle 22 €). Welches Maze-Trio 2026 antritt,
-bestätigt Soltau über den Sommer; Endzeit-Stimmung ist erfahrungsgemäß dabei. Ideal für den Familienfrieden: Alle fahren tagsüber
-zusammen Achterbahn, und wer alt und mutig genug ist, verschwindet abends im
-Maze, während der Rest sich an der Bratwurst festhält.
+Oktober): tagsüber familientaugliche Deko, abends Scare Zone und **drei
+Horror-Mazes ab 16**, für die je ein eigenes Zeitfenster-Ticket nötig ist
+(3er-Bundle 22 €). Welches Maze-Trio 2026 antritt, bestätigt Soltau über den
+Sommer; Endzeit-Stimmung ist erfahrungsgemäß dabei. Ideal für den
+Familienfrieden: Alle fahren tagsüber zusammen Achterbahn, und wer alt und mutig
+genug ist, verschwindet abends im Maze, während der Rest sich an der Bratwurst
+festhält.
 
 ![Rostiger Militärtruck vor Sendetürmen und Absperrungen bei Tag | Willkommen in der Zombie-Zone. Der Empfang fällt … rustikal aus. | wide](/blog/images/halloween-parks-2026/beispiel-endzeit-truck.jpg)
 
@@ -406,8 +408,8 @@ die Ecke kommt und alle wieder einsammelt.
 
 Denn Brühl zündet seine große Saison einfach **später**: Ab **14. November
 2026** läuft **Wintertraum** bis in den Januar (24. Januar 2027) — Eisbahn,
-Winter-Shows,
-abendliche Illumination. Wer im Oktober auf Phantasialand-Grusel hofft, plant
+Winter-Shows, abendliche Illumination. Wer im Oktober auf Phantasialand-Grusel
+hofft, plant
 also um: entweder ein Nachbarpark für den Schrecken, oder ein paar Wochen Geduld
 bis zum Zuckerguss.
 
