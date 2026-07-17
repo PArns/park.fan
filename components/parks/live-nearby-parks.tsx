@@ -39,7 +39,7 @@ export function LiveNearbyParks({
   return (
     <ul className="grid [grid-auto-rows:auto_1fr_auto] gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {parks.map((park) => {
-        const live = liveByParkId?.get(park.id);
+        const live = liveByParkId?.[park.id];
         return (
           <li key={park.id} className="row-span-3 grid [grid-template-rows:subgrid]">
             <ParkCard

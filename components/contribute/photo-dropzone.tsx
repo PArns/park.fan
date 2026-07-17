@@ -41,12 +41,17 @@ export function PhotoDropzone({ images, onChange, disabled }: PhotoDropzoneProps
   const [dragActive, setDragActive] = useState(false);
   const [rejections, setRejections] = useState<Rejection[]>([]);
 
-  // Revoke every preview URL on unmount so we don't leak blob: URLs.
+  // Revoke every preview URL on unmount so we don't leak blob: URLs. Tracked via a ref:
+  // an empty-deps cleanup would close over the FIRST render's `images` (always []), so
+  // previews added later would never be revoked when the user navigates away.
+  const imagesRef = useRef(images);
+  useEffect(() => {
+    imagesRef.current = images;
+  }, [images]);
   useEffect(() => {
     return () => {
-      images.forEach((img) => URL.revokeObjectURL(img.previewUrl));
+      imagesRef.current.forEach((img) => URL.revokeObjectURL(img.previewUrl));
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on unmount
   }, []);
 
   const addFiles = useCallback(

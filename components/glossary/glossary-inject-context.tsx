@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, type ReactNode } from 'react';
+import { createContext, useContext, useMemo, type ReactNode } from 'react';
 import type { Locale } from '@/i18n/config';
 
 export interface GlossaryInjectTerm {
@@ -31,9 +31,10 @@ export function GlossaryInjectProvider({
   locale: Locale;
   segment: string;
 }) {
-  return (
-    <GlossaryInjectContext value={{ terms, locale, segment }}>{children}</GlossaryInjectContext>
-  );
+  // Memoized so a provider re-render doesn't hand every consumer a new context reference
+  // (which would re-run their glossary term parsing for unchanged inputs).
+  const value = useMemo(() => ({ terms, locale, segment }), [terms, locale, segment]);
+  return <GlossaryInjectContext value={value}>{children}</GlossaryInjectContext>;
 }
 
 export function useGlossaryInject() {

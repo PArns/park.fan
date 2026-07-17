@@ -67,11 +67,13 @@ export function BlogGallery({ images, className, heading }: BlogGalleryProps) {
               style={{ boxShadow: 'var(--pk-card-shadow)' }}
               aria-label={t('gallery.openImage', { index: i + 1, total: images.length })}
             >
+              {/* Intrinsic dimensions from the manifest reserve the box before the bytes load —
+                  with width/height 0 the masonry reflowed on every image pop-in (CLS). */}
               <Image
                 src={img.src}
                 alt={img.alt ?? ''}
-                width={0}
-                height={0}
+                width={img.width ?? 0}
+                height={img.height ?? 0}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]"
               />

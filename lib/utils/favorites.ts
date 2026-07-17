@@ -56,6 +56,12 @@ function validateStringArray(arr: unknown): string[] {
   return arr.filter((item): item is string => typeof item === 'string');
 }
 
+// Cache the parsed cookie by its raw value: one `favorites-changed` event makes EVERY mounted
+// FavoriteStar re-check its state, which used to re-parse the whole cookie once per star
+// (O(stars) JSON.parse per toggle — a real INP cost on park pages with 100+ cards). The cached
+// object is treated as immutable — mutators below clone before changing it.
+let parseCache: { raw: string; data: FavoritesData } | null = null;
+
 /**
  * Get favorites from cookies
  */
@@ -69,7 +75,12 @@ export function getFavoritesFromCookies(): FavoritesData {
   try {
     const cookieValue = getCookie(FAVORITES_COOKIE_NAME);
     if (!cookieValue) {
+      parseCache = null;
       return defaultData;
+    }
+
+    if (typeof cookieValue === 'string' && parseCache && parseCache.raw === cookieValue) {
+      return parseCache.data;
     }
 
     const parsed = typeof cookieValue === 'string' ? secureJsonParse(cookieValue) : cookieValue;
@@ -81,12 +92,16 @@ export function getFavoritesFromCookies(): FavoritesData {
 
     const safeParsed = parsed as Record<string, unknown>;
 
-    return {
+    const data: FavoritesData = {
       parks: validateStringArray(safeParsed.parks),
       attractions: validateStringArray(safeParsed.attractions),
       shows: validateStringArray(safeParsed.shows),
       restaurants: validateStringArray(safeParsed.restaurants),
     };
+    if (typeof cookieValue === 'string') {
+      parseCache = { raw: cookieValue, data };
+    }
+    return data;
   } catch (error) {
     console.error('[Favorites] Error reading favorites from cookies:', error);
     return defaultData;
@@ -136,11 +151,12 @@ export function addFavorite(type: FavoriteType, id: string): void {
     return;
   }
 
-  const favorites = getFavoritesFromCookies();
+  const current = getFavoritesFromCookies();
   const key = `${type}s` as keyof FavoritesData;
 
-  if (!favorites[key].includes(id)) {
-    favorites[key].push(id);
+  if (!current[key].includes(id)) {
+    // Clone before changing — `current` may be the shared parse cache.
+    const favorites: FavoritesData = { ...current, [key]: [...current[key], id] };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
     scheduleSyncToApi();
@@ -156,12 +172,12 @@ export function removeFavorite(type: FavoriteType, id: string): void {
     return;
   }
 
-  const favorites = getFavoritesFromCookies();
+  const current = getFavoritesFromCookies();
   const key = `${type}s` as keyof FavoritesData;
 
-  const index = favorites[key].indexOf(id);
-  if (index > -1) {
-    favorites[key].splice(index, 1);
+  if (current[key].includes(id)) {
+    // Clone before changing — `current` may be the shared parse cache.
+    const favorites: FavoritesData = { ...current, [key]: current[key].filter((f) => f !== id) };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
     scheduleSyncToApi();

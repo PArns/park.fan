@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 
 interface UseCalendarDataParams {
@@ -45,5 +45,9 @@ export function useCalendarData({
     staleTime,
     gcTime: 10 * 60_000,
     retry: 2,
+    // Month navigation changes `from`/`to` (a new query key). Keep showing the previous
+    // month while the next one loads instead of flashing the whole grid back to a skeleton;
+    // the grid dims via `isPlaceholderData` until the new month lands.
+    placeholderData: keepPreviousData,
   });
 }

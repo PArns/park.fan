@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
@@ -204,7 +204,12 @@ function BestDaysContent({
   // the server clock in via prop instead, so SSR and hydration read the SAME value.
   const [mountNowMs] = useState(() => nowMsProp ?? Date.now());
   const nowMs = nowMsProp ?? mountNowMs;
-  const analysis = analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone);
+  // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes to
+  // the page-wide fetch count), and the 90-day analysis is the expensive part.
+  const analysis = useMemo(
+    () => analyzeBestDays(calendarData.days, nowMs, calendarData.meta.timezone),
+    [calendarData.days, nowMs, calendarData.meta.timezone]
+  );
 
   const bestDaysOfWeek =
     statsByDayOfWeek && statsByDayOfWeek.length > 0

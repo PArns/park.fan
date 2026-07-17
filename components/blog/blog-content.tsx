@@ -25,6 +25,7 @@ import type { GlossaryTerm } from '@/lib/glossary/types';
 import { BlogParkLink } from './blog-park-link';
 import { BlogAttractionLink } from './blog-attraction-link';
 import { BlogInlineImage, type BlogImageAlign } from './blog-inline-image';
+import { getBlogImageDimensions } from '@/lib/blog/image-dimensions';
 import { BlogParkWidget } from './blog-park-widget';
 import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';
@@ -271,8 +272,7 @@ function segmentize(markdown: string): Segment[] {
 }
 
 export async function BlogContent({ markdown, locale }: BlogContentProps) {
-  const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } =
-    extractInlineRefs(markdown);
+  const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
   // paragraphs without making the renderer async. Dedupe is shared across
@@ -459,7 +459,18 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       const sizeRaw = (parts[3] ?? '').toLowerCase();
       const size: 'small' | 'medium' | 'large' | undefined =
         sizeRaw === 'small' || sizeRaw === 'medium' || sizeRaw === 'large' ? sizeRaw : undefined;
-      return <BlogInlineImage src={src} alt={imgAlt} caption={caption} align={align} size={size} />;
+      const dims = getBlogImageDimensions(src);
+      return (
+        <BlogInlineImage
+          src={src}
+          alt={imgAlt}
+          width={dims?.width}
+          height={dims?.height}
+          caption={caption}
+          align={align}
+          size={size}
+        />
+      );
     },
     h1: ({ children }) => (
       <h1 className="text-foreground mt-12 mb-6 text-3xl font-bold tracking-tight first:mt-0 sm:text-4xl">

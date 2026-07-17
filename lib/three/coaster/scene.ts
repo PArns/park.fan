@@ -487,7 +487,11 @@ export function createCoasterScene(
       readyFired = true;
       opts.onReady?.();
     }
-    if (!disposed && !reduced) raf = requestAnimationFrame(renderFrame);
+    // Only re-arm while playing: the loop used to keep rendering at 60 fps while paused
+    // (so the IntersectionObserver/visibility "pause" saved nothing), and each pause→play
+    // cycle stacked an ADDITIONAL RAF chain because play() re-armed without the old chain
+    // ever stopping. pause() now cancels the pending frame; play() starts exactly one.
+    if (!disposed && !reduced && playing) raf = requestAnimationFrame(renderFrame);
   }
 
   // initial placement + first render
@@ -524,7 +528,11 @@ export function createCoasterScene(
       raf = requestAnimationFrame(renderFrame);
     },
     pause() {
+      if (!playing) return;
       playing = false;
+      cancelAnimationFrame(raf);
+      // The loop no longer ticks while paused — sync the UI (play button) once.
+      opts.onTick?.(progress, playing);
     },
     toggle() {
       if (playing) this.pause();
@@ -557,6 +565,10 @@ export function createCoasterScene(
       cancelAnimationFrame(raf);
       track.dispose();
       renderer.dispose();
+      // dispose() frees GPU objects but keeps the WebGL context alive; browsers cap live
+      // contexts (~16) and drop the oldest, so element switches would leak contexts until
+      // other canvases go black. Release it explicitly.
+      renderer.forceContextLoss();
     },
   };
 }

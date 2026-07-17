@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
   useRef,
   type ReactNode,
 } from 'react';
@@ -80,19 +81,26 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     isInParkRef.current = isInPark;
   }, [isInPark]);
 
-  const requestLocation = useCallback(() => {
+  const requestLocation = useCallback((background = false) => {
     if (typeof navigator === 'undefined' || !navigator.geolocation) {
       setLoading(false);
       setError(true);
       return;
     }
 
-    setLoading(true);
-    setError(false);
+    // Background (interval) refreshes must not pulse `loading`: every context consumer
+    // (hero, nearby card, favorites, banner) re-renders on each flip, twice per tick.
+    if (!background) {
+      setLoading(true);
+      setError(false);
+    }
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setPosition({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        const { latitude: lat, longitude: lng } = pos.coords;
+        // Keep the previous object identity when the fix is unchanged, so consumers and
+        // position-keyed effects/queries don't churn on every refresh tick.
+        setPosition((prev) => (prev && prev.lat === lat && prev.lng === lng ? prev : { lat, lng }));
         setLoading(false);
         setError(false);
         setPermissionDenied(false);
@@ -166,23 +174,37 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
 
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
     const interval = setInterval(() => {
-      requestLocation();
+      requestLocation(true);
     }, refreshInterval);
 
     return () => clearInterval(interval);
   }, [position, permissionDenied, isInPark, requestLocation]);
 
-  const value: GeolocationContextValue = {
-    position,
-    loading,
-    error,
-    permissionDenied,
-    permissionGranted,
-    initialCheckDone,
-    refresh,
-    isInPark,
-    setIsInPark,
-  };
+  // Memoized so a provider re-render without an actual state change doesn't hand every
+  // consumer a new context reference (which would defeat React's context bailout).
+  const value = useMemo<GeolocationContextValue>(
+    () => ({
+      position,
+      loading,
+      error,
+      permissionDenied,
+      permissionGranted,
+      initialCheckDone,
+      refresh,
+      isInPark,
+      setIsInPark,
+    }),
+    [
+      position,
+      loading,
+      error,
+      permissionDenied,
+      permissionGranted,
+      initialCheckDone,
+      refresh,
+      isInPark,
+    ]
+  );
 
   return <GeolocationContext.Provider value={value}>{children}</GeolocationContext.Provider>;
 }

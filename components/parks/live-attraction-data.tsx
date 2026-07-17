@@ -166,12 +166,17 @@ export function LiveAttractionData({
         </Card>
       )}
 
-      {mounted && isFetching && !isError && (
-        <div className="text-muted-foreground mb-4 flex items-center gap-2 text-xs">
-          <Loader2 className="h-3 w-3 animate-spin" />
-          <span>{tCommon('updating')}</span>
-        </div>
-      )}
+      {/* Subtle loading indicator during background refetch. Wrapped in a fixed-height slot that
+          is always present, so the indicator appearing/disappearing on every 5-min poll (and on
+          the immediate refetch-on-mount) no longer shifts the live card below it (CLS). */}
+      <div className="mb-4 h-4">
+        {mounted && isFetching && !isError && (
+          <div className="text-muted-foreground flex items-center gap-2 text-xs">
+            <Loader2 className="h-3 w-3 animate-spin" />
+            <span>{tCommon('updating')}</span>
+          </div>
+        )}
+      </div>
 
       {/* Unified "live now" card: current wait + status + KI accuracy as the header, with today's
           "Wartezeiten heute" bar chart in the same box right below — the value and the chart read

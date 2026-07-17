@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { GlossaryInjectTerm } from './glossary-inject-term';
 import { useGlossaryInject } from './glossary-inject-context';
@@ -20,12 +21,18 @@ export function GlossaryInjectClient({
   noUnderline?: boolean;
 }) {
   const ctx = useGlossaryInject();
+  const terms = ctx?.terms;
 
-  if (!children || !ctx || ctx.terms.length === 0) {
+  // Memoized: matching the text against the full term/alias list is the expensive part,
+  // and it must not re-run on unrelated re-renders of the surrounding client tree.
+  const segments = useMemo(
+    () => (children && terms && terms.length > 0 ? parseGlossarySegments(children, terms) : null),
+    [children, terms]
+  );
+
+  if (!ctx || !segments) {
     return <>{children}</>;
   }
-
-  const segments = parseGlossarySegments(children, ctx.terms);
 
   if (segments.every((s) => s.type === 'text')) {
     return <>{children}</>;

@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { formatDurationShort } from '@/lib/i18n/time';
@@ -194,7 +195,11 @@ export function useTodaySchedule({
     return { dateFormatted, weeks: null, message: `${t('opensOn')} ${dateFormatted}` };
   })();
 
-  const holiday = ((): TodayScheduleResult['holiday'] => {
+  // Memoized on todaySchedule (whose identity is stable across renders thanks to React
+  // Query's structural sharing): the minute clock re-runs this hook constantly, and
+  // rebuilding this object + filtered array each time defeated consumers' memos
+  // (e.g. HeaderHolidayPanel keys a useMemo on `holiday`).
+  const holiday = useMemo((): TodayScheduleResult['holiday'] => {
     if (!todaySchedule) return null;
     const has =
       todaySchedule.isHoliday ||
@@ -209,20 +214,22 @@ export function useTodaySchedule({
     // holiday (e.g. "Summer Holidays") across several neighbouring states each contributes a region
     // to <HeaderHolidayPanel>. Still drop any that merely echo the local public holiday.
     const seenRegions = new Set<string>();
-    const influencing = (todaySchedule.influencingHolidays ?? []).filter((h: InfluencingHoliday) => {
-      if (shownNames.has(h.name.toLowerCase())) return false;
-      const key = `${h.name.toLowerCase()}|${h.source.countryCode}|${h.source.regionCode ?? ''}`;
-      if (seenRegions.has(key)) return false;
-      seenRegions.add(key);
-      return true;
-    });
+    const influencing = (todaySchedule.influencingHolidays ?? []).filter(
+      (h: InfluencingHoliday) => {
+        if (shownNames.has(h.name.toLowerCase())) return false;
+        const key = `${h.name.toLowerCase()}|${h.source.countryCode}|${h.source.regionCode ?? ''}`;
+        if (seenRegions.has(key)) return false;
+        seenRegions.add(key);
+        return true;
+      }
+    );
     return {
       publicHolidayName,
       isBridgeDay: !!todaySchedule.isBridgeDay,
       isSchoolVacation: !!todaySchedule.isSchoolVacation,
       influencing,
     };
-  })();
+  }, [todaySchedule]);
 
   return {
     livePark,

@@ -27,25 +27,35 @@ export function NowcastUpdateCountdown({
 }: NowcastUpdateCountdownProps) {
   const t = useTranslations('parks.weatherNowcast');
 
-  const [internalNow, setInternalNow] = useState(() =>
-    typeof window === 'undefined' ? 0 : Date.now()
-  );
+  // Deterministic pre-mount value on BOTH server and hydration render. The old
+  // `typeof window === 'undefined' ? 0 : Date.now()` initializer rendered an epoch-based
+  // countdown ("Update in 29738148:20") into any server-rendered nowcast, which never matched
+  // the client → hydration text mismatch → React regenerated the subtree on every load.
+  const [internalNow, setInternalNow] = useState(0);
   useEffect(() => {
     if (externalNow !== undefined) return;
+    // Deferred initial stamp (same pattern as useBrowserNow) — replaces the "--:--"
+    // placeholder right after mount without a synchronous set-state-in-effect.
+    const init = window.setTimeout(() => setInternalNow(Date.now()), 0);
     const id = window.setInterval(() => setInternalNow(Date.now()), 1_000);
-    return () => window.clearInterval(id);
+    return () => {
+      window.clearTimeout(init);
+      window.clearInterval(id);
+    };
   }, [externalNow]);
   const now = externalNow ?? internalNow;
 
   if (!nextUpdateAt) return null;
   const target = Date.parse(nextUpdateAt);
   if (Number.isNaN(target)) return null;
+  // Clock not mounted yet → render a stable "--:--" placeholder so SSR and hydration agree.
+  const pending = now === 0;
   const ms = target - now;
 
   // The backend update is overdue (its CDN cache can outlive the stated nextUpdateAt by a few
   // minutes). Rather than vanish — which looks broken — show an "updating…" hint; the hook
   // re-polls every 60s in this state and the countdown returns once fresh data arrives.
-  if (ms <= 0) {
+  if (!pending && ms <= 0) {
     return (
       <p
         className={cn('flex items-center gap-1 font-mono text-[11px] opacity-60', className)}
@@ -58,8 +68,8 @@ export function NowcastUpdateCountdown({
   }
 
   const totalSec = Math.floor(ms / 1000);
-  const mm = String(Math.floor(totalSec / 60)).padStart(2, '0');
-  const ss = String(totalSec % 60).padStart(2, '0');
+  const mm = pending ? '--' : String(Math.floor(totalSec / 60)).padStart(2, '0');
+  const ss = pending ? '--' : String(totalSec % 60).padStart(2, '0');
 
   // Below `sm` the full sentence wraps the card header — show the bare timer there.
   return (

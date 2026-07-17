@@ -1,7 +1,15 @@
 'use client';
 
 import { getCookie, setCookie } from 'cookies-next';
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 import { detectDefaultUnit, type TemperatureUnit } from '@/lib/utils/temperature';
 
 const COOKIE_NAME = 'temp_unit';
@@ -56,10 +64,10 @@ export function TemperatureUnitProvider({ children }: TemperatureUnitProviderPro
     setCookie(COOKIE_NAME, next, { maxAge: COOKIE_MAX_AGE, sameSite: 'lax', path: '/' });
   }, []);
 
+  const value = useMemo(() => ({ unit, setUnit }), [unit, setUnit]);
+
   return (
-    <TemperatureUnitContext.Provider value={{ unit, setUnit }}>
-      {children}
-    </TemperatureUnitContext.Provider>
+    <TemperatureUnitContext.Provider value={value}>{children}</TemperatureUnitContext.Provider>
   );
 }
 

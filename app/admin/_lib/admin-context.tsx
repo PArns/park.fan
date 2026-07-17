@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type ReactNode,
@@ -103,22 +104,23 @@ export function AdminProvider({
     };
   }, []);
 
-  return (
-    <AdminContext.Provider
-      value={{
-        pass,
-        refreshTick,
-        refreshing,
-        lastUpdated,
-        triggerRefresh,
-        logout: onLogout,
-        beginFetch,
-        endFetch,
-      }}
-    >
-      {children}
-    </AdminContext.Provider>
+  // Memoized so a provider re-render without a state change (e.g. parent shell state)
+  // doesn't hand every consumer a new context reference.
+  const value = useMemo<AdminContextValue>(
+    () => ({
+      pass,
+      refreshTick,
+      refreshing,
+      lastUpdated,
+      triggerRefresh,
+      logout: onLogout,
+      beginFetch,
+      endFetch,
+    }),
+    [pass, refreshTick, refreshing, lastUpdated, triggerRefresh, onLogout, beginFetch, endFetch]
   );
+
+  return <AdminContext.Provider value={value}>{children}</AdminContext.Provider>;
 }
 
 interface FetchState<T> {

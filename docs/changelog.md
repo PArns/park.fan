@@ -4,6 +4,57 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
+
+Audit of all pages for state/effect patterns that forced unnecessary re-renders, repaints or
+leaked resources — the source of intermittent visible flicker.
+
+- **Geolocation context** (`lib/contexts/geolocation-context.tsx`): background auto-refresh
+  (60 s in-park / 5 min) no longer pulses `loading` and preserves the `position` object
+  identity when coords are unchanged; context `value` memoized. Previously every tick
+  re-rendered all geo consumers (hero, nearby card, favorites, banner) 2× with a new
+  context reference even when nothing changed.
+- **Region/neighbor live overlays** (`use-region-parks`, `use-park-neighbors`): return a plain
+  `Record` instead of a `Map` — React Query structural sharing now keeps the identity stable
+  across equal polls, so hub/country/nearby card grids stop re-rendering every 5 min for
+  byte-identical data.
+- **Attraction page**: the "Updating…" refetch indicator now lives in a fixed-height slot
+  (same pattern as the park page) — it used to insert/remove a row on every mount refetch,
+  5-min poll and tab refocus, shifting the whole live card up/down (CLS).
+- **Attraction grid sparklines** (`WaitTimeSparklineCard`): one shared minute clock
+  (`lib/hooks/use-minute-now.ts`, `useSyncExternalStore`) replaces one 60 s interval PER
+  card — dozens of staggered per-card repaints per minute become a single batched update.
+- **Sparkline hover** (`components/parks/sparkline.tsx`): local `onMouseMove`/`onMouseLeave`
+  instead of a global `window` listener per instance (~31 on the attraction history grid,
+  each doing a forced layout read on every pointer move anywhere on the page).
+- **Crowd calendar**: `keepPreviousData` on month navigation — the grid dims instead of
+  flashing back to the full skeleton on every prev/next click.
+- **Weather**: nowcast banner ticks 1 s only while a banner is visible (was: every second on
+  every park page forever, even with no banner); night-scene star field is generated after
+  mount (was: SSR/client hydration mismatch that re-created the subtree).
+- **Nowcast countdown hydration error** (found via headless smoke test): the
+  `typeof window ? Date.now() : 0` state seed in `NowcastUpdateCountdown` (and the nowcast
+  banner clock) rendered an epoch-based countdown ("Update in 29738148:20") into any
+  server-rendered nowcast — guaranteed hydration text mismatch, React regenerated the whole
+  subtree on every load (visible on /howto). Now: deterministic 0 on both server and
+  hydration render with a stable "--:--" placeholder; the real clock mounts in an effect.
+- **Coaster player** (glossary): progress bar is driven imperatively via refs — `onTick`
+  no longer calls `setState` ~60×/s; `pause()` now actually stops the RAF loop (it kept
+  rendering at 60 fps while paused/off-screen, and each pause→play stacked an extra RAF
+  chain); both three.js scenes release their WebGL context on dispose
+  (`forceContextLoss()`) so remounts can't exhaust the browser's context cap.
+- **ShowCountdown**: browser-clock only via `useBrowserNow` (was: `new Date()` state seed
+  baking the server/build clock into SSR HTML → hydration mismatch on every load).
+- **Favorites**: the favorites cookie is parsed once per change event (memoized by raw
+  cookie value) instead of once per mounted star (O(stars) JSON.parse per toggle).
+- **Blog images**: the build manifest now bakes intrinsic width/height (via sharp, EXIF-aware)
+  into every gallery/inline image so the box is reserved before load — `width={0}/height={0}`
+  reflowed the article on every image pop-in.
+- Smaller: memoized context values (temperature unit, glossary inject, admin), memoized
+  glossary term parsing, memoized stats/best-days derivations, stable keys in the live wait
+  ticker, `holiday` object in `useTodaySchedule` memoized, blob-URL cleanup in the contribute
+  photo dropzone no longer closes over the first render's empty list.
+
 ## Unreleased – perf: best-days seed streams instead of blocking park-page TTFB
 
 Cold-start latency fix. The best-days SEO seed (`getBestDaysCalendarSeed`) was `await`ed on the
@@ -12,7 +63,7 @@ the park snapshot fetch, or hitting the seed timeout) was added straight to firs
 noticeable cold-start regression on `force-dynamic` park pages (no edge-cached HTML).
 
 - `page.tsx`: the seed promise is created but **no longer awaited in the body**. It's consumed only
-  inside `<Suspense>` boundaries — the FAQ JSON-LD (`FAQStructuredData` now takes the seed *promise*
+  inside `<Suspense>` boundaries — the FAQ JSON-LD (`FAQStructuredData` now takes the seed _promise_
   and awaits it itself) and a new streamed `SeededBestDays` server component for the best-days slot.
   The shell (H1, attraction overview, header, FAQ base + Q1) now flushes at **park-fetch speed** and
   the seeded best-days HTML + least-crowded JSON-LD stream into the same response — crawlers still
