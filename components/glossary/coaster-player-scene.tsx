@@ -49,11 +49,15 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const handleRef = useRef<CoasterSceneHandle | null>(null);
   const scrubbingRef = useRef(false);
+  // Progress is rendered imperatively (fill width + range value) instead of via React state:
+  // onTick fires every animation frame, and a setState there re-rendered the whole transport
+  // bar (~60×/s) for the lifetime of the player.
+  const fillRef = useRef<HTMLDivElement>(null);
+  const rangeRef = useRef<HTMLInputElement>(null);
 
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
   const [playing, setPlaying] = useState(true);
-  const [progress, setProgress] = useState(0);
   const [view, setView] = useState<CoasterView>(
     () => (getCoasterElement(element)?.defaultView as CoasterView | undefined) ?? 'front'
   );
@@ -84,8 +88,11 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
         },
         onTick: (p, pl) => {
           if (!mounted) return;
-          if (!scrubbingRef.current) setProgress(p);
-          setPlaying(pl);
+          if (!scrubbingRef.current) {
+            if (fillRef.current) fillRef.current.style.width = `${p * 100}%`;
+            if (rangeRef.current) rangeRef.current.value = String(p);
+          }
+          setPlaying(pl); // bails out while unchanged — no per-frame re-render
         },
       });
     } catch (e) {
@@ -102,6 +109,12 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
       };
     }
     handleRef.current = handle;
+
+    // A new scene starts at 0 — reset the imperatively-driven progress UI. (Matters when
+    // switching elements: the transport bar stays mounted, and under reduced motion no
+    // onTick ever fires to overwrite the previous element's position.)
+    if (fillRef.current) fillRef.current.style.width = '0%';
+    if (rangeRef.current) rangeRef.current.value = '0';
 
     const host = canvas.parentElement ?? canvas;
     const ro = new ResizeObserver(() => {
@@ -155,7 +168,8 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
   }, []);
   const onScrub = useCallback((v: number) => {
     scrubbingRef.current = true;
-    setProgress(v);
+    if (fillRef.current) fillRef.current.style.width = `${v * 100}%`;
+    if (rangeRef.current) rangeRef.current.value = String(v);
     handleRef.current?.seek(v);
   }, []);
   const endScrub = useCallback(() => {
@@ -271,18 +285,20 @@ export default function CoasterPlayerScene({ element, labels, className }: Props
             <div className="absolute inset-x-0 top-1/2 h-5 -translate-y-1/2">
               {/* groove */}
               <div className="bg-muted-foreground/20 pointer-events-none absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full" />
-              {/* progress fill */}
+              {/* progress fill — width driven imperatively from onTick/onScrub */}
               <div
+                ref={fillRef}
                 className="bg-primary pointer-events-none absolute top-1/2 left-0 h-1.5 -translate-y-1/2 rounded-full"
-                style={{ width: `${progress * 100}%` }}
+                style={{ width: '0%' }}
               />
               {/* interactive scrubber — fills the row, thumb sits on the groove */}
               <input
+                ref={rangeRef}
                 type="range"
                 min={0}
                 max={1}
                 step={0.001}
-                value={progress}
+                defaultValue={0}
                 onChange={(e) => onScrub(parseFloat(e.target.value))}
                 onPointerDown={() => {
                   scrubbingRef.current = true;

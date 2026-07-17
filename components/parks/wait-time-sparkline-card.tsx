@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useLocale } from 'next-intl';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 
 interface HistoryPoint {
   timestamp: string;
@@ -22,17 +23,10 @@ export function WaitTimeSparklineCard({
   fallbackWaitTime,
 }: WaitTimeSparklineCardProps) {
   const locale = useLocale();
-  const [nowMs, setNowMs] = useState<number | null>(null);
-
-  useEffect(() => {
-    const update = () => setNowMs(Date.now());
-    const timeout = setTimeout(update, 0);
-    const interval = setInterval(update, 60_000);
-    return () => {
-      clearTimeout(timeout);
-      clearInterval(interval);
-    };
-  }, []);
+  // Shared minute clock: one interval for ALL sparklines on the page (a big park mounts
+  // dozens), so the "extend axis to now" repaint happens once per minute in a single
+  // batched update instead of N staggered per-card timers.
+  const nowMs = useMinuteNow();
 
   const rawData = useMemo(
     () =>

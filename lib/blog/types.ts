@@ -30,6 +30,10 @@ export interface BlogImage {
   alt?: string;
   caption?: string;
   credit?: string;
+  /** Intrinsic pixel width, baked into the manifest so layouts can reserve space (CLS). */
+  width?: number;
+  /** Intrinsic pixel height, baked into the manifest so layouts can reserve space (CLS). */
+  height?: number;
 }
 
 export interface BlogParkRef {

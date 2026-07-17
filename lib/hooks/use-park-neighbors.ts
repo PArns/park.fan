@@ -15,7 +15,9 @@ export function useParkNeighbors(
   limit = 3,
   maxDistanceM = 100_000
 ) {
-  const query = useQuery<Map<string, NearbyParkItem>>({
+  // Plain object (not a Map) so React Query's structural sharing keeps the result identity
+  // stable across polls when nothing changed (a Map would re-render consumers every poll).
+  const query = useQuery<Record<string, NearbyParkItem>>({
     queryKey: ['park-neighbors', lat, lng, excludeParkId],
     queryFn: async () => {
       const url = new URL('/api/parks/near', window.location.origin);
@@ -27,8 +29,8 @@ export function useParkNeighbors(
       const res = await fetch(url.toString(), { cache: 'no-store' });
       if (!res.ok) throw new Error(`Failed to fetch nearby parks: ${res.statusText}`);
       const data = (await res.json()) as { parks?: NearbyParkItem[] };
-      const map = new Map<string, NearbyParkItem>();
-      for (const park of data.parks ?? []) map.set(park.id, park);
+      const map: Record<string, NearbyParkItem> = {};
+      for (const park of data.parks ?? []) map[park.id] = park;
       return map;
     },
     enabled: typeof window !== 'undefined',

@@ -91,6 +91,7 @@ export function ParkCalendarGrid({
   const {
     data: fetchedCalendarData,
     isLoading,
+    isPlaceholderData,
     error,
   } = useCalendarData({
     continent,
@@ -353,9 +354,12 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Calendar Grid */}
+        {/* Calendar Grid — dimmed while the previous month is shown as placeholder during a
+            month-navigation fetch (keepPreviousData), instead of flashing back to the skeleton. */}
         {!isLoading && (
-          <div className="overflow-x-auto">
+          <div
+            className={`overflow-x-auto transition-opacity ${isPlaceholderData ? 'opacity-50' : ''}`}
+          >
             <div className="inline-block min-w-full">
               {/* Weekday Headers - Desktop Only */}
               <div className="mb-2 hidden grid-cols-7 gap-2 md:grid">

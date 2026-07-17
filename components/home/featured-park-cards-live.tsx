@@ -22,7 +22,7 @@ function FeaturedLiveCard({ park }: { park: FeaturedCardStatic }) {
   // the call across cards (and with any hub-page grid already in the cache), so the featured
   // set costs a handful of small no-store requests, not one per card.
   const { liveByParkId } = useRegionParks(park.continentSlug, park.countrySlug);
-  const live = liveByParkId?.get(park.parkId);
+  const live = liveByParkId?.[park.parkId];
 
   return (
     <ParkCard

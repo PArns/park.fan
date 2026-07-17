@@ -14,6 +14,9 @@ export type BlogImageSize = 'small' | 'medium' | 'large';
 interface BlogInlineImageProps {
   src: string;
   alt?: string;
+  /** Intrinsic pixel size (from the blog manifest) so the box is reserved before load (CLS). */
+  width?: number;
+  height?: number;
   /** Caption shown below the image and in the lightbox. */
   caption?: string;
   /**
@@ -46,6 +49,8 @@ const SIZE_OVERRIDE: Record<BlogImageSize, string> = {
 export function BlogInlineImage({
   src,
   alt = '',
+  width,
+  height,
   caption,
   align = 'center',
   size,
@@ -62,11 +67,13 @@ export function BlogInlineImage({
         style={{ boxShadow: 'var(--pk-card-shadow)' }}
         aria-label={alt || t('inlineImage.openImage')}
       >
+        {/* Intrinsic dimensions (when the manifest knows them) reserve the box before the
+            bytes load — with width/height 0 the article reflowed on every image pop-in. */}
         <Image
           src={src}
           alt={alt}
-          width={0}
-          height={0}
+          width={width ?? 0}
+          height={height ?? 0}
           sizes={
             align === 'left' || align === 'right'
               ? '(max-width: 640px) 100vw, 400px'

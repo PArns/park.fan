@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState, useRef, useEffect } from 'react';
+import { useMemo, useState, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { useMounted } from '@/lib/hooks/use-mounted';
 
@@ -42,23 +42,17 @@ export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }
     return { ...base, yMin: 0, yMax: Math.max(...values, 10) };
   }, [points, yDomain]);
 
-  useEffect(() => {
-    if (points.length === 0) return;
-    const xRange = xMax - xMin || 1;
-
-    const handleMouseMove = (e: MouseEvent) => {
+  // Local hover handlers instead of a global `window` mousemove listener: the attraction
+  // history grid mounts one sparkline per day (~31), and each global listener ran
+  // getBoundingClientRect() on EVERY pointer move anywhere on the page — 31 forced layout
+  // reads per mousemove. Local handlers only fire while the cursor is over this sparkline.
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (points.length === 0) return;
       const el = containerRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
-        setActivePoint(null);
-        return;
-      }
+      const xRange = xMax - xMin || 1;
       const hoverX = xMin + ((e.clientX - rect.left) / rect.width) * xRange;
       let found = points[0];
       for (let i = 0; i < points.length; i++) {
@@ -66,11 +60,10 @@ export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }
         else break;
       }
       setActivePoint({ ...found, clientX: e.clientX, clientY: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [points, xMin, xMax]);
+    },
+    [points, xMin, xMax]
+  );
+  const handleMouseLeave = useCallback(() => setActivePoint(null), []);
 
   if (points.length === 0) return null;
 
@@ -94,7 +87,12 @@ export function Sparkline({ points, className, formatTooltip, yDomain = 'zero' }
   const tooltip = activePoint && formatTooltip ? formatTooltip(activePoint) : null;
 
   return (
-    <div ref={containerRef} className={`relative h-full w-full ${className}`}>
+    <div
+      ref={containerRef}
+      className={`relative h-full w-full ${className}`}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <svg
         width="100%"
         height="100%"

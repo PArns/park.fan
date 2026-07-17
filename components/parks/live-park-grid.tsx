@@ -39,7 +39,7 @@ export function LiveParkGrid({ continent, country, parks, className }: LiveParkG
   return (
     <div className={className}>
       {parks.map((park) => {
-        const live = liveByParkId?.get(park.id);
+        const live = liveByParkId?.[park.id];
         return (
           <ParkCard
             key={park.id}

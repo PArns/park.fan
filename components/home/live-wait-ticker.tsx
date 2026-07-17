@@ -203,7 +203,13 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
           style={{ willChange: 'transform' }}
         >
           {[...items, ...items].map((item, i) => (
-            <span key={i} className="flex shrink-0 items-center">
+            // Stable identity (copy index + slugs) instead of the bare array index: the item
+            // list refetches every 5 min, and index keys made React patch reordered entries
+            // in place (momentary wrong-content flash) instead of moving them.
+            <span
+              key={`${i < items.length ? 'a' : 'b'}-${item.parkSlug}-${item.attractionSlug}`}
+              className="flex shrink-0 items-center"
+            >
               <TickerItemLink item={item} />
               <Separator />
             </span>

@@ -2985,6 +2985,9 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
       track.dispose();
       composer.dispose();
       renderer.dispose();
+      // dispose() frees GPU objects but keeps the WebGL context alive; release it so
+      // remounts don't accumulate contexts until the browser drops the oldest one.
+      renderer.forceContextLoss();
     },
   };
 }

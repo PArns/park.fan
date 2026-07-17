@@ -212,15 +212,30 @@ export function WeatherNowcastBanner({
     enabled,
   });
 
-  // Live clock so countdowns recompute every second. Avoid reading the clock during the
-  // static prerender (Cache Components) — the real value is set on mount by the effect below.
-  const [now, setNow] = useState(() => (typeof window === 'undefined' ? 0 : Date.now()));
-  useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 1_000);
-    return () => window.clearInterval(id);
-  }, []);
+  // Live clock so countdowns recompute every second. Starts at 0 on BOTH the server and the
+  // hydration render (a `typeof window` initializer would bake epoch-based countdown text into
+  // server-rendered banners and mismatch on hydration); the effect below stamps the real time
+  // right after mount.
+  const [now, setNow] = useState(0);
 
-  const banner = useMemo(() => (data ? pickBanner(data, now) : null), [data, now]);
+  // `now > 0` keeps the banner hidden until the clock mounts, so SSR and hydration agree.
+  const banner = useMemo(() => (data && now > 0 ? pickBanner(data, now) : null), [data, now]);
+
+  // Tick per second only while a banner is actually visible (its countdown needs it).
+  // Without a banner — the common case on most park pages — a slow minute tick keeps
+  // `now` fresh enough to surface an upcoming warning, instead of re-rendering the
+  // component every second forever just to return null.
+  const hasBanner = banner !== null;
+  useEffect(() => {
+    // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
+    // set-state-in-effect; the banner appears one tick after mount when applicable.
+    const init = window.setTimeout(() => setNow(Date.now()), 0);
+    const id = window.setInterval(() => setNow(Date.now()), hasBanner ? 1_000 : 60_000);
+    return () => {
+      window.clearTimeout(init);
+      window.clearInterval(id);
+    };
+  }, [hasBanner]);
 
   if (!data || !banner) return null;
 

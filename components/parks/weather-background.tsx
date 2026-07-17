@@ -72,20 +72,28 @@ export const WeatherBackground = memo(function WeatherBackground({
   const cloudCount = CLOUD_COUNT[scene];
   const showCelestial = HAS_CELESTIAL.includes(scene);
 
-  // Stable random star field, generated once on mount. useState's lazy
-  // initializer runs Math.random() outside of the render path, satisfying
-  // React's purity rules while still giving us a per-mount layout.
-  const [stars] = useState(() =>
-    typeof window === 'undefined'
-      ? []
-      : Array.from({ length: STAR_COUNT }, () => ({
-          top: Math.random() * 58,
-          left: Math.random() * 100,
-          size: 1 + Math.random() * 1.8,
-          duration: 2.5 + Math.random() * 3,
-          delay: -Math.random() * 4,
-        }))
-  );
+  // Stable random star field, generated once after mount. Generating it in a lazy
+  // initializer made the FIRST client render differ from the SSR HTML (server: no
+  // window → empty; client: 40 star spans) — a hydration mismatch that forced React
+  // to re-create the subtree on night scenes. An effect keeps SSR and the hydration
+  // render identical (both empty); the stars appear right after mount.
+  const [stars, setStars] = useState<
+    { top: number; left: number; size: number; duration: number; delay: number }[]
+  >([]);
+  useEffect(() => {
+    if (!showCelestial) return;
+    setStars((prev) =>
+      prev.length > 0
+        ? prev
+        : Array.from({ length: STAR_COUNT }, () => ({
+            top: Math.random() * 58,
+            left: Math.random() * 100,
+            size: 1 + Math.random() * 1.8,
+            duration: 2.5 + Math.random() * 3,
+            delay: -Math.random() * 4,
+          }))
+    );
+  }, [showCelestial]);
 
   useEffect(() => {
     const canvas = canvasRef.current;

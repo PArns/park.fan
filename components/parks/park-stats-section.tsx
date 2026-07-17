@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { BarChart3 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { ParkStatsCrowdCard } from '@/components/parks/park-stats-crowd-card';
@@ -79,32 +80,39 @@ function StatsContent({
 }) {
   const t = useTranslations('parks.stats');
 
-  const monthRows = stats.byMonth.map((m) => ({
-    key: m.month,
-    label: new Intl.DateTimeFormat(locale, { month: 'long' }).format(
-      new Date(2024, m.month - 1, 1)
-    ),
-    crowdLevel: m.avgCrowdLevel,
-    p50: m.avgWaitP50,
-    p90: m.avgWaitP90,
-  }));
+  // Memoized: this section re-renders on every background poll tick (useLoadLast subscribes
+  // to the page-wide fetch count), and Intl.DateTimeFormat construction per row is the
+  // expensive part.
+  const monthRows = useMemo(() => {
+    const fmt = new Intl.DateTimeFormat(locale, { month: 'long' });
+    return stats.byMonth.map((m) => ({
+      key: m.month,
+      label: fmt.format(new Date(2024, m.month - 1, 1)),
+      crowdLevel: m.avgCrowdLevel,
+      p50: m.avgWaitP50,
+      p90: m.avgWaitP90,
+    }));
+  }, [stats.byMonth, locale]);
 
-  const refMonday = new Date(2025, 0, 6);
-  const dowRows = stats.byDayOfWeek
-    .map((d) => {
-      const offset = (d.dayOfWeek - 1 + 7) % 7;
-      const date = new Date(refMonday);
-      date.setDate(refMonday.getDate() + offset);
-      return {
-        key: d.dayOfWeek,
-        sortKey: offset,
-        label: new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date),
-        crowdLevel: d.avgCrowdLevel,
-        p50: d.avgWaitP50,
-        p90: d.avgWaitP90,
-      };
-    })
-    .sort((a, b) => a.sortKey - b.sortKey);
+  const dowRows = useMemo(() => {
+    const refMonday = new Date(2025, 0, 6);
+    const fmt = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+    return stats.byDayOfWeek
+      .map((d) => {
+        const offset = (d.dayOfWeek - 1 + 7) % 7;
+        const date = new Date(refMonday);
+        date.setDate(refMonday.getDate() + offset);
+        return {
+          key: d.dayOfWeek,
+          sortKey: offset,
+          label: fmt.format(date),
+          crowdLevel: d.avgCrowdLevel,
+          p50: d.avgWaitP50,
+          p90: d.avgWaitP90,
+        };
+      })
+      .sort((a, b) => a.sortKey - b.sortKey);
+  }, [stats.byDayOfWeek, locale]);
 
   return (
     <section aria-labelledby="stats-heading" className="mt-8 space-y-4">

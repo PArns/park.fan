@@ -1,32 +1,27 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
+import { useBrowserNow } from '@/lib/hooks/use-mounted';
 
 interface ShowCountdownProps {
   nextShowtime: string;
 }
 
 /**
- * Client component that displays a countdown to the next show
+ * Client component that displays a countdown to the next show.
+ * Uses the browser clock only (null until mounted): seeding state with `new Date()` baked the
+ * server/build clock into the SSR HTML, which almost never matched the client clock and caused
+ * a hydration mismatch (text patch or subtree re-render) on every load.
  */
 export function ShowCountdown({ nextShowtime }: ShowCountdownProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
-  const [currentTime, setCurrentTime] = useState<Date>(() => new Date());
-
-  // Update current time every minute
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 60000); // Update every minute
-
-    return () => clearInterval(timer);
-  }, []);
+  const currentTime = useBrowserNow(60_000);
 
   // Calculate time until show
   const getCountdownMessage = (): string | null => {
+    if (!currentTime) return null;
     const showStart = new Date(nextShowtime);
 
     // Only show countdown if show is in the future

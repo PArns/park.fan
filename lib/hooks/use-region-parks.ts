@@ -28,16 +28,19 @@ export interface LiveParkFields {
  * on mount (the SSR shell is status-free), 5-min poll, refetch on focus/reconnect.
  */
 export function useRegionParks(continent: string, country: string) {
-  const query = useQuery<Map<string, LiveParkFields>>({
+  // Plain object (not a Map) so React Query's structural sharing keeps the result identity
+  // stable across polls when nothing changed — a Map would get a new identity every 5-min
+  // poll and re-render every consuming card grid for no reason.
+  const query = useQuery<Record<string, LiveParkFields>>({
     queryKey: ['region-parks', continent, country],
     queryFn: async () => {
       const res = await fetch(`/api/discovery/${continent}/${country}`, { cache: 'no-store' });
       if (!res.ok) throw new Error(`Failed to fetch region parks: ${res.statusText}`);
       const data = (await res.json()) as DiscoveryCityResponse;
-      const map = new Map<string, LiveParkFields>();
+      const map: Record<string, LiveParkFields> = {};
       for (const city of data.data ?? []) {
         for (const park of city.parks ?? []) {
-          map.set(park.id, {
+          map[park.id] = {
             status: park.status,
             crowdLevel: park.analytics?.statistics?.crowdLevel ?? park.currentLoad?.crowdLevel,
             averageWaitTime: park.analytics?.statistics?.avgWaitTime,
@@ -47,7 +50,7 @@ export function useRegionParks(continent: string, country: string) {
             hasOperatingSchedule: park.hasOperatingSchedule,
             todaySchedule: park.todaySchedule,
             nextSchedule: park.nextSchedule,
-          });
+          };
         }
       }
       return map;
