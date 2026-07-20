@@ -22,7 +22,10 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
       href={href}
       className={cn(
         'group relative block overflow-hidden rounded-2xl border p-6 transition-all sm:p-8',
-        'border-primary/25 from-primary/10 via-primary/5 bg-gradient-to-br to-transparent',
+        // Semi-opaque themed base so the light text keeps its contrast in dark mode: on
+        // park/ride pages this panel floats over the (often bright) background image, and a
+        // pure primary-tinted glass washed the text out. The gradient tint layers on top.
+        'border-primary/25 bg-card/85 from-primary/10 via-primary/5 bg-gradient-to-br to-transparent',
         'hover:border-primary/50 backdrop-blur-md hover:shadow-lg',
         className
       )}
@@ -40,7 +43,7 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
           <p className="text-primary text-xs font-semibold tracking-wider uppercase">
             {t('eyebrow')}
           </p>
-          <h2 className="text-xl font-bold sm:text-2xl">{t('title')}</h2>
+          <h2 className="text-foreground text-xl font-bold sm:text-2xl">{t('title')}</h2>
           <p className="text-muted-foreground text-sm">{t('subtitle')}</p>
         </div>
         <span className="bg-primary text-primary-foreground inline-flex shrink-0 items-center gap-1.5 rounded-lg px-4 py-2.5 text-sm font-medium transition-transform group-hover:translate-x-0.5">
