@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Loader2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 
 interface NowcastUpdateCountdownProps {
   nextUpdateAt: string | null | undefined;
@@ -32,8 +33,12 @@ export function NowcastUpdateCountdown({
   // countdown ("Update in 29738148:20") into any server-rendered nowcast, which never matched
   // the client → hydration text mismatch → React regenerated the subtree on every load.
   const [internalNow, setInternalNow] = useState(0);
+  // Standalone mode (no external clock): only tick while the countdown is on
+  // screen and the tab is visible — a mm:ss readout nobody can see doesn't need
+  // a per-second re-render. The deferred initial stamp re-syncs it on return.
+  const { ref: anchorRef, active } = useActiveOnScreen();
   useEffect(() => {
-    if (externalNow !== undefined) return;
+    if (externalNow !== undefined || !active) return;
     // Deferred initial stamp (same pattern as useBrowserNow) — replaces the "--:--"
     // placeholder right after mount without a synchronous set-state-in-effect.
     const init = window.setTimeout(() => setInternalNow(Date.now()), 0);
@@ -42,7 +47,7 @@ export function NowcastUpdateCountdown({
       window.clearTimeout(init);
       window.clearInterval(id);
     };
-  }, [externalNow]);
+  }, [externalNow, active]);
   const now = externalNow ?? internalNow;
 
   if (!nextUpdateAt) return null;
@@ -58,6 +63,7 @@ export function NowcastUpdateCountdown({
   if (!pending && ms <= 0) {
     return (
       <p
+        ref={anchorRef}
         className={cn('flex items-center gap-1 font-mono text-[11px] opacity-60', className)}
         aria-live="polite"
       >
@@ -74,6 +80,7 @@ export function NowcastUpdateCountdown({
   // Below `sm` the full sentence wraps the card header — show the bare timer there.
   return (
     <p
+      ref={anchorRef}
       className={cn('font-mono text-[11px] tabular-nums opacity-60', className)}
       title={t('updateIn', { countdown: `${mm}:${ss}` })}
     >

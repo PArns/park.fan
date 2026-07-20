@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/card';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 
 interface Props {
   modelAge: { days: number; hours: number; minutes: number };
@@ -47,8 +48,13 @@ export function MLTrainingCountdown({ modelAge }: Props) {
 
   const [remaining, setRemaining] = useState<number | null>(null);
   const [localTime, setLocalTime] = useState<string | null>(null);
+  // Only tick while the card is actually watchable: it sits below the fold, so
+  // the old unconditional 1s interval re-rendered it every second for the whole
+  // visit — scrolled away and in background tabs included.
+  const { ref: cardRef, active } = useActiveOnScreen();
 
   useEffect(() => {
+    if (!active) return;
     // Capture `next` once; recompute only when it rolls over (once per day).
     // setLocalTime is called every tick but React 18 bails out when the string
     // is unchanged, so there's no extra re-render cost.
@@ -60,13 +66,15 @@ export function MLTrainingCountdown({ modelAge }: Props) {
       setLocalTime(new Date(next).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
       setRemaining(next - now);
     };
+    // The deferred first tick doubles as the "catch up immediately" stamp when
+    // the card scrolls back into view after a pause.
     const timeoutId = setTimeout(tick, 0);
     const intervalId = setInterval(tick, 1000);
     return () => {
       clearTimeout(timeoutId);
       clearInterval(intervalId);
     };
-  }, []);
+  }, [active]);
 
   const digits = remaining !== null ? splitMs(remaining) : null;
 
@@ -75,7 +83,7 @@ export function MLTrainingCountdown({ modelAge }: Props) {
     : t('ai.dailySchedule');
 
   return (
-    <Card className="col-span-2 py-0">
+    <Card ref={cardRef} className="col-span-2 py-0">
       <div className="px-4 pt-3 pb-3">
         <p className="text-muted-foreground mb-2 flex items-center gap-1.5 text-sm font-medium">
           <RefreshCw className="h-3.5 w-3.5" />

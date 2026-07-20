@@ -3,6 +3,7 @@ import { useReducer, useEffect, useRef } from 'react';
 
 import { SearchCommand } from '@/components/search/search-bar';
 import { trackHeroSearchClicked } from '@/lib/analytics/umami';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 
 interface HeroSearchInputProps {
   placeholder: string;
@@ -70,6 +71,7 @@ function typewriterReducer(state: TypewriterState, action: TypewriterAction): Ty
 
 function useTypewriter(
   phrases: string[],
+  active: boolean,
   typingSpeed = 150,
   deletingSpeed = 50,
   pauseDuration = 2000
@@ -80,6 +82,10 @@ function useTypewriter(
   useEffect(() => {
     let idleId: number | undefined;
     let delayId: ReturnType<typeof setTimeout> | undefined;
+
+    // An auto-typing placeholder is pure decoration — under reduced motion never
+    // start it (the static placeholder + CSS-blink-free fallback remains).
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     // Start 2s after the page has loaded (and the main thread is idle), so the
     // typewriter (which re-renders the placeholder every ~150ms) never competes
@@ -109,7 +115,9 @@ function useTypewriter(
   }, []);
 
   useEffect(() => {
-    if (!started) return;
+    // `!active` freezes the timer chain mid-phrase while the hero is scrolled
+    // offscreen or the tab is hidden; it resumes from the same state on return.
+    if (!started || !active) return;
 
     const phrase = phrases[phraseIndex];
     let id: NodeJS.Timeout;
@@ -143,6 +151,7 @@ function useTypewriter(
     return () => clearTimeout(id);
   }, [
     started,
+    active,
     displayText,
     phase,
     phraseIndex,
@@ -167,29 +176,37 @@ function TypewriterPlaceholder({
   fallback: string;
   textRef: React.MutableRefObject<string>;
 }) {
-  const { displayText, phase, started } = useTypewriter(PLACEHOLDERS);
+  // Anchor span for visibility tracking: the typing ticks (a setTimeout every
+  // ~50–150ms, each one a render + DOM commit) used to run for the lifetime of
+  // the page — also while the hero was scrolled far offscreen or the tab hidden.
+  const { ref: anchorRef, active } = useActiveOnScreen();
+  const { displayText, phase, started } = useTypewriter(PLACEHOLDERS, active);
 
   useEffect(() => {
     textRef.current = started ? displayText : '';
   }, [textRef, started, displayText]);
 
-  if (!started) return <>{fallback}</>;
-
   const showCursor = phase !== 'pausing_deleted';
 
   // Between phrases (text deleted, cursor hidden) show the static placeholder
   // instead of an empty field — matches the old `typedText || fallback` behavior.
-  if (!displayText && !showCursor) return <>{fallback}</>;
+  const showFallback = !started || (!displayText && !showCursor);
 
   return (
-    <>
-      {displayText}
-      {showCursor && (
-        <span aria-hidden className="animate-[typewriter-blink_1.06s_step-end_infinite]">
-          |
-        </span>
+    <span ref={anchorRef}>
+      {showFallback ? (
+        fallback
+      ) : (
+        <>
+          {displayText}
+          {showCursor && (
+            <span aria-hidden className="animate-[typewriter-blink_1.06s_step-end_infinite]">
+              |
+            </span>
+          )}
+        </>
       )}
-    </>
+    </span>
   );
 }
 

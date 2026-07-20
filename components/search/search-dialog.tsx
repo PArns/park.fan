@@ -353,18 +353,20 @@ export default function SearchDialog({
   const [isMac, setIsMac] = useState(true); // Default to Mac for SSR
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
+    // matchMedia change events fire only when the breakpoint is actually
+    // crossed — unlike a window resize listener, which ran a layout read
+    // (innerWidth) on every resize frame just to recompute the same boolean.
+    const mq = window.matchMedia('(max-width: 639px)');
+    const updateMobile = () => setIsMobile(mq.matches);
 
     const checkPlatform = () => {
       setIsMac(/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent));
     };
 
-    checkMobile();
+    updateMobile();
     checkPlatform();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    mq.addEventListener('change', updateMobile);
+    return () => mq.removeEventListener('change', updateMobile);
   }, []);
 
   // Show skeleton as soon as user types ≥3 chars (covers debounce window + fetch)

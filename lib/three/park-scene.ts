@@ -34,6 +34,12 @@ export interface ParkSceneHandle {
   resize: (width: number, height: number) => void;
   /** No-op: the park is intentionally always the bright daytime look. */
   setTheme: (theme: SceneTheme) => void;
+  /**
+   * Externally suspend/resume the render loop (e.g. from an
+   * IntersectionObserver while the hero is scrolled offscreen). Combined
+   * internally with document visibility and reduced motion.
+   */
+  setSuspended: (suspended: boolean) => void;
   dispose: () => void;
 }
 
@@ -2917,11 +2923,16 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     composer.render();
   };
 
+  // Animation time accumulates only over rendered frames (not wall clock), so
+  // a suspend/hidden gap resumes the camera flight exactly where it paused —
+  // clock.start() on resume used to reset elapsedTime and restart the lap.
+  let elapsedS = 0;
   const loop = () => {
     if (!running) return;
     frameId = requestAnimationFrame(loop);
     const delta = Math.min(clock.getDelta(), 0.05);
-    renderFrame(clock.elapsedTime, delta);
+    elapsedS += delta;
+    renderFrame(elapsedS, delta);
   };
   const start = () => {
     if (running) return;
@@ -2935,10 +2946,18 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
     frameId = 0;
   };
 
-  const onVisibility = () => {
-    if (document.hidden) stop();
-    else if (!opts.reducedMotion) start();
+  // The loop runs only while every gate is open: tab visible, not externally
+  // suspended (hero scrolled offscreen), and motion allowed. Without the
+  // suspend gate the scene kept compositing at 60fps behind the rest of the
+  // page whenever the visitor scrolled past the hero.
+  let suspended = false;
+  const updateRunning = () => {
+    if (opts.reducedMotion) return;
+    if (document.hidden || suspended) stop();
+    else start();
   };
+
+  const onVisibility = () => updateRunning();
   document.addEventListener('visibilitychange', onVisibility);
 
   // Reveal once textures + logos have loaded; re-render the static frame for
@@ -2946,7 +2965,7 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
   // component also has a safety timeout in case no load event fires.)
   manager.onLoad = () => {
     fireReady();
-    if (opts.reducedMotion) renderFrame(clock.elapsedTime, 0);
+    if (opts.reducedMotion) renderFrame(elapsedS, 0);
   };
 
   applyTheme(opts.theme);
@@ -2970,11 +2989,16 @@ export function createParkScene(canvas: HTMLCanvasElement, opts: CreateOptions):
       renderer.setSize(width, height, false);
       composer.setSize(width, height);
       bloom.setSize(width, height);
-      if (opts.reducedMotion) renderFrame(clock.elapsedTime, 0);
+      if (opts.reducedMotion) renderFrame(elapsedS, 0);
     },
     setTheme(theme) {
       applyTheme(theme);
-      if (opts.reducedMotion) renderFrame(clock.elapsedTime, 0);
+      if (opts.reducedMotion) renderFrame(elapsedS, 0);
+    },
+    setSuspended(nextSuspended) {
+      if (suspended === nextSuspended) return;
+      suspended = nextSuspended;
+      updateRunning();
     },
     dispose() {
       stop();

@@ -13,8 +13,10 @@ interface BlogTocListProps {
 /**
  * Renders the table of contents and scroll-spies the headings: the section the
  * reader is currently in is highlighted (bold). The active heading is the last
- * one whose top has scrolled past a fixed offset below the sticky header. State
- * only updates from the scroll handler, never synchronously inside the effect.
+ * one whose top has scrolled past a fixed offset below the sticky header.
+ * Heading positions are measured once (and on layout changes), so the
+ * per-scroll path is a plain scrollY comparison without layout reads; state
+ * only updates async (scroll/observer callbacks), never inside the effect body.
  */
 export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -22,34 +24,65 @@ export function BlogTocList({ entries, title, label }: BlogTocListProps) {
   useEffect(() => {
     const ids = entries.map((e) => e.id);
     const offset = 120;
-    const measure = () => {
-      let current: string | null = null;
+
+    // Cache each heading's document-space Y once instead of calling
+    // getBoundingClientRect for every heading on every scroll frame — the
+    // per-scroll path below is then a pure scrollY comparison (no layout reads).
+    let tops: { id: string; top: number }[] = [];
+    const measureTops = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      tops = [];
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (!el) continue;
-        if (el.getBoundingClientRect().top - offset <= 0) current = id;
-        else break;
+        if (el) tops.push({ id, top: el.getBoundingClientRect().top + scrollTop });
       }
-      setActiveId(current);
     };
 
-    // rAF-throttle: measure() queries layout for every heading, so cap it at
-    // one pass per frame instead of every scroll event.
+    const apply = () => {
+      const y = (window.scrollY || document.documentElement.scrollTop) + offset;
+      let current: string | null = null;
+      for (const t of tops) {
+        if (t.top <= y) current = t.id;
+        else break;
+      }
+      setActiveId(current); // bails out while the section is unchanged
+    };
+
+    // rAF-throttle: scroll can fire more than once per frame.
     let frame: number | null = null;
     const onScroll = () => {
       if (frame !== null) return;
       frame = requestAnimationFrame(() => {
         frame = null;
-        measure();
+        apply();
       });
     };
 
+    // Heading positions only move when layout changes — images/lazy content
+    // growing the body, or a viewport resize.
+    let measureFrame: number | null = null;
+    const scheduleMeasure = () => {
+      if (measureFrame !== null) return;
+      measureFrame = requestAnimationFrame(() => {
+        measureFrame = null;
+        measureTops();
+        apply();
+      });
+    };
+
+    // No sync measure/setState here: ResizeObserver always delivers an initial
+    // callback right after observe(), which runs measureTops + apply async —
+    // that also highlights the right section on anchor-link loads.
+    const resizeObserver = new ResizeObserver(scheduleMeasure);
+    resizeObserver.observe(document.body);
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('resize', scheduleMeasure, { passive: true });
     return () => {
       if (frame !== null) cancelAnimationFrame(frame);
+      if (measureFrame !== null) cancelAnimationFrame(measureFrame);
+      resizeObserver.disconnect();
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('resize', scheduleMeasure);
     };
   }, [entries]);
 

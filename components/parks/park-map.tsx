@@ -317,12 +317,31 @@ export function ParkMap({ park }: ParkMapProps) {
     };
   }, [userLocation, park.latitude, park.longitude, validAttractions, validShows, validRestaurants]);
 
-  // When in-park, poll location every 5s for responsive nearby-entity updates.
-  // Outside the park the geolocation context already refreshes at 5-min intervals.
+  // When in-park, follow the visitor via watchPosition for responsive
+  // nearby-entity updates. Unlike the old 5s getCurrentPosition poll this lets
+  // the browser drive the geolocation hardware (callbacks only on movement) —
+  // no fixed-interval wakeups, far less battery/CPU on the device actually
+  // walking around a park. Outside the park the geolocation context already
+  // refreshes at 5-min intervals.
   useEffect(() => {
     if (!isInPark || typeof navigator === 'undefined' || !navigator.geolocation) return;
-    const intervalId = setInterval(() => requestLocation(), 5000);
-    return () => clearInterval(intervalId);
+    const watchId = navigator.geolocation.watchPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        // Preserve identity while stationary so an unchanged fix doesn't
+        // re-render the map tree.
+        setUserLocation((prev) =>
+          prev && prev.lat === latitude && prev.lng === longitude
+            ? prev
+            : { lat: latitude, lng: longitude }
+        );
+      },
+      () => {
+        // Permission revoked or position unavailable — keep the last fix.
+      },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 5000 }
+    );
+    return () => navigator.geolocation.clearWatch(watchId);
   }, [isInPark]);
 
   // Fallback center (use user location if in park, otherwise park center)

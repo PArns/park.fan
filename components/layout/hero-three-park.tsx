@@ -99,10 +99,19 @@ export function HeroThreePark({
     ro.observe(host);
     handle.resize(host.clientWidth || 1280, host.clientHeight || 600);
 
+    // Suspend the render loop while the hero is scrolled out of view — without
+    // this the scene keeps rendering at 60fps behind the whole page. (The scene
+    // itself already pauses on document.hidden; this adds the scroll case.)
+    const io = new IntersectionObserver(([entry]) => {
+      handle.setSuspended(!entry.isIntersecting);
+    });
+    io.observe(host);
+
     return () => {
       mounted = false;
       clearTimeout(safety);
       ro.disconnect();
+      io.disconnect();
       handle.dispose();
       handleRef.current = null;
     };
