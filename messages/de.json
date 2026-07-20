@@ -223,6 +223,12 @@
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt & Support",
+    "preferredSource": {
+      "label": "park.fan schneller bei Google finden",
+      "aria": "park.fan schneller bei Google finden (öffnet in neuem Tab)",
+      "promptTitle": "Du magst park.fan?",
+      "promptText": "Mach uns mit einem Klick zu deiner bevorzugten Quelle bei Google – dann erscheinen park.fan-Wartezeiten und -Guides weiter oben in deinen Suchergebnissen."
+    },
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by",
     "legalLinks": "Rechtliches",

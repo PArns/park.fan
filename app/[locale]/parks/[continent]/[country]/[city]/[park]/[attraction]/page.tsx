@@ -17,6 +17,7 @@ import { ParkBackground } from '@/components/parks/park-background';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { ShareButtons } from '@/components/common/share-buttons';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
+import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';
 import { getAttractionBackgroundImage, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import {
@@ -408,6 +409,9 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                 : undefined
             }
           />
+
+          {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
+          <PreferredSourcePrompt compact className="mt-8" />
         </article>
       </PageContainer>
     </>

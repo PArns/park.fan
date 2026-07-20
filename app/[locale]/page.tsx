@@ -12,6 +12,7 @@ import nextDynamic from 'next/dynamic';
 import { HeroBackground } from '@/components/layout/hero-background';
 import { HomepageFAQStructuredData } from '@/components/seo/homepage-faq-structured-data';
 import { GlassCard } from '@/components/common/glass-card';
+import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { NearbyParksCardSkeleton } from '@/components/parks/nearby-parks-card-skeleton';
 
 const LocationBanner = nextDynamic(
@@ -359,6 +360,15 @@ export default async function HomePage({ params }: HomePageProps) {
               {tHome('about.howtoLink')}
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Soft "make park.fan your preferred Google source" prompt — end of the page,
+          once the visitor has seen what the site offers. The footer keeps the
+          persistent link; this is the higher-visibility spot. */}
+      <section className="px-4 pb-16">
+        <div className="container mx-auto">
+          <PreferredSourcePrompt />
         </div>
       </section>
     </div>

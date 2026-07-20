@@ -223,6 +223,12 @@
     "privacy": "Política de Privacidad",
     "terms": "Términos de Servicio",
     "contact": "Contacto y Soporte",
+    "preferredSource": {
+      "label": "Encuentra park.fan más rápido en Google",
+      "aria": "Encuentra park.fan más rápido en Google (se abre en una pestaña nueva)",
+      "promptTitle": "¿Te gusta park.fan?",
+      "promptText": "Márcanos como fuente preferida en Google con un clic: los tiempos de espera y las guías de park.fan aparecerán más arriba en tus resultados de búsqueda."
+    },
     "copyright": "© {year} park.fan. Todos los derechos reservados.",
     "poweredBy": "Impulsado por",
     "legalLinks": "Legal",

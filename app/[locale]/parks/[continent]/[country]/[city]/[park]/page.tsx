@@ -42,6 +42,7 @@ import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
+import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { buildContributeHref } from '@/lib/contribute/prefill';
 import { groupAttractionsByLand } from '@/lib/utils/park-utils';
 import { generateParkBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -528,6 +529,9 @@ export default async function ParkPage({ params }: ParkPageProps) {
                 : undefined
             }
           />
+
+          {/* Secondary, lighter "make park.fan a preferred Google source" prompt */}
+          <PreferredSourcePrompt compact className="mt-8" />
         </article>
       </PageContainer>
     </>

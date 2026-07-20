@@ -80,6 +80,9 @@ export const UMAMI_EVENTS = {
   GLOSSARY_CATEGORY_FILTERED: 'glossary_category_filtered',
   GLOSSARY_SEARCHED: 'glossary_searched',
 
+  // SEO / Outbound (footer "mark park.fan as a preferred source on Google" click)
+  PREFERRED_SOURCE_CLICKED: 'preferred_source_clicked',
+
   // Feedback (Userback widget — fired when the visitor opens the feedback form)
   FEEDBACK_OPENED: 'feedback_opened',
 } as const;
@@ -370,6 +373,11 @@ export function trackGlossaryCategoryFiltered(props: GlossaryCategoryFilteredPro
 
 export function trackGlossarySearched(props: GlossarySearchedProps): void {
   trackEvent(UMAMI_EVENTS.GLOSSARY_SEARCHED, props);
+}
+
+/** Footer "mark park.fan as a preferred source on Google" click (no properties). */
+export function trackPreferredSourceClicked(): void {
+  trackEvent(UMAMI_EVENTS.PREFERRED_SOURCE_CLICKED);
 }
 
 export function identifyVisitor(siteLocale: string, hasFavorites: boolean): boolean {

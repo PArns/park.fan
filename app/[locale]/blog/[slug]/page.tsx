@@ -31,6 +31,7 @@ import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
 import { GlassCard } from '@/components/common/glass-card';
+import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
 import { ParkBackground } from '@/components/parks/park-background';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
@@ -300,6 +301,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Marks the end of the readable article body — the reading-progress
                  bar fills to 100% here, before the references/related sections. */}
               <div id="blog-progress-end" aria-hidden="true" />
+
+              {/* Reader just finished the article — the most receptive moment for a
+                 soft "make park.fan your preferred Google source" ask. */}
+              <PreferredSourcePrompt className="mt-8" />
 
               {/* Prev/next as a standalone, full-width bar right under the article
                  so it doesn't get buried under the footer sections. */}
