@@ -224,8 +224,8 @@
     "terms": "Nutzungsbedingungen",
     "contact": "Kontakt & Support",
     "preferredSource": {
-      "label": "park.fan als bevorzugte Quelle bei Google",
-      "aria": "park.fan bei Google als bevorzugte Quelle hinzufügen (öffnet in neuem Tab)"
+      "label": "park.fan schneller bei Google finden",
+      "aria": "park.fan schneller bei Google finden (öffnet in neuem Tab)"
     },
     "copyright": "© {year} park.fan. Alle Rechte vorbehalten.",
     "poweredBy": "Powered by",

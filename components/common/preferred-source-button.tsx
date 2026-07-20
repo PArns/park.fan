@@ -55,7 +55,10 @@ export function PreferredSourceButton({ className }: PreferredSourceButtonProps)
       aria-label={t('preferredSource.aria')}
       onClick={() => trackPreferredSourceClicked()}
       className={cn(
-        'text-muted-foreground hover:text-foreground border-border hover:border-foreground/25 hover:bg-foreground/[0.03] inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors',
+        // Foreground-derived border + faint fill so the outlined pill stays visible in dark
+        // mode too — the default `border-border` token is white-at-10% on the dark footer and
+        // all but vanished, leaving only floating text + the coloured G.
+        'text-muted-foreground hover:text-foreground border-foreground/20 hover:border-foreground/40 bg-foreground/[0.03] hover:bg-foreground/[0.08] inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors',
         className
       )}
     >
