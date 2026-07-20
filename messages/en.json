@@ -225,7 +225,9 @@
     "contact": "Contact & Support",
     "preferredSource": {
       "label": "Find park.fan faster on Google",
-      "aria": "Find park.fan faster on Google (opens in a new tab)"
+      "aria": "Find park.fan faster on Google (opens in a new tab)",
+      "promptTitle": "Enjoying park.fan?",
+      "promptText": "Make us a preferred source on Google in one click — park.fan wait times and guides then rank higher in your search results."
     },
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by",

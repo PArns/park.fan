@@ -225,7 +225,9 @@
     "contact": "Contact & Support",
     "preferredSource": {
       "label": "park.fan sneller vinden op Google",
-      "aria": "park.fan sneller vinden op Google (opent in een nieuw tabblad)"
+      "aria": "park.fan sneller vinden op Google (opent in een nieuw tabblad)",
+      "promptTitle": "Vind je park.fan leuk?",
+      "promptText": "Maak ons met één klik een voorkeursbron op Google – dan verschijnen park.fan-wachttijden en -gidsen hoger in je zoekresultaten."
     },
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
     "poweredBy": "Aangedreven door",
