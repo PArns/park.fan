@@ -4,6 +4,7 @@ import { ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
+import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
@@ -63,6 +64,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
+            <PreferredSourceButton locale={locale} />
             <nav
               className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
               aria-label="Developer resources and tools"

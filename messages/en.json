@@ -223,6 +223,10 @@
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
     "contact": "Contact & Support",
+    "preferredSource": {
+      "label": "park.fan as a preferred source on Google",
+      "aria": "Add park.fan as a preferred source on Google (opens in a new tab)"
+    },
     "copyright": "© {year} park.fan. All rights reserved.",
     "poweredBy": "Powered by",
     "legalLinks": "Legal",

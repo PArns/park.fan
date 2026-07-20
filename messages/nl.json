@@ -223,6 +223,10 @@
     "privacy": "Privacybeleid",
     "terms": "Algemene Voorwaarden",
     "contact": "Contact & Support",
+    "preferredSource": {
+      "label": "park.fan als voorkeursbron op Google",
+      "aria": "park.fan toevoegen als voorkeursbron op Google (opent in een nieuw tabblad)"
+    },
     "copyright": "© {year} park.fan. Alle rechten voorbehouden.",
     "poweredBy": "Aangedreven door",
     "legalLinks": "Juridisch",
