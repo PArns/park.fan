@@ -116,12 +116,15 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
 
   const posXRef = useRef(0);
   const singleWidthRef = useRef(0);
+  const visibleRef = useRef(true);
+  // Lets the IntersectionObserver / hover-pause effects start/stop the rAF loop
+  // owned by the main effect below, without re-running that effect.
+  const syncRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
     pausedRef.current = paused;
+    syncRef.current?.();
   }, [paused]);
-
-  const visibleRef = useRef(true);
 
   useEffect(() => {
     const el = trackRef.current;
@@ -129,6 +132,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         visibleRef.current = entry.isIntersecting;
+        syncRef.current?.();
       },
       { threshold: 0 }
     );
@@ -139,6 +143,9 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
   useEffect(() => {
     const el = trackRef.current;
     if (!el || items.length === 0) return;
+    // A marquee is pure motion — under reduced motion leave it static (the same
+    // items remain reachable through the park/attraction pages).
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     // Measure the loop width once (and on real size changes) rather than every frame:
     // reading scrollWidth inside the rAF loop — right after the previous frame's transform
@@ -153,28 +160,46 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     // Duration scales with item count so each item spends ~6s on screen (slow, calm scroll)
     const durationS = Math.max(45, items.length * 6);
     let lastTs: number | null = null;
-    let raf: number;
+    let raf = 0;
+    let running = false;
 
     const step = (ts: number) => {
-      if (visibleRef.current) {
-        const singleWidth = singleWidthRef.current;
-        if (!pausedRef.current && lastTs !== null && singleWidth > 0) {
-          const dt = (ts - lastTs) / 1000;
-          const speed = singleWidth / durationS;
-          posXRef.current = (posXRef.current + speed * dt) % singleWidth;
-          el.style.transform = `translateX(${-posXRef.current}px)`;
-        }
-        lastTs = ts;
-      } else {
-        lastTs = null; // reset so first visible frame doesn't jump
-      }
+      if (!running) return;
       raf = requestAnimationFrame(step);
+      const singleWidth = singleWidthRef.current;
+      if (lastTs !== null && singleWidth > 0) {
+        // Cap dt so a long rAF gap (background tab, frame hitch) advances one
+        // small step instead of jumping the track by the whole gap.
+        const dt = Math.min((ts - lastTs) / 1000, 0.1);
+        const speed = singleWidth / durationS;
+        posXRef.current = (posXRef.current + speed * dt) % singleWidth;
+        el.style.transform = `translateX(${-posXRef.current}px)`;
+      }
+      lastTs = ts;
     };
 
-    raf = requestAnimationFrame(step);
+    // The loop only exists while it should animate — scrolled offscreen or
+    // hover-paused it is cancelled outright (the old version kept an idle
+    // 60fps rAF chain alive for the lifetime of the page).
+    const sync = () => {
+      const shouldRun = visibleRef.current && !pausedRef.current;
+      if (shouldRun && !running) {
+        running = true;
+        lastTs = null; // first resumed frame: dt=0, no jump
+        raf = requestAnimationFrame(step);
+      } else if (!shouldRun && running) {
+        running = false;
+        cancelAnimationFrame(raf);
+      }
+    };
+    syncRef.current = sync;
+    sync();
+
     return () => {
+      running = false;
       cancelAnimationFrame(raf);
       resizeObserver.disconnect();
+      syncRef.current = null;
     };
   }, [items]);
 

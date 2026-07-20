@@ -169,7 +169,7 @@ export function SearchCommand({
         >
           {/* Animated idle ring — hero only, not in header */}
           {size === 'lg' && (
-            <div className="border-primary/50 pointer-events-none absolute -inset-[2px] animate-[hero-search-pulse_2.5s_ease-in-out_infinite] rounded-[14px] border transition-opacity group-hover:opacity-0" />
+            <div className="border-primary/50 pointer-events-none absolute -inset-[2px] animate-[hero-search-pulse_2.5s_ease-in-out_infinite] rounded-[14px] border transition-opacity group-hover:opacity-0 motion-reduce:animate-none" />
           )}
           <Search
             className={`text-muted-foreground group-hover:text-primary absolute top-1/2 z-10 -translate-y-1/2 transition-colors ${

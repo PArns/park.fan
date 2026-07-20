@@ -4,6 +4,7 @@ import { useEffect, useId, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Clock, CloudHail, CloudLightning, Droplets, Umbrella, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Temp, Precip } from '@/components/common/unit-display';
 import { HeatWarningBadge, isHeatWarning } from './heat-warning-badge';
@@ -139,12 +140,22 @@ export function WeatherHourlyChart({
   const gradientId = useId();
   const tempLineGradientId = useId();
 
-  // Re-render every minute so the "now" marker tracks the actual time.
+  // Re-render every minute so the "now" marker tracks the actual time — but
+  // only while the chart is on screen and the tab is visible: the whole SVG
+  // (spline, gradient stops, ~24 tooltip subtrees) rebuilds per tick, which is
+  // pure waste while scrolled away. The deferred first tick re-syncs the marker
+  // immediately whenever the chart becomes watchable again.
+  const { ref: rootRef, active } = useActiveOnScreen();
   const [nowMs, setNowMs] = useState(() => Date.now());
   useEffect(() => {
+    if (!active) return;
+    const sync = setTimeout(() => setNowMs(Date.now()), 0);
     const id = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => clearInterval(id);
-  }, []);
+    return () => {
+      clearTimeout(sync);
+      clearInterval(id);
+    };
+  }, [active]);
 
   const n = points.length;
   if (n < 2) return null;
@@ -310,7 +321,7 @@ export function WeatherHourlyChart({
     });
 
   return (
-    <div className={cn('min-w-0', className)}>
+    <div ref={rootRef} className={cn('min-w-0', className)}>
       <div className="relative h-28">
         {/* Park opening hours band */}
         {openPct != null && closePct != null && (

@@ -65,5 +65,10 @@ export function useRegionParks(continent: string, country: string) {
     retry: 2,
   });
 
-  return { liveByParkId: query.data, isFetching: query.isFetching };
+  // Expose ONLY the data. React Query v5 tracks which fields consumers read;
+  // returning `query.isFetching` here subscribed every card grid to its
+  // false→true→false flip on each 5-min poll and every window refocus — a full
+  // grid re-render for identity-stable data (no consumer ever used it; the
+  // sibling use-park-neighbors already returns just the data for this reason).
+  return { liveByParkId: query.data };
 }
