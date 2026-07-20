@@ -1,5 +1,8 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
+import { trackPreferredSourceClicked } from '@/lib/analytics/umami';
 
 /**
  * Google "Preferred Sources" opt-in link. Points at Google's source-preferences
@@ -7,6 +10,9 @@ import { cn } from '@/lib/utils';
  * source (its content then surfaces more prominently in Search / Top Stories).
  * Domain-level only — no schema or verification needed; just open in a new tab.
  * See https://developers.google.com/search/docs/appearance/preferred-sources
+ *
+ * Client component so the outbound click can be tracked in Umami; the <a> itself
+ * still server-renders, so the link is present in the no-JS HTML.
  */
 const PREFERRED_SOURCE_URL = 'https://www.google.com/preferences/source?q=park.fan';
 
@@ -35,12 +41,11 @@ function GoogleGMark({ className }: { className?: string }) {
 }
 
 interface PreferredSourceButtonProps {
-  locale: string;
   className?: string;
 }
 
-export async function PreferredSourceButton({ locale, className }: PreferredSourceButtonProps) {
-  const t = await getTranslations({ locale, namespace: 'footer' });
+export function PreferredSourceButton({ className }: PreferredSourceButtonProps) {
+  const t = useTranslations('footer');
 
   return (
     <a
@@ -48,6 +53,7 @@ export async function PreferredSourceButton({ locale, className }: PreferredSour
       target="_blank"
       rel="noopener noreferrer nofollow"
       aria-label={t('preferredSource.aria')}
+      onClick={() => trackPreferredSourceClicked()}
       className={cn(
         'text-muted-foreground hover:text-foreground border-border hover:border-foreground/25 hover:bg-foreground/[0.03] inline-flex w-fit items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors',
         className

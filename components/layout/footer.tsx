@@ -64,7 +64,7 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               />
             </Link>
             <p className="text-muted-foreground text-base leading-relaxed">{t('description')}</p>
-            <PreferredSourceButton locale={locale} />
+            <PreferredSourceButton />
             <nav
               className="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm"
               aria-label="Developer resources and tools"
