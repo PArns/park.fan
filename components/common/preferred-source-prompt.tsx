@@ -4,6 +4,8 @@ import { PreferredSourceButton } from './preferred-source-button';
 
 interface PreferredSourcePromptProps {
   className?: string;
+  /** Slimmer padding + heading for a secondary spot (e.g. below the photo CTA on park/ride pages). */
+  compact?: boolean;
 }
 
 /**
@@ -18,13 +20,17 @@ interface PreferredSourcePromptProps {
  * images in dark mode; the primary sheen lives on its own layer because a
  * bg-gradient class alongside bg-card would make tailwind-merge drop one of them.
  */
-export async function PreferredSourcePrompt({ className }: PreferredSourcePromptProps) {
+export async function PreferredSourcePrompt({
+  className,
+  compact = false,
+}: PreferredSourcePromptProps) {
   const t = await getTranslations('footer.preferredSource');
 
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-2xl border p-6 backdrop-blur-md sm:p-7',
+        'relative overflow-hidden rounded-2xl border backdrop-blur-md',
+        compact ? 'p-4 sm:p-5' : 'p-6 sm:p-7',
         'border-primary/25 bg-card/85',
         className
       )}
@@ -36,7 +42,9 @@ export async function PreferredSourcePrompt({ className }: PreferredSourcePrompt
       />
       <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="min-w-0 space-y-1">
-          <h2 className="text-foreground text-lg font-bold">{t('promptTitle')}</h2>
+          <h2 className={cn('text-foreground font-bold', compact ? 'text-base' : 'text-lg')}>
+            {t('promptTitle')}
+          </h2>
           <p className="text-muted-foreground text-sm">{t('promptText')}</p>
         </div>
         <PreferredSourceButton className="shrink-0" />
