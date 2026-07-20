@@ -62,7 +62,7 @@
 | ------------------------------------------------- | --------------------------------------------- |
 | [Backend Integration](api/backend-integration.md) | Endpoints, client modules, URL conversion     |
 | [Calendar Status](api/calendar-status-closed.md)  | UNKNOWN vs CLOSED (API contract for frontend) |
-| [Backend Wishlist](api/backend-wishlist.md)        | Requested API changes (SEO & performance)     |
+| [Backend Wishlist](api/backend-wishlist.md)       | Requested API changes (SEO & performance)     |
 
 ### SEO
 

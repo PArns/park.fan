@@ -13,29 +13,29 @@ shots still come through. Nothing is shown publicly until a moderator approves i
 
 ## Pieces
 
-| Concern                                              | File                                              |
-| ---------------------------------------------------- | ------------------------------------------------- |
-| Public page (hero + gallery + rights + form)         | `app/[locale]/contribute/page.tsx`                |
-| Form orchestrator (start → upload → finalize)        | `components/contribute/contribute-form.tsx`       |
-| Drag & drop multi-upload + previews                  | `components/contribute/photo-dropzone.tsx`        |
-| Ride/park picker (cmdk + `/api/search`)              | `components/contribute/entity-picker.tsx`         |
-| Turnstile widget                                     | `components/contribute/turnstile-widget.tsx`      |
-| Rights / "what we do with your photos" notice        | `components/contribute/rights-notice.tsx`         |
-| Example gallery                                      | `components/contribute/example-gallery.tsx`       |
-| Reusable CTA banner (parks/rides link here)          | `components/contribute/contribute-banner.tsx`     |
-| Begin (Turnstile + signed ticket)                    | `app/api/contribute/start/route.ts`               |
-| Proxy one photo to the private Blob store            | `app/api/contribute/file/route.ts`                |
-| Finalize (write moderation record)                   | `app/api/contribute/finalize/route.ts`            |
-| Client-side downscale (fit the body limit)           | `components/contribute/compress.ts`               |
-| Turnstile server verify                              | `lib/contribute/turnstile.ts`                     |
-| HMAC ticket                                          | `lib/contribute/ticket.ts`                        |
-| Storage driver resolution                            | `lib/contribute/driver.ts`                        |
-| Server-side image store (Blob `put` / local FS)      | `lib/contribute/storage.ts`                       |
-| Submissions repository (list/get/update/delete)      | `lib/contribute/submissions.ts`                   |
-| Prefill helpers (park/ride → /contribute)            | `lib/contribute/prefill.ts`                       |
-| Admin moderation page                                | `app/admin/contributions/page.tsx`                |
-| Admin APIs (list / patch / delete / file preview)    | `app/api/admin/contributions/**`                  |
-| i18n                                                 | `contribute` namespace in `messages/*.json`       |
+| Concern                                           | File                                          |
+| ------------------------------------------------- | --------------------------------------------- |
+| Public page (hero + gallery + rights + form)      | `app/[locale]/contribute/page.tsx`            |
+| Form orchestrator (start → upload → finalize)     | `components/contribute/contribute-form.tsx`   |
+| Drag & drop multi-upload + previews               | `components/contribute/photo-dropzone.tsx`    |
+| Ride/park picker (cmdk + `/api/search`)           | `components/contribute/entity-picker.tsx`     |
+| Turnstile widget                                  | `components/contribute/turnstile-widget.tsx`  |
+| Rights / "what we do with your photos" notice     | `components/contribute/rights-notice.tsx`     |
+| Example gallery                                   | `components/contribute/example-gallery.tsx`   |
+| Reusable CTA banner (parks/rides link here)       | `components/contribute/contribute-banner.tsx` |
+| Begin (Turnstile + signed ticket)                 | `app/api/contribute/start/route.ts`           |
+| Proxy one photo to the private Blob store         | `app/api/contribute/file/route.ts`            |
+| Finalize (write moderation record)                | `app/api/contribute/finalize/route.ts`        |
+| Client-side downscale (fit the body limit)        | `components/contribute/compress.ts`           |
+| Turnstile server verify                           | `lib/contribute/turnstile.ts`                 |
+| HMAC ticket                                       | `lib/contribute/ticket.ts`                    |
+| Storage driver resolution                         | `lib/contribute/driver.ts`                    |
+| Server-side image store (Blob `put` / local FS)   | `lib/contribute/storage.ts`                   |
+| Submissions repository (list/get/update/delete)   | `lib/contribute/submissions.ts`               |
+| Prefill helpers (park/ride → /contribute)         | `lib/contribute/prefill.ts`                   |
+| Admin moderation page                             | `app/admin/contributions/page.tsx`            |
+| Admin APIs (list / patch / delete / file preview) | `app/api/admin/contributions/**`              |
+| i18n                                              | `contribute` namespace in `messages/*.json`   |
 
 ## Upload flow (server proxy)
 

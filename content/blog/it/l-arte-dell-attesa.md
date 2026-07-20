@@ -22,7 +22,7 @@ category: behind-the-scenes
 coverImage:
   src: /blog/images/kunst-des-wartens-cover.jpg
   alt: "L'Albero della Vita nell'Animal Kingdom di Disney, davanti le folle di visitatori del parco"
-  caption: "Animal Kingdom di Disney: decine di migliaia di ospiti, un Albero della Vita — e ovunque la domanda di quanto si stia in coda, e per cosa."
+  caption: 'Animal Kingdom di Disney: decine di migliaia di ospiti, un Albero della Vita — e ovunque la domanda di quanto si stia in coda, e per cosa.'
   credit: 'Patrick Arns'
 seo:
   title: 'Psicologia dei tempi di attesa nei parchi'

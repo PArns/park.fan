@@ -192,15 +192,43 @@ const nextConfig: NextConfig = {
     // under their old slugs. :city stays a param so old AND new city slugs both
     // match (rule 6 may fix the city in a separate hop); :rest* carries attractions.
     const renamedParks: Array<[string, string, string]> = [
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-arlington', 'hurricane-harbor-arlington'],
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-concord', 'hurricane-harbor-concord'],
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-new-jersey', 'hurricane-harbor-new-jersey'],
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-oaxtepec', 'hurricane-harbor-oaxtepec'],
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-phoenix', 'hurricane-harbor-phoenix'],
-      ['north-america/:country/:city', 'six-flags-hurricane-harbor-splashtown', 'hurricane-harbor-splashtown'],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-arlington',
+        'hurricane-harbor-arlington',
+      ],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-concord',
+        'hurricane-harbor-concord',
+      ],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-new-jersey',
+        'hurricane-harbor-new-jersey',
+      ],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-oaxtepec',
+        'hurricane-harbor-oaxtepec',
+      ],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-phoenix',
+        'hurricane-harbor-phoenix',
+      ],
+      [
+        'north-america/:country/:city',
+        'six-flags-hurricane-harbor-splashtown',
+        'hurricane-harbor-splashtown',
+      ],
       ['north-america/:country/:city', 'universals-epic-universe', 'universal-epic-universe'],
       ['north-america/:country/:city', 'universals-volcano-bay', 'universal-volcano-bay'],
-      ['north-america/:country/:city', 'disneys-animal-kingdom-theme-park', 'disney-animal-kingdom'],
+      [
+        'north-america/:country/:city',
+        'disneys-animal-kingdom-theme-park',
+        'disney-animal-kingdom',
+      ],
       ['north-america/:country/:city', 'adventure-island', 'adventure-island-tampa'],
       ['europe/:country/:city', 'toverland', 'attractiepark-toverland'],
       ['asia/:country/:city', 'lotte-world', 'lotte-world-adventure'],

@@ -96,16 +96,7 @@ const severityKey = (severity?: string | null): SeverityKey => {
 };
 
 type EventIconKey =
-  | 'heat'
-  | 'thunder'
-  | 'hail'
-  | 'wind'
-  | 'ice'
-  | 'snow'
-  | 'fog'
-  | 'flood'
-  | 'rain'
-  | 'default';
+  'heat' | 'thunder' | 'hail' | 'wind' | 'ice' | 'snow' | 'fog' | 'flood' | 'rain' | 'default';
 
 /** Static icon references (property-access lookup keeps them stable per render). */
 const EVENT_ICONS: Record<EventIconKey, LucideIcon> = {

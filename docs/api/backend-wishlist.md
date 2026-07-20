@@ -53,7 +53,7 @@ GET /v1/parks/{continent}/{country}/{city}/{parkSlug}/best-days
     "hasOperatingSchedule": true,
     "computedAt": "2026-07-14T03:10:00Z", // when the forecast batch produced this
     "windowFrom": "2026-07-14",
-    "windowTo": "2026-10-12"
+    "windowTo": "2026-10-12",
   },
   "days": [
     {
@@ -63,12 +63,12 @@ GET /v1/parks/{continent}/{country}/{city}/{parkSlug}/best-days
       "predictedCrowdLevel": "low", // optional: absent when unratable
       "isHoliday": false,
       "isSchoolVacation": true,
-      "isBridgeDay": false
-    }
+      "isBridgeDay": false,
+    },
   ],
   // OPTIONAL nice-to-have: lets the frontend render the stats-quality weekday
   // ranking without the (also slow) /stats aggregate:
-  "byDayOfWeek": [{ "dayOfWeek": 1, "avgCrowdScore": 2.1, "sampleDays": 98 }]
+  "byDayOfWeek": [{ "dayOfWeek": 1, "avgCrowdScore": 2.1, "sampleDays": 98 }],
 }
 ```
 

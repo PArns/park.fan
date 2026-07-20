@@ -217,8 +217,7 @@ Bemerkenswert auch die Kapazitäts-Seite: Cosmic Rewind eröffnete im Mai
 Tage in Folge** ausschließlich per virtueller Warteschlange über die
 App. Zweieinhalb Jahre lang war die berühmteste Schlange EPCOTs eine,
 in der nie jemand stand — eine Warteschlange, die ihren eigenen Namen
-nicht verdient hatte; eine dauerhafte Standby-Queue kam erst Anfang
-2025. Die physische Schlange existierte quasi nur noch als
+nicht verdient hatte; eine dauerhafte Standby-Queue kam erst Anfang 2025. Die physische Schlange existierte quasi nur noch als
 Story-Strecke, nicht als Stauraum — und das bei einer Bahn, die mit
 Zügen für 20 Personen um die 2.000 Gäste pro Stunde wegschafft.
 

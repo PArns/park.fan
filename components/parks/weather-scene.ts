@@ -11,13 +11,7 @@
 
 /** High-level scene that determines which animated background is shown. */
 export type WeatherScene =
-  | 'clear'
-  | 'partly-cloudy'
-  | 'cloudy'
-  | 'fog'
-  | 'rain'
-  | 'snow'
-  | 'thunderstorm';
+  'clear' | 'partly-cloudy' | 'cloudy' | 'fog' | 'rain' | 'snow' | 'thunderstorm';
 
 /** Particle system to run on the canvas, or `null` for no precipitation. */
 export type Precipitation = 'rain' | 'snow' | null;

@@ -18,15 +18,15 @@ By using `cache: 'no-store'`, Next.js respects the API's `Cache-Control` headers
 
 Next.js ISR controls revalidation per route:
 
-| Route      | Render     | revalidate  | API Cache | Strategy                                                                  |
-| ---------- | ---------- | ----------- | --------- | ------------------------------------------------------------------------- |
-| Homepage   | Static ISR | 3600 (1h)   | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ         |
-| Continent  | Static ISR | 86400 (1d)  | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`         |
-| Country    | Static ISR | 86400 (1d)  | 300s      | Prerendered status-free; live park stats via React Query                  |
-| City       | Static ISR | 86400 (1d)  | 300s      | Prerendered status-free; live park stats via React Query                  |
-| Park       | Dynamic    | —           | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ    |
-| Attraction | Dynamic    | —           | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route  |
-| Search     | Dynamic    | —           | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                 |
+| Route      | Render     | revalidate | API Cache | Strategy                                                                 |
+| ---------- | ---------- | ---------- | --------- | ------------------------------------------------------------------------ |
+| Homepage   | Static ISR | 3600 (1h)  | 120s      | Prerendered HTML; live counts/statuses overlay client-side via RQ        |
+| Continent  | Static ISR | 86400 (1d) | 120s      | Geo structure (rarely changes); live counts via `useGeoLiveStats`        |
+| Country    | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
+| City       | Static ISR | 86400 (1d) | 300s      | Prerendered status-free; live park stats via React Query                 |
+| Park       | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); data-cache snapshot + live via RQ   |
+| Attraction | Dynamic    | —          | 300s      | `force-dynamic` (zero shell writes); detail client-loaded via /api route |
+| Search     | Dynamic    | —          | 60s       | `force-dynamic`; uses `cache: 'no-store'`                                |
 
 > **Temperature unit & static park pages:** weather/calendar values are server-rendered
 > in BOTH °C and °F and toggled purely by CSS (`.u-metric` / `.u-imperial`, driven by
@@ -238,18 +238,18 @@ In `next.config.ts`:
 
 **Most live data endpoints now use `cache: 'no-store'`** to respect API cache headers:
 
-| Endpoint                   | Frontend Strategy    | API Cache | Reason                         |
-| -------------------------- | -------------------- | --------- | ------------------------------ |
-| `/v1/search`               | `cache: 'no-store'`  | 60s       | Always fresh search results    |
-| `/v1/analytics/*`          | `cache: 'no-store'`  | 120s      | Real-time statistics           |
-| `/v1/parks/*` (detail)     | `revalidate: 3600s`  | 300s      | Shell seed; live via RQ        |
-| `/v1/parks/*/attractions`  | `revalidate: 21600s` | 300s      | Shell seed; live via RQ        |
-| `/v1/discovery/geo`        | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
-| `/v1/discovery/continents` | `revalidate: 3600s`  | 120s      | Geo structure (rarely changes) |
-| Calendar (grid)            | `cache: 'no-store'`  | 300-3600s | Grid tab hours+weather; live via RQ |
-| Best-days (`/best-days`)   | `revalidate: 259200s`| 3600s     | Precomputed snapshot; `best-days:<slug>` tag revalidated by backend warmup |
-| Weather                    | `revalidate: 3600s`  | 3600s     | Forecast data (changes hourly) |
-| Predictions                | `revalidate: 86400s` | 86400s    | ML predictions (changes daily) |
+| Endpoint                   | Frontend Strategy     | API Cache | Reason                                                                     |
+| -------------------------- | --------------------- | --------- | -------------------------------------------------------------------------- |
+| `/v1/search`               | `cache: 'no-store'`   | 60s       | Always fresh search results                                                |
+| `/v1/analytics/*`          | `cache: 'no-store'`   | 120s      | Real-time statistics                                                       |
+| `/v1/parks/*` (detail)     | `revalidate: 3600s`   | 300s      | Shell seed; live via RQ                                                    |
+| `/v1/parks/*/attractions`  | `revalidate: 21600s`  | 300s      | Shell seed; live via RQ                                                    |
+| `/v1/discovery/geo`        | `revalidate: 3600s`   | 120s      | Geo structure (rarely changes)                                             |
+| `/v1/discovery/continents` | `revalidate: 3600s`   | 120s      | Geo structure (rarely changes)                                             |
+| Calendar (grid)            | `cache: 'no-store'`   | 300-3600s | Grid tab hours+weather; live via RQ                                        |
+| Best-days (`/best-days`)   | `revalidate: 259200s` | 3600s     | Precomputed snapshot; `best-days:<slug>` tag revalidated by backend warmup |
+| Weather                    | `revalidate: 3600s`   | 3600s     | Forecast data (changes hourly)                                             |
+| Predictions                | `revalidate: 86400s`  | 86400s    | ML predictions (changes daily)                                             |
 
 **Why `cache: 'no-store'` for live data?**
 

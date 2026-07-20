@@ -15,37 +15,15 @@ export interface BestVisitSlot {
 // days of headliner data → API sends typicalDayPeak=NULL). Rendered as a neutral
 // "no forecast" badge, never as a real crowd tier.
 export type CrowdLevel =
-  | 'very_low'
-  | 'low'
-  | 'moderate'
-  | 'high'
-  | 'very_high'
-  | 'extreme'
-  | 'unknown';
+  'very_low' | 'low' | 'moderate' | 'high' | 'very_high' | 'extreme' | 'unknown';
 export type AccuracyBadge = 'excellent' | 'good' | 'fair' | 'poor' | 'insufficient_data';
 export type Recommendation =
-  | 'highly_recommended'
-  | 'recommended'
-  | 'neutral'
-  | 'avoid'
-  | 'strongly_avoid'
-  | 'closed';
+  'highly_recommended' | 'recommended' | 'neutral' | 'avoid' | 'strongly_avoid' | 'closed';
 export type ScheduleType = 'OPERATING' | 'CLOSED' | 'UNKNOWN';
 export type TrendDirection =
-  | 'up'
-  | 'stable'
-  | 'down'
-  | 'increasing'
-  | 'decreasing'
-  | 'rising'
-  | 'falling';
+  'up' | 'stable' | 'down' | 'increasing' | 'decreasing' | 'rising' | 'falling';
 export type ComparisonStatus =
-  | 'much_lower'
-  | 'lower'
-  | 'typical'
-  | 'higher'
-  | 'much_higher'
-  | 'closed';
+  'much_lower' | 'lower' | 'typical' | 'higher' | 'much_higher' | 'closed';
 export type HolidayType = 'public' | 'observance' | 'school' | 'bank';
 
 // ============================================================================
