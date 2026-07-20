@@ -940,6 +940,40 @@ export interface InfluencingHoliday {
   holidayType: string;
 }
 
+/** A single headliner ride's expected wait for a calendar day. */
+export interface HeadlinerWaitForecast {
+  attractionId: string;
+  name: string;
+  /** Expected (predicted) standby wait for this day, in minutes. */
+  waitTime: number;
+}
+
+/** Expected headliner waits for a calendar day — grounds the abstract crowd
+ *  level in concrete numbers. Present on days with ML predictions (today +
+ *  future), absent on completed/closed days. */
+export interface HeadlinerForecast {
+  /** Average wait across the park's headliners (minutes, rounded to 5). */
+  avgWait: number;
+  /** Top headliner rides for this day, sorted by wait desc (minutes, rounded to 5). */
+  rides: HeadlinerWaitForecast[];
+  /** true = actual recorded averages for a PAST day; false/absent = forecast. */
+  actual?: boolean;
+}
+
+/** A holiday in a NEIGHBOURING region (top influencing regions only) whose
+ *  day-trippers raise local crowds. Distinct from the local holiday flags. */
+export interface NeighborHoliday {
+  name: string;
+  source: {
+    countryCode: string;
+    regionCode?: string | null;
+  };
+  /** 'public' | 'school' | 'bank'. */
+  holidayType: string;
+  /** Influence rank: 1 = nearest/most important region (strongest crowd impact). */
+  priority: number;
+}
+
 // ============================================================================
 // Discovery API Types
 // ============================================================================
@@ -1171,7 +1205,18 @@ export interface WeatherSummary {
   icon: number;
   tempMin: number;
   tempMax: number;
+  /** Total precipitation for the day in mm (legacy name — NOT a percentage). */
   rainChance: number;
+  /** Total precipitation for the day, in mm. */
+  precipitationMm?: number;
+  /** Total snowfall for the day, in cm. */
+  snowMm?: number;
+  /** Maximum wind speed for the day, in km/h. */
+  windMax?: number;
+  /** Relative humidity (%), when available (today). */
+  humidity?: number;
+  /** Apparent ("feels like") temperature, when available (today). */
+  apparentTemp?: number;
 }
 
 export interface CalendarEventItem {
@@ -1222,6 +1267,12 @@ export interface CalendarDay {
   isPublicHoliday?: boolean;
   isSchoolHoliday?: boolean;
   influencingHolidays?: InfluencingHoliday[];
+  /** Expected headliner waits (avg + top rides) — decodes the crowd level into
+   *  concrete "what to expect at THIS park" numbers. Today + future days only. */
+  headlinerForecast?: HeadlinerForecast;
+  /** Priority-ranked holidays in neighbouring regions (top influencing regions
+   *  only) that raise local crowds. Shown as a distinct calendar-cell marker. */
+  neighborHolidays?: NeighborHoliday[];
   hourly?: HourlyPrediction[];
   refurbishments?: string[];
   ticket?: TicketInfo;

@@ -2,7 +2,7 @@ import { formatInTimeZone } from 'date-fns-tz';
 import { getIntegratedCalendar } from '@/lib/api/integrated-calendar';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
-import { Clock, Sun, Star, Backpack, PartyPopper, Calendar } from 'lucide-react';
+import { Clock, Sun, Star, Backpack, PartyPopper, Calendar, Luggage } from 'lucide-react';
 import { MockCalendar, type MockLocale, CROWD_LABELS, CROWD_COLORS } from './_mock-components';
 import { getServerNowMs } from '@/lib/utils/server-time';
 import { Suspense } from 'react';
@@ -74,6 +74,18 @@ async function LiveCalendarExampleInner({ locale }: { locale: MockLocale }) {
               ? 'Aanbevolen'
               : 'Recommended';
   const avgLabel = locale === 'de' ? 'Ø' : 'avg';
+  const detailHint =
+    locale === 'de'
+      ? 'Im Park-Kalender: Tipp auf einen Tag für Wetter, erwartete Wartezeiten & Ferien in Nachbarregionen.'
+      : locale === 'es'
+        ? 'En el calendario del parque: toca un día para ver el tiempo, las esperas previstas y las vacaciones de regiones vecinas.'
+        : locale === 'fr'
+          ? 'Dans le calendrier du parc : touchez un jour pour la météo, les attentes prévues et les vacances des régions voisines.'
+          : locale === 'it'
+            ? 'Nel calendario del parco: tocca un giorno per meteo, attese previste e vacanze delle regioni vicine.'
+            : locale === 'nl'
+              ? 'In de parkkalender: tik op een dag voor weer, verwachte wachttijden en vakanties in buurregio’s.'
+              : 'In the park calendar: tap a day for weather, expected waits & neighbouring-region holidays.';
 
   const renderDay = (day: CalendarDay, _i: number) => {
     const d = new Date(day.date + 'T12:00:00');
@@ -105,6 +117,8 @@ async function LiveCalendarExampleInner({ locale }: { locale: MockLocale }) {
       ) : day.isBridgeDay ? (
         <Calendar className="h-3.5 w-3.5 shrink-0 text-blue-500" />
       ) : null;
+    // Neighbouring-region holidays → amber marker, mirrors the real calendar.
+    const hasNeighbor = (day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED';
 
     return (
       <Card
@@ -124,7 +138,10 @@ async function LiveCalendarExampleInner({ locale }: { locale: MockLocale }) {
             <span className="text-muted-foreground text-xs leading-tight font-medium">{wd}</span>
             <span className="mt-0.5 text-xs leading-tight font-semibold">{dateStr}</span>
           </div>
-          {scheduleIcon}
+          <div className="flex items-center gap-1">
+            {hasNeighbor && <Luggage className="h-3.5 w-3.5 shrink-0 text-amber-500" />}
+            {scheduleIcon}
+          </div>
         </div>
         <div
           className={`w-full rounded px-0.5 py-0.5 text-center text-[9px] leading-tight font-bold tracking-wide text-white uppercase ${crowdColor}`}
@@ -165,6 +182,10 @@ async function LiveCalendarExampleInner({ locale }: { locale: MockLocale }) {
       <p className="text-muted-foreground text-center text-[11px]">
         Phantasialand ·{' '}
         {locale === 'de' ? 'Live-Daten der nächsten 7 Tage' : 'Live data – next 7 days'}
+      </p>
+      <p className="text-muted-foreground/80 flex items-center justify-center gap-1 text-center text-[11px]">
+        <Luggage className="h-3 w-3 shrink-0 text-amber-500" />
+        {detailHint}
       </p>
     </div>
   );

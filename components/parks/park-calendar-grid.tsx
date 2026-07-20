@@ -21,6 +21,7 @@ import {
   Backpack,
   Calendar,
   Info,
+  Luggage,
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -29,6 +30,7 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { ParkCalendarDay } from './park-calendar-day';
+import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
 interface ParkCalendarGridProps {
   park: ParkWithAttractions;
@@ -66,6 +68,9 @@ export function ParkCalendarGrid({
     }[locale as 'de' | 'en' | 'es' | 'fr' | 'it' | 'nl'] || enUS;
 
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  // Selected day for the click-to-open detail panel (weather / forecast /
+  // predictions). Touch-friendly replacement for the old hover-only tooltips.
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
 
   // The calendar has two structurally different layouts (a reversed 2-col list on mobile, a 7-col
   // week grid on desktop). They used to BOTH live in the DOM toggled by `md:hidden` / `hidden
@@ -305,23 +310,42 @@ export function ParkCalendarGrid({
           </div>
         )}
 
-        {/* Legend */}
+        {/* Legend — each chip carries a native `title` hint explaining what it means. */}
         <div className="flex flex-wrap items-center gap-2 text-sm">
-          <div className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20">
+          <div
+            title={t('legendHints.closed')}
+            className="flex items-center gap-1.5 rounded-md border border-red-500 bg-red-50/50 px-2 py-1 dark:bg-red-950/20"
+          >
             <Ban className="h-3.5 w-3.5 text-red-500 dark:text-red-400" />
             <span className="text-xs">{tAttractions('historyLegend.closed')}</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+          <div
+            title={t('legendHints.holiday')}
+            className="flex items-center gap-1.5 rounded-md border border-orange-500 bg-white px-2 py-1 dark:bg-gray-900/50"
+          >
             <PartyPopper className="h-3.5 w-3.5 text-orange-500 dark:text-orange-400" />
             <span className="text-xs">{tAttractions('historyLegend.holiday')}</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+          <div
+            title={t('legendHints.schoolVacation')}
+            className="flex items-center gap-1.5 rounded-md border border-yellow-500 bg-white px-2 py-1 dark:bg-gray-900/50"
+          >
             <Backpack className="h-3.5 w-3.5 text-yellow-500 dark:text-yellow-400" />
             <span className="text-xs">{tAttractions('historyLegend.schoolVacation')}</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50">
+          <div
+            title={t('legendHints.bridgeDay')}
+            className="flex items-center gap-1.5 rounded-md border border-blue-500 bg-white px-2 py-1 dark:bg-gray-900/50"
+          >
             <Calendar className="h-3.5 w-3.5 text-blue-500 dark:text-blue-400" />
             <span className="text-xs">{tAttractions('historyLegend.bridgeDay')}</span>
+          </div>
+          <div
+            title={t('legendHints.neighbor')}
+            className="flex items-center gap-1.5 rounded-md border border-amber-500 bg-white px-2 py-1 dark:bg-gray-900/50"
+          >
+            <Luggage className="h-3.5 w-3.5 text-amber-500 dark:text-amber-400" />
+            <span className="text-xs">{t('influencingHolidays')}</span>
           </div>
         </div>
 
@@ -390,6 +414,7 @@ export function ParkCalendarGrid({
                         day={dayData}
                         isToday={isToday}
                         isBest={bestDayDates.has(dateStr)}
+                        onSelect={() => setSelectedDate(dateStr)}
                       />
                     );
                   })}
@@ -423,6 +448,7 @@ export function ParkCalendarGrid({
                             day={dayData}
                             isToday={isToday}
                             isBest={bestDayDates.has(dateStr)}
+                            onSelect={() => setSelectedDate(dateStr)}
                           />
                         );
                       })}
@@ -433,6 +459,16 @@ export function ParkCalendarGrid({
           </div>
         )}
       </div>
+
+      {/* Click-to-open day detail (weather + forecast + predictions) — works on
+          touch and desktop, unlike the calendar's former hover-only tooltips. */}
+      <ParkCalendarDayDetail
+        day={selectedDate ? (calendarMap.get(selectedDate) ?? null) : null}
+        open={selectedDate !== null}
+        onOpenChange={(o) => {
+          if (!o) setSelectedDate(null);
+        }}
+      />
     </Card>
   );
 }

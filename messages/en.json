@@ -495,7 +495,8 @@
         "heavyRain": "Severe weather: heavy rain",
         "heavySnow": "Severe weather: heavy snowfall",
         "storm": "Severe weather: storm"
-      }
+      },
+      "humidityLabel": "Humidity"
     },
     "weatherNowcast": {
       "updateIn": "Update in {countdown}",
@@ -583,6 +584,28 @@
       "less": "Less",
       "instruction": "Advice",
       "source": "Source: {name}"
+    },
+    "headlinerForecastTitle": "Expected waits (highlights)",
+    "crowdMeaning": {
+      "very_low": "Barely any crowds – short waits, ideal for a relaxed visit.",
+      "low": "Quiet day – waits below average.",
+      "moderate": "A typical day – normal waits for this park.",
+      "high": "Busier than usual – expect noticeably longer waits.",
+      "very_high": "Very busy – significantly longer waits. Arriving early pays off.",
+      "extreme": "Extremely busy – very long waits. Arrive early or consider Fast Lane."
+    },
+    "dayDetail": {
+      "forecastLabel": "Forecast",
+      "hourlyTitle": "Hour-by-hour forecast",
+      "holidaysTitle": "Holidays & school breaks",
+      "actualWaitsTitle": "Average waits"
+    },
+    "legendHints": {
+      "closed": "Park closed on this day",
+      "holiday": "Public holiday – usually much busier",
+      "schoolVacation": "School holidays in the park's own region",
+      "bridgeDay": "Bridge day between a holiday and the weekend",
+      "neighbor": "Holidays in neighbouring regions – more day-trippers, longer waits"
     }
   },
   "attractions": {

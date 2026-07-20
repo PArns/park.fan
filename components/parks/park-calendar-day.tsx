@@ -10,37 +10,29 @@ import {
   Clock,
   HelpCircle,
   Info,
+  Luggage,
+  Star,
 } from 'lucide-react';
 import type { CalendarDay } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
-import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { useTranslations, useLocale } from 'next-intl';
 import { Temp } from '@/components/common/unit-display';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
-import {
-  getWeatherIconFromCode,
-  getEventIcon,
-  getWeatherTranslationKey,
-} from '@/lib/utils/calendar-utils';
+import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 
 export interface ParkCalendarDayProps {
   day: CalendarDay;
   isToday: boolean;
   isBest?: boolean;
+  /** Opens the day-detail panel. When set, the whole card becomes a button —
+   *  the touch-friendly way to reach the weather / forecast / prediction detail
+   *  (the calendar's hover tooltips never opened on mobile). */
+  onSelect?: () => void;
 }
 
-// Map crowd level to specific styling for the badge component usage
-// (This was duplicating logic from CrowdLevelBadge, now we delegate to it)
-// But wait, the calendar day used specific border/bg styles for the badge container?
-// No, it used `getCrowdLevelStyle` which returned tailwind classes.
-// The `CrowdLevelBadge` has its own styles.
-// Let's check if we want to replacing the DIV with the Component.
-
-import { Star } from 'lucide-react';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-
-function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps) {
+function ParkCalendarDayComponent({ day, isToday, isBest, onSelect }: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -61,52 +53,37 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
   const dayOfMonth = format(dayDate, 'd', { locale: dateLocale });
   const month = format(dayDate, 'MMM', { locale: dateLocale });
 
-  // Get schedule icon and tooltip text
+  // Get schedule icon + label. Native `title` gives a lightweight desktop hover
+  // hint; the full explanation lives in the click-to-open detail panel (mobile).
   // Priority: CLOSED / UNKNOWN (by status) > Public Holiday > School Vacation > Bridge Day
-  // UNKNOWN = no schedule data yet (e.g. month not published); CLOSED = park confirmed closed.
   const getScheduleIcon = () => {
     if (day.status === 'CLOSED') {
-      return {
-        Icon: Ban,
-        color: 'text-red-500 dark:text-red-400',
-        tooltip: tCommon('closed'),
-      };
+      return { Icon: Ban, color: 'text-red-500 dark:text-red-400', label: tCommon('closed') };
     }
     if (day.status === 'UNKNOWN') {
       return {
         Icon: HelpCircle,
         color: 'text-gray-500 dark:text-gray-400',
-        tooltip: t('calendarView.details.schedule.scheduleNotYetAvailable'),
+        label: t('calendarView.details.schedule.scheduleNotYetAvailable'),
       };
     }
-
-    // Priority 2: Public Holiday
-    // Check both isHoliday (from API) and isPublicHoliday (optional field)
     if (day.isHoliday || day.isPublicHoliday) {
       const holiday = day.events?.find((e) => e.type === 'holiday');
       return {
         Icon: PartyPopper,
         color: 'text-orange-500 dark:text-orange-400',
-        tooltip: holiday?.name || t('holiday'),
+        label: holiday?.name || t('holiday'),
       };
     }
-
-    // Priority 3: School Vacation
     if (day.isSchoolHoliday || day.isSchoolVacation) {
       return {
         Icon: Backpack,
         color: 'text-yellow-500 dark:text-yellow-400',
-        tooltip: t('schoolVacation'),
+        label: t('schoolVacation'),
       };
     }
-
-    // Priority 4: Bridge Day
     if (day.isBridgeDay) {
-      return {
-        Icon: Calendar,
-        color: 'text-blue-500 dark:text-blue-400',
-        tooltip: t('bridgeDay'),
-      };
+      return { Icon: Calendar, color: 'text-blue-500 dark:text-blue-400', label: t('bridgeDay') };
     }
     return null;
   };
@@ -122,34 +99,53 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
     if (day.status === 'UNKNOWN') {
       return `${borderWidth} border-gray-300 dark:border-gray-600`;
     }
-
     if (day.isHoliday || day.isPublicHoliday) {
       return `${borderWidth} border-orange-500 dark:border-orange-400`;
-    } // No else if here, strict priority check ensures order if needed, but here we just return
-
+    }
     if (day.isSchoolHoliday || day.isSchoolVacation) {
       return `${borderWidth} border-yellow-500 dark:border-yellow-400`;
     }
-
     if (day.isBridgeDay) {
       return `${borderWidth} border-blue-500 dark:border-blue-400`;
     }
-
     if (isToday) {
       return `${borderWidth} border-primary`;
     }
     return borderWidth;
   };
 
-  // getCrowdLevelStyle was removed in favor of CrowdLevelBadge component
-
   const isBestDay = isBest ?? day.recommendation === 'highly_recommended';
+
+  // Neighbouring-region holidays (top influencing regions only) → distinct amber
+  // marker so it never blends with the local orange/yellow/blue holiday icons.
+  const hasNeighbor = (day.neighborHolidays?.length ?? 0) > 0 && day.status !== 'CLOSED';
+
+  const scheduleIcon = getScheduleIcon();
+  const clickable = !!onSelect;
 
   return (
     <Card
       className={`relative flex h-full flex-col gap-1 p-2 ${getBorderColor()} ${
         day.status === 'CLOSED' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''
-      } ${day.status === 'UNKNOWN' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''}`}
+      } ${day.status === 'UNKNOWN' ? 'bg-gray-100/50 dark:bg-gray-800/30' : ''} ${
+        clickable
+          ? 'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none'
+          : ''
+      }`}
+      {...(clickable
+        ? {
+            role: 'button' as const,
+            tabIndex: 0,
+            'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month}`,
+            onClick: onSelect,
+            onKeyDown: (e: React.KeyboardEvent) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onSelect?.();
+              }
+            },
+          }
+        : {})}
     >
       {isBestDay && (
         <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
@@ -171,23 +167,26 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
             {dayOfMonth}. {month}
           </span>
         </div>
-        {(() => {
-          const scheduleIcon = getScheduleIcon();
-          if (scheduleIcon) {
-            const { Icon, color, tooltip } = scheduleIcon;
-            return (
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Icon className={`h-4 w-4 ${color} cursor-help`} />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{tooltip}</p>
-                </TooltipContent>
-              </Tooltip>
-            );
-          }
-          return null;
-        })()}
+        <div className="flex items-center gap-1">
+          {/* Neighbouring-region holidays: amber Luggage marker (distinct from the
+              local orange/yellow/blue holiday icons). Full list in the detail panel. */}
+          {hasNeighbor && (
+            <span title={t('influencingHolidays')} className="inline-flex">
+              <Luggage
+                className="h-4 w-4 text-amber-500 dark:text-amber-400"
+                aria-label={t('influencingHolidays')}
+              />
+            </span>
+          )}
+          {scheduleIcon && (
+            <span title={scheduleIcon.label} className="inline-flex">
+              <scheduleIcon.Icon
+                className={`h-4 w-4 ${scheduleIcon.color}`}
+                aria-label={scheduleIcon.label}
+              />
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Content */}
@@ -213,14 +212,12 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
                   {format(parseISO(day.hours.closingTime), 'HH:mm')}
                 </span>
                 {(day.isEstimated || day.hours.isInferred) && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Info className="text-muted-foreground/60 h-2.5 w-2.5 cursor-help" />
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{t('calendarView.details.schedule.estimatedHours')}</p>
-                    </TooltipContent>
-                  </Tooltip>
+                  <span
+                    title={t('calendarView.details.schedule.estimatedHours')}
+                    className="inline-flex"
+                  >
+                    <Info className="text-muted-foreground/60 h-2.5 w-2.5" />
+                  </span>
                 )}
               </div>
             </div>
@@ -228,26 +225,14 @@ function ParkCalendarDayComponent({ day, isToday, isBest }: ParkCalendarDayProps
 
           {/* Weather */}
           {day.weather && (
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div className="text-muted-foreground flex items-center justify-center gap-1 text-[10px]">
-                  {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
-                    className: 'h-3.5 w-3.5',
-                  })}
-                  <span>
-                    <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />
-                  </span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{t(`weather.${getWeatherTranslationKey(day.weather.icon)}`)}</p>
-                {day.weather.rainChance > 0 && (
-                  <p>
-                    {day.weather.rainChance}% {t('weather.rain')}
-                  </p>
-                )}
-              </TooltipContent>
-            </Tooltip>
+            <div className="text-muted-foreground flex items-center justify-center gap-1 text-[10px]">
+              {createElement(getEventIcon(getWeatherIconFromCode(day.weather.icon)), {
+                className: 'h-3.5 w-3.5',
+              })}
+              <span>
+                <Temp celsius={day.weather.tempMin} /> – <Temp celsius={day.weather.tempMax} />
+              </span>
+            </div>
           )}
 
           {/* Ticket Price */}
