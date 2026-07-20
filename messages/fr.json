@@ -495,7 +495,8 @@
         "heavyRain": "Alerte météo : fortes pluies",
         "heavySnow": "Alerte météo : fortes chutes de neige",
         "storm": "Alerte météo : tempête"
-      }
+      },
+      "humidityLabel": "Humidité"
     },
     "weatherNowcast": {
       "updateIn": "Mise à jour dans {countdown}",
@@ -583,6 +584,28 @@
       "less": "Moins",
       "instruction": "Conseil",
       "source": "Source : {name}"
+    },
+    "headlinerForecastTitle": "Attentes prévues (incontournables)",
+    "crowdMeaning": {
+      "very_low": "Très peu de monde – attentes courtes, idéal pour une visite tranquille.",
+      "low": "Journée calme – attentes inférieures à la moyenne.",
+      "moderate": "Une journée typique – attentes normales pour ce parc.",
+      "high": "Plus de monde que d'habitude – attendez-vous à des files nettement plus longues.",
+      "very_high": "Très fréquenté – attentes bien plus longues. Arriver tôt est payant.",
+      "extreme": "Extrêmement fréquenté – attentes très longues. Arrivez tôt ou pensez au Fast Lane."
+    },
+    "dayDetail": {
+      "forecastLabel": "Prévision",
+      "hourlyTitle": "Prévision par heure",
+      "holidaysTitle": "Jours fériés & vacances scolaires",
+      "actualWaitsTitle": "Attentes moyennes"
+    },
+    "legendHints": {
+      "closed": "Parc fermé ce jour-là",
+      "holiday": "Jour férié – généralement beaucoup plus fréquenté",
+      "schoolVacation": "Vacances scolaires dans la région du parc",
+      "bridgeDay": "Jour de pont entre un férié et le week-end",
+      "neighbor": "Vacances dans les régions voisines – plus de visiteurs à la journée, attentes plus longues"
     }
   },
   "attractions": {

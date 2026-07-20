@@ -495,7 +495,8 @@
         "heavyRain": "Weeralarm: zware regen",
         "heavySnow": "Weeralarm: zware sneeuwval",
         "storm": "Weeralarm: storm"
-      }
+      },
+      "humidityLabel": "Luchtvochtigheid"
     },
     "weatherNowcast": {
       "updateIn": "Update over {countdown}",
@@ -583,6 +584,28 @@
       "less": "Minder",
       "instruction": "Advies",
       "source": "Bron: {name}"
+    },
+    "headlinerForecastTitle": "Verwachte wachttijden (hoogtepunten)",
+    "crowdMeaning": {
+      "very_low": "Nauwelijks drukte – korte wachttijden, ideaal voor een ontspannen bezoek.",
+      "low": "Rustige dag – wachttijden onder het gemiddelde.",
+      "moderate": "Een typische dag – normale wachttijden voor dit park.",
+      "high": "Drukker dan normaal – reken op merkbaar langere wachttijden.",
+      "very_high": "Erg druk – flink langere wachttijden. Vroeg komen loont.",
+      "extreme": "Extreem druk – zeer lange wachttijden. Kom vroeg of overweeg Fast Lane."
+    },
+    "dayDetail": {
+      "forecastLabel": "Voorspelling",
+      "hourlyTitle": "Voorspelling per uur",
+      "holidaysTitle": "Feestdagen & schoolvakanties",
+      "actualWaitsTitle": "Gemiddelde wachttijden"
+    },
+    "legendHints": {
+      "closed": "Park gesloten op deze dag",
+      "holiday": "Officiële feestdag – meestal veel drukker",
+      "schoolVacation": "Schoolvakantie in de regio van het park",
+      "bridgeDay": "Brugdag tussen een feestdag en het weekend",
+      "neighbor": "Vakantie in buurregio’s – meer dagjesmensen, langere wachttijden"
     }
   },
   "attractions": {

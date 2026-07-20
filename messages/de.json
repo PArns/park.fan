@@ -334,7 +334,8 @@
         "heavyRain": "Unwetterwarnung: Starkregen",
         "heavySnow": "Unwetterwarnung: starker Schneefall",
         "storm": "Unwetterwarnung: Sturm"
-      }
+      },
+      "humidityLabel": "Luftfeuchte"
     },
     "weatherNowcast": {
       "updateIn": "Aktualisierung in {countdown}",
@@ -583,6 +584,28 @@
       "less": "Weniger",
       "instruction": "Hinweis",
       "source": "Quelle: {name}"
+    },
+    "headlinerForecastTitle": "Erwartete Wartezeiten (Highlights)",
+    "crowdMeaning": {
+      "very_low": "Kaum Andrang – kurze Wartezeiten, ideal für einen entspannten Besuch.",
+      "low": "Wenig los – Wartezeiten unter dem Durchschnitt.",
+      "moderate": "Ein typischer Tag – normale Wartezeiten für diesen Park.",
+      "high": "Mehr Andrang als üblich – rechne mit spürbar längeren Wartezeiten.",
+      "very_high": "Sehr voll – deutlich längere Wartezeiten. Früh kommen lohnt sich.",
+      "extreme": "Extrem voll – sehr lange Wartezeiten. Früh kommen oder Fast Lane empfohlen."
+    },
+    "dayDetail": {
+      "forecastLabel": "Prognose",
+      "hourlyTitle": "Prognose je Stunde",
+      "holidaysTitle": "Ferien & Feiertage",
+      "actualWaitsTitle": "Ø Wartezeiten"
+    },
+    "legendHints": {
+      "closed": "Park an diesem Tag geschlossen",
+      "holiday": "Gesetzlicher Feiertag – meist deutlich voller",
+      "schoolVacation": "Schulferien im Bundesland des Parks",
+      "bridgeDay": "Brückentag zwischen Feiertag und Wochenende",
+      "neighbor": "Ferien in Nachbarregionen – mehr Tagesgäste, längere Wartezeiten"
     }
   },
   "attractions": {
