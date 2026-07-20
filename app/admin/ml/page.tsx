@@ -1009,7 +1009,10 @@ export default function MlPage() {
                         <span className="font-mono tabular-nums">
                           {h.currentDrift.toFixed(1)}%
                           {h.liveMae != null && (
-                            <span className="text-muted-foreground"> · MAE {h.liveMae.toFixed(2)}</span>
+                            <span className="text-muted-foreground">
+                              {' '}
+                              · MAE {h.liveMae.toFixed(2)}
+                            </span>
                           )}
                         </span>
                       ) : (

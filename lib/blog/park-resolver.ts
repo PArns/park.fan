@@ -105,10 +105,7 @@ const buildIndex = cache(async (): Promise<IndexedGeo> => {
           // Bare slug is last-write-wins on collisions; the path index keeps
           // every park addressable and is preferred whenever a geoPath is known.
           parksBySlug.set(park.slug, resolved);
-          parksByPath.set(
-            `${continent.slug}/${country.slug}/${city.slug}/${park.slug}`,
-            resolved
-          );
+          parksByPath.set(`${continent.slug}/${country.slug}/${city.slug}/${park.slug}`, resolved);
         }
       }
     }

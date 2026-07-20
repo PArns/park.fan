@@ -3,11 +3,7 @@ import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { getTranslations } from 'next-intl/server';
 import { WithContext, Thing } from 'schema-dts';
 import { escapeJsonLd } from '@/components/seo/structured-data';
-import {
-  buildParkFaqItems,
-  getLeastCrowdedDays,
-  getParkArticleForms,
-} from '@/lib/faq/park-faq';
+import { buildParkFaqItems, getLeastCrowdedDays, getParkArticleForms } from '@/lib/faq/park-faq';
 
 interface FAQStructuredDataProps {
   park: ParkWithAttractions;

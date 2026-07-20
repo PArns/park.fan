@@ -140,15 +140,13 @@ export default async function ContinentPage({ params }: ContinentPageProps) {
         {/* Status-free shell; live open-park counts overlaid client-side (shared geo-live call). */}
         <LiveCountryCards
           continent={continent}
-          countries={countries.map(
-            (country): StaticCountryCard => ({
-              slug: country.slug,
-              name: translateCountry(t, country.slug, locale, country.name),
-              href: `/parks/${continent}/${country.slug}`,
-              totalParkCount: country.parkCount,
-              subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
-            })
-          )}
+          countries={countries.map((country): StaticCountryCard => ({
+            slug: country.slug,
+            name: translateCountry(t, country.slug, locale, country.name),
+            href: `/parks/${continent}/${country.slug}`,
+            totalParkCount: country.parkCount,
+            subtitle: `${country.cityCount} ${tExplore('stats.city', { count: country.cityCount })}`,
+          }))}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         />
       </section>

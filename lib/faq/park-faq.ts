@@ -5,13 +5,7 @@ import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
 import { stripNewPrefix, getGermanArticle } from '@/lib/utils';
 
 export type ParkFaqIconName =
-  | 'Calendar'
-  | 'MapPin'
-  | 'Ticket'
-  | 'Map'
-  | 'Theater'
-  | 'UtensilsCrossed'
-  | 'Clock2';
+  'Calendar' | 'MapPin' | 'Ticket' | 'Map' | 'Theater' | 'UtensilsCrossed' | 'Clock2';
 
 export interface ParkFaqItem {
   iconName: ParkFaqIconName;

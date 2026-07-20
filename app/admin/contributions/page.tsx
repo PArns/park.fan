@@ -98,15 +98,19 @@ export default function ContributionsPage() {
         <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-300">
           <AlertTriangle className="size-4 shrink-0" />
           <span className="flex-1">
-            {orphans} orphaned image file(s) in the store with no submission record — left
-            over from uploads that failed before metadata was saved.
+            {orphans} orphaned image file(s) in the store with no submission record — left over from
+            uploads that failed before metadata was saved.
           </span>
           <button
             onClick={purgeOrphans}
             disabled={purging}
             className="inline-flex items-center gap-1.5 rounded-md border border-amber-500/40 px-2.5 py-1 text-xs font-medium hover:bg-amber-500/15 disabled:opacity-50"
           >
-            {purging ? <Loader2 className="size-3.5 animate-spin" /> : <Trash2 className="size-3.5" />}
+            {purging ? (
+              <Loader2 className="size-3.5 animate-spin" />
+            ) : (
+              <Trash2 className="size-3.5" />
+            )}
             Purge orphans
           </button>
         </div>

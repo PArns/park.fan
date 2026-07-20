@@ -63,7 +63,9 @@ export async function BlogReferences({ post }: BlogReferencesProps) {
 
   // --- 2. Resolve in parallel ----------------------------------------------
   const parks = (
-    await Promise.all([...parkSlugSet].map((slug) => resolvePark(slug, parkGeoPathBySlug.get(slug))))
+    await Promise.all(
+      [...parkSlugSet].map((slug) => resolvePark(slug, parkGeoPathBySlug.get(slug)))
+    )
   ).filter((p): p is ResolvedPark => p !== null);
 
   const attractions = (

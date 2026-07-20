@@ -74,17 +74,14 @@ export function AttractionWaitOverview({
   return (
     <section aria-labelledby="wait-overview-heading">
       <div className="bg-background/70 mb-4 w-fit rounded-lg px-3 py-1.5 backdrop-blur-md">
-        <h2
-          id="wait-overview-heading"
-          className="flex items-center gap-2 text-2xl font-semibold"
-        >
+        <h2 id="wait-overview-heading" className="flex items-center gap-2 text-2xl font-semibold">
           <Clock className="h-5 w-5 shrink-0" aria-hidden="true" />
           {t('overview.title')}
         </h2>
         {stats && (
           <p className="text-muted-foreground text-sm">
-            {t('avgWaitTime')}: {stats.avgWaitTime} {tCommon('minutes')} ·{' '}
-            {t('parkPeak')}: {stats.peakWaitToday} {tCommon('minutes')} ·{' '}
+            {t('avgWaitTime')}: {stats.avgWaitTime} {tCommon('minutes')} · {t('parkPeak')}:{' '}
+            {stats.peakWaitToday} {tCommon('minutes')} ·{' '}
             {t('operatingCount', {
               count: stats.operatingAttractions,
               total: stats.totalAttractions,
