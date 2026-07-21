@@ -599,7 +599,9 @@
       "hourlyTitle": "Previsione oraria",
       "holidaysTitle": "Festività e vacanze scolastiche",
       "actualWaitsTitle": "Attese medie",
-      "openToday": "Mostra i dettagli di oggi"
+      "openToday": "Mostra i dettagli di oggi",
+      "prevDay": "Giorno precedente",
+      "nextDay": "Giorno successivo"
     },
     "legendHints": {
       "closed": "Parco chiuso in questo giorno",

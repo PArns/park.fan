@@ -3,7 +3,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import {
+  addDays,
   format,
+  parseISO,
   startOfMonth,
   endOfMonth,
   eachDayOfInterval,
@@ -44,6 +46,7 @@ interface ParkCalendarGridProps {
 }
 
 export function ParkCalendarGrid({
+  park,
   initialCalendarData,
   continent,
   country,
@@ -51,6 +54,7 @@ export function ParkCalendarGrid({
   parkSlug,
 }: ParkCalendarGridProps) {
   const locale = useLocale();
+  const parkTimezone = park.timezone ?? 'UTC';
   const pathname = usePathname();
   const t = useTranslations('parks');
   const tAttractions = useTranslations('attractions');
@@ -165,6 +169,18 @@ export function ParkCalendarGrid({
     window.history.replaceState(null, '', `${pathname}#${monthHash}`);
 
     // React Query will automatically fetch when currentMonth changes (from/to change)
+  };
+
+  // Flip a day forward/back from inside the detail dialog. Crossing a month boundary also
+  // navigates the grid month so the target day's data loads — the dialog keeps showing the
+  // previous day dimmed until it lands (see ParkCalendarDayDetail's lastDay retention).
+  const handleDayNavigate = (direction: -1 | 1) => {
+    if (!selectedDate) return;
+    const target = format(addDays(parseISO(selectedDate), direction), 'yyyy-MM-dd');
+    setSelectedDate(target);
+    if (target.slice(0, 7) !== format(currentMonth, 'yyyy-MM')) {
+      handleMonthChange(direction === 1 ? 'next' : 'prev');
+    }
   };
 
   // Memoize expensive calendar layout calculations — only recalculate when month or locale changes
@@ -412,6 +428,7 @@ export function ParkCalendarGrid({
                       <ParkCalendarDay
                         key={dateStr}
                         day={dayData}
+                        parkTimezone={parkTimezone}
                         isToday={isToday}
                         isBest={bestDayDates.has(dateStr)}
                         onSelect={() => setSelectedDate(dateStr)}
@@ -446,6 +463,7 @@ export function ParkCalendarGrid({
                           <ParkCalendarDay
                             key={dateStr}
                             day={dayData}
+                            parkTimezone={parkTimezone}
                             isToday={isToday}
                             isBest={bestDayDates.has(dateStr)}
                             onSelect={() => setSelectedDate(dateStr)}
@@ -461,13 +479,16 @@ export function ParkCalendarGrid({
       </div>
 
       {/* Click-to-open day detail (weather + forecast + predictions) — works on
-          touch and desktop, unlike the calendar's former hover-only tooltips. */}
+          touch and desktop, unlike the calendar's former hover-only tooltips.
+          Prev/next flips days without leaving the dialog (incl. month crossing). */}
       <ParkCalendarDayDetail
         day={selectedDate ? (calendarMap.get(selectedDate) ?? null) : null}
+        parkTimezone={parkTimezone}
         open={selectedDate !== null}
         onOpenChange={(o) => {
           if (!o) setSelectedDate(null);
         }}
+        onNavigate={handleDayNavigate}
       />
     </Card>
   );

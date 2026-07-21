@@ -599,7 +599,9 @@
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
       "actualWaitsTitle": "Ø Wartezeiten",
-      "openToday": "Details für heute anzeigen"
+      "openToday": "Details für heute anzeigen",
+      "prevDay": "Vorheriger Tag",
+      "nextDay": "Nächster Tag"
     },
     "legendHints": {
       "closed": "Park an diesem Tag geschlossen",

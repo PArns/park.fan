@@ -4,7 +4,7 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – feat: header "Prognose heute" opens the day-detail dialog
+## Unreleased – feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
 
 The forecast cell in the park-header stats band is now clickable and opens the SAME
 day-detail dialog the crowd calendar shows when clicking today (status & hours, live vs.
@@ -18,7 +18,18 @@ forecast split, headliner waits, hourly prediction chart, weather, holiday conte
 - The cell value becomes a button (hover pill + chevron affordance, `aria-haspopup`,
   focus ring) only once today's data is cached — a click therefore always opens instantly;
   until then (or if the fetch fails) it renders static as before.
-- New translation key `parks.dayDetail.openToday` in all 6 locales (button label/tooltip).
+- **Day navigation in the dialog**: prev/next chevron buttons (and ←/→ keys) flip through
+  days without leaving the dialog — from both entry points. The dialog retains the last
+  shown day and dims (`aria-busy`) while the target day loads instead of unmounting. In the
+  header each visited day is its own small cached one-day query; in the calendar grid,
+  crossing a month boundary also navigates the grid month (hash stays in sync).
+- **Park-timezone times everywhere**: the dialog and the calendar grid cells now render
+  opening hours via `ParkTimeRange` (park-local time, viewer-local tooltip on hover) instead
+  of `format(parseISO(...))`, which silently used the BROWSER timezone — for viewers outside
+  the park's timezone the calendar showed shifted hours (e.g. 07:00–17:00 UTC instead of
+  09:00–19:00 park time). `ParkCalendarDay`/`ParkCalendarDayDetail` gained a required
+  `parkTimezone` prop.
+- New translation keys `parks.dayDetail.openToday` / `prevDay` / `nextDay` in all 6 locales.
 
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 

@@ -1,11 +1,13 @@
 'use client';
 
-import { createElement } from 'react';
+import { createElement, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import {
   Ban,
+  ChevronLeft,
+  ChevronRight,
   Clock,
   HelpCircle,
   Luggage,
@@ -17,6 +19,8 @@ import {
   Snowflake,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -25,6 +29,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkTimeRange } from '@/components/common/park-time';
 import { Temp } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import {
@@ -57,10 +62,19 @@ const CROWD_MEANING_LEVELS: readonly CrowdLevel[] = [
 ];
 
 export interface ParkCalendarDayDetailProps {
-  /** The selected day, or null when the dialog is closed. */
+  /** The selected day, or null when the dialog is closed (or the target day is still loading). */
   day: CalendarDay | null;
+  /** Park IANA timezone — opening hours render in park time (browser-time tooltip on hover). */
+  parkTimezone: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  /**
+   * Prev/next-day navigation. When provided, chevron buttons flank the title (and ←/→ keys
+   * work) so days can be flipped through without leaving the dialog. The parent owns the day
+   * switch; while the target day is loading it passes `day={null}` and the dialog keeps
+   * showing the previous day dimmed (see `lastDay` below) instead of closing.
+   */
+  onNavigate?: (direction: -1 | 1) => void;
 }
 
 /**
@@ -71,11 +85,26 @@ export interface ParkCalendarDayDetailProps {
  * hour-by-hour prediction chart (when available), weather, and the holiday
  * context (local + neighbouring regions) that drives the crowds.
  */
-export function ParkCalendarDayDetail({ day, open, onOpenChange }: ParkCalendarDayDetailProps) {
+export function ParkCalendarDayDetail({
+  day: dayProp,
+  parkTimezone,
+  open,
+  onOpenChange,
+  onNavigate,
+}: ParkCalendarDayDetailProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
   const dateLocale = DATE_LOCALES[locale as keyof typeof DATE_LOCALES] ?? enUS;
+
+  // Retain the last non-null day so a nav step (parent fetches the target day → `day` is
+  // briefly null) dims the open dialog instead of unmounting it. Render-phase derived-state
+  // update (the React-sanctioned pattern) — no effect, no extra frame with stale content.
+  const [lastDay, setLastDay] = useState<CalendarDay | null>(dayProp);
+  if (dayProp && dayProp !== lastDay) setLastDay(dayProp);
+  const day = dayProp ?? (open ? lastDay : null);
+  // Target day is in flight: previous content stays visible but dimmed.
+  const navigating = open && !dayProp && !!day;
 
   if (!day) return null;
 
@@ -180,34 +209,84 @@ export function ParkCalendarDayDetail({ day, open, onOpenChange }: ParkCalendarD
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-h-[85vh] gap-0 overflow-y-auto p-0">
+      <DialogContent
+        className="max-h-[85vh] gap-0 overflow-y-auto p-0"
+        // Flip through days with ←/→ (desktop convenience; the dialog holds focus, and it
+        // contains no text inputs the arrows could conflict with).
+        onKeyDown={
+          onNavigate
+            ? (e) => {
+                if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                  e.preventDefault();
+                  onNavigate(e.key === 'ArrowLeft' ? -1 : 1);
+                }
+              }
+            : undefined
+        }
+      >
         <DialogHeader className="border-border/60 border-b p-5 pb-4">
-          <DialogTitle className="pr-6 text-base capitalize sm:text-lg">{title}</DialogTitle>
-          <DialogDescription className="flex items-center gap-2">
-            {isClosed ? (
-              <Ban className="h-3.5 w-3.5 text-red-500" />
-            ) : day.status === 'UNKNOWN' ? (
-              <HelpCircle className="h-3.5 w-3.5 text-gray-400" />
-            ) : (
-              <Clock className="h-3.5 w-3.5 text-emerald-500" />
+          <div className="flex items-center gap-3 pr-6">
+            {onNavigate && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 shrink-0"
+                onClick={() => onNavigate(-1)}
+                aria-label={t('dayDetail.prevDay')}
+                title={t('dayDetail.prevDay')}
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
             )}
-            <span>{statusLabel}</span>
-            {day.isToday && (
-              <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase">
-                {tCommon('today')}
-              </span>
+            <div className="min-w-0 flex-1">
+              <DialogTitle className="text-base capitalize sm:text-lg">{title}</DialogTitle>
+              <DialogDescription className="flex items-center gap-2">
+                {isClosed ? (
+                  <Ban className="h-3.5 w-3.5 text-red-500" />
+                ) : day.status === 'UNKNOWN' ? (
+                  <HelpCircle className="h-3.5 w-3.5 text-gray-400" />
+                ) : (
+                  <Clock className="h-3.5 w-3.5 text-emerald-500" />
+                )}
+                <span>{statusLabel}</span>
+                {day.isToday && (
+                  <span className="bg-primary/10 text-primary rounded-full px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase">
+                    {tCommon('today')}
+                  </span>
+                )}
+              </DialogDescription>
+            </div>
+            {onNavigate && (
+              <Button
+                variant="outline"
+                size="icon"
+                className="h-8 w-8 shrink-0"
+                onClick={() => onNavigate(1)}
+                aria-label={t('dayDetail.nextDay')}
+                title={t('dayDetail.nextDay')}
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
             )}
-          </DialogDescription>
+          </div>
         </DialogHeader>
 
-        <div className="flex flex-col gap-5 p-5">
-          {/* Opening hours */}
+        <div
+          className={cn('flex flex-col gap-5 p-5 transition-opacity', navigating && 'opacity-50')}
+          aria-busy={navigating}
+        >
+          {/* Opening hours — park-local time; hover shows the viewer's local time (ParkTime). */}
           {day.status === 'OPERATING' && day.hours && (
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Clock className="h-4 w-4" />
               <span className="text-foreground font-medium">
-                {format(parseISO(day.hours.openingTime), 'HH:mm')} –{' '}
-                {format(parseISO(day.hours.closingTime), 'HH:mm')}
+                <ParkTimeRange
+                  openingTime={day.hours.openingTime}
+                  closingTime={day.hours.closingTime}
+                  parkTimezone={parkTimezone}
+                  locale={locale}
+                  showSuffix
+                />
               </span>
               {(day.isEstimated || day.hours.isInferred) && (
                 <span className="text-[11px]">

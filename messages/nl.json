@@ -599,7 +599,9 @@
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
       "actualWaitsTitle": "Gemiddelde wachttijden",
-      "openToday": "Details van vandaag bekijken"
+      "openToday": "Details van vandaag bekijken",
+      "prevDay": "Vorige dag",
+      "nextDay": "Volgende dag"
     },
     "legendHints": {
       "closed": "Park gesloten op deze dag",

@@ -21,9 +21,12 @@ import { format, parseISO } from 'date-fns';
 import { de, enUS, es, fr, it, nl } from 'date-fns/locale';
 import { getWeatherIconFromCode, getEventIcon } from '@/lib/utils/calendar-utils';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkTimeRange } from '@/components/common/park-time';
 
 export interface ParkCalendarDayProps {
   day: CalendarDay;
+  /** Park IANA timezone — opening hours render in park time (browser-time tooltip on hover). */
+  parkTimezone: string;
   isToday: boolean;
   isBest?: boolean;
   /** Opens the day-detail panel. When set, the whole card becomes a button —
@@ -32,7 +35,13 @@ export interface ParkCalendarDayProps {
   onSelect?: () => void;
 }
 
-function ParkCalendarDayComponent({ day, isToday, isBest, onSelect }: ParkCalendarDayProps) {
+function ParkCalendarDayComponent({
+  day,
+  parkTimezone,
+  isToday,
+  isBest,
+  onSelect,
+}: ParkCalendarDayProps) {
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
@@ -202,14 +211,18 @@ function ParkCalendarDayComponent({ day, isToday, isBest, onSelect }: ParkCalend
             </div>
           )}
 
-          {/* Opening Hours */}
+          {/* Opening Hours — park-local time; hover shows the viewer's local time (ParkTime). */}
           {day.status === 'OPERATING' && day.hours ? (
             <div className="text-muted-foreground flex flex-col items-center gap-0.5 text-[10px]">
               <div className="flex items-center gap-1">
                 <Clock className="h-3 w-3" />
                 <span className="font-medium">
-                  {format(parseISO(day.hours.openingTime), 'HH:mm')} -{' '}
-                  {format(parseISO(day.hours.closingTime), 'HH:mm')}
+                  <ParkTimeRange
+                    openingTime={day.hours.openingTime}
+                    closingTime={day.hours.closingTime}
+                    parkTimezone={parkTimezone}
+                    locale={locale}
+                  />
                 </span>
                 {(day.isEstimated || day.hours.isInferred) && (
                   <span

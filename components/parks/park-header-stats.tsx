@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { addDays, format, parseISO } from 'date-fns';
 import { ChevronRight, Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
@@ -131,21 +132,37 @@ export function ParkHeaderStats({
   // Click-to-open detail for the forecast cell: the SAME day-detail dialog the crowd calendar
   // opens for today (status & hours, live vs. forecast split, headliner waits, hourly chart,
   // weather, holiday context). Needs the FULL CalendarDay, which the lean `/best-days` snapshot
-  // doesn't carry — so fetch just today from `/calendar`. Same query key + staleTime as the
-  // calendar grid's today-patch (one shared cached request), and deferred via `useLoadLast` so
-  // it never competes with the live/weather queries (loads-last rule).
-  const [todayDetailOpen, setTodayDetailOpen] = useState(false);
+  // doesn't carry — so fetch a single day from `/calendar`. While the dialog is closed the
+  // fetched date is today — same query key + staleTime as the calendar grid's today-patch (one
+  // shared cached request), deferred via `useLoadLast` so it never competes with the live/
+  // weather queries (loads-last rule). The dialog's prev/next navigation moves `detailDate`;
+  // each visited day is its own small cached one-day query, and `keepPreviousData` keeps the
+  // previous day on screen (dimmed) while the next one loads.
+  const [detailDate, setDetailDate] = useState<string | null>(null); // null = dialog closed
   const releasedLast = useLoadLast();
-  const { data: todayCalendar } = useCalendarData({
+  const queryDate = detailDate ?? todayStr;
+  const { data: detailCalendar } = useCalendarData({
     continent,
     country,
     city,
     parkSlug,
-    from: todayStr ?? '',
-    to: todayStr ?? '',
-    enabled: !!todayStr && releasedLast,
+    from: queryDate ?? '',
+    to: queryDate ?? '',
+    enabled: !!queryDate && (releasedLast || detailDate !== null),
   });
-  const todayDay = todayStr ? (todayCalendar?.days.find((d) => d.date === todayStr) ?? null) : null;
+  const detailDay = queryDate
+    ? (detailCalendar?.days.find((d) => d.date === queryDate) ?? null)
+    : null;
+  // Gate for the cell button: today's day is cached (closed ⇒ queryDate === today), so a
+  // click always opens instantly. While the dialog is open the gate stays truthy.
+  const todayReady = detailDate !== null || !!detailDay;
+
+  const handleDetailNavigate = (direction: -1 | 1) => {
+    setDetailDate((prev) => {
+      const base = prev ?? todayStr;
+      return base ? format(addDays(parseISO(base), direction), 'yyyy-MM-dd') : prev;
+    });
+  };
 
   const holidayBadges = sched.holiday
     ? [
@@ -254,10 +271,10 @@ export function ParkHeaderStats({
             dialog a click on today in the crowd calendar opens; until then it renders static. */}
         <Cell caption={t('forecastToday')} icon={Sparkles}>
           {calendar ? (
-            todayDay ? (
+            todayReady ? (
               <button
                 type="button"
-                onClick={() => setTodayDetailOpen(true)}
+                onClick={() => setDetailDate(todayStr)}
                 title={t('dayDetail.openToday')}
                 aria-label={t('dayDetail.openToday')}
                 aria-haspopup="dialog"
@@ -287,13 +304,17 @@ export function ParkHeaderStats({
       {/* Holiday / bridge-day / school-vacation context — explains today's crowds */}
       {holidayBadges.length > 0 && <div className="mt-4 flex flex-wrap gap-2">{holidayBadges}</div>}
 
-      {/* Day-detail dialog for today — the exact component the crowd calendar uses for a
-          day click, fed with the same /calendar data (shared query), so header and calendar
-          always tell the same story. */}
+      {/* Day-detail dialog — the exact component the crowd calendar uses for a day click,
+          fed with the same /calendar data (shared query), so header and calendar always tell
+          the same story. Opens on today; prev/next flips through neighbouring days. */}
       <ParkCalendarDayDetail
-        day={todayDay}
-        open={todayDetailOpen}
-        onOpenChange={setTodayDetailOpen}
+        day={detailDay}
+        parkTimezone={timezone}
+        open={detailDate !== null}
+        onOpenChange={(o) => {
+          if (!o) setDetailDate(null);
+        }}
+        onNavigate={handleDetailNavigate}
       />
     </div>
   );
