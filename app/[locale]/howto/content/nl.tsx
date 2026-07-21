@@ -858,6 +858,13 @@ function ContentNLSections() {
           de uursvoorspelling op de attractiepagina voor het rustigste tijdslot. Je arriveert altijd
           bij de kortste wachtrij.
         </TipBox>
+        <p className="text-muted-foreground">
+          Ons voorspellingsmodel heeft een naam —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — met een eigen pagina die uitlegt hoe het werkt en hoe nauwkeurig het momenteel is.
+        </p>
       </Section>
 
       {/* ── 8. Voor wie ──────────────────────────────────────────────────────── */}

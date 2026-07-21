@@ -852,6 +852,13 @@ function ContentENSections() {
           hourly forecast on the attraction page to find the quietest slot. You&apos;ll always
           arrive at the shortest queue.
         </TipBox>
+        <p className="text-muted-foreground">
+          Our forecasting model has a name —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — and its own page explaining how it works and how accurate it currently is.
+        </p>
       </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}

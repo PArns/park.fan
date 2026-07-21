@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Quotidien · 06:00 UTC · {time} heure locale",
       "howTitle": "Comment Les Prédictions Sont Calculées",
       "howText": "Chaque prévision de temps d'attente repose sur trois couches de données : des historiques de files d'attente collectés dans les parcs sur plusieurs années, des signaux externes comme les prévisions météo et les calendriers de vacances scolaires, et des facteurs contextuels tels que les événements spéciaux et les tendances saisonnières. Le modèle génère à la fois des prévisions horaires pour chaque attraction et des niveaux d'affluence journaliers — disponibles jusqu'à 365 jours à l'avance.",
+      "fancastLink": "Comment fonctionne Fancast, notre modèle de prévision",
       "improvingTitle": "En Développement Actif — Meilleur Chaque Jour",
       "improvingText": "park.fan est une plateforme vivante, encore en développement actif. Chaque jour, le système compare automatiquement ses prédictions passées aux temps d'attente réellement enregistrés dans les parcs, et réintègre ces comparaisons dans le prochain cycle d'entraînement. Les métriques de précision présentées ci-dessus reflètent ces performances réelles — pas des benchmarks synthétiques. De nouveaux parcs et attractions sont ajoutés régulièrement, et le modèle gagne en précision à mesure que les données vérifiées s'accumulent.",
       "badge": {
@@ -195,6 +196,7 @@
       "howTitle": "Comment utiliser park.fan ?",
       "p4": "Recherchez votre parc via la barre de recherche ou parcourez par continent, pays et ville. Sur la page du parc, vous trouverez les temps d'attente en direct pour chaque attraction, restaurant et spectacle — mis à jour chaque minute — ainsi que les prévisions d'affluence et un calendrier jour par jour. Les jours verts signalent de courtes files et moins de monde ; les jours orange ou rouges indiquent une affluence plus élevée.",
       "p5": "park.fan est un projet vivant, constamment enrichi de nouvelles fonctionnalités et de nouveaux parcs. Enregistrez vos parcs favoris pour un accès rapide, utilisez la navigation en parc pour planifier le parcours le plus efficace, et consultez toujours le calendrier d'affluence avant de réserver pour choisir le meilleur jour possible.",
+      "fancastLink": "Découvrir Fancast",
       "howtoLink": "Lire le guide complet"
     }
   },
@@ -217,6 +219,7 @@
     "api": "Documentation API",
     "impressum": "Mentions Légales",
     "howto": "Comment ça marche",
+    "fancast": "Fancast",
     "glossaryLink": "Dictionnaire",
     "blog": "Blog",
     "datenschutz": "Confidentialité",
@@ -570,6 +573,7 @@
       "noData": "Pas encore assez de données de prévision disponibles.",
       "bestWeekendDayTitle": "Meilleur jour de week-end",
       "titleCompact": "Meilleure période",
+      "fancastLink": "Prévisions par Fancast",
       "viewCalendarLink": "Voir le calendrier d'affluence complet"
     },
     "weatherWarnings": {
@@ -596,6 +600,7 @@
       "extreme": "Extrêmement fréquenté – attentes très longues. Arrivez tôt ou pensez au Fast Lane."
     },
     "dayDetail": {
+      "fancastLink": "Comment nous le prévoyons : Fancast",
       "forecastLabel": "Prévision",
       "hourlyTitle": "Prévision par heure",
       "holidaysTitle": "Jours fériés & vacances scolaires",
@@ -769,6 +774,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Comment nous le prévoyons : Fancast",
       "aiBadge": "Prévision IA",
       "aiExplainer": "Les temps passés sont des mesures réelles ; les valeurs à venir sont des prévisions par IA.",
       "legendRecorded": "Enregistré",
@@ -1100,6 +1106,7 @@
     "overviewH1": "Dictionnaire des Parcs à Thème – Tous les termes & définitions",
     "relatedTerms": "Termes associés",
     "alsoKnownAs": "Aussi connu sous",
+    "fancastCta": "Notre modèle de prévision, en direct : Fancast",
     "backToGlossary": "Retour au dictionnaire",
     "category": {
       "wait-times": "Temps d'attente",
@@ -1147,6 +1154,10 @@
         "dive": "Plongeon"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – notre modèle de prévision des temps d'attente",
+    "description": "Fancast est le modèle d'IA de park.fan : il prédit l'affluence et les temps d'attente jusqu'à 365 jours à l'avance et évalue sa précision en public."
   },
   "howto": {
     "title": "Comment ça marche – Le guide complet",

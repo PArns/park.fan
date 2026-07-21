@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Quotidiano · 06:00 UTC · {time} ora locale",
       "howTitle": "Come Vengono Generate Le Previsioni",
       "howText": "Ogni previsione del tempo di attesa è costruita su tre strati di dati: dati storici sulle code raccolti nei parchi nel corso degli anni, segnali esterni come previsioni meteo e calendari delle vacanze scolastiche, e fattori contestuali come eventi speciali e tendenze stagionali. Il modello genera sia previsioni orarie per le singole attrazioni sia valutazioni giornaliere del livello di affluenza — disponibili fino a 365 giorni in anticipo.",
+      "fancastLink": "Come funziona Fancast, il nostro modello di previsione",
       "improvingTitle": "In Sviluppo Attivo — Migliora Ogni Giorno",
       "improvingText": "park.fan è una piattaforma viva, ancora in sviluppo attivo. Ogni giorno il sistema confronta automaticamente le previsioni precedenti con i tempi di attesa effettivamente registrati nei parchi, e reintroduce questi confronti nel ciclo di addestramento successivo. Le metriche di precisione mostrate sopra riflettono queste prestazioni reali — non benchmark sintetici. Nuovi parchi e attrazioni vengono aggiunti regolarmente, e il modello diventa più preciso man mano che si accumulano dati verificati.",
       "badge": {
@@ -195,6 +196,7 @@
       "howTitle": "Come usare park.fan?",
       "p4": "Cerca il tuo parco nella barra di ricerca o sfoglia per continente, paese e città. Nella pagina del parco trovi i tempi di attesa in tempo reale per ogni attrazione, ristorante e spettacolo — aggiornati ogni minuto — insieme alle previsioni di affluenza e un calendario giornaliero. I giorni verdi indicano code brevi; quelli arancioni o rossi segnalano maggiore affluenza e attese più lunghe.",
       "p5": "park.fan è un progetto in continua evoluzione, arricchito regolarmente con nuove funzionalità e parchi. Salva i tuoi parchi preferiti per un accesso rapido, usa la navigazione in loco per pianificare il percorso più efficiente, e consulta sempre il calendario delle affluenze prima di prenotare per scegliere il giorno migliore.",
+      "fancastLink": "Scopri Fancast",
       "howtoLink": "Leggi la guida completa"
     }
   },
@@ -217,6 +219,7 @@
     "api": "Documentazione API",
     "impressum": "Impressum",
     "howto": "Come funziona",
+    "fancast": "Fancast",
     "glossaryLink": "Dizionario",
     "blog": "Blog",
     "datenschutz": "Informativa sulla privacy",
@@ -570,6 +573,7 @@
       "noData": "Dati di previsione insufficienti al momento.",
       "bestWeekendDayTitle": "Miglior giorno del fine settimana",
       "titleCompact": "Periodo migliore",
+      "fancastLink": "Previsioni di Fancast",
       "viewCalendarLink": "Vedi il calendario di affluenza completo"
     },
     "weatherWarnings": {
@@ -596,6 +600,7 @@
       "extreme": "Estremamente affollato – attese lunghissime. Arriva presto o valuta il Fast Lane."
     },
     "dayDetail": {
+      "fancastLink": "Come lo prevediamo: Fancast",
       "forecastLabel": "Previsione",
       "hourlyTitle": "Previsione oraria",
       "holidaysTitle": "Festività e vacanze scolastiche",
@@ -731,6 +736,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Come lo prevediamo: Fancast",
       "aiBadge": "Previsione IA",
       "aiExplainer": "I tempi passati sono misurazioni reali; i valori futuri sono previsioni dell'IA.",
       "legendRecorded": "Registrato",
@@ -1100,6 +1106,7 @@
     "overviewH1": "Dizionario dei Parchi a Tema – Tutti i termini e le definizioni",
     "relatedTerms": "Termini correlati",
     "alsoKnownAs": "Conosciuto anche come",
+    "fancastCta": "Il nostro modello di previsione, live: Fancast",
     "backToGlossary": "Torna al dizionario",
     "category": {
       "wait-times": "Tempi di attesa",
@@ -1147,6 +1154,10 @@
         "dive": "Tuffo"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – il nostro modello di previsione dei tempi di attesa",
+    "description": "Fancast è il modello di IA di park.fan: prevede affluenza e tempi di attesa fino a 365 giorni in anticipo e valuta la propria accuratezza in modo aperto."
   },
   "howto": {
     "title": "Come funziona – La guida completa",

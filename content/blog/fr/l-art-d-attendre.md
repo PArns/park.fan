@@ -438,7 +438,7 @@ attraction ?) et le **débit** (combien en écoule-t-elle ?). Little serait
 sans doute stupéfait de tout ce à quoi sa formule sert aujourd'hui. Et
 parce que nous ne faisons confiance aux chiffres que lorsqu'ils doivent
 faire leurs preuves : la fréquence à laquelle nos prévisions tombent juste
-est publiée sur la [page How-to](/howto) — inutile de tricher.
+est publiée sur la [page Fancast](/fancast) — inutile de tricher.
 
 ## Pourquoi Peter Pan's Flight « s'emballe » toujours
 

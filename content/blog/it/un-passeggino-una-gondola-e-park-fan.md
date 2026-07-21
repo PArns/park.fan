@@ -220,7 +220,7 @@ l'affluenza **fino a 365 giorni** in anticipo. E siccome io, per
 principio, mi fido solo dei numeri che devono dimostrarsi: il modello si
 dà i voti da solo. Ogni previsione viene poi confrontata con il tempo di
 attesa realmente misurato, e le percentuali di successo sono pubbliche
-sulla [pagina How-to](/howto) — barare non serve a niente.
+sulla [pagina di Fancast](/fancast) — barare non serve a niente.
 
 ## Qual è il giorno migliore? Vale la pena una domenica?
 

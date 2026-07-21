@@ -222,7 +222,7 @@ l'affluence **jusqu'à 365 jours** à l'avance. Et parce que je ne fais
 confiance aux chiffres que lorsqu'ils doivent faire leurs preuves : le
 modèle se note lui-même. Chaque prévision est ensuite confrontée au temps
 d'attente réellement mesuré, et les taux de réussite sont publics sur la
-[page How-to](/howto) — tricher ne sert à rien.
+[page Fancast](/fancast) — tricher ne sert à rien.
 
 ## Quel est le meilleur jour ? Un dimanche vaut-il le coup ?
 

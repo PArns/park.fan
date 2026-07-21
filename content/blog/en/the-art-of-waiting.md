@@ -409,7 +409,7 @@ to reach this ride today?) and **throughput** (how many can it clear?).
 Little would probably be amazed at all the things his formula gets used
 for today. And because we only trust numbers when they have to prove
 themselves: how often our forecasts hit reality is public on the
-[how-to page](/howto) — no cheating possible.
+[Fancast page](/fancast) — no cheating possible.
 
 ## Why Peter Pan's Flight always "escalates"
 

@@ -418,7 +418,7 @@ Menschen wollen heute zu dieser Bahn?) und **Durchsatz** (wie viele
 schafft sie weg?). Little wäre vermutlich erstaunt, wofür seine Formel
 heute so alles benutzt wird. Und weil wir Zahlen nur trauen, wenn sie
 sich beweisen müssen: Wie oft unsere Prognosen die Realität treffen,
-steht öffentlich auf der [How-to-Seite](/howto) — schummeln zwecklos.
+steht öffentlich auf der [Fancast-Seite](/fancast) — schummeln zwecklos.
 
 ## Warum Peter Pan's Flight immer „eskaliert"
 

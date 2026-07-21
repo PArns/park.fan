@@ -878,6 +878,14 @@ function ContentFRSections() {
           la prévision horaire sur la page de l&apos;attraction pour trouver le créneau le plus
           calme. Tu arriveras toujours à la file la plus courte.
         </TipBox>
+        <p className="text-muted-foreground">
+          Notre modèle de prévision porte un nom —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — et dispose de sa propre page qui explique comment il fonctionne et sa précision
+          actuelle.
+        </p>
       </Section>
 
       {/* ── 8. Pour qui ──────────────────────────────────────────────────────── */}

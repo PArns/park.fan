@@ -213,7 +213,7 @@ attracties**, elke minuut ververst. Voorspellingen die de drukte **tot
 365 dagen** vooruit inschatten. En omdat ik cijfers principieel alleen
 vertrouw als ze zich moeten bewijzen: het model beoordeelt zichzelf. Elke
 voorspelling wordt later naast de werkelijk gemeten wachttijd gelegd, en
-de scores staan open en bloot op de [how-to-pagina](/howto) — vals spelen
+de scores staan open en bloot op de [Fancast-pagina](/fancast) — vals spelen
 is zinloos.
 
 ## Wanneer is de beste dag? Is een zondag het waard?

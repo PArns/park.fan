@@ -210,7 +210,7 @@ updated by the minute. Forecasts that assess the crowds **up to 365
 days** ahead. And because I fundamentally only trust numbers that have to
 prove themselves: the model grades itself. Every prediction is later held
 against the wait time that was actually measured, and the hit rates are
-out in the open on the [How-to page](/howto) — no cheating possible.
+out in the open on the [Fancast page](/fancast) — no cheating possible.
 
 ## When is the best day? Is a Sunday worth it?
 

@@ -870,6 +870,13 @@ function ContentITSections() {
           previsione oraria sulla pagina dell&apos;attrazione per trovare lo slot più tranquillo.
           Arriverai sempre alla coda più breve.
         </TipBox>
+        <p className="text-muted-foreground">
+          Il nostro modello di previsione ha un nome —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — e una pagina dedicata che spiega come funziona e quanto è accurato attualmente.
+        </p>
       </Section>
 
       {/* ── 8. Per chi ───────────────────────────────────────────────────────── */}

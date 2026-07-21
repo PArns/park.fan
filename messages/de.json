@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Täglich · 06:00 UTC · {time} lokal",
       "howTitle": "Wie Vorhersagen entstehen",
       "howText": "Jede Wartezeit-Vorhersage basiert auf drei Datenschichten: historischen Warteschlangendaten aus Jahren der Park-Beobachtung, externen Signalen wie Wetterprognosen und Schulferienkalendern sowie kontextuellen Faktoren wie Sonderveranstaltungen und saisonalen Mustern. Das Modell erstellt sowohl stündliche Wartezeit-Prognosen für einzelne Attraktionen als auch tagesbasierte Crowd-Level-Bewertungen — bis zu 365 Tage im Voraus.",
+      "fancastLink": "So funktioniert Fancast, unser Prognosemodell",
       "improvingTitle": "Aktiv in Entwicklung — täglich besser",
       "improvingText": "park.fan ist eine lebendige Plattform, die sich noch aktiv in der Entwicklung befindet. Jeden Tag vergleicht das System seine früheren Vorhersagen automatisch mit den tatsächlich an den Parks erfassten Wartezeiten und speist diese Vergleiche in den nächsten Trainingszyklus ein. Die oben gezeigten Genauigkeitskennzahlen spiegeln diese reale Performance wider — keine synthetischen Benchmarks. Neue Parks und Attraktionen werden regelmäßig hinzugefügt, und das Modell wird mit wachsender Datenmenge präziser.",
       "badge": {
@@ -195,6 +196,7 @@
       "howTitle": "Wie nutze ich park.fan?",
       "p4": "Suche deinen Wunschpark über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite findest du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows – minütlich aktualisiert – sowie KI-Prognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage signalisieren kurze Warteschlangen und wenig Betrieb; orange oder rote Tage stehen für mehr Andrang und längere Wartezeiten.",
       "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen.",
+      "fancastLink": "Fancast entdecken",
       "howtoLink": "Vollständige Anleitung lesen"
     }
   },
@@ -217,6 +219,7 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "howto": "Anleitung",
+    "fancast": "Fancast",
     "glossaryLink": "Wörterbuch",
     "blog": "Blog",
     "datenschutz": "Datenschutzerklärung",
@@ -570,6 +573,7 @@
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
       "titleCompact": "Beste Reisezeit",
+      "fancastLink": "Prognosen von Fancast",
       "viewCalendarLink": "Vollständigen Crowd-Kalender ansehen"
     },
     "weatherWarnings": {
@@ -596,6 +600,7 @@
       "extreme": "Extrem voll – sehr lange Wartezeiten. Früh kommen oder Fast Lane empfohlen."
     },
     "dayDetail": {
+      "fancastLink": "Wie wir das vorhersagen: Fancast",
       "forecastLabel": "Prognose",
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
@@ -769,6 +774,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Wie wir das vorhersagen: Fancast",
       "aiBadge": "KI-Prognose",
       "aiExplainer": "Vergangene Zeiten sind echte Messungen, künftige Werte sind KI-Vorhersagen.",
       "legendRecorded": "Aufgezeichnet",
@@ -1100,6 +1106,7 @@
     "overviewH1": "Freizeitpark-Wörterbuch – Alle Begriffe & Definitionen",
     "relatedTerms": "Verwandte Begriffe",
     "alsoKnownAs": "Auch bekannt als",
+    "fancastCta": "Unser Prognosemodell live: Fancast",
     "backToGlossary": "Zurück zum Wörterbuch",
     "category": {
       "wait-times": "Wartezeiten",
@@ -1147,6 +1154,10 @@
         "dive": "Sturz"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – unser Wartezeiten-Prognosemodell",
+    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine Genauigkeit öffentlich."
   },
   "howto": {
     "title": "So funktioniert es – Die vollständige Anleitung",

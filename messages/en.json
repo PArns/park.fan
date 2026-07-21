@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Daily · 06:00 UTC · {time} local",
       "howTitle": "How Predictions Are Made",
       "howText": "Every wait time forecast is built from three layers of data: historical queue records collected from parks over years, external signals like weather forecasts and school holiday calendars, and contextual factors such as special events and seasonal patterns. The model generates both hourly wait time forecasts for individual rides and daily crowd level ratings for full park visits — available up to 365 days ahead.",
+      "fancastLink": "How Fancast, our forecasting model, works",
       "improvingTitle": "Actively Developed — Improving Every Day",
       "improvingText": "park.fan is a living platform, still in active development. Every day the system automatically compares its earlier predictions against the wait times actually recorded at the parks, feeding those comparisons back into the next training cycle. The accuracy metrics above reflect this real-world performance — not synthetic benchmarks. New parks and attractions are added regularly, and the model becomes more accurate as it accumulates more verified data for each destination.",
       "badge": {
@@ -195,6 +196,7 @@
       "howTitle": "How To Use park.fan",
       "p4": "Search for your destination park using the search bar, or browse by continent, country, and city. On the park page you will find live wait times for every ride, restaurant, and show—updated every minute—alongside AI crowd predictions and a day-by-day crowd calendar. Green days signal short queues and smaller crowds; orange or red days mean higher attendance and longer waits.",
       "p5": "park.fan is a living project, constantly evolving with new features and parks. Save your favourite parks for quick access, use in-park navigation to plan the most efficient route through the park, and always check the crowd calendar before booking to make sure your visit lands on the best possible day.",
+      "fancastLink": "Discover Fancast",
       "howtoLink": "Read the full guide"
     }
   },
@@ -217,6 +219,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "How it works",
+    "fancast": "Fancast",
     "glossaryLink": "Dictionary",
     "blog": "Blog",
     "datenschutz": "Privacy Policy",
@@ -570,6 +573,7 @@
       "noData": "Not enough crowd forecast data available yet.",
       "bestWeekendDayTitle": "Best Weekend Day",
       "titleCompact": "Best Time to Visit",
+      "fancastLink": "Forecasts by Fancast",
       "viewCalendarLink": "View full crowd calendar"
     },
     "weatherWarnings": {
@@ -596,6 +600,7 @@
       "extreme": "Extremely busy – very long waits. Arrive early or consider Fast Lane."
     },
     "dayDetail": {
+      "fancastLink": "How we predict this: Fancast",
       "forecastLabel": "Forecast",
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
@@ -769,6 +774,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "How we predict this: Fancast",
       "aiBadge": "AI forecast",
       "aiExplainer": "Past times are real measurements; upcoming values are AI predictions.",
       "legendRecorded": "Recorded",
@@ -1100,6 +1106,7 @@
     "overviewH1": "Theme Park Dictionary – All Terms & Definitions",
     "relatedTerms": "Related Terms",
     "alsoKnownAs": "Also known as",
+    "fancastCta": "Our forecasting model, live: Fancast",
     "backToGlossary": "Back to Dictionary",
     "category": {
       "wait-times": "Wait Times",
@@ -1147,6 +1154,10 @@
         "dive": "Dive"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – our wait-time forecasting model",
+    "description": "Fancast is park.fan's AI model: it predicts theme-park crowds and wait times up to 365 days ahead — and grades its own accuracy in the open."
   },
   "howto": {
     "title": "How It Works – The Complete Guide",
