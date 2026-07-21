@@ -1,11 +1,12 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { CalendarDays, TrendingDown, AlertTriangle, Sunset } from 'lucide-react';
+import { CalendarDays, TrendingDown, AlertTriangle, Sunset, ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
+import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
@@ -28,6 +29,12 @@ interface ParkBestDaysSectionProps {
   locale: string;
   /** Renders as a compact card without section heading — for embedding in the header area */
   compact?: boolean;
+  /**
+   * When true, the (non-compact) section header shows a visible "view full crowd calendar" link
+   * that jumps to the park page's `#calendar` tab. Only meaningful on the park page (where that
+   * tab exists) — left off elsewhere (e.g. the blog widget renders `compact`, which has no header).
+   */
+  showCalendarLink?: boolean;
   className?: string;
   /**
    * Server-fetched calendar seed (data-cached `getBestDaysCalendarSeed`). When present, the
@@ -88,6 +95,7 @@ export function ParkBestDaysSection({
   parkName,
   locale,
   compact = false,
+  showCalendarLink = false,
   className,
   initialCalendar,
   seedNowMs,
@@ -131,6 +139,7 @@ export function ParkBestDaysSection({
           parkSlug={parkSlug}
           locale={locale}
           compact={compact}
+          showCalendarLink={showCalendarLink}
           className={className}
         />
       );
@@ -152,6 +161,7 @@ export function ParkBestDaysSection({
       parkSlug={parkSlug}
       locale={locale}
       compact={compact}
+      showCalendarLink={showCalendarLink}
       className={className}
     />
   );
@@ -168,6 +178,7 @@ interface BestDaysContentProps {
   parkSlug: string;
   locale: string;
   compact?: boolean;
+  showCalendarLink?: boolean;
   className?: string;
 }
 
@@ -179,6 +190,7 @@ function BestDaysContent({
   parkSlug,
   locale,
   compact = false,
+  showCalendarLink = false,
   className,
 }: BestDaysContentProps) {
   const t = useTranslations('parks.bestDays');
@@ -279,13 +291,24 @@ function BestDaysContent({
   return (
     <section aria-labelledby="best-days-heading" className="mt-8 space-y-4">
       <div className="bg-background/70 rounded-xl px-4 py-3 backdrop-blur-md">
-        <div className="flex items-center gap-2">
-          <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
-          <h2 id="best-days-heading" className="text-xl font-semibold">
-            {t('title', { park: displayName })}
-          </h2>
+        <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2">
+              <CalendarDays className="text-primary h-5 w-5" aria-hidden="true" />
+              <h2 id="best-days-heading" className="text-xl font-semibold">
+                {t('title', { park: displayName })}
+              </h2>
+            </div>
+            <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
+          </div>
+          {showCalendarLink && (
+            <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
+              <CalendarDays className="h-4 w-4" aria-hidden="true" />
+              {t('viewCalendarLink')}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </CrowdCalendarFaqLink>
+          )}
         </div>
-        <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

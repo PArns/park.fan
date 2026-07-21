@@ -569,7 +569,8 @@
       "noUpcomingQuiet": "No hay días especialmente tranquilos en los próximos 30 días.",
       "noData": "Aún no hay suficientes datos de previsión disponibles.",
       "bestWeekendDayTitle": "Mejor día del fin de semana",
-      "titleCompact": "Mejor época para visitar"
+      "titleCompact": "Mejor época para visitar",
+      "viewCalendarLink": "Ver calendario de afluencia completo"
     },
     "weatherWarnings": {
       "severity": {
