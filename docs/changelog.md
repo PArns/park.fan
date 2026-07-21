@@ -4,6 +4,28 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – perf: re-render sweep (map re-pan fix, memoized grids/markers)
+
+Follow-up render-churn pass on top of the code-quality sweep; no user-facing behaviour changes
+except the map fix, which removes an unwanted motion.
+
+- **Park map no longer re-pans every minute (visible fix):** `center` is now `useMemo`'d on the
+  primitive coords, so the shared `useMinuteNow` tick no longer hands `MapViewController` a fresh
+  array that re-triggered `map.setView(…, { animate: true })` every 60 s. `AttractionMarkers` and
+  `RestaurantMarkers` are `React.memo`'d (no time-relative content) so the minute tick only
+  re-renders the show markers that actually need it.
+- **Attraction grid stops re-rendering on every keystroke/focus:** `LandSection` is `React.memo`'d
+  and `TabsWithHash` is `React.memo`'d — on a big park the 100+ glass cards now bail out on search
+  input and on the 5-min poll's `isFetching` flip, and only re-render when the data really changes.
+- **Calendar day memo restored:** `ParkCalendarDay.onSelect` now receives the date, so the grid
+  passes the stable `setSelectedDate` setter instead of a per-day arrow that defeated the existing
+  `memo` (all ~35 day cards used to re-render on any day click / today-poll).
+- Known, deferred (need a server-side data seed, not a skeleton): the hour-by-hour weather chart and
+  the daily-wait chart still expand on their client fetch/mount (CLS); reserving space cleanly
+  requires seeding those queries server-side rather than a guessed skeleton height.
+
+---
+
 ## Unreleased – refactor: code-quality sweep (dedup, component splits, client→server, repaint gates, stale docs)
 
 Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior changes intended.

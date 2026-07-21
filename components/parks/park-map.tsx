@@ -141,13 +141,23 @@ export function ParkMap({ park }: ParkMapProps) {
     validRestaurants
   );
 
-  // Fallback center (use user location if in park, otherwise park center)
-  const center: L.LatLngExpression =
-    isInPark && userLocation
-      ? [userLocation.lat, userLocation.lng]
-      : park.latitude && park.longitude
-        ? [park.latitude, park.longitude]
-        : [51.505, -0.09]; // London as fallback
+  // Fallback center (use user location if in park, otherwise park center). Memoized on the
+  // primitive coords so its identity is stable across the once-per-minute `useMinuteNow` tick —
+  // otherwise a fresh array each render re-triggers MapViewController's setView effect and the
+  // map visibly re-pans (animate: true) every 60 s even though nothing moved.
+  const center: L.LatLngExpression = useMemo(
+    () =>
+      isInPark && userLocation
+        ? [userLocation.lat, userLocation.lng]
+        : park.latitude && park.longitude
+          ? [park.latitude, park.longitude]
+          : [51.505, -0.09], // London as fallback
+    // Depend on the primitive coords, not the `userLocation` object identity: a new object with
+    // unchanged lat/lng must NOT recompute `center` (that's exactly what caused the every-minute
+    // re-pan). `userLocation?.lat` flipping to/from undefined already covers null↔fix transitions.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isInPark, userLocation?.lat, userLocation?.lng, park.latitude, park.longitude]
+  );
 
   if (!park.latitude || !park.longitude) {
     return (
