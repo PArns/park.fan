@@ -37,6 +37,8 @@ forecast split, headliner waits, hourly prediction chart, weather, holiday conte
   while the day-detail dialog listed them all. The name-echo suppression now applies only to
   non-school entries (a shared public holiday like Whit Monday is still told once, by the
   local badge); region-specific school breaks always show — header and dialog tell one story.
+  The panel's region chips now also carry their country's flag emoji (🇩🇪 Hessen · 🇳🇱
+  Niederlande · 🇧🇪 Belgien), matching the dialog's visual language.
 
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
