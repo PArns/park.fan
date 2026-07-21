@@ -220,6 +220,7 @@
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
     "fancast": "Fancast",
+    "bestTime": "Beste bezoektijd",
     "glossaryLink": "Woordenboek",
     "blog": "Blog",
     "datenschutz": "Privacybeleid",
@@ -1158,6 +1159,10 @@
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
     "description": "Fancast is het AI-model van park.fan: het voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar."
+  },
+  "bestTime": {
+    "title": "Beste tijd om pretparken te bezoeken",
+    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 150+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park."
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

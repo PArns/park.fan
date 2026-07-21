@@ -220,6 +220,7 @@
     "impressum": "Imprint",
     "howto": "How it works",
     "fancast": "Fancast",
+    "bestTime": "Best time to visit",
     "glossaryLink": "Dictionary",
     "blog": "Blog",
     "datenschutz": "Privacy Policy",
@@ -1158,6 +1159,10 @@
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
     "description": "Fancast is park.fan's AI model: it predicts theme-park crowds and wait times up to 365 days ahead — and grades its own accuracy in the open."
+  },
+  "bestTime": {
+    "title": "Best Time to Visit Theme Parks",
+    "description": "The quietest weekdays and months across 150+ theme parks, from real wait-time data — plus tactics for short queues and a crowd calendar for your park."
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

@@ -220,6 +220,7 @@
     "impressum": "Mentions Légales",
     "howto": "Comment ça marche",
     "fancast": "Fancast",
+    "bestTime": "Meilleure période",
     "glossaryLink": "Dictionnaire",
     "blog": "Blog",
     "datenschutz": "Confidentialité",
@@ -1158,6 +1159,10 @@
   "fancast": {
     "title": "Fancast – notre modèle de prévision des temps d'attente",
     "description": "Fancast est le modèle d'IA de park.fan : il prédit l'affluence et les temps d'attente jusqu'à 365 jours à l'avance et évalue sa précision en public."
+  },
+  "bestTime": {
+    "title": "Meilleure période pour visiter les parcs d'attractions",
+    "description": "Les jours et mois les plus calmes de plus de 150 parcs, à partir de données réelles de temps d'attente — astuces anti-file et calendrier d'affluence."
   },
   "howto": {
     "title": "Comment ça marche – Le guide complet",

@@ -220,6 +220,7 @@
     "impressum": "Impressum",
     "howto": "Anleitung",
     "fancast": "Fancast",
+    "bestTime": "Beste Reisezeit",
     "glossaryLink": "Wörterbuch",
     "blog": "Blog",
     "datenschutz": "Datenschutzerklärung",
@@ -1158,6 +1159,10 @@
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
     "description": "Fancast ist das KI-Prognosemodell von park.fan: Es sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine Genauigkeit öffentlich."
+  },
+  "bestTime": {
+    "title": "Beste Reisezeit für Freizeitparks",
+    "description": "Die ruhigsten Wochentage und Monate aus echten Wartezeit-Daten von 150+ Parks — plus Tricks für kurze Schlangen und der Crowd-Kalender für deinen Park."
   },
   "howto": {
     "title": "So funktioniert es – Die vollständige Anleitung",
