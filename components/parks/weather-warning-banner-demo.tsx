@@ -1,5 +1,8 @@
 'use client';
 
+// Client on purpose: the demo windows are Date.now()-relative — evaluated in the browser
+// per mount they always read "now-ish", while a server render on a static showcase page
+// would bake in build-time dates that look expired days later.
 import { WeatherWarningBanner } from '@/components/parks/weather-warning-banner';
 import type { WeatherWarning } from '@/lib/api/types';
 

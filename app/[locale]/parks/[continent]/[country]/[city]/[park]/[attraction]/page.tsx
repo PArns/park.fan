@@ -59,7 +59,9 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
     locale,
   } = await params;
 
-  const park = await getParkByGeoPath(continent, country, city, parkSlug).catch(() => null);
+  // catchNonFatal (not a bare .catch(() => null)): maintenance/502 must re-throw so an
+  // API outage surfaces the maintenance page instead of a not-found title — same as the body.
+  const park = await catchNonFatal(getParkByGeoPath(continent, country, city, parkSlug));
   const attraction = park?.attractions?.find((a) => a.slug === attractionSlug);
 
   if (!attraction) {

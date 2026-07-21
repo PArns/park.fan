@@ -1,8 +1,10 @@
 'use client';
 
-import { Clock, TrendingUp, TrendingDown, Minus, BarChart3, type LucideIcon } from 'lucide-react';
+import { Clock, BarChart3, type LucideIcon } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
+import { TodayWaitRange } from '@/components/parks/today-wait-range';
+import { TrendIcon } from '@/components/parks/trend-icon';
 import { LocalTime } from '@/components/ui/local-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
@@ -33,13 +35,6 @@ interface AttractionLivePanelProps {
     predictionAccuracy: string;
     trendLabel?: string;
   };
-}
-
-function TrendIcon({ trend, className }: { trend: string; className?: string }) {
-  const t = trend.toLowerCase();
-  if (t === 'down' || t === 'decreasing') return <TrendingDown className={className} />;
-  if (t === 'up' || t === 'increasing') return <TrendingUp className={className} />;
-  return <Minus className={className} />;
 }
 
 const ACCURACY_BADGE_CLASS: Record<AccuracyBadge, string> = {
@@ -114,23 +109,7 @@ export function AttractionLivePanel({
                   </span>
                 )}
               </div>
-              {(minVal != null || maxVal != null) && (
-                <p className="mt-1.5 text-xs">
-                  {minVal != null && (
-                    <span className="text-crowd-low font-medium">
-                      {labels.todayMin} {minVal} {labels.min}
-                    </span>
-                  )}
-                  {minVal != null && maxVal != null && (
-                    <span className="text-muted-foreground mx-1.5">·</span>
-                  )}
-                  {maxVal != null && (
-                    <span className="text-crowd-very-high font-medium">
-                      {labels.todayMax} {maxVal} {labels.min}
-                    </span>
-                  )}
-                </p>
-              )}
+              <TodayWaitRange minVal={minVal} maxVal={maxVal} labels={labels} className="mt-1.5" />
             </>
           ) : (
             <div className="flex items-center gap-2 py-1.5">

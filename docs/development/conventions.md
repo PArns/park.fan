@@ -52,7 +52,7 @@ Favorites are stored in a **cookie** (client) and enriched via **`/api/favorites
 
 ## 7. Experiments and debug
 
-Use **Vercel Toolbar** and **Flags** (`flags.ts`, `app/.well-known/vercel/flags/route.ts`). Do not add custom env-based feature toggles.
+Use the **build-time feature flags** in `lib/config/features.ts` (`NEXT_PUBLIC_*` env vars, default OFF) and the **`?sim=` nearby-simulation** param for geo/debug overrides. Do not add scattered ad-hoc env toggles or per-session flag systems.
 
 → [Flags & Debug](flags-and-debug.md)
 

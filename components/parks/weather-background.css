@@ -379,3 +379,18 @@ html.dark .weather-bg__glass {
     animation: none !important;
   }
 }
+
+/* Pause the declarative animations while the card is scrolled out of view — set
+   imperatively by the IntersectionObserver in weather-background.tsx (the
+   precipitation canvas rAF is gated separately). Paused, not disabled, so the
+   current frame stays put and resumes smoothly when the card scrolls back in. On
+   a hub/listing page with many weather cards this stops every off-screen card's
+   clouds/stars/fog/flash from ticking the compositor. */
+.weather-bg[data-paused='true'] .weather-bg__sun,
+.weather-bg[data-paused='true'] .weather-bg__cloud,
+.weather-bg[data-paused='true'] .weather-bg__fog span,
+.weather-bg[data-paused='true'] .weather-bg__flash,
+.weather-bg[data-paused='true'] .weather-bg__bolt,
+.weather-bg[data-paused='true'] .weather-bg__stars span {
+  animation-play-state: paused;
+}

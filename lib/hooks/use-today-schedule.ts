@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDurationShort } from '@/lib/i18n/time';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
 import type {
@@ -82,7 +82,7 @@ export function useTodaySchedule({
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
   const locale = useLocale();
-  const currentTime = useBrowserNow(60_000);
+  const currentTime = useMinuteNowDate();
 
   const hasParams = !!(continent && country && city && parkSlug);
   const { data: livePark, dataUpdatedAt } = useLiveParkData({

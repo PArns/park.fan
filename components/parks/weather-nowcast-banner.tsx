@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { AlertTriangle, CloudHail, CloudLightning, CloudRain, Wind } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { NowcastUpdateCountdown } from '@/components/parks/nowcast-update-countdown';
 import { NowcastPrecipTimeline } from '@/components/parks/nowcast-precip-timeline';
@@ -221,21 +222,34 @@ export function WeatherNowcastBanner({
   // `now > 0` keeps the banner hidden until the clock mounts, so SSR and hydration agree.
   const banner = useMemo(() => (data && now > 0 ? pickBanner(data, now) : null), [data, now]);
 
-  // Tick per second only while a banner is actually visible (its countdown needs it).
-  // Without a banner — the common case on most park pages — a slow minute tick keeps
-  // `now` fresh enough to surface an upcoming warning, instead of re-rendering the
-  // component every second forever just to return null.
+  // Tick per second only while a banner is actually visible ON SCREEN (its countdown
+  // needs it); scrolled away or in a background tab the fast tick pauses. Without a
+  // banner — the common case on most park pages — a slow minute tick (skipped while
+  // the tab is hidden) keeps `now` fresh enough to surface an upcoming warning,
+  // instead of re-rendering the component every second forever just to return null.
   const hasBanner = banner !== null;
+  const { ref: bannerRef, active: bannerActive } = useActiveOnScreen();
   useEffect(() => {
     // Deferred initial stamp (same pattern as useBrowserNow) — no synchronous
     // set-state-in-effect; the banner appears one tick after mount when applicable.
     const init = window.setTimeout(() => setNow(Date.now()), 0);
-    const id = window.setInterval(() => setNow(Date.now()), hasBanner ? 1_000 : 60_000);
+    const id = window.setInterval(
+      () => {
+        if (!document.hidden) setNow(Date.now());
+      },
+      hasBanner && bannerActive ? 1_000 : 60_000
+    );
+    // Re-stamp when the tab returns so countdowns don't show the pre-hide minute.
+    const onVisibility = () => {
+      if (!document.hidden) setNow(Date.now());
+    };
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
       window.clearTimeout(init);
       window.clearInterval(id);
+      document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, [hasBanner]);
+  }, [hasBanner, bannerActive]);
 
   if (!data || !banner) return null;
 
@@ -325,6 +339,7 @@ export function WeatherNowcastBanner({
 
   return (
     <section
+      ref={bannerRef}
       className={cn(
         'relative rounded-xl border p-4 shadow-sm',
         styles.border,

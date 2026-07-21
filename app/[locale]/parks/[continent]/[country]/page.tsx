@@ -10,7 +10,7 @@ import { getCitiesWithParks, getGeoStructure, getCountrySummary } from '@/lib/ap
 import { catchNonFatal } from '@/lib/api/client';
 import { PageContainer } from '@/components/common/page-container';
 import { PageHeader } from '@/components/common/page-header';
-import { SectionHeader } from '@/components/common/section-header';
+import { SectionHeading } from '@/components/common/section-heading';
 import { BreadcrumbStructuredData, ItemListStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { generateCountryBreadcrumbs } from '@/lib/utils/breadcrumb-utils';
@@ -145,7 +145,8 @@ export default async function CountryPage({ params }: CountryPageProps) {
       <div className="space-y-8">
         {cities.map((city) => (
           <div key={city.slug}>
-            <SectionHeader
+            <SectionHeading
+              variant="plain"
               icon={MapPin}
               title={city.name}
               badge={t('parkCount', { count: city.parkCount })}

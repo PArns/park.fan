@@ -1,6 +1,8 @@
-import { Clock, TrendingUp, TrendingDown, Minus, type LucideIcon } from 'lucide-react';
+import { Clock, type LucideIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { TodayWaitRange } from './today-wait-range';
+import { TrendIcon } from './trend-icon';
 import { WaitTimeSparkline } from './wait-time-sparkline';
 
 interface WaitTimeInfoCardProps {
@@ -29,13 +31,6 @@ interface WaitTimeInfoCardProps {
     trendLabel?: string;
   };
   className?: string;
-}
-
-function TrendIcon({ trend, className }: { trend: string; className?: string }) {
-  const t = trend.toLowerCase();
-  if (t === 'down' || t === 'decreasing') return <TrendingDown className={className} />;
-  if (t === 'up' || t === 'increasing') return <TrendingUp className={className} />;
-  return <Minus className={className} />;
 }
 
 export function WaitTimeInfoCard({
@@ -87,23 +82,7 @@ export function WaitTimeInfoCard({
                     <span className="text-muted-foreground text-xl">{labels.minutes}</span>
                   </div>
 
-                  {(minVal != null || maxVal != null) && (
-                    <p className="text-xs">
-                      {minVal != null && (
-                        <span className="text-crowd-low font-medium">
-                          {labels.todayMin} {minVal} {labels.min}
-                        </span>
-                      )}
-                      {minVal != null && maxVal != null && (
-                        <span className="text-muted-foreground mx-1.5">·</span>
-                      )}
-                      {maxVal != null && (
-                        <span className="text-crowd-very-high font-medium">
-                          {labels.todayMax} {maxVal} {labels.min}
-                        </span>
-                      )}
-                    </p>
-                  )}
+                  <TodayWaitRange minVal={minVal} maxVal={maxVal} labels={labels} />
                 </>
               ) : (
                 <div className="flex items-center gap-2">

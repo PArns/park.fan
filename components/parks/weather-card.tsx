@@ -22,6 +22,7 @@ import { WindCompass } from './wind-compass';
 import { TemperatureUnitToggle } from '@/components/common/temperature-unit-toggle';
 import { Temp, Wind, Precip, Distance } from '@/components/common/unit-display';
 import { getWeatherConfig } from '@/lib/utils/weather-utils';
+import { LiveDot } from '@/components/common/live-dot';
 import { useWeatherNowcast } from '@/lib/hooks/use-weather-nowcast';
 import { useWeatherHourly } from '@/lib/hooks/use-weather-hourly';
 import { useLiveParkData } from '@/lib/hooks/use-live-park-data';
@@ -166,13 +167,11 @@ export function WeatherCard({
               {tParks('weatherLabel')}
               {activeNowcast && (
                 <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
-                  <span className="relative inline-flex h-1.5 w-1.5">
-                    <span
-                      className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500/50"
-                      aria-hidden="true"
-                    />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  </span>
+                  <LiveDot
+                    size="h-1.5 w-1.5"
+                    color="bg-emerald-500"
+                    pingColor="bg-emerald-500/50"
+                  />
                   {t('liveLabel')}
                 </span>
               )}

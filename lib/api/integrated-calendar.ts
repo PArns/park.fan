@@ -22,9 +22,9 @@ const getApiBaseUrl = () => {
  * @param country - Country slug (e.g., "germany")
  * @param city - City slug (e.g., "bruehl")
  * @param parkSlug - Park slug (e.g., "phantasialand")
- * @param from - Start date (YYYY-MM-DD), defaults to today
- * @param to - End date (YYYY-MM-DD), defaults to from + 30 days
- * @param includeHourly - Which days include hourly data (default: "today+tomorrow")
+ * @param options.from - Start date (YYYY-MM-DD), defaults to today
+ * @param options.to - End date (YYYY-MM-DD), defaults to from + 30 days
+ * @param options.includeHourly - Which days include hourly data (default: "today+tomorrow")
  */
 export async function getIntegratedCalendar(
   continent: string,

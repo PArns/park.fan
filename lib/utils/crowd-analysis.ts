@@ -1,6 +1,7 @@
 import { parseISO, getISOWeek, getISOWeekYear } from 'date-fns';
 import { formatInTimeZone } from 'date-fns-tz';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
+import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 
 const CROWD_SCORE: Record<string, number> = {
   very_low: 1,
@@ -10,6 +11,16 @@ const CROWD_SCORE: Record<string, number> = {
   very_high: 5,
   extreme: 6,
 };
+
+/** Inverse of `CROWD_SCORE`: bucket an average crowd score back into a level. */
+export function scoreToCrowdLevel(score: number): ColoredCrowdLevel {
+  if (score <= 1.5) return 'very_low';
+  if (score <= 2.5) return 'low';
+  if (score <= 3.5) return 'moderate';
+  if (score <= 4.5) return 'high';
+  if (score <= 5.5) return 'very_high';
+  return 'extreme';
+}
 
 export interface DayOfWeekStat {
   dayIndex: number; // 0 = Sunday
