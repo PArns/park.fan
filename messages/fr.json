@@ -572,6 +572,7 @@
       "noData": "Pas encore assez de données de prévision disponibles.",
       "bestWeekendDayTitle": "Meilleur jour de week-end",
       "titleCompact": "Meilleure période",
+      "fancastLink": "Prévisions par Fancast",
       "viewCalendarLink": "Voir le calendrier d'affluence complet"
     },
     "weatherWarnings": {
@@ -771,6 +772,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Comment nous le prévoyons : Fancast",
       "aiBadge": "Prévision IA",
       "aiExplainer": "Les temps passés sont des mesures réelles ; les valeurs à venir sont des prévisions par IA.",
       "legendRecorded": "Enregistré",

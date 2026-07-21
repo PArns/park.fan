@@ -572,6 +572,7 @@
       "noData": "Not enough crowd forecast data available yet.",
       "bestWeekendDayTitle": "Best Weekend Day",
       "titleCompact": "Best Time to Visit",
+      "fancastLink": "Forecasts by Fancast",
       "viewCalendarLink": "View full crowd calendar"
     },
     "weatherWarnings": {
@@ -771,6 +772,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "How we predict this: Fancast",
       "aiBadge": "AI forecast",
       "aiExplainer": "Past times are real measurements; upcoming values are AI predictions.",
       "legendRecorded": "Recorded",

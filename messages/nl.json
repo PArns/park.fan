@@ -572,6 +572,7 @@
       "noData": "Nog niet genoeg voorspellingsdata beschikbaar.",
       "bestWeekendDayTitle": "Beste weekenddag",
       "titleCompact": "Beste reistijd",
+      "fancastLink": "Voorspellingen van Fancast",
       "viewCalendarLink": "Volledige druktekalender bekijken"
     },
     "weatherWarnings": {
@@ -771,6 +772,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Hoe we dit voorspellen: Fancast",
       "aiBadge": "AI-voorspelling",
       "aiExplainer": "Tijden in het verleden zijn echte metingen; komende waarden zijn AI-voorspellingen.",
       "legendRecorded": "Geregistreerd",

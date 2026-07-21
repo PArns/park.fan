@@ -572,6 +572,7 @@
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
       "titleCompact": "Beste Reisezeit",
+      "fancastLink": "Prognosen von Fancast",
       "viewCalendarLink": "Vollständigen Crowd-Kalender ansehen"
     },
     "weatherWarnings": {
@@ -771,6 +772,7 @@
       "min": "min.",
       "todayMin": "Min.",
       "todayMax": "Max.",
+      "fancastLink": "Wie wir das vorhersagen: Fancast",
       "aiBadge": "KI-Prognose",
       "aiExplainer": "Vergangene Zeiten sind echte Messungen, künftige Werte sind KI-Vorhersagen.",
       "legendRecorded": "Aufgezeichnet",
