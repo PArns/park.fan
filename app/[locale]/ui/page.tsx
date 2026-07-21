@@ -81,7 +81,7 @@ import { StatsCard } from '@/components/common/stats-card';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { FavoriteStar } from '@/components/common/favorite-star';
 import { GlassCard } from '@/components/common/glass-card';
-import { SectionHeader } from '@/components/common/section-header';
+import { SectionHeading as SectionHeadingPlain } from '@/components/common/section-heading';
 import { OpenStatusProgress } from '@/components/common/open-status-progress';
 import { CompactNumberWithTooltip } from '@/components/common/compact-number-with-tooltip';
 import { StatusInfoCard } from '@/components/common/status-info-card';
@@ -2095,12 +2095,25 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
               </GlassCard>
             </Sub>
 
-            <ComponentLabel name="SectionHeader" file="components/common/section-header.tsx" />
-            <Sub title="SectionHeader — icon + title + optional badge">
+            <ComponentLabel
+              name="SectionHeading (plain)"
+              file="components/common/section-heading.tsx"
+            />
+            <Sub title="SectionHeading variant=plain — icon + title + optional badge">
               <div className="space-y-3">
-                <SectionHeader icon={MapPin} title="Parks in Germany" badge={42} />
-                <SectionHeader icon={Ticket} title="Attractions" />
-                <SectionHeader icon={Wrench} title="Under Refurbishment" badge={3} />
+                <SectionHeadingPlain
+                  variant="plain"
+                  icon={MapPin}
+                  title="Parks in Germany"
+                  badge={42}
+                />
+                <SectionHeadingPlain variant="plain" icon={Ticket} title="Attractions" />
+                <SectionHeadingPlain
+                  variant="plain"
+                  icon={Wrench}
+                  title="Under Refurbishment"
+                  badge={3}
+                />
               </div>
             </Sub>
 

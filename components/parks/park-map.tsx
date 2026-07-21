@@ -1,74 +1,22 @@
 'use client';
 
 import { useEffect, useMemo, useState, useRef } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import L from 'leaflet';
-import type {
-  ParkWithAttractions,
-  ParkAttraction,
-  ParkShow,
-  ParkRestaurant,
-} from '@/lib/api/types';
-import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
+import type L from 'leaflet';
+import type { ParkWithAttractions, ParkAttraction, ParkShow } from '@/lib/api/types';
+import { formatDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { useParkMapGeolocation } from '@/lib/hooks/use-park-map-geolocation';
+import { parkIcon, userIcon } from '@/lib/utils/leaflet-icons';
+import {
+  AttractionMarkers,
+  ShowMarkers,
+  RestaurantMarkers,
+  getNextShowtimeDate,
+} from '@/components/parks/park-map-markers';
 import 'leaflet/dist/leaflet.css';
-
-// Fix for default marker icons in Next.js
-delete (L.Icon.Default.prototype as { _getIconUrl?: unknown })._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png',
-});
-
-// Custom marker icons for different entity types
-const createIcon = (color: string) => {
-  return L.divIcon({
-    className: 'custom-marker',
-    html: `<div style="background-color: ${color}; width: 25px; height: 25px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.3);"><div style="transform: rotate(45deg); width: 100%; height: 100%;"></div></div>`,
-    iconSize: [25, 25],
-    iconAnchor: [12, 25],
-    popupAnchor: [0, -25],
-  });
-};
-
-const parkIcon = createIcon('#3b82f6'); // blue
-const attractionOperatingIcon = createIcon('#10b981'); // green
-const attractionClosedIcon = createIcon('#ef4444'); // red
-const showIcon = createIcon('#a855f7'); // purple
-const restaurantIcon = createIcon('#f97316'); // orange
-
-// Custom eye-catching user location icon with pulsing animation
-const userIcon = L.divIcon({
-  className: 'custom-user-marker',
-  html: `<div style="position: relative; width: 40px; height: 40px; z-index: 1000;">
-    <style>
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 0.4; }
-        50% { transform: scale(1.3); opacity: 0.1; }
-      }
-    </style>
-    <div style="position: absolute; width: 40px; height: 40px; background: radial-gradient(circle, #3b82f6 0%, #2563eb 100%); border-radius: 50%; animation: pulse 2s ease-in-out infinite;"></div>
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); border: 3px solid white; border-radius: 50%; box-shadow: 0 3px 8px rgba(0,0,0,0.4);"></div>
-  </div>`,
-  iconSize: [40, 40],
-  iconAnchor: [20, 20],
-  popupAnchor: [0, -20],
-});
-
-const IN_PARK_THRESHOLD = 1000; // 1km in meters
-
-interface EntityWithDistance {
-  id: string;
-  name: string;
-  type: 'attraction' | 'show' | 'restaurant';
-  distance: number;
-  latitude: number;
-  longitude: number;
-  data: ParkAttraction | ParkShow | ParkRestaurant;
-}
 
 // MapBoundsUpdater removed to prevent zoom reset loop
 
@@ -137,19 +85,6 @@ function getWaitTime(attraction: ParkAttraction): number | null {
   return standbyQueue?.waitTime ?? null;
 }
 
-// Returns the next future showtime as a Date, or null if none remain
-function getNextShowtimeDate(show: ParkShow): Date | null {
-  if (!show.showtimes || show.showtimes.length === 0) return null;
-
-  const now = new Date();
-  const futureShowtimes = show.showtimes
-    .map((st) => new Date(st.startTime))
-    .filter((time: Date) => time > now)
-    .sort((a: Date, b: Date) => a.getTime() - b.getTime());
-
-  return futureShowtimes[0] ?? null;
-}
-
 // Returns the next show time as a relative string (e.g. "45 min"), used in the in-park panel
 function getNextShowTime(show: ParkShow): string | null {
   const nextShow = getNextShowtimeDate(show);
@@ -172,40 +107,11 @@ interface ParkMapProps {
 
 export function ParkMap({ park }: ParkMapProps) {
   const t = useTranslations('parks.mapMarkers');
-  const tParks = useTranslations('parks');
   const tCommon = useTranslations('common');
-  const locale = useLocale();
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [userHasZoomed, setUserHasZoomed] = useState(false);
   // Shared once-per-minute clock (paused in hidden tabs) re-renders the relative
   // time labels in the popups — replaces a private always-on 60 s interval.
   useMinuteNow();
-
-  const requestLocation = () => {
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        setUserLocation({ lat: latitude, lng: longitude });
-      },
-      () => {
-        // User denied or position unavailable — expected, no action needed
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 10000,
-        maximumAge: 300000, // Cache position for 5 minutes
-      }
-    );
-  };
-
-  // Automatically request location on mount (GDPR compliant - no cookie storage)
-  useEffect(() => {
-    if (typeof navigator !== 'undefined' && navigator.geolocation) {
-      requestLocation();
-    }
-  }, []);
 
   const validAttractions = useMemo(
     () =>
@@ -228,115 +134,12 @@ export function ParkMap({ park }: ParkMapProps) {
     [park.restaurants]
   );
 
-  const { nearbyEntities, distanceToPark, isInPark } = useMemo(() => {
-    if (!userLocation || !park.latitude || !park.longitude) {
-      return { nearbyEntities: [] as EntityWithDistance[], distanceToPark: null, isInPark: false };
-    }
-
-    const dist = calculateDistance(
-      userLocation.lat,
-      userLocation.lng,
-      park.latitude,
-      park.longitude
-    );
-    const inPark = dist < IN_PARK_THRESHOLD;
-
-    if (!inPark) {
-      return { nearbyEntities: [] as EntityWithDistance[], distanceToPark: dist, isInPark: false };
-    }
-
-    const entities: EntityWithDistance[] = [];
-
-    validAttractions.forEach((attraction) => {
-      if (attraction.latitude && attraction.longitude) {
-        entities.push({
-          id: attraction.id,
-          name: stripNewPrefix(attraction.name),
-          type: 'attraction',
-          distance: calculateDistance(
-            userLocation.lat,
-            userLocation.lng,
-            attraction.latitude,
-            attraction.longitude
-          ),
-          latitude: attraction.latitude,
-          longitude: attraction.longitude,
-          data: attraction,
-        });
-      }
-    });
-
-    validShows.forEach((show) => {
-      if (show.latitude && show.longitude) {
-        entities.push({
-          id: show.id,
-          name: stripNewPrefix(show.name),
-          type: 'show',
-          distance: calculateDistance(
-            userLocation.lat,
-            userLocation.lng,
-            show.latitude,
-            show.longitude
-          ),
-          latitude: show.latitude,
-          longitude: show.longitude,
-          data: show,
-        });
-      }
-    });
-
-    validRestaurants.forEach((restaurant) => {
-      if (restaurant.latitude && restaurant.longitude) {
-        entities.push({
-          id: restaurant.id,
-          name: stripNewPrefix(restaurant.name),
-          type: 'restaurant',
-          distance: calculateDistance(
-            userLocation.lat,
-            userLocation.lng,
-            restaurant.latitude,
-            restaurant.longitude
-          ),
-          latitude: restaurant.latitude,
-          longitude: restaurant.longitude,
-          data: restaurant,
-        });
-      }
-    });
-
-    return {
-      nearbyEntities: entities.sort((a, b) => a.distance - b.distance).slice(0, 5),
-      distanceToPark: dist,
-      isInPark: true,
-    };
-  }, [userLocation, park.latitude, park.longitude, validAttractions, validShows, validRestaurants]);
-
-  // When in-park, follow the visitor via watchPosition for responsive
-  // nearby-entity updates. Unlike the old 5s getCurrentPosition poll this lets
-  // the browser drive the geolocation hardware (callbacks only on movement) —
-  // no fixed-interval wakeups, far less battery/CPU on the device actually
-  // walking around a park. Outside the park the geolocation context already
-  // refreshes at 5-min intervals.
-  useEffect(() => {
-    if (!isInPark || typeof navigator === 'undefined' || !navigator.geolocation) return;
-    const watchId = navigator.geolocation.watchPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        // Preserve identity while stationary so an unchanged fix doesn't
-        // re-render the map tree.
-        setUserLocation((prev) =>
-          prev && prev.lat === latitude && prev.lng === longitude
-            ? prev
-            : { lat: latitude, lng: longitude }
-        );
-      },
-      () => {
-        // Permission revoked or position unavailable — keep the last fix.
-      },
-      { enableHighAccuracy: false, timeout: 10000, maximumAge: 5000 }
-    );
-    return () => navigator.geolocation.clearWatch(watchId);
-  }, [isInPark]);
+  const { userLocation, nearbyEntities, distanceToPark, isInPark } = useParkMapGeolocation(
+    park,
+    validAttractions,
+    validShows,
+    validRestaurants
+  );
 
   // Fallback center (use user location if in park, otherwise park center)
   const center: L.LatLngExpression =
@@ -400,101 +203,9 @@ export function ParkMap({ park }: ParkMapProps) {
           </Marker>
         )}
 
-        {/* Attraction markers */}
-        {validAttractions.map((attraction) => {
-          const isOperating = attraction.status === 'OPERATING';
-          const icon = isOperating ? attractionOperatingIcon : attractionClosedIcon;
-
-          // Get wait time from queues
-          const standbyQueue = attraction.queues?.find((q) => q.queueType === 'STANDBY');
-          const waitTime = standbyQueue?.waitTime;
-
-          return (
-            <Marker
-              key={attraction.id}
-              position={[attraction.latitude!, attraction.longitude!]}
-              icon={icon}
-            >
-              <Popup>
-                <div>
-                  <div className="font-semibold">{stripNewPrefix(attraction.name)}</div>
-                  {attraction.land && (
-                    <div className="text-muted-foreground text-xs">{attraction.land}</div>
-                  )}
-                  {attraction.status && (
-                    <div className="mt-1 text-xs">
-                      {t('status')}:{' '}
-                      <span
-                        className={isOperating ? 'text-status-operating' : 'text-status-closed'}
-                      >
-                        {tParks(`status.${attraction.status}`)}
-                      </span>
-                    </div>
-                  )}
-                  {waitTime !== null && waitTime !== undefined && (
-                    <div className="mt-1 text-xs">
-                      {t('waitTime')}: <span className="font-semibold">{waitTime} min</span>
-                    </div>
-                  )}
-                  {attraction.crowdLevel && (
-                    <div className="mt-1 text-xs">
-                      {t('crowdLevel')}:{' '}
-                      <span className="font-semibold">
-                        {tParks(`crowdLevels.${attraction.crowdLevel}`)}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              </Popup>
-            </Marker>
-          );
-        })}
-
-        {/* Show markers */}
-        {validShows.map((show) => (
-          <Marker key={show.id} position={[show.latitude!, show.longitude!]} icon={showIcon}>
-            <Popup>
-              <div>
-                <div className="font-semibold">{stripNewPrefix(show.name)}</div>
-                <div className="text-muted-foreground text-xs">{t('show')}</div>
-                {(() => {
-                  const nextShowtime = getNextShowtimeDate(show);
-                  return nextShowtime ? (
-                    <div className="mt-1 text-xs">
-                      {t('nextShowtime')}:{' '}
-                      {nextShowtime.toLocaleTimeString(locale, {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        timeZone: park.timezone,
-                      })}
-                    </div>
-                  ) : null;
-                })()}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-
-        {/* Restaurant markers */}
-        {validRestaurants.map((restaurant) => (
-          <Marker
-            key={restaurant.id}
-            position={[restaurant.latitude!, restaurant.longitude!]}
-            icon={restaurantIcon}
-          >
-            <Popup>
-              <div>
-                <div className="font-semibold">{stripNewPrefix(restaurant.name)}</div>
-                <div className="text-muted-foreground text-xs">{t('restaurant')}</div>
-                {restaurant.cuisineType && (
-                  <div className="mt-1 text-xs">
-                    {t('cuisine')}: {restaurant.cuisineType}
-                  </div>
-                )}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        <AttractionMarkers attractions={validAttractions} />
+        <ShowMarkers shows={validShows} timezone={park.timezone} />
+        <RestaurantMarkers restaurants={validRestaurants} />
       </MapContainer>
 
       {/* Location Info Panel */}

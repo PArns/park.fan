@@ -4,7 +4,7 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
-## Unreleased – refactor: code-quality sweep (dedup, client→server, repaint gates, stale docs)
+## Unreleased – refactor: code-quality sweep (dedup, component splits, client→server, repaint gates, stale docs)
 
 Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior changes intended.
 
@@ -28,6 +28,22 @@ Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior c
 - **Best practices:** added `app/global-error.tsx` (branded last-resort boundary); attraction
   `generateMetadata` uses `catchNonFatal` (maintenance outages no longer masked as not-found);
   `components/ui/progress.tsx` dropped `forwardRef` (React 19 ref prop).
+- **Large-component splits (behaviour-identical):** `search-dialog` 651→350 (data layer →
+  `lib/hooks/use-search-results.ts`, rows → `search-result-items.tsx`), `tabs-with-hash` 631→328
+  (`use-tab-hash-routing` + `use-attraction-filter` hooks, `park-tabs-list` + `off-season-toggle`
+  components), `park-map` ~550→263 (`lib/utils/leaflet-icons.ts`, `use-park-map-geolocation` hook,
+  `park-map-markers` components), and `nearby-parks-card` split into a state-router + view/analytics
+  pieces.
+- **More dedup:** merged the two near-identical `SectionHeader`/`SectionHeading` components into one
+  (`variant="plain"` absorbs the old `SectionHeader`; former component deleted, 2 call sites
+  migrated); new `GlassSectionTitle` replaces the frosted section-title pill copy-pasted 6× across
+  `nearby-parks-card`/`favorites-section`; new `<LiveDot>` primitive replaces the pulse/ping "live"
+  dot hand-rolled in the live ticker, ML badge, weather-card and training-status badge.
+- **More repaint gates:** `weather-background`'s declarative CSS animations (clouds/stars/fog/flash)
+  now pause via `animation-play-state` when the card scrolls offscreen (IntersectionObserver →
+  `data-paused`, no scroll-time re-renders); the precipitation canvas was already gated.
+- **Version:** `package.json` bumped 2.10.0 → 2.10.1 to match the latest released changelog entry
+  (was lagging).
 - **Stale docs/comments fixed:** removed the long-gone Vercel Toolbar/Flags + `debug-geo-mode`
   subsystem from 8 docs + `.env.example`; caching-strategy doc got a "superseded" note (PPR →
   force-dynamic reality); `cache-config.ts` comments now reference `PARK_REVALIDATE`/

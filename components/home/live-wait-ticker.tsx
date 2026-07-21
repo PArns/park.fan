@@ -8,6 +8,7 @@ import { TrendingUp, TrendingDown } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { TickerItem } from '@/lib/api/types';
 import { CROWD_OUTLINE_CLASS } from '@/lib/utils/crowd-level-styles';
+import { LiveDot } from '@/components/common/live-dot';
 
 const crowdBorderColor: Record<string, string> = CROWD_OUTLINE_CLASS;
 
@@ -207,7 +208,7 @@ export function LiveWaitTicker({ initialItems }: LiveWaitTickerProps) {
     >
       {/* Label — fixed left, never scrolls */}
       <div className="border-border/60 flex shrink-0 items-center gap-1.5 border-r px-3 dark:border-white/10">
-        <span className="size-1.5 shrink-0 animate-pulse rounded-full bg-green-500" />
+        <LiveDot variant="pulse" size="size-1.5" color="bg-green-500" className="shrink-0" />
         <span className="font-mono text-[10px] font-bold tracking-wide whitespace-nowrap text-green-600 uppercase dark:text-green-400">
           <span className="sm:hidden">LIVE</span>
           <span className="hidden sm:inline">{t('liveWaitTimes')}</span>

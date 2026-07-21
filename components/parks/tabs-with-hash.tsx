@@ -1,40 +1,28 @@
 'use client';
 
-import { useEffect, useState, useRef, useMemo, useDeferredValue } from 'react';
-import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
-import {
-  Search,
-  EyeOff,
-  Eye,
-  Zap,
-  Sparkles,
-  UtensilsCrossed,
-  CalendarDays,
-  Map,
-} from 'lucide-react';
-import Fuse from 'fuse.js';
+import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, Map } from 'lucide-react';
 import { Input } from '@/components/ui/input';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { ShowCard } from '@/components/parks/show-card';
 import { AttractionWaitOverview } from '@/components/parks/attraction-wait-overview';
 import { LandSection } from '@/components/parks/land-section';
 import { LazyMount } from '@/components/parks/lazy-mount';
 import { RestaurantCard } from '@/components/parks/restaurant-card';
 import { RopeDropHeadliners } from '@/components/parks/rope-drop-headliners';
+import { ParkTabsList } from '@/components/parks/park-tabs-list';
+import { OffSeasonToggle } from '@/components/parks/off-season-toggle';
+import { useTabHashRouting } from '@/lib/hooks/use-tab-hash-routing';
+import { useAttractionFilter } from '@/lib/hooks/use-attraction-filter';
 import { stripNewPrefix } from '@/lib/utils';
-import { cn } from '@/lib/utils';
-import { trackTabChanged, type TabChangedProps } from '@/lib/analytics/umami';
 
 import type {
   ParkWithAttractions,
   IntegratedCalendarResponse,
   ParkAttraction,
 } from '@/lib/api/types';
-
-/** Seasonal entities count as in season unless the API explicitly says otherwise. */
-const isInSeason = (x: { isCurrentlyInSeason?: boolean | null }) => x.isCurrentlyInSeason !== false;
 
 // Dynamic import to avoid SSR issues with Leaflet and reduce bundle size
 const ParkMap = dynamic(() => import('@/components/parks/park-map').then((mod) => mod.ParkMap), {
@@ -75,242 +63,35 @@ export function TabsWithHash({
   landNames,
   attractionsByLand,
 }: TabsWithHashProps) {
-  const pathname = usePathname();
   const t = useTranslations('parks');
 
-  // Initialize with defaultValue to match server rendering (avoids hydration mismatch)
-  const [activeTab, setActiveTab] = useState(defaultValue);
-  const [searchQuery, setSearchQuery] = useState('');
+  const { isMounted, activeTab, handleTabChange, tabsRef } = useTabHashRouting({
+    defaultValue,
+    park,
+  });
+
+  const {
+    inputRef,
+    searchQuery,
+    setSearchQuery,
+    isSearching,
+    filteredAttractionsByLand,
+    hasSearchResults,
+    headliners,
+    offSeasonAttractionCount,
+    showOffSeasonAttractions,
+    setShowOffSeasonAttractions,
+    visibleShows,
+    offSeasonShowCount,
+    showOffSeasonShows,
+    setShowOffSeasonShows,
+  } = useAttractionFilter({
+    attractionsByLand,
+    shows: park.shows,
+    activeTab,
+  });
+
   const [isFocused, setIsFocused] = useState(false);
-  const [showOffSeasonAttractions, setShowOffSeasonAttractions] = useState(false);
-  const [showOffSeasonShows, setShowOffSeasonShows] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  // Avoid hydration mismatch by only rendering after mount
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsMounted(true);
-  }, []);
-
-  const tabsRef = useRef<HTMLDivElement>(null);
-
-  // Sync with URL hash on mount and on hash change
-  useEffect(() => {
-    if (!isMounted) return;
-
-    const handleHashChange = () => {
-      const hash = window.location.hash.slice(1);
-
-      // Check if hash starts with 'calendar' (e.g., 'calendar' or 'calendar-2026-04')
-      let tabToActivate = hash;
-      if (hash.startsWith('calendar-')) {
-        tabToActivate = 'calendar';
-      }
-
-      const validTabs = ['attractions', 'shows', 'restaurants', 'calendar', 'map'];
-      if (validTabs.includes(tabToActivate)) {
-        setActiveTab(tabToActivate);
-
-        // Scroll with a manual offset calculation for better reliability
-        setTimeout(() => {
-          const tabsContainer = tabsRef.current;
-
-          if (tabsContainer) {
-            // Prefer scrolling to the tabs container to show the navigation
-            const headerOffset = 100; // Account for sticky header
-            const elementPosition = tabsContainer.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth',
-            });
-          }
-        }, 500);
-      }
-    };
-
-    // Check hash on mount/update
-    handleHashChange();
-
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [isMounted]);
-
-  // Clear search on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && searchQuery) {
-        setSearchQuery('');
-        // Optional: blur input if desired, but keeping focus is usually better for UX
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [searchQuery]);
-
-  // Auto-focus on typing
-  useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => {
-      // Only trigger if attractions tab is active
-      if (activeTab !== 'attractions') return;
-
-      // Ignore if user is already typing in an input
-      if (
-        document.activeElement?.tagName === 'INPUT' ||
-        document.activeElement?.tagName === 'TEXTAREA' ||
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement
-      ) {
-        return;
-      }
-
-      // Ignore modifiers
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
-
-      // Only trigger on single character keys (letters, numbers, etc.)
-      if (e.key.length === 1) {
-        inputRef.current?.focus();
-      }
-    };
-
-    window.addEventListener('keydown', handleGlobalKeyDown);
-    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-  }, [activeTab]);
-
-  // Update URL hash when tab changes
-  const handleTabChange = (value: string) => {
-    setActiveTab(value);
-
-    const tab = value as TabChangedProps['tab'];
-    if (['attractions', 'calendar', 'map', 'shows', 'restaurants'].includes(tab)) {
-      trackTabChanged({
-        tab,
-        ...(park.id && { parkId: String(park.id) }),
-        ...(park.name && { parkName: stripNewPrefix(park.name) }),
-      });
-    }
-
-    // Preserve calendar month hash if switching to calendar tab
-    let newHash = value;
-    if (value === 'calendar') {
-      const currentHash = window.location.hash.slice(1);
-      // If current hash is calendar-YYYY-MM, keep it
-      if (currentHash.match(/^calendar-\d{4}-\d{2}$/)) {
-        newHash = currentHash;
-      }
-    }
-
-    // Update URL hash without triggering navigation
-    window.history.replaceState(null, '', `${pathname}#${newHash}`);
-  };
-
-  // Headliner attractions sorted by wait time (operating first, then no-wait, then closed)
-  const headliners = useMemo(() => {
-    const all = Object.values(attractionsByLand)
-      .flat()
-      .filter((a) => a.isHeadliner && (showOffSeasonAttractions || isInSeason(a)));
-
-    // Pre-calculate wait times to avoid repeated find() calls in sort comparator (Schwartzian transform)
-    return all
-      .map((a) => ({
-        a,
-        wait: a.queues?.find((q) => q.queueType === 'STANDBY')?.waitTime ?? null,
-      }))
-      .sort((a, b) => {
-        if (a.wait !== null && b.wait !== null) return b.wait - a.wait;
-        if (a.wait !== null) return -1;
-        if (b.wait !== null) return 1;
-        return 0;
-      })
-      .map((item) => item.a);
-  }, [attractionsByLand, showOffSeasonAttractions]);
-
-  // Reverse map: attraction id → land key as used in attractionsByLand (preserves translated fallback label)
-  const attractionLandKey = useMemo(() => {
-    const map: Record<string, string> = {};
-    Object.entries(attractionsByLand).forEach(([land, attractions]) => {
-      attractions.forEach((a) => {
-        map[a.id] = land;
-      });
-    });
-    return map;
-  }, [attractionsByLand]);
-
-  const fuse = useMemo(() => {
-    const allAttractions = Object.values(attractionsByLand).flat();
-    return new Fuse(allAttractions, {
-      keys: [
-        { name: 'name', weight: 0.8 },
-        { name: 'slug', weight: 0.8 },
-        { name: 'land', weight: 0.5 },
-        { name: 'queues.queueType', weight: 0.3 },
-      ],
-      threshold: 0.3,
-      distance: 100,
-      ignoreLocation: true,
-      minMatchCharLength: 2,
-    });
-  }, [attractionsByLand]);
-
-  // Off-season filtering
-  const offSeasonAttractionCount = useMemo(
-    () =>
-      Object.values(attractionsByLand)
-        .flat()
-        .filter((a) => !isInSeason(a)).length,
-    [attractionsByLand]
-  );
-
-  const offSeasonShowCount = useMemo(
-    () => (park.shows ?? []).filter((s) => !isInSeason(s)).length,
-    [park.shows]
-  );
-
-  const inSeasonAttractionsByLand = useMemo(() => {
-    if (showOffSeasonAttractions || offSeasonAttractionCount === 0) return attractionsByLand;
-    const result: Record<string, ParkAttraction[]> = {};
-    for (const [land, attractions] of Object.entries(attractionsByLand)) {
-      const filtered = attractions.filter(isInSeason);
-      if (filtered.length > 0) result[land] = filtered;
-    }
-    return result;
-  }, [attractionsByLand, showOffSeasonAttractions, offSeasonAttractionCount]);
-
-  const visibleShows = useMemo(() => {
-    if (showOffSeasonShows || offSeasonShowCount === 0) return park.shows ?? [];
-    return (park.shows ?? []).filter(isInSeason);
-  }, [park.shows, showOffSeasonShows, offSeasonShowCount]);
-
-  // Keep typing responsive on big parks: the input updates `searchQuery` synchronously, but the
-  // expensive Fuse search + full attraction-grid re-render run against a DEFERRED copy at lower
-  // priority, so each keystroke paints immediately instead of blocking on the filter. This was the
-  // dominant mobile-INP cost (~700 ms/keystroke on a 96-attraction park): it used to run unmemoized
-  // in the render body, so every keystroke re-ran the fuzzy search + re-rendered every land before
-  // the next paint. `useMemo` also stops it recomputing on unrelated re-renders (the 5-min poll).
-  const deferredQuery = useDeferredValue(searchQuery);
-  const isSearching = deferredQuery.trim() !== '';
-
-  const filteredAttractionsByLand = useMemo(() => {
-    const q = deferredQuery.trim();
-    if (q === '') return inSeasonAttractionsByLand;
-    return fuse
-      .search(q)
-      .map((result) => result.item)
-      .filter((a) => showOffSeasonAttractions || isInSeason(a))
-      .reduce(
-        (acc, attraction) => {
-          const land = attractionLandKey[attraction.id] ?? attraction.land ?? 'Other';
-          (acc[land] ??= []).push(attraction);
-          return acc;
-        },
-        {} as Record<string, ParkAttraction[]>
-      );
-  }, [deferredQuery, inSeasonAttractionsByLand, fuse, showOffSeasonAttractions, attractionLandKey]);
-
-  const hasSearchResults = Object.keys(filteredAttractionsByLand).length > 0;
 
   // Pre-mount (SSR + first client render): render the server-renderable wait-time OVERVIEW
   // instead of a skeleton. This is the ONLY attractions markup crawlers see without JS —
@@ -321,42 +102,11 @@ export function TabsWithHash({
     return (
       <div ref={tabsRef} className="scroll-mt-20">
         <Tabs value={defaultValue}>
-          <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
-            <TabsTrigger
-              value="attractions"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              {t('attractions')} ({park.attractions?.length || 0})
-            </TabsTrigger>
-            <TabsTrigger
-              value="calendar"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              {t('calendar')}
-            </TabsTrigger>
-            <TabsTrigger
-              value="map"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              {t('map')}
-            </TabsTrigger>
-            {showsAvailable && (
-              <TabsTrigger
-                value="shows"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                {t('shows')} ({park.shows?.length || 0})
-              </TabsTrigger>
-            )}
-            {restaurantsAvailable && (
-              <TabsTrigger
-                value="restaurants"
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                {t('restaurants')} ({park.restaurants?.length || 0})
-              </TabsTrigger>
-            )}
-          </TabsList>
+          <ParkTabsList
+            park={park}
+            showsAvailable={showsAvailable}
+            restaurantsAvailable={restaurantsAvailable}
+          />
           <TabsContent value={defaultValue} className="space-y-6">
             <AttractionWaitOverview
               park={park}
@@ -373,42 +123,11 @@ export function TabsWithHash({
   return (
     <div ref={tabsRef} className="scroll-mt-20">
       <Tabs value={activeTab} onValueChange={handleTabChange}>
-        <TabsList className="border-border/50 bg-background/60 mb-6 flex h-auto w-full flex-wrap justify-start border backdrop-blur-md">
-          <TabsTrigger
-            value="attractions"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-          >
-            {t('attractions')} ({park.attractions?.length || 0})
-          </TabsTrigger>
-          <TabsTrigger
-            value="calendar"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-          >
-            {t('calendar')}
-          </TabsTrigger>
-          <TabsTrigger
-            value="map"
-            className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-          >
-            {t('map')}
-          </TabsTrigger>
-          {showsAvailable && (
-            <TabsTrigger
-              value="shows"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              {t('shows')} ({park.shows?.length || 0})
-            </TabsTrigger>
-          )}
-          {restaurantsAvailable && (
-            <TabsTrigger
-              value="restaurants"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-            >
-              {t('restaurants')} ({park.restaurants?.length || 0})
-            </TabsTrigger>
-          )}
-        </TabsList>
+        <ParkTabsList
+          park={park}
+          showsAvailable={showsAvailable}
+          restaurantsAvailable={restaurantsAvailable}
+        />
 
         <TabsContent
           value="attractions"
@@ -420,22 +139,11 @@ export function TabsWithHash({
               {t('attractions')}
             </h2>
             {offSeasonAttractionCount > 0 && (
-              <button
-                onClick={() => setShowOffSeasonAttractions((v) => !v)}
-                className={cn(
-                  'flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md transition-colors',
-                  showOffSeasonAttractions
-                    ? 'border-primary/30 bg-primary/15 text-primary dark:bg-primary/10'
-                    : 'border-border/60 bg-background/60 text-muted-foreground hover:border-primary/30 hover:text-foreground dark:bg-[oklch(0.12_0.025_241_/_0.55)]'
-                )}
-              >
-                {showOffSeasonAttractions ? (
-                  <Eye className="h-3 w-3" />
-                ) : (
-                  <EyeOff className="h-3 w-3" />
-                )}
-                {t('offSeasonCount', { count: offSeasonAttractionCount })}
-              </button>
+              <OffSeasonToggle
+                count={offSeasonAttractionCount}
+                shown={showOffSeasonAttractions}
+                onToggle={() => setShowOffSeasonAttractions((v) => !v)}
+              />
             )}
           </div>
           {/* Attractions grouped by Land */}
@@ -538,22 +246,11 @@ export function TabsWithHash({
                 {t('shows')}
               </h2>
               {offSeasonShowCount > 0 && (
-                <button
-                  onClick={() => setShowOffSeasonShows((v) => !v)}
-                  className={cn(
-                    'flex items-center gap-1.5 rounded-md border px-2 py-1 text-xs shadow-md backdrop-blur-md transition-colors',
-                    showOffSeasonShows
-                      ? 'border-primary/30 bg-primary/15 text-primary dark:bg-primary/10'
-                      : 'border-border/60 bg-background/60 text-muted-foreground hover:border-primary/30 hover:text-foreground dark:bg-[oklch(0.12_0.025_241_/_0.55)]'
-                  )}
-                >
-                  {showOffSeasonShows ? (
-                    <Eye className="h-3 w-3" />
-                  ) : (
-                    <EyeOff className="h-3 w-3" />
-                  )}
-                  {t('offSeasonCount', { count: offSeasonShowCount })}
-                </button>
+                <OffSeasonToggle
+                  count={offSeasonShowCount}
+                  shown={showOffSeasonShows}
+                  onToggle={() => setShowOffSeasonShows((v) => !v)}
+                />
               )}
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

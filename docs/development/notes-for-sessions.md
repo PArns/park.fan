@@ -80,6 +80,13 @@ Reminders and context for AI or human sessions working on the codebase.
     - Kein Hardcoding von Locales in Redirect-Destinations (z.B. `/en/parks/…`); stattdessen ohne Locale-Prefix damit next-intl die Locale per Accept-Language erkennt
       → [Routing & URLs](../architecture/routing-and-urls.md)
 
+19. **Shared UI-Primitives (reuse-Regel, siehe CLAUDE.md)** — vor dem Inline-Bauen prüfen:
+    - **Crowd-Level-Farben/Schwellen** → `lib/utils/crowd-level-styles.ts` (`CROWD_TEXT_CLASS` / `CROWD_BADGE_CLASS` / `CROWD_OUTLINE_CLASS` / `CROWD_CHIP_CLASS`, `CROWD_LEVEL_ORDER`, `waitTimeCrowdTier`). Nie eine weitere `crowd → Farbe`-Map anlegen. Score→Level: `scoreToCrowdLevel` in `lib/utils/crowd-analysis.ts`.
+    - **Section-Header** → `SectionHeading` (`components/common/section-heading.tsx`): `variant="chapter"` (default, Icon-Kachel) oder `variant="plain"` (schlichtes Icon+Titel+optional Badge). `SectionHeader` gibt es nicht mehr.
+    - **Frosted-Glass-Titel-Pill** über Hero/Bildern → `GlassSectionTitle` (`components/parks/glass-section-title.tsx`).
+    - **„Live"-Punkt** (pulsierend oder Ping-Ring) → `LiveDot` (`components/common/live-dot.tsx`, `variant="pulse" | "ping"`).
+    - **Wartezeit-Min/Max-Zeile** → `TodayWaitRange`; **Trend-Pfeil** → `TrendIcon` (beide `components/parks/`).
+
 ---
 
 ## Related
