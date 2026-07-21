@@ -428,7 +428,7 @@ in anticipo, in sostanza non modella altro che queste due grandezze: la
 di tutti gli usi che oggi si fanno della sua formula. E siccome ci
 fidiamo dei numeri solo quando devono dimostrarsi: quanto spesso le
 nostre previsioni azzeccano la realtà è pubblico sulla
-[pagina How-to](/howto) — barare non serve.
+[pagina di Fancast](/fancast) — barare non serve.
 
 ## Perché Peter Pan's Flight «esplode» sempre
 

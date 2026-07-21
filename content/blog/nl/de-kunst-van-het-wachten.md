@@ -410,7 +410,7 @@ twee grootheden: **vraag** (hoeveel mensen willen vandaag naar deze baan?) en
 zijn waarvoor zijn formule tegenwoordig zoal wordt gebruikt. En omdat we
 cijfers pas vertrouwen als ze zich moeten bewijzen: hoe vaak onze
 voorspellingen de werkelijkheid raken, staat openbaar op de
-[how-to-pagina](/howto) — sjoemelen zinloos.
+[Fancast-pagina](/fancast) — sjoemelen zinloos.
 
 ## Waarom Peter Pan's Flight altijd „escaleert"
 

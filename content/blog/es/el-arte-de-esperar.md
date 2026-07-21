@@ -426,7 +426,7 @@ el fondo no modela otra cosa que esas dos magnitudes: la **demanda**
 cuántas cosas se usa hoy su fórmula. Y como solo nos fiamos de los
 números cuando tienen que demostrarse: con qué frecuencia nuestras
 predicciones aciertan con la realidad está publicado en la
-[página How-to](/howto) — hacer trampas no sirve de nada.
+[página de Fancast](/fancast) — hacer trampas no sirve de nada.
 
 ## Por qué Peter Pan's Flight siempre «se dispara»
 

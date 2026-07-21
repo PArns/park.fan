@@ -220,7 +220,7 @@ Tage** im Voraus einschätzen. Und weil ich Zahlen grundsätzlich nur
 traue, wenn sie sich beweisen müssen: Das Modell benotet sich selbst.
 Jede Vorhersage wird später gegen die tatsächlich gemessene Wartezeit
 gehalten, und die Trefferquoten stehen offen auf der
-[How-to-Seite](/howto) — schummeln zwecklos.
+[Fancast-Seite](/fancast) — schummeln zwecklos.
 
 ## Wann ist der beste Tag? Lohnt sich ein Sonntag?
 

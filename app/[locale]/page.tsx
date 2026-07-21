@@ -350,7 +350,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <GlossaryInject>{tHome('about.p5')}</GlossaryInject>
           </p>
 
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/howto"
               prefetch={false}
@@ -358,6 +358,14 @@ export default async function HomePage({ params }: HomePageProps) {
             >
               <BookOpen className="h-4 w-4" />
               {tHome('about.howtoLink')}
+            </Link>
+            <Link
+              href="/fancast"
+              prefetch={false}
+              className="border-primary/40 text-primary hover:bg-primary/10 inline-flex items-center gap-2 rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors"
+            >
+              <Sparkles className="h-4 w-4" />
+              {tHome('about.fancastLink')}
             </Link>
           </div>
         </div>

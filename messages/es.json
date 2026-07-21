@@ -196,6 +196,7 @@
       "howTitle": "¿Cómo usar park.fan?",
       "p4": "Busca tu parque en la barra de búsqueda o navega por continente, país y ciudad. En la página del parque encontrarás tiempos de espera en vivo para cada atracción, restaurante y espectáculo — actualizados cada minuto — junto con predicciones de afluencia y un calendario diario. Los días verdes señalan colas cortas; los días naranja o rojos indican mayor afluencia y esperas más largas.",
       "p5": "park.fan es un proyecto vivo, en constante evolución con nuevas funciones y parques. Guarda tus parques favoritos para acceder rápido, usa la navegación en el parque para planificar la ruta más eficiente, y consulta siempre el calendario de afluencia antes de reservar para elegir el mejor día posible.",
+      "fancastLink": "Descubre Fancast",
       "howtoLink": "Leer la guía completa"
     }
   },
@@ -599,6 +600,7 @@
       "extreme": "Extremadamente lleno: esperas muy largas. Llega temprano o usa Fast Lane."
     },
     "dayDetail": {
+      "fancastLink": "Cómo lo predecimos: Fancast",
       "forecastLabel": "Previsión",
       "hourlyTitle": "Previsión por horas",
       "holidaysTitle": "Festivos y vacaciones escolares",

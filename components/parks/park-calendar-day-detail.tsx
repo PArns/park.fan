@@ -22,6 +22,7 @@ import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Link } from '@/i18n/navigation';
 import {
   Dialog,
   DialogContent,
@@ -316,6 +317,15 @@ export function ParkCalendarDayDetail({
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   {t(`crowdMeaning.${meaningLevel}`)}
                 </p>
+              )}
+              {showLiveSplit && (
+                <Link
+                  href="/fancast"
+                  className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+                >
+                  {t('dayDetail.fancastLink')}
+                  <ChevronRight className="h-3 w-3" aria-hidden="true" />
+                </Link>
               )}
             </section>
           )}

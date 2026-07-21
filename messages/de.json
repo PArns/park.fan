@@ -196,6 +196,7 @@
       "howTitle": "Wie nutze ich park.fan?",
       "p4": "Suche deinen Wunschpark über die Suchleiste oder stöbere nach Kontinent, Land und Stadt. Auf der Parkseite findest du Live-Wartezeiten für alle Fahrgeschäfte, Restaurants und Shows – minütlich aktualisiert – sowie KI-Prognosen und einen tagesgenauen Crowd-Kalender. Grüne Tage signalisieren kurze Warteschlangen und wenig Betrieb; orange oder rote Tage stehen für mehr Andrang und längere Wartezeiten.",
       "p5": "park.fan ist ein lebendes Projekt, das laufend um neue Features und Parks erweitert wird. Speichere deine Lieblingsparks für schnellen Zugriff, nutze die In-Park-Navigation für die effizienteste Route durch den Park – und wirf vor der Buchung unbedingt einen Blick in den Crowd-Kalender, um deinen Besuch auf den bestmöglichen Tag zu legen.",
+      "fancastLink": "Fancast entdecken",
       "howtoLink": "Vollständige Anleitung lesen"
     }
   },
@@ -599,6 +600,7 @@
       "extreme": "Extrem voll – sehr lange Wartezeiten. Früh kommen oder Fast Lane empfohlen."
     },
     "dayDetail": {
+      "fancastLink": "Wie wir das vorhersagen: Fancast",
       "forecastLabel": "Prognose",
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",

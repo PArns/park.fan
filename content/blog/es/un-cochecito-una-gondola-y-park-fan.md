@@ -217,7 +217,7 @@ que estiman la afluencia **hasta 365 días** por adelantado. Y como yo,
 por principio, solo me fío de los números que tienen que demostrarse: el
 modelo se califica a sí mismo. Cada predicción se contrasta después con
 el tiempo de espera realmente medido, y los aciertos están publicados en
-la [página How-to](/howto) — hacer trampas no sirve de nada.
+la [página de Fancast](/fancast) — hacer trampas no sirve de nada.
 
 ## ¿Cuál es el mejor día? ¿Merece la pena un domingo?
 
