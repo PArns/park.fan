@@ -4,6 +4,42 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
+
+The forecast cell in the park-header stats band is now clickable and opens the SAME
+day-detail dialog the crowd calendar shows when clicking today (status & hours, live vs.
+forecast split, headliner waits, hourly prediction chart, weather, holiday context).
+
+- `ParkHeaderStats` reuses `ParkCalendarDayDetail` 1:1 — no new dialog UI. The full
+  `CalendarDay` for today comes from a one-day `/calendar` fetch with the same query key +
+  staleTime as the calendar grid's today-patch (shared React Query cache; opening the
+  calendar tab later reuses it), deferred via `useLoadLast` so it never competes with the
+  live/weather queries (loads-last rule).
+- The cell value becomes a button (hover pill + chevron affordance, `aria-haspopup`,
+  focus ring) only once today's data is cached — a click therefore always opens instantly;
+  until then (or if the fetch fails) it renders static as before.
+- **Day navigation in the dialog**: prev/next chevron buttons (and ←/→ keys) flip through
+  days without leaving the dialog — from both entry points. The dialog retains the last
+  shown day and dims (`aria-busy`) while the target day loads instead of unmounting. In the
+  header each visited day is its own small cached one-day query; in the calendar grid,
+  crossing a month boundary also navigates the grid month (hash stays in sync).
+- **Park-timezone times everywhere**: the dialog and the calendar grid cells now render
+  opening hours via `ParkTimeRange` (park-local time, viewer-local tooltip on hover) instead
+  of `format(parseISO(...))`, which silently used the BROWSER timezone — for viewers outside
+  the park's timezone the calendar showed shifted hours (e.g. 07:00–17:00 UTC instead of
+  09:00–19:00 park time). `ParkCalendarDay`/`ParkCalendarDayDetail` gained a required
+  `parkTimezone` prop.
+- New translation keys `parks.dayDetail.openToday` / `prevDay` / `nextDay` in all 6 locales.
+- **Fix: header holiday panel no longer swallows neighbouring school breaks.** The
+  `useTodaySchedule` influencing filter dropped every neighbour entry whose NAME matched the
+  local holiday — with generic school-break names ("Summer Holidays" in NRW *and* HE/NI/RP/
+  NL/BE) that erased whole countries from <HeaderHolidayPanel> (only "Belgien" survived)
+  while the day-detail dialog listed them all. The name-echo suppression now applies only to
+  non-school entries (a shared public holiday like Whit Monday is still told once, by the
+  local badge); region-specific school breaks always show — header and dialog tell one story.
+  The panel's region chips now also carry their country's flag emoji (🇩🇪 Hessen · 🇳🇱
+  Niederlande · 🇧🇪 Belgien), matching the dialog's visual language.
+
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
 Audit of all pages for state/effect patterns that forced unnecessary re-renders, repaints or

@@ -212,11 +212,15 @@ export function useTodaySchedule({
     if (publicHolidayName) shownNames.add(publicHolidayName.toLowerCase());
     // Keep influencing holidays DISTINCT BY REGION (name+country+region), not just by name: the same
     // holiday (e.g. "Summer Holidays") across several neighbouring states each contributes a region
-    // to <HeaderHolidayPanel>. Still drop any that merely echo the local public holiday.
+    // to <HeaderHolidayPanel>. Drop only entries that ECHO the local holiday (same name, non-school):
+    // a shared public holiday (e.g. Whit Monday) is already told by the local badge. Region-specific
+    // SCHOOL breaks keep showing even under a same-named local break — generic names like
+    // "Summer Holidays" match across every neighbouring region, yet each region is its own crowd
+    // driver, and the day-detail dialog lists them all (header and dialog must tell one story).
     const seenRegions = new Set<string>();
     const influencing = (todaySchedule.influencingHolidays ?? []).filter(
       (h: InfluencingHoliday) => {
-        if (shownNames.has(h.name.toLowerCase())) return false;
+        if (h.holidayType !== 'school' && shownNames.has(h.name.toLowerCase())) return false;
         const key = `${h.name.toLowerCase()}|${h.source.countryCode}|${h.source.regionCode ?? ''}`;
         if (seenRegions.has(key)) return false;
         seenRegions.add(key);

@@ -1,12 +1,16 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
+import { addDays, format, parseISO } from 'date-fns';
+import { ChevronRight, Clock, DoorOpen, Sparkles, Users } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { useLoadLast } from '@/lib/hooks/use-load-last';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
 import { useTodaySchedule } from '@/lib/hooks/use-today-schedule';
 import { ParkStatusBadge } from './park-status-badge';
+import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 import { CrowdLevelBadge } from './crowd-level-badge';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Badge } from '@/components/ui/badge';
@@ -107,19 +111,58 @@ export function ParkHeaderStats({
     city,
     parkSlug,
   });
+  // "Today" is derived from the browser clock in the park tz — the `/best-days` snapshot
+  // deliberately carries no `isToday` flag (a baked flag goes stale in the CDN cache).
+  const todayStr = useMemo(
+    () => (browserNow ? browserNow.toLocaleDateString('en-CA', { timeZone: timezone }) : null),
+    [browserNow, timezone]
+  );
+
   // "Prognose heute" = the ML FORECAST for today (predicted peak), NOT the live level:
   // the calendar's today `crowdLevel` is overridden with real-time occupancy, so we read
   // the separate `predictedCrowdLevel`. Fall back to crowdLevel only on older API builds /
   // unratable days (no regression), and never surface a "closed" sentinel as a forecast.
-  // "Today" is derived from the browser clock in the park tz — the `/best-days` snapshot
-  // deliberately carries no `isToday` flag (a baked flag goes stale in the CDN cache).
   const predictedToday = useMemo(() => {
-    if (!calendar || !browserNow) return null;
-    const todayStr = browserNow.toLocaleDateString('en-CA', { timeZone: timezone });
+    if (!calendar || !todayStr) return null;
     const today = calendar.days.find((d) => d.date === todayStr);
     const level = today?.predictedCrowdLevel ?? today?.crowdLevel ?? null;
     return level === 'closed' ? null : level;
-  }, [calendar, browserNow, timezone]);
+  }, [calendar, todayStr]);
+
+  // Click-to-open detail for the forecast cell: the SAME day-detail dialog the crowd calendar
+  // opens for today (status & hours, live vs. forecast split, headliner waits, hourly chart,
+  // weather, holiday context). Needs the FULL CalendarDay, which the lean `/best-days` snapshot
+  // doesn't carry — so fetch a single day from `/calendar`. While the dialog is closed the
+  // fetched date is today — same query key + staleTime as the calendar grid's today-patch (one
+  // shared cached request), deferred via `useLoadLast` so it never competes with the live/
+  // weather queries (loads-last rule). The dialog's prev/next navigation moves `detailDate`;
+  // each visited day is its own small cached one-day query, and `keepPreviousData` keeps the
+  // previous day on screen (dimmed) while the next one loads.
+  const [detailDate, setDetailDate] = useState<string | null>(null); // null = dialog closed
+  const releasedLast = useLoadLast();
+  const queryDate = detailDate ?? todayStr;
+  const { data: detailCalendar } = useCalendarData({
+    continent,
+    country,
+    city,
+    parkSlug,
+    from: queryDate ?? '',
+    to: queryDate ?? '',
+    enabled: !!queryDate && (releasedLast || detailDate !== null),
+  });
+  const detailDay = queryDate
+    ? (detailCalendar?.days.find((d) => d.date === queryDate) ?? null)
+    : null;
+  // Gate for the cell button: today's day is cached (closed ⇒ queryDate === today), so a
+  // click always opens instantly. While the dialog is open the gate stays truthy.
+  const todayReady = detailDate !== null || !!detailDay;
+
+  const handleDetailNavigate = (direction: -1 | 1) => {
+    setDetailDate((prev) => {
+      const base = prev ?? todayStr;
+      return base ? format(addDays(parseISO(base), direction), 'yyyy-MM-dd') : prev;
+    });
+  };
 
   const holidayBadges = sched.holiday
     ? [
@@ -223,10 +266,31 @@ export function ParkHeaderStats({
           )}
         </Cell>
 
-        {/* AI crowd forecast for today — the differentiator */}
+        {/* AI crowd forecast for today — the differentiator. Once today's full CalendarDay is
+            loaded the value becomes a button (chevron = affordance) opening the same day-detail
+            dialog a click on today in the crowd calendar opens; until then it renders static. */}
         <Cell caption={t('forecastToday')} icon={Sparkles}>
           {calendar ? (
-            predictedToday ? (
+            todayReady ? (
+              <button
+                type="button"
+                onClick={() => setDetailDate(todayStr)}
+                title={t('dayDetail.openToday')}
+                aria-label={t('dayDetail.openToday')}
+                aria-haspopup="dialog"
+                className="group hover:bg-muted/60 focus-visible:ring-primary -m-1 flex cursor-pointer items-center gap-0.5 rounded-lg p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+              >
+                {predictedToday ? (
+                  <CrowdLevelBadge level={predictedToday} />
+                ) : (
+                  <span className="text-muted-foreground text-sm">—</span>
+                )}
+                <ChevronRight
+                  className="text-muted-foreground h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </button>
+            ) : predictedToday ? (
               <CrowdLevelBadge level={predictedToday} />
             ) : (
               <span className="text-muted-foreground text-sm">—</span>
@@ -239,6 +303,19 @@ export function ParkHeaderStats({
 
       {/* Holiday / bridge-day / school-vacation context — explains today's crowds */}
       {holidayBadges.length > 0 && <div className="mt-4 flex flex-wrap gap-2">{holidayBadges}</div>}
+
+      {/* Day-detail dialog — the exact component the crowd calendar uses for a day click,
+          fed with the same /calendar data (shared query), so header and calendar always tell
+          the same story. Opens on today; prev/next flips through neighbouring days. */}
+      <ParkCalendarDayDetail
+        day={detailDay}
+        parkTimezone={timezone}
+        open={detailDate !== null}
+        onOpenChange={(o) => {
+          if (!o) setDetailDate(null);
+        }}
+        onNavigate={handleDetailNavigate}
+      />
     </div>
   );
 }

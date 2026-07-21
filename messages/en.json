@@ -598,7 +598,10 @@
       "forecastLabel": "Forecast",
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
-      "actualWaitsTitle": "Average waits"
+      "actualWaitsTitle": "Average waits",
+      "openToday": "Show today's details",
+      "prevDay": "Previous day",
+      "nextDay": "Next day"
     },
     "legendHints": {
       "closed": "Park closed on this day",

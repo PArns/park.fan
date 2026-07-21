@@ -598,7 +598,10 @@
       "forecastLabel": "Prévision",
       "hourlyTitle": "Prévision par heure",
       "holidaysTitle": "Jours fériés & vacances scolaires",
-      "actualWaitsTitle": "Attentes moyennes"
+      "actualWaitsTitle": "Attentes moyennes",
+      "openToday": "Voir les détails d'aujourd'hui",
+      "prevDay": "Jour précédent",
+      "nextDay": "Jour suivant"
     },
     "legendHints": {
       "closed": "Parc fermé ce jour-là",
