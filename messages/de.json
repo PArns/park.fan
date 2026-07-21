@@ -598,7 +598,8 @@
       "forecastLabel": "Prognose",
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
-      "actualWaitsTitle": "Ø Wartezeiten"
+      "actualWaitsTitle": "Ø Wartezeiten",
+      "openToday": "Details für heute anzeigen"
     },
     "legendHints": {
       "closed": "Park an diesem Tag geschlossen",

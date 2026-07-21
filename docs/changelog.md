@@ -4,6 +4,22 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – feat: header "Prognose heute" opens the day-detail dialog
+
+The forecast cell in the park-header stats band is now clickable and opens the SAME
+day-detail dialog the crowd calendar shows when clicking today (status & hours, live vs.
+forecast split, headliner waits, hourly prediction chart, weather, holiday context).
+
+- `ParkHeaderStats` reuses `ParkCalendarDayDetail` 1:1 — no new dialog UI. The full
+  `CalendarDay` for today comes from a one-day `/calendar` fetch with the same query key +
+  staleTime as the calendar grid's today-patch (shared React Query cache; opening the
+  calendar tab later reuses it), deferred via `useLoadLast` so it never competes with the
+  live/weather queries (loads-last rule).
+- The cell value becomes a button (hover pill + chevron affordance, `aria-haspopup`,
+  focus ring) only once today's data is cached — a click therefore always opens instantly;
+  until then (or if the fetch fails) it renders static as before.
+- New translation key `parks.dayDetail.openToday` in all 6 locales (button label/tooltip).
+
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
 Audit of all pages for state/effect patterns that forced unnecessary re-renders, repaints or
