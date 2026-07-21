@@ -1001,6 +1001,13 @@ function ContentDE() {
           auf der Attraktionsseite, zu welcher Stunde die Prognosekurve am tiefsten ist. So triffst
           du immer zum richtigen Moment auf die kürzeste Schlange.
         </TipBox>
+        <p className="text-muted-foreground">
+          Unser Prognosemodell hat einen Namen —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — mit einer eigenen Seite, die erklärt, wie es funktioniert und wie genau es derzeit ist.
+        </p>
       </Section>
 
       {/* ── 8. Personas ─────────────────────────────────────────────────────── */}

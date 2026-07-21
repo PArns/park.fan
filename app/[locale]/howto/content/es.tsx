@@ -872,6 +872,13 @@ function ContentESSections() {
           previsión horaria en la página de la atracción para encontrar el momento más tranquilo.
           Siempre llegarás a la cola más corta.
         </TipBox>
+        <p className="text-muted-foreground">
+          Nuestro modelo de predicción tiene un nombre —{' '}
+          <Link href="/fancast" className="text-primary hover:underline">
+            Fancast
+          </Link>{' '}
+          — y su propia página que explica cómo funciona y qué precisión tiene actualmente.
+        </p>
       </Section>
 
       {/* ── 8. Para quién ────────────────────────────────────────────────────── */}
