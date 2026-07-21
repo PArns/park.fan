@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Quotidien · 06:00 UTC · {time} heure locale",
       "howTitle": "Comment Les Prédictions Sont Calculées",
       "howText": "Chaque prévision de temps d'attente repose sur trois couches de données : des historiques de files d'attente collectés dans les parcs sur plusieurs années, des signaux externes comme les prévisions météo et les calendriers de vacances scolaires, et des facteurs contextuels tels que les événements spéciaux et les tendances saisonnières. Le modèle génère à la fois des prévisions horaires pour chaque attraction et des niveaux d'affluence journaliers — disponibles jusqu'à 365 jours à l'avance.",
+      "fancastLink": "Comment fonctionne Fancast, notre modèle de prévision",
       "improvingTitle": "En Développement Actif — Meilleur Chaque Jour",
       "improvingText": "park.fan est une plateforme vivante, encore en développement actif. Chaque jour, le système compare automatiquement ses prédictions passées aux temps d'attente réellement enregistrés dans les parcs, et réintègre ces comparaisons dans le prochain cycle d'entraînement. Les métriques de précision présentées ci-dessus reflètent ces performances réelles — pas des benchmarks synthétiques. De nouveaux parcs et attractions sont ajoutés régulièrement, et le modèle gagne en précision à mesure que les données vérifiées s'accumulent.",
       "badge": {
@@ -1151,7 +1152,7 @@
   },
   "fancast": {
     "title": "Fancast – notre modèle de prévision des temps d'attente",
-    "description": "Fancast est le modèle de prévision par IA de park.fan : il lit des millions de temps d'attente en direct, prédit l'affluence et les temps d'attente jusqu'à 365 jours à l'avance, et évalue sa propre précision en toute transparence. Voici comment il fonctionne."
+    "description": "Fancast est le modèle d'IA de park.fan : il prédit l'affluence et les temps d'attente jusqu'à 365 jours à l'avance et évalue sa précision en public."
   },
   "howto": {
     "title": "Comment ça marche – Le guide complet",

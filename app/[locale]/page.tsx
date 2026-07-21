@@ -265,7 +265,7 @@ export default async function HomePage({ params }: HomePageProps) {
 
       {/* ML / AI Stats */}
       <Suspense fallback={<MLStatsSkeleton />}>
-        <MLStatsSection />
+        <MLStatsSection linkToFancast />
       </Suspense>
 
       {/* Live Activity - Parks Open Now */}

@@ -1,5 +1,6 @@
 import { getTranslations } from 'next-intl/server';
-import { Brain, Database, RefreshCw } from 'lucide-react';
+import { Brain, Database, RefreshCw, ArrowRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { Card, CardContent } from '@/components/ui/card';
 import { getMLDashboard, getMLMetricsHistory } from '@/lib/api/ml';
@@ -60,7 +61,7 @@ function getR2Color(r2: number | null | undefined) {
   return 'text-destructive';
 }
 
-export async function MLStatsSection() {
+export async function MLStatsSection({ linkToFancast = false }: { linkToFancast?: boolean } = {}) {
   const [t, tCommon] = await Promise.all([getTranslations('home'), getTranslations('common')]);
 
   const [dashboard, metricsHistory] = await Promise.all([
@@ -247,6 +248,18 @@ export async function MLStatsSection() {
             </p>
           </div>
         </div>
+
+        {linkToFancast && (
+          <div className="mt-8 flex justify-center border-t pt-8">
+            <Link
+              href="/fancast"
+              className="text-primary inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+            >
+              {t('ai.fancastLink')}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Dagelijks · 06:00 UTC · {time} lokaal",
       "howTitle": "Hoe Voorspellingen Tot Stand Komen",
       "howText": "Elke wachttijdvoorspelling is opgebouwd uit drie lagen data: historische wachtrij-records die jarenlang in parken zijn verzameld, externe signalen zoals weersvoorspellingen en schoolvakantieschema's, en contextuele factoren zoals speciale evenementen en seizoenspatronen. Het model genereert zowel uurlijkse wachttijdprognoses voor individuele attracties als dagelijkse drukte-beoordelingen — tot 365 dagen vooruit.",
+      "fancastLink": "Zo werkt Fancast, ons voorspelmodel",
       "improvingTitle": "Actief in Ontwikkeling — Elke Dag Beter",
       "improvingText": "park.fan is een levend platform, nog altijd in actieve ontwikkeling. Elke dag vergelijkt het systeem automatisch zijn eerdere voorspellingen met de werkelijk geregistreerde wachttijden bij de parken, en voert die vergelijkingen terug in de volgende trainingscyclus. De nauwkeurigheidsstatistieken hierboven weerspiegelen deze echte prestaties — geen synthetische benchmarks. Nieuwe parken en attracties worden regelmatig toegevoegd, en het model wordt nauwkeuriger naarmate er meer geverifieerde data beschikbaar komt.",
       "badge": {
@@ -1151,7 +1152,7 @@
   },
   "fancast": {
     "title": "Fancast – ons voorspelmodel voor wachttijden",
-    "description": "Fancast is het AI-voorspelmodel van park.fan: het leest miljoenen live wachttijden, voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar. Zo werkt het."
+    "description": "Fancast is het AI-model van park.fan: het voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar."
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

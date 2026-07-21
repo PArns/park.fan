@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Daily · 06:00 UTC · {time} local",
       "howTitle": "How Predictions Are Made",
       "howText": "Every wait time forecast is built from three layers of data: historical queue records collected from parks over years, external signals like weather forecasts and school holiday calendars, and contextual factors such as special events and seasonal patterns. The model generates both hourly wait time forecasts for individual rides and daily crowd level ratings for full park visits — available up to 365 days ahead.",
+      "fancastLink": "How Fancast, our forecasting model, works",
       "improvingTitle": "Actively Developed — Improving Every Day",
       "improvingText": "park.fan is a living platform, still in active development. Every day the system automatically compares its earlier predictions against the wait times actually recorded at the parks, feeding those comparisons back into the next training cycle. The accuracy metrics above reflect this real-world performance — not synthetic benchmarks. New parks and attractions are added regularly, and the model becomes more accurate as it accumulates more verified data for each destination.",
       "badge": {
@@ -1151,7 +1152,7 @@
   },
   "fancast": {
     "title": "Fancast – our wait-time forecasting model",
-    "description": "Fancast is park.fan's AI forecasting model: it reads millions of live wait times, predicts crowds and wait times up to 365 days ahead — and grades its own accuracy in the open. Here's how it works."
+    "description": "Fancast is park.fan's AI model: it predicts theme-park crowds and wait times up to 365 days ahead — and grades its own accuracy in the open."
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

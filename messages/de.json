@@ -169,6 +169,7 @@
       "dailyScheduleLocal": "Täglich · 06:00 UTC · {time} lokal",
       "howTitle": "Wie Vorhersagen entstehen",
       "howText": "Jede Wartezeit-Vorhersage basiert auf drei Datenschichten: historischen Warteschlangendaten aus Jahren der Park-Beobachtung, externen Signalen wie Wetterprognosen und Schulferienkalendern sowie kontextuellen Faktoren wie Sonderveranstaltungen und saisonalen Mustern. Das Modell erstellt sowohl stündliche Wartezeit-Prognosen für einzelne Attraktionen als auch tagesbasierte Crowd-Level-Bewertungen — bis zu 365 Tage im Voraus.",
+      "fancastLink": "So funktioniert Fancast, unser Prognosemodell",
       "improvingTitle": "Aktiv in Entwicklung — täglich besser",
       "improvingText": "park.fan ist eine lebendige Plattform, die sich noch aktiv in der Entwicklung befindet. Jeden Tag vergleicht das System seine früheren Vorhersagen automatisch mit den tatsächlich an den Parks erfassten Wartezeiten und speist diese Vergleiche in den nächsten Trainingszyklus ein. Die oben gezeigten Genauigkeitskennzahlen spiegeln diese reale Performance wider — keine synthetischen Benchmarks. Neue Parks und Attraktionen werden regelmäßig hinzugefügt, und das Modell wird mit wachsender Datenmenge präziser.",
       "badge": {
@@ -1151,7 +1152,7 @@
   },
   "fancast": {
     "title": "Fancast – unser Wartezeiten-Prognosemodell",
-    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es liest Millionen Live-Wartezeiten, sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine eigene Genauigkeit öffentlich. So funktioniert es."
+    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine Genauigkeit öffentlich."
   },
   "howto": {
     "title": "So funktioniert es – Die vollständige Anleitung",

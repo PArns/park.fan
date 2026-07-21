@@ -8,8 +8,13 @@ import {
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { ArticleStructuredData } from '@/components/seo/structured-data';
+import {
+  ArticleStructuredData,
+  BreadcrumbStructuredData,
+} from '@/components/seo/structured-data';
+import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
+import { Hero } from './_fancast-ui';
 
 // Lazy per-locale loaders so only the requested language's content module is
 // evaluated per render instead of all six.
@@ -22,36 +27,99 @@ const CONTENT_LOADERS: Record<Locale, () => Promise<ComponentType>> = {
   nl: () => import('./content/nl').then((m) => m.ContentNL),
 };
 
-const PAGE_HEADERS: Record<Locale, { title: string; intro: string }> = {
+interface PageHeader {
+  kicker: string;
+  tagline: string;
+  scrollLabel: string;
+  statLabels: {
+    avgError: string;
+    parks: string;
+    horizon: string;
+    dailyValue: string;
+    dailyLabel: string;
+  };
+}
+
+const HERO_IMAGE = '/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg';
+
+const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
-    title: 'Fancast',
-    intro:
-      'Unser Prognose-Modell für Wartezeiten und Andrang: Es liest Millionen Live-Wartezeiten, sagt bis zu 365 Tage im Voraus, wie voll ein Park wird — und benotet sich selbst. Öffentlich.',
+    kicker: 'park.fan · Prognosemodell',
+    tagline:
+      'Es liest Millionen Live-Wartezeiten und sagt bis zu 365 Tage im Voraus, wie voll ein Park wird — und benotet sich dabei öffentlich selbst.',
+    scrollLabel: 'Scrollen',
+    statLabels: {
+      avgError: 'Min. Ø-Fehler',
+      parks: 'Parks',
+      horizon: 'Tage Vorausschau',
+      dailyValue: 'Täglich',
+      dailyLabel: 'neu trainiert',
+    },
   },
   en: {
-    title: 'Fancast',
-    intro:
-      'Our forecasting model for wait times and crowds: it reads millions of live wait times, predicts how busy a park will be up to 365 days ahead — and grades itself. In the open.',
+    kicker: 'park.fan · forecasting model',
+    tagline:
+      'It reads millions of live wait times to predict how busy a park will be up to 365 days ahead — and grades itself, in the open.',
+    scrollLabel: 'Scroll',
+    statLabels: {
+      avgError: 'min avg error',
+      parks: 'parks',
+      horizon: 'days ahead',
+      dailyValue: 'Daily',
+      dailyLabel: 'retrained',
+    },
   },
   es: {
-    title: 'Fancast',
-    intro:
-      'Nuestro modelo de predicción de tiempos de espera y afluencia: lee millones de tiempos de espera en directo, predice con hasta 365 días de antelación lo lleno que estará un parque — y se autoevalúa. En abierto.',
+    kicker: 'park.fan · modelo de predicción',
+    tagline:
+      'Lee millones de tiempos de espera en directo para predecir la afluencia de un parque con hasta 365 días de antelación, y se autoevalúa en abierto.',
+    scrollLabel: 'Desliza',
+    statLabels: {
+      avgError: 'min error medio',
+      parks: 'parques',
+      horizon: 'días de previsión',
+      dailyValue: 'A diario',
+      dailyLabel: 'reentrenado',
+    },
   },
   fr: {
-    title: 'Fancast',
-    intro:
-      "Notre modèle de prévision des temps d'attente et de l'affluence : il lit des millions de temps d'attente en direct, prédit jusqu'à 365 jours à l'avance à quel point un parc sera fréquenté — et se note lui-même. En toute transparence.",
+    kicker: 'park.fan · modèle de prévision',
+    tagline:
+      "Il lit des millions de temps d'attente en direct pour prédire l'affluence d'un parc jusqu'à 365 jours à l'avance, et se note lui-même en public.",
+    scrollLabel: 'Défiler',
+    statLabels: {
+      avgError: "min d'erreur moy.",
+      parks: 'parcs',
+      horizon: "jours à l'avance",
+      dailyValue: 'Chaque jour',
+      dailyLabel: 'réentraîné',
+    },
   },
   it: {
-    title: 'Fancast',
-    intro:
-      "Il nostro modello di previsione per tempi di attesa e affluenza: legge milioni di tempi di attesa in tempo reale, prevede fino a 365 giorni in anticipo quanto sarà affollato un parco — e si autovaluta. In modo trasparente.",
+    kicker: 'park.fan · modello di previsione',
+    tagline:
+      "Legge milioni di tempi di attesa in tempo reale per prevedere l'affluenza di un parco fino a 365 giorni in anticipo, e si autovaluta in modo trasparente.",
+    scrollLabel: 'Scorri',
+    statLabels: {
+      avgError: 'min errore medio',
+      parks: 'parchi',
+      horizon: 'giorni in anticipo',
+      dailyValue: 'Ogni giorno',
+      dailyLabel: 'riaddestrato',
+    },
   },
   nl: {
-    title: 'Fancast',
-    intro:
-      'Ons voorspelmodel voor wachttijden en drukte: het leest miljoenen live wachttijden, voorspelt tot 365 dagen vooruit hoe druk een park wordt — en beoordeelt zichzelf. In het openbaar.',
+    kicker: 'park.fan · voorspelmodel',
+    tagline:
+      'Het leest miljoenen live wachttijden om tot 365 dagen vooruit te voorspellen hoe druk een park wordt — en beoordeelt zichzelf, in het openbaar.',
+    scrollLabel: 'Scroll',
+    statLabels: {
+      avgError: 'min gem. fout',
+      parks: 'parken',
+      horizon: 'dagen vooruit',
+      dailyValue: 'Dagelijks',
+      dailyLabel: 'hertraind',
+    },
   },
 };
 
@@ -188,23 +256,55 @@ export default async function FancastPage({ params }: FancastPageProps) {
 
   setRequestLocale(locale);
 
-  const Content = await CONTENT_LOADERS[locale as Locale]();
-  const { title, intro } = PAGE_HEADERS[locale as Locale];
+  const [Content, dashboard, tFancast] = await Promise.all([
+    CONTENT_LOADERS[locale as Locale](),
+    getMLDashboard().catch(() => null),
+    getTranslations({ locale, namespace: 'fancast' }),
+  ]);
+
+  const header = PAGE_HEADERS[locale as Locale];
+  const live = dashboard?.performance?.live;
+
+  const stats: Array<{ value: string; label: string }> = [];
+  if (live?.mae != null && isFinite(live.mae)) {
+    stats.push({ value: `±${live.mae.toFixed(1)}`, label: header.statLabels.avgError });
+  }
+  if (live?.uniqueParks) {
+    stats.push({ value: `${live.uniqueParks}+`, label: header.statLabels.parks });
+  }
+  stats.push({ value: '365', label: header.statLabels.horizon });
+  stats.push({ value: header.statLabels.dailyValue, label: header.statLabels.dailyLabel });
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <>
       <ArticleStructuredData
-        title={`${title} — park.fan`}
-        description={intro}
+        title={`Fancast — park.fan`}
+        description={header.tagline}
         url={`${SITE_URL}/${locale}/fancast`}
         locale={locale}
         image={getOgImageUrl([locale, 'fancast'])}
       />
-      <div>
-        <h1 className="mb-2 text-2xl font-bold sm:text-4xl">{title}</h1>
-        <p className="text-muted-foreground mb-10 text-lg">{intro}</p>
+      <BreadcrumbStructuredData
+        breadcrumbs={[
+          { name: 'park.fan', url: '/' },
+          { name: tFancast('title'), url: '/fancast' },
+        ]}
+        locale={locale}
+      />
+
+      <Hero
+        kicker={header.kicker}
+        title="Fancast"
+        tagline={header.tagline}
+        imageSrc={HERO_IMAGE}
+        imageAlt="Voltron Nevera powered by Rimac im Europa-Park"
+        stats={stats}
+        scrollLabel={header.scrollLabel}
+      />
+
+      <div id="start" className="space-y-20 py-16 sm:space-y-28 sm:py-24">
         <Content />
       </div>
-    </div>
+    </>
   );
 }
