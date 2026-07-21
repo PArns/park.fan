@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Marker, Popup } from 'react-leaflet';
 import type { ParkAttraction, ParkShow, ParkRestaurant } from '@/lib/api/types';
@@ -28,7 +29,13 @@ interface AttractionMarkersProps {
   attractions: ParkAttraction[];
 }
 
-export function AttractionMarkers({ attractions }: AttractionMarkersProps) {
+// Memoized: `attractions` is a `useMemo`-stable array in ParkMap, and nothing here is
+// time-relative — so the once-per-minute `useMinuteNow` tick (needed only by the show
+// markers) no longer reconciles every attraction marker. Re-renders only when the 5-min
+// park poll actually changes the attractions.
+export const AttractionMarkers = memo(function AttractionMarkers({
+  attractions,
+}: AttractionMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
   const tParks = useTranslations('parks');
 
@@ -82,7 +89,7 @@ export function AttractionMarkers({ attractions }: AttractionMarkersProps) {
       })}
     </>
   );
-}
+});
 
 interface ShowMarkersProps {
   shows: ParkShow[];
@@ -127,7 +134,11 @@ interface RestaurantMarkersProps {
   restaurants: ParkRestaurant[];
 }
 
-export function RestaurantMarkers({ restaurants }: RestaurantMarkersProps) {
+// Memoized like AttractionMarkers — restaurants carry no time-relative content, so the
+// minute tick never needs to touch them.
+export const RestaurantMarkers = memo(function RestaurantMarkers({
+  restaurants,
+}: RestaurantMarkersProps) {
   const t = useTranslations('parks.mapMarkers');
 
   return (
@@ -153,4 +164,4 @@ export function RestaurantMarkers({ restaurants }: RestaurantMarkersProps) {
       ))}
     </>
   );
-}
+});

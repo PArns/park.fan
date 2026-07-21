@@ -29,10 +29,12 @@ export interface ParkCalendarDayProps {
   parkTimezone: string;
   isToday: boolean;
   isBest?: boolean;
-  /** Opens the day-detail panel. When set, the whole card becomes a button —
-   *  the touch-friendly way to reach the weather / forecast / prediction detail
-   *  (the calendar's hover tooltips never opened on mobile). */
-  onSelect?: () => void;
+  /** Opens the day-detail panel for `day.date`. When set, the whole card becomes a
+   *  button — the touch-friendly way to reach the weather / forecast / prediction
+   *  detail (the calendar's hover tooltips never opened on mobile). Receives the
+   *  date so callers can pass ONE stable handler instead of a per-day arrow (which
+   *  would defeat this component's `memo`). */
+  onSelect?: (date: string) => void;
 }
 
 function ParkCalendarDayComponent({
@@ -146,11 +148,11 @@ function ParkCalendarDayComponent({
             role: 'button' as const,
             tabIndex: 0,
             'aria-label': `${dayOfWeek} ${dayOfMonth}. ${month}`,
-            onClick: onSelect,
+            onClick: () => onSelect?.(day.date),
             onKeyDown: (e: React.KeyboardEvent) => {
               if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                onSelect?.();
+                onSelect?.(day.date);
               }
             },
           }

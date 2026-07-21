@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import dynamic from 'next/dynamic';
 import { Search, Zap, Sparkles, UtensilsCrossed, CalendarDays, Map } from 'lucide-react';
@@ -50,7 +50,11 @@ interface TabsWithHashProps {
   attractionsByLand: Record<string, ParkAttraction[]>;
 }
 
-export function TabsWithHash({
+// Memoized: `LiveParkData` re-renders on every 5-min poll's `isFetching` flip, but all props
+// here are shallow-stable when the underlying park data hasn't changed (`park`/`landNames`/
+// `attractionsByLand` come through `useMemo` in the parent), so the whole attraction-grid tab
+// tree bails on the fetch-start render instead of reconciling.
+export const TabsWithHash = memo(function TabsWithHash({
   defaultValue,
   showsAvailable,
   restaurantsAvailable,
@@ -325,4 +329,4 @@ export function TabsWithHash({
       </Tabs>
     </div>
   );
-}
+});

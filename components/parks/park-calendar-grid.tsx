@@ -432,7 +432,7 @@ export function ParkCalendarGrid({
                         parkTimezone={parkTimezone}
                         isToday={isToday}
                         isBest={bestDayDates.has(dateStr)}
-                        onSelect={() => setSelectedDate(dateStr)}
+                        onSelect={setSelectedDate}
                       />
                     );
                   })}
@@ -467,7 +467,7 @@ export function ParkCalendarGrid({
                             parkTimezone={parkTimezone}
                             isToday={isToday}
                             isBest={bestDayDates.has(dateStr)}
-                            onSelect={() => setSelectedDate(dateStr)}
+                            onSelect={setSelectedDate}
                           />
                         );
                       })}
