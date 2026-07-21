@@ -392,9 +392,20 @@ function BestDaysContent({
       </div>
 
       {analysis.schoolHolidaysAreBusy && (
-        <div className="flex items-start gap-2 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-700 dark:text-yellow-400">
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-          <p>{t('schoolHolidayWarning', { park: displayName })}</p>
+        <div className="relative overflow-hidden rounded-lg border border-yellow-500/30 text-sm text-yellow-700 dark:text-yellow-400">
+          {/* Frosted surface + semantic tint so the warning stays legible over the hero. */}
+          <div
+            className="bg-background/85 pointer-events-none absolute inset-0 rounded-lg backdrop-blur-md"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 rounded-lg bg-yellow-500/10 dark:bg-yellow-500/15"
+            aria-hidden="true"
+          />
+          <div className="relative flex items-start gap-2 px-4 py-3">
+            <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+            <p>{t('schoolHolidayWarning', { park: displayName })}</p>
+          </div>
         </div>
       )}
     </section>
