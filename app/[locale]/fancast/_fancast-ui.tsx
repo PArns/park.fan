@@ -326,7 +326,7 @@ export function FaqList({
   return (
     <>
       <FaqStructuredData items={items} />
-      <div className="divide-border max-w-3xl divide-y">
+      <div className="divide-border divide-y">
         {items.map((item) => (
           <details key={item.question} className="group py-3">
             <summary
