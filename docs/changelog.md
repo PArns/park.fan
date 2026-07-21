@@ -30,6 +30,13 @@ forecast split, headliner waits, hourly prediction chart, weather, holiday conte
   09:00–19:00 park time). `ParkCalendarDay`/`ParkCalendarDayDetail` gained a required
   `parkTimezone` prop.
 - New translation keys `parks.dayDetail.openToday` / `prevDay` / `nextDay` in all 6 locales.
+- **Fix: header holiday panel no longer swallows neighbouring school breaks.** The
+  `useTodaySchedule` influencing filter dropped every neighbour entry whose NAME matched the
+  local holiday — with generic school-break names ("Summer Holidays" in NRW *and* HE/NI/RP/
+  NL/BE) that erased whole countries from <HeaderHolidayPanel> (only "Belgien" survived)
+  while the day-detail dialog listed them all. The name-echo suppression now applies only to
+  non-school entries (a shared public holiday like Whit Monday is still told once, by the
+  local badge); region-specific school breaks always show — header and dialog tell one story.
 
 ## Unreleased – perf: page-wide re-render/flicker sweep (memory & repaint fixes)
 
