@@ -569,7 +569,8 @@
       "noUpcomingQuiet": "In den nächsten 30 Tagen keine besonders ruhigen Tage.",
       "noData": "Noch nicht genug Crowd-Daten verfügbar.",
       "bestWeekendDayTitle": "Bester Wochenendtag",
-      "titleCompact": "Beste Reisezeit"
+      "titleCompact": "Beste Reisezeit",
+      "viewCalendarLink": "Vollständigen Crowd-Kalender ansehen"
     },
     "weatherWarnings": {
       "severity": {

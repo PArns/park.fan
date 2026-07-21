@@ -581,6 +581,9 @@ async function SeededBestDays({
       locale={locale}
       initialCalendar={seed}
       seedNowMs={seedNowMs}
+      // On the park page the `#calendar` tab exists, so surface a visible link to it — the
+      // best-days summary otherwise gave no obvious way through to the full crowd calendar.
+      showCalendarLink
     />
   );
 }

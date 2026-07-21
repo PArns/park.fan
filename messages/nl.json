@@ -569,7 +569,8 @@
       "noUpcomingQuiet": "Geen bijzonder rustige dagen in de komende 30 dagen.",
       "noData": "Nog niet genoeg voorspellingsdata beschikbaar.",
       "bestWeekendDayTitle": "Beste weekenddag",
-      "titleCompact": "Beste reistijd"
+      "titleCompact": "Beste reistijd",
+      "viewCalendarLink": "Volledige druktekalender bekijken"
     },
     "weatherWarnings": {
       "severity": {

@@ -569,7 +569,8 @@
       "noUpcomingQuiet": "No particularly quiet days in the next 30 days.",
       "noData": "Not enough crowd forecast data available yet.",
       "bestWeekendDayTitle": "Best Weekend Day",
-      "titleCompact": "Best Time to Visit"
+      "titleCompact": "Best Time to Visit",
+      "viewCalendarLink": "View full crowd calendar"
     },
     "weatherWarnings": {
       "severity": {

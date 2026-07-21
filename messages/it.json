@@ -569,7 +569,8 @@
       "noUpcomingQuiet": "Nessun giorno particolarmente tranquillo nei prossimi 30 giorni.",
       "noData": "Dati di previsione insufficienti al momento.",
       "bestWeekendDayTitle": "Miglior giorno del fine settimana",
-      "titleCompact": "Periodo migliore"
+      "titleCompact": "Periodo migliore",
+      "viewCalendarLink": "Vedi il calendario di affluenza completo"
     },
     "weatherWarnings": {
       "severity": {
