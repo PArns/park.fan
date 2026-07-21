@@ -217,6 +217,7 @@
     "api": "API Documentation",
     "impressum": "Imprint",
     "howto": "How it works",
+    "fancast": "Fancast",
     "glossaryLink": "Dictionary",
     "blog": "Blog",
     "datenschutz": "Privacy Policy",
@@ -1147,6 +1148,10 @@
         "dive": "Dive"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – our wait-time forecasting model",
+    "description": "Fancast is park.fan's AI forecasting model: it reads millions of live wait times, predicts crowds and wait times up to 365 days ahead — and grades its own accuracy in the open. Here's how it works."
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

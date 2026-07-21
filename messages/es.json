@@ -217,6 +217,7 @@
     "api": "Documentación API",
     "impressum": "Aviso Legal",
     "howto": "Cómo funciona",
+    "fancast": "Fancast",
     "glossaryLink": "Diccionario",
     "blog": "Blog",
     "datenschutz": "Privacidad",
@@ -1147,6 +1148,10 @@
         "dive": "Caída"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
+    "description": "Fancast es el modelo de predicción con IA de park.fan: lee millones de tiempos de espera en directo, predice la afluencia y los tiempos de espera con hasta 365 días de antelación, y evalúa su propia precisión en abierto. Así funciona."
   },
   "howto": {
     "title": "Cómo funciona – La guía completa",

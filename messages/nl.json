@@ -217,6 +217,7 @@
     "api": "API Documentatie",
     "impressum": "Colofon",
     "howto": "Hoe het werkt",
+    "fancast": "Fancast",
     "glossaryLink": "Woordenboek",
     "blog": "Blog",
     "datenschutz": "Privacybeleid",
@@ -1147,6 +1148,10 @@
         "dive": "Duik"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – ons voorspelmodel voor wachttijden",
+    "description": "Fancast is het AI-voorspelmodel van park.fan: het leest miljoenen live wachttijden, voorspelt drukte en wachttijden tot 365 dagen vooruit en beoordeelt de eigen nauwkeurigheid in het openbaar. Zo werkt het."
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const parksAlternates = buildAlternates(() => '/parks');
   const searchAlternates = buildAlternates(() => '/search');
   const howtoAlternates = buildAlternates(() => '/howto');
+  const fancastAlternates = buildAlternates(() => '/fancast');
 
   for (const locale of locales) {
     routes.push(
@@ -55,6 +56,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         changeFrequency: 'monthly',
         priority: 0.4,
         alternates: howtoAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}/fancast`,
+        changeFrequency: 'weekly',
+        priority: 0.5,
+        alternates: fancastAlternates,
       }
     );
   }

@@ -217,6 +217,7 @@
     "api": "API Dokumentation",
     "impressum": "Impressum",
     "howto": "Anleitung",
+    "fancast": "Fancast",
     "glossaryLink": "Wörterbuch",
     "blog": "Blog",
     "datenschutz": "Datenschutzerklärung",
@@ -1147,6 +1148,10 @@
         "dive": "Sturz"
       }
     }
+  },
+  "fancast": {
+    "title": "Fancast – unser Wartezeiten-Prognosemodell",
+    "description": "Fancast ist das KI-Prognosemodell von park.fan: Es liest Millionen Live-Wartezeiten, sagt Andrang und Wartezeiten bis zu 365 Tage im Voraus vorher – und benotet seine eigene Genauigkeit öffentlich. So funktioniert es."
   },
   "howto": {
     "title": "So funktioniert es – Die vollständige Anleitung",

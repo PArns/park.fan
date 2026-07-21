@@ -371,6 +371,15 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               </>
             )}
             <Link
+              href="/fancast"
+              prefetch={false}
+              className="hover:text-foreground text-sm transition-colors"
+              aria-label={t('fancast')}
+            >
+              {t('fancast')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
               href="/howto"
               prefetch={false}
               className="hover:text-foreground text-sm transition-colors"
