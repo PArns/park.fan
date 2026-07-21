@@ -4,6 +4,38 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – refactor: code-quality sweep (dedup, client→server, repaint gates, stale docs)
+
+Cross-cutting cleanup driven by a full-codebase audit; no user-facing behavior changes intended.
+
+- **Dead code removed:** `BlogRelatedParks`, `ShowCountdown`, `GlossaryInjectLoader` (all imported
+  nowhere).
+- **Client → Server components:** `RopeDropCard` (only its embedded `ParkTime` islands hydrate now)
+  and `AttractionTypicalWaitsDemo` dropped `'use client'`. NOT converted: `ParkBackground` — its
+  `next/image` `loader` function prop cannot cross the server→client boundary.
+- **Repaint/CPU gates (continues #219):** `weather-nowcast-banner` 1 s countdown now pauses
+  offscreen/hidden (`useActiveOnScreen`); hero rotation, geolocation auto-refresh and the shared
+  `useMinuteNow()` clock skip ticks while the tab is hidden; `park-map` and the former
+  `useBrowserNow(60_000)` consumers (`park-time-info`, `peak-hour-badge`, `use-today-schedule`) now
+  share ONE minute timer via `useMinuteNow()`/`useMinuteNowDate()` instead of private intervals.
+- **Dedup:** new `lib/utils/crowd-level-styles.ts` is the single source for crowd-level →
+  text/badge/outline/chip classes + the wait-time threshold ladder (`waitTimeCrowdTier`) + the
+  level order — `CrowdLevelBadge`, `WaitTimeValue`, blog live-display, live ticker, best-days
+  chips and both calendar components now derive from it. `scoreToCrowdLevel` moved to
+  `crowd-analysis.ts` (was copy-pasted twice). Shared `<TodayWaitRange>` + `<TrendIcon>` replace
+  byte-identical blocks in `attraction-live-panel` / `wait-time-info-card`. The hourly weather
+  chart's two temperature palettes merged into one `TEMP_STOPS` table.
+- **Best practices:** added `app/global-error.tsx` (branded last-resort boundary); attraction
+  `generateMetadata` uses `catchNonFatal` (maintenance outages no longer masked as not-found);
+  `components/ui/progress.tsx` dropped `forwardRef` (React 19 ref prop).
+- **Stale docs/comments fixed:** removed the long-gone Vercel Toolbar/Flags + `debug-geo-mode`
+  subsystem from 8 docs + `.env.example`; caching-strategy doc got a "superseded" note (PPR →
+  force-dynamic reality); `cache-config.ts` comments now reference `PARK_REVALIDATE`/
+  `ATTRACTION_REVALIDATE`; tech-stack table (TS 6.x, custom SVG charts, no recharts); scripts doc
+  lists all prebuild generators.
+
+---
+
 ## Unreleased – feat: header "Prognose heute" opens the day-detail dialog (+ day navigation, park-tz times)
 
 The forecast cell in the park-header stats band is now clickable and opens the SAME
@@ -32,7 +64,7 @@ forecast split, headliner waits, hourly prediction chart, weather, holiday conte
 - New translation keys `parks.dayDetail.openToday` / `prevDay` / `nextDay` in all 6 locales.
 - **Fix: header holiday panel no longer swallows neighbouring school breaks.** The
   `useTodaySchedule` influencing filter dropped every neighbour entry whose NAME matched the
-  local holiday — with generic school-break names ("Summer Holidays" in NRW *and* HE/NI/RP/
+  local holiday — with generic school-break names ("Summer Holidays" in NRW _and_ HE/NI/RP/
   NL/BE) that erased whole countries from <HeaderHolidayPanel> (only "Belgien" survived)
   while the day-detail dialog listed them all. The name-echo suppression now applies only to
   non-school entries (a shared public holiday like Whit Monday is still told once, by the
@@ -572,12 +604,12 @@ render-blocking stylesheet (not inlined), and a redundant font preload.
   extraction also previously caused FOUC. `build:webpack` remains for an inlined-CSS build if
   ever needed.
 
-### Follow-ups (audited, not yet done)
+### Follow-ups (both since done)
 
-- ML sparkline still pulls **recharts (~100 KB)** for one line — migrate to the lightweight
-  SVG `Sparkline` (needs a custom y-domain + active-dot).
-- Header `SearchCommand` ships **cmdk** on every page though the dialog only opens on click —
-  lazy-load the `CommandDialog`.
+- ~~ML sparkline still pulls **recharts (~100 KB)** for one line~~ — done: migrated to the
+  hand-rolled SVG in `components/home/ml-sparkline.tsx`; recharts removed from the dependencies.
+- ~~Header `SearchCommand` ships **cmdk** on every page~~ — done: the palette is code-split via
+  `next/dynamic` in `components/search/search-bar.tsx` and only loads on first open.
 
 ---
 

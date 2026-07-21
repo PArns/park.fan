@@ -37,7 +37,7 @@
 | [Scripts](development/scripts.md)                        | Build scripts, translation crawler, validation                      |
 | [Date & Time Handling](development/datetime-handling.md) | Park timezone, "today", date-only (YYYY-MM-DD)                      |
 | [Assets, Images & Content](development/assets.md)        | Park/attraction images, hero/attraction manifests, content markdown |
-| [Flags & Debug](development/flags-and-debug.md)          | Vercel Toolbar, debug-geo-mode, adding flags                        |
+| [Flags & Debug](development/flags-and-debug.md)          | Build-time feature flags, `?sim=` geo simulation                    |
 | [Conventions](development/conventions.md)                | Key rules (URLs, i18n, search, favorites, no secrets, etc.)         |
 | [impeccable (Design Tooling)](development/impeccable.md) | Anti-pattern detector (preview CI) + `/impeccable live` annotation  |
 | [Notes for Sessions](development/notes-for-sessions.md)  | Reminders for AI/human sessions                                     |
@@ -95,11 +95,11 @@
 | Category      | Technology                                     |
 | ------------- | ---------------------------------------------- |
 | **Framework** | [Next.js 16](https://nextjs.org/) (App Router) |
-| **Language**  | TypeScript 5.x, React 19                       |
+| **Language**  | TypeScript 6.x, React 19                       |
 | **Styling**   | TailwindCSS 4, shadcn/ui                       |
 | **i18n**      | next-intl                                      |
 | **Theme**     | next-themes (Light/Dark)                       |
-| **Charts**    | Recharts                                       |
+| **Charts**    | Custom SVG (`Sparkline` & friends)             |
 
 ---
 
@@ -123,7 +123,7 @@ park.fan/
 ├── i18n/                   # Config, routing, request, navigation
 ├── messages/               # Translations (en, de, fr, it, nl, es)
 ├── scripts/                # Build scripts, crawler, validation
-├── flags.ts                # Vercel flags (debug-geo-mode)
+├── lib/config/features.ts  # Build-time feature flags (NEXT_PUBLIC_*)
 ├── proxy.ts                # Next.js 16 i18n proxy
 └── docs/                   # This documentation
 ```

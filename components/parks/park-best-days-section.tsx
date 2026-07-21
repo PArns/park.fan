@@ -6,9 +6,10 @@ import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
-import type { IntegratedCalendarResponse, CrowdLevel } from '@/lib/api/types';
+import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
-import { analyzeBestDays } from '@/lib/utils/crowd-analysis';
+import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
+import { CROWD_CHIP_CLASS } from '@/lib/utils/crowd-level-styles';
 import { getGermanArticle } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { useParkBestDaysCalendar } from '@/lib/hooks/use-park-best-days-calendar';
@@ -41,24 +42,6 @@ interface ParkBestDaysSectionProps {
   seedNowMs?: number;
 }
 
-function scoreToCrowdLevel(score: number): CrowdLevel {
-  if (score <= 1.5) return 'very_low';
-  if (score <= 2.5) return 'low';
-  if (score <= 3.5) return 'moderate';
-  if (score <= 4.5) return 'high';
-  if (score <= 5.5) return 'very_high';
-  return 'extreme';
-}
-
-const CROWD_CHIP: Record<string, string> = {
-  very_low: 'bg-crowd-very-low/20 text-crowd-very-low border border-crowd-very-low/30',
-  low: 'bg-crowd-low/20 text-crowd-low border border-crowd-low/30',
-  moderate: 'bg-crowd-moderate/20 text-crowd-moderate border border-crowd-moderate/30',
-  high: 'bg-crowd-high/20 text-crowd-high border border-crowd-high/30',
-  very_high: 'bg-crowd-very-high/20 text-crowd-very-high border border-crowd-very-high/30',
-  extreme: 'bg-crowd-extreme/20 text-crowd-extreme border border-crowd-extreme/30',
-};
-
 function getDayShort(dayIndex: number, locale: string): string {
   const refMonday = new Date(2025, 0, 6);
   const date = new Date(refMonday);
@@ -79,7 +62,7 @@ function DayChip({ dayIndex, score, locale }: { dayIndex: number; score: number;
     <span
       className={cn(
         'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-        CROWD_CHIP[level]
+        CROWD_CHIP_CLASS[level]
       )}
     >
       {getDayShort(dayIndex, locale)}
@@ -369,14 +352,14 @@ function BestDaysContent({
                   })
                     .format(date)
                     .replace(/\.$/, '');
-                  const level = day.crowdLevel as CrowdLevel;
+                  // Loose lookup: crowdLevel can be 'closed'/'unknown', which carry no chip color.
+                  const chipClass = (CROWD_CHIP_CLASS as Record<string, string>)[day.crowdLevel];
                   return (
                     <span
                       key={day.date}
                       className={cn(
                         'inline-flex items-center rounded-md px-3 py-1 text-sm font-medium',
-                        CROWD_CHIP[level] ??
-                          'bg-muted/20 text-muted-foreground border border-transparent'
+                        chipClass ?? 'bg-muted/20 text-muted-foreground border border-transparent'
                       )}
                     >
                       {label}

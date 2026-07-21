@@ -19,6 +19,7 @@ import {
   Snowflake,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -52,14 +53,7 @@ const CROWD_BAR_COLOR: Record<string, string> = {
   unknown: 'bg-slate-400',
 };
 
-const CROWD_MEANING_LEVELS: readonly CrowdLevel[] = [
-  'very_low',
-  'low',
-  'moderate',
-  'high',
-  'very_high',
-  'extreme',
-];
+const CROWD_MEANING_LEVELS: readonly CrowdLevel[] = CROWD_LEVEL_ORDER;
 
 export interface ParkCalendarDayDetailProps {
   /** The selected day, or null when the dialog is closed (or the target day is still loading). */

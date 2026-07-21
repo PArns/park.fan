@@ -1,6 +1,6 @@
 'use client';
 
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
+import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { formatDuration } from '@/lib/i18n/time';
 import { useTranslations, useLocale } from 'next-intl';
 import { Clock, Calendar, DoorOpen, Snowflake, Info } from 'lucide-react';
@@ -55,7 +55,7 @@ export function ParkTimeInfo({
   const tCommon = useTranslations('common');
   const tNearby = useTranslations('nearby');
   const locale = useLocale();
-  const currentTime = useBrowserNow(60_000);
+  const currentTime = useMinuteNowDate();
 
   // The park structure (incl. `status` and `schedule`) is baked into the 1-day data-cache snapshot,
   // so the server-rendered props can be up to a day stale — which previously left this badge showing

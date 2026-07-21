@@ -12,6 +12,7 @@ import type {
 } from '@/lib/api/types';
 import { calculateDistance, formatDistance } from '@/lib/utils/distance-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import 'leaflet/dist/leaflet.css';
 
 // Fix for default marker icons in Next.js
@@ -176,7 +177,9 @@ export function ParkMap({ park }: ParkMapProps) {
   const locale = useLocale();
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [userHasZoomed, setUserHasZoomed] = useState(false);
-  const [, setTimeRefreshKey] = useState(0); // Force re-render for time updates
+  // Shared once-per-minute clock (paused in hidden tabs) re-renders the relative
+  // time labels in the popups — replaces a private always-on 60 s interval.
+  useMinuteNow();
 
   const requestLocation = () => {
     if (!navigator.geolocation) return;
@@ -202,15 +205,6 @@ export function ParkMap({ park }: ParkMapProps) {
     if (typeof navigator !== 'undefined' && navigator.geolocation) {
       requestLocation();
     }
-  }, []);
-
-  // Refresh times every 1 minute for dynamic updates
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setTimeRefreshKey((prev) => prev + 1);
-    }, 60000); // 1 minute
-
-    return () => clearInterval(intervalId);
   }, []);
 
   const validAttractions = useMemo(

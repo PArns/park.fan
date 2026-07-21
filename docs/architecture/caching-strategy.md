@@ -107,7 +107,15 @@ governs first paint, no-JS visitors and crawlers. The shell content that matters
 park/attraction data actually changes, so TTLs can go to ∞ and time-based writes nearly vanish. The
 `best-days:<slug>` tag already exists.
 
-**Architecture decision (Jun 2026) — keep Cache Components (PPR); accept cold-fill writes.**
+> **⚠️ Superseded (Jul 2026):** the PPR/Cache-Components model described below was later
+> abandoned. Current state: `cacheComponents` is **off** (`next.config.ts`), the park and
+> attraction routes are **`export const dynamic = 'force-dynamic'`** with **no
+> `generateStaticParams`** (only the continent/country/city hub pages still prebuild), and the
+> shell values come from the shared Data Cache (`PARK_REVALIDATE` / `ATTRACTION_REVALIDATE` in
+> `lib/api/parks.ts`) instead of ISR page shells. The summary table at the top of this page
+> reflects the current model; the sections below are kept as historical context for why.
+
+**Architecture decision (Jun 2026, superseded — see above) — keep Cache Components (PPR); accept cold-fill writes.**
 
 We evaluated moving the high-cardinality routes (attraction/park) to **dynamic + CDN** (no ISR
 writes). It is **not possible while `cacheComponents: true`**: both escape hatches fail the build —

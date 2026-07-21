@@ -62,8 +62,7 @@ Next.js API routes used by the frontend (all under `app/api/`):
 | **GET /api/parks/backgrounds** | Returns park/attraction background image paths (uses `lib/utils/park-assets`).                                                                                                        |
 | **GET /api/nearby**            | Proxies nearby-parks (geo) with optional lat/lng.                                                                                                                                     |
 | **GET /api/favorites**         | Proxies to `api.park.fan/v1/favorites` with query params (parkIds, attractionIds, lat, lng, etc.); used to enrich favorites with full entities. Response is dynamic (cookies/params). |
-| **GET /api/og/[...path]**      | Dynamic OG image generation (park, attraction, geo pages); uses `lib/utils/park-assets`, `lib/hero-images`, translations.                                                             |
-| **GET /api/debug-geo-mode**    | Returns current `debug-geo-mode` flag value (Vercel Toolbar / debug geo).                                                                                                             |
+| **GET /api/og/[...path]**      | Dynamic OG image generation (park, attraction, geo pages); uses `lib/utils/park-assets`, `lib/hero-images-park` / `lib/hero-images-meta`, translations.                               |
 
 All `/api/*` routes send `Cache-Control: no-store, must-revalidate` (see [Caching Strategy](../architecture/caching-strategy.md)).
 

@@ -168,16 +168,25 @@ export function GeolocationProvider({ children }: GeolocationProviderProps) {
     };
   }, [requestLocation]);
 
-  // Auto-refresh with dynamic interval (only when we have position)
+  // Auto-refresh with dynamic interval (only when we have position). Skipped while the
+  // tab is hidden — the 60 s in-park cadence would otherwise wake the GPS on a pocketed
+  // phone for a page nobody is looking at; on return a fresh fix is requested right away.
   useEffect(() => {
     if (position === null || permissionDenied) return;
 
     const refreshInterval = isInPark ? 60 * 1000 : 5 * 60 * 1000;
     const interval = setInterval(() => {
-      requestLocation(true);
+      if (!document.hidden) requestLocation(true);
     }, refreshInterval);
+    const onVisibility = () => {
+      if (!document.hidden) requestLocation(true);
+    };
+    document.addEventListener('visibilitychange', onVisibility);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', onVisibility);
+    };
   }, [position, permissionDenied, isInPark, requestLocation]);
 
   // Memoized so a provider re-render without an actual state change doesn't hand every

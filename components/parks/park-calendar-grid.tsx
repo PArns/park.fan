@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -251,7 +252,7 @@ export function ParkCalendarGrid({
   // Compute best-day set — lowest crowd level among OPERATING/UNKNOWN days without school/public holidays.
   // Falls back to backend recommendation field once the API provides it.
   const bestDayDates = useMemo(() => {
-    const crowdOrder = ['very_low', 'low', 'moderate', 'high', 'very_high', 'extreme'];
+    const crowdOrder: readonly string[] = CROWD_LEVEL_ORDER;
     const candidates = Array.from(calendarMap.values()).filter(
       (d) =>
         d.date >= todayStr && // never recommend a day that has already passed

@@ -1,5 +1,3 @@
-'use client';
-
 import type { ReactNode } from 'react';
 import { Sunrise, Clock, ChartColumn, TrendingDown, Moon, Info } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
@@ -37,8 +35,8 @@ interface RopeDropCardProps {
  * minutes-after-open otherwise) and the quieter evening alternative when the
  * day's trough isn't at opening. Evening-better → inverse recommendation (long
  * line right at opening, trough much later — ride late instead). Otherwise a
- * muted "no need to rush" note. Client Component: the concrete times render
- * via <ParkTime> (browser-timezone tooltip needs the client).
+ * muted "no need to rush" note. Server Component: only the embedded <ParkTime>
+ * islands (browser-timezone tooltip) hydrate on the client.
  */
 export function RopeDropCard({
   ropeDrop,

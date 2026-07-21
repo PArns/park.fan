@@ -7,8 +7,8 @@ import { useGlossaryInject } from './glossary-inject-context';
 
 /**
  * Client counterpart to the async server `<GlossaryInject>`. Reads the glossary terms from
- * the surrounding <GlossaryInjectProvider> (seeded server-side via <GlossaryInjectLoader> or a
- * direct provider) instead of awaiting them, so it can run inside a Client Component subtree
+ * the surrounding <GlossaryInjectProvider> (seeded server-side) instead of awaiting them,
+ * so it can run inside a Client Component subtree
  * (e.g. the client FAQ section) and still produce identical term-linked output.
  *
  * No-ops gracefully (renders plain text) when no provider is present.

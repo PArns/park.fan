@@ -1,4 +1,9 @@
 import type { CrowdLevel } from '@/lib/api/types';
+import {
+  CROWD_BADGE_CLASS,
+  CROWD_TEXT_CLASS,
+  waitTimeCrowdTier,
+} from '@/lib/utils/crowd-level-styles';
 
 /**
  * Tailwind text-color class for a crowd level, matching the project-wide
@@ -6,22 +11,7 @@ import type { CrowdLevel } from '@/lib/api/types';
  * inline blog annotations colour-consistent with the rest of the app.
  */
 export function crowdTextColorClass(level: CrowdLevel | undefined): string {
-  switch (level) {
-    case 'very_low':
-      return 'text-crowd-very-low';
-    case 'low':
-      return 'text-crowd-low';
-    case 'moderate':
-      return 'text-crowd-moderate';
-    case 'high':
-      return 'text-crowd-high';
-    case 'very_high':
-      return 'text-crowd-very-high';
-    case 'extreme':
-      return 'text-crowd-extreme';
-    default:
-      return 'text-muted-foreground';
-  }
+  return level && level !== 'unknown' ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground';
 }
 
 /** True when a park/attraction status string means "not currently operating". */
@@ -30,16 +20,11 @@ export function isNotOperating(status: string | undefined): boolean {
 }
 
 /**
- * Severity-coloured badge class for a wait time in minutes, mirroring the
- * thresholds in `WaitTimeValue` (the canonical wait-time display) so an inline
+ * Severity-coloured badge class for a wait time in minutes, sharing the
+ * canonical `waitTimeCrowdTier` thresholds with `WaitTimeValue` so an inline
  * blog wait badge is green at 20 min and red past an hour — the same palette
  * as CrowdLevelBadge, not a flat primary blue.
  */
 export function waitTimeBadgeClass(minutes: number): string {
-  if (minutes <= 5) return 'badge-crowd-very-low';
-  if (minutes <= 15) return 'badge-crowd-low';
-  if (minutes <= 30) return 'badge-crowd-moderate';
-  if (minutes <= 40) return 'badge-crowd-high';
-  if (minutes <= 60) return 'badge-crowd-very-high';
-  return 'badge-crowd-extreme';
+  return CROWD_BADGE_CLASS[waitTimeCrowdTier(minutes)];
 }

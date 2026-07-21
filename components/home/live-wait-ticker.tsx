@@ -7,15 +7,9 @@ import { Link } from '@/i18n/navigation';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import type { TickerItem } from '@/lib/api/types';
+import { CROWD_OUTLINE_CLASS } from '@/lib/utils/crowd-level-styles';
 
-const crowdBorderColor: Record<string, string> = {
-  very_low: 'border-crowd-very-low/60 text-crowd-very-low',
-  low: 'border-crowd-low/60 text-crowd-low',
-  moderate: 'border-crowd-moderate/60 text-crowd-moderate',
-  high: 'border-crowd-high/60 text-crowd-high',
-  very_high: 'border-crowd-very-high/60 text-crowd-very-high',
-  extreme: 'border-crowd-extreme/60 text-crowd-extreme',
-};
+const crowdBorderColor: Record<string, string> = CROWD_OUTLINE_CLASS;
 
 function WaitBadge({
   waitTime,
