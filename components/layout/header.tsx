@@ -38,13 +38,20 @@ export function Header({ showBlog = true }: HeaderProps) {
   const showNearbyPark = nearestPark != null && nearestPark.distance <= NEAR_PARK_HEADER_RADIUS_M;
 
   const isHomePage = pathname === '/';
+  const isFancast = pathname === '/fancast';
+  // Pages that open with a full-bleed hero the header floats over: transparent at
+  // the top, solidifying to the normal bar on scroll. The homepage hero is light
+  // (dark header content reads fine); Fancast's hero is dark, so its floating
+  // header content is forced light regardless of theme (`darkHero`).
+  const isHeroPage = isHomePage || isFancast;
+  const darkHero = isFancast;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const check = () => setScrolled(window.scrollY > 50);
     check();
-    if (!isHomePage) return;
+    if (!isHeroPage) return;
     const handleScroll = () => {
       if (rafRef.current !== null) return;
       rafRef.current = requestAnimationFrame(() => {
@@ -57,9 +64,9 @@ export function Header({ showBlog = true }: HeaderProps) {
       window.removeEventListener('scroll', handleScroll);
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
-  }, [isHomePage]);
+  }, [isHeroPage]);
 
-  const isTransparent = isHomePage && !scrolled;
+  const isTransparent = isHeroPage && !scrolled;
 
   // Shared fade class for elements that hide on the transparent homepage header
   const fadeClass = `transition-opacity duration-500 ${isTransparent ? 'opacity-0 pointer-events-none' : 'opacity-100'}`;
@@ -84,40 +91,66 @@ export function Header({ showBlog = true }: HeaderProps) {
           aria-label="park.fan - Home"
           tabIndex={isTransparent ? 0 : -1}
         >
-          <Image
-            src="/logo-small-dark.svg"
-            width={26}
-            height={30}
-            alt=""
-            aria-hidden="true"
-            className="hidden h-6 w-auto dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/logo-small.svg"
-            width={26}
-            height={30}
-            alt=""
-            aria-hidden="true"
-            className="block h-6 w-auto dark:hidden"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan-dark.svg"
-            width={84}
-            height={24}
-            alt="park.fan"
-            className="hidden h-5 w-auto dark:block"
-            loading="eager"
-          />
-          <Image
-            src="/parkfan.svg"
-            width={84}
-            height={24}
-            alt="park.fan"
-            className="block h-5 w-auto dark:hidden"
-            loading="eager"
-          />
+          {darkHero ? (
+            // Dark hero (Fancast): always the light/white logo so it stays visible
+            // over the dark image in both colour themes.
+            <>
+              <Image
+                src="/logo-small-dark.svg"
+                width={26}
+                height={30}
+                alt=""
+                aria-hidden="true"
+                className="h-6 w-auto"
+                loading="eager"
+              />
+              <Image
+                src="/parkfan-dark.svg"
+                width={84}
+                height={24}
+                alt="park.fan"
+                className="h-5 w-auto"
+                loading="eager"
+              />
+            </>
+          ) : (
+            <>
+              <Image
+                src="/logo-small-dark.svg"
+                width={26}
+                height={30}
+                alt=""
+                aria-hidden="true"
+                className="hidden h-6 w-auto dark:block"
+                loading="eager"
+              />
+              <Image
+                src="/logo-small.svg"
+                width={26}
+                height={30}
+                alt=""
+                aria-hidden="true"
+                className="block h-6 w-auto dark:hidden"
+                loading="eager"
+              />
+              <Image
+                src="/parkfan-dark.svg"
+                width={84}
+                height={24}
+                alt="park.fan"
+                className="hidden h-5 w-auto dark:block"
+                loading="eager"
+              />
+              <Image
+                src="/parkfan.svg"
+                width={84}
+                height={24}
+                alt="park.fan"
+                className="block h-5 w-auto dark:hidden"
+                loading="eager"
+              />
+            </>
+          )}
         </Link>
 
         {/* Header logo – in flex flow, fades in on scroll. Keeps justify-between anchor when invisible. */}
@@ -235,8 +268,9 @@ export function Header({ showBlog = true }: HeaderProps) {
             Only ever visible on the transparent homepage header (`isTransparent` can only be true when
             `isHomePage`), so it's rendered ONLY on the homepage. On every other route it would be a
             permanently-hidden second copy of <LocaleSwitcher/> + <ThemeToggle/> that still hydrates
-            (display/opacity don't skip hydration) — double the work for two interactive dropdowns. */}
-        {isHomePage && (
+            (display/opacity don't skip hydration) — double the work for two interactive dropdowns.
+            Rendered on the hero pages (homepage + Fancast) where the header floats transparent. */}
+        {isHeroPage && (
           <div
             className={`absolute top-1/2 right-6 flex -translate-y-1/2 items-center gap-1 rounded-lg bg-white/60 px-1 py-0.5 backdrop-blur-md transition-opacity duration-500 dark:bg-black/40 ${
               isTransparent ? 'opacity-100' : 'pointer-events-none opacity-0'

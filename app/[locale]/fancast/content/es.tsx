@@ -101,7 +101,7 @@ export function ContentES() {
   return (
     <>
       {/* Intro */}
-      <div className="container mx-auto max-w-4xl space-y-5 px-4">
+      <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast es nuestro modelo de previsión propio: la parte de park.fan que mira hacia el futuro.
           ¿El nombre? Descarado pero con método: <strong>fan</strong> como en park.<strong>fan</strong>,{' '}

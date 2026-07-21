@@ -28,7 +28,7 @@ export function Hero({
   scrollLabel: string;
 }) {
   return (
-    <header className="relative flex min-h-[78vh] items-end overflow-hidden">
+    <header className="relative isolate -mt-14 flex min-h-[78vh] items-end overflow-hidden">
       <Image
         src={imageSrc}
         alt={imageAlt}
@@ -88,7 +88,7 @@ export function SectionShell({
 }) {
   return (
     <section id={id} className="scroll-mt-24">
-      <div className="container mx-auto max-w-4xl px-4">
+      <div className="container mx-auto px-4">
         <Reveal>
           <div className="border-border mb-8 flex items-start gap-4 border-b pb-5">
             <span className="text-primary/15 text-5xl leading-none font-black tabular-nums sm:text-7xl">
@@ -112,18 +112,23 @@ export function SectionShell({
 }
 
 // ── Text primitives ──────────────────────────────────────────────────────────
+// Running text is capped at a readable measure (max-w-3xl) while its parent
+// section spans the full site width, so prose stays legible next to full-bleed
+// grids and figures.
 export function Lead({ children }: { children: React.ReactNode }) {
-  return <p className="text-foreground/80 text-xl leading-relaxed font-medium">{children}</p>;
+  return (
+    <p className="text-foreground/80 max-w-3xl text-xl leading-relaxed font-medium">{children}</p>
+  );
 }
 
 export function P({ children }: { children: React.ReactNode }) {
-  return <p className="text-muted-foreground leading-relaxed">{children}</p>;
+  return <p className="text-muted-foreground max-w-3xl leading-relaxed">{children}</p>;
 }
 
 /** Glossary-aware paragraph — auto-links known terms (string children only). */
 export function PG({ children }: { children: string }) {
   return (
-    <p className="text-muted-foreground leading-relaxed">
+    <p className="text-muted-foreground max-w-3xl leading-relaxed">
       <GlossaryInject>{children}</GlossaryInject>
     </p>
   );
@@ -132,7 +137,7 @@ export function PG({ children }: { children: string }) {
 export function Highlight({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <div className="from-primary/10 border-primary/20 flex gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
+      <div className="from-primary/10 border-primary/20 flex max-w-3xl gap-3 rounded-2xl border bg-gradient-to-br to-transparent p-5 text-base leading-relaxed sm:p-6">
         <ShieldCheck className="text-primary mt-0.5 h-5 w-5 shrink-0" />
         <p className="text-foreground/90">{children}</p>
       </div>
@@ -321,7 +326,7 @@ export function FaqList({
   return (
     <>
       <FaqStructuredData items={items} />
-      <div className="divide-border divide-y">
+      <div className="divide-border max-w-3xl divide-y">
         {items.map((item) => (
           <details key={item.question} className="group py-3">
             <summary

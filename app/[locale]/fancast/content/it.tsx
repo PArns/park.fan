@@ -101,7 +101,7 @@ export function ContentIT() {
   return (
     <>
       {/* Intro */}
-      <div className="container mx-auto max-w-4xl space-y-5 px-4">
+      <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast è il nostro modello di previsione interno: la parte di park.fan che guarda al futuro.
           Il nome? Sfacciato ma metodico: <strong>fan</strong> come in park.<strong>fan</strong>,{' '}
