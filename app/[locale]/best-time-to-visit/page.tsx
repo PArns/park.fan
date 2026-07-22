@@ -263,7 +263,7 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
         titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
       />
 
-      <div id="start" className="mx-auto max-w-4xl space-y-16 py-14 sm:space-y-24 sm:py-20">
+      <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
         <Content />
       </div>
     </>
