@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Calendar, Clock, RefreshCw } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { GlassCard } from '@/components/common/glass-card';
 import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
@@ -41,76 +42,81 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
 
   const authorInner = (
     <>
-      <Avatar className="size-9 ring-2 ring-white/20">
+      <Avatar className="ring-border size-9 ring-2">
         {author.avatar && <AvatarImage src={author.avatar} alt={author.name} />}
-        <AvatarFallback className="bg-white/15 text-sm font-semibold text-white">
+        <AvatarFallback className="bg-primary/15 text-primary text-sm font-semibold">
           {author.name.charAt(0).toUpperCase()}
         </AvatarFallback>
       </Avatar>
-      <span className="font-semibold text-white underline-offset-4 [.group:hover_&]:underline">
+      <span className="text-foreground font-semibold underline-offset-4 [.group:hover_&]:underline">
         {author.name}
       </span>
     </>
   );
 
   return (
-    <header className="relative isolate -mt-14 flex min-h-[60vh] items-end overflow-hidden sm:min-h-[68vh]">
+    <header className="relative isolate -mt-14 flex min-h-[58vh] items-end overflow-hidden sm:min-h-[66vh]">
       {cover ? (
         <Image src={cover} alt={coverAlt} fill priority sizes="100vw" className="object-cover" />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-800 via-slate-950 to-slate-900" />
+        <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />
       )}
-      {/* Readability gradients */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/25" />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent" />
-      {/* Fade into the page background at the bottom, like the park pages. */}
+      {/* Like the park pages: no wash over the photo — it only fades into the page
+          background at the bottom (theme-aware). The title/byline sit on a frosted
+          glass panel so they stay legible over the image in both themes. */}
       <div
         aria-hidden
-        className="to-background pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-b from-transparent sm:h-40"
+        className="via-background/70 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-55% via-[88%]"
       />
 
-      <div className="relative container mx-auto px-4 pt-32 pb-16 text-white sm:pb-24">
-        <p className="text-primary-foreground/80 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-          <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-          {kicker}
-        </p>
-        <h1
-          id={BLOG_TOP_ID}
-          className="max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"
-        >
-          {frontmatter.title}
-        </h1>
-        <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">
-          {frontmatter.excerpt}
-        </p>
+      <div className="relative container mx-auto px-4 pt-32 pb-12 sm:pb-16">
+        <GlassCard variant="medium" className="max-w-3xl">
+          <p className="text-primary mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
+            <span className="bg-primary inline-block h-2 w-2 rounded-full" />
+            {kicker}
+          </p>
+          <h1
+            id={BLOG_TOP_ID}
+            className="text-foreground max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"
+          >
+            {frontmatter.title}
+          </h1>
+          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed sm:text-lg">
+            {frontmatter.excerpt}
+          </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/80">
-          {authorHref ? (
-            <Link href={authorHref} className="group flex items-center gap-2.5" aria-label={author.name}>
-              {authorInner}
-            </Link>
-          ) : (
-            <div className="flex items-center gap-2.5">{authorInner}</div>
-          )}
-          <span className="inline-flex items-center gap-1.5">
-            <Calendar className="h-4 w-4" />
-            <time dateTime={frontmatter.date}>
-              {f.dateTime(date, { day: 'numeric', month: 'long', year: 'numeric' })}
-            </time>
-          </span>
-          {updatedAt && updatedAt.getTime() !== date.getTime() && (
+          <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            {authorHref ? (
+              <Link
+                href={authorHref}
+                className="group flex items-center gap-2.5"
+                aria-label={author.name}
+              >
+                {authorInner}
+              </Link>
+            ) : (
+              <div className="flex items-center gap-2.5">{authorInner}</div>
+            )}
             <span className="inline-flex items-center gap-1.5">
-              <RefreshCw className="h-4 w-4" />
-              {t('updatedOn', {
-                date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
-              })}
+              <Calendar className="h-4 w-4" />
+              <time dateTime={frontmatter.date}>
+                {f.dateTime(date, { day: 'numeric', month: 'long', year: 'numeric' })}
+              </time>
             </span>
-          )}
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="h-4 w-4" />
-            {t('readingTime', { minutes: readingTimeMinutes })}
-          </span>
-        </div>
+            {updatedAt && updatedAt.getTime() !== date.getTime() && (
+              <span className="inline-flex items-center gap-1.5">
+                <RefreshCw className="h-4 w-4" />
+                {t('updatedOn', {
+                  date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
+                })}
+              </span>
+            )}
+            <span className="inline-flex items-center gap-1.5">
+              <Clock className="h-4 w-4" />
+              {t('readingTime', { minutes: readingTimeMinutes })}
+            </span>
+          </div>
+        </GlassCard>
       </div>
     </header>
   );

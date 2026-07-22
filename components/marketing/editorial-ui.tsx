@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
+import { GlassCard } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
@@ -44,41 +45,43 @@ export function Hero({
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
       />
-      {/* Readability gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent" />
-      {/* Fade the image out into the page background at the bottom, like the park
-          pages — theme-aware, so the hero dissolves into the page instead of
-          ending on a hard edge. */}
+      {/* Like the park pages: the photo keeps its natural colours (no dark or light
+          wash over it) and only fades into the page background at the bottom
+          (theme-aware). Text sits on a frosted glass panel so it stays legible over
+          the image in both themes. */}
       <div
         aria-hidden
-        className="to-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent sm:h-44"
+        className="via-background/70 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-60% via-[88%]"
       />
 
-      <div className="relative container mx-auto px-4 pt-32 pb-28 text-white sm:pb-36">
+      <div className="relative container mx-auto px-4 pt-32 pb-14 sm:pb-20">
         <Reveal>
-          <p className="text-primary-foreground/80 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-            <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-            {kicker}
-          </p>
-          <h1 className={titleClassName}>{title}</h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-2xl">
-            {tagline}
-          </p>
-        </Reveal>
+          <GlassCard variant="medium" className="max-w-3xl">
+            <p className="text-primary mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
+              <span className="bg-primary inline-block h-2 w-2 rounded-full" />
+              {kicker}
+            </p>
+            <h1 className={cn('text-foreground', titleClassName)}>{title}</h1>
+            <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed sm:text-xl">
+              {tagline}
+            </p>
 
-        {stats.length > 0 && (
-          <Reveal delay={150}>
-            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
-              {stats.map((s) => (
-                <div key={s.label} className="min-w-[6rem]">
-                  <dt className="text-3xl font-bold tabular-nums sm:text-4xl">{s.value}</dt>
-                  <dd className="text-xs tracking-wide text-white/60 uppercase">{s.label}</dd>
-                </div>
-              ))}
-            </dl>
-          </Reveal>
-        )}
+            {stats.length > 0 && (
+              <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
+                {stats.map((s) => (
+                  <div key={s.label} className="min-w-[6rem]">
+                    <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
+                      {s.value}
+                    </dt>
+                    <dd className="text-muted-foreground text-xs tracking-wide uppercase">
+                      {s.label}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </GlassCard>
+        </Reveal>
       </div>
 
       <ScrollCue label={scrollLabel} />

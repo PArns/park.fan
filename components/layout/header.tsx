@@ -54,12 +54,12 @@ export function Header({ showBlog = true }: HeaderProps) {
     !pathname.startsWith('/blog/tag/') &&
     !pathname.startsWith('/blog/authors/');
   // Pages that open with a full-bleed hero the header floats over: transparent at
-  // the top, solidifying to the normal bar on scroll. The homepage hero is light
-  // (dark header content reads fine); Fancast's, the hub's and the blog index's
-  // heroes are dark, so their floating header content is forced light regardless
-  // of theme (`darkHero`).
+  // the top, solidifying to the normal bar on scroll. All of these heroes now show
+  // the photo in its natural colours (no dark wash) with a frosted glass panel for
+  // the text — like the park pages — so the floating logo follows the theme rather
+  // than being forced light (`darkHero` stays off).
   const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex || isBlogPost;
-  const darkHero = isFancast || isBestTime || isBlogIndex || isBlogPost;
+  const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 
