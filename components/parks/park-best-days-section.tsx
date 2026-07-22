@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/common/glass-card';
 import { CrowdCalendarFaqLink } from '@/components/faq/crowd-calendar-faq-link';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import type { Locale } from '@/i18n/config';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import type { BestDaysByDayOfWeek, BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { analyzeBestDays, scoreToCrowdLevel } from '@/lib/utils/crowd-analysis';
@@ -301,13 +303,22 @@ function BestDaysContent({
               </h2>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">{t('subtitle')}</p>
-            <Link
-              href="/fancast"
-              className="text-primary hover:text-primary/80 mt-1.5 inline-flex items-center gap-1 text-xs font-medium transition-colors"
-            >
-              {t('fancastLink')}
-              <ArrowRight className="h-3 w-3" aria-hidden="true" />
-            </Link>
+            <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1">
+              <Link
+                href="/fancast"
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                {t('fancastLink')}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+              <Link
+                href={`/${BEST_TIME_SEGMENTS[locale as Locale]}`}
+                className="text-primary hover:text-primary/80 inline-flex items-center gap-1 text-xs font-medium transition-colors"
+              >
+                {t('bestTimeLink')}
+                <ArrowRight className="h-3 w-3" aria-hidden="true" />
+              </Link>
+            </div>
           </div>
           {showCalendarLink && (
             <CrowdCalendarFaqLink className="border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 hover:border-primary/50 inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium no-underline transition-colors">
