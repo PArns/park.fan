@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { Calendar, Clock, RefreshCw } from 'lucide-react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { GlassCard } from '@/components/common/glass-card';
 import { Link } from '@/i18n/navigation';
 import { BLOG_TOP_ID } from '@/lib/blog/toc';
 import { resolveAuthor } from '@/lib/blog/authors';
@@ -61,62 +60,65 @@ export function BlogPostBanner({ post, currentLocale, kicker }: BlogPostBannerPr
       ) : (
         <div className="from-primary/15 via-background to-muted absolute inset-0 bg-gradient-to-br" />
       )}
-      {/* Like the park pages: no wash over the photo — it only fades into the page
-          background at the bottom (theme-aware). The title/byline sit on a frosted
-          glass panel so they stay legible over the image in both themes. */}
+      {/* Title/excerpt/byline sit directly on the cover (no panel). Readability
+          comes from a theme-aware tint that fades into the page background — a dark
+          tint in dark mode, a light tint in light mode — so the cover never gets a
+          dark overlay in light mode and never fades dark→white. */}
       <div
         aria-hidden
-        className="via-background/70 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-55% via-[88%]"
+        className="from-background via-background/70 to-background/20 pointer-events-none absolute inset-0 bg-gradient-to-t"
+      />
+      <div
+        aria-hidden
+        className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
 
-      <div className="relative container mx-auto px-4 pt-32 pb-12 sm:pb-16">
-        <GlassCard variant="medium" className="max-w-3xl">
-          <p className="text-primary mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-            <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-            {kicker}
-          </p>
-          <h1
-            id={BLOG_TOP_ID}
-            className="text-foreground max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"
-          >
-            {frontmatter.title}
-          </h1>
-          <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-relaxed sm:text-lg">
-            {frontmatter.excerpt}
-          </p>
+      <div className="text-foreground relative container mx-auto px-4 pt-32 pb-14 sm:pb-20">
+        <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
+          <span className="bg-primary inline-block h-2 w-2 rounded-full" />
+          {kicker}
+        </p>
+        <h1
+          id={BLOG_TOP_ID}
+          className="text-foreground max-w-4xl scroll-mt-24 text-3xl font-black tracking-tight sm:text-5xl"
+        >
+          {frontmatter.title}
+        </h1>
+        <p className="text-foreground/80 mt-4 max-w-2xl text-base leading-relaxed sm:text-lg">
+          {frontmatter.excerpt}
+        </p>
 
-          <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-            {authorHref ? (
-              <Link
-                href={authorHref}
-                className="group flex items-center gap-2.5"
-                aria-label={author.name}
-              >
-                {authorInner}
-              </Link>
-            ) : (
-              <div className="flex items-center gap-2.5">{authorInner}</div>
-            )}
+        <div className="text-muted-foreground mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          {authorHref ? (
+            <Link
+              href={authorHref}
+              className="group flex items-center gap-2.5"
+              aria-label={author.name}
+            >
+              {authorInner}
+            </Link>
+          ) : (
+            <div className="flex items-center gap-2.5">{authorInner}</div>
+          )}
+          <span className="inline-flex items-center gap-1.5">
+            <Calendar className="h-4 w-4" />
+            <time dateTime={frontmatter.date}>
+              {f.dateTime(date, { day: 'numeric', month: 'long', year: 'numeric' })}
+            </time>
+          </span>
+          {updatedAt && updatedAt.getTime() !== date.getTime() && (
             <span className="inline-flex items-center gap-1.5">
-              <Calendar className="h-4 w-4" />
-              <time dateTime={frontmatter.date}>
-                {f.dateTime(date, { day: 'numeric', month: 'long', year: 'numeric' })}
-              </time>
+              <RefreshCw className="h-4 w-4" />
+              {t('updatedOn', {
+                date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
+              })}
             </span>
-            {updatedAt && updatedAt.getTime() !== date.getTime() && (
-              <span className="inline-flex items-center gap-1.5">
-                <RefreshCw className="h-4 w-4" />
-                {t('updatedOn', {
-                  date: f.dateTime(updatedAt, { day: 'numeric', month: 'long', year: 'numeric' }),
-                })}
-              </span>
-            )}
-            <span className="inline-flex items-center gap-1.5">
-              <Clock className="h-4 w-4" />
-              {t('readingTime', { minutes: readingTimeMinutes })}
-            </span>
-          </div>
-        </GlassCard>
+          )}
+          <span className="inline-flex items-center gap-1.5">
+            <Clock className="h-4 w-4" />
+            {t('readingTime', { minutes: readingTimeMinutes })}
+          </span>
+        </div>
       </div>
     </header>
   );

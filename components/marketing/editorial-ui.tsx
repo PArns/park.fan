@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { GlassCard } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { FaqStructuredData } from '@/components/seo/structured-data';
@@ -45,43 +44,47 @@ export function Hero({
         sizes="100vw"
         className="object-cover motion-safe:scale-105"
       />
-      {/* Like the park pages: the photo keeps its natural colours (no dark or light
-          wash over it) and only fades into the page background at the bottom
-          (theme-aware). Text sits on a frosted glass panel so it stays legible over
-          the image in both themes. */}
+      {/* Title/tagline sit directly on the photo (no panel). Readability comes from
+          a theme-aware tint that fades into the page background — a dark tint in
+          dark mode, a light tint in light mode — so the image never gets a dark
+          overlay in light mode and never fades dark→white. */}
       <div
         aria-hidden
-        className="via-background/70 to-background pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent from-60% via-[88%]"
+        className="from-background via-background/70 to-background/20 pointer-events-none absolute inset-0 bg-gradient-to-t"
+      />
+      <div
+        aria-hidden
+        className="from-background/40 pointer-events-none absolute inset-0 bg-gradient-to-r to-transparent"
       />
 
-      <div className="relative container mx-auto px-4 pt-32 pb-14 sm:pb-20">
+      <div className="text-foreground relative container mx-auto px-4 pt-32 pb-16 sm:pb-24">
         <Reveal>
-          <GlassCard variant="medium" className="max-w-3xl">
-            <p className="text-primary mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
-              <span className="bg-primary inline-block h-2 w-2 rounded-full" />
-              {kicker}
-            </p>
-            <h1 className={cn('text-foreground', titleClassName)}>{title}</h1>
-            <p className="text-muted-foreground mt-4 max-w-2xl text-lg leading-relaxed sm:text-xl">
-              {tagline}
-            </p>
-
-            {stats.length > 0 && (
-              <dl className="mt-8 flex flex-wrap gap-x-10 gap-y-5">
-                {stats.map((s) => (
-                  <div key={s.label} className="min-w-[6rem]">
-                    <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
-                      {s.value}
-                    </dt>
-                    <dd className="text-muted-foreground text-xs tracking-wide uppercase">
-                      {s.label}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-          </GlassCard>
+          <p className="text-foreground/70 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
+            <span className="bg-primary inline-block h-2 w-2 rounded-full" />
+            {kicker}
+          </p>
+          <h1 className={cn('text-foreground', titleClassName)}>{title}</h1>
+          <p className="text-foreground/80 mt-5 max-w-2xl text-lg leading-relaxed sm:text-2xl">
+            {tagline}
+          </p>
         </Reveal>
+
+        {stats.length > 0 && (
+          <Reveal delay={150}>
+            <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-5">
+              {stats.map((s) => (
+                <div key={s.label} className="min-w-[6rem]">
+                  <dt className="text-foreground text-3xl font-bold tabular-nums sm:text-4xl">
+                    {s.value}
+                  </dt>
+                  <dd className="text-muted-foreground text-xs tracking-wide uppercase">
+                    {s.label}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        )}
       </div>
 
       <ScrollCue label={scrollLabel} />
