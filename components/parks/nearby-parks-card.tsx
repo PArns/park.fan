@@ -39,7 +39,13 @@ export function NearbyParksCard({ className }: { className?: string }) {
     setIsInPark,
   } = useGeolocation();
 
-  const { data: nearbyData, isLoading: dataLoading, error: dataError } = useHomeNearbyParks();
+  // `isPending` (no data yet, including "query not enabled yet") instead of `isLoading`
+  // (actively fetching): the query is gated behind the after-load idle window and the
+  // initial geolocation check, so right after mount NOTHING is in flight yet — with
+  // `isLoading` the card fell through to the "enable location" prompt for those first
+  // seconds and then jumped prompt → skeleton → parks once the query fired. `isPending`
+  // keeps the skeleton up until the query has actually produced data or an error.
+  const { data: nearbyData, isPending: dataPending, error: dataError } = useHomeNearbyParks();
 
   const locationSource = position ? 'gps' : 'ip';
 
@@ -48,12 +54,12 @@ export function NearbyParksCard({ className }: { className?: string }) {
   // Show skeleton whenever there's nothing to display and something is still in progress.
   // Keep showing skeleton even on 400 errors while GPS is still loading — coords may arrive
   // and trigger a successful retry. nearbyData covers both real and placeholder (cached) data.
-  const isLoading = !nearbyData && (geoLoading || dataLoading);
+  const isLoading = !nearbyData && (geoLoading || dataPending);
 
   // "Location required" 400 = no public IP and no coords (e.g. local dev). Treat as prompt, not error.
   const isLocationUnavailable =
     dataError != null &&
-    !dataLoading &&
+    !dataPending &&
     typeof (dataError as Error)?.message === 'string' &&
     ((dataError as Error).message.toLowerCase().includes('location') ||
       (dataError as Error).message.toLowerCase().includes('geoip') ||
@@ -67,7 +73,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
 
   // Prompt state: only when user hasn't granted location yet (or is still undecided).
   // Don't show if GPS timed out / unavailable — permissionGranted stays true in that case.
-  if (!permissionGranted && !permissionDenied && !geoLoading && !dataLoading && !nearbyData) {
+  if (!permissionGranted && !permissionDenied && !geoLoading && !dataPending && !nearbyData) {
     return (
       <div className={cn('min-h-[200px]', TOP_SPACING, className)}>
         <GlassSectionTitle icon={MapPin} iconClassName="text-muted-foreground">
@@ -85,7 +91,7 @@ export function NearbyParksCard({ className }: { className?: string }) {
   }
 
   // Error state: unexpected API/backend errors only
-  const showErrorCard = dataError && !dataLoading && !isLocationUnavailable;
+  const showErrorCard = dataError && !dataPending && !isLocationUnavailable;
 
   if (showErrorCard) {
     return (

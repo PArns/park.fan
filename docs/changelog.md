@@ -4,6 +4,34 @@ Short log of notable changes; details live in the linked docs.
 
 ---
 
+## Unreleased – fix: late-load flicker sweep (homepage, park-page weather, search)
+
+Fixes the remaining "flickers once or twice a few seconds after load" reports. Root causes were
+found empirically (headless Chromium + MutationObserver/layout-shift tracing on the built app).
+
+- **Park-page weather no longer double-jumps:** the hour-by-hour chart now reserves its space with
+  a same-size placeholder (fixed `h-28` plot + axis row — deterministic, not a guessed height)
+  while the hourly fetch is still in flight and a nowcast is already shown. Previously the section
+  shifted once when the nowcast landed (~3 s) and again ~1 s later when the chart mounted
+  (layout-shift 0.037); now it settles in a single step. This resolves the "known, deferred"
+  weather-chart CLS note from the re-render sweep.
+- **Search palette stops flashing while typing:** the main search and glossary queries use
+  `placeholderData: keepPreviousData`, so a new debounced query updates results in place instead of
+  results → skeleton → results (the cmdk list height stopped jumping between 176/331/420 px).
+- **Nearby card no longer flashes the "enable location" prompt:** the card keyed its skeleton off
+  `isLoading` (actively fetching), but the nearby query is gated behind the after-load idle window
+  and the initial permission check — in those first seconds nothing is in flight, so the prompt
+  rendered and was then replaced by skeleton → parks. It now uses `isPending` (no data yet).
+- **Nearby consumers survive the GPS key change:** `useNearbyParks` `placeholderData` now prefers
+  the previous query's in-memory data before falling back to the localStorage cache, so the header
+  pill / hero variant / search-dialog nearby group no longer blank out when coords arrive
+  mid-session and re-key the query.
+- **In-park hero takeover can't flash the background:** the base hero image holds its fade-out
+  until the first park image has actually loaded (`onLoad`-gated), and the stacked park layers are
+  `loading="eager"` (they're `opacity-0`, so lazy heuristics must not defer them).
+
+---
+
 ## Unreleased – perf: re-render sweep (map re-pan fix, memoized grids/markers)
 
 Follow-up render-churn pass on top of the code-quality sweep; no user-facing behaviour changes
