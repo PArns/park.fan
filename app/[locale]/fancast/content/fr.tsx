@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -355,7 +356,13 @@ export function ContentFR() {
             {
               icon: CalendarDays,
               title: 'Meilleure période',
-              body: 'les jours de semaine les plus calmes et les prochains jours à bon plan, distillés à partir des mêmes données.',
+              body: (
+                <>
+                  les jours de semaine les plus calmes et les prochains jours à bon plan, distillés à
+                  partir des mêmes données. Découvrez la{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.fr}`}>meilleure période pour visiter</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -355,7 +356,13 @@ export function ContentNL() {
             {
               icon: CalendarDays,
               title: 'Beste reistijd',
-              body: 'de rustigste weekdagen en de aankomende geheime-tip-dagen, gedestilleerd uit dezelfde data.',
+              body: (
+                <>
+                  de rustigste weekdagen en de aankomende geheime-tip-dagen, gedestilleerd uit
+                  dezelfde data. Bekijk de{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.nl}`}>beste tijd om te bezoeken</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,

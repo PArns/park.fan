@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
@@ -39,12 +40,26 @@ export function Header({ showBlog = true }: HeaderProps) {
 
   const isHomePage = pathname === '/';
   const isFancast = pathname === '/fancast';
+  // The hub uses localized slugs (usePathname is locale-stripped but keeps the
+  // localized segment), so match against all of them.
+  const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
+  // The blog index (not its sub-pages) opens with the same full-bleed hero.
+  const isBlogIndex = pathname === '/blog';
+  // Blog articles open with a full-bleed cover banner (always dark: a cover
+  // image or a dark fallback gradient). The listing sub-pages (category/tag/
+  // author) keep the normal header.
+  const isBlogPost =
+    pathname.startsWith('/blog/') &&
+    !pathname.startsWith('/blog/category/') &&
+    !pathname.startsWith('/blog/tag/') &&
+    !pathname.startsWith('/blog/authors/');
   // Pages that open with a full-bleed hero the header floats over: transparent at
-  // the top, solidifying to the normal bar on scroll. The homepage hero is light
-  // (dark header content reads fine); Fancast's hero is dark, so its floating
-  // header content is forced light regardless of theme (`darkHero`).
-  const isHeroPage = isHomePage || isFancast;
-  const darkHero = isFancast;
+  // the top, solidifying to the normal bar on scroll. All of these heroes now show
+  // the photo in its natural colours (no dark wash) with a frosted glass panel for
+  // the text — like the park pages — so the floating logo follows the theme rather
+  // than being forced light (`darkHero` stays off).
+  const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex || isBlogPost;
+  const darkHero = false;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 

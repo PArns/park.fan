@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
@@ -1007,6 +1008,13 @@ function ContentDE() {
             Fancast
           </Link>{' '}
           — mit einer eigenen Seite, die erklärt, wie es funktioniert und wie genau es derzeit ist.
+        </p>
+        <p className="text-muted-foreground">
+          Noch unsicher, wann es losgehen soll? Die{' '}
+          <Link href={`/${BEST_TIME_SEGMENTS.de}`} className="text-primary hover:underline">
+            beste Reisezeit
+          </Link>{' '}
+          bündelt die ruhigsten Wochentage und Monate über alle Parks hinweg.
         </p>
       </Section>
 

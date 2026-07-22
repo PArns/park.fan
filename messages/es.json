@@ -220,6 +220,7 @@
     "impressum": "Aviso Legal",
     "howto": "Cómo funciona",
     "fancast": "Fancast",
+    "bestTime": "Mejor época para visitar",
     "glossaryLink": "Diccionario",
     "blog": "Blog",
     "datenschutz": "Privacidad",
@@ -574,6 +575,7 @@
       "bestWeekendDayTitle": "Mejor día del fin de semana",
       "titleCompact": "Mejor época para visitar",
       "fancastLink": "Previsiones de Fancast",
+      "bestTimeLink": "Mejor época en todos los parques",
       "viewCalendarLink": "Ver calendario de afluencia completo"
     },
     "weatherWarnings": {
@@ -1158,6 +1160,10 @@
   "fancast": {
     "title": "Fancast – nuestro modelo de predicción de tiempos de espera",
     "description": "Fancast es el modelo de IA de park.fan: predice la afluencia y los tiempos de espera con hasta 365 días de antelación y evalúa su precisión en abierto."
+  },
+  "bestTime": {
+    "title": "Mejor época para visitar parques temáticos",
+    "description": "Los días y meses más tranquilos, a partir de datos reales de tiempos de espera de más de 150 parques, con trucos para colas cortas y calendario de afluencia."
   },
   "howto": {
     "title": "Cómo funciona – La guía completa",

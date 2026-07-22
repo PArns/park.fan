@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -355,7 +356,13 @@ export function ContentDE() {
             {
               icon: CalendarDays,
               title: 'Beste Reisezeit',
-              body: 'die ruhigsten Wochentage und die kommenden Geheimtipp-Tage, aus denselben Daten destilliert.',
+              body: (
+                <>
+                  die ruhigsten Wochentage und die kommenden Geheimtipp-Tage, aus denselben Daten
+                  destilliert. Wirf einen Blick auf die{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.de}`}>beste Reisezeit</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,

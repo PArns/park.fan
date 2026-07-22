@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -354,7 +355,13 @@ export function ContentES() {
             {
               icon: CalendarDays,
               title: 'Mejor época para ir',
-              body: 'los días de diario más tranquilos y los próximos días de consejo secreto, destilados de los mismos datos.',
+              body: (
+                <>
+                  los días de diario más tranquilos y los próximos días de consejo secreto,
+                  destilados de los mismos datos. Consulta la{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.es}`}>mejor época para visitar</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,

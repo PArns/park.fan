@@ -6,6 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import { BuildInfo } from '@/components/common/build-info';
 import { PreferredSourceButton } from '@/components/common/preferred-source-button';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import type { Locale } from '@/i18n/config';
 
@@ -18,6 +19,7 @@ interface FooterProps {
 export async function Footer({ locale, showBlog = true }: FooterProps) {
   const t = await getTranslations({ locale, namespace: 'footer' });
   const glossaryPath = '/' + GLOSSARY_SEGMENTS[locale as Locale];
+  const bestTimePath = '/' + BEST_TIME_SEGMENTS[locale as Locale];
   const tGeo = await getTranslations({ locale, namespace: 'geo' });
   const currentYear = await getCurrentYear();
 
@@ -377,6 +379,15 @@ export async function Footer({ locale, showBlog = true }: FooterProps) {
               aria-label={t('fancast')}
             >
               {t('fancast')}
+            </Link>
+            <span className="text-muted-foreground/60 flex items-center">•</span>
+            <Link
+              href={bestTimePath}
+              prefetch={false}
+              className="hover:text-foreground text-sm transition-colors"
+              aria-label={t('bestTime')}
+            >
+              {t('bestTime')}
             </Link>
             <span className="text-muted-foreground/60 flex items-center">•</span>
             <Link

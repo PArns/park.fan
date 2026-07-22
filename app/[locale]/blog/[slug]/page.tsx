@@ -10,7 +10,8 @@ import {
   listAllUrlSlugsByLocale,
 } from '@/lib/blog';
 import { BlogContent } from '@/components/blog/blog-content';
-import { BlogPostHero } from '@/components/blog/blog-post-hero';
+import { BlogPostBanner } from '@/components/blog/blog-post-banner';
+import { BlogLanguageNotice } from '@/components/blog/blog-language-notice';
 import { BlogToc } from '@/components/blog/blog-toc';
 import { BlogCategoryTree } from '@/components/blog/blog-category-tree';
 import { BlogTagCloud } from '@/components/blog/blog-tag-cloud';
@@ -30,9 +31,7 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
 import { PageContainer } from '@/components/common/page-container';
-import { GlassCard } from '@/components/common/glass-card';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
-import { ParkBackground } from '@/components/parks/park-background';
 import { categoryPathBreadcrumbs, resolveCategoryLabel } from '@/lib/blog/categories';
 import type { Breadcrumb } from '@/lib/api/types';
 
@@ -194,6 +193,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   const cover = post.frontmatter.coverImage?.src ?? null;
 
+  // Eyebrow above the banner title: the deepest category, or the blog badge.
+  const kicker =
+    navBreadcrumbs.length > 1 ? navBreadcrumbs[navBreadcrumbs.length - 1].name : tBlog('badge');
+
   // Language-switch offers for the hero notice. Each offer's label is
   // pre-translated in ITS OWN target language (not the current UI locale): a
   // German reader whose browser prefers English sees "This article is also
@@ -232,11 +235,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <>
       {cover && <link rel="preload" as="image" href={cover} />}
-      <ParkBackground
-        imageSrc={cover}
-        alt={post.frontmatter.coverImage?.alt ?? post.frontmatter.title}
-      />
       <BlogReadingProgress />
+
+      {/* Full-bleed cover banner — the header floats transparent over it. */}
+      <BlogPostBanner post={post} currentLocale={locale as Locale} kicker={kicker} />
 
       <PageContainer>
         <BlogPostingStructuredData post={post} locale={locale} path={`/blog/${post.slug}`} />
@@ -244,19 +246,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <BreadcrumbNav breadcrumbs={navBreadcrumbs} currentPage={post.frontmatter.title} />
 
-        <article>
-          {/* Header glass card — same shape as the park page header */}
-          <div className="mb-8">
-            <GlassCard variant="medium">
-              <BlogPostHero
-                post={post}
-                currentLocale={locale as Locale}
-                languageOffers={languageOffers}
-                fallbackLabel={fallbackLabel}
-              />
-            </GlassCard>
-          </div>
+        <BlogLanguageNotice
+          currentLocale={locale as Locale}
+          loadedLocale={post.loadedLocale}
+          languageOffers={languageOffers}
+          fallbackLabel={fallbackLabel}
+        />
 
+        <article className="mt-6">
           <div
             className={
               hasToc
@@ -276,27 +273,22 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             )}
 
             <div className="min-w-0 lg:col-start-1 lg:row-start-1">
-              {/* Body in its own glass card so the long-form content sits on a
-                 frosted panel exactly like the schedule/weather/stats cards on
-                 the park page. */}
-              <GlassCard variant="medium" className="mb-8">
-                <BlogContent markdown={post.content} locale={locale as Locale} />
+              <BlogContent markdown={post.content} locale={locale as Locale} />
 
-                {(() => {
-                  const images = resolveGallery(post.frontmatter.gallery, locale);
-                  return images.length > 0 ? <BlogGallery images={images} /> : null;
-                })()}
+              {(() => {
+                const images = resolveGallery(post.frontmatter.gallery, locale);
+                return images.length > 0 ? <BlogGallery images={images} /> : null;
+              })()}
 
-                {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
-                  <div className="border-border/60 mt-12 border-t pt-6">
-                    <BlogTags tags={post.frontmatter.tags} />
-                  </div>
-                )}
-
-                <div className="border-border/60 mt-8 border-t pt-6">
-                  <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+              {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+                <div className="border-border/60 mt-12 border-t pt-6">
+                  <BlogTags tags={post.frontmatter.tags} />
                 </div>
-              </GlassCard>
+              )}
+
+              <div className="border-border/60 mt-8 border-t pt-6">
+                <ShareButtons url={shareUrl} title={post.frontmatter.title} />
+              </div>
 
               {/* Marks the end of the readable article body — the reading-progress
                  bar fills to 100% here, before the references/related sections. */}
@@ -310,11 +302,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                  so it doesn't get buried under the footer sections. */}
               <BlogPostNav locale={locale as Locale} currentTranslationKey={post.translationKey} />
 
-              {/* Post footer on its own frosted panel so the headings/links stay
-                 legible where they scroll over the fixed cover image — same
-                 glass treatment as the article body. Keep-reading first (more
-                 posts), then the parks & rides referenced here. */}
-              <div className="bg-background/60 mt-8 rounded-xl border px-6 shadow-sm backdrop-blur-md">
+              {/* Post footer: keep-reading first (more posts), then the parks &
+                 rides referenced here. */}
+              <div className="bg-card mt-8 rounded-xl border px-6 shadow-sm">
                 <BlogRelatedPosts
                   locale={locale as Locale}
                   currentTranslationKey={post.translationKey}
