@@ -39,6 +39,8 @@ const DATA_LABELS: BestTimesLabels = {
   busier: 'più affollato',
   typical: 'intorno alla media',
   footnote: 'Basato su {days} giorni-parco di {parks} parchi, ultimi {months} mesi.',
+  pending:
+    'La classifica dal vivo sta ancora raccogliendo i tempi di attesa. I giorni più tranquilli compariranno qui non appena ci saranno abbastanza dati.',
 };
 
 const FAQ = [

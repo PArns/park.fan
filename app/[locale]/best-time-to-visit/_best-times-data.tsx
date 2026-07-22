@@ -1,6 +1,7 @@
 import { getGlobalBestTimes, type BestTimeBucket } from '@/lib/api/best-times';
 import type { CrowdLevel } from '@/lib/api/types';
 import { Reveal } from '@/components/marketing/scroll-reveal';
+import { Clock } from 'lucide-react';
 
 export interface BestTimesLabels {
   weekdaysTitle: string;
@@ -15,6 +16,8 @@ export interface BestTimesLabels {
   typical: string;
   /** e.g. "Based on {days} park-days across {parks} parks, last {months} months." */
   footnote: string;
+  /** Shown while the live aggregate has not built up enough data yet. */
+  pending: string;
 }
 
 // Crowd colours (match CrowdLevelBadge / the Fancast spectrum).
@@ -51,20 +54,25 @@ function BarList({
         const suffix =
           Math.abs(pct) <= 3 ? labels.typical : pct < 0 ? labels.quieter : labels.busier;
         const pctText =
-          Math.abs(pct) <= 3 ? labels.typical : `${Math.abs(pct)} % ${suffix}`;
+          Math.abs(pct) <= 3 ? labels.typical : `${Math.abs(pct)} % ${suffix}`;
+        const isQuietest = b.key === quietestKey;
         return (
-          <div key={b.key} className="flex items-center gap-3">
+          <div
+            key={b.key}
+            className="group flex items-center gap-3"
+            title={`${name(b.key)}: ${pctText}`}
+          >
             <span
               className={
                 'w-20 shrink-0 text-sm sm:w-28' +
-                (b.key === quietestKey ? ' text-primary font-semibold' : ' font-medium')
+                (isQuietest ? ' text-primary font-semibold' : ' font-medium')
               }
             >
               {name(b.key)}
             </span>
             <div className="bg-muted h-7 flex-1 overflow-hidden rounded-lg">
               <div
-                className="h-full rounded-lg transition-[width] duration-700"
+                className="h-full rounded-lg transition-[width,filter] duration-700 group-hover:brightness-110"
                 style={{
                   width: `${Math.max(width, 4)}%`,
                   backgroundColor: CROWD_HEX[b.crowdLevel] ?? CROWD_HEX.unknown,
@@ -72,7 +80,7 @@ function BarList({
                 aria-hidden
               />
             </div>
-            <span className="text-muted-foreground w-28 shrink-0 text-right text-xs tabular-nums sm:w-36">
+            <span className="text-muted-foreground w-28 shrink-0 text-right text-xs tabular-nums transition-colors group-hover:text-foreground sm:w-36">
               {pctText}
             </span>
           </div>
@@ -82,11 +90,25 @@ function BarList({
   );
 }
 
+/** Non-empty fallback while the live aggregate is still warming up. */
+function PendingPanel({ text }: { text: string }) {
+  return (
+    <Reveal>
+      <div className="bg-card flex items-start gap-3 rounded-2xl border border-dashed p-5 shadow-sm sm:p-6">
+        <div className="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl">
+          <Clock className="text-primary h-5 w-5" />
+        </div>
+        <p className="text-muted-foreground max-w-2xl text-sm leading-relaxed">{text}</p>
+      </div>
+    </Reveal>
+  );
+}
+
 /**
  * Global best-time charts: relative busyness by weekday and by month, live from
  * `/v1/analytics/best-times`. Weekday/month names are localised via `Intl`.
- * Renders nothing (the page keeps its evergreen sections) if the aggregate is
- * unreachable or not yet displayable.
+ * While the aggregate is unreachable or not yet displayable, a compact "warming
+ * up" panel is shown instead so the section never renders empty.
  */
 export async function BestTimesData({
   locale,
@@ -96,7 +118,7 @@ export async function BestTimesData({
   labels: BestTimesLabels;
 }) {
   const data = await getGlobalBestTimes().catch(() => null);
-  if (!data || !data.meta.displayable) return null;
+  if (!data || !data.meta.displayable) return <PendingPanel text={labels.pending} />;
 
   const weekdayName = (dow: number) =>
     new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(
@@ -105,11 +127,16 @@ export async function BestTimesData({
   const monthName = (m: number) =>
     new Intl.DateTimeFormat(locale, { month: 'long' }).format(new Date(Date.UTC(2023, m - 1, 1)));
 
+  // Drop buckets the aggregate couldn't rank (no samples) — a grey "average" bar
+  // in a busyness chart is misleading, so only real-data buckets are shown.
+  const hasData = (b?: BestTimeBucket): b is BestTimeBucket =>
+    !!b && b.sampleDays > 0 && b.crowdLevel !== 'unknown';
+
   // Weekdays Monday-first (dow 1..6 then 0=Sunday).
   const weekdayOrder = [1, 2, 3, 4, 5, 6, 0];
   const byDow = new Map(data.byDayOfWeek.map((b) => [b.key, b]));
-  const weekdays = weekdayOrder.map((d) => byDow.get(d)).filter(Boolean) as BestTimeBucket[];
-  const months = [...data.byMonth].sort((a, b) => a.key - b.key);
+  const weekdays = weekdayOrder.map((d) => byDow.get(d)).filter(hasData);
+  const months = data.byMonth.filter(hasData).sort((a, b) => a.key - b.key);
 
   const footnote = labels.footnote
     .replace('{days}', new Intl.NumberFormat(locale).format(data.meta.totalSampleDays))

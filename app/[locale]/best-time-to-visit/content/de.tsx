@@ -31,46 +31,48 @@ import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 const DATA_LABELS: BestTimesLabels = {
   weekdaysTitle: 'Die ruhigsten Wochentage',
   weekdaysBody:
-    'Über alle Parks gemittelt — jeder Park auf seinen eigenen Schnitt normiert, damit große Parks kleine nicht überstrahlen. So voll ist ein typischer Wochentag im Vergleich zum Durchschnitt. Dienstag bis Donnerstag gewinnen fast immer.',
+    'Jeder Park zählt hier gleich viel, egal ob Disneyland oder kleiner Familienpark: Wir rechnen ihn zuerst auf seinen eigenen Schnitt um und mitteln dann. Der Balken zeigt, wie voll ein typischer Wochentag im Vergleich zum Durchschnitt ist. Dienstag bis Donnerstag liegen fast immer vorn.',
   monthsTitle: 'Die ruhigsten Monate',
   monthsBody:
-    'Dieselbe Rechnung übers Jahr: Die Nebensaison ist spürbar leerer als die Sommer- und Ferienspitzen.',
+    'Dieselbe Rechnung, diesmal übers Jahr verteilt. Die Nebensaison ist spürbar leerer als die Sommer- und Ferienwochen.',
   quieter: 'ruhiger',
   busier: 'voller',
   typical: 'wie der Schnitt',
   footnote: 'Basis: {days} Park-Tage aus {parks} Parks, letzte {months} Monate.',
+  pending:
+    'Die Live-Auswertung sammelt gerade Wartezeiten. Die ruhigsten Tage erscheinen hier, sobald genug Daten zusammengekommen sind.',
 };
 
 const FAQ = [
   {
     question: 'Wann ist die beste Reisezeit für einen Freizeitpark?',
     answer:
-      'Am ruhigsten ist es an Wochentagen außerhalb der Schulferien — Dienstag bis Donnerstag in der Nebensaison sind fast immer die entspanntesten Tage. Die genauen Muster pro Wochentag und Monat siehst du oben, live aus echten Wartezeit-Daten über alle Parks.',
+      'Am entspanntesten sind Wochentage außerhalb der Ferien, allen voran Dienstag bis Donnerstag in der Nebensaison. Die genauen Muster pro Wochentag und Monat siehst du oben, direkt aus den echten Wartezeiten über alle Parks.',
   },
   {
     question: 'Welcher Wochentag ist am leersten?',
     answer:
-      'Über alle Parks gemittelt sind Dienstag, Mittwoch und Donnerstag am ruhigsten, während Samstag und Sonntag klar am vollsten sind. Einzelne Parks können abweichen — der Crowd-Kalender jeder Parkseite zeigt es tagesgenau.',
+      'Im Schnitt über alle Parks sind Dienstag, Mittwoch und Donnerstag am ruhigsten, Samstag und Sonntag mit Abstand am vollsten. Bei einzelnen Parks kann es anders aussehen; das zeigt dir der Crowd-Kalender auf der jeweiligen Parkseite tagesgenau.',
   },
   {
     question: 'In welchen Monaten sind Freizeitparks am leersten?',
     answer:
-      'Die Nebensaison-Monate abseits von Sommer- und Feiertagsspitzen sind am leersten. Die Monatsübersicht oben zeigt die relative Auslastung übers Jahr, gemittelt über alle Parks.',
+      'Am leersten ist es in der Nebensaison, also abseits der Sommerferien und der großen Feiertage. Die Monatsübersicht oben zeigt dir die Auslastung übers ganze Jahr, gemittelt über alle Parks.',
   },
   {
     question: 'Lohnt sich ein Besuch bei Regen?',
     answer:
-      'Oft ja: schlechtes Wetter schreckt viele Gäste ab, die Schlangen werden kürzer — besonders für Achterbahnen, die trotzdem fahren. Der Geheimtipp funktioniert aber nur, solange nicht alle dieselbe Idee haben; unser Prognosemodell rechnet die Wetterlage deshalb direkt mit ein.',
+      'Oft ja. Schlechtes Wetter hält viele ab, und die Schlangen werden kürzer, gerade an Achterbahnen, die bei Regen weiterfahren. Der Geheimtipp funktioniert nur, solange nicht alle gleichzeitig darauf kommen. Deshalb rechnet unser Prognosemodell das Wetter gleich mit ein.',
   },
   {
     question: 'Wie finde ich den besten Tag für einen bestimmten Park?',
     answer:
-      'Diese Seite zeigt die globalen Muster als Startpunkt. Für einen konkreten Park öffnest du dessen Crowd-Kalender: Er zeigt für jeden einzelnen Tag bis zu ein Jahr im Voraus eine grüne, gelbe oder rote Prognose — inklusive Schulferien und Feiertagen der Region.',
+      'Diese Seite gibt dir die groben Muster. Für einen konkreten Park öffnest du seinen Crowd-Kalender: Der zeigt für jeden einzelnen Tag bis zu ein Jahr im Voraus grün, gelb oder rot, inklusive der Ferien und Feiertage der Region.',
   },
   {
     question: 'Woher stammen diese Daten?',
     answer:
-      'Aus den tatsächlich gemessenen Wartezeiten von über 150 Parks der letzten zwei Jahre. Jeder Park wird auf seinen eigenen Durchschnitt normiert und dann über alle Parks gemittelt, damit die Rangfolge fair ist und nicht von den größten Parks bestimmt wird.',
+      'Aus den tatsächlich gemessenen Wartezeiten von über 150 Parks aus den letzten zwei Jahren. Damit die Rangfolge fair bleibt und nicht einfach von den größten Parks bestimmt wird, rechnen wir jeden Park zuerst auf seinen eigenen Schnitt um und mitteln erst dann.',
   },
 ] as const;
 
@@ -80,19 +82,21 @@ export function ContentDE() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Die beste Reisezeit für einen Freizeitpark ist kein Geheimnis — sie ist ein Muster. Wann
-          ein Park voll wird, folgt dem Wochentag, dem Ferienkalender, dem Wetter und der Saison; alle
-          vier hinterlassen Spuren in den Wartezeiten.
+          Wann ein Freizeitpark voll wird, ist erstaunlich vorhersehbar. Wochentag, Ferien, Wetter und
+          Jahreszeit entscheiden zum großen Teil, ob du an der Achterbahn zehn Minuten wartest oder
+          anderthalb Stunden. Und weil jeder Besuch Wartezeiten hinterlässt, lässt sich das ziemlich
+          genau nachrechnen.
         </Lead>
         <P>
-          Diese Spuren haben wir über 150+ Parks der letzten zwei Jahre gemessen. Weiter unten: die
-          ruhigsten Wochentage und Monate, die entspanntesten Stunden des Tages, die Termine zum
-          Meiden — und der Crowd-Kalender, der daraus den einen besten Tag für deinen Park macht.
+          Genau das haben wir gemacht: zwei Jahre Wartezeiten aus über 150 Parks ausgewertet. Auf
+          dieser Seite findest du die ruhigsten Wochentage und Monate, die besten Uhrzeiten, die Tage,
+          an denen du besser zu Hause bleibst, und zum Schluss den Crowd-Kalender, der dir für deinen
+          Wunschpark den passenden Tag raussucht.
         </P>
         <Highlight>
-          Kurzfassung: Dienstag bis Donnerstag außerhalb der Schulferien, zur Öffnung da sein und
-          einen durchwachsenen Wetterbericht für dich arbeiten lassen. Alles darunter ist das
-          Kleingedruckte.
+          Keine Lust auf den ganzen Text? Geh unter der Woche, am besten Dienstag bis Donnerstag und
+          außerhalb der Ferien, sei pünktlich zur Öffnung da und freu dich, wenn das Wetter mal
+          mittelmäßig ist. Der Rest sind nur Details.
         </Highlight>
       </div>
 
@@ -105,9 +109,9 @@ export function ContentDE() {
         icon={CalendarRange}
       >
         <PG>
-          Andrang ist kein Zufall: Wann es voll wird, folgt klaren Mustern aus Wochentag, Ferien,
-          Wetter und Saison. Hier die zwei größten davon — über alle Parks gemittelt, aus echten
-          Wartezeit-Daten:
+          Fangen wir mit den beiden größten Hebeln an: dem Wochentag und dem Monat. Beides haben wir
+          über alle Parks gemittelt, jeweils aus den tatsächlich gemessenen Wartezeiten. So sieht das
+          aus:
         </PG>
         <BestTimesData locale="de" labels={DATA_LABELS} />
       </SectionShell>
@@ -121,42 +125,42 @@ export function ContentDE() {
         icon={Clock}
       >
         <P>
-          Nicht nur der Tag zählt, sondern auch die Uhrzeit. Drei Fenster sind fast überall am
-          ruhigsten:
+          Der Tag ist die halbe Miete, die Uhrzeit die andere. Drei Zeitfenster sind fast überall am
+          entspanntesten:
         </P>
         <TouchpointGrid
           items={[
             {
               icon: Sunrise,
               title: 'Zur Öffnung (Rope Drop)',
-              body: 'Die erste Stunde ist golden: Wer zum Einlass da ist, fährt die Headliner oft mit einem Bruchteil der späteren Wartezeit.',
+              body: 'Die erste Stunde nach dem Einlass ist Gold wert. Wer pünktlich am Tor steht, fährt die großen Bahnen oft, bevor sich überhaupt Schlangen bilden.',
             },
             {
               icon: Users,
-              title: 'Während der Mittagszeit',
-              body: 'Wenn die Massen essen, leeren sich die Schlangen — ein guter Moment für die beliebten Attraktionen (und später essen).',
+              title: 'Rund um die Mittagszeit',
+              body: 'Wenn alle beim Essen sitzen, werden die Schlangen kürzer. Nimm die Zeit für die beliebten Bahnen und iss einfach später.',
             },
             {
               icon: Sun,
               title: 'Die letzten 90 Minuten',
-              body: 'Viele Tagesgäste gehen früh. Kurz vor Schließung sinken die Wartezeiten oft noch einmal deutlich.',
+              body: 'Viele Familien gehen vor dem Ende nach Hause. In der letzten Stunde vor Schließung werden die Wartezeiten oft noch mal spürbar kürzer.',
             },
             {
               icon: Ticket,
               title: 'Während der großen Abendshow',
-              body: 'Parade oder Feuerwerk binden tausende Gäste auf einmal — die Wartezeiten der Achterbahnen knicken messbar ein.',
+              body: 'Parade oder Feuerwerk ziehen Tausende gleichzeitig an. Genau dann sind an den Achterbahnen plötzlich Plätze frei.',
             },
           ]}
         />
         <SplitFigure
           src="/images/parks/phantasialand/black-mamba.jpg"
           alt="Black Mamba rast durch den Dschungel im Phantasialand"
-          kicker="Rope Drop"
-          title="Die erste Stunde ist golden"
+          kicker="Zur Öffnung"
+          title="Früh da sein schlägt fast jeden Trick"
         >
-          Wer zum Einlass da ist, fährt die Headliner oft mit einem Bruchteil der späteren
-          Wartezeit. Die erste Stunde ersetzt regelmäßig zwei am Nachmittag — kein Fast-Pass nötig,
-          nur ein früher Wecker.
+          Klingt unbequem, lohnt sich aber wie kaum etwas anderes. Die erste Stunde nach dem Einlass
+          bringt dir oft mehr Fahrten als zwei am Nachmittag. Du brauchst dafür keinen teuren
+          Express-Pass, nur einen etwas früheren Wecker.
         </SplitFigure>
       </SectionShell>
 
@@ -169,8 +173,9 @@ export function ContentDE() {
         icon={Ban}
       >
         <PG>
-          Genauso wichtig wie die ruhigen Tage sind die vollen. An diesen Terminen ist mit Andrang zu
-          rechnen — plane sie ein oder gleich um sie herum:
+          Genauso hilfreich ist es zu wissen, wann es richtig voll wird. An diesen Tagen sind die
+          Parks erfahrungsgemäß rappelvoll. Entweder du stellst dich darauf ein oder du planst gleich
+          drumherum:
         </PG>
         <SplitFigure
           src="/images/parks/walibi-holland/goliath.jpg"
@@ -180,31 +185,31 @@ export function ContentDE() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          Die klassische Spitzenkombination — ein Ferien-Samstag im Hochsommer — trägt fast alle
-          Andrangfaktoren auf einmal. Wenn möglich, lieber der Dienstag drauf: gleicher Park, halbe
-          Schlange.
+          Ein Samstag in den Sommerferien bei bestem Wetter ist der Worst Case: alle haben frei, alle
+          wollen raus, alle sind da. Wenn du flexibel bist, nimm lieber den Dienstag danach. Derselbe
+          Park fühlt sich dann komplett anders an.
         </SplitFigure>
         <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
               title: 'Wochenenden & Feiertage',
-              body: 'Samstag und Sonntag sind über alle Parks am vollsten; Feiertage und lange Wochenenden setzen noch eins drauf.',
+              body: 'Samstag und Sonntag sind über alle Parks hinweg am vollsten. Feiertage und lange Wochenenden legen noch mal einen drauf.',
             },
             {
               icon: CalendarRange,
               title: 'Schulferien',
-              body: 'In den Ferien der eigenen und der Nachbarregionen steigt der Andrang deutlich — besonders die Sommerferien.',
+              body: 'Sobald bei dir oder im Nachbarbundesland Ferien sind, wird es voller. Die Sommerferien sind die absolute Hochsaison.',
             },
             {
               icon: Sun,
               title: 'Brückentage & Ferien-Samstage im Hochsommer',
-              body: 'Die klassische Spitzenkombination: schön, frei, alle da. Wenn möglich lieber der Dienstag drauf.',
+              body: 'Die gefährlichste Mischung: Sonne, freier Tag, Hochsaison. Falls es sich einrichten lässt, weich auf den Dienstag danach aus.',
             },
             {
               icon: Sparkles,
               title: 'Neuheiten im ersten Sommer',
-              body: 'Eine neue Achterbahn zieht in ihrer ersten Saison Massen — rechne bei Premieren mit langen Schlangen.',
+              body: 'Eine brandneue Achterbahn zieht in ihrer ersten Saison alle an. Bei Premieren solltest du mit langen Wartezeiten rechnen.',
             },
           ]}
         />
@@ -223,28 +228,28 @@ export function ContentDE() {
             {
               icon: CalendarDays,
               title: 'Wochentag statt Wochenende',
-              body: 'Der größte Hebel überhaupt: ein Dienstag statt eines Samstags kann die Wartezeiten halbieren.',
+              body: 'Der mit Abstand größte Hebel. Ein Dienstag statt eines Samstags kann die Wartezeiten glatt halbieren.',
             },
             {
               icon: CloudRain,
               title: 'Wetter clever nutzen',
-              body: 'Ein durchwachsener Tag schreckt viele ab. Wer wetterfest ist, fährt kürzer an — Regenjacke schlägt Regenschirm.',
+              body: 'Eine durchwachsene Vorhersage hält viele zu Hause. Wenn dir etwas Nieselregen nichts ausmacht, stehst du deutlich kürzer an. Regenjacke schlägt Regenschirm.',
             },
             {
               icon: Sunrise,
               title: 'Früh da sein',
-              body: 'Rope Drop schlägt fast jede andere Taktik. Die erste Stunde ersetzt oft zwei am Nachmittag.',
+              body: 'Pünktlich zur Öffnung da zu sein schlägt fast jeden anderen Trick. Die erste Stunde bringt oft mehr als zwei am Nachmittag.',
             },
             {
               icon: Ticket,
               title: 'Single-Rider & virtuelle Warteschlangen',
-              body: 'Allein fahren oder digital anstehen, während du isst oder shoppst — geschenkte Zeit an vollen Tagen.',
+              body: 'Fahr als Einzelfahrer auf freie Plätze oder stell dich per App digital an, während du isst oder bummelst. An vollen Tagen ist das geschenkte Zeit.',
             },
           ]}
         />
         <P>
-          Wie das im Park zusammenspielt, erklärt die{' '}
-          <Link href="/howto">vollständige Anleitung</Link> Schritt für Schritt.
+          Wie all das im Park zusammenspielt, gehen wir in der{' '}
+          <Link href="/howto">ausführlichen Anleitung</Link> Schritt für Schritt durch.
         </P>
       </SectionShell>
 
@@ -257,9 +262,9 @@ export function ContentDE() {
         icon={Ticket}
       >
         <P>
-          Die Muster oben sind der Startpunkt. Den exakt besten Tag verrät dir der Crowd-Kalender
-          jeder Parkseite — grün, gelb, rot, bis zu ein Jahr im Voraus, mit den Ferien und Feiertagen
-          der jeweiligen Region.
+          Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im Crowd-Kalender auf
+          jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, bis zu ein Jahr
+          im Voraus und passend zu den Ferien und Feiertagen der jeweiligen Region.
         </P>
         <SplitFigure
           src="/images/parks/efteling/symbolica.jpg"
@@ -268,18 +273,18 @@ export function ContentDE() {
           title="Eine Farbe pro Tag, ein Jahr im Voraus"
           badge={<CrowdLevelBadge level="low" />}
         >
-          Jede Parkseite trägt eine tagesgenaue Prognose, die Schulferien und Feiertage genau dieser
-          Region einrechnet. Wähl einen grünen Tag und du hast neunzig Prozent der Planung erledigt,
-          bevor du überhaupt gebucht hast.
+          Jede Parkseite hat eine tagesgenaue Prognose, die die Ferien und Feiertage genau der
+          richtigen Region berücksichtigt. Such dir einen grünen Tag aus, und der wichtigste Teil der
+          Planung ist erledigt, bevor du überhaupt ein Ticket kaufst.
         </SplitFigure>
-        <P>Ein paar beliebte Parks zum direkten Einstieg:</P>
+        <P>Ein paar beliebte Parks zum direkten Ausprobieren:</P>
         <PopularParksGrid />
       </SectionShell>
 
       {/* Powered by Fancast */}
       <FancastCta
         title="Angetrieben von Fancast"
-        body="Unser Prognosemodell — es sagt Andrang bis zu 365 Tage im Voraus vorher und benotet sich selbst."
+        body="Unser eigenes Prognosemodell schätzt den Andrang bis zu 365 Tage im Voraus und benotet sich dabei selbst."
       />
 
       {/* 06 — FAQ */}

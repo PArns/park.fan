@@ -38,10 +38,10 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     title: 'Beste Reisezeit für Freizeitparks',
     intro:
-      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate — aus echten Wartezeit-Daten von über 150 Parks — plus Tricks für kurze Schlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
+      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 150 Parks, dazu Tricks für kurze Schlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
     kicker: 'park.fan · Reiseplanung',
     tagline:
-      'Freizeitparks sind kein Zufall. Aus echten Wartezeit-Daten von 150+ Parks zeigen wir dir die ruhigsten Tage — und wie du den vollen ausweichst.',
+      'Wann ein Park voll wird, ist kein Glücksspiel. Aus echten Wartezeiten von über 150 Parks zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
     scrollLabel: 'Scrollen',
     heroAlt: 'Freizeitpark-Landschaft im Abendlicht',
     stats: [
@@ -263,7 +263,7 @@ export default async function BestTimeToVisitPage({ params }: PageProps) {
         titleClassName="max-w-4xl text-4xl font-black tracking-tight sm:text-6xl"
       />
 
-      <div id="start" className="space-y-16 py-14 sm:space-y-24 sm:py-20">
+      <div id="start" className="mx-auto max-w-4xl space-y-16 py-14 sm:space-y-24 sm:py-20">
         <Content />
       </div>
     </>

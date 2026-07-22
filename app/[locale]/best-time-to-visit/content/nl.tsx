@@ -39,6 +39,8 @@ const DATA_LABELS: BestTimesLabels = {
   busier: 'drukker',
   typical: 'rond het gemiddelde',
   footnote: 'Op basis van {days} parkdagen uit {parks} parken, laatste {months} maanden.',
+  pending:
+    'De live ranglijst verzamelt nog wachttijden. De rustigste dagen verschijnen hier zodra er genoeg data is.',
 };
 
 const FAQ = [

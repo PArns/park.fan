@@ -39,6 +39,8 @@ const DATA_LABELS: BestTimesLabels = {
   busier: 'busier',
   typical: 'about average',
   footnote: 'Based on {days} park-days across {parks} parks, last {months} months.',
+  pending:
+    'The live ranking is still gathering wait times. The quietest days will appear here as soon as enough data has built up.',
 };
 
 const FAQ = [
