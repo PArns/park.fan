@@ -104,21 +104,21 @@ export function ContentES() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Fancast es nuestro modelo de previsión propio: la parte de park.fan que mira hacia el futuro.
-          ¿El nombre? Descarado pero con método: <strong>fan</strong> como en park.<strong>fan</strong>,{' '}
-          <strong>cast</strong> como en fore<strong>cast</strong>. Un parte meteorológico para las
-          colas, vamos.
+          Fancast es nuestro modelo de previsión propio: la parte de park.fan que mira hacia el
+          futuro. ¿El nombre? Descarado pero con método: <strong>fan</strong> como en park.
+          <strong>fan</strong>, <strong>cast</strong> como en fore<strong>cast</strong>. Un parte
+          meteorológico para las colas, vamos.
         </Lead>
         <P>
-          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast hace algo
-          que la mayoría de los modelos evita en voz baja: se pone nota a sí mismo. Cada predicción se
-          contrasta después con el tiempo de espera que de verdad ocurrió, a la vista de todos, en esta
-          página. Hacer trampas, inútil.
+          Y como solo confiamos en las cifras que tienen que demostrar lo que valen, Fancast hace
+          algo que la mayoría de los modelos evita en voz baja: se pone nota a sí mismo. Cada
+          predicción se contrasta después con el tiempo de espera que de verdad ocurrió, a la vista
+          de todos, en esta página. Hacer trampas, inútil.
         </P>
         <Highlight>
-          En resumen: Fancast no es un adivino con bola de cristal. Es un estadístico tozudo que recibe
-          clases de refuerzo cada noche y tiene que volver a examinarse cada mañana. Una rana del tiempo
-          que verifica su propio tiempo.
+          En resumen: Fancast no es un adivino con bola de cristal. Es un estadístico tozudo que
+          recibe clases de refuerzo cada noche y tiene que volver a examinarse cada mañana. Una rana
+          del tiempo que verifica su propio tiempo.
         </Highlight>
       </div>
 
@@ -131,9 +131,9 @@ export function ContentES() {
         icon={Gauge}
       >
         <P>
-          Basta de preámbulos: aquí está la nota, en directo y sin maquillar. Fancast saca estas cifras
-          de su propio panel en este preciso momento; cambiarán en cuanto el modelo vuelva a entrenarse
-          esta noche.
+          Basta de preámbulos: aquí está la nota, en directo y sin maquillar. Fancast saca estas
+          cifras de su propio panel en este preciso momento; cambiarán en cuanto el modelo vuelva a
+          entrenarse esta noche.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -151,8 +151,8 @@ export function ContentES() {
       >
         <PG>
           Un día puente lluvioso de octubre es un animal completamente distinto de un sábado de
-          vacaciones soleado de julio, y eso un modelo tiene que aprenderlo primero. Por eso Fancast se
-          alimenta de varias fuentes a la vez:
+          vacaciones soleado de julio, y eso un modelo tiene que aprenderlo primero. Por eso Fancast
+          se alimenta de varias fuentes a la vez:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tiempos de espera en directo" delay={0}>
@@ -160,30 +160,30 @@ export function ContentES() {
             bruto de cada previsión.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendarios y vacaciones" delay={60}>
-            Fines de semana, días festivos y vacaciones escolares, también los de las regiones vecinas,
-            porque quien va de excursión no entiende de fronteras.
+            Fines de semana, días festivos y vacaciones escolares, también los de las regiones
+            vecinas, porque quien va de excursión no entiende de fronteras.
           </IngredientCard>
           <IngredientCard icon={CloudSun} title="Meteorología" delay={120}>
             La probabilidad de lluvia y la temperatura tuercen las previsiones a corto plazo. El sol
             atrae, la lluvia de todo el día vacía los caminos.
           </IngredientCard>
           <IngredientCard icon={PartyPopper} title="Eventos y temporada" delay={0}>
-            Halloween, vacaciones de verano, puentes, una novedad en su primer verano: los sospechosos
-            habituales de un día abarrotado.
+            Halloween, vacaciones de verano, puentes, una novedad en su primer verano: los
+            sospechosos habituales de un día abarrotado.
           </IngredientCard>
           <IngredientCard icon={History} title="Historial" delay={60}>
             Años de historial de tiempos de espera por parque. Patrones que solo se ven si los miras
             fijamente el tiempo suficiente.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Horarios y capacidad" delay={120}>
-            Cuándo abre el parque, durante cuánto tiempo, con qué capacidad: el marco en el que encaja
-            todo lo demás.
+            Cuándo abre el parque, durante cuánto tiempo, con qué capacidad: el marco en el que
+            encaja todo lo demás.
           </IngredientCard>
         </IngredientGrid>
         <P>
-          De esta mezcla el modelo saca dos cosas: una <strong>previsión horaria del tiempo de
-          espera</strong> para atracciones concretas y una <strong>nota de afluencia diaria</strong>{' '}
-          para todo el parque.
+          De esta mezcla el modelo saca dos cosas: una{' '}
+          <strong>previsión horaria del tiempo de espera</strong> para atracciones concretas y una{' '}
+          <strong>nota de afluencia diaria</strong> para todo el parque.
         </P>
       </SectionShell>
 
@@ -196,8 +196,8 @@ export function ContentES() {
         icon={Compass}
       >
         <P>
-          Toda teoría es gris: Fancast solo se vuelve tangible en un parque concreto. Tres ejemplos de
-          cómo los mismos ingredientes se convierten en tres previsiones completamente distintas:
+          Toda teoría es gris: Fancast solo se vuelve tangible en un parque concreto. Tres ejemplos
+          de cómo los mismos ingredientes se convierten en tres previsiones completamente distintas:
         </P>
         <SplitFigure
           src="/images/parks/europa-park/silver-star.jpg"
@@ -207,9 +207,10 @@ export function ContentES() {
           badge={<CrowdLevelBadge level="very_low" />}
         >
           Fancast ve: vacaciones escolares en una sola región vecina, tiempo variable, ningún evento
-          especial. Resultado: una previsión tranquila y verde; Voltron Nevera probablemente por debajo
-          de 30 minutos, blue fire para subir sin más. ¿El mismo parque tres semanas después, un sábado
-          de vacaciones? Rojo intenso. Seis millones de visitantes al año no se reparten solos.
+          especial. Resultado: una previsión tranquila y verde; Voltron Nevera probablemente por
+          debajo de 30 minutos, blue fire para subir sin más. ¿El mismo parque tres semanas después,
+          un sábado de vacaciones? Rojo intenso. Seis millones de visitantes al año no se reparten
+          solos.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/phantasialand/taron.jpg"
@@ -219,10 +220,10 @@ export function ContentES() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          Parque compacto, pocas atracciones estelares, todos quieren Taron: la saturación llega antes
-          de que se sirva la primera cerveza. Fancast lo sabe y pinta el día de naranja a rojo. El
-          calendario de al lado te sugiere enseguida el martes siguiente, cuando podrás montar en Taron
-          una y otra vez en lugar de solo suspirar por él.
+          Parque compacto, pocas atracciones estelares, todos quieren Taron: la saturación llega
+          antes de que se sirva la primera cerveza. Fancast lo sabe y pinta el día de naranja a
+          rojo. El calendario de al lado te sugiere enseguida el martes siguiente, cuando podrás
+          montar en Taron una y otra vez en lugar de solo suspirar por él.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/efteling/baron-1898.jpg"
@@ -231,10 +232,10 @@ export function ContentES() {
           title="El consejo secreto que el modelo ya tiene en cuenta"
           badge={<CrowdLevelBadge level="low" />}
         >
-          Justo el día que los planificadores por intuición evitan, y que Fancast pinta de verde. Pocas
-          vacaciones, tiempo penoso, colas cortas. Funciona exactamente hasta que todos han leído el
-          mismo consejo secreto; por eso el modelo calcula la probabilidad de lluvia por su cuenta, en
-          lugar de fiarse del folclore.
+          Justo el día que los planificadores por intuición evitan, y que Fancast pinta de verde.
+          Pocas vacaciones, tiempo penoso, colas cortas. Funciona exactamente hasta que todos han
+          leído el mismo consejo secreto; por eso el modelo calcula la probabilidad de lluvia por su
+          cuenta, en lugar de fiarse del folclore.
         </SplitFigure>
       </SectionShell>
 
@@ -247,21 +248,22 @@ export function ContentES() {
         icon={RefreshCw}
       >
         <P>
-          El truco más importante es de lo más discreto: Fancast se reentrena <strong>cada
-          noche</strong>, todos los días a las 06:00 UTC. Lo que pasó ayer, el modelo lo sabe hoy. Un
-          fan de las montañas rusas se hace mayor y se cansa con los años; Fancast se vuelve un poco más
-          listo cada mañana.
+          El truco más importante es de lo más discreto: Fancast se reentrena{' '}
+          <strong>cada noche</strong>, todos los días a las 06:00 UTC. Lo que pasó ayer, el modelo
+          lo sabe hoy. Un fan de las montañas rusas se hace mayor y se cansa con los años; Fancast
+          se vuelve un poco más listo cada mañana.
         </P>
         <P>
-          Y solo se le pone a prueba en días que <strong>nunca ha visto</strong>: en el futuro, no en
-          días del pasado aprendidos de memoria. Cualquier otra cosa sería como colarse a uno mismo las
-          preguntas del examen por adelantado y luego celebrar el boletín de sobresalientes.
+          Y solo se le pone a prueba en días que <strong>nunca ha visto</strong>: en el futuro, no
+          en días del pasado aprendidos de memoria. Cualquier otra cosa sería como colarse a uno
+          mismo las preguntas del examen por adelantado y luego celebrar el boletín de
+          sobresalientes.
         </P>
         <P>
-          Además, Fancast vigila si está <strong>derivando</strong>, si la realidad se le escapa poco a
-          poco. Y una nueva versión del modelo solo entra en producción si de verdad supera a la
-          anterior en un duelo justo. Democracia entre algoritmos: quien no es mejor, se queda en el
-          banquillo.
+          Además, Fancast vigila si está <strong>derivando</strong>, si la realidad se le escapa
+          poco a poco. Y una nueva versión del modelo solo entra en producción si de verdad supera a
+          la anterior en un duelo justo. Democracia entre algoritmos: quien no es mejor, se queda en
+          el banquillo.
         </P>
       </SectionShell>
 
@@ -274,8 +276,8 @@ export function ContentES() {
         icon={Palette}
       >
         <PG>
-          Al final de todo ese cálculo hay un único color. Seis niveles, desde «prácticamente tienes el
-          parque para ti» hasta «bienvenido a un sábado de vacaciones»:
+          Al final de todo ese cálculo hay un único color. Seis niveles, desde «prácticamente tienes
+          el parque para ti» hasta «bienvenido a un sábado de vacaciones»:
         </PG>
         <CrowdSpectrum
           items={[
@@ -316,9 +318,9 @@ export function ContentES() {
         icon={Ticket}
       >
         <P>
-          Basta de teoría. Fancast funciona en cada página de parque; aquí tienes unos cuantos populares
-          para probarlo directamente. Entra, abre el calendario de afluencia y mira qué color le toca al
-          día que elijas:
+          Basta de teoría. Fancast funciona en cada página de parque; aquí tienes unos cuantos
+          populares para probarlo directamente. Entra, abre el calendario de afluencia y mira qué
+          color le toca al día que elijas:
         </P>
         <PopularParksGrid />
       </SectionShell>
@@ -332,8 +334,8 @@ export function ContentES() {
         icon={MapPin}
       >
         <P>
-          Fancast no vive en una página solitaria: está entretejido por todo park.fan, casi siempre sin
-          presentarse:
+          Fancast no vive en una página solitaria: está entretejido por todo park.fan, casi siempre
+          sin presentarse:
         </P>
         <TouchpointGrid
           items={[
@@ -387,8 +389,8 @@ export function ContentES() {
         />
         <P>
           Cómo se combina todo esto dentro de un parque lo recorre paso a paso la{' '}
-          <Link href="/howto">guía completa</Link>: calendario de afluencia, distintivos y tiempos de
-          espera en directo incluidos.
+          <Link href="/howto">guía completa</Link>: calendario de afluencia, distintivos y tiempos
+          de espera en directo incluidos.
         </P>
       </SectionShell>
 

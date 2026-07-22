@@ -83,8 +83,8 @@ export function ContentES() {
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           La mejor época para visitar un parque de atracciones no es un secreto — es un patrón.
-          Cuándo se llena un parque sigue el día de la semana, el calendario de vacaciones escolares,
-          el tiempo y la temporada; los cuatro dejan huellas en los tiempos de espera.
+          Cuándo se llena un parque sigue el día de la semana, el calendario de vacaciones
+          escolares, el tiempo y la temporada; los cuatro dejan huellas en los tiempos de espera.
         </Lead>
         <P>
           Esas huellas las hemos medido en más de 150 parques durante los dos últimos años. Más
@@ -164,7 +164,13 @@ export function ContentES() {
       </SectionShell>
 
       {/* 03 — Dates to avoid */}
-      <SectionShell id="avoid" index="03" kicker="Días rojos" title="Fechas que conviene evitar" icon={Ban}>
+      <SectionShell
+        id="avoid"
+        index="03"
+        kicker="Días rojos"
+        title="Fechas que conviene evitar"
+        icon={Ban}
+      >
         <PG>
           Tan importantes como los días tranquilos son los concurridos. En estas fechas cuenta con
           aglomeraciones — prevélas, o planifica esquivándolas:

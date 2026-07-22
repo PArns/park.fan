@@ -82,9 +82,9 @@ export function ContentEN() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          The best time to visit a theme park is not a secret — it is a pattern. When a park fills up
-          follows the weekday, the school-holiday calendar, the weather and the season, and all four
-          leave fingerprints in the wait times.
+          The best time to visit a theme park is not a secret — it is a pattern. When a park fills
+          up follows the weekday, the school-holiday calendar, the weather and the season, and all
+          four leave fingerprints in the wait times.
         </Lead>
         <P>
           We measured those fingerprints across 150+ parks over the last two years. Below: the
@@ -252,9 +252,9 @@ export function ContentEN() {
         icon={Ticket}
       >
         <P>
-          The patterns above are the starting point. The exact best day comes from the crowd calendar
-          on each park page — green, yellow, red, up to a year ahead, with that region’s holidays
-          built in.
+          The patterns above are the starting point. The exact best day comes from the crowd
+          calendar on each park page — green, yellow, red, up to a year ahead, with that region’s
+          holidays built in.
         </P>
         <SplitFigure
           src="/images/parks/efteling/symbolica.jpg"

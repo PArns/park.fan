@@ -163,7 +163,13 @@ export function ContentNL() {
       </SectionShell>
 
       {/* 03 — Dates to avoid */}
-      <SectionShell id="avoid" index="03" kicker="Rode dagen" title="Momenten die je beter mijdt" icon={Ban}>
+      <SectionShell
+        id="avoid"
+        index="03"
+        kicker="Rode dagen"
+        title="Momenten die je beter mijdt"
+        icon={Ban}
+      >
         <PG>
           Net zo belangrijk als de rustige dagen zijn de drukke. Op deze momenten kun je drukte
           verwachten — plan ervoor, of plan er juist omheen:

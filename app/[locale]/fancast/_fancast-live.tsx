@@ -39,10 +39,7 @@ export interface FancastLiveLabels {
  * real parks, real numbers. Renders nothing if the dashboard is unreachable.
  */
 export async function FancastLive({ labels }: { labels: FancastLiveLabels }) {
-  const [locale, dashboard] = await Promise.all([
-    getLocale(),
-    getMLDashboard().catch(() => null),
-  ]);
+  const [locale, dashboard] = await Promise.all([getLocale(), getMLDashboard().catch(() => null)]);
   if (!dashboard) return null;
 
   const { model, performance, insights } = dashboard;

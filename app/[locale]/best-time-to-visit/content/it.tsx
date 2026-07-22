@@ -109,9 +109,9 @@ export function ContentIT() {
         icon={CalendarRange}
       >
         <PG>
-          L’affluenza non è casuale: quando si riempie segue schemi chiari di giorno della settimana,
-          vacanze, meteo e stagione. Qui i due più grandi — in media su tutti i parchi, dai dati
-          reali sui tempi di attesa:
+          L’affluenza non è casuale: quando si riempie segue schemi chiari di giorno della
+          settimana, vacanze, meteo e stagione. Qui i due più grandi — in media su tutti i parchi,
+          dai dati reali sui tempi di attesa:
         </PG>
         <BestTimesData locale="it" labels={DATA_LABELS} />
       </SectionShell>
@@ -167,8 +167,8 @@ export function ContentIT() {
       {/* 03 — Dates to avoid */}
       <SectionShell id="avoid" index="03" kicker="Giorni rossi" title="Date da evitare" icon={Ban}>
         <PG>
-          Tanto importanti quanto i giorni tranquilli sono quelli affollati. In queste date aspettati
-          la ressa — mettile in conto, oppure pianifica per aggirarle:
+          Tanto importanti quanto i giorni tranquilli sono quelli affollati. In queste date
+          aspettati la ressa — mettile in conto, oppure pianifica per aggirarle:
         </PG>
         <SplitFigure
           src="/images/parks/walibi-holland/goliath.jpg"
@@ -256,8 +256,8 @@ export function ContentIT() {
       >
         <P>
           Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il
-          calendario dell’affluenza di ogni pagina di parco — verde, giallo, rosso, fino a un anno in
-          anticipo, con le vacanze e i giorni festivi della regione interessata.
+          calendario dell’affluenza di ogni pagina di parco — verde, giallo, rosso, fino a un anno
+          in anticipo, con le vacanze e i giorni festivi della regione interessata.
         </P>
         <SplitFigure
           src="/images/parks/efteling/symbolica.jpg"

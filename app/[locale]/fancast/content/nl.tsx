@@ -105,15 +105,15 @@ export function ContentNL() {
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
           Fancast is ons eigen voorspelmodel — het deel van park.fan dat in de toekomst kijkt. De
-          naam? Schaamteloos maar systematisch: <strong>fan</strong> als in park.<strong>fan</strong>,{' '}
-          <strong>cast</strong> als in fore<strong>cast</strong>. Een weerbericht voor wachtrijen,
-          eigenlijk.
+          naam? Schaamteloos maar systematisch: <strong>fan</strong> als in park.
+          <strong>fan</strong>, <strong>cast</strong> als in fore<strong>cast</strong>. Een
+          weerbericht voor wachtrijen, eigenlijk.
         </Lead>
         <P>
-          En omdat we cijfers alleen vertrouwen als ze zich moeten bewijzen, doet Fancast iets wat de
-          meeste modellen stilletjes vermijden: het geeft zichzelf een cijfer. Elke voorspelling wordt
-          later getoetst aan de wachttijd die er werkelijk was — in het openbaar, op deze pagina.
-          Valsspelen zinloos.
+          En omdat we cijfers alleen vertrouwen als ze zich moeten bewijzen, doet Fancast iets wat
+          de meeste modellen stilletjes vermijden: het geeft zichzelf een cijfer. Elke voorspelling
+          wordt later getoetst aan de wachttijd die er werkelijk was — in het openbaar, op deze
+          pagina. Valsspelen zinloos.
         </P>
         <Highlight>
           Kortom: Fancast is geen waarzegger met een glazen bol. Het is een koppige statisticus die
@@ -132,7 +132,8 @@ export function ContentNL() {
       >
         <P>
           Genoeg voorwoord — hier is het cijfer, live en onopgesmukt. Fancast haalt deze getallen op
-          dit moment uit zijn eigen dashboard; ze verschuiven zodra het model vannacht opnieuw traint.
+          dit moment uit zijn eigen dashboard; ze verschuiven zodra het model vannacht opnieuw
+          traint.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -150,8 +151,8 @@ export function ContentNL() {
       >
         <PG>
           Een regenachtige brugdag in oktober is een compleet ander beest dan een zonnige
-          vakantiezaterdag in juli — en dat moet een model eerst leren. Daarom voedt Fancast zich uit
-          meerdere bronnen tegelijk:
+          vakantiezaterdag in juli — en dat moet een model eerst leren. Daarom voedt Fancast zich
+          uit meerdere bronnen tegelijk:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live wachttijden" delay={0}>
@@ -180,9 +181,9 @@ export function ContentNL() {
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Uit deze mix maakt het model twee dingen: een <strong>wachttijd-voorspelling per uur</strong>{' '}
-          voor afzonderlijke attracties en een <strong>dagelijks druktecijfer</strong> voor het hele
-          park.
+          Uit deze mix maakt het model twee dingen: een{' '}
+          <strong>wachttijd-voorspelling per uur</strong> voor afzonderlijke attracties en een{' '}
+          <strong>dagelijks druktecijfer</strong> voor het hele park.
         </P>
       </SectionShell>
 
@@ -206,8 +207,8 @@ export function ContentNL() {
           badge={<CrowdLevelBadge level="very_low" />}
         >
           Fancast ziet: schoolvakantie in slechts één buurregio, wisselvallig weer, geen speciaal
-          evenement. Resultaat: een rustige, groene voorspelling — Voltron Nevera waarschijnlijk onder
-          de 30 minuten, blue fire zo instappen. Hetzelfde park drie weken later op een
+          evenement. Resultaat: een rustige, groene voorspelling — Voltron Nevera waarschijnlijk
+          onder de 30 minuten, blue fire zo instappen. Hetzelfde park drie weken later op een
           vakantiezaterdag? Dieprood. Zes miljoen jaargasten verdelen zichzelf nu eenmaal niet
           vanzelf.
         </SplitFigure>
@@ -220,9 +221,9 @@ export function ContentNL() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           Compact park, weinig publiekstrekkers, iedereen wil naar Taron — de verzadiging is sneller
-          bereikt dan het eerste biertje is getapt. Fancast weet dat en kleurt de dag oranje tot rood.
-          De kalender ernaast stelt je meteen de dinsdag erna voor, waarop je Taron aan één stuk kunt
-          rijden in plaats van er alleen maar naar te smachten.
+          bereikt dan het eerste biertje is getapt. Fancast weet dat en kleurt de dag oranje tot
+          rood. De kalender ernaast stelt je meteen de dinsdag erna voor, waarop je Taron aan één
+          stuk kunt rijden in plaats van er alleen maar naar te smachten.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/efteling/baron-1898.jpg"
@@ -231,10 +232,10 @@ export function ContentNL() {
           title="De geheime tip die het model al meerekent"
           badge={<CrowdLevelBadge level="low" />}
         >
-          Precies de dag die planners op gevoel mijden — en die Fancast groen kleurt. Weinig vakantie,
-          beroerd weer, korte rijen. Dat werkt exact zolang totdat iedereen dezelfde geheime tip heeft
-          gelezen; daarom rekent het model de regenkans meteen zelf mee, in plaats van te vertrouwen op
-          folklore.
+          Precies de dag die planners op gevoel mijden — en die Fancast groen kleurt. Weinig
+          vakantie, beroerd weer, korte rijen. Dat werkt exact zolang totdat iedereen dezelfde
+          geheime tip heeft gelezen; daarom rekent het model de regenkans meteen zelf mee, in plaats
+          van te vertrouwen op folklore.
         </SplitFigure>
       </SectionShell>
 
@@ -247,22 +248,22 @@ export function ContentNL() {
         icon={RefreshCw}
       >
         <P>
-          De belangrijkste truc is een oninteressante: Fancast traint zichzelf <strong>elke nacht</strong>{' '}
-          opnieuw, elke dag om 06:00 UTC. Wat gisteren is gebeurd, weet het model vandaag. Een
-          achtbaanfan wordt met de jaren ouder en vermoeider — Fancast wordt elke ochtend een beetje
-          slimmer.
+          De belangrijkste truc is een oninteressante: Fancast traint zichzelf{' '}
+          <strong>elke nacht</strong> opnieuw, elke dag om 06:00 UTC. Wat gisteren is gebeurd, weet
+          het model vandaag. Een achtbaanfan wordt met de jaren ouder en vermoeider — Fancast wordt
+          elke ochtend een beetje slimmer.
         </P>
         <P>
-          En het wordt uitsluitend getest op dagen die het <strong>nog nooit heeft gezien</strong> — op
-          de toekomst, niet op uit het hoofd geleerde dagen uit het verleden. Al het andere zou zijn
-          alsof je jezelf vooraf de examenvragen toespeelt en je vervolgens laat vieren om je
+          En het wordt uitsluitend getest op dagen die het <strong>nog nooit heeft gezien</strong> —
+          op de toekomst, niet op uit het hoofd geleerde dagen uit het verleden. Al het andere zou
+          zijn alsof je jezelf vooraf de examenvragen toespeelt en je vervolgens laat vieren om je
           tienenrapport.
         </P>
         <P>
-          Daarbovenop houdt Fancast in de gaten of het <strong>afdrijft</strong> — of de werkelijkheid
-          het langzaam ontglipt. En een nieuwe modelversie gaat pas live als die de oude in een
-          eerlijke vergelijking echt verslaat. Democratie onder algoritmes: wie niet beter is, blijft
-          op de reservebank.
+          Daarbovenop houdt Fancast in de gaten of het <strong>afdrijft</strong> — of de
+          werkelijkheid het langzaam ontglipt. En een nieuwe modelversie gaat pas live als die de
+          oude in een eerlijke vergelijking echt verslaat. Democratie onder algoritmes: wie niet
+          beter is, blijft op de reservebank.
         </P>
       </SectionShell>
 
@@ -275,8 +276,8 @@ export function ContentNL() {
         icon={Palette}
       >
         <PG>
-          Aan het eind van al dat rekenwerk staat één enkele kleur. Zes niveaus, van “je hebt het park
-          zowat voor jezelf” tot “welkom op een vakantiezaterdag”:
+          Aan het eind van al dat rekenwerk staat één enkele kleur. Zes niveaus, van “je hebt het
+          park zowat voor jezelf” tot “welkom op een vakantiezaterdag”:
         </PG>
         <CrowdSpectrum
           items={[
@@ -317,9 +318,9 @@ export function ContentNL() {
         icon={Ticket}
       >
         <P>
-          Genoeg theorie. Fancast draait op elke parkpagina mee — hier een paar populaire om het meteen
-          op uit te proberen. Klik erin, open de druktekalender en kijk welke kleur je gewenste dag
-          krijgt:
+          Genoeg theorie. Fancast draait op elke parkpagina mee — hier een paar populaire om het
+          meteen op uit te proberen. Klik erin, open de druktekalender en kijk welke kleur je
+          gewenste dag krijgt:
         </P>
         <PopularParksGrid />
       </SectionShell>
@@ -348,8 +349,8 @@ export function ContentNL() {
               title: 'Druktekalender',
               body: (
                 <>
-                  de <Link href="/parks">kalender met de beste bezoekdagen</Link> op elke parkpagina —
-                  groen, geel, rood, tot een jaar vooruit.
+                  de <Link href="/parks">kalender met de beste bezoekdagen</Link> op elke parkpagina
+                  — groen, geel, rood, tot een jaar vooruit.
                 </>
               ),
             },

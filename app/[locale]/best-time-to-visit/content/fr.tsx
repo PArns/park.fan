@@ -109,9 +109,9 @@ export function ContentFR() {
         icon={CalendarRange}
       >
         <PG>
-          L’affluence n’a rien d’un hasard : le moment où ça se remplit suit des tendances claires de
-          jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes — en
-          moyenne sur tous les parcs, à partir de vraies données de temps d’attente :
+          L’affluence n’a rien d’un hasard : le moment où ça se remplit suit des tendances claires
+          de jour de semaine, de vacances, de météo et de saison. Voici les deux plus marquantes —
+          en moyenne sur tous les parcs, à partir de vraies données de temps d’attente :
         </PG>
         <BestTimesData locale="fr" labels={DATA_LABELS} />
       </SectionShell>
@@ -165,10 +165,16 @@ export function ContentFR() {
       </SectionShell>
 
       {/* 03 — Dates to avoid */}
-      <SectionShell id="avoid" index="03" kicker="Jours rouges" title="Les dates à éviter" icon={Ban}>
+      <SectionShell
+        id="avoid"
+        index="03"
+        kicker="Jours rouges"
+        title="Les dates à éviter"
+        icon={Ban}
+      >
         <PG>
-          Aussi importantes que les jours calmes sont les jours chargés. À ces dates, attendez-vous à
-          de l’affluence — prévoyez-les, ou contournez-les :
+          Aussi importantes que les jours calmes sont les jours chargés. À ces dates, attendez-vous
+          à de l’affluence — prévoyez-les, ou contournez-les :
         </PG>
         <SplitFigure
           src="/images/parks/walibi-holland/goliath.jpg"
@@ -266,8 +272,8 @@ export function ContentFR() {
           title="Une couleur par jour, un an à l’avance"
           badge={<CrowdLevelBadge level="low" />}
         >
-          Chaque page de parc porte une prévision jour par jour qui intègre les vacances scolaires et
-          les jours fériés de cette région précise. Choisissez un jour vert et vous avez fait
+          Chaque page de parc porte une prévision jour par jour qui intègre les vacances scolaires
+          et les jours fériés de cette région précise. Choisissez un jour vert et vous avez fait
           quatre-vingt-dix pour cent de la planification avant même d’avoir réservé.
         </SplitFigure>
         <P>Quelques parcs populaires pour se lancer directement :</P>

@@ -82,16 +82,16 @@ export function ContentDE() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Wann ein Freizeitpark voll wird, ist erstaunlich vorhersehbar. Wochentag, Ferien, Wetter und
-          Jahreszeit entscheiden zum großen Teil, ob du an der Achterbahn zehn Minuten wartest oder
-          anderthalb Stunden. Und weil jeder Besuch Wartezeiten hinterlässt, lässt sich das ziemlich
-          genau nachrechnen.
+          Wann ein Freizeitpark voll wird, ist erstaunlich vorhersehbar. Wochentag, Ferien, Wetter
+          und Jahreszeit entscheiden zum großen Teil, ob du an der Achterbahn zehn Minuten wartest
+          oder anderthalb Stunden. Und weil jeder Besuch Wartezeiten hinterlässt, lässt sich das
+          ziemlich genau nachrechnen.
         </Lead>
         <P>
           Genau das haben wir gemacht: zwei Jahre Wartezeiten aus über 150 Parks ausgewertet. Auf
-          dieser Seite findest du die ruhigsten Wochentage und Monate, die besten Uhrzeiten, die Tage,
-          an denen du besser zu Hause bleibst, und zum Schluss den Crowd-Kalender, der dir für deinen
-          Wunschpark den passenden Tag raussucht.
+          dieser Seite findest du die ruhigsten Wochentage und Monate, die besten Uhrzeiten, die
+          Tage, an denen du besser zu Hause bleibst, und zum Schluss den Crowd-Kalender, der dir für
+          deinen Wunschpark den passenden Tag raussucht.
         </P>
         <Highlight>
           Keine Lust auf den ganzen Text? Geh unter der Woche, am besten Dienstag bis Donnerstag und
@@ -110,8 +110,8 @@ export function ContentDE() {
       >
         <PG>
           Fangen wir mit den beiden größten Hebeln an: dem Wochentag und dem Monat. Beides haben wir
-          über alle Parks gemittelt, jeweils aus den tatsächlich gemessenen Wartezeiten. So sieht das
-          aus:
+          über alle Parks gemittelt, jeweils aus den tatsächlich gemessenen Wartezeiten. So sieht
+          das aus:
         </PG>
         <BestTimesData locale="de" labels={DATA_LABELS} />
       </SectionShell>
@@ -174,8 +174,8 @@ export function ContentDE() {
       >
         <PG>
           Genauso hilfreich ist es zu wissen, wann es richtig voll wird. An diesen Tagen sind die
-          Parks erfahrungsgemäß rappelvoll. Entweder du stellst dich darauf ein oder du planst gleich
-          drumherum:
+          Parks erfahrungsgemäß rappelvoll. Entweder du stellst dich darauf ein oder du planst
+          gleich drumherum:
         </PG>
         <SplitFigure
           src="/images/parks/walibi-holland/goliath.jpg"
@@ -185,9 +185,9 @@ export function ContentDE() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          Ein Samstag in den Sommerferien bei bestem Wetter ist der Worst Case: alle haben frei, alle
-          wollen raus, alle sind da. Wenn du flexibel bist, nimm lieber den Dienstag danach. Derselbe
-          Park fühlt sich dann komplett anders an.
+          Ein Samstag in den Sommerferien bei bestem Wetter ist der Worst Case: alle haben frei,
+          alle wollen raus, alle sind da. Wenn du flexibel bist, nimm lieber den Dienstag danach.
+          Derselbe Park fühlt sich dann komplett anders an.
         </SplitFigure>
         <TouchpointGrid
           items={[
@@ -262,9 +262,9 @@ export function ContentDE() {
         icon={Ticket}
       >
         <P>
-          Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im Crowd-Kalender auf
-          jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, bis zu ein Jahr
-          im Voraus und passend zu den Ferien und Feiertagen der jeweiligen Region.
+          Die Muster von oben sind der Anfang. Den wirklich besten Tag findest du im Crowd-Kalender
+          auf jeder Parkseite. Der zeigt dir für jeden einzelnen Tag grün, gelb oder rot, bis zu ein
+          Jahr im Voraus und passend zu den Ferien und Feiertagen der jeweiligen Region.
         </P>
         <SplitFigure
           src="/images/parks/efteling/symbolica.jpg"
@@ -274,8 +274,8 @@ export function ContentDE() {
           badge={<CrowdLevelBadge level="low" />}
         >
           Jede Parkseite hat eine tagesgenaue Prognose, die die Ferien und Feiertage genau der
-          richtigen Region berücksichtigt. Such dir einen grünen Tag aus, und der wichtigste Teil der
-          Planung ist erledigt, bevor du überhaupt ein Ticket kaufst.
+          richtigen Region berücksichtigt. Such dir einen grünen Tag aus, und der wichtigste Teil
+          der Planung ist erledigt, bevor du überhaupt ein Ticket kaufst.
         </SplitFigure>
         <P>Ein paar beliebte Parks zum direkten Ausprobieren:</P>
         <PopularParksGrid />
