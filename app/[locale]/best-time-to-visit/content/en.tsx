@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import {
   CalendarRange,
   Sunrise,
@@ -14,7 +15,17 @@ import {
   Users,
   Sun,
 } from 'lucide-react';
-import { Section, P, PG, TipList, FancastCta, FaqList } from '../_best-time-ui';
+import {
+  Lead,
+  P,
+  PG,
+  Highlight,
+  SectionShell,
+  SplitFigure,
+  TouchpointGrid,
+  FaqList,
+} from '@/components/marketing/editorial-ui';
+import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 
 const DATA_LABELS: BestTimesLabels = {
@@ -65,24 +76,55 @@ const FAQ = [
 
 export function ContentEN() {
   return (
-    <div className="space-y-14 text-base leading-7">
-      {/* Data: quietest weekdays + months (live) */}
-      <div className="space-y-4">
-        <PG>
-          Theme-park crowds are not random: when it gets busy follows clear patterns of weekday,
-          holidays, weather and season. Here are the biggest ones — averaged across all parks, from
-          real wait-time data:
-        </PG>
-        <BestTimesData locale="en" labels={DATA_LABELS} />
+    <>
+      {/* Intro */}
+      <div className="container mx-auto space-y-5 px-4">
+        <Lead>
+          The best time to visit a theme park is not a secret — it is a pattern. When a park fills up
+          follows the weekday, the school-holiday calendar, the weather and the season, and all four
+          leave fingerprints in the wait times.
+        </Lead>
+        <P>
+          We measured those fingerprints across 150+ parks over the last two years. Below: the
+          quietest weekdays and months, the calmest hours of the day, the dates worth dodging — and
+          the crowd calendar that turns all of it into the single best day for your park.
+        </P>
+        <Highlight>
+          Short version: go Tuesday to Thursday outside the school holidays, arrive at opening, and
+          let a mixed weather forecast do the crowd-thinning for you. Everything below is the fine
+          print.
+        </Highlight>
       </div>
 
-      {/* Times of day */}
-      <Section id="times" title="The quietest times of day" icon={Clock}>
+      {/* 01 — Data: quietest weekdays + months (live) */}
+      <SectionShell
+        id="patterns"
+        index="01"
+        kicker="The data"
+        title="The quietest weekdays and months"
+        icon={CalendarRange}
+      >
+        <PG>
+          Crowds are not random: when it gets busy follows clear patterns of weekday, holidays,
+          weather and season. Here are the two biggest ones — averaged across all parks, from real
+          wait-time data:
+        </PG>
+        <BestTimesData locale="en" labels={DATA_LABELS} />
+      </SectionShell>
+
+      {/* 02 — Times of day */}
+      <SectionShell
+        id="times"
+        index="02"
+        kicker="By the hour"
+        title="The quietest times of day"
+        icon={Clock}
+      >
         <P>
           It is not only the day that matters, but the hour too. Three windows are quietest almost
           everywhere:
         </P>
-        <TipList
+        <TouchpointGrid
           items={[
             {
               icon: Sunrise,
@@ -106,15 +148,36 @@ export function ContentEN() {
             },
           ]}
         />
-      </Section>
+        <SplitFigure
+          src="/images/parks/phantasialand/black-mamba.jpg"
+          alt="Black Mamba racing through the jungle at Phantasialand"
+          kicker="Rope drop"
+          title="The first hour is golden"
+        >
+          Arrive for opening and you often ride the headliners at a fraction of the later wait. The
+          first hour routinely replaces two in the afternoon — no fast-pass required, just an early
+          alarm.
+        </SplitFigure>
+      </SectionShell>
 
-      {/* Dates to avoid */}
-      <Section id="avoid" title="Dates to avoid" icon={Ban}>
+      {/* 03 — Dates to avoid */}
+      <SectionShell id="avoid" index="03" kicker="Red days" title="Dates to avoid" icon={Ban}>
         <PG>
           As important as the quiet days are the busy ones. Expect crowds on these dates — plan for
           them, or plan around them:
         </PG>
-        <TipList
+        <SplitFigure
+          src="/images/parks/walibi-holland/goliath.jpg"
+          alt="Goliath roller coaster at Walibi Holland on a busy day"
+          kicker="Peak day"
+          title="Sunny, everyone off, everyone here"
+          reverse
+          badge={<CrowdLevelBadge level="very_high" />}
+        >
+          The classic peak combo — a holiday Saturday in high summer — carries almost every crowd
+          factor at once. If you can, take the Tuesday after instead: same park, half the queue.
+        </SplitFigure>
+        <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
@@ -138,11 +201,17 @@ export function ContentEN() {
             },
           ]}
         />
-      </Section>
+      </SectionShell>
 
-      {/* Tactics */}
-      <Section id="tactics" title="Tactics for short queues" icon={Sparkles}>
-        <TipList
+      {/* 04 — Tactics */}
+      <SectionShell
+        id="tactics"
+        index="04"
+        kicker="Play it smart"
+        title="Tactics for short queues"
+        icon={Sparkles}
+      >
+        <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
@@ -170,17 +239,35 @@ export function ContentEN() {
           How it all plays out inside a park is walked through step by step in the{' '}
           <Link href="/howto">full guide</Link>.
         </P>
-      </Section>
+      </SectionShell>
 
-      {/* Grab a park */}
-      <Section id="parks" title="For your park: the crowd calendar" icon={Ticket}>
+      {/* 05 — Crowd calendar for your park */}
+      <SectionShell
+        id="parks"
+        index="05"
+        kicker="For your park"
+        title="The crowd calendar"
+        icon={Ticket}
+      >
         <P>
           The patterns above are the starting point. The exact best day comes from the crowd calendar
           on each park page — green, yellow, red, up to a year ahead, with that region’s holidays
-          built in. A few popular parks to jump straight in:
+          built in.
         </P>
+        <SplitFigure
+          src="/images/parks/efteling/symbolica.jpg"
+          alt="Symbolica palace ride at Efteling"
+          kicker="Green, yellow, red"
+          title="One colour per day, a year ahead"
+          badge={<CrowdLevelBadge level="low" />}
+        >
+          Every park page carries a day-by-day forecast that folds in the school and public holidays
+          for that exact region. Pick a green day and you have done ninety percent of the planning
+          before you have even booked.
+        </SplitFigure>
+        <P>A few popular parks to jump straight in:</P>
         <PopularParksGrid />
-      </Section>
+      </SectionShell>
 
       {/* Powered by Fancast */}
       <FancastCta
@@ -188,10 +275,16 @@ export function ContentEN() {
         body="Our forecasting model — it predicts crowds up to 365 days ahead and grades itself in the open."
       />
 
-      {/* FAQ */}
-      <Section id="faq" title="Frequently asked about the best time to visit" icon={HelpCircle}>
+      {/* 06 — FAQ */}
+      <SectionShell
+        id="faq"
+        index="06"
+        kicker="In brief"
+        title="Frequently asked about the best time to visit"
+        icon={HelpCircle}
+      >
         <FaqList items={FAQ} />
-      </Section>
-    </div>
+      </SectionShell>
+    </>
   );
 }

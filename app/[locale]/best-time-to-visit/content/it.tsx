@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
+import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import {
   CalendarRange,
   Sunrise,
@@ -14,7 +15,17 @@ import {
   Users,
   Sun,
 } from 'lucide-react';
-import { Section, P, PG, TipList, FancastCta, FaqList } from '../_best-time-ui';
+import {
+  Lead,
+  P,
+  PG,
+  Highlight,
+  SectionShell,
+  SplitFigure,
+  TouchpointGrid,
+  FaqList,
+} from '@/components/marketing/editorial-ui';
+import { FancastCta } from '../_best-time-ui';
 import { BestTimesData, type BestTimesLabels } from '../_best-times-data';
 
 const DATA_LABELS: BestTimesLabels = {
@@ -65,23 +76,57 @@ const FAQ = [
 
 export function ContentIT() {
   return (
-    <div className="space-y-14 text-base leading-7">
-      {/* Data: quietest weekdays + months (live) */}
-      <div className="space-y-4">
-        <PG>
-          L’affluenza nei parchi divertimenti non è casuale: quando si riempie segue schemi chiari di
-          giorno della settimana, vacanze, meteo e stagione. Qui trovi i più importanti — in media su
-          tutti i parchi, dai dati reali sui tempi di attesa:
-        </PG>
-        <BestTimesData locale="it" labels={DATA_LABELS} />
+    <>
+      {/* Intro */}
+      <div className="container mx-auto space-y-5 px-4">
+        <Lead>
+          Il periodo migliore per visitare un parco divertimenti non è un segreto — è uno schema.
+          Quando un parco si riempie dipende dal giorno della settimana, dal calendario delle
+          vacanze scolastiche, dal meteo e dalla stagione; tutti e quattro lasciano tracce nei tempi
+          di attesa.
+        </Lead>
+        <P>
+          Queste tracce le abbiamo misurate su oltre 150 parchi negli ultimi due anni. Più sotto: i
+          giorni feriali e i mesi più tranquilli, le ore più tranquille della giornata, le date da
+          schivare — e il calendario dell’affluenza che trasforma tutto questo nel singolo giorno
+          migliore per il tuo parco.
+        </P>
+        <Highlight>
+          In breve: dal martedì al giovedì fuori dalle vacanze scolastiche, arrivare all’apertura e
+          lasciare che una previsione meteo incerta faccia per te la selezione della folla. Tutto
+          ciò che segue sono le clausole in piccolo.
+        </Highlight>
       </div>
 
-      {/* Times of day */}
-      <Section id="times" title="Le ore più tranquille della giornata" icon={Clock}>
+      {/* 01 — Data: quietest weekdays + months (live) */}
+      <SectionShell
+        id="patterns"
+        index="01"
+        kicker="I dati"
+        title="I giorni feriali e i mesi più tranquilli"
+        icon={CalendarRange}
+      >
+        <PG>
+          L’affluenza non è casuale: quando si riempie segue schemi chiari di giorno della settimana,
+          vacanze, meteo e stagione. Qui i due più grandi — in media su tutti i parchi, dai dati
+          reali sui tempi di attesa:
+        </PG>
+        <BestTimesData locale="it" labels={DATA_LABELS} />
+      </SectionShell>
+
+      {/* 02 — Times of day */}
+      <SectionShell
+        id="times"
+        index="02"
+        kicker="Ora per ora"
+        title="Le ore più tranquille della giornata"
+        icon={Clock}
+      >
         <P>
-          Non conta solo il giorno, ma anche l’ora. Tre finestre sono quasi ovunque le più tranquille:
+          Non conta solo il giorno, ma anche l’ora. Tre finestre sono quasi ovunque le più
+          tranquille:
         </P>
-        <TipList
+        <TouchpointGrid
           items={[
             {
               icon: Sunrise,
@@ -105,15 +150,37 @@ export function ContentIT() {
             },
           ]}
         />
-      </Section>
+        <SplitFigure
+          src="/images/parks/phantasialand/black-mamba.jpg"
+          alt="Black Mamba che sfreccia nella giungla a Phantasialand"
+          kicker="Rope drop"
+          title="La prima ora è d’oro"
+        >
+          Chi è dentro all’apertura sale sulle attrazioni di punta spesso con una frazione
+          dell’attesa successiva. La prima ora sostituisce regolarmente due ore del pomeriggio —
+          niente fast-pass, solo una sveglia mattutina.
+        </SplitFigure>
+      </SectionShell>
 
-      {/* Dates to avoid */}
-      <Section id="avoid" title="Date da evitare" icon={Ban}>
+      {/* 03 — Dates to avoid */}
+      <SectionShell id="avoid" index="03" kicker="Giorni rossi" title="Date da evitare" icon={Ban}>
         <PG>
           Tanto importanti quanto i giorni tranquilli sono quelli affollati. In queste date aspettati
           la ressa — mettile in conto, oppure pianifica per aggirarle:
         </PG>
-        <TipList
+        <SplitFigure
+          src="/images/parks/walibi-holland/goliath.jpg"
+          alt="Le montagne russe Goliath a Walibi Holland in un giorno affollato"
+          kicker="Giorno di punta"
+          title="Bel tempo, tutti liberi, tutti qui"
+          reverse
+          badge={<CrowdLevelBadge level="very_high" />}
+        >
+          La classica combinazione di punta — un sabato di vacanza in piena estate — mette insieme
+          quasi tutti i fattori di affluenza in una volta. Se puoi, prendi piuttosto il martedì
+          successivo: stesso parco, metà coda.
+        </SplitFigure>
+        <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
@@ -137,11 +204,17 @@ export function ContentIT() {
             },
           ]}
         />
-      </Section>
+      </SectionShell>
 
-      {/* Tactics */}
-      <Section id="tactics" title="Tattiche per code corte" icon={Sparkles}>
-        <TipList
+      {/* 04 — Tactics */}
+      <SectionShell
+        id="tactics"
+        index="04"
+        kicker="Gioca d’astuzia"
+        title="Tattiche per code corte"
+        icon={Sparkles}
+      >
+        <TouchpointGrid
           items={[
             {
               icon: CalendarDays,
@@ -169,18 +242,35 @@ export function ContentIT() {
           Come tutto questo si combina in un parco è spiegato passo dopo passo nella{' '}
           <Link href="/howto">guida completa</Link>.
         </P>
-      </Section>
+      </SectionShell>
 
-      {/* Grab a park */}
-      <Section id="parks" title="Per il tuo parco: il calendario dell’affluenza" icon={Ticket}>
+      {/* 05 — Crowd calendar for your park */}
+      <SectionShell
+        id="parks"
+        index="05"
+        kicker="Per il tuo parco"
+        title="Il calendario dell’affluenza"
+        icon={Ticket}
+      >
         <P>
           Gli schemi qui sopra sono il punto di partenza. Il giorno migliore esatto te lo svela il
           calendario dell’affluenza di ogni pagina di parco — verde, giallo, rosso, fino a un anno in
-          anticipo, con le vacanze e i giorni festivi della regione interessata. Qualche parco
-          popolare per iniziare subito:
+          anticipo, con le vacanze e i giorni festivi della regione interessata.
         </P>
+        <SplitFigure
+          src="/images/parks/efteling/symbolica.jpg"
+          alt="L’attrazione del palazzo Symbolica a Efteling"
+          kicker="Verde, giallo, rosso"
+          title="Un colore al giorno, un anno in anticipo"
+          badge={<CrowdLevelBadge level="low" />}
+        >
+          Ogni pagina di parco porta una previsione giorno per giorno che tiene conto delle vacanze
+          scolastiche e dei giorni festivi di quella precisa regione. Scegli un giorno verde e hai
+          fatto il novanta per cento della pianificazione prima ancora di aver prenotato.
+        </SplitFigure>
+        <P>Qualche parco popolare per iniziare subito:</P>
         <PopularParksGrid />
-      </Section>
+      </SectionShell>
 
       {/* Powered by Fancast */}
       <FancastCta
@@ -188,10 +278,16 @@ export function ContentIT() {
         body="Il nostro modello di previsione — anticipa l’affluenza fino a 365 giorni in anticipo e si dà un voto in modo trasparente."
       />
 
-      {/* FAQ */}
-      <Section id="faq" title="Domande frequenti sul periodo migliore per visitare" icon={HelpCircle}>
+      {/* 06 — FAQ */}
+      <SectionShell
+        id="faq"
+        index="06"
+        kicker="In breve"
+        title="Domande frequenti sul periodo migliore per visitare"
+        icon={HelpCircle}
+      >
         <FaqList items={FAQ} />
-      </Section>
-    </div>
+      </SectionShell>
+    </>
   );
 }

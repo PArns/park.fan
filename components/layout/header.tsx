@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
 import { Menu, MapPin } from 'lucide-react';
 import Image from 'next/image';
@@ -39,12 +40,15 @@ export function Header({ showBlog = true }: HeaderProps) {
 
   const isHomePage = pathname === '/';
   const isFancast = pathname === '/fancast';
+  // The hub uses localized slugs (usePathname is locale-stripped but keeps the
+  // localized segment), so match against all of them.
+  const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
   // Pages that open with a full-bleed hero the header floats over: transparent at
   // the top, solidifying to the normal bar on scroll. The homepage hero is light
-  // (dark header content reads fine); Fancast's hero is dark, so its floating
-  // header content is forced light regardless of theme (`darkHero`).
-  const isHeroPage = isHomePage || isFancast;
-  const darkHero = isFancast;
+  // (dark header content reads fine); Fancast's and the hub's heroes are dark, so
+  // their floating header content is forced light regardless of theme (`darkHero`).
+  const isHeroPage = isHomePage || isFancast || isBestTime;
+  const darkHero = isFancast || isBestTime;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 

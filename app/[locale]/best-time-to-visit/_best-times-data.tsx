@@ -1,5 +1,6 @@
 import { getGlobalBestTimes, type BestTimeBucket } from '@/lib/api/best-times';
 import type { CrowdLevel } from '@/lib/api/types';
+import { Reveal } from '@/components/marketing/scroll-reveal';
 
 export interface BestTimesLabels {
   weekdaysTitle: string;
@@ -61,9 +62,9 @@ function BarList({
             >
               {name(b.key)}
             </span>
-            <div className="bg-muted h-6 flex-1 overflow-hidden rounded">
+            <div className="bg-muted h-7 flex-1 overflow-hidden rounded-lg">
               <div
-                className="h-full rounded"
+                className="h-full rounded-lg transition-[width] duration-700"
                 style={{
                   width: `${Math.max(width, 4)}%`,
                   backgroundColor: CROWD_HEX[b.crowdLevel] ?? CROWD_HEX.unknown,
@@ -116,17 +117,25 @@ export async function BestTimesData({
     .replace('{months}', String(data.meta.windowMonths));
 
   return (
-    <div className="space-y-10">
-      <div className="space-y-3">
-        <h2 className="text-xl font-bold sm:text-2xl">{labels.weekdaysTitle}</h2>
-        <p className="text-muted-foreground max-w-3xl leading-relaxed">{labels.weekdaysBody}</p>
-        <BarList buckets={weekdays} name={weekdayName} labels={labels} />
-      </div>
-      <div className="space-y-3">
-        <h2 className="text-xl font-bold sm:text-2xl">{labels.monthsTitle}</h2>
-        <p className="text-muted-foreground max-w-3xl leading-relaxed">{labels.monthsBody}</p>
-        <BarList buckets={months} name={monthName} labels={labels} />
-      </div>
+    <div className="space-y-8">
+      <Reveal>
+        <div className="bg-card space-y-3 rounded-2xl border p-5 shadow-sm sm:p-6">
+          <h3 className="text-lg font-bold sm:text-xl">{labels.weekdaysTitle}</h3>
+          <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed">
+            {labels.weekdaysBody}
+          </p>
+          <BarList buckets={weekdays} name={weekdayName} labels={labels} />
+        </div>
+      </Reveal>
+      <Reveal delay={80}>
+        <div className="bg-card space-y-3 rounded-2xl border p-5 shadow-sm sm:p-6">
+          <h3 className="text-lg font-bold sm:text-xl">{labels.monthsTitle}</h3>
+          <p className="text-muted-foreground max-w-3xl text-sm leading-relaxed">
+            {labels.monthsBody}
+          </p>
+          <BarList buckets={months} name={monthName} labels={labels} />
+        </div>
+      </Reveal>
       <p className="text-muted-foreground text-xs">{footnote}</p>
     </div>
   );
