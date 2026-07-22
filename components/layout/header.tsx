@@ -45,13 +45,21 @@ export function Header({ showBlog = true }: HeaderProps) {
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
   const isBlogIndex = pathname === '/blog';
+  // Blog articles open with a full-bleed cover banner (always dark: a cover
+  // image or a dark fallback gradient). The listing sub-pages (category/tag/
+  // author) keep the normal header.
+  const isBlogPost =
+    pathname.startsWith('/blog/') &&
+    !pathname.startsWith('/blog/category/') &&
+    !pathname.startsWith('/blog/tag/') &&
+    !pathname.startsWith('/blog/authors/');
   // Pages that open with a full-bleed hero the header floats over: transparent at
   // the top, solidifying to the normal bar on scroll. The homepage hero is light
   // (dark header content reads fine); Fancast's, the hub's and the blog index's
   // heroes are dark, so their floating header content is forced light regardless
   // of theme (`darkHero`).
-  const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex;
-  const darkHero = isFancast || isBestTime || isBlogIndex;
+  const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex || isBlogPost;
+  const darkHero = isFancast || isBestTime || isBlogIndex || isBlogPost;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 
