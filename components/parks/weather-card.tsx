@@ -92,7 +92,7 @@ export function WeatherCard({
   // Rendering below still requires a nowcast (parks with live weather coverage); for
   // parks without one the single CDN-cached fetch is cheap. A static `hourly` prop
   // (showcases/demos) takes precedence and disables the fetch.
-  const { data: fetchedHourly } = useWeatherHourly({
+  const { data: fetchedHourly, isLoading: hourlyLoading } = useWeatherHourly({
     latitude,
     longitude,
     timezone,
@@ -287,14 +287,22 @@ export function WeatherCard({
             )}
           </div>
 
-          {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 && (
+          {activeNowcast && timezone && activeHourly && activeHourly.points.length > 0 ? (
             <WeatherHourlyChart
               points={activeHourly.points}
               timezone={timezone}
               schedule={schedule ?? undefined}
               nowcast={activeNowcast}
             />
-          )}
+          ) : activeNowcast && timezone && hourlyLoading ? (
+            /* The nowcast and the hourly fetch land ~1s apart, and the chart is ~143px tall —
+               without a same-size placeholder everything below the card jumped twice
+               (nowcast row, then chart). Mirrors the chart's layout: h-28 plot + mt-1 axis. */
+            <div className="min-w-0" aria-hidden="true">
+              <div className="bg-muted/30 h-28 animate-pulse rounded-lg" />
+              <div className="mt-1 h-[31px]" />
+            </div>
+          ) : null}
 
           {(forecast || (activeWeather.forecast && activeWeather.forecast.length > 0)) && (
             <WeatherForecastStrip forecast={forecast || (activeWeather.forecast ?? [])} />

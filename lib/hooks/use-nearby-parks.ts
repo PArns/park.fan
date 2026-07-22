@@ -180,10 +180,14 @@ export function useNearbyParks(options: UseNearbyParksOptions | number = {}) {
     },
     enabled: canRun,
     // Show last cached response immediately while fresh data loads in the background.
-    // The closure captures the current position so stale data from a different
-    // location (> 10 km away or > 5 min old) is silently dropped. Disabled while simulating.
-    placeholderData: () =>
-      simMode ? undefined : readCache(position?.lat ?? null, position?.lng ?? null),
+    // Prefer the previous query's in-memory data (`prev`) — it covers the key change when
+    // GPS coords arrive mid-session, where the localStorage entry may already be stale;
+    // without it every consumer (header pill, hero variant, search dialog) blanked out for
+    // the refetch and popped back in. Falls back to the persisted cache; the closure
+    // captures the current position so stale data from a different location (> 10 km away
+    // or > 5 min old) is silently dropped. Disabled while simulating.
+    placeholderData: (prev) =>
+      simMode ? undefined : (prev ?? readCache(position?.lat ?? null, position?.lng ?? null)),
     staleTime: CACHE_MAX_AGE_MS,
     gcTime: 10 * 60 * 1000,
     refetchOnWindowFocus: true,

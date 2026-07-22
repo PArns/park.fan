@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from 'next-intl';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import type { SearchResult, SearchResultItem, ParkStatus, CrowdLevel } from '@/lib/api/types';
 import { trackSearchNoResults } from '@/lib/analytics/umami';
 import { useHomeNearbyParks } from '@/lib/hooks/use-nearby-parks';
@@ -68,6 +68,10 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
       return data;
     },
     enabled: debouncedQuery.length >= 3,
+    // Keep the previous query's results on screen while the next ones load — without this,
+    // every debounced keystroke resets `data` to undefined and the dialog flashes
+    // results → skeleton → results on each typed batch.
+    placeholderData: keepPreviousData,
     staleTime: 60_000, // 1 min cache
     gcTime: 5 * 60_000, // 5 min garbage collection
     retry: 1,
@@ -84,6 +88,8 @@ export function useSearchResults(query: string): UseSearchResultsReturn {
       return response.json() as Promise<{ results: GlossarySearchItem[] }>;
     },
     enabled: debouncedQuery.length >= 3,
+    // Same as the main search: don't blank the glossary group between debounced queries.
+    placeholderData: keepPreviousData,
     staleTime: 300_000,
   });
 
