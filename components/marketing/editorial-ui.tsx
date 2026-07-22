@@ -47,8 +47,15 @@ export function Hero({
       {/* Readability gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/30" />
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/60 to-transparent" />
+      {/* Fade the image out into the page background at the bottom, like the park
+          pages — theme-aware, so the hero dissolves into the page instead of
+          ending on a hard edge. */}
+      <div
+        aria-hidden
+        className="to-background pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent sm:h-44"
+      />
 
-      <div className="relative container mx-auto px-4 pt-32 pb-20 text-white">
+      <div className="relative container mx-auto px-4 pt-32 pb-28 text-white sm:pb-36">
         <Reveal>
           <p className="text-primary-foreground/80 mb-3 flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase">
             <span className="bg-primary inline-block h-2 w-2 rounded-full" />

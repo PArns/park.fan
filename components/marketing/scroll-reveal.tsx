@@ -65,7 +65,7 @@ export function ScrollCue({ label }: { label: string }) {
     <a
       href="#start"
       aria-label={label}
-      className="group text-primary-foreground/70 hover:text-primary-foreground absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-xs font-medium tracking-wide uppercase transition-colors"
+      className="group text-foreground/70 hover:text-foreground absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1 text-xs font-medium tracking-wide uppercase transition-colors"
     >
       <span>{label}</span>
       <svg
