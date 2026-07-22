@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -346,7 +347,13 @@ export function ContentEN() {
             {
               icon: CalendarDays,
               title: 'Best time to visit',
-              body: 'the quietest weekdays and the upcoming insider days, distilled from the same data.',
+              body: (
+                <>
+                  the quietest weekdays and the upcoming insider days, distilled from the same data.
+                  See the{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.en}`}>best time to visit</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,

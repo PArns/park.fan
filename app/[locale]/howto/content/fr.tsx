@@ -4,6 +4,7 @@ import { Link } from '@/i18n/navigation';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { GlossaryInject } from '@/components/glossary/glossary-inject';
 import { cn } from '@/lib/utils';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { HeroSearchInput } from '@/components/search/hero-search-input';
 import { NearbyParksCard } from '@/components/parks/nearby-parks-card';
 import {
@@ -885,6 +886,13 @@ function ContentFRSections() {
           </Link>{' '}
           — et dispose de sa propre page qui explique comment il fonctionne et sa précision
           actuelle.
+        </p>
+        <p className="text-muted-foreground">
+          Vous ne savez pas quand y aller ? La{' '}
+          <Link href={`/${BEST_TIME_SEGMENTS.fr}`} className="text-primary hover:underline">
+            meilleure période pour visiter
+          </Link>{' '}
+          rassemble les jours de semaine et les mois les plus calmes de tous les parcs.
         </p>
       </Section>
 

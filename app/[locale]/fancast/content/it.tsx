@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
+import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { MLStatsSection } from '@/components/home/ml-stats-section';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
@@ -354,7 +355,13 @@ export function ContentIT() {
             {
               icon: CalendarDays,
               title: 'Periodo migliore',
-              body: 'i giorni feriali più tranquilli e i prossimi giorni-dritta, distillati dagli stessi dati.',
+              body: (
+                <>
+                  i giorni feriali più tranquilli e i prossimi giorni-dritta, distillati dagli
+                  stessi dati. Scopri il{' '}
+                  <Link href={`/${BEST_TIME_SEGMENTS.it}`}>periodo migliore per visitare</Link>.
+                </>
+              ),
             },
             {
               icon: LineChart,
