@@ -43,12 +43,15 @@ export function Header({ showBlog = true }: HeaderProps) {
   // The hub uses localized slugs (usePathname is locale-stripped but keeps the
   // localized segment), so match against all of them.
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
+  // The blog index (not its sub-pages) opens with the same full-bleed hero.
+  const isBlogIndex = pathname === '/blog';
   // Pages that open with a full-bleed hero the header floats over: transparent at
   // the top, solidifying to the normal bar on scroll. The homepage hero is light
-  // (dark header content reads fine); Fancast's and the hub's heroes are dark, so
-  // their floating header content is forced light regardless of theme (`darkHero`).
-  const isHeroPage = isHomePage || isFancast || isBestTime;
-  const darkHero = isFancast || isBestTime;
+  // (dark header content reads fine); Fancast's, the hub's and the blog index's
+  // heroes are dark, so their floating header content is forced light regardless
+  // of theme (`darkHero`).
+  const isHeroPage = isHomePage || isFancast || isBestTime || isBlogIndex;
+  const darkHero = isFancast || isBestTime || isBlogIndex;
   const [scrolled, setScrolled] = useState(false);
   const rafRef = useRef<number | null>(null);
 
