@@ -82,6 +82,12 @@
 | --------------------------------------- | -------------------------------------------------------- |
 | [Glossary System](features/glossary.md) | Term data, translations, localized URLs, search, sitemap |
 
+### Product
+
+| Doc                                                         | Description                                                  |
+| ----------------------------------------------------------- | ------------------------------------------------------------ |
+| [Personas & Scenarios](product/personas-and-scenarios.md)   | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9) |
+
 ### Other
 
 | Doc                       | Description                                    |
