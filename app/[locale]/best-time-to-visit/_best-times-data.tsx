@@ -53,8 +53,7 @@ function BarList({
         const width = Math.round((b.relativeIndex / maxIndex) * 100);
         const suffix =
           Math.abs(pct) <= 3 ? labels.typical : pct < 0 ? labels.quieter : labels.busier;
-        const pctText =
-          Math.abs(pct) <= 3 ? labels.typical : `${Math.abs(pct)} % ${suffix}`;
+        const pctText = Math.abs(pct) <= 3 ? labels.typical : `${Math.abs(pct)} % ${suffix}`;
         const isQuietest = b.key === quietestKey;
         return (
           <div
@@ -80,7 +79,7 @@ function BarList({
                 aria-hidden
               />
             </div>
-            <span className="text-muted-foreground w-28 shrink-0 text-right text-xs tabular-nums transition-colors group-hover:text-foreground sm:w-36">
+            <span className="text-muted-foreground group-hover:text-foreground w-28 shrink-0 text-right text-xs tabular-nums transition-colors sm:w-36">
               {pctText}
             </span>
           </div>

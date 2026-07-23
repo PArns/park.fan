@@ -340,11 +340,7 @@ export function TouchpointGrid({
 }
 
 // ── FAQ: accordion + FAQPage structured data ─────────────────────────────────
-export function FaqList({
-  items,
-}: {
-  items: ReadonlyArray<{ question: string; answer: string }>;
-}) {
+export function FaqList({ items }: { items: ReadonlyArray<{ question: string; answer: string }> }) {
   return (
     <>
       <FaqStructuredData items={items} />

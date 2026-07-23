@@ -104,20 +104,20 @@ export function ContentEN() {
       {/* Intro */}
       <div className="container mx-auto space-y-5 px-4">
         <Lead>
-          Fancast is our in-house forecasting model — the part of park.fan that looks into the future.
-          The name? Shameless but systematic: <strong>fan</strong> as in park.<strong>fan</strong>,{' '}
-          <strong>cast</strong> as in fore<strong>cast</strong>. A weather report for queues,
-          basically.
+          Fancast is our in-house forecasting model — the part of park.fan that looks into the
+          future. The name? Shameless but systematic: <strong>fan</strong> as in park.
+          <strong>fan</strong>, <strong>cast</strong> as in fore<strong>cast</strong>. A weather
+          report for queues, basically.
         </Lead>
         <P>
-          And because we only trust numbers that have to prove themselves, Fancast does something most
-          models quietly avoid: it grades itself. Every prediction is later checked against the wait
-          time that actually happened — in the open, on this page. Cheating pointless.
+          And because we only trust numbers that have to prove themselves, Fancast does something
+          most models quietly avoid: it grades itself. Every prediction is later checked against the
+          wait time that actually happened — in the open, on this page. Cheating pointless.
         </P>
         <Highlight>
-          In short: Fancast is not a fortune teller with a crystal ball. It is a stubborn statistician
-          that gets tutoring every night and has to re-sit the exam every morning. A weather frog that
-          fact-checks its own weather.
+          In short: Fancast is not a fortune teller with a crystal ball. It is a stubborn
+          statistician that gets tutoring every night and has to re-sit the exam every morning. A
+          weather frog that fact-checks its own weather.
         </Highlight>
       </div>
 
@@ -130,8 +130,8 @@ export function ContentEN() {
         icon={Gauge}
       >
         <P>
-          Enough preamble — here is the grade, live and unvarnished. Fancast pulls these numbers from
-          its own dashboard right now; they shift the moment the model retrains tonight.
+          Enough preamble — here is the grade, live and unvarnished. Fancast pulls these numbers
+          from its own dashboard right now; they shift the moment the model retrains tonight.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -148,36 +148,39 @@ export function ContentEN() {
         icon={Database}
       >
         <PG>
-          A rainy bridge-day in October is a completely different animal from a sunny holiday Saturday
-          in July — and a model has to learn that first. So Fancast feeds on several sources at once:
+          A rainy bridge-day in October is a completely different animal from a sunny holiday
+          Saturday in July — and a model has to learn that first. So Fancast feeds on several
+          sources at once:
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live wait times" delay={0}>
-            Millions of real readings from 150+ parks, updated by the minute. The raw currency of every
-            forecast.
+            Millions of real readings from 150+ parks, updated by the minute. The raw currency of
+            every forecast.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendars & holidays" delay={60}>
             Weekends, public holidays and school breaks — including neighbouring regions, because
             day-trippers do not care about borders.
           </IngredientCard>
           <IngredientCard icon={CloudSun} title="Weather" delay={120}>
-            Rain probability and temperature bend the near-term forecasts. Sun pulls crowds in, all-day
-            rain empties the paths.
+            Rain probability and temperature bend the near-term forecasts. Sun pulls crowds in,
+            all-day rain empties the paths.
           </IngredientCard>
           <IngredientCard icon={PartyPopper} title="Events & season" delay={0}>
             Halloween, summer holidays, long weekends, a headliner in its first summer — the usual
             suspects for a packed day.
           </IngredientCard>
           <IngredientCard icon={History} title="History" delay={60}>
-            Years of wait-time history per park. Patterns you only see if you stare at them long enough.
+            Years of wait-time history per park. Patterns you only see if you stare at them long
+            enough.
           </IngredientCard>
           <IngredientCard icon={Gauge} title="Hours & capacity" delay={120}>
-            When the park opens, for how long, at what capacity — the frame everything else fits into.
+            When the park opens, for how long, at what capacity — the frame everything else fits
+            into.
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Out of this mix the model makes two things: an <strong>hourly wait-time forecast</strong> for
-          individual rides and a <strong>daily crowd-level grade</strong> for the whole park.
+          Out of this mix the model makes two things: an <strong>hourly wait-time forecast</strong>{' '}
+          for individual rides and a <strong>daily crowd-level grade</strong> for the whole park.
         </P>
       </SectionShell>
 
@@ -190,8 +193,8 @@ export function ContentEN() {
         icon={Compass}
       >
         <P>
-          All theory is grey — Fancast only gets tangible at an actual park. Three examples of how the
-          same ingredients turn into three completely different forecasts:
+          All theory is grey — Fancast only gets tangible at an actual park. Three examples of how
+          the same ingredients turn into three completely different forecasts:
         </P>
         <SplitFigure
           src="/images/parks/europa-park/silver-star.jpg"
@@ -201,9 +204,9 @@ export function ContentEN() {
           badge={<CrowdLevelBadge level="very_low" />}
         >
           Fancast sees: school holidays in only one neighbouring region, mixed weather, no special
-          event. Result: a calm, green forecast — Voltron Nevera probably under 30 minutes, blue fire a
-          walk-on. The same park three weeks later on a holiday Saturday? Deep red. Six million yearly
-          guests do not spread themselves out on their own.
+          event. Result: a calm, green forecast — Voltron Nevera probably under 30 minutes, blue
+          fire a walk-on. The same park three weeks later on a holiday Saturday? Deep red. Six
+          million yearly guests do not spread themselves out on their own.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/phantasialand/taron.jpg"
@@ -213,10 +216,10 @@ export function ContentEN() {
           reverse
           badge={<CrowdLevelBadge level="very_high" />}
         >
-          Compact park, few headliners, everyone wants Taron — saturation arrives faster than the first
-          beer is poured. Fancast knows this and paints the day orange to red. The calendar next to it
-          promptly suggests the Tuesday after, when you can ride Taron back-to-back instead of just
-          longing for it.
+          Compact park, few headliners, everyone wants Taron — saturation arrives faster than the
+          first beer is poured. Fancast knows this and paints the day orange to red. The calendar
+          next to it promptly suggests the Tuesday after, when you can ride Taron back-to-back
+          instead of just longing for it.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/efteling/baron-1898.jpg"
@@ -226,9 +229,9 @@ export function ContentEN() {
           badge={<CrowdLevelBadge level="low" />}
         >
           Exactly the day gut-feeling planners avoid — and that Fancast paints green. Few holidays,
-          miserable weather, short queues. It works precisely until everyone has read the same insider
-          tip; which is why the model folds the rain probability in itself, instead of relying on
-          folklore.
+          miserable weather, short queues. It works precisely until everyone has read the same
+          insider tip; which is why the model folds the rain probability in itself, instead of
+          relying on folklore.
         </SplitFigure>
       </SectionShell>
 
@@ -241,20 +244,21 @@ export function ContentEN() {
         icon={RefreshCw}
       >
         <P>
-          The most important trick is an unglamorous one: Fancast retrains <strong>every night</strong>,
-          every day at 06:00 UTC. Whatever happened yesterday, the model knows today. A coaster fan
-          gets older and more tired over the years — Fancast gets a little smarter every morning.
+          The most important trick is an unglamorous one: Fancast retrains{' '}
+          <strong>every night</strong>, every day at 06:00 UTC. Whatever happened yesterday, the
+          model knows today. A coaster fan gets older and more tired over the years — Fancast gets a
+          little smarter every morning.
         </P>
         <P>
-          And it is only ever tested on days it has <strong>never seen</strong> — on the future, not on
-          memorised days from the past. Anything else would be like slipping yourself the exam questions
-          in advance and then celebrating your straight-A report card.
+          And it is only ever tested on days it has <strong>never seen</strong> — on the future, not
+          on memorised days from the past. Anything else would be like slipping yourself the exam
+          questions in advance and then celebrating your straight-A report card.
         </P>
         <P>
-          On top of that, Fancast watches whether it is <strong>drifting</strong> — whether reality is
-          slowly running away from it. And a new model version only goes live if it genuinely beats the
-          old one in a fair head-to-head. Democracy among algorithms: if you are not better, you stay on
-          the bench.
+          On top of that, Fancast watches whether it is <strong>drifting</strong> — whether reality
+          is slowly running away from it. And a new model version only goes live if it genuinely
+          beats the old one in a fair head-to-head. Democracy among algorithms: if you are not
+          better, you stay on the bench.
         </P>
       </SectionShell>
 
@@ -267,8 +271,8 @@ export function ContentEN() {
         icon={Palette}
       >
         <PG>
-          At the end of all that arithmetic sits a single colour. Six levels, from “you have basically
-          got the park to yourself” to “welcome to a holiday Saturday”:
+          At the end of all that arithmetic sits a single colour. Six levels, from “you have
+          basically got the park to yourself” to “welcome to a holiday Saturday”:
         </PG>
         <CrowdSpectrum
           items={[
@@ -350,8 +354,7 @@ export function ContentEN() {
               body: (
                 <>
                   the quietest weekdays and the upcoming insider days, distilled from the same data.
-                  See the{' '}
-                  <Link href={`/${BEST_TIME_SEGMENTS.en}`}>best time to visit</Link>.
+                  See the <Link href={`/${BEST_TIME_SEGMENTS.en}`}>best time to visit</Link>.
                 </>
               ),
             },
@@ -379,7 +382,8 @@ export function ContentEN() {
         />
         <P>
           How it all plays out inside a park is walked through step by step in the{' '}
-          <Link href="/howto">full guide</Link> — crowd calendar, badges and live wait times included.
+          <Link href="/howto">full guide</Link> — crowd calendar, badges and live wait times
+          included.
         </P>
       </SectionShell>
 

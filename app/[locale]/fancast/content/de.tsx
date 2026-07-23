@@ -117,9 +117,9 @@ export function ContentDE() {
           Schummeln zwecklos.
         </P>
         <Highlight>
-          Kurz gesagt: Fancast ist kein Wahrsager mit Glaskugel, sondern ein notorischer Statistiker,
-          der jeden Abend Nachhilfe bekommt und am nächsten Morgen noch mal ranmuss. Ein Wetterfrosch,
-          der sein eigenes Wetter nachprüft.
+          Kurz gesagt: Fancast ist kein Wahrsager mit Glaskugel, sondern ein notorischer
+          Statistiker, der jeden Abend Nachhilfe bekommt und am nächsten Morgen noch mal ranmuss.
+          Ein Wetterfrosch, der sein eigenes Wetter nachprüft.
         </Highlight>
       </div>
 
@@ -132,9 +132,9 @@ export function ContentDE() {
         icon={Gauge}
       >
         <P>
-          Genug der Vorrede — hier die Note, live und ungeschönt. Diese Zahlen zieht Fancast in diesem
-          Moment aus dem eigenen Dashboard; sie ändern sich, sobald das Modell heute Nacht wieder
-          trainiert hat.
+          Genug der Vorrede — hier die Note, live und ungeschönt. Diese Zahlen zieht Fancast in
+          diesem Moment aus dem eigenen Dashboard; sie ändern sich, sobald das Modell heute Nacht
+          wieder trainiert hat.
         </P>
         <div className="overflow-hidden rounded-2xl border">
           <MLStatsSection />
@@ -157,7 +157,8 @@ export function ContentDE() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live-Wartezeiten" delay={0}>
-            Millionen echter Messwerte aus 150+ Parks, im Minutentakt. Die Rohwährung jeder Prognose.
+            Millionen echter Messwerte aus 150+ Parks, im Minutentakt. Die Rohwährung jeder
+            Prognose.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Kalender & Ferien" delay={60}>
             Wochenenden, Feiertage und Schulferien — auch die der Nachbarregionen, denn Tagesgäste
@@ -181,8 +182,8 @@ export function ContentDE() {
           </IngredientCard>
         </IngredientGrid>
         <P>
-          Aus diesem Gemenge macht das Modell zwei Dinge: eine <strong>stündliche
-          Wartezeit-Prognose</strong> für einzelne Attraktionen und eine{' '}
+          Aus diesem Gemenge macht das Modell zwei Dinge: eine{' '}
+          <strong>stündliche Wartezeit-Prognose</strong> für einzelne Attraktionen und eine{' '}
           <strong>tagesgenaue Crowd-Level-Note</strong> für den ganzen Park.
         </P>
       </SectionShell>
@@ -207,8 +208,8 @@ export function ContentDE() {
           badge={<CrowdLevelBadge level="very_low" />}
         >
           Fancast sieht: Schulferien nur in einem einzigen Nachbar-Bundesland, Wetter durchwachsen,
-          kein Sonderevent. Ergebnis: eine ruhige, grüne Prognose — Voltron Nevera vermutlich unter 30
-          Minuten, blue fire zum Mitnehmen. Derselbe Park drei Wochen später am Ferien-Samstag?
+          kein Sonderevent. Ergebnis: eine ruhige, grüne Prognose — Voltron Nevera vermutlich unter
+          30 Minuten, blue fire zum Mitnehmen. Derselbe Park drei Wochen später am Ferien-Samstag?
           Tiefrot. Sechs Millionen Jahresgäste verteilen sich eben nicht von allein.
         </SplitFigure>
         <SplitFigure
@@ -220,9 +221,9 @@ export function ContentDE() {
           badge={<CrowdLevelBadge level="very_high" />}
         >
           Kompakter Park, wenige Headliner, alle wollen zu Taron — die Sättigung ist schneller
-          erreicht, als das erste Bier gezapft ist. Fancast weiß das und malt den Tag orange bis rot.
-          Der Kalender daneben schlägt dir gleich den Dienstag drauf vor, an dem du Taron am Stück
-          fahren kannst, statt ihn nur anzuschmachten.
+          erreicht, als das erste Bier gezapft ist. Fancast weiß das und malt den Tag orange bis
+          rot. Der Kalender daneben schlägt dir gleich den Dienstag drauf vor, an dem du Taron am
+          Stück fahren kannst, statt ihn nur anzuschmachten.
         </SplitFigure>
         <SplitFigure
           src="/images/parks/efteling/baron-1898.jpg"
@@ -248,15 +249,15 @@ export function ContentDE() {
       >
         <P>
           Der wichtigste Trick ist ein unspektakulärer: Fancast trainiert sich{' '}
-          <strong>jede Nacht neu</strong>, jeden Tag um 06:00 UTC. Was gestern passiert ist, weiß das
-          Modell heute. Ein Achterbahn-Fan wird mit den Jahren älter und müder — Fancast wird jeden
-          Morgen ein bisschen schlauer.
+          <strong>jede Nacht neu</strong>, jeden Tag um 06:00 UTC. Was gestern passiert ist, weiß
+          das Modell heute. Ein Achterbahn-Fan wird mit den Jahren älter und müder — Fancast wird
+          jeden Morgen ein bisschen schlauer.
         </P>
         <P>
-          Getestet wird dabei nur an Tagen, die das Modell <strong>noch nie gesehen hat</strong> — an
-          der Zukunft, nicht an auswendig gelernten Vergangenheitstagen. Alles andere wäre, als würde
-          man sich die Klausurfragen vorher selbst zustecken und sich dann für sein Einser-Zeugnis
-          feiern.
+          Getestet wird dabei nur an Tagen, die das Modell <strong>noch nie gesehen hat</strong> —
+          an der Zukunft, nicht an auswendig gelernten Vergangenheitstagen. Alles andere wäre, als
+          würde man sich die Klausurfragen vorher selbst zustecken und sich dann für sein
+          Einser-Zeugnis feiern.
         </P>
         <P>
           Zusätzlich beobachtet Fancast, ob es mit der Zeit <strong>abdriftet</strong> — ob die
@@ -275,8 +276,8 @@ export function ContentDE() {
         icon={Palette}
       >
         <PG>
-          Am Ende dieser ganzen Rechnerei steht eine einzige Farbe. Sechs Stufen von „hier hast du den
-          Park fast für dich" bis „willkommen im Ferien-Samstag":
+          Am Ende dieser ganzen Rechnerei steht eine einzige Farbe. Sechs Stufen von „hier hast du
+          den Park fast für dich" bis „willkommen im Ferien-Samstag":
         </PG>
         <CrowdSpectrum
           items={[
@@ -333,8 +334,8 @@ export function ContentDE() {
         icon={MapPin}
       >
         <P>
-          Fancast lebt nicht auf einer einsamen Unterseite — es steckt überall in park.fan, meist ohne
-          sich groß vorzustellen:
+          Fancast lebt nicht auf einer einsamen Unterseite — es steckt überall in park.fan, meist
+          ohne sich groß vorzustellen:
         </P>
         <TouchpointGrid
           items={[
@@ -348,8 +349,8 @@ export function ContentDE() {
               title: 'Crowd-Kalender',
               body: (
                 <>
-                  der <Link href="/parks">Kalender der besten Besuchstage</Link> auf jeder Parkseite —
-                  grün, gelb, rot, bis zu ein Jahr im Voraus.
+                  der <Link href="/parks">Kalender der besten Besuchstage</Link> auf jeder Parkseite
+                  — grün, gelb, rot, bis zu ein Jahr im Voraus.
                 </>
               ),
             },

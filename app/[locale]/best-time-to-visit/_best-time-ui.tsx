@@ -14,7 +14,10 @@ export function FancastCta({ title, body }: { title: string; body: string }) {
     <div className="container mx-auto px-4">
       <Reveal>
         <Card className="border-primary/30 from-primary/10 mx-auto max-w-3xl gap-0 bg-gradient-to-br to-transparent py-0 shadow-sm">
-          <Link href="/fancast" className="group flex items-center justify-between gap-3 p-5 sm:p-6">
+          <Link
+            href="/fancast"
+            className="group flex items-center justify-between gap-3 p-5 sm:p-6"
+          >
             <span className="flex items-center gap-4">
               <span className="bg-primary/15 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl">
                 <Sparkles className="text-primary h-5 w-5" />

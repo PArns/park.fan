@@ -4,10 +4,7 @@ import { routing, type Locale } from '@/i18n/routing';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import {
-  ArticleStructuredData,
-  BreadcrumbStructuredData,
-} from '@/components/seo/structured-data';
+import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { Hero } from '@/components/marketing/editorial-ui';
 import type { ComponentType } from 'react';
 

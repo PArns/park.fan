@@ -8,10 +8,7 @@ import {
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import {
-  ArticleStructuredData,
-  BreadcrumbStructuredData,
-} from '@/components/seo/structured-data';
+import { ArticleStructuredData, BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getMLDashboard } from '@/lib/api/ml';
 import type { ComponentType } from 'react';
 import { Hero } from './_fancast-ui';
