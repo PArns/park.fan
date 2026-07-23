@@ -312,6 +312,11 @@
     "attractions": "Atracciones",
     "shows": "Espectáculos",
     "predictions": "Pronóstico de Espera",
+    "purchases": {
+      "title": "Precios de acceso rápido",
+      "forDate": "para el {date}",
+      "soldOut": "Agotado"
+    },
     "nextPredicted": "Siguiente: {time} min previsto",
     "otherAttractions": "Otras Atracciones",
     "headlinersSection": "Destacados",

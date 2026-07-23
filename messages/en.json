@@ -312,6 +312,11 @@
     "attractions": "Attractions",
     "shows": "Shows",
     "predictions": "Wait Time Forecast",
+    "purchases": {
+      "title": "Skip-the-line prices",
+      "forDate": "for {date}",
+      "soldOut": "Sold out"
+    },
     "nextPredicted": "Next: {time} min predicted",
     "otherAttractions": "Other Attractions",
     "headlinersSection": "Headliners",

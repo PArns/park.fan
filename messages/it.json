@@ -312,6 +312,11 @@
     "attractions": "Attrazioni",
     "shows": "Spettacoli",
     "predictions": "Previsione tempi di attesa",
+    "purchases": {
+      "title": "Prezzi salta-fila",
+      "forDate": "per il {date}",
+      "soldOut": "Esaurito"
+    },
     "nextPredicted": "Prossimo: {time} min previsti",
     "otherAttractions": "Altre attrazioni",
     "headlinersSection": "Attrazioni principali",

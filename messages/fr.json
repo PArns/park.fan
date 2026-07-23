@@ -312,6 +312,11 @@
     "attractions": "Attractions",
     "shows": "Spectacles",
     "predictions": "Prévisions d'Attente",
+    "purchases": {
+      "title": "Prix des accès coupe-file",
+      "forDate": "pour le {date}",
+      "soldOut": "Épuisé"
+    },
     "nextPredicted": "Suivant: {time} min prévu",
     "otherAttractions": "Autres Attractions",
     "headlinersSection": "Phares du parc",

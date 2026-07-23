@@ -500,6 +500,11 @@
     "attractions": "Attraktionen",
     "shows": "Shows",
     "predictions": "Wartezeit-Prognose",
+    "purchases": {
+      "title": "Skip-the-Line-Preise",
+      "forDate": "für {date}",
+      "soldOut": "Ausverkauft"
+    },
     "nextPredicted": "Nächste: {time} Min prognostiziert",
     "otherAttractions": "Weitere Attraktionen",
     "headlinersSection": "Highlights",

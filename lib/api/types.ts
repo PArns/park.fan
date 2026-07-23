@@ -55,13 +55,26 @@ export interface PaginatedResponse<T> {
 // Schedule
 // ============================================================================
 
+/**
+ * Paid skip-the-line offer attached to a schedule day (Disney parks only today:
+ * Lightning Lane single passes per attraction plus Multi/Premier Pass packages).
+ * `price.formatted` may be a placeholder ("Unknown"/amount 0) — treat as no price.
+ */
+export interface SchedulePurchaseItem {
+  id?: string;
+  name: string;
+  type?: 'ATTRACTION' | 'PACKAGE' | string;
+  price: { amount: number; currency: string; formatted?: string } | null;
+  available?: boolean;
+}
+
 export interface ScheduleItem {
   date: string;
   scheduleType: ScheduleType;
   openingTime: string | null;
   closingTime: string | null;
   description: string | null;
-  purchases: unknown | null;
+  purchases: SchedulePurchaseItem[] | null;
   isHoliday?: boolean;
   holidayName: string | null;
   isBridgeDay?: boolean;

@@ -312,6 +312,11 @@
     "attractions": "Attracties",
     "shows": "Shows",
     "predictions": "Wachttijd Voorspelling",
+    "purchases": {
+      "title": "Skip-the-line-prijzen",
+      "forDate": "voor {date}",
+      "soldOut": "Uitverkocht"
+    },
     "nextPredicted": "Volgende: {time} min voorspeld",
     "otherAttractions": "Andere Attracties",
     "headlinersSection": "Highlights",
