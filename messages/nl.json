@@ -312,6 +312,11 @@
     "attractions": "Attracties",
     "shows": "Shows",
     "predictions": "Wachttijd Voorspelling",
+    "purchases": {
+      "title": "Skip-the-line-prijzen",
+      "forDate": "voor {date}",
+      "soldOut": "Uitverkocht"
+    },
     "nextPredicted": "Volgende: {time} min voorspeld",
     "otherAttractions": "Andere Attracties",
     "headlinersSection": "Highlights",
@@ -792,7 +797,14 @@
       "min": "min",
       "peak": "Record {value} min · {date}"
     },
-    "sectionPlanVisit": "Plan de beste bezoektijd"
+    "sectionPlanVisit": "Plan de beste bezoektijd",
+    "meta": {
+      "minHeight": "Vanaf {cm} cm",
+      "minHeightTitle": "Minimale lengte: {cm} cm",
+      "maxHeight": "Tot {cm} cm",
+      "mayGetWet": "Je kunt nat worden",
+      "rcdbTitle": "Technische gegevens op RCDB (Roller Coaster DataBase)"
+    }
   },
   "calendar": {
     "legend": "Legenda",

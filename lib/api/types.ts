@@ -55,13 +55,26 @@ export interface PaginatedResponse<T> {
 // Schedule
 // ============================================================================
 
+/**
+ * Paid skip-the-line offer attached to a schedule day (Disney parks only today:
+ * Lightning Lane single passes per attraction plus Multi/Premier Pass packages).
+ * `price.formatted` may be a placeholder ("Unknown"/amount 0) — treat as no price.
+ */
+export interface SchedulePurchaseItem {
+  id?: string;
+  name: string;
+  type?: 'ATTRACTION' | 'PACKAGE' | string;
+  price: { amount: number; currency: string; formatted?: string } | null;
+  available?: boolean;
+}
+
 export interface ScheduleItem {
   date: string;
   scheduleType: ScheduleType;
   openingTime: string | null;
   closingTime: string | null;
   description: string | null;
-  purchases: unknown | null;
+  purchases: SchedulePurchaseItem[] | null;
   isHoliday?: boolean;
   holidayName: string | null;
   isBridgeDay?: boolean;
@@ -493,6 +506,14 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
+  minimumHeight?: number | null;
+  /** Maximum rider height in cm (kiddie rides). */
+  maximumHeight?: number | null;
+  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  mayGetWet?: boolean | null;
+  /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
+  rcdbId?: number | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
@@ -640,6 +661,14 @@ export interface AttractionResponse {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
+  minimumHeight?: number | null;
+  /** Maximum rider height in cm (kiddie rides). */
+  maximumHeight?: number | null;
+  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  mayGetWet?: boolean | null;
+  /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
+  rcdbId?: number | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;

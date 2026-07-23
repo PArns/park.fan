@@ -40,6 +40,7 @@ import { ParkHeaderStats } from '@/components/parks/park-header-stats';
 import { HeaderHolidayPanel } from '@/components/parks/header-holiday-panel';
 import { ParkBestDaysSection } from '@/components/parks/park-best-days-section';
 import { ParkStatsSection } from '@/components/parks/park-stats-section';
+import { ParkPurchasesCard } from '@/components/parks/park-purchases-card';
 import { NearbyParksSection } from '@/components/parks/nearby-parks-section';
 import { ContributeBanner } from '@/components/contribute/contribute-banner';
 import { PreferredSourcePrompt } from '@/components/common/preferred-source-prompt';
@@ -435,6 +436,10 @@ export default async function ParkPage({ params }: ParkPageProps) {
               </Suspense>
             </div>
           )}
+
+          {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
+              without purchase data (currently everything non-Disney). */}
+          <ParkPurchasesCard schedule={park.schedule} timezone={park.timezone} className="mb-8" />
 
           {/* Live Park Data (Status + Tabs with auto-refresh) */}
           <LiveParkData

@@ -82,6 +82,13 @@
 | --------------------------------------- | -------------------------------------------------------- |
 | [Glossary System](features/glossary.md) | Term data, translations, localized URLs, search, sitemap |
 
+### Product
+
+| Doc                                                                   | Description                                                                              |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| [Personas & Scenarios](product/personas-and-scenarios.md)             | Six personas, visit-lifecycle scenarios, gap backlog (G1–G9)                             |
+| [Attraction Metadata Sources](product/attraction-metadata-sources.md) | G1 research: where to get min-height/indoor/accessibility data, licenses, recommendation |
+
 ### Other
 
 | Doc                       | Description                                    |

@@ -312,6 +312,11 @@
     "attractions": "Atracciones",
     "shows": "Espectáculos",
     "predictions": "Pronóstico de Espera",
+    "purchases": {
+      "title": "Precios de acceso rápido",
+      "forDate": "para el {date}",
+      "soldOut": "Agotado"
+    },
     "nextPredicted": "Siguiente: {time} min previsto",
     "otherAttractions": "Otras Atracciones",
     "headlinersSection": "Destacados",
@@ -792,7 +797,14 @@
       "min": "min",
       "peak": "Récord {value} min · {date}"
     },
-    "sectionPlanVisit": "Planifica el mejor momento para visitar"
+    "sectionPlanVisit": "Planifica el mejor momento para visitar",
+    "meta": {
+      "minHeight": "Desde {cm} cm",
+      "minHeightTitle": "Altura mínima: {cm} cm",
+      "maxHeight": "Hasta {cm} cm",
+      "mayGetWet": "Puedes mojarte",
+      "rcdbTitle": "Datos técnicos en RCDB (Roller Coaster DataBase)"
+    }
   },
   "calendar": {
     "legend": "Leyenda",
