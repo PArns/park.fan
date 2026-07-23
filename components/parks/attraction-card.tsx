@@ -26,6 +26,7 @@ import { CrowdLevelBadge } from './crowd-level-badge';
 import { RopeDropBadge, RopeDropEveningBadge } from './rope-drop-badge';
 import { SeasonalBadge } from './seasonal-badge';
 import { QueueTypeBadge } from './queue-type-badge';
+import { AttractionMetaBadges } from './attraction-meta-badges';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 
@@ -324,6 +325,11 @@ export function AttractionCard({
                 }
               />
             )}
+            <AttractionMetaBadges
+              minimumHeight={'minimumHeight' in attraction ? attraction.minimumHeight : null}
+              mayGetWet={'mayGetWet' in attraction ? attraction.mayGetWet : null}
+              compact
+            />
             {isOperatingOrUnknown &&
               attraction.queues
                 ?.filter((q) => {

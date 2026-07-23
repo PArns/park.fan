@@ -8,6 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { MapPin, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { SeasonalBadge } from '@/components/parks/seasonal-badge';
+import { AttractionMetaBadges } from '@/components/parks/attraction-meta-badges';
 import { SectionHeading } from '@/components/common/section-heading';
 import { getParkByGeoPath } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
@@ -297,6 +298,12 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                       />
                     )}
+                    <AttractionMetaBadges
+                      minimumHeight={attraction.minimumHeight}
+                      maximumHeight={attraction.maximumHeight}
+                      mayGetWet={attraction.mayGetWet}
+                      rcdbId={attraction.rcdbId}
+                    />
                   </div>
                 </div>
               </div>

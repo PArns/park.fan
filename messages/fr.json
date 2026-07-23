@@ -797,7 +797,14 @@
       "min": "min",
       "peak": "Record {value} min · {date}"
     },
-    "sectionPlanVisit": "Planifier le meilleur moment pour visiter"
+    "sectionPlanVisit": "Planifier le meilleur moment pour visiter",
+    "meta": {
+      "minHeight": "Dès {cm} cm",
+      "minHeightTitle": "Taille minimale : {cm} cm",
+      "maxHeight": "Jusqu’à {cm} cm",
+      "mayGetWet": "Vous risquez d’être mouillé",
+      "rcdbTitle": "Données techniques sur RCDB (Roller Coaster DataBase)"
+    }
   },
   "calendar": {
     "legend": "Légende",

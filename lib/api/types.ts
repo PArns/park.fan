@@ -506,6 +506,14 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
+  minimumHeight?: number | null;
+  /** Maximum rider height in cm (kiddie rides). */
+  maximumHeight?: number | null;
+  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  mayGetWet?: boolean | null;
+  /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
+  rcdbId?: number | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
@@ -653,6 +661,14 @@ export interface AttractionResponse {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
+  minimumHeight?: number | null;
+  /** Maximum rider height in cm (kiddie rides). */
+  maximumHeight?: number | null;
+  /** Whether riders may get wet. Null/absent = unknown (not "dry"). */
+  mayGetWet?: boolean | null;
+  /** RCDB (rcdb.com) database id → https://rcdb.com/{id}.htm */
+  rcdbId?: number | null;
   bestVisitTimes?: BestVisitSlot[] | null;
   /** Only set for tier1/tier2 headliners in parks with a schedule. */
   ropeDrop?: RopeDropInfo | null;
