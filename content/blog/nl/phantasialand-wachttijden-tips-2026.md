@@ -56,8 +56,9 @@ Er zijn parken waarover ik schrijf met de nuchtere blik van de datamens —
 doorstroom hier, verzadigingscurve daar. En dan is er het
 [Phantasialand](ref:phantasialand?long). Daarover krijg ik geen enkele nuchtere
 zin op papier, en ik heb het echt geprobeerd. Daarvoor zitten er te veel
-kindermiddagen in dit stukje aarde in Brühl. Het is het park om wiens Märchensee
-— sprookjesmeer — mijn ouders me in de kinderwagen hebben rondgereden, het is de
+middagen uit mijn kindertijd in dit stukje aarde in Brühl. Het is het park waar
+mijn ouders me in de kinderwagen rond de Märchensee — het sprookjesmeer — hebben
+geduwd, het is de
 gondel „1001 Nacht", waarin ik met mijn vader door een opengeslagen sprookjesboek
 gleed — en het is de plek waar park.fan werd bedacht, in een zestig minuten lange
 rij voor Taron.
@@ -115,7 +116,7 @@ terug — want dat het Phantasialand aanvoelt zoals het aanvoelt, begrijp je pas
 je weet waar het vandaan komt. En dat is vrijwel precies het tegenovergestelde van
 een thrillpark.
 
-Het begon allemaal in 1967, in een uitgekoold bruinkoolgat aan de rand van Brühl.
+Het begon allemaal in 1967, in een afgegraven bruinkoolgat aan de rand van Brühl.
 Twee mannen die elkaar na de oorlog in Berlijn hadden leren kennen, staken hier hun
 geld en hun hart in: **Gottlieb Löffelhardt**, geboren Berlijner, en **Richard
 Schmidt**, die als artiest op het podium van het legendarische Wintergarten-Varieté
@@ -125,7 +126,7 @@ genaamd „Berggeist" wilden de twee geen kermisterrein maken, maar een
 met poppen uit Schmidts collectie, sprookjesscènes en veel groen. Op 30 april 1967
 gingen de poorten open. Achtbanen? Ho maar.
 
-![F.L.Y. in Rookburgh | Rookburgh met F.L.Y. (2020) — de eerste flying-launch-coaster ter wereld en voorlopige hoogtepunt van een lange transformatie. | left](/images/parks/phantasialand/fly-4x3.jpg)
+![F.L.Y. in Rookburgh | Rookburgh met F.L.Y. (2020) — de eerste flying-launch-coaster ter wereld en voorlopig hoogtepunt van een lange transformatie. | left](/images/parks/phantasialand/fly-4x3.jpg)
 
 Dat daaruit in de loop van de decennia het wildste, dichtst gethematiseerde park van
 het continent groeide, is een verhaal van langzame groei — en een bijna-einde. Het
@@ -157,7 +158,7 @@ Het mooiste eraan: het Phantasialand is tot op de dag van vandaag in **familieha
 gebleven. In 1998 droeg Gottlieb Löffelhardt de zaken over aan zijn zoon Robert; een
 internationaal concern of aandeelhouders die op het kwartaal letten, heeft het park
 nooit boven zich gehad. Je voelt dat in elk detail dat geen enkele controller ooit
-had goedgekeurd — en precies dat is de reden waarom je terugkomt.
+zou hebben goedgekeurd — en precies dat is de reden waarom je terugkomt.
 
 ## De headliners — en wat ze met je doen
 
@@ -241,7 +242,7 @@ lievelingspark.
 En een gedachte die me als fan echt pijn doet: **de prijs bepaalt nu eenmaal ook het
 publiek.** Sinds de jaarkaarten weg zijn en de tickets zo agressief beprijsd worden, is er
 in het park merkbaar iets verschoven — en dat bedoel ik niet alleen romantisch. In de
-laatste een, twee jaar is me duidelijk meer **vandalisme** opgevallen dan in al de jaren
+laatste een, twee jaar is me duidelijk meer **vandalisme** opgevallen dan in al die jaren
 ervoor, op een plek waar je zoiets vroeger simpelweg niet kende. Of dat direct samenhangt,
 weet ik niet zeker — maar ik hoop van harte dat mijn thuispark hier bijstuurt. Het verdient
 beter, en wij gasten ook.
@@ -381,7 +382,7 @@ Voor tussendoor mijn snackklassieker: de **churros** — vers, kaneelig en het h
 krijgen, de perfecte metgezel voor de weg naar de volgende baan.
 
 En de belangrijkste eettip is dezelfde als bij het aanschuiven: **anticyclisch.** Eet rond 11:30 of
-na 14:30 uur — dan rijd je tijdens het piekuur de korte rijen en zit je op ritdrukte-tijd rustig in
+na 14:30 uur — dan rijd je tijdens het piekuur de korte rijen en zit je, terwijl de rest rijdt, rustig in
 het restaurant. Twee vliegen, één klap, een tevreden buik. (En als je in de winter komt, wacht in de
 Wintertraum-sectie verderop nog een heel eigen lekkernij op je.)
 
