@@ -262,7 +262,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             }
           >
             {hasToc && (
-              <aside className="mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+              <aside
+                data-toc-scroll
+                className="blog-sidebar-scroll mb-8 space-y-6 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1 lg:mb-0 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto"
+              >
                 <BlogToc markdown={post.content} title={post.frontmatter.title} />
                 {/* Desktop-only extras under the ToC; mobile keeps just the ToC up top */}
                 <div className="hidden space-y-6 lg:block">
