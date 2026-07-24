@@ -111,6 +111,58 @@ Dazu bepreist der Park seine Tickets so aggressiv, dass er selbst viele Wochenen
 gut füllt — der sagenumwobene „leere Samstag" ist selten geworden. Umso mehr lohnt
 sich alles, was jetzt kommt.
 
+## Vom Märchenwald zum immersivsten Park Europas: eine kurze Geschichte
+
+Bevor es gleich um Bahnen, Tickets und die besten Zeiten geht, ein kurzer Blick
+zurück — denn dass sich das Phantasialand so anfühlt, wie es sich anfühlt,
+versteht man erst, wenn man weiß, wo es herkommt. Und das ist ziemlich genau das
+Gegenteil eines Thrill-Parks.
+
+Angefangen hat alles 1967, in einem ausgekohlten Braunkohleloch am Rand von
+Brühl. Zwei Männer, die sich nach dem Krieg in Berlin kennengelernt hatten,
+steckten hier ihr Geld und ihre Herzen hinein: **Gottlieb Löffelhardt**,
+gebürtiger Berliner, und **Richard Schmidt**, der als Artist auf der Bühne des
+legendären Wintergarten-Varietés gestanden und zahlreiche Puppenfernsehspiele
+betreut hatte. Aus der erschöpften Grube namens „Berggeist" wollten die beiden
+keinen Rummelplatz machen, sondern einen **Märchenwald** — einen ruhigen Ort für
+Familien und Großeltern, mit Puppen aus Schmidts Fundus, Märchenszenen und viel
+Grün. Am 30. April 1967 öffneten die Tore. Achterbahnen? Fehlanzeige.
+
+![F.L.Y. in Rookburgh | Rookburgh mit F.L.Y. (2020) — der weltweit erste Flying-Launch-Coaster und vorläufiger Höhepunkt einer langen Verwandlung. | left](/images/parks/phantasialand/fly-4x3.jpg)
+
+Dass daraus über die Jahrzehnte der wildeste, am dichtesten thematisierte Park des
+Kontinents wurde, ist eine Geschichte von langsamem Wachstum — und einem
+Beinahe-Ende. Der Park wurde größer, mutiger, technischer; 1996 eröffnete
+**Michael Jackson** persönlich die Minenbahn
+[Colorado Adventure](ref:phantasialand/colorado-adventure). Und dann, am
+**1. Mai 2001**, brannte es. Ein technischer Defekt an der Grand-Canyon-Bahn setzte
+einen großen Teil des alten Parks in Flammen; die Feuerwehr sprach hinterher davon,
+man sei „an einer Katastrophe vorbeigeschrammt". Es hätte das Ende sein können.
+
+Es wurde stattdessen der Wendepunkt. Auf den Trümmern der abgebrannten Bahnen baute
+der Park binnen eines Jahres die Themenwelt **Wuze Town** mit den beiden verrückten
+Spinning Coastern [Winja's Fear](ref:phantasialand/winjas-fear) & Force und die
+Wildwasserbahn [River Quest](ref:phantasialand/river-quest) — beide fährst du heute
+noch. Aus der Asche kam eine neue Haltung: Wenn schon neu bauen, dann richtig, dann
+bis zur letzten Schraube durchthematisiert.
+
+Wie ernst es der Park damit meinte, zeigte sich 2006. Mit **Deep in Africa** und dem
+Inverted Coaster [Black Mamba](ref:phantasialand/black-mamba) legte das
+Phantasialand eine komplette afrikanische Welt an — Lehmhütten, Wasserläufe, die
+Bahn tief zwischen die Felsen gesetzt statt in den Himmel geschraubt. Das war der
+Moment, in dem aus dem netten Ausflugsziel eine Pilgerstätte für Park-Fans aus ganz
+Europa wurde. 2016 folgte das Basaltdorf **Klugheim** mit
+[Taron](ref:phantasialand/taron), 2020 die viktorianische Fliegerstadt
+**Rookburgh** mit dem weltweit ersten Flying-Launch-Coaster
+[F.L.Y.](ref:phantasialand/fly) — beide gelten unter Enthusiasten als Weltklasse,
+und beide sind nicht einfach Bahnen, sondern komplette, lückenlose Bühnenbilder.
+
+Das Schönste daran: Das Phantasialand ist bis heute in **Familienhand** geblieben.
+1998 übergab Gottlieb Löffelhardt die Geschäfte an seinen Sohn Robert; einen
+internationalen Konzern oder Aktionäre, die aufs Quartal schauen, hat der Park nie
+über sich gehabt. Man spürt das in jedem Detail, das kein Controller je genehmigt
+hätte — und genau das ist der Grund, warum man wiederkommt.
+
 ## Die Headliner — und was sie mit dir machen
 
 Fangen wir mit dem Grund an, aus dem die meisten überhaupt kommen — den Bahnen. Ich
@@ -527,7 +579,6 @@ jetzt:
 Und die beiden Hauptdarsteller, live aus unseren Daten:
 
 [Taron](ref:phantasialand/taron?full)
-
 [F.L.Y.](ref:phantasialand/fly?full)
 
 Wir sehen uns in Klugheim. Ich bin der, der um 10 Uhr als Erstes bei Taron steht,
