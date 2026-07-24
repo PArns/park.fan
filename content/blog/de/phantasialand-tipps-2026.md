@@ -13,12 +13,13 @@ excerpt: >-
   Coaster.
 tags:
   - phantasialand
-  - tipps
   - wartezeiten
-  - brühl
-  - taron
-  - fly
+  - freizeitpark
+  - tipps
+  - deutschland
+  - wintertraum
   - park-fan
+  - saison-2026
 category: guides
 coverImage:
   src: /images/parks/phantasialand/taron-16x9.jpg
@@ -347,18 +348,33 @@ Im Halloween-Guide habe ich das Phantasialand liebevoll unter die „Verweigerer
 gezählt — es macht bewusst kein Gruselfestival. Stattdessen zieht es im Winter
 ein ganz anderes, wunderschönes Kostüm an: den
 **[Wintertraum](https://www.phantasialand.de/de/themenpark/wintertraum/)**.
-2026/27 läuft er vom **14. November 2026 bis 24. Januar 2027**, täglich von **11
-bis 20 Uhr** (geschlossen am 24. und 25. Dezember sowie am 1. Januar; an
-Silvester nur bis 18 Uhr). Der Park versinkt dann in Lichtern, Schnee-Optik und
-winterlichen Shows — und in der Dämmerung, mit Glühwein in der Hand und
-[Taron](ref:phantasialand/taron?bare) im Lichtermeer, ist das mein liebster Weg,
-das Parkjahr ausklingen zu lassen.
 
-Zwei Dinge, die du wissen solltest: Der Wintertraum ist **beliebt** und
-entsprechend voll — plane ihn wie einen Ferientag, nicht wie einen ruhigen
-November. Und: **warm anziehen.** Die Wartezeiten fühlen sich bei Minusgraden
-gleich doppelt lang an — der Rest ist reine Physik, nachzulesen in der
-[Kunst des Wartens](/blog/die-kunst-des-wartens).
+Das ist kein bisschen Deko obendrauf, sondern eine komplette Verwandlung. Nach dem
+Ende der Sommersaison Anfang November macht der Park für rund zwei Wochen die Tore
+zu, schmückt sich um — und öffnet als leuchtendes Winterdorf: hunderttausende
+Lichter, Schnee-Optik, Tannen und Budenzauber, dazu winterliche Shows und eine
+[Eislaufbahn im Berlin-Bereich](ref:phantasialand/berliner-eislaufen?bare). In der
+Dämmerung, mit Glühwein in der Hand und [Taron](ref:phantasialand/taron?bare) im
+Lichtermeer, ist das mein liebster Weg, das Parkjahr ausklingen zu lassen.
+
+**Die Termine 2026/27:** vom **14. November 2026 bis 24. Januar 2027**, täglich von
+**11 bis 20 Uhr** (geschlossen am 24. und 25. Dezember sowie am 1. Januar; an
+Silvester nur bis 18 Uhr). Die Tickets laufen wie im Sommer über datierte
+Online-Tagestickets.
+
+Drei Dinge, die du wissen solltest:
+
+- **Nicht alles fährt.** Die großen Coaster wie [Taron](ref:phantasialand/taron?bare)
+  und [F.L.Y.](ref:phantasialand/fly?bare) drehen weiter ihre Runden, aber die
+  **Wasserbahnen** ([Chiapas](ref:phantasialand/chiapas-die-wasserbahn?bare),
+  [River Quest](ref:phantasialand/river-quest?bare)) machen bei Kälte Pause —
+  nasse Klamotten bei Minusgraden will nun wirklich niemand.
+- **Der Wintertraum ist beliebt** und entsprechend voll — plane ihn wie einen
+  Ferientag, nicht wie einen ruhigen November. Der Crowd-Kalender von oben gilt
+  auch für die Wintersaison.
+- **Warm anziehen.** Die Wartezeiten fühlen sich bei Minusgraden gleich doppelt
+  lang an — der Rest ist reine Physik, nachzulesen in der
+  [Kunst des Wartens](/blog/die-kunst-des-wartens).
 
 ## Häufige Fragen zu Wartezeiten & Besuch
 
