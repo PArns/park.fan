@@ -193,7 +193,7 @@ già leggendo vedi cosa sta succedendo in questo momento:
 - **[Colorado Adventure](ref:phantasialand/colorado-adventure)** — il trenino
   minerario che Michael Jackson nel 1996 contribuì a inaugurare in persona.
   Adatto alle famiglie, ma con una velocità sorprendente e quel meraviglioso
-  fascino d'antan da Far West.
+  fascino d'altri tempi da Far West.
 - **[Talocan](ref:phantasialand/talocan)** — un top spin con effetti di fuoco e
   acqua, che da sotto sembra una scenografia da tempio e da sopra dà la
   sensazione di una punizione messa in scena con amore.
@@ -240,7 +240,7 @@ presto paga meno** — e il giorno economico è di solito anche quello più vuot
 E poi c'è la faccenda che ai fan più fedeli brucia ancora oggi: **gli abbonamenti
 annuali non esistono più.** Il Phantasialand li ha aboliti dopo la pandemia —
 diventando così uno degli ultimi grandi parchi d'Europa del tutto privo di
-tessera stagionale. Per un luogo che rende così tante persone dei recidivi, è uno
+tessera stagionale. Per un luogo che trasforma così tante persone in recidivi, è uno
 schiaffo in faccia agli habitué. Il malumore era (ed è) così grande che i fan
 hanno lanciato addirittura
 **[più petizioni per la reintroduzione](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)**,
@@ -263,7 +263,7 @@ Lo merita di più, e lo meritiamo anche noi ospiti.
 **al Phantasialand è la scelta del giorno a decidere i tuoi tempi di attesa — più
 di qualsiasi trucco dentro al parco.** Un grigio martedì di novembre può essere
 più vuoto di qualsiasi sabato di luglio, e un giorno di vacanze scolastiche in
-Renania Settentrionale-Vestfalia con previsioni di sole è, affidabilmente,
+Renania Settentrionale-Vestfalia con previsioni di sole è, immancabilmente,
 l'inferno fatto di persone che hanno avuto tutte la tua stessa buona idea.
 
 Un paio di regole empiriche che valgono quasi sempre:
@@ -320,7 +320,7 @@ conoscerlo prima di spendere soldi al Kaiserplatz. Ora ci sono due varianti:
   [F.L.Y.](ref:phantasialand/fly) con il Quick Pass** — nel Single Ride
   l'attrazione non è compresa.
 
-Un dettaglio che sorprende in molti (e che conviene sapere prima): **anche con il
+Un dettaglio che sorprende molti (e che conviene sapere prima): **anche con il
 Quick Pass, a F.L.Y. aspetti lo stesso — su, in stazione.** A causa delle sue
 elaborate barre di sicurezza da volo, l'attrazione impiega un'eternità per il
 carico, e questo ingorgo non si scioglie nemmeno con il fast-track. Salti la
@@ -412,8 +412,8 @@ verso l'attrazione successiva.
 
 E il consiglio più importante sul cibo è lo stesso che vale per le code: **in
 controtendenza.** Mangia verso le 11:30 o dopo le 14:30 — così, nelle ore di
-punta, fai le code corte e, all'ora di pranzo, te ne stai tranquillo al
-ristorante. Due piccioni, una fava, una pancia soddisfatta. (E se vieni
+punta, fai le code corte e, quando tutti sono in giostra, te ne stai
+tranquillo al ristorante. Due piccioni, una fava, una pancia soddisfatta. (E se vieni
 d'inverno, nella sezione dedicata al Wintertraum più in basso ti aspetta ancora
 una golosità tutta sua.)
 
@@ -539,7 +539,7 @@ giornalieri online con data. Ancora tre cose:
 
 ## Domande frequenti su tempi di attesa e visita
 
-### Quando ci sono al Phantasialand i tempi di attesa più brevi?
+### Quando ci sono i tempi di attesa più brevi al Phantasialand?
 
 Nei giorni feriali (mar–gio) fuori dalle vacanze scolastiche della Renania
 Settentrionale-Vestfalia e, in generale, in bassa stagione. Ma non affidarti
@@ -547,7 +547,7 @@ all'istinto: il [calendario delle affluenze per il Phantasialand](ref:phantasial
 ti dice fino a 365 giorni in anticipo quando aspettarsi poca folla — verde vuol
 dire andare.
 
-### Come evito al Phantasialand le lunghe attese?
+### Come evito le lunghe attese al Phantasialand?
 
 Tre leve, in quest'ordine: **scegliere il giorno giusto** (è quella che rende di
 più), **arrivare presto** e fare Taron + F.L.Y. nella prima ora, e muoverti **in

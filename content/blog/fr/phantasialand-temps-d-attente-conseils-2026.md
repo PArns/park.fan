@@ -109,7 +109,7 @@ protège pas des longues files quand il n'y a que peu d'attractions sur lesquell
 répartir l'affluence. Les mathématiques sont plus impitoyables au Phantasialand
 que dans le vaste [Europa-Park](ref:europa-park) et ses treize montagnes russes.
 À cela s'ajoute que le parc fixe le prix de ses billets de façon si agressive
-qu'il se remplit bien même de nombreux week-ends — le légendaire « samedi vide » est
+qu'il se remplit bien même lors de nombreux week-ends — le légendaire « samedi vide » est
 devenu rare. Raison de plus pour prêter attention à tout ce qui suit.
 
 ## Du Märchenwald au parc le plus immersif d'Europe : une brève histoire
@@ -203,7 +203,7 @@ pour que tu voies, dès la lecture, ce qu'il en est en ce moment :
   spinning coasters de Wuze Town, pleins d'ascenseurs, de rails basculants et de
   surprises. Deux parcours, et aucun passage ne ressemble au précédent.
 - **[Mystery Castle](ref:phantasialand/mystery-castle)** — la tour de chute du
-  Mysteryland, aux programmes de vol changeants et avec un pre-show qui fait déjà
+  Mysteryland, aux programmes changeants et avec un pre-show qui fait déjà
   la moitié de la frayeur, bien avant même que tu ne montes.
 
 Et pour les petits (ou les grands restés jeunes) : [Raik](ref:phantasialand/raik),

@@ -88,7 +88,7 @@ stehst _in_ **Klugheim**, einem kompletten Basaltdorf mit schiefen Dächern und
 verwitterten Mauern, das so überzeugend gebaut ist, dass du den Coaster für einen
 Moment vergisst. Du gehst nicht zu einer Bahn — du reist durch Welten.
 
-Und was für Welten: Vom belle-époquehaften **Berlin** am Eingang spazierst du ins
+Und was für Welten: Vom **Berlin** der Belle Époque am Eingang spazierst du ins
 tempelgesäumte **China Town**, vorbei an **Deep in Africa** mit seinen Lehmhütten,
 hinein ins aztekisch-wuchtige **Mexiko**, weiter ins verwunschene **Mysteryland**,
 ins verträumte **Fantasy** rund um den Märchensee — und schließlich in die beiden
