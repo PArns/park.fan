@@ -4,7 +4,7 @@ translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 author: patrick
 mode: published
-featured: true
+featured: false
 excerpt: >-
   Das Phantasialand ist mein Heimatpark — hier hat park.fan in einer
   Taron-Schlange das Licht der Welt erblickt. Ein langer, liebevoller Guide für
