@@ -3,7 +3,7 @@ title: 'Phantasialand-Tipps 2026: der perfekte Tag in meinem Heimatpark'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
 author: patrick
-mode: hidden
+mode: published
 featured: true
 excerpt: >-
   Das Phantasialand ist mein Heimatpark — hier hat park.fan in einer
