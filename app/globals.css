@@ -716,6 +716,30 @@ html[data-temp-unit='F'] .u-imperial {
   background: color-mix(in oklab, var(--foreground) 30%, transparent);
 }
 
+/* Sticky blog ToC / sidebar. Swaps the browser's heavy default scrollbar for a
+   thin, theme-aware one (matching the editor panes) and reserves its gutter so
+   the sidebar doesn't shift a few px sideways the moment a long ToC starts to
+   overflow. Pairs with BlogTocList, which keeps the active entry scrolled into
+   view inside this box as the reader moves through the article. */
+.blog-sidebar-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--foreground) 16%, transparent) transparent;
+  scrollbar-gutter: stable;
+}
+.blog-sidebar-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.blog-sidebar-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.blog-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--foreground) 16%, transparent);
+  border-radius: 9999px;
+}
+.blog-sidebar-scroll::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--foreground) 28%, transparent);
+}
+
 /* ─── Blog editor (TipTap) canvas ──────────────────────────────────────────── */
 
 .tiptap-canvas {
