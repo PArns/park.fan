@@ -59,8 +59,7 @@ Meine Eltern haben mich als kleines Kind im Kinderwagen um den Märchensee im
 stehen dort am Ufer, jede eine kleine Bühne mit mechanisch bewegten Figuren.
 Rotkäppchen, Aschenputtel, Ali Baba.
 
-Dieser Märchenwald ist älter als alles andere im Park. Als das Phantasialand am
-30. April 1967 eröffnete, war er die erste Attraktion überhaupt, gebaut aus dem
+Dieser Märchenwald ist älter als alles andere im Park. Als das Phantasialand am 30. April 1967 eröffnete, war er die erste Attraktion überhaupt, gebaut aus dem
 Fundus des Puppenspielers Richard Schmidt, der den Park zusammen mit dem
 Schausteller Gottlieb Löffelhardt aufzog. Und weil Puppen allein noch keine
 Geschichte ergeben, gab es an jeder Szene einen Knopf. Einmal drücken, und ein
