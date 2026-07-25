@@ -190,7 +190,7 @@ o si simplemente estaba cambiando tiempo de vida por una barandilla.
 > «Déjame trastear un poco con los tiempos de espera.» — _dije. Fueron tres
 > años._
 
-## De «un momentito» a tres años: cómo nació park.fan de verdad
+## Del script a la plataforma: cómo nació park.fan de verdad
 
 En lo que se convirtió es en lo que los
 desarrolladores llaman un proyecto del corazón y las novias probablemente «otra
@@ -282,7 +282,7 @@ minutos»: tres veces la misma cifra, tres historias completamente distintas.
   después de la inauguración? O es un día de ensueño, o las multitudes se han
   dispersado por fin.
 
-![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Veinte minutos de cola aquí son toda una señal. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera invertida sobre una fachada iluminada, de noche | Voltron Nevera en el Europa-Park. Lo típico aquí son unos 45 minutos, 70 o más en días punta. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra está en el gráfico. La historia que hay detrás está a partir de ahora
 aquí, en tres formatos.

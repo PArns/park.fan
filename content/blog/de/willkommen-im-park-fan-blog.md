@@ -194,7 +194,7 @@ tauschte.
 > „Lass mich mal eben die Wartezeiten tracken.“ — _sagte ich. Es wurden drei
 > Jahre._
 
-## Aus „mal eben“ wurden drei Jahre: wie park.fan wirklich entstand
+## Vom Skript zur Plattform: wie park.fan wirklich entstand
 
 Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
 vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
@@ -286,7 +286,7 @@ Minuten“, dreimal dieselbe Zahl, dreimal eine völlig andere Geschichte:
   Jahr nach Eröffnung? Entweder Sahnetag, oder die Massen haben sich endlich
   verlaufen.
 
-![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Zwanzig Minuten Wartezeit sind hier eine Ansage. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera im Überschlag über einer angestrahlten Fassade bei Nacht | Voltron Nevera im Europa-Park. Typisch sind hier rund 45 Minuten, an Spitzentagen 70 und mehr. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Die Zahl steht im Diagramm. Die Geschichte dahinter steht ab jetzt hier, in
 drei Formaten.

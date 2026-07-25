@@ -182,7 +182,7 @@ whether I was simply trading lifetime for a handrail.
 > “Let me just track the wait times for a bit.” — _I said. It turned into three
 > years._
 
-## From “just a bit” to three years: how park.fan really came about
+## From script to platform: how park.fan really came about
 
 What it grew into is what developers call a passion project and girlfriends
 probably call “that park thing again”. A script became a data
@@ -271,7 +271,7 @@ the same number three times over, three completely different stories:
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a year
   after opening? Either a dream day, or the crowds have finally dispersed.
 
-![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Twenty minutes of queue is a statement here. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Typical here is around 45 minutes, 70 and up on peak days. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 The number is in the chart. From now on the story behind it is here, in three
 formats.

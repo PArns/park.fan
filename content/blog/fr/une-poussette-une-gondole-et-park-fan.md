@@ -199,7 +199,7 @@ temps de vie contre une rambarde.
 > « Laisse-moi juste tracker les temps d'attente. » — _ai-je dit. Ça a duré
 > trois ans._
 
-## De « vite fait » à trois ans : comment park.fan est vraiment né
+## Du script à la plateforme : comment park.fan est vraiment né
 
 Ce que c'est devenu, les développeurs appellent ça un projet de cœur, et les
 copines plutôt « encore ce truc
@@ -298,7 +298,7 @@ différentes.
   après l'ouverture ? Soit une journée de rêve, soit les foules se sont enfin
   dispersées.
 
-![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l’Europa-Park. Vingt minutes d’attente, ici, cela veut dire quelque chose. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera à l’envers au-dessus d’une façade illuminée, de nuit | Voltron Nevera à l'Europa-Park. La norme tourne ici autour de 45 minutes, 70 et plus les jours de pointe. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Le chiffre est dans le graphique. L'histoire derrière se trouve désormais ici,
 sous trois formes.

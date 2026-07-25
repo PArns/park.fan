@@ -191,7 +191,7 @@ stessi semplicemente barattando tempo di vita con un corrimano.
 > “Fammi tracciare un attimo i tempi di attesa.” — _dissi. Sono diventati tre
 > anni._
 
-## Da “un attimo” a tre anni: come è nato davvero park.fan
+## Dallo script alla piattaforma: come è nato davvero park.fan
 
 Quello che ne è venuto fuori è ciò che
 gli sviluppatori chiamano progetto del cuore e le ragazze probabilmente “di
@@ -286,7 +286,7 @@ diverse.
   anno dall'apertura? O è una giornata da sogno, o la folla si è finalmente
   dispersa.
 
-![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all’Europa-Park. Venti minuti di coda qui sono un bel segnale. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera capovolto sopra una facciata illuminata, di notte | Voltron Nevera all'Europa-Park. Qui la norma è intorno ai 45 minuti, 70 e oltre nei giorni di punta. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 La cifra sta nel grafico. La storia che c'è dietro sta da adesso qui, in tre
 formati.

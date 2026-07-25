@@ -187,7 +187,7 @@ inruilde voor een reling.
 
 > “Laat mij die wachttijden even trackken.” — _zei ik. Het werden drie jaar._
 
-## Van “even snel” naar drie jaar: hoe park.fan echt ontstond
+## Van script naar platform: hoe park.fan echt ontstond
 
 Wat het werd, noemen ontwikkelaars een passieproject en vriendinnen
 vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
@@ -276,7 +276,7 @@ Een wachttijd zonder context is niet meer dan een gerucht met een decimaal.
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare), een
   jaar na de opening? Of een topdag, of de massa is eindelijk uitgewaaierd.
 
-![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Twintig minuten wachten is hier een statement. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
+![Voltron Nevera in een overslag boven een aangelichte gevel bij nacht | Voltron Nevera in het Europa-Park. Typisch is hier zo'n 45 minuten, op piekdagen 70 en meer. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 Het getal staat in de grafiek. Het verhaal erachter staat vanaf nu hier, in drie
 vormen.
