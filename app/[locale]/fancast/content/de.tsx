@@ -85,7 +85,7 @@ const FAQ = [
   {
     question: 'Welche Daten nutzt Fancast?',
     answer:
-      'Live- und historische Wartezeiten aus über 150 Parks, Schul- und Feiertagskalender (auch aus Nachbarregionen), Wetterprognosen, Öffnungszeiten, Sonderevents und saisonale Muster. Aus diesem Mix entstehen die tagesgenauen Crowd-Level und die stündlichen Wartezeit-Prognosen.',
+      'Live- und historische Wartezeiten aus über 200 Parks, Schul- und Feiertagskalender (auch aus Nachbarregionen), Wetterprognosen, Öffnungszeiten, Sonderevents und saisonale Muster. Aus diesem Mix entstehen die tagesgenauen Crowd-Level und die stündlichen Wartezeit-Prognosen.',
   },
   {
     question: 'Warum zeigt ein Park „Keine Prognose"?',
@@ -157,7 +157,7 @@ export function ContentDE() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live-Wartezeiten" delay={0}>
-            Millionen echter Messwerte aus 150+ Parks, im Minutentakt. Die Rohwährung jeder
+            Millionen echter Messwerte aus 200+ Parks, im Minutentakt. Die Rohwährung jeder
             Prognose.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Kalender & Ferien" delay={60}>

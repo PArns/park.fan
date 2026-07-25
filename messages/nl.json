@@ -112,7 +112,7 @@
       "hottestLabel": "Heetste park",
       "viewPark": "Naar het park"
     },
-    "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 150 pretparken en 5.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
+    "intro": "park.fan toont realtime wachttijden en drukte voor meer dan 200 pretparken en 7.000+ attracties wereldwijd—o.a. Disney, Universal Studios, Europa-Park en Phantasialand. Plan je bezoek met live wachtrijtijden, openingstijden en AI-voorspellingen.",
     "hero": {
       "badge": "AI-gestuurde voorspellingen",
       "cta": "Ontdek Parken",
@@ -1175,7 +1175,7 @@
   },
   "bestTime": {
     "title": "Beste tijd om pretparken te bezoeken",
-    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 150+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park."
+    "description": "De rustigste weekdagen en maanden uit echte wachttijddata van 200+ parken — plus tips voor korte rijen en de drukte-kalender voor jouw park."
   },
   "howto": {
     "title": "Hoe het werkt – De complete gids",

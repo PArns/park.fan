@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: 'Da dove arrivano questi dati?',
     answer:
-      'Dai tempi di attesa effettivamente registrati di oltre 150 parchi negli ultimi due anni. Ogni parco viene normalizzato sulla propria media e poi mediato su tutti i parchi, così la classifica è equa e non viene dominata dai parchi più grandi.',
+      'Dai tempi di attesa effettivamente registrati di oltre 200 parchi negli ultimi due anni. Ogni parco viene normalizzato sulla propria media e poi mediato su tutti i parchi, così la classifica è equa e non viene dominata dai parchi più grandi.',
   },
 ] as const;
 
@@ -88,7 +88,7 @@ export function ContentIT() {
           di attesa.
         </Lead>
         <P>
-          Queste tracce le abbiamo misurate su oltre 150 parchi negli ultimi due anni. Più sotto: i
+          Queste tracce le abbiamo misurate su oltre 200 parchi negli ultimi due anni. Più sotto: i
           giorni feriali e i mesi più tranquilli, le ore più tranquille della giornata, le date da
           schivare — e il calendario dell’affluenza che trasforma tutto questo nel singolo giorno
           migliore per il tuo parco.

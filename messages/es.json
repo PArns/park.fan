@@ -112,7 +112,7 @@
       "hottestLabel": "Parque más caluroso",
       "viewPark": "Ver parque"
     },
-    "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 150 parques temáticos y 5.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
+    "intro": "park.fan muestra tiempos de espera en vivo y nivel de afluencia de más de 200 parques temáticos y 7.000+ atracciones en todo el mundo—incl. Disney, Universal Studios, Europa-Park y Phantasialand. Planifica tu visita con colas en vivo, horarios y predicciones por IA.",
     "hero": {
       "badge": "Predicciones por IA",
       "cta": "Explorar Parques",
@@ -1175,7 +1175,7 @@
   },
   "bestTime": {
     "title": "Mejor época para visitar parques temáticos",
-    "description": "Los días y meses más tranquilos, a partir de datos reales de tiempos de espera de más de 150 parques, con trucos para colas cortas y calendario de afluencia."
+    "description": "Los días y meses más tranquilos, a partir de datos reales de tiempos de espera de más de 200 parques, con trucos para colas cortas y calendario de afluencia."
   },
   "howto": {
     "title": "Cómo funciona – La guía completa",

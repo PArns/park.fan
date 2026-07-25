@@ -57,7 +57,7 @@ function IntroEN() {
         <p className="text-muted-foreground">
           park.fan was built out of exactly that frustration. What started as a small side project –
           "let me just track some wait times" – has grown into a platform with live data from 150+
-          parks, over 5,000 attractions and millions of queue data points processed every day.
+          parks, over 7,000 attractions and millions of queue data points processed every day.
         </p>
         <p className="text-muted-foreground">
           The goal is simple: <strong>take the guesswork out of your theme park visit.</strong> Use
@@ -923,7 +923,7 @@ function ContentENSections() {
       {/* ── 9. Popular Parks ────────────────────────────────────────────────── */}
       <Section id="parks" title="Popular Parks">
         <p className="text-muted-foreground mb-6">
-          park.fan covers 150+ theme parks worldwide – from Walt Disney World to Universal Studios
+          park.fan covers 200+ theme parks worldwide – from Walt Disney World to Universal Studios
           and Europa-Park. Here are the most-visited parks in your region with live data:
         </p>
         <PopularParksGrid />
@@ -1042,7 +1042,7 @@ function ContentENSections() {
             },
             {
               q: 'How many parks are covered?',
-              a: 'park.fan currently covers 150+ parks with 5,000+ attractions worldwide – from Walt Disney World and Universal to Europa-Park, Phantasialand and parks across Asia and Australia.',
+              a: 'park.fan currently covers 200+ parks with 7,000+ attractions worldwide – from Walt Disney World and Universal to Europa-Park, Phantasialand and parks across Asia and Australia.',
             },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">

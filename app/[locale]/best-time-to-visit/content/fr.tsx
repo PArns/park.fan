@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: 'D’où viennent ces données ?',
     answer:
-      'Des temps d’attente réellement enregistrés de plus de 150 parcs au cours des deux dernières années. Chaque parc est normalisé sur sa propre moyenne puis moyenné sur l’ensemble des parcs, pour que le classement soit équitable et ne soit pas dominé par les plus grands parcs.',
+      'Des temps d’attente réellement enregistrés de plus de 200 parcs au cours des deux dernières années. Chaque parc est normalisé sur sa propre moyenne puis moyenné sur l’ensemble des parcs, pour que le classement soit équitable et ne soit pas dominé par les plus grands parcs.',
   },
 ] as const;
 
@@ -88,7 +88,7 @@ export function ContentFR() {
           temps d’attente.
         </Lead>
         <P>
-          Ces empreintes, nous les avons mesurées sur plus de 150 parcs au cours des deux dernières
+          Ces empreintes, nous les avons mesurées sur plus de 200 parcs au cours des deux dernières
           années. Ci-dessous : les jours de semaine et les mois les plus calmes, les heures les plus
           tranquilles de la journée, les dates à esquiver — et le calendrier d’affluence qui
           transforme tout cela en le meilleur jour possible pour votre parc.

@@ -84,7 +84,7 @@ const FAQ = [
   {
     question: '¿Qué datos usa Fancast?',
     answer:
-      'Tiempos de espera en directo e históricos de más de 150 parques, calendarios escolares y de días festivos (también de regiones vecinas), previsiones meteorológicas, horarios de apertura, eventos especiales y patrones estacionales. De esa mezcla salen los niveles de afluencia diarios y las previsiones horarias del tiempo de espera.',
+      'Tiempos de espera en directo e históricos de más de 200 parques, calendarios escolares y de días festivos (también de regiones vecinas), previsiones meteorológicas, horarios de apertura, eventos especiales y patrones estacionales. De esa mezcla salen los niveles de afluencia diarios y las previsiones horarias del tiempo de espera.',
   },
   {
     question: '¿Por qué un parque muestra «Sin previsión»?',
@@ -156,7 +156,7 @@ export function ContentES() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Tiempos de espera en directo" delay={0}>
-            Millones de lecturas reales de más de 150 parques, actualizadas al minuto. La moneda en
+            Millones de lecturas reales de más de 200 parques, actualizadas al minuto. La moneda en
             bruto de cada previsión.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Calendarios y vacaciones" delay={60}>

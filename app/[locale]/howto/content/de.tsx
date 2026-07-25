@@ -60,7 +60,7 @@ function ContentDE() {
           <p className="text-muted-foreground">
             park.fan wurde aus genau dieser Frustration heraus entwickelt. Was als kleines
             Nebenprojekt begann – „ich tracke mal ein paar Wartezeiten" – ist heute eine Plattform
-            mit Live-Daten aus 150+ Parks, mehr als 5.000 Attraktionen und Millionen von
+            mit Live-Daten aus 200+ Parks, mehr als 7.000 Attraktionen und Millionen von
             Warteschlangen-Datenpunkten, die täglich verarbeitet werden.
           </p>
           <p className="text-muted-foreground">
@@ -1121,7 +1121,7 @@ function ContentDE() {
       {/* ── 9. Beliebte Parks ───────────────────────────────────────────────── */}
       <Section id="parks" title="Beliebte Parks">
         <p className="text-muted-foreground mb-6">
-          park.fan deckt über 150 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
+          park.fan deckt über 200 Freizeitparks weltweit ab – von Walt Disney World bis Europa-Park.
           Hier sind die meistbesuchten Parks in deiner Region mit aktuellen Live-Daten:
         </p>
         <PopularParksGrid />
@@ -1248,7 +1248,7 @@ function ContentDE() {
             },
             {
               q: 'Wie viele Parks sind abgedeckt?',
-              a: 'Aktuell deckt park.fan über 150 Parks mit mehr als 5.000 Attraktionen weltweit ab – von Walt Disney World über Europa-Park bis zu Parks in Asien und Australien.',
+              a: 'Aktuell deckt park.fan über 200 Parks mit mehr als 7.000 Attraktionen weltweit ab – von Walt Disney World über Europa-Park bis zu Parks in Asien und Australien.',
             },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">

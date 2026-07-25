@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: 'Waar komen deze gegevens vandaan?',
     answer:
-      'Uit de daadwerkelijk gemeten wachttijden van 150+ parken over de laatste twee jaar. Elk park wordt genormaliseerd op zijn eigen gemiddelde en daarna over alle parken gemiddeld, zodat de rangschikking eerlijk is en niet wordt bepaald door de grootste parken.',
+      'Uit de daadwerkelijk gemeten wachttijden van 200+ parken over de laatste twee jaar. Elk park wordt genormaliseerd op zijn eigen gemiddelde en daarna over alle parken gemiddeld, zodat de rangschikking eerlijk is en niet wordt bepaald door de grootste parken.',
   },
 ] as const;
 
@@ -87,7 +87,7 @@ export function ContentNL() {
           ze sporen na in de wachttijden.
         </Lead>
         <P>
-          Die sporen hebben we over 150+ parken van de laatste twee jaar gemeten. Hieronder: de
+          Die sporen hebben we over 200+ parken van de laatste twee jaar gemeten. Hieronder: de
           rustigste weekdagen en maanden, de rustigste uren van de dag, de momenten die je beter
           mijdt — en de druktekalender die daar de ene beste dag voor jouw park van maakt.
         </P>
