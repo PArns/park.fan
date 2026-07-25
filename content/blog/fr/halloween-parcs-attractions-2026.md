@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: "Halloween parcs d'attractions 2026"
   description: >-
-    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
+    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
     Traumatica, Walibi, Toverland et les jours les plus vides.
   keywords:
     - Halloween parc attractions 2026
