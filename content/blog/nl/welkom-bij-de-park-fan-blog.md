@@ -288,7 +288,7 @@ dan jij een cookiebanner wegklikt.
 
 En het mooiste: de berichten leven. Grafieken, kaarten en wachttijden trekken
 rechtstreeks uit park.fan, wat je leest doet het park op dit moment echt. De twee
-hoofdrolspelers van dit verhaal, live en onopgesmukt:
+hoofdrolspelers van dit verhaal, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)

@@ -283,7 +283,7 @@ than you can dismiss a cookie banner.
 
 And the best part: the posts are alive. Charts, maps and wait times pull
 straight from park.fan, so what you read is what the park is actually doing at
-this moment. The two lead actors of this story, live and unvarnished:
+this moment. The two lead actors of this story, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)

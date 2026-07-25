@@ -295,8 +295,7 @@ tardas en cerrar un aviso de cookies.
 
 Y lo mejor: las entradas están vivas. Gráficos, mapas y tiempos de espera se
 sacan directamente de park.fan, así que lo que lees es lo que el parque está
-haciendo en este momento. Los dos protagonistas de esta historia, en directo y
-sin maquillar:
+haciendo en este momento. Los dos protagonistas de esta historia, en directo:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)

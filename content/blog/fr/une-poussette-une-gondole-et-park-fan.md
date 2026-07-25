@@ -311,7 +311,7 @@ vite que vous ne fermez une bannière de cookies.
 Et le plus beau : les articles sont vivants. Graphiques, cartes et temps
 d'attente sont tirés directement de park.fan, ce que vous lisez est ce que le
 parc fait vraiment en cet instant. Les deux acteurs principaux de cette
-histoire, en direct et sans fard :
+histoire, en direct :
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)

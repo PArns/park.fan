@@ -299,7 +299,7 @@ als du ein Cookie-Banner wegklickst.
 
 Und das Beste daran: Die Beiträge leben. Charts, Karten und Wartezeiten ziehen
 direkt aus park.fan, was du liest, macht der Park in diesem Moment wirklich.
-Die beiden Hauptdarsteller dieser Geschichte, live und ungeschönt:
+Die beiden Hauptdarsteller dieser Geschichte, live:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)

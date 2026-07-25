@@ -299,8 +299,7 @@ veloce di quanto tu chiuda un banner dei cookie.
 
 E la parte più bella: i post sono vivi. Grafici, mappe e tempi di attesa
 attingono direttamente da park.fan, quello che leggi è ciò che il parco sta
-facendo davvero in questo momento. I due protagonisti di questa storia, live e
-senza filtri:
+facendo davvero in questo momento. I due protagonisti di questa storia, in diretta:
 
 [Taron](ref:phantasialand/taron?full)
 [Maus au Chocolat](ref:phantasialand/maus-au-chocolat?full)
