@@ -35,14 +35,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   de: {
     title: 'Beste Reisezeit für Freizeitparks',
     intro:
-      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 150 Parks, dazu Tricks für kurze Schlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
+      'Wann sind Freizeitparks am leersten? Die ruhigsten Wochentage und Monate aus echten Wartezeiten von über 200 Parks, dazu Tricks für kurze Schlangen und der Kalender, der dir den besten Tag für deinen Wunschpark zeigt.',
     kicker: 'park.fan · Reiseplanung',
     tagline:
-      'Wann ein Park voll wird, ist kein Glücksspiel. Aus echten Wartezeiten von über 150 Parks zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
+      'Wann ein Park voll wird, ist kein Glücksspiel. Aus echten Wartezeiten von über 200 Parks zeigen wir dir die ruhigsten Tage und wie du die vollen umschiffst.',
     scrollLabel: 'Scrollen',
     heroAlt: 'Freizeitpark-Landschaft im Abendlicht',
     stats: [
-      { value: '150+', label: 'Parks analysiert' },
+      { value: '200+', label: 'Parks analysiert' },
       { value: '2 Jahre', label: 'echte Daten' },
       { value: '365', label: 'Tage im Voraus' },
     ],
@@ -50,14 +50,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   en: {
     title: 'Best Time to Visit Theme Parks',
     intro:
-      'When are theme parks least crowded? The quietest weekdays and months — from real wait-time data across 150+ parks — plus tactics for short queues and the calendar that shows the best day for your park.',
+      'When are theme parks least crowded? The quietest weekdays and months — from real wait-time data across 200+ parks — plus tactics for short queues and the calendar that shows the best day for your park.',
     kicker: 'park.fan · trip planner',
     tagline:
-      'Theme-park crowds are not random. From real wait-time data across 150+ parks, here are the quietest days — and how to dodge the busy ones.',
+      'Theme-park crowds are not random. From real wait-time data across 200+ parks, here are the quietest days — and how to dodge the busy ones.',
     scrollLabel: 'Scroll',
     heroAlt: 'A theme-park landscape in the evening light',
     stats: [
-      { value: '150+', label: 'parks analysed' },
+      { value: '200+', label: 'parks analysed' },
       { value: '2 yrs', label: 'of real data' },
       { value: '365', label: 'days ahead' },
     ],
@@ -65,14 +65,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   es: {
     title: 'Mejor época para visitar parques temáticos',
     intro:
-      '¿Cuándo hay menos gente en los parques temáticos? Los días de la semana y los meses más tranquilos, a partir de datos reales de tiempos de espera de más de 150 parques, con trucos para colas cortas y el calendario que muestra el mejor día para tu parque.',
+      '¿Cuándo hay menos gente en los parques temáticos? Los días de la semana y los meses más tranquilos, a partir de datos reales de tiempos de espera de más de 200 parques, con trucos para colas cortas y el calendario que muestra el mejor día para tu parque.',
     kicker: 'park.fan · planificador de visitas',
     tagline:
-      'La afluencia no es aleatoria. Con datos reales de más de 150 parques te mostramos los días más tranquilos y cómo esquivar los llenos.',
+      'La afluencia no es aleatoria. Con datos reales de más de 200 parques te mostramos los días más tranquilos y cómo esquivar los llenos.',
     scrollLabel: 'Desliza',
     heroAlt: 'Paisaje de un parque temático a la luz del atardecer',
     stats: [
-      { value: '150+', label: 'parques analizados' },
+      { value: '200+', label: 'parques analizados' },
       { value: '2 años', label: 'de datos reales' },
       { value: '365', label: 'días de previsión' },
     ],
@@ -80,14 +80,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   fr: {
     title: "Meilleure période pour visiter les parcs d'attractions",
     intro:
-      "Quand les parcs d'attractions sont-ils les moins fréquentés ? Les jours de la semaine et les mois les plus calmes, à partir de données réelles de temps d'attente de plus de 150 parcs, avec des astuces pour des files courtes et le calendrier du meilleur jour pour votre parc.",
+      "Quand les parcs d'attractions sont-ils les moins fréquentés ? Les jours de la semaine et les mois les plus calmes, à partir de données réelles de temps d'attente de plus de 200 parcs, avec des astuces pour des files courtes et le calendrier du meilleur jour pour votre parc.",
     kicker: 'park.fan · planificateur de visite',
     tagline:
-      "L'affluence n'a rien d'aléatoire. À partir de données réelles de plus de 150 parcs, voici les jours les plus calmes — et comment éviter les pires.",
+      "L'affluence n'a rien d'aléatoire. À partir de données réelles de plus de 200 parcs, voici les jours les plus calmes — et comment éviter les pires.",
     scrollLabel: 'Défiler',
     heroAlt: "Paysage d'un parc d'attractions dans la lumière du soir",
     stats: [
-      { value: '150+', label: 'parcs analysés' },
+      { value: '200+', label: 'parcs analysés' },
       { value: '2 ans', label: 'de données réelles' },
       { value: '365', label: "jours à l'avance" },
     ],
@@ -95,14 +95,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   it: {
     title: 'Periodo migliore per visitare i parchi divertimento',
     intro:
-      'Quando i parchi divertimento sono meno affollati? I giorni della settimana e i mesi più tranquilli, da dati reali sui tempi di attesa di oltre 150 parchi, con trucchi per code brevi e il calendario che mostra il giorno migliore per il tuo parco.',
+      'Quando i parchi divertimento sono meno affollati? I giorni della settimana e i mesi più tranquilli, da dati reali sui tempi di attesa di oltre 200 parchi, con trucchi per code brevi e il calendario che mostra il giorno migliore per il tuo parco.',
     kicker: 'park.fan · pianificatore di visite',
     tagline:
-      "L'affluenza non è casuale. Dai dati reali di oltre 150 parchi, ecco i giorni più tranquilli — e come evitare quelli pieni.",
+      "L'affluenza non è casuale. Dai dati reali di oltre 200 parchi, ecco i giorni più tranquilli — e come evitare quelli pieni.",
     scrollLabel: 'Scorri',
     heroAlt: 'Paesaggio di un parco divertimenti nella luce della sera',
     stats: [
-      { value: '150+', label: 'parchi analizzati' },
+      { value: '200+', label: 'parchi analizzati' },
       { value: '2 anni', label: 'di dati reali' },
       { value: '365', label: 'giorni in anticipo' },
     ],
@@ -110,14 +110,14 @@ const PAGE_HEADERS: Record<Locale, PageHeader> = {
   nl: {
     title: 'Beste tijd om pretparken te bezoeken',
     intro:
-      'Wanneer zijn pretparken het rustigst? De rustigste weekdagen en maanden — uit echte wachttijddata van 150+ parken — plus tips voor korte rijen en de kalender die de beste dag voor jouw park laat zien.',
+      'Wanneer zijn pretparken het rustigst? De rustigste weekdagen en maanden — uit echte wachttijddata van 200+ parken — plus tips voor korte rijen en de kalender die de beste dag voor jouw park laat zien.',
     kicker: 'park.fan · reisplanner',
     tagline:
-      'Drukte is geen toeval. Uit echte wachttijddata van 150+ parken laten we de rustigste dagen zien — en hoe je de drukke ontwijkt.',
+      'Drukte is geen toeval. Uit echte wachttijddata van 200+ parken laten we de rustigste dagen zien — en hoe je de drukke ontwijkt.',
     scrollLabel: 'Scroll',
     heroAlt: 'Pretparklandschap in het avondlicht',
     stats: [
-      { value: '150+', label: 'parken geanalyseerd' },
+      { value: '200+', label: 'parken geanalyseerd' },
       { value: '2 jaar', label: 'echte data' },
       { value: '365', label: 'dagen vooruit' },
     ],

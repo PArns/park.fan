@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: 'Where does this data come from?',
     answer:
-      'From the actually recorded wait times of 150+ parks over the last two years. Each park is normalised to its own average and then averaged across all parks, so the ranking is fair and not dominated by the biggest parks.',
+      'From the actually recorded wait times of 200+ parks over the last two years. Each park is normalised to its own average and then averaged across all parks, so the ranking is fair and not dominated by the biggest parks.',
   },
 ] as const;
 
@@ -87,7 +87,7 @@ export function ContentEN() {
           four leave fingerprints in the wait times.
         </Lead>
         <P>
-          We measured those fingerprints across 150+ parks over the last two years. Below: the
+          We measured those fingerprints across 200+ parks over the last two years. Below: the
           quietest weekdays and months, the calmest hours of the day, the dates worth dodging — and
           the crowd calendar that turns all of it into the single best day for your park.
         </P>

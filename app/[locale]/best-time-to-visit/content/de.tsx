@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: 'Woher stammen diese Daten?',
     answer:
-      'Aus den tatsächlich gemessenen Wartezeiten von über 150 Parks aus den letzten zwei Jahren. Damit die Rangfolge fair bleibt und nicht einfach von den größten Parks bestimmt wird, rechnen wir jeden Park zuerst auf seinen eigenen Schnitt um und mitteln erst dann.',
+      'Aus den tatsächlich gemessenen Wartezeiten von über 200 Parks aus den letzten zwei Jahren. Damit die Rangfolge fair bleibt und nicht einfach von den größten Parks bestimmt wird, rechnen wir jeden Park zuerst auf seinen eigenen Schnitt um und mitteln erst dann.',
   },
 ] as const;
 
@@ -88,7 +88,7 @@ export function ContentDE() {
           ziemlich genau nachrechnen.
         </Lead>
         <P>
-          Genau das haben wir gemacht: zwei Jahre Wartezeiten aus über 150 Parks ausgewertet. Auf
+          Genau das haben wir gemacht: zwei Jahre Wartezeiten aus über 200 Parks ausgewertet. Auf
           dieser Seite findest du die ruhigsten Wochentage und Monate, die besten Uhrzeiten, die
           Tage, an denen du besser zu Hause bleibst, und zum Schluss den Crowd-Kalender, der dir für
           deinen Wunschpark den passenden Tag raussucht.

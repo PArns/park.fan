@@ -112,7 +112,7 @@
       "hottestLabel": "Hottest park",
       "viewPark": "View park"
     },
-    "intro": "park.fan shows real-time wait times and crowd levels for over 150 theme parks and 5,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
+    "intro": "park.fan shows real-time wait times and crowd levels for over 200 theme parks and 7,000+ attractions worldwide—including Disney, Universal Studios, Europa-Park, and Phantasialand. Plan your visit with live queue times, opening hours, and AI-powered predictions.",
     "hero": {
       "badge": "AI-Powered Predictions",
       "cta": "Explore Parks",
@@ -1175,7 +1175,7 @@
   },
   "bestTime": {
     "title": "Best Time to Visit Theme Parks",
-    "description": "The quietest weekdays and months across 150+ theme parks, from real wait-time data — plus tactics for short queues and a crowd calendar for your park."
+    "description": "The quietest weekdays and months across 200+ theme parks, from real wait-time data — plus tactics for short queues and a crowd calendar for your park."
   },
   "howto": {
     "title": "How It Works – The Complete Guide",

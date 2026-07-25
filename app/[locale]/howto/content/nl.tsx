@@ -56,7 +56,7 @@ function IntroNL() {
         <p className="text-muted-foreground">
           park.fan is gebouwd vanuit precies die frustratie. Wat begon als een klein zijproject –
           &quot;ik ga gewoon wat wachttijden bijhouden&quot; – is uitgegroeid tot een platform met
-          live data van 150+ parken, meer dan 5.000 attracties en miljoenen wachtrij-datapunten die
+          live data van 200+ parken, meer dan 7.000 attracties en miljoenen wachtrij-datapunten die
           dagelijks worden verwerkt.
         </p>
         <p className="text-muted-foreground">
@@ -928,7 +928,7 @@ function ContentNLSections() {
       {/* ── 9. Populaire parken ─────────────────────────────────────────────── */}
       <Section id="parks" title="Populaire parken">
         <p className="text-muted-foreground mb-6">
-          park.fan dekt 150+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw regio
+          park.fan dekt 200+ pretparken wereldwijd. Hier zijn de meest bezochte parken in jouw regio
           met live data:
         </p>
         <PopularParksGrid />
@@ -1039,7 +1039,7 @@ function ContentNLSections() {
             },
             {
               q: 'Hoeveel parken zijn er beschikbaar?',
-              a: 'park.fan dekt momenteel 150+ parken met 5.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.',
+              a: 'park.fan dekt momenteel 200+ parken met 7.000+ attracties wereldwijd – van Walt Disney World en Universal tot Europa-Park, Phantasialand en parken in Azië en Australië.',
             },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">

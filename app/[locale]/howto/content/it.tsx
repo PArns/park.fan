@@ -56,7 +56,7 @@ function IntroIT() {
         <p className="text-muted-foreground">
           park.fan è nato da questa stessa frustrazione. Quello che è iniziato come un piccolo
           progetto personale – &quot;voglio solo tracciare alcuni tempi di attesa&quot; – è
-          diventato una piattaforma con dati in tempo reale da oltre 150 parchi, più di 5.000
+          diventato una piattaforma con dati in tempo reale da oltre 200 parchi, più di 7.000
           attrazioni e milioni di dati sulle code elaborati ogni giorno.
         </p>
         <p className="text-muted-foreground">
@@ -947,7 +947,7 @@ function ContentITSections() {
       {/* ── 9. Parchi popolari ──────────────────────────────────────────────── */}
       <Section id="parks" title="Parchi popolari">
         <p className="text-muted-foreground mb-6">
-          park.fan copre oltre 150 parchi divertimento in tutto il mondo. Ecco i più visitati nella
+          park.fan copre oltre 200 parchi divertimento in tutto il mondo. Ecco i più visitati nella
           tua regione con dati in tempo reale:
         </p>
         <PopularParksGrid />
@@ -1058,7 +1058,7 @@ function ContentITSections() {
             },
             {
               q: 'Quanti parchi sono coperti?',
-              a: 'park.fan copre attualmente oltre 150 parchi con più di 5.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.',
+              a: 'park.fan copre attualmente oltre 200 parchi con più di 7.000 attrazioni in tutto il mondo – da Walt Disney World e Universal a Europa-Park, Phantasialand e parchi in Asia e Australia.',
             },
           ].map(({ q, a }) => (
             <details key={q} className="group bg-muted/30 rounded-xl border">

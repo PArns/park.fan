@@ -72,7 +72,7 @@ const FAQ = [
   {
     question: '¿De dónde salen estos datos?',
     answer:
-      'De los tiempos de espera realmente registrados de más de 150 parques durante los dos últimos años. Cada parque se normaliza a su propia media y luego se promedia entre todos los parques, para que la clasificación sea justa y no la dominen los parques más grandes.',
+      'De los tiempos de espera realmente registrados de más de 200 parques durante los dos últimos años. Cada parque se normaliza a su propia media y luego se promedia entre todos los parques, para que la clasificación sea justa y no la dominen los parques más grandes.',
   },
 ] as const;
 
@@ -87,7 +87,7 @@ export function ContentES() {
           escolares, el tiempo y la temporada; los cuatro dejan huellas en los tiempos de espera.
         </Lead>
         <P>
-          Esas huellas las hemos medido en más de 150 parques durante los dos últimos años. Más
+          Esas huellas las hemos medido en más de 200 parques durante los dos últimos años. Más
           abajo: los días laborables y los meses más tranquilos, las horas más tranquilas del día,
           las fechas que conviene esquivar — y el calendario de afluencia que convierte todo eso en
           el único mejor día para tu parque.

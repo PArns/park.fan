@@ -84,7 +84,7 @@ const FAQ = [
   {
     question: 'Welke gegevens gebruikt Fancast?',
     answer:
-      'Live en historische wachttijden uit ruim 150 parken, school- en feestdagenkalenders (ook die van buurregio’s), weersverwachtingen, openingstijden, speciale evenementen en seizoenspatronen. Uit die mix ontstaan de dagelijkse drukteniveaus en de wachttijd-voorspellingen per uur.',
+      'Live en historische wachttijden uit ruim 200 parken, school- en feestdagenkalenders (ook die van buurregio’s), weersverwachtingen, openingstijden, speciale evenementen en seizoenspatronen. Uit die mix ontstaan de dagelijkse drukteniveaus en de wachttijd-voorspellingen per uur.',
   },
   {
     question: 'Waarom toont een park “Geen voorspelling”?',
@@ -156,7 +156,7 @@ export function ContentNL() {
         </PG>
         <IngredientGrid>
           <IngredientCard icon={Activity} title="Live wachttijden" delay={0}>
-            Miljoenen echte metingen uit 150+ parken, per minuut ververst. De ruwe valuta van elke
+            Miljoenen echte metingen uit 200+ parken, per minuut ververst. De ruwe valuta van elke
             voorspelling.
           </IngredientCard>
           <IngredientCard icon={CalendarDays} title="Kalenders & vakanties" delay={60}>
