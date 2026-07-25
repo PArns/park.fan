@@ -33,11 +33,10 @@ coverImage:
   alt: 'Reusachtige feniks, gevormd uit duizenden lichtgevende pompoenen met uitgespreide vleugels bij nacht, ervoor een acteur met een voorhamer'
   caption: 'Een feniks uit duizenden lichtgevende pompoenen: zo pakt een park zijn Halloween-decor uit.'
 seo:
-  title: 'Halloween pretparken 2026: events, data, rustigste dagen'
+  title: 'Halloween pretparken 2026: alle data'
   description: >-
     Halloween 2026 in Europa's pretparken: Movie Park met negen mazes,
-    Traumatica, de Walibi-experiences, Toverland, plus de weigeraars en wanneer
-    het het leegst is.
+    Traumatica, Walibi, Toverland en wanneer het het leegst is.
   keywords:
     - Halloween pretpark 2026
     - Halloween Horror Festival Movie Park 2026
@@ -78,7 +77,7 @@ is het het drukst, en wanneer kom je er het ontspanst doorheen?
 > het ter perse gaan bevestigd; voor de rest geldt: even nachecken voordat je
 > boekt.
 
-## De grote horror-events (' s avonds, vaak vanaf 16)
+## De grote horror-events ('s avonds, vaak vanaf 16)
 
 Dit is de harde kern: avondevents met uitgebreid ingerichte spookhuizen (in
 jargon **mazes** of **haunted houses**), scare zones vol live acteurs en op

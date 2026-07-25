@@ -24,7 +24,7 @@ coverImage:
   alt: "L'Arbre de Vie du Disney's Animal Kingdom, avec devant lui la foule des visiteurs du parc"
   caption: "Disney's Animal Kingdom : des dizaines de milliers de visiteurs, un Arbre de Vie, et partout la même question : combien de temps faire la queue, et pour quoi."
 seo:
-  title: "Psychologie des temps d'attente en parc d'attractions"
+  title: "Psychologie des files d'attente en parc"
   description: >-
     Temps d'attente en parc : la psychologie et les maths des files, expliquées
     par park.fan, et pourquoi 60 minutes en paraissent parfois 20.

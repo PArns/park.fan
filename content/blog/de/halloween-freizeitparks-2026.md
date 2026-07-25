@@ -33,7 +33,7 @@ coverImage:
   alt: 'Riesiger, aus tausenden leuchtenden Kürbissen geformter Phönix mit ausgebreiteten Flügeln bei Nacht, davor ein Darsteller mit Vorschlaghammer'
   caption: 'Ein Phönix aus tausenden leuchtenden Kürbissen: so fährt ein Park sein Halloween-Dekor auf.'
 seo:
-  title: 'Halloween Freizeitparks 2026: Events, Termine, ruhigste Tage'
+  title: 'Halloween Freizeitparks 2026: alle Termine'
   description: >-
     Halloween 2026 in Europas Freizeitparks: Movie Park mit neun Mazes,
     Traumatica, die Walibi-Experiences, Toverland, plus die Verweigerer und

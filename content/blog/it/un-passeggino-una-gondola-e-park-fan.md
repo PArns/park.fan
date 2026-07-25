@@ -23,7 +23,7 @@ coverImage:
   alt: 'Loop del Velocicoaster davanti al castello di Hogwarts, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure a Orlando: il Velocicoaster in pieno loop e, dietro, il castello di Hogwarts.'
 seo:
-  title: "Storia di park.fan: dal lago delle fiabe all'IA delle code"
+  title: "Dal lago delle fiabe all'IA delle code"
   description: >-
     Un passeggino in riva al lago delle fiabe, notti di codice, un'IA che legge
     le giornate nei parchi: la storia di park.fan e quando la visita vale la

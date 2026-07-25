@@ -24,7 +24,7 @@ coverImage:
   alt: 'El Árbol de la Vida en el Animal Kingdom de Disney, con las multitudes de visitantes del parque delante'
   caption: 'El Animal Kingdom de Disney: decenas de miles de visitantes, un Árbol de la Vida, y por todas partes la pregunta de cuánto se hace cola y para qué.'
 seo:
-  title: 'Tiempos de espera en parques: la psicología de las colas'
+  title: 'Psicología de las colas en parques'
   description: >-
     Tiempos de espera en parques: la psicología y las matemáticas de las colas,
     explicadas, y cómo park.fan las lee en vivo.

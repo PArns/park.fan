@@ -23,7 +23,7 @@ coverImage:
   alt: 'Velocicoaster-Looping vor dem Hogwarts-Schloss, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: der Velocicoaster im Looping, dahinter das Hogwarts-Schloss.'
 seo:
-  title: 'Die park.fan-Geschichte: vom Märchensee zur Wartezeiten-KI'
+  title: 'Vom Märchensee zur Wartezeiten-KI'
   description: >-
     Ein Kinderwagen am Märchensee, Nächte voller Code, eine KI, die Parktage
     liest: die Geschichte von park.fan und wann sich dein Parkbesuch wirklich

@@ -23,7 +23,7 @@ coverImage:
   alt: 'Looping del Velocicoaster frente al castillo de Hogwarts, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure en Orlando: el Velocicoaster en pleno looping y, detrás, el castillo de Hogwarts.'
 seo:
-  title: 'Historia de park.fan: del lago de cuentos a la IA de colas'
+  title: 'Del lago de cuentos a la IA de colas'
   description: >-
     Un cochecito junto al lago de los cuentos, noches de código y una IA que lee
     los días de parque: la historia de park.fan y cuándo tu visita merece la

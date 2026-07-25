@@ -33,11 +33,10 @@ coverImage:
   alt: "Phénix géant formé de milliers de citrouilles lumineuses, ailes déployées, la nuit, avec au premier plan un acteur muni d'une masse"
   caption: "Un phénix fait de milliers de citrouilles lumineuses : voilà comment un parc sort le grand jeu de son décor d'Halloween."
 seo:
-  title: "Halloween parcs d'attractions 2026 : dates et jours calmes"
+  title: "Halloween parcs d'attractions 2026"
   description: >-
-    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
-    Traumatica, les Walibi-Experiences, Toverland, plus les réfractaires et les
-    jours les plus vides.
+    Halloween 2026 dans les parcs d'Europe : Movie Park et ses neuf mazes,
+    Traumatica, Walibi, Toverland et les jours les plus vides.
   keywords:
     - Halloween parc attractions 2026
     - Halloween Horror Festival Movie Park 2026

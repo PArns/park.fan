@@ -33,11 +33,10 @@ coverImage:
   alt: 'Fénix gigante con las alas extendidas, formado por miles de calabazas luminosas, de noche; delante, un actor con un mazo'
   caption: 'Un fénix hecho de miles de calabazas luminosas: así despliega un parque su decorado de Halloween.'
 seo:
-  title: 'Halloween parques de atracciones 2026: fechas y días vacíos'
+  title: 'Halloween parques de atracciones 2026'
   description: >-
     Halloween 2026 en los parques de Europa: Movie Park con nueve mazes,
-    Traumatica, las Walibi-Experiences, Toverland, más los que se niegan y
-    cuándo hay menos gente.
+    Traumatica, Walibi, Toverland y cuándo hay menos gente.
   keywords:
     - Halloween parque de atracciones 2026
     - Halloween Horror Festival Movie Park 2026

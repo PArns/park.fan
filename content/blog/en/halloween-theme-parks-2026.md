@@ -33,7 +33,7 @@ coverImage:
   alt: 'A giant phoenix formed from thousands of glowing pumpkins with wings spread wide at night, a performer with a sledgehammer in front of it'
   caption: 'A phoenix made of thousands of glowing pumpkins: this is how a park rolls out its Halloween décor.'
 seo:
-  title: 'Halloween Theme Parks 2026: Events, Dates, Quietest Days'
+  title: 'Halloween Theme Parks 2026: All Dates'
   description: >-
     Halloween 2026 in Europe's theme parks: Movie Park with nine mazes,
     Traumatica, the Walibi Experiences, Toverland, plus the refuseniks and the

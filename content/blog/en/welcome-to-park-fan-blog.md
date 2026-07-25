@@ -23,7 +23,7 @@ coverImage:
   alt: 'Velocicoaster loop in front of Hogwarts castle, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: the Velocicoaster mid-loop, Hogwarts castle behind it.'
 seo:
-  title: 'The park.fan Story: From a Fairy-Tale Lake to a Wait-Time AI'
+  title: 'From a Fairy-Tale Lake to a Wait-Time AI'
   description: >-
     A stroller by the Märchensee, nights full of code, an AI that reads park
     days: the story of park.fan, and when your park visit is actually worth it.

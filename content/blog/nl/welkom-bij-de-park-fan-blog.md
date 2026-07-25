@@ -23,7 +23,7 @@ coverImage:
   alt: 'Velocicoaster-looping voor het kasteel van Zweinstein, Islands of Adventure, Orlando'
   caption: 'Islands of Adventure in Orlando: de Velocicoaster in de looping, daarachter het kasteel van Zweinstein.'
 seo:
-  title: 'Het verhaal van park.fan: sprookjesmeer tot wachttijden-AI'
+  title: 'Van sprookjesmeer tot wachttijden-AI'
   description: >-
     Een kinderwagen aan het sprookjesmeer, nachten vol code, een AI die
     pretparkdagen leest: het verhaal achter park.fan en wanneer je bezoek de

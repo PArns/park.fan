@@ -33,11 +33,10 @@ coverImage:
   alt: 'Gigantesca fenice formata da migliaia di zucche luminose con le ali spiegate, di notte, e davanti un attore con una mazza'
   caption: 'Una fenice fatta di migliaia di zucche luminose: ecco come un parco sfodera il suo allestimento di Halloween.'
 seo:
-  title: 'Halloween parchi divertimenti 2026: date e giorni vuoti'
+  title: 'Halloween parchi divertimenti 2026'
   description: >-
-    Halloween 2026 nei parchi d'Europa: Movie Park con nove maze, Traumatica, le
-    Walibi-Experiences, Toverland, più i parchi che rifiutano Halloween e quando
-    è più vuoto.
+    Halloween 2026 nei parchi d'Europa: Movie Park con nove maze, Traumatica,
+    Walibi, Toverland e quando è più vuoto.
   keywords:
     - Halloween parco divertimenti 2026
     - Halloween Horror Festival Movie Park 2026
