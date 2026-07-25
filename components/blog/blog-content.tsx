@@ -477,16 +477,22 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
         {injectGlossary(children)}
       </h1>
     ),
+    // `clear-both`: a floated inline image from the previous section must never
+    // bleed alongside the next heading — a new section always starts on a clean
+    // line.
     h2: ({ children, id }) => (
       <h2
         id={id}
-        className="text-foreground mt-12 mb-4 scroll-mt-24 text-2xl font-bold tracking-tight"
+        className="text-foreground clear-both mt-12 mb-4 scroll-mt-24 text-2xl font-bold tracking-tight"
       >
         {injectGlossary(children)}
       </h2>
     ),
     h3: ({ children, id }) => (
-      <h3 id={id} className="text-foreground mt-8 mb-3 scroll-mt-24 text-xl font-semibold">
+      <h3
+        id={id}
+        className="text-foreground clear-both mt-8 mb-3 scroll-mt-24 text-xl font-semibold"
+      >
         {injectGlossary(children)}
       </h3>
     ),
