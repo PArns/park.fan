@@ -84,6 +84,8 @@ My father died in 2019. Maybe that's exactly why those shared rides have become
 so precious to me. They keep my childhood alive, and with it the memory of the
 man who glided through those worlds next to me.
 
+![Roller coaster silhouette at Movie Park Germany at night, lit in purple and blue | Movie Park Germany after dark. Lethal Weapon Pursuit stood here until 2006. | left](/images/parks/movie-park-germany/background.jpg)
+
 And whenever my father was away on the road as a lorry driver, my mother simply
 took the wheel. She was the one I discovered a lot of other parks with, above
 all [Movie Park](ref:movie-park-germany?bare), back then still Warner Bros.
@@ -131,6 +133,8 @@ Most Immersive Theme Park”.
 
 ## Orlando, May 2026, once in a lifetime
 
+![Animatronic velociraptor head in the red-lit raptor paddock of the VelociCoaster | Islands of Adventure: the raptor in the paddock, close enough to touch. | right](/blog/images/velocicoaster/02-raptor-paddock.jpg)
+
 And then there was that one big item on the life list that still had no tick
 next to it. In May 2026 we finally flew to Orlando: **Walt Disney World,
 Universal and SeaWorld**, the full programme, the once-in-a-lifetime trip I'd
@@ -162,6 +166,8 @@ adapters and more side projects than are good for me; all the stuff piling up at
 Two passions that ran side by side for decades without ever meeting.
 
 ## The moment in the Taron queue
+
+![Taron racing through the basalt columns of the Klugheim themed area | Taron mid-course through Klugheim. I stood in front of this ride for sixty minutes. | left](/images/parks/phantasialand/taron-4x3.jpg)
 
 Until that one afternoon that pretty much every park fan knows in some version
 or other. Sixty minutes of [Taron](ref:phantasialand/taron?bare) standby, a
@@ -264,6 +270,8 @@ the same number three times over, three completely different stories:
 - **20 minutes** for
   [Voltron Nevera](ref:europa-park/voltron-nevera-powered-by-rimac?bare) a year
   after opening? Either a dream day, or the crowds have finally dispersed.
+
+![Voltron Nevera inverting above a floodlit facade at night | Voltron Nevera at Europa-Park. Twenty minutes of queue is a statement here. | right](/images/parks/europa-park/voltron-nevera-powered-by-rimac.jpg)
 
 The number is in the chart. From now on the story behind it is here, in three
 formats.
