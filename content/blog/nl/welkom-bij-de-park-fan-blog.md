@@ -187,10 +187,10 @@ inruilde voor een reling.
 
 > “Laat mij die wachttijden even trackken.” — _zei ik. Het werden drie jaar._
 
-## Drie jaar nachten, en hoe park.fan echt ontstond
+## Van “even snel” naar drie jaar: hoe park.fan echt ontstond
 
-Wat begon als “even snel” groeide uit tot wat ontwikkelaars een passieproject
-noemen en vriendinnen vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
+Wat het werd, noemen ontwikkelaars een passieproject en vriendinnen
+vermoedelijk eerder “alweer dat parkgedoe”. Uit een script
 kwam een dataverzamelaar, uit de dataverzamelaar een pipeline, uit de pipeline
 een platform. Daartussen lagen nachten waarin ik om twee uur 's nachts naar
 wachttijdcurves staarde omdat een of ander park zijn data anders doorgaf dan

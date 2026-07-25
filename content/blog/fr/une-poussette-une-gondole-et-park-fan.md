@@ -199,10 +199,10 @@ temps de vie contre une rambarde.
 > « Laisse-moi juste tracker les temps d'attente. » — _ai-je dit. Ça a duré
 > trois ans._
 
-## Trois ans de nuits, et comment park.fan est vraiment né
+## De « vite fait » à trois ans : comment park.fan est vraiment né
 
-Ce qui a commencé par « vite fait » a grandi jusqu'à devenir ce que les
-développeurs appellent un projet de cœur et les copines plutôt « encore ce truc
+Ce que c'est devenu, les développeurs appellent ça un projet de cœur, et les
+copines plutôt « encore ce truc
 de parcs ». D'un script est né un collecteur de données, du collecteur une
 pipeline, de la pipeline une plateforme. Entre les deux, des nuits passées à
 fixer des courbes de temps d'attente à deux heures du matin parce qu'un parc

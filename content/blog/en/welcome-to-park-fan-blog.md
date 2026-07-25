@@ -182,10 +182,10 @@ whether I was simply trading lifetime for a handrail.
 > “Let me just track the wait times for a bit.” — _I said. It turned into three
 > years._
 
-## Three years of nights, and how park.fan really came about
+## From “just a bit” to three years: how park.fan really came about
 
-What started as “just a bit” grew into what developers call a passion project
-and girlfriends probably call “that park thing again”. A script became a data
+What it grew into is what developers call a passion project and girlfriends
+probably call “that park thing again”. A script became a data
 collector, the collector became a pipeline, the pipeline became a platform. In
 between were nights spent staring at wait-time curves at two in the morning
 because some park reported its data differently from everybody else. Debugging

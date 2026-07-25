@@ -162,7 +162,7 @@ Landschaft Pandoras und Höhlen mit Malereien der Na'vi, dann durch ein
 verlassenes Forschungslabor, inklusive eines lebensgroßen Avatars, der in einem
 Amnio-Tank schwebt und so überzeugend atmet, dass regelmäßig Menschen stehen
 bleiben und die Schlange aufhalten. Eine Warteschlange, die sich selbst
-verstopft, weil sie zu gut aussieht: mehr Ehrerbietung geht nicht. Danach
+verstopft, weil sie zu gut aussieht: ein größeres Kompliment gibt es nicht. Danach
 folgen gleich **zwei Pre-Show-Räume**, in denen du „gescannt“ und mit deinem
 eigenen Avatar „verlinkt“ wirst.
 
@@ -212,7 +212,7 @@ Universal spielt bei
 in [Islands of Adventure](ref:universal-islands-of-adventure?bare) die gleiche
 Karte, nur mit Zähnen. Die Warteschlange führt mitten durch das
 **Raptor-Paddock** aus _Jurassic World_: vorbei an aufgerissenen Gehege-Zäunen,
-animatronischen Raptoren auf Greifweite und einem begrünten Atrium, in dem
+animatronischen Raptoren in Greifweite und einem begrünten Atrium, in dem
 selbst die Betonwände nach Isla Nublar aussehen. Man wartet nicht auf einen
 Coaster, man macht eine Paddock-Führung, die zufällig in einem Vierfach-Launch
 endet. Genau das meint Maister mit **„occupied time“**: Beschäftigte Zeit fühlt
@@ -242,7 +242,7 @@ Fall, in dem Eigennutz und Durchsatz exakt in die gleiche Richtung ziehen.
 Und dann gibt es noch einen Trick, der gar nicht an der Attraktion selbst
 stattfindet: **Entertainment als Massen-Schwamm.** Eine Parade, ein Feuerwerk
 oder eine Stunt-Show bindet auf einen Schlag tausende Gäste, also Menschen, die
-in dieser Stunde in keiner einzigen Ride-Warteschlange stehen. Das Amphitheater
+in dieser Stunde in keiner einzigen Warteschlange stehen. Das Amphitheater
 von **Fantasmic!** in den Hollywood Studios fasst mit Steh- und Sitzplätzen an
 die 10.000 Menschen pro Vorstellung. Eine einzige Show schluckt also eine ganze
 Besucherwelle: zehntausend Leute, die für die nächste halbe Stunde garantiert
@@ -368,7 +368,7 @@ Bahn mit 800er-Kapazität? **48 Minuten.** Das Elegante an Littles Formel: Sie
 gilt für jede stabile Schlange, egal wie unregelmäßig die Gäste eintrudeln. Und
 genau diese Rechnung steckt in verfeinerter Form hinter jeder
 Wartezeit-Anzeige. Parks schätzen die Zahl der Wartenden und teilen durch den
-aktuellen Durchsatz, oder sie messen die Zeit direkt, etwa mit Timing-Karten,
+aktuellen Durchsatz, oder sie messen die Zeit direkt, etwa mit Zeitkarten,
 die ein Gast am Eingang der Schlange bekommt und an der Station wieder abgibt.
 
 Die Formel erklärt auch, warum dieselbe Schlangenlänge an zwei Tagen völlig
@@ -469,7 +469,7 @@ auf eine Handvoll Headliner, und wenn an einem Ferien-Samstag alle zu
 [Taron](ref:phantasialand/taron?bare) wollen (Grüße gehen raus, ich bin
 erfahrungsgemäß einer davon), ist die Sättigung genauso schnell erreicht wie
 bei Peter Pan in Paris. Kleines Publikum schützt eben nicht vor langen
-Schlangen, wenn die Concurrency der Attraktionen begrenzt ist. Die Mathematik
+Schlangen, wenn zu wenige Attraktionen den Andrang gleichzeitig auffangen können. Die Mathematik
 ist dieselbe, nur der Maßstab ist kleiner.
 
 Die Zahlen dazu sind fast schon komisch. Taron schafft rund **1.200 Gäste pro

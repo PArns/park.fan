@@ -194,11 +194,10 @@ tauschte.
 > „Lass mich mal eben die Wartezeiten tracken.“ — _sagte ich. Es wurden drei
 > Jahre._
 
-## Drei Jahre Nächte, und wie park.fan wirklich entstand
+## Aus „mal eben“ wurden drei Jahre: wie park.fan wirklich entstand
 
-Was als „mal eben“ begann, wuchs sich zu dem aus, was Entwickler ein
-Herzensprojekt nennen und Freundinnen vermutlich eher „schon wieder dieses
-Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
+Was daraus wurde, nennen Entwickler ein Herzensprojekt und Freundinnen
+vermutlich eher „schon wieder dieses Park-Ding“. Aus einem Skript wurde ein Datensammler, aus dem Datensammler eine
 Pipeline, aus der Pipeline eine Plattform. Dazwischen lagen Nächte, in denen
 ich um zwei Uhr morgens auf Wartezeiten-Kurven starrte, weil irgendein Park
 seine Daten anders meldete als alle anderen. Debugging-Sessions, die länger

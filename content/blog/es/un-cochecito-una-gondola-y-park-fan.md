@@ -190,9 +190,9 @@ o si simplemente estaba cambiando tiempo de vida por una barandilla.
 > «Déjame trastear un poco con los tiempos de espera.» — _dije. Fueron tres
 > años._
 
-## Tres años de noches y cómo nació park.fan de verdad
+## De «un momentito» a tres años: cómo nació park.fan de verdad
 
-Lo que empezó como «un momentito» creció hasta convertirse en lo que los
+En lo que se convirtió es en lo que los
 desarrolladores llaman un proyecto del corazón y las novias probablemente «otra
 vez lo de los parques». De un script salió un recolector de datos; del
 recolector, una pipeline; de la pipeline, una plataforma. Por el medio hubo

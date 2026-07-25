@@ -359,7 +359,7 @@ formule: hij geldt voor elke stabiele rij, hoe onregelmatig de gasten ook
 binnendruppelen. En precies die berekening zit, in verfijnde vorm, achter elk
 wachttijdenbord. Parken schatten het aantal wachtenden en delen door de
 actuele doorstroom, of ze meten de tijd rechtstreeks, bijvoorbeeld met
-timingkaarten die een gast bij de ingang van de rij krijgt en bij het station
+tijdkaartjes die een gast bij de ingang van de rij krijgt en bij het station
 weer inlevert.
 
 De formule verklaart ook waarom dezelfde rijlengte op twee dagen totaal
@@ -456,8 +456,8 @@ weinig maar extreem uitbundig gethematiseerde attracties. De belasting
 concentreert zich op een handvol headliners, en als op een vakantiezaterdag
 iedereen naar [Taron](ref:phantasialand/taron?bare) wil (groeten, ik ben er
 ervaringsgewijs een van), is de verzadiging net zo snel bereikt als bij Peter
-Pan in Parijs. Een klein publiek beschermt nu eenmaal niet tegen lange rijen als
-de concurrency van de attracties beperkt is. De wiskunde is dezelfde, alleen de
+Pan in Parijs. Een klein publiek beschermt nu eenmaal niet tegen lange rijen als er maar
+weinig attracties zijn om de drukte over te verdelen. De wiskunde is dezelfde, alleen de
 schaal is kleiner.
 
 De cijfers erbij zijn bijna komisch. Taron verwerkt ongeveer **1.200 gasten per

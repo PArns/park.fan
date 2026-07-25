@@ -454,8 +454,8 @@ with few attractions but extraordinarily elaborate theming. The load
 concentrates on a handful of headliners, and when everyone wants
 [Taron](ref:phantasialand/taron?bare) on a holiday Saturday (greetings, I'm
 usually one of them), saturation arrives just as fast as it does for Peter Pan
-in Paris. A small audience doesn't protect you from long queues when the
-concurrency of attractions is limited. The maths is the same, only the scale is
+in Paris. A small audience doesn't protect you from long queues when only a few
+attractions can absorb the demand at once. The maths is the same, only the scale is
 smaller.
 
 The numbers are almost funny. Taron handles around **1,200 guests per hour**,

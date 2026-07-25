@@ -469,8 +469,8 @@ pocas atracciones pero extremadamente tematizadas. La carga se concentra en un
 puñado de cabezas de cartel, y cuando un sábado de vacaciones todo el mundo
 quiere [Taron](ref:phantasialand/taron?bare) (saludos, por experiencia yo soy
 uno de ellos), la saturación llega igual de rápido que con Peter Pan en París.
-Un público pequeño no protege de las colas largas cuando la concurrencia de
-atracciones es limitada. La matemática es la misma, solo cambia la escala.
+Un público pequeño no protege de las colas largas cuando hay pocas atracciones
+entre las que repartir la demanda. La matemática es la misma, solo cambia la escala.
 
 Las cifras casi dan risa. Taron despacha unos **1.200 visitantes por hora**, es
 decir, casi exactamente los mismos que Peter Pan's Flight en París. La

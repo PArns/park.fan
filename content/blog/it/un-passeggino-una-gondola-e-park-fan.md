@@ -191,9 +191,9 @@ stessi semplicemente barattando tempo di vita con un corrimano.
 > “Fammi tracciare un attimo i tempi di attesa.” — _dissi. Sono diventati tre
 > anni._
 
-## Tre anni di notti, e come è nato davvero park.fan
+## Da “un attimo” a tre anni: come è nato davvero park.fan
 
-Quello che era cominciato come “un attimo” è cresciuto fino a diventare ciò che
+Quello che ne è venuto fuori è ciò che
 gli sviluppatori chiamano progetto del cuore e le ragazze probabilmente “di
 nuovo quella cosa dei parchi”. Da uno script è nato un raccoglitore di dati, dal
 raccoglitore una pipeline, dalla pipeline una piattaforma. In mezzo ci sono
